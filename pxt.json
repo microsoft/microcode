@@ -1,6 +1,6 @@
 {
-    "name": "makekodu",
-    "version": "0.0.19",
+    "name": "kojac",
+    "version": "0.0.1",
     "description": "",
     "dependencies": {
         "device": "*",
