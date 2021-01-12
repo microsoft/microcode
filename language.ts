@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
 
     export enum TileType {
         SENSOR = 1,

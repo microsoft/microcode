@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
     export type ButtonStyle = "white" | "beige" | "clear" | "danger";
 
     export class icons {

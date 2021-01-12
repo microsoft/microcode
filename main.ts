@@ -1,1 +1,1 @@
-const app = new kodu.App();
+const app = new kojac.App();

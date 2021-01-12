@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
     export class Stage {
         components: Component[];
         camera: Camera;

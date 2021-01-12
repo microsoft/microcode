@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
 
     const SAVEGAME = "saveGame5";
 
