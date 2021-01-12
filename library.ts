@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
     export type LibraryFn = (rule: Rule) => void;
  
     export type LibraryFnMap = {

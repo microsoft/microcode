@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
     export class Body {
         enabled: boolean;
         vx: number;

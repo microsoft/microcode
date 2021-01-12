@@ -1,7 +1,7 @@
-namespace kodu {
+namespace kojac {
     export type CursorMode = "free" | "burdened";
 
-    const maxCursorSpeed = 200 / 1000;       // pixels/milli
+    const maxCursorSpeed = 120 / 1000;       // pixels/milli
     const startCursorSpeed = 10 / 1000;      //
     const cursorSpeedInc = 10 / 1000;        // 
     const shiftGearsAt = 1000;               // millis

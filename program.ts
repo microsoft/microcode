@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
     export const Feeling = {
         None: "feel.0",
         Happy: "feel.1",

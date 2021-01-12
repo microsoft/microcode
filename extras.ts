@@ -5,7 +5,7 @@ namespace util {
         return (x >= bounds.left) && (x <= bounds.right) && (y >= bounds.top) && (y <= bounds.bottom);
     }
 
-    export function pointInSprite(kel: kodu.Kelpie, x: number, y: number): boolean {
+    export function pointInSprite(kel: kojac.Kelpie, x: number, y: number): boolean {
         const wOver2 = kel.width / 2;
         const hOver2 = kel.height / 2;
         return (x >= kel.x - wOver2) && (x <= kel.x + wOver2) && (y >= kel.y - hOver2) && (y <= kel.y + hOver2);
@@ -15,19 +15,19 @@ namespace util {
         const dimA = Math.max(a.width, a.height);
         const dimB = Math.max(b.width, b.height);
         const maxSq = dimA * dimA + dimB * dimB;
-        const distSq = kodu.Vec2.MagnitudeSq(kodu.Vec2.Sub(a.center, b.center));
+        const distSq = kojac.Vec2.MagnitudeSq(kojac.Vec2.Sub(a.center, b.center));
         // Are they safely too far apart?
         if (distSq > maxSq) { return false; }
         return HitboxBounds.Intersects(a, b);
     }
 
-    export function getAllOverlapping(src: kodu.Kelpie): kodu.Kelpie[] {
+    export function getAllOverlapping(src: kojac.Kelpie): kojac.Kelpie[] {
         const srcHitbox = src.data["_hitbox"] || (src.data["_hitbox"] = calculateHitbox(src));
         const srcHitboxBounds = new HitboxBounds(src);
         const scene = game.currentScene();
-        let kelpies = scene.allSprites as kodu.Kelpie[];
+        let kelpies = scene.allSprites as kojac.Kelpie[];
         kelpies = kelpies
-            .filter(value => value["_data"] && value["_data"]["kelpie"] !== undefined) // hack: filter to kodu.Kelpie type
+            .filter(value => value["_data"] && value["_data"]["kelpie"] !== undefined) // hack: filter to kojac.Kelpie type
             .filter(value => value && value !== src);
         kelpies = kelpies
             .filter(value => !value.invisible)
@@ -39,7 +39,7 @@ namespace util {
         return kelpies;
     }
 
-    export function centerSpriteOnSprite(src: kodu.Kelpie, dst: kodu.Kelpie) {
+    export function centerSpriteOnSprite(src: kojac.Kelpie, dst: kojac.Kelpie) {
         src.x = dst.x;
         src.y = dst.y;
     }
@@ -60,9 +60,9 @@ namespace util {
 
         get width(): number { return this.right - this.left; }
         get height(): number { return this.bottom - this.top; }
-        get center(): kodu.Vec2 { return kodu.mkVec2((this.left + this.right) >> 1, (this.top + this.bottom) >> 1); }
+        get center(): kojac.Vec2 { return kojac.mkVec2((this.left + this.right) >> 1, (this.top + this.bottom) >> 1); }
         
-        constructor(s: kodu.Kelpie) {
+        constructor(s: kojac.Kelpie) {
             const box = s.data["_hitbox"] || (s.data["_hitbox"] = calculateHitbox(s));
             this.left = s.x + box.minX;
             this.top = s.y + box.minY;
@@ -83,7 +83,7 @@ namespace util {
         }
     }
 
-    export function calculateHitbox(s: kodu.Kelpie): Hitbox {
+    export function calculateHitbox(s: kojac.Kelpie): Hitbox {
         const i = s.image;
         let minX = i.width;
         let minY = i.height;
@@ -107,13 +107,13 @@ namespace util {
         return new Hitbox(width, height, minX, minY);
     }
 
-    export function distSqBetweenSprites(a: kodu.Kelpie, b: kodu.Kelpie): number {
+    export function distSqBetweenSprites(a: kojac.Kelpie, b: kojac.Kelpie): number {
         const dx = a.x - b.x;
         const dy = a.y - b.y;
         return (dx * dx) + (dy * dy);
     }
 
-    export function distBetweenSprites(a: kodu.Kelpie, b: kodu.Kelpie): number {
+    export function distBetweenSprites(a: kojac.Kelpie, b: kojac.Kelpie): number {
         return Math.sqrt(distSqBetweenSprites(a, b));
     }
 

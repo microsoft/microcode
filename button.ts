@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
     export class Button extends Component {
         icon: Kelpie;
         back: Kelpie;

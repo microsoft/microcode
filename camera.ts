@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
     export class Camera extends Component {
         camera_movement_x: number;
         camera_movement_y: number;

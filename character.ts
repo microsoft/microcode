@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
     export type CharacterState = {
         x: number;
         y: number;

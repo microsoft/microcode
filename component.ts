@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
     export class Component {
         constructor(public stage: Stage, public kind: string) {
             this.stage.add(this);

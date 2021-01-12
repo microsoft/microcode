@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
     export type CharacterDefn = {
         id: string;
         name: string;

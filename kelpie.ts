@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
     export enum KelpieFlags {
         Invisible = 1 >> 0,
         HUD = 1 >> 1,

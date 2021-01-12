@@ -1,4 +1,4 @@
-namespace kodu {
+namespace kojac {
 
     class BrainUI extends Component {
         pages: PageUI[];
