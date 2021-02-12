@@ -71,7 +71,7 @@ namespace kojac {
         }
 
         public static getAllOverlapping(src: kojac.Kelpie): kojac.Kelpie[] {
-            const srcHitbox = src.data["_hitbox"] || (src.data["_hitbox"] = this.calculateHitbox(src));
+            const srcHitbox = src.hitbox;
             const srcHitboxBounds = HitboxBounds.FromKelpie(src);
             const scene = game.currentScene();
             let kelpies = scene.allSprites as kojac.Kelpie[];

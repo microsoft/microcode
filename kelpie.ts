@@ -122,6 +122,7 @@ namespace kojac {
 
         constructor(img: Image) {
             super(scene.SPRITE_Z);
+            this.data["kelpie"] = 1;
             this._x = Fx8(screen.width - (img.width >> 1));
             this._y = Fx8(screen.height - (img.height >> 1));
             this.image = img; // initializes hitbox
