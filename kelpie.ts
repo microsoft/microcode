@@ -193,31 +193,6 @@ namespace kojac {
             screen.drawLine(bounds.left  - ox, bounds.top    - oy, bounds.left  - ox, bounds.bottom - oy, 15);
             screen.drawLine(bounds.right - ox, bounds.top    - oy, bounds.right - ox, bounds.bottom - oy, 15);
             */
-
-            /* Render containing GridTiles */
-            if (DBG_RENDER_GRIDTILES) {
-                const gb = this.data[GRID_BOUNDS] as HitboxBounds;
-                if (gb) {
-                    const radar = this.data[".sys-dbg-tilegrid"] as KelpieGrid;
-                    if (radar) {
-                        const tileSet = radar.extractTileSet(gb);
-                        const draw = (tile: GridTile) => {
-                            const left = tile.col * GRID_DIM - ox;
-                            const top = tile.row * GRID_DIM - oy;
-                            const right = left + GRID_DIM;
-                            const bottom = top + GRID_DIM;
-                            screen.drawLine(left , top   , right, top   , 14);
-                            screen.drawLine(left , bottom, right, bottom, 14);
-                            screen.drawLine(left , top   , left , bottom, 14);
-                            screen.drawLine(right, top   , right, bottom, 14);
-                        }
-                        if (tileSet.topLeft) { draw(tileSet.topLeft); }
-                        if (tileSet.topRight) { draw(tileSet.topRight); }
-                        if (tileSet.bottomLeft) { draw(tileSet.bottomLeft); }
-                        if (tileSet.bottomRight) { draw(tileSet.bottomRight); }
-                    }
-                }
-            }
         }
 
         __update(camera: scene.Camera, dt: number) {
