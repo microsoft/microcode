@@ -2,10 +2,14 @@ namespace kojac {
     export enum KelpieFlags {
         Invisible = 1 >> 0,
         HUD = 1 >> 1,
+        NonInteractible = 1 >> 2
     }
 
+    export type KelpieHandler = (kelpie: Kelpie) => void;
+
     /**
-     * A Kelpie is a sprite-like entity.
+     * A kelpie is a shape-shifting spirit inhabiting lakes in Scottish folklore.
+     * It's basically a sprite.
      */
     export class Kelpie extends sprites.BaseSprite {
         private _x: Fx8
@@ -13,7 +17,11 @@ namespace kojac {
         private _image: Image;
         private _data: any;
         private _flags: number;
-
+        private _hitbox: Hitbox;
+        private _destroyHandlers: KelpieHandler[];
+        private _moveHandlers: KelpieHandler[];
+        private _moved: boolean;
+        
         onUpdate: (dt: number) => void;
 
         //% blockCombine block="x" callInDebugger
@@ -21,7 +29,11 @@ namespace kojac {
             return Fx.toFloat(this._x);
         }
         set x(v: number) {
-            this._x = Fx8(v);
+            const fxv = Fx8(v);
+            if (fxv !== this._x) {
+                this._x = Fx8(v);
+                this._moved = true;
+            }
         }
 
         //% blockCombine block="y" callInDebugger
@@ -29,7 +41,16 @@ namespace kojac {
             return Fx.toFloat(this._y);
         }
         set y(v: number) {
-            this._y = Fx8(v);
+            const fxv = Fx8(v);
+            if (fxv !== this._y) {
+                this._y = Fx8(v);
+                this._moved = true;
+            }
+        }
+
+        //% blockCombine block="x" callInDebugger
+        get pos(): Vec2 {
+            return new Vec2(this.x, this.y);
         }
 
         //% blockCombine block="width" callInDebugger
@@ -79,10 +100,13 @@ namespace kojac {
         get image(): Image {
             return this._image;
         }
-        setImage(img: Image) {
-            if (!img) return;
-            this._image = img;
+        set image(img: Image) {
+            this.setImage(img);
         }
+
+        //% blockCombine block="image" callInDebugger
+        get hitbox(): Hitbox { return this._hitbox; }
+        set hitbox(v: Hitbox) { this._hitbox = v; }
 
         //% blockCombine block="hud" callInDebugger
         get hud() { return !!(this._flags & KelpieFlags.HUD); }
@@ -92,24 +116,58 @@ namespace kojac {
         get invisible() { return !!(this._flags & KelpieFlags.Invisible); }
         set invisible(b: boolean) { b ? this._flags |= KelpieFlags.Invisible : this._flags &= ~KelpieFlags.Invisible; }
 
+        //% blockCombine block="interactible" callInDebugger
+        get interactible() { return !(this._flags & KelpieFlags.NonInteractible); }
+        set interactible(b: boolean) { (!b) ? this._flags |= KelpieFlags.NonInteractible : this._flags &= ~KelpieFlags.NonInteractible; }
+
         constructor(img: Image) {
             super(scene.SPRITE_Z);
             this._x = Fx8(screen.width - (img.width >> 1));
             this._y = Fx8(screen.height - (img.height >> 1));
-            this.data["kelpie"] = 1; // hack for typecheck in getOverlapping
-            this.setImage(img);
+            this.image = img; // initializes hitbox
+            this.onDestroy((k: Kelpie) => {
+                const scene = game.currentScene();
+                scene.allSprites.removeElement(k);
+            });
         }
 
         public destroy() {
-            const scene = game.currentScene();
-            scene.allSprites.removeElement(this);
+            const handlers = this._destroyHandlers || [];
+            for (const handler of handlers) {
+                handler(this);
+            }
             this._image = undefined;
+            this._hitbox = undefined;
+            this._data = undefined;
+            this._destroyHandlers = undefined;
         }
 
-        isOutOfScreen(camera: scene.Camera): boolean {
+        public onDestroy(handler: KelpieHandler) {
+            this._destroyHandlers = this._destroyHandlers || [];
+            this._destroyHandlers.push(handler);
+        }
+
+        public onMoved(handler: KelpieHandler) {
+            this._moveHandlers = this._moveHandlers || [];
+            this._moveHandlers.push(handler);
+        }
+
+        protected setImage(img: Image) {
+            this._image = img;
+            this._hitbox = util.calculateHitbox(this);
+        }
+
+        private isOutOfScreen(camera: scene.Camera): boolean {
             const ox = (this.hud) ? 0 : camera.drawOffsetX;
             const oy = (this.hud) ? 0 : camera.drawOffsetY;
             return this.left - ox > screen.width || this.top - oy > screen.height || this.right - ox < 0 || this.bottom - oy < 0;
+        }
+
+        private fireMoved() {
+            const handlers = this._moveHandlers|| [];
+            for (const handler of handlers) {
+                handler(this);
+            }
         }
 
         __visible(): boolean {
@@ -118,7 +176,7 @@ namespace kojac {
         }
 
         __drawCore(camera: scene.Camera) {
-            if (this.isOutOfScreen(camera)) return;
+            if (this.isOutOfScreen(camera)) { return; }
 
             const ox = (this.hud) ? 0 : camera.drawOffsetX;
             const oy = (this.hud) ? 0 : camera.drawOffsetY;
@@ -127,11 +185,49 @@ namespace kojac {
             const t = this.top - oy;
 
             screen.drawTransparentImage(this._image, l, t);
+
+            /* Render hitbox
+            const bounds = HitboxBounds.FromKelpie(this);
+            screen.drawLine(bounds.left  - ox, bounds.top    - oy, bounds.right - ox, bounds.top    - oy, 15);
+            screen.drawLine(bounds.left  - ox, bounds.bottom - oy, bounds.right - ox, bounds.bottom - oy, 15);
+            screen.drawLine(bounds.left  - ox, bounds.top    - oy, bounds.left  - ox, bounds.bottom - oy, 15);
+            screen.drawLine(bounds.right - ox, bounds.top    - oy, bounds.right - ox, bounds.bottom - oy, 15);
+            */
+
+            /* Render containing GridTiles */
+            if (DBG_RENDER_GRIDTILES) {
+                const gb = this.data[GRID_BOUNDS] as HitboxBounds;
+                if (gb) {
+                    const radar = this.data[".sys-dbg-tilegrid"] as KelpieGrid;
+                    if (radar) {
+                        const tileSet = radar.extractTileSet(gb);
+                        const draw = (tile: GridTile) => {
+                            const left = tile.col * GRID_DIM - ox;
+                            const top = tile.row * GRID_DIM - oy;
+                            const right = left + GRID_DIM;
+                            const bottom = top + GRID_DIM;
+                            screen.drawLine(left , top   , right, top   , 14);
+                            screen.drawLine(left , bottom, right, bottom, 14);
+                            screen.drawLine(left , top   , left , bottom, 14);
+                            screen.drawLine(right, top   , right, bottom, 14);
+                        }
+                        if (tileSet.topLeft) { draw(tileSet.topLeft); }
+                        if (tileSet.topRight) { draw(tileSet.topRight); }
+                        if (tileSet.bottomLeft) { draw(tileSet.bottomLeft); }
+                        if (tileSet.bottomRight) { draw(tileSet.bottomRight); }
+                    }
+                }
+            }
         }
 
         __update(camera: scene.Camera, dt: number) {
             // Hm, dt is always 0.
             if (this.onUpdate) { this.onUpdate(dt); }
+
+            if (this._moved) {
+                this._moved = false;
+                this.fireMoved();
+            }
         }
     }
 }
