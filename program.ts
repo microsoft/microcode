@@ -5,13 +5,9 @@ namespace kojac {
         done: boolean;
         executing: boolean;
 
-        constructor(public agent: Agent) {
+        constructor(public bdefn: BrainDefn) {
             this.currPage = 0;
-            if (agent.bdefn) {
-                this.pages = agent.bdefn.pages.map((elem, index) => new Page(this, elem, index));
-            } else {
-                this.pages = [];
-            }
+            this.pages = bdefn.pages.map((elem, index) => new Page(this, elem, index));
         }
 
         public destroy() {
@@ -19,7 +15,6 @@ namespace kojac {
                 page.destroy();
             }
             this.pages = undefined;
-            this.agent = undefined;
         }
 
         public execute() {

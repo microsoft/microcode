@@ -23,8 +23,7 @@
         "vec2.ts",
         "worldStage.ts",
         "kodeStage.ts",
-        "kelpie.ts",
-        "agent.ts"
+        "kelpie.ts"
     ],
     "testFiles": [],
     "targetVersions": {

@@ -3,6 +3,7 @@ namespace kojac {
         components: Component[];
         camera: Camera;
         prevMs: number;
+        bdefn: BrainDefn;
 
         constructor(public app: App, public name: string) {
         }

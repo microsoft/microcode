@@ -8,9 +8,7 @@ namespace kojac {
 
     function mkSavedGame(): SavedGame {
         return {
-            chars: [],
-            camera: { x: 0, y: 0 },
-            cursor: { x: 0, y: 0 }
+            agents: [],
         }
     }
 
@@ -24,15 +22,6 @@ namespace kojac {
     export class WorldStage extends Stage {
         static ID = STAGE_ID;
         gameMode: GameMode;
-        playBtn: Button;
-        stopBtn: Button;
-        //objectModeBtn: Button;
-        //terrainModeBtn: Button;
-        newBtn: Button;
-        createMenu: Menu;
-        charMenu: Menu;
-        carryTarget: Character;
-        physics: Physics;
 
         constructor(app: App) {
             super(app, STAGE_ID);
@@ -40,41 +29,8 @@ namespace kojac {
 
         initScene() {
             super.initScene();
-            this.physics = new Physics(this);
             scene.setBackgroundColor(13);
-            this.playBtn = new Button(this, "white", "play", "Play", 8, 112, true, () => this.handlePlayClicked());
-            this.stopBtn = new Button(this, "white", "stop", "Stop", 8, 112, true, () => this.handleStopClicked());
-            //this.objectModeBtn = new Button(this, "white", "object_mode", "Objects", 25, 112, true, () => {});
-            //this.terrainModeBtn = new Button(this, "white", "terrain_mode", "Terrain", 42, 112, true, () => {});
-            this.newBtn = new Button(this, "danger", "new_file", "New", 8, 8, true, () => this.handleNewFileClicked());
-            const createMenuItems = Characters.getCharacters().map(char => {
-                return {
-                    icon: char.id,
-                    label: char.name
-                };
-            });
-            this.createMenu = new Menu(this, createMenuItems, false);
-            const charMenuItems: MenuItemDefn[] = [
-                { icon: "edit", label: "Edit" },
-                { icon: "move", label: "Move" },
-                { icon: "duplicate", label: "Duplicate" },
-                { icon: "delete", label: "Delete", style: "danger" }
-            ];
-            this.charMenu = new Menu(this, charMenuItems, false);
-            this.setGameMode(GameMode.Edit);
-
             this.start();
-
-
-
-            /*
-            game.onUpdateInterval(5000, function () {
-                // Watch for sprite leaks.
-                console.log("# sprites: " + game.currentScene().allSprites.length);
-                // Watch for memory leaks.
-                // control.heapSnapshot()
-            });
-            */
         }
 
         handleMenuPressed() {
@@ -111,13 +67,6 @@ namespace kojac {
             if (mode === GameMode.Play) { this.save(); }
             this.gameMode = mode;
             if (mode === GameMode.Edit) { this.load(); }
-            this.playBtn.setVisible(mode === GameMode.Edit);
-            this.newBtn.setVisible(mode === GameMode.Edit);
-            this.stopBtn.setVisible(mode === GameMode.Play);
-            //this.objectModeBtn.setVisible(mode === GameMode.Edit);
-            //this.terrainModeBtn.setVisible(mode === GameMode.Edit);
-            this.createMenu.hide();
-            this.charMenu.hide();
             this.components.forEach(comp => comp.notify("gameModeChanged", mode));
         }
 
@@ -133,10 +82,10 @@ namespace kojac {
         }
 
         private load() {
-            const chars = this.components
-                .filter(comp => comp.kind === "character")
-                .map(comp => comp as Character);
-            chars.forEach((char) => char.destroy());
+            const agents = this.components
+                .filter(comp => comp.kind === "agent")
+                .map(comp => comp as Agent);
+            agents.forEach(agent => agent.destroy());
             try {
                 if (settings.exists(SAVEGAME)) {
                     const s = settings.readString(SAVEGAME);
@@ -145,99 +94,26 @@ namespace kojac {
                         const savedGame: SavedGame = JSON.parse(s);
                         if (savedGame) {
                             this.components.forEach(comp => comp.notify("load", savedGame));
-                            if (savedGame.chars) {
-                                savedGame.chars.forEach(state => this.spawnCharacter(
-                                    state.x,
-                                    state.y,
-                                    chardb.characters[state.id],
-                                    BrainDefn.FromObj(state.bdefn)));
+                            if (savedGame.agents) {
+                                savedGame.agents.forEach(state => this.spawnAgent(BrainDefn.FromObj(state.bdefn)));
                                 }
                         }
                     } else {
                         this.camera.x = 0;
                         this.camera.y = 0;
-                        this.cursor.x = 0;
-                        this.cursor.y = 0;
                     }
                 }
             } catch { }
         }
 
-        public handleCursorCanvasClick(x: number, y: number) {
-            if (this.gameMode === GameMode.Edit) {
-                this.editModeHandleCanvasClick(x, y);
-            }
-        }
-
-        private editModeHandleCanvasClick(x: number, y: number) {
-            if (this.carryTarget) {
-                this.cursorDrop();
-            } else {
-                this.closeMenus();
-                this.createMenu.show(x, y, "right", (button) => this.handleCreateMenuSelection(x, y, button));
-                this.updateHover();
-            }
-        }
-
-        private handleCreateMenuSelection(x: number, y: number, selection: Button) {
-            this.closeMenus();
-            this.cursor.moveTo(x, y);
-            const charDefn = chardb.characters[selection.id];
-            if (charDefn) {
-                this.spawnCharacter(x, y, charDefn);
-            }
-        }
-
-        public spawnCharacter(x: number, y: number, defn: CharacterDefn, bdefn?: BrainDefn): Character {
+        public spawnAgent(type: string, bdefn?: BrainDefn): Agent {
             bdefn = bdefn || new BrainDefn();
-            const char = new Character(this, x, y, defn, bdefn);
+            const agent = Agent.Spawn(this, type, bdefn);
             this.save();
-            return char;
-        }
-
-        public handleCursorCharacterClick(char: Character, x: number, y: number) {
-            if (this.gameMode === GameMode.Edit) {
-                if (this.carryTarget) {
-                    this.cursorDrop();
-                } else {
-                    this.closeMenus();
-                    x = char.x;
-                    y = char.y;
-                    this.cursor.moveTo(x, y);
-                    this.charMenu.show(x + 16, y, "down", (button) => this.handleCharacterMenuSelection(x, y, button, char));
-                    this.updateHover();
-                }
-            }
-        }
-
-        private handleCharacterMenuSelection(x: number, y: number, selection: Button, char: Character) {
-            this.closeMenus();
-            this.cursor.moveTo(x, y);
-            switch (selection.id) {
-                case "edit": {
-                    this.app.pushStage(new KodeStage(this.app, char));
-                    break;
-                }
-                case "move": {
-                    this.cursorPickUp(char);
-                    break;
-                }
-                case "duplicate": {
-                    this.duplicate(char);
-                    break;
-                }
-                case "delete": {
-                    char.destroy();
-                    this.save();
-                    break;
-                }
-            }
+            return agent;
         }
 
         public handleCursorButtonClick(button: Button) {
-            if (!this.carryTarget) {
-                button.click();
-            }
         }
 
         public handleCursorCancel() {
