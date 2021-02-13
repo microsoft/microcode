@@ -2,7 +2,6 @@ namespace kojac {
     export class Stage {
         components: Component[];
         camera: Camera;
-        cursor: Cursor;
         prevMs: number;
 
         constructor(public app: App, public name: string) {
@@ -30,24 +29,20 @@ namespace kojac {
         }
 
         handleAPressed() {
-            this.cursor.handleAPressed();
         }
 
         handleBPressed() {
-            this.cursor.handleBPressed();
         }
 
         handleMenuPressed() {}
 
         handleCursorCanvasClick(x: number, y: number) {}
         handleCursorButtonClick(button: Button) {}
-        handleCursorCharacterClick(char: Character, x: number, y: number) {}
         handleCursorCancel() {}
 
         initScene() {
             this.components = [];
             this.camera = new Camera(this);
-            this.cursor = new Cursor(this);
             controller.A.onEvent(ControllerButtonEvent.Pressed, () => {
                 this.handleAPressed();
             });
@@ -86,11 +81,6 @@ namespace kojac {
                 case "cursor:buttonClick": {
                     const { button } = parm;
                     this.handleCursorButtonClick(button);
-                    break;
-                }
-                case "cursor:characterClick": {
-                    const { char, x, y } = parm;
-                    this.handleCursorCharacterClick(char, x, y);
                     break;
                 }
                 case "cursor:cancel": {

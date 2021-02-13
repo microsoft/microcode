@@ -77,10 +77,6 @@ namespace kojac {
             this.reg[RuleCondition.LOW] = icondb.rc_low;
             this.reg[RuleCondition.LOW_TO_HIGH] = icondb.rc_low_to_high;
             this.reg[RuleCondition.HIGH_TO_LOW] = icondb.rc_high_to_low;
-            this.reg[Feeling.Happy] = icondb.emo_happy;
-            this.reg[Feeling.Angry] = icondb.emo_angry;
-            this.reg[Feeling.Heart] = icondb.emo_heart;
-            this.reg[Feeling.Sad] = icondb.emo_sad;
         }
     }
 }

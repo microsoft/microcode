@@ -4,7 +4,6 @@ namespace kojac {
         camera_movement_y: number;
         x: number;
         y: number;
-        following: Character;
 
         public get pos(): Vec2 { return mkVec2(this.x, this.y); }
         public set pos(v: Vec2) { this.x = v.x; this.y = v.y; }
@@ -27,22 +26,10 @@ namespace kojac {
             scene.centerCameraAt(this.x, this.y);
         }
 
-        public follow(char: Character) {
-            this.following = char;
-        }
-
-        prepare() {
-            this.following = null;
-        }
-
         update(dt: number) {
             this.camera_movement_x = 0;
             this.camera_movement_y = 0;
-            if (this.following) {
-                this.keepInFrame(this.following.x, this.following.y);
-            } else {
-                this.keepInFrame(this.stage.cursor.x, this.stage.cursor.y);
-            }
+            // TODO: Keep in frame stuff
         }
 
         keepInFrame(x: number, y: number) {
@@ -77,7 +64,6 @@ namespace kojac {
                 savedGame.camera.x = this.x;
                 savedGame.camera.y = this.y;
             } else if (event === "load") {
-                this.following = null;
                 const savedGame = parm as SavedGame;
                 this.x = savedGame.camera.x;
                 this.y = savedGame.camera.y;

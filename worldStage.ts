@@ -1,11 +1,9 @@
 namespace kojac {
 
-    const SAVEGAME = "saveGame5";
+    const SAVEGAME = "sg0";
 
     export type SavedGame = {
-        chars: CharacterState[];
-        camera: { x: number, y: number },
-        cursor: { x: number, y: number }
+        agents: AgentState[];
     };
 
     function mkSavedGame(): SavedGame {
