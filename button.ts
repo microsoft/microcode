@@ -17,7 +17,6 @@ namespace kojac {
                 this.text.z = n;
             }
         }
-        get data() { return this.icon.data; }
 
         constructor(
             stage: Stage,
@@ -54,23 +53,17 @@ namespace kojac {
             if (this.text) { this.text.destroy(); }
             this.icon = new Kelpie(icons.get(this.iconId));
             this.icon.hud = this.hud;
-            this.icon.interactible = !!this.onClick;
             if (this.style) {
                 this.back = new Kelpie(icons.get(`button_${this.style}`));
                 this.back.hud = this.hud;
-                this.back.interactible = !!this.onClick;
             }
             this.icon.x = this.x;
             this.icon.y = this.y;
             this.icon.z = z_;
-            this.icon.data["kind"] = "button";
-            this.icon.data["component"] = this;
             if (this.back) {
                 this.back.x = this.x;
                 this.back.y = this.y;
                 this.back.z = this.z - 1;
-                this.back.data["kind"] = "button";
-                this.back.data["component"] = this;
             }
         }
 
@@ -87,10 +80,11 @@ namespace kojac {
             }
         }
 
-        public clickable() { return this.onClick != null; }
+        public visible() { return !this.icon.invisible; }
+        public clickable() { return this.visible() && this.onClick != null; }
 
         public click() {
-            if (this.icon.invisible) { return; }
+            if (!this.visible()) { return; }
             if (this.onClick) {
                 this.onClick(this);
             }
@@ -105,6 +99,7 @@ namespace kojac {
             if (hov && this.text) { return; }
             if (!hov && !this.text) { return; }
             if (!this.label) { return; }
+            if (!this.visible()) { return; }
             if (hov) {
                 this.text = textsprite.create(this.label, 1, 15);
                 this.text.setBorder(1, 15);
@@ -113,7 +108,7 @@ namespace kojac {
                 this.text.z = this.icon.z;
             } else {
                 this.text.destroy();
-                this.text = null;
+                this.text = undefined;
             }
         }
 

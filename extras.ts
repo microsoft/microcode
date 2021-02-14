@@ -70,24 +70,6 @@ namespace kojac {
             return HitboxBounds.Intersects(a, b);
         }
 
-        public static getAllOverlapping(src: kojac.Kelpie): kojac.Kelpie[] {
-            const srcHitbox = src.hitbox;
-            const srcHitboxBounds = HitboxBounds.FromKelpie(src);
-            const scene = game.currentScene();
-            let kelpies = scene.allSprites as kojac.Kelpie[];
-            kelpies = kelpies
-                .filter(value => value["_data"] && value["_data"]["kelpie"] !== undefined) // hack: filter to kojac.Kelpie type
-                .filter(value => value && value !== src);
-            kelpies = kelpies
-                .filter(value => !value.invisible)
-                .filter(value => {
-                    const valHitboxBounds = HitboxBounds.FromKelpie(value);
-                    return this.hitboxBoundsOverlap(valHitboxBounds, srcHitboxBounds);
-                })
-                .sort((a, b) => (a.x - b.x) + (a.y - b.y));
-            return kelpies;
-        }
-
         public static centerSpriteOnSprite(src: kojac.Kelpie, dst: kojac.Kelpie) {
             src.x = dst.x;
             src.y = dst.y;

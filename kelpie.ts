@@ -1,8 +1,7 @@
 namespace kojac {
     export enum KelpieFlags {
         Invisible = 1 >> 0,
-        HUD = 1 >> 1,
-        NonInteractible = 1 >> 2
+        HUD = 1 >> 1
     }
 
     export type KelpieHandler = (kelpie: Kelpie) => void;
@@ -15,7 +14,6 @@ namespace kojac {
         private _x: Fx8
         private _y: Fx8
         private _image: Image;
-        private _data: any;
         private _flags: number;
         private _hitbox: Hitbox;
         private _destroyHandlers: KelpieHandler[];
@@ -86,14 +84,6 @@ namespace kojac {
             return this.top + this.height;
         }
 
-        get data(): any {
-            if (!this._data) this._data = {};
-            return this._data;
-        }
-        set data(value: any) {
-            this._data = value;
-        }
-
         //% blockCombine block="image" callInDebugger
         get image(): Image {
             return this._image;
@@ -114,13 +104,8 @@ namespace kojac {
         get invisible() { return !!(this._flags & KelpieFlags.Invisible); }
         set invisible(b: boolean) { b ? this._flags |= KelpieFlags.Invisible : this._flags &= ~KelpieFlags.Invisible; }
 
-        //% blockCombine block="interactible" callInDebugger
-        get interactible() { return !(this._flags & KelpieFlags.NonInteractible); }
-        set interactible(b: boolean) { (!b) ? this._flags |= KelpieFlags.NonInteractible : this._flags &= ~KelpieFlags.NonInteractible; }
-
         constructor(img: Image) {
             super(scene.SPRITE_Z);
-            this.data["kelpie"] = 1;
             this._x = Fx8(screen.width - (img.width >> 1));
             this._y = Fx8(screen.height - (img.height >> 1));
             this.image = img; // initializes hitbox
@@ -137,7 +122,6 @@ namespace kojac {
             }
             this._image = undefined;
             this._hitbox = undefined;
-            this._data = undefined;
             this._destroyHandlers = undefined;
         }
 
