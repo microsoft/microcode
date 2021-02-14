@@ -53,6 +53,8 @@ namespace kojac {
             controller.menu.onEvent(ControllerButtonEvent.Pressed, () => {
                 this.handleMenuPressed();
             });
+            controller.up.onEvent(ControllerButtonEvent.Pressed, () => {
+            });
         }
 
         protected start() {
