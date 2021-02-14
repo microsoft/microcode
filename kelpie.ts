@@ -22,8 +22,6 @@ namespace kojac {
         private _moveHandlers: KelpieHandler[];
         private _moved: boolean;
         
-        onUpdate: (dt: number) => void;
-
         //% blockCombine block="x" callInDebugger
         get x(): number {
             return Fx.toFloat(this._x);
@@ -197,9 +195,6 @@ namespace kojac {
         }
 
         __update(camera: scene.Camera, dt: number) {
-            // Hm, dt is always 0.
-            if (this.onUpdate) { this.onUpdate(dt); }
-
             if (this._moved) {
                 this._moved = false;
                 this.fireMoved();

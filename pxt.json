@@ -21,9 +21,9 @@
         "program.ts",
         "app.ts",
         "vec2.ts",
-        "worldStage.ts",
-        "kodeStage.ts",
-        "kelpie.ts"
+        "kelpie.ts",
+        "editor.ts",
+        "console.ts"
     ],
     "testFiles": [],
     "targetVersions": {

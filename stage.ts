@@ -37,10 +37,6 @@ namespace kojac {
 
         handleMenuPressed() {}
 
-        handleCursorCanvasClick(x: number, y: number) {}
-        handleCursorButtonClick(button: Button) {}
-        handleCursorCancel() {}
-
         initScene() {
             this.components = [];
             this.camera = new Camera(this);
@@ -75,22 +71,6 @@ namespace kojac {
         }
 
         notify(event: string, parm?: any) {
-            switch (event) {
-                case "cursor:canvasClick": {
-                    const { x, y } = parm;
-                    this.handleCursorCanvasClick(x, y);
-                    break;
-                }
-                case "cursor:buttonClick": {
-                    const { button } = parm;
-                    this.handleCursorButtonClick(button);
-                    break;
-                }
-                case "cursor:cancel": {
-                    this.handleCursorCancel();
-                    break;
-                }
-            }
         }
     }
 
