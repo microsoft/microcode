@@ -29,29 +29,9 @@ namespace kojac {
             comp.stage = this;
         }
 
-        handleAPressed() {
-        }
-
-        handleBPressed() {
-        }
-
-        handleMenuPressed() {}
-
         initScene() {
             this.components = [];
             this.camera = new Camera(this);
-            controller.A.onEvent(ControllerButtonEvent.Pressed, () => {
-                this.handleAPressed();
-            });
-            controller.B.onEvent(ControllerButtonEvent.Pressed, () => {
-                this.handleBPressed();
-            });
-            controller.menu.onEvent(ControllerButtonEvent.Pressed, () => {
-                this.handleMenuPressed();
-            });
-            controller.up.onEvent(ControllerButtonEvent.Pressed, () => {
-            });
-
             this.z = -1000;
             game.currentScene().addSprite(this);
         }
@@ -80,7 +60,6 @@ namespace kojac {
         z: number;
         id: number;
         flags?: number;
-
         __draw(camera: scene.Camera): void {}
         __update(camera: scene.Camera, dt: number): void {}
         __serialize(offset: number): Buffer { return null; }
