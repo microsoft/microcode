@@ -1,7 +1,14 @@
 namespace kojac {
     enum HomeView {
-        Log, Plot
+        Console, Plot
     };
+
+    // Auto-save slot
+    const SAVESLOT_AUTO = "sa";
+    // Save slots (future)
+    const SAVESLOT_1 = "s1";
+    const SAVESLOT_2 = "s2";
+    const SAVESLOT_3 = "s3";
 
     const TOOLBAR_HEIGHT = 18;
     const LINE_HEIGHT = 9;
@@ -9,10 +16,11 @@ namespace kojac {
     export class Home extends Stage {
         currView: HomeView;
         logLines: string[];
+        bdefn: BrainDefn;
 
         constructor(app: App) {
             super(app, "home");
-            this.currView = HomeView.Log;
+            this.currView = HomeView.Console;
             this.logLines = [];
         }
 
@@ -20,7 +28,7 @@ namespace kojac {
             this.logLines.push(s);
             // trim to last 15 entries
             this.logLines = this.logLines.slice(Math.max(this.logLines.length - 15, 0));
-            this.setView(HomeView.Log);
+            this.setView(HomeView.Console);
         }
 
         public plot(value: number, color: number) {
@@ -28,13 +36,18 @@ namespace kojac {
             this.setView(HomeView.Plot);
         }
 
-        initScene() {
-            super.initScene();
+        init() {
+            super.init();
             scene.setBackgroundColor(15);
-            this.log("Welcome to micro:code!");
+            this.log("  Welcome to micro:code!");
             controller.left.onEvent(ControllerButtonEvent.Released, function() {
                 this.app.pushStage(new Editor(this.app));
             });
+        }
+
+        activate() {
+            super.activate();
+            this.log(" -= program is running =-");
         }
 
         private setView(view: HomeView) {
@@ -43,8 +56,8 @@ namespace kojac {
 
         __draw(camera: scene.Camera) {
             this.drawToolbar();
-            if (this.currView === HomeView.Log) {
-                this.drawLogView();
+            if (this.currView === HomeView.Console) {
+                this.drawConsoleView();
             } else if (this.currView === HomeView.Plot) {
                 this.drawPlotView();
             }
@@ -60,13 +73,12 @@ namespace kojac {
             screen.drawTransparentImage(icn_dpad_left, 32, dpadTop);
         }
 
-        private drawLogView() {
+        private drawConsoleView() {
             let y = scene.screenHeight() - TOOLBAR_HEIGHT - LINE_HEIGHT;
             for (let i = this.logLines.length - 1; i >= 0; --i) {
                 screen.print(this.logLines[i], 2, y, 1, image.font8);
                 y -= LINE_HEIGHT;
             }
-
         }
 
         private drawPlotView() {

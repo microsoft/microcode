@@ -31,7 +31,7 @@ namespace kojac {
             private onClick?: (button: Button) => void
         ) {
             super(stage, "button");
-            this.buildSprite(900);
+            this.buildSprite(0);
         }
 
         destroy() {
