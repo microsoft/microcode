@@ -13,6 +13,7 @@ namespace kojac {
         }
         
         private handleEditClicked() {
+            
             this.app.pushStage(new Editor(this.app));
         }
     }
