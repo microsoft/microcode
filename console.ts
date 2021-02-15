@@ -49,14 +49,22 @@ namespace kojac {
         }
 
         __draw(camera: scene.Camera) {
-            const top = scene.screenHeight() - TOOLBAR_HEIGHT;
-            screen.fillRect(0, top, scene.screenWidth(), TOOLBAR_HEIGHT, 11);
-
+            this.drawToolbar();
             if (this.currView === ConsoleView.Log) {
                 this.drawLogView();
             } else if (this.currView === ConsoleView.Plot) {
                 this.drawPlotView();
             }
+        }
+
+        private drawToolbar() {
+            // TODO this could all be prerendered/precalculated
+            const toolbarTop = scene.screenHeight() - TOOLBAR_HEIGHT;
+            screen.fillRect(0, toolbarTop, scene.screenWidth(), TOOLBAR_HEIGHT, 11);
+            const icn_dpad_left = icons.get("dpad_left");
+            const dpadTop = toolbarTop + (TOOLBAR_HEIGHT >> 1) - (icn_dpad_left.height >> 1);
+            screen.print("Press   to edit", 2, dpadTop + (LINE_HEIGHT >> 1));
+            screen.drawTransparentImage(icn_dpad_left, 32, dpadTop);
         }
 
         private drawLogView() {

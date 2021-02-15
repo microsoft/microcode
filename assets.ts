@@ -25,6 +25,7 @@ namespace kojac {
             this.reg["new_file"] = icondb.btn_new_file;
             this.reg["log"] = icondb.btn_log;
             this.reg["plot"] = icondb.btn_plot;
+            this.reg["dpad_left"] = icondb.btn_dpad_left;
             this.reg["when"] = icondb.ui_when;
             this.reg["do"] = icondb.ui_do;
             this.reg["insertion-point"] = icondb.btn_insertion_point;
@@ -345,19 +346,19 @@ namespace icondb {
     `;
     export const btn_dpad_left = img`
         . . . . . . . . . . . . . . . .
-        . . . . . . 6 c 6 . . . . . . .
-        . . . . 6 6 6 c 6 6 6 . . . . .
-        . . . 6 6 6 6 c 6 6 6 6 . . . .
-        . . 6 6 6 6 6 c 6 6 6 6 6 . . .
-        . . 6 6 6 6 b b b 6 6 6 6 . . .
-        . 5 5 5 5 b f f f b 6 6 6 6 . .
-        . 5 5 5 5 b f f f b c c c c . .
-        . 5 5 5 5 b f f f b 6 6 6 6 . .
-        . . 6 6 6 6 b b b 6 6 6 6 . . .
-        . . 6 6 6 6 6 c 6 6 6 6 6 . . .
-        . . . 6 6 6 6 c 6 6 6 6 . . . .
-        . . . . 6 6 6 c 6 6 6 . . . . .
-        . . . . . . 6 c 6 . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . f f f f . . . . . .
+        . . . . . . f 6 6 f . . . . . .
+        . . . . . . f 6 6 f . . . . . .
+        . . . f f f f 6 6 f f f f . . .
+        . . . f 5 5 5 6 6 6 6 6 f . . .
+        . . . f 5 5 5 6 6 6 6 6 f . . .
+        . . . f f f f 6 6 f f f f . . .
+        . . . . . . f 6 6 f . . . . . .
+        . . . . . . f 6 6 f . . . . . .
+        . . . . . . f f f f . . . . . .
+        . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `;
