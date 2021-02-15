@@ -13,6 +13,7 @@ namespace kojac {
         }
 
         public static init() {
+            this.reg["cursor"] = icondb.cursor;
             this.reg["button_white"] = icondb.btn_bknd_white;
             this.reg["button_beige"] = icondb.btn_bknd_beige;
             this.reg["button_clear"] = icondb.btn_bknd_clear;
@@ -115,6 +116,29 @@ namespace icondb {
         . 8 8 8 8 8 8 8 .
         . 8 8 8 8 8 8 8 .
         . c c c c c c c .
+    `;
+    ///
+    /// CURSOR
+    ///
+    export const cursor = img`
+        .7777777777777777.
+        7................7
+        7................7
+        7................7
+        7................7
+        7................7
+        7................7
+        7................7
+        7................7
+        7................7
+        7................7
+        7................7
+        7................7
+        7................7
+        7................7
+        7................7
+        7................7
+        .7777777777777777.
     `;
     ///
     /// BUTTON ICONS
