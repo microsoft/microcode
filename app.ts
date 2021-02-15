@@ -7,8 +7,8 @@ namespace kojac {
             setTimeout(() => {
                 icons.init();
                 this.stageManager = new StageManager();
-                const console = new Console(this);
-                this.pushStage(console);
+                const home = new Home(this);
+                this.pushStage(home);
             }, 1);
         }
 

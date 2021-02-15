@@ -23,8 +23,8 @@
         "vec2.ts",
         "kelpie.ts",
         "editor.ts",
-        "console.ts",
-        "cursor.ts"
+        "cursor.ts",
+        "home.ts"
     ],
     "testFiles": [],
     "targetVersions": {
