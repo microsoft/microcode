@@ -32,16 +32,9 @@ namespace kojac {
             super.initScene();
             scene.setBackgroundColor(15);
             this.log("Welcome to micro:code!");
-        }
-
-        private handleEditClicked() {
-            this.app.pushStage(new Editor(this.app));
-        }
-
-        private handleConsoleClicked() {
-        }
-
-        private handlePlotClicked() {
+            controller.left.onEvent(ControllerButtonEvent.Released, function() {
+                this.app.pushStage(new Editor(this.app));
+            });
         }
 
         private setView(view: HomeView) {
@@ -68,10 +61,9 @@ namespace kojac {
         }
 
         private drawLogView() {
-            const x = 2;
             let y = scene.screenHeight() - TOOLBAR_HEIGHT - LINE_HEIGHT;
             for (let i = this.logLines.length - 1; i >= 0; --i) {
-                screen.print(this.logLines[i], x, y, 1, image.font8);
+                screen.print(this.logLines[i], 2, y, 1, image.font8);
                 y -= LINE_HEIGHT;
             }
 
