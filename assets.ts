@@ -23,6 +23,8 @@ namespace kojac {
             this.reg["ok"] = icondb.btn_ok;
             this.reg["plus"] = icondb.btn_plus;
             this.reg["new_file"] = icondb.btn_new_file;
+            this.reg["log"] = icondb.btn_log;
+            this.reg["plot"] = icondb.btn_plot;
             this.reg["when"] = icondb.ui_when;
             this.reg["do"] = icondb.ui_do;
             this.reg["insertion-point"] = icondb.btn_insertion_point;
@@ -303,6 +305,42 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const btn_log = img`
+        . . . . . . . . . . . . . . . .
+        . . f f f f f f f f f f f f . .
+        . f f f f f f f f f f f f f f .
+        . f f f 1 1 1 1 1 1 1 1 f f f .
+        . f f f f f f f f f f f f f f .
+        . f f f 1 1 1 1 1 f 1 1 f f f .
+        . f f f f f f f f f f f f f f .
+        . f f f 1 1 f 1 1 1 1 1 f f f .
+        . f f f f f f f f f f f f f f .
+        . f f f 1 1 1 1 1 f 1 1 f f f .
+        . f f f f f f f f f f f f f f .
+        . f f f 1 1 1 1 1 1 1 1 f f f .
+        . f f f f f f f f f f f f f f .
+        . f f f f f f f f f f f f f f .
+        . . f f f f f f f f f f f f . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const btn_plot = img`
+        . . . . . . . . . . . . . . . .
+        . . f f f f f f f f f f f f . .
+        . f 6 6 6 6 6 6 6 6 6 6 6 6 f .
+        . f 6 6 6 6 6 5 5 6 6 6 6 6 f .
+        . f 6 6 6 6 5 6 6 5 6 6 6 6 f .
+        . f 6 6 6 6 5 6 6 5 6 6 6 6 f .
+        . f 6 6 6 5 6 6 6 6 5 6 6 6 f .
+        . f 6 6 6 5 6 6 6 6 5 6 6 6 f .
+        . f 6 6 6 5 6 6 6 6 5 6 6 6 f .
+        . f 6 6 5 6 6 6 6 6 6 5 6 6 f .
+        . f 6 6 5 6 6 6 6 6 6 5 6 6 f .
+        . f 5 5 6 6 6 6 6 6 6 6 5 5 f .
+        . f 6 6 6 6 6 6 6 6 6 6 6 6 f .
+        . f 6 6 6 6 6 6 6 6 6 6 6 6 f .
+        . . f f f f f f f f f f f f . .
         . . . . . . . . . . . . . . . .
     `;
     ///

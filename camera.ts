@@ -7,6 +7,7 @@ namespace kojac {
         widthOver2: number;
         heightOver2: number;
 
+        //% blockCombine block="pos" callInDebugger
         public get pos(): Vec2 { return mkVec2(this.x, this.y); }
         public set pos(v: Vec2) { this.x = v.x; this.y = v.y; }
         
