@@ -1,5 +1,5 @@
 namespace kojac {
-    export class Stage {
+    export class Stage implements SpriteLike {
         components: Component[];
         camera: Camera;
         prevMs: number;
@@ -51,6 +51,9 @@ namespace kojac {
             });
             controller.up.onEvent(ControllerButtonEvent.Pressed, () => {
             });
+
+            this.z = -1000;
+            game.currentScene().addSprite(this);
         }
 
         protected start() {
@@ -72,6 +75,15 @@ namespace kojac {
 
         notify(event: string, parm?: any) {
         }
+
+        // SpriteLike
+        z: number;
+        id: number;
+        flags?: number;
+
+        __draw(camera: scene.Camera): void {}
+        __update(camera: scene.Camera, dt: number): void {}
+        __serialize(offset: number): Buffer { return null; }
     }
 
     export class StageManager {

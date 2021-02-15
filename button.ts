@@ -4,8 +4,6 @@ namespace kojac {
         back: Kelpie;
         text: TextSprite;
 
-        //% blockCombine block="id" callInDebugger
-        get id() { return this.iconId; }
         //% blockCombine block="width" callInDebugger
         get width() { return this.back ? this.back.width : this.icon.width; }
         //% blockCombine block="height" callInDebugger
