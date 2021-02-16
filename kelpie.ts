@@ -10,9 +10,10 @@ namespace kojac {
      * A kelpie is a shape-shifting spirit inhabiting lakes in Scottish folklore.
      * It's basically a sprite.
      */
-    export class Kelpie extends sprites.BaseSprite {
+    export class Kelpie extends Component {
         private _x: Fx8
         private _y: Fx8
+        private _z: number;
         private _image: Image;
         private _flags: number;
         private _hitbox: Hitbox;
@@ -42,6 +43,12 @@ namespace kojac {
                 this._y = Fx8(v);
                 this._moved = true;
             }
+        }
+
+        //% blockCombine block="y" callInDebugger
+        get z(): number { return this._z; }
+        set z(v: number) {
+            this._z = v;
         }
 
         //% blockCombine block="x" callInDebugger
@@ -104,14 +111,13 @@ namespace kojac {
         get invisible() { return !!(this._flags & KelpieFlags.Invisible); }
         set invisible(b: boolean) { b ? this._flags |= KelpieFlags.Invisible : this._flags &= ~KelpieFlags.Invisible; }
 
-        constructor(img: Image) {
-            super(scene.SPRITE_Z);
+        constructor(stage: Stage, img: Image) {
+            super(stage, "kelpie");
             this._x = Fx8(screen.width - (img.width >> 1));
             this._y = Fx8(screen.height - (img.height >> 1));
             this.image = img; // initializes hitbox
             this.onDestroy((k: Kelpie) => {
-                const scene = game.currentScene();
-                scene.allSprites.removeElement(k);
+                this.stage.remove(this);
             });
         }
 

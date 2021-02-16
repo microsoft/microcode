@@ -1,4 +1,10 @@
 namespace kojac {
+
+    export enum StageFlags {
+        NeedsSorting = 1 << 0,
+    }
+
+
     export class Stage implements SpriteLike {
         components: Component[];
         camera: Camera;
@@ -7,11 +13,8 @@ namespace kojac {
         constructor(public app: App, public name: string) {
         }
 
-        public get<T>(field: string): T { return undefined; }
-        public set<T>(field: string, value: T) { }
-
         public remove(comp: Component) {
-            this.components = this.components.filter(c => c !== comp);
+            this.components = this.components.filter(c => c.id !== comp.id);
             comp.stage = null;
         }
 
@@ -83,9 +86,6 @@ namespace kojac {
          */
         public update(dt: number) {
             this.components.forEach(comp => comp.update(dt));
-        }
-
-        notify(event: string, parm?: any) {
         }
 
         // SpriteLike impl, so the stage can get a draw call from the scene.
