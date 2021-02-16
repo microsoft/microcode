@@ -1,13 +1,14 @@
 namespace kojac {
     enum HomeView {
-        Console, Plot
+        Console,    // Show the console log
+        Plot        // Show the plot graph
     };
 
     const TOOLBAR_HEIGHT = 18;
     const LINE_HEIGHT = 9;
 
     type LogLine = {
-        s: string;
+        text: string;
         color: number;
     };
 
@@ -25,8 +26,8 @@ namespace kojac {
             this.showWelcomeMessage = true;
         }
 
-        public log(s: string, color = 1) {
-            this.logLines.push({ s, color });
+        public log(text: string, color = 1) {
+            this.logLines.push({ text, color });
             // trim to last 15 entries
             this.logLines = this.logLines.slice(Math.max(this.logLines.length - 15, 0));
             this.setView(HomeView.Console);
@@ -50,7 +51,11 @@ namespace kojac {
             this.logLines = [];
             if (this.showWelcomeMessage) {
                 this.showWelcomeMessage = false;
-                this.log("Welcome to micro:code!", 7);
+                this.log(" __ o ___ _ o _ _  _| _ ", 7);
+                this.log(" ||||(_| (_)o(_(_)(_|(/_", 7);
+                this.log("");
+                this.log(" Welcome to micro:code!", 7);
+                this.log("");
                 this.log("");
             }
             this.bdefn = this.app.load(SAVESLOT_AUTO);
@@ -102,13 +107,13 @@ namespace kojac {
             let y = scene.screenHeight() - TOOLBAR_HEIGHT - LINE_HEIGHT;
             for (let i = this.logLines.length - 1; i >= 0; --i) {
                 const line = this.logLines[i];
-                screen.print(line.s, 2, y, line.color, image.font8);
+                screen.print(line.text, 2, y, line.color, image.font8);
                 y -= LINE_HEIGHT;
             }
         }
 
         private drawPlotView() {
-            
+            // TODO
         }
     }
 }
