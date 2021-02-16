@@ -402,58 +402,34 @@ namespace kojac {
     export const tid = {
         sensor: <any>{
             always: "S1",
-            see: "S2",
-            bump: "S3",
-            dpad: "S4",
-            button_a: "S5",
-            button_b: "S6",
-            timer: "S7",
+            button_a: "S2",
+            button_b: "S3",
+            timer: "S4",
         },
         filter: <any>{
-            kodu: "F1",
-            tree: "F2",
-            apple: "F3",
-            nearby: "F4",
-            faraway: "F5",
-            me: "F6",
-            it: "F7",
-            timespan_short: "F8",
-            timespan_long: "F9",
-            express_none: "F10",
-            express_happy: "F11",
-            express_angry: "F12",
-            express_heart: "F13",
-            express_sad: "F14",
+            timespan_short: "F1",
+            timespan_long: "F2",
+            express_none: "F3",
+            express_happy: "F4",
+            express_angry: "F5",
+            express_heart: "F6",
+            express_sad: "F7",
         },
         actuator: <any>{
-            move: "A1",
-            switch_page: "A2",
-            express: "A3",
-            boom: "A4",
-            vanish: "A5",
-            camera_follow: "A6",
+            switch_page: "A1",
+            express: "A2",
         },
         modifier: <any>{
-            me: "M1",
-            it: "M2",
-            kodu: "M3",
-            tree: "M4",
-            apple: "M5",
-            quickly: "M6",
-            slowly: "M7",
-            toward: "M8",
-            away: "M9",
-            avoid: "M10",
-            page_1: "M11",
-            page_2: "M12",
-            page_3: "M13",
-            page_4: "M14",
-            page_5: "M15",
-            express_none: "M16",
-            express_happy: "M17",
-            express_angry: "M18",
-            express_heart: "M19",
-            express_sad: "M20",
+            page_1: "M1",
+            page_2: "M2",
+            page_3: "M3",
+            page_4: "M4",
+            page_5: "M5",
+            express_none: "M6",
+            express_happy: "M7",
+            express_angry: "M8",
+            express_heart: "M9",
+            express_sad: "M10",
         }
     }
 
@@ -465,50 +441,6 @@ namespace kojac {
                 name: "Always",
                 phase: "pre",
                 hidden: true
-            },
-            [tid.sensor.see]: {
-                type: TileType.SENSOR,
-                tid: tid.sensor.see,
-                name: "See",
-                phase: "pre",
-                weight: 1,
-                constraints: {
-                    provides: ["target"],
-                    allow: {
-                        categories: ["subject", "direct-subject", "distance", "expression"]
-                    },
-                    disallow: {
-                        tiles: [tid.filter.me]
-                    }
-                }
-            },
-            [tid.sensor.bump]: {
-                type: TileType.SENSOR,
-                tid: tid.sensor.bump,
-                name: "Bump",
-                phase: "pre",
-                weight: 2,
-                constraints: {
-                    provides: ["target"],
-                    allow: {
-                        categories: ["subject", "direct-subject", "expression"]
-                    },
-                    disallow: {
-                        tiles: [tid.filter.me]
-                    }
-                }
-            },
-            [tid.sensor.dpad]: {
-                type: TileType.SENSOR,
-                tid: tid.sensor.dpad,
-                name: "DPad",
-                phase: "pre",
-                constraints: {
-                    provides: ["input", "direction"],
-                    allow: {
-                        categories: ["dpad-direction", "button-event"]
-                    }
-                }
             },
             [tid.sensor.button_a]: {
                 type: TileType.SENSOR,
@@ -547,76 +479,6 @@ namespace kojac {
             }
         },
         filters: {
-            [tid.filter.kodu]: {
-                type: TileType.FILTER,
-                tid: tid.filter.kodu,
-                name: "Kodu",
-                category: "subject",
-                priority: 10,
-                constraints: {
-                    provides: ["target"],
-                    disallow: {
-                        categories: ["subject", "direct-subject"]
-                    }
-                }
-            },
-            [tid.filter.tree]: {
-                type: TileType.FILTER,
-                tid: tid.filter.tree,
-                name: "Tree",
-                category: "subject",
-                priority: 10,
-                constraints: {
-                    provides: ["target"],
-                    disallow: {
-                        categories: ["subject", "direct-subject"]
-                    }
-                }            },
-            [tid.filter.apple]: {
-                type: TileType.FILTER,
-                tid: tid.filter.apple,
-                name: "Apple",
-                category: "subject",
-                priority: 10,
-                constraints: {
-                    provides: ["target"],
-                    disallow: {
-                        categories: ["subject", "direct-subject"]
-                    }
-                }
-            },
-            [tid.filter.nearby]: {
-                type: TileType.FILTER,
-                tid: tid.filter.nearby,
-                name: "nearby",
-                category: "distance",
-                priority: 10,
-                constraints: {
-                    provides: ["target"],
-                    disallow: {
-                        tiles: [tid.filter.faraway]
-                    },
-                    handling: {
-                        "max-count": 3
-                    }
-                }
-            },
-            [tid.filter.faraway]: {
-                type: TileType.FILTER,
-                tid: tid.filter.faraway,
-                name: "far away",
-                category: "distance",
-                priority: 10,
-                constraints: {
-                    provides: ["target"],
-                    disallow: {
-                        tiles: [tid.filter.nearby]
-                    },
-                    handling: {
-                        "max-count": 3
-                    }
-                }
-            },
             [tid.filter.timespan_short]: {
                 type: TileType.FILTER,
                 tid: tid.filter.timespan_short,
@@ -697,17 +559,6 @@ namespace kojac {
             },
         },
         actuators: {
-            [tid.actuator.move]: {
-                type: TileType.ACTUATOR,
-                tid: tid.actuator.move,
-                name: "Move",
-                category: "movement",
-                constraints: {
-                    allow: {
-                        categories: ["speed", "direction", "direct-object"]
-                    }
-                }
-            },
             [tid.actuator.switch_page]: {
                 type: TileType.ACTUATOR,
                 tid: tid.actuator.switch_page,
@@ -729,175 +580,8 @@ namespace kojac {
                     }
                 }
             },
-            [tid.actuator.boom]: {
-                type: TileType.ACTUATOR,
-                tid: tid.actuator.boom,
-                name: "Boom",
-                hidden: true,   // Not implemented yet
-                constraints: {
-                    allow: {
-                        categories: ["direct-object"]
-                    }
-                }
-            },
-            [tid.actuator.vanish]: {
-                type: TileType.ACTUATOR,
-                tid: tid.actuator.vanish,
-                name: "Vanish",
-                constraints: {
-                    allow: {
-                        categories: ["direct-object"]
-                    }
-                }
-            },
-            [tid.actuator.camera_follow]: {
-                type: TileType.ACTUATOR,
-                tid: tid.actuator.camera_follow,
-                name: "Keep in view",
-                constraints: {
-                    allow: {
-                        categories: ["direct-object"]
-                    }
-                }
-            }
         },
         modifiers: {
-            [tid.modifier.me]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.me,
-                name: "me",
-                category: "direct-object",
-                priority: 10,
-                constraints: {
-                    produces: ["direct-target"],
-                    requires: ["target"],
-                    disallow: {
-                        categories: ["object", "direct-object"]
-                    }
-                }
-            },
-            [tid.modifier.it]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.it,
-                name: "it",
-                category: "direct-object",
-                priority: 10,
-                constraints: {
-                    produces: ["direct-target"],
-                    requires: ["target"],
-                    disallow: {
-                        categories: ["object", "direct-object"]
-                    }
-                }
-            },
-            [tid.modifier.kodu]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.kodu,
-                name: "Kodu",
-                category: "object",
-                priority: 10,
-                constraints: {
-                    disallow: {
-                        categories: ["object", "direct-object"]
-                    }
-                }
-            },
-            [tid.modifier.tree]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.tree,
-                name: "Tree",
-                category: "object",
-                priority: 10,
-                constraints: {
-                    disallow: {
-                        categories: ["object", "direct-object"]
-                    }
-                }
-            },
-            [tid.modifier.apple]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.apple,
-                name: "Apple",
-                category: "object",
-                priority: 10,
-                constraints: {
-                    disallow: {
-                        categories: ["object", "direct-object"]
-                    }
-                }
-            },
-            [tid.modifier.quickly]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.quickly,
-                name: "quickly",
-                category: "speed",
-                priority: 10,
-                constraints: {
-                    disallow: {
-                        tiles: [tid.modifier.slowly]
-                    },
-                    handling: {
-                        "max-count": 3
-                    }
-                }
-            },
-            [tid.modifier.slowly]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.slowly,
-                name: "slowly",
-                category: "speed",
-                priority: 10,
-                constraints: {
-                    disallow: {
-                        tiles: [tid.modifier.quickly]
-                    },
-                    handling: {
-                        "max-count": 3
-                    }
-                }
-            },
-            [tid.modifier.toward]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.toward,
-                name: "toward",
-                category: "direction",
-                priority: 10,
-                constraints: {
-                    requires: ["target"],
-                    disallow: {
-                        tiles: [tid.modifier.me],
-                        categories: ["direction"]
-                    }
-                }
-            },
-            [tid.modifier.away]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.away,
-                name: "away",
-                category: "direction",
-                priority: 10,
-                constraints: {
-                    requires: ["target"],
-                    disallow: {
-                        tiles: [tid.modifier.me],
-                        categories: ["direction"]
-                    }
-                }
-            },
-            [tid.modifier.avoid]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.avoid,
-                name: "avoid",
-                category: "direction",
-                priority: 20,   // greater priority, appear after other modifiers
-                constraints: {
-                    requires: ["target"],
-                    disallow: {
-                        tiles: [tid.modifier.me],
-                        categories: ["direction"]
-                    }
-                }
-            },
             [tid.modifier.page_1]: {
                 type: TileType.MODIFIER,
                 tid: tid.modifier.page_1,
