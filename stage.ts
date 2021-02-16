@@ -3,7 +3,6 @@ namespace kojac {
         components: Component[];
         camera: Camera;
         prevMs: number;
-        active: boolean;
 
         constructor(public app: App, public name: string) {
         }
@@ -39,10 +38,8 @@ namespace kojac {
             this.prevMs = control.millis();
             game.onUpdate(() => {
                 const t = control.millis();
-                if (this.active) {
-                    const dt = t - this.prevMs;
-                    this.update(dt);
-                }
+                const dt = t - this.prevMs;
+                this.update(dt);
                 this.prevMs = t;
             });
 
@@ -67,7 +64,7 @@ namespace kojac {
          * Overload must call base.
          */
         activate() {
-            this.active = true;
+            this.prevMs = control.millis();
         }
 
         /**
@@ -77,7 +74,6 @@ namespace kojac {
          * Overload must call base.
          */
         deactivate() {
-            this.active = false;
         }
 
         /**

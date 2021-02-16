@@ -13,7 +13,6 @@ namespace kojac {
     };
 
     export class Home extends Stage {
-        showWelcomeMessage: boolean;
         currView: HomeView;
         logLines: LogLine[];
         pdefn: ProgramDefn;
@@ -23,7 +22,6 @@ namespace kojac {
             super(app, "home");
             this.currView = HomeView.Console;
             this.logLines = [];
-            this.showWelcomeMessage = true;
         }
 
         /**
@@ -56,15 +54,12 @@ namespace kojac {
             super.activate();
             scene.setBackgroundColor(15);
             this.logLines = [];
-            if (this.showWelcomeMessage) {
-                this.showWelcomeMessage = false;
-                this.log(" __ o ___ _ o _ _  _| _ ", 7);
-                this.log(" ||||(_| (_)o(_(_)(_|(/_", 7);
-                this.log("");
-                this.log(" Welcome to micro:code!", 7);
-                this.log("");
-                this.log("");
-            }
+            this.log("  __o _ _ _ o _ _  _| _ ", 7);
+            this.log(" ||||(_| (_)o(_(_)(_|(/_", 7);
+            this.log("");
+            this.log(" Welcome to micro:code!", 7);
+            this.log("");
+            this.log("");
             this.pdefn = this.app.load(SAVESLOT_AUTO);
             if (!this.pdefn) {
                 this.pdefn = new ProgramDefn();
