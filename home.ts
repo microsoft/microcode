@@ -16,7 +16,7 @@ namespace kojac {
         showWelcomeMessage: boolean;
         currView: HomeView;
         logLines: LogLine[];
-        bdefn: BrainDefn;
+        pdefn: ProgramDefn;
         pgm: Program;
 
         constructor(app: App) {
@@ -26,6 +26,9 @@ namespace kojac {
             this.showWelcomeMessage = true;
         }
 
+        /**
+         * Write a line of text to the console log.
+         */
         public log(text: string, color = 1) {
             this.logLines.push({ text, color });
             // trim to last 15 entries
@@ -33,8 +36,12 @@ namespace kojac {
             this.setView(HomeView.Console);
         }
 
-        public plot(value: number, color: number) {
+        /**
+         * Plot a point on the graph.
+         */
+        public plot(value: number, color = 5) {
             // TODO
+
             this.setView(HomeView.Plot);
         }
 
@@ -58,21 +65,20 @@ namespace kojac {
                 this.log("");
                 this.log("");
             }
-            this.bdefn = this.app.load(SAVESLOT_AUTO);
-            if (!this.bdefn) {
-                this.bdefn = new BrainDefn();
-                this.app.save(SAVESLOT_AUTO, this.bdefn);
+            this.pdefn = this.app.load(SAVESLOT_AUTO);
+            if (!this.pdefn) {
+                this.pdefn = new ProgramDefn();
+                this.app.save(SAVESLOT_AUTO, this.pdefn);
             }
             if (this.pgm) { this.pgm.destroy(); }
-            this.pgm = new Program(this.bdefn);
+            this.pgm = new Program(this.pdefn);
             this.log("program started");
         }
 
         deactivate() {
-            if (this.pgm) {
-                this.pgm.destroy();
-                this.pgm = null;
-            }
+            if (this.pgm) { this.pgm.destroy(); }
+            this.pgm = undefined;
+            this.pdefn = undefined;
         }
 
         update(dt: number) {

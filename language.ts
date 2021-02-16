@@ -188,15 +188,15 @@ namespace kojac {
         }
     }
 
-    export class BrainDefn {
+    export class ProgramDefn {
         pages: PageDefn[];
 
         constructor() {
             this.pages = [0, 1, 2, 3, 4].map(n => new PageDefn());
         }
 
-        public clone(): BrainDefn {
-            const brain = new BrainDefn();
+        public clone(): ProgramDefn {
+            const brain = new ProgramDefn();
             brain.pages = this.pages.map(page => page.clone());
             return brain;
         }
@@ -211,11 +211,11 @@ namespace kojac {
             };
         }
 
-        public static FromObj(obj: any): BrainDefn {
+        public static FromObj(obj: any): ProgramDefn {
             if (typeof obj === 'string') {
                 obj = JSON.parse(obj);
             }
-            const defn = new BrainDefn();
+            const defn = new ProgramDefn();
             if (obj && obj["P"] && Array.isArray(obj["P"])) {
                 const pages: any[] = obj["P"];
                 defn.pages = pages.map((elem: any) => PageDefn.FromObj(elem));
