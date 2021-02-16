@@ -7,7 +7,7 @@ namespace kojac {
     }
 
     export class Editor extends Stage {
-        private pdefn: ProgramDefn;
+        private progdef: ProgramDefn;
 
         constructor(app: App) {
             super(app, "editor");
@@ -21,14 +21,14 @@ namespace kojac {
         }
 
         shutdown() {
-            this.pdefn = undefined;
+            this.progdef = undefined;
             super.shutdown();
         }
 
         activate() {
             super.activate();
             scene.setBackgroundColor(11);
-            this.pdefn = this.app.load(SAVESLOT_AUTO);
+            this.progdef = this.app.load(SAVESLOT_AUTO);
         }
     }
 }

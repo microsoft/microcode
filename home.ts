@@ -23,8 +23,8 @@ namespace kojac {
     export class Home extends Stage {
         currView: HomeView;
         logLines: LogLine[];
-        pdefn: ProgramDefn;
-        pgm: Program;
+        progdef: ProgramDefn;
+        prog: Program;
 
         constructor(app: App) {
             super(app, "home");
@@ -68,25 +68,25 @@ namespace kojac {
             this.log(" Welcome to micro:code!", 7, LineJustification.Center);
             this.log("");
             this.log("");
-            this.pdefn = this.app.load(SAVESLOT_AUTO);
-            if (!this.pdefn) {
-                this.pdefn = new ProgramDefn();
-                this.app.save(SAVESLOT_AUTO, this.pdefn);
+            this.progdef = this.app.load(SAVESLOT_AUTO);
+            if (!this.progdef) {
+                this.progdef = new ProgramDefn();
+                this.app.save(SAVESLOT_AUTO, this.progdef);
             }
-            if (this.pgm) { this.pgm.destroy(); }
-            this.pgm = new Program(this.pdefn);
+            if (this.prog) { this.prog.destroy(); }
+            this.prog = new Program(this.progdef);
             this.log("program started");
         }
 
         deactivate() {
-            if (this.pgm) { this.pgm.destroy(); }
-            this.pgm = undefined;
-            this.pdefn = undefined;
+            if (this.prog) { this.prog.destroy(); }
+            this.prog = undefined;
+            this.progdef = undefined;
         }
 
         update(dt: number) {
             super.update(dt);
-            this.pgm.execute();
+            this.prog.execute();
         }
 
         private setView(view: HomeView) {

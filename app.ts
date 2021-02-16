@@ -7,7 +7,7 @@ namespace kojac {
     export const SAVESLOT_3 = "s3";
 
     type SavedState = {
-        pdefn: any;
+        progdef: any;
     };
 
     export class App {
@@ -23,9 +23,9 @@ namespace kojac {
             }, 1);
         }
 
-        public save(slot: string, pdefn: ProgramDefn) {
+        public save(slot: string, progdef: ProgramDefn) {
             const saved: SavedState = {
-                pdefn: pdefn.toObj()
+                progdef: progdef.toObj()
             };
             const s = JSON.stringify(saved);
             settings.writeString(slot, s);
@@ -36,7 +36,7 @@ namespace kojac {
             if (s) {
                 const saved: SavedState = JSON.parse(s);
                 if (saved) {
-                    return ProgramDefn.FromObj(saved.pdefn);
+                    return ProgramDefn.FromObj(saved.progdef);
                 }
             }
             return undefined;
