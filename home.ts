@@ -6,10 +6,18 @@ namespace kojac {
 
     const TOOLBAR_HEIGHT = 18;
     const LINE_HEIGHT = 9;
+    const CONSOLE_MARGIN = 2;
+
+    export enum LineJustification {
+        Left,
+        Center,
+        Right
+    }
 
     type LogLine = {
         text: string;
         color: number;
+        justification: LineJustification;
     };
 
     export class Home extends Stage {
@@ -27,8 +35,8 @@ namespace kojac {
         /**
          * Write a line of text to the console log.
          */
-        public log(text: string, color = 1) {
-            this.logLines.push({ text, color });
+        public log(text: string, color = 1, justification = LineJustification.Left) {
+            this.logLines.push({ text, color, justification });
             // trim to last 15 entries
             this.logLines = this.logLines.slice(Math.max(this.logLines.length - 15, 0));
             this.setView(HomeView.Console);
@@ -54,10 +62,10 @@ namespace kojac {
             super.activate();
             scene.setBackgroundColor(15);
             this.logLines = [];
-            this.log("  __o _ _ _ o _ _  _| _ ", 7);
-            this.log(" ||||(_| (_)o(_(_)(_|(/_", 7);
+            this.log("  _ . _ _ _ . _ _  _| _", 7, LineJustification.Center); 
+            this.log(" ||||(_| (_).(_(_)(_|(-", 7, LineJustification.Center); 
             this.log("");
-            this.log(" Welcome to micro:code!", 7);
+            this.log(" Welcome to micro:code!", 7, LineJustification.Center);
             this.log("");
             this.log("");
             this.pdefn = this.app.load(SAVESLOT_AUTO);
@@ -108,7 +116,23 @@ namespace kojac {
             let y = scene.screenHeight() - TOOLBAR_HEIGHT - LINE_HEIGHT;
             for (let i = this.logLines.length - 1; i >= 0; --i) {
                 const line = this.logLines[i];
-                screen.print(line.text, 2, y, line.color, image.font8);
+                switch (line.justification) {
+                    case LineJustification.Left: {
+                        const x = CONSOLE_MARGIN;
+                        screen.print(line.text, x, y, line.color, image.font8);
+                        break;
+                    }
+                    case LineJustification.Center: {
+                        const x = ((scene.screenWidth() - line.text.length * image.font8.charWidth) >> 1) - (image.font8.charWidth);
+                        screen.print(line.text, x, y, line.color, image.font8);
+                        break;
+                    }
+                    case LineJustification.Right: {
+                        const x = scene.screenWidth() - CONSOLE_MARGIN - (line.text.length * image.font8.charWidth);
+                        screen.print(line.text, x, y, line.color, image.font8);
+                        break;
+                    }
+                }
                 y -= LINE_HEIGHT;
             }
         }
