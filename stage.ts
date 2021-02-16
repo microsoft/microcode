@@ -92,7 +92,7 @@ namespace kojac {
         notify(event: string, parm?: any) {
         }
 
-        // SpriteLike
+        // SpriteLike impl, so the stage can get a draw call from the scene.
         z: number;
         id: number;
         flags?: number;
