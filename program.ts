@@ -5,9 +5,9 @@ namespace kojac {
         done: boolean;
         executing: boolean;
 
-        constructor(public progdef: ProgramDefn) {
+        constructor(public agent: Agent) {
             this.currPage = 0;
-            this.pages = progdef.pages.map((elem, index) => new Page(this, elem, index));
+            this.pages = agent.progdef.pages.map((elem, index) => new Page(this, elem, index));
         }
 
         public destroy() {
@@ -15,7 +15,7 @@ namespace kojac {
                 page.destroy();
             }
             this.pages = undefined;
-            this.progdef = undefined;
+            this.agent = undefined;
         }
 
         public execute() {

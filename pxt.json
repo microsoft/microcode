@@ -24,7 +24,8 @@
         "kelpie.ts",
         "editor.ts",
         "cursor.ts",
-        "home.ts"
+        "home.ts",
+        "agent.ts"
     ],
     "testFiles": [],
     "targetVersions": {
