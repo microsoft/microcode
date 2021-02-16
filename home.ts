@@ -14,6 +14,7 @@ namespace kojac {
     const LINE_HEIGHT = 9;
 
     export class Home extends Stage {
+        showWelcomeMessage: boolean;
         currView: HomeView;
         logLines: string[];
         bdefn: BrainDefn;
@@ -22,6 +23,7 @@ namespace kojac {
             super(app, "home");
             this.currView = HomeView.Console;
             this.logLines = [];
+            this.showWelcomeMessage = true;
         }
 
         public log(s: string) {
@@ -36,10 +38,8 @@ namespace kojac {
             this.setView(HomeView.Plot);
         }
 
-        init() {
-            super.init();
-            scene.setBackgroundColor(15);
-            this.log("  Welcome to micro:code!");
+        startup() {
+            super.startup();
             controller.left.onEvent(ControllerButtonEvent.Released, function() {
                 this.app.pushStage(new Editor(this.app));
             });
@@ -47,7 +47,14 @@ namespace kojac {
 
         activate() {
             super.activate();
-            this.log(" -= program is running =-");
+            scene.setBackgroundColor(15);
+            this.logLines = [];
+            if (this.showWelcomeMessage) {
+                this.showWelcomeMessage = false;
+                this.log("Welcome to micro:code!");
+            }
+            this.log("program loading.");
+            this.log("program running.");
         }
 
         private setView(view: HomeView) {

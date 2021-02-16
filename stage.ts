@@ -29,7 +29,7 @@ namespace kojac {
          * Intended to allocate scene resources (one-time init).
          * Overload must call base.
          */
-        init() {
+        startup() {
             this.components = [];
             this.camera = new Camera(this);
             this.z = -1000;
@@ -111,7 +111,7 @@ namespace kojac {
             }
             game.pushScene();
             this.stack.push(stage);
-            stage.init();
+            stage.startup();
             stage.activate();
         }
 
