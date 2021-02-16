@@ -12,6 +12,14 @@ namespace kojac {
                 this.app.popStage();
             });
         }
-        
+
+        shutdown() {
+            super.shutdown();
+        }
+
+        activate() {
+            super.activate();
+            scene.setBackgroundColor(11);
+        }
     }
 }

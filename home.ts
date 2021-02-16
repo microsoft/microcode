@@ -3,21 +3,20 @@ namespace kojac {
         Console, Plot
     };
 
-    // Auto-save slot
-    const SAVESLOT_AUTO = "sa";
-    // Save slots (future)
-    const SAVESLOT_1 = "s1";
-    const SAVESLOT_2 = "s2";
-    const SAVESLOT_3 = "s3";
-
     const TOOLBAR_HEIGHT = 18;
     const LINE_HEIGHT = 9;
+
+    type LogLine = {
+        s: string;
+        color: number;
+    };
 
     export class Home extends Stage {
         showWelcomeMessage: boolean;
         currView: HomeView;
-        logLines: string[];
+        logLines: LogLine[];
         bdefn: BrainDefn;
+        pgm: Program;
 
         constructor(app: App) {
             super(app, "home");
@@ -26,8 +25,8 @@ namespace kojac {
             this.showWelcomeMessage = true;
         }
 
-        public log(s: string) {
-            this.logLines.push(s);
+        public log(s: string, color = 1) {
+            this.logLines.push({ s, color });
             // trim to last 15 entries
             this.logLines = this.logLines.slice(Math.max(this.logLines.length - 15, 0));
             this.setView(HomeView.Console);
@@ -51,10 +50,29 @@ namespace kojac {
             this.logLines = [];
             if (this.showWelcomeMessage) {
                 this.showWelcomeMessage = false;
-                this.log("Welcome to micro:code!");
+                this.log("Welcome to micro:code!", 7);
+                this.log("");
             }
-            this.log("program loading.");
-            this.log("program running.");
+            this.bdefn = this.app.load(SAVESLOT_AUTO);
+            if (!this.bdefn) {
+                this.bdefn = new BrainDefn();
+                this.app.save(SAVESLOT_AUTO, this.bdefn);
+            }
+            if (this.pgm) { this.pgm.destroy(); }
+            this.pgm = new Program(this.bdefn);
+            this.log("program started");
+        }
+
+        deactivate() {
+            if (this.pgm) {
+                this.pgm.destroy();
+                this.pgm = null;
+            }
+        }
+
+        update(dt: number) {
+            super.update(dt);
+            this.pgm.execute();
         }
 
         private setView(view: HomeView) {
@@ -83,7 +101,8 @@ namespace kojac {
         private drawConsoleView() {
             let y = scene.screenHeight() - TOOLBAR_HEIGHT - LINE_HEIGHT;
             for (let i = this.logLines.length - 1; i >= 0; --i) {
-                screen.print(this.logLines[i], 2, y, 1, image.font8);
+                const line = this.logLines[i];
+                screen.print(line.s, 2, y, line.color, image.font8);
                 y -= LINE_HEIGHT;
             }
         }

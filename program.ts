@@ -15,6 +15,7 @@ namespace kojac {
                 page.destroy();
             }
             this.pages = undefined;
+            this.bdefn = undefined;
         }
 
         public execute() {

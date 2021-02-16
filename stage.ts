@@ -2,6 +2,8 @@ namespace kojac {
     export class Stage implements SpriteLike {
         components: Component[];
         camera: Camera;
+        prevMs: number;
+        active: boolean;
 
         constructor(public app: App, public name: string) {
         }
@@ -34,6 +36,16 @@ namespace kojac {
             this.camera = new Camera(this);
             this.z = -1000;
             game.currentScene().addSprite(this);
+            this.prevMs = control.millis();
+            game.onUpdate(() => {
+                const t = control.millis();
+                if (this.active) {
+                    const dt = t - this.prevMs;
+                    this.update(dt);
+                }
+                this.prevMs = t;
+            });
+
         }
 
         /**
@@ -55,6 +67,7 @@ namespace kojac {
          * Overload must call base.
          */
         activate() {
+            this.active = true;
         }
 
         /**
@@ -64,11 +77,13 @@ namespace kojac {
          * Overload must call base.
          */
         deactivate() {
+            this.active = false;
         }
 
         /**
          * @internal
          * Called on the active stage by the stage manager each game update.
+         * Overload must call base.
          */
         public update(dt: number) {
             this.components.forEach(comp => comp.update(dt));
@@ -88,20 +103,9 @@ namespace kojac {
 
     export class StageManager {
         stack: Stage[];
-        prevMs: number;
 
         constructor() {
             this.stack = [];
-            this.prevMs = control.millis();
-            game.onUpdate(() => {
-                const t = control.millis();
-                const stage = this.currStage();
-                if (stage) {
-                    const dt = t - this.prevMs;
-                    stage.update(dt);
-                }
-                this.prevMs = t;
-            });
         }
 
         public push(stage: Stage) {
@@ -117,7 +121,10 @@ namespace kojac {
 
         public pop() {
             const prevStage = this.stack.pop();
-            prevStage.shutdown();
+            if (prevStage) {
+                prevStage.deactivate();
+                prevStage.shutdown();
+            }
             game.popScene();
             const currStage = this.currStage();
             if (currStage) {
