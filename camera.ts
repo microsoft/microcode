@@ -19,12 +19,6 @@ namespace kojac {
             this.heightOver2 = scene.screenHeight() >> 1;
         }
 
-        public setScreenRelativePosition(k: SpriteLike, x: number, y: number) {
-            const s = k as any;
-            s.x = scene.cameraProperty(CameraProperty.X) - this.widthOver2 + x + this.camera_movement_x;
-            s.y = scene.cameraProperty(CameraProperty.Y) - this.heightOver2 + y + this.camera_movement_y;
-        }
-
         public moveTo(x: number, y: number) {
             this.x = x;
             this.y = y;

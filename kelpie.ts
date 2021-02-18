@@ -1,7 +1,7 @@
 namespace kojac {
     export enum KelpieFlags {
         Invisible = 1 >> 0,
-        HUD = 1 >> 1
+        Moved = 1 >> 1
     }
 
     export type KelpieHandler = (kelpie: Kelpie) => void;
@@ -19,7 +19,6 @@ namespace kojac {
         private _hitbox: Hitbox;
         private _destroyHandlers: KelpieHandler[];
         private _moveHandlers: KelpieHandler[];
-        private _moved: boolean;
         
         //% blockCombine block="x" callInDebugger
         get x(): number {
@@ -29,7 +28,7 @@ namespace kojac {
             const fxv = Fx8(v);
             if (fxv !== this._x) {
                 this._x = Fx8(v);
-                this._moved = true;
+                this._flags |= KelpieFlags.Moved;
             }
         }
 
@@ -41,7 +40,7 @@ namespace kojac {
             const fxv = Fx8(v);
             if (fxv !== this._y) {
                 this._y = Fx8(v);
-                this._moved = true;
+                this._flags |= KelpieFlags.Moved;
             }
         }
 
@@ -103,15 +102,11 @@ namespace kojac {
         get hitbox(): Hitbox { return this._hitbox; }
         set hitbox(v: Hitbox) { this._hitbox = v; }
 
-        //% blockCombine block="hud" callInDebugger
-        get hud() { return !!(this._flags & KelpieFlags.HUD); }
-        set hud(b: boolean) { b ? this._flags |= KelpieFlags.HUD : this._flags &= ~KelpieFlags.HUD; }
-
         //% blockCombine block="invisible" callInDebugger
         get invisible() { return !!(this._flags & KelpieFlags.Invisible); }
         set invisible(b: boolean) { b ? this._flags |= KelpieFlags.Invisible : this._flags &= ~KelpieFlags.Invisible; }
 
-        constructor(stage: Stage, img: Image) {
+        constructor(stage: Stage, layer: StageLayer, img: Image) {
             super(stage, "kelpie");
             this._x = Fx8(screen.width - (img.width >> 1));
             this._y = Fx8(screen.height - (img.height >> 1));
@@ -146,10 +141,12 @@ namespace kojac {
             this._hitbox = util.calculateHitbox(this);
         }
 
-        private isOutOfScreen(camera: scene.Camera): boolean {
-            const ox = (this.hud) ? 0 : camera.drawOffsetX;
-            const oy = (this.hud) ? 0 : camera.drawOffsetY;
-            return this.left - ox > screen.width || this.top - oy > screen.height || this.right - ox < 0 || this.bottom - oy < 0;
+        private isOffScreen(drawOffset: Vec2): boolean {
+            return (
+                this.left - drawOffset.x > screen.width ||
+                this.top - drawOffset.y > screen.height ||
+                this.right - drawOffset.x < 0 ||
+                this.bottom - drawOffset.y < 0);
         }
 
         private fireMoved() {
@@ -159,36 +156,29 @@ namespace kojac {
             }
         }
 
-        __visible(): boolean {
-            // Would be nice if the camera was passed in, for clip check.
-            return !this.invisible;
+        update(dt: number) {
+            if (this._flags & KelpieFlags.Moved) {
+                this._flags &= ~KelpieFlags.Moved;
+                this.fireMoved();
+            }
         }
 
-        __drawCore(camera: scene.Camera) {
-            if (this.isOutOfScreen(camera)) { return; }
+        draw(drawOffset: Vec2) {
+            if (this.invisible) { return; }
+            if (this.isOffScreen(drawOffset)) { return; }
 
-            const ox = (this.hud) ? 0 : camera.drawOffsetX;
-            const oy = (this.hud) ? 0 : camera.drawOffsetY;
+            const left = this.left - drawOffset.x;
+            const top = this.top - drawOffset.y;
 
-            const l = this.left - ox;
-            const t = this.top - oy;
-
-            screen.drawTransparentImage(this._image, l, t);
+            screen.drawTransparentImage(this._image, left, top);
 
             /* Render hitbox
             const bounds = HitboxBounds.FromKelpie(this);
-            screen.drawLine(bounds.left  - ox, bounds.top    - oy, bounds.right - ox, bounds.top    - oy, 15);
-            screen.drawLine(bounds.left  - ox, bounds.bottom - oy, bounds.right - ox, bounds.bottom - oy, 15);
-            screen.drawLine(bounds.left  - ox, bounds.top    - oy, bounds.left  - ox, bounds.bottom - oy, 15);
-            screen.drawLine(bounds.right - ox, bounds.top    - oy, bounds.right - ox, bounds.bottom - oy, 15);
+            screen.drawLine(bounds.left  - drawOffset.x, bounds.top    - drawOffset.y, bounds.right - drawOffset.x, bounds.top    - drawOffset.y, 15);
+            screen.drawLine(bounds.left  - drawOffset.x, bounds.bottom - drawOffset.y, bounds.right - drawOffset.x, bounds.bottom - drawOffset.y, 15);
+            screen.drawLine(bounds.left  - drawOffset.x, bounds.top    - drawOffset.y, bounds.left  - drawOffset.x, bounds.bottom - drawOffset.y, 15);
+            screen.drawLine(bounds.right - drawOffset.x, bounds.top    - drawOffset.y, bounds.right - drawOffset.x, bounds.bottom - drawOffset.y, 15);
             */
-        }
-
-        __update(camera: scene.Camera, dt: number) {
-            if (this._moved) {
-                this._moved = false;
-                this.fireMoved();
-            }
         }
     }
 }

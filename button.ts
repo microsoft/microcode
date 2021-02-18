@@ -53,11 +53,9 @@ namespace kojac {
             if (this.icon) { this.icon.destroy(); }
             if (this.back) { this.back.destroy(); }
             if (this.text) { this.text.destroy(); }
-            this.icon = new Kelpie(icons.get(this.iconId));
-            this.icon.hud = this.hud;
+            this.icon = new Kelpie(this.stage, this.hud ? StageLayer.HUD : StageLayer.World, icons.get(this.iconId));
             if (this.style) {
-                this.back = new Kelpie(icons.get(`button_${this.style}`));
-                this.back.hud = this.hud;
+                this.back = new Kelpie(this.stage, this.hud ? StageLayer.HUD : StageLayer.World, icons.get(`button_${this.style}`));
             }
             this.icon.x = this.x;
             this.icon.y = this.y;
@@ -115,14 +113,6 @@ namespace kojac {
         }
 
         update(dt: number) {
-            if (this.hud) {
-                this.updateScreenRelative();
-            } else {
-                this.updateAbsolute();
-            }
-        }
-
-        updateAbsolute() {
             this.icon.x = this.x;
             this.icon.y = this.y;
             if (this.back) {
@@ -132,17 +122,6 @@ namespace kojac {
             if (this.text) {
                 this.text.x = this.x;
                 this.text.y = this.y - this.height;
-            }
-        }
-
-        updateScreenRelative() {
-            const camera = this.stage.camera;
-            camera.setScreenRelativePosition(this.icon, this.x, this.y);
-            if (this.back) {
-                camera.setScreenRelativePosition(this.back, this.x, this.y);
-            }
-            if (this.text) {
-                camera.setScreenRelativePosition(this.text, this.x, this.y - this.height);
             }
         }
     }
