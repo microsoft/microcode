@@ -21,7 +21,7 @@ namespace kojac {
             });
             this.currPage = 0;
             this.pageBtn = new Button(this, StageLayer.HUD, {
-                style: "white",
+                //style: "white",
                 icon: PAGE_IDS[this.currPage],
                 x: scene.screenWidth() >> 1,
                 y: 8
@@ -117,10 +117,12 @@ namespace kojac {
                 x: 0, y: 0
             });
             this.whenInsertBtn = new Button(editor, StageLayer.World, {
+                style: "beige",
                 icon: "insertion-point",
                 x: 0, y: 0
             });
             this.doInsertBtn = new Button(editor, StageLayer.World, {
+                style: "beige",
                 icon: "insertion-point",
                 x: 0, y: 0
             });
@@ -167,7 +169,7 @@ namespace kojac {
             this.handleBtn.pos = v;
             v.x += (this.handleBtn.width >> 1) + (this.whenLbl.width >> 1);
             this.whenLbl.pos = v;
-            v.x += (this.whenLbl.width >> 1) + (this.whenInsertBtn.width >> 1);
+            v.x += 2 + (this.whenLbl.width >> 1) + (this.whenInsertBtn.width >> 1);
             if (this.sensor) {
                 this.sensor.pos = v;
                 v.x += this.sensor.width;
@@ -179,7 +181,7 @@ namespace kojac {
             this.whenInsertBtn.pos = v;
             v.x += 4 + (this.whenInsertBtn.width >> 1) + (this.doLbl.width >> 1);
             this.doLbl.pos = v;
-            v.x += (this.doLbl.width >> 1) + (this.doInsertBtn.width >> 1);
+            v.x += 2 + (this.doLbl.width >> 1) + (this.doInsertBtn.width >> 1);
             if (this.actuator) {
                 this.actuator.pos = v;
                 v.x += this.actuator.width;
