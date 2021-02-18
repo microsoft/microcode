@@ -6,8 +6,8 @@ namespace kojac {
     }
 
     export enum StageLayer {
-        World = 1,
-        HUD = 2
+        World,
+        HUD
     }
 
     const LAYER_IDS = [StageLayer.World, StageLayer.HUD];
