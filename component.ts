@@ -12,14 +12,16 @@ namespace kojac {
             return this._data;
         }
 
-        constructor(public stage: Stage, public kind: string) {
+        constructor(public stage: Stage, layer: StageLayer, public kind: string) {
             this._id = id_sequence++;
-            this.stage.add(this);
+            this.stage.add(this, layer);
         }
 
         destroy() {
+            if (this.stage) {
+                this.stage.remove(this);
+            }
             this._data = undefined;
-            this.stage.remove(this);
         }
 
         update(dt: number) {

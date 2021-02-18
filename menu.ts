@@ -14,8 +14,8 @@ namespace kojac {
     export class Menu extends Component {
         buttons: Button[];
 
-        constructor(stage: Stage, private items: MenuItemDefn[], private hud: boolean, private wrap: number = 4) {
-            super(stage, "menu");
+        constructor(stage: Stage, private layer: StageLayer, private items: MenuItemDefn[], private wrap: number = 4) {
+            super(stage, layer, "menu");
             this.buttons = [];
         }
 
@@ -26,7 +26,7 @@ namespace kojac {
             this.items.forEach((item, index) => {
                 const icon = icons.get(item.icon);
                 item.style = item.style || "white";
-                const button = new Button(this.stage, item.style, item.icon, item.label, x, y, this.hud, (button) => onSelect(button));
+                const button = new Button(this.stage, this.layer, item.style, item.icon, item.label, x, y, (button) => onSelect(button));
                 this.buttons.push(button);
                 if (direction === "right") { x += icon.width; }
                 else if (direction === "up") { y -= icon.height; }

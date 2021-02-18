@@ -192,7 +192,7 @@ namespace kojac {
         pages: PageDefn[];
 
         constructor() {
-            this.pages = [0, 1, 2, 3, 4].map(n => new PageDefn());
+            this.pages = PAGE_IDS.map(id => new PageDefn());
         }
 
         public clone(): ProgramDefn {
@@ -432,6 +432,13 @@ namespace kojac {
             express_sad: "M10",
         }
     }
+
+    export const PAGE_IDS = [
+        tid.modifier.page_1,
+        tid.modifier.page_2,
+        tid.modifier.page_3,
+        tid.modifier.page_4,
+        tid.modifier.page_5];
 
     export const tiles: TileDatabase = {
         sensors: {

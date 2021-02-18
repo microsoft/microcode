@@ -6,7 +6,7 @@ namespace kojac {
         private _bins: {[id: string]: Button };
 
         constructor(stage: Stage) {
-            super(stage, "cursor");
+            super(stage, StageLayer.World, "cursor");
             this._bins = {};
         }
 

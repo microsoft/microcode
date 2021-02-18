@@ -12,7 +12,7 @@ namespace kojac {
 
     const LAYER_IDS = [StageLayer.World, StageLayer.HUD];
 
-    type Layer = {
+    interface Layer {
         flags: number;
         components: Component[];
     };
@@ -22,9 +22,11 @@ namespace kojac {
         camera: Camera;
         prevMs: number;
         stageFlags: number;
+        offset: Vec2;
 
         constructor(public app: App, public name: string) {
             this.stageFlags = 0;
+            this.offset = new Vec2(0, 0);
             this.layers = [];
             this.layers[StageLayer.World] = {
                 flags: 0,
@@ -37,19 +39,28 @@ namespace kojac {
         }
 
         public remove(comp: Component) {
-            const layer: StageLayer = comp.data["_stage_layer"];
-            if (layer !== undefined) {
-                const components = this.layers[layer].components.filter(c => c.id !== comp.id);
+            const lid: StageLayer = comp.data["_lid"];
+            if (lid !== undefined) {
+                const layer = this.layers[lid];
+                layer.components = layer.components.filter(c => c.id !== comp.id);
                 comp.stage = null;
             }
         }
 
-        public add(comp: Component, layerf = StageLayer.World) {
-            const layer = this.layers[layerf];
+        public add(comp: Component, lid: number) {
+            const layer = this.layers[lid];
             layer.components.push(comp);
             comp.stage = this;
-            comp.data["_stage_layer"] = layerf;
+            comp.data["_lid"] = lid;
             layer.flags |= LayerFlags.NeedsSorting;
+        }
+
+        public needsSorting(comp: Component) {
+            const lid: StageLayer = comp.data["_lid"];
+            if (lid !== undefined) {
+                const layer = this.layers[lid];
+                layer.flags |= LayerFlags.NeedsSorting;
+            }
         }
 
         /**
@@ -80,7 +91,11 @@ namespace kojac {
             LAYER_IDS.forEach((id) => {
                 const layer = this.layers[id];
                 const comps = layer.components;
-                comps.forEach(comp => comp.destroy());
+                comps.forEach(comp => {
+                    // Some components will be helpful and destroy components they created.
+                    // Looking at you Button.
+                    if (comp.stage === this) { comp.destroy(); }
+                });
                 layer.components = undefined;
             });
             this.layers = undefined;
@@ -134,10 +149,10 @@ namespace kojac {
                 }
                 const cameraRelative = layer.flags & LayerFlags.CameraRelative;
                 const drawOffset = new Vec2(
-                    cameraRelative ? 0 : camera.drawOffsetX,
-                    cameraRelative ? 0 : camera.drawOffsetY);
+                    this.offset.x + (cameraRelative ? 0 : camera.drawOffsetX),
+                    this.offset.y + (cameraRelative ? 0 : camera.drawOffsetY));
                 const comps = layer.components;
-                comps.forEach((comp: any) => comp["draw"] && comp["draw"](drawOffset))
+                comps.forEach((comp: any) => comp.draw && comp.draw(drawOffset))
             });
         }
     }

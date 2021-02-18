@@ -22,15 +22,15 @@ namespace kojac {
 
         constructor(
             stage: Stage,
+            private layer: StageLayer,
             private style: ButtonStyle,
             private iconId: string,
             private label: string,
             public x: number,
             public y: number,
-            private hud: boolean,
             private onClick?: (button: Button) => void
         ) {
-            super(stage, "button");
+            super(stage, layer, "button");
             this.buildSprite(0);
         }
 
@@ -53,9 +53,9 @@ namespace kojac {
             if (this.icon) { this.icon.destroy(); }
             if (this.back) { this.back.destroy(); }
             if (this.text) { this.text.destroy(); }
-            this.icon = new Kelpie(this.stage, this.hud ? StageLayer.HUD : StageLayer.World, icons.get(this.iconId));
+            this.icon = new Kelpie(this.stage, this.layer, icons.get(this.iconId));
             if (this.style) {
-                this.back = new Kelpie(this.stage, this.hud ? StageLayer.HUD : StageLayer.World, icons.get(`button_${this.style}`));
+                this.back = new Kelpie(this.stage, this.layer, icons.get(`button_${this.style}`));
             }
             this.icon.x = this.x;
             this.icon.y = this.y;

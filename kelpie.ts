@@ -11,8 +11,8 @@ namespace kojac {
      * It's basically a sprite.
      */
     export class Kelpie extends Component {
-        private _x: Fx8
-        private _y: Fx8
+        private _x: number;
+        private _y: number;
         private _z: number;
         private _image: Image;
         private _flags: number;
@@ -21,25 +21,19 @@ namespace kojac {
         private _moveHandlers: KelpieHandler[];
         
         //% blockCombine block="x" callInDebugger
-        get x(): number {
-            return Fx.toFloat(this._x);
-        }
+        get x(): number { return this._x; }
         set x(v: number) {
-            const fxv = Fx8(v);
-            if (fxv !== this._x) {
-                this._x = Fx8(v);
+            if (v !== this._x) {
+                this._x = v;
                 this._flags |= KelpieFlags.Moved;
             }
         }
 
         //% blockCombine block="y" callInDebugger
-        get y(): number {
-            return Fx.toFloat(this._y);
-        }
+        get y(): number { return this._y; }
         set y(v: number) {
-            const fxv = Fx8(v);
-            if (fxv !== this._y) {
-                this._y = Fx8(v);
+            if (v !== this._y) {
+                this._y = v;
                 this._flags |= KelpieFlags.Moved;
             }
         }
@@ -47,7 +41,10 @@ namespace kojac {
         //% blockCombine block="y" callInDebugger
         get z(): number { return this._z; }
         set z(v: number) {
-            this._z = v;
+            if (v !== this._z) {
+                this._z = v;
+                this.stage.needsSorting(this);
+            }
         }
 
         //% blockCombine block="x" callInDebugger
@@ -107,13 +104,10 @@ namespace kojac {
         set invisible(b: boolean) { b ? this._flags |= KelpieFlags.Invisible : this._flags &= ~KelpieFlags.Invisible; }
 
         constructor(stage: Stage, layer: StageLayer, img: Image) {
-            super(stage, "kelpie");
-            this._x = Fx8(screen.width - (img.width >> 1));
-            this._y = Fx8(screen.height - (img.height >> 1));
+            super(stage, layer, "kelpie");
+            this._x = screen.width - (img.width >> 1);
+            this._y = screen.height - (img.height >> 1);
             this.image = img; // initializes hitbox
-            this.onDestroy((k: Kelpie) => {
-                this.stage.remove(this);
-            });
         }
 
         public destroy() {
@@ -124,6 +118,7 @@ namespace kojac {
             this._image = undefined;
             this._hitbox = undefined;
             this._destroyHandlers = undefined;
+            super.destroy();
         }
 
         public onDestroy(handler: KelpieHandler) {
