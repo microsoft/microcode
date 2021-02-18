@@ -11,6 +11,10 @@ namespace kojac {
         public y: number;
         private onClick?: (button: Button) => void;
 
+        //% blockCombine block="left" callInDebugger
+        get left() { return this.back ? this.back.left : this.icon.left; }
+        //% blockCombine block="right" callInDebugger
+        get right() { return this.back ? this.back.right : this.icon.right; }
         //% blockCombine block="width" callInDebugger
         get width() { return this.back ? this.back.width : this.icon.width; }
         //% blockCombine block="height" callInDebugger
@@ -27,7 +31,7 @@ namespace kojac {
             }
         }
 
-        //% blockCombine block="z" callInDebugger
+        //% blockCombine block="pos" callInDebugger
         get pos() { return new Vec2(this.x, this.y); }
         set pos(v: Vec2) {
             this.x = v.x;

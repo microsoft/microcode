@@ -25,7 +25,8 @@
         "editor.ts",
         "cursor.ts",
         "home.ts",
-        "agent.ts"
+        "agent.ts",
+        "quadtree.ts"
     ],
     "testFiles": [],
     "targetVersions": {

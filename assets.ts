@@ -28,7 +28,9 @@ namespace kojac {
             this.reg["dpad_left"] = icondb.btn_dpad_left;
             this.reg["when"] = icondb.ui_when;
             this.reg["do"] = icondb.ui_do;
-            this.reg["insertion-point"] = icondb.btn_insertion_point;
+            this.reg["insertion_point"] = icondb.btn_insertion_point;
+            this.reg["next_page"] = icondb.btn_next_page;
+            this.reg["prev_page"] = icondb.btn_prev_page;
             this.reg["MISSING"] = icondb.MISSING;
             this.reg[tid.sensor.button_a] = icondb.tile_button_a;
             this.reg[tid.sensor.button_b] = icondb.tile_button_b;
@@ -358,6 +360,42 @@ namespace icondb {
         . . . . . . f 6 6 f . . . . . .
         . . . . . . f 6 6 f . . . . . .
         . . . . . . f f f f . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const btn_next_page = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . c c . . . . . . . .
+        . . . . . . c c c . . . . . . .
+        . . . . . . b c c c . . . . . .
+        . . . . . . . b c c c . . . . .
+        . . . . . . . . b c c c . . . .
+        . . . . . . . . c c c b . . . .
+        . . . . . . . c c c b . . . . .
+        . . . . . . c c c b . . . . . .
+        . . . . . . c c b . . . . . . .
+        . . . . . . b b . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const btn_prev_page = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . c c . . . . . .
+        . . . . . . . c c c . . . . . .
+        . . . . . . c c c b . . . . . .
+        . . . . . c c c b . . . . . . .
+        . . . . c c c b . . . . . . . .
+        . . . . b c c c . . . . . . . .
+        . . . . . b c c c . . . . . . .
+        . . . . . . b c c c . . . . . .
+        . . . . . . . b c c . . . . . .
+        . . . . . . . . b b . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .

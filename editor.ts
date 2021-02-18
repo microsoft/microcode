@@ -9,6 +9,7 @@ namespace kojac {
         private okBtn: Button;
         private cancelBtn: Button;
         private pageEditor: PageEditor;
+        public cursor: Cursor;
 
         constructor(app: App) {
             super(app, "editor");
@@ -19,11 +20,24 @@ namespace kojac {
             controller.right.onEvent(ControllerButtonEvent.Released, function() {
                 this.app.popStage();
             });
+            this.cursor = new Cursor(this);
             this.currPage = 0;
             this.pageBtn = new Button(this, StageLayer.HUD, {
-                //style: "white",
+                style: "white",
                 icon: PAGE_IDS[this.currPage],
                 x: scene.screenWidth() >> 1,
+                y: 8
+            });
+            this.nextPageBtn = new Button(this, StageLayer.HUD, {
+                style: "white",
+                icon: "next_page",
+                x: (scene.screenWidth() >> 1) + 16,
+                y: 8
+            });
+            this.prevPageBtn = new Button(this, StageLayer.HUD, {
+                style: "white",
+                icon: "prev_page",
+                x: (scene.screenWidth() >> 1) - 16,
                 y: 8
             });
             this.okBtn = new Button(this, StageLayer.HUD, {
@@ -63,6 +77,7 @@ namespace kojac {
             this.rules = pagedef.rules.map(ruledef => new RuleEditor(editor, ruledef));
             this.ensureFinalEmptyRule();
             this.layout();
+            this.initCursor();
         }
 
         destroy() {
@@ -95,6 +110,19 @@ namespace kojac {
                 top += 18;
             });
         }
+
+        private initCursor() {
+            const rule = this.rules[0];
+            let tile: Button;
+            if (rule.sensor) {
+                tile = rule.sensor;
+            } else if (rule.filters.length) {
+                tile = rule.filters[0];
+            } else {
+                tile = rule.whenInsertBtn;
+            }
+            this.editor.cursor.select(tile);
+        }
     }
 
     class RuleEditor extends Component {
@@ -118,12 +146,12 @@ namespace kojac {
             });
             this.whenInsertBtn = new Button(editor, StageLayer.World, {
                 style: "beige",
-                icon: "insertion-point",
+                icon: "insertion_point",
                 x: 0, y: 0
             });
             this.doInsertBtn = new Button(editor, StageLayer.World, {
                 style: "beige",
-                icon: "insertion-point",
+                icon: "insertion_point",
                 x: 0, y: 0
             });
             this.filters = [];

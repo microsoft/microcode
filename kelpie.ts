@@ -17,7 +17,6 @@ namespace kojac {
         private _image: Image;
         private _flags: number;
         private _hitbox: Hitbox;
-        private _destroyHandlers: KelpieHandler[];
         private _moveHandlers: KelpieHandler[];
         
         //% blockCombine block="x" callInDebugger
@@ -38,7 +37,7 @@ namespace kojac {
             }
         }
 
-        //% blockCombine block="y" callInDebugger
+        //% blockCombine block="z" callInDebugger
         get z(): number { return this._z; }
         set z(v: number) {
             if (v !== this._z) {
@@ -47,7 +46,7 @@ namespace kojac {
             }
         }
 
-        //% blockCombine block="x" callInDebugger
+        //% blockCombine block="pos" callInDebugger
         get pos(): Vec2 {
             return new Vec2(this.x, this.y);
         }
@@ -70,12 +69,15 @@ namespace kojac {
             return this.x - (this.width >> 1);
         }
         set left(value: number) {
-            this.x = value - (this.width >> 1);
+            this.x = value + (this.width >> 1);
         }
 
         //% blockCombine block="right" callInDebugger
         get right() {
             return this.left + this.width;
+        }
+        set right(value: number) {
+            this.x = value - (this.width >> 1);
         }
 
         //% blockCombine block="top" callInDebugger
@@ -83,12 +85,15 @@ namespace kojac {
             return this.y - (this.height >> 1);
         }
         set top(value: number) {
-            this.y = value + (this.width >> 1);
+            this.y = value + (this.height >> 1);
         }
 
         //% blockCombine block="bottom" callInDebugger
         get bottom() {
             return this.top + this.height;
+        }
+        set bottom(value: number) {
+            this.y = value - (this.height >> 1);
         }
 
         //% blockCombine block="image" callInDebugger
@@ -99,7 +104,7 @@ namespace kojac {
             this.setImage(img);
         }
 
-        //% blockCombine block="image" callInDebugger
+        //% blockCombine block="hitbox" callInDebugger
         get hitbox(): Hitbox { return this._hitbox; }
         set hitbox(v: Hitbox) { this._hitbox = v; }
 
@@ -115,19 +120,10 @@ namespace kojac {
         }
 
         public destroy() {
-            const handlers = this._destroyHandlers || [];
-            for (const handler of handlers) {
-                handler(this);
-            }
             this._image = undefined;
             this._hitbox = undefined;
-            this._destroyHandlers = undefined;
+            this._moveHandlers = undefined;
             super.destroy();
-        }
-
-        public onDestroy(handler: KelpieHandler) {
-            this._destroyHandlers = this._destroyHandlers || [];
-            this._destroyHandlers.push(handler);
         }
 
         public onMoved(handler: KelpieHandler) {
