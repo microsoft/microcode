@@ -1,6 +1,30 @@
 namespace kojac {
 
+    class EditorButton extends Button {
+        constructor(
+            public editor: Editor,
+            layer: StageLayer,
+            opts: {
+                style?: ButtonStyle,
+                icon: string,
+                label?: string,
+                x: number,
+                y: number,
+                onClick?: (button: Button) => void
+            }
+        ) {
+            super(editor, layer, opts);
+            editor.changed();
+        }
+
+        destroy() {
+            this.editor.changed();
+            super.destroy();
+        }
+    }
+
     export class Editor extends Stage {
+        private quadtree: QuadTree;
         private progdef: ProgramDefn;
         private currPage: number;
         private pageBtn: Button;
@@ -10,10 +34,13 @@ namespace kojac {
         private cancelBtn: Button;
         private pageEditor: PageEditor;
         public cursor: Cursor;
+        private _changed: boolean;
 
         constructor(app: App) {
             super(app, "editor");
         }
+
+        public changed() { this._changed = true; }
 
         startup() {
             super.startup();
@@ -22,31 +49,31 @@ namespace kojac {
             });
             this.cursor = new Cursor(this);
             this.currPage = 0;
-            this.pageBtn = new Button(this, StageLayer.HUD, {
+            this.pageBtn = new EditorButton(this, StageLayer.HUD, {
                 style: "white",
                 icon: PAGE_IDS[this.currPage],
                 x: scene.screenWidth() >> 1,
                 y: 8
             });
-            this.nextPageBtn = new Button(this, StageLayer.HUD, {
+            this.nextPageBtn = new EditorButton(this, StageLayer.HUD, {
                 style: "white",
                 icon: "next_page",
                 x: (scene.screenWidth() >> 1) + 16,
                 y: 8
             });
-            this.prevPageBtn = new Button(this, StageLayer.HUD, {
+            this.prevPageBtn = new EditorButton(this, StageLayer.HUD, {
                 style: "white",
                 icon: "prev_page",
                 x: (scene.screenWidth() >> 1) - 16,
                 y: 8
             });
-            this.okBtn = new Button(this, StageLayer.HUD, {
+            this.okBtn = new EditorButton(this, StageLayer.HUD, {
                 style: "white",
                 icon: "ok",
                 x: scene.screenWidth() - 8,
                 y: 8
             });
-            this.cancelBtn = new Button(this, StageLayer.HUD, {
+            this.cancelBtn = new EditorButton(this, StageLayer.HUD, {
                 style: "white",
                 icon: "cancel",
                 x: scene.screenWidth() - 24,
@@ -56,6 +83,7 @@ namespace kojac {
 
         shutdown() {
             this.progdef = undefined;
+            this.quadtree.clear();
             super.shutdown();
         }
 
@@ -66,6 +94,57 @@ namespace kojac {
             this.currPage = 0;
             this.pageBtn.setIcon(PAGE_IDS[this.currPage]);
             this.pageEditor = new PageEditor(this, this.progdef.pages[this.currPage]);
+        }
+
+        update(dt: number) {
+            super.update(dt);
+            if (this._changed) {
+                this._changed = false;
+                this.rebuildSpatialDb();
+            }
+        }
+
+        private rebuildSpatialDb() {
+            if (this.quadtree) {
+                this.quadtree.clear();
+            }
+            this.quadtree = new QuadTree({
+                left: 0,
+                top: 0,
+                width: 4096,
+                height: 4096
+            });
+            this.addToSpatialDb(this.pageBtn);
+            this.addToSpatialDb(this.prevPageBtn);
+            this.addToSpatialDb(this.nextPageBtn);
+            this.addToSpatialDb(this.okBtn);
+            this.addToSpatialDb(this.cancelBtn);
+            this.pageEditor.addToSpatialDb();
+        }
+
+        public addToSpatialDb(button: Button) {
+            if (this.quadtree) {
+                this.quadtree.insert({
+                    left: button.left,
+                    top: button.top,
+                    width: button.width,
+                    height: button.height
+                }, button);
+            }
+        }
+
+        draw(camera: scene.Camera) {
+            super.draw(camera);
+            if (this.quadtree) {
+                const ox = camera.drawOffsetX;
+                const oy = camera.drawOffsetY;
+                this.quadtree.forEach(bounds => {
+                    screen.drawLine(bounds.left - ox, bounds.top - oy, bounds.left + bounds.width - ox, bounds.top - oy, 15);
+                    screen.drawLine(bounds.left - ox, bounds.top + bounds.height - oy, bounds.left + bounds.width - ox, bounds.top + bounds.height - oy, 15);
+                    screen.drawLine(bounds.left - ox, bounds.top - oy, bounds.left - ox, bounds.top + bounds.height - oy, 15);
+                    screen.drawLine(bounds.left + bounds.width - ox, bounds.top - oy, bounds.left + bounds.width - ox, bounds.top + bounds.height - oy, 15);
+                });
+            }
         }
     }
 
@@ -113,15 +192,19 @@ namespace kojac {
 
         private initCursor() {
             const rule = this.rules[0];
-            let tile: Button;
+            let btn: Button;
             if (rule.sensor) {
-                tile = rule.sensor;
+                btn = rule.sensor;
             } else if (rule.filters.length) {
-                tile = rule.filters[0];
+                btn = rule.filters[0];
             } else {
-                tile = rule.whenInsertBtn;
+                btn = rule.whenInsertBtn;
             }
-            this.editor.cursor.select(tile);
+            this.editor.cursor.select(btn);
+        }
+
+        public addToSpatialDb() {
+            this.rules.forEach(rule => rule.addToSpatialDb());
         }
     }
 
@@ -140,16 +223,16 @@ namespace kojac {
             super(editor, StageLayer.World, "rule_editor");
             this.whenLbl = new Kelpie(editor, StageLayer.World, icons.get("when"));
             this.doLbl = new Kelpie(editor, StageLayer.World, icons.get("do"));
-            this.handleBtn = new Button(editor, StageLayer.World, {
+            this.handleBtn = new EditorButton(editor, StageLayer.World, {
                 icon: ruledef.condition,
                 x: 0, y: 0
             });
-            this.whenInsertBtn = new Button(editor, StageLayer.World, {
+            this.whenInsertBtn = new EditorButton(editor, StageLayer.World, {
                 style: "beige",
                 icon: "insertion_point",
                 x: 0, y: 0
             });
-            this.doInsertBtn = new Button(editor, StageLayer.World, {
+            this.doInsertBtn = new EditorButton(editor, StageLayer.World, {
                 style: "beige",
                 icon: "insertion_point",
                 x: 0, y: 0
@@ -182,6 +265,17 @@ namespace kojac {
             this.actuator = undefined;
             this.filters = undefined;
             this.modifiers = undefined;
+            this.editor.changed();
+        }
+
+        public addToSpatialDb() {
+            if (this.sensor) { this.editor.addToSpatialDb(this.sensor); }
+            if (this.actuator) { this.editor.addToSpatialDb(this.actuator); }
+            this.filters.forEach(filter => this.editor.addToSpatialDb(filter));
+            this.modifiers.forEach(modifier => this.editor.addToSpatialDb(modifier));
+            this.editor.addToSpatialDb(this.handleBtn);
+            this.editor.addToSpatialDb(this.whenInsertBtn);
+            this.editor.addToSpatialDb(this.doInsertBtn);
         }
 
         public isEmpty() {

@@ -13,8 +13,8 @@ namespace kojac {
 
         //% blockCombine block="left" callInDebugger
         get left() { return this.back ? this.back.left : this.icon.left; }
-        //% blockCombine block="right" callInDebugger
-        get right() { return this.back ? this.back.right : this.icon.right; }
+        //% blockCombine block="top" callInDebugger
+        get top() { return this.back ? this.back.top : this.icon.top; }
         //% blockCombine block="width" callInDebugger
         get width() { return this.back ? this.back.width : this.icon.width; }
         //% blockCombine block="height" callInDebugger

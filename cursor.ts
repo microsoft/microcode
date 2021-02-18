@@ -3,28 +3,16 @@ namespace kojac {
     export const TILE_SIZE = 16;
 
     export class Cursor extends Component {
-        private quadtree: QuadTree;
+        stylus: Kelpie;
 
         constructor(stage: Stage) {
             super(stage, StageLayer.World, "cursor");
-            this.quadtree = new QuadTree({
-                left: 0,
-                top: 0,
-                width: 2000,
-                height: 4000
-            });
-        }
-
-        public add(button: Button) {
-            button.onDestroy(() => this.remove(button));
-        }
-
-        public remove(button: Button) {
-            
+            this.stylus = new Kelpie(stage, StageLayer.World, icons.get("cursor"));
+            this.stylus.z = 100;
         }
 
         public select(button: Button) {
-            
+            this.stylus.pos = button.pos;
         }
     }
 }
