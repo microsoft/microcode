@@ -62,6 +62,7 @@ namespace kojac {
             super(editor, StageLayer.World, "page_editor");
             this.rules = pagedef.rules.map(ruledef => new RuleEditor(editor, ruledef));
             this.ensureFinalEmptyRule();
+            this.layout();
         }
 
         destroy() {
@@ -87,9 +88,10 @@ namespace kojac {
         }
 
         public layout() {
-            let top = 20;
+            let left = 10;
+            let top = 36;
             this.rules.forEach(rule => {
-                rule.layout(0, top);
+                rule.layout(left, top);
                 top += 18;
             });
         }
@@ -112,6 +114,14 @@ namespace kojac {
             this.doLbl = new Kelpie(editor, StageLayer.World, icons.get("do"));
             this.handleBtn = new Button(editor, StageLayer.World, {
                 icon: ruledef.condition,
+                x: 0, y: 0
+            });
+            this.whenInsertBtn = new Button(editor, StageLayer.World, {
+                icon: "insertion-point",
+                x: 0, y: 0
+            });
+            this.doInsertBtn = new Button(editor, StageLayer.World, {
+                icon: "insertion-point",
                 x: 0, y: 0
             });
             this.filters = [];
@@ -157,7 +167,28 @@ namespace kojac {
             this.handleBtn.pos = v;
             v.x += (this.handleBtn.width >> 1) + (this.whenLbl.width >> 1);
             this.whenLbl.pos = v;
-            //left += (this.whenLbl.width >> 1) + (this.whenInsertBtn.width >> 1);
+            v.x += (this.whenLbl.width >> 1) + (this.whenInsertBtn.width >> 1);
+            if (this.sensor) {
+                this.sensor.pos = v;
+                v.x += this.sensor.width;
+            }
+            this.filters.forEach(filter => {
+                filter.pos = v;
+                v.x += filter.width;
+            });
+            this.whenInsertBtn.pos = v;
+            v.x += 4 + (this.whenInsertBtn.width >> 1) + (this.doLbl.width >> 1);
+            this.doLbl.pos = v;
+            v.x += (this.doLbl.width >> 1) + (this.doInsertBtn.width >> 1);
+            if (this.actuator) {
+                this.actuator.pos = v;
+                v.x += this.actuator.width;
+            }
+            this.modifiers.forEach(modifier => {
+                modifier.pos = v;
+                v.x += modifier.width;
+            });
+            this.doInsertBtn.pos = v;
 
 
 
