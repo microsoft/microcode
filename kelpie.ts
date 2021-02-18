@@ -51,6 +51,10 @@ namespace kojac {
         get pos(): Vec2 {
             return new Vec2(this.x, this.y);
         }
+        set pos(v: Vec2) {
+            this.x = v.x;
+            this.y = v.y;
+        }
 
         //% blockCombine block="width" callInDebugger
         get width() {

@@ -26,7 +26,14 @@ namespace kojac {
             this.items.forEach((item, index) => {
                 const icon = icons.get(item.icon);
                 item.style = item.style || "white";
-                const button = new Button(this.stage, this.layer, item.style, item.icon, item.label, x, y, (button) => onSelect(button));
+                const button = new Button(this.stage, this.layer, {
+                    style: item.style,
+                    icon: item.icon,
+                    label: item.label,
+                    x,
+                    y,
+                    onClick: (button) => onSelect(button)
+                });
                 this.buttons.push(button);
                 if (direction === "right") { x += icon.width; }
                 else if (direction === "up") { y -= icon.height; }

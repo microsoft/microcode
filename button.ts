@@ -1,8 +1,15 @@
 namespace kojac {
     export class Button extends Component {
-        icon: Kelpie;
-        back: Kelpie;
-        text: TextSprite;
+        private icon: Kelpie;
+        private back: Kelpie;
+        private text: TextSprite;
+        private layer: StageLayer;
+        private style: ButtonStyle;
+        private iconId: string;
+        private label: string;
+        public x: number;
+        public y: number;
+        private onClick?: (button: Button) => void;
 
         //% blockCombine block="width" callInDebugger
         get width() { return this.back ? this.back.width : this.icon.width; }
@@ -20,17 +27,33 @@ namespace kojac {
             }
         }
 
+        //% blockCombine block="z" callInDebugger
+        get pos() { return new Vec2(this.x, this.y); }
+        set pos(v: Vec2) {
+            this.x = v.x;
+            this.y = v.y;
+        }
+
         constructor(
             stage: Stage,
-            private layer: StageLayer,
-            private style: ButtonStyle,
-            private iconId: string,
-            private label: string,
-            public x: number,
-            public y: number,
-            private onClick?: (button: Button) => void
+            layer: StageLayer,
+            opts: {
+                style?: ButtonStyle,
+                icon: string,
+                label?: string,
+                x: number,
+                y: number,
+                onClick?: (button: Button) => void
+            }
         ) {
             super(stage, layer, "button");
+            this.layer = layer;
+            this.style = opts.style;
+            this.iconId = opts.icon;
+            this.label = opts.label;
+            this.x = opts.x;
+            this.y = opts.y;
+            this.onClick = opts.onClick;
             this.buildSprite(0);
         }
 
@@ -88,11 +111,6 @@ namespace kojac {
             if (this.onClick) {
                 this.onClick(this);
             }
-        }
-
-        public moveTo(x: number, y: number) {
-            this.x = x;
-            this.y = y;
         }
 
         hover(hov: boolean) {

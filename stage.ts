@@ -133,14 +133,7 @@ namespace kojac {
             });
         }
 
-        // SpriteLike impl, so the stage can get a draw call from the scene.
-        z: number;
-        id: number;
-        flags?: number;
-        __update(camera: scene.Camera, dt: number): void {}
-        __serialize(offset: number): Buffer { return null; }
-
-        __draw(camera: scene.Camera): void {
+        draw(camera: scene.Camera) {
             LAYER_IDS.forEach(id => {
                 const layer = this.layers[id];
                 if (layer.flags & LayerFlags.NeedsSorting) {
@@ -155,6 +148,14 @@ namespace kojac {
                 comps.forEach((comp: any) => comp.draw && comp.draw(drawOffset))
             });
         }
+
+        // SpriteLike impl, so the stage can get a draw call from the scene.
+        z: number;
+        id: number;
+        flags?: number;
+        __update(camera: scene.Camera, dt: number): void {}
+        __serialize(offset: number): Buffer { return null; }
+        __draw(camera: scene.Camera): void { this.draw(camera); }
     }
 
     export class StageManager {

@@ -91,14 +91,14 @@ namespace kojac {
             this.currView = view;
         }
 
-        __draw(camera: scene.Camera): void {
+        draw(camera: scene.Camera) {
             this.drawToolbar();
             if (this.currView === HomeView.Console) {
                 this.drawConsoleView();
             } else if (this.currView === HomeView.Plot) {
                 this.drawPlotView();
             }
-            super.__draw(camera);
+            super.draw(camera);
         }
 
         private drawToolbar() {
