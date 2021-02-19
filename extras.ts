@@ -5,8 +5,8 @@ namespace kojac {
         constructor(
             public width: number,
             public height: number,
-            public minX: number,
-            public minY: number) {}
+            public left: number,
+            public top: number) {}
     }
 
     export class HitboxBounds {
@@ -29,8 +29,17 @@ namespace kojac {
 
         public static FromKelpie(s: Kelpie): HitboxBounds {
             const box = s.hitbox;
-            const left = Math.floor(s.x + box.minX);
-            const top = Math.floor(s.y + box.minY);
+            const left = Math.floor(s.left + box.left);
+            const top = Math.floor(s.top + box.top);
+            const right = Math.floor(left + box.width);
+            const bottom = Math.floor(top + box.height);
+            return new HitboxBounds(left, right, top, bottom);
+        }
+
+        public static FromButton(b: Button): HitboxBounds {
+            const box = b.hitbox;
+            const left = Math.floor(b.left + box.left);
+            const top = Math.floor(b.top + box.top);
             const right = Math.floor(left + box.width);
             const bottom = Math.floor(top + box.height);
             return new HitboxBounds(left, right, top, bottom);
@@ -77,26 +86,26 @@ namespace kojac {
 
         public static calculateHitbox(s: kojac.Kelpie): Hitbox {
             const i = s.image;
-            let minX = i.width;
-            let minY = i.height;
-            let maxX = 0;
-            let maxY = 0;
+            let left = i.width;
+            let top = i.height;
+            let right = 0;
+            let bottom = 0;
 
             for (let c = 0; c < i.width; c++) {
                 for (let r = 0; r < i.height; r++) {
                     if (i.getPixel(c, r)) {
-                        minX = Math.min(minX, c);
-                        minY = Math.min(minY, r);
-                        maxX = Math.max(maxX, c);
-                        maxY = Math.max(maxY, r);
+                        left = Math.min(left, c);
+                        top = Math.min(top, r);
+                        right = Math.max(right, c);
+                        bottom = Math.max(bottom, r);
                     }
                 }
             }
 
-            const width = maxX - minX + 1;
-            const height = maxY - minY + 1;
+            const width = right - left + 1;
+            const height = bottom - top + 1;
 
-            return new Hitbox(width, height, minX, minY);
+            return new Hitbox(width, height, left, top);
         }
 
         public static distSqBetweenSprites(a: kojac.Kelpie, b: kojac.Kelpie): number {

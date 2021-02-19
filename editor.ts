@@ -42,11 +42,59 @@ namespace kojac {
 
         public changed() { this._changed = true; }
 
+        moveUp() {
+            let dist = 8;
+            let candidates: Button[] = [];
+            let overlapping = this.getOverlapping();
+            while (!candidates.length) {
+                const bounds = {
+                    left: this.cursor.pos.x - (dist >> 1),
+                    top: this.cursor.pos.y - 20 - dist,
+                    width: dist,
+                    height: dist
+                };
+                const comps = this.quadtree.queryRect(bounds);
+                candidates = comps.filter(comp => comp.kind === "button") as Button[];
+                candidates = candidates.filter(btn => overlapping.indexOf(btn) < 0);
+                if (candidates.length) { break; }
+                dist += 8;
+                if (dist > 128) { break; }
+            }
+            if (candidates.length) {
+                this.cursor.moveTo(candidates[0]);
+            }
+        }
+
+        moveDown() {
+
+        }
+
+        moveLeft() {
+
+        }
+
+        moveRight() {
+
+        }
+
+        public getOverlapping(): Button[] {
+            const bounds = HitboxBounds.FromKelpie(this.cursor.stylus);
+            const comps = this.quadtree.queryRect({
+                left: bounds.left,
+                top: bounds.top,
+                width: bounds.width,
+                height: bounds.height
+            });
+            const buttons = comps.filter(comp => comp.kind === "button") as Button[];
+            return buttons;
+        }
+
         startup() {
             super.startup();
-            controller.right.onEvent(ControllerButtonEvent.Released, function() {
-                this.app.popStage();
-            });
+            controller.up.onEvent(ControllerButtonEvent.Pressed, () => this.moveUp());
+            controller.down.onEvent(ControllerButtonEvent.Pressed, () => this.moveDown());
+            controller.left.onEvent(ControllerButtonEvent.Pressed, () => this.moveLeft());
+            controller.right.onEvent(ControllerButtonEvent.Pressed, () => this.moveRight());
             this.cursor = new Cursor(this);
             this.currPage = 0;
             this.pageBtn = new EditorButton(this, StageLayer.HUD, {
@@ -113,7 +161,7 @@ namespace kojac {
                 top: 0,
                 width: 4096,
                 height: 4096
-            });
+            }, 1, 16);
             this.addToSpatialDb(this.pageBtn);
             this.addToSpatialDb(this.prevPageBtn);
             this.addToSpatialDb(this.nextPageBtn);
@@ -139,10 +187,10 @@ namespace kojac {
                 const ox = camera.drawOffsetX;
                 const oy = camera.drawOffsetY;
                 this.quadtree.forEach(bounds => {
-                    screen.drawLine(bounds.left - ox, bounds.top - oy, bounds.left + bounds.width - ox, bounds.top - oy, 15);
-                    screen.drawLine(bounds.left - ox, bounds.top + bounds.height - oy, bounds.left + bounds.width - ox, bounds.top + bounds.height - oy, 15);
-                    screen.drawLine(bounds.left - ox, bounds.top - oy, bounds.left - ox, bounds.top + bounds.height - oy, 15);
-                    screen.drawLine(bounds.left + bounds.width - ox, bounds.top - oy, bounds.left + bounds.width - ox, bounds.top + bounds.height - oy, 15);
+                    screen.drawLine(bounds.left - ox, bounds.top - oy, bounds.left + bounds.width - ox, bounds.top - oy, 5);
+                    screen.drawLine(bounds.left - ox, bounds.top + bounds.height - oy, bounds.left + bounds.width - ox, bounds.top + bounds.height - oy, 5);
+                    screen.drawLine(bounds.left - ox, bounds.top - oy, bounds.left - ox, bounds.top + bounds.height - oy, 5);
+                    screen.drawLine(bounds.left + bounds.width - ox, bounds.top - oy, bounds.left + bounds.width - ox, bounds.top + bounds.height - oy, 5);
                 });
             }
         }
@@ -200,7 +248,7 @@ namespace kojac {
             } else {
                 btn = rule.whenInsertBtn;
             }
-            this.editor.cursor.select(btn);
+            this.editor.cursor.snapTo(btn);
         }
 
         public addToSpatialDb() {

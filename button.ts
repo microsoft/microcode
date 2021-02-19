@@ -19,6 +19,8 @@ namespace kojac {
         get width() { return this.back ? this.back.width : this.icon.width; }
         //% blockCombine block="height" callInDebugger
         get height() { return this.back ? this.back.height : this.icon.height; }
+        //% blockCombine block="hitbox" callInDebugger
+        get hitbox() { return this.back ? this.back.hitbox : this.icon.hitbox; }
         //% blockCombine block="z" callInDebugger
         get z() { return this.icon.z; }
         set z(n: number) {

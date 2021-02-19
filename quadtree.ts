@@ -149,15 +149,19 @@ namespace kojac {
             }
         }
 
-        public retrieve(bounds: Bounds): Component[] {
+        /**
+         * Query for objects in rectangle.
+         * Note you will likely get objects outside the bounds. It depends on the quadtree resolution.
+         */
+        public queryRect(bounds: Bounds): Component[] {
             let comps: Component[] = this.nodes.map(node => node.comp);
 
             const indices = this.getIndices(bounds);
 
-            // If we have subtrees, retrieve their objects.
+            // If we have subtrees, query their objects.
             if (this.quads.length) {
                 for (let i = 0; i < indices.length; ++i) {
-                    comps = comps.concat(this.quads[indices[i]].retrieve(bounds));
+                    comps = comps.concat(this.quads[indices[i]].queryRect(bounds));
                 }
             }
 
