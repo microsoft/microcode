@@ -25,8 +25,8 @@ namespace kojac {
             this.hitbox = new Bounds({
                 width: 3,
                 height: 3,
-                left: -(this.stylus.width >> 1) - 1,
-                top: -(this.stylus.height >> 1) - 1
+                left: -(this.stylus.width >> 1),
+                top: -(this.stylus.height >> 1)
             });
             this.x = this.fromx = this.stylus.x;
             this.y = this.fromy = this.stylus.y;

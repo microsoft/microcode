@@ -67,16 +67,23 @@ namespace kojac {
                 }
             }
 
-            const width = right - left + 1;
-            const height = bottom - top + 1;
+            const width = right - left;
+            const height = bottom - top;
 
             return new Bounds({ width, height, left, top });
         }
 
         public static FromKelpie(k: Kelpie): Bounds {
             let box = Bounds.FromImage(k.image);
-            box = Bounds.Translate(box, new Vec2(-(k.width >> 1) - 1, -(k.height >> 1) - 1));
+            box = Bounds.Translate(box, new Vec2(-(k.width >> 1), -(k.height >> 1)));
             return box;
+        }
+
+        public render(drawOffset: Vec2, color: number) {
+            screen.drawLine(this.left - drawOffset.x, this.top - drawOffset.y, this.right - drawOffset.x, this.top - drawOffset.y, color);
+            screen.drawLine(this.left - drawOffset.x, this.bottom - drawOffset.y, this.right - drawOffset.x, this.bottom - drawOffset.y, color);
+            screen.drawLine(this.left - drawOffset.x, this.top - drawOffset.y, this.left - drawOffset.x, this.bottom - drawOffset.y, color);
+            screen.drawLine(this.right - drawOffset.x, this.top - drawOffset.y, this.right - drawOffset.x, this.bottom - drawOffset.y, color);
         }
     }
 }

@@ -112,6 +112,7 @@ namespace kojac {
             super(stage, "kelpie");
             this._x = screen.width - (img.width >> 1);
             this._y = screen.height - (img.height >> 1);
+            this._z = 0;
             this.image = img; // initializes hitbox
         }
 
@@ -140,14 +141,6 @@ namespace kojac {
             const top = this.top - (this.hud ? 0 : drawOffset.y);
 
             screen.drawTransparentImage(this._image, left, top);
-
-            /* Render hitbox
-            const bounds = HitboxBounds.FromKelpie(this);
-            screen.drawLine(bounds.left - drawOffset.x, bounds.top - drawOffset.y, bounds.right - drawOffset.x, bounds.top - drawOffset.y, 15);
-            screen.drawLine(bounds.left - drawOffset.x, bounds.bottom - drawOffset.y, bounds.right - drawOffset.x, bounds.bottom - drawOffset.y, 15);
-            screen.drawLine(bounds.left - drawOffset.x, bounds.top - drawOffset.y, bounds.left - drawOffset.x, bounds.bottom - drawOffset.y, 15);
-            screen.drawLine(bounds.right - drawOffset.x, bounds.top - drawOffset.y, bounds.right - drawOffset.x, bounds.bottom - drawOffset.y, 15);
-            */
         }
     }
 }

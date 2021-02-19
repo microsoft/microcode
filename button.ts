@@ -154,5 +154,10 @@ namespace kojac {
                 this.text.y = this.y - this.height;
             }
         }
+
+        draw(drawOffset: Vec2) {
+            //const bounds = Bounds.Translate(this.hitbox, this.pos);
+            //bounds.render(drawOffset, 15);
+        }
     }
 }
