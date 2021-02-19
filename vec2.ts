@@ -80,6 +80,10 @@ namespace kojac {
         public static Determinant(a: Vec2, b: Vec2): number {
             return a.x * b.y - a.y - b.x;
         }
+
+        public static DistSq(a: Vec2, b: Vec2): number {
+            return Vec2.MagnitudeSq(Vec2.Sub(a, b));
+        }
     }
 
     export function mkVec2(x = 0, y = 0): Vec2 {

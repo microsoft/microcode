@@ -23,6 +23,10 @@ namespace kojac {
         }
     }
 
+    const SEARCH_INCR = 8;
+    const SEARCH_BUFFER = 20;
+    const SEARCH_MAX = 160;
+
     export class Editor extends Stage {
         private quadtree: QuadTree;
         private progdef: ProgramDefn;
@@ -42,72 +46,97 @@ namespace kojac {
 
         public changed() { this._changed = true; }
 
-        moveUp() {
-            let dist = 8;
+        // Move the cursor to the best nearby candidate button.
+        private move(
+            boundsFn: (dist: number) => Bounds,
+            filterFn: (candidates: Button[]) => Button[]
+        ) {
+            let dist = SEARCH_INCR;
             let candidates: Button[] = [];
             let overlapping = this.getOverlapping();
             // Query upward, incrementally casting a wider net, looking for a nearby button.
             while (!candidates.length) {
-                const bounds = {
-                    left: this.cursor.pos.x - (dist >> 1),
-                    top: this.cursor.pos.y - 20 - dist,
-                    width: dist,
-                    height: dist
-                };
+                const bounds = boundsFn(dist);
                 const comps = this.quadtree.queryRect(bounds);
                 // Filter to buttons.
                 candidates = comps.filter(comp => comp.kind === "button") as Button[];
                 // Filter buttons overlapping the cursor.
                 candidates = candidates.filter(btn => overlapping.indexOf(btn) < 0);
-                // Filter buttons below or level with the cursor.
-                candidates = candidates.filter(btn => btn.y <= this.cursor.y);
+                // Filter buttons per caller.
+                candidates = filterFn(candidates);
                 if (candidates.length) { break; }
                 // No candidates found, widen the search area.
-                dist += 8;
-                if (dist > 128) { break; }
+                dist += SEARCH_INCR;
+                if (dist > SEARCH_MAX) { break; }
             }
             if (candidates.length) {
-                candidates = candidates.sort((a, b) => Vec2.MagnitudeSq(Vec2.Sub(b.pos, a.pos)));
+                candidates = candidates.sort((a, b) => Vec2.DistSq(this.cursor.pos, a.pos) - Vec2.DistSq(this.cursor, b.pos));
                 this.cursor.moveTo(candidates[0]);
             }
+        }
+
+        moveUp() {
+            this.move(
+                (dist) => {
+                    return {
+                        left: this.cursor.pos.x - (dist >> 1),
+                        top: this.cursor.pos.y - SEARCH_BUFFER - dist,
+                        width: dist,
+                        height: dist
+                    };
+                },
+                (candidates) => {
+                    // Filter buttons below or level with the cursor.
+                    return candidates.filter(btn => btn.y < this.cursor.y);
+                });
         }
 
         moveDown() {
-            let dist = 8;
-            let candidates: Button[] = [];
-            let overlapping = this.getOverlapping();
-            // Query downward, incrementally casting a wider net, looking for a nearby button.
-            while (!candidates.length) {
-                const bounds = {
-                    left: this.cursor.pos.x - (dist >> 1),
-                    top: this.cursor.pos.y + 20,
-                    width: dist,
-                    height: dist
-                };
-                const comps = this.quadtree.queryRect(bounds);
-                // Filter to buttons.
-                candidates = comps.filter(comp => comp.kind === "button") as Button[];
-                // Filter buttons overlapping the cursor.
-                candidates = candidates.filter(btn => overlapping.indexOf(btn) < 0);
-                // Filter buttons above or level with the cursor.
-                candidates = candidates.filter(btn => btn.y >= this.cursor.y);
-                if (candidates.length) { break; }
-                // No candidates found, widen the search area.
-                dist += 8;
-                if (dist > 128) { break; }
-            }
-            if (candidates.length) {
-                candidates = candidates.sort((a, b) => Vec2.MagnitudeSq(Vec2.Sub(b.pos, a.pos)));
-                this.cursor.moveTo(candidates[0]);
-            }
+            this.move(
+                (dist) => {
+                    return {
+                        left: this.cursor.pos.x - (dist >> 1),
+                        top: this.cursor.pos.y + SEARCH_BUFFER,
+                        width: dist,
+                        height: dist
+                    };
+                },
+                (candidates) => {
+                    // Filter buttons above or level with the cursor.
+                    return candidates.filter(btn => btn.y > this.cursor.y);
+                });
         }
 
         moveLeft() {
-
+            this.move(
+                (dist) => {
+                    return {
+                        left: this.cursor.pos.x - SEARCH_BUFFER - dist,
+                        top: this.cursor.pos.y - (dist >> 1),
+                        width: dist,
+                        height: dist
+                    };
+                },
+                (candidates) => {
+                    // Filter buttons right of or level with the cursor.
+                    return candidates.filter(btn => btn.x < this.cursor.x);
+                });
         }
 
         moveRight() {
-
+            this.move(
+                (dist) => {
+                    return {
+                        left: this.cursor.pos.x + 20,
+                        top: this.cursor.pos.y - (dist >> 1),
+                        width: dist,
+                        height: dist
+                    };
+                },
+                (candidates) => {
+                    // Filter buttons left of or level with the cursor.
+                    return candidates.filter(btn => btn.x > this.cursor.x);
+                });
         }
 
         public getOverlapping(): Button[] {
