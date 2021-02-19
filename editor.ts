@@ -126,7 +126,7 @@ namespace kojac {
             this.move(
                 (dist) => {
                     return {
-                        left: this.cursor.pos.x + 20,
+                        left: this.cursor.pos.x + SEARCH_BUFFER,
                         top: this.cursor.pos.y - (dist >> 1),
                         width: dist,
                         height: dist
@@ -270,7 +270,7 @@ namespace kojac {
 
         draw(camera: scene.Camera) {
             super.draw(camera);
-            /* Draw quadtree
+            /* Draw quadtree */
             if (this.quadtree) {
                 const ox = camera.drawOffsetX;
                 const oy = camera.drawOffsetY;
@@ -281,7 +281,7 @@ namespace kojac {
                     screen.drawLine(bounds.left + bounds.width - ox, bounds.top - oy, bounds.left + bounds.width - ox, bounds.top + bounds.height - oy, 5);
                 });
             }
-            */
+
         }
     }
 

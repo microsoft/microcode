@@ -154,7 +154,7 @@ namespace kojac {
          * Note you will likely get objects outside the bounds. It depends on the quadtree resolution.
          */
         public query(bounds: Bounds): Button[] {
-            let comps = this.nodes.map(node => node.comp);
+            let comps: Button[] = this.nodes.map(node => node.comp);
 
             const indices = this.getIndices(bounds);
 
