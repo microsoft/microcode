@@ -16,6 +16,7 @@ namespace kojac {
         constructor() {
             // One interval delay to ensure all static constructors have executed.
             setTimeout(() => {
+                controller.setRepeatDefault(250, 30);
                 icons.init();
                 this.stageManager = new StageManager();
                 const home = new Home(this);
