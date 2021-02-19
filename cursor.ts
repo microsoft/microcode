@@ -26,17 +26,17 @@ namespace kojac {
             this.y = this.fromy = this.stylus.y;
         }
 
-        public moveTo(button: Button) {
+        public moveTo(x: number, y: number) {
             this.fromx = this.x;
             this.fromy = this.y;
-            this.x = button.x;
-            this.y = button.y;
+            this.x = x;
+            this.y = y;
             this.lerpt = control.millis();
         }
 
-        public snapTo(button: Button) {
-            this.x = this.fromx = this.stylus.x = button.x;
-            this.y = this.fromy = this.stylus.y = button.y;
+        public snapTo(x: number, y: number) {
+            this.x = this.fromx = this.stylus.x = x;
+            this.y = this.fromy = this.stylus.y = y;
         }
 
         update(dt: number) {

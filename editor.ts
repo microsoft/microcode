@@ -67,9 +67,9 @@ namespace kojac {
                 if (dist > SEARCH_MAX) { break; }
             }
             if (candidates.length) {
-                candidates = candidates.sort((a, b) => Vec2.DistSq(this.cursor.pos, a.pos) - Vec2.DistSq(this.cursor, b.pos));
+                candidates = candidates.sort((a, b) => Vec2.DistSq(this.cursor.pos, a.pos) - Vec2.DistSq(this.cursor.pos, b.pos));
                 const btn = candidates.shift();
-                this.cursor.moveTo(btn);
+                this.cursor.moveTo(btn.x, btn.y);
             }
         }
 
@@ -341,7 +341,7 @@ namespace kojac {
             } else {
                 btn = rule.whenInsertBtn;
             }
-            this.editor.cursor.snapTo(btn);
+            this.editor.cursor.snapTo(btn.x, btn.y);
         }
 
         public addToSpatialDb() {
