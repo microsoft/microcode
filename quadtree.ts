@@ -1,10 +1,4 @@
 namespace kojac {
-    export type Bounds = {
-        left: number;
-        top: number;
-        width: number;
-        height: number;
-    };
 
     interface Node<T> {
         bounds: Bounds;
@@ -46,36 +40,36 @@ namespace kojac {
             const top = this.bounds.top;
 
             // top-right
-            this.quads[0] = new QuadTree<T>({
+            this.quads[0] = new QuadTree<T>(new Bounds({
                 left: left + nextWidth,
                 top: top,
                 width: nextWidth,
                 height: nextHeight
-            }, this.maxObjects, this.minDimension);
+            }), this.maxObjects, this.minDimension);
 
             // top-left
-            this.quads[1] = new QuadTree<T>({
+            this.quads[1] = new QuadTree<T>(new Bounds({
                 left: left,
                 top: top,
                 width: nextWidth,
                 height: nextHeight
-            }, this.maxObjects, this.minDimension);
+            }), this.maxObjects, this.minDimension);
 
             // bottom-left
-            this.quads[2] = new QuadTree<T>({
+            this.quads[2] = new QuadTree<T>(new Bounds({
                 left: left,
                 top: top + nextHeight,
                 width: nextWidth,
                 height: nextHeight
-            }, this.maxObjects, this.minDimension);
+            }), this.maxObjects, this.minDimension);
 
             // bottom-right
-            this.quads[3] = new QuadTree<T>({
+            this.quads[3] = new QuadTree<T>(new Bounds({
                 left: left + nextWidth,
                 top: top + nextHeight,
                 width: nextWidth,
                 height: nextHeight
-            }, this.maxObjects, this.minDimension);
+            }), this.maxObjects, this.minDimension);
 
             return true;
         }

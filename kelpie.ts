@@ -2,7 +2,6 @@ namespace kojac {
     export enum KelpieFlags {
         Invisible = 1 >> 0,
         HUD = 1 >> 1,
-        Moved = 1 >> 2
     }
 
     export type KelpieHandler = (kelpie: Kelpie) => void;
@@ -17,15 +16,12 @@ namespace kojac {
         private _z: number;
         private _image: Image;
         private _flags: number;
-        private _hitbox: Hitbox;
-        private _moveHandlers: KelpieHandler[];
 
         //% blockCombine block="x" callInDebugger
         get x(): number { return this._x; }
         set x(v: number) {
             if (v !== this._x) {
                 this._x = v;
-                this._flags |= KelpieFlags.Moved;
             }
         }
 
@@ -34,7 +30,6 @@ namespace kojac {
         set y(v: number) {
             if (v !== this._y) {
                 this._y = v;
-                this._flags |= KelpieFlags.Moved;
             }
         }
 
@@ -105,10 +100,6 @@ namespace kojac {
             this.setImage(img);
         }
 
-        //% blockCombine block="hitbox" callInDebugger
-        get hitbox(): Hitbox { return this._hitbox; }
-        set hitbox(v: Hitbox) { this._hitbox = v; }
-
         //% blockCombine block="invisible" callInDebugger
         get invisible() { return !!(this._flags & KelpieFlags.Invisible); }
         set invisible(b: boolean) { b ? this._flags |= KelpieFlags.Invisible : this._flags &= ~KelpieFlags.Invisible; }
@@ -126,19 +117,11 @@ namespace kojac {
 
         public destroy() {
             this._image = undefined;
-            this._hitbox = undefined;
-            this._moveHandlers = undefined;
             super.destroy();
-        }
-
-        public onMoved(handler: KelpieHandler) {
-            this._moveHandlers = this._moveHandlers || [];
-            this._moveHandlers.push(handler);
         }
 
         protected setImage(img: Image) {
             this._image = img;
-            this._hitbox = util.calculateHitbox(this);
         }
 
         private isOffScreen(drawOffset: Vec2): boolean {
@@ -147,20 +130,6 @@ namespace kojac {
                 this.top - drawOffset.y > screen.height ||
                 this.right - drawOffset.x < 0 ||
                 this.bottom - drawOffset.y < 0);
-        }
-
-        private fireMoved() {
-            const handlers = this._moveHandlers || [];
-            for (const handler of handlers) {
-                handler(this);
-            }
-        }
-
-        update(dt: number) {
-            if (this._flags & KelpieFlags.Moved) {
-                this._flags &= ~KelpieFlags.Moved;
-                this.fireMoved();
-            }
         }
 
         draw(drawOffset: Vec2) {

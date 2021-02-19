@@ -24,7 +24,6 @@ namespace kojac {
     }
 
     const SEARCH_INCR = 8;
-    const SEARCH_BUFFER = 8;
     const SEARCH_MAX = 160;
 
     export class Editor extends Stage {
@@ -76,12 +75,12 @@ namespace kojac {
         moveUp() {
             this.move(
                 (dist) => {
-                    return {
+                    return new Bounds({
                         left: this.cursor.pos.x - (dist >> 1),
-                        top: this.cursor.pos.y - SEARCH_BUFFER - dist,
+                        top: this.cursor.pos.y - dist,
                         width: dist,
                         height: dist
-                    };
+                    });
                 },
                 (candidates) => {
                     // Filter buttons below or level with the cursor.
@@ -92,12 +91,12 @@ namespace kojac {
         moveDown() {
             this.move(
                 (dist) => {
-                    return {
+                    return new Bounds({
                         left: this.cursor.pos.x - (dist >> 1),
-                        top: this.cursor.pos.y + SEARCH_BUFFER,
+                        top: this.cursor.pos.y,
                         width: dist,
                         height: dist
-                    };
+                    });
                 },
                 (candidates) => {
                     // Filter buttons above or level with the cursor.
@@ -108,12 +107,12 @@ namespace kojac {
         moveLeft() {
             this.move(
                 (dist) => {
-                    return {
-                        left: this.cursor.pos.x - SEARCH_BUFFER - dist,
+                    return new Bounds({
+                        left: this.cursor.pos.x - dist,
                         top: this.cursor.pos.y - (dist >> 1),
                         width: dist,
                         height: dist
-                    };
+                    });
                 },
                 (candidates) => {
                     // Filter buttons right of or level with the cursor.
@@ -124,12 +123,12 @@ namespace kojac {
         moveRight() {
             this.move(
                 (dist) => {
-                    return {
-                        left: this.cursor.pos.x + SEARCH_BUFFER,
+                    return new Bounds({
+                        left: this.cursor.pos.x,
                         top: this.cursor.pos.y - (dist >> 1),
                         width: dist,
                         height: dist
-                    };
+                    });
                 },
                 (candidates) => {
                     // Filter buttons left of or level with the cursor.
@@ -146,16 +145,11 @@ namespace kojac {
         }
 
         private getOverlapping(): Button[] {
-            const bounds = HitboxBounds.FromKelpie(this.cursor.stylus);
-            let btns = this.quadtree.query({
-                left: bounds.left,
-                top: bounds.top,
-                width: bounds.width,
-                height: bounds.height
-            });
+            const crsb = Bounds.Translate(this.cursor.hitbox, this.cursor.pos);
+            let btns = this.quadtree.query(crsb);
             btns = btns.filter(btn => {
-                const btnb = HitboxBounds.FromButton(btn);
-                return HitboxBounds.Intersects(bounds, btnb);
+                const btnb = Bounds.Translate(btn.hitbox, btn.pos);
+                return Bounds.Intersects(crsb, btnb);
             });
             return btns;
         }
@@ -247,12 +241,12 @@ namespace kojac {
             if (this.quadtree) {
                 this.quadtree.clear();
             }
-            this.quadtree = new QuadTree<Button>({
+            this.quadtree = new QuadTree<Button>(new Bounds({
                 left: 0,
                 top: 0,
                 width: 4096,
                 height: 4096
-            }, 1, 16);
+            }), 1, 16);
             this.addToSpatialDb(this.pageBtn);
             this.addToSpatialDb(this.prevPageBtn);
             this.addToSpatialDb(this.nextPageBtn);
@@ -261,14 +255,9 @@ namespace kojac {
             this.pageEditor.addToSpatialDb();
         }
 
-        public addToSpatialDb(button: Button) {
+        public addToSpatialDb(btn: Button) {
             if (this.quadtree) {
-                this.quadtree.insert({
-                    left: button.left,
-                    top: button.top,
-                    width: button.width,
-                    height: button.height
-                }, button);
+                this.quadtree.insert(Bounds.Translate(btn.hitbox, btn.pos), btn);
             }
         }
 

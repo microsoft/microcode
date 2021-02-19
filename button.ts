@@ -9,6 +9,7 @@ namespace kojac {
         private label: string;
         public x: number;
         public y: number;
+        public hitbox: Bounds;
         private onClick?: (button: Button) => void;
 
         //% blockCombine block="left" callInDebugger
@@ -19,8 +20,6 @@ namespace kojac {
         get width() { return this.back ? this.back.width : this.icon.width; }
         //% blockCombine block="height" callInDebugger
         get height() { return this.back ? this.back.height : this.icon.height; }
-        //% blockCombine block="hitbox" callInDebugger
-        get hitbox() { return this.back ? this.back.hitbox : this.icon.hitbox; }
         //% blockCombine block="z" callInDebugger
         get z() { return this.icon.z; }
         set z(n: number) {
@@ -95,6 +94,11 @@ namespace kojac {
                 this.back.x = this.x;
                 this.back.y = this.y;
                 this.back.z = this.z - 1;
+            }
+            if (this.back) {
+                this.hitbox = Bounds.FromKelpie(this.back);
+            } else {
+                this.hitbox = Bounds.FromKelpie(this.icon);
             }
         }
 

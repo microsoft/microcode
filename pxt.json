@@ -9,7 +9,6 @@
     "files": [
         "main.ts",
         "README.md",
-        "extras.ts",
         "button.ts",
         "camera.ts",
         "component.ts",
@@ -26,7 +25,8 @@
         "cursor.ts",
         "home.ts",
         "agent.ts",
-        "quadtree.ts"
+        "quadtree.ts",
+        "bounds.ts"
     ],
     "testFiles": [],
     "targetVersions": {
