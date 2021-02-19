@@ -26,7 +26,8 @@
         "cursor.ts",
         "home.ts",
         "agent.ts",
-        "quadtree.ts"
+        "quadtree.ts",
+        "bezier-easing.ts"
     ],
     "testFiles": [],
     "targetVersions": {

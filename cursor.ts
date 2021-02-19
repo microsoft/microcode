@@ -6,6 +6,9 @@ namespace kojac {
         stylus: Kelpie;
         x: number;
         y: number;
+        fromx: number;
+        fromy: number;
+
 
         public get pos() { return this.stylus.pos; }
         public get hitbox() { return this.stylus.hitbox; }
