@@ -28,7 +28,7 @@ namespace kojac {
     const SEARCH_MAX = 160;
 
     export class Editor extends Stage {
-        private quadtree: QuadTree<Button>;
+        private quadtree: QuadTree;
         private progdef: ProgramDefn;
         private currPage: number;
         private pageBtn: Button;
@@ -243,7 +243,7 @@ namespace kojac {
             if (this.quadtree) {
                 this.quadtree.clear();
             }
-            this.quadtree = new QuadTree<Button>({
+            this.quadtree = new QuadTree({
                 left: 0,
                 top: 0,
                 width: 4096,

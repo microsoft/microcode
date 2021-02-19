@@ -6,16 +6,16 @@ namespace kojac {
         height: number;
     };
 
-    type Node<T> = {
+    type Node = {
         bounds: Bounds;
-        comp: T;
+        comp: Button;
     };
 
     // QuadTree for spatial indexing of objects.
     // https://en.wikipedia.org/wiki/Quadtree
-    export class QuadTree<T> {
-        private quads: QuadTree<T>[];
-        private nodes: Node<T>[];
+    export class QuadTree {
+        private quads: QuadTree[];
+        private nodes: Node[];
 
         constructor(
             public bounds: Bounds,      // Max bounds of the indexed space.
@@ -46,7 +46,7 @@ namespace kojac {
             const top = this.bounds.top;
 
             // top-right
-            this.quads[0] = new QuadTree<T>({
+            this.quads[0] = new QuadTree({
                 left: left + nextWidth,
                 top: top,
                 width: nextWidth,
@@ -54,7 +54,7 @@ namespace kojac {
             }, this.maxObjects, this.minDimension);
 
             // top-left
-            this.quads[1] = new QuadTree<T>({
+            this.quads[1] = new QuadTree({
                 left: left,
                 top: top,
                 width: nextWidth,
@@ -62,7 +62,7 @@ namespace kojac {
             }, this.maxObjects, this.minDimension);
 
             // bottom-left
-            this.quads[2] = new QuadTree<T>({
+            this.quads[2] = new QuadTree({
                 left: left,
                 top: top + nextHeight,
                 width: nextWidth,
@@ -70,7 +70,7 @@ namespace kojac {
             }, this.maxObjects, this.minDimension);
 
             // bottom-right
-            this.quads[3] = new QuadTree<T>({
+            this.quads[3] = new QuadTree({
                 left: left + nextWidth,
                 top: top + nextHeight,
                 width: nextWidth,
@@ -113,7 +113,7 @@ namespace kojac {
             return indices;
         }
 
-        public insert(bounds: Bounds, comp: T) {
+        public insert(bounds: Bounds, comp: Button) {
             // If we have subtrees, call insert on matching.
             if (this.quads.length) {
                 const indices = this.getIndices(bounds);
@@ -153,7 +153,7 @@ namespace kojac {
          * Query for objects in rectangle.
          * Note you will likely get objects outside the bounds. It depends on the quadtree resolution.
          */
-        public query(bounds: Bounds): T[] {
+        public query(bounds: Bounds): Button[] {
             let comps = this.nodes.map(node => node.comp);
 
             const indices = this.getIndices(bounds);
