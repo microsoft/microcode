@@ -2,7 +2,7 @@ namespace kojac {
 
     class EditorButton extends Button {
         constructor(
-            public editor: Editor,
+            private editor: Editor,
             opts: {
                 style?: ButtonStyle,
                 icon: string,
@@ -43,11 +43,47 @@ namespace kojac {
         public changed() { this._changed = true; }
 
         private okClicked() {
+            this.app.save(SAVESLOT_AUTO, this.progdef);
             this.app.stageManager.pop();
         }
 
         private cancelClicked() {
             this.app.stageManager.pop();
+        }
+
+        private nextPage() {
+            this.pageEditor.destroy();
+            this.currPage += 1;
+            this.currPage %= this.progdef.pages.length;
+            this.pageBtn.setIcon(PAGE_IDS[this.currPage]);
+            this.pageEditor = new PageEditor(this, this.progdef.pages[this.currPage]);
+        }
+
+        private prevPage() {
+            this.pageEditor.destroy();
+            this.currPage -= 1;
+            if (this.currPage < 0) {
+                this.currPage = this.progdef.pages.length - 1;
+            }
+            this.pageBtn.setIcon(PAGE_IDS[this.currPage]);
+            this.pageEditor = new PageEditor(this, this.progdef.pages[this.currPage]);
+        }
+
+        private pickPage() {
+            const picker = new Picker(this.app, {
+                onClick: (iconId) => this.switchToPage(iconId)
+            });
+            picker.show();
+        }
+
+        private switchToPage(iconId: string) {
+            const index = PAGE_IDS.indexOf(iconId);
+            if (index >= 0) {
+                this.pageEditor.destroy();
+                this.currPage = index;
+                this.pageBtn.setIcon(PAGE_IDS[this.currPage]);
+                this.pageEditor = new PageEditor(this, this.progdef.pages[this.currPage]);
+            }
         }
 
         startup() {
@@ -68,21 +104,24 @@ namespace kojac {
                 icon: PAGE_IDS[this.currPage],
                 hud: true,
                 x: scene.screenWidth() >> 1,
-                y: 8
+                y: 8,
+                onClick: () => this.pickPage()
             });
             this.nextPageBtn = new EditorButton(this, {
                 style: "white",
                 icon: "next_page",
                 hud: true,
                 x: (scene.screenWidth() >> 1) + 16,
-                y: 8
+                y: 8,
+                onClick: () => this.nextPage()
             });
             this.prevPageBtn = new EditorButton(this, {
                 style: "white",
                 icon: "prev_page",
                 hud: true,
                 x: (scene.screenWidth() >> 1) - 16,
-                y: 8
+                y: 8,
+                onClick: () => this.prevPage()
             });
             this.okBtn = new EditorButton(this, {
                 style: "white",
@@ -110,11 +149,14 @@ namespace kojac {
 
         activate() {
             super.activate();
-            scene.setBackgroundColor(11);
+            //scene.setBackgroundColor(11);
+            scene.setBackgroundImage(icondb.gradient_0);
             this.progdef = this.app.load(SAVESLOT_AUTO);
-            this.currPage = 0;
             this.pageBtn.setIcon(PAGE_IDS[this.currPage]);
-            this.pageEditor = new PageEditor(this, this.progdef.pages[this.currPage]);
+            if (!this.pageEditor) {
+                this.pageEditor = new PageEditor(this, this.progdef.pages[this.currPage]);
+                this.pageEditor.initCursor();
+            }
         }
 
         update(dt: number) {
@@ -176,7 +218,6 @@ namespace kojac {
             this.rules = pagedef.rules.map(ruledef => new RuleEditor(editor, ruledef));
             this.ensureFinalEmptyRule();
             this.layout();
-            this.initCursor();
         }
 
         destroy() {
@@ -210,7 +251,7 @@ namespace kojac {
             });
         }
 
-        private initCursor() {
+        public initCursor() {
             const rule = this.rules[0];
             let btn: Button;
             if (rule.sensor) {

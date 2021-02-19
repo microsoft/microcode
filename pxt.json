@@ -26,7 +26,8 @@
         "home.ts",
         "agent.ts",
         "quadtree.ts",
-        "bounds.ts"
+        "bounds.ts",
+        "picker.ts"
     ],
     "testFiles": [],
     "targetVersions": {
