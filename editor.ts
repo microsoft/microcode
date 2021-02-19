@@ -24,11 +24,11 @@ namespace kojac {
     }
 
     const SEARCH_INCR = 8;
-    const SEARCH_BUFFER = 20;
+    const SEARCH_BUFFER = 8;
     const SEARCH_MAX = 160;
 
     export class Editor extends Stage {
-        private quadtree: QuadTree;
+        private quadtree: QuadTree<Button>;
         private progdef: ProgramDefn;
         private currPage: number;
         private pageBtn: Button;
@@ -54,10 +54,9 @@ namespace kojac {
             let dist = SEARCH_INCR;
             let candidates: Button[] = [];
             let overlapping = this.getOverlapping();
-            // Query upward, incrementally casting a wider net, looking for a nearby button.
-            while (!candidates.length) {
+            while (true) {
                 const bounds = boundsFn(dist);
-                const comps = this.quadtree.query(bounds);
+                candidates = this.quadtree.query(bounds);
                 // Filter buttons overlapping the cursor.
                 candidates = candidates.filter(btn => overlapping.indexOf(btn) < 0);
                 // Filter buttons per caller.
@@ -148,12 +147,17 @@ namespace kojac {
 
         private getOverlapping(): Button[] {
             const bounds = HitboxBounds.FromKelpie(this.cursor.stylus);
-            return this.quadtree.query({
+            let btns = this.quadtree.query({
                 left: bounds.left,
                 top: bounds.top,
                 width: bounds.width,
                 height: bounds.height
             });
+            btns = btns.filter(btn => {
+                const btnb = HitboxBounds.FromButton(btn);
+                return HitboxBounds.Intersects(bounds, btnb);
+            });
+            return btns;
         }
 
         private okClicked() {
@@ -243,7 +247,7 @@ namespace kojac {
             if (this.quadtree) {
                 this.quadtree.clear();
             }
-            this.quadtree = new QuadTree({
+            this.quadtree = new QuadTree<Button>({
                 left: 0,
                 top: 0,
                 width: 4096,
@@ -270,7 +274,7 @@ namespace kojac {
 
         draw(camera: scene.Camera) {
             super.draw(camera);
-            /* Draw quadtree */
+            /* Draw quadtree
             if (this.quadtree) {
                 const ox = camera.drawOffsetX;
                 const oy = camera.drawOffsetY;
@@ -281,7 +285,7 @@ namespace kojac {
                     screen.drawLine(bounds.left + bounds.width - ox, bounds.top - oy, bounds.left + bounds.width - ox, bounds.top + bounds.height - oy, 5);
                 });
             }
-
+            */
         }
     }
 
