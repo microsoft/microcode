@@ -52,7 +52,7 @@ namespace kojac {
 
         startup() {
             super.startup();
-            controller.left.onEvent(ControllerButtonEvent.Released, function() {
+            controller.left.onEvent(ControllerButtonEvent.Released, function () {
                 this.app.pushStage(new Editor(this.app));
             });
         }
@@ -61,8 +61,8 @@ namespace kojac {
             super.activate();
             scene.setBackgroundColor(15);
             this.logLines = [];
-            this.log("  _ . _ _ _ . _ _  _| _", 7, LineJustification.Center); 
-            this.log(" ||||(_| (_).(_(_)(_|(-", 7, LineJustification.Center); 
+            this.log("  _ . _ _ _ . _ _  _| _", 7, LineJustification.Center);
+            this.log(" ||||(_| (_).(_(_)(_|(-", 7, LineJustification.Center);
             this.log("");
             this.log(" Welcome to micro:code!", 7, LineJustification.Center);
             this.log("");

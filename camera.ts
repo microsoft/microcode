@@ -10,7 +10,7 @@ namespace kojac {
         //% blockCombine block="pos" callInDebugger
         public get pos(): Vec2 { return mkVec2(this.x, this.y); }
         public set pos(v: Vec2) { this.x = v.x; this.y = v.y; }
-        
+
         constructor(stage: Stage) {
             super(stage, StageLayer.HUD, "camera");
             this.x = scene.cameraProperty(CameraProperty.X);
@@ -49,7 +49,7 @@ namespace kojac {
             }
             if (dy >= this.heightOver2) {
                 nxtY = y - this.heightOver2;
-            } 
+            }
             this.x = nxtX;
             this.y = nxtY;
             this.camera_movement_x = this.x - camX;

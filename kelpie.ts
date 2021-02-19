@@ -18,7 +18,7 @@ namespace kojac {
         private _flags: number;
         private _hitbox: Hitbox;
         private _moveHandlers: KelpieHandler[];
-        
+
         //% blockCombine block="x" callInDebugger
         get x(): number { return this._x; }
         set x(v: number) {
@@ -145,7 +145,7 @@ namespace kojac {
         }
 
         private fireMoved() {
-            const handlers = this._moveHandlers|| [];
+            const handlers = this._moveHandlers || [];
             for (const handler of handlers) {
                 handler(this);
             }
@@ -169,10 +169,10 @@ namespace kojac {
 
             /* Render hitbox */
             const bounds = HitboxBounds.FromKelpie(this);
-            screen.drawLine(bounds.left  - drawOffset.x, bounds.top    - drawOffset.y, bounds.right - drawOffset.x, bounds.top    - drawOffset.y, 15);
-            screen.drawLine(bounds.left  - drawOffset.x, bounds.bottom - drawOffset.y, bounds.right - drawOffset.x, bounds.bottom - drawOffset.y, 15);
-            screen.drawLine(bounds.left  - drawOffset.x, bounds.top    - drawOffset.y, bounds.left  - drawOffset.x, bounds.bottom - drawOffset.y, 15);
-            screen.drawLine(bounds.right - drawOffset.x, bounds.top    - drawOffset.y, bounds.right - drawOffset.x, bounds.bottom - drawOffset.y, 15);
+            screen.drawLine(bounds.left - drawOffset.x, bounds.top - drawOffset.y, bounds.right - drawOffset.x, bounds.top - drawOffset.y, 15);
+            screen.drawLine(bounds.left - drawOffset.x, bounds.bottom - drawOffset.y, bounds.right - drawOffset.x, bounds.bottom - drawOffset.y, 15);
+            screen.drawLine(bounds.left - drawOffset.x, bounds.top - drawOffset.y, bounds.left - drawOffset.x, bounds.bottom - drawOffset.y, 15);
+            screen.drawLine(bounds.right - drawOffset.x, bounds.top - drawOffset.y, bounds.right - drawOffset.x, bounds.bottom - drawOffset.y, 15);
         }
     }
 }

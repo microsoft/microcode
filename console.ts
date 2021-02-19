@@ -78,7 +78,7 @@ namespace kojac {
         }
 
         private drawPlotView() {
-            
+
         }
     }
 }

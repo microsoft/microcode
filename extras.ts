@@ -6,7 +6,7 @@ namespace kojac {
             public width: number,
             public height: number,
             public left: number,
-            public top: number) {}
+            public top: number) { }
     }
 
     export class HitboxBounds {

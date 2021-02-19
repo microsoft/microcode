@@ -123,7 +123,7 @@ namespace kojac {
             return defn;
         }
     }
-    
+
     export class PageDefn {
         rules: RuleDefn[];
 
@@ -328,7 +328,7 @@ namespace kojac {
                 .filter(tile => c.allow.categories.some(cat => cat === tile.category) || c.allow.tiles.some(tid => tid === tile.tid))
                 // Filter "disallows".
                 .filter(tile => !c.disallow.categories.some(cat => cat === tile.category) && !c.disallow.tiles.some(tid => tid === tile.tid));
-        
+
             // TODO: c.handling
 
             return compat;
@@ -356,7 +356,7 @@ namespace kojac {
                 tiles: [],
                 categories: []
             },
-            handling: { }
+            handling: {}
         };
         return c;
     }
@@ -442,7 +442,7 @@ namespace kojac {
 
     export const tiles: TileDatabase = {
         sensors: {
-		    [tid.sensor.always]: {
+            [tid.sensor.always]: {
                 type: TileType.SENSOR,
                 tid: tid.sensor.always,
                 name: "Always",
@@ -581,7 +581,7 @@ namespace kojac {
                 tid: tid.actuator.express,
                 name: "Express",
                 constraints: {
-                    provides: ["expression-consumer"], 
+                    provides: ["expression-consumer"],
                     allow: {
                         categories: ["expression"]
                     }
@@ -658,7 +658,7 @@ namespace kojac {
                 constraints: {
                     requires: ["expression-consumer"],
                     disallow: {
-                        categories: [ "expression" ]
+                        categories: ["expression"]
                     }
                 }
             },
@@ -671,7 +671,7 @@ namespace kojac {
                 constraints: {
                     requires: ["expression-consumer"],
                     disallow: {
-                        categories: [ "expression" ]
+                        categories: ["expression"]
                     }
                 }
             },
@@ -684,7 +684,7 @@ namespace kojac {
                 constraints: {
                     requires: ["expression-consumer"],
                     disallow: {
-                        categories: [ "expression" ]
+                        categories: ["expression"]
                     }
                 }
             },
@@ -697,7 +697,7 @@ namespace kojac {
                 constraints: {
                     requires: ["expression-consumer"],
                     disallow: {
-                        categories: [ "expression" ]
+                        categories: ["expression"]
                     }
                 }
             },
@@ -710,7 +710,7 @@ namespace kojac {
                 constraints: {
                     requires: ["expression-consumer"],
                     disallow: {
-                        categories: [ "expression" ]
+                        categories: ["expression"]
                     }
                 }
             },

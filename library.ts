@@ -1,6 +1,6 @@
 namespace kojac {
     export type LibraryFn = (rule: Rule) => void;
- 
+
     export type LibraryFnMap = {
         [id: string]: LibraryFn;
     };
@@ -95,15 +95,15 @@ namespace kojac {
         [tid.modifier.page_2]: (rule: Rule) => {
             rule.state["page"] = 1;
         },
-        
+
         [tid.modifier.page_3]: (rule: Rule) => {
             rule.state["page"] = 2;
         },
-        
+
         [tid.modifier.page_4]: (rule: Rule) => {
             rule.state["page"] = 3;
         },
-        
+
         [tid.modifier.page_5]: (rule: Rule) => {
             rule.state["page"] = 4;
         },

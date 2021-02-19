@@ -41,7 +41,7 @@ namespace kojac {
             if (dy !== 0) {
                 this.stylus.y -= Math.min(2, Math.abs(dy)) * Math.sign(dy);
             }
-            
+
         }
     }
 }

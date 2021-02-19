@@ -86,27 +86,27 @@ namespace kojac {
             const horzMidpoint = this.bounds.top + (this.bounds.height >> 1);
 
             const startIsNorth = bounds.top < horzMidpoint;
-            const startIsWest  = bounds.left < vertMidpoint;
-            const endIsEast    = bounds.left + bounds.width > vertMidpoint;
-            const endIsSouth   = bounds.top + bounds.height > horzMidpoint; 
+            const startIsWest = bounds.left < vertMidpoint;
+            const endIsEast = bounds.left + bounds.width > vertMidpoint;
+            const endIsSouth = bounds.top + bounds.height > horzMidpoint;
 
             // top-right quad
-            if(startIsNorth && endIsEast) {
+            if (startIsNorth && endIsEast) {
                 indices.push(0);
             }
-            
+
             // top-left quad
-            if(startIsWest && startIsNorth) {
+            if (startIsWest && startIsNorth) {
                 indices.push(1);
             }
 
             // bottom-left quad
-            if(startIsWest && endIsSouth) {
+            if (startIsWest && endIsSouth) {
                 indices.push(2);
             }
 
             // bottom-right quad
-            if(endIsEast && endIsSouth) {
+            if (endIsEast && endIsSouth) {
                 indices.push(3);
             }
 
@@ -117,13 +117,13 @@ namespace kojac {
             // If we have subtrees, call insert on matching.
             if (this.quads.length) {
                 const indices = this.getIndices(bounds);
-        
-                for(let i = 0; i < indices.length; ++i) {
-                    this.quads[indices[i]].insert(bounds, comp);     
+
+                for (let i = 0; i < indices.length; ++i) {
+                    this.quads[indices[i]].insert(bounds, comp);
                 }
                 return;
             }
-        
+
             // Otherwise, store object here.
             this.nodes.push({
                 bounds,
@@ -138,7 +138,7 @@ namespace kojac {
                     for (let i = 0; i < this.nodes.length; ++i) {
                         const node = this.nodes[i];
                         const indices = this.getIndices(node.bounds);
-                        for(let k = 0; k < indices.length; ++k) {
+                        for (let k = 0; k < indices.length; ++k) {
                             this.quads[indices[k]].insert(node.bounds, node.comp);
                         }
                     }

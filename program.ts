@@ -117,7 +117,7 @@ namespace kojac {
             if (this.evalRuleCondition()) {
                 this.modifierFns.forEach(fn => fn(this));
                 this.actuatorFn(this);
-           }
+            }
         }
 
         public reset() {

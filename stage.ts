@@ -153,7 +153,7 @@ namespace kojac {
         z: number;
         id: number;
         flags?: number;
-        __update(camera: scene.Camera, dt: number): void {}
+        __update(camera: scene.Camera, dt: number): void { }
         __serialize(offset: number): Buffer { return null; }
         __draw(camera: scene.Camera): void { this.draw(camera); }
     }
