@@ -3,17 +3,17 @@ namespace kojac {
     class EditorButton extends Button {
         constructor(
             public editor: Editor,
-            layer: StageLayer,
             opts: {
                 style?: ButtonStyle,
                 icon: string,
                 label?: string,
+                hud?: boolean,
                 x: number,
                 y: number,
                 onClick?: (button: Button) => void
             }
         ) {
-            super(editor, layer, opts);
+            super(editor, opts);
             editor.changed();
         }
 
@@ -46,6 +46,7 @@ namespace kojac {
             let dist = 8;
             let candidates: Button[] = [];
             let overlapping = this.getOverlapping();
+            // Query upward, incrementally casting a wider net, looking for a nearby button.
             while (!candidates.length) {
                 const bounds = {
                     left: this.cursor.pos.x - (dist >> 1),
@@ -54,19 +55,51 @@ namespace kojac {
                     height: dist
                 };
                 const comps = this.quadtree.queryRect(bounds);
+                // Filter to buttons.
                 candidates = comps.filter(comp => comp.kind === "button") as Button[];
+                // Filter buttons overlapping the cursor.
                 candidates = candidates.filter(btn => overlapping.indexOf(btn) < 0);
+                // Filter buttons below or level with the cursor.
+                candidates = candidates.filter(btn => btn.y <= this.cursor.y);
                 if (candidates.length) { break; }
+                // No candidates found, widen the search area.
                 dist += 8;
                 if (dist > 128) { break; }
             }
             if (candidates.length) {
+                candidates = candidates.sort((a, b) => Vec2.MagnitudeSq(Vec2.Sub(b.pos, a.pos)));
                 this.cursor.moveTo(candidates[0]);
             }
         }
 
         moveDown() {
-
+            let dist = 8;
+            let candidates: Button[] = [];
+            let overlapping = this.getOverlapping();
+            // Query downward, incrementally casting a wider net, looking for a nearby button.
+            while (!candidates.length) {
+                const bounds = {
+                    left: this.cursor.pos.x - (dist >> 1),
+                    top: this.cursor.pos.y + 20,
+                    width: dist,
+                    height: dist
+                };
+                const comps = this.quadtree.queryRect(bounds);
+                // Filter to buttons.
+                candidates = comps.filter(comp => comp.kind === "button") as Button[];
+                // Filter buttons overlapping the cursor.
+                candidates = candidates.filter(btn => overlapping.indexOf(btn) < 0);
+                // Filter buttons above or level with the cursor.
+                candidates = candidates.filter(btn => btn.y >= this.cursor.y);
+                if (candidates.length) { break; }
+                // No candidates found, widen the search area.
+                dist += 8;
+                if (dist > 128) { break; }
+            }
+            if (candidates.length) {
+                candidates = candidates.sort((a, b) => Vec2.MagnitudeSq(Vec2.Sub(b.pos, a.pos)));
+                this.cursor.moveTo(candidates[0]);
+            }
         }
 
         moveLeft() {
@@ -97,33 +130,38 @@ namespace kojac {
             controller.right.onEvent(ControllerButtonEvent.Pressed, () => this.moveRight());
             this.cursor = new Cursor(this);
             this.currPage = 0;
-            this.pageBtn = new EditorButton(this, StageLayer.HUD, {
+            this.pageBtn = new EditorButton(this, {
                 style: "white",
                 icon: PAGE_IDS[this.currPage],
+                hud: true,
                 x: scene.screenWidth() >> 1,
                 y: 8
             });
-            this.nextPageBtn = new EditorButton(this, StageLayer.HUD, {
+            this.nextPageBtn = new EditorButton(this, {
                 style: "white",
                 icon: "next_page",
+                hud: true,
                 x: (scene.screenWidth() >> 1) + 16,
                 y: 8
             });
-            this.prevPageBtn = new EditorButton(this, StageLayer.HUD, {
+            this.prevPageBtn = new EditorButton(this, {
                 style: "white",
                 icon: "prev_page",
+                hud: true,
                 x: (scene.screenWidth() >> 1) - 16,
                 y: 8
             });
-            this.okBtn = new EditorButton(this, StageLayer.HUD, {
+            this.okBtn = new EditorButton(this, {
                 style: "white",
                 icon: "ok",
+                hud: true,
                 x: scene.screenWidth() - 8,
                 y: 8
             });
-            this.cancelBtn = new EditorButton(this, StageLayer.HUD, {
+            this.cancelBtn = new EditorButton(this, {
                 style: "white",
                 icon: "cancel",
+                hud: true,
                 x: scene.screenWidth() - 24,
                 y: 8
             });
@@ -183,6 +221,7 @@ namespace kojac {
 
         draw(camera: scene.Camera) {
             super.draw(camera);
+            /* Draw quadtree
             if (this.quadtree) {
                 const ox = camera.drawOffsetX;
                 const oy = camera.drawOffsetY;
@@ -193,6 +232,7 @@ namespace kojac {
                     screen.drawLine(bounds.left + bounds.width - ox, bounds.top - oy, bounds.left + bounds.width - ox, bounds.top + bounds.height - oy, 5);
                 });
             }
+            */
         }
     }
 
@@ -200,7 +240,7 @@ namespace kojac {
         rules: RuleEditor[];
 
         constructor(public editor: Editor, pagedef: PageDefn) {
-            super(editor, StageLayer.World, "page_editor");
+            super(editor, "page_editor");
             this.rules = pagedef.rules.map(ruledef => new RuleEditor(editor, ruledef));
             this.ensureFinalEmptyRule();
             this.layout();
@@ -268,19 +308,19 @@ namespace kojac {
         modifiers: Button[];
 
         constructor(public editor: Editor, ruledef: RuleDefn) {
-            super(editor, StageLayer.World, "rule_editor");
-            this.whenLbl = new Kelpie(editor, StageLayer.World, icons.get("when"));
-            this.doLbl = new Kelpie(editor, StageLayer.World, icons.get("do"));
-            this.handleBtn = new EditorButton(editor, StageLayer.World, {
+            super(editor, "rule_editor");
+            this.whenLbl = new Kelpie(editor, icons.get("when"));
+            this.doLbl = new Kelpie(editor, icons.get("do"));
+            this.handleBtn = new EditorButton(editor, {
                 icon: ruledef.condition,
                 x: 0, y: 0
             });
-            this.whenInsertBtn = new EditorButton(editor, StageLayer.World, {
+            this.whenInsertBtn = new EditorButton(editor, {
                 style: "beige",
                 icon: "insertion_point",
                 x: 0, y: 0
             });
-            this.doInsertBtn = new EditorButton(editor, StageLayer.World, {
+            this.doInsertBtn = new EditorButton(editor, {
                 style: "beige",
                 icon: "insertion_point",
                 x: 0, y: 0

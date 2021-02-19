@@ -103,31 +103,31 @@ namespace kojac {
 
         private drawToolbar() {
             // TODO this could all be prerendered/precalculated
-            const toolbarTop = this.offset.y + scene.screenHeight() - TOOLBAR_HEIGHT;
-            screen.fillRect(this.offset.x, toolbarTop, scene.screenWidth(), TOOLBAR_HEIGHT, 11);
+            const toolbarTop = scene.screenHeight() - TOOLBAR_HEIGHT;
+            screen.fillRect(0, toolbarTop, scene.screenWidth(), TOOLBAR_HEIGHT, 11);
             const icn_dpad_left = icons.get("dpad_left");
             const dpadTop = toolbarTop + (TOOLBAR_HEIGHT >> 1) - (icn_dpad_left.height >> 1);
-            screen.print("Press   to edit your code", this.offset.x + 2, this.offset.y + dpadTop + (LINE_HEIGHT >> 1));
-            screen.drawTransparentImage(icn_dpad_left, this.offset.x + 32, this.offset.y + dpadTop);
+            screen.print("Press   to edit your code", 2, dpadTop + (LINE_HEIGHT >> 1));
+            screen.drawTransparentImage(icn_dpad_left, 32, dpadTop);
         }
 
         private drawConsoleView() {
-            let y = this.offset.y + scene.screenHeight() - TOOLBAR_HEIGHT - LINE_HEIGHT;
+            let y = scene.screenHeight() - TOOLBAR_HEIGHT - LINE_HEIGHT;
             for (let i = this.logLines.length - 1; i >= 0; --i) {
                 const line = this.logLines[i];
                 switch (line.justification) {
                     case LineJustification.Left: {
-                        const x = this.offset.x + CONSOLE_MARGIN;
+                        const x = CONSOLE_MARGIN;
                         screen.print(line.text, x, y, line.color, image.font8);
                         break;
                     }
                     case LineJustification.Center: {
-                        const x = this.offset.x + ((scene.screenWidth() - line.text.length * image.font8.charWidth) >> 1) - (image.font8.charWidth);
+                        const x = ((scene.screenWidth() - line.text.length * image.font8.charWidth) >> 1) - (image.font8.charWidth);
                         screen.print(line.text, x, y, line.color, image.font8);
                         break;
                     }
                     case LineJustification.Right: {
-                        const x = this.offset.x + scene.screenWidth() - CONSOLE_MARGIN - (line.text.length * image.font8.charWidth);
+                        const x = scene.screenWidth() - CONSOLE_MARGIN - (line.text.length * image.font8.charWidth);
                         screen.print(line.text, x, y, line.color, image.font8);
                         break;
                     }

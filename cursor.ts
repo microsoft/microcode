@@ -18,8 +18,8 @@ namespace kojac {
         public get hitbox() { return this.stylus.hitbox; }
 
         constructor(stage: Stage) {
-            super(stage, StageLayer.World, "cursor");
-            this.stylus = new Kelpie(stage, StageLayer.World, icons.get("cursor"));
+            super(stage, "cursor");
+            this.stylus = new Kelpie(stage, icons.get("cursor"));
             this.stylus.z = 100;
             this.stylus.hitbox = new Hitbox(3, 3, this.stylus.x - 1, this.stylus.y - 1);
             this.x = this.fromx = this.stylus.x;

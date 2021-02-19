@@ -12,7 +12,7 @@ namespace kojac {
         public set pos(v: Vec2) { this.x = v.x; this.y = v.y; }
 
         constructor(stage: Stage) {
-            super(stage, StageLayer.HUD, "camera");
+            super(stage, "camera");
             this.x = scene.cameraProperty(CameraProperty.X);
             this.y = scene.cameraProperty(CameraProperty.Y);
             this.widthOver2 = scene.screenWidth() >> 1;

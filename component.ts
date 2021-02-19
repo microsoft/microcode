@@ -15,9 +15,9 @@ namespace kojac {
             return this._data;
         }
 
-        constructor(public stage: Stage, layer: StageLayer, public kind: string) {
+        constructor(public stage: Stage, public kind: string) {
             this._id = id_sequence++;
-            this.stage.add(this, layer);
+            this.stage.add(this);
         }
 
         public onDestroy(handler: KelpieHandler) {

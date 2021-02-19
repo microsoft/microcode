@@ -1,7 +1,8 @@
 namespace kojac {
     export enum KelpieFlags {
         Invisible = 1 >> 0,
-        Moved = 1 >> 1
+        HUD = 1 >> 1,
+        Moved = 1 >> 2
     }
 
     export type KelpieHandler = (kelpie: Kelpie) => void;
@@ -42,7 +43,7 @@ namespace kojac {
         set z(v: number) {
             if (v !== this._z) {
                 this._z = v;
-                this.stage.needsSorting(this);
+                this.stage.setNeedsSorting();
             }
         }
 
@@ -112,8 +113,12 @@ namespace kojac {
         get invisible() { return !!(this._flags & KelpieFlags.Invisible); }
         set invisible(b: boolean) { b ? this._flags |= KelpieFlags.Invisible : this._flags &= ~KelpieFlags.Invisible; }
 
-        constructor(stage: Stage, layer: StageLayer, img: Image) {
-            super(stage, layer, "kelpie");
+        //% blockCombine block="hud" callInDebugger
+        get hud() { return !!(this._flags & KelpieFlags.HUD); }
+        set hud(b: boolean) { b ? this._flags |= KelpieFlags.HUD : this._flags &= ~KelpieFlags.HUD; }
+
+        constructor(stage: Stage, img: Image) {
+            super(stage, "kelpie");
             this._x = screen.width - (img.width >> 1);
             this._y = screen.height - (img.height >> 1);
             this.image = img; // initializes hitbox
@@ -162,8 +167,8 @@ namespace kojac {
             if (this.invisible) { return; }
             if (this.isOffScreen(drawOffset)) { return; }
 
-            const left = this.left - drawOffset.x;
-            const top = this.top - drawOffset.y;
+            const left = this.left - (this.hud ? 0 : drawOffset.x);
+            const top = this.top - (this.hud ? 0 : drawOffset.y);
 
             screen.drawTransparentImage(this._image, left, top);
 

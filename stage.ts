@@ -1,66 +1,34 @@
 namespace kojac {
 
-    export enum LayerFlags {
+    export enum StageFlags {
         NeedsSorting = 1 << 0,
-        CameraRelative = 1 << 1
     }
-
-    export enum StageLayer {
-        World,
-        HUD
-    }
-
-    const LAYER_IDS = [StageLayer.World, StageLayer.HUD];
-
-    interface Layer {
-        flags: number;
-        components: Component[];
-    };
 
     export class Stage implements SpriteLike {
-        layers: Layer[];
         camera: Camera;
         prevMs: number;
         stageFlags: number;
-        offset: Vec2;
+        components: Component[];
 
         constructor(public app: App, public name: string) {
             this.stageFlags = 0;
-            this.offset = new Vec2(0, 0);
-            this.layers = [];
-            this.layers[StageLayer.World] = {
-                flags: 0,
-                components: []
-            };
-            this.layers[StageLayer.HUD] = {
-                flags: LayerFlags.CameraRelative,
-                components: []
-            };
+            this.flags = 0;
+            this.components = [];
         }
 
         public remove(comp: Component) {
-            const lid: StageLayer = comp.data["_lid"];
-            if (lid !== undefined) {
-                const layer = this.layers[lid];
-                layer.components = layer.components.filter(c => c.id !== comp.id);
-                comp.stage = null;
-            }
+            this.components = this.components.filter(c => c.id !== comp.id);
+            comp.stage = null;
         }
 
-        public add(comp: Component, lid: number) {
-            const layer = this.layers[lid];
-            layer.components.push(comp);
+        public add(comp: Component) {
+            this.components.push(comp);
             comp.stage = this;
-            comp.data["_lid"] = lid;
-            layer.flags |= LayerFlags.NeedsSorting;
+            this.stageFlags |= StageFlags.NeedsSorting;
         }
 
-        public needsSorting(comp: Component) {
-            const lid: StageLayer = comp.data["_lid"];
-            if (lid !== undefined) {
-                const layer = this.layers[lid];
-                layer.flags |= LayerFlags.NeedsSorting;
-            }
+        public setNeedsSorting() {
+            this.stageFlags |= StageFlags.NeedsSorting;
         }
 
         /**
@@ -88,17 +56,13 @@ namespace kojac {
          * Overload must call base.
          */
         shutdown() {
-            LAYER_IDS.forEach((id) => {
-                const layer = this.layers[id];
-                const comps = layer.components;
-                comps.forEach(comp => {
-                    // Some components will be helpful and destroy components they created.
-                    // Looking at you Button.
-                    if (comp.stage === this) { comp.destroy(); }
-                });
-                layer.components = undefined;
+            const comps = this.components;
+            comps.forEach(comp => {
+                // Some components will be helpful and destroy components they created.
+                // Looking at you Button.
+                if (comp.stage === this) { comp.destroy(); }
             });
-            this.layers = undefined;
+            this.components = undefined;
         }
 
         /**
@@ -126,27 +90,20 @@ namespace kojac {
          * Overload must call base.
          */
         public update(dt: number) {
-            LAYER_IDS.forEach((id) => {
-                const layer = this.layers[id];
-                const comps = layer.components;
-                comps.forEach(comp => comp.update(dt));
-            });
+            const comps = this.components;
+            comps.forEach(comp => comp.update(dt));
         }
 
         draw(camera: scene.Camera) {
-            LAYER_IDS.forEach(id => {
-                const layer = this.layers[id];
-                if (layer.flags & LayerFlags.NeedsSorting) {
-                    layer.components = layer.components.sort((a: any, b: any) => a.z - b.z || a.id - b.id);
-                    layer.flags &= ~LayerFlags.NeedsSorting;
-                }
-                const cameraRelative = layer.flags & LayerFlags.CameraRelative;
-                const drawOffset = new Vec2(
-                    this.offset.x + (cameraRelative ? 0 : camera.drawOffsetX),
-                    this.offset.y + (cameraRelative ? 0 : camera.drawOffsetY));
-                const comps = layer.components;
-                comps.forEach((comp: any) => comp.draw && comp.draw(drawOffset))
-            });
+            if (this.stageFlags & StageFlags.NeedsSorting) {
+                this.components = this.components.sort((a: any, b: any) => a.z - b.z || a.id - b.id);
+                this.stageFlags &= ~StageFlags.NeedsSorting;
+            }
+            const drawOffset = new Vec2(
+                camera.drawOffsetX,
+                camera.drawOffsetY);
+            const comps = this.components;
+            comps.forEach((comp: any) => comp.draw && comp.draw(drawOffset))
         }
 
         // SpriteLike impl, so the stage can get a draw call from the scene.

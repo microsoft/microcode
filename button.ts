@@ -3,7 +3,7 @@ namespace kojac {
         private icon: Kelpie;
         private back: Kelpie;
         private text: TextSprite;
-        private layer: StageLayer;
+        private hud: boolean;
         private style: ButtonStyle;
         private iconId: string;
         private label: string;
@@ -42,18 +42,18 @@ namespace kojac {
 
         constructor(
             stage: Stage,
-            layer: StageLayer,
             opts: {
                 style?: ButtonStyle,
                 icon: string,
+                hud?: boolean,
                 label?: string,
                 x: number,
                 y: number,
                 onClick?: (button: Button) => void
             }
         ) {
-            super(stage, layer, "button");
-            this.layer = layer;
+            super(stage, "button");
+            this.hud = opts.hud;
             this.style = opts.style;
             this.iconId = opts.icon;
             this.label = opts.label;
@@ -82,9 +82,11 @@ namespace kojac {
             if (this.icon) { this.icon.destroy(); }
             if (this.back) { this.back.destroy(); }
             if (this.text) { this.text.destroy(); }
-            this.icon = new Kelpie(this.stage, this.layer, icons.get(this.iconId));
+            this.icon = new Kelpie(this.stage, icons.get(this.iconId));
+            this.icon.hud = this.hud;
             if (this.style) {
-                this.back = new Kelpie(this.stage, this.layer, icons.get(`button_${this.style}`));
+                this.back = new Kelpie(this.stage, icons.get(`button_${this.style}`));
+                this.back.hud = this.hud;
             }
             this.icon.x = this.x;
             this.icon.y = this.y;
