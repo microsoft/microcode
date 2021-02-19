@@ -23,9 +23,6 @@ namespace kojac {
         }
     }
 
-    const SEARCH_INCR = 8;
-    const SEARCH_MAX = 160;
-
     export class Editor extends Stage {
         private quadtree: QuadTree;
         private progdef: ProgramDefn;
@@ -45,126 +42,6 @@ namespace kojac {
 
         public changed() { this._changed = true; }
 
-        // Move the cursor to the best nearby candidate button.
-        private move(opts: {
-            boundsFn: (dist: number) => Bounds;
-            filterFn: (value: Button) => boolean;
-        }) {
-            let dist = SEARCH_INCR;
-            let candidates: Button[];
-            let overlapping = this.getOverlapping();
-            while (true) {
-                const bounds = opts.boundsFn(dist);
-                candidates = this.quadtree.query(bounds)
-                    // filter and map to Button type
-                    .filter(comp => comp.kind === "button")
-                    .map(comp => comp as Button)
-                    // Filter buttons overlapping the cursor.
-                    .filter(btn => overlapping.indexOf(btn) < 0)
-                    // Filter buttons per caller.
-                    .filter(opts.filterFn)
-                    // Sort by distance from cursor
-                    .sort((a, b) => Vec2.DistSq(this.cursor.pos, a.pos) - Vec2.DistSq(this.cursor.pos, b.pos));
-                if (candidates.length) { break; }
-                // No candidates found, widen the search area.
-                dist += SEARCH_INCR;
-                if (dist > SEARCH_MAX) { break; }
-            }
-            if (candidates.length) {
-                const btn = candidates.shift();
-                this.cursor.moveTo(btn.x, btn.y);
-            }
-        }
-
-        moveUp() {
-            this.move({
-                boundsFn: (dist) => {
-                    return new Bounds({
-                        left: this.cursor.pos.x - (dist >> 1),
-                        top: this.cursor.pos.y - dist,
-                        width: dist,
-                        height: dist
-                    });
-                },
-                filterFn: (btn) => {
-                    // Filter buttons below or level with the cursor.
-                    return btn.y < this.cursor.y;
-                }
-            });
-        }
-
-        moveDown() {
-            this.move({
-                boundsFn: (dist) => {
-                    return new Bounds({
-                        left: this.cursor.pos.x - (dist >> 1),
-                        top: this.cursor.pos.y,
-                        width: dist,
-                        height: dist
-                    });
-                },
-                filterFn: (btn) => {
-                    // Filter buttons above or level with the cursor.
-                    return btn.y > this.cursor.y;
-                }
-            });
-        }
-
-        moveLeft() {
-            this.move({
-                boundsFn: (dist) => {
-                    return new Bounds({
-                        left: this.cursor.pos.x - dist,
-                        top: this.cursor.pos.y - (dist >> 1),
-                        width: dist,
-                        height: dist
-                    });
-                },
-                filterFn: (btn) => {
-                    // Filter buttons right of or level with the cursor.
-                    return btn.x < this.cursor.x;
-                }
-            });
-        }
-
-        moveRight() {
-            this.move({
-                boundsFn: (dist) => {
-                    return new Bounds({
-                        left: this.cursor.pos.x,
-                        top: this.cursor.pos.y - (dist >> 1),
-                        width: dist,
-                        height: dist
-                    });
-                },
-                filterFn: (btn) => {
-                    // Filter buttons left of or level with the cursor.
-                    return btn.x > this.cursor.x;
-                }
-            });
-        }
-
-        click() {
-            let overlapping = this.getOverlapping().sort((a, b) => a.z - b.z);
-            if (overlapping.length) {
-                const btn = overlapping.shift();
-                btn.click();
-            }
-        }
-
-        private getOverlapping(): Button[] {
-            const crsb = Bounds.Translate(this.cursor.hitbox, this.cursor.pos);
-            let btns = this.quadtree.query(crsb)
-                // filter and map to Button type
-                .filter(comp => comp.kind === "button")
-                .map(comp => comp as Button);
-            btns = btns.filter(btn => {
-                const btnb = Bounds.Translate(btn.hitbox, btn.pos);
-                return Bounds.Intersects(crsb, btnb);
-            });
-            return btns;
-        }
-
         private okClicked() {
             this.app.stageManager.pop();
         }
@@ -175,15 +52,15 @@ namespace kojac {
 
         startup() {
             super.startup();
-            controller.up.onEvent(ControllerButtonEvent.Pressed, () => this.moveUp());
-            controller.up.onEvent(ControllerButtonEvent.Repeated, () => this.moveUp());
-            controller.down.onEvent(ControllerButtonEvent.Pressed, () => this.moveDown());
-            controller.down.onEvent(ControllerButtonEvent.Repeated, () => this.moveDown());
-            controller.left.onEvent(ControllerButtonEvent.Pressed, () => this.moveLeft());
-            controller.left.onEvent(ControllerButtonEvent.Repeated, () => this.moveLeft());
-            controller.right.onEvent(ControllerButtonEvent.Pressed, () => this.moveRight());
-            controller.right.onEvent(ControllerButtonEvent.Repeated, () => this.moveRight());
-            controller.A.onEvent(ControllerButtonEvent.Pressed, () => this.click());
+            controller.up.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.moveUp());
+            controller.up.onEvent(ControllerButtonEvent.Repeated, () => this.cursor.moveUp());
+            controller.down.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.moveDown());
+            controller.down.onEvent(ControllerButtonEvent.Repeated, () => this.cursor.moveDown());
+            controller.left.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.moveLeft());
+            controller.left.onEvent(ControllerButtonEvent.Repeated, () => this.cursor.moveLeft());
+            controller.right.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.moveRight());
+            controller.right.onEvent(ControllerButtonEvent.Repeated, () => this.cursor.moveRight());
+            controller.A.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.click());
             this.cursor = new Cursor(this);
             this.currPage = 0;
             this.pageBtn = new EditorButton(this, {
@@ -264,6 +141,8 @@ namespace kojac {
             this.addToSpatialDb(this.okBtn);
             this.addToSpatialDb(this.cancelBtn);
             this.pageEditor.addToSpatialDb();
+            // Assign quadtree to cursor.
+            this.cursor.quadtree = this.quadtree;
         }
 
         public addToSpatialDb(btn: Button) {
