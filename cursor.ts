@@ -21,7 +21,7 @@ namespace kojac {
             super(stage, "cursor");
             this.stylus = new Kelpie(stage, icons.get("cursor"));
             this.stylus.z = 100;
-            this.stylus.hitbox = new Hitbox(3, 3, this.stylus.x - 1, this.stylus.y - 1);
+            this.stylus.hitbox = new Hitbox(3, 3, (this.stylus.width >> 1) - 1, (this.stylus.height >> 1) - 1);
             this.x = this.fromx = this.stylus.x;
             this.y = this.fromy = this.stylus.y;
         }

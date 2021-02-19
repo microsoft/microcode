@@ -28,7 +28,7 @@ namespace kojac {
     const SEARCH_MAX = 160;
 
     export class Editor extends Stage {
-        private quadtree: QuadTree;
+        private quadtree: QuadTree<Button>;
         private progdef: ProgramDefn;
         private currPage: number;
         private pageBtn: Button;
@@ -57,9 +57,7 @@ namespace kojac {
             // Query upward, incrementally casting a wider net, looking for a nearby button.
             while (!candidates.length) {
                 const bounds = boundsFn(dist);
-                const comps = this.quadtree.queryRect(bounds);
-                // Filter to buttons.
-                candidates = comps.filter(comp => comp.kind === "button") as Button[];
+                const comps = this.quadtree.query(bounds);
                 // Filter buttons overlapping the cursor.
                 candidates = candidates.filter(btn => overlapping.indexOf(btn) < 0);
                 // Filter buttons per caller.
@@ -71,7 +69,8 @@ namespace kojac {
             }
             if (candidates.length) {
                 candidates = candidates.sort((a, b) => Vec2.DistSq(this.cursor.pos, a.pos) - Vec2.DistSq(this.cursor, b.pos));
-                this.cursor.moveTo(candidates[0]);
+                const btn = candidates.shift();
+                this.cursor.moveTo(btn);
             }
         }
 
@@ -139,24 +138,43 @@ namespace kojac {
                 });
         }
 
-        public getOverlapping(): Button[] {
+        click() {
+            let overlapping = this.getOverlapping().sort((a, b) => a.z - b.z);
+            if (overlapping.length) {
+                const btn = overlapping.shift();
+                btn.click();
+            }
+        }
+
+        private getOverlapping(): Button[] {
             const bounds = HitboxBounds.FromKelpie(this.cursor.stylus);
-            const comps = this.quadtree.queryRect({
+            return this.quadtree.query({
                 left: bounds.left,
                 top: bounds.top,
                 width: bounds.width,
                 height: bounds.height
             });
-            const buttons = comps.filter(comp => comp.kind === "button") as Button[];
-            return buttons;
+        }
+
+        private okClicked() {
+            this.app.stageManager.pop();
+        }
+
+        private cancelClicked() {
+            this.app.stageManager.pop();
         }
 
         startup() {
             super.startup();
             controller.up.onEvent(ControllerButtonEvent.Pressed, () => this.moveUp());
+            controller.up.onEvent(ControllerButtonEvent.Repeated, () => this.moveUp());
             controller.down.onEvent(ControllerButtonEvent.Pressed, () => this.moveDown());
+            controller.down.onEvent(ControllerButtonEvent.Repeated, () => this.moveDown());
             controller.left.onEvent(ControllerButtonEvent.Pressed, () => this.moveLeft());
+            controller.left.onEvent(ControllerButtonEvent.Repeated, () => this.moveLeft());
             controller.right.onEvent(ControllerButtonEvent.Pressed, () => this.moveRight());
+            controller.right.onEvent(ControllerButtonEvent.Repeated, () => this.moveRight());
+            controller.A.onEvent(ControllerButtonEvent.Pressed, () => this.click());
             this.cursor = new Cursor(this);
             this.currPage = 0;
             this.pageBtn = new EditorButton(this, {
@@ -185,14 +203,16 @@ namespace kojac {
                 icon: "ok",
                 hud: true,
                 x: scene.screenWidth() - 8,
-                y: 8
+                y: 8,
+                onClick: () => this.okClicked()
             });
             this.cancelBtn = new EditorButton(this, {
                 style: "white",
                 icon: "cancel",
                 hud: true,
                 x: scene.screenWidth() - 24,
-                y: 8
+                y: 8,
+                onClick: () => this.cancelClicked()
             });
         }
 
@@ -223,7 +243,7 @@ namespace kojac {
             if (this.quadtree) {
                 this.quadtree.clear();
             }
-            this.quadtree = new QuadTree({
+            this.quadtree = new QuadTree<Button>({
                 left: 0,
                 top: 0,
                 width: 4096,
