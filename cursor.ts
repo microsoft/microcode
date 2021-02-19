@@ -2,13 +2,17 @@ namespace kojac {
 
     export const TILE_SIZE = 16;
 
+    function easeInOutSine(x: number): number {
+        return -(Math.cos(Math.PI * x) - 1) / 2;
+    }
+
     export class Cursor extends Component {
         stylus: Kelpie;
         x: number;
         y: number;
         fromx: number;
         fromy: number;
-
+        lerpt: number;
 
         public get pos() { return this.stylus.pos; }
         public get hitbox() { return this.stylus.hitbox; }
@@ -18,30 +22,41 @@ namespace kojac {
             this.stylus = new Kelpie(stage, StageLayer.World, icons.get("cursor"));
             this.stylus.z = 100;
             this.stylus.hitbox = new Hitbox(3, 3, this.stylus.x - 1, this.stylus.y - 1);
-            this.x = this.stylus.x;
-            this.y = this.stylus.y;
+            this.x = this.fromx = this.stylus.x;
+            this.y = this.fromy = this.stylus.y;
         }
 
         public moveTo(button: Button) {
+            this.fromx = this.x;
+            this.fromy = this.y;
             this.x = button.x;
             this.y = button.y;
+            this.lerpt = control.millis();
         }
 
         public snapTo(button: Button) {
-            this.x = this.stylus.x = button.x;
-            this.y = this.stylus.y = button.y;
+            this.x = this.fromx = this.stylus.x = button.x;
+            this.y = this.fromy = this.stylus.y = button.y;
         }
 
         update(dt: number) {
             let dx = (this.stylus.x - this.x);
             let dy = (this.stylus.y - this.y);
-            if (dx !== 0) {
-                this.stylus.x -= Math.min(2, Math.abs(dx)) * Math.sign(dx);
+            if (dx !== 0 || dy !== 0) {
+                const t = Math.min(10 * (control.millis() - this.lerpt) / 1000, 1);
+                if (Math.abs(dx) < 1) {
+                    this.stylus.x = this.x;
+                } else {
+                    let distx = (this.x - this.fromx);
+                    this.stylus.x = this.fromx + easeInOutSine(t) * distx;
+                }
+                if (Math.abs(dy) < 1) {
+                    this.stylus.y = this.y;
+                } else {
+                    let disty = (this.y - this.fromy);
+                    this.stylus.y = this.fromy + easeInOutSine(t) * disty;
+                }
             }
-            if (dy !== 0) {
-                this.stylus.y -= Math.min(2, Math.abs(dy)) * Math.sign(dy);
-            }
-
         }
     }
 }

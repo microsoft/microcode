@@ -167,12 +167,13 @@ namespace kojac {
 
             screen.drawTransparentImage(this._image, left, top);
 
-            /* Render hitbox */
+            /* Render hitbox
             const bounds = HitboxBounds.FromKelpie(this);
             screen.drawLine(bounds.left - drawOffset.x, bounds.top - drawOffset.y, bounds.right - drawOffset.x, bounds.top - drawOffset.y, 15);
             screen.drawLine(bounds.left - drawOffset.x, bounds.bottom - drawOffset.y, bounds.right - drawOffset.x, bounds.bottom - drawOffset.y, 15);
             screen.drawLine(bounds.left - drawOffset.x, bounds.top - drawOffset.y, bounds.left - drawOffset.x, bounds.bottom - drawOffset.y, 15);
             screen.drawLine(bounds.right - drawOffset.x, bounds.top - drawOffset.y, bounds.right - drawOffset.x, bounds.bottom - drawOffset.y, 15);
+            */
         }
     }
 }
