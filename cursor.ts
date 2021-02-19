@@ -16,17 +16,18 @@ namespace kojac {
         hitbox: Bounds;
 
         public get pos() { return this.stylus.pos; }
+        public get z() { return this.stylus.z; }
 
         constructor(stage: Stage) {
             super(stage, "cursor");
             this.stylus = new Kelpie(stage, icons.get("cursor"));
             this.stylus.z = 100;
-            // Small hitbox around the center of stylus.
+            // Small hitbox around the pointer.
             this.hitbox = new Bounds({
                 width: 3,
                 height: 3,
-                left: -(this.stylus.width >> 1),
-                top: -(this.stylus.height >> 1)
+                left: -3,
+                top: -2
             });
             this.x = this.fromx = this.stylus.x;
             this.y = this.fromy = this.stylus.y;
@@ -66,6 +67,11 @@ namespace kojac {
                     this.stylus.y = this.fromy + easeInOutSine(t) * disty;
                 }
             }
+        }
+
+        draw(drawOffset: Vec2) {
+            //const bounds = Bounds.Translate(this.hitbox, this.pos);
+            //bounds.render(drawOffset, 15);
         }
     }
 }

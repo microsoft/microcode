@@ -27,7 +27,7 @@ namespace kojac {
     const SEARCH_MAX = 160;
 
     export class Editor extends Stage {
-        private quadtree: QuadTree<Button>;
+        private quadtree: QuadTree;
         private progdef: ProgramDefn;
         private currPage: number;
         private pageBtn: Button;
@@ -46,35 +46,39 @@ namespace kojac {
         public changed() { this._changed = true; }
 
         // Move the cursor to the best nearby candidate button.
-        private move(
-            boundsFn: (dist: number) => Bounds,
-            filterFn: (candidates: Button[]) => Button[]
-        ) {
+        private move(opts: {
+            boundsFn: (dist: number) => Bounds;
+            filterFn: (value: Button) => boolean;
+        }) {
             let dist = SEARCH_INCR;
-            let candidates: Button[] = [];
+            let candidates: Button[];
             let overlapping = this.getOverlapping();
             while (true) {
-                const bounds = boundsFn(dist);
-                candidates = this.quadtree.query(bounds);
-                // Filter buttons overlapping the cursor.
-                candidates = candidates.filter(btn => overlapping.indexOf(btn) < 0);
-                // Filter buttons per caller.
-                candidates = filterFn(candidates);
+                const bounds = opts.boundsFn(dist);
+                candidates = this.quadtree.query(bounds)
+                    // filter and map to Button type
+                    .filter(comp => comp.kind === "button")
+                    .map(comp => comp as Button)
+                    // Filter buttons overlapping the cursor.
+                    .filter(btn => overlapping.indexOf(btn) < 0)
+                    // Filter buttons per caller.
+                    .filter(opts.filterFn)
+                    // Sort by distance from cursor
+                    .sort((a, b) => Vec2.DistSq(this.cursor.pos, a.pos) - Vec2.DistSq(this.cursor.pos, b.pos));
                 if (candidates.length) { break; }
                 // No candidates found, widen the search area.
                 dist += SEARCH_INCR;
                 if (dist > SEARCH_MAX) { break; }
             }
             if (candidates.length) {
-                candidates = candidates.sort((a, b) => Vec2.DistSq(this.cursor.pos, a.pos) - Vec2.DistSq(this.cursor.pos, b.pos));
                 const btn = candidates.shift();
                 this.cursor.moveTo(btn.x, btn.y);
             }
         }
 
         moveUp() {
-            this.move(
-                (dist) => {
+            this.move({
+                boundsFn: (dist) => {
                     return new Bounds({
                         left: this.cursor.pos.x - (dist >> 1),
                         top: this.cursor.pos.y - dist,
@@ -82,15 +86,16 @@ namespace kojac {
                         height: dist
                     });
                 },
-                (candidates) => {
+                filterFn: (btn) => {
                     // Filter buttons below or level with the cursor.
-                    return candidates.filter(btn => btn.y < this.cursor.y);
-                });
+                    return btn.y < this.cursor.y;
+                }
+            });
         }
 
         moveDown() {
-            this.move(
-                (dist) => {
+            this.move({
+                boundsFn: (dist) => {
                     return new Bounds({
                         left: this.cursor.pos.x - (dist >> 1),
                         top: this.cursor.pos.y,
@@ -98,15 +103,16 @@ namespace kojac {
                         height: dist
                     });
                 },
-                (candidates) => {
+                filterFn: (btn) => {
                     // Filter buttons above or level with the cursor.
-                    return candidates.filter(btn => btn.y > this.cursor.y);
-                });
+                    return btn.y > this.cursor.y;
+                }
+            });
         }
 
         moveLeft() {
-            this.move(
-                (dist) => {
+            this.move({
+                boundsFn: (dist) => {
                     return new Bounds({
                         left: this.cursor.pos.x - dist,
                         top: this.cursor.pos.y - (dist >> 1),
@@ -114,15 +120,16 @@ namespace kojac {
                         height: dist
                     });
                 },
-                (candidates) => {
+                filterFn: (btn) => {
                     // Filter buttons right of or level with the cursor.
-                    return candidates.filter(btn => btn.x < this.cursor.x);
-                });
+                    return btn.x < this.cursor.x;
+                }
+            });
         }
 
         moveRight() {
-            this.move(
-                (dist) => {
+            this.move({
+                boundsFn: (dist) => {
                     return new Bounds({
                         left: this.cursor.pos.x,
                         top: this.cursor.pos.y - (dist >> 1),
@@ -130,10 +137,11 @@ namespace kojac {
                         height: dist
                     });
                 },
-                (candidates) => {
+                filterFn: (btn) => {
                     // Filter buttons left of or level with the cursor.
-                    return candidates.filter(btn => btn.x > this.cursor.x);
-                });
+                    return btn.x > this.cursor.x;
+                }
+            });
         }
 
         click() {
@@ -146,7 +154,10 @@ namespace kojac {
 
         private getOverlapping(): Button[] {
             const crsb = Bounds.Translate(this.cursor.hitbox, this.cursor.pos);
-            let btns = this.quadtree.query(crsb);
+            let btns = this.quadtree.query(crsb)
+                // filter and map to Button type
+                .filter(comp => comp.kind === "button")
+                .map(comp => comp as Button);
             btns = btns.filter(btn => {
                 const btnb = Bounds.Translate(btn.hitbox, btn.pos);
                 return Bounds.Intersects(crsb, btnb);
@@ -241,7 +252,7 @@ namespace kojac {
             if (this.quadtree) {
                 this.quadtree.clear();
             }
-            this.quadtree = new QuadTree<Button>(new Bounds({
+            this.quadtree = new QuadTree(new Bounds({
                 left: 0,
                 top: 0,
                 width: 4096,
