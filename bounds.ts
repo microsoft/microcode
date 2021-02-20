@@ -79,7 +79,7 @@ namespace kojac {
             return box;
         }
 
-        public render(drawOffset: Vec2, color: number) {
+        public draw(drawOffset: Vec2, color: number) {
             screen.drawLine(this.left - drawOffset.x, this.top - drawOffset.y, this.right - drawOffset.x, this.top - drawOffset.y, color);
             screen.drawLine(this.left - drawOffset.x, this.bottom - drawOffset.y, this.right - drawOffset.x, this.bottom - drawOffset.y, color);
             screen.drawLine(this.left - drawOffset.x, this.top - drawOffset.y, this.left - drawOffset.x, this.bottom - drawOffset.y, color);

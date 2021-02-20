@@ -19,11 +19,23 @@ namespace kojac {
         }
     }
 
+    class PickerGroup {
+        public buttons: Button[];
+        constructor(private picker: Picker, public opts?: {
+            label?: string,
+            icons?: string[]
+        }) {
+            this.opts = this.opts || {};
+            this.buttons = [];
+        }
+    }
+
     export class Picker extends Stage {
         public quadtree: QuadTree;
         private cursor: Cursor;
         private groups: PickerGroup[];
         private cancelBtn: Button;
+        private bounds: Bounds;
 
         constructor(app: App, private opts?: {
             backgroundImage?: Image;
@@ -36,8 +48,11 @@ namespace kojac {
             this.opts = this.opts || {};
         }
 
-        public addGroup(label: string, btns: string[]) {
-            this.groups.push(new PickerGroup(this, {label, icons: btns}));
+        public addGroup(opts: {
+            label?: string;
+            btns: string[];
+        }) {
+            this.groups.push(new PickerGroup(this, { label: opts.label, icons: opts.btns }));
         }
 
         public onButtonClicked(icon: string) {
@@ -78,10 +93,18 @@ namespace kojac {
             this.cancelBtn = new Button(this, {
                 style: "white",
                 icon: "cancel",
-                hud: true,
                 x: 0,
                 y: 0,
                 onClick: () => this.cancelClicked()
+            });
+            this.groups.forEach(group => {
+                const icons = group.opts.icons || [];
+                icons.forEach(icon => {
+                    const button = new PickerButton(this, {
+                        icon,
+                    });
+                    group.buttons.push(button);
+                });
             });
             this.layout();
         }
@@ -103,29 +126,62 @@ namespace kojac {
 
         draw(camera: scene.Camera) {
             super.draw(camera);
+            this.quadtree.draw(new Vec2(camera.drawOffsetX, camera.drawOffsetY), 5);
+            this.bounds.draw(new Vec2(camera.drawOffsetX, camera.drawOffsetY), 10);
         }
 
         private layout() {
-            this.cancelBtn.x = 40;
-            this.cancelBtn.y = 40;
+            let firstBtn: Button;
+
+            let maxBtnCount = 0;
+            this.groups.forEach(group => maxBtnCount = Math.max(maxBtnCount, group.opts.icons.length));
+
+            let computedHeight = HEADER + (MARGIN * 2);
+            let computedWidth = (MARGIN * 2) + maxBtnCount * 16;
+
+            this.groups.forEach(group => {
+                if (group.opts.label) {
+                    computedHeight += LABEL;
+                }
+                computedHeight += TRAY;
+            });
+
+            let computedLeft = (scene.screenWidth() >> 1) - (computedWidth >> 1);
+            let computedTop = (scene.screenHeight() >> 1) - (computedHeight >> 1);
+            computedTop = Math.max(0, computedTop);
+
+            this.bounds = new Bounds({
+                top: computedTop,
+                left: computedLeft,
+                width: computedWidth,
+                height: computedHeight
+            });
+
+            let currentTop = computedTop + MARGIN + HEADER;
+            this.groups.forEach(group => {
+                let currentLeft = computedLeft + MARGIN;
+                if (group.opts.label) {
+                    currentTop += LABEL;
+                }
+                group.buttons.forEach(btn => {
+                    if (!firstBtn) { firstBtn = btn; }
+                    btn.y = currentTop + 8;
+                    btn.x = currentLeft + 8;
+                    currentLeft += 16;
+                    this.quadtree.insert(Bounds.Translate(btn.hitbox, btn.pos), btn);
+                });
+            });
+
+            this.cancelBtn.x = computedLeft + computedWidth - 8 - MARGIN;
+            this.cancelBtn.y = computedTop + 8 + MARGIN;
             this.quadtree.insert(Bounds.Translate(this.cancelBtn.hitbox, this.cancelBtn.pos), this.cancelBtn);
-            this.cursor.snapTo(this.cancelBtn.x, this.cancelBtn.y);
+            if (!firstBtn) { firstBtn = this.cancelBtn; }
+            this.cursor.snapTo(firstBtn.x, firstBtn.y);
         }
     }
 
-    class PickerGroup {
-        public buttons: Button[];
-        constructor(private picker: Picker, public opts?: {
-            label?: string,
-            icons?: string[]
-        }) {
-            this.opts = this.opts || {};
-            this.buttons = [];
-        }
-
-        public layout(x: number, y: number) {
-
-        }
-    }
-
+    const MARGIN = 1;
+    const HEADER = 14;
+    const LABEL = 14;
+    const TRAY = 16;
 }

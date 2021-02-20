@@ -52,38 +52,43 @@ namespace kojac {
         }
 
         private nextPage() {
-            this.pageEditor.destroy();
-            this.currPage += 1;
-            this.currPage %= this.progdef.pages.length;
-            this.pageBtn.setIcon(PAGE_IDS[this.currPage]);
-            this.pageEditor = new PageEditor(this, this.progdef.pages[this.currPage]);
+            let index = this.currPage + 1;
+            index %= this.progdef.pages.length;
+            this.switchToPage(index);
         }
 
         private prevPage() {
-            this.pageEditor.destroy();
-            this.currPage -= 1;
-            if (this.currPage < 0) {
-                this.currPage = this.progdef.pages.length - 1;
+            let index = this.currPage - 1;
+            if (index < 0) {
+                index = this.progdef.pages.length - 1;
             }
-            this.pageBtn.setIcon(PAGE_IDS[this.currPage]);
-            this.pageEditor = new PageEditor(this, this.progdef.pages[this.currPage]);
+            this.switchToPage(index);
         }
 
         private pickPage() {
             const picker = new Picker(this.app, {
-                onClick: (iconId) => this.switchToPage(iconId)
+                onClick: (iconId) => {
+                    const index = PAGE_IDS.indexOf(iconId);
+                    this.switchToPage(index);
+                },
+                title: "Select page",
+                backgroundImage: scene.backgroundImage()
+                
+            });
+            picker.addGroup({
+                btns: PAGE_IDS
             });
             picker.show();
         }
 
-        private switchToPage(iconId: string) {
-            const index = PAGE_IDS.indexOf(iconId);
-            if (index >= 0) {
+        private switchToPage(index: number) {
+            if (index < 0 || index >= this.progdef.pages.length) { return; }
+            if (this.pageEditor) {
                 this.pageEditor.destroy();
-                this.currPage = index;
-                this.pageBtn.setIcon(PAGE_IDS[this.currPage]);
-                this.pageEditor = new PageEditor(this, this.progdef.pages[this.currPage]);
             }
+            this.currPage = index;
+            this.pageBtn.setIcon(PAGE_IDS[this.currPage]);
+            this.pageEditor = new PageEditor(this, this.progdef.pages[this.currPage]);
         }
 
         startup() {
@@ -154,7 +159,7 @@ namespace kojac {
             this.progdef = this.app.load(SAVESLOT_AUTO);
             this.pageBtn.setIcon(PAGE_IDS[this.currPage]);
             if (!this.pageEditor) {
-                this.pageEditor = new PageEditor(this, this.progdef.pages[this.currPage]);
+                this.switchToPage(this.currPage);
                 this.pageEditor.initCursor();
             }
         }
@@ -195,18 +200,7 @@ namespace kojac {
 
         draw(camera: scene.Camera) {
             super.draw(camera);
-            /* Draw quadtree
-            if (this.quadtree) {
-                const ox = camera.drawOffsetX;
-                const oy = camera.drawOffsetY;
-                this.quadtree.forEach(bounds => {
-                    screen.drawLine(bounds.left - ox, bounds.top - oy, bounds.left + bounds.width - ox, bounds.top - oy, 5);
-                    screen.drawLine(bounds.left - ox, bounds.top + bounds.height - oy, bounds.left + bounds.width - ox, bounds.top + bounds.height - oy, 5);
-                    screen.drawLine(bounds.left - ox, bounds.top - oy, bounds.left - ox, bounds.top + bounds.height - oy, 5);
-                    screen.drawLine(bounds.left + bounds.width - ox, bounds.top - oy, bounds.left + bounds.width - ox, bounds.top + bounds.height - oy, 5);
-                });
-            }
-            */
+            //this.quadtree.draw(new Vec2(camera.drawOffsetX, camera.drawOffsetY), 5);
         }
     }
 

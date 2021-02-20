@@ -172,5 +172,9 @@ namespace kojac {
             this.quads = [];
             this.nodes = [];
         }
+
+        public draw(drawOffset: Vec2, color: number) {
+            this.forEach(bounds => bounds.draw(drawOffset, color));
+        }
     }
 }

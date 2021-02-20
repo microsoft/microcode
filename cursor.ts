@@ -159,14 +159,16 @@ namespace kojac {
 
         private getOverlapping(): Button[] {
             const crsb = Bounds.Translate(this.hitbox, this.pos);
-            let btns = this.quadtree.query(crsb)
+            // Query for neary items.
+            const btns = this.quadtree.query(crsb)
                 // filter and map to Button type
                 .filter(comp => comp.kind === "button")
-                .map(comp => comp as Button);
-            btns = btns.filter(btn => {
-                const btnb = Bounds.Translate(btn.hitbox, btn.pos);
-                return Bounds.Intersects(crsb, btnb);
-            });
+                .map(comp => comp as Button)
+                // filter to intersecting buttons
+                .filter(btn => {
+                    const btnb = Bounds.Translate(btn.hitbox, btn.pos);
+                    return Bounds.Intersects(crsb, btnb);
+                });
             return btns;
         }
 
