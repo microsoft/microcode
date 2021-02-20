@@ -4,6 +4,8 @@ namespace kojac {
         return -(Math.cos(Math.PI * t) - 1) / 2;
     }
 
+    export type CursorCancelHandler = () => void;
+
     const LERP_SPEED = 10;
     const SEARCH_INCR = 8;
     const SEARCH_MAX = 160;
@@ -17,6 +19,7 @@ namespace kojac {
         lerpt: number;
         hitbox: Bounds;
         quadtree: QuadTree;
+        cancelHandlerStack: CursorCancelHandler[];
 
         public get pos() { return this.stylus.pos; }
         public set pos(p: Vec2) { this.x = p.x; this.y = p.y; }
@@ -36,6 +39,7 @@ namespace kojac {
             });
             this.x = this.fromx = this.stylus.x;
             this.y = this.fromy = this.stylus.y;
+            this.cancelHandlerStack = [];
         }
 
         public moveTo(x: number, y: number) {
@@ -156,6 +160,12 @@ namespace kojac {
             if (overlapping.length) {
                 const btn = overlapping.shift();
                 btn.click();
+            }
+        }
+
+        public cancel() {
+            if (this.cancelHandlerStack.length) {
+                this.cancelHandlerStack[this.cancelHandlerStack.length - 1]();
             }
         }
 

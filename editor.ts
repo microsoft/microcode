@@ -74,11 +74,14 @@ namespace kojac {
                 },
                 title: "Select",
                 backgroundImage: scene.backgroundImage()
-                
             });
-            picker.addGroup({
-                btns: PAGE_IDS
+            // TODO: supply button labels
+            const btns: PickerButtonDef[] = PAGE_IDS.map(pageId => {
+                return {
+                    icon: pageId
+                }
             });
+            picker.addGroup({ label: "", btns });
             picker.show();
         }
 
@@ -103,6 +106,7 @@ namespace kojac {
             controller.right.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.moveRight());
             controller.right.onEvent(ControllerButtonEvent.Repeated, () => this.cursor.moveRight());
             controller.A.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.click());
+            controller.B.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.cancel());
             this.cursor = new Cursor(this);
             this.currPage = 0;
             this.pageBtn = new EditorButton(this, {
@@ -169,11 +173,11 @@ namespace kojac {
             super.update(dt);
             if (this._changed) {
                 this._changed = false;
-                this.rebuildSpatialDb();
+                this.rebuildQuadTree();
             }
         }
 
-        private rebuildSpatialDb() {
+        private rebuildQuadTree() {
             if (this.quadtree) {
                 this.quadtree.clear();
             }
@@ -183,17 +187,17 @@ namespace kojac {
                 width: 4096,
                 height: 4096
             }), 1, 16);
-            this.addToSpatialDb(this.pageBtn);
-            this.addToSpatialDb(this.prevPageBtn);
-            this.addToSpatialDb(this.nextPageBtn);
-            this.addToSpatialDb(this.okBtn);
-            this.addToSpatialDb(this.cancelBtn);
-            this.pageEditor.addToSpatialDb();
+            this.addToQuadTree(this.pageBtn);
+            this.addToQuadTree(this.prevPageBtn);
+            this.addToQuadTree(this.nextPageBtn);
+            this.addToQuadTree(this.okBtn);
+            this.addToQuadTree(this.cancelBtn);
+            this.pageEditor.addToQuadTree();
             // Assign quadtree to cursor.
             this.cursor.quadtree = this.quadtree;
         }
 
-        public addToSpatialDb(btn: Button) {
+        public addToQuadTree(btn: Button) {
             if (this.quadtree) {
                 this.quadtree.insert(Bounds.Translate(btn.hitbox, btn.pos), btn);
             }
@@ -207,6 +211,8 @@ namespace kojac {
 
     class PageEditor extends Component {
         rules: RuleEditor[];
+
+        public get z() { return 0; }
 
         constructor(private editor: Editor, private pagedef: PageDefn) {
             super(editor, "page_editor");
@@ -222,10 +228,12 @@ namespace kojac {
         }
 
         private ensureFinalEmptyRule() {
-            this.trimRules();
-            const ruledefn = new RuleDefn();
-            this.rules.push(new RuleEditor(this.editor, this, ruledefn));
-            this.pagedef.rules.push(ruledefn);
+            if (this.rules) {
+                this.trimRules();
+                const ruledefn = new RuleDefn();
+                this.rules.push(new RuleEditor(this.editor, this, ruledefn));
+                this.pagedef.rules.push(ruledefn);
+            }
         }
 
         private trimRules() {
@@ -241,12 +249,14 @@ namespace kojac {
         }
 
         public layout() {
-            let left = 10;
-            let top = 36;
-            this.rules.forEach(rule => {
-                rule.layout(left, top);
-                top += 22;
-            });
+            if (this.rules) {
+                let left = 10;
+                let top = 36;
+                this.rules.forEach(rule => {
+                    rule.layout(left, top);
+                    top += 22;
+                });
+            }
         }
 
         public initCursor() {
@@ -262,13 +272,14 @@ namespace kojac {
             this.editor.cursor.snapTo(btn.x, btn.y);
         }
 
-        public addToSpatialDb() {
-            this.rules.forEach(rule => rule.addToSpatialDb());
+        public addToQuadTree() {
+            this.rules.forEach(rule => rule.addToQuadTree());
         }
 
         public changed() {
             this.ensureFinalEmptyRule();
             this.layout();
+            this.editor.changed();
         }
     }
 
@@ -283,6 +294,8 @@ namespace kojac {
         actuator: Button;
         modifiers: Button[];
 
+        public get z() { return 0; }
+
         constructor(private editor: Editor, private page: PageEditor, private ruledef: RuleDefn) {
             super(editor, "rule_editor");
             this.whenLbl = new Kelpie(editor, icons.get("when"));
@@ -290,20 +303,21 @@ namespace kojac {
             this.handleBtn = new EditorButton(editor, {
                 icon: ruledef.condition,
                 x: 0, y: 0,
-                onClick: () => this.pickRuleCondition()
+                onClick: () => this.showRuleHandleMenu()
             });
             this.whenInsertBtn = new EditorButton(editor, {
                 style: "beige",
                 icon: "insertion_point",
-                x: 0, y: 0
+                x: 0, y: 0,
+                onClick: () => this.showWhenInsertMenu()
             });
             this.doInsertBtn = new EditorButton(editor, {
                 style: "beige",
                 icon: "insertion_point",
-                x: 0, y: 0
+                x: 0, y: 0,
+                onClick: () => this.showDoInsertMenu()
             });
-            this.filters = [];
-            this.modifiers = [];
+            this.instantiateProgramTiles();
         }
 
         destroy() {
@@ -322,32 +336,75 @@ namespace kojac {
         }
 
         private destroyProgramTiles() {
-            if (this.sensor) { this.sensor.destroy(); }
-            if (this.actuator) { this.actuator.destroy(); }
-            this.filters.forEach(filter => filter.destroy());
-            this.modifiers.forEach(modifier => modifier.destroy());
-            this.sensor = undefined;
-            this.actuator = undefined;
-            this.filters = undefined;
-            this.modifiers = undefined;
-            this.editor.changed();
+            if (this.sensor) {
+                this.sensor.destroy();
+                this.sensor = undefined;
+                this.editor.changed();
+            }
+            if (this.actuator) {
+                this.actuator.destroy();
+                this.actuator = undefined;
+                this.editor.changed();
+            }
+            if (this.filters) {
+                this.filters.forEach(filter => filter.destroy());
+                this.filters = undefined;
+                this.editor.changed();
+            }
+            if (this.modifiers) {
+                this.modifiers.forEach(modifier => modifier.destroy());
+                this.modifiers = undefined;
+                this.editor.changed();
+            }
         }
 
-        private pickRuleCondition() {
+        private instantiateProgramTiles() {
+            this.destroyProgramTiles();
+            this.filters = [];
+            this.modifiers = [];
+            if (this.ruledef.sensor) {
+                this.sensor = new EditorButton(this.editor, {
+                    style: "white",
+                    icon: this.ruledef.sensor.tid,
+                    x: 0, y: 0
+                });
+                this.page.changed();
+            }
+        }
+
+        private showRuleHandleMenu() {
             const picker = new Picker(this.stage, {
                 cursor: this.editor.cursor,
-                onClick: (iconId) => {
-                    this.setRuleCondition(iconId);
-                },
+                onClick: (iconId) => this.handleRuleHandleMenuSelection(iconId),
                 title: "Select",
                 backgroundImage: scene.backgroundImage()
                 
             });
-            picker.addGroup({
-                btns: RC_IDS
+            // Add rule conditions
+            const iconIds = [].concat(RC_IDS);
+            // "Insert rule above this one"
+            iconIds.push("plus");
+            // "Delete rule"
+            iconIds.push("delete");
+            // TODO: supply button labels
+            const btns: PickerButtonDef[] = iconIds.map(iconId => {
+                return {
+                    icon: iconId
+                }
             });
+            picker.addGroup({ label: "", btns });
             picker.show();
-        } 
+        }
+
+        private handleRuleHandleMenuSelection(iconId: string) {
+            if (RC_IDS.indexOf(iconId) >= 0) {
+                this.setRuleCondition(iconId);
+            } else if (iconId === "plus") {
+                // TODO
+            } else if (iconId === "delete") {
+                // TODO
+            }
+        }
 
         private setRuleCondition(rc: string) {
             this.handleBtn.setIcon(rc);
@@ -355,14 +412,76 @@ namespace kojac {
             this.page.changed();
         }
 
-        public addToSpatialDb() {
-            if (this.sensor) { this.editor.addToSpatialDb(this.sensor); }
-            if (this.actuator) { this.editor.addToSpatialDb(this.actuator); }
-            this.filters.forEach(filter => this.editor.addToSpatialDb(filter));
-            this.modifiers.forEach(modifier => this.editor.addToSpatialDb(modifier));
-            this.editor.addToSpatialDb(this.handleBtn);
-            this.editor.addToSpatialDb(this.whenInsertBtn);
-            this.editor.addToSpatialDb(this.doInsertBtn);
+        private showWhenInsertMenu() {
+            if (this.sensor) {
+                const index = this.ruledef.filters.length;
+                const suggestions = Language.getFilterSuggestions(this.ruledef, index);
+                const btns: PickerButtonDef[] = suggestions.map(elem => {
+                    return {
+                        icon: elem.tid,
+                        label: elem.name
+                    };
+                });
+                const picker = new Picker(this.stage, {
+                    title: "Select",
+                    cursor: this.editor.cursor,
+                    onClick: (iconId) => {
+
+                    }
+                });
+                picker.addGroup({ label: "", btns });
+
+/*
+                this.kstage.showMenu(button.x + 16, button.y, items, "down", (selection: Button) => {
+                    this.defn.filters.push(tiles.filters[selection.id]);
+                    Language.ensureValid(this.ruledef);
+                    this.instantiateTiles(this.ruledef);
+                    this.pageui.ensureFinalEmptyRule();
+                });
+                */
+                picker.show();
+            } else {
+                const suggestions = Language.getSensorSuggestions(this.ruledef);
+                const btns: PickerButtonDef[] = suggestions.map(elem => {
+                    return {
+                        icon: elem.tid,
+                        label: elem.name
+                    };
+                });
+                const picker = new Picker(this.stage, {
+                    title: "Select",
+                    cursor: this.editor.cursor,
+                    onClick: (iconId) => {
+                        this.ruledef.sensor = tiles.sensors[iconId];
+                        Language.ensureValid(this.ruledef);
+                        this.instantiateProgramTiles();
+                    }
+                });
+                picker.addGroup({ label: "", btns });
+                /*
+                this.kstage.showMenu(button.x + 16, button.y, items, "down", (selection: Button) => {
+                    this.defn.sensor = tiles.sensors[selection.id];
+                    Language.ensureValid(this.ruledef);
+                    this.instantiateTiles(this.ruledef);
+                    this.pageui.ensureFinalEmptyRule();
+                });
+                */
+                picker.show();
+            }
+        }
+
+        private showDoInsertMenu() {
+            
+        }
+
+        public addToQuadTree() {
+            if (this.sensor) { this.editor.addToQuadTree(this.sensor); }
+            if (this.actuator) { this.editor.addToQuadTree(this.actuator); }
+            this.filters.forEach(filter => this.editor.addToQuadTree(filter));
+            this.modifiers.forEach(modifier => this.editor.addToQuadTree(modifier));
+            this.editor.addToQuadTree(this.handleBtn);
+            this.editor.addToQuadTree(this.whenInsertBtn);
+            this.editor.addToQuadTree(this.doInsertBtn);
         }
 
         public isEmpty() {

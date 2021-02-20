@@ -1,21 +1,23 @@
 namespace kojac {
 
+    export type PickerButtonDef = {
+        icon: string;
+        label?: string;
+    };
+
     class PickerButton extends Button {
         constructor(
             private picker: Picker,
-            opts: {
-                icon: string,
-                label?: string,
-            }
+            btn: PickerButtonDef
         ) {
             super(picker.stage, {
                 style: "white",
-                icon: opts.icon,
-                label: opts.label,
+                icon: btn.icon,
+                label: btn.label,
                 x: 0,
                 y: 0,
                 z: 15,
-                onClick: () => this.picker.onButtonClicked(opts.icon)
+                onClick: () => this.picker.onButtonClicked(btn.icon)
             });
             this.z = 11;
         }
@@ -24,8 +26,8 @@ namespace kojac {
     class PickerGroup {
         public buttons: Button[];
         constructor(private picker: Picker, public opts?: {
-            label?: string,
-            icons?: string[]
+            label?: string;
+            btns?: PickerButtonDef[];
         }) {
             this.opts = this.opts || {};
             this.buttons = [];
@@ -34,6 +36,7 @@ namespace kojac {
         public destroy() {
             this.buttons.forEach(btn => btn.destroy());
             this.buttons = undefined;
+            this.opts = undefined;
         }
     }
 
@@ -65,25 +68,27 @@ namespace kojac {
             this.prevtree = opts.cursor.quadtree;
             this.prevpos = opts.cursor.pos;
             opts.cursor.quadtree = this.quadtree;
+            opts.cursor.cancelHandlerStack.push(() => this.cancelClicked());
             this.z = 10;
         }
 
         public addGroup(opts: {
-            label?: string;
-            btns: string[];
+            label: string;
+            btns: PickerButtonDef[];
         }) {
-            this.groups.push(new PickerGroup(this, { label: opts.label, icons: opts.btns }));
+            this.groups.push(new PickerGroup(this, opts));
         }
 
         public onButtonClicked(icon: string) {
-            const onClick = this.opts.onClick;
-            if (onClick) {
-                onClick(icon);
+            this.opts.cursor.cancelHandlerStack.pop();
+            if (this.opts.onClick) {
+                this.opts.onClick(icon);
             }
             this.destroy();
         }
 
         private cancelClicked() {
+            this.opts.cursor.cancelHandlerStack.pop();
             this.destroy();
         }
 
@@ -97,11 +102,9 @@ namespace kojac {
                 onClick: () => this.cancelClicked()
             });
             this.groups.forEach(group => {
-                const icons = group.opts.icons || [];
-                icons.forEach(icon => {
-                    const button = new PickerButton(this, {
-                        icon,
-                    });
+                const btns = group.opts.btns || [];
+                btns.forEach(btn => {
+                    const button = new PickerButton(this, btn);
                     group.buttons.push(button);
                 });
             });
@@ -114,6 +117,7 @@ namespace kojac {
             this.opts.cursor.pos = this.prevpos;
             this.groups.forEach(group => group.destroy());
             this.cancelBtn.destroy();
+            this.opts = undefined;
             this.quadtree = undefined;
             this.prevtree = undefined;
             this.groups = undefined;
@@ -125,7 +129,7 @@ namespace kojac {
             const right = this.panel.right - 1;
             const top = this.panel.top;
             const bottom = this.panel.bottom - 1;
-            this.panel.fill(drawOffset, 15);
+            this.panel.fillRect(drawOffset, 15);
             screen.drawLine(left + 1, top - 1, right - 1, top - 1, 15);
             screen.drawLine(left + 1, bottom + 1, right - 1, bottom + 1, 15);
             screen.drawLine(left - 1, top + 1, left - 1, bottom - 1, 15);
@@ -140,7 +144,7 @@ namespace kojac {
             let firstBtn: Button;
 
             let maxBtnCount = 0;
-            this.groups.forEach(group => maxBtnCount = Math.max(maxBtnCount, group.opts.icons.length));
+            this.groups.forEach(group => maxBtnCount = Math.max(maxBtnCount, group.opts.btns.length));
 
             let computedHeight = HEADER;
             let computedWidth = maxBtnCount * 16;

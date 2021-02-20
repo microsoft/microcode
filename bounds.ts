@@ -88,7 +88,7 @@ namespace kojac {
             return box;
         }
 
-        public rect(drawOffset: Vec2, color: number) {
+        public drawRect(drawOffset: Vec2, color: number) {
             const top = this.top;
             const left = this.left;
             const right = this.right - 1;
@@ -110,7 +110,7 @@ namespace kojac {
             screen.drawLine(right - drawOffset.x, top - drawOffset.y, right - drawOffset.x, bottom - drawOffset.y, color);
         }
 
-        public fill(drawOffset: Vec2, color: number) {
+        public fillRect(drawOffset: Vec2, color: number) {
             screen.fillRect(this.left - drawOffset.x, this.top - drawOffset.y, this.width, this.height, color);
         }
     }

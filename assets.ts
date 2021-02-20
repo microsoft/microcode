@@ -20,6 +20,7 @@ namespace kojac {
             this.reg["button_clear"] = icondb.btn_bknd_clear;
             this.reg["button_danger"] = icondb.btn_bknd_danger;
             this.reg["edit"] = icondb.btn_edit;
+            this.reg["delete"] = icondb.btn_delete;
             this.reg["cancel"] = icondb.btn_cancel;
             this.reg["ok"] = icondb.btn_ok;
             this.reg["plus"] = icondb.btn_plus;
@@ -35,6 +36,7 @@ namespace kojac {
             this.reg["MISSING"] = icondb.MISSING;
             this.reg[tid.sensor.button_a] = icondb.tile_button_a;
             this.reg[tid.sensor.button_b] = icondb.tile_button_b;
+            this.reg[tid.sensor.timer] = icondb.tile_timer;
             this.reg[tid.modifier.page_1] = icondb.tile_page_1;
             this.reg[tid.modifier.page_2] = icondb.tile_page_2;
             this.reg[tid.modifier.page_3] = icondb.tile_page_3;
@@ -281,17 +283,17 @@ namespace icondb {
     export const btn_plus = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-        . . . . . f f f f f . . . . . .
-        . . . . . f 5 5 5 f . . . . . .
-        . . . . . f 5 5 5 f . . . . . .
-        . . f f f f 5 5 5 f f f f . . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
-        . . f f f f 5 5 5 f f f f . . .
-        . . . . . f 5 5 5 f . . . . . .
-        . . . . . f 5 5 5 f . . . . . .
-        . . . . . f f f f f . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . f f f f . . . . . .
+        . . . . . . f 5 5 f . . . . . .
+        . . . . . . f 5 5 f . . . . . .
+        . . . f f f f 5 5 f f f f . . .
+        . . . f 5 5 5 5 5 5 5 5 f . . .
+        . . . f 5 5 5 5 5 5 5 5 f . . .
+        . . . f f f f 5 5 f f f f . . .
+        . . . . . . f 5 5 f . . . . . .
+        . . . . . . f 5 5 f . . . . . .
+        . . . . . . f f f f . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .

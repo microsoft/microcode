@@ -337,6 +337,9 @@ namespace kojac {
         }
 
         public static ensureValid(rule: RuleDefn) {
+            // TODO: Handle more cases. ex:
+            // - filters not valid for new sensor
+            // - modifiers not valid for new sensor or actuator
             if (!rule.sensor) {
                 rule.filters = [];
             }
