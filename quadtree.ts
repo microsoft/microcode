@@ -174,7 +174,7 @@ namespace kojac {
         }
 
         public draw(drawOffset: Vec2, color: number) {
-            this.forEach(bounds => bounds.draw(drawOffset, color));
+            this.forEach(bounds => bounds.dbgRect(drawOffset, color));
         }
     }
 }

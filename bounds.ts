@@ -25,6 +25,15 @@ namespace kojac {
             this.top = opts.top;
         }
 
+        public static Grow(box: Bounds, amount = 1): Bounds {
+            return new Bounds({
+                top: box.top - amount,
+                left: box.left - amount,
+                width: box.width + amount * 2,
+                height: box.height + amount * 2
+            });
+        }
+
         public static Translate(box: Bounds, p: Vec2): Bounds {
             return new Bounds({
                 left: box.left + p.x,
@@ -79,11 +88,30 @@ namespace kojac {
             return box;
         }
 
-        public draw(drawOffset: Vec2, color: number) {
-            screen.drawLine(this.left - drawOffset.x, this.top - drawOffset.y, this.right - drawOffset.x, this.top - drawOffset.y, color);
-            screen.drawLine(this.left - drawOffset.x, this.bottom - drawOffset.y, this.right - drawOffset.x, this.bottom - drawOffset.y, color);
-            screen.drawLine(this.left - drawOffset.x, this.top - drawOffset.y, this.left - drawOffset.x, this.bottom - drawOffset.y, color);
-            screen.drawLine(this.right - drawOffset.x, this.top - drawOffset.y, this.right - drawOffset.x, this.bottom - drawOffset.y, color);
+        public rect(drawOffset: Vec2, color: number) {
+            const top = this.top;
+            const left = this.left;
+            const right = this.right - 1;
+            const bottom = this.bottom - 1;
+            screen.drawLine(left - drawOffset.x, top - drawOffset.y, right - drawOffset.x, top - drawOffset.y, color);
+            screen.drawLine(left - drawOffset.x, bottom - drawOffset.y, right - drawOffset.x, bottom - drawOffset.y, color);
+            screen.drawLine(left - drawOffset.x, top - drawOffset.y, left - drawOffset.x, bottom - drawOffset.y, color);
+            screen.drawLine(right - drawOffset.x, top - drawOffset.y, right - drawOffset.x, bottom - drawOffset.y, color);
+        }
+
+        public dbgRect(drawOffset: Vec2, color: number) {
+            const top = this.top;
+            const left = this.left;
+            const right = this.right;
+            const bottom = this.bottom;
+            screen.drawLine(left - drawOffset.x, top - drawOffset.y, right - drawOffset.x, top - drawOffset.y, color);
+            screen.drawLine(left - drawOffset.x, bottom - drawOffset.y, right - drawOffset.x, bottom - drawOffset.y, color);
+            screen.drawLine(left - drawOffset.x, top - drawOffset.y, left - drawOffset.x, bottom - drawOffset.y, color);
+            screen.drawLine(right - drawOffset.x, top - drawOffset.y, right - drawOffset.x, bottom - drawOffset.y, color);
+        }
+
+        public fill(drawOffset: Vec2, color: number) {
+            screen.fillRect(this.left - drawOffset.x, this.top - drawOffset.y, this.width, this.height, color);
         }
     }
 }

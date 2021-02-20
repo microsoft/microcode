@@ -71,7 +71,7 @@ namespace kojac {
                     const index = PAGE_IDS.indexOf(iconId);
                     this.switchToPage(index);
                 },
-                title: "Select page",
+                title: "Select",
                 backgroundImage: scene.backgroundImage()
                 
             });

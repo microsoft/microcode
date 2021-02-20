@@ -35,7 +35,7 @@ namespace kojac {
         private cursor: Cursor;
         private groups: PickerGroup[];
         private cancelBtn: Button;
-        private bounds: Bounds;
+        private panel: Bounds;
 
         constructor(app: App, private opts?: {
             backgroundImage?: Image;
@@ -125,9 +125,18 @@ namespace kojac {
         }
 
         draw(camera: scene.Camera) {
+            const ofs = new Vec2(camera.drawOffsetX, camera.drawOffsetY);
+            const left = this.panel.left;
+            const right = this.panel.right - 1;
+            const top = this.panel.top;
+            const bottom = this.panel.bottom - 1;
+            this.panel.fill(ofs, 15);
+            screen.drawLine(left + 1, top - 1, right - 1, top - 1, 15);
+            screen.drawLine(left + 1, bottom + 1, right - 1, bottom + 1, 15);
+            screen.drawLine(left - 1, top + 1, left - 1, bottom - 1, 15);
+            screen.drawLine(right + 1, top + 1, right + 1, bottom - 1, 15);
             super.draw(camera);
-            this.quadtree.draw(new Vec2(camera.drawOffsetX, camera.drawOffsetY), 5);
-            this.bounds.draw(new Vec2(camera.drawOffsetX, camera.drawOffsetY), 10);
+            //this.quadtree.draw(new Vec2(camera.drawOffsetX, camera.drawOffsetY), 5);
         }
 
         private layout() {
@@ -136,8 +145,8 @@ namespace kojac {
             let maxBtnCount = 0;
             this.groups.forEach(group => maxBtnCount = Math.max(maxBtnCount, group.opts.icons.length));
 
-            let computedHeight = HEADER + (MARGIN * 2);
-            let computedWidth = (MARGIN * 2) + maxBtnCount * 16;
+            let computedHeight = HEADER;
+            let computedWidth = maxBtnCount * 16;
 
             this.groups.forEach(group => {
                 if (group.opts.label) {
@@ -150,16 +159,17 @@ namespace kojac {
             let computedTop = (scene.screenHeight() >> 1) - (computedHeight >> 1);
             computedTop = Math.max(0, computedTop);
 
-            this.bounds = new Bounds({
+            this.panel = new Bounds({
                 top: computedTop,
                 left: computedLeft,
                 width: computedWidth,
                 height: computedHeight
             });
+            this.panel = Bounds.Grow(this.panel, 2);
 
-            let currentTop = computedTop + MARGIN + HEADER;
+            let currentTop = computedTop + HEADER;
             this.groups.forEach(group => {
-                let currentLeft = computedLeft + MARGIN;
+                let currentLeft = computedLeft;
                 if (group.opts.label) {
                     currentTop += LABEL;
                 }
@@ -172,16 +182,15 @@ namespace kojac {
                 });
             });
 
-            this.cancelBtn.x = computedLeft + computedWidth - 8 - MARGIN;
-            this.cancelBtn.y = computedTop + 8 + MARGIN;
+            this.cancelBtn.x = computedLeft + computedWidth - 8;
+            this.cancelBtn.y = computedTop + 8;
             this.quadtree.insert(Bounds.Translate(this.cancelBtn.hitbox, this.cancelBtn.pos), this.cancelBtn);
             if (!firstBtn) { firstBtn = this.cancelBtn; }
             this.cursor.snapTo(firstBtn.x, firstBtn.y);
         }
     }
 
-    const MARGIN = 1;
-    const HEADER = 14;
+    const HEADER = 16;
     const LABEL = 14;
     const TRAY = 16;
 }
