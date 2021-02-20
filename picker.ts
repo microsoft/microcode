@@ -135,6 +135,9 @@ namespace kojac {
             screen.drawLine(left + 1, bottom + 1, right - 1, bottom + 1, 15);
             screen.drawLine(left - 1, top + 1, left - 1, bottom - 1, 15);
             screen.drawLine(right + 1, top + 1, right + 1, bottom - 1, 15);
+            if (this.opts.title) {
+                screen.print(this.opts.title, left + 2, top + 4, 1, image.font8);
+            }
             super.draw(camera);
             //this.quadtree.draw(new Vec2(camera.drawOffsetX, camera.drawOffsetY), 5);
         }
@@ -157,6 +160,7 @@ namespace kojac {
 
             let computedLeft = (scene.screenWidth() >> 1) - (computedWidth >> 1);
             let computedTop = (scene.screenHeight() >> 1) - (computedHeight >> 1);
+            computedLeft = Math.max(0, computedLeft);
             computedTop = Math.max(0, computedTop);
 
             this.panel = new Bounds({

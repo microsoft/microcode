@@ -20,6 +20,7 @@ namespace kojac {
 
         public get pos() { return this.stylus.pos; }
         public get z() { return this.stylus.z; }
+        public set z(v: number) { this.stylus.z = v; }
 
         constructor(stage: Stage) {
             super(stage, "cursor");
