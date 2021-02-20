@@ -144,6 +144,7 @@ namespace kojac {
                 y: 8,
                 onClick: () => this.cancelClicked()
             });
+            this.progdef = this.app.load(SAVESLOT_AUTO);
         }
 
         shutdown() {
@@ -156,7 +157,6 @@ namespace kojac {
             super.activate();
             //scene.setBackgroundColor(11);
             scene.setBackgroundImage(icondb.gradient_0);
-            this.progdef = this.app.load(SAVESLOT_AUTO);
             this.pageBtn.setIcon(PAGE_IDS[this.currPage]);
             if (!this.pageEditor) {
                 this.switchToPage(this.currPage);
@@ -207,9 +207,9 @@ namespace kojac {
     class PageEditor extends Component {
         rules: RuleEditor[];
 
-        constructor(public editor: Editor, pagedef: PageDefn) {
+        constructor(private editor: Editor, private pagedef: PageDefn) {
             super(editor, "page_editor");
-            this.rules = pagedef.rules.map(ruledef => new RuleEditor(editor, ruledef));
+            this.rules = pagedef.rules.map(ruledef => new RuleEditor(editor, this, ruledef));
             this.ensureFinalEmptyRule();
             this.layout();
         }
@@ -222,7 +222,9 @@ namespace kojac {
 
         private ensureFinalEmptyRule() {
             this.trimRules();
-            this.rules.push(new RuleEditor(this.editor, new RuleDefn()));
+            const ruledefn = new RuleDefn();
+            this.rules.push(new RuleEditor(this.editor, this, ruledefn));
+            this.pagedef.rules.push(ruledefn);
         }
 
         private trimRules() {
@@ -231,6 +233,7 @@ namespace kojac {
             while (last.isEmpty()) {
                 last.destroy();
                 this.rules.pop();
+                this.pagedef.rules.pop();
                 if (!this.rules.length) { return; }
                 last = this.rules[this.rules.length - 1];
             }
@@ -261,6 +264,11 @@ namespace kojac {
         public addToSpatialDb() {
             this.rules.forEach(rule => rule.addToSpatialDb());
         }
+
+        public changed() {
+            this.ensureFinalEmptyRule();
+            this.layout();
+        }
     }
 
     class RuleEditor extends Component {
@@ -274,13 +282,14 @@ namespace kojac {
         actuator: Button;
         modifiers: Button[];
 
-        constructor(public editor: Editor, ruledef: RuleDefn) {
+        constructor(private editor: Editor, private page: PageEditor, private ruledef: RuleDefn) {
             super(editor, "rule_editor");
             this.whenLbl = new Kelpie(editor, icons.get("when"));
             this.doLbl = new Kelpie(editor, icons.get("do"));
             this.handleBtn = new EditorButton(editor, {
                 icon: ruledef.condition,
-                x: 0, y: 0
+                x: 0, y: 0,
+                onClick: () => this.pickRuleCondition()
             });
             this.whenInsertBtn = new EditorButton(editor, {
                 style: "beige",
@@ -323,6 +332,27 @@ namespace kojac {
             this.editor.changed();
         }
 
+        private pickRuleCondition() {
+            const picker = new Picker(this.stage.app, {
+                onClick: (iconId) => {
+                    this.setRuleCondition(iconId);
+                },
+                title: "Select",
+                backgroundImage: scene.backgroundImage()
+                
+            });
+            picker.addGroup({
+                btns: RC_IDS
+            });
+            picker.show();
+        } 
+
+        private setRuleCondition(rc: string) {
+            this.handleBtn.setIcon(rc);
+            this.ruledef.condition = rc;
+            this.page.changed();
+        }
+
         public addToSpatialDb() {
             if (this.sensor) { this.editor.addToSpatialDb(this.sensor); }
             if (this.actuator) { this.editor.addToSpatialDb(this.actuator); }
@@ -335,10 +365,11 @@ namespace kojac {
 
         public isEmpty() {
             return (
-                !this.sensor &&
-                !this.actuator &&
-                this.filters.length === 0 &&
-                this.modifiers.length === 0);
+                this.ruledef.condition === RuleCondition.DEFAULT &&
+                !this.ruledef.sensor &&
+                !this.ruledef.actuator &&
+                this.ruledef.filters.length === 0 &&
+                this.ruledef.modifiers.length === 0);
         }
 
         public layout(left: number, top: number) {
@@ -368,9 +399,6 @@ namespace kojac {
                 v.x += modifier.width;
             });
             this.doInsertBtn.pos = v;
-
-
-
         }
     }
 }

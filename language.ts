@@ -55,6 +55,8 @@ namespace kojac {
         LOW_TO_HIGH: "RC4"
     }
 
+    export const RC_IDS = [RuleCondition.HIGH, RuleCondition.LOW, RuleCondition.HIGH_TO_LOW, RuleCondition.LOW_TO_HIGH];
+
     export class RuleDefn {
         condition: string;
         sensor: SensorDefn;
