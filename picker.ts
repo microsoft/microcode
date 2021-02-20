@@ -8,14 +8,16 @@ namespace kojac {
                 label?: string,
             }
         ) {
-            super(picker, {
+            super(picker.stage, {
                 style: "white",
                 icon: opts.icon,
                 label: opts.label,
                 x: 0,
                 y: 0,
+                z: 15,
                 onClick: () => this.picker.onButtonClicked(opts.icon)
             });
+            this.z = 11;
         }
     }
 
@@ -28,24 +30,42 @@ namespace kojac {
             this.opts = this.opts || {};
             this.buttons = [];
         }
+
+        public destroy() {
+            this.buttons.forEach(btn => btn.destroy());
+            this.buttons = undefined;
+        }
     }
 
-    export class Picker extends Stage {
-        public quadtree: QuadTree;
-        private cursor: Cursor;
+    export class Picker extends Component {
+        private quadtree: QuadTree;
+        private prevtree: QuadTree;
+        private prevpos: Vec2;
         private groups: PickerGroup[];
         private cancelBtn: Button;
         private panel: Bounds;
 
-        constructor(app: App, private opts?: {
+        public z: number;
+
+        constructor(stage: Stage, private opts: {
+            cursor: Cursor,
             backgroundImage?: Image;
             backgroundColor?: number;
             title?: string;
             onClick?: (btn: string) => void
         }) {
-            super(app, "picker");
+            super(stage, "picker");
             this.groups = [];
-            this.opts = this.opts || {};
+            this.quadtree = new QuadTree(new Bounds({
+                left: 0,
+                top: 0,
+                width: 2048,
+                height: 2048
+            }), 1, 16);
+            this.prevtree = opts.cursor.quadtree;
+            this.prevpos = opts.cursor.pos;
+            opts.cursor.quadtree = this.quadtree;
+            this.z = 10;
         }
 
         public addGroup(opts: {
@@ -57,44 +77,23 @@ namespace kojac {
 
         public onButtonClicked(icon: string) {
             const onClick = this.opts.onClick;
-            this.app.stageManager.pop();
             if (onClick) {
                 onClick(icon);
             }
-        }
-
-        public show() {
-            this.app.stageManager.push(this);
+            this.destroy();
         }
 
         private cancelClicked() {
-            this.app.stageManager.pop();
+            this.destroy();
         }
 
-        startup() {
-            super.startup();
-            controller.up.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.moveUp());
-            controller.up.onEvent(ControllerButtonEvent.Repeated, () => this.cursor.moveUp());
-            controller.down.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.moveDown());
-            controller.down.onEvent(ControllerButtonEvent.Repeated, () => this.cursor.moveDown());
-            controller.left.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.moveLeft());
-            controller.left.onEvent(ControllerButtonEvent.Repeated, () => this.cursor.moveLeft());
-            controller.right.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.moveRight());
-            controller.right.onEvent(ControllerButtonEvent.Repeated, () => this.cursor.moveRight());
-            controller.A.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.click());
-            this.cursor = new Cursor(this);
-            this.quadtree = new QuadTree(new Bounds({
-                left: 0,
-                top: 0,
-                width: 2048,
-                height: 2048
-            }), 1, 16);
-            this.cursor.quadtree = this.quadtree;
-            this.cancelBtn = new Button(this, {
+        show() {
+            this.cancelBtn = new Button(this.stage, {
                 style: "white",
                 icon: "cancel",
                 x: 0,
                 y: 0,
+                z: 15,
                 onClick: () => this.cancelClicked()
             });
             this.groups.forEach(group => {
@@ -109,28 +108,24 @@ namespace kojac {
             this.layout();
         }
 
-        shutdown() {
+        destroy() {
             this.quadtree.clear();
+            this.opts.cursor.quadtree = this.prevtree;
+            this.opts.cursor.pos = this.prevpos;
+            this.groups.forEach(group => group.destroy());
+            this.cancelBtn.destroy();
             this.quadtree = undefined;
-            this.cursor = undefined;
+            this.prevtree = undefined;
             this.groups = undefined;
+            super.destroy();
         }
 
-        activate() {
-            if (this.opts.backgroundImage) {
-                scene.setBackgroundImage(this.opts.backgroundImage);
-            } else if (this.opts.backgroundColor !== undefined) {
-                scene.setBackgroundColor(this.opts.backgroundColor);
-            }
-        }
-
-        draw(camera: scene.Camera) {
-            const ofs = new Vec2(camera.drawOffsetX, camera.drawOffsetY);
+        draw(drawOffset: Vec2) {
             const left = this.panel.left;
             const right = this.panel.right - 1;
             const top = this.panel.top;
             const bottom = this.panel.bottom - 1;
-            this.panel.fill(ofs, 15);
+            this.panel.fill(drawOffset, 15);
             screen.drawLine(left + 1, top - 1, right - 1, top - 1, 15);
             screen.drawLine(left + 1, bottom + 1, right - 1, bottom + 1, 15);
             screen.drawLine(left - 1, top + 1, left - 1, bottom - 1, 15);
@@ -138,8 +133,7 @@ namespace kojac {
             if (this.opts.title) {
                 screen.print(this.opts.title, left + 2, top + 4, 1, image.font8);
             }
-            super.draw(camera);
-            //this.quadtree.draw(new Vec2(camera.drawOffsetX, camera.drawOffsetY), 5);
+            //this.quadtree.draw(drawOffset, 5);
         }
 
         private layout() {
@@ -190,7 +184,7 @@ namespace kojac {
             this.cancelBtn.y = computedTop + 8;
             this.quadtree.insert(Bounds.Translate(this.cancelBtn.hitbox, this.cancelBtn.pos), this.cancelBtn);
             if (!firstBtn) { firstBtn = this.cancelBtn; }
-            this.cursor.snapTo(firstBtn.x, firstBtn.y);
+            this.opts.cursor.snapTo(firstBtn.x, firstBtn.y);
         }
     }
 

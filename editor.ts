@@ -66,7 +66,8 @@ namespace kojac {
         }
 
         private pickPage() {
-            const picker = new Picker(this.app, {
+            const picker = new Picker(this, {
+                cursor: this.cursor,
                 onClick: (iconId) => {
                     const index = PAGE_IDS.indexOf(iconId);
                     this.switchToPage(index);
@@ -244,7 +245,7 @@ namespace kojac {
             let top = 36;
             this.rules.forEach(rule => {
                 rule.layout(left, top);
-                top += 18;
+                top += 22;
             });
         }
 
@@ -333,7 +334,8 @@ namespace kojac {
         }
 
         private pickRuleCondition() {
-            const picker = new Picker(this.stage.app, {
+            const picker = new Picker(this.stage, {
+                cursor: this.editor.cursor,
                 onClick: (iconId) => {
                     this.setRuleCondition(iconId);
                 },

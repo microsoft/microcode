@@ -48,6 +48,7 @@ namespace kojac {
                 label?: string,
                 x: number,
                 y: number,
+                z?: number,
                 onClick?: (button: Button) => void
             }
         ) {
@@ -59,7 +60,7 @@ namespace kojac {
             this.x = opts.x;
             this.y = opts.y;
             this.onClick = opts.onClick;
-            this.buildSprite(0);
+            this.buildSprite(opts.z || 0);
         }
 
         destroy() {

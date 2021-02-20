@@ -19,6 +19,7 @@ namespace kojac {
         quadtree: QuadTree;
 
         public get pos() { return this.stylus.pos; }
+        public set pos(p: Vec2) { this.x = p.x; this.y = p.y; }
         public get z() { return this.stylus.z; }
         public set z(v: number) { this.stylus.z = v; }
 

@@ -39,8 +39,5 @@ namespace kojac {
 
         update(dt: number) {
         }
-
-        notify(event: string, parm: any) {
-        }
     }
 }
