@@ -1,11 +1,21 @@
 namespace kojac {
+
+    function easeInOutSine(t: number): number {
+        return -(Math.cos(Math.PI * t) - 1) / 2;
+    }
+
+    const LERP_SPEED = 20;
+
     export class Camera extends Component {
-        camera_movement_x: number;
-        camera_movement_y: number;
         x: number;
         y: number;
+        curx: number;
+        cury: number;
+        fromx: number;
+        fromy: number;
         widthOver2: number;
         heightOver2: number;
+        lerpt: number;
 
         //% blockCombine block="pos" callInDebugger
         public get pos(): Vec2 { return mkVec2(this.x, this.y); }
@@ -13,48 +23,78 @@ namespace kojac {
 
         constructor(stage: Stage) {
             super(stage, "camera");
-            this.x = scene.cameraProperty(CameraProperty.X);
-            this.y = scene.cameraProperty(CameraProperty.Y);
-            this.widthOver2 = scene.screenWidth() >> 1;
-            this.heightOver2 = scene.screenHeight() >> 1;
+            this.snapTo(new Vec2(scene.screenWidth() >> 1, scene.screenHeight() >> 1));
         }
 
-        public moveTo(x: number, y: number) {
-            this.x = x;
-            this.y = y;
-            scene.centerCameraAt(this.x, this.y);
+        public moveTo(p: Vec2) {
+            this.fromx = this.x;
+            this.fromy = this.y;
+            this.x = p.x;
+            this.y = p.y;
+            this.lerpt = control.millis();
+        }
+
+        public snapTo(p: Vec2) {
+            this.x = this.curx = this.fromx = p.x;
+            this.y = this.cury = this.fromy = p.y;
         }
 
         update(dt: number) {
-            this.camera_movement_x = 0;
-            this.camera_movement_y = 0;
-            // TODO: Keep in frame stuff
+            const dx = this.x - this.curx;
+            const dy = this.y - this.cury;
+            if (dx || dy) {
+                const t = Math.min(LERP_SPEED * (control.millis() - this.lerpt) / 1000, 1);
+                if (Math.abs(dx) < 0.5) {
+                    this.curx = this.x;
+                } else {
+                    let distx = (this.x - this.fromx);
+                    this.curx = this.fromx + easeInOutSine(t) * distx;
+                }
+                if (Math.abs(dy) < 0.5) {
+                    this.cury = this.y;
+                } else {
+                    let disty = (this.y - this.fromy);
+                    this.cury = this.fromy + easeInOutSine(t) * disty;
+                }
+            }
+            scene.centerCameraAt(this.curx, this.cury);
         }
 
-        keepInFrame(x: number, y: number) {
-            const camX = this.x;
-            const camY = this.y;
-            let nxtX = camX;
-            let nxtY = camY;
-            const dx = x - camX;
-            const dy = y - camY;
-            if (dx < -this.widthOver2) {
-                nxtX = x + this.widthOver2;
-            }
-            if (dx >= this.widthOver2) {
-                nxtX = x - this.widthOver2;
-            }
-            if (dy < -this.heightOver2) {
-                nxtY = y + this.heightOver2;
-            }
-            if (dy >= this.heightOver2) {
-                nxtY = y - this.heightOver2;
-            }
-            this.x = nxtX;
-            this.y = nxtY;
-            this.camera_movement_x = this.x - camX;
-            this.camera_movement_y = this.y - camY;
-            scene.centerCameraAt(this.x, this.y);
+        keepInFrame(bounds: Bounds) {
+            const halfWidth = scene.screenWidth() >> 1;
+            const halfHeight = scene.screenHeight() >> 1;
+            const camb = new Bounds({
+                top: this.y - halfHeight,
+                left: this.x - halfWidth,
+                width: scene.screenWidth(),
+                height: scene.screenHeight()
+            });
+            if (!camb.contains(bounds.topLeft) ||
+                !camb.contains(bounds.topRight) ||
+                !camb.contains(bounds.bottomLeft) ||
+                !camb.contains(bounds.bottomRight)
+            ) {
+                let dx = 0;
+                let dy = 0;
+                let dtop = Math.round(camb.top - bounds.top);
+                let dleft = Math.round(camb.left - bounds.left);
+                let dbottom = Math.round(bounds.bottom - camb.bottom);
+                let dright = Math.round(bounds.right - camb.right);
+                if (dleft > 0) {
+                    dx -= dleft;
+                }
+                if (dright > 0) {
+                    dx += dright;
+                }
+                if (dtop > 0) {
+                    dy -= dtop;
+                }
+                if (dbottom > 0) {
+                    dy += dbottom;
+                }
+                this.moveTo(new Vec2(this.x + dx, this.y + dy));
+
+            }            
         }
     }
 }

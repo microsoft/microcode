@@ -175,6 +175,12 @@ namespace kojac {
                 this._changed = false;
                 this.rebuildQuadTree();
             }
+            let bounds = new Bounds({
+                top: -8, left: -8,
+                width: 16, height: 16
+            });
+            bounds = Bounds.Translate(bounds, this.cursor.pos);
+            this.camera.keepInFrame(bounds);
         }
 
         private rebuildQuadTree() {
@@ -348,12 +354,12 @@ namespace kojac {
             }
             if (this.filters) {
                 this.filters.forEach(filter => filter.destroy());
-                this.filters = undefined;
+                this.filters = [];
                 this.editor.changed();
             }
             if (this.modifiers) {
                 this.modifiers.forEach(modifier => modifier.destroy());
-                this.modifiers = undefined;
+                this.modifiers = [];
                 this.editor.changed();
             }
         }
@@ -370,6 +376,30 @@ namespace kojac {
                 });
                 this.page.changed();
             }
+            if (this.ruledef.actuator) {
+                this.actuator = new EditorButton(this.editor, {
+                    style: "white",
+                    icon: this.ruledef.actuator.tid,
+                    x: 0, y: 0
+                });
+                this.page.changed();
+            }
+            this.ruledef.filters.forEach(filter => {
+                this.filters.push(new EditorButton(this.editor, {
+                    style: "white",
+                    icon: filter.tid,
+                    x: 0, y: 0
+                }));
+                this.page.changed();
+            });
+            this.ruledef.modifiers.forEach(modifier => {
+                this.modifiers.push(new EditorButton(this.editor, {
+                    style: "white",
+                    icon: modifier.tid,
+                    x: 0, y: 0
+                }));
+                this.page.changed();
+            });
         }
 
         private showRuleHandleMenu() {
@@ -422,24 +452,19 @@ namespace kojac {
                         label: elem.name
                     };
                 });
-                const picker = new Picker(this.stage, {
-                    title: "Select",
-                    cursor: this.editor.cursor,
-                    onClick: (iconId) => {
-
-                    }
-                });
-                picker.addGroup({ label: "", btns });
-
-/*
-                this.kstage.showMenu(button.x + 16, button.y, items, "down", (selection: Button) => {
-                    this.defn.filters.push(tiles.filters[selection.id]);
-                    Language.ensureValid(this.ruledef);
-                    this.instantiateTiles(this.ruledef);
-                    this.pageui.ensureFinalEmptyRule();
-                });
-                */
-                picker.show();
+                if (btns.length) {
+                    const picker = new Picker(this.stage, {
+                        title: "Select",
+                        cursor: this.editor.cursor,
+                        onClick: (iconId) => {
+                            this.ruledef.filters.push(tiles.filters[iconId]);
+                            Language.ensureValid(this.ruledef);
+                            this.instantiateProgramTiles();
+                        }
+                    });
+                    picker.addGroup({ label: "", btns });
+                    picker.show();
+                }
             } else {
                 const suggestions = Language.getSensorSuggestions(this.ruledef);
                 const btns: PickerButtonDef[] = suggestions.map(elem => {
@@ -448,30 +473,67 @@ namespace kojac {
                         label: elem.name
                     };
                 });
-                const picker = new Picker(this.stage, {
-                    title: "Select",
-                    cursor: this.editor.cursor,
-                    onClick: (iconId) => {
-                        this.ruledef.sensor = tiles.sensors[iconId];
-                        Language.ensureValid(this.ruledef);
-                        this.instantiateProgramTiles();
-                    }
-                });
-                picker.addGroup({ label: "", btns });
-                /*
-                this.kstage.showMenu(button.x + 16, button.y, items, "down", (selection: Button) => {
-                    this.defn.sensor = tiles.sensors[selection.id];
-                    Language.ensureValid(this.ruledef);
-                    this.instantiateTiles(this.ruledef);
-                    this.pageui.ensureFinalEmptyRule();
-                });
-                */
-                picker.show();
+                if (btns.length) {
+                    const picker = new Picker(this.stage, {
+                        title: "Select",
+                        cursor: this.editor.cursor,
+                        onClick: (iconId) => {
+                            this.ruledef.sensor = tiles.sensors[iconId];
+                            Language.ensureValid(this.ruledef);
+                            this.instantiateProgramTiles();
+                        }
+                    });
+                    picker.addGroup({ label: "", btns });
+                    picker.show();
+                }
             }
         }
 
         private showDoInsertMenu() {
-            
+            if (this.actuator) {
+                const index = this.ruledef.modifiers.length;
+                const suggestions = Language.getModifierSuggestions(this.ruledef, index);
+                const btns: PickerButtonDef[] = suggestions.map(elem => {
+                    return {
+                        icon: elem.tid,
+                        label: elem.name
+                    };
+                });
+                if (btns.length) {
+                    const picker = new Picker(this.stage, {
+                        title: "Select",
+                        cursor: this.editor.cursor,
+                        onClick: (iconId) => {
+                            this.ruledef.modifiers.push(tiles.modifiers[iconId]);
+                            Language.ensureValid(this.ruledef);
+                            this.instantiateProgramTiles();
+                        }
+                    });
+                    picker.addGroup({ label: "", btns });
+                    picker.show();
+                }
+            } else {
+                const suggestions = Language.getActuatorSuggestions(this.ruledef);
+                const btns: PickerButtonDef[] = suggestions.map(elem => {
+                    return {
+                        icon: elem.tid,
+                        label: elem.name
+                    };
+                });
+                if (btns.length) {
+                    const picker = new Picker(this.stage, {
+                        title: "Select",
+                        cursor: this.editor.cursor,
+                        onClick: (iconId) => {
+                            this.ruledef.actuator = tiles.actuators[iconId];
+                            Language.ensureValid(this.ruledef);
+                            this.instantiateProgramTiles();
+                        }
+                    });
+                    picker.addGroup({ label: "", btns });
+                    picker.show();
+                }
+            }            
         }
 
         public addToQuadTree() {

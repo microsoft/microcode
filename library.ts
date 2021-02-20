@@ -12,8 +12,6 @@ namespace kojac {
         }
     }
 
-    const DIST_CUTOFF_SQ = 3000;
-
     const librarydb: LibraryFnMap = {
         "noop": (rule: Rule) => { },
 

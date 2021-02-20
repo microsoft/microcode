@@ -6,7 +6,7 @@ namespace kojac {
 
     export type CursorCancelHandler = () => void;
 
-    const LERP_SPEED = 10;
+    const LERP_SPEED = 12;
     const SEARCH_INCR = 8;
     const SEARCH_MAX = 160;
 
@@ -61,6 +61,7 @@ namespace kojac {
             boundsFn: (dist: number) => Bounds;
             filterFn: (value: Button) => boolean;
         }) {
+            if (this.transiting()) return;
             let dist = SEARCH_INCR;
             let candidates: Button[];
             let overlapping = this.getOverlapping();
@@ -187,6 +188,12 @@ namespace kojac {
         destroy() {
             this.quadtree = undefined;
             super.destroy();
+        }
+
+        transiting(): boolean {
+            let dx = (this.stylus.x - this.x);
+            let dy = (this.stylus.y - this.y);
+            return (dx !== 0 || dy !== 0);
         }
 
         update(dt: number) {
