@@ -59,7 +59,7 @@ namespace kojac {
         // Move the cursor to the best nearby candidate button.
         private move(opts: {
             boundsFn: (dist: number) => Bounds;
-            filterFn: (value: Button) => boolean;
+            filterFn: (value: Button, dist: number) => boolean;
         }) {
             if (this.transiting()) return;
             let dist = SEARCH_INCR;
@@ -74,9 +74,9 @@ namespace kojac {
                     // Filter buttons overlapping the cursor.
                     .filter(btn => overlapping.indexOf(btn) < 0)
                     // Filter buttons per caller.
-                    .filter(opts.filterFn)
+                    .filter((btn) => opts.filterFn(btn, dist))
                     // Sort by distance from cursor.
-                    .sort((a, b) => Vec2.DistSq(this.pos, a.pos) - Vec2.DistSq(this.pos, b.pos));
+                    .sort((a, b) => Vec2.DistSq(this.pos, a.worldPos) - Vec2.DistSq(this.pos, b.worldPos));
                 if (candidates.length) { break; }
                 // No candidates found, widen the search area.
                 dist += SEARCH_INCR;
@@ -84,7 +84,8 @@ namespace kojac {
             }
             if (candidates.length) {
                 const btn = candidates.shift();
-                this.moveTo(btn.x, btn.y);
+                const pos = btn.worldPos;
+                this.moveTo(pos.x, pos.y);
             }
         }
 
@@ -98,9 +99,11 @@ namespace kojac {
                         height: dist
                     });
                 },
-                filterFn: (btn) => {
-                    // Filter buttons below or level with the cursor.
-                    return btn.y < this.y;
+                filterFn: (btn, dist) => {
+                    // Filter to upward buttons that are more up than left or right from us.
+                    return (
+                        btn.y < this.y &&
+                        Math.abs(btn.y - this.y) > Math.abs(btn.x - this.x));
                 }
             });
         }
@@ -115,9 +118,11 @@ namespace kojac {
                         height: dist
                     });
                 },
-                filterFn: (btn) => {
-                    // Filter buttons above or level with the cursor.
-                    return btn.y > this.y;
+                filterFn: (btn, dist) => {
+                    // Filter to downward buttons that are more down than left or right from us.
+                    return (
+                        btn.y > this.y &&
+                        Math.abs(btn.y - this.y) > Math.abs(btn.x - this.x));
                 }
             });
         }
@@ -132,9 +137,11 @@ namespace kojac {
                         height: dist
                     });
                 },
-                filterFn: (btn) => {
-                    // Filter buttons right of or level with the cursor.
-                    return btn.x < this.x;
+                filterFn: (btn, dist) => {
+                    // Filter to leftward buttons that are more left than up or down from us.
+                    return (
+                        btn.x < this.x &&
+                        Math.abs(btn.y - this.y) < Math.abs(btn.x - this.x));
                 }
             });
         }
@@ -149,9 +156,11 @@ namespace kojac {
                         height: dist
                     });
                 },
-                filterFn: (btn) => {
-                    // Filter buttons left of or level with the cursor.
-                    return btn.x > this.x;
+                filterFn: (btn, dist) => {
+                    // Filter to rightward buttons that are to more right than up or down from us.
+                    return (
+                        btn.x > this.x &&
+                        Math.abs(btn.y - this.y) < Math.abs(btn.x - this.x));
                 }
             });
         }
@@ -179,7 +188,7 @@ namespace kojac {
                 .map(comp => comp as Button)
                 // filter to intersecting buttons
                 .filter(btn => {
-                    const btnb = Bounds.Translate(btn.hitbox, btn.pos);
+                    const btnb = Bounds.Translate(btn.hitbox, btn.worldPos);
                     return Bounds.Intersects(crsb, btnb);
                 });
             return btns;

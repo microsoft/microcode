@@ -13,13 +13,13 @@ namespace kojac {
         cury: number;
         fromx: number;
         fromy: number;
-        widthOver2: number;
-        heightOver2: number;
         lerpt: number;
 
         //% blockCombine block="pos" callInDebugger
-        public get pos(): Vec2 { return mkVec2(this.x, this.y); }
+        public get pos(): Vec2 { return new Vec2(this.x, this.y); }
         public set pos(v: Vec2) { this.x = v.x; this.y = v.y; }
+
+        public get offset() { return new Vec2(this.curx - (scene.screenWidth() >> 1), this.cury - (scene.screenHeight() >> 1)); }
 
         constructor(stage: Stage) {
             super(stage, "camera");

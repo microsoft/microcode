@@ -17,6 +17,7 @@ namespace kojac {
                 x: 0,
                 y: 0,
                 z: 15,
+                hud: true,
                 onClick: () => this.picker.onButtonClicked(btn.icon)
             });
             this.z = 11;
@@ -99,6 +100,7 @@ namespace kojac {
                 x: 0,
                 y: 0,
                 z: 15,
+                hud: true,
                 onClick: () => this.cancelClicked()
             });
             this.groups.forEach(group => {
@@ -124,7 +126,12 @@ namespace kojac {
             super.destroy();
         }
 
+        update(dt: number) {
+            this.quadtree.offset = this.stage.camera.offset;
+        }
+
         draw(drawOffset: Vec2) {
+            drawOffset = new Vec2(0, 0);
             const left = this.panel.left;
             const right = this.panel.right - 1;
             const top = this.panel.top;
@@ -188,7 +195,7 @@ namespace kojac {
             this.cancelBtn.y = computedTop + 8;
             this.quadtree.insert(Bounds.Translate(this.cancelBtn.hitbox, this.cancelBtn.pos), this.cancelBtn);
             if (!firstBtn) { firstBtn = this.cancelBtn; }
-            this.opts.cursor.snapTo(firstBtn.x, firstBtn.y);
+            this.opts.cursor.snapTo(firstBtn.worldPos.x, firstBtn.worldPos.y);
         }
     }
 

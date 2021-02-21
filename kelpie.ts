@@ -1,9 +1,4 @@
 namespace kojac {
-    export enum KelpieFlags {
-        Invisible = 1 >> 0,
-        HUD = 1 >> 1,
-    }
-
     export type KelpieHandler = (kelpie: Kelpie) => void;
 
     /**
@@ -15,7 +10,8 @@ namespace kojac {
         private _y: number;
         private _z: number;
         private _image: Image;
-        private _flags: number;
+        private _invisible: boolean;
+        private _hud: boolean;
 
         //% blockCombine block="x" callInDebugger
         get x(): number { return this._x; }
@@ -101,12 +97,12 @@ namespace kojac {
         }
 
         //% blockCombine block="invisible" callInDebugger
-        get invisible() { return !!(this._flags & KelpieFlags.Invisible); }
-        set invisible(b: boolean) { b ? this._flags |= KelpieFlags.Invisible : this._flags &= ~KelpieFlags.Invisible; }
+        get invisible() { return this._invisible; }
+        set invisible(b: boolean) { this._invisible = b; }
 
         //% blockCombine block="hud" callInDebugger
-        get hud() { return !!(this._flags & KelpieFlags.HUD); }
-        set hud(b: boolean) { b ? this._flags |= KelpieFlags.HUD : this._flags &= ~KelpieFlags.HUD; }
+        get hud() { return this._hud; }
+        set hud(b: boolean) { this._hud = b; }
 
         constructor(stage: Stage, img: Image) {
             super(stage, "kelpie");
@@ -127,6 +123,7 @@ namespace kojac {
 
         private isOffScreen(drawOffset: Vec2): boolean {
             return (
+                !this.hud &&
                 this.left - drawOffset.x > screen.width ||
                 this.top - drawOffset.y > screen.height ||
                 this.right - drawOffset.x < 0 ||
@@ -135,10 +132,15 @@ namespace kojac {
 
         draw(drawOffset: Vec2) {
             if (this.invisible) { return; }
+
+            if (this.hud) {
+                drawOffset = new Vec2(0, 0);
+            }
+
             if (this.isOffScreen(drawOffset)) { return; }
 
-            const left = this.left - (this.hud ? 0 : drawOffset.x);
-            const top = this.top - (this.hud ? 0 : drawOffset.y);
+            const left = this.left - drawOffset.x;
+            const top = this.top - drawOffset.y;
 
             screen.drawTransparentImage(this._image, left, top);
         }

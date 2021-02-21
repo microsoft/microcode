@@ -157,6 +157,10 @@ namespace kojac {
         }
 
         draw(drawOffset: Vec2) {
+            if (this.hud) {
+                drawOffset = new Vec2(0, 0);
+            }
+
             //const bounds = Bounds.Translate(this.hitbox, this.pos);
             //bounds.render(drawOffset, 15);
         }

@@ -4,6 +4,7 @@ namespace kojac {
         NeedsSorting = 1 << 0,
     }
 
+    // A stage is essentially a scene.
     export class Stage implements SpriteLike {
         camera: Camera;
         prevMs: number;
@@ -103,7 +104,7 @@ namespace kojac {
                 camera.drawOffsetX,
                 camera.drawOffsetY);
             const comps = this.components;
-            comps.forEach((comp: any) => comp.draw && comp.draw(drawOffset))
+            comps.forEach((comp: any) => comp.draw && comp.draw(drawOffset));
         }
 
         // SpriteLike impl, so the stage can get a draw call from the scene.
