@@ -19,6 +19,7 @@ namespace kojac {
         lerpt: number;
         hitbox: Bounds;
         quadtree: QuadTree;
+        hudtree: QuadTree;
         cancelHandlerStack: CursorCancelHandler[];
 
         public get pos() { return this.stylus.pos; }
@@ -67,7 +68,7 @@ namespace kojac {
             let overlapping = this.getOverlapping();
             while (true) {
                 const bounds = opts.boundsFn(dist);
-                candidates = this.quadtree.query(bounds)
+                candidates = this.quadtree.query(bounds).concat(this.hudtree.query(Bounds.Translate(bounds, Vec2.Neg(this.stage.camera.offset))))
                     // filter and map to Button type
                     .filter(comp => comp.kind === "button")
                     .map(comp => comp as Button)
@@ -76,7 +77,11 @@ namespace kojac {
                     // Filter buttons per caller.
                     .filter((btn) => opts.filterFn(btn, dist))
                     // Sort by distance from cursor.
-                    .sort((a, b) => Vec2.DistSq(this.pos, a.worldPos) - Vec2.DistSq(this.pos, b.worldPos));
+                    .sort((a, b) => {
+                        const apos = a.hud ? Vec2.Add(a.pos, this.stage.camera.offset) : a.pos;
+                        const bpos = b.hud ? Vec2.Add(b.pos, this.stage.camera.offset) : b.pos;
+                        return Vec2.DistSq(this.pos, a.pos) - Vec2.DistSq(this.pos, b.pos);
+                    });
                 if (candidates.length) { break; }
                 // No candidates found, widen the search area.
                 dist += SEARCH_INCR;
@@ -84,7 +89,7 @@ namespace kojac {
             }
             if (candidates.length) {
                 const btn = candidates.shift();
-                const pos = btn.worldPos;
+                const pos = btn.hud ? Vec2.Add(btn.pos, this.stage.camera.offset) : btn.pos;
                 this.moveTo(pos.x, pos.y);
             }
         }
@@ -100,10 +105,11 @@ namespace kojac {
                     });
                 },
                 filterFn: (btn, dist) => {
+                    const pos = btn.hud ? Vec2.Add(btn.pos, this.stage.camera.offset) : btn.pos;
                     // Filter to upward buttons that are more up than left or right from us.
                     return (
-                        btn.y < this.y &&
-                        Math.abs(btn.y - this.y) > Math.abs(btn.x - this.x));
+                        pos.y < this.y &&
+                        Math.abs(pos.y - this.y) > Math.abs(pos.x - this.x));
                 }
             });
         }
@@ -119,10 +125,11 @@ namespace kojac {
                     });
                 },
                 filterFn: (btn, dist) => {
+                    const pos = btn.hud ? Vec2.Add(btn.pos, this.stage.camera.offset) : btn.pos;
                     // Filter to downward buttons that are more down than left or right from us.
                     return (
-                        btn.y > this.y &&
-                        Math.abs(btn.y - this.y) > Math.abs(btn.x - this.x));
+                        pos.y > this.y &&
+                        Math.abs(pos.y - this.y) > Math.abs(pos.x - this.x));
                 }
             });
         }
@@ -138,10 +145,11 @@ namespace kojac {
                     });
                 },
                 filterFn: (btn, dist) => {
+                    const pos = btn.hud ? Vec2.Add(btn.pos, this.stage.camera.offset) : btn.pos;
                     // Filter to leftward buttons that are more left than up or down from us.
                     return (
-                        btn.x < this.x &&
-                        Math.abs(btn.y - this.y) < Math.abs(btn.x - this.x));
+                        pos.x < this.x &&
+                        Math.abs(pos.y - this.y) < Math.abs(pos.x - this.x));
                 }
             });
         }
@@ -157,10 +165,11 @@ namespace kojac {
                     });
                 },
                 filterFn: (btn, dist) => {
+                    const pos = btn.hud ? Vec2.Add(btn.pos, this.stage.camera.offset) : btn.pos;
                     // Filter to rightward buttons that are to more right than up or down from us.
                     return (
-                        btn.x > this.x &&
-                        Math.abs(btn.y - this.y) < Math.abs(btn.x - this.x));
+                        pos.x > this.x &&
+                        Math.abs(pos.y - this.y) < Math.abs(pos.x - this.x));
                 }
             });
         }
@@ -182,13 +191,14 @@ namespace kojac {
         private getOverlapping(): Button[] {
             const crsb = Bounds.Translate(this.hitbox, this.pos);
             // Query for neary items.
-            const btns = this.quadtree.query(crsb)
+            const btns = this.quadtree.query(crsb).concat(this.hudtree.query(Bounds.Translate(crsb, Vec2.Neg(this.stage.camera.offset))))
                 // filter and map to Button type
                 .filter(comp => comp.kind === "button")
                 .map(comp => comp as Button)
                 // filter to intersecting buttons
                 .filter(btn => {
-                    const btnb = Bounds.Translate(btn.hitbox, btn.worldPos);
+                    const pos = btn.hud ? Vec2.Add(btn.pos, this.stage.camera.offset) : btn.pos;
+                    const btnb = Bounds.Translate(btn.hitbox, pos);
                     return Bounds.Intersects(crsb, btnb);
                 });
             return btns;

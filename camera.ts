@@ -23,6 +23,10 @@ namespace kojac {
 
         constructor(stage: Stage) {
             super(stage, "camera");
+            this.resetPosition();
+        }
+
+        public resetPosition() {
             this.snapTo(new Vec2(scene.screenWidth() >> 1, scene.screenHeight() >> 1));
         }
 

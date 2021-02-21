@@ -25,6 +25,7 @@ namespace kojac {
 
     export class Editor extends Stage {
         private quadtree: QuadTree;
+        private hudtree: QuadTree;
         private progdef: ProgramDefn;
         private currPage: number;
         private pageBtn: Button;
@@ -93,6 +94,13 @@ namespace kojac {
             this.currPage = index;
             this.pageBtn.setIcon(PAGE_IDS[this.currPage]);
             this.pageEditor = new PageEditor(this, this.progdef.pages[this.currPage]);
+
+            // This code assumes the cursor is over a HUD button! Not a safe assumption! But fine for demo.
+            // Reset the camera, but make it look like the cursor didn't move.
+            const offset = this.camera.offset;
+            this.camera.resetPosition();
+            this.cursor.snapTo(this.cursor.x - offset.x, this.cursor.y - offset.y);
+            
         }
 
         startup() {
@@ -173,7 +181,7 @@ namespace kojac {
             super.update(dt);
             if (this._changed) {
                 this._changed = false;
-                this.rebuildQuadTree();
+                this.rebuildQuadTrees();
             }
             let bounds = new Bounds({
                 top: -8, left: -8,
@@ -183,9 +191,12 @@ namespace kojac {
             this.camera.keepInFrame(bounds);
         }
 
-        private rebuildQuadTree() {
+        private rebuildQuadTrees() {
             if (this.quadtree) {
                 this.quadtree.clear();
+            }
+            if (this.hudtree) {
+                this.hudtree.clear();
             }
             this.quadtree = new QuadTree(new Bounds({
                 left: 0,
@@ -193,19 +204,32 @@ namespace kojac {
                 width: 4096,
                 height: 4096
             }), 1, 16);
-            this.addToQuadTree(this.pageBtn);
-            this.addToQuadTree(this.prevPageBtn);
-            this.addToQuadTree(this.nextPageBtn);
-            this.addToQuadTree(this.okBtn);
-            this.addToQuadTree(this.cancelBtn);
+            this.hudtree = new QuadTree(new Bounds({
+                left: 0,
+                top: 0,
+                width: 160,
+                height: 160
+            }), 1, 16);
+            this.addToHudTree(this.pageBtn);
+            this.addToHudTree(this.prevPageBtn);
+            this.addToHudTree(this.nextPageBtn);
+            this.addToHudTree(this.okBtn);
+            this.addToHudTree(this.cancelBtn);
             this.pageEditor.addToQuadTree();
             // Assign quadtree to cursor.
             this.cursor.quadtree = this.quadtree;
+            this.cursor.hudtree = this.hudtree;
         }
 
         public addToQuadTree(btn: Button) {
             if (this.quadtree) {
                 this.quadtree.insert(Bounds.Translate(btn.hitbox, btn.pos), btn);
+            }
+        }
+
+        public addToHudTree(btn: Button) {
+            if (this.hudtree) {
+                this.hudtree.insert(Bounds.Translate(btn.hitbox, btn.pos), btn);
             }
         }
 

@@ -3,7 +3,7 @@ namespace kojac {
         private icon: Kelpie;
         private back: Kelpie;
         private text: TextSprite;
-        private hud: boolean;
+        public hud: boolean;
         private style: ButtonStyle;
         private iconId: string;
         private label: string;

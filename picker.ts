@@ -17,7 +17,6 @@ namespace kojac {
                 x: 0,
                 y: 0,
                 z: 15,
-                hud: true,
                 onClick: () => this.picker.onButtonClicked(btn.icon)
             });
             this.z = 11;
@@ -43,11 +42,13 @@ namespace kojac {
 
     export class Picker extends Component {
         private quadtree: QuadTree;
-        private prevtree: QuadTree;
+        private prevquadtree: QuadTree;
+        private prevhudtree: QuadTree;
         private prevpos: Vec2;
         private groups: PickerGroup[];
         private cancelBtn: Button;
         private panel: Bounds;
+        private offset: Vec2;
 
         public z: number;
 
@@ -66,9 +67,11 @@ namespace kojac {
                 width: 2048,
                 height: 2048
             }), 1, 16);
-            this.prevtree = opts.cursor.quadtree;
+            this.prevquadtree = opts.cursor.quadtree;
+            this.prevhudtree = opts.cursor.hudtree;
             this.prevpos = opts.cursor.pos;
             opts.cursor.quadtree = this.quadtree;
+            opts.cursor.hudtree = new QuadTree(new Bounds({ top: 0, left: 0, width: 160, height: 160 }));
             opts.cursor.cancelHandlerStack.push(() => this.cancelClicked());
             this.z = 10;
         }
@@ -94,13 +97,13 @@ namespace kojac {
         }
 
         show() {
+            this.offset = this.stage.camera.offset;
             this.cancelBtn = new Button(this.stage, {
                 style: "white",
                 icon: "cancel",
                 x: 0,
                 y: 0,
                 z: 15,
-                hud: true,
                 onClick: () => this.cancelClicked()
             });
             this.groups.forEach(group => {
@@ -115,27 +118,24 @@ namespace kojac {
 
         destroy() {
             this.quadtree.clear();
-            this.opts.cursor.quadtree = this.prevtree;
+            this.opts.cursor.quadtree = this.prevquadtree;
+            this.opts.cursor.hudtree = this.prevhudtree;
             this.opts.cursor.pos = this.prevpos;
             this.groups.forEach(group => group.destroy());
             this.cancelBtn.destroy();
             this.opts = undefined;
             this.quadtree = undefined;
-            this.prevtree = undefined;
+            this.prevquadtree = undefined;
+            this.prevhudtree = undefined;
             this.groups = undefined;
             super.destroy();
         }
 
-        update(dt: number) {
-            this.quadtree.offset = this.stage.camera.offset;
-        }
-
         draw(drawOffset: Vec2) {
-            drawOffset = new Vec2(0, 0);
-            const left = this.panel.left;
-            const right = this.panel.right - 1;
-            const top = this.panel.top;
-            const bottom = this.panel.bottom - 1;
+            const left = this.panel.left - drawOffset.x;
+            const right = this.panel.right - 1 - drawOffset.x;
+            const top = this.panel.top - drawOffset.y;
+            const bottom = this.panel.bottom - 1 - drawOffset.y;
             this.panel.fillRect(drawOffset, 15);
             screen.drawLine(left + 1, top - 1, right - 1, top - 1, 15);
             screen.drawLine(left + 1, bottom + 1, right - 1, bottom + 1, 15);
@@ -163,10 +163,10 @@ namespace kojac {
                 computedHeight += TRAY;
             });
 
-            let computedLeft = (scene.screenWidth() >> 1) - (computedWidth >> 1);
-            let computedTop = (scene.screenHeight() >> 1) - (computedHeight >> 1);
-            computedLeft = Math.max(0, computedLeft);
-            computedTop = Math.max(0, computedTop);
+            let computedLeft = this.offset.x + (scene.screenWidth() >> 1) - (computedWidth >> 1);
+            let computedTop = this.offset.y + (scene.screenHeight() >> 1) - (computedHeight >> 1);
+            computedLeft = Math.max(this.offset.x, computedLeft);
+            computedTop = Math.max(this.offset.y, computedTop);
 
             this.panel = new Bounds({
                 top: computedTop,
@@ -195,7 +195,7 @@ namespace kojac {
             this.cancelBtn.y = computedTop + 8;
             this.quadtree.insert(Bounds.Translate(this.cancelBtn.hitbox, this.cancelBtn.pos), this.cancelBtn);
             if (!firstBtn) { firstBtn = this.cancelBtn; }
-            this.opts.cursor.snapTo(firstBtn.worldPos.x, firstBtn.worldPos.y);
+            this.opts.cursor.snapTo(firstBtn.pos.x, firstBtn.pos.y);
         }
     }
 

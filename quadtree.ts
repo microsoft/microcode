@@ -10,7 +10,6 @@ namespace kojac {
     export class QuadTree {
         private quads: QuadTree[];
         private nodes: Node[];
-        public offset: Vec2;
 
         constructor(
             public bounds: Bounds,      // Max bounds of the indexed space.
@@ -19,7 +18,6 @@ namespace kojac {
         ) {
             this.quads = [];
             this.nodes = [];
-            this.offset = new Vec2(0, 0);
         }
 
         public forEach(cb: (bounds: Bounds) => void) {
@@ -77,10 +75,9 @@ namespace kojac {
         }
 
         private getIndices(bounds: Bounds): number[] {
-            const myb = Bounds.Translate(this.bounds, this.offset);
             const indices: number[] = [];
-            const vertMidpoint = myb.left + (myb.width >> 1);
-            const horzMidpoint = myb.top + (myb.height >> 1);
+            const vertMidpoint = this.bounds.left + (this.bounds.width >> 1);
+            const horzMidpoint = this.bounds.top + (this.bounds.height >> 1);
 
             const startIsNorth = bounds.top < horzMidpoint;
             const startIsWest = bounds.left < vertMidpoint;
