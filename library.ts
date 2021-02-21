@@ -65,6 +65,7 @@ namespace kojac {
             const value = (mode === "analog") ? pins.analogReadPin(AnalogPin.P1) : pins.digitalReadPin(DigitalPin.P1);
             rule.state["value"] = value;
             rule.state["value_type"] = "number";
+            rule.state["value_name"] = "P1";
             rule.state["exec"] = true;
         },
 
@@ -111,21 +112,22 @@ namespace kojac {
 
         [tid.actuator.log]: (rule: Rule) => {
             const value_type = rule.state["value_type"];
+            const name = rule.state["value_name"];
             const color = 5; // TODO
             switch (value_type) {
                 case "boolean": {
                     const value: boolean = rule.state["value"];
-                    rule.prog.agent.logBoolean(value, color);
+                    rule.prog.agent.logBoolean(name, value, color);
                     break;
                 }
                 case "number": {
                     const value: number = rule.state["value"];
-                    rule.prog.agent.logNumber(value, color);
+                    rule.prog.agent.logNumber(name, value, color);
                     break;
                 }
                 case "string": {
                     const value: string = rule.state["value"];
-                    rule.prog.agent.logString(value, color);
+                    rule.prog.agent.logString(name, value, color);
                     break;
                 }
             }

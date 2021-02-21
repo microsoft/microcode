@@ -24,6 +24,8 @@ namespace kojac {
         currView: HomeView;
         logLines: LogLine[];
         agent: Agent;
+        paused: boolean;
+        singleStep: boolean;
 
         constructor(app: App) {
             super(app, "home");
@@ -50,30 +52,44 @@ namespace kojac {
             this.setView(HomeView.Plot);
         }
 
-        public logBoolean(val: boolean, color: number) {
-            this.log(val ? "true": "false", color);
+        public logBoolean(name: string, val: boolean, color: number) {
+            const text = `${name}: ${val ? "true": "false"}`;
+            this.log(text, color);
         }
 
-        public logNumber(val: number, color: number) {
-            this.log(val.toString(), color);
+        public logNumber(name: string, val: number, color: number) {
+            const text = `${name}: ${val.toString()}`;
+            this.log(text, color);
         }
 
-        public logString(val: string, color: number) {
+        public logString(name: string, val: string, color: number) {
+            const text = `${name}: ${val}`;
             this.log(val, color);
         }
 
-        public plotBoolean(val: boolean, color: number) {
+        public plotBoolean(name: string, val: boolean, color: number) {
             this.plot(val ? 1 : 0, color);
         }
 
-        public plotNumber(val: number, color: number) {
+        public plotNumber(name: string, val: number, color: number) {
             this.plot(val, color);
         }
 
         startup() {
             super.startup();
-            controller.left.onEvent(ControllerButtonEvent.Released, function () {
+            controller.left.onEvent(ControllerButtonEvent.Released, () => {
                 this.app.pushStage(new Editor(this.app));
+            });
+            controller.up.onEvent(ControllerButtonEvent.Pressed, () => {
+                this.paused = !this.paused;
+                if (this.paused) {
+                    this.log("program paused");
+                } else {
+                    this.log("program resumed");
+                }
+            });
+            controller.right.onEvent(ControllerButtonEvent.Pressed, () => {
+                this.singleStep = true;
             });
         }
 
@@ -93,6 +109,7 @@ namespace kojac {
                 this.app.save(SAVESLOT_AUTO, progdef);
             }
             this.agent = new Agent(this, progdef);
+            this.paused = false;
             this.log("program started");
         }
 
@@ -104,7 +121,10 @@ namespace kojac {
 
         update(dt: number) {
             super.update(dt);
-            this.agent.update(dt);
+            if (!this.paused || (this.paused && this.singleStep)) {
+                this.agent.update(dt);
+                this.singleStep = false;
+            }
         }
 
         private setView(view: HomeView) {

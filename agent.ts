@@ -15,24 +15,24 @@ namespace kojac {
             this.prog.execute();
         }
 
-        public logBoolean(val: boolean, color: number) {
-            this.home.logBoolean(val, color);
+        public logBoolean(name: string, val: boolean, color: number) {
+            this.home.logBoolean(name, val, color);
         }
 
-        public logNumber(val: number, color: number) {
-            this.home.logNumber(val, color);
+        public logNumber(name: string, val: number, color: number) {
+            this.home.logNumber(name, val, color);
         }
 
-        public logString(val: string, color: number) {
-            this.home.logString(val, color);
+        public logString(name: string, val: string, color: number) {
+            this.home.logString(name, val, color);
         }
 
-        public plotBoolean(val: boolean, color: number) {
-            this.home.plotBoolean(val, color);
+        public plotBoolean(name: string, val: boolean, color: number) {
+            this.home.plotBoolean(name, val, color);
         }
 
-        public plotNumber(val: number, color: number) {
-            this.home.plotNumber(val, color);
+        public plotNumber(name: string, val: number, color: number) {
+            this.home.plotNumber(name, val, color);
         }
     }
 }
