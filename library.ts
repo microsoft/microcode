@@ -57,6 +57,16 @@ namespace kojac {
                 rule.state["timerStart"] = now;
             }
         },
+        [tid.sensor.pin_1]: (rule: Rule) => {
+            let mode = rule.state["pin_mode"];
+            if (mode == undefined) {
+                mode = "analog";
+            }
+            const value = (mode === "analog") ? pins.analogReadPin(AnalogPin.P1) : pins.digitalReadPin(DigitalPin.P1);
+            rule.state["value"] = value;
+            rule.state["value_type"] = "number";
+            rule.state["exec"] = true;
+        },
 
         ///
         /// FILTERS
@@ -71,6 +81,14 @@ namespace kojac {
             let timespan: number = rule.state["timespan"] || 1000;
             timespan += 1000;
             rule.state["timespan"] = timespan;
+        },
+
+        [tid.filter.pin_analog]: (rule: Rule) => {
+            rule.state["pin_mode"] = "analog";
+        },
+
+        [tid.filter.pin_digital]: (rule: Rule) => {
+            rule.state["pin_mode"] = "digital";
         },
 
         ///
@@ -89,6 +107,33 @@ namespace kojac {
                 state = true;
             }
             pins.digitalWritePin(DigitalPin.P0, state ? 1 : 0);
+        },
+
+        [tid.actuator.log]: (rule: Rule) => {
+            const value_type = rule.state["value_type"];
+            const color = 5; // TODO
+            switch (value_type) {
+                case "boolean": {
+                    const value: boolean = rule.state["value"];
+                    rule.prog.agent.logBoolean(value, color);
+                    break;
+                }
+                case "number": {
+                    const value: number = rule.state["value"];
+                    rule.prog.agent.logNumber(value, color);
+                    break;
+                }
+                case "string": {
+                    const value: string = rule.state["value"];
+                    rule.prog.agent.logString(value, color);
+                    break;
+                }
+            }
+
+        },
+
+        [tid.actuator.plot]: (rule: Rule) => {
+
         },
 
         ///

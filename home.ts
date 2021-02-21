@@ -50,6 +50,26 @@ namespace kojac {
             this.setView(HomeView.Plot);
         }
 
+        public logBoolean(val: boolean, color: number) {
+            this.log(val ? "true": "false", color);
+        }
+
+        public logNumber(val: number, color: number) {
+            this.log(val.toString(), color);
+        }
+
+        public logString(val: string, color: number) {
+            this.log(val, color);
+        }
+
+        public plotBoolean(val: boolean, color: number) {
+            this.plot(val ? 1 : 0, color);
+        }
+
+        public plotNumber(val: number, color: number) {
+            this.plot(val, color);
+        }
+
         startup() {
             super.startup();
             controller.left.onEvent(ControllerButtonEvent.Released, function () {

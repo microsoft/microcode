@@ -410,6 +410,7 @@ namespace kojac {
             button_a: "S2",
             button_b: "S3",
             timer: "S4",
+            pin_1: "S6",
         },
         filter: <any>{
             timespan_short: "F1",
@@ -419,11 +420,15 @@ namespace kojac {
             express_angry: "F5",
             express_heart: "F6",
             express_sad: "F7",
+            pin_analog: "F8",
+            pin_digital: "F9",
         },
         actuator: <any>{
             switch_page: "A1",
             express: "A2",
             pin_0: "A3",
+            log: "A4",
+            plot: "A5",
         },
         modifier: <any>{
             page_1: "M1",
@@ -490,6 +495,17 @@ namespace kojac {
                 constraints: {
                     allow: {
                         categories: ["timespan"]
+                    }
+                }
+            },
+            [tid.sensor.pin_1]: {
+                type: TileType.SENSOR,
+                tid: tid.sensor.pin_1,
+                name: "Pin 1",
+                phase: "post",
+                constraints: {
+                    allow: {
+                        categories: ["pin_mode"]
                     }
                 }
             }
@@ -573,6 +589,30 @@ namespace kojac {
                     }
                 }
             },
+            [tid.filter.pin_analog]: {
+                type: TileType.FILTER,
+                tid: tid.filter.pin_analog,
+                name: "analog",
+                category: "pin_mode",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["pin_mode"]
+                    }
+                }
+            },
+            [tid.filter.pin_digital]: {
+                type: TileType.FILTER,
+                tid: tid.filter.pin_digital,
+                name: "digital",
+                category: "pin_mode",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["pin_mode"]
+                    }
+                }
+            },
         },
         actuators: {
             [tid.actuator.switch_page]: {
@@ -603,6 +643,26 @@ namespace kojac {
                 constraints: {
                     allow: {
                         categories: ["pin_output"]
+                    }
+                }
+            },
+            [tid.actuator.log]: {
+                type: TileType.ACTUATOR,
+                tid: tid.actuator.log,
+                name: "Log",
+                constraints: {
+                    allow: {
+                        categories: ["output_color"]
+                    }
+                }
+            },
+            [tid.actuator.plot]: {
+                type: TileType.ACTUATOR,
+                tid: tid.actuator.plot,
+                name: "Plot",
+                constraints: {
+                    allow: {
+                        categories: ["output_color"]
                     }
                 }
             },

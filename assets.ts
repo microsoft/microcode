@@ -37,6 +37,7 @@ namespace kojac {
             this.reg[tid.sensor.button_a] = icondb.tile_button_a;
             this.reg[tid.sensor.button_b] = icondb.tile_button_b;
             this.reg[tid.sensor.timer] = icondb.tile_timer;
+            this.reg[tid.sensor.pin_1] = icondb.tile_pin_1;
             this.reg[tid.modifier.page_1] = icondb.tile_page_1;
             this.reg[tid.modifier.page_2] = icondb.tile_page_2;
             this.reg[tid.modifier.page_3] = icondb.tile_page_3;
@@ -51,9 +52,13 @@ namespace kojac {
             this.reg[tid.filter.express_heart] = this.reg[tid.modifier.express_heart] = icondb.tile_express_heart;
             this.reg[tid.filter.timespan_short] = icondb.tile_timespan_short;
             this.reg[tid.filter.timespan_long] = icondb.tile_timespan_long;
+            this.reg[tid.filter.pin_analog] = icondb.tile_pin_analog;
+            this.reg[tid.filter.pin_digital] = icondb.tile_pin_digital;
             this.reg[tid.actuator.switch_page] = icondb.tile_switch_page;
             this.reg[tid.actuator.express] = icondb.tile_express;
             this.reg[tid.actuator.pin_0] = icondb.tile_pin_0;
+            this.reg[tid.actuator.log] = icondb.tile_console;
+            this.reg[tid.actuator.plot] = icondb.tile_graph;
             this.reg[RuleCondition.DEFAULT] = icondb.rc_default;
             this.reg[RuleCondition.HIGH] = icondb.rc_high;
             this.reg[RuleCondition.LOW] = icondb.rc_low;
@@ -814,14 +819,32 @@ namespace icondb {
     export const tile_pin_0 = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
         . . . f f f f f f f f f . . . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
         . . f 5 5 5 5 5 5 5 5 5 f . . .
         . . f 5 5 5 5 5 5 5 5 5 f . . .
         . . f 5 f f 5 5 5 f 5 5 f . . .
         . . f 5 f 5 f 5 f 5 f 5 f . . .
         . . f 5 f f 5 5 f 5 f 5 f . . .
         . . f 5 f 5 5 5 5 f 5 5 f . . .
+        . . f 5 5 5 5 5 5 5 5 5 f . . .
+        . . f 5 5 5 5 5 5 5 5 5 f . . .
+        . . f 5 5 5 5 5 5 5 5 5 f . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_pin_1 = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . f f f f f f f f f . . . .
+        . . f 5 5 5 5 5 5 5 5 5 f . . .
+        . . f 5 5 5 5 5 5 5 5 5 f . . .
+        . . f 5 5 5 5 5 5 5 5 5 f . . .
+        . . f 5 f f 5 5 5 f 5 5 f . . .
+        . . f 5 f 5 f 5 f f 5 5 f . . .
+        . . f 5 f f 5 5 5 f 5 5 f . . .
+        . . f 5 f 5 5 5 f f f 5 f . . .
         . . f 5 5 5 5 5 5 5 5 5 f . . .
         . . f 5 5 5 5 5 5 5 5 5 f . . .
         . . f 5 5 5 5 5 5 5 5 5 f . . .
@@ -861,6 +884,78 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_pin_analog = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . 6 6 6 6 6 6 6 6 6 . . . .
+        . . 6 6 6 6 6 6 6 6 6 6 6 . . .
+        . . 6 6 6 6 6 6 5 5 5 6 6 . . .
+        . . 6 6 6 6 6 5 5 6 6 6 6 . . .
+        . . 6 6 6 6 5 5 6 6 6 6 6 . . .
+        . . 6 6 9 6 5 6 9 6 9 6 6 . . .
+        . . 6 6 6 6 5 6 6 6 6 6 6 . . .
+        . . 6 6 6 5 5 6 6 6 6 6 6 . . .
+        . . 6 6 5 5 6 6 6 6 6 6 6 . . .
+        . . 6 6 6 6 6 6 6 6 6 6 6 . . .
+        . . . 6 6 6 6 6 6 6 6 6 . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_pin_digital = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . 6 6 6 6 6 6 6 6 6 . . . .
+        . . 6 6 6 6 6 6 6 6 6 6 6 . . .
+        . . 6 6 6 6 6 5 5 5 5 6 6 . . .
+        . . 6 6 6 6 6 5 6 6 6 6 6 . . .
+        . . 6 6 6 6 6 5 6 6 6 6 6 . . .
+        . . 6 6 9 6 9 5 9 6 9 6 6 . . .
+        . . 6 6 6 6 6 5 6 6 6 6 6 . . .
+        . . 6 6 6 6 6 5 6 6 6 6 6 . . .
+        . . 6 6 5 5 5 5 6 6 6 6 6 . . .
+        . . 6 6 6 6 6 6 6 6 6 6 6 . . .
+        . . . 6 6 6 6 6 6 6 6 6 . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_console = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . f f f f f f f f f f . . .
+        . . f f f f f f f f f f f f . .
+        . . f f f f f f f f f f f f . .
+        . . f f 7 f f f f f f f f f . .
+        . . f f f 7 f f f f f f f f . .
+        . . f f f f 7 f f f f f f f . .
+        . . f f f 7 f f f f f f f f . .
+        . . f f 7 f f f 7 7 7 f f f . .
+        . . f f f f f f f f f f f f . .
+        . . f f f f f f f f f f f f . .
+        . . . f f f f f f f f f f . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_graph = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . 6 6 6 6 6 6 6 6 6 6 . . .
+        . . 6 6 6 6 6 6 6 6 6 6 6 6 . .
+        . . 6 6 6 6 6 6 6 6 6 6 6 6 . .
+        . . 6 6 6 6 5 5 5 6 6 6 6 6 . .
+        . . 6 6 6 5 6 6 6 5 6 6 6 6 . .
+        . . 6 6 5 6 6 6 6 6 5 6 6 6 . .
+        . . 6 6 5 6 6 6 6 6 6 5 6 6 . .
+        . . 6 5 6 6 6 6 6 6 6 6 5 6 . .
+        . . 6 6 6 6 6 6 6 6 6 6 6 6 . .
+        . . 6 6 6 6 6 6 6 6 6 6 6 6 . .
+        . . . 6 6 6 6 6 6 6 6 6 6 . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1005,7 +1100,9 @@ namespace icondb {
         . f c c c b b f .
         . . f f f f f . .
     `
+    //
     // BACKGROUNDS
+    //
     export const gradient_0 = img`
         bbbbbbbbbbbbbbbbbbbbbbbbcbbbcbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbcbbbbbbbbcbbbbbbbbbcbbbbbbcbbbbbbbbbbbbbbbcbcbbbbbbbbbcbbbbbbbbbbbbbcbbb
         bbbbbcbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbcbbbbbbbbcbbbbbbbbbbbbccbbbbcbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbcbbbbbbccbbbbbbbbbbbbbbbbbbbcbbbbbbbbbcbbbbb
