@@ -50,6 +50,7 @@ namespace kojac {
         }
 
         private cancelClicked() {
+            while (controller.A.isPressed()) { pause(10); }
             this.app.stageManager.pop();
         }
 
