@@ -9,6 +9,7 @@ namespace kojac {
     const LERP_SPEED = 12;
     const SEARCH_INCR = 8;
     const SEARCH_MAX = 160;
+    const SEARCH_SLOPE = 1.8;
 
     export class Cursor extends Component {
         stylus: Kelpie;
@@ -62,7 +63,7 @@ namespace kojac {
             boundsFn: (dist: number) => Bounds;
             filterFn: (value: Button, dist: number) => boolean;
         }) {
-            if (this.transiting()) return;
+            //if (this.transiting()) return;
             let dist = SEARCH_INCR;
             let candidates: Button[];
             let overlapping = this.getOverlapping();
@@ -109,7 +110,7 @@ namespace kojac {
                     // Filter to upward buttons that are more up than left or right from us.
                     return (
                         pos.y < this.y &&
-                        Math.abs(pos.y - this.y) > Math.abs(pos.x - this.x));
+                        (Math.abs(pos.y - this.y) / Math.abs(pos.x - this.x)) > SEARCH_SLOPE);
                 }
             });
         }
@@ -129,7 +130,7 @@ namespace kojac {
                     // Filter to downward buttons that are more down than left or right from us.
                     return (
                         pos.y > this.y &&
-                        Math.abs(pos.y - this.y) > Math.abs(pos.x - this.x));
+                        (Math.abs(pos.y - this.y) / Math.abs(pos.x - this.x)) > SEARCH_SLOPE);
                 }
             });
         }
@@ -149,7 +150,7 @@ namespace kojac {
                     // Filter to leftward buttons that are more left than up or down from us.
                     return (
                         pos.x < this.x &&
-                        Math.abs(pos.y - this.y) < Math.abs(pos.x - this.x));
+                        (Math.abs(pos.x - this.x) / Math.abs(pos.y - this.y)) > SEARCH_SLOPE);
                 }
             });
         }
@@ -169,7 +170,7 @@ namespace kojac {
                     // Filter to rightward buttons that are to more right than up or down from us.
                     return (
                         pos.x > this.x &&
-                        Math.abs(pos.y - this.y) < Math.abs(pos.x - this.x));
+                        (Math.abs(pos.x - this.x) / Math.abs(pos.y - this.y)) > SEARCH_SLOPE);
                 }
             });
         }

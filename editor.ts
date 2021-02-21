@@ -100,7 +100,6 @@ namespace kojac {
             const offset = this.camera.offset;
             this.camera.resetPosition();
             this.cursor.snapTo(this.cursor.x - offset.x, this.cursor.y - offset.y);
-            
         }
 
         startup() {
@@ -168,7 +167,6 @@ namespace kojac {
 
         activate() {
             super.activate();
-            //scene.setBackgroundColor(11);
             scene.setBackgroundImage(icondb.gradient_0);
             this.pageBtn.setIcon(PAGE_IDS[this.currPage]);
             if (!this.pageEditor) {
@@ -246,7 +244,7 @@ namespace kojac {
 
         constructor(private editor: Editor, private pagedef: PageDefn) {
             super(editor, "page_editor");
-            this.rules = pagedef.rules.map(ruledef => new RuleEditor(editor, this, ruledef));
+            this.rules = pagedef.rules.map((ruledef, index) => new RuleEditor(editor, this, ruledef, index));
             this.ensureFinalEmptyRule();
             this.layout();
         }
@@ -261,7 +259,7 @@ namespace kojac {
             if (this.rules) {
                 this.trimRules();
                 const ruledefn = new RuleDefn();
-                this.rules.push(new RuleEditor(this.editor, this, ruledefn));
+                this.rules.push(new RuleEditor(this.editor, this, ruledefn, this.rules.length));
                 this.pagedef.rules.push(ruledefn);
             }
         }
@@ -278,7 +276,7 @@ namespace kojac {
             }
         }
 
-        public layout() {
+        private layout() {
             if (this.rules) {
                 let left = 10;
                 let top = 36;
@@ -311,6 +309,30 @@ namespace kojac {
             this.layout();
             this.editor.changed();
         }
+
+        public deleteRuleAt(index: number) {
+            const rule = this.rules[index];
+            this.pagedef.deleteRuleAt(index);
+            this.rules.splice(index, 1);
+            rule.destroy();
+            this.rules.forEach((rule, index) => rule.index = index);
+            this.changed();
+        }
+
+        public insertRuleAt(index: number) {
+            this.pagedef.insertRuleAt(index);
+            const rules: RuleEditor[] = [];
+            for (let i = 0; i < index; ++i) {
+                rules.push(this.rules[i]);
+            }
+            rules.push(new RuleEditor(this.editor, this, new RuleDefn(), index));
+            for (let i = index; i < this.rules.length; ++i) {
+                rules.push(this.rules[i]);
+            }
+            this.rules = rules;
+            this.rules.forEach((rule, index) => rule.index = index);
+            this.changed();
+        }
     }
 
     class RuleEditor extends Component {
@@ -326,7 +348,7 @@ namespace kojac {
 
         public get z() { return 0; }
 
-        constructor(private editor: Editor, private page: PageEditor, private ruledef: RuleDefn) {
+        constructor(private editor: Editor, private page: PageEditor, private ruledef: RuleDefn, public index: number) {
             super(editor, "rule_editor");
             this.whenLbl = new Kelpie(editor, icons.get("when"));
             this.doLbl = new Kelpie(editor, icons.get("do"));
@@ -396,7 +418,8 @@ namespace kojac {
                 this.sensor = new EditorButton(this.editor, {
                     style: "white",
                     icon: this.ruledef.sensor.tid,
-                    x: 0, y: 0
+                    x: 0, y: 0,
+                    onClick: () => this.handleSensorClicked()
                 });
                 this.page.changed();
             }
@@ -404,26 +427,47 @@ namespace kojac {
                 this.actuator = new EditorButton(this.editor, {
                     style: "white",
                     icon: this.ruledef.actuator.tid,
-                    x: 0, y: 0
+                    x: 0, y: 0,
+                    onClick: () => this.handleActuatorClicked()
                 });
                 this.page.changed();
             }
-            this.ruledef.filters.forEach(filter => {
-                this.filters.push(new EditorButton(this.editor, {
+            this.ruledef.filters.forEach((defn, index) => {
+                const filter = new EditorButton(this.editor, {
                     style: "white",
-                    icon: filter.tid,
-                    x: 0, y: 0
-                }));
+                    icon: defn.tid,
+                    x: 0, y: 0,
+                    onClick: () => this.handleFilterClicked(index)
+                });
+                this.filters.push(filter);
                 this.page.changed();
             });
-            this.ruledef.modifiers.forEach(modifier => {
-                this.modifiers.push(new EditorButton(this.editor, {
+            this.ruledef.modifiers.forEach((defn, index) => {
+                const modifier = new EditorButton(this.editor, {
                     style: "white",
-                    icon: modifier.tid,
-                    x: 0, y: 0
-                }));
+                    icon: defn.tid,
+                    x: 0, y: 0,
+                    onClick: () => this.handleModifierClicked(index)
+                });
+                this.modifiers.push(modifier);
                 this.page.changed();
             });
+        }
+
+        private handleSensorClicked() {
+            this.pickSensor();
+        }
+
+        private handleActuatorClicked() {
+            this.pickActuator();
+        }
+
+        private handleFilterClicked(index: number) {
+            this.pickFilter(index);
+        }
+
+        private handleModifierClicked(index: number) {
+            this.pickModifier(index);
         }
 
         private showRuleHandleMenu() {
@@ -454,9 +498,9 @@ namespace kojac {
             if (RC_IDS.indexOf(iconId) >= 0) {
                 this.setRuleCondition(iconId);
             } else if (iconId === "plus") {
-                // TODO
+                this.page.insertRuleAt(this.index);
             } else if (iconId === "delete") {
-                // TODO
+                this.page.deleteRuleAt(this.index);
             }
         }
 
@@ -466,97 +510,161 @@ namespace kojac {
             this.page.changed();
         }
 
+        private pickSensor() {
+            const suggestions = Language.getSensorSuggestions(this.ruledef);
+            const btns: PickerButtonDef[] = suggestions.map(elem => {
+                return {
+                    icon: elem.tid,
+                    label: elem.name
+                };
+            });
+            if (this.ruledef.sensor) {
+                btns.push({
+                    icon: "delete"
+                });
+            }
+            if (btns.length) {
+                const picker = new Picker(this.stage, {
+                    title: "Select",
+                    cursor: this.editor.cursor,
+                    onClick: (iconId) => {
+                        if (iconId === "delete") {
+                            this.ruledef.sensor = undefined;
+                        } else {
+                            this.ruledef.sensor = tiles.sensors[iconId];
+                        }
+                        Language.ensureValid(this.ruledef);
+                        this.instantiateProgramTiles();
+                        this.page.changed();
+                    }
+                });
+                picker.addGroup({ label: "", btns });
+                picker.show();
+            }
+        }
+
+        private pickActuator() {
+            const suggestions = Language.getActuatorSuggestions(this.ruledef);
+            const btns: PickerButtonDef[] = suggestions.map(elem => {
+                return {
+                    icon: elem.tid,
+                    label: elem.name
+                };
+            });
+            if (this.ruledef.actuator) {
+                btns.push({
+                    icon: "delete"
+                });
+            }
+            if (btns.length) {
+                const picker = new Picker(this.stage, {
+                    title: "Select",
+                    cursor: this.editor.cursor,
+                    onClick: (iconId) => {
+                        if (iconId === "delete") {
+                            this.ruledef.actuator = undefined;
+                        } else {
+                            this.ruledef.actuator = tiles.actuators[iconId];
+                        }
+                        Language.ensureValid(this.ruledef);
+                        this.instantiateProgramTiles();
+                        this.page.changed();
+                    }
+                });
+                picker.addGroup({ label: "", btns });
+                picker.show();
+            }
+        }
+
+        private pickFilter(index: number) {
+            const suggestions = Language.getFilterSuggestions(this.ruledef, index);
+            const btns: PickerButtonDef[] = suggestions.map(elem => {
+                return {
+                    icon: elem.tid,
+                    label: elem.name
+                };
+            });
+            if (index < this.ruledef.filters.length) {
+                btns.push({
+                    icon: "delete"
+                });
+            }
+            if (btns.length) {
+                const picker = new Picker(this.stage, {
+                    title: "Select",
+                    cursor: this.editor.cursor,
+                    onClick: (iconId) => {
+                        if (iconId === "delete") {
+                            this.ruledef.filters.splice(index, 1);
+                        } else {
+                            if (index >= this.ruledef.filters.length) {
+                                this.ruledef.filters.push(tiles.filters[iconId]);
+                            } else {
+                                this.ruledef.filters[index] = tiles.filters[iconId];
+                            }
+                        }
+                        Language.ensureValid(this.ruledef);
+                        this.instantiateProgramTiles();
+                        this.page.changed();
+                    }
+                });
+                picker.addGroup({ label: "", btns });
+                picker.show();
+            }
+        }
+
+        private pickModifier(index: number) {
+            const suggestions = Language.getModifierSuggestions(this.ruledef, index);
+            const btns: PickerButtonDef[] = suggestions.map(elem => {
+                return {
+                    icon: elem.tid,
+                    label: elem.name
+                };
+            });
+            if (index < this.ruledef.modifiers.length) {
+                btns.push({
+                    icon: "delete"
+                });
+            }
+            if (btns.length) {
+                const picker = new Picker(this.stage, {
+                    title: "Select",
+                    cursor: this.editor.cursor,
+                    onClick: (iconId) => {
+                        if (iconId === "delete") {
+                            this.ruledef.modifiers.splice(index, 1);
+                        } else {
+                            if (index >= this.ruledef.modifiers.length) {
+                                this.ruledef.modifiers.push(tiles.modifiers[iconId]);
+                            } else {
+                                this.ruledef.modifiers[index] = tiles.modifiers[iconId];
+                            }
+                        }
+                        Language.ensureValid(this.ruledef);
+                        this.instantiateProgramTiles();
+                        this.page.changed();
+                    }
+                });
+                picker.addGroup({ label: "", btns });
+                picker.show();
+            }
+        }
+
         private showWhenInsertMenu() {
             if (this.sensor) {
                 const index = this.ruledef.filters.length;
-                const suggestions = Language.getFilterSuggestions(this.ruledef, index);
-                const btns: PickerButtonDef[] = suggestions.map(elem => {
-                    return {
-                        icon: elem.tid,
-                        label: elem.name
-                    };
-                });
-                if (btns.length) {
-                    const picker = new Picker(this.stage, {
-                        title: "Select",
-                        cursor: this.editor.cursor,
-                        onClick: (iconId) => {
-                            this.ruledef.filters.push(tiles.filters[iconId]);
-                            Language.ensureValid(this.ruledef);
-                            this.instantiateProgramTiles();
-                        }
-                    });
-                    picker.addGroup({ label: "", btns });
-                    picker.show();
-                }
+                this.pickFilter(index);
             } else {
-                const suggestions = Language.getSensorSuggestions(this.ruledef);
-                const btns: PickerButtonDef[] = suggestions.map(elem => {
-                    return {
-                        icon: elem.tid,
-                        label: elem.name
-                    };
-                });
-                if (btns.length) {
-                    const picker = new Picker(this.stage, {
-                        title: "Select",
-                        cursor: this.editor.cursor,
-                        onClick: (iconId) => {
-                            this.ruledef.sensor = tiles.sensors[iconId];
-                            Language.ensureValid(this.ruledef);
-                            this.instantiateProgramTiles();
-                        }
-                    });
-                    picker.addGroup({ label: "", btns });
-                    picker.show();
-                }
+                this.pickSensor();
             }
         }
 
         private showDoInsertMenu() {
             if (this.actuator) {
                 const index = this.ruledef.modifiers.length;
-                const suggestions = Language.getModifierSuggestions(this.ruledef, index);
-                const btns: PickerButtonDef[] = suggestions.map(elem => {
-                    return {
-                        icon: elem.tid,
-                        label: elem.name
-                    };
-                });
-                if (btns.length) {
-                    const picker = new Picker(this.stage, {
-                        title: "Select",
-                        cursor: this.editor.cursor,
-                        onClick: (iconId) => {
-                            this.ruledef.modifiers.push(tiles.modifiers[iconId]);
-                            Language.ensureValid(this.ruledef);
-                            this.instantiateProgramTiles();
-                        }
-                    });
-                    picker.addGroup({ label: "", btns });
-                    picker.show();
-                }
+                this.pickModifier(index);
             } else {
-                const suggestions = Language.getActuatorSuggestions(this.ruledef);
-                const btns: PickerButtonDef[] = suggestions.map(elem => {
-                    return {
-                        icon: elem.tid,
-                        label: elem.name
-                    };
-                });
-                if (btns.length) {
-                    const picker = new Picker(this.stage, {
-                        title: "Select",
-                        cursor: this.editor.cursor,
-                        onClick: (iconId) => {
-                            this.ruledef.actuator = tiles.actuators[iconId];
-                            Language.ensureValid(this.ruledef);
-                            this.instantiateProgramTiles();
-                        }
-                    });
-                    picker.addGroup({ label: "", btns });
-                    picker.show();
-                }
+                this.pickActuator();
             }            
         }
 
@@ -594,7 +702,7 @@ namespace kojac {
                 v.x += filter.width;
             });
             this.whenInsertBtn.pos = v;
-            v.x += 4 + (this.whenInsertBtn.width >> 1) + (this.doLbl.width >> 1);
+            v.x += 2 + (this.whenInsertBtn.width >> 1) + (this.doLbl.width >> 1);
             this.doLbl.pos = v;
             v.x += 2 + (this.doLbl.width >> 1) + (this.doInsertBtn.width >> 1);
             if (this.actuator) {
