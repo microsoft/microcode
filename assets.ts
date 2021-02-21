@@ -42,6 +42,8 @@ namespace kojac {
             this.reg[tid.modifier.page_3] = icondb.tile_page_3;
             this.reg[tid.modifier.page_4] = icondb.tile_page_4;
             this.reg[tid.modifier.page_5] = icondb.tile_page_5;
+            this.reg[tid.modifier.pin_on] = icondb.tile_pin_on;
+            this.reg[tid.modifier.pin_off] = icondb.tile_pin_off;
             this.reg[tid.filter.express_none] = this.reg[tid.modifier.express_none] = icondb.tile_express_none;
             this.reg[tid.filter.express_happy] = this.reg[tid.modifier.express_happy] = icondb.tile_express_happy;
             this.reg[tid.filter.express_angry] = this.reg[tid.modifier.express_angry] = icondb.tile_express_angry;
@@ -51,6 +53,7 @@ namespace kojac {
             this.reg[tid.filter.timespan_long] = icondb.tile_timespan_long;
             this.reg[tid.actuator.switch_page] = icondb.tile_switch_page;
             this.reg[tid.actuator.express] = icondb.tile_express;
+            this.reg[tid.actuator.pin_0] = icondb.tile_pin_0;
             this.reg[RuleCondition.DEFAULT] = icondb.rc_default;
             this.reg[RuleCondition.HIGH] = icondb.rc_high;
             this.reg[RuleCondition.LOW] = icondb.rc_low;
@@ -805,6 +808,60 @@ namespace icondb {
         . f 6 6 9 9 9 9 9 f . . . . . .
         . . f 6 6 6 6 6 f . . . . . . .
         . . . f f f f f . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_pin_0 = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . f f f f f f f f f . . . .
+        . . f 5 5 5 5 5 5 5 5 5 f . . .
+        . . f 5 5 5 5 5 5 5 5 5 f . . .
+        . . f 5 5 5 5 5 5 5 5 5 f . . .
+        . . f 5 f f 5 5 5 f 5 5 f . . .
+        . . f 5 f 5 f 5 f 5 f 5 f . . .
+        . . f 5 f f 5 5 f 5 f 5 f . . .
+        . . f 5 f 5 5 5 5 f 5 5 f . . .
+        . . f 5 5 5 5 5 5 5 5 5 f . . .
+        . . f 5 5 5 5 5 5 5 5 5 f . . .
+        . . f 5 5 5 5 5 5 5 5 5 f . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_pin_on = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . f f . . . f . . . . . .
+        . . . f . . f . . f f f . . . .
+        . . . f . . f . . f . . f . . .
+        . . . f . . f . . f . . f . . .
+        . . . . f f . . . f . . f . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_pin_off = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . f f . . f f . .
+        . . . . . . . f . . . f . . . .
+        . . . f f . . f . . . f . . . .
+        . . f . . f . f f . . f f . . .
+        . . f . . f . f . . . f . . . .
+        . . f . . f . f . . . f . . . .
+        . . . f f . . f . . . f . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `;

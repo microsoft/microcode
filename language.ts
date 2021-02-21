@@ -423,6 +423,7 @@ namespace kojac {
         actuator: <any>{
             switch_page: "A1",
             express: "A2",
+            pin_0: "A3",
         },
         modifier: <any>{
             page_1: "M1",
@@ -435,6 +436,8 @@ namespace kojac {
             express_angry: "M8",
             express_heart: "M9",
             express_sad: "M10",
+            pin_on: "M11",
+            pin_off: "M12",
         }
     }
 
@@ -443,7 +446,8 @@ namespace kojac {
         tid.modifier.page_2,
         tid.modifier.page_3,
         tid.modifier.page_4,
-        tid.modifier.page_5];
+        tid.modifier.page_5
+    ];
 
     export const tiles: TileDatabase = {
         sensors: {
@@ -592,6 +596,16 @@ namespace kojac {
                     }
                 }
             },
+            [tid.actuator.pin_0]: {
+                type: TileType.ACTUATOR,
+                tid: tid.actuator.pin_0,
+                name: "Pin 0",
+                constraints: {
+                    allow: {
+                        categories: ["pin_output"]
+                    }
+                }
+            },
         },
         modifiers: {
             [tid.modifier.page_1]: {
@@ -716,6 +730,30 @@ namespace kojac {
                     requires: ["expression-consumer"],
                     disallow: {
                         categories: ["expression"]
+                    }
+                }
+            },
+            [tid.modifier.pin_on]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.pin_on,
+                name: "on",
+                category: "pin_output",
+                priority: 10,
+                constraints: {
+                    handling: {
+                        "terminal": true
+                    }
+                }
+            },
+            [tid.modifier.pin_off]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.pin_off,
+                name: "off",
+                category: "pin_output",
+                priority: 10,
+                constraints: {
+                    handling: {
+                        "terminal": true
                     }
                 }
             },

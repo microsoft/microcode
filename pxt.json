@@ -4,6 +4,7 @@
     "description": "",
     "dependencies": {
         "device": "*",
+        "edge-connector": "*",
         "arcade-text": "github:microsoft/arcade-text#v1.3.0"
     },
     "files": [

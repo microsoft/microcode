@@ -45,6 +45,7 @@ namespace kojac {
 
         private okClicked() {
             this.app.save(SAVESLOT_AUTO, this.progdef);
+            while (controller.A.isPressed()) { pause(10); }
             this.app.stageManager.pop();
         }
 

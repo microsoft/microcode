@@ -83,6 +83,14 @@ namespace kojac {
             }
         },
 
+        [tid.actuator.pin_0]: (rule: Rule) => {
+            let state: boolean = rule.state["pin_state"];
+            if (state === undefined) {
+                state = true;
+            }
+            pins.digitalWritePin(DigitalPin.P0, state ? 1 : 0);
+        },
+
         ///
         /// MODIFIERS
         ///
@@ -104,6 +112,14 @@ namespace kojac {
 
         [tid.modifier.page_5]: (rule: Rule) => {
             rule.state["page"] = 4;
+        },
+
+        [tid.modifier.pin_on]: (rule: Rule) => {
+            rule.state["pin_state"] = true;
+        },
+
+        [tid.modifier.pin_off]: (rule: Rule) => {
+            rule.state["pin_state"] = false;
         },
     }
 }
