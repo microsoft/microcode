@@ -85,10 +85,11 @@ namespace kojac {
 
         public onButtonClicked(icon: string) {
             this.opts.cursor.cancelHandlerStack.pop();
-            if (this.opts.onClick) {
-                this.opts.onClick(icon);
-            }
+            const onClick = this.opts.onClick;
             this.destroy();
+            if (onClick) {
+                onClick(icon);
+            }
         }
 
         private cancelClicked() {
