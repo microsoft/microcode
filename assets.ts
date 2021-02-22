@@ -45,6 +45,21 @@ namespace kojac {
             this.reg[tid.modifier.page_5] = icondb.tile_page_5;
             this.reg[tid.modifier.pin_on] = icondb.tile_pin_on;
             this.reg[tid.modifier.pin_off] = icondb.tile_pin_off;
+            this.reg[tid.modifier.color_white] = icondb.tile_white;
+            this.reg[tid.modifier.color_red] = icondb.tile_red;
+            this.reg[tid.modifier.color_pink] = icondb.tile_pink;
+            this.reg[tid.modifier.color_orange] = icondb.tile_orange;
+            this.reg[tid.modifier.color_yellow] = icondb.tile_yellow;
+            this.reg[tid.modifier.color_teal] = icondb.tile_teal;
+            this.reg[tid.modifier.color_green] = icondb.tile_green;
+            this.reg[tid.modifier.color_blue] = icondb.tile_blue;
+            this.reg[tid.modifier.color_lightblue] = icondb.tile_lightblue;
+            this.reg[tid.modifier.color_purple] = icondb.tile_purple;
+            this.reg[tid.modifier.color_lightpurple] = icondb.tile_lightpurple;
+            this.reg[tid.modifier.color_darkpurple] = icondb.tile_darkpurple;
+            this.reg[tid.modifier.color_tan] = icondb.tile_tan;
+            this.reg[tid.modifier.color_brown] = icondb.tile_brown;
+            this.reg[tid.modifier.color_black] = icondb.tile_black;
             this.reg[tid.filter.express_none] = this.reg[tid.modifier.express_none] = icondb.tile_express_none;
             this.reg[tid.filter.express_happy] = this.reg[tid.modifier.express_happy] = icondb.tile_express_happy;
             this.reg[tid.filter.express_angry] = this.reg[tid.modifier.express_angry] = icondb.tile_express_angry;
@@ -956,6 +971,276 @@ namespace icondb {
         . . 6 6 6 6 6 6 6 6 6 6 6 6 . .
         . . 6 6 6 6 6 6 6 6 6 6 6 6 . .
         . . . 6 6 6 6 6 6 6 6 6 6 . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_white = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f 1 1 1 1 1 1 f . . . .
+        . . . f 1 1 1 1 1 1 1 1 f . . .
+        . . . f 1 1 1 1 1 1 1 1 f . . .
+        . . . f 1 1 1 1 1 1 1 1 f . . .
+        . . . f 1 1 1 1 1 1 1 1 f . . .
+        . . . f 1 1 1 1 1 1 1 1 f . . .
+        . . . f 1 1 1 1 1 1 1 1 f . . .
+        . . . . f 1 1 1 1 1 1 f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_red = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f 2 2 2 2 2 2 f . . . .
+        . . . f 2 2 2 2 2 2 2 2 f . . .
+        . . . f 2 2 2 2 2 2 2 2 f . . .
+        . . . f 2 2 2 2 2 2 2 2 f . . .
+        . . . f 2 2 2 2 2 2 2 2 f . . .
+        . . . f 2 2 2 2 2 2 2 2 f . . .
+        . . . f 2 2 2 2 2 2 2 2 f . . .
+        . . . . f 2 2 2 2 2 2 f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_pink = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f 3 3 3 3 3 3 f . . . .
+        . . . f 3 3 3 3 3 3 3 3 f . . .
+        . . . f 3 3 3 3 3 3 3 3 f . . .
+        . . . f 3 3 3 3 3 3 3 3 f . . .
+        . . . f 3 3 3 3 3 3 3 3 f . . .
+        . . . f 3 3 3 3 3 3 3 3 f . . .
+        . . . f 3 3 3 3 3 3 3 3 f . . .
+        . . . . f 3 3 3 3 3 3 f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_orange = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f 4 4 4 4 4 4 f . . . .
+        . . . f 4 4 4 4 4 4 4 4 f . . .
+        . . . f 4 4 4 4 4 4 4 4 f . . .
+        . . . f 4 4 4 4 4 4 4 4 f . . .
+        . . . f 4 4 4 4 4 4 4 4 f . . .
+        . . . f 4 4 4 4 4 4 4 4 f . . .
+        . . . f 4 4 4 4 4 4 4 4 f . . .
+        . . . . f 4 4 4 4 4 4 f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_yellow = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f 5 5 5 5 5 5 f . . . .
+        . . . f 5 5 5 5 5 5 5 5 f . . .
+        . . . f 5 5 5 5 5 5 5 5 f . . .
+        . . . f 5 5 5 5 5 5 5 5 f . . .
+        . . . f 5 5 5 5 5 5 5 5 f . . .
+        . . . f 5 5 5 5 5 5 5 5 f . . .
+        . . . f 5 5 5 5 5 5 5 5 f . . .
+        . . . . f 5 5 5 5 5 5 f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_teal = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f 6 6 6 6 6 6 f . . . .
+        . . . f 6 6 6 6 6 6 6 6 f . . .
+        . . . f 6 6 6 6 6 6 6 6 f . . .
+        . . . f 6 6 6 6 6 6 6 6 f . . .
+        . . . f 6 6 6 6 6 6 6 6 f . . .
+        . . . f 6 6 6 6 6 6 6 6 f . . .
+        . . . f 6 6 6 6 6 6 6 6 f . . .
+        . . . . f 6 6 6 6 6 6 f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_green = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f 7 7 7 7 7 7 f . . . .
+        . . . f 7 7 7 7 7 7 7 7 f . . .
+        . . . f 7 7 7 7 7 7 7 7 f . . .
+        . . . f 7 7 7 7 7 7 7 7 f . . .
+        . . . f 7 7 7 7 7 7 7 7 f . . .
+        . . . f 7 7 7 7 7 7 7 7 f . . .
+        . . . f 7 7 7 7 7 7 7 7 f . . .
+        . . . . f 7 7 7 7 7 7 f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_blue = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f 8 8 8 8 8 8 f . . . .
+        . . . f 8 8 8 8 8 8 8 8 f . . .
+        . . . f 8 8 8 8 8 8 8 8 f . . .
+        . . . f 8 8 8 8 8 8 8 8 f . . .
+        . . . f 8 8 8 8 8 8 8 8 f . . .
+        . . . f 8 8 8 8 8 8 8 8 f . . .
+        . . . f 8 8 8 8 8 8 8 8 f . . .
+        . . . . f 8 8 8 8 8 8 f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_lightblue = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f 9 9 9 9 9 9 f . . . .
+        . . . f 9 9 9 9 9 9 9 9 f . . .
+        . . . f 9 9 9 9 9 9 9 9 f . . .
+        . . . f 9 9 9 9 9 9 9 9 f . . .
+        . . . f 9 9 9 9 9 9 9 9 f . . .
+        . . . f 9 9 9 9 9 9 9 9 f . . .
+        . . . f 9 9 9 9 9 9 9 9 f . . .
+        . . . . f 9 9 9 9 9 9 f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_purple = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f a a a a a a f . . . .
+        . . . f a a a a a a a a f . . .
+        . . . f a a a a a a a a f . . .
+        . . . f a a a a a a a a f . . .
+        . . . f a a a a a a a a f . . .
+        . . . f a a a a a a a a f . . .
+        . . . f a a a a a a a a f . . .
+        . . . . f a a a a a a f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_lightpurple = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f b b b b b b f . . . .
+        . . . f b b b b b b b b f . . .
+        . . . f b b b b b b b b f . . .
+        . . . f b b b b b b b b f . . .
+        . . . f b b b b b b b b f . . .
+        . . . f b b b b b b b b f . . .
+        . . . f b b b b b b b b f . . .
+        . . . . f b b b b b b f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_darkpurple = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f c c c c c c f . . . .
+        . . . f c c c c c c c c f . . .
+        . . . f c c c c c c c c f . . .
+        . . . f c c c c c c c c f . . .
+        . . . f c c c c c c c c f . . .
+        . . . f c c c c c c c c f . . .
+        . . . f c c c c c c c c f . . .
+        . . . . f c c c c c c f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_tan = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f d d d d d d f . . . .
+        . . . f d d d d d d d d f . . .
+        . . . f d d d d d d d d f . . .
+        . . . f d d d d d d d d f . . .
+        . . . f d d d d d d d d f . . .
+        . . . f d d d d d d d d f . . .
+        . . . f d d d d d d d d f . . .
+        . . . . f d d d d d d f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_brown = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f e e e e e e f . . . .
+        . . . f e e e e e e e e f . . .
+        . . . f e e e e e e e e f . . .
+        . . . f e e e e e e e e f . . .
+        . . . f e e e e e e e e f . . .
+        . . . f e e e e e e e e f . . .
+        . . . f e e e e e e e e f . . .
+        . . . . f e e e e e e f . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `;
+    export const tile_black = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . f f f f f f f f . . . .
+        . . . f f f f f f f f f f . . .
+        . . . f f f f f f f f f f . . .
+        . . . f f f f f f f f f f . . .
+        . . . f f f f f f f f f f . . .
+        . . . f f f f f f f f f f . . .
+        . . . f f f f f f f f f f . . .
+        . . . . f f f f f f f f . . . .
+        . . . . . f f f f f f . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .

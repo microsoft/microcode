@@ -113,7 +113,7 @@ namespace kojac {
         [tid.actuator.log]: (rule: Rule) => {
             const value_type = rule.state["value_type"];
             const name = rule.state["value_name"];
-            const color = 5; // TODO
+            const color = rule.state["color"] || 5;
             switch (value_type) {
                 case "boolean": {
                     const value: boolean = rule.state["value"];
@@ -131,11 +131,24 @@ namespace kojac {
                     break;
                 }
             }
-
         },
 
         [tid.actuator.plot]: (rule: Rule) => {
-
+            const value_type = rule.state["value_type"];
+            const name = rule.state["value_name"];
+            const color = rule.state["color"] || 5;
+            switch (value_type) {
+                case "boolean": {
+                    const value: boolean = rule.state["value"];
+                    rule.prog.agent.plotBoolean(name, value, color);
+                    break;
+                }
+                case "number": {
+                    const value: number = rule.state["value"];
+                    rule.prog.agent.plotNumber(name, value, color);
+                    break;
+                }
+            }
         },
 
         ///
@@ -167,6 +180,51 @@ namespace kojac {
 
         [tid.modifier.pin_off]: (rule: Rule) => {
             rule.state["pin_state"] = false;
+        },
+        [tid.modifier.color_white]: (rule: Rule) => {
+            rule.state["color"] = 1;
+        },
+        [tid.modifier.color_red]: (rule: Rule) => {
+            rule.state["color"] = 2;
+        },
+        [tid.modifier.color_pink]: (rule: Rule) => {
+            rule.state["color"] = 3;
+        },
+        [tid.modifier.color_orange]: (rule: Rule) => {
+            rule.state["color"] = 4;
+        },
+        [tid.modifier.color_yellow]: (rule: Rule) => {
+            rule.state["color"] = 5;
+        },
+        [tid.modifier.color_teal]: (rule: Rule) => {
+            rule.state["color"] = 6;
+        },
+        [tid.modifier.color_green]: (rule: Rule) => {
+            rule.state["color"] = 7;
+        },
+        [tid.modifier.color_blue]: (rule: Rule) => {
+            rule.state["color"] = 8;
+        },
+        [tid.modifier.color_lightblue]: (rule: Rule) => {
+            rule.state["color"] = 9;
+        },
+        [tid.modifier.color_purple]: (rule: Rule) => {
+            rule.state["color"] = 10;
+        },
+        [tid.modifier.color_lightpurple]: (rule: Rule) => {
+            rule.state["color"] = 11;
+        },
+        [tid.modifier.color_darkpurple]: (rule: Rule) => {
+            rule.state["color"] = 12;
+        },
+        [tid.modifier.color_tan]: (rule: Rule) => {
+            rule.state["color"] = 13;
+        },
+        [tid.modifier.color_brown]: (rule: Rule) => {
+            rule.state["color"] = 14;
+        },
+        [tid.modifier.color_black]: (rule: Rule) => {
+            rule.state["color"] = 15;
         },
     }
 }

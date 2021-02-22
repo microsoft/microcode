@@ -20,9 +20,22 @@ namespace kojac {
         justification: LineJustification;
     };
 
+    type PlotEntry = {
+        value: number;
+        t: number;
+    };
+
+    type PlotLine = {
+        entries: PlotEntry[];
+        min: number;
+        max: number;
+    };
+
     export class Home extends Stage {
         currView: HomeView;
         logLines: LogLine[];
+        plotLines: {[color: number]: PlotLine };
+
         agent: Agent;
         paused: boolean;
         singleStep: boolean;
@@ -31,66 +44,92 @@ namespace kojac {
             super(app, "home");
             this.currView = HomeView.Console;
             this.logLines = [];
+            this.plotLines = {};
         }
 
         /**
          * Write a line of text to the console log.
          */
-        public log(text: string, color = 1, justification = LineJustification.Left) {
+        public log(text: string, color: number, justification = LineJustification.Left) {
             this.logLines.push({ text, color, justification });
             // trim to last 15 entries
             this.logLines = this.logLines.slice(Math.max(this.logLines.length - 15, 0));
-            this.setView(HomeView.Console);
         }
 
         /**
          * Plot a point on the graph.
          */
-        public plot(value: number, color = 5) {
-            // TODO
-
-            this.setView(HomeView.Plot);
+        public plot(value: number, color: number) {
+            let plotLine = this.plotLines[color];
+            if (!plotLine) {
+                this.plotLines[color] = plotLine = {
+                    entries: [],
+                    min: 0, max: 0
+                };
+            }
+            plotLine.entries.push({
+                value,
+                t: control.millis()
+            });
+            plotLine.entries = plotLine.entries.slice(Math.max(plotLine.entries.length - 160, 0));
+            plotLine.min = plotLine.max = value;
+            plotLine.entries.forEach(entry => {
+                plotLine.min = Math.min(plotLine.min, entry.value);
+                plotLine.max = Math.max(plotLine.max, entry.value);
+            });
         }
 
         public logBoolean(name: string, val: boolean, color: number) {
             const text = `${name}: ${val ? "true": "false"}`;
             this.log(text, color);
+            this.setView(HomeView.Console);
         }
 
         public logNumber(name: string, val: number, color: number) {
             const text = `${name}: ${val.toString()}`;
             this.log(text, color);
+            this.setView(HomeView.Console);
         }
 
         public logString(name: string, val: string, color: number) {
             const text = `${name}: ${val}`;
             this.log(val, color);
+            this.setView(HomeView.Console);
         }
 
         public plotBoolean(name: string, val: boolean, color: number) {
             this.plot(val ? 1 : 0, color);
+            this.setView(HomeView.Plot);
         }
 
         public plotNumber(name: string, val: number, color: number) {
             this.plot(val, color);
+            this.setView(HomeView.Plot);
         }
 
         startup() {
             super.startup();
             controller.left.onEvent(ControllerButtonEvent.Released, () => {
+                this.app.popStage();
                 this.app.pushStage(new Editor(this.app));
             });
             controller.up.onEvent(ControllerButtonEvent.Pressed, () => {
                 this.paused = !this.paused;
                 if (this.paused) {
-                    this.log("program paused");
+                    this.log("program paused", 1);
                 } else {
-                    this.log("program resumed");
+                    this.log("program resumed", 1);
                 }
             });
             controller.right.onEvent(ControllerButtonEvent.Pressed, () => {
                 this.singleStep = true;
             });
+        }
+
+        shutdown() {
+            this.logLines = undefined;
+            this.plotLines = undefined;
+            super.shutdown();
         }
 
         activate() {
@@ -99,10 +138,10 @@ namespace kojac {
             this.logLines = [];
             this.log("  _ . _ _ _ . _ _  _| _", 7, LineJustification.Center);
             this.log(" ||||(_| (_).(_(_)(_|(-", 7, LineJustification.Center);
-            this.log("");
+            this.log("", 7);
             this.log(" Welcome to micro:code!", 7, LineJustification.Center);
-            this.log("");
-            this.log("");
+            this.log("", 7);
+            this.log("", 7);
             let progdef = this.app.load(SAVESLOT_AUTO);
             if (!progdef) {
                 progdef = new ProgramDefn();
@@ -110,7 +149,7 @@ namespace kojac {
             }
             this.agent = new Agent(this, progdef);
             this.paused = false;
-            this.log("program started");
+            this.log("program started", 1);
         }
 
         deactivate() {
@@ -152,6 +191,7 @@ namespace kojac {
         }
 
         private drawConsoleView() {
+            screen.fillRect(0, 0, scene.screenWidth(), scene.screenHeight() - TOOLBAR_HEIGHT, 15);
             let y = scene.screenHeight() - TOOLBAR_HEIGHT - LINE_HEIGHT;
             for (let i = this.logLines.length - 1; i >= 0; --i) {
                 const line = this.logLines[i];
@@ -177,7 +217,27 @@ namespace kojac {
         }
 
         private drawPlotView() {
-            // TODO
+            const maxHeight = scene.screenHeight() - TOOLBAR_HEIGHT;
+            screen.fillRect(0, 0, scene.screenWidth(), scene.screenHeight() - TOOLBAR_HEIGHT, 6);
+            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].forEach(color => {
+                const plotLine = this.plotLines[color];
+                if (plotLine && plotLine.entries.length > 1) {
+                    let currX = scene.screenWidth();
+                    const heightScale = (plotLine.max - plotLine.min) / maxHeight;
+                    for (let i = plotLine.entries.length - 1; i > 0; i -= 2) {
+                        const a = plotLine.entries[i];
+                        const b = plotLine.entries[i - 1];
+                        const ax = scene.screenWidth() - (control.millis() - a.t) * PIXELS_PER_MILLI;
+                        if (ax < 0) {break; }
+                        const bx = scene.screenWidth() - (control.millis() - b.t) * PIXELS_PER_MILLI;
+                        screen.drawLine(ax, maxHeight - a.value * heightScale, bx, maxHeight - b.value * heightScale, color);
+
+                    }
+
+                }
+            });
         }
     }
+
+    const PIXELS_PER_MILLI = 3;
 }

@@ -9,7 +9,7 @@ namespace kojac {
     const LERP_SPEED = 12;
     const SEARCH_INCR = 8;
     const SEARCH_MAX = 160;
-    const SEARCH_SLOPE = 1.8;
+    const SEARCH_SLOPE = 1.9;
 
     export class Cursor extends Component {
         stylus: Kelpie;
@@ -72,7 +72,8 @@ namespace kojac {
                 candidates = this.quadtree.query(bounds).concat(this.hudtree.query(Bounds.Translate(bounds, Vec2.Neg(this.stage.camera.offset))))
                     // filter and map to Button type
                     .filter(comp => comp.kind === "button")
-                    .map(comp => comp as Button)
+                    .map(comp => comp as Button);
+                candidates = candidates
                     // Filter buttons overlapping the cursor.
                     .filter(btn => overlapping.indexOf(btn) < 0)
                     // Filter buttons per caller.
@@ -90,6 +91,10 @@ namespace kojac {
             }
             if (candidates.length) {
                 const btn = candidates.shift();
+                // Hack for editor scrolled behind hud buttons. If we're selecting a hud button, reset the camera.
+                if (btn.hud) {
+                    this.stage.camera.resetPosition();
+                }
                 const pos = btn.hud ? Vec2.Add(btn.pos, this.stage.camera.offset) : btn.pos;
                 this.moveTo(pos.x, pos.y);
             }

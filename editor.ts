@@ -10,6 +10,7 @@ namespace kojac {
                 hud?: boolean,
                 x: number,
                 y: number,
+                z?: number,
                 onClick?: (button: Button) => void
             }
         ) {
@@ -46,12 +47,14 @@ namespace kojac {
         private okClicked() {
             this.app.save(SAVESLOT_AUTO, this.progdef);
             while (controller.A.isPressed()) { pause(10); }
-            this.app.stageManager.pop();
+            this.app.popStage();
+            this.app.pushStage(new Home(this.app));
         }
 
         private cancelClicked() {
             while (controller.A.isPressed()) { pause(10); }
-            this.app.stageManager.pop();
+            this.app.popStage();
+            this.app.pushStage(new Home(this.app));
         }
 
         private nextPage() {
@@ -124,6 +127,7 @@ namespace kojac {
                 hud: true,
                 x: scene.screenWidth() >> 1,
                 y: 8,
+                z: 10,
                 onClick: () => this.pickPage()
             });
             this.nextPageBtn = new EditorButton(this, {
@@ -132,6 +136,7 @@ namespace kojac {
                 hud: true,
                 x: (scene.screenWidth() >> 1) + 16,
                 y: 8,
+                z: 10,
                 onClick: () => this.nextPage()
             });
             this.prevPageBtn = new EditorButton(this, {
@@ -140,6 +145,7 @@ namespace kojac {
                 hud: true,
                 x: (scene.screenWidth() >> 1) - 16,
                 y: 8,
+                z: 10,
                 onClick: () => this.prevPage()
             });
             this.okBtn = new EditorButton(this, {
@@ -148,6 +154,7 @@ namespace kojac {
                 hud: true,
                 x: scene.screenWidth() - 8,
                 y: 8,
+                z: 10,
                 onClick: () => this.okClicked()
             });
             this.cancelBtn = new EditorButton(this, {
@@ -156,6 +163,7 @@ namespace kojac {
                 hud: true,
                 x: scene.screenWidth() - 24,
                 y: 8,
+                z: 10,
                 onClick: () => this.cancelClicked()
             });
             this.progdef = this.app.load(SAVESLOT_AUTO);

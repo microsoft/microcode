@@ -443,6 +443,21 @@ namespace kojac {
             express_sad: "M10",
             pin_on: "M11",
             pin_off: "M12",
+            color_white: "M13",
+            color_red: "M14",
+            color_pink: "M15",
+            color_orange: "M16",
+            color_yellow: "M17",
+            color_teal: "M18",
+            color_green: "M19",
+            color_blue: "M20",
+            color_lightblue: "M21",
+            color_purple: "M22",
+            color_lightpurple: "M23",
+            color_darkpurple: "M24",
+            color_tan: "M25",
+            color_brown: "M26",
+            color_black: "M27",
         }
     }
 
@@ -652,7 +667,7 @@ namespace kojac {
                 name: "Log",
                 constraints: {
                     allow: {
-                        categories: ["output_color"]
+                        categories: ["color"]
                     }
                 }
             },
@@ -662,7 +677,7 @@ namespace kojac {
                 name: "Plot",
                 constraints: {
                     allow: {
-                        categories: ["output_color"]
+                        categories: ["color"]
                     }
                 }
             },
@@ -814,6 +829,186 @@ namespace kojac {
                 constraints: {
                     handling: {
                         "terminal": true
+                    }
+                }
+            },
+            [tid.modifier.color_white]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_white,
+                name: "white",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_red]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_red,
+                name: "red",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_pink]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_pink,
+                name: "pink",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_orange]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_orange,
+                name: "orange",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_yellow]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_yellow,
+                name: "yellow",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_teal]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_teal,
+                name: "teal",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_green]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_green,
+                name: "green",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_blue]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_blue,
+                name: "blue",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_lightblue]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_lightblue,
+                name: "light blue",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_purple]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_purple,
+                name: "purple",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_lightpurple]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_lightpurple,
+                name: "light purple",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_darkpurple]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_darkpurple,
+                name: "dark purple",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_tan]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_tan,
+                name: "tan",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_brown]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_brown,
+                name: "brown",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
+                    }
+                }
+            },
+            [tid.modifier.color_black]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.color_black,
+                name: "black",
+                category: "color",
+                priority: 10,
+                constraints: {
+                    disallow: {
+                        categories: ["color"]
                     }
                 }
             },

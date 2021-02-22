@@ -26,8 +26,12 @@ namespace kojac {
             this.resetPosition();
         }
 
-        public resetPosition() {
-            this.snapTo(new Vec2(scene.screenWidth() >> 1, scene.screenHeight() >> 1));
+        public resetPosition(snap = true) {
+            if (snap) {
+                this.snapTo(new Vec2(scene.screenWidth() >> 1, scene.screenHeight() >> 1));
+            } else {
+                this.moveTo(new Vec2(scene.screenWidth() >> 1, scene.screenHeight() >> 1));
+            }
         }
 
         public moveTo(p: Vec2) {

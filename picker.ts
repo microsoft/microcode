@@ -153,6 +153,7 @@ namespace kojac {
 
             let maxBtnCount = 0;
             this.groups.forEach(group => maxBtnCount = Math.max(maxBtnCount, group.opts.btns.length));
+            maxBtnCount = Math.min(maxBtnCount, MAX_PER_ROW);
 
             let computedHeight = HEADER;
             let computedWidth = maxBtnCount * 16;
@@ -161,7 +162,7 @@ namespace kojac {
                 if (group.opts.label) {
                     computedHeight += LABEL;
                 }
-                computedHeight += TRAY;
+                computedHeight += TRAY * Math.ceil(group.buttons.length / MAX_PER_ROW);
             });
 
             let computedLeft = this.offset.x + (scene.screenWidth() >> 1) - (computedWidth >> 1);
@@ -183,8 +184,12 @@ namespace kojac {
                 if (group.opts.label) {
                     currentTop += LABEL;
                 }
-                group.buttons.forEach(btn => {
+                group.buttons.forEach((btn, index) => {
                     if (!firstBtn) { firstBtn = btn; }
+                    if (index && (index % MAX_PER_ROW) === 0) {
+                        currentTop += TRAY;
+                        currentLeft = computedLeft;
+                    }
                     btn.y = currentTop + 8;
                     btn.x = currentLeft + 8;
                     currentLeft += 16;
@@ -203,4 +208,5 @@ namespace kojac {
     const HEADER = 16;
     const LABEL = 14;
     const TRAY = 16;
+    const MAX_PER_ROW = 7;
 }
