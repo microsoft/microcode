@@ -415,17 +415,11 @@ namespace kojac {
         filter: <any>{
             timespan_short: "F1",
             timespan_long: "F2",
-            express_none: "F3",
-            express_happy: "F4",
-            express_angry: "F5",
-            express_heart: "F6",
-            express_sad: "F7",
             pin_analog: "F8",
             pin_digital: "F9",
         },
         actuator: <any>{
             switch_page: "A1",
-            express: "A2",
             pin_0: "A3",
             log: "A4",
             plot: "A5",
@@ -436,11 +430,6 @@ namespace kojac {
             page_3: "M3",
             page_4: "M4",
             page_5: "M5",
-            express_none: "M6",
-            express_happy: "M7",
-            express_angry: "M8",
-            express_heart: "M9",
-            express_sad: "M10",
             pin_on: "M11",
             pin_off: "M12",
             color_white: "M13",
@@ -544,66 +533,6 @@ namespace kojac {
                 constraints: {
                 }
             },
-            [tid.filter.express_none]: {
-                type: TileType.FILTER,
-                tid: tid.filter.express_none,
-                name: "neutral",
-                category: "expression",
-                priority: 10,
-                constraints: {
-                    disallow: {
-                        categories: ["expression"]
-                    }
-                }
-            },
-            [tid.filter.express_happy]: {
-                type: TileType.FILTER,
-                tid: tid.filter.express_happy,
-                name: "happy",
-                category: "expression",
-                priority: 10,
-                constraints: {
-                    disallow: {
-                        categories: ["expression"]
-                    }
-                }
-            },
-            [tid.filter.express_angry]: {
-                type: TileType.FILTER,
-                tid: tid.filter.express_angry,
-                name: "angry",
-                category: "expression",
-                priority: 10,
-                constraints: {
-                    disallow: {
-                        categories: ["expression"]
-                    }
-                }
-            },
-            [tid.filter.express_heart]: {
-                type: TileType.FILTER,
-                tid: tid.filter.express_heart,
-                name: "heart",
-                category: "expression",
-                priority: 10,
-                constraints: {
-                    disallow: {
-                        categories: ["expression"]
-                    }
-                }
-            },
-            [tid.filter.express_sad]: {
-                type: TileType.FILTER,
-                tid: tid.filter.express_sad,
-                name: "sad",
-                category: "expression",
-                priority: 10,
-                constraints: {
-                    disallow: {
-                        categories: ["expression"]
-                    }
-                }
-            },
             [tid.filter.pin_analog]: {
                 type: TileType.FILTER,
                 tid: tid.filter.pin_analog,
@@ -637,17 +566,6 @@ namespace kojac {
                 constraints: {
                     allow: {
                         categories: ["page"]
-                    }
-                }
-            },
-            [tid.actuator.express]: {
-                type: TileType.ACTUATOR,
-                tid: tid.actuator.express,
-                name: "Express",
-                constraints: {
-                    provides: ["expression-consumer"],
-                    allow: {
-                        categories: ["expression"]
                     }
                 }
             },
@@ -740,71 +658,6 @@ namespace kojac {
                 constraints: {
                     handling: {
                         "terminal": true
-                    }
-                }
-            },
-            [tid.modifier.express_none]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.express_none,
-                name: "none",
-                category: "expression",
-                priority: 10,
-                constraints: {
-                    requires: ["expression-consumer"],
-                    disallow: {
-                        categories: ["expression"]
-                    }
-                }
-            },
-            [tid.modifier.express_happy]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.express_happy,
-                name: "happy",
-                category: "expression",
-                priority: 10,
-                constraints: {
-                    requires: ["expression-consumer"],
-                    disallow: {
-                        categories: ["expression"]
-                    }
-                }
-            },
-            [tid.modifier.express_angry]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.express_angry,
-                name: "angry",
-                category: "expression",
-                priority: 10,
-                constraints: {
-                    requires: ["expression-consumer"],
-                    disallow: {
-                        categories: ["expression"]
-                    }
-                }
-            },
-            [tid.modifier.express_heart]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.express_heart,
-                name: "heart",
-                category: "expression",
-                priority: 10,
-                constraints: {
-                    requires: ["expression-consumer"],
-                    disallow: {
-                        categories: ["expression"]
-                    }
-                }
-            },
-            [tid.modifier.express_sad]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.express_sad,
-                name: "sad",
-                category: "expression",
-                priority: 10,
-                constraints: {
-                    requires: ["expression-consumer"],
-                    disallow: {
-                        categories: ["expression"]
                     }
                 }
             },
