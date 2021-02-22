@@ -124,6 +124,9 @@ namespace kojac {
             controller.right.onEvent(ControllerButtonEvent.Pressed, () => {
                 this.singleStep = true;
             });
+            controller.right.onEvent(ControllerButtonEvent.Repeated, () => {
+                this.singleStep = true;
+            });
         }
 
         shutdown() {
@@ -217,27 +220,31 @@ namespace kojac {
         }
 
         private drawPlotView() {
-            const maxHeight = scene.screenHeight() - TOOLBAR_HEIGHT;
             screen.fillRect(0, 0, scene.screenWidth(), scene.screenHeight() - TOOLBAR_HEIGHT, 6);
-            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].forEach(color => {
+            const maxHeight = scene.screenHeight() - TOOLBAR_HEIGHT - 10;
+            for (let color = 1; color < 16; ++color) {
                 const plotLine = this.plotLines[color];
                 if (plotLine && plotLine.entries.length > 1) {
                     let currX = scene.screenWidth();
-                    const heightScale = (plotLine.max - plotLine.min) / maxHeight;
-                    for (let i = plotLine.entries.length - 1; i > 0; i -= 2) {
+                    const min = plotLine.min;
+                    const max = plotLine.max;
+                    const range = Math.max(Math.abs(max - min), 1);
+                    const heightScale =  maxHeight / range;
+                    for (let i = plotLine.entries.length - 1, x = 0; i > 0 && x < scene.screenWidth(); --i, ++x) {
                         const a = plotLine.entries[i];
                         const b = plotLine.entries[i - 1];
-                        const ax = scene.screenWidth() - (control.millis() - a.t) * PIXELS_PER_MILLI;
-                        if (ax < 0) {break; }
-                        const bx = scene.screenWidth() - (control.millis() - b.t) * PIXELS_PER_MILLI;
-                        screen.drawLine(ax, maxHeight - a.value * heightScale, bx, maxHeight - b.value * heightScale, color);
-
+                        const av = a.value - min;
+                        const bv = b.value - min;
+                        const ax = scene.screenWidth() - x;
+                        const ay = maxHeight - Math.floor(av * heightScale) + 5;
+                        const bx = scene.screenWidth() - x - 1;
+                        const by = maxHeight - Math.floor(bv * heightScale) + 5;
+                        screen.drawLine(ax, ay, bx, by, color);
                     }
-
                 }
-            });
+            };
         }
     }
 
-    const PIXELS_PER_MILLI = 3;
+    const PIXELS_PER_MILLI = 1;
 }

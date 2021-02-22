@@ -63,6 +63,12 @@ namespace kojac {
                 mode = "analog";
             }
             const value = (mode === "analog") ? pins.analogReadPin(AnalogPin.P1) : pins.digitalReadPin(DigitalPin.P1);
+            /*
+            const prev = rule.prevState["value"] || Math.random();
+            const value = (mode === "analog")
+                ? Math.random() > 0.5 ? prev + 0.1 : prev - 0.1
+                : Math.random() > 0.1 ? Math.random() > 0.5 ? 1 : 0 : prev;
+            */
             rule.state["value"] = value;
             rule.state["value_type"] = "number";
             rule.state["value_name"] = "P1";
