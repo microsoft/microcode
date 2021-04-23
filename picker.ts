@@ -10,7 +10,7 @@ namespace kojac {
             private picker: Picker,
             btn: PickerButtonDef
         ) {
-            super(picker.stage, {
+            super(picker.scene, {
                 style: "white",
                 icon: btn.icon,
                 label: btn.label,
@@ -52,14 +52,14 @@ namespace kojac {
 
         public z: number;
 
-        constructor(stage: Stage, private opts: {
+        constructor(scene: Scene, private opts: {
             cursor: Cursor,
             backgroundImage?: Image;
             backgroundColor?: number;
             title?: string;
             onClick?: (btn: string) => void
         }) {
-            super(stage, "picker");
+            super(scene, "picker");
             this.groups = [];
             this.quadtree = new QuadTree(new Bounds({
                 left: 0,
@@ -98,8 +98,8 @@ namespace kojac {
         }
 
         show() {
-            this.offset = this.stage.camera.offset;
-            this.cancelBtn = new Button(this.stage, {
+            this.offset = this.scene.camera.offset;
+            this.cancelBtn = new Button(this.scene, {
                 style: "white",
                 icon: "cancel",
                 x: 0,

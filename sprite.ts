@@ -1,11 +1,7 @@
 namespace kojac {
-    export type KelpieHandler = (kelpie: Kelpie) => void;
+    export type SpriteHandler = (sprite: Sprite) => void;
 
-    /**
-     * A kelpie is a shape-shifting spirit inhabiting lakes in Scottish folklore.
-     * It's basically a sprite.
-     */
-    export class Kelpie extends Component {
+    export class Sprite extends Component {
         private _x: number;
         private _y: number;
         private _z: number;
@@ -34,7 +30,7 @@ namespace kojac {
         set z(v: number) {
             if (v !== this._z) {
                 this._z = v;
-                this.stage.setNeedsSorting();
+                this.scene.setNeedsSorting();
             }
         }
 
@@ -104,8 +100,8 @@ namespace kojac {
         get hud() { return this._hud; }
         set hud(b: boolean) { this._hud = b; }
 
-        constructor(stage: Stage, img: Image) {
-            super(stage, "kelpie");
+        constructor(scene: Scene, img: Image) {
+            super(scene, "sprite");
             this._x = screen.width - (img.width >> 1);
             this._y = screen.height - (img.height >> 1);
             this._z = 0;

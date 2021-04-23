@@ -31,7 +31,7 @@ namespace kojac {
         max: number;
     };
 
-    export class Home extends Stage {
+    export class Home extends Scene {
         currView: HomeView;
         logLines: LogLine[];
         plotLines: {[color: number]: PlotLine };
@@ -110,8 +110,8 @@ namespace kojac {
         startup() {
             super.startup();
             controller.left.onEvent(ControllerButtonEvent.Released, () => {
-                this.app.popStage();
-                this.app.pushStage(new Editor(this.app));
+                this.app.popScene();
+                this.app.pushScene(new Editor(this.app));
             });
             controller.up.onEvent(ControllerButtonEvent.Pressed, () => {
                 this.paused = !this.paused;

@@ -11,16 +11,16 @@ namespace kojac {
     };
 
     export class App {
-        stageManager: StageManager;
+        sceneManager: SceneManager;
 
         constructor() {
             // One interval delay to ensure all static constructors have executed.
             setTimeout(() => {
                 controller.setRepeatDefault(250, 30);
                 icons.init();
-                this.stageManager = new StageManager();
+                this.sceneManager = new SceneManager();
                 const home = new Home(this);
-                this.pushStage(home);
+                this.pushScene(home);
             }, 1);
         }
 
@@ -43,12 +43,12 @@ namespace kojac {
             return undefined;
         }
 
-        public pushStage(stage: Stage) {
-            this.stageManager.push(stage);
+        public pushScene(scene: Scene) {
+            this.sceneManager.push(scene);
         }
 
-        public popStage() {
-            this.stageManager.pop();
+        public popScene() {
+            this.sceneManager.pop();
         }
     }
 }

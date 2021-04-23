@@ -15,19 +15,19 @@ namespace kojac {
             return this._data;
         }
 
-        constructor(public stage: Stage, public kind: string) {
+        constructor(public scene: Scene, public kind: string) {
             this._id = id_sequence++;
-            this.stage.add(this);
+            this.scene.add(this);
         }
 
-        public onDestroy(handler: KelpieHandler) {
+        public onDestroy(handler: SpriteHandler) {
             this._destroyHandlers = this._destroyHandlers || [];
             this._destroyHandlers.push(handler);
         }
 
         destroy() {
-            if (this.stage) {
-                this.stage.remove(this);
+            if (this.scene) {
+                this.scene.remove(this);
                 const handlers = this._destroyHandlers || [];
                 for (const handler of handlers) {
                     handler(this);

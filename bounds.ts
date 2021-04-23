@@ -82,7 +82,7 @@ namespace kojac {
             return new Bounds({ width, height, left, top });
         }
 
-        public static FromKelpie(k: Kelpie): Bounds {
+        public static FromSprite(k: Sprite): Bounds {
             let box = Bounds.FromImage(k.image);
             box = Bounds.Translate(box, new Vec2(-(k.width >> 1), -(k.height >> 1)));
             return box;

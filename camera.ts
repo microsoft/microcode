@@ -21,8 +21,8 @@ namespace kojac {
 
         public get offset() { return new Vec2(this.curx - (scene.screenWidth() >> 1), this.cury - (scene.screenHeight() >> 1)); }
 
-        constructor(stage: Stage) {
-            super(stage, "camera");
+        constructor(scene: Scene) {
+            super(scene, "camera");
             this.resetPosition();
         }
 

@@ -1,7 +1,7 @@
 namespace kojac {
     export class Button extends Component {
-        private icon: Kelpie;
-        private back: Kelpie;
+        private icon: Sprite;
+        private back: Sprite;
         private text: TextSprite;
         public hud: boolean;
         private style: ButtonStyle;
@@ -40,7 +40,7 @@ namespace kojac {
         }
 
         constructor(
-            stage: Stage,
+            scene: Scene,
             opts: {
                 style?: ButtonStyle,
                 icon: string,
@@ -52,7 +52,7 @@ namespace kojac {
                 onClick?: (button: Button) => void
             }
         ) {
-            super(stage, "button");
+            super(scene, "button");
             this.hud = opts.hud;
             this.style = opts.style;
             this.iconId = opts.icon;
@@ -82,10 +82,10 @@ namespace kojac {
             if (this.icon) { this.icon.destroy(); }
             if (this.back) { this.back.destroy(); }
             if (this.text) { this.text.destroy(); }
-            this.icon = new Kelpie(this.stage, icons.get(this.iconId));
+            this.icon = new Sprite(this.scene, icons.get(this.iconId));
             this.icon.hud = this.hud;
             if (this.style) {
-                this.back = new Kelpie(this.stage, icons.get(`button_${this.style}`));
+                this.back = new Sprite(this.scene, icons.get(`button_${this.style}`));
                 this.back.hud = this.hud;
             }
             this.icon.x = this.x;
@@ -97,9 +97,9 @@ namespace kojac {
                 this.back.z = this.z - 1;
             }
             if (this.back) {
-                this.hitbox = Bounds.FromKelpie(this.back);
+                this.hitbox = Bounds.FromSprite(this.back);
             } else {
-                this.hitbox = Bounds.FromKelpie(this.icon);
+                this.hitbox = Bounds.FromSprite(this.icon);
             }
         }
 

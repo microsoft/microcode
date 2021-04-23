@@ -24,7 +24,7 @@ namespace kojac {
         }
     }
 
-    export class Editor extends Stage {
+    export class Editor extends Scene {
         private quadtree: QuadTree;
         private hudtree: QuadTree;
         private progdef: ProgramDefn;
@@ -47,14 +47,14 @@ namespace kojac {
         private okClicked() {
             this.app.save(SAVESLOT_AUTO, this.progdef);
             while (controller.A.isPressed()) { pause(10); }
-            this.app.popStage();
-            this.app.pushStage(new Home(this.app));
+            this.app.popScene();
+            this.app.pushScene(new Home(this.app));
         }
 
         private cancelClicked() {
             while (controller.A.isPressed()) { pause(10); }
-            this.app.popStage();
-            this.app.pushStage(new Home(this.app));
+            this.app.popScene();
+            this.app.pushScene(new Home(this.app));
         }
 
         private nextPage() {
@@ -346,8 +346,8 @@ namespace kojac {
     }
 
     class RuleEditor extends Component {
-        whenLbl: Kelpie;
-        doLbl: Kelpie;
+        whenLbl: Sprite;
+        doLbl: Sprite;
         handleBtn: Button;
         whenInsertBtn: Button;
         doInsertBtn: Button;
@@ -360,8 +360,8 @@ namespace kojac {
 
         constructor(private editor: Editor, private page: PageEditor, private ruledef: RuleDefn, public index: number) {
             super(editor, "rule_editor");
-            this.whenLbl = new Kelpie(editor, icons.get("when"));
-            this.doLbl = new Kelpie(editor, icons.get("do"));
+            this.whenLbl = new Sprite(editor, icons.get("when"));
+            this.doLbl = new Sprite(editor, icons.get("do"));
             this.handleBtn = new EditorButton(editor, {
                 icon: ruledef.condition,
                 x: 0, y: 0,
@@ -481,7 +481,7 @@ namespace kojac {
         }
 
         private showRuleHandleMenu() {
-            const picker = new Picker(this.stage, {
+            const picker = new Picker(this.scene, {
                 cursor: this.editor.cursor,
                 onClick: (iconId) => this.handleRuleHandleMenuSelection(iconId),
                 title: "Select",
@@ -534,7 +534,7 @@ namespace kojac {
                 });
             }
             if (btns.length) {
-                const picker = new Picker(this.stage, {
+                const picker = new Picker(this.scene, {
                     title: "Select",
                     cursor: this.editor.cursor,
                     onClick: (iconId) => {
@@ -567,7 +567,7 @@ namespace kojac {
                 });
             }
             if (btns.length) {
-                const picker = new Picker(this.stage, {
+                const picker = new Picker(this.scene, {
                     title: "Select",
                     cursor: this.editor.cursor,
                     onClick: (iconId) => {
@@ -600,7 +600,7 @@ namespace kojac {
                 });
             }
             if (btns.length) {
-                const picker = new Picker(this.stage, {
+                const picker = new Picker(this.scene, {
                     title: "Select",
                     cursor: this.editor.cursor,
                     onClick: (iconId) => {
@@ -637,7 +637,7 @@ namespace kojac {
                 });
             }
             if (btns.length) {
-                const picker = new Picker(this.stage, {
+                const picker = new Picker(this.scene, {
                     title: "Select",
                     cursor: this.editor.cursor,
                     onClick: (iconId) => {
