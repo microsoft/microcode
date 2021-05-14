@@ -35,15 +35,23 @@ namespace kojac {
         },
 
         [tid.sensor.button_a]: (rule: Rule) => {
-            if (controller.A.isPressed()) {
+            const pressed = controller.A.isPressed();
+            if (pressed) {
                 rule.state["exec"] = true;
             }
+            rule.state["value"] = pressed;
+            rule.state["value_type"] = "boolean";
+            rule.state["value_name"] = "A";
         },
 
         [tid.sensor.button_b]: (rule: Rule) => {
-            if (controller.B.isPressed()) {
+            const pressed = controller.B.isPressed();
+            if (pressed) {
                 rule.state["exec"] = true;
             }
+            rule.state["value"] = pressed;
+            rule.state["value_type"] = "boolean";
+            rule.state["value_name"] = "B";
         },
 
         [tid.sensor.timer]: (rule: Rule) => {
@@ -52,10 +60,14 @@ namespace kojac {
             const now = control.millis();
             const timespan = rule.state["timespan"] || 1000;
             const elapsed = now - timerStart;
-            if (elapsed >= timespan) {
+            const trigger = elapsed >= timespan;
+            if (trigger) {
                 rule.state["exec"] = true;
                 rule.state["timerStart"] = now;
             }
+            rule.state["value"] = trigger;
+            rule.state["value_type"] = "boolean";
+            rule.state["value_name"] = "Timer";
         },
         [tid.sensor.pin_1]: (rule: Rule) => {
             let mode = rule.state["pin_mode"];
