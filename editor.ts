@@ -158,6 +158,12 @@ namespace kojac {
             if (target) { this.moveTo(target); }
         }
 
+        private cancel() {
+            if (!this.cursor.cancel()) {
+                this.cursor.moveTo(this.pageBtn.xfrm.worldPos);
+            }
+        }
+
         /* override */ startup() {
             super.startup();
             controller.up.onEvent(ControllerButtonEvent.Pressed, () => this.moveUp());
@@ -169,7 +175,7 @@ namespace kojac {
             controller.right.onEvent(ControllerButtonEvent.Pressed, () => this.moveRight());
             controller.right.onEvent(ControllerButtonEvent.Repeated, () => this.moveRight());
             controller.A.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.click());
-            controller.B.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.cancel());
+            controller.B.onEvent(ControllerButtonEvent.Pressed, () => this.cancel());
             this.hudroot = new Placeable();
             this.hudroot.xfrm.localPos = new Vec2(0, Screen.TOP_EDGE);
             this.hudroot.xfrm.tag = "hud";

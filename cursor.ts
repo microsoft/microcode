@@ -172,18 +172,22 @@ namespace kojac {
             });
         }
 
-        public click() {
+        public click(): boolean {
             let overlapping = this.getOverlapping()//.sort((a, b) => a.z - b.z);
             if (overlapping.length) {
                 const btn = overlapping.shift();
                 btn.click();
+                return true;
             }
+            return false;
         }
 
-        public cancel() {
+        public cancel(): boolean {
             if (this.cancelHandlerStack.length) {
                 this.cancelHandlerStack[this.cancelHandlerStack.length - 1]();
+                return true;
             }
+            return false;
         }
 
         private getOverlapping(): Button[] {
