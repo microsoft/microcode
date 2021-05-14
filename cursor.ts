@@ -4,7 +4,7 @@ namespace kojac {
 
     const SEARCH_INCR = 8;
     const SEARCH_MAX = 160;
-    const SEARCH_SLOPE = 1.9;
+    const SEARCH_SLOPE = 1.1;
 
     export class Cursor extends Component implements IPlaceable {
         private xfrm_: Affine;
@@ -45,7 +45,7 @@ namespace kojac {
             this.dest.copyFrom(pos);
             this.anim.clearFrames();
             this.anim.addFrame(new EaseFrame({
-                duration: 0.1,
+                duration: 0.05,
                 //curve: curves.easeOut(curves.easing.sq2),
                 curve: curves.linear(),
                 startValue: this.xfrm.localPos,

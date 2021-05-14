@@ -24,6 +24,7 @@ namespace kojac {
     }
 
     const TOOLBAR_HEIGHT = 17;
+    const TOOLBAR_COLOR = 11;
 
     export class Editor extends Scene {
         private quadtree: QuadTree;
@@ -124,7 +125,7 @@ namespace kojac {
                     new Vec2());
                 this.scrollanim.clearFrames();
                 this.scrollanim.addFrame(new EaseFrame({
-                    duration: 0.1,
+                    duration: 0.05,
                     //curve: curves.easeOut(curves.easing.sq2),
                     curve: curves.linear(),
                     startValue: this.scrollroot.xfrm.localPos,
@@ -299,7 +300,7 @@ namespace kojac {
             if (this.pageEditor) {
                 this.pageEditor.draw();
             }
-            Screen.fillRect(Screen.LEFT_EDGE, Screen.TOP_EDGE, Screen.WIDTH, TOOLBAR_HEIGHT, 11)
+            Screen.fillRect(Screen.LEFT_EDGE, Screen.TOP_EDGE, Screen.WIDTH, TOOLBAR_HEIGHT, TOOLBAR_COLOR)
             this.pageBtn.draw();
             this.prevPageBtn.draw();
             this.nextPageBtn.draw();
