@@ -43,6 +43,12 @@ namespace kojac {
             });
         }
 
+        public translate(p: Vec2): this {
+            this.left += p.x;
+            this.top += p.y;
+            return this;
+        }
+
         public static Intersects(a: Bounds, b: Bounds): boolean {
             if (b.contains(a.topLeft)) { return true; }
             if (b.contains(a.topRight)) { return true; }
@@ -83,35 +89,60 @@ namespace kojac {
         }
 
         public static FromSprite(k: Sprite): Bounds {
-            let box = Bounds.FromImage(k.image);
-            box = Bounds.Translate(box, new Vec2(-(k.width >> 1), -(k.height >> 1)));
-            return box;
+            return Bounds.FromImage(k.image)
+            .translate(new Vec2(-(k.width >> 1), -(k.height >> 1)))
+            .translate(k.xfrm.worldPos);
         }
 
-        public drawRect(drawOffset: Vec2, color: number) {
+        public drawRect(color: number) {
             const top = this.top;
             const left = this.left;
             const right = this.right - 1;
             const bottom = this.bottom - 1;
-            screen.drawLine(left - drawOffset.x, top - drawOffset.y, right - drawOffset.x, top - drawOffset.y, color);
-            screen.drawLine(left - drawOffset.x, bottom - drawOffset.y, right - drawOffset.x, bottom - drawOffset.y, color);
-            screen.drawLine(left - drawOffset.x, top - drawOffset.y, left - drawOffset.x, bottom - drawOffset.y, color);
-            screen.drawLine(right - drawOffset.x, top - drawOffset.y, right - drawOffset.x, bottom - drawOffset.y, color);
+            Screen.drawLine(left, top, right, top, color);
+            Screen.drawLine(left, bottom, right, bottom, color);
+            Screen.drawLine(left, top, left, bottom, color);
+            Screen.drawLine(right, top, right, bottom, color);
         }
 
-        public dbgRect(drawOffset: Vec2, color: number) {
+        public dbgRect(color: number) {
             const top = this.top;
             const left = this.left;
             const right = this.right;
             const bottom = this.bottom;
-            screen.drawLine(left - drawOffset.x, top - drawOffset.y, right - drawOffset.x, top - drawOffset.y, color);
-            screen.drawLine(left - drawOffset.x, bottom - drawOffset.y, right - drawOffset.x, bottom - drawOffset.y, color);
-            screen.drawLine(left - drawOffset.x, top - drawOffset.y, left - drawOffset.x, bottom - drawOffset.y, color);
-            screen.drawLine(right - drawOffset.x, top - drawOffset.y, right - drawOffset.x, bottom - drawOffset.y, color);
+            Screen.drawLine(left, top, right, top, color);
+            Screen.drawLine(left, bottom, right, bottom, color);
+            Screen.drawLine(left, top, left, bottom, color);
+            Screen.drawLine(right, top, right, bottom, color);
         }
 
-        public fillRect(drawOffset: Vec2, color: number) {
-            screen.fillRect(this.left - drawOffset.x, this.top - drawOffset.y, this.width, this.height, color);
+        public fillRect(color: number) {
+            Screen.fillRect(this.left, this.top, this.width, this.height, color);
+        }
+    }
+
+    export class Occlusions {
+        public get has(): boolean {
+            return !!this.left || !!this.top || !!this.right || !!this.bottom;
+        }
+
+        constructor(
+            public left: number,
+            public top: number,
+            public right: number,
+            public bottom: number,
+        ) {}
+
+        public static FromSprite(s: Sprite, bounds: Bounds): Occlusions {
+                const left = s.xfrm.worldPos.x - (s.width >> 1);
+                const top = s.xfrm.worldPos.y - (s.height >> 1);
+                const right = s.xfrm.worldPos.x + (s.width >> 1);
+                const bottom = s.xfrm.worldPos.y + (s.height >> 1);
+                return new Occlusions(
+                    bounds.left > left ? bounds.left - left : 0,
+                    bounds.top > top ? bounds.top - top : 0,
+                    bounds.right < right ? right - bounds.right : 0,
+                    bounds.bottom < bottom ? bottom - bounds.bottom : 0);
         }
     }
 }

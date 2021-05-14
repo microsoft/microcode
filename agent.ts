@@ -1,4 +1,7 @@
 namespace kojac {
+    /**
+     * An Agent is an object that can execute a program. In this demo, there is only one agent: the micro:bit.
+     */
     export class Agent {
         public prog: Program;
 
@@ -11,7 +14,7 @@ namespace kojac {
             this.prog = undefined;
         }
 
-        public update(dt: number) {
+        public update() {
             this.prog.execute();
         }
 

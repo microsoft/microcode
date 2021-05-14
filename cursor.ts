@@ -1,75 +1,75 @@
 namespace kojac {
 
-    function easeInOutSine(t: number): number {
-        return -(Math.cos(Math.PI * t) - 1) / 2;
-    }
-
     export type CursorCancelHandler = () => void;
 
-    const LERP_SPEED = 12;
     const SEARCH_INCR = 8;
     const SEARCH_MAX = 160;
     const SEARCH_SLOPE = 1.9;
 
-    export class Cursor extends Component {
+    export class Cursor extends Component implements IPlaceable {
+        private xfrm_: Affine;
         stylus: Sprite;
-        x: number;
-        y: number;
-        fromx: number;
-        fromy: number;
-        lerpt: number;
-        hitbox: Bounds;
+        private hitbox_: Bounds;
         quadtree: QuadTree;
-        hudtree: QuadTree;
         cancelHandlerStack: CursorCancelHandler[];
+        anim: Animation;
+        dest: Vec2;
 
-        public get pos() { return this.stylus.pos; }
-        public set pos(p: Vec2) { this.x = p.x; this.y = p.y; }
-        public get z() { return this.stylus.z; }
-        public set z(v: number) { this.stylus.z = v; }
+        public get xfrm() { return this.xfrm_; }
+        public get hitbox() { return Bounds.Translate(this.hitbox_, this.xfrm.worldPos); }
 
-        constructor(scene: Scene) {
-            super(scene, "cursor");
-            this.stylus = new Sprite(scene, icons.get("cursor"));
-            this.stylus.z = 100;
+        constructor() {
+            super("cursor");
+            this.xfrm_ = new Affine();
+            this.stylus = new Sprite({
+                parent: this,
+                img: icons.get("cursor")
+            });
             // Small hitbox around the pointer.
-            this.hitbox = new Bounds({
+            this.hitbox_ = new Bounds({
                 width: 3,
                 height: 3,
                 left: -3,
                 top: -2
             });
-            this.x = this.fromx = this.stylus.x;
-            this.y = this.fromy = this.stylus.y;
             this.cancelHandlerStack = [];
+            this.dest = new Vec2();
+            this.anim = new Animation((p: Vec2) => this.animCallback(p));
         }
 
-        public moveTo(x: number, y: number) {
-            // Setup to lerp to new position.
-            this.fromx = this.x;
-            this.fromy = this.y;
-            this.x = x;
-            this.y = y;
-            this.lerpt = control.millis();
+        private animCallback(p: Vec2) {
+            this.xfrm.localPos = p;
+        }
+
+        public moveTo(pos: Vec2) {
+            this.dest.copyFrom(pos);
+            this.anim.clearFrames();
+            this.anim.addFrame(new EaseFrame({
+                duration: 0.1,
+                //curve: curves.easeOut(curves.easing.sq2),
+                curve: curves.linear(),
+                startValue: this.xfrm.localPos,
+                endValue: this.dest
+            }));
+            this.anim.start();
         }
 
         public snapTo(x: number, y: number) {
-            this.x = this.fromx = this.stylus.x = x;
-            this.y = this.fromy = this.stylus.y = y;
+            this.dest.x = this.xfrm.localPos.x = x;
+            this.dest.y = this.xfrm.localPos.y = y;
         }
 
-        // Move the cursor to the best nearby candidate button.
-        private move(opts: {
+        private query(opts: {
             boundsFn: (dist: number) => Bounds;
             filterFn: (value: Button, dist: number) => boolean;
-        }) {
-            //if (this.transiting()) return;
+        }): Button {
+            if (this.anim && this.anim.playing) { return null; }
             let dist = SEARCH_INCR;
             let candidates: Button[];
             let overlapping = this.getOverlapping();
             while (true) {
                 const bounds = opts.boundsFn(dist);
-                candidates = this.quadtree.query(bounds).concat(this.hudtree.query(Bounds.Translate(bounds, Vec2.Neg(this.scene.camera.offset))))
+                candidates = this.quadtree.query(bounds)
                     // filter and map to Button type
                     .filter(comp => comp.kind === "button")
                     .map(comp => comp as Button);
@@ -80,108 +80,100 @@ namespace kojac {
                     .filter((btn) => opts.filterFn(btn, dist))
                     // Sort by distance from cursor.
                     .sort((a, b) => {
-                        const apos = a.hud ? Vec2.Add(a.pos, this.scene.camera.offset) : a.pos;
-                        const bpos = b.hud ? Vec2.Add(b.pos, this.scene.camera.offset) : b.pos;
-                        return Vec2.DistSq(this.pos, a.pos) - Vec2.DistSq(this.pos, b.pos);
+                        const apos = a.xfrm.worldPos;
+                        const bpos = b.xfrm.worldPos;
+                        return Vec2.DistSq(this.xfrm.worldPos, a.xfrm.worldPos) - Vec2.DistSq(this.xfrm.worldPos, b.xfrm.worldPos);
                     });
                 if (candidates.length) { break; }
                 // No candidates found, widen the search area.
                 dist += SEARCH_INCR;
                 if (dist > SEARCH_MAX) { break; }
             }
-            if (candidates.length) {
-                const btn = candidates.shift();
-                // Hack for editor scrolled behind hud buttons. If we're selecting a hud button, reset the camera.
-                if (btn.hud) {
-                    this.scene.camera.resetPosition();
-                }
-                const pos = btn.hud ? Vec2.Add(btn.pos, this.scene.camera.offset) : btn.pos;
-                this.moveTo(pos.x, pos.y);
-            }
+            return candidates.shift();
         }
 
-        public moveUp() {
-            this.move({
+        public queryUp(): Button {
+            return this.query({
                 boundsFn: (dist) => {
                     return new Bounds({
-                        left: this.pos.x - (dist >> 1),
-                        top: this.pos.y - dist,
+                        left: this.xfrm.worldPos.x - (dist >> 1),
+                        top: this.xfrm.worldPos.y - dist,
                         width: dist,
                         height: dist
                     });
                 },
                 filterFn: (btn, dist) => {
-                    const pos = btn.hud ? Vec2.Add(btn.pos, this.scene.camera.offset) : btn.pos;
+                    const pos = btn.xfrm.worldPos;
                     // Filter to upward buttons that are more up than left or right from us.
                     return (
-                        pos.y < this.y &&
-                        (Math.abs(pos.y - this.y) / Math.abs(pos.x - this.x)) > SEARCH_SLOPE);
+                        pos.y < this.xfrm.worldPos.y &&
+                        (Math.abs(pos.y - this.xfrm.worldPos.y) / Math.abs(pos.x - this.xfrm.worldPos.x)) > SEARCH_SLOPE);
                 }
             });
         }
 
-        public moveDown() {
-            this.move({
+        public queryDown(): Button {
+            return this.query({
                 boundsFn: (dist) => {
                     return new Bounds({
-                        left: this.pos.x - (dist >> 1),
-                        top: this.pos.y,
+                        left: this.xfrm.worldPos.x - (dist >> 1),
+                        top: this.xfrm.worldPos.y,
                         width: dist,
                         height: dist
                     });
                 },
                 filterFn: (btn, dist) => {
-                    const pos = btn.hud ? Vec2.Add(btn.pos, this.scene.camera.offset) : btn.pos;
+                    const pos = btn.xfrm.worldPos;
                     // Filter to downward buttons that are more down than left or right from us.
                     return (
-                        pos.y > this.y &&
-                        (Math.abs(pos.y - this.y) / Math.abs(pos.x - this.x)) > SEARCH_SLOPE);
+                        pos.y > this.xfrm.worldPos.y &&
+                        (Math.abs(pos.y - this.xfrm.worldPos.y) / Math.abs(pos.x - this.xfrm.worldPos.x)) > SEARCH_SLOPE);
                 }
             });
         }
 
-        public moveLeft() {
-            this.move({
+        public queryLeft(): Button {
+            return this.query({
                 boundsFn: (dist) => {
                     return new Bounds({
-                        left: this.pos.x - dist,
-                        top: this.pos.y - (dist >> 1),
+                        left: this.xfrm.worldPos.x - dist,
+                        top: this.xfrm.worldPos.y - (dist >> 1),
                         width: dist,
                         height: dist
                     });
                 },
                 filterFn: (btn, dist) => {
-                    const pos = btn.hud ? Vec2.Add(btn.pos, this.scene.camera.offset) : btn.pos;
+                    const pos = btn.xfrm.worldPos;
                     // Filter to leftward buttons that are more left than up or down from us.
                     return (
-                        pos.x < this.x &&
-                        (Math.abs(pos.x - this.x) / Math.abs(pos.y - this.y)) > SEARCH_SLOPE);
+                        pos.x < this.xfrm.worldPos.x &&
+                        (Math.abs(pos.x - this.xfrm.worldPos.x) / Math.abs(pos.y - this.xfrm.worldPos.y)) > SEARCH_SLOPE);
                 }
             });
         }
 
-        public moveRight() {
-            this.move({
+        public queryRight(): Button {
+            return this.query({
                 boundsFn: (dist) => {
                     return new Bounds({
-                        left: this.pos.x,
-                        top: this.pos.y - (dist >> 1),
+                        left: this.xfrm.worldPos.x,
+                        top: this.xfrm.worldPos.y - (dist >> 1),
                         width: dist,
                         height: dist
                     });
                 },
                 filterFn: (btn, dist) => {
-                    const pos = btn.hud ? Vec2.Add(btn.pos, this.scene.camera.offset) : btn.pos;
+                    const pos = btn.xfrm.worldPos;
                     // Filter to rightward buttons that are to more right than up or down from us.
                     return (
-                        pos.x > this.x &&
-                        (Math.abs(pos.x - this.x) / Math.abs(pos.y - this.y)) > SEARCH_SLOPE);
+                        pos.x > this.xfrm.worldPos.x &&
+                        (Math.abs(pos.x - this.xfrm.worldPos.x) / Math.abs(pos.y - this.xfrm.worldPos.y)) > SEARCH_SLOPE);
                 }
             });
         }
 
         public click() {
-            let overlapping = this.getOverlapping().sort((a, b) => a.z - b.z);
+            let overlapping = this.getOverlapping()//.sort((a, b) => a.z - b.z);
             if (overlapping.length) {
                 const btn = overlapping.shift();
                 btn.click();
@@ -195,57 +187,34 @@ namespace kojac {
         }
 
         private getOverlapping(): Button[] {
-            const crsb = Bounds.Translate(this.hitbox, this.pos);
+            const crsb = this.hitbox;
             // Query for neary items.
-            const btns = this.quadtree.query(crsb).concat(this.hudtree.query(Bounds.Translate(crsb, Vec2.Neg(this.scene.camera.offset))))
+            const btns = this.quadtree.query(crsb)
                 // filter and map to Button type
                 .filter(comp => comp.kind === "button")
                 .map(comp => comp as Button)
                 // filter to intersecting buttons
                 .filter(btn => {
-                    const pos = btn.hud ? Vec2.Add(btn.pos, this.scene.camera.offset) : btn.pos;
-                    const btnb = Bounds.Translate(btn.hitbox, pos);
-                    return Bounds.Intersects(crsb, btnb);
+                    return Bounds.Intersects(crsb, btn.hitbox);
                 });
             return btns;
         }
 
-        destroy() {
+        /* override */ destroy() {
             this.quadtree = undefined;
             super.destroy();
         }
 
-        transiting(): boolean {
-            let dx = (this.stylus.x - this.x);
-            let dy = (this.stylus.y - this.y);
-            return (dx !== 0 || dy !== 0);
-        }
-
-        update(dt: number) {
-            super.update(dt);
-            // Need to lerp to new position?
-            let dx = (this.stylus.x - this.x);
-            let dy = (this.stylus.y - this.y);
-            if (dx !== 0 || dy !== 0) {
-                const t = Math.min(LERP_SPEED * (control.millis() - this.lerpt) / 1000, 1);
-                if (Math.abs(dx) < 1) {
-                    this.stylus.x = this.x;
-                } else {
-                    let distx = (this.x - this.fromx);
-                    this.stylus.x = this.fromx + easeInOutSine(t) * distx;
-                }
-                if (Math.abs(dy) < 1) {
-                    this.stylus.y = this.y;
-                } else {
-                    let disty = (this.y - this.fromy);
-                    this.stylus.y = this.fromy + easeInOutSine(t) * disty;
-                }
+        /* override */ update() {
+            super.update();
+            if (this.anim) {
+                this.anim.update();
             }
         }
 
-        draw(drawOffset: Vec2) {
-            //const bounds = Bounds.Translate(this.hitbox, this.pos);
-            //bounds.render(drawOffset, 15);
+        /* override */ draw() {
+            this.stylus.draw();
+            //this.hitbox.dbgRect(15);
         }
     }
 }

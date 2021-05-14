@@ -11,11 +11,15 @@ namespace kojac {
         style?: ButtonStyle;
     };
 
-    export class Menu extends Component {
+    export class Menu extends Component implements IPlaceable {
+        private xfrm_: Affine;
         buttons: Button[];
 
-        constructor(scene: Scene, private hud: boolean, private items: MenuItemDefn[], private wrap: number = 4) {
-            super(scene, "menu");
+        public get xfrm() { return this.xfrm_; }
+
+        constructor(private items: MenuItemDefn[], private wrap: number = 4) {
+            super("menu");
+            this.xfrm_ = new Affine();
             this.buttons = [];
         }
 
@@ -26,11 +30,11 @@ namespace kojac {
             this.items.forEach((item, index) => {
                 const icon = icons.get(item.icon);
                 item.style = item.style || "white";
-                const button = new Button(this.scene, {
+                const button = new Button({
+                    parent: this,
                     style: item.style,
                     icon: item.icon,
                     label: item.label,
-                    hud: this.hud,
                     x,
                     y,
                     onClick: (button) => onSelect(button)
@@ -54,17 +58,21 @@ namespace kojac {
             this.buttons = [];
         }
 
-        public destroy() {
-            this.hide();
-            this.scene.remove(this);
-        }
-
         public isVisible() {
             return this.buttons.length > 0;
         }
 
-        update(dt: number) {
-            this.buttons.forEach(button => button.update(dt));
+        /* override */ destroy() {
+            this.hide();
+            super.destroy();
+        }
+
+        /* override */ update() {
+            this.buttons.forEach(button => button.update());
+        }
+
+        /* override */ draw() {
+            this.buttons.forEach(button => button.draw());
         }
     }
 }

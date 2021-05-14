@@ -34,7 +34,7 @@ namespace kojac {
     export class Home extends Scene {
         currView: HomeView;
         logLines: LogLine[];
-        plotLines: {[color: number]: PlotLine };
+        plotLines: { [color: number]: PlotLine };
 
         agent: Agent;
         paused: boolean;
@@ -107,7 +107,7 @@ namespace kojac {
             this.setView(HomeView.Plot);
         }
 
-        startup() {
+        /* override */ startup() {
             super.startup();
             controller.left.onEvent(ControllerButtonEvent.Released, () => {
                 this.app.popScene();
@@ -129,15 +129,15 @@ namespace kojac {
             });
         }
 
-        shutdown() {
+        /* override */ shutdown() {
             this.logLines = undefined;
             this.plotLines = undefined;
             super.shutdown();
         }
 
-        activate() {
+        /* override */ activate() {
             super.activate();
-            scene.setBackgroundColor(15);
+            this.color = 15;
             this.logLines = [];
             this.log("  _ . _ _ _ . _ _  _| _", 7, LineJustification.Center);
             this.log(" ||||(_| (_).(_(_)(_|(-", 7, LineJustification.Center);
@@ -155,16 +155,16 @@ namespace kojac {
             this.log("program started", 1);
         }
 
-        deactivate() {
+        /* override */ deactivate() {
             this.logLines = [];
             this.agent.destroy();
             this.agent = undefined;
         }
 
-        update(dt: number) {
-            super.update(dt);
+        /* override */ update() {
+            super.update();
             if (!this.paused || (this.paused && this.singleStep)) {
-                this.agent.update(dt);
+                this.agent.update();
                 this.singleStep = false;
             }
         }
@@ -173,45 +173,45 @@ namespace kojac {
             this.currView = view;
         }
 
-        draw(camera: scene.Camera) {
+        /* override */ draw() {
             this.drawToolbar();
             if (this.currView === HomeView.Console) {
                 this.drawConsoleView();
             } else if (this.currView === HomeView.Plot) {
                 this.drawPlotView();
             }
-            super.draw(camera);
+            super.draw();
         }
 
         private drawToolbar() {
             // TODO this could all be prerendered/precalculated
-            const toolbarTop = scene.screenHeight() - TOOLBAR_HEIGHT;
-            screen.fillRect(0, toolbarTop, scene.screenWidth(), TOOLBAR_HEIGHT, 11);
+            const toolbarTop = Screen.BOTTOM_EDGE - TOOLBAR_HEIGHT;
+            Screen.fillRect(Screen.LEFT_EDGE, toolbarTop, Screen.WIDTH, TOOLBAR_HEIGHT, 11);
             const icn_dpad_left = icons.get("dpad_left");
             const dpadTop = toolbarTop + (TOOLBAR_HEIGHT >> 1) - (icn_dpad_left.height >> 1);
-            screen.print("Press   to edit your code", 2, dpadTop + (LINE_HEIGHT >> 1));
-            screen.drawTransparentImage(icn_dpad_left, 32, dpadTop);
+            Screen.print("Press   to edit your code", Screen.LEFT_EDGE + 2, dpadTop + (LINE_HEIGHT >> 1));
+            Screen.drawTransparentImage(icn_dpad_left, Screen.LEFT_EDGE + 32, dpadTop);
         }
 
         private drawConsoleView() {
-            screen.fillRect(0, 0, scene.screenWidth(), scene.screenHeight() - TOOLBAR_HEIGHT, 15);
-            let y = scene.screenHeight() - TOOLBAR_HEIGHT - LINE_HEIGHT;
+            Screen.fillRect(Screen.LEFT_EDGE, Screen.TOP_EDGE, Screen.WIDTH, Screen.HEIGHT - TOOLBAR_HEIGHT, 15);
+            let y = Screen.BOTTOM_EDGE - TOOLBAR_HEIGHT - LINE_HEIGHT;
             for (let i = this.logLines.length - 1; i >= 0; --i) {
                 const line = this.logLines[i];
                 switch (line.justification) {
                     case LineJustification.Left: {
-                        const x = CONSOLE_MARGIN;
-                        screen.print(line.text, x, y, line.color, image.font8);
+                        const x = Screen.LEFT_EDGE + CONSOLE_MARGIN;
+                        Screen.print(line.text, x, y, line.color, image.font8);
                         break;
                     }
                     case LineJustification.Center: {
-                        const x = ((scene.screenWidth() - line.text.length * image.font8.charWidth) >> 1) - (image.font8.charWidth);
-                        screen.print(line.text, x, y, line.color, image.font8);
+                        const x = Screen.LEFT_EDGE + ((Screen.WIDTH - line.text.length * image.font8.charWidth) >> 1) - (image.font8.charWidth);
+                        Screen.print(line.text, x, y, line.color, image.font8);
                         break;
                     }
                     case LineJustification.Right: {
-                        const x = scene.screenWidth() - CONSOLE_MARGIN - (line.text.length * image.font8.charWidth);
-                        screen.print(line.text, x, y, line.color, image.font8);
+                        const x = Screen.RIGHT_EDGE - CONSOLE_MARGIN - (line.text.length * image.font8.charWidth);
+                        Screen.print(line.text, x, y, line.color, image.font8);
                         break;
                     }
                 }
@@ -220,26 +220,26 @@ namespace kojac {
         }
 
         private drawPlotView() {
-            screen.fillRect(0, 0, scene.screenWidth(), scene.screenHeight() - TOOLBAR_HEIGHT, 6);
-            const maxHeight = scene.screenHeight() - TOOLBAR_HEIGHT - 10;
+            screen.fillRect(Screen.LEFT_EDGE, Screen.TOP_EDGE, Screen.WIDTH, Screen.HEIGHT - TOOLBAR_HEIGHT, 6);
+            const maxHeight = Screen.HEIGHT - TOOLBAR_HEIGHT - 10;
             for (let color = 1; color < 16; ++color) {
                 const plotLine = this.plotLines[color];
                 if (plotLine && plotLine.entries.length > 1) {
-                    let currX = scene.screenWidth();
+                    let currX = Screen.RIGHT_EDGE;
                     const min = plotLine.min;
                     const max = plotLine.max;
                     const range = Math.max(Math.abs(max - min), 1);
                     const heightScale =  maxHeight / range;
-                    for (let i = plotLine.entries.length - 1, x = 0; i > 0 && x < scene.screenWidth(); --i, ++x) {
+                    for (let i = plotLine.entries.length - 1, x = 0; i > 0 && x < Screen.WIDTH; --i, ++x) {
                         const a = plotLine.entries[i];
                         const b = plotLine.entries[i - 1];
                         const av = a.value - min;
                         const bv = b.value - min;
-                        const ax = scene.screenWidth() - x;
-                        const ay = maxHeight - Math.floor(av * heightScale) + 5;
-                        const bx = scene.screenWidth() - x - 1;
-                        const by = maxHeight - Math.floor(bv * heightScale) + 5;
-                        screen.drawLine(ax, ay, bx, by, color);
+                        const ax = Screen.RIGHT_EDGE - x;
+                        const ay = Screen.TOP_EDGE + maxHeight - Math.floor(av * heightScale) + 5;
+                        const bx = Screen.RIGHT_EDGE - x - 1;
+                        const by = Screen.TOP_EDGE + maxHeight - Math.floor(bv * heightScale) + 5;
+                        Screen.drawLine(ax, ay, bx, by, color);
                     }
                 }
             };

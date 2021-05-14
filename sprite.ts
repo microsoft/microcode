@@ -1,144 +1,72 @@
 namespace kojac {
-    export type SpriteHandler = (sprite: Sprite) => void;
+    export class Sprite extends Component implements IPlaceable, ISizable {
+        private xfrm_: Affine;
+        private image_: Image;
+        private invisible_: boolean;
 
-    export class Sprite extends Component {
-        private _x: number;
-        private _y: number;
-        private _z: number;
-        private _image: Image;
-        private _invisible: boolean;
-        private _hud: boolean;
-
-        //% blockCombine block="x" callInDebugger
-        get x(): number { return this._x; }
-        set x(v: number) {
-            if (v !== this._x) {
-                this._x = v;
-            }
-        }
-
-        //% blockCombine block="y" callInDebugger
-        get y(): number { return this._y; }
-        set y(v: number) {
-            if (v !== this._y) {
-                this._y = v;
-            }
-        }
-
-        //% blockCombine block="z" callInDebugger
-        get z(): number { return this._z; }
-        set z(v: number) {
-            if (v !== this._z) {
-                this._z = v;
-                this.scene.setNeedsSorting();
-            }
-        }
-
-        //% blockCombine block="pos" callInDebugger
-        get pos(): Vec2 {
-            return new Vec2(this.x, this.y);
-        }
-        set pos(v: Vec2) {
-            this.x = v.x;
-            this.y = v.y;
-        }
-
+        //% blockCombine block="xfrm" callInDebugger
+        public get xfrm() { return this.xfrm_; }
         //% blockCombine block="width" callInDebugger
-        get width() {
-            return this._image.width;
-        }
+        public get width() { return this.image_.width; }
         //% blockCombine block="height" callInDebugger
-        get height() {
-            return this._image.height;
-        }
-
-        //% blockCombine block="left" callInDebugger
-        get left() {
-            return this.x - (this.width >> 1);
-        }
-        set left(value: number) {
-            this.x = value + (this.width >> 1);
-        }
-
-        //% blockCombine block="right" callInDebugger
-        get right() {
-            return this.left + this.width;
-        }
-        set right(value: number) {
-            this.x = value - (this.width >> 1);
-        }
-
-        //% blockCombine block="top" callInDebugger
-        get top() {
-            return this.y - (this.height >> 1);
-        }
-        set top(value: number) {
-            this.y = value + (this.height >> 1);
-        }
-
-        //% blockCombine block="bottom" callInDebugger
-        get bottom() {
-            return this.top + this.height;
-        }
-        set bottom(value: number) {
-            this.y = value - (this.height >> 1);
-        }
-
+        public get height() { return this.image_.height; }
         //% blockCombine block="image" callInDebugger
-        get image(): Image {
-            return this._image;
-        }
-        set image(img: Image) {
-            this.setImage(img);
-        }
-
+        public get image(): Image { return this.image_; }
+        public set image(img: Image) { this.setImage(img); }
         //% blockCombine block="invisible" callInDebugger
-        get invisible() { return this._invisible; }
-        set invisible(b: boolean) { this._invisible = b; }
+        public get invisible() { return this.invisible_; }
+        public set invisible(b: boolean) { this.invisible_ = b; }
+        //% blockCombine block="hitbox" callInDebugger
+        public get hitbox() { return Bounds.FromSprite(this); }
 
-        //% blockCombine block="hud" callInDebugger
-        get hud() { return this._hud; }
-        set hud(b: boolean) { this._hud = b; }
-
-        constructor(scene: Scene, img: Image) {
-            super(scene, "sprite");
-            this._x = screen.width - (img.width >> 1);
-            this._y = screen.height - (img.height >> 1);
-            this._z = 0;
-            this.image = img; // initializes hitbox
+        constructor(opts: {
+            parent?: IPlaceable,
+            img: Image
+        }) {
+            super("sprite");
+            this.xfrm_ = new Affine();
+            this.xfrm_.parent = opts.parent && opts.parent.xfrm;
+            this.image = opts.img;
         }
 
-        public destroy() {
-            this._image = undefined;
+        /* override */ destroy() {
+            this.image_ = undefined;
             super.destroy();
         }
 
         protected setImage(img: Image) {
-            this._image = img;
+            this.image_ = img;
         }
 
-        private isOffScreen(drawOffset: Vec2): boolean {
+        public bindXfrm(xfrm: Affine) {
+            this.xfrm_ = xfrm;
+        }
+
+        public occlusions(bounds: Bounds) {
+            return Occlusions.FromSprite(this, bounds);
+        }
+
+        public isOffScreen(): boolean {
             return (
-                !this.hud &&
-                this.left - drawOffset.x > screen.width ||
-                this.top - drawOffset.y > screen.height ||
-                this.right - drawOffset.x < 0 ||
-                this.bottom - drawOffset.y < 0);
+                this.xfrm.worldPos.x + (this.width >> 1) < Screen.LEFT_EDGE ||
+                this.xfrm.worldPos.y + (this.height >> 1) < Screen.TOP_EDGE ||
+                this.xfrm.worldPos.x - (this.width >> 1) > Screen.RIGHT_EDGE ||
+                this.xfrm.worldPos.y - (this.height >> 1) > Screen.BOTTOM_EDGE);
         }
 
-        draw(drawOffset: Vec2) {
+        public isClipped(): boolean {
+            return (
+                this.xfrm.worldPos.x - (this.width >> 1) < Screen.LEFT_EDGE ||
+                this.xfrm.worldPos.y - (this.height >> 1) < Screen.TOP_EDGE ||
+                this.xfrm.worldPos.x + (this.width >> 1) > Screen.RIGHT_EDGE ||
+                this.xfrm.worldPos.y + (this.height >> 1) > Screen.BOTTOM_EDGE);
+        }
+
+        /* override */ draw() {
             if (this.invisible) { return; }
-
-            if (this.hud) {
-                drawOffset = new Vec2(0, 0);
-            }
-
-            if (this.isOffScreen(drawOffset)) { return; }
-
-            const left = this.left - drawOffset.x;
-            const top = this.top - drawOffset.y;
-
-            screen.drawTransparentImage(this._image, left, top);
+            if (this.isOffScreen()) { return; }
+            Screen.drawTransparentImage(this.image_, Math.floor(this.xfrm.worldPos.x - (this.image_.width >> 1)), Math.floor(this.xfrm.worldPos.y - (this.image_.height >> 1)));
+            //this.hitbox.dbgRect(15);
         }
     }
 }

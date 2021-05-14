@@ -1,106 +1,95 @@
 namespace kojac {
-    export class Button extends Component {
+    export class Button extends Component implements ISizable, IPlaceable {
+        private xfrm_: Affine;
         private icon: Sprite;
         private back: Sprite;
-        private text: TextSprite;
-        public hud: boolean;
+        //private text: TextSprite;
         private style: ButtonStyle;
         private iconId: string;
         private label: string;
-        public x: number;
-        public y: number;
-        public hitbox: Bounds;
         private onClick?: (button: Button) => void;
 
-        //% blockCombine block="left" callInDebugger
-        get left() { return this.back ? this.back.left : this.icon.left; }
-        //% blockCombine block="top" callInDebugger
-        get top() { return this.back ? this.back.top : this.icon.top; }
+        //% blockCombine block="xfrm" callInDebugger
+        public get xfrm() { return this.xfrm_; }
         //% blockCombine block="width" callInDebugger
-        get width() { return this.back ? this.back.width : this.icon.width; }
+        public get width() { return this.back ? this.back.width : this.icon.width; }
         //% blockCombine block="height" callInDebugger
-        get height() { return this.back ? this.back.height : this.icon.height; }
-        //% blockCombine block="z" callInDebugger
-        get z() { return this.icon.z; }
-        set z(n: number) {
-            this.icon.z = n;
-            if (this.back) {
-                this.back.z = n - 1;
-            }
-            if (this.text) {
-                this.text.z = n;
-            }
+        public get height() { return this.back ? this.back.height : this.icon.height; }
+
+        public get hitbox() {
+            if (this.back) { return this.back.hitbox; }
+            return this.icon.hitbox;
         }
 
-        //% blockCombine block="pos" callInDebugger
-        get pos() { return new Vec2(this.x, this.y); }
-        set pos(v: Vec2) {
-            this.x = v.x;
-            this.y = v.y;
+        public get rootXfrm(): Affine {
+            let xfrm = this.xfrm;
+            while (xfrm.parent) {
+                xfrm = xfrm.parent;
+            }
+            return xfrm;
         }
 
         constructor(
-            scene: Scene,
             opts: {
+                parent?: IPlaceable,
                 style?: ButtonStyle,
                 icon: string,
-                hud?: boolean,
                 label?: string,
                 x: number,
                 y: number,
-                z?: number,
                 onClick?: (button: Button) => void
             }
         ) {
-            super(scene, "button");
-            this.hud = opts.hud;
+            super("button");
+            this.xfrm_ = new Affine();
+            this.xfrm.parent = opts.parent && opts.parent.xfrm;
             this.style = opts.style;
             this.iconId = opts.icon;
             this.label = opts.label;
-            this.x = opts.x;
-            this.y = opts.y;
+            this.xfrm.localPos.x = opts.x;
+            this.xfrm.localPos.y = opts.y;
             this.onClick = opts.onClick;
-            this.buildSprite(opts.z || 0);
+            this.buildSprite();
         }
 
         destroy() {
             if (this.icon) { this.icon.destroy(); }
             if (this.back) { this.back.destroy(); }
-            if (this.text) { this.text.destroy(); }
+            //if (this.text) { this.text.destroy(); }
             this.icon = undefined;
             this.back = undefined;
-            this.text = undefined;
+            //this.text = undefined;
             super.destroy();
         }
 
         public setIcon(iconId: string) {
             this.iconId = iconId;
-            this.buildSprite(this.z);
+            this.buildSprite();
         }
 
-        private buildSprite(z_: number) {
+        private buildSprite() {
             if (this.icon) { this.icon.destroy(); }
             if (this.back) { this.back.destroy(); }
-            if (this.text) { this.text.destroy(); }
-            this.icon = new Sprite(this.scene, icons.get(this.iconId));
-            this.icon.hud = this.hud;
+            //if (this.text) { this.text.destroy(); }
+            this.icon = new Sprite({
+                parent: this,
+                img: icons.get(this.iconId)
+            });
             if (this.style) {
-                this.back = new Sprite(this.scene, icons.get(`button_${this.style}`));
-                this.back.hud = this.hud;
+                this.back = new Sprite({
+                    parent: this,
+                    img: icons.get(`button_${this.style}`)
+                });
             }
-            this.icon.x = this.x;
-            this.icon.y = this.y;
-            this.icon.z = z_;
+            this.icon.bindXfrm(this.xfrm);
             if (this.back) {
-                this.back.x = this.x;
-                this.back.y = this.y;
-                this.back.z = this.z - 1;
+                this.back.bindXfrm(this.xfrm);
             }
-            if (this.back) {
-                this.hitbox = Bounds.FromSprite(this.back);
-            } else {
-                this.hitbox = Bounds.FromSprite(this.icon);
-            }
+        }
+
+        public occlusions(bounds: Bounds) {
+            if (this.back) { return this.back.occlusions(bounds); }
+            return this.icon.occlusions(bounds);
         }
 
         public setVisible(visible: boolean) {
@@ -108,9 +97,9 @@ namespace kojac {
             if (this.back) {
                 this.back.invisible = !visible;
             }
-            if (this.text) {
-                this.text.setFlag(SpriteFlag.Invisible, !visible);
-            }
+            //if (this.text) {
+            //    this.text.setFlag(SpriteFlag.Invisible, !visible);
+            //}
             if (!visible) {
                 this.hover(false);
             }
@@ -127,6 +116,7 @@ namespace kojac {
         }
 
         hover(hov: boolean) {
+            /*
             if (hov && this.text) { return; }
             if (!hov && !this.text) { return; }
             if (!this.label) { return; }
@@ -141,28 +131,27 @@ namespace kojac {
                 this.text.destroy();
                 this.text = undefined;
             }
+            */
         }
 
-        update(dt: number) {
-            this.icon.x = this.x;
-            this.icon.y = this.y;
-            if (this.back) {
-                this.back.x = this.x;
-                this.back.y = this.y;
-            }
+        /* override */ update() {
+            /*
             if (this.text) {
                 this.text.x = this.x;
                 this.text.y = this.y - this.height;
             }
+            */
         }
 
-        draw(drawOffset: Vec2) {
-            if (this.hud) {
-                drawOffset = new Vec2(0, 0);
+        /* override */ draw() {
+            if (this.back) {
+                this.back.draw();
             }
-
-            //const bounds = Bounds.Translate(this.hitbox, this.pos);
-            //bounds.render(drawOffset, 15);
+            this.icon.draw();
+            //const dbgImg = this.back ? this.back : this.icon;
+            //const hitbox = Bounds.FromSprite(dbgImg);
+            //const bounds = Bounds.Translate(hitbox, this.xfrm.worldPos);
+            //bounds.dbgRect(15);
         }
     }
 }

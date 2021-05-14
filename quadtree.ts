@@ -1,8 +1,9 @@
 namespace kojac {
 
-    interface Node {
-        bounds: Bounds;
-        comp: Component;
+    export interface ITreeComp extends IKindable, IPlaceable, ISizable { }
+
+    class Node {
+        constructor(public bounds: Bounds, public comp: ITreeComp) { }
     };
 
     // QuadTree for spatial indexing of objects.
@@ -13,7 +14,7 @@ namespace kojac {
 
         constructor(
             public bounds: Bounds,      // Max bounds of the indexed space.
-            public maxObjects = 3,      // Max objects per-level before split attempt.
+            public maxObjects = 3,      // Max objects per level before split attempt.
             public minDimension = 16    // Min size of a cell. Cannot split below this size.
         ) {
             this.quads = [];
@@ -107,7 +108,7 @@ namespace kojac {
             return indices;
         }
 
-        public insert(bounds: Bounds, comp: Component) {
+        public insert(bounds: Bounds, comp: ITreeComp) {
             // If we have subtrees, call insert on matching.
             if (this.quads.length) {
                 const indices = this.getIndices(bounds);
@@ -119,10 +120,7 @@ namespace kojac {
             }
 
             // Otherwise, store object here.
-            this.nodes.push({
-                bounds,
-                comp
-            });
+            this.nodes.push(new Node(bounds, comp));
 
             // maxObjects reached?
             if (this.nodes.length > this.maxObjects) {
@@ -147,8 +145,8 @@ namespace kojac {
          * Query for objects in rectangle.
          * Note you will likely get objects outside the bounds. It depends on the quadtree resolution.
          */
-        public query(bounds: Bounds): Component[] {
-            let comps: Component[] = this.nodes.map(node => node.comp);
+        public query(bounds: Bounds): ITreeComp[] {
+            let comps: ITreeComp[] = this.nodes.map(node => node.comp);
 
             const indices = this.getIndices(bounds);
 
@@ -173,8 +171,8 @@ namespace kojac {
             this.nodes = [];
         }
 
-        public draw(drawOffset: Vec2, color: number) {
-            this.forEach(bounds => bounds.dbgRect(drawOffset, color));
+        public dbgDraw(color: number) {
+            this.forEach(bounds => bounds.dbgRect(color));
         }
     }
 }

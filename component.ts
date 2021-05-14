@@ -3,41 +3,61 @@ namespace kojac {
 
     export type ComponentHandler = (comp: Component) => void;
 
-    export class Component {
-        private _id: number;
-        private _data: any;
+    export interface IKindable {
+        kind: string;
+    }
+
+    export abstract class Component implements IKindable {
+        private id_: number;
+        private data_: any;
         private _destroyHandlers: ComponentHandler[];
 
         //% blockCombine block="id" callInDebugger
-        get id() { return this._id; }
+        get id() { return this.id_; }
         get data(): any {
-            if (!this._data) { this._data = {}; }
-            return this._data;
+            if (!this.data_) { this.data_ = {}; }
+            return this.data_;
         }
 
-        constructor(public scene: Scene, public kind: string) {
-            this._id = id_sequence++;
-            this.scene.add(this);
+        constructor(public kind: string) {
+            this.id_ = id_sequence++;
         }
 
-        public onDestroy(handler: SpriteHandler) {
+        onDestroy(handler: ComponentHandler) {
             this._destroyHandlers = this._destroyHandlers || [];
             this._destroyHandlers.push(handler);
         }
 
-        destroy() {
-            if (this.scene) {
-                this.scene.remove(this);
-                const handlers = this._destroyHandlers || [];
-                for (const handler of handlers) {
-                    handler(this);
-                }
-                this._destroyHandlers = undefined;
-                this._data = undefined;
+        /* virtual */ destroy() {
+            const handlers = this._destroyHandlers || [];
+            this._destroyHandlers = undefined;
+            for (const handler of handlers) {
+                handler(this);
             }
+            this.data_ = undefined;
         }
 
-        update(dt: number) {
+        /* abstract */ update() { }
+        /* abstract */ draw() { }
+    }
+
+    export interface IPlaceable {
+        xfrm: Affine;
+    }
+
+    export interface ISizable {
+        width: number;
+        height: number;
+    }
+
+    export class Placeable extends Component implements IPlaceable {
+        private xfrm_: Affine;
+        //% blockCombine block="xfrm" callInDebugger
+        public get xfrm() { return this.xfrm_; }
+        constructor(parent?: IPlaceable) {
+            super("placeable");
+            this.xfrm_ = new Affine();
+            this.xfrm_.parent = parent && parent.xfrm;
         }
     }
 }

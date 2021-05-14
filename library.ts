@@ -23,7 +23,7 @@ namespace kojac {
         },
 
         [tid.sensor.dpad]: (rule: Rule) => {
-            const direction = mkVec2();
+            const direction = new Vec2();
             if (controller.up.isPressed()) { direction.y -= 1; }
             if (controller.down.isPressed()) { direction.y += 1; }
             if (controller.left.isPressed()) { direction.x -= 1; }

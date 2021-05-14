@@ -1,1 +1,1 @@
-const app = new kojac.App();
+setTimeout(() => { const app = new kojac.App(); }, 1);

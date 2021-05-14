@@ -44,11 +44,11 @@ namespace kojac {
         }
 
         public pushScene(scene: Scene) {
-            this.sceneManager.push(scene);
+            this.sceneManager.pushScene(scene);
         }
 
         public popScene() {
-            this.sceneManager.pop();
+            this.sceneManager.popScene();
         }
     }
 }

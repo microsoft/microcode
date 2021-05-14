@@ -10,16 +10,15 @@ namespace kojac {
             private picker: Picker,
             btn: PickerButtonDef
         ) {
-            super(picker.scene, {
+            super({
+                parent: picker,
                 style: "white",
                 icon: btn.icon,
                 label: btn.label,
                 x: 0,
                 y: 0,
-                z: 15,
                 onClick: () => this.picker.onButtonClicked(btn.icon)
             });
-            this.z = 11;
         }
     }
 
@@ -40,40 +39,38 @@ namespace kojac {
         }
     }
 
-    export class Picker extends Component {
+    export class Picker extends Component implements IPlaceable {
+        private xfrm_: Affine;
         private quadtree: QuadTree;
         private prevquadtree: QuadTree;
-        private prevhudtree: QuadTree;
         private prevpos: Vec2;
         private groups: PickerGroup[];
         private cancelBtn: Button;
         private panel: Bounds;
-        private offset: Vec2;
+        private onClick: (btn: string) => void;
+        private title: string;
+        public visible: boolean; 
 
-        public z: number;
+        public get xfrm() { return this.xfrm_; }
 
-        constructor(scene: Scene, private opts: {
-            cursor: Cursor,
-            backgroundImage?: Image;
-            backgroundColor?: number;
-            title?: string;
-            onClick?: (btn: string) => void
-        }) {
-            super(scene, "picker");
+        constructor(private cursor: Cursor) {
+            super("picker");
+            this.xfrm_ = new Affine();
             this.groups = [];
             this.quadtree = new QuadTree(new Bounds({
-                left: 0,
-                top: 0,
-                width: 2048,
-                height: 2048
+                left: -512,
+                top: -512,
+                width: 1024,
+                height: 1024
             }), 1, 16);
-            this.prevquadtree = opts.cursor.quadtree;
-            this.prevhudtree = opts.cursor.hudtree;
-            this.prevpos = opts.cursor.pos;
-            opts.cursor.quadtree = this.quadtree;
-            opts.cursor.hudtree = new QuadTree(new Bounds({ top: 0, left: 0, width: 160, height: 160 }));
-            opts.cursor.cancelHandlerStack.push(() => this.cancelClicked());
-            this.z = 10;
+            this.cancelBtn = new Button({
+                parent: this,
+                style: "white",
+                icon: "cancel",
+                x: 0,
+                y: 0,
+                onClick: () => this.cancelClicked()
+            });
         }
 
         public addGroup(opts: {
@@ -84,29 +81,29 @@ namespace kojac {
         }
 
         public onButtonClicked(icon: string) {
-            this.opts.cursor.cancelHandlerStack.pop();
-            const onClick = this.opts.onClick;
-            this.destroy();
+            this.cursor.cancelHandlerStack.pop();
+            const onClick = this.onClick;
+            this.hide();
             if (onClick) {
                 onClick(icon);
             }
         }
 
         private cancelClicked() {
-            this.opts.cursor.cancelHandlerStack.pop();
-            this.destroy();
+            this.cursor.cancelHandlerStack.pop();
+            this.hide();
         }
 
-        show() {
-            this.offset = this.scene.camera.offset;
-            this.cancelBtn = new Button(this.scene, {
-                style: "white",
-                icon: "cancel",
-                x: 0,
-                y: 0,
-                z: 15,
-                onClick: () => this.cancelClicked()
-            });
+        show(opts: {
+            title?: string;
+            onClick?: (btn: string) => void
+        }) {
+            this.onClick = opts.onClick;
+            this.title = opts.title;
+            this.prevquadtree = this.cursor.quadtree;
+            this.prevpos = this.cursor.xfrm.localPos.clone();
+            this.cursor.quadtree = this.quadtree;
+            this.cursor.cancelHandlerStack.push(() => this.cancelClicked());
             this.groups.forEach(group => {
                 const btns = group.opts.btns || [];
                 btns.forEach(btn => {
@@ -115,37 +112,40 @@ namespace kojac {
                 });
             });
             this.layout();
+            this.visible = true;
         }
 
-        destroy() {
+        hide() {
+            this.visible = false;
             this.quadtree.clear();
-            this.opts.cursor.quadtree = this.prevquadtree;
-            this.opts.cursor.hudtree = this.prevhudtree;
-            this.opts.cursor.pos = this.prevpos;
+            this.cursor.quadtree = this.prevquadtree;
+            this.cursor.snapTo(this.prevpos.x, this.prevpos.y);
             this.groups.forEach(group => group.destroy());
-            this.cancelBtn.destroy();
-            this.opts = undefined;
-            this.quadtree = undefined;
-            this.prevquadtree = undefined;
-            this.prevhudtree = undefined;
-            this.groups = undefined;
-            super.destroy();
+            this.groups = [];
         }
 
-        draw(drawOffset: Vec2) {
-            const left = this.panel.left - drawOffset.x;
-            const right = this.panel.right - 1 - drawOffset.x;
-            const top = this.panel.top - drawOffset.y;
-            const bottom = this.panel.bottom - 1 - drawOffset.y;
-            this.panel.fillRect(drawOffset, 15);
-            screen.drawLine(left + 1, top - 1, right - 1, top - 1, 15);
-            screen.drawLine(left + 1, bottom + 1, right - 1, bottom + 1, 15);
-            screen.drawLine(left - 1, top + 1, left - 1, bottom - 1, 15);
-            screen.drawLine(right + 1, top + 1, right + 1, bottom - 1, 15);
-            if (this.opts.title) {
-                screen.print(this.opts.title, left + 2, top + 4, 1, image.font8);
+        draw() {
+            if (this.visible) {
+                const left = this.panel.left;
+                const right = this.panel.right - 1;
+                const top = this.panel.top;
+                const bottom = this.panel.bottom - 1;
+                this.panel.fillRect(15);
+                Screen.drawLine(left + 1, top - 1, right - 1, top - 1, 15);
+                Screen.drawLine(left + 1, bottom + 1, right - 1, bottom + 1, 15);
+                Screen.drawLine(left - 1, top + 1, left - 1, bottom - 1, 15);
+                Screen.drawLine(right + 1, top + 1, right + 1, bottom - 1, 15);
+                if (this.title) {
+                    Screen.print(this.title, left + 2, top + 4, 1, image.font8);
+                }
+                this.groups.forEach(group => {
+                    group.buttons.forEach(btn => {
+                        btn.draw();
+                    });
+                });
+                this.cancelBtn.draw();
+                //this.quadtree.dbgDraw(5);
             }
-            //this.quadtree.draw(drawOffset, 5);
         }
 
         private layout() {
@@ -165,10 +165,10 @@ namespace kojac {
                 computedHeight += TRAY * Math.ceil(group.buttons.length / MAX_PER_ROW);
             });
 
-            let computedLeft = this.offset.x + (scene.screenWidth() >> 1) - (computedWidth >> 1);
-            let computedTop = this.offset.y + (scene.screenHeight() >> 1) - (computedHeight >> 1);
-            computedLeft = Math.max(this.offset.x, computedLeft);
-            computedTop = Math.max(this.offset.y, computedTop);
+            let computedLeft = -(computedWidth >> 1);
+            let computedTop = -(computedHeight >> 1);
+            //computedLeft = Math.max(this.offset.x, computedLeft);
+            //computedTop = Math.max(this.offset.y, computedTop);
 
             this.panel = new Bounds({
                 top: computedTop,
@@ -190,18 +190,18 @@ namespace kojac {
                         currentTop += TRAY;
                         currentLeft = computedLeft;
                     }
-                    btn.y = currentTop + 8;
-                    btn.x = currentLeft + 8;
+                    btn.xfrm.localPos.y = currentTop + 8;
+                    btn.xfrm.localPos.x = currentLeft + 8;
                     currentLeft += 16;
-                    this.quadtree.insert(Bounds.Translate(btn.hitbox, btn.pos), btn);
+                    this.quadtree.insert(btn.hitbox, btn);
                 });
             });
 
-            this.cancelBtn.x = computedLeft + computedWidth - 8;
-            this.cancelBtn.y = computedTop + 8;
-            this.quadtree.insert(Bounds.Translate(this.cancelBtn.hitbox, this.cancelBtn.pos), this.cancelBtn);
+            this.cancelBtn.xfrm.localPos.x = computedLeft + computedWidth - 8;
+            this.cancelBtn.xfrm.localPos.y = computedTop + 8;
+            this.quadtree.insert(this.cancelBtn.hitbox, this.cancelBtn);
             if (!firstBtn) { firstBtn = this.cancelBtn; }
-            this.opts.cursor.snapTo(firstBtn.pos.x, firstBtn.pos.y);
+            this.cursor.snapTo(firstBtn.xfrm.worldPos.x, firstBtn.xfrm.worldPos.y);
         }
     }
 

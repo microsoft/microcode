@@ -4,14 +4,12 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "edge-connector": "*",
-        "arcade-text": "github:microsoft/arcade-text#v1.3.0"
+        "edge-connector": "*"
     },
     "files": [
         "main.ts",
         "README.md",
         "button.ts",
-        "camera.ts",
         "component.ts",
         "assets.ts",
         "menu.ts",
@@ -20,7 +18,6 @@
         "library.ts",
         "program.ts",
         "app.ts",
-        "vec2.ts",
         "sprite.ts",
         "editor.ts",
         "cursor.ts",
@@ -28,11 +25,16 @@
         "agent.ts",
         "quadtree.ts",
         "bounds.ts",
-        "picker.ts"
+        "picker.ts",
+        "affine.ts",
+        "math.ts",
+        "screen.ts",
+        "animation.ts",
+        "curves.ts"
     ],
     "testFiles": [],
     "targetVersions": {
-        "target": "1.5.12",
+        "target": "1.4.41",
         "targetId": "arcade"
     },
     "supportedTargets": [
