@@ -133,6 +133,7 @@ namespace kojac {
         }
 
         public queryLeft(): Button {
+            console.log("queryLeft")
             return this.query({
                 boundsFn: (dist) => {
                     return new Bounds({
@@ -153,6 +154,7 @@ namespace kojac {
         }
 
         public queryRight(): Button {
+            console.log("queryRight")
             return this.query({
                 boundsFn: (dist) => {
                     return new Bounds({
