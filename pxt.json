@@ -12,7 +12,6 @@
         "button.ts",
         "component.ts",
         "assets.ts",
-        "menu.ts",
         "scene.ts",
         "language.ts",
         "library.ts",

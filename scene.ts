@@ -60,6 +60,7 @@ namespace kojac {
 
         constructor() {
             this.scenes = [];
+            control.pushEventContext()
         }
 
         public pushScene(scene: Scene) {
