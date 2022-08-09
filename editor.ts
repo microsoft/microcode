@@ -167,16 +167,16 @@ namespace kojac {
 
         /* override */ startup() {
             super.startup();
-            controller.up.onEvent(ControllerButtonEvent.Pressed, () => this.moveUp());
-            controller.up.onEvent(ControllerButtonEvent.Repeated, () => this.moveUp());
-            controller.down.onEvent(ControllerButtonEvent.Pressed, () => this.moveDown());
-            controller.down.onEvent(ControllerButtonEvent.Repeated, () => this.moveDown());
-            controller.left.onEvent(ControllerButtonEvent.Pressed, () => this.moveLeft());
-            controller.left.onEvent(ControllerButtonEvent.Repeated, () => this.moveLeft());
-            controller.right.onEvent(ControllerButtonEvent.Pressed, () => this.moveRight());
-            controller.right.onEvent(ControllerButtonEvent.Repeated, () => this.moveRight());
-            controller.A.onEvent(ControllerButtonEvent.Pressed, () => this.cursor.click());
-            controller.B.onEvent(ControllerButtonEvent.Pressed, () => this.cancel());
+            control.onEvent(ControllerButtonEvent.Pressed, controller.right.id, () => this.moveRight());
+            control.onEvent(ControllerButtonEvent.Repeated, controller.right.id, () => this.moveRight());
+            control.onEvent(ControllerButtonEvent.Pressed, controller.up.id, () => this.moveUp());
+            control.onEvent(ControllerButtonEvent.Repeated, controller.up.id, () => this.moveUp());
+            control.onEvent(ControllerButtonEvent.Pressed, controller.down.id, () => this.moveDown());
+            control.onEvent(ControllerButtonEvent.Repeated, controller.down.id, () => this.moveDown());
+            control.onEvent(ControllerButtonEvent.Pressed, controller.left.id, () => this.moveLeft());
+            control.onEvent(ControllerButtonEvent.Repeated, controller.left.id, () => this.moveLeft());
+            control.onEvent(ControllerButtonEvent.Pressed, controller.A.id, () => this.cursor.click());
+            control.onEvent(ControllerButtonEvent.Pressed, controller.B.id, () => this.cancel());
             this.hudroot = new Placeable();
             this.hudroot.xfrm.localPos = new Vec2(0, Screen.TOP_EDGE);
             this.hudroot.xfrm.tag = "hud";

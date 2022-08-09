@@ -12,7 +12,6 @@
         "button.ts",
         "component.ts",
         "assets.ts",
-        "menu.ts",
         "scene.ts",
         "language.ts",
         "library.ts",
@@ -34,7 +33,7 @@
     ],
     "testFiles": [],
     "targetVersions": {
-        "target": "1.4.41",
+        "target": "1.8.30",
         "targetId": "arcade"
     },
     "supportedTargets": [

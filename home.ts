@@ -109,11 +109,11 @@ namespace kojac {
 
         /* override */ startup() {
             super.startup();
-            controller.left.onEvent(ControllerButtonEvent.Released, () => {
+            control.onEvent(ControllerButtonEvent.Released, controller.left.id, () => {
                 this.app.popScene();
                 this.app.pushScene(new Editor(this.app));
             });
-            controller.up.onEvent(ControllerButtonEvent.Pressed, () => {
+            control.onEvent(ControllerButtonEvent.Pressed, controller.up.id, () => {
                 this.paused = !this.paused;
                 if (this.paused) {
                     this.log("program paused", 1);
@@ -121,10 +121,11 @@ namespace kojac {
                     this.log("program resumed", 1);
                 }
             });
-            controller.right.onEvent(ControllerButtonEvent.Pressed, () => {
+            control.onEvent(ControllerButtonEvent.Pressed, controller.up.id, () => {
+                console.log("singleStep")
                 this.singleStep = true;
             });
-            controller.right.onEvent(ControllerButtonEvent.Repeated, () => {
+            control.onEvent(ControllerButtonEvent.Repeated, controller.up.id, () => {
                 this.singleStep = true;
             });
         }
