@@ -116,7 +116,6 @@ namespace kojac {
         }
 
         hide() {
-            console.log("picker.hide")
             this.visible = false;
             this.quadtree.clear();
             this.cursor.quadtree = this.prevquadtree;
