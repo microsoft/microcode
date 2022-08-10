@@ -7,7 +7,7 @@ namespace kojac {
             for(let row = 0; row < 5; row++) {
                 let btns: PickerButtonDef[] = []
                 for (let col = 0; col < 5; col++) {
-                    btns.push({ icon: tid.modifier.color_red })
+                    btns.push({ icon: tid.modifier.color_darkpurple })
                 }
                 this.addGroup({label: row.toString(), btns})
             }
@@ -15,6 +15,7 @@ namespace kojac {
 
         public onButtonClicked(button: PickerButton, icon: string) {
             button.setIcon(icon === tid.modifier.color_red ? tid.modifier.color_darkpurple : tid.modifier.color_red)
+            this.draw()
         }
     }
 }
