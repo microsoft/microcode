@@ -33,6 +33,7 @@ namespace kojac {
         private pageBtn: Button;
         private prevPageBtn: Button;
         private nextPageBtn: Button;
+        private iconEditorBtn: Button;
         private okBtn: Button;
         private cancelBtn: Button;
         private pageEditor: PageEditor;
@@ -74,6 +75,11 @@ namespace kojac {
                 index = this.progdef.pages.length - 1;
             }
             this.switchToPage(index);
+        }
+
+        private iconEditor() {
+            this.picker = new IconEditor(this.cursor)
+            this.picker.show({title:"LEDs"})
         }
 
         private pickPage() {
@@ -217,6 +223,15 @@ namespace kojac {
                     y: 8,
                     onClick: () => this.prevPage()
                 });
+            this.iconEditorBtn = new EditorButton(this,
+                {
+                    parent: this.hudroot,
+                    style: "white",
+                    icon: tid.actuator.show_led,
+                    x: Screen.LEFT_EDGE+8,
+                    y: 8,
+                    onClick: () => this.iconEditor()
+                });
             this.okBtn = new EditorButton(this,
                 {
                     parent: this.hudroot,
@@ -264,6 +279,7 @@ namespace kojac {
             }), 1, 16);
             this.addToQuadTree(this.pageBtn);
             this.addToQuadTree(this.prevPageBtn);
+            this.addToQuadTree(this.iconEditorBtn);
             this.addToQuadTree(this.nextPageBtn);
             this.addToQuadTree(this.okBtn);
             this.addToQuadTree(this.cancelBtn);
@@ -305,6 +321,7 @@ namespace kojac {
             Screen.fillRect(Screen.LEFT_EDGE, Screen.TOP_EDGE, Screen.WIDTH, TOOLBAR_HEIGHT, TOOLBAR_COLOR)
             this.pageBtn.draw();
             this.prevPageBtn.draw();
+            this.iconEditorBtn.draw();
             this.nextPageBtn.draw();
             this.okBtn.draw();
             this.cancelBtn.draw();
