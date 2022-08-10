@@ -161,8 +161,11 @@ namespace kojac {
             this.groups.forEach(group => {
                 if (group.opts.label) {
                     computedHeight += LABEL;
+                } else {
+                    // WHAT IS THIS FOR?
+                    // why is height dependent on number of buttons in group?
+                    computedHeight += TRAY * Math.ceil(group.buttons.length / MAX_PER_ROW);
                 }
-                computedHeight += TRAY * Math.ceil(group.buttons.length / MAX_PER_ROW);
             });
 
             let computedLeft = -(computedWidth >> 1);
@@ -184,6 +187,7 @@ namespace kojac {
                 if (group.opts.label) {
                     currentTop += LABEL;
                 }
+                console.log(currentTop)
                 group.buttons.forEach((btn, index) => {
                     if (!firstBtn) { firstBtn = btn; }
                     if (index && (index % MAX_PER_ROW) === 0) {

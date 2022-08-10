@@ -14,7 +14,7 @@ namespace kojac {
         }
 
         public onButtonClicked(button: PickerButton, icon: string) {
-            button.setIcon(icon === tid.modifier.color_red ? tid.modifier.color_darkpurple : tid.modifier.color_red)
+            button.setIcon(button.getIcon() === tid.modifier.color_red ? tid.modifier.color_darkpurple : tid.modifier.color_red)
             this.draw()
         }
     }
