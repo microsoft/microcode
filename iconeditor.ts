@@ -4,10 +4,17 @@ namespace kojac {
         constructor(cursor: Cursor) {
             super(cursor)
             // make 5 x 5 matrix of buttons
+            for(let row = 0; row < 5; row++){
+                let btns: PickerButtonDef[] = []
+                for (let col = 0; col < 5; col++) {
+                    btns.push({ icon: tid.modifier.color_red })
+                }
+                this.addGroup({label: "", btns})
+            }
         }
 
-        public onButtonClicked(icon: string) {
-            // toggle the button state
+        public onButtonClicked(button: PickerButton, icon: string) {
+            button.setIcon(icon == tid.modifier.color_red ? tid.modifier.color_darkpurple : tid.modifier.color_red)
         }
     }
 }

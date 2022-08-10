@@ -5,7 +5,7 @@ namespace kojac {
         label?: string;
     };
 
-    class PickerButton extends Button {
+    export class PickerButton extends Button {
         constructor(
             private picker: Picker,
             btn: PickerButtonDef
@@ -17,7 +17,7 @@ namespace kojac {
                 label: btn.label,
                 x: 0,
                 y: 0,
-                onClick: () => this.picker.onButtonClicked(btn.icon)
+                onClick: () => this.picker.onButtonClicked(this, btn.icon)
             });
         }
     }
@@ -80,7 +80,7 @@ namespace kojac {
             this.groups.push(new PickerGroup(this, opts));
         }
 
-        public onButtonClicked(icon: string) {
+        public onButtonClicked(button: PickerButton, icon: string) {
             this.cursor.cancelHandlerStack.pop();
             const onClick = this.onClick;
             this.hide();

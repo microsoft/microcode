@@ -599,6 +599,11 @@ namespace kojac {
                     }
                 }
             },
+            [tid.actuator.showLed]: {
+                type: TileType.ACTUATOR,
+                tid: tid.actuator.showLed,
+                name: "ShowLed"
+            },
         },
         modifiers: {
             [tid.modifier.page_1]: {
