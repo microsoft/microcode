@@ -29,7 +29,8 @@
         "math.ts",
         "screen.ts",
         "animation.ts",
-        "curves.ts"
+        "curves.ts",
+        "iconeditor.ts"
     ],
     "testFiles": [],
     "targetVersions": {
