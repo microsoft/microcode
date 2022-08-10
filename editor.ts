@@ -268,6 +268,8 @@ namespace kojac {
         }
 
         private rebuildQuadTree() {
+            if (this.picker.visible)
+                return
             if (this.quadtree) {
                 this.quadtree.clear();
             }

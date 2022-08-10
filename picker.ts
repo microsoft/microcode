@@ -116,6 +116,7 @@ namespace kojac {
         }
 
         hide() {
+            console.log("picker.hide")
             this.visible = false;
             this.quadtree.clear();
             this.cursor.quadtree = this.prevquadtree;
@@ -187,7 +188,6 @@ namespace kojac {
                 if (group.opts.label) {
                     currentTop += LABEL;
                 }
-                console.log(currentTop)
                 group.buttons.forEach((btn, index) => {
                     if (!firstBtn) { firstBtn = btn; }
                     if (index && (index % MAX_PER_ROW) === 0) {
