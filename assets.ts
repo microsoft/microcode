@@ -2,9 +2,9 @@ namespace kojac {
     export type ButtonStyle = "white" | "beige" | "clear" | "danger";
 
     export class icons {
-        static reg: {[name: string]: Image } = {};
+        static reg: {[name: string]: ImageG } = {};
 
-        public static get(name: string, nullIfMissing = false): Image {
+        public static get(name: string, nullIfMissing = false): ImageG {
             let icon = this.reg[name];
             if (!icon && !nullIfMissing) {
                 icon = this.reg["MISSING"];

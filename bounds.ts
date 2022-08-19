@@ -65,7 +65,7 @@ namespace kojac {
             return (p.x >= this.left) && (p.x <= this.right) && (p.y >= this.top) && (p.y <= this.bottom);
         }
 
-        public static FromImage(i: Image): Bounds {
+        public static FromImage(i: ImageG): Bounds {
             let left = i.width;
             let top = i.height;
             let right = 0;
