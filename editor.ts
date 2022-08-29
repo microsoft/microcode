@@ -174,13 +174,12 @@ namespace kojac {
         /* override */ startup() {
             super.startup();
             control.onEvent(ControllerButtonEvent.Pressed, controller.right.id, () => this.moveRight());
-            control.onEvent(ControllerButtonEvent.Pressed, controller.up.id, () => this.moveUp());
-            control.onEvent(ControllerButtonEvent.Pressed, controller.down.id, () => this.moveDown());
-            control.onEvent(ControllerButtonEvent.Pressed, controller.left.id, () => this.moveLeft());
-            
             control.onEvent(ControllerButtonEvent.Repeated, controller.right.id, () => this.moveRight());
+            control.onEvent(ControllerButtonEvent.Pressed, controller.up.id, () => this.moveUp());
             control.onEvent(ControllerButtonEvent.Repeated, controller.up.id, () => this.moveUp());
+            control.onEvent(ControllerButtonEvent.Pressed, controller.down.id, () => this.moveDown());
             control.onEvent(ControllerButtonEvent.Repeated, controller.down.id, () => this.moveDown());
+            control.onEvent(ControllerButtonEvent.Pressed, controller.left.id, () => this.moveLeft());
             control.onEvent(ControllerButtonEvent.Repeated, controller.left.id, () => this.moveLeft());
             
             control.onEvent(ControllerButtonEvent.Pressed, controller.A.id, () => this.cursor.click());
