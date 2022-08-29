@@ -1,10 +1,9 @@
 {
-    "name": "kojac",
-    "version": "0.0.4",
+    "name": "microcode",
+    "version": "1.0.0",
     "description": "",
     "dependencies": {
-        "device": "*",
-        "edge-connector": "*"
+        "game---light": "*"
     },
     "files": [
         "main.ts",
@@ -34,7 +33,7 @@
     ],
     "testFiles": [],
     "targetVersions": {
-        "target": "1.8.30",
+        "target": "1.10.10",
         "targetId": "arcade"
     },
     "supportedTargets": [
