@@ -74,7 +74,7 @@ namespace kojac {
             if (mode == undefined) {
                 mode = "analog";
             }
-            const value = (mode === "analog") ? pins.analogReadPin(AnalogPin.P1) : pins.digitalReadPin(DigitalPin.P1);
+            const value = 0; // (mode === "analog") ? pins.analogReadPin(AnalogPin.P1) : pins.digitalReadPin(DigitalPin.P1);
             /*
             const prev = rule.prevState["value"] || Math.random();
             const value = (mode === "analog")
@@ -125,7 +125,7 @@ namespace kojac {
             if (state === undefined) {
                 state = true;
             }
-            pins.digitalWritePin(DigitalPin.P0, state ? 1 : 0);
+            // pins.digitalWritePin(DigitalPin.P0, state ? 1 : 0);
         },
 
         [tid.actuator.log]: (rule: Rule) => {
