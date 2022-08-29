@@ -1,7 +1,7 @@
 namespace kojac {
     export class Sprite extends Component implements IPlaceable, ISizable {
         private xfrm_: Affine;
-        private image_: Image;
+        private image_: ImageG;
         private invisible_: boolean;
 
         //% blockCombine block="xfrm" callInDebugger
@@ -11,8 +11,8 @@ namespace kojac {
         //% blockCombine block="height" callInDebugger
         public get height() { return this.image_.height; }
         //% blockCombine block="image" callInDebugger
-        public get image(): Image { return this.image_; }
-        public set image(img: Image) { this.setImage(img); }
+        public get image(): ImageG { return this.image_; }
+        public set image(img: ImageG) { this.setImage(img); }
         //% blockCombine block="invisible" callInDebugger
         public get invisible() { return this.invisible_; }
         public set invisible(b: boolean) { this.invisible_ = b; }
@@ -21,7 +21,7 @@ namespace kojac {
 
         constructor(opts: {
             parent?: IPlaceable,
-            img: Image
+            img: ImageG
         }) {
             super("sprite");
             this.xfrm_ = new Affine();
@@ -34,7 +34,7 @@ namespace kojac {
             super.destroy();
         }
 
-        protected setImage(img: Image) {
+        protected setImage(img: ImageG) {
             this.image_ = img;
         }
 

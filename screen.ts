@@ -1,6 +1,6 @@
 namespace kojac {
     export class Screen {
-        private static image_: Image;
+        private static image_: ImageG;
 
         public static WIDTH = screen.width;
         public static HEIGHT = screen.height;
@@ -20,12 +20,12 @@ namespace kojac {
         public static x(v: number) { return v + Screen.HALF_WIDTH; }
         public static y(v: number) { return v + Screen.HALF_HEIGHT; }
         public static pos(v: Vec2) { return new Vec2(Screen.x(v.x), Screen.y(v.y)); }
-        public static get image(): Image {
+        public static get image(): ImageG {
             if (!Screen.image_) { Screen.image_ = image.create(screen.width, screen.height); }
             return Screen.image_;
         }
 
-        public static drawTransparentImage(from: Image, x: number, y: number) {
+        public static drawTransparentImage(from: ImageG, x: number, y: number) {
             Screen.image.drawTransparentImage(from, Screen.x(x), Screen.y(y));
         }
 

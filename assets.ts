@@ -2,9 +2,9 @@ namespace kojac {
     export type ButtonStyle = "white" | "beige" | "clear" | "danger";
 
     export class icons {
-        static reg: {[name: string]: Image } = {};
+        static reg: {[name: string]: ImageG } = {};
 
-        public static get(name: string, nullIfMissing = false): Image {
+        public static get(name: string, nullIfMissing = false): ImageG {
             let icon = this.reg[name];
             if (!icon && !nullIfMissing) {
                 icon = this.reg["MISSING"];
@@ -60,6 +60,7 @@ namespace kojac {
             this.reg[tid.modifier.color_tan] = icondb.tile_tan;
             this.reg[tid.modifier.color_brown] = icondb.tile_brown;
             this.reg[tid.modifier.color_black] = icondb.tile_black;
+            this.reg[tid.actuator.show_led] = icondb.tile_show_led;
             this.reg[tid.filter.timespan_short] = icondb.tile_timespan_short;
             this.reg[tid.filter.timespan_long] = icondb.tile_timespan_long;
             this.reg[tid.filter.pin_analog] = icondb.tile_pin_analog;
@@ -1130,6 +1131,24 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
+    `;
+    export const tile_show_led = img`
+        f f f f f f f f f f f f f f f f
+        f c c f c c f c c f c c f c c f
+        f c c f c c f c c f c c f c c f
+        f f f f f f f f f f f f f f f f
+        f c c f 2 2 f c c f 2 2 f c c f
+        f c c f 2 2 f c c f 2 2 f c c f
+        f f f f f f f f f f f f f f f f
+        f c c f c c f c c f c c f c c f
+        f c c f c c f c c f c c f c c f
+        f f f f f f f f f f f f f f f f
+        f 2 2 f c c f c c f c c f 2 2 f
+        f 2 2 f c c f c c f c c f 2 2 f
+        f f f f f f f f f f f f f f f f
+        f c c f 2 2 f 2 2 f 2 2 f c c f
+        f c c f 2 2 f 2 2 f 2 2 f c c f
+        f f f f f f f f f f f f f f f f
     `;
     ///
     /// RULE CONDITIONS

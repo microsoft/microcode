@@ -62,6 +62,10 @@ namespace kojac {
             super.destroy();
         }
 
+        public getIcon() {
+            return this.iconId
+        }
+        
         public setIcon(iconId: string) {
             this.iconId = iconId;
             this.buildSprite();
