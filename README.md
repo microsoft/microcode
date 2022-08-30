@@ -1,14 +1,14 @@
-# Project
+# MicroCode
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+MicroCode is a [MakeCode Arcade](https://arcade.microsoft/com) application that allows the creation, modification, and execution of simple reactive programs for microcontroller-based devices such as the BBC micro:bit and Jacdac brains. MicroCode has a tile-based language and editor, inspired by Kodu Game Lab, for creating programs using just the 4-direction direction pad and A and B buttons supported by Arcade-compatible devices.  The language is parameterized by a set of Jacdac services that represent the set of features of the target device (the device to be programmed). The programs are compiled into the bytecode of the Jacdac virtual machine and persisted in the flash memory of the target device.
 
-As the maintainer of this project, please make a few updates:
+## Editor
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+## Language
+
+## Parameterization
+
+## Runtime
 
 ## Contributing
 
