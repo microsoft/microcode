@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     export class Vec2 {
         public dirty: boolean;
         //public readonly: boolean;

@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     /**
      * An Affine represents a euclidean transformation on a Vec2.
      * At the moment this class only supports translation, but if needed it could easily include:

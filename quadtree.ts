@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
 
     export interface ITreeComp extends IKindable, IPlaceable, ISizable { }
 

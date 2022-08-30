@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     // Auto-save slot
     export const SAVESLOT_AUTO = "sa";
     // Save slots

@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     export class Screen {
         private static image_: ImageG;
 

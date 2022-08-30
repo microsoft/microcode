@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     /**
      * An Agent is an object that can execute a program. In this demo, there is only one agent: the micro:bit.
      */

@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     export class Program {
         currPage: number;
         pages: Page[];

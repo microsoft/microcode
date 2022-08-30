@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
 
     class EditorButton extends Button {
         constructor(

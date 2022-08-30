@@ -1,3 +1,3 @@
 type ImageG = Image
 
-setTimeout(() => { const app = new kojac.App(); }, 1);
+setTimeout(() => { const app = new microcode.App(); }, 1);

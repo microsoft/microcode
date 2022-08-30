@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
 
     export enum TileType {
         SENSOR = 1,

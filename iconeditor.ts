@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
 
     export class IconEditor extends Picker {
         constructor(cursor: Cursor) {

@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     let id_sequence = 0;
 
     export type ComponentHandler = (comp: Component) => void;

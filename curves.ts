@@ -1,4 +1,4 @@
-namespace kojac.curves.easing {
+namespace microcode.curves.easing {
     // Curve formulas from https://easings.net/
     // Only "ease in"-style curves should appear here. "ease out" and "ease in-out" are derived programmatically from these.
     export function sine(t: number): number {
@@ -37,7 +37,7 @@ namespace kojac.curves.easing {
     }
 }
 
-namespace kojac.curves.util {
+namespace microcode.curves.util {
     export function lerp(a: number, b: number, t: number): number {
         return a + (b - a) * t;
     }
@@ -48,7 +48,7 @@ namespace kojac.curves.util {
 
 // Predefined curves for use with animation EaseFrame.
 // Choose an ease type and curve pair, like: `easing.easeIn(easing.curves.sine)`
-namespace kojac.curves {
+namespace microcode.curves {
     export function linear(): (a: number, b: number, t: number) => number {
         return util.lerp;
     }

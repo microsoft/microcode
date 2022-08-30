@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     /**
      * An EaseFrame is a segment of an animation, describing how to interpolate from
      * start value to end value.

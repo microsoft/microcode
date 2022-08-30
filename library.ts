@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     export type LibraryFn = (rule: Rule) => void;
 
     export type LibraryFnMap = {

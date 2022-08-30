@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     export class Sprite extends Component implements IPlaceable, ISizable {
         private xfrm_: Affine;
         private image_: ImageG;

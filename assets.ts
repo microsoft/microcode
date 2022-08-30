@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     export type ButtonStyle = "white" | "beige" | "clear" | "danger";
 
     export class icons {

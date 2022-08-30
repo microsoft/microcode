@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     enum HomeView {
         Console,    // Show the console log
         Plot        // Show the plot graph

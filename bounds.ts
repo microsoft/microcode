@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     export class Bounds {
         public width: number;
         public height: number;

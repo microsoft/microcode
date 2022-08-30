@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     export class Button extends Component implements ISizable, IPlaceable {
         private xfrm_: Affine;
         private icon: Sprite;

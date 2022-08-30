@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     const INPUT_PRIORITY = 10;
     const UPDATE_PRIORITY = 20;
     const RENDER_PRIORITY = 30;

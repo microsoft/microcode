@@ -1,4 +1,4 @@
-namespace kojac {
+namespace microcode {
     export type MenuDirection
         = "up"
         | "down"
