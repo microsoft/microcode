@@ -12,9 +12,10 @@ a **sensor**, and optionally a filter on the sensor's state or events.
 
 ### Sensors
 
-A sensor can be as simple as a button with two states (up, down) or a thermometer represented by
-a floating point (or fixed point) value.  A sensor could also refer to a GPIO pin, a timer, 
-microphone, radio, or other means for the program to receive notification of a state change
+A sensor can be as simple as a button with two states (up, down), a thermometer represented by
+a floating point (or fixed point) value, or an accelerometer with a set of possible events.  
+A sensor could also refer to a GPIO pin, a timer, microphone, radio, or other means for the program 
+to receive notification of a state change
 or an event.  It is also possible for a sensor to refer to an internal program variable, modified
 by some other part of the user's program.
 

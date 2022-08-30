@@ -606,7 +606,7 @@ namespace microcode {
 
         private showRuleHandleMenu() {
             // Add rule conditions
-            const iconIds = [].concat(RC_IDS);
+            const iconIds = [] // .concat(RC_IDS);
             // "Insert rule above this one"
             iconIds.push("plus");
             // "Delete rule"
