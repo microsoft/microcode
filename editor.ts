@@ -43,6 +43,7 @@ namespace microcode {
         private scrollroot: Placeable;
         private scrollanim: Animation;
         public picker: Picker;
+        public iconEditorPicker: Picker;
 
         constructor(app: App) {
             super(app, "editor");
@@ -78,8 +79,8 @@ namespace microcode {
         }
 
         private iconEditor() {
-            this.picker = new IconEditor(this.cursor)
-            this.picker.show({title:"LEDs"})
+            this.iconEditorPicker = new IconEditor(this.cursor)
+            this.iconEditorPicker.show({title:"LEDs"})
         }
 
         private pickPage() {
@@ -267,7 +268,7 @@ namespace microcode {
         }
 
         private rebuildQuadTree() {
-            if (this.picker.visible)
+            if (this.picker.visible || this.iconEditorPicker && this.iconEditorPicker.visible)
                 return
             if (this.quadtree) {
                 this.quadtree.clear();
@@ -327,6 +328,7 @@ namespace microcode {
             this.okBtn.draw();
             this.cancelBtn.draw();
             this.picker.draw();
+            if (this.iconEditorPicker) this.iconEditorPicker.draw();
             this.cursor.draw();
 
             //this.quadtree.dbgDraw(5);
