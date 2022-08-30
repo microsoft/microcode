@@ -6,9 +6,27 @@ MicroCode is a [MakeCode Arcade](https://arcade.makecode.com/) application that 
 
 ## Language
 
-## Parameterization
+Following Kodu, the MicroCode language is defined in terms of pages, where a page has a list of rules,
+and each rule consists of a **When** section and a **Do** section.  The **When** section names
+a **sensor**, and optionally a filter on the sensor's state or events.
 
-## Runtime
+### Sensors
+
+A sensor can be as simple as a button with two states (up, down) or a thermometer represented by
+a floating point (or fixed point) value.  A sensor could also refer to a GPIO pin, a timer, 
+microphone, radio, or other means for the program to receive notification of a state change
+or an event.  It is also possible for a sensor to refer to an internal program variable, modified
+by some other part of the user's program.
+
+### Filters
+
+### Actuators
+
+### Modifiers
+
+## Parameterization via Jacdac Services
+
+## Target Runtimes
 
 ## Contributing
 
