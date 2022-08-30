@@ -26,8 +26,8 @@ sensors are modelled either by a discrete variable or a continuous variable.
 Filters follow a sensor and specify conditions under which program execution can proceed to the **Do** section.  
 If no filters are present, each sensor tile has a default filter that determines whether or not execution 
 proceeds. For example, if the sensor tile refers to a button, with no following filter, the default filter
-may be that a ``pressed'' event for the button was just received.  If, on the other hand, a filter following
-the sensor tile for a button specifies the ``down'' event, that will take precedence.
+may be that a 'pressed' event for the button was just received.  If, on the other hand, a filter following
+the sensor tile for a button specifies the 'down' event, that will take precedence.
 
 Filters may be parameterized based on the kind of sensor (discrete or continuous)
 
