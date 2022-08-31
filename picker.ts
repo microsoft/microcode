@@ -40,11 +40,11 @@ namespace microcode {
     }
 
     export class Picker extends Component implements IPlaceable {
+        protected groups: PickerGroup[];
         private xfrm_: Affine;
         private quadtree: QuadTree;
         private prevquadtree: QuadTree;
         private prevpos: Vec2;
-        private groups: PickerGroup[];
         private cancelBtn: Button;
         private panel: Bounds;
         private onClick: (btn: string) => void;
