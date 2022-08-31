@@ -39,6 +39,14 @@ Filters may be parameterized based on the kind of sensor (discrete or continuous
 
 ## Target Runtimes
 
+## Developing
+
+* `npm install -g makecode`
+* in this repo, run `mkc init`
+* run `mkc serve`
+* head to http://127.0.0.1:7000 for simulator
+* run `mkc build -d` to compile and deploy to device
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

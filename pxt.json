@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "description": "Coding microcontrollers using Arcade",
     "dependencies": {
-        "game---light": "*"
+        "game---light": "*",
+        "device": "*"
     },
     "files": [
         "main.ts",
