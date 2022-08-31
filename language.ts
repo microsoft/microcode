@@ -21,6 +21,13 @@ namespace microcode {
         handling?: { [id: string]: string | number | boolean };
     }
 
+
+
+    export interface FieldEditor {
+        field: any
+        editor: (field:any) => Picker
+    }
+
     export interface TileDefn {
         type: TileType;
         tid: string;
@@ -29,6 +36,7 @@ namespace microcode {
         hidden?: boolean;   // Hide from UI?
         category?: string;
         constraints?: Constraints;
+        fieldEditor?: FieldEditor;
     }
 
     export type SensorDefn = TileDefn & {
@@ -45,6 +53,7 @@ namespace microcode {
         type: TileType.MODIFIER;
         category: string;
         priority: number;   // for runtime reordering. 10 is default.
+        param?: any;        // the user might parameterize this tile (say with image editor)
     };
 
     export const RuleCondition = {
@@ -84,6 +93,7 @@ namespace microcode {
             return !this.sensor && !this.actuator;
         }
 
+        // TODO: user parameters
         public toObj(): any {
             const obj = {
                 C: this.condition,
@@ -433,7 +443,8 @@ namespace microcode {
             pin_on: "M11",
             pin_off: "M12",
             happy: "M13",
-            sad: "M14"
+            sad: "M14",
+            icon_editor: "M15"
         }
     }
 
@@ -569,7 +580,24 @@ namespace microcode {
             [tid.actuator.paint]: {
                 type: TileType.ACTUATOR,
                 tid: tid.actuator.paint,
-                name: "Paint"
+                name: "Paint",
+                constraints: {
+                    allow: {
+                        categories: ["icon_editor"]
+                    }
+                },
+                fieldEditor: {
+                    field: img`
+                    . . . . .
+                    . . . . .
+                    . . 1 . . 
+                    . . . . .
+                    . . . . .
+                    `,
+                    editor: (field: Image, cursor: Cursor) => {
+                        return new IconEditor(field, cursor)
+                    }
+                }
             },
             [tid.actuator.pin_0]: {
                 type: TileType.ACTUATOR,
@@ -660,6 +688,18 @@ namespace microcode {
                 tid: tid.modifier.sad,
                 name: "sad",
                 category: "led_icon",
+                priority: 10,
+                constraints: {
+                    handling: {
+                        "terminal": true
+                    }
+                }
+            },
+            [tid.modifier.icon_editor]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.icon_editor,
+                name: "icon editor",
+                category: "icon_editor",
                 priority: 10,
                 constraints: {
                     handling: {
