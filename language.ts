@@ -421,8 +421,8 @@ namespace microcode {
         actuator: <any>{
             switch_page: "A1",
             pin_0: "A3",
-            log: "A4",
-            plot: "A5",
+            stamp: "A4",
+            paint: "A5",
         },
         modifier: <any>{
             page_1: "M1",
@@ -447,6 +447,8 @@ namespace microcode {
             color_tan: "M25",
             color_brown: "M26",
             color_black: "M27",
+            happy: "M28",
+            sad: "M29"
         }
     }
 
@@ -569,6 +571,21 @@ namespace microcode {
                     }
                 }
             },
+            [tid.actuator.stamp]: {
+                type: TileType.ACTUATOR,
+                tid: tid.actuator.stamp,
+                name: "Stamp",
+                constraints: {
+                    allow: {
+                        categories: ["led_icon"]
+                    }
+                }
+            },
+            [tid.actuator.paint]: {
+                type: TileType.ACTUATOR,
+                tid: tid.actuator.paint,
+                name: "Paint"
+            },
             [tid.actuator.pin_0]: {
                 type: TileType.ACTUATOR,
                 tid: tid.actuator.pin_0,
@@ -578,31 +595,6 @@ namespace microcode {
                         categories: ["pin_output"]
                     }
                 }
-            },
-            [tid.actuator.log]: {
-                type: TileType.ACTUATOR,
-                tid: tid.actuator.log,
-                name: "Log",
-                constraints: {
-                    allow: {
-                        categories: ["color"]
-                    }
-                }
-            },
-            [tid.actuator.plot]: {
-                type: TileType.ACTUATOR,
-                tid: tid.actuator.plot,
-                name: "Plot",
-                constraints: {
-                    allow: {
-                        categories: ["color"]
-                    }
-                }
-            },
-            [tid.actuator.showLed]: {
-                type: TileType.ACTUATOR,
-                tid: tid.actuator.showLed,
-                name: "ShowLed"
             },
         },
         modifiers: {
@@ -666,6 +658,31 @@ namespace microcode {
                     }
                 }
             },
+            [tid.modifier.happy]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.happy,
+                name: "happy",
+                category: "led_icon",
+                priority: 10,
+                constraints: {
+                    handling: {
+                        "terminal": true
+                    }
+                }
+            },
+            [tid.modifier.sad]: {
+                type: TileType.MODIFIER,
+                tid: tid.modifier.sad,
+                name: "sad",
+                category: "led_icon",
+                priority: 10,
+                constraints: {
+                    handling: {
+                        "terminal": true
+                    }
+                }
+            },
+
             [tid.modifier.pin_on]: {
                 type: TileType.MODIFIER,
                 tid: tid.modifier.pin_on,

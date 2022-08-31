@@ -45,6 +45,8 @@ namespace microcode {
             this.reg[tid.modifier.page_5] = icondb.tile_page_5;
             this.reg[tid.modifier.pin_on] = icondb.tile_pin_on;
             this.reg[tid.modifier.pin_off] = icondb.tile_pin_off;
+            this.reg[tid.modifier.happy] = icondb.happy
+            this.reg[tid.modifier.sad] = icondb.sad
             this.reg[tid.modifier.color_white] = icondb.tile_white;
             this.reg[tid.modifier.color_red] = icondb.tile_red;
             this.reg[tid.modifier.color_pink] = icondb.tile_pink;
@@ -60,15 +62,14 @@ namespace microcode {
             this.reg[tid.modifier.color_tan] = icondb.tile_tan;
             this.reg[tid.modifier.color_brown] = icondb.tile_brown;
             this.reg[tid.modifier.color_black] = icondb.tile_black;
-            this.reg[tid.actuator.show_led] = icondb.tile_show_led;
             this.reg[tid.filter.timespan_short] = icondb.tile_timespan_short;
             this.reg[tid.filter.timespan_long] = icondb.tile_timespan_long;
             this.reg[tid.filter.pin_analog] = icondb.tile_pin_analog;
             this.reg[tid.filter.pin_digital] = icondb.tile_pin_digital;
             this.reg[tid.actuator.switch_page] = icondb.tile_switch_page;
             this.reg[tid.actuator.pin_0] = icondb.tile_pin_0;
-            this.reg[tid.actuator.log] = icondb.tile_console;
-            this.reg[tid.actuator.plot] = icondb.tile_graph;
+            this.reg[tid.actuator.paint] = icondb.paint;
+            this.reg[tid.actuator.stamp] = icondb.stamp;
             this.reg[RuleCondition.DEFAULT] = icondb.rc_default;
             this.reg[RuleCondition.HIGH] = icondb.rc_high;
             this.reg[RuleCondition.LOW] = icondb.rc_low;
@@ -78,7 +79,45 @@ namespace microcode {
     }
 }
 
+// - upscale 5x5 image to 16 x 16
+function scaleUp(led55: ImageG) {
+    const ret = image.create(16, 16)
+    ret.fill(15)
+    for (let row = 0; row < 5; row++) {
+        for (let col = 0; col < 5; col++) {
+            const color = led55.getPixel(col, row) ? 2 : 12;
+            const nrow = 1 + row * 3, ncol = 1 + col * 3
+            ret.setPixel(ncol, nrow, color)
+            ret.setPixel(ncol + 1, nrow, color)
+            ret.setPixel(ncol, nrow + 1, color)
+            ret.setPixel(ncol + 1, nrow + 1, color)
+        }
+    }
+    return ret
+}
+
+
+const happy5x5 = img`
+        . . . . .
+        . 1 . 1 .
+        . . . . .
+        1 . . . 1
+        . 1 1 1 .
+    `
+
+const sad5x5 = img`
+        . . . . .
+        . 1 . 1 .
+        . . . . .
+        . 1 1 1 .
+        1 . . . 1
+    `
+    
 namespace icondb {
+
+    export const happy = scaleUp(happy5x5)
+    export const sad = scaleUp(sad5x5)
+
     export const MISSING = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -442,6 +481,45 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `;
+
+    export const paint = img`
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f 4 1 4 1 4 1 4 1 f f f f
+        f f f f 4 1 4 1 4 1 4 1 f f f f
+        f f f f 1 1 1 1 1 1 1 1 f f f f
+        f f f f 1 1 1 1 1 1 1 1 f f f f
+        f f f f 9 9 9 9 9 9 9 9 f f f f
+        f f f f d e e e e e e e f f f f
+        f f f f d e e e e e e e f f f f
+        f f f f f f d e e e f f f f f f
+        f f f f f f d e e e f f f f f f
+        f f f f f f d e e e f f f f f f
+        f f f f f f d f f e f f f f f f
+        f f f f f f d e e e f f f f f f
+        f f f f f f f f f f f f f f f f
+        f f f f f f f f f f f f f f f f
+    `;
+
+    export const stamp = img`
+        f f f f f f f f f f f f f f f f
+        f f f f f f 2 2 2 2 f f f f f f
+        f f f f f 2 2 f f 2 2 f f f f f
+        f f f f f 2 f f f f 2 f f f f f
+        f f f f f 2 2 f f 2 2 f f f f f
+        f f f f f f 2 2 2 2 f f f f f f
+        f f f f f f f 2 2 f f f f f f f
+        f f f f f f f 2 2 f f f f f f f
+        f f f f f f f 2 2 f f f f f f f
+        f f f 2 2 2 2 2 2 2 2 2 2 f f f
+        f f 2 2 2 2 2 2 2 2 2 2 2 2 f f
+        f f 2 2 2 2 2 2 2 2 2 2 2 2 f f
+        f f 2 2 2 2 2 2 2 2 2 2 2 2 f f
+        f f f c c c c c c c c c c f f f
+        f f f 3 3 3 3 3 3 3 3 3 3 f f f
+        f f f f f f f f f f f f f f f f
+    `;
+
     ///
     /// BUTTON BACKGROUNDS
     ///
@@ -1132,24 +1210,6 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `;
-    export const tile_show_led = img`
-        f f f f f f f f f f f f f f f f
-        f c c f c c f c c f c c f c c f
-        f c c f c c f c c f c c f c c f
-        f f f f f f f f f f f f f f f f
-        f c c f 2 2 f c c f 2 2 f c c f
-        f c c f 2 2 f c c f 2 2 f c c f
-        f f f f f f f f f f f f f f f f
-        f c c f c c f c c f c c f c c f
-        f c c f c c f c c f c c f c c f
-        f f f f f f f f f f f f f f f f
-        f 2 2 f c c f c c f c c f 2 2 f
-        f 2 2 f c c f c c f c c f 2 2 f
-        f f f f f f f f f f f f f f f f
-        f c c f 2 2 f 2 2 f 2 2 f c c f
-        f c c f 2 2 f 2 2 f 2 2 f c c f
-        f f f f f f f f f f f f f f f f
-    `;
     ///
     /// RULE CONDITIONS
     ///
@@ -1290,129 +1350,4 @@ namespace icondb {
         . f c c c b b f .
         . . f f f f f . .
     `
-    //
-    // BACKGROUNDS
-    //
-    export const gradient_0 = img`
-        bbbbbbbbbbbbbbbbbbbbbbbbcbbbcbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbcbbbbbbbbcbbbbbbbbbcbbbbbbcbbbbbbbbbbbbbbbcbcbbbbbbbbbcbbbbbbbbbbbbbcbbb
-        bbbbbcbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbcbbbbbbbbcbbbbbbbbbbbbccbbbbcbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbcbbbbbbccbbbbbbbbbbbbbbbbbbbcbbbbbbbbbcbbbbb
-        bbbbbbbbbbbbbbbbbcbbbbbcbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbcbbbbbbcbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbb
-        bbbcbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbb
-        bbbbbbcbbbcbbbbbcbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbcbbbbcbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbcbbbbbbbbbbcbbbbbbbbbbbbbc
-        bbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbcbbbbbbbbcbbbbbbbbbbbbbbbbbbcbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbb
-        bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbcbbbbbcbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbcbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbb
-        bbbbbbbbbbbbbbbcbbbbcbbbbcbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbcbcbbbbbbbbbbbcbbbcbbbbbbbbbbbbbcbbcbbbbbbbbbcbbbcbbbbbbbbbbbbbbbb
-        bbbbbbbcbbbbbbbbbcbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbcbbbccbbbbbbbbbbbbbbcbbbbbbbbbbbcbbcbbbbbbbcbbbbbbbbbbbcbbbbbbbbbcbbbbbbcbbbccbcbbbcbbbbbbbbb
-        bbbbbbbbcbbbbbbbbbbcbbbbbbbbbccbcbbbbbbbbbbcbbbbbbbcbbbbbcbbbcbbcbbbbcbbbcbbbbbbbbbbbbbbcbbbbcbbbbbbbbbbcbbcbbbbbbbbbbbbbbcbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbcbbbb
-        bbbcbbcbbbbbcbbbbbbbbbcbbbbbbbbbbbbcbbbbbbbbcbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbcbbbbbbbbbbccbbbbbbbbbbbbcbbbbbcbbbbbbbbbbcbcbbbbbbbbbbbbbbbbbbbbcbbbbbb
-        bcbbbbbbcbbbbbcbbbbbbbbbbbccbbbbbbbbbbcccbbbbbcbbbbbbbcbbbbcbbcbbbbbbbbbbbbbcbbbbcbcbbbcbbbbbbcbbbbbbbbbbbbbbbbcbbcbbbbcbbbbbcbcbbbbbbbbbcbbbbbcbbbbbbcbbbbbccbb
-        bcbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbccbbbbbccbcbbcbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbcbcbbcbbbbbccbbbbbbbcbbcbbbbcbbbcbbbbbbbbbbbbbbccbbbbbbbbbbbbbbcbbbbbbbbbbbc
-        bbbbbcbcbbbbbbbcbbbbcbbcbbcbcbbbcbbbbbbbbbbbbbbbbbbcbbbbbbbcbbbbbbbbbbbbbcbbbcbbbcbbbbbbbbbbbcbbbbbbcbbbbbbbbbbcbbbbbbbbbbcbbbbcbbbbbbbbbbbbcbbbbbbbbcbbbbbbbbbc
-        bbbbbbbbbbcbbcbbbbcbbbbbbcbbbbcbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbcbbbbbbbccbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbcbbbbbbbbbbbbbcbbbbb
-        bbbcbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbcbbbcbbbbcbbcbbbbbbcbbbbbbcbbbbbbcbbbbbbbcbbbbbbbbbbbbcbbbbbcbbcbbcbbbcbbcbbbbbbcbcbbbbbbbbbcbcbbcbbbbbbb
-        cbbbbbbcbbbbcbcbbbbccbbbbbbbbbcbbbbcbbbbbbbbbbcbcbbbbbbcbbbcbbbbccbbbbcbbbbcbbbbbbbbcbbcbbcbbcbcbbbcbbcbbcbcbcbbcbbbbcbbbbbcbcbbbcbbbbbcbbbccbbcbcbcbbbbbbbccbbb
-        bbbcbcbbbbcbbbcbbcbcbbbbbbbcbcbbbbcbcbbbbbcbbbbbbbbbbcbbbbbcbcbcbbcbbbbbbbcbcbbbbccbbbbbbbccbcbbbcbbbbbbbbbbcbbbbbbbbbbbbbbbbbcbbbbbcbbbbbbcbbbbbbbbbbbcbcbbbbbb
-        bbbbcbbbcbbbbbbbbbbbbcbcbcbccbbbbbbbbbccbccbbbbbbbcbcbbbbcbbcbbbbbbbccbbbcbbcbbbbbcbbbbbbbbbbbbbbbcbcbbbbbbbbbbbcbbbbbcbbcbbbcbbbbbbbbcbbbcbbbbbbbcbbbcbbbbbcbbb
-        bbcbbbbbbcbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbcbcbcbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbcbbbbbbbbbbbbbbbbbbcbcbbcbbbbbbcbbbcbbbcbbbbbccbbbbbbbbbcbbbbbbbbbbcbbbcbbbc
-        bbbcbbcbbbbbbbbcbbbcbcbbbbbbcbbbbbcbbcbcbbbcbbbbccbbcbcbbbcbcbbbbbbcbcbbbbbbbbbbbccbbcbccbbbbbbcbbbccbbbcbbbbbccbcbbbccbbbcbbcbbcbbbbbbbbbbbbbbccbbbccbbbbbbbbbb
-        bbbbbbbbcbbbbbbbbbbbbbcbbbbbbbcbbcbbbbcbbbbbbbbcbbbbbbbbbbbcbbcbbcbbbbbcbcbbbbbcbbbbbbbcbbbbbbbbbbbcbbbbbbbbcbbbbbbbbbbbbcbbbcbbcbbbbbbccbcbbbbcbbbbbbbbbbbbbcbb
-        bbcbbbbbbbbccbbbbbbcbcbbbccbbbbcbbbbbbbbbbbcbbcbbbbbbbbbbcbbbbbbbbbbbbbbcbbbbbcbbbcbbbbbbcbbbbbcbbbcbbbcbbbbbbbbbbbbbbcbbbbcbbbbbbbbbbcbbbbbbbbbbbcbbbbbbcbbbcbb
-        bcbbbcbccbbbbcbbbcbbbbbbbcbbbbbbbbbcbbbbbbcbbbbcbbbcbcbbbbbbbbbcbbbccbbbbbbcbcbbbbbbbbbbbbbccbbbbbbbbbbcbbccbbbbcbcbbbbbbbbbbbbcbbbccbbbbbbcbcbbbcbbbbcbcbbcbbcb
-        bbbbbbbccbbbbbbbcbcbbbbbbbbbbcbbcbbbcbbbbbbccbbbccbbbbbbbbccccbbccbbbccbbcbbbcbcbbbbcbcbccbcbbcbcbbbbbbbbbbbbbcbbcbcbbbbbbbcccbbbbbccbccbbcbcbbbbbbbbcbbcbbcbbbb
-        bbccbbbccbcbcbcbbbbbcbcccbcbbbbbbcbbcbcbbbcbcbbbbbbbbbbcbbbbbbcbbbbbbbbbcbbbcbbbbbbbcbcbbbbbbbbcccbbbbbbbbbbbbbccbbccbbbbbbbbbbbbbbbbbbbbbbbbbbbcbccbbcbbcbbccbb
-        cbbbcbbbbcbbbbcbbbbbbbbbbbbbcccbbbbbbbbbbccbbbbbbcbbbbcccbbbbbbbcbbbcbbbbbcbbbbbbbcbbbbbbbbbbbbbbbbbbbbcccbcbbcbbbbbbbbbbbcbbbbbbcbbbbbbbccbbbcbbbbbbbbbbbbbbbbb
-        bcbbbbcbbbbbbcbbcbbccbbbbcbcbbbbbccbcbbbbbbbccbbcbbbbbcbcbbbcbbbbcbbcbbbbbbcbbcbcbccbbbbbbcbbbcccbbbccbcbbcbcbbbbbbbccbcbbcccbbcbcbcbbbcbbcbccbbbbbccbcbcbbbbcbc
-        bbbcbbcbcbbbbbcbcbcbcbbbbbbbcbbbbbbcbbcbcbbbbbbccbbbbcbbbbbcbbbbbbbcbbbbbccbccbbcbbcbccbbbbbcbbbcbbbbbbbbbbbcbbccbbbbcbcbbbccbbbcbbbbcbbbcbccbbbccbbbcbcbbbcbbbc
-        bcbbbbbbbcbbbcbbbbbcbbbbbbbbbcbbbbcbbbbbbcbbbbbccbcbcbbbcbbbbcbbcbcbbbbbbbcbbbbbbbbbbbbbcbcbbcbbbbccbbbcbbbcbbcbbbbbcbbbcbbbbbbbbbbbbccbcbbbbcbbcbbbbbcbbbbbbccb
-        bbcbbbbbcbcbbbbbbbbbbcbbcbcbbbbcbbcbcbcbcbbbcbbbbbbbbbcbbcbbbcbbbbbbcccbbbbbbbcbbbbcbbbbcbcbbcbbbbbbbccbbbbcbcbbcbbbbbbbbbbbbbbbccbbbbbbbbbbcbbbbbbccbbbcbcbbcbb
-        bbbcccbcbbbbccbbbbbccbbccbbcbbbcbcbbbbbcbbbcbbbcbcbbcbbbbbcbcbcbbbcbbcbbbbcbcbbbcbbbbcbcbbbbbcbbbcbbcbbbbccbbbbbcbbcbbbccbcbccbccbbbbbcbcbbbbcbbbbbbbbbbbcbbbbbb
-        cccbcbbbcbccbbbbbbccbbcbcccbccbcbbbcbbbcbbcbcbccbbccbbbbcbbcbbbbcbbbbbbbcbbbcbbccbccbbbbbcbbbbbbbcbcbcccbbcbccbbcbbbcbbccbbbbccbbcbcbbbbcbbcbbbcbbbcbbbcbbcbcbbb
-        bbbbbbbcbccbccbcbbbcbbccbbcbbbbbcbbbcbbcbbbbbcbbbbcbcbccbbbcbcbcbcbbbbccbbbbcbbbbbbbcbbbbccbbccccbbcbbbbbcbbcbbbcbbbbbbbcbbbbbbbbbbbcccbbbcbccbbbcbbbbccbcbbcbbc
-        bbcbbccbbbbbbbccbccbbbbbcbbbcbbbccbbbcbcccbccbbbbbbccbbcbbccbbcbbbbbbcbcbbcbbbbbbcbbbbbbbbbbbbbbbbbbbbcbcbbbbbbbbbbccccbcbccbcbcccbbbbbcbbbbbbbbbbccbcbbbcbcbcbb
-        cbbbcbbbbbbbbbbbbbbbbbccbbbbbbbccbbbbbbbbcbbbbbbbbcbbbbbbbbbbcbccccbbbbccccbcbcbbcbbccccbbccccbbbbcbcbbbbbccbbccccbbbbbbbbbbbbcbbbbccbbbccbbccbbcbbbbbcbbbbccbbb
-        bbbbcbbbbbbbcbbcbcbcbbbccbbbcbbbbbbbcbbccbbcccbcccbbbbbccbbbcbbbbbbbbbbbbbcbbbbcbbbbbbbcbbcbbbbbbbcccbbbcbbbbbbcbccccbbbcbcbcbbbccbcbbbbbbbcbbbbbbbcbbbbbcbcbcbb
-        cbbbbcbbbbbcbbcbcbbbbcbbbbbbbbbbcbcbbbbcbbbbbbbbbbbbccbbbcbbbcbbbbcbbcbcbcbccbbbcccccbbcbbbccbbcbcbccbbcbcbcbbbbbcbbcbcbcbbbccbbbbcbcbbccbbbbccbbbcccbcbbbbbcbbc
-        ccbbbcccbcbccbbbbbbcbbbcbccccbbbbbbbbbbbbcbcbbbbccbbbbbccbbbbccbbbcbbbcbbbbbbbcbbbbbbbbbccbbbbcccbbbbbbbbbbbcbbcbbbccbbbbbbbcbbbbbbbccbbbbcbcbbbbbcbbcbccbbcbbcb
-        ccbbbbbbcbbcbcbbbbcbcbcbbbbccbcccbccbccbcbbbccbbbbcbbcbbccbbbbcbccbccbcbbcbcccbbcbbbcbbcbbbcbbbcbbbbcbcbcbbcbcbcbbbbbcbbbbccbbcbbbbcbcbbbccbcbbcbcbbbbbccbbbcbbb
-        cbbbbcbbbbcbcbbbbbbcbcbbbbbbccbbbcbcbbbbbbcbcbbccbccbcbcbbcbbbbbcbcbbbcbbbbcccbccbcbccbbbbcccbbcccbbbcbcbbbccbbcbcbbbccbccbcbcbcbbbbbbcccbbccbbccccbcbbccccbcbbb
-        ccccbcccbbbbbcbccccbccbcbcbcbbcbbbbcccbbcbbcccbcbbbbbbcbcbbcbbcbcccbcbbccbbcbcbbccbbbbbbcbcbbbbbbcbbbcccccbccbcbcbbbcbbbbbcbccbbbccbbbbcbbbbccbbcbcbbbbbbbbbcbbb
-        bbbbbcbbccbbbccbbbbcbbbbcbbcbbccbbbbbbccbbccbbbbbbbbccbcccbcbcbbbcbbbbcbccbbbbbcbbbbbccbcbbbbbbcbbcbbbbbbbbbbcbbcbcbbbbcbbcbbbbbccbbcbbbbbccbcbcbbcbbcbcbcbccbcb
-        bcbbbbcbbcccbbbccbbbbbcccbcbbbbcbcccbbccbcbbbbbccbccbbbbbbbbccccbbbbccbbbbcbcbbbbcbccbcbbbcbcccbbbccbcbbbcbccbbbbccbbccbbbcbcbcbccbbccbbcbcbbbbbbbbbbccbbbbcbcbc
-        bccbbcbbbcbccbbbcbcbbbbbcbbccccbccbcbccbbccbbcbcccccbbbcccbbcccbcbcbccbcbcccbccbbccbbcbcccbccbbcccbbcccccbbbbbbccbbcbbcbcbcbbcbcbbccbbbbcbbccbcccbbcbbbcbccbccbc
-        bcbccbcccbbbcbbbbbbbccccbbcbbbccbbbcccbcbbbcbbcbccbcbbcbbcbbbbbcbcbccbbbcbbcccbcccbbccbbbbbbccbccbcccbbbcbbcbbbbbbcbccbcccbbbbbbbbcbccbcccbccbbbccbbcbbbccbccbcb
-        bcbccbcbcbbbbcccbcccbbcbbcbcbbbbbccbcbbcbccbbcbcbbbbcbcbcccbcbbbcbbbbbbbbbbbbbcbbbbcbccbbcbbbbcbbbbbbcbbccbcccbccbbbbbbbcbbccbccbccbbccbcbbbbcbcccbcbccbbbbbbbbc
-        bcbbbbcbcbcccbbcbbccccbbbbccbcbcbbbcbbbbbcbcbccbbbbbbcccbcbbbccbcbcbccbccbbcbbcbcbcbbcbbcbcccbbbccbbbcbbbbbccccbcccbcbccbcbbbcbcccbbcbbcbbbccbbbbbbbcbcccbbccbbb
-        bcbccbbcbbbcbbcbcbcbbbccbbbcccbbbcbbbbbccccbccbcccbcccbbccccccbcbbbccbbcbbbbcbccbbccbcccbbbcbbccbcbbcbccbbcccbbbbcccbcbcbbbcccbbbbcccbccbcbcbcbccbbccbcbbccbbbcb
-        bbbbcbbcbcbcbcbcbcbbccbbbbcccbbcbbbccbbcbbbbccbbbcbcbcbbbbbbbbbbcbcbcbbcbbbccbbbcbbbcccbcbbcbcbcbbbccbbbbcbccccbcbbccbcccccbccbbcbbbcbbbbbcbbbcbbbbccbbcccbbcbcb
-        bcbcbcbcbccbbbcbbbccbbcccbcbbcbcccccbcbcbbcbbbbcbbbbccbbbbcbbcccbcbbcccbcbbcbcbbccbbbbbbcccbbbbcccbccbcbbcbbbccbbbbbbbbcccbbbcbbccbbbbccbccbbcbcbbcccbbbcbcbccbc
-        ccbcbbbcbccbcccbbccbcbbbcbcbbcbbbcbbbcbcbcccbcbbbcbccbbccbcbbbbccccbbbbbccccccbbbbccbbcbbcbbcbbccbcbbbbcbcbccbbbcbcbbbcbbbbcccbbcbbcbcbbbccbcbbcbbccbccbbbcbbbbc
-        bbcccbbbcbccbccbcbbbbcbcccbbbbbcbbbcbcccbbcccbbbbccbbcbbbccbbcbcbbbbcccbcbcbcccbbcbccccbcccbcbcbcbbcbbcbcccccccbccbbbcbbbbccccbcbcccbcbccccbcccbbcccbcbcccbcbccc
-        bccccbcbbbcbcbcbbcbcbccccbbcbbccccbbbbbcccccccbbbcbcccbcbcbbcbcbcccccbcccccccccbcccbcbcbbcbbbcccccbbbcbcbbbbcbbcccbbccbccccbbbcbbbcbcbcccbbccbbccbccccbcbbcbbcbb
-        bbbbcbcbccbbbcbcbcbcbbbcccbcccbcccbcbcbbbbbccbbccbcbbcbcbbccccbbbbcbbbcbbcbbbcbcccbcbcbcbbcbbcbbbcbbcccbccbbbbcbccbbcccccbbccccbbccbcbbbcbbcbbcbbbcbbbcbbcbcbbbb
-        ccbccbccbccbbcbccbcccbcbbbbcbccbcbbcbcccbcbbcbccbbcccbbccccbcbbcccbcbbbcbbbcbbbbbbbbbbbcbccccbcbcccbccbbcbcbcbbccbcbbbbbbbbcbcbbcbcbbccbcbbbccbbbbbcbbccbccbcccc
-        cccbccbbcbbbccbcccbbcbbbcbbcbccbbbcbbcbccccbbccbbbcbbccbcbbcbcccbcbcbbccbccccbbccccbcbcbccbcccbccbcccbbccccbbccccbcbcbcbbcbbbbccccbbbccccccbbcbcbbcbbcccccbcbbcb
-        cbbccbbcbcbcbcbbbbbcccbcbccbbccbbcccbbcccbccbcbcccbcbbcccccccbbbbccbcbcbcbbccbbcbbbcbbcbbbcbbcbbcbbcbccccbcccbbbbcccbccbcbccbccbccbbcbccbcbbcbbccbccbcbbcccbcccb
-        bbbcccbbbccccbcbbcccccbbbcccbcbbbccbbccbcbbbcbbbccbbcbbcbbbbccbccbcbcbcbbbbbcbbbbcbcbccbcccbcbbcccbbcbcbbbbbcbcccbbbcbcbcbbccccbbbbcbcbcbcbbbbbcccbbbbbcbbbbcbcb
-        bccbcbbccbcbcbbcccbbccbbbbcbcbccbbcccbbcbbbcbcccbcbcccbbccbbbbcbcbcbcbcbcccbcbccbbcccbcccbbbccbbbbbcbcbbbccbbbbcbbcccbbccbbcbbcbcbccbbbbcbccbcccbcbcccbcbbcccbbc
-        cccbcbbbbcbcccbcbbcccbccccbcbccbcccccbccbcbcbbccbcbcbcbccbcbccbbcbccccbbbcccccbbbcccccbccbbbcccbbcccccbcccbbbcbcbccbccbbcccbcbbbcccbbbbccccbccbcccccbccccccccbcc
-        cbcbbccbbbbccbccbbcccbbbcbcccccbcbcbccbcccbbccbcbcbcbbcbcccccccbbcbbcbbcccbcbcbccbbbcccbcbcccbbbccbbbcbcbcbcbcccccccbbcbbbbcccbbbbbcccbccbccbcbcccccbccbbbbcccbb
-        bcbccccccccccbbbccbcbcbbcbccccbcbbbccbcbbccbccbbbccbbcbcbbcbcbbccbcbbcccbcbcbbccbbccbbbccccbbccbbccbcbccbbcbbccbcccbcccbcccbccbcccbbbcbccbccbbbcbbbbbbbcccbcbccb
-        cbbcbbcccbcbcbcbcbcbccccbbbbbbcbcbbcbbbccbcccbcbbcccccccbccbcbbccbccccbbbcbbcccbcbccbbccbbccccbcccbbbbbccccccbcbbbbbcbccccbbccbccccbcbccbbbbcbcccbbbbcccbbbcbbcc
-        cbccbcccbccbbbbcccbccbbcccbcbbccccccbbbbcbbccbbccccbcbcbbccccbcccccbcbcccccbcccccccccccccbccbccbbccccbbccbbcbccbcbbcbccccbcccccbccbccccbbccbcbcbcbbbbccccbbbcbbc
-        ccbccbbccbbbccbcbbccbbcccbbcccbbcbcbcbbccbbbbcbcbbcbcbbccbccccbcbccbccbcbcbbbbcbccbbbbccbbccbcbcccbcccbccccccccbcbcbbbbbccccbbbccbccccbccbccbbcccccccbbccbbcbbcc
-        ccbbcbbcbcccbcbbccbcccbccbbccbccbbbbccccbccccbcbcbbcbcbcbbcbcbbbccbccccbbcbccbccccbbcccbcbcbcccbbcbbbcbbbccbbcbcbccbbcccbbbbbbccbcbbbcbccbbcbcbccbccbbccbcbccccb
-        bbcbccbbcbcccccccbbbccbbcbbccbcbcbccbccccbcccbccbcccbcccbcbcbbcccbbbbbbbbcccbcbbcbbbbbbbcbcbcbbcbbcccbccbbbccbbccbcccbccbcbcbccccbcbbcbbcbbcbcccbcbbccbbcccccbcb
-        bcbcbbbccccbcbcccccbcccbbcbcccccbccccccbcbbccbbcccbcbbccbcbbccccbcccbbbbbbccbbccbccbccccccccccbbbbbccbcccccbbbcbccccccbccccbbbccbcbcbccccbcbcccbcbcccbccccccccbc
-        cbcccbccbcccbcbbccbbccbbbccbcbbcbbcbccbcbbccbccccbccbcccccbcbccbccbccccccccccbbbccbcbbcccbccccbbccccbbccbbcbcccccccbcbbcbcbccbbccbccccbbbcbccbbbccbccccbcbbcbbcc
-        cbcccccbccbbcbcccbbcccbccbbccccbccccbcbcbccccbbcbcbbbccccccbbccbcbbbcccbcbcbcccccbcbccbcccbbcccbbbccccbbbcccccbbbbbccccbbbccccccccbbbccccbccccbbcbcbbcbbbbbcbbcc
-        cbcbcbcccbbccbcccccbcbbcccccbbbccbbccbcbcbcccbccccbccbbccbccbbcccbcccbccbccbccbccbccbcbbbbbccbccbccccccbbccccbcccbbcbccbbccccbbccbccbbccccbcccccccbbcbcccbcccbcc
-        bcccbbcccccccbccbccbccbccccccccccbccbbccccbccbcbbcccccbcccbccbbcbcbccbccbbcccccbcccccccccbbcbcccccbbcccbcbbbccbccccccbcccbcbccbcbccbcbbcbccccccccbcccbbcbcccccbb
-        ccbcccccccbbbcbbcbcbbbccbccccccccccccbccbcccbccccbccbbccccbbbcbbbccccccbcbcbccccbcbccbbbbcbbbbcccbcccbbccbccccbccbcbcccbcccbbbbccbbbcbcccccbcccbcccbcccbcbbccccb
-        cbbccbbccbbbcccbccbcccbbbbcbccbbbbcccbbcbcbbcbbccbcbcccbbcbccccbbccbcbbcccccbbbbbcbbcccbccccccbccbccbbccbbccbcbccbbcbbcbcccbbcbcccccccbbcccbbcbcbbccbcccbbcccbcc
-        bccbcbbcbccccbcccbcccccbccbbbbbbbbbcccbccbccccbcbccbcbbccccbccccccbccbcbbbcccbccbccccbcbbcccbbcccbcbcbccccccbccbccbbcbccbcbcccccbcccccbccbbbbcbbccbbcbcbcccbbbcc
-        bcccccccbccbbccccccccbcbcbbccbbbbcbcbbcccbbccbcbcccbbcccbcccccbcbbccccbccbccccccccccccbbbcccbccccbcbccbbccbbbbbccbcccccccbcbcccbcbcccccbcbcccccbbcccccbccccbbbcc
-        cccbbcbbcccccbbcbbcbcbbcccccccccccccccbbbcccccbcccbcccbcccccbcccccbcbccbcccbccccccccccccccccbbcccbcbbcbccbccccbccbcbccbbbcbccbbcccccccccccbcbccccbbccbccccbccccc
-        cbcccbbcbccccbbccbbcbcccbcbbccbcbcbcccccbcccccbbbbcccbccbbccbccbcbcbccbccbbcbcbbbbccccbcbcbcbbcccbccccccbbccbccccbccbcccccbcccbbbcbbcbccbbcccbcccccbcbcbcbccbcbc
-        cbbcccccbcbccccccccccccccccccbccccbccccbbccccccccccbcbbccbbcbcccccccbccccbccccbbbbcbbbccbccbcccccccccccbccccccccbcccbcbccccccccccccbcbbbbccccbbcccbcccbccbbccbcc
-        bcccbccccccccccbbcbccbccbcccccccbccccbccccccccbccbcbcbbccccccccccccccccccccccbcbcbccccccccbcbcccbbccccccbcbbcccccccccccbcccccccbccbccbcccbcbccccbcbbcccbcccbcbcb
-        ccccccbbbccbcbccbcccbcccbbccccccbccbcccccccbbcccccccbccccbcbcbcccbbcbcccbcbcccbcccccccbbbccccccbcccccccbcccccbbccccccbbcbbccccccccbcccbcccbccccccccccccccbbccbcc
-        bccbccccbcbcccccccccbccccccbcbbccbcccbcccbcccccbbccccbccccbbccbbbbccbbcbbbcccccccbccbccbccbcccccbcccccbccbcccccbcbcbcccccccbcbcccccbcccccccbbbcccccccbccbccccbcc
-        cccbcccbcccccbcbccbcbcccccccbbcccccccbbcbbcccccbccbcccccccccbccccccccccccccccccbbbcccccccccbcbcbccbccbcbccccbcccbccbcbccbccccbbcccbccbcbccccbbccbcccbbcccccccccc
-        cccccbccbcccccccccccccbccbccbccccccccbcccccccccccbccccccccbccbbbcccbccbcbbccccbcbccccccccccbccbccccccccccbccbccccccbcccbbccbcccccbcccbcbccccbbbcccbcccccbccccccb
-        ccbccbbccbcbbbccbbccbccccbcccbccbcbcbccccbccccbcccbcbcccccbcccccccbccbbcccccbcbccccbccbcccccbbccbccbbcccccbccccbbccbccbbcccccccbccbccccccbccccccccccccbccbccbccc
-        bcbccccccccccbcccbbccbcccccbcccbcccbcbccbbccbcbcccccccbccbcbccbccccbcbccccccbcccccbccccbcbbbbccccbccccbbcbbcccccccbcccccccbcbbcbccccbccccbcccccccbbbccbbcccccccb
-        cbcccbccbcccccbccccccccbccbccbcccccbcbccccbccccbccbbbbccccccccccccbccccccbbccccccccbbccbcccccccccbccbcccccccbccbccccccbccbccccccbccbbccccbbcbccccccccccbbbccccbc
-        cbcccccccbbcccbccccccbcccccbccccccccbccccbccccccccccbccccccccccbccbccccccbcccccbccccccccccbccccccccccccccbccccccccccbccccbccccccccbcccccbccbcccccbbccccccccccbbc
-        ccccccbccccccccbccccbbccbccccccbccccccccccbbccccccbbccccbcccccbcbccccbcbccbcccccccbccccccbccccccccccccccccbcccbcccbbcccccccbcbccccbccbccbccccbccccccccccbcbccccc
-        bcccbbccbcccccccbcbbccccccbcccbccccccbbcccccbccbccccccbccbbccccccccccccccccccbcccbccbccccccbbccbbbccbccccccbcbcccccbbccbcccbcbccccccbcccccccccccbccccbbbccbccccc
-        cbccccccccccbccccccccccccccccccbbbbcccccccccccbccbccccbccccccbcccccbbccccbcccbcccbccccbbcccccbcccbccbcbcccccccbccccccccccccccccbccbccbccccccbcbcccccccccccccbccc
-        ccccccccbcccbcbccccccccccccbbcccccccbbccccccccccccccbcbcccbcbcccccccccccccbcccbcccccccccccccccbcbcccccbccccbcccbbcccccbccccccccccccbccbccccccbccccccccbccccccccc
-        ccbcccccccccccccccccbcbccbcbccccccbccccccbccccccccbcccccbccccccccbcbccccccccbccccccbcccbccbcccbcccccccccccccccccccbccccccbbcccbccbccccbcbcccccbcbccccccbccbcbbcc
-        ccccbcbccbccccccccbcccbccccccbcccbcbccccccccccbbcbbcccbcbcccccbcccccbbccbcbcccccbccccbcccbcbcbccbbcccbcccbccccccccbccbcccccbccbcccccbcccccbccbccccccbccccbbccccc
-        cbcbcbccbcccccbcccbbcccccccccccbccccccbccbcbcbccccccccccccccbccccbcccccbccccbccccbccccbccccccccccccccccbbccccbcbccccbccccccccbcccbccccccbcccccccccbbccccccccbccc
-        cccccccccccbccccccbcccccbcccccccccccbcccccccccccbcccccccccbccbcccccccccccbccccccccccccccccccccbcbccbcbccccccccbcccbcccccccccbcccccccccbccbcccccccccccccccccccccc
-        ccccccccccccccbcccccbccccccccccccccccccccbcccccccccccccbccccccccccccccccccccccbcccccbcccccccccccccccccbccccccbcccccccccccccbcbcccccccccccccccccbcccbcccbcbccbccc
-        cbbcbccccccbccccccbccbccccccbcbcccbcccccccccbccbcbcccccccbccccbccbcccbccccbccccccbcccbccbcbcbcccccccccccbccccccccbccbcccccbccccccbbccccccccccbcccccbcbcccccccbcc
-        ccccbccccccccccbcccccccccccbccccccbccccbcbcccccccccccbccccccccccccbcbccccccccbcccccbcccccccccccccccccccccbcccccccccccccbccccccccccccbccccbcccccccccccccccbcccccc
-        bcccbcbcbccccccbcccbccccccbcbbccbccccccccbcbccccccccbcccccccccccccbcccccccbccbccccccccccbccccccbcccccccccccccccccccbcccccccbccccccccccbcccccbcbccccbcccccccccccc
-        cccbcccccccccccccccccbcccccccccccccbbcccccccccccbcccccccccbbccccccccccbcccccccccccccccbcccccccbcccccccbcccccccccccccccbcccbcccccbccbccccbccccccccccccccccccbcccb
-        ccccccccccbcccbccccbccccbcccccccccccbcccccccccbccccbcccbcccccbbcbcccccccbccccbcccbcccccccbccccccbbccccbccbccccbccccccbccccccccccccccbcccccbcccccccccbcccccccccbc
-        ccccccccccccccccccccbccccccccccccccccccccccccbccccccccccccccccccccccbccccccccccccbcccbccccccccccccccccccbcccbcccbcccccccccccbbcccccccccccccccccccbcccbccccbccccc
-        ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccbcccccccccccbccccccccccccccccccbccccbcccccccccccccbccccccccbccccccccccccccccccccccccccccccbccccccccc
-        ccccccccccbccccccccccbcccccccccccccccccccbcccbccccbccbccccccccccccccbccccccccbcccccccccccccccccccccccccbccccccccccccccccccccccccccccccbccccccccbbccccccccccccccc
-        ccbccccccccccccccbccccccbccccbcccbcccccbccccccccccccccccccbccccccbccccccccccccccccccccccccccbccccccccccccbcccccccbcccccccbcccccccbcccccccbcccccccccccccccccccbcc
-        cccccccbcccccbcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccbcccccbccccccccccccccccccccccccccccccccccccccbccccccccccccccccccccccccccbcccccc
-        cccccccccccccccccccccccccccccccccccbccccbcccccccccccbccccccccccccccccccccccccccccccccccccccccccccccccccccccccbccccccccccccccbcccccccccbccccbcccccccccccccccccccc
-        cccccccbcccccccccccccccbcccccbccccccbccccccccbccccccccccccccccccccccccccccccccccccccccbcccbccccccbcccccccccccccccccccccccccccccccccccccccccccccccbcccccccccccbcc
-        ccbccccccbccccbccccccccccccccccccccccccccccccccccccbcccccccccccccccccccbccccbccccccccccccccccbcccccccccbccccccccccccbccccbcccccccccccccccccccbcccccccbcccbcccccc
-        cccccccccccccccccbcccccccccbccccccccccccccccccccccccccccccbccbcccbccccccccbccccccccbccccccccccccccccccccccbcccccbccccccccccccccccbcccccccccccccccccccccccccccccc
-        cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-        cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-        cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-        cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-        cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-        cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-        cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-        cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-    `;
 }
