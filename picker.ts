@@ -184,9 +184,6 @@ namespace microcode {
             let currentTop = computedTop + HEADER;
             this.groups.forEach(group => {
                 let currentLeft = computedLeft;
-                if (group.opts.label) {
-                    currentTop += LABEL;
-                }
                 group.buttons.forEach((btn, index) => {
                     if (!firstBtn) { firstBtn = btn; }
                     if (index && (index % MAX_PER_ROW) === 0) {
@@ -198,6 +195,9 @@ namespace microcode {
                     currentLeft += 16;
                     this.quadtree.insert(btn.hitbox, btn);
                 });
+                if (group.opts.label) {
+                    currentTop += LABEL;
+                }
             });
 
             this.cancelBtn.xfrm.localPos.x = computedLeft + computedWidth - 8;
