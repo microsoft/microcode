@@ -43,7 +43,7 @@ namespace microcode {
         fieldEditor: FieldEditor;
         jdParam: string
 
-        getIcon() {
+        getImage() {
             return this.tid
         }
         factory() {
