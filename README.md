@@ -2,6 +2,14 @@
 
 Microsoft MicroCode is a [MakeCode Arcade](https://arcade.makecode.com/) application that allows the creation, modification, and execution of simple reactive programs for microcontroller-based target devices such as the [BBC micro:bit](https://microbit.org) and [Jacdac brains](https://microsoft.github.io/jacdac-docs/start/brains/). MicroCode has a tile-based language and editor, inspired by [Kodu Game Lab](https://www.kodugamelab.com/), for creating programs using just the 4-way direction pad and A and B buttons supported by [Arcade-compatible devices](https://arcade.makecode.com/hardware/).  The language is parameterized by a set of [Jacdac services](https://microsoft.github.io/jacdac-docs/services/) that represent the set of hardware features of the target device (the device to be programmed). The programs are compiled into the bytecode of the Jacdac virtual machine and persisted in the flash memory of the target device.
 
+## Developing
+
+* `npm install -g makecode`
+* in this repo, run `mkc init`
+* run `mkc serve`
+* head to http://127.0.0.1:7000 for simulator
+* run `mkc build -d` to compile and deploy to device
+
 ## Editor
 
 ## Tile-based Language
@@ -36,16 +44,6 @@ Filters may be parameterized based on the kind of sensor (discrete or continuous
 ### Modifiers
 
 ## Parameterization via Jacdac Services
-
-## Target Runtimes
-
-## Developing
-
-* `npm install -g makecode`
-* in this repo, run `mkc init`
-* run `mkc serve`
-* head to http://127.0.0.1:7000 for simulator
-* run `mkc build -d` to compile and deploy to device
 
 ## Contributing
 
