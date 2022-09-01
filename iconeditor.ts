@@ -29,6 +29,6 @@ namespace microcode {
             },
             onHide,
             title: "Icon",
-        });
+        }, false);
     }
 }
