@@ -23,7 +23,7 @@ function makeCodeRun(options) {
                 meta = JSON.parse(metasrc);
             })
             var vel = document.getElementById("version");
-            if (meta.version && meta.repo && vel) {
+            if (meta.version && vel) {
                 var ap = document.createElement("a");
                 ap.download = `microcode.${meta.version}.hex`;
                 ap.href = "https://microsoft.github.io/microcode/assets/firmware.hex";
