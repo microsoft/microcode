@@ -23,7 +23,7 @@ namespace microcode {
 
     export interface FieldEditor {
         field: any
-        editor: (field: any) => Picker
+        editor: (field: any, cursor: Cursor) => Picker
         image: (field: any) => Image
     }
 
