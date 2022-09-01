@@ -443,7 +443,9 @@ namespace microcode {
             pin_off: "M12",
             happy: "M13",
             sad: "M14",
-            icon_editor: "M15"
+            icon_editor: "M15",
+            color_red: "M16",
+            color_darkpurple: "M17"
         }
     }
 

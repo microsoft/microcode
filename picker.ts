@@ -91,8 +91,6 @@ namespace microcode {
             if (onClick) {
                 onClick(icon, button);
             }
-            if (!this.hideOnClick)
-                this.draw()
         }
 
         private cancelClicked() {
