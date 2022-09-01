@@ -22,9 +22,10 @@ namespace microcode {
     }
 
     export interface FieldEditor {
-        field: any
-        editor: (field: any, picker: Picker) => void
-        image: (field: any) => Image
+        field: any                                    // the value, should be a reference and clonable
+        editor: (field: any, picker: Picker, onHide: () => void) => void  // use picker to update field
+        image: (field: any) => Image                  // produce an image for the field for tile
+        // TODO: also need serialization, deserialization functions
     }
 
     export interface TileDefn {
@@ -52,7 +53,6 @@ namespace microcode {
         type: TileType.MODIFIER;
         category: string;
         priority: number;   // for runtime reordering. 10 is default.
-        param?: any;        // the user might parameterize this tile (say with image editor)
     };
 
     export const RuleCondition = {
@@ -593,10 +593,8 @@ namespace microcode {
                     . . . . .
                     . . . . .
                     `,
-                    editor: (field: Image, picker: Picker) => {
-                        // TODO
-                    },
-                    image: (field: Image) => scaleUp(field)
+                    editor: iconEditor,
+                    image: scaleUp
                 }
             },
             [tid.actuator.pin_0]: {

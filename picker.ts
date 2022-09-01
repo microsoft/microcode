@@ -48,6 +48,7 @@ namespace microcode {
         private cancelBtn: Button;
         private panel: Bounds;
         private onClick: (btn: string, button?: Button) => void;
+        private onHide: () => void;
         private hideOnClick: boolean;
         private title: string;
         public visible: boolean; 
@@ -101,9 +102,11 @@ namespace microcode {
 
         show(opts: {
             title?: string;
-            onClick?: (btn: string) => void,
+            onClick?: (btn: string, button: Button) => void,
+            onHide?: () => void
         }, hideOnClick: boolean = true) {
             this.onClick = opts.onClick;
+            this.onHide = opts.onHide;
             this.hideOnClick = hideOnClick;
             this.title = opts.title;
             this.prevquadtree = this.cursor.quadtree;
@@ -128,6 +131,9 @@ namespace microcode {
             this.cursor.snapTo(this.prevpos.x, this.prevpos.y);
             this.groups.forEach(group => group.destroy());
             this.groups = [];
+            if (this.onHide) {
+                this.onHide()
+            }
         }
 
         draw() {

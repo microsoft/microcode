@@ -728,6 +728,20 @@ namespace microcode {
                     label: elem.name
                 };
             });
+            // special case for field editor
+            if (btns.length == 1 && suggestions[0].fieldEditor) {
+                const fieldEditor = suggestions[0].fieldEditor
+                fieldEditor.editor(fieldEditor.field, this.editor.picker, () => {
+                    // TODO: where to clone?
+                    if (index >= this.ruledef.modifiers.length) {
+                        this.ruledef.modifiers.push(suggestions[0]);
+                    } else {
+                        this.ruledef.modifiers[index] = suggestions[0];
+                    }
+                    this.page.changed();
+                })
+                return;
+            }
             if (index < this.ruledef.modifiers.length) {
                 btns.push({
                     icon: "delete"
