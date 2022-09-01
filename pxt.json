@@ -4,7 +4,8 @@
     "description": "Coding microcontrollers using Arcade",
     "dependencies": {
         "game---light": "*",
-        "device": "*"
+        "device": "*",
+        "codal-jacdac-pxt": "github:microsoft/codal-jacdac/pxt#v0.0.3"
     },
     "files": [
         "main.ts",

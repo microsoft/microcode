@@ -9,3 +9,5 @@ _site
 *.tgz
 .header.json
 .simstate.json
+mkc-local.json
+codal-jacdac-pxt

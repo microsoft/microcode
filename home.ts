@@ -1,3 +1,8 @@
+namespace userconfig {
+    export const DISPLAY_CFG0 = 0x02000080 // don't wait for shield on startup
+    // TODO this should be only enabled on micro:bit
+}
+
 namespace microcode {
     enum HomeView {
         Console,    // Show the console log
@@ -128,6 +133,12 @@ namespace microcode {
             control.onEvent(ControllerButtonEvent.Repeated, controller.up.id, () => {
                 this.singleStep = true;
             });
+            control.onEvent(ControllerButtonEvent.Pressed, controller.right.id, () => {
+                const progdef = this.app.load(SAVESLOT_AUTO);
+                if (progdef) {
+                    new jacs.TopWriter().emitProgram(progdef)
+                }
+            });
         }
 
         /* override */ shutdown() {
@@ -153,8 +164,6 @@ namespace microcode {
             }
             this.agent = new Agent(this, progdef);
             this.paused = false;
-
-            // new jacs.TopWriter().emitProgram(progdef)
 
             this.log("program started", 1);
         }

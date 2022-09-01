@@ -38,4 +38,4 @@ jobs:
           makecode --java-script
       - name: build hardware N3
         run: |
-          makecode --hw F4,D5,N4,N3
+          makecode --hw N3
