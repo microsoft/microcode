@@ -37,6 +37,7 @@ namespace microcode {
         category?: string;
         constraints?: Constraints;
         fieldEditor?: FieldEditor;
+        jdParam?: string
     }
 
     export type SensorDefn = TileDefn & {
@@ -666,6 +667,7 @@ namespace microcode {
                 name: "happy",
                 category: "led_icon",
                 priority: 10,
+                jdParam: "\x08\x12\x10\x12\x08",
                 constraints: {
                     handling: {
                         "terminal": true
@@ -678,6 +680,7 @@ namespace microcode {
                 name: "sad",
                 category: "led_icon",
                 priority: 10,
+                jdParam: "\x10\x0a\x08\x0a\x10",
                 constraints: {
                     handling: {
                         "terminal": true

@@ -155,6 +155,25 @@ namespace jacs {
         ERROR = 0x200,
     }
 
+    export function storeStmt(k: CellKind) {
+        switch (k) {
+            case CellKind.LOCAL: return OpStmt.STMTx1_STORE_LOCAL
+            case CellKind.PARAM: return OpStmt.STMTx1_STORE_PARAM
+            case CellKind.GLOBAL: return OpStmt.STMTx1_STORE_GLOBAL
+            default: return oops("bad kind")
+        }
+    }
+
+    export function loadExpr(k: CellKind) {
+        switch (k) {
+            case CellKind.LOCAL:
+            case CellKind.PARAM:
+            case CellKind.GLOBAL:
+                return k as any as OpExpr
+            default: return oops("bad kind")
+        }
+    }
+
     // Size in bits is: 8 << (fmt & 0b11)
     // Format is ["u", "i", "f", "reserved"](fmt >> 2)
     export enum OpFmt {
