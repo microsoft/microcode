@@ -22,10 +22,11 @@ namespace microcode {
     }
 
     export interface FieldEditor {
-        field: any                                    // the value, should be a reference and clonable
+        field: any,              
+        init: any,
+        clone: (field: any) => any,
         editor: (field: any, picker: Picker, onHide: () => void) => void  // use picker to update field
         image: (field: any) => Image                  // produce an image for the field for tile
-        // TODO: also need serialization, deserialization functions
     }
 
     export interface TileDefn {
@@ -690,19 +691,16 @@ namespace microcode {
                 name: "icon editor",
                 category: "icon_editor",
                 priority: 10,
-                constraints: {
-                    handling: {
-                        "terminal": true
-                    }
-                },
                 fieldEditor: {
-                    field: img`
+                    field: undefined,
+                    init: img`
                     . . . . .
                     . . . . .
                     . . 1 . . 
                     . . . . .
                     . . . . .
                     `,
+                    clone: (img: Image) => img.clone(),
                     editor: iconEditor,
                     image: scaleUp
                 }
