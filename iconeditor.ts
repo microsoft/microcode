@@ -25,29 +25,27 @@ namespace microcode {
         }
 
         this.picker.show({
-            onClick: (iconId: number) => {
-                const index = PAGE_IDS.indexOf(iconId);
-                this.switchToPage(index);
+            onClick: (iconId: number, button: PickerButton) => {
+                let on = button.getIcon() === tid.modifier.color_red
+                let row = 0, col = 0
+                for (; row < 5; row++) {
+                    let index = button.picker.groups[row].buttons.indexOf(button);
+                    if (index >= 0) {
+                        col = index;
+                        break;
+                    }
+                }
+                image5x5.setPixel(col, row, on ? 0 : 1)
+                button.setIcon(getColor(col,row))
             },
-            title: "Select",
+            title: "Icon",
         });
     }
 
 
 /*
         public onButtonClicked(button: PickerButton, icon: string) {
-            let on = button.getIcon() === tid.modifier.color_red
-            let row = 0, col = 0
-            for (; row < 5; row++) {
-                let index = this.groups[row].buttons.indexOf(button);
-                if (index >= 0) {
-                    col = index;
-                    break;
-                }
-            }
-            this.image5x5.setPixel(col, row, on ? 0 : 1)
-            button.setIcon(this.getColor(col,row))
-            this.draw()
+
          }
   */  
 }
