@@ -128,8 +128,6 @@ namespace microcode {
             control.onEvent(ControllerButtonEvent.Repeated, controller.up.id, () => {
                 this.singleStep = true;
             });
-
-            new jacs.TopWriter().emitProgram()
         }
 
         /* override */ shutdown() {
@@ -155,6 +153,9 @@ namespace microcode {
             }
             this.agent = new Agent(this, progdef);
             this.paused = false;
+
+            // new jacs.TopWriter().emitProgram(progdef)
+
             this.log("program started", 1);
         }
 

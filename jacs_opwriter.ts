@@ -276,7 +276,7 @@ namespace jacs {
             return v
         }
 
-        _emitCall(procIdx: number, args: CachedValue[], op = OpCall.SYNC) {
+        emitCall(procIdx: number, args: CachedValue[], op = OpCall.SYNC) {
             const proc = literal(procIdx)
             const localidx = literal(args[0] ? args[0].index : 0)
             const numargs = literal(args.length)
@@ -380,7 +380,7 @@ namespace jacs {
             this._setLabelOffset(l, this.location())
         }
 
-        emitIfAndPop(reg: Value, thenBody: () => void, elseBody?: () => void) {
+        emitIf(reg: Value, thenBody: () => void, elseBody?: () => void) {
             if (elseBody) {
                 const endIf = this.mkLabel("endif")
                 const elseIf = this.mkLabel("elseif")
