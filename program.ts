@@ -107,14 +107,14 @@ namespace microcode {
         public execute() {
             this.prevState = this.state;
             this.state = {};
-            if (!this.defn.sensor || this.defn.sensor.phase === "pre") {
+            if (!this.defn.sensor || this.defn.sensor.phase === Phase.Pre) {
                 this.sensorFn(this);
             }
             this.filterFns.forEach(fn => fn(this));
-            if (this.defn.sensor && this.defn.sensor.phase === "post") {
+            if (this.defn.sensor && this.defn.sensor.phase === Phase.Post) {
                 this.sensorFn(this);
             }
-            if (this.evalRuleCondition()) {
+            if (this.state["exec"]) {
                 this.modifierFns.forEach(fn => fn(this));
                 this.actuatorFn(this);
             }
@@ -123,20 +123,6 @@ namespace microcode {
         public reset() {
             this.prevState = {};
             this.state = {};
-        }
-
-        private evalRuleCondition(): boolean {
-            switch (this.defn.condition) {
-                case RuleCondition.LOW:
-                    return !this.state["exec"];
-                case RuleCondition.LOW_TO_HIGH:
-                    // Strong false check against prev state to ensure it was evaluated, and resulted in "no exec".
-                    return this.prevState["exec"] === false && this.state["exec"];
-                case RuleCondition.HIGH_TO_LOW:
-                    return this.prevState["exec"] && !this.state["exec"];
-                default:
-                    return this.state["exec"];
-            }
         }
     }
 }

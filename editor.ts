@@ -458,7 +458,7 @@ namespace microcode {
             this.handleBtn = new EditorButton(editor,
                 {
                     parent: this,
-                    icon: ruledef.condition,
+                    icon: "default",
                     x: 0, y: 0,
                     onClick: () => this.showRuleHandleMenu()
                 });
@@ -608,19 +608,11 @@ namespace microcode {
         }
 
         private handleRuleHandleMenuSelection(iconId: string) {
-            if (RC_IDS.indexOf(iconId) >= 0) {
-                this.setRuleCondition(iconId);
-            } else if (iconId === "plus") {
+            if (iconId === "plus") {
                 this.page.insertRuleAt(this.index);
             } else if (iconId === "delete") {
                 this.page.deleteRuleAt(this.index);
             }
-        }
-
-        private setRuleCondition(rc: string) {
-            this.handleBtn.setIcon(rc);
-            this.ruledef.condition = rc;
-            this.page.changed();
         }
 
         private pickSensor() {
@@ -802,7 +794,6 @@ namespace microcode {
 
         public isEmpty() {
             return (
-                this.ruledef.condition === RuleCondition.DEFAULT &&
                 !this.ruledef.sensor &&
                 !this.ruledef.actuator &&
                 this.ruledef.filters.length === 0 &&

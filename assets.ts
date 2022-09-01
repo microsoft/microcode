@@ -57,12 +57,7 @@ namespace microcode {
             this.reg[tid.actuator.pin_0] = icondb.tile_pin_0;
             this.reg[tid.actuator.paint] = icondb.paint;
             this.reg[tid.actuator.stamp] = icondb.stamp;
-            this.reg[RuleCondition.DEFAULT] = icondb.rc_default;
-            this.reg[RuleCondition.HIGH] = icondb.rc_high;
-            this.reg[RuleCondition.LOW] = icondb.rc_low;
-            this.reg[RuleCondition.LOW_TO_HIGH] = icondb.rc_low_to_high;
-            this.reg[RuleCondition.HIGH_TO_LOW] = icondb.rc_high_to_low;
-        }
+            this.reg["default"] = icondb.rc_default;        }
     }
 }
 

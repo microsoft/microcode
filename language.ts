@@ -22,67 +22,99 @@ namespace microcode {
     }
 
     export interface FieldEditor {
-        field: any,              
+        field: any,
         init: any,
         clone: (field: any) => any,
         editor: (field: any, picker: Picker, onHide: () => void) => void  // use picker to update field
         image: (field: any) => Image                  // produce an image for the field for tile
     }
 
-    export interface TileDefn {
-        type: TileType;
-        tid: string;
-        name: string;
-        weight?: number; // Influences sort order
-        hidden?: boolean;   // Hide from UI?
-        category?: string;
-        constraints?: Constraints;
-        fieldEditor?: FieldEditor;
-        jdParam?: string
+    export class TileDefn {
+        constructor(
+            public type: TileType,
+            public tid: string,
+            public name: string
+        ) {
+
+        }
+
+        hidden: boolean;   // Hide from UI?
+        category: string;
+        constraints: Constraints;
+        fieldEditor: FieldEditor;
+        jdParam: string
     }
 
-    export type SensorDefn = TileDefn & {
-        type: TileType.SENSOR;
-        phase: "pre" | "post";  // whether to execute before or after filters evaluate.
-    };
-    export type FilterDefn = TileDefn & {
-        type: TileType.FILTER;
-        category: string;
-        priority: number;   // for runtime reordering. 10 is default.
-    };
-    export type ActuatorDefn = TileDefn & { type: TileType.ACTUATOR; };
-    export type ModifierDefn = TileDefn & {
-        type: TileType.MODIFIER;
-        category: string;
-        priority: number;   // for runtime reordering. 10 is default.
-    };
-
-    export const RuleCondition = {
-        DEFAULT: "RC0",
-        HIGH: "RC1",
-        LOW: "RC2",
-        HIGH_TO_LOW: "RC3",
-        LOW_TO_HIGH: "RC4"
+    export enum Phase {
+        Pre, Post
     }
 
-    export const RC_IDS = [RuleCondition.HIGH, RuleCondition.LOW, RuleCondition.HIGH_TO_LOW, RuleCondition.LOW_TO_HIGH];
+    export class SensorDefn extends TileDefn {
+        constructor(
+            tid: string,
+            name: string,
+            public phase: Phase
+        ) {
+            super(TileType.SENSOR, tid, name)
+        }
+    }
+    
+    export class FilterModifierBase extends TileDefn {
+        constructor(
+            type: TileType,
+            tid: string,
+            name: string,
+            public category: string,
+            public priority: number
+        ) {
+            super(type, tid, name)
+        }
+    }
+
+    export class FilterDefn extends FilterModifierBase {
+        constructor(
+            tid: string,
+            name: string,
+            category: string,
+            priority: number
+        ) {
+            super(TileType.FILTER, tid, name, category, priority)
+        }
+    }
+
+    export class ActuatorDefn extends TileDefn {
+        constructor(
+            tid: string,
+            name: string
+        ) {
+            super(TileType.ACTUATOR, tid, name)
+        }
+    }
+
+    export class ModifierDefn extends FilterModifierBase {
+        constructor(
+            tid: string,
+            name: string,
+            category: string,
+            priority: number
+        ) {
+            super(TileType.MODIFIER, tid, name, category, priority)
+        }
+    }
 
     export class RuleDefn {
-        condition: string;
         sensor: SensorDefn;
         filters: FilterDefn[];
         actuator: ActuatorDefn;
         modifiers: ModifierDefn[];
 
         constructor() {
-            this.condition = RuleCondition.DEFAULT;
             this.filters = [];
             this.modifiers = [];
         }
 
         public clone(): RuleDefn {
             const rule = new RuleDefn();
-            rule.condition = this.condition;
             rule.sensor = this.sensor;
             rule.actuator = this.actuator;
             rule.filters = this.filters.slice(0);
@@ -97,13 +129,11 @@ namespace microcode {
         // TODO: user parameters
         public toObj(): any {
             const obj = {
-                C: this.condition,
                 S: this.sensor ? this.sensor.tid : undefined,
                 A: this.actuator ? this.actuator.tid : undefined,
                 F: this.filters.map(elem => elem.tid),
                 M: this.modifiers.map(elem => elem.tid)
             };
-            if (!obj.C) { delete obj.C; }
             if (!obj.S) { delete obj.S; }
             if (!obj.A) { delete obj.A; }
             if (!obj.F.length) { delete obj.F; }
@@ -116,9 +146,6 @@ namespace microcode {
                 obj = JSON.parse(obj);
             }
             const defn = new RuleDefn;
-            if (typeof obj["C"] === 'string') {
-                defn.condition = obj["C"];
-            }
             if (typeof obj["S"] === 'string') {
                 defn.sensor = tiles.sensors[obj["S"]];
             }
@@ -242,11 +269,6 @@ namespace microcode {
             let sensors = Object.keys(tiles.sensors)
                 .map(id => tiles.sensors[id])
                 .filter(tile => !tile.hidden)
-                .sort((a, b) => {
-                    const wa = a.weight || 100;
-                    const wb = b.weight || 100;
-                    return wa - wb;
-                });
             return sensors;
         }
 
@@ -254,11 +276,6 @@ namespace microcode {
             let all = Object.keys(tiles.filters)
                 .map(id => tiles.filters[id])
                 .filter(tile => !tile.hidden)
-                .sort((a, b) => {
-                    const wa = a.weight || 100;
-                    const wb = b.weight || 100;
-                    return wa - wb;
-                });
 
             // Collect existing tiles up to index.
             let existing: TileDefn[] = [];
@@ -286,11 +303,6 @@ namespace microcode {
             let actuators = Object.keys(tiles.actuators)
                 .map(id => tiles.actuators[id])
                 .filter(tile => !tile.hidden)
-                .sort((a, b) => {
-                    const wa = a.weight || 100;
-                    const wb = b.weight || 100;
-                    return wa - wb;
-                });
             return actuators;
         }
 
@@ -298,11 +310,6 @@ namespace microcode {
             const all = Object.keys(tiles.modifiers)
                 .map(id => tiles.modifiers[id])
                 .filter(tile => !tile.hidden)
-                .sort((a, b) => {
-                    const wa = a.weight || 100;
-                    const wb = b.weight || 100;
-                    return wa - wb;
-                });
 
             // Collect existing tiles up to index.
             let existing: TileDefn[] = [];
@@ -327,7 +334,7 @@ namespace microcode {
             return this.getCompatibleSet(all, constraints);
         }
 
-        private static getCompatibleSet<T extends TileDefn>(all: T[], c: Constraints): T[] {
+        private static getCompatibleSet(all: FilterModifierBase[], c: Constraints): FilterModifierBase[] {
             let compat = all
                 // Filter "requires" to matching "provides".
                 .filter(tile => {
@@ -460,234 +467,148 @@ namespace microcode {
     ];
 
     export const tiles: TileDatabase = {
-        sensors: {
-            [tid.sensor.always]: {
-                type: TileType.SENSOR,
-                tid: tid.sensor.always,
-                name: "Always",
-                phase: "pre",
-                hidden: true
-            },
-            [tid.sensor.button_a]: {
-                type: TileType.SENSOR,
-                tid: tid.sensor.button_a,
-                name: "A",
-                phase: "pre",
-                constraints: {
-                    provides: ["input"],
-                    allow: {
-                        categories: ["button-event"]
-                    }
-                }
-            },
-            [tid.sensor.button_b]: {
-                type: TileType.SENSOR,
-                tid: tid.sensor.button_b,
-                name: "B",
-                phase: "pre",
-                constraints: {
-                    provides: ["input"],
-                    allow: {
-                        categories: ["button-event"]
-                    }
-                }
-            },
-            [tid.sensor.timer]: {
-                type: TileType.SENSOR,
-                tid: tid.sensor.timer,
-                name: "Timer",
-                phase: "post",
-                constraints: {
-                    allow: {
-                        categories: ["timespan"]
-                    }
-                }
-            },
-            [tid.sensor.pin_1]: {
-                type: TileType.SENSOR,
-                tid: tid.sensor.pin_1,
-                name: "Pin 1",
-                phase: "post",
-                constraints: {
-                    allow: {
-                        categories: ["pin_mode"]
-                    }
-                }
+        sensors: {},
+        filters: {},
+        actuators: {},
+        modifiers: {},
+    }
+
+    const always = new SensorDefn(
+        tid.sensor.always,
+        "Always",
+        Phase.Pre)
+    always.hidden = true
+    tiles.sensors[tid.sensor.always] = always;
+
+    const button_a = new SensorDefn(
+        tid.sensor.button_a,
+        "A",
+        Phase.Pre
+    )
+    button_a.constraints = {
+        provides: ["input"],
+        allow: {
+            categories: ["button-event"]
+        }
+    }
+    tiles.sensors[tid.sensor.button_a] = button_a;
+
+    const button_b = new SensorDefn(
+        tid.sensor.button_b,
+        "B",
+        Phase.Pre
+    )
+    button_b.constraints = button_a.constraints
+    tiles.sensors[tid.sensor.button_b] = button_b;
+
+    const timer = new SensorDefn(
+        tid.sensor.timer,
+        "Timer",
+        Phase.Post
+    )
+    timer.constraints = {
+        allow: {
+            categories: ["timespan"]
+        }
+    }
+    tiles.sensors[tid.sensor.timer] = timer;
+
+    const pin_1 = new SensorDefn(
+        tid.sensor.pin_1,
+        "Pin 1",
+        Phase.Post
+    )
+    pin_1.constraints = {
+        allow: {
+            categories: ["pin_mode"]
+        }
+    }
+    tiles.sensors[tid.sensor.pin_1] = pin_1;
+
+    const timespan_filters = [tid.filter.timespan_short, tid.filter.timespan_long]
+    const timespan_names = ["short", "long"]
+    timespan_filters.forEach((tid, i) => {
+        const timespan = new FilterDefn(
+            tid,
+            timespan_names[i],
+            "timespan",
+            10
+        )
+        tiles.filters[tid] = timespan;
+    })
+
+    const pin_filters = [tid.filter.pin_analog, tid.filter.pin_digital]
+    const pin_names = ["analog", "digital"]
+    pin_filters.forEach((tid, i) => {
+        const pin_filter = new FilterDefn(
+            tid,
+            pin_names[i],
+            "pin_mode",
+            10
+        )
+        pin_filter.constraints = {
+            disallow: {
+                categories: ["pin_mode"]
             }
-        },
-        filters: {
-            [tid.filter.timespan_short]: {
-                type: TileType.FILTER,
-                tid: tid.filter.timespan_short,
-                name: "short",
-                category: "timespan",
-                priority: 10,
-                constraints: {
-                }
-            },
-            [tid.filter.timespan_long]: {
-                type: TileType.FILTER,
-                tid: tid.filter.timespan_long,
-                name: "long",
-                category: "timespan",
-                priority: 10,
-                constraints: {
-                }
-            },
-            [tid.filter.pin_analog]: {
-                type: TileType.FILTER,
-                tid: tid.filter.pin_analog,
-                name: "analog",
-                category: "pin_mode",
-                priority: 10,
-                constraints: {
-                    disallow: {
-                        categories: ["pin_mode"]
-                    }
-                }
-            },
-            [tid.filter.pin_digital]: {
-                type: TileType.FILTER,
-                tid: tid.filter.pin_digital,
-                name: "digital",
-                category: "pin_mode",
-                priority: 10,
-                constraints: {
-                    disallow: {
-                        categories: ["pin_mode"]
-                    }
-                }
-            },
-        },
-        actuators: {
-            [tid.actuator.switch_page]: {
-                type: TileType.ACTUATOR,
-                tid: tid.actuator.switch_page,
-                name: "Switch page",
-                constraints: {
-                    allow: {
-                        categories: ["page"]
-                    }
-                }
-            },
-            [tid.actuator.stamp]: {
-                type: TileType.ACTUATOR,
-                tid: tid.actuator.stamp,
-                name: "Stamp",
-                constraints: {
-                    allow: {
-                        categories: ["led_icon"]
-                    }
-                }
-            },
-            [tid.actuator.paint]: {
-                type: TileType.ACTUATOR,
-                tid: tid.actuator.paint,
-                name: "Paint",
-                constraints: {
-                    allow: {
-                        categories: ["icon_editor"]
-                    }
-                }
-            },
-            [tid.actuator.pin_0]: {
-                type: TileType.ACTUATOR,
-                tid: tid.actuator.pin_0,
-                name: "Pin 0",
-                constraints: {
-                    allow: {
-                        categories: ["pin_output"]
-                    }
-                }
-            },
-        },
-        modifiers: {
-            [tid.modifier.page_1]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.page_1,
-                name: "page 1",
-                category: "page",
-                priority: 10,
-                constraints: {
-                    handling: {
-                        "terminal": true
-                    }
-                }
-            },
-            [tid.modifier.page_2]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.page_2,
-                name: "page 2",
-                category: "page",
-                priority: 10,
-                constraints: {
-                    handling: {
-                        "terminal": true
-                    }
-                }
-            },
-            [tid.modifier.page_3]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.page_3,
-                name: "page 3",
-                category: "page",
-                priority: 10,
-                constraints: {
-                    handling: {
-                        "terminal": true
-                    }
-                }
-            },
-            [tid.modifier.page_4]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.page_4,
-                name: "page 4",
-                category: "page",
-                priority: 10,
-                constraints: {
-                    handling: {
-                        "terminal": true
-                    }
-                }
-            },
-            [tid.modifier.page_5]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.page_5,
-                name: "page 5",
-                category: "page",
-                priority: 10,
-                constraints: {
-                    handling: {
-                        "terminal": true
-                    }
-                }
-            },
-            [tid.modifier.happy]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.happy,
-                name: "happy",
-                category: "led_icon",
-                priority: 10,
-                jdParam: "\x08\x12\x10\x12\x08",
-                constraints: {
-                    handling: {
-                        "terminal": true
-                    }
-                }
-            },
-            [tid.modifier.sad]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.sad,
-                name: "sad",
-                category: "led_icon",
-                priority: 10,
-                jdParam: "\x10\x0a\x08\x0a\x10",
-                constraints: {
-                    handling: {
-                        "terminal": true
-                    }
-                }
-            },
+        }
+        tiles.filters[tid] = pin_filter;
+    })
+
+    const actuators = [tid.actuator.switch_page, tid.actuator.stamp, tid.actuator.paint, tid.actuator.pin_0]
+    const actuator_name = ["Switch page", "Stamp", "Paint", "Pin 0"]
+    const actuator_allow = ["page", "led_icon", "icon_editor", "pin_output"]
+
+    actuators.forEach((tid, i) => {
+        const actuator = new ActuatorDefn(
+            tid,
+            actuator_name[i]
+        )
+        actuator.constraints = {
+            allow: {
+                categories: [actuator_allow[i]]
+            }
+        }
+        tiles.actuators[tid] = actuator;
+    })
+
+    const terminal = {
+        handling: {
+            "terminal": true
+        }
+    }
+    for (let page = 1; page <= 5; page++) {
+        const page_tid = tid.modifier["page_" + page.toString()]
+        const tile_page = new ModifierDefn(
+            page_tid,
+            "page " + page.toString(),
+            "page",
+            10,
+        )
+        tile_page.constraints = terminal
+        tiles.modifiers[page_tid] = tile_page;
+    }
+
+    const happy = new ModifierDefn(
+        tid.modifier.happy,
+        "happy",
+        "led_icon",
+        10,
+    )
+    happy.constraints = terminal
+    happy.jdParam = "\x08\x12\x10\x12\x08"
+    tiles.modifiers[tid.modifier.happy] = happy;
+
+    const sad = new ModifierDefn(
+        tid.modifier.sad,
+        "sad",
+        "led_icon",
+        10,
+    )
+    sad.constraints = terminal
+    sad.jdParam = "\x10\x0a\x08\x0a\x10"
+    tiles.modifiers[tid.modifier.sad] = sad;
+
+/*
             [tid.modifier.icon_editor]: {
                 type: TileType.MODIFIER,
                 tid: tid.modifier.icon_editor,
@@ -735,4 +656,5 @@ namespace microcode {
             }
         }
     }
+    */
 }
