@@ -428,48 +428,41 @@ namespace microcode {
 
     // Once a tid is assigned, it can NEVER BE CHANGED OR REPURPOSED.
     // Every tid must be unique in the set of all tids.
-    export const tid = {
-        sensor: <any>{
-            always: "S1",
-            button_a: "S2",
-            button_b: "S3",
-            timer: "S4",
-            pin_1: "S6",
-        },
-        filter: <any>{
-            timespan_short: "F1",
-            timespan_long: "F2",
-            pin_analog: "F8",
-            pin_digital: "F9",
-        },
-        actuator: <any>{
-            switch_page: "A1",
-            pin_0: "A3",
-            stamp: "A4",
-            paint: "A5",
-        },
-        modifier: <any>{
-            page_1: "M1",
-            page_2: "M2",
-            page_3: "M3",
-            page_4: "M4",
-            page_5: "M5",
-            pin_on: "M11",
-            pin_off: "M12",
-            happy: "M13",
-            sad: "M14",
-            icon_editor: "M15",
-            color_red: "M16",
-            color_darkpurple: "M17"
-        }
-    }
+    export const TID_SENSOR_ALWAYS = "S1"
+    export const TID_SENSOR_BUTTON_A = "S2"
+    export const TID_SENSOR_BUTTON_B = "S3"
+    export const TID_SENSOR_TIMER = "S4"
+    export const TID_SENSOR_PIN_1 = "S6"
+
+    export const TID_FILTER_TIMESPAN_SHORT = "F1"
+    export const TID_FILTER_TIMESPAN_LONG = "F2"
+    export const TID_FILTER_PIN_ANALOG = "F8"
+    export const TID_FILTER_PIN_DIGITAL = "F9"
+
+    export const TID_ACTUATOR_SWITCH_PAGE = "A1"
+    export const TID_ACTUATOR_PIN_0 = "A3"
+    export const TID_ACTUATOR_STAMP = "A4"
+    export const TID_ACTUATOR_PAINT = "A5"
+
+    export const TID_MODIFIER_PAGE_1 = "M1"
+    export const TID_MODIFIER_PAGE_2 = "M2"
+    export const TID_MODIFIER_PAGE_3 = "M3"
+    export const TID_MODIFIER_PAGE_4 = "M4"
+    export const TID_MODIFIER_PAGE_5 = "M5"
+    export const TID_MODIFIER_PIN_ON = "M11"
+    export const TID_MODIFIER_PIN_OFF = "M12"
+    export const TID_MODIFIER_HAPPY = "M13"
+    export const TID_MODIFIER_SAD = "M14"
+    export const TID_MODIFIER_ICON_EDITOR = "M15"
+    export const TID_MODIFIER_COLOR_RED = "M16"
+    export const TID_MODIFIER_COLOR_DARKPURPLE = "M17"
 
     export const PAGE_IDS = [
-        tid.modifier.page_1,
-        tid.modifier.page_2,
-        tid.modifier.page_3,
-        tid.modifier.page_4,
-        tid.modifier.page_5
+        TID_MODIFIER_PAGE_1,
+        TID_MODIFIER_PAGE_2,
+        TID_MODIFIER_PAGE_3,
+        TID_MODIFIER_PAGE_4,
+        TID_MODIFIER_PAGE_5
     ];
 
     export const tiles: TileDatabase = {
@@ -482,14 +475,14 @@ namespace microcode {
     // initialize the database, imperatively!!!
 
     const always = new SensorDefn(
-        tid.sensor.always,
+        TID_SENSOR_ALWAYS,
         "Always",
         Phase.Pre)
     always.hidden = true
-    tiles.sensors[tid.sensor.always] = always;
+    tiles.sensors[TID_SENSOR_ALWAYS] = always;
 
     const button_a = new SensorDefn(
-        tid.sensor.button_a,
+        TID_SENSOR_BUTTON_A,
         "A",
         Phase.Pre
     )
@@ -499,18 +492,18 @@ namespace microcode {
             categories: ["button-event"]
         }
     }
-    tiles.sensors[tid.sensor.button_a] = button_a;
+    tiles.sensors[TID_SENSOR_BUTTON_A] = button_a;
 
     const button_b = new SensorDefn(
-        tid.sensor.button_b,
+        TID_SENSOR_BUTTON_B,
         "B",
         Phase.Pre
     )
     button_b.constraints = button_a.constraints
-    tiles.sensors[tid.sensor.button_b] = button_b;
+    tiles.sensors[TID_SENSOR_BUTTON_B] = button_b;
 
     const timer = new SensorDefn(
-        tid.sensor.timer,
+        TID_SENSOR_TIMER,
         "Timer",
         Phase.Post
     )
@@ -519,10 +512,10 @@ namespace microcode {
             categories: ["timespan"]
         }
     }
-    tiles.sensors[tid.sensor.timer] = timer;
+    tiles.sensors[TID_SENSOR_TIMER] = timer;
 
     const pin_1 = new SensorDefn(
-        tid.sensor.pin_1,
+        TID_SENSOR_PIN_1,
         "Pin 1",
         Phase.Post
     )
@@ -531,9 +524,9 @@ namespace microcode {
             categories: ["pin_mode"]
         }
     }
-    tiles.sensors[tid.sensor.pin_1] = pin_1;
+    tiles.sensors[TID_SENSOR_PIN_1] = pin_1;
 
-    const timespan_filters = [tid.filter.timespan_short, tid.filter.timespan_long]
+    const timespan_filters = [TID_FILTER_TIMESPAN_SHORT, TID_FILTER_TIMESPAN_LONG]
     const timespan_names = ["short", "long"]
     timespan_filters.forEach((tid, i) => {
         const timespan = new FilterDefn(
@@ -545,7 +538,7 @@ namespace microcode {
         tiles.filters[tid] = timespan;
     })
 
-    const pin_filters = [tid.filter.pin_analog, tid.filter.pin_digital]
+    const pin_filters = [TID_FILTER_PIN_ANALOG, TID_FILTER_PIN_DIGITAL]
     const pin_names = ["analog", "digital"]
     pin_filters.forEach((tid, i) => {
         const pin_filter = new FilterDefn(
@@ -562,7 +555,7 @@ namespace microcode {
         tiles.filters[tid] = pin_filter;
     })
 
-    const actuators = [tid.actuator.switch_page, tid.actuator.stamp, tid.actuator.paint, tid.actuator.pin_0]
+    const actuators = [TID_ACTUATOR_SWITCH_PAGE, TID_ACTUATOR_STAMP, TID_ACTUATOR_PAINT, TID_ACTUATOR_PIN_0]
     const actuator_name = ["Switch page", "Stamp", "Paint", "Pin 0"]
     const actuator_allow = ["page", "led_icon", "icon_editor", "pin_output"]
 
@@ -585,7 +578,7 @@ namespace microcode {
         }
     }
     for (let page = 1; page <= 5; page++) {
-        const page_tid = tid.modifier["page_" + page.toString()]
+        const page_tid = TID_MODIFIER_PAGE_1[0] + page
         const tile_page = new ModifierDefn(
             page_tid,
             "page " + page.toString(),
@@ -598,7 +591,7 @@ namespace microcode {
 
     const pin_states = ["on", "off"]
     pin_states.forEach((state) => {
-        const state_tid = tid.modifier["pin_" + state]
+        const state_tid = state == "on" ? TID_MODIFIER_PIN_ON : TID_MODIFIER_PIN_OFF
         const state_page = new ModifierDefn(
             state_tid,
             state,
@@ -611,29 +604,29 @@ namespace microcode {
 
 
     const happy = new ModifierDefn(
-        tid.modifier.happy,
+        TID_MODIFIER_HAPPY,
         "happy",
         "led_icon",
         10,
     )
     happy.constraints = terminal
     happy.jdParam = "\x08\x12\x10\x12\x08"
-    tiles.modifiers[tid.modifier.happy] = happy;
+    tiles.modifiers[TID_MODIFIER_HAPPY] = happy;
 
     const sad = new ModifierDefn(
-        tid.modifier.sad,
+        TID_MODIFIER_SAD,
         "sad",
         "led_icon",
         10,
     )
     sad.constraints = terminal
     sad.jdParam = "\x10\x0a\x08\x0a\x10"
-    tiles.modifiers[tid.modifier.sad] = sad;
+    tiles.modifiers[TID_MODIFIER_SAD] = sad;
 
     /*
-                [tid.modifier.icon_editor]: {
+                [TID_MODIFIER_ICON_EDITOR]: {
                     type: TileType.MODIFIER,
-                    tid: tid.modifier.icon_editor,
+                    tid: TID_MODIFIER_ICON_EDITOR,
                     name: "icon editor",
                     category: "icon_editor",
                     priority: 10,
