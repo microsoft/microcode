@@ -36,6 +36,6 @@ jobs:
       - name: build js
         run: |
           makecode --java-script
-      - name: build hardware F4,D5,N4,N3
+      - name: build hardware N3
         run: |
           makecode --hw F4,D5,N4,N3

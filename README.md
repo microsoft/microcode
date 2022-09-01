@@ -10,6 +10,11 @@ Microsoft MicroCode is a [MakeCode Arcade](https://arcade.makecode.com/) applica
 * head to http://127.0.0.1:7000 for simulator
 * run `mkc build -d` to compile and deploy to device
 
+To bump and refresh the github pages javascript,
+
+    sh ./bump.sh
+    sh ./release.sh
+
 ## Editor
 
 ## Tile-based Language

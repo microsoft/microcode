@@ -23,11 +23,11 @@ function makeCodeRun(options) {
                 meta = JSON.parse(metasrc);
             })
             var vel = document.getElementById("version");
-            if (meta.version && meta.repo && vel) {
+            if (meta.version && vel) {
                 var ap = document.createElement("a");
-                ap.download = "firmware.uf2";
-                ap.href = "https://http://microsoft.github.io/microcode/assets/firmware.uf2";
-                ap.innerText = "v" + meta.version;
+                ap.download = `microcode.${meta.version}.hex`;
+                ap.href = "https://microsoft.github.io/microcode/assets/firmware.hex";
+                ap.innerText = meta.version;
                 vel.appendChild(ap);
             }
             // load simulator with correct version
