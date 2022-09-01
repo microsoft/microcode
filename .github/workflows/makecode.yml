@@ -1,6 +1,10 @@
 name: MakeCode
 
-on: [push]
+on:
+  push:
+  release:
+    types:
+      - created
 
 jobs:
   build:
@@ -16,7 +20,32 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: makecode
+          node-version: ${{ matrix.node-version }}          
+      - name: Cache npm and makecode
+        uses: actions/cache@v2
+        with:
+            path: |
+                ~/.npm
+                ~/.pxt/mkc-cache
+            key: ${{ runner.os }}-${{ hashFiles('pxt.json') }}-${{ hashFiles('mkc*json') }}
+            restore-keys: |
+                ${{ runner.os }}-
+      - name: npm install makecode
         run: |
-          npx --yes makecode 
+            npm install -g makecode
+      - name: build js
+        run: |
+          makecode --java-script
+      - name: build hardware F4,D5,N4,N3
+        run: |
+          makecode --hw F4,D5,N4,N3
+      - name: upload bundled firmware
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./built/combined.uf2
+          asset_name: arcade.uf2
+          asset_content_type: application/octet-stream
