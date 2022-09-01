@@ -25,8 +25,8 @@ function makeCodeRun(options) {
             var vel = document.getElementById("version");
             if (meta.version && meta.repo && vel) {
                 var ap = document.createElement("a");
-                ap.download = "arcade.uf2";
-                ap.href = "https://github.com/" + meta.repo + "/releases/download/v" + meta.version + "/arcade.uf2";
+                ap.download = "firmware.uf2";
+                ap.href = "https://http://microsoft.github.io/microcode/assets/firmware.uf2";
                 ap.innerText = "v" + meta.version;
                 vel.appendChild(ap);
             }

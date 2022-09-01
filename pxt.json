@@ -34,7 +34,8 @@
         "jacs_format.ts",
         "jacs_stringify.ts",
         "jacs_opwriter.ts",
-        "jacs_topwriter.ts"
+        "jacs_topwriter.ts",
+        "version.ts"
     ],
     "testFiles": [],
     "targetVersions": {
