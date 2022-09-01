@@ -739,6 +739,8 @@ namespace microcode {
                     } else {
                         this.ruledef.modifiers[index] = suggestions[0];
                     }
+                    Language.ensureValid(this.ruledef);
+                    this.instantiateProgramTiles();
                     this.page.changed();
                 })
                 return;
