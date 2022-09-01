@@ -528,7 +528,7 @@ namespace microcode {
                     {
                         parent: this,
                         style: "white",
-                        icon: this.ruledef.sensor.getImage(),
+                        icon: this.ruledef.sensor.getIcon(),
                         x: 0, y: 0,
                         onClick: () => this.handleSensorClicked()
                     });
@@ -539,7 +539,7 @@ namespace microcode {
                     {
                         parent: this,
                         style: "white",
-                        icon: this.ruledef.actuator.getImage(),
+                        icon: this.ruledef.actuator.getIcon(),
                         x: 0, y: 0,
                         onClick: () => this.handleActuatorClicked()
                     });
@@ -550,7 +550,7 @@ namespace microcode {
                     {
                         parent: this,
                         style: "white",
-                        icon: defn.getImage(),
+                        icon: defn.getIcon(),
                         x: 0, y: 0,
                         onClick: () => this.handleFilterClicked(index)
                     });
@@ -562,7 +562,7 @@ namespace microcode {
                     {
                         parent: this,
                         style: "white",
-                        icon: defn.getImage(),
+                        icon: defn.getIcon(),
                         x: 0, y: 0,
                         onClick: () => this.handleModifierClicked(index)
                     });
@@ -619,7 +619,7 @@ namespace microcode {
             const suggestions = Language.getSensorSuggestions(this.ruledef);
             const btns: PickerButtonDef[] = suggestions.map(elem => {
                 return {
-                    icon: elem.getImage(),
+                    icon: elem.getIcon(),
                     label: elem.name
                 };
             });
@@ -650,7 +650,7 @@ namespace microcode {
             const suggestions = Language.getActuatorSuggestions(this.ruledef);
             const btns: PickerButtonDef[] = suggestions.map(elem => {
                 return {
-                    icon: elem.getImage(),
+                    icon: elem.getIcon(),
                     label: elem.name
                 };
             });
@@ -681,7 +681,7 @@ namespace microcode {
             const suggestions = Language.getFilterSuggestions(this.ruledef, index);
             const btns: PickerButtonDef[] = suggestions.map(elem => {
                 return {
-                    icon: elem.getImage(),
+                    icon: elem.getIcon(),
                     label: elem.name
                 };
             });
@@ -716,7 +716,7 @@ namespace microcode {
             const suggestions = Language.getModifierSuggestions(this.ruledef, index);
             const btns: PickerButtonDef[] = suggestions.map(elem => {
                 return {
-                    icon: elem.getImage(),
+                    icon: elem.getIcon(),
                     label: elem.name
                 };
             });
