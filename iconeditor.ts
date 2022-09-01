@@ -25,7 +25,7 @@ namespace microcode {
         }
 
         this.picker.show({
-            onClick: (iconId) => {
+            onClick: (iconId: number) => {
                 const index = PAGE_IDS.indexOf(iconId);
                 this.switchToPage(index);
             },
