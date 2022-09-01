@@ -584,17 +584,6 @@ namespace microcode {
                     allow: {
                         categories: ["icon_editor"]
                     }
-                },
-                fieldEditor: {
-                    field: img`
-                    . . . . .
-                    . . . . .
-                    . . 1 . . 
-                    . . . . .
-                    . . . . .
-                    `,
-                    editor: iconEditor,
-                    image: scaleUp
                 }
             },
             [tid.actuator.pin_0]: {
@@ -703,6 +692,17 @@ namespace microcode {
                     handling: {
                         "terminal": true
                     }
+                },
+                fieldEditor: {
+                    field: img`
+                    . . . . .
+                    . . . . .
+                    . . 1 . . 
+                    . . . . .
+                    . . . . .
+                    `,
+                    editor: iconEditor,
+                    image: scaleUp
                 }
             },
 

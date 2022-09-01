@@ -728,9 +728,11 @@ namespace microcode {
                     label: elem.name
                 };
             });
+            console.log(suggestions)
             // special case for field editor
             if (btns.length == 1 && suggestions[0].fieldEditor) {
                 const fieldEditor = suggestions[0].fieldEditor
+                console.log("HERE")
                 fieldEditor.editor(fieldEditor.field, this.editor.picker, () => {
                     // TODO: where to clone?
                     if (index >= this.ruledef.modifiers.length) {
