@@ -97,7 +97,6 @@ namespace jacs {
         roles: Role[] = []
         currPage: Variable
 
-        controlRole: Role
         pageStartCondition: Role
         btnA: Role
         btnB: Role
@@ -345,6 +344,7 @@ namespace jacs {
             const body = this.addProc(name)
             this.withProcedure(body, wr => {
                 this.emitRoleCommand(rule)
+                wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
             })
             return body
         }
@@ -373,9 +373,10 @@ namespace jacs {
         }
 
         emitProgram(prog: microcode.ProgramDefn) {
+            jdc.start() // TODO move
+
             this.currPage = this.addGlobal()
 
-            this.controlRole = this.addRole("control", 0)
             this.pageStartCondition = this.addRole("pageStart", SRV_JACSCRIPT_CONDITION)
             this.btnA = this.addRole("btnA", SRV_BUTTON)
             this.screen = this.addRole("screen", SRV_DOT_MATRIX)
@@ -397,7 +398,10 @@ namespace jacs {
             }
 
             this.finalize()
-            console.log(this.serialize().toHex())
+
+            const bin = this.serialize()
+            console.log(bin.toHex())
+            jdc.deploy(bin)
         }
     }
 
