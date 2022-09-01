@@ -175,7 +175,7 @@ namespace microcode {
             control.onEvent(ControllerButtonEvent.Repeated, controller.down.id, () => this.moveDown());
             control.onEvent(ControllerButtonEvent.Pressed, controller.left.id, () => this.moveLeft());
             control.onEvent(ControllerButtonEvent.Repeated, controller.left.id, () => this.moveLeft());
-            
+
             control.onEvent(ControllerButtonEvent.Pressed, controller.A.id, () => this.cursor.click());
             control.onEvent(ControllerButtonEvent.Pressed, controller.B.id, () => this.cancel());
             this.hudroot = new Placeable();
@@ -779,7 +779,7 @@ namespace microcode {
                 this.pickModifier(index);
             } else {
                 this.pickActuator();
-            }            
+            }
         }
 
         public addToQuadTree() {

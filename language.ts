@@ -64,7 +64,7 @@ namespace microcode {
             super(TileType.SENSOR, tid, name)
         }
     }
-    
+
     export class FilterModifierBase extends TileDefn {
         constructor(
             type: TileType,
@@ -630,28 +630,28 @@ namespace microcode {
     sad.jdParam = "\x10\x0a\x08\x0a\x10"
     tiles.modifiers[tid.modifier.sad] = sad;
 
-/*
-            [tid.modifier.icon_editor]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.icon_editor,
-                name: "icon editor",
-                category: "icon_editor",
-                priority: 10,
-                fieldEditor: {
-                    field: undefined,
-                    init: img`
-                    . . . . .
-                    . . . . .
-                    . . 1 . . 
-                    . . . . .
-                    . . . . .
-                    `,
-                    clone: (img: Image) => img.clone(),
-                    editor: iconEditor,
-                    image: scaleUp
-                }
-            },
+    /*
+                [tid.modifier.icon_editor]: {
+                    type: TileType.MODIFIER,
+                    tid: tid.modifier.icon_editor,
+                    name: "icon editor",
+                    category: "icon_editor",
+                    priority: 10,
+                    fieldEditor: {
+                        field: undefined,
+                        init: img`
+                        . . . . .
+                        . . . . .
+                        . . 1 . . 
+                        . . . . .
+                        . . . . .
+                        `,
+                        clone: (img: Image) => img.clone(),
+                        editor: iconEditor,
+                        image: scaleUp
+                    }
+                },
+            }
         }
-    }
-    */
+        */
 }
