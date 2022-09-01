@@ -7,7 +7,7 @@ namespace microcode {
 
     export class PickerButton extends Button {
         constructor(
-            private picker: Picker,
+            public picker: Picker,
             btn: PickerButtonDef
         ) {
             super({
@@ -40,14 +40,14 @@ namespace microcode {
     }
 
     export class Picker extends Component implements IPlaceable {
-        protected groups: PickerGroup[];
+        public groups: PickerGroup[];
         private xfrm_: Affine;
         private quadtree: QuadTree;
         private prevquadtree: QuadTree;
         private prevpos: Vec2;
         private cancelBtn: Button;
         private panel: Bounds;
-        private onClick: (btn: string) => void;
+        private onClick: (btn: string, button?: Button) => void;
         private hideOnClick: boolean;
         private title: string;
         public visible: boolean; 
@@ -88,8 +88,10 @@ namespace microcode {
                 this.hide();
             }
             if (onClick) {
-                onClick(icon);
+                onClick(icon, button);
             }
+            if (!this.hideOnClick)
+                this.draw()
         }
 
         private cancelClicked() {
