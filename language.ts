@@ -21,11 +21,10 @@ namespace microcode {
         handling?: { [id: string]: string | number | boolean };
     }
 
-
-
     export interface FieldEditor {
         field: any
-        editor: (field:any) => Picker
+        editor: (field: any) => Picker
+        image: (field: any) => Image
     }
 
     export interface TileDefn {
@@ -596,7 +595,8 @@ namespace microcode {
                     `,
                     editor: (field: Image, cursor: Cursor) => {
                         return new IconEditor(field, cursor)
-                    }
+                    },
+                    image: (field: Image) => scaleUp(field)
                 }
             },
             [tid.actuator.pin_0]: {
