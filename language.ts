@@ -23,7 +23,7 @@ namespace microcode {
 
     export interface FieldEditor {
         field: any
-        editor: (field: any, cursor: Cursor) => Picker
+        editor: (field: any, picker: Picker) => void
         image: (field: any) => Image
     }
 
@@ -593,8 +593,8 @@ namespace microcode {
                     . . . . .
                     . . . . .
                     `,
-                    editor: (field: Image, cursor: Cursor) => {
-                        return new IconEditor(field, cursor)
+                    editor: (field: Image, picker: Picker) => {
+                        // TODO
                     },
                     image: (field: Image) => scaleUp(field)
                 }

@@ -48,6 +48,7 @@ namespace microcode {
         private cancelBtn: Button;
         private panel: Bounds;
         private onClick: (btn: string) => void;
+        private hideOnClick: boolean;
         private title: string;
         public visible: boolean; 
 
@@ -81,9 +82,11 @@ namespace microcode {
         }
 
         public onButtonClicked(button: PickerButton, icon: string) {
-            this.cursor.cancelHandlerStack.pop();
             const onClick = this.onClick;
-            this.hide();
+            if (this.hideOnClick) {
+                this.cursor.cancelHandlerStack.pop();
+                this.hide();
+            }
             if (onClick) {
                 onClick(icon);
             }
@@ -96,9 +99,10 @@ namespace microcode {
 
         show(opts: {
             title?: string;
-            onClick?: (btn: string) => void
-        }) {
+            onClick?: (btn: string) => void,
+        }, hideOnClick: boolean = true) {
             this.onClick = opts.onClick;
+            this.hideOnClick = hideOnClick;
             this.title = opts.title;
             this.prevquadtree = this.cursor.quadtree;
             this.prevpos = this.cursor.xfrm.localPos.clone();
