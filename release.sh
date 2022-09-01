@@ -2,6 +2,6 @@
 
 set -e
 makecode --java-script
-makecode --hw F4,D5,N4,N3
+makecode --hw N3
 cp ./built/binary.js ./assets/js/binary.js
-cp ./built/combined.uf2 ./assets/firmware.uf2
+cp ./built/n3/binary.hex ./assets/firmware.hex

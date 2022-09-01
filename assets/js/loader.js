@@ -25,8 +25,8 @@ function makeCodeRun(options) {
             var vel = document.getElementById("version");
             if (meta.version && meta.repo && vel) {
                 var ap = document.createElement("a");
-                ap.download = "firmware.uf2";
-                ap.href = "https://microsoft.github.io/microcode/assets/firmware.uf2";
+                ap.download = `microcode.${meta.version}.hex`;
+                ap.href = "https://microsoft.github.io/microcode/assets/firmware.hex";
                 ap.innerText = meta.version;
                 vel.appendChild(ap);
             }
