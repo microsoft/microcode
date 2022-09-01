@@ -15,6 +15,8 @@ To bump and refresh the github pages javascript,
     sh ./bump.sh
     sh ./release.sh
 
+then commit the generated files
+
 ## Editor
 
 ## Tile-based Language
