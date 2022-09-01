@@ -26,8 +26,8 @@ function makeCodeRun(options) {
             if (meta.version && meta.repo && vel) {
                 var ap = document.createElement("a");
                 ap.download = "firmware.uf2";
-                ap.href = "https://http://microsoft.github.io/microcode/assets/firmware.uf2";
-                ap.innerText = "v" + meta.version;
+                ap.href = "https://microsoft.github.io/microcode/assets/firmware.uf2";
+                ap.innerText = meta.version;
                 vel.appendChild(ap);
             }
             // load simulator with correct version
