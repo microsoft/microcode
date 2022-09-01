@@ -6,7 +6,7 @@ namespace microcode {
             opts: {
                 parent?: IPlaceable,
                 style?: ButtonStyle,
-                icon: string,
+                icon: string | Image,
                 label?: string,
                 x: number,
                 y: number,

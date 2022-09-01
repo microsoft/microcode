@@ -39,10 +39,16 @@ namespace microcode {
         }
 
         hidden: boolean;   // Hide from UI?
-        category: string;
         constraints: Constraints;
         fieldEditor: FieldEditor;
         jdParam: string
+
+        getImage() {
+            return this.tid
+        }
+        factory() {
+            return this
+        }
     }
 
     export enum Phase {
@@ -473,6 +479,8 @@ namespace microcode {
         modifiers: {},
     }
 
+    // initialize the database, imperatively!!!
+
     const always = new SensorDefn(
         tid.sensor.always,
         "Always",
@@ -588,6 +596,20 @@ namespace microcode {
         tiles.modifiers[page_tid] = tile_page;
     }
 
+    const pin_states = ["on", "off"]
+    pin_states.forEach((state) => {
+        const state_tid = tid.modifier["pin_" + state]
+        const state_page = new ModifierDefn(
+            state_tid,
+            state,
+            "pin_output",
+            10,
+        )
+        state_page.constraints = terminal
+        tiles.modifiers[state_tid] = state_page;
+    })
+
+
     const happy = new ModifierDefn(
         tid.modifier.happy,
         "happy",
@@ -629,31 +651,6 @@ namespace microcode {
                     image: scaleUp
                 }
             },
-
-            [tid.modifier.pin_on]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.pin_on,
-                name: "on",
-                category: "pin_output",
-                priority: 10,
-                constraints: {
-                    handling: {
-                        "terminal": true
-                    }
-                }
-            },
-            [tid.modifier.pin_off]: {
-                type: TileType.MODIFIER,
-                tid: tid.modifier.pin_off,
-                name: "off",
-                category: "pin_output",
-                priority: 10,
-                constraints: {
-                    handling: {
-                        "terminal": true
-                    }
-                }
-            }
         }
     }
     */

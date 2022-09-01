@@ -5,7 +5,7 @@ namespace microcode {
         private back: Sprite;
         //private text: TextSprite;
         private style: ButtonStyle;
-        private iconId: string;
+        private iconId: string | Image;
         private label: string;
         private onClick?: (button: Button) => void;
 
@@ -33,7 +33,7 @@ namespace microcode {
             opts: {
                 parent?: IPlaceable,
                 style?: ButtonStyle,
-                icon: string,
+                icon: string | Image,
                 label?: string,
                 x: number,
                 y: number,
@@ -77,7 +77,7 @@ namespace microcode {
             //if (this.text) { this.text.destroy(); }
             this.icon = new Sprite({
                 parent: this,
-                img: icons.get(this.iconId)
+                img: typeof(this.iconId) == "string" ? icons.get(this.iconId) : this.iconId
             });
             if (this.style) {
                 this.back = new Sprite({
