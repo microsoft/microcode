@@ -105,6 +105,9 @@ namespace microcode {
         }
     }
 
+    
+    type RuleRep = { [name: string]: TileDefn[] }
+
     export class RuleDefn {
         sensor: SensorDefn
         filters: FilterDefn[]
@@ -114,6 +117,15 @@ namespace microcode {
         constructor() {
             this.filters = []
             this.modifiers = []
+        }
+
+        public getRuleRep(): RuleRep {
+            return {
+                sensors: [this.sensor],
+                filters: this.filters,
+                actuators: [this.actuator],
+                modifiers: this.modifiers
+            }
         }
 
         public clone(): RuleDefn {
@@ -302,25 +314,24 @@ namespace microcode {
     }
 
     export class Language {
-        public static getSensorSuggestions(rule: RuleDefn): SensorDefn[] {
-            let sensors = Object.keys(tiles.sensors)
-                .map(id => tiles.sensors[id])
-                .filter(tile => !tile.hidden)
-            return sensors
-        }
-
-        public static getFilterSuggestions(
+        public static getTileSuggestions(
             rule: RuleDefn,
+            name: string,
             index: number
-        ): FilterDefn[] {
-            let all = Object.keys(tiles.filters)
-                .map(id => tiles.filters[id])
+        ): TileDefn[] {
+
+            const all = Object.keys(tiles[name])
+                .map(id => tiles[name][id])
                 .filter(tile => !tile.hidden)
+            
+            if (name === "sensors" || name === "actuators")
+                return all
 
             // Collect existing tiles up to index.
             let existing: TileDefn[] = []
+            const ruleRep = rule.getRuleRep()
             for (let i = 0; i < index; ++i) {
-                existing.push(rule.filters[i])
+                existing.push(ruleRep[name][i])
             }
 
             // Return empty set if the last existing tile is a "terminal".
@@ -337,6 +348,11 @@ namespace microcode {
 
             // Collect the built-up constraints.
             const constraints = mkConstraints()
+            if (name === "modifiers")
+                mergeConstraints(
+                    constraints,
+                    rule.actuator ? rule.actuator.constraints : null
+                )
             mergeConstraints(
                 constraints,
                 rule.sensor ? rule.sensor.constraints : null
@@ -345,57 +361,7 @@ namespace microcode {
                 mergeConstraints(constraints, existing[i].constraints)
             }
 
-            return this.getCompatibleSet(all, constraints)
-        }
-
-        public static getActuatorSuggestions(rule: RuleDefn): ActuatorDefn[] {
-            let actuators = Object.keys(tiles.actuators)
-                .map(id => tiles.actuators[id])
-                .filter(tile => !tile.hidden)
-            return actuators
-        }
-
-        public static getModifierSuggestions(
-            rule: RuleDefn,
-            index: number
-        ): ModifierDefn[] {
-            const all = Object.keys(tiles.modifiers)
-                .map(id => tiles.modifiers[id])
-                .filter(tile => !tile.hidden)
-
-            // Collect existing tiles up to index.
-            let existing: TileDefn[] = []
-            for (let i = 0; i < index; ++i) {
-                existing.push(rule.modifiers[i])
-            }
-
-            // Return empty set if the last existing tile is a "terminal".
-            if (existing.length) {
-                const last = existing[existing.length - 1]
-                if (
-                    last.constraints &&
-                    last.constraints.handling &&
-                    last.constraints.handling["terminal"]
-                ) {
-                    return []
-                }
-            }
-
-            // Collect the built-up constraints.
-            const constraints = mkConstraints()
-            mergeConstraints(
-                constraints,
-                rule.actuator ? rule.actuator.constraints : null
-            )
-            mergeConstraints(
-                constraints,
-                rule.sensor ? rule.sensor.constraints : null
-            )
-            for (let i = 0; i < existing.length; ++i) {
-                mergeConstraints(constraints, existing[i].constraints)
-            }
-
-            return this.getCompatibleSet(all, constraints)
+            return this.getCompatibleSet(<FilterModifierBase[]>all, constraints)
         }
 
         private static getCompatibleSet(
@@ -501,6 +467,7 @@ namespace microcode {
     type ModifierMap = { [id: string]: ModifierDefn }
 
     export type TileDatabase = {
+        [id: string] : SensorMap | FilterMap | ActuatorMap | ModifierMap
         sensors: SensorMap
         filters: FilterMap
         actuators: ActuatorMap
