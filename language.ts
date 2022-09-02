@@ -43,7 +43,7 @@ namespace microcode {
             return undefined
         }
 
-        getImage() {
+        getIcon(): string | Image {
             return this.tid
         }
 
@@ -127,7 +127,7 @@ namespace microcode {
             return !this.sensor && !this.actuator
         }
 
-        // TODO: user parameters
+        // TODO: field serialization/deserialization, if present
         public toObj(): any {
             const obj = {
                 S: this.sensor ? this.sensor.tid : undefined,
@@ -669,7 +669,7 @@ namespace microcode {
             return this.field
         }
 
-        getIcon() {
+        getIcon(): Image {
             return this.fieldEditor.image(this.field)
         }
 
