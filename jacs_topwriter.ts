@@ -370,23 +370,27 @@ namespace jacs {
                     actuator.tid == microcode.TID_ACTUATOR_STAMP ||
                     actuator.tid == microcode.TID_ACTUATOR_PAINT
                 ) {
-                    let param: Buffer | string = Buffer.create(5)
-                    for (const m of rule.modifiers) {
-                        param = m.serviceCommandArg() || param
+                    const params = rule.modifiers
+                        .map(m => m.serviceCommandArg())
+                        .filter(a => !!a)
+                    if (params.length == 0) params.push(Buffer.create(5))
+                    for (let i = 0; i < params.length; ++i) {
+                        const role = this.lookupActuatorRole(rule)
+                        wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [
+                            literal(5),
+                            literal(0),
+                        ])
+                        wr.emitStmt(OpStmt.STMT2_MEMCPY, [
+                            literal(this.addString(params[i])),
+                            literal(0),
+                        ])
+                        wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
+                            literal(role.index),
+                            literal(actuator.serviceCommand),
+                        ])
+                        if (i != params.length - 1)
+                            wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(400)])
                     }
-                    wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [
-                        literal(5),
-                        literal(0),
-                    ])
-                    wr.emitStmt(OpStmt.STMT2_MEMCPY, [
-                        literal(this.addString(param)),
-                        literal(0),
-                    ])
-                    const role = this.lookupActuatorRole(rule)
-                    wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
-                        literal(role.index),
-                        literal(actuator.serviceCommand),
-                    ])
                     return
                 }
             }
