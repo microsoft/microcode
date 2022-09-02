@@ -621,6 +621,7 @@ namespace microcode {
         private instantiateProgramTiles() {
             this.destroyProgramTiles()
             const rule = this.ruledef.getRuleRep()
+            let changed = false
             repNames.forEach(name => {
                 const tiles = rule[name]
                 tiles.forEach((tile, index) => {
@@ -633,9 +634,11 @@ namespace microcode {
                         y: 0,
                         onClick: () => this.handleTile(name, index),
                     })
-                    this.page.changed()
+                    changed = true
                 })
             })
+            if (changed)
+               this.page.changed()
         }
 
         private showRuleHandleMenu() {
@@ -764,7 +767,7 @@ namespace microcode {
         public addToQuadTree() {
             repNames.forEach(name => {
                 const buttons = this.rule[name]
-                buttons.forEach(btn => this.editor.addToQuadTree(btn))
+                buttons.forEach(this.editor.addToQuadTree)
             })
             this.editor.addToQuadTree(this.handleBtn)
             this.editor.addToQuadTree(this.whenInsertBtn)
