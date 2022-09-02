@@ -722,14 +722,13 @@ namespace microcode {
             });
             // special case for field editor
             if (btns.length == 1 && suggestions[0].fieldEditor) {
-                const fieldEditor = suggestions[0].fieldEditor
-                fieldEditor.editor(fieldEditor.field, this.editor.picker, () => {
-                    // TODO: where to clone?
-                    // TODO: also need to show the image
+                const theOne = suggestions[0]
+                const fieldEditor = theOne.fieldEditor
+                fieldEditor.editor(theOne.getField(), this.editor.picker, () => {
                     if (index >= this.ruledef.modifiers.length) {
-                        this.ruledef.modifiers.push(suggestions[0]);
+                        this.ruledef.modifiers.push(<ModifierDefn>theOne.getNewInstance())
                     } else {
-                        this.ruledef.modifiers[index] = suggestions[0];
+                        this.ruledef.modifiers[index] = <ModifierDefn>theOne.getNewInstance()
                     }
                     Language.ensureValid(this.ruledef);
                     this.instantiateProgramTiles();
