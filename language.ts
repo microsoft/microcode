@@ -60,6 +60,10 @@ namespace microcode {
     }
 
     export class SensorDefn extends TileDefn {
+        public serviceClassName: string
+        public eventCode: number
+        public serviceInstanceIndex: number
+
         constructor(tid: string, name: string, public phase: Phase) {
             super(TileType.SENSOR, tid, name)
         }
@@ -89,6 +93,10 @@ namespace microcode {
     }
 
     export class ActuatorDefn extends TileDefn {
+        public serviceClassName: string
+        public serviceCommand: number
+        public serviceInstanceIndex: number
+
         constructor(tid: string, name: string) {
             super(TileType.ACTUATOR, tid, name)
         }
@@ -128,11 +136,13 @@ namespace microcode {
         public isEmpty(): boolean {
             return !this.sensor && !this.actuator
         }
-        
+
         public toObj(): any {
             const addField = (t: TileDefn) => {
                 if (t.fieldEditor) {
-                    const ret = `${t.tid}(${t.fieldEditor.serialize(t.getField())})`
+                    const ret = `${t.tid}(${t.fieldEditor.serialize(
+                        t.getField()
+                    )})`
                     console.log(ret)
                     return ret
                 } else {
@@ -167,7 +177,9 @@ namespace microcode {
                 if (hasField >= 0) {
                     const elem = s.substr(0, hasField)
                     const tile = tiles.modifiers[elem]
-                    const field = tile.fieldEditor.deserialize(s.substr(hasField+1,s.length-2-hasField))
+                    const field = tile.fieldEditor.deserialize(
+                        s.substr(hasField + 1, s.length - 2 - hasField)
+                    )
                     const newOne = tile.getNewInstance(field)
                     return <ModifierDefn>newOne
                 } else {
@@ -553,6 +565,18 @@ namespace microcode {
         modifiers: {},
     }
 
+    function copyJdSensor(dst: SensorDefn, src: SensorDefn) {
+        dst.serviceClassName = src.serviceClassName
+        dst.eventCode = src.eventCode
+        dst.serviceInstanceIndex = src.serviceInstanceIndex
+    }
+
+    function copyJdActuator(dst: ActuatorDefn, src: ActuatorDefn) {
+        dst.serviceClassName = src.serviceClassName
+        dst.serviceCommand = src.serviceCommand
+        dst.serviceInstanceIndex = src.serviceInstanceIndex
+    }
+
     // initialize the database, imperatively!!!
 
     const always = new SensorDefn(TID_SENSOR_ALWAYS, "Always", Phase.Pre)
@@ -560,6 +584,9 @@ namespace microcode {
     tiles.sensors[TID_SENSOR_ALWAYS] = always
 
     const button_a = new SensorDefn(TID_SENSOR_BUTTON_A, "A", Phase.Pre)
+    button_a.serviceClassName = "button"
+    button_a.eventCode = 0x1 // down
+    button_a.serviceInstanceIndex = 0
     button_a.constraints = {
         provides: ["input"],
         allow: {
@@ -569,6 +596,8 @@ namespace microcode {
     tiles.sensors[TID_SENSOR_BUTTON_A] = button_a
 
     const button_b = new SensorDefn(TID_SENSOR_BUTTON_B, "B", Phase.Pre)
+    copyJdSensor(button_b, button_a)
+    button_b.serviceInstanceIndex = 1
     button_b.constraints = button_a.constraints
     tiles.sensors[TID_SENSOR_BUTTON_B] = button_b
 
@@ -610,24 +639,25 @@ namespace microcode {
         tiles.filters[tid] = pin_filter
     })
 
-    const actuators = [
-        TID_ACTUATOR_SWITCH_PAGE,
-        TID_ACTUATOR_STAMP,
-        TID_ACTUATOR_PAINT,
-        TID_ACTUATOR_PIN_0,
-    ]
-    const actuator_name = ["Switch page", "Stamp", "Paint", "Pin 0"]
-    const actuator_allow = ["page", "led_icon", "icon_editor", "pin_output"]
-
-    actuators.forEach((tid, i) => {
-        const actuator = new ActuatorDefn(tid, actuator_name[i])
+    function addActuator(tid: string, name: string, allow: string) {
+        const actuator = new ActuatorDefn(tid, name)
         actuator.constraints = {
             allow: {
-                categories: [actuator_allow[i]],
+                categories: [allow],
             },
         }
         tiles.actuators[tid] = actuator
-    })
+        return actuator
+    }
+
+    addActuator(TID_ACTUATOR_SWITCH_PAGE, "Switch page", "page")
+    const stamp = addActuator(TID_ACTUATOR_STAMP, "Stamp", "led_icon")
+    stamp.serviceClassName = "dotMatrix"
+    stamp.serviceCommand = jacs.CMD_SET_REG | 0x2
+    stamp.serviceInstanceIndex = 0
+    const paint = addActuator(TID_ACTUATOR_PAINT, "Paint", "icon_editor")
+    copyJdActuator(paint, stamp)
+    addActuator(TID_ACTUATOR_PIN_0, "Pin 0", "pin_output")
 
     const terminal = {
         handling: {
@@ -677,11 +707,11 @@ namespace microcode {
         editor: iconEditor,
         image: scaleUp,
         serialize: (img: Image) => {
-            const ret: string [] = []
+            const ret: string[] = []
             for (let index = 0; index < 25; index++) {
                 let col = index % 5
                 let row = index / 5
-                ret.push(img.getPixel(col,row) ? "1" : "0")
+                ret.push(img.getPixel(col, row) ? "1" : "0")
             }
             return ret.join("")
         },
@@ -690,10 +720,10 @@ namespace microcode {
             for (let index = 0; index < 25; index++) {
                 let col = index % 5
                 let row = index / 5
-                img.setPixel(col,row, s[index] == "1" ? 1 : 0)
+                img.setPixel(col, row, s[index] == "1" ? 1 : 0)
             }
             return img
-        }
+        },
     }
 
     class IconEditor extends ModifierDefn {
@@ -701,10 +731,8 @@ namespace microcode {
         constructor(field: Image = null) {
             super(TID_MODIFIER_ICON_EDITOR, "icon editor", "icon_editor", 10)
             this.fieldEditor = iconFieldEditor
-            if (field)
-                this.field = field
-            else
-                this.field = iconFieldEditor.clone(iconFieldEditor.init)
+            if (field) this.field = field
+            else this.field = iconFieldEditor.clone(iconFieldEditor.init)
         }
 
         getField() {

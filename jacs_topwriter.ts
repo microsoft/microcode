@@ -100,9 +100,6 @@ namespace jacs {
         currPage: Variable
 
         pageStartCondition: Role
-        btnA: Role
-        btnB: Role
-        screen: Role
 
         numErrors = 0
 
@@ -301,17 +298,54 @@ namespace jacs {
             console.log("Error: " + msg)
         }
 
+        lookupServiceClass(name: string) {
+            const id = serviceClasses[name]
+            if (id === undefined) {
+                this.error(`service '${name}' not defined`)
+                return 0
+            }
+            return id
+        }
+
+        lookupRole(name: string, idx: number) {
+            const id = this.lookupServiceClass(name)
+            if (!id) return this.pageStartCondition
+            let ptr = 0
+            for (const r of this.roles) {
+                if (r.classIdentifier == id) {
+                    if (ptr == idx) return r
+                    ptr++
+                }
+            }
+            let r: Role
+            while (ptr <= idx) {
+                r = this.addRole(name + "_" + ptr, id)
+                ptr++
+            }
+            return r
+        }
+
+        lookupActuatorRole(rule: microcode.RuleDefn) {
+            const act = rule.actuator
+            if (!act) return this.pageStartCondition
+            return this.lookupRole(
+                act.serviceClassName,
+                act.serviceInstanceIndex
+            )
+        }
+
         lookupSensorRole(rule: microcode.RuleDefn) {
             const sensor = rule.sensor
             if (!sensor) return this.pageStartCondition
-            if (sensor.tid == microcode.TID_SENSOR_BUTTON_A) return this.btnA
-            if (sensor.tid == microcode.TID_SENSOR_BUTTON_B) return this.btnB
-            this.error(`can't map sensor role for ${JSON.stringify(sensor)}`)
-            return this.pageStartCondition
+            return this.lookupRole(
+                sensor.serviceClassName,
+                sensor.serviceInstanceIndex
+            )
         }
 
         lookupEventCode(role: Role, rule: microcode.RuleDefn) {
-            if (role.classIdentifier == SRV_BUTTON) return 0x1 // down
+            if (rule.sensor && rule.sensor.eventCode != undefined)
+                return rule.sensor.eventCode
             if (role.classIdentifier == SRV_JACSCRIPT_CONDITION) return 0x3 // signalled
             return null
         }
@@ -332,9 +366,10 @@ namespace jacs {
                         literal(0),
                     ])
                     wr.emitStmt(OpStmt.STMT2_MEMCPY, [literal(id), literal(0)])
+                    const role = this.lookupActuatorRole(rule)
                     wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
-                        literal(this.screen.index),
-                        literal(CMD_SET_REG | 0x2),
+                        literal(role.index),
+                        literal(actuator.serviceCommand),
                     ])
                     return
                 }
@@ -396,9 +431,6 @@ namespace jacs {
                 "pageStart",
                 SRV_JACSCRIPT_CONDITION
             )
-            this.btnA = this.addRole("btnA", SRV_BUTTON)
-            this.screen = this.addRole("screen", SRV_DOT_MATRIX)
-            this.btnB = this.addRole("btnB", SRV_BUTTON)
 
             const mainProc = this.addProc("main")
             this.withProcedure(mainProc, wr => {
@@ -431,9 +463,12 @@ namespace jacs {
         }
     }
 
+    export const serviceClasses: SMap<number> = {
+        button: 0x1473a263,
+        dotMatrix: 0x110d154b,
+    }
+
     export const SRV_JACSCRIPT_CONDITION = 0x1196796d
-    export const SRV_BUTTON = 0x1473a263
-    export const SRV_DOT_MATRIX = 0x110d154b
 
     export const CMD_GET_REG = 0x1000
     export const CMD_SET_REG = 0x2000
