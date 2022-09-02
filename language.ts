@@ -132,7 +132,9 @@ namespace microcode {
         public toObj(): any {
             const addField = (t: TileDefn) => {
                 if (t.fieldEditor) {
-                    return `${t.tid}(${t.fieldEditor.serialize(t.getField())})`
+                    const ret = `${t.tid}(${t.fieldEditor.serialize(t.getField())})`
+                    console.log(ret)
+                    return ret
                 } else {
                     return t.tid
                 }
@@ -167,7 +169,7 @@ namespace microcode {
                     const tile = tiles.modifiers[elem]
                     const field = tile.fieldEditor.deserialize(s.substr(hasField+1,s.length-2-hasField))
                     const newOne = tile.getNewInstance(field)
-                    return newOne
+                    return <ModifierDefn>newOne
                 } else {
                     return tiles.modifiers[s]
                 }
@@ -190,9 +192,7 @@ namespace microcode {
             }
             if (Array.isArray(obj["M"])) {
                 const modifiers: any[] = obj["M"]
-                defn.modifiers = modifiers.map(
-                    (elem: string) => tiles.modifiers[elem]
-                )
+                defn.modifiers = modifiers.map(extractField)
             }
             return defn
         }
@@ -683,7 +683,7 @@ namespace microcode {
                 let row = index / 5
                 ret.push(img.getPixel(col,row) ? "1" : "0")
             }
-            return ret.join()
+            return ret.join("")
         },
         deserialize: (s: string) => {
             const img = image.create(5, 5)
