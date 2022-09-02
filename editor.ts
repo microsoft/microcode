@@ -767,7 +767,7 @@ namespace microcode {
         public addToQuadTree() {
             repNames.forEach(name => {
                 const buttons = this.rule[name]
-                buttons.forEach(this.editor.addToQuadTree)
+                buttons.forEach(btn => this.editor.addToQuadTree(btn))
             })
             this.editor.addToQuadTree(this.handleBtn)
             this.editor.addToQuadTree(this.whenInsertBtn)
