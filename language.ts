@@ -39,7 +39,7 @@ namespace microcode {
         hidden: boolean // Hide from UI?
         constraints: Constraints
         fieldEditor: FieldEditor
-        jdParam: string
+        jdParam: any
 
         getField(): any {
             return undefined
@@ -676,6 +676,7 @@ namespace microcode {
             "page",
             10
         )
+        tile_page.jdParam = page
         tile_page.constraints = terminal
         tiles.modifiers[page_tid] = tile_page
     }

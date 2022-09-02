@@ -273,6 +273,13 @@ namespace jacs {
             for (const r of this.roles) r.finalize()
             for (const p of this.procs) p.finalize()
             this.withProcedure(this.mainProc, wr => {
+                // wait for autobind to finish
+                wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(1000)])
+                // and send start condition
+                wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
+                    literal(this.pageStartCondition.index),
+                    literal(0x80),
+                ])
                 wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
             })
             for (const p of this.procs) {
@@ -357,7 +364,6 @@ namespace jacs {
         lookupEventCode(role: Role, rule: microcode.RuleDefn) {
             if (rule.sensor && rule.sensor.eventCode != undefined)
                 return rule.sensor.eventCode
-            if (role.classIdentifier == SRV_JACSCRIPT_CONDITION) return 0x3 // signalled
             return null
         }
 
@@ -391,6 +397,16 @@ namespace jacs {
                         if (i != params.length - 1)
                             wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(400)])
                     }
+                    return
+                } else if (actuator.tid == microcode.TID_ACTUATOR_SWITCH_PAGE) {
+                    let targetPage = 1
+                    for (const m of rule.modifiers)
+                        if (m.category == "page") targetPage = m.jdParam
+                    this.currPage.write(wr, literal(targetPage))
+                    wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
+                        literal(this.pageStartCondition.index),
+                        literal(0x80),
+                    ])
                     return
                 }
             }
@@ -434,6 +450,11 @@ namespace jacs {
                                     wr.emitCall(body.index, [], OpCall.BG_MAX1)
                                 }
                             )
+                        } else if (
+                            role.classIdentifier == SRV_JACSCRIPT_CONDITION
+                        ) {
+                            // event code not relevant
+                            wr.emitCall(body.index, [], OpCall.BG_MAX1)
                         } else {
                             this.error("can't handle role")
                         }
