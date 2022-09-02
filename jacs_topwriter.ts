@@ -100,15 +100,18 @@ namespace jacs {
         currPage: Variable
 
         pageStartCondition: Role
-        btnA: Role
-        btnB: Role
-        screen: Role
 
         numErrors = 0
 
         constructor() {}
 
-        addString(str: string) {
+        addString(str: string | Buffer) {
+            if (typeof str != "string") {
+                let tmp = ""
+                for (let i = 0; i < str.length; ++i)
+                    tmp += String.fromCharCode(str[i])
+                str = tmp
+            }
             return addUnique(this.stringLiterals, str)
         }
 
@@ -270,10 +273,22 @@ namespace jacs {
             for (const r of this.roles) r.finalize()
             for (const p of this.procs) p.finalize()
             this.withProcedure(this.mainProc, wr => {
+                // wait for autobind to finish
+                wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(1000)])
+                // and send start condition
+                wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
+                    literal(this.pageStartCondition.index),
+                    literal(0x80),
+                ])
                 wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
             })
             for (const p of this.procs) {
                 console.log(p.toString())
+            }
+            let idx = 0
+            for (const s of this.stringLiterals) {
+                console.log(idx + ": " + JSON.stringify(s))
+                idx++
             }
         }
 
@@ -301,18 +316,55 @@ namespace jacs {
             console.log("Error: " + msg)
         }
 
+        lookupServiceClass(name: string) {
+            const id = serviceClasses[name]
+            if (id === undefined) {
+                this.error(`service '${name}' not defined`)
+                return 0
+            }
+            return id
+        }
+
+        lookupRole(name: string, idx: number) {
+            const id = this.lookupServiceClass(name)
+            if (!id) return this.pageStartCondition
+            let ptr = 0
+            for (const r of this.roles) {
+                if (r.classIdentifier == id) {
+                    if (ptr == idx) return r
+                    ptr++
+                }
+            }
+            let r: Role
+            while (ptr <= idx) {
+                r = this.addRole(name + "_" + ptr, id)
+                ptr++
+            }
+            return r
+        }
+
+        lookupActuatorRole(rule: microcode.RuleDefn) {
+            const act = rule.actuators.length ? rule.actuators[0] : null
+            if (!act) return this.pageStartCondition
+            return this.lookupRole(
+                act.serviceClassName,
+                act.serviceInstanceIndex
+            )
+        }
+
         lookupSensorRole(rule: microcode.RuleDefn) {
             const sensor = rule.sensors.length ? rule.sensors[0] : null
             if (!sensor) return this.pageStartCondition
-            if (sensor.tid == microcode.TID_SENSOR_BUTTON_A) return this.btnA
-            if (sensor.tid == microcode.TID_SENSOR_BUTTON_B) return this.btnB
-            this.error(`can't map sensor role for ${JSON.stringify(sensor)}`)
-            return this.pageStartCondition
+            return this.lookupRole(
+                sensor.serviceClassName,
+                sensor.serviceInstanceIndex
+            )
         }
 
         lookupEventCode(role: Role, rule: microcode.RuleDefn) {
-            if (role.classIdentifier == SRV_BUTTON) return 0x1 // down
-            if (role.classIdentifier == SRV_JACSCRIPT_CONDITION) return 0x3 // signalled
+            const sensor = rule.sensors.length ? rule.sensors[0] : null
+            if (sensor && sensor.eventCode != undefined)
+                return sensor.eventCode
             return null
         }
 
@@ -321,20 +373,40 @@ namespace jacs {
             const wr = this.writer
             if (actuator == null) return // do nothing
             if (actuator) {
-                if (actuator.tid == microcode.TID_ACTUATOR_STAMP) {
-                    let param = "\x00\x00\x00\x00\x00"
-                    for (const m of rule.modifiers) {
-                        if (typeof m.jdParam == "string") param = m.jdParam
+                if (
+                    actuator.tid == microcode.TID_ACTUATOR_STAMP ||
+                    actuator.tid == microcode.TID_ACTUATOR_PAINT
+                ) {
+                    const params = rule.modifiers
+                        .map(m => m.serviceCommandArg())
+                        .filter(a => !!a)
+                    if (params.length == 0) params.push(Buffer.create(5))
+                    for (let i = 0; i < params.length; ++i) {
+                        const role = this.lookupActuatorRole(rule)
+                        wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [
+                            literal(5),
+                            literal(0),
+                        ])
+                        wr.emitStmt(OpStmt.STMT2_MEMCPY, [
+                            literal(this.addString(params[i])),
+                            literal(0),
+                        ])
+                        wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
+                            literal(role.index),
+                            literal(actuator.serviceCommand),
+                        ])
+                        if (i != params.length - 1)
+                            wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(400)])
                     }
-                    const id = this.addString(param)
-                    wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [
-                        literal(5),
-                        literal(0),
-                    ])
-                    wr.emitStmt(OpStmt.STMT2_MEMCPY, [literal(id), literal(0)])
+                    return
+                } else if (actuator.tid == microcode.TID_ACTUATOR_SWITCH_PAGE) {
+                    let targetPage = 1
+                    for (const m of rule.modifiers)
+                        if (m.category == "page") targetPage = m.jdParam
+                    this.currPage.write(wr, literal(targetPage))
                     wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
-                        literal(this.screen.index),
-                        literal(CMD_SET_REG | 0x2),
+                        literal(this.pageStartCondition.index),
+                        literal(0x80),
                     ])
                     return
                 }
@@ -379,6 +451,11 @@ namespace jacs {
                                     wr.emitCall(body.index, [], OpCall.BG_MAX1)
                                 }
                             )
+                        } else if (
+                            role.classIdentifier == SRV_JACSCRIPT_CONDITION
+                        ) {
+                            // event code not relevant
+                            wr.emitCall(body.index, [], OpCall.BG_MAX1)
                         } else {
                             this.error("can't handle role")
                         }
@@ -396,9 +473,6 @@ namespace jacs {
                 "pageStart",
                 SRV_JACSCRIPT_CONDITION
             )
-            this.btnA = this.addRole("btnA", SRV_BUTTON)
-            this.screen = this.addRole("screen", SRV_DOT_MATRIX)
-            this.btnB = this.addRole("btnB", SRV_BUTTON)
 
             const mainProc = this.addProc("main")
             this.withProcedure(mainProc, wr => {
@@ -431,9 +505,12 @@ namespace jacs {
         }
     }
 
+    export const serviceClasses: SMap<number> = {
+        button: 0x1473a263,
+        dotMatrix: 0x110d154b,
+    }
+
     export const SRV_JACSCRIPT_CONDITION = 0x1196796d
-    export const SRV_BUTTON = 0x1473a263
-    export const SRV_DOT_MATRIX = 0x110d154b
 
     export const CMD_GET_REG = 0x1000
     export const CMD_SET_REG = 0x2000
