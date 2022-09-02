@@ -587,11 +587,11 @@ namespace microcode {
                 y: 0,
                 onClick: () => this.showDoInsertMenu(),
             })
-            this.rule = { 
+            this.rule = {
                 sensors: [],
                 filters: [],
                 actuators: [],
-                modifiers: []
+                modifiers: [],
             }
             this.instantiateProgramTiles()
         }
@@ -625,7 +625,7 @@ namespace microcode {
             const rule = this.ruledef.getRuleRep()
             repNames.forEach(name => {
                 const tiles = rule[name]
-                tiles.forEach((tile,index) => {
+                tiles.forEach((tile, index) => {
                     if (tile) {
                         const button = new EditorButton(this.editor, {
                             parent: this,
@@ -633,12 +633,11 @@ namespace microcode {
                             icon: tile.getIcon(),
                             x: 0,
                             y: 0,
-                            onClick: () => this.handleTile(name,index),
+                            onClick: () => this.handleTile(name, index),
                         })
                     }
                 })
             })
-            // this.page.changed()
         }
 
         private showRuleHandleMenu() {
@@ -663,14 +662,14 @@ namespace microcode {
 
         private handleTile(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
-            if (index < ruleTiles.length ) {
+            if (index < ruleTiles.length) {
                 const theOne = ruleTiles[index]
                 const fieldEditor = theOne.fieldEditor
                 if (fieldEditor) {
                     fieldEditor.editor(
                         theOne.getField(),
                         this.editor.picker,
-                        () => { 
+                        () => {
                             Language.ensureValid(this.ruledef)
                             this.instantiateProgramTiles()
                             this.page.changed()
@@ -686,7 +685,7 @@ namespace microcode {
             )
             const btns: PickerButtonDef[] = suggestions.map(elem => {
                 return {
-                    icon: <string> elem.getIcon(),
+                    icon: <string>elem.getIcon(),
                     label: elem.name,
                 }
             })
@@ -746,22 +745,18 @@ namespace microcode {
         }
 
         private showWhenInsertMenu() {
-            const ruleRep = this.ruledef.getRuleRep()
-            if (ruleRep.sensors[0]) {
-                const index = ruleRep.filters.length
-                this.handleTile("filters",index)
+            if (this.ruledef.sensor) {
+                this.handleTile("filters", this.ruledef.filters.length)
             } else {
-                this.handleTile("sensors",0)
+                this.handleTile("sensors", 0)
             }
         }
 
         private showDoInsertMenu() {
-            const ruleRep = this.ruledef.getRuleRep()
-            if (ruleRep.actuators[0]) {
-                const index = ruleRep.modifiers.length
-                this.handleTile("modifiers",index)
+            if (this.ruledef.actuator) {
+                this.handleTile("modifiers", this.ruledef.modifiers.length)
             } else {
-                this.handleTile("actuators",0)
+                this.handleTile("actuators", 0)
             }
         }
 
@@ -792,7 +787,7 @@ namespace microcode {
                 ruleRep[name].forEach(btn => {
                     btn.xfrm.localPos = v
                     v.x += btn.width
-                 })
+                })
             }
 
             this.handleBtn.xfrm.localPos = v
@@ -800,7 +795,7 @@ namespace microcode {
             this.whenLbl.xfrm.localPos = v
             v.x +=
                 2 + (this.whenLbl.width >> 1) + (this.whenInsertBtn.width >> 1)
-            
+
             const whenSection = ["sensors", "filters"]
             whenSection.forEach(buttonLoc)
             this.whenInsertBtn.xfrm.localPos = v
@@ -808,7 +803,7 @@ namespace microcode {
             v.x += 2 + (this.whenInsertBtn.width >> 1) + (this.doLbl.width >> 1)
             this.doLbl.xfrm.localPos = v
             v.x += 2 + (this.doLbl.width >> 1) + (this.doInsertBtn.width >> 1)
-            
+
             const doSection = ["actuators", "modifiers"]
             doSection.forEach(buttonLoc)
             this.doInsertBtn.xfrm.localPos = v

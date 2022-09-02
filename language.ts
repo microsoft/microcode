@@ -121,9 +121,9 @@ namespace microcode {
 
         public getRuleRep(): RuleRep {
             return {
-                sensors: [this.sensor],
+                sensors: this.sensor ? [this.sensor] : [],
                 filters: this.filters,
-                actuators: [this.actuator],
+                actuators: this.actuator ? [this.actuator] : [],
                 modifiers: this.modifiers
             }
         }
