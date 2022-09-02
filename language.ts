@@ -145,7 +145,6 @@ namespace microcode {
             const addField = (t: TileDefn) => {
                 if (t.fieldEditor) {
                     const ret = `${t.tid}(${t.fieldEditor.serialize(t.getField())})`
-                    console.log(ret)
                     return ret
                 } else {
                     return t.tid
@@ -169,7 +168,6 @@ namespace microcode {
             if (!obj.M.length) {
                 delete obj.M
             }
-            console.log(obj)
             return obj
         }
 

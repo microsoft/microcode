@@ -613,7 +613,6 @@ namespace microcode {
 
         private destroyProgramTiles() {
             repNames.forEach(name => {
-                console.log(name)
                 const buttons = this.rule[name]
                 buttons.forEach(btn => btn.destroy())
                 this.rule[name] = []
