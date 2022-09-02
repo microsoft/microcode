@@ -79,6 +79,10 @@ namespace microcode {
         ) {
             super(type, tid, name)
         }
+
+        serviceCommandArg(): string | Buffer {
+            return this.jdParam
+        }
     }
 
     export class FilterDefn extends FilterModifierBase {
@@ -746,6 +750,18 @@ namespace microcode {
         getNewInstance(field: any) {
             const newOne = new IconEditor(field ? field : this.field.clone())
             return newOne
+        }
+
+        serviceCommandArg() {
+            const buf = Buffer.create(5)
+            for (let col = 0; col < 5; ++col) {
+                let v = 0
+                for (let row = 0; row < 5; ++row) {
+                    if (this.field.getPixel(col, row)) v |= 1 << row
+                }
+                buf[col] = v
+            }
+            return buf
         }
     }
 

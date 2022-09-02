@@ -105,7 +105,13 @@ namespace jacs {
 
         constructor() {}
 
-        addString(str: string) {
+        addString(str: string | Buffer) {
+            if (typeof str != "string") {
+                let tmp = ""
+                for (let i = 0; i < str.length; ++i)
+                    tmp += String.fromCharCode(str[i])
+                str = tmp
+            }
             return addUnique(this.stringLiterals, str)
         }
 
@@ -272,6 +278,11 @@ namespace jacs {
             for (const p of this.procs) {
                 console.log(p.toString())
             }
+            let idx = 0
+            for (const s of this.stringLiterals) {
+                console.log(idx + ": " + JSON.stringify(s))
+                idx++
+            }
         }
 
         get mainProc() {
@@ -355,17 +366,22 @@ namespace jacs {
             const wr = this.writer
             if (actuator == null) return // do nothing
             if (actuator) {
-                if (actuator.tid == microcode.TID_ACTUATOR_STAMP) {
-                    let param = "\x00\x00\x00\x00\x00"
+                if (
+                    actuator.tid == microcode.TID_ACTUATOR_STAMP ||
+                    actuator.tid == microcode.TID_ACTUATOR_PAINT
+                ) {
+                    let param: Buffer | string = Buffer.create(5)
                     for (const m of rule.modifiers) {
-                        if (typeof m.jdParam == "string") param = m.jdParam
+                        param = m.serviceCommandArg() || param
                     }
-                    const id = this.addString(param)
                     wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [
                         literal(5),
                         literal(0),
                     ])
-                    wr.emitStmt(OpStmt.STMT2_MEMCPY, [literal(id), literal(0)])
+                    wr.emitStmt(OpStmt.STMT2_MEMCPY, [
+                        literal(this.addString(param)),
+                        literal(0),
+                    ])
                     const role = this.lookupActuatorRole(rule)
                     wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
                         literal(role.index),
