@@ -37,7 +37,7 @@ namespace microcode {
                     picker.draw()
                 },
                 onHide,
-                title: "Icon",
+                title: "Edit Icon",
             },
             false
         )

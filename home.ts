@@ -180,6 +180,7 @@ namespace microcode {
             super.activate()
             this.color = 15
             this.logLines = []
+            this.log("               _        ", 7, LineJustification.Center)
             this.log(" /\\/\\ . _ _ _ /  _  _| _", 7, LineJustification.Center)
             this.log("/    \\|(_| (_)\\_(_)(_|(-", 7, LineJustification.Center)
             this.log("", 7)
