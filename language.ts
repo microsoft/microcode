@@ -658,10 +658,12 @@ namespace microcode {
         }
 
         getNewInstance() {
-           const newOne = new IconEditor()
-           newOne.field = this.field.clone()
-           return newOne
+            const newOne = new IconEditor()
+            newOne.field = this.field.clone()
+            return newOne
         }
     }
 
     tiles.modifiers[TID_MODIFIER_ICON_EDITOR] = new IconEditor()
+
+}
