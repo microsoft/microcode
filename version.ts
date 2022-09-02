@@ -1,7 +1,8 @@
+
 // Auto-generated file: do not edit.
 namespace microcode {
     /**
-     * Version of the package
+     * Version of the library
      */
-    export const VERSION = "v1.0.3"
+    export const VERSION = "v1.0.4"
 }

@@ -1,6 +1,6 @@
 {
     "name": "microcode",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Coding microcontrollers using Arcade",
     "dependencies": {
         "game---light": "*",
@@ -47,5 +47,6 @@
         "arcade"
     ],
     "preferredEditor": "tsprj",
-    "disableTargetTemplateFiles": true
+    "disableTargetTemplateFiles": true,
+    "binaryonly": true
 }
