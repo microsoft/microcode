@@ -82,7 +82,7 @@ namespace microcode {
         constructor(public page: Page, public defn: RuleDefn) {
             this.prevState = {};
             this.state = {};
-            this.sensorFn = Library.getFunction((this.defn.sensor || tiles.sensors[tid.sensor.always]).tid);
+            this.sensorFn = Library.getFunction((this.defn.sensor || tiles.sensors[TID_SENSOR_ALWAYS]).tid);
             this.filterFns = (this.defn.filters || [])
                 .slice()
                 .sort((a, b) => a.priority - b.priority)

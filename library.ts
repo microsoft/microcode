@@ -18,11 +18,12 @@ namespace microcode {
         ///
         /// SENSORS
         ///
-        [tid.sensor.always]: (rule: Rule) => {
+        [TID_SENSOR_ALWAYS]: (rule: Rule) => {
             rule.state["exec"] = true;
         },
 
-        [tid.sensor.dpad]: (rule: Rule) => {
+        /*
+        [TID_SENSOR_DPAD]: (rule: Rule) => {
             const direction = new Vec2();
             if (controller.up.isPressed()) { direction.y -= 1; }
             if (controller.down.isPressed()) { direction.y += 1; }
@@ -33,8 +34,9 @@ namespace microcode {
                 rule.state["direction"] = direction;
             }
         },
+        */
 
-        [tid.sensor.button_a]: (rule: Rule) => {
+        [TID_SENSOR_BUTTON_A]: (rule: Rule) => {
             const pressed = controller.A.isPressed();
             if (pressed) {
                 rule.state["exec"] = true;
@@ -44,7 +46,7 @@ namespace microcode {
             rule.state["value_name"] = "A";
         },
 
-        [tid.sensor.button_b]: (rule: Rule) => {
+        [TID_SENSOR_BUTTON_B]: (rule: Rule) => {
             const pressed = controller.B.isPressed();
             if (pressed) {
                 rule.state["exec"] = true;
@@ -54,7 +56,7 @@ namespace microcode {
             rule.state["value_name"] = "B";
         },
 
-        [tid.sensor.timer]: (rule: Rule) => {
+        [TID_SENSOR_TIMER]: (rule: Rule) => {
             const timerStart = rule.prevState["timerStart"] || control.millis();
             rule.state["timerStart"] = timerStart;
             const now = control.millis();
@@ -69,7 +71,7 @@ namespace microcode {
             rule.state["value_type"] = "boolean";
             rule.state["value_name"] = "Timer";
         },
-        [tid.sensor.pin_1]: (rule: Rule) => {
+        [TID_SENSOR_PIN_1]: (rule: Rule) => {
             let mode = rule.state["pin_mode"];
             if (mode == undefined) {
                 mode = "analog";
@@ -90,37 +92,37 @@ namespace microcode {
         ///
         /// FILTERS
         ///
-        [tid.filter.timespan_short]: (rule: Rule) => {
+        [TID_FILTER_TIMESPAN_SHORT]: (rule: Rule) => {
             let timespan: number = rule.state["timespan"] || 1000;
             timespan /= 2.0;
             rule.state["timespan"] = timespan;
         },
 
-        [tid.filter.timespan_long]: (rule: Rule) => {
+        [TID_FILTER_TIMESPAN_LONG]: (rule: Rule) => {
             let timespan: number = rule.state["timespan"] || 1000;
             timespan += 1000;
             rule.state["timespan"] = timespan;
         },
 
-        [tid.filter.pin_analog]: (rule: Rule) => {
+        [TID_FILTER_PIN_ANALOG]: (rule: Rule) => {
             rule.state["pin_mode"] = "analog";
         },
 
-        [tid.filter.pin_digital]: (rule: Rule) => {
+        [TID_FILTER_PIN_DIGITAL]: (rule: Rule) => {
             rule.state["pin_mode"] = "digital";
         },
 
         ///
         /// ACTUATORS
         ///
-        [tid.actuator.switch_page]: (rule: Rule) => {
+        [TID_ACTUATOR_SWITCH_PAGE]: (rule: Rule) => {
             const page: number = rule.state["page"];
             if (page !== undefined) {
                 rule.prog.switchPage(page);
             }
         },
 
-        [tid.actuator.pin_0]: (rule: Rule) => {
+        [TID_ACTUATOR_PIN_0]: (rule: Rule) => {
             let state: boolean = rule.state["pin_state"];
             if (state === undefined) {
                 state = true;
@@ -128,7 +130,8 @@ namespace microcode {
             // pins.digitalWritePin(DigitalPin.P0, state ? 1 : 0);
         },
 
-        [tid.actuator.log]: (rule: Rule) => {
+        /*
+        [TID_ACTUATOR_LOG]: (rule: Rule) => {
             const value_type = rule.state["value_type"];
             const name = rule.state["value_name"];
             const color = rule.state["color"] || 5;
@@ -151,7 +154,7 @@ namespace microcode {
             }
         },
 
-        [tid.actuator.plot]: (rule: Rule) => {
+        [TID_ACTUATOR_PLOT]: (rule: Rule) => {
             const value_type = rule.state["value_type"];
             const name = rule.state["value_name"];
             const color = rule.state["color"] || 5;
@@ -168,34 +171,35 @@ namespace microcode {
                 }
             }
         },
+        */
 
         ///
         /// MODIFIERS
         ///
-        [tid.modifier.page_1]: (rule: Rule) => {
+        [TID_MODIFIER_PAGE_1]: (rule: Rule) => {
             rule.state["page"] = 0;
         },
 
-        [tid.modifier.page_2]: (rule: Rule) => {
+        [TID_MODIFIER_PAGE_2]: (rule: Rule) => {
             rule.state["page"] = 1;
         },
 
-        [tid.modifier.page_3]: (rule: Rule) => {
+        [TID_MODIFIER_PAGE_3]: (rule: Rule) => {
             rule.state["page"] = 2;
         },
 
-        [tid.modifier.page_4]: (rule: Rule) => {
+        [TID_MODIFIER_PAGE_4]: (rule: Rule) => {
             rule.state["page"] = 3;
         },
 
-        [tid.modifier.page_5]: (rule: Rule) => {
+        [TID_MODIFIER_PAGE_5]: (rule: Rule) => {
             rule.state["page"] = 4;
         },
 
-        [tid.modifier.pin_on]: (rule: Rule) => {
+        [TID_MODIFIER_PIN_ON]: (rule: Rule) => {
             rule.state["pin_state"] = true;
         },
-        [tid.modifier.pin_off]: (rule: Rule) => {
+        [TID_MODIFIER_PIN_OFF]: (rule: Rule) => {
             rule.state["pin_state"] = false;
         }
     }

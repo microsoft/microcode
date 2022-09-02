@@ -302,9 +302,9 @@ namespace jacs {
         lookupSensorRole(rule: microcode.RuleDefn) {
             const sensor = rule.sensor
             if (!sensor) return this.pageStartCondition
-            if (sensor.tid == microcode.tid.sensor.button_a)
+            if (sensor.tid == microcode.TID_SENSOR_BUTTON_A)
                 return this.btnA
-            if (sensor.tid == microcode.tid.sensor.button_b)
+            if (sensor.tid == microcode.TID_SENSOR_BUTTON_B)
                 return this.btnB
             this.error(`can't map sensor role for ${JSON.stringify(sensor)}`)
             return this.pageStartCondition
@@ -324,7 +324,7 @@ namespace jacs {
             if (actuator == null)
                 return // do nothing
             if (actuator) {
-                if (actuator.tid == microcode.tid.actuator.stamp) {
+                if (actuator.tid == microcode.TID_ACTUATOR_STAMP) {
                     let param = "\x00\x00\x00\x00\x00"
                     for (const m of rule.modifiers) {
                         if (typeof m.jdParam == "string")
