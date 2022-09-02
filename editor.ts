@@ -833,6 +833,8 @@ namespace microcode {
                         theOne.getField(),
                         this.editor.picker,
                         () => { 
+                            Language.ensureValid(this.ruledef)
+                            this.instantiateProgramTiles()
                             this.page.changed()
                         }
                     )
