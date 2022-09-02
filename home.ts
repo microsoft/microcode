@@ -41,7 +41,6 @@ namespace microcode {
         logLines: LogLine[]
         plotLines: { [color: number]: PlotLine }
 
-        agent: Agent
         paused: boolean
         singleStep: boolean
 
@@ -192,7 +191,6 @@ namespace microcode {
                 progdef = new ProgramDefn()
                 this.app.save(SAVESLOT_AUTO, progdef)
             }
-            this.agent = new Agent(this, progdef)
             this.paused = false
 
             this.log("program started", 1)
@@ -200,14 +198,11 @@ namespace microcode {
 
         /* override */ deactivate() {
             this.logLines = []
-            this.agent.destroy()
-            this.agent = undefined
         }
 
         /* override */ update() {
             super.update()
             if (!this.paused || (this.paused && this.singleStep)) {
-                this.agent.update()
                 this.singleStep = false
             }
         }

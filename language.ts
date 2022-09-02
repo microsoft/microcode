@@ -25,6 +25,8 @@ namespace microcode {
         clone: (field: any) => any
         editor: (field: any, picker: Picker, onHide: () => void) => void // use picker to update field
         image: (field: any) => Image // produce an image for the field for tile
+        serialize: (field: any) => string
+        deserialize: (s: string) => any
     }
 
     export class TileDefn {
@@ -47,7 +49,7 @@ namespace microcode {
             return this.tid
         }
 
-        getNewInstance(): TileDefn {
+        getNewInstance(field: any = null): TileDefn {
             return this
         }
     }
@@ -126,14 +128,20 @@ namespace microcode {
         public isEmpty(): boolean {
             return !this.sensor && !this.actuator
         }
-
-        // TODO: field serialization/deserialization, if present
+        
         public toObj(): any {
+            const addField = (t: TileDefn) => {
+                if (t.fieldEditor) {
+                    return `${t.tid}(${t.fieldEditor.serialize(t.getField())})`
+                } else {
+                    return t.tid
+                }
+            }
             const obj = {
                 S: this.sensor ? this.sensor.tid : undefined,
                 A: this.actuator ? this.actuator.tid : undefined,
                 F: this.filters.map(elem => elem.tid),
-                M: this.modifiers.map(elem => elem.tid),
+                M: this.modifiers.map(elem => addField(elem)),
             }
             if (!obj.S) {
                 delete obj.S
@@ -147,10 +155,23 @@ namespace microcode {
             if (!obj.M.length) {
                 delete obj.M
             }
+            console.log(obj)
             return obj
         }
 
         public static FromObj(obj: any): RuleDefn {
+            const extractField = (s: string) => {
+                let hasField = s.indexOf("(")
+                if (hasField >= 0) {
+                    const elem = s.substr(0, hasField)
+                    const tile = tiles.modifiers[elem]
+                    const field = tile.fieldEditor.deserialize(s.substr(hasField+1,s.length-2-hasField))
+                    const newOne = tile.getNewInstance(field)
+                    return newOne
+                } else {
+                    return tiles.modifiers[s]
+                }
+            }
             if (typeof obj === "string") {
                 obj = JSON.parse(obj)
             }
@@ -655,14 +676,35 @@ namespace microcode {
         clone: (img: Image) => img.clone(),
         editor: iconEditor,
         image: scaleUp,
+        serialize: (img: Image) => {
+            const ret: string [] = []
+            for (let index = 0; index < 25; index++) {
+                let col = index % 5
+                let row = index / 5
+                ret.push(img.getPixel(col,row) ? "1" : "0")
+            }
+            return ret.join()
+        },
+        deserialize: (s: string) => {
+            const img = image.create(5, 5)
+            for (let index = 0; index < 25; index++) {
+                let col = index % 5
+                let row = index / 5
+                img.setPixel(col,row, s[index] == "1" ? 1 : 0)
+            }
+            return img
+        }
     }
 
     class IconEditor extends ModifierDefn {
         field: Image
-        constructor() {
+        constructor(field: Image = null) {
             super(TID_MODIFIER_ICON_EDITOR, "icon editor", "icon_editor", 10)
             this.fieldEditor = iconFieldEditor
-            this.field = iconFieldEditor.clone(iconFieldEditor.init)
+            if (field)
+                this.field = field
+            else
+                this.field = iconFieldEditor.clone(iconFieldEditor.init)
         }
 
         getField() {
@@ -673,9 +715,8 @@ namespace microcode {
             return this.fieldEditor.image(this.field)
         }
 
-        getNewInstance() {
-            const newOne = new IconEditor()
-            newOne.field = this.field.clone()
+        getNewInstance(field: any) {
+            const newOne = new IconEditor(field ? field : this.field.clone())
             return newOne
         }
     }
