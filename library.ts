@@ -1,25 +1,25 @@
 namespace microcode {
-    export type LibraryFn = (rule: Rule) => void;
+    export type LibraryFn = (rule: Rule) => void
 
     export type LibraryFnMap = {
-        [id: string]: LibraryFn;
-    };
+        [id: string]: LibraryFn
+    }
 
     export class Library {
         public static getFunction(id: string): LibraryFn {
-            id = id || "noop";
-            return librarydb[id] || librarydb["noop"];
+            id = id || "noop"
+            return librarydb[id] || librarydb["noop"]
         }
     }
 
     const librarydb: LibraryFnMap = {
-        "noop": (rule: Rule) => { },
+        noop: (rule: Rule) => {},
 
         ///
         /// SENSORS
         ///
         [TID_SENSOR_ALWAYS]: (rule: Rule) => {
-            rule.state["exec"] = true;
+            rule.state["exec"] = true
         },
 
         /*
@@ -37,95 +37,95 @@ namespace microcode {
         */
 
         [TID_SENSOR_BUTTON_A]: (rule: Rule) => {
-            const pressed = controller.A.isPressed();
+            const pressed = controller.A.isPressed()
             if (pressed) {
-                rule.state["exec"] = true;
+                rule.state["exec"] = true
             }
-            rule.state["value"] = pressed;
-            rule.state["value_type"] = "boolean";
-            rule.state["value_name"] = "A";
+            rule.state["value"] = pressed
+            rule.state["value_type"] = "boolean"
+            rule.state["value_name"] = "A"
         },
 
         [TID_SENSOR_BUTTON_B]: (rule: Rule) => {
-            const pressed = controller.B.isPressed();
+            const pressed = controller.B.isPressed()
             if (pressed) {
-                rule.state["exec"] = true;
+                rule.state["exec"] = true
             }
-            rule.state["value"] = pressed;
-            rule.state["value_type"] = "boolean";
-            rule.state["value_name"] = "B";
+            rule.state["value"] = pressed
+            rule.state["value_type"] = "boolean"
+            rule.state["value_name"] = "B"
         },
 
         [TID_SENSOR_TIMER]: (rule: Rule) => {
-            const timerStart = rule.prevState["timerStart"] || control.millis();
-            rule.state["timerStart"] = timerStart;
-            const now = control.millis();
-            const timespan = rule.state["timespan"] || 1000;
-            const elapsed = now - timerStart;
-            const trigger = elapsed >= timespan;
+            const timerStart = rule.prevState["timerStart"] || control.millis()
+            rule.state["timerStart"] = timerStart
+            const now = control.millis()
+            const timespan = rule.state["timespan"] || 1000
+            const elapsed = now - timerStart
+            const trigger = elapsed >= timespan
             if (trigger) {
-                rule.state["exec"] = true;
-                rule.state["timerStart"] = now;
+                rule.state["exec"] = true
+                rule.state["timerStart"] = now
             }
-            rule.state["value"] = trigger;
-            rule.state["value_type"] = "boolean";
-            rule.state["value_name"] = "Timer";
+            rule.state["value"] = trigger
+            rule.state["value_type"] = "boolean"
+            rule.state["value_name"] = "Timer"
         },
         [TID_SENSOR_PIN_1]: (rule: Rule) => {
-            let mode = rule.state["pin_mode"];
+            let mode = rule.state["pin_mode"]
             if (mode == undefined) {
-                mode = "analog";
+                mode = "analog"
             }
-            const value = 0; // (mode === "analog") ? pins.analogReadPin(AnalogPin.P1) : pins.digitalReadPin(DigitalPin.P1);
+            const value = 0 // (mode === "analog") ? pins.analogReadPin(AnalogPin.P1) : pins.digitalReadPin(DigitalPin.P1);
             /*
             const prev = rule.prevState["value"] || Math.random();
             const value = (mode === "analog")
                 ? Math.random() > 0.5 ? prev + 0.1 : prev - 0.1
                 : Math.random() > 0.1 ? Math.random() > 0.5 ? 1 : 0 : prev;
             */
-            rule.state["value"] = value;
-            rule.state["value_type"] = "number";
-            rule.state["value_name"] = "P1";
-            rule.state["exec"] = true;
+            rule.state["value"] = value
+            rule.state["value_type"] = "number"
+            rule.state["value_name"] = "P1"
+            rule.state["exec"] = true
         },
 
         ///
         /// FILTERS
         ///
         [TID_FILTER_TIMESPAN_SHORT]: (rule: Rule) => {
-            let timespan: number = rule.state["timespan"] || 1000;
-            timespan /= 2.0;
-            rule.state["timespan"] = timespan;
+            let timespan: number = rule.state["timespan"] || 1000
+            timespan /= 2.0
+            rule.state["timespan"] = timespan
         },
 
         [TID_FILTER_TIMESPAN_LONG]: (rule: Rule) => {
-            let timespan: number = rule.state["timespan"] || 1000;
-            timespan += 1000;
-            rule.state["timespan"] = timespan;
+            let timespan: number = rule.state["timespan"] || 1000
+            timespan += 1000
+            rule.state["timespan"] = timespan
         },
 
         [TID_FILTER_PIN_ANALOG]: (rule: Rule) => {
-            rule.state["pin_mode"] = "analog";
+            rule.state["pin_mode"] = "analog"
         },
 
         [TID_FILTER_PIN_DIGITAL]: (rule: Rule) => {
-            rule.state["pin_mode"] = "digital";
+            rule.state["pin_mode"] = "digital"
         },
 
         ///
         /// ACTUATORS
         ///
         [TID_ACTUATOR_SWITCH_PAGE]: (rule: Rule) => {
-            const page: number = rule.state["page"];
+            const page: number = rule.state["page"]
             if (page !== undefined) {
-                rule.prog.switchPage(page);
+                rule.prog.switchPage(page)
             }
         },
 
         [TID_ACTUATOR_PIN_0]: (rule: Rule) => {
-            let state: boolean = rule.state["pin_state"];
+            let state: boolean = rule.state["pin_state"]
             if (state === undefined) {
-                state = true;
+                state = true
             }
             // pins.digitalWritePin(DigitalPin.P0, state ? 1 : 0);
         },
@@ -177,30 +177,30 @@ namespace microcode {
         /// MODIFIERS
         ///
         [TID_MODIFIER_PAGE_1]: (rule: Rule) => {
-            rule.state["page"] = 0;
+            rule.state["page"] = 0
         },
 
         [TID_MODIFIER_PAGE_2]: (rule: Rule) => {
-            rule.state["page"] = 1;
+            rule.state["page"] = 1
         },
 
         [TID_MODIFIER_PAGE_3]: (rule: Rule) => {
-            rule.state["page"] = 2;
+            rule.state["page"] = 2
         },
 
         [TID_MODIFIER_PAGE_4]: (rule: Rule) => {
-            rule.state["page"] = 3;
+            rule.state["page"] = 3
         },
 
         [TID_MODIFIER_PAGE_5]: (rule: Rule) => {
-            rule.state["page"] = 4;
+            rule.state["page"] = 4
         },
 
         [TID_MODIFIER_PIN_ON]: (rule: Rule) => {
-            rule.state["pin_state"] = true;
+            rule.state["pin_state"] = true
         },
         [TID_MODIFIER_PIN_OFF]: (rule: Rule) => {
-            rule.state["pin_state"] = false;
-        }
+            rule.state["pin_state"] = false
+        },
     }
 }

@@ -1,128 +1,144 @@
 namespace microcode {
     export class Program {
-        currPage: number;
-        pages: Page[];
-        done: boolean;
-        executing: boolean;
+        currPage: number
+        pages: Page[]
+        done: boolean
+        executing: boolean
 
         constructor(public agent: Agent) {
-            this.currPage = 0;
-            this.pages = agent.progdef.pages.map((elem, index) => new Page(this, elem, index));
+            this.currPage = 0
+            this.pages = agent.progdef.pages.map(
+                (elem, index) => new Page(this, elem, index)
+            )
         }
 
         public destroy() {
             for (const page of this.pages) {
-                page.destroy();
+                page.destroy()
             }
-            this.pages = undefined;
-            this.agent = undefined;
+            this.pages = undefined
+            this.agent = undefined
         }
 
         public execute() {
-            if (this.executing) { return; } // Disallow recursion from [call page] actuator.
-            this.executing = true;
-            this.done = false;
-            const page = this.pages[this.currPage];
+            if (this.executing) {
+                return
+            } // Disallow recursion from [call page] actuator.
+            this.executing = true
+            this.done = false
+            const page = this.pages[this.currPage]
             if (page) {
-                page.execute();
+                page.execute()
             }
-            this.executing = false;
+            this.executing = false
         }
 
         public switchPage(n: number) {
-            this.currPage = n;
-            const page = this.pages[this.currPage];
+            this.currPage = n
+            const page = this.pages[this.currPage]
             if (page) {
-                page.reset();
+                page.reset()
             }
-            this.done = true;
+            this.done = true
         }
     }
 
     class Page {
-        rules: Rule[];
+        rules: Rule[]
 
-        constructor(public prog: Program, public defn: PageDefn, public index: number) {
-            this.rules = this.defn.rules.map(elem => new Rule(this, elem));
+        constructor(
+            public prog: Program,
+            public defn: PageDefn,
+            public index: number
+        ) {
+            this.rules = this.defn.rules.map(elem => new Rule(this, elem))
         }
 
         public destroy() {
             for (const rule of this.rules) {
-                rule.destroy();
+                rule.destroy()
             }
-            this.rules = undefined;
-            this.defn = undefined;
-            this.prog = undefined;
+            this.rules = undefined
+            this.defn = undefined
+            this.prog = undefined
         }
 
         public execute() {
             for (const rule of this.rules) {
-                rule.execute();
-                if (this.prog.done) { break; }
+                rule.execute()
+                if (this.prog.done) {
+                    break
+                }
             }
         }
 
         public reset() {
             for (const rule of this.rules) {
-                rule.reset();
+                rule.reset()
             }
         }
     }
 
     export class Rule {
-        prevState: any;
-        state: any;
-        sensorFn: LibraryFn;
-        filterFns: LibraryFn[];
-        actuatorFn: LibraryFn;
-        modifierFns: LibraryFn[];
+        prevState: any
+        state: any
+        sensorFn: LibraryFn
+        filterFns: LibraryFn[]
+        actuatorFn: LibraryFn
+        modifierFns: LibraryFn[]
 
-        get prog(): Program { return this.page.prog; }
+        get prog(): Program {
+            return this.page.prog
+        }
 
         constructor(public page: Page, public defn: RuleDefn) {
-            this.prevState = {};
-            this.state = {};
-            this.sensorFn = Library.getFunction((this.defn.sensor || tiles.sensors[TID_SENSOR_ALWAYS]).tid);
+            this.prevState = {}
+            this.state = {}
+            this.sensorFn = Library.getFunction(
+                (this.defn.sensor || tiles.sensors[TID_SENSOR_ALWAYS]).tid
+            )
             this.filterFns = (this.defn.filters || [])
                 .slice()
                 .sort((a, b) => a.priority - b.priority)
-                .map(elem => Library.getFunction(elem.tid));
-            this.actuatorFn = Library.getFunction((this.defn.actuator || <any>{}).tid);
+                .map(elem => Library.getFunction(elem.tid))
+            this.actuatorFn = Library.getFunction(
+                (this.defn.actuator || <any>{}).tid
+            )
             this.modifierFns = (this.defn.modifiers || [])
                 .slice()
                 .sort((a, b) => a.priority - b.priority)
-                .map(elem => Library.getFunction(elem.tid));
+                .map(elem => Library.getFunction(elem.tid))
         }
 
         public destroy() {
-            this.state = this.prevState = undefined;
-            this.sensorFn = undefined;
-            this.filterFns = undefined;
-            this.actuatorFn = undefined;
-            this.modifierFns = undefined;
-            this.page = undefined;
-            this.defn = undefined;
+            this.state = this.prevState = undefined
+            this.sensorFn = undefined
+            this.filterFns = undefined
+            this.actuatorFn = undefined
+            this.modifierFns = undefined
+            this.page = undefined
+            this.defn = undefined
         }
 
         public execute() {
-            this.prevState = this.state;
-            this.state = {};
+            this.prevState = this.state
+            this.state = {}
             if (!this.defn.sensor || this.defn.sensor.phase === Phase.Pre) {
-                this.sensorFn(this);
+                this.sensorFn(this)
             }
-            this.filterFns.forEach(fn => fn(this));
+            this.filterFns.forEach(fn => fn(this))
             if (this.defn.sensor && this.defn.sensor.phase === Phase.Post) {
-                this.sensorFn(this);
+                this.sensorFn(this)
             }
             if (this.state["exec"]) {
-                this.modifierFns.forEach(fn => fn(this));
-                this.actuatorFn(this);
+                this.modifierFns.forEach(fn => fn(this))
+                this.actuatorFn(this)
             }
         }
 
         public reset() {
-            this.prevState = {};
-            this.state = {};
+            this.prevState = {}
+            this.state = {}
         }
     }
 }

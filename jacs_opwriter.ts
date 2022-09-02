@@ -1,8 +1,5 @@
 namespace jacs {
-    export function assert(
-        cond: boolean,
-        msg?: string
-    ) {
+    export function assert(cond: boolean, msg?: string) {
         if (!cond) {
             if (msg == null) msg = "Assertion failed"
             throw msg
@@ -21,7 +18,6 @@ namespace jacs {
         buf.setNumber(NumberFormat.UInt16LE, pos, v)
     }
 
-
     export function assertRange(
         min: number,
         v: number,
@@ -29,11 +25,11 @@ namespace jacs {
         desc?: string
     ) {
         if (min <= v && v <= max) return
-        throw (`${desc || "value"}=${v} out of range [${min}, ${max}]`)
+        throw `${desc || "value"}=${v} out of range [${min}, ${max}]`
     }
 
     export function oops(msg: string): never {
-        throw (msg)
+        throw msg
     }
 
     export interface TopOpWriter extends InstrArgResolver {
@@ -46,7 +42,7 @@ namespace jacs {
     export class Label {
         uses: number[]
         offset = -1
-        constructor(public name: string) { }
+        constructor(public name: string) {}
     }
 
     const VF_DEPTH_MASK = 0xff
@@ -65,7 +61,7 @@ namespace jacs {
         _userdata: {}
         _cachedValue: CachedValue
 
-        constructor() { }
+        constructor() {}
         get depth() {
             return this.flags & VF_DEPTH_MASK
         }
@@ -98,7 +94,7 @@ namespace jacs {
 
     export class CachedValue {
         numrefs = 1
-        constructor(public parent: OpWriter, public index: number) { }
+        constructor(public parent: OpWriter, public index: number) {}
         emit() {
             assert(this.numrefs > 0)
             const r = new Value()
@@ -111,7 +107,10 @@ namespace jacs {
         }
         store(v: Value) {
             assert(this.numrefs > 0)
-            this.parent.emitStmt(OpStmt.STMTx1_STORE_LOCAL, [literal(this.index), v])
+            this.parent.emitStmt(OpStmt.STMTx1_STORE_LOCAL, [
+                literal(this.index),
+                v,
+            ])
         }
         _decr() {
             assert(this.numrefs > 0)
@@ -142,7 +141,7 @@ namespace jacs {
     }
 
     class Comment {
-        constructor(public offset: number, public comment: string) { }
+        constructor(public offset: number, public comment: string) {}
     }
 
     export const LOCAL_OFFSET = 100
@@ -171,8 +170,7 @@ namespace jacs {
             this.emitLabel(this.top)
             this.binary = Buffer.create(128)
             const arr = this.name.split("_F")
-            if (arr.length > 1)
-                arr.pop()
+            if (arr.length > 1) arr.pop()
             const friendlyName = arr.join("_F")
             this.nameIdx = this.prog.addString(friendlyName)
         }
@@ -284,45 +282,41 @@ namespace jacs {
             if (op == OpCall.SYNC)
                 this.emitStmt(OpStmt.STMT3_CALL, [proc, localidx, numargs])
             else
-                this.emitStmt(
-                    OpStmt.STMT4_CALL_BG,
-                    [proc,
-                        localidx,
-                        numargs,
-                        literal(op)]
-                )
+                this.emitStmt(OpStmt.STMT4_CALL_BG, [
+                    proc,
+                    localidx,
+                    numargs,
+                    literal(op),
+                ])
             for (const c of args) c.free()
         }
 
         emitStoreByte(src: Value, off = 0) {
             assertRange(0, off, 0xff)
-            this.emitStmt(
-                OpStmt.STMT4_STORE_BUFFER,
-                [literal(OpFmt.U8),
+            this.emitStmt(OpStmt.STMT4_STORE_BUFFER, [
+                literal(OpFmt.U8),
                 literal(off),
                 literal(0),
-                    src]
-            )
+                src,
+            ])
         }
 
         emitBufLoad(fmt: OpFmt, off: number, bufidx = 0) {
             if (bufidx == 0) assertRange(0, off, 0xff)
-            return this.emitExpr(
-                OpExpr.EXPR3_LOAD_BUFFER,
-                [literal(fmt),
+            return this.emitExpr(OpExpr.EXPR3_LOAD_BUFFER, [
+                literal(fmt),
                 literal(off),
-                literal(bufidx)]
-            )
+                literal(bufidx),
+            ])
         }
 
         emitBufStore(src: Value, fmt: OpFmt, off: number, bufidx = 0) {
-            this.emitStmt(
-                OpStmt.STMT4_STORE_BUFFER,
-                [literal(fmt),
+            this.emitStmt(OpStmt.STMT4_STORE_BUFFER, [
+                literal(fmt),
                 literal(off),
                 literal(bufidx),
-                    src]
-            )
+                src,
+            ])
         }
 
         getAssembly() {
@@ -425,7 +419,7 @@ namespace jacs {
         private oops(msg: string) {
             try {
                 console.log(this.getAssembly())
-            } catch { }
+            } catch {}
             oops(msg)
         }
 
@@ -453,7 +447,9 @@ namespace jacs {
 
             // patch local indices
             for (const off of this.localOffsets) {
-                assert(LOCAL_OFFSET <= this.binary[off] && this.binary[off] < 0xf8)
+                assert(
+                    LOCAL_OFFSET <= this.binary[off] && this.binary[off] < 0xf8
+                )
                 this.binary[off] =
                     this.binary[off] - LOCAL_OFFSET + this.cachedValues.length
             }
@@ -575,7 +571,10 @@ namespace jacs {
             } else if (v.isMemRef) {
                 assert(exprTakesNumber(v.op))
                 this.writeByte(v.op)
-                if (v.op == OpExpr.EXPRx_LOAD_LOCAL && v.numValue >= LOCAL_OFFSET)
+                if (
+                    v.op == OpExpr.EXPRx_LOAD_LOCAL &&
+                    v.numValue >= LOCAL_OFFSET
+                )
                     this.localOffsets.push(this.location())
                 this.writeInt(v.numValue)
                 if (v._cachedValue) v._cachedValue._decr()
@@ -591,7 +590,10 @@ namespace jacs {
             for (const a of args) a.adopt()
             this.spillAllStateful()
             this.writeByte(op)
-            if (op == OpStmt.STMTx1_STORE_LOCAL && args[0].numValue >= LOCAL_OFFSET)
+            if (
+                op == OpStmt.STMTx1_STORE_LOCAL &&
+                args[0].numValue >= LOCAL_OFFSET
+            )
                 this.localOffsets.push(this.location())
             this.writeArgs(stmtTakesNumber(op), args)
         }
@@ -634,7 +636,7 @@ namespace jacs {
         returnLabel: Label
         body: ((wr: OpWriter) => void)[] = []
 
-        constructor(public name: string, public parent: OpWriter) { }
+        constructor(public name: string, public parent: OpWriter) {}
 
         empty() {
             return this.body.length == 0

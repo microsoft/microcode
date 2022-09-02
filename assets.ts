@@ -1,63 +1,64 @@
 namespace microcode {
-    export type ButtonStyle = "white" | "beige" | "clear" | "danger";
+    export type ButtonStyle = "white" | "beige" | "clear" | "danger"
 
     export class icons {
-        static reg: {[name: string]: ImageG } = {};
+        static reg: { [name: string]: ImageG } = {}
 
         public static get(name: string, nullIfMissing = false): ImageG {
-            let icon = this.reg[name];
+            let icon = this.reg[name]
             if (!icon && !nullIfMissing) {
-                icon = this.reg["MISSING"];
+                icon = this.reg["MISSING"]
             }
-            return icon;
+            return icon
         }
 
         public static init() {
-            this.reg["cursor"] = icondb.cursor;
-            this.reg["stylus"] = icondb.stylus;
-            this.reg["button_white"] = icondb.btn_bknd_white;
-            this.reg["button_beige"] = icondb.btn_bknd_beige;
-            this.reg["button_clear"] = icondb.btn_bknd_clear;
-            this.reg["button_danger"] = icondb.btn_bknd_danger;
-            this.reg["edit"] = icondb.btn_edit;
-            this.reg["delete"] = icondb.btn_delete;
-            this.reg["cancel"] = icondb.btn_cancel;
-            this.reg["ok"] = icondb.btn_ok;
-            this.reg["plus"] = icondb.btn_plus;
-            this.reg["new_file"] = icondb.btn_new_file;
-            this.reg["log"] = icondb.btn_log;
-            this.reg["plot"] = icondb.btn_plot;
-            this.reg["dpad_left"] = icondb.btn_dpad_left;
-            this.reg["when"] = icondb.ui_when;
-            this.reg["do"] = icondb.ui_do;
-            this.reg["insertion_point"] = icondb.btn_insertion_point;
-            this.reg["next_page"] = icondb.btn_next_page;
-            this.reg["prev_page"] = icondb.btn_prev_page;
-            this.reg["MISSING"] = icondb.MISSING;
-            this.reg[TID_SENSOR_BUTTON_A] = icondb.tile_button_a;
-            this.reg[TID_SENSOR_BUTTON_B] = icondb.tile_button_b;
-            this.reg[TID_SENSOR_TIMER] = icondb.tile_timer;
-            this.reg[TID_SENSOR_PIN_1] = icondb.tile_pin_1;
-            this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1;
-            this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2;
-            this.reg[TID_MODIFIER_PAGE_3] = icondb.tile_page_3;
-            this.reg[TID_MODIFIER_PAGE_4] = icondb.tile_page_4;
-            this.reg[TID_MODIFIER_PAGE_5] = icondb.tile_page_5;
-            this.reg[TID_MODIFIER_PIN_ON] = icondb.tile_pin_on;
-            this.reg[TID_MODIFIER_PIN_OFF] = icondb.tile_pin_off;
+            this.reg["cursor"] = icondb.cursor
+            this.reg["stylus"] = icondb.stylus
+            this.reg["button_white"] = icondb.btn_bknd_white
+            this.reg["button_beige"] = icondb.btn_bknd_beige
+            this.reg["button_clear"] = icondb.btn_bknd_clear
+            this.reg["button_danger"] = icondb.btn_bknd_danger
+            this.reg["edit"] = icondb.btn_edit
+            this.reg["delete"] = icondb.btn_delete
+            this.reg["cancel"] = icondb.btn_cancel
+            this.reg["ok"] = icondb.btn_ok
+            this.reg["plus"] = icondb.btn_plus
+            this.reg["new_file"] = icondb.btn_new_file
+            this.reg["log"] = icondb.btn_log
+            this.reg["plot"] = icondb.btn_plot
+            this.reg["dpad_left"] = icondb.btn_dpad_left
+            this.reg["when"] = icondb.ui_when
+            this.reg["do"] = icondb.ui_do
+            this.reg["insertion_point"] = icondb.btn_insertion_point
+            this.reg["next_page"] = icondb.btn_next_page
+            this.reg["prev_page"] = icondb.btn_prev_page
+            this.reg["MISSING"] = icondb.MISSING
+            this.reg[TID_SENSOR_BUTTON_A] = icondb.tile_button_a
+            this.reg[TID_SENSOR_BUTTON_B] = icondb.tile_button_b
+            this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
+            this.reg[TID_SENSOR_PIN_1] = icondb.tile_pin_1
+            this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
+            this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
+            this.reg[TID_MODIFIER_PAGE_3] = icondb.tile_page_3
+            this.reg[TID_MODIFIER_PAGE_4] = icondb.tile_page_4
+            this.reg[TID_MODIFIER_PAGE_5] = icondb.tile_page_5
+            this.reg[TID_MODIFIER_PIN_ON] = icondb.tile_pin_on
+            this.reg[TID_MODIFIER_PIN_OFF] = icondb.tile_pin_off
             this.reg[TID_MODIFIER_HAPPY] = icondb.happy
             this.reg[TID_MODIFIER_SAD] = icondb.sad
-            this.reg[TID_MODIFIER_COLOR_RED] = icondb.tile_red;
-            this.reg[TID_MODIFIER_COLOR_DARKPURPLE] = icondb.tile_darkpurple;
-            this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short;
-            this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long;
-            this.reg[TID_FILTER_PIN_ANALOG] = icondb.tile_pin_analog;
-            this.reg[TID_FILTER_PIN_DIGITAL] = icondb.tile_pin_digital;
-            this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page;
-            this.reg[TID_ACTUATOR_PIN_0] = icondb.tile_pin_0;
-            this.reg[TID_ACTUATOR_PAINT] = icondb.paint;
-            this.reg[TID_ACTUATOR_STAMP] = icondb.stamp;
-            this.reg["default"] = icondb.rc_default;        }
+            this.reg[TID_MODIFIER_COLOR_RED] = icondb.tile_red
+            this.reg[TID_MODIFIER_COLOR_DARKPURPLE] = icondb.tile_darkpurple
+            this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short
+            this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long
+            this.reg[TID_FILTER_PIN_ANALOG] = icondb.tile_pin_analog
+            this.reg[TID_FILTER_PIN_DIGITAL] = icondb.tile_pin_digital
+            this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
+            this.reg[TID_ACTUATOR_PIN_0] = icondb.tile_pin_0
+            this.reg[TID_ACTUATOR_PAINT] = icondb.paint
+            this.reg[TID_ACTUATOR_STAMP] = icondb.stamp
+            this.reg["default"] = icondb.rc_default
+        }
     }
 }
 
@@ -67,8 +68,9 @@ function scaleUp(led55: ImageG) {
     ret.fill(15)
     for (let row = 0; row < 5; row++) {
         for (let col = 0; col < 5; col++) {
-            const color = led55.getPixel(col, row) ? 2 : 12;
-            const nrow = 1 + row * 3, ncol = 1 + col * 3
+            const color = led55.getPixel(col, row) ? 2 : 12
+            const nrow = 1 + row * 3,
+                ncol = 1 + col * 3
             ret.setPixel(ncol, nrow, color)
             ret.setPixel(ncol + 1, nrow, color)
             ret.setPixel(ncol, nrow + 1, color)
@@ -77,7 +79,6 @@ function scaleUp(led55: ImageG) {
     }
     return ret
 }
-
 
 const happy5x5 = img`
         . . . . .
@@ -94,9 +95,8 @@ const sad5x5 = img`
         . 1 1 1 .
         1 . . . 1
     `
-    
-namespace icondb {
 
+namespace icondb {
     export const happy = scaleUp(happy5x5)
     export const sad = scaleUp(sad5x5)
 
@@ -117,7 +117,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const ui_when = img`
         . 7 7 7 7 7 7 7 .
         . 7 7 7 1 1 1 7 .
@@ -140,7 +140,7 @@ namespace icondb {
         . 7 c c c c 7 7 .
         . 7 7 7 7 7 7 7 .
         . c c c c c c c .
-    `;
+    `
     export const ui_do = img`
         . 8 8 8 8 8 8 8 .
         . 8 8 8 8 8 8 8 .
@@ -163,7 +163,7 @@ namespace icondb {
         . 8 8 8 8 8 8 8 .
         . 8 8 8 8 8 8 8 .
         . c c c c c c c .
-    `;
+    `
     ///
     /// CURSOR
     ///
@@ -186,7 +186,7 @@ namespace icondb {
         .........f5ff55f..
         ..........f..f5f..
         ..............f...
-    `;
+    `
     export const stylus = img`
         ...............ff..
         ..............faaf.
@@ -207,7 +207,7 @@ namespace icondb {
         ...................
         ...................
         ...................
-    `;
+    `
     ///
     /// BUTTON ICONS
     ///
@@ -228,7 +228,7 @@ namespace icondb {
         . . . . . f f . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const btn_stop = img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -246,7 +246,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-    `;
+    `
     export const btn_edit = img`
         . . . . . . . . . . . . . . . .
         . . . . . . f f f f f . . . . .
@@ -264,7 +264,7 @@ namespace icondb {
         . . . . . . . . f . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const btn_delete = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -282,7 +282,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const btn_cancel = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -300,7 +300,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const btn_ok = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -318,7 +318,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const btn_plus = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -336,7 +336,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const btn_new_file = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -354,7 +354,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const btn_insertion_point = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -372,7 +372,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const btn_log = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -390,7 +390,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const btn_plot = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -408,7 +408,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const btn_dpad_left = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -426,7 +426,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const btn_next_page = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -444,7 +444,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const btn_prev_page = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -462,7 +462,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
 
     export const paint = img`
         f f f f f f f f f f f f f f f f
@@ -481,7 +481,7 @@ namespace icondb {
         f f f f f f d e e e f f f f f f
         f f f f f f f f f f f f f f f f
         f f f f f f f f f f f f f f f f
-    `;
+    `
 
     export const stamp = img`
         f f f f f f f f f f f f f f f f
@@ -500,7 +500,7 @@ namespace icondb {
         f f f c c c c c c c c c c f f f
         f f f 3 3 3 3 3 3 3 3 3 3 f f f
         f f f f f f f f f f f f f f f f
-    `;
+    `
 
     ///
     /// BUTTON BACKGROUNDS
@@ -522,7 +522,7 @@ namespace icondb {
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
         c 1 1 1 1 1 1 1 1 1 1 1 1 1 1 c
         . c c c c c c c c c c c c c c .
-    `;
+    `
     export const btn_bknd_beige = img`
         . d d d d d d d d d d d d d d .
         d d d d d d d d d d d d d d d d
@@ -540,7 +540,7 @@ namespace icondb {
         d d d d d d d d d d d d d d d d
         c d d d d d d d d d d d d d d c
         . c c c c c c c c c c c c c c .
-    `;
+    `
     export const btn_bknd_clear = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -558,7 +558,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const btn_bknd_danger = img`
         . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 .
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
@@ -576,7 +576,7 @@ namespace icondb {
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
         2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2
         . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    `;
+    `
     ///
     /// LANGUAGE TILES
     ///
@@ -597,7 +597,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_button_b = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -615,7 +615,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_timer = img`
         . . . . . . . . . . . . . . . .
         . . . . f f f f f f f . . . . .
@@ -633,7 +633,7 @@ namespace icondb {
         . . . . f f f f f f f . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_page_1 = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -651,7 +651,7 @@ namespace icondb {
         . . . f f f f f f f f f f . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_page_2 = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -669,7 +669,7 @@ namespace icondb {
         . . . f f f f f f f f f f . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_page_3 = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -687,7 +687,7 @@ namespace icondb {
         . . . f f f f f f f f f f . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_page_4 = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -705,7 +705,7 @@ namespace icondb {
         . . . f f f f f f f f f f . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_page_5 = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -723,7 +723,7 @@ namespace icondb {
         . . . f f f f f f f f f f . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_timespan_short = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -741,7 +741,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_timespan_long = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -759,7 +759,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_switch_page = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -777,7 +777,7 @@ namespace icondb {
         . . . . . . . f f f f f f f . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_pin_0 = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -795,7 +795,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_pin_1 = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -813,7 +813,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_pin_on = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -831,7 +831,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_pin_off = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -849,7 +849,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_pin_analog = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -867,7 +867,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_pin_digital = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -885,7 +885,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_console = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -903,7 +903,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_graph = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -921,7 +921,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_white = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -939,7 +939,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_red = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -957,7 +957,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_pink = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -975,7 +975,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_orange = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -993,7 +993,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_yellow = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1011,7 +1011,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_teal = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1029,7 +1029,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_green = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1047,7 +1047,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_blue = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1065,7 +1065,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_lightblue = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1083,7 +1083,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_purple = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1101,7 +1101,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_lightpurple = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1119,7 +1119,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_darkpurple = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1137,7 +1137,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_tan = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1155,7 +1155,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_brown = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1173,7 +1173,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const tile_black = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1191,7 +1191,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     ///
     /// RULE CONDITIONS
     ///
@@ -1212,7 +1212,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const rc_high = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1230,7 +1230,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const rc_low = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1248,7 +1248,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const rc_low_to_high = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1266,7 +1266,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     export const rc_high_to_low = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1284,7 +1284,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-    `;
+    `
     ///
     /// FEELINGS
     ///
@@ -1321,7 +1321,7 @@ namespace icondb {
         . . . f 2 f . . .
         . . . . f . . . .
     `
-    export const emo_sad= img`
+    export const emo_sad = img`
         . . f f f f f . .
         . f b b b b b f .
         f c 1 1 b 1 1 b f

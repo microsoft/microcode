@@ -157,10 +157,14 @@ namespace jacs {
 
     export function storeStmt(k: CellKind) {
         switch (k) {
-            case CellKind.LOCAL: return OpStmt.STMTx1_STORE_LOCAL
-            case CellKind.PARAM: return OpStmt.STMTx1_STORE_PARAM
-            case CellKind.GLOBAL: return OpStmt.STMTx1_STORE_GLOBAL
-            default: return oops("bad kind")
+            case CellKind.LOCAL:
+                return OpStmt.STMTx1_STORE_LOCAL
+            case CellKind.PARAM:
+                return OpStmt.STMTx1_STORE_PARAM
+            case CellKind.GLOBAL:
+                return OpStmt.STMTx1_STORE_GLOBAL
+            default:
+                return oops("bad kind")
         }
     }
 
@@ -170,7 +174,8 @@ namespace jacs {
             case CellKind.PARAM:
             case CellKind.GLOBAL:
                 return k as any as OpExpr
-            default: return oops("bad kind")
+            default:
+                return oops("bad kind")
         }
     }
 
@@ -240,7 +245,9 @@ namespace jacs {
     }
 
     export function printJacError(err: JacError) {
-        let msg = `${err.filename || ""}(${err.line},${err.column}): ${err.message}`
+        let msg = `${err.filename || ""}(${err.line},${err.column}): ${
+            err.message
+        }`
         if (err.codeFragment) msg += ` (${err.codeFragment})`
         console.error(msg)
     }

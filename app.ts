@@ -1,54 +1,54 @@
 namespace microcode {
     // Auto-save slot
-    export const SAVESLOT_AUTO = "sa";
+    export const SAVESLOT_AUTO = "sa"
     // Save slots
-    export const SAVESLOT_1 = "s1";
-    export const SAVESLOT_2 = "s2";
-    export const SAVESLOT_3 = "s3";
+    export const SAVESLOT_1 = "s1"
+    export const SAVESLOT_2 = "s2"
+    export const SAVESLOT_3 = "s3"
 
     type SavedState = {
-        progdef: any;
-    };
+        progdef: any
+    }
 
     export class App {
-        sceneManager: SceneManager;
+        sceneManager: SceneManager
 
         constructor() {
             // One interval delay to ensure all static constructors have executed.
             setTimeout(() => {
-                controller.setRepeatDefault(250, 30);
-                icons.init();
-                this.sceneManager = new SceneManager();
-                const home = new Home(this);
-                this.pushScene(home);
-            }, 1);
+                controller.setRepeatDefault(250, 30)
+                icons.init()
+                this.sceneManager = new SceneManager()
+                const home = new Home(this)
+                this.pushScene(home)
+            }, 1)
         }
 
         public save(slot: string, progdef: ProgramDefn) {
             const saved: SavedState = {
-                progdef: progdef.toObj()
-            };
-            const s = JSON.stringify(saved);
-            settings.writeString(slot, s);
+                progdef: progdef.toObj(),
+            }
+            const s = JSON.stringify(saved)
+            settings.writeString(slot, s)
         }
 
         public load(slot: string): ProgramDefn {
-            const s = settings.readString(slot);
+            const s = settings.readString(slot)
             if (s) {
-                const saved: SavedState = JSON.parse(s);
+                const saved: SavedState = JSON.parse(s)
                 if (saved) {
-                    return ProgramDefn.FromObj(saved.progdef);
+                    return ProgramDefn.FromObj(saved.progdef)
                 }
             }
-            return undefined;
+            return undefined
         }
 
         public pushScene(scene: Scene) {
-            this.sceneManager.pushScene(scene);
+            this.sceneManager.pushScene(scene)
         }
 
         public popScene() {
-            this.sceneManager.popScene();
+            this.sceneManager.popScene()
         }
     }
 }

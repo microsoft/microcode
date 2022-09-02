@@ -8,77 +8,87 @@ namespace microcode {
      * Affine transformations can be chained thru the `parent` property, in which case `worldPos` will report the composed value.
      */
     export class Affine {
-        private localPos_: Vec2;
-        private parent_: Affine;
-        private dirty_: boolean;
-        private worldPos_: Vec2;
-        public tag: string;
+        private localPos_: Vec2
+        private parent_: Affine
+        private dirty_: boolean
+        private worldPos_: Vec2
+        public tag: string
 
         //% blockCombine block="dirty" callInDebugger
         public get dirty(): boolean {
-            return this.dirty_ || this.localPos_.dirty || (this.parent && this.parent.dirty);
+            return (
+                this.dirty_ ||
+                this.localPos_.dirty ||
+                (this.parent && this.parent.dirty)
+            )
         }
 
         //% blockCombine block="worldPos" callInDebugger
         public get worldPos() {
-            if (this.dirty) { this.recalc(); }
-            return this.worldPos_;
+            if (this.dirty) {
+                this.recalc()
+            }
+            return this.worldPos_
         }
 
         //% blockCombine block="localPos" callInDebugger
-        public get localPos(): Vec2 { return this.localPos_; }
+        public get localPos(): Vec2 {
+            return this.localPos_
+        }
         public set localPos(v: Vec2) {
-            this.localPos_.copyFrom(v);
-            this.dirty_ = true;
+            this.localPos_.copyFrom(v)
+            this.dirty_ = true
         }
 
         //% blockCombine block="parent" callInDebugger
-        public get parent() { return this.parent_; }
+        public get parent() {
+            return this.parent_
+        }
         public set parent(p: Affine) {
-            this.parent_ = p;
-            this.dirty_ = true;
+            this.parent_ = p
+            this.dirty_ = true
         }
 
         //% blockCombine block="root" callInDebugger
-        public get root() { 
-            let node = this.parent;
+        public get root() {
+            let node = this.parent
             while (node && node.parent) {
-                node = node.parent;
+                node = node.parent
             }
-            return node;
+            return node
         }
 
         constructor() {
-            this.localPos_ = new Vec2();
-            this.worldPos_ = new Vec2();
-            this.dirty_ = true;
+            this.localPos_ = new Vec2()
+            this.worldPos_ = new Vec2()
+            this.dirty_ = true
         }
 
         public copyFrom(src: Affine): this {
-            this.localPos.copyFrom(src.localPos);
-            return this;
+            this.localPos.copyFrom(src.localPos)
+            return this
         }
 
         public clone(): Affine {
-            const aff = new Affine();
-            aff.copyFrom(this);
-            return aff;
+            const aff = new Affine()
+            aff.copyFrom(this)
+            return aff
         }
 
         public recalc(force = false) {
             if (this.dirty || force) {
-                this.dirty_ = false;
+                this.dirty_ = false
                 if (this.parent) {
-                    const ppos = this.parent.worldPos;
-                    Vec2.TranslateToRef(this.localPos_, ppos, this.worldPos_);
+                    const ppos = this.parent.worldPos
+                    Vec2.TranslateToRef(this.localPos_, ppos, this.worldPos_)
                 } else {
-                    this.worldPos_.copyFrom(this.localPos);
+                    this.worldPos_.copyFrom(this.localPos)
                 }
             }
         }
 
         public transformToRef(v: Vec2, ref: Vec2): Vec2 {
-            return Vec2.TranslateToRef(ref, this.worldPos, ref);
+            return Vec2.TranslateToRef(ref, this.worldPos, ref)
         }
     }
 }

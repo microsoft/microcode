@@ -1,126 +1,147 @@
 namespace microcode {
-
-    export interface ITreeComp extends IKindable, IPlaceable, ISizable { }
+    export interface ITreeComp extends IKindable, IPlaceable, ISizable {}
 
     class Node {
-        constructor(public bounds: Bounds, public comp: ITreeComp) { }
-    };
+        constructor(public bounds: Bounds, public comp: ITreeComp) {}
+    }
 
     // QuadTree for spatial indexing of objects.
     // https://en.wikipedia.org/wiki/Quadtree
     export class QuadTree {
-        private quads: QuadTree[];
-        private nodes: Node[];
+        private quads: QuadTree[]
+        private nodes: Node[]
 
         constructor(
-            public bounds: Bounds,      // Max bounds of the indexed space.
-            public maxObjects = 3,      // Max objects per level before split attempt.
-            public minDimension = 16    // Min size of a cell. Cannot split below this size.
+            public bounds: Bounds, // Max bounds of the indexed space.
+            public maxObjects = 3, // Max objects per level before split attempt.
+            public minDimension = 16 // Min size of a cell. Cannot split below this size.
         ) {
-            this.quads = [];
-            this.nodes = [];
+            this.quads = []
+            this.nodes = []
         }
 
         public forEach(cb: (bounds: Bounds) => void) {
             if (this.quads.length) {
                 for (let i = 0; i < this.quads.length; ++i) {
-                    this.quads[i].forEach(cb);
+                    this.quads[i].forEach(cb)
                 }
             } else {
-                cb(this.bounds);
+                cb(this.bounds)
             }
         }
 
         private trySplit(): boolean {
-            if (this.quads.length) { return false; }
-            const nextWidth = this.bounds.width >> 1;
-            if (nextWidth < this.minDimension) { return false; }
-            const nextHeight = this.bounds.height >> 1;
-            if (nextHeight < this.minDimension) { return false; }
-            const left = this.bounds.left;
-            const top = this.bounds.top;
+            if (this.quads.length) {
+                return false
+            }
+            const nextWidth = this.bounds.width >> 1
+            if (nextWidth < this.minDimension) {
+                return false
+            }
+            const nextHeight = this.bounds.height >> 1
+            if (nextHeight < this.minDimension) {
+                return false
+            }
+            const left = this.bounds.left
+            const top = this.bounds.top
 
             // top-right
-            this.quads[0] = new QuadTree(new Bounds({
-                left: left + nextWidth,
-                top: top,
-                width: nextWidth,
-                height: nextHeight
-            }), this.maxObjects, this.minDimension);
+            this.quads[0] = new QuadTree(
+                new Bounds({
+                    left: left + nextWidth,
+                    top: top,
+                    width: nextWidth,
+                    height: nextHeight,
+                }),
+                this.maxObjects,
+                this.minDimension
+            )
 
             // top-left
-            this.quads[1] = new QuadTree(new Bounds({
-                left: left,
-                top: top,
-                width: nextWidth,
-                height: nextHeight
-            }), this.maxObjects, this.minDimension);
+            this.quads[1] = new QuadTree(
+                new Bounds({
+                    left: left,
+                    top: top,
+                    width: nextWidth,
+                    height: nextHeight,
+                }),
+                this.maxObjects,
+                this.minDimension
+            )
 
             // bottom-left
-            this.quads[2] = new QuadTree(new Bounds({
-                left: left,
-                top: top + nextHeight,
-                width: nextWidth,
-                height: nextHeight
-            }), this.maxObjects, this.minDimension);
+            this.quads[2] = new QuadTree(
+                new Bounds({
+                    left: left,
+                    top: top + nextHeight,
+                    width: nextWidth,
+                    height: nextHeight,
+                }),
+                this.maxObjects,
+                this.minDimension
+            )
 
             // bottom-right
-            this.quads[3] = new QuadTree(new Bounds({
-                left: left + nextWidth,
-                top: top + nextHeight,
-                width: nextWidth,
-                height: nextHeight
-            }), this.maxObjects, this.minDimension);
+            this.quads[3] = new QuadTree(
+                new Bounds({
+                    left: left + nextWidth,
+                    top: top + nextHeight,
+                    width: nextWidth,
+                    height: nextHeight,
+                }),
+                this.maxObjects,
+                this.minDimension
+            )
 
-            return true;
+            return true
         }
 
         private getIndices(bounds: Bounds): number[] {
-            const indices: number[] = [];
-            const vertMidpoint = this.bounds.left + (this.bounds.width >> 1);
-            const horzMidpoint = this.bounds.top + (this.bounds.height >> 1);
+            const indices: number[] = []
+            const vertMidpoint = this.bounds.left + (this.bounds.width >> 1)
+            const horzMidpoint = this.bounds.top + (this.bounds.height >> 1)
 
-            const startIsNorth = bounds.top < horzMidpoint;
-            const startIsWest = bounds.left < vertMidpoint;
-            const endIsEast = bounds.left + bounds.width > vertMidpoint;
-            const endIsSouth = bounds.top + bounds.height > horzMidpoint;
+            const startIsNorth = bounds.top < horzMidpoint
+            const startIsWest = bounds.left < vertMidpoint
+            const endIsEast = bounds.left + bounds.width > vertMidpoint
+            const endIsSouth = bounds.top + bounds.height > horzMidpoint
 
             // top-right quad
             if (startIsNorth && endIsEast) {
-                indices.push(0);
+                indices.push(0)
             }
 
             // top-left quad
             if (startIsWest && startIsNorth) {
-                indices.push(1);
+                indices.push(1)
             }
 
             // bottom-left quad
             if (startIsWest && endIsSouth) {
-                indices.push(2);
+                indices.push(2)
             }
 
             // bottom-right quad
             if (endIsEast && endIsSouth) {
-                indices.push(3);
+                indices.push(3)
             }
 
-            return indices;
+            return indices
         }
 
         public insert(bounds: Bounds, comp: ITreeComp) {
             // If we have subtrees, call insert on matching.
             if (this.quads.length) {
-                const indices = this.getIndices(bounds);
+                const indices = this.getIndices(bounds)
 
                 for (let i = 0; i < indices.length; ++i) {
-                    this.quads[indices[i]].insert(bounds, comp);
+                    this.quads[indices[i]].insert(bounds, comp)
                 }
-                return;
+                return
             }
 
             // Otherwise, store object here.
-            this.nodes.push(new Node(bounds, comp));
+            this.nodes.push(new Node(bounds, comp))
 
             // maxObjects reached?
             if (this.nodes.length > this.maxObjects) {
@@ -128,15 +149,18 @@ namespace microcode {
                 if (this.trySplit()) {
                     // Add all objects to their corresponding subtree.
                     for (let i = 0; i < this.nodes.length; ++i) {
-                        const node = this.nodes[i];
-                        const indices = this.getIndices(node.bounds);
+                        const node = this.nodes[i]
+                        const indices = this.getIndices(node.bounds)
                         for (let k = 0; k < indices.length; ++k) {
-                            this.quads[indices[k]].insert(node.bounds, node.comp);
+                            this.quads[indices[k]].insert(
+                                node.bounds,
+                                node.comp
+                            )
                         }
                     }
 
                     // Clean up this node.
-                    this.nodes = [];
+                    this.nodes = []
                 }
             }
         }
@@ -146,33 +170,33 @@ namespace microcode {
          * Note you will likely get objects outside the bounds. It depends on the quadtree resolution.
          */
         public query(bounds: Bounds): ITreeComp[] {
-            let comps: ITreeComp[] = this.nodes.map(node => node.comp);
+            let comps: ITreeComp[] = this.nodes.map(node => node.comp)
 
-            const indices = this.getIndices(bounds);
+            const indices = this.getIndices(bounds)
 
             // If we have subtrees, query their objects.
             if (this.quads.length) {
                 for (let i = 0; i < indices.length; ++i) {
-                    comps = comps.concat(this.quads[indices[i]].query(bounds));
+                    comps = comps.concat(this.quads[indices[i]].query(bounds))
                 }
             }
 
             // Remove dups
-            comps = comps.filter((comp, index) => comps.indexOf(comp) >= index);
+            comps = comps.filter((comp, index) => comps.indexOf(comp) >= index)
 
-            return comps;
+            return comps
         }
 
         public clear() {
             for (let i = 0; i < this.quads.length; ++i) {
-                this.quads[i].clear();
+                this.quads[i].clear()
             }
-            this.quads = [];
-            this.nodes = [];
+            this.quads = []
+            this.nodes = []
         }
 
         public dbgDraw(color: number) {
-            this.forEach(bounds => bounds.dbgRect(color));
+            this.forEach(bounds => bounds.dbgRect(color))
         }
     }
 }

@@ -8,7 +8,6 @@ namespace jacs {
         return idx
     }
 
-
     export interface SMap<T> {
         [k: string]: T
     }
@@ -48,7 +47,11 @@ namespace jacs {
         index: number
         private dispatcher: Procedure
 
-        constructor(private parent: TopWriter, public classIdentifier: number, public name: string) {
+        constructor(
+            private parent: TopWriter,
+            public classIdentifier: number,
+            public name: string
+        ) {
             this.stringIndex = this.parent.addString(this.name)
             this.index = this.parent.roles.length
             this.parent.roles.push(this)
@@ -62,8 +65,7 @@ namespace jacs {
         }
 
         finalize() {
-            if (!this.dispatcher)
-                return
+            if (!this.dispatcher) return
 
             this.parent.withProcedure(this.dispatcher, wr => {
                 wr.emitJump(wr.top)
@@ -104,7 +106,7 @@ namespace jacs {
 
         numErrors = 0
 
-        constructor() { }
+        constructor() {}
 
         addString(str: string) {
             return addUnique(this.stringLiterals, str)
@@ -137,13 +139,15 @@ namespace jacs {
             const sections: SectionWriter[] = [fixHeader, sectDescs]
 
             const hd = Buffer.create(BinFmt.FixHeaderSize)
-            hd.write(0,
+            hd.write(
+                0,
                 Buffer.pack("IIIH", [
                     BinFmt.Magic0,
                     BinFmt.Magic1,
                     BinFmt.ImgVersion,
                     this.globals.length,
-                ]))
+                ])
+            )
 
             fixHeader.append(hd)
 
@@ -263,10 +267,8 @@ namespace jacs {
         }
 
         private finalize() {
-            for (const r of this.roles)
-                r.finalize()
-            for (const p of this.procs)
-                p.finalize()
+            for (const r of this.roles) r.finalize()
+            for (const p of this.procs) p.finalize()
             this.withProcedure(this.mainProc, wr => {
                 wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
             })
@@ -302,38 +304,38 @@ namespace jacs {
         lookupSensorRole(rule: microcode.RuleDefn) {
             const sensor = rule.sensor
             if (!sensor) return this.pageStartCondition
-            if (sensor.tid == microcode.TID_SENSOR_BUTTON_A)
-                return this.btnA
-            if (sensor.tid == microcode.TID_SENSOR_BUTTON_B)
-                return this.btnB
+            if (sensor.tid == microcode.TID_SENSOR_BUTTON_A) return this.btnA
+            if (sensor.tid == microcode.TID_SENSOR_BUTTON_B) return this.btnB
             this.error(`can't map sensor role for ${JSON.stringify(sensor)}`)
             return this.pageStartCondition
         }
 
         lookupEventCode(role: Role, rule: microcode.RuleDefn) {
-            if (role.classIdentifier == SRV_BUTTON)
-                return 0x1 // down
-            if (role.classIdentifier == SRV_JACSCRIPT_CONDITION)
-                return 0x3 // signalled
+            if (role.classIdentifier == SRV_BUTTON) return 0x1 // down
+            if (role.classIdentifier == SRV_JACSCRIPT_CONDITION) return 0x3 // signalled
             return null
         }
 
         private emitRoleCommand(rule: microcode.RuleDefn) {
             const actuator = rule.actuator
             const wr = this.writer
-            if (actuator == null)
-                return // do nothing
+            if (actuator == null) return // do nothing
             if (actuator) {
                 if (actuator.tid == microcode.TID_ACTUATOR_STAMP) {
                     let param = "\x00\x00\x00\x00\x00"
                     for (const m of rule.modifiers) {
-                        if (typeof m.jdParam == "string")
-                            param = m.jdParam
+                        if (typeof m.jdParam == "string") param = m.jdParam
                     }
                     const id = this.addString(param)
-                    wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [literal(5), literal(0)])
+                    wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [
+                        literal(5),
+                        literal(0),
+                    ])
                     wr.emitStmt(OpStmt.STMT2_MEMCPY, [literal(id), literal(0)])
-                    wr.emitStmt(OpStmt.STMT2_SEND_CMD, [literal(this.screen.index), literal(CMD_SET_REG | 0x2)])
+                    wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
+                        literal(this.screen.index),
+                        literal(CMD_SET_REG | 0x2),
+                    ])
                     return
                 }
             }
@@ -349,7 +351,11 @@ namespace jacs {
             return body
         }
 
-        private emitRule(pageIdx: number, name: string, rule: microcode.RuleDefn) {
+        private emitRule(
+            pageIdx: number,
+            name: string,
+            rule: microcode.RuleDefn
+        ) {
             const role = this.lookupSensorRole(rule)
             name += "_" + role.name
 
@@ -357,18 +363,27 @@ namespace jacs {
 
             this.withProcedure(role.getDispatcher(), wr => {
                 wr.emitIf(
-                    wr.emitExpr(OpExpr.EXPR2_EQ, [this.currPage.read(wr), literal(pageIdx)]),
+                    wr.emitExpr(OpExpr.EXPR2_EQ, [
+                        this.currPage.read(wr),
+                        literal(pageIdx),
+                    ]),
                     () => {
                         const code = this.lookupEventCode(role, rule)
                         if (code != null) {
-                            wr.emitIf(wr.emitExpr(OpExpr.EXPR2_EQ, [wr.emitExpr(OpExpr.EXPR0_PKT_EV_CODE, []), literal(code)]),
+                            wr.emitIf(
+                                wr.emitExpr(OpExpr.EXPR2_EQ, [
+                                    wr.emitExpr(OpExpr.EXPR0_PKT_EV_CODE, []),
+                                    literal(code),
+                                ]),
                                 () => {
                                     wr.emitCall(body.index, [], OpCall.BG_MAX1)
-                                })
+                                }
+                            )
                         } else {
                             this.error("can't handle role")
                         }
-                    })
+                    }
+                )
             })
         }
 
@@ -377,7 +392,10 @@ namespace jacs {
 
             this.currPage = this.addGlobal()
 
-            this.pageStartCondition = this.addRole("pageStart", SRV_JACSCRIPT_CONDITION)
+            this.pageStartCondition = this.addRole(
+                "pageStart",
+                SRV_JACSCRIPT_CONDITION
+            )
             this.btnA = this.addRole("btnA", SRV_BUTTON)
             this.screen = this.addRole("screen", SRV_DOT_MATRIX)
             this.btnB = this.addRole("btnB", SRV_BUTTON)
@@ -385,7 +403,11 @@ namespace jacs {
             const mainProc = this.addProc("main")
             this.withProcedure(mainProc, wr => {
                 this.currPage.write(wr, literal(1))
-                wr.emitStmt(OpStmt.STMT3_LOG_FORMAT, [literal(this.addString("Hello world")), literal(0), literal(0)])
+                wr.emitStmt(OpStmt.STMT3_LOG_FORMAT, [
+                    literal(this.addString("Hello world")),
+                    literal(0),
+                    literal(0),
+                ])
             })
 
             let pageIdx = 0
@@ -393,7 +415,11 @@ namespace jacs {
                 pageIdx++
                 let ruleIdx = 0
                 for (const rule of page.rules) {
-                    this.emitRule(pageIdx, "r" + pageIdx + "_" + ruleIdx++, rule)
+                    this.emitRule(
+                        pageIdx,
+                        "r" + pageIdx + "_" + ruleIdx++,
+                        rule
+                    )
                 }
             }
 

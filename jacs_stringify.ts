@@ -150,8 +150,7 @@ namespace jacs {
 
     function isNumber(s: string) {
         for (let i = 0; i < s.length; ++i) {
-            if ("0123456789".indexOf(s[i]) < 0)
-                return false
+            if ("0123456789".indexOf(s[i]) < 0) return false
         }
         return true
     }
