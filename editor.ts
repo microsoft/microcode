@@ -613,8 +613,7 @@ namespace microcode {
 
         private destroyProgramTiles() {
             repNames.forEach(name => {
-                const buttons = this.rule[name]
-                buttons.forEach(btn => btn.destroy())
+                this.rule[name].forEach(btn => btn.destroy())
                 this.rule[name] = []
             })
         }
@@ -625,16 +624,16 @@ namespace microcode {
             repNames.forEach(name => {
                 const tiles = rule[name]
                 tiles.forEach((tile, index) => {
-                    if (tile) {
-                        const button = new EditorButton(this.editor, {
-                            parent: this,
-                            style: "white",
-                            icon: tile.getIcon(),
-                            x: 0,
-                            y: 0,
-                            onClick: () => this.handleTile(name, index),
-                        })
-                    }
+                    console.log(tile.name)
+                    const button = new EditorButton(this.editor, {
+                        parent: this,
+                        style: "white",
+                        icon: tile.getIcon(),
+                        x: 0,
+                        y: 0,
+                        onClick: () => this.handleTile(name, index),
+                    })
+                    this.page.changed()
                 })
             })
         }
@@ -696,10 +695,11 @@ namespace microcode {
                     theOne.getField(),
                     this.editor.picker,
                     () => {
+                        const newOne = theOne.getNewInstance()
                         if (index >= ruleTiles.length) {
-                            ruleTiles.push(theOne.getNewInstance())
+                            ruleTiles.push(newOne)
                         } else {
-                            ruleTiles[index] = theOne.getNewInstance()
+                            ruleTiles[index] = newOne
                         }
                         Language.ensureValid(this.ruledef)
                         this.instantiateProgramTiles()
@@ -721,10 +721,12 @@ namespace microcode {
                         if (iconId === "delete") {
                             ruleTiles.splice(index, 1)
                         } else {
+                            // get from the database
+                            const newOne = tilesDB[name][iconId]
                             if (index >= ruleTiles.length) {
-                                ruleTiles.push(tiles.modifiers[iconId])
+                                ruleTiles.push(newOne)
                             } else {
-                                ruleTiles[index] = tiles.modifiers[iconId]
+                                ruleTiles[index] = newOne
                             }
                         }
                         Language.ensureValid(this.ruledef)
@@ -744,7 +746,7 @@ namespace microcode {
         }
 
         private showWhenInsertMenu() {
-            if (this.ruledef.sensor) {
+            if (this.ruledef.sensors.length) {
                 this.handleTile("filters", this.ruledef.filters.length)
             } else {
                 this.handleTile("sensors", 0)
@@ -752,7 +754,7 @@ namespace microcode {
         }
 
         private showDoInsertMenu() {
-            if (this.ruledef.actuator) {
+            if (this.ruledef.actuators.length) {
                 this.handleTile("modifiers", this.ruledef.modifiers.length)
             } else {
                 this.handleTile("actuators", 0)
@@ -771,8 +773,8 @@ namespace microcode {
 
         public isEmpty() {
             return (
-                !this.ruledef.sensor &&
-                !this.ruledef.actuator &&
+                !this.ruledef.sensors.length &&
+                !this.ruledef.actuators.length &&
                 this.ruledef.filters.length === 0 &&
                 this.ruledef.modifiers.length === 0
             )

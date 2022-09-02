@@ -302,7 +302,7 @@ namespace jacs {
         }
 
         lookupSensorRole(rule: microcode.RuleDefn) {
-            const sensor = rule.sensor
+            const sensor = rule.sensors.length ? rule.sensors[0] : null
             if (!sensor) return this.pageStartCondition
             if (sensor.tid == microcode.TID_SENSOR_BUTTON_A) return this.btnA
             if (sensor.tid == microcode.TID_SENSOR_BUTTON_B) return this.btnB
@@ -317,7 +317,7 @@ namespace jacs {
         }
 
         private emitRoleCommand(rule: microcode.RuleDefn) {
-            const actuator = rule.actuator
+            const actuator = rule.actuators.length ? rule.actuators[0] : null
             const wr = this.writer
             if (actuator == null) return // do nothing
             if (actuator) {
