@@ -800,12 +800,15 @@ namespace microcode {
             this.whenLbl.xfrm.localPos = v
             v.x +=
                 2 + (this.whenLbl.width >> 1) + (this.whenInsertBtn.width >> 1)
+            
             const whenSection = ["sensors", "filters"]
             whenSection.forEach(buttonLoc)
             this.whenInsertBtn.xfrm.localPos = v
+
             v.x += 2 + (this.whenInsertBtn.width >> 1) + (this.doLbl.width >> 1)
             this.doLbl.xfrm.localPos = v
             v.x += 2 + (this.doLbl.width >> 1) + (this.doInsertBtn.width >> 1)
+            
             const doSection = ["actuators", "modifiers"]
             doSection.forEach(buttonLoc)
             this.doInsertBtn.xfrm.localPos = v
