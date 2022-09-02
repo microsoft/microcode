@@ -612,10 +612,16 @@ namespace microcode {
         }
 
         private destroyProgramTiles() {
+            let changed = false
             repNames.forEach(name => {
-                this.rule[name].forEach(btn => btn.destroy())
-                this.rule[name] = []
+                if (this.rule[name].length) {
+                    this.rule[name].forEach(btn => btn.destroy())
+                    this.rule[name] = []
+                    changed = true
+                }
             })
+            if (changed)
+                this.editor.changed()
         }
 
         private instantiateProgramTiles() {
@@ -634,6 +640,7 @@ namespace microcode {
                         y: 0,
                         onClick: () => this.handleTile(name, index),
                     })
+                    this.rule[name].push(button)
                     changed = true
                 })
             })
