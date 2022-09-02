@@ -180,10 +180,10 @@ namespace microcode {
             super.activate()
             this.color = 15
             this.logLines = []
-            this.log("  _ . _ _ _ . _ _  _| _", 7, LineJustification.Center)
-            this.log(" ||||(_| (_).(_(_)(_|(-", 7, LineJustification.Center)
+            this.log(" /\\/\\ . _ _ _ /  _  _| _", 7, LineJustification.Center)
+            this.log("/    \\|(_| (_)\\_(_)(_|(-", 7, LineJustification.Center)
             this.log("", 7)
-            this.log(" Welcome to micro:code!", 7, LineJustification.Center)
+            this.log(" Welcome to MicroCode!", 7, LineJustification.Center)
             this.log("", 7)
             this.log("", 7)
             let progdef = this.app.load(SAVESLOT_AUTO)
