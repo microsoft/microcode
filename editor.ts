@@ -620,8 +620,7 @@ namespace microcode {
                     changed = true
                 }
             })
-            if (changed)
-                this.editor.changed()
+            if (changed) this.editor.changed()
         }
 
         private instantiateProgramTiles() {
@@ -644,8 +643,7 @@ namespace microcode {
                     changed = true
                 })
             })
-            if (changed)
-               this.page.changed()
+            if (changed) this.page.changed()
         }
 
         private showRuleHandleMenu() {

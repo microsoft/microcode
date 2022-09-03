@@ -118,7 +118,6 @@ namespace microcode {
         }
     }
 
-    
     type RuleRep = { [name: string]: TileDefn[] }
 
     export class RuleDefn {
@@ -139,7 +138,7 @@ namespace microcode {
                 sensors: this.sensors,
                 filters: this.filters,
                 actuators: this.actuators,
-                modifiers: this.modifiers
+                modifiers: this.modifiers,
             }
         }
 
@@ -211,19 +210,27 @@ namespace microcode {
             // TODO: this could be compressed using same trick as in editor.ts
             if (Array.isArray(obj["S"])) {
                 const sensors: any[] = obj["S"]
-                defn.sensors = <SensorDefn[]>sensors.map(extractField("sensors"))
+                defn.sensors = <SensorDefn[]>(
+                    sensors.map(extractField("sensors"))
+                )
             }
             if (Array.isArray(obj["A"])) {
                 const actuators: any[] = obj["A"]
-                defn.actuators = <ActuatorDefn[]>actuators.map(extractField("actuators"))
+                defn.actuators = <ActuatorDefn[]>(
+                    actuators.map(extractField("actuators"))
+                )
             }
             if (Array.isArray(obj["F"])) {
                 const filters: any[] = obj["F"]
-                defn.filters = <FilterDefn[]>filters.map(extractField("filters"))
+                defn.filters = <FilterDefn[]>(
+                    filters.map(extractField("filters"))
+                )
             }
             if (Array.isArray(obj["M"])) {
                 const modifiers: any[] = obj["M"]
-                defn.modifiers = <ModifierDefn[]>modifiers.map(extractField("modifiers"))
+                defn.modifiers = <ModifierDefn[]>(
+                    modifiers.map(extractField("modifiers"))
+                )
             }
             return defn
         }
@@ -338,13 +345,11 @@ namespace microcode {
             name: string,
             index: number
         ): TileDefn[] {
-
             const all = Object.keys(tilesDB[name])
                 .map(id => tilesDB[name][id])
-                .filter(tile => !tile.hidden)
-            
-            if (name === "sensors" || name === "actuators")
-                return all
+                .filter((tile: TileDefn) => !tile.hidden)
+
+            if (name === "sensors" || name === "actuators") return all
 
             // Collect existing tiles up to index.
             let existing: TileDefn[] = []
@@ -486,7 +491,7 @@ namespace microcode {
     type ModifierMap = { [id: string]: ModifierDefn }
 
     export type TileDatabase = {
-        [id: string] : SensorMap | FilterMap | ActuatorMap | ModifierMap
+        [id: string]: SensorMap | FilterMap | ActuatorMap | ModifierMap
         sensors: SensorMap
         filters: FilterMap
         actuators: ActuatorMap
