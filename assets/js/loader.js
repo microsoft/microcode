@@ -1,3 +1,16 @@
+var channelHandlers = {}
+
+function addSimMessageHandler(channel /* string */,
+    handler /* (msg: Uint8Array) => void */,
+    init /* (props: { send: (msg: Uint8Array) => void }) => void */
+) {
+    channelHandlers[channel] = {
+        channel: channel,
+        init: init,
+        handler: handler
+    };
+}
+
 function makeCodeRun(options) {
     var code = "";
     var isReady = false;
@@ -90,8 +103,35 @@ function makeCodeRun(options) {
                     simStateChanged = true;
                     break;
             }
-        }
+        } else if (d.type === "messagepacket" && d.channel) {
+            const ch = channelHandlers[d.channel]
+            if (ch) {
+                try {
+                    const buf = d.data;
+                    ch.handler(buf);
+                    // const str = uint8ArrayToString(buf);
+                    // const data = JSON.parse(str)
+                    // ch.handler(data);
+                } catch (e) {
+                    console.log(`invalid simmessage`)
+                    console.log(e)
+                }
+            }
+        }            
     }, false);
+
+    // initialize simmessages
+    Object.keys(channelHandlers)
+        .map(k => channelHandlers[k])
+        .filter(ch => !!ch.start)
+        .forEach(ch => {
+            const send = (msg) => postMessage({
+                type: "messagepacket",
+                channel: ch.channel,
+                data: msg
+            })
+            ch.start({ send });
+        })
 
     // helpers
     function setState(st) {
@@ -119,13 +159,13 @@ function makeCodeRun(options) {
 
     function initSimState() {
         try {
-            simState = JSON.parse(localStorage["simstate"])
+            simState = JSON.parse(localStorage["microcode-simstate"])
         } catch (e) {
             simState = {}
         }
         setInterval(function () {
             if (simStateChanged)
-                localStorage["simstate"] = JSON.stringify(simState)
+                localStorage["microcode-simstate"] = JSON.stringify(simState)
             simStateChanged = false
         }, 200)
     }
