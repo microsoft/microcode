@@ -344,7 +344,7 @@ namespace jacs {
         }
 
         lookupActuatorRole(rule: microcode.RuleDefn) {
-            const act = rule.actuator
+            const act = rule.actuators.length ? rule.actuators[0] : null
             if (!act) return this.pageStartCondition
             return this.lookupRole(
                 act.serviceClassName,
@@ -353,7 +353,7 @@ namespace jacs {
         }
 
         lookupSensorRole(rule: microcode.RuleDefn) {
-            const sensor = rule.sensor
+            const sensor = rule.sensors.length ? rule.sensors[0] : null
             if (!sensor) return this.pageStartCondition
             return this.lookupRole(
                 sensor.serviceClassName,
@@ -362,13 +362,14 @@ namespace jacs {
         }
 
         lookupEventCode(role: Role, rule: microcode.RuleDefn) {
-            if (rule.sensor && rule.sensor.eventCode != undefined)
-                return rule.sensor.eventCode
+            const sensor = rule.sensors.length ? rule.sensors[0] : null
+            if (sensor && sensor.eventCode != undefined)
+                return sensor.eventCode
             return null
         }
 
         private emitRoleCommand(rule: microcode.RuleDefn) {
-            const actuator = rule.actuator
+            const actuator = rule.actuators.length ? rule.actuators[0] : null
             const wr = this.writer
             if (actuator == null) return // do nothing
             if (actuator) {

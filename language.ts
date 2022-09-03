@@ -6,6 +6,7 @@ namespace microcode {
         MODIFIER = 4,
     }
 
+    // TODO: make into class
     export interface Constraints {
         provides?: string[]
         requires?: string[]
@@ -117,28 +118,41 @@ namespace microcode {
         }
     }
 
+    type RuleRep = { [name: string]: TileDefn[] }
+
     export class RuleDefn {
-        sensor: SensorDefn
+        sensors: SensorDefn[]
         filters: FilterDefn[]
-        actuator: ActuatorDefn
+        actuators: ActuatorDefn[]
         modifiers: ModifierDefn[]
 
         constructor() {
+            this.sensors = []
             this.filters = []
+            this.actuators = []
             this.modifiers = []
+        }
+
+        public getRuleRep(): RuleRep {
+            return {
+                sensors: this.sensors,
+                filters: this.filters,
+                actuators: this.actuators,
+                modifiers: this.modifiers,
+            }
         }
 
         public clone(): RuleDefn {
             const rule = new RuleDefn()
-            rule.sensor = this.sensor
-            rule.actuator = this.actuator
+            rule.sensors = this.sensors.slice(0)
+            rule.actuators = this.actuators.slice(0)
             rule.filters = this.filters.slice(0)
             rule.modifiers = this.modifiers.slice(0)
             return rule
         }
 
         public isEmpty(): boolean {
-            return !this.sensor && !this.actuator
+            return !this.sensors.length && !this.actuators.length
         }
 
         public toObj(): any {
@@ -154,8 +168,8 @@ namespace microcode {
                 }
             }
             const obj = {
-                S: this.sensor ? this.sensor.tid : undefined,
-                A: this.actuator ? this.actuator.tid : undefined,
+                S: this.sensors.map(elem => elem.tid),
+                A: this.actuators.map(elem => elem.tid),
                 F: this.filters.map(elem => elem.tid),
                 M: this.modifiers.map(elem => addField(elem)),
             }
@@ -171,44 +185,52 @@ namespace microcode {
             if (!obj.M.length) {
                 delete obj.M
             }
-            console.log(obj)
             return obj
         }
 
         public static FromObj(obj: any): RuleDefn {
-            const extractField = (s: string) => {
+            const extractField = (t: string) => (s: string) => {
                 let hasField = s.indexOf("(")
                 if (hasField >= 0) {
                     const elem = s.substr(0, hasField)
-                    const tile = tiles.modifiers[elem]
+                    const tile = tilesDB.modifiers[elem]
                     const field = tile.fieldEditor.deserialize(
                         s.substr(hasField + 1, s.length - 2 - hasField)
                     )
                     const newOne = tile.getNewInstance(field)
-                    return <ModifierDefn>newOne
+                    return newOne
                 } else {
-                    return tiles.modifiers[s]
+                    return tilesDB[t][s]
                 }
             }
             if (typeof obj === "string") {
                 obj = JSON.parse(obj)
             }
             const defn = new RuleDefn()
-            if (typeof obj["S"] === "string") {
-                defn.sensor = tiles.sensors[obj["S"]]
+            // TODO: this could be compressed using same trick as in editor.ts
+            if (Array.isArray(obj["S"])) {
+                const sensors: any[] = obj["S"]
+                defn.sensors = <SensorDefn[]>(
+                    sensors.map(extractField("sensors"))
+                )
             }
-            if (typeof obj["A"] === "string") {
-                defn.actuator = tiles.actuators[obj["A"]]
+            if (Array.isArray(obj["A"])) {
+                const actuators: any[] = obj["A"]
+                defn.actuators = <ActuatorDefn[]>(
+                    actuators.map(extractField("actuators"))
+                )
             }
             if (Array.isArray(obj["F"])) {
                 const filters: any[] = obj["F"]
-                defn.filters = filters.map(
-                    (elem: string) => tiles.filters[elem]
+                defn.filters = <FilterDefn[]>(
+                    filters.map(extractField("filters"))
                 )
             }
             if (Array.isArray(obj["M"])) {
                 const modifiers: any[] = obj["M"]
-                defn.modifiers = modifiers.map(extractField)
+                defn.modifiers = <ModifierDefn[]>(
+                    modifiers.map(extractField("modifiers"))
+                )
             }
             return defn
         }
@@ -318,25 +340,22 @@ namespace microcode {
     }
 
     export class Language {
-        public static getSensorSuggestions(rule: RuleDefn): SensorDefn[] {
-            let sensors = Object.keys(tiles.sensors)
-                .map(id => tiles.sensors[id])
-                .filter(tile => !tile.hidden)
-            return sensors
-        }
-
-        public static getFilterSuggestions(
+        public static getTileSuggestions(
             rule: RuleDefn,
+            name: string,
             index: number
-        ): FilterDefn[] {
-            let all = Object.keys(tiles.filters)
-                .map(id => tiles.filters[id])
-                .filter(tile => !tile.hidden)
+        ): TileDefn[] {
+            const all = Object.keys(tilesDB[name])
+                .map(id => tilesDB[name][id])
+                .filter((tile: TileDefn) => !tile.hidden)
+
+            if (name === "sensors" || name === "actuators") return all
 
             // Collect existing tiles up to index.
             let existing: TileDefn[] = []
+            const ruleRep = rule.getRuleRep()
             for (let i = 0; i < index; ++i) {
-                existing.push(rule.filters[i])
+                existing.push(ruleRep[name][i])
             }
 
             // Return empty set if the last existing tile is a "terminal".
@@ -353,65 +372,20 @@ namespace microcode {
 
             // Collect the built-up constraints.
             const constraints = mkConstraints()
+            if (name === "modifiers")
+                mergeConstraints(
+                    constraints,
+                    rule.actuators.length ? rule.actuators[0].constraints : null
+                )
             mergeConstraints(
                 constraints,
-                rule.sensor ? rule.sensor.constraints : null
+                rule.sensors.length ? rule.sensors[0].constraints : null
             )
             for (let i = 0; i < existing.length; ++i) {
                 mergeConstraints(constraints, existing[i].constraints)
             }
 
-            return this.getCompatibleSet(all, constraints)
-        }
-
-        public static getActuatorSuggestions(rule: RuleDefn): ActuatorDefn[] {
-            let actuators = Object.keys(tiles.actuators)
-                .map(id => tiles.actuators[id])
-                .filter(tile => !tile.hidden)
-            return actuators
-        }
-
-        public static getModifierSuggestions(
-            rule: RuleDefn,
-            index: number
-        ): ModifierDefn[] {
-            const all = Object.keys(tiles.modifiers)
-                .map(id => tiles.modifiers[id])
-                .filter(tile => !tile.hidden)
-
-            // Collect existing tiles up to index.
-            let existing: TileDefn[] = []
-            for (let i = 0; i < index; ++i) {
-                existing.push(rule.modifiers[i])
-            }
-
-            // Return empty set if the last existing tile is a "terminal".
-            if (existing.length) {
-                const last = existing[existing.length - 1]
-                if (
-                    last.constraints &&
-                    last.constraints.handling &&
-                    last.constraints.handling["terminal"]
-                ) {
-                    return []
-                }
-            }
-
-            // Collect the built-up constraints.
-            const constraints = mkConstraints()
-            mergeConstraints(
-                constraints,
-                rule.actuator ? rule.actuator.constraints : null
-            )
-            mergeConstraints(
-                constraints,
-                rule.sensor ? rule.sensor.constraints : null
-            )
-            for (let i = 0; i < existing.length; ++i) {
-                mergeConstraints(constraints, existing[i].constraints)
-            }
-
-            return this.getCompatibleSet(all, constraints)
+            return this.getCompatibleSet(<FilterModifierBase[]>all, constraints)
         }
 
         private static getCompatibleSet(
@@ -453,10 +427,10 @@ namespace microcode {
             // TODO: Handle more cases. ex:
             // - filters not valid for new sensor
             // - modifiers not valid for new sensor or actuator
-            if (!rule.sensor) {
+            if (!rule.sensors.length) {
                 rule.filters = []
             }
-            if (!rule.actuator) {
+            if (!rule.actuators.length) {
                 rule.modifiers = []
             }
         }
@@ -517,6 +491,7 @@ namespace microcode {
     type ModifierMap = { [id: string]: ModifierDefn }
 
     export type TileDatabase = {
+        [id: string]: SensorMap | FilterMap | ActuatorMap | ModifierMap
         sensors: SensorMap
         filters: FilterMap
         actuators: ActuatorMap
@@ -562,7 +537,7 @@ namespace microcode {
         TID_MODIFIER_PAGE_5,
     ]
 
-    export const tiles: TileDatabase = {
+    export const tilesDB: TileDatabase = {
         sensors: {},
         filters: {},
         actuators: {},
@@ -585,7 +560,7 @@ namespace microcode {
 
     const always = new SensorDefn(TID_SENSOR_ALWAYS, "Always", Phase.Pre)
     always.hidden = true
-    tiles.sensors[TID_SENSOR_ALWAYS] = always
+    tilesDB.sensors[TID_SENSOR_ALWAYS] = always
 
     const button_a = new SensorDefn(TID_SENSOR_BUTTON_A, "A", Phase.Pre)
     button_a.serviceClassName = "button"
@@ -597,13 +572,13 @@ namespace microcode {
             categories: ["button-event"],
         },
     }
-    tiles.sensors[TID_SENSOR_BUTTON_A] = button_a
+    tilesDB.sensors[TID_SENSOR_BUTTON_A] = button_a
 
     const button_b = new SensorDefn(TID_SENSOR_BUTTON_B, "B", Phase.Pre)
     copyJdSensor(button_b, button_a)
     button_b.serviceInstanceIndex = 1
     button_b.constraints = button_a.constraints
-    tiles.sensors[TID_SENSOR_BUTTON_B] = button_b
+    tilesDB.sensors[TID_SENSOR_BUTTON_B] = button_b
 
     const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
     timer.constraints = {
@@ -611,7 +586,7 @@ namespace microcode {
             categories: ["timespan"],
         },
     }
-    tiles.sensors[TID_SENSOR_TIMER] = timer
+    tilesDB.sensors[TID_SENSOR_TIMER] = timer
 
     const pin_1 = new SensorDefn(TID_SENSOR_PIN_1, "Pin 1", Phase.Post)
     pin_1.constraints = {
@@ -619,7 +594,7 @@ namespace microcode {
             categories: ["pin_mode"],
         },
     }
-    tiles.sensors[TID_SENSOR_PIN_1] = pin_1
+    tilesDB.sensors[TID_SENSOR_PIN_1] = pin_1
 
     const timespan_filters = [
         TID_FILTER_TIMESPAN_SHORT,
@@ -628,7 +603,7 @@ namespace microcode {
     const timespan_names = ["short", "long"]
     timespan_filters.forEach((tid, i) => {
         const timespan = new FilterDefn(tid, timespan_names[i], "timespan", 10)
-        tiles.filters[tid] = timespan
+        tilesDB.filters[tid] = timespan
     })
 
     const pin_filters = [TID_FILTER_PIN_ANALOG, TID_FILTER_PIN_DIGITAL]
@@ -640,7 +615,7 @@ namespace microcode {
                 categories: ["pin_mode"],
             },
         }
-        tiles.filters[tid] = pin_filter
+        tilesDB.filters[tid] = pin_filter
     })
 
     function addActuator(tid: string, name: string, allow: string) {
@@ -650,7 +625,7 @@ namespace microcode {
                 categories: [allow],
             },
         }
-        tiles.actuators[tid] = actuator
+        tilesDB.actuators[tid] = actuator
         return actuator
     }
 
@@ -678,7 +653,7 @@ namespace microcode {
         )
         tile_page.jdParam = page
         tile_page.constraints = terminal
-        tiles.modifiers[page_tid] = tile_page
+        tilesDB.modifiers[page_tid] = tile_page
     }
 
     const pin_states = ["on", "off"]
@@ -687,18 +662,18 @@ namespace microcode {
             state == "on" ? TID_MODIFIER_PIN_ON : TID_MODIFIER_PIN_OFF
         const state_page = new ModifierDefn(state_tid, state, "pin_output", 10)
         state_page.constraints = terminal
-        tiles.modifiers[state_tid] = state_page
+        tilesDB.modifiers[state_tid] = state_page
     })
 
     const happy = new ModifierDefn(TID_MODIFIER_HAPPY, "happy", "led_icon", 10)
     happy.constraints = terminal
     happy.jdParam = "\x08\x12\x10\x12\x08"
-    tiles.modifiers[TID_MODIFIER_HAPPY] = happy
+    tilesDB.modifiers[TID_MODIFIER_HAPPY] = happy
 
     const sad = new ModifierDefn(TID_MODIFIER_SAD, "sad", "led_icon", 10)
     sad.constraints = terminal
     sad.jdParam = "\x10\x0a\x08\x0a\x10"
-    tiles.modifiers[TID_MODIFIER_SAD] = sad
+    tilesDB.modifiers[TID_MODIFIER_SAD] = sad
 
     const iconFieldEditor: FieldEditor = {
         init: img`
@@ -766,5 +741,5 @@ namespace microcode {
         }
     }
 
-    tiles.modifiers[TID_MODIFIER_ICON_EDITOR] = new IconEditor()
+    tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = new IconEditor()
 }

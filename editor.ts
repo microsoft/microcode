@@ -474,14 +474,14 @@ namespace microcode {
         }
 
         public initCursor() {
-            const rule = this.rules[0]
+            const rule = this.rules[0].rule
             let btn: Button
-            if (rule.sensor) {
-                btn = rule.sensor
+            if (rule.sensors.length) {
+                btn = rule.sensors[0]
             } else if (rule.filters.length) {
                 btn = rule.filters[0]
             } else {
-                btn = rule.whenInsertBtn
+                btn = this.rules[0].whenInsertBtn
             }
             this.editor.cursor.snapTo(btn.xfrm.worldPos.x, btn.xfrm.worldPos.y)
         }
@@ -529,6 +529,10 @@ namespace microcode {
         }
     }
 
+    type ButtonRuleRep = { [name: string]: Button[] }
+
+    const repNames = ["sensors", "filters", "actuators", "modifiers"]
+
     class RuleEditor extends Component implements IPlaceable {
         private xfrm_: Affine
         whenLbl: Sprite
@@ -536,10 +540,7 @@ namespace microcode {
         handleBtn: Button
         whenInsertBtn: Button
         doInsertBtn: Button
-        sensor: Button
-        filters: Button[]
-        actuator: Button
-        modifiers: Button[]
+        rule: ButtonRuleRep
 
         //% blockCombine block="xfrm" callInDebugger
         public get xfrm() {
@@ -586,6 +587,12 @@ namespace microcode {
                 y: 0,
                 onClick: () => this.showDoInsertMenu(),
             })
+            this.rule = {
+                sensors: [],
+                filters: [],
+                actuators: [],
+                modifiers: [],
+            }
             this.instantiateProgramTiles()
         }
 
@@ -605,94 +612,38 @@ namespace microcode {
         }
 
         private destroyProgramTiles() {
-            if (this.sensor) {
-                this.sensor.destroy()
-                this.sensor = undefined
-                this.editor.changed()
-            }
-            if (this.actuator) {
-                this.actuator.destroy()
-                this.actuator = undefined
-                this.editor.changed()
-            }
-            if (this.filters) {
-                this.filters.forEach(filter => filter.destroy())
-                this.filters = []
-                this.editor.changed()
-            }
-            if (this.modifiers) {
-                this.modifiers.forEach(modifier => modifier.destroy())
-                this.modifiers = []
-                this.editor.changed()
-            }
+            let changed = false
+            repNames.forEach(name => {
+                if (this.rule[name].length) {
+                    this.rule[name].forEach(btn => btn.destroy())
+                    this.rule[name] = []
+                    changed = true
+                }
+            })
+            if (changed) this.editor.changed()
         }
 
         private instantiateProgramTiles() {
             this.destroyProgramTiles()
-            this.filters = []
-            this.modifiers = []
-            if (this.ruledef.sensor) {
-                this.sensor = new EditorButton(this.editor, {
-                    parent: this,
-                    style: "white",
-                    icon: this.ruledef.sensor.getIcon(),
-                    x: 0,
-                    y: 0,
-                    onClick: () => this.handleSensorClicked(),
+            const rule = this.ruledef.getRuleRep()
+            let changed = false
+            repNames.forEach(name => {
+                const tiles = rule[name]
+                tiles.forEach((tile, index) => {
+                    console.log(tile.name)
+                    const button = new EditorButton(this.editor, {
+                        parent: this,
+                        style: "white",
+                        icon: tile.getIcon(),
+                        x: 0,
+                        y: 0,
+                        onClick: () => this.handleTile(name, index),
+                    })
+                    this.rule[name].push(button)
+                    changed = true
                 })
-                this.page.changed()
-            }
-            if (this.ruledef.actuator) {
-                this.actuator = new EditorButton(this.editor, {
-                    parent: this,
-                    style: "white",
-                    icon: this.ruledef.actuator.getIcon(),
-                    x: 0,
-                    y: 0,
-                    onClick: () => this.handleActuatorClicked(),
-                })
-                this.page.changed()
-            }
-            this.ruledef.filters.forEach((defn, index) => {
-                const filter = new EditorButton(this.editor, {
-                    parent: this,
-                    style: "white",
-                    icon: defn.getIcon(),
-                    x: 0,
-                    y: 0,
-                    onClick: () => this.handleFilterClicked(index),
-                })
-                this.filters.push(filter)
-                this.page.changed()
             })
-            this.ruledef.modifiers.forEach((defn, index) => {
-                const modifier = new EditorButton(this.editor, {
-                    parent: this,
-                    style: "white",
-                    icon: defn.getIcon(),
-                    x: 0,
-                    y: 0,
-                    onClick: () => this.handleModifierClicked(index),
-                })
-                this.modifiers.push(modifier)
-                this.page.changed()
-            })
-        }
-
-        private handleSensorClicked() {
-            this.pickSensor()
-        }
-
-        private handleActuatorClicked() {
-            this.pickActuator()
-        }
-
-        private handleFilterClicked(index: number) {
-            this.pickFilter(index)
-        }
-
-        private handleModifierClicked(index: number) {
-            this.pickModifier(index)
+            if (changed) this.page.changed()
         }
 
         private showRuleHandleMenu() {
@@ -715,124 +666,16 @@ namespace microcode {
             })
         }
 
-        private handleRuleHandleMenuSelection(iconId: string) {
-            if (iconId === "plus") {
-                this.page.insertRuleAt(this.index)
-            } else if (iconId === "delete") {
-                this.page.deleteRuleAt(this.index)
-            }
-        }
-
-        private pickSensor() {
-            const suggestions = Language.getSensorSuggestions(this.ruledef)
-            const btns: PickerButtonDef[] = suggestions.map(elem => {
-                return {
-                    icon: <string> elem.getIcon(),
-                    label: elem.name,
-                }
-            })
-            if (this.ruledef.sensor) {
-                btns.push({
-                    icon: "delete",
-                })
-            }
-            if (btns.length) {
-                this.editor.picker.addGroup({ label: "", btns })
-                this.editor.picker.show({
-                    title: "Select",
-                    onClick: iconId => {
-                        if (iconId === "delete") {
-                            this.ruledef.sensor = undefined
-                        } else {
-                            this.ruledef.sensor = tiles.sensors[iconId]
-                        }
-                        Language.ensureValid(this.ruledef)
-                        this.instantiateProgramTiles()
-                        this.page.changed()
-                    },
-                })
-            }
-        }
-
-        private pickActuator() {
-            const suggestions = Language.getActuatorSuggestions(this.ruledef)
-            const btns: PickerButtonDef[] = suggestions.map(elem => {
-                return {
-                    icon: <string> elem.getIcon(),
-                    label: elem.name,
-                }
-            })
-            if (this.ruledef.actuator) {
-                btns.push({
-                    icon: "delete",
-                })
-            }
-            if (btns.length) {
-                this.editor.picker.addGroup({ label: "", btns })
-                this.editor.picker.show({
-                    title: "Select",
-                    onClick: iconId => {
-                        if (iconId === "delete") {
-                            this.ruledef.actuator = undefined
-                        } else {
-                            this.ruledef.actuator = tiles.actuators[iconId]
-                        }
-                        Language.ensureValid(this.ruledef)
-                        this.instantiateProgramTiles()
-                        this.page.changed()
-                    },
-                })
-            }
-        }
-
-        private pickFilter(index: number) {
-            const suggestions = Language.getFilterSuggestions(
-                this.ruledef,
-                index
-            )
-            const btns: PickerButtonDef[] = suggestions.map(elem => {
-                return {
-                    icon: <string> elem.getIcon(),
-                    label: elem.name,
-                }
-            })
-            if (index < this.ruledef.filters.length) {
-                btns.push({
-                    icon: "delete",
-                })
-            }
-            if (btns.length) {
-                this.editor.picker.addGroup({ label: "", btns })
-                this.editor.picker.show({
-                    title: "Select",
-                    onClick: iconId => {
-                        if (iconId === "delete") {
-                            this.ruledef.filters.splice(index, 1)
-                        } else {
-                            if (index >= this.ruledef.filters.length) {
-                                this.ruledef.filters.push(tiles.filters[iconId])
-                            } else {
-                                this.ruledef.filters[index] =
-                                    tiles.filters[iconId]
-                            }
-                        }
-                        Language.ensureValid(this.ruledef)
-                        this.instantiateProgramTiles()
-                        this.page.changed()
-                    },
-                })
-            }
-        }
-
-        private pickModifier(index: number) {
-            if (index < this.ruledef.modifiers.length ) {
-                const theOne = this.ruledef.modifiers[index]
+        private handleTile(name: string, index: number) {
+            const ruleTiles = this.ruledef.getRuleRep()[name]
+            if (index < ruleTiles.length) {
+                const theOne = ruleTiles[index]
                 const fieldEditor = theOne.fieldEditor
                 if (fieldEditor) {
                     fieldEditor.editor(
                         theOne.getField(),
                         this.editor.picker,
-                        () => { 
+                        () => {
                             Language.ensureValid(this.ruledef)
                             this.instantiateProgramTiles()
                             this.page.changed()
@@ -841,13 +684,14 @@ namespace microcode {
                     return
                 }
             }
-            const suggestions = Language.getModifierSuggestions(
+            const suggestions = Language.getTileSuggestions(
                 this.ruledef,
+                name,
                 index
             )
             const btns: PickerButtonDef[] = suggestions.map(elem => {
                 return {
-                    icon: <string> elem.getIcon(),
+                    icon: <string>elem.getIcon(),
                     label: elem.name,
                 }
             })
@@ -859,14 +703,11 @@ namespace microcode {
                     theOne.getField(),
                     this.editor.picker,
                     () => {
-                        if (index >= this.ruledef.modifiers.length) {
-                            this.ruledef.modifiers.push(
-                                <ModifierDefn>theOne.getNewInstance()
-                            )
+                        const newOne = theOne.getNewInstance()
+                        if (index >= ruleTiles.length) {
+                            ruleTiles.push(newOne)
                         } else {
-                            this.ruledef.modifiers[index] = <ModifierDefn>(
-                                theOne.getNewInstance()
-                            )
+                            ruleTiles[index] = newOne
                         }
                         Language.ensureValid(this.ruledef)
                         this.instantiateProgramTiles()
@@ -875,7 +716,7 @@ namespace microcode {
                 )
                 return
             }
-            if (index < this.ruledef.modifiers.length) {
+            if (index < ruleTiles.length) {
                 btns.push({
                     icon: "delete",
                 })
@@ -886,15 +727,14 @@ namespace microcode {
                     title: "Select",
                     onClick: iconId => {
                         if (iconId === "delete") {
-                            this.ruledef.modifiers.splice(index, 1)
+                            ruleTiles.splice(index, 1)
                         } else {
-                            if (index >= this.ruledef.modifiers.length) {
-                                this.ruledef.modifiers.push(
-                                    tiles.modifiers[iconId]
-                                )
+                            // get from the database
+                            const newOne = tilesDB[name][iconId]
+                            if (index >= ruleTiles.length) {
+                                ruleTiles.push(newOne)
                             } else {
-                                this.ruledef.modifiers[index] =
-                                    tiles.modifiers[iconId]
+                                ruleTiles[index] = newOne
                             }
                         }
                         Language.ensureValid(this.ruledef)
@@ -905,35 +745,35 @@ namespace microcode {
             }
         }
 
+        private handleRuleHandleMenuSelection(iconId: string) {
+            if (iconId === "plus") {
+                this.page.insertRuleAt(this.index)
+            } else if (iconId === "delete") {
+                this.page.deleteRuleAt(this.index)
+            }
+        }
+
         private showWhenInsertMenu() {
-            if (this.sensor) {
-                const index = this.ruledef.filters.length
-                this.pickFilter(index)
+            if (this.ruledef.sensors.length) {
+                this.handleTile("filters", this.ruledef.filters.length)
             } else {
-                this.pickSensor()
+                this.handleTile("sensors", 0)
             }
         }
 
         private showDoInsertMenu() {
-            if (this.actuator) {
-                const index = this.ruledef.modifiers.length
-                this.pickModifier(index)
+            if (this.ruledef.actuators.length) {
+                this.handleTile("modifiers", this.ruledef.modifiers.length)
             } else {
-                this.pickActuator()
+                this.handleTile("actuators", 0)
             }
         }
 
         public addToQuadTree() {
-            if (this.sensor) {
-                this.editor.addToQuadTree(this.sensor)
-            }
-            if (this.actuator) {
-                this.editor.addToQuadTree(this.actuator)
-            }
-            this.filters.forEach(filter => this.editor.addToQuadTree(filter))
-            this.modifiers.forEach(modifier =>
-                this.editor.addToQuadTree(modifier)
-            )
+            repNames.forEach(name => {
+                const buttons = this.rule[name]
+                buttons.forEach(btn => this.editor.addToQuadTree(btn))
+            })
             this.editor.addToQuadTree(this.handleBtn)
             this.editor.addToQuadTree(this.whenInsertBtn)
             this.editor.addToQuadTree(this.doInsertBtn)
@@ -941,40 +781,40 @@ namespace microcode {
 
         public isEmpty() {
             return (
-                !this.ruledef.sensor &&
-                !this.ruledef.actuator &&
+                !this.ruledef.sensors.length &&
+                !this.ruledef.actuators.length &&
                 this.ruledef.filters.length === 0 &&
                 this.ruledef.modifiers.length === 0
             )
         }
 
         public layout() {
+            const ruleRep = this.rule
             const v = new Vec2()
+
+            const buttonLoc = (name: string) => {
+                ruleRep[name].forEach(btn => {
+                    btn.xfrm.localPos = v
+                    v.x += btn.width
+                })
+            }
+
             this.handleBtn.xfrm.localPos = v
             v.x += (this.handleBtn.width >> 1) + (this.whenLbl.width >> 1)
             this.whenLbl.xfrm.localPos = v
             v.x +=
                 2 + (this.whenLbl.width >> 1) + (this.whenInsertBtn.width >> 1)
-            if (this.sensor) {
-                this.sensor.xfrm.localPos = v
-                v.x += this.sensor.width
-            }
-            this.filters.forEach(filter => {
-                filter.xfrm.localPos = v
-                v.x += filter.width
-            })
+
+            const whenSection = ["sensors", "filters"]
+            whenSection.forEach(buttonLoc)
             this.whenInsertBtn.xfrm.localPos = v
+
             v.x += 2 + (this.whenInsertBtn.width >> 1) + (this.doLbl.width >> 1)
             this.doLbl.xfrm.localPos = v
             v.x += 2 + (this.doLbl.width >> 1) + (this.doInsertBtn.width >> 1)
-            if (this.actuator) {
-                this.actuator.xfrm.localPos = v
-                v.x += this.actuator.width
-            }
-            this.modifiers.forEach(modifier => {
-                modifier.xfrm.localPos = v
-                v.x += modifier.width
-            })
+
+            const doSection = ["actuators", "modifiers"]
+            doSection.forEach(buttonLoc)
             this.doInsertBtn.xfrm.localPos = v
         }
 
@@ -984,14 +824,10 @@ namespace microcode {
             this.handleBtn.draw()
             this.whenInsertBtn.draw()
             this.doInsertBtn.draw()
-            if (this.sensor) {
-                this.sensor.draw()
-            }
-            if (this.actuator) {
-                this.actuator.draw()
-            }
-            this.filters.forEach(filter => filter.draw())
-            this.modifiers.forEach(modifier => modifier.draw())
+            repNames.forEach(name => {
+                const buttons = this.rule[name]
+                buttons.forEach(btn => btn.draw())
+            })
         }
     }
 }
