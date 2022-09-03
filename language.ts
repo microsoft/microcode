@@ -161,7 +161,6 @@ namespace microcode {
                     const ret = `${t.tid}(${t.fieldEditor.serialize(
                         t.getField()
                     )})`
-                    console.log(ret)
                     return ret
                 } else {
                     return t.tid

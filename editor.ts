@@ -630,7 +630,6 @@ namespace microcode {
             repNames.forEach(name => {
                 const tiles = rule[name]
                 tiles.forEach((tile, index) => {
-                    console.log(tile.name)
                     const button = new EditorButton(this.editor, {
                         parent: this,
                         style: "white",
