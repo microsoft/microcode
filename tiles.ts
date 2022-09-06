@@ -32,10 +32,9 @@ namespace microcode {
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
-    export const TID_ACTUATOR_PIN_0 = "A3"
     export const TID_ACTUATOR_PAINT = "A5"
     export const TID_ACTUATOR_RADIO_SEND = "A6"
-    // A4 free
+    // A3, A4 free
 
     export const TID_MODIFIER_PAGE_1 = "M1"
     export const TID_MODIFIER_PAGE_2 = "M2"
@@ -163,7 +162,6 @@ namespace microcode {
     paint.serviceCommand = jacs.CMD_SET_REG | 0x2
     paint.serviceInstanceIndex = 0
 
-    addActuator(TID_ACTUATOR_PIN_0, "Pin 0", "pin_output")
     addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "message")
     const terminal = {
         handling: {

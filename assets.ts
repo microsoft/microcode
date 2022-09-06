@@ -55,7 +55,6 @@ namespace microcode {
             this.reg[TID_FILTER_PIN_ANALOG] = icondb.tile_pin_analog
             this.reg[TID_FILTER_PIN_DIGITAL] = icondb.tile_pin_digital
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
-            this.reg[TID_ACTUATOR_PIN_0] = icondb.tile_pin_0
             this.reg[TID_ACTUATOR_PAINT] = icondb.paint
             this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
             this.reg["default"] = icondb.rc_default
