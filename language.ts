@@ -35,7 +35,7 @@ namespace microcode {
             public type: TileType,
             public tid: string,
             public name: string
-        ) {}
+        ) { }
 
         hidden: boolean // Hide from UI?
         constraints: Constraints
@@ -52,6 +52,52 @@ namespace microcode {
 
         getNewInstance(field: any = null): TileDefn {
             return this
+        }
+
+        mergeConstraints(dst: Constraints) {
+            const src = this.constraints;
+            if (!src) {
+                return
+            }
+            if (src.provides) {
+                src.provides.forEach(item => dst.provides.push(item))
+            }
+            if (src.requires) {
+                src.requires.forEach(item => dst.requires.push(item))
+            }
+            if (src.allow) {
+                (src.allow.tiles || []).forEach(item =>
+                    dst.allow.tiles.push(item)
+                );
+                (src.allow.categories || []).forEach(item =>
+                    dst.allow.categories.push(item)
+                )
+            }
+            if (src.disallow) {
+                (src.disallow.tiles || []).forEach(item =>
+                    dst.disallow.tiles.push(item)
+                );
+                (src.disallow.categories || []).forEach(item =>
+                    dst.disallow.categories.push(item)
+                )
+            }
+            if (src.handling) {
+                const keys = Object.keys(src.handling)
+                for (const key of keys) {
+                    dst.handling[key] = src.handling[key]
+                }
+            }
+        }
+
+        isCompatibleWith(c: Constraints): boolean {
+            if (!this.constraints) return true
+            if (!this.constraints.requires) return true
+            let compat = false
+            this.constraints.requires.forEach(
+                req =>
+                    (compat = compat || c.provides.some(pro => pro === req))
+            )
+            return compat
         }
     }
 
@@ -83,6 +129,23 @@ namespace microcode {
 
         serviceCommandArg(): string | Buffer {
             return this.jdParam
+        }
+
+        isCompatibleWith(c: Constraints): boolean {
+            if (!super.isCompatibleWith(c)) return false
+
+            const allows = c.allow.categories.some(cat => cat === this.category) ||
+                c.allow.tiles.some(tid => tid === this.tid)
+            if (!allows) return false
+
+            const disallows = !c.disallow.categories.some(
+                cat => cat === this.category
+            ) && !c.disallow.tiles.some(tid => tid === this.tid)
+            if (!disallows) return false
+
+            // TODO: check handling
+
+            return true
         }
     }
 
@@ -371,55 +434,15 @@ namespace microcode {
 
             // Collect the built-up constraints.
             const constraints = mkConstraints()
-            if (name === "modifiers")
-                mergeConstraints(
-                    constraints,
-                    rule.actuators.length ? rule.actuators[0].constraints : null
-                )
-            mergeConstraints(
-                constraints,
-                rule.sensors.length ? rule.sensors[0].constraints : null
-            )
-            for (let i = 0; i < existing.length; ++i) {
-                mergeConstraints(constraints, existing[i].constraints)
+            if (name === "modifiers" && rule.actuators.length) {
+                rule.actuators[0].mergeConstraints(constraints)
             }
+            if (rule.sensors.length) {
+                rule.sensors[0].mergeConstraints(constraints)
+            }
+            existing.forEach(tile => tile.mergeConstraints(constraints))
 
-            return this.getCompatibleSet(<FilterModifierBase[]>all, constraints)
-        }
-
-        private static getCompatibleSet(
-            all: FilterModifierBase[],
-            c: Constraints
-        ): FilterModifierBase[] {
-            let compat = all
-                // Filter "requires" to matching "provides".
-                .filter(tile => {
-                    if (!tile.constraints) return true
-                    if (!tile.constraints.requires) return true
-                    let met = false
-                    tile.constraints.requires.forEach(
-                        req =>
-                            (met = met || c.provides.some(pro => pro === req))
-                    )
-                    return met
-                })
-                // Filter "allows".
-                .filter(
-                    tile =>
-                        c.allow.categories.some(cat => cat === tile.category) ||
-                        c.allow.tiles.some(tid => tid === tile.tid)
-                )
-                // Filter "disallows".
-                .filter(
-                    tile =>
-                        !c.disallow.categories.some(
-                            cat => cat === tile.category
-                        ) && !c.disallow.tiles.some(tid => tid === tile.tid)
-                )
-
-            // TODO: c.handling
-
-            return compat
+            return all.filter(tile => tile.isCompatibleWith(constraints))
         }
 
         public static ensureValid(rule: RuleDefn) {
@@ -450,38 +473,6 @@ namespace microcode {
             handling: {},
         }
         return c
-    }
-
-    function mergeConstraints(dst: Constraints, src?: Constraints) {
-        if (!src) {
-            return
-        }
-        if (src.provides) {
-            src.provides.forEach(item => dst.provides.push(item))
-        }
-        if (src.requires) {
-            src.requires.forEach(item => dst.requires.push(item))
-        }
-        if (src.allow) {
-            ;(src.allow.tiles || []).forEach(item => dst.allow.tiles.push(item))
-            ;(src.allow.categories || []).forEach(item =>
-                dst.allow.categories.push(item)
-            )
-        }
-        if (src.disallow) {
-            ;(src.disallow.tiles || []).forEach(item =>
-                dst.disallow.tiles.push(item)
-            )
-            ;(src.disallow.categories || []).forEach(item =>
-                dst.disallow.categories.push(item)
-            )
-        }
-        if (src.handling) {
-            const keys = Object.keys(src.handling)
-            for (const key of keys) {
-                dst.handling[key] = src.handling[key]
-            }
-        }
     }
 
     type SensorMap = { [id: string]: SensorDefn }
