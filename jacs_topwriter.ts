@@ -98,6 +98,8 @@ namespace jacs {
         procs: Procedure[] = []
         roles: Role[] = []
         currPage: Variable
+        currAnimation: Variable
+        currRuleId = 0
 
         pageStartCondition: Role
 
@@ -377,6 +379,7 @@ namespace jacs {
                         .map(m => m.serviceCommandArg())
                         .filter(a => !!a)
                     if (params.length == 0) params.push(Buffer.create(5))
+                    this.currAnimation.write(wr, literal(this.currRuleId))
                     for (let i = 0; i < params.length; ++i) {
                         const role = this.lookupActuatorRole(rule)
                         wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [
@@ -391,8 +394,18 @@ namespace jacs {
                             literal(role.index),
                             literal(actuator.serviceCommand),
                         ])
-                        if (i != params.length - 1)
+                        if (i != params.length - 1) {
                             wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(400)])
+                            wr.emitIf(
+                                wr.emitExpr(OpExpr.EXPR2_NE, [
+                                    this.currAnimation.read(wr),
+                                    literal(this.currRuleId),
+                                ]),
+                                () => {
+                                    wr.emitStmt(OpStmt.STMT1_RETURN, [])
+                                }
+                            )
+                        }
                     }
                     return
                 } else if (actuator.tid == microcode.TID_ACTUATOR_SWITCH_PAGE) {
@@ -426,6 +439,8 @@ namespace jacs {
         ) {
             const role = this.lookupSensorRole(rule)
             name += "_" + role.name
+
+            this.currRuleId++
 
             const body = this.emitRuleActuator(name, rule)
 
@@ -464,6 +479,7 @@ namespace jacs {
             jdc.start() // TODO move
 
             this.currPage = this.addGlobal()
+            this.currAnimation = this.addGlobal()
 
             this.pageStartCondition = this.addRole(
                 "pageStart",
