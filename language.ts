@@ -35,7 +35,7 @@ namespace microcode {
             public type: TileType,
             public tid: string,
             public name: string
-        ) { }
+        ) {}
 
         hidden: boolean // Hide from UI?
         constraints: Constraints
@@ -51,7 +51,10 @@ namespace microcode {
         }
 
         getBorder(): ButtonBorder {
-            return (this.type === TileType.SENSOR || this.type === TileType.ACTUATOR) ? "solid" : undefined
+            return this.type === TileType.SENSOR ||
+                this.type === TileType.ACTUATOR
+                ? "solid"
+                : undefined
         }
 
         getNewInstance(field: any = null): TileDefn {
@@ -59,7 +62,7 @@ namespace microcode {
         }
 
         mergeConstraints(dst: Constraints) {
-            const src = this.constraints;
+            const src = this.constraints
             if (!src) {
                 return
             }
@@ -70,18 +73,18 @@ namespace microcode {
                 src.requires.forEach(item => dst.requires.push(item))
             }
             if (src.allow) {
-                (src.allow.tiles || []).forEach(item =>
+                ;(src.allow.tiles || []).forEach(item =>
                     dst.allow.tiles.push(item)
-                );
-                (src.allow.categories || []).forEach(item =>
+                )
+                ;(src.allow.categories || []).forEach(item =>
                     dst.allow.categories.push(item)
                 )
             }
             if (src.disallow) {
-                (src.disallow.tiles || []).forEach(item =>
+                ;(src.disallow.tiles || []).forEach(item =>
                     dst.disallow.tiles.push(item)
-                );
-                (src.disallow.categories || []).forEach(item =>
+                )
+                ;(src.disallow.categories || []).forEach(item =>
                     dst.disallow.categories.push(item)
                 )
             }
@@ -98,8 +101,7 @@ namespace microcode {
             if (!this.constraints.requires) return true
             let compat = false
             this.constraints.requires.forEach(
-                req =>
-                    (compat = compat || c.provides.some(pro => pro === req))
+                req => (compat = compat || c.provides.some(pro => pro === req))
             )
             return compat
         }
@@ -138,13 +140,14 @@ namespace microcode {
         isCompatibleWith(c: Constraints): boolean {
             if (!super.isCompatibleWith(c)) return false
 
-            const allows = c.allow.categories.some(cat => cat === this.category) ||
+            const allows =
+                c.allow.categories.some(cat => cat === this.category) ||
                 c.allow.tiles.some(tid => tid === this.tid)
             if (!allows) return false
 
-            const disallows = !c.disallow.categories.some(
-                cat => cat === this.category
-            ) && !c.disallow.tiles.some(tid => tid === this.tid)
+            const disallows =
+                !c.disallow.categories.some(cat => cat === this.category) &&
+                !c.disallow.tiles.some(tid => tid === this.tid)
             if (!disallows) return false
 
             // TODO: check handling
@@ -234,9 +237,9 @@ namespace microcode {
                 }
             }
             const obj = {
-                S: this.sensors.map(elem => elem.tid),
-                A: this.actuators.map(elem => elem.tid),
-                F: this.filters.map(elem => elem.tid),
+                S: this.sensors.map(elem => addField(elem)),
+                A: this.actuators.map(elem => addField(elem)),
+                F: this.filters.map(elem => addField(elem)),
                 M: this.modifiers.map(elem => addField(elem)),
             }
             if (!obj.S) {
@@ -259,45 +262,38 @@ namespace microcode {
                 let hasField = s.indexOf("(")
                 if (hasField >= 0) {
                     const elem = s.substr(0, hasField)
-                    const tile = tilesDB.modifiers[elem]
-                    const field = tile.fieldEditor.deserialize(
-                        s.substr(hasField + 1, s.length - 2 - hasField)
-                    )
-                    const newOne = tile.getNewInstance(field)
-                    return newOne
+                    if (Object.keys(tilesDB[t]).indexOf(elem) >= 0) {
+                        const tile = (<TileDefnMap>tilesDB[t])[elem]
+                        const field = tile.fieldEditor.deserialize(
+                            s.substr(hasField + 1, s.length - 2 - hasField)
+                        )
+                        const newOne = tile.getNewInstance(field)
+                        return newOne
+                    } else {
+                        return undefined
+                    }
                 } else {
-                    return tilesDB[t][s]
+                    return Object.keys(tilesDB[t]).indexOf(s) >= 0
+                        ? tilesDB[t][s]
+                        : undefined
                 }
+            }
+            const defn = new RuleDefn()
+            const parseTile = (single: string, name: string) => {
+                if (Array.isArray(obj[single])) {
+                    const tiles: any[] = obj[single]
+                    return <any>tiles.map(extractField(name)).filter(x => !!x)
+                }
+                return []
             }
             if (typeof obj === "string") {
                 obj = JSON.parse(obj)
             }
-            const defn = new RuleDefn()
-            // TODO: this could be compressed using same trick as in editor.ts
-            if (Array.isArray(obj["S"])) {
-                const sensors: any[] = obj["S"]
-                defn.sensors = <SensorDefn[]>(
-                    sensors.map(extractField("sensors"))
-                )
-            }
-            if (Array.isArray(obj["A"])) {
-                const actuators: any[] = obj["A"]
-                defn.actuators = <ActuatorDefn[]>(
-                    actuators.map(extractField("actuators"))
-                )
-            }
-            if (Array.isArray(obj["F"])) {
-                const filters: any[] = obj["F"]
-                defn.filters = <FilterDefn[]>(
-                    filters.map(extractField("filters"))
-                )
-            }
-            if (Array.isArray(obj["M"])) {
-                const modifiers: any[] = obj["M"]
-                defn.modifiers = <ModifierDefn[]>(
-                    modifiers.map(extractField("modifiers"))
-                )
-            }
+
+            defn.sensors = parseTile("S", "sensors")
+            defn.actuators = parseTile("A", "actuators")
+            defn.filters = parseTile("F", "filters")
+            defn.modifiers = parseTile("M", "modifiers")
             return defn
         }
     }

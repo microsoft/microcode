@@ -3,9 +3,10 @@ namespace microcode {
     type FilterMap = { [id: string]: FilterDefn }
     type ActuatorMap = { [id: string]: ActuatorDefn }
     type ModifierMap = { [id: string]: ModifierDefn }
+    export type TileDefnMap = { [id: string]: TileDefn }
 
     export type TileDatabase = {
-        [id: string]: SensorMap | FilterMap | ActuatorMap | ModifierMap
+        [id: string]: TileDefnMap
         sensors: SensorMap
         filters: FilterMap
         actuators: ActuatorMap
