@@ -56,7 +56,6 @@ namespace microcode {
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
             this.reg[TID_ACTUATOR_PIN_0] = icondb.tile_pin_0
             this.reg[TID_ACTUATOR_PAINT] = icondb.paint
-            this.reg[TID_ACTUATOR_STAMP] = icondb.stamp
             this.reg["default"] = icondb.rc_default
         }
     }
@@ -487,24 +486,6 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
     `
 
-    export const stamp = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . 2 2 2 2 . . . . . .
-        . . . . . 2 2 . . 2 2 . . . . .
-        . . . . . 2 . . . . 2 . . . . .
-        . . . . . 2 2 . . 2 2 . . . . .
-        . . . . . . 2 2 2 2 . . . . . .
-        . . . . . . . 2 2 . . . . . . .
-        . . . . . . . 2 2 . . . . . . .
-        . . . . . . . 2 2 . . . . . . .
-        . . . 2 2 2 2 2 2 2 2 2 2 . . .
-        . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
-        . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
-        . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
-        . . . c c c c c c c c c c . . .
-        . . . 3 3 3 3 3 3 3 3 3 3 . . .
-        . . . . . . . . . . . . . . . .
-    `
 
     ///
     /// BUTTON BACKGROUNDS

@@ -363,8 +363,7 @@ namespace jacs {
 
         lookupEventCode(role: Role, rule: microcode.RuleDefn) {
             const sensor = rule.sensors.length ? rule.sensors[0] : null
-            if (sensor && sensor.eventCode != undefined)
-                return sensor.eventCode
+            if (sensor && sensor.eventCode != undefined) return sensor.eventCode
             return null
         }
 
@@ -373,10 +372,7 @@ namespace jacs {
             const wr = this.writer
             if (actuator == null) return // do nothing
             if (actuator) {
-                if (
-                    actuator.tid == microcode.TID_ACTUATOR_STAMP ||
-                    actuator.tid == microcode.TID_ACTUATOR_PAINT
-                ) {
+                if (actuator.tid == microcode.TID_ACTUATOR_PAINT) {
                     const params = rule.modifiers
                         .map(m => m.serviceCommandArg())
                         .filter(a => !!a)

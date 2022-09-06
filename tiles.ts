@@ -1,5 +1,4 @@
 namespace microcode {
-    
     type SensorMap = { [id: string]: SensorDefn }
     type FilterMap = { [id: string]: FilterDefn }
     type ActuatorMap = { [id: string]: ActuatorDefn }
@@ -33,9 +32,9 @@ namespace microcode {
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
     export const TID_ACTUATOR_PIN_0 = "A3"
-    export const TID_ACTUATOR_STAMP = "A4"
     export const TID_ACTUATOR_PAINT = "A5"
     export const TID_ACTUATOR_RADIO_SEND = "A6"
+    // A4 free
 
     export const TID_MODIFIER_PAGE_1 = "M1"
     export const TID_MODIFIER_PAGE_2 = "M2"
@@ -151,12 +150,11 @@ namespace microcode {
     }
 
     addActuator(TID_ACTUATOR_SWITCH_PAGE, "Switch page", "page")
-    const stamp = addActuator(TID_ACTUATOR_STAMP, "Stamp", "led_icon")
-    stamp.serviceClassName = "dotMatrix"
-    stamp.serviceCommand = jacs.CMD_SET_REG | 0x2
-    stamp.serviceInstanceIndex = 0
     const paint = addActuator(TID_ACTUATOR_PAINT, "Paint", "icon_editor")
-    copyJdActuator(paint, stamp)
+    paint.serviceClassName = "dotMatrix"
+    paint.serviceCommand = jacs.CMD_SET_REG | 0x2
+    paint.serviceInstanceIndex = 0
+
     addActuator(TID_ACTUATOR_PIN_0, "Pin 0", "pin_output")
 
     const terminal = {
@@ -185,16 +183,6 @@ namespace microcode {
         state_page.constraints = terminal
         tilesDB.modifiers[state_tid] = state_page
     })
-
-    const happy = new ModifierDefn(TID_MODIFIER_HAPPY, "happy", "led_icon", 10)
-    happy.constraints = terminal
-    happy.jdParam = "\x08\x12\x10\x12\x08"
-    tilesDB.modifiers[TID_MODIFIER_HAPPY] = happy
-
-    const sad = new ModifierDefn(TID_MODIFIER_SAD, "sad", "led_icon", 10)
-    sad.constraints = terminal
-    sad.jdParam = "\x10\x0a\x08\x0a\x10"
-    tilesDB.modifiers[TID_MODIFIER_SAD] = sad
 
     const iconFieldEditor: FieldEditor = {
         init: img`
