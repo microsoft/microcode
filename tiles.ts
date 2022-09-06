@@ -117,6 +117,13 @@ namespace microcode {
     }
     tilesDB.sensors[TID_SENSOR_PIN_1] = pin_1
 
+    const radio_receive = new SensorDefn(
+        TID_SENSOR_RADIO_RECEIVE,
+        "Receive",
+        Phase.Post
+    )
+    tilesDB.sensors[TID_SENSOR_RADIO_RECEIVE] = radio_receive
+
     const timespan_filters = [
         TID_FILTER_TIMESPAN_SHORT,
         TID_FILTER_TIMESPAN_LONG,
@@ -157,7 +164,7 @@ namespace microcode {
     paint.serviceInstanceIndex = 0
 
     addActuator(TID_ACTUATOR_PIN_0, "Pin 0", "pin_output")
-
+    addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "message")
     const terminal = {
         handling: {
             terminal: true,

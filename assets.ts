@@ -38,6 +38,7 @@ namespace microcode {
             this.reg[TID_SENSOR_BUTTON_B] = icondb.tile_button_b
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
             this.reg[TID_SENSOR_PIN_1] = icondb.tile_pin_1
+            this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
             this.reg[TID_MODIFIER_PAGE_3] = icondb.tile_page_3
@@ -56,6 +57,7 @@ namespace microcode {
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
             this.reg[TID_ACTUATOR_PIN_0] = icondb.tile_pin_0
             this.reg[TID_ACTUATOR_PAINT] = icondb.paint
+            this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
             this.reg["default"] = icondb.rc_default
         }
     }
@@ -485,7 +487,6 @@ namespace icondb {
         . . . . . . f f f f . . . . . .
         . . . . . . . . . . . . . . . .
     `
-
 
     ///
     /// BUTTON BACKGROUNDS
@@ -973,6 +974,43 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+
+    export const radio_send = img`
+    . . . . . . . . . . . . . . . .
+    . . . . f f f f f f f f . . . .
+    . . . f . . . . . . . . f . . .
+    . . f . . f f f f f f . . f . .
+    . f . . f . . . . . . f . . f .
+    . . . f . . f f f f . . f . . .
+    . . . . . f . . . . f . . . . .
+    . . . . . . . f f . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . 8 . . . . . . . .
+    . . . . . . . 8 . . . . 8 . . .
+    . . . . . . . 8 . . . . 8 8 . .
+    . . . . . . . 8 8 8 8 8 8 8 8 .
+    . . . . . . . . . . . . 8 8 . .
+    . . . . . . . . . . . . 8 . . .
+    . . . . . . . . . . . . . . . .
+`
+    export const radio_receive = img`
+    . . . . . . . . . . . . . . . .
+    . . . . f f f f f f f f . . . .
+    . . . f . . . . . . . . f . . .
+    . . f . . f f f f f f . . f . .
+    . f . . f . . . . . . f . . f .
+    . . . f . . f f f f . . f . . .
+    . . . . . f . . . . f . . . . .
+    . . . . . . . f f . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . 8 . . . . . . .
+    . . . . . . . 8 8 8 . . . . . .
+    . . . . . . 8 8 8 8 8 . . . . .
+    . . . . . . . . 8 . . . . . . .
+    . . . . . . . . 8 . . . . . . .
+    . 8 8 8 8 8 8 8 8 . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
 
     /* maybe use these later
     export const rc_high = img`
