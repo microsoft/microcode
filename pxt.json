@@ -15,6 +15,7 @@
         "assets.ts",
         "scene.ts",
         "language.ts",
+        "tiles.ts",
         "app.ts",
         "sprite.ts",
         "editor.ts",

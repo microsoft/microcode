@@ -5,6 +5,7 @@ namespace microcode {
             opts: {
                 parent?: IPlaceable
                 style?: ButtonStyle
+                border?: ButtonBorder
                 icon: string | Image
                 label?: string
                 x: number
@@ -44,6 +45,7 @@ namespace microcode {
 
         constructor(app: App) {
             super(app, "editor")
+            this.color = 11
         }
 
         public changed() {
@@ -634,6 +636,7 @@ namespace microcode {
                         parent: this,
                         style: "white",
                         icon: tile.getIcon(),
+                        border: tile.getBorder(),
                         x: 0,
                         y: 0,
                         onClick: () => this.handleTile(name, index),

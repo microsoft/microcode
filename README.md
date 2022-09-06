@@ -15,7 +15,11 @@ To bump and refresh the github pages javascript,
     sh ./bump.sh
     sh ./release.sh
 
-then commit the generated files
+then commit the generated files.
+
+To load the local editor in a Jacdac devtools page,
+
+https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1#http://127.0.0.1:7000
 
 ## Editor
 

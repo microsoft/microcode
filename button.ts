@@ -1,10 +1,14 @@
 namespace microcode {
+    export type ButtonStyle = "white" | "beige" | "clear" | "danger"
+    export type ButtonBorder = "solid" | undefined
+
     export class Button extends Component implements ISizable, IPlaceable {
         private xfrm_: Affine
         private icon: Sprite
         private back: Sprite
         //private text: TextSprite;
         private style: ButtonStyle
+        private border: ButtonBorder
         private iconId: string | Image
         private label: string
         private onClick?: (button: Button) => void
@@ -40,6 +44,7 @@ namespace microcode {
         constructor(opts: {
             parent?: IPlaceable
             style?: ButtonStyle
+            border?: ButtonBorder
             icon: string | Image
             label?: string
             x: number
@@ -50,6 +55,7 @@ namespace microcode {
             this.xfrm_ = new Affine()
             this.xfrm.parent = opts.parent && opts.parent.xfrm
             this.style = opts.style
+            this.border = opts.border
             this.iconId = opts.icon
             this.label = opts.label
             this.xfrm.localPos.x = opts.x
@@ -97,9 +103,11 @@ namespace microcode {
                         : this.iconId,
             })
             if (this.style) {
+                let iconName = `button_${this.style}`
+                if (this.border === "solid") iconName += "_bordered"
                 this.back = new Sprite({
                     parent: this,
-                    img: icons.get(`button_${this.style}`),
+                    img: icons.get(iconName),
                 })
             }
             this.icon.bindXfrm(this.xfrm)
