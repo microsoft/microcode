@@ -19,7 +19,11 @@ namespace microcode {
     export const TID_SENSOR_BUTTON_A = "S2"
     export const TID_SENSOR_BUTTON_B = "S3"
     export const TID_SENSOR_TIMER = "S4"
+    export const TID_SENSOR_BUTTON_AB = "S5"
     export const TID_SENSOR_PIN_1 = "S6"
+    export const TID_SENSOR_RADIO_RECEIVE = "S7"
+    export const TID_SENSOR_MIC = "S8"
+    export const TID_SENSOR_LOGO = "S9"
 
     export const TID_FILTER_TIMESPAN_SHORT = "F1"
     export const TID_FILTER_TIMESPAN_LONG = "F2"
@@ -27,9 +31,11 @@ namespace microcode {
     export const TID_FILTER_PIN_DIGITAL = "F9"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
+    export const TID_ACTUATOR_SPEAKER = "A2"
     export const TID_ACTUATOR_PIN_0 = "A3"
     export const TID_ACTUATOR_STAMP = "A4"
     export const TID_ACTUATOR_PAINT = "A5"
+    export const TID_ACTUATOR_RADIO_SEND = "A6"
 
     export const TID_MODIFIER_PAGE_1 = "M1"
     export const TID_MODIFIER_PAGE_2 = "M2"
