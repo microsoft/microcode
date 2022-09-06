@@ -237,23 +237,15 @@ namespace microcode {
                 }
             }
             const obj = {
-                S: this.sensors.map(elem => addField(elem)),
-                A: this.actuators.map(elem => addField(elem)),
-                F: this.filters.map(elem => addField(elem)),
-                M: this.modifiers.map(elem => addField(elem)),
+                S: this.sensors.map(t => addField(t)),
+                A: this.actuators.map(t => addField(t)),
+                F: this.filters.map(t => addField(t)),
+                M: this.modifiers.map(t => addField(t)),
             }
-            if (!obj.S) {
-                delete obj.S
-            }
-            if (!obj.A) {
-                delete obj.A
-            }
-            if (!obj.F.length) {
-                delete obj.F
-            }
-            if (!obj.M.length) {
-                delete obj.M
-            }
+            if (!obj.S) delete obj.S
+            if (!obj.A) delete obj.A
+            if (!obj.F.length) delete obj.F
+            if (!obj.M.length) delete obj.M
             return obj
         }
 
@@ -263,7 +255,7 @@ namespace microcode {
                 if (hasField >= 0) {
                     const elem = s.substr(0, hasField)
                     if (Object.keys(tilesDB[t]).indexOf(elem) >= 0) {
-                        const tile = (<TileDefnMap>tilesDB[t])[elem]
+                        const tile = tilesDB[t][elem]
                         const field = tile.fieldEditor.deserialize(
                             s.substr(hasField + 1, s.length - 2 - hasField)
                         )
@@ -282,7 +274,7 @@ namespace microcode {
             const parseTile = (single: string, name: string) => {
                 if (Array.isArray(obj[single])) {
                     const tiles: any[] = obj[single]
-                    return <any>tiles.map(extractField(name)).filter(x => !!x)
+                    return <any>tiles.map(extractField(name)).filter(t => !!t)
                 }
                 return []
             }
