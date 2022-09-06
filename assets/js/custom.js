@@ -4,7 +4,8 @@ addSimMessageHandler("jacscript", data => {
     if (window.parent)
         window.parent.postMessage(
             {
-                type: "jacscript",
+                broadcast: true,
+                source: "jacscript",
                 data,
             },
             "*"
