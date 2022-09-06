@@ -50,6 +50,10 @@ namespace microcode {
             return this.tid
         }
 
+        getBorder(): ButtonBorder {
+            return (this.type === TileType.SENSOR || this.type === TileType.ACTUATOR) ? "solid" : undefined
+        }
+
         getNewInstance(field: any = null): TileDefn {
             return this
         }

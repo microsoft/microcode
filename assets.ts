@@ -1,6 +1,4 @@
 namespace microcode {
-    export type ButtonStyle = "white" | "beige" | "clear" | "danger"
-
     export class icons {
         static reg: { [name: string]: ImageG } = {}
 
@@ -16,7 +14,9 @@ namespace microcode {
             this.reg["cursor"] = icondb.cursor
             this.reg["stylus"] = icondb.stylus
             this.reg["button_white"] = icondb.btn_bknd_white
+            this.reg["button_white_bordered"] = icondb.btn_bknd_white_bordered
             this.reg["button_beige"] = icondb.btn_bknd_beige
+            this.reg["button_beige_bordered"] = icondb.btn_bknd_beige_bordered
             this.reg["button_clear"] = icondb.btn_bknd_clear
             this.reg["button_danger"] = icondb.btn_bknd_danger
             this.reg["edit"] = icondb.btn_edit
@@ -66,15 +66,19 @@ namespace microcode {
 function scaleUp(led55: ImageG) {
     const ret = image.create(16, 16)
     ret.fill(15)
+    ret.setPixel(0, 0, 0)
+    ret.setPixel(15, 0, 0)
+    ret.setPixel(0, 15, 0)
+    ret.setPixel(15, 15, 0)
     for (let row = 0; row < 5; row++) {
         for (let col = 0; col < 5; col++) {
-            const color = led55.getPixel(col, row) ? 2 : 12
+            const color = led55.getPixel(row, col) ? 2 : 15
             const nrow = 1 + row * 3,
                 ncol = 1 + col * 3
-            ret.setPixel(ncol, nrow, color)
-            ret.setPixel(ncol + 1, nrow, color)
-            ret.setPixel(ncol, nrow + 1, color)
-            ret.setPixel(ncol + 1, nrow + 1, color)
+            ret.setPixel(nrow, ncol, color)
+            ret.setPixel(nrow + 1, ncol, color)
+            ret.setPixel(nrow, ncol + 1, color)
+            ret.setPixel(nrow + 1, ncol + 1, color)
         }
     }
     return ret
@@ -465,41 +469,41 @@ namespace icondb {
     `
 
     export const paint = img`
-        f f f f f f f f f f f f f f f f
-        f f f f f f f f f f f f f f f f
-        f f f f 4 1 4 1 4 1 4 1 f f f f
-        f f f f 4 1 4 1 4 1 4 1 f f f f
-        f f f f 1 1 1 1 1 1 1 1 f f f f
-        f f f f 1 1 1 1 1 1 1 1 f f f f
-        f f f f 9 9 9 9 9 9 9 9 f f f f
-        f f f f d e e e e e e e f f f f
-        f f f f d e e e e e e e f f f f
-        f f f f f f d e e e f f f f f f
-        f f f f f f d e e e f f f f f f
-        f f f f f f d e e e f f f f f f
-        f f f f f f d f f e f f f f f f
-        f f f f f f d e e e f f f f f f
-        f f f f f f f f f f f f f f f f
-        f f f f f f f f f f f f f f f f
+        . . . . . . . . . . . . . . . .
+        . . . . f f f f f f f f . . . .
+        . . . f 4 1 4 1 4 1 4 1 f . . .
+        . . . f 4 1 4 1 4 1 4 1 f . . .
+        . . . f 1 1 1 1 1 1 1 1 f . . .
+        . . . f 1 1 1 1 1 1 1 1 f . . .
+        . . . f 9 9 9 9 9 9 9 9 f . . .
+        . . . f d e e e e e e e f . . .
+        . . . f d e e e e e e e f . . .
+        . . . . f f d e e e f f . . . .
+        . . . . . f d e e e f . . . . .
+        . . . . . f d e e e f . . . . .
+        . . . . . f d f f e f . . . . .
+        . . . . . f d e e e f . . . . .
+        . . . . . . f f f f . . . . . .
+        . . . . . . . . . . . . . . . .
     `
 
     export const stamp = img`
-        f f f f f f f f f f f f f f f f
-        f f f f f f 2 2 2 2 f f f f f f
-        f f f f f 2 2 f f 2 2 f f f f f
-        f f f f f 2 f f f f 2 f f f f f
-        f f f f f 2 2 f f 2 2 f f f f f
-        f f f f f f 2 2 2 2 f f f f f f
-        f f f f f f f 2 2 f f f f f f f
-        f f f f f f f 2 2 f f f f f f f
-        f f f f f f f 2 2 f f f f f f f
-        f f f 2 2 2 2 2 2 2 2 2 2 f f f
-        f f 2 2 2 2 2 2 2 2 2 2 2 2 f f
-        f f 2 2 2 2 2 2 2 2 2 2 2 2 f f
-        f f 2 2 2 2 2 2 2 2 2 2 2 2 f f
-        f f f c c c c c c c c c c f f f
-        f f f 3 3 3 3 3 3 3 3 3 3 f f f
-        f f f f f f f f f f f f f f f f
+        . . . . . . . . . . . . . . . .
+        . . . . . . 2 2 2 2 . . . . . .
+        . . . . . 2 2 . . 2 2 . . . . .
+        . . . . . 2 . . . . 2 . . . . .
+        . . . . . 2 2 . . 2 2 . . . . .
+        . . . . . . 2 2 2 2 . . . . . .
+        . . . . . . . 2 2 . . . . . . .
+        . . . . . . . 2 2 . . . . . . .
+        . . . . . . . 2 2 . . . . . . .
+        . . . 2 2 2 2 2 2 2 2 2 2 . . .
+        . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
+        . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
+        . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
+        . . . c c c c c c c c c c . . .
+        . . . 3 3 3 3 3 3 3 3 3 3 . . .
+        . . . . . . . . . . . . . . . .
     `
 
     ///
@@ -523,6 +527,26 @@ namespace icondb {
         c 1 1 1 1 1 1 1 1 1 1 1 1 1 1 c
         . c c c c c c c c c c c c c c .
     `
+    export const btn_bknd_white_bordered = img`
+        . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 .
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        c 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 c
+        . c c c c c c c c c c c c c c c c .
+    `
     export const btn_bknd_beige = img`
         . d d d d d d d d d d d d d d .
         d d d d d d d d d d d d d d d d
@@ -540,6 +564,26 @@ namespace icondb {
         d d d d d d d d d d d d d d d d
         c d d d d d d d d d d d d d d c
         . c c c c c c c c c c c c c c .
+    `
+    export const btn_bknd_beige_bordered = img`
+        . d d d d d d d d d d d d d d d d .
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        d d d d d d d d d d d d d d d d d d
+        c d d d d d d d d d d d d d d d d c
+        . c c c c c c c c c c c c c c c c .
     `
     export const btn_bknd_clear = img`
         . . . . . . . . . . . . . . . .
