@@ -58,6 +58,7 @@ namespace microcode {
             this.reg[TID_ACTUATOR_PAINT] = icondb.paint
             this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
             this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
+            this.reg[TID_ACTUATOR_SPEAKER] = icondb.speaker
 
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
@@ -1158,6 +1159,25 @@ namespace icondb {
 . . . . . . . f f . . . . . . .
 . . . . . . . f f . . . . . . .
 . . . . . f f f f f f . . . . .
+. . . . . . . . . . . . . . . .
+`
+
+    export const speaker = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . f . . . . . . . . . .
+. . . . f f . . . . . 8 . . . .
+. . . f f f . . . 8 . . 8 . . .
+. f f f f f . 8 . . 8 . 8 . . .
+. f f f f f . . 8 . 8 . 8 . . .
+. f f f f f . . 8 . 8 . 8 . . .
+. f f f f f . 8 . . 8 . 8 . . .
+. . . f f f . . . 8 . . 8 . . .
+. . . . f f . . . . . 8 . . . .
+. . . . . f . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
 

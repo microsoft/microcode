@@ -172,6 +172,7 @@ namespace microcode {
 
     addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
     addActuator(TID_ACTUATOR_MICROPHONE, "Microphone", "on_off")
+    addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "on_off")
 
     const terminal = {
         handling: {
