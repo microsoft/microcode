@@ -31,6 +31,11 @@ namespace microcode {
     export const TID_FILTER_PIN_1 = "F6"
     export const TID_FILTER_PIN_2 = "F9"
     export const TID_FILTER_LOGO = "F7"
+    export const TID_FILTER_VALUE_1 = "F8"
+    export const TID_FILTER_VALUE_2 = "F9"
+    export const TID_FILTER_VALUE_3 = "F10"
+    export const TID_FILTER_VALUE_4 = "F11"
+    export const TID_FILTER_VALUE_5 = "F12"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -43,6 +48,13 @@ namespace microcode {
     export const TID_MODIFIER_PAGE_3 = "M3"
     export const TID_MODIFIER_PAGE_4 = "M4"
     export const TID_MODIFIER_PAGE_5 = "M5"
+
+    export const TID_MODIFIER_VALUE_1 = "M6"
+    export const TID_MODIFIER_VALUE_2 = "M7"
+    export const TID_MODIFIER_VALUE_3 = "M8"
+    export const TID_MODIFIER_VALUE_4 = "M9"
+    export const TID_MODIFIER_VALUE_5 = "M10"
+
     export const TID_MODIFIER_ICON_EDITOR = "M15"
     export const TID_MODIFIER_COLOR_RED = "M16"
     export const TID_MODIFIER_COLOR_DARKPURPLE = "M17"
@@ -124,6 +136,11 @@ namespace microcode {
         "Receive",
         Phase.Post
     )
+    radio_receive.constraints = {
+        allow: {
+            categories: ["value_in"],
+        },
+    }
     tilesDB.sensors[TID_SENSOR_RADIO_RECEIVE] = radio_receive
 
     function addTimespan(tid: string, name: string, ms: number) {
@@ -151,24 +168,29 @@ namespace microcode {
     paint.serviceCommand = jacs.CMD_SET_REG | 0x2
     paint.serviceInstanceIndex = 0
 
-    addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "message")
-    const terminal = {
-        handling: {
-            terminal: true,
-        },
+    addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
+
+    const make_vals = (name: string, kind: string, start: number) => {
+        const terminal = {
+            handling: {
+                terminal: true,
+            },
+        }
+        for (let v = 1; v <= 5; v++) {
+            const tid = kind + (start + v - 1)
+            const tile =
+                kind == "M"
+                    ? new ModifierDefn(tid, name + " " + v.toString(), name, 10)
+                    : new FilterDefn(tid, name + " " + v.toString(), name, 10)
+            tile.jdParam = v
+            tile.constraints = terminal
+            if (kind == "M") tilesDB.modifiers[tid] = tile
+            else tilesDB.filters[tid] = tile
+        }
     }
-    for (let page = 1; page <= 5; page++) {
-        const page_tid = TID_MODIFIER_PAGE_1[0] + page
-        const tile_page = new ModifierDefn(
-            page_tid,
-            "page " + page.toString(),
-            "page",
-            10
-        )
-        tile_page.jdParam = page
-        tile_page.constraints = terminal
-        tilesDB.modifiers[page_tid] = tile_page
-    }
+    make_vals("page", "M", 1)
+    make_vals("value_in", "F", 8)
+    make_vals("value_out", "M", 6)
 
     /*
     const pin_states = ["on", "off"]
