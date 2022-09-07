@@ -45,9 +45,11 @@ namespace microcode {
         private prevquadtree: QuadTree
         private prevpos: Vec2
         private cancelBtn: Button
+        private deleteBtn: Button
         private panel: Bounds
         private onClick: (btn: string, button?: Button) => void
         private onHide: () => void
+        private onDelete: () => void
         private hideOnClick: boolean
         private title: string
         public visible: boolean
@@ -105,17 +107,29 @@ namespace microcode {
                 title?: string
                 onClick?: (btn: string, button: Button) => void
                 onHide?: () => void
+                onDelete?: () => void
             },
             hideOnClick: boolean = true
         ) {
             this.onClick = opts.onClick
             this.onHide = opts.onHide
+            this.onDelete = opts.onDelete
             this.hideOnClick = hideOnClick
             this.title = opts.title
             this.prevquadtree = this.cursor.quadtree
             this.prevpos = this.cursor.xfrm.localPos.clone()
             this.cursor.quadtree = this.quadtree
             this.cursor.cancelHandlerStack.push(() => this.cancelClicked())
+            if (this.onDelete) {
+                this.deleteBtn = new Button({
+                    parent: this,
+                    style: "white",
+                    icon: "delete",
+                    x: 0,
+                    y: 0,
+                    onClick: () => this.onDelete(),
+                })
+            }
             this.groups.forEach(group => {
                 const btns = group.opts.btns || []
                 btns.forEach(btn => {
@@ -133,6 +147,7 @@ namespace microcode {
             this.cursor.quadtree = this.prevquadtree
             this.cursor.snapTo(this.prevpos.x, this.prevpos.y)
             this.groups.forEach(group => group.destroy())
+            if (this.deleteBtn) this.deleteBtn.destroy()
             this.groups = []
             if (this.onHide) {
                 this.onHide()
@@ -159,7 +174,7 @@ namespace microcode {
                     })
                 })
                 this.cancelBtn.draw()
-                //this.quadtree.dbgDraw(5);
+                if (this.deleteBtn) this.deleteBtn.draw()
             }
         }
 
@@ -230,6 +245,13 @@ namespace microcode {
             if (!firstBtn) {
                 firstBtn = this.cancelBtn
             }
+            if (this.deleteBtn) {
+                this.deleteBtn.xfrm.localPos.x =
+                    this.cancelBtn.xfrm.localPos.x - 16
+                this.deleteBtn.xfrm.localPos.y = computedTop + 8
+                this.quadtree.insert(this.deleteBtn.hitbox, this.deleteBtn)
+            }
+
             this.cursor.snapTo(
                 firstBtn.xfrm.worldPos.x,
                 firstBtn.xfrm.worldPos.y

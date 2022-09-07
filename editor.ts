@@ -782,12 +782,7 @@ namespace microcode {
         }
 
         public isEmpty() {
-            return (
-                !this.ruledef.sensors.length &&
-                !this.ruledef.actuators.length &&
-                this.ruledef.filters.length === 0 &&
-                this.ruledef.modifiers.length === 0
-            )
+            return this.ruledef.isEmpty()
         }
 
         public layout() {

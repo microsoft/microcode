@@ -24,7 +24,12 @@ namespace microcode {
     export interface FieldEditor {
         init: any
         clone: (field: any) => any
-        editor: (field: any, picker: Picker, onHide: () => void) => void // use picker to update field
+        editor: (
+            field: any,
+            picker: Picker,
+            onHide?: () => void,
+            onDelete?: () => void
+        ) => void // use picker to update field
         image: (field: any) => Image // produce an image for the field for tile
         serialize: (field: any) => string
         deserialize: (s: string) => any
@@ -222,7 +227,7 @@ namespace microcode {
         }
 
         public isEmpty(): boolean {
-            return !this.sensors.length && !this.actuators.length
+            return this.sensors.length === 0 && this.actuators.length === 0
         }
 
         public toObj(): any {
