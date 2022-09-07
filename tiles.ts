@@ -123,6 +123,9 @@ namespace microcode {
     )
     tilesDB.sensors[TID_SENSOR_RADIO_RECEIVE] = radio_receive
 
+    const microbit_logo = new SensorDefn(TID_SENSOR_LOGO, "Logo", Phase.Post)
+    tilesDB.sensors[TID_SENSOR_LOGO] = microbit_logo
+
     function addTimespan(tid: string, name: string, ms: number) {
         const timespan = new FilterDefn(tid, name, "timespan", 10)
         timespan.jdParam = ms

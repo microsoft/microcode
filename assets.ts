@@ -39,6 +39,7 @@ namespace microcode {
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
             this.reg[TID_SENSOR_PIN_1] = icondb.tile_pin_1
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
+            this.reg[TID_SENSOR_LOGO] = icondb.microbit_logo
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
             this.reg[TID_MODIFIER_PAGE_3] = icondb.tile_page_3
@@ -1010,6 +1011,24 @@ namespace icondb {
     . 8 8 8 8 8 8 8 8 . . . . . . .
     . . . . . . . . . . . . . . . .
 `
+    export const microbit_logo = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . f f f f f f f f . . . .
+    . . . f . . . . . . . . f . . .
+    . . f . . . . . . . . . . f . .
+    . . f . f f . . . . f f . f . .
+    . . f . f f . . . . f f . f . .
+    . . f . . . . . . . . . . f . .
+    . . . f . . . . . . . . f . . .
+    . . . . f f f f f f f f . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    `
 
     /* maybe use these later
     export const rc_high = img`
