@@ -38,6 +38,7 @@ namespace microcode {
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
             this.reg[TID_SENSOR_PRESS] = icondb.finger_press
+            this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
 
             this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
             this.reg[TID_FILTER_PIN_0] = icondb.tile_pin_0
@@ -56,6 +57,7 @@ namespace microcode {
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
             this.reg[TID_ACTUATOR_PAINT] = icondb.paint
             this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
+            this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
 
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
@@ -68,6 +70,9 @@ namespace microcode {
             this.reg[TID_MODIFIER_VALUE_3] = icondb.tile_value_3
             this.reg[TID_MODIFIER_VALUE_4] = icondb.tile_value_4
             this.reg[TID_MODIFIER_VALUE_5] = icondb.tile_value_5
+
+            this.reg[TID_MODIFIER_ON] = icondb.tile_on
+            this.reg[TID_MODIFIER_OFF] = icondb.tile_off
 
             // for icon editor
             this.reg[TID_MODIFIER_COLOR_RED] = icondb.tile_red
@@ -936,7 +941,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
     `
 
-    export const tile_pin_on = img`
+    export const tile_on = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -954,7 +959,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
-    export const tile_pin_off = img`
+    export const tile_off = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1135,6 +1140,25 @@ namespace icondb {
     . . . . f f f f f f f . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
+`
+
+    export const microphone = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . f f . . . . . . .
+. . . . . . f f f f . . . . . .
+. . . . . . f f f f . . . . . .
+. . . . . . f f f f . . . . . .
+. . . . . . f f f f . . . . . .
+. . . . f . f f f f . f . . . .
+. . . . f . f f f f . f . . . .
+. . . . f . . f f . . f . . . .
+. . . . . f . . . . f . . . . .
+. . . . . . f f f f . . . . . .
+. . . . . . . f f . . . . . . .
+. . . . . . . f f . . . . . . .
+. . . . . f f f f f f . . . . .
+. . . . . . . . . . . . . . . .
 `
 
     /* maybe use these later

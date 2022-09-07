@@ -17,9 +17,12 @@ namespace microcode {
     // Every tid must be unique in the set of all tids.
     export const TID_SENSOR_ALWAYS = "S1"
     export const TID_SENSOR_PRESS = "S2"
+    export const TID_SENSOR_ACCELEROMETER = "S3"
     export const TID_SENSOR_TIMER = "S4"
+    export const TID_SENSOR_LIGHT = "S5"
+    export const TID_SENSOR_TEMP = "S6"
     export const TID_SENSOR_RADIO_RECEIVE = "S7"
-    export const TID_SENSOR_MIC = "S8"
+    export const TID_SENSOR_MICROPHONE = "S8"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -40,6 +43,7 @@ namespace microcode {
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
+    export const TID_ACTUATOR_MICROPHONE = "A3"
     export const TID_ACTUATOR_PAINT = "A5"
     export const TID_ACTUATOR_RADIO_SEND = "A6"
     // A3, A4 free
@@ -55,6 +59,9 @@ namespace microcode {
     export const TID_MODIFIER_VALUE_3 = "M8"
     export const TID_MODIFIER_VALUE_4 = "M9"
     export const TID_MODIFIER_VALUE_5 = "M10"
+
+    export const TID_MODIFIER_ON = "M11"
+    export const TID_MODIFIER_OFF = "M12"
 
     export const TID_MODIFIER_ICON_EDITOR = "M15"
     export const TID_MODIFIER_COLOR_RED = "M16"
@@ -164,13 +171,14 @@ namespace microcode {
     paint.serviceInstanceIndex = 0
 
     addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
+    addActuator(TID_ACTUATOR_MICROPHONE, "Microphone", "on_off")
 
+    const terminal = {
+        handling: {
+            terminal: true,
+        },
+    }
     const make_vals = (name: string, kind: string, start: number) => {
-        const terminal = {
-            handling: {
-                terminal: true,
-            },
-        }
         for (let v = 1; v <= 5; v++) {
             const tid = kind + (start + v - 1)
             const tile =
@@ -187,15 +195,13 @@ namespace microcode {
     make_vals("value_in", "F", 8)
     make_vals("value_out", "M", 6)
 
-    /*
-    const pin_states = ["on", "off"]
-    pin_states.forEach(state => {
-        const state_tid =
-            state == "on" ? TID_MODIFIER_PIN_ON : TID_MODIFIER_PIN_OFF
-        const state_page = new ModifierDefn(state_tid, state, "pin_output", 10)
+    const switch_states = ["on", "off"]
+    switch_states.forEach(state => {
+        const state_tid = state == "on" ? TID_MODIFIER_ON : TID_MODIFIER_OFF
+        const state_page = new ModifierDefn(state_tid, state, "on_off", 10)
         state_page.constraints = terminal
         tilesDB.modifiers[state_tid] = state_page
-    }) */
+    })
 
     const iconFieldEditor: FieldEditor = {
         init: img`
