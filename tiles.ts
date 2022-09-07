@@ -21,21 +21,22 @@ namespace microcode {
     export const TID_SENSOR_RADIO_RECEIVE = "S7"
     export const TID_SENSOR_MIC = "S8"
 
-    export const TID_FILTER_TIMESPAN_SHORT = "F1"
-    export const TID_FILTER_TIMESPAN_LONG = "F2"
     // filters for TID_SENSOR_PRESS
+    export const TID_FILTER_PIN_0 = "F0"
+    export const TID_FILTER_PIN_1 = "F1"
+    export const TID_FILTER_PIN_2 = "F2"
     export const TID_FILTER_BUTTON_A = "F3"
     export const TID_FILTER_BUTTON_B = "F4"
     export const TID_FILTER_BUTTON_AB = "F5"
-    export const TID_FILTER_PIN_0 = "F8"
-    export const TID_FILTER_PIN_1 = "F6"
-    export const TID_FILTER_PIN_2 = "F9"
+    // F6
     export const TID_FILTER_LOGO = "F7"
     export const TID_FILTER_VALUE_1 = "F8"
     export const TID_FILTER_VALUE_2 = "F9"
     export const TID_FILTER_VALUE_3 = "F10"
     export const TID_FILTER_VALUE_4 = "F11"
     export const TID_FILTER_VALUE_5 = "F12"
+    export const TID_FILTER_TIMESPAN_SHORT = "F13"
+    export const TID_FILTER_TIMESPAN_LONG = "F14"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
