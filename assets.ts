@@ -34,30 +34,32 @@ namespace microcode {
             this.reg["next_page"] = icondb.btn_next_page
             this.reg["prev_page"] = icondb.btn_prev_page
             this.reg["MISSING"] = icondb.MISSING
-            this.reg[TID_SENSOR_BUTTON_A] = icondb.tile_button_a
-            this.reg[TID_SENSOR_BUTTON_B] = icondb.tile_button_b
+
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
-            this.reg[TID_SENSOR_PIN_1] = icondb.tile_pin_1
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
-            this.reg[TID_SENSOR_LOGO] = icondb.microbit_logo
+            this.reg[TID_SENSOR_PRESS] = icondb.finger_press
+
+            this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
+            this.reg[TID_FILTER_PIN_0] = icondb.tile_pin_0
+            this.reg[TID_FILTER_PIN_1] = icondb.tile_pin_1
+            this.reg[TID_FILTER_PIN_2] = icondb.tile_pin_2
+            this.reg[TID_FILTER_BUTTON_A] = icondb.tile_button_a
+            this.reg[TID_FILTER_BUTTON_B] = icondb.tile_button_b
+            this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short
+            this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long
+
+            this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
+            this.reg[TID_ACTUATOR_PAINT] = icondb.paint
+            this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
+
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
             this.reg[TID_MODIFIER_PAGE_3] = icondb.tile_page_3
             this.reg[TID_MODIFIER_PAGE_4] = icondb.tile_page_4
             this.reg[TID_MODIFIER_PAGE_5] = icondb.tile_page_5
-            this.reg[TID_MODIFIER_PIN_ON] = icondb.tile_pin_on
-            this.reg[TID_MODIFIER_PIN_OFF] = icondb.tile_pin_off
-            this.reg[TID_MODIFIER_HAPPY] = icondb.happy
-            this.reg[TID_MODIFIER_SAD] = icondb.sad
             this.reg[TID_MODIFIER_COLOR_RED] = icondb.tile_red
             this.reg[TID_MODIFIER_COLOR_DARKPURPLE] = icondb.tile_darkpurple
-            this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short
-            this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long
-            this.reg[TID_FILTER_PIN_ANALOG] = icondb.tile_pin_analog
-            this.reg[TID_FILTER_PIN_DIGITAL] = icondb.tile_pin_digital
-            this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
-            this.reg[TID_ACTUATOR_PAINT] = icondb.paint
-            this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
+
             this.reg["default"] = icondb.rc_default
         }
     }
@@ -902,6 +904,25 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+    export const tile_pin_2 = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . f f f f f f f f f . . . .
+    . . f 5 5 5 5 5 5 5 5 5 f . . .
+    . . f 5 5 5 5 5 5 5 5 5 f . . .
+    . . f 5 5 5 5 5 5 5 5 5 f . . .
+    . . f 5 f f 5 5 f f 5 5 f . . .
+    . . f 5 f 5 f 5 5 5 f 5 f . . .
+    . . f 5 f f 5 5 5 f 5 5 f . . .
+    . . f 5 f 5 5 5 f 5 5 5 f . . .
+    . . f 5 f 5 5 5 f f f 5 f . . .
+    . . f 5 5 5 5 5 5 5 5 5 f . . .
+    . . f 5 5 5 5 5 5 5 5 5 f . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+
     export const tile_pin_on = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -975,7 +996,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
     `
 
-    export const radio_send = img`
+    export const radio_receive = img`
     . . . . . . . . . . . . . . . .
     . . . . f f f f f f f f . . . .
     . . . f . . . . . . . . f . . .
@@ -993,7 +1014,7 @@ namespace icondb {
     . . . . . . . . . . . . 8 . . .
     . . . . . . . . . . . . . . . .
 `
-    export const radio_receive = img`
+    export const radio_send = img`
     . . . . . . . . . . . . . . . .
     . . . . f f f f f f f f . . . .
     . . . f . . . . . . . . f . . .
@@ -1028,6 +1049,24 @@ namespace icondb {
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
+    `
+    export const finger_press = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . f f f f . . . . . . .
+        . . . . f . . . . f . . . . . .
+        . . . f . . . . . . f . . . . .
+        . . . f . . 4 4 . . f . . . . .
+        . . . f . . 4 4 . . f . . . . .
+        . . . . f . 4 4 . f . . . . . .
+        . . . . . . 4 4 . . . . . . . .
+        . . . . . . 4 4 4 4 4 . . . . .
+        . . . . . . 4 4 4 4 4 4 . . . .
+        . . . . . 4 4 4 4 4 4 4 . . . .
+        . . . . . 4 4 4 4 4 4 4 . . . .
+        . . . . . 4 4 4 4 4 4 4 . . . .
+        . . . . . . 4 4 4 4 4 4 . . . .
+        . . . . . . . 4 4 4 4 . . . . .
+        . . . . . . . . . . . . . . . .
     `
 
     /* maybe use these later

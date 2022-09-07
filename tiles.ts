@@ -16,19 +16,21 @@ namespace microcode {
     // Once a tid is assigned, it can NEVER BE CHANGED OR REPURPOSED.
     // Every tid must be unique in the set of all tids.
     export const TID_SENSOR_ALWAYS = "S1"
-    export const TID_SENSOR_BUTTON_A = "S2"
-    export const TID_SENSOR_BUTTON_B = "S3"
+    export const TID_SENSOR_PRESS = "S2"
     export const TID_SENSOR_TIMER = "S4"
-    export const TID_SENSOR_BUTTON_AB = "S5"
-    export const TID_SENSOR_PIN_1 = "S6"
     export const TID_SENSOR_RADIO_RECEIVE = "S7"
     export const TID_SENSOR_MIC = "S8"
-    export const TID_SENSOR_LOGO = "S9"
 
     export const TID_FILTER_TIMESPAN_SHORT = "F1"
     export const TID_FILTER_TIMESPAN_LONG = "F2"
-    export const TID_FILTER_PIN_ANALOG = "F8"
-    export const TID_FILTER_PIN_DIGITAL = "F9"
+    // filters for TID_SENSOR_PRESS
+    export const TID_FILTER_BUTTON_A = "F3"
+    export const TID_FILTER_BUTTON_B = "F4"
+    export const TID_FILTER_BUTTON_AB = "F5"
+    export const TID_FILTER_PIN_0 = "F8"
+    export const TID_FILTER_PIN_1 = "F6"
+    export const TID_FILTER_PIN_2 = "F9"
+    export const TID_FILTER_LOGO = "F7"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -41,10 +43,6 @@ namespace microcode {
     export const TID_MODIFIER_PAGE_3 = "M3"
     export const TID_MODIFIER_PAGE_4 = "M4"
     export const TID_MODIFIER_PAGE_5 = "M5"
-    export const TID_MODIFIER_PIN_ON = "M11"
-    export const TID_MODIFIER_PIN_OFF = "M12"
-    export const TID_MODIFIER_HAPPY = "M13"
-    export const TID_MODIFIER_SAD = "M14"
     export const TID_MODIFIER_ICON_EDITOR = "M15"
     export const TID_MODIFIER_COLOR_RED = "M16"
     export const TID_MODIFIER_COLOR_DARKPURPLE = "M17"
@@ -82,39 +80,41 @@ namespace microcode {
     always.hidden = true
     tilesDB.sensors[TID_SENSOR_ALWAYS] = always
 
-    const button_a = new SensorDefn(TID_SENSOR_BUTTON_A, "A", Phase.Pre)
-    button_a.serviceClassName = "button"
-    button_a.eventCode = 0x1 // down
-    button_a.serviceInstanceIndex = 0
-    button_a.constraints = {
+    const press_event = new SensorDefn(TID_SENSOR_PRESS, "press", Phase.Pre)
+    press_event.serviceClassName = "button"
+    press_event.eventCode = 0x1 // down
+    press_event.serviceInstanceIndex = 0
+    press_event.constraints = {
         provides: ["input"],
         allow: {
-            categories: ["button-event"],
+            categories: ["press_event"],
         },
     }
-    tilesDB.sensors[TID_SENSOR_BUTTON_A] = button_a
+    tilesDB.sensors[TID_SENSOR_PRESS] = press_event
 
-    const button_b = new SensorDefn(TID_SENSOR_BUTTON_B, "B", Phase.Pre)
-    copyJdSensor(button_b, button_a)
-    button_b.serviceInstanceIndex = 1
-    button_b.constraints = button_a.constraints
-    tilesDB.sensors[TID_SENSOR_BUTTON_B] = button_b
-
-    const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
-    timer.constraints = {
-        allow: {
-            categories: ["timespan"],
-        },
-    }
-    tilesDB.sensors[TID_SENSOR_TIMER] = timer
-
-    const pin_1 = new SensorDefn(TID_SENSOR_PIN_1, "Pin 1", Phase.Post)
-    pin_1.constraints = {
-        allow: {
-            categories: ["pin_mode"],
-        },
-    }
-    tilesDB.sensors[TID_SENSOR_PIN_1] = pin_1
+    const press_filters = [
+        TID_FILTER_BUTTON_A,
+        TID_FILTER_BUTTON_B,
+        TID_FILTER_PIN_0,
+        TID_FILTER_PIN_1,
+        TID_FILTER_PIN_2,
+        TID_FILTER_LOGO,
+    ]
+    const press_names = ["A", "B", "Pin 0", "Pin 1", "Pin 2", "Logo"]
+    press_filters.forEach((tid, i) => {
+        const press_filter = new FilterDefn(
+            tid,
+            press_names[i],
+            "press_event",
+            10
+        )
+        press_filter.constraints = {
+            allow: {
+                categories: ["press_event"],
+            },
+        }
+        tilesDB.filters[tid] = press_filter
+    })
 
     const radio_receive = new SensorDefn(
         TID_SENSOR_RADIO_RECEIVE,
@@ -123,9 +123,6 @@ namespace microcode {
     )
     tilesDB.sensors[TID_SENSOR_RADIO_RECEIVE] = radio_receive
 
-    const microbit_logo = new SensorDefn(TID_SENSOR_LOGO, "Logo", Phase.Post)
-    tilesDB.sensors[TID_SENSOR_LOGO] = microbit_logo
-
     function addTimespan(tid: string, name: string, ms: number) {
         const timespan = new FilterDefn(tid, name, "timespan", 10)
         timespan.jdParam = ms
@@ -133,18 +130,6 @@ namespace microcode {
     }
     addTimespan(TID_FILTER_TIMESPAN_SHORT, "short", 250)
     addTimespan(TID_FILTER_TIMESPAN_LONG, "long", 1000)
-
-    const pin_filters = [TID_FILTER_PIN_ANALOG, TID_FILTER_PIN_DIGITAL]
-    const pin_names = ["analog", "digital"]
-    pin_filters.forEach((tid, i) => {
-        const pin_filter = new FilterDefn(tid, pin_names[i], "pin_mode", 10)
-        pin_filter.constraints = {
-            disallow: {
-                categories: ["pin_mode"],
-            },
-        }
-        tilesDB.filters[tid] = pin_filter
-    })
 
     function addActuator(tid: string, name: string, allow: string) {
         const actuator = new ActuatorDefn(tid, name)
@@ -182,6 +167,7 @@ namespace microcode {
         tilesDB.modifiers[page_tid] = tile_page
     }
 
+    /*
     const pin_states = ["on", "off"]
     pin_states.forEach(state => {
         const state_tid =
@@ -189,7 +175,7 @@ namespace microcode {
         const state_page = new ModifierDefn(state_tid, state, "pin_output", 10)
         state_page.constraints = terminal
         tilesDB.modifiers[state_tid] = state_page
-    })
+    }) */
 
     const iconFieldEditor: FieldEditor = {
         init: img`
