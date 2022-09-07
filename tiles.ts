@@ -109,6 +109,9 @@ namespace microcode {
             10
         )
         press_filter.constraints = {
+            handling: {
+                terminal: true,
+            },
             allow: {
                 categories: ["press_event"],
             },
