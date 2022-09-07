@@ -104,22 +104,8 @@ namespace microcode {
     }
     tilesDB.sensors[TID_SENSOR_PRESS] = press_event
 
-    const press_filters = [
-        TID_FILTER_BUTTON_A,
-        TID_FILTER_BUTTON_B,
-        TID_FILTER_PIN_0,
-        TID_FILTER_PIN_1,
-        TID_FILTER_PIN_2,
-        TID_FILTER_LOGO,
-    ]
-    const press_names = ["A", "B", "Pin 0", "Pin 1", "Pin 2", "Logo"]
-    press_filters.forEach((tid, i) => {
-        const press_filter = new FilterDefn(
-            tid,
-            press_names[i],
-            "press_event",
-            10
-        )
+    function addPressFilter(tid: string, name: string, instanceNo: number) {
+        const press_filter = new FilterDefn(tid, name, "press_event", 10)
         press_filter.constraints = {
             handling: {
                 terminal: true,
@@ -129,7 +115,15 @@ namespace microcode {
             },
         }
         tilesDB.filters[tid] = press_filter
-    })
+        press_filter.jdParam = instanceNo
+    }
+
+    addPressFilter(TID_FILTER_BUTTON_A, "A", 0)
+    addPressFilter(TID_FILTER_BUTTON_B, "B", 1)
+    addPressFilter(TID_FILTER_LOGO, "Logo", 2)
+    addPressFilter(TID_FILTER_PIN_0, "Pin 0", 3)
+    addPressFilter(TID_FILTER_PIN_1, "Pin 1", 4)
+    addPressFilter(TID_FILTER_PIN_2, "Pin 2", 5)
 
     const radio_receive = new SensorDefn(
         TID_SENSOR_RADIO_RECEIVE,
