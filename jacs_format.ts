@@ -36,6 +36,8 @@ namespace jacs {
         STMTx1_STORE_PARAM = 20, // idx, value
     }
 
+    export const stmtNumArgs = hex`ff 01 01 01 03 02 04 03 04 02 02 03 04 01 01 02 01 02 02 04 02`
+
     export function stmtTakesNumber(op: OpStmt) {
         switch (op) {
             case OpStmt.STMTx_JMP:
@@ -98,6 +100,8 @@ namespace jacs {
         EXPR2_SHIFT_RIGHT_UNSIGNED = 43,
         EXPR2_SUB = 44,
     }
+
+    export const exprNumArgs = hex`ff 01 01 03 01 01 00 02 01 00 00 00 00 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02 02 02 02 02 02 01`
 
     export function exprIsStateful(op: OpExpr) {
         switch (op) {
