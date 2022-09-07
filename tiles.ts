@@ -44,9 +44,9 @@ namespace microcode {
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
     export const TID_ACTUATOR_MICROPHONE = "A3"
+    export const TID_ACTUATOR_MUSIC = "A4"
     export const TID_ACTUATOR_PAINT = "A5"
     export const TID_ACTUATOR_RADIO_SEND = "A6"
-    // A3, A4 free
 
     export const TID_MODIFIER_PAGE_1 = "M1"
     export const TID_MODIFIER_PAGE_2 = "M2"
@@ -172,7 +172,8 @@ namespace microcode {
 
     addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
     addActuator(TID_ACTUATOR_MICROPHONE, "Microphone", "on_off")
-    addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "on_off")
+    addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "foo")
+    addActuator(TID_ACTUATOR_MUSIC, "Music", "bar")
 
     const terminal = {
         handling: {
