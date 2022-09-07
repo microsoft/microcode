@@ -123,15 +123,13 @@ namespace microcode {
     )
     tilesDB.sensors[TID_SENSOR_RADIO_RECEIVE] = radio_receive
 
-    const timespan_filters = [
-        TID_FILTER_TIMESPAN_SHORT,
-        TID_FILTER_TIMESPAN_LONG,
-    ]
-    const timespan_names = ["short", "long"]
-    timespan_filters.forEach((tid, i) => {
-        const timespan = new FilterDefn(tid, timespan_names[i], "timespan", 10)
+    function addTimespan(tid: string, name: string, ms: number) {
+        const timespan = new FilterDefn(tid, name, "timespan", 10)
+        timespan.jdParam = ms
         tilesDB.filters[tid] = timespan
-    })
+    }
+    addTimespan(TID_FILTER_TIMESPAN_SHORT, "short", 250)
+    addTimespan(TID_FILTER_TIMESPAN_LONG, "long", 1000)
 
     const pin_filters = [TID_FILTER_PIN_ANALOG, TID_FILTER_PIN_DIGITAL]
     const pin_names = ["analog", "digital"]

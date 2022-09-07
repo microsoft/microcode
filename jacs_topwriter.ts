@@ -100,10 +100,9 @@ namespace jacs {
         currPage: Variable
         currAnimation: Variable
         currRuleId = 0
+        currPageId = 0
 
         pageStartCondition: Role
-
-        numErrors = 0
 
         constructor() {}
 
@@ -314,8 +313,8 @@ namespace jacs {
         }
 
         error(msg: string) {
-            this.numErrors++
-            console.log("Error: " + msg)
+            this.hasErrors = true
+            console.error("Error: " + msg)
         }
 
         lookupServiceClass(name: string) {
@@ -432,46 +431,69 @@ namespace jacs {
             return body
         }
 
-        private emitRule(
-            pageIdx: number,
-            name: string,
-            rule: microcode.RuleDefn
-        ) {
+        private ifCurrPage(then: () => void) {
+            const wr = this.writer
+            wr.emitIf(
+                wr.emitExpr(OpExpr.EXPR2_EQ, [
+                    this.currPage.read(wr),
+                    literal(this.currPageId),
+                ]),
+                then
+            )
+        }
+
+        private emitRule(name: string, rule: microcode.RuleDefn) {
+            const body = this.emitRuleActuator(name, rule)
+
+            if (
+                rule.sensors[0] &&
+                rule.sensors[0].tid == microcode.TID_SENSOR_TIMER
+            ) {
+                const timer = this.addProc(name + "_timer")
+                let period = 0
+                for (const m of rule.modifiers) {
+                    if (typeof m.jdParam == "number") period += m.jdParam
+                }
+                if (period == 0) period = 1000 // reasonable default
+                this.withProcedure(timer, wr => {
+                    wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(period)])
+                    // TODO account for page switching
+                    this.ifCurrPage(() => {
+                        wr.emitCall(body.index, [], OpCall.BG_MAX1)
+                    })
+                    wr.emitJump(wr.top)
+                })
+                this.withProcedure(this.mainProc, wr => {
+                    wr.emitCall(timer.index, [], OpCall.BG_MAX1)
+                })
+                return
+            }
+
             const role = this.lookupSensorRole(rule)
             name += "_" + role.name
 
-            this.currRuleId++
-
-            const body = this.emitRuleActuator(name, rule)
-
             this.withProcedure(role.getDispatcher(), wr => {
-                wr.emitIf(
-                    wr.emitExpr(OpExpr.EXPR2_EQ, [
-                        this.currPage.read(wr),
-                        literal(pageIdx),
-                    ]),
-                    () => {
-                        const code = this.lookupEventCode(role, rule)
-                        if (code != null) {
-                            wr.emitIf(
-                                wr.emitExpr(OpExpr.EXPR2_EQ, [
-                                    wr.emitExpr(OpExpr.EXPR0_PKT_EV_CODE, []),
-                                    literal(code),
-                                ]),
-                                () => {
-                                    wr.emitCall(body.index, [], OpCall.BG_MAX1)
-                                }
-                            )
-                        } else if (
-                            role.classIdentifier == SRV_JACSCRIPT_CONDITION
-                        ) {
-                            // event code not relevant
-                            wr.emitCall(body.index, [], OpCall.BG_MAX1)
-                        } else {
-                            this.error("can't handle role")
-                        }
+                this.ifCurrPage(() => {
+                    const code = this.lookupEventCode(role, rule)
+                    if (code != null) {
+                        wr.emitIf(
+                            wr.emitExpr(OpExpr.EXPR2_EQ, [
+                                wr.emitExpr(OpExpr.EXPR0_PKT_EV_CODE, []),
+                                literal(code),
+                            ]),
+                            () => {
+                                wr.emitCall(body.index, [], OpCall.BG_MAX1)
+                            }
+                        )
+                    } else if (
+                        role.classIdentifier == SRV_JACSCRIPT_CONDITION
+                    ) {
+                        // event code not relevant
+                        wr.emitCall(body.index, [], OpCall.BG_MAX1)
+                    } else {
+                        this.error("can't handle role")
                     }
-                )
+                })
             })
         }
 
@@ -496,24 +518,25 @@ namespace jacs {
                 ])
             })
 
-            let pageIdx = 0
+            this.currPageId = 0
             for (const page of prog.pages) {
-                pageIdx++
+                this.currPageId++
+                this.currRuleId++
                 let ruleIdx = 0
                 for (const rule of page.rules) {
-                    this.emitRule(
-                        pageIdx,
-                        "r" + pageIdx + "_" + ruleIdx++,
-                        rule
-                    )
+                    this.emitRule("r" + this.currPageId + "_" + ruleIdx++, rule)
                 }
             }
 
             this.finalize()
 
-            const bin = this.serialize()
-            console.log(bin.toHex())
-            jdc.deploy(bin)
+            if (this.hasErrors) {
+                console.error("errors; not deploying")
+            } else {
+                const bin = this.serialize()
+                console.log(bin.toHex())
+                jdc.deploy(bin)
+            }
         }
     }
 
