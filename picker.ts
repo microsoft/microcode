@@ -127,7 +127,10 @@ namespace microcode {
                     icon: "delete",
                     x: 0,
                     y: 0,
-                    onClick: () => this.onDelete(),
+                    onClick: () => {
+                        this.hide()
+                        this.onDelete()
+                    },
                 })
             }
             this.groups.forEach(group => {

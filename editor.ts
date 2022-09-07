@@ -670,6 +670,11 @@ namespace microcode {
 
         private handleTile(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
+            const updateEditor = () => {
+                Language.ensureValid(this.ruledef)
+                this.instantiateProgramTiles()
+                this.page.changed()
+            }
             if (index < ruleTiles.length) {
                 const theOne = ruleTiles[index]
                 const fieldEditor = theOne.fieldEditor
@@ -677,10 +682,10 @@ namespace microcode {
                     fieldEditor.editor(
                         theOne.getField(),
                         this.editor.picker,
+                        updateEditor,
                         () => {
-                            Language.ensureValid(this.ruledef)
-                            this.instantiateProgramTiles()
-                            this.page.changed()
+                            ruleTiles.splice(index, 1)
+                            updateEditor()
                         }
                     )
                     return
@@ -711,9 +716,7 @@ namespace microcode {
                         } else {
                             ruleTiles[index] = newOne
                         }
-                        Language.ensureValid(this.ruledef)
-                        this.instantiateProgramTiles()
-                        this.page.changed()
+                        updateEditor()
                     }
                 )
                 return
@@ -739,9 +742,7 @@ namespace microcode {
                                 ruleTiles[index] = newOne
                             }
                         }
-                        Language.ensureValid(this.ruledef)
-                        this.instantiateProgramTiles()
-                        this.page.changed()
+                        updateEditor()
                     },
                 })
             }
