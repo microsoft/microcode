@@ -356,10 +356,11 @@ namespace jacs {
         lookupSensorRole(rule: microcode.RuleDefn) {
             const sensor = rule.sensors.length ? rule.sensors[0] : null
             if (!sensor) return this.pageStartCondition
-            return this.lookupRole(
-                sensor.serviceClassName,
-                sensor.serviceInstanceIndex
-            )
+            let idx = sensor.serviceInstanceIndex
+            if (sensor.tid == microcode.TID_SENSOR_PRESS)
+                for (const f of rule.filters)
+                    if (typeof f.jdParam == "number") idx = f.jdParam
+            return this.lookupRole(sensor.serviceClassName, idx)
         }
 
         lookupEventCode(role: Role, rule: microcode.RuleDefn) {
@@ -401,7 +402,7 @@ namespace jacs {
                                     literal(this.currRuleId),
                                 ]),
                                 () => {
-                                    wr.emitStmt(OpStmt.STMT1_RETURN, [])
+                                    wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
                                 }
                             )
                         }
