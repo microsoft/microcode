@@ -21,6 +21,38 @@ To load the local editor in a Jacdac devtools page,
 
 https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1#http://127.0.0.1:7001
 
+## Micro:bit features
+
+We are working to expose most of the micro:bit's main features in MicroCode:
+
+-   **LED screen**
+    -   design and display icons and animations
+    -   plot the value of a sensor
+-   **User input**
+    -   buttons A and B
+    -   capacative touch on micro:bit logo, pins 0, 1 and 2
+-   **Accelerometer**
+    -   respond to accelerometer events
+    -   access to X, Y, Z values
+-   **Sensors**
+    -   temperature
+    -   light level
+-   **Music**
+    -   play tones via the speaker
+-   **Radio**
+    -   set group
+    -   send and receive messages
+-   **Data**
+    -   record data to flash
+    -   display data
+
+## Jacdac
+
+MicroCode integrates with [Jacdac](https://aka.ms.jacdac) in several ways
+
+-   the MicroCode program is compiled to the bytecode of the Jacdac virtual machine (JDVM), which can be run on the same micro:bit or exported to other micro:bits
+-   the MicroCode editor recognizes a small set of Jacdac modules, when connected, providing programming tiles for those modules
+
 ## Editor
 
 ## Tile-based Language
@@ -53,38 +85,6 @@ Filters may be parameterized based on the kind of sensor (discrete or continuous
 ### Actuators
 
 ### Modifiers
-
-## Micro:bit features
-
-We are working to expose most of the micro:bit's main features:
-
--   **LED screen**
-    -   design and display icons and animations
-    -   plot the value of a sensor
--   **User input**
-    -   buttons A and B
-    -   capacative touch on micro:bit logo, pins 0, 1 and 2
--   **Accelerometer**
-    -   respond to accelerometer events
-    -   access to X, Y, Z values
--   **Sensors**
-    -   temperature
-    -   light level
--   **Music**
-    -   play tones via the speaker
--   **Radio**
-    -   set group
-    -   send and receive messages
--   **Data**
-    -   record data to flash
-    -   display data
-
-## Jacdac
-
-MicroCode integrates with [Jacdac](https://aka.ms.jacdac) in several ways
-
--   the MicroCode program is compiled to the bytecode of the Jacdac virtual machine (JDVM), which can be run on the same micro:bit or exported to other micro:bits
--   the MicroCode editor recognizes a small set of Jacdac modules, when connected, providing programming tiles for those modules
 
 ## Contributing
 
