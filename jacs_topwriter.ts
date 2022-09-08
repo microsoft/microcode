@@ -14,7 +14,11 @@ namespace jacs {
 
     class Variable {
         index: number
-        constructor(lst: Variable[], public kind: CellKind) {
+        constructor(
+            lst: Variable[],
+            public kind: CellKind,
+            public name: string
+        ) {
             this.index = lst.length
             lst.push(this)
         }
@@ -39,6 +43,9 @@ namespace jacs {
         }
         toString() {
             return this.writer.getAssembly()
+        }
+        addLocal(name: string) {
+            return new Variable(this.locals, CellKind.LOCAL, name)
         }
     }
 
@@ -101,6 +108,7 @@ namespace jacs {
         currAnimation: Variable
         currRuleId = 0
         currPageId = 0
+        pageProcs: Procedure[] = []
 
         pageStartCondition: Role
 
@@ -124,6 +132,8 @@ namespace jacs {
             switch (t) {
                 case CellKind.FLOAT_CONST:
                     return this.floatLiterals[idx] + ""
+                case CellKind.GLOBAL:
+                    return this.globals[idx].name
                 default:
                     return undefined
             }
@@ -272,17 +282,15 @@ namespace jacs {
 
         private finalize() {
             for (const r of this.roles) r.finalize()
-            for (const p of this.procs) p.finalize()
             this.withProcedure(this.mainProc, wr => {
                 // wait for autobind to finish
                 wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(1000)])
-                // and send start condition
-                wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
-                    literal(this.pageStartCondition.index),
-                    literal(0x80),
-                ])
+                wr.emitCall(this.pageProc(1).index, [])
                 wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
             })
+            this.finalizePageProcs()
+            for (const p of this.procs) p.finalize()
+
             for (const p of this.procs) {
                 console.log(p.toString())
             }
@@ -304,8 +312,8 @@ namespace jacs {
             return proc
         }
 
-        addGlobal() {
-            return new Variable(this.globals, CellKind.GLOBAL)
+        addGlobal(name: string) {
+            return new Variable(this.globals, CellKind.GLOBAL, name)
         }
 
         addRole(name: string, classId: number) {
@@ -402,7 +410,9 @@ namespace jacs {
                                     literal(this.currRuleId),
                                 ]),
                                 () => {
-                                    wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+                                    wr.emitStmt(OpStmt.STMT1_RETURN, [
+                                        literal(0),
+                                    ])
                                 }
                             )
                         }
@@ -412,11 +422,8 @@ namespace jacs {
                     let targetPage = 1
                     for (const m of rule.modifiers)
                         if (m.category == "page") targetPage = m.jdParam
-                    this.currPage.write(wr, literal(targetPage))
-                    wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
-                        literal(this.pageStartCondition.index),
-                        literal(0x80),
-                    ])
+
+                    wr.emitCall(this.pageProc(targetPage).index, [])
                     return
                 }
             }
@@ -443,6 +450,29 @@ namespace jacs {
             )
         }
 
+        private pageProc(pageIdx: number) {
+            if (!this.pageProcs[pageIdx]) {
+                this.pageProcs[pageIdx] = this.addProc("startPage" + pageIdx)
+                this.withProcedure(this.pageProcs[pageIdx], wr => {
+                    this.currPage.write(wr, literal(pageIdx))
+                })
+            }
+            return this.pageProcs[pageIdx]
+        }
+
+        private finalizePageProcs() {
+            for (const proc of this.pageProcs) {
+                if (proc)
+                    this.withProcedure(proc, wr => {
+                        wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
+                            literal(this.pageStartCondition.index),
+                            literal(0x80),
+                        ])
+                        wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+                    })
+            }
+        }
+
         private emitRule(name: string, rule: microcode.RuleDefn) {
             const body = this.emitRuleActuator(name, rule)
 
@@ -452,20 +482,26 @@ namespace jacs {
             ) {
                 const timer = this.addProc(name + "_timer")
                 let period = 0
-                for (const m of rule.modifiers) {
+                for (const m of rule.filters) {
                     if (typeof m.jdParam == "number") period += m.jdParam
                 }
                 if (period == 0) period = 1000 // reasonable default
+                this.withProcedure(this.pageProc(this.currPageId), wr => {
+                    // first, terminate any previous one
+                    wr.emitStmt(OpStmt.STMT1_TERMINATE_FIBER, [
+                        wr.emitExpr(OpExpr.EXPR1_GET_FIBER_HANDLE, [
+                            literal(timer.index),
+                        ]),
+                    ])
+                    // then start a new one
+                    wr.emitCall(timer.index, [], OpCall.BG_MAX1)
+                })
                 this.withProcedure(timer, wr => {
                     wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(period)])
-                    // TODO account for page switching
                     this.ifCurrPage(() => {
                         wr.emitCall(body.index, [], OpCall.BG_MAX1)
                     })
                     wr.emitJump(wr.top)
-                })
-                this.withProcedure(this.mainProc, wr => {
-                    wr.emitCall(timer.index, [], OpCall.BG_MAX1)
                 })
                 return
             }
@@ -501,8 +537,8 @@ namespace jacs {
         emitProgram(prog: microcode.ProgramDefn) {
             jdc.start() // TODO move
 
-            this.currPage = this.addGlobal()
-            this.currAnimation = this.addGlobal()
+            this.currPage = this.addGlobal("page")
+            this.currAnimation = this.addGlobal("anim")
 
             this.pageStartCondition = this.addRole(
                 "pageStart",
@@ -511,9 +547,8 @@ namespace jacs {
 
             const mainProc = this.addProc("main")
             this.withProcedure(mainProc, wr => {
-                this.currPage.write(wr, literal(1))
                 wr.emitStmt(OpStmt.STMT3_LOG_FORMAT, [
-                    literal(this.addString("Hello world")),
+                    literal(this.addString("micro:start!")),
                     literal(0),
                     literal(0),
                 ])
@@ -522,9 +557,9 @@ namespace jacs {
             this.currPageId = 0
             for (const page of prog.pages) {
                 this.currPageId++
-                this.currRuleId++
                 let ruleIdx = 0
                 for (const rule of page.rules) {
+                    this.currRuleId++
                     this.emitRule("r" + this.currPageId + "_" + ruleIdx++, rule)
                 }
             }

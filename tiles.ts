@@ -145,6 +145,18 @@ namespace microcode {
     }
     tilesDB.sensors[TID_SENSOR_RADIO_RECEIVE] = radio_receive
 
+    const timer = new SensorDefn(
+        TID_SENSOR_TIMER,
+        "Timer",
+        Phase.Post
+    )
+    timer.constraints = {
+        allow: {
+            categories: ["timespan"],
+        },
+    }
+    tilesDB.sensors[TID_SENSOR_TIMER] = timer
+
     function addTimespan(tid: string, name: string, ms: number) {
         const timespan = new FilterDefn(tid, name, "timespan", 10)
         timespan.jdParam = ms
