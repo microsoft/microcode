@@ -164,6 +164,9 @@ namespace microcode {
                     const progdef = this.app.load(SAVESLOT_AUTO)
                     if (progdef) {
                         new jacs.TopWriter().emitProgram(progdef)
+                        accessibility.setLiveContent("")
+                        pause(1000)
+                        accessibility.setLiveContent("program saved")
                     }
                 }
             )
