@@ -480,6 +480,10 @@ namespace jacs {
         }
 
         emitExpr(op: OpExpr, args: Value[]) {
+            const n = exprNumArgs[op as number]
+            if (n != args.length)
+                oops(`expr ${op} requires ${n}; got ${args.length}`)
+
             let maxdepth = -1
             let usesState = exprIsStateful(op)
             // TODO constant folding
@@ -587,6 +591,9 @@ namespace jacs {
         }
 
         emitStmt(op: OpStmt, args: Value[]) {
+            const n = stmtNumArgs[op as number]
+            if (n != args.length)
+                oops(`stmt ${op} requires ${n}; got ${args.length}`)
             for (const a of args) a.adopt()
             this.spillAllStateful()
             this.writeByte(op)

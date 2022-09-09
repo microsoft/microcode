@@ -16,35 +16,53 @@ namespace microcode {
     // Once a tid is assigned, it can NEVER BE CHANGED OR REPURPOSED.
     // Every tid must be unique in the set of all tids.
     export const TID_SENSOR_ALWAYS = "S1"
-    export const TID_SENSOR_BUTTON_A = "S2"
-    export const TID_SENSOR_BUTTON_B = "S3"
+    export const TID_SENSOR_PRESS = "S2"
+    export const TID_SENSOR_ACCELEROMETER = "S3"
     export const TID_SENSOR_TIMER = "S4"
-    export const TID_SENSOR_BUTTON_AB = "S5"
-    export const TID_SENSOR_PIN_1 = "S6"
+    export const TID_SENSOR_LIGHT = "S5"
+    export const TID_SENSOR_TEMP = "S6"
     export const TID_SENSOR_RADIO_RECEIVE = "S7"
-    export const TID_SENSOR_MIC = "S8"
-    export const TID_SENSOR_LOGO = "S9"
+    export const TID_SENSOR_MICROPHONE = "S8"
 
-    export const TID_FILTER_TIMESPAN_SHORT = "F1"
-    export const TID_FILTER_TIMESPAN_LONG = "F2"
-    export const TID_FILTER_PIN_ANALOG = "F8"
-    export const TID_FILTER_PIN_DIGITAL = "F9"
+    // filters for TID_SENSOR_PRESS
+    export const TID_FILTER_PIN_0 = "F0"
+    export const TID_FILTER_PIN_1 = "F1"
+    export const TID_FILTER_PIN_2 = "F2"
+    export const TID_FILTER_BUTTON_A = "F3"
+    export const TID_FILTER_BUTTON_B = "F4"
+    export const TID_FILTER_BUTTON_AB = "F5"
+    // F6
+    export const TID_FILTER_LOGO = "F7"
+    export const TID_FILTER_VALUE_1 = "F8"
+    export const TID_FILTER_VALUE_2 = "F9"
+    export const TID_FILTER_VALUE_3 = "F10"
+    export const TID_FILTER_VALUE_4 = "F11"
+    export const TID_FILTER_VALUE_5 = "F12"
+    export const TID_FILTER_TIMESPAN_SHORT = "F13"
+    export const TID_FILTER_TIMESPAN_LONG = "F14"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
+    export const TID_ACTUATOR_MICROPHONE = "A3"
+    export const TID_ACTUATOR_MUSIC = "A4"
     export const TID_ACTUATOR_PAINT = "A5"
     export const TID_ACTUATOR_RADIO_SEND = "A6"
-    // A3, A4 free
 
     export const TID_MODIFIER_PAGE_1 = "M1"
     export const TID_MODIFIER_PAGE_2 = "M2"
     export const TID_MODIFIER_PAGE_3 = "M3"
     export const TID_MODIFIER_PAGE_4 = "M4"
     export const TID_MODIFIER_PAGE_5 = "M5"
-    export const TID_MODIFIER_PIN_ON = "M11"
-    export const TID_MODIFIER_PIN_OFF = "M12"
-    export const TID_MODIFIER_HAPPY = "M13"
-    export const TID_MODIFIER_SAD = "M14"
+
+    export const TID_MODIFIER_VALUE_1 = "M6"
+    export const TID_MODIFIER_VALUE_2 = "M7"
+    export const TID_MODIFIER_VALUE_3 = "M8"
+    export const TID_MODIFIER_VALUE_4 = "M9"
+    export const TID_MODIFIER_VALUE_5 = "M10"
+
+    export const TID_MODIFIER_ON = "M11"
+    export const TID_MODIFIER_OFF = "M12"
+
     export const TID_MODIFIER_ICON_EDITOR = "M15"
     export const TID_MODIFIER_COLOR_RED = "M16"
     export const TID_MODIFIER_COLOR_DARKPURPLE = "M17"
@@ -82,46 +100,62 @@ namespace microcode {
     always.hidden = true
     tilesDB.sensors[TID_SENSOR_ALWAYS] = always
 
-    const button_a = new SensorDefn(TID_SENSOR_BUTTON_A, "A", Phase.Pre)
-    button_a.serviceClassName = "button"
-    button_a.eventCode = 0x1 // down
-    button_a.serviceInstanceIndex = 0
-    button_a.constraints = {
+    const press_event = new SensorDefn(TID_SENSOR_PRESS, "press", Phase.Pre)
+    press_event.serviceClassName = "button"
+    press_event.eventCode = 0x1 // down
+    press_event.serviceInstanceIndex = 0
+    press_event.constraints = {
         provides: ["input"],
         allow: {
-            categories: ["button-event"],
+            categories: ["press_event"],
         },
     }
-    tilesDB.sensors[TID_SENSOR_BUTTON_A] = button_a
+    tilesDB.sensors[TID_SENSOR_PRESS] = press_event
 
-    const button_b = new SensorDefn(TID_SENSOR_BUTTON_B, "B", Phase.Pre)
-    copyJdSensor(button_b, button_a)
-    button_b.serviceInstanceIndex = 1
-    button_b.constraints = button_a.constraints
-    tilesDB.sensors[TID_SENSOR_BUTTON_B] = button_b
-
-    const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
-    timer.constraints = {
-        allow: {
-            categories: ["timespan"],
-        },
+    function addPressFilter(tid: string, name: string, instanceNo: number) {
+        const press_filter = new FilterDefn(tid, name, "press_event", 10)
+        press_filter.constraints = {
+            handling: {
+                terminal: true,
+            },
+            allow: {
+                categories: ["press_event"],
+            },
+        }
+        tilesDB.filters[tid] = press_filter
+        press_filter.jdParam = instanceNo
     }
-    tilesDB.sensors[TID_SENSOR_TIMER] = timer
 
-    const pin_1 = new SensorDefn(TID_SENSOR_PIN_1, "Pin 1", Phase.Post)
-    pin_1.constraints = {
-        allow: {
-            categories: ["pin_mode"],
-        },
-    }
-    tilesDB.sensors[TID_SENSOR_PIN_1] = pin_1
+    addPressFilter(TID_FILTER_BUTTON_A, "A", 0)
+    addPressFilter(TID_FILTER_BUTTON_B, "B", 1)
+    addPressFilter(TID_FILTER_LOGO, "Logo", 2)
+    addPressFilter(TID_FILTER_PIN_0, "Pin 0", 3)
+    addPressFilter(TID_FILTER_PIN_1, "Pin 1", 4)
+    addPressFilter(TID_FILTER_PIN_2, "Pin 2", 5)
 
     const radio_receive = new SensorDefn(
         TID_SENSOR_RADIO_RECEIVE,
         "Receive",
         Phase.Post
     )
+    radio_receive.constraints = {
+        allow: {
+            categories: ["value_in"],
+        },
+    }
     tilesDB.sensors[TID_SENSOR_RADIO_RECEIVE] = radio_receive
+
+    const timer = new SensorDefn(
+        TID_SENSOR_TIMER,
+        "Timer",
+        Phase.Post
+    )
+    timer.constraints = {
+        allow: {
+            categories: ["timespan"],
+        },
+    }
+    tilesDB.sensors[TID_SENSOR_TIMER] = timer
 
     function addTimespan(tid: string, name: string, ms: number) {
         const timespan = new FilterDefn(tid, name, "timespan", 10)
@@ -130,18 +164,6 @@ namespace microcode {
     }
     addTimespan(TID_FILTER_TIMESPAN_SHORT, "short", 250)
     addTimespan(TID_FILTER_TIMESPAN_LONG, "long", 1000)
-
-    const pin_filters = [TID_FILTER_PIN_ANALOG, TID_FILTER_PIN_DIGITAL]
-    const pin_names = ["analog", "digital"]
-    pin_filters.forEach((tid, i) => {
-        const pin_filter = new FilterDefn(tid, pin_names[i], "pin_mode", 10)
-        pin_filter.constraints = {
-            disallow: {
-                categories: ["pin_mode"],
-            },
-        }
-        tilesDB.filters[tid] = pin_filter
-    })
 
     function addActuator(tid: string, name: string, allow: string) {
         const actuator = new ActuatorDefn(tid, name)
@@ -160,30 +182,37 @@ namespace microcode {
     paint.serviceCommand = jacs.CMD_SET_REG | 0x2
     paint.serviceInstanceIndex = 0
 
-    addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "message")
+    addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
+    addActuator(TID_ACTUATOR_MICROPHONE, "Microphone", "on_off")
+    addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "foo")
+    addActuator(TID_ACTUATOR_MUSIC, "Music", "bar")
+
     const terminal = {
         handling: {
             terminal: true,
         },
     }
-    for (let page = 1; page <= 5; page++) {
-        const page_tid = TID_MODIFIER_PAGE_1[0] + page
-        const tile_page = new ModifierDefn(
-            page_tid,
-            "page " + page.toString(),
-            "page",
-            10
-        )
-        tile_page.jdParam = page
-        tile_page.constraints = terminal
-        tilesDB.modifiers[page_tid] = tile_page
+    const make_vals = (name: string, kind: string, start: number) => {
+        for (let v = 1; v <= 5; v++) {
+            const tid = kind + (start + v - 1)
+            const tile =
+                kind == "M"
+                    ? new ModifierDefn(tid, name + " " + v.toString(), name, 10)
+                    : new FilterDefn(tid, name + " " + v.toString(), name, 10)
+            tile.jdParam = v
+            tile.constraints = terminal
+            if (kind == "M") tilesDB.modifiers[tid] = tile
+            else tilesDB.filters[tid] = tile
+        }
     }
+    make_vals("page", "M", 1)
+    make_vals("value_in", "F", 8)
+    make_vals("value_out", "M", 6)
 
-    const pin_states = ["on", "off"]
-    pin_states.forEach(state => {
-        const state_tid =
-            state == "on" ? TID_MODIFIER_PIN_ON : TID_MODIFIER_PIN_OFF
-        const state_page = new ModifierDefn(state_tid, state, "pin_output", 10)
+    const switch_states = ["on", "off"]
+    switch_states.forEach(state => {
+        const state_tid = state == "on" ? TID_MODIFIER_ON : TID_MODIFIER_OFF
+        const state_page = new ModifierDefn(state_tid, state, "on_off", 10)
         state_page.constraints = terminal
         tilesDB.modifiers[state_tid] = state_page
     })

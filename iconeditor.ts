@@ -2,7 +2,8 @@ namespace microcode {
     export function iconEditor(
         image5x5: Image,
         picker: Picker,
-        onHide: () => void
+        onHide: () => void,
+        onDelete?: () => void
     ) {
         const getColor = (col: number, row: number) => {
             return image5x5.getPixel(col, row)
@@ -37,7 +38,8 @@ namespace microcode {
                     picker.draw()
                 },
                 onHide,
-                title: "Edit Icon",
+                onDelete,
+                title: "LEDs",
             },
             false
         )

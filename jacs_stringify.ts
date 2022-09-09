@@ -121,6 +121,8 @@ namespace jacs {
                 return `${bufferdesc()} := ${expr()}`
             case OpStmt.STMTx1_STORE_PARAM: // idx, value
                 return `${celldesc(CellKind.PARAM)} := ${expr()}`
+            case OpStmt.STMT1_TERMINATE_FIBER:
+                return `terminate(${expr()})`
             default:
                 return `stmt ${op}`
         }
@@ -303,6 +305,10 @@ namespace jacs {
                 return `(${expr()}) >>> (${expr()})`
             case OpExpr.EXPR2_SUB:
                 return `(${expr()}) - (${expr()})`
+            case OpExpr.EXPR0_NOW_MS:
+                return `now_ms()`
+            case OpExpr.EXPR1_GET_FIBER_HANDLE:
+                return `fiber(_F${expr()})`
             default:
                 return `? ${op.toString()} ?`
         }
