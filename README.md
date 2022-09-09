@@ -37,6 +37,7 @@ We are working to expose most of the micro:bit's main features in MicroCode:
 -   **Sensors**
     -   temperature
     -   light level
+    -   compass
 -   **Music**
     -   play tones via the speaker
 -   **Radio**
