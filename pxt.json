@@ -10,6 +10,7 @@
     "files": [
         "main.ts",
         "README.md",
+        "accessibility.ts",
         "button.ts",
         "component.ts",
         "assets.ts",
