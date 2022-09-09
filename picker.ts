@@ -228,7 +228,6 @@ namespace microcode {
             this.groups.forEach(group => {
                 let currentLeft = computedLeft
                 group.buttons.forEach((btn, index) => {
-                    if (!btn) return
                     if (!firstBtn) {
                         firstBtn = btn
                     }
@@ -253,7 +252,6 @@ namespace microcode {
                 firstBtn = this.cancelBtn
             }
             if (this.deleteBtn) {
-                console.log("DELETE BTN")
                 this.deleteBtn.xfrm.localPos.x =
                     this.cancelBtn.xfrm.localPos.x - 16
                 this.deleteBtn.xfrm.localPos.y = computedTop + 8
