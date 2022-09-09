@@ -195,7 +195,7 @@ namespace microcode {
     const make_vals = (name: string, kind: string, start: number) => {
         for (let v = 1; v <= 5; v++) {
             const tid = kind + (start + v - 1)
-            const tile =
+            const tile: FilterModifierBase =
                 kind == "M"
                     ? new ModifierDefn(tid, name + " " + v.toString(), name, 10)
                     : new FilterDefn(tid, name + " " + v.toString(), name, 10)
