@@ -150,7 +150,10 @@ namespace microcode {
             this.cursor.quadtree = this.prevquadtree
             this.cursor.snapTo(this.prevpos.x, this.prevpos.y)
             this.groups.forEach(group => group.destroy())
-            if (this.deleteBtn) this.deleteBtn.destroy()
+            if (this.deleteBtn) {
+                this.deleteBtn.destroy()
+                this.deleteBtn = undefined
+            }
             this.groups = []
             if (this.onHide) {
                 this.onHide()
