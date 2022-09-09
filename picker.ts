@@ -150,7 +150,10 @@ namespace microcode {
             this.cursor.quadtree = this.prevquadtree
             this.cursor.snapTo(this.prevpos.x, this.prevpos.y)
             this.groups.forEach(group => group.destroy())
-            if (this.deleteBtn) this.deleteBtn.destroy()
+            if (this.deleteBtn) {
+                this.deleteBtn.destroy()
+                this.deleteBtn = undefined
+            }
             this.groups = []
             if (this.onHide) {
                 this.onHide()
@@ -225,6 +228,7 @@ namespace microcode {
             this.groups.forEach(group => {
                 let currentLeft = computedLeft
                 group.buttons.forEach((btn, index) => {
+                    if (!btn) return
                     if (!firstBtn) {
                         firstBtn = btn
                     }
@@ -249,6 +253,7 @@ namespace microcode {
                 firstBtn = this.cancelBtn
             }
             if (this.deleteBtn) {
+                console.log("DELETE BTN")
                 this.deleteBtn.xfrm.localPos.x =
                     this.cancelBtn.xfrm.localPos.x - 16
                 this.deleteBtn.xfrm.localPos.y = computedTop + 8
