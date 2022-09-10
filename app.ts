@@ -18,6 +18,7 @@ namespace microcode {
             setTimeout(() => {
                 controller.setRepeatDefault(250, 30)
                 icons.init()
+                jdc.start()
                 this.sceneManager = new SceneManager()
                 const home = new Home(this)
                 this.pushScene(home)
