@@ -23,7 +23,13 @@ https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1#
 
 ## Overview of implementation
 
+### Local files
+
 This little app packs a lot into a small footprint: graphics, UI, editor, compiler, and runtime. [Read more](./codereview.md) about the implemention.
+
+### Dependencies
+
+This app is built with [MakeCode Arcade](https://arcade.makecode.com/beta), specifically targeting the NRF MCU of the micro:bit V2 (for now). There are a number of repos containing the C++ of the underlying CODAL runtime.
 
 ## Micro:bit features
 
