@@ -2,13 +2,29 @@
 
 Microsoft MicroCode is a [MakeCode Arcade](https://arcade.makecode.com/) application that allows the creation, modification, and execution of simple reactive programs for microcontroller-based target devices such as the [BBC micro:bit](https://microbit.org) and [Jacdac brains](https://microsoft.github.io/jacdac-docs/start/brains/). MicroCode has a tile-based language and editor, inspired by [Kodu Game Lab](https://www.kodugamelab.com/), for creating programs using just the 4-way direction pad and A and B buttons supported by [Arcade-compatible devices](https://arcade.makecode.com/hardware/). The language is parameterized by a set of [Jacdac services](https://microsoft.github.io/jacdac-docs/services/) that represent the set of hardware features of the target device (the device to be programmed). The programs are compiled into the bytecode of the Jacdac virtual machine and persisted in the flash memory of the target device.
 
+
 ## Developing
 
+### Install
+
+-  install [Node.js](https://nodejs.org/en/)
 -   `npm install -g makecode`
+-  clone this repo
+
+### Build
+
 -   in this repo, run `mkc init`
 -   run `mkc serve`
 -   head to http://127.0.0.1:7001 for simulator
 -   run `mkc build -d` to compile and deploy to device
+
+### With Jacdac devtools
+
+To load the local editor in a Jacdac devtools page,
+
+https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1#http://127.0.0.1:7001
+
+### Updating GitHub pages
 
 To bump and refresh the github pages javascript,
 
@@ -16,10 +32,6 @@ To bump and refresh the github pages javascript,
     sh ./release.sh
 
 then commit the generated files.
-
-To load the local editor in a Jacdac devtools page,
-
-https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1#http://127.0.0.1:7001
 
 ## Overview of implementation
 
