@@ -21,6 +21,10 @@ To load the local editor in a Jacdac devtools page,
 
 https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1#http://127.0.0.1:7001
 
+## Overview of implementation
+
+This little app packs a lot into a small footprint: graphics, UI, editor, compiler, and runtime. [Read more](./codereview.md) about the implemention.
+
 ## Micro:bit features
 
 We are working to expose most of the micro:bit's main features in MicroCode:
