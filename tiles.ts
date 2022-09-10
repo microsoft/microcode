@@ -145,11 +145,7 @@ namespace microcode {
     }
     tilesDB.sensors[TID_SENSOR_RADIO_RECEIVE] = radio_receive
 
-    const timer = new SensorDefn(
-        TID_SENSOR_TIMER,
-        "Timer",
-        Phase.Post
-    )
+    const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
     timer.constraints = {
         allow: {
             categories: ["timespan"],
@@ -184,8 +180,31 @@ namespace microcode {
 
     addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
     addActuator(TID_ACTUATOR_MICROPHONE, "Microphone", "on_off")
-    addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "foo")
-    addActuator(TID_ACTUATOR_MUSIC, "Music", "bar")
+
+    const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "soundemoji")
+    emoji.serviceClassName = "soundPlayer"
+    emoji.serviceCommand = 0x80
+    emoji.serviceArgFromModifier = (x: string) => x || "hello"
+
+    // TODO add Modifiers with jdParam set to:
+    //    "giggle", "happy",   "hello",  "mysterious", "sad",
+    //    "slide",  "soaring", "spring", "twinkle",    "yawn",
+
+    const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "note")
+    buzzer.serviceClassName = "buzzer"
+    buzzer.serviceCommand = 0x80
+    buzzer.serviceArgFromModifier = (freq: number) => {
+        if (!freq) freq = 440
+        const r = Buffer.create(6)
+        const period = Math.idiv(1000000, freq)
+        r.setNumber(NumberFormat.UInt16LE, 0, period)
+        r.setNumber(NumberFormat.UInt16LE, 2, period >> 1)
+        r.setNumber(NumberFormat.UInt16LE, 4, 400) // ms
+        return r
+    }
+
+    // TODO add Modifiers with jdParam set to frequencies of notes
+    // (do we want different durations as well?)
 
     const terminal = {
         handling: {

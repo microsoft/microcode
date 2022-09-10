@@ -175,7 +175,8 @@ namespace microcode {
     export class ActuatorDefn extends TileDefn {
         public serviceClassName: string
         public serviceCommand: number
-        public serviceInstanceIndex: number
+        public serviceInstanceIndex: number = 0
+        public serviceArgFromModifier: (jdParam: any) => string | Buffer
 
         constructor(tid: string, name: string) {
             super(TileType.ACTUATOR, tid, name)

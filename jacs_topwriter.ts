@@ -377,57 +377,71 @@ namespace jacs {
             return null
         }
 
+        private emitLoadBuffer(buf: string | Buffer) {
+            let len = 0
+            if (typeof buf == "string")
+                len = Buffer.fromUTF8(buf as string).length
+            else len = (buf as Buffer).length
+            const wr = this.writer
+            wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [literal(len), literal(0)])
+            wr.emitStmt(OpStmt.STMT2_MEMCPY, [
+                literal(this.addString(buf)),
+                literal(0),
+            ])
+        }
+
         private emitRoleCommand(rule: microcode.RuleDefn) {
             const actuator = rule.actuators.length ? rule.actuators[0] : null
             const wr = this.writer
             if (actuator == null) return // do nothing
-            if (actuator) {
-                if (actuator.tid == microcode.TID_ACTUATOR_PAINT) {
-                    const params = rule.modifiers
-                        .map(m => m.serviceCommandArg())
-                        .filter(a => !!a)
-                    if (params.length == 0) params.push(Buffer.create(5))
-                    this.currAnimation.write(wr, literal(this.currRuleId))
-                    for (let i = 0; i < params.length; ++i) {
-                        const role = this.lookupActuatorRole(rule)
-                        wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [
-                            literal(5),
-                            literal(0),
-                        ])
-                        wr.emitStmt(OpStmt.STMT2_MEMCPY, [
-                            literal(this.addString(params[i])),
-                            literal(0),
-                        ])
-                        wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
-                            literal(role.index),
-                            literal(actuator.serviceCommand),
-                        ])
-                        if (i != params.length - 1) {
-                            wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(400)])
-                            wr.emitIf(
-                                wr.emitExpr(OpExpr.EXPR2_NE, [
-                                    this.currAnimation.read(wr),
-                                    literal(this.currRuleId),
-                                ]),
-                                () => {
-                                    wr.emitStmt(OpStmt.STMT1_RETURN, [
-                                        literal(0),
-                                    ])
-                                }
-                            )
-                        }
+            if (actuator.tid == microcode.TID_ACTUATOR_PAINT) {
+                const params = rule.modifiers
+                    .map(m => m.serviceCommandArg())
+                    .filter(a => !!a)
+                if (params.length == 0) params.push(Buffer.create(5))
+                this.currAnimation.write(wr, literal(this.currRuleId))
+                for (let i = 0; i < params.length; ++i) {
+                    const role = this.lookupActuatorRole(rule)
+                    this.emitLoadBuffer(params[i])
+                    wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
+                        literal(role.index),
+                        literal(actuator.serviceCommand),
+                    ])
+                    if (i != params.length - 1) {
+                        wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(400)])
+                        wr.emitIf(
+                            wr.emitExpr(OpExpr.EXPR2_NE, [
+                                this.currAnimation.read(wr),
+                                literal(this.currRuleId),
+                            ]),
+                            () => {
+                                wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+                            }
+                        )
                     }
-                    return
-                } else if (actuator.tid == microcode.TID_ACTUATOR_SWITCH_PAGE) {
-                    let targetPage = 1
-                    for (const m of rule.modifiers)
-                        if (m.category == "page") targetPage = m.jdParam
-
-                    wr.emitCall(this.pageProc(targetPage).index, [])
-                    return
                 }
+            } else if (actuator.tid == microcode.TID_ACTUATOR_SWITCH_PAGE) {
+                let targetPage = 1
+                for (const m of rule.modifiers)
+                    if (m.category == "page") targetPage = m.jdParam
+
+                wr.emitCall(this.pageProc(targetPage).index, [])
+            } else if (actuator.serviceArgFromModifier) {
+                const role = this.lookupActuatorRole(rule)
+                let jdParam: any = null
+                for (const m of rule.modifiers) {
+                    if (m.jdParam !== undefined) jdParam = m.jdParam
+                }
+                const buf = actuator.serviceArgFromModifier(jdParam)
+                this.emitLoadBuffer(buf)
+                wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
+                    literal(role.index),
+                    literal(actuator.serviceCommand),
+                ])
+                this.emitLogString("send: " + role.name)
+            } else {
+                this.error(`can't map act role for ${JSON.stringify(actuator)}`)
             }
-            this.error(`can't map act role for ${JSON.stringify(actuator)}`)
         }
 
         private emitRuleActuator(name: string, rule: microcode.RuleDefn) {
@@ -534,6 +548,14 @@ namespace jacs {
             })
         }
 
+        emitLogString(str: string) {
+            this.writer.emitStmt(OpStmt.STMT3_LOG_FORMAT, [
+                literal(this.addString(str)),
+                literal(0),
+                literal(0),
+            ])
+        }
+
         emitProgram(prog: microcode.ProgramDefn) {
             jdc.start() // TODO move
 
@@ -547,11 +569,7 @@ namespace jacs {
 
             const mainProc = this.addProc("main")
             this.withProcedure(mainProc, wr => {
-                wr.emitStmt(OpStmt.STMT3_LOG_FORMAT, [
-                    literal(this.addString("micro:start!")),
-                    literal(0),
-                    literal(0),
-                ])
+                this.emitLogString("MicroCode start!")
             })
 
             this.currPageId = 0
@@ -577,8 +595,20 @@ namespace jacs {
     }
 
     export const serviceClasses: SMap<number> = {
+        // m:b
         button: 0x1473a263,
         dotMatrix: 0x110d154b,
+        bitRadio: 0x1ac986cf,
+        soundLevel: 0x14ad1a5d,
+        temperature: 0x1421bac7,
+        soundPlayer: 0x1403d338,
+        buzzer: 0x1b57b1d7,
+        // Kit-A
+        potentiometer: 0x1f274746,
+        lightLevel: 0x17dc9a1c,
+        magneticFieldLevel: 0x12fe180f,
+        rotaryEncoder: 0x10fa29c9,
+        led: 0x1609d4f0,
     }
 
     export const SRV_JACSCRIPT_CONDITION = 0x1196796d
