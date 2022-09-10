@@ -44,4 +44,15 @@ namespace microcode {
             false
         )
     }
+
+    export function noteToImage(note: number): Image {
+        return null
+    }
+
+    export function musicEditor(
+        note: number,
+        picker: Picker,
+        onHide: () => void,
+        onDelete?: () => void
+    ) {}
 }

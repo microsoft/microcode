@@ -66,6 +66,7 @@ namespace microcode {
     export const TID_MODIFIER_ICON_EDITOR = "M15"
     export const TID_MODIFIER_COLOR_RED = "M16"
     export const TID_MODIFIER_COLOR_DARKPURPLE = "M17"
+    export const TID_MODIFIER_MUSIC_EDITOR = "M18"
 
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
@@ -303,4 +304,46 @@ namespace microcode {
     }
 
     tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = new IconEditor()
+
+    const musicFieldEditor: FieldEditor = {
+        init: 0,
+        clone: (note: number) => note,
+        editor: musicEditor,
+        image: noteToImage,
+        serialize: (note: number) => note.toString(),
+        deserialize: (note: string) => {
+            return 0
+        },
+    }
+
+    class MusicEditor extends ModifierDefn {
+        field: number
+        constructor(field: number = 0) {
+            super(TID_MODIFIER_MUSIC_EDITOR, "music editor", "music_editor", 10)
+            this.fieldEditor = musicFieldEditor
+            if (field) this.field = field
+            else this.field = iconFieldEditor.clone(iconFieldEditor.init)
+        }
+
+        getField() {
+            return this.field
+        }
+
+        getIcon(): Image {
+            return this.fieldEditor.image(this.field)
+        }
+
+        getNewInstance(field: number) {
+            const newOne = new MusicEditor(field)
+            return newOne
+        }
+
+        serviceCommandArg() {
+            const buf = Buffer.create(5)
+            // TODO: michal
+            return buf
+        }
+    }
+
+    tilesDB.modifiers[TID_MODIFIER_MUSIC_EDITOR] = new MusicEditor()
 }
