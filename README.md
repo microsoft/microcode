@@ -2,18 +2,17 @@
 
 Microsoft MicroCode is a [MakeCode Arcade](https://arcade.makecode.com/) application that allows the creation, modification, and execution of simple reactive programs for microcontroller-based target devices such as the [BBC micro:bit](https://microbit.org) and [Jacdac brains](https://microsoft.github.io/jacdac-docs/start/brains/). MicroCode has a tile-based language and editor, inspired by [Kodu Game Lab](https://www.kodugamelab.com/), for creating programs using just the 4-way direction pad and A and B buttons supported by [Arcade-compatible devices](https://arcade.makecode.com/hardware/). The language is parameterized by a set of [Jacdac services](https://microsoft.github.io/jacdac-docs/services/) that represent the set of hardware features of the target device (the device to be programmed). The programs are compiled into the bytecode of the Jacdac virtual machine and persisted in the flash memory of the target device.
 
-
 ## Developing
 
 ### Install
 
--  install [Node.js](https://nodejs.org/en/)
+-   install [Node.js](https://nodejs.org/en/)
 -   `npm install -g makecode`
--  clone this repo
+-   clone this repo
 
 ### Build
 
--   in this repo, run `mkc init`
+-   in this repo, run `mkc init` (one time only)
 -   run `mkc serve`
 -   head to http://127.0.0.1:7001 for simulator
 -   run `mkc build -d` to compile and deploy to device
@@ -37,11 +36,17 @@ then commit the generated files.
 
 ### Local files
 
-This little app packs a lot into a small footprint: graphics, UI, editor, compiler, and runtime. [Read more](./codereview.md) about the implemention.
+This little app packs a lot into a small footprint: graphics, UI, editor, compiler, and runtime. [Read more](./codereview.md)...
 
 ### Dependencies
 
-This app is built with [MakeCode Arcade](https://arcade.makecode.com/beta), specifically targeting the NRF MCU of the micro:bit V2 (for now). There are a number of repos containing the C++ of the underlying CODAL runtime.
+This app is built with [MakeCode Arcade](https://arcade.makecode.com/beta), specifically targeting the NRF52833 MCU of the micro:bit V2 (for now). There are a number of repos containing the C++ of the underlying CODAL runtime:
+
+-   https://github.com/microsoft/codal-jacdac: an add-on to CODAL that provides Jacdac runtime, virtual machine, and services representing micro:bit features
+-   https://github.com/microsoft/pxt-arcade: the MakeCode Arcade editor, with support for NFR52833, the MCU of the micro:bit V2, which depends on
+    -   https://github.com/mmoskal/codal-nrf52833-dk: micro:bit device drivers
+    -   https://github.com/lancaster-university/codal-nrf52: CODAL runtime for NRF52 class MCUs
+    -   https://github.com/lancaster-university/codal-core: CODAL runtime
 
 ## Micro:bit features
 
@@ -76,38 +81,9 @@ MicroCode integrates with [Jacdac](https://aka.ms.jacdac) in several ways
 -   the MicroCode program is compiled to the bytecode of the Jacdac virtual machine (JDVM), which can be run on the same micro:bit or exported to other micro:bits
 -   the MicroCode editor recognizes a small set of Jacdac modules, when connected, providing programming tiles for those modules
 
-## Editor
+## Language
 
-## Tile-based Language
-
-Following Kodu, the MicroCode language is defined in terms of pages, where a page has a list of rules,
-and each rule consists of a **When** section and a **Do** section, each with a list of programming
-**tiles**. The **When** section begins with a **sensor** tile, followed optionally by one or more
-**filters** on the sensor. The **Do** section begins with an **actuator**, followed optional by one
-or **modifiers** to the actuator.
-
-### Sensors
-
-A sensor tile can refer to a hardware feature as simple as a button with two states (up, down),
-a thermometer represented by a floating point (or fixed point) value, or an accelerometer with a set
-of possible events. A sensor could also refer to a GPIO pin, a timer, microphone, radio, or other means
-for the program to receive notification of a state change or an event. It is also possible for a sensor to refer to
-an internal program variable, modified by some other part of the user's program (self-notification). Most
-sensors are modelled either by a discrete variable or a continuous variable.
-
-### Filters
-
-Filters follow a sensor and specify conditions under which program execution can proceed to the **Do** section.  
-If no filters are present, each sensor tile has a default filter that determines whether or not execution
-proceeds. For example, if the sensor tile refers to a button, with no following filter, the default filter
-may be that a 'pressed' event for the button was just received. If, on the other hand, a filter following
-the sensor tile for a button specifies the 'down' event, that will take precedence.
-
-Filters may be parameterized based on the kind of sensor (discrete or continuous)
-
-### Actuators
-
-### Modifiers
+The MicroCode language owes much to [Kodu Game Lab](https://www.kodugamelab.com). [Read more](./language.md)...
 
 ## Contributing
 
