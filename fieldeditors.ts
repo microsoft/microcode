@@ -45,14 +45,50 @@ namespace microcode {
         )
     }
 
+    function noteToImageRaw(img: Image, note: number): Image {
+        img.drawImage(icondb.staffEGB, 0, 0)
+        if (note < 5) {
+            img.drawImage(icondb.noteStemUp, 8, 8 - note * 3)
+        } else {
+        }
+        return img
+    }
+
     export function noteToImage(note: number): Image {
-        return null
+        return noteToImageRaw(image.create(16, 16), note)
     }
 
     export function musicEditor(
-        note: number,
+        field: { note: number },
         picker: Picker,
         onHide: () => void,
         onDelete?: () => void
-    ) {}
+    ) {
+        // TODO: centering???
+        let btns: PickerButtonDef[] = []
+        btns.push({ icon: "prev_page" })
+        btns.push({ icon: noteToImageRaw(image.create(16, 16), field.note) })
+        btns.push({ icon: "next_page" })
+        picker.addGroup({ label: "", btns })
+
+        picker.show(
+            {
+                onClick: (iconId: any, button: PickerButton) => {
+                    let icon = button.getIcon()
+                    let noteBtn = picker.groups[0].buttons[1]
+                    if (icon === "prev_page") {
+                        if (field.note > 0) field.note--
+                    } else if (icon === "next_page") {
+                        if (field.note < 7) field.note++
+                    }
+                    noteToImageRaw(noteBtn.getImage(), field.note)
+                    picker.draw()
+                },
+                onHide,
+                onDelete,
+                title: "Note",
+            },
+            false
+        )
+    }
 }

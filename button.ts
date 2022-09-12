@@ -87,6 +87,10 @@ namespace microcode {
             this.buildSprite()
         }
 
+        public getImage() {
+            return this.icon.image
+        }
+
         private buildSprite() {
             if (this.icon) {
                 this.icon.destroy()

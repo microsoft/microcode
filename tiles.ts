@@ -306,19 +306,23 @@ namespace microcode {
     tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = new IconEditor()
 
     const musicFieldEditor: FieldEditor = {
-        init: 0,
-        clone: (note: number) => note,
+        init: { note: 0 },
+        clone: (opts: { note: number }) => {
+            return {
+                note: opts.note,
+            }
+        },
         editor: musicEditor,
         image: noteToImage,
-        serialize: (note: number) => note.toString(),
+        serialize: (opts: { note: number }) => opts.note.toString(),
         deserialize: (note: string) => {
-            return 0
+            return { note: 0 }
         },
     }
 
     class MusicEditor extends ModifierDefn {
         field: number
-        constructor(field: number = 0) {
+        constructor(field: any = null) {
             super(TID_MODIFIER_MUSIC_EDITOR, "music editor", "music_editor", 10)
             this.fieldEditor = musicFieldEditor
             if (field) this.field = field
