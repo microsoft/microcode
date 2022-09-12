@@ -191,7 +191,7 @@ namespace microcode {
     //    "giggle", "happy",   "hello",  "mysterious", "sad",
     //    "slide",  "soaring", "spring", "twinkle",    "yawn",
 
-    const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "note")
+    const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "music_editor")
     buzzer.serviceClassName = "buzzer"
     buzzer.serviceCommand = 0x80
     buzzer.serviceArgFromModifier = (freq: number) => {
@@ -286,8 +286,7 @@ namespace microcode {
         }
 
         getNewInstance(field: any) {
-            const newOne = new IconEditor(field ? field : this.field.clone())
-            return newOne
+            return new IconEditor(field ? field : this.field.clone())
         }
 
         serviceCommandArg() {
@@ -305,28 +304,30 @@ namespace microcode {
 
     tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = new IconEditor()
 
+    export type NoteField = { note: number }
     const musicFieldEditor: FieldEditor = {
         init: { note: 0 },
-        clone: (opts: { note: number }) => {
+        clone: (field: NoteField) => {
             return {
-                note: opts.note,
+                note: field.note,
             }
         },
         editor: musicEditor,
         image: noteToImage,
-        serialize: (opts: { note: number }) => opts.note.toString(),
+        serialize: (field: NoteField) => field.note.toString(),
         deserialize: (note: string) => {
-            return { note: 0 }
+            return { note: 0 } // TODO: convert from string to number
         },
     }
 
     class MusicEditor extends ModifierDefn {
-        field: number
-        constructor(field: any = null) {
+        field: NoteField
+        constructor(note: any = null) {
             super(TID_MODIFIER_MUSIC_EDITOR, "music editor", "music_editor", 10)
             this.fieldEditor = musicFieldEditor
-            if (field) this.field = field
-            else this.field = iconFieldEditor.clone(iconFieldEditor.init)
+            if (note) {
+                this.field = { note }
+            } else this.field = iconFieldEditor.clone(iconFieldEditor.init)
         }
 
         getField() {
@@ -338,8 +339,7 @@ namespace microcode {
         }
 
         getNewInstance(field: number) {
-            const newOne = new MusicEditor(field)
-            return newOne
+            return new MusicEditor(field)
         }
 
         serviceCommandArg() {
