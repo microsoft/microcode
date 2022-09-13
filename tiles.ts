@@ -108,6 +108,12 @@ namespace microcode {
 
     // initialize the database, imperatively!!!
 
+    const terminal = {
+        handling: {
+            terminal: true,
+        },
+    }
+
     const always = new SensorDefn(TID_SENSOR_ALWAYS, "Always", Phase.Pre)
     always.hidden = true
     tilesDB.sensors[TID_SENSOR_ALWAYS] = always
@@ -236,11 +242,6 @@ namespace microcode {
     // TODO add Modifiers with jdParam set to frequencies of notes
     // (do we want different durations as well?)
 
-    const terminal = {
-        handling: {
-            terminal: true,
-        },
-    }
     const make_vals = (name: string, kind: string, start: number) => {
         for (let v = 1; v <= 5; v++) {
             const tid = kind + (start + v - 1)
