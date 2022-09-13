@@ -40,6 +40,8 @@ namespace microcode {
     export const TID_FILTER_VALUE_5 = "F12"
     export const TID_FILTER_TIMESPAN_SHORT = "F13"
     export const TID_FILTER_TIMESPAN_LONG = "F14"
+    export const TID_FILTER_LOUD = "F15"
+    export const TID_FILTER_QUIET = "F16"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -78,6 +80,9 @@ namespace microcode {
     export const TID_MODIFIER_EMOJI_SPRING = "M19spring"
     export const TID_MODIFIER_EMOJI_TWINKLE = "M19twinkle"
     export const TID_MODIFIER_EMOJI_YAWN = "M19yawn"
+
+    export const TID_MODIFIER_LOUD = "M20"
+    export const TID_MODIFIER_QUIET = "M20"
 
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
@@ -171,6 +176,14 @@ namespace microcode {
     }
     tilesDB.sensors[TID_SENSOR_TIMER] = timer
 
+    function addTimespan(tid: string, name: string, ms: number) {
+        const timespan = new FilterDefn(tid, name, "timespan", 10)
+        timespan.jdParam = ms
+        tilesDB.filters[tid] = timespan
+    }
+    addTimespan(TID_FILTER_TIMESPAN_SHORT, "short", 250)
+    addTimespan(TID_FILTER_TIMESPAN_LONG, "long", 1000)
+
     const accel = new SensorDefn(
         TID_SENSOR_ACCELEROMETER,
         "Accelerometer",
@@ -183,13 +196,24 @@ namespace microcode {
     }
     tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
 
-    function addTimespan(tid: string, name: string, ms: number) {
-        const timespan = new FilterDefn(tid, name, "timespan", 10)
-        timespan.jdParam = ms
-        tilesDB.filters[tid] = timespan
+    const microphone = new SensorDefn(
+        TID_SENSOR_MICROPHONE,
+        "Microphone",
+        Phase.Post
+    )
+    microphone.constraints = {
+        allow: {
+            categories: ["sound_event"],
+        },
     }
-    addTimespan(TID_FILTER_TIMESPAN_SHORT, "short", 250)
-    addTimespan(TID_FILTER_TIMESPAN_LONG, "long", 1000)
+    tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
+    function addSoundFilter(tid: string, name: string) {
+        const soundFilter = new FilterDefn(tid, name, "sound_event", 10)
+        soundFilter.constraints = terminal
+        tilesDB.filters[tid] = soundFilter
+    }
+    addSoundFilter(TID_FILTER_LOUD, "loud")
+    addSoundFilter(TID_FILTER_QUIET, "quiet")
 
     function addActuator(tid: string, name: string, allow: string) {
         const actuator = new ActuatorDefn(tid, name)

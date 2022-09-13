@@ -55,6 +55,9 @@ namespace microcode {
             this.reg[TID_FILTER_VALUE_4] = icondb.tile_value_4
             this.reg[TID_FILTER_VALUE_5] = icondb.tile_value_5
 
+            this.reg[TID_FILTER_LOUD] = icondb.loud
+            this.reg[TID_FILTER_QUIET] = icondb.quiet
+
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
             this.reg[TID_ACTUATOR_PAINT] = icondb.paint
             this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
@@ -1269,6 +1272,44 @@ f f f f f f f f f f f f f f f f
 . . . . . . . . . . . 6 8 8 8 .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
+`
+
+    export const loud = img`
+. . . . . . . . . . . . . . . .
+. 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+. 2 f f 2 2 2 2 2 2 f f f 2 2 .
+. 2 f f 2 2 2 2 2 f f 2 f f 2 .
+. 2 f f 2 2 2 2 2 f 2 2 2 f 2 .
+. 2 f f 2 2 2 2 2 f f 2 f f 2 .
+. 2 f f f f 2 2 2 2 f f f 2 2 .
+. 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+. 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+. 2 f f 2 2 f 2 2 f f f f 2 2 .
+. 2 f f 2 2 f 2 2 f f 2 2 f 2 .
+. 2 f f 2 2 f 2 2 f f 2 2 f 2 .
+. 2 f f 2 2 f 2 2 f f 2 2 f 2 .
+. 2 2 f f f 2 2 2 f f f f 2 2 .
+. 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+. . . . . . . . . . . . . . . .
+`
+
+    export const quiet = img`
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+9 9 9 9 1 1 1 9 9 9 9 9 9 9 1 9
+9 9 9 1 1 1 1 1 9 9 1 1 1 9 9 9
+9 9 1 1 1 1 1 1 9 9 9 1 1 1 9 9
+9 9 9 9 1 1 9 9 9 9 9 9 1 1 1 9
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+9 9 9 9 9 9 9 1 1 1 1 9 9 9 9 9
+9 9 9 9 9 9 9 9 1 1 1 9 9 9 9 9
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9
+9 9 9 7 7 7 7 7 7 9 9 9 9 9 9 9
+7 7 7 7 7 7 7 7 7 7 7 9 9 9 7 7
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
 `
 
     /* maybe use these later
