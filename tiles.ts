@@ -81,9 +81,6 @@ namespace microcode {
     export const TID_MODIFIER_EMOJI_TWINKLE = "M19twinkle"
     export const TID_MODIFIER_EMOJI_YAWN = "M19yawn"
 
-    export const TID_MODIFIER_LOUD = "M20"
-    export const TID_MODIFIER_QUIET = "M20"
-
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
         TID_MODIFIER_PAGE_2,
@@ -233,7 +230,6 @@ namespace microcode {
     paint.serviceInstanceIndex = 0
 
     addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
-    addActuator(TID_ACTUATOR_MICROPHONE, "Microphone", "on_off")
 
     const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "sound_emoji")
     emoji.serviceClassName = "soundPlayer"
