@@ -68,16 +68,16 @@ namespace microcode {
     export const TID_MODIFIER_COLOR_DARKPURPLE = "M17"
     export const TID_MODIFIER_MUSIC_EDITOR = "M18"
 
-    export const TID_MODIFIER_EMOJI_GIGGLE = "giggle"
-    export const TID_MODIFIER_EMOJI_HAPPY = "happy"
-    export const TID_MODIFIER_EMOJI_HELLO = "hello"
-    export const TID_MODIFIER_EMOJI_MYSTERIOUS = "mysterious"
-    export const TID_MODIFIER_EMOJI_SAD = "sad"
-    export const TID_MODIFIER_EMOJI_SLIDE = "slide"
-    export const TID_MODIFIER_EMOJI_SOARING = "soaring"
-    export const TID_MODIFIER_EMOJI_SPRING = "spring"
-    export const TID_MODIFIER_EMOJI_TWINKLE = "twinkle"
-    export const TID_MODIFIER_EMOJI_YAWN = "yawn"
+    export const TID_MODIFIER_EMOJI_GIGGLE = "M19giggle"
+    export const TID_MODIFIER_EMOJI_HAPPY = "M19happy"
+    export const TID_MODIFIER_EMOJI_HELLO = "M19hello"
+    export const TID_MODIFIER_EMOJI_MYSTERIOUS = "M19mysterious"
+    export const TID_MODIFIER_EMOJI_SAD = "M19sad"
+    export const TID_MODIFIER_EMOJI_SLIDE = "M19slide"
+    export const TID_MODIFIER_EMOJI_SOARING = "M19soaring"
+    export const TID_MODIFIER_EMOJI_SPRING = "M19spring"
+    export const TID_MODIFIER_EMOJI_TWINKLE = "M19twinkle"
+    export const TID_MODIFIER_EMOJI_YAWN = "M19yawn"
 
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
@@ -193,7 +193,7 @@ namespace microcode {
     addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
     addActuator(TID_ACTUATOR_MICROPHONE, "Microphone", "on_off")
 
-    const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "soundemoji")
+    const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "sound_emoji")
     emoji.serviceClassName = "soundPlayer"
     emoji.serviceCommand = 0x80
     emoji.serviceArgFromModifier = (x: string) => x || "hello"
@@ -211,9 +211,11 @@ namespace microcode {
         "yawn",
     ]
     emojis.forEach(e => {
-        const emoji_mod = new ModifierDefn(e, e, "soundemoji", 10)
+        const tid = "M19" + e
+        const emoji_mod = new ModifierDefn(tid, e, "sound_emoji", 10)
         emoji_mod.constraints = terminal
-        tilesDB.modifiers[e] = emoji_mod
+        emoji_mod.jdParam = e
+        tilesDB.modifiers[tid] = emoji_mod
     })
 
     // TODO add Modifiers with jdParam set to:
