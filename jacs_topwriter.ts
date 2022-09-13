@@ -95,7 +95,7 @@ namespace jacs {
 
     export class TopWriter implements TopOpWriter {
         private floatLiterals: number[] = []
-        private stringLiterals: string[] = []
+        private stringLiterals: (string | Buffer)[] = []
 
         writer: OpWriter
         proc: Procedure
@@ -106,6 +106,7 @@ namespace jacs {
         roles: Role[] = []
         currPage: Variable
         currAnimation: Variable
+        currMelody: Variable
         currRuleId = 0
         currPageId = 0
         pageProcs: Procedure[] = []
@@ -115,13 +116,20 @@ namespace jacs {
         constructor() {}
 
         addString(str: string | Buffer) {
-            if (typeof str != "string") {
-                let tmp = ""
-                for (let i = 0; i < str.length; ++i)
-                    tmp += String.fromCharCode(str[i])
-                str = tmp
+            if (typeof str == "string") {
+                for (let i = 0; i < this.stringLiterals.length; ++i)
+                    if (str == this.stringLiterals[i]) return i
+            } else {
+                for (let i = 0; i < this.stringLiterals.length; ++i)
+                    if (
+                        typeof this.stringLiterals[i] != "string" &&
+                        str.equals(this.stringLiterals[i] as Buffer)
+                    )
+                        return i
             }
-            return addUnique(this.stringLiterals, str)
+
+            this.stringLiterals.push(str)
+            return this.stringLiterals.length - 1
         }
 
         addFloat(f: number): number {
@@ -218,11 +226,19 @@ namespace jacs {
             }
             */
 
-            const descs = this.stringLiterals.map(str => {
-                const buf = Buffer.fromUTF8(str + "\u0000")
+            const descs = this.stringLiterals.map((str, idx) => {
+                let buf: Buffer
+                let len: number
+                if (typeof str == "string") {
+                    buf = Buffer.fromUTF8(str + "\u0000")
+                    len = buf.length - 1
+                } else {
+                    buf = str as Buffer
+                    len = buf.length
+                }
                 const desc = Buffer.create(8)
                 write32(desc, 0, strData.currSize) // initially use offsets in strData section
-                write32(desc, 4, buf.length - 1)
+                write32(desc, 4, len)
                 strData.append(buf)
                 strDesc.append(desc)
                 return desc
@@ -296,7 +312,9 @@ namespace jacs {
             }
             let idx = 0
             for (const s of this.stringLiterals) {
-                console.log(idx + ": " + JSON.stringify(s))
+                if (typeof s == "string")
+                    console.log(idx + ": " + JSON.stringify(s))
+                else console.log(idx + ": " + (s as Buffer).toHex())
                 idx++
             }
         }
@@ -373,7 +391,13 @@ namespace jacs {
 
         lookupEventCode(role: Role, rule: microcode.RuleDefn) {
             const sensor = rule.sensors.length ? rule.sensors[0] : null
-            if (sensor && sensor.eventCode != undefined) return sensor.eventCode
+            if (sensor && sensor.eventCode != undefined) {
+                let evCode = sensor.eventCode
+                for (const m of rule.filters) {
+                    if (m.eventCode !== undefined) evCode = m.eventCode
+                }
+                return evCode
+            }
             return null
         }
 
@@ -390,36 +414,49 @@ namespace jacs {
             ])
         }
 
-        private emitRoleCommand(rule: microcode.RuleDefn) {
-            const actuator = rule.actuators.length ? rule.actuators[0] : null
+        private emitSequance(
+            rule: microcode.RuleDefn,
+            lockvar: Variable,
+            delay: number
+        ) {
+            const actuator = rule.actuators[0]
             const wr = this.writer
-            if (actuator == null) return // do nothing
-            if (actuator.tid == microcode.TID_ACTUATOR_PAINT) {
-                const params = rule.modifiers
-                    .map(m => m.serviceCommandArg())
-                    .filter(a => !!a)
-                if (params.length == 0) params.push(Buffer.create(5))
-                this.currAnimation.write(wr, literal(this.currRuleId))
-                for (let i = 0; i < params.length; ++i) {
-                    const role = this.lookupActuatorRole(rule)
-                    this.emitLoadBuffer(params[i])
-                    wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
-                        literal(role.index),
-                        literal(actuator.serviceCommand),
-                    ])
-                    if (i != params.length - 1) {
-                        wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(400)])
+            const params = rule.modifiers
+                .map(m => m.serviceCommandArg())
+                .filter(a => !!a)
+            if (params.length == 0) params.push(Buffer.create(6))
+            if (lockvar) lockvar.write(wr, literal(this.currRuleId))
+            for (let i = 0; i < params.length; ++i) {
+                const role = this.lookupActuatorRole(rule)
+                this.emitLoadBuffer(params[i])
+                wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
+                    literal(role.index),
+                    literal(actuator.serviceCommand),
+                ])
+                if (i != params.length - 1) {
+                    wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(delay)])
+                    if (lockvar)
                         wr.emitIf(
                             wr.emitExpr(OpExpr.EXPR2_NE, [
-                                this.currAnimation.read(wr),
+                                lockvar.read(wr),
                                 literal(this.currRuleId),
                             ]),
                             () => {
                                 wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
                             }
                         )
-                    }
                 }
+            }
+        }
+
+        private emitRoleCommand(rule: microcode.RuleDefn) {
+            const actuator = rule.actuators.length ? rule.actuators[0] : null
+            const wr = this.writer
+            if (actuator == null) return // do nothing
+            if (actuator.tid == microcode.TID_ACTUATOR_PAINT) {
+                this.emitSequance(rule, this.currAnimation, 400)
+            } else if (actuator.tid == microcode.TID_ACTUATOR_MUSIC) {
+                this.emitSequance(rule, this.currMelody, 400)
             } else if (actuator.tid == microcode.TID_ACTUATOR_SWITCH_PAGE) {
                 let targetPage = 1
                 for (const m of rule.modifiers)
@@ -521,6 +558,10 @@ namespace jacs {
             }
 
             const role = this.lookupSensorRole(rule)
+            if (!role) {
+                console.log("TID:" + rule.sensors[0].tid)
+                return
+            }
             name += "_" + role.name
 
             this.withProcedure(role.getDispatcher(), wr => {
@@ -557,10 +598,9 @@ namespace jacs {
         }
 
         emitProgram(prog: microcode.ProgramDefn) {
-            jdc.start() // TODO move
-
             this.currPage = this.addGlobal("page")
             this.currAnimation = this.addGlobal("anim")
+            this.currMelody = this.addGlobal("melody")
 
             this.pageStartCondition = this.addRole(
                 "pageStart",

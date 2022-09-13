@@ -203,14 +203,17 @@ namespace microcode {
             categories: ["sound_event"],
         },
     }
+    microphone.serviceClassName = "soundLevel"
+    microphone.eventCode = 1 // laud by default
     tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
-    function addSoundFilter(tid: string, name: string) {
+    function addSoundFilter(tid: string, name: string, eventCode: number) {
         const soundFilter = new FilterDefn(tid, name, "sound_event", 10)
         soundFilter.constraints = terminal
         tilesDB.filters[tid] = soundFilter
+        soundFilter.eventCode = eventCode
     }
-    addSoundFilter(TID_FILTER_LOUD, "loud")
-    addSoundFilter(TID_FILTER_QUIET, "quiet")
+    addSoundFilter(TID_FILTER_LOUD, "loud", 1)
+    addSoundFilter(TID_FILTER_QUIET, "quiet", 2)
 
     function addActuator(tid: string, name: string, allow: string) {
         const actuator = new ActuatorDefn(tid, name)
@@ -256,23 +259,9 @@ namespace microcode {
         tilesDB.modifiers[tid] = emoji_mod
     })
 
-    // TODO add Modifiers with jdParam set to:
-
     const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "music_editor")
     buzzer.serviceClassName = "buzzer"
     buzzer.serviceCommand = 0x80
-    buzzer.serviceArgFromModifier = (freq: number) => {
-        if (!freq) freq = 440
-        const r = Buffer.create(6)
-        const period = Math.idiv(1000000, freq)
-        r.setNumber(NumberFormat.UInt16LE, 0, period)
-        r.setNumber(NumberFormat.UInt16LE, 2, period >> 1)
-        r.setNumber(NumberFormat.UInt16LE, 4, 400) // ms
-        return r
-    }
-
-    // TODO add Modifiers with jdParam set to frequencies of notes
-    // (do we want different durations as well?)
 
     const make_vals = (name: string, kind: string, start: number) => {
         for (let v = 1; v <= 5; v++) {
@@ -284,7 +273,7 @@ namespace microcode {
             tile.jdParam = v
             tile.constraints = terminal
             if (kind == "M") tilesDB.modifiers[tid] = tile
-            else tilesDB.filters[tid] = tile
+            else tilesDB.filters[tid] = tile as FilterDefn
         }
     }
     make_vals("page", "M", 1)
@@ -409,9 +398,16 @@ namespace microcode {
         }
 
         serviceCommandArg() {
-            const buf = Buffer.create(5)
-            // TODO: michal
-            return buf
+            // generated with scripts/notes.js:
+            const periodMap = hex`ee0e4d0dda0b2f0bf709e108e9077707a706ed059805fc047004f403bc03`
+            const note = Math.clamp(0, this.field.note, 15)
+            const period = periodMap.getNumber(NumberFormat.UInt16LE, note << 1)
+
+            const r = Buffer.create(6)
+            r.setNumber(NumberFormat.UInt16LE, 0, period)
+            r.setNumber(NumberFormat.UInt16LE, 2, period >> 1)
+            r.setNumber(NumberFormat.UInt16LE, 4, 400) // ms
+            return r
         }
     }
 

@@ -120,7 +120,7 @@ namespace microcode {
     export class SensorDefn extends TileDefn {
         public serviceClassName: string
         public eventCode: number
-        public serviceInstanceIndex: number
+        public serviceInstanceIndex: number = 0
 
         constructor(tid: string, name: string, public phase: Phase) {
             super(TileType.SENSOR, tid, name)
@@ -162,6 +162,7 @@ namespace microcode {
     }
 
     export class FilterDefn extends FilterModifierBase {
+        eventCode: number
         constructor(
             tid: string,
             name: string,
