@@ -322,12 +322,14 @@ namespace microcode {
 
     class MusicEditor extends ModifierDefn {
         field: NoteField
-        constructor(note: any = null) {
+        constructor(field: NoteField = null) {
             super(TID_MODIFIER_MUSIC_EDITOR, "music editor", "music_editor", 10)
             this.fieldEditor = musicFieldEditor
-            if (note) {
-                this.field = { note }
-            } else this.field = iconFieldEditor.clone(iconFieldEditor.init)
+            if (field) {
+                this.field = { note: field.note }
+            } else {
+                this.field = iconFieldEditor.clone(iconFieldEditor.init)
+            }
         }
 
         getField() {
@@ -338,8 +340,10 @@ namespace microcode {
             return this.fieldEditor.image(this.field)
         }
 
-        getNewInstance(field: number) {
-            return new MusicEditor(field)
+        getNewInstance(field: NoteField) {
+            return new MusicEditor({
+                note: field ? field.note : this.field.note,
+            })
         }
 
         serviceCommandArg() {

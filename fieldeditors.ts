@@ -54,12 +54,12 @@ namespace microcode {
         return img
     }
 
-    export function noteToImage(note: number): Image {
-        return noteToImageRaw(image.create(16, 16), note)
+    export function noteToImage(field: NoteField): Image {
+        return noteToImageRaw(image.create(16, 16), field.note)
     }
 
     export function musicEditor(
-        field: { note: number },
+        field: NoteField,
         picker: Picker,
         onHide: () => void,
         onDelete?: () => void
