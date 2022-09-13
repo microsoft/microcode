@@ -39,6 +39,7 @@ namespace microcode {
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
             this.reg[TID_SENSOR_PRESS] = icondb.finger_press
             this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
+            this.reg[TID_SENSOR_ACCELEROMETER] = icondb.accelerometer
 
             this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
             this.reg[TID_FILTER_PIN_0] = icondb.tile_pin_0
@@ -1249,6 +1250,25 @@ f f f f f f f f f f f f f f f f
 . 8 . . .
 . 8 . . .
 . 8 . . .
+`
+
+    export const accelerometer = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . 8 . . . . . . .
+. . . . . . . 8 8 8 . . . . . .
+. . . . . . 8 8 8 8 8 . . . . .
+. . . . . . 6 6 8 6 6 . . . . .
+. . . . . . . . 8 . . . . . . .
+. . 8 6 . . f f f f f . . . . .
+. 8 8 6 . f . . . . . f . . . .
+8 8 8 8 8 f . f . f . f . . . .
+. 8 8 6 . f . . . . . f . . . .
+. . 8 6 . . f f f f f 8 . . 6 .
+. . . . . . . . . . . . 8 6 8 .
+. . . . . . . . . . . . 6 8 8 .
+. . . . . . . . . . . 6 8 8 8 .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
 `
 
     /* maybe use these later

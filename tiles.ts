@@ -171,6 +171,18 @@ namespace microcode {
     }
     tilesDB.sensors[TID_SENSOR_TIMER] = timer
 
+    const accel = new SensorDefn(
+        TID_SENSOR_ACCELEROMETER,
+        "Accelerometer",
+        Phase.Post
+    )
+    accel.constraints = {
+        allow: {
+            categories: ["accel_event"],
+        },
+    }
+    tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
+
     function addTimespan(tid: string, name: string, ms: number) {
         const timespan = new FilterDefn(tid, name, "timespan", 10)
         timespan.jdParam = ms
