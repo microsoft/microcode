@@ -274,7 +274,7 @@ namespace microcode {
             super(TID_MODIFIER_ICON_EDITOR, "icon editor", "icon_editor", 10)
             this.fieldEditor = iconFieldEditor
             if (field) this.field = field
-            else this.field = iconFieldEditor.clone(iconFieldEditor.init)
+            else this.field = this.fieldEditor.clone(this.fieldEditor.init)
         }
 
         getField() {
@@ -316,7 +316,7 @@ namespace microcode {
         toImage: noteToImage,
         serialize: (field: NoteField) => field.note.toString(),
         deserialize: (note: string) => {
-            return { note: 0 } // TODO: convert from string to number
+            return { note: parseInt(note) }
         },
     }
 
@@ -328,7 +328,7 @@ namespace microcode {
             if (field) {
                 this.field = { note: field.note }
             } else {
-                this.field = musicFieldEditor.clone(musicFieldEditor.init)
+                this.field = this.fieldEditor.clone(this.fieldEditor.init)
             }
         }
 
