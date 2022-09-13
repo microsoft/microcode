@@ -66,6 +66,7 @@ namespace microcode {
     export const TID_MODIFIER_ICON_EDITOR = "M15"
     export const TID_MODIFIER_COLOR_RED = "M16"
     export const TID_MODIFIER_COLOR_DARKPURPLE = "M17"
+    export const TID_MODIFIER_MUSIC_EDITOR = "M18"
 
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
@@ -190,7 +191,7 @@ namespace microcode {
     //    "giggle", "happy",   "hello",  "mysterious", "sad",
     //    "slide",  "soaring", "spring", "twinkle",    "yawn",
 
-    const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "note")
+    const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "music_editor")
     buzzer.serviceClassName = "buzzer"
     buzzer.serviceCommand = 0x80
     buzzer.serviceArgFromModifier = (freq: number) => {
@@ -246,7 +247,7 @@ namespace microcode {
         `,
         clone: (img: Image) => img.clone(),
         editor: iconEditor,
-        image: scaleUp,
+        toImage: scaleUp,
         serialize: (img: Image) => {
             const ret: string[] = []
             for (let index = 0; index < 25; index++) {
@@ -281,12 +282,11 @@ namespace microcode {
         }
 
         getIcon(): Image {
-            return this.fieldEditor.image(this.field)
+            return this.fieldEditor.toImage(this.field)
         }
 
         getNewInstance(field: any) {
-            const newOne = new IconEditor(field ? field : this.field.clone())
-            return newOne
+            return new IconEditor(field ? field : this.field.clone())
         }
 
         serviceCommandArg() {
@@ -303,4 +303,55 @@ namespace microcode {
     }
 
     tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = new IconEditor()
+
+    export type NoteField = { note: number }
+    const musicFieldEditor: FieldEditor = {
+        init: { note: 0 },
+        clone: (field: NoteField) => {
+            return {
+                note: field.note,
+            }
+        },
+        editor: musicEditor,
+        toImage: noteToImage,
+        serialize: (field: NoteField) => field.note.toString(),
+        deserialize: (note: string) => {
+            return { note: 0 } // TODO: convert from string to number
+        },
+    }
+
+    class MusicEditor extends ModifierDefn {
+        field: NoteField
+        constructor(field: NoteField = null) {
+            super(TID_MODIFIER_MUSIC_EDITOR, "music editor", "music_editor", 10)
+            this.fieldEditor = musicFieldEditor
+            if (field) {
+                this.field = { note: field.note }
+            } else {
+                this.field = musicFieldEditor.clone(musicFieldEditor.init)
+            }
+        }
+
+        getField() {
+            return this.field
+        }
+
+        getIcon(): Image {
+            return this.fieldEditor.toImage(this.field)
+        }
+
+        getNewInstance(field: NoteField) {
+            return new MusicEditor({
+                note: field ? field.note : this.field.note,
+            })
+        }
+
+        serviceCommandArg() {
+            const buf = Buffer.create(5)
+            // TODO: michal
+            return buf
+        }
+    }
+
+    tilesDB.modifiers[TID_MODIFIER_MUSIC_EDITOR] = new MusicEditor()
 }

@@ -1,6 +1,6 @@
 namespace microcode {
     export type PickerButtonDef = {
-        icon: string
+        icon: string | Image
         label?: string
     }
 
@@ -13,7 +13,8 @@ namespace microcode {
                 label: btn.label,
                 x: 0,
                 y: 0,
-                onClick: () => this.picker.onButtonClicked(this, btn.icon),
+                onClick: () =>
+                    this.picker.onButtonClicked(this, <string>btn.icon),
             })
         }
     }
