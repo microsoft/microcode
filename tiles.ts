@@ -247,7 +247,7 @@ namespace microcode {
         `,
         clone: (img: Image) => img.clone(),
         editor: iconEditor,
-        image: scaleUp,
+        toImage: scaleUp,
         serialize: (img: Image) => {
             const ret: string[] = []
             for (let index = 0; index < 25; index++) {
@@ -282,7 +282,7 @@ namespace microcode {
         }
 
         getIcon(): Image {
-            return this.fieldEditor.image(this.field)
+            return this.fieldEditor.toImage(this.field)
         }
 
         getNewInstance(field: any) {
@@ -313,7 +313,7 @@ namespace microcode {
             }
         },
         editor: musicEditor,
-        image: noteToImage,
+        toImage: noteToImage,
         serialize: (field: NoteField) => field.note.toString(),
         deserialize: (note: string) => {
             return { note: 0 } // TODO: convert from string to number
@@ -328,7 +328,7 @@ namespace microcode {
             if (field) {
                 this.field = { note: field.note }
             } else {
-                this.field = iconFieldEditor.clone(iconFieldEditor.init)
+                this.field = musicFieldEditor.clone(musicFieldEditor.init)
             }
         }
 
@@ -337,7 +337,7 @@ namespace microcode {
         }
 
         getIcon(): Image {
-            return this.fieldEditor.image(this.field)
+            return this.fieldEditor.toImage(this.field)
         }
 
         getNewInstance(field: NoteField) {

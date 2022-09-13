@@ -30,7 +30,7 @@ namespace microcode {
             onHide?: () => void,
             onDelete?: () => void
         ) => void // use picker to update field
-        image: (field: any) => Image // produce an image for the field for tile
+        toImage: (field: any) => Image // produce an image for the field for tile
         serialize: (field: any) => string
         deserialize: (s: string) => any
     }
