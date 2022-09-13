@@ -23,6 +23,18 @@ To load the local editor in a Jacdac devtools page,
 
 https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1#http://127.0.0.1:7001
 
+### Creating artwork
+
+If you want to create/edit new sprites, you should import this web site into https://arcade.makecode.com, using the following directions:
+
+-   create 16 x 16 sprite in assets.ts (contains all the artwork for MicroCode)
+-   copy the code from the JavaScript view of https://arcade.makecode.com
+-   paste code into assets.ts into VS Code
+-   make sure it works locally
+-   git commit and push
+
+You might also be able to commit and push directly from the web site, but we find that this isn't very reliable.
+
 ### Updating GitHub pages
 
 To bump and refresh the github pages javascript,
