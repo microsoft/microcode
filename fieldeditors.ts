@@ -48,12 +48,12 @@ namespace microcode {
     function noteToImageRaw(img: Image, note: number): Image {
         img.fill(0)
         img.drawImage(icondb.staffEGB, 0, 0)
-        if (note < 4) {
+        if (note < 5) {
             if (note === 0) img.drawLine(4, 14, 12, 14, 15)
-            img.drawTransparentImage(icondb.noteStemUp, 6, 8 - note * 2)
+            img.drawTransparentImage(icondb.noteStemUp, 6, 8 - note)
         } else {
             // TODO: special case for top note
-            img.drawTransparentImage(icondb.noteStemDown, 6, 13 - note * 2)
+            img.drawTransparentImage(icondb.noteStemDown, 6, 11 - note)
         }
         return img
     }

@@ -1212,23 +1212,24 @@ namespace icondb {
 `
 
     export const staffEGB = img`
+f f f f f f f f f f f f f f f f
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 f f f f f f f f f f f f f f f f
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
+f f f f f f f f f f f f f f f f
+. . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 f f f f f f f f f f f f f f f f
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
 f f f f f f f f f f f f f f f f
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
+
     export const noteStemUp = img`
 . . . . 8
 . . . . 8
