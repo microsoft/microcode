@@ -68,6 +68,17 @@ namespace microcode {
     export const TID_MODIFIER_COLOR_DARKPURPLE = "M17"
     export const TID_MODIFIER_MUSIC_EDITOR = "M18"
 
+    export const TID_MODIFIER_EMOJI_GIGGLE = "giggle"
+    export const TID_MODIFIER_EMOJI_HAPPY = "happy"
+    export const TID_MODIFIER_EMOJI_HELLO = "hello"
+    export const TID_MODIFIER_EMOJI_MYSTERIOUS = "mysterious"
+    export const TID_MODIFIER_EMOJI_SAD = "sad"
+    export const TID_MODIFIER_EMOJI_SLIDE = "slide"
+    export const TID_MODIFIER_EMOJI_SOARING = "soaring"
+    export const TID_MODIFIER_EMOJI_SPRING = "spring"
+    export const TID_MODIFIER_EMOJI_TWINKLE = "twinkle"
+    export const TID_MODIFIER_EMOJI_YAWN = "yawn"
+
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
         TID_MODIFIER_PAGE_2,
@@ -187,9 +198,25 @@ namespace microcode {
     emoji.serviceCommand = 0x80
     emoji.serviceArgFromModifier = (x: string) => x || "hello"
 
+    const emojis = [
+        "giggle",
+        "happy",
+        "hello",
+        "mysterious",
+        "sad",
+        "slide",
+        "soaring",
+        "spring",
+        "twinkle",
+        "yawn",
+    ]
+    emojis.forEach(e => {
+        const emoji_mod = new ModifierDefn(e, e, "soundemoji", 10)
+        emoji_mod.constraints = terminal
+        tilesDB.modifiers[e] = emoji_mod
+    })
+
     // TODO add Modifiers with jdParam set to:
-    //    "giggle", "happy",   "hello",  "mysterious", "sad",
-    //    "slide",  "soaring", "spring", "twinkle",    "yawn",
 
     const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "music_editor")
     buzzer.serviceClassName = "buzzer"

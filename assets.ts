@@ -76,6 +76,17 @@ namespace microcode {
             this.reg[TID_MODIFIER_ON] = icondb.tile_on
             this.reg[TID_MODIFIER_OFF] = icondb.tile_off
 
+            this.reg[TID_MODIFIER_EMOJI_GIGGLE] = icondb.tile_page_1
+            this.reg[TID_MODIFIER_EMOJI_HAPPY] = icondb.tile_page_2
+            this.reg[TID_MODIFIER_EMOJI_HELLO] = icondb.tile_page_3
+            this.reg[TID_MODIFIER_EMOJI_MYSTERIOUS] = icondb.tile_page_4
+            this.reg[TID_MODIFIER_EMOJI_SAD] = icondb.tile_page_5
+            this.reg[TID_MODIFIER_EMOJI_SLIDE] = icondb.tile_value_1
+            this.reg[TID_MODIFIER_EMOJI_SOARING] = icondb.tile_value_2
+            this.reg[TID_MODIFIER_EMOJI_SPRING] = icondb.tile_value_3
+            this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.tile_value_4
+            this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.tile_value_5
+
             // for icon editor
             this.reg[TID_MODIFIER_COLOR_RED] = icondb.tile_red
             this.reg[TID_MODIFIER_COLOR_DARKPURPLE] = icondb.tile_darkpurple
