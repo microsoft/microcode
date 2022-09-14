@@ -40,9 +40,12 @@ namespace microcode {
             public type: TileType,
             public tid: string,
             public name: string
-        ) {}
+        ) {
+            this.priority = 0
+        }
 
         hidden: boolean // Hide from UI?
+        priority: number
         constraints: Constraints
         fieldEditor: FieldEditor
         jdParam: any
@@ -409,6 +412,7 @@ namespace microcode {
             const all = Object.keys(tilesDB[name])
                 .map(id => tilesDB[name][id])
                 .filter((tile: TileDefn) => !tile.hidden)
+                .sort((t1, t2) => t1.priority - t2.priority)
 
             if (name === "sensors" || name === "actuators") return all
 

@@ -226,7 +226,8 @@ namespace microcode {
         return actuator
     }
 
-    addActuator(TID_ACTUATOR_SWITCH_PAGE, "Switch page", "page")
+    const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, "Switch page", "page")
+    swtch.priority = 100
     const paint = addActuator(TID_ACTUATOR_PAINT, "Paint", "icon_editor")
     paint.serviceClassName = "dotMatrix"
     paint.serviceCommand = jacs.CMD_SET_REG | 0x2
