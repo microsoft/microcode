@@ -49,15 +49,12 @@ namespace microcode {
         constraints: Constraints
         fieldEditor: FieldEditor
         jdParam: any
-        iconOverride: Image | string
-
+        
         getField(): any {
             return undefined
         }
 
         getIcon(): string | Image {
-            if (this.iconOverride)
-                return this.iconOverride
             return this.tid
         }
 
