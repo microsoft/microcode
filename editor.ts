@@ -85,7 +85,7 @@ namespace microcode {
                 onClick: iconId => {
                     const index = PAGE_IDS.indexOf(iconId)
                     this.switchToPage(index)
-                }
+                },
             })
         }
 
