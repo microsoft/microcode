@@ -40,7 +40,9 @@ namespace microcode {
             public type: TileType,
             public tid: string,
             public name: string
-        ) {}
+        ) {
+            this.priority = 0
+        }
 
         priority: number
         hidden: boolean // Hide from UI?
