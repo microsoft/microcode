@@ -159,7 +159,7 @@ namespace jacs {
         ret: Label
         private lineNo = -1
         private lineNoStart = -1
-        desc = Buffer.create(BinFmt.FunctionHeaderSize)
+        desc = Buffer.create(BinFmt.FUNCTION_HEADER_SIZE)
         offsetInFuncs = -1
         private maxRegs = 0
         srcmap: number[] = []
@@ -480,7 +480,7 @@ namespace jacs {
         }
 
         emitExpr(op: OpExpr, args: Value[]) {
-            const n = exprNumArgs[op as number]
+            const n = EXPR_PROPS.charCodeAt(op as number) & 0xf
             if (n != args.length)
                 oops(`expr ${op} requires ${n}; got ${args.length}`)
 
@@ -591,7 +591,7 @@ namespace jacs {
         }
 
         emitStmt(op: OpStmt, args: Value[]) {
-            const n = stmtNumArgs[op as number]
+            const n = STMT_PROPS.charCodeAt(op as number) & 0xf
             if (n != args.length)
                 oops(`stmt ${op} requires ${n}; got ${args.length}`)
             for (const a of args) a.adopt()
@@ -610,7 +610,7 @@ namespace jacs {
         offset = -1
         currSize = 0
         data: Buffer[] = []
-        desc = Buffer.create(BinFmt.SectionHeaderSize)
+        desc = Buffer.create(BinFmt.SECTION_HEADER_SIZE)
 
         constructor(public size?: number) {
             if (this.size == null) this.size = -1

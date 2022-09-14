@@ -65,7 +65,7 @@ namespace jacs {
         }
 
         serialize() {
-            const r = Buffer.create(BinFmt.RoleHeaderSize)
+            const r = Buffer.create(BinFmt.ROLE_HEADER_SIZE)
             write32(r, 0, this.classIdentifier)
             write16(r, 4, this.stringIndex)
             return r
@@ -136,37 +136,39 @@ namespace jacs {
             return addUnique(this.floatLiterals, f)
         }
 
-        describeCell(t: CellKind, idx: number): string {
-            switch (t) {
-                case CellKind.FLOAT_CONST:
+        describeCell(ff: string, idx: number): string {
+            switch (ff) {
+                case "R":
+                    return this.roles[idx] ? this.roles[idx].name : ""
+                case "S":
+                    return this.describeString(idx)
+                case "P":
+                    return "" // param
+                case "L":
+                    return "" // local
+                case "G":
+                    return this.globals[idx] ? this.globals[idx].name : ""
+                case "D":
                     return this.floatLiterals[idx] + ""
-                case CellKind.GLOBAL:
-                    return this.globals[idx].name
+                case "F":
+                    return this.procs[idx] ? this.procs[idx].name : ""
                 default:
-                    return undefined
+                    return ""
             }
-        }
-        funName(idx: number): string {
-            const p = this.procs[idx]
-            return p ? p.name : undefined
-        }
-        roleName(idx: number): string {
-            const r = this.roles[idx]
-            return r ? r.name : undefined
         }
 
         private serialize() {
-            const fixHeader = new SectionWriter(BinFmt.FixHeaderSize)
+            const fixHeader = new SectionWriter(BinFmt.FIX_HEADER_SIZE)
             const sectDescs = new SectionWriter()
             const sections: SectionWriter[] = [fixHeader, sectDescs]
 
-            const hd = Buffer.create(BinFmt.FixHeaderSize)
+            const hd = Buffer.create(BinFmt.FIX_HEADER_SIZE)
             hd.write(
                 0,
                 Buffer.pack("IIIH", [
-                    BinFmt.Magic0,
-                    BinFmt.Magic1,
-                    BinFmt.ImgVersion,
+                    BinFmt.MAGIC0,
+                    BinFmt.MAGIC1,
+                    BinFmt.IMG_VERSION,
                     this.globals.length,
                 ])
             )
@@ -194,7 +196,7 @@ namespace jacs {
                 sections.push(s)
             }
 
-            funDesc.size = BinFmt.FunctionHeaderSize * this.procs.length
+            funDesc.size = BinFmt.FUNCTION_HEADER_SIZE * this.procs.length
 
             for (const proc of this.procs) {
                 funDesc.append(proc.writer.desc)
@@ -250,7 +252,7 @@ namespace jacs {
                 s.finalize(off)
                 off += s.size
             }
-            const mask = BinFmt.BinarySizeAlign - 1
+            const mask = BinFmt.BINARY_SIZE_ALIGN - 1
             off = (off + mask) & ~mask
             const outp = Buffer.create(off)
 
@@ -276,7 +278,7 @@ namespace jacs {
             }
 
             const left = outp.length - off
-            assert(0 <= left && left < BinFmt.BinarySizeAlign)
+            assert(0 <= left && left < BinFmt.BINARY_SIZE_ALIGN)
 
             return outp
         }
@@ -310,13 +312,16 @@ namespace jacs {
             for (const p of this.procs) {
                 console.log(p.toString())
             }
-            let idx = 0
-            for (const s of this.stringLiterals) {
-                if (typeof s == "string")
-                    console.log(idx + ": " + JSON.stringify(s))
-                else console.log(idx + ": " + (s as Buffer).toHex())
-                idx++
+            for (let idx = 0; idx < this.stringLiterals.length; ++idx) {
+                console.log(idx + ": " + this.describeString(idx))
             }
+        }
+
+        describeString(idx: number) {
+            const s = this.stringLiterals[idx]
+            if (s == null) return "NULL"
+            if (typeof s == "string") return JSON.stringify(s)
+            else return (s as Buffer).toHex()
         }
 
         get mainProc() {
