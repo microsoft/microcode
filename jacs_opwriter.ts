@@ -165,14 +165,11 @@ namespace jacs {
         srcmap: number[] = []
         private nameIdx: number
 
-        constructor(private prog: TopOpWriter, public name: string) {
+        constructor(private prog: TopOpWriter, public name: string, public fnidx: number) {
             this.top = this.mkLabel("top")
             this.emitLabel(this.top)
             this.binary = Buffer.create(128)
-            const arr = this.name.split("_F")
-            if (arr.length > 1) arr.pop()
-            const friendlyName = arr.join("_F")
-            this.nameIdx = this.prog.addString(friendlyName)
+            this.nameIdx = this.prog.addString(this.name)
         }
 
         assertCurrent() {
@@ -320,7 +317,7 @@ namespace jacs {
         }
 
         getAssembly() {
-            let res = `proc ${this.name}:\n`
+            let res = `proc ${this.name}_F${this.fnidx}:\n`
             let ptr = 0
             let commentPtr = 0
             const getbyte = () => {
@@ -370,7 +367,6 @@ namespace jacs {
 
         emitLabel(l: Label) {
             assert(l.offset == -1)
-            this.emitComment("lbl " + l.name)
             this._setLabelOffset(l, this.location())
         }
 
@@ -399,8 +395,6 @@ namespace jacs {
         emitJump(label: Label, cond?: Value) {
             if (cond) cond.adopt()
             this.spillAllStateful()
-
-            this.emitComment("jump " + label.name)
 
             const off0 = this.location()
             this.writeByte(cond ? OpStmt.STMTx1_JMP_Z : OpStmt.STMTx_JMP)

@@ -35,8 +35,10 @@ namespace jacs {
         locals: Variable[] = []
         params: Variable[] = []
         index: number
-        constructor(private parent: TopWriter, public name: string) {
-            this.writer = new OpWriter(this.parent, this.name)
+        constructor(private parent: TopWriter, public name: string, lst: Procedure[]) {
+            this.index = lst.length
+            lst.push(this)
+            this.writer = new OpWriter(this.parent, this.name, this.index)
         }
         finalize() {
             this.writer.patchLabels()
@@ -329,10 +331,7 @@ namespace jacs {
         }
 
         addProc(name: string) {
-            const proc = new Procedure(this, name)
-            proc.index = this.procs.length
-            this.procs.push(proc)
-            return proc
+            return new Procedure(this, name, this.procs)
         }
 
         addGlobal(name: string) {
