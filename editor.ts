@@ -688,28 +688,27 @@ namespace microcode {
                 )
                 return
             }
+            let onDelete = undefined
             if (index < ruleTiles.length) {
-                btns.push({
-                    icon: "delete",
-                })
+                onDelete = () => {
+                    ruleTiles.splice(index, 1)
+                    updateEditor()
+                }
             }
             if (btns.length) {
                 this.editor.picker.addGroup({ label: "", btns })
                 this.editor.picker.show({
                     onClick: iconId => {
-                        if (iconId === "delete") {
-                            ruleTiles.splice(index, 1)
+                        // get from the database
+                        const newOne = tilesDB[name][iconId]
+                        if (index >= ruleTiles.length) {
+                            ruleTiles.push(newOne)
                         } else {
-                            // get from the database
-                            const newOne = tilesDB[name][iconId]
-                            if (index >= ruleTiles.length) {
-                                ruleTiles.push(newOne)
-                            } else {
-                                ruleTiles[index] = newOne
-                            }
+                            ruleTiles[index] = newOne
                         }
                         updateEditor()
                     },
+                    onDelete,
                 })
             }
         }
