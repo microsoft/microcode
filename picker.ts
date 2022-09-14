@@ -188,7 +188,7 @@ namespace microcode {
             )
             maxBtnCount = Math.min(maxBtnCount, MAX_PER_ROW)
 
-            let computedHeight = this.deleteBtn ? HEADER : 0
+            let computedHeight = this.deleteBtn || this.title ? HEADER : 0
             let computedWidth = maxBtnCount * 16
 
             this.groups.forEach(group => {
@@ -215,7 +215,8 @@ namespace microcode {
             })
             this.panel = Bounds.Grow(this.panel, 2)
 
-            let currentTop = computedTop + (this.deleteBtn ? HEADER : 0)
+            let currentTop =
+                computedTop + (this.deleteBtn || this.title ? HEADER : 0)
             this.groups.forEach(group => {
                 let currentLeft = computedLeft
                 group.buttons.forEach((btn, index) => {

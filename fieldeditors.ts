@@ -39,7 +39,6 @@ namespace microcode {
                 },
                 onHide,
                 onDelete,
-                // title: "LEDs",
             },
             false
         )
@@ -68,7 +67,6 @@ namespace microcode {
         onHide: () => void,
         onDelete?: () => void
     ) {
-        // TODO: centering???
         let btns: PickerButtonDef[] = []
         btns.push({ icon: "prev_page" })
         btns.push({ icon: noteToImageRaw(image.create(16, 16), field.note) })
@@ -90,7 +88,6 @@ namespace microcode {
                 },
                 onHide,
                 onDelete,
-                // title: "Note",
             },
             false
         )

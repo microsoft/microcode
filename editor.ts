@@ -85,8 +85,7 @@ namespace microcode {
                 onClick: iconId => {
                     const index = PAGE_IDS.indexOf(iconId)
                     this.switchToPage(index)
-                },
-                // title: "Select",
+                }
             })
         }
 
@@ -625,7 +624,6 @@ namespace microcode {
             iconIds.push("plus")
             // "Delete rule"
             iconIds.push("delete")
-            // TODO: supply button labels
             const btns: PickerButtonDef[] = iconIds.map(iconId => {
                 return {
                     icon: iconId,
@@ -634,7 +632,6 @@ namespace microcode {
             this.editor.picker.addGroup({ label: "", btns })
             this.editor.picker.show({
                 onClick: iconId => this.handleRuleHandleMenuSelection(iconId),
-                // title: "Select",
             })
         }
 
@@ -699,7 +696,6 @@ namespace microcode {
             if (btns.length) {
                 this.editor.picker.addGroup({ label: "", btns })
                 this.editor.picker.show({
-                    // title: "Select",
                     onClick: iconId => {
                         if (iconId === "delete") {
                             ruleTiles.splice(index, 1)
