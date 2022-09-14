@@ -33,8 +33,6 @@ namespace microcode {
         private pageBtn: Button
         private prevPageBtn: Button
         private nextPageBtn: Button
-        private okBtn: Button
-        private cancelBtn: Button
         private pageEditor: PageEditor
         public cursor: Cursor
         private _changed: boolean
@@ -52,16 +50,8 @@ namespace microcode {
             this._changed = true
         }
 
-        private okClicked() {
+        private exitEditor() {
             this.app.save(SAVESLOT_AUTO, this.progdef)
-            while (controller.A.isPressed()) {
-                pause(10)
-            }
-            this.app.popScene()
-            this.app.pushScene(new Home(this.app))
-        }
-
-        private cancelClicked() {
             while (controller.A.isPressed()) {
                 pause(10)
             }
@@ -96,7 +86,7 @@ namespace microcode {
                     const index = PAGE_IDS.indexOf(iconId)
                     this.switchToPage(index)
                 },
-                title: "Select",
+                // title: "Select",
             })
         }
 
@@ -193,7 +183,7 @@ namespace microcode {
             }
         }
 
-        private cancel() {
+        private backButton() {
             if (!this.cursor.cancel()) {
                 this.cursor.moveTo(this.pageBtn.xfrm.worldPos)
             }
@@ -250,7 +240,7 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.B.id,
-                () => this.cancel()
+                () => this.backButton()
             )
             this.hudroot = new Placeable()
             this.hudroot.xfrm.localPos = new Vec2(0, Screen.TOP_EDGE)
@@ -293,22 +283,6 @@ namespace microcode {
                 y: 8,
                 onClick: () => this.prevPage(),
             })
-            this.okBtn = new EditorButton(this, {
-                parent: this.hudroot,
-                style: "white",
-                icon: "ok",
-                x: Screen.RIGHT_EDGE - 8,
-                y: 8,
-                onClick: () => this.okClicked(),
-            })
-            this.cancelBtn = new EditorButton(this, {
-                parent: this.hudroot,
-                style: "white",
-                icon: "cancel",
-                x: Screen.RIGHT_EDGE - 24,
-                y: 8,
-                onClick: () => this.cancelClicked(),
-            })
             this.progdef = this.app.load(SAVESLOT_AUTO)
         }
 
@@ -344,8 +318,6 @@ namespace microcode {
             this.addToQuadTree(this.pageBtn)
             this.addToQuadTree(this.prevPageBtn)
             this.addToQuadTree(this.nextPageBtn)
-            this.addToQuadTree(this.okBtn)
-            this.addToQuadTree(this.cancelBtn)
             this.pageEditor.addToQuadTree()
 
             this.cursor.quadtree = this.quadtree
@@ -391,8 +363,6 @@ namespace microcode {
             this.pageBtn.draw()
             this.prevPageBtn.draw()
             this.nextPageBtn.draw()
-            this.okBtn.draw()
-            this.cancelBtn.draw()
             this.picker.draw()
             this.cursor.draw()
 
@@ -664,7 +634,7 @@ namespace microcode {
             this.editor.picker.addGroup({ label: "", btns })
             this.editor.picker.show({
                 onClick: iconId => this.handleRuleHandleMenuSelection(iconId),
-                title: "Select",
+                // title: "Select",
             })
         }
 
@@ -729,7 +699,7 @@ namespace microcode {
             if (btns.length) {
                 this.editor.picker.addGroup({ label: "", btns })
                 this.editor.picker.show({
-                    title: "Select",
+                    // title: "Select",
                     onClick: iconId => {
                         if (iconId === "delete") {
                             ruleTiles.splice(index, 1)

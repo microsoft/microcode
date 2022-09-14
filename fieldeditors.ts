@@ -39,7 +39,7 @@ namespace microcode {
                 },
                 onHide,
                 onDelete,
-                title: "LEDs",
+                // title: "LEDs",
             },
             false
         )
@@ -90,7 +90,7 @@ namespace microcode {
                 },
                 onHide,
                 onDelete,
-                title: "Note",
+                // title: "Note",
             },
             false
         )
