@@ -45,7 +45,6 @@ namespace microcode {
         private quadtree: QuadTree
         private prevquadtree: QuadTree
         private prevpos: Vec2
-        private cancelBtn: Button
         private deleteBtn: Button
         private panel: Bounds
         private onClick: (btn: string, button?: Button) => void
@@ -73,14 +72,6 @@ namespace microcode {
                 1,
                 16
             )
-            this.cancelBtn = new Button({
-                parent: this,
-                style: "white",
-                icon: "cancel",
-                x: 0,
-                y: 0,
-                onClick: () => this.cancelClicked(),
-            })
         }
 
         public addGroup(opts: { label: string; btns: PickerButtonDef[] }) {
@@ -180,7 +171,6 @@ namespace microcode {
                         btn.draw()
                     })
                 })
-                this.cancelBtn.draw()
                 if (this.deleteBtn) this.deleteBtn.draw()
             }
         }
@@ -198,7 +188,7 @@ namespace microcode {
             )
             maxBtnCount = Math.min(maxBtnCount, MAX_PER_ROW)
 
-            let computedHeight = HEADER
+            let computedHeight = this.deleteBtn || this.title ? HEADER : 0
             let computedWidth = maxBtnCount * 16
 
             this.groups.forEach(group => {
@@ -225,7 +215,8 @@ namespace microcode {
             })
             this.panel = Bounds.Grow(this.panel, 2)
 
-            let currentTop = computedTop + HEADER
+            let currentTop =
+                computedTop + (this.deleteBtn || this.title ? HEADER : 0)
             this.groups.forEach(group => {
                 let currentLeft = computedLeft
                 group.buttons.forEach((btn, index) => {
@@ -246,15 +237,9 @@ namespace microcode {
                 }
             })
 
-            this.cancelBtn.xfrm.localPos.x = computedLeft + computedWidth - 8
-            this.cancelBtn.xfrm.localPos.y = computedTop + 8
-            this.quadtree.insert(this.cancelBtn.hitbox, this.cancelBtn)
-            if (!firstBtn) {
-                firstBtn = this.cancelBtn
-            }
             if (this.deleteBtn) {
                 this.deleteBtn.xfrm.localPos.x =
-                    this.cancelBtn.xfrm.localPos.x - 16
+                    computedLeft + computedWidth - 8
                 this.deleteBtn.xfrm.localPos.y = computedTop + 8
                 this.quadtree.insert(this.deleteBtn.hitbox, this.deleteBtn)
             }

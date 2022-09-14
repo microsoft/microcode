@@ -325,6 +325,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+
     export const btn_cancel = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .

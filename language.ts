@@ -42,6 +42,7 @@ namespace microcode {
             public name: string
         ) {}
 
+        priority: number
         hidden: boolean // Hide from UI?
         constraints: Constraints
         fieldEditor: FieldEditor
@@ -120,7 +121,7 @@ namespace microcode {
     export class SensorDefn extends TileDefn {
         public serviceClassName: string
         public eventCode: number
-        public serviceInstanceIndex: number
+        public serviceInstanceIndex: number = 0
 
         constructor(tid: string, name: string, public phase: Phase) {
             super(TileType.SENSOR, tid, name)
@@ -132,8 +133,7 @@ namespace microcode {
             type: TileType,
             tid: string,
             name: string,
-            public category: string,
-            public priority: number
+            public category: string
         ) {
             super(type, tid, name)
         }
@@ -162,13 +162,15 @@ namespace microcode {
     }
 
     export class FilterDefn extends FilterModifierBase {
+        eventCode: number
         constructor(
             tid: string,
             name: string,
             category: string,
             priority: number
         ) {
-            super(TileType.FILTER, tid, name, category, priority)
+            super(TileType.FILTER, tid, name, category)
+            this.priority = priority
         }
     }
 
@@ -190,7 +192,8 @@ namespace microcode {
             category: string,
             priority: number
         ) {
-            super(TileType.MODIFIER, tid, name, category, priority)
+            super(TileType.MODIFIER, tid, name, category)
+            this.priority = priority
         }
     }
 
@@ -408,6 +411,7 @@ namespace microcode {
             const all = Object.keys(tilesDB[name])
                 .map(id => tilesDB[name][id])
                 .filter((tile: TileDefn) => !tile.hidden)
+                .sort((t1, t2) => t1.priority - t2.priority)
 
             if (name === "sensors" || name === "actuators") return all
 

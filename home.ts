@@ -120,6 +120,16 @@ namespace microcode {
             this.setView(HomeView.Plot)
         }
 
+        public compileProgram() {
+            const progdef = this.app.load(SAVESLOT_AUTO)
+            if (progdef) {
+                new jacs.TopWriter().emitProgram(progdef)
+                accessibility.setLiveContent("")
+                pause(1000)
+                accessibility.setLiveContent("program deployed")
+            }
+        }
+
         /* override */ startup() {
             super.startup()
             control.onEvent(
@@ -161,15 +171,11 @@ namespace microcode {
                 ControllerButtonEvent.Pressed,
                 controller.right.id,
                 () => {
-                    const progdef = this.app.load(SAVESLOT_AUTO)
-                    if (progdef) {
-                        new jacs.TopWriter().emitProgram(progdef)
-                        accessibility.setLiveContent("")
-                        pause(1000)
-                        accessibility.setLiveContent("program saved")
-                    }
+                    this.compileProgram()
                 }
             )
+
+            // this.compileProgram()
         }
 
         /* override */ shutdown() {
