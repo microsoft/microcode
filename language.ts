@@ -40,12 +40,10 @@ namespace microcode {
             public type: TileType,
             public tid: string,
             public name: string
-        ) {
-            this.priority = 0
-        }
+        ) {}
 
-        hidden: boolean // Hide from UI?
         priority: number
+        hidden: boolean // Hide from UI?
         constraints: Constraints
         fieldEditor: FieldEditor
         jdParam: any
@@ -135,8 +133,7 @@ namespace microcode {
             type: TileType,
             tid: string,
             name: string,
-            public category: string,
-            public priority: number
+            public category: string
         ) {
             super(type, tid, name)
         }
@@ -172,7 +169,8 @@ namespace microcode {
             category: string,
             priority: number
         ) {
-            super(TileType.FILTER, tid, name, category, priority)
+            super(TileType.FILTER, tid, name, category)
+            this.priority = priority
         }
     }
 
@@ -194,7 +192,8 @@ namespace microcode {
             category: string,
             priority: number
         ) {
-            super(TileType.MODIFIER, tid, name, category, priority)
+            super(TileType.MODIFIER, tid, name, category)
+            this.priority = priority
         }
     }
 
