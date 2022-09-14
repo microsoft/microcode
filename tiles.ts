@@ -42,6 +42,7 @@ namespace microcode {
     export const TID_FILTER_TIMESPAN_LONG = "F14"
     export const TID_FILTER_LOUD = "F15"
     export const TID_FILTER_QUIET = "F16"
+    export const TID_FILTER_ACCEL = "F17"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -191,7 +192,27 @@ namespace microcode {
             categories: ["accel_event"],
         },
     }
+    accel.serviceClassName = "accelerometer"
+    accel.eventCode = 0x8b // shake
     tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
+
+    function addAccelEvent(id: number, name: string, icon: Image) {
+        const tid = TID_FILTER_ACCEL + "_" + id
+        const accelEvent = new FilterDefn(tid, name, "accel_event", 10)
+        accelEvent.eventCode = id
+        accelEvent.constraints = terminal
+        accelEvent.iconOverride = icon
+        tilesDB.filters[tid] = accelEvent
+        return accelEvent
+    }
+
+    // TODO figure out which events we want (see accel spec)
+    addAccelEvent(0x8b, "shake", icondb.tile_value_1)
+    addAccelEvent(0x87, "freefall", icondb.tile_page_5)
+    addAccelEvent(0x81, "tilt_up", icondb.tile_page_1)
+    addAccelEvent(0x82, "tilt_down", icondb.tile_page_2)
+    addAccelEvent(0x83, "tilt_left", icondb.tile_page_3)
+    addAccelEvent(0x84, "tilt_right", icondb.tile_page_4)
 
     const microphone = new SensorDefn(
         TID_SENSOR_MICROPHONE,
