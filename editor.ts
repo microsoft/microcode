@@ -117,7 +117,7 @@ namespace microcode {
 
         private moveTo(target: Button) {
             if (target.rootXfrm.tag === "hud") {
-                this.cursor.moveTo(target.xfrm.worldPos)
+                this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
                 return
             }
             const occ = target.occlusions(
@@ -154,9 +154,9 @@ namespace microcode {
                     target.xfrm.worldPos.x + xocc,
                     target.xfrm.worldPos.y + yocc
                 )
-                this.cursor.moveTo(dest)
+                this.cursor.moveTo(dest, target.ariaId)
             } else {
-                this.cursor.moveTo(target.xfrm.worldPos)
+                this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
             }
         }
 
@@ -190,7 +190,7 @@ namespace microcode {
 
         private backButton() {
             if (!this.cursor.cancel()) {
-                this.cursor.moveTo(this.pageBtn.xfrm.worldPos)
+                this.cursor.moveTo(this.pageBtn.xfrm.worldPos, this.pageBtn.ariaId)
             }
         }
 

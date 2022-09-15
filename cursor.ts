@@ -44,7 +44,7 @@ namespace microcode {
             this.xfrm.localPos = p
         }
 
-        public moveTo(pos: Vec2) {
+        public moveTo(pos: Vec2, ariaId: string) {
             this.dest.copyFrom(pos)
             this.anim.clearFrames()
             this.anim.addFrame(
@@ -57,6 +57,8 @@ namespace microcode {
                 })
             )
             this.anim.start()
+            if (ariaId)
+                accessibility.setLiveContent(ariaId)
         }
 
         public snapTo(x: number, y: number) {

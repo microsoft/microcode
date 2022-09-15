@@ -26,6 +26,10 @@ namespace microcode {
             return this.back ? this.back.height : this.icon.height
         }
 
+        public get ariaId() : string {
+            return typeof this.iconId === "string" ? <string>this.iconId : this.label
+        }
+
         public get hitbox() {
             if (this.back) {
                 return this.back.hitbox

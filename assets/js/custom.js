@@ -22,8 +22,16 @@ function uint8ArrayToString(input) {
     return res
 }
 let liveRegion
+let liveStrings = {
+    hud: "head over display",
+}
+
 addSimMessageHandler("accessibility", data => {
-    const value = uint8ArrayToString(data)
+    const valueId = uint8ArrayToString(data)
+    const value = (liveStrings[valueId] || valueId).split(/_/g).join(" ")
+
+    console.log(`live region: ${valueId} -> ${value}`)
+
     if (!liveRegion) {
         const style =
             "position: absolute !important;" +
