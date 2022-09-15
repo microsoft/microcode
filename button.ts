@@ -10,6 +10,7 @@ namespace microcode {
         private style: ButtonStyle
         private border: ButtonBorder
         private iconId: string | Image
+        private _ariaId: string
         private label: string
         private onClick?: (button: Button) => void
 
@@ -27,7 +28,7 @@ namespace microcode {
         }
 
         public get ariaId() : string {
-            return typeof this.iconId === "string" ? <string>this.iconId : this.label
+            return this._ariaId || (typeof this.iconId === "string" ? <string>this.iconId : this.label)
         }
 
         public get hitbox() {
@@ -51,6 +52,7 @@ namespace microcode {
             border?: ButtonBorder
             icon: string | Image
             label?: string
+            ariaId?: string
             x: number
             y: number
             onClick?: (button: Button) => void
@@ -62,6 +64,7 @@ namespace microcode {
             this.border = opts.border
             this.iconId = opts.icon
             this.label = opts.label
+            this._ariaId = opts.ariaId
             this.xfrm.localPos.x = opts.x
             this.xfrm.localPos.y = opts.y
             this.onClick = opts.onClick
