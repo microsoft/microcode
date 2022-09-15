@@ -37,7 +37,8 @@
         "jacs_topwriter.ts",
         "version.ts",
         "language.md",
-        "fieldeditors.ts"
+        "fieldeditors.ts",
+        "navigator.ts"
     ],
     "testFiles": [],
     "targetVersions": {
