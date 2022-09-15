@@ -13,6 +13,7 @@ namespace microcode {
         cancelHandlerStack: CursorCancelHandler[]
         anim: Animation
         dest: Vec2
+        ariaId: string
 
         public get xfrm() {
             return this.xfrm_
@@ -44,7 +45,7 @@ namespace microcode {
             this.xfrm.localPos = p
         }
 
-        public moveTo(pos: Vec2) {
+        public moveTo(pos: Vec2, ariaId: string) {
             this.dest.copyFrom(pos)
             this.anim.clearFrames()
             this.anim.addFrame(
@@ -57,11 +58,18 @@ namespace microcode {
                 })
             )
             this.anim.start()
+            this.setAriaContent(ariaId)
         }
 
-        public snapTo(x: number, y: number) {
+        private setAriaContent(ariaId: string) {
+            this.ariaId = ariaId || ""
+            accessibility.setLiveContent(this.ariaId)
+        }
+
+        public snapTo(x: number, y: number, ariaId: string) {
             this.dest.x = this.xfrm.localPos.x = x
             this.dest.y = this.xfrm.localPos.y = y
+            this.setAriaContent(ariaId)
         }
 
         private query(opts: {

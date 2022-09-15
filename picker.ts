@@ -45,6 +45,7 @@ namespace microcode {
         private quadtree: QuadTree
         private prevquadtree: QuadTree
         private prevpos: Vec2
+        private prevAriaId: string
         private deleteBtn: Button
         private panel: Bounds
         private onClick: (btn: string, button?: Button) => void
@@ -110,6 +111,7 @@ namespace microcode {
             this.title = opts.title
             this.prevquadtree = this.cursor.quadtree
             this.prevpos = this.cursor.xfrm.localPos.clone()
+            this.prevAriaId = this.cursor.ariaId
             this.cursor.quadtree = this.quadtree
             this.cursor.cancelHandlerStack.push(() => this.cancelClicked())
             if (this.onDelete) {
@@ -117,6 +119,7 @@ namespace microcode {
                     parent: this,
                     style: "white",
                     icon: "delete",
+                    label: "delete",
                     x: 0,
                     y: 0,
                     onClick: () => {
@@ -140,7 +143,7 @@ namespace microcode {
             this.visible = false
             this.quadtree.clear()
             this.cursor.quadtree = this.prevquadtree
-            this.cursor.snapTo(this.prevpos.x, this.prevpos.y)
+            this.cursor.snapTo(this.prevpos.x, this.prevpos.y, this.prevAriaId)
             this.groups.forEach(group => group.destroy())
             if (this.deleteBtn) {
                 this.deleteBtn.destroy()
@@ -246,7 +249,8 @@ namespace microcode {
 
             this.cursor.snapTo(
                 firstBtn.xfrm.worldPos.x,
-                firstBtn.xfrm.worldPos.y
+                firstBtn.xfrm.worldPos.y,
+                firstBtn.ariaId
             )
         }
     }

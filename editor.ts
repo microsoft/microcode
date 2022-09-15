@@ -7,6 +7,7 @@ namespace microcode {
                 style?: ButtonStyle
                 border?: ButtonBorder
                 icon: string | Image
+                ariaId?: string
                 label?: string
                 x: number
                 y: number
@@ -117,7 +118,7 @@ namespace microcode {
 
         private moveTo(target: Button) {
             if (target.rootXfrm.tag === "hud") {
-                this.cursor.moveTo(target.xfrm.worldPos)
+                this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
                 return
             }
             const occ = target.occlusions(
@@ -154,9 +155,9 @@ namespace microcode {
                     target.xfrm.worldPos.x + xocc,
                     target.xfrm.worldPos.y + yocc
                 )
-                this.cursor.moveTo(dest)
+                this.cursor.moveTo(dest, target.ariaId)
             } else {
-                this.cursor.moveTo(target.xfrm.worldPos)
+                this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
             }
         }
 
@@ -190,7 +191,7 @@ namespace microcode {
 
         private backButton() {
             if (!this.cursor.cancel()) {
-                this.cursor.moveTo(this.pageBtn.xfrm.worldPos)
+                this.cursor.moveTo(this.pageBtn.xfrm.worldPos, this.pageBtn.ariaId)
             }
         }
 
@@ -470,7 +471,7 @@ namespace microcode {
             } else {
                 btn = this.rules[0].whenInsertBtn
             }
-            this.editor.cursor.snapTo(btn.xfrm.worldPos.x, btn.xfrm.worldPos.y)
+            this.editor.cursor.snapTo(btn.xfrm.worldPos.x, btn.xfrm.worldPos.y, btn ? btn.ariaId : undefined)
         }
 
         public addToQuadTree() {
@@ -554,6 +555,7 @@ namespace microcode {
             this.handleBtn = new EditorButton(editor, {
                 parent: this,
                 icon: "default",
+                ariaId: "rule",
                 x: 0,
                 y: 0,
                 onClick: () => this.showRuleHandleMenu(),
@@ -562,6 +564,7 @@ namespace microcode {
                 parent: this,
                 style: "beige",
                 icon: "insertion_point",
+                ariaId: "when",
                 x: 0,
                 y: 0,
                 onClick: () => this.showWhenInsertMenu(),
@@ -570,6 +573,7 @@ namespace microcode {
                 parent: this,
                 style: "beige",
                 icon: "insertion_point",
+                ariaId: "do",
                 x: 0,
                 y: 0,
                 onClick: () => this.showDoInsertMenu(),
