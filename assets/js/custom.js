@@ -123,7 +123,7 @@ addSimMessageHandler("accessibility", data => {
             "clip: rect(0 0 0 0);"
         liveRegion = document.createElement("div")
         liveRegion.setAttribute("role", "status")
-        liveRegion.setAttribute("aria-live", "polite")
+        liveRegion.setAttribute("aria-live", "assertive")
         liveRegion.setAttribute("aria-hidden", "false")
         liveRegion.setAttribute("style", style)
         document.body.appendChild(liveRegion)
