@@ -80,16 +80,16 @@ namespace microcode {
             this.reg[TID_MODIFIER_ON] = icondb.tile_on
             this.reg[TID_MODIFIER_OFF] = icondb.tile_off
 
-            this.reg[TID_MODIFIER_EMOJI_GIGGLE] = icondb.tile_page_1
-            this.reg[TID_MODIFIER_EMOJI_HAPPY] = icondb.tile_page_2
-            this.reg[TID_MODIFIER_EMOJI_HELLO] = icondb.tile_page_3
-            this.reg[TID_MODIFIER_EMOJI_MYSTERIOUS] = icondb.tile_page_4
-            this.reg[TID_MODIFIER_EMOJI_SAD] = icondb.tile_page_5
-            this.reg[TID_MODIFIER_EMOJI_SLIDE] = icondb.tile_value_1
-            this.reg[TID_MODIFIER_EMOJI_SOARING] = icondb.tile_value_2
-            this.reg[TID_MODIFIER_EMOJI_SPRING] = icondb.tile_value_3
-            this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.tile_value_4
-            this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.tile_value_5
+            this.reg[TID_MODIFIER_EMOJI_GIGGLE] = icondb.soundGiggle
+            this.reg[TID_MODIFIER_EMOJI_HAPPY] = icondb.soundHappy
+            this.reg[TID_MODIFIER_EMOJI_HELLO] = icondb.soundHello
+            this.reg[TID_MODIFIER_EMOJI_MYSTERIOUS] = icondb.soundMysterious
+            this.reg[TID_MODIFIER_EMOJI_SAD] = icondb.soundSad
+            this.reg[TID_MODIFIER_EMOJI_SLIDE] = icondb.soundSlide
+            this.reg[TID_MODIFIER_EMOJI_SOARING] = icondb.soundSoaring
+            this.reg[TID_MODIFIER_EMOJI_SPRING] = icondb.soundSpring
+            this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
+            this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
 
             this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.tile_page_1
             this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.tile_page_2
@@ -358,12 +358,12 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . 7 7 . . . .
         . . . . . . . . . 7 7 7 . . . .
-        . . . . . . . . 7 7 7 b . . . .
-        . . . . 7 7 . 7 7 7 b . . . . .
-        . . . . 7 7 7 7 7 b . . . . . .
-        . . . . 7 7 7 7 b . . . . . . .
-        . . . . b 7 7 b . . . . . . . .
-        . . . . . b b . . . . . . . . .
+        . . . . . . . . 7 7 7 6 . . . .
+        . . . . 7 7 . 7 7 7 6 . . . . .
+        . . . . 7 7 7 7 7 6 . . . . . .
+        . . . . 7 7 7 7 6 . . . . . . .
+        . . . . 6 7 7 6 . . . . . . . .
+        . . . . . 6 6 . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1060,7 +1060,6 @@ namespace icondb {
     `
     export const finger_press = img`
         . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
         . . . . . . . f . . . . . . . .
         . . . . . . . f . . . . . . . .
         . . . . . . . f . . . . . . . .
@@ -1068,11 +1067,12 @@ namespace icondb {
         . . . . . . f f f . . . . . . .
         . . . . . . . f . . . . . . . .
         . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . 2 2 2 2 2 . . . . . .
-        . . . . 2 2 2 2 2 2 2 . . . . .
-        . . . . 2 2 2 2 2 2 2 . . . . .
-        . . . e e e e e e e e e . . . .
+        . . . . . 4 4 4 4 4 . . . . . .
+        . . . . 4 4 4 4 4 4 4 d . . . .
+        . . . e 4 4 4 4 4 4 4 e d . . .
+        . . . e 2 4 4 4 4 4 2 e d . . .
+        . . . e e 2 2 2 2 2 e e d . . .
+        . . . . e e e e e e e d . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
@@ -1319,6 +1319,187 @@ f f f f f f f f f f f f f f f f
 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
 `
+
+    export const soundGiggle = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . 4 4 4 4 4 . . . . . .
+        . . . . 4 5 5 5 5 5 4 . . . . .
+        . . . 4 5 5 5 5 5 5 5 4 . . . .
+        . . 4 5 5 f 5 5 5 f 5 5 4 . . .
+        . . 4 5 f 5 f 5 f 5 f 5 4 d . .
+        . . 4 3 3 5 5 5 5 5 3 3 4 d . .
+        . . 4 5 5 f f f f f 5 5 4 d . .
+        . . 4 5 5 f f 2 2 2 5 5 4 d . .
+        . . . 4 5 5 f 2 2 5 5 4 d . . .
+        . . . . 4 5 5 5 5 5 4 d . . . .
+        . . . . . 4 4 4 4 4 d . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const soundHappy = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . 4 4 4 4 4 . . . . . .
+        . . . . 4 5 5 5 5 5 4 . . . . .
+        . . . 4 5 5 5 5 5 5 5 4 . . . .
+        . . 4 5 5 f 5 5 5 f 5 5 4 . . .
+        . . 4 5 5 f 5 5 5 f 5 5 4 d . .
+        . . 4 5 5 5 5 5 5 5 5 5 4 d . .
+        . . 4 5 5 f 5 5 5 f 5 5 4 d . .
+        . . 4 5 5 5 f f f 5 5 5 4 d . .
+        . . . 4 5 5 5 5 5 5 5 4 d . . .
+        . . . . 4 5 5 5 5 5 4 d . . . .
+        . . . . . 4 4 4 4 4 d . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const soundHello = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . 8 8 8 . .
+        . . . . . . . . . . 8 . . . 8 .
+        . . . . 4 4 4 4 . . . . 4 . . .
+        . . . 4 5 5 5 5 4 . . 4 5 4 . .
+        . . 4 5 f 5 5 f 5 4 . 8 8 8 d .
+        . . 4 5 5 5 5 5 5 4 d 8 9 8 d .
+        . . 4 5 f 5 5 f 5 4 8 9 9 8 d .
+        . . 4 5 5 f f 5 5 4 8 9 8 d . .
+        . . . 4 5 5 5 5 4 8 9 9 8 d . .
+        . . . . 4 4 4 4 9 9 9 8 d . . .
+        . . . 8 9 9 9 9 9 9 8 d . . . .
+        . . 8 9 9 9 9 9 9 9 8 d . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const soundMysterious = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . 6 6 6 6 6 6 . . . . . .
+        . . . 6 7 7 7 7 7 7 6 . . . . .
+        . . f f 1 7 7 7 7 f 1 f . . . .
+        . . f f f f 7 7 f f f f d . . .
+        . . 6 f f f 7 7 f f f 6 d . . .
+        . . 6 7 7 7 7 7 7 7 7 6 d . . .
+        . . 6 7 7 f 7 7 f 7 7 6 d . . .
+        . . . 6 7 7 f f 7 7 6 d . . . .
+        . . . . 6 7 7 7 7 6 d . . . . .
+        . . . . . 6 7 7 6 d . . . . . .
+        . . . . . . 6 6 d . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const soundSad = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . 4 4 4 4 4 . . . . . .
+        . . . . 4 5 5 5 5 5 4 . . . . .
+        . . . 4 5 5 5 5 5 5 5 4 . . . .
+        . . 4 5 5 f 5 5 5 f 5 5 4 . . .
+        . . 4 5 5 f 5 5 5 f 5 5 4 d . .
+        . . 4 5 5 5 5 5 5 5 5 5 4 d . .
+        . . 4 5 5 5 f f f 5 5 5 4 d . .
+        . . 4 5 5 f 5 5 5 f 5 5 4 d . .
+        . . . 4 5 5 5 5 5 5 5 4 d . . .
+        . . . . 4 5 5 5 5 5 4 d . . . .
+        . . . . . 4 4 4 4 4 d . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const soundSlide = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . 2 2 2 e e e . . . .
+        . . . . . 2 2 2 e e d e d . . .
+        . . . . . 2 2 e d e e e d . . .
+        . . . . . 2 2 e d e d e d . . .
+        . . . . . 2 2 e d e e e d . . .
+        . . . . . 2 2 e d e d e d . . .
+        . . . . . 2 2 e d e e e d . . .
+        . . . . 2 2 2 e d e d e d . . .
+        . . . 2 2 2 e d . e e e d . . .
+        . . 2 2 2 e d . . e d e d . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const soundSoaring = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . 9 9 9 9 9 . . . . . .
+        . . . . 9 1 9 9 9 9 9 . . . . .
+        . . . 9 1 9 9 7 7 7 9 9 . . . .
+        . . . 9 1 9 7 f 7 f 7 9 . . . .
+        . . 6 6 6 6 6 6 6 6 6 6 6 d . .
+        . 6 9 5 9 5 9 5 9 5 9 5 9 6 d .
+        . 8 8 8 8 8 8 8 8 8 8 8 8 8 d .
+        . . . . . . 8 8 8 d . . . . . .
+        . . . . 9 . . . . . 9 . . . . .
+        . . . . . 9 9 9 9 9 . . . . . .
+        . . . 9 . . . . . . . 9 . . . .
+        . . . . 9 9 9 9 9 9 9 . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const soundSpring = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . 2 d . . . . . . . . . . .
+        . . 2 d . . 4 4 d . . . . . . .
+        . 2 d . . 4 d d 5 d . . . . . .
+        . 2 d . 4 d . . 5 d . . . . . .
+        . d 4 4 d . . 5 d . . . . . . .
+        . . d d . . 5 d . . 7 7 d . . .
+        . . . . . 5 d . . 7 d d 9 d . .
+        . . . . . 5 d . 7 d . . 9 d . .
+        . . . . . d 7 7 d . . 9 d . . .
+        . . . . . . d d . . 9 d . . . .
+        . . . . . . . . . . d . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const soundTwinkle = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . 3 . . . 3 . . . 3 . . . .
+        . . 3 5 3 . . 3 . . . . . . . .
+        . . . 3 . . 3 5 3 . . . . . . .
+        . . . . . . 3 5 3 . . . . 3 . .
+        . . . . 3 3 5 5 5 3 3 . . . . .
+        . . 3 3 5 5 5 5 5 5 5 3 3 . . .
+        . . . . 3 3 5 5 5 3 3 . . . . .
+        . . . . . . 3 5 3 . . . . . . .
+        . . . . . . 3 5 3 . . . 3 . . .
+        . . . 3 . . . 3 . . . 3 5 3 . .
+        . . . . . . . 3 . . . . 3 . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const soundYawn = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . 4 4 4 4 4 . . . . . .
+        . . . . 4 5 5 5 5 5 4 . . . . .
+        . . . 4 5 5 5 5 5 5 5 4 . . . .
+        . . 4 5 f f 5 5 5 f f 5 4 . . .
+        . . 4 5 5 5 5 5 5 5 5 5 4 d . .
+        . . 4 5 5 5 f f f 5 5 5 4 d . .
+        . . 4 5 5 5 f f f 5 5 5 4 d . .
+        . . 4 5 5 5 f 2 2 5 5 5 4 d . .
+        . . . 4 5 5 5 5 5 5 5 4 d . . .
+        . . . . 4 5 5 5 5 5 4 d . . . .
+        . . . . . 4 4 4 4 4 d . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
 
     /* maybe use these later
     export const rc_high = img`
