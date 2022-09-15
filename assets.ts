@@ -316,19 +316,19 @@ namespace icondb {
     `
     export const btn_delete = img`
         . . . . . . . . . . . . . . . .
-        . . . . . . f f f . . . . . . .
-        . . . . . f . . . f . . . . . .
-        . . . . f f f f f f f . . . . .
-        . . . f 1 1 d d d b b f . . . .
-        . . f f f f f f f f f f f . . .
-        . . . f b c b c b c c f . . . .
-        . . . f 1 c d c d c b f . . . .
-        . . . f 1 c d c d c b f . . . .
-        . . . f 1 c d c d c b f . . . .
-        . . . f 1 c d c d c b f . . . .
-        . . . f 1 1 d d d b b f . . . .
-        . . . f 1 1 d d d b b f . . . .
-        . . . . f f f f f f f . . . . .
+        . . . . . . c f f . . . . . . .
+        . . . . . c . . . f . . . . . .
+        . . . . c c c f f f f . . . . .
+        . . . c 1 1 d d d b b f . . . .
+        . . c c c c c f f f f f f . . .
+        . . . c b c b c b c c f . . . .
+        . . . c 1 c d c d c b f d . . .
+        . . . c 1 c d c d c b f d . . .
+        . . . c 1 c d c d c b f d . . .
+        . . . c 1 c d c d c b f d . . .
+        . . . c 1 1 d d d b b f d . . .
+        . . . c 1 1 d d d b b f d . . .
+        . . . . c c c f f f f d . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
