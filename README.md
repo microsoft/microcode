@@ -6,8 +6,10 @@ Microsoft MicroCode is a [MakeCode Arcade](https://arcade.makecode.com/) applica
 
 ### Install
 
+You can spin up a GitHub Codespace on the repo or setup things locally:
+
 -   install [Node.js](https://nodejs.org/en/)
--   `npm install -g makecode`
+-   `npm install -g -u makecode`
 -   clone this repo
 
 ### Build
