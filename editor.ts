@@ -33,6 +33,7 @@ namespace microcode {
         private pageBtn: Button
         private prevPageBtn: Button
         private nextPageBtn: Button
+        private okBtn: Button
         private pageEditor: PageEditor
         public cursor: Cursor
         private _changed: boolean
@@ -48,6 +49,11 @@ namespace microcode {
 
         public changed() {
             this._changed = true
+        }
+
+        private okClicked() {
+            this.app.save(SAVESLOT_AUTO, this.progdef)
+            new jacs.TopWriter().emitProgram(this.progdef)
         }
 
         private exitEditor() {
@@ -282,6 +288,14 @@ namespace microcode {
                 y: 8,
                 onClick: () => this.prevPage(),
             })
+            this.okBtn = new EditorButton(this, {
+                parent: this.hudroot,
+                style: "white",
+                icon: "ok",
+                x: Screen.LEFT_EDGE + 8,
+                y: 8,
+                onClick: () => this.okClicked(),
+            })
             this.progdef = this.app.load(SAVESLOT_AUTO)
         }
 
@@ -317,6 +331,7 @@ namespace microcode {
             this.addToQuadTree(this.pageBtn)
             this.addToQuadTree(this.prevPageBtn)
             this.addToQuadTree(this.nextPageBtn)
+            this.addToQuadTree(this.okBtn)
             this.pageEditor.addToQuadTree()
 
             this.cursor.quadtree = this.quadtree
@@ -362,6 +377,7 @@ namespace microcode {
             this.pageBtn.draw()
             this.prevPageBtn.draw()
             this.nextPageBtn.draw()
+            this.okBtn.draw()
             this.picker.draw()
             this.cursor.draw()
 
