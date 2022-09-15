@@ -88,7 +88,7 @@ const liveStrings = {
 
     M15: "icon editor",
     M16: "red",
-    M17: "darl purple",
+    M17: "dark purple",
     M18: "music editor",
 
     M19giggle: "emoji giggle",
