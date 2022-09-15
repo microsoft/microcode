@@ -52,13 +52,17 @@ namespace microcode {
             this._changed = true
         }
 
-        private okClicked() {
+        public saveProgram() {
             this.app.save(SAVESLOT_AUTO, this.progdef)
+        }
+
+        private okClicked() {
+            this.saveProgram()
             new jacs.TopWriter().emitProgram(this.progdef)
         }
 
         private exitEditor() {
-            this.app.save(SAVESLOT_AUTO, this.progdef)
+            this.saveProgram()
             while (controller.A.isPressed()) {
                 pause(10)
             }
@@ -191,7 +195,10 @@ namespace microcode {
 
         private backButton() {
             if (!this.cursor.cancel()) {
-                this.cursor.moveTo(this.pageBtn.xfrm.worldPos, this.pageBtn.ariaId)
+                this.cursor.moveTo(
+                    this.pageBtn.xfrm.worldPos,
+                    this.pageBtn.ariaId
+                )
             }
         }
 
@@ -471,7 +478,11 @@ namespace microcode {
             } else {
                 btn = this.rules[0].whenInsertBtn
             }
-            this.editor.cursor.snapTo(btn.xfrm.worldPos.x, btn.xfrm.worldPos.y, btn ? btn.ariaId : undefined)
+            this.editor.cursor.snapTo(
+                btn.xfrm.worldPos.x,
+                btn.xfrm.worldPos.y,
+                btn ? btn.ariaId : undefined
+            )
         }
 
         public addToQuadTree() {
@@ -615,6 +626,7 @@ namespace microcode {
         }
 
         private instantiateProgramTiles() {
+            this.editor.saveProgram()
             this.destroyProgramTiles()
             const rule = this.ruledef.getRuleRep()
             let changed = false
