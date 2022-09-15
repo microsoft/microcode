@@ -31,6 +31,8 @@ namespace microcode {
             }
             const s = JSON.stringify(saved)
             settings.writeString(slot, s)
+            console.log("JSON of program")
+            console.log(s)
         }
 
         public load(slot: string): ProgramDefn {
