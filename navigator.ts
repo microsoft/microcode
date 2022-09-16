@@ -25,10 +25,7 @@ namespace microcode {
     export interface INavigator {
         clear: () => void
         addButtons: (btns: Button[]) => void
-        queryUp: (cursor: Cursor) => Button
-        queryDown: (cursor: Cursor) => Button
-        queryLeft: (cursor: Cursor) => Button
-        queryRight: (cursor: Cursor) => Button
+        move: (cursor: Cursor, dir: CursorDir) => void
         getOverlapping: (cursor: Cursor) => Button[]
         initialCursor: (cursor: Cursor) => void
     }
@@ -38,6 +35,7 @@ namespace microcode {
         private row: number
         private col: number
 
+        //             this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
         constructor() {
             this.buttonGroups = []
         }
@@ -49,18 +47,7 @@ namespace microcode {
         public addButtons(btns: Button[]) {
             this.buttonGroups.push(btns)
         }
-        public queryUp(cursor: Cursor): Button {
-            return null
-        }
-        public queryDown(cursor: Cursor): Button {
-            return null
-        }
-        public queryLeft(cursor: Cursor): Button {
-            return null
-        }
-        public queryRight(cursor: Cursor): Button {
-            return null
-        }
+        public move(cursor: Cursor, dir: CursorDir) {}
 
         public getOverlapping(cursor: Cursor): Button[] {
             return []
@@ -120,7 +107,32 @@ namespace microcode {
             btns.forEach(btn => this.addToQuadTree(btn))
         }
 
-        public queryUp(cursor: Cursor): Button {
+        public move(cursor: Cursor, dir: CursorDir) {
+            let btn: Button = undefined
+            switch (dir) {
+                case CursorDir.Up: {
+                    btn = this.queryUp(cursor)
+                    break
+                }
+                case CursorDir.Down: {
+                    btn = this.queryDown(cursor)
+                    break
+                }
+                case CursorDir.Left: {
+                    btn = this.queryLeft(cursor)
+                    break
+                }
+                case CursorDir.Right: {
+                    btn = this.queryRight(cursor)
+                    break
+                }
+            }
+            if (btn) {
+                cursor.moveTo(btn.xfrm.worldPos, btn.ariaId)
+            }
+        }
+
+        private queryUp(cursor: Cursor): Button {
             return this.query(cursor, {
                 boundsFn: dist => {
                     return new Bounds({
@@ -143,7 +155,7 @@ namespace microcode {
             })
         }
 
-        public queryDown(cursor: Cursor): Button {
+        private queryDown(cursor: Cursor): Button {
             return this.query(cursor, {
                 boundsFn: dist => {
                     return new Bounds({
@@ -166,7 +178,7 @@ namespace microcode {
             })
         }
 
-        public queryLeft(cursor: Cursor): Button {
+        private queryLeft(cursor: Cursor): Button {
             return this.query(cursor, {
                 boundsFn: dist => {
                     return new Bounds({
@@ -189,7 +201,7 @@ namespace microcode {
             })
         }
 
-        public queryRight(cursor: Cursor): Button {
+        private queryRight(cursor: Cursor): Button {
             return this.query(cursor, {
                 boundsFn: dist => {
                     return new Bounds({

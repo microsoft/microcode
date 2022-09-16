@@ -120,38 +120,6 @@ namespace microcode {
             )
         }
 
-        private moveTo(target: Button) {
-            this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
-        }
-
-        private moveUp() {
-            const target = this.cursor.queryUp()
-            if (target) {
-                this.moveTo(target)
-            }
-        }
-
-        private moveDown() {
-            const target = this.cursor.queryDown()
-            if (target) {
-                this.moveTo(target)
-            }
-        }
-
-        private moveLeft() {
-            const target = this.cursor.queryLeft()
-            if (target) {
-                this.moveTo(target)
-            }
-        }
-
-        private moveRight() {
-            const target = this.cursor.queryRight()
-            if (target) {
-                this.moveTo(target)
-            }
-        }
-
         private backButton() {
             if (!this.cursor.cancel()) {
                 this.cursor.moveTo(
@@ -166,42 +134,42 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.right.id,
-                () => this.moveRight()
+                () => this.cursor.move(CursorDir.Right)
             )
             control.onEvent(
                 ControllerButtonEvent.Repeated,
                 controller.right.id,
-                () => this.moveRight()
+                () => this.cursor.move(CursorDir.Right)
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.up.id,
-                () => this.moveUp()
+                () => this.cursor.move(CursorDir.Up)
             )
             control.onEvent(
                 ControllerButtonEvent.Repeated,
                 controller.up.id,
-                () => this.moveUp()
+                () => this.cursor.move(CursorDir.Up)
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.down.id,
-                () => this.moveDown()
+                () => this.cursor.move(CursorDir.Down)
             )
             control.onEvent(
                 ControllerButtonEvent.Repeated,
                 controller.down.id,
-                () => this.moveDown()
+                () => this.cursor.move(CursorDir.Down)
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.left.id,
-                () => this.moveLeft()
+                () => this.cursor.move(CursorDir.Left)
             )
             control.onEvent(
                 ControllerButtonEvent.Repeated,
                 controller.left.id,
-                () => this.moveLeft()
+                () => this.cursor.move(CursorDir.Left)
             )
 
             control.onEvent(
