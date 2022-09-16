@@ -38,7 +38,9 @@
         "version.ts",
         "language.md",
         "fieldeditors.ts",
-        "navigator.ts"
+        "navigator.ts",
+        "microbit.md",
+        "jacdac.md"
     ],
     "testFiles": [],
     "targetVersions": {

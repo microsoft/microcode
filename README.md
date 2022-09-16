@@ -2,6 +2,33 @@
 
 Microsoft MicroCode is a [MakeCode Arcade](https://arcade.makecode.com/) application that allows the creation, modification, and execution of simple reactive programs for microcontroller-based target devices such as the [BBC micro:bit](https://microbit.org) and [Jacdac brains](https://microsoft.github.io/jacdac-docs/start/brains/). MicroCode has a tile-based language and editor, inspired by [Kodu Game Lab](https://www.kodugamelab.com/), for creating programs using just the 4-way direction pad and A and B buttons supported by [Arcade-compatible devices](https://arcade.makecode.com/hardware/). The language is parameterized by a set of [Jacdac services](https://microsoft.github.io/jacdac-docs/services/) that represent the set of hardware features of the target device (the device to be programmed). The programs are compiled into the bytecode of the Jacdac virtual machine and persisted in the flash memory of the target device.
 
+## Running MicroCode
+
+There are three ways to run MicroCode:
+
+-   [web app](https:://microsoft.github.io/microcode) with micro:bit simulator (which you can bring up from the web app by clicking XYZ)
+-   web app with micro:bit V2 hardware connected over Web USB
+-   hex file deployed to micro:bit V2, Arcade Shield (for editing program), and optionally connected [Jacdac](https://aka.ms/jacdac) modules
+
+See below for more information about the MicroCode web app, micro:bit simulator, and how to deploy MicroCode to the micro:bit V2.
+
+Regardless of which way you run MicroCode, you will probably want to know a little bit about the MicroCode [icon-based language](./language.md), which
+owes much to [Kodu Game Lab](https://www.kodugamelab.com).
+
+### MicroCode Web app
+
+The easiest way to get started with MicroCode is through the [web app](https:://microsoft.github.io/microcode). We recommend using the keyboard rather than the onscreen d-pad and buttons. The mapping is
+
+-   Arrow keys for D-pad
+-   Space bar for A button
+-   Enter for B button (ESC and backspace not yet mapped to B)
+
+### micro:bit V2 simulator
+
+### micro:bit V2 hardware and MicroCode hex file
+
+The first thing you will want to do is to copy the [MicroCode hex file]() to your micro:bit V2 over USB (the micro:bit V1 is not supported). This hex file has the complete MicroCode app, but also can receive MicroCode compiled programs you create in the web app (when connected via Web USB). This allows
+
 ## Developing
 
 The easiest way to get started is to open this repository in a GitHub Codespace and everything will be ready for you.
@@ -11,9 +38,9 @@ for MakeCode editing, Git, and Codespaces.
 
 ### Codespaces setup
 
-- click on `Code` drop down and select `Create Codespace on main`
-- you can do your editing from VS Code online or click on `Codespaces` in lower left and select `Open in VS Code` to use the desktop version (must be installed on your machine)
-- press "Ctrl + `" to open a terminal and you're ready to go!
+-   click on `Code` drop down and select `Create Codespace on main`
+-   you can do your editing from VS Code online or click on `Codespaces` in lower left and select `Open in VS Code` to use the desktop version (must be installed on your machine)
+-   press "Ctrl + `" to open a terminal and you're ready to go!
 
 In the future, click again on `Code` to find previously created Codespaces.
 
@@ -45,10 +72,11 @@ Note that you can open terminals directly from VS Code by pressing "Ctrl + `".
 
 -   start a compilation server that will automatically compile and reload
     a compile web version of the editor
-    
+
 ```bash
 mkc serve
 ```
+
 -   open to web editor at http://127.0.0.1:7001
 -   build a micro:bit Hex file and deploy
 
@@ -99,47 +127,11 @@ This app is built with [MakeCode Arcade](https://arcade.makecode.com/beta), spec
     -   https://github.com/lancaster-university/codal-nrf52: CODAL runtime for NRF52 class MCUs
     -   https://github.com/lancaster-university/codal-core: CODAL runtime
 
-## Micro:bit features
-
-We are working to expose most of the micro:bit's main features in MicroCode:
-
--   **LED screen**
-    -   design and display icons and animations
-    -   plot the value of a sensor
--   **User input**
-    -   buttons A and B
-    -   capacative touch on micro:bit logo, pins 0, 1 and 2
--   **Accelerometer**
-    -   respond to accelerometer events
-    -   access to X, Y, Z values
--   **Sensors**
-    -   temperature
-    -   light level
-    -   compass
--   **Music**
-    -   play tones via the speaker
--   **Radio**
-    -   set group
-    -   send and receive messages
--   **Data**
-    -   record data to flash
-    -   display data
-
-## Jacdac
-
-MicroCode integrates with [Jacdac](https://aka.ms.jacdac) in several ways
-
--   the MicroCode program is compiled to the bytecode of the Jacdac virtual machine (JDVM), which can be run on the same micro:bit or exported to other micro:bits
--   the MicroCode editor recognizes a small set of Jacdac modules, when connected, providing programming tiles for those modules
-
-## Language
-
-The MicroCode language owes much to [Kodu Game Lab](https://www.kodugamelab.com). [Read more](./language.md)...
-
 ## Build setup for C++ runtime dev
 
-* clone https://github.com/microsoft/pxt-arcade repo at the same level as `microcode`
-* run:
+-   clone https://github.com/microsoft/pxt-arcade repo at the same level as `microcode`
+-   run:
+
 ```bash
 npm install -g pxt-cli
 cd pxt-arcade
@@ -154,9 +146,11 @@ export PXT_FORCE_LOCAL=yes
 export PXT_NODOCKER=yes
 export PXT_RUNTIME_DEV=yes
 ```
-* you may use `npm` instead of `yarn`
-* you may skip `PXT_NODOCKER` if you don't have locally installed `arm-none-eabi-gcc`
-* in `projects/microcode` create `pxt.json` file with the following contents:
+
+-   you may use `npm` instead of `yarn`
+-   you may skip `PXT_NODOCKER` if you don't have locally installed `arm-none-eabi-gcc`
+-   in `projects/microcode` create `pxt.json` file with the following contents:
+
 ```json
 {
     "additionalFilePath": "../../../microcode",
@@ -168,9 +162,10 @@ export PXT_RUNTIME_DEV=yes
     }
 }
 ```
-* run `pxt` - it will compile an deploy
-* run `code built/codal/libraries/codal-*`
-* checkout `main` or `master` in all `codal-*` repos and in `jacdac-c`
+
+-   run `pxt` - it will compile an deploy
+-   run `code built/codal/libraries/codal-*`
+-   checkout `main` or `master` in all `codal-*` repos and in `jacdac-c`
 
 Make sure not to delete `projects/microcode/built` since it contains your sources.
 If possible, you can move `built/codal/libraries` folder somewhere else, and symlink it inside `built/codal`
