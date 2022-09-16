@@ -28,7 +28,7 @@ namespace microcode {
     const TOOLBAR_COLOR = 11
 
     export class Editor extends Scene {
-        private quadtree: QuadTree
+        private navigator: Navigator
         private progdef: ProgramDefn
         private currPage: number
         private pageBtn: Button
@@ -309,8 +309,7 @@ namespace microcode {
 
         /* override */ shutdown() {
             this.progdef = undefined
-            this.quadtree.clear()
-            this.quadtree = undefined
+            this.navigator.clear()
         }
 
         /* override */ activate() {
@@ -321,34 +320,27 @@ namespace microcode {
             }
         }
 
-        private rebuildQuadTree() {
-            if (this.picker.visible) return
-            if (this.quadtree) {
-                this.quadtree.clear()
-            }
-            this.quadtree = new QuadTree(
-                new Bounds({
-                    left: -512,
-                    top: -512,
-                    width: 1024,
-                    height: 1024,
-                }),
-                1,
-                16
-            )
-            this.addToQuadTree(this.pageBtn)
-            this.addToQuadTree(this.prevPageBtn)
-            this.addToQuadTree(this.nextPageBtn)
-            this.addToQuadTree(this.okBtn)
-            this.pageEditor.addToQuadTree()
-
-            this.cursor.quadtree = this.quadtree
+        public addButtons(btns: Button[]) {
+            this.navigator.addButtons(btns)
         }
 
-        public addToQuadTree(btn: Button) {
-            if (this.quadtree) {
-                this.quadtree.insert(btn.hitbox, btn)
-            }
+        private rebuildNavigator() {
+            if (this.picker.visible) return
+
+            if (this.navigator) this.navigator.clear()
+
+            this.navigator = new Navigator()
+
+            this.navigator.addButtons([
+                this.okBtn,
+                this.prevPageBtn,
+                this.pageBtn,
+                this.nextPageBtn,
+            ])
+
+            this.pageEditor.addToNavigator()
+
+            this.cursor.navigator = this.navigator
         }
 
         private scrollAnimCallback(v: Vec2) {
@@ -365,7 +357,7 @@ namespace microcode {
             }
             if (this._changed) {
                 this._changed = false
-                this.rebuildQuadTree()
+                this.rebuildNavigator()
             }
             this.scrollanim.update()
             this.cursor.update()
@@ -485,8 +477,8 @@ namespace microcode {
             )
         }
 
-        public addToQuadTree() {
-            this.rules.forEach(rule => rule.addToQuadTree())
+        public addToNavigator() {
+            this.rules.forEach(rule => rule.addToNavigator())
         }
 
         public changed() {
@@ -769,14 +761,16 @@ namespace microcode {
             }
         }
 
-        public addToQuadTree() {
-            repNames.forEach(name => {
-                const buttons = this.rule[name]
-                buttons.forEach(btn => this.editor.addToQuadTree(btn))
-            })
-            this.editor.addToQuadTree(this.handleBtn)
-            this.editor.addToQuadTree(this.whenInsertBtn)
-            this.editor.addToQuadTree(this.doInsertBtn)
+        public addToNavigator() {
+            const btns: Button[] = []
+            btns.push(this.handleBtn)
+            this.rule["sensors"].forEach(b => btns.push(b))
+            btns.push(this.whenInsertBtn)
+            this.rule["filters"].forEach(b => btns.push(b))
+            btns.push(this.doInsertBtn)
+            this.rule["actuators"].forEach(b => btns.push(b))
+            this.rule["modifiers"].forEach(b => btns.push(b))
+            this.editor.addButtons(btns)
         }
 
         public isEmpty() {

@@ -42,8 +42,8 @@ namespace microcode {
     export class Picker extends Component implements IPlaceable {
         public groups: PickerGroup[]
         private xfrm_: Affine
-        private quadtree: QuadTree
-        private prevquadtree: QuadTree
+        private navigator: Navigator
+        private prevNavigator: Navigator
         private prevpos: Vec2
         private prevAriaId: string
         private deleteBtn: Button
@@ -63,16 +63,7 @@ namespace microcode {
             super("picker")
             this.xfrm_ = new Affine()
             this.groups = []
-            this.quadtree = new QuadTree(
-                new Bounds({
-                    left: -512,
-                    top: -512,
-                    width: 1024,
-                    height: 1024,
-                }),
-                1,
-                16
-            )
+            this.navigator = new Navigator()
         }
 
         public addGroup(opts: { label: string; btns: PickerButtonDef[] }) {
@@ -109,10 +100,10 @@ namespace microcode {
             this.onDelete = opts.onDelete
             this.hideOnClick = hideOnClick
             this.title = opts.title
-            this.prevquadtree = this.cursor.quadtree
+            this.prevNavigator = this.cursor.navigator
             this.prevpos = this.cursor.xfrm.localPos.clone()
             this.prevAriaId = this.cursor.ariaId
-            this.cursor.quadtree = this.quadtree
+            this.cursor.navigator = this.navigator
             this.cursor.cancelHandlerStack.push(() => this.cancelClicked())
             if (this.onDelete) {
                 this.deleteBtn = new Button({
@@ -141,8 +132,8 @@ namespace microcode {
 
         hide() {
             this.visible = false
-            this.quadtree.clear()
-            this.cursor.quadtree = this.prevquadtree
+            this.navigator.clear()
+            this.cursor.navigator = this.prevNavigator
             this.cursor.snapTo(this.prevpos.x, this.prevpos.y, this.prevAriaId)
             this.groups.forEach(group => group.destroy())
             if (this.deleteBtn) {
@@ -233,7 +224,7 @@ namespace microcode {
                     btn.xfrm.localPos.y = currentTop + 8
                     btn.xfrm.localPos.x = currentLeft + 8
                     currentLeft += 16
-                    this.quadtree.insert(btn.hitbox, btn)
+                    this.navigator.addToQuadTree(btn)
                 })
                 if (group.opts.label) {
                     currentTop += LABEL
@@ -244,7 +235,7 @@ namespace microcode {
                 this.deleteBtn.xfrm.localPos.x =
                     computedLeft + computedWidth - 8
                 this.deleteBtn.xfrm.localPos.y = computedTop + 8
-                this.quadtree.insert(this.deleteBtn.hitbox, this.deleteBtn)
+                this.navigator.addToQuadTree(this.deleteBtn)
             }
 
             this.cursor.snapTo(
