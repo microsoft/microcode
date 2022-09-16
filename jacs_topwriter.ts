@@ -647,6 +647,7 @@ namespace jacs {
         temperature: 0x1421bac7,
         soundPlayer: 0x1403d338,
         buzzer: 0x1b57b1d7,
+        accelerometer: 0x1f140409,
         // Kit-A
         potentiometer: 0x1f274746,
         lightLevel: 0x17dc9a1c,

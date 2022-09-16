@@ -126,6 +126,46 @@ MicroCode integrates with [Jacdac](https://aka.ms.jacdac) in several ways
 
 The MicroCode language owes much to [Kodu Game Lab](https://www.kodugamelab.com). [Read more](./language.md)...
 
+## Build setup for C++ runtime dev
+
+* clone https://github.com/microsoft/pxt-arcade repo at the same level as `microcode`
+* run:
+```bash
+npm install -g pxt-cli
+cd pxt-arcade
+yarn install
+mkdir projects
+cd projects
+mkdir microcode
+cd microcode
+export PXT_ASMDEBUG=1
+export PXT_COMPILE_SWITCHES=size
+export PXT_FORCE_LOCAL=yes
+export PXT_NODOCKER=yes
+export PXT_RUNTIME_DEV=yes
+```
+* you may use `npm` instead of `yarn`
+* you may skip `PXT_NODOCKER` if you don't have locally installed `arm-none-eabi-gcc`
+* in `projects/microcode` create `pxt.json` file with the following contents:
+```json
+{
+    "additionalFilePath": "../../../microcode",
+    "dependencies": {
+        "game---light": "file:../../libs/game---light",
+        "hw---n3": "file:../../libs/hw---n3",
+        "device": "file:../../libs/device",
+        "codal-jacdac-pxt": "file:../../../microcode/codal-jacdac-pxt"
+    }
+}
+```
+* run `pxt` - it will compile an deploy
+* run `code built/codal/libraries/codal-*`
+* checkout `main` or `master` in all `codal-*` repos and in `jacdac-c`
+
+Make sure not to delete `projects/microcode/built` since it contains your sources.
+If possible, you can move `built/codal/libraries` folder somewhere else, and symlink it inside `built/codal`
+to avoid accidentally deleting it.
+
 ## Contributing
 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a
