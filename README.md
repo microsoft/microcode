@@ -60,7 +60,7 @@ mkc build -d
 
 To load the local editor in a Jacdac devtools page,
 
-https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1#http://127.0.0.1:7000
+https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001
 
 ### Creating artwork
 
