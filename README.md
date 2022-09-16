@@ -4,20 +4,57 @@ Microsoft MicroCode is a [MakeCode Arcade](https://arcade.makecode.com/) applica
 
 ## Developing
 
-### Install
+The easiest way to get started is to open this repository in a GitHub Codespace and everything will be ready for you.
 
-You can spin up a GitHub Codespace on the repo or setup things locally:
+We recommend using [Visual Studio Code](https://code.visualstudio.com/) as it provides excellent support
+for MakeCode editing, Git, and Codespaces.
+
+### Codespaces setup
+
+- click on `Code` drop down and select `Create Codespace on main`
+- you can do your editing from VS Code online or click on `Codespaces` in lower left and select `Open in VS Code` to use the desktop version (must be installed on your machine)
+- press "Ctrl + `" to open a terminal and you're ready to go!
+
+In the future, click again on `Code` to find previously created Codespaces.
+
+### Local Install (skip in Codespaces)
 
 -   install [Node.js](https://nodejs.org/en/)
--   `npm install -g -u makecode`
+-   install the MakeCode command line tools (`mkc` for short)
+
+```bash
+npm install -g -u makecode
+```
+
 -   clone this repo
+
+```bash
+git clone https://github.com/microsoft/microcode
+```
+
+-   setup MakeCode project structure (one time only)
+
+```bash
+cd microcode
+mkc init
+```
 
 ### Build
 
--   in this repo, run `mkc init` (one time only)
--   run `mkc serve`
--   head to http://127.0.0.1:7001 for simulator
--   run `mkc build -d` to compile and deploy to device
+Note that you can open terminals directly from VS Code by pressing "Ctrl + `".
+
+-   start a compilation server that will automatically compile and reload
+    a compile web version of the editor
+    
+```bash
+mkc serve
+```
+-   open to web editor at http://127.0.0.1:7001
+-   build a micro:bit Hex file and deploy
+
+```bash
+mkc build -d
+```
 
 ### With Jacdac devtools
 
@@ -98,6 +135,46 @@ MicroCode integrates with [Jacdac](https://aka.ms.jacdac) in several ways
 ## Language
 
 The MicroCode language owes much to [Kodu Game Lab](https://www.kodugamelab.com). [Read more](./language.md)...
+
+## Build setup for C++ runtime dev
+
+* clone https://github.com/microsoft/pxt-arcade repo at the same level as `microcode`
+* run:
+```bash
+npm install -g pxt-cli
+cd pxt-arcade
+yarn install
+mkdir projects
+cd projects
+mkdir microcode
+cd microcode
+export PXT_ASMDEBUG=1
+export PXT_COMPILE_SWITCHES=size
+export PXT_FORCE_LOCAL=yes
+export PXT_NODOCKER=yes
+export PXT_RUNTIME_DEV=yes
+```
+* you may use `npm` instead of `yarn`
+* you may skip `PXT_NODOCKER` if you don't have locally installed `arm-none-eabi-gcc`
+* in `projects/microcode` create `pxt.json` file with the following contents:
+```json
+{
+    "additionalFilePath": "../../../microcode",
+    "dependencies": {
+        "game---light": "file:../../libs/game---light",
+        "hw---n3": "file:../../libs/hw---n3",
+        "device": "file:../../libs/device",
+        "codal-jacdac-pxt": "file:../../../microcode/codal-jacdac-pxt"
+    }
+}
+```
+* run `pxt` - it will compile an deploy
+* run `code built/codal/libraries/codal-*`
+* checkout `main` or `master` in all `codal-*` repos and in `jacdac-c`
+
+Make sure not to delete `projects/microcode/built` since it contains your sources.
+If possible, you can move `built/codal/libraries` folder somewhere else, and symlink it inside `built/codal`
+to avoid accidentally deleting it.
 
 ## Contributing
 

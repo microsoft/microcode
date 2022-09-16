@@ -39,11 +39,11 @@ const liveStrings = {
     S8: "microphone",
 
     // filters for TID_SENSOR_PRESS
-    F0: "pin 0",
-    F1: "pin 1",
-    F2: "pin 2",
+    F0: "touch pin 0",
+    F1: "touch pin 1",
+    F2: "touch pin 2",
     F3: "button A",
-    F4: "button A",
+    F4: "button B",
     F5: "button A + B",
     // F6
     F7: "logo",
@@ -128,7 +128,7 @@ addSimMessageHandler("accessibility", data => {
         liveRegion.setAttribute("style", style)
         document.body.appendChild(liveRegion)
     }
-    if (liveRegion.textContent !== value) {
-        liveRegion.textContent = value
-    }
+    if (liveRegion.textContent === value)
+        liveRegion.textContent = ""
+    liveRegion.textContent = value
 })
