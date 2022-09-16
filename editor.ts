@@ -380,8 +380,6 @@ namespace microcode {
             this.okBtn.draw()
             this.picker.draw()
             this.cursor.draw()
-
-            //this.quadtree.dbgDraw(5);
         }
     }
 

@@ -30,7 +30,7 @@ namespace microcode {
         queryLeft: (cursor: Cursor) => Button
         queryRight: (cursor: Cursor) => Button
         getOverlapping: (cursor: Cursor) => Button[]
-        // TODO: where to put cursor first? (first button logic?)
+        initialCursor: (cursor: Cursor) => void
     }
 
     export class RowNavigator implements INavigator {
@@ -65,16 +65,29 @@ namespace microcode {
         public getOverlapping(cursor: Cursor): Button[] {
             return []
         }
+
+        public initialCursor(cursor: Cursor) {}
     }
 
     export class QuadtreeNavigator implements INavigator {
         private quadtree: QuadTree
+        private firstBtn: Button
 
         constructor() {
             this.initializeQuadtree()
         }
 
+        public initialCursor(cursor: Cursor) {
+            if (this.firstBtn)
+                cursor.snapTo(
+                    this.firstBtn.xfrm.worldPos.x,
+                    this.firstBtn.xfrm.worldPos.y,
+                    this.firstBtn.ariaId
+                )
+        }
+
         private initializeQuadtree() {
+            this.firstBtn = null
             if (this.quadtree) {
                 this.quadtree.clear()
             }
@@ -92,6 +105,7 @@ namespace microcode {
 
         private addToQuadTree(btn: Button) {
             if (this.quadtree) {
+                if (!this.firstBtn) this.firstBtn = btn
                 this.quadtree.insert(btn.hitbox, btn)
             }
         }
