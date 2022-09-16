@@ -8,13 +8,14 @@ and each rule consists of a **When** section and a **Do** section, each with a l
 **filters** on the sensor. The **Do** section begins with an **actuator** (or **action**), followed optional by one
 or **modifiers** to the actuator/action.
 
-The picture above shows a 1-page program that shows a happy face on the micro:bit screen when the A button is pressed and a sad face when the B button is pressed.
+The picture above shows a 1-page program with two rules:
+
+-   the first rule shows a happy face on the micro:bit screen when the A button is pressed
+-   the second rule shows a sad face when the B button is pressed.
 
 ## Pages
 
-Execution of the MicroCode program starts on page 1. All the rules on that page are active.
-Rules on another page only become active when the program switches to that page (via an explicit
-switch-page action).
+Execution of the MicroCode program starts on page 1. All the rules on that page are active.Rules on another page only become active when the program switches to that page (via an explicit switch-page action, discussed later).
 
 ## Rules and Informal Semantics
 
@@ -27,7 +28,7 @@ the order of the rules only matters when different rules act on the same resourc
 ### Sensors
 
 A sensor tile can refer to a hardware feature as simple as a button,
-a thermometer represented by a floating point (or fixed point) value, or an accelerometer with a set of possible events. A sensor could also refer to a GPIO pin, a timer, microphone, radio, or other means for the program to receive notification of a state change or an event. It is also possible for a sensor to refer to an internal program variable, modified by some other part of the user's program (self-notification).
+a thermometer represented by a floating point (or fixed point) value, or an accelerometer with a set of possible events. A sensor could also refer to a GPIO pin, a timer, microphone, radio, or other means for the program to receive notification of a state change or an event.
 
 In the program above, the sensor refers to a press/touch event, without reference to the particular hardware feature (see filters below).
 
