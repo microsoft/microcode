@@ -133,6 +133,12 @@ function makeCodeRun(options) {
             ch.start({ send });
         })
 
+    // hide simulator link if in sim mode
+    if (inIFrame()) {
+        const simlink = document.getElementById("simulator-link")
+        if (simlink) simlink.remove()
+    }
+    
     // helpers
     function setState(st) {
         var r = document.getElementById("root");
@@ -179,4 +185,13 @@ function makeCodeRun(options) {
             fs.remove();
         }
     }
+
+    function inIFrame() {
+        try {
+            return typeof window !== "undefined" && window.self !== window.top
+        } catch (e) {
+            return typeof window !== "undefined"
+        }
+    }
+    
 }
