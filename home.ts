@@ -64,6 +64,7 @@ namespace microcode {
             this.logLines = this.logLines.slice(
                 Math.max(this.logLines.length - 15, 0)
             )
+            accessibility.setLiveContent(text)
         }
 
         /**
