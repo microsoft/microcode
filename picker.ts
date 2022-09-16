@@ -221,7 +221,6 @@ namespace microcode {
 
             this.groups.forEach(group => {
                 let currentLeft = computedLeft
-                this.navigator.addButtons(group.buttons)
                 group.buttons.forEach((btn, index) => {
                     if (!firstBtn) {
                         firstBtn = btn
@@ -234,6 +233,7 @@ namespace microcode {
                     btn.xfrm.localPos.x = currentLeft + 8
                     currentLeft += 16
                 })
+                this.navigator.addButtons(group.buttons)
                 if (group.opts.label) {
                     currentTop += LABEL
                 }
