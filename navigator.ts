@@ -30,6 +30,7 @@ namespace microcode {
         queryLeft: (cursor: Cursor) => Button
         queryRight: (cursor: Cursor) => Button
         getOverlapping: (cursor: Cursor) => Button[]
+        // TODO: where to put cursor first? (first button logic?)
     }
 
     export class RowNavigator implements INavigator {

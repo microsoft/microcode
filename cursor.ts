@@ -5,7 +5,7 @@ namespace microcode {
         private xfrm_: Affine
         stylus: Sprite
         private hitbox_: Bounds
-        navigator: Navigator
+        navigator: INavigator
         cancelHandlerStack: CursorCancelHandler[]
         anim: Animation
         dest: Vec2
