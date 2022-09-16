@@ -55,10 +55,6 @@ namespace microcode {
             this.quadtree = undefined
         }
 
-        public initialize() {
-            this.initializeQuadtree()
-        }
-
         public addButtons(btns: Button[]) {
             this.buttonGroups.push(btns)
             btns.forEach(btn => this.addToQuadTree(btn))

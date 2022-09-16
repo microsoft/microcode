@@ -326,7 +326,10 @@ namespace microcode {
 
         private rebuildNavigator() {
             if (this.picker.visible) return
-            this.navigator.initialize()
+
+            if (this.navigator) this.navigator.clear()
+
+            this.navigator = new Navigator()
 
             this.navigator.addButtons([
                 this.okBtn,
