@@ -6,7 +6,7 @@ Microsoft MicroCode is a [MakeCode Arcade](https://arcade.makecode.com/) applica
 
 There are three ways to run MicroCode:
 
--   [web app](https:://microsoft.github.io/microcode) with micro:bit simulator (which you can bring up from the web app by clicking XYZ)
+-   [web app](https://microsoft.github.io/microcode) with micro:bit simulator (which you can bring up from the web app by clicking XYZ)
 -   web app with micro:bit V2 hardware connected over Web USB
 -   hex file deployed to micro:bit V2, Arcade Shield (for editing program), and optionally connected [Jacdac](https://aka.ms/jacdac) modules
 
@@ -17,7 +17,7 @@ owes much to [Kodu Game Lab](https://www.kodugamelab.com).
 
 ### MicroCode Web app
 
-The easiest way to get started with MicroCode is through the [web app](https:://microsoft.github.io/microcode). We recommend using the keyboard rather than the onscreen d-pad and buttons. The mapping is
+The easiest way to get started with MicroCode is through the [web app](https://microsoft.github.io/microcode). We recommend using the keyboard rather than the onscreen d-pad and buttons. The mapping is
 
 -   Arrow keys for D-pad
 -   Space bar for A button
