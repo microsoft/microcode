@@ -320,6 +320,10 @@ namespace microcode {
             }
         }
 
+        public addButtons(btns: Button[]) {
+            this.navigator.addButtons(btns)
+        }
+
         private rebuildNavigator() {
             if (this.picker.visible) return
             this.navigator.initialize()
@@ -331,9 +335,9 @@ namespace microcode {
                 this.nextPageBtn,
             ])
 
-            this.pageEditor.addToQuadTree()
+            this.pageEditor.addToNavigator()
 
-            this.cursor.quadtree = this.quadtree
+            this.cursor.navigator = this.navigator
         }
 
         private scrollAnimCallback(v: Vec2) {
@@ -350,7 +354,7 @@ namespace microcode {
             }
             if (this._changed) {
                 this._changed = false
-                this.rebuildQuadTree()
+                this.rebuildNavigator()
             }
             this.scrollanim.update()
             this.cursor.update()
@@ -470,8 +474,8 @@ namespace microcode {
             )
         }
 
-        public addToQuadTree() {
-            this.rules.forEach(rule => rule.addToQuadTree())
+        public addToNavigator() {
+            this.rules.forEach(rule => rule.addToNavigator())
         }
 
         public changed() {
@@ -754,14 +758,16 @@ namespace microcode {
             }
         }
 
-        public addToQuadTree() {
-            repNames.forEach(name => {
-                const buttons = this.rule[name]
-                buttons.forEach(btn => this.editor.addToQuadTree(btn))
-            })
-            this.editor.addToQuadTree(this.handleBtn)
-            this.editor.addToQuadTree(this.whenInsertBtn)
-            this.editor.addToQuadTree(this.doInsertBtn)
+        public addToNavigator() {
+            const btns: Button[] = []
+            btns.push(this.handleBtn)
+            this.rule["sensors"].forEach(b => btns.push(b))
+            btns.push(this.whenInsertBtn)
+            this.rule["filters"].forEach(b => btns.push(b))
+            btns.push(this.doInsertBtn)
+            this.rule["actuators"].forEach(b => btns.push(b))
+            this.rule["modifiers"].forEach(b => btns.push(b))
+            this.editor.addButtons(btns)
         }
 
         public isEmpty() {

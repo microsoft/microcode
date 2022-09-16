@@ -24,9 +24,33 @@ namespace microcode {
 
         constructor() {
             this.buttonGroups = []
+            this.initializeQuadtree()
+        }
+
+        private initializeQuadtree() {
+            if (this.quadtree) {
+                this.quadtree.clear()
+            }
+            this.quadtree = new QuadTree(
+                new Bounds({
+                    left: -512,
+                    top: -512,
+                    width: 1024,
+                    height: 1024,
+                }),
+                1,
+                16
+            )
+        }
+
+        public addToQuadTree(btn: Button) {
+            if (this.quadtree) {
+                this.quadtree.insert(btn.hitbox, btn)
+            }
         }
 
         public clear() {
+            this.buttonGroups = []
             this.quadtree.clear()
             this.quadtree = undefined
         }
@@ -37,7 +61,7 @@ namespace microcode {
 
         public addButtons(btns: Button[]) {
             this.buttonGroups.push(btns)
-            btns.forEach(this.addToQuadTree)
+            btns.forEach(btn => this.addToQuadTree(btn))
         }
 
         public queryUp(cursor: Cursor): Button {
@@ -188,28 +212,6 @@ namespace microcode {
                     return Bounds.Intersects(crsb, btn.hitbox)
                 })
             return btns
-        }
-
-        private initializeQuadtree() {
-            if (this.quadtree) {
-                this.quadtree.clear()
-            }
-            this.quadtree = new QuadTree(
-                new Bounds({
-                    left: -512,
-                    top: -512,
-                    width: 1024,
-                    height: 1024,
-                }),
-                1,
-                16
-            )
-        }
-
-        private addToQuadTree(btn: Button) {
-            if (this.quadtree) {
-                this.quadtree.insert(btn.hitbox, btn)
-            }
         }
     }
 }
