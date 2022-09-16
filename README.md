@@ -4,12 +4,20 @@ Microsoft MicroCode is a [MakeCode Arcade](https://arcade.makecode.com/) applica
 
 ## Developing
 
-The easiest way to get started is to open this repository in a GitHub Codespace (`Code` green button dropdown -> `Create Codespace on main`); and everything will be ready for you.
+The easiest way to get started is to open this repository in a GitHub Codespace and everything will be ready for you.
 
 We recommend using [Visual Studio Code](https://code.visualstudio.com/) as it provides excellent support
 for MakeCode editing, Git, and Codespaces.
 
-### Local Install(skip in Codespaces)
+### Codespaces setup
+
+- click on `Code` drop down and select `Create Codespace on main`
+- you can do your editing from VS Code online or click on `Codespaces` in lower left and select `Open in VS Code` to use the desktop version (must be installed on your machine)
+- press "Ctrl + `" to open a terminal and you're ready to go!
+
+In the future, click again on `Code` to find previously created Codespaces.
+
+### Local Install (skip in Codespaces)
 
 -   install [Node.js](https://nodejs.org/en/)
 -   install the MakeCode command line tools (`mkc` for short)
@@ -32,6 +40,8 @@ mkc init
 ```
 
 ### Build
+
+Note that you can open terminals directly from VS Code by pressing "Ctrl + `".
 
 -   start a compilation server that will automatically compile and reload
     a compile web version of the editor
