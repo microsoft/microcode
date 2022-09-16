@@ -13,6 +13,10 @@
 //        - When, sensor followed by filters, followed by
 //        - DO, actuator followed by modifiers
 
+// B can be handled pretty straightforwardly by have a list of list of buttons,
+// where each rule is a list of buttons in order from left to right, same with
+// menus
+
 const SEARCH_INCR = 8
 const SEARCH_MAX = 160
 const SEARCH_SLOPE = 1.1
@@ -44,6 +48,7 @@ namespace microcode {
         }
 
         public addToQuadTree(btn: Button) {
+            if (!this.quadtree) this.initializeQuadtree()
             if (this.quadtree) {
                 this.quadtree.insert(btn.hitbox, btn)
             }
@@ -56,6 +61,7 @@ namespace microcode {
         }
 
         public addButtons(btns: Button[]) {
+            if (!this.quadtree) this.initializeQuadtree()
             this.buttonGroups.push(btns)
             btns.forEach(btn => this.addToQuadTree(btn))
         }
