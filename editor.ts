@@ -28,7 +28,7 @@ namespace microcode {
     const TOOLBAR_COLOR = 11
 
     export class Editor extends Scene {
-        private quadtree: QuadTree
+        private navigator: Navigator
         private progdef: ProgramDefn
         private currPage: number
         private pageBtn: Button
@@ -309,8 +309,7 @@ namespace microcode {
 
         /* override */ shutdown() {
             this.progdef = undefined
-            this.quadtree.clear()
-            this.quadtree = undefined
+            this.navigator.clear()
         }
 
         /* override */ activate() {
@@ -321,34 +320,20 @@ namespace microcode {
             }
         }
 
-        private rebuildQuadTree() {
+        private rebuildNavigator() {
             if (this.picker.visible) return
-            if (this.quadtree) {
-                this.quadtree.clear()
-            }
-            this.quadtree = new QuadTree(
-                new Bounds({
-                    left: -512,
-                    top: -512,
-                    width: 1024,
-                    height: 1024,
-                }),
-                1,
-                16
-            )
-            this.addToQuadTree(this.pageBtn)
-            this.addToQuadTree(this.prevPageBtn)
-            this.addToQuadTree(this.nextPageBtn)
-            this.addToQuadTree(this.okBtn)
+            this.navigator.initialize()
+
+            this.navigator.addButtons([
+                this.okBtn,
+                this.prevPageBtn,
+                this.pageBtn,
+                this.nextPageBtn,
+            ])
+
             this.pageEditor.addToQuadTree()
 
             this.cursor.quadtree = this.quadtree
-        }
-
-        public addToQuadTree(btn: Button) {
-            if (this.quadtree) {
-                this.quadtree.insert(btn.hitbox, btn)
-            }
         }
 
         private scrollAnimCallback(v: Vec2) {
