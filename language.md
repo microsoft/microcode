@@ -5,10 +5,24 @@
 Following Kodu, the MicroCode language is defined in terms of pages, where a page has a list of rules,
 and each rule consists of a **When** section and a **Do** section, each with a list of programming
 **tiles**. The **When** section begins with a **sensor** tile, followed optionally by one or more
-**filters** on the sensor. The **Do** section begins with an **actuator**, followed optional by one
-or **modifiers** to the actuator.
+**filters** on the sensor. The **Do** section begins with an **actuator** (or **action**), followed optional by one
+or **modifiers** to the actuator/action.
 
 The picture above shows a 1-page program that shows a happy face on the micro:bit screen when the A button is pressed and a sad face when the B button is pressed.
+
+## Pages
+
+Execution of the MicroCode program starts on page 1. All the rules on that page are active.
+Rules on another page only become active when the program switches to that page (via an explicit
+switch-page action).
+
+## Rules and Informal Semantics
+
+The rules on a page fire in parallel, so if you want to have two different actions take place
+on the press of A button, you would have two rules with the same When section (A button is pressed),
+but different actions. If the actions of the two rules use the same resource (for example, both actions
+show something on the micro:bit screen), then the last rule in order from top to bottom wins. That is,
+the order of the rules only matters when different rules act on the same resource.
 
 ### Sensors
 
@@ -30,5 +44,8 @@ button (such as A or B, in the program above), execution will proceed to the **D
 The picker menu above shows the range of micro:bit hardware features that can generate a press event.
 
 ### Actuators
+
+Actuators represent actions that can change the state of the device, by writing to the screen, sending
+a message, playing a sound, etc.
 
 ### Modifiers
