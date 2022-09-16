@@ -4,20 +4,47 @@ Microsoft MicroCode is a [MakeCode Arcade](https://arcade.makecode.com/) applica
 
 ## Developing
 
-### Install
+The easiest way to get started is to open this repository in a GitHub Codespace (`Code` green button dropdown -> `Create Codespace on main`); and everything will be ready for you.
 
-You can spin up a GitHub Codespace on the repo or setup things locally:
+We recommend using [Visual Studio Code](https://code.visualstudio.com/) as it provides excellent support
+for MakeCode editing, Git, and Codespaces.
+
+### Local Install(skip in Codespaces)
 
 -   install [Node.js](https://nodejs.org/en/)
--   `npm install -g -u makecode`
+-   install the MakeCode command line tools (`mkc` for short)
+
+```bash
+npm install -g -u makecode
+```
+
 -   clone this repo
+
+```bash
+git clone https://github.com/microsoft/microcode
+```
+
+-   setup MakeCode project structure (one time only)
+
+```bash
+cd microcode
+mkc init
+```
 
 ### Build
 
--   in this repo, run `mkc init` (one time only)
--   run `mkc serve`
--   head to http://127.0.0.1:7001 for simulator
--   run `mkc build -d` to compile and deploy to device
+-   start a compilation server that will automatically compile and reload
+    a compile web version of the editor
+    
+```bash
+mkc serve
+```
+-   open to web editor at http://127.0.0.1:7001
+-   build a micro:bit Hex file and deploy
+
+```bash
+mkc build -d
+```
 
 ### With Jacdac devtools
 
