@@ -122,6 +122,7 @@ namespace microcode {
 
         private backButton() {
             if (!this.cursor.cancel()) {
+                // Navigation-specific logic
                 this.cursor.moveTo(
                     this.pageBtn.xfrm.worldPos,
                     this.pageBtn.ariaId
