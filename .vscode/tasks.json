@@ -3,28 +3,17 @@
 {
     "version": "2.0.0",
     "tasks": [{
-        "label": "pxt deploy",
+        "label": "build & deploy",
         "type": "shell",
-        "command": "pxt deploy --local",
+        "command": "makecode build -d",
         "group": "build",
         "problemMatcher": [ "$tsc" ]
     }, {
-        "label": "pxt build",
+        "label": "watch & serve",
         "type": "shell",
-        "command": "pxt build --local",
+        "command": "makecode serve",
         "group": "build",
-        "problemMatcher": [ "$tsc" ]
-    }, {
-        "label": "pxt install",
-        "type": "shell",
-        "command": "pxt install",
-        "group": "build",
-        "problemMatcher": [ "$tsc" ]
-    }, {
-        "label": "pxt clean",
-        "type": "shell",
-        "command": "pxt clean",
-        "group": "test",
         "problemMatcher": [ "$tsc" ]
     }]
 }
+
