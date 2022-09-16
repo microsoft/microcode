@@ -1,17 +1,14 @@
-name: Build
-
+name: Build+Release
 on:
-  push:
-
+  release:
+    types:
+      - created
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [16.x]
-
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
@@ -32,7 +29,15 @@ jobs:
             npm install -g makecode
       - name: build js
         run: |
-          makecode --java-script
+          makecode --java-script -u
       - name: build hardware N3
         run: |
           makecode --hw N3
+      - name: copy files
+        run: |
+          cp ./built/binary.js ./assets/js/binary.js
+          cp ./built/n3/binary.hex ./assets/firmware.hex
+      - name: upload modified assets
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: assets/*.js
