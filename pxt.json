@@ -1,6 +1,6 @@
 {
     "name": "microcode",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "description": "Coding microcontrollers using Arcade",
     "dependencies": {
         "game---light": "*",
