@@ -22,12 +22,54 @@ const SEARCH_MAX = 160
 const SEARCH_SLOPE = 1.1
 
 namespace microcode {
-    export class Navigator {
-        private quadtree: QuadTree
+    export interface INavigator {
+        clear: () => void
+        addButtons: (btns: Button[]) => void
+        queryUp: (cursor: Cursor) => Button
+        queryDown: (cursor: Cursor) => Button
+        queryLeft: (cursor: Cursor) => Button
+        queryRight: (cursor: Cursor) => Button
+        getOverlapping: (cursor: Cursor) => Button[]
+    }
+
+    export class RowNavigator implements INavigator {
         private buttonGroups: Button[][]
+        private row: number
+        private col: number
 
         constructor() {
             this.buttonGroups = []
+        }
+
+        public clear() {
+            this.buttonGroups = []
+        }
+
+        public addButtons(btns: Button[]) {
+            this.buttonGroups.push(btns)
+        }
+        public queryUp(cursor: Cursor): Button {
+            return null
+        }
+        public queryDown(cursor: Cursor): Button {
+            return null
+        }
+        public queryLeft(cursor: Cursor): Button {
+            return null
+        }
+        public queryRight(cursor: Cursor): Button {
+            return null
+        }
+
+        public getOverlapping(cursor: Cursor): Button[] {
+            return []
+        }
+    }
+
+    export class QuadtreeNavigator implements INavigator {
+        private quadtree: QuadTree
+
+        constructor() {
             this.initializeQuadtree()
         }
 
@@ -47,22 +89,19 @@ namespace microcode {
             )
         }
 
-        public addToQuadTree(btn: Button) {
-            if (!this.quadtree) this.initializeQuadtree()
+        private addToQuadTree(btn: Button) {
             if (this.quadtree) {
                 this.quadtree.insert(btn.hitbox, btn)
             }
         }
 
         public clear() {
-            this.buttonGroups = []
             this.quadtree.clear()
             this.quadtree = undefined
         }
 
         public addButtons(btns: Button[]) {
             if (!this.quadtree) this.initializeQuadtree()
-            this.buttonGroups.push(btns)
             btns.forEach(btn => this.addToQuadTree(btn))
         }
 

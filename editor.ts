@@ -28,7 +28,7 @@ namespace microcode {
     const TOOLBAR_COLOR = 11
 
     export class Editor extends Scene {
-        private navigator: Navigator
+        private navigator: INavigator
         private progdef: ProgramDefn
         private currPage: number
         private pageBtn: Button
@@ -329,7 +329,7 @@ namespace microcode {
 
             if (this.navigator) this.navigator.clear()
 
-            this.navigator = new Navigator()
+            this.navigator = new QuadtreeNavigator()
 
             this.navigator.addButtons([
                 this.okBtn,

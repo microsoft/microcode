@@ -42,8 +42,8 @@ namespace microcode {
     export class Picker extends Component implements IPlaceable {
         public groups: PickerGroup[]
         private xfrm_: Affine
-        private navigator: Navigator
-        private prevNavigator: Navigator
+        private navigator: INavigator
+        private prevNavigator: INavigator
         private prevpos: Vec2
         private prevAriaId: string
         private deleteBtn: Button
@@ -63,7 +63,7 @@ namespace microcode {
             super("picker")
             this.xfrm_ = new Affine()
             this.groups = []
-            this.navigator = new Navigator()
+            this.navigator = new QuadtreeNavigator()
         }
 
         public addGroup(opts: { label: string; btns: PickerButtonDef[] }) {
@@ -211,8 +211,17 @@ namespace microcode {
 
             let currentTop =
                 computedTop + (this.deleteBtn || this.title ? HEADER : 0)
+
+            if (this.deleteBtn) {
+                this.deleteBtn.xfrm.localPos.x =
+                    computedLeft + computedWidth - 8
+                this.deleteBtn.xfrm.localPos.y = computedTop + 8
+                this.navigator.addButtons([this.deleteBtn])
+            }
+
             this.groups.forEach(group => {
                 let currentLeft = computedLeft
+                this.navigator.addButtons(group.buttons)
                 group.buttons.forEach((btn, index) => {
                     if (!firstBtn) {
                         firstBtn = btn
@@ -224,19 +233,11 @@ namespace microcode {
                     btn.xfrm.localPos.y = currentTop + 8
                     btn.xfrm.localPos.x = currentLeft + 8
                     currentLeft += 16
-                    this.navigator.addToQuadTree(btn)
                 })
                 if (group.opts.label) {
                     currentTop += LABEL
                 }
             })
-
-            if (this.deleteBtn) {
-                this.deleteBtn.xfrm.localPos.x =
-                    computedLeft + computedWidth - 8
-                this.deleteBtn.xfrm.localPos.y = computedTop + 8
-                this.navigator.addToQuadTree(this.deleteBtn)
-            }
 
             this.cursor.snapTo(
                 firstBtn.xfrm.worldPos.x,
