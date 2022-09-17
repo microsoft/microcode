@@ -36,13 +36,8 @@
         "jacs_opwriter.ts",
         "jacs_topwriter.ts",
         "version.ts",
-        "language.md",
         "fieldeditors.ts",
-        "navigator.ts",
-        "microbit.md",
-        "jacdac.md",
-        "manual.md",
-        "develop.md"
+        "navigator.ts"
     ],
     "testFiles": [],
     "targetVersions": {

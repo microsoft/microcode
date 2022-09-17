@@ -6,11 +6,11 @@ MicroCode features a tile-based language and editor, inspired by [Kodu Game Lab]
 
 ## Getting started
 
-To get started, please see the [MicroCode manual](./manual.md).
+To get started, please see the [MicroCode manual](./docs/manual.md).
 
 ## Development
 
-To contribute to MicroCode, please read about [MicroCode development](./develop.md).
+To contribute to MicroCode, please read about [MicroCode development](./docs/develop.md).
 
 ## Contributing
 
