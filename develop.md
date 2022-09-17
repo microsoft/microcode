@@ -73,12 +73,13 @@ You might also be able to commit and push directly from the web site, but we fin
 
 ### Updating GitHub pages
 
-To bump and refresh the github pages javascript,
+To bump and refresh the github pages javascript and pre-built .hex file, run this script
 
-    sh ./bump.sh
-    sh ./release.sh
+```bash
+sh ./bump.sh
+```
 
-then commit the generated files.
+A GitHub Action will trigger and update the web site within a few minutes.
 
 ## Overview of implementation
 
