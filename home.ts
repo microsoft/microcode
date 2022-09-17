@@ -203,7 +203,7 @@ namespace microcode {
             }
             this.paused = false
 
-            this.log("program started", 1)
+            // this.log("program started", 1)
         }
 
         /* override */ deactivate() {
