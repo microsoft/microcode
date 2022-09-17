@@ -10,7 +10,7 @@ To get started, please see the [MicroCode manual](./manual.md).
 
 ## Development
 
-To change or contribute to MicroCode, please read about [MicroCode development](./develop.md).
+To contribute to MicroCode, please read about [MicroCode development](./develop.md).
 
 ## Contributing
 
