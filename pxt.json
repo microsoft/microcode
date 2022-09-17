@@ -40,7 +40,9 @@
         "fieldeditors.ts",
         "navigator.ts",
         "microbit.md",
-        "jacdac.md"
+        "jacdac.md",
+        "manual.md",
+        "develop.md"
     ],
     "testFiles": [],
     "targetVersions": {

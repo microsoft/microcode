@@ -1,5 +1,5 @@
 // meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.0.11","target":"arcade","targetVersion":"1.10.19"}
-// total=1754891 new=93.81% cached=0.00% other=6.19%
+// total=1754904 new=93.81% cached=0.00% other=6.19%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1838,7 +1838,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_inline__P5999.info = {"start":9278,"length":27,"line":266,"column":35,"endLine":266,"endColumn":62,"fileName":"tiles.ts","functionName":"inline","argumentNames":["x"]}
+microcode_inline__P5999.info = {"start":9544,"length":27,"line":266,"column":35,"endLine":266,"endColumn":62,"fileName":"tiles.ts","functionName":"inline","argumentNames":["x"]}
 
 function microcode_inline__P5999_mk(s) {
     checkStack(s.depth);
@@ -1913,7 +1913,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_inline__P6007.info = {"start":9531,"length":226,"line":280,"column":19,"endLine":286,"endColumn":5,"fileName":"tiles.ts","functionName":"inline","argumentNames":["e"]}
+microcode_inline__P6007.info = {"start":9811,"length":232,"line":280,"column":19,"endLine":286,"endColumn":5,"fileName":"tiles.ts","functionName":"inline","argumentNames":["e"]}
 
 function microcode_inline__P6007_mk(s) {
     checkStack(s.depth);
@@ -2123,7 +2123,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-make_vals_inline__P6041.info = {"start":9931,"length":570,"line":292,"column":22,"endLine":304,"endColumn":5,"fileName":"tiles.ts","functionName":"inline","argumentNames":["name","kind","start"]}
+make_vals_inline__P6041.info = {"start":10223,"length":582,"line":292,"column":22,"endLine":304,"endColumn":5,"fileName":"tiles.ts","functionName":"inline","argumentNames":["name","kind","start"]}
 
 function make_vals_inline__P6041_mk(s) {
     checkStack(s.depth);
@@ -2217,7 +2217,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_inline__P6122.info = {"start":10668,"length":261,"line":310,"column":26,"endLine":315,"endColumn":5,"fileName":"tiles.ts","functionName":"inline","argumentNames":["state"]}
+microcode_inline__P6122.info = {"start":10978,"length":266,"line":310,"column":26,"endLine":315,"endColumn":5,"fileName":"tiles.ts","functionName":"inline","argumentNames":["state"]}
 
 function microcode_inline__P6122_mk(s) {
     checkStack(s.depth);
@@ -2253,7 +2253,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-clone_inline__P6149.info = {"start":11111,"length":27,"line":325,"column":15,"endLine":325,"endColumn":42,"fileName":"tiles.ts","functionName":"inline","argumentNames":["img"]}
+clone_inline__P6149.info = {"start":11436,"length":27,"line":325,"column":15,"endLine":325,"endColumn":42,"fileName":"tiles.ts","functionName":"inline","argumentNames":["img"]}
 
 function clone_inline__P6149_mk(s) {
     checkStack(s.depth);
@@ -2323,7 +2323,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-serialize_inline__P6156.info = {"start":11213,"length":298,"line":328,"column":19,"endLine":336,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["img"]}
+serialize_inline__P6156.info = {"start":11541,"length":306,"line":328,"column":19,"endLine":336,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["img"]}
 
 function serialize_inline__P6156_mk(s) {
     checkStack(s.depth);
@@ -2395,7 +2395,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-deserialize_inline__P6182.info = {"start":11534,"length":297,"line":337,"column":21,"endLine":345,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["s"]}
+deserialize_inline__P6182.info = {"start":11871,"length":305,"line":337,"column":21,"endLine":345,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["s"]}
 
 function deserialize_inline__P6182_mk(s) {
     checkStack(s.depth);
@@ -2450,7 +2450,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-clone_inline__P6226.info = {"start":13042,"length":102,"line":387,"column":15,"endLine":391,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["field"]}
+clone_inline__P6226.info = {"start":13429,"length":106,"line":387,"column":15,"endLine":391,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["field"]}
 
 function clone_inline__P6226_mk(s) {
     checkStack(s.depth);
@@ -2498,7 +2498,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-serialize_inline__P6233.info = {"start":13224,"length":43,"line":394,"column":19,"endLine":394,"endColumn":62,"fileName":"tiles.ts","functionName":"inline","argumentNames":["field"]}
+serialize_inline__P6233.info = {"start":13618,"length":43,"line":394,"column":19,"endLine":394,"endColumn":62,"fileName":"tiles.ts","functionName":"inline","argumentNames":["field"]}
 
 function serialize_inline__P6233_mk(s) {
     checkStack(s.depth);
@@ -2542,7 +2542,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-deserialize_inline__P6239.info = {"start":13290,"length":73,"line":395,"column":21,"endLine":397,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["note"]}
+deserialize_inline__P6239.info = {"start":13685,"length":75,"line":395,"column":21,"endLine":397,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["note"]}
 
 function deserialize_inline__P6239_mk(s) {
     checkStack(s.depth);
@@ -2582,7 +2582,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P6454.info = {"start":32,"length":45,"line":2,"column":11,"endLine":4,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
+inline__P6454.info = {"start":34,"length":47,"line":2,"column":11,"endLine":4,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
 
 function inline__P6454_mk(s) {
     checkStack(s.depth);
@@ -2627,7 +2627,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_App_constructor__P3157.info = {"start":325,"length":403,"line":15,"column":8,"endLine":25,"endColumn":9,"fileName":"app.ts","functionName":"inline","argumentNames":["this"]}
+microcode_App_constructor__P3157.info = {"start":340,"length":413,"line":15,"column":8,"endLine":25,"endColumn":9,"fileName":"app.ts","functionName":"inline","argumentNames":["this"]}
 
 function microcode_App_constructor__P3157_mk(s) {
     checkStack(s.depth);
@@ -2692,7 +2692,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_App_inline__P6460.info = {"start":447,"length":267,"line":17,"column":23,"endLine":24,"endColumn":13,"fileName":"app.ts","functionName":"inline","argumentNames":[]}
+microcode_App_inline__P6460.info = {"start":464,"length":274,"line":17,"column":23,"endLine":24,"endColumn":13,"fileName":"app.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_App_inline__P6460_mk(s) {
     checkStack(s.depth);
@@ -2736,7 +2736,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_App_pushScene__P3160.info = {"start":1326,"length":89,"line":46,"column":8,"endLine":48,"endColumn":9,"fileName":"app.ts","functionName":"pushScene","argumentNames":["this","scene"]}
+microcode_App_pushScene__P3160.info = {"start":1372,"length":91,"line":46,"column":8,"endLine":48,"endColumn":9,"fileName":"app.ts","functionName":"pushScene","argumentNames":["this","scene"]}
 
 function microcode_App_pushScene__P3160_mk(s) {
     checkStack(s.depth);
@@ -2817,7 +2817,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_SceneManager_pushScene__P2997.info = {"start":2002,"length":330,"line":70,"column":8,"endLine":80,"endColumn":9,"fileName":"scene.ts","functionName":"pushScene","argumentNames":["this","scene"]}
+microcode_SceneManager_pushScene__P2997.info = {"start":2072,"length":340,"line":70,"column":8,"endLine":80,"endColumn":9,"fileName":"scene.ts","functionName":"pushScene","argumentNames":["this","scene"]}
 
 function microcode_SceneManager_pushScene__P2997_mk(s) {
     checkStack(s.depth);
@@ -2904,7 +2904,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Scene___init__P2993.info = {"start":926,"length":939,"line":39,"column":8,"endLine":60,"endColumn":9,"fileName":"scene.ts","functionName":"__init","argumentNames":["this"]}
+microcode_Scene___init__P2993.info = {"start":965,"length":960,"line":39,"column":8,"endLine":60,"endColumn":9,"fileName":"scene.ts","functionName":"__init","argumentNames":["this"]}
 
 function microcode_Scene___init__P2993_mk(s) {
     checkStack(s.depth);
@@ -2973,7 +2973,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Scene___init_inline__P6503.info = {"start":1009,"length":283,"line":40,"column":72,"endLine":46,"endColumn":13,"fileName":"scene.ts","functionName":"inline","argumentNames":[]}
+microcode_Scene___init_inline__P6503.info = {"start":1049,"length":289,"line":40,"column":72,"endLine":46,"endColumn":13,"fileName":"scene.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Scene___init_inline__P6503_mk(s) {
     checkStack(s.depth);
@@ -3013,7 +3013,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Scene___init_inline__P6525.info = {"start":1405,"length":51,"line":48,"column":73,"endLine":50,"endColumn":13,"fileName":"scene.ts","functionName":"inline","argumentNames":[]}
+microcode_Scene___init_inline__P6525.info = {"start":1453,"length":53,"line":48,"column":73,"endLine":50,"endColumn":13,"fileName":"scene.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Scene___init_inline__P6525_mk(s) {
     checkStack(s.depth);
@@ -3064,7 +3064,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Scene___init_inline__P6530.info = {"start":1531,"length":191,"line":51,"column":73,"endLine":56,"endColumn":13,"fileName":"scene.ts","functionName":"inline","argumentNames":[]}
+microcode_Scene___init_inline__P6530.info = {"start":1582,"length":196,"line":51,"column":73,"endLine":56,"endColumn":13,"fileName":"scene.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Scene___init_inline__P6530_mk(s) {
     checkStack(s.depth);
@@ -3100,7 +3100,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Scene_draw__P2992.info = {"start":907,"length":9,"line":37,"column":23,"endLine":37,"endColumn":32,"fileName":"scene.ts","functionName":"draw","argumentNames":["this"]}
+microcode_Scene_draw__P2992.info = {"start":944,"length":9,"line":37,"column":23,"endLine":37,"endColumn":32,"fileName":"scene.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_Scene_draw__P2992_mk(s) {
     checkStack(s.depth);
@@ -3142,7 +3142,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Screen_image__P3349.info = {"start":981,"length":200,"line":28,"column":8,"endLine":33,"endColumn":9,"fileName":"screen.ts","functionName":"image","argumentNames":[]}
+microcode_Screen_image__P3349.info = {"start":1009,"length":205,"line":28,"column":8,"endLine":33,"endColumn":9,"fileName":"screen.ts","functionName":"image","argumentNames":[]}
 microcode_Screen_image__P3349.isGetter = true;
 
 function microcode_Screen_image__P3349_mk(s) {
@@ -3180,7 +3180,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Scene_update__P2991.info = {"start":871,"length":11,"line":35,"column":23,"endLine":35,"endColumn":34,"fileName":"scene.ts","functionName":"update","argumentNames":["this"]}
+microcode_Scene_update__P2991.info = {"start":906,"length":11,"line":35,"column":23,"endLine":35,"endColumn":34,"fileName":"scene.ts","functionName":"update","argumentNames":["this"]}
 
 function microcode_Scene_update__P2991_mk(s) {
     checkStack(s.depth);
@@ -5251,7 +5251,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Scene_activate__P2989.info = {"start":793,"length":13,"line":31,"column":23,"endLine":31,"endColumn":36,"fileName":"scene.ts","functionName":"activate","argumentNames":["this"]}
+microcode_Scene_activate__P2989.info = {"start":824,"length":13,"line":31,"column":23,"endLine":31,"endColumn":36,"fileName":"scene.ts","functionName":"activate","argumentNames":["this"]}
 
 function microcode_Scene_activate__P2989_mk(s) {
     checkStack(s.depth);
@@ -5285,7 +5285,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Scene_startup__P2987.info = {"start":718,"length":12,"line":27,"column":23,"endLine":27,"endColumn":35,"fileName":"scene.ts","functionName":"startup","argumentNames":["this"]}
+microcode_Scene_startup__P2987.info = {"start":745,"length":12,"line":27,"column":23,"endLine":27,"endColumn":35,"fileName":"scene.ts","functionName":"startup","argumentNames":["this"]}
 
 function microcode_Scene_startup__P2987_mk(s) {
     checkStack(s.depth);
@@ -5582,7 +5582,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Scene_deactivate__P2990.info = {"start":831,"length":15,"line":33,"column":23,"endLine":33,"endColumn":38,"fileName":"scene.ts","functionName":"deactivate","argumentNames":["this"]}
+microcode_Scene_deactivate__P2990.info = {"start":864,"length":15,"line":33,"column":23,"endLine":33,"endColumn":38,"fileName":"scene.ts","functionName":"deactivate","argumentNames":["this"]}
 
 function microcode_Scene_deactivate__P2990_mk(s) {
     checkStack(s.depth);
@@ -5635,7 +5635,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_SceneManager_currScene__P5800.info = {"start":2717,"length":178,"line":95,"column":8,"endLine":100,"endColumn":9,"fileName":"scene.ts","functionName":"currScene","argumentNames":["this"]}
+microcode_SceneManager_currScene__P5800.info = {"start":2812,"length":183,"line":95,"column":8,"endLine":100,"endColumn":9,"fileName":"scene.ts","functionName":"currScene","argumentNames":["this"]}
 
 function microcode_SceneManager_currScene__P5800_mk(s) {
     checkStack(s.depth);
@@ -5692,7 +5692,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_constructor__P3227.info = {"start":943,"length":172,"line":46,"column":8,"endLine":51,"endColumn":9,"fileName":"home.ts","functionName":"inline","argumentNames":["this","app"]}
+microcode_Home_constructor__P3227.info = {"start":989,"length":177,"line":46,"column":8,"endLine":51,"endColumn":9,"fileName":"home.ts","functionName":"inline","argumentNames":["this","app"]}
 
 function microcode_Home_constructor__P3227_mk(s) {
     checkStack(s.depth);
@@ -5742,7 +5742,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Scene_constructor__P2986.info = {"start":565,"length":128,"line":22,"column":8,"endLine":25,"endColumn":9,"fileName":"scene.ts","functionName":"inline","argumentNames":["this","app","name"]}
+microcode_Scene_constructor__P2986.info = {"start":587,"length":131,"line":22,"column":8,"endLine":25,"endColumn":9,"fileName":"scene.ts","functionName":"inline","argumentNames":["this","app","name"]}
 
 function microcode_Scene_constructor__P2986_mk(s) {
     checkStack(s.depth);
@@ -5801,7 +5801,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Affine_constructor__P3301.info = {"start":1791,"length":136,"line":60,"column":8,"endLine":64,"endColumn":9,"fileName":"affine.ts","functionName":"inline","argumentNames":["this"]}
+microcode_Affine_constructor__P3301.info = {"start":1851,"length":140,"line":60,"column":8,"endLine":64,"endColumn":9,"fileName":"affine.ts","functionName":"inline","argumentNames":["this"]}
 
 function microcode_Affine_constructor__P3301_mk(s) {
     checkStack(s.depth);
@@ -5841,7 +5841,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Vec2_constructor__P3313.info = {"start":619,"length":44,"line":25,"column":8,"endLine":25,"endColumn":52,"fileName":"math.ts","functionName":"inline","argumentNames":["this","x_","y_"]}
+microcode_Vec2_constructor__P3313.info = {"start":644,"length":44,"line":25,"column":8,"endLine":25,"endColumn":52,"fileName":"math.ts","functionName":"inline","argumentNames":["this","x_","y_"]}
 
 function microcode_Vec2_constructor__P3313_mk(s) {
     checkStack(s.depth);
@@ -5881,7 +5881,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_SceneManager_constructor__P2996.info = {"start":1938,"length":54,"line":66,"column":8,"endLine":68,"endColumn":9,"fileName":"scene.ts","functionName":"inline","argumentNames":["this"]}
+microcode_SceneManager_constructor__P2996.info = {"start":2004,"length":56,"line":66,"column":8,"endLine":68,"endColumn":9,"fileName":"scene.ts","functionName":"inline","argumentNames":["this"]}
 
 function microcode_SceneManager_constructor__P2996_mk(s) {
     checkStack(s.depth);
@@ -6018,7 +6018,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_icons_init__P2901.info = {"start":354,"length":5021,"line":12,"column":8,"endLine":105,"endColumn":9,"fileName":"assets.ts","functionName":"init","argumentNames":[]}
+microcode_icons_init__P2901.info = {"start":366,"length":5114,"line":12,"column":8,"endLine":105,"endColumn":9,"fileName":"assets.ts","functionName":"init","argumentNames":[]}
 
 function microcode_icons_init__P2901_mk(s) {
     checkStack(s.depth);
@@ -6508,7 +6508,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Bounds_constructor__P3263.info = {"start":819,"length":284,"line":27,"column":8,"endLine":37,"endColumn":9,"fileName":"bounds.ts","functionName":"inline","argumentNames":["this","opts"]}
+microcode_Bounds_constructor__P3263.info = {"start":846,"length":294,"line":27,"column":8,"endLine":37,"endColumn":9,"fileName":"bounds.ts","functionName":"inline","argumentNames":["this","opts"]}
 
 function microcode_Bounds_constructor__P3263_mk(s) {
     checkStack(s.depth);
@@ -6610,7 +6610,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MusicEditor_constructor__P6250.info = {"start":13450,"length":362,"line":402,"column":8,"endLine":410,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["this","field"]}
+microcode_MusicEditor_constructor__P6250.info = {"start":13852,"length":370,"line":402,"column":8,"endLine":410,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["this","field"]}
 
 function microcode_MusicEditor_constructor__P6250_mk(s) {
     checkStack(s.depth);
@@ -7053,7 +7053,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_noteToImage__P3709.info = {"start":1939,"length":124,"line":59,"column":4,"endLine":61,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"noteToImage","argumentNames":["field"]}
+microcode_noteToImage__P3709.info = {"start":1998,"length":126,"line":59,"column":4,"endLine":61,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"noteToImage","argumentNames":["field"]}
 
 function microcode_noteToImage__P3709_mk(s) {
     checkStack(s.depth);
@@ -7123,7 +7123,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_noteToImageRaw__P6446.info = {"start":1486,"length":447,"line":46,"column":4,"endLine":57,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"noteToImageRaw","argumentNames":["img","note"]}
+microcode_noteToImageRaw__P6446.info = {"start":1532,"length":458,"line":46,"column":4,"endLine":57,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"noteToImageRaw","argumentNames":["img","note"]}
 
 function microcode_noteToImageRaw__P6446_mk(s) {
     checkStack(s.depth);
@@ -7443,7 +7443,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_musicEditor__P3710.info = {"start":2069,"length":1060,"line":63,"column":4,"endLine":93,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"musicEditor","argumentNames":["field","picker","onHide","onDelete"]}
+microcode_musicEditor__P3710.info = {"start":2132,"length":1090,"line":63,"column":4,"endLine":93,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"musicEditor","argumentNames":["field","picker","onHide","onDelete"]}
 
 function microcode_musicEditor__P3710_mk(s) {
     checkStack(s.depth);
@@ -7632,7 +7632,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P8044.info = {"start":2521,"length":508,"line":77,"column":25,"endLine":87,"endColumn":17,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":["iconId","button"]}
+onClick_inline__P8044.info = {"start":2598,"length":518,"line":77,"column":25,"endLine":87,"endColumn":17,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":["iconId","button"]}
 
 function onClick_inline__P8044_mk(s) {
     checkStack(s.depth);
@@ -7812,7 +7812,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_draw__P3290.info = {"start":4580,"length":973,"line":148,"column":8,"endLine":169,"endColumn":9,"fileName":"picker.ts","functionName":"draw","argumentNames":["this"]}
+microcode_Picker_draw__P3290.info = {"start":4728,"length":994,"line":148,"column":8,"endLine":169,"endColumn":9,"fileName":"picker.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_Picker_draw__P3290_mk(s) {
     checkStack(s.depth);
@@ -7859,7 +7859,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_draw_inline__P8167.info = {"start":5333,"length":137,"line":162,"column":36,"endLine":166,"endColumn":17,"fileName":"picker.ts","functionName":"inline","argumentNames":["group"]}
+microcode_Picker_draw_inline__P8167.info = {"start":5495,"length":141,"line":162,"column":36,"endLine":166,"endColumn":17,"fileName":"picker.ts","functionName":"inline","argumentNames":["group"]}
 
 function microcode_Picker_draw_inline__P8167_mk(s) {
     checkStack(s.depth);
@@ -7899,7 +7899,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_draw_inline__P8172.info = {"start":5386,"length":65,"line":163,"column":42,"endLine":165,"endColumn":21,"fileName":"picker.ts","functionName":"inline","argumentNames":["btn"]}
+microcode_Picker_draw_inline__P8172.info = {"start":5549,"length":67,"line":163,"column":42,"endLine":165,"endColumn":21,"fileName":"picker.ts","functionName":"inline","argumentNames":["btn"]}
 
 function microcode_Picker_draw_inline__P8172_mk(s) {
     checkStack(s.depth);
@@ -7956,7 +7956,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Button_draw__P2877.info = {"start":5686,"length":352,"line":193,"column":23,"endLine":202,"endColumn":9,"fileName":"button.ts","functionName":"draw","argumentNames":["this"]}
+microcode_Button_draw__P2877.info = {"start":5879,"length":361,"line":193,"column":23,"endLine":202,"endColumn":9,"fileName":"button.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_Button_draw__P2877_mk(s) {
     checkStack(s.depth);
@@ -8055,7 +8055,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Sprite_draw__P3178.info = {"start":2605,"length":441,"line":79,"column":23,"endLine":92,"endColumn":9,"fileName":"sprite.ts","functionName":"draw","argumentNames":["this"]}
+microcode_Sprite_draw__P3178.info = {"start":2684,"length":454,"line":79,"column":23,"endLine":92,"endColumn":9,"fileName":"sprite.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_Sprite_draw__P3178_mk(s) {
     checkStack(s.depth);
@@ -8107,7 +8107,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Vec2_y__P3311.info = {"start":420,"length":53,"line":16,"column":8,"endLine":18,"endColumn":9,"fileName":"math.ts","functionName":"y","argumentNames":["this"]}
+microcode_Vec2_y__P3311.info = {"start":436,"length":55,"line":16,"column":8,"endLine":18,"endColumn":9,"fileName":"math.ts","functionName":"y","argumentNames":["this"]}
 microcode_Vec2_y__P3311.isGetter = true;
 
 function microcode_Vec2_y__P3311_mk(s) {
@@ -8142,7 +8142,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Sprite_xfrm__P3164.info = {"start":257,"length":59,"line":7,"column":8,"endLine":9,"endColumn":9,"fileName":"sprite.ts","functionName":"xfrm","argumentNames":["this"]}
+microcode_Sprite_xfrm__P3164.info = {"start":264,"length":61,"line":7,"column":8,"endLine":9,"endColumn":9,"fileName":"sprite.ts","functionName":"xfrm","argumentNames":["this"]}
 microcode_Sprite_xfrm__P3164.isGetter = true;
 
 function microcode_Sprite_xfrm__P3164_mk(s) {
@@ -8193,7 +8193,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Affine_worldPos__P3295.info = {"start":902,"length":141,"line":26,"column":8,"endLine":31,"endColumn":9,"fileName":"affine.ts","functionName":"worldPos","argumentNames":["this"]}
+microcode_Affine_worldPos__P3295.info = {"start":928,"length":146,"line":26,"column":8,"endLine":31,"endColumn":9,"fileName":"affine.ts","functionName":"worldPos","argumentNames":["this"]}
 microcode_Affine_worldPos__P3295.isGetter = true;
 
 function microcode_Affine_worldPos__P3295_mk(s) {
@@ -8284,7 +8284,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Affine_recalc__P3304.info = {"start":2201,"length":398,"line":77,"column":8,"endLine":87,"endColumn":9,"fileName":"affine.ts","functionName":"recalc","argumentNames":["this","force"]}
+microcode_Affine_recalc__P3304.info = {"start":2278,"length":408,"line":77,"column":8,"endLine":87,"endColumn":9,"fileName":"affine.ts","functionName":"recalc","argumentNames":["this","force"]}
 
 function microcode_Affine_recalc__P3304_mk(s) {
     checkStack(s.depth);
@@ -8323,7 +8323,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Affine_localPos__P3296.info = {"start":1110,"length":73,"line":34,"column":8,"endLine":36,"endColumn":9,"fileName":"affine.ts","functionName":"localPos","argumentNames":["this"]}
+microcode_Affine_localPos__P3296.info = {"start":1144,"length":75,"line":34,"column":8,"endLine":36,"endColumn":9,"fileName":"affine.ts","functionName":"localPos","argumentNames":["this"]}
 microcode_Affine_localPos__P3296.isGetter = true;
 
 function microcode_Affine_localPos__P3296_mk(s) {
@@ -8373,7 +8373,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Vec2_copyFrom__P3315.info = {"start":759,"length":116,"line":31,"column":8,"endLine":35,"endColumn":9,"fileName":"math.ts","functionName":"copyFrom","argumentNames":["this","v"]}
+microcode_Vec2_copyFrom__P3315.info = {"start":790,"length":120,"line":31,"column":8,"endLine":35,"endColumn":9,"fileName":"math.ts","functionName":"copyFrom","argumentNames":["this","v"]}
 
 function microcode_Vec2_copyFrom__P3315_mk(s) {
     checkStack(s.depth);
@@ -8412,7 +8412,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Vec2_y__P3312.info = {"start":482,"length":127,"line":19,"column":8,"endLine":23,"endColumn":9,"fileName":"math.ts","functionName":"y","argumentNames":["this","v"]}
+microcode_Vec2_y__P3312.info = {"start":501,"length":131,"line":19,"column":8,"endLine":23,"endColumn":9,"fileName":"math.ts","functionName":"y","argumentNames":["this","v"]}
 
 function microcode_Vec2_y__P3312_mk(s) {
     checkStack(s.depth);
@@ -8450,7 +8450,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Vec2_x__P3310.info = {"start":233,"length":127,"line":9,"column":8,"endLine":13,"endColumn":9,"fileName":"math.ts","functionName":"x","argumentNames":["this","v"]}
+microcode_Vec2_x__P3310.info = {"start":242,"length":131,"line":9,"column":8,"endLine":13,"endColumn":9,"fileName":"math.ts","functionName":"x","argumentNames":["this","v"]}
 
 function microcode_Vec2_x__P3310_mk(s) {
     checkStack(s.depth);
@@ -8507,7 +8507,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Vec2_TranslateToRef__P3323.info = {"start":2128,"length":158,"line":85,"column":8,"endLine":89,"endColumn":9,"fileName":"math.ts","functionName":"TranslateToRef","argumentNames":["v","p","ref"]}
+microcode_Vec2_TranslateToRef__P3323.info = {"start":2213,"length":162,"line":85,"column":8,"endLine":89,"endColumn":9,"fileName":"math.ts","functionName":"TranslateToRef","argumentNames":["v","p","ref"]}
 
 function microcode_Vec2_TranslateToRef__P3323_mk(s) {
     checkStack(s.depth);
@@ -8546,7 +8546,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Affine_parent__P3298.info = {"start":1367,"length":63,"line":43,"column":8,"endLine":45,"endColumn":9,"fileName":"affine.ts","functionName":"parent","argumentNames":["this"]}
+microcode_Affine_parent__P3298.info = {"start":1410,"length":65,"line":43,"column":8,"endLine":45,"endColumn":9,"fileName":"affine.ts","functionName":"parent","argumentNames":["this"]}
 microcode_Affine_parent__P3298.isGetter = true;
 
 function microcode_Affine_parent__P3298_mk(s) {
@@ -8618,7 +8618,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Affine_dirty__P3294.info = {"start":639,"length":196,"line":17,"column":8,"endLine":23,"endColumn":9,"fileName":"affine.ts","functionName":"dirty","argumentNames":["this"]}
+microcode_Affine_dirty__P3294.info = {"start":656,"length":202,"line":17,"column":8,"endLine":23,"endColumn":9,"fileName":"affine.ts","functionName":"dirty","argumentNames":["this"]}
 microcode_Affine_dirty__P3294.isGetter = true;
 
 function microcode_Affine_dirty__P3294_mk(s) {
@@ -8659,7 +8659,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Vec2_x__P3309.info = {"start":171,"length":53,"line":6,"column":8,"endLine":8,"endColumn":9,"fileName":"math.ts","functionName":"x","argumentNames":["this"]}
+microcode_Vec2_x__P3309.info = {"start":177,"length":55,"line":6,"column":8,"endLine":8,"endColumn":9,"fileName":"math.ts","functionName":"x","argumentNames":["this"]}
 microcode_Vec2_x__P3309.isGetter = true;
 
 function microcode_Vec2_x__P3309_mk(s) {
@@ -8705,7 +8705,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Screen_drawTransparentImage__P3350.info = {"start":1191,"length":160,"line":35,"column":8,"endLine":37,"endColumn":9,"fileName":"screen.ts","functionName":"drawTransparentImage","argumentNames":["from","x","y"]}
+microcode_Screen_drawTransparentImage__P3350.info = {"start":1226,"length":162,"line":35,"column":8,"endLine":37,"endColumn":9,"fileName":"screen.ts","functionName":"drawTransparentImage","argumentNames":["from","x","y"]}
 
 function microcode_Screen_drawTransparentImage__P3350_mk(s) {
     checkStack(s.depth);
@@ -8744,7 +8744,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Screen_y__P3347.info = {"start":787,"length":80,"line":22,"column":8,"endLine":24,"endColumn":9,"fileName":"screen.ts","functionName":"y","argumentNames":["v"]}
+microcode_Screen_y__P3347.info = {"start":809,"length":82,"line":22,"column":8,"endLine":24,"endColumn":9,"fileName":"screen.ts","functionName":"y","argumentNames":["v"]}
 
 function microcode_Screen_y__P3347_mk(s) {
     checkStack(s.depth);
@@ -8776,7 +8776,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Screen_x__P3346.info = {"start":699,"length":79,"line":19,"column":8,"endLine":21,"endColumn":9,"fileName":"screen.ts","functionName":"x","argumentNames":["v"]}
+microcode_Screen_x__P3346.info = {"start":718,"length":81,"line":19,"column":8,"endLine":21,"endColumn":9,"fileName":"screen.ts","functionName":"x","argumentNames":["v"]}
 
 function microcode_Screen_x__P3346_mk(s) {
     checkStack(s.depth);
@@ -8907,7 +8907,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Sprite_isOffScreen__P3176.info = {"start":1786,"length":393,"line":61,"column":8,"endLine":68,"endColumn":9,"fileName":"sprite.ts","functionName":"isOffScreen","argumentNames":["this"]}
+microcode_Sprite_isOffScreen__P3176.info = {"start":1847,"length":400,"line":61,"column":8,"endLine":68,"endColumn":9,"fileName":"sprite.ts","functionName":"isOffScreen","argumentNames":["this"]}
 
 function microcode_Sprite_isOffScreen__P3176_mk(s) {
     checkStack(s.depth);
@@ -8975,7 +8975,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Sprite_height__P3166.info = {"start":510,"length":69,"line":15,"column":8,"endLine":17,"endColumn":9,"fileName":"sprite.ts","functionName":"height","argumentNames":["this"]}
+microcode_Sprite_height__P3166.info = {"start":525,"length":71,"line":15,"column":8,"endLine":17,"endColumn":9,"fileName":"sprite.ts","functionName":"height","argumentNames":["this"]}
 microcode_Sprite_height__P3166.isGetter = true;
 
 function microcode_Sprite_height__P3166_mk(s) {
@@ -9013,7 +9013,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Sprite_width__P3165.info = {"start":379,"length":67,"line":11,"column":8,"endLine":13,"endColumn":9,"fileName":"sprite.ts","functionName":"width","argumentNames":["this"]}
+microcode_Sprite_width__P3165.info = {"start":390,"length":69,"line":11,"column":8,"endLine":13,"endColumn":9,"fileName":"sprite.ts","functionName":"width","argumentNames":["this"]}
 microcode_Sprite_width__P3165.isGetter = true;
 
 function microcode_Sprite_width__P3165_mk(s) {
@@ -9049,7 +9049,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Sprite_invisible__P3169.info = {"start":859,"length":69,"line":26,"column":8,"endLine":28,"endColumn":9,"fileName":"sprite.ts","functionName":"invisible","argumentNames":["this"]}
+microcode_Sprite_invisible__P3169.info = {"start":885,"length":71,"line":26,"column":8,"endLine":28,"endColumn":9,"fileName":"sprite.ts","functionName":"invisible","argumentNames":["this"]}
 microcode_Sprite_invisible__P3169.isGetter = true;
 
 function microcode_Sprite_invisible__P3169_mk(s) {
@@ -9104,7 +9104,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Screen_print__P3353.info = {"start":1977,"length":420,"line":65,"column":8,"endLine":81,"endColumn":9,"fileName":"screen.ts","functionName":"print","argumentNames":["text","x","y","color","font","offsets"]}
+microcode_Screen_print__P3353.info = {"start":2042,"length":436,"line":65,"column":8,"endLine":81,"endColumn":9,"fileName":"screen.ts","functionName":"print","argumentNames":["text","x","y","color","font","offsets"]}
 
 function microcode_Screen_print__P3353_mk(s) {
     checkStack(s.depth);
@@ -9854,7 +9854,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Screen_drawLine__P3351.info = {"start":1361,"length":350,"line":39,"column":8,"endLine":53,"endColumn":9,"fileName":"screen.ts","functionName":"drawLine","argumentNames":["x0","y0","x1","y1","c"]}
+microcode_Screen_drawLine__P3351.info = {"start":1400,"length":364,"line":39,"column":8,"endLine":53,"endColumn":9,"fileName":"screen.ts","functionName":"drawLine","argumentNames":["x0","y0","x1","y1","c"]}
 
 function microcode_Screen_drawLine__P3351_mk(s) {
     checkStack(s.depth);
@@ -9908,7 +9908,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Bounds_fillRect__P3273.info = {"start":4657,"length":123,"line":151,"column":8,"endLine":153,"endColumn":9,"fileName":"bounds.ts","functionName":"fillRect","argumentNames":["this","color"]}
+microcode_Bounds_fillRect__P3273.info = {"start":4808,"length":125,"line":151,"column":8,"endLine":153,"endColumn":9,"fileName":"bounds.ts","functionName":"fillRect","argumentNames":["this","color"]}
 
 function microcode_Bounds_fillRect__P3273_mk(s) {
     checkStack(s.depth);
@@ -9962,7 +9962,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Screen_fillRect__P3352.info = {"start":1721,"length":246,"line":55,"column":8,"endLine":63,"endColumn":9,"fileName":"screen.ts","functionName":"fillRect","argumentNames":["x","y","width","height","c"]}
+microcode_Screen_fillRect__P3352.info = {"start":1776,"length":254,"line":55,"column":8,"endLine":63,"endColumn":9,"fileName":"screen.ts","functionName":"fillRect","argumentNames":["x","y","width","height","c"]}
 
 function microcode_Screen_fillRect__P3352_mk(s) {
     checkStack(s.depth);
@@ -10006,7 +10006,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Bounds_bottom__P3258.info = {"start":360,"length":73,"line":11,"column":8,"endLine":13,"endColumn":9,"fileName":"bounds.ts","functionName":"bottom","argumentNames":["this"]}
+microcode_Bounds_bottom__P3258.info = {"start":371,"length":75,"line":11,"column":8,"endLine":13,"endColumn":9,"fileName":"bounds.ts","functionName":"bottom","argumentNames":["this"]}
 microcode_Bounds_bottom__P3258.isGetter = true;
 
 function microcode_Bounds_bottom__P3258_mk(s) {
@@ -10047,7 +10047,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Bounds_right__P3257.info = {"start":224,"length":72,"line":7,"column":8,"endLine":9,"endColumn":9,"fileName":"bounds.ts","functionName":"right","argumentNames":["this"]}
+microcode_Bounds_right__P3257.info = {"start":231,"length":74,"line":7,"column":8,"endLine":9,"endColumn":9,"fileName":"bounds.ts","functionName":"right","argumentNames":["this"]}
 microcode_Bounds_right__P3257.isGetter = true;
 
 function microcode_Bounds_right__P3257_mk(s) {
@@ -10086,7 +10086,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Button_getImage__P2869.info = {"start":2882,"length":64,"line":96,"column":8,"endLine":98,"endColumn":9,"fileName":"button.ts","functionName":"getImage","argumentNames":["this"]}
+microcode_Button_getImage__P2869.info = {"start":2978,"length":66,"line":96,"column":8,"endLine":98,"endColumn":9,"fileName":"button.ts","functionName":"getImage","argumentNames":["this"]}
 
 function microcode_Button_getImage__P2869_mk(s) {
     checkStack(s.depth);
@@ -10121,7 +10121,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Sprite_image__P3167.info = {"start":642,"length":69,"line":19,"column":8,"endLine":21,"endColumn":9,"fileName":"sprite.ts","functionName":"image","argumentNames":["this"]}
+microcode_Sprite_image__P3167.info = {"start":661,"length":71,"line":19,"column":8,"endLine":21,"endColumn":9,"fileName":"sprite.ts","functionName":"image","argumentNames":["this"]}
 microcode_Sprite_image__P3167.isGetter = true;
 
 function microcode_Sprite_image__P3167_mk(s) {
@@ -10156,7 +10156,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Button_getIcon__P2867.info = {"start":2697,"length":59,"line":87,"column":8,"endLine":89,"endColumn":9,"fileName":"button.ts","functionName":"getIcon","argumentNames":["this"]}
+microcode_Button_getIcon__P2867.info = {"start":2784,"length":61,"line":87,"column":8,"endLine":89,"endColumn":9,"fileName":"button.ts","functionName":"getIcon","argumentNames":["this"]}
 
 function microcode_Button_getIcon__P2867_mk(s) {
     checkStack(s.depth);
@@ -10329,7 +10329,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_show__P3288.info = {"start":2506,"length":1539,"line":88,"column":8,"endLine":130,"endColumn":9,"fileName":"picker.ts","functionName":"show","argumentNames":["this","opts","hideOnClick"]}
+microcode_Picker_show__P3288.info = {"start":2594,"length":1581,"line":88,"column":8,"endLine":130,"endColumn":9,"fileName":"picker.ts","functionName":"show","argumentNames":["this","opts","hideOnClick"]}
 
 function microcode_Picker_show__P3288_mk(s) {
     checkStack(s.depth);
@@ -10369,7 +10369,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_show_inline__P8860.info = {"start":3231,"length":26,"line":106,"column":48,"endLine":106,"endColumn":74,"fileName":"picker.ts","functionName":"inline","argumentNames":[]}
+microcode_Picker_show_inline__P8860.info = {"start":3337,"length":26,"line":106,"column":48,"endLine":106,"endColumn":74,"fileName":"picker.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Picker_show_inline__P8860_mk(s) {
     checkStack(s.depth);
@@ -10415,7 +10415,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P8868.info = {"start":3562,"length":105,"line":115,"column":29,"endLine":118,"endColumn":21,"fileName":"picker.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P8868.info = {"start":3677,"length":108,"line":115,"column":29,"endLine":118,"endColumn":21,"fileName":"picker.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P8868_mk(s) {
     checkStack(s.depth);
@@ -10482,7 +10482,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_show_inline__P8874.info = {"start":3734,"length":242,"line":121,"column":32,"endLine":127,"endColumn":13,"fileName":"picker.ts","functionName":"inline","argumentNames":["group"]}
+microcode_Picker_show_inline__P8874.info = {"start":3855,"length":248,"line":121,"column":32,"endLine":127,"endColumn":13,"fileName":"picker.ts","functionName":"inline","argumentNames":["group"]}
 
 function microcode_Picker_show_inline__P8874_mk(s) {
     checkStack(s.depth);
@@ -10532,7 +10532,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_show_inline__P8886.info = {"start":3825,"length":136,"line":123,"column":29,"endLine":126,"endColumn":17,"fileName":"picker.ts","functionName":"inline","argumentNames":["btn"]}
+microcode_Picker_show_inline__P8886.info = {"start":3948,"length":139,"line":123,"column":29,"endLine":126,"endColumn":17,"fileName":"picker.ts","functionName":"inline","argumentNames":["btn"]}
 
 function microcode_Picker_show_inline__P8886_mk(s) {
     checkStack(s.depth);
@@ -10801,7 +10801,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_layout__P6345.info = {"start":5563,"length":2727,"line":171,"column":8,"endLine":246,"endColumn":9,"fileName":"picker.ts","functionName":"layout","argumentNames":["this"]}
+microcode_Picker_layout__P6345.info = {"start":5734,"length":2802,"line":171,"column":8,"endLine":246,"endColumn":9,"fileName":"picker.ts","functionName":"layout","argumentNames":["this"]}
 
 function microcode_Picker_layout__P6345_mk(s) {
     checkStack(s.depth);
@@ -10873,7 +10873,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_layout_inline__P8906.info = {"start":5697,"length":160,"line":176,"column":16,"endLine":180,"endColumn":22,"fileName":"picker.ts","functionName":"inline","argumentNames":["group"]}
+microcode_Picker_layout_inline__P8906.info = {"start":5873,"length":164,"line":176,"column":16,"endLine":180,"endColumn":22,"fileName":"picker.ts","functionName":"inline","argumentNames":["group"]}
 
 function microcode_Picker_layout_inline__P8906_mk(s) {
     checkStack(s.depth);
@@ -10951,7 +10951,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_layout_inline__P8932.info = {"start":6091,"length":385,"line":187,"column":32,"endLine":196,"endColumn":13,"fileName":"picker.ts","functionName":"inline","argumentNames":["group"]}
+microcode_Picker_layout_inline__P8932.info = {"start":6278,"length":394,"line":187,"column":32,"endLine":196,"endColumn":13,"fileName":"picker.ts","functionName":"inline","argumentNames":["group"]}
 
 function microcode_Picker_layout_inline__P8932_mk(s) {
     checkStack(s.depth);
@@ -11048,7 +11048,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_layout_inline__P9015.info = {"start":7386,"length":730,"line":221,"column":32,"endLine":239,"endColumn":13,"fileName":"picker.ts","functionName":"inline","argumentNames":["group"]}
+microcode_Picker_layout_inline__P9015.info = {"start":7607,"length":748,"line":221,"column":32,"endLine":239,"endColumn":13,"fileName":"picker.ts","functionName":"inline","argumentNames":["group"]}
 
 function microcode_Picker_layout_inline__P9015_mk(s) {
     checkStack(s.depth);
@@ -11151,7 +11151,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_layout_inline__P9022.info = {"start":7482,"length":464,"line":223,"column":38,"endLine":234,"endColumn":17,"fileName":"picker.ts","functionName":"inline","argumentNames":["btn","index"]}
+microcode_Picker_layout_inline__P9022.info = {"start":7705,"length":475,"line":223,"column":38,"endLine":234,"endColumn":17,"fileName":"picker.ts","functionName":"inline","argumentNames":["btn","index"]}
 
 function microcode_Picker_layout_inline__P9022_mk(s) {
     checkStack(s.depth);
@@ -11218,7 +11218,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Button_ariaId__P2862.info = {"start":1018,"length":144,"line":29,"column":8,"endLine":31,"endColumn":9,"fileName":"button.ts","functionName":"ariaId","argumentNames":["this"]}
+microcode_Button_ariaId__P2862.info = {"start":1047,"length":146,"line":29,"column":8,"endLine":31,"endColumn":9,"fileName":"button.ts","functionName":"ariaId","argumentNames":["this"]}
 microcode_Button_ariaId__P2862.isGetter = true;
 
 function microcode_Button_ariaId__P2862_mk(s) {
@@ -11302,7 +11302,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_snapTo__P3204.info = {"start":1917,"length":205,"line":64,"column":8,"endLine":68,"endColumn":9,"fileName":"cursor.ts","functionName":"snapTo","argumentNames":["this","x","y","ariaId"]}
+microcode_Cursor_snapTo__P3204.info = {"start":1981,"length":209,"line":64,"column":8,"endLine":68,"endColumn":9,"fileName":"cursor.ts","functionName":"snapTo","argumentNames":["this","x","y","ariaId"]}
 
 function microcode_Cursor_snapTo__P3204_mk(s) {
     checkStack(s.depth);
@@ -11361,7 +11361,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_setAriaContent__P6319.info = {"start":1764,"length":143,"line":59,"column":8,"endLine":62,"endColumn":9,"fileName":"cursor.ts","functionName":"setAriaContent","argumentNames":["this","ariaId"]}
+microcode_Cursor_setAriaContent__P6319.info = {"start":1823,"length":146,"line":59,"column":8,"endLine":62,"endColumn":9,"fileName":"cursor.ts","functionName":"setAriaContent","argumentNames":["this","ariaId"]}
 
 function microcode_Cursor_setAriaContent__P6319_mk(s) {
     checkStack(s.depth);
@@ -11409,7 +11409,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-accessibility_setLiveContent__P2856.info = {"start":124,"length":131,"line":5,"column":4,"endLine":7,"endColumn":5,"fileName":"accessibility.ts","functionName":"setLiveContent","argumentNames":["text"]}
+accessibility_setLiveContent__P2856.info = {"start":129,"length":133,"line":5,"column":4,"endLine":7,"endColumn":5,"fileName":"accessibility.ts","functionName":"setLiveContent","argumentNames":["text"]}
 
 function accessibility_setLiveContent__P2856_mk(s) {
     checkStack(s.depth);
@@ -11446,7 +11446,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Button_xfrm__P2859.info = {"start":629,"length":59,"line":17,"column":8,"endLine":19,"endColumn":9,"fileName":"button.ts","functionName":"xfrm","argumentNames":["this"]}
+microcode_Button_xfrm__P2859.info = {"start":646,"length":61,"line":17,"column":8,"endLine":19,"endColumn":9,"fileName":"button.ts","functionName":"xfrm","argumentNames":["this"]}
 microcode_Button_xfrm__P2859.isGetter = true;
 
 function microcode_Button_xfrm__P2859_mk(s) {
@@ -11514,7 +11514,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Bounds_Grow__P3264.info = {"start":1113,"length":286,"line":39,"column":8,"endLine":46,"endColumn":9,"fileName":"bounds.ts","functionName":"Grow","argumentNames":["box","amount"]}
+microcode_Bounds_Grow__P3264.info = {"start":1152,"length":293,"line":39,"column":8,"endLine":46,"endColumn":9,"fileName":"bounds.ts","functionName":"Grow","argumentNames":["box","amount"]}
 
 function microcode_Bounds_Grow__P3264_mk(s) {
     checkStack(s.depth);
@@ -11610,7 +11610,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PickerButton_constructor__P3280.info = {"start":172,"length":381,"line":7,"column":8,"endLine":18,"endColumn":9,"fileName":"picker.ts","functionName":"inline","argumentNames":["this","picker","btn"]}
+microcode_PickerButton_constructor__P3280.info = {"start":179,"length":392,"line":7,"column":8,"endLine":18,"endColumn":9,"fileName":"picker.ts","functionName":"inline","argumentNames":["this","picker","btn"]}
 
 function microcode_PickerButton_constructor__P3280_mk(s) {
     checkStack(s.depth);
@@ -11667,7 +11667,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P9172.info = {"start":450,"length":77,"line":15,"column":25,"endLine":16,"endColumn":71,"fileName":"picker.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P9172.info = {"start":465,"length":78,"line":15,"column":25,"endLine":16,"endColumn":71,"fileName":"picker.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P9172_mk(s) {
     checkStack(s.depth);
@@ -11734,7 +11734,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_onButtonClicked__P3287.info = {"start":2057,"length":321,"line":72,"column":8,"endLine":81,"endColumn":9,"fileName":"picker.ts","functionName":"onButtonClicked","argumentNames":["this","button","icon"]}
+microcode_Picker_onButtonClicked__P3287.info = {"start":2129,"length":330,"line":72,"column":8,"endLine":81,"endColumn":9,"fileName":"picker.ts","functionName":"onButtonClicked","argumentNames":["this","button","icon"]}
 
 function microcode_Picker_onButtonClicked__P3287_mk(s) {
     checkStack(s.depth);
@@ -11854,7 +11854,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_hide__P3289.info = {"start":4055,"length":515,"line":132,"column":8,"endLine":146,"endColumn":9,"fileName":"picker.ts","functionName":"hide","argumentNames":["this"]}
+microcode_Picker_hide__P3289.info = {"start":4187,"length":529,"line":132,"column":8,"endLine":146,"endColumn":9,"fileName":"picker.ts","functionName":"hide","argumentNames":["this"]}
 
 function microcode_Picker_hide__P3289_mk(s) {
     checkStack(s.depth);
@@ -11894,7 +11894,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_hide_inline__P9221.info = {"start":4299,"length":24,"line":137,"column":32,"endLine":137,"endColumn":56,"fileName":"picker.ts","functionName":"inline","argumentNames":["group"]}
+microcode_Picker_hide_inline__P9221.info = {"start":4436,"length":24,"line":137,"column":32,"endLine":137,"endColumn":56,"fileName":"picker.ts","functionName":"inline","argumentNames":["group"]}
 
 function microcode_Picker_hide_inline__P9221_mk(s) {
     checkStack(s.depth);
@@ -11964,7 +11964,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Button_destroy__P2866.info = {"start":2321,"length":366,"line":73,"column":8,"endLine":85,"endColumn":9,"fileName":"button.ts","functionName":"destroy","argumentNames":["this"]}
+microcode_Button_destroy__P2866.info = {"start":2394,"length":378,"line":73,"column":8,"endLine":85,"endColumn":9,"fileName":"button.ts","functionName":"destroy","argumentNames":["this"]}
 
 function microcode_Button_destroy__P2866_mk(s) {
     checkStack(s.depth);
@@ -12041,7 +12041,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Component_destroy__P2886.info = {"start":873,"length":249,"line":34,"column":22,"endLine":41,"endColumn":9,"fileName":"component.ts","functionName":"destroy","argumentNames":["this"]}
+microcode_Component_destroy__P2886.info = {"start":907,"length":256,"line":34,"column":22,"endLine":41,"endColumn":9,"fileName":"component.ts","functionName":"destroy","argumentNames":["this"]}
 
 function microcode_Component_destroy__P2886_mk(s) {
     checkStack(s.depth);
@@ -12088,7 +12088,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Sprite_destroy__P3173.info = {"start":1417,"length":85,"line":44,"column":23,"endLine":47,"endColumn":9,"fileName":"sprite.ts","functionName":"destroy","argumentNames":["this"]}
+microcode_Sprite_destroy__P3173.info = {"start":1461,"length":88,"line":44,"column":23,"endLine":47,"endColumn":9,"fileName":"sprite.ts","functionName":"destroy","argumentNames":["this"]}
 
 function microcode_Sprite_destroy__P3173_mk(s) {
     checkStack(s.depth);
@@ -12132,7 +12132,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PickerGroup_destroy__P6341.info = {"start":890,"length":154,"line":34,"column":8,"endLine":38,"endColumn":9,"fileName":"picker.ts","functionName":"destroy","argumentNames":["this"]}
+microcode_PickerGroup_destroy__P6341.info = {"start":924,"length":158,"line":34,"column":8,"endLine":38,"endColumn":9,"fileName":"picker.ts","functionName":"destroy","argumentNames":["this"]}
 
 function microcode_PickerGroup_destroy__P6341_mk(s) {
     checkStack(s.depth);
@@ -12172,7 +12172,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PickerGroup_destroy_inline__P9284.info = {"start":942,"length":20,"line":35,"column":33,"endLine":35,"endColumn":53,"fileName":"picker.ts","functionName":"inline","argumentNames":["btn"]}
+microcode_PickerGroup_destroy_inline__P9284.info = {"start":977,"length":20,"line":35,"column":33,"endLine":35,"endColumn":53,"fileName":"picker.ts","functionName":"inline","argumentNames":["btn"]}
 
 function microcode_PickerGroup_destroy_inline__P9284_mk(s) {
     checkStack(s.depth);
@@ -12411,7 +12411,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Button_constructor__P2865.info = {"start":1523,"length":788,"line":48,"column":8,"endLine":71,"endColumn":9,"fileName":"button.ts","functionName":"inline","argumentNames":["this","opts"]}
+microcode_Button_constructor__P2865.info = {"start":1571,"length":811,"line":48,"column":8,"endLine":71,"endColumn":9,"fileName":"button.ts","functionName":"inline","argumentNames":["this","opts"]}
 
 function microcode_Button_constructor__P2865_mk(s) {
     checkStack(s.depth);
@@ -12595,7 +12595,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Button_buildSprite__P5631.info = {"start":2956,"length":925,"line":100,"column":8,"endLine":127,"endColumn":9,"fileName":"button.ts","functionName":"buildSprite","argumentNames":["this"]}
+microcode_Button_buildSprite__P5631.info = {"start":3056,"length":952,"line":100,"column":8,"endLine":127,"endColumn":9,"fileName":"button.ts","functionName":"buildSprite","argumentNames":["this"]}
 
 function microcode_Button_buildSprite__P5631_mk(s) {
     checkStack(s.depth);
@@ -12640,7 +12640,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Sprite_bindXfrm__P3174.info = {"start":1595,"length":71,"line":53,"column":8,"endLine":55,"endColumn":9,"fileName":"sprite.ts","functionName":"bindXfrm","argumentNames":["this","xfrm"]}
+microcode_Sprite_bindXfrm__P3174.info = {"start":1648,"length":73,"line":53,"column":8,"endLine":55,"endColumn":9,"fileName":"sprite.ts","functionName":"bindXfrm","argumentNames":["this","xfrm"]}
 
 function microcode_Sprite_bindXfrm__P3174_mk(s) {
     checkStack(s.depth);
@@ -12698,7 +12698,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_icons_get__P2900.info = {"start":108,"length":236,"line":4,"column":8,"endLine":10,"endColumn":9,"fileName":"assets.ts","functionName":"get","argumentNames":["name","nullIfMissing"]}
+microcode_icons_get__P2900.info = {"start":112,"length":242,"line":4,"column":8,"endLine":10,"endColumn":9,"fileName":"assets.ts","functionName":"get","argumentNames":["name","nullIfMissing"]}
 
 function microcode_icons_get__P2900_mk(s) {
     checkStack(s.depth);
@@ -12823,7 +12823,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Sprite_constructor__P3172.info = {"start":1161,"length":231,"line":37,"column":8,"endLine":42,"endColumn":9,"fileName":"sprite.ts","functionName":"inline","argumentNames":["this","opts"]}
+microcode_Sprite_constructor__P3172.info = {"start":1198,"length":236,"line":37,"column":8,"endLine":42,"endColumn":9,"fileName":"sprite.ts","functionName":"inline","argumentNames":["this","opts"]}
 
 function microcode_Sprite_constructor__P3172_mk(s) {
     checkStack(s.depth);
@@ -12871,7 +12871,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Sprite_image__P3168.info = {"start":720,"length":72,"line":22,"column":8,"endLine":24,"endColumn":9,"fileName":"sprite.ts","functionName":"image","argumentNames":["this","img"]}
+microcode_Sprite_image__P3168.info = {"start":742,"length":74,"line":22,"column":8,"endLine":24,"endColumn":9,"fileName":"sprite.ts","functionName":"image","argumentNames":["this","img"]}
 
 function microcode_Sprite_image__P3168_mk(s) {
     checkStack(s.depth);
@@ -12909,7 +12909,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Sprite_setImage__P6260.info = {"start":1512,"length":73,"line":49,"column":8,"endLine":51,"endColumn":9,"fileName":"sprite.ts","functionName":"setImage","argumentNames":["this","img"]}
+microcode_Sprite_setImage__P6260.info = {"start":1561,"length":75,"line":49,"column":8,"endLine":51,"endColumn":9,"fileName":"sprite.ts","functionName":"setImage","argumentNames":["this","img"]}
 
 function microcode_Sprite_setImage__P6260_mk(s) {
     checkStack(s.depth);
@@ -12947,7 +12947,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Affine_parent__P3299.info = {"start":1439,"length":100,"line":46,"column":8,"endLine":49,"endColumn":9,"fileName":"affine.ts","functionName":"parent","argumentNames":["this","p"]}
+microcode_Affine_parent__P3299.info = {"start":1485,"length":103,"line":46,"column":8,"endLine":49,"endColumn":9,"fileName":"affine.ts","functionName":"parent","argumentNames":["this","p"]}
 
 function microcode_Affine_parent__P3299_mk(s) {
     checkStack(s.depth);
@@ -12988,7 +12988,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Component_constructor__P2884.info = {"start":598,"length":81,"line":25,"column":8,"endLine":27,"endColumn":9,"fileName":"component.ts","functionName":"inline","argumentNames":["this","kind"]}
+microcode_Component_constructor__P2884.info = {"start":623,"length":83,"line":25,"column":8,"endLine":27,"endColumn":9,"fileName":"component.ts","functionName":"inline","argumentNames":["this","kind"]}
 
 function microcode_Component_constructor__P2884_mk(s) {
     checkStack(s.depth);
@@ -13033,7 +13033,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_cancelClicked__P6344.info = {"start":2388,"length":108,"line":83,"column":8,"endLine":86,"endColumn":9,"fileName":"picker.ts","functionName":"cancelClicked","argumentNames":["this"]}
+microcode_Picker_cancelClicked__P6344.info = {"start":2471,"length":111,"line":83,"column":8,"endLine":86,"endColumn":9,"fileName":"picker.ts","functionName":"cancelClicked","argumentNames":["this"]}
 
 function microcode_Picker_cancelClicked__P6344_mk(s) {
     checkStack(s.depth);
@@ -13068,7 +13068,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Cursor_xfrm__P3200.info = {"start":378,"length":59,"line":13,"column":8,"endLine":15,"endColumn":9,"fileName":"cursor.ts","functionName":"xfrm","argumentNames":["this"]}
+microcode_Cursor_xfrm__P3200.info = {"start":391,"length":61,"line":13,"column":8,"endLine":15,"endColumn":9,"fileName":"cursor.ts","functionName":"xfrm","argumentNames":["this"]}
 microcode_Cursor_xfrm__P3200.isGetter = true;
 
 function microcode_Cursor_xfrm__P3200_mk(s) {
@@ -13114,7 +13114,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Vec2_clone__P3314.info = {"start":673,"length":76,"line":27,"column":8,"endLine":29,"endColumn":9,"fileName":"math.ts","functionName":"clone","argumentNames":["this"]}
+microcode_Vec2_clone__P3314.info = {"start":700,"length":78,"line":27,"column":8,"endLine":29,"endColumn":9,"fileName":"math.ts","functionName":"clone","argumentNames":["this"]}
 
 function microcode_Vec2_clone__P3314_mk(s) {
     checkStack(s.depth);
@@ -13163,7 +13163,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_addGroup__P3286.info = {"start":1912,"length":135,"line":68,"column":8,"endLine":70,"endColumn":9,"fileName":"picker.ts","functionName":"addGroup","argumentNames":["this","opts"]}
+microcode_Picker_addGroup__P3286.info = {"start":1980,"length":137,"line":68,"column":8,"endLine":70,"endColumn":9,"fileName":"picker.ts","functionName":"addGroup","argumentNames":["this","opts"]}
 
 function microcode_Picker_addGroup__P3286_mk(s) {
     checkStack(s.depth);
@@ -13221,7 +13221,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PickerGroup_constructor__P6342.info = {"start":626,"length":254,"line":23,"column":8,"endLine":32,"endColumn":9,"fileName":"picker.ts","functionName":"inline","argumentNames":["this","picker","opts"]}
+microcode_PickerGroup_constructor__P6342.info = {"start":649,"length":263,"line":23,"column":8,"endLine":32,"endColumn":9,"fileName":"picker.ts","functionName":"inline","argumentNames":["this","picker","opts"]}
 
 function microcode_PickerGroup_constructor__P6342_mk(s) {
     checkStack(s.depth);
@@ -13307,7 +13307,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_IconEditor_constructor__P6215.info = {"start":11913,"length":287,"line":350,"column":8,"endLine":355,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["this","field"]}
+microcode_IconEditor_constructor__P6215.info = {"start":12263,"length":292,"line":350,"column":8,"endLine":355,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["this","field"]}
 
 function microcode_IconEditor_constructor__P6215_mk(s) {
     checkStack(s.depth);
@@ -13575,7 +13575,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_iconEditor__P3708.info = {"start":26,"length":1454,"line":1,"column":4,"endLine":44,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"iconEditor","argumentNames":["image5x5","picker","onHide","onDelete"]}
+microcode_iconEditor__P3708.info = {"start":27,"length":1497,"line":1,"column":4,"endLine":44,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"iconEditor","argumentNames":["image5x5","picker","onHide","onDelete"]}
 
 function microcode_iconEditor__P3708_mk(s) {
     checkStack(s.depth);
@@ -13630,7 +13630,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-getColor_inline__P9587.info = {"start":194,"length":177,"line":7,"column":25,"endLine":11,"endColumn":9,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":["col","row"]}
+getColor_inline__P9587.info = {"start":201,"length":181,"line":7,"column":25,"endLine":11,"endColumn":9,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":["col","row"]}
 
 function getColor_inline__P9587_mk(s) {
     checkStack(s.depth);
@@ -13732,7 +13732,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P9625.info = {"start":712,"length":668,"line":23,"column":25,"endLine":38,"endColumn":17,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":["iconId","button"]}
+onClick_inline__P9625.info = {"start":735,"length":683,"line":23,"column":25,"endLine":38,"endColumn":17,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":["iconId","button"]}
 
 function onClick_inline__P9625_mk(s) {
     checkStack(s.depth);
@@ -13781,7 +13781,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Button_setIcon__P2868.info = {"start":2766,"length":106,"line":91,"column":8,"endLine":94,"endColumn":9,"fileName":"button.ts","functionName":"setIcon","argumentNames":["this","iconId"]}
+microcode_Button_setIcon__P2868.info = {"start":2857,"length":109,"line":91,"column":8,"endLine":94,"endColumn":9,"fileName":"button.ts","functionName":"setIcon","argumentNames":["this","iconId"]}
 
 function microcode_Button_setIcon__P2868_mk(s) {
     checkStack(s.depth);
@@ -13831,7 +13831,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_FilterDefn_constructor__P3045.info = {"start":4731,"length":237,"line":167,"column":8,"endLine":175,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this","tid","name","category","priority"]}
+microcode_FilterDefn_constructor__P3045.info = {"start":4898,"length":245,"line":167,"column":8,"endLine":175,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this","tid","name","category","priority"]}
 
 function microcode_FilterDefn_constructor__P3045_mk(s) {
     checkStack(s.depth);
@@ -13883,7 +13883,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_FilterModifierBase_constructor__P3040.info = {"start":3764,"length":184,"line":133,"column":8,"endLine":140,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this","type","tid","name","category"]}
+microcode_FilterModifierBase_constructor__P3040.info = {"start":3897,"length":191,"line":133,"column":8,"endLine":140,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this","type","tid","name","category"]}
 
 function microcode_FilterModifierBase_constructor__P3040_mk(s) {
     checkStack(s.depth);
@@ -13929,7 +13929,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_constructor__P3019.info = {"start":995,"length":163,"line":38,"column":8,"endLine":44,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this","type","tid","name"]}
+microcode_TileDefn_constructor__P3019.info = {"start":1033,"length":169,"line":38,"column":8,"endLine":44,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this","type","tid","name"]}
 
 function microcode_TileDefn_constructor__P3019_mk(s) {
     checkStack(s.depth);
@@ -13980,7 +13980,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_ModifierDefn_constructor__P3053.info = {"start":5406,"length":239,"line":190,"column":8,"endLine":198,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this","tid","name","category","priority"]}
+microcode_ModifierDefn_constructor__P3053.info = {"start":5596,"length":247,"line":190,"column":8,"endLine":198,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this","tid","name","category","priority"]}
 
 function microcode_ModifierDefn_constructor__P3053_mk(s) {
     checkStack(s.depth);
@@ -14115,7 +14115,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_addActuator__P5962.info = {"start":8415,"length":305,"line":243,"column":4,"endLine":252,"endColumn":5,"fileName":"tiles.ts","functionName":"addActuator","argumentNames":["tid","name","allow"]}
+microcode_addActuator__P5962.info = {"start":8658,"length":314,"line":243,"column":4,"endLine":252,"endColumn":5,"fileName":"tiles.ts","functionName":"addActuator","argumentNames":["tid","name","allow"]}
 
 function microcode_addActuator__P5962_mk(s) {
     checkStack(s.depth);
@@ -14166,7 +14166,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_ActuatorDefn_constructor__P3051.info = {"start":5233,"length":98,"line":184,"column":8,"endLine":186,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this","tid","name"]}
+microcode_ActuatorDefn_constructor__P3051.info = {"start":5417,"length":100,"line":184,"column":8,"endLine":186,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this","tid","name"]}
 
 function microcode_ActuatorDefn_constructor__P3051_mk(s) {
     checkStack(s.depth);
@@ -14232,7 +14232,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_addSoundFilter__P5955.info = {"start":8035,"length":278,"line":234,"column":4,"endLine":239,"endColumn":5,"fileName":"tiles.ts","functionName":"addSoundFilter","argumentNames":["tid","name","eventCode"]}
+microcode_addSoundFilter__P5955.info = {"start":8269,"length":283,"line":234,"column":4,"endLine":239,"endColumn":5,"fileName":"tiles.ts","functionName":"addSoundFilter","argumentNames":["tid","name","eventCode"]}
 
 function microcode_addSoundFilter__P5955_mk(s) {
     checkStack(s.depth);
@@ -14331,7 +14331,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_addAccelEvent__P5930.info = {"start":7055,"length":322,"line":204,"column":4,"endLine":211,"endColumn":5,"fileName":"tiles.ts","functionName":"addAccelEvent","argumentNames":["id","name"]}
+microcode_addAccelEvent__P5930.info = {"start":7259,"length":329,"line":204,"column":4,"endLine":211,"endColumn":5,"fileName":"tiles.ts","functionName":"addAccelEvent","argumentNames":["id","name"]}
 
 function microcode_addAccelEvent__P5930_mk(s) {
     checkStack(s.depth);
@@ -14400,7 +14400,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_addTimespan__P5905.info = {"start":6377,"length":204,"line":182,"column":4,"endLine":186,"endColumn":5,"fileName":"tiles.ts","functionName":"addTimespan","argumentNames":["tid","name","ms"]}
+microcode_addTimespan__P5905.info = {"start":6559,"length":208,"line":182,"column":4,"endLine":186,"endColumn":5,"fileName":"tiles.ts","functionName":"addTimespan","argumentNames":["tid","name","ms"]}
 
 function microcode_addTimespan__P5905_mk(s) {
     checkStack(s.depth);
@@ -14481,7 +14481,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_addPressFilter__P5858.info = {"start":5137,"length":437,"line":141,"column":4,"endLine":153,"endColumn":5,"fileName":"tiles.ts","functionName":"addPressFilter","argumentNames":["tid","name","instanceNo"]}
+microcode_addPressFilter__P5858.info = {"start":5278,"length":449,"line":141,"column":4,"endLine":153,"endColumn":5,"fileName":"tiles.ts","functionName":"addPressFilter","argumentNames":["tid","name","instanceNo"]}
 
 function microcode_addPressFilter__P5858_mk(s) {
     checkStack(s.depth);
@@ -14535,7 +14535,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_SensorDefn_constructor__P3038.info = {"start":3576,"length":117,"line":127,"column":8,"endLine":129,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this","tid","name","phase"]}
+microcode_SensorDefn_constructor__P3038.info = {"start":3703,"length":119,"line":127,"column":8,"endLine":129,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this","tid","name","phase"]}
 
 function microcode_SensorDefn_constructor__P3038_mk(s) {
     checkStack(s.depth);
@@ -14640,7 +14640,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-scaleUp__P2902.info = {"start":5419,"length":637,"line":110,"column":0,"endLine":129,"endColumn":1,"fileName":"assets.ts","functionName":"scaleUp","argumentNames":["led55"]}
+scaleUp__P2902.info = {"start":5529,"length":656,"line":110,"column":0,"endLine":129,"endColumn":1,"fileName":"assets.ts","functionName":"scaleUp","argumentNames":["led55"]}
 
 function scaleUp__P2902_mk(s) {
     checkStack(s.depth);
@@ -16912,7 +16912,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_constructor__P3202.info = {"start":557,"length":573,"line":20,"column":8,"endLine":37,"endColumn":9,"fileName":"cursor.ts","functionName":"inline","argumentNames":["this"]}
+microcode_Cursor_constructor__P3202.info = {"start":577,"length":590,"line":20,"column":8,"endLine":37,"endColumn":9,"fileName":"cursor.ts","functionName":"inline","argumentNames":["this"]}
 
 function microcode_Cursor_constructor__P3202_mk(s) {
     checkStack(s.depth);
@@ -16955,7 +16955,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_inline__P10572.info = {"start":1086,"length":33,"line":36,"column":38,"endLine":36,"endColumn":71,"fileName":"cursor.ts","functionName":"inline","argumentNames":["p"]}
+microcode_Cursor_inline__P10572.info = {"start":1122,"length":33,"line":36,"column":38,"endLine":36,"endColumn":71,"fileName":"cursor.ts","functionName":"inline","argumentNames":["p"]}
 
 function microcode_Cursor_inline__P10572_mk(s) {
     checkStack(s.depth);
@@ -16998,7 +16998,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_animCallback__P6318.info = {"start":1140,"length":76,"line":39,"column":8,"endLine":41,"endColumn":9,"fileName":"cursor.ts","functionName":"animCallback","argumentNames":["this","p"]}
+microcode_Cursor_animCallback__P6318.info = {"start":1179,"length":78,"line":39,"column":8,"endLine":41,"endColumn":9,"fileName":"cursor.ts","functionName":"animCallback","argumentNames":["this","p"]}
 
 function microcode_Cursor_animCallback__P6318_mk(s) {
     checkStack(s.depth);
@@ -17043,7 +17043,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Affine_localPos__P3297.info = {"start":1192,"length":110,"line":37,"column":8,"endLine":40,"endColumn":9,"fileName":"affine.ts","functionName":"localPos","argumentNames":["this","v"]}
+microcode_Affine_localPos__P3297.info = {"start":1229,"length":113,"line":37,"column":8,"endLine":40,"endColumn":9,"fileName":"affine.ts","functionName":"localPos","argumentNames":["this","v"]}
 
 function microcode_Affine_localPos__P3297_mk(s) {
     checkStack(s.depth);
@@ -17130,7 +17130,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Animation_constructor__P3362.info = {"start":4669,"length":323,"line":120,"column":8,"endLine":130,"endColumn":9,"fileName":"animation.ts","functionName":"inline","argumentNames":["this","callback","opts"]}
+microcode_Animation_constructor__P3362.info = {"start":4789,"length":333,"line":120,"column":8,"endLine":130,"endColumn":9,"fileName":"animation.ts","functionName":"inline","argumentNames":["this","callback","opts"]}
 
 function microcode_Animation_constructor__P3362_mk(s) {
     checkStack(s.depth);
@@ -17177,7 +17177,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_draw__P3213.info = {"start":3731,"length":88,"line":128,"column":23,"endLine":131,"endColumn":9,"fileName":"cursor.ts","functionName":"draw","argumentNames":["this"]}
+microcode_Cursor_draw__P3213.info = {"start":3859,"length":91,"line":128,"column":23,"endLine":131,"endColumn":9,"fileName":"cursor.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_Cursor_draw__P3213_mk(s) {
     checkStack(s.depth);
@@ -17218,7 +17218,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_destroy__P3211.info = {"start":3468,"length":88,"line":116,"column":23,"endLine":119,"endColumn":9,"fileName":"cursor.ts","functionName":"destroy","argumentNames":["this"]}
+microcode_Cursor_destroy__P3211.info = {"start":3584,"length":91,"line":116,"column":23,"endLine":119,"endColumn":9,"fileName":"cursor.ts","functionName":"destroy","argumentNames":["this"]}
 
 function microcode_Cursor_destroy__P3211_mk(s) {
     checkStack(s.depth);
@@ -17272,7 +17272,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Button_height__P2861.info = {"start":910,"length":98,"line":25,"column":8,"endLine":27,"endColumn":9,"fileName":"button.ts","functionName":"height","argumentNames":["this"]}
+microcode_Button_height__P2861.info = {"start":935,"length":100,"line":25,"column":8,"endLine":27,"endColumn":9,"fileName":"button.ts","functionName":"height","argumentNames":["this"]}
 microcode_Button_height__P2861.isGetter = true;
 
 function microcode_Button_height__P2861_mk(s) {
@@ -17332,7 +17332,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Button_width__P2860.info = {"start":751,"length":95,"line":21,"column":8,"endLine":23,"endColumn":9,"fileName":"button.ts","functionName":"width","argumentNames":["this"]}
+microcode_Button_width__P2860.info = {"start":772,"length":97,"line":21,"column":8,"endLine":23,"endColumn":9,"fileName":"button.ts","functionName":"width","argumentNames":["this"]}
 microcode_Button_width__P2860.isGetter = true;
 
 function microcode_Button_width__P2860_mk(s) {
@@ -17401,7 +17401,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Picker_constructor__P3285.info = {"start":1707,"length":195,"line":61,"column":8,"endLine":66,"endColumn":9,"fileName":"picker.ts","functionName":"inline","argumentNames":["this","cursor"]}
+microcode_Picker_constructor__P3285.info = {"start":1768,"length":200,"line":61,"column":8,"endLine":66,"endColumn":9,"fileName":"picker.ts","functionName":"inline","argumentNames":["this","cursor"]}
 
 function microcode_Picker_constructor__P3285_mk(s) {
     checkStack(s.depth);
@@ -17443,7 +17443,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_constructor__P3733.info = {"start":2133,"length":63,"line":72,"column":8,"endLine":74,"endColumn":9,"fileName":"navigator.ts","functionName":"inline","argumentNames":["this"]}
+microcode_QuadtreeNavigator_constructor__P3733.info = {"start":2205,"length":65,"line":72,"column":8,"endLine":74,"endColumn":9,"fileName":"navigator.ts","functionName":"inline","argumentNames":["this"]}
 
 function microcode_QuadtreeNavigator_constructor__P3733_mk(s) {
     checkStack(s.depth);
@@ -17515,7 +17515,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_initializeQuadtree__P6450.info = {"start":2206,"length":398,"line":76,"column":8,"endLine":90,"endColumn":9,"fileName":"navigator.ts","functionName":"initializeQuadtree","argumentNames":["this"]}
+microcode_QuadtreeNavigator_initializeQuadtree__P6450.info = {"start":2282,"length":412,"line":76,"column":8,"endLine":90,"endColumn":9,"fileName":"navigator.ts","functionName":"initializeQuadtree","argumentNames":["this"]}
 
 function microcode_QuadtreeNavigator_initializeQuadtree__P6450_mk(s) {
     checkStack(s.depth);
@@ -17568,7 +17568,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadTree_constructor__P3245.info = {"start":387,"length":333,"line":13,"column":8,"endLine":20,"endColumn":9,"fileName":"quadtree.ts","functionName":"inline","argumentNames":["this","bounds","maxObjects","minDimension"]}
+microcode_QuadTree_constructor__P3245.info = {"start":400,"length":340,"line":13,"column":8,"endLine":20,"endColumn":9,"fileName":"quadtree.ts","functionName":"inline","argumentNames":["this","bounds","maxObjects","minDimension"]}
 
 function microcode_QuadTree_constructor__P3245_mk(s) {
     checkStack(s.depth);
@@ -17639,7 +17639,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadTree_clear__P3249.info = {"start":6111,"length":192,"line":189,"column":8,"endLine":195,"endColumn":9,"fileName":"quadtree.ts","functionName":"clear","argumentNames":["this"]}
+microcode_QuadTree_clear__P3249.info = {"start":6300,"length":198,"line":189,"column":8,"endLine":195,"endColumn":9,"fileName":"quadtree.ts","functionName":"clear","argumentNames":["this"]}
 
 function microcode_QuadTree_clear__P3249_mk(s) {
     checkStack(s.depth);
@@ -17680,7 +17680,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Component_draw__P2888.info = {"start":1182,"length":9,"line":44,"column":23,"endLine":44,"endColumn":32,"fileName":"component.ts","functionName":"draw","argumentNames":["this"]}
+microcode_Component_draw__P2888.info = {"start":1226,"length":9,"line":44,"column":23,"endLine":44,"endColumn":32,"fileName":"component.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_Component_draw__P2888_mk(s) {
     checkStack(s.depth);
@@ -17714,7 +17714,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Picker_xfrm__P3284.info = {"start":1638,"length":59,"line":57,"column":8,"endLine":59,"endColumn":9,"fileName":"picker.ts","functionName":"xfrm","argumentNames":["this"]}
+microcode_Picker_xfrm__P3284.info = {"start":1695,"length":61,"line":57,"column":8,"endLine":59,"endColumn":9,"fileName":"picker.ts","functionName":"xfrm","argumentNames":["this"]}
 microcode_Picker_xfrm__P3284.isGetter = true;
 
 function microcode_Picker_xfrm__P3284_mk(s) {
@@ -17763,7 +17763,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Component_data__P2883.info = {"start":454,"length":134,"line":18,"column":8,"endLine":23,"endColumn":9,"fileName":"component.ts","functionName":"data","argumentNames":["this"]}
+microcode_Component_data__P2883.info = {"start":472,"length":139,"line":18,"column":8,"endLine":23,"endColumn":9,"fileName":"component.ts","functionName":"data","argumentNames":["this"]}
 microcode_Component_data__P2883.isGetter = true;
 
 function microcode_Component_data__P2883_mk(s) {
@@ -17818,7 +17818,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Affine_clone__P3303.info = {"start":2066,"length":125,"line":71,"column":8,"endLine":75,"endColumn":9,"fileName":"affine.ts","functionName":"clone","argumentNames":["this"]}
+microcode_Affine_clone__P3303.info = {"start":2137,"length":129,"line":71,"column":8,"endLine":75,"endColumn":9,"fileName":"affine.ts","functionName":"clone","argumentNames":["this"]}
 
 function microcode_Affine_clone__P3303_mk(s) {
     checkStack(s.depth);
@@ -17864,7 +17864,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Affine_copyFrom__P3302.info = {"start":1937,"length":119,"line":66,"column":8,"endLine":69,"endColumn":9,"fileName":"affine.ts","functionName":"copyFrom","argumentNames":["this","src"]}
+microcode_Affine_copyFrom__P3302.info = {"start":2003,"length":122,"line":66,"column":8,"endLine":69,"endColumn":9,"fileName":"affine.ts","functionName":"copyFrom","argumentNames":["this","src"]}
 
 function microcode_Affine_copyFrom__P3302_mk(s) {
     checkStack(s.depth);
@@ -18013,7 +18013,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_draw__P3241.info = {"start":6572,"length":275,"line":223,"column":23,"endLine":231,"endColumn":9,"fileName":"home.ts","functionName":"draw","argumentNames":["this"]}
+microcode_Home_draw__P3241.info = {"start":6795,"length":283,"line":223,"column":23,"endLine":231,"endColumn":9,"fileName":"home.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_Home_draw__P3241_mk(s) {
     checkStack(s.depth);
@@ -18305,7 +18305,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_drawPlotView__P6331.info = {"start":9350,"length":1811,"line":298,"column":8,"endLine":340,"endColumn":9,"fileName":"home.ts","functionName":"drawPlotView","argumentNames":["this"]}
+microcode_Home_drawPlotView__P6331.info = {"start":9648,"length":1853,"line":298,"column":8,"endLine":340,"endColumn":9,"fileName":"home.ts","functionName":"drawPlotView","argumentNames":["this"]}
 
 function microcode_Home_drawPlotView__P6331_mk(s) {
     checkStack(s.depth);
@@ -18666,7 +18666,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_drawConsoleView__P6330.info = {"start":7700,"length":1640,"line":258,"column":8,"endLine":296,"endColumn":9,"fileName":"home.ts","functionName":"drawConsoleView","argumentNames":["this"]}
+microcode_Home_drawConsoleView__P6330.info = {"start":7958,"length":1678,"line":258,"column":8,"endLine":296,"endColumn":9,"fileName":"home.ts","functionName":"drawConsoleView","argumentNames":["this"]}
 
 function microcode_Home_drawConsoleView__P6330_mk(s) {
     checkStack(s.depth);
@@ -18768,7 +18768,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_drawToolbar__P6329.info = {"start":6857,"length":833,"line":233,"column":8,"endLine":256,"endColumn":9,"fileName":"home.ts","functionName":"drawToolbar","argumentNames":["this"]}
+microcode_Home_drawToolbar__P6329.info = {"start":7090,"length":856,"line":233,"column":8,"endLine":256,"endColumn":9,"fileName":"home.ts","functionName":"drawToolbar","argumentNames":["this"]}
 
 function microcode_Home_drawToolbar__P6329_mk(s) {
     checkStack(s.depth);
@@ -18844,7 +18844,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_update__P3240.info = {"start":6292,"length":169,"line":212,"column":23,"endLine":217,"endColumn":9,"fileName":"home.ts","functionName":"update","argumentNames":["this"]}
+microcode_Home_update__P3240.info = {"start":6504,"length":174,"line":212,"column":23,"endLine":217,"endColumn":9,"fileName":"home.ts","functionName":"update","argumentNames":["this"]}
 
 function microcode_Home_update__P3240_mk(s) {
     checkStack(s.depth);
@@ -18888,7 +18888,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_deactivate__P3239.info = {"start":6212,"length":55,"line":208,"column":23,"endLine":210,"endColumn":9,"fileName":"home.ts","functionName":"deactivate","argumentNames":["this"]}
+microcode_Home_deactivate__P3239.info = {"start":6420,"length":57,"line":208,"column":23,"endLine":210,"endColumn":9,"fileName":"home.ts","functionName":"deactivate","argumentNames":["this"]}
 
 function microcode_Home_deactivate__P3239_mk(s) {
     checkStack(s.depth);
@@ -19040,7 +19040,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_activate__P3238.info = {"start":5408,"length":779,"line":187,"column":23,"endLine":206,"endColumn":9,"fileName":"home.ts","functionName":"activate","argumentNames":["this"]}
+microcode_Home_activate__P3238.info = {"start":5595,"length":798,"line":187,"column":23,"endLine":206,"endColumn":9,"fileName":"home.ts","functionName":"activate","argumentNames":["this"]}
 
 function microcode_Home_activate__P3238_mk(s) {
     checkStack(s.depth);
@@ -19107,7 +19107,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_App_save__P3158.info = {"start":738,"length":241,"line":27,"column":8,"endLine":33,"endColumn":9,"fileName":"app.ts","functionName":"save","argumentNames":["this","slot","progdef"]}
+microcode_App_save__P3158.info = {"start":765,"length":247,"line":27,"column":8,"endLine":33,"endColumn":9,"fileName":"app.ts","functionName":"save","argumentNames":["this","slot","progdef"]}
 
 function microcode_App_save__P3158_mk(s) {
     checkStack(s.depth);
@@ -20006,7 +20006,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_ProgramDefn_toObj__P3079.info = {"start":11552,"length":123,"line":387,"column":8,"endLine":391,"endColumn":9,"fileName":"language.ts","functionName":"toObj","argumentNames":["this"]}
+microcode_ProgramDefn_toObj__P3079.info = {"start":11939,"length":127,"line":387,"column":8,"endLine":391,"endColumn":9,"fileName":"language.ts","functionName":"toObj","argumentNames":["this"]}
 
 function microcode_ProgramDefn_toObj__P3079_mk(s) {
     checkStack(s.depth);
@@ -20045,7 +20045,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-P_inline__P11429.info = {"start":11629,"length":20,"line":389,"column":34,"endLine":389,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
+P_inline__P11429.info = {"start":12018,"length":20,"line":389,"column":34,"endLine":389,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
 
 function P_inline__P11429_mk(s) {
     checkStack(s.depth);
@@ -20117,7 +20117,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageDefn_toObj__P3072.info = {"start":10489,"length":227,"line":347,"column":8,"endLine":355,"endColumn":9,"fileName":"language.ts","functionName":"toObj","argumentNames":["this"]}
+microcode_PageDefn_toObj__P3072.info = {"start":10836,"length":235,"line":347,"column":8,"endLine":355,"endColumn":9,"fileName":"language.ts","functionName":"toObj","argumentNames":["this"]}
 
 function microcode_PageDefn_toObj__P3072_mk(s) {
     checkStack(s.depth);
@@ -20159,7 +20159,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-R_inline__P11439.info = {"start":10571,"length":20,"line":349,"column":34,"endLine":349,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
+R_inline__P11439.info = {"start":10920,"length":20,"line":349,"column":34,"endLine":349,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
 
 function R_inline__P11439_mk(s) {
     checkStack(s.depth);
@@ -20340,7 +20340,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleDefn_toObj__P3063.info = {"start":6714,"length":817,"line":238,"column":8,"endLine":260,"endColumn":9,"fileName":"language.ts","functionName":"toObj","argumentNames":["this"]}
+microcode_RuleDefn_toObj__P3063.info = {"start":6952,"length":839,"line":238,"column":8,"endLine":260,"endColumn":9,"fileName":"language.ts","functionName":"toObj","argumentNames":["this"]}
 
 function microcode_RuleDefn_toObj__P3063_mk(s) {
     checkStack(s.depth);
@@ -20453,7 +20453,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-addField_inline__P11453.info = {"start":6765,"length":307,"line":239,"column":29,"endLine":248,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+addField_inline__P11453.info = {"start":7004,"length":316,"line":239,"column":29,"endLine":248,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
 function addField_inline__P11453_mk(s) {
     checkStack(s.depth);
@@ -20503,7 +20503,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-S_inline__P11483.info = {"start":7135,"length":16,"line":250,"column":36,"endLine":250,"endColumn":52,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+S_inline__P11483.info = {"start":7385,"length":16,"line":250,"column":36,"endLine":250,"endColumn":52,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
 function S_inline__P11483_mk(s) {
     checkStack(s.depth);
@@ -20542,7 +20542,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-A_inline__P11490.info = {"start":7192,"length":16,"line":251,"column":38,"endLine":251,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+A_inline__P11490.info = {"start":7443,"length":16,"line":251,"column":38,"endLine":251,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
 function A_inline__P11490_mk(s) {
     checkStack(s.depth);
@@ -20581,7 +20581,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-F_inline__P11497.info = {"start":7247,"length":16,"line":252,"column":36,"endLine":252,"endColumn":52,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+F_inline__P11497.info = {"start":7499,"length":16,"line":252,"column":36,"endLine":252,"endColumn":52,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
 function F_inline__P11497_mk(s) {
     checkStack(s.depth);
@@ -20620,7 +20620,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-M_inline__P11504.info = {"start":7304,"length":16,"line":253,"column":38,"endLine":253,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+M_inline__P11504.info = {"start":7557,"length":16,"line":253,"column":38,"endLine":253,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
 function M_inline__P11504_mk(s) {
     checkStack(s.depth);
@@ -20655,7 +20655,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_getField__P3025.info = {"start":1330,"length":56,"line":52,"column":8,"endLine":54,"endColumn":9,"fileName":"language.ts","functionName":"getField","argumentNames":["this"]}
+microcode_TileDefn_getField__P3025.info = {"start":1382,"length":58,"line":52,"column":8,"endLine":54,"endColumn":9,"fileName":"language.ts","functionName":"getField","argumentNames":["this"]}
 
 function microcode_TileDefn_getField__P3025_mk(s) {
     checkStack(s.depth);
@@ -20768,7 +20768,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_ProgramDefn_constructor__P3076.info = {"start":11193,"length":85,"line":373,"column":8,"endLine":375,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this"]}
+microcode_ProgramDefn_constructor__P3076.info = {"start":11566,"length":87,"line":373,"column":8,"endLine":375,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this"]}
 
 function microcode_ProgramDefn_constructor__P3076_mk(s) {
     checkStack(s.depth);
@@ -20810,7 +20810,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_ProgramDefn_inline__P11565.info = {"start":11247,"length":20,"line":374,"column":38,"endLine":374,"endColumn":58,"fileName":"language.ts","functionName":"inline","argumentNames":["id"]}
+microcode_ProgramDefn_inline__P11565.info = {"start":11621,"length":20,"line":374,"column":38,"endLine":374,"endColumn":58,"fileName":"language.ts","functionName":"inline","argumentNames":["id"]}
 
 function microcode_ProgramDefn_inline__P11565_mk(s) {
     checkStack(s.depth);
@@ -20850,7 +20850,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageDefn_constructor__P3067.info = {"start":9244,"length":53,"line":306,"column":8,"endLine":308,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this"]}
+microcode_PageDefn_constructor__P3067.info = {"start":9550,"length":55,"line":306,"column":8,"endLine":308,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this"]}
 
 function microcode_PageDefn_constructor__P3067_mk(s) {
     checkStack(s.depth);
@@ -20928,7 +20928,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_App_load__P3159.info = {"start":989,"length":327,"line":35,"column":8,"endLine":44,"endColumn":9,"fileName":"app.ts","functionName":"load","argumentNames":["this","slot"]}
+microcode_App_load__P3159.info = {"start":1024,"length":336,"line":35,"column":8,"endLine":44,"endColumn":9,"fileName":"app.ts","functionName":"load","argumentNames":["this","slot"]}
 
 function microcode_App_load__P3159_mk(s) {
     checkStack(s.depth);
@@ -21025,7 +21025,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_ProgramDefn_FromObj__P3080.info = {"start":11685,"length":418,"line":393,"column":8,"endLine":403,"endColumn":9,"fileName":"language.ts","functionName":"FromObj","argumentNames":["obj"]}
+microcode_ProgramDefn_FromObj__P3080.info = {"start":12078,"length":428,"line":393,"column":8,"endLine":403,"endColumn":9,"fileName":"language.ts","functionName":"FromObj","argumentNames":["obj"]}
 
 function microcode_ProgramDefn_FromObj__P3080_mk(s) {
     checkStack(s.depth);
@@ -21067,7 +21067,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_ProgramDefn_FromObj_inline__P11614.info = {"start":12017,"length":37,"line":400,"column":39,"endLine":400,"endColumn":76,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
+microcode_ProgramDefn_FromObj_inline__P11614.info = {"start":12417,"length":37,"line":400,"column":39,"endLine":400,"endColumn":76,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
 
 function microcode_ProgramDefn_FromObj_inline__P11614_mk(s) {
     checkStack(s.depth);
@@ -21143,7 +21143,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageDefn_FromObj__P3073.info = {"start":10726,"length":393,"line":357,"column":8,"endLine":367,"endColumn":9,"fileName":"language.ts","functionName":"FromObj","argumentNames":["obj"]}
+microcode_PageDefn_FromObj__P3073.info = {"start":11083,"length":403,"line":357,"column":8,"endLine":367,"endColumn":9,"fileName":"language.ts","functionName":"FromObj","argumentNames":["obj"]}
 
 function microcode_PageDefn_FromObj__P3073_mk(s) {
     checkStack(s.depth);
@@ -21184,7 +21184,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageDefn_FromObj_inline__P11639.info = {"start":11033,"length":37,"line":364,"column":39,"endLine":364,"endColumn":76,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
+microcode_PageDefn_FromObj_inline__P11639.info = {"start":11397,"length":37,"line":364,"column":39,"endLine":364,"endColumn":76,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
 
 function microcode_PageDefn_FromObj_inline__P11639_mk(s) {
     checkStack(s.depth);
@@ -21301,7 +21301,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleDefn_FromObj__P3064.info = {"start":7541,"length":1632,"line":262,"column":8,"endLine":300,"endColumn":9,"fileName":"language.ts","functionName":"FromObj","argumentNames":["obj"]}
+microcode_RuleDefn_FromObj__P3064.info = {"start":7803,"length":1670,"line":262,"column":8,"endLine":300,"endColumn":9,"fileName":"language.ts","functionName":"FromObj","argumentNames":["obj"]}
 
 function microcode_RuleDefn_FromObj__P3064_mk(s) {
     checkStack(s.depth);
@@ -21345,7 +21345,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-extractField_inline__P11646.info = {"start":7618,"length":859,"line":263,"column":33,"endLine":282,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+extractField_inline__P11646.info = {"start":7881,"length":878,"line":263,"column":33,"endLine":282,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
 function extractField_inline__P11646_mk(s) {
     checkStack(s.depth);
@@ -21481,7 +21481,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-extractField_inline__P11648.info = {"start":7633,"length":844,"line":263,"column":48,"endLine":282,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["s"]}
+extractField_inline__P11648.info = {"start":7896,"length":863,"line":263,"column":48,"endLine":282,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["s"]}
 
 function extractField_inline__P11648_mk(s) {
     checkStack(s.depth);
@@ -21561,7 +21561,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-parseTile_inline__P11718.info = {"start":8548,"length":275,"line":284,"column":30,"endLine":290,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["single","name"]}
+parseTile_inline__P11718.info = {"start":8832,"length":281,"line":284,"column":30,"endLine":290,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["single","name"]}
 
 function parseTile_inline__P11718_mk(s) {
     checkStack(s.depth);
@@ -21605,7 +21605,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-parseTile_inline__P11734.info = {"start":8756,"length":8,"line":287,"column":69,"endLine":287,"endColumn":77,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+parseTile_inline__P11734.info = {"start":9043,"length":8,"line":287,"column":69,"endLine":287,"endColumn":77,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
 function parseTile_inline__P11734_mk(s) {
     checkStack(s.depth);
@@ -21658,7 +21658,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleDefn_constructor__P3059.info = {"start":5869,"length":149,"line":209,"column":8,"endLine":214,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this"]}
+microcode_RuleDefn_constructor__P3059.info = {"start":6078,"length":154,"line":209,"column":8,"endLine":214,"endColumn":9,"fileName":"language.ts","functionName":"inline","argumentNames":["this"]}
 
 function microcode_RuleDefn_constructor__P3059_mk(s) {
     checkStack(s.depth);
@@ -21695,7 +21695,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_getNewInstance__P3028.info = {"start":1672,"length":79,"line":67,"column":8,"endLine":69,"endColumn":9,"fileName":"language.ts","functionName":"getNewInstance","argumentNames":["this","field"]}
+microcode_TileDefn_getNewInstance__P3028.info = {"start":1739,"length":81,"line":67,"column":8,"endLine":69,"endColumn":9,"fileName":"language.ts","functionName":"getNewInstance","argumentNames":["this","field"]}
 
 function microcode_TileDefn_getNewInstance__P3028_mk(s) {
     checkStack(s.depth);
@@ -23349,7 +23349,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_log__P3228.info = {"start":1201,"length":404,"line":56,"column":8,"endLine":67,"endColumn":9,"fileName":"home.ts","functionName":"log","argumentNames":["this","text","color","justification"]}
+microcode_Home_log__P3228.info = {"start":1257,"length":415,"line":56,"column":8,"endLine":67,"endColumn":9,"fileName":"home.ts","functionName":"log","argumentNames":["this","text","color","justification"]}
 
 function microcode_Home_log__P3228_mk(s) {
     checkStack(s.depth);
@@ -23511,7 +23511,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Scene_color__P2985.info = {"start":496,"length":59,"line":18,"column":8,"endLine":20,"endColumn":9,"fileName":"scene.ts","functionName":"color","argumentNames":["this","v"]}
+microcode_Scene_color__P2985.info = {"start":514,"length":61,"line":18,"column":8,"endLine":20,"endColumn":9,"fileName":"scene.ts","functionName":"color","argumentNames":["this","v"]}
 
 function microcode_Scene_color__P2985_mk(s) {
     checkStack(s.depth);
@@ -23546,7 +23546,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Scene_color__P2984.info = {"start":426,"length":61,"line":15,"column":8,"endLine":17,"endColumn":9,"fileName":"scene.ts","functionName":"color","argumentNames":["this"]}
+microcode_Scene_color__P2984.info = {"start":441,"length":63,"line":15,"column":8,"endLine":17,"endColumn":9,"fileName":"scene.ts","functionName":"color","argumentNames":["this"]}
 microcode_Scene_color__P2984.isGetter = true;
 
 function microcode_Scene_color__P2984_mk(s) {
@@ -23646,7 +23646,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_startup__P3236.info = {"start":3785,"length":1445,"line":133,"column":23,"endLine":179,"endColumn":9,"fileName":"home.ts","functionName":"startup","argumentNames":["this"]}
+microcode_Home_startup__P3236.info = {"start":3918,"length":1491,"line":133,"column":23,"endLine":179,"endColumn":9,"fileName":"home.ts","functionName":"startup","argumentNames":["this"]}
 
 function microcode_Home_startup__P3236_mk(s) {
     checkStack(s.depth);
@@ -23698,7 +23698,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_startup_inline__P12341.info = {"start":3954,"length":126,"line":138,"column":16,"endLine":141,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
+microcode_Home_startup_inline__P12341.info = {"start":4092,"length":129,"line":138,"column":16,"endLine":141,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Home_startup_inline__P12341_mk(s) {
     checkStack(s.depth);
@@ -23759,7 +23759,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_startup_inline__P12357.info = {"start":4221,"length":271,"line":146,"column":16,"endLine":153,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
+microcode_Home_startup_inline__P12357.info = {"start":4367,"length":278,"line":146,"column":16,"endLine":153,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Home_startup_inline__P12357_mk(s) {
     checkStack(s.depth);
@@ -23796,7 +23796,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_startup_inline__P12371.info = {"start":4633,"length":114,"line":158,"column":16,"endLine":161,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
+microcode_Home_startup_inline__P12371.info = {"start":4791,"length":117,"line":158,"column":16,"endLine":161,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Home_startup_inline__P12371_mk(s) {
     checkStack(s.depth);
@@ -23825,7 +23825,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_startup_inline__P12380.info = {"start":4889,"length":68,"line":166,"column":16,"endLine":168,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
+microcode_Home_startup_inline__P12380.info = {"start":5055,"length":70,"line":166,"column":16,"endLine":168,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Home_startup_inline__P12380_mk(s) {
     checkStack(s.depth);
@@ -23857,7 +23857,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_startup_inline__P12387.info = {"start":5101,"length":67,"line":173,"column":16,"endLine":175,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
+microcode_Home_startup_inline__P12387.info = {"start":5274,"length":69,"line":173,"column":16,"endLine":175,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Home_startup_inline__P12387_mk(s) {
     checkStack(s.depth);
@@ -23933,7 +23933,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_compileProgram__P3235.info = {"start":3427,"length":333,"line":123,"column":8,"endLine":131,"endColumn":9,"fileName":"home.ts","functionName":"compileProgram","argumentNames":["this"]}
+microcode_Home_compileProgram__P3235.info = {"start":3550,"length":341,"line":123,"column":8,"endLine":131,"endColumn":9,"fileName":"home.ts","functionName":"compileProgram","argumentNames":["this"]}
 
 function microcode_Home_compileProgram__P3235_mk(s) {
     checkStack(s.depth);
@@ -23997,7 +23997,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_constructor__P3683.info = {"start":3297,"length":16,"line":117,"column":8,"endLine":117,"endColumn":24,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this"]}
+jacs_TopWriter_constructor__P3683.info = {"start":3414,"length":16,"line":117,"column":8,"endLine":117,"endColumn":24,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this"]}
 
 function jacs_TopWriter_constructor__P3683_mk(s) {
     checkStack(s.depth);
@@ -24242,7 +24242,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitProgram__P3700.info = {"start":20768,"length":1136,"line":603,"column":8,"endLine":637,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitProgram","argumentNames":["this","prog"]}
+jacs_TopWriter_emitProgram__P3700.info = {"start":21371,"length":1170,"line":603,"column":8,"endLine":637,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitProgram","argumentNames":["this","prog"]}
 
 function jacs_TopWriter_emitProgram__P3700_mk(s) {
     checkStack(s.depth);
@@ -24299,7 +24299,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitProgram_inline__P12434.info = {"start":21201,"length":76,"line":614,"column":41,"endLine":616,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitProgram_inline__P12434.info = {"start":21815,"length":78,"line":614,"column":41,"endLine":616,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitProgram_inline__P12434_mk(s) {
     checkStack(s.depth);
@@ -24866,7 +24866,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_serialize__P6433.info = {"start":4814,"length":4141,"line":161,"column":8,"endLine":285,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"serialize","argumentNames":["this"]}
+jacs_TopWriter_serialize__P6433.info = {"start":4975,"length":4265,"line":161,"column":8,"endLine":285,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"serialize","argumentNames":["this"]}
 
 function jacs_TopWriter_serialize__P6433_mk(s) {
     checkStack(s.depth);
@@ -25009,7 +25009,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-descs_inline__P12660.info = {"start":7222,"length":638,"line":232,"column":50,"endLine":248,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["str","idx"]}
+descs_inline__P12660.info = {"start":7454,"length":654,"line":232,"column":50,"endLine":248,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["str","idx"]}
 
 function descs_inline__P12660_mk(s) {
     checkStack(s.depth);
@@ -25066,7 +25066,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_assert__P3565.info = {"start":21,"length":166,"line":1,"column":4,"endLine":6,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"assert","argumentNames":["cond","msg"]}
+jacs_assert__P3565.info = {"start":22,"length":171,"line":1,"column":4,"endLine":6,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"assert","argumentNames":["cond","msg"]}
 
 function jacs_assert__P3565_mk(s) {
     checkStack(s.depth);
@@ -25158,7 +25158,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_finalizeDesc__P3617.info = {"start":5031,"length":449,"line":183,"column":8,"endLine":193,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"finalizeDesc","argumentNames":["this","off","numlocals","numargs"]}
+jacs_OpWriter_finalizeDesc__P3617.info = {"start":5214,"length":459,"line":183,"column":8,"endLine":193,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"finalizeDesc","argumentNames":["this","off","numlocals","numargs"]}
 
 function jacs_OpWriter_finalizeDesc__P3617_mk(s) {
     checkStack(s.depth);
@@ -25201,7 +25201,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_write16__P3568.info = {"start":439,"length":121,"line":16,"column":4,"endLine":18,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"write16","argumentNames":["buf","pos","v"]}
+jacs_write16__P3568.info = {"start":455,"length":123,"line":16,"column":4,"endLine":18,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"write16","argumentNames":["buf","pos","v"]}
 
 function jacs_write16__P3568_mk(s) {
     checkStack(s.depth);
@@ -25237,7 +25237,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_location__P3644.info = {"start":14948,"length":53,"line":501,"column":8,"endLine":503,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"location","argumentNames":["this"]}
+jacs_OpWriter_location__P3644.info = {"start":15449,"length":55,"line":501,"column":8,"endLine":503,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"location","argumentNames":["this"]}
 
 function jacs_OpWriter_location__P3644_mk(s) {
     checkStack(s.depth);
@@ -25270,7 +25270,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_read32__P3567.info = {"start":320,"length":113,"line":12,"column":4,"endLine":14,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"read32","argumentNames":["buf","pos"]}
+jacs_read32__P3567.info = {"start":332,"length":115,"line":12,"column":4,"endLine":14,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"read32","argumentNames":["buf","pos"]}
 
 function jacs_read32__P3567_mk(s) {
     checkStack(s.depth);
@@ -25390,7 +25390,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_SectionWriter_finalize__P3652.info = {"start":18688,"length":405,"line":612,"column":8,"endLine":621,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"finalize","argumentNames":["this","off"]}
+jacs_SectionWriter_finalize__P3652.info = {"start":19300,"length":414,"line":612,"column":8,"endLine":621,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"finalize","argumentNames":["this","off"]}
 
 function jacs_SectionWriter_finalize__P3652_mk(s) {
     checkStack(s.depth);
@@ -25446,7 +25446,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_SectionWriter_align__P3653.info = {"start":19103,"length":87,"line":623,"column":8,"endLine":625,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"align","argumentNames":["this"]}
+jacs_SectionWriter_align__P3653.info = {"start":19726,"length":89,"line":623,"column":8,"endLine":625,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"align","argumentNames":["this"]}
 
 function jacs_SectionWriter_align__P3653_mk(s) {
     checkStack(s.depth);
@@ -25484,7 +25484,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_write32__P3566.info = {"start":193,"length":121,"line":8,"column":4,"endLine":10,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"write32","argumentNames":["buf","pos","v"]}
+jacs_write32__P3566.info = {"start":201,"length":123,"line":8,"column":4,"endLine":10,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"write32","argumentNames":["buf","pos","v"]}
 
 function jacs_write32__P3566_mk(s) {
     checkStack(s.depth);
@@ -25539,7 +25539,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_serialize__P6429.info = {"start":1825,"length":197,"line":68,"column":8,"endLine":73,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"serialize","argumentNames":["this"]}
+jacs_Role_serialize__P6429.info = {"start":1893,"length":202,"line":68,"column":8,"endLine":73,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"serialize","argumentNames":["this"]}
 
 function jacs_Role_serialize__P6429_mk(s) {
     checkStack(s.depth);
@@ -25594,7 +25594,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_serialize__P3616.info = {"start":4887,"length":134,"line":178,"column":8,"endLine":181,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"serialize","argumentNames":["this"]}
+jacs_OpWriter_serialize__P3616.info = {"start":5065,"length":137,"line":178,"column":8,"endLine":181,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"serialize","argumentNames":["this"]}
 
 function jacs_OpWriter_serialize__P3616_mk(s) {
     checkStack(s.depth);
@@ -25694,7 +25694,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_writeByte__P6415.info = {"start":15011,"length":351,"line":505,"column":8,"endLine":513,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"writeByte","argumentNames":["this","v"]}
+jacs_OpWriter_writeByte__P6415.info = {"start":15516,"length":359,"line":505,"column":8,"endLine":513,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"writeByte","argumentNames":["this","v"]}
 
 function jacs_OpWriter_writeByte__P6415_mk(s) {
     checkStack(s.depth);
@@ -25767,7 +25767,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_SectionWriter_append__P3654.info = {"start":19200,"length":176,"line":627,"column":8,"endLine":631,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"append","argumentNames":["this","buf"]}
+jacs_SectionWriter_append__P3654.info = {"start":19827,"length":180,"line":627,"column":8,"endLine":631,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"append","argumentNames":["this","buf"]}
 
 function jacs_SectionWriter_append__P3654_mk(s) {
     checkStack(s.depth);
@@ -25889,7 +25889,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_assertRange__P3569.info = {"start":566,"length":236,"line":20,"column":4,"endLine":28,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"assertRange","argumentNames":["min","v","max","desc"]}
+jacs_assertRange__P3569.info = {"start":586,"length":244,"line":20,"column":4,"endLine":28,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"assertRange","argumentNames":["min","v","max","desc"]}
 
 function jacs_assertRange__P3569_mk(s) {
     checkStack(s.depth);
@@ -26517,7 +26517,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_SectionWriter_constructor__P3651.info = {"start":18583,"length":95,"line":608,"column":8,"endLine":610,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":["this","size"]}
+jacs_SectionWriter_constructor__P3651.info = {"start":19191,"length":97,"line":608,"column":8,"endLine":610,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":["this","size"]}
 
 function jacs_SectionWriter_constructor__P3651_mk(s) {
     checkStack(s.depth);
@@ -27236,7 +27236,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_finalize__P6434.info = {"start":9415,"length":729,"line":302,"column":8,"endLine":319,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalize","argumentNames":["this"]}
+jacs_TopWriter_finalize__P6434.info = {"start":9717,"length":746,"line":302,"column":8,"endLine":319,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalize","argumentNames":["this"]}
 
 function jacs_TopWriter_finalize__P6434_mk(s) {
     checkStack(s.depth);
@@ -27337,7 +27337,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_finalize_inline__P13404.info = {"start":9535,"length":255,"line":304,"column":46,"endLine":309,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_finalize_inline__P13404.info = {"start":9839,"length":260,"line":304,"column":46,"endLine":309,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_finalize_inline__P13404_mk(s) {
     checkStack(s.depth);
@@ -27409,7 +27409,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_describeString__P3688.info = {"start":10154,"length":236,"line":321,"column":8,"endLine":326,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"describeString","argumentNames":["this","idx"]}
+jacs_TopWriter_describeString__P3688.info = {"start":10475,"length":241,"line":321,"column":8,"endLine":326,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"describeString","argumentNames":["this","idx"]}
 
 function jacs_TopWriter_describeString__P3688_mk(s) {
     checkStack(s.depth);
@@ -27454,7 +27454,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Procedure_toString__P6425.info = {"start":1212,"length":67,"line":45,"column":8,"endLine":47,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"toString","argumentNames":["this"]}
+jacs_Procedure_toString__P6425.info = {"start":1257,"length":69,"line":45,"column":8,"endLine":47,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"toString","argumentNames":["this"]}
 
 function jacs_Procedure_toString__P6425_mk(s) {
     checkStack(s.depth);
@@ -27699,7 +27699,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_getAssembly__P3632.info = {"start":9177,"length":828,"line":318,"column":8,"endLine":341,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"getAssembly","argumentNames":["this"]}
+jacs_OpWriter_getAssembly__P3632.info = {"start":9495,"length":851,"line":318,"column":8,"endLine":341,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"getAssembly","argumentNames":["this"]}
 
 function jacs_OpWriter_getAssembly__P3632_mk(s) {
     checkStack(s.depth);
@@ -27761,7 +27761,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-getbyte_inline__P13502.info = {"start":9336,"length":111,"line":322,"column":28,"endLine":325,"endColumn":13,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":[]}
+getbyte_inline__P13502.info = {"start":9658,"length":114,"line":322,"column":28,"endLine":325,"endColumn":13,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":[]}
 
 function getbyte_inline__P13502_mk(s) {
     checkStack(s.depth);
@@ -27895,7 +27895,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_stringifyInstr__P3563.info = {"start":169,"length":377,"line":8,"column":4,"endLine":23,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"stringifyInstr","argumentNames":["getbyte0","resolver0"]}
+jacs_stringifyInstr__P3563.info = {"start":177,"length":392,"line":8,"column":4,"endLine":23,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"stringifyInstr","argumentNames":["getbyte0","resolver0"]}
 
 function jacs_stringifyInstr__P3563_mk(s) {
     checkStack(s.depth);
@@ -27977,7 +27977,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_doOp__P6387.info = {"start":1974,"length":182,"line":83,"column":4,"endLine":88,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"doOp","argumentNames":[]}
+jacs_doOp__P6387.info = {"start":2057,"length":187,"line":83,"column":4,"endLine":88,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"doOp","argumentNames":[]}
 
 function jacs_doOp__P6387_mk(s) {
     checkStack(s.depth);
@@ -28026,7 +28026,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_stmtTakesNumber__P3505.info = {"start":83,"length":124,"line":3,"column":4,"endLine":5,"endColumn":5,"fileName":"jacs_format.ts","functionName":"stmtTakesNumber","argumentNames":["op"]}
+jacs_stmtTakesNumber__P3505.info = {"start":86,"length":126,"line":3,"column":4,"endLine":5,"endColumn":5,"fileName":"jacs_format.ts","functionName":"stmtTakesNumber","argumentNames":["op"]}
 
 function jacs_stmtTakesNumber__P3505_mk(s) {
     checkStack(s.depth);
@@ -28348,7 +28348,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_expandFmt__P6386.info = {"start":552,"length":1416,"line":25,"column":4,"endLine":81,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"expandFmt","argumentNames":["takesNumber","fmt"]}
+jacs_expandFmt__P6386.info = {"start":577,"length":1472,"line":25,"column":4,"endLine":81,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"expandFmt","argumentNames":["takesNumber","fmt"]}
 
 function jacs_expandFmt__P6386_mk(s) {
     checkStack(s.depth);
@@ -28510,7 +28510,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_jmpOffset__P6388.info = {"start":2162,"length":216,"line":90,"column":4,"endLine":95,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"jmpOffset","argumentNames":["off"]}
+jacs_jmpOffset__P6388.info = {"start":2252,"length":221,"line":90,"column":4,"endLine":95,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"jmpOffset","argumentNames":["off"]}
 
 function jacs_jmpOffset__P6388_mk(s) {
     checkStack(s.depth);
@@ -28615,7 +28615,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_callop__P6391.info = {"start":2908,"length":499,"line":115,"column":4,"endLine":130,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"callop","argumentNames":["op"]}
+jacs_callop__P6391.info = {"start":3023,"length":514,"line":115,"column":4,"endLine":130,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"callop","argumentNames":["op"]}
 
 function jacs_callop__P6391_mk(s) {
     checkStack(s.depth);
@@ -28772,7 +28772,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_numfmt__P6390.info = {"start":2562,"length":340,"line":104,"column":4,"endLine":113,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"numfmt","argumentNames":["vv"]}
+jacs_numfmt__P6390.info = {"start":2666,"length":349,"line":104,"column":4,"endLine":113,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"numfmt","argumentNames":["vv"]}
 
 function jacs_numfmt__P6390_mk(s) {
     checkStack(s.depth);
@@ -28821,7 +28821,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_bitSize__P3562.info = {"start":21,"length":76,"line":1,"column":4,"endLine":3,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"bitSize","argumentNames":["fmt"]}
+jacs_bitSize__P3562.info = {"start":22,"length":78,"line":1,"column":4,"endLine":3,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"bitSize","argumentNames":["fmt"]}
 
 function jacs_bitSize__P3562_mk(s) {
     checkStack(s.depth);
@@ -28881,7 +28881,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_isNumber__P6389.info = {"start":2384,"length":172,"line":97,"column":4,"endLine":102,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"isNumber","argumentNames":["s"]}
+jacs_isNumber__P6389.info = {"start":2481,"length":177,"line":97,"column":4,"endLine":102,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"isNumber","argumentNames":["s"]}
 
 function jacs_isNumber__P6389_mk(s) {
     checkStack(s.depth);
@@ -28982,7 +28982,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_stringifyExpr__P6393.info = {"start":3737,"length":254,"line":149,"column":4,"endLine":157,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"stringifyExpr","argumentNames":[]}
+jacs_stringifyExpr__P6393.info = {"start":3886,"length":262,"line":149,"column":4,"endLine":157,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"stringifyExpr","argumentNames":[]}
 
 function jacs_stringifyExpr__P6393_mk(s) {
     checkStack(s.depth);
@@ -29031,7 +29031,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_exprTakesNumber__P3507.info = {"start":341,"length":124,"line":11,"column":4,"endLine":13,"endColumn":5,"fileName":"jacs_format.ts","functionName":"exprTakesNumber","argumentNames":["op"]}
+jacs_exprTakesNumber__P3507.info = {"start":352,"length":126,"line":11,"column":4,"endLine":13,"endColumn":5,"fileName":"jacs_format.ts","functionName":"exprTakesNumber","argumentNames":["op"]}
 
 function jacs_exprTakesNumber__P3507_mk(s) {
     checkStack(s.depth);
@@ -29131,7 +29131,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_decodeInt__P6392.info = {"start":3413,"length":318,"line":132,"column":4,"endLine":147,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"decodeInt","argumentNames":[]}
+jacs_decodeInt__P6392.info = {"start":3545,"length":333,"line":132,"column":4,"endLine":147,"endColumn":5,"fileName":"jacs_stringify.ts","functionName":"decodeInt","argumentNames":[]}
 
 function jacs_decodeInt__P6392_mk(s) {
     checkStack(s.depth);
@@ -29518,7 +29518,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Procedure_finalize__P6424.info = {"start":1143,"length":60,"line":42,"column":8,"endLine":44,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalize","argumentNames":["this"]}
+jacs_Procedure_finalize__P6424.info = {"start":1185,"length":62,"line":42,"column":8,"endLine":44,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalize","argumentNames":["this"]}
 
 function jacs_Procedure_finalize__P6424_mk(s) {
     checkStack(s.depth);
@@ -29669,7 +29669,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_patchLabels__P3641.info = {"start":12751,"length":594,"line":433,"column":8,"endLine":450,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"patchLabels","argumentNames":["this"]}
+jacs_OpWriter_patchLabels__P3641.info = {"start":13184,"length":611,"line":433,"column":8,"endLine":450,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"patchLabels","argumentNames":["this"]}
 
 function jacs_OpWriter_patchLabels__P3641_mk(s) {
     checkStack(s.depth);
@@ -29852,7 +29852,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_assertNoTemps__P3640.info = {"start":12298,"length":443,"line":419,"column":8,"endLine":431,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"assertNoTemps","argumentNames":["this"]}
+jacs_OpWriter_assertNoTemps__P3640.info = {"start":12717,"length":455,"line":419,"column":8,"endLine":431,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"assertNoTemps","argumentNames":["this"]}
 
 function jacs_OpWriter_assertNoTemps__P3640_mk(s) {
     checkStack(s.depth);
@@ -29913,7 +29913,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-jacs_Value_hasParent__P3590.info = {"start":1778,"length":77,"line":70,"column":8,"endLine":72,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"hasParent","argumentNames":["this"]}
+jacs_Value_hasParent__P3590.info = {"start":1848,"length":79,"line":70,"column":8,"endLine":72,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"hasParent","argumentNames":["this"]}
 jacs_Value_hasParent__P3590.isGetter = true;
 
 function jacs_Value_hasParent__P3590_mk(s) {
@@ -29963,7 +29963,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-jacs_Value_usesState__P3589.info = {"start":1692,"length":77,"line":67,"column":8,"endLine":69,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"usesState","argumentNames":["this"]}
+jacs_Value_usesState__P3589.info = {"start":1759,"length":79,"line":67,"column":8,"endLine":69,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"usesState","argumentNames":["this"]}
 jacs_Value_usesState__P3589.isGetter = true;
 
 function jacs_Value_usesState__P3589_mk(s) {
@@ -30023,7 +30023,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_oops__P6412.info = {"start":12140,"length":148,"line":412,"column":8,"endLine":417,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"oops","argumentNames":["this","msg"]}
+jacs_OpWriter_oops__P6412.info = {"start":12552,"length":153,"line":412,"column":8,"endLine":417,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"oops","argumentNames":["this","msg"]}
 
 function jacs_OpWriter_oops__P6412_mk(s) {
     checkStack(s.depth);
@@ -30059,7 +30059,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_oops__P3570.info = {"start":808,"length":66,"line":30,"column":4,"endLine":32,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"oops","argumentNames":["msg"]}
+jacs_oops__P3570.info = {"start":838,"length":68,"line":30,"column":4,"endLine":32,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"oops","argumentNames":["msg"]}
 
 function jacs_oops__P3570_mk(s) {
     checkStack(s.depth);
@@ -30127,7 +30127,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_finalizePageProcs__P6441.info = {"start":17416,"length":474,"line":517,"column":8,"endLine":528,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalizePageProcs","argumentNames":["this"]}
+jacs_TopWriter_finalizePageProcs__P6441.info = {"start":17933,"length":485,"line":517,"column":8,"endLine":528,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalizePageProcs","argumentNames":["this"]}
 
 function jacs_TopWriter_finalizePageProcs__P6441_mk(s) {
     checkStack(s.depth);
@@ -30207,7 +30207,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_finalizePageProcs_inline__P14185.info = {"start":17566,"length":299,"line":520,"column":45,"endLine":526,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_finalizePageProcs_inline__P14185.info = {"start":18086,"length":305,"line":520,"column":45,"endLine":526,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_finalizePageProcs_inline__P14185_mk(s) {
     checkStack(s.depth);
@@ -30297,7 +30297,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_pageProc__P6440.info = {"start":17033,"length":373,"line":507,"column":8,"endLine":515,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"pageProc","argumentNames":["this","pageIdx"]}
+jacs_TopWriter_pageProc__P6440.info = {"start":17540,"length":381,"line":507,"column":8,"endLine":515,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"pageProc","argumentNames":["this","pageIdx"]}
 
 function jacs_TopWriter_pageProc__P6440_mk(s) {
     checkStack(s.depth);
@@ -30352,7 +30352,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_pageProc_inline__P14223.info = {"start":17251,"length":87,"line":510,"column":60,"endLine":512,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_pageProc_inline__P14223.info = {"start":17761,"length":89,"line":510,"column":60,"endLine":512,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_pageProc_inline__P14223_mk(s) {
     checkStack(s.depth);
@@ -30414,7 +30414,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Variable_write__P6421.info = {"start":641,"length":117,"line":27,"column":8,"endLine":29,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"write","argumentNames":["this","wr","val"]}
+jacs_Variable_write__P6421.info = {"start":668,"length":119,"line":27,"column":8,"endLine":29,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"write","argumentNames":["this","wr","val"]}
 
 function jacs_Variable_write__P6421_mk(s) {
     checkStack(s.depth);
@@ -30479,7 +30479,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_storeStmt__P3522.info = {"start":973,"length":386,"line":34,"column":4,"endLine":45,"endColumn":5,"fileName":"jacs_format.ts","functionName":"storeStmt","argumentNames":["k"]}
+jacs_storeStmt__P3522.info = {"start":1007,"length":397,"line":34,"column":4,"endLine":45,"endColumn":5,"fileName":"jacs_format.ts","functionName":"storeStmt","argumentNames":["k"]}
 
 function jacs_storeStmt__P3522_mk(s) {
     checkStack(s.depth);
@@ -30614,7 +30614,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_emitCall__P3628.info = {"start":7732,"length":596,"line":273,"column":8,"endLine":288,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emitCall","argumentNames":["this","procIdx","args","op"]}
+jacs_OpWriter_emitCall__P3628.info = {"start":8005,"length":611,"line":273,"column":8,"endLine":288,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emitCall","argumentNames":["this","procIdx","args","op"]}
 
 function jacs_OpWriter_emitCall__P3628_mk(s) {
     checkStack(s.depth);
@@ -30666,7 +30666,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_CachedValue_free__P3601.info = {"start":3388,"length":43,"line":122,"column":8,"endLine":124,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"free","argumentNames":["this"]}
+jacs_CachedValue_free__P3601.info = {"start":3510,"length":45,"line":122,"column":8,"endLine":124,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"free","argumentNames":["this"]}
 
 function jacs_CachedValue_free__P3601_mk(s) {
     checkStack(s.depth);
@@ -30743,7 +30743,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_CachedValue__decr__P3600.info = {"start":3107,"length":272,"line":114,"column":8,"endLine":121,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"_decr","argumentNames":["this"]}
+jacs_CachedValue__decr__P3600.info = {"start":3221,"length":279,"line":114,"column":8,"endLine":121,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"_decr","argumentNames":["this"]}
 
 function jacs_CachedValue__decr__P3600_mk(s) {
     checkStack(s.depth);
@@ -30791,7 +30791,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_literal__P3602.info = {"start":3443,"length":180,"line":127,"column":4,"endLine":133,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"literal","argumentNames":["v"]}
+jacs_literal__P3602.info = {"start":3570,"length":186,"line":127,"column":4,"endLine":133,"endColumn":5,"fileName":"jacs_opwriter.ts","functionName":"literal","argumentNames":["v"]}
 
 function jacs_literal__P3602_mk(s) {
     checkStack(s.depth);
@@ -30827,7 +30827,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Value_constructor__P3587.info = {"start":1589,"length":16,"line":63,"column":8,"endLine":63,"endColumn":24,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":["this"]}
+jacs_Value_constructor__P3587.info = {"start":1652,"length":16,"line":63,"column":8,"endLine":63,"endColumn":24,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":["this"]}
 
 function jacs_Value_constructor__P3587_mk(s) {
     checkStack(s.depth);
@@ -30990,7 +30990,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_emitStmt__P3645.info = {"start":17841,"length":566,"line":586,"column":8,"endLine":599,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emitStmt","argumentNames":["this","op","args"]}
+jacs_OpWriter_emitStmt__P3645.info = {"start":18427,"length":579,"line":586,"column":8,"endLine":599,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emitStmt","argumentNames":["this","op","args"]}
 
 function jacs_OpWriter_emitStmt__P3645_mk(s) {
     checkStack(s.depth);
@@ -31090,7 +31090,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_writeArgs__P6417.info = {"start":16039,"length":352,"line":536,"column":8,"endLine":547,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"writeArgs","argumentNames":["this","firstInt","args"]}
+jacs_OpWriter_writeArgs__P6417.info = {"start":16575,"length":363,"line":536,"column":8,"endLine":547,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"writeArgs","argumentNames":["this","firstInt","args"]}
 
 function jacs_OpWriter_writeArgs__P6417_mk(s) {
     checkStack(s.depth);
@@ -31367,7 +31367,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_writeValue__P6418.info = {"start":16401,"length":1430,"line":549,"column":8,"endLine":584,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"writeValue","argumentNames":["this","v"]}
+jacs_OpWriter_writeValue__P6418.info = {"start":16950,"length":1465,"line":549,"column":8,"endLine":584,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"writeValue","argumentNames":["this","v"]}
 
 function jacs_OpWriter_writeValue__P6418_mk(s) {
     checkStack(s.depth);
@@ -31421,7 +31421,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-jacs_Value_isMemRef__P3592.info = {"start":1950,"length":75,"line":76,"column":8,"endLine":78,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"isMemRef","argumentNames":["this"]}
+jacs_Value_isMemRef__P3592.info = {"start":2026,"length":77,"line":76,"column":8,"endLine":78,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"isMemRef","argumentNames":["this"]}
 jacs_Value_isMemRef__P3592.isGetter = true;
 
 function jacs_Value_isMemRef__P3592_mk(s) {
@@ -31594,7 +31594,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_writeInt__P6416.info = {"start":15372,"length":657,"line":515,"column":8,"endLine":534,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"writeInt","argumentNames":["this","v"]}
+jacs_OpWriter_writeInt__P6416.info = {"start":15887,"length":676,"line":515,"column":8,"endLine":534,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"writeInt","argumentNames":["this","v"]}
 
 function jacs_OpWriter_writeInt__P6416_mk(s) {
     checkStack(s.depth);
@@ -31647,7 +31647,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-jacs_Value_isLiteral__P3591.info = {"start":1864,"length":77,"line":73,"column":8,"endLine":75,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"isLiteral","argumentNames":["this"]}
+jacs_Value_isLiteral__P3591.info = {"start":1937,"length":79,"line":73,"column":8,"endLine":75,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"isLiteral","argumentNames":["this"]}
 jacs_Value_isLiteral__P3591.isGetter = true;
 
 function jacs_Value_isLiteral__P3591_mk(s) {
@@ -31744,7 +31744,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_spillAllStateful__P6414.info = {"start":13521,"length":222,"line":459,"column":8,"endLine":464,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"spillAllStateful","argumentNames":["this"]}
+jacs_OpWriter_spillAllStateful__P6414.info = {"start":13980,"length":227,"line":459,"column":8,"endLine":464,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"spillAllStateful","argumentNames":["this"]}
 
 function jacs_OpWriter_spillAllStateful__P6414_mk(s) {
     checkStack(s.depth);
@@ -31820,7 +31820,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_spillValue__P6413.info = {"start":13355,"length":156,"line":452,"column":8,"endLine":457,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"spillValue","argumentNames":["this","v"]}
+jacs_OpWriter_spillValue__P6413.info = {"start":13807,"length":161,"line":452,"column":8,"endLine":457,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"spillValue","argumentNames":["this","v"]}
 
 function jacs_OpWriter_spillValue__P6413_mk(s) {
     checkStack(s.depth);
@@ -31884,7 +31884,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_CachedValue_emit__P3598.info = {"start":2569,"length":323,"line":97,"column":8,"endLine":106,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emit","argumentNames":["this"]}
+jacs_CachedValue_emit__P3598.info = {"start":2666,"length":332,"line":97,"column":8,"endLine":106,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emit","argumentNames":["this"]}
 
 function jacs_CachedValue_emit__P3598_mk(s) {
     checkStack(s.depth);
@@ -31951,7 +31951,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Value__set__P3594.info = {"start":2153,"length":279,"line":84,"column":8,"endLine":91,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"_set","argumentNames":["this","src"]}
+jacs_Value__set__P3594.info = {"start":2237,"length":286,"line":84,"column":8,"endLine":91,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"_set","argumentNames":["this","src"]}
 
 function jacs_Value__set__P3594_mk(s) {
     checkStack(s.depth);
@@ -32019,7 +32019,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_CachedValue_store__P3599.info = {"start":2901,"length":197,"line":107,"column":8,"endLine":113,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"store","argumentNames":["this","v"]}
+jacs_CachedValue_store__P3599.info = {"start":3008,"length":203,"line":107,"column":8,"endLine":113,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"store","argumentNames":["this","v"]}
 
 function jacs_CachedValue_store__P3599_mk(s) {
     checkStack(s.depth);
@@ -32065,7 +32065,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_allocTmpLocal__P3622.info = {"start":6927,"length":102,"line":241,"column":8,"endLine":244,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"allocTmpLocal","argumentNames":["this"]}
+jacs_OpWriter_allocTmpLocal__P3622.info = {"start":7168,"length":105,"line":241,"column":8,"endLine":244,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"allocTmpLocal","argumentNames":["this"]}
 
 function jacs_OpWriter_allocTmpLocal__P3622_mk(s) {
     checkStack(s.depth);
@@ -32204,7 +32204,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_allocTmpLocals__P3621.info = {"start":6080,"length":837,"line":216,"column":8,"endLine":239,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"allocTmpLocals","argumentNames":["this","num"]}
+jacs_OpWriter_allocTmpLocals__P3621.info = {"start":6296,"length":860,"line":216,"column":8,"endLine":239,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"allocTmpLocals","argumentNames":["this","num"]}
 
 function jacs_OpWriter_allocTmpLocals__P3621_mk(s) {
     checkStack(s.depth);
@@ -32255,7 +32255,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_CachedValue_constructor__P3597.info = {"start":2499,"length":61,"line":96,"column":8,"endLine":96,"endColumn":69,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":["this","parent","index"]}
+jacs_CachedValue_constructor__P3597.info = {"start":2595,"length":61,"line":96,"column":8,"endLine":96,"endColumn":69,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":["this","parent","index"]}
 
 function jacs_CachedValue_constructor__P3597_mk(s) {
     checkStack(s.depth);
@@ -32310,7 +32310,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Value_adopt__P3593.info = {"start":2034,"length":109,"line":79,"column":8,"endLine":82,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"adopt","argumentNames":["this"]}
+jacs_Value_adopt__P3593.info = {"start":2113,"length":112,"line":79,"column":8,"endLine":82,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"adopt","argumentNames":["this"]}
 
 function jacs_Value_adopt__P3593_mk(s) {
     checkStack(s.depth);
@@ -32350,7 +32350,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_mainProc__P3689.info = {"start":10400,"length":59,"line":328,"column":8,"endLine":330,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"mainProc","argumentNames":["this"]}
+jacs_TopWriter_mainProc__P3689.info = {"start":10728,"length":61,"line":328,"column":8,"endLine":330,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"mainProc","argumentNames":["this"]}
 jacs_TopWriter_mainProc__P3689.isGetter = true;
 
 function jacs_TopWriter_mainProc__P3689_mk(s) {
@@ -32423,7 +32423,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_finalize__P6430.info = {"start":2032,"length":332,"line":75,"column":8,"endLine":84,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalize","argumentNames":["this"]}
+jacs_Role_finalize__P6430.info = {"start":2107,"length":341,"line":75,"column":8,"endLine":84,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalize","argumentNames":["this"]}
 
 function jacs_Role_finalize__P6430_mk(s) {
     checkStack(s.depth);
@@ -32467,7 +32467,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_finalize_inline__P14817.info = {"start":2142,"length":57,"line":78,"column":55,"endLine":80,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_Role_finalize_inline__P14817.info = {"start":2220,"length":59,"line":78,"column":55,"endLine":80,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_Role_finalize_inline__P14817_mk(s) {
     checkStack(s.depth);
@@ -32511,7 +32511,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_finalize_inline__P14830.info = {"start":2261,"length":92,"line":81,"column":60,"endLine":83,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_Role_finalize_inline__P14830.info = {"start":2342,"length":94,"line":81,"column":60,"endLine":83,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_Role_finalize_inline__P14830_mk(s) {
     checkStack(s.depth);
@@ -32631,7 +32631,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_emitJump__P3639.info = {"start":11600,"length":530,"line":394,"column":8,"endLine":410,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emitJump","argumentNames":["this","label","cond"]}
+jacs_OpWriter_emitJump__P3639.info = {"start":11994,"length":546,"line":394,"column":8,"endLine":410,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emitJump","argumentNames":["this","label","cond"]}
 
 function jacs_OpWriter_emitJump__P3639_mk(s) {
     checkStack(s.depth);
@@ -32894,7 +32894,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule__P6442.info = {"start":17900,"length":2633,"line":530,"column":8,"endLine":593,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRule","argumentNames":["this","name","rule"]}
+jacs_TopWriter_emitRule__P6442.info = {"start":18430,"length":2696,"line":530,"column":8,"endLine":593,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRule","argumentNames":["this","name","rule"]}
 
 function jacs_TopWriter_emitRule__P6442_mk(s) {
     checkStack(s.depth);
@@ -32982,7 +32982,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P14925.info = {"start":18520,"length":425,"line":543,"column":67,"endLine":552,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P14925.info = {"start":19063,"length":434,"line":543,"column":67,"endLine":552,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRule_inline__P14925_mk(s) {
     checkStack(s.depth);
@@ -33056,7 +33056,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P14946.info = {"start":18989,"length":274,"line":553,"column":42,"endLine":559,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P14946.info = {"start":19542,"length":280,"line":553,"column":42,"endLine":559,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRule_inline__P14946_mk(s) {
     checkStack(s.depth);
@@ -33098,7 +33098,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P14955.info = {"start":19107,"length":97,"line":555,"column":36,"endLine":557,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P14955.info = {"start":19662,"length":99,"line":555,"column":36,"endLine":557,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitRule_inline__P14955_mk(s) {
     checkStack(s.depth);
@@ -33143,7 +33143,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P14997.info = {"start":19566,"length":956,"line":570,"column":53,"endLine":592,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P14997.info = {"start":20136,"length":978,"line":570,"column":53,"endLine":592,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRule_inline__P14997_mk(s) {
     checkStack(s.depth);
@@ -33252,7 +33252,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P15000.info = {"start":19606,"length":901,"line":571,"column":32,"endLine":591,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P15000.info = {"start":20177,"length":921,"line":571,"column":32,"endLine":591,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitRule_inline__P15000_mk(s) {
     checkStack(s.depth);
@@ -33299,7 +33299,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P15022.info = {"start":19996,"length":113,"line":579,"column":28,"endLine":581,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P15022.info = {"start":20575,"length":115,"line":579,"column":28,"endLine":581,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitRule_inline__P15022_mk(s) {
     checkStack(s.depth);
@@ -33350,7 +33350,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_error__P3693.info = {"start":10792,"length":107,"line":344,"column":8,"endLine":347,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"error","argumentNames":["this","msg"]}
+jacs_TopWriter_error__P3693.info = {"start":11136,"length":110,"line":344,"column":8,"endLine":347,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"error","argumentNames":["this","msg"]}
 
 function jacs_TopWriter_error__P3693_mk(s) {
     checkStack(s.depth);
@@ -33476,7 +33476,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_emitIf__P3637.info = {"start":10828,"length":618,"line":372,"column":8,"endLine":388,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emitIf","argumentNames":["this","reg","thenBody","elseBody"]}
+jacs_OpWriter_emitIf__P3637.info = {"start":11200,"length":634,"line":372,"column":8,"endLine":388,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emitIf","argumentNames":["this","reg","thenBody","elseBody"]}
 
 function jacs_OpWriter_emitIf__P3637_mk(s) {
     checkStack(s.depth);
@@ -33535,7 +33535,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_emitLabel__P3636.info = {"start":10699,"length":119,"line":367,"column":8,"endLine":370,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emitLabel","argumentNames":["this","l"]}
+jacs_OpWriter_emitLabel__P3636.info = {"start":11066,"length":122,"line":367,"column":8,"endLine":370,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emitLabel","argumentNames":["this","l"]}
 
 function jacs_OpWriter_emitLabel__P3636_mk(s) {
     checkStack(s.depth);
@@ -33635,7 +33635,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter__setLabelOffset__P3635.info = {"start":10261,"length":428,"line":353,"column":8,"endLine":365,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"_setLabelOffset","argumentNames":["this","l","off"]}
+jacs_OpWriter__setLabelOffset__P3635.info = {"start":10614,"length":440,"line":353,"column":8,"endLine":365,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"_setLabelOffset","argumentNames":["this","l","off"]}
 
 function jacs_OpWriter__setLabelOffset__P3635_mk(s) {
     checkStack(s.depth);
@@ -33692,7 +33692,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_mkLabel__P3634.info = {"start":10127,"length":124,"line":347,"column":8,"endLine":351,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"mkLabel","argumentNames":["this","name"]}
+jacs_OpWriter_mkLabel__P3634.info = {"start":10474,"length":128,"line":347,"column":8,"endLine":351,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"mkLabel","argumentNames":["this","name"]}
 
 function jacs_OpWriter_mkLabel__P3634_mk(s) {
     checkStack(s.depth);
@@ -33733,7 +33733,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Label_constructor__P3579.info = {"start":1144,"length":35,"line":44,"column":8,"endLine":44,"endColumn":43,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":["this","name"]}
+jacs_Label_constructor__P3579.info = {"start":1188,"length":35,"line":44,"column":8,"endLine":44,"endColumn":43,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":["this","name"]}
 
 function jacs_Label_constructor__P3579_mk(s) {
     checkStack(s.depth);
@@ -33839,7 +33839,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_lookupEventCode__P3698.info = {"start":12515,"length":448,"line":395,"column":8,"endLine":405,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupEventCode","argumentNames":["this","role","rule"]}
+jacs_TopWriter_lookupEventCode__P3698.info = {"start":12910,"length":458,"line":395,"column":8,"endLine":405,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupEventCode","argumentNames":["this","role","rule"]}
 
 function jacs_TopWriter_lookupEventCode__P3698_mk(s) {
     checkStack(s.depth);
@@ -33928,7 +33928,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_getDispatcher__P6431.info = {"start":2374,"length":352,"line":86,"column":8,"endLine":94,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"getDispatcher","argumentNames":["this"]}
+jacs_Role_getDispatcher__P6431.info = {"start":2460,"length":360,"line":86,"column":8,"endLine":94,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"getDispatcher","argumentNames":["this"]}
 
 function jacs_Role_getDispatcher__P6431_mk(s) {
     checkStack(s.depth);
@@ -33985,7 +33985,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_getDispatcher_inline__P15209.info = {"start":2562,"length":104,"line":89,"column":59,"endLine":91,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_Role_getDispatcher_inline__P15209.info = {"start":2651,"length":106,"line":89,"column":59,"endLine":91,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_Role_getDispatcher_inline__P15209_mk(s) {
     checkStack(s.depth);
@@ -34102,7 +34102,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_lookupSensorRole__P3697.info = {"start":12034,"length":471,"line":385,"column":8,"endLine":393,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupSensorRole","argumentNames":["this","rule"]}
+jacs_TopWriter_lookupSensorRole__P3697.info = {"start":12419,"length":479,"line":385,"column":8,"endLine":393,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupSensorRole","argumentNames":["this","rule"]}
 
 function jacs_TopWriter_lookupSensorRole__P3697_mk(s) {
     checkStack(s.depth);
@@ -34256,7 +34256,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_lookupRole__P3695.info = {"start":11164,"length":539,"line":358,"column":8,"endLine":374,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupRole","argumentNames":["this","name","idx"]}
+jacs_TopWriter_lookupRole__P3695.info = {"start":11522,"length":555,"line":358,"column":8,"endLine":374,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupRole","argumentNames":["this","name","idx"]}
 
 function jacs_TopWriter_lookupRole__P3695_mk(s) {
     checkStack(s.depth);
@@ -34335,7 +34335,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_lookupServiceClass__P3694.info = {"start":10909,"length":245,"line":349,"column":8,"endLine":356,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupServiceClass","argumentNames":["this","name"]}
+jacs_TopWriter_lookupServiceClass__P3694.info = {"start":11258,"length":252,"line":349,"column":8,"endLine":356,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupServiceClass","argumentNames":["this","name"]}
 
 function jacs_TopWriter_lookupServiceClass__P3694_mk(s) {
     checkStack(s.depth);
@@ -34413,7 +34413,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_ifCurrPage__P6439.info = {"start":16725,"length":298,"line":496,"column":8,"endLine":505,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"ifCurrPage","argumentNames":["this","then"]}
+jacs_TopWriter_ifCurrPage__P6439.info = {"start":17221,"length":307,"line":496,"column":8,"endLine":505,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"ifCurrPage","argumentNames":["this","then"]}
 
 function jacs_TopWriter_ifCurrPage__P6439_mk(s) {
     checkStack(s.depth);
@@ -34479,7 +34479,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Variable_read__P6420.info = {"start":527,"length":105,"line":24,"column":8,"endLine":26,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"read","argumentNames":["this","wr"]}
+jacs_Variable_read__P6420.info = {"start":551,"length":107,"line":24,"column":8,"endLine":26,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"read","argumentNames":["this","wr"]}
 
 function jacs_Variable_read__P6420_mk(s) {
     checkStack(s.depth);
@@ -34539,7 +34539,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_loadExpr__P3523.info = {"start":1365,"length":279,"line":47,"column":4,"endLine":56,"endColumn":5,"fileName":"jacs_format.ts","functionName":"loadExpr","argumentNames":["k"]}
+jacs_loadExpr__P3523.info = {"start":1412,"length":288,"line":47,"column":4,"endLine":56,"endColumn":5,"fileName":"jacs_format.ts","functionName":"loadExpr","argumentNames":["k"]}
 
 function jacs_loadExpr__P3523_mk(s) {
     checkStack(s.depth);
@@ -34744,7 +34744,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_emitExpr__P3643.info = {"start":14014,"length":924,"line":475,"column":8,"endLine":499,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emitExpr","argumentNames":["this","op","args"]}
+jacs_OpWriter_emitExpr__P3643.info = {"start":14489,"length":948,"line":475,"column":8,"endLine":499,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"emitExpr","argumentNames":["this","op","args"]}
 
 function jacs_OpWriter_emitExpr__P3643_mk(s) {
     checkStack(s.depth);
@@ -34801,7 +34801,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-jacs_Value_depth__P3588.info = {"start":1614,"length":69,"line":64,"column":8,"endLine":66,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"depth","argumentNames":["this"]}
+jacs_Value_depth__P3588.info = {"start":1678,"length":71,"line":64,"column":8,"endLine":66,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"depth","argumentNames":["this"]}
 jacs_Value_depth__P3588.isGetter = true;
 
 function jacs_Value_depth__P3588_mk(s) {
@@ -34841,7 +34841,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_exprIsStateful__P3506.info = {"start":213,"length":122,"line":7,"column":4,"endLine":9,"endColumn":5,"fileName":"jacs_format.ts","functionName":"exprIsStateful","argumentNames":["op"]}
+jacs_exprIsStateful__P3506.info = {"start":220,"length":124,"line":7,"column":4,"endLine":9,"endColumn":5,"fileName":"jacs_format.ts","functionName":"exprIsStateful","argumentNames":["op"]}
 
 function jacs_exprIsStateful__P3506_mk(s) {
     checkStack(s.depth);
@@ -34899,7 +34899,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRuleActuator__P6438.info = {"start":16405,"length":310,"line":487,"column":8,"endLine":494,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRuleActuator","argumentNames":["this","name","rule"]}
+jacs_TopWriter_emitRuleActuator__P6438.info = {"start":16892,"length":317,"line":487,"column":8,"endLine":494,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRuleActuator","argumentNames":["this","name","rule"]}
 
 function jacs_TopWriter_emitRuleActuator__P6438_mk(s) {
     checkStack(s.depth);
@@ -34958,7 +34958,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRuleActuator_inline__P15475.info = {"start":16553,"length":127,"line":489,"column":37,"endLine":492,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRuleActuator_inline__P15475.info = {"start":17042,"length":130,"line":489,"column":37,"endLine":492,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRuleActuator_inline__P15475_mk(s) {
     checkStack(s.depth);
@@ -35254,7 +35254,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRoleCommand__P6437.info = {"start":14865,"length":1530,"line":455,"column":8,"endLine":485,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRoleCommand","argumentNames":["this","rule"]}
+jacs_TopWriter_emitRoleCommand__P6437.info = {"start":15320,"length":1560,"line":455,"column":8,"endLine":485,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRoleCommand","argumentNames":["this","rule"]}
 
 function jacs_TopWriter_emitRoleCommand__P6437_mk(s) {
     checkStack(s.depth);
@@ -35380,7 +35380,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitLoadBuffer__P6435.info = {"start":12973,"length":476,"line":407,"column":8,"endLine":418,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitLoadBuffer","argumentNames":["this","buf"]}
+jacs_TopWriter_emitLoadBuffer__P6435.info = {"start":13380,"length":487,"line":407,"column":8,"endLine":418,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitLoadBuffer","argumentNames":["this","buf"]}
 
 function jacs_TopWriter_emitLoadBuffer__P6435_mk(s) {
     checkStack(s.depth);
@@ -35518,7 +35518,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_addString__P3684.info = {"start":3323,"length":633,"line":119,"column":8,"endLine":134,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addString","argumentNames":["this","str"]}
+jacs_TopWriter_addString__P3684.info = {"start":3442,"length":648,"line":119,"column":8,"endLine":134,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addString","argumentNames":["this","str"]}
 
 function jacs_TopWriter_addString__P3684_mk(s) {
     checkStack(s.depth);
@@ -35729,7 +35729,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_lookupActuatorRole__P3696.info = {"start":11713,"length":311,"line":376,"column":8,"endLine":383,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupActuatorRole","argumentNames":["this","rule"]}
+jacs_TopWriter_lookupActuatorRole__P3696.info = {"start":12089,"length":318,"line":376,"column":8,"endLine":383,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupActuatorRole","argumentNames":["this","rule"]}
 
 function jacs_TopWriter_lookupActuatorRole__P3696_mk(s) {
     checkStack(s.depth);
@@ -35945,7 +35945,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitSequance__P6436.info = {"start":13459,"length":1396,"line":420,"column":8,"endLine":453,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitSequance","argumentNames":["this","rule","lockvar","delay"]}
+jacs_TopWriter_emitSequance__P6436.info = {"start":13879,"length":1429,"line":420,"column":8,"endLine":453,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitSequance","argumentNames":["this","rule","lockvar","delay"]}
 
 function jacs_TopWriter_emitSequance__P6436_mk(s) {
     checkStack(s.depth);
@@ -35999,7 +35999,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filter_inline__P15743.info = {"start":13733,"length":26,"line":428,"column":21,"endLine":428,"endColumn":47,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["m"]}
+filter_inline__P15743.info = {"start":14161,"length":26,"line":428,"column":21,"endLine":428,"endColumn":47,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["m"]}
 
 function filter_inline__P15743_mk(s) {
     checkStack(s.depth);
@@ -36038,7 +36038,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-params_inline__P15738.info = {"start":13785,"length":8,"line":429,"column":24,"endLine":429,"endColumn":32,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["a"]}
+params_inline__P15738.info = {"start":14214,"length":8,"line":429,"column":24,"endLine":429,"endColumn":32,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["a"]}
 
 function params_inline__P15738_mk(s) {
     checkStack(s.depth);
@@ -36085,7 +36085,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitSequance_inline__P15814.info = {"start":14671,"length":116,"line":447,"column":28,"endLine":449,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitSequance_inline__P15814.info = {"start":15118,"length":118,"line":447,"column":28,"endLine":449,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitSequance_inline__P15814_mk(s) {
     checkStack(s.depth);
@@ -36122,7 +36122,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_FilterModifierBase_serviceCommandArg__P3041.info = {"start":3958,"length":80,"line":142,"column":8,"endLine":144,"endColumn":9,"fileName":"language.ts","functionName":"serviceCommandArg","argumentNames":["this"]}
+microcode_FilterModifierBase_serviceCommandArg__P3041.info = {"start":4100,"length":82,"line":142,"column":8,"endLine":144,"endColumn":9,"fileName":"language.ts","functionName":"serviceCommandArg","argumentNames":["this"]}
 
 function microcode_FilterModifierBase_serviceCommandArg__P3041_mk(s) {
     checkStack(s.depth);
@@ -36194,7 +36194,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitLogString__P3699.info = {"start":20543,"length":215,"line":595,"column":8,"endLine":601,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitLogString","argumentNames":["this","str"]}
+jacs_TopWriter_emitLogString__P3699.info = {"start":21138,"length":221,"line":595,"column":8,"endLine":601,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitLogString","argumentNames":["this","str"]}
 
 function jacs_TopWriter_emitLogString__P3699_mk(s) {
     checkStack(s.depth);
@@ -36282,7 +36282,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_withProcedure__P3687.info = {"start":8965,"length":440,"line":287,"column":8,"endLine":300,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"withProcedure","argumentNames":["this","proc","f"]}
+jacs_TopWriter_withProcedure__P3687.info = {"start":9252,"length":453,"line":287,"column":8,"endLine":300,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"withProcedure","argumentNames":["this","proc","f"]}
 
 function jacs_TopWriter_withProcedure__P3687_mk(s) {
     checkStack(s.depth);
@@ -36336,7 +36336,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_addProc__P3690.info = {"start":10469,"length":90,"line":332,"column":8,"endLine":334,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addProc","argumentNames":["this","name"]}
+jacs_TopWriter_addProc__P3690.info = {"start":10801,"length":92,"line":332,"column":8,"endLine":334,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addProc","argumentNames":["this","name"]}
 
 function jacs_TopWriter_addProc__P3690_mk(s) {
     checkStack(s.depth);
@@ -36405,7 +36405,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Procedure_constructor__P6427.info = {"start":907,"length":227,"line":37,"column":8,"endLine":41,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this","parent","name","lst"]}
+jacs_Procedure_constructor__P6427.info = {"start":944,"length":231,"line":37,"column":8,"endLine":41,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this","parent","name","lst"]}
 
 function jacs_Procedure_constructor__P6427_mk(s) {
     checkStack(s.depth);
@@ -36527,7 +36527,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_OpWriter_constructor__P3614.info = {"start":4519,"length":276,"line":167,"column":8,"endLine":172,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":["this","prog","name","fnidx"]}
+jacs_OpWriter_constructor__P3614.info = {"start":4686,"length":281,"line":167,"column":8,"endLine":172,"endColumn":9,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":["this","prog","name","fnidx"]}
 
 function jacs_OpWriter_constructor__P3614_mk(s) {
     checkStack(s.depth);
@@ -36593,7 +36593,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_addRole__P3692.info = {"start":10683,"length":99,"line":340,"column":8,"endLine":342,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addRole","argumentNames":["this","name","classId"]}
+jacs_TopWriter_addRole__P3692.info = {"start":11023,"length":101,"line":340,"column":8,"endLine":342,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addRole","argumentNames":["this","name","classId"]}
 
 function jacs_TopWriter_addRole__P3692_mk(s) {
     checkStack(s.depth);
@@ -36659,7 +36659,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_constructor__P6432.info = {"start":1511,"length":304,"line":58,"column":8,"endLine":66,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this","parent","classIdentifier","name"]}
+jacs_Role_constructor__P6432.info = {"start":1569,"length":312,"line":58,"column":8,"endLine":66,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this","parent","classIdentifier","name"]}
 
 function jacs_Role_constructor__P6432_mk(s) {
     checkStack(s.depth);
@@ -36711,7 +36711,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_addGlobal__P3691.info = {"start":10569,"length":104,"line":336,"column":8,"endLine":338,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addGlobal","argumentNames":["this","name"]}
+jacs_TopWriter_addGlobal__P3691.info = {"start":10905,"length":106,"line":336,"column":8,"endLine":338,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addGlobal","argumentNames":["this","name"]}
 
 function jacs_TopWriter_addGlobal__P3691_mk(s) {
     checkStack(s.depth);
@@ -36758,7 +36758,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Variable_constructor__P6422.info = {"start":325,"length":193,"line":16,"column":8,"endLine":23,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this","lst","kind","name"]}
+jacs_Variable_constructor__P6422.info = {"start":341,"length":200,"line":16,"column":8,"endLine":23,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this","lst","kind","name"]}
 
 function jacs_Variable_constructor__P6422_mk(s) {
     checkStack(s.depth);
@@ -36850,7 +36850,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_constructor__P3183.info = {"start":1236,"length":94,"line":45,"column":8,"endLine":48,"endColumn":9,"fileName":"editor.ts","functionName":"inline","argumentNames":["this","app"]}
+microcode_Editor_constructor__P3183.info = {"start":1281,"length":97,"line":45,"column":8,"endLine":48,"endColumn":9,"fileName":"editor.ts","functionName":"inline","argumentNames":["this","app"]}
 
 function microcode_Editor_constructor__P3183_mk(s) {
     checkStack(s.depth);
@@ -36892,7 +36892,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_App_popScene__P3161.info = {"start":1425,"length":70,"line":50,"column":8,"endLine":52,"endColumn":9,"fileName":"app.ts","functionName":"popScene","argumentNames":["this"]}
+microcode_App_popScene__P3161.info = {"start":1475,"length":72,"line":50,"column":8,"endLine":52,"endColumn":9,"fileName":"app.ts","functionName":"popScene","argumentNames":["this"]}
 
 function microcode_App_popScene__P3161_mk(s) {
     checkStack(s.depth);
@@ -36972,7 +36972,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_SceneManager_popScene__P2998.info = {"start":2342,"length":365,"line":82,"column":8,"endLine":93,"endColumn":9,"fileName":"scene.ts","functionName":"popScene","argumentNames":["this"]}
+microcode_SceneManager_popScene__P2998.info = {"start":2424,"length":376,"line":82,"column":8,"endLine":93,"endColumn":9,"fileName":"scene.ts","functionName":"popScene","argumentNames":["this"]}
 
 function microcode_SceneManager_popScene__P2998_mk(s) {
     checkStack(s.depth);
@@ -37157,7 +37157,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Scene_shutdown__P2988.info = {"start":755,"length":13,"line":29,"column":23,"endLine":29,"endColumn":36,"fileName":"scene.ts","functionName":"shutdown","argumentNames":["this"]}
+microcode_Scene_shutdown__P2988.info = {"start":784,"length":13,"line":29,"column":23,"endLine":29,"endColumn":36,"fileName":"scene.ts","functionName":"shutdown","argumentNames":["this"]}
 
 function microcode_Scene_shutdown__P2988_mk(s) {
     checkStack(s.depth);
@@ -37191,7 +37191,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Scene_xfrm__P2983.info = {"start":304,"length":59,"line":11,"column":8,"endLine":13,"endColumn":9,"fileName":"scene.ts","functionName":"xfrm","argumentNames":["this"]}
+microcode_Scene_xfrm__P2983.info = {"start":315,"length":61,"line":11,"column":8,"endLine":13,"endColumn":9,"fileName":"scene.ts","functionName":"xfrm","argumentNames":["this"]}
 microcode_Scene_xfrm__P2983.isGetter = true;
 
 function microcode_Scene_xfrm__P2983_mk(s) {
@@ -37338,7 +37338,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_describeCell__P3686.info = {"start":4067,"length":737,"line":140,"column":8,"endLine":159,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"describeCell","argumentNames":["this","ff","idx"]}
+jacs_TopWriter_describeCell__P3686.info = {"start":4207,"length":756,"line":140,"column":8,"endLine":159,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"describeCell","argumentNames":["this","ff","idx"]}
 
 function jacs_TopWriter_describeCell__P3686_mk(s) {
     checkStack(s.depth);
@@ -37399,7 +37399,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_addFloat__P3685.info = {"start":3966,"length":91,"line":136,"column":8,"endLine":138,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addFloat","argumentNames":["this","f"]}
+jacs_TopWriter_addFloat__P3685.info = {"start":4102,"length":93,"line":136,"column":8,"endLine":138,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addFloat","argumentNames":["this","f"]}
 
 function jacs_TopWriter_addFloat__P3685_mk(s) {
     checkStack(s.depth);
@@ -37446,7 +37446,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_addUnique__P3666.info = {"start":21,"length":190,"line":1,"column":4,"endLine":8,"endColumn":5,"fileName":"jacs_topwriter.ts","functionName":"addUnique","argumentNames":["arr","v"]}
+jacs_addUnique__P3666.info = {"start":22,"length":197,"line":1,"column":4,"endLine":8,"endColumn":5,"fileName":"jacs_topwriter.ts","functionName":"addUnique","argumentNames":["arr","v"]}
 
 function jacs_addUnique__P3666_mk(s) {
     checkStack(s.depth);
@@ -37554,7 +37554,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_draw__P3191.info = {"start":11107,"length":545,"line":365,"column":23,"endLine":384,"endColumn":9,"fileName":"editor.ts","functionName":"draw","argumentNames":["this"]}
+microcode_Editor_draw__P3191.info = {"start":11472,"length":564,"line":365,"column":23,"endLine":384,"endColumn":9,"fileName":"editor.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_Editor_draw__P3191_mk(s) {
     checkStack(s.depth);
@@ -37597,7 +37597,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_draw__P6298.info = {"start":15633,"length":70,"line":517,"column":23,"endLine":519,"endColumn":9,"fileName":"editor.ts","functionName":"draw","argumentNames":["this"]}
+microcode_PageEditor_draw__P6298.info = {"start":16150,"length":72,"line":517,"column":23,"endLine":519,"endColumn":9,"fileName":"editor.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_PageEditor_draw__P6298_mk(s) {
     checkStack(s.depth);
@@ -37637,7 +37637,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_draw_inline__P16148.info = {"start":15673,"length":19,"line":518,"column":31,"endLine":518,"endColumn":50,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_draw_inline__P16148.info = {"start":16191,"length":19,"line":518,"column":31,"endLine":518,"endColumn":50,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
 function microcode_PageEditor_draw_inline__P16148_mk(s) {
     checkStack(s.depth);
@@ -37721,7 +37721,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_draw__P6315.info = {"start":25584,"length":341,"line":809,"column":23,"endLine":819,"endColumn":9,"fileName":"editor.ts","functionName":"draw","argumentNames":["this"]}
+microcode_RuleEditor_draw__P6315.info = {"start":26393,"length":351,"line":809,"column":23,"endLine":819,"endColumn":9,"fileName":"editor.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_RuleEditor_draw__P6315_mk(s) {
     checkStack(s.depth);
@@ -37766,7 +37766,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_draw_inline__P16176.info = {"start":25792,"length":122,"line":815,"column":29,"endLine":818,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
+microcode_RuleEditor_draw_inline__P16176.info = {"start":26607,"length":125,"line":815,"column":29,"endLine":818,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
 
 function microcode_RuleEditor_draw_inline__P16176_mk(s) {
     checkStack(s.depth);
@@ -37807,7 +37807,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_draw_inline__P16186.info = {"start":25882,"length":17,"line":817,"column":32,"endLine":817,"endColumn":49,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
+microcode_RuleEditor_draw_inline__P16186.info = {"start":26699,"length":17,"line":817,"column":32,"endLine":817,"endColumn":49,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
 
 function microcode_RuleEditor_draw_inline__P16186_mk(s) {
     checkStack(s.depth);
@@ -37882,7 +37882,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_update__P3190.info = {"start":10777,"length":305,"line":353,"column":23,"endLine":363,"endColumn":9,"fileName":"editor.ts","functionName":"update","argumentNames":["this"]}
+microcode_Editor_update__P3190.info = {"start":11130,"length":315,"line":353,"column":23,"endLine":363,"endColumn":9,"fileName":"editor.ts","functionName":"update","argumentNames":["this"]}
 
 function microcode_Editor_update__P3190_mk(s) {
     checkStack(s.depth);
@@ -37935,7 +37935,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_update__P3212.info = {"start":3581,"length":125,"line":121,"column":23,"endLine":126,"endColumn":9,"fileName":"cursor.ts","functionName":"update","argumentNames":["this"]}
+microcode_Cursor_update__P3212.info = {"start":3702,"length":130,"line":121,"column":23,"endLine":126,"endColumn":9,"fileName":"cursor.ts","functionName":"update","argumentNames":["this"]}
 
 function microcode_Cursor_update__P3212_mk(s) {
     checkStack(s.depth);
@@ -37971,7 +37971,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Component_update__P2887.info = {"start":1147,"length":11,"line":43,"column":23,"endLine":43,"endColumn":34,"fileName":"component.ts","functionName":"update","argumentNames":["this"]}
+microcode_Component_update__P2887.info = {"start":1190,"length":11,"line":43,"column":23,"endLine":43,"endColumn":34,"fileName":"component.ts","functionName":"update","argumentNames":["this"]}
 
 function microcode_Component_update__P2887_mk(s) {
     checkStack(s.depth);
@@ -38016,7 +38016,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Animation_update__P3367.info = {"start":5586,"length":106,"line":156,"column":8,"endLine":160,"endColumn":9,"fileName":"animation.ts","functionName":"update","argumentNames":["this"]}
+microcode_Animation_update__P3367.info = {"start":5742,"length":110,"line":156,"column":8,"endLine":160,"endColumn":9,"fileName":"animation.ts","functionName":"update","argumentNames":["this"]}
 
 function microcode_Animation_update__P3367_mk(s) {
     checkStack(s.depth);
@@ -38292,7 +38292,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Animation_stepFrame__P6378.info = {"start":5881,"length":1265,"line":168,"column":8,"endLine":202,"endColumn":9,"fileName":"animation.ts","functionName":"stepFrame","argumentNames":["this"]}
+microcode_Animation_stepFrame__P6378.info = {"start":6049,"length":1299,"line":168,"column":8,"endLine":202,"endColumn":9,"fileName":"animation.ts","functionName":"stepFrame","argumentNames":["this"]}
 
 function microcode_Animation_stepFrame__P6378_mk(s) {
     checkStack(s.depth);
@@ -38353,7 +38353,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Animation_initFrame__P6379.info = {"start":7156,"length":194,"line":204,"column":8,"endLine":209,"endColumn":9,"fileName":"animation.ts","functionName":"initFrame","argumentNames":["this","initialValue"]}
+microcode_Animation_initFrame__P6379.info = {"start":7360,"length":199,"line":204,"column":8,"endLine":209,"endColumn":9,"fileName":"animation.ts","functionName":"initFrame","argumentNames":["this","initialValue"]}
 
 function microcode_Animation_initFrame__P6379_mk(s) {
     checkStack(s.depth);
@@ -38797,7 +38797,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_EaseFrame_init__P3358.info = {"start":1691,"length":1581,"line":46,"column":8,"endLine":80,"endColumn":9,"fileName":"animation.ts","functionName":"init","argumentNames":["this","currValue"]}
+microcode_EaseFrame_init__P3358.info = {"start":1737,"length":1615,"line":46,"column":8,"endLine":80,"endColumn":9,"fileName":"animation.ts","functionName":"init","argumentNames":["this","currValue"]}
 
 function microcode_EaseFrame_init__P3358_mk(s) {
     checkStack(s.depth);
@@ -38862,7 +38862,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Vec2_AddToRef__P3331.info = {"start":3647,"length":152,"line":137,"column":8,"endLine":141,"endColumn":9,"fileName":"math.ts","functionName":"AddToRef","argumentNames":["a","b","ref"]}
+microcode_Vec2_AddToRef__P3331.info = {"start":3784,"length":156,"line":137,"column":8,"endLine":141,"endColumn":9,"fileName":"math.ts","functionName":"AddToRef","argumentNames":["a","b","ref"]}
 
 function microcode_Vec2_AddToRef__P3331_mk(s) {
     checkStack(s.depth);
@@ -39133,7 +39133,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_EaseFrame_step__P3359.info = {"start":3282,"length":997,"line":82,"column":8,"endLine":103,"endColumn":9,"fileName":"animation.ts","functionName":"step","argumentNames":["this","pctTime"]}
+microcode_EaseFrame_step__P3359.info = {"start":3364,"length":1018,"line":82,"column":8,"endLine":103,"endColumn":9,"fileName":"animation.ts","functionName":"step","argumentNames":["this","pctTime"]}
 
 function microcode_EaseFrame_step__P3359_mk(s) {
     checkStack(s.depth);
@@ -39199,7 +39199,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Animation_currFrame__P6377.info = {"start":5702,"length":169,"line":162,"column":8,"endLine":166,"endColumn":9,"fileName":"animation.ts","functionName":"currFrame","argumentNames":["this"]}
+microcode_Animation_currFrame__P6377.info = {"start":5864,"length":173,"line":162,"column":8,"endLine":166,"endColumn":9,"fileName":"animation.ts","functionName":"currFrame","argumentNames":["this"]}
 
 function microcode_Animation_currFrame__P6377_mk(s) {
     checkStack(s.depth);
@@ -39240,7 +39240,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Animation_playing__P3361.info = {"start":4594,"length":65,"line":116,"column":8,"endLine":118,"endColumn":9,"fileName":"animation.ts","functionName":"playing","argumentNames":["this"]}
+microcode_Animation_playing__P3361.info = {"start":4710,"length":67,"line":116,"column":8,"endLine":118,"endColumn":9,"fileName":"animation.ts","functionName":"playing","argumentNames":["this"]}
 microcode_Animation_playing__P3361.isGetter = true;
 
 function microcode_Animation_playing__P3361_mk(s) {
@@ -39352,7 +39352,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_rebuildNavigator__P6282.info = {"start":10100,"length":472,"line":326,"column":8,"endLine":343,"endColumn":9,"fileName":"editor.ts","functionName":"rebuildNavigator","argumentNames":["this"]}
+microcode_Editor_rebuildNavigator__P6282.info = {"start":10426,"length":489,"line":326,"column":8,"endLine":343,"endColumn":9,"fileName":"editor.ts","functionName":"rebuildNavigator","argumentNames":["this"]}
 
 function microcode_Editor_rebuildNavigator__P6282_mk(s) {
     checkStack(s.depth);
@@ -39399,7 +39399,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_addToNavigator__P6293.info = {"start":14393,"length":97,"line":479,"column":8,"endLine":481,"endColumn":9,"fileName":"editor.ts","functionName":"addToNavigator","argumentNames":["this"]}
+microcode_PageEditor_addToNavigator__P6293.info = {"start":14872,"length":99,"line":479,"column":8,"endLine":481,"endColumn":9,"fileName":"editor.ts","functionName":"addToNavigator","argumentNames":["this"]}
 
 function microcode_PageEditor_addToNavigator__P6293_mk(s) {
     checkStack(s.depth);
@@ -39437,7 +39437,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_addToNavigator_inline__P16568.info = {"start":14450,"length":29,"line":480,"column":31,"endLine":480,"endColumn":60,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_addToNavigator_inline__P16568.info = {"start":14930,"length":29,"line":480,"column":31,"endLine":480,"endColumn":60,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
 function microcode_PageEditor_addToNavigator_inline__P16568_mk(s) {
     checkStack(s.depth);
@@ -39539,7 +39539,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator__P6312.info = {"start":23924,"length":478,"line":763,"column":8,"endLine":773,"endColumn":9,"fileName":"editor.ts","functionName":"addToNavigator","argumentNames":["this"]}
+microcode_RuleEditor_addToNavigator__P6312.info = {"start":24687,"length":488,"line":763,"column":8,"endLine":773,"endColumn":9,"fileName":"editor.ts","functionName":"addToNavigator","argumentNames":["this"]}
 
 function microcode_RuleEditor_addToNavigator__P6312_mk(s) {
     checkStack(s.depth);
@@ -39576,7 +39576,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator_inline__P16583.info = {"start":24067,"length":17,"line":766,"column":41,"endLine":766,"endColumn":58,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
+microcode_RuleEditor_addToNavigator_inline__P16583.info = {"start":24833,"length":17,"line":766,"column":41,"endLine":766,"endColumn":58,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
 
 function microcode_RuleEditor_addToNavigator_inline__P16583_mk(s) {
     checkStack(s.depth);
@@ -39609,7 +39609,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator_inline__P16597.info = {"start":24169,"length":17,"line":768,"column":41,"endLine":768,"endColumn":58,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
+microcode_RuleEditor_addToNavigator_inline__P16597.info = {"start":24937,"length":17,"line":768,"column":41,"endLine":768,"endColumn":58,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
 
 function microcode_RuleEditor_addToNavigator_inline__P16597_mk(s) {
     checkStack(s.depth);
@@ -39642,7 +39642,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator_inline__P16611.info = {"start":24271,"length":17,"line":770,"column":43,"endLine":770,"endColumn":60,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
+microcode_RuleEditor_addToNavigator_inline__P16611.info = {"start":25041,"length":17,"line":770,"column":43,"endLine":770,"endColumn":60,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
 
 function microcode_RuleEditor_addToNavigator_inline__P16611_mk(s) {
     checkStack(s.depth);
@@ -39675,7 +39675,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator_inline__P16620.info = {"start":24333,"length":17,"line":771,"column":43,"endLine":771,"endColumn":60,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
+microcode_RuleEditor_addToNavigator_inline__P16620.info = {"start":25104,"length":17,"line":771,"column":43,"endLine":771,"endColumn":60,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
 
 function microcode_RuleEditor_addToNavigator_inline__P16620_mk(s) {
     checkStack(s.depth);
@@ -39716,7 +39716,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_update__P6297.info = {"start":15534,"length":74,"line":513,"column":23,"endLine":515,"endColumn":9,"fileName":"editor.ts","functionName":"update","argumentNames":["this"]}
+microcode_PageEditor_update__P6297.info = {"start":16047,"length":76,"line":513,"column":23,"endLine":515,"endColumn":9,"fileName":"editor.ts","functionName":"update","argumentNames":["this"]}
 
 function microcode_PageEditor_update__P6297_mk(s) {
     checkStack(s.depth);
@@ -39756,7 +39756,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_update_inline__P16635.info = {"start":15576,"length":21,"line":514,"column":31,"endLine":514,"endColumn":52,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_update_inline__P16635.info = {"start":16090,"length":21,"line":514,"column":31,"endLine":514,"endColumn":52,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
 function microcode_PageEditor_update_inline__P16635_mk(s) {
     checkStack(s.depth);
@@ -39807,7 +39807,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_addButtons__P3189.info = {"start":10001,"length":89,"line":322,"column":8,"endLine":324,"endColumn":9,"fileName":"editor.ts","functionName":"addButtons","argumentNames":["this","btns"]}
+microcode_Editor_addButtons__P3189.info = {"start":10323,"length":91,"line":322,"column":8,"endLine":324,"endColumn":9,"fileName":"editor.ts","functionName":"addButtons","argumentNames":["this","btns"]}
 
 function microcode_Editor_addButtons__P3189_mk(s) {
     checkStack(s.depth);
@@ -39876,7 +39876,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_activate__P3188.info = {"start":9767,"length":224,"line":314,"column":23,"endLine":320,"endColumn":9,"fileName":"editor.ts","functionName":"activate","argumentNames":["this"]}
+microcode_Editor_activate__P3188.info = {"start":10081,"length":230,"line":314,"column":23,"endLine":320,"endColumn":9,"fileName":"editor.ts","functionName":"activate","argumentNames":["this"]}
 
 function microcode_Editor_activate__P3188_mk(s) {
     checkStack(s.depth);
@@ -40035,7 +40035,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_initCursor__P6292.info = {"start":13862,"length":521,"line":462,"column":8,"endLine":477,"endColumn":9,"fileName":"editor.ts","functionName":"initCursor","argumentNames":["this"]}
+microcode_PageEditor_initCursor__P6292.info = {"start":14324,"length":536,"line":462,"column":8,"endLine":477,"endColumn":9,"fileName":"editor.ts","functionName":"initCursor","argumentNames":["this"]}
 
 function microcode_PageEditor_initCursor__P6292_mk(s) {
     checkStack(s.depth);
@@ -40166,7 +40166,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_switchToPage__P6275.info = {"start":2767,"length":654,"line":102,"column":8,"endLine":120,"endColumn":9,"fileName":"editor.ts","functionName":"switchToPage","argumentNames":["this","index"]}
+microcode_Editor_switchToPage__P6275.info = {"start":2869,"length":672,"line":102,"column":8,"endLine":120,"endColumn":9,"fileName":"editor.ts","functionName":"switchToPage","argumentNames":["this","index"]}
 
 function microcode_Editor_switchToPage__P6275_mk(s) {
     checkStack(s.depth);
@@ -40208,7 +40208,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Placeable_xfrm__P2895.info = {"start":1505,"length":59,"line":59,"column":8,"endLine":61,"endColumn":9,"fileName":"component.ts","functionName":"xfrm","argumentNames":["this"]}
+microcode_Placeable_xfrm__P2895.info = {"start":1564,"length":61,"line":59,"column":8,"endLine":61,"endColumn":9,"fileName":"component.ts","functionName":"xfrm","argumentNames":["this"]}
 microcode_Placeable_xfrm__P2895.isGetter = true;
 
 function microcode_Placeable_xfrm__P2895_mk(s) {
@@ -40305,7 +40305,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_constructor__P6299.info = {"start":11912,"length":460,"line":396,"column":8,"endLine":409,"endColumn":9,"fileName":"editor.ts","functionName":"inline","argumentNames":["this","editor","parent","pagedef"]}
+microcode_PageEditor_constructor__P6299.info = {"start":12308,"length":473,"line":396,"column":8,"endLine":409,"endColumn":9,"fileName":"editor.ts","functionName":"inline","argumentNames":["this","editor","parent","pagedef"]}
 
 function microcode_PageEditor_constructor__P6299_mk(s) {
     checkStack(s.depth);
@@ -40356,7 +40356,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_inline__P16780.info = {"start":12218,"length":64,"line":405,"column":16,"endLine":405,"endColumn":80,"fileName":"editor.ts","functionName":"inline","argumentNames":["ruledef","index"]}
+microcode_PageEditor_inline__P16780.info = {"start":12623,"length":64,"line":405,"column":16,"endLine":405,"endColumn":80,"fileName":"editor.ts","functionName":"inline","argumentNames":["ruledef","index"]}
 
 function microcode_PageEditor_inline__P16780_mk(s) {
     checkStack(s.depth);
@@ -40416,7 +40416,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_layout__P6291.info = {"start":13498,"length":354,"line":449,"column":8,"endLine":460,"endColumn":9,"fileName":"editor.ts","functionName":"layout","argumentNames":["this"]}
+microcode_PageEditor_layout__P6291.info = {"start":13947,"length":365,"line":449,"column":8,"endLine":460,"endColumn":9,"fileName":"editor.ts","functionName":"layout","argumentNames":["this"]}
 
 function microcode_PageEditor_layout__P6291_mk(s) {
     checkStack(s.depth);
@@ -40482,7 +40482,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_layout_inline__P16798.info = {"start":13641,"length":186,"line":453,"column":35,"endLine":458,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_layout_inline__P16798.info = {"start":14094,"length":191,"line":453,"column":35,"endLine":458,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
 function microcode_PageEditor_layout_inline__P16798_mk(s) {
     checkStack(s.depth);
@@ -40519,7 +40519,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_xfrm__P6303.info = {"start":16150,"length":59,"line":536,"column":8,"endLine":538,"endColumn":9,"fileName":"editor.ts","functionName":"xfrm","argumentNames":["this"]}
+microcode_RuleEditor_xfrm__P6303.info = {"start":16686,"length":61,"line":536,"column":8,"endLine":538,"endColumn":9,"fileName":"editor.ts","functionName":"xfrm","argumentNames":["this"]}
 microcode_RuleEditor_xfrm__P6303.isGetter = true;
 
 function microcode_RuleEditor_xfrm__P6303_mk(s) {
@@ -40765,7 +40765,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_layout__P6314.info = {"start":24492,"length":1067,"line":779,"column":8,"endLine":807,"endColumn":9,"fileName":"editor.ts","functionName":"layout","argumentNames":["this"]}
+microcode_RuleEditor_layout__P6314.info = {"start":25271,"length":1095,"line":779,"column":8,"endLine":807,"endColumn":9,"fileName":"editor.ts","functionName":"layout","argumentNames":["this"]}
 
 function microcode_RuleEditor_layout__P6314_mk(s) {
     checkStack(s.depth);
@@ -40824,7 +40824,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-buttonLoc_inline__P16828.info = {"start":24612,"length":178,"line":783,"column":30,"endLine":788,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
+buttonLoc_inline__P16828.info = {"start":25395,"length":183,"line":783,"column":30,"endLine":788,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
 
 function buttonLoc_inline__P16828_mk(s) {
     checkStack(s.depth);
@@ -40881,7 +40881,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-buttonLoc_inline__P16833.info = {"start":24670,"length":105,"line":784,"column":38,"endLine":787,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
+buttonLoc_inline__P16833.info = {"start":25454,"length":108,"line":784,"column":38,"endLine":787,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
 
 function buttonLoc_inline__P16833_mk(s) {
     checkStack(s.depth);
@@ -40962,7 +40962,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_ensureFinalEmptyRule__P6289.info = {"start":12546,"length":469,"line":417,"column":8,"endLine":431,"endColumn":9,"fileName":"editor.ts","functionName":"ensureFinalEmptyRule","argumentNames":["this"]}
+microcode_PageEditor_ensureFinalEmptyRule__P6289.info = {"start":12963,"length":483,"line":417,"column":8,"endLine":431,"endColumn":9,"fileName":"editor.ts","functionName":"ensureFinalEmptyRule","argumentNames":["this"]}
 
 function microcode_PageEditor_ensureFinalEmptyRule__P6289_mk(s) {
     checkStack(s.depth);
@@ -41074,7 +41074,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_trimRules__P6290.info = {"start":13025,"length":463,"line":433,"column":8,"endLine":447,"endColumn":9,"fileName":"editor.ts","functionName":"trimRules","argumentNames":["this"]}
+microcode_PageEditor_trimRules__P6290.info = {"start":13458,"length":477,"line":433,"column":8,"endLine":447,"endColumn":9,"fileName":"editor.ts","functionName":"trimRules","argumentNames":["this"]}
 
 function microcode_PageEditor_trimRules__P6290_mk(s) {
     checkStack(s.depth);
@@ -41172,7 +41172,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_destroy__P6304.info = {"start":17857,"length":468,"line":592,"column":8,"endLine":605,"endColumn":9,"fileName":"editor.ts","functionName":"destroy","argumentNames":["this"]}
+microcode_RuleEditor_destroy__P6304.info = {"start":18449,"length":481,"line":592,"column":8,"endLine":605,"endColumn":9,"fileName":"editor.ts","functionName":"destroy","argumentNames":["this"]}
 
 function microcode_RuleEditor_destroy__P6304_mk(s) {
     checkStack(s.depth);
@@ -41233,7 +41233,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_destroyProgramTiles__P6305.info = {"start":18335,"length":380,"line":607,"column":8,"endLine":617,"endColumn":9,"fileName":"editor.ts","functionName":"destroyProgramTiles","argumentNames":["this"]}
+microcode_RuleEditor_destroyProgramTiles__P6305.info = {"start":18942,"length":390,"line":607,"column":8,"endLine":617,"endColumn":9,"fileName":"editor.ts","functionName":"destroyProgramTiles","argumentNames":["this"]}
 
 function microcode_RuleEditor_destroyProgramTiles__P6305_mk(s) {
     checkStack(s.depth);
@@ -41294,7 +41294,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_destroyProgramTiles_inline__P17045.info = {"start":18428,"length":229,"line":609,"column":29,"endLine":615,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
+microcode_RuleEditor_destroyProgramTiles_inline__P17045.info = {"start":19037,"length":235,"line":609,"column":29,"endLine":615,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
 
 function microcode_RuleEditor_destroyProgramTiles_inline__P17045_mk(s) {
     checkStack(s.depth);
@@ -41338,7 +41338,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_destroyProgramTiles_inline__P17055.info = {"start":18528,"length":20,"line":611,"column":44,"endLine":611,"endColumn":64,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
+microcode_RuleEditor_destroyProgramTiles_inline__P17055.info = {"start":19139,"length":20,"line":611,"column":44,"endLine":611,"endColumn":64,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
 
 function microcode_RuleEditor_destroyProgramTiles_inline__P17055_mk(s) {
     checkStack(s.depth);
@@ -41374,7 +41374,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_changed__P3184.info = {"start":1340,"length":61,"line":50,"column":8,"endLine":52,"endColumn":9,"fileName":"editor.ts","functionName":"changed","argumentNames":["this"]}
+microcode_Editor_changed__P3184.info = {"start":1390,"length":63,"line":50,"column":8,"endLine":52,"endColumn":9,"fileName":"editor.ts","functionName":"changed","argumentNames":["this"]}
 
 function microcode_Editor_changed__P3184_mk(s) {
     checkStack(s.depth);
@@ -41413,7 +41413,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_isEmpty__P6313.info = {"start":24412,"length":70,"line":775,"column":8,"endLine":777,"endColumn":9,"fileName":"editor.ts","functionName":"isEmpty","argumentNames":["this"]}
+microcode_RuleEditor_isEmpty__P6313.info = {"start":25187,"length":72,"line":775,"column":8,"endLine":777,"endColumn":9,"fileName":"editor.ts","functionName":"isEmpty","argumentNames":["this"]}
 
 function microcode_RuleEditor_isEmpty__P6313_mk(s) {
     checkStack(s.depth);
@@ -41467,7 +41467,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleDefn_isEmpty__P3062.info = {"start":6591,"length":113,"line":234,"column":8,"endLine":236,"endColumn":9,"fileName":"language.ts","functionName":"isEmpty","argumentNames":["this"]}
+microcode_RuleDefn_isEmpty__P3062.info = {"start":6825,"length":115,"line":234,"column":8,"endLine":236,"endColumn":9,"fileName":"language.ts","functionName":"isEmpty","argumentNames":["this"]}
 
 function microcode_RuleDefn_isEmpty__P3062_mk(s) {
     checkStack(s.depth);
@@ -41662,7 +41662,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_constructor__P6316.info = {"start":16219,"length":1628,"line":540,"column":8,"endLine":590,"endColumn":9,"fileName":"editor.ts","functionName":"inline","argumentNames":["this","editor","page","ruledef","index"]}
+microcode_RuleEditor_constructor__P6316.info = {"start":16759,"length":1678,"line":540,"column":8,"endLine":590,"endColumn":9,"fileName":"editor.ts","functionName":"inline","argumentNames":["this","editor","page","ruledef","index"]}
 
 function microcode_RuleEditor_constructor__P6316_mk(s) {
     checkStack(s.depth);
@@ -41704,7 +41704,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P17115.info = {"start":16969,"length":31,"line":563,"column":25,"endLine":563,"endColumn":56,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P17115.info = {"start":17532,"length":31,"line":563,"column":25,"endLine":563,"endColumn":56,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P17115_mk(s) {
     checkStack(s.depth);
@@ -41737,7 +41737,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P17122.info = {"start":17281,"length":31,"line":572,"column":25,"endLine":572,"endColumn":56,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P17122.info = {"start":17853,"length":31,"line":572,"column":25,"endLine":572,"endColumn":56,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P17122_mk(s) {
     checkStack(s.depth);
@@ -41770,7 +41770,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P17129.info = {"start":17589,"length":29,"line":581,"column":25,"endLine":581,"endColumn":54,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P17129.info = {"start":18170,"length":29,"line":581,"column":25,"endLine":581,"endColumn":54,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P17129_mk(s) {
     checkStack(s.depth);
@@ -41850,7 +41850,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_instantiateProgramTiles__P6306.info = {"start":18725,"length":890,"line":619,"column":8,"endLine":641,"endColumn":9,"fileName":"editor.ts","functionName":"instantiateProgramTiles","argumentNames":["this"]}
+microcode_RuleEditor_instantiateProgramTiles__P6306.info = {"start":19344,"length":912,"line":619,"column":8,"endLine":641,"endColumn":9,"fileName":"editor.ts","functionName":"instantiateProgramTiles","argumentNames":["this"]}
 
 function microcode_RuleEditor_instantiateProgramTiles__P6306_mk(s) {
     checkStack(s.depth);
@@ -41900,7 +41900,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_instantiateProgramTiles_inline__P17151.info = {"start":18950,"length":609,"line":624,"column":29,"endLine":639,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
+microcode_RuleEditor_instantiateProgramTiles_inline__P17151.info = {"start":19574,"length":624,"line":624,"column":29,"endLine":639,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
 
 function microcode_RuleEditor_instantiateProgramTiles_inline__P17151_mk(s) {
     checkStack(s.depth);
@@ -41982,7 +41982,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_instantiateProgramTiles_inline__P17159.info = {"start":19031,"length":513,"line":626,"column":30,"endLine":638,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["tile","index"]}
+microcode_RuleEditor_instantiateProgramTiles_inline__P17159.info = {"start":19657,"length":525,"line":626,"column":30,"endLine":638,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["tile","index"]}
 
 function microcode_RuleEditor_instantiateProgramTiles_inline__P17159_mk(s) {
     checkStack(s.depth);
@@ -42027,7 +42027,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P17171.info = {"start":19384,"length":34,"line":634,"column":33,"endLine":634,"endColumn":67,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P17171.info = {"start":20018,"length":34,"line":634,"column":33,"endLine":634,"endColumn":67,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P17171_mk(s) {
     checkStack(s.depth);
@@ -42077,7 +42077,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_changed__P6294.info = {"start":14500,"length":128,"line":483,"column":8,"endLine":487,"endColumn":9,"fileName":"editor.ts","functionName":"changed","argumentNames":["this"]}
+microcode_PageEditor_changed__P6294.info = {"start":14983,"length":132,"line":483,"column":8,"endLine":487,"endColumn":9,"fileName":"editor.ts","functionName":"changed","argumentNames":["this"]}
 
 function microcode_PageEditor_changed__P6294_mk(s) {
     checkStack(s.depth);
@@ -42312,7 +42312,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_handleTile__P6308.info = {"start":20255,"length":2879,"line":661,"column":8,"endLine":737,"endColumn":9,"fileName":"editor.ts","functionName":"handleTile","argumentNames":["this","name","index"]}
+microcode_RuleEditor_handleTile__P6308.info = {"start":20916,"length":2955,"line":661,"column":8,"endLine":737,"endColumn":9,"fileName":"editor.ts","functionName":"handleTile","argumentNames":["this","name","index"]}
 
 function microcode_RuleEditor_handleTile__P6308_mk(s) {
     checkStack(s.depth);
@@ -42372,7 +42372,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-updateEditor_inline__P17203.info = {"start":20400,"length":155,"line":663,"column":33,"endLine":667,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+updateEditor_inline__P17203.info = {"start":21063,"length":159,"line":663,"column":33,"endLine":667,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function updateEditor_inline__P17203_mk(s) {
     checkStack(s.depth);
@@ -42413,7 +42413,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_handleTile_inline__P17231.info = {"start":20927,"length":131,"line":676,"column":24,"endLine":679,"endColumn":25,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_RuleEditor_handleTile_inline__P17231.info = {"start":21603,"length":134,"line":676,"column":24,"endLine":679,"endColumn":25,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_RuleEditor_handleTile_inline__P17231_mk(s) {
     checkStack(s.depth);
@@ -42459,7 +42459,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-btns_inline__P17245.info = {"start":21349,"length":154,"line":689,"column":60,"endLine":694,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["elem"]}
+btns_inline__P17245.info = {"start":22038,"length":159,"line":689,"column":60,"endLine":694,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["elem"]}
 
 function btns_inline__P17245_mk(s) {
     checkStack(s.depth);
@@ -42519,7 +42519,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_handleTile_inline__P17274.info = {"start":21852,"length":352,"line":702,"column":20,"endLine":710,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_RuleEditor_handleTile_inline__P17274.info = {"start":22554,"length":360,"line":702,"column":20,"endLine":710,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_RuleEditor_handleTile_inline__P17274_mk(s) {
     checkStack(s.depth);
@@ -42563,7 +42563,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_handleTile_inline__P17300.info = {"start":22368,"length":107,"line":716,"column":27,"endLine":719,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_RuleEditor_handleTile_inline__P17300.info = {"start":23084,"length":110,"line":716,"column":27,"endLine":719,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_RuleEditor_handleTile_inline__P17300_mk(s) {
     checkStack(s.depth);
@@ -42618,7 +42618,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P17316.info = {"start":22657,"length":403,"line":724,"column":29,"endLine":733,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
+onClick_inline__P17316.info = {"start":23381,"length":412,"line":724,"column":29,"endLine":733,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
 
 function onClick_inline__P17316_mk(s) {
     checkStack(s.depth);
@@ -42859,7 +42859,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Language_getTileSuggestions__P3082.info = {"start":12147,"length":1607,"line":407,"column":8,"endLine":449,"endColumn":9,"fileName":"language.ts","functionName":"getTileSuggestions","argumentNames":["rule","name","index"]}
+microcode_Language_getTileSuggestions__P3082.info = {"start":12554,"length":1649,"line":407,"column":8,"endLine":449,"endColumn":9,"fileName":"language.ts","functionName":"getTileSuggestions","argumentNames":["rule","name","index"]}
 
 function microcode_Language_getTileSuggestions__P3082_mk(s) {
     checkStack(s.depth);
@@ -42908,7 +42908,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filter_inline__P17351.info = {"start":12357,"length":23,"line":413,"column":21,"endLine":413,"endColumn":44,"fileName":"language.ts","functionName":"inline","argumentNames":["id"]}
+filter_inline__P17351.info = {"start":12770,"length":23,"line":413,"column":21,"endLine":413,"endColumn":44,"fileName":"language.ts","functionName":"inline","argumentNames":["id"]}
 
 function filter_inline__P17351_mk(s) {
     checkStack(s.depth);
@@ -42945,7 +42945,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-sort_inline__P17357.info = {"start":12406,"length":32,"line":414,"column":24,"endLine":414,"endColumn":56,"fileName":"language.ts","functionName":"inline","argumentNames":["tile"]}
+sort_inline__P17357.info = {"start":12820,"length":32,"line":414,"column":24,"endLine":414,"endColumn":56,"fileName":"language.ts","functionName":"inline","argumentNames":["tile"]}
 
 function sort_inline__P17357_mk(s) {
     checkStack(s.depth);
@@ -42984,7 +42984,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-all_inline__P17343.info = {"start":12462,"length":37,"line":415,"column":22,"endLine":415,"endColumn":59,"fileName":"language.ts","functionName":"inline","argumentNames":["t1","t2"]}
+all_inline__P17343.info = {"start":12877,"length":37,"line":415,"column":22,"endLine":415,"endColumn":59,"fileName":"language.ts","functionName":"inline","argumentNames":["t1","t2"]}
 
 function all_inline__P17343_mk(s) {
     checkStack(s.depth);
@@ -43025,7 +43025,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Language_getTileSuggestions_inline__P17437.info = {"start":13626,"length":42,"line":446,"column":29,"endLine":446,"endColumn":71,"fileName":"language.ts","functionName":"inline","argumentNames":["tile"]}
+microcode_Language_getTileSuggestions_inline__P17437.info = {"start":14072,"length":42,"line":446,"column":29,"endLine":446,"endColumn":71,"fileName":"language.ts","functionName":"inline","argumentNames":["tile"]}
 
 function microcode_Language_getTileSuggestions_inline__P17437_mk(s) {
     checkStack(s.depth);
@@ -43065,7 +43065,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Language_getTileSuggestions_inline__P17444.info = {"start":13701,"length":42,"line":448,"column":30,"endLine":448,"endColumn":72,"fileName":"language.ts","functionName":"inline","argumentNames":["tile"]}
+microcode_Language_getTileSuggestions_inline__P17444.info = {"start":14149,"length":42,"line":448,"column":30,"endLine":448,"endColumn":72,"fileName":"language.ts","functionName":"inline","argumentNames":["tile"]}
 
 function microcode_Language_getTileSuggestions_inline__P17444_mk(s) {
     checkStack(s.depth);
@@ -43165,7 +43165,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_isCompatibleWith__P3030.info = {"start":2979,"length":354,"line":106,"column":8,"endLine":114,"endColumn":9,"fileName":"language.ts","functionName":"isCompatibleWith","argumentNames":["this","c"]}
+microcode_TileDefn_isCompatibleWith__P3030.info = {"start":3085,"length":362,"line":106,"column":8,"endLine":114,"endColumn":9,"fileName":"language.ts","functionName":"isCompatibleWith","argumentNames":["this","c"]}
 
 function microcode_TileDefn_isCompatibleWith__P3030_mk(s) {
     checkStack(s.depth);
@@ -43238,7 +43238,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_isCompatibleWith_inline__P17463.info = {"start":3220,"length":63,"line":111,"column":16,"endLine":111,"endColumn":79,"fileName":"language.ts","functionName":"inline","argumentNames":["req"]}
+microcode_TileDefn_isCompatibleWith_inline__P17463.info = {"start":3331,"length":63,"line":111,"column":16,"endLine":111,"endColumn":79,"fileName":"language.ts","functionName":"inline","argumentNames":["req"]}
 
 function microcode_TileDefn_isCompatibleWith_inline__P17463_mk(s) {
     checkStack(s.depth);
@@ -43275,7 +43275,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_isCompatibleWith_inline__P17471.info = {"start":3263,"length":18,"line":111,"column":59,"endLine":111,"endColumn":77,"fileName":"language.ts","functionName":"inline","argumentNames":["pro"]}
+microcode_TileDefn_isCompatibleWith_inline__P17471.info = {"start":3374,"length":18,"line":111,"column":59,"endLine":111,"endColumn":77,"fileName":"language.ts","functionName":"inline","argumentNames":["pro"]}
 
 function microcode_TileDefn_isCompatibleWith_inline__P17471_mk(s) {
     checkStack(s.depth);
@@ -43757,7 +43757,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints__P3029.info = {"start":1761,"length":1208,"line":71,"column":8,"endLine":104,"endColumn":9,"fileName":"language.ts","functionName":"mergeConstraints","argumentNames":["this","dst"]}
+microcode_TileDefn_mergeConstraints__P3029.info = {"start":1832,"length":1241,"line":71,"column":8,"endLine":104,"endColumn":9,"fileName":"language.ts","functionName":"mergeConstraints","argumentNames":["this","dst"]}
 
 function microcode_TileDefn_mergeConstraints__P3029_mk(s) {
     checkStack(s.depth);
@@ -43817,7 +43817,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints_inline__P17506.info = {"start":1969,"length":31,"line":77,"column":37,"endLine":77,"endColumn":68,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
+microcode_TileDefn_mergeConstraints_inline__P17506.info = {"start":2046,"length":31,"line":77,"column":37,"endLine":77,"endColumn":68,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
 
 function microcode_TileDefn_mergeConstraints_inline__P17506_mk(s) {
     checkStack(s.depth);
@@ -43865,7 +43865,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints_inline__P17518.info = {"start":2085,"length":31,"line":80,"column":37,"endLine":80,"endColumn":68,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
+microcode_TileDefn_mergeConstraints_inline__P17518.info = {"start":2165,"length":31,"line":80,"column":37,"endLine":80,"endColumn":68,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
 
 function microcode_TileDefn_mergeConstraints_inline__P17518_mk(s) {
     checkStack(s.depth);
@@ -43925,7 +43925,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints_inline__P17534.info = {"start":2210,"length":54,"line":83,"column":49,"endLine":84,"endColumn":46,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
+microcode_TileDefn_mergeConstraints_inline__P17534.info = {"start":2293,"length":55,"line":83,"column":49,"endLine":84,"endColumn":46,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
 
 function microcode_TileDefn_mergeConstraints_inline__P17534_mk(s) {
     checkStack(s.depth);
@@ -43986,7 +43986,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints_inline__P17549.info = {"start":2337,"length":59,"line":86,"column":54,"endLine":87,"endColumn":51,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
+microcode_TileDefn_mergeConstraints_inline__P17549.info = {"start":2423,"length":60,"line":86,"column":54,"endLine":87,"endColumn":51,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
 
 function microcode_TileDefn_mergeConstraints_inline__P17549_mk(s) {
     checkStack(s.depth);
@@ -44047,7 +44047,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints_inline__P17566.info = {"start":2513,"length":57,"line":91,"column":52,"endLine":92,"endColumn":49,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
+microcode_TileDefn_mergeConstraints_inline__P17566.info = {"start":2604,"length":58,"line":91,"column":52,"endLine":92,"endColumn":49,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
 
 function microcode_TileDefn_mergeConstraints_inline__P17566_mk(s) {
     checkStack(s.depth);
@@ -44108,7 +44108,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints_inline__P17581.info = {"start":2646,"length":62,"line":94,"column":57,"endLine":95,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
+microcode_TileDefn_mergeConstraints_inline__P17581.info = {"start":2740,"length":63,"line":94,"column":57,"endLine":95,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
 
 function microcode_TileDefn_mergeConstraints_inline__P17581_mk(s) {
     checkStack(s.depth);
@@ -44170,7 +44170,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_mkConstraints__P5806.info = {"start":14167,"length":376,"line":464,"column":4,"endLine":479,"endColumn":5,"fileName":"language.ts","functionName":"mkConstraints","argumentNames":[]}
+microcode_mkConstraints__P5806.info = {"start":14631,"length":391,"line":464,"column":4,"endLine":479,"endColumn":5,"fileName":"language.ts","functionName":"mkConstraints","argumentNames":[]}
 
 function microcode_mkConstraints__P5806_mk(s) {
     checkStack(s.depth);
@@ -44618,7 +44618,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Language_ensureValid__P3083.info = {"start":13764,"length":391,"line":451,"column":8,"endLine":461,"endColumn":9,"fileName":"language.ts","functionName":"ensureValid","argumentNames":["rule"]}
+microcode_Language_ensureValid__P3083.info = {"start":14215,"length":401,"line":451,"column":8,"endLine":461,"endColumn":9,"fileName":"language.ts","functionName":"ensureValid","argumentNames":["rule"]}
 
 function microcode_Language_ensureValid__P3083_mk(s) {
     checkStack(s.depth);
@@ -44682,7 +44682,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_getBorder__P3027.info = {"start":1471,"length":191,"line":60,"column":8,"endLine":65,"endColumn":9,"fileName":"language.ts","functionName":"getBorder","argumentNames":["this"]}
+microcode_TileDefn_getBorder__P3027.info = {"start":1531,"length":196,"line":60,"column":8,"endLine":65,"endColumn":9,"fileName":"language.ts","functionName":"getBorder","argumentNames":["this"]}
 
 function microcode_TileDefn_getBorder__P3027_mk(s) {
     checkStack(s.depth);
@@ -44721,7 +44721,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_getIcon__P3026.info = {"start":1396,"length":65,"line":56,"column":8,"endLine":58,"endColumn":9,"fileName":"language.ts","functionName":"getIcon","argumentNames":["this"]}
+microcode_TileDefn_getIcon__P3026.info = {"start":1452,"length":67,"line":56,"column":8,"endLine":58,"endColumn":9,"fileName":"language.ts","functionName":"getIcon","argumentNames":["this"]}
 
 function microcode_TileDefn_getIcon__P3026_mk(s) {
     checkStack(s.depth);
@@ -44769,7 +44769,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleDefn_getRuleRep__P3060.info = {"start":6028,"length":239,"line":216,"column":8,"endLine":223,"endColumn":9,"fileName":"language.ts","functionName":"getRuleRep","argumentNames":["this"]}
+microcode_RuleDefn_getRuleRep__P3060.info = {"start":6244,"length":246,"line":216,"column":8,"endLine":223,"endColumn":9,"fileName":"language.ts","functionName":"getRuleRep","argumentNames":["this"]}
 
 function microcode_RuleDefn_getRuleRep__P3060_mk(s) {
     checkStack(s.depth);
@@ -44817,7 +44817,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_saveProgram__P3185.info = {"start":1411,"length":87,"line":54,"column":8,"endLine":56,"endColumn":9,"fileName":"editor.ts","functionName":"saveProgram","argumentNames":["this"]}
+microcode_Editor_saveProgram__P3185.info = {"start":1465,"length":89,"line":54,"column":8,"endLine":56,"endColumn":9,"fileName":"editor.ts","functionName":"saveProgram","argumentNames":["this"]}
 
 function microcode_Editor_saveProgram__P3185_mk(s) {
     checkStack(s.depth);
@@ -44880,7 +44880,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_showDoInsertMenu__P6311.info = {"start":23668,"length":246,"line":755,"column":8,"endLine":761,"endColumn":9,"fileName":"editor.ts","functionName":"showDoInsertMenu","argumentNames":["this"]}
+microcode_RuleEditor_showDoInsertMenu__P6311.info = {"start":24423,"length":252,"line":755,"column":8,"endLine":761,"endColumn":9,"fileName":"editor.ts","functionName":"showDoInsertMenu","argumentNames":["this"]}
 
 function microcode_RuleEditor_showDoInsertMenu__P6311_mk(s) {
     checkStack(s.depth);
@@ -44946,7 +44946,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_showWhenInsertMenu__P6310.info = {"start":23418,"length":240,"line":747,"column":8,"endLine":753,"endColumn":9,"fileName":"editor.ts","functionName":"showWhenInsertMenu","argumentNames":["this"]}
+microcode_RuleEditor_showWhenInsertMenu__P6310.info = {"start":24165,"length":246,"line":747,"column":8,"endLine":753,"endColumn":9,"fileName":"editor.ts","functionName":"showWhenInsertMenu","argumentNames":["this"]}
 
 function microcode_RuleEditor_showWhenInsertMenu__P6310_mk(s) {
     checkStack(s.depth);
@@ -45026,7 +45026,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_showRuleHandleMenu__P6307.info = {"start":19625,"length":620,"line":643,"column":8,"endLine":659,"endColumn":9,"fileName":"editor.ts","functionName":"showRuleHandleMenu","argumentNames":["this"]}
+microcode_RuleEditor_showRuleHandleMenu__P6307.info = {"start":20268,"length":636,"line":643,"column":8,"endLine":659,"endColumn":9,"fileName":"editor.ts","functionName":"showRuleHandleMenu","argumentNames":["this"]}
 
 function microcode_RuleEditor_showRuleHandleMenu__P6307_mk(s) {
     checkStack(s.depth);
@@ -45066,7 +45066,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-btns_inline__P17809.info = {"start":19939,"length":102,"line":650,"column":56,"endLine":654,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
+btns_inline__P17809.info = {"start":20589,"length":106,"line":650,"column":56,"endLine":654,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
 
 function btns_inline__P17809_mk(s) {
     checkStack(s.depth);
@@ -45105,7 +45105,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P17823.info = {"start":20167,"length":52,"line":657,"column":25,"endLine":657,"endColumn":77,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
+onClick_inline__P17823.info = {"start":20824,"length":52,"line":657,"column":25,"endLine":657,"endColumn":77,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
 
 function onClick_inline__P17823_mk(s) {
     checkStack(s.depth);
@@ -45170,7 +45170,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_handleRuleHandleMenuSelection__P6309.info = {"start":23144,"length":264,"line":739,"column":8,"endLine":745,"endColumn":9,"fileName":"editor.ts","functionName":"handleRuleHandleMenuSelection","argumentNames":["this","iconId"]}
+microcode_RuleEditor_handleRuleHandleMenuSelection__P6309.info = {"start":23883,"length":270,"line":739,"column":8,"endLine":745,"endColumn":9,"fileName":"editor.ts","functionName":"handleRuleHandleMenuSelection","argumentNames":["this","iconId"]}
 
 function microcode_RuleEditor_handleRuleHandleMenuSelection__P6309_mk(s) {
     checkStack(s.depth);
@@ -45247,7 +45247,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_deleteRuleAt__P6295.info = {"start":14638,"length":298,"line":489,"column":8,"endLine":496,"endColumn":9,"fileName":"editor.ts","functionName":"deleteRuleAt","argumentNames":["this","index"]}
+microcode_PageEditor_deleteRuleAt__P6295.info = {"start":15127,"length":305,"line":489,"column":8,"endLine":496,"endColumn":9,"fileName":"editor.ts","functionName":"deleteRuleAt","argumentNames":["this","index"]}
 
 function microcode_PageEditor_deleteRuleAt__P6295_mk(s) {
     checkStack(s.depth);
@@ -45285,7 +45285,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_deleteRuleAt_inline__P17863.info = {"start":14861,"length":37,"line":494,"column":31,"endLine":494,"endColumn":68,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
+microcode_PageEditor_deleteRuleAt_inline__P17863.info = {"start":15355,"length":37,"line":494,"column":31,"endLine":494,"endColumn":68,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
 
 function microcode_PageEditor_deleteRuleAt_inline__P17863_mk(s) {
     checkStack(s.depth);
@@ -45350,7 +45350,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageDefn_deleteRuleAt__P3070.info = {"start":9694,"length":163,"line":325,"column":8,"endLine":329,"endColumn":9,"fileName":"language.ts","functionName":"deleteRuleAt","argumentNames":["this","index"]}
+microcode_PageDefn_deleteRuleAt__P3070.info = {"start":10019,"length":167,"line":325,"column":8,"endLine":329,"endColumn":9,"fileName":"language.ts","functionName":"deleteRuleAt","argumentNames":["this","index"]}
 
 function microcode_PageDefn_deleteRuleAt__P3070_mk(s) {
     checkStack(s.depth);
@@ -45474,7 +45474,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_insertRuleAt__P6296.info = {"start":14946,"length":563,"line":498,"column":8,"endLine":511,"endColumn":9,"fileName":"editor.ts","functionName":"insertRuleAt","argumentNames":["this","index"]}
+microcode_PageEditor_insertRuleAt__P6296.info = {"start":15444,"length":576,"line":498,"column":8,"endLine":511,"endColumn":9,"fileName":"editor.ts","functionName":"insertRuleAt","argumentNames":["this","index"]}
 
 function microcode_PageEditor_insertRuleAt__P6296_mk(s) {
     checkStack(s.depth);
@@ -45520,7 +45520,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_insertRuleAt_inline__P17939.info = {"start":15434,"length":37,"line":509,"column":31,"endLine":509,"endColumn":68,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
+microcode_PageEditor_insertRuleAt_inline__P17939.info = {"start":15943,"length":37,"line":509,"column":31,"endLine":509,"endColumn":68,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
 
 function microcode_PageEditor_insertRuleAt_inline__P17939_mk(s) {
     checkStack(s.depth);
@@ -45628,7 +45628,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageDefn_insertRuleAt__P3071.info = {"start":9867,"length":612,"line":331,"column":8,"endLine":345,"endColumn":9,"fileName":"language.ts","functionName":"insertRuleAt","argumentNames":["this","index"]}
+microcode_PageDefn_insertRuleAt__P3071.info = {"start":10198,"length":626,"line":331,"column":8,"endLine":345,"endColumn":9,"fileName":"language.ts","functionName":"insertRuleAt","argumentNames":["this","index"]}
 
 function microcode_PageDefn_insertRuleAt__P3071_mk(s) {
     checkStack(s.depth);
@@ -45687,7 +45687,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_EditorButton_constructor__P6264.info = {"start":70,"length":470,"line":2,"column":8,"endLine":18,"endColumn":9,"fileName":"editor.ts","functionName":"inline","argumentNames":["this","editor","opts"]}
+microcode_EditorButton_constructor__P6264.info = {"start":72,"length":486,"line":2,"column":8,"endLine":18,"endColumn":9,"fileName":"editor.ts","functionName":"inline","argumentNames":["this","editor","opts"]}
 
 function microcode_EditorButton_constructor__P6264_mk(s) {
     checkStack(s.depth);
@@ -45724,7 +45724,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_xfrm__P6287.info = {"start":11843,"length":59,"line":392,"column":8,"endLine":394,"endColumn":9,"fileName":"editor.ts","functionName":"xfrm","argumentNames":["this"]}
+microcode_PageEditor_xfrm__P6287.info = {"start":12235,"length":61,"line":392,"column":8,"endLine":394,"endColumn":9,"fileName":"editor.ts","functionName":"xfrm","argumentNames":["this"]}
 microcode_PageEditor_xfrm__P6287.isGetter = true;
 
 function microcode_PageEditor_xfrm__P6287_mk(s) {
@@ -45772,7 +45772,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_destroy__P6288.info = {"start":12397,"length":139,"line":411,"column":23,"endLine":415,"endColumn":9,"fileName":"editor.ts","functionName":"destroy","argumentNames":["this"]}
+microcode_PageEditor_destroy__P6288.info = {"start":12808,"length":143,"line":411,"column":23,"endLine":415,"endColumn":9,"fileName":"editor.ts","functionName":"destroy","argumentNames":["this"]}
 
 function microcode_PageEditor_destroy__P6288_mk(s) {
     checkStack(s.depth);
@@ -45812,7 +45812,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_destroy_inline__P18011.info = {"start":12440,"length":22,"line":412,"column":31,"endLine":412,"endColumn":53,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_destroy_inline__P18011.info = {"start":12852,"length":22,"line":412,"column":31,"endLine":412,"endColumn":53,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
 function microcode_PageEditor_destroy_inline__P18011_mk(s) {
     checkStack(s.depth);
@@ -45862,7 +45862,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_shutdown__P3187.info = {"start":9648,"length":94,"line":309,"column":23,"endLine":312,"endColumn":9,"fileName":"editor.ts","functionName":"shutdown","argumentNames":["this"]}
+microcode_Editor_shutdown__P3187.info = {"start":9957,"length":97,"line":309,"column":23,"endLine":312,"endColumn":9,"fileName":"editor.ts","functionName":"shutdown","argumentNames":["this"]}
 
 function microcode_Editor_shutdown__P3187_mk(s) {
     checkStack(s.depth);
@@ -46230,7 +46230,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup__P3186.info = {"start":6101,"length":3522,"line":204,"column":23,"endLine":307,"endColumn":9,"fileName":"editor.ts","functionName":"startup","argumentNames":["this"]}
+microcode_Editor_startup__P3186.info = {"start":6305,"length":3625,"line":204,"column":23,"endLine":307,"endColumn":9,"fileName":"editor.ts","functionName":"startup","argumentNames":["this"]}
 
 function microcode_Editor_startup__P3186_mk(s) {
     checkStack(s.depth);
@@ -46270,7 +46270,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup_inline__P18032.info = {"start":6270,"length":22,"line":209,"column":16,"endLine":209,"endColumn":38,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_Editor_startup_inline__P18032.info = {"start":6479,"length":22,"line":209,"column":16,"endLine":209,"endColumn":38,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Editor_startup_inline__P18032_mk(s) {
     checkStack(s.depth);
@@ -46303,7 +46303,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup_inline__P18038.info = {"start":6437,"length":22,"line":214,"column":16,"endLine":214,"endColumn":38,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_Editor_startup_inline__P18038.info = {"start":6651,"length":22,"line":214,"column":16,"endLine":214,"endColumn":38,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Editor_startup_inline__P18038_mk(s) {
     checkStack(s.depth);
@@ -46336,7 +46336,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup_inline__P18044.info = {"start":6600,"length":19,"line":219,"column":16,"endLine":219,"endColumn":35,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_Editor_startup_inline__P18044.info = {"start":6819,"length":19,"line":219,"column":16,"endLine":219,"endColumn":35,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Editor_startup_inline__P18044_mk(s) {
     checkStack(s.depth);
@@ -46369,7 +46369,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup_inline__P18050.info = {"start":6761,"length":19,"line":224,"column":16,"endLine":224,"endColumn":35,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_Editor_startup_inline__P18050.info = {"start":6985,"length":19,"line":224,"column":16,"endLine":224,"endColumn":35,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Editor_startup_inline__P18050_mk(s) {
     checkStack(s.depth);
@@ -46402,7 +46402,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup_inline__P18056.info = {"start":6923,"length":21,"line":229,"column":16,"endLine":229,"endColumn":37,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_Editor_startup_inline__P18056.info = {"start":7152,"length":21,"line":229,"column":16,"endLine":229,"endColumn":37,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Editor_startup_inline__P18056_mk(s) {
     checkStack(s.depth);
@@ -46435,7 +46435,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup_inline__P18062.info = {"start":7088,"length":21,"line":234,"column":16,"endLine":234,"endColumn":37,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_Editor_startup_inline__P18062.info = {"start":7322,"length":21,"line":234,"column":16,"endLine":234,"endColumn":37,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Editor_startup_inline__P18062_mk(s) {
     checkStack(s.depth);
@@ -46468,7 +46468,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup_inline__P18068.info = {"start":7252,"length":21,"line":239,"column":16,"endLine":239,"endColumn":37,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_Editor_startup_inline__P18068.info = {"start":7491,"length":21,"line":239,"column":16,"endLine":239,"endColumn":37,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Editor_startup_inline__P18068_mk(s) {
     checkStack(s.depth);
@@ -46501,7 +46501,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup_inline__P18074.info = {"start":7417,"length":21,"line":244,"column":16,"endLine":244,"endColumn":37,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_Editor_startup_inline__P18074.info = {"start":7661,"length":21,"line":244,"column":16,"endLine":244,"endColumn":37,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Editor_startup_inline__P18074_mk(s) {
     checkStack(s.depth);
@@ -46534,7 +46534,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup_inline__P18080.info = {"start":7579,"length":25,"line":250,"column":16,"endLine":250,"endColumn":41,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_Editor_startup_inline__P18080.info = {"start":7829,"length":25,"line":250,"column":16,"endLine":250,"endColumn":41,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Editor_startup_inline__P18080_mk(s) {
     checkStack(s.depth);
@@ -46567,7 +46567,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup_inline__P18088.info = {"start":7744,"length":23,"line":255,"column":16,"endLine":255,"endColumn":39,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_Editor_startup_inline__P18088.info = {"start":7999,"length":23,"line":255,"column":16,"endLine":255,"endColumn":39,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_Editor_startup_inline__P18088_mk(s) {
     checkStack(s.depth);
@@ -46605,7 +46605,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup_inline__P18128.info = {"start":8199,"length":39,"line":266,"column":16,"endLine":266,"endColumn":55,"fileName":"editor.ts","functionName":"inline","argumentNames":["v"]}
+microcode_Editor_startup_inline__P18128.info = {"start":8465,"length":39,"line":266,"column":16,"endLine":266,"endColumn":55,"fileName":"editor.ts","functionName":"inline","argumentNames":["v"]}
 
 function microcode_Editor_startup_inline__P18128_mk(s) {
     checkStack(s.depth);
@@ -46639,7 +46639,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-done_inline__P18132.info = {"start":8284,"length":31,"line":268,"column":26,"endLine":268,"endColumn":57,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+done_inline__P18132.info = {"start":8552,"length":31,"line":268,"column":26,"endLine":268,"endColumn":57,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function done_inline__P18132_mk(s) {
     checkStack(s.depth);
@@ -46672,7 +46672,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P18155.info = {"start":8706,"length":21,"line":280,"column":25,"endLine":280,"endColumn":46,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P18155.info = {"start":8986,"length":21,"line":280,"column":25,"endLine":280,"endColumn":46,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P18155_mk(s) {
     checkStack(s.depth);
@@ -46705,7 +46705,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P18163.info = {"start":8975,"length":21,"line":288,"column":25,"endLine":288,"endColumn":46,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P18163.info = {"start":9263,"length":21,"line":288,"column":25,"endLine":288,"endColumn":46,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P18163_mk(s) {
     checkStack(s.depth);
@@ -46738,7 +46738,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P18173.info = {"start":9245,"length":21,"line":296,"column":25,"endLine":296,"endColumn":46,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P18173.info = {"start":9541,"length":21,"line":296,"column":25,"endLine":296,"endColumn":46,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P18173_mk(s) {
     checkStack(s.depth);
@@ -46771,7 +46771,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P18184.info = {"start":9519,"length":22,"line":304,"column":25,"endLine":304,"endColumn":47,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P18184.info = {"start":9823,"length":22,"line":304,"column":25,"endLine":304,"endColumn":47,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P18184_mk(s) {
     checkStack(s.depth);
@@ -46824,7 +46824,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_okClicked__P6270.info = {"start":1508,"length":121,"line":58,"column":8,"endLine":61,"endColumn":9,"fileName":"editor.ts","functionName":"okClicked","argumentNames":["this"]}
+microcode_Editor_okClicked__P6270.info = {"start":1566,"length":124,"line":58,"column":8,"endLine":61,"endColumn":9,"fileName":"editor.ts","functionName":"okClicked","argumentNames":["this"]}
 
 function microcode_Editor_okClicked__P6270_mk(s) {
     checkStack(s.depth);
@@ -46885,7 +46885,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_prevPage__P6273.info = {"start":2048,"length":206,"line":78,"column":8,"endLine":84,"endColumn":9,"fileName":"editor.ts","functionName":"prevPage","argumentNames":["this"]}
+microcode_Editor_prevPage__P6273.info = {"start":2126,"length":212,"line":78,"column":8,"endLine":84,"endColumn":9,"fileName":"editor.ts","functionName":"prevPage","argumentNames":["this"]}
 
 function microcode_Editor_prevPage__P6273_mk(s) {
     checkStack(s.depth);
@@ -46942,7 +46942,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_nextPage__P6272.info = {"start":1882,"length":156,"line":72,"column":8,"endLine":76,"endColumn":9,"fileName":"editor.ts","functionName":"nextPage","argumentNames":["this"]}
+microcode_Editor_nextPage__P6272.info = {"start":1954,"length":160,"line":72,"column":8,"endLine":76,"endColumn":9,"fileName":"editor.ts","functionName":"nextPage","argumentNames":["this"]}
 
 function microcode_Editor_nextPage__P6272_mk(s) {
     checkStack(s.depth);
@@ -47015,7 +47015,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_pickPage__P6274.info = {"start":2264,"length":493,"line":86,"column":8,"endLine":100,"endColumn":9,"fileName":"editor.ts","functionName":"pickPage","argumentNames":["this"]}
+microcode_Editor_pickPage__P6274.info = {"start":2350,"length":507,"line":86,"column":8,"endLine":100,"endColumn":9,"fileName":"editor.ts","functionName":"pickPage","argumentNames":["this"]}
 
 function microcode_Editor_pickPage__P6274_mk(s) {
     checkStack(s.depth);
@@ -47054,7 +47054,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-btns_inline__P18232.info = {"start":2384,"length":102,"line":88,"column":57,"endLine":92,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["pageId"]}
+btns_inline__P18232.info = {"start":2472,"length":106,"line":88,"column":57,"endLine":92,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["pageId"]}
 
 function btns_inline__P18232_mk(s) {
     checkStack(s.depth);
@@ -47096,7 +47096,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P18244.info = {"start":2598,"length":133,"line":95,"column":25,"endLine":98,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
+onClick_inline__P18244.info = {"start":2693,"length":136,"line":95,"column":25,"endLine":98,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
 
 function onClick_inline__P18244_mk(s) {
     checkStack(s.depth);
@@ -47137,7 +47137,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_scrollAnimComplete__P6284.info = {"start":10685,"length":67,"line":349,"column":8,"endLine":351,"endColumn":9,"fileName":"editor.ts","functionName":"scrollAnimComplete","argumentNames":["this"]}
+microcode_Editor_scrollAnimComplete__P6284.info = {"start":11034,"length":69,"line":349,"column":8,"endLine":351,"endColumn":9,"fileName":"editor.ts","functionName":"scrollAnimComplete","argumentNames":["this"]}
 
 function microcode_Editor_scrollAnimComplete__P6284_mk(s) {
     checkStack(s.depth);
@@ -47182,7 +47182,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_scrollAnimCallback__P6283.info = {"start":10582,"length":93,"line":345,"column":8,"endLine":347,"endColumn":9,"fileName":"editor.ts","functionName":"scrollAnimCallback","argumentNames":["this","v"]}
+microcode_Editor_scrollAnimCallback__P6283.info = {"start":10927,"length":95,"line":345,"column":8,"endLine":347,"endColumn":9,"fileName":"editor.ts","functionName":"scrollAnimCallback","argumentNames":["this","v"]}
 
 function microcode_Editor_scrollAnimCallback__P6283_mk(s) {
     checkStack(s.depth);
@@ -47262,7 +47262,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Placeable_constructor__P2896.info = {"start":1573,"length":167,"line":62,"column":8,"endLine":66,"endColumn":9,"fileName":"component.ts","functionName":"inline","argumentNames":["this","parent"]}
+microcode_Placeable_constructor__P2896.info = {"start":1635,"length":171,"line":62,"column":8,"endLine":66,"endColumn":9,"fileName":"component.ts","functionName":"inline","argumentNames":["this","parent"]}
 
 function microcode_Placeable_constructor__P2896_mk(s) {
     checkStack(s.depth);
@@ -47338,7 +47338,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_backButton__P6281.info = {"start":5847,"length":229,"line":195,"column":8,"endLine":202,"endColumn":9,"fileName":"editor.ts","functionName":"backButton","argumentNames":["this"]}
+microcode_Editor_backButton__P6281.info = {"start":6042,"length":236,"line":195,"column":8,"endLine":202,"endColumn":9,"fileName":"editor.ts","functionName":"backButton","argumentNames":["this"]}
 
 function microcode_Editor_backButton__P6281_mk(s) {
     checkStack(s.depth);
@@ -47437,7 +47437,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_moveTo__P3203.info = {"start":1226,"length":528,"line":43,"column":8,"endLine":57,"endColumn":9,"fileName":"cursor.ts","functionName":"moveTo","argumentNames":["this","pos","ariaId"]}
+microcode_Cursor_moveTo__P3203.info = {"start":1269,"length":542,"line":43,"column":8,"endLine":57,"endColumn":9,"fileName":"cursor.ts","functionName":"moveTo","argumentNames":["this","pos","ariaId"]}
 
 function microcode_Cursor_moveTo__P3203_mk(s) {
     checkStack(s.depth);
@@ -47501,7 +47501,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Animation_start__P3365.info = {"start":5258,"length":249,"line":143,"column":8,"endLine":150,"endColumn":9,"fileName":"animation.ts","functionName":"start","argumentNames":["this","initialValue"]}
+microcode_Animation_start__P3365.info = {"start":5401,"length":256,"line":143,"column":8,"endLine":150,"endColumn":9,"fileName":"animation.ts","functionName":"start","argumentNames":["this","initialValue"]}
 
 function microcode_Animation_start__P3365_mk(s) {
     checkStack(s.depth);
@@ -47532,7 +47532,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_curves_linear__P3387.info = {"start":1609,"length":102,"line":51,"column":4,"endLine":53,"endColumn":5,"fileName":"curves.ts","functionName":"linear","argumentNames":[]}
+microcode_curves_linear__P3387.info = {"start":1660,"length":104,"line":51,"column":4,"endLine":53,"endColumn":5,"fileName":"curves.ts","functionName":"linear","argumentNames":[]}
 
 function microcode_curves_linear__P3387_mk(s) {
     checkStack(s.depth);
@@ -47570,7 +47570,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_curves_util_lerp__P3383.info = {"start":1263,"length":100,"line":40,"column":4,"endLine":42,"endColumn":5,"fileName":"curves.ts","functionName":"lerp","argumentNames":["a","b","t"]}
+microcode_curves_util_lerp__P3383.info = {"start":1303,"length":102,"line":40,"column":4,"endLine":42,"endColumn":5,"fileName":"curves.ts","functionName":"lerp","argumentNames":["a","b","t"]}
 
 function microcode_curves_util_lerp__P3383_mk(s) {
     checkStack(s.depth);
@@ -47744,7 +47744,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_EaseFrame_constructor__P3357.info = {"start":416,"length":1265,"line":14,"column":8,"endLine":44,"endColumn":9,"fileName":"animation.ts","functionName":"inline","argumentNames":["this","opts"]}
+microcode_EaseFrame_constructor__P3357.info = {"start":430,"length":1295,"line":14,"column":8,"endLine":44,"endColumn":9,"fileName":"animation.ts","functionName":"inline","argumentNames":["this","opts"]}
 
 function microcode_EaseFrame_constructor__P3357_mk(s) {
     checkStack(s.depth);
@@ -47790,7 +47790,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Animation_addFrame__P3363.info = {"start":5002,"length":111,"line":132,"column":8,"endLine":135,"endColumn":9,"fileName":"animation.ts","functionName":"addFrame","argumentNames":["this","frame"]}
+microcode_Animation_addFrame__P3363.info = {"start":5134,"length":114,"line":132,"column":8,"endLine":135,"endColumn":9,"fileName":"animation.ts","functionName":"addFrame","argumentNames":["this","frame"]}
 
 function microcode_Animation_addFrame__P3363_mk(s) {
     checkStack(s.depth);
@@ -47831,7 +47831,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Animation_clearFrames__P3364.info = {"start":5123,"length":125,"line":137,"column":8,"endLine":141,"endColumn":9,"fileName":"animation.ts","functionName":"clearFrames","argumentNames":["this"]}
+microcode_Animation_clearFrames__P3364.info = {"start":5260,"length":129,"line":137,"column":8,"endLine":141,"endColumn":9,"fileName":"animation.ts","functionName":"clearFrames","argumentNames":["this"]}
 
 function microcode_Animation_clearFrames__P3364_mk(s) {
     checkStack(s.depth);
@@ -47893,7 +47893,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_cancel__P3210.info = {"start":3212,"length":231,"line":108,"column":8,"endLine":114,"endColumn":9,"fileName":"cursor.ts","functionName":"cancel","argumentNames":["this"]}
+microcode_Cursor_cancel__P3210.info = {"start":3320,"length":237,"line":108,"column":8,"endLine":114,"endColumn":9,"fileName":"cursor.ts","functionName":"cancel","argumentNames":["this"]}
 
 function microcode_Cursor_cancel__P3210_mk(s) {
     checkStack(s.depth);
@@ -47968,7 +47968,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_click__P3209.info = {"start":2890,"length":312,"line":98,"column":8,"endLine":106,"endColumn":9,"fileName":"cursor.ts","functionName":"click","argumentNames":["this"]}
+microcode_Cursor_click__P3209.info = {"start":2988,"length":320,"line":98,"column":8,"endLine":106,"endColumn":9,"fileName":"cursor.ts","functionName":"click","argumentNames":["this"]}
 
 function microcode_Cursor_click__P3209_mk(s) {
     checkStack(s.depth);
@@ -48041,7 +48041,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Button_click__P2874.info = {"start":4646,"length":179,"line":156,"column":8,"endLine":163,"endColumn":9,"fileName":"button.ts","functionName":"click","argumentNames":["this"]}
+microcode_Button_click__P2874.info = {"start":4802,"length":186,"line":156,"column":8,"endLine":163,"endColumn":9,"fileName":"button.ts","functionName":"click","argumentNames":["this"]}
 
 function microcode_Button_click__P2874_mk(s) {
     checkStack(s.depth);
@@ -48087,7 +48087,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Button_visible__P2872.info = {"start":4471,"length":68,"line":149,"column":8,"endLine":151,"endColumn":9,"fileName":"button.ts","functionName":"visible","argumentNames":["this"]}
+microcode_Button_visible__P2872.info = {"start":4620,"length":70,"line":149,"column":8,"endLine":151,"endColumn":9,"fileName":"button.ts","functionName":"visible","argumentNames":["this"]}
 
 function microcode_Button_visible__P2872_mk(s) {
     checkStack(s.depth);
@@ -48174,7 +48174,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_moveLeft__P6279.info = {"start":5511,"length":157,"line":181,"column":8,"endLine":186,"endColumn":9,"fileName":"editor.ts","functionName":"moveLeft","argumentNames":["this"]}
+microcode_Editor_moveLeft__P6279.info = {"start":5692,"length":162,"line":181,"column":8,"endLine":186,"endColumn":9,"fileName":"editor.ts","functionName":"moveLeft","argumentNames":["this"]}
 
 function microcode_Editor_moveLeft__P6279_mk(s) {
     checkStack(s.depth);
@@ -48460,7 +48460,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_moveTo__P6276.info = {"start":3431,"length":1740,"line":122,"column":8,"endLine":165,"endColumn":9,"fileName":"editor.ts","functionName":"moveTo","argumentNames":["this","target"]}
+microcode_Editor_moveTo__P6276.info = {"start":3553,"length":1783,"line":122,"column":8,"endLine":165,"endColumn":9,"fileName":"editor.ts","functionName":"moveTo","argumentNames":["this","target"]}
 
 function microcode_Editor_moveTo__P6276_mk(s) {
     checkStack(s.depth);
@@ -48569,7 +48569,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Occlusions_has__P3275.info = {"start":4826,"length":115,"line":157,"column":8,"endLine":159,"endColumn":9,"fileName":"bounds.ts","functionName":"has","argumentNames":["this"]}
+microcode_Occlusions_has__P3275.info = {"start":4983,"length":117,"line":157,"column":8,"endLine":159,"endColumn":9,"fileName":"bounds.ts","functionName":"has","argumentNames":["this"]}
 microcode_Occlusions_has__P3275.isGetter = true;
 
 function microcode_Occlusions_has__P3275_mk(s) {
@@ -48646,7 +48646,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Button_occlusions__P2870.info = {"start":3891,"length":188,"line":129,"column":8,"endLine":134,"endColumn":9,"fileName":"button.ts","functionName":"occlusions","argumentNames":["this","bounds"]}
+microcode_Button_occlusions__P2870.info = {"start":4020,"length":193,"line":129,"column":8,"endLine":134,"endColumn":9,"fileName":"button.ts","functionName":"occlusions","argumentNames":["this","bounds"]}
 
 function microcode_Button_occlusions__P2870_mk(s) {
     checkStack(s.depth);
@@ -48690,7 +48690,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Sprite_occlusions__P3175.info = {"start":1676,"length":100,"line":57,"column":8,"endLine":59,"endColumn":9,"fileName":"sprite.ts","functionName":"occlusions","argumentNames":["this","bounds"]}
+microcode_Sprite_occlusions__P3175.info = {"start":1733,"length":102,"line":57,"column":8,"endLine":59,"endColumn":9,"fileName":"sprite.ts","functionName":"occlusions","argumentNames":["this","bounds"]}
 
 function microcode_Sprite_occlusions__P3175_mk(s) {
     checkStack(s.depth);
@@ -48886,7 +48886,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Occlusions_FromSprite__P3277.info = {"start":5119,"length":619,"line":168,"column":8,"endLine":179,"endColumn":9,"fileName":"bounds.ts","functionName":"FromSprite","argumentNames":["s","bounds"]}
+microcode_Occlusions_FromSprite__P3277.info = {"start":5287,"length":630,"line":168,"column":8,"endLine":179,"endColumn":9,"fileName":"bounds.ts","functionName":"FromSprite","argumentNames":["s","bounds"]}
 
 function microcode_Occlusions_FromSprite__P3277_mk(s) {
     checkStack(s.depth);
@@ -48961,7 +48961,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Occlusions_constructor__P3276.info = {"start":4951,"length":158,"line":161,"column":8,"endLine":166,"endColumn":12,"fileName":"bounds.ts","functionName":"inline","argumentNames":["this","left","top","right","bottom"]}
+microcode_Occlusions_constructor__P3276.info = {"start":5112,"length":163,"line":161,"column":8,"endLine":166,"endColumn":12,"fileName":"bounds.ts","functionName":"inline","argumentNames":["this","left","top","right","bottom"]}
 
 function microcode_Occlusions_constructor__P3276_mk(s) {
     checkStack(s.depth);
@@ -49011,7 +49011,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Button_rootXfrm__P2864.info = {"start":1332,"length":181,"line":40,"column":8,"endLine":46,"endColumn":9,"fileName":"button.ts","functionName":"rootXfrm","argumentNames":["this"]}
+microcode_Button_rootXfrm__P2864.info = {"start":1372,"length":187,"line":40,"column":8,"endLine":46,"endColumn":9,"fileName":"button.ts","functionName":"rootXfrm","argumentNames":["this"]}
 microcode_Button_rootXfrm__P2864.isGetter = true;
 
 function microcode_Button_rootXfrm__P2864_mk(s) {
@@ -49082,7 +49082,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_queryLeft__P3207.info = {"start":2508,"length":180,"line":84,"column":8,"endLine":89,"endColumn":9,"fileName":"cursor.ts","functionName":"queryLeft","argumentNames":["this"]}
+microcode_Cursor_queryLeft__P3207.info = {"start":2592,"length":185,"line":84,"column":8,"endLine":89,"endColumn":9,"fileName":"cursor.ts","functionName":"queryLeft","argumentNames":["this"]}
 
 function microcode_Cursor_queryLeft__P3207_mk(s) {
     checkStack(s.depth);
@@ -49138,7 +49138,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_moveDown__P6278.info = {"start":5344,"length":157,"line":174,"column":8,"endLine":179,"endColumn":9,"fileName":"editor.ts","functionName":"moveDown","argumentNames":["this"]}
+microcode_Editor_moveDown__P6278.info = {"start":5518,"length":162,"line":174,"column":8,"endLine":179,"endColumn":9,"fileName":"editor.ts","functionName":"moveDown","argumentNames":["this"]}
 
 function microcode_Editor_moveDown__P6278_mk(s) {
     checkStack(s.depth);
@@ -49208,7 +49208,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_queryDown__P3206.info = {"start":2318,"length":180,"line":77,"column":8,"endLine":82,"endColumn":9,"fileName":"cursor.ts","functionName":"queryDown","argumentNames":["this"]}
+microcode_Cursor_queryDown__P3206.info = {"start":2395,"length":185,"line":77,"column":8,"endLine":82,"endColumn":9,"fileName":"cursor.ts","functionName":"queryDown","argumentNames":["this"]}
 
 function microcode_Cursor_queryDown__P3206_mk(s) {
     checkStack(s.depth);
@@ -49264,7 +49264,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_moveUp__P6277.info = {"start":5181,"length":153,"line":167,"column":8,"endLine":172,"endColumn":9,"fileName":"editor.ts","functionName":"moveUp","argumentNames":["this"]}
+microcode_Editor_moveUp__P6277.info = {"start":5348,"length":158,"line":167,"column":8,"endLine":172,"endColumn":9,"fileName":"editor.ts","functionName":"moveUp","argumentNames":["this"]}
 
 function microcode_Editor_moveUp__P6277_mk(s) {
     checkStack(s.depth);
@@ -49334,7 +49334,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_queryUp__P3205.info = {"start":2132,"length":176,"line":70,"column":8,"endLine":75,"endColumn":9,"fileName":"cursor.ts","functionName":"queryUp","argumentNames":["this"]}
+microcode_Cursor_queryUp__P3205.info = {"start":2202,"length":181,"line":70,"column":8,"endLine":75,"endColumn":9,"fileName":"cursor.ts","functionName":"queryUp","argumentNames":["this"]}
 
 function microcode_Cursor_queryUp__P3205_mk(s) {
     checkStack(s.depth);
@@ -49390,7 +49390,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_moveRight__P6280.info = {"start":5678,"length":159,"line":188,"column":8,"endLine":193,"endColumn":9,"fileName":"editor.ts","functionName":"moveRight","argumentNames":["this"]}
+microcode_Editor_moveRight__P6280.info = {"start":5866,"length":164,"line":188,"column":8,"endLine":193,"endColumn":9,"fileName":"editor.ts","functionName":"moveRight","argumentNames":["this"]}
 
 function microcode_Editor_moveRight__P6280_mk(s) {
     checkStack(s.depth);
@@ -49460,7 +49460,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_queryRight__P3208.info = {"start":2698,"length":182,"line":91,"column":8,"endLine":96,"endColumn":9,"fileName":"cursor.ts","functionName":"queryRight","argumentNames":["this"]}
+microcode_Cursor_queryRight__P3208.info = {"start":2789,"length":187,"line":91,"column":8,"endLine":96,"endColumn":9,"fileName":"cursor.ts","functionName":"queryRight","argumentNames":["this"]}
 
 function microcode_Cursor_queryRight__P3208_mk(s) {
     checkStack(s.depth);
@@ -49551,7 +49551,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleDefn_clone__P3061.info = {"start":6277,"length":304,"line":225,"column":8,"endLine":232,"endColumn":9,"fileName":"language.ts","functionName":"clone","argumentNames":["this"]}
+microcode_RuleDefn_clone__P3061.info = {"start":6502,"length":311,"line":225,"column":8,"endLine":232,"endColumn":9,"fileName":"language.ts","functionName":"clone","argumentNames":["this"]}
 
 function microcode_RuleDefn_clone__P3061_mk(s) {
     checkStack(s.depth);
@@ -49608,7 +49608,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageDefn_clone__P3068.info = {"start":9307,"length":162,"line":310,"column":8,"endLine":314,"endColumn":9,"fileName":"language.ts","functionName":"clone","argumentNames":["this"]}
+microcode_PageDefn_clone__P3068.info = {"start":9617,"length":166,"line":310,"column":8,"endLine":314,"endColumn":9,"fileName":"language.ts","functionName":"clone","argumentNames":["this"]}
 
 function microcode_PageDefn_clone__P3068_mk(s) {
     checkStack(s.depth);
@@ -49648,7 +49648,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageDefn_clone_inline__P18792.info = {"start":9414,"length":20,"line":312,"column":40,"endLine":312,"endColumn":60,"fileName":"language.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageDefn_clone_inline__P18792.info = {"start":9726,"length":20,"line":312,"column":40,"endLine":312,"endColumn":60,"fileName":"language.ts","functionName":"inline","argumentNames":["rule"]}
 
 function microcode_PageDefn_clone_inline__P18792_mk(s) {
     checkStack(s.depth);
@@ -49702,7 +49702,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_ProgramDefn_clone__P3077.info = {"start":11288,"length":171,"line":377,"column":8,"endLine":381,"endColumn":9,"fileName":"language.ts","functionName":"clone","argumentNames":["this"]}
+microcode_ProgramDefn_clone__P3077.info = {"start":11665,"length":175,"line":377,"column":8,"endLine":381,"endColumn":9,"fileName":"language.ts","functionName":"clone","argumentNames":["this"]}
 
 function microcode_ProgramDefn_clone__P3077_mk(s) {
     checkStack(s.depth);
@@ -49742,7 +49742,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_ProgramDefn_clone_inline__P18806.info = {"start":11403,"length":20,"line":379,"column":41,"endLine":379,"endColumn":61,"fileName":"language.ts","functionName":"inline","argumentNames":["page"]}
+microcode_ProgramDefn_clone_inline__P18806.info = {"start":11782,"length":20,"line":379,"column":41,"endLine":379,"endColumn":61,"fileName":"language.ts","functionName":"inline","argumentNames":["page"]}
 
 function microcode_ProgramDefn_clone_inline__P18806_mk(s) {
     checkStack(s.depth);
@@ -49802,7 +49802,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_addButtons__P3735.info = {"start":2879,"length":160,"line":103,"column":8,"endLine":106,"endColumn":9,"fileName":"navigator.ts","functionName":"addButtons","argumentNames":["this","btns"]}
+microcode_QuadtreeNavigator_addButtons__P3735.info = {"start":2982,"length":163,"line":103,"column":8,"endLine":106,"endColumn":9,"fileName":"navigator.ts","functionName":"addButtons","argumentNames":["this","btns"]}
 
 function microcode_QuadtreeNavigator_addButtons__P3735_mk(s) {
     checkStack(s.depth);
@@ -49845,7 +49845,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_addButtons_inline__P18819.info = {"start":2998,"length":30,"line":105,"column":25,"endLine":105,"endColumn":55,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
+microcode_QuadtreeNavigator_addButtons_inline__P18819.info = {"start":3103,"length":30,"line":105,"column":25,"endLine":105,"endColumn":55,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
 
 function microcode_QuadtreeNavigator_addButtons_inline__P18819_mk(s) {
     checkStack(s.depth);
@@ -49900,7 +49900,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_addToQuadTree__P6451.info = {"start":2614,"length":147,"line":92,"column":8,"endLine":96,"endColumn":9,"fileName":"navigator.ts","functionName":"addToQuadTree","argumentNames":["this","btn"]}
+microcode_QuadtreeNavigator_addToQuadTree__P6451.info = {"start":2706,"length":151,"line":92,"column":8,"endLine":96,"endColumn":9,"fileName":"navigator.ts","functionName":"addToQuadTree","argumentNames":["this","btn"]}
 
 function microcode_QuadtreeNavigator_addToQuadTree__P6451_mk(s) {
     checkStack(s.depth);
@@ -49957,7 +49957,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Button_hitbox__P2863.info = {"start":1172,"length":150,"line":33,"column":8,"endLine":38,"endColumn":9,"fileName":"button.ts","functionName":"hitbox","argumentNames":["this"]}
+microcode_Button_hitbox__P2863.info = {"start":1205,"length":155,"line":33,"column":8,"endLine":38,"endColumn":9,"fileName":"button.ts","functionName":"hitbox","argumentNames":["this"]}
 microcode_Button_hitbox__P2863.isGetter = true;
 
 function microcode_Button_hitbox__P2863_mk(s) {
@@ -49999,7 +49999,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Sprite_hitbox__P3171.info = {"start":1077,"length":74,"line":33,"column":8,"endLine":35,"endColumn":9,"fileName":"sprite.ts","functionName":"hitbox","argumentNames":["this"]}
+microcode_Sprite_hitbox__P3171.info = {"start":1110,"length":76,"line":33,"column":8,"endLine":35,"endColumn":9,"fileName":"sprite.ts","functionName":"hitbox","argumentNames":["this"]}
 microcode_Sprite_hitbox__P3171.isGetter = true;
 
 function microcode_Sprite_hitbox__P3171_mk(s) {
@@ -50079,7 +50079,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Bounds_FromSprite__P3270.info = {"start":3544,"length":216,"line":123,"column":8,"endLine":127,"endColumn":9,"fileName":"bounds.ts","functionName":"FromSprite","argumentNames":["k"]}
+microcode_Bounds_FromSprite__P3270.info = {"start":3667,"length":220,"line":123,"column":8,"endLine":127,"endColumn":9,"fileName":"bounds.ts","functionName":"FromSprite","argumentNames":["k"]}
 
 function microcode_Bounds_FromSprite__P3270_mk(s) {
     checkStack(s.depth);
@@ -50215,7 +50215,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Bounds_FromImage__P3269.info = {"start":2824,"length":710,"line":100,"column":8,"endLine":121,"endColumn":9,"fileName":"bounds.ts","functionName":"FromImage","argumentNames":["i"]}
+microcode_Bounds_FromImage__P3269.info = {"start":2924,"length":731,"line":100,"column":8,"endLine":121,"endColumn":9,"fileName":"bounds.ts","functionName":"FromImage","argumentNames":["i"]}
 
 function microcode_Bounds_FromImage__P3269_mk(s) {
     checkStack(s.depth);
@@ -50279,7 +50279,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Bounds_translate__P3266.info = {"start":1675,"length":124,"line":57,"column":8,"endLine":61,"endColumn":9,"fileName":"bounds.ts","functionName":"translate","argumentNames":["this","p"]}
+microcode_Bounds_translate__P3266.info = {"start":1732,"length":128,"line":57,"column":8,"endLine":61,"endColumn":9,"fileName":"bounds.ts","functionName":"translate","argumentNames":["this","p"]}
 
 function microcode_Bounds_translate__P3266_mk(s) {
     checkStack(s.depth);
@@ -50460,7 +50460,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadTree_insert__P3247.info = {"start":4006,"length":1339,"line":131,"column":8,"endLine":165,"endColumn":9,"fileName":"quadtree.ts","functionName":"insert","argumentNames":["this","bounds","comp"]}
+microcode_QuadTree_insert__P3247.info = {"start":4137,"length":1373,"line":131,"column":8,"endLine":165,"endColumn":9,"fileName":"quadtree.ts","functionName":"insert","argumentNames":["this","bounds","comp"]}
 
 function microcode_QuadTree_insert__P3247_mk(s) {
     checkStack(s.depth);
@@ -50683,7 +50683,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadTree_trySplit__P6337.info = {"start":1026,"length":1925,"line":32,"column":8,"endLine":96,"endColumn":9,"fileName":"quadtree.ts","functionName":"trySplit","argumentNames":["this"]}
+microcode_QuadTree_trySplit__P6337.info = {"start":1058,"length":1989,"line":32,"column":8,"endLine":96,"endColumn":9,"fileName":"quadtree.ts","functionName":"trySplit","argumentNames":["this"]}
 
 function microcode_QuadTree_trySplit__P6337_mk(s) {
     checkStack(s.depth);
@@ -50733,7 +50733,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Node_constructor__P6336.info = {"start":122,"length":61,"line":4,"column":8,"endLine":4,"endColumn":69,"fileName":"quadtree.ts","functionName":"inline","argumentNames":["this","bounds","comp"]}
+microcode_Node_constructor__P6336.info = {"start":126,"length":61,"line":4,"column":8,"endLine":4,"endColumn":69,"fileName":"quadtree.ts","functionName":"inline","argumentNames":["this","bounds","comp"]}
 
 function microcode_Node_constructor__P6336_mk(s) {
     checkStack(s.depth);
@@ -50883,7 +50883,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadTree_getIndices__P6338.info = {"start":2961,"length":1035,"line":98,"column":8,"endLine":129,"endColumn":9,"fileName":"quadtree.ts","functionName":"getIndices","argumentNames":["this","bounds"]}
+microcode_QuadTree_getIndices__P6338.info = {"start":3059,"length":1066,"line":98,"column":8,"endLine":129,"endColumn":9,"fileName":"quadtree.ts","functionName":"getIndices","argumentNames":["this","bounds"]}
 
 function microcode_QuadTree_getIndices__P6338_mk(s) {
     checkStack(s.depth);
@@ -50935,7 +50935,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_clear__P3734.info = {"start":2771,"length":98,"line":98,"column":8,"endLine":101,"endColumn":9,"fileName":"navigator.ts","functionName":"clear","argumentNames":["this"]}
+microcode_QuadtreeNavigator_clear__P3734.info = {"start":2869,"length":101,"line":98,"column":8,"endLine":101,"endColumn":9,"fileName":"navigator.ts","functionName":"clear","argumentNames":["this"]}
 
 function microcode_QuadtreeNavigator_clear__P3734_mk(s) {
     checkStack(s.depth);
@@ -50977,7 +50977,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_shutdown__P3237.info = {"start":5255,"length":128,"line":181,"column":23,"endLine":185,"endColumn":9,"fileName":"home.ts","functionName":"shutdown","argumentNames":["this"]}
+microcode_Home_shutdown__P3237.info = {"start":5436,"length":132,"line":181,"column":23,"endLine":185,"endColumn":9,"fileName":"home.ts","functionName":"shutdown","argumentNames":["this"]}
 
 function microcode_Home_shutdown__P3237_mk(s) {
     checkStack(s.depth);
@@ -51051,7 +51051,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MusicEditor_serviceCommandArg__P6249.info = {"start":14144,"length":559,"line":426,"column":8,"endLine":437,"endColumn":9,"fileName":"tiles.ts","functionName":"serviceCommandArg","argumentNames":["this"]}
+microcode_MusicEditor_serviceCommandArg__P6249.info = {"start":14570,"length":570,"line":426,"column":8,"endLine":437,"endColumn":9,"fileName":"tiles.ts","functionName":"serviceCommandArg","argumentNames":["this"]}
 
 function microcode_MusicEditor_serviceCommandArg__P6249_mk(s) {
     checkStack(s.depth);
@@ -51136,7 +51136,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MusicEditor_getNewInstance__P6248.info = {"start":13978,"length":156,"line":420,"column":8,"endLine":424,"endColumn":9,"fileName":"tiles.ts","functionName":"getNewInstance","argumentNames":["this","field"]}
+microcode_MusicEditor_getNewInstance__P6248.info = {"start":14398,"length":160,"line":420,"column":8,"endLine":424,"endColumn":9,"fileName":"tiles.ts","functionName":"getNewInstance","argumentNames":["this","field"]}
 
 function microcode_MusicEditor_getNewInstance__P6248_mk(s) {
     checkStack(s.depth);
@@ -51177,7 +51177,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MusicEditor_getField__P6246.info = {"start":13822,"length":52,"line":412,"column":8,"endLine":414,"endColumn":9,"fileName":"tiles.ts","functionName":"getField","argumentNames":["this"]}
+microcode_MusicEditor_getField__P6246.info = {"start":14234,"length":54,"line":412,"column":8,"endLine":414,"endColumn":9,"fileName":"tiles.ts","functionName":"getField","argumentNames":["this"]}
 
 function microcode_MusicEditor_getField__P6246_mk(s) {
     checkStack(s.depth);
@@ -51252,7 +51252,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_IconEditor_serviceCommandArg__P6214.info = {"start":12484,"length":351,"line":369,"column":8,"endLine":379,"endColumn":9,"fileName":"tiles.ts","functionName":"serviceCommandArg","argumentNames":["this"]}
+microcode_IconEditor_serviceCommandArg__P6214.info = {"start":12853,"length":361,"line":369,"column":8,"endLine":379,"endColumn":9,"fileName":"tiles.ts","functionName":"serviceCommandArg","argumentNames":["this"]}
 
 function microcode_IconEditor_serviceCommandArg__P6214_mk(s) {
     checkStack(s.depth);
@@ -51315,7 +51315,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_IconEditor_getNewInstance__P6213.info = {"start":12366,"length":108,"line":365,"column":8,"endLine":367,"endColumn":9,"fileName":"tiles.ts","functionName":"getNewInstance","argumentNames":["this","field"]}
+microcode_IconEditor_getNewInstance__P6213.info = {"start":12731,"length":110,"line":365,"column":8,"endLine":367,"endColumn":9,"fileName":"tiles.ts","functionName":"getNewInstance","argumentNames":["this","field"]}
 
 function microcode_IconEditor_getNewInstance__P6213_mk(s) {
     checkStack(s.depth);
@@ -51354,7 +51354,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_IconEditor_getField__P6211.info = {"start":12210,"length":52,"line":357,"column":8,"endLine":359,"endColumn":9,"fileName":"tiles.ts","functionName":"getField","argumentNames":["this"]}
+microcode_IconEditor_getField__P6211.info = {"start":12567,"length":54,"line":357,"column":8,"endLine":359,"endColumn":9,"fileName":"tiles.ts","functionName":"getField","argumentNames":["this"]}
 
 function microcode_IconEditor_getField__P6211_mk(s) {
     checkStack(s.depth);
@@ -51399,7 +51399,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_EditorButton_destroy__P6263.info = {"start":550,"length":83,"line":20,"column":8,"endLine":23,"endColumn":9,"fileName":"editor.ts","functionName":"destroy","argumentNames":["this"]}
+microcode_EditorButton_destroy__P6263.info = {"start":570,"length":86,"line":20,"column":8,"endLine":23,"endColumn":9,"fileName":"editor.ts","functionName":"destroy","argumentNames":["this"]}
 
 function microcode_EditorButton_destroy__P6263_mk(s) {
     checkStack(s.depth);
@@ -51472,7 +51472,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_getOverlapping__P3740.info = {"start":8467,"length":543,"line":243,"column":8,"endLine":256,"endColumn":9,"fileName":"navigator.ts","functionName":"getOverlapping","argumentNames":["this","cursor"]}
+microcode_QuadtreeNavigator_getOverlapping__P3740.info = {"start":8710,"length":556,"line":243,"column":8,"endLine":256,"endColumn":9,"fileName":"navigator.ts","functionName":"getOverlapping","argumentNames":["this","cursor"]}
 
 function microcode_QuadtreeNavigator_getOverlapping__P3740_mk(s) {
     checkStack(s.depth);
@@ -51525,7 +51525,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-map_inline__P19334.info = {"start":8735,"length":30,"line":249,"column":24,"endLine":249,"endColumn":54,"fileName":"navigator.ts","functionName":"inline","argumentNames":["comp"]}
+map_inline__P19334.info = {"start":8984,"length":30,"line":249,"column":24,"endLine":249,"endColumn":54,"fileName":"navigator.ts","functionName":"inline","argumentNames":["comp"]}
 
 function map_inline__P19334_mk(s) {
     checkStack(s.depth);
@@ -51559,7 +51559,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filter_inline__P19339.info = {"start":8788,"length":22,"line":250,"column":21,"endLine":250,"endColumn":43,"fileName":"navigator.ts","functionName":"inline","argumentNames":["comp"]}
+filter_inline__P19339.info = {"start":9038,"length":22,"line":250,"column":21,"endLine":250,"endColumn":43,"fileName":"navigator.ts","functionName":"inline","argumentNames":["comp"]}
 
 function filter_inline__P19339_mk(s) {
     checkStack(s.depth);
@@ -51601,7 +51601,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-btns_inline__P19326.info = {"start":8886,"length":89,"line":252,"column":24,"endLine":254,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
+btns_inline__P19326.info = {"start":9138,"length":91,"line":252,"column":24,"endLine":254,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
 
 function btns_inline__P19326_mk(s) {
     checkStack(s.depth);
@@ -51781,7 +51781,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Bounds_Intersects__P3267.info = {"start":1809,"length":772,"line":63,"column":8,"endLine":89,"endColumn":9,"fileName":"bounds.ts","functionName":"Intersects","argumentNames":["a","b"]}
+microcode_Bounds_Intersects__P3267.info = {"start":1872,"length":798,"line":63,"column":8,"endLine":89,"endColumn":9,"fileName":"bounds.ts","functionName":"Intersects","argumentNames":["a","b"]}
 
 function microcode_Bounds_Intersects__P3267_mk(s) {
     checkStack(s.depth);
@@ -51859,7 +51859,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Bounds_bottomRight__P3262.info = {"start":720,"length":89,"line":23,"column":8,"endLine":25,"endColumn":9,"fileName":"bounds.ts","functionName":"bottomRight","argumentNames":["this"]}
+microcode_Bounds_bottomRight__P3262.info = {"start":743,"length":91,"line":23,"column":8,"endLine":25,"endColumn":9,"fileName":"bounds.ts","functionName":"bottomRight","argumentNames":["this"]}
 microcode_Bounds_bottomRight__P3262.isGetter = true;
 
 function microcode_Bounds_bottomRight__P3262_mk(s) {
@@ -51915,7 +51915,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Bounds_bottomLeft__P3261.info = {"start":624,"length":87,"line":20,"column":8,"endLine":22,"endColumn":9,"fileName":"bounds.ts","functionName":"bottomLeft","argumentNames":["this"]}
+microcode_Bounds_bottomLeft__P3261.info = {"start":644,"length":89,"line":20,"column":8,"endLine":22,"endColumn":9,"fileName":"bounds.ts","functionName":"bottomLeft","argumentNames":["this"]}
 microcode_Bounds_bottomLeft__P3261.isGetter = true;
 
 function microcode_Bounds_bottomLeft__P3261_mk(s) {
@@ -51969,7 +51969,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Bounds_topRight__P3260.info = {"start":532,"length":83,"line":17,"column":8,"endLine":19,"endColumn":9,"fileName":"bounds.ts","functionName":"topRight","argumentNames":["this"]}
+microcode_Bounds_topRight__P3260.info = {"start":549,"length":85,"line":17,"column":8,"endLine":19,"endColumn":9,"fileName":"bounds.ts","functionName":"topRight","argumentNames":["this"]}
 microcode_Bounds_topRight__P3260.isGetter = true;
 
 function microcode_Bounds_topRight__P3260_mk(s) {
@@ -52019,7 +52019,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Bounds_topLeft__P3259.info = {"start":442,"length":81,"line":14,"column":8,"endLine":16,"endColumn":9,"fileName":"bounds.ts","functionName":"topLeft","argumentNames":["this"]}
+microcode_Bounds_topLeft__P3259.info = {"start":456,"length":83,"line":14,"column":8,"endLine":16,"endColumn":9,"fileName":"bounds.ts","functionName":"topLeft","argumentNames":["this"]}
 microcode_Bounds_topLeft__P3259.isGetter = true;
 
 function microcode_Bounds_topLeft__P3259_mk(s) {
@@ -52110,7 +52110,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Bounds_contains__P3268.info = {"start":2591,"length":223,"line":91,"column":8,"endLine":98,"endColumn":9,"fileName":"bounds.ts","functionName":"contains","argumentNames":["this","p"]}
+microcode_Bounds_contains__P3268.info = {"start":2682,"length":230,"line":91,"column":8,"endLine":98,"endColumn":9,"fileName":"bounds.ts","functionName":"contains","argumentNames":["this","p"]}
 
 function microcode_Bounds_contains__P3268_mk(s) {
     checkStack(s.depth);
@@ -52239,7 +52239,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadTree_query__P3248.info = {"start":5525,"length":576,"line":171,"column":8,"endLine":187,"endColumn":9,"fileName":"quadtree.ts","functionName":"query","argumentNames":["this","bounds"]}
+microcode_QuadTree_query__P3248.info = {"start":5696,"length":592,"line":171,"column":8,"endLine":187,"endColumn":9,"fileName":"quadtree.ts","functionName":"query","argumentNames":["this","bounds"]}
 
 function microcode_QuadTree_query__P3248_mk(s) {
     checkStack(s.depth);
@@ -52284,7 +52284,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-comps_inline__P19435.info = {"start":5621,"length":17,"line":172,"column":52,"endLine":172,"endColumn":69,"fileName":"quadtree.ts","functionName":"inline","argumentNames":["node"]}
+comps_inline__P19435.info = {"start":5793,"length":17,"line":172,"column":52,"endLine":172,"endColumn":69,"fileName":"quadtree.ts","functionName":"inline","argumentNames":["node"]}
 
 function comps_inline__P19435_mk(s) {
     checkStack(s.depth);
@@ -52321,7 +52321,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadTree_query_inline__P19468.info = {"start":6019,"length":45,"line":184,"column":33,"endLine":184,"endColumn":78,"fileName":"quadtree.ts","functionName":"inline","argumentNames":["comp","index"]}
+microcode_QuadTree_query_inline__P19468.info = {"start":6203,"length":45,"line":184,"column":33,"endLine":184,"endColumn":78,"fileName":"quadtree.ts","functionName":"inline","argumentNames":["comp","index"]}
 
 function microcode_QuadTree_query_inline__P19468_mk(s) {
     checkStack(s.depth);
@@ -52456,7 +52456,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_Cursor_hitbox__P3201.info = {"start":446,"length":101,"line":16,"column":8,"endLine":18,"endColumn":9,"fileName":"cursor.ts","functionName":"hitbox","argumentNames":["this"]}
+microcode_Cursor_hitbox__P3201.info = {"start":462,"length":103,"line":16,"column":8,"endLine":18,"endColumn":9,"fileName":"cursor.ts","functionName":"hitbox","argumentNames":["this"]}
 microcode_Cursor_hitbox__P3201.isGetter = true;
 
 function microcode_Cursor_hitbox__P3201_mk(s) {
@@ -52522,7 +52522,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Bounds_Translate__P3265.info = {"start":1409,"length":256,"line":48,"column":8,"endLine":55,"endColumn":9,"fileName":"bounds.ts","functionName":"Translate","argumentNames":["box","p"]}
+microcode_Bounds_Translate__P3265.info = {"start":1457,"length":263,"line":48,"column":8,"endLine":55,"endColumn":9,"fileName":"bounds.ts","functionName":"Translate","argumentNames":["box","p"]}
 
 function microcode_Bounds_Translate__P3265_mk(s) {
     checkStack(s.depth);
@@ -52585,7 +52585,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_queryRight__P3739.info = {"start":5838,"length":921,"line":177,"column":8,"endLine":198,"endColumn":9,"fileName":"navigator.ts","functionName":"queryRight","argumentNames":["this","cursor"]}
+microcode_QuadtreeNavigator_queryRight__P3739.info = {"start":6015,"length":942,"line":177,"column":8,"endLine":198,"endColumn":9,"fileName":"navigator.ts","functionName":"queryRight","argumentNames":["this","cursor"]}
 
 function microcode_QuadtreeNavigator_queryRight__P3739_mk(s) {
     checkStack(s.depth);
@@ -52658,7 +52658,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-boundsFn_inline__P19526.info = {"start":5948,"length":286,"line":179,"column":26,"endLine":186,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["dist"]}
+boundsFn_inline__P19526.info = {"start":6127,"length":293,"line":179,"column":26,"endLine":186,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["dist"]}
 
 function boundsFn_inline__P19526_mk(s) {
     checkStack(s.depth);
@@ -52770,7 +52770,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filterFn_inline__P19543.info = {"start":6262,"length":471,"line":187,"column":26,"endLine":196,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn","dist"]}
+filterFn_inline__P19543.info = {"start":6449,"length":480,"line":187,"column":26,"endLine":196,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn","dist"]}
 
 function filterFn_inline__P19543_mk(s) {
     checkStack(s.depth);
@@ -52933,7 +52933,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_query__P6452.info = {"start":6769,"length":1688,"line":200,"column":8,"endLine":241,"endColumn":9,"fileName":"navigator.ts","functionName":"query","argumentNames":["this","cursor","opts"]}
+microcode_QuadtreeNavigator_query__P6452.info = {"start":6969,"length":1729,"line":200,"column":8,"endLine":241,"endColumn":9,"fileName":"navigator.ts","functionName":"query","argumentNames":["this","cursor","opts"]}
 
 function microcode_QuadtreeNavigator_query__P6452_mk(s) {
     checkStack(s.depth);
@@ -52990,7 +52990,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-map_inline__P19601.info = {"start":7351,"length":30,"line":215,"column":28,"endLine":215,"endColumn":58,"fileName":"navigator.ts","functionName":"inline","argumentNames":["comp"]}
+map_inline__P19601.info = {"start":7566,"length":30,"line":215,"column":28,"endLine":215,"endColumn":58,"fileName":"navigator.ts","functionName":"inline","argumentNames":["comp"]}
 
 function map_inline__P19601_mk(s) {
     checkStack(s.depth);
@@ -53024,7 +53024,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_query_inline__P19606.info = {"start":7408,"length":22,"line":216,"column":25,"endLine":216,"endColumn":47,"fileName":"navigator.ts","functionName":"inline","argumentNames":["comp"]}
+microcode_QuadtreeNavigator_query_inline__P19606.info = {"start":7624,"length":22,"line":216,"column":25,"endLine":216,"endColumn":47,"fileName":"navigator.ts","functionName":"inline","argumentNames":["comp"]}
 
 function microcode_QuadtreeNavigator_query_inline__P19606_mk(s) {
     checkStack(s.depth);
@@ -53058,7 +53058,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filter_inline__P19614.info = {"start":7562,"length":35,"line":219,"column":28,"endLine":219,"endColumn":63,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
+filter_inline__P19614.info = {"start":7781,"length":35,"line":219,"column":28,"endLine":219,"endColumn":63,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
 
 function filter_inline__P19614_mk(s) {
     checkStack(s.depth);
@@ -53106,7 +53106,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-sort_inline__P19622.info = {"start":7677,"length":31,"line":221,"column":28,"endLine":221,"endColumn":59,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
+sort_inline__P19622.info = {"start":7898,"length":31,"line":221,"column":28,"endLine":221,"endColumn":59,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
 
 function sort_inline__P19622_mk(s) {
     checkStack(s.depth);
@@ -53182,7 +53182,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_query_inline__P19629.info = {"start":7789,"length":336,"line":223,"column":26,"endLine":230,"endColumn":21,"fileName":"navigator.ts","functionName":"inline","argumentNames":["a","b"]}
+microcode_QuadtreeNavigator_query_inline__P19629.info = {"start":8012,"length":343,"line":223,"column":26,"endLine":230,"endColumn":21,"fileName":"navigator.ts","functionName":"inline","argumentNames":["a","b"]}
 
 function microcode_QuadtreeNavigator_query_inline__P19629_mk(s) {
     checkStack(s.depth);
@@ -53242,7 +53242,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Vec2_DistSq__P3321.info = {"start":1482,"length":155,"line":63,"column":8,"endLine":67,"endColumn":9,"fileName":"math.ts","functionName":"DistSq","argumentNames":["a","b"]}
+microcode_Vec2_DistSq__P3321.info = {"start":1545,"length":159,"line":63,"column":8,"endLine":67,"endColumn":9,"fileName":"math.ts","functionName":"DistSq","argumentNames":["a","b"]}
 
 function microcode_Vec2_DistSq__P3321_mk(s) {
     checkStack(s.depth);
@@ -53298,7 +53298,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_queryLeft__P3738.info = {"start":4906,"length":922,"line":154,"column":8,"endLine":175,"endColumn":9,"fileName":"navigator.ts","functionName":"queryLeft","argumentNames":["this","cursor"]}
+microcode_QuadtreeNavigator_queryLeft__P3738.info = {"start":5060,"length":943,"line":154,"column":8,"endLine":175,"endColumn":9,"fileName":"navigator.ts","functionName":"queryLeft","argumentNames":["this","cursor"]}
 
 function microcode_QuadtreeNavigator_queryLeft__P3738_mk(s) {
     checkStack(s.depth);
@@ -53373,7 +53373,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-boundsFn_inline__P19688.info = {"start":5015,"length":293,"line":156,"column":26,"endLine":163,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["dist"]}
+boundsFn_inline__P19688.info = {"start":5171,"length":300,"line":156,"column":26,"endLine":163,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["dist"]}
 
 function boundsFn_inline__P19688_mk(s) {
     checkStack(s.depth);
@@ -53486,7 +53486,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filterFn_inline__P19707.info = {"start":5336,"length":466,"line":164,"column":26,"endLine":173,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn","dist"]}
+filterFn_inline__P19707.info = {"start":5500,"length":475,"line":164,"column":26,"endLine":173,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn","dist"]}
 
 function filterFn_inline__P19707_mk(s) {
     checkStack(s.depth);
@@ -53558,7 +53558,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_queryDown__P3737.info = {"start":3978,"length":918,"line":131,"column":8,"endLine":152,"endColumn":9,"fileName":"navigator.ts","functionName":"queryDown","argumentNames":["this","cursor"]}
+microcode_QuadtreeNavigator_queryDown__P3737.info = {"start":4109,"length":939,"line":131,"column":8,"endLine":152,"endColumn":9,"fileName":"navigator.ts","functionName":"queryDown","argumentNames":["this","cursor"]}
 
 function microcode_QuadtreeNavigator_queryDown__P3737_mk(s) {
     checkStack(s.depth);
@@ -53631,7 +53631,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-boundsFn_inline__P19746.info = {"start":4087,"length":286,"line":133,"column":26,"endLine":140,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["dist"]}
+boundsFn_inline__P19746.info = {"start":4220,"length":293,"line":133,"column":26,"endLine":140,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["dist"]}
 
 function boundsFn_inline__P19746_mk(s) {
     checkStack(s.depth);
@@ -53743,7 +53743,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filterFn_inline__P19763.info = {"start":4401,"length":469,"line":141,"column":26,"endLine":150,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn","dist"]}
+filterFn_inline__P19763.info = {"start":4542,"length":478,"line":141,"column":26,"endLine":150,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn","dist"]}
 
 function filterFn_inline__P19763_mk(s) {
     checkStack(s.depth);
@@ -53815,7 +53815,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_QuadtreeNavigator_queryUp__P3736.info = {"start":3049,"length":919,"line":108,"column":8,"endLine":129,"endColumn":9,"fileName":"navigator.ts","functionName":"queryUp","argumentNames":["this","cursor"]}
+microcode_QuadtreeNavigator_queryUp__P3736.info = {"start":3157,"length":940,"line":108,"column":8,"endLine":129,"endColumn":9,"fileName":"navigator.ts","functionName":"queryUp","argumentNames":["this","cursor"]}
 
 function microcode_QuadtreeNavigator_queryUp__P3736_mk(s) {
     checkStack(s.depth);
@@ -53890,7 +53890,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-boundsFn_inline__P19802.info = {"start":3156,"length":293,"line":110,"column":26,"endLine":117,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["dist"]}
+boundsFn_inline__P19802.info = {"start":3266,"length":300,"line":110,"column":26,"endLine":117,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["dist"]}
 
 function boundsFn_inline__P19802_mk(s) {
     checkStack(s.depth);
@@ -54003,7 +54003,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filterFn_inline__P19821.info = {"start":3477,"length":465,"line":118,"column":26,"endLine":127,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn","dist"]}
+filterFn_inline__P19821.info = {"start":3595,"length":474,"line":118,"column":26,"endLine":127,"endColumn":17,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn","dist"]}
 
 function filterFn_inline__P19821_mk(s) {
     checkStack(s.depth);
@@ -54058,7 +54058,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Button_update__P2876.info = {"start":5478,"length":183,"line":184,"column":23,"endLine":191,"endColumn":9,"fileName":"button.ts","functionName":"update","argumentNames":["this"]}
+microcode_Button_update__P2876.info = {"start":5662,"length":190,"line":184,"column":23,"endLine":191,"endColumn":9,"fileName":"button.ts","functionName":"update","argumentNames":["this"]}
 
 function microcode_Button_update__P2876_mk(s) {
     checkStack(s.depth);
@@ -54107,7 +54107,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MusicEditor_getIcon__P6247.info = {"start":13884,"length":84,"line":416,"column":8,"endLine":418,"endColumn":9,"fileName":"tiles.ts","functionName":"getIcon","argumentNames":["this"]}
+microcode_MusicEditor_getIcon__P6247.info = {"start":14300,"length":86,"line":416,"column":8,"endLine":418,"endColumn":9,"fileName":"tiles.ts","functionName":"getIcon","argumentNames":["this"]}
 
 function microcode_MusicEditor_getIcon__P6247_mk(s) {
     checkStack(s.depth);
@@ -54157,7 +54157,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_IconEditor_getIcon__P6212.info = {"start":12272,"length":84,"line":361,"column":8,"endLine":363,"endColumn":9,"fileName":"tiles.ts","functionName":"getIcon","argumentNames":["this"]}
+microcode_IconEditor_getIcon__P6212.info = {"start":12633,"length":86,"line":361,"column":8,"endLine":363,"endColumn":9,"fileName":"tiles.ts","functionName":"getIcon","argumentNames":["this"]}
 
 function microcode_IconEditor_getIcon__P6212_mk(s) {
     checkStack(s.depth);
@@ -54393,7 +54393,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_FilterModifierBase_isCompatibleWith__P3042.info = {"start":4048,"length":584,"line":146,"column":8,"endLine":162,"endColumn":9,"fileName":"language.ts","functionName":"isCompatibleWith","argumentNames":["this","c"]}
+microcode_FilterModifierBase_isCompatibleWith__P3042.info = {"start":4194,"length":600,"line":146,"column":8,"endLine":162,"endColumn":9,"fileName":"language.ts","functionName":"isCompatibleWith","argumentNames":["this","c"]}
 
 function microcode_FilterModifierBase_isCompatibleWith__P3042_mk(s) {
     checkStack(s.depth);
@@ -54446,7 +54446,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-allows_inline__P19878.info = {"start":4217,"length":28,"line":150,"column":40,"endLine":150,"endColumn":68,"fileName":"language.ts","functionName":"inline","argumentNames":["cat"]}
+allows_inline__P19878.info = {"start":4367,"length":28,"line":150,"column":40,"endLine":150,"endColumn":68,"fileName":"language.ts","functionName":"inline","argumentNames":["cat"]}
 
 function allows_inline__P19878_mk(s) {
     checkStack(s.depth);
@@ -54481,7 +54481,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-allows_inline__P19892.info = {"start":4285,"length":23,"line":151,"column":35,"endLine":151,"endColumn":58,"fileName":"language.ts","functionName":"inline","argumentNames":["tid"]}
+allows_inline__P19892.info = {"start":4436,"length":23,"line":151,"column":35,"endLine":151,"endColumn":58,"fileName":"language.ts","functionName":"inline","argumentNames":["tid"]}
 
 function allows_inline__P19892_mk(s) {
     checkStack(s.depth);
@@ -54516,7 +54516,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-disallows_inline__P19904.info = {"start":4423,"length":28,"line":155,"column":44,"endLine":155,"endColumn":72,"fileName":"language.ts","functionName":"inline","argumentNames":["cat"]}
+disallows_inline__P19904.info = {"start":4578,"length":28,"line":155,"column":44,"endLine":155,"endColumn":72,"fileName":"language.ts","functionName":"inline","argumentNames":["cat"]}
 
 function disallows_inline__P19904_mk(s) {
     checkStack(s.depth);
@@ -54551,7 +54551,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-disallows_inline__P19916.info = {"start":4495,"length":23,"line":156,"column":39,"endLine":156,"endColumn":62,"fileName":"language.ts","functionName":"inline","argumentNames":["tid"]}
+disallows_inline__P19916.info = {"start":4651,"length":23,"line":156,"column":39,"endLine":156,"endColumn":62,"fileName":"language.ts","functionName":"inline","argumentNames":["tid"]}
 
 function disallows_inline__P19916_mk(s) {
     checkStack(s.depth);
