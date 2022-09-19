@@ -666,11 +666,11 @@ namespace microcode {
             const btns: Button[] = []
             btns.push(this.handleBtn)
             this.rule["sensors"].forEach(b => btns.push(b))
-            btns.push(this.whenInsertBtn)
             this.rule["filters"].forEach(b => btns.push(b))
-            btns.push(this.doInsertBtn)
+            btns.push(this.whenInsertBtn)
             this.rule["actuators"].forEach(b => btns.push(b))
             this.rule["modifiers"].forEach(b => btns.push(b))
+            btns.push(this.doInsertBtn)
             this.editor.addButtons(btns)
         }
 
