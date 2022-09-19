@@ -97,7 +97,7 @@ namespace microcode {
             })
         }
 
-        private switchToPage(index: number, updateCursor: boolean = true) {
+        private switchToPage(index: number, initCursor: boolean = true) {
             if (index < 0 || index >= this.progdef.pages.length) {
                 return
             }
@@ -116,13 +116,22 @@ namespace microcode {
                 Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2
             )
             this.rebuildNavigator()
-            if (updateCursor) this.navigator.initialCursor(this.cursor)
+            if (initCursor) {
+                const btn = this.navigator.initialCursor(this.cursor)
+                if (btn)
+                    this.cursor.snapTo(
+                        btn.xfrm.worldPos.x,
+                        btn.xfrm.worldPos.y,
+                        btn.ariaId
+                    )
+            }
         }
 
         private scrollAndMove(dir: CursorDir) {
             const target = this.cursor.move(dir)
 
-            /*
+            if (!target) return
+
             const occ = target.occlusions(
                 new Bounds({
                     left: Screen.LEFT_EDGE,
@@ -153,13 +162,14 @@ namespace microcode {
                     })
                 )
                 this.scrollanim.start()
-                /*
                 const dest = new Vec2(
                     target.xfrm.worldPos.x + xocc,
                     target.xfrm.worldPos.y + yocc
                 )
-                }*/
-            // this.cursor.moveTo(dest, target.ariaId)
+                this.cursor.moveTo(dest, target.ariaId)
+            } else {
+                this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
+            }
         }
 
         /* override */ startup() {

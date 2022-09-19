@@ -23,7 +23,7 @@ namespace microcode {
         addButtons: (btns: Button[]) => void
         move: (cursor: Cursor, dir: CursorDir) => Button
         getOverlapping: (cursor: Cursor) => Button[]
-        initialCursor: (cursor: Cursor) => void
+        initialCursor: (cursor: Cursor) => Button
     }
 
     export class RowNavigator implements INavigator {
@@ -44,7 +44,7 @@ namespace microcode {
         }
 
         public move(cursor: Cursor, dir: CursorDir) {
-            console.log(`move ${dir}`)
+            this.makeGood()
             switch (dir) {
                 case CursorDir.Up: {
                     if (this.row == 0) return undefined
@@ -80,7 +80,7 @@ namespace microcode {
                     break
                 }
             }
-            return this.moveTo(cursor)
+            return this.buttonGroups[this.row][this.col]
         }
 
         public getOverlapping(cursor: Cursor): Button[] {
@@ -94,19 +94,10 @@ namespace microcode {
                 this.col = this.buttonGroups[this.row].length - 1
         }
 
-        protected moveTo(cursor: Cursor) {
-            this.makeGood()
-            const btn = this.buttonGroups[this.row][this.col]
-            if (btn) {
-                cursor.moveTo(btn.xfrm.worldPos, btn.ariaId)
-            }
-            return btn
-        }
-
         public initialCursor(cursor: Cursor) {
             this.row = 0
             this.col = 0
-            this.moveTo(cursor)
+            return this.buttonGroups[0][0]
         }
     }
 
@@ -128,13 +119,12 @@ namespace microcode {
             this.rules.push(rule)
         }
 
-        protected moveTo(cursor: Cursor) {
-            const ret = super.moveTo(cursor)
+        public move(cursor: Cursor, dir: CursorDir) {
+            const ret = super.move(cursor, dir)
             if (ret && this.row > 0 && this.col == 0) {
                 // special case for beginning of rule
                 const ruleDef = this.rules[this.row - 1]
                 // PELI: ACCESSIBILITY
-                console.log("PELI and ALEX")
                 // WHEN
                 ruleDef.sensors.forEach(tile => tile.tid)
                 ruleDef.filters.forEach(tile => tile.tid)

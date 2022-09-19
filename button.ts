@@ -27,8 +27,13 @@ namespace microcode {
             return this.back ? this.back.height : this.icon.height
         }
 
-        public get ariaId() : string {
-            return this._ariaId || (typeof this.iconId === "string" ? <string>this.iconId : this.label)
+        public get ariaId(): string {
+            return (
+                this._ariaId ||
+                (typeof this.iconId === "string"
+                    ? <string>this.iconId
+                    : this.label)
+            )
         }
 
         public get hitbox() {
@@ -131,6 +136,7 @@ namespace microcode {
             if (this.back) {
                 return this.back.occlusions(bounds)
             }
+            console.log(`this.icon = ${this.icon}`)
             return this.icon.occlusions(bounds)
         }
 

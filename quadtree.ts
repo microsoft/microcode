@@ -12,12 +12,7 @@ namespace microcode {
         }
 
         public initialCursor(cursor: Cursor) {
-            if (this.firstBtn)
-                cursor.snapTo(
-                    this.firstBtn.xfrm.worldPos.x,
-                    this.firstBtn.xfrm.worldPos.y,
-                    this.firstBtn.ariaId
-                )
+            return this.firstBtn
         }
 
         private initializeQuadtree() {
