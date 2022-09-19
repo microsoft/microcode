@@ -241,5 +241,5 @@ namespace microcode {
     const HEADER = 16
     const LABEL = 14
     const TRAY = 16
-    const MAX_PER_ROW = 7
+    const MAX_PER_ROW = 5
 }

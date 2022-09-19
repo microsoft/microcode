@@ -1,6 +1,6 @@
 {
     "name": "microcode",
-    "version": "1.0.10",
+    "version": "1.0.17",
     "description": "Coding microcontrollers using Arcade",
     "dependencies": {
         "game---light": "*",
@@ -36,7 +36,6 @@
         "jacs_opwriter.ts",
         "jacs_topwriter.ts",
         "version.ts",
-        "language.md",
         "fieldeditors.ts",
         "navigator.ts"
     ],
