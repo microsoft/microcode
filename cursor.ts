@@ -6,6 +6,7 @@ namespace microcode {
         Down,
         Left,
         Right,
+        Back,
     }
 
     export class Cursor extends Component implements IPlaceable {

@@ -31,7 +31,6 @@ namespace microcode {
         private row: number
         private col: number
 
-        //             this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
         constructor() {
             this.buttonGroups = []
         }
@@ -43,12 +42,59 @@ namespace microcode {
         public addButtons(btns: Button[]) {
             this.buttonGroups.push(btns)
         }
-        public move(cursor: Cursor, dir: CursorDir) {}
+
+        public move(cursor: Cursor, dir: CursorDir) {
+            switch (dir) {
+                case CursorDir.Up: {
+                    if (this.row == 0) return
+                    this.row--
+                    this.col = 0
+                    break
+                }
+                case CursorDir.Down: {
+                    if (this.row == this.buttonGroups.length - 1) return
+                    this.row++
+                    this.col = 0
+                    break
+                }
+
+                case CursorDir.Left: {
+                    if (this.col == 0) return
+                    this.col--
+                    break
+                }
+
+                case CursorDir.Right: {
+                    if (this.col == this.buttonGroups[this.row].length - 1)
+                        return
+                    this.col++
+                    break
+                }
+
+                case CursorDir.Back: {
+                    if (this.col > 0) this.col = 0
+                    else if (this.row > 0) this.row--
+                    break
+                }
+            }
+            this.moveTo(cursor)
+        }
 
         public getOverlapping(cursor: Cursor): Button[] {
             return []
         }
 
-        public initialCursor(cursor: Cursor) {}
+        private moveTo(cursor: Cursor) {
+            const btn = this.buttonGroups[this.row][this.col]
+            if (btn) {
+                cursor.moveTo(btn.xfrm.worldPos, btn.ariaId)
+            }
+        }
+
+        public initialCursor(cursor: Cursor) {
+            this.row = 0
+            this.col = 0
+            this.moveTo(cursor)
+        }
     }
 }
