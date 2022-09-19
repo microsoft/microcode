@@ -272,6 +272,7 @@ namespace microcode {
         }
 
         /* override */ draw() {
+            Screen.drawTransparentImage(editorBackground, Screen.LEFT_EDGE, Screen.TOP_EDGE);
             if (this.pageEditor) {
                 this.pageEditor.draw()
             }
@@ -689,7 +690,6 @@ namespace microcode {
         }
 
         /* override */ draw() {
-            Screen.drawTransparentImage(editorBackground, Screen.LEFT_EDGE, Screen.TOP_EDGE);
             this.whenLbl.draw()
             this.doLbl.draw()
             this.handleBtn.draw()
