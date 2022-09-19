@@ -9,6 +9,16 @@ const inIFrame = (() => {
 })()
 
 let bus
+let connectEl
+const refreshUI = () => {
+    connectEl.innerText = bus.connected
+        ? "micro:bit connected 🎉"
+        : bus.disconnected
+        ? "micro:bit connect"
+        : "micro:bit connecting 👀"
+    console.log(connectEl.innerText)
+}
+
 // to support downloading directly to device
 if (!inIFrame)
     document.addEventListener("DOMContentLoaded", () => {
@@ -19,23 +29,15 @@ if (!inIFrame)
             console.log(`jacdac: init...`)
             connectEl = document.createElement("button")
             connectEl.id = "connectbtn"
-            const onConnectionChange = () => {
-                connectEl.innerText = bus.connected
-                    ? "micro:bit connected 🎉"
-                    : bus.disconnected
-                    ? "micro:bit connect"
-                    : "micro:bit connecting 👀"
-                console.log(connectEl.innerText)
-            }
             // create WebUSB bus
             bus = jacdac.createWebBus()
             // track connection state and update button
-            bus.on(jacdac.CONNECTION_STATE, onConnectionChange)
+            bus.on(jacdac.CONNECTION_STATE, refreshUI)
             // connect must be triggered by a user interaction
             connectEl.onclick = async () =>
                 bus.connected ? bus.disconnect() : bus.connect()
             document.body.append(connectEl)
-            onConnectionChange()
+            refreshUI()
         }
         document.body.append(script)
     })
@@ -58,11 +60,18 @@ addSimMessageHandler("jacscript", async data => {
         })
         for (const service of services) {
             console.debug(`jacscript: deploying to ${service}`)
-            await jacdac.OutPipe.sendBytes(
-                service,
-                jacdac.JacscriptManagerCmd.DeployBytecode,
-                data
-            )
+            try {
+                connectEl.innerText = "micro:bit downloading..."
+                await jacdac.OutPipe.sendBytes(
+                    service,
+                    jacdac.JacscriptManagerCmd.DeployBytecode,
+                    data
+                )
+            } catch {
+                connectEl.innerText = "micro:bit download failed :("
+            } finally {
+                refreshUI()
+            }
         }
     }
 })
