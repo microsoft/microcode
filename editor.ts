@@ -272,16 +272,10 @@ namespace microcode {
         }
 
         /* override */ draw() {
+            Screen.drawTransparentImage(editorBackground, Screen.LEFT_EDGE, Screen.TOP_EDGE);
             if (this.pageEditor) {
                 this.pageEditor.draw()
             }
-            Screen.fillRect(
-                Screen.LEFT_EDGE,
-                Screen.TOP_EDGE,
-                Screen.WIDTH,
-                TOOLBAR_HEIGHT,
-                TOOLBAR_COLOR
-            )
             this.pageBtn.draw()
             this.prevPageBtn.draw()
             this.nextPageBtn.draw()
