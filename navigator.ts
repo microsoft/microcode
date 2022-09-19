@@ -44,6 +44,46 @@ namespace microcode {
             this.buttonGroups.push(btns)
         }
 
+        /*
+
+         const occ = target.occlusions(
+                new Bounds({
+                    left: Screen.LEFT_EDGE,
+                    top: Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2,
+                    width: Screen.WIDTH,
+                    height: Screen.HEIGHT - (TOOLBAR_HEIGHT + 2),
+                })
+            )
+            if (occ.has) {
+                if (this.scrollanim.playing) {
+                    return
+                }
+                const xocc = occ.left ? occ.left : -occ.right
+                const yocc = occ.top ? occ.top : -occ.bottom
+                const endValue = Vec2.TranslateToRef(
+                    this.scrollroot.xfrm.localPos,
+                    new Vec2(xocc, yocc),
+                    new Vec2()
+                )
+                this.scrollanim.clearFrames()
+                this.scrollanim.addFrame(
+                    new EaseFrame({
+                        duration: 0.05,
+                        //curve: curves.easeOut(curves.easing.sq2),
+                        curve: curves.linear(),
+                        startValue: this.scrollroot.xfrm.localPos,
+                        endValue,
+                    })
+                )
+                this.scrollanim.start()
+                const dest = new Vec2(
+                    target.xfrm.worldPos.x + xocc,
+                    target.xfrm.worldPos.y + yocc
+                )
+                this.cursor.moveTo(dest, target.ariaId)
+
+                */
+        
         public move(cursor: Cursor, dir: CursorDir) {
             switch (dir) {
                 case CursorDir.Up: {
