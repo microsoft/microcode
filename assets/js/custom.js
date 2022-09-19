@@ -33,6 +33,7 @@ if (!inIFrame)
             bus = jacdac.createWebBus()
             // track connection state and update button
             bus.on(jacdac.CONNECTION_STATE, refreshUI)
+            bus.on(jacdac.ERROR, e => console.error(e))
             // connect must be triggered by a user interaction
             connectEl.onclick = async () =>
                 bus.connected ? bus.disconnect() : bus.connect()
@@ -43,8 +44,17 @@ if (!inIFrame)
     })
 
 // send jacscript bytecode to jacdac dashboard
+let deployDebouncer = false
 addSimMessageHandler("jacscript", async data => {
     console.debug(`jacscript bytecode: ${data.length} bytes`)
+
+    // lock deploy
+    if (deployDebouncer) {
+        console.debug(`jacscript deploy cancelled, dup deploy`)
+        return
+    }
+    deployDebouncer = true
+
     if (inIFrame)
         window.parent.postMessage(
             {
@@ -58,6 +68,7 @@ addSimMessageHandler("jacscript", async data => {
         const services = bus.services({
             serviceClass: jacdac.SRV_JACSCRIPT_MANAGER,
         })
+        console.log({ services })
         for (const service of services) {
             console.debug(`jacscript: deploying to ${service}`)
             try {
@@ -67,13 +78,15 @@ addSimMessageHandler("jacscript", async data => {
                     jacdac.JacscriptManagerCmd.DeployBytecode,
                     data
                 )
+                refreshUI()
             } catch {
                 connectEl.innerText = "micro:bit download failed :("
-            } finally {
-                refreshUI()
             }
         }
     }
+
+    // release lock
+    setTimeout(() => { deployDebouncer = false }, 500)
 })
 
 // handle accessibility requests
