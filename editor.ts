@@ -118,16 +118,8 @@ namespace microcode {
                 Screen.LEFT_EDGE,
                 Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2
             )
-        }
-
-        private backButton() {
-            if (!this.cursor.cancel()) {
-                // Navigation-specific logic
-                this.cursor.moveTo(
-                    this.pageBtn.xfrm.worldPos,
-                    this.pageBtn.ariaId
-                )
-            }
+            this.rebuildNavigator()
+            this.navigator.initialCursor(this.cursor)
         }
 
         /* override */ startup() {
@@ -172,7 +164,6 @@ namespace microcode {
                 controller.left.id,
                 () => this.cursor.move(CursorDir.Left)
             )
-
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.A.id,
@@ -181,7 +172,7 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.B.id,
-                () => this.backButton()
+                () => this.cursor.move(CursorDir.Back)
             )
             this.hudroot = new Placeable()
             this.hudroot.xfrm.localPos = new Vec2(0, Screen.TOP_EDGE)
@@ -244,7 +235,6 @@ namespace microcode {
             this.pageBtn.setIcon(PAGE_IDS[this.currPage])
             if (!this.pageEditor) {
                 this.switchToPage(this.currPage)
-                this.pageEditor.initCursor()
             }
         }
 
@@ -257,7 +247,7 @@ namespace microcode {
 
             if (this.navigator) this.navigator.clear()
 
-            this.navigator = new QuadtreeNavigator()
+            this.navigator = new RowNavigator()
 
             this.navigator.addButtons([
                 this.okBtn,
@@ -384,23 +374,6 @@ namespace microcode {
                     top += 22
                 })
             }
-        }
-
-        public initCursor() {
-            const rule = this.rules[0].rule
-            let btn: Button
-            if (rule.sensors.length) {
-                btn = rule.sensors[0]
-            } else if (rule.filters.length) {
-                btn = rule.filters[0]
-            } else {
-                btn = this.rules[0].whenInsertBtn
-            }
-            this.editor.cursor.snapTo(
-                btn.xfrm.worldPos.x,
-                btn.xfrm.worldPos.y,
-                btn ? btn.ariaId : undefined
-            )
         }
 
         public addToNavigator() {

@@ -35,6 +35,7 @@ namespace microcode {
             this.buttonGroups = []
         }
 
+        // TODO: what if row, col is no longer in range?
         public clear() {
             this.buttonGroups = []
         }
@@ -81,7 +82,7 @@ namespace microcode {
         }
 
         public getOverlapping(cursor: Cursor): Button[] {
-            return []
+            return [this.buttonGroups[this.row][this.col]]
         }
 
         private moveTo(cursor: Cursor) {
