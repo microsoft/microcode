@@ -167,11 +167,14 @@ namespace microcode {
         protected moveTo(cursor: Cursor) {
             super.moveTo(cursor)
             if (this.row > 0 && this.col == 0) {
+                // special case for beginning of rule
                 const ruleDef = this.rules[this.row - 1]
                 // PELI: ACCESSIBILITY
                 console.log("PELI and ALEX")
+                // WHEN
                 ruleDef.sensors.forEach(tile => tile.tid)
                 ruleDef.filters.forEach(tile => tile.tid)
+                // DO
                 ruleDef.actuators.forEach(tile => tile.tid)
                 ruleDef.modifiers.forEach(tile => tile.tid)
             }
