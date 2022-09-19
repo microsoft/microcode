@@ -49,6 +49,7 @@ namespace microcode {
             this.currView = HomeView.Console
             this.logLines = []
             this.plotLines = {}
+            this.compileProgram()
         }
 
         /**
