@@ -91,12 +91,12 @@ namespace microcode {
             this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
             this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
 
-            this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.tile_page_1
-            this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.tile_page_2
-            this.reg[TID_FILTER_ACCEL_TILT_UP] = icondb.tile_page_3
-            this.reg[TID_FILTER_ACCEL_TILT_DOWN] = icondb.tile_page_4
-            this.reg[TID_FILTER_ACCEL_TILT_LEFT] = icondb.tile_page_5
-            this.reg[TID_FILTER_ACCEL_TILT_RIGHT] = icondb.tile_page_5
+            this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
+            this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.moveFall
+            this.reg[TID_FILTER_ACCEL_TILT_UP] = icondb.moveTiltUp
+            this.reg[TID_FILTER_ACCEL_TILT_DOWN] = icondb.moveTiltDown
+            this.reg[TID_FILTER_ACCEL_TILT_LEFT] = icondb.moveTiltLeft
+            this.reg[TID_FILTER_ACCEL_TILT_RIGHT] = icondb.moveTiltRight
 
             // for icon editor
             this.reg[TID_MODIFIER_COLOR_RED] = icondb.tile_red
