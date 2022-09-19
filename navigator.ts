@@ -17,20 +17,13 @@
 // where each rule is a list of buttons in order from left to right, same with
 // menus
 
-const SEARCH_INCR = 8
-const SEARCH_MAX = 160
-const SEARCH_SLOPE = 1.1
-
 namespace microcode {
     export interface INavigator {
         clear: () => void
         addButtons: (btns: Button[]) => void
-        queryUp: (cursor: Cursor) => Button
-        queryDown: (cursor: Cursor) => Button
-        queryLeft: (cursor: Cursor) => Button
-        queryRight: (cursor: Cursor) => Button
+        move: (cursor: Cursor, dir: CursorDir) => void
         getOverlapping: (cursor: Cursor) => Button[]
-        // TODO: where to put cursor first? (first button logic?)
+        initialCursor: (cursor: Cursor) => void
     }
 
     export class RowNavigator implements INavigator {
@@ -42,6 +35,7 @@ namespace microcode {
             this.buttonGroups = []
         }
 
+        // TODO: what if row, col is no longer in range?
         public clear() {
             this.buttonGroups = []
         }
@@ -49,211 +43,64 @@ namespace microcode {
         public addButtons(btns: Button[]) {
             this.buttonGroups.push(btns)
         }
-        public queryUp(cursor: Cursor): Button {
-            return null
-        }
-        public queryDown(cursor: Cursor): Button {
-            return null
-        }
-        public queryLeft(cursor: Cursor): Button {
-            return null
-        }
-        public queryRight(cursor: Cursor): Button {
-            return null
-        }
 
-        public getOverlapping(cursor: Cursor): Button[] {
-            return []
-        }
-    }
-
-    export class QuadtreeNavigator implements INavigator {
-        private quadtree: QuadTree
-
-        constructor() {
-            this.initializeQuadtree()
-        }
-
-        private initializeQuadtree() {
-            if (this.quadtree) {
-                this.quadtree.clear()
-            }
-            this.quadtree = new QuadTree(
-                new Bounds({
-                    left: -512,
-                    top: -512,
-                    width: 1024,
-                    height: 1024,
-                }),
-                1,
-                16
-            )
-        }
-
-        private addToQuadTree(btn: Button) {
-            if (this.quadtree) {
-                this.quadtree.insert(btn.hitbox, btn)
-            }
-        }
-
-        public clear() {
-            this.quadtree.clear()
-            this.quadtree = undefined
-        }
-
-        public addButtons(btns: Button[]) {
-            if (!this.quadtree) this.initializeQuadtree()
-            btns.forEach(btn => this.addToQuadTree(btn))
-        }
-
-        public queryUp(cursor: Cursor): Button {
-            return this.query(cursor, {
-                boundsFn: dist => {
-                    return new Bounds({
-                        left: cursor.xfrm.worldPos.x - (dist >> 1),
-                        top: cursor.xfrm.worldPos.y - dist,
-                        width: dist,
-                        height: dist,
-                    })
-                },
-                filterFn: (btn, dist) => {
-                    const pos = btn.xfrm.worldPos
-                    // Filter to upward buttons that are more up than left or right from us.
-                    return (
-                        pos.y < cursor.xfrm.worldPos.y &&
-                        Math.abs(pos.y - cursor.xfrm.worldPos.y) /
-                            Math.abs(pos.x - cursor.xfrm.worldPos.x) >
-                            SEARCH_SLOPE
-                    )
-                },
-            })
-        }
-
-        public queryDown(cursor: Cursor): Button {
-            return this.query(cursor, {
-                boundsFn: dist => {
-                    return new Bounds({
-                        left: cursor.xfrm.worldPos.x - (dist >> 1),
-                        top: cursor.xfrm.worldPos.y,
-                        width: dist,
-                        height: dist,
-                    })
-                },
-                filterFn: (btn, dist) => {
-                    const pos = btn.xfrm.worldPos
-                    // Filter to downward buttons that are more down than left or right from us.
-                    return (
-                        pos.y > cursor.xfrm.worldPos.y &&
-                        Math.abs(pos.y - cursor.xfrm.worldPos.y) /
-                            Math.abs(pos.x - cursor.xfrm.worldPos.x) >
-                            SEARCH_SLOPE
-                    )
-                },
-            })
-        }
-
-        public queryLeft(cursor: Cursor): Button {
-            return this.query(cursor, {
-                boundsFn: dist => {
-                    return new Bounds({
-                        left: cursor.xfrm.worldPos.x - dist,
-                        top: cursor.xfrm.worldPos.y - (dist >> 1),
-                        width: dist,
-                        height: dist,
-                    })
-                },
-                filterFn: (btn, dist) => {
-                    const pos = btn.xfrm.worldPos
-                    // Filter to leftward buttons that are more left than up or down from us.
-                    return (
-                        pos.x < cursor.xfrm.worldPos.x &&
-                        Math.abs(pos.x - cursor.xfrm.worldPos.x) /
-                            Math.abs(pos.y - cursor.xfrm.worldPos.y) >
-                            SEARCH_SLOPE
-                    )
-                },
-            })
-        }
-
-        public queryRight(cursor: Cursor): Button {
-            return this.query(cursor, {
-                boundsFn: dist => {
-                    return new Bounds({
-                        left: cursor.xfrm.worldPos.x,
-                        top: cursor.xfrm.worldPos.y - (dist >> 1),
-                        width: dist,
-                        height: dist,
-                    })
-                },
-                filterFn: (btn, dist) => {
-                    const pos = btn.xfrm.worldPos
-                    // Filter to rightward buttons that are to more right than up or down from us.
-                    return (
-                        pos.x > cursor.xfrm.worldPos.x &&
-                        Math.abs(pos.x - cursor.xfrm.worldPos.x) /
-                            Math.abs(pos.y - cursor.xfrm.worldPos.y) >
-                            SEARCH_SLOPE
-                    )
-                },
-            })
-        }
-
-        private query(
-            cursor: Cursor,
-            opts: {
-                boundsFn: (dist: number) => Bounds
-                filterFn: (value: Button, dist: number) => boolean
-            }
-        ): Button {
-            let dist = SEARCH_INCR
-            let candidates: Button[]
-            let overlapping = this.getOverlapping(cursor)
-            while (true) {
-                const bounds = opts.boundsFn(dist)
-                candidates = this.quadtree
-                    .query(bounds)
-                    // filter and map to Button type
-                    .filter(comp => comp.kind === "button")
-                    .map(comp => comp as Button)
-                candidates = candidates
-                    // Filter buttons overlapping the cursor.
-                    .filter(btn => overlapping.indexOf(btn) < 0)
-                    // Filter buttons per caller.
-                    .filter(btn => opts.filterFn(btn, dist))
-                    // Sort by distance from cursor.
-                    .sort((a, b) => {
-                        const apos = a.xfrm.worldPos
-                        const bpos = b.xfrm.worldPos
-                        return (
-                            Vec2.DistSq(cursor.xfrm.worldPos, apos) -
-                            Vec2.DistSq(cursor.xfrm.worldPos, bpos)
-                        )
-                    })
-                if (candidates.length) {
+        public move(cursor: Cursor, dir: CursorDir) {
+            switch (dir) {
+                case CursorDir.Up: {
+                    if (this.row == 0) return
+                    this.row--
+                    this.col = 0
                     break
                 }
-                // No candidates found, widen the search area.
-                dist += SEARCH_INCR
-                if (dist > SEARCH_MAX) {
+                case CursorDir.Down: {
+                    if (this.row == this.buttonGroups.length - 1) return
+                    this.row++
+                    this.col = 0
+                    break
+                }
+
+                case CursorDir.Left: {
+                    if (this.col == 0) return
+                    this.col--
+                    break
+                }
+
+                case CursorDir.Right: {
+                    if (this.col == this.buttonGroups[this.row].length - 1)
+                        return
+                    this.col++
+                    break
+                }
+
+                case CursorDir.Back: {
+                    if (this.col > 0) this.col = 0
+                    else if (this.row > 0) this.row--
                     break
                 }
             }
-            return candidates.shift()
+            this.moveTo(cursor)
         }
 
         public getOverlapping(cursor: Cursor): Button[] {
-            const crsb = cursor.hitbox
-            // Query for neary items.
-            const btns = this.quadtree
-                .query(crsb)
-                // filter and map to Button type
-                .filter(comp => comp.kind === "button")
-                .map(comp => comp as Button)
-                // filter to intersecting buttons
-                .filter(btn => {
-                    return Bounds.Intersects(crsb, btn.hitbox)
-                })
-            return btns
+            return [this.buttonGroups[this.row][this.col]]
+        }
+
+        private moveTo(cursor: Cursor) {
+            // console.log(`row = ${this.row}, cpl = ${this.col}`)
+            if (this.row >= this.buttonGroups.length)
+                this.row = this.buttonGroups.length - 1
+            if (this.col >= this.buttonGroups[this.row].length)
+                this.col = this.buttonGroups[this.row].length - 1
+            const btn = this.buttonGroups[this.row][this.col]
+            if (btn) {
+                cursor.moveTo(btn.xfrm.worldPos, btn.ariaId)
+            }
+        }
+
+        public initialCursor(cursor: Cursor) {
+            this.row = 0
+            this.col = 0
+            this.moveTo(cursor)
         }
     }
 }

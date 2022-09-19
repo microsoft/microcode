@@ -1,6 +1,14 @@
 namespace microcode {
     export type CursorCancelHandler = () => void
 
+    export enum CursorDir {
+        Up,
+        Down,
+        Left,
+        Right,
+        Back,
+    }
+
     export class Cursor extends Component implements IPlaceable {
         private xfrm_: Affine
         stylus: Sprite
@@ -68,32 +76,9 @@ namespace microcode {
             this.setAriaContent(ariaId)
         }
 
-        public queryUp(): Button {
-            if (this.anim && this.anim.playing) {
-                return null
-            }
-            return this.navigator.queryUp(this)
-        }
-
-        public queryDown(): Button {
-            if (this.anim && this.anim.playing) {
-                return null
-            }
-            return this.navigator.queryDown(this)
-        }
-
-        public queryLeft(): Button {
-            if (this.anim && this.anim.playing) {
-                return null
-            }
-            return this.navigator.queryLeft(this)
-        }
-
-        public queryRight(): Button {
-            if (this.anim && this.anim.playing) {
-                return null
-            }
-            return this.navigator.queryRight(this)
+        public move(dir: CursorDir) {
+            if (this.anim && this.anim.playing) return
+            this.navigator.move(this, dir)
         }
 
         public click(): boolean {

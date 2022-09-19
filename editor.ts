@@ -73,7 +73,7 @@ namespace microcode {
         private nextPage() {
             let index = this.currPage + 1
             index %= this.progdef.pages.length
-            this.switchToPage(index)
+            this.switchToPage(index, false)
         }
 
         private prevPage() {
@@ -81,7 +81,7 @@ namespace microcode {
             if (index < 0) {
                 index = this.progdef.pages.length - 1
             }
-            this.switchToPage(index)
+            this.switchToPage(index, false)
         }
 
         private pickPage() {
@@ -100,7 +100,7 @@ namespace microcode {
             })
         }
 
-        private switchToPage(index: number) {
+        private switchToPage(index: number, updateCursor: boolean = true) {
             if (index < 0 || index >= this.progdef.pages.length) {
                 return
             }
@@ -118,88 +118,8 @@ namespace microcode {
                 Screen.LEFT_EDGE,
                 Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2
             )
-        }
-
-        private moveTo(target: Button) {
-            if (target.rootXfrm.tag === "hud") {
-                this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
-                return
-            }
-            const occ = target.occlusions(
-                new Bounds({
-                    left: Screen.LEFT_EDGE,
-                    top: Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2,
-                    width: Screen.WIDTH,
-                    height: Screen.HEIGHT - (TOOLBAR_HEIGHT + 2),
-                })
-            )
-            if (occ.has) {
-                if (this.scrollanim.playing) {
-                    return
-                }
-                const xocc = occ.left ? occ.left : -occ.right
-                const yocc = occ.top ? occ.top : -occ.bottom
-                const endValue = Vec2.TranslateToRef(
-                    this.scrollroot.xfrm.localPos,
-                    new Vec2(xocc, yocc),
-                    new Vec2()
-                )
-                this.scrollanim.clearFrames()
-                this.scrollanim.addFrame(
-                    new EaseFrame({
-                        duration: 0.05,
-                        //curve: curves.easeOut(curves.easing.sq2),
-                        curve: curves.linear(),
-                        startValue: this.scrollroot.xfrm.localPos,
-                        endValue,
-                    })
-                )
-                this.scrollanim.start()
-                const dest = new Vec2(
-                    target.xfrm.worldPos.x + xocc,
-                    target.xfrm.worldPos.y + yocc
-                )
-                this.cursor.moveTo(dest, target.ariaId)
-            } else {
-                this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
-            }
-        }
-
-        private moveUp() {
-            const target = this.cursor.queryUp()
-            if (target) {
-                this.moveTo(target)
-            }
-        }
-
-        private moveDown() {
-            const target = this.cursor.queryDown()
-            if (target) {
-                this.moveTo(target)
-            }
-        }
-
-        private moveLeft() {
-            const target = this.cursor.queryLeft()
-            if (target) {
-                this.moveTo(target)
-            }
-        }
-
-        private moveRight() {
-            const target = this.cursor.queryRight()
-            if (target) {
-                this.moveTo(target)
-            }
-        }
-
-        private backButton() {
-            if (!this.cursor.cancel()) {
-                this.cursor.moveTo(
-                    this.pageBtn.xfrm.worldPos,
-                    this.pageBtn.ariaId
-                )
-            }
+            this.rebuildNavigator()
+            if (updateCursor) this.navigator.initialCursor(this.cursor)
         }
 
         /* override */ startup() {
@@ -207,44 +127,43 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.right.id,
-                () => this.moveRight()
+                () => this.cursor.move(CursorDir.Right)
             )
             control.onEvent(
                 ControllerButtonEvent.Repeated,
                 controller.right.id,
-                () => this.moveRight()
+                () => this.cursor.move(CursorDir.Right)
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.up.id,
-                () => this.moveUp()
+                () => this.cursor.move(CursorDir.Up)
             )
             control.onEvent(
                 ControllerButtonEvent.Repeated,
                 controller.up.id,
-                () => this.moveUp()
+                () => this.cursor.move(CursorDir.Up)
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.down.id,
-                () => this.moveDown()
+                () => this.cursor.move(CursorDir.Down)
             )
             control.onEvent(
                 ControllerButtonEvent.Repeated,
                 controller.down.id,
-                () => this.moveDown()
+                () => this.cursor.move(CursorDir.Down)
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.left.id,
-                () => this.moveLeft()
+                () => this.cursor.move(CursorDir.Left)
             )
             control.onEvent(
                 ControllerButtonEvent.Repeated,
                 controller.left.id,
-                () => this.moveLeft()
+                () => this.cursor.move(CursorDir.Left)
             )
-
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.A.id,
@@ -253,7 +172,9 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.B.id,
-                () => this.backButton()
+                () => {
+                    if (!this.cursor.cancel()) this.cursor.move(CursorDir.Back)
+                }
             )
             this.hudroot = new Placeable()
             this.hudroot.xfrm.localPos = new Vec2(0, Screen.TOP_EDGE)
@@ -316,7 +237,6 @@ namespace microcode {
             this.pageBtn.setIcon(PAGE_IDS[this.currPage])
             if (!this.pageEditor) {
                 this.switchToPage(this.currPage)
-                this.pageEditor.initCursor()
             }
         }
 
@@ -327,9 +247,9 @@ namespace microcode {
         private rebuildNavigator() {
             if (this.picker.visible) return
 
-            if (this.navigator) this.navigator.clear()
-
-            this.navigator = new QuadtreeNavigator()
+            if (this.navigator) {
+                this.navigator.clear()
+            } else this.navigator = new RowNavigator()
 
             this.navigator.addButtons([
                 this.okBtn,
@@ -380,8 +300,6 @@ namespace microcode {
             this.okBtn.draw()
             this.picker.draw()
             this.cursor.draw()
-
-            //this.quadtree.dbgDraw(5);
         }
     }
 
@@ -458,23 +376,6 @@ namespace microcode {
                     top += 22
                 })
             }
-        }
-
-        public initCursor() {
-            const rule = this.rules[0].rule
-            let btn: Button
-            if (rule.sensors.length) {
-                btn = rule.sensors[0]
-            } else if (rule.filters.length) {
-                btn = rule.filters[0]
-            } else {
-                btn = this.rules[0].whenInsertBtn
-            }
-            this.editor.cursor.snapTo(
-                btn.xfrm.worldPos.x,
-                btn.xfrm.worldPos.y,
-                btn ? btn.ariaId : undefined
-            )
         }
 
         public addToNavigator() {
@@ -765,11 +666,11 @@ namespace microcode {
             const btns: Button[] = []
             btns.push(this.handleBtn)
             this.rule["sensors"].forEach(b => btns.push(b))
-            btns.push(this.whenInsertBtn)
             this.rule["filters"].forEach(b => btns.push(b))
-            btns.push(this.doInsertBtn)
+            btns.push(this.whenInsertBtn)
             this.rule["actuators"].forEach(b => btns.push(b))
             this.rule["modifiers"].forEach(b => btns.push(b))
+            btns.push(this.doInsertBtn)
             this.editor.addButtons(btns)
         }
 

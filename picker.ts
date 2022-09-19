@@ -170,8 +170,6 @@ namespace microcode {
         }
 
         private layout() {
-            let firstBtn: Button
-
             let maxBtnCount = 0
             this.groups.forEach(
                 group =>
@@ -222,9 +220,6 @@ namespace microcode {
             this.groups.forEach(group => {
                 let currentLeft = computedLeft
                 group.buttons.forEach((btn, index) => {
-                    if (!firstBtn) {
-                        firstBtn = btn
-                    }
                     if (index && index % MAX_PER_ROW === 0) {
                         currentTop += TRAY
                         currentLeft = computedLeft
@@ -239,11 +234,7 @@ namespace microcode {
                 }
             })
 
-            this.cursor.snapTo(
-                firstBtn.xfrm.worldPos.x,
-                firstBtn.xfrm.worldPos.y,
-                firstBtn.ariaId
-            )
+            this.navigator.initialCursor(this.cursor)
         }
     }
 
