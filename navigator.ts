@@ -188,7 +188,7 @@ namespace microcode {
                     ]
                 }
 
-                //accessibility.setLiveContent(accessabilityMessage)
+                accessibility.setLiveContent(accessabilityMessage)
             }
         }
     }

@@ -1,5 +1,5 @@
 namespace jacs {
-    let debugOut = true
+    let debugOut = false
 
     export function addUnique<T>(arr: T[], v: T) {
         let idx = arr.indexOf(v)
@@ -60,6 +60,7 @@ namespace jacs {
     class Role {
         stringIndex: number
         index: number
+        top: Label
         private dispatcher: Procedure
 
         constructor(
@@ -83,7 +84,7 @@ namespace jacs {
             if (!this.dispatcher) return
 
             this.parent.withProcedure(this.dispatcher, wr => {
-                wr.emitJump(wr.top)
+                wr.emitJump(this.top)
             })
             this.parent.withProcedure(this.parent.mainProc, wr => {
                 wr.emitCall(this.dispatcher.index, [], OpCall.BG_MAX1)
@@ -94,6 +95,30 @@ namespace jacs {
             if (!this.dispatcher) {
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
+                    if (needsWakeup.indexOf(this.classIdentifier) >= 0) {
+                        wr.emitStmt(OpStmt.STMT3_QUERY_REG, [
+                            literal(this.index),
+                            literal(JD_REG_STREAMING_SAMPLES),
+                            literal(1000),
+                        ])
+                        wr.emitIf(
+                            wr.emitExpr(OpExpr.EXPR2_EQ, [
+                                wr.emitExpr(OpExpr.EXPR0_RET_VAL, []),
+                                literal(0),
+                            ]),
+                            () => {
+                                this.parent.emitLoadBuffer(hex`0a`)
+                                wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
+                                    literal(this.index),
+                                    literal(
+                                        CMD_SET_REG | JD_REG_STREAMING_SAMPLES
+                                    ),
+                                ])
+                            }
+                        )
+                    }
+                    this.top = wr.mkLabel("tp")
+                    wr.emitLabel(this.top)
                     wr.emitStmt(OpStmt.STMT1_WAIT_ROLE, [literal(this.index)])
                 })
             }
@@ -413,7 +438,7 @@ namespace jacs {
             return null
         }
 
-        private emitLoadBuffer(buf: string | Buffer) {
+        emitLoadBuffer(buf: string | Buffer) {
             let len = 0
             if (typeof buf == "string")
                 len = Buffer.fromUTF8(buf as string).length
@@ -644,6 +669,8 @@ namespace jacs {
         }
     }
 
+    export const needsWakeup = [0x14ad1a5d, 0x1f140409, 0x17dc9a1c]
+
     export const serviceClasses: SMap<number> = {
         // m:b
         button: 0x1473a263,
@@ -666,4 +693,6 @@ namespace jacs {
 
     export const CMD_GET_REG = 0x1000
     export const CMD_SET_REG = 0x2000
+
+    export const JD_REG_STREAMING_SAMPLES = 3
 }

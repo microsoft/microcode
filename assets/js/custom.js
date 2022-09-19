@@ -1,9 +1,61 @@
 console.debug(`loading custom sim support...`)
 
+const inIFrame = (() => {
+    try {
+        return typeof window !== "undefined" && window.self !== window.top
+    } catch (e) {
+        return typeof window !== "undefined"
+    }
+})()
+
+let bus
+let connectEl
+const refreshUI = () => {
+    connectEl.innerText = bus.connected
+        ? "micro:bit connected 🎉"
+        : bus.disconnected
+        ? "micro:bit connect"
+        : "micro:bit connecting 👀"
+    console.log(connectEl.innerText)
+}
+
+// to support downloading directly to device
+if (!inIFrame)
+    document.addEventListener("DOMContentLoaded", () => {
+        const script = document.createElement("script")
+        script.setAttribute("type", "text/javascript")
+        script.setAttribute("src", "https://unpkg.com/jacdac-ts/dist/jacdac.js")
+        script.onload = () => {
+            console.log(`jacdac: init...`)
+            connectEl = document.createElement("button")
+            connectEl.id = "connectbtn"
+            // create WebUSB bus
+            bus = jacdac.createWebBus()
+            // track connection state and update button
+            bus.on(jacdac.CONNECTION_STATE, refreshUI)
+            bus.on(jacdac.ERROR, e => console.error(e))
+            // connect must be triggered by a user interaction
+            connectEl.onclick = async () =>
+                bus.connected ? bus.disconnect() : bus.connect()
+            document.body.append(connectEl)
+            refreshUI()
+        }
+        document.body.append(script)
+    })
+
 // send jacscript bytecode to jacdac dashboard
-addSimMessageHandler("jacscript", data => {
+let deployDebouncer = false
+addSimMessageHandler("jacscript", async data => {
     console.debug(`jacscript bytecode: ${data.length} bytes`)
-    if (window.parent)
+
+    // lock deploy
+    if (deployDebouncer) {
+        console.debug(`jacscript deploy cancelled, dup deploy`)
+        return
+    }
+    deployDebouncer = true
+
+    if (inIFrame)
         window.parent.postMessage(
             {
                 broadcast: true,
@@ -12,6 +64,29 @@ addSimMessageHandler("jacscript", data => {
             },
             "*"
         )
+    if (bus) {
+        const services = bus.services({
+            serviceClass: jacdac.SRV_JACSCRIPT_MANAGER,
+        })
+        console.log({ services })
+        for (const service of services) {
+            console.debug(`jacscript: deploying to ${service}`)
+            try {
+                connectEl.innerText = "micro:bit downloading..."
+                await jacdac.OutPipe.sendBytes(
+                    service,
+                    jacdac.JacscriptManagerCmd.DeployBytecode,
+                    data
+                )
+                refreshUI()
+            } catch {
+                connectEl.innerText = "micro:bit download failed :("
+            }
+        }
+    }
+
+    // release lock
+    setTimeout(() => { deployDebouncer = false }, 500)
 })
 
 // handle accessibility requests
@@ -187,7 +262,6 @@ addSimMessageHandler("accessibility", data => {
         liveRegion.setAttribute("style", style)
         document.body.appendChild(liveRegion)
     }
-    if (liveRegion.textContent === value)
-        liveRegion.textContent = ""
+    if (liveRegion.textContent === value) liveRegion.textContent = ""
     liveRegion.textContent = value
 })
