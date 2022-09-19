@@ -35,7 +35,6 @@ namespace microcode {
             this.buttonGroups = []
         }
 
-        // TODO: what if row, col is no longer in range?
         public clear() {
             this.buttonGroups = []
         }
@@ -86,11 +85,12 @@ namespace microcode {
         }
 
         private moveTo(cursor: Cursor) {
-            // console.log(`row = ${this.row}, cpl = ${this.col}`)
+            // logic for not in range
             if (this.row >= this.buttonGroups.length)
                 this.row = this.buttonGroups.length - 1
             if (this.col >= this.buttonGroups[this.row].length)
                 this.col = this.buttonGroups[this.row].length - 1
+            // now move!
             const btn = this.buttonGroups[this.row][this.col]
             if (btn) {
                 cursor.moveTo(btn.xfrm.worldPos, btn.ariaId)
@@ -101,6 +101,20 @@ namespace microcode {
             this.row = 0
             this.col = 0
             this.moveTo(cursor)
+        }
+    }
+
+    export class RuleRowNavigator extends RowNavigator {
+        private rules: RuleDefn[]
+
+        /* overrides */
+        public clear() {
+            super.clear()
+            this.rules = []
+        }
+
+        public addRule(rule: RuleDefn) {
+            this.rules.push(rule)
         }
     }
 }

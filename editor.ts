@@ -28,7 +28,7 @@ namespace microcode {
     const TOOLBAR_COLOR = 11
 
     export class Editor extends Scene {
-        private navigator: INavigator
+        navigator: RuleRowNavigator
         private progdef: ProgramDefn
         private currPage: number
         private pageBtn: Button
@@ -238,7 +238,7 @@ namespace microcode {
 
             if (this.navigator) {
                 this.navigator.clear()
-            } else this.navigator = new RowNavigator()
+            } else this.navigator = new RuleRowNavigator()
 
             this.navigator.addButtons([
                 this.prevPageBtn,
@@ -366,7 +366,10 @@ namespace microcode {
         }
 
         public addToNavigator() {
-            this.rules.forEach(rule => rule.addToNavigator())
+            this.rules.forEach(rule => {
+                this.editor.navigator.addRule(rule.ruledef)
+                rule.addToNavigator()
+            })
         }
 
         public changed() {
@@ -429,7 +432,7 @@ namespace microcode {
         constructor(
             private editor: Editor,
             private page: PageEditor,
-            private ruledef: RuleDefn,
+            public ruledef: RuleDefn,
             public index: number
         ) {
             super("rule_editor")
