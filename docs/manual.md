@@ -27,7 +27,7 @@ From the web app, make sure that the web browser is not full screen and you will
 -   **GitHub** (this repo)
 -   **Version #** (links to micro:bit hex file)
 
-Clicking on the simulator link will open a page with the MicroCode web app on the right side and a micro:bit simulator and Jacdac dashboard on the left, as shown below. In the MicroCode editor, whenever you click the green check mark in the upper left, MicroCode will compile your program and start it running in the simulator
+Clicking on the simulator link will open a page with the MicroCode web app on the right side and a micro:bit simulator and Jacdac dashboard on the left, as shown below. Your MicroCode program is saved, compiled and updated to the micro:bit (simulator or device) on every edit, so everything should be live and running all the time.
 
 ![micro:bit simulator and MicroCode web app](./images/webAppSimulators.jpg)
 

@@ -34,7 +34,6 @@ namespace microcode {
         private pageBtn: Button
         private prevPageBtn: Button
         private nextPageBtn: Button
-        private okBtn: Button
         private pageEditor: PageEditor
         public cursor: Cursor
         private _changed: boolean
@@ -52,23 +51,21 @@ namespace microcode {
             this._changed = true
         }
 
-        public saveProgram() {
+        public saveAndCompileProgram() {
             this.app.save(SAVESLOT_AUTO, this.progdef)
-        }
-
-        private okClicked() {
-            this.saveProgram()
             new jacs.TopWriter().emitProgram(this.progdef)
         }
 
+        /*
         private exitEditor() {
-            this.saveProgram()
+            this.saveAndCompileProgram()
             while (controller.A.isPressed()) {
                 pause(10)
             }
             this.app.popScene()
             this.app.pushScene(new Home(this.app))
         }
+*/
 
         private nextPage() {
             let index = this.currPage + 1
@@ -217,14 +214,6 @@ namespace microcode {
                 y: 8,
                 onClick: () => this.prevPage(),
             })
-            this.okBtn = new EditorButton(this, {
-                parent: this.hudroot,
-                style: "white",
-                icon: "ok",
-                x: Screen.LEFT_EDGE + 8,
-                y: 8,
-                onClick: () => this.okClicked(),
-            })
             this.progdef = this.app.load(SAVESLOT_AUTO)
         }
 
@@ -252,7 +241,6 @@ namespace microcode {
             } else this.navigator = new RowNavigator()
 
             this.navigator.addButtons([
-                this.okBtn,
                 this.prevPageBtn,
                 this.pageBtn,
                 this.nextPageBtn,
@@ -297,7 +285,6 @@ namespace microcode {
             this.pageBtn.draw()
             this.prevPageBtn.draw()
             this.nextPageBtn.draw()
-            this.okBtn.draw()
             this.picker.draw()
             this.cursor.draw()
         }
@@ -519,7 +506,7 @@ namespace microcode {
         }
 
         private instantiateProgramTiles() {
-            this.editor.saveProgram()
+            this.editor.saveAndCompileProgram()
             this.destroyProgramTiles()
             const rule = this.ruledef.getRuleRep()
             let changed = false
