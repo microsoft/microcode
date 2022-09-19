@@ -54,7 +54,7 @@ namespace microcode {
             btns.forEach(btn => this.addToQuadTree(btn))
         }
 
-        public move(cursor: Cursor, dir: CursorDir) {
+        public move(cursor: Cursor, dir: CursorDir): Button {
             let btn: Button = undefined
             switch (dir) {
                 case CursorDir.Up: {
@@ -77,6 +77,7 @@ namespace microcode {
             if (btn) {
                 cursor.moveTo(btn.xfrm.worldPos, btn.ariaId)
             }
+            return btn
         }
 
         private queryUp(cursor: Cursor): Button {

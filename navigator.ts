@@ -44,6 +44,7 @@ namespace microcode {
         }
 
         public move(cursor: Cursor, dir: CursorDir) {
+            console.log(`move ${dir}`)
             switch (dir) {
                 case CursorDir.Up: {
                     if (this.row == 0) return undefined

@@ -77,7 +77,7 @@ namespace microcode {
         }
 
         public move(dir: CursorDir): Button {
-            if (this.anim && this.anim.playing) return
+            if (this.anim && this.anim.playing) return undefined
             return this.navigator.move(this, dir)
         }
 
