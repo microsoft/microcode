@@ -21,6 +21,15 @@
                 height: 100%;
                 border: none;
             }
+            #simbtn {
+                position: absolute;
+                right: 1.25rem;
+                bottom: 0;
+                cursor: pointer;
+            }
+            #simbtn:visited {
+                color:white;
+            }
             #fullscreen {
                 position: absolute;
                 right: 0.25rem;
@@ -126,6 +135,7 @@
             sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
         >
         </iframe>
+        <a id="simbtn" href="https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001">sim</a>
         <div id="fullscreen">⇲</div>
         <script type="text/javascript">
             makeCodeRun({ js: "./js/binary.js" })
