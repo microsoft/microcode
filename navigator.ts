@@ -28,14 +28,13 @@ namespace microcode {
 
     export class RowNavigator implements INavigator {
         private buttonGroups: Button[][]
-        private row: number
-        private col: number
+        protected row: number
+        protected col: number
 
         constructor() {
             this.buttonGroups = []
         }
 
-        // TODO: what if row, col is no longer in range?
         public clear() {
             this.buttonGroups = []
         }
@@ -83,7 +82,7 @@ namespace microcode {
                 this.cursor.moveTo(dest, target.ariaId)
 
                 */
-        
+
         public move(cursor: Cursor, dir: CursorDir) {
             switch (dir) {
                 case CursorDir.Up: {
@@ -132,7 +131,7 @@ namespace microcode {
                 this.col = this.buttonGroups[this.row].length - 1
         }
 
-        private moveTo(cursor: Cursor) {
+        protected moveTo(cursor: Cursor) {
             this.makeGood()
             const btn = this.buttonGroups[this.row][this.col]
             if (btn) {
@@ -144,6 +143,38 @@ namespace microcode {
             this.row = 0
             this.col = 0
             this.moveTo(cursor)
+        }
+    }
+
+    export class RuleRowNavigator extends RowNavigator {
+        private rules: RuleDefn[]
+
+        constructor() {
+            super()
+            this.rules = []
+        }
+
+        /* overrides */
+        public clear() {
+            super.clear()
+            this.rules = []
+        }
+
+        public addRule(rule: RuleDefn) {
+            this.rules.push(rule)
+        }
+
+        protected moveTo(cursor: Cursor) {
+            super.moveTo(cursor)
+            if (this.row > 0 && this.col == 0) {
+                const ruleDef = this.rules[this.row - 1]
+                // PELI: ACCESSIBILITY
+                console.log("PELI and ALEX")
+                ruleDef.sensors.forEach(tile => tile.tid)
+                ruleDef.filters.forEach(tile => tile.tid)
+                ruleDef.actuators.forEach(tile => tile.tid)
+                ruleDef.modifiers.forEach(tile => tile.tid)
+            }
         }
     }
 }
