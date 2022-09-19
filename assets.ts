@@ -91,12 +91,12 @@ namespace microcode {
             this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
             this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
 
-            this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.tile_page_1
-            this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.tile_page_2
-            this.reg[TID_FILTER_ACCEL_TILT_UP] = icondb.tile_page_3
-            this.reg[TID_FILTER_ACCEL_TILT_DOWN] = icondb.tile_page_4
-            this.reg[TID_FILTER_ACCEL_TILT_LEFT] = icondb.tile_page_5
-            this.reg[TID_FILTER_ACCEL_TILT_RIGHT] = icondb.tile_page_5
+            this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
+            this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.moveFall
+            this.reg[TID_FILTER_ACCEL_TILT_UP] = icondb.moveTiltUp
+            this.reg[TID_FILTER_ACCEL_TILT_DOWN] = icondb.moveTiltDown
+            this.reg[TID_FILTER_ACCEL_TILT_LEFT] = icondb.moveTiltLeft
+            this.reg[TID_FILTER_ACCEL_TILT_RIGHT] = icondb.moveTiltRight
 
             // for icon editor
             this.reg[TID_MODIFIER_COLOR_RED] = icondb.tile_red
@@ -1624,6 +1624,116 @@ f f f f f f f f f f f f f f f f
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+
+    export const moveShake = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . 8 . . 8 . .
+        . . . 9 9 9 9 9 9 . . 8 . . 8 .
+        . . . 9 6 6 6 6 6 . . . 8 . 8 .
+        . . . 9 6 f f f f f f . 8 . 8 .
+        . . . 9 6 f 5 5 5 5 f . . . . .
+        . . . 9 6 f 5 5 5 5 f 6 9 . . .
+        . . . . . f 5 5 5 5 f 6 9 . . .
+        . 8 . 8 . f f f f f f 6 9 . . .
+        . 8 . 8 . . . 6 6 6 6 6 9 . . .
+        . 8 . . 8 . . 9 9 9 9 9 9 . . .
+        . . 8 . . 8 . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const moveFall = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . 8 . . . 8 . . . . .
+        . . . . . . 8 . 8 . 8 . . . . .
+        . . . . . . 8 . 8 . 8 . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . 9 9 9 9 9 9 . . . . .
+        . . . . . 9 9 9 9 9 9 . . . . .
+        . . . . . 6 6 6 6 6 6 . . . . .
+        . . . . . 6 6 6 6 6 6 . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . f 5 5 5 5 f . . . . .
+        . . . . . f 5 5 5 5 f . . . . .
+        . . . . . f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+`
+    
+export const moveTiltDown = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . 8 8 8 8 . . . . .
+    . . . . . . 8 . . . . . . . . .
+    . . . . . 8 . . . . . . . . . .
+    . . . 8 8 8 8 8 . . . . . . . .
+    . . . . 8 8 8 9 9 9 9 9 9 9 . .
+    . . . . 9 8 9 9 9 9 9 9 9 9 . .
+    . . . . 9 9 9 9 9 9 9 9 9 9 . .
+    . f f f f f f f f f 9 9 9 9 . .
+    . . f 5 5 5 5 5 5 5 f 9 9 9 . .
+    . . . f 5 5 5 5 5 5 5 f 9 9 . .
+    . . . . f 5 5 5 5 5 5 5 f 9 . .
+    . . . . . f f f f f f f f f . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+export const moveTiltUp = img`
+. . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . 8 8 8 8 . . . . . .
+    . . . . . . . . . . 8 . . . . .
+    . . . . . . . . . . . 8 . . . .
+    . . . . . . . . . 8 8 8 8 8 . .
+    . . 9 9 9 9 9 9 9 9 8 8 8 . . .
+    . . 9 9 9 9 9 9 9 9 9 8 . . . .
+    . . 9 9 9 9 9 9 9 9 9 . . . . .
+    . . 9 9 9 9 8 8 8 8 8 f f f . .
+    . . 9 9 9 8 6 6 6 6 6 5 f . . .
+    . . 9 9 8 6 6 6 6 6 6 f . . . .
+    . . 9 8 6 6 6 6 6 6 8 . . . . .
+    . . 8 8 8 8 8 8 8 8 9 . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+export const moveTiltLeft = img`
+. . . . . . . . . . . . . . . .
+    . . . . . . . . . . 8 . . . . .
+    . . . . . . f f . 8 8 . . . . .
+    . . . . . f 5 f 8 8 8 8 8 . . .
+    . . 9 9 8 5 5 f 9 8 8 . . 8 . .
+    . . 9 8 6 5 5 f 9 9 8 . . . 8 .
+    . . 9 8 6 5 5 f 9 9 9 . . . 8 .
+    . . 9 8 6 5 5 f 9 9 9 . . . 8 .
+    . . 9 8 6 5 5 f 9 9 9 . . 8 . .
+    . . 9 8 6 5 5 f 9 9 9 . . . . .
+    . . 9 8 6 5 5 f 9 9 9 . . . . .
+    . . 9 9 8 5 5 f 9 9 9 . . . . .
+    . . . . . f 5 f . . . . . . . .
+    . . . . . . f f . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+export const moveTiltRight = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . 8 . . . . . . . . . .
+    . . . . . 8 8 . f f . . . . . .
+    . . . 8 8 8 8 8 f 5 f . . . . .
+    . . 8 . . 8 8 9 f 5 5 8 9 9 . .
+    . 8 . . . 8 9 9 f 5 5 6 8 9 . .
+    . 8 . . . 9 9 9 f 5 5 6 8 9 . .
+    . 8 . . . 9 9 9 f 5 5 6 8 9 . .
+    . . 8 . . 9 9 9 f 5 5 6 8 9 . .
+    . . . . . 9 9 9 f 5 5 6 8 9 . .
+    . . . . . 9 9 9 f 5 5 6 8 9 . .
+    . . . . . 9 9 9 f 5 5 8 9 9 . .
+    . . . . . . . . f 5 f . . . . .
+    . . . . . . . . f f . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
 
     /* maybe use these later
     export const rc_high = img`
