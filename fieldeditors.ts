@@ -49,7 +49,11 @@ namespace microcode {
         img.drawImage(icondb.staffEGB, 0, 0)
         if (note < 5) {
             if (note === 0) img.drawLine(4, 14, 12, 14, 15)
-            img.drawTransparentImage(icondb.noteStemUp, 6, 8 - note)
+            img.drawTransparentImage(
+                icondb.noteStemUp,
+                6,
+                8 - (note == 4 ? note + 1 : note)
+            )
         } else {
             // TODO: special case for top note
             img.drawTransparentImage(icondb.noteStemDown, 6, 11 - note)
