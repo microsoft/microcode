@@ -39,6 +39,7 @@ if (!inIFrame)
                 bus.connected ? bus.disconnect() : bus.connect()
             document.body.append(connectEl)
             refreshUI()
+            bus.autoConnect = true
         }
         document.body.append(script)
     })
