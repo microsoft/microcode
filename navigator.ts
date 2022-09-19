@@ -166,14 +166,29 @@ namespace microcode {
 
         protected moveTo(cursor: Cursor) {
             super.moveTo(cursor)
+
             if (this.row > 0 && this.col == 0) {
+                    
                 const ruleDef = this.rules[this.row - 1]
-                // PELI: ACCESSIBILITY
-                console.log("PELI and ALEX")
-                ruleDef.sensors.forEach(tile => tile.tid)
-                ruleDef.filters.forEach(tile => tile.tid)
-                ruleDef.actuators.forEach(tile => tile.tid)
-                ruleDef.modifiers.forEach(tile => tile.tid)
+                
+                let whensTileIds : string[]
+                ruleDef.sensors.forEach(tile => whensTileIds.push(tile.tid))
+                ruleDef.filters.forEach(tile => whensTileIds.push(tile.tid))
+                    
+                let dosTileIds : string[]                  
+                ruleDef.actuators.forEach(tile => dosTileIds.push(tile.tid))
+                ruleDef.modifiers.forEach(tile => dosTileIds.push(tile.tid))
+
+                let accessabilityMessage =
+                {
+                    type: "rule",
+                    details: [
+                        { name: "whens", values: whensTileIds },
+                        { name: "dos", values: dosTileIds }
+                    ]
+                }
+
+                //accessibility.setLiveContent(accessabilityMessage)
             }
         }
     }

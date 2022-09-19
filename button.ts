@@ -31,6 +31,10 @@ namespace microcode {
             return this._ariaId || (typeof this.iconId === "string" ? <string>this.iconId : this.label)
         }
 
+        public get aria(): { type: "id", value: string } | { type: "rule", whens: string[], dos: string[] } {
+            return { type: "id", value: this.ariaId}
+        }
+
         public get hitbox() {
             if (this.back) {
                 return this.back.hitbox
