@@ -172,7 +172,9 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.B.id,
-                () => this.cursor.move(CursorDir.Back)
+                () => {
+                    if (!this.cursor.cancel()) this.cursor.move(CursorDir.Back)
+                }
             )
             this.hudroot = new Placeable()
             this.hudroot.xfrm.localPos = new Vec2(0, Screen.TOP_EDGE)
