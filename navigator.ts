@@ -85,12 +85,15 @@ namespace microcode {
             return [this.buttonGroups[this.row][this.col]]
         }
 
-        private moveTo(cursor: Cursor) {
-            // console.log(`row = ${this.row}, cpl = ${this.col}`)
+        private makeGood() {
             if (this.row >= this.buttonGroups.length)
                 this.row = this.buttonGroups.length - 1
             if (this.col >= this.buttonGroups[this.row].length)
                 this.col = this.buttonGroups[this.row].length - 1
+        }
+
+        private moveTo(cursor: Cursor) {
+            this.makeGood()
             const btn = this.buttonGroups[this.row][this.col]
             if (btn) {
                 cursor.moveTo(btn.xfrm.worldPos, btn.ariaId)
