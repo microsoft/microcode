@@ -73,7 +73,7 @@ namespace microcode {
         private nextPage() {
             let index = this.currPage + 1
             index %= this.progdef.pages.length
-            this.switchToPage(index)
+            this.switchToPage(index, false)
         }
 
         private prevPage() {
@@ -81,7 +81,7 @@ namespace microcode {
             if (index < 0) {
                 index = this.progdef.pages.length - 1
             }
-            this.switchToPage(index)
+            this.switchToPage(index, false)
         }
 
         private pickPage() {
@@ -100,7 +100,7 @@ namespace microcode {
             })
         }
 
-        private switchToPage(index: number) {
+        private switchToPage(index: number, updateCursor: boolean = true) {
             if (index < 0 || index >= this.progdef.pages.length) {
                 return
             }
@@ -119,7 +119,7 @@ namespace microcode {
                 Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2
             )
             this.rebuildNavigator()
-            this.navigator.initialCursor(this.cursor)
+            if (updateCursor) this.navigator.initialCursor(this.cursor)
         }
 
         /* override */ startup() {
@@ -247,9 +247,9 @@ namespace microcode {
         private rebuildNavigator() {
             if (this.picker.visible) return
 
-            if (this.navigator) this.navigator.clear()
-
-            this.navigator = new RowNavigator()
+            if (this.navigator) {
+                this.navigator.clear()
+            } else this.navigator = new RowNavigator()
 
             this.navigator.addButtons([
                 this.okBtn,
