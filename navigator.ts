@@ -33,6 +33,8 @@ namespace microcode {
 
         constructor() {
             this.buttonGroups = []
+            this.row = 0
+            this.col = 0
         }
 
         // TODO: what if row, col is no longer in range?
@@ -86,6 +88,7 @@ namespace microcode {
         }
 
         private moveTo(cursor: Cursor) {
+            console.log(`row = ${this.row}, cpl = ${this.col}`)
             const btn = this.buttonGroups[this.row][this.col]
             if (btn) {
                 cursor.moveTo(btn.xfrm.worldPos, btn.ariaId)
