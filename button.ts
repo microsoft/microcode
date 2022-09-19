@@ -136,7 +136,6 @@ namespace microcode {
             if (this.back) {
                 return this.back.occlusions(bounds)
             }
-            console.log(`this.icon = ${this.icon}`)
             return this.icon.occlusions(bounds)
         }
 
