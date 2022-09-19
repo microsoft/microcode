@@ -1,4 +1,6 @@
 namespace jacs {
+    let debugOut = true
+
     export function addUnique<T>(arr: T[], v: T) {
         let idx = arr.indexOf(v)
         if (idx < 0) {
@@ -35,7 +37,11 @@ namespace jacs {
         locals: Variable[] = []
         params: Variable[] = []
         index: number
-        constructor(private parent: TopWriter, public name: string, lst: Procedure[]) {
+        constructor(
+            private parent: TopWriter,
+            public name: string,
+            lst: Procedure[]
+        ) {
             this.index = lst.length
             lst.push(this)
             this.writer = new OpWriter(this.parent, this.name, this.index)
@@ -300,6 +306,15 @@ namespace jacs {
             return r
         }
 
+        printAssembly() {
+            for (const p of this.procs) {
+                console.log(p.toString())
+            }
+            for (let idx = 0; idx < this.stringLiterals.length; ++idx) {
+                console.log(idx + ": " + this.describeString(idx))
+            }
+        }
+
         private finalize() {
             for (const r of this.roles) r.finalize()
             this.withProcedure(this.mainProc, wr => {
@@ -310,13 +325,6 @@ namespace jacs {
             })
             this.finalizePageProcs()
             for (const p of this.procs) p.finalize()
-
-            for (const p of this.procs) {
-                console.log(p.toString())
-            }
-            for (let idx = 0; idx < this.stringLiterals.length; ++idx) {
-                console.log(idx + ": " + this.describeString(idx))
-            }
         }
 
         describeString(idx: number) {
@@ -562,10 +570,6 @@ namespace jacs {
             }
 
             const role = this.lookupSensorRole(rule)
-            if (!role) {
-                console.log("TID:" + rule.sensors[0].tid)
-                return
-            }
             name += "_" + role.name
 
             this.withProcedure(role.getDispatcher(), wr => {
@@ -629,10 +633,12 @@ namespace jacs {
             this.finalize()
 
             if (this.hasErrors) {
+                if (debugOut) this.printAssembly()
                 console.error("errors; not deploying")
             } else {
+                if (debugOut) this.printAssembly()
                 const bin = this.serialize()
-                console.log(bin.toHex())
+                if (debugOut) console.log(bin.toHex())
                 jdc.deploy(bin)
             }
         }
