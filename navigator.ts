@@ -28,8 +28,8 @@ namespace microcode {
 
     export class RowNavigator implements INavigator {
         private buttonGroups: Button[][]
-        private row: number
-        private col: number
+        protected row: number
+        protected col: number
 
         constructor() {
             this.buttonGroups = []
@@ -82,7 +82,7 @@ namespace microcode {
                 this.cursor.moveTo(dest, target.ariaId)
 
                 */
-        
+
         public move(cursor: Cursor, dir: CursorDir) {
             switch (dir) {
                 case CursorDir.Up: {
@@ -159,11 +159,16 @@ namespace microcode {
             this.rules.push(rule)
         }
 
-        private moveTo(cursor: Cursor) {
-            this.makeGood()
-            const btn = this.buttonGroups[this.row][this.col]
-            if (btn) {
-                cursor.moveTo(btn.xfrm.worldPos, btn.ariaId)
+        protected moveTo(cursor: Cursor) {
+            super.moveTo(cursor)
+            if (this.row > 0 && this.col == 0) {
+                const ruleDef = this.rules[this.row - 1]
+                // ACCESSIBILITY
+                ruleDef.sensors.forEach(tile => tile.tid)
+                ruleDef.filters.forEach(tile => tile.tid)
+                ruleDef.actuators.forEach(tile => tile.tid)
+                ruleDef.modifiers.forEach(tile => tile.tid)
             }
+        }
     }
 }
