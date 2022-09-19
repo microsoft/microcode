@@ -119,47 +119,90 @@ namespace microcode {
             if (updateCursor) this.navigator.initialCursor(this.cursor)
         }
 
+        private scrollAndMove(dir: CursorDir) {
+            const target = this.cursor.move(dir)
+
+            /*
+            const occ = target.occlusions(
+                new Bounds({
+                    left: Screen.LEFT_EDGE,
+                    top: Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2,
+                    width: Screen.WIDTH,
+                    height: Screen.HEIGHT - (TOOLBAR_HEIGHT + 2),
+                })
+            )
+            if (occ.has) {
+                if (this.scrollanim.playing) {
+                    return
+                }
+                const xocc = occ.left ? occ.left : -occ.right
+                const yocc = occ.top ? occ.top : -occ.bottom
+                const endValue = Vec2.TranslateToRef(
+                    this.scrollroot.xfrm.localPos,
+                    new Vec2(xocc, yocc),
+                    new Vec2()
+                )
+                this.scrollanim.clearFrames()
+                this.scrollanim.addFrame(
+                    new EaseFrame({
+                        duration: 0.05,
+                        //curve: curves.easeOut(curves.easing.sq2),
+                        curve: curves.linear(),
+                        startValue: this.scrollroot.xfrm.localPos,
+                        endValue,
+                    })
+                )
+                this.scrollanim.start()
+                /*
+                const dest = new Vec2(
+                    target.xfrm.worldPos.x + xocc,
+                    target.xfrm.worldPos.y + yocc
+                )
+                }*/
+            // this.cursor.moveTo(dest, target.ariaId)
+        }
+
         /* override */ startup() {
             super.startup()
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.right.id,
-                () => this.cursor.move(CursorDir.Right)
+                () => this.scrollAndMove(CursorDir.Right)
             )
             control.onEvent(
                 ControllerButtonEvent.Repeated,
                 controller.right.id,
-                () => this.cursor.move(CursorDir.Right)
+                () => this.scrollAndMove(CursorDir.Right)
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.up.id,
-                () => this.cursor.move(CursorDir.Up)
+                () => this.scrollAndMove(CursorDir.Up)
             )
             control.onEvent(
                 ControllerButtonEvent.Repeated,
                 controller.up.id,
-                () => this.cursor.move(CursorDir.Up)
+                () => this.scrollAndMove(CursorDir.Up)
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.down.id,
-                () => this.cursor.move(CursorDir.Down)
+                () => this.scrollAndMove(CursorDir.Down)
             )
             control.onEvent(
                 ControllerButtonEvent.Repeated,
                 controller.down.id,
-                () => this.cursor.move(CursorDir.Down)
+                () => this.scrollAndMove(CursorDir.Down)
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.left.id,
-                () => this.cursor.move(CursorDir.Left)
+                () => this.scrollAndMove(CursorDir.Left)
             )
             control.onEvent(
                 ControllerButtonEvent.Repeated,
                 controller.left.id,
-                () => this.cursor.move(CursorDir.Left)
+                () => this.scrollAndMove(CursorDir.Left)
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
@@ -170,7 +213,8 @@ namespace microcode {
                 ControllerButtonEvent.Pressed,
                 controller.B.id,
                 () => {
-                    if (!this.cursor.cancel()) this.cursor.move(CursorDir.Back)
+                    if (!this.cursor.cancel())
+                        this.scrollAndMove(CursorDir.Back)
                 }
             )
             this.hudroot = new Placeable()

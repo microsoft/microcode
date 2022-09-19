@@ -76,9 +76,9 @@ namespace microcode {
             this.setAriaContent(ariaId)
         }
 
-        public move(dir: CursorDir) {
+        public move(dir: CursorDir): Button {
             if (this.anim && this.anim.playing) return
-            this.navigator.move(this, dir)
+            return this.navigator.move(this, dir)
         }
 
         public click(): boolean {
