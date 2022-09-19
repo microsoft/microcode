@@ -149,6 +149,11 @@ namespace microcode {
     export class RuleRowNavigator extends RowNavigator {
         private rules: RuleDefn[]
 
+        constructor() {
+            super()
+            this.rules = []
+        }
+
         /* overrides */
         public clear() {
             super.clear()
@@ -163,7 +168,8 @@ namespace microcode {
             super.moveTo(cursor)
             if (this.row > 0 && this.col == 0) {
                 const ruleDef = this.rules[this.row - 1]
-                // ACCESSIBILITY
+                // PELI: ACCESSIBILITY
+                console.log("PELI and ALEX")
                 ruleDef.sensors.forEach(tile => tile.tid)
                 ruleDef.filters.forEach(tile => tile.tid)
                 ruleDef.actuators.forEach(tile => tile.tid)
