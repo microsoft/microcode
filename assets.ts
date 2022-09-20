@@ -33,6 +33,7 @@ namespace microcode {
             this.reg["insertion_point"] = icondb.btn_insertion_point
             this.reg["next_page"] = icondb.btn_next_page
             this.reg["prev_page"] = icondb.btn_prev_page
+            this.reg["paint"] = icondb.paint
             this.reg["MISSING"] = icondb.MISSING
 
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
@@ -40,6 +41,9 @@ namespace microcode {
             this.reg[TID_SENSOR_PRESS] = icondb.finger_press
             this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
             this.reg[TID_SENSOR_ACCELEROMETER] = icondb.accelerometer
+            this.reg[TID_SENSOR_IN_PIPE_A] = icondb.inPipeA
+            this.reg[TID_SENSOR_IN_PIPE_B] = icondb.inPipeB
+            this.reg[TID_SENSOR_IN_PIPE_C] = icondb.inPipeC
 
             this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
             this.reg[TID_FILTER_PIN_0] = icondb.tile_pin_0
@@ -92,6 +96,10 @@ namespace microcode {
             this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
             this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
 
+            this.reg[TID_MODIFIER_PIPE_OUT_A] = icondb.outPipeA
+            this.reg[TID_MODIFIER_PIPE_OUT_B] = icondb.outPipeB
+            this.reg[TID_MODIFIER_PIPE_OUT_C] = icondb.outPipeC
+
             this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
             this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.moveFall
             this.reg[TID_FILTER_ACCEL_TILT_UP] = icondb.moveTiltUp
@@ -106,6 +114,47 @@ namespace microcode {
             this.reg["default"] = icondb.rc_default
         }
     }
+
+    export const wordLogo = img` 
+    .111111.......111111...1111..........................................................................................1111.................
+    11bbbbbb.....11bbbbbb.11bbbb........................................................................................11bbbb................
+    1bbbbbbbb...11bbbbbbb.1bbbbb........................................................................................1bbbbb................
+    1bbbbbbbbb.11bbbbbbbb.1bbbbb........................................................................................1bbbbb................
+    1bbbbbbbbbb1bbbbbbbbb.1bbbbb........................................................................................1bbbbb................
+    1bbbbbbbbbbbbbbbbbbbb..bbbb.........................................................................................1bbbbb................
+    1bbbbbbbbbbbbbbbbbbbb............1111111......1111...111.......1111111.........1111111.........1111111.........111111bbbbb.....1111111....
+    1bbbbbbbbbbbbbbbbbbbb..1111....111bbbbbbb1...11bbbb.11bbb....111bbbbbbb1.....111bbbbbbb1.....111bbbbbbb1.....111bbbbbbbbbb...111bbbbbbb1..
+    1bbbbbbbbbbbbbbbbbbbb.11bbbb..11bbbbbbbbbbb..1bbbbbb1bbbbb..11bbbbbbbbbbb...11bbbbbbbbbbb...11bbbbbbbbbbb...11bbbbbbbbbbbb..11bbbbbbbbbbb.
+    1bbbbbb.bbbbb.bbbbbbb.1bbbbb..1bbbbbbbbbbbb..1bbbbbbbbbbbb..1bbbbbbbbbbbb...1bbbbbbbbbbbb...1bbbbbbbbbbbb...1bbbbbbbbbbbbb..1bbbbbbbbbbbb.
+    1bbbbbb..bbb..1bbbbbb.1bbbbb.11bbbbbbbbbbbbb.1bbbbbbbbbbbb.11bbbbbbbbbbbbb.11bbbbbbbbbbbbb.11bbbbbbbbbbbbb.11bbbbbbbbbbbbb.11bbbb...bbbbbb
+    1bbbbbb.......1bbbbbb.1bbbbb.1bbbbb...bbbbbb.1bbbbb...bbb..1bbbbb...bbbbbb.1bbbbb...bbbbbb.1bbbbb...bbbbbb.1bbbbb...bbbbbb.1bbbb.....bbbbb
+    1bbbbbb.......1bbbbbb.1bbbbb.1bbbb.....bbbb..1bbbbb........1bbbb.....bbbbb.1bbbb.....bbbb..1bbbb.....bbbbb.1bbbb....1bbbbb.1bbbbb11111bbbb
+    1bbbbbb.......1bbbbbb.1bbbbb.1bbbb...........1bbbbb........1bbbb.....1bbbb.1bbbb...........1bbbb.....1bbbb.1bbbb....1bbbbb.1bbbbbbbbbbbbbb
+    1bbbbbb.......1bbbbbb.1bbbbb.1bbbb.....1111..1bbbbb........1bbbb.....1bbbb.1bbbb.....1111..1bbbb.....1bbbb.1bbbb....1bbbbb.1bbbbbbbbbbbbb.
+    1bbbbbb.......1bbbbbb.1bbbbb.1bbbbb...11bbbb.1bbbbb........1bbbbb...11bbbb.1bbbbb...11bbbb.1bbbbb...11bbbb.1bbbbb...1bbbbb.1bbbb..........
+    1bbbbbb.......1bbbbbb.1bbbbb.1bbbbbb111bbbbb.1bbbbb........1bbbbbb111bbbbb.1bbbbbb111bbbbb.1bbbbbb111bbbbb.1bbbbbb111bbbbb.1bbbbb.........
+    1bbbbbb.......1bbbbbb.1bbbbb..bbbbbbbbbbbbb..1bbbbb.........bbbbbbbbbbbbb...bbbbbbbbbbbbb...bbbbbbbbbbbbb...bbbbbbbbbbbbbb..bbbbbb11111...
+    1bbbbbb.......1bbbbbb.1bbbbb..1bbbbbbbbbbbb..1bbbbb.........1bbbbbbbbbbbb...1bbbbbbbbbbbb...1bbbbbbbbbbbb...1bbbbbbbbbbbbb..1bbbbbbbbbbb..
+    1bbbbbb.......1bbbbbb.1bbbbb...bbbbbbbbbbb...1bbbbb..........bbbbbbbbbbb.....bbbbbbbbbbb.....bbbbbbbbbbb.....bbbbbbbbbbbbb...bbbbbbbbbbb..
+    .bbbbb.........bbbbb...bbbb......bbbbbbb......bbbb.............bbbbbbb.........bbbbbbb.........bbbbbbb.........bbbbbbbbbb......bbbbbbbb...
+
+    `
+    export const microbitLogo = img` 
+    .....1111111111111111.....
+    ...11111111111111111111...
+    ..111................111..
+    .111..................111.
+    .11....................11.
+    11.....11........11.....11
+    11....1111......1111....11
+    11....1111......1111....11
+    11.....11........11.....11
+    .11....................11.
+    .111..................111.
+    ..111................111..
+    ...11111111111111111111...
+    .....1111111111111111.....
+    `
 
     export const editorBackground = img`
         8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
@@ -1328,8 +1377,8 @@ namespace icondb {
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
-    
-export const speakerQuiet = img`
+
+    export const speakerQuiet = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
@@ -1347,7 +1396,7 @@ export const speakerQuiet = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
-    
+
     export const music = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
@@ -1425,8 +1474,6 @@ f f f f f f f f f f f f f f f f
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
-
-
 
     export const soundGiggle = img`
         . . . . . . . . . . . . . . . .
@@ -1718,7 +1765,7 @@ f f f f f f f f f f f f f f f f
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-export const diceToss = img`
+    export const diceToss = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . b b b b b b b b . . .
@@ -1737,8 +1784,116 @@ export const diceToss = img`
     . . . . . . . . . . . . . . . .
 `
     
+export const inPipeA = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . c c c c c c c c
+    . . . . . . . c f c d d d d d d
+    . . . . . . c 6 f f c 1 1 1 1 1
+    . . . . . . c 9 6 f c d d f d d
+    6 6 6 6 6 6 6 9 9 6 c d f d f d
+    9 9 9 9 9 9 9 9 9 9 c d f f f d
+    6 6 6 6 6 6 6 9 9 6 c d f d f d
+    . . . . . . c 9 6 f c d f d f d
+    . . . . . . c 6 f f c d d d d d
+    . . . . . . . c f c b b b b b b
+    . . . . . . . . c c c c c c c c
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+export const inPipeB = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . c c c c c c c c
+    . . . . . . . c f c d d d d d d
+    . . . . . . c 6 f f c 1 1 1 1 1
+    . . . . . . c 9 6 f c d f f d d
+    6 6 6 6 6 6 6 9 9 6 c d f d f d
+    9 9 9 9 9 9 9 9 9 9 c d f f d d
+    6 6 6 6 6 6 6 9 9 6 c d f d f d
+    . . . . . . c 9 6 f c d f f d d
+    . . . . . . c 6 f f c d d d d d
+    . . . . . . . c f c b b b b b b
+    . . . . . . . . c c c c c c c c
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+export const inPipeC = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . c c c c c c c c
+    . . . . . . . c f c d d d d d d
+    . . . . . . c 6 f f c 1 1 1 1 1
+    . . . . . . c 9 6 f c d d f d d
+    6 6 6 6 6 6 6 9 9 6 c d f d f d
+    9 9 9 9 9 9 9 9 9 9 c d f d d d
+    6 6 6 6 6 6 6 9 9 6 c d f d f d
+    . . . . . . c 9 6 f c d d f d d
+    . . . . . . c 6 f f c d d d d d
+    . . . . . . . c f c b b b b b b
+    . . . . . . . . c c c c c c c c
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+export const outPipeA = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    c c c c c c c c . . . . . . . .
+    d d d d d d c f c . . . . . . .
+    1 1 1 1 1 c f f f c . . 6 . . .
+    d d f d d c f f f c . . 9 6 . .
+    d f d f d c 6 6 6 6 6 6 9 9 6 .
+    d f f f d c 9 9 9 9 9 9 9 9 9 6
+    d f d f d c 6 6 6 6 6 6 9 9 6 .
+    d f d f d c f f f c . . 9 6 . .
+    d d d d d c f f f c . . 6 . . .
+    b b b b b b c f c . . . . . . .
+    c c c c c c c c . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+export const outPipeB = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    c c c c c c c c . . . . . . . .
+    d d d d d d c f c . . . . . . .
+    1 1 1 1 1 c f f f c . . 6 . . .
+    d f f d d c f f f c . . 9 6 . .
+    d f d f d c 6 6 6 6 6 6 9 9 6 .
+    d f f d d c 9 9 9 9 9 9 9 9 9 6
+    d f d f d c 6 6 6 6 6 6 9 9 6 .
+    d f f d d c f f f c . . 9 6 . .
+    d d d d d c f f f c . . 6 . . .
+    b b b b b b c f c . . . . . . .
+    c c c c c c c c . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+export const outPipeC = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    c c c c c c c c . . . . . . . .
+    d d d d d d c f c . . . . . . .
+    1 1 1 1 1 c f f f c . . 6 . . .
+    d d f d d c f f f c . . 9 6 . .
+    d f d f d c 6 6 6 6 6 6 9 9 6 .
+    d f d d d c 9 9 9 9 9 9 9 9 9 6
+    d f d f d c 6 6 6 6 6 6 9 9 6 .
+    d d f d d c f f f c . . 9 6 . .
+    d d d d d c f f f c . . 6 . . .
+    b b b b b b c f c . . . . . . .
+    c c c c c c c c . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
 
-    /* maybe use these later
+/* maybe use these later
     export const rc_high = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
