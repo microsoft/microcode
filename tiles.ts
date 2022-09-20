@@ -137,6 +137,7 @@ namespace microcode {
             categories: ["press_event"],
         },
     }
+    press_event.priority = 10
     tilesDB.sensors[TID_SENSOR_PRESS] = press_event
 
     function addPressFilter(tid: string, name: string, instanceNo: number) {
@@ -170,6 +171,7 @@ namespace microcode {
             categories: ["value_in"],
         },
     }
+    radio_receive.priority = 100
     tilesDB.sensors[TID_SENSOR_RADIO_RECEIVE] = radio_receive
 
     const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
@@ -178,6 +180,7 @@ namespace microcode {
             categories: ["timespan"],
         },
     }
+    timer.priority = 110
     tilesDB.sensors[TID_SENSOR_TIMER] = timer
 
     function addTimespan(tid: string, name: string, ms: number) {
@@ -200,6 +203,7 @@ namespace microcode {
     }
     accel.serviceClassName = "accelerometer"
     accel.eventCode = 0x8b // shake
+    accel.priority = 20
     tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
 
     function addAccelEvent(id: number, name: string) {
@@ -229,6 +233,7 @@ namespace microcode {
             categories: ["sound_event"],
         },
     }
+    microphone.priority = 30
     microphone.serviceClassName = "soundLevel"
     microphone.eventCode = 1 // laud by default
     tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
