@@ -146,7 +146,19 @@ namespace microcode {
                 }
 
                 accessibility.setLiveContent(accessabilityMessage)
+            } else {
+
+                let accessabilityMessage =
+                {
+                    type: "tile",
+                    details: [
+                        { name: "tileId", values: [ret.ariaId || ''] }
+                    ]
+                }
+                
+                accessibility.setLiveContent(accessabilityMessage)
             }
+
             return ret
         }
     }

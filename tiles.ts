@@ -56,6 +56,7 @@ namespace microcode {
     export const TID_ACTUATOR_MUSIC = "A4"
     export const TID_ACTUATOR_PAINT = "A5"
     export const TID_ACTUATOR_RADIO_SEND = "A6"
+    export const TID_ACTUATOR_RANDOM_TOSS = "A7"
 
     export const TID_MODIFIER_PAGE_1 = "M1"
     export const TID_MODIFIER_PAGE_2 = "M2"
@@ -264,6 +265,13 @@ namespace microcode {
     paint.serviceCommand = jacs.CMD_SET_REG | 0x2
     paint.serviceInstanceIndex = 0
     paint.priority = 10
+
+    const random_toss = addActuator(
+        TID_ACTUATOR_RANDOM_TOSS,
+        "Toss",
+        "value_out"
+    )
+    random_toss.priority = 70
 
     const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
     radio_send.priority = 100
