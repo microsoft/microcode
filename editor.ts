@@ -107,13 +107,16 @@ namespace microcode {
             this.rebuildNavigator()
             if (initCursor) {
                 const btn = this.navigator.initialCursor(this.cursor)
-                if (btn)
-                    this.cursor.snapTo(
-                        btn.xfrm.worldPos.x,
-                        btn.xfrm.worldPos.y,
-                        btn.ariaId
-                    )
+                if (btn) this.snapCursorTo(btn)
             }
+        }
+
+        public snapCursorTo(btn: Button) {
+            this.cursor.snapTo(
+                btn.xfrm.worldPos.x,
+                btn.xfrm.worldPos.y,
+                btn.ariaId
+            )
         }
 
         private scrollAndMove(dir: CursorDir) {
@@ -447,6 +450,8 @@ namespace microcode {
         whenInsertBtn: Button
         doInsertBtn: Button
         rule: ButtonRuleRep
+        lastEditedIndex: number
+        lastEditedType: string
 
         //% blockCombine block="xfrm" callInDebugger
         public get xfrm() {
@@ -484,6 +489,7 @@ namespace microcode {
                 actuators: [],
                 modifiers: [],
             }
+            this.lastEditedIndex = -1
             this.instantiateProgramTiles()
         }
 
@@ -587,6 +593,17 @@ namespace microcode {
             })
             this.needsWhenInsert()
             this.needsDoInsert()
+            if (this.lastEditedIndex >= 0) {
+                if (this.lastEditedType == "sensors" && this.whenInsertBtn) {
+                    // this.editor.snapCursorTo(this.whenInsertBtn)
+                } else if (
+                    this.lastEditedType == "actuators" &&
+                    this.doInsertBtn
+                ) {
+                    // this.editor.snapCursorTo(this.doInsertBtn)
+                }
+            }
+            this.lastEditedIndex = -1
             if (changed) this.page.changed()
         }
 
@@ -609,10 +626,12 @@ namespace microcode {
         }
 
         private editTile(name: string, index: number) {
-            let updated = false
             const ruleTiles = this.ruledef.getRuleRep()[name]
             const tileUpdated = () => {
-                updated = true
+                if (name == "sensors" || name == "actuators") {
+                    this.lastEditedType = name
+                    this.lastEditedIndex = index
+                }
                 Language.ensureValid(this.ruledef)
                 this.editor.saveAndCompileProgram()
                 this.instantiateProgramTiles()
@@ -631,7 +650,7 @@ namespace microcode {
                             tileUpdated()
                         }
                     )
-                    return updated
+                    return
                 }
             }
             const suggestions = this.getSuggestions(name, index)
@@ -658,7 +677,7 @@ namespace microcode {
                         tileUpdated()
                     }
                 )
-                return updated
+                return
             }
             let onDelete = undefined
             if (index < ruleTiles.length) {
@@ -683,7 +702,7 @@ namespace microcode {
                     onDelete,
                 })
             }
-            return updated
+            return
         }
 
         private handleRuleHandleMenuSelection(iconId: string) {
@@ -698,13 +717,7 @@ namespace microcode {
             if (this.ruledef.sensors.length) {
                 this.editTile("filters", this.ruledef.filters.length)
             } else {
-                const updated = this.editTile("sensors", 0)
-                if (updated) {
-                    // if (this.ruledef.filters.length == 0)
-                    // is there an empty filter slot?
-                    // YES - move cursor there
-                    // if no filter slot, but empty DO, move cursor there
-                }
+                this.editTile("sensors", 0)
             }
         }
 
@@ -712,8 +725,7 @@ namespace microcode {
             if (this.ruledef.actuators.length) {
                 this.editTile("modifiers", this.ruledef.modifiers.length)
             } else {
-                const updated = this.editTile("actuators", 0)
-                // TODO: modifier
+                this.editTile("actuators", 0)
             }
         }
 
