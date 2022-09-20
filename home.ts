@@ -36,19 +36,17 @@ namespace microcode {
         max: number
     }
 
-    export class Home extends Scene {
+    export class Home extends CursorScene {
         currView: HomeView
         logLines: LogLine[]
         plotLines: { [color: number]: PlotLine }
-
-        paused: boolean
-        singleStep: boolean
+        editBtn: Button
+        sampleBtn: Button
 
         constructor(app: App) {
-            super(app, "home")
+            super(app)
             this.currView = HomeView.Console
             this.logLines = []
-            this.plotLines = {}
             this.compileProgram()
         }
 
@@ -66,12 +64,9 @@ namespace microcode {
                 Math.max(this.logLines.length - 15, 0)
             )
 
-            let accessabilityMessage =
-            {
+            let accessabilityMessage = {
                 type: "text",
-                details: [
-                    { name: "details", values: [text] }
-                ]
+                details: [{ name: "details", values: [text] }],
             }
 
             accessibility.setLiveContent(accessabilityMessage)
@@ -136,23 +131,19 @@ namespace microcode {
             if (progdef) {
                 new jacs.TopWriter().emitProgram(progdef)
 
-                let accessabilityMessage =
-                {
+                let accessabilityMessage = {
                     type: "text",
-                    details: [
-                        { name: "details", values: [""] }
-                    ]
+                    details: [{ name: "details", values: [""] }],
                 }
-                
+
                 accessibility.setLiveContent(accessabilityMessage)
                 pause(1000)
 
-                accessabilityMessage =
-                {
+                accessabilityMessage = {
                     type: "text",
                     details: [
-                        { name: "details", values: ["program deployed"] }
-                    ]
+                        { name: "details", values: ["program deployed"] },
+                    ],
                 }
 
                 accessibility.setLiveContent(accessabilityMessage)
@@ -161,50 +152,50 @@ namespace microcode {
 
         /* override */ startup() {
             super.startup()
-            control.onEvent(
-                ControllerButtonEvent.Released,
-                controller.left.id,
-                () => {
+
+            this.editBtn = new Button({
+                parent: null,
+                style: "white",
+                icon: "ok",
+                x: 16,
+                y: 8,
+                onClick: () => {
                     this.app.popScene()
                     this.app.pushScene(new Editor(this.app))
-                }
-            )
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.up.id,
-                () => {
-                    this.paused = !this.paused
-                    if (this.paused) {
-                        this.log("program paused", 1)
-                    } else {
-                        this.log("program resumed", 1)
-                    }
-                }
-            )
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.up.id,
-                () => {
-                    console.log("singleStep")
-                    this.singleStep = true
-                }
-            )
-            control.onEvent(
-                ControllerButtonEvent.Repeated,
-                controller.up.id,
-                () => {
-                    this.singleStep = true
-                }
-            )
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.right.id,
-                () => {
-                    this.compileProgram()
-                }
-            )
+                },
+            })
 
-            // this.compileProgram()
+            this.editBtn = new Button({
+                parent: null,
+                style: "white",
+                icon: "ok",
+                x: -16,
+                y: 48,
+                onClick: () => {
+                    this.app.popScene()
+                    this.app.pushScene(new Editor(this.app))
+                },
+            })
+            this.sampleBtn = new Button({
+                parent: null,
+                style: "white",
+                icon: "plus",
+                x: 16,
+                y: 48,
+                onClick: () => {
+                    // LOAD sample
+                },
+            })
+
+            this.navigator.addButtons([this.editBtn, this.sampleBtn])
+
+            const btn = this.navigator.initialCursor(this.cursor)
+            if (btn)
+                this.cursor.snapTo(
+                    btn.xfrm.worldPos.x,
+                    btn.xfrm.worldPos.y,
+                    btn.ariaId
+                )
         }
 
         /* override */ shutdown() {
@@ -229,7 +220,6 @@ namespace microcode {
                 progdef = new ProgramDefn()
                 this.app.save(SAVESLOT_AUTO, progdef)
             }
-            this.paused = false
 
             // this.log("program started", 1)
         }
@@ -240,9 +230,6 @@ namespace microcode {
 
         /* override */ update() {
             super.update()
-            if (!this.paused || (this.paused && this.singleStep)) {
-                this.singleStep = false
-            }
         }
 
         private setView(view: HomeView) {
@@ -250,38 +237,12 @@ namespace microcode {
         }
 
         /* override */ draw() {
-            this.drawToolbar()
-            if (this.currView === HomeView.Console) {
-                this.drawConsoleView()
-            } else if (this.currView === HomeView.Plot) {
-                this.drawPlotView()
-            }
+            this.drawConsoleView()
             super.draw()
-        }
-
-        private drawToolbar() {
-            // TODO this could all be prerendered/precalculated
-            const toolbarTop = Screen.BOTTOM_EDGE - TOOLBAR_HEIGHT
-            Screen.fillRect(
-                Screen.LEFT_EDGE,
-                toolbarTop,
-                Screen.WIDTH,
-                TOOLBAR_HEIGHT,
-                11
-            )
-            const icn_dpad_left = icons.get("dpad_left")
-            const dpadTop =
-                toolbarTop + (TOOLBAR_HEIGHT >> 1) - (icn_dpad_left.height >> 1)
-            Screen.print(
-                "Press   to edit your code",
-                Screen.LEFT_EDGE + 2,
-                dpadTop + (LINE_HEIGHT >> 1)
-            )
-            Screen.drawTransparentImage(
-                icn_dpad_left,
-                Screen.LEFT_EDGE + 32,
-                dpadTop
-            )
+            this.editBtn.draw()
+            this.sampleBtn.draw()
+            this.picker.draw()
+            this.cursor.draw()
         }
 
         private drawConsoleView() {
