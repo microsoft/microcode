@@ -152,7 +152,7 @@ namespace microcode {
                 {
                     type: "tile",
                     details: [
-                        { name: "tileId", values: [ret.ariaId || ''] }
+                        { name: "tileId", values: [(ret?ret.ariaId : '') || ""] }
                     ]
                 }
                 
