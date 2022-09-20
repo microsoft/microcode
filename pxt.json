@@ -8,6 +8,7 @@
         "codal-jacdac-pxt": "github:microsoft/codal-jacdac/pxt#v0.0.7"
     },
     "files": [
+        "config.ts",
         "main.ts",
         "README.md",
         "accessibility.ts",
