@@ -30,7 +30,10 @@ if (!inIFrame)
             connectEl = document.createElement("button")
             connectEl.id = "connectbtn"
             // create WebUSB bus
-            bus = jacdac.createWebBus()
+            bus = jacdac.createWebBus({
+                bluetoothOptions: null,
+                serialOptions: null,
+            })
             // track connection state and update button
             bus.on(jacdac.CONNECTION_STATE, refreshUI)
             bus.on(jacdac.ERROR, e => console.error(e))
@@ -87,7 +90,9 @@ addSimMessageHandler("jacscript", async data => {
     }
 
     // release lock
-    setTimeout(() => { deployDebouncer = false }, 500)
+    setTimeout(() => {
+        deployDebouncer = false
+    }, 500)
 })
 
 // handle accessibility requests
@@ -180,27 +185,27 @@ const liveStrings = {
 }
 
 addSimMessageHandler("accessibility", data => {
-    
     const serializedAccessabilityMessage = uint8ArrayToString(data)
 
-    var accessabilityMessage = JSON.parse(serializedAccessabilityMessage);
+    var accessabilityMessage = JSON.parse(serializedAccessabilityMessage)
 
-    var value;
-    if (accessabilityMessage.type === "tile" || accessabilityMessage.type === "text") {
-
+    var value
+    if (
+        accessabilityMessage.type === "tile" ||
+        accessabilityMessage.type === "text"
+    ) {
         console.log(serializedAccessabilityMessage)
 
         valueId = accessabilityMessage.details[0]
-        
+
         if (valueId) {
             valueId = valueId.values[0]
 
             if (valueId) {
-
                 value = (liveStrings[valueId] || valueId).split(/_/g).join(" ")
-        
+
                 console.log(`live region: ${valueId} -> ${value}`)
-            }               
+            }
         }
     } else if (accessabilityMessage.type == "rule") {
         value = "rule"
@@ -209,25 +214,27 @@ addSimMessageHandler("accessibility", data => {
 
         if (whens && whens.values.length > 0) {
             value += " when "
-            
+
             whens.values.forEach(tileId => {
-                value +=  (liveStrings[tileId] || tileId).split(/_/g).join(" ")
-            });
+                value += (liveStrings[tileId] || tileId).split(/_/g).join(" ")
+            })
         }
 
         var dos = accessabilityMessage.details[1]
 
         if (dos && dos.values.length > 0) {
             value += " do "
-            
+
             dos.values.forEach(tileId => {
-                value +=  (liveStrings[tileId] || tileId).split(/_/g).join(" ")
-            });
+                value += (liveStrings[tileId] || tileId).split(/_/g).join(" ")
+            })
         }
 
         console.log(`live region: ${value}`)
     } else {
-        console.log("Error, " + serializedAccessabilityMessage + " is not supported")
+        console.log(
+            "Error, " + serializedAccessabilityMessage + " is not supported"
+        )
         return
     }
 
