@@ -23,6 +23,9 @@ namespace microcode {
     export const TID_SENSOR_TEMP = "S6"
     export const TID_SENSOR_RADIO_RECEIVE = "S7"
     export const TID_SENSOR_MICROPHONE = "S8"
+    export const TID_SENSOR_IN_PIPE_A = "S9A"
+    export const TID_SENSOR_IN_PIPE_B = "S9B"
+    export const TID_SENSOR_IN_PIPE_C = "S9C"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -88,6 +91,10 @@ namespace microcode {
     export const TID_MODIFIER_EMOJI_SPRING = "M19spring"
     export const TID_MODIFIER_EMOJI_TWINKLE = "M19twinkle"
     export const TID_MODIFIER_EMOJI_YAWN = "M19yawn"
+
+    export const TID_MODIFIER_PIPE_OUT_A = "M20A"
+    export const TID_MODIFIER_PIPE_OUT_B = "M20B"
+    export const TID_MODIFIER_PIPE_OUT_C = "M20C"
 
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,

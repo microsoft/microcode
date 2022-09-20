@@ -40,6 +40,9 @@ namespace microcode {
             this.reg[TID_SENSOR_PRESS] = icondb.finger_press
             this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
             this.reg[TID_SENSOR_ACCELEROMETER] = icondb.accelerometer
+            this.reg[TID_SENSOR_IN_PIPE_A] = icondb.tile_page_1
+            this.reg[TID_SENSOR_IN_PIPE_B] = icondb.tile_page_2
+            this.reg[TID_SENSOR_IN_PIPE_C] = icondb.tile_page_3
 
             this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
             this.reg[TID_FILTER_PIN_0] = icondb.tile_pin_0
@@ -91,6 +94,10 @@ namespace microcode {
             this.reg[TID_MODIFIER_EMOJI_SPRING] = icondb.soundSpring
             this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
             this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
+
+            this.reg[TID_MODIFIER_PIPE_OUT_A] = icondb.tile_page_1
+            this.reg[TID_MODIFIER_PIPE_OUT_B] = icondb.tile_page_2
+            this.reg[TID_MODIFIER_PIPE_OUT_C] = icondb.tile_page_3
 
             this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
             this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.moveFall
@@ -1353,8 +1360,8 @@ namespace icondb {
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
-    
-export const speakerQuiet = img`
+
+    export const speakerQuiet = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
@@ -1372,7 +1379,7 @@ export const speakerQuiet = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
-    
+
     export const music = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
@@ -1450,8 +1457,6 @@ f f f f f f f f f f f f f f f f
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
-
-
 
     export const soundGiggle = img`
         . . . . . . . . . . . . . . . .
@@ -1743,7 +1748,7 @@ f f f f f f f f f f f f f f f f
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-export const diceToss = img`
+    export const diceToss = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . b b b b b b b b . . .
@@ -1761,7 +1766,6 @@ export const diceToss = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-    
 
     /* maybe use these later
     export const rc_high = img`
