@@ -115,6 +115,10 @@ namespace microcode {
             this.rules = []
         }
 
+        public getRow() {
+            return this.row
+        }
+
         public addRule(rule: RuleDefn) {
             this.rules.push(rule)
         }
@@ -124,12 +128,12 @@ namespace microcode {
 
             if (this.row > 0 && this.col == 0) {
                 const ruleDef = this.rules[this.row - 1]
-                
-                const whensTileIds : string[] = []
+
+                const whensTileIds: string[] = []
                 ruleDef.sensors.forEach(tile => whensTileIds.push(tile.tid))
                 ruleDef.filters.forEach(tile => whensTileIds.push(tile.tid))
-                    
-                const dosTileIds : string[] = []
+
+                const dosTileIds: string[] = []
                 ruleDef.actuators.forEach(tile => dosTileIds.push(tile.tid))
                 ruleDef.modifiers.forEach(tile => dosTileIds.push(tile.tid))
 

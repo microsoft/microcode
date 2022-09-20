@@ -56,17 +56,6 @@ namespace microcode {
             new jacs.TopWriter().emitProgram(this.progdef)
         }
 
-        /*
-        private exitEditor() {
-            this.saveAndCompileProgram()
-            while (controller.A.isPressed()) {
-                pause(10)
-            }
-            this.app.popScene()
-            this.app.pushScene(new Home(this.app))
-        }
-*/
-
         private nextPage() {
             let index = this.currPage + 1
             index %= this.progdef.pages.length
@@ -208,8 +197,12 @@ namespace microcode {
                 ControllerButtonEvent.Pressed,
                 controller.B.id,
                 () => {
-                    if (!this.cursor.cancel())
-                        this.scrollAndMove(CursorDir.Back)
+                    if (!this.cursor.cancel()) {
+                        if (this.navigator.getRow() == 0) {
+                            this.app.popScene()
+                            this.app.pushScene(new Home(this.app))
+                        } else this.scrollAndMove(CursorDir.Back)
+                    }
                 }
             )
             this.hudroot = new Placeable()
