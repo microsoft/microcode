@@ -61,14 +61,22 @@ namespace microcode {
                 }
 
                 case CursorDir.Left: {
-                    if (this.col == 0) return undefined
-                    this.col--
+                    if (this.col == 0) {
+                        if (this.row > 0) {
+                            this.row--
+                            this.col = this.buttonGroups[this.row].length - 1
+                        } else return undefined
+                    } else this.col--
                     break
                 }
 
                 case CursorDir.Right: {
-                    if (this.col == this.buttonGroups[this.row].length - 1)
-                        return undefined
+                    if (this.col == this.buttonGroups[this.row].length - 1) {
+                        if (this.row < this.buttonGroups.length - 1) {
+                            this.row++
+                            this.col = -1
+                        } else return undefined
+                    }
                     this.col++
                     break
                 }
