@@ -27,8 +27,13 @@ namespace microcode {
             return this.back ? this.back.height : this.icon.height
         }
 
-        public get ariaId() : string {
-            return this._ariaId || (typeof this.iconId === "string" ? <string>this.iconId : this.label)
+        public get ariaId(): string {
+            return (
+                this._ariaId ||
+                (typeof this.iconId === "string"
+                    ? <string>this.iconId
+                    : this.label)
+            )
         }
 
         public get aria(): { type: "id", value: string } | { type: "rule", whens: string[], dos: string[] } {

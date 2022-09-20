@@ -21,9 +21,9 @@ namespace microcode {
     export interface INavigator {
         clear: () => void
         addButtons: (btns: Button[]) => void
-        move: (cursor: Cursor, dir: CursorDir) => void
+        move: (cursor: Cursor, dir: CursorDir) => Button
         getOverlapping: (cursor: Cursor) => Button[]
-        initialCursor: (cursor: Cursor) => void
+        initialCursor: (cursor: Cursor) => Button
     }
 
     export class RowNavigator implements INavigator {
@@ -43,70 +43,32 @@ namespace microcode {
             this.buttonGroups.push(btns)
         }
 
-        /*
-
-         const occ = target.occlusions(
-                new Bounds({
-                    left: Screen.LEFT_EDGE,
-                    top: Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2,
-                    width: Screen.WIDTH,
-                    height: Screen.HEIGHT - (TOOLBAR_HEIGHT + 2),
-                })
-            )
-            if (occ.has) {
-                if (this.scrollanim.playing) {
-                    return
-                }
-                const xocc = occ.left ? occ.left : -occ.right
-                const yocc = occ.top ? occ.top : -occ.bottom
-                const endValue = Vec2.TranslateToRef(
-                    this.scrollroot.xfrm.localPos,
-                    new Vec2(xocc, yocc),
-                    new Vec2()
-                )
-                this.scrollanim.clearFrames()
-                this.scrollanim.addFrame(
-                    new EaseFrame({
-                        duration: 0.05,
-                        //curve: curves.easeOut(curves.easing.sq2),
-                        curve: curves.linear(),
-                        startValue: this.scrollroot.xfrm.localPos,
-                        endValue,
-                    })
-                )
-                this.scrollanim.start()
-                const dest = new Vec2(
-                    target.xfrm.worldPos.x + xocc,
-                    target.xfrm.worldPos.y + yocc
-                )
-                this.cursor.moveTo(dest, target.ariaId)
-
-                */
-
         public move(cursor: Cursor, dir: CursorDir) {
+            this.makeGood()
             switch (dir) {
                 case CursorDir.Up: {
-                    if (this.row == 0) return
+                    if (this.row == 0) return undefined
                     this.row--
                     this.col = 0
                     break
                 }
                 case CursorDir.Down: {
-                    if (this.row == this.buttonGroups.length - 1) return
+                    if (this.row == this.buttonGroups.length - 1)
+                        return undefined
                     this.row++
                     this.col = 0
                     break
                 }
 
                 case CursorDir.Left: {
-                    if (this.col == 0) return
+                    if (this.col == 0) return undefined
                     this.col--
                     break
                 }
 
                 case CursorDir.Right: {
                     if (this.col == this.buttonGroups[this.row].length - 1)
-                        return
+                        return undefined
                     this.col++
                     break
                 }
@@ -114,10 +76,11 @@ namespace microcode {
                 case CursorDir.Back: {
                     if (this.col > 0) this.col = 0
                     else if (this.row > 0) this.row--
+                    else return undefined
                     break
                 }
             }
-            this.moveTo(cursor)
+            return this.buttonGroups[this.row][this.col]
         }
 
         public getOverlapping(cursor: Cursor): Button[] {
@@ -131,18 +94,10 @@ namespace microcode {
                 this.col = this.buttonGroups[this.row].length - 1
         }
 
-        protected moveTo(cursor: Cursor) {
-            this.makeGood()
-            const btn = this.buttonGroups[this.row][this.col]
-            if (btn) {
-                cursor.moveTo(btn.xfrm.worldPos, btn.ariaId)
-            }
-        }
-
         public initialCursor(cursor: Cursor) {
             this.row = 0
             this.col = 0
-            this.moveTo(cursor)
+            return this.buttonGroups[0][0]
         }
     }
 
@@ -164,8 +119,8 @@ namespace microcode {
             this.rules.push(rule)
         }
 
-        protected moveTo(cursor: Cursor) {
-            super.moveTo(cursor)
+        public move(cursor: Cursor, dir: CursorDir) {
+            const ret = super.move(cursor, dir)
 
             if (this.row > 0 && this.col == 0) {
                 const ruleDef = this.rules[this.row - 1]
@@ -188,6 +143,7 @@ namespace microcode {
 
                 accessibility.setLiveContent(accessabilityMessage)
             }
+            return ret
         }
     }
 }

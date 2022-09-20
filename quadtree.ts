@@ -12,12 +12,7 @@ namespace microcode {
         }
 
         public initialCursor(cursor: Cursor) {
-            if (this.firstBtn)
-                cursor.snapTo(
-                    this.firstBtn.xfrm.worldPos.x,
-                    this.firstBtn.xfrm.worldPos.y,
-                    this.firstBtn.ariaId
-                )
+            return this.firstBtn
         }
 
         private initializeQuadtree() {
@@ -54,7 +49,7 @@ namespace microcode {
             btns.forEach(btn => this.addToQuadTree(btn))
         }
 
-        public move(cursor: Cursor, dir: CursorDir) {
+        public move(cursor: Cursor, dir: CursorDir): Button {
             let btn: Button = undefined
             switch (dir) {
                 case CursorDir.Up: {
@@ -77,6 +72,7 @@ namespace microcode {
             if (btn) {
                 cursor.moveTo(btn.xfrm.worldPos, btn.ariaId)
             }
+            return btn
         }
 
         private queryUp(cursor: Cursor): Button {

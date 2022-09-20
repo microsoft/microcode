@@ -234,7 +234,8 @@ namespace microcode {
                 }
             })
 
-            this.navigator.initialCursor(this.cursor)
+            const btn = this.navigator.initialCursor(this.cursor)
+            this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId)
         }
     }
 
