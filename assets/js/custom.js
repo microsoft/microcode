@@ -179,68 +179,55 @@ const liveStrings = {
 }
 
 addSimMessageHandler("accessibility", data => {
-    if (!data) {
-        return
-    }
     
     const serializedAccessabilityMessage = uint8ArrayToString(data)
-
-    console.log(serializedAccessabilityMessage)
 
     var accessabilityMessage = JSON.parse(serializedAccessabilityMessage);
 
     var value;
-    if (accessabilityMessage.name === "tile" || accessabilityMessage.name === "text") {
+    if (accessabilityMessage.type === "tile" || accessabilityMessage.type === "text") {
 
-        console.log("in tile or text")
+        console.log(serializedAccessabilityMessage)
 
-        valueId = accessabilityMessage.details[0];
-
+        valueId = accessabilityMessage.details[0]
+        
         if (valueId) {
-            valueId = valueId[0].tileIds[0]
+            valueId = valueId.values[0]
 
             if (valueId) {
 
                 value = (liveStrings[valueId] || valueId).split(/_/g).join(" ")
         
                 console.log(`live region: ${valueId} -> ${value}`)
-            } else {
-                console.log(`could not parse valueid 1`)
-            }                    
-        } else {
-            console.log(`could not parse valueid 0`)
+            }               
         }
-    } else if (accessabilityMessage.name == "rule") {
-        value = "rule "
-
-        console.log(`test: ${accessabilityMessage}`)
+    } else if (accessabilityMessage.type == "rule") {
+        value = "rule"
 
         var whens = accessabilityMessage.details[0]
 
-        if (whens) {
+        if (whens && whens.values.length > 0) {
             value += " when "
             
             whens.values.forEach(tileId => {
-                value += " "
                 value +=  (liveStrings[tileId] || tileId).split(/_/g).join(" ")
             });
         }
 
         var dos = accessabilityMessage.details[1]
 
-        if (dos) {
+        if (dos && dos.values.length > 0) {
             value += " do "
             
             dos.values.forEach(tileId => {
-                value += " "
                 value +=  (liveStrings[tileId] || tileId).split(/_/g).join(" ")
             });
         }
 
         console.log(`live region: ${value}`)
     } else {
-        return;
-        //console.log("Error, " + accessabilityMessage + " is not supported")
+        console.log("Error, " + serializedAccessabilityMessage + " is not supported")
+        return
     }
 
     if (!liveRegion) {

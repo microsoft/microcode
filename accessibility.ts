@@ -5,9 +5,9 @@ namespace accessibility {
     //% shim=TD_ID
     export function setLiveContent(accessabilityMessage: AccessabilityMessage) {
 
-        let serializesMessage = JSON.stringify(accessabilityMessage);
+        let serializedMessage = JSON.stringify(accessabilityMessage);
 
-        control.simmessages.send("accessibility", Buffer.fromUTF8(serializesMessage || ""))
+        control.simmessages.send("accessibility", Buffer.fromUTF8(serializedMessage || ""))
     }
 
     export interface AccessabilityMessageDetals

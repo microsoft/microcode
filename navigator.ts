@@ -171,11 +171,11 @@ namespace microcode {
                     
                 const ruleDef = this.rules[this.row - 1]
                 
-                let whensTileIds : string[]
+                const whensTileIds : string[] = []
                 ruleDef.sensors.forEach(tile => whensTileIds.push(tile.tid))
                 ruleDef.filters.forEach(tile => whensTileIds.push(tile.tid))
                     
-                let dosTileIds : string[]                  
+                const dosTileIds : string[] = []
                 ruleDef.actuators.forEach(tile => dosTileIds.push(tile.tid))
                 ruleDef.modifiers.forEach(tile => dosTileIds.push(tile.tid))
 
