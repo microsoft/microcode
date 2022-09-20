@@ -493,36 +493,54 @@ namespace microcode {
             this.instantiateProgramTiles()
         }
 
-        private makeWhenInsertButton() {
-            this.whenInsertBtn = new EditorButton(this.editor, {
-                parent: this,
-                style: "beige",
-                icon: "insertion_point",
-                ariaId: "when",
-                x: 0,
-                y: 0,
-                onClick: () => this.showWhenInsertMenu(),
-            })
-        }
         private destroyWhenInsertButton() {
             if (this.whenInsertBtn) this.whenInsertBtn.destroy()
             this.whenInsertBtn = undefined
         }
 
-        private makeDoInsertButton() {
-            this.doInsertBtn = new EditorButton(this.editor, {
-                parent: this,
-                style: "beige",
-                icon: "insertion_point",
-                ariaId: "do",
-                x: 0,
-                y: 0,
-                onClick: () => this.showDoInsertMenu(),
-            })
+        private needsWhenInsert() {
+            if (
+                this.rule["sensors"].length == 0 ||
+                this.getSuggestions("filters", this.rule["filters"].length)
+                    .length
+            ) {
+                this.whenInsertBtn = new EditorButton(this.editor, {
+                    parent: this,
+                    style: "beige",
+                    icon: "insertion_point",
+                    ariaId: "when",
+                    x: 0,
+                    y: 0,
+                    onClick: () => this.showWhenInsertMenu(),
+                })
+            } else {
+                this.destroyWhenInsertButton()
+            }
         }
+
         private destroyDoInsertButton() {
             if (this.doInsertBtn) this.doInsertBtn.destroy()
             this.doInsertBtn = undefined
+        }
+
+        private needsDoInsert() {
+            if (
+                this.rule["actuators"].length == 0 ||
+                this.getSuggestions("modifiers", this.rule["modifiers"].length)
+                    .length
+            ) {
+                this.doInsertBtn = new EditorButton(this.editor, {
+                    parent: this,
+                    style: "beige",
+                    icon: "insertion_point",
+                    ariaId: "do",
+                    x: 0,
+                    y: 0,
+                    onClick: () => this.showDoInsertMenu(),
+                })
+            } else {
+                this.destroyDoInsertButton()
+            }
         }
 
         destroy() {
@@ -572,6 +590,8 @@ namespace microcode {
                     changed = true
                 })
             })
+            this.needsWhenInsert()
+            this.needsDoInsert()
             if (changed) this.page.changed()
         }
 
@@ -712,23 +732,12 @@ namespace microcode {
             this.rule["sensors"].forEach(b => btns.push(b))
             this.rule["filters"].forEach(b => btns.push(b))
 
-            const indexWhen =
-                this.rule["sensors"].length + this.rule["filters"].length - 1
-            if (
-                indexWhen < 0 ||
-                !!this.getSuggestions("filters", indexWhen).length
-            ) {
-                this.makeWhenInsertButton()
-                btns.push(this.whenInsertBtn)
-            } else {
-                this.destroyWhenInsertButton()
-            }
+            if (this.whenInsertBtn) btns.push(this.whenInsertBtn)
 
             this.rule["actuators"].forEach(b => btns.push(b))
             this.rule["modifiers"].forEach(b => btns.push(b))
 
-            // TODO: don't show Do insert if there is nothing left to do
-            btns.push(this.doInsertBtn)
+            if (this.doInsertBtn) btns.push(this.doInsertBtn)
 
             this.editor.addButtons(btns)
         }
@@ -751,10 +760,7 @@ namespace microcode {
             this.handleBtn.xfrm.localPos = v
             v.x += (this.handleBtn.width >> 1) + (this.whenLbl.width >> 1)
             this.whenLbl.xfrm.localPos = v
-            v.x +=
-                2 +
-                (this.whenLbl.width >> 1) +
-                (this.whenInsertBtn ? this.whenInsertBtn.width >> 1 : 0)
+            v.x += 2 + (this.whenLbl.width >> 1) + 8
 
             const whenSection = ["sensors", "filters"]
             whenSection.forEach(buttonLoc)
@@ -765,10 +771,7 @@ namespace microcode {
                 (this.whenInsertBtn ? this.whenInsertBtn.width >> 1 : 0) +
                 (this.doLbl.width >> 1)
             this.doLbl.xfrm.localPos = v
-            v.x +=
-                2 +
-                (this.doLbl.width >> 1) +
-                (this.doInsertBtn ? this.doInsertBtn.width >> 1 : 0)
+            v.x += 2 + (this.doLbl.width >> 1) + 8
 
             const doSection = ["actuators", "modifiers"]
             doSection.forEach(buttonLoc)
