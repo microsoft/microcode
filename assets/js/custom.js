@@ -11,6 +11,8 @@ const inIFrame = (() => {
 let bus
 let connectEl
 const refreshUI = () => {
+    if (bus.connected) connectEl.style.display = "none"
+    else connectEl.style.display = "inherit"
     connectEl.innerText = bus.connected
         ? "micro:bit connected 🎉"
         : bus.disconnected
