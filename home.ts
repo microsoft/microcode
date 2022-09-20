@@ -13,8 +13,8 @@ namespace microcode {
     const LINE_HEIGHT = 9
     const CONSOLE_MARGIN = 2
     const STORED_SAMPLES =
-        ["{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S2\"],\"A\":[\"A5\"],\"F\":[\"F4\"],\"M\":[\"M15(1111110001100011000111111)\"]}]},{},{},{},{}]}}",
-            "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S2\"],\"A\":[\"A5\"],\"F\":[\"F4\"],\"M\":[\"M15(1000101010001000101010001)\"]}]},{},{},{},{}]}}"]
+        ["{\"progdef\":{\"P\":[{\"R\":[{\"S\":[],\"A\":[\"A5\"],\"M\":[\"M15(0101010101100010101000100)\"]},{\"S\":[\"S4\"],\"A\":[\"A1\"],\"M\":[\"M2\"]}]},{\"R\":[{\"S\":[],\"A\":[\"A5\"],\"M\":[\"M15(0000000000000000000000000)\"]},{\"S\":[\"S4\"],\"A\":[\"A1\"],\"M\":[\"M1\"]},{\"S\":[],\"A\":[]}]},{},{},{}]}}",
+            "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S2\"],\"A\":[\"A5\"],\"F\":[\"F3\"],\"M\":[\"M15(1101111011000001000101110)\"]},{\"S\":[\"S2\"],\"A\":[\"A5\"],\"F\":[\"F4\"],\"M\":[\"M15(1101111011000000111010001)\"]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{}]}}"]
     
     export enum LineJustification {
         Left,
@@ -162,6 +162,7 @@ namespace microcode {
                 parent: null,
                 style: "white",
                 icon: "ok",
+                ariaId: "launch editor",
                 x: -26,
                 y: 48,
                 onClick: () => {
@@ -173,6 +174,7 @@ namespace microcode {
                 parent: null,
                 style: "white",
                 icon: "plus",
+                ariaId: "flashing heart sample",
                 x: 0,
                 y: 48,
                 onClick: () => {
@@ -185,6 +187,7 @@ namespace microcode {
                 parent: null,
                 style: "white",
                 icon: "plus",
+                ariaId: "smiley buttons sample",
                 x: 26,
                 y: 48,
                 onClick: () => {
