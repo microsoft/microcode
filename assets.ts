@@ -40,9 +40,9 @@ namespace microcode {
             this.reg[TID_SENSOR_PRESS] = icondb.finger_press
             this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
             this.reg[TID_SENSOR_ACCELEROMETER] = icondb.accelerometer
-            this.reg[TID_SENSOR_IN_PIPE_A] = icondb.tile_page_1
-            this.reg[TID_SENSOR_IN_PIPE_B] = icondb.tile_page_2
-            this.reg[TID_SENSOR_IN_PIPE_C] = icondb.tile_page_3
+            this.reg[TID_SENSOR_IN_PIPE_A] = icondb.inPipeA
+            this.reg[TID_SENSOR_IN_PIPE_B] = icondb.inPipeB
+            this.reg[TID_SENSOR_IN_PIPE_C] = icondb.inPipeC
 
             this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
             this.reg[TID_FILTER_PIN_0] = icondb.tile_pin_0
@@ -95,9 +95,9 @@ namespace microcode {
             this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
             this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
 
-            this.reg[TID_MODIFIER_PIPE_OUT_A] = icondb.tile_page_1
-            this.reg[TID_MODIFIER_PIPE_OUT_B] = icondb.tile_page_2
-            this.reg[TID_MODIFIER_PIPE_OUT_C] = icondb.tile_page_3
+            this.reg[TID_MODIFIER_PIPE_OUT_A] = icondb.outPipeA
+            this.reg[TID_MODIFIER_PIPE_OUT_B] = icondb.outPipeB
+            this.reg[TID_MODIFIER_PIPE_OUT_C] = icondb.outPipeC
 
             this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
             this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.moveFall
@@ -1766,8 +1766,117 @@ f f f f f f f f f f f f f f f f
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
+    
+export const inPipeA = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . c c c c c c c c
+    . . . . . . . c f c d d d d d d
+    . . . . . . c 6 f f c 1 1 1 1 1
+    . . . . . . c 9 6 f c d d f d d
+    6 6 6 6 6 6 6 9 9 6 c d f d f d
+    9 9 9 9 9 9 9 9 9 9 c d f f f d
+    6 6 6 6 6 6 6 9 9 6 c d f d f d
+    . . . . . . c 9 6 f c d f d f d
+    . . . . . . c 6 f f c d d d d d
+    . . . . . . . c f c b b b b b b
+    . . . . . . . . c c c c c c c c
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+export const inPipeB = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . c c c c c c c c
+    . . . . . . . c f c d d d d d d
+    . . . . . . c 6 f f c 1 1 1 1 1
+    . . . . . . c 9 6 f c d f f d d
+    6 6 6 6 6 6 6 9 9 6 c d f d f d
+    9 9 9 9 9 9 9 9 9 9 c d f f d d
+    6 6 6 6 6 6 6 9 9 6 c d f d f d
+    . . . . . . c 9 6 f c d f f d d
+    . . . . . . c 6 f f c d d d d d
+    . . . . . . . c f c b b b b b b
+    . . . . . . . . c c c c c c c c
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+export const inPipeC = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . c c c c c c c c
+    . . . . . . . c f c d d d d d d
+    . . . . . . c 6 f f c 1 1 1 1 1
+    . . . . . . c 9 6 f c d d f d d
+    6 6 6 6 6 6 6 9 9 6 c d f d f d
+    9 9 9 9 9 9 9 9 9 9 c d f d d d
+    6 6 6 6 6 6 6 9 9 6 c d f d f d
+    . . . . . . c 9 6 f c d d f d d
+    . . . . . . c 6 f f c d d d d d
+    . . . . . . . c f c b b b b b b
+    . . . . . . . . c c c c c c c c
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+export const outPipeA = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    c c c c c c c c . . . . . . . .
+    d d d d d d c f c . . . . . . .
+    1 1 1 1 1 c f f f c . . 6 . . .
+    d d f d d c f f f c . . 9 6 . .
+    d f d f d c 6 6 6 6 6 6 9 9 6 .
+    d f f f d c 9 9 9 9 9 9 9 9 9 6
+    d f d f d c 6 6 6 6 6 6 9 9 6 .
+    d f d f d c f f f c . . 9 6 . .
+    d d d d d c f f f c . . 6 . . .
+    b b b b b b c f c . . . . . . .
+    c c c c c c c c . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+export const outPipeB = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    c c c c c c c c . . . . . . . .
+    d d d d d d c f c . . . . . . .
+    1 1 1 1 1 c f f f c . . 6 . . .
+    d f f d d c f f f c . . 9 6 . .
+    d f d f d c 6 6 6 6 6 6 9 9 6 .
+    d f f d d c 9 9 9 9 9 9 9 9 9 6
+    d f d f d c 6 6 6 6 6 6 9 9 6 .
+    d f f d d c f f f c . . 9 6 . .
+    d d d d d c f f f c . . 6 . . .
+    b b b b b b c f c . . . . . . .
+    c c c c c c c c . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+export const outPipeC = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    c c c c c c c c . . . . . . . .
+    d d d d d d c f c . . . . . . .
+    1 1 1 1 1 c f f f c . . 6 . . .
+    d d f d d c f f f c . . 9 6 . .
+    d f d f d c 6 6 6 6 6 6 9 9 6 .
+    d f d d d c 9 9 9 9 9 9 9 9 9 6
+    d f d f d c 6 6 6 6 6 6 9 9 6 .
+    d d f d d c f f f c . . 9 6 . .
+    d d d d d c f f f c . . 6 . . .
+    b b b b b b c f c . . . . . . .
+    c c c c c c c c . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
 
-    /* maybe use these later
+/* maybe use these later
     export const rc_high = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
