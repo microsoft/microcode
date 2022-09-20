@@ -550,6 +550,7 @@ namespace microcode {
                         style: "white",
                         icon: tile.getIcon(),
                         border: tile.getBorder(),
+                        label: TID_MODIFIER_ICON_EDITOR,
                         x: 0,
                         y: 0,
                         onClick: () => this.handleTile(name, index),
