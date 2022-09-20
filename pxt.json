@@ -37,7 +37,8 @@
         "jacs_topwriter.ts",
         "version.ts",
         "fieldeditors.ts",
-        "navigator.ts"
+        "navigator.ts",
+        "cursorscene.ts"
     ],
     "testFiles": [],
     "targetVersions": {
