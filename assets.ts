@@ -40,6 +40,9 @@ namespace microcode {
             this.reg[TID_SENSOR_PRESS] = icondb.finger_press
             this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
             this.reg[TID_SENSOR_ACCELEROMETER] = icondb.accelerometer
+            this.reg[TID_SENSOR_IN_PIPE_A] = icondb.tile_page_1
+            this.reg[TID_SENSOR_IN_PIPE_B] = icondb.tile_page_2
+            this.reg[TID_SENSOR_IN_PIPE_C] = icondb.tile_page_3
 
             this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
             this.reg[TID_FILTER_PIN_0] = icondb.tile_pin_0
@@ -1332,8 +1335,8 @@ namespace icondb {
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
-    
-export const speakerQuiet = img`
+
+    export const speakerQuiet = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
@@ -1351,7 +1354,7 @@ export const speakerQuiet = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
-    
+
     export const music = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
@@ -1429,8 +1432,6 @@ f f f f f f f f f f f f f f f f
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
-
-
 
     export const soundGiggle = img`
         . . . . . . . . . . . . . . . .
