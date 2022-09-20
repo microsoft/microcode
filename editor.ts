@@ -566,7 +566,6 @@ namespace microcode {
         }
 
         private instantiateProgramTiles() {
-            this.editor.saveAndCompileProgram()
             this.destroyProgramTiles()
             const rule = this.ruledef.getRuleRep()
             let changed = false
@@ -611,6 +610,7 @@ namespace microcode {
             const ruleTiles = this.ruledef.getRuleRep()[name]
             const updateEditor = () => {
                 Language.ensureValid(this.ruledef)
+                this.editor.saveAndCompileProgram()
                 this.instantiateProgramTiles()
                 this.page.changed()
             }
