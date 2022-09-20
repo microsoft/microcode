@@ -168,24 +168,22 @@ namespace microcode {
             super.moveTo(cursor)
 
             if (this.row > 0 && this.col == 0) {
-                    
                 const ruleDef = this.rules[this.row - 1]
-                
-                let whensTileIds : string[]
+
+                let whensTileIds: string[] = []
                 ruleDef.sensors.forEach(tile => whensTileIds.push(tile.tid))
                 ruleDef.filters.forEach(tile => whensTileIds.push(tile.tid))
-                    
-                let dosTileIds : string[]                  
+
+                let dosTileIds: string[] = []
                 ruleDef.actuators.forEach(tile => dosTileIds.push(tile.tid))
                 ruleDef.modifiers.forEach(tile => dosTileIds.push(tile.tid))
 
-                let accessabilityMessage =
-                {
+                let accessabilityMessage = {
                     type: "rule",
                     details: [
                         { name: "whens", values: whensTileIds },
-                        { name: "dos", values: dosTileIds }
-                    ]
+                        { name: "dos", values: dosTileIds },
+                    ],
                 }
 
                 accessibility.setLiveContent(accessabilityMessage)
