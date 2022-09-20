@@ -119,8 +119,8 @@ namespace microcode {
             this.rules.push(rule)
         }
 
-        protected moveTo(cursor: Cursor) {
-            super.moveTo(cursor)
+        public move(cursor: Cursor, dir: CursorDir) {
+            const ret = super.move(cursor, dir)
 
             if (this.row > 0 && this.col == 0) {
                 const ruleDef = this.rules[this.row - 1]
