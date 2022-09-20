@@ -167,27 +167,21 @@ namespace microcode {
         }
 
         /* override */ startup() {
+            const makeOnEvent = (id: number, dir: CursorDir) => {
+                control.onEvent(ControllerButtonEvent.Pressed, id, () =>
+                    this.scrollAndMove(dir)
+                )
+                if (Options.repeatKey)
+                    control.onEvent(ControllerButtonEvent.Repeated, id, () =>
+                        this.scrollAndMove(dir)
+                    )
+            }
+
             super.startup()
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.right.id,
-                () => this.scrollAndMove(CursorDir.Right)
-            )
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.up.id,
-                () => this.scrollAndMove(CursorDir.Up)
-            )
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.down.id,
-                () => this.scrollAndMove(CursorDir.Down)
-            )
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.left.id,
-                () => this.scrollAndMove(CursorDir.Left)
-            )
+            makeOnEvent(controller.right.id, CursorDir.Right)
+            makeOnEvent(controller.left.id, CursorDir.Left)
+            makeOnEvent(controller.up.id, CursorDir.Up)
+            makeOnEvent(controller.down.id, CursorDir.Down)
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.A.id,
