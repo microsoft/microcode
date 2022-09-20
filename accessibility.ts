@@ -12,13 +12,13 @@ namespace accessibility {
 
     export interface AccessabilityMessageDetals
     {
-        name: string;
+        name: string
         values: string[]
     }
 
     export interface AccessabilityMessage 
     {
         type: string;
-        details: AccessabilityMessageDetals[];
+        details: AccessabilityMessageDetals[]
     }
 }
