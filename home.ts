@@ -103,6 +103,7 @@ namespace microcode {
             //this.drawConsoleView()
             this.editBtn.draw()
             this.sampleBtn.draw()
+            this.sampleBtn2.draw()
             super.draw()
         }
     }
