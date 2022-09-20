@@ -188,14 +188,6 @@ namespace microcode {
             })
 
             this.navigator.addButtons([this.editBtn, this.sampleBtn])
-
-            const btn = this.navigator.initialCursor(this.cursor)
-            if (btn)
-                this.cursor.snapTo(
-                    btn.xfrm.worldPos.x,
-                    btn.xfrm.worldPos.y,
-                    btn.ariaId
-                )
         }
 
         /* override */ shutdown() {
@@ -238,11 +230,9 @@ namespace microcode {
 
         /* override */ draw() {
             this.drawConsoleView()
-            super.draw()
             this.editBtn.draw()
             this.sampleBtn.draw()
-            this.picker.draw()
-            this.cursor.draw()
+            super.draw()
         }
 
         private drawConsoleView() {

@@ -82,12 +82,23 @@ namespace microcode {
             this.navigator.clear()
         }
 
-        /* override */ activate() {}
+        /* override */ activate() {
+            const btn = this.navigator.initialCursor(this.cursor)
+            if (btn)
+                this.cursor.snapTo(
+                    btn.xfrm.worldPos.x,
+                    btn.xfrm.worldPos.y,
+                    btn.ariaId
+                )
+        }
 
         /* override */ update() {
             this.cursor.update()
         }
 
-        /* override */ draw() {}
+        /* override */ draw() {
+            this.picker.draw()
+            this.cursor.draw()
+        }
     }
 }
