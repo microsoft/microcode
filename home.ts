@@ -65,7 +65,16 @@ namespace microcode {
             this.logLines = this.logLines.slice(
                 Math.max(this.logLines.length - 15, 0)
             )
-            accessibility.setLiveContent(text)
+
+            let accessabilityMessage =
+            {
+                type: "text",
+                details: [
+                    { name: "details", values: [text] }
+                ]
+            }
+
+            accessibility.setLiveContent(accessabilityMessage)
         }
 
         /**
@@ -126,9 +135,27 @@ namespace microcode {
             const progdef = this.app.load(SAVESLOT_AUTO)
             if (progdef) {
                 new jacs.TopWriter().emitProgram(progdef)
-                accessibility.setLiveContent("")
+
+                let accessabilityMessage =
+                {
+                    type: "text",
+                    details: [
+                        { name: "details", values: [""] }
+                    ]
+                }
+                
+                accessibility.setLiveContent(accessabilityMessage)
                 pause(1000)
-                accessibility.setLiveContent("program deployed")
+
+                accessabilityMessage =
+                {
+                    type: "text",
+                    details: [
+                        { name: "details", values: ["program deployed"] }
+                    ]
+                }
+
+                accessibility.setLiveContent(accessabilityMessage)
             }
         }
 

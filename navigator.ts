@@ -119,18 +119,29 @@ namespace microcode {
             this.rules.push(rule)
         }
 
-        public move(cursor: Cursor, dir: CursorDir) {
-            const ret = super.move(cursor, dir)
-            if (ret && this.row > 0 && this.col == 0) {
-                // special case for beginning of rule
+        protected moveTo(cursor: Cursor) {
+            super.moveTo(cursor)
+
+            if (this.row > 0 && this.col == 0) {
                 const ruleDef = this.rules[this.row - 1]
-                // PELI: ACCESSIBILITY
-                // WHEN
-                ruleDef.sensors.forEach(tile => tile.tid)
-                ruleDef.filters.forEach(tile => tile.tid)
-                // DO
-                ruleDef.actuators.forEach(tile => tile.tid)
-                ruleDef.modifiers.forEach(tile => tile.tid)
+
+                let whensTileIds: string[] = []
+                ruleDef.sensors.forEach(tile => whensTileIds.push(tile.tid))
+                ruleDef.filters.forEach(tile => whensTileIds.push(tile.tid))
+
+                let dosTileIds: string[] = []
+                ruleDef.actuators.forEach(tile => dosTileIds.push(tile.tid))
+                ruleDef.modifiers.forEach(tile => dosTileIds.push(tile.tid))
+
+                let accessabilityMessage = {
+                    type: "rule",
+                    details: [
+                        { name: "whens", values: whensTileIds },
+                        { name: "dos", values: dosTileIds },
+                    ],
+                }
+
+                accessibility.setLiveContent(accessabilityMessage)
             }
             return ret
         }
