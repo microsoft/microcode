@@ -552,7 +552,7 @@ namespace microcode {
                         border: tile.getBorder(),
                         x: 0,
                         y: 0,
-                        onClick: () => this.handleTile(name, index),
+                        onClick: () => this.editTile(name, index),
                     })
                     this.rule[name].push(button)
                     changed = true
@@ -579,9 +579,11 @@ namespace microcode {
             })
         }
 
-        private handleTile(name: string, index: number) {
+        private editTile(name: string, index: number) {
+            let updated = false
             const ruleTiles = this.ruledef.getRuleRep()[name]
-            const updateEditor = () => {
+            const tileUpdated = () => {
+                updated = true
                 Language.ensureValid(this.ruledef)
                 this.editor.saveAndCompileProgram()
                 this.instantiateProgramTiles()
@@ -594,13 +596,13 @@ namespace microcode {
                     fieldEditor.editor(
                         theOne.getField(),
                         this.editor.picker,
-                        updateEditor,
+                        tileUpdated,
                         () => {
                             ruleTiles.splice(index, 1)
-                            updateEditor()
+                            tileUpdated()
                         }
                     )
-                    return
+                    return updated
                 }
             }
             const suggestions = Language.getTileSuggestions(
@@ -628,16 +630,16 @@ namespace microcode {
                         } else {
                             ruleTiles[index] = newOne
                         }
-                        updateEditor()
+                        tileUpdated()
                     }
                 )
-                return
+                return updated
             }
             let onDelete = undefined
             if (index < ruleTiles.length) {
                 onDelete = () => {
                     ruleTiles.splice(index, 1)
-                    updateEditor()
+                    tileUpdated()
                 }
             }
             if (btns.length) {
@@ -651,11 +653,12 @@ namespace microcode {
                         } else {
                             ruleTiles[index] = newOne
                         }
-                        updateEditor()
+                        tileUpdated()
                     },
                     onDelete,
                 })
             }
+            return updated
         }
 
         private handleRuleHandleMenuSelection(iconId: string) {
@@ -668,17 +671,22 @@ namespace microcode {
 
         private showWhenInsertMenu() {
             if (this.ruledef.sensors.length) {
-                this.handleTile("filters", this.ruledef.filters.length)
+                this.editTile("filters", this.ruledef.filters.length)
             } else {
-                this.handleTile("sensors", 0)
+                const updated = this.editTile("sensors", 0)
+                if (updated) {
+                    // is there an empty filter slot?
+                    // YES - move cursor there
+                    // if no filter slot, but empty DO, move cursor there
+                }
             }
         }
 
         private showDoInsertMenu() {
             if (this.ruledef.actuators.length) {
-                this.handleTile("modifiers", this.ruledef.modifiers.length)
+                this.editTile("modifiers", this.ruledef.modifiers.length)
             } else {
-                this.handleTile("actuators", 0)
+                this.editTile("actuators", 0)
             }
         }
 
