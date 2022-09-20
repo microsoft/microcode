@@ -67,16 +67,6 @@ namespace microcode {
 
         private setAriaContent(ariaId: string) {
             this.ariaId = ariaId || ""
-
-            let accessabilityMessage =
-            {
-                type: "tile",
-                details: [
-                    { name: "tileId", values: [this.ariaId] }
-                ]
-            }
-            
-            accessibility.setLiveContent(accessabilityMessage)
         }
 
         public snapTo(x: number, y: number, ariaId: string) {

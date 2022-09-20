@@ -192,34 +192,32 @@ addSimMessageHandler("accessibility", data => {
 
             if (valueId) {
                 value = (liveStrings[valueId] || valueId).split(/_/g).join(" ")
-
-                //console.log(`live region: ${valueId} -> ${value}`)
             }
         }
     } else if (accessabilityMessage.type == "rule") {
         value = "rule"
 
-        var whens = accessabilityMessage.details[0]
+        let whens = accessabilityMessage.details[0]
 
         if (whens && whens.values.length > 0) {
-            value += " when "
+            value += " when"
 
             whens.values.forEach(tileId => {
+                value += " "
                 value += (liveStrings[tileId] || tileId).split(/_/g).join(" ")
             })
         }
 
-        var dos = accessabilityMessage.details[1]
+        let dos = accessabilityMessage.details[1]
 
         if (dos && dos.values.length > 0) {
-            value += " do "
+            value += " do"
 
             dos.values.forEach(tileId => {
+                value += " "
                 value += (liveStrings[tileId] || tileId).split(/_/g).join(" ")
             })
         }
-
-        //console.log(`live region: ${value}`)
     } else {
         console.log(
             "Error, " + serializedAccessabilityMessage + " is not supported"
