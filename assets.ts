@@ -64,7 +64,7 @@ namespace microcode {
             this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
             this.reg[TID_ACTUATOR_SPEAKER] = icondb.speaker
             this.reg[TID_ACTUATOR_MUSIC] = icondb.music
-            this.reg[TID_ACTUATOR_RANDOM_TOSS] = icondb.tile_value_5
+            this.reg[TID_ACTUATOR_RANDOM_TOSS] = icondb.diceToss
 
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
@@ -1734,6 +1734,25 @@ f f f f f f f f f f f f f f f f
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
+export const diceToss = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . b b b b b b b b . . .
+    . . . . b 1 1 1 1 1 1 1 b b . .
+    . . . b 1 1 1 b 1 1 1 b d b . .
+    . . b 1 1 1 1 1 1 1 b d d b . .
+    . . c b b b b b b b d d b b . .
+    . . c b c b b b c b d d d b . .
+    . . c b b b b b b b d d d b . .
+    . . c b b b c b b b d b d b d .
+    . . c b b b b b b b d d d b d .
+    . . c b c b b b c b d d b d . .
+    . . c b b b b b b b d b d . . .
+    . . . c c c c c c c b d . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+    
 
     /* maybe use these later
     export const rc_high = img`

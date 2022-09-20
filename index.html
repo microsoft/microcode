@@ -2,7 +2,7 @@
 # this is an empty front matter
 ---
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 
 <head>
     <meta charset="utf-8">
@@ -81,10 +81,13 @@
             right: 0.25rem;
             bottom: 0.5rem;
             cursor: pointer;
-            color: white;
-            border: solid 1px white;
-            background-color: #000;
+            border: none;
+            outline: solid 2px #000;
+            background-color: #fff;
             border-radius: 0.2rem;
+        }
+        #connectbtn:hover {
+            outline: solid 3px rgb(64, 133, 92);
         }
         .lds-ripple {
             width: 80px;
@@ -154,7 +157,7 @@
                 id="path4210" fill="#fff" fill-opacity="1" />
         </svg>
     </div>
-    <iframe id="simframe" allowfullscreen="allowfullscreen"
+    <iframe id="simframe" title="MicroCode editor" allowfullscreen="allowfullscreen"
         sandbox="allow-popups allow-forms allow-scripts allow-same-origin">
     </iframe>
     <footer id="footer">
