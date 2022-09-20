@@ -23,7 +23,6 @@
         "editor.ts",
         "cursor.ts",
         "home.ts",
-        "quadtree.ts",
         "bounds.ts",
         "picker.ts",
         "affine.ts",

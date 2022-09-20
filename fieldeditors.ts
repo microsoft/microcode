@@ -39,6 +39,7 @@ namespace microcode {
                 },
                 onHide,
                 onDelete,
+                navigator: () => new LEDNavigator(),
             },
             false
         )

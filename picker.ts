@@ -63,7 +63,7 @@ namespace microcode {
             super("picker")
             this.xfrm_ = new Affine()
             this.groups = []
-            this.navigator = new QuadtreeNavigator()
+            this.navigator = new RowNavigator()
         }
 
         public addGroup(opts: { label: string; btns: PickerButtonDef[] }) {
@@ -92,12 +92,17 @@ namespace microcode {
                 onClick?: (btn: string, button: Button) => void
                 onHide?: () => void
                 onDelete?: () => void
+                navigator?: () => INavigator
             },
             hideOnClick: boolean = true
         ) {
             this.onClick = opts.onClick
             this.onHide = opts.onHide
             this.onDelete = opts.onDelete
+            if (opts.navigator) {
+                this.navigator.clear()
+                this.navigator = opts.navigator()
+            }
             this.hideOnClick = hideOnClick
             this.title = opts.title
             this.prevNavigator = this.cursor.navigator

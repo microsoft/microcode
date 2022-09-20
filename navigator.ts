@@ -165,10 +165,11 @@ namespace microcode {
     }
 
     export class LEDNavigator extends RowNavigator {
-        private rememberCol = 0
+        private rememberCol: number
 
         constructor() {
             super()
+            this.rememberCol = 0
         }
 
         private hasDelete() {
@@ -181,7 +182,7 @@ namespace microcode {
                 case CursorDir.Up: {
                     if (this.row == 0) return undefined
                     this.row--
-                    if (this.row == 0 && this.hasDelete) {
+                    if (this.row == 0 && this.hasDelete()) {
                         this.rememberCol = this.col
                         this.col = 0
                     }
@@ -191,7 +192,7 @@ namespace microcode {
                     if (this.row == this.buttonGroups.length - 1)
                         return undefined
                     this.row++
-                    if (this.row == 1 && this.hasDelete) {
+                    if (this.row == 1 && this.hasDelete()) {
                         this.col = this.rememberCol
                     }
                     break
@@ -214,7 +215,7 @@ namespace microcode {
         }
 
         public initialCursor(cursor: Cursor) {
-            this.row = 2 + (this.hasDelete ? 1 : 0)
+            this.row = 2 + (this.hasDelete() ? 1 : 0)
             this.col = 2
             return this.buttonGroups[this.row][this.col]
         }
