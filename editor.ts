@@ -252,6 +252,7 @@ namespace microcode {
         }
 
         /* override */ activate() {
+            this.saveAndCompileProgram()
             this.pageBtn.setIcon(PAGE_IDS[this.currPage])
             if (!this.pageEditor) {
                 this.switchToPage(this.currPage)
@@ -450,7 +451,6 @@ namespace microcode {
         whenInsertBtn: Button
         doInsertBtn: Button
         rule: ButtonRuleRep
-        lastEditedIndex: number
         lastEditedType: string
 
         //% blockCombine block="xfrm" callInDebugger
@@ -489,7 +489,7 @@ namespace microcode {
                 actuators: [],
                 modifiers: [],
             }
-            this.lastEditedIndex = -1
+            this.lastEditedType = undefined
             this.instantiateProgramTiles()
         }
 
@@ -593,17 +593,6 @@ namespace microcode {
             })
             this.needsWhenInsert()
             this.needsDoInsert()
-            if (this.lastEditedIndex >= 0) {
-                if (this.lastEditedType == "sensors" && this.whenInsertBtn) {
-                    // this.editor.snapCursorTo(this.whenInsertBtn)
-                } else if (
-                    this.lastEditedType == "actuators" &&
-                    this.doInsertBtn
-                ) {
-                    // this.editor.snapCursorTo(this.doInsertBtn)
-                }
-            }
-            this.lastEditedIndex = -1
             if (changed) this.page.changed()
         }
 
@@ -630,7 +619,6 @@ namespace microcode {
             const tileUpdated = () => {
                 if (name == "sensors" || name == "actuators") {
                     this.lastEditedType = name
-                    this.lastEditedIndex = index
                 }
                 Language.ensureValid(this.ruledef)
                 this.editor.saveAndCompileProgram()
@@ -735,18 +723,32 @@ namespace microcode {
 
         public addToNavigator() {
             const btns: Button[] = []
+            let doInsertIndex = -1
+            let whenInsertIndex = -1
             btns.push(this.handleBtn)
             this.rule["sensors"].forEach(b => btns.push(b))
             this.rule["filters"].forEach(b => btns.push(b))
 
-            if (this.whenInsertBtn) btns.push(this.whenInsertBtn)
+            if (this.whenInsertBtn) {
+                whenInsertIndex = btns.length
+                btns.push(this.whenInsertBtn)
+            }
 
             this.rule["actuators"].forEach(b => btns.push(b))
             this.rule["modifiers"].forEach(b => btns.push(b))
 
-            if (this.doInsertBtn) btns.push(this.doInsertBtn)
+            if (this.doInsertBtn) {
+                doInsertIndex = btns.length
+                btns.push(this.doInsertBtn)
+            }
 
             this.editor.addButtons(btns)
+
+            if (this.lastEditedType == "sensors") {
+                
+            } else if (this.lastEditedType == "actuators") {
+            }
+            this.lastEditedType = undefined
         }
 
         public isEmpty() {
