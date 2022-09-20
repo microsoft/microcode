@@ -174,16 +174,16 @@ const liveStrings = {
 addSimMessageHandler("accessibility", data => {
     const serializedAccessabilityMessage = uint8ArrayToString(data)
 
-    var accessabilityMessage = JSON.parse(serializedAccessabilityMessage)
+    let accessabilityMessage = JSON.parse(serializedAccessabilityMessage)
 
-    var value
+    let value
     if (
         accessabilityMessage.type === "tile" ||
         accessabilityMessage.type === "text"
     ) {
-        console.log(serializedAccessabilityMessage)
+        //console.log(serializedAccessabilityMessage)
 
-        valueId = accessabilityMessage.details[0]
+        let valueId = accessabilityMessage.details[0]
 
         if (valueId) {
             valueId = valueId.values[0]
@@ -191,7 +191,7 @@ addSimMessageHandler("accessibility", data => {
             if (valueId) {
                 value = (liveStrings[valueId] || valueId).split(/_/g).join(" ")
 
-                console.log(`live region: ${valueId} -> ${value}`)
+                //console.log(`live region: ${valueId} -> ${value}`)
             }
         }
     } else if (accessabilityMessage.type == "rule") {
@@ -217,7 +217,7 @@ addSimMessageHandler("accessibility", data => {
             })
         }
 
-        console.log(`live region: ${value}`)
+        //console.log(`live region: ${value}`)
     } else {
         console.log(
             "Error, " + serializedAccessabilityMessage + " is not supported"
@@ -244,6 +244,8 @@ addSimMessageHandler("accessibility", data => {
         liveRegion.setAttribute("style", style)
         document.body.appendChild(liveRegion)
     }
+    value = value || ""
     if (liveRegion.textContent === value) liveRegion.textContent = ""
+    console.log(`live region: ${value}`)
     liveRegion.textContent = value
 })
