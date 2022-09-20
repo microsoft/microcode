@@ -266,6 +266,13 @@ namespace microcode {
     paint.serviceInstanceIndex = 0
     paint.priority = 10
 
+    const random_toss = addActuator(
+        TID_ACTUATOR_RANDOM_TOSS,
+        "Toss",
+        "value_out"
+    )
+    random_toss.priority = 70
+
     const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
     radio_send.priority = 100
 
