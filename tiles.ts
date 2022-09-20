@@ -258,18 +258,21 @@ namespace microcode {
     }
 
     const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, "Switch page", "page")
-    swtch.priority = 100
+    swtch.priority = 110
     const paint = addActuator(TID_ACTUATOR_PAINT, "Paint", "icon_editor")
     paint.serviceClassName = "dotMatrix"
     paint.serviceCommand = jacs.CMD_SET_REG | 0x2
     paint.serviceInstanceIndex = 0
+    paint.priority = 10
 
-    addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
+    const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
+    radio_send.priority = 100
 
     const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "sound_emoji")
     emoji.serviceClassName = "soundPlayer"
     emoji.serviceCommand = 0x80
     emoji.serviceArgFromModifier = (x: string) => x || "hello"
+    emoji.priority = 20
 
     const emojis = [
         "giggle",
@@ -294,6 +297,7 @@ namespace microcode {
     const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "music_editor")
     buzzer.serviceClassName = "buzzer"
     buzzer.serviceCommand = 0x80
+    buzzer.priority = 30
 
     const make_vals = (name: string, kind: string, start: number) => {
         for (let v = 1; v <= 5; v++) {
