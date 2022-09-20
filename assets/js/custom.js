@@ -48,16 +48,8 @@ if (!inIFrame)
     })
 
 // send jacscript bytecode to jacdac dashboard
-let deployDebouncer = false
 addSimMessageHandler("jacscript", async data => {
     console.debug(`jacscript bytecode: ${data.length} bytes`)
-
-    // lock deploy
-    if (deployDebouncer) {
-        console.debug(`jacscript deploy cancelled, dup deploy`)
-        return
-    }
-    deployDebouncer = true
 
     if (inIFrame)
         window.parent.postMessage(
@@ -88,11 +80,6 @@ addSimMessageHandler("jacscript", async data => {
             }
         }
     }
-
-    // release lock
-    setTimeout(() => {
-        deployDebouncer = false
-    }, 500)
 })
 
 // handle accessibility requests
