@@ -484,24 +484,6 @@ namespace microcode {
                 y: 0,
                 onClick: () => this.showRuleHandleMenu(),
             })
-            this.whenInsertBtn = new EditorButton(editor, {
-                parent: this,
-                style: "beige",
-                icon: "insertion_point",
-                ariaId: "when",
-                x: 0,
-                y: 0,
-                onClick: () => this.showWhenInsertMenu(),
-            })
-            this.doInsertBtn = new EditorButton(editor, {
-                parent: this,
-                style: "beige",
-                icon: "insertion_point",
-                ariaId: "do",
-                x: 0,
-                y: 0,
-                onClick: () => this.showDoInsertMenu(),
-            })
             this.rule = {
                 sensors: [],
                 filters: [],
@@ -511,13 +493,63 @@ namespace microcode {
             this.instantiateProgramTiles()
         }
 
+        private destroyWhenInsertButton() {
+            if (this.whenInsertBtn) this.whenInsertBtn.destroy()
+            this.whenInsertBtn = undefined
+        }
+
+        private needsWhenInsert() {
+            if (
+                this.rule["sensors"].length == 0 ||
+                this.getSuggestions("filters", this.rule["filters"].length)
+                    .length
+            ) {
+                this.whenInsertBtn = new EditorButton(this.editor, {
+                    parent: this,
+                    style: "beige",
+                    icon: "insertion_point",
+                    ariaId: "when",
+                    x: 0,
+                    y: 0,
+                    onClick: () => this.showWhenInsertMenu(),
+                })
+            } else {
+                this.destroyWhenInsertButton()
+            }
+        }
+
+        private destroyDoInsertButton() {
+            if (this.doInsertBtn) this.doInsertBtn.destroy()
+            this.doInsertBtn = undefined
+        }
+
+        private needsDoInsert() {
+            if (
+                this.rule["actuators"].length == 0 ||
+                this.getSuggestions("modifiers", this.rule["modifiers"].length)
+                    .length
+            ) {
+                this.doInsertBtn = new EditorButton(this.editor, {
+                    parent: this,
+                    style: "beige",
+                    icon: "insertion_point",
+                    ariaId: "do",
+                    x: 0,
+                    y: 0,
+                    onClick: () => this.showDoInsertMenu(),
+                })
+            } else {
+                this.destroyDoInsertButton()
+            }
+        }
+
         destroy() {
             this.destroyProgramTiles()
             this.whenLbl.destroy()
             this.doLbl.destroy()
             this.handleBtn.destroy()
-            this.whenInsertBtn.destroy()
-            this.doInsertBtn.destroy()
+            this.destroyWhenInsertButton()
+            this.destroyDoInsertButton()
             this.whenLbl = undefined
             this.doLbl = undefined
             this.handleBtn = undefined
@@ -553,12 +585,14 @@ namespace microcode {
                         label: TID_MODIFIER_ICON_EDITOR,
                         x: 0,
                         y: 0,
-                        onClick: () => this.handleTile(name, index),
+                        onClick: () => this.editTile(name, index),
                     })
                     this.rule[name].push(button)
                     changed = true
                 })
             })
+            this.needsWhenInsert()
+            this.needsDoInsert()
             if (changed) this.page.changed()
         }
 
@@ -580,9 +614,11 @@ namespace microcode {
             })
         }
 
-        private handleTile(name: string, index: number) {
+        private editTile(name: string, index: number) {
+            let updated = false
             const ruleTiles = this.ruledef.getRuleRep()[name]
-            const updateEditor = () => {
+            const tileUpdated = () => {
+                updated = true
                 Language.ensureValid(this.ruledef)
                 this.editor.saveAndCompileProgram()
                 this.instantiateProgramTiles()
@@ -595,20 +631,16 @@ namespace microcode {
                     fieldEditor.editor(
                         theOne.getField(),
                         this.editor.picker,
-                        updateEditor,
+                        tileUpdated,
                         () => {
                             ruleTiles.splice(index, 1)
-                            updateEditor()
+                            tileUpdated()
                         }
                     )
-                    return
+                    return updated
                 }
             }
-            const suggestions = Language.getTileSuggestions(
-                this.ruledef,
-                name,
-                index
-            )
+            const suggestions = this.getSuggestions(name, index)
             const btns: PickerButtonDef[] = suggestions.map(elem => {
                 return {
                     icon: <string>elem.getIcon(),
@@ -629,16 +661,16 @@ namespace microcode {
                         } else {
                             ruleTiles[index] = newOne
                         }
-                        updateEditor()
+                        tileUpdated()
                     }
                 )
-                return
+                return updated
             }
             let onDelete = undefined
             if (index < ruleTiles.length) {
                 onDelete = () => {
                     ruleTiles.splice(index, 1)
-                    updateEditor()
+                    tileUpdated()
                 }
             }
             if (btns.length) {
@@ -652,11 +684,12 @@ namespace microcode {
                         } else {
                             ruleTiles[index] = newOne
                         }
-                        updateEditor()
+                        tileUpdated()
                     },
                     onDelete,
                 })
             }
+            return updated
         }
 
         private handleRuleHandleMenuSelection(iconId: string) {
@@ -669,18 +702,29 @@ namespace microcode {
 
         private showWhenInsertMenu() {
             if (this.ruledef.sensors.length) {
-                this.handleTile("filters", this.ruledef.filters.length)
+                this.editTile("filters", this.ruledef.filters.length)
             } else {
-                this.handleTile("sensors", 0)
+                const updated = this.editTile("sensors", 0)
+                if (updated) {
+                    // if (this.ruledef.filters.length == 0)
+                    // is there an empty filter slot?
+                    // YES - move cursor there
+                    // if no filter slot, but empty DO, move cursor there
+                }
             }
         }
 
         private showDoInsertMenu() {
             if (this.ruledef.actuators.length) {
-                this.handleTile("modifiers", this.ruledef.modifiers.length)
+                this.editTile("modifiers", this.ruledef.modifiers.length)
             } else {
-                this.handleTile("actuators", 0)
+                const updated = this.editTile("actuators", 0)
+                // TODO: modifier
             }
+        }
+
+        private getSuggestions(name: string, index: number) {
+            return Language.getTileSuggestions(this.ruledef, name, index)
         }
 
         public addToNavigator() {
@@ -688,10 +732,14 @@ namespace microcode {
             btns.push(this.handleBtn)
             this.rule["sensors"].forEach(b => btns.push(b))
             this.rule["filters"].forEach(b => btns.push(b))
-            btns.push(this.whenInsertBtn)
+
+            if (this.whenInsertBtn) btns.push(this.whenInsertBtn)
+
             this.rule["actuators"].forEach(b => btns.push(b))
             this.rule["modifiers"].forEach(b => btns.push(b))
-            btns.push(this.doInsertBtn)
+
+            if (this.doInsertBtn) btns.push(this.doInsertBtn)
+
             this.editor.addButtons(btns)
         }
 
@@ -713,28 +761,30 @@ namespace microcode {
             this.handleBtn.xfrm.localPos = v
             v.x += (this.handleBtn.width >> 1) + (this.whenLbl.width >> 1)
             this.whenLbl.xfrm.localPos = v
-            v.x +=
-                2 + (this.whenLbl.width >> 1) + (this.whenInsertBtn.width >> 1)
+            v.x += 2 + (this.whenLbl.width >> 1) + 8
 
             const whenSection = ["sensors", "filters"]
             whenSection.forEach(buttonLoc)
-            this.whenInsertBtn.xfrm.localPos = v
+            if (this.whenInsertBtn) this.whenInsertBtn.xfrm.localPos = v
 
-            v.x += 2 + (this.whenInsertBtn.width >> 1) + (this.doLbl.width >> 1)
+            v.x +=
+                2 +
+                (this.whenInsertBtn ? this.whenInsertBtn.width >> 1 : 0) +
+                (this.doLbl.width >> 1)
             this.doLbl.xfrm.localPos = v
-            v.x += 2 + (this.doLbl.width >> 1) + (this.doInsertBtn.width >> 1)
+            v.x += 2 + (this.doLbl.width >> 1) + 8
 
             const doSection = ["actuators", "modifiers"]
             doSection.forEach(buttonLoc)
-            this.doInsertBtn.xfrm.localPos = v
+            if (this.doInsertBtn) this.doInsertBtn.xfrm.localPos = v
         }
 
         /* override */ draw() {
             this.whenLbl.draw()
             this.doLbl.draw()
             this.handleBtn.draw()
-            this.whenInsertBtn.draw()
-            this.doInsertBtn.draw()
+            if (this.whenInsertBtn) this.whenInsertBtn.draw()
+            if (this.doInsertBtn) this.doInsertBtn.draw()
             repNames.forEach(name => {
                 const buttons = this.rule[name]
                 buttons.forEach(btn => btn.draw())

@@ -7,6 +7,7 @@ const inIFrame = (() => {
         return typeof window !== "undefined"
     }
 })()
+const webUsb = (() => typeof navigator !== "undefined" && !!navigator.webUsb)()
 
 let bus
 let connectEl
@@ -17,12 +18,12 @@ const refreshUI = () => {
         ? "micro:bit connected"
         : bus.disconnected
         ? "micro:bit connect"
-            : "micro:bit connecting"
+        : "micro:bit connecting"
     connectEl.setAttribute("title", statusText)
 }
 
 // to support downloading directly to device
-if (!inIFrame)
+if (!inIFrame && webUsb)
     document.addEventListener("DOMContentLoaded", () => {
         const script = document.createElement("script")
         script.setAttribute("type", "text/javascript")
@@ -34,7 +35,10 @@ if (!inIFrame)
             connectEl.tabIndex = "0"
             const mbitEl = document.createElement("img")
             mbitEl.setAttribute("alt", "micro:bit logo")
-            mbitEl.setAttribute("src", "https://cdn.sanity.io/images/ajwvhvgo/production/6aada623aed7540f77754cbd49b36f05d0fd6b86-150x89.svg?w=435&q=80&fit=max&auto=format")
+            mbitEl.setAttribute(
+                "src",
+                "https://cdn.sanity.io/images/ajwvhvgo/production/6aada623aed7540f77754cbd49b36f05d0fd6b86-150x89.svg?w=435&q=80&fit=max&auto=format"
+            )
             connectEl.append(mbitEl)
             // create WebUSB bus
             bus = jacdac.createWebBus({

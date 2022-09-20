@@ -342,10 +342,10 @@ namespace microcode {
     const iconFieldEditor: FieldEditor = {
         init: img`
         . . . . .
-        . . . . .
-        . . 1 . . 
-        . . . . .
-        . . . . .
+        . 1 . 1 .
+        . . . . . 
+        1 . . . 1
+        . 1 1 1 .
         `,
         clone: (img: Image) => img.clone(),
         editor: iconEditor,

@@ -113,8 +113,8 @@ namespace microcode {
         /* override */ draw() {
             this.stylus.draw()
             //this.hitbox.dbgRect(15);
-            if (this.ariaId) {
-                const text = this.ariaId.toUpperCase()
+            const text = accessibility.ariaToTooltip(this.ariaId)
+            if (text) {
                 const n = text.length
                 const font = image.font5
                 const w = font.charWidth * n
