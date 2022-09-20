@@ -12,7 +12,10 @@ namespace microcode {
     const TOOLBAR_HEIGHT = 18
     const LINE_HEIGHT = 9
     const CONSOLE_MARGIN = 2
-
+    const STORED_SAMPLES =
+        ["{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S2\"],\"A\":[\"A5\"],\"F\":[\"F4\"],\"M\":[\"M15(1111110001100011000111111)\"]}]},{},{},{},{}]}}",
+            "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S2\"],\"A\":[\"A5\"],\"F\":[\"F4\"],\"M\":[\"M15(1000101010001000101010001)\"]}]},{},{},{},{}]}}"]
+    
     export enum LineJustification {
         Left,
         Center,
@@ -42,6 +45,8 @@ namespace microcode {
         plotLines: { [color: number]: PlotLine }
         editBtn: Button
         sampleBtn: Button
+        sampleBtn2: Button
+
 
         constructor(app: App) {
             super(app)
@@ -157,19 +162,7 @@ namespace microcode {
                 parent: null,
                 style: "white",
                 icon: "ok",
-                x: 16,
-                y: 8,
-                onClick: () => {
-                    this.app.popScene()
-                    this.app.pushScene(new Editor(this.app))
-                },
-            })
-
-            this.editBtn = new Button({
-                parent: null,
-                style: "white",
-                icon: "ok",
-                x: -16,
+                x: -26,
                 y: 48,
                 onClick: () => {
                     this.app.popScene()
@@ -180,14 +173,28 @@ namespace microcode {
                 parent: null,
                 style: "white",
                 icon: "plus",
-                x: 16,
+                x: 0,
                 y: 48,
                 onClick: () => {
-                    // LOAD sample
+                    settings.writeString(SAVESLOT_AUTO, STORED_SAMPLES[0])
+                    this.app.popScene()
+                    this.app.pushScene(new Editor(this.app))
+                },
+            })
+            this.sampleBtn2 = new Button({
+                parent: null,
+                style: "white",
+                icon: "plus",
+                x: 26,
+                y: 48,
+                onClick: () => {
+                    settings.writeString(SAVESLOT_AUTO, STORED_SAMPLES[1])
+                    this.app.popScene()
+                    this.app.pushScene(new Editor(this.app))
                 },
             })
 
-            this.navigator.addButtons([this.editBtn, this.sampleBtn])
+            this.navigator.addButtons([this.editBtn, this.sampleBtn, this.sampleBtn2])
         }
 
         /* override */ shutdown() {
@@ -232,6 +239,7 @@ namespace microcode {
             this.drawConsoleView()
             this.editBtn.draw()
             this.sampleBtn.draw()
+            this.sampleBtn2.draw()
             super.draw()
         }
 
