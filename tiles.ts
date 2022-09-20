@@ -56,6 +56,7 @@ namespace microcode {
     export const TID_ACTUATOR_MUSIC = "A4"
     export const TID_ACTUATOR_PAINT = "A5"
     export const TID_ACTUATOR_RADIO_SEND = "A6"
+    export const TID_ACTUATOR_RANDOM_TOSS = "A7"
 
     export const TID_MODIFIER_PAGE_1 = "M1"
     export const TID_MODIFIER_PAGE_2 = "M2"

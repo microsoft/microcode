@@ -64,6 +64,7 @@ namespace microcode {
             this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
             this.reg[TID_ACTUATOR_SPEAKER] = icondb.speaker
             this.reg[TID_ACTUATOR_MUSIC] = icondb.music
+            this.reg[TID_ACTUATOR_RANDOM_TOSS] = icondb.tile_value_5
 
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
@@ -228,7 +229,6 @@ namespace microcode {
         6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
         6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
     `
-
 }
 
 // - upscale 5x5 image to 16 x 16
@@ -1661,8 +1661,8 @@ f f f f f f f f f f f f f f f f
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
 `
-    
-export const moveTiltDown = img`
+
+    export const moveTiltDown = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . 8 8 8 8 . . . . .
@@ -1680,7 +1680,7 @@ export const moveTiltDown = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-export const moveTiltUp = img`
+    export const moveTiltUp = img`
 . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . 8 8 8 8 . . . . . .
@@ -1698,7 +1698,7 @@ export const moveTiltUp = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-export const moveTiltLeft = img`
+    export const moveTiltLeft = img`
 . . . . . . . . . . . . . . . .
     . . . . . . . . . . 8 . . . . .
     . . . . . . f f . 8 8 . . . . .
@@ -1716,7 +1716,7 @@ export const moveTiltLeft = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-export const moveTiltRight = img`
+    export const moveTiltRight = img`
     . . . . . . . . . . . . . . . .
     . . . . . 8 . . . . . . . . . .
     . . . . . 8 8 . f f . . . . . .
