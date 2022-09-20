@@ -161,7 +161,7 @@ const liveStrings = {
     M11: "on",
     M12: "off",
 
-    M15: "icon editor",
+    M15: "LED editor",
     M16: "red",
     M17: "dark purple",
     M18: "music editor",
