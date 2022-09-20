@@ -67,6 +67,7 @@ namespace microcode {
             super.update()
         }
 
+        private yOffset = -Screen.HEIGHT >> 1
         /* override */ draw() {
             Screen.fillRect(
                 Screen.LEFT_EDGE,
@@ -75,12 +76,21 @@ namespace microcode {
                 Screen.HEIGHT,
                 0xc
             )
+            this.yOffset = Math.min(0, this.yOffset + 2)
+            const t = control.millis()
+            const dx = this.yOffset == 0 ? (((t / 800) | 0) % 2) - 1 : 0
             Screen.drawTransparentImage(
                 wordLogo,
-                Screen.LEFT_EDGE + ((Screen.WIDTH - wordLogo.width) >> 1),
-                Screen.TOP_EDGE + 40
+                Screen.LEFT_EDGE + ((Screen.WIDTH - wordLogo.width) >> 1) + dx,
+                Screen.TOP_EDGE + 50 + dx + this.yOffset
             )
-            //this.drawConsoleView()
+            Screen.drawTransparentImage(
+                microbitLogo,
+                Screen.LEFT_EDGE +
+                    ((Screen.WIDTH - microbitLogo.width) >> 1) +
+                    dx,
+                Screen.TOP_EDGE + 50 - wordLogo.height + dx + this.yOffset
+            )
             this.editBtn.draw()
             this.sampleBtn.draw()
             super.draw()
