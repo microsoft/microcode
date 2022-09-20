@@ -137,6 +137,7 @@ namespace microcode {
             categories: ["press_event"],
         },
     }
+    press_event.priority = 10
     tilesDB.sensors[TID_SENSOR_PRESS] = press_event
 
     function addPressFilter(tid: string, name: string, instanceNo: number) {
@@ -170,6 +171,7 @@ namespace microcode {
             categories: ["value_in"],
         },
     }
+    radio_receive.priority = 100
     tilesDB.sensors[TID_SENSOR_RADIO_RECEIVE] = radio_receive
 
     const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
@@ -178,6 +180,7 @@ namespace microcode {
             categories: ["timespan"],
         },
     }
+    timer.priority = 110
     tilesDB.sensors[TID_SENSOR_TIMER] = timer
 
     function addTimespan(tid: string, name: string, ms: number) {
@@ -200,6 +203,7 @@ namespace microcode {
     }
     accel.serviceClassName = "accelerometer"
     accel.eventCode = 0x8b // shake
+    accel.priority = 20
     tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
 
     function addAccelEvent(id: number, name: string) {
@@ -229,6 +233,7 @@ namespace microcode {
             categories: ["sound_event"],
         },
     }
+    microphone.priority = 30
     microphone.serviceClassName = "soundLevel"
     microphone.eventCode = 1 // laud by default
     tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
@@ -253,18 +258,21 @@ namespace microcode {
     }
 
     const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, "Switch page", "page")
-    swtch.priority = 100
+    swtch.priority = 110
     const paint = addActuator(TID_ACTUATOR_PAINT, "Paint", "icon_editor")
     paint.serviceClassName = "dotMatrix"
     paint.serviceCommand = jacs.CMD_SET_REG | 0x2
     paint.serviceInstanceIndex = 0
+    paint.priority = 10
 
-    addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
+    const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
+    radio_send.priority = 100
 
     const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "sound_emoji")
     emoji.serviceClassName = "soundPlayer"
     emoji.serviceCommand = 0x80
     emoji.serviceArgFromModifier = (x: string) => x || "hello"
+    emoji.priority = 20
 
     const emojis = [
         "giggle",
@@ -289,6 +297,7 @@ namespace microcode {
     const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "music_editor")
     buzzer.serviceClassName = "buzzer"
     buzzer.serviceCommand = 0x80
+    buzzer.priority = 30
 
     const make_vals = (name: string, kind: string, start: number) => {
         for (let v = 1; v <= 5; v++) {
