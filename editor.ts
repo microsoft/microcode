@@ -132,6 +132,11 @@ namespace microcode {
 
             if (!target) return
 
+            if (target.rootXfrm.tag === "hud") {
+                this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
+                return
+            }
+
             const occ = target.occlusions(
                 new Bounds({
                     left: Screen.LEFT_EDGE,
@@ -326,7 +331,11 @@ namespace microcode {
         }
 
         /* override */ draw() {
-            Screen.drawTransparentImage(editorBackground, Screen.LEFT_EDGE, Screen.TOP_EDGE);
+            Screen.drawTransparentImage(
+                editorBackground,
+                Screen.LEFT_EDGE,
+                Screen.TOP_EDGE
+            )
             if (this.pageEditor) {
                 this.pageEditor.draw()
             }
