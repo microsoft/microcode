@@ -92,6 +92,10 @@ namespace microcode {
             this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
             this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
 
+            this.reg[TID_MODIFIER_PIPE_OUT_A] = icondb.tile_page_1
+            this.reg[TID_MODIFIER_PIPE_OUT_B] = icondb.tile_page_2
+            this.reg[TID_MODIFIER_PIPE_OUT_C] = icondb.tile_page_3
+
             this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
             this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.moveFall
             this.reg[TID_FILTER_ACCEL_TILT_UP] = icondb.moveTiltUp
@@ -1734,7 +1738,7 @@ f f f f f f f f f f f f f f f f
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-export const diceToss = img`
+    export const diceToss = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . b b b b b b b b . . .
@@ -1752,7 +1756,6 @@ export const diceToss = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-    
 
     /* maybe use these later
     export const rc_high = img`

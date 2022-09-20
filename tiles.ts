@@ -89,6 +89,10 @@ namespace microcode {
     export const TID_MODIFIER_EMOJI_TWINKLE = "M19twinkle"
     export const TID_MODIFIER_EMOJI_YAWN = "M19yawn"
 
+    export const TID_MODIFIER_PIPE_OUT_A = "M20A"
+    export const TID_MODIFIER_PIPE_OUT_B = "M20B"
+    export const TID_MODIFIER_PIPE_OUT_C = "M20C"
+
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
         TID_MODIFIER_PAGE_2,
