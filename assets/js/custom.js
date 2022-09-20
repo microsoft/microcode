@@ -13,12 +13,12 @@ let connectEl
 const refreshUI = () => {
     if (bus.connected) connectEl.style.display = "none"
     else connectEl.style.display = "inherit"
-    connectEl.innerText = bus.connected
-        ? "micro:bit connected 🎉"
+    const statusText = bus.connected
+        ? "micro:bit connected"
         : bus.disconnected
         ? "micro:bit connect"
-        : "micro:bit connecting 👀"
-    console.log(connectEl.innerText)
+            : "micro:bit connecting"
+    connectEl.setAttribute("title", statusText)
 }
 
 // to support downloading directly to device
@@ -31,6 +31,11 @@ if (!inIFrame)
             console.log(`jacdac: init...`)
             connectEl = document.createElement("button")
             connectEl.id = "connectbtn"
+            connectEl.tabIndex = "0"
+            const mbitEl = document.createElement("img")
+            mbitEl.setAttribute("alt", "micro:bit logo")
+            mbitEl.setAttribute("src", "https://cdn.sanity.io/images/ajwvhvgo/production/6aada623aed7540f77754cbd49b36f05d0fd6b86-150x89.svg?w=435&q=80&fit=max&auto=format")
+            connectEl.append(mbitEl)
             // create WebUSB bus
             bus = jacdac.createWebBus({
                 bluetoothOptions: null,
@@ -192,34 +197,32 @@ addSimMessageHandler("accessibility", data => {
 
             if (valueId) {
                 value = (liveStrings[valueId] || valueId).split(/_/g).join(" ")
-
-                //console.log(`live region: ${valueId} -> ${value}`)
             }
         }
     } else if (accessabilityMessage.type == "rule") {
         value = "rule"
 
-        var whens = accessabilityMessage.details[0]
+        let whens = accessabilityMessage.details[0]
 
         if (whens && whens.values.length > 0) {
-            value += " when "
+            value += " when"
 
             whens.values.forEach(tileId => {
+                value += " "
                 value += (liveStrings[tileId] || tileId).split(/_/g).join(" ")
             })
         }
 
-        var dos = accessabilityMessage.details[1]
+        let dos = accessabilityMessage.details[1]
 
         if (dos && dos.values.length > 0) {
-            value += " do "
+            value += " do"
 
             dos.values.forEach(tileId => {
+                value += " "
                 value += (liveStrings[tileId] || tileId).split(/_/g).join(" ")
             })
         }
-
-        //console.log(`live region: ${value}`)
     } else {
         console.log(
             "Error, " + serializedAccessabilityMessage + " is not supported"

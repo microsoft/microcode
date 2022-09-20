@@ -28,19 +28,28 @@
                 cursor: pointer;
             }
             #simbtn:visited {
-                color:white;
+                color: white;
             }
             #connectbtn {
                 position: absolute;
                 right: 0.25rem;
                 bottom: 0.5rem;
                 cursor: pointer;
-                color: white;
-                border: solid 1px white;
-                background-color: #000;
+                border: none;
+                border: solid 2px #000;
+                background-color: #fff;
                 border-radius: 0.2rem;
-                font-size: 1.2rem;
             }
+            #connectbtn:focus,
+            #connectbtn:hover {
+                outline: solid 1px #fff;
+            }
+            #connectbtn img {
+                width: 4rem;
+                margin: 0;
+                padding: 0;
+            }
+
             .lds-ripple {
                 width: 80px;
                 height: 80px;
@@ -136,11 +145,16 @@
         </div>
         <iframe
             id="simframe"
+            title="MicroCode editor"
             allowfullscreen="allowfullscreen"
             sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
         >
         </iframe>
-        <a id="simbtn" href="https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001">sim</a>
+        <a
+            id="simbtn"
+            href="https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001"
+            >sim</a
+        >
         <script type="text/javascript">
             makeCodeRun({ js: "./js/binary.js" })
         </script>
