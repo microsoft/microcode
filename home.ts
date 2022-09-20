@@ -21,23 +21,10 @@ namespace microcode {
             this.editBtn = new Button({
                 parent: null,
                 style: "white",
-                icon: "ok",
+                icon: "paint",
                 ariaId: "editor",
-                x: 16,
-                y: 8,
-                onClick: () => {
-                    this.app.popScene()
-                    this.app.pushScene(new Editor(this.app))
-                },
-            })
-
-            this.editBtn = new Button({
-                parent: null,
-                style: "white",
-                icon: "ok",
-                ariaId: "samples",
                 x: -16,
-                y: 48,
+                y: 32,
                 onClick: () => {
                     this.app.popScene()
                     this.app.pushScene(new Editor(this.app))
@@ -47,8 +34,9 @@ namespace microcode {
                 parent: null,
                 style: "white",
                 icon: "plus",
+                ariaId: "samples",
                 x: 16,
-                y: 48,
+                y: 32,
                 onClick: () => {
                     // LOAD sample
                 },
@@ -79,6 +67,7 @@ namespace microcode {
             super.update()
         }
 
+        private yOffset = -Screen.HEIGHT >> 1
         /* override */ draw() {
             Screen.fillRect(
                 Screen.LEFT_EDGE,
@@ -87,12 +76,21 @@ namespace microcode {
                 Screen.HEIGHT,
                 0xc
             )
+            this.yOffset = Math.min(0, this.yOffset + 2)
+            const t = control.millis()
+            const dx = this.yOffset == 0 ? (((t / 800) | 0) % 2) - 1 : 0
             Screen.drawTransparentImage(
                 wordLogo,
-                Screen.LEFT_EDGE + ((Screen.WIDTH - wordLogo.width) >> 1),
-                Screen.TOP_EDGE + 40
+                Screen.LEFT_EDGE + ((Screen.WIDTH - wordLogo.width) >> 1) + dx,
+                Screen.TOP_EDGE + 50 + dx + this.yOffset
             )
-            //this.drawConsoleView()
+            Screen.drawTransparentImage(
+                microbitLogo,
+                Screen.LEFT_EDGE +
+                    ((Screen.WIDTH - microbitLogo.width) >> 1) +
+                    dx,
+                Screen.TOP_EDGE + 50 - wordLogo.height + dx + this.yOffset
+            )
             this.editBtn.draw()
             this.sampleBtn.draw()
             super.draw()

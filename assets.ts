@@ -33,6 +33,7 @@ namespace microcode {
             this.reg["insertion_point"] = icondb.btn_insertion_point
             this.reg["next_page"] = icondb.btn_next_page
             this.reg["prev_page"] = icondb.btn_prev_page
+            this.reg["paint"] = icondb.paint
             this.reg["MISSING"] = icondb.MISSING
 
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer

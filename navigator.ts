@@ -27,7 +27,7 @@ namespace microcode {
     }
 
     export class RowNavigator implements INavigator {
-        private buttonGroups: Button[][]
+        protected buttonGroups: Button[][]
         protected row: number
         protected col: number
 
@@ -87,7 +87,7 @@ namespace microcode {
             return [this.buttonGroups[this.row][this.col]]
         }
 
-        private makeGood() {
+        protected makeGood() {
             if (this.row >= this.buttonGroups.length)
                 this.row = this.buttonGroups.length - 1
             if (this.col >= this.buttonGroups[this.row].length)
@@ -147,19 +147,77 @@ namespace microcode {
 
                 accessibility.setLiveContent(accessabilityMessage)
             } else {
-
-                let accessabilityMessage =
-                {
+                let accessabilityMessage = {
                     type: "tile",
                     details: [
-                        { name: "tileId", values: [(ret?ret.ariaId : '') || ""] }
-                    ]
+                        {
+                            name: "tileId",
+                            values: [(ret ? ret.ariaId : "") || ""],
+                        },
+                    ],
                 }
-                
+
                 accessibility.setLiveContent(accessabilityMessage)
             }
 
             return ret
+        }
+    }
+
+    export class LEDNavigator extends RowNavigator {
+        private rememberCol: number
+
+        constructor() {
+            super()
+            this.rememberCol = 0
+        }
+
+        private hasDelete() {
+            return this.buttonGroups[0].length == 1
+        }
+
+        public move(cursor: Cursor, dir: CursorDir) {
+            this.makeGood()
+            switch (dir) {
+                case CursorDir.Up: {
+                    if (this.row == 0) return undefined
+                    this.row--
+                    if (this.row == 0 && this.hasDelete()) {
+                        this.rememberCol = this.col
+                        this.col = 0
+                    }
+                    break
+                }
+                case CursorDir.Down: {
+                    if (this.row == this.buttonGroups.length - 1)
+                        return undefined
+                    this.row++
+                    if (this.row == 1 && this.hasDelete()) {
+                        this.col = this.rememberCol
+                    }
+                    break
+                }
+
+                case CursorDir.Left: {
+                    if (this.col == 0) return undefined
+                    this.col--
+                    break
+                }
+
+                case CursorDir.Right: {
+                    if (this.col == this.buttonGroups[this.row].length - 1)
+                        return undefined
+                    this.col++
+                    break
+                }
+            }
+            return this.buttonGroups[this.row][this.col]
+        }
+
+        public initialCursor(cursor: Cursor) {
+            this.row = 2 + (this.hasDelete() ? 1 : 0)
+            this.col = 2
+            return this.buttonGroups[this.row][this.col]
         }
     }
 }
