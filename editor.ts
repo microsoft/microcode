@@ -185,17 +185,7 @@ namespace microcode {
                 () => this.scrollAndMove(CursorDir.Right)
             )
             control.onEvent(
-                ControllerButtonEvent.Repeated,
-                controller.right.id,
-                () => this.scrollAndMove(CursorDir.Right)
-            )
-            control.onEvent(
                 ControllerButtonEvent.Pressed,
-                controller.up.id,
-                () => this.scrollAndMove(CursorDir.Up)
-            )
-            control.onEvent(
-                ControllerButtonEvent.Repeated,
                 controller.up.id,
                 () => this.scrollAndMove(CursorDir.Up)
             )
@@ -205,17 +195,7 @@ namespace microcode {
                 () => this.scrollAndMove(CursorDir.Down)
             )
             control.onEvent(
-                ControllerButtonEvent.Repeated,
-                controller.down.id,
-                () => this.scrollAndMove(CursorDir.Down)
-            )
-            control.onEvent(
                 ControllerButtonEvent.Pressed,
-                controller.left.id,
-                () => this.scrollAndMove(CursorDir.Left)
-            )
-            control.onEvent(
-                ControllerButtonEvent.Repeated,
                 controller.left.id,
                 () => this.scrollAndMove(CursorDir.Left)
             )

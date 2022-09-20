@@ -25,17 +25,7 @@ namespace microcode {
                 () => this.moveCursor(CursorDir.Right)
             )
             control.onEvent(
-                ControllerButtonEvent.Repeated,
-                controller.right.id,
-                () => this.moveCursor(CursorDir.Right)
-            )
-            control.onEvent(
                 ControllerButtonEvent.Pressed,
-                controller.up.id,
-                () => this.moveCursor(CursorDir.Up)
-            )
-            control.onEvent(
-                ControllerButtonEvent.Repeated,
                 controller.up.id,
                 () => this.moveCursor(CursorDir.Up)
             )
@@ -45,17 +35,7 @@ namespace microcode {
                 () => this.moveCursor(CursorDir.Down)
             )
             control.onEvent(
-                ControllerButtonEvent.Repeated,
-                controller.down.id,
-                () => this.moveCursor(CursorDir.Down)
-            )
-            control.onEvent(
                 ControllerButtonEvent.Pressed,
-                controller.left.id,
-                () => this.moveCursor(CursorDir.Left)
-            )
-            control.onEvent(
-                ControllerButtonEvent.Repeated,
                 controller.left.id,
                 () => this.moveCursor(CursorDir.Left)
             )
