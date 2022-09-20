@@ -21,23 +21,10 @@ namespace microcode {
             this.editBtn = new Button({
                 parent: null,
                 style: "white",
-                icon: "ok",
+                icon: "paint",
                 ariaId: "editor",
-                x: 16,
-                y: 8,
-                onClick: () => {
-                    this.app.popScene()
-                    this.app.pushScene(new Editor(this.app))
-                },
-            })
-
-            this.editBtn = new Button({
-                parent: null,
-                style: "white",
-                icon: "ok",
-                ariaId: "samples",
                 x: -16,
-                y: 48,
+                y: 32,
                 onClick: () => {
                     this.app.popScene()
                     this.app.pushScene(new Editor(this.app))
@@ -47,8 +34,9 @@ namespace microcode {
                 parent: null,
                 style: "white",
                 icon: "plus",
+                ariaId: "samples",
                 x: 16,
-                y: 48,
+                y: 32,
                 onClick: () => {
                     // LOAD sample
                 },

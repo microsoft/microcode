@@ -113,6 +113,23 @@ namespace microcode {
         /* override */ draw() {
             this.stylus.draw()
             //this.hitbox.dbgRect(15);
+            if (this.ariaId) {
+                const text = this.ariaId.toUpperCase()
+                const n = text.length
+                const font = image.font5
+                const w = font.charWidth * n
+                const h = font.charHeight
+                let x = Math.max(
+                    Screen.LEFT_EDGE + 1,
+                    Math.min(
+                        Screen.RIGHT_EDGE - 1,
+                        this.xfrm.localPos.x - (w >> 1)
+                    )
+                )
+                let y = this.xfrm.localPos.y + 6 + font.charHeight
+                Screen.fillRect(x - 1, y - 1, w + 1, h + 2, 15)
+                Screen.print(text, x, y, 1, font)
+            }
         }
     }
 }
