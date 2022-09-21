@@ -2095,7 +2095,61 @@ export const settingsGear = img`
 `
     
     
-/* maybe use these later
+    const one = img`
+. . . . . .
+. . f f . .
+. f f f . .
+. . f f . .
+. . f f . .
+. . f f . .
+. f f f f .
+. . . . . .
+`
+
+    const two = img`
+. . . . . .
+. . f f . .
+. f . . f .
+. . . . f .
+. . f f . .
+. f f . . .
+. f f f f .
+. . . . . .
+`
+    const three = img`
+. . . . . .
+. f f f . .
+. . . . f .
+. . f f f .
+. . . . f .
+. . . . f .
+. f f f . .
+. . . . . .
+`
+    const four = img`
+. . . . . .
+. f . . f .
+. f . . f .
+. f f f f .
+. . . . f .
+. . . . f .
+. . . . f .
+. . . . . .
+`
+    const five = img`
+. . . . . .
+. f f f f .
+. f . . . .
+. f f f . .
+. . . . f .
+. . . . f .
+. f f f . .
+. . . . . .
+`
+
+    export const oneToFive = [one, two, three, four, five]
+
+    /* maybe use these later
     export const rc_high = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .

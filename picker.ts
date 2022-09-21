@@ -73,10 +73,12 @@ namespace microcode {
         public onButtonClicked(button: PickerButton, icon: string) {
             const onClick = this.onClick
             if (this.hideOnClick) {
+                if (onClick) {
+                    onClick(icon, button)
+                }
                 this.cursor.cancelHandlerStack.pop()
                 this.hide()
-            }
-            if (onClick) {
+            } else if (onClick) {
                 onClick(icon, button)
             }
         }

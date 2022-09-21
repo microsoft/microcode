@@ -696,7 +696,8 @@ namespace microcode {
                             ruleTiles[index] = newOne
                         }
                         tileUpdated()
-                    }
+                    },
+                    () => {}
                 )
                 return
             }
@@ -710,9 +711,9 @@ namespace microcode {
             if (btns.length) {
                 this.editor.picker.addGroup({ label: "", btns })
                 this.editor.picker.show({
-                    onClick: iconId => {
+                    onClick: id => {
                         // get from the database
-                        const newOne = tilesDB[name][iconId]
+                        const newOne = tilesDB[name][id].getNewInstance()
                         if (index >= ruleTiles.length) {
                             ruleTiles.push(newOne)
                         } else {
