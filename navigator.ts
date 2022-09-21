@@ -243,7 +243,7 @@ namespace microcode {
                 status = "unknown"
             }
 
-            accessibility.setLiveContent(new accessibility.textAccessibilityMessage("led ${this.col} ${this.row} ${status}"))
+            accessibility.setLiveContent(new accessibility.textAccessibilityMessage(`led ${this.col} ${this.row} ${status}`))
         }
     }
 }
