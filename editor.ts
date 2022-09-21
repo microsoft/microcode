@@ -624,20 +624,31 @@ namespace microcode {
             })
         }
 
+        private nextEmpty(name: string, index: number) {
+            return (
+                (name == "sensors" &&
+                    this.ruledef.filters.length == 0 &&
+                    this.whenInsertBtn) ||
+                (name == "filters" &&
+                    index == this.ruledef.filters.length - 1 &&
+                    (this.whenInsertBtn ||
+                        this.ruledef.actuators.length == 0)) ||
+                (name == "actuators" &&
+                    this.ruledef.modifiers.length == 0 &&
+                    this.doInsertBtn) ||
+                (name == "modifiers" &&
+                    index == this.ruledef.modifiers.length - 1 &&
+                    this.doInsertBtn)
+            )
+        }
+
         private editTile(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
             const tileUpdated = (editedAdded: boolean = true) => {
                 Language.ensureValid(this.ruledef)
                 this.editor.saveAndCompileProgram()
                 this.instantiateProgramTiles()
-                if (
-                    editedAdded &&
-                    ((name == "sensors" && this.ruledef.filters.length == 0) ||
-                        (name == "actuators" &&
-                            this.ruledef.modifiers.length == 0) ||
-                        (name == "filters" &&
-                            this.ruledef.actuators.length == 0))
-                ) {
+                if (editedAdded && this.nextEmpty(name, index)) {
                     control.raiseEvent(KEY_DOWN, controller.right.id)
                 }
                 this.page.changed()
@@ -741,13 +752,13 @@ namespace microcode {
         public addToNavigator() {
             const btns: Button[] = []
             btns.push(this.handleBtn)
-            this.rule["sensors"].forEach(b => btns.push(b))
-            this.rule["filters"].forEach(b => btns.push(b))
+            this.rule.sensors.forEach(b => btns.push(b))
+            this.rule.filters.forEach(b => btns.push(b))
 
             if (this.whenInsertBtn) btns.push(this.whenInsertBtn)
 
-            this.rule["actuators"].forEach(b => btns.push(b))
-            this.rule["modifiers"].forEach(b => btns.push(b))
+            this.rule.actuators.forEach(b => btns.push(b))
+            this.rule.modifiers.forEach(b => btns.push(b))
 
             if (this.doInsertBtn) btns.push(this.doInsertBtn)
 
@@ -763,8 +774,8 @@ namespace microcode {
             const v = new Vec2()
             this.whenBounds = new Bounds()
 
-            const whenTiles = ruleRep["sensors"].concat(ruleRep["filters"])
-            const doTiles = ruleRep["actuators"].concat(ruleRep["modifiers"])
+            const whenTiles = ruleRep.sensors.concat(ruleRep.filters)
+            const doTiles = ruleRep.actuators.concat(ruleRep.modifiers)
             if (this.whenInsertBtn) whenTiles.push(this.whenInsertBtn)
             if (this.doInsertBtn) doTiles.push(this.doInsertBtn)
 
@@ -823,12 +834,8 @@ namespace microcode {
                 })
             }
 
-            updateSizeFromButtons(this.rule["sensors"])
-            updateSizeFromButtons(this.rule["filters"])
-            updateSizeFromButtons(this.rule["actuators"])
-            updateSizeFromButtons(this.rule["modifiers"])
-            if (this.whenInsertBtn) updateSizeFromButtons([this.whenInsertBtn])
-            if (this.doInsertBtn) updateSizeFromButtons([this.doInsertBtn])
+            updateSizeFromButtons(whenTiles)
+            updateSizeFromButtons(doTiles)
 
             if (!this.bounds) {
                 this.bounds = new Bounds()

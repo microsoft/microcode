@@ -95,6 +95,9 @@
             margin: 0;
             padding: 0;
         }
+        dialog::backdrop {
+                background: rgba(0, 0, 0, 0.8);
+        }
         .lds-ripple {
             width: 80px;
             height: 80px;
@@ -172,6 +175,16 @@
         <a target="blank" rel="nofollow noopener" href="https://github.com/{{ site.github.owner_name }}/{{ site.github.repository_name }}">GitHub</a>
         <span id="version"></span>
     </footer>
+    <dialog id="connectDlg">
+        <form method="dialog">
+            <p>Program your micro:bit with MicroCode! <button>Close</button></p> 
+        </form>
+          <ol>
+            <li>Connect your <a href="https://microbit.org">micro:bit <b>V2</b></a> to your computer.</li>
+            <li>Download <a href="https://microsoft.github.io/microcode/assets/firmware.hex" download="microcode.hex">MicroCode</a> to the <code>MICROBIT</code> drive.</li>
+            <li><button id="webusbBtn">Connect</button> this editor to MicroCode</li>
+        </ol>
+    </dialog>
     <script type="text/javascript">
         makeCodeRun({ js: "./assets/js/binary.js?v={{ site.github.build_revision }}" });
 

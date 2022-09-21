@@ -49,7 +49,9 @@
                 margin: 0;
                 padding: 0;
             }
-
+            dialog::backdrop {
+                background: rgba(0, 0, 0, 0.8);
+            }
             .lds-ripple {
                 width: 80px;
                 height: 80px;
@@ -158,5 +160,15 @@
         <script type="text/javascript">
             makeCodeRun({ js: "./js/binary.js" })
         </script>
+        <dialog id="connectDlg">
+            <form method="dialog">
+                <p>Program your micro:bit with MicroCode! <button>Close</button></p> 
+            </form>
+              <ol>
+                <li>Connect your <a target="_blank" href="https://microbit.org">micro:bit <b>V2</b></a> to your computer.</li>
+                <li>Download <a href="https://microsoft.github.io/microcode/assets/firmware.hex" download="microcode.hex">MicroCode</a> to the <code>MICROBIT</code> drive.</li>
+                <li><button id="webusbBtn">Connect</button> this editor to MicroCode (choose "BBC micro:bit CMSIS-DAP" and press Connect).</li>
+            </ol>
+          </dialog>
     </body>
 </html>
