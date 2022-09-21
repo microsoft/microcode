@@ -273,13 +273,6 @@ namespace microcode {
     paint.serviceInstanceIndex = 0
     paint.priority = 10
 
-    const random_toss = addActuator(
-        TID_ACTUATOR_RANDOM_TOSS,
-        "Toss",
-        "value_out"
-    )
-    random_toss.priority = 70
-
     const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
     radio_send.priority = 100
 
@@ -465,4 +458,55 @@ namespace microcode {
     }
 
     tilesDB.modifiers[TID_MODIFIER_MUSIC_EDITOR] = new MusicEditor()
+
+    export type RandomUpper = { upper: number }
+    const randomEditor: FieldEditor = {
+        init: { upper: 3 },
+        clone: (field: RandomUpper) => {
+            return {
+                note: field.upper,
+            }
+        },
+        editor: randomEditor,
+        toImage: upperToImage,
+        buttonStyle: () => ButtonStyles.ShadowedWhite,
+        serialize: (field: RandomUpper) => field.upper.toString(),
+        deserialize: (upper: string) => {
+            return { upper: parseInt(upper) }
+        },
+    }
+
+    class RandomEditor extends ModifierDefn {
+        field: RandomUpper
+        constructor(field: RandomUpper = null) {
+            super(TID_MODIFIER_MUSIC_EDITOR, "Toss", "dice_editor", 70)
+            this.fieldEditor = musicFieldEditor
+            if (field) {
+                this.field = { upper: field.upper }
+            } else {
+                this.field = this.fieldEditor.clone(this.fieldEditor.init)
+            }
+        }
+
+        getField() {
+            return this.field
+        }
+
+        getIcon(): Image {
+            return this.fieldEditor.toImage(this.field)
+        }
+
+        getNewInstance(field: RandomUpper) {
+            return new RandomEditor({
+                upper: field ? field.upper : this.field.upper,
+            })
+        }
+
+        serviceCommandArg() {
+            const r = Buffer.create(6)
+            return r
+        }
+    }
+
+    tilesDB.modifiers[TID_ACTUATOR_RANDOM_TOSS] = new RandomEditor()
 }
