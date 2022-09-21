@@ -184,6 +184,16 @@ const liveStrings = {
     M19spring: "emoji spring",
     M19twinkle: "emoji twinkle",
     M19yawn: "emoji yawn",
+
+    N0: "editor",
+    N1: "new program",
+    N2: "flashing heart",
+    N3: "smiley buttons",
+    N4: "pet hamster",
+    N5: "chuck a duck",
+    N6: "reaction time",
+    N7: "hot potato",
+    N8: "rock paper scissors",    
 }
 
 addSimMessageHandler("accessibility", data => {

@@ -131,6 +131,19 @@ namespace microcode {
         /* override */ draw() {
             if (!this.visible) return
             
+            Screen.outlineBoundsXfrm(
+                this.xfrm,
+                this.size,
+                1,
+                this.cycle ? 6 : 9
+            )
+            Screen.outlineBoundsXfrm(
+                this.xfrm,
+                this.size,
+                2,
+                this.cycle ? 9 : 6
+            )
+
             const text = accessibility.ariaToTooltip(this.ariaId)
             if (text) {
                 const n = text.length
@@ -148,18 +161,6 @@ namespace microcode {
                 Screen.fillRect(x - 1, y - 1, w + 1, h + 2, 15)
                 Screen.print(text, x, y, 1, font)
             }
-            Screen.outlineBoundsXfrm(
-                this.xfrm,
-                this.size,
-                1,
-                this.cycle ? 6 : 9
-            )
-            Screen.outlineBoundsXfrm(
-                this.xfrm,
-                this.size,
-                2,
-                this.cycle ? 9 : 6
-            )
         }
     }
 }
