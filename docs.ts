@@ -37,7 +37,7 @@ namespace microcode {
     //% shim=TD_NOOP
     function _dumpProgram() {
         const prg = editor.renderProgram()
-        sendImage(editor.name, prg)
+        sendImage(editorName, prg)
     }
 
     function sendImage(name: string, img: Image) {
