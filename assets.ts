@@ -48,6 +48,7 @@ namespace microcode {
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
             this.reg[TID_SENSOR_PRESS] = icondb.finger_press
+            this.reg[TID_SENSOR_RELEASE] = icondb.finger_release
             this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
             this.reg[TID_SENSOR_ACCELEROMETER] = icondb.accelerometer
             this.reg[TID_SENSOR_OUT_PIPE_A] = icondb.outPipeA
@@ -1235,6 +1236,24 @@ namespace icondb {
         . . . . . . . f . . . . . . . .
         . . . . . f . f . f . . . . . .
         . . . . . . f f f . . . . . . .
+        . . . . . . . f . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . 4 4 4 4 4 . . . . . .
+        . . . . 4 4 4 4 4 4 4 d . . . .
+        . . . e 4 4 4 4 4 4 4 e d . . .
+        . . . e 2 4 4 4 4 4 2 e d . . .
+        . . . e e 2 2 2 2 2 e e d . . .
+        . . . . e e e e e e e d . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const finger_release = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . f . . . . . . . .
+        . . . . . . f f f . . . . . . .
+        . . . . . f . f . f . . . . . .
+        . . . . . . . f . . . . . . . .
+        . . . . . . . f . . . . . . . .
         . . . . . . . f . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . 4 4 4 4 4 . . . . . .

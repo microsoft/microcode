@@ -111,6 +111,7 @@ const liveStrings = {
 
     S1: "always",
     S2: "press",
+    S2B: "release",
     S3: "accelerometer",
     S4: "timer",
     S5: "light",
@@ -124,7 +125,6 @@ const liveStrings = {
     F2: "touch pin 2",
     F3: "button A",
     F4: "button B",
-    F5: "button A + B",
     // F6
     F7: "logo",
     F8: "1",
