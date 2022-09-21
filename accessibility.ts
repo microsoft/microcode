@@ -55,11 +55,12 @@ namespace accessibility {
         F17_tilt_right: "tilt right",
 
         A1: "switch page",
-        A2: "speaker",
+        A2: "sound emoji",
         A3: "microphone",
         A4: "music",
         A5: "paint",
         A6: "radio send",
+        A7: "random number",
 
         M1: "page 1",
         M2: "page 2",
@@ -76,9 +77,7 @@ namespace accessibility {
         M11: "on",
         M12: "off",
 
-        M15: "paint",
-        M16: "red",
-        M17: "purple",
+        M15: "LEDs",
         M18: "music",
 
         M19giggle: "giggle",

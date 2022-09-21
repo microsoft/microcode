@@ -205,12 +205,12 @@ namespace microcode {
                     break
                 }
             }
-            
+
             let btn = this.buttonGroups[this.row][this.col]
 
             this.reportAccessibilityInfo(btn)
 
-            return btn;
+            return btn
         }
 
         public initialCursor(cursor: Cursor) {
@@ -236,14 +236,14 @@ namespace microcode {
             let status
 
             if (color == TID_MODIFIER_COLOR_RED) {
-                status = "checked"
+                status = "on"
             } else if (color == TID_MODIFIER_COLOR_DARKPURPLE) {
-                status = "unchecked"
+                status = "off"
             } else {
                 status = "unknown"
             }
 
-            accessibility.setLiveContent(new accessibility.textAccessibilityMessage("row " + this.row + " column " + this.col + " status " + status))
+            accessibility.setLiveContent(new accessibility.textAccessibilityMessage("led ${this.col} ${this.row} ${status}"))
         }
     }
 }
