@@ -9,47 +9,43 @@ namespace microcode {
         Back,
     }
 
+    export type CursorState = {
+        navigator: INavigator
+        pos: Vec2
+        ariaId: string
+        size: Bounds
+    }
+
     export class Cursor extends Component implements IPlaceable {
         private xfrm_: Affine
-        stylus: Sprite
-        private hitbox_: Bounds
         navigator: INavigator
         cancelHandlerStack: CursorCancelHandler[]
         anim: Animation
         dest: Vec2
         ariaId: string
+        size: Bounds
+        cycle: number
 
         public get xfrm() {
             return this.xfrm_
-        }
-        public get hitbox() {
-            return Bounds.Translate(this.hitbox_, this.xfrm.worldPos)
         }
 
         constructor() {
             super("cursor")
             this.xfrm_ = new Affine()
-            this.stylus = new Sprite({
-                parent: this,
-                img: icons.get("cursor"),
-            })
-            // Small hitbox around the pointer.
-            this.hitbox_ = new Bounds({
-                width: 3,
-                height: 3,
-                left: -3,
-                top: -2,
-            })
             this.cancelHandlerStack = []
             this.dest = new Vec2()
             this.anim = new Animation((p: Vec2) => this.animCallback(p))
+            this.cycle = 1
+            this.setSize()
         }
 
         private animCallback(p: Vec2) {
             this.xfrm.localPos = p
         }
 
-        public moveTo(pos: Vec2, ariaId: string) {
+        public moveTo(pos: Vec2, ariaId: string, sizeHint: Bounds) {
+            this.setSize(sizeHint)
             this.dest.copyFrom(pos)
             this.anim.clearFrames()
             this.anim.addFrame(
@@ -69,10 +65,37 @@ namespace microcode {
             this.ariaId = ariaId || ""
         }
 
-        public snapTo(x: number, y: number, ariaId: string) {
+        public snapTo(x: number, y: number, ariaId: string, sizeHint: Bounds) {
+            this.setSize(
+                sizeHint ||
+                    new Bounds({ left: 0, top: 0, width: 16, height: 16 })
+            )
             this.dest.x = this.xfrm.localPos.x = x
             this.dest.y = this.xfrm.localPos.y = y
             this.setAriaContent(ariaId)
+        }
+
+        public setSize(size?: Bounds) {
+            size =
+                size || new Bounds({ left: 0, top: 0, width: 16, height: 16 })
+            if (this.size) this.size.copyFrom(size)
+            else this.size = size.clone()
+        }
+
+        public saveState(): CursorState {
+            return {
+                navigator: this.navigator,
+                pos: this.xfrm.localPos.clone(),
+                ariaId: this.ariaId,
+                size: this.size.clone(),
+            }
+        }
+
+        public restoreState(state: CursorState) {
+            this.navigator = state.navigator
+            this.xfrm.localPos.copyFrom(state.pos)
+            this.ariaId = state.ariaId
+            this.size.copyFrom(state.size)
         }
 
         public move(dir: CursorDir): Button {
@@ -108,11 +131,11 @@ namespace microcode {
             if (this.anim) {
                 this.anim.update()
             }
+            const t = control.millis()
+            this.cycle = t % 1000 < 500 ? 1 : 0
         }
 
         /* override */ draw() {
-            this.stylus.draw()
-            //this.hitbox.dbgRect(15);
             const text = accessibility.ariaToTooltip(this.ariaId)
             if (text) {
                 const n = text.length
@@ -126,10 +149,22 @@ namespace microcode {
                         this.xfrm.localPos.x - (w >> 1)
                     )
                 )
-                let y = this.xfrm.localPos.y + 6 + font.charHeight
+                let y = this.xfrm.localPos.y + 7 + font.charHeight
                 Screen.fillRect(x - 1, y - 1, w + 1, h + 2, 15)
                 Screen.print(text, x, y, 1, font)
             }
+            Screen.outlineBoundsXfrm(
+                this.xfrm,
+                this.size,
+                1,
+                this.cycle ? 6 : 9
+            )
+            Screen.outlineBoundsXfrm(
+                this.xfrm,
+                this.size,
+                2,
+                this.cycle ? 9 : 6
+            )
         }
     }
 }

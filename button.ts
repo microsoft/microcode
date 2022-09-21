@@ -91,16 +91,6 @@ namespace microcode {
             return { type: "id", value: this.ariaId }
         }
 
-        public get hitbox() {
-            // Returns bounds of non-transparent pixels in world space
-            // This can go away once quadtree is no longer used
-            return Bounds.GrowXY(
-                this.icon.hitbox,
-                borderWidth(this.style) * 2,
-                borderHeight(this.style) * 2
-            )
-        }
-
         public get bounds() {
             // Returns bounds in local space
             return this.bounds_
@@ -247,6 +237,7 @@ namespace microcode {
             Screen.outlineBoundsXfrm4(
                 this.xfrm,
                 this.icon.bounds,
+                1,
                 this.style.borders
             )
             if (this.style.shadow) {

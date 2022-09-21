@@ -113,7 +113,8 @@ namespace microcode {
             this.cursor.snapTo(
                 btn.xfrm.worldPos.x,
                 btn.xfrm.worldPos.y,
-                btn.ariaId
+                btn.ariaId,
+                btn.bounds
             )
         }
 
@@ -123,7 +124,11 @@ namespace microcode {
             if (!target) return
 
             if (target.rootXfrm.tag === "hud") {
-                this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
+                this.cursor.moveTo(
+                    target.xfrm.worldPos,
+                    target.ariaId,
+                    target.bounds
+                )
                 return
             }
 
@@ -161,9 +166,13 @@ namespace microcode {
                     target.xfrm.worldPos.x + xocc,
                     target.xfrm.worldPos.y + yocc
                 )
-                this.cursor.moveTo(dest, target.ariaId)
+                this.cursor.moveTo(dest, target.ariaId, target.bounds)
             } else {
-                this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
+                this.cursor.moveTo(
+                    target.xfrm.worldPos,
+                    target.ariaId,
+                    target.bounds
+                )
             }
         }
 
@@ -379,7 +388,7 @@ namespace microcode {
 
         private layout() {
             if (this.rules) {
-                this.rules.forEach((rule) => {
+                this.rules.forEach(rule => {
                     rule.layout()
                 })
                 let left = 10
@@ -395,10 +404,10 @@ namespace microcode {
                 })
                 // Make all rules the same width
                 let maxRuleWidth = 0
-                this.rules.forEach((rule) => {
+                this.rules.forEach(rule => {
                     maxRuleWidth = Math.max(maxRuleWidth, rule.bounds.width)
                 })
-                this.rules.forEach((rule) => {
+                this.rules.forEach(rule => {
                     rule.bounds.width = maxRuleWidth
                 })
             }
@@ -459,7 +468,7 @@ namespace microcode {
         handleBtn: Button
         whenInsertBtn: Button
         doInsertBtn: Button
-        arrow: Sprite;
+        arrow: Sprite
         rule: ButtonRuleRep
         bounds: Bounds
         whenBounds: Bounds
@@ -480,7 +489,7 @@ namespace microcode {
             this.xfrm_.parent = page.xfrm
             this.handleBtn = new EditorButton(editor, {
                 parent: this,
-                icon: "default",
+                icon: "rule_handle",
                 ariaId: "rule",
                 x: 0,
                 y: 0,
@@ -763,12 +772,11 @@ namespace microcode {
             const lastWhenTile = whenTiles[whenTiles.length - 1]
 
             this.handleBtn.xfrm.localPos = v
-            v.x += (this.handleBtn.width >> 1)
+            v.x += this.handleBtn.width
             this.whenBounds.left = v.x
 
-            v.x += (firstWhenTile.width >> 1)
+            v.x += firstWhenTile.width >> 1
             v.x += 2
-
 
             const layoutButtons = (btns: Button[]) => {
                 btns.forEach((btn, index) => {
@@ -804,9 +812,13 @@ namespace microcode {
             const updateSizeFromButtons = (btns: Button[]) => {
                 btns.forEach(btn => {
                     if (!this.bounds) {
-                        this.bounds = btn.bounds.clone().translate(btn.xfrm.localPos)
+                        this.bounds = btn.bounds
+                            .clone()
+                            .translate(btn.xfrm.localPos)
                     } else {
-                        this.bounds.add(Bounds.Translate(btn.bounds, btn.xfrm.localPos))
+                        this.bounds.add(
+                            Bounds.Translate(btn.bounds, btn.xfrm.localPos)
+                        )
                     }
                 })
             }
@@ -815,15 +827,13 @@ namespace microcode {
             updateSizeFromButtons(this.rule["filters"])
             updateSizeFromButtons(this.rule["actuators"])
             updateSizeFromButtons(this.rule["modifiers"])
-            if (this.whenInsertBtn)
-                updateSizeFromButtons([this.whenInsertBtn])
-            if (this.doInsertBtn)
-                updateSizeFromButtons([this.doInsertBtn])
+            if (this.whenInsertBtn) updateSizeFromButtons([this.whenInsertBtn])
+            if (this.doInsertBtn) updateSizeFromButtons([this.doInsertBtn])
 
             if (!this.bounds) {
                 this.bounds = new Bounds()
             } else {
-                this.bounds.grow(1);
+                this.bounds.grow(1)
             }
 
             // Ensure that the rule "tray" is at least as wide as the screen
@@ -831,13 +841,13 @@ namespace microcode {
 
             this.whenBounds.left = this.bounds.left
             this.whenBounds.top = this.bounds.top
-            this.whenBounds.height = this.bounds.height;
+            this.whenBounds.height = this.bounds.height
         }
 
         /* override */ draw() {
             Screen.fillBoundsXfrm(this.xfrm, this.bounds, 11)
             Screen.fillBoundsXfrm(this.xfrm, this.whenBounds, 13)
-            Screen.outlineBoundsXfrm(this.xfrm, this.bounds, 15)
+            Screen.outlineBoundsXfrm(this.xfrm, this.bounds, 1, 12)
             this.handleBtn.draw()
             if (this.whenInsertBtn) this.whenInsertBtn.draw()
             this.arrow.draw()

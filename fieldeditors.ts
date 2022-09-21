@@ -14,7 +14,10 @@ namespace microcode {
         for (let row = 0; row < 5; row++) {
             let btns: PickerButtonDef[] = []
             for (let col = 0; col < 5; col++) {
-                btns.push({ icon: getColor(col, row) })
+                btns.push({
+                    icon: getColor(col, row),
+                    style: ButtonStyles.BorderedPurple
+                })
             }
             picker.addGroup({ label: row.toString(), btns })
         }
@@ -73,9 +76,18 @@ namespace microcode {
         onDelete?: () => void
     ) {
         let btns: PickerButtonDef[] = []
-        btns.push({ icon: "prev_page" })
-        btns.push({ icon: noteToImageRaw(image.create(16, 16), field.note) })
-        btns.push({ icon: "next_page" })
+        btns.push({
+            icon: "prev_page",
+            style: ButtonStyles.BorderedPurple,
+        })
+        btns.push({
+            icon: noteToImageRaw(image.create(16, 16), field.note),
+            style: ButtonStyles.FlatWhite,
+        })
+        btns.push({
+            icon: "next_page",
+            style: ButtonStyles.BorderedPurple,
+        })
         picker.addGroup({ label: "", btns })
 
         picker.show(

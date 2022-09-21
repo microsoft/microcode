@@ -53,16 +53,30 @@ namespace microcode {
             })
         }
 
+        public copyFrom(other: Bounds) {
+            this.left = other.left
+            this.top = other.top
+            this.width = other.width
+            this.height = other.height
+        }
+
+        public set(x: number, y: number, w: number, h: number) {
+            this.left = x
+            this.top = y
+            this.width = w
+            this.height = h
+        }
+
         public static Grow(box: Bounds, amount = 1): Bounds {
-            const b = box.clone();
-            b.grow(amount);
-            return b;
+            const b = box.clone()
+            b.grow(amount)
+            return b
         }
 
         public static GrowXY(box: Bounds, x: number, y: number): Bounds {
-            const b = box.clone();
-            b.growxy(x, y);
-            return b;
+            const b = box.clone()
+            b.growxy(x, y)
+            return b
         }
 
         public grow(amount = 1): this {
@@ -70,7 +84,7 @@ namespace microcode {
             this.left -= amount
             this.width += amount * 2
             this.height += amount * 2
-            return this;
+            return this
         }
 
         public growxy(x: number, y: number): this {
@@ -78,7 +92,7 @@ namespace microcode {
             this.left -= y
             this.width += x * 2
             this.height += y * 2
-            return this;
+            return this
         }
 
         public static Translate(box: Bounds, p: Vec2): Bounds {
@@ -138,7 +152,7 @@ namespace microcode {
             this.top = Math.min(this.top, other.top)
             this.right = Math.max(this.right, other.right)
             this.bottom = Math.max(this.bottom, other.bottom)
-            return this;
+            return this
         }
 
         public static FromImage(i: ImageG): Bounds {
