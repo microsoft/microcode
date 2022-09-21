@@ -41,7 +41,7 @@ namespace microcode {
                 progdef: progdef.toObj(),
             }
             const s = JSON.stringify(saved)
-            //console.log(s)
+            console.log(s)
             settings.writeString(slot, s)
         }
 
