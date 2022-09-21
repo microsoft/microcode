@@ -36436,10 +36436,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.accessabilityMessage___16024 = undefined;
+    s.accessibilityMessage___16024 = undefined;
     s.color___16029 = undefined;
     s.status___16032 = undefined;
-    s.accessabilityMessage___16042 = undefined;
+    s.accessibilityMessage___16042 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -36478,9 +36478,9 @@ switch (step) {
     s.tmp_7 = r0;
     r0 = pxsim_Array__push(s.tmp_7, s.tmp_5);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_4, "details", s.tmp_7);
-    s.accessabilityMessage___16024 = (s.tmp_4);
+    s.accessibilityMessage___16024 = (s.tmp_4);
     s.tmp_0 = accessibility_setLiveContent__P2858_mk(s);
-    s.tmp_0.arg0 = s.accessabilityMessage___16024;
+    s.tmp_0.arg0 = s.accessibilityMessage___16024;
     s.callLocIdx = 1669; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
@@ -36597,9 +36597,9 @@ switch (step) {
     s.tmp_17 = r0;
     r0 = pxsim_Array__push(s.tmp_17, s.tmp_1);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "details", s.tmp_17);
-    s.accessabilityMessage___16042 = (s.tmp_0);
+    s.accessibilityMessage___16042 = (s.tmp_0);
     s.tmp_0 = accessibility_setLiveContent__P2858_mk(s);
-    s.tmp_0.arg0 = s.accessabilityMessage___16042;
+    s.tmp_0.arg0 = s.accessibilityMessage___16042;
     s.callLocIdx = 1671; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
@@ -36633,10 +36633,10 @@ function microcode_LEDNavigator_reportAccessibilityInfo__P3795_mk(s) {
   tmp_15: undefined,
   tmp_16: undefined,
   tmp_17: undefined,
-  accessabilityMessage___16024: undefined,
+  accessibilityMessage___16024: undefined,
   color___16029: undefined,
   status___16032: undefined,
-  accessabilityMessage___16042: undefined,
+  accessibilityMessage___16042: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -36685,7 +36685,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-accessibility_setLiveContent__P2858.info = {"start":124,"length":278,"line":5,"column":4,"endLine":12,"endColumn":5,"fileName":"accessibility.ts","functionName":"setLiveContent","argumentNames":["accessabilityMessage"]}
+accessibility_setLiveContent__P2858.info = {"start":124,"length":278,"line":5,"column":4,"endLine":12,"endColumn":5,"fileName":"accessibility.ts","functionName":"setLiveContent","argumentNames":["accessibilityMessage"]}
 
 function accessibility_setLiveContent__P2858_mk(s) {
     checkStack(s.depth);
@@ -43120,8 +43120,8 @@ switch (step) {
     s.ruleDef___17449 = undefined;
     s.whensTileIds___17456 = undefined;
     s.dosTileIds___17478 = undefined;
-    s.accessabilityMessage___17500 = undefined;
-    s.accessabilityMessage___17506 = undefined;
+    s.accessibilityMessage___17500 = undefined;
+    s.accessibilityMessage___17506 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -43223,9 +43223,9 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_3, "values", s.dosTileIds___17478);
     r0 = pxsim_Array__push(s.tmp_2, s.tmp_3);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "details", s.tmp_2);
-    s.accessabilityMessage___17500 = (s.tmp_0);
+    s.accessibilityMessage___17500 = (s.tmp_0);
     s.tmp_0 = accessibility_setLiveContent__P2858_mk(s);
-    s.tmp_0.arg0 = s.accessabilityMessage___17500;
+    s.tmp_0.arg0 = s.accessibilityMessage___17500;
     s.callLocIdx = 1659; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
@@ -43267,9 +43267,9 @@ switch (step) {
     s.tmp_6 = r0;
     r0 = pxsim_Array__push(s.tmp_6, s.tmp_1);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "details", s.tmp_6);
-    s.accessabilityMessage___17506 = (s.tmp_0);
+    s.accessibilityMessage___17506 = (s.tmp_0);
     s.tmp_0 = accessibility_setLiveContent__P2858_mk(s);
-    s.tmp_0.arg0 = s.accessabilityMessage___17506;
+    s.tmp_0.arg0 = s.accessibilityMessage___17506;
     s.callLocIdx = 1661; s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
@@ -43296,8 +43296,8 @@ function microcode_RuleRowNavigator_move__P3790_mk(s) {
   ruleDef___17449: undefined,
   whensTileIds___17456: undefined,
   dosTileIds___17478: undefined,
-  accessabilityMessage___17500: undefined,
-  accessabilityMessage___17506: undefined,
+  accessibilityMessage___17500: undefined,
+  accessibilityMessage___17506: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,

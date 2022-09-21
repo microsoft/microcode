@@ -186,18 +186,18 @@ const liveStrings = {
 }
 
 addSimMessageHandler("accessibility", data => {
-    const serializedAccessabilityMessage = uint8ArrayToString(data)
+    const serializedAccessibilityMessage = uint8ArrayToString(data)
 
-    let accessabilityMessage = JSON.parse(serializedAccessabilityMessage)
+    let accessibilityMessage = JSON.parse(serializedAccessibilityMessage)
 
     let value
     if (
-        accessabilityMessage.type === "tile" ||
-        accessabilityMessage.type === "text"
+        accessibilityMessage.type === "tile" ||
+        accessibilityMessage.type === "text"
     ) {
-        //console.log(serializedAccessabilityMessage)
+        //console.log(serializedAccessibilityMessage)
 
-        let valueId = accessabilityMessage.details[0]
+        let valueId = accessibilityMessage.details[0]
 
         if (valueId) {
             valueId = valueId.values[0]
@@ -206,10 +206,10 @@ addSimMessageHandler("accessibility", data => {
                 value = (liveStrings[valueId] || valueId).split(/_/g).join(" ")
             }
         }
-    } else if (accessabilityMessage.type == "rule") {
+    } else if (accessibilityMessage.type == "rule") {
         value = "rule"
 
-        let whens = accessabilityMessage.details[0]
+        let whens = accessibilityMessage.details[0]
 
         if (whens && whens.values.length > 0) {
             value += " when"
@@ -220,7 +220,7 @@ addSimMessageHandler("accessibility", data => {
             })
         }
 
-        let dos = accessabilityMessage.details[1]
+        let dos = accessibilityMessage.details[1]
 
         if (dos && dos.values.length > 0) {
             value += " do"
@@ -232,7 +232,7 @@ addSimMessageHandler("accessibility", data => {
         }
     } else {
         console.log(
-            "Error, " + serializedAccessabilityMessage + " is not supported"
+            "Error, " + serializedAccessibilityMessage + " is not supported"
         )
         return
     }

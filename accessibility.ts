@@ -3,8 +3,8 @@ namespace accessibility {
      * Notifies web application about the current content.
      */
     //% shim=TD_ID
-    export function setLiveContent(accessabilityMessage: AccessabilityMessage) {
-        let serializedMessage = JSON.stringify(accessabilityMessage)
+    export function setLiveContent(accessibilityMessage: accessibilityMessage) {
+        let serializedMessage = JSON.stringify({"type" : accessibilityMessage.type, "details" : accessibilityMessage.details})
 
         control.simmessages.send(
             "accessibility",
@@ -97,13 +97,55 @@ namespace accessibility {
         return s.toUpperCase()
     }
 
-    export interface AccessabilityMessageDetals {
+    export interface accessibilityMessageDetals {
         name: string
         values: string[]
     }
 
-    export interface AccessabilityMessage {
+    export interface accessibilityMessage {
         type: string
-        details: AccessabilityMessageDetals[]
+        details: accessibilityMessageDetals[]
+    }
+
+    export class textAccessibilityMessage implements accessibilityMessage {
+        private value: string        
+        type: "text"
+        details: accessibilityMessageDetals[]
+
+        constructor(text: string) {
+            this.value = text
+            this.type = "text"
+            this.details = [{ name: "message", values: [this.value]}]
+        }
+    }
+    
+    export class tileAccessibilityMessage implements accessibilityMessage {
+        private tileId: string        
+        type: "tile"
+        details: accessibilityMessageDetals[]
+
+        constructor(tileId: string) {
+            this.tileId = tileId
+            this.type = "tile"
+            this.details = [{ name: "tileId", values: [this.tileId]}]
+        }
+    }
+
+    export class ruleAccessibilityMessage implements accessibilityMessage {
+        private dos: string[]
+        private whens: string[]        
+        type: "rule"
+        details: accessibilityMessageDetals[]
+
+        constructor(dos: string[], whens: string[]) {
+            this.dos = dos
+            this.whens = whens
+            this.type = "rule";
+            this.details =
+                [
+                    { name: "whens", values: this.whens },
+                    { name: "dos", values: this.dos }
+                ]
+        }
     }
 }

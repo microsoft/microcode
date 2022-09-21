@@ -134,6 +134,8 @@ namespace microcode {
         public move(cursor: Cursor, dir: CursorDir) {
             const ret = super.move(cursor, dir)
 
+            let accessibilityMessage;
+
             if (this.row > 0 && this.col == 0) {
                 const ruleDef = this.rules[this.row - 1]
 
@@ -145,28 +147,12 @@ namespace microcode {
                 ruleDef.actuators.forEach(tile => dosTileIds.push(tile.tid))
                 ruleDef.modifiers.forEach(tile => dosTileIds.push(tile.tid))
 
-                let accessabilityMessage = {
-                    type: "rule",
-                    details: [
-                        { name: "whens", values: whensTileIds },
-                        { name: "dos", values: dosTileIds },
-                    ],
-                }
-
-                accessibility.setLiveContent(accessabilityMessage)
+                accessibilityMessage = new accessibility.ruleAccessibilityMessage(dosTileIds, whensTileIds)               
             } else {
-                let accessabilityMessage = {
-                    type: "tile",
-                    details: [
-                        {
-                            name: "tileId",
-                            values: [(ret ? ret.ariaId : "") || ""],
-                        },
-                    ],
-                }
-
-                accessibility.setLiveContent(accessabilityMessage)
+                accessibilityMessage = new accessibility.tileAccessibilityMessage((ret ? ret.ariaId : "") || "")
             }
+
+            accessibility.setLiveContent(accessibilityMessage)
 
             return ret
         }
@@ -240,18 +226,8 @@ namespace microcode {
 
         reportAccessibilityInfo(btn: Button) {
 
-            if (this.row == 0 && this.col == 0) {
-                let accessabilityMessage = {
-                    type: "text",
-                    details: [
-                        {
-                            name: "message",
-                            values: ["remove LED editor tile"],
-                        },
-                    ],
-                }
-    
-                accessibility.setLiveContent(accessabilityMessage)
+            if (this.row == 0 && this.col == 0) {    
+                accessibility.setLiveContent(new accessibility.textAccessibilityMessage("remove LED editor tile"))
 
                 return
             }
@@ -264,20 +240,10 @@ namespace microcode {
             } else if (color == TID_MODIFIER_COLOR_DARKPURPLE) {
                 status = "unchecked"
             } else {
-                status = "unkown"
-            }   
-
-            let accessabilityMessage = {
-                type: "text",
-                details: [
-                    {
-                        name: "message",
-                        values: ["row " + this.row + " column " + this.col + " status " + status],
-                    },
-                ],
+                status = "unknown"
             }
 
-            accessibility.setLiveContent(accessabilityMessage)
+            accessibility.setLiveContent(new accessibility.textAccessibilityMessage("row " + this.row + " column " + this.col + " status " + status))
         }
     }
 }
