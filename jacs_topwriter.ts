@@ -421,7 +421,7 @@ namespace jacs {
             const sensor = rule.sensors.length ? rule.sensors[0] : null
             if (!sensor) return this.pageStartCondition
             let idx = sensor.serviceInstanceIndex
-            if (sensor.tid == microcode.TID_SENSOR_PRESS)
+            if (sensor.tid == microcode.TID_SENSOR_PRESS || sensor.tid === microcode.TID_SENSOR_RELEASE)
                 for (const f of rule.filters)
                     if (typeof f.jdParam == "number") idx = f.jdParam
             return this.lookupRole(sensor.serviceClassName, idx)
