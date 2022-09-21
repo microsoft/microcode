@@ -21,6 +21,16 @@ namespace keymap {
             keymap.KeyCode.Space,
             keymap.KeyCode.Backspace
         )
+        _setPlayerKeys(
+            2,
+            keymap.KeyCode.One,
+            keymap.KeyCode.Two,
+            keymap.KeyCode.Three,
+            keymap.KeyCode.Four,
+            keymap.KeyCode.Enter,
+            keymap.KeyCode.Delete
+        )
+
     }
 
     export enum KeyCode {
