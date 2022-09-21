@@ -204,10 +204,17 @@ namespace microcode {
         return tile
     }
 
+    function makePipe(tid: string, name: string, id: number) {
+        const tile = makeSensor(tid, name, "value_in", 120 + id * 5)
+        tile.jdParam = id
+        tile.serviceClassName = "pipe"
+    }
+
     makeSensor(TID_SENSOR_RADIO_RECEIVE, "Receive", "value_in", 100)
-    makeSensor(TID_SENSOR_OUT_PIPE_A, "Out of A", "value_in", 120)
-    makeSensor(TID_SENSOR_OUT_PIPE_B, "Out of A", "value_in", 125)
-    makeSensor(TID_SENSOR_OUT_PIPE_C, "Out of A", "value_in", 130)
+
+    makePipe(TID_SENSOR_OUT_PIPE_A, "Out of A", 0)
+    makePipe(TID_SENSOR_OUT_PIPE_B, "Out of B", 1)
+    makePipe(TID_SENSOR_OUT_PIPE_C, "Out of C", 2)
 
     const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
     timer.constraints = {
@@ -368,14 +375,15 @@ namespace microcode {
         tilesDB.modifiers[state_tid] = state_page
     })
 
-    const addPipeModifier = (tid: string, state: string) => {
+    const addPipeModifier = (tid: string, state: string, varid: number) => {
         const mod = new ModifierDefn(tid, state, "pipe_out", 10)
         mod.constraints = terminal
+        mod.jdParam = varid
         tilesDB.modifiers[tid] = mod
     }
-    addPipeModifier(TID_MODIFIER_PIPE_IN_A, "Into A")
-    addPipeModifier(TID_MODIFIER_PIPE_IN_B, "INto B")
-    addPipeModifier(TID_MODIFIER_PIPE_IN_C, "INto C")
+    addPipeModifier(TID_MODIFIER_PIPE_IN_A, "Into A", 0)
+    addPipeModifier(TID_MODIFIER_PIPE_IN_B, "Into B", 1)
+    addPipeModifier(TID_MODIFIER_PIPE_IN_C, "Into C", 2)
 
     const iconFieldEditor: FieldEditor = {
         init: img`

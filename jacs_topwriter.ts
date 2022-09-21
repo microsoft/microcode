@@ -55,6 +55,11 @@ namespace jacs {
         addLocal(name: string) {
             return new Variable(this.locals, CellKind.LOCAL, name)
         }
+        lookupLocal(name: string) {
+            let v = this.locals.find(v => v.name == name)
+            if (!v) v = this.addLocal(name)
+            return v
+        }
     }
 
     class Role {
@@ -101,19 +106,15 @@ namespace jacs {
                             literal(JD_REG_STREAMING_SAMPLES),
                             literal(1000),
                         ])
-                        wr.emitIf(
-                            wr.emitExpr(OpExpr.EXPR2_EQ, [
-                                wr.emitExpr(OpExpr.EXPR0_RET_VAL, []),
-                                literal(0),
-                            ]),
+                        this.parent.ifEq(
+                            wr.emitExpr(OpExpr.EXPR0_RET_VAL, []),
+                            0,
                             () => {
                                 this.parent.emitLoadBuffer(hex`0a`)
-                                wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
-                                    literal(this.index),
-                                    literal(
-                                        CMD_SET_REG | JD_REG_STREAMING_SAMPLES
-                                    ),
-                                ])
+                                this.parent.emitSendCmd(
+                                    this,
+                                    CMD_SET_REG | JD_REG_STREAMING_SAMPLES
+                                )
                             }
                         )
                     }
@@ -376,6 +377,12 @@ namespace jacs {
             return new Role(this, classId, name)
         }
 
+        addOrGetRole(name: string, classId: number) {
+            const r = this.roles.find(r => r.name == name)
+            if (r) return r
+            return this.addRole(name, classId)
+        }
+
         error(msg: string) {
             this.hasErrors = true
             console.error("Error: " + msg)
@@ -424,6 +431,8 @@ namespace jacs {
             if (sensor.tid == microcode.TID_SENSOR_PRESS || sensor.tid === microcode.TID_SENSOR_RELEASE)
                 for (const f of rule.filters)
                     if (typeof f.jdParam == "number") idx = f.jdParam
+            if (!sensor.serviceClassName)
+                this.error(`can't emit ${sensor.name} ${sensor.tid}`)
             return this.lookupRole(sensor.serviceClassName, idx)
         }
 
@@ -471,10 +480,7 @@ namespace jacs {
             for (let i = 0; i < params.length; ++i) {
                 const role = this.lookupActuatorRole(rule)
                 this.emitLoadBuffer(params[i])
-                wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
-                    literal(role.index),
-                    literal(actuator.serviceCommand),
-                ])
+                this.emitSendCmd(role, actuator.serviceCommand)
                 if (i != params.length - 1) {
                     wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(delay)])
                     if (lockvar)
@@ -491,6 +497,59 @@ namespace jacs {
             }
         }
 
+        private lookupGlobal(n: string) {
+            let g = this.globals.find(v => v.name == n)
+            if (!g) g = this.addGlobal(n)
+            return g
+        }
+
+        private pipeVar(id: number) {
+            return this.lookupGlobal("pipe" + (id || 0))
+        }
+
+        private pipeRole(id: number) {
+            return this.addOrGetRole("pipe_cond_" + id, SRV_JACSCRIPT_CONDITION)
+        }
+
+        private currValue() {
+            return this.proc.lookupLocal("currVal")
+        }
+
+        emitSendCmd(r: Role, cmd: number) {
+            this.writer.emitStmt(OpStmt.STMT2_SEND_CMD, [
+                literal(r.index),
+                literal(cmd),
+            ])
+        }
+
+        private getValueOut(rule: microcode.RuleDefn) {
+            let v = undefined
+            for (const m of rule.modifiers) {
+                if (m.category == "value_out") v = m.jdParam
+            }
+            return v
+        }
+
+        private getValueIn(rule: microcode.RuleDefn) {
+            let v = undefined
+            for (const m of rule.filters) {
+                if (m.category == "value_in") v = m.jdParam
+            }
+            return v
+        }
+
+        // 0-max inclusive
+        private emitRandomInt(max: number) {
+            if (max <= 0) return literal(0)
+            return this.writer.emitExpr(OpExpr.EXPR1_RANDOM_INT, [literal(max)])
+        }
+
+        private emitAdd(a: Value, off: number) {
+            if (a.op == OpExpr.EXPRx_LITERAL && a.numValue == 0)
+                return literal(off)
+            return this.writer.emitExpr(OpExpr.EXPR2_ADD, [a, literal(off)])
+        }
+
         private emitRoleCommand(rule: microcode.RuleDefn) {
             const actuator = rule.actuators.length ? rule.actuators[0] : null
             const wr = this.writer
@@ -505,6 +564,13 @@ namespace jacs {
                     if (m.category == "page") targetPage = m.jdParam
 
                 wr.emitCall(this.pageProc(targetPage).index, [])
+            } else if (actuator.tid == microcode.TID_ACTUATOR_RANDOM_TOSS) {
+                let v = this.getValueOut(rule)
+                if (v == undefined) v = 5
+                this.currValue().write(
+                    wr,
+                    this.emitAdd(this.emitRandomInt(v - 1), 1)
+                )
             } else if (actuator.serviceArgFromModifier) {
                 const role = this.lookupActuatorRole(rule)
                 let jdParam: any = null
@@ -513,13 +579,22 @@ namespace jacs {
                 }
                 const buf = actuator.serviceArgFromModifier(jdParam)
                 this.emitLoadBuffer(buf)
-                wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
-                    literal(role.index),
-                    literal(actuator.serviceCommand),
-                ])
+                this.emitSendCmd(role, actuator.serviceCommand)
                 this.emitLogString("send: " + role.name)
             } else {
                 this.error(`can't map act role for ${JSON.stringify(actuator)}`)
+            }
+
+            for (const m of rule.modifiers) {
+                if (m.category == "pipe_out") {
+                    const pv = this.pipeVar(m.jdParam)
+                    pv.write(wr, this.currValue().read(wr))
+                    wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(50)])
+                    this.emitSendCmd(
+                        this.pipeRole(m.jdParam),
+                        CMD_CONDITION_FIRE
+                    )
+                }
             }
         }
 
@@ -532,15 +607,13 @@ namespace jacs {
             return body
         }
 
-        private ifCurrPage(then: () => void) {
+        ifEq(v: Value, val: number, then: () => void) {
             const wr = this.writer
-            wr.emitIf(
-                wr.emitExpr(OpExpr.EXPR2_EQ, [
-                    this.currPage.read(wr),
-                    literal(this.currPageId),
-                ]),
-                then
-            )
+            wr.emitIf(wr.emitExpr(OpExpr.EXPR2_EQ, [v, literal(val)]), then)
+        }
+
+        private ifCurrPage(then: () => void) {
+            this.ifEq(this.currPage.read(this.writer), this.currPageId, then)
         }
 
         private pageProc(pageIdx: number) {
@@ -557,10 +630,10 @@ namespace jacs {
             for (const proc of this.pageProcs) {
                 if (proc)
                     this.withProcedure(proc, wr => {
-                        wr.emitStmt(OpStmt.STMT2_SEND_CMD, [
-                            literal(this.pageStartCondition.index),
-                            literal(0x80),
-                        ])
+                        this.emitSendCmd(
+                            this.pageStartCondition,
+                            CMD_CONDITION_FIRE
+                        )
                         wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
                     })
             }
@@ -568,6 +641,8 @@ namespace jacs {
 
         private emitRule(name: string, rule: microcode.RuleDefn) {
             const body = this.emitRuleActuator(name, rule)
+            const emitBody = () =>
+                this.writer.emitCall(body.index, [], OpCall.BG_MAX1)
 
             if (
                 rule.sensors[0] &&
@@ -595,20 +670,30 @@ namespace jacs {
                     wr.emitCall(timer.index, [], OpCall.BG_MAX1)
                 })
                 this.withProcedure(timer, wr => {
-                    let tm = literal(period)
-                    if (randomPeriod) {
-                        tm = wr.emitExpr(OpExpr.EXPR2_ADD, [
-                            tm,
-                            wr.emitExpr(OpExpr.EXPR1_RANDOM_INT, [
-                                literal(randomPeriod),
-                            ]),
-                        ])
-                    }
+                    const tm = this.emitAdd(
+                        this.emitRandomInt(randomPeriod),
+                        period
+                    )
                     wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [tm])
-                    this.ifCurrPage(() => {
-                        wr.emitCall(body.index, [], OpCall.BG_MAX1)
-                    })
+                    this.ifCurrPage(emitBody)
                     wr.emitJump(wr.top)
+                })
+                return
+            }
+
+            if (rule.sensors[0] && rule.sensors[0].serviceClassName == "pipe") {
+                const pipeId = rule.sensors[0].jdParam
+                const pv = this.pipeVar(pipeId)
+                const role = this.pipeRole(pipeId)
+                this.withProcedure(role.getDispatcher(), wr => {
+                    this.ifCurrPage(() => {
+                        const v = this.getValueIn(rule)
+                        if (v !== undefined) {
+                            this.ifEq(pv.read(wr), v, emitBody)
+                        } else {
+                            emitBody()
+                        }
+                    })
                 })
                 return
             }
@@ -620,20 +705,16 @@ namespace jacs {
                 this.ifCurrPage(() => {
                     const code = this.lookupEventCode(role, rule)
                     if (code != null) {
-                        wr.emitIf(
-                            wr.emitExpr(OpExpr.EXPR2_EQ, [
-                                wr.emitExpr(OpExpr.EXPR0_PKT_EV_CODE, []),
-                                literal(code),
-                            ]),
-                            () => {
-                                wr.emitCall(body.index, [], OpCall.BG_MAX1)
-                            }
+                        this.ifEq(
+                            wr.emitExpr(OpExpr.EXPR0_PKT_EV_CODE, []),
+                            code,
+                            emitBody
                         )
                     } else if (
                         role.classIdentifier == SRV_JACSCRIPT_CONDITION
                     ) {
                         // event code not relevant
-                        wr.emitCall(body.index, [], OpCall.BG_MAX1)
+                        emitBody()
                     } else {
                         this.error("can't handle role")
                     }
@@ -652,10 +733,7 @@ namespace jacs {
         private emitClearScreen() {
             const scr = this.lookupRole("dotMatrix", 0)
             this.emitLoadBuffer(Buffer.create(5))
-            this.writer.emitStmt(OpStmt.STMT2_SEND_CMD, [
-                literal(scr.index),
-                literal(jacs.CMD_SET_REG | 0x2),
-            ])
+            this.emitSendCmd(scr, jacs.CMD_SET_REG | 0x2)
         }
 
         emitProgram(prog: microcode.ProgramDefn) {
@@ -718,6 +796,7 @@ namespace jacs {
     }
 
     export const SRV_JACSCRIPT_CONDITION = 0x1196796d
+    export const CMD_CONDITION_FIRE = 0x80
 
     export const CMD_GET_REG = 0x1000
     export const CMD_SET_REG = 0x2000

@@ -126,27 +126,28 @@ namespace microcode {
     }
 
     export const wordLogo = img` 
-    .111111.......111111...1111.......................................................1111111.................................1111.................
-    11bbbbbb.....11bbbbbb.11bbbb....................................................111bbbbbbb1..............................11bbbb................
-    1bbbbbbbb...11bbbbbbb.1bbbbb...................................................11bbbbbbbbbbb.............................1bbbbb................
-    1bbbbbbbbb.11bbbbbbbb.1bbbbb..................................................11bbbbbbbbbbbbb............................1bbbbb................
-    1bbbbbbbbbb1bbbbbbbbb.1bbbbb.................................................11bbbbbbbbbbbbbbb...........................1bbbbb................
-    1bbbbbbbbbbbbbbbbbbbb..bbbb.................................................11bbbbbbbbbbbbbbbb...........................1bbbbb................
-    1bbbbbbbbbbbbbbbbbbbb............1111111......1111...111.......1111111......1bbbbbbbbbbbbbbbbbb.....1111111.........111111bbbbb.....1111111....
-    1bbbbbbbbbbbbbbbbbbbb..1111....111bbbbbbb1...11bbbb.11bbb....111bbbbbbb1...11bbbbbbb...bbbbbbbb...111bbbbbbb1.....111bbbbbbbbbb...111bbbbbbb1..
-    1bbbbbbbbbbbbbbbbbbbb.11bbbb..11bbbbbbbbbbb..1bbbbbb1bbbbb..11bbbbbbbbbbb..1bbbbbbb.....bbbbbbb..11bbbbbbbbbbb...11bbbbbbbbbbbb..11bbbbbbbbbbb.
-    1bbbbbb.bbbbb.bbbbbbb.1bbbbb..1bbbbbbbbbbbb..1bbbbbbbbbbbb..1bbbbbbbbbbbb..1bbbbbb.......bbbbb...1bbbbbbbbbbbb...1bbbbbbbbbbbbb..1bbbbbbbbbbbb.
-    1bbbbbb..bbb..1bbbbbb.1bbbbb.11bbbbbbbbbbbbb.1bbbbbbbbbbbb.11bbbbbbbbbbbbb.1bbbbbb..............11bbbbbbbbbbbbb.11bbbbbbbbbbbbb.11bbbb...bbbbbb
-    1bbbbbb.......1bbbbbb.1bbbbb.1bbbbb...bbbbbb.1bbbbb...bbb..1bbbbb...bbbbbb.1bbbbbb.......11111..1bbbbb...bbbbbb.1bbbbb...bbbbbb.1bbbb.....bbbbb
-    1bbbbbb.......1bbbbbb.1bbbbb.1bbbb.....bbbb..1bbbbb........1bbbb.....bbbbb.1bbbbbbb.....11bbbbb.1bbbb.....bbbbb.1bbbb....1bbbbb.1bbbbb11111bbbb
-    1bbbbbb.......1bbbbbb.1bbbbb.1bbbb...........1bbbbb........1bbbb.....1bbbb.1bbbbbbbb...11bbbbbb.1bbbb.....1bbbb.1bbbb....1bbbbb.1bbbbbbbbbbbbbb
-    1bbbbbb.......1bbbbbb.1bbbbb.1bbbb.....1111..1bbbbb........1bbbb.....1bbbb..bbbbbbbbb111bbbbbbb.1bbbb.....1bbbb.1bbbb....1bbbbb.1bbbbbbbbbbbbb.
-    1bbbbbb.......1bbbbbb.1bbbbb.1bbbbb...11bbbb.1bbbbb........1bbbbb...11bbbb..1bbbbbbbbbbbbbbbbb..1bbbbb...11bbbb.1bbbbb...1bbbbb.1bbbb..........
-    1bbbbbb.......1bbbbbb.1bbbbb.1bbbbbb111bbbbb.1bbbbb........1bbbbbb111bbbbb...bbbbbbbbbbbbbbbbb..1bbbbbb111bbbbb.1bbbbbb111bbbbb.1bbbbb.........
-    1bbbbbb.......1bbbbbb.1bbbbb..bbbbbbbbbbbbb..1bbbbb.........bbbbbbbbbbbbb.....bbbbbbbbbbbbbbb....bbbbbbbbbbbbb...bbbbbbbbbbbbbb..bbbbbb11111...
-    1bbbbbb.......1bbbbbb.1bbbbb..1bbbbbbbbbbbb..1bbbbb.........1bbbbbbbbbbbb......bbbbbbbbbbbbb.....1bbbbbbbbbbbb...1bbbbbbbbbbbbb..1bbbbbbbbbbb..
-    1bbbbbb.......1bbbbbb.1bbbbb...bbbbbbbbbbb...1bbbbb..........bbbbbbbbbbb........bbbbbbbbbbb.......bbbbbbbbbbb.....bbbbbbbbbbbbb...bbbbbbbbbbb..
-    .bbbbb.........bbbbb...bbbb......bbbbbbb......bbbb.............bbbbbbb............bbbbbbb...........bbbbbbb.........bbbbbbbbbb......bbbbbbbb...
+    .111111.......111111...1111.......................................................1111111.................................1111..................
+    11bbbbbb.....11bbbbbb.11bbbb....................................................111bbbbbbb1..............................11bbbb.................
+    1bbbbbbbb...11bbbbbbbf1bbbbbf..................................................11bbbbbbbbbbb.............................1bbbbbf................
+    1bbbbbbbbb.11bbbbbbbbf1bbbbbf.................................................11bbbbbbbbbbbbb............................1bbbbbf................
+    1bbbbbbbbbb1bbbbbbbbbf1bbbbbf................................................11bbbbbbbbbbbbbbb...........................1bbbbbf................
+    1bbbbbbbbbbbbbbbbbbbbf.bbbbff...............................................11bbbbbbbbbbbbbbbbf..........................1bbbbbf................
+    1bbbbbbbbbbbbbbbbbbbbf..ffff.....1111111......1111...111.......1111111......1bbbbbbbbbbbbbbbbbb.....1111111.........111111bbbbbf....1111111.....
+    1bbbbbbbbbbbbbbbbbbbbf.1111....111bbbbbbb1...11bbbb.11bbb....111bbbbbbb1...11bbbbbbbfffbbbbbbbbf..111bbbbbbb1.....111bbbbbbbbbbf..111bbbbbbb1...
+    1bbbbbbbbbbbbbbbbbbbbf11bbbb..11bbbbbbbbbbb..1bbbbbb1bbbbb..11bbbbbbbbbbb..1bbbbbbbff...bbbbbbbf.11bbbbbbbbbbb...11bbbbbbbbbbbbf.11bbbbbbbbbbb..
+    1bbbbbbfbbbbbfbbbbbbbf1bbbbbf.1bbbbbbbbbbbbf.1bbbbbbbbbbbbf.1bbbbbbbbbbbbf.1bbbbbbff.....bbbbbff.1bbbbbbbbbbbbf..1bbbbbbbbbbbbbf.1bbbbbbbbbbbbf.
+    1bbbbbbf.bbbff1bbbbbbf1bbbbbf11bbbbbbbbbbbbb.1bbbbbbbbbbbbf11bbbbbbbbbbbbb.1bbbbbbf.......fffff.11bbbbbbbbbbbbb.11bbbbbbbbbbbbbf11bbbbfffbbbbbb.
+    1bbbbbbf..fff.1bbbbbbf1bbbbbf1bbbbbfffbbbbbbf1bbbbbfffbbbff1bbbbbfffbbbbbbf1bbbbbbf......11111..1bbbbbfffbbbbbbf1bbbbbfffbbbbbbf1bbbbff...bbbbbf
+    1bbbbbbf......1bbbbbbf1bbbbbf1bbbbff...bbbbff1bbbbbf...fff.1bbbbff...bbbbbf1bbbbbbb.....11bbbbb.1bbbbff...bbbbbf1bbbbff..1bbbbbf1bbbbb11111bbbbf
+    1bbbbbbf......1bbbbbbf1bbbbbf1bbbbf.....ffff.1bbbbbf.......1bbbbf....1bbbbf1bbbbbbbb...11bbbbbbf1bbbbf....1bbbbf1bbbbf...1bbbbbf1bbbbbbbbbbbbbbf
+    1bbbbbbf......1bbbbbbf1bbbbbf1bbbbf....1111..1bbbbbf.......1bbbbf....1bbbbf.bbbbbbbbb111bbbbbbbf1bbbbf....1bbbbf1bbbbf...1bbbbbf1bbbbbbbbbbbbbff
+    1bbbbbbf......1bbbbbbf1bbbbbf1bbbbb...11bbbb.1bbbbbf.......1bbbbb...11bbbbf.1bbbbbbbbbbbbbbbbbff1bbbbb...11bbbbf1bbbbb...1bbbbbf1bbbbffffffffff.
+    1bbbbbbf......1bbbbbbf1bbbbbf1bbbbbb111bbbbbf1bbbbbf.......1bbbbbb111bbbbbf..bbbbbbbbbbbbbbbbbf.1bbbbbb111bbbbbf1bbbbbb111bbbbbf1bbbbb..........
+    1bbbbbbf......1bbbbbbf1bbbbbf.bbbbbbbbbbbbbff1bbbbbf........bbbbbbbbbbbbbff...bbbbbbbbbbbbbbbff..bbbbbbbbbbbbbff.bbbbbbbbbbbbbbf.bbbbbb11111....
+    1bbbbbbf......1bbbbbbf1bbbbbf.1bbbbbbbbbbbbf.1bbbbbf........1bbbbbbbbbbbbf.....bbbbbbbbbbbbbff...1bbbbbbbbbbbbf..1bbbbbbbbbbbbbf.1bbbbbbbbbbb...
+    1bbbbbbf......1bbbbbbf1bbbbbf..bbbbbbbbbbbff.1bbbbbf.........bbbbbbbbbbbff......bbbbbbbbbbbff.....bbbbbbbbbbbff...bbbbbbbbbbbbbf..bbbbbbbbbbbf..
+    .bbbbbff.......bbbbbff.bbbbff...fbbbbbbbfff...bbbbff..........fbbbbbbbfff........fbbbbbbbfff.......fbbbbbbbfff.....fbbbbbbbbbbff...fbbbbbbbbff..
+    ..fffff.........fffff...ffff......fffffff......ffff.............fffffff............fffffff...........fffffff.........ffffffffff......ffffffff...
     `
     export const microbitLogo = img` 
     .....1111111111111111.....
@@ -1266,91 +1267,90 @@ namespace icondb {
     `
     export const tile_value_1 = img`
         . . . . . . . . . . . . . . . .
-        . . . . f f f f f f f . . . . .
-        . . . f 5 5 5 5 5 5 5 f . . . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
-        . f 5 5 5 5 5 5 5 5 5 5 5 f . .
-        . f 5 5 5 5 f f 5 5 5 5 5 f . .
-        . f 5 5 5 5 5 f 5 5 5 5 5 f . .
-        . f 5 5 5 5 5 f 5 5 5 5 5 f . .
-        . f 5 5 5 5 5 f 5 5 5 5 5 f . .
-        . f 5 5 5 5 f f f 5 5 5 5 f . .
-        . f 5 5 5 5 5 5 5 5 5 5 f f . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
-        . . . f 5 5 5 5 5 5 5 f . . . .
-        . . . . f f f f f f f . . . . .
+        . . . . . 4 4 4 4 4 . . . . . .
+        . . . 4 4 5 5 5 5 5 4 4 . . . .
+        . . 4 5 5 1 1 1 1 1 5 5 4 . . .
+        . . 4 5 1 1 1 1 1 1 1 5 4 . . .
+        . 4 5 1 1 1 1 f 1 1 1 1 5 4 . .
+        . 4 5 1 1 1 f f 1 1 1 1 5 4 d .
+        . 4 5 1 1 1 1 f 1 1 1 1 5 4 d .
+        . 4 5 1 1 1 1 f 1 1 1 1 5 4 d .
+        . 4 5 1 1 1 f f f 1 1 1 5 4 d .
+        . . 4 5 1 1 1 1 1 1 1 5 4 d d .
+        . . 4 5 5 1 1 1 1 1 5 5 4 d . .
+        . . . 4 4 5 5 5 5 5 4 4 d . . .
+        . . . . . 4 4 4 4 4 d d . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
     export const tile_value_2 = img`
         . . . . . . . . . . . . . . . .
-        . . . . f f f f f f f . . . . .
-        . . . f 5 5 5 5 5 5 5 f . . . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
-        . f 5 5 5 5 5 5 5 5 5 5 5 f . .
-        . f 5 5 5 5 f f f 5 5 5 5 f . .
-        . f 5 5 5 5 5 5 5 f 5 5 5 f . .
-        . f 5 5 5 5 5 5 f 5 5 5 5 f . .
-        . f 5 5 5 5 5 f 5 5 5 5 5 f . .
-        . f 5 5 5 5 f f f f 5 5 5 f . .
-        . f 5 5 5 5 5 5 5 5 5 5 f f . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
-        . . . f 5 5 5 5 5 5 5 f . . . .
-        . . . . f f f f f f f . . . . .
+        . . . . . 4 4 4 4 4 . . . . . .
+        . . . 4 4 5 5 5 5 5 4 4 . . . .
+        . . 4 5 5 1 1 1 1 1 5 5 4 . . .
+        . . 4 5 1 1 1 1 1 1 1 5 4 . . .
+        . 4 5 1 1 1 f f 1 1 1 1 5 4 . .
+        . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
+        . 4 5 1 1 1 1 f 1 1 1 1 5 4 d .
+        . 4 5 1 1 1 f 1 1 1 1 1 5 4 d .
+        . 4 5 1 1 1 f f f 1 1 1 5 4 d .
+        . . 4 5 1 1 1 1 1 1 1 5 4 d d .
+        . . 4 5 5 1 1 1 1 1 5 5 4 d . .
+        . . . 4 4 5 5 5 5 5 4 4 d . . .
+        . . . . . 4 4 4 4 4 d d . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
     export const tile_value_3 = img`
         . . . . . . . . . . . . . . . .
-        . . . . f f f f f f f . . . . .
-        . . . f 5 5 5 5 5 5 5 f . . . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
-        . f 5 5 5 5 5 5 5 5 5 5 5 f . .
-        . f 5 5 5 5 f f f 5 5 5 5 f . .
-        . f 5 5 5 5 5 5 5 f 5 5 5 f . .
-        . f 5 5 5 5 5 f f 5 5 5 5 f . .
-        . f 5 5 5 5 5 5 5 f 5 5 5 f . .
-        . f 5 5 5 5 f f f 5 5 5 5 f . .
-        . f 5 5 5 5 5 5 5 5 5 5 f f . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
-        . . . f 5 5 5 5 5 5 5 f . . . .
-        . . . . f f f f f f f . . . . .
-        . . . . . . . . . . . . . . . .
+        . . . . . 4 4 4 4 4 . . . . . .
+        . . . 4 4 5 5 5 5 5 4 4 . . . .
+        . . 4 5 5 1 1 1 1 1 5 5 4 . . .
+        . . 4 5 1 1 1 1 1 1 1 5 4 . . .
+        . 4 5 1 1 1 f f 1 1 1 1 5 4 . .
+        . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
+        . 4 5 1 1 1 1 f 1 1 1 1 5 4 d .
+        . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
+        . 4 5 1 1 1 f f 1 1 1 1 5 4 d .
+        . . 4 5 1 1 1 1 1 1 1 5 4 d d .
+        . . 4 5 5 1 1 1 1 1 5 5 4 d . .
+        . . . 4 4 5 5 5 5 5 4 4 d . . .
+        . . . . . 4 4 4 4 4 d d . . . .
         . . . . . . . . . . . . . . . .
     `
     export const tile_value_4 = img`
         . . . . . . . . . . . . . . . .
-        . . . . f f f f f f f . . . . .
-        . . . f 5 5 5 5 5 5 5 f . . . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
-        . f 5 5 5 5 5 5 5 5 5 5 5 f . .
-        . f 5 5 5 5 f 5 f 5 5 5 5 f . .
-        . f 5 5 5 5 f 5 f 5 5 5 5 f . .
-        . f 5 5 5 5 f f f f 5 5 5 f . .
-        . f 5 5 5 5 5 5 f 5 5 5 5 f . .
-        . f 5 5 5 5 5 5 f 5 5 5 5 f . .
-        . f 5 5 5 5 5 5 5 5 5 5 f f . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
-        . . . f 5 5 5 5 5 5 5 f . . . .
-        . . . . f f f f f f f . . . . .
+        . . . . . 4 4 4 4 4 . . . . . .
+        . . . 4 4 5 5 5 5 5 4 4 . . . .
+        . . 4 5 5 1 1 1 1 1 5 5 4 . . .
+        . . 4 5 1 1 1 1 1 1 1 5 4 . . .
+        . 4 5 1 1 1 f 1 f 1 1 1 5 4 . .
+        . 4 5 1 1 1 f 1 f 1 1 1 5 4 d .
+        . 4 5 1 1 1 f f f 1 1 1 5 4 d .
+        . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
+        . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
+        . . 4 5 1 1 1 1 1 1 1 5 4 d d .
+        . . 4 5 5 1 1 1 1 1 5 5 4 d . .
+        . . . 4 4 5 5 5 5 5 4 4 d . . .
+        . . . . . 4 4 4 4 4 d d . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
     export const tile_value_5 = img`
         . . . . . . . . . . . . . . . .
-        . . . . f f f f f f f . . . . .
-        . . . f 5 5 5 5 5 5 5 f . . . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
-        . f 5 5 5 5 5 5 5 5 5 5 5 f . .
-        . f 5 5 5 5 f f f f 5 5 5 f . .
-        . f 5 5 5 5 f 5 5 5 5 5 5 f . .
-        . f 5 5 5 5 f f f 5 5 5 5 f . .
-        . f 5 5 5 5 5 5 5 f 5 5 5 f . .
-        . f 5 5 5 5 f f f 5 5 5 5 f . .
-        . f 5 5 5 5 5 5 5 5 5 5 f f . .
-        . . f 5 5 5 5 5 5 5 5 5 f . . .
-        . . . f 5 5 5 5 5 5 5 f . . . .
-        . . . . f f f f f f f . . . . .
+        . . . . . 4 4 4 4 4 . . . . . .
+        . . . 4 4 5 5 5 5 5 4 4 . . . .
+        . . 4 5 5 1 1 1 1 1 5 5 4 . . .
+        . . 4 5 1 1 1 1 1 1 1 5 4 . . .
+        . 4 5 1 1 1 f f f 1 1 1 5 4 . .
+        . 4 5 1 1 1 f 1 1 1 1 1 5 4 d .
+        . 4 5 1 1 1 f f 1 1 1 1 5 4 d .
+        . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
+        . 4 5 1 1 1 f f 1 1 1 1 5 4 d .
+        . . 4 5 1 1 1 1 1 1 1 5 4 d d .
+        . . 4 5 5 1 1 1 1 1 5 5 4 d . .
+        . . . 4 4 5 5 5 5 5 4 4 d . . .
+        . . . . . 4 4 4 4 4 d d . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
@@ -1358,14 +1358,14 @@ namespace icondb {
     export const microphone = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
-. . . . . . . f f . . . . . . .
-. . . . . . f f f f . . . . . .
-. . . . . . f f f f . . . . . .
-. . . . . . f f f f . . . . . .
-. . . . . . f f f f . . . . . .
-. . . . f . f f f f . f . . . .
-. . . . f . f f f f . f . . . .
-. . . . f . . f f . . f . . . .
+. . . . . . . b c . . . . . . .
+. . . . . . b c c c . . . . . .
+. . . . . . b c c c . . . . . .
+. . . . . . b c c c . . . . . .
+. . . . . . b c c c . . . . . .
+. . . . f . c c c c . f . . . .
+. . . . f . c c c c . f . . . .
+. . . . f . . c c . . f . . . .
 . . . . . f . . . . f . . . . .
 . . . . . . f f f f . . . . . .
 . . . . . . . f f . . . . . . .
@@ -1378,16 +1378,16 @@ namespace icondb {
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
-. . . . . f . . . . . . . . . .
-. . . . f f . . . . . 8 . . . .
-. . . f f f . . . 8 . . 8 . . .
-. f f f f f . 8 . . 8 . 8 . . .
-. f f f f f . . 8 . 8 . 8 . . .
-. f f f f f . . 8 . 8 . 8 . . .
-. f f f f f . 8 . . 8 . 8 . . .
-. . . f f f . . . 8 . . 8 . . .
-. . . . f f . . . . . 8 . . . .
-. . . . . f . . . . . . . . . .
+. . . . . c . . . . . . . . . .
+. . . . c b . . . . . 8 . . . .
+. . . c b c . . . 8 . . 8 . . .
+. c c b c c . 8 . . 8 . 8 . . .
+. b b c c c . . 8 . 8 . 8 . . .
+. c c c c c . . 8 . 8 . 8 . . .
+. c c c c c . 8 . . 8 . 8 . . .
+. . . c c c . . . 8 . . 8 . . .
+. . . . c c . . . . . 8 . . . .
+. . . . . c . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
@@ -1397,22 +1397,21 @@ namespace icondb {
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
-. . . . . f . . . . . . . . . .
-. . . . f f . . . . . . . . . .
-. . . f f f . . . . . . . . . .
-. f f f f f . 8 . . . . . . . .
-. f f f f f . . 8 . . . . . . .
-. f f f f f . . 8 . . . . . . .
-. f f f f f . 8 . . . . . . . .
-. . . f f f . . . . . . . . . .
-. . . . f f . . . . . . . . . .
-. . . . . f . . . . . . . . . .
+. . . . . c . . . . . . . . . .
+. . . . c b . . . . . . . . . .
+. . . c b c . . . . . . . . . .
+. c c b c c . 8 . . . . . . . .
+. b b c c c . . 8 . . . . . . .
+. c c c c c . . 8 . . . . . . .
+. c c c c c . 8 . . . . . . . .
+. . . c c c . . . . . . . . . .
+. . . . c c . . . . . . . . . .
+. . . . . c . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
 export const speakerFun = img`
-    . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . 3 . . . 5 . . .
     . . . . . . . 3 . . . . . . 2 .
@@ -1427,6 +1426,7 @@ export const speakerFun = img`
     . . . . c c . . 6 . 6 . 6 . . .
     . . . . . c . . . . . 6 . 6 . .
     . . . . . . . 9 . . . . . . . .
+    . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
 

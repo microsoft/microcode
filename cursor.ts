@@ -20,8 +20,8 @@ namespace microcode {
         private xfrm_: Affine
         navigator: INavigator
         cancelHandlerStack: CursorCancelHandler[]
-        anim: Animation
-        dest: Vec2
+        moveStartMs: number
+        moveDest: Vec2
         ariaId: string
         size: Bounds
         cycle: number
@@ -34,30 +34,15 @@ namespace microcode {
             super("cursor")
             this.xfrm_ = new Affine()
             this.cancelHandlerStack = []
-            this.dest = new Vec2()
-            this.anim = new Animation((p: Vec2) => this.animCallback(p))
+            this.moveDest = new Vec2()
             this.cycle = 1
             this.setSize()
         }
 
-        private animCallback(p: Vec2) {
-            this.xfrm.localPos = p
-        }
-
         public moveTo(pos: Vec2, ariaId: string, sizeHint: Bounds) {
             this.setSize(sizeHint)
-            this.dest.copyFrom(pos)
-            this.anim.clearFrames()
-            this.anim.addFrame(
-                new EaseFrame({
-                    duration: 0.05,
-                    //curve: curves.easeOut(curves.easing.sq2),
-                    curve: curves.linear(),
-                    startValue: this.xfrm.localPos,
-                    endValue: this.dest,
-                })
-            )
-            this.anim.start()
+            this.moveDest.copyFrom(pos)
+            this.moveStartMs = control.millis()
             this.setAriaContent(ariaId)
         }
 
@@ -70,8 +55,8 @@ namespace microcode {
                 sizeHint ||
                     new Bounds({ left: 0, top: 0, width: 16, height: 16 })
             )
-            this.dest.x = this.xfrm.localPos.x = x
-            this.dest.y = this.xfrm.localPos.y = y
+            this.moveDest.x = this.xfrm.localPos.x = x
+            this.moveDest.y = this.xfrm.localPos.y = y
             this.setAriaContent(ariaId)
         }
 
@@ -94,12 +79,12 @@ namespace microcode {
         public restoreState(state: CursorState) {
             this.navigator = state.navigator
             this.xfrm.localPos.copyFrom(state.pos)
+            this.moveDest.copyFrom(state.pos)
             this.ariaId = state.ariaId
             this.size.copyFrom(state.size)
         }
 
         public move(dir: CursorDir): Button {
-            if (this.anim && this.anim.playing) return undefined
             return this.navigator.move(this, dir)
         }
 
@@ -128,11 +113,18 @@ namespace microcode {
 
         /* override */ update() {
             super.update()
-            if (this.anim) {
-                this.anim.update()
+
+            const currTimeMs = control.millis()
+            const elapsedTimeMs = currTimeMs - this.moveStartMs
+            const pctTime = elapsedTimeMs / 50
+
+            if (pctTime < 1) {
+                Vec2.LerpToRef(this.xfrm.localPos, this.moveDest, pctTime, this.xfrm.localPos)
+            } else {
+                this.xfrm.localPos.copyFrom(this.moveDest)
             }
-            const t = control.millis()
-            this.cycle = t % 1000 < 500 ? 1 : 0
+
+            this.cycle = currTimeMs % 1000 < 500 ? 1 : 0
         }
 
         /* override */ draw() {
