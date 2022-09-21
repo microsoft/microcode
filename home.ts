@@ -83,7 +83,7 @@ namespace microcode {
                 parent: null,
                 style: ButtonStyles.BorderedPurple,
                 icon: "prev_page",
-                ariaId: "previous sample button",
+                ariaId: "previous sample",
                 x: -32,
                 y: 40,
                 onClick: () => {
@@ -115,7 +115,7 @@ namespace microcode {
                 parent: null,
                 style: ButtonStyles.BorderedPurple,
                 icon: "next_page",
-                ariaId: "next sample button",
+                ariaId: "next sample",
                 x: 32,
                 y: 40,
                 onClick: () => {

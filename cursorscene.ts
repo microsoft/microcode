@@ -14,7 +14,11 @@ namespace microcode {
 
             if (!target) return
 
-            this.cursor.moveTo(target.xfrm.worldPos, target.ariaId, target.bounds)
+            this.cursor.moveTo(
+                target.xfrm.worldPos,
+                target.ariaId,
+                target.bounds
+            )
         }
 
         /* override */ startup() {
@@ -39,17 +43,33 @@ namespace microcode {
                 controller.left.id,
                 () => this.moveCursor(CursorDir.Left)
             )
+
+            // click
+            const click = () => this.cursor.click()
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.A.id,
-                () => this.cursor.click()
+                click
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
+                7 + controller.A.id,
+                click
+            )
+
+            // back
+            const back = () => {
+                if (!this.cursor.cancel()) this.moveCursor(CursorDir.Back)
+            }
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
                 controller.B.id,
-                () => {
-                    if (!this.cursor.cancel()) this.moveCursor(CursorDir.Back)
-                }
+                back
+            )
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
+                7 + controller.B.id,
+                back
             )
 
             this.cursor = new Cursor()
