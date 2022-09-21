@@ -23,9 +23,9 @@ namespace microcode {
     export const TID_SENSOR_TEMP = "S6"
     export const TID_SENSOR_RADIO_RECEIVE = "S7"
     export const TID_SENSOR_MICROPHONE = "S8"
-    export const TID_SENSOR_IN_PIPE_A = "S9A"
-    export const TID_SENSOR_IN_PIPE_B = "S9B"
-    export const TID_SENSOR_IN_PIPE_C = "S9C"
+    export const TID_SENSOR_OUT_PIPE_A = "S9A"
+    export const TID_SENSOR_OUT_PIPE_B = "S9B"
+    export const TID_SENSOR_OUT_PIPE_C = "S9C"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -94,9 +94,9 @@ namespace microcode {
     export const TID_MODIFIER_EMOJI_TWINKLE = "M19twinkle"
     export const TID_MODIFIER_EMOJI_YAWN = "M19yawn"
 
-    export const TID_MODIFIER_PIPE_OUT_A = "M20A"
-    export const TID_MODIFIER_PIPE_OUT_B = "M20B"
-    export const TID_MODIFIER_PIPE_OUT_C = "M20C"
+    export const TID_MODIFIER_PIPE_IN_A = "M20A"
+    export const TID_MODIFIER_PIPE_IN_B = "M20B"
+    export const TID_MODIFIER_PIPE_IN_C = "M20C"
 
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
@@ -171,18 +171,27 @@ namespace microcode {
     addPressFilter(TID_FILTER_PIN_1, "Pin 1", 4)
     addPressFilter(TID_FILTER_PIN_2, "Pin 2", 5)
 
-    const radio_receive = new SensorDefn(
-        TID_SENSOR_RADIO_RECEIVE,
-        "Receive",
-        Phase.Post
-    )
-    radio_receive.constraints = {
-        allow: {
-            categories: ["value_in"],
-        },
+    const makeSensor = (
+        tid: string,
+        name: string,
+        cat: string,
+        prior: number
+    ) => {
+        const tile = new SensorDefn(tid, name, Phase.Post)
+        tile.constraints = {
+            allow: {
+                categories: [cat],
+            },
+        }
+        tile.priority = prior
+        tilesDB.sensors[tid] = tile
+        return tile
     }
-    radio_receive.priority = 100
-    tilesDB.sensors[TID_SENSOR_RADIO_RECEIVE] = radio_receive
+
+    makeSensor(TID_SENSOR_RADIO_RECEIVE, "Receive", "value_in", 100)
+    makeSensor(TID_SENSOR_OUT_PIPE_A, "Out of A", "value_in", 120)
+    makeSensor(TID_SENSOR_OUT_PIPE_B, "Out of A", "value_in", 125)
+    makeSensor(TID_SENSOR_OUT_PIPE_C, "Out of A", "value_in", 130)
 
     const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
     timer.constraints = {
@@ -258,11 +267,16 @@ namespace microcode {
     addSoundFilter(TID_FILTER_LOUD, "loud", 1)
     addSoundFilter(TID_FILTER_QUIET, "quiet", 2)
 
-    function addActuator(tid: string, name: string, allow: string) {
+    function addActuator(
+        tid: string,
+        name: string,
+        allow: string,
+        allow2: string = null
+    ) {
         const actuator = new ActuatorDefn(tid, name)
         actuator.constraints = {
             allow: {
-                categories: [allow],
+                categories: allow2 ? [allow, allow2] : [allow],
             },
         }
         tilesDB.actuators[tid] = actuator
@@ -321,7 +335,7 @@ namespace microcode {
                     ? new ModifierDefn(tid, name + " " + v.toString(), name, 10)
                     : new FilterDefn(tid, name + " " + v.toString(), name, 10)
             tile.jdParam = v
-            tile.constraints = terminal
+            // tile.constraints = terminal
             if (kind == "M") tilesDB.modifiers[tid] = tile
             else tilesDB.filters[tid] = tile as FilterDefn
         }
@@ -337,6 +351,15 @@ namespace microcode {
         state_page.constraints = terminal
         tilesDB.modifiers[state_tid] = state_page
     })
+
+    const addPipeModifier = (tid: string, state: string) => {
+        const mod = new ModifierDefn(tid, state, "pipe_out", 10)
+        mod.constraints = terminal
+        tilesDB.modifiers[tid] = mod
+    }
+    addPipeModifier(TID_MODIFIER_PIPE_IN_A, "Into A")
+    addPipeModifier(TID_MODIFIER_PIPE_IN_B, "INto B")
+    addPipeModifier(TID_MODIFIER_PIPE_IN_C, "INto C")
 
     const iconFieldEditor: FieldEditor = {
         init: img`
@@ -521,7 +544,8 @@ namespace microcode {
     const random_toss = addActuator(
         TID_ACTUATOR_RANDOM_TOSS,
         "Toss",
-        "value_out"
+        "value_out",
+        "pipe_out"
     )
     random_toss.priority = 70
 

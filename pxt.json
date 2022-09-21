@@ -40,16 +40,15 @@
         "fieldeditors.ts",
         "navigator.ts",
         "cursorscene.ts",
-        "options.ts"
+        "options.ts",
+        "samples.ts"
     ],
     "testFiles": [],
     "targetVersions": {
         "target": "1.10.10",
         "targetId": "arcade"
     },
-    "supportedTargets": [
-        "arcade"
-    ],
+    "supportedTargets": ["arcade"],
     "preferredEditor": "tsprj",
     "disableTargetTemplateFiles": true,
     "binaryonly": true
