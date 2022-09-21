@@ -228,7 +228,7 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.menu.id,
-                () => microcode.dumpProgram(this)
+                () => microcode.dumpProgram(this, "editor")
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,

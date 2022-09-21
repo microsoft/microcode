@@ -23,10 +23,10 @@ namespace microcode {
         renderIcons()
     }
 
-    export function dumpProgram(editor: Editor) {
+    export function dumpProgram(editor: Editor, name: string) {
         console.log(`dump program`)
         const prg = editor.renderProgram()
-        sendImage(editor.name, prg)
+        sendImage(name, prg)
     }
 
     function sendImage(name: string, img: Image) {
