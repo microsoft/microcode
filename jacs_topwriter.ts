@@ -441,6 +441,10 @@ namespace jacs {
 
         emitLoadBuffer(buf: string | Buffer) {
             let len = 0
+            if (buf == null) {
+                buf = ""
+                this.error("no buffer")
+            }
             if (typeof buf == "string")
                 len = Buffer.fromUTF8(buf as string).length
             else len = (buf as Buffer).length
@@ -579,8 +583,7 @@ namespace jacs {
                     }
                 }
                 if (period == 0 && randomPeriod == 0) period = 1000 // reasonable default
-                if (period == 0)
-                    period = 20
+                if (period == 0) period = 20
                 this.withProcedure(this.pageProc(this.currPageId), wr => {
                     // first, terminate any previous one
                     wr.emitStmt(OpStmt.STMT1_TERMINATE_FIBER, [
@@ -596,7 +599,9 @@ namespace jacs {
                     if (randomPeriod) {
                         tm = wr.emitExpr(OpExpr.EXPR2_ADD, [
                             tm,
-                            wr.emitExpr(OpExpr.EXPR1_RANDOM_INT, [literal(randomPeriod)])
+                            wr.emitExpr(OpExpr.EXPR1_RANDOM_INT, [
+                                literal(randomPeriod),
+                            ]),
                         ])
                     }
                     wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [tm])

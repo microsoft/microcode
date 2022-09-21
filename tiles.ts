@@ -516,7 +516,16 @@ namespace microcode {
         }
     }
 
+    const random_toss = addActuator(
+        TID_ACTUATOR_RANDOM_TOSS,
+        "Toss",
+        "value_out"
+    )
+    random_toss.priority = 70
+
+    /*
     const first_random = new RandomEditor()
     tilesDB.actuators[TID_ACTUATOR_RANDOM_TOSS] = first_random
     first_random.first = true
+    */
 }
