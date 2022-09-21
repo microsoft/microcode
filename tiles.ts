@@ -137,10 +137,10 @@ namespace microcode {
     always.hidden = true
     tilesDB.sensors[TID_SENSOR_ALWAYS] = always
 
-    {
-        const press_event = new SensorDefn(TID_SENSOR_PRESS, "press", Phase.Pre)
+    function addPress(tid: string, name: string, evt: number) {
+        const press_event = new SensorDefn(tid, name, Phase.Pre)
         press_event.serviceClassName = "button"
-        press_event.eventCode = 0x1 // down
+        press_event.eventCode = evt
         press_event.serviceInstanceIndex = 0
         press_event.constraints = {
             provides: ["input"],
@@ -148,23 +148,12 @@ namespace microcode {
                 categories: ["press_event"],
             },
         }
-        press_event.priority = 10
-        tilesDB.sensors[TID_SENSOR_PRESS] = press_event
+        press_event.priority = 9 + evt
+        tilesDB.sensors[tid] = press_event
     }
-    {
-        const up_event = new SensorDefn(TID_SENSOR_RELEASE, "up", Phase.Pre)
-        up_event.serviceClassName = "button"
-        up_event.eventCode = 0x2 // up
-        up_event.serviceInstanceIndex = 0
-        up_event.constraints = {
-            provides: ["input"],
-            allow: {
-                categories: ["press_event"],
-            },
-        }
-        up_event.priority = 11
-        tilesDB.sensors[TID_SENSOR_RELEASE] = up_event
-    }
+
+    addPress(TID_SENSOR_PRESS, "press", 1)
+    addPress(TID_SENSOR_RELEASE, "up", 2)
 
     function addPressFilter(tid: string, name: string, instanceNo: number) {
         const press_filter = new FilterDefn(tid, name, "press_event", 10)
