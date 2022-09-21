@@ -2,13 +2,14 @@ namespace microcode {
     export type PickerButtonDef = {
         icon: string | Image
         label?: string
+        style?: ButtonStyle
     }
 
     export class PickerButton extends Button {
         constructor(public picker: Picker, btn: PickerButtonDef) {
             super({
                 parent: picker,
-                style: ButtonStyles.ShadowedWhite,
+                style: btn.style || ButtonStyles.ShadowedWhite,
                 icon: btn.icon,
                 label: btn.label,
                 x: 0,
@@ -44,8 +45,7 @@ namespace microcode {
         private xfrm_: Affine
         private navigator: INavigator
         private prevNavigator: INavigator
-        private prevpos: Vec2
-        private prevAriaId: string
+        private prevState: CursorState
         private deleteBtn: Button
         private panel: Bounds
         private onClick: (btn: string, button?: Button) => void
@@ -109,8 +109,7 @@ namespace microcode {
             this.hideOnClick = hideOnClick
             this.title = opts.title
             this.prevNavigator = this.cursor.navigator
-            this.prevpos = this.cursor.xfrm.localPos.clone()
-            this.prevAriaId = this.cursor.ariaId
+            this.prevState = this.cursor.saveState()
             this.cursor.navigator = this.navigator
             this.cursor.cancelHandlerStack.push(() => this.cancelClicked())
             if (this.onDelete) {
@@ -142,7 +141,7 @@ namespace microcode {
             this.visible = false
             this.navigator.clear()
             this.cursor.navigator = this.prevNavigator
-            this.cursor.snapTo(this.prevpos.x, this.prevpos.y, this.prevAriaId)
+            this.cursor.restoreState(this.prevState)
             this.groups.forEach(group => group.destroy())
             if (this.deleteBtn) {
                 this.deleteBtn.destroy()
@@ -178,6 +177,7 @@ namespace microcode {
         }
 
         private layout() {
+            // Get the largest number of buttons in a group
             let maxBtnCount = 0
             this.groups.forEach(
                 group =>
@@ -186,6 +186,7 @@ namespace microcode {
                         group.opts.btns.length
                     ))
             )
+            // Cap the max per group
             maxBtnCount = Math.min(maxBtnCount, MAX_PER_ROW)
 
             let computedHeight = this.deleteBtn || this.title ? HEADER : 0
@@ -202,6 +203,7 @@ namespace microcode {
                 }
             })
 
+            // Center the panel
             let computedLeft = -(computedWidth >> 1)
             let computedTop = -(computedHeight >> 1)
             //computedLeft = Math.max(this.offset.x, computedLeft);
@@ -213,7 +215,7 @@ namespace microcode {
                 width: computedWidth,
                 height: computedHeight,
             })
-            this.panel = Bounds.Grow(this.panel, 2)
+            this.panel.grow(2)
 
             let currentTop =
                 computedTop + (this.deleteBtn || this.title ? HEADER : 0)
@@ -243,7 +245,7 @@ namespace microcode {
             })
 
             const btn = this.navigator.initialCursor(this.cursor)
-            this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId)
+            this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
         }
     }
 

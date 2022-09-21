@@ -14,7 +14,7 @@ namespace microcode {
 
             if (!target) return
 
-            this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
+            this.cursor.moveTo(target.xfrm.worldPos, target.ariaId, target.bounds)
         }
 
         /* override */ startup() {
@@ -68,7 +68,8 @@ namespace microcode {
                 this.cursor.snapTo(
                     btn.xfrm.worldPos.x,
                     btn.xfrm.worldPos.y,
-                    btn.ariaId
+                    btn.ariaId,
+                    btn.bounds
                 )
         }
 

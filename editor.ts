@@ -113,7 +113,8 @@ namespace microcode {
             this.cursor.snapTo(
                 btn.xfrm.worldPos.x,
                 btn.xfrm.worldPos.y,
-                btn.ariaId
+                btn.ariaId,
+                btn.bounds
             )
         }
 
@@ -123,7 +124,11 @@ namespace microcode {
             if (!target) return
 
             if (target.rootXfrm.tag === "hud") {
-                this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
+                this.cursor.moveTo(
+                    target.xfrm.worldPos,
+                    target.ariaId,
+                    target.bounds
+                )
                 return
             }
 
@@ -161,9 +166,13 @@ namespace microcode {
                     target.xfrm.worldPos.x + xocc,
                     target.xfrm.worldPos.y + yocc
                 )
-                this.cursor.moveTo(dest, target.ariaId)
+                this.cursor.moveTo(dest, target.ariaId, target.bounds)
             } else {
-                this.cursor.moveTo(target.xfrm.worldPos, target.ariaId)
+                this.cursor.moveTo(
+                    target.xfrm.worldPos,
+                    target.ariaId,
+                    target.bounds
+                )
             }
         }
 
@@ -480,7 +489,7 @@ namespace microcode {
             this.xfrm_.parent = page.xfrm
             this.handleBtn = new EditorButton(editor, {
                 parent: this,
-                icon: "default",
+                icon: "rule_handle",
                 ariaId: "rule",
                 x: 0,
                 y: 0,
@@ -774,7 +783,7 @@ namespace microcode {
             const lastWhenTile = whenTiles[whenTiles.length - 1]
 
             this.handleBtn.xfrm.localPos = v
-            v.x += this.handleBtn.width >> 1
+            v.x += this.handleBtn.width
             this.whenBounds.left = v.x
 
             v.x += firstWhenTile.width >> 1
@@ -825,12 +834,8 @@ namespace microcode {
                 })
             }
 
-            updateSizeFromButtons(this.rule.sensors)
-            updateSizeFromButtons(this.rule.filters)
-            updateSizeFromButtons(this.rule.actuators)
-            updateSizeFromButtons(this.rule.modifiers)
-            if (this.whenInsertBtn) updateSizeFromButtons([this.whenInsertBtn])
-            if (this.doInsertBtn) updateSizeFromButtons([this.doInsertBtn])
+            updateSizeFromButtons(whenTiles)
+            updateSizeFromButtons(doTiles)
 
             if (!this.bounds) {
                 this.bounds = new Bounds()
@@ -849,7 +854,7 @@ namespace microcode {
         /* override */ draw() {
             Screen.fillBoundsXfrm(this.xfrm, this.bounds, 11)
             Screen.fillBoundsXfrm(this.xfrm, this.whenBounds, 13)
-            Screen.outlineBoundsXfrm(this.xfrm, this.bounds, 15)
+            Screen.outlineBoundsXfrm(this.xfrm, this.bounds, 1, 12)
             this.handleBtn.draw()
             if (this.whenInsertBtn) this.whenInsertBtn.draw()
             this.arrow.draw()

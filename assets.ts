@@ -35,6 +35,7 @@ namespace microcode {
             this.reg["rule_arrow"] = icondb.rule_arrow
             this.reg["next_page"] = icondb.btn_next_page
             this.reg["prev_page"] = icondb.btn_prev_page
+            this.reg["rule_handle"] = icondb.rule_handle
             this.reg["paint"] = icondb.paint
             this.reg["MISSING"] = icondb.MISSING
 
@@ -112,8 +113,6 @@ namespace microcode {
             // for icon editor
             this.reg[TID_MODIFIER_COLOR_RED] = icondb.tile_red
             this.reg[TID_MODIFIER_COLOR_DARKPURPLE] = icondb.tile_darkpurple
-
-            this.reg["default"] = icondb.rc_default
         }
     }
 
@@ -471,24 +470,6 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
-    export const btn_insertion_point = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . 1 1 . . . . . . .
-        . . . . . . . 1 1 . . . . . . .
-        . . . . . 1 1 1 1 1 1 . . . . .
-        . . . . . 1 1 1 1 1 1 . . . . .
-        . . . . . c c 1 1 c c . . . . .
-        . . . . . . . 1 1 . . . . . . .
-        . . . . . . . c c . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
 
     export const btn_when_insertion_point = img`
     dddddddddddddddddd
@@ -786,23 +767,16 @@ namespace icondb {
     /// GENERIC LANGUAGE TILES (NOT HARDWARE SPECIFIC)
     ///
 
-    export const rc_default = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . f f f f f f f . . . . .
-        . . . f 1 1 1 1 1 1 1 f . . . .
-        . . . f 1 1 1 1 1 1 1 f . . . .
-        . . . f 1 1 1 1 1 1 1 f . . . .
-        . . . f 1 1 1 1 1 1 1 f . . . .
-        . . . f 1 1 1 1 1 1 1 f . . . .
-        . . . f 1 1 1 1 1 1 1 f . . . .
-        . . . f 1 1 1 1 1 1 1 f . . . .
-        . . . . f f f f f f f . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
+    export const rule_handle = img`
+        . f f f f f f f .
+        f 1 1 1 1 1 1 1 f
+        f 1 1 1 1 1 1 1 f
+        f 1 1 1 1 1 1 1 f
+        f 1 1 1 1 1 1 1 f
+        f 1 1 1 1 1 1 1 f
+        f 1 1 1 1 1 1 1 f
+        f 1 1 1 1 1 1 1 f
+        . f f f f f f f .
     `
 
     export const tile_switch_page = img`
@@ -1743,8 +1717,8 @@ f f f f f f f f f f f f f f f f
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-    
-export const inPipeA = img`
+
+    export const inPipeA = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . c c c c c c c c
@@ -1762,7 +1736,7 @@ export const inPipeA = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-export const inPipeB = img`
+    export const inPipeB = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . c c c c c c c c
@@ -1780,7 +1754,7 @@ export const inPipeB = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-export const inPipeC = img`
+    export const inPipeC = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . c c c c c c c c
@@ -1798,7 +1772,7 @@ export const inPipeC = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-export const outPipeA = img`
+    export const outPipeA = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     c c c c c c c c . . . . . . . .
@@ -1816,7 +1790,7 @@ export const outPipeA = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-export const outPipeB = img`
+    export const outPipeB = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     c c c c c c c c . . . . . . . .
@@ -1834,7 +1808,7 @@ export const outPipeB = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-export const outPipeC = img`
+    export const outPipeC = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     c c c c c c c c . . . . . . . .
@@ -1852,8 +1826,8 @@ export const outPipeC = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-    
-export const sampleFlashingHeart = img`
+
+    export const sampleFlashingHeart = img`
     ....ffffffffffffffffffffffff....
     ..ffffffffffffffffffffffffffff..
     .ffffffffffffffffffffff2fffffff.
@@ -1888,7 +1862,7 @@ export const sampleFlashingHeart = img`
     ..bbffffffffffffffffffffffffbb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
-export const sampleSmileyButtons = img`
+    export const sampleSmileyButtons = img`
     ....111111111111111111111111....
     ..1111111111111111111111111111..
     .111111111111111111111111111111.
@@ -1923,7 +1897,7 @@ export const sampleSmileyButtons = img`
     ..bb111111111111111111111111bb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
-export const sampleDice = img`
+    export const sampleDice = img`
     ....111111111111111111111111....
     ..1111111111111111111111111111..
     .111111111111111111111111111111.
@@ -1958,7 +1932,7 @@ export const sampleDice = img`
     ..bb111111111111111111111111bb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
-export const sampleClapLights = img`
+    export const sampleClapLights = img`
     ....fffff8ffffffffffffffffff....
     ..fffffff8ffffffffffffffffffff..
     .ffffffff8fffffffffffffffffffff.
@@ -1993,7 +1967,7 @@ export const sampleClapLights = img`
     ..bbfffffffffffffffff4111111bb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
-export const sampleRockPaperScissors = img`
+    export const sampleRockPaperScissors = img`
     ....111111111111111111111111....
     ..1111111111111111111111111111..
     .111111111111111111111111111111.
@@ -2028,7 +2002,7 @@ export const sampleRockPaperScissors = img`
     ..bb111111111111111111111111bb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
-export const sampleTeleportDuck = img`
+    export const sampleTeleportDuck = img`
     ....111111111111111111111111....
     ..1111111111111111111111111111..
     .111111111111111611111111111111.
