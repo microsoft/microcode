@@ -480,6 +480,7 @@ namespace microcode {
             rule.destroy()
             this.rules.forEach((rule, index) => (rule.index = index))
             this.changed()
+            this.editor.saveAndCompileProgram()
         }
 
         public insertRuleAt(index: number) {
@@ -494,6 +495,7 @@ namespace microcode {
             }
             this.rules = rules
             this.rules.forEach((rule, index) => (rule.index = index))
+            this.editor.saveAndCompileProgram()
             this.changed()
         }
 
@@ -698,7 +700,7 @@ namespace microcode {
                 this.instantiateProgramTiles()
                 if (editedAdded && this.nextEmpty(name, index)) {
                     // Queue a move to the right
-                    this.queuedCursorMove = CursorDir.Right;
+                    this.queuedCursorMove = CursorDir.Right
                 }
                 this.page.changed()
             }
