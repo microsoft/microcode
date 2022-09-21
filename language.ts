@@ -50,7 +50,7 @@ namespace microcode {
         constraints: Constraints
         fieldEditor: FieldEditor
         jdParam: any
-        
+
         getField(): any {
             return undefined
         }
@@ -64,7 +64,9 @@ namespace microcode {
         }
 
         buttonStyle(): ButtonStyle {
-            return this.fieldEditor ? this.fieldEditor.buttonStyle() : ButtonStyles.ShadowedWhite
+            return this.fieldEditor
+                ? this.fieldEditor.buttonStyle()
+                : ButtonStyles.ShadowedWhite
         }
 
         mergeConstraints(dst: Constraints) {
@@ -139,7 +141,13 @@ namespace microcode {
         }
 
         serviceCommandArg(): string | Buffer {
-            return this.jdParam
+            if (
+                typeof this.jdParam == "string" ||
+                typeof this.jdParam == "object"
+            )
+                return this.jdParam
+            return null
+            // throw "bad jdParam: " + this.name + " / " + this.jdParam
         }
 
         isCompatibleWith(c: Constraints): boolean {
