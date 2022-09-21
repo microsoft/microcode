@@ -94,7 +94,8 @@ namespace microcode {
 
         private renderSamples() {
             this.app.popScene()
-            for (const sample of samples()) {
+            for (const sample of samples().slice(1)) {
+                console.log(`render ${sample.label}`)
                 settings.writeString(SAVESLOT_AUTO, sample.src)
                 const editor = new Editor(this.app)
                 this.app.pushScene(editor)
