@@ -16,7 +16,7 @@ namespace microcode {
             for (let col = 0; col < 5; col++) {
                 btns.push({
                     icon: getColor(col, row),
-                    style: ButtonStyles.BorderedPurple
+                    style: ButtonStyles.BorderedPurple,
                 })
             }
             picker.addGroup({ label: row.toString(), btns })
@@ -118,7 +118,7 @@ namespace microcode {
     export function randomEditor(
         field: RandomUpper,
         picker: Picker,
-        onHide: () => void,
+        onHide?: () => void,
         onDelete?: () => void
     ) {
         let btns: PickerButtonDef[] = []
@@ -130,15 +130,12 @@ namespace microcode {
         }
         picker.addGroup({ label: "", btns })
 
-        picker.show(
-            {
-                onClick: (iconId: any, button: PickerButton) => {
-                    const index = picker.groups[0].buttons.indexOf(button)
-                    field.upper = 2 + index
-                },
-                onDelete,
-            }
-        )
+        picker.show({
+            onClick: (iconId: any, button: PickerButton) => {
+                const index = picker.groups[0].buttons.indexOf(button)
+                field.upper = 2 + index
+            },
+            onDelete,
+        })
     }
-}
 }

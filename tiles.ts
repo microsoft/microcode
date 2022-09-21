@@ -460,7 +460,7 @@ namespace microcode {
     tilesDB.modifiers[TID_MODIFIER_MUSIC_EDITOR] = new MusicEditor()
 
     export type RandomUpper = { upper: number }
-    const randomEditor: FieldEditor = {
+    const randomFieldEditor: FieldEditor = {
         init: { upper: 3 },
         clone: (field: RandomUpper) => {
             return {
@@ -476,16 +476,18 @@ namespace microcode {
         },
     }
 
-    class RandomEditor extends ModifierDefn {
+    class RandomEditor extends ActuatorDefn {
         field: RandomUpper
         constructor(field: RandomUpper = null) {
-            super(TID_MODIFIER_MUSIC_EDITOR, "Toss", "dice_editor", 70)
-            this.fieldEditor = musicFieldEditor
+            super(TID_ACTUATOR_RANDOM_TOSS, "Toss")
+            this.fieldEditor = randomFieldEditor
             if (field) {
                 this.field = { upper: field.upper }
             } else {
                 this.field = this.fieldEditor.clone(this.fieldEditor.init)
             }
+            this.priority = 70
+            // TODO constraints
         }
 
         getField() {
@@ -508,5 +510,5 @@ namespace microcode {
         }
     }
 
-    tilesDB.modifiers[TID_ACTUATOR_RANDOM_TOSS] = new RandomEditor()
+    tilesDB.actuators[TID_ACTUATOR_RANDOM_TOSS] = new RandomEditor()
 }
