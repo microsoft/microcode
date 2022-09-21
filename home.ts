@@ -1,7 +1,12 @@
 namespace microcode {
     export class Home extends CursorScene {
-        editBtn: Button
-        sampleBtns: Button[]
+        carouselBtn: Button
+        //sampleBtns: Button[]
+
+        sampleBtn: Button
+        selectBtnL: Button
+        selectBtnR: Button
+        carouselCounter: number
 
         constructor(app: App) {
             super(app)
@@ -17,50 +22,97 @@ namespace microcode {
 
         /* override */ startup() {
             super.startup()
+            this.carouselCounter = 0
+            const CAROUSEL_ITEMS: {
+                label: string
+                ariaId?: string
+                src?: string
+                icon: string
+            }[] = [
+                {
+                    label: "editor",
+                    ariaId: "editor",
+                    icon: "paint"
+                },
+                {
+                    label: "new program",
+                    ariaId: "N0",
+                    src: '{"progdef":{"P":[{"R":[{"S":[],"A":[]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
+                    icon: "plus"
+                },
+                {
+                    label: "flashing heart",
+                    src: '{"progdef":{"P":[{"R":[{"S":["S4"],"A":["A5"],"M":["M15(0101010101100010101000100)","M15(0000000000000000000000000)"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]}]}}',
+                    icon: "flashing_heart"
+                },
+                {
+                    label: "smiley buttons",
+                    src: '{"progdef":{"P":[{"R":[{"S":["S2"],"A":["A5"],"F":["F3"],"M":["M15(1101111011000001000101110)"]},{"S":["S2"],"A":["A5"],"F":["F4"],"M":["M15(1101111011000000111010001)"]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
+                    icon: "smiley_buttons"
+                },
+                {
+                    label: "pet hamster",
+                    src: '{"progdef":{"P":[{"R":[{"S":[],"A":["A5"],"M":["M15(0000011011000000111000000)"]},{"S":["S2"],"A":["A5"],"F":["F7"],"M":["M15(0000001010000001000101110)","M15(0000011011000000111000000)"]},{"S":["S2"],"A":["A2"],"F":["F7"],"M":["M19giggle"]},{"S":["S3"],"A":["A5"],"F":["F17_shake"],"M":["M15(0000001010000000111010001)","M15(0000011011000000111000000)"]},{"S":["S3"],"A":["A2"],"F":["F17_shake"],"M":["M19sad"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
+                    icon: "plus"
+                },
+                {
+                    label: "reaction time",
+                    src: '{"progdef":{"P":[{"R":[{"S":[],"A":["A5"],"M":["M15(0000000000001000000000000)"]},{"S":["S4"],"A":["A1"],"M":["M2"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(1111111111111111111111111)"]},{"S":["S2"],"A":["A1"],"F":["F3"],"M":["M3"]},{"S":["S2"],"A":["A1"],"F":["F4"],"M":["M4"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(0111001010011100101001010)"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(0111001010011100101001110)"]},{"S":[],"A":[]}]},{}]}}',
+                    icon: "plus"
+                },
+                ]
+            
+            this.selectBtnL = new Button({
+                parent: null,
+                style: ButtonStyles.BorderedPurple,
+                icon: "prev_page",
+                ariaId: "previous sample button",
+                x: -32,
+                y: 40,
+                onClick: () => {
+                    if (this.carouselCounter > 0) {
+                        this.carouselCounter--
+                    }
+                    this.carouselBtn.setIcon(CAROUSEL_ITEMS[this.carouselCounter].icon)
+                }
+            })
 
-            this.editBtn = new Button({
+            this.carouselBtn = new Button({
                 parent: null,
                 style: ButtonStyles.FlatWhite,
-                icon: "paint",
+                icon: CAROUSEL_ITEMS[this.carouselCounter].icon,
                 ariaId: "editor",
-                x: -26,
-                y: 32,
+                x: 0,
+                y: 40,
                 onClick: () => {
+                    if (this.carouselCounter !== 0)
+                    {
+                        settings.writeString(SAVESLOT_AUTO, CAROUSEL_ITEMS[this.carouselCounter].src)
+                    }
                     this.app.popScene()
                     this.app.pushScene(new Editor(this.app))
                 },
             })
 
-            const STORED_SAMPLES: {
-                label: string
-                ariaId?: string
-                src: string
-            }[] = [
-                {
-                    label: "new program",
-                    ariaId: "N0",
-                    src: '{"progdef":{"P":[{"R":[{"S":[],"A":[]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
-                },
-                {
-                    label: "flashing heart",
-                    src: '{"progdef":{"P":[{"R":[{"S":[],"A":["A5"],"M":["M15(0101010101100010101000100)"]},{"S":["S4"],"A":["A1"],"M":["M2"]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(0000000000000000000000000)"]},{"S":["S4"],"A":["A1"],"M":["M1"]},{"S":[],"A":[]}]},{},{},{}]}}',
-                },
-                {
-                    label: "smiley buttons",
-                    src: '{"progdef":{"P":[{"R":[{"S":["S2"],"A":["A5"],"F":["F3"],"M":["M15(1101111011000001000101110)"]},{"S":["S2"],"A":["A5"],"F":["F4"],"M":["M15(1101111011000000111010001)"]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
-                },
-                {
-                    label: "pet hamster",
-                    src: '{"progdef":{"P":[{"R":[{"S":[],"A":["A5"],"M":["M15(0000011011000000111000000)"]},{"S":["S2"],"A":["A5"],"F":["F7"],"M":["M15(0000001010000001000101110)","M15(0000011011000000111000000)"]},{"S":["S2"],"A":["A2"],"F":["F7"],"M":["M19giggle"]},{"S":["S3"],"A":["A5"],"F":["F17_shake"],"M":["M15(0000001010000000111010001)","M15(0000011011000000111000000)"]},{"S":["S3"],"A":["A2"],"F":["F17_shake"],"M":["M19sad"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
-                },
-                {
-                    label: "reaction time",
-                    src: '{"progdef":{"P":[{"R":[{"S":[],"A":["A5"],"M":["M15(0000000000001000000000000)"]},{"S":["S4"],"A":["A1"],"M":["M2"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(1111111111111111111111111)"]},{"S":["S2"],"A":["A1"],"F":["F3"],"M":["M3"]},{"S":["S2"],"A":["A1"],"F":["F4"],"M":["M4"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(0111001010011100101001010)"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(0111001010011100101001110)"]},{"S":[],"A":[]}]},{}]}}',
-                },
-            ]
+            this.selectBtnR = new Button({
+                parent: null,
+                style: ButtonStyles.BorderedPurple,
+                icon: "next_page",
+                ariaId: "next sample button",
+                x: 32,
+                y: 40,
+                onClick: () => {
+                    if (this.carouselCounter < CAROUSEL_ITEMS.length -1) {
+                        this.carouselCounter++
+                    }
+                    this.carouselBtn.setIcon(CAROUSEL_ITEMS[this.carouselCounter].icon)
+                }
+            })
 
-            const btns: Button[] = [this.editBtn]
-            const y = 32
+
+
+            const btns: Button[] = [this.selectBtnL, this.carouselBtn, this.selectBtnR]
+/*             const y = 32
             let x = 0
             this.sampleBtns = STORED_SAMPLES.map(sample => {
                 const btn = new Button({
@@ -80,7 +132,7 @@ namespace microcode {
                 x += 26
                 btns.push(btn)
                 return btn
-            })
+            }) */
 
             this.navigator.addButtons(btns)
         }
@@ -131,8 +183,10 @@ namespace microcode {
                     dx,
                 Screen.TOP_EDGE + 50 - wordLogo.height + dx + this.yOffset
             )
-            this.editBtn.draw()
-            this.sampleBtns.forEach(btn => btn.draw())
+            this.selectBtnL.draw()
+            this.carouselBtn.draw()
+            this.selectBtnR.draw()
+            //this.sampleBtns.forEach(btn => btn.draw())
             super.draw()
         }
     }

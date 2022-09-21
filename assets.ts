@@ -38,6 +38,12 @@ namespace microcode {
             this.reg["rule_handle"] = icondb.rule_handle
             this.reg["paint"] = icondb.paint
             this.reg["MISSING"] = icondb.MISSING
+            this.reg["flashing_heart"] = icondb.sampleFlashingHeart
+            this.reg["smiley_buttons"] = icondb.sampleSmileyButtons
+            this.reg["clap_lights"] = icondb.sampleClapLights
+            this.reg["dice"] = icondb.sampleDice
+            this.reg["rock_paper_scissors"] = icondb.sampleRockPaperScissors
+            this.reg["teleport_duck"] = icondb.sampleTeleportDuck
 
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
