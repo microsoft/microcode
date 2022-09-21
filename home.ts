@@ -56,8 +56,18 @@ namespace microcode {
                     icon: "plus"
                 },
                 {
+                    label: "chuck a duck",
+                    src: '{"progdef":{"P":[{"R":[{"S":["S3"],"A":["A5"],"F":["F17_shake"],"M":["M15(0000000000000000000000000)"]},{"S":["S3"],"A":["A6"],"F":["F17_shake"]},{"S":["S7"],"A":["A5"],"M":["M15(0110011100011110111000000)"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
+                    icon: "plus"
+                },
+                {
                     label: "reaction time",
                     src: '{"progdef":{"P":[{"R":[{"S":[],"A":["A5"],"M":["M15(0000000000001000000000000)"]},{"S":["S4"],"A":["A1"],"M":["M2"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(1111111111111111111111111)"]},{"S":["S2"],"A":["A1"],"F":["F3"],"M":["M3"]},{"S":["S2"],"A":["A1"],"F":["F4"],"M":["M4"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(0111001010011100101001010)"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(0111001010011100101001110)"]},{"S":[],"A":[]}]},{}]}}',
+                    icon: "plus"
+                },
+                {
+                    label: "hot potato",
+                    src: '{"progdef":{"P":[{"R":[{"S":["S4"],"A":["A1"],"F":["F14","F14","F14","F18","F18","F18"],"M":["M1"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(1111110101111110111001110)"]},{"S":[],"A":["A2"],"M":["M19sad"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
                     icon: "plus"
                 },
                 ]
@@ -112,27 +122,6 @@ namespace microcode {
 
 
             const btns: Button[] = [this.selectBtnL, this.carouselBtn, this.selectBtnR]
-/*             const y = 32
-            let x = 0
-            this.sampleBtns = STORED_SAMPLES.map(sample => {
-                const btn = new Button({
-                    parent: null,
-                    style: ButtonStyles.FlatWhite,
-                    icon: "plus",
-                    label: sample.label,
-                    ariaId: sample.ariaId,
-                    x,
-                    y,
-                    onClick: () => {
-                        settings.writeString(SAVESLOT_AUTO, sample.src)
-                        this.app.popScene()
-                        this.app.pushScene(new Editor(this.app))
-                    },
-                })
-                x += 26
-                btns.push(btn)
-                return btn
-            }) */
 
             this.navigator.addButtons(btns)
         }
@@ -186,7 +175,7 @@ namespace microcode {
             this.selectBtnL.draw()
             this.carouselBtn.draw()
             this.selectBtnR.draw()
-            //this.sampleBtns.forEach(btn => btn.draw())
+
             super.draw()
         }
     }
