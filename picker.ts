@@ -102,6 +102,9 @@ namespace microcode {
             if (opts.navigator) {
                 this.navigator.clear()
                 this.navigator = opts.navigator()
+            } else {
+                this.navigator.clear()
+                this.navigator = new RowNavigator()
             }
             this.hideOnClick = hideOnClick
             this.title = opts.title

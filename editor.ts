@@ -461,8 +461,6 @@ namespace microcode {
         doInsertBtn: Button
         arrow: Sprite;
         rule: ButtonRuleRep
-        lastEditedIndex: number
-        lastEditedType: string
         bounds: Bounds
         whenBounds: Bounds
 
@@ -498,7 +496,6 @@ namespace microcode {
                 actuators: [],
                 modifiers: [],
             }
-            this.lastEditedIndex = -1
             this.instantiateProgramTiles()
         }
 
@@ -597,17 +594,6 @@ namespace microcode {
             })
             this.needsWhenInsert()
             this.needsDoInsert()
-            if (this.lastEditedIndex >= 0) {
-                if (this.lastEditedType == "sensors" && this.whenInsertBtn) {
-                    // this.editor.snapCursorTo(this.whenInsertBtn)
-                } else if (
-                    this.lastEditedType == "actuators" &&
-                    this.doInsertBtn
-                ) {
-                    // this.editor.snapCursorTo(this.doInsertBtn)
-                }
-            }
-            this.lastEditedIndex = -1
             if (changed) this.page.changed()
         }
 
@@ -631,14 +617,20 @@ namespace microcode {
 
         private editTile(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
-            const tileUpdated = () => {
-                if (name == "sensors" || name == "actuators") {
-                    this.lastEditedType = name
-                    this.lastEditedIndex = index
-                }
+            const tileUpdated = (editedAdded: boolean = true) => {
                 Language.ensureValid(this.ruledef)
                 this.editor.saveAndCompileProgram()
                 this.instantiateProgramTiles()
+                if (
+                    editedAdded &&
+                    ((name == "sensors" && this.ruledef.filters.length == 0) ||
+                        (name == "actuators" &&
+                            this.ruledef.modifiers.length == 0) ||
+                        (name == "filters" &&
+                            this.ruledef.actuators.length == 0))
+                ) {
+                    control.raiseEvent(KEY_DOWN, controller.right.id)
+                }
                 this.page.changed()
             }
             if (index < ruleTiles.length) {
@@ -651,7 +643,7 @@ namespace microcode {
                         tileUpdated,
                         () => {
                             ruleTiles.splice(index, 1)
-                            tileUpdated()
+                            tileUpdated(false)
                         }
                     )
                     return
@@ -687,7 +679,7 @@ namespace microcode {
             if (index < ruleTiles.length) {
                 onDelete = () => {
                     ruleTiles.splice(index, 1)
-                    tileUpdated()
+                    tileUpdated(false)
                 }
             }
             if (btns.length) {
