@@ -1,6 +1,6 @@
 namespace keymap {
-    // shim=keymap::_setPlayerKeys
-    export function setPlayerKeys(
+    //% shim=keymap::_setPlayerKeys
+    declare function _setPlayerKeys(
         player: number, // player number is 1-based
         up: number,
         down: number,
@@ -8,7 +8,19 @@ namespace keymap {
         right: number,
         A: number,
         B: number
-    ): void {
+    ): void
+
+    //% shim=TD_NOOP
+    export function setupKeys(): void {
+        _setPlayerKeys(
+            1,
+            keymap.KeyCode.UpArrow,
+            keymap.KeyCode.DownArrow,
+            keymap.KeyCode.LeftArrow,
+            keymap.KeyCode.RightArrow,
+            keymap.KeyCode.Space,
+            keymap.KeyCode.Backspace
+        )
     }
 
     export enum KeyCode {

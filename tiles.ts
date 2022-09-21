@@ -47,6 +47,7 @@ namespace microcode {
     export const TID_FILTER_QUIET = "F16"
     export const TID_FILTER_ACCEL = "F17"
     export const TID_FILTER_TIMESPAN_RANDOM = "F18"
+    export const TID_FILTER_TIMESPAN_VERY_LONG = "F19"
     export const TID_FILTER_ACCEL_SHAKE = "F17_shake"
     export const TID_FILTER_ACCEL_FREEFALL = "F17_freefall"
     export const TID_FILTER_ACCEL_TILT_UP = "F17_tilt_up"
@@ -208,6 +209,7 @@ namespace microcode {
     }
     addTimespan(TID_FILTER_TIMESPAN_SHORT, "short", 250)
     addTimespan(TID_FILTER_TIMESPAN_LONG, "long", 1000)
+    addTimespan(TID_FILTER_TIMESPAN_VERY_LONG, "very long", 5000)
     addTimespan(TID_FILTER_TIMESPAN_RANDOM, "random", -1000)
 
     const accel = new SensorDefn(

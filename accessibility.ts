@@ -45,6 +45,7 @@ namespace accessibility {
         F13: "1/4 second",
         F14: "1 second",
         F18: "1 random second",
+        F19: "5 seconds",
         F15: "loud",
         F16: "quiet",
         F17: "accelerometer",

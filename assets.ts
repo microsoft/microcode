@@ -62,6 +62,7 @@ namespace microcode {
             this.reg[TID_FILTER_BUTTON_B] = icondb.tile_button_b
             this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short
             this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long
+            this.reg[TID_FILTER_TIMESPAN_VERY_LONG] = icondb.tile_timespan_fiveSeconds
             this.reg[TID_FILTER_TIMESPAN_RANDOM] = icondb.tile_timespan_random
             this.reg[TID_FILTER_VALUE_1] = icondb.tile_value_1
             this.reg[TID_FILTER_VALUE_2] = icondb.tile_value_2
@@ -76,7 +77,7 @@ namespace microcode {
             this.reg[TID_ACTUATOR_PAINT] = icondb.showScreen
             this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
             this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
-            this.reg[TID_ACTUATOR_SPEAKER] = icondb.speaker
+            this.reg[TID_ACTUATOR_SPEAKER] = icondb.speakerFun
             this.reg[TID_ACTUATOR_MUSIC] = icondb.music
             this.reg[TID_ACTUATOR_RANDOM_TOSS] = icondb.diceToss
 
@@ -994,24 +995,6 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . f . . . . . . . .
         . . . . . b b b b b . . . . . .
-        . . . . b 1 1 1 1 1 b . . . . .
-        . . . b 1 1 1 2 1 1 1 c . . . .
-        . . b 1 1 d 1 2 1 d 1 1 c . . .
-        . . b 1 1 1 1 2 1 1 1 1 c d . .
-        . . b 1 d d 1 2 2 2 d 1 c d . .
-        . . b 1 1 1 1 1 1 1 1 1 c d . .
-        . . b 1 1 d 1 d 1 d 1 1 c d . .
-        . . . b 1 1 1 d 1 1 1 c d . . .
-        . . . . c 1 1 1 1 1 c d . . . .
-        . . . . . c c c c c d . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const tile_timespan_short = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . f . . . . . . . .
-        . . . . . b b b b b . . . . . .
         . . . . b 1 1 9 9 9 b . . . . .
         . . . b 1 1 1 b 9 9 9 c . . . .
         . . b 1 1 d 1 b 9 b 9 9 c . . .
@@ -1025,39 +1008,75 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+    export const tile_timespan_short = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . b b b b b b b b b b . . .
+        . . b 1 1 1 1 1 1 1 1 1 1 c . .
+        . . b 1 1 2 1 1 1 1 1 1 1 c . .
+        . . b 1 1 2 1 1 1 1 1 1 1 c d .
+        . . b 1 1 1 1 1 1 1 1 1 1 c d .
+        . . b 1 2 2 2 1 1 1 f f 1 c d .
+        . . b 1 1 1 1 1 1 f 1 1 1 c d .
+        . . b 1 2 1 2 1 1 1 f 1 1 c d .
+        . . b 1 2 2 2 1 1 1 1 f 1 c d .
+        . . b 1 1 1 2 1 1 f f 1 1 c d .
+        . . b 1 1 1 1 1 1 1 1 1 1 c d .
+        . . . c c c c c c c c c c d . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
     export const tile_timespan_long = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-        . . . . . . . f . . . . . . . .
-        . . . . . b b b b b . . . . . .
-        . . . . b 1 1 9 9 9 b . . . . .
-        . . . b 1 1 1 b 9 9 9 c . . . .
-        . . b 1 1 d 1 b 9 b 9 9 c . . .
-        . . b 1 1 1 1 9 9 9 9 9 c d . .
-        . . b 9 2 2 2 2 9 b b 9 c d . .
-        . . b 9 9 9 9 9 9 9 9 9 c d . .
-        . . b 9 9 b 9 b 9 b 9 9 c d . .
-        . . . b 9 9 9 b 9 9 9 c d . . .
-        . . . . c 9 9 9 9 9 c d . . . .
-        . . . . . c c c c c d . . . . .
+        . . . b b b b b b b b b b . . .
+        . . b 1 1 1 1 1 1 1 1 1 1 c . .
+        . . b 1 1 1 1 1 1 1 1 1 1 c . .
+        . . b 1 1 1 2 1 1 1 1 1 1 c d .
+        . . b 1 1 2 2 1 1 1 1 1 1 c d .
+        . . b 1 1 1 2 1 1 1 f f 1 c d .
+        . . b 1 1 1 2 1 1 f 1 1 1 c d .
+        . . b 1 1 1 2 1 1 1 f 1 1 c d .
+        . . b 1 1 1 2 1 1 1 1 f 1 c d .
+        . . b 1 1 2 2 2 1 f f 1 1 c d .
+        . . b 1 1 1 1 1 1 1 1 1 1 c d .
+        . . . c c c c c c c c c c d . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const tile_timespan_fiveSeconds = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . b b b b b b b b b b . . .
+        . . b 1 1 1 1 1 1 1 1 1 1 c . .
+        . . b 1 1 1 1 1 1 1 1 1 1 c . .
+        . . b 1 2 2 2 2 1 1 1 1 1 c d .
+        . . b 1 2 1 1 1 1 1 1 1 1 c d .
+        . . b 1 2 2 2 1 1 1 f f 1 c d .
+        . . b 1 1 1 1 2 1 f 1 1 1 c d .
+        . . b 1 1 1 1 2 1 1 f 1 1 c d .
+        . . b 1 1 1 1 2 1 1 1 f 1 c d .
+        . . b 1 2 2 2 1 1 f f 1 1 c d .
+        . . b 1 1 1 1 1 1 1 1 1 1 c d .
+        . . . c c c c c c c c c c d . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
     export const tile_timespan_random = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-        . . . . . f f f f f . . . . . .
-        . . . . f 1 1 9 9 9 f . . . . .
-        . . . f 1 1 1 b 9 9 9 f . . . .
-        . . f 1 1 2 1 b 9 2 9 9 f . . .
-        . . f 1 1 1 2 9 2 9 9 9 f . . .
-        . . f 1 b b 1 2 9 b b 9 f . . .
-        . . f 1 1 1 2 9 2 9 9 9 f . . .
-        . . f 1 1 2 9 b 9 2 9 9 f . . .
-        . . . f 9 9 9 b 9 9 9 f . . . .
-        . . . . f 9 9 9 9 9 f . . . . .
-        . . . . . f f f f f . . . . . .
-        . . . . . . . . . . . . . . . .
+        . . . b b b b b b b b b b . . .
+        . . b 1 1 1 1 1 1 1 1 1 1 c . .
+        . . b 1 1 1 1 1 1 1 1 1 1 c . .
+        . . b 1 1 2 2 1 1 1 1 1 1 c d .
+        . . b 1 2 1 1 2 1 1 1 1 1 c d .
+        . . b 1 1 1 1 2 1 1 f f 1 c d .
+        . . b 1 1 2 2 1 1 f 1 1 1 c d .
+        . . b 1 1 2 1 1 1 1 f 1 1 c d .
+        . . b 1 1 1 1 1 1 1 1 f 1 c d .
+        . . b 1 1 2 1 1 1 f f 1 1 c d .
+        . . b 1 1 1 1 1 1 1 1 1 1 c d .
+        . . . c c c c c c c c c c d . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
@@ -1372,6 +1391,24 @@ namespace icondb {
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
+`
+export const speakerFun = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . 3 . . . 5 . . .
+    . . . . . . . 3 . . . . . . 2 .
+    . . . . . c . . . . . 2 . 2 . .
+    . . . . c b . . 2 . 2 . 2 . . .
+    . . . c b c . 2 . 2 . . . . 5 .
+    . c c b c c . . . . . . . . . .
+    . b b c c c . 4 . 4 . 4 . 4 . .
+    . c c c c c . . 4 . 4 . 4 . 4 .
+    . c c c c c . . . . . . . . . .
+    . . . c c c . 6 . 6 . 5 . . . .
+    . . . . c c . . 6 . 6 . 6 . . .
+    . . . . . c . . . . . 6 . 6 . .
+    . . . . . . . 9 . . . . . . . .
+    . . . . . . . . . . . . . . . .
 `
 
     export const music = img`
