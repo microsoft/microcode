@@ -5,7 +5,6 @@ namespace microcode {
             opts: {
                 parent?: IPlaceable
                 style?: ButtonStyle
-                border?: ButtonBorder
                 icon: string | Image
                 ariaId?: string
                 label?: string
@@ -25,7 +24,6 @@ namespace microcode {
     }
 
     const TOOLBAR_HEIGHT = 17
-    const TOOLBAR_COLOR = 11
 
     export class Editor extends Scene {
         navigator: RuleRowNavigator
@@ -44,7 +42,7 @@ namespace microcode {
 
         constructor(app: App) {
             super(app, "editor")
-            this.color = 11
+            this.color = 6
         }
 
         public changed() {
@@ -221,7 +219,7 @@ namespace microcode {
             this.currPage = 0
             this.pageBtn = new EditorButton(this, {
                 parent: this.hudroot,
-                style: "white",
+                style: ButtonStyles.BorderedPurple,
                 icon: PAGE_IDS[this.currPage],
                 x: 0,
                 y: 8,
@@ -229,17 +227,17 @@ namespace microcode {
             })
             this.nextPageBtn = new EditorButton(this, {
                 parent: this.hudroot,
-                style: "white",
+                style: ButtonStyles.BorderedPurple,
                 icon: "next_page",
-                x: 16,
+                x: 19,
                 y: 8,
                 onClick: () => this.nextPage(),
             })
             this.prevPageBtn = new EditorButton(this, {
                 parent: this.hudroot,
-                style: "white",
+                style: ButtonStyles.BorderedPurple,
                 icon: "prev_page",
-                x: -16,
+                x: -19,
                 y: 8,
                 onClick: () => this.prevPage(),
             })
@@ -381,13 +379,27 @@ namespace microcode {
 
         private layout() {
             if (this.rules) {
+                this.rules.forEach((rule) => {
+                    rule.layout()
+                })
                 let left = 10
                 let top = 10
-                this.rules.forEach(rule => {
-                    rule.layout()
+                this.rules.forEach((rule, index) => {
+                    if (index) {
+                        top += this.rules[index - 1].bounds.height >> 1
+                        top += rule.bounds.height >> 1
+                        top += 3
+                    }
                     rule.xfrm.localPos.x = left
                     rule.xfrm.localPos.y = top
-                    top += 22
+                })
+                // Make all rules the same width
+                let maxRuleWidth = 0
+                this.rules.forEach((rule) => {
+                    maxRuleWidth = Math.max(maxRuleWidth, rule.bounds.width)
+                })
+                this.rules.forEach((rule) => {
+                    rule.bounds.width = maxRuleWidth
                 })
             }
         }
@@ -444,12 +456,13 @@ namespace microcode {
 
     class RuleEditor extends Component implements IPlaceable {
         private xfrm_: Affine
-        whenLbl: Sprite
-        doLbl: Sprite
         handleBtn: Button
         whenInsertBtn: Button
         doInsertBtn: Button
+        arrow: Sprite;
         rule: ButtonRuleRep
+        bounds: Bounds
+        whenBounds: Bounds
 
         //% blockCombine block="xfrm" callInDebugger
         public get xfrm() {
@@ -465,14 +478,6 @@ namespace microcode {
             super("rule_editor")
             this.xfrm_ = new Affine()
             this.xfrm_.parent = page.xfrm
-            this.whenLbl = new Sprite({
-                parent: this,
-                img: icons.get("when"),
-            })
-            this.doLbl = new Sprite({
-                parent: this,
-                img: icons.get("do"),
-            })
             this.handleBtn = new EditorButton(editor, {
                 parent: this,
                 icon: "default",
@@ -480,6 +485,10 @@ namespace microcode {
                 x: 0,
                 y: 0,
                 onClick: () => this.showRuleHandleMenu(),
+            })
+            this.arrow = new Sprite({
+                parent: this,
+                img: icons.get("rule_arrow"),
             })
             this.rule = {
                 sensors: [],
@@ -503,8 +512,8 @@ namespace microcode {
             ) {
                 this.whenInsertBtn = new EditorButton(this.editor, {
                     parent: this,
-                    style: "beige",
-                    icon: "insertion_point",
+                    style: ButtonStyles.Transparent,
+                    icon: "when_insertion_point",
                     ariaId: "when",
                     x: 0,
                     y: 0,
@@ -528,8 +537,8 @@ namespace microcode {
             ) {
                 this.doInsertBtn = new EditorButton(this.editor, {
                     parent: this,
-                    style: "beige",
-                    icon: "insertion_point",
+                    style: ButtonStyles.Transparent,
+                    icon: "do_insertion_point",
                     ariaId: "do",
                     x: 0,
                     y: 0,
@@ -542,13 +551,9 @@ namespace microcode {
 
         destroy() {
             this.destroyProgramTiles()
-            this.whenLbl.destroy()
-            this.doLbl.destroy()
             this.handleBtn.destroy()
             this.destroyWhenInsertButton()
             this.destroyDoInsertButton()
-            this.whenLbl = undefined
-            this.doLbl = undefined
             this.handleBtn = undefined
             this.whenInsertBtn = undefined
             this.doInsertBtn = undefined
@@ -576,9 +581,8 @@ namespace microcode {
                 tiles.forEach((tile, index) => {
                     const button = new EditorButton(this.editor, {
                         parent: this,
-                        style: "white",
+                        style: tile.buttonStyle(),
                         icon: tile.getIcon(),
-                        border: tile.getBorder(),
                         label: TID_MODIFIER_ICON_EDITOR,
                         x: 0,
                         y: 0,
@@ -748,40 +752,96 @@ namespace microcode {
         public layout() {
             const ruleRep = this.rule
             const v = new Vec2()
+            this.whenBounds = new Bounds()
 
-            const buttonLoc = (name: string) => {
-                ruleRep[name].forEach(btn => {
+            const whenTiles = ruleRep["sensors"].concat(ruleRep["filters"])
+            const doTiles = ruleRep["actuators"].concat(ruleRep["modifiers"])
+            if (this.whenInsertBtn) whenTiles.push(this.whenInsertBtn)
+            if (this.doInsertBtn) doTiles.push(this.doInsertBtn)
+
+            const firstWhenTile = whenTiles[0]
+            const lastWhenTile = whenTiles[whenTiles.length - 1]
+
+            this.handleBtn.xfrm.localPos = v
+            v.x += (this.handleBtn.width >> 1)
+            this.whenBounds.left = v.x
+
+            v.x += (firstWhenTile.width >> 1)
+            v.x += 2
+
+
+            const layoutButtons = (btns: Button[]) => {
+                btns.forEach((btn, index) => {
+                    if (index) {
+                        v.x += btns[index - 1].width >> 1
+                    }
+                    v.x += btn.width >> 1
+                    v.x += 1
                     btn.xfrm.localPos = v
-                    v.x += btn.width
                 })
             }
 
-            this.handleBtn.xfrm.localPos = v
-            v.x += (this.handleBtn.width >> 1) + (this.whenLbl.width >> 1)
-            this.whenLbl.xfrm.localPos = v
-            v.x += 2 + (this.whenLbl.width >> 1) + 8
+            layoutButtons(whenTiles)
 
-            const whenSection = ["sensors", "filters"]
-            whenSection.forEach(buttonLoc)
-            if (this.whenInsertBtn) this.whenInsertBtn.xfrm.localPos = v
+            this.whenBounds.right = v.x
 
-            v.x +=
-                2 +
-                (this.whenInsertBtn ? this.whenInsertBtn.width >> 1 : 0) +
-                (this.doLbl.width >> 1)
-            this.doLbl.xfrm.localPos = v
-            v.x += 2 + (this.doLbl.width >> 1) + 8
 
-            const doSection = ["actuators", "modifiers"]
-            doSection.forEach(buttonLoc)
-            if (this.doInsertBtn) this.doInsertBtn.xfrm.localPos = v
+            v.x += lastWhenTile.bounds.width >> 1
+            v.x += this.arrow.bounds.width >> 1
+            v.x += 1
+
+            this.arrow.xfrm.localPos.x = v.x
+            v.x += this.arrow.bounds.width >> 1
+            v.x += 2
+
+            layoutButtons(doTiles)
+
+            if (this.doInsertBtn) {
+                this.doInsertBtn.xfrm.localPos = v
+            }
+
+            this.bounds = undefined
+
+            const updateSizeFromButtons = (btns: Button[]) => {
+                btns.forEach(btn => {
+                    if (!this.bounds) {
+                        this.bounds = btn.bounds.clone().translate(btn.xfrm.localPos)
+                    } else {
+                        this.bounds.add(Bounds.Translate(btn.bounds, btn.xfrm.localPos))
+                    }
+                })
+            }
+
+            updateSizeFromButtons(this.rule["sensors"])
+            updateSizeFromButtons(this.rule["filters"])
+            updateSizeFromButtons(this.rule["actuators"])
+            updateSizeFromButtons(this.rule["modifiers"])
+            if (this.whenInsertBtn)
+                updateSizeFromButtons([this.whenInsertBtn])
+            if (this.doInsertBtn)
+                updateSizeFromButtons([this.doInsertBtn])
+
+            if (!this.bounds) {
+                this.bounds = new Bounds()
+            } else {
+                this.bounds.grow(1);
+            }
+
+            // Ensure that the rule "tray" is at least as wide as the screen
+            this.bounds.width = Math.max(this.bounds.width, 160)
+
+            this.whenBounds.left = this.bounds.left
+            this.whenBounds.top = this.bounds.top
+            this.whenBounds.height = this.bounds.height;
         }
 
         /* override */ draw() {
-            this.whenLbl.draw()
-            this.doLbl.draw()
+            Screen.fillBoundsXfrm(this.xfrm, this.bounds, 11)
+            Screen.fillBoundsXfrm(this.xfrm, this.whenBounds, 13)
+            Screen.outlineBoundsXfrm(this.xfrm, this.bounds, 15)
             this.handleBtn.draw()
             if (this.whenInsertBtn) this.whenInsertBtn.draw()
+            this.arrow.draw()
             if (this.doInsertBtn) this.doInsertBtn.draw()
             repNames.forEach(name => {
                 const buttons = this.rule[name]

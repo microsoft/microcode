@@ -25,7 +25,7 @@ namespace microcode {
 
             this.editBtn = new Button({
                 parent: null,
-                style: "white",
+                style: ButtonStyles.ShadowedWhite,
                 icon: "paint",
                 ariaId: "editor",
                 x: -26,
@@ -37,7 +37,7 @@ namespace microcode {
             })
             this.sampleBtn = new Button({
                 parent: null,
-                style: "white",
+                style: ButtonStyles.ShadowedWhite,
                 icon: "plus",
                 ariaId: "flashing heart sample",
                 x: 0,
@@ -50,7 +50,7 @@ namespace microcode {
             })
             this.sampleBtn2 = new Button({
                 parent: null,
-                style: "white",
+                style: ButtonStyles.ShadowedWhite,
                 icon: "plus",
                 ariaId: "smiley buttons sample",
                 x: 26,
