@@ -1,10 +1,4 @@
 namespace microcode {
-    //% shim=TD_NOOP
-    export function dumpDocs() {
-//        control.simmessages.onReceived("docs", renderDocs)
-        renderDocs()
-    }
-
     function imageToBuffer(img: Image) {
         const w = img.width
         const h = img.height
@@ -19,18 +13,37 @@ namespace microcode {
         return buf
     }
 
-    function renderDocs() {
+    //% shim=TD_NOOP
+    export function init() {
+        control.simmessages.onReceived("docs:icons", () => dumpIcons())
+    }
+
+    //% shim=TD_NOOP
+    export function dumpIcons() {
+        renderIcons()
+    }
+
+    export function dumpProgram(editor: Editor) {
+        console.log(`dump program`)
+        const prg = editor.renderProgram()
+        sendImage(editor.name, prg)
+    }
+
+    function sendImage(name: string, img: Image) {
+        const msg = {
+            type: "image",
+            name,
+            pixels: imageToBuffer(img).toHex(),
+        }
+        control.simmessages.send("docs", Buffer.fromUTF8(JSON.stringify(msg)))
+    }
+
+    function renderIcons() {
         icons.init()
         for (const name of icons.names()) {
             console.log(`dump ${name}`)
             const icon = icons.get(name)
-            const pixels = imageToBuffer(icon)
-            const msg = {
-                type: "icon",
-                name,
-                pixels: pixels.toHex()
-            }
-            control.simmessages.send("docs", Buffer.fromUTF8(JSON.stringify(msg)))
+            sendImage(name, icon)
         }
     }
 }

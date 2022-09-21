@@ -319,12 +319,12 @@ addSimMessageHandler("docs", async data => {
     const jsg = JSON.parse(msg)
 
     switch (jsg.type) {
-        case 'icon': {
+        case 'image': {
             const name = jsg.name
             const png = imgToPng(jsg.pixels)
             const a = document.createElement("a")
             a.setAttribute("href", png)
-            a.setAttribute("download", `icon_${name}.png`)
+            a.setAttribute("download", `${name}.png`)
             document.body.append(a)
             a.click()
 
