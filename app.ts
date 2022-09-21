@@ -25,7 +25,7 @@ namespace microcode {
                     keymap.KeyCode.DownArrow,
                     keymap.KeyCode.LeftArrow,
                     keymap.KeyCode.RightArrow,
-                    keymap.KeyCode.Enter,
+                    keymap.KeyCode.Space,
                     keymap.KeyCode.Backspace
                 )
                 icons.init()
