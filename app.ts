@@ -17,17 +17,7 @@ namespace microcode {
             // One interval delay to ensure all static constructors have executed.
             setTimeout(() => {
                 controller.setRepeatDefault(250, 30)
-                // TODO: use player 2 key bindings?
-                // note: ESC/Tab are reserved by MakeCode
-                keymap.setPlayerKeys(
-                    1,
-                    keymap.KeyCode.UpArrow,
-                    keymap.KeyCode.DownArrow,
-                    keymap.KeyCode.LeftArrow,
-                    keymap.KeyCode.RightArrow,
-                    keymap.KeyCode.Space,
-                    keymap.KeyCode.Backspace
-                )
+                keymap.setupKeys()
                 icons.init()
                 jdc.start()
                 this.sceneManager = new SceneManager()
