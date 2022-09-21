@@ -14,8 +14,7 @@ const refreshUI = () => {
     if (bus.connected) {
         connectEl.style.display = "none"
         document.getElementById("connectDlg").close()
-    }
-    else connectEl.style.display = "inherit"
+    } else connectEl.style.display = "inherit"
     const statusText = bus.connected
         ? "micro:bit connected"
         : bus.disconnected
@@ -50,9 +49,11 @@ if (!inIFrame)
             bus.on(jacdac.CONNECTION_STATE, refreshUI)
             bus.on(jacdac.ERROR, e => console.error(e))
             // connect must be triggered by a user interaction
-            connectEl.onclick = () => document.getElementById("connectDlg").showModal()
+            connectEl.onclick = () =>
+                document.getElementById("connectDlg").showModal()
 
-            document.getElementById("webusbBtn").onclick = async () => bus.connect()
+            document.getElementById("webusbBtn").onclick = async () =>
+                bus.connect()
             document.body.append(connectEl)
             refreshUI()
             bus.autoConnect = true
@@ -193,7 +194,8 @@ const liveStrings = {
     N5: "chuck a duck",
     N6: "reaction time",
     N7: "hot potato",
-    N8: "rock paper scissors",    
+    N8: "rock paper scissors",
+    N9: "head or tail",
 }
 
 addSimMessageHandler("accessibility", data => {
@@ -274,8 +276,9 @@ addSimMessageHandler("accessibility", data => {
 })
 
 function hexToUint8Array(hex) {
-    const bytes = new Uint8Array(Math.ceil(hex.length / 2));
-    for (let i = 0; i < bytes.length; i++) bytes[i] = parseInt(hex.substr(i * 2, 2), 16);
+    const bytes = new Uint8Array(Math.ceil(hex.length / 2))
+    for (let i = 0; i < bytes.length; i++)
+        bytes[i] = parseInt(hex.substr(i * 2, 2), 16)
     return bytes
 }
 
@@ -301,8 +304,8 @@ const palette = [
     "#5c406c",
     "#e5cdc4",
     "#91463d",
-    "#000000"
-]  
+    "#000000",
+]
 function imgToPng(hex) {
     const canvas = document.createElement("canvas")
     const ctx = canvas.getContext("2d")
@@ -320,7 +323,7 @@ function imgToPng(hex) {
             ctx.fillRect(x, y, 1, 1)
         }
     }
-    const png = canvas.toDataURL("image/png")    
+    const png = canvas.toDataURL("image/png")
     return png
 }
 
@@ -329,7 +332,7 @@ addSimMessageHandler("docs", async data => {
     const jsg = JSON.parse(msg)
 
     switch (jsg.type) {
-        case 'image': {
+        case "image": {
             const name = jsg.name
             const png = imgToPng(jsg.pixels)
             const a = document.createElement("a")
