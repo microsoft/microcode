@@ -11,6 +11,7 @@ namespace microcode {
         private id_: number
         private data_: any
         private _destroyHandlers: ComponentHandler[]
+        private _destroyed = false
 
         //% blockCombine block="id" callInDebugger
         get id() {
@@ -21,6 +22,9 @@ namespace microcode {
                 this.data_ = {}
             }
             return this.data_
+        }
+        get destroyed(): boolean {
+            return this._destroyed
         }
 
         constructor(public kind: string) {
@@ -33,6 +37,9 @@ namespace microcode {
         }
 
         /* virtual */ destroy() {
+            if (this._destroyed)
+                console.warn(`double destroy on ${this.id}`)
+            this._destroyed = true
             const handlers = this._destroyHandlers || []
             this._destroyHandlers = undefined
             for (const handler of handlers) {
