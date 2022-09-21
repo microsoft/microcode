@@ -35,6 +35,16 @@ namespace microcode {
             return Bounds.FromSprite(this)
         }
 
+        public get bounds() {
+            let b = new Bounds({
+                left: 0,
+                top: 0,
+                width: this.width,
+                height: this.height,
+            })
+            return b.translate(new Vec2(-(this.width >> 1), -(this.height >> 1)))
+        }
+
         constructor(opts: { parent?: IPlaceable; img: ImageG }) {
             super("sprite")
             this.xfrm_ = new Affine()
@@ -84,12 +94,15 @@ namespace microcode {
             if (this.isOffScreen()) {
                 return
             }
-            Screen.drawTransparentImage(
+            Screen.drawTransparentImageXfrm(
+                this.xfrm,
                 this.image_,
-                Math.floor(this.xfrm.worldPos.x - (this.image_.width >> 1)),
-                Math.floor(this.xfrm.worldPos.y - (this.image_.height >> 1))
+                -(this.image_.width >> 1),
+                -(this.image_.height >> 1)
             )
-            //this.hitbox.dbgRect(15);
+            //this.hitbox.drawRect(15);
         }
     }
+
+    const _pos: Vec2 = new Vec2(0, 0)
 }

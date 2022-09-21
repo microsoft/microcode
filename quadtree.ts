@@ -423,7 +423,7 @@ namespace microcode {
         }
 
         public dbgDraw(color: number) {
-            this.forEach(bounds => bounds.dbgRect(color))
+            this.forEach(bounds => bounds.drawRect(color))
         }
     }
 }

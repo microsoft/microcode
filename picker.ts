@@ -8,7 +8,7 @@ namespace microcode {
         constructor(public picker: Picker, btn: PickerButtonDef) {
             super({
                 parent: picker,
-                style: "white",
+                style: ButtonStyles.ShadowedWhite,
                 icon: btn.icon,
                 label: btn.label,
                 x: 0,
@@ -113,7 +113,7 @@ namespace microcode {
             if (this.onDelete) {
                 this.deleteBtn = new Button({
                     parent: this,
-                    style: "white",
+                    style: ButtonStyles.FlatWhite,
                     icon: "delete",
                     label: "delete",
                     x: 0,

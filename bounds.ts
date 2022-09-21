@@ -6,11 +6,17 @@ namespace microcode {
         public top: number
         //% blockCombine block="right" callInDebugger
         public get right() {
-            return this.left + this.width
+            return this.left + this.width - 1
+        }
+        public set right(val: number) {
+            this.width = val - this.left + 1
         }
         //% blockCombine block="bottom" callInDebugger
         public get bottom() {
-            return this.top + this.height
+            return this.top + this.height - 1
+        }
+        public set bottom(val: number) {
+            this.height = val - this.top + 1
         }
         public get topLeft() {
             return new Vec2(this.left, this.top)
@@ -25,25 +31,54 @@ namespace microcode {
             return new Vec2(this.right, this.bottom)
         }
 
-        constructor(opts: {
+        constructor(opts?: {
             width: number
             height: number
             left: number
             top: number
         }) {
+            opts = opts || { width: 0, height: 0, left: 0, top: 0 }
             this.width = opts.width
             this.height = opts.height
             this.left = opts.left
             this.top = opts.top
         }
 
-        public static Grow(box: Bounds, amount = 1): Bounds {
+        public clone(): Bounds {
             return new Bounds({
-                top: box.top - amount,
-                left: box.left - amount,
-                width: box.width + amount * 2,
-                height: box.height + amount * 2,
+                left: this.left,
+                top: this.top,
+                width: this.width,
+                height: this.height,
             })
+        }
+
+        public static Grow(box: Bounds, amount = 1): Bounds {
+            const b = box.clone();
+            b.grow(amount);
+            return b;
+        }
+
+        public static GrowXY(box: Bounds, x: number, y: number): Bounds {
+            const b = box.clone();
+            b.growxy(x, y);
+            return b;
+        }
+
+        public grow(amount = 1): this {
+            this.top -= amount
+            this.left -= amount
+            this.width += amount * 2
+            this.height += amount * 2
+            return this;
+        }
+
+        public growxy(x: number, y: number): this {
+            this.top -= x
+            this.left -= y
+            this.width += x * 2
+            this.height += y * 2
+            return this;
         }
 
         public static Translate(box: Bounds, p: Vec2): Bounds {
@@ -98,6 +133,14 @@ namespace microcode {
             )
         }
 
+        public add(other: Bounds): this {
+            this.left = Math.min(this.left, other.left)
+            this.top = Math.min(this.top, other.top)
+            this.right = Math.max(this.right, other.right)
+            this.bottom = Math.max(this.bottom, other.bottom)
+            return this;
+        }
+
         public static FromImage(i: ImageG): Bounds {
             let left = i.width
             let top = i.height
@@ -130,17 +173,6 @@ namespace microcode {
         public drawRect(color: number) {
             const top = this.top
             const left = this.left
-            const right = this.right - 1
-            const bottom = this.bottom - 1
-            Screen.drawLine(left, top, right, top, color)
-            Screen.drawLine(left, bottom, right, bottom, color)
-            Screen.drawLine(left, top, left, bottom, color)
-            Screen.drawLine(right, top, right, bottom, color)
-        }
-
-        public dbgRect(color: number) {
-            const top = this.top
-            const left = this.left
             const right = this.right
             const bottom = this.bottom
             Screen.drawLine(left, top, right, top, color)
@@ -151,6 +183,10 @@ namespace microcode {
 
         public fillRect(color: number) {
             Screen.fillRect(this.left, this.top, this.width, this.height, color)
+        }
+
+        public toString() {
+            return `Bounds(l:${this.left},t:${this.top},w:${this.width},h:${this.height},r:${this.right},b:${this.bottom})`
         }
     }
 

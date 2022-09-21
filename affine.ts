@@ -79,8 +79,7 @@ namespace microcode {
             if (this.dirty || force) {
                 this.dirty_ = false
                 if (this.parent) {
-                    const ppos = this.parent.worldPos
-                    Vec2.TranslateToRef(this.localPos_, ppos, this.worldPos_)
+                    Vec2.TranslateToRef(this.localPos_, this.parent.worldPos, this.worldPos_)
                 } else {
                     this.worldPos_.copyFrom(this.localPos)
                 }
@@ -88,7 +87,7 @@ namespace microcode {
         }
 
         public transformToRef(v: Vec2, ref: Vec2): Vec2 {
-            return Vec2.TranslateToRef(ref, this.worldPos, ref)
+            return Vec2.TranslateToRef(v, this.worldPos, ref)
         }
     }
 }

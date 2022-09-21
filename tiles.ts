@@ -350,6 +350,7 @@ namespace microcode {
         clone: (img: Image) => img.clone(),
         editor: iconEditor,
         toImage: scaleUp,
+        buttonStyle: () => ButtonStyles.BorderedPurple,
         serialize: (img: Image) => {
             const ret: string[] = []
             for (let index = 0; index < 25; index++) {
@@ -416,6 +417,7 @@ namespace microcode {
         },
         editor: musicEditor,
         toImage: noteToImage,
+        buttonStyle: () => ButtonStyles.ShadowedWhite,
         serialize: (field: NoteField) => field.note.toString(),
         deserialize: (note: string) => {
             return { note: parseInt(note) }

@@ -31,6 +31,7 @@ namespace microcode {
             onDelete?: () => void
         ) => void // use picker to update field
         toImage: (field: any) => Image // produce an image for the field for tile
+        buttonStyle: () => ButtonStyle
         serialize: (field: any) => string
         deserialize: (s: string) => any
     }
@@ -58,15 +59,12 @@ namespace microcode {
             return this.tid
         }
 
-        getBorder(): ButtonBorder {
-            return this.type === TileType.SENSOR ||
-                this.type === TileType.ACTUATOR
-                ? "solid"
-                : undefined
-        }
-
         getNewInstance(field: any = null): TileDefn {
             return this
+        }
+
+        buttonStyle(): ButtonStyle {
+            return this.fieldEditor ? this.fieldEditor.buttonStyle() : ButtonStyles.ShadowedWhite
         }
 
         mergeConstraints(dst: Constraints) {
