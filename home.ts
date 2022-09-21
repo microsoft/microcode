@@ -29,46 +29,56 @@ namespace microcode {
                 {
                     label: "editor",
                     ariaId: "editor",
-                    icon: "paint"
+                    icon: "paint",
                 },
                 {
                     label: "new program",
                     ariaId: "N0",
                     src: '{"progdef":{"P":[{"R":[{"S":[],"A":[]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
-                    icon: "plus"
+                    icon: "plus",
                 },
                 {
                     label: "flashing heart",
                     src: '{"progdef":{"P":[{"R":[{"S":["S4"],"A":["A5"],"M":["M15(0101010101100010101000100)","M15(0000000000000000000000000)"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]}]}}',
-                    icon: "flashing_heart"
+                    icon: "flashing_heart",
                 },
                 {
                     label: "smiley buttons",
                     src: '{"progdef":{"P":[{"R":[{"S":["S2"],"A":["A5"],"F":["F3"],"M":["M15(1101111011000001000101110)"]},{"S":["S2"],"A":["A5"],"F":["F4"],"M":["M15(1101111011000000111010001)"]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
-                    icon: "smiley_buttons"
+                    icon: "smiley_buttons",
                 },
                 {
                     label: "pet hamster",
                     src: '{"progdef":{"P":[{"R":[{"S":[],"A":["A5"],"M":["M15(0000011011000000111000000)"]},{"S":["S2"],"A":["A5"],"F":["F7"],"M":["M15(0000001010000001000101110)","M15(0000011011000000111000000)"]},{"S":["S2"],"A":["A2"],"F":["F7"],"M":["M19giggle"]},{"S":["S3"],"A":["A5"],"F":["F17_shake"],"M":["M15(0000001010000000111010001)","M15(0000011011000000111000000)"]},{"S":["S3"],"A":["A2"],"F":["F17_shake"],"M":["M19sad"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
-                    icon: "plus"
+                    icon: "plus",
                 },
                 {
                     label: "chuck a duck",
                     src: '{"progdef":{"P":[{"R":[{"S":["S3"],"A":["A5"],"F":["F17_shake"],"M":["M15(0000000000000000000000000)"]},{"S":["S3"],"A":["A6"],"F":["F17_shake"]},{"S":["S7"],"A":["A5"],"M":["M15(0110011100011110111000000)"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
-                    icon: "plus"
+                    icon: "plus",
                 },
                 {
                     label: "reaction time",
                     src: '{"progdef":{"P":[{"R":[{"S":[],"A":["A5"],"M":["M15(0000000000001000000000000)"]},{"S":["S4"],"A":["A1"],"M":["M2"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(1111111111111111111111111)"]},{"S":["S2"],"A":["A1"],"F":["F3"],"M":["M3"]},{"S":["S2"],"A":["A1"],"F":["F4"],"M":["M4"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(0111001010011100101001010)"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(0111001010011100101001110)"]},{"S":[],"A":[]}]},{}]}}',
-                    icon: "plus"
+                    icon: "plus",
                 },
                 {
                     label: "hot potato",
                     src: '{"progdef":{"P":[{"R":[{"S":["S4"],"A":["A1"],"F":["F14","F14","F14","F18","F18","F18"],"M":["M1"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(1111110101111110111001110)"]},{"S":[],"A":["A2"],"M":["M19sad"]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
-                    icon: "plus"
+                    icon: "plus",
                 },
-                ]
-            
+            ]
+
+            const updateCarouselBtn = () => {
+                this.carouselBtn.setIcon(
+                    CAROUSEL_ITEMS[this.carouselCounter].icon
+                )
+                this.carouselBtn.ariaId =
+                    CAROUSEL_ITEMS[this.carouselCounter].ariaId
+                this.carouselBtn.label =
+                    CAROUSEL_ITEMS[this.carouselCounter].label
+            }
+
             this.selectBtnL = new Button({
                 parent: null,
                 style: ButtonStyles.BorderedPurple,
@@ -77,11 +87,9 @@ namespace microcode {
                 x: -32,
                 y: 40,
                 onClick: () => {
-                    if (this.carouselCounter > 0) {
-                        this.carouselCounter--
-                    }
-                    this.carouselBtn.setIcon(CAROUSEL_ITEMS[this.carouselCounter].icon)
-                }
+                    if (this.carouselCounter > 0) this.carouselCounter--
+                    updateCarouselBtn()
+                },
             })
 
             this.carouselBtn = new Button({
@@ -92,9 +100,11 @@ namespace microcode {
                 x: 0,
                 y: 40,
                 onClick: () => {
-                    if (this.carouselCounter !== 0)
-                    {
-                        settings.writeString(SAVESLOT_AUTO, CAROUSEL_ITEMS[this.carouselCounter].src)
+                    if (this.carouselCounter !== 0) {
+                        settings.writeString(
+                            SAVESLOT_AUTO,
+                            CAROUSEL_ITEMS[this.carouselCounter].src
+                        )
                     }
                     this.app.popScene()
                     this.app.pushScene(new Editor(this.app))
@@ -109,14 +119,17 @@ namespace microcode {
                 x: 32,
                 y: 40,
                 onClick: () => {
-                    if (this.carouselCounter < CAROUSEL_ITEMS.length -1) {
+                    if (this.carouselCounter < CAROUSEL_ITEMS.length - 1)
                         this.carouselCounter++
-                    }
-                    this.carouselBtn.setIcon(CAROUSEL_ITEMS[this.carouselCounter].icon)
-                }
+                    updateCarouselBtn()
+                },
             })
 
-            const btns: Button[] = [this.selectBtnL, this.carouselBtn, this.selectBtnR]
+            const btns: Button[] = [
+                this.selectBtnL,
+                this.carouselBtn,
+                this.selectBtnR,
+            ]
 
             this.navigator.addButtons(btns)
         }

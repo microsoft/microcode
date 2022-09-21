@@ -59,7 +59,7 @@ namespace microcode {
         private style: ButtonStyle
         private iconId: string | Image
         private _ariaId: string
-        private label: string
+        public label: string
         private onClick?: (button: Button) => void
         private bounds_: Bounds
 
@@ -83,6 +83,10 @@ namespace microcode {
                     ? <string>this.iconId
                     : this.label)
             )
+        }
+
+        public set ariaId(value: string) {
+            this._ariaId = value
         }
 
         public get aria():
