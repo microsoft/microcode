@@ -62,6 +62,7 @@ namespace microcode {
             this.reg[TID_FILTER_BUTTON_B] = icondb.tile_button_b
             this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short
             this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long
+            this.reg[TID_FILTER_TIMESPAN_VERY_LONG] = icondb.tile_timespan_fiveSeconds
             this.reg[TID_FILTER_TIMESPAN_RANDOM] = icondb.tile_timespan_random
             this.reg[TID_FILTER_VALUE_1] = icondb.tile_value_1
             this.reg[TID_FILTER_VALUE_2] = icondb.tile_value_2
