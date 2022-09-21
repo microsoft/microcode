@@ -50,9 +50,9 @@ namespace microcode {
             this.reg[TID_SENSOR_PRESS] = icondb.finger_press
             this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
             this.reg[TID_SENSOR_ACCELEROMETER] = icondb.accelerometer
-            this.reg[TID_SENSOR_IN_PIPE_A] = icondb.inPipeA
-            this.reg[TID_SENSOR_IN_PIPE_B] = icondb.inPipeB
-            this.reg[TID_SENSOR_IN_PIPE_C] = icondb.inPipeC
+            this.reg[TID_SENSOR_OUT_PIPE_A] = icondb.outPipeA
+            this.reg[TID_SENSOR_OUT_PIPE_B] = icondb.outPipeB
+            this.reg[TID_SENSOR_OUT_PIPE_C] = icondb.outPipeC
 
             this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
             this.reg[TID_FILTER_PIN_0] = icondb.tile_pin_0
@@ -106,9 +106,9 @@ namespace microcode {
             this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
             this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
 
-            this.reg[TID_MODIFIER_PIPE_OUT_A] = icondb.outPipeA
-            this.reg[TID_MODIFIER_PIPE_OUT_B] = icondb.outPipeB
-            this.reg[TID_MODIFIER_PIPE_OUT_C] = icondb.outPipeC
+            this.reg[TID_MODIFIER_PIPE_IN_A] = icondb.inPipeA
+            this.reg[TID_MODIFIER_PIPE_IN_B] = icondb.inPipeB
+            this.reg[TID_MODIFIER_PIPE_IN_C] = icondb.inPipeC
 
             this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
             this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.moveFall
@@ -671,7 +671,6 @@ namespace icondb {
         . . . b b b b b b b . . . . . .
         . . . . . . . . . . . . . . . .
 `
-    
 
     ///
     /// BUTTON BACKGROUNDS
@@ -2081,7 +2080,7 @@ f f f f f f f f f f f f f f f f
     ..bb111111111111111111111111bb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
-export const settingsGear = img`
+    export const settingsGear = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . d d . . . . . . .
     . . . d d . d b b c . d d . . .
@@ -2099,8 +2098,7 @@ export const settingsGear = img`
     . . . . . . . c c . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-    
-    
+
     const one = img`
 . . . . . .
 . . f f . .
