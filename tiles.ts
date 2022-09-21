@@ -46,6 +46,7 @@ namespace microcode {
     export const TID_FILTER_LOUD = "F15"
     export const TID_FILTER_QUIET = "F16"
     export const TID_FILTER_ACCEL = "F17"
+    export const TID_FILTER_TIMESPAN_RANDOM = "F18"
     export const TID_FILTER_ACCEL_SHAKE = "F17_shake"
     export const TID_FILTER_ACCEL_FREEFALL = "F17_freefall"
     export const TID_FILTER_ACCEL_TILT_UP = "F17_tilt_up"
@@ -198,6 +199,8 @@ namespace microcode {
     }
     addTimespan(TID_FILTER_TIMESPAN_SHORT, "short", 250)
     addTimespan(TID_FILTER_TIMESPAN_LONG, "long", 1000)
+    // TODO: change codegen to be random
+    addTimespan(TID_FILTER_TIMESPAN_RANDOM, "random", 500)
 
     const accel = new SensorDefn(
         TID_SENSOR_ACCELEROMETER,
