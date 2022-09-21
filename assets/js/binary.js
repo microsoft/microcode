@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.0.30","target":"arcade","targetVersion":"1.10.19"}
-// total=1889343 new=94.08% cached=0.00% other=5.92%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.0.31","target":"arcade","targetVersion":"1.10.19"}
+// total=1889604 new=94.09% cached=0.00% other=5.91%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -772,6 +772,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N5", "chuck a duck");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N6", "reaction time");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N7", "hot potato");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N8", "rock paper scissors");
     globals.liveStrings___5818 = (s.tmp_0);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
@@ -38511,7 +38512,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-accessibility_textAccessibilityMessage_constructor__P2973.info = {"start":3077,"length":168,"line":124,"column":8,"endLine":128,"endColumn":9,"fileName":"accessibility.ts","functionName":"inline","argumentNames":["this","text"]}
+accessibility_textAccessibilityMessage_constructor__P2973.info = {"start":3112,"length":168,"line":125,"column":8,"endLine":129,"endColumn":9,"fileName":"accessibility.ts","functionName":"inline","argumentNames":["this","text"]}
 
 function accessibility_textAccessibilityMessage_constructor__P2973_mk(s) {
     checkStack(s.depth);
@@ -38856,13 +38857,13 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.text___16715 = undefined;
-    s.n___16721 = undefined;
-    s.font___16724 = undefined;
-    s.w___16726 = undefined;
-    s.h___16731 = undefined;
-    s.x___16734 = undefined;
-    s.y___16748 = undefined;
+    s.text___16727 = undefined;
+    s.n___16733 = undefined;
+    s.font___16736 = undefined;
+    s.w___16738 = undefined;
+    s.h___16743 = undefined;
+    s.x___16746 = undefined;
+    s.y___16760 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -38880,46 +38881,88 @@ switch (step) {
     { step = 9; continue; }
   case 1:
   case 2:
-    s.tmp_3 = accessibility_ariaToTooltip__P2963_mk(s);
-    r0 = s.arg0.fields["ariaId"];
-    s.tmp_3.arg0 = r0;
-    s.callLocIdx = 961; s.pc = 10; return s.tmp_3;
+    r0 = s.arg0.fields["cycle"];
+    s.tmp_3 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_3);
+    if (!r0) { step = 3; continue; }
+    r0 = 6;
+    { step = 4; continue; }
+  case 3:
+    r0 = 9;
+  case 4:
+    // jmp value (already in r0)
+    s.tmp_4 = r0;
+    s.tmp_5 = microcode_Screen_outlineBoundsXfrm__P3542_mk(s);
+    r0 = s.arg0.fields["xfrm_"];
+    s.tmp_5.arg0 = r0;
+    r0 = s.arg0.fields["size"];
+    s.tmp_5.arg1 = r0;
+    s.tmp_5.arg2 = 1;
+    s.tmp_5.arg3 = s.tmp_4;
+    s.callLocIdx = 962; s.pc = 10; return s.tmp_5;
   case 10:
     r0 = s.retval;
-    s.text___16715 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.text___16715);
-    if (!r0) { step = 3; continue; }
-    r0 = pxsim_String_.length(s.text___16715);
-    s.n___16721 = (r0);
-    s.font___16724 = (globals.font5___1644);
+    r0 = s.arg0.fields["cycle"];
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 5; continue; }
+    r0 = 9;
+    { step = 6; continue; }
+  case 5:
+    r0 = 6;
+  case 6:
+    // jmp value (already in r0)
+    s.tmp_1 = r0;
+    s.tmp_2 = microcode_Screen_outlineBoundsXfrm__P3542_mk(s);
+    r0 = s.arg0.fields["xfrm_"];
+    s.tmp_2.arg0 = r0;
+    r0 = s.arg0.fields["size"];
+    s.tmp_2.arg1 = r0;
+    s.tmp_2.arg2 = 2;
+    s.tmp_2.arg3 = s.tmp_1;
+    s.callLocIdx = 964; s.pc = 11; return s.tmp_2;
+  case 11:
+    r0 = s.retval;
+    s.tmp_0 = accessibility_ariaToTooltip__P2963_mk(s);
+    r0 = s.arg0.fields["ariaId"];
+    s.tmp_0.arg0 = r0;
+    s.callLocIdx = 965; s.pc = 12; return s.tmp_0;
+  case 12:
+    r0 = s.retval;
+    s.text___16727 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.text___16727);
+    if (!r0) { step = 7; continue; }
+    r0 = pxsim_String_.length(s.text___16727);
+    s.n___16733 = (r0);
+    s.font___16736 = (globals.font5___1644);
     s.tmp_1 = if_charWidth_1_mk(s);
-    s.tmp_1.arg0 = s.font___16724;
+    s.tmp_1.arg0 = s.font___16736;
     if (!s.tmp_1.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_1.arg0, "charWidth");
     } else {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["charWidth"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["charWidth"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 962; s.pc = 11; return s.tmp_1; }
+     else { s.callLocIdx = 966; s.pc = 13; return s.tmp_1; }
     }
-  case 11:
+  case 13:
     r0 = s.retval;
     s.tmp_0 = r0;
-    r0 = (s.tmp_0 * s.n___16721);
-    s.w___16726 = (r0);
+    r0 = (s.tmp_0 * s.n___16733);
+    s.w___16738 = (r0);
     s.tmp_0 = if_charHeight_1_mk(s);
-    s.tmp_0.arg0 = s.font___16724;
+    s.tmp_0.arg0 = s.font___16736;
     if (!s.tmp_0.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_0.arg0, "charHeight");
     } else {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["charHeight"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["charHeight"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 963; s.pc = 12; return s.tmp_0; }
+     else { s.callLocIdx = 967; s.pc = 14; return s.tmp_0; }
     }
-  case 12:
+  case 14:
     r0 = s.retval;
-    s.h___16731 = (r0);
+    s.h___16743 = (r0);
     s.tmp_0 = Math_max__P130_mk(s);
     r0 = (globals.microcode_Screen_LEFT_EDGE___3522 + 1);
     s.tmp_0.arg0 = r0;
@@ -38932,18 +38975,18 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["x_"];
     s.tmp_2 = r0;
-    r0 = (s.w___16726 >> 1);
+    r0 = (s.w___16738 >> 1);
     s.tmp_5 = r0;
     r0 = (s.tmp_2 - s.tmp_5);
     s.tmp_1.arg1 = r0;
-    s.callLocIdx = 967; s.pc = 14; return s.tmp_1;
-  case 14:
+    s.callLocIdx = 971; s.pc = 16; return s.tmp_1;
+  case 16:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 968; s.pc = 13; return s.tmp_0;
-  case 13:
+    s.callLocIdx = 972; s.pc = 15; return s.tmp_0;
+  case 15:
     r0 = s.retval;
-    s.x___16734 = (r0);
+    s.x___16746 = (r0);
     r0 = s.arg0.fields["xfrm_"];
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["localPos_"];
@@ -38953,93 +38996,51 @@ switch (step) {
     r0 = (s.tmp_1 + 7);
     s.tmp_0 = r0;
     s.tmp_5 = if_charHeight_1_mk(s);
-    s.tmp_5.arg0 = s.font___16724;
+    s.tmp_5.arg0 = s.font___16736;
     if (!s.tmp_5.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_5.arg0, "charHeight");
     } else {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["charHeight"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["charHeight"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 972; s.pc = 15; return s.tmp_5; }
+     else { s.callLocIdx = 976; s.pc = 17; return s.tmp_5; }
     }
-  case 15:
+  case 17:
     r0 = s.retval;
     s.tmp_4 = r0;
     r0 = (s.tmp_0 + s.tmp_4);
-    s.y___16748 = (r0);
+    s.y___16760 = (r0);
     s.tmp_0 = microcode_Screen_fillRect__P3538_mk(s);
-    r0 = (s.x___16734 - 1);
+    r0 = (s.x___16746 - 1);
     s.tmp_0.arg0 = r0;
-    r0 = (s.y___16748 - 1);
+    r0 = (s.y___16760 - 1);
     s.tmp_0.arg1 = r0;
-    r0 = (s.w___16726 + 1);
+    r0 = (s.w___16738 + 1);
     s.tmp_0.arg2 = r0;
-    r0 = (s.h___16731 + 2);
+    r0 = (s.h___16743 + 2);
     s.tmp_0.arg3 = r0;
     s.tmp_0.arg4 = 15;
-    s.callLocIdx = 973; s.pc = 16; return s.tmp_0;
-  case 16:
-    r0 = s.retval;
-    s.tmp_0 = microcode_Screen_print__P3546_mk(s);
-    s.tmp_0.arg0 = s.text___16715;
-    s.tmp_0.arg1 = s.x___16734;
-    s.tmp_0.arg2 = s.y___16748;
-    s.tmp_0.arg3 = 1;
-    s.tmp_0.arg4 = s.font___16724;
-    s.tmp_0.arg5 = undefined;
-    s.callLocIdx = 974; s.pc = 17; return s.tmp_0;
-  case 17:
-    r0 = s.retval;
-  case 3:
-  case 4:
-    r0 = s.arg0.fields["cycle"];
-    s.tmp_0 = r0;
-    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
-    if (!r0) { step = 5; continue; }
-    r0 = 6;
-    { step = 6; continue; }
-  case 5:
-    r0 = 9;
-  case 6:
-    // jmp value (already in r0)
-    s.tmp_1 = r0;
-    s.tmp_2 = microcode_Screen_outlineBoundsXfrm__P3542_mk(s);
-    r0 = s.arg0.fields["xfrm_"];
-    s.tmp_2.arg0 = r0;
-    r0 = s.arg0.fields["size"];
-    s.tmp_2.arg1 = r0;
-    s.tmp_2.arg2 = 1;
-    s.tmp_2.arg3 = s.tmp_1;
-    s.callLocIdx = 976; s.pc = 18; return s.tmp_2;
+    s.callLocIdx = 977; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
-    r0 = s.arg0.fields["cycle"];
-    s.tmp_0 = r0;
-    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
-    if (!r0) { step = 7; continue; }
-    r0 = 9;
-    { step = 8; continue; }
-  case 7:
-    r0 = 6;
-  case 8:
-    // jmp value (already in r0)
-    s.tmp_1 = r0;
-    s.tmp_2 = microcode_Screen_outlineBoundsXfrm__P3542_mk(s);
-    r0 = s.arg0.fields["xfrm_"];
-    s.tmp_2.arg0 = r0;
-    r0 = s.arg0.fields["size"];
-    s.tmp_2.arg1 = r0;
-    s.tmp_2.arg2 = 2;
-    s.tmp_2.arg3 = s.tmp_1;
-    s.callLocIdx = 978; s.pc = 19; return s.tmp_2;
+    s.tmp_0 = microcode_Screen_print__P3546_mk(s);
+    s.tmp_0.arg0 = s.text___16727;
+    s.tmp_0.arg1 = s.x___16746;
+    s.tmp_0.arg2 = s.y___16760;
+    s.tmp_0.arg3 = 1;
+    s.tmp_0.arg4 = s.font___16736;
+    s.tmp_0.arg5 = undefined;
+    s.callLocIdx = 978; s.pc = 19; return s.tmp_0;
   case 19:
     r0 = s.retval;
+  case 7:
+  case 8:
   case 9:
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Cursor_draw__P3405.info = {"start":3757,"length":1089,"line":130,"column":23,"endLine":162,"endColumn":9,"fileName":"cursor.ts","functionName":"draw","argumentNames":["this"]}
+microcode_Cursor_draw__P3405.info = {"start":3757,"length":1090,"line":130,"column":23,"endLine":163,"endColumn":9,"fileName":"cursor.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_Cursor_draw__P3405_mk(s) {
     checkStack(s.depth);
@@ -39052,221 +39053,14 @@ function microcode_Cursor_draw__P3405_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  text___16715: undefined,
-  n___16721: undefined,
-  font___16724: undefined,
-  w___16726: undefined,
-  h___16731: undefined,
-  x___16734: undefined,
-  y___16748: undefined,
+  text___16727: undefined,
+  n___16733: undefined,
+  font___16736: undefined,
+  w___16738: undefined,
+  h___16743: undefined,
+  x___16746: undefined,
+  y___16760: undefined,
   arg0: undefined,
-} }
-
-
-
-
-
-function microcode_Screen_outlineBoundsXfrm__P3542(s) {
-let r0 = s.r0, step = s.pc;
-s.pc = -1;
-
-
-while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
-switch (step) {
-  case 0:
-
-    s.left___16790 = undefined;
-    s.top___16797 = undefined;
-    s.right___16804 = undefined;
-    s.bottom___16811 = undefined;
-    if (s.lambdaArgs) {
-      s.arg0 = (s.lambdaArgs[0]);
-      s.arg1 = (s.lambdaArgs[1]);
-      s.arg2 = (s.lambdaArgs[2]);
-      s.arg3 = (s.lambdaArgs[3]);
-      s.lambdaArgs = null;
-    }
-    r0 = s.arg1.fields["left"];
-    s.tmp_0 = r0;
-    s.tmp_3 = microcode_Affine_worldPos__P3473_mk(s);
-    s.tmp_3.arg0 = s.arg0;
-    s.callLocIdx = 1227; s.pc = 3; return s.tmp_3;
-  case 3:
-    r0 = s.retval;
-    s.tmp_2 = r0;
-    r0 = s.tmp_2.fields["x_"];
-    s.tmp_1 = r0;
-    r0 = (s.tmp_0 + s.tmp_1);
-    s.left___16790 = (r0);
-    r0 = s.arg1.fields["top"];
-    s.tmp_0 = r0;
-    s.tmp_3 = microcode_Affine_worldPos__P3473_mk(s);
-    s.tmp_3.arg0 = s.arg0;
-    s.callLocIdx = 1229; s.pc = 4; return s.tmp_3;
-  case 4:
-    r0 = s.retval;
-    s.tmp_2 = r0;
-    r0 = s.tmp_2.fields["y_"];
-    s.tmp_1 = r0;
-    r0 = (s.tmp_0 + s.tmp_1);
-    s.top___16797 = (r0);
-    r0 = s.arg1.fields["left"];
-    s.tmp_2 = r0;
-    r0 = s.arg1.fields["width"];
-    s.tmp_3 = r0;
-    r0 = (s.tmp_2 + s.tmp_3);
-    s.tmp_1 = r0;
-    r0 = (s.tmp_1 - 1);
-    s.tmp_0 = r0;
-    s.tmp_6 = microcode_Affine_worldPos__P3473_mk(s);
-    s.tmp_6.arg0 = s.arg0;
-    s.callLocIdx = 1232; s.pc = 5; return s.tmp_6;
-  case 5:
-    r0 = s.retval;
-    s.tmp_5 = r0;
-    r0 = s.tmp_5.fields["x_"];
-    s.tmp_4 = r0;
-    r0 = (s.tmp_0 + s.tmp_4);
-    s.right___16804 = (r0);
-    r0 = s.arg1.fields["top"];
-    s.tmp_2 = r0;
-    r0 = s.arg1.fields["height"];
-    s.tmp_3 = r0;
-    r0 = (s.tmp_2 + s.tmp_3);
-    s.tmp_1 = r0;
-    r0 = (s.tmp_1 - 1);
-    s.tmp_0 = r0;
-    s.tmp_6 = microcode_Affine_worldPos__P3473_mk(s);
-    s.tmp_6.arg0 = s.arg0;
-    s.callLocIdx = 1235; s.pc = 6; return s.tmp_6;
-  case 6:
-    r0 = s.retval;
-    s.tmp_5 = r0;
-    r0 = s.tmp_5.fields["y_"];
-    s.tmp_4 = r0;
-    r0 = (s.tmp_0 + s.tmp_4);
-    s.bottom___16811 = (r0);
-    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
-    r0 = (s.left___16790 - s.arg2);
-    s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = s.top___16797;
-    r0 = (s.left___16790 - s.arg2);
-    s.tmp_0.arg2 = r0;
-    s.tmp_0.arg3 = s.bottom___16811;
-    s.tmp_0.arg4 = s.arg3;
-    s.callLocIdx = 1237; s.pc = 7; return s.tmp_0;
-  case 7:
-    r0 = s.retval;
-    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
-    r0 = (s.right___16804 + s.arg2);
-    s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = s.top___16797;
-    r0 = (s.right___16804 + s.arg2);
-    s.tmp_0.arg2 = r0;
-    s.tmp_0.arg3 = s.bottom___16811;
-    s.tmp_0.arg4 = s.arg3;
-    s.callLocIdx = 1238; s.pc = 8; return s.tmp_0;
-  case 8:
-    r0 = s.retval;
-    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
-    s.tmp_0.arg0 = s.left___16790;
-    r0 = (s.top___16797 - s.arg2);
-    s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = s.right___16804;
-    r0 = (s.top___16797 - s.arg2);
-    s.tmp_0.arg3 = r0;
-    s.tmp_0.arg4 = s.arg3;
-    s.callLocIdx = 1239; s.pc = 9; return s.tmp_0;
-  case 9:
-    r0 = s.retval;
-    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
-    s.tmp_0.arg0 = s.left___16790;
-    r0 = (s.bottom___16811 + s.arg2);
-    s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = s.right___16804;
-    r0 = (s.bottom___16811 + s.arg2);
-    s.tmp_0.arg3 = r0;
-    s.tmp_0.arg4 = s.arg3;
-    s.callLocIdx = 1240; s.pc = 10; return s.tmp_0;
-  case 10:
-    r0 = s.retval;
-    r0 = (s.arg2 > 1);
-    s.tmp_0 = r0;
-    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
-    if (!r0) { step = 1; continue; }
-    s.tmp_1 = microcode_Screen_drawLine__P3533_mk(s);
-    r0 = (s.left___16790 - s.arg2);
-    s.tmp_1.arg0 = r0;
-    s.tmp_1.arg1 = s.top___16797;
-    s.tmp_1.arg2 = s.left___16790;
-    r0 = (s.top___16797 - s.arg2);
-    s.tmp_1.arg3 = r0;
-    s.tmp_1.arg4 = s.arg3;
-    s.callLocIdx = 1241; s.pc = 11; return s.tmp_1;
-  case 11:
-    r0 = s.retval;
-    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
-    r0 = (s.right___16804 + s.arg2);
-    s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = s.top___16797;
-    s.tmp_0.arg2 = s.right___16804;
-    r0 = (s.top___16797 - s.arg2);
-    s.tmp_0.arg3 = r0;
-    s.tmp_0.arg4 = s.arg3;
-    s.callLocIdx = 1242; s.pc = 12; return s.tmp_0;
-  case 12:
-    r0 = s.retval;
-    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
-    r0 = (s.left___16790 - s.arg2);
-    s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = s.bottom___16811;
-    s.tmp_0.arg2 = s.left___16790;
-    r0 = (s.bottom___16811 + s.arg2);
-    s.tmp_0.arg3 = r0;
-    s.tmp_0.arg4 = s.arg3;
-    s.callLocIdx = 1243; s.pc = 13; return s.tmp_0;
-  case 13:
-    r0 = s.retval;
-    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
-    r0 = (s.right___16804 + s.arg2);
-    s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = s.bottom___16811;
-    s.tmp_0.arg2 = s.right___16804;
-    r0 = (s.bottom___16811 + s.arg2);
-    s.tmp_0.arg3 = r0;
-    s.tmp_0.arg4 = s.arg3;
-    s.callLocIdx = 1244; s.pc = 14; return s.tmp_0;
-  case 14:
-    r0 = s.retval;
-  case 1:
-  case 2:
-    r0 = undefined;
-    return leave(s, r0)
-  default: oops()
-} } }
-microcode_Screen_outlineBoundsXfrm__P3542.info = {"start":5464,"length":1241,"line":202,"column":8,"endLine":233,"endColumn":9,"fileName":"screen.ts","functionName":"outlineBoundsXfrm","argumentNames":["xfrm","bounds","dist","c"]}
-
-function microcode_Screen_outlineBoundsXfrm__P3542_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: microcode_Screen_outlineBoundsXfrm__P3542, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  tmp_0: undefined,
-  tmp_1: undefined,
-  tmp_2: undefined,
-  tmp_3: undefined,
-  tmp_4: undefined,
-  tmp_5: undefined,
-  tmp_6: undefined,
-  left___16790: undefined,
-  top___16797: undefined,
-  right___16804: undefined,
-  bottom___16811: undefined,
-  arg0: undefined,
-  arg1: undefined,
-  arg2: undefined,
-  arg3: undefined,
 } }
 
 
@@ -39283,7 +39077,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.s___16901 = undefined;
+    s.s___16787 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -39306,16 +39100,16 @@ switch (step) {
     s.callLocIdx = 201; s.pc = 3; return s.tmp_2;
   case 3:
     r0 = s.retval;
-    s.s___16901 = (r0);
+    s.s___16787 = (r0);
     s.tmp_0 = helpers_stringToUpperCase__P120_mk(s);
-    s.tmp_0.arg0 = s.s___16901;
+    s.tmp_0.arg0 = s.s___16787;
     s.callLocIdx = 202; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     return leave(s, r0)
   default: oops()
 } } }
-accessibility_ariaToTooltip__P2963.info = {"start":2516,"length":148,"line":104,"column":4,"endLine":107,"endColumn":5,"fileName":"accessibility.ts","functionName":"ariaToTooltip","argumentNames":["ariaId"]}
+accessibility_ariaToTooltip__P2963.info = {"start":2551,"length":148,"line":105,"column":4,"endLine":108,"endColumn":5,"fileName":"accessibility.ts","functionName":"ariaToTooltip","argumentNames":["ariaId"]}
 
 function accessibility_ariaToTooltip__P2963_mk(s) {
     checkStack(s.depth);
@@ -39325,7 +39119,7 @@ function accessibility_ariaToTooltip__P2963_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  s___16901: undefined,
+  s___16787: undefined,
   arg0: undefined,
 } }
 
@@ -39343,54 +39137,54 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.r___16911 = undefined;
-    s.prev___16912 = undefined;
-    s.i___16913 = undefined;
-    s.c___16919 = undefined;
+    s.r___16797 = undefined;
+    s.prev___16798 = undefined;
+    s.i___16799 = undefined;
+    s.c___16805 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = pxsim_String_.mkEmpty();
-    s.r___16911 = (r0);
-    s.prev___16912 = (0);
-    s.i___16913 = (0);
+    s.r___16797 = (r0);
+    s.prev___16798 = (0);
+    s.i___16799 = (0);
   case 1:
-    s.tmp_1 = r0 = s.i___16913;
+    s.tmp_1 = r0 = s.i___16799;
     r0 = pxsim_String_.length(s.arg0);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
-    r0 = pxsim_String_.charCodeAt(s.arg0, s.i___16913);
-    s.c___16919 = (r0);
-    r0 = (97 <= s.c___16919);
+    r0 = pxsim_String_.charCodeAt(s.arg0, s.i___16799);
+    s.c___16805 = (r0);
+    r0 = (97 <= s.c___16805);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 2; continue; }
     r0 = s.tmp_0;
     { step = 3; continue; }
   case 2:
-    r0 = (s.c___16919 <= 122);
+    r0 = (s.c___16805 <= 122);
   case 3:
     // jmp value (already in r0)
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 4; continue; }
-    if ((s.r___16911) && (s.r___16911).vtable) {
+    if ((s.r___16797) && (s.r___16797).vtable) {
     setupResume(s, 7);
-    pxsim_String__stringConv(s.r___16911);
+    pxsim_String__stringConv(s.r___16797);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.r___16911) + ""; }
+    } else { s.retval = (s.r___16797) + ""; }
   case 7:
     r0 = s.retval;
     s.tmp_2 = r0;
     s.tmp_7 = helpers_stringSlice__P119_mk(s);
     s.tmp_7.arg0 = s.arg0;
-    s.tmp_7.arg1 = s.prev___16912;
-    s.tmp_7.arg2 = s.i___16913;
+    s.tmp_7.arg1 = s.prev___16798;
+    s.tmp_7.arg2 = s.i___16799;
     s.callLocIdx = 22; s.pc = 8; return s.tmp_7;
   case 8:
     r0 = s.retval;
@@ -39404,7 +39198,7 @@ switch (step) {
   case 9:
     r0 = s.retval;
     s.tmp_5 = r0;
-    r0 = (s.c___16919 - 32);
+    r0 = (s.c___16805 - 32);
     s.tmp_10 = r0;
     r0 = pxsim_String_.fromCharCode(s.tmp_10);
     s.tmp_9 = r0;
@@ -39429,27 +39223,27 @@ switch (step) {
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = pxsim_String__concat(s.tmp_2, s.tmp_3);
-    s.r___16911 = (r0);
-    r0 = (s.i___16913 + 1);
-    s.prev___16912 = (r0);
+    s.r___16797 = (r0);
+    r0 = (s.i___16799 + 1);
+    s.prev___16798 = (r0);
   case 4:
   case 5:
-    r0 = (s.i___16913 + 1);
-    s.i___16913 = (r0);
+    r0 = (s.i___16799 + 1);
+    s.i___16799 = (r0);
     { step = 1; continue; }
   case 6:
-    if ((s.r___16911) && (s.r___16911).vtable) {
+    if ((s.r___16797) && (s.r___16797).vtable) {
     setupResume(s, 12);
-    pxsim_String__stringConv(s.r___16911);
+    pxsim_String__stringConv(s.r___16797);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.r___16911) + ""; }
+    } else { s.retval = (s.r___16797) + ""; }
   case 12:
     r0 = s.retval;
     s.tmp_0 = r0;
     s.tmp_3 = helpers_stringSlice__P119_mk(s);
     s.tmp_3.arg0 = s.arg0;
-    s.tmp_3.arg1 = s.prev___16912;
+    s.tmp_3.arg1 = s.prev___16798;
     s.tmp_3.arg2 = undefined;
     s.callLocIdx = 23; s.pc = 13; return s.tmp_3;
   case 13:
@@ -39465,8 +39259,8 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_String__concat(s.tmp_0, s.tmp_1);
-    s.r___16911 = (r0);
-    r0 = s.r___16911;
+    s.r___16797 = (r0);
+    r0 = s.r___16797;
     return leave(s, r0)
   default: oops()
 } } }
@@ -39488,10 +39282,10 @@ function helpers_stringToUpperCase__P120_mk(s) {
   tmp_8: undefined,
   tmp_9: undefined,
   tmp_10: undefined,
-  r___16911: undefined,
-  prev___16912: undefined,
-  i___16913: undefined,
-  c___16919: undefined,
+  r___16797: undefined,
+  prev___16798: undefined,
+  i___16799: undefined,
+  c___16805: undefined,
   arg0: undefined,
 } }
 
@@ -39509,9 +39303,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.ind___16973 = undefined;
-    s.begin___16984 = undefined;
-    s.end___16989 = undefined;
+    s.ind___16859 = undefined;
+    s.begin___16870 = undefined;
+    s.end___16875 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -39532,8 +39326,8 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_0, s.tmp_1);
     s.arg1 = (r0);
     r0 = pxsim_String_.indexOf(s.arg0, s.arg1, undefined);
-    s.ind___16973 = (r0);
-    r0 = (s.ind___16973 == -1);
+    s.ind___16859 = (r0);
+    r0 = (s.ind___16859 == -1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
@@ -39544,14 +39338,14 @@ switch (step) {
     s.tmp_1 = helpers_stringSlice__P119_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.tmp_1.arg1 = 0;
-    s.tmp_1.arg2 = s.ind___16973;
+    s.tmp_1.arg2 = s.ind___16859;
     s.callLocIdx = 11; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
-    s.begin___16984 = (r0);
+    s.begin___16870 = (r0);
     s.tmp_0 = helpers_stringSlice__P119_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_1 = r0 = s.ind___16973;
+    s.tmp_1 = r0 = s.ind___16859;
     r0 = pxsim_String_.length(s.arg1);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 + s.tmp_2);
@@ -39560,7 +39354,7 @@ switch (step) {
     s.callLocIdx = 12; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
-    s.end___16989 = (r0);
+    s.end___16875 = (r0);
     r0 = pxsim_pxtcore.typeOf(s.arg2);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == "string");
@@ -39578,12 +39372,12 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_3);
     if (!r0) { step = 5; continue; }
-    if ((s.begin___16984) && (s.begin___16984).vtable) {
+    if ((s.begin___16870) && (s.begin___16870).vtable) {
     setupResume(s, 11);
-    pxsim_String__stringConv(s.begin___16984);
+    pxsim_String__stringConv(s.begin___16870);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.begin___16984) + ""; }
+    } else { s.retval = (s.begin___16870) + ""; }
   case 11:
     r0 = s.retval;
     s.tmp_6 = r0;
@@ -39607,12 +39401,12 @@ switch (step) {
   case 13:
     r0 = s.retval;
     s.tmp_4 = r0;
-    if ((s.end___16989) && (s.end___16989).vtable) {
+    if ((s.end___16875) && (s.end___16875).vtable) {
     setupResume(s, 14);
-    pxsim_String__stringConv(s.end___16989);
+    pxsim_String__stringConv(s.end___16875);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.end___16989) + ""; }
+    } else { s.retval = (s.end___16875) + ""; }
   case 14:
     r0 = s.retval;
     s.tmp_8 = r0;
@@ -39620,12 +39414,12 @@ switch (step) {
     { step = 7; continue; }
     { step = 6; continue; }
   case 5:
-    if ((s.begin___16984) && (s.begin___16984).vtable) {
+    if ((s.begin___16870) && (s.begin___16870).vtable) {
     setupResume(s, 15);
-    pxsim_String__stringConv(s.begin___16984);
+    pxsim_String__stringConv(s.begin___16870);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.begin___16984) + ""; }
+    } else { s.retval = (s.begin___16870) + ""; }
   case 15:
     r0 = s.retval;
     s.tmp_11 = r0;
@@ -39657,12 +39451,12 @@ switch (step) {
   case 18:
     r0 = s.retval;
     s.tmp_9 = r0;
-    if ((s.end___16989) && (s.end___16989).vtable) {
+    if ((s.end___16875) && (s.end___16875).vtable) {
     setupResume(s, 19);
-    pxsim_String__stringConv(s.end___16989);
+    pxsim_String__stringConv(s.end___16875);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.end___16989) + ""; }
+    } else { s.retval = (s.end___16875) + ""; }
   case 19:
     r0 = s.retval;
     s.tmp_15 = r0;
@@ -39697,12 +39491,219 @@ function helpers_stringReplace__P116_mk(s) {
   tmp_13: undefined,
   tmp_14: undefined,
   tmp_15: undefined,
-  ind___16973: undefined,
-  begin___16984: undefined,
-  end___16989: undefined,
+  ind___16859: undefined,
+  begin___16870: undefined,
+  end___16875: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
+} }
+
+
+
+
+
+function microcode_Screen_outlineBoundsXfrm__P3542(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.left___16914 = undefined;
+    s.top___16921 = undefined;
+    s.right___16928 = undefined;
+    s.bottom___16935 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.arg3 = (s.lambdaArgs[3]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg1.fields["left"];
+    s.tmp_0 = r0;
+    s.tmp_3 = microcode_Affine_worldPos__P3473_mk(s);
+    s.tmp_3.arg0 = s.arg0;
+    s.callLocIdx = 1227; s.pc = 3; return s.tmp_3;
+  case 3:
+    r0 = s.retval;
+    s.tmp_2 = r0;
+    r0 = s.tmp_2.fields["x_"];
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0 + s.tmp_1);
+    s.left___16914 = (r0);
+    r0 = s.arg1.fields["top"];
+    s.tmp_0 = r0;
+    s.tmp_3 = microcode_Affine_worldPos__P3473_mk(s);
+    s.tmp_3.arg0 = s.arg0;
+    s.callLocIdx = 1229; s.pc = 4; return s.tmp_3;
+  case 4:
+    r0 = s.retval;
+    s.tmp_2 = r0;
+    r0 = s.tmp_2.fields["y_"];
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0 + s.tmp_1);
+    s.top___16921 = (r0);
+    r0 = s.arg1.fields["left"];
+    s.tmp_2 = r0;
+    r0 = s.arg1.fields["width"];
+    s.tmp_3 = r0;
+    r0 = (s.tmp_2 + s.tmp_3);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_1 - 1);
+    s.tmp_0 = r0;
+    s.tmp_6 = microcode_Affine_worldPos__P3473_mk(s);
+    s.tmp_6.arg0 = s.arg0;
+    s.callLocIdx = 1232; s.pc = 5; return s.tmp_6;
+  case 5:
+    r0 = s.retval;
+    s.tmp_5 = r0;
+    r0 = s.tmp_5.fields["x_"];
+    s.tmp_4 = r0;
+    r0 = (s.tmp_0 + s.tmp_4);
+    s.right___16928 = (r0);
+    r0 = s.arg1.fields["top"];
+    s.tmp_2 = r0;
+    r0 = s.arg1.fields["height"];
+    s.tmp_3 = r0;
+    r0 = (s.tmp_2 + s.tmp_3);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_1 - 1);
+    s.tmp_0 = r0;
+    s.tmp_6 = microcode_Affine_worldPos__P3473_mk(s);
+    s.tmp_6.arg0 = s.arg0;
+    s.callLocIdx = 1235; s.pc = 6; return s.tmp_6;
+  case 6:
+    r0 = s.retval;
+    s.tmp_5 = r0;
+    r0 = s.tmp_5.fields["y_"];
+    s.tmp_4 = r0;
+    r0 = (s.tmp_0 + s.tmp_4);
+    s.bottom___16935 = (r0);
+    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
+    r0 = (s.left___16914 - s.arg2);
+    s.tmp_0.arg0 = r0;
+    s.tmp_0.arg1 = s.top___16921;
+    r0 = (s.left___16914 - s.arg2);
+    s.tmp_0.arg2 = r0;
+    s.tmp_0.arg3 = s.bottom___16935;
+    s.tmp_0.arg4 = s.arg3;
+    s.callLocIdx = 1237; s.pc = 7; return s.tmp_0;
+  case 7:
+    r0 = s.retval;
+    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
+    r0 = (s.right___16928 + s.arg2);
+    s.tmp_0.arg0 = r0;
+    s.tmp_0.arg1 = s.top___16921;
+    r0 = (s.right___16928 + s.arg2);
+    s.tmp_0.arg2 = r0;
+    s.tmp_0.arg3 = s.bottom___16935;
+    s.tmp_0.arg4 = s.arg3;
+    s.callLocIdx = 1238; s.pc = 8; return s.tmp_0;
+  case 8:
+    r0 = s.retval;
+    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
+    s.tmp_0.arg0 = s.left___16914;
+    r0 = (s.top___16921 - s.arg2);
+    s.tmp_0.arg1 = r0;
+    s.tmp_0.arg2 = s.right___16928;
+    r0 = (s.top___16921 - s.arg2);
+    s.tmp_0.arg3 = r0;
+    s.tmp_0.arg4 = s.arg3;
+    s.callLocIdx = 1239; s.pc = 9; return s.tmp_0;
+  case 9:
+    r0 = s.retval;
+    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
+    s.tmp_0.arg0 = s.left___16914;
+    r0 = (s.bottom___16935 + s.arg2);
+    s.tmp_0.arg1 = r0;
+    s.tmp_0.arg2 = s.right___16928;
+    r0 = (s.bottom___16935 + s.arg2);
+    s.tmp_0.arg3 = r0;
+    s.tmp_0.arg4 = s.arg3;
+    s.callLocIdx = 1240; s.pc = 10; return s.tmp_0;
+  case 10:
+    r0 = s.retval;
+    r0 = (s.arg2 > 1);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    s.tmp_1 = microcode_Screen_drawLine__P3533_mk(s);
+    r0 = (s.left___16914 - s.arg2);
+    s.tmp_1.arg0 = r0;
+    s.tmp_1.arg1 = s.top___16921;
+    s.tmp_1.arg2 = s.left___16914;
+    r0 = (s.top___16921 - s.arg2);
+    s.tmp_1.arg3 = r0;
+    s.tmp_1.arg4 = s.arg3;
+    s.callLocIdx = 1241; s.pc = 11; return s.tmp_1;
+  case 11:
+    r0 = s.retval;
+    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
+    r0 = (s.right___16928 + s.arg2);
+    s.tmp_0.arg0 = r0;
+    s.tmp_0.arg1 = s.top___16921;
+    s.tmp_0.arg2 = s.right___16928;
+    r0 = (s.top___16921 - s.arg2);
+    s.tmp_0.arg3 = r0;
+    s.tmp_0.arg4 = s.arg3;
+    s.callLocIdx = 1242; s.pc = 12; return s.tmp_0;
+  case 12:
+    r0 = s.retval;
+    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
+    r0 = (s.left___16914 - s.arg2);
+    s.tmp_0.arg0 = r0;
+    s.tmp_0.arg1 = s.bottom___16935;
+    s.tmp_0.arg2 = s.left___16914;
+    r0 = (s.bottom___16935 + s.arg2);
+    s.tmp_0.arg3 = r0;
+    s.tmp_0.arg4 = s.arg3;
+    s.callLocIdx = 1243; s.pc = 13; return s.tmp_0;
+  case 13:
+    r0 = s.retval;
+    s.tmp_0 = microcode_Screen_drawLine__P3533_mk(s);
+    r0 = (s.right___16928 + s.arg2);
+    s.tmp_0.arg0 = r0;
+    s.tmp_0.arg1 = s.bottom___16935;
+    s.tmp_0.arg2 = s.right___16928;
+    r0 = (s.bottom___16935 + s.arg2);
+    s.tmp_0.arg3 = r0;
+    s.tmp_0.arg4 = s.arg3;
+    s.callLocIdx = 1244; s.pc = 14; return s.tmp_0;
+  case 14:
+    r0 = s.retval;
+  case 1:
+  case 2:
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+microcode_Screen_outlineBoundsXfrm__P3542.info = {"start":5464,"length":1241,"line":202,"column":8,"endLine":233,"endColumn":9,"fileName":"screen.ts","functionName":"outlineBoundsXfrm","argumentNames":["xfrm","bounds","dist","c"]}
+
+function microcode_Screen_outlineBoundsXfrm__P3542_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: microcode_Screen_outlineBoundsXfrm__P3542, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  left___16914: undefined,
+  top___16921: undefined,
+  right___16928: undefined,
+  bottom___16935: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+  arg3: undefined,
 } }
 
 
@@ -52565,20 +52566,23 @@ switch (step) {
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_3 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_3, "label", "flashing heart");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_3, "ariaId", "N2");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_3, "src", "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S4\"],\"A\":[\"A5\"],\"M\":[\"M15(0101010101100010101000100)\",\"M15(0000000000000000000000000)\"]},{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[]}]}]}}");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_3, "icon", "flashing_heart");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_3);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_4 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_4, "label", "rock, paper, scissors");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_4, "src", "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S3\"],\"A\":[\"A7\"],\"M\":[\"M8\",\"M20A\"]},{\"S\":[\"S9A\"],\"A\":[\"A5\"],\"F\":[\"F8\"],\"M\":[\"M15(0000001110011100111000000)\"]},{\"S\":[\"S9A\"],\"A\":[\"A5\"],\"F\":[\"F9\"],\"M\":[\"M15(1111110001100011000111111)\"]},{\"S\":[\"S9A\"],\"A\":[\"A5\"],\"F\":[\"F10\"],\"M\":[\"M15(1000101010001001101111011)\"]},{},{}]},{\"R\":[{}]},{\"R\":[{}]},{\"R\":[{}]},{}]}}");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_4, "icon", "rock_paper_scissors");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_4, "label", "smiley buttons");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_4, "ariaId", "N3");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_4, "src", "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S2\"],\"A\":[\"A5\"],\"F\":[\"F3\"],\"M\":[\"M15(1101111011000001000101110)\"]},{\"S\":[\"S2\"],\"A\":[\"A5\"],\"F\":[\"F4\"],\"M\":[\"M15(1101111011000000111010001)\"]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{}]}}");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_4, "icon", "smiley_buttons");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_4);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_5 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_5, "label", "smiley buttons");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_5, "src", "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S2\"],\"A\":[\"A5\"],\"F\":[\"F3\"],\"M\":[\"M15(1101111011000001000101110)\"]},{\"S\":[\"S2\"],\"A\":[\"A5\"],\"F\":[\"F4\"],\"M\":[\"M15(1101111011000000111010001)\"]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{}]}}");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_5, "icon", "smiley_buttons");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_5, "label", "rock, paper, scissors");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_5, "ariaId", "N8");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_5, "src", "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S3\"],\"A\":[\"A7\"],\"M\":[\"M8\",\"M20A\"]},{\"S\":[\"S9A\"],\"A\":[\"A5\"],\"F\":[\"F8\"],\"M\":[\"M15(0000001110011100111000000)\"]},{\"S\":[\"S9A\"],\"A\":[\"A5\"],\"F\":[\"F9\"],\"M\":[\"M15(1111110001100011000111111)\"]},{\"S\":[\"S9A\"],\"A\":[\"A5\"],\"F\":[\"F10\"],\"M\":[\"M15(1000101010001001101111011)\"]},{},{}]},{\"R\":[{}]},{\"R\":[{}]},{\"R\":[{}]},{}]}}");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_5, "icon", "rock_paper_scissors");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_5);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_6 = r0;
@@ -52612,7 +52616,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_samples__P3921.info = {"start":26,"length":3918,"line":1,"column":4,"endLine":59,"endColumn":5,"fileName":"samples.ts","functionName":"samples","argumentNames":[]}
+microcode_samples__P3921.info = {"start":26,"length":4008,"line":1,"column":4,"endLine":62,"endColumn":5,"fileName":"samples.ts","functionName":"samples","argumentNames":[]}
 
 function microcode_samples__P3921_mk(s) {
     checkStack(s.depth);
@@ -54719,7 +54723,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-accessibility_tileAccessibilityMessage_constructor__P2977.info = {"start":3448,"length":173,"line":136,"column":8,"endLine":140,"endColumn":9,"fileName":"accessibility.ts","functionName":"inline","argumentNames":["this","tileId"]}
+accessibility_tileAccessibilityMessage_constructor__P2977.info = {"start":3483,"length":173,"line":137,"column":8,"endLine":141,"endColumn":9,"fileName":"accessibility.ts","functionName":"inline","argumentNames":["this","tileId"]}
 
 function accessibility_tileAccessibilityMessage_constructor__P2977_mk(s) {
     checkStack(s.depth);
@@ -54780,7 +54784,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-accessibility_ruleAccessibilityMessage_constructor__P2981.info = {"start":3851,"length":321,"line":149,"column":8,"endLine":158,"endColumn":9,"fileName":"accessibility.ts","functionName":"inline","argumentNames":["this","dos","whens"]}
+accessibility_ruleAccessibilityMessage_constructor__P2981.info = {"start":3886,"length":321,"line":150,"column":8,"endLine":159,"endColumn":9,"fileName":"accessibility.ts","functionName":"inline","argumentNames":["this","dos","whens"]}
 
 function accessibility_ruleAccessibilityMessage_constructor__P2981_mk(s) {
     checkStack(s.depth);
