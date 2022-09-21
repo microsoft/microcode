@@ -186,8 +186,6 @@ namespace microcode {
 
         public occlusions(bounds: Bounds) {
             return this.icon.occlusions(bounds)
-            //return new Bounds();
-            //return new Occlusions(0, 0, 0, 0)
         }
 
         public setVisible(visible: boolean) {
