@@ -7,7 +7,6 @@ const inIFrame = (() => {
         return typeof window !== "undefined"
     }
 })()
-const webUsb = (() => typeof navigator !== "undefined" && !!navigator.webUsb)()
 
 let bus
 let connectEl
@@ -23,7 +22,7 @@ const refreshUI = () => {
 }
 
 // to support downloading directly to device
-if (!inIFrame && webUsb)
+if (!inIFrame)
     document.addEventListener("DOMContentLoaded", () => {
         const script = document.createElement("script")
         script.setAttribute("type", "text/javascript")
