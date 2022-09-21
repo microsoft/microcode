@@ -62,7 +62,7 @@ namespace accessibility {
         A4: "music",
         A5: "paint",
         A6: "radio send",
-        A7: "random from 1 to ...",
+        A7: "random number",
 
         M1: "page 1",
         M2: "page 2",
