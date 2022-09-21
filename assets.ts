@@ -66,7 +66,7 @@ namespace microcode {
             this.reg[TID_FILTER_QUIET] = icondb.speakerQuiet
 
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
-            this.reg[TID_ACTUATOR_PAINT] = icondb.paint
+            this.reg[TID_ACTUATOR_PAINT] = icondb.showScreen
             this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
             this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
             this.reg[TID_ACTUATOR_SPEAKER] = icondb.speaker
@@ -646,6 +646,25 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+    export const showScreen = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . 2 4 . .
+        . . . . 2 . . . . . . 2 4 4 2 .
+        . . . . 2 . . . . . 2 4 4 2 e .
+        . 2 . . 2 . . . . 2 4 4 2 e b .
+        . . 2 . 2 . . . 2 4 4 2 e b . .
+        . . . . . . . d 4 4 2 e b . . .
+        . . f f f f f d d 2 e b . . . .
+        . . f f f f f 2 d d b . . . . .
+        . . f f 2 f 2 f f b . . . . . .
+        . . f f f f f f f b . 2 2 2 2 .
+        . . f 2 f f f 2 f b . . . . . .
+        . . f f 2 2 2 f f b . 2 . . . .
+        . . f f f f f f f b . . 2 . . .
+        . . . b b b b b b b . . . . . .
+        . . . . . . . . . . . . . . . .
+`
+    
 
     ///
     /// BUTTON BACKGROUNDS
@@ -2037,7 +2056,26 @@ f f f f f f f f f f f f f f f f
     ..bb111111111111111111111111bb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
-
+export const settingsGear = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . d d . . . . . . .
+    . . . d d . d b b c . d d . . .
+    . . d b b c d b b c d b b c . .
+    . . d b b b b b b b b b b c . .
+    . . . c b d b c c b d b c . . .
+    . . d d b b c . . c b b d d . .
+    . d b b b c . . . . c b b b c .
+    . d b b b c . . . . c b b b c .
+    . . c c b b c . . c b b c c . .
+    . . . d b d b c c b d b c . . .
+    . . d b b b b b b b b b b c . .
+    . . d b b c c b b c c b b c . .
+    . . . c c . c b b c . c c . . .
+    . . . . . . . c c . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+    
+    
 /* maybe use these later
     export const rc_high = img`
         . . . . . . . . . . . . . . . .
