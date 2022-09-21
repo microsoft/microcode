@@ -1,8 +1,7 @@
 namespace microcode {
-
     export type ButtonStyle = {
         fill: number
-        borders: { top: number; bottom: number; left: number; right: number },
+        borders: { top: number; bottom: number; left: number; right: number }
         shadow: boolean
     }
 
@@ -10,49 +9,47 @@ namespace microcode {
         export const ShadowedWhite: ButtonStyle = {
             fill: 1,
             borders: { top: 1, bottom: 12, left: 1, right: 1 },
-            shadow: true
-        };
+            shadow: true,
+        }
         export const FlatWhite: ButtonStyle = {
             fill: 1,
             borders: { top: 1, bottom: 1, left: 1, right: 1 },
-            shadow: false
-        };
+            shadow: false,
+        }
         export const BorderedPurple: ButtonStyle = {
             fill: 11,
             borders: { top: 12, bottom: 12, left: 12, right: 12 },
-            shadow: false
-        };
+            shadow: false,
+        }
         export const Transparent: ButtonStyle = {
             fill: 0,
             borders: { top: 0, bottom: 0, left: 0, right: 0 },
-            shadow: false
+            shadow: false,
         }
-
     }
 
-
     export function borderLeft(style: ButtonStyle) {
-        return style.borders.left ? 1 : 0;
+        return style.borders.left ? 1 : 0
     }
 
     export function borderTop(style: ButtonStyle) {
-        return style.borders.top ? 1 : 0;
+        return style.borders.top ? 1 : 0
     }
 
     export function borderRight(style: ButtonStyle) {
-        return style.borders.right ? 1 : 0;
+        return style.borders.right ? 1 : 0
     }
 
     export function borderBottom(style: ButtonStyle) {
-        return style.borders.bottom ? 1 : 0;
+        return style.borders.bottom ? 1 : 0
     }
 
     export function borderWidth(style: ButtonStyle) {
-        return borderLeft(style) + borderRight(style);
+        return borderLeft(style) + borderRight(style)
     }
 
     export function borderHeight(style: ButtonStyle) {
-        return borderTop(style) + borderBottom(style);
+        return borderTop(style) + borderBottom(style)
     }
 
     export class Button extends Component implements ISizable, IPlaceable {
@@ -88,14 +85,20 @@ namespace microcode {
             )
         }
 
-        public get aria(): { type: "id", value: string } | { type: "rule", whens: string[], dos: string[] } {
+        public get aria():
+            | { type: "id"; value: string }
+            | { type: "rule"; whens: string[]; dos: string[] } {
             return { type: "id", value: this.ariaId }
         }
 
         public get hitbox() {
             // Returns bounds of non-transparent pixels in world space
             // This can go away once quadtree is no longer used
-            return Bounds.GrowXY(this.icon.hitbox, borderWidth(this.style) * 2, borderHeight(this.style) * 2);
+            return Bounds.GrowXY(
+                this.icon.hitbox,
+                borderWidth(this.style) * 2,
+                borderHeight(this.style) * 2
+            )
         }
 
         public get bounds() {
@@ -169,18 +172,22 @@ namespace microcode {
                         ? icons.get(this.iconId)
                         : this.iconId,
             })
-            this.icon.xfrm.parent = this.xfrm;
+            this.icon.xfrm.parent = this.xfrm
             //this.icon.xfrm.localPos.x = borderLeft(this.style);
             //this.icon.xfrm.localPos.y = borderTop(this.style);
-            
+
             // This isn't quite right, but it's close enough for now
-            this.bounds_ = Bounds.GrowXY(this.icon.bounds, borderLeft(this.style), borderTop(this.style));
+            this.bounds_ = Bounds.GrowXY(
+                this.icon.bounds,
+                borderLeft(this.style),
+                borderTop(this.style)
+            )
         }
 
         public occlusions(bounds: Bounds) {
-            //return this.hitbox.occlusions(bounds);
+            return this.icon.occlusions(bounds)
             //return new Bounds();
-            return new Occlusions(0, 0, 0, 0)
+            //return new Occlusions(0, 0, 0, 0)
         }
 
         public setVisible(visible: boolean) {
@@ -239,10 +246,24 @@ namespace microcode {
 
         /* override */ draw() {
             Screen.fillBoundsXfrm(this.xfrm, this.icon.bounds, this.style.fill)
-            Screen.outlineBoundsXfrm4(this.xfrm, this.icon.bounds, this.style.borders)
+            Screen.outlineBoundsXfrm4(
+                this.xfrm,
+                this.icon.bounds,
+                this.style.borders
+            )
             if (this.style.shadow) {
-                Screen.setPixelXfrm(this.xfrm, this.icon.bounds.left - 1, this.icon.bounds.bottom, this.style.borders.bottom);
-                Screen.setPixelXfrm(this.xfrm, this.icon.bounds.right + 1, this.icon.bounds.bottom, this.style.borders.bottom);
+                Screen.setPixelXfrm(
+                    this.xfrm,
+                    this.icon.bounds.left - 1,
+                    this.icon.bounds.bottom,
+                    this.style.borders.bottom
+                )
+                Screen.setPixelXfrm(
+                    this.xfrm,
+                    this.icon.bounds.right + 1,
+                    this.icon.bounds.bottom,
+                    this.style.borders.bottom
+                )
             }
             this.icon.draw()
             //const iconbounds = Bounds.Translate(this.icon.bounds, this.icon.xfrm.worldPos);
