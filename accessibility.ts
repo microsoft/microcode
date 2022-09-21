@@ -42,8 +42,9 @@ namespace accessibility {
         F10: "value 3",
         F11: "value 4",
         F12: "value 5",
-        F13: "timespan short",
-        F14: "timespan long",
+        F13: "1/4 second",
+        F14: "1 second",
+        F18: "1 random second",
         F15: "loud",
         F16: "quiet",
         F17: "accelerometer",
@@ -90,6 +91,8 @@ namespace accessibility {
         M19spring: "spring",
         M19twinkle: "twinkle",
         M19yawn: "yawn",
+
+        N0: "new program",
     }
     export function ariaToTooltip(ariaId: string) {
         const s = (liveStrings[ariaId] || "").replace("_", " ")

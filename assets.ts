@@ -56,6 +56,7 @@ namespace microcode {
             this.reg[TID_FILTER_BUTTON_B] = icondb.tile_button_b
             this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short
             this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long
+            this.reg[TID_FILTER_TIMESPAN_RANDOM] = icondb.tile_timespan_random
             this.reg[TID_FILTER_VALUE_1] = icondb.tile_value_1
             this.reg[TID_FILTER_VALUE_2] = icondb.tile_value_2
             this.reg[TID_FILTER_VALUE_3] = icondb.tile_value_3
@@ -66,7 +67,7 @@ namespace microcode {
             this.reg[TID_FILTER_QUIET] = icondb.speakerQuiet
 
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
-            this.reg[TID_ACTUATOR_PAINT] = icondb.paint
+            this.reg[TID_ACTUATOR_PAINT] = icondb.showScreen
             this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
             this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
             this.reg[TID_ACTUATOR_SPEAKER] = icondb.speaker
@@ -646,6 +647,25 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+    export const showScreen = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . 2 4 . .
+        . . . . 2 . . . . . . 2 4 4 2 .
+        . . . . 2 . . . . . 2 4 4 2 e .
+        . 2 . . 2 . . . . 2 4 4 2 e b .
+        . . 2 . 2 . . . 2 4 4 2 e b . .
+        . . . . . . . d 4 4 2 e b . . .
+        . . f f f f f d d 2 e b . . . .
+        . . f f f f f 2 d d b . . . . .
+        . . f f 2 f 2 f f b . . . . . .
+        . . f f f f f f f b . 2 2 2 2 .
+        . . f 2 f f f 2 f b . . . . . .
+        . . f f 2 2 2 f f b . 2 . . . .
+        . . f f f f f f f b . . 2 . . .
+        . . . b b b b b b b . . . . . .
+        . . . . . . . . . . . . . . . .
+`
+    
 
     ///
     /// BUTTON BACKGROUNDS
@@ -966,51 +986,69 @@ namespace icondb {
     `
     export const tile_timer = img`
         . . . . . . . . . . . . . . . .
-        . . . . f f f f f f f . . . . .
-        . . . f 1 1 1 1 1 1 1 f . . . .
-        . . f 1 1 b 1 b 9 b 1 1 f . . .
-        . f 1 1 1 1 1 b 9 9 9 1 1 f . .
-        . f 1 b 1 1 1 9 9 9 9 b 1 f . .
-        . f 1 1 1 1 1 9 9 9 9 9 1 f . .
-        . f 1 b b 1 1 2 2 2 2 2 1 f . .
-        . f 1 1 1 1 1 1 1 1 1 1 1 f . .
-        . f 1 b 1 1 1 1 1 1 1 b 1 f . .
-        . f 1 1 1 1 1 b 1 1 1 1 1 f . .
-        . . f 1 1 b 1 b 1 b 1 1 f . . .
-        . . . f 1 1 1 1 1 1 1 f . . . .
-        . . . . f f f f f f f . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . f . . . . . . . .
+        . . . . . b b b b b . . . . . .
+        . . . . b 1 1 1 1 1 b . . . . .
+        . . . b 1 1 1 2 1 1 1 c . . . .
+        . . b 1 1 d 1 2 1 d 1 1 c . . .
+        . . b 1 1 1 1 2 1 1 1 1 c d . .
+        . . b 1 d d 1 2 2 2 d 1 c d . .
+        . . b 1 1 1 1 1 1 1 1 1 c d . .
+        . . b 1 1 d 1 d 1 d 1 1 c d . .
+        . . . b 1 1 1 d 1 1 1 c d . . .
+        . . . . c 1 1 1 1 1 c d . . . .
+        . . . . . c c c c c d . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
     export const tile_timespan_short = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
-        . . . . . f f f f f . . . . . .
-        . . . . f 1 1 9 9 9 f . . . . .
-        . . . f 1 1 1 b 9 9 9 f . . . .
-        . . f 1 1 b 1 b 9 2 1 1 f . . .
-        . . f 1 1 1 1 9 2 1 1 1 f . . .
-        . . f 1 b b 1 2 1 b b 1 f . . .
-        . . f 1 1 1 1 1 1 1 1 1 f . . .
-        . . f 1 1 b 1 b 1 b 1 1 f . . .
-        . . . f 1 1 1 b 1 1 1 f . . . .
-        . . . . f 1 1 1 1 1 f . . . . .
-        . . . . . f f f f f . . . . . .
-        . . . . . . . . . . . . . . . .
+        . . . . . . . f . . . . . . . .
+        . . . . . b b b b b . . . . . .
+        . . . . b 1 1 9 9 9 b . . . . .
+        . . . b 1 1 1 b 9 9 9 c . . . .
+        . . b 1 1 d 1 b 9 b 9 9 c . . .
+        . . b 1 1 1 1 9 9 9 9 9 c d . .
+        . . b 1 d d 1 2 2 2 2 9 c d . .
+        . . b 1 1 1 1 1 1 1 1 1 c d . .
+        . . b 1 1 d 1 d 1 d 1 1 c d . .
+        . . . b 1 1 1 d 1 1 1 c d . . .
+        . . . . c 1 1 1 1 1 c d . . . .
+        . . . . . c c c c c d . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
     export const tile_timespan_long = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
+        . . . . . . . f . . . . . . . .
+        . . . . . b b b b b . . . . . .
+        . . . . b 1 1 9 9 9 b . . . . .
+        . . . b 1 1 1 b 9 9 9 c . . . .
+        . . b 1 1 d 1 b 9 b 9 9 c . . .
+        . . b 1 1 1 1 9 9 9 9 9 c d . .
+        . . b 9 2 2 2 2 9 b b 9 c d . .
+        . . b 9 9 9 9 9 9 9 9 9 c d . .
+        . . b 9 9 b 9 b 9 b 9 9 c d . .
+        . . . b 9 9 9 b 9 9 9 c d . . .
+        . . . . c 9 9 9 9 9 c d . . . .
+        . . . . . c c c c c d . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const tile_timespan_random = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
         . . . . . f f f f f . . . . . .
         . . . . f 1 1 9 9 9 f . . . . .
         . . . f 1 1 1 b 9 9 9 f . . . .
-        . . f 1 1 b 1 b 9 b 9 9 f . . .
-        . . f 1 1 1 1 9 9 9 9 9 f . . .
+        . . f 1 1 2 1 b 9 2 9 9 f . . .
+        . . f 1 1 1 2 9 2 9 9 9 f . . .
         . . f 1 b b 1 2 9 b b 9 f . . .
-        . . f 1 1 1 2 9 9 9 9 9 f . . .
-        . . f 1 1 2 9 b 9 b 9 9 f . . .
+        . . f 1 1 1 2 9 2 9 9 9 f . . .
+        . . f 1 1 2 9 b 9 2 9 9 f . . .
         . . . f 9 9 9 b 9 9 9 f . . . .
         . . . . f 9 9 9 9 9 f . . . . .
         . . . . . f f f f f . . . . . .
@@ -2037,7 +2075,26 @@ f f f f f f f f f f f f f f f f
     ..bb111111111111111111111111bb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
-
+export const settingsGear = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . d d . . . . . . .
+    . . . d d . d b b c . d d . . .
+    . . d b b c d b b c d b b c . .
+    . . d b b b b b b b b b b c . .
+    . . . c b d b c c b d b c . . .
+    . . d d b b c . . c b b d d . .
+    . d b b b c . . . . c b b b c .
+    . d b b b c . . . . c b b b c .
+    . . c c b b c . . c b b c c . .
+    . . . d b d b c c b d b c . . .
+    . . d b b b b b b b b b b c . .
+    . . d b b c c b b c c b b c . .
+    . . . c c . c b b c . c c . . .
+    . . . . . . . c c . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+    
+    
     const one = img`
 . . . . . .
 . . f f . .

@@ -46,6 +46,7 @@ namespace microcode {
     export const TID_FILTER_LOUD = "F15"
     export const TID_FILTER_QUIET = "F16"
     export const TID_FILTER_ACCEL = "F17"
+    export const TID_FILTER_TIMESPAN_RANDOM = "F18"
     export const TID_FILTER_ACCEL_SHAKE = "F17_shake"
     export const TID_FILTER_ACCEL_FREEFALL = "F17_freefall"
     export const TID_FILTER_ACCEL_TILT_UP = "F17_tilt_up"
@@ -198,6 +199,7 @@ namespace microcode {
     }
     addTimespan(TID_FILTER_TIMESPAN_SHORT, "short", 250)
     addTimespan(TID_FILTER_TIMESPAN_LONG, "long", 1000)
+    addTimespan(TID_FILTER_TIMESPAN_RANDOM, "random", -1000)
 
     const accel = new SensorDefn(
         TID_SENSOR_ACCELEROMETER,
@@ -302,10 +304,12 @@ namespace microcode {
         tilesDB.modifiers[tid] = emoji_mod
     })
 
+    /*
     const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "music_editor")
     buzzer.serviceClassName = "buzzer"
     buzzer.serviceCommand = 0x80
     buzzer.priority = 30
+    */
 
     const make_vals = (name: string, kind: string, start: number) => {
         for (let v = 1; v <= 5; v++) {

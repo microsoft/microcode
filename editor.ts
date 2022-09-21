@@ -123,6 +123,11 @@ namespace microcode {
 
             if (!target) return
 
+            if (target.destroyed) {
+                console.warn(`scroll/move destroyed sprite '${target.id} ${target.ariaId}'`)
+                return
+            }
+
             if (target.rootXfrm.tag === "hud") {
                 this.cursor.moveTo(
                     target.xfrm.worldPos,
