@@ -53,6 +53,8 @@ namespace microcode {
 
         public renderProgram() {
             this.cursor.visible = false
+
+            console.log(`program: render`)
             let imgs: Image[] = []
             let w = 0
             let h = 0
@@ -74,7 +76,7 @@ namespace microcode {
                     h += img.height + margin
                 }
             }
-            this.cursor.visible = true
+            console.log(`program: ${w}x${h} pixels`)
             const res = image.create(w, h)
             res.fill(this.color)
             let y = 0
@@ -83,6 +85,8 @@ namespace microcode {
                 res.drawTransparentImage(img, 0, y)
                 y += img.height + margin
             }
+
+            this.cursor.visible = true
             return res
         }
 
