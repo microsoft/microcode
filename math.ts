@@ -153,6 +153,12 @@ namespace microcode {
             return ref
         }
 
+        public static LerpToRef(a: Vec2, b: Vec2, t: number, ref: Vec2): Vec2 {
+            ref.x = lerp(a.x, b.x, t);
+            ref.y = lerp(a.y, b.y, t);
+            return ref;
+        }
+
         public static RandomRangeToRef(
             xmin: number,
             xmax: number,
@@ -168,5 +174,9 @@ namespace microcode {
         public toString(): string {
             return `Vec2(x:${this.x},y:${this.y})`
         }
+    }
+
+    export function lerp(a: number, b: number, t: number): number {
+        return a + (b - a) * t
     }
 }

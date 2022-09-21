@@ -39,11 +39,13 @@ namespace microcode {
         private _changed: boolean
         private hudroot: Placeable
         private scrollroot: Placeable
-        private scrollanim: Animation
+        private scrollStartMs: number
+        private scrollDest: Vec2
         public picker: Picker
 
         constructor(app: App) {
             super(app, "editor")
+            this.scrollDest = new Vec2()
             this.color = 6
         }
 
@@ -156,41 +158,30 @@ namespace microcode {
                 return
             }
 
-            const occ = target.occlusions(
-                new Bounds({
-                    left: Screen.LEFT_EDGE,
-                    top: Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2,
-                    width: Screen.WIDTH,
-                    height: Screen.HEIGHT - (TOOLBAR_HEIGHT + 2),
-                })
-            )
+            const occBounds = new Bounds({
+                left: Screen.LEFT_EDGE,
+                top: Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2,
+                width: Screen.WIDTH,
+                height: Screen.HEIGHT - (TOOLBAR_HEIGHT + 2),
+            })
+            const occ = target.occlusions(occBounds);
+
             if (occ.has) {
-                if (this.scrollanim.playing) {
-                    return
-                }
+                if (this.scrollroot.xfrm.localPos.x !== this.scrollDest.x)
+                    return // Already animating
+                this.scrollStartMs = control.millis()
                 const xocc = occ.left ? occ.left : -occ.right
                 const yocc = occ.top ? occ.top : -occ.bottom
-                const endValue = Vec2.TranslateToRef(
+                Vec2.TranslateToRef(
                     this.scrollroot.xfrm.localPos,
                     new Vec2(xocc, yocc),
-                    new Vec2()
+                    this.scrollDest
                 )
-                this.scrollanim.clearFrames()
-                this.scrollanim.addFrame(
-                    new EaseFrame({
-                        duration: 0.05,
-                        //curve: curves.easeOut(curves.easing.sq2),
-                        curve: curves.linear(),
-                        startValue: this.scrollroot.xfrm.localPos,
-                        endValue,
-                    })
-                )
-                this.scrollanim.start()
-                const dest = new Vec2(
+                const cursorDest = new Vec2(
                     target.xfrm.worldPos.x + xocc,
                     target.xfrm.worldPos.y + yocc
                 )
-                this.cursor.moveTo(dest, target.ariaId, target.bounds)
+                this.cursor.moveTo(cursorDest, target.ariaId, target.bounds)
             } else {
                 this.cursor.moveTo(
                     target.xfrm.worldPos,
@@ -241,12 +232,8 @@ namespace microcode {
                 Screen.LEFT_EDGE,
                 Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2
             )
-            this.scrollanim = new Animation(
-                (v: Vec2) => this.scrollAnimCallback(v),
-                {
-                    done: () => this.scrollAnimComplete(),
-                }
-            )
+            this.scrollDest.copyFrom(this.scrollroot.xfrm.localPos)
+            this.scrollStartMs = 0
             this.cursor = new Cursor()
             this.picker = new Picker(this.cursor)
             this.currPage = 0
@@ -311,15 +298,9 @@ namespace microcode {
             this.cursor.navigator = this.navigator
         }
 
-        private scrollAnimCallback(v: Vec2) {
-            this.scrollroot.xfrm.localPos = v
-        }
-
-        private scrollAnimComplete() {
-            this.changed()
-        }
-
         /* override */ update() {
+            super.update()
+
             if (this.pageEditor) {
                 this.pageEditor.update()
             }
@@ -327,7 +308,22 @@ namespace microcode {
                 this._changed = false
                 this.rebuildNavigator()
             }
-            this.scrollanim.update()
+
+            const currTimeMs = control.millis()
+            const elapsedTimeMs = currTimeMs - this.scrollStartMs
+            const pctTime = elapsedTimeMs / 50
+
+            if (pctTime < 1) {
+                Vec2.LerpToRef(
+                    this.scrollroot.xfrm.localPos,
+                    this.scrollDest,
+                    pctTime,
+                    this.scrollroot.xfrm.localPos
+                )
+            } else {
+                this.scrollroot.xfrm.localPos.copyFrom(this.scrollDest)
+            }
+
             this.cursor.update()
         }
 
