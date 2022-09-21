@@ -39,7 +39,8 @@
         "navigator.ts",
         "cursorscene.ts",
         "options.ts",
-        "samples.ts"
+        "samples.ts",
+        "docs.ts"
     ],
     "testFiles": [],
     "targetVersions": {

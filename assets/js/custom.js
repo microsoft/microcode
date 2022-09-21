@@ -262,3 +262,73 @@ addSimMessageHandler("accessibility", data => {
     console.log(`live region: ${value}`)
     liveRegion.textContent = value
 })
+
+function hexToUint8Array(hex) {
+    const bytes = new Uint8Array(Math.ceil(hex.length / 2));
+    for (let i = 0; i < bytes.length; i++) bytes[i] = parseInt(hex.substr(i * 2, 2), 16);
+    return bytes
+}
+
+async function delay(ms = 100) {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms)
+    })
+}
+
+const palette = [
+    "#000000",
+    "#ffffff",
+    "#ff2121",
+    "#ff93c4",
+    "#ff8135",
+    "#fff609",
+    "#249ca3",
+    "#78dc52",
+    "#003fad",
+    "#87f2ff",
+    "#8e2ec4",
+    "#a4839f",
+    "#5c406c",
+    "#e5cdc4",
+    "#91463d",
+    "#000000"
+]  
+function imgToPng(hex) {
+    const canvas = document.createElement("canvas")
+    const ctx = canvas.getContext("2d")
+
+    const pixels = hexToUint8Array(hex)
+    const w = pixels[0]
+    const h = (pixels.length - 1) / w
+    canvas.width = w
+    canvas.height = h
+    let j = 1
+    for (let x = 0; x < w; ++x) {
+        for (let y = 0; y < h; ++y) {
+            const c = pixels[j++]
+            ctx.fillStyle = palette[c]
+            ctx.fillRect(x, y, 1, 1)
+        }
+    }
+    const png = canvas.toDataURL("image/png")    
+    return png
+}
+
+addSimMessageHandler("docs", async data => {
+    const msg = uint8ArrayToString(data)
+    const jsg = JSON.parse(msg)
+
+    switch (jsg.type) {
+        case 'image': {
+            const name = jsg.name
+            const png = imgToPng(jsg.pixels)
+            const a = document.createElement("a")
+            a.setAttribute("href", png)
+            a.setAttribute("download", `${name}.png`)
+            document.body.append(a)
+            a.click()
+
+            await delay()
+        }
+    }
+})

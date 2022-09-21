@@ -25,6 +25,7 @@ namespace microcode {
         ariaId: string
         size: Bounds
         cycle: number
+        visible = true
 
         public get xfrm() {
             return this.xfrm_
@@ -128,6 +129,8 @@ namespace microcode {
         }
 
         /* override */ draw() {
+            if (!this.visible) return
+            
             const text = accessibility.ariaToTooltip(this.ariaId)
             if (text) {
                 const n = text.length
