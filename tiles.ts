@@ -464,7 +464,7 @@ namespace microcode {
         init: { upper: 3 },
         clone: (field: RandomUpper) => {
             return {
-                note: field.upper,
+                upper: field.upper,
             }
         },
         editor: randomEditor,
