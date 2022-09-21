@@ -1,12 +1,7 @@
 namespace microcode {
-    const STORED_SAMPLES =
-        ["{\"progdef\":{\"P\":[{\"R\":[{\"S\":[],\"A\":[\"A5\"],\"M\":[\"M15(0101010101100010101000100)\"]},{\"S\":[\"S4\"],\"A\":[\"A1\"],\"M\":[\"M2\"]}]},{\"R\":[{\"S\":[],\"A\":[\"A5\"],\"M\":[\"M15(0000000000000000000000000)\"]},{\"S\":[\"S4\"],\"A\":[\"A1\"],\"M\":[\"M1\"]},{\"S\":[],\"A\":[]}]},{},{},{}]}}",
-            "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S2\"],\"A\":[\"A5\"],\"F\":[\"F3\"],\"M\":[\"M15(1101111011000001000101110)\"]},{\"S\":[\"S2\"],\"A\":[\"A5\"],\"F\":[\"F4\"],\"M\":[\"M15(1101111011000000111010001)\"]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[]}]},{}]}}"]
-    
     export class Home extends CursorScene {
         editBtn: Button
-        sampleBtn: Button
-        sampleBtn2: Button
+        sampleBtns: Button[]
 
         constructor(app: App) {
             super(app)
@@ -35,34 +30,51 @@ namespace microcode {
                     this.app.pushScene(new Editor(this.app))
                 },
             })
-            this.sampleBtn = new Button({
-                parent: null,
-                style: ButtonStyles.FlatWhite,
-                icon: "plus",
-                ariaId: "flashing heart sample",
-                x: 0,
-                y: 32,
-                onClick: () => {
-                    settings.writeString(SAVESLOT_AUTO, STORED_SAMPLES[0])
-                    this.app.popScene()
-                    this.app.pushScene(new Editor(this.app))
+
+            const STORED_SAMPLES: {
+                label: string
+                ariaId?: string
+                src: string
+            }[] = [
+                {
+                    label: "new program",
+                    ariaId: "N0",
+                    src: '{"progdef":{"P":[{"R":[{"S":[],"A":[]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
                 },
-            })
-            this.sampleBtn2 = new Button({
-                parent: null,
-                style: ButtonStyles.FlatWhite,
-                icon: "plus",
-                ariaId: "smiley buttons sample",
-                x: 26,
-                y: 32,
-                onClick: () => {
-                    settings.writeString(SAVESLOT_AUTO, STORED_SAMPLES[1])
-                    this.app.popScene()
-                    this.app.pushScene(new Editor(this.app))
+                {
+                    label: "flashing heart",
+                    src: '{"progdef":{"P":[{"R":[{"S":[],"A":["A5"],"M":["M15(0101010101100010101000100)"]},{"S":["S4"],"A":["A1"],"M":["M2"]}]},{"R":[{"S":[],"A":["A5"],"M":["M15(0000000000000000000000000)"]},{"S":["S4"],"A":["A1"],"M":["M1"]},{"S":[],"A":[]}]},{},{},{}]}}',
                 },
+                {
+                    label: "smiley buttons",
+                    src: '{"progdef":{"P":[{"R":[{"S":["S2"],"A":["A5"],"F":["F3"],"M":["M15(1101111011000001000101110)"]},{"S":["S2"],"A":["A5"],"F":["F4"],"M":["M15(1101111011000000111010001)"]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
+                },
+            ]
+
+            const btns: Button[] = [this.editBtn]
+            const y = 32
+            let x = 0
+            this.sampleBtns = STORED_SAMPLES.map(sample => {
+                const btn = new Button({
+                    parent: null,
+                    style: ButtonStyles.FlatWhite,
+                    icon: "plus",
+                    label: sample.label,
+                    ariaId: sample.ariaId,
+                    x,
+                    y,
+                    onClick: () => {
+                        settings.writeString(SAVESLOT_AUTO, sample.src)
+                        this.app.popScene()
+                        this.app.pushScene(new Editor(this.app))
+                    },
+                })
+                x += 26
+                btns.push(btn)
+                return btn
             })
 
-            this.navigator.addButtons([this.editBtn, this.sampleBtn, this.sampleBtn2])
+            this.navigator.addButtons(btns)
         }
 
         /* override */ shutdown() {
@@ -112,8 +124,7 @@ namespace microcode {
                 Screen.TOP_EDGE + 50 - wordLogo.height + dx + this.yOffset
             )
             this.editBtn.draw()
-            this.sampleBtn.draw()
-            this.sampleBtn2.draw()
+            this.sampleBtns.forEach(btn => btn.draw())
             super.draw()
         }
     }

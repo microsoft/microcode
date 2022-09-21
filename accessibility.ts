@@ -90,6 +90,8 @@ namespace accessibility {
         M19spring: "spring",
         M19twinkle: "twinkle",
         M19yawn: "yawn",
+
+        N0: "new program",
     }
     export function ariaToTooltip(ariaId: string) {
         const s = (liveStrings[ariaId] || "").replace("_", " ")
