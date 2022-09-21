@@ -31,7 +31,6 @@ if (!inIFrame)
         script.setAttribute("type", "text/javascript")
         script.setAttribute("src", "https://unpkg.com/jacdac-ts/dist/jacdac.js")
         script.onload = () => {
-            console.log(`jacdac: init...`)
             connectEl = document.createElement("button")
             connectEl.id = "connectbtn"
             connectEl.tabIndex = "0"
@@ -78,7 +77,6 @@ addSimMessageHandler("jacscript", async data => {
         const services = bus.services({
             serviceClass: jacdac.SRV_JACSCRIPT_MANAGER,
         })
-        console.log({ services })
         for (const service of services) {
             console.debug(`jacscript: deploying to ${service}`)
             try {
