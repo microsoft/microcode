@@ -275,13 +275,6 @@ namespace microcode {
     paint.serviceInstanceIndex = 0
     paint.priority = 10
 
-    const random_toss = addActuator(
-        TID_ACTUATOR_RANDOM_TOSS,
-        "Toss",
-        "value_out"
-    )
-    random_toss.priority = 70
-
     const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
     radio_send.priority = 100
 
@@ -469,4 +462,70 @@ namespace microcode {
     }
 
     tilesDB.modifiers[TID_MODIFIER_MUSIC_EDITOR] = new MusicEditor()
+
+    export type RandomUpper = { upper: number }
+    const randomFieldEditor: FieldEditor = {
+        init: { upper: 3 },
+        clone: (field: RandomUpper) => {
+            return {
+                upper: field.upper,
+            }
+        },
+        editor: randomEditor,
+        toImage: upperToImage,
+        buttonStyle: () => ButtonStyles.ShadowedWhite,
+        serialize: (field: RandomUpper) => field.upper.toString(),
+        deserialize: (upper: string) => {
+            return { upper: parseInt(upper) }
+        },
+    }
+
+    class RandomEditor extends ActuatorDefn {
+        field: RandomUpper
+        first: boolean
+        constructor(field: RandomUpper = null) {
+            super(TID_ACTUATOR_RANDOM_TOSS, "Toss")
+            this.fieldEditor = randomFieldEditor
+            if (field) {
+                this.field = { upper: field.upper }
+            } else {
+                this.field = this.fieldEditor.clone(this.fieldEditor.init)
+            }
+            this.priority = 70
+            this.first = false
+            // TODO constraints
+        }
+
+        getField() {
+            return this.field
+        }
+
+        getIcon(): string | Image {
+            return this.first ? this.tid : this.fieldEditor.toImage(this.field)
+        }
+
+        getNewInstance(field: RandomUpper) {
+            return new RandomEditor({
+                upper: field ? field.upper : this.field.upper,
+            })
+        }
+
+        serviceCommandArg() {
+            const r = Buffer.create(6)
+            return r
+        }
+    }
+
+    const random_toss = addActuator(
+        TID_ACTUATOR_RANDOM_TOSS,
+        "Toss",
+        "value_out"
+    )
+    random_toss.priority = 70
+
+    /*
+    const first_random = new RandomEditor()
+    tilesDB.actuators[TID_ACTUATOR_RANDOM_TOSS] = first_random
+    first_random.first = true
+    */
 }

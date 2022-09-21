@@ -16,7 +16,7 @@ namespace microcode {
             for (let col = 0; col < 5; col++) {
                 btns.push({
                     icon: getColor(col, row),
-                    style: ButtonStyles.BorderedPurple
+                    style: ButtonStyles.BorderedPurple,
                 })
             }
             picker.addGroup({ label: row.toString(), btns })
@@ -108,5 +108,36 @@ namespace microcode {
             },
             false
         )
+    }
+
+    export function upperToImage(field: RandomUpper): Image {
+        const die = icondb.diceToss.clone()
+        die.drawTransparentImage(icondb.oneToFive[field.upper - 1], 0, 0)
+        return die
+    }
+
+    export function randomEditor(
+        field: RandomUpper,
+        picker: Picker,
+        onHide: () => void,
+        onDelete: () => void
+    ) {
+        let btns: PickerButtonDef[] = []
+        for (let upper = 2; upper < 6; upper++) {
+            btns.push({
+                icon: upperToImage({ upper }),
+                style: ButtonStyles.FlatWhite,
+            })
+        }
+        picker.addGroup({ label: "", btns })
+
+        picker.show({
+            onClick: (iconId: any, button: PickerButton) => {
+                const index = picker.groups[0].buttons.indexOf(button)
+                field.upper = 2 + index
+            },
+            onHide,
+            onDelete,
+        })
     }
 }

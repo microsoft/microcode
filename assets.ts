@@ -38,6 +38,12 @@ namespace microcode {
             this.reg["rule_handle"] = icondb.rule_handle
             this.reg["paint"] = icondb.paint
             this.reg["MISSING"] = icondb.MISSING
+            this.reg["flashing_heart"] = icondb.sampleFlashingHeart
+            this.reg["smiley_buttons"] = icondb.sampleSmileyButtons
+            this.reg["clap_lights"] = icondb.sampleClapLights
+            this.reg["dice"] = icondb.sampleDice
+            this.reg["rock_paper_scissors"] = icondb.sampleRockPaperScissors
+            this.reg["teleport_duck"] = icondb.sampleTeleportDuck
 
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
@@ -2095,7 +2101,61 @@ export const settingsGear = img`
 `
     
     
-/* maybe use these later
+    const one = img`
+. . . . . .
+. . f f . .
+. f f f . .
+. . f f . .
+. . f f . .
+. . f f . .
+. f f f f .
+. . . . . .
+`
+
+    const two = img`
+. . . . . .
+. . f f . .
+. f . . f .
+. . . . f .
+. . f f . .
+. f f . . .
+. f f f f .
+. . . . . .
+`
+    const three = img`
+. . . . . .
+. f f f . .
+. . . . f .
+. . f f f .
+. . . . f .
+. . . . f .
+. f f f . .
+. . . . . .
+`
+    const four = img`
+. . . . . .
+. f . . f .
+. f . . f .
+. f f f f .
+. . . . f .
+. . . . f .
+. . . . f .
+. . . . . .
+`
+    const five = img`
+. . . . . .
+. f f f f .
+. f . . . .
+. f f f . .
+. . . . f .
+. . . . f .
+. f f f . .
+. . . . . .
+`
+
+    export const oneToFive = [one, two, three, four, five]
+
+    /* maybe use these later
     export const rc_high = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
