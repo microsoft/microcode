@@ -164,5 +164,9 @@ namespace microcode {
             ref.y = Math.randomRange(ymin, ymax)
             return ref
         }
+
+        public toString(): string {
+            return `Vec2(x:${this.x},y:${this.y})`
+        }
     }
 }
