@@ -219,12 +219,12 @@ namespace microcode {
                     break
                 }
             }
-            
+
             let btn = this.buttonGroups[this.row][this.col]
 
             this.reportAccessibilityInfo(btn)
 
-            return btn;
+            return btn
         }
 
         public initialCursor(cursor: Cursor) {
@@ -239,7 +239,6 @@ namespace microcode {
         }
 
         reportAccessibilityInfo(btn: Button) {
-
             if (this.row == 0 && this.col == 0) {
                 let accessabilityMessage = {
                     type: "text",
@@ -250,7 +249,7 @@ namespace microcode {
                         },
                     ],
                 }
-    
+
                 accessibility.setLiveContent(accessabilityMessage)
 
                 return
@@ -260,19 +259,19 @@ namespace microcode {
             let status
 
             if (color == TID_MODIFIER_COLOR_RED) {
-                status = "checked"
+                status = "on"
             } else if (color == TID_MODIFIER_COLOR_DARKPURPLE) {
-                status = "unchecked"
+                status = "off"
             } else {
                 status = "unkown"
-            }   
+            }
 
             let accessabilityMessage = {
                 type: "text",
                 details: [
                     {
                         name: "message",
-                        values: ["row " + this.row + " column " + this.col + " status " + status],
+                        values: [`led ${this.col} ${this.row} ${status}`],
                     },
                 ],
             }
