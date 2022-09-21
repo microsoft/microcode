@@ -743,13 +743,13 @@ namespace microcode {
         public addToNavigator() {
             const btns: Button[] = []
             btns.push(this.handleBtn)
-            this.rule["sensors"].forEach(b => btns.push(b))
-            this.rule["filters"].forEach(b => btns.push(b))
+            this.rule.sensors.forEach(b => btns.push(b))
+            this.rule.filters.forEach(b => btns.push(b))
 
             if (this.whenInsertBtn) btns.push(this.whenInsertBtn)
 
-            this.rule["actuators"].forEach(b => btns.push(b))
-            this.rule["modifiers"].forEach(b => btns.push(b))
+            this.rule.actuators.forEach(b => btns.push(b))
+            this.rule.modifiers.forEach(b => btns.push(b))
 
             if (this.doInsertBtn) btns.push(this.doInsertBtn)
 
@@ -765,8 +765,8 @@ namespace microcode {
             const v = new Vec2()
             this.whenBounds = new Bounds()
 
-            const whenTiles = ruleRep["sensors"].concat(ruleRep["filters"])
-            const doTiles = ruleRep["actuators"].concat(ruleRep["modifiers"])
+            const whenTiles = ruleRep.sensors.concat(ruleRep.filters)
+            const doTiles = ruleRep.actuators.concat(ruleRep.modifiers)
             if (this.whenInsertBtn) whenTiles.push(this.whenInsertBtn)
             if (this.doInsertBtn) doTiles.push(this.doInsertBtn)
 
@@ -825,10 +825,10 @@ namespace microcode {
                 })
             }
 
-            updateSizeFromButtons(this.rule["sensors"])
-            updateSizeFromButtons(this.rule["filters"])
-            updateSizeFromButtons(this.rule["actuators"])
-            updateSizeFromButtons(this.rule["modifiers"])
+            updateSizeFromButtons(this.rule.sensors)
+            updateSizeFromButtons(this.rule.filters)
+            updateSizeFromButtons(this.rule.actuators)
+            updateSizeFromButtons(this.rule.modifiers)
             if (this.whenInsertBtn) updateSizeFromButtons([this.whenInsertBtn])
             if (this.doInsertBtn) updateSizeFromButtons([this.doInsertBtn])
 
