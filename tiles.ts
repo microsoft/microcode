@@ -17,6 +17,7 @@ namespace microcode {
     // Every tid must be unique in the set of all tids.
     export const TID_SENSOR_ALWAYS = "S1"
     export const TID_SENSOR_PRESS = "S2"
+    export const TID_SENSOR_RELEASE = "S2B"
     export const TID_SENSOR_ACCELEROMETER = "S3"
     export const TID_SENSOR_TIMER = "S4"
     export const TID_SENSOR_LIGHT = "S5"
@@ -33,7 +34,6 @@ namespace microcode {
     export const TID_FILTER_PIN_2 = "F2"
     export const TID_FILTER_BUTTON_A = "F3"
     export const TID_FILTER_BUTTON_B = "F4"
-    export const TID_FILTER_BUTTON_AB = "F5"
     // F6
     export const TID_FILTER_LOGO = "F7"
     export const TID_FILTER_VALUE_1 = "F8"
@@ -137,18 +137,23 @@ namespace microcode {
     always.hidden = true
     tilesDB.sensors[TID_SENSOR_ALWAYS] = always
 
-    const press_event = new SensorDefn(TID_SENSOR_PRESS, "press", Phase.Pre)
-    press_event.serviceClassName = "button"
-    press_event.eventCode = 0x1 // down
-    press_event.serviceInstanceIndex = 0
-    press_event.constraints = {
-        provides: ["input"],
-        allow: {
-            categories: ["press_event"],
-        },
+    function addPress(tid: string, name: string, evt: number) {
+        const press_event = new SensorDefn(tid, name, Phase.Pre)
+        press_event.serviceClassName = "button"
+        press_event.eventCode = evt
+        press_event.serviceInstanceIndex = 0
+        press_event.constraints = {
+            provides: ["input"],
+            allow: {
+                categories: ["press_event"],
+            },
+        }
+        press_event.priority = 9 + evt
+        tilesDB.sensors[tid] = press_event
     }
-    press_event.priority = 10
-    tilesDB.sensors[TID_SENSOR_PRESS] = press_event
+
+    addPress(TID_SENSOR_PRESS, "press", 1)
+    addPress(TID_SENSOR_RELEASE, "up", 2)
 
     function addPressFilter(tid: string, name: string, instanceNo: number) {
         const press_filter = new FilterDefn(tid, name, "press_event", 10)
@@ -188,10 +193,17 @@ namespace microcode {
         return tile
     }
 
+    function makePipe(tid: string, name: string, id: number) {
+        const tile = makeSensor(tid, name, "value_in", 120 + id * 5)
+        tile.jdParam = id
+        tile.serviceClassName = "pipe"
+    }
+
     makeSensor(TID_SENSOR_RADIO_RECEIVE, "Receive", "value_in", 100)
-    makeSensor(TID_SENSOR_OUT_PIPE_A, "Out of A", "value_in", 120)
-    makeSensor(TID_SENSOR_OUT_PIPE_B, "Out of A", "value_in", 125)
-    makeSensor(TID_SENSOR_OUT_PIPE_C, "Out of A", "value_in", 130)
+
+    makePipe(TID_SENSOR_OUT_PIPE_A, "Out of A", 0)
+    makePipe(TID_SENSOR_OUT_PIPE_B, "Out of B", 1)
+    makePipe(TID_SENSOR_OUT_PIPE_C, "Out of C", 2)
 
     const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
     timer.constraints = {
@@ -352,14 +364,15 @@ namespace microcode {
         tilesDB.modifiers[state_tid] = state_page
     })
 
-    const addPipeModifier = (tid: string, state: string) => {
+    const addPipeModifier = (tid: string, state: string, varid: number) => {
         const mod = new ModifierDefn(tid, state, "pipe_out", 10)
         mod.constraints = terminal
+        mod.jdParam = varid
         tilesDB.modifiers[tid] = mod
     }
-    addPipeModifier(TID_MODIFIER_PIPE_IN_A, "Into A")
-    addPipeModifier(TID_MODIFIER_PIPE_IN_B, "INto B")
-    addPipeModifier(TID_MODIFIER_PIPE_IN_C, "INto C")
+    addPipeModifier(TID_MODIFIER_PIPE_IN_A, "Into A", 0)
+    addPipeModifier(TID_MODIFIER_PIPE_IN_B, "Into B", 1)
+    addPipeModifier(TID_MODIFIER_PIPE_IN_C, "Into C", 2)
 
     const iconFieldEditor: FieldEditor = {
         init: img`

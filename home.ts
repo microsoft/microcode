@@ -35,7 +35,7 @@ namespace microcode {
                 parent: null,
                 style: ButtonStyles.BorderedPurple,
                 icon: "prev_page",
-                ariaId: "previous sample",
+                ariaId: "C0",
                 x: -32,
                 y: 40,
                 onClick: () => {
@@ -48,7 +48,7 @@ namespace microcode {
                 parent: null,
                 style: ButtonStyles.FlatWhite,
                 icon: CAROUSEL_ITEMS[this.carouselCounter].icon,
-                ariaId: "editor",
+                ariaId: "N0",
                 x: 0,
                 y: 40,
                 onClick: () => {
@@ -67,7 +67,7 @@ namespace microcode {
                 parent: null,
                 style: ButtonStyles.BorderedPurple,
                 icon: "next_page",
-                ariaId: "next sample",
+                ariaId: "C1",
                 x: 32,
                 y: 40,
                 onClick: () => {

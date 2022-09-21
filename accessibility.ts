@@ -21,6 +21,7 @@ namespace accessibility {
 
         S1: "always",
         S2: "press",
+        S2B: "release",
         S3: "accelerometer",
         S4: "timer",
         S5: "light",
@@ -34,7 +35,6 @@ namespace accessibility {
         F2: "touch pin 2",
         F3: "button A",
         F4: "button B",
-        F5: "button A + B",
         // F6
         F7: "logo",
         F8: "1",
@@ -93,7 +93,17 @@ namespace accessibility {
         M19twinkle: "twinkle",
         M19yawn: "yawn",
 
-        N0: "new program",
+        N0: "editor",
+        N1: "new program",
+        N2: "flashing heart",
+        N3: "smiley buttons",
+        N4: "pet hamster",
+        N5: "chuck a duck",
+        N6: "reaction time",
+        N7: "hot potato",
+
+        C0: "previous",
+        C1: "next",
     }
     export function ariaToTooltip(ariaId: string) {
         const s = (liveStrings[ariaId] || "").replace("_", " ")
