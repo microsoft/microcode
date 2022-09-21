@@ -52,6 +52,7 @@ namespace microcode {
         }
 
         public renderProgram() {
+            this.cursor.visible = false
             let imgs: Image[] = []
             let w = 0
             let h = 0
@@ -73,8 +74,9 @@ namespace microcode {
                     h += img.height + margin
                 }
             }
-            console.log(`program ${w}x${h}`)
+            this.cursor.visible = true
             const res = image.create(w, h)
+            res.fill(this.color)
             let y = 0
             for (let i = 0; i < imgs.length; ++i) {
                 const img = imgs[i]
