@@ -774,24 +774,23 @@ namespace microcode {
                 btns.forEach((btn, index) => {
                     if (index) {
                         v.x += btns[index - 1].width >> 1
+                        v.x += btn.width >> 1
+                        v.x += 1
                     }
-                    v.x += btn.width >> 1
-                    v.x += 1
                     btn.xfrm.localPos = v
                 })
             }
 
             layoutButtons(whenTiles)
 
+            v.x += lastWhenTile.bounds.width >> 1
             this.whenBounds.right = v.x
 
-
-            v.x += lastWhenTile.bounds.width >> 1
             v.x += this.arrow.bounds.width >> 1
             v.x += 1
 
             this.arrow.xfrm.localPos.x = v.x
-            v.x += this.arrow.bounds.width >> 1
+            v.x += this.arrow.bounds.width
             v.x += 2
 
             layoutButtons(doTiles)
