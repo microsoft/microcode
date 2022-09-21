@@ -27,8 +27,8 @@ namespace microcode {
         editor: (
             field: any,
             picker: Picker,
-            onHide?: () => void,
-            onDelete?: () => void
+            onHide: () => void,
+            onDelete: () => void
         ) => void // use picker to update field
         toImage: (field: any) => Image // produce an image for the field for tile
         buttonStyle: () => ButtonStyle
@@ -50,7 +50,7 @@ namespace microcode {
         constraints: Constraints
         fieldEditor: FieldEditor
         jdParam: any
-        
+
         getField(): any {
             return undefined
         }
@@ -64,7 +64,9 @@ namespace microcode {
         }
 
         buttonStyle(): ButtonStyle {
-            return this.fieldEditor ? this.fieldEditor.buttonStyle() : ButtonStyles.ShadowedWhite
+            return this.fieldEditor
+                ? this.fieldEditor.buttonStyle()
+                : ButtonStyles.ShadowedWhite
         }
 
         mergeConstraints(dst: Constraints) {

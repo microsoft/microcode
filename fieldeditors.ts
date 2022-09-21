@@ -112,14 +112,15 @@ namespace microcode {
 
     export function upperToImage(field: RandomUpper): Image {
         const die = icondb.diceToss.clone()
-        die.drawTransparentImage(icondb.oneToFive[field.upper - 1], 8, 8)
+        die.drawTransparentImage(icondb.oneToFive[field.upper - 1], 0, 0)
         return die
     }
 
     export function randomEditor(
         field: RandomUpper,
         picker: Picker,
-        onDelete?: () => void
+        onHide: () => void,
+        onDelete: () => void
     ) {
         let btns: PickerButtonDef[] = []
         for (let upper = 2; upper < 6; upper++) {
@@ -135,6 +136,7 @@ namespace microcode {
                 const index = picker.groups[0].buttons.indexOf(button)
                 field.upper = 2 + index
             },
+            onHide,
             onDelete,
         })
     }
