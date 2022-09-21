@@ -492,6 +492,7 @@ namespace microcode {
         rule: ButtonRuleRep
         bounds: Bounds
         whenBounds: Bounds
+        queuedCursorMove: CursorDir
 
         //% blockCombine block="xfrm" callInDebugger
         public get xfrm() {
@@ -669,7 +670,8 @@ namespace microcode {
                 this.editor.saveAndCompileProgram()
                 this.instantiateProgramTiles()
                 if (editedAdded && this.nextEmpty(name, index)) {
-                    control.raiseEvent(KEY_DOWN, controller.right.id)
+                    // Queue a move to the right
+                    this.queuedCursorMove = CursorDir.Right;
                 }
                 this.page.changed()
             }
@@ -788,6 +790,18 @@ namespace microcode {
 
         public isEmpty() {
             return this.ruledef.isEmpty()
+        }
+
+        update() {
+            if (this.queuedCursorMove) {
+                switch (this.queuedCursorMove) {
+                    case CursorDir.Right:
+                        control.raiseEvent(KEY_DOWN, controller.right.id)
+                        break
+                    // Add other cases as needed
+                }
+                this.queuedCursorMove = undefined
+            }
         }
 
         public layout() {
