@@ -616,7 +616,6 @@ namespace microcode {
         }
 
         private nextEmpty(name: string, index: number) {
-            console.log(`${name} at ${index}`)
             return (
                 (name == "sensors" &&
                     this.ruledef.filters.length == 0 &&
