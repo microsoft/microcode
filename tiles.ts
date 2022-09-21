@@ -199,11 +199,18 @@ namespace microcode {
         tile.serviceClassName = "pipe"
     }
 
-    makeSensor(TID_SENSOR_RADIO_RECEIVE, "Receive", "value_in", 100)
-
     makePipe(TID_SENSOR_OUT_PIPE_A, "Out of A", 0)
     makePipe(TID_SENSOR_OUT_PIPE_B, "Out of B", 1)
     makePipe(TID_SENSOR_OUT_PIPE_C, "Out of C", 2)
+
+    const radio_recv = makeSensor(
+        TID_SENSOR_RADIO_RECEIVE,
+        "Receive",
+        "value_in",
+        100
+    )
+    radio_recv.serviceClassName = "radio"
+    radio_recv.eventCode = 0x91
 
     const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
     timer.constraints = {
@@ -305,6 +312,9 @@ namespace microcode {
 
     const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
     radio_send.priority = 100
+    radio_send.serviceClassName = "radio"
+    radio_send.serviceCommand = 0x81
+    radio_send.serviceArgFromModifier = (x: number) => Buffer.pack("d", [x])
 
     const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "sound_emoji")
     emoji.serviceClassName = "soundPlayer"

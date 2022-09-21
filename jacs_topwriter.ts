@@ -1,5 +1,5 @@
 namespace jacs {
-    let debugOut = false
+    let debugOut = true
 
     export function addUnique<T>(arr: T[], v: T) {
         let idx = arr.indexOf(v)
@@ -428,7 +428,10 @@ namespace jacs {
             const sensor = rule.sensors.length ? rule.sensors[0] : null
             if (!sensor) return this.pageStartCondition
             let idx = sensor.serviceInstanceIndex
-            if (sensor.tid == microcode.TID_SENSOR_PRESS || sensor.tid === microcode.TID_SENSOR_RELEASE)
+            if (
+                sensor.tid == microcode.TID_SENSOR_PRESS ||
+                sensor.tid === microcode.TID_SENSOR_RELEASE
+            )
                 for (const f of rule.filters)
                     if (typeof f.jdParam == "number") idx = f.jdParam
             if (!sensor.serviceClassName)
@@ -580,7 +583,6 @@ namespace jacs {
                 const buf = actuator.serviceArgFromModifier(jdParam)
                 this.emitLoadBuffer(buf)
                 this.emitSendCmd(role, actuator.serviceCommand)
-                this.emitLogString("send: " + role.name)
             } else {
                 this.error(`can't map act role for ${JSON.stringify(actuator)}`)
             }
@@ -644,6 +646,15 @@ namespace jacs {
             const emitBody = () =>
                 this.writer.emitCall(body.index, [], OpCall.BG_MAX1)
 
+            const filterValueIn = (f: () => Value) => {
+                const v = this.getValueIn(rule)
+                if (v !== undefined) {
+                    this.ifEq(f(), v, emitBody)
+                } else {
+                    emitBody()
+                }
+            }
+
             if (
                 rule.sensors[0] &&
                 rule.sensors[0].tid == microcode.TID_SENSOR_TIMER
@@ -683,16 +694,10 @@ namespace jacs {
 
             if (rule.sensors[0] && rule.sensors[0].serviceClassName == "pipe") {
                 const pipeId = rule.sensors[0].jdParam
-                const pv = this.pipeVar(pipeId)
                 const role = this.pipeRole(pipeId)
                 this.withProcedure(role.getDispatcher(), wr => {
                     this.ifCurrPage(() => {
-                        const v = this.getValueIn(rule)
-                        if (v !== undefined) {
-                            this.ifEq(pv.read(wr), v, emitBody)
-                        } else {
-                            emitBody()
-                        }
+                        filterValueIn(() => this.pipeVar(pipeId).read(wr))
                     })
                 })
                 return
@@ -704,7 +709,23 @@ namespace jacs {
             this.withProcedure(role.getDispatcher(), wr => {
                 this.ifCurrPage(() => {
                     const code = this.lookupEventCode(role, rule)
-                    if (code != null) {
+                    if (
+                        rule.sensors[0] &&
+                        rule.sensors[0].serviceClassName == "radio"
+                    ) {
+                        const loadVal = () =>
+                            wr.emitExpr(OpExpr.EXPR3_LOAD_BUFFER, [
+                                literal(NumFmt.F64),
+                                literal(12),
+                                literal(0),
+                            ])
+
+                        this.ifEq(
+                            wr.emitExpr(OpExpr.EXPR0_PKT_REPORT_CODE, []),
+                            code,
+                            () => filterValueIn(loadVal)
+                        )
+                    } else if (code != null) {
                         this.ifEq(
                             wr.emitExpr(OpExpr.EXPR0_PKT_EV_CODE, []),
                             code,
@@ -762,7 +783,10 @@ namespace jacs {
             }
 
             this.finalize()
+            this.deploy()
+        }
 
+        private deploy() {
             if (this.hasErrors) {
                 if (debugOut) this.printAssembly()
                 console.error("errors; not deploying")
@@ -772,6 +796,32 @@ namespace jacs {
                 if (debugOut) console.log(bin.toHex())
                 jdc.deploy(bin)
             }
+        }
+
+        deploySound(name: string) {
+            const mainProc = this.addProc("main")
+            const r = this.lookupRole("soundPlayer", 0)
+            this.withProcedure(mainProc, wr => {
+                this.emitLoadBuffer(name)
+                this.emitSendCmd(r, 0x80)
+                wr.emitStmt(OpStmt.STMT1_SLEEP_S, [literal(100000)])
+                wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+            })
+            mainProc.finalize()
+            this.deploy()
+        }
+
+        deployFreq(buf: Buffer) {
+            const mainProc = this.addProc("main")
+            const r = this.lookupRole("buzzer", 0)
+            this.withProcedure(mainProc, wr => {
+                this.emitLoadBuffer(buf)
+                this.emitSendCmd(r, 0x80)
+                wr.emitStmt(OpStmt.STMT1_SLEEP_S, [literal(100000)])
+                wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+            })
+            mainProc.finalize()
+            this.deploy()
         }
     }
 
@@ -787,6 +837,7 @@ namespace jacs {
         soundPlayer: 0x1403d338,
         buzzer: 0x1b57b1d7,
         accelerometer: 0x1f140409,
+        radio: 0x1ac986cf,
         // Kit-A
         potentiometer: 0x1f274746,
         lightLevel: 0x17dc9a1c,
