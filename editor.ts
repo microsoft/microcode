@@ -25,10 +25,6 @@ namespace microcode {
 
     const TOOLBAR_HEIGHT = 17
 
-    function exportPage(page: number, img: Image) {
-        // PELI
-    }
-
     export class Editor extends Scene {
         navigator: RuleRowNavigator
         private progdef: ProgramDefn
@@ -55,8 +51,14 @@ namespace microcode {
             this._changed = true
         }
 
-        // PELI
-        public displayProgram() {
+        public renderProgram() {
+            this.cursor.visible = false
+
+            console.log(`program: render`)
+            let imgs: Image[] = []
+            let w = 0
+            let h = 0
+            const margin = 4
             for (let page = 0; page < 5; page++) {
                 const progPage = this.progdef.pages[page]
                 if (
@@ -68,9 +70,24 @@ namespace microcode {
                     this.update()
                     this.draw()
                     pause(1000)
-                    exportPage(page + 1, Screen.image)
+                    const img = Screen.image.clone()
+                    imgs.push(img)
+                    w = Math.max(w, img.width)
+                    h += img.height + margin
                 }
             }
+            console.log(`program: ${w}x${h} pixels`)
+            const res = image.create(w, h)
+            res.fill(this.color)
+            let y = 0
+            for (let i = 0; i < imgs.length; ++i) {
+                const img = imgs[i]
+                res.drawTransparentImage(img, 0, y)
+                y += img.height + margin
+            }
+
+            this.cursor.visible = true
+            return res
         }
 
         public saveAndCompileProgram() {
@@ -169,7 +186,7 @@ namespace microcode {
                 width: Screen.WIDTH,
                 height: Screen.HEIGHT - (TOOLBAR_HEIGHT + 2),
             })
-            const occ = target.occlusions(occBounds);
+            const occ = target.occlusions(occBounds)
 
             if (occ.has) {
                 if (this.scrollroot.xfrm.localPos.x !== this.scrollDest.x)
@@ -212,11 +229,11 @@ namespace microcode {
             makeOnEvent(controller.left.id, CursorDir.Left)
             makeOnEvent(controller.up.id, CursorDir.Up)
             makeOnEvent(controller.down.id, CursorDir.Down)
-            // control.onEvent(
-            //     ControllerButtonEvent.Pressed,
-            //     controller.menu.id,
-            //     () => this.displayProgram()
-            // )
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
+                controller.menu.id,
+                () => microcode.dumpProgram(this, "editor")
+            )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.A.id,
@@ -463,6 +480,7 @@ namespace microcode {
             rule.destroy()
             this.rules.forEach((rule, index) => (rule.index = index))
             this.changed()
+            this.editor.saveAndCompileProgram()
         }
 
         public insertRuleAt(index: number) {
@@ -477,6 +495,7 @@ namespace microcode {
             }
             this.rules = rules
             this.rules.forEach((rule, index) => (rule.index = index))
+            this.editor.saveAndCompileProgram()
             this.changed()
         }
 
@@ -681,7 +700,7 @@ namespace microcode {
                 this.instantiateProgramTiles()
                 if (editedAdded && this.nextEmpty(name, index)) {
                     // Queue a move to the right
-                    this.queuedCursorMove = CursorDir.Right;
+                    this.queuedCursorMove = CursorDir.Right
                 }
                 this.page.changed()
             }

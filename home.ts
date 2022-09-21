@@ -35,7 +35,7 @@ namespace microcode {
                 parent: null,
                 style: ButtonStyles.BorderedPurple,
                 icon: "prev_page",
-                ariaId: "previous sample",
+                ariaId: "C0",
                 x: -32,
                 y: 40,
                 onClick: () => {
@@ -48,7 +48,7 @@ namespace microcode {
                 parent: null,
                 style: ButtonStyles.FlatWhite,
                 icon: CAROUSEL_ITEMS[this.carouselCounter].icon,
-                ariaId: "editor",
+                ariaId: "N0",
                 x: 0,
                 y: 40,
                 onClick: () => {
@@ -67,7 +67,7 @@ namespace microcode {
                 parent: null,
                 style: ButtonStyles.BorderedPurple,
                 icon: "next_page",
-                ariaId: "next sample",
+                ariaId: "C1",
                 x: 32,
                 y: 40,
                 onClick: () => {
@@ -84,6 +84,24 @@ namespace microcode {
             ]
 
             this.navigator.addButtons(btns)
+
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
+                controller.menu.id,
+                () => this.renderSamples()
+            )
+        }
+
+        private renderSamples() {
+            this.app.popScene()
+            for (const sample of samples().slice(2)) {
+                console.log(`render ${sample.label}`)
+                settings.writeString(SAVESLOT_AUTO, sample.src)
+                const editor = new Editor(this.app)
+                this.app.pushScene(editor)
+                pause(500)
+                dumpProgram(editor, `sample_${sample.label}`)
+            }
         }
 
         /* override */ shutdown() {

@@ -1,6 +1,6 @@
 namespace microcode {
     export class icons {
-        static reg: { [name: string]: ImageG } = {}
+        static reg: { [name: string]: ImageG }
 
         public static get(name: string, nullIfMissing = false): ImageG {
             let icon = this.reg[name]
@@ -10,7 +10,15 @@ namespace microcode {
             return icon
         }
 
+        public static names() {
+            icons.init()
+            return Object.keys(this.reg)
+        }
+
         public static init() {
+            if (this.reg) return
+
+            this.reg = {}
             this.reg["cursor"] = icondb.cursor
             this.reg["stylus"] = icondb.stylus
             this.reg["button_white"] = icondb.btn_bknd_white
@@ -1316,6 +1324,7 @@ namespace icondb {
         . . 4 5 5 1 1 1 1 1 5 5 4 d . .
         . . . 4 4 5 5 5 5 5 4 4 d . . .
         . . . . . 4 4 4 4 4 d d . . . .
+        . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
     export const tile_value_4 = img`
