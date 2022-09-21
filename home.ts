@@ -102,7 +102,7 @@ namespace microcode {
                 const editor = new Editor(this.app)
                 this.app.pushScene(editor)
                 pause(500)
-                dumpProgram(editor, sample.label)
+                dumpProgram(editor, `sample_${sample.label}`)
             }
         }
 

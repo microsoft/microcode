@@ -54,7 +54,7 @@ namespace microcode {
         for (const name of icons.names()) {
             console.log(`dump ${name}`)
             const icon = icons.get(name)
-            sendImage(name, icon)
+            sendImage(`icon_${name}`, icon)
         }
     }
 }
