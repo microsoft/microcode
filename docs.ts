@@ -43,7 +43,7 @@ namespace microcode {
     function sendImage(name: string, img: Image) {
         const msg = {
             type: "image",
-            name,
+            name: name.replace(" ", "_"),
             pixels: imageToBuffer(img).toHex(),
         }
         control.simmessages.send("docs", Buffer.fromUTF8(JSON.stringify(msg)))
