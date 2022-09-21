@@ -137,6 +137,7 @@ const liveStrings = {
     F15: "loud",
     F16: "quiet",
     F17: "accelerometer",
+    F18: "1 random second",
     F17_shake: "shake",
     F17_freefall: "freefall",
     F17_tilt_up: "tilt up",
