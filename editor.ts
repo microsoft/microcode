@@ -25,7 +25,9 @@ namespace microcode {
 
     const TOOLBAR_HEIGHT = 17
 
-    function exportPage(page: number, img: Image) {}
+    function exportPage(page: number, img: Image) {
+        // PELI
+    }
 
     export class Editor extends Scene {
         navigator: RuleRowNavigator
@@ -51,16 +53,19 @@ namespace microcode {
             this._changed = true
         }
 
+        // PELI
         public displayProgram() {
             for (let page = 0; page < 5; page++) {
-                const progPage = this.progdef.pages[this.currPage]
+                const progPage = this.progdef.pages[page]
                 if (
-                    progPage.rules.length !== 1 ||
-                    !progPage.rules[0].isEmpty()
+                    progPage.rules.length > 1 ||
+                    (progPage.rules.length === 1 &&
+                        !progPage.rules[0].isEmpty())
                 ) {
                     this.switchToPage(page)
                     this.update()
                     this.draw()
+                    pause(1000)
                     exportPage(page + 1, Screen.image)
                 }
             }
@@ -216,6 +221,11 @@ namespace microcode {
             makeOnEvent(controller.left.id, CursorDir.Left)
             makeOnEvent(controller.up.id, CursorDir.Up)
             makeOnEvent(controller.down.id, CursorDir.Down)
+            // control.onEvent(
+            //     ControllerButtonEvent.Pressed,
+            //     controller.menu.id,
+            //     () => this.displayProgram()
+            // )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.A.id,
