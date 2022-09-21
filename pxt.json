@@ -10,6 +10,7 @@
     "files": [
         "config.ts",
         "main.ts",
+        "keymap.ts",
         "README.md",
         "accessibility.ts",
         "button.ts",
