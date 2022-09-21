@@ -219,13 +219,65 @@ namespace microcode {
                     break
                 }
             }
-            return this.buttonGroups[this.row][this.col]
+            
+            let btn = this.buttonGroups[this.row][this.col]
+
+            this.reportAccessibilityInfo(btn)
+
+            return btn;
         }
 
         public initialCursor(cursor: Cursor) {
             this.row = 2 + (this.hasDelete() ? 1 : 0)
             this.col = 2
-            return this.buttonGroups[this.row][this.col]
+
+            let btn = this.buttonGroups[this.row][this.col]
+
+            this.reportAccessibilityInfo(btn)
+
+            return btn
+        }
+
+        reportAccessibilityInfo(btn: Button) {
+
+            if (this.row == 0 && this.col == 0) {
+                let accessabilityMessage = {
+                    type: "text",
+                    details: [
+                        {
+                            name: "message",
+                            values: ["remove LED editor tile"],
+                        },
+                    ],
+                }
+    
+                accessibility.setLiveContent(accessabilityMessage)
+
+                return
+            }
+
+            let color = btn.getIcon()
+            let status
+
+            if (color == TID_MODIFIER_COLOR_RED) {
+                status = "checked"
+            } else if (color == TID_MODIFIER_COLOR_DARKPURPLE) {
+                status = "unchecked"
+            } else {
+                status = "unkown"
+            }   
+
+            let accessabilityMessage = {
+                type: "text",
+                details: [
+                    {
+                        name: "message",
+                        values: ["row " + this.row + " column " + this.col + " status " + status],
+                    },
+                ],
+            }
+
+            accessibility.setLiveContent(accessabilityMessage)
         }
     }
 }
