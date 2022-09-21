@@ -309,10 +309,12 @@ namespace microcode {
         tilesDB.modifiers[tid] = emoji_mod
     })
 
+    /*
     const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "music_editor")
     buzzer.serviceClassName = "buzzer"
     buzzer.serviceCommand = 0x80
     buzzer.priority = 30
+    */
 
     const make_vals = (name: string, kind: string, start: number) => {
         for (let v = 1; v <= 5; v++) {
