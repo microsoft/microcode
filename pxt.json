@@ -29,8 +29,6 @@
         "affine.ts",
         "math.ts",
         "screen.ts",
-        "animation.ts",
-        "curves.ts",
         "jacs_bytecode.ts",
         "jacs_format.ts",
         "jacs_stringify.ts",
