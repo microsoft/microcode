@@ -25,19 +25,23 @@ namespace microcode {
 
     let editor: Editor
     let editorName: string
-    export function dumpProgram(e: Editor, n: string) {
+    let editorIcon: Image
+    export function dumpProgram(e: Editor, n: string, i: Image) {
         console.log(`dump program`)
         editor = e
         editorName = n
+        editorIcon = i
         _dumpProgram()
         editor = undefined
         editorName = undefined
+        editorIcon = undefined
     }
 
     //% shim=TD_NOOP
     function _dumpProgram() {
         const prg = editor.renderProgram()
         sendImage(editorName, prg)
+        if (editorIcon) sendImage(`icon_${editorName}`, editorIcon)
     }
 
     function sendImage(name: string, img: Image) {

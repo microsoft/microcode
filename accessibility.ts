@@ -101,9 +101,6 @@ namespace accessibility {
         N5: "chuck a duck",
         N6: "reaction time",
         N7: "hot potato",
-
-        C0: "previous",
-        C1: "next",
     }
     export function ariaToTooltip(ariaId: string) {
         const s = (liveStrings[ariaId] || "").replace("_", " ")
