@@ -25,6 +25,8 @@ namespace microcode {
 
     const TOOLBAR_HEIGHT = 17
 
+    function exportPage(page: number, img: Image) {}
+
     export class Editor extends Scene {
         navigator: RuleRowNavigator
         private progdef: ProgramDefn
@@ -47,6 +49,21 @@ namespace microcode {
 
         public changed() {
             this._changed = true
+        }
+
+        public displayProgram() {
+            for (let page = 0; page < 5; page++) {
+                const progPage = this.progdef.pages[this.currPage]
+                if (
+                    progPage.rules.length !== 1 ||
+                    !progPage.rules[0].isEmpty()
+                ) {
+                    this.switchToPage(page)
+                    this.update()
+                    this.draw()
+                    exportPage(page + 1, Screen.image)
+                }
+            }
         }
 
         public saveAndCompileProgram() {
@@ -124,7 +141,9 @@ namespace microcode {
             if (!target) return
 
             if (target.destroyed) {
-                console.warn(`scroll/move destroyed sprite '${target.id} ${target.ariaId}'`)
+                console.warn(
+                    `scroll/move destroyed sprite '${target.id} ${target.ariaId}'`
+                )
                 return
             }
 
