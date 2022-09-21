@@ -314,7 +314,7 @@ namespace microcode {
     radio_send.priority = 100
     radio_send.serviceClassName = "radio"
     radio_send.serviceCommand = 0x81
-    radio_send.serviceArgFromModifier = (x: number) => Buffer.pack("d", [x])
+    radio_send.serviceArgFromModifier = (x: number) => Buffer.pack("d", [x || 1])
 
     const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "sound_emoji")
     emoji.serviceClassName = "soundPlayer"
