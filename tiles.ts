@@ -478,6 +478,7 @@ namespace microcode {
 
     class RandomEditor extends ActuatorDefn {
         field: RandomUpper
+        first: boolean
         constructor(field: RandomUpper = null) {
             super(TID_ACTUATOR_RANDOM_TOSS, "Toss")
             this.fieldEditor = randomFieldEditor
@@ -487,6 +488,7 @@ namespace microcode {
                 this.field = this.fieldEditor.clone(this.fieldEditor.init)
             }
             this.priority = 70
+            this.first = false
             // TODO constraints
         }
 
@@ -494,8 +496,8 @@ namespace microcode {
             return this.field
         }
 
-        getIcon(): Image {
-            return this.fieldEditor.toImage(this.field)
+        getIcon(): string | Image {
+            return this.first ? this.tid : this.fieldEditor.toImage(this.field)
         }
 
         getNewInstance(field: RandomUpper) {
@@ -510,5 +512,7 @@ namespace microcode {
         }
     }
 
-    tilesDB.actuators[TID_ACTUATOR_RANDOM_TOSS] = new RandomEditor()
+    const first_random = new RandomEditor()
+    tilesDB.actuators[TID_ACTUATOR_RANDOM_TOSS] = first_random
+    first_random.first = true
 }

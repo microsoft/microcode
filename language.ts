@@ -253,8 +253,8 @@ namespace microcode {
                 F: this.filters.map(t => addField(t)),
                 M: this.modifiers.map(t => addField(t)),
             }
-            if (!obj.S) delete obj.S
-            if (!obj.A) delete obj.A
+            if (!obj.S.length) delete obj.S
+            if (!obj.A.length) delete obj.A
             if (!obj.F.length) delete obj.F
             if (!obj.M.length) delete obj.M
             return obj
