@@ -11,7 +11,10 @@ const inIFrame = (() => {
 let bus
 let connectEl
 const refreshUI = () => {
-    if (bus.connected) connectEl.style.display = "none"
+    if (bus.connected) {
+        connectEl.style.display = "none"
+        document.getElementById("connectDlg").close()
+    }
     else connectEl.style.display = "inherit"
     const statusText = bus.connected
         ? "micro:bit connected"
@@ -48,8 +51,9 @@ if (!inIFrame)
             bus.on(jacdac.CONNECTION_STATE, refreshUI)
             bus.on(jacdac.ERROR, e => console.error(e))
             // connect must be triggered by a user interaction
-            connectEl.onclick = async () =>
-                bus.connected ? bus.disconnect() : bus.connect()
+            connectEl.onclick = () => document.getElementById("connectDlg").showModal()
+
+            document.getElementById("webusbBtn").onclick = async () => bus.connect()
             document.body.append(connectEl)
             refreshUI()
             bus.autoConnect = true
