@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.0.31","target":"arcade","targetVersion":"1.10.19"}
-// total=1889604 new=94.09% cached=0.00% other=5.91%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.0.32","target":"arcade","targetVersion":"1.10.19"}
+// total=1890361 new=94.09% cached=0.00% other=5.91%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -773,6 +773,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N6", "reaction time");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N7", "hot potato");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N8", "rock paper scissors");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N9", "head or tail");
     globals.liveStrings___5818 = (s.tmp_0);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
@@ -38512,7 +38513,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-accessibility_textAccessibilityMessage_constructor__P2973.info = {"start":3112,"length":168,"line":125,"column":8,"endLine":129,"endColumn":9,"fileName":"accessibility.ts","functionName":"inline","argumentNames":["this","text"]}
+accessibility_textAccessibilityMessage_constructor__P2973.info = {"start":3140,"length":168,"line":126,"column":8,"endLine":130,"endColumn":9,"fileName":"accessibility.ts","functionName":"inline","argumentNames":["this","text"]}
 
 function accessibility_textAccessibilityMessage_constructor__P2973_mk(s) {
     checkStack(s.depth);
@@ -39109,7 +39110,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-accessibility_ariaToTooltip__P2963.info = {"start":2551,"length":148,"line":105,"column":4,"endLine":108,"endColumn":5,"fileName":"accessibility.ts","functionName":"ariaToTooltip","argumentNames":["ariaId"]}
+accessibility_ariaToTooltip__P2963.info = {"start":2579,"length":148,"line":106,"column":4,"endLine":109,"endColumn":5,"fileName":"accessibility.ts","functionName":"ariaToTooltip","argumentNames":["ariaId"]}
 
 function accessibility_ariaToTooltip__P2963_mk(s) {
     checkStack(s.depth);
@@ -52600,23 +52601,30 @@ switch (step) {
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_7);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_8 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "label", "reaction time");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "ariaId", "N6");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "src", "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[],\"A\":[\"A5\"],\"M\":[\"M15(0000000000001000000000000)\"]},{\"S\":[\"S4\"],\"A\":[\"A1\"],\"M\":[\"M2\"]},{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[\"A5\"],\"M\":[\"M15(1111111111111111111111111)\"]},{\"S\":[\"S2\"],\"A\":[\"A1\"],\"F\":[\"F3\"],\"M\":[\"M3\"]},{\"S\":[\"S2\"],\"A\":[\"A1\"],\"F\":[\"F4\"],\"M\":[\"M4\"]},{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[\"A5\"],\"M\":[\"M15(0111001010011100101001010)\"]},{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[\"A5\"],\"M\":[\"M15(0111001010011100101001110)\"]},{\"S\":[],\"A\":[]}]},{}]}}");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "label", "head or tail");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "ariaId", "N9");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "src", "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S3\"],\"A\":[\"A7\"],\"M\":[\"M7\",\"M20A\"]},{\"S\":[\"S9A\"],\"A\":[\"A5\"],\"F\":[\"F8\"],\"M\":[\"M15(1111110101111110111001110)\"]},{\"S\":[\"S9A\"],\"A\":[\"A5\"],\"F\":[\"F9\"],\"M\":[\"M15(1111110001100011000111111)\"]},{}]},{\"R\":[{}]},{\"R\":[{}]},{\"R\":[{}]},{}]}}");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "icon", "plus");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_8);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_9 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "label", "hot potato");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "ariaId", "N7");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "src", "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S4\"],\"A\":[\"A1\"],\"F\":[\"F19\",\"F18\"],\"M\":[\"M2\"]},{}]},{\"R\":[{\"A\":[\"A5\"],\"M\":[\"M15(1111110101111110111001110)\"]},{\"A\":[\"A2\"],\"M\":[\"M19sad\"]},{}]},{\"R\":[{}]},{\"R\":[{}]},{}]}}");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "label", "reaction time");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "ariaId", "N6");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "src", "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[],\"A\":[\"A5\"],\"M\":[\"M15(0000000000001000000000000)\"]},{\"S\":[\"S4\"],\"A\":[\"A1\"],\"M\":[\"M2\"]},{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[\"A5\"],\"M\":[\"M15(1111111111111111111111111)\"]},{\"S\":[\"S2\"],\"A\":[\"A1\"],\"F\":[\"F3\"],\"M\":[\"M3\"]},{\"S\":[\"S2\"],\"A\":[\"A1\"],\"F\":[\"F4\"],\"M\":[\"M4\"]},{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[\"A5\"],\"M\":[\"M15(0111001010011100101001010)\"]},{\"S\":[],\"A\":[]}]},{\"R\":[{\"S\":[],\"A\":[\"A5\"],\"M\":[\"M15(0111001010011100101001110)\"]},{\"S\":[],\"A\":[]}]},{}]}}");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "icon", "plus");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_9);
+    r0 = pxsim_pxtrt.mkMap();
+    s.tmp_10 = r0;
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "label", "hot potato");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "ariaId", "N7");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "src", "{\"progdef\":{\"P\":[{\"R\":[{\"S\":[\"S4\"],\"A\":[\"A1\"],\"F\":[\"F19\",\"F18\"],\"M\":[\"M2\"]},{}]},{\"R\":[{\"A\":[\"A5\"],\"M\":[\"M15(1111110101111110111001110)\"]},{\"A\":[\"A2\"],\"M\":[\"M19sad\"]},{}]},{\"R\":[{}]},{\"R\":[{}]},{}]}}");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "icon", "plus");
+    r0 = pxsim_Array__push(s.tmp_1, s.tmp_10);
     r0 = s.tmp_1;
     return leave(s, r0)
   default: oops()
 } } }
-microcode_samples__P3921.info = {"start":26,"length":4008,"line":1,"column":4,"endLine":62,"endColumn":5,"fileName":"samples.ts","functionName":"samples","argumentNames":[]}
+microcode_samples__P3921.info = {"start":26,"length":4419,"line":1,"column":4,"endLine":68,"endColumn":5,"fileName":"samples.ts","functionName":"samples","argumentNames":[]}
 
 function microcode_samples__P3921_mk(s) {
     checkStack(s.depth);
@@ -52633,6 +52641,7 @@ function microcode_samples__P3921_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
+  tmp_10: undefined,
 } }
 
 
@@ -54723,7 +54732,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-accessibility_tileAccessibilityMessage_constructor__P2977.info = {"start":3483,"length":173,"line":137,"column":8,"endLine":141,"endColumn":9,"fileName":"accessibility.ts","functionName":"inline","argumentNames":["this","tileId"]}
+accessibility_tileAccessibilityMessage_constructor__P2977.info = {"start":3511,"length":173,"line":138,"column":8,"endLine":142,"endColumn":9,"fileName":"accessibility.ts","functionName":"inline","argumentNames":["this","tileId"]}
 
 function accessibility_tileAccessibilityMessage_constructor__P2977_mk(s) {
     checkStack(s.depth);
@@ -54784,7 +54793,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-accessibility_ruleAccessibilityMessage_constructor__P2981.info = {"start":3886,"length":321,"line":150,"column":8,"endLine":159,"endColumn":9,"fileName":"accessibility.ts","functionName":"inline","argumentNames":["this","dos","whens"]}
+accessibility_ruleAccessibilityMessage_constructor__P2981.info = {"start":3914,"length":321,"line":151,"column":8,"endLine":160,"endColumn":9,"fileName":"accessibility.ts","functionName":"inline","argumentNames":["this","dos","whens"]}
 
 function accessibility_ruleAccessibilityMessage_constructor__P2981_mk(s) {
     checkStack(s.depth);
