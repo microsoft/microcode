@@ -84,6 +84,26 @@ namespace microcode {
             ]
 
             this.navigator.addButtons(btns)
+
+           // control.onEvent(
+           //     ControllerButtonEvent.Pressed,
+           //     controller.menu.id,
+           //     () => this.renderSamples()
+           // )
+        }
+
+        private renderSamples() {
+            this.app.popScene()
+            for (const sample of samples()) {
+                settings.writeString(
+                    SAVESLOT_AUTO,
+                    sample.src
+                )
+                const editor = new Editor(this.app)
+                this.app.pushScene(editor)
+                pause(500)
+                dumpProgram(editor)
+            }
         }
 
         /* override */ shutdown() {
