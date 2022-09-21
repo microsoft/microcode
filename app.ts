@@ -19,6 +19,8 @@ namespace microcode {
                 controller.setRepeatDefault(250, 30)
                 keymap.setupKeys()
                 icons.init()
+                // TODO REMOVE
+                dumpDocs()
                 jdc.start()
                 this.sceneManager = new SceneManager()
                 const home = new Home(this)
