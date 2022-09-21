@@ -1,9 +1,6 @@
 namespace microcode {
     export class Home extends CursorScene {
         carouselBtn: Button
-        //sampleBtns: Button[]
-
-        sampleBtn: Button
         selectBtnL: Button
         selectBtnR: Button
         carouselCounter: number
@@ -118,8 +115,6 @@ namespace microcode {
                     this.carouselBtn.setIcon(CAROUSEL_ITEMS[this.carouselCounter].icon)
                 }
             })
-
-
 
             const btns: Button[] = [this.selectBtnL, this.carouselBtn, this.selectBtnR]
 
