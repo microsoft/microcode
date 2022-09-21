@@ -345,6 +345,7 @@ namespace jacs {
             this.withProcedure(this.mainProc, wr => {
                 // wait for autobind to finish
                 wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(1000)])
+                this.emitClearScreen()
                 wr.emitCall(this.pageProc(1).index, [])
                 wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
             })
@@ -570,10 +571,16 @@ namespace jacs {
             ) {
                 const timer = this.addProc(name + "_timer")
                 let period = 0
+                let randomPeriod = 0
                 for (const m of rule.filters) {
-                    if (typeof m.jdParam == "number") period += m.jdParam
+                    if (typeof m.jdParam == "number") {
+                        if (m.jdParam >= 0) period += m.jdParam
+                        else randomPeriod += -m.jdParam
+                    }
                 }
-                if (period == 0) period = 1000 // reasonable default
+                if (period == 0 && randomPeriod == 0) period = 1000 // reasonable default
+                if (period == 0)
+                    period = 20
                 this.withProcedure(this.pageProc(this.currPageId), wr => {
                     // first, terminate any previous one
                     wr.emitStmt(OpStmt.STMT1_TERMINATE_FIBER, [
@@ -585,7 +592,14 @@ namespace jacs {
                     wr.emitCall(timer.index, [], OpCall.BG_MAX1)
                 })
                 this.withProcedure(timer, wr => {
-                    wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(period)])
+                    let tm = literal(period)
+                    if (randomPeriod) {
+                        tm = wr.emitExpr(OpExpr.EXPR2_ADD, [
+                            tm,
+                            wr.emitExpr(OpExpr.EXPR1_RANDOM_INT, [literal(randomPeriod)])
+                        ])
+                    }
+                    wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [tm])
                     this.ifCurrPage(() => {
                         wr.emitCall(body.index, [], OpCall.BG_MAX1)
                     })
@@ -627,6 +641,15 @@ namespace jacs {
                 literal(this.addString(str)),
                 literal(0),
                 literal(0),
+            ])
+        }
+
+        private emitClearScreen() {
+            const scr = this.lookupRole("dotMatrix", 0)
+            this.emitLoadBuffer(Buffer.create(5))
+            this.writer.emitStmt(OpStmt.STMT2_SEND_CMD, [
+                literal(scr.index),
+                literal(jacs.CMD_SET_REG | 0x2),
             ])
         }
 

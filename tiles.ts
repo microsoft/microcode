@@ -199,8 +199,7 @@ namespace microcode {
     }
     addTimespan(TID_FILTER_TIMESPAN_SHORT, "short", 250)
     addTimespan(TID_FILTER_TIMESPAN_LONG, "long", 1000)
-    // TODO: change codegen to be random
-    addTimespan(TID_FILTER_TIMESPAN_RANDOM, "random", 500)
+    addTimespan(TID_FILTER_TIMESPAN_RANDOM, "random", -1000)
 
     const accel = new SensorDefn(
         TID_SENSOR_ACCELEROMETER,
