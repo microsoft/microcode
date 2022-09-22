@@ -298,23 +298,21 @@ namespace microcode {
         }
 
         public move(dir: CursorDir): Button {
-            let ret: Button
+            let btn: Button
 
             if (!this.curr) {
-                ret = this.buttons[0]
+                btn = this.buttons[0]
             } else {
                 switch (dir) {
                     case CursorDir.Up: {
                         // Get all buttons ABOVE the current one.
+                        const above = this.buttons.filter(
+                            btn =>
+                                btn.xfrm.worldPos.y < this.curr.xfrm.worldPos.y
+                        )
                         // Filter to just buttons with some HORIZONTAL overlap.
-                        // Sort by increasing distance.
-                        // Take the first one.
-                        const arr = this.buttons
-                            .filter(
-                                btn =>
-                                    btn.xfrm.worldPos.y <
-                                    this.curr.xfrm.worldPos.y
-                            )
+                        // Sort by increasing VERTICAL distance.
+                        const overlap = above
                             .filter(
                                 btn =>
                                     Math.abs(
@@ -326,20 +324,30 @@ namespace microcode {
                             .sort(
                                 (a, b) => b.xfrm.worldPos.y - a.xfrm.worldPos.y
                             )
-                        ret = arr.shift()
+                        // Take the first one.
+                        btn = overlap.shift()
+
+                        if (!btn) {
+                            // No buttons directly above, so pick the nearest one.
+                            btn = above
+                                .sort(
+                                    (a, b) =>
+                                        Math.abs(b.xfrm.worldPos.x - a.xfrm.worldPos.x)
+                                )
+                                .shift()
+                        }
                         break
                     }
                     case CursorDir.Down: {
                         // Get all buttons BELOW the current one.
-                        // Filter to just buttons with some HORIZONTAL overlap.
-                        // Sort by increasing distance.
                         // Take the first one.
-                        const arr = this.buttons
-                            .filter(
-                                btn =>
-                                    btn.xfrm.worldPos.y >
-                                    this.curr.xfrm.worldPos.y
-                            )
+                        const below = this.buttons.filter(
+                            btn =>
+                                btn.xfrm.worldPos.y > this.curr.xfrm.worldPos.y
+                        )
+                        // Filter to just buttons with some HORIZONTAL overlap.
+                        // Sort by increasing VERTICAL distance.
+                        const overlap = below
                             .filter(
                                 btn =>
                                     Math.abs(
@@ -351,15 +359,25 @@ namespace microcode {
                             .sort(
                                 (a, b) => a.xfrm.worldPos.y - b.xfrm.worldPos.y
                             )
-                        ret = arr.shift()
+
+                        btn = overlap.shift()
+                        if (!btn) {
+                            // No buttons directly below, so pick the nearest one.
+                            btn = below
+                                .sort(
+                                    (a, b) =>
+                                        Math.abs(b.xfrm.worldPos.x - a.xfrm.worldPos.x)
+                                )
+                                .shift()
+                        }
                         break
                     }
                     case CursorDir.Left: {
                         // Get all buttons LEFT of the current one.
                         // Filter to just buttons with some VERTICAL overlap.
-                        // Sort by increasing distance.
+                        // Sort by increasing HORIZONTAL distance.
                         // Take the first one.
-                        const arr = this.buttons
+                        btn = this.buttons
                             .filter(
                                 btn =>
                                     btn.xfrm.worldPos.x <
@@ -376,15 +394,15 @@ namespace microcode {
                             .sort(
                                 (a, b) => b.xfrm.worldPos.x - a.xfrm.worldPos.x
                             )
-                        ret = arr.shift()
+                            .shift()
                         break
                     }
                     case CursorDir.Right: {
                         // Get all buttons RIGHT of the current one.
                         // Filter to just buttons with some VERTICAL overlap.
-                        // Sort by increasing distance.
+                        // Sort by increasing HORIZONTAL distance.
                         // Take the first one.
-                        const arr = this.buttons
+                        btn = this.buttons
                             .filter(
                                 btn =>
                                     btn.xfrm.worldPos.x >
@@ -401,28 +419,28 @@ namespace microcode {
                             .sort(
                                 (a, b) => a.xfrm.worldPos.x - b.xfrm.worldPos.x
                             )
-                        ret = arr.shift()
+                            .shift()
                         break
                     }
                 }
             }
-            if (ret) {
-                this.curr = ret
+
+            if (btn) {
+                this.curr = btn
                 let accessibilityMessage =
                     new accessibility.tileAccessibilityMessage(
-                        (ret ? ret.ariaId : "") || ""
+                        (btn ? btn.ariaId : "") || ""
                     )
                 accessibility.setLiveContent(accessibilityMessage)
             }
+
             return this.curr
         }
 
         public screenToButton(x: number, y: number): Button {
             const p = new Vec2(x, y)
-            return this.buttons.find(btn => Bounds.Translate(
-                    btn.bounds,
-                    btn.xfrm.worldPos
-                ).contains(p)
+            return this.buttons.find(btn =>
+                Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
             )
         }
 
