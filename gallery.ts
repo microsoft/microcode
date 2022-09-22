@@ -18,7 +18,7 @@ namespace microcode {
             samples().forEach(sample => {
                 const btn = new Button({
                     parent: null,
-                    style: ButtonStyles.BorderedPurple,
+                    style: ButtonStyles.Transparent,
                     icon: sample.icon,
                     ariaId: sample.ariaId,
                     x: x + 16,
@@ -63,6 +63,13 @@ namespace microcode {
         }
 
         /* override */ draw() {
+            Screen.fillRect(
+                Screen.LEFT_EDGE,
+                Screen.TOP_EDGE,
+                Screen.WIDTH,
+                Screen.HEIGHT,
+                0xc
+            )
             this.sampleButtons.forEach(s => s.draw())
             super.draw()
         }
