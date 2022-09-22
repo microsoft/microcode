@@ -86,11 +86,11 @@ namespace microcode {
         }
 
         public move(dir: CursorDir): Button {
-            return this.navigator.move(this, dir)
+            return this.navigator.move(dir)
         }
 
         public click(): boolean {
-            let overlapping = this.navigator.getOverlapping(this) //.sort((a, b) => a.z - b.z);
+            let overlapping = this.navigator.getOverlapping() //.sort((a, b) => a.z - b.z);
             if (overlapping.length) {
                 const btn = overlapping.shift()
                 btn.click()
@@ -120,7 +120,12 @@ namespace microcode {
             const pctTime = elapsedTimeMs / 50
 
             if (pctTime < 1) {
-                Vec2.LerpToRef(this.xfrm.localPos, this.moveDest, pctTime, this.xfrm.localPos)
+                Vec2.LerpToRef(
+                    this.xfrm.localPos,
+                    this.moveDest,
+                    pctTime,
+                    this.xfrm.localPos
+                )
             } else {
                 this.xfrm.localPos.copyFrom(this.moveDest)
             }
@@ -130,7 +135,7 @@ namespace microcode {
 
         /* override */ draw() {
             if (!this.visible) return
-            
+
             Screen.outlineBoundsXfrm(
                 this.xfrm,
                 this.size,

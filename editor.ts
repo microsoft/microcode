@@ -129,7 +129,7 @@ namespace microcode {
             )
             this.rebuildNavigator()
             if (initCursor) {
-                const btn = this.navigator.initialCursor(this.cursor)
+                const btn = this.navigator.initialCursor(1, 1)
                 if (btn) this.snapCursorTo(btn)
             }
         }
@@ -287,9 +287,7 @@ namespace microcode {
                 this.navigator.clear()
             } else this.navigator = new RuleRowNavigator()
 
-            this.navigator.addButtons([
-                this.pageBtn,
-            ])
+            this.navigator.addButtons([this.pageBtn])
 
             this.pageEditor.addToNavigator()
 
