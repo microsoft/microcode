@@ -45,10 +45,10 @@ function makeCodeRun(options) {
             }
             // load simulator with correct version
             const simUrl = new URL(meta.simUrl)
-            simUrl.searchParams.set("background-color", "#3f3f3f")
-            simUrl.searchParams.set("button-stroke", "#212121")
-            simUrl.searchParams.set("text-color", "#d9d9d9")
-            simUrl.searchParams.set("button-fill", "#2d2d2d")
+            simUrl.searchParams.set("background-color", "3f3f3f")
+            simUrl.searchParams.set("button-stroke", "212121")
+            simUrl.searchParams.set("text-color", "d9d9d9")
+            simUrl.searchParams.set("button-fill", "2d2d2d")
             document.getElementById("simframe")
                 .setAttribute("src", simUrl.toString());
         })
