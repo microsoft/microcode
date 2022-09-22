@@ -30,8 +30,6 @@ namespace microcode {
         private progdef: ProgramDefn
         private currPage: number
         private pageBtn: Button
-        private prevPageBtn: Button
-        private nextPageBtn: Button
         private pageEditor: PageEditor
         public cursor: Cursor
         private _changed: boolean
@@ -93,20 +91,6 @@ namespace microcode {
         public saveAndCompileProgram() {
             this.app.save(SAVESLOT_AUTO, this.progdef)
             new jacs.TopWriter().emitProgram(this.progdef)
-        }
-
-        private nextPage() {
-            let index = this.currPage + 1
-            index %= this.progdef.pages.length
-            this.switchToPage(index, false)
-        }
-
-        private prevPage() {
-            let index = this.currPage - 1
-            if (index < 0) {
-                index = this.progdef.pages.length - 1
-            }
-            this.switchToPage(index, false)
         }
 
         private pickPage() {
@@ -268,25 +252,9 @@ namespace microcode {
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
                 icon: PAGE_IDS[this.currPage],
-                x: 0,
+                x: Screen.LEFT_EDGE + 32,
                 y: 8,
                 onClick: () => this.pickPage(),
-            })
-            this.nextPageBtn = new EditorButton(this, {
-                parent: this.hudroot,
-                style: ButtonStyles.BorderedPurple,
-                icon: "next_page",
-                x: 19,
-                y: 8,
-                onClick: () => this.nextPage(),
-            })
-            this.prevPageBtn = new EditorButton(this, {
-                parent: this.hudroot,
-                style: ButtonStyles.BorderedPurple,
-                icon: "prev_page",
-                x: -19,
-                y: 8,
-                onClick: () => this.prevPage(),
             })
             this.progdef = this.app.load(SAVESLOT_AUTO)
         }
@@ -316,9 +284,7 @@ namespace microcode {
             } else this.navigator = new RuleRowNavigator()
 
             this.navigator.addButtons([
-                this.prevPageBtn,
                 this.pageBtn,
-                this.nextPageBtn,
             ])
 
             this.pageEditor.addToNavigator()
@@ -365,8 +331,6 @@ namespace microcode {
                 this.pageEditor.draw()
             }
             this.pageBtn.draw()
-            this.prevPageBtn.draw()
-            this.nextPageBtn.draw()
             this.picker.draw()
             this.cursor.draw()
         }
