@@ -10,10 +10,11 @@ namespace microcode {
         }
 
         protected moveCursor(dir: CursorDir) {
-            const target = this.cursor.move(dir)
+            this.moveTo(this.cursor.move(dir))
+        }
 
+        protected moveTo(target: Button) {
             if (!target) return
-
             this.cursor.moveTo(
                 target.xfrm.worldPos,
                 target.ariaId,
@@ -76,6 +77,11 @@ namespace microcode {
             this.picker = new Picker(this.cursor)
             this.navigator = new RowNavigator()
             this.cursor.navigator = this.navigator
+        }
+
+        protected handleClick(x: number, y: number) {
+            const target = this.navigator.screenToButton(x, y)
+            this.moveTo(target)
         }
 
         /* override */ shutdown() {

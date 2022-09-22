@@ -26,9 +26,12 @@ namespace microcode {
         }
 
         public screenToButton(x: number, y: number): Button {
-            // find button in hit area
+            let tx = -80 + x
+            let ty = -60 + y
             let hitBtn: Button = undefined
-            const p = new Vec2(x, y)
+            const p = new Vec2(tx, ty)
+            let row = 0
+            let col = 0
             this.buttonGroups.forEach(g => {
                 g.forEach(btn => {
                     if (
@@ -37,9 +40,14 @@ namespace microcode {
                             btn.bounds,
                             btn.xfrm.worldPos
                         ).contains(p)
-                    )
+                    ) {
                         hitBtn = btn
+                        this.row = row
+                        this.col = col
+                    }
+                    col++
                 })
+                row++
             })
             return hitBtn
         }
@@ -330,9 +338,10 @@ namespace microcode {
                         if (!btn) {
                             // No buttons directly above, so pick the nearest one.
                             btn = above
-                                .sort(
-                                    (a, b) =>
-                                        Math.abs(b.xfrm.worldPos.x - a.xfrm.worldPos.x)
+                                .sort((a, b) =>
+                                    Math.abs(
+                                        b.xfrm.worldPos.x - a.xfrm.worldPos.x
+                                    )
                                 )
                                 .shift()
                         }
@@ -364,9 +373,10 @@ namespace microcode {
                         if (!btn) {
                             // No buttons directly below, so pick the nearest one.
                             btn = below
-                                .sort(
-                                    (a, b) =>
-                                        Math.abs(b.xfrm.worldPos.x - a.xfrm.worldPos.x)
+                                .sort((a, b) =>
+                                    Math.abs(
+                                        b.xfrm.worldPos.x - a.xfrm.worldPos.x
+                                    )
                                 )
                                 .shift()
                         }
