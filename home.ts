@@ -98,6 +98,17 @@ namespace microcode {
             super.update()
         }
 
+        private drawVersion() {
+            Screen.print(
+                microcode.VERSION,
+                Screen.RIGHT_EDGE -
+                    image.font5.charWidth * microcode.VERSION.length,
+                Screen.BOTTOM_EDGE - image.font5.charHeight - 1,
+                0xb,
+                image.font5
+            )
+        }
+
         private yOffset = -Screen.HEIGHT >> 1
         /* override */ draw() {
             Screen.fillRect(
@@ -124,7 +135,7 @@ namespace microcode {
             )
             this.samplesBtn.draw()
             this.editBtn.draw()
-
+            this.drawVersion()
             super.draw()
         }
     }
