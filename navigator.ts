@@ -224,6 +224,22 @@ namespace microcode {
             return btn
         }
 
+        public addButtons(btns: Button[]) {
+            super.addButtons(btns)
+
+            btns.forEach(btn => {
+                if (btn.onClick) {
+                    let prev = btn.onClick;
+                    btn.onClick = () => {
+                        prev(btn);
+                        this.reportAccessibilityInfo(btn)
+                    }
+                } else {
+                    btn.onClick = () => this.reportAccessibilityInfo(btn)
+                }
+            });
+        }
+
         reportAccessibilityInfo(btn: Button) {
 
             if (this.row == 0 && this.col == 0) {    
