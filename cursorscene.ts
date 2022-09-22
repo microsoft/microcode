@@ -74,7 +74,7 @@ namespace microcode {
 
             this.cursor = new Cursor()
             this.picker = new Picker(this.cursor)
-            this.navigator = new RuleRowNavigator()
+            this.navigator = new RowNavigator()
             this.cursor.navigator = this.navigator
         }
 

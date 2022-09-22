@@ -14,6 +14,7 @@ namespace microcode {
             let x = -72,
                 y = -55
             this.sampleButtons = []
+            let rowButtons: Button[] = []
             samples()
                 .slice(1)
                 .forEach(sample => {
@@ -31,14 +32,16 @@ namespace microcode {
                         },
                     })
                     this.sampleButtons.push(btn)
+                    rowButtons.push(btn)
                     x += 38
                     if (x + 32 > 75) {
+                        this.navigator.addButtons(rowButtons)
+                        rowButtons = []
                         y += 38
                         x = -72
                     }
                 })
-
-            this.navigator.addButtons(this.sampleButtons)
+            this.navigator.addButtons(rowButtons)
         }
 
         protected moveCursor(dir: CursorDir) {
