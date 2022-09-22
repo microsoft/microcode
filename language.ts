@@ -18,7 +18,7 @@ namespace microcode {
             tiles?: string[]
             categories?: string[]
         }
-        handling?: { [id: string]: string | number | boolean }
+        handling?: { [id: string]: any }
     }
 
     export interface FieldEditor {
@@ -99,6 +99,7 @@ namespace microcode {
             if (src.handling) {
                 const keys = Object.keys(src.handling)
                 for (const key of keys) {
+                    // TODO: deep copy
                     dst.handling[key] = src.handling[key]
                 }
             }
@@ -106,12 +107,32 @@ namespace microcode {
 
         isCompatibleWith(c: Constraints): boolean {
             if (!this.constraints) return true
-            if (!this.constraints.requires) return true
-            let compat = false
-            this.constraints.requires.forEach(
-                req => (compat = compat || c.provides.some(pro => pro === req))
-            )
-            return compat
+            if (this.constraints.requires) {
+                let compat = false
+                this.constraints.requires.forEach(
+                    req =>
+                        (compat = compat || c.provides.some(pro => pro === req))
+                )
+                if (!compat) return false
+            }
+            // Check c.handling against this tile
+            if (c.handling) {
+                let compat = true
+                Object.keys(c.handling).forEach((name: any) => {
+                    if (!compat) return
+                    const rule = c.handling[name]
+                    // MAX_COUNT rule: Allow at most N tiles of this type
+                    if (name === "maxCount") {
+                        // Count the instances of rule.category in c.provides
+                        const count = c.provides.filter(
+                            pro => pro === rule.category
+                        ).length
+                        compat = count < rule.count
+                    }
+                })
+                if (!compat) return false
+            }
+            return true
         }
     }
 
@@ -162,8 +183,6 @@ namespace microcode {
                 !c.disallow.categories.some(cat => cat === this.category) &&
                 !c.disallow.tiles.some(tid => tid === this.tid)
             if (!disallows) return false
-
-            // TODO: check handling
 
             return true
         }
