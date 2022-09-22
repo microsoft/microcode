@@ -12,14 +12,13 @@ Young coder editor for the [micro:bit V2](https://microbit.org).
 
 There are three ways to run MicroCode:
 
--   micro:bit V2 and [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield) (for editing program)
--   [web app](https://microsoft.github.io/microcode) with micro:bit V2
--   web app and micro:bit V2 simulator
+-   micro:bit V2 + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
+-   [web editor](https://microsoft.github.io/microcode) with or without micro:bit V2
 
 See below for more information about the MicroCode web app, micro:bit simulator, and how to deploy MicroCode to the micro:bit V2. Regardless of which way you run MicroCode, you will probably want to know a little bit about the MicroCode [icon-based language](./language.md)
 or the [samples](./samples.md).
 
-## Web app
+## Web editor
 
 The easiest way to get started with MicroCode is through the [web app](https://microsoft.github.io/microcode), shown below. We recommend using the keyboard navigationor a real gamepad!
 
