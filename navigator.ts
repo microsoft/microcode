@@ -4,6 +4,7 @@ namespace microcode {
         addButtons: (btns: Button[]) => void
         move: (dir: CursorDir) => Button
         getOverlapping: () => Button[]
+        screenToButton: (x: number, y: number) => Button
         initialCursor: (row: number, col: number) => Button
     }
 
@@ -22,6 +23,25 @@ namespace microcode {
 
         public addButtons(btns: Button[]) {
             this.buttonGroups.push(btns)
+        }
+
+        public screenToButton(x: number, y: number): Button {
+            // find button in hit area
+            let hitBtn: Button = undefined
+            const p = new Vec2(x, y)
+            this.buttonGroups.forEach(g => {
+                g.forEach(btn => {
+                    if (
+                        !hitBtn &&
+                        Bounds.Translate(
+                            btn.bounds,
+                            btn.xfrm.worldPos
+                        ).contains(p)
+                    )
+                        hitBtn = btn
+                })
+            })
+            return hitBtn
         }
 
         public move(dir: CursorDir) {
