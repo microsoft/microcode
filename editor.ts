@@ -232,7 +232,11 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.menu.id,
-                () => microcode.dumpProgram(this, "editor", undefined)
+                () => {
+                    // go back to home screen
+                    this.app.popScene()
+                    this.app.pushScene(new Home(this.app))
+                }
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
