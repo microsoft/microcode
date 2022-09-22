@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.0.35","target":"arcade","targetVersion":"1.10.20"}
-// total=1906086 new=94.04% cached=0.00% other=5.96%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.0.36","target":"arcade","targetVersion":"1.10.20"}
+// total=1906083 new=94.04% cached=0.00% other=5.96%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -26042,7 +26042,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_upperToImage__P3880.info = {"start":3570,"length":200,"line":112,"column":4,"endLine":116,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"upperToImage","argumentNames":["field"]}
+microcode_upperToImage__P3880.info = {"start":3567,"length":200,"line":112,"column":4,"endLine":116,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"upperToImage","argumentNames":["field"]}
 
 function microcode_upperToImage__P3880_mk(s) {
     checkStack(s.depth);
@@ -26140,7 +26140,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_randomEditor__P3881.info = {"start":3776,"length":695,"line":118,"column":4,"endLine":141,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"randomEditor","argumentNames":["field","picker","onHide","onDelete"]}
+microcode_randomEditor__P3881.info = {"start":3773,"length":695,"line":118,"column":4,"endLine":141,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"randomEditor","argumentNames":["field","picker","onHide","onDelete"]}
 
 function microcode_randomEditor__P3881_mk(s) {
     checkStack(s.depth);
@@ -26205,7 +26205,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P13441.info = {"start":4246,"length":165,"line":134,"column":21,"endLine":137,"endColumn":13,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":["iconId","button"]}
+onClick_inline__P13441.info = {"start":4243,"length":165,"line":134,"column":21,"endLine":137,"endColumn":13,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":["iconId","button"]}
 
 function onClick_inline__P13441_mk(s) {
     checkStack(s.depth);
@@ -31417,7 +31417,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_noteToImage__P3878.info = {"start":2172,"length":124,"line":67,"column":4,"endLine":69,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"noteToImage","argumentNames":["field"]}
+microcode_noteToImage__P3878.info = {"start":2169,"length":124,"line":67,"column":4,"endLine":69,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"noteToImage","argumentNames":["field"]}
 
 function microcode_noteToImage__P3878_mk(s) {
     checkStack(s.depth);
@@ -31498,7 +31498,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_noteToImageRaw__P6864.info = {"start":1632,"length":534,"line":50,"column":4,"endLine":65,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"noteToImageRaw","argumentNames":["img","note"]}
+microcode_noteToImageRaw__P6864.info = {"start":1629,"length":534,"line":50,"column":4,"endLine":65,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"noteToImageRaw","argumentNames":["img","note"]}
 
 function microcode_noteToImageRaw__P6864_mk(s) {
     checkStack(s.depth);
@@ -31779,7 +31779,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_musicEditor__P3879.info = {"start":2302,"length":1262,"line":71,"column":4,"endLine":110,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"musicEditor","argumentNames":["field","picker","onHide","onDelete"]}
+microcode_musicEditor__P3879.info = {"start":2299,"length":1262,"line":71,"column":4,"endLine":110,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"musicEditor","argumentNames":["field","picker","onHide","onDelete"]}
 
 function microcode_musicEditor__P3879_mk(s) {
     checkStack(s.depth);
@@ -31968,7 +31968,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P14732.info = {"start":2956,"length":508,"line":94,"column":25,"endLine":104,"endColumn":17,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":["iconId","button"]}
+onClick_inline__P14732.info = {"start":2953,"length":508,"line":94,"column":25,"endLine":104,"endColumn":17,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":["iconId","button"]}
 
 function onClick_inline__P14732_mk(s) {
     checkStack(s.depth);
@@ -34881,7 +34881,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "icon", s.tmp_2);
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "style", globals.BorderedPurple___2986);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "style", globals.Transparent___2987);
     r0 = pxsim_Array__push(s.btns___15705, s.tmp_1);
     r0 = (s.col___15707 + 1);
     s.col___15707 = (r0);
@@ -34925,7 +34925,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_iconEditor__P3877.info = {"start":26,"length":1600,"line":1,"column":4,"endLine":48,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"iconEditor","argumentNames":["image5x5","picker","onHide","onDelete"]}
+microcode_iconEditor__P3877.info = {"start":26,"length":1597,"line":1,"column":4,"endLine":48,"endColumn":5,"fileName":"fieldeditors.ts","functionName":"iconEditor","argumentNames":["image5x5","picker","onHide","onDelete"]}
 
 function microcode_iconEditor__P3877_mk(s) {
     checkStack(s.depth);
@@ -35082,7 +35082,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P15730.info = {"start":805,"length":668,"line":26,"column":25,"endLine":41,"endColumn":17,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":["iconId","button"]}
+onClick_inline__P15730.info = {"start":802,"length":668,"line":26,"column":25,"endLine":41,"endColumn":17,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":["iconId","button"]}
 
 function onClick_inline__P15730_mk(s) {
     checkStack(s.depth);
@@ -35125,7 +35125,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-navigator_inline__P15776.info = {"start":1552,"length":24,"line":44,"column":27,"endLine":44,"endColumn":51,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":[]}
+navigator_inline__P15776.info = {"start":1549,"length":24,"line":44,"column":27,"endLine":44,"endColumn":51,"fileName":"fieldeditors.ts","functionName":"inline","argumentNames":[]}
 
 function navigator_inline__P15776_mk(s) {
     checkStack(s.depth);
