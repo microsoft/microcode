@@ -20,7 +20,7 @@ namespace microcode {
 
             this.editBtn = new Button({
                 parent: null,
-                style: ButtonStyles.BorderedPurple,
+                style: ButtonStyles.Transparent,
                 icon: "edit_program",
                 ariaId: "C0",
                 x: -25,
@@ -33,9 +33,9 @@ namespace microcode {
 
             this.samplesBtn = new Button({
                 parent: null,
-                style: ButtonStyles.BorderedPurple,
+                style: ButtonStyles.Transparent,
                 icon: "rock_paper_scissors",
-                ariaId: "C0",
+                ariaId: "C1",
                 x: 25,
                 y: 30,
                 onClick: () => {
