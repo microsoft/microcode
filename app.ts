@@ -18,6 +18,7 @@ namespace microcode {
             setTimeout(() => {
                 controller.setRepeatDefault(250, 30)
                 keymap.setupKeys()
+                pointerevents.setup()
                 icons.init()
                 jdc.start()
                 this.sceneManager = new SceneManager()
