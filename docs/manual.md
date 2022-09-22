@@ -49,3 +49,8 @@ Clicking on the simulator link will open a page with the MicroCode web app on th
 Click on the micro:bit button at the lower right of the screen and follow the
 on-screen instructions to configure your micro:bit and pair it with the editor.
 Once your micro:bit V2 is paired, the web editor will be able to download the program in your microbit.
+
+## Contributing
+
+This project is open source and welcomes contributions and suggestions at https://github.com/microsoft/microcode.
+Read the [developer instructions](./develop.md).
