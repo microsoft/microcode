@@ -6,3 +6,5 @@ remote-theme: jekyll-dash
 include:
   - assets
   - README.md
+plugins:
+  - jekyll-remote-theme
