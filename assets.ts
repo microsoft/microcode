@@ -1934,7 +1934,43 @@ f f f f f f f f f f f f f f f f
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-
+export const largeEditIcon = img`
+    ....666666666666666666666666....
+    ..6666666666666666666666666666..
+    .666666666666666666666666666666.
+    .66666666666666666666666ee66666.
+    66666666666666666666666e44e66666
+    6666666666666666666666ee442e6666
+    666666666666666666666e15e222e666
+    66666666666666666666e155ee2ee666
+    6666666666666666666e155e44eee666
+    666666666666666666e155e44eee6666
+    ccccccccccccccccce155e44eeeccccc
+    bbbbbbbbbbbbbbbbe155e44eeebbbbbb
+    bbbbbbbbbbbbbbbe155e44eeebbbbbbb
+    111111bbb11111e155e44eeebcbcbcbb
+    1111111b11111e155e44eeebbbbbbbcb
+    1111111b1111ede5e44eeebbbbbbbbbb
+    1111111b1111edde44eeebbbbbbbbbcb
+    1111111b1111edddeeeebbbbb1bbbbbb
+    1111111b1111eedddeebcbbb111bbbcb
+    1111111b1111eeeeee1bbbbbc1cbbbbb
+    1111111b11111111111bcbbbbcbbbbcb
+    1111111b11111111111bbbbbbbbbbbbb
+    111111cbc111111111cbcbbbbbbbbbcb
+    ccccccbbbcccccccccbbbcbcbcbcbcbb
+    bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    cccccccccccccccccccccccccccccccc
+    66666666666666666666666666666666
+    b666666666666666666666666666666b
+    .666666666666666666666666666666.
+    .b6666666666666666666666666666b.
+    ..bb666666666666666666666666bb..
+    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+`
+    
+    
     export const sampleFlashingHeart = img`
     ....ffffffffffffffffffffffff....
     ..ffffffffffffffffffffffffffff..
