@@ -53,6 +53,10 @@ namespace microcode {
             this.reg["dice"] = icondb.sampleDice
             this.reg["rock_paper_scissors"] = icondb.sampleRockPaperScissors
             this.reg["teleport_duck"] = icondb.sampleTeleportDuck
+            this.reg["pet_hamster"] = icondb.samplePetHamster
+            this.reg["heads_tails"] = icondb.sampleHeadsOrTails
+            this.reg["reaction_time"] = icondb.sampleReactionTime
+            this.reg["hot_potato"] = icondb.sampleHotPotato
             this.reg["solid_red"] = icondb.solid_red
             this.reg["solid_black"] = icondb.solid_black
 
@@ -74,7 +78,8 @@ namespace microcode {
             this.reg[TID_FILTER_BUTTON_B] = icondb.tile_button_b
             this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short
             this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long
-            this.reg[TID_FILTER_TIMESPAN_VERY_LONG] = icondb.tile_timespan_fiveSeconds
+            this.reg[TID_FILTER_TIMESPAN_VERY_LONG] =
+                icondb.tile_timespan_fiveSeconds
             this.reg[TID_FILTER_TIMESPAN_RANDOM] = icondb.tile_timespan_random
             this.reg[TID_FILTER_VALUE_1] = icondb.tile_value_1
             this.reg[TID_FILTER_VALUE_2] = icondb.tile_value_2
@@ -1462,7 +1467,7 @@ namespace icondb {
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
-export const speakerFun = img`
+    export const speakerFun = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . 3 . . . 5 . . .
     . . . . . . . 3 . . . . . . 2 .
@@ -1976,7 +1981,7 @@ f f f f f f f f f f f f f f f f
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
-export const largeEditIcon = img`
+    export const largeEditIcon = img`
     ....666666666666666666666666....
     ..6666666666666666666666666666..
     .666666666666666666666666666666.
@@ -2048,6 +2053,7 @@ export const largeNewProgramIcon = img`
     ....bbbbb..............bbbbb....
 `
     
+
     export const sampleFlashingHeart = img`
     ....ffffffffffffffffffffffff....
     ..ffffffffffffffffffffffffffff..
@@ -2258,7 +2264,7 @@ export const largeNewProgramIcon = img`
     ..bb111111111111111111111111bb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
-export const samplePetHamster = img`
+    export const samplePetHamster = img`
     ....999999999999999999999999....
     ..9999999999999999999999999999..
     .999999999999999999999999999999.
@@ -2293,8 +2299,8 @@ export const samplePetHamster = img`
     ..bb777777777777777777777777bb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
-    
-export const sampleHeadsOrTails = img`
+
+    export const sampleHeadsOrTails = img`
     ....111111111111111111111111....
     ..1111111fff111111111111111111..
     .1111111f1111111111111111111111.
@@ -2329,8 +2335,8 @@ export const sampleHeadsOrTails = img`
     ..bb111111114444444445555555bb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
-    
-export const sampleReactionTime = img`
+
+    export const sampleReactionTime = img`
     ...ffffffffffffffffff4555555....
     ..fffffffffffffff1ff455555554f..
     .ffffffffff1fffff1ff45555554fff.
@@ -2365,7 +2371,7 @@ export const sampleReactionTime = img`
     ..bbddddddddddddddddddddddddbb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
-export const sampleHotPotato = img`
+    export const sampleHotPotato = img`
     ....ffffffffffffffffffffffff....
     ..ffffffffffffff5fffffffffffff..
     .fffffffffffffff55fffffffffffff.
@@ -2400,8 +2406,7 @@ export const sampleHotPotato = img`
     ..bbffffffffffffffffffffffffbb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
-    
-    
+
     export const settingsGear = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . d d . . . . . . .

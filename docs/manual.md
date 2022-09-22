@@ -13,7 +13,7 @@ Young coder editor for the [micro:bit V2](https://microbit.org).
 There are two ways to run MicroCode:
 
 -   micro:bit V2 + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
--   [web editor](https://microsoft.github.io/microcode) with or without micro:bit V2
+-   [web editor](https://aka.ms/microcode) with or without micro:bit V2
 
 See below for more information about the MicroCode web app, micro:bit simulator, and how to deploy MicroCode to the micro:bit V2. Regardless of which way you run MicroCode, you will probably want to know a little bit about the MicroCode 
 or the 
@@ -23,7 +23,7 @@ or the
 
 ## Web editor
 
-The easiest way to get started with MicroCode is through the web editor ([https://microsoft.github.io/microcode](https://microsoft.github.io/microcode), shown below). We recommend using the keyboard navigation or a real gamepad!
+The easiest way to get started with MicroCode is through the web editor ([https://aka.ms/microcode](https://aka.ms/microcode), shown below). We recommend using the keyboard navigation or a real gamepad!
 
 -   Arrow keys for D-pad
 -   Space bar for A button

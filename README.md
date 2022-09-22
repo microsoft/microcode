@@ -1,4 +1,4 @@
-# Microsoft MicroCode
+# [Microsoft MicroCode](https://aka.ms/microcode)
 
 Microsoft MicroCode is a [MakeCode Arcade](https://arcade.makecode.com/) application that allows the creation, modification, and execution of simple reactive programs for microcontroller-based target devices such as the [BBC micro:bit](https://microbit.org) and [Jacdac brains](https://microsoft.github.io/jacdac-docs/start/brains/).
 

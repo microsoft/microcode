@@ -1,6 +1,6 @@
 {
     "name": "microcode",
-    "version": "1.0.37",
+    "version": "1.0.39",
     "description": "Coding microcontrollers using Arcade",
     "dependencies": {
         "game---light": "*",
@@ -41,7 +41,8 @@
         "options.ts",
         "samples.ts",
         "docs.ts",
-        "gallery.ts"
+        "gallery.ts",
+        "pointerevents.ts"
     ],
     "testFiles": [],
     "targetVersions": {

@@ -15,32 +15,30 @@ namespace microcode {
                 y = -55
             this.sampleButtons = []
             let rowButtons: Button[] = []
-            samples()
-                .slice(1)
-                .forEach(sample => {
-                    const btn = new Button({
-                        parent: null,
-                        style: ButtonStyles.BorderedPurple,
-                        icon: sample.icon,
-                        ariaId: sample.ariaId,
-                        x: x + 16,
-                        y: y + 16,
-                        onClick: () => {
-                            settings.writeString(SAVESLOT_AUTO, sample.src)
-                            this.app.popScene()
-                            this.app.pushScene(new Editor(this.app))
-                        },
-                    })
-                    this.sampleButtons.push(btn)
-                    rowButtons.push(btn)
-                    x += 38
-                    if (x + 32 > 75) {
-                        this.navigator.addButtons(rowButtons)
-                        rowButtons = []
-                        y += 38
-                        x = -72
-                    }
+            samples().forEach(sample => {
+                const btn = new Button({
+                    parent: null,
+                    style: ButtonStyles.Transparent,
+                    icon: sample.icon,
+                    ariaId: sample.ariaId,
+                    x: x + 16,
+                    y: y + 16,
+                    onClick: () => {
+                        settings.writeString(SAVESLOT_AUTO, sample.src)
+                        this.app.popScene()
+                        this.app.pushScene(new Editor(this.app))
+                    },
                 })
+                this.sampleButtons.push(btn)
+                rowButtons.push(btn)
+                x += 38
+                if (x + 32 > 75) {
+                    this.navigator.addButtons(rowButtons)
+                    rowButtons = []
+                    y += 38
+                    x = -72
+                }
+            })
             this.navigator.addButtons(rowButtons)
         }
 
@@ -65,31 +63,15 @@ namespace microcode {
         }
 
         /* override */ draw() {
+            Screen.fillRect(
+                Screen.LEFT_EDGE,
+                Screen.TOP_EDGE,
+                Screen.WIDTH,
+                Screen.HEIGHT,
+                0xc
+            )
             this.sampleButtons.forEach(s => s.draw())
             super.draw()
         }
     }
 }
-
-/* 
-
-            this.carouselBtn = new Button({
-                parent: null,
-                style: ButtonStyles.Transparent,
-                icon: CAROUSEL_ITEMS[this.carouselCounter].icon,
-                ariaId: "N0",
-                x: 0,
-                y: 40,
-                onClick: () => {
-                    if (this.carouselCounter !== 0) {
-                        settings.writeString(
-                            SAVESLOT_AUTO,
-                            CAROUSEL_ITEMS[this.carouselCounter].src
-                        )
-                    }
-                    this.app.popScene()
-                    this.app.pushScene(new Editor(this.app))
-                },
-            })
-            
-*/
