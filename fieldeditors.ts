@@ -16,7 +16,7 @@ namespace microcode {
             for (let col = 0; col < 5; col++) {
                 btns.push({
                     icon: getColor(col, row),
-                    style: ButtonStyles.BorderedPurple,
+                    style: ButtonStyles.Transparent,
                 })
             }
             picker.addGroup({ label: row.toString(), btns })
