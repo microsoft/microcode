@@ -52,12 +52,7 @@ namespace microcode {
             const btns: Button[] = [this.editBtn, this.samplesBtn]
 
             this.navigator.addButtons(btns)
-
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.menu.id,
-                () => this.renderSamples()
-            )
+            // handle menu?
         }
 
         private renderSamples() {
