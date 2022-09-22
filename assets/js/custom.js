@@ -80,9 +80,24 @@ addSimMessageHandler("jacscript", async data => {
         })
         for (const service of services) {
             const dev = service.device
-            const productIdentifier = dev.productIdentifier ? dev.productIdentifier.toString(16) : ''
+            const MICROCODE_PID = "3e92f825"
+            const productIdentifier = dev.productIdentifier
+                ? dev.productIdentifier.toString(16)
+                : ""
             const firmwareVersion = dev.firmwareVersion
-            console.debug(`jacscript: deploying to ${service} (pid: ${productIdentifier}, fw: ${firmwareVersion})`)
+            const currentFirmwareVersion = document.body.dataset.version
+            console.debug(
+                `jacscript: deploying to ${service} (pid: ${productIdentifier}, cpid: ${MICROCODE_PID}, fw: ${firmwareVersion}, cfw: ${currentFirmwareVersion})`
+            )
+
+            if (
+                (productIdentifier && productIdentifier !== MICROCODE_PID) ||
+                (currentFirmwareVersion &&
+                    firmwareVersion &&
+                    currentFirmwareVersion !== firmwareVersion)
+            ) {
+                console.debug(`outdated firmware`)
+            }
 
             try {
                 connectEl.innerText = "micro:bit downloading..."
