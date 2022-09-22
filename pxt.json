@@ -40,7 +40,8 @@
         "cursorscene.ts",
         "options.ts",
         "samples.ts",
-        "docs.ts"
+        "docs.ts",
+        "gallery.ts"
     ],
     "testFiles": [],
     "targetVersions": {

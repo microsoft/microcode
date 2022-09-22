@@ -9,7 +9,7 @@ namespace microcode {
             this.color = 11
         }
 
-        private moveCursor(dir: CursorDir) {
+        protected moveCursor(dir: CursorDir) {
             const target = this.cursor.move(dir)
 
             if (!target) return
