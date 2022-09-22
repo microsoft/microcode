@@ -35,6 +35,7 @@ function makeCodeRun(options) {
             code.replace(/^\/\/\s+meta=([^\n]+)\n/m, function (m, metasrc) {
                 meta = JSON.parse(metasrc);
             })
+            document.body.dataset.version = meta.version
             const vel = document.getElementById("version");
             if (meta.version && vel) {
                 const ap = document.createElement("a");
