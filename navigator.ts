@@ -244,9 +244,9 @@ namespace microcode {
             let color = btn.getIcon()
             let status
 
-            if (color == TID_MODIFIER_COLOR_RED) {
+            if (color == "solid_red") {
                 status = "on"
-            } else if (color == TID_MODIFIER_COLOR_DARKPURPLE) {
+            } else if (color == "solid_black") {
                 status = "off"
             } else {
                 status = "unknown"
