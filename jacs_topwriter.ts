@@ -351,8 +351,6 @@ namespace jacs {
         private finalize() {
             for (const r of this.roles) r.finalize()
             this.withProcedure(this.mainProc, wr => {
-                // wait for autobind to finish
-                wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(1000)])
                 this.emitClearScreen()
                 wr.emitCall(this.pageProc(1).index, [])
                 wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
@@ -494,7 +492,7 @@ namespace jacs {
                 this.emitLoadBuffer(params[i])
                 this.emitSendCmd(role, actuator.serviceCommand)
                 if (i != params.length - 1) {
-                    wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(delay)])
+                    this.emitSleep(delay)
                     if (lockvar)
                         wr.emitIf(
                             wr.emitExpr(OpExpr.EXPR2_NE, [
@@ -600,7 +598,7 @@ namespace jacs {
                 if (m.category == "pipe_out") {
                     const pv = this.pipeVar(m.jdParam)
                     pv.write(wr, this.currValue().read(wr))
-                    wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(50)])
+                    this.emitSleep(ANTI_FREEZE_DELAY)
                     this.emitSendCmd(
                         this.pipeRole(m.jdParam),
                         CMD_CONDITION_FIRE
@@ -678,7 +676,7 @@ namespace jacs {
                     }
                 }
                 if (period == 0 && randomPeriod == 0) period = 1000 // reasonable default
-                if (period == 0) period = 20
+                if (period == 0) period = ANTI_FREEZE_DELAY
                 this.withProcedure(this.pageProc(this.currPageId), wr => {
                     // first, terminate any previous one
                     wr.emitStmt(OpStmt.STMT1_TERMINATE_FIBER, [
@@ -760,9 +758,16 @@ namespace jacs {
             ])
         }
 
+        emitSleep(ms: number) {
+            this.writer.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(ms)])
+        }
+
         private emitClearScreen() {
             const scr = this.lookupRole("dotMatrix", 0)
-            this.emitLoadBuffer(Buffer.create(5))
+            this.emitLoadBuffer(hex`00 00 04 00 00`)
+            this.emitSendCmd(scr, jacs.CMD_SET_REG | 0x2)
+            this.emitSleep(50)
+            this.emitLoadBuffer(hex`00 00 00 00 00`)
             this.emitSendCmd(scr, jacs.CMD_SET_REG | 0x2)
         }
 
@@ -864,4 +869,7 @@ namespace jacs {
 
     export const JD_REG_STREAMING_SAMPLES = 3
     export const JD_REG_INTENSITY = 1
+
+    // delay on sending stuff in pipes and changing pages
+    export const ANTI_FREEZE_DELAY = 50
 }
