@@ -52,7 +52,7 @@ namespace microcode {
                 btn.xfrm.parent = this.xfrm
                 const row = Math.floor(idx / MAX_PER_ROW)
                 btn.xfrm.localPos.x =
-                    (idx % MAX_PER_ROW) * cell.width + (idx % MAX_PER_ROW)
+                    (cell.width >> 1) + (idx % MAX_PER_ROW) * cell.width + (idx % MAX_PER_ROW)
                 btn.xfrm.localPos.y = row * cell.height
             })
             this.bounds = new Bounds()
@@ -180,14 +180,10 @@ namespace microcode {
 
         draw() {
             if (this.visible) {
-                const left = this.panel.left
-                const right = this.panel.right - 1
-                const top = this.panel.top
-                const bottom = this.panel.bottom - 1
                 Screen.fillBoundsXfrm(this.xfrm, this.panel, 12)
                 Screen.outlineBoundsXfrm(this.xfrm, this.panel, 1, 15)
                 if (this.title) {
-                    Screen.print(this.title, left + 2, top + 4, 1, image.font8)
+                    Screen.print(this.title, this.panel.left + 2, this.panel.top + 4, 1, image.font8)
                 }
                 this.groups.forEach(group => group.draw())
                 if (this.deleteBtn) this.deleteBtn.draw()
@@ -195,10 +191,6 @@ namespace microcode {
         }
 
         private layout() {
-            if (this.deleteBtn) {
-                this.navigator.addButtons([this.deleteBtn])
-            }
-
             this.panel = new Bounds()
 
             let top = 2
@@ -223,6 +215,7 @@ namespace microcode {
                     this.panel.right - (this.deleteBtn.width >> 1) + 1
                 this.deleteBtn.xfrm.localPos.y =
                     this.panel.top + (this.deleteBtn.height >> 1)
+                this.navigator.addButtons([this.deleteBtn])
             }
 
             this.panel.grow(2)
