@@ -56,12 +56,6 @@ namespace microcode {
             this.color = 15
         }
 
-        /* override */ deactivate() {}
-
-        /* override */ update() {
-            super.update()
-        }
-
         /* override */ draw() {
             Screen.fillRect(
                 Screen.LEFT_EDGE,
