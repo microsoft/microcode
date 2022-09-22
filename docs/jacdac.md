@@ -1,4 +1,4 @@
-## Jacdac
+# Jacdac
 
 MicroCode integrates with [Jacdac](https://aka.ms.jacdac) in several ways
 

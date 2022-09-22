@@ -45,6 +45,7 @@ namespace microcode {
             this.reg["prev_page"] = icondb.btn_prev_page
             this.reg["rule_handle"] = icondb.rule_handle
             this.reg["paint"] = icondb.paint
+            this.reg["edit_program"] = icondb.largeEditIcon
             this.reg["MISSING"] = icondb.MISSING
             this.reg["flashing_heart"] = icondb.sampleFlashingHeart
             this.reg["smiley_buttons"] = icondb.sampleSmileyButtons
@@ -52,6 +53,12 @@ namespace microcode {
             this.reg["dice"] = icondb.sampleDice
             this.reg["rock_paper_scissors"] = icondb.sampleRockPaperScissors
             this.reg["teleport_duck"] = icondb.sampleTeleportDuck
+            this.reg["pet_hamster"] = icondb.samplePetHamster
+            this.reg["heads_tails"] = icondb.sampleHeadsOrTails
+            this.reg["reaction_time"] = icondb.sampleReactionTime
+            this.reg["hot_potato"] = icondb.sampleHotPotato
+            this.reg["solid_red"] = icondb.solid_red
+            this.reg["solid_black"] = icondb.solid_black
 
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
@@ -71,7 +78,8 @@ namespace microcode {
             this.reg[TID_FILTER_BUTTON_B] = icondb.tile_button_b
             this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short
             this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long
-            this.reg[TID_FILTER_TIMESPAN_VERY_LONG] = icondb.tile_timespan_fiveSeconds
+            this.reg[TID_FILTER_TIMESPAN_VERY_LONG] =
+                icondb.tile_timespan_fiveSeconds
             this.reg[TID_FILTER_TIMESPAN_RANDOM] = icondb.tile_timespan_random
             this.reg[TID_FILTER_VALUE_1] = icondb.tile_value_1
             this.reg[TID_FILTER_VALUE_2] = icondb.tile_value_2
@@ -250,6 +258,45 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+
+    export const solid_red = img`
+    . . . . . . . . . . . . . . . .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . . . . . . . . . . . . . . . .
+`
+
+    export const solid_black = img`
+    . . . . . . . . . . . . . . . .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . . . . . . . . . . . . . . . .
+`
+
     export const ui_when = img`
         . 7 7 7 7 7 7 7 .
         . 7 7 7 1 1 1 7 .
@@ -1420,7 +1467,7 @@ namespace icondb {
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 `
-export const speakerFun = img`
+    export const speakerFun = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . 3 . . . 5 . . .
     . . . . . . . 3 . . . . . . 2 .
@@ -1934,6 +1981,41 @@ f f f f f f f f f f f f f f f f
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
+    export const largeEditIcon = img`
+    ....666666666666666666666666....
+    ..6666666666666666666666666666..
+    .666666666666666666666666666666.
+    .66666666666666666666666ee66666.
+    66666666666666666666666e44e66666
+    6666666666666666666666ee442e6666
+    666666666666666666666e15e222e666
+    66666666666666666666e155ee2ee666
+    6666666666666666666e155e44eee666
+    666666666666666666e155e44eee6666
+    ccccccccccccccccce155e44eeeccccc
+    bbbbbbbbbbbbbbbbe155e44eeebbbbbb
+    bbbbbbbbbbbbbbbe155e44eeebbbbbbb
+    111111bbb11111e155e44eeebcbcbcbb
+    1111111b11111e155e44eeebbbbbbbcb
+    1111111b1111ede5e44eeebbbbbbbbbb
+    1111111b1111edde44eeebbbbbbbbbcb
+    1111111b1111edddeeeebbbbb1bbbbbb
+    1111111b1111eedddeebcbbb111bbbcb
+    1111111b1111eeeeee1bbbbbc1cbbbbb
+    1111111b11111111111bcbbbbcbbbbcb
+    1111111b11111111111bbbbbbbbbbbbb
+    111111cbc111111111cbcbbbbbbbbbcb
+    ccccccbbbcccccccccbbbcbcbcbcbcbb
+    bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    cccccccccccccccccccccccccccccccc
+    66666666666666666666666666666666
+    b666666666666666666666666666666b
+    .666666666666666666666666666666.
+    .b6666666666666666666666666666b.
+    ..bb666666666666666666666666bb..
+    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+`
 
     export const sampleFlashingHeart = img`
     ....ffffffffffffffffffffffff....
@@ -2057,22 +2139,22 @@ f f f f f f f f f f f f f f f f
     ffffff4511154fffffff5ff5ffffffff
     fffffff45554ffffffffff5fffffffff
     ffffffff444fffff444fffffffffffff
-    fffffffffffffff44144fff5555fffff
-    fffffffffffff44441144fffffffffff
-    ffffffffffff4141141144ffffffffff
-    ffffffffffff4414114144444fffffff
-    ffffffffffff414141144141144fffff
-    ffffffffffff4414141141141114ffff
-    ffffffffffff41414141141144114fff
-    fffff5555fff44141411111114114fff
-    ffffffffffff41414111111114414fff
-    fffffffff5fff4141111111111414fff
-    ffffffff5fffff411111111111414fff
-    fffffff5ff5ffff41111111111414fff
-    bfffffffff5fffff41111111111414fb
-    .fffffffff5ffffff4111111111414f.
-    .bffffffffffffffff444111111411b.
-    ..bbfffffffffffffffff4111111bb..
+    fffffffffffffff44544fff5555fffff
+    fffffffffffff44445544fffffffffff
+    ffffffffffff4545545544ffffffffff
+    ffffffffffff4454554544444fffffff
+    ffffffffffff454545544545544fffff
+    ffffffffffff4454545545545554ffff
+    ffffffffffff45454545545544554fff
+    fffff5555fff44545455555554554fff
+    ffffffffffff45454555555554454fff
+    fffffffff5fff4545555555555454fff
+    ffffffff5fffff455555555555454fff
+    fffffff5ff5ffff45555555555454fff
+    bfffffffff5fffff45555555555454fb
+    .fffffffff5ffffff4555555555454f.
+    .bffffffffffffffff444555555455b.
+    ..bbfffffffffffffffff4555555bb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
     export const sampleRockPaperScissors = img`
@@ -2145,6 +2227,149 @@ f f f f f f f f f f f f f f f f
     ..bb111111111111111111111111bb..
     ....bbbbbbbbbbbbbbbbbbbbbbbb....
 `
+    export const samplePetHamster = img`
+    ....999999999999999999999999....
+    ..9999999999999999999999999999..
+    .999999999999999999999999999999.
+    .999999999999929299999911999999.
+    99999999999992422299999999999999
+    99999999999992222299999999999999
+    99991199999999222999999999999999
+    99911119999999929999999999999999
+    99111111999999999999999999999999
+    9999999999fff99999fff99999119999
+    999999999fdddfffffdddf9991111999
+    999999999fd3ee444ee3df9911111199
+    999999999fdeddeeeddedf9999999999
+    999999999fed1fddd1fdef9999999999
+    99999999fdddffdddffdddf999999999
+    9999999fd333ddd2ddd333df99999999
+    9999999fd333dfdfdfd333df99999999
+    9999999fd333ddfffdd333df99999999
+    19999999fdddddddddddddf999999999
+    119999999fffdddddddfff9999999999
+    1111999999fffffffffff99999999911
+    999999999feeedddddeeef9999999999
+    999999999feeeedddeeeef9999999999
+    999999999ffddfeeefddff9999999999
+    777777777feffeeeeeffef6777777777
+    777771777feef44f44feef6717777177
+    7777777777fffffffffff67777777777
+    77717777777777777777777777717777
+    b777771777777777771777777715177b
+    .777715177777177715177777771777.
+    .b7777177777777777177777777777b.
+    ..bb777777777777777777777777bb..
+    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+`
+
+    export const sampleHeadsOrTails = img`
+    ....111111111111111111111111....
+    ..1111111fff111111111111111111..
+    .1111111f1111111111111111111111.
+    .111111f11ff1111111111111111111.
+    111111111f1111111111111111111111
+    11111111111111111111111111111111
+    11111111111116611111111111111111
+    11111111111169961111111111111111
+    11111111111169996111111111111111
+    11111111111116999611111111111111
+    11111111111111699611111111111111
+    11111111111111166111f1f111111111
+    11111111111111111111f1f111111111
+    1111111111111111111f11f111111111
+    111111111111111111111f1111111111
+    11111111111111111111f11111111111
+    11111111111111441111111111111111
+    11111111111114541111111111111111
+    11111111111114554411111111111111
+    11111111111114455444111111111111
+    11111111111111445554111111111111
+    11111111114444445555411111111111
+    11111111114555544555411111111111
+    11111111144455555455441111111111
+    11111111145544455455544111111111
+    11111111144555544455554411111111
+    11111111114445555455555541111111
+    11111111114544444455555554111111
+    b111111111455555545555555544111b
+    .111111111144444445555555555411.
+    .b1111111114555554554555555554b.
+    ..bb111111114444444445555555bb..
+    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+`
+
+    export const sampleReactionTime = img`
+    ...ffffffffffffffffff4555555....
+    ..fffffffffffffff1ff455555554f..
+    .ffffffffff1fffff1ff45555554fff.
+    .ffffffffff1f1fff1ff45555554fff.
+    fffff1fffff1f1f1f1ff4555554fffff
+    fffff1fffff1f1f1f1f45555554fffff
+    fffff1fffff1f1fff1f4555554ffffff
+    fffff1fffff1f1ffff45555554f1ffff
+    f1fff1fffff1fff4445555554ff1ffff
+    f1fff1fffff1ff45555555554ff1ffff
+    f1fff1fffffff455555555554ff1ffff
+    f1fff1ffffff455555555554fff1ff1f
+    f1fff1fffff4555555555554fff1ff1f
+    ff1fff1fff45455555555554fff1ff1f
+    ff1fff1ff45454555555554ffff1ff1f
+    ff1fff1ff44545455555554ffff1ff1f
+    ff1fff1ff4545454554554ffff1fff1f
+    ff1fff1ff445454554554fffff1fff1f
+    ff1fff1ff45454554454ffffff1ff1ff
+    ff1fff1ff4454554f44fffffff1ff1ff
+    ff1fff1ff454554fffffffffff1ff1ff
+    fff1ff1fff4444ffffffffffff1ff1ff
+    fff1ff1fffffffffffffffffff1ff1ff
+    fff1ffffffffffffffffffffff1ff1ff
+    fff1fffffffff4444444ffffff1fffff
+    ffffffffffff444444444fffffffffff
+    fffffffffffe444444444effffffffff
+    ddddddddddfe244444442efddddddddd
+    bdddddddddfee2222222eefddddddddb
+    .ddddddddddfeeeeeeeeefddddddddd.
+    .bddddddddddfffffffffdddddddddb.
+    ..bbddddddddddddddddddddddddbb..
+    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+`
+    export const sampleHotPotato = img`
+    ....ffffffffffffffffffffffff....
+    ..ffffffffffffff5fffffffffffff..
+    .fffffffffffffff55fffffffffffff.
+    .fffffffff5f255f22fffffffffffff.
+    fffffff25f22f255f2ffffffffffffff
+    ffffff522ff22222522ff2ffffffffff
+    ffffff5525552542252252ff5f2fffff
+    ffffff24252555542252552f5522ffff
+    ffff4425455244455252252f55524fff
+    ffff444554422444444544525254ffff
+    fffff444554ddddddd4444525254ffff
+    ffffff54444dddedddd44442525fffff
+    ffffff5444dddddddeddd4424222ffff
+    fffff45544eddddddddddd42442fffff
+    ffffff4544eddeddddddddd44455ffff
+    ffffff4544eddddddeddddd44445ffff
+    ff54455454eddddddddddded4455ffff
+    fff54444444edddddddedddd445fffff
+    ffff5522544eeddddddddddd44ffffff
+    fffff5524444edddedddddddd4ffffff
+    ffffff555444eeddddddedded4ffffff
+    fffffffff5544edddddddddde4ffffff
+    ffffffffff554edddedddddd44ffffff
+    fffffffffff54eedddddeddd44ffffff
+    ffffffffffff44eddddddddd44ffffff
+    ffffffffffff44eedddddeee44ffffff
+    fffffffffffff44eeddeeee44fffffff
+    fffffffffffff444eeee44444fffffff
+    bfffffffffffff4444444444fffffffb
+    .fffffffffffffff44444ffffffffff.
+    .bffffffffffffffffffffffffffffb.
+    ..bbffffffffffffffffffffffffbb..
+    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+`
+
     export const settingsGear = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . d d . . . . . . .

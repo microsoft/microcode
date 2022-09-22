@@ -1,9 +1,7 @@
 namespace microcode {
     export class Home extends CursorScene {
-        carouselBtn: Button
-        selectBtnL: Button
-        selectBtnR: Button
-        carouselCounter: number
+        samplesBtn: Button
+        editBtn: Button
 
         constructor(app: App) {
             super(app)
@@ -19,69 +17,34 @@ namespace microcode {
 
         /* override */ startup() {
             super.startup()
-            this.carouselCounter = 0
-            const CAROUSEL_ITEMS = samples()
-            const updateCarouselBtn = () => {
-                this.carouselBtn.setIcon(
-                    CAROUSEL_ITEMS[this.carouselCounter].icon
-                )
-                this.carouselBtn.ariaId =
-                    CAROUSEL_ITEMS[this.carouselCounter].ariaId
-                this.carouselBtn.label =
-                    CAROUSEL_ITEMS[this.carouselCounter].label
-            }
 
-            this.selectBtnL = new Button({
+            this.editBtn = new Button({
                 parent: null,
-                style: ButtonStyles.BorderedPurple,
-                icon: "prev_page",
+                style: ButtonStyles.Transparent,
+                icon: "edit_program",
                 ariaId: "C0",
-                x: -32,
-                y: 40,
+                x: -25,
+                y: 30,
                 onClick: () => {
-                    if (this.carouselCounter > 0) this.carouselCounter--
-                    updateCarouselBtn()
-                },
-            })
-
-            this.carouselBtn = new Button({
-                parent: null,
-                style: ButtonStyles.FlatWhite,
-                icon: CAROUSEL_ITEMS[this.carouselCounter].icon,
-                ariaId: "N0",
-                x: 0,
-                y: 40,
-                onClick: () => {
-                    if (this.carouselCounter !== 0) {
-                        settings.writeString(
-                            SAVESLOT_AUTO,
-                            CAROUSEL_ITEMS[this.carouselCounter].src
-                        )
-                    }
                     this.app.popScene()
                     this.app.pushScene(new Editor(this.app))
                 },
             })
 
-            this.selectBtnR = new Button({
+            this.samplesBtn = new Button({
                 parent: null,
-                style: ButtonStyles.BorderedPurple,
-                icon: "next_page",
+                style: ButtonStyles.Transparent,
+                icon: "rock_paper_scissors",
                 ariaId: "C1",
-                x: 32,
-                y: 40,
+                x: 25,
+                y: 30,
                 onClick: () => {
-                    if (this.carouselCounter < CAROUSEL_ITEMS.length - 1)
-                        this.carouselCounter++
-                    updateCarouselBtn()
+                    this.app.popScene()
+                    this.app.pushScene(new SamplesGallery(this.app))
                 },
             })
 
-            const btns: Button[] = [
-                this.selectBtnL,
-                this.carouselBtn,
-                this.selectBtnR,
-            ]
+            const btns: Button[] = [this.editBtn, this.samplesBtn]
 
             this.navigator.addButtons(btns)
 
@@ -94,13 +57,17 @@ namespace microcode {
 
         private renderSamples() {
             this.app.popScene()
-            for (const sample of samples().slice(2)) {
+            for (const sample of samples()) {
                 console.log(`render ${sample.label}`)
                 settings.writeString(SAVESLOT_AUTO, sample.src)
                 const editor = new Editor(this.app)
                 this.app.pushScene(editor)
                 pause(500)
-                dumpProgram(editor, `sample_${sample.label}`, icons.get(sample.icon))
+                dumpProgram(
+                    editor,
+                    `sample_${sample.label}`,
+                    icons.get(sample.icon)
+                )
             }
         }
 
@@ -141,18 +108,17 @@ namespace microcode {
             Screen.drawTransparentImage(
                 wordLogo,
                 Screen.LEFT_EDGE + ((Screen.WIDTH - wordLogo.width) >> 1) + dx,
-                Screen.TOP_EDGE + 50 + dx + this.yOffset
+                Screen.TOP_EDGE + 40 + dx + this.yOffset
             )
             Screen.drawTransparentImage(
                 microbitLogo,
                 Screen.LEFT_EDGE +
                     ((Screen.WIDTH - microbitLogo.width) >> 1) +
                     dx,
-                Screen.TOP_EDGE + 50 - wordLogo.height + dx + this.yOffset
+                Screen.TOP_EDGE + 40 - wordLogo.height + dx + this.yOffset
             )
-            this.selectBtnL.draw()
-            this.carouselBtn.draw()
-            this.selectBtnR.draw()
+            this.samplesBtn.draw()
+            this.editBtn.draw()
 
             super.draw()
         }

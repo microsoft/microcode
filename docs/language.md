@@ -1,8 +1,8 @@
-![Happy/Sad MicroCode program](/images/happy_sad.jpg)
+![Smiley Button MicroCode program](./images/happy_sad.jpg)
 
-## Language
+# MicroCode Language
 
-Te MicroCode language is defined in terms of pages, where a page has a list of rules,
+The MicroCode language is defined in terms of pages, where a page has a list of rules,
 and each rule consists of a **When** section and a **Do** section, each with a list of programming
 **tiles**. The **When** section begins with a **sensor** tile, followed optionally by one or more
 **filters** on the sensor. The **Do** section begins with an **actuator** (or **action**), followed optional by one

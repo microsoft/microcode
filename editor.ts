@@ -30,8 +30,6 @@ namespace microcode {
         private progdef: ProgramDefn
         private currPage: number
         private pageBtn: Button
-        private prevPageBtn: Button
-        private nextPageBtn: Button
         private pageEditor: PageEditor
         public cursor: Cursor
         private _changed: boolean
@@ -95,20 +93,6 @@ namespace microcode {
             new jacs.TopWriter().emitProgram(this.progdef)
         }
 
-        private nextPage() {
-            let index = this.currPage + 1
-            index %= this.progdef.pages.length
-            this.switchToPage(index, false)
-        }
-
-        private prevPage() {
-            let index = this.currPage - 1
-            if (index < 0) {
-                index = this.progdef.pages.length - 1
-            }
-            this.switchToPage(index, false)
-        }
-
         private pickPage() {
             // TODO: supply button labels
             const btns: PickerButtonDef[] = PAGE_IDS.map(pageId => {
@@ -116,7 +100,7 @@ namespace microcode {
                     icon: pageId,
                 }
             })
-            this.picker.addGroup({ label: "", btns })
+            this.picker.addGroup({ btns })
             this.picker.show({
                 onClick: iconId => {
                     const index = PAGE_IDS.indexOf(iconId)
@@ -145,7 +129,7 @@ namespace microcode {
             )
             this.rebuildNavigator()
             if (initCursor) {
-                const btn = this.navigator.initialCursor(this.cursor)
+                const btn = this.navigator.initialCursor(1, 1)
                 if (btn) this.snapCursorTo(btn)
             }
         }
@@ -188,7 +172,7 @@ namespace microcode {
             })
             const occ = target.occlusions(occBounds)
 
-            if (occ.has) {
+            if (occ.has && !this.picker.visible) { // don't scroll if picker is visible
                 if (this.scrollroot.xfrm.localPos.x !== this.scrollDest.x)
                     return // Already animating
                 this.scrollStartMs = control.millis()
@@ -232,7 +216,11 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.menu.id,
-                () => microcode.dumpProgram(this, "editor", undefined)
+                () => {
+                    // go back to home screen
+                    this.app.popScene()
+                    this.app.pushScene(new Home(this.app))
+                }
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
@@ -268,25 +256,9 @@ namespace microcode {
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
                 icon: PAGE_IDS[this.currPage],
-                x: 0,
+                x: Screen.RIGHT_EDGE - 16,
                 y: 8,
                 onClick: () => this.pickPage(),
-            })
-            this.nextPageBtn = new EditorButton(this, {
-                parent: this.hudroot,
-                style: ButtonStyles.BorderedPurple,
-                icon: "next_page",
-                x: 19,
-                y: 8,
-                onClick: () => this.nextPage(),
-            })
-            this.prevPageBtn = new EditorButton(this, {
-                parent: this.hudroot,
-                style: ButtonStyles.BorderedPurple,
-                icon: "prev_page",
-                x: -19,
-                y: 8,
-                onClick: () => this.prevPage(),
             })
             this.progdef = this.app.load(SAVESLOT_AUTO)
         }
@@ -301,6 +273,7 @@ namespace microcode {
             if (!this.pageEditor) {
                 this.switchToPage(this.currPage)
             }
+            this.saveAndCompileProgram()
         }
 
         public addButtons(btns: Button[]) {
@@ -314,11 +287,7 @@ namespace microcode {
                 this.navigator.clear()
             } else this.navigator = new RuleRowNavigator()
 
-            this.navigator.addButtons([
-                this.prevPageBtn,
-                this.pageBtn,
-                this.nextPageBtn,
-            ])
+            this.navigator.addButtons([this.pageBtn])
 
             this.pageEditor.addToNavigator()
 
@@ -364,8 +333,6 @@ namespace microcode {
                 this.pageEditor.draw()
             }
             this.pageBtn.draw()
-            this.prevPageBtn.draw()
-            this.nextPageBtn.draw()
             this.picker.draw()
             this.cursor.draw()
         }
@@ -668,7 +635,7 @@ namespace microcode {
                     icon: iconId,
                 }
             })
-            this.editor.picker.addGroup({ label: "", btns })
+            this.editor.picker.addGroup({ btns })
             this.editor.picker.show({
                 onClick: iconId => this.handleRuleHandleMenuSelection(iconId),
             })
@@ -755,7 +722,7 @@ namespace microcode {
                 }
             }
             if (btns.length) {
-                this.editor.picker.addGroup({ label: "", btns })
+                this.editor.picker.addGroup({ btns })
                 this.editor.picker.show({
                     onClick: id => {
                         // get from the database

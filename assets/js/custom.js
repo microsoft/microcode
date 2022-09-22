@@ -79,7 +79,11 @@ addSimMessageHandler("jacscript", async data => {
             serviceClass: jacdac.SRV_JACSCRIPT_MANAGER,
         })
         for (const service of services) {
-            console.debug(`jacscript: deploying to ${service}`)
+            const dev = service.device
+            const productIdentifier = dev.productIdentifier ? dev.productIdentifier.toString(16) : ''
+            const firmwareVersion = dev.firmwareVersion
+            console.debug(`jacscript: deploying to ${service} (pid: ${productIdentifier}, fw: ${firmwareVersion})`)
+
             try {
                 connectEl.innerText = "micro:bit downloading..."
                 await jacdac.OutPipe.sendBytes(
@@ -146,6 +150,9 @@ const liveStrings = {
     F17_tilt_down: "tilt down",
     F17_tilt_left: "tilt left",
     F17_tilt_right: "tilt right",
+
+    C0: "open editor",
+    C1: "browse samples",
 
     A1: "switch page",
     A2: "speaker",

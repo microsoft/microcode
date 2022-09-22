@@ -9,7 +9,7 @@ namespace microcode {
             this.color = 11
         }
 
-        private moveCursor(dir: CursorDir) {
+        protected moveCursor(dir: CursorDir) {
             const target = this.cursor.move(dir)
 
             if (!target) return
@@ -74,7 +74,7 @@ namespace microcode {
 
             this.cursor = new Cursor()
             this.picker = new Picker(this.cursor)
-            this.navigator = new RuleRowNavigator()
+            this.navigator = new RowNavigator()
             this.cursor.navigator = this.navigator
         }
 
@@ -83,7 +83,7 @@ namespace microcode {
         }
 
         /* override */ activate() {
-            const btn = this.navigator.initialCursor(this.cursor)
+            const btn = this.navigator.initialCursor(0, 0)
             if (btn)
                 this.cursor.snapTo(
                     btn.xfrm.worldPos.x,

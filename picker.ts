@@ -9,7 +9,7 @@ namespace microcode {
         constructor(public picker: Picker, btn: PickerButtonDef) {
             super({
                 parent: picker,
-                style: btn.style || ButtonStyles.ShadowedWhite,
+                style: btn.style || ButtonStyles.LightShadowedWhite,
                 icon: btn.icon,
                 label: btn.label,
                 x: 0,
@@ -21,22 +21,48 @@ namespace microcode {
     }
 
     class PickerGroup {
+        public xfrm: Affine
         public buttons: Button[]
+        public bounds: Bounds
+
         constructor(
-            private picker: Picker,
+            picker: Picker,
             public opts?: {
-                label?: string
                 btns?: PickerButtonDef[]
             }
         ) {
             this.opts = this.opts || {}
             this.buttons = []
+            this.bounds = new Bounds()
+            this.xfrm = new Affine()
+            this.xfrm.parent = picker.xfrm
         }
 
         public destroy() {
             this.buttons.forEach(btn => btn.destroy())
             this.buttons = undefined
             this.opts = undefined
+            this.bounds = undefined
+        }
+
+        public layout() {
+            const cell = new Bounds()
+            this.buttons.forEach(btn => cell.add(btn.bounds))
+            this.buttons.forEach((btn, idx) => {
+                btn.xfrm.parent = this.xfrm
+                const row = Math.floor(idx / MAX_PER_ROW)
+                btn.xfrm.localPos.x =
+                    (idx % MAX_PER_ROW) * cell.width + (idx % MAX_PER_ROW)
+                btn.xfrm.localPos.y = row * cell.height
+            })
+            this.bounds = new Bounds()
+            this.buttons.forEach(btn =>
+                this.bounds.add(Bounds.Translate(btn.bounds, btn.xfrm.localPos))
+            )
+        }
+
+        public draw() {
+            this.buttons.forEach(btn => btn.draw())
         }
     }
 
@@ -44,7 +70,6 @@ namespace microcode {
         public groups: PickerGroup[]
         private xfrm_: Affine
         private navigator: INavigator
-        private prevNavigator: INavigator
         private prevState: CursorState
         private deleteBtn: Button
         private panel: Bounds
@@ -66,7 +91,7 @@ namespace microcode {
             this.navigator = new RowNavigator()
         }
 
-        public addGroup(opts: { label: string; btns: PickerButtonDef[] }) {
+        public addGroup(opts: { btns: PickerButtonDef[] }) {
             this.groups.push(new PickerGroup(this, opts))
         }
 
@@ -110,14 +135,13 @@ namespace microcode {
             }
             this.hideOnClick = hideOnClick
             this.title = opts.title
-            this.prevNavigator = this.cursor.navigator
             this.prevState = this.cursor.saveState()
             this.cursor.navigator = this.navigator
             this.cursor.cancelHandlerStack.push(() => this.cancelClicked())
             if (this.onDelete) {
                 this.deleteBtn = new Button({
                     parent: this,
-                    style: ButtonStyles.FlatWhite,
+                    style: ButtonStyles.RedBorderedWhite,
                     icon: "delete",
                     label: "delete",
                     x: 0,
@@ -142,7 +166,6 @@ namespace microcode {
         hide() {
             this.visible = false
             this.navigator.clear()
-            this.cursor.navigator = this.prevNavigator
             this.cursor.restoreState(this.prevState)
             this.groups.forEach(group => group.destroy())
             if (this.deleteBtn) {
@@ -161,98 +184,56 @@ namespace microcode {
                 const right = this.panel.right - 1
                 const top = this.panel.top
                 const bottom = this.panel.bottom - 1
-                this.panel.fillRect(15)
-                Screen.drawLine(left + 1, top - 1, right - 1, top - 1, 15)
-                Screen.drawLine(left + 1, bottom + 1, right - 1, bottom + 1, 15)
-                Screen.drawLine(left - 1, top + 1, left - 1, bottom - 1, 15)
-                Screen.drawLine(right + 1, top + 1, right + 1, bottom - 1, 15)
+                Screen.fillBoundsXfrm(this.xfrm, this.panel, 12)
+                Screen.outlineBoundsXfrm(this.xfrm, this.panel, 1, 15)
                 if (this.title) {
                     Screen.print(this.title, left + 2, top + 4, 1, image.font8)
                 }
-                this.groups.forEach(group => {
-                    group.buttons.forEach(btn => {
-                        btn.draw()
-                    })
-                })
+                this.groups.forEach(group => group.draw())
                 if (this.deleteBtn) this.deleteBtn.draw()
             }
         }
 
         private layout() {
-            // Get the largest number of buttons in a group
-            let maxBtnCount = 0
-            this.groups.forEach(
-                group =>
-                    (maxBtnCount = Math.max(
-                        maxBtnCount,
-                        group.opts.btns.length
-                    ))
-            )
-            // Cap the max per group
-            maxBtnCount = Math.min(maxBtnCount, MAX_PER_ROW)
-
-            let computedHeight = this.deleteBtn || this.title ? HEADER : 0
-            let computedWidth = maxBtnCount * 16
-
-            this.groups.forEach(group => {
-                if (group.opts.label) {
-                    computedHeight += LABEL
-                } else {
-                    // WHAT IS THIS FOR?
-                    // why is height dependent on number of buttons in group?
-                    computedHeight +=
-                        TRAY * Math.ceil(group.buttons.length / MAX_PER_ROW)
-                }
-            })
-
-            // Center the panel
-            let computedLeft = -(computedWidth >> 1)
-            let computedTop = -(computedHeight >> 1)
-            //computedLeft = Math.max(this.offset.x, computedLeft);
-            //computedTop = Math.max(this.offset.y, computedTop);
-
-            this.panel = new Bounds({
-                top: computedTop,
-                left: computedLeft,
-                width: computedWidth,
-                height: computedHeight,
-            })
-            this.panel.grow(2)
-
-            let currentTop =
-                computedTop + (this.deleteBtn || this.title ? HEADER : 0)
-
             if (this.deleteBtn) {
-                this.deleteBtn.xfrm.localPos.x =
-                    computedLeft + computedWidth - 8
-                this.deleteBtn.xfrm.localPos.y = computedTop + 8
                 this.navigator.addButtons([this.deleteBtn])
             }
 
-            this.groups.forEach(group => {
-                let currentLeft = computedLeft
-                group.buttons.forEach((btn, index) => {
-                    if (index && index % MAX_PER_ROW === 0) {
-                        currentTop += TRAY
-                        currentLeft = computedLeft
-                    }
-                    btn.xfrm.localPos.y = currentTop + 8
-                    btn.xfrm.localPos.x = currentLeft + 8
-                    currentLeft += 16
-                })
-                this.navigator.addButtons(group.buttons)
-                if (group.opts.label) {
-                    currentTop += LABEL
+            this.panel = new Bounds()
+
+            let top = 2
+            if (this.deleteBtn || this.title) {
+                top += this.deleteBtn ? this.deleteBtn.height : HEADER
+            }
+            this.groups.forEach((group, idx) => {
+                group.layout()
+                if (idx === 0) {
+                    top += group.buttons[0].height >> 1
+                } else {
+                    top += 1
                 }
+                group.xfrm.localPos.y = top
+                this.panel.add(Bounds.Translate(group.bounds, new Vec2(0, top)))
+                top += group.bounds.height
+                this.navigator.addButtons(group.buttons)
             })
 
-            const btn = this.navigator.initialCursor(this.cursor)
+            if (this.deleteBtn) {
+                this.deleteBtn.xfrm.localPos.x =
+                    this.panel.right - (this.deleteBtn.width >> 1) + 1
+                this.deleteBtn.xfrm.localPos.y =
+                    this.panel.top + (this.deleteBtn.height >> 1)
+            }
+
+            this.panel.grow(2)
+            this.xfrm.localPos.x = -(this.panel.width >> 1)
+            this.xfrm.localPos.y = -(this.panel.height >> 1)
+
+            const btn = this.navigator.initialCursor(0, 0)
             this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
         }
     }
 
     const HEADER = 16
-    const LABEL = 14
-    const TRAY = 16
     const MAX_PER_ROW = 5
 }

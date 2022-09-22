@@ -7,8 +7,8 @@ namespace microcode {
     ) {
         const getColor = (col: number, row: number) => {
             return image5x5.getPixel(col, row)
-                ? TID_MODIFIER_COLOR_RED
-                : TID_MODIFIER_COLOR_DARKPURPLE
+                ? "solid_red"
+                : "solid_black"
         }
 
         for (let row = 0; row < 5; row++) {
@@ -16,16 +16,16 @@ namespace microcode {
             for (let col = 0; col < 5; col++) {
                 btns.push({
                     icon: getColor(col, row),
-                    style: ButtonStyles.BorderedPurple,
+                    style: ButtonStyles.Transparent,
                 })
             }
-            picker.addGroup({ label: row.toString(), btns })
+            picker.addGroup({ btns })
         }
 
         picker.show(
             {
                 onClick: (iconId: any, button: PickerButton) => {
-                    let on = button.getIcon() === TID_MODIFIER_COLOR_RED
+                    let on = button.getIcon() === "solid_red"
                     let row = 0,
                         col = 0
                     for (; row < 5; row++) {
@@ -88,7 +88,7 @@ namespace microcode {
             icon: "next_page",
             style: ButtonStyles.BorderedPurple,
         })
-        picker.addGroup({ label: "", btns })
+        picker.addGroup({ btns })
 
         picker.show(
             {
@@ -129,7 +129,7 @@ namespace microcode {
                 style: ButtonStyles.FlatWhite,
             })
         }
-        picker.addGroup({ label: "", btns })
+        picker.addGroup({ btns })
 
         picker.show({
             onClick: (iconId: any, button: PickerButton) => {

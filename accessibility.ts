@@ -56,6 +56,9 @@ namespace accessibility {
         F17_tilt_left: "tilt left",
         F17_tilt_right: "tilt right",
 
+        C0: "editor",
+        C1: "samples",
+
         A1: "switch page",
         A2: "sound emoji",
         A3: "microphone",

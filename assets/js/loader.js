@@ -35,17 +35,23 @@ function makeCodeRun(options) {
             code.replace(/^\/\/\s+meta=([^\n]+)\n/m, function (m, metasrc) {
                 meta = JSON.parse(metasrc);
             })
-            var vel = document.getElementById("version");
+            const vel = document.getElementById("version");
             if (meta.version && vel) {
-                var ap = document.createElement("a");
+                const ap = document.createElement("a");
                 ap.download = `microcode.${meta.version}.hex`;
                 ap.href = "https://microsoft.github.io/microcode/assets/firmware.hex";
                 ap.innerText = meta.version;
                 vel.appendChild(ap);
             }
             // load simulator with correct version
+            const simUrl = new URL(meta.simUrl)
+            simUrl.searchParams.set("background-color", "3f3f3f")
+            simUrl.searchParams.set("button-stroke", "212121")
+            simUrl.searchParams.set("button-fill", "2d2d2d")
+            simUrl.searchParams.set("text-color", "d9d9d9")
+            simUrl.searchParams.set("pointer-events", "1")
             document.getElementById("simframe")
-                .setAttribute("src", meta.simUrl);
+                .setAttribute("src", simUrl.toString());
         })
     }
 

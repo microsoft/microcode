@@ -18,6 +18,7 @@ namespace microcode {
             setTimeout(() => {
                 controller.setRepeatDefault(250, 30)
                 keymap.setupKeys()
+                pointerevents.setup()
                 icons.init()
                 jdc.start()
                 this.sceneManager = new SceneManager()
@@ -31,7 +32,7 @@ namespace microcode {
                 progdef: progdef.toObj(),
             }
             const s = JSON.stringify(saved)
-            console.log(s)
+            //console.log(s)
             settings.writeString(slot, s)
         }
 

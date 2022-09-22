@@ -11,6 +11,11 @@ namespace microcode {
             borders: { top: 1, bottom: 12, left: 1, right: 1 },
             shadow: true,
         }
+        export const LightShadowedWhite: ButtonStyle = {
+            fill: 1,
+            borders: { top: 1, bottom: 11, left: 1, right: 1 },
+            shadow: true,
+        }
         export const FlatWhite: ButtonStyle = {
             fill: 1,
             borders: { top: 1, bottom: 1, left: 1, right: 1 },
@@ -19,6 +24,11 @@ namespace microcode {
         export const BorderedPurple: ButtonStyle = {
             fill: 11,
             borders: { top: 12, bottom: 12, left: 12, right: 12 },
+            shadow: false,
+        }
+        export const RedBorderedWhite: ButtonStyle = {
+            fill: 1,
+            borders: { top: 2, bottom: 2, left: 2, right: 2 },
             shadow: false,
         }
         export const Transparent: ButtonStyle = {
@@ -60,7 +70,7 @@ namespace microcode {
         private iconId: string | Image
         private _ariaId: string
         public label: string
-        private onClick?: (button: Button) => void
+        public onClick?: (button: Button) => void
         private bounds_: Bounds
 
         //% blockCombine block="xfrm" callInDebugger

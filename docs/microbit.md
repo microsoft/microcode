@@ -1,4 +1,4 @@
-## Micro:bit features
+# Micro:bit features
 
 We are working to expose most of the micro:bit's main features in MicroCode:
 

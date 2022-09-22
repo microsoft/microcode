@@ -2,7 +2,13 @@ makecode:
   target: arcade
   platform: arcade
   home_url: https://arcade.makecode.com/
-theme: jekyll-theme-slate
+remote_theme: pages-themes/hacker@v0.2.0
 include:
   - assets
+  - docs
   - README.md
+plugins:
+  - jekyll-remote-theme
+show_downloads: false
+title: Microsoft MicroCode
+description: Physical computing for young coders

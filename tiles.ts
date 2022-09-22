@@ -133,6 +133,20 @@ namespace microcode {
         },
     }
 
+    const maxOneValueIn = {
+        maxCount: {
+            category: "value_in",
+            count: 1,
+        },
+    }
+
+    const maxOneValueOut = {
+        maxCount: {
+            category: "value_out",
+            count: 1,
+        },
+    }
+
     const always = new SensorDefn(TID_SENSOR_ALWAYS, "Always", Phase.Pre)
     always.hidden = true
     tilesDB.sensors[TID_SENSOR_ALWAYS] = always
@@ -197,6 +211,7 @@ namespace microcode {
         const tile = makeSensor(tid, name, "value_in", 120 + id * 5)
         tile.jdParam = id
         tile.serviceClassName = "pipe"
+        tile.constraints.handling = maxOneValueIn
     }
 
     makePipe(TID_SENSOR_OUT_PIPE_A, "Out of A", 0)
@@ -211,6 +226,7 @@ namespace microcode {
     )
     radio_recv.serviceClassName = "radio"
     radio_recv.eventCode = 0x91
+    radio_recv.constraints.handling = maxOneValueIn
 
     const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
     timer.constraints = {
@@ -315,6 +331,7 @@ namespace microcode {
     radio_send.serviceClassName = "radio"
     radio_send.serviceCommand = 0x81
     radio_send.serviceArgFromModifier = (x: number) => Buffer.pack("d", [x || 1])
+    radio_send.constraints.handling = maxOneValueOut
 
     const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "sound_emoji")
     emoji.serviceClassName = "soundPlayer"
@@ -350,6 +367,7 @@ namespace microcode {
     */
 
     const make_vals = (name: string, kind: string, start: number) => {
+        const tiles: FilterModifierBase[] = []
         for (let v = 1; v <= 5; v++) {
             const tid = kind + (start + v - 1)
             const tile: FilterModifierBase =
@@ -360,11 +378,19 @@ namespace microcode {
             // tile.constraints = terminal
             if (kind == "M") tilesDB.modifiers[tid] = tile
             else tilesDB.filters[tid] = tile as FilterDefn
+            tile.constraints = {
+                provides: [name],
+            }
+            tiles.push(tile)
         }
+        return tiles
     }
-    make_vals("page", "M", 1)
     make_vals("value_in", "F", 8)
-    make_vals("value_out", "M", 6)
+    make_vals("value_out", "M", 6) 
+    make_vals("page", "M", 1).forEach(m => {
+        m.constraints.handling = m.constraints.handling || {}
+        m.constraints.handling.terminal = true
+    })
 
     const switch_states = ["on", "off"]
     switch_states.forEach(state => {

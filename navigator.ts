@@ -1,29 +1,10 @@
-// encapsulate navigation so we can try A/B
-// experiment with cursor motion
-
-// A. the existing navigation is based on euclidian distance using quadtree,
-//    which loses structure of rules
-// B. Use hierarchical navigation scheme based on program structure
-// - Editor has
-//    - Menu bar, with
-//      - compile/run button, followed by
-//      - page selector, followed by
-//    = Page has list of
-//      - Rule with
-//        - When, sensor followed by filters, followed by
-//        - DO, actuator followed by modifiers
-
-// B can be handled pretty straightforwardly by have a list of list of buttons,
-// where each rule is a list of buttons in order from left to right, same with
-// menus
-
 namespace microcode {
     export interface INavigator {
         clear: () => void
         addButtons: (btns: Button[]) => void
-        move: (cursor: Cursor, dir: CursorDir) => Button
-        getOverlapping: (cursor: Cursor) => Button[]
-        initialCursor: (cursor: Cursor) => Button
+        move: (dir: CursorDir) => Button
+        getOverlapping: () => Button[]
+        initialCursor: (row: number, col: number) => Button
     }
 
     export class RowNavigator implements INavigator {
@@ -43,20 +24,20 @@ namespace microcode {
             this.buttonGroups.push(btns)
         }
 
-        public move(cursor: Cursor, dir: CursorDir) {
+        public move(dir: CursorDir) {
             this.makeGood()
             switch (dir) {
                 case CursorDir.Up: {
                     if (this.row == 0) return undefined
                     this.row--
-                    this.col = 0
+                    this.makeGood()
                     break
                 }
                 case CursorDir.Down: {
                     if (this.row == this.buttonGroups.length - 1)
                         return undefined
                     this.row++
-                    this.col = 0
+                    this.makeGood()
                     break
                 }
 
@@ -91,7 +72,7 @@ namespace microcode {
             return this.buttonGroups[this.row][this.col]
         }
 
-        public getOverlapping(cursor: Cursor): Button[] {
+        public getOverlapping(): Button[] {
             return [this.buttonGroups[this.row][this.col]]
         }
 
@@ -102,10 +83,10 @@ namespace microcode {
                 this.col = this.buttonGroups[this.row].length - 1
         }
 
-        public initialCursor(cursor: Cursor) {
-            this.row = 0
-            this.col = 0
-            return this.buttonGroups[0][0]
+        public initialCursor(row: number = 0, col: number = 0) {
+            this.row = row
+            this.col = col
+            return this.buttonGroups[row][col]
         }
     }
 
@@ -131,10 +112,10 @@ namespace microcode {
             this.rules.push(rule)
         }
 
-        public move(cursor: Cursor, dir: CursorDir) {
-            const ret = super.move(cursor, dir)
+        public move(dir: CursorDir) {
+            const ret = super.move(dir)
 
-            let accessibilityMessage;
+            let accessibilityMessage
 
             if (this.row > 0 && this.col == 0) {
                 const ruleDef = this.rules[this.row - 1]
@@ -147,9 +128,16 @@ namespace microcode {
                 ruleDef.actuators.forEach(tile => dosTileIds.push(tile.tid))
                 ruleDef.modifiers.forEach(tile => dosTileIds.push(tile.tid))
 
-                accessibilityMessage = new accessibility.ruleAccessibilityMessage(dosTileIds, whensTileIds)               
+                accessibilityMessage =
+                    new accessibility.ruleAccessibilityMessage(
+                        dosTileIds,
+                        whensTileIds
+                    )
             } else {
-                accessibilityMessage = new accessibility.tileAccessibilityMessage((ret ? ret.ariaId : "") || "")
+                accessibilityMessage =
+                    new accessibility.tileAccessibilityMessage(
+                        (ret ? ret.ariaId : "") || ""
+                    )
             }
 
             accessibility.setLiveContent(accessibilityMessage)
@@ -170,7 +158,7 @@ namespace microcode {
             return this.buttonGroups[0].length == 1
         }
 
-        public move(cursor: Cursor, dir: CursorDir) {
+        public move(dir: CursorDir) {
             this.makeGood()
             switch (dir) {
                 case CursorDir.Up: {
@@ -213,7 +201,7 @@ namespace microcode {
             return btn
         }
 
-        public initialCursor(cursor: Cursor) {
+        public initialCursor(row: number = 0, col: number = 0) {
             this.row = 2 + (this.hasDelete() ? 1 : 0)
             this.col = 2
 
@@ -224,10 +212,31 @@ namespace microcode {
             return btn
         }
 
-        reportAccessibilityInfo(btn: Button) {
+        public addButtons(btns: Button[]) {
+            super.addButtons(btns)
 
-            if (this.row == 0 && this.col == 0) {    
-                accessibility.setLiveContent(new accessibility.textAccessibilityMessage("remove LED editor tile"))
+            btns.forEach(btn => {
+                if (btn.onClick) {
+                    let prev = btn.onClick
+                    btn.onClick = () => {
+                        prev(btn)
+                        this.reportAccessibilityInfo(btn, false)
+                    }
+                } else {
+                    btn.onClick = () => this.reportAccessibilityInfo(btn, false)
+                }
+            })
+        }
+
+        reportAccessibilityInfo(btn: Button, reportRemoveLED: Boolean = true) {
+            if (this.row == 0 && this.col == 0) {
+                if (reportRemoveLED) {
+                    accessibility.setLiveContent(
+                        new accessibility.textAccessibilityMessage(
+                            "remove LED editor tile"
+                        )
+                    )
+                }
 
                 return
             }
@@ -235,15 +244,19 @@ namespace microcode {
             let color = btn.getIcon()
             let status
 
-            if (color == TID_MODIFIER_COLOR_RED) {
+            if (color == "solid_red") {
                 status = "on"
-            } else if (color == TID_MODIFIER_COLOR_DARKPURPLE) {
+            } else if (color == "solid_black") {
                 status = "off"
             } else {
                 status = "unknown"
             }
 
-            accessibility.setLiveContent(new accessibility.textAccessibilityMessage(`led ${this.col} ${this.row} ${status}`))
+            accessibility.setLiveContent(
+                new accessibility.textAccessibilityMessage(
+                    `led ${this.col} ${this.row} ${status}`
+                )
+            )
         }
     }
 }
