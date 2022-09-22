@@ -256,7 +256,7 @@ namespace microcode {
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
                 icon: PAGE_IDS[this.currPage],
-                x: Screen.LEFT_EDGE + 32,
+                x: Screen.RIGHT_EDGE - 16,
                 y: 8,
                 onClick: () => this.pickPage(),
             })
