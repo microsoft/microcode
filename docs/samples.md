@@ -40,7 +40,6 @@ and the result is piped in pipe A.
 The next 3 rules match the value passed in pipe A
 and display a different symbol for each value, 1, 2 or 3.
 
-
 ## ![Chuck a duck icon](./images/icon_sample_chuck_a_duck.png) Chuck a duck
 
 ![Chuck a duck MicroCode program](./images/sample_chuck_a_duck.png)
@@ -58,4 +57,17 @@ The third rule uses the radio filter to render
 the duck on the screen. This rule executes
 when a radio message is received.
 
-Try it out, it's lots of fun!
+## Hot potato
+
+![Hot potato MicroCode program](./images/sample_hot_potato.png)
+
+Pass the hot potato around and make
+sure it does not beep while you have it 
+in your hands!
+
+## Micro Pet
+
+![Pet Hamster MicroCode program](./images/sample_pet_hamster.png)
+
+Keep your micropet happy by petting
+its head (Logo) and don't shake it, it does not like that.
