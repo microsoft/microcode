@@ -20,7 +20,6 @@ or the
 
 * [icon-based language](./language.md)
 * [samples](./samples.md)
-* [micro:bit filters and actuators](./microbit.md)
 
 ## Web editor
 
