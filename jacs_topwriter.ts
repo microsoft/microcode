@@ -1,5 +1,5 @@
 namespace jacs {
-    let debugOut = true
+    let debugOut = false
 
     export function addUnique<T>(arr: T[], v: T) {
         let idx = arr.indexOf(v)
