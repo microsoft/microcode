@@ -53,6 +53,8 @@ namespace microcode {
             this.reg["dice"] = icondb.sampleDice
             this.reg["rock_paper_scissors"] = icondb.sampleRockPaperScissors
             this.reg["teleport_duck"] = icondb.sampleTeleportDuck
+            this.reg["solid_red"] = icondb.solid_red
+            this.reg["solid_black"] = icondb.solid_black
 
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
@@ -251,6 +253,45 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+
+    export const solid_red = img`
+    . . . . . . . . . . . . . . . .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . . . . . . . . . . . . . . . .
+`
+
+    export const solid_black = img`
+    . . . . . . . . . . . . . . . .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . f f f f f f f f f f f f f f .
+    . . . . . . . . . . . . . . . .
+`
+
     export const ui_when = img`
         . 7 7 7 7 7 7 7 .
         . 7 7 7 1 1 1 7 .
