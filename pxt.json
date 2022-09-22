@@ -41,7 +41,8 @@
         "options.ts",
         "samples.ts",
         "docs.ts",
-        "gallery.ts"
+        "gallery.ts",
+        "pointerevents.ts"
     ],
     "testFiles": [],
     "targetVersions": {
