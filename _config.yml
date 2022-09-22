@@ -2,9 +2,10 @@ makecode:
   target: arcade
   platform: arcade
   home_url: https://arcade.makecode.com/
-remote-theme: jekyll-dash
+remote_theme: pages-themes/hacker@v0.2.0
 include:
   - assets
+  - docs
   - README.md
 plugins:
   - jekyll-remote-theme
