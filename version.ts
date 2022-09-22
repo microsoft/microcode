@@ -4,5 +4,5 @@ namespace microcode {
     /**
      * Version of the package
      */
-    export const VERSION = "v1.0.40"
+    export const VERSION = "v1.0.41"
 }
