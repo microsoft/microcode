@@ -151,6 +151,9 @@ const liveStrings = {
     F17_tilt_left: "tilt left",
     F17_tilt_right: "tilt right",
 
+    C0: "open editor",
+    C1: "browse samples",
+
     A1: "switch page",
     A2: "speaker",
     A3: "microphone",
