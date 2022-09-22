@@ -8,3 +8,4 @@ include:
   - README.md
 plugins:
   - jekyll-remote-theme
+show_downloads: false
