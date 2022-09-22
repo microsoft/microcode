@@ -12,6 +12,10 @@ The goal of this program is to show a cute heart animation.
 We use a single rule with a timer. The timer starts a screen animation
 with two images. Since this happens in a loop, it creates a cool heart animation.
 
+### improvement ideas
+
+* add more animation frames to create a better beating heart
+
 ## ![Smiley Buttons icon](./images/icon_sample_smiley_buttons.png) Smiley Buttons
 
 ![Smiley Buttons MicroCode program](./images/sample_smiley_buttons.png)
@@ -23,6 +27,10 @@ pressing B.
 We use 2 rule to handle each buttons. The first rule
 handle a button A pressed and prints a smiley the screen. Similarly, the second rule filters on button B
 and prints a frowney.
+
+### improvement ideas
+
+* add sound emoji for each buttons to make it more lively
 
 ## ![Rock Paper Scissors icon](./images/icon_sample_rock_paper_scissors.png) Rock Paper Scissors
 
@@ -39,6 +47,12 @@ and the result is piped in pipe A.
 
 The next 3 rules match the value passed in pipe A
 and display a different symbol for each value, 1, 2 or 3.
+
+### improvement ideas
+
+* add sound emoji whenever shake happens
+* clear the screen before showing the new symbol
+
 
 ## ![Chuck a duck icon](./images/icon_sample_chuck_a_duck.png) Chuck a duck
 
@@ -57,6 +71,11 @@ The third rule uses the radio filter to render
 the duck on the screen. This rule executes
 when a radio message is received.
 
+### improvement ideas
+
+* add sound emoji when the duck arrives
+* use different radio messages for different images
+
 ## Hot potato
 
 ![Hot potato MicroCode program](./images/sample_hot_potato.png)
@@ -65,9 +84,18 @@ Pass the hot potato around and make
 sure it does not beep while you have it 
 in your hands!
 
+### improvement ideas
+
+* add sound emoji when timer expires
+* add a better expired potato animation
+
 ## Micro Pet
 
 ![Pet Hamster MicroCode program](./images/sample_pet_hamster.png)
 
 Keep your micropet happy by petting
 its head (Logo) and don't shake it, it does not like that.
+
+### improvement ideas
+
+* use more rules to manipulate the mood of your pet
