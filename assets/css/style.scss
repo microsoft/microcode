@@ -2,11 +2,7 @@
 ---
 @import "{{ site.theme }}";
 
-p .markdown-body img {
+.markdown-body p img {
     min-height: 48vh;
     image-rendering: pixelated;
-}
-
-h2 .markdown-body img {
-    min-height: unset;
 }
