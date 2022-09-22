@@ -1,5 +1,5 @@
 namespace jacs {
-    let debugOut = true
+    let debugOut = false
 
     export function addUnique<T>(arr: T[], v: T) {
         let idx = arr.indexOf(v)
@@ -116,6 +116,13 @@ namespace jacs {
                                     CMD_SET_REG | JD_REG_STREAMING_SAMPLES
                                 )
                             }
+                        )
+                    }
+                    if (needsEnable.indexOf(this.classIdentifier) >= 0) {
+                        this.parent.emitLoadBuffer("\x01")
+                        this.parent.emitSendCmd(
+                            this,
+                            CMD_SET_REG | JD_REG_INTENSITY
                         )
                     }
                     this.top = wr.mkLabel("tp")
@@ -374,7 +381,9 @@ namespace jacs {
         }
 
         addRole(name: string, classId: number) {
-            return new Role(this, classId, name)
+            const r = new Role(this, classId, name)
+            if (needsEnable.indexOf(classId) >= 0) r.getDispatcher()
+            return r
         }
 
         addOrGetRole(name: string, classId: number) {
@@ -826,6 +835,7 @@ namespace jacs {
     }
 
     export const needsWakeup = [0x14ad1a5d, 0x1f140409, 0x17dc9a1c]
+    export const needsEnable = [0x1ac986cf]
 
     export const serviceClasses: SMap<number> = {
         // m:b
@@ -853,4 +863,5 @@ namespace jacs {
     export const CMD_SET_REG = 0x2000
 
     export const JD_REG_STREAMING_SAMPLES = 3
+    export const JD_REG_INTENSITY = 1
 }
