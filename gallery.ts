@@ -75,26 +75,3 @@ namespace microcode {
         }
     }
 }
-
-/* 
-
-            this.carouselBtn = new Button({
-                parent: null,
-                style: ButtonStyles.Transparent,
-                icon: CAROUSEL_ITEMS[this.carouselCounter].icon,
-                ariaId: "N0",
-                x: 0,
-                y: 40,
-                onClick: () => {
-                    if (this.carouselCounter !== 0) {
-                        settings.writeString(
-                            SAVESLOT_AUTO,
-                            CAROUSEL_ITEMS[this.carouselCounter].src
-                        )
-                    }
-                    this.app.popScene()
-                    this.app.pushScene(new Editor(this.app))
-                },
-            })
-            
-*/
