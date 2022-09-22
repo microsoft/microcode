@@ -232,18 +232,20 @@ namespace microcode {
                     let prev = btn.onClick;
                     btn.onClick = () => {
                         prev(btn);
-                        this.reportAccessibilityInfo(btn)
+                        this.reportAccessibilityInfo(btn, false)
                     }
                 } else {
-                    btn.onClick = () => this.reportAccessibilityInfo(btn)
+                    btn.onClick = () => this.reportAccessibilityInfo(btn, false)
                 }
             });
         }
 
-        reportAccessibilityInfo(btn: Button) {
+        reportAccessibilityInfo(btn: Button, reportRemoveLED: Boolean = true) {
 
-            if (this.row == 0 && this.col == 0) {    
-                accessibility.setLiveContent(new accessibility.textAccessibilityMessage("remove LED editor tile"))
+            if (this.row == 0 && this.col == 0) {
+                if (reportRemoveLED) {
+                    accessibility.setLiveContent(new accessibility.textAccessibilityMessage("remove LED editor tile"))
+                }
 
                 return
             }
