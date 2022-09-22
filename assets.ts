@@ -46,6 +46,7 @@ namespace microcode {
             this.reg["rule_handle"] = icondb.rule_handle
             this.reg["paint"] = icondb.paint
             this.reg["edit_program"] = icondb.largeEditIcon
+            this.reg["new_program"] = icondb.largeNewProgramIcon
             this.reg["MISSING"] = icondb.MISSING
             this.reg["flashing_heart"] = icondb.sampleFlashingHeart
             this.reg["smiley_buttons"] = icondb.sampleSmileyButtons

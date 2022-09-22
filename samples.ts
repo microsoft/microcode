@@ -10,7 +10,7 @@ namespace microcode {
                 label: "new program",
                 ariaId: "N1",
                 src: '{"progdef":{"P":[{"R":[{"S":[],"A":[]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',
-                icon: "plus",
+                icon: "new_program",
             },
             {
                 label: "flashing heart",
