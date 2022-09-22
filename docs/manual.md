@@ -23,7 +23,7 @@ or the
 
 ## Web editor
 
-The easiest way to get started with MicroCode is through the [web app](https://microsoft.github.io/microcode), shown below. We recommend using the keyboard navigationor a real gamepad!
+The easiest way to get started with MicroCode is through the web editor ([https://microsoft.github.io/microcode](https://microsoft.github.io/microcode), shown below. We recommend using the keyboard navigationor a real gamepad!
 
 -   Arrow keys for D-pad
 -   Space bar for A button
