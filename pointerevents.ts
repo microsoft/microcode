@@ -13,6 +13,7 @@ namespace pointerevents {
     export function setup() {
         control.simmessages.onReceived("pointer-events", data => {
             const msg: PointerEventMessage = JSON.parse(data.toString())
+            console.log(`pointer: ${msg.type} buttons ${msg.buttons}`, msg)
             // down event!
             if (msg.type === "pointerdown" && msg.buttons) {
                 if (onClick) onClick(msg.x, msg.y)
