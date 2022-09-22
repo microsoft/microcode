@@ -4,10 +4,8 @@ Young coder editor for the [micro:bit V2](https://microbit.org).
 
 ![Chuck a Duck MicroCode program](./images/sample_chuck_a_duck.png)
 
-<iframe class="editor" src="https://microsoft.github.io/microcode" />
-
 - Kid friendly
-- Runs on the micro:bit, no computer or internet needed!
+- Runs on the micro:bit V2, no computer or internet needed!
 - Keyboard, screen reader accessible
 
 ## Try it out!
@@ -31,7 +29,7 @@ The easiest way to get started with MicroCode is through the [web app](https://m
 -   Space bar for A button
 -   Backscape for B button
 
-![MicroCode web app](./images/webApp.jpg)
+<iframe class="editor" src="https://microsoft.github.io/microcode" />
 
 ## Micro:bit simulator
 
