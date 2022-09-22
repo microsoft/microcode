@@ -83,6 +83,7 @@ namespace microcode {
         }
 
         /* override */ activate() {
+            super.activate()
             const btn = this.navigator.initialCursor(0, 0)
             if (btn)
                 this.cursor.snapTo(
