@@ -279,4 +279,160 @@ namespace microcode {
             )
         }
     }
+
+    export class SimpleGridNavigator implements INavigator {
+        buttons: Button[]
+        curr: Button
+
+        constructor() {
+            this.buttons = []
+        }
+
+        public clear() {
+            this.buttons = []
+            this.curr = undefined
+        }
+
+        public addButtons(btns: Button[]) {
+            this.buttons = this.buttons.concat(btns)
+        }
+
+        public move(dir: CursorDir): Button {
+            let ret: Button
+
+            if (!this.curr) {
+                ret = this.buttons[0]
+            } else {
+                switch (dir) {
+                    case CursorDir.Up: {
+                        // Get all buttons ABOVE the current one.
+                        // Filter to just buttons with some HORIZONTAL overlap.
+                        // Sort by increasing distance.
+                        // Take the first one.
+                        const arr = this.buttons
+                            .filter(
+                                btn =>
+                                    btn.xfrm.worldPos.y <
+                                    this.curr.xfrm.worldPos.y
+                            )
+                            .filter(
+                                btn =>
+                                    Math.abs(
+                                        btn.xfrm.worldPos.x -
+                                            this.curr.xfrm.worldPos.x
+                                    ) <
+                                    btn.width >> 1
+                            )
+                            .sort(
+                                (a, b) => b.xfrm.worldPos.y - a.xfrm.worldPos.y
+                            )
+                        ret = arr.shift()
+                        break
+                    }
+                    case CursorDir.Down: {
+                        // Get all buttons BELOW the current one.
+                        // Filter to just buttons with some HORIZONTAL overlap.
+                        // Sort by increasing distance.
+                        // Take the first one.
+                        const arr = this.buttons
+                            .filter(
+                                btn =>
+                                    btn.xfrm.worldPos.y >
+                                    this.curr.xfrm.worldPos.y
+                            )
+                            .filter(
+                                btn =>
+                                    Math.abs(
+                                        btn.xfrm.worldPos.x -
+                                            this.curr.xfrm.worldPos.x
+                                    ) <
+                                    btn.width >> 1
+                            )
+                            .sort(
+                                (a, b) => a.xfrm.worldPos.y - b.xfrm.worldPos.y
+                            )
+                        ret = arr.shift()
+                        break
+                    }
+                    case CursorDir.Left: {
+                        // Get all buttons LEFT of the current one.
+                        // Filter to just buttons with some VERTICAL overlap.
+                        // Sort by increasing distance.
+                        // Take the first one.
+                        const arr = this.buttons
+                            .filter(
+                                btn =>
+                                    btn.xfrm.worldPos.x <
+                                    this.curr.xfrm.worldPos.x
+                            )
+                            .filter(
+                                btn =>
+                                    Math.abs(
+                                        btn.xfrm.worldPos.y -
+                                            this.curr.xfrm.worldPos.y
+                                    ) <
+                                    btn.width >> 1
+                            )
+                            .sort(
+                                (a, b) => b.xfrm.worldPos.x - a.xfrm.worldPos.x
+                            )
+                        ret = arr.shift()
+                        break
+                    }
+                    case CursorDir.Right: {
+                        // Get all buttons RIGHT of the current one.
+                        // Filter to just buttons with some VERTICAL overlap.
+                        // Sort by increasing distance.
+                        // Take the first one.
+                        const arr = this.buttons
+                            .filter(
+                                btn =>
+                                    btn.xfrm.worldPos.x >
+                                    this.curr.xfrm.worldPos.x
+                            )
+                            .filter(
+                                btn =>
+                                    Math.abs(
+                                        btn.xfrm.worldPos.y -
+                                            this.curr.xfrm.worldPos.y
+                                    ) <
+                                    btn.width >> 1
+                            )
+                            .sort(
+                                (a, b) => a.xfrm.worldPos.x - b.xfrm.worldPos.x
+                            )
+                        ret = arr.shift()
+                        break
+                    }
+                }
+            }
+            if (ret) {
+                this.curr = ret
+                let accessibilityMessage =
+                    new accessibility.tileAccessibilityMessage(
+                        (ret ? ret.ariaId : "") || ""
+                    )
+                accessibility.setLiveContent(accessibilityMessage)
+            }
+            return this.curr
+        }
+
+        public screenToButton(x: number, y: number): Button {
+            const p = new Vec2(x, y)
+            return this.buttons.find(btn => Bounds.Translate(
+                    btn.bounds,
+                    btn.xfrm.worldPos
+                ).contains(p)
+            )
+        }
+
+        public getOverlapping(): Button[] {
+            return [this.curr]
+        }
+
+        public initialCursor(row: number, col: number): Button {
+            this.curr = this.buttons[0]
+            return this.curr
+        }
+    }
 }

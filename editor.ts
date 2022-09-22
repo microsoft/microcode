@@ -724,6 +724,7 @@ namespace microcode {
             if (btns.length) {
                 this.editor.picker.addGroup({ btns })
                 this.editor.picker.show({
+                    navigator: () => new SimpleGridNavigator(),
                     onClick: id => {
                         // get from the database
                         const newOne = tilesDB[name][id].getNewInstance()
