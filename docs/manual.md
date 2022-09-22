@@ -1,12 +1,21 @@
-# MicroCode Manual
+# Microsoft MicroCode
+
+Young coder editor for the [micro:bit V2](https://microbit.org).
+
+- Kid friendly
+- Keyboard, Screen reader accessible
+- Runs on the micro:bit, no internet needed!
+
+## Try it out!
 
 There are three ways to run MicroCode:
 
--   [web app](https://microsoft.github.io/microcode) with micro:bit simulator
--   web app and hex file deployed to micro:bit V2 device
--   hex file deployed to micro:bit V2 device and [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield) (for editing program)
+-   micro:bit V2 and [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield) (for editing program)
+-   [web app](https://microsoft.github.io/microcode) with micro:bit V2
+-   web app and micro:bit V2 simulator
 
-See below for more information about the MicroCode web app, micro:bit simulator, and how to deploy MicroCode to the micro:bit V2. Regardless of which way you run MicroCode, you will probably want to know a little bit about the MicroCode [icon-based language](./language.md).
+See below for more information about the MicroCode web app, micro:bit simulator, and how to deploy MicroCode to the micro:bit V2. Regardless of which way you run MicroCode, you will probably want to know a little bit about the MicroCode [icon-based language](./language.md)
+or the [samples](./samples.md).
 
 ## Web app
 

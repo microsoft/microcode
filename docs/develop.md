@@ -1,11 +1,11 @@
-## Developing
+# Developing MicroCode
 
 The easiest way to get started is to open this repository in a GitHub Codespace and everything will be ready for you.
 
 We recommend using [Visual Studio Code](https://code.visualstudio.com/) as it provides excellent support
 for MakeCode editing, Git, and Codespaces.
 
-### Codespaces setup
+## Codespaces setup
 
 -   click on `Code` drop down and select `Create Codespace on main`
 -   you can do your editing from VS Code online or click on `Codespaces` in lower left and select `Open in VS Code` to use the desktop version (must be installed on your machine)
@@ -13,7 +13,7 @@ for MakeCode editing, Git, and Codespaces.
 
 In the future, click again on `Code` to find previously created Codespaces.
 
-### Local Install (skip in Codespaces)
+## Local Install (skip in Codespaces)
 
 -   install [Node.js](https://nodejs.org/en/)
 -   install the MakeCode command line tools (`mkc` for short)
@@ -35,7 +35,7 @@ cd microcode
 mkc init
 ```
 
-### Build
+## Build
 
 Note that you can open terminals directly from VS Code by pressing "Ctrl + `".
 
@@ -53,14 +53,14 @@ mkc serve
 mkc build -d
 ```
 
-### With Jacdac devtools
+## With Jacdac devtools
 
 To load the local editor in a Jacdac devtools page, click on the **sim** link at the bottom
 of the local server on http://127.0.0.1:7001. Or,
 
 https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001
 
-### Creating artwork
+## Creating artwork
 
 If you want to create/edit new sprites, you should import this web site into https://arcade.makecode.com, using the following directions:
 
@@ -72,7 +72,7 @@ If you want to create/edit new sprites, you should import this web site into htt
 
 You might also be able to commit and push directly from the web site, but we find that this isn't very reliable.
 
-### Updating GitHub pages
+## Updating GitHub pages
 
 To bump and refresh the github pages javascript and pre-built .hex file, run this script
 
