@@ -20,6 +20,7 @@ namespace microcode {
                 keymap.setupKeys()
                 pointerevents.setup()
                 icons.init()
+                jdc.setParameters(0x3e92f825, microcode.VERSION, "MicroCode on micro:bit V2")
                 jdc.start()
                 this.sceneManager = new SceneManager()
                 const home = new Home(this)
