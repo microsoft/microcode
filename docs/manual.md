@@ -19,11 +19,11 @@ or the [samples](./samples.md).
 
 ## Web app
 
-The easiest way to get started with MicroCode is through the [web app](https://microsoft.github.io/microcode), shown below. We recommend using the keyboard (rather than the virtual D-pad and buttons):
+The easiest way to get started with MicroCode is through the [web app](https://microsoft.github.io/microcode), shown below. We recommend using the keyboard navigationor a real gamepad!
 
 -   Arrow keys for D-pad
 -   Space bar for A button
--   Enter for B button (ESC and backspace not yet mapped to B)
+-   Backscape for B button
 
 ![MicroCode web app](./images/webApp.jpg)
 
@@ -40,10 +40,8 @@ Clicking on the simulator link will open a page with the MicroCode web app on th
 
 ![micro:bit simulator and MicroCode web app](./images/webAppSimulators.jpg)
 
-## Micro:bit V2 device and hex file
+## Downloading Micro:bit V2
 
-See the directions above about the four links at the bottom of the web app. Click on the version number (last of four links) to download the MicroCode hex file. Next, copy this file to your micro:bit V2 over USB (the micro:bit V1 is not supported).
-
-This hex file has the complete MicroCode app, but also can receive MicroCode compiled programs you create in the web app (when connected via Web USB).
-
-**TODO: how to download compiled MicroCode program to micro:bit**
+Click on the micro:bit button at the lower right of the screen and follow the
+on-screen instructions to configure your micro:bit and pair it with the editor.
+Once your micro:bit V2 is paired, the web editor will be able to download the program in your microbit.
