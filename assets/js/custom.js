@@ -54,6 +54,8 @@ if (!inIFrame)
 
             document.getElementById("webusbBtn").onclick = async () =>
                 bus.connect()
+            document.getElementById("webusbBtn2").onclick = async () =>
+                bus.connect()
             document.body.append(connectEl)
             refreshUI()
             bus.autoConnect = true
@@ -61,6 +63,7 @@ if (!inIFrame)
         document.body.append(script)
     })
 
+const naggedDevices = {}
 // send jacscript bytecode to jacdac dashboard
 addSimMessageHandler("jacscript", async data => {
     console.debug(`jacscript bytecode: ${data.length} bytes`)
@@ -91,12 +94,15 @@ addSimMessageHandler("jacscript", async data => {
             )
 
             if (
-                (productIdentifier && productIdentifier !== MICROCODE_PID) ||
-                (currentFirmwareVersion &&
-                    firmwareVersion &&
-                    currentFirmwareVersion !== firmwareVersion)
+                !naggedDevices[dev.deviceId] &&
+                (productIdentifier !== MICROCODE_PID ||
+                    (currentFirmwareVersion &&
+                        currentFirmwareVersion !== firmwareVersion))
             ) {
                 console.debug(`outdated firmware`)
+                naggedDevices[dev.deviceId] = true
+                const outdatedDlg = document.getElementById("outdatedDlg")
+                if (outdatedDlg) outdatedDlg.showModal()
             }
 
             try {
