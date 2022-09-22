@@ -9,7 +9,7 @@ namespace microcode {
             {
                 label: "editor",
                 ariaId: "N0",
-                icon: "paint",
+                icon: "edit_program",
             },
             {
                 label: "new program",

@@ -46,7 +46,7 @@ namespace microcode {
 
             this.carouselBtn = new Button({
                 parent: null,
-                style: ButtonStyles.FlatWhite,
+                style: ButtonStyles.Transparent,
                 icon: CAROUSEL_ITEMS[this.carouselCounter].icon,
                 ariaId: "N0",
                 x: 0,
