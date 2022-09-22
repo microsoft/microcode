@@ -6,3 +6,9 @@
     min-height: 48vh;
     image-rendering: pixelated;
 }
+
+iframe.editor {
+    border: none;
+    width: 100%;
+    aspect-ratio: 16/9;
+}

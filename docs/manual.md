@@ -4,6 +4,8 @@ Young coder editor for the [micro:bit V2](https://microbit.org).
 
 ![Chuck a Duck MicroCode program](./images/sample_chuck_a_duck.png)
 
+<iframe class="editor" src="https://microsoft.github.io/microcode" />
+
 - Kid friendly
 - Runs on the micro:bit, no computer or internet needed!
 - Keyboard, screen reader accessible
