@@ -224,10 +224,28 @@ namespace microcode {
             return btn
         }
 
-        reportAccessibilityInfo(btn: Button) {
+        public addButtons(btns: Button[]) {
+            super.addButtons(btns)
 
-            if (this.row == 0 && this.col == 0) {    
-                accessibility.setLiveContent(new accessibility.textAccessibilityMessage("remove LED editor tile"))
+            btns.forEach(btn => {
+                if (btn.onClick) {
+                    let prev = btn.onClick;
+                    btn.onClick = () => {
+                        prev(btn);
+                        this.reportAccessibilityInfo(btn, false)
+                    }
+                } else {
+                    btn.onClick = () => this.reportAccessibilityInfo(btn, false)
+                }
+            });
+        }
+
+        reportAccessibilityInfo(btn: Button, reportRemoveLED: Boolean = true) {
+
+            if (this.row == 0 && this.col == 0) {
+                if (reportRemoveLED) {
+                    accessibility.setLiveContent(new accessibility.textAccessibilityMessage("remove LED editor tile"))
+                }
 
                 return
             }

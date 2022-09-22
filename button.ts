@@ -60,7 +60,7 @@ namespace microcode {
         private iconId: string | Image
         private _ariaId: string
         public label: string
-        private onClick?: (button: Button) => void
+        public onClick?: (button: Button) => void
         private bounds_: Bounds
 
         //% blockCombine block="xfrm" callInDebugger
