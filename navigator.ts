@@ -30,14 +30,14 @@ namespace microcode {
                 case CursorDir.Up: {
                     if (this.row == 0) return undefined
                     this.row--
-                    this.col = 0
+                    this.makeGood()
                     break
                 }
                 case CursorDir.Down: {
                     if (this.row == this.buttonGroups.length - 1)
                         return undefined
                     this.row++
-                    this.col = 0
+                    this.makeGood()
                     break
                 }
 
