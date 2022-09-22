@@ -100,7 +100,7 @@ namespace microcode {
                     icon: pageId,
                 }
             })
-            this.picker.addGroup({ label: "", btns })
+            this.picker.addGroup({ btns })
             this.picker.show({
                 onClick: iconId => {
                     const index = PAGE_IDS.indexOf(iconId)
@@ -172,7 +172,7 @@ namespace microcode {
             })
             const occ = target.occlusions(occBounds)
 
-            if (occ.has) {
+            if (occ.has && !this.picker.visible) { // don't scroll if picker is visible
                 if (this.scrollroot.xfrm.localPos.x !== this.scrollDest.x)
                     return // Already animating
                 this.scrollStartMs = control.millis()
@@ -635,7 +635,7 @@ namespace microcode {
                     icon: iconId,
                 }
             })
-            this.editor.picker.addGroup({ label: "", btns })
+            this.editor.picker.addGroup({ btns })
             this.editor.picker.show({
                 onClick: iconId => this.handleRuleHandleMenuSelection(iconId),
             })
@@ -722,7 +722,7 @@ namespace microcode {
                 }
             }
             if (btns.length) {
-                this.editor.picker.addGroup({ label: "", btns })
+                this.editor.picker.addGroup({ btns })
                 this.editor.picker.show({
                     onClick: id => {
                         // get from the database
