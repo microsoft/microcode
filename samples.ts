@@ -7,11 +7,6 @@ namespace microcode {
     }[] {
         return [
             {
-                label: "editor",
-                ariaId: "N0",
-                icon: "edit_program",
-            },
-            {
                 label: "new program",
                 ariaId: "N1",
                 src: '{"progdef":{"P":[{"R":[{"S":[],"A":[]},{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{"R":[{"S":[],"A":[]}]},{}]}}',

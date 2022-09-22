@@ -15,32 +15,30 @@ namespace microcode {
                 y = -55
             this.sampleButtons = []
             let rowButtons: Button[] = []
-            samples()
-                .slice(1)
-                .forEach(sample => {
-                    const btn = new Button({
-                        parent: null,
-                        style: ButtonStyles.BorderedPurple,
-                        icon: sample.icon,
-                        ariaId: sample.ariaId,
-                        x: x + 16,
-                        y: y + 16,
-                        onClick: () => {
-                            settings.writeString(SAVESLOT_AUTO, sample.src)
-                            this.app.popScene()
-                            this.app.pushScene(new Editor(this.app))
-                        },
-                    })
-                    this.sampleButtons.push(btn)
-                    rowButtons.push(btn)
-                    x += 38
-                    if (x + 32 > 75) {
-                        this.navigator.addButtons(rowButtons)
-                        rowButtons = []
-                        y += 38
-                        x = -72
-                    }
+            samples().forEach(sample => {
+                const btn = new Button({
+                    parent: null,
+                    style: ButtonStyles.BorderedPurple,
+                    icon: sample.icon,
+                    ariaId: sample.ariaId,
+                    x: x + 16,
+                    y: y + 16,
+                    onClick: () => {
+                        settings.writeString(SAVESLOT_AUTO, sample.src)
+                        this.app.popScene()
+                        this.app.pushScene(new Editor(this.app))
+                    },
                 })
+                this.sampleButtons.push(btn)
+                rowButtons.push(btn)
+                x += 38
+                if (x + 32 > 75) {
+                    this.navigator.addButtons(rowButtons)
+                    rowButtons = []
+                    y += 38
+                    x = -72
+                }
+            })
             this.navigator.addButtons(rowButtons)
         }
 
