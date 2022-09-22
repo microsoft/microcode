@@ -59,10 +59,11 @@ namespace microcode {
             this.buttons.forEach(btn =>
                 this.bounds.add(Bounds.Translate(btn.bounds, btn.xfrm.localPos))
             )
-            console.log(this.bounds.toString())
         }
 
-        public draw() {}
+        public draw() {
+            this.buttons.forEach(btn => btn.draw())
+        }
     }
 
     export class Picker extends Component implements IPlaceable {
@@ -188,11 +189,7 @@ namespace microcode {
                 if (this.title) {
                     Screen.print(this.title, left + 2, top + 4, 1, image.font8)
                 }
-                this.groups.forEach(group => {
-                    group.buttons.forEach(btn => {
-                        btn.draw()
-                    })
-                })
+                this.groups.forEach(group => group.draw())
                 if (this.deleteBtn) this.deleteBtn.draw()
             }
         }
