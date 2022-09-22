@@ -29,7 +29,7 @@ The easiest way to get started with MicroCode is through the [web app](https://m
 -   Space bar for A button
 -   Backscape for B button
 
-<iframe class="editor" src="https://microsoft.github.io/microcode" />
+<iframe class="editor" src="https://microsoft.github.io/microcode?nofooter=1&embed=1" />
 
 ## Micro:bit simulator
 
