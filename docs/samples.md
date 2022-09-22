@@ -12,7 +12,7 @@ The goal of this program is to show a cute heart animation.
 We use a single rule with a timer. The timer starts a screen animation
 with two images. Since this happens in a loop, it creates a cool heart animation.
 
-## ![Smiley Buttons icon](./images/icon_sample_smiley_buttons.png) Flashing Heart
+## ![Smiley Buttons icon](./images/icon_sample_smiley_buttons.png) Smiley Buttons
 
 ![Smiley Buttons MicroCode program](./images/sample_smiley_buttons.png)
 
