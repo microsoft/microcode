@@ -2,7 +2,7 @@ makecode:
   target: arcade
   platform: arcade
   home_url: https://arcade.makecode.com/
-remote-theme: jekyll-athena
+remote-theme: moonwalk
 include:
   - assets
   - README.md
