@@ -127,7 +127,9 @@ function uint8ArrayToString(input) {
     for (let i = 0; i < len; ++i) res += String.fromCharCode(input[i])
     return res
 }
+
 let liveRegion
+// keep in sync with en-US.json
 const liveStrings = {
     hud: "head over display",
     insertion_point: "empty tile",
@@ -147,13 +149,12 @@ const liveStrings = {
     S7: "radio receive",
     S8: "microphone",
 
-    // filters for TID_SENSOR_PRESS
     F0: "touch pin 0",
     F1: "touch pin 1",
     F2: "touch pin 2",
     F3: "button A",
     F4: "button B",
-    // F6
+
     F7: "logo",
     F8: "1",
     F9: "2",
@@ -235,6 +236,25 @@ const liveStrings = {
     N8: "rock paper scissors",
     N9: "head or tail",
 }
+
+// load localized strings
+async function loadTranslations() {
+    const lang = navigator.language
+    if (/^en/.test(lang)) return // default language
+    const resp = await fetch(`./locales/${lang}/strings.json`)
+    if (resp.status === 200) {
+        console.debug(`loading translations for ${lang}`)
+        liveStrings = await resp.json()
+    } else {
+        const neutral = lang.split("-", 1)[0]
+        const resp = await fetch(`./locales/${neutral}/strings.json`)
+        if (resp.status === 200) {
+            console.debug(`loaded neutral translations for ${lang}`)
+            liveStrings = await resp.json()
+        }
+    }
+}
+loadTranslations()
 
 function mapAriaId(ariaId) {
     return (liveStrings[ariaId] || ariaId).split(/_/g).join(" ")
