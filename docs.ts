@@ -1,4 +1,4 @@
-namespace microcode {
+namespace docs {
     function imageToBuffer(img: Image) {
         const w = img.width
         const h = img.height
@@ -13,52 +13,79 @@ namespace microcode {
         return buf
     }
 
-    //% shim=TD_NOOP
-    export function init() {
-        control.simmessages.onReceived("docs:icons", () => dumpIcons())
+    let theApp: microcode.App
+    export function renderApp(app: microcode.App) {
+        theApp = app
+        _renderApp()
+        theApp = undefined
+    }
+
+    interface RenderedImage {
+        type: "icon" | "sample" | "icon_sample"
+        name: string
+        pixels: string
     }
 
     //% shim=TD_NOOP
-    export function dumpIcons() {
-        renderIcons()
+    function _renderApp() {
+        const images: RenderedImage[] = []
+        renderIcons(images)
+        renderSamples(images, theApp)
+        control.simmessages.send(
+            "docs",
+            Buffer.fromUTF8(JSON.stringify(images))
+        )
     }
 
-    let editor: Editor
-    let editorName: string
-    let editorIcon: Image
-    export function dumpProgram(e: Editor, n: string, i: Image) {
-        console.log(`dump program`)
-        editor = e
-        editorName = n
-        editorIcon = i
-        _dumpProgram()
-        editor = undefined
-        editorName = undefined
-        editorIcon = undefined
+    function renderSamples(images: RenderedImage[], app: microcode.App) {
+        app.popScene()
+        for (const sample of microcode.samples()) {
+            console.log(`render sample ${sample.label}`)
+            settings.writeString(microcode.SAVESLOT_AUTO, sample.src)
+            const editor = new microcode.Editor(app)
+            app.pushScene(editor)
+            pause(500)
+            renderProgram(
+                images,
+                editor,
+                sample.label,
+                microcode.icons.get(sample.icon)
+            )
+        }
     }
 
-    //% shim=TD_NOOP
-    function _dumpProgram() {
+    function renderProgram(
+        images: RenderedImage[],
+        editor: microcode.Editor,
+        editorName: string,
+        editorIcon: Image
+    ) {
         const prg = editor.renderProgram()
-        sendImage(editorName, prg)
-        if (editorIcon) sendImage(`icon_${editorName}`, editorIcon)
+        appendImage(images, "sample", editorName, prg)
+        if (editorIcon)
+            appendImage(images, "icon_sample", editorName, editorIcon)
     }
 
-    function sendImage(name: string, img: Image) {
-        const msg = {
-            type: "image",
+    function appendImage(
+        images: RenderedImage[],
+        type: "icon" | "sample" | "icon_sample",
+        name: string,
+        img: Image
+    ) {
+        const msg: RenderedImage = {
+            type,
             name: name.replace(" ", "_"),
             pixels: imageToBuffer(img).toHex(),
         }
-        control.simmessages.send("docs", Buffer.fromUTF8(JSON.stringify(msg)))
+        images.push(msg)
     }
 
-    function renderIcons() {
-        icons.init()
-        for (const name of icons.names()) {
-            console.log(`dump ${name}`)
-            const icon = icons.get(name)
-            sendImage(`icon_${name}`, icon)
+    function renderIcons(images: RenderedImage[]) {
+        microcode.icons.init()
+        for (const name of microcode.icons.names()) {
+            console.log(`render icon ${name}`)
+            const icon = microcode.icons.get(name)
+            appendImage(images, `icon`, name, icon)
         }
     }
 }

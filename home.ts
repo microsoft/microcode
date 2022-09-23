@@ -55,22 +55,6 @@ namespace microcode {
             // handle menu?
         }
 
-        private renderSamples() {
-            this.app.popScene()
-            for (const sample of samples()) {
-                console.log(`render ${sample.label}`)
-                settings.writeString(SAVESLOT_AUTO, sample.src)
-                const editor = new Editor(this.app)
-                this.app.pushScene(editor)
-                pause(500)
-                dumpProgram(
-                    editor,
-                    `sample_${sample.label}`,
-                    icons.get(sample.icon)
-                )
-            }
-        }
-
         /* override */ activate() {
             super.activate()
             this.color = 15
