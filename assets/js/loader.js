@@ -172,6 +172,7 @@ function makeCodeRun(options) {
 
     function initSimState() {
         const saveSlotKey = "S/sa"
+        const openEditorKey = "S/sao"
         try {
             simState = JSON.parse(localStorage["microcode-simstate"])
         } catch (e) {
@@ -180,7 +181,8 @@ function makeCodeRun(options) {
 
         const importState = () => {
             const hash = window.location.hash.replace(/^#/, "")
-            if (hash) {
+            const currentProgram = simState[saveSlotKey] || ""
+            if (hash && currentProgram !== hash) {
                 console.debug(`importing program from hash`, { hash })
                 simState[saveSlotKey] = hash
                 simStateChanged = true
