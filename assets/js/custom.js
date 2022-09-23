@@ -239,7 +239,8 @@ const liveStrings = {
 
 // load localized strings
 async function loadTranslations() {
-    const lang = navigator.language
+    const url = new URL(window.location.href)
+    const lang = url.searchParams.get("lang") || navigator.language
     if (/^en/.test(lang)) return // default language
     const resp = await fetch(`./locales/${lang}/strings.json`)
     if (resp.status === 200) {
