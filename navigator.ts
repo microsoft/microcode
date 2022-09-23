@@ -446,13 +446,8 @@ namespace microcode {
             }
 
             if (btn) {
+                btn.reportAria()
                 this.curr = btn
-                const accessibilityMessage: accessibility.TileAccessibilityMessage =
-                    {
-                        type: "tile",
-                        value: (btn ? btn.ariaId : "") || "",
-                    }
-                accessibility.setLiveContent(accessibilityMessage)
             }
 
             return this.curr
