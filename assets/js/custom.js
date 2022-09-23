@@ -216,6 +216,14 @@ const liveStrings = {
     M19twinkle: "emoji twinkle",
     M19yawn: "emoji yawn",
 
+    M20A: "in pipe A",
+    M20B: "in pipe B",
+    M20C: "in pipe C",
+
+    S9A: "out of pipe A",
+    S9B: "out of pipe B",
+    S9C: "out of pipe C",
+
     N0: "editor",
     N1: "new program",
     N2: "flashing heart",
@@ -243,13 +251,11 @@ addSimMessageHandler("accessibility", data => {
         const whens = msg.whens
         if (whens && whens.length > 0)
             value += ` when ${whens.map(mapAriaId).join(" ")}`
-        else
-            value += ` when starting`
+        else value += ` when starting`
         const dos = msg.dos
         if (dos && dos.length > 0)
             value += ` do ${dos.map(mapAriaId).join(" ")}`
-        else
-            value += ` do nothing`
+        else value += ` do nothing`
     }
 
     // apply to browser

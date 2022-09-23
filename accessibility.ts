@@ -10,7 +10,7 @@ namespace accessibility {
 
     export interface TileAccessibilityMessage {
         type: "tile"
-        value: string;
+        value: string
     }
 
     export interface RuleAccessibilityMessage {
@@ -25,10 +25,7 @@ namespace accessibility {
     //% shim=TD_ID
     export function setLiveContent(msg: AccessibilityMessage) {
         const data = Buffer.fromUTF8(JSON.stringify(msg))
-        control.simmessages.send(
-            "accessibility",
-            data
-        )
+        control.simmessages.send("accessibility", data)
     }
 
     const liveStrings: { [id: string]: string } = {
@@ -115,6 +112,14 @@ namespace accessibility {
         M19twinkle: "twinkle",
         M19yawn: "yawn",
 
+        M20A: "in pipe A",
+        M20B: "in pipe B",
+        M20C: "in pipe C",
+
+        S9A: "out pipe A",
+        S9B: "out pipe B",
+        S9C: "out pipe C",
+
         N0: "editor",
         N1: "new program",
         N2: "flashing heart",
@@ -127,8 +132,7 @@ namespace accessibility {
         N9: "head or tail",
     }
     export function ariaToTooltip(ariaId: string) {
-        const s = (liveStrings[ariaId] || "")
-            .replaceAll("_", " ")
+        const s = (liveStrings[ariaId] || "").replaceAll("_", " ")
         return s.toUpperCase()
     }
 }

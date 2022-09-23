@@ -223,9 +223,9 @@ namespace microcode {
         tile.constraints.handling = maxOneValueIn
     }
 
-    makePipe(TID_SENSOR_OUT_PIPE_A, "Out of A", 0)
-    makePipe(TID_SENSOR_OUT_PIPE_B, "Out of B", 1)
-    makePipe(TID_SENSOR_OUT_PIPE_C, "Out of C", 2)
+    makePipe(TID_SENSOR_OUT_PIPE_A, "out of pipe A", 0)
+    makePipe(TID_SENSOR_OUT_PIPE_B, "out of pipe B", 1)
+    makePipe(TID_SENSOR_OUT_PIPE_C, "out of pipe C", 2)
 
     const radio_recv = makeSensor(
         TID_SENSOR_RADIO_RECEIVE,
