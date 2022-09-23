@@ -2029,10 +2029,10 @@ f f f f f f f f f f f f f f f f
     . . . . . . . . . . . . . . . .
 `
     export const largeEditIcon = img`
-    ....666666666666666666666666....
-    ..6666666666666666666666666666..
     .666666666666666666666666666666.
-    .66666666666666666666666ee66666.
+    66666666666666666666666666666666
+    66666666666666666666666666666666
+    666666666666666666666666ee666666
     66666666666666666666666e44e66666
     6666666666666666666666ee442e6666
     666666666666666666666e15e222e666
@@ -2057,20 +2057,20 @@ f f f f f f f f f f f f f f f f
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
     cccccccccccccccccccccccccccccccc
     66666666666666666666666666666666
+    66666666666666666666666666666666
+    66666666666666666666666666666666
+    66666666666666666666666666666666
     b666666666666666666666666666666b
-    .666666666666666666666666666666.
-    .b6666666666666666666666666666b.
-    ..bb666666666666666666666666bb..
-    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+    .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
 
     export const largeNewProgramIcon = img`
-    ....11111..............11111....
-    ..111bbbb..............bbbb111..
-    .11bb......................bb11.
-    .1b..........................b1.
-    11............................11
-    1b............................b1
+    .11111111..............11111111.
+    1bbbbbbbb..............bbbbbbbb1
+    1..............................1
+    1..............................1
+    1..............................1
+    1..............................1
     1..............................1
     1..............................1
     1..............................1
@@ -2092,19 +2092,19 @@ f f f f f f f f f f f f f f f f
     1..............................1
     1..............................1
     1..............................1
-    11............................11
-    b1............................1b
-    .11..........................11.
-    .b111......................111b.
-    ..bb11111..............11111bb..
-    ....bbbbb..............bbbbb....
+    1..............................1
+    1..............................1
+    1..............................1
+    1..............................1
+    b11111111..............11111111b
+    .bbbbbbbb..............bbbbbbbb.
 `
 
     export const sampleFlashingHeart = img`
-    ....ffffffffffffffffffffffff....
-    ..ffffffffffffffffffffffffffff..
-    .ffffffffffffffffffffff2fffffff.
-    .fffffffffffffffffffff212ff2fff.
+    .ffffffffffffffffffffffffffffff.
+    ffffffffffffffffffffffffffffffff
+    fffffffffffffffffffffff2ffffffff
+    ffffffffffffffffffffff212ff2ffff
     ffffffffffffffffffffff212f212fff
     ffffffffffffffffffffff212212ffff
     fffffffffffffffffffffff2212fffff
@@ -2129,17 +2129,17 @@ f f f f f f f f f f f f f f f f
     ffff2222ffff22211222ffffffffffff
     ffffff2122ffff2222ffffffffffffff
     fffff212212ffff22fffffffffffffff
-    bfff212f212ffffffffffffffffffffb
-    .ffff2ff212ffffffffffffffffffff.
-    .bfffffff2ffffffffffffffffffffb.
-    ..bbffffffffffffffffffffffffbb..
-    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+    ffff212f212fffffffffffffffffffff
+    fffff2ff212fffffffffffffffffffff
+    fffffffff2ffffffffffffffffffffff
+    bffffffffffffffffffffffffffffffb
+    .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
     export const sampleSmileyButtons = img`
-    ....111111111111111111111111....
-    ..1111111111111111111111111111..
     .111111111111111111111111111111.
-    .1111bbbbbbbbbbbbbbbb1111111111.
+    11111111111111111111111111111111
+    11111111111111111111111111111111
+    11111bbbbbbbbbbbbbbbb11111111111
     1111b1111111111111111b1111111111
     1111b1111111111111111b1111111111
     1111b1111114444111111bd111111111
@@ -2164,17 +2164,17 @@ f f f f f f f f f f f f f f f f
     1111111111111ddd18866666688d1111
     11111111111111111188666688d11111
     1111111111111111111888888d111111
-    b11111111111111111118888d111111b
-    .111111111111111111111111111111.
-    .b1111111111111111111111111111b.
-    ..bb111111111111111111111111bb..
-    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+    111111111111111111118888d1111111
+    11111111111111111111111111111111
+    11111111111111111111111111111111
+    b111111111111111111111111111111b
+    .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
     export const sampleDice = img`
-    ....111111111111111111111111....
-    ..1111111111111111111111111111..
     .111111111111111111111111111111.
-    .111111111111111111111111111111.
+    11111111111111111111111111111111
+    11111111111111111111111111111111
+    11111111111111111111111111111111
     1111ccccc11111111111111111111111
     111111111c1111111111111111111111
     1111111111c111111111111111111111
@@ -2199,17 +2199,17 @@ f f f f f f f f f f f f f f f f
     11111111111111111cccd11111111111
     11111111111111111111111111111111
     11111111111111111111111111111111
-    b111111111ddddddddddddddddd1111b
-    .111111111111ddddddddddddd11111.
-    .b1111111111111111111111111111b.
-    ..bb111111111111111111111111bb..
-    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+    1111111111ddddddddddddddddd11111
+    1111111111111ddddddddddddd111111
+    11111111111111111111111111111111
+    b111111111111111111111111111111b
+    .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
     export const sampleClapLights = img`
-    ....fffff8ffffffffffffffffff....
-    ..fffffff8ffffffffffffffffffff..
     .ffffffff8fffffffffffffffffffff.
-    .ffffffff8fffffffffffffffffffff.
+    fffffffff8ffffffffffffffffffffff
+    fffffffff8ffffffffffffffffffffff
+    fffffffff8ffffffffffffffffffffff
     fffffffff8ffffffffffffffffffffff
     fffffffff8ffffffffffffffffffffff
     fffffffffeffffffffffffffffffffff
@@ -2234,17 +2234,17 @@ f f f f f f f f f f f f f f f f
     fffffffff5fff4545555555555454fff
     ffffffff5fffff455555555555454fff
     fffffff5ff5ffff45555555555454fff
-    bfffffffff5fffff45555555555454fb
-    .fffffffff5ffffff4555555555454f.
-    .bffffffffffffffff444555555455b.
-    ..bbfffffffffffffffff4555555bb..
-    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+    ffffffffff5fffff45555555555454ff
+    ffffffffff5ffffff4555555555454ff
+    ffffffffffffffffff4445555554554f
+    bffffffffffffffffffff4555555554b
+    ..bbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
     export const sampleRockPaperScissors = img`
-    ....111111111111111111111111....
-    ..1111111111111111111111111111..
     .111111111111111111111111111111.
-    .1111111111111111111c1111111111.
+    11111111111111111111111111111111
+    11111111111111111111111111111111
+    11111111111111111111c11111111111
     1111111111111111111c1ccc11111111
     11111111ccc11111111c1111cc111111
     1111111c422c111111c11d1111c11111
@@ -2269,17 +2269,17 @@ f f f f f f f f f f f f f f f f
     1111111111111111cdddddbdbbbcd111
     11111111111111111cdddbdbbbcd1111
     111111111111111111cbbbbbccd11111
-    b111111111111111111cccccdd11111b
-    .111111111111111111111111111111.
-    .b1111111111111111111111111111b.
-    ..bb111111111111111111111111bb..
-    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+    1111111111111111111cccccdd111111
+    11111111111111111111111111111111
+    11111111111111111111111111111111
+    b111111111111111111111111111111b
+    .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
     export const sampleTeleportDuck = img`
-    ....111111111111111111111111....
-    ..1111111111111111111111111111..
-    .111111111111111611111111111111.
-    .161111111111116161111111161111.
+    .111111111111111111111111111111.
+    11111111111111111111111111111111
+    11111111111111116111111111111111
+    11611111111111161611111111611111
     11161111b11111116111116611611111
     11116111111111511111111666111111
     11161611111111111111511611111111
@@ -2304,17 +2304,17 @@ f f f f f f f f f f f f f f f f
     111111111111ffff5555555ffd116111
     1111111111111111fffffffdd1116111
     1111116661111111ff44fd1111156111
-    b11666111151111f44444fd11111161b
-    .111161111111111fffffd111111111.
-    .b1111111111111111111111111111b.
-    ..bb111111111111111111111111bb..
-    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+    111666111151111f44444fd111111611
+    1111161111111111fffffd1111111111
+    11111111111111111111111111111111
+    b111111111111111111111111111111b
+    .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
     export const samplePetHamster = img`
-    ....999999999999999999999999....
-    ..9999999999999999999999999999..
     .999999999999999999999999999999.
-    .999999999999929299999911999999.
+    99999999999999999999999999999999
+    99999999999999999999999999999999
+    99999999999999292999999119999999
     99999999999992422299999999999999
     99999999999992222299999999999999
     99991199999999222999999999999999
@@ -2339,18 +2339,18 @@ f f f f f f f f f f f f f f f f
     777771777feef44f44feef6717777177
     7777777777fffffffffff67777777777
     77717777777777777777777777717777
-    b777771777777777771777777715177b
-    .777715177777177715177777771777.
-    .b7777177777777777177777777777b.
-    ..bb777777777777777777777777bb..
-    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+    77777717777777777717777777151777
+    77777151777771777151777777717777
+    77777717777777777717777777777777
+    b777777777777777777777777777777b
+    .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
 
     export const sampleHeadsOrTails = img`
-    ....111111111111111111111111....
-    ..1111111fff111111111111111111..
-    .1111111f1111111111111111111111.
-    .111111f11ff1111111111111111111.
+    .111111111111111111111111111111.
+    111111111fff11111111111111111111
+    11111111f11111111111111111111111
+    1111111f11ff11111111111111111111
     111111111f1111111111111111111111
     11111111111111111111111111111111
     11111111111116611111111111111111
@@ -2375,18 +2375,18 @@ f f f f f f f f f f f f f f f f
     111111111445555444555544d1111111
     1111111111444555545555554d111111
     11111111114544444455555554dd1111
-    b111111111455555545555555544d11b
-    .1111111111444444455555555554d1.
-    .b1111111114555554554555555554b.
-    ..bb111111114444444445555555bb..
-    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+    1111111111455555545555555544d111
+    11111111111444444455555555554d11
+    11111111111455555455455555555411
+    b111111111114444444445555555554b
+    .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
 
     export const sampleReactionTime = img`
-    ...ffffffffffffffffff4555555....
-    ..fffffffffffffff1ff455555554f..
-    .ffffffffff1fffff1ff45555554fff.
-    .ffffffffff1f1fff1ff45555554fff.
+    .ffffffffffffffffffff455555554f.
+    fffffffffffffffff1ff455555554fff
+    fffffffffff1fffff1ff45555554ffff
+    fffffffffff1f1fff1ff45555554ffff
     fffff1fffff1f1f1f1ff4555554fffff
     fffff1fffff1f1f1f1f45555554fffff
     fffff1fffff1f1fff1f4555554ffffff
@@ -2411,17 +2411,17 @@ f f f f f f f f f f f f f f f f
     ffffffffffff444444444fffffffffff
     fffffffffffe444444444effffffffff
     ddddddddddfe244444442efddddddddd
-    bdddddddddfee2222222eefddddddddb
-    .ddddddddddfeeeeeeeeefddddddddd.
-    .bddddddddddfffffffffdddddddddb.
-    ..bbddddddddddddddddddddddddbb..
-    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+    ddddddddddfee2222222eefddddddddd
+    dddddddddddfeeeeeeeeefdddddddddd
+    ddddddddddddfffffffffddddddddddd
+    bddddddddddddddddddddddddddddddb
+    .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
     export const sampleHotPotato = img`
-    ....ffffffffffffffffffffffff....
-    ..ffffffffffffff5fffffffffffff..
-    .fffffffffffffff55fffffffffffff.
-    .fffffffff5f255f22fffffffffffff.
+    .ffffffffffffffffffffffffffffff.
+    ffffffffffffffff5fffffffffffffff
+    ffffffffffffffff55ffffffffffffff
+    ffffffffff5f255f22ffffffffffffff
     fffffff25f22f255f2ffffffffffffff
     ffffff522ff22222522ff2ffffffffff
     ffffff5525552542252252ff5f2fffff
@@ -2446,11 +2446,11 @@ f f f f f f f f f f f f f f f f
     ffffffffffff44eedddddeee44ffffff
     fffffffffffff44eeddeeee44fffffff
     fffffffffffff444eeee44444fffffff
-    bfffffffffffff4444444444fffffffb
-    .fffffffffffffff44444ffffffffff.
-    .bffffffffffffffffffffffffffffb.
-    ..bbffffffffffffffffffffffffbb..
-    ....bbbbbbbbbbbbbbbbbbbbbbbb....
+    ffffffffffffff4444444444ffffffff
+    ffffffffffffffff44444fffffffffff
+    ffffffffffffffffffffffffffffffff
+    bffffffffffffffffffffffffffffffb
+    .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
 
     export const settingsGear = img`
