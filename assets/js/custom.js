@@ -1,5 +1,5 @@
 console.debug(`loading custom sim support...`)
-const MICROCODE_PRODUCT_IDENTIFIER = "3e92f825"
+const MICROCODE_PRODUCT_IDENTIFIER = 0x3e92f825
 
 const inIFrame = (() => {
     try {
@@ -85,31 +85,27 @@ addSimMessageHandler("jacscript", async data => {
         for (const service of services) {
             const dev = service.device
             const productIdentifier = dev.productIdentifier
-                ? dev.productIdentifier.toString(16)
-                : ""
+
+            if (productIdentifier !== MICROCODE_PRODUCT_IDENTIFIER) {
+                console.debug(`jacscript: invalid product identifier`)
+                continue
+            }
+
             const firmwareVersion = dev.firmwareVersion
             const webFirmwareVersion = document.body.dataset.version
             const semweb = parseSemver(webFirmwareVersion)
             const semcur = parseSemver(firmwareVersion)
-
-            console.debug(
-                `jacscript: deploying to ${service} (pid: ${productIdentifier}, cpid: ${MICROCODE_PRODUCT_IDENTIFIER}, fw: ${firmwareVersion}, cfw: ${webFirmwareVersion})`
-            )
-
-            if (
-                productIdentifier !== MICROCODE_PRODUCT_IDENTIFIER ||
-                semweb[0] > semcur[0] ||
-                semweb[1] > semcur[1]
-            ) {
-                console.debug(
-                    `outdated or invalid firmware: pid ${productIdentifier}, fw: ${firmwareVersion}`
-                )
+            if (semweb[0] > semcur[0] || semweb[1] > semcur[1]) {
+                console.debug(`outdated firmware: fw: ${firmwareVersion}`)
                 const outdatedDlg = document.getElementById("outdatedDlg")
                 outdatedDlg.showModal()
                 bus.disconnect()
                 return
             }
 
+            console.debug(
+                `jacscript: deploying to ${service} (pid: ${productIdentifier}, fw: ${firmwareVersion}, cfw: ${webFirmwareVersion})`
+            )
             await jacdac.OutPipe.sendBytes(
                 service,
                 jacdac.JacscriptManagerCmd.DeployBytecode,
