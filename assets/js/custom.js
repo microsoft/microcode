@@ -135,6 +135,8 @@ const liveStrings = {
     when: "when empty tile",
     do: "do empty tile",
 
+    delete_tile: "delete tile",
+
     S1: "always",
     S2: "press",
     S2B: "release",

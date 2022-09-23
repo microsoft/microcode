@@ -186,7 +186,7 @@ namespace microcode {
 
         public move(dir: CursorDir) {
             this.makeGood()
-            console.log({ dir, row: this.row, col: this.col })
+
             switch (dir) {
                 case CursorDir.Up: {
                     if (this.row == 0) return undefined
@@ -262,7 +262,7 @@ namespace microcode {
                         accessibility.TextAccessibilityMessage
                     >{
                         type: "text",
-                        value: "remove LED editor tile",
+                        value: "delete_tile",
                     })
                 }
 
