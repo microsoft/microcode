@@ -143,31 +143,29 @@ namespace microcode {
         public move(dir: CursorDir) {
             const ret = super.move(dir)
 
-            let accessibilityMessage
-
+            let accessibilityMessage: accessibility.AccessibilityMessage
             if (this.row > 0 && this.col == 0) {
                 const ruleDef = this.rules[this.row - 1]
 
-                const whensTileIds: string[] = []
-                ruleDef.sensors.forEach(tile => whensTileIds.push(tile.tid))
-                ruleDef.filters.forEach(tile => whensTileIds.push(tile.tid))
+                const whens: string[] = ruleDef.sensors
+                    .map(s => s.tid)
+                    .concat(ruleDef.filters.map(s => s.tid))
 
-                const dosTileIds: string[] = []
-                ruleDef.actuators.forEach(tile => dosTileIds.push(tile.tid))
-                ruleDef.modifiers.forEach(tile => dosTileIds.push(tile.tid))
+                const dos: string[] = ruleDef.actuators
+                    .map(s => s.tid)
+                    .concat(ruleDef.modifiers.map(s => s.tid))
 
-                accessibilityMessage =
-                    new accessibility.ruleAccessibilityMessage(
-                        dosTileIds,
-                        whensTileIds
-                    )
+                accessibilityMessage = <accessibility.RuleAccessibilityMessage>{
+                    type: "rule",
+                    whens,
+                    dos,
+                }
             } else {
-                accessibilityMessage =
-                    new accessibility.tileAccessibilityMessage(
-                        (ret ? ret.ariaId : "") || ""
-                    )
+                accessibilityMessage = <accessibility.TileAccessibilityMessage>{
+                    type: "tile",
+                    value: (ret ? ret.ariaId : "") || "",
+                }
             }
-
             accessibility.setLiveContent(accessibilityMessage)
 
             return ret
@@ -188,6 +186,7 @@ namespace microcode {
 
         public move(dir: CursorDir) {
             this.makeGood()
+            console.log({ dir, row: this.row, col: this.col })
             switch (dir) {
                 case CursorDir.Up: {
                     if (this.row == 0) return undefined
@@ -259,11 +258,12 @@ namespace microcode {
         reportAccessibilityInfo(btn: Button, reportRemoveLED: Boolean = true) {
             if (this.row == 0 && this.col == 0) {
                 if (reportRemoveLED) {
-                    accessibility.setLiveContent(
-                        new accessibility.textAccessibilityMessage(
-                            "remove LED editor tile"
-                        )
-                    )
+                    accessibility.setLiveContent(<
+                        accessibility.TextAccessibilityMessage
+                    >{
+                        type: "text",
+                        value: "remove LED editor tile",
+                    })
                 }
 
                 return
@@ -280,11 +280,12 @@ namespace microcode {
                 status = "unknown"
             }
 
-            accessibility.setLiveContent(
-                new accessibility.textAccessibilityMessage(
-                    `led ${this.col} ${this.row} ${status}`
-                )
-            )
+            accessibility.setLiveContent(<
+                accessibility.TextAccessibilityMessage
+            >{
+                type: "text",
+                value: `led ${this.col} ${this.row} ${status}`,
+            })
         }
     }
 
@@ -437,10 +438,11 @@ namespace microcode {
 
             if (btn) {
                 this.curr = btn
-                let accessibilityMessage =
-                    new accessibility.tileAccessibilityMessage(
-                        (btn ? btn.ariaId : "") || ""
-                    )
+                const accessibilityMessage: accessibility.TileAccessibilityMessage =
+                    {
+                        type: "tile",
+                        value: (btn ? btn.ariaId : "") || "",
+                    }
                 accessibility.setLiveContent(accessibilityMessage)
             }
 

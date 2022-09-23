@@ -226,58 +226,31 @@ const liveStrings = {
     N9: "head or tail",
 }
 
+function mapAriaId(ariaId) {
+    return (liveStrings[ariaId] || ariaId).split(/_/g).join(" ")
+}
+
 addSimMessageHandler("accessibility", data => {
-    const serializedAccessibilityMessage = uint8ArrayToString(data)
-
-    let accessibilityMessage = JSON.parse(serializedAccessibilityMessage)
-
+    // render message
+    const msg = JSON.parse(uint8ArrayToString(data))
     let value
-    if (
-        accessibilityMessage.type === "tile" ||
-        accessibilityMessage.type === "text"
-    ) {
-        //console.log(serializedAccessibilityMessage)
-
-        let valueId = accessibilityMessage.details[0]
-
-        if (valueId) {
-            valueId = valueId.values[0]
-
-            if (valueId) {
-                value = (liveStrings[valueId] || valueId).split(/_/g).join(" ")
-            }
-        }
-    } else if (accessibilityMessage.type == "rule") {
+    if (msg.type === "tile" || msg.type === "text") {
+        value = mapAriaId(msg.value)
+    } else if (msg.type == "rule") {
         value = "rule"
-
-        let whens = accessibilityMessage.details[0]
-
-        if (whens && whens.values.length > 0) {
-            value += " when"
-
-            whens.values.forEach(tileId => {
-                value += " "
-                value += (liveStrings[tileId] || tileId).split(/_/g).join(" ")
-            })
-        }
-
-        let dos = accessibilityMessage.details[1]
-
-        if (dos && dos.values.length > 0) {
-            value += " do"
-
-            dos.values.forEach(tileId => {
-                value += " "
-                value += (liveStrings[tileId] || tileId).split(/_/g).join(" ")
-            })
-        }
-    } else {
-        console.log(
-            "Error, " + serializedAccessibilityMessage + " is not supported"
-        )
-        return
+        const whens = msg.whens
+        if (whens && whens.length > 0)
+            value += ` when ${whens.map(mapAriaId).join(" ")}`
+        else
+            value += ` when starting`
+        const dos = msg.dos
+        if (dos && dos.length > 0)
+            value += ` do ${dos.map(mapAriaId).join(" ")}`
+        else
+            value += ` do nothing`
     }
 
+    // apply to browser
     if (!liveRegion) {
         const style =
             "position: absolute !important;" +
