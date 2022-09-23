@@ -97,13 +97,15 @@ namespace microcode {
         /* override */ activate() {
             super.activate()
             const btn = this.navigator.initialCursor(0, 0)
-            if (btn)
+            if (btn) {
                 this.cursor.snapTo(
                     btn.xfrm.worldPos.x,
                     btn.xfrm.worldPos.y,
                     btn.ariaId,
                     btn.bounds
                 )
+                btn.reportAria()
+            }
         }
 
         /* override */ update() {

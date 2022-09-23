@@ -97,7 +97,9 @@ namespace microcode {
                     break
                 }
             }
-            return this.buttonGroups[this.row][this.col]
+            const btn = this.buttonGroups[this.row][this.col]
+            if (btn) btn.reportAria()
+            return btn
         }
 
         public getOverlapping(): Button[] {
@@ -146,7 +148,7 @@ namespace microcode {
             return ret
         }
 
-        private reportAria(ret: Button) {
+        protected reportAria(ret: Button) {
             if (!ret) {
                 console.warn(`rule: missing aria target`)
                 return
@@ -258,7 +260,7 @@ namespace microcode {
             })
         }
 
-        private reportAria(btn: Button, reportRemoveLED: Boolean = true) {
+        protected reportAria(btn: Button, reportRemoveLED: Boolean = true) {
             if (!btn) {
                 console.warn(`led: missing aria target`)
                 return
