@@ -1,10 +1,6 @@
 namespace microcode {
     // Auto-save slot
     export const SAVESLOT_AUTO = "sa"
-    // Save slots
-    export const SAVESLOT_1 = "s1"
-    export const SAVESLOT_2 = "s2"
-    export const SAVESLOT_3 = "s3"
 
     type SavedState = {
         progdef: any
@@ -32,6 +28,7 @@ namespace microcode {
                 progdef: progdef.toObj(),
             }
             const s = JSON.stringify(saved)
+            console.log(`save ${slot} (${s.length}c)`)
             //console.log(s)
             settings.writeString(slot, s)
         }
