@@ -241,13 +241,14 @@ const liveStrings = {
 async function loadTranslations() {
     const url = new URL(window.location.href)
     const lang = url.searchParams.get("lang") || navigator.language
+    const neutral = lang.split("-", 1)[0]
     if (/^en/.test(lang)) return // default language
+
     const resp = await fetch(`./locales/${lang}/strings.json`)
     if (resp.status === 200) {
         console.debug(`loading translations for ${lang}`)
         liveStrings = await resp.json()
-    } else {
-        const neutral = lang.split("-", 1)[0]
+    } else if (lang != neutral) {
         const resp = await fetch(`./locales/${neutral}/strings.json`)
         if (resp.status === 200) {
             console.debug(`loaded neutral translations for ${lang}`)
