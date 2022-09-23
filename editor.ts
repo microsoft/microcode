@@ -153,7 +153,10 @@ namespace microcode {
         }
         private scrollAndMove(dir: CursorDir) {
             const target = this.cursor.move(dir)
+            this.scrollAndMoveButton(target)
+        }
 
+        private scrollAndMoveButton(target: Button) {
             if (!target) return
 
             if (target.destroyed) {
@@ -265,10 +268,10 @@ namespace microcode {
         }
 
         protected handleClick(x: number, y: number) {
-            const target = this.navigator.screenToButton(x, y)
+            const target = this.cursor.navigator.screenToButton(x, y)
             if (target) {
-                this.moveTo(target)
-                this.cursor.click()
+                this.scrollAndMoveButton(target)
+                // this.cursor.click()
             }
         }
 
