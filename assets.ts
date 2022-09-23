@@ -270,39 +270,39 @@ namespace icondb {
 
     export const solid_red = img`
     . . . . . . . . . . . . . . . .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
+    . . . 2 2 2 2 2 2 2 2 2 2 . . .
+    . . 2 2 4 4 4 4 4 4 4 4 2 2 . .
+    . . 2 4 4 4 4 4 4 4 4 4 4 2 . .
+    . . 2 4 4 4 4 4 4 4 4 4 4 2 . .
+    . . 2 4 4 4 4 4 4 4 4 4 4 2 . .
+    . . 2 4 4 4 4 4 4 4 4 4 4 2 . .
+    . . 2 4 4 4 4 4 4 4 4 4 4 2 . .
+    . . 2 4 4 4 4 4 4 4 4 4 4 2 . .
+    . . 2 4 4 4 4 4 4 4 4 4 4 2 . .
+    . . 2 4 4 4 4 4 4 4 4 4 4 2 . .
+    . . 2 4 4 4 4 4 4 4 4 4 4 2 . .
+    . . 2 4 4 4 4 4 4 4 4 4 4 2 . .
+    . . 2 2 4 4 4 4 4 4 4 4 2 2 . .
+    . . . 2 2 2 2 2 2 2 2 2 2 . . .
     . . . . . . . . . . . . . . . .
 `
 
     export const solid_black = img`
     . . . . . . . . . . . . . . . .
-    . f f f f f f f f f f f f f f .
-    . f f f f f f f f f f f f f f .
-    . f f f f f f f f f f f f f f .
-    . f f f f f f f f f f f f f f .
-    . f f f f f f f f f f f f f f .
-    . f f f f f f f f f f f f f f .
-    . f f f f f f f f f f f f f f .
-    . f f f f f f f f f f f f f f .
-    . f f f f f f f f f f f f f f .
-    . f f f f f f f f f f f f f f .
-    . f f f f f f f f f f f f f f .
-    . f f f f f f f f f f f f f f .
-    . f f f f f f f f f f f f f f .
-    . f f f f f f f f f f f f f f .
+    . . . c c c c c c c c c c . . .
+    . . c c f f f f f f f f c c . .
+    . . c f f f f f f f f f f c . .
+    . . c f f f f f f f f f f c . .
+    . . c f f f f f f f f f f c . .
+    . . c f f f f f f f f f f c . .
+    . . c f f f f f f f f f f c . .
+    . . c f f f f f f f f f f c . .
+    . . c f f f f f f f f f f c . .
+    . . c f f f f f f f f f f c . .
+    . . c f f f f f f f f f f c . .
+    . . c f f f f f f f f f f c . .
+    . . c c f f f f f f f f c c . .
+    . . . c c c c c c c c c c . . .
     . . . . . . . . . . . . . . . .
 `
 
