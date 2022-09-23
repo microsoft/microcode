@@ -82,6 +82,7 @@ namespace microcode {
         protected handleClick(x: number, y: number) {
             const target = this.navigator.screenToButton(x, y)
             this.moveTo(target)
+            this.cursor.click()
         }
 
         /* override */ shutdown() {
