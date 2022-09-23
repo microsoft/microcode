@@ -290,9 +290,9 @@ namespace microcode {
         return accelEvent
     }
 
-    // TODO figure out which events we want (see accel spec)
     addAccelEvent(0x8b, "shake")
-    addAccelEvent(0x87, "freefall")
+    // don't want kids to throw micro:bit on the ground
+    // addAccelEvent(0x87, "freefall")
     addAccelEvent(0x81, "tilt_up")
     addAccelEvent(0x82, "tilt_down")
     addAccelEvent(0x83, "tilt_left")
