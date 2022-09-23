@@ -70,6 +70,7 @@ namespace microcode {
             this.reg[TID_SENSOR_OUT_PIPE_A] = icondb.outPipeA
             this.reg[TID_SENSOR_OUT_PIPE_B] = icondb.outPipeB
             this.reg[TID_SENSOR_OUT_PIPE_C] = icondb.outPipeC
+            this.reg[TID_SENSOR_MAGNET] = icondb.magnet
 
             this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
             this.reg[TID_FILTER_PIN_0] = icondb.tile_pin_0
@@ -1410,6 +1411,25 @@ namespace icondb {
         . . . . . 4 4 4 4 4 d d . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
+    `
+
+    export const magnet = img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . 8 8 . . . . . . 2 2 . . . 
+    . . . 8 8 . . . . . . 2 2 . . . 
+    . . . 8 8 . . . . . . 2 2 . . . 
+    . . . 8 8 . . . . . . 2 2 . . . 
+    . . . 8 8 . . . . . . 2 2 . . . 
+    . . . 8 8 . . . . . . 2 2 . . . 
+    . . . 8 8 . . . . . . 2 2 . . . 
+    . . . 8 8 . . . . . . 2 2 . . . 
+    . . . 8 8 . . . . . . 2 2 . . . 
+    . . . 8 8 8 . . . . 2 2 2 . . . 
+    . . . . 8 8 8 8 2 2 2 2 . . . . 
+    . . . . . 8 8 8 2 2 2 . . . . . 
+    . . . . . . . . . . . . . . . . 
     `
 
     export const microphone = img`

@@ -50,6 +50,14 @@ namespace microcode {
         constraints: Constraints
         fieldEditor: FieldEditor
         jdParam: any
+        jdExternalClass: number
+
+        isVisible() {
+            if (this.hidden) return false
+            if (this.jdExternalClass)
+                return jdc.numServiceInstances(this.jdExternalClass) > 0
+            return true
+        }
 
         getField(): any {
             return undefined
@@ -437,7 +445,7 @@ namespace microcode {
         ): TileDefn[] {
             const all = Object.keys(tilesDB[name])
                 .map(id => tilesDB[name][id])
-                .filter((tile: TileDefn) => !tile.hidden)
+                .filter((tile: TileDefn) => tile.isVisible())
                 .sort((t1, t2) => t1.priority - t2.priority)
 
             if (name === "sensors" || name === "actuators") return all
