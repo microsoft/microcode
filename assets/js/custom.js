@@ -31,10 +31,14 @@ async function flashJacscriptServices(services, data) {
 
 async function flashJacscriptService(service, data) {
     const dev = service.device
+    await dev.resolveProductIdentifier(3)
     const productIdentifier = dev.productIdentifier
 
-    if (productIdentifier && (productIdentifier !== MICROCODE_PRODUCT_IDENTIFIER)) {
-        console.debug(`jacscript: invalid product identifier`)
+    if (productIdentifier !== MICROCODE_PRODUCT_IDENTIFIER
+    ) {
+        console.debug(
+            `jacscript: invalid or unknown product identifier ${productIdentifier}`
+        )
         return
     }
 
@@ -50,9 +54,7 @@ async function flashJacscriptService(service, data) {
         return
     }
 
-    console.debug(
-        `jacscript: deploying to ${service} (pid: ${productIdentifier}, fw: ${firmwareVersion}, cfw: ${webFirmwareVersion})`
-    )
+    console.debug(`jacscript: deploying to ${service} (fw: ${firmwareVersion})`)
     await jacdac.OutPipe.sendBytes(
         service,
         jacdac.JacscriptManagerCmd.DeployBytecode,
