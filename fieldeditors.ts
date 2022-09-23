@@ -42,7 +42,7 @@ namespace microcode {
                 },
                 onHide,
                 onDelete,
-                navigator: () => new LEDNavigator(),
+                navigator: () => new SimpleGridNavigator(),
             },
             false
         )
