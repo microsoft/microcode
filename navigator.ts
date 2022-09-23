@@ -142,6 +142,15 @@ namespace microcode {
 
         public move(dir: CursorDir) {
             const ret = super.move(dir)
+            this.reportAria(ret)
+            return ret
+        }
+
+        private reportAria(ret: Button) {
+            if (!ret) {
+                console.warn(`rule: missing aria target`)
+                return
+            }
 
             let accessibilityMessage: accessibility.AccessibilityMessage
             if (this.row > 0 && this.col == 0) {
@@ -167,8 +176,6 @@ namespace microcode {
                 }
             }
             accessibility.setLiveContent(accessibilityMessage)
-
-            return ret
         }
     }
 
@@ -221,20 +228,16 @@ namespace microcode {
                 }
             }
 
-            let btn = this.buttonGroups[this.row][this.col]
-
-            this.reportAccessibilityInfo(btn)
-
+            const btn = this.buttonGroups[this.row][this.col]
+            this.reportAria(btn)
             return btn
         }
 
         public initialCursor(row: number = 0, col: number = 0) {
             this.row = 2 + (this.hasDelete() ? 1 : 0)
             this.col = 2
-
-            let btn = this.buttonGroups[this.row][this.col]
-
-            this.reportAccessibilityInfo(btn)
+            const btn = this.buttonGroups[this.row][this.col]
+            this.reportAria(btn)
 
             return btn
         }
@@ -247,15 +250,19 @@ namespace microcode {
                     let prev = btn.onClick
                     btn.onClick = () => {
                         prev(btn)
-                        this.reportAccessibilityInfo(btn, false)
+                        this.reportAria(btn, false)
                     }
                 } else {
-                    btn.onClick = () => this.reportAccessibilityInfo(btn, false)
+                    btn.onClick = () => this.reportAria(btn, false)
                 }
             })
         }
 
-        reportAccessibilityInfo(btn: Button, reportRemoveLED: Boolean = true) {
+        private reportAria(btn: Button, reportRemoveLED: Boolean = true) {
+            if (!btn) {
+                console.warn(`led: missing aria target`)
+                return
+            }
             if (this.row == 0 && this.col == 0) {
                 if (reportRemoveLED) {
                     accessibility.setLiveContent(<

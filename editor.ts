@@ -157,7 +157,10 @@ namespace microcode {
         }
 
         private scrollAndMoveButton(target: Button) {
-            if (!target) return
+            if (!target) {
+                console.warn(`editor: missing scroll and move target`)
+                return
+            }
 
             if (target.destroyed) {
                 console.warn(
