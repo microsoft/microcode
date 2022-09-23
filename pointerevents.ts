@@ -7,11 +7,13 @@ namespace pointerevents {
     }
 
     const contexts: ((x: number, y: number) => void)[] = []
+    //% shim=TD_NOOP
     export function pushContext(click: (x: number, y: number) => void) {
         contexts.push(click)
         setup()
     }
 
+    //% shim=TD_NOOP
     export function popContext() {
         contexts.pop()
     }
