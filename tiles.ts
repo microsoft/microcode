@@ -27,6 +27,7 @@ namespace microcode {
     export const TID_SENSOR_OUT_PIPE_A = "S9A"
     export const TID_SENSOR_OUT_PIPE_B = "S9B"
     export const TID_SENSOR_OUT_PIPE_C = "S9C"
+    export const TID_SENSOR_MAGNET = "S10"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -227,6 +228,16 @@ namespace microcode {
     radio_recv.serviceClassName = "radio"
     radio_recv.eventCode = 0x91
     radio_recv.constraints.handling = maxOneValueIn
+
+    const magnet = makeSensor(
+        TID_SENSOR_MAGNET,
+        "Magnetometer",
+        "no_filters",
+        500
+    )
+    magnet.serviceClassName = "magneticFieldLevel"
+    magnet.eventCode = 1
+    magnet.jdExternalClass = 0x12fe180f
 
     const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
     timer.constraints = {
