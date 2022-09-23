@@ -1,4 +1,5 @@
 console.debug(`loading custom sim support...`)
+const MICROCODE_PRODUCT_IDENTIFIER = "3e92f825"
 
 const inIFrame = (() => {
     try {
@@ -11,7 +12,8 @@ const inIFrame = (() => {
 let bus
 let connectEl
 const refreshUI = () => {
-    if (bus.connected) {
+    const supportsWebusb = !!navigator.usb
+    if (bus.connected || !supportsWebusb) {
         connectEl.style.display = "none"
         document.getElementById("connectDlg").close()
     } else connectEl.style.display = "inherit"
@@ -47,7 +49,7 @@ if (!inIFrame)
             })
             // track connection state and update button
             bus.on(jacdac.CONNECTION_STATE, refreshUI)
-            bus.on(jacdac.ERROR, e => console.error(e))
+            bus.on(jacdac.ERROR, e => refreshUI)
             // connect must be triggered by a user interaction
             connectEl.onclick = () =>
                 document.getElementById("connectDlg").showModal()
@@ -63,7 +65,6 @@ if (!inIFrame)
         document.body.append(script)
     })
 
-const naggedDevices = {}
 // send jacscript bytecode to jacdac dashboard
 addSimMessageHandler("jacscript", async data => {
     console.debug(`jacscript bytecode: ${data.length} bytes`)
@@ -83,11 +84,10 @@ addSimMessageHandler("jacscript", async data => {
         })
         for (const service of services) {
             console.debug(
-                `jacscript: deploying to ${service} (pid: ${productIdentifier}, cpid: ${MICROCODE_PID}, fw: ${firmwareVersion}, cfw: ${webFirmwareVersion})`
+                `jacscript: deploying to ${service} (pid: ${productIdentifier}, cpid: ${MICROCODE_PRODUCT_IDENTIFIER}, fw: ${firmwareVersion}, cfw: ${webFirmwareVersion})`
             )
 
             const dev = service.device
-            const MICROCODE_PID = "3e92f825"
             const productIdentifier = dev.productIdentifier
                 ? dev.productIdentifier.toString(16)
                 : ""
@@ -97,31 +97,24 @@ addSimMessageHandler("jacscript", async data => {
             const semcur = parseSemver(firmwareVersion)
 
             if (
-                !naggedDevices[dev.deviceId] &&
-                (productIdentifier !== MICROCODE_PID ||
-                    semweb[0] > semcur[0] ||
-                    semweb[1] > semcur[1])
+                productIdentifier !== MICROCODE_PRODUCT_IDENTIFIER ||
+                semweb[0] > semcur[0] ||
+                semweb[1] > semcur[1]
             ) {
                 console.debug(
-                    `outdated firmware: pid ${productIdentifier}, fw: ${firmwareVersion}`
+                    `outdated or invalid firmware: pid ${productIdentifier}, fw: ${firmwareVersion}`
                 )
-                naggedDevices[dev.deviceId] = true
-
                 const outdatedDlg = document.getElementById("outdatedDlg")
-                if (outdatedDlg) outdatedDlg.showModal()
+                outdatedDlg.showModal()
+                bus.disconnect()
+                return
             }
 
-            try {
-                connectEl.innerText = "micro:bit downloading..."
-                await jacdac.OutPipe.sendBytes(
-                    service,
-                    jacdac.JacscriptManagerCmd.DeployBytecode,
-                    data
-                )
-                refreshUI()
-            } catch {
-                connectEl.innerText = "micro:bit download failed :("
-            }
+            await jacdac.OutPipe.sendBytes(
+                service,
+                jacdac.JacscriptManagerCmd.DeployBytecode,
+                data
+            )
         }
     }
 })
@@ -276,12 +269,7 @@ function mapAriaId(ariaId) {
 
 function parseSemver(v) {
     const ver = /^v?(\d+)\.(\d+)\.(\d+)$/.exec(v)
-    if (ver)
-        return [
-            parseInt(ver[1]),
-            parseInt(ver[1]),
-            parseInt(ver[2]),
-        ]
+    if (ver) return [parseInt(ver[1]), parseInt(ver[1]), parseInt(ver[2])]
     else return [0, 0, 0]
 }
 
