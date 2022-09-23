@@ -34,19 +34,19 @@ async function flashJacscriptService(service, data) {
     await dev.resolveProductIdentifier(3)
     const productIdentifier = dev.productIdentifier
 
-    if (productIdentifier !== MICROCODE_PRODUCT_IDENTIFIER
-    ) {
+    if (productIdentifier !== MICROCODE_PRODUCT_IDENTIFIER) {
         console.debug(
             `jacscript: invalid or unknown product identifier ${productIdentifier}`
         )
         return
     }
 
+    await dev.resolveFirmwareVersion(3)
     const firmwareVersion = dev.firmwareVersion
     const webFirmwareVersion = document.body.dataset.version
     const semweb = parseSemver(webFirmwareVersion)
     const semcur = parseSemver(firmwareVersion)
-    if (firmwareVersion && (semweb[0] > semcur[0] || semweb[1] > semcur[1])) {
+    if (semweb[0] > semcur[0] || semweb[1] > semcur[1]) {
         console.debug(`outdated firmware: fw: ${firmwareVersion}`)
         const outdatedDlg = document.getElementById("outdatedDlg")
         outdatedDlg.showModal()
@@ -60,6 +60,7 @@ async function flashJacscriptService(service, data) {
         jacdac.JacscriptManagerCmd.DeployBytecode,
         data
     )
+    console.debug(`jacscript: deployed to ${service}`)
 }
 
 // to support downloading directly to device
@@ -329,7 +330,7 @@ addSimMessageHandler("accessibility", data => {
     }
     value = value || ""
     if (liveRegion.textContent === value) liveRegion.textContent = ""
-    console.log(`live region: ${value}`)
+    console.debug(`aria-live: ${value}`)
     liveRegion.textContent = value
 })
 
