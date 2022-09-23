@@ -41,11 +41,12 @@ async function flashJacscriptService(service, data) {
         return
     }
 
+    await dev.resolveFirmwareVersion(3)
     const firmwareVersion = dev.firmwareVersion
     const webFirmwareVersion = document.body.dataset.version
     const semweb = parseSemver(webFirmwareVersion)
     const semcur = parseSemver(firmwareVersion)
-    if (firmwareVersion && (semweb[0] > semcur[0] || semweb[1] > semcur[1])) {
+    if (semweb[0] > semcur[0] || semweb[1] > semcur[1]) {
         console.debug(`outdated firmware: fw: ${firmwareVersion}`)
         const outdatedDlg = document.getElementById("outdatedDlg")
         outdatedDlg.showModal()
