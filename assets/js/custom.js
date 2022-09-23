@@ -244,7 +244,7 @@ async function loadTranslations() {
     const neutral = lang.split("-", 1)[0]
     if (/^en/.test(lang)) return // default language
 
-    let translations = {}
+    let translations
     const resp = await fetch(`./locales/${lang}/strings.json`)
     if (resp.status === 200) {
         console.debug(`loading translations for ${lang}`)
@@ -258,7 +258,10 @@ async function loadTranslations() {
     }
 
     // merge
-    Object.entries(([key, value]) => liveStrings[key] = value)
+    Object.entries(
+        translations || {},
+        ([key, value]) => (liveStrings[key] = value)
+    )
 }
 loadTranslations()
 
