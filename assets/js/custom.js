@@ -83,10 +83,6 @@ addSimMessageHandler("jacscript", async data => {
             serviceClass: jacdac.SRV_JACSCRIPT_MANAGER,
         })
         for (const service of services) {
-            console.debug(
-                `jacscript: deploying to ${service} (pid: ${productIdentifier}, cpid: ${MICROCODE_PRODUCT_IDENTIFIER}, fw: ${firmwareVersion}, cfw: ${webFirmwareVersion})`
-            )
-
             const dev = service.device
             const productIdentifier = dev.productIdentifier
                 ? dev.productIdentifier.toString(16)
@@ -95,6 +91,10 @@ addSimMessageHandler("jacscript", async data => {
             const webFirmwareVersion = document.body.dataset.version
             const semweb = parseSemver(webFirmwareVersion)
             const semcur = parseSemver(firmwareVersion)
+
+            console.debug(
+                `jacscript: deploying to ${service} (pid: ${productIdentifier}, cpid: ${MICROCODE_PRODUCT_IDENTIFIER}, fw: ${firmwareVersion}, cfw: ${webFirmwareVersion})`
+            )
 
             if (
                 productIdentifier !== MICROCODE_PRODUCT_IDENTIFIER ||
