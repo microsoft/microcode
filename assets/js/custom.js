@@ -25,6 +25,41 @@ const refreshUI = () => {
     connectEl.setAttribute("title", statusText)
 }
 
+async function flashJacscriptServices(services, data) {
+    for (const service of services) await flashJacscriptService(service, data)
+}
+
+async function flashJacscriptService(service, data) {
+    const dev = service.device
+    const productIdentifier = dev.productIdentifier
+
+    if (productIdentifier && (productIdentifier !== MICROCODE_PRODUCT_IDENTIFIER)) {
+        console.debug(`jacscript: invalid product identifier`)
+        return
+    }
+
+    const firmwareVersion = dev.firmwareVersion
+    const webFirmwareVersion = document.body.dataset.version
+    const semweb = parseSemver(webFirmwareVersion)
+    const semcur = parseSemver(firmwareVersion)
+    if (firmwareVersion && (semweb[0] > semcur[0] || semweb[1] > semcur[1])) {
+        console.debug(`outdated firmware: fw: ${firmwareVersion}`)
+        const outdatedDlg = document.getElementById("outdatedDlg")
+        outdatedDlg.showModal()
+        bus.disconnect()
+        return
+    }
+
+    console.debug(
+        `jacscript: deploying to ${service} (pid: ${productIdentifier}, fw: ${firmwareVersion}, cfw: ${webFirmwareVersion})`
+    )
+    await jacdac.OutPipe.sendBytes(
+        service,
+        jacdac.JacscriptManagerCmd.DeployBytecode,
+        data
+    )
+}
+
 // to support downloading directly to device
 if (!inIFrame)
     document.addEventListener("DOMContentLoaded", () => {
@@ -50,6 +85,17 @@ if (!inIFrame)
             // track connection state and update button
             bus.on(jacdac.CONNECTION_STATE, refreshUI)
             bus.on(jacdac.ERROR, e => refreshUI)
+            bus.on(
+                jacdac.DEVICE_FIRMWARE_INFO,
+                dev =>
+                    lastData &&
+                    flashJacscriptServices(
+                        dev.services({
+                            serviceClass: jacdac.SRV_JACSCRIPT_MANAGER,
+                        }),
+                        lastData
+                    )
+            )
             // connect must be triggered by a user interaction
             connectEl.onclick = () =>
                 document.getElementById("connectDlg").showModal()
@@ -68,6 +114,7 @@ if (!inIFrame)
 // send jacscript bytecode to jacdac dashboard
 addSimMessageHandler("jacscript", async data => {
     console.debug(`jacscript bytecode: ${data.length} bytes`)
+    lastData = data
 
     if (inIFrame)
         window.parent.postMessage(
@@ -82,36 +129,7 @@ addSimMessageHandler("jacscript", async data => {
         const services = bus.services({
             serviceClass: jacdac.SRV_JACSCRIPT_MANAGER,
         })
-        for (const service of services) {
-            const dev = service.device
-            const productIdentifier = dev.productIdentifier
-
-            if (productIdentifier !== MICROCODE_PRODUCT_IDENTIFIER) {
-                console.debug(`jacscript: invalid product identifier`)
-                continue
-            }
-
-            const firmwareVersion = dev.firmwareVersion
-            const webFirmwareVersion = document.body.dataset.version
-            const semweb = parseSemver(webFirmwareVersion)
-            const semcur = parseSemver(firmwareVersion)
-            if (semweb[0] > semcur[0] || semweb[1] > semcur[1]) {
-                console.debug(`outdated firmware: fw: ${firmwareVersion}`)
-                const outdatedDlg = document.getElementById("outdatedDlg")
-                outdatedDlg.showModal()
-                bus.disconnect()
-                return
-            }
-
-            console.debug(
-                `jacscript: deploying to ${service} (pid: ${productIdentifier}, fw: ${firmwareVersion}, cfw: ${webFirmwareVersion})`
-            )
-            await jacdac.OutPipe.sendBytes(
-                service,
-                jacdac.JacscriptManagerCmd.DeployBytecode,
-                data
-            )
-        }
+        flashJacscriptServices(services, data)
     }
 })
 
