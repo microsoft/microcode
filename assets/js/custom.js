@@ -60,6 +60,7 @@ async function flashJacscriptService(service, data) {
         jacdac.JacscriptManagerCmd.DeployBytecode,
         data
     )
+    console.debug(`jacscript: deployed to ${service}`)
 }
 
 // to support downloading directly to device
