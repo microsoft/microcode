@@ -1,15 +1,31 @@
 namespace accessibility {
+    export interface AccessibilityMessage {
+        type: "text" | "tile" | "rule"
+    }
+
+    export interface TextAccessibilityMessage {
+        type: "text"
+        value: string
+    }
+
+    export interface TileAccessibilityMessage {
+        type: "tile"
+        value: string
+    }
+
+    export interface RuleAccessibilityMessage {
+        type: "rule"
+        dos: string[]
+        whens: string[]
+    }
+
     /**
      * Notifies web application about the current content.
      */
     //% shim=TD_ID
-    export function setLiveContent(accessibilityMessage: accessibilityMessage) {
-        let serializedMessage = JSON.stringify({"type" : accessibilityMessage.type, "details" : accessibilityMessage.details})
-
-        control.simmessages.send(
-            "accessibility",
-            Buffer.fromUTF8(serializedMessage || "")
-        )
+    export function setLiveContent(msg: AccessibilityMessage) {
+        const data = Buffer.fromUTF8(JSON.stringify(msg))
+        control.simmessages.send("accessibility", data)
     }
 
     const liveStrings: { [id: string]: string } = {
@@ -63,7 +79,7 @@ namespace accessibility {
         A2: "sound emoji",
         A3: "microphone",
         A4: "music",
-        A5: "paint",
+        A5: "screen",
         A6: "radio send",
         A7: "random number",
 
@@ -96,6 +112,14 @@ namespace accessibility {
         M19twinkle: "twinkle",
         M19yawn: "yawn",
 
+        M20A: "in pipe A",
+        M20B: "in pipe B",
+        M20C: "in pipe C",
+
+        S9A: "out pipe A",
+        S9B: "out pipe B",
+        S9C: "out pipe C",
+
         N0: "editor",
         N1: "new program",
         N2: "flashing heart",
@@ -108,59 +132,7 @@ namespace accessibility {
         N9: "head or tail",
     }
     export function ariaToTooltip(ariaId: string) {
-        const s = (liveStrings[ariaId] || "").replace("_", " ")
+        const s = (liveStrings[ariaId] || "").replaceAll("_", " ")
         return s.toUpperCase()
-    }
-
-    export interface accessibilityMessageDetals {
-        name: string
-        values: string[]
-    }
-
-    export interface accessibilityMessage {
-        type: string
-        details: accessibilityMessageDetals[]
-    }
-
-    export class textAccessibilityMessage implements accessibilityMessage {
-        private value: string        
-        type: "text"
-        details: accessibilityMessageDetals[]
-
-        constructor(text: string) {
-            this.value = text
-            this.type = "text"
-            this.details = [{ name: "message", values: [this.value]}]
-        }
-    }
-    
-    export class tileAccessibilityMessage implements accessibilityMessage {
-        private tileId: string        
-        type: "tile"
-        details: accessibilityMessageDetals[]
-
-        constructor(tileId: string) {
-            this.tileId = tileId
-            this.type = "tile"
-            this.details = [{ name: "tileId", values: [this.tileId]}]
-        }
-    }
-
-    export class ruleAccessibilityMessage implements accessibilityMessage {
-        private dos: string[]
-        private whens: string[]        
-        type: "rule"
-        details: accessibilityMessageDetals[]
-
-        constructor(dos: string[], whens: string[]) {
-            this.dos = dos
-            this.whens = whens
-            this.type = "rule";
-            this.details =
-                [
-                    { name: "whens", values: this.whens },
-                    { name: "dos", values: this.dos }
-                ]
-        }
     }
 }

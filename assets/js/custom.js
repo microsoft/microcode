@@ -127,13 +127,17 @@ function uint8ArrayToString(input) {
     for (let i = 0; i < len; ++i) res += String.fromCharCode(input[i])
     return res
 }
+
 let liveRegion
+// keep in sync with en-US.json
 const liveStrings = {
     hud: "head over display",
     insertion_point: "empty tile",
 
     when: "when empty tile",
     do: "do empty tile",
+
+    delete_tile: "delete tile",
 
     S1: "always",
     S2: "press",
@@ -145,13 +149,12 @@ const liveStrings = {
     S7: "radio receive",
     S8: "microphone",
 
-    // filters for TID_SENSOR_PRESS
     F0: "touch pin 0",
     F1: "touch pin 1",
     F2: "touch pin 2",
     F3: "button A",
     F4: "button B",
-    // F6
+
     F7: "logo",
     F8: "1",
     F9: "2",
@@ -172,14 +175,14 @@ const liveStrings = {
     F17_tilt_left: "tilt left",
     F17_tilt_right: "tilt right",
 
-    C0: "open editor",
+    C0: "MicroCode open editor",
     C1: "browse samples",
 
     A1: "switch page",
     A2: "speaker",
     A3: "microphone",
     A4: "music",
-    A5: "paint",
+    A5: "screen",
     A6: "radio send",
     A7: "random number",
 
@@ -214,6 +217,14 @@ const liveStrings = {
     M19twinkle: "emoji twinkle",
     M19yawn: "emoji yawn",
 
+    M20A: "in pipe A",
+    M20B: "in pipe B",
+    M20C: "in pipe C",
+
+    S9A: "out of pipe A",
+    S9B: "out of pipe B",
+    S9C: "out of pipe C",
+
     N0: "editor",
     N1: "new program",
     N2: "flashing heart",
@@ -226,58 +237,56 @@ const liveStrings = {
     N9: "head or tail",
 }
 
-addSimMessageHandler("accessibility", data => {
-    const serializedAccessibilityMessage = uint8ArrayToString(data)
+// load localized strings
+async function loadTranslations() {
+    const url = new URL(window.location.href)
+    const lang = url.searchParams.get("lang") || navigator.language
+    const neutral = lang.split("-", 1)[0]
+    if (/^en/.test(lang)) return // default language
 
-    let accessibilityMessage = JSON.parse(serializedAccessibilityMessage)
-
-    let value
-    if (
-        accessibilityMessage.type === "tile" ||
-        accessibilityMessage.type === "text"
-    ) {
-        //console.log(serializedAccessibilityMessage)
-
-        let valueId = accessibilityMessage.details[0]
-
-        if (valueId) {
-            valueId = valueId.values[0]
-
-            if (valueId) {
-                value = (liveStrings[valueId] || valueId).split(/_/g).join(" ")
-            }
+    let translations
+    const resp = await fetch(`./locales/${lang}/strings.json`)
+    if (resp.status === 200) {
+        console.debug(`loading translations for ${lang}`)
+        translations = await resp.json()
+    } else if (lang != neutral) {
+        const resp = await fetch(`./locales/${neutral}/strings.json`)
+        if (resp.status === 200) {
+            console.debug(`loaded neutral translations for ${lang}`)
+            translations = await resp.json()
         }
-    } else if (accessibilityMessage.type == "rule") {
-        value = "rule"
-
-        let whens = accessibilityMessage.details[0]
-
-        if (whens && whens.values.length > 0) {
-            value += " when"
-
-            whens.values.forEach(tileId => {
-                value += " "
-                value += (liveStrings[tileId] || tileId).split(/_/g).join(" ")
-            })
-        }
-
-        let dos = accessibilityMessage.details[1]
-
-        if (dos && dos.values.length > 0) {
-            value += " do"
-
-            dos.values.forEach(tileId => {
-                value += " "
-                value += (liveStrings[tileId] || tileId).split(/_/g).join(" ")
-            })
-        }
-    } else {
-        console.log(
-            "Error, " + serializedAccessibilityMessage + " is not supported"
-        )
-        return
     }
 
+    // merge translations
+    Object.entries(translations || {}).forEach(
+        ([key, value]) => (liveStrings[key] = value)
+    )
+}
+loadTranslations()
+
+function mapAriaId(ariaId) {
+    return (liveStrings[ariaId] || ariaId).split(/_/g).join(" ")
+}
+
+addSimMessageHandler("accessibility", data => {
+    // render message
+    const msg = JSON.parse(uint8ArrayToString(data))
+    let value
+    if (msg.type === "tile" || msg.type === "text") {
+        value = mapAriaId(msg.value)
+    } else if (msg.type == "rule") {
+        value = "rule"
+        const whens = msg.whens
+        if (whens && whens.length > 0)
+            value += ` when ${whens.map(mapAriaId).join(" ")}`
+        else value += ` when starting`
+        const dos = msg.dos
+        if (dos && dos.length > 0)
+            value += ` do ${dos.map(mapAriaId).join(" ")}`
+        else value += ` do nothing`
+    }
+
+    // apply to browser
     if (!liveRegion) {
         const style =
             "position: absolute !important;" +

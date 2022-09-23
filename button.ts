@@ -99,10 +99,12 @@ namespace microcode {
             this._ariaId = value
         }
 
-        public get aria():
-            | { type: "id"; value: string }
-            | { type: "rule"; whens: string[]; dos: string[] } {
-            return { type: "id", value: this.ariaId }
+        reportAria() {
+            const msg: accessibility.TileAccessibilityMessage = {
+                type: "tile",
+                value: this.ariaId,
+            }
+            accessibility.setLiveContent(msg)
         }
 
         public get bounds() {

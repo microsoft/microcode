@@ -141,12 +141,27 @@ namespace microcode {
                 btn.ariaId,
                 btn.bounds
             )
+            btn.reportAria()
         }
 
+        private moveTo(target: Button) {
+            if (target)
+                this.cursor.moveTo(
+                    target.xfrm.worldPos,
+                    target.ariaId,
+                    target.bounds
+                )
+        }
         private scrollAndMove(dir: CursorDir) {
             const target = this.cursor.move(dir)
+            this.scrollAndMoveButton(target)
+        }
 
-            if (!target) return
+        private scrollAndMoveButton(target: Button) {
+            if (!target) {
+                console.warn(`editor: missing scroll and move target`)
+                return
+            }
 
             if (target.destroyed) {
                 console.warn(
@@ -156,11 +171,7 @@ namespace microcode {
             }
 
             if (target.rootXfrm.tag === "hud") {
-                this.cursor.moveTo(
-                    target.xfrm.worldPos,
-                    target.ariaId,
-                    target.bounds
-                )
+                this.moveTo(target)
                 return
             }
 
@@ -172,7 +183,8 @@ namespace microcode {
             })
             const occ = target.occlusions(occBounds)
 
-            if (occ.has && !this.picker.visible) { // don't scroll if picker is visible
+            if (occ.has && !this.picker.visible) {
+                // don't scroll if picker is visible
                 if (this.scrollroot.xfrm.localPos.x !== this.scrollDest.x)
                     return // Already animating
                 this.scrollStartMs = control.millis()
@@ -189,11 +201,7 @@ namespace microcode {
                 )
                 this.cursor.moveTo(cursorDest, target.ariaId, target.bounds)
             } else {
-                this.cursor.moveTo(
-                    target.xfrm.worldPos,
-                    target.ariaId,
-                    target.bounds
-                )
+                this.moveTo(target)
             }
         }
 
@@ -263,12 +271,23 @@ namespace microcode {
             this.progdef = this.app.load(SAVESLOT_AUTO)
         }
 
+        protected handleClick(x: number, y: number) {
+            const target = this.cursor.navigator.screenToButton(x, y)
+            if (target) {
+                this.scrollAndMoveButton(target)
+                this.cursor.click()
+            } else if (this.picker.visible) {
+                this.picker.hide()
+            }
+        }
+
         /* override */ shutdown() {
             this.progdef = undefined
             this.navigator.clear()
         }
 
         /* override */ activate() {
+            super.activate()
             this.pageBtn.setIcon(PAGE_IDS[this.currPage])
             if (!this.pageEditor) {
                 this.switchToPage(this.currPage)

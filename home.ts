@@ -71,10 +71,6 @@ namespace microcode {
             }
         }
 
-        /* override */ shutdown() {
-            super.shutdown()
-        }
-
         /* override */ activate() {
             super.activate()
             this.color = 15
@@ -85,12 +81,6 @@ namespace microcode {
             }
 
             // this.log("program started", 1)
-        }
-
-        /* override */ deactivate() {}
-
-        /* override */ update() {
-            super.update()
         }
 
         private drawVersion() {

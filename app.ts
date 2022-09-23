@@ -1,10 +1,6 @@
 namespace microcode {
     // Auto-save slot
     export const SAVESLOT_AUTO = "sa"
-    // Save slots
-    export const SAVESLOT_1 = "s1"
-    export const SAVESLOT_2 = "s2"
-    export const SAVESLOT_3 = "s3"
 
     type SavedState = {
         progdef: any
@@ -18,7 +14,6 @@ namespace microcode {
             setTimeout(() => {
                 controller.setRepeatDefault(250, 30)
                 keymap.setupKeys()
-                pointerevents.setup()
                 icons.init()
                 jdc.setParameters(0x3e92f825, microcode.VERSION, "MicroCode on micro:bit V2")
                 jdc.start()
@@ -33,6 +28,7 @@ namespace microcode {
                 progdef: progdef.toObj(),
             }
             const s = JSON.stringify(saved)
+            console.log(`save ${slot} (${s.length}c)`)
             //console.log(s)
             settings.writeString(slot, s)
         }

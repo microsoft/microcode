@@ -27,6 +27,7 @@ namespace microcode {
     export const TID_SENSOR_OUT_PIPE_A = "S9A"
     export const TID_SENSOR_OUT_PIPE_B = "S9B"
     export const TID_SENSOR_OUT_PIPE_C = "S9C"
+    export const TID_SENSOR_MAGNET = "S10"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -62,6 +63,7 @@ namespace microcode {
     export const TID_ACTUATOR_PAINT = "A5"
     export const TID_ACTUATOR_RADIO_SEND = "A6"
     export const TID_ACTUATOR_RANDOM_TOSS = "A7"
+    export const TID_ACTUATOR_RGB_LED = "A8"
 
     export const TID_MODIFIER_PAGE_1 = "M1"
     export const TID_MODIFIER_PAGE_2 = "M2"
@@ -97,6 +99,13 @@ namespace microcode {
     export const TID_MODIFIER_PIPE_IN_A = "M20A"
     export const TID_MODIFIER_PIPE_IN_B = "M20B"
     export const TID_MODIFIER_PIPE_IN_C = "M20C"
+
+    export const TID_MODIFIER_RGB_LED_COLOR_X = "A20_"
+    export const TID_MODIFIER_RGB_LED_COLOR_1 = "A20_1"
+    export const TID_MODIFIER_RGB_LED_COLOR_2 = "A20_2"
+    export const TID_MODIFIER_RGB_LED_COLOR_3 = "A20_3"
+    export const TID_MODIFIER_RGB_LED_COLOR_4 = "A20_4"
+    export const TID_MODIFIER_RGB_LED_COLOR_5 = "A20_5"
 
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
@@ -214,9 +223,9 @@ namespace microcode {
         tile.constraints.handling = maxOneValueIn
     }
 
-    makePipe(TID_SENSOR_OUT_PIPE_A, "Out of A", 0)
-    makePipe(TID_SENSOR_OUT_PIPE_B, "Out of B", 1)
-    makePipe(TID_SENSOR_OUT_PIPE_C, "Out of C", 2)
+    makePipe(TID_SENSOR_OUT_PIPE_A, "out of pipe A", 0)
+    makePipe(TID_SENSOR_OUT_PIPE_B, "out of pipe B", 1)
+    makePipe(TID_SENSOR_OUT_PIPE_C, "out of pipe C", 2)
 
     const radio_recv = makeSensor(
         TID_SENSOR_RADIO_RECEIVE,
@@ -227,6 +236,16 @@ namespace microcode {
     radio_recv.serviceClassName = "radio"
     radio_recv.eventCode = 0x91
     radio_recv.constraints.handling = maxOneValueIn
+
+    const magnet = makeSensor(
+        TID_SENSOR_MAGNET,
+        "Magnetometer",
+        "no_filters",
+        500
+    )
+    magnet.serviceClassName = "magneticFieldLevel"
+    magnet.eventCode = 1
+    magnet.jdExternalClass = 0x12fe180f
 
     const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
     timer.constraints = {
@@ -271,9 +290,9 @@ namespace microcode {
         return accelEvent
     }
 
-    // TODO figure out which events we want (see accel spec)
     addAccelEvent(0x8b, "shake")
-    addAccelEvent(0x87, "freefall")
+    // don't want kids to throw micro:bit on the ground
+    // addAccelEvent(0x87, "freefall")
     addAccelEvent(0x81, "tilt_up")
     addAccelEvent(0x82, "tilt_down")
     addAccelEvent(0x83, "tilt_left")
@@ -330,7 +349,8 @@ namespace microcode {
     radio_send.priority = 100
     radio_send.serviceClassName = "radio"
     radio_send.serviceCommand = 0x81
-    radio_send.serviceArgFromModifier = (x: number) => Buffer.pack("d", [x || 1])
+    radio_send.serviceArgFromModifier = (x: number) =>
+        Buffer.pack("d", [x || 1])
     radio_send.constraints.handling = maxOneValueOut
 
     const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "sound_emoji")
@@ -386,7 +406,7 @@ namespace microcode {
         return tiles
     }
     make_vals("value_in", "F", 8)
-    make_vals("value_out", "M", 6) 
+    make_vals("value_out", "M", 6)
     make_vals("page", "M", 1).forEach(m => {
         m.constraints.handling = m.constraints.handling || {}
         m.constraints.handling.terminal = true
@@ -399,6 +419,42 @@ namespace microcode {
         state_page.constraints = terminal
         tilesDB.modifiers[state_tid] = state_page
     })
+
+    const numLeds = 8
+    function addRGB(id: number, name: string, buf: Buffer) {
+        const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
+        const mod = new ModifierDefn(tid, name, "rgb_led", 10)
+        mod.constraints = terminal
+        tilesDB.modifiers[tid] = mod
+        mod.jdParam = buf
+    }
+
+    addRGB(1, "red", hex`2f0000`)
+    addRGB(2, "green", hex`002f00`)
+    addRGB(3, "blue", hex`00002f`)
+    addRGB(4, "magenta", hex`2f002f`)
+    addRGB(5, "yellow", hex`2f2f00`)
+    // addRGB(4, "teal", hex`00ffff`)
+    // addRGB(4, "white", hex`ffffff`)
+
+    const rgbled = addActuator(TID_ACTUATOR_RGB_LED, "RGB LED", "rgb_led")
+    rgbled.priority = 500
+    rgbled.serviceClassName = "led"
+    rgbled.serviceCommand = jacs.CMD_SET_REG | 2
+    rgbled.jdExternalClass = 0x1609d4f0
+    rgbled.serviceArgFromModifier = (buf: Buffer) => {
+        if (!buf) buf = hex`2f2f2f`
+        let b = buf
+        if (buf.length < numLeds * 3) {
+            b = Buffer.create(numLeds * 3)
+            let ptr = 0
+            while (ptr < b.length) {
+                b.write(ptr, buf)
+                ptr += buf.length
+            }
+        }
+        return b
+    }
 
     const addPipeModifier = (tid: string, state: string, varid: number) => {
         const mod = new ModifierDefn(tid, state, "pipe_out", 10)

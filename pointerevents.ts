@@ -6,17 +6,26 @@ namespace pointerevents {
         buttons: number
     }
 
-    export let onClick: (x: number, y: number) => void = (x, y) =>
-        console.log(`click ${x}, ${y}`)
+    const contexts: ((x: number, y: number) => void)[] = []
+    //% shim=TD_NOOP
+    export function pushContext(click: (x: number, y: number) => void) {
+        contexts.push(click)
+        setup()
+    }
 
     //% shim=TD_NOOP
-    export function setup() {
+    export function popContext() {
+        contexts.pop()
+    }
+
+    //% shim=TD_NOOP
+    function setup() {
         control.simmessages.onReceived("pointer-events", data => {
             const msg: PointerEventMessage = JSON.parse(data.toString())
-            console.log(`pointer: ${msg.type} buttons ${msg.buttons}`)
             // down event!
             if (msg.type === "pointerdown" && msg.buttons) {
-                if (onClick) onClick(msg.x, msg.y)
+                const handler = contexts[contexts.length - 1]
+                if (handler) handler(msg.x, msg.y)
             }
         })
     }

@@ -150,7 +150,7 @@ namespace microcode {
             )
 
             const text = accessibility.ariaToTooltip(this.ariaId)
-            if (text) {
+            if (Options.toolTips && text) {
                 const n = text.length
                 const font = image.font5
                 const w = font.charWidth * n
@@ -162,7 +162,7 @@ namespace microcode {
                         this.xfrm.localPos.x - (w >> 1)
                     )
                 )
-                let y = this.xfrm.localPos.y + 7 + font.charHeight
+                let y = this.xfrm.localPos.y + (this.size.width >= 32 ? 14 : 7) + font.charHeight
                 Screen.fillRect(x - 1, y - 1, w + 1, h + 2, 15)
                 Screen.print(text, x, y, 1, font)
             }

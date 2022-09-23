@@ -46,7 +46,7 @@ Note that you can open terminals directly from VS Code by pressing "Ctrl + `".
 mkc serve
 ```
 
--   open to web editor at http://127.0.0.1:7001
+-   open to web editor at http://127.0.0.1:7001/index.html?pointer-events=1
 -   build a micro:bit Hex file and deploy
 
 ```bash
@@ -56,9 +56,9 @@ mkc build -d
 ## With Jacdac devtools
 
 To load the local editor in a Jacdac devtools page, click on the **sim** link at the bottom
-of the local server on http://127.0.0.1:7001. Or,
+of the local server on http://127.0.0.1:7001/index.html?pointer-events=1. Or,
 
-https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001
+https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001/index.html?pointer-events=1
 
 ## Creating artwork
 

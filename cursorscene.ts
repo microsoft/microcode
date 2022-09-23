@@ -10,10 +10,14 @@ namespace microcode {
         }
 
         protected moveCursor(dir: CursorDir) {
-            const target = this.cursor.move(dir)
+            this.moveTo(this.cursor.move(dir))
+        }
 
-            if (!target) return
-
+        protected moveTo(target: Button) {
+            if (!target) {
+                console.warn(`cursor: missing move target`)
+                return
+            }
             this.cursor.moveTo(
                 target.xfrm.worldPos,
                 target.ariaId,
@@ -78,19 +82,30 @@ namespace microcode {
             this.cursor.navigator = this.navigator
         }
 
+        protected handleClick(x: number, y: number) {
+            const target = this.navigator.screenToButton(x, y)
+            if (target) {
+                this.moveTo(target)
+                this.cursor.click()
+            }
+        }
+
         /* override */ shutdown() {
             this.navigator.clear()
         }
 
         /* override */ activate() {
+            super.activate()
             const btn = this.navigator.initialCursor(0, 0)
-            if (btn)
+            if (btn) {
                 this.cursor.snapTo(
                     btn.xfrm.worldPos.x,
                     btn.xfrm.worldPos.y,
                     btn.ariaId,
                     btn.bounds
                 )
+                btn.reportAria()
+            }
         }
 
         /* override */ update() {
