@@ -99,6 +99,7 @@ namespace microcode {
             this.reg[TID_ACTUATOR_SPEAKER] = icondb.speakerFun
             this.reg[TID_ACTUATOR_MUSIC] = icondb.music
             this.reg[TID_ACTUATOR_RANDOM_TOSS] = icondb.diceToss
+            this.reg[TID_ACTUATOR_RGB_LED] = icondb.rgbLed
 
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
@@ -111,6 +112,12 @@ namespace microcode {
             this.reg[TID_MODIFIER_VALUE_3] = icondb.tile_value_3
             this.reg[TID_MODIFIER_VALUE_4] = icondb.tile_value_4
             this.reg[TID_MODIFIER_VALUE_5] = icondb.tile_value_5
+
+            this.reg[TID_MODIFIER_RGB_LED_COLOR_1] = icondb.tile_value_1
+            this.reg[TID_MODIFIER_RGB_LED_COLOR_2] = icondb.tile_value_2
+            this.reg[TID_MODIFIER_RGB_LED_COLOR_3] = icondb.tile_value_3
+            this.reg[TID_MODIFIER_RGB_LED_COLOR_4] = icondb.tile_value_4
+            this.reg[TID_MODIFIER_RGB_LED_COLOR_5] = icondb.tile_value_5
 
             this.reg[TID_MODIFIER_ON] = icondb.tile_on
             this.reg[TID_MODIFIER_OFF] = icondb.tile_off
@@ -1413,6 +1420,25 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
     `
 
+    export const rgbLed = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . 2 2 2 2 2 . . 7 7 7 7 7 . .
+    . . 2 2 2 2 2 . . 7 7 7 7 7 . .
+    . . 2 2 2 2 2 . . 7 7 7 7 7 . .
+    . . 2 2 2 2 2 . . 7 7 7 7 7 . .
+    . . 2 2 2 2 2 . . 7 7 7 7 7 . .
+    . . . . . . . . . . . . . . . .
+    . . . . . 6 6 6 6 6 . . . . . .
+    . . . . . 6 6 6 6 6 . . . . . .
+    . . . . . 6 6 6 6 6 . . . . . .
+    . . . . . 6 6 6 6 6 . . . . . .
+    . . . . . 6 6 6 6 6 . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+    
     export const magnet = img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
