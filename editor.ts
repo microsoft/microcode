@@ -271,7 +271,9 @@ namespace microcode {
             const target = this.cursor.navigator.screenToButton(x, y)
             if (target) {
                 this.scrollAndMoveButton(target)
-                // this.cursor.click()
+                this.cursor.click()
+            } else if (this.picker.visible) {
+                this.picker.hide()
             }
         }
 

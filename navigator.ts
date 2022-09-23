@@ -31,8 +31,8 @@ namespace microcode {
             let hitBtn: Button = undefined
             const p = new Vec2(tx, ty)
             let row = 0
-            let col = 0
             this.buttonGroups.forEach(g => {
+                let col = 0
                 g.forEach(btn => {
                     if (
                         !hitBtn &&
