@@ -34,8 +34,7 @@ async function flashJacscriptService(service, data) {
     await dev.resolveProductIdentifier(3)
     const productIdentifier = dev.productIdentifier
 
-    if (productIdentifier !== MICROCODE_PRODUCT_IDENTIFIER
-    ) {
+    if (productIdentifier !== MICROCODE_PRODUCT_IDENTIFIER) {
         console.debug(
             `jacscript: invalid or unknown product identifier ${productIdentifier}`
         )
@@ -329,7 +328,7 @@ addSimMessageHandler("accessibility", data => {
     }
     value = value || ""
     if (liveRegion.textContent === value) liveRegion.textContent = ""
-    console.log(`live region: ${value}`)
+    console.debug(`aria-live: ${value}`)
     liveRegion.textContent = value
 })
 
