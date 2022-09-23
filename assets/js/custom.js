@@ -181,7 +181,7 @@ const liveStrings = {
     A2: "speaker",
     A3: "microphone",
     A4: "music",
-    A5: "paint",
+    A5: "screen",
     A6: "radio send",
     A7: "random number",
 

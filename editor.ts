@@ -141,6 +141,7 @@ namespace microcode {
                 btn.ariaId,
                 btn.bounds
             )
+            btn.reportAria()
         }
 
         private moveTo(target: Button) {
