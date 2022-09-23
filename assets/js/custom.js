@@ -257,9 +257,8 @@ async function loadTranslations() {
         }
     }
 
-    // merge
-    Object.entries(
-        translations || {},
+    // merge translations
+    Object.entries(translations || {}).forEach(
         ([key, value]) => (liveStrings[key] = value)
     )
 }
