@@ -82,25 +82,31 @@ addSimMessageHandler("jacscript", async data => {
             serviceClass: jacdac.SRV_JACSCRIPT_MANAGER,
         })
         for (const service of services) {
+            console.debug(
+                `jacscript: deploying to ${service} (pid: ${productIdentifier}, cpid: ${MICROCODE_PID}, fw: ${firmwareVersion}, cfw: ${webFirmwareVersion})`
+            )
+
             const dev = service.device
             const MICROCODE_PID = "3e92f825"
             const productIdentifier = dev.productIdentifier
                 ? dev.productIdentifier.toString(16)
                 : ""
             const firmwareVersion = dev.firmwareVersion
-            const currentFirmwareVersion = document.body.dataset.version
-            console.debug(
-                `jacscript: deploying to ${service} (pid: ${productIdentifier}, cpid: ${MICROCODE_PID}, fw: ${firmwareVersion}, cfw: ${currentFirmwareVersion})`
-            )
+            const webFirmwareVersion = document.body.dataset.version
+            const semweb = parseSemver(webFirmwareVersion)
+            const semcur = parseSemver(firmwareVersion)
 
             if (
                 !naggedDevices[dev.deviceId] &&
                 (productIdentifier !== MICROCODE_PID ||
-                    (currentFirmwareVersion &&
-                        currentFirmwareVersion !== firmwareVersion))
+                    semweb[0] > semcur[0] ||
+                    semweb[1] > semcur[1])
             ) {
-                console.debug(`outdated firmware`)
+                console.debug(
+                    `outdated firmware: pid ${productIdentifier}, fw: ${firmwareVersion}`
+                )
                 naggedDevices[dev.deviceId] = true
+
                 const outdatedDlg = document.getElementById("outdatedDlg")
                 if (outdatedDlg) outdatedDlg.showModal()
             }
@@ -266,6 +272,17 @@ loadTranslations()
 
 function mapAriaId(ariaId) {
     return (liveStrings[ariaId] || ariaId).split(/_/g).join(" ")
+}
+
+function parseSemver(v) {
+    const ver = /^v?(\d+)\.(\d+)\.(\d+)$/.exec(v)
+    if (ver)
+        return [
+            parseInt(ver[1]),
+            parseInt(ver[1]),
+            parseInt(ver[2]),
+        ]
+    else return [0, 0, 0]
 }
 
 addSimMessageHandler("accessibility", data => {
