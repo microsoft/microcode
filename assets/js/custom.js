@@ -29,7 +29,15 @@ async function flashJacscriptServices(services, data) {
     for (const service of services) await flashJacscriptService(service, data)
 }
 
+function showOutdatedFirmwareDialog() {
+    const outdatedDlg = document.getElementById("outdatedDlg")
+    outdatedDlg.showModal()
+    bus.disconnect()
+}
+
 async function flashJacscriptService(service, data) {
+    if (!data) return
+
     const dev = service.device
     await dev.resolveProductIdentifier(3)
     const productIdentifier = dev.productIdentifier
@@ -38,6 +46,7 @@ async function flashJacscriptService(service, data) {
         console.debug(
             `jacscript: invalid or unknown product identifier ${productIdentifier}`
         )
+        showOutdatedFirmwareDialog()
         return
     }
 
@@ -47,20 +56,30 @@ async function flashJacscriptService(service, data) {
     const semweb = parseSemver(webFirmwareVersion)
     const semcur = parseSemver(firmwareVersion)
     if (semweb[0] > semcur[0] || semweb[1] > semcur[1]) {
-        console.debug(`outdated firmware: fw: ${firmwareVersion}`)
-        const outdatedDlg = document.getElementById("outdatedDlg")
-        outdatedDlg.showModal()
-        bus.disconnect()
+        console.debug(`outdated firmware: ${firmwareVersion}`)
+        showOutdatedFirmwareDialog()
         return
     }
 
-    console.debug(`jacscript: deploying to ${service} (fw: ${firmwareVersion})`)
-    await jacdac.OutPipe.sendBytes(
-        service,
-        jacdac.JacscriptManagerCmd.DeployBytecode,
-        data
-    )
-    console.debug(`jacscript: deployed to ${service}`)
+    if (service.nodeData["bytecode"]) {
+        console.trace(
+            `jacscript: deployment to ${service} in progress, skipping`
+        )
+        return
+    }
+
+    try {
+        console.debug(`jacscript: deploying to ${service}`)
+        service.nodeData["bytecode"] = data
+        await jacdac.OutPipe.sendBytes(
+            service,
+            jacdac.JacscriptManagerCmd.DeployBytecode,
+            data
+        )
+        console.debug(`jacscript: deployed to ${service}`)
+    } finally {
+        service.nodeData["bytecode"] = undefined
+    }
 }
 
 // to support downloading directly to device
@@ -88,17 +107,16 @@ if (!inIFrame)
             // track connection state and update button
             bus.on(jacdac.CONNECTION_STATE, refreshUI)
             bus.on(jacdac.ERROR, e => refreshUI)
-            bus.on(
-                jacdac.DEVICE_FIRMWARE_INFO,
-                dev =>
-                    lastData &&
-                    flashJacscriptServices(
-                        dev.services({
-                            serviceClass: jacdac.SRV_JACSCRIPT_MANAGER,
-                        }),
-                        lastData
-                    )
-            )
+            bus.on(jacdac.DEVICE_ANNOUNCE, dev => {
+                if (!lastData) return
+                console.debug(`jacdac: device announced ${dev}, flashing`)
+                flashJacscriptServices(
+                    dev.services({
+                        serviceClass: jacdac.SRV_JACSCRIPT_MANAGER,
+                    }),
+                    lastData
+                )
+            })
             // connect must be triggered by a user interaction
             connectEl.onclick = () =>
                 document.getElementById("connectDlg").showModal()
@@ -217,7 +235,7 @@ const liveStrings = {
     M11: "on",
     M12: "off",
 
-    M15: "LED editor",
+    M15: "LED",
     M16: "red",
     M17: "dark purple",
     M18: "music editor",
