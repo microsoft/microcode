@@ -25,14 +25,14 @@ const refreshUI = () => {
     connectEl.setAttribute("title", statusText)
 }
 
-async function flashJacscriptServices(services, data) {
-    for (const service of services) await flashJacscriptService(service, data)
-}
-
 function showOutdatedFirmwareDialog() {
     const outdatedDlg = document.getElementById("outdatedDlg")
     outdatedDlg.showModal()
     bus.disconnect()
+}
+
+async function flashJacscriptServices(services, data) {
+    for (const service of services) await flashJacscriptService(service, data)
 }
 
 async function flashJacscriptService(service, data) {
@@ -79,6 +79,12 @@ async function flashJacscriptService(service, data) {
         console.debug(`jacscript: deployed to ${service}`)
     } finally {
         service.nodeData["bytecode"] = undefined
+    }
+
+
+    if (data !== lastData) {
+        console.debug(`jacscript: restarting ${service} deployment with newer bytecode`)
+        flashJacscriptService(service, lastData)
     }
 }
 
