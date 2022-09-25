@@ -90,18 +90,38 @@ namespace microcode {
             this.yOffset = Math.min(0, this.yOffset + 2)
             const t = control.millis()
             const dx = this.yOffset == 0 ? (((t / 800) | 0) % 2) - 1 : 0
+            const OFFSET = 36
             Screen.drawTransparentImage(
                 wordLogo,
                 Screen.LEFT_EDGE + ((Screen.WIDTH - wordLogo.width) >> 1) + dx,
-                Screen.TOP_EDGE + 40 + dx + this.yOffset
+                Screen.TOP_EDGE + OFFSET + dx + this.yOffset
             )
             Screen.drawTransparentImage(
                 microbitLogo,
                 Screen.LEFT_EDGE +
                     ((Screen.WIDTH - microbitLogo.width) >> 1) +
                     dx,
-                Screen.TOP_EDGE + 40 - wordLogo.height + dx + this.yOffset
+                Screen.TOP_EDGE + OFFSET - wordLogo.height + dx + this.yOffset
             )
+            if (!this.yOffset) {
+                const tagline = "for micro:bit V2"
+                Screen.print(
+                    tagline,
+                    Screen.LEFT_EDGE +
+                        ((Screen.WIDTH + wordLogo.width) >> 1) +
+                        dx -
+                        image.font5.charWidth * tagline.length,
+                    Screen.TOP_EDGE +
+                        OFFSET +
+                        wordLogo.height +
+                        dx +
+                        this.yOffset +
+                        1,
+                    0xb,
+                    image.font5
+                )
+            }
+
             this.samplesBtn.draw()
             this.editBtn.draw()
             this.drawVersion()
