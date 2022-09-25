@@ -47,8 +47,8 @@ namespace accessibility {
         S6: "temperature",
         S7: "radio receive",
         S8: "hear",
-        "rule": "rule",
-        "add_rule": "add rule",
+        rule: "rule",
+        add_rule: "add rule",
 
         // filters for TID_SENSOR_PRESS
         F0: "touch pin 0",
@@ -124,6 +124,7 @@ namespace accessibility {
         N7: "hot potato",
         N8: "rock paper scissors",
         N9: "head or tail",
+        N10: "clap lights",
     }
     export function ariaToTooltip(ariaId: string) {
         const s = (liveStrings[ariaId] || "").replaceAll("_", " ")
