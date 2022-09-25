@@ -6,9 +6,7 @@ namespace microcode {
         onDelete?: () => void
     ) {
         const getColor = (col: number, row: number) => {
-            return image5x5.getPixel(col, row)
-                ? "solid_red"
-                : "solid_black"
+            return image5x5.getPixel(col, row) ? "solid_red" : "solid_black"
         }
 
         for (let row = 0; row < 5; row++) {
@@ -42,7 +40,7 @@ namespace microcode {
                 },
                 onHide,
                 onDelete,
-                navigator: () => new SimpleGridNavigator(),
+                navigator: () => new LEDNavigator(),
             },
             false
         )
