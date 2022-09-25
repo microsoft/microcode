@@ -69,7 +69,6 @@ namespace microcode {
         private style: ButtonStyle
         private iconId: string | Image
         private _ariaId: string
-        public label: string
         public onClick?: (button: Button) => void
         private bounds_: Bounds
 
@@ -91,7 +90,7 @@ namespace microcode {
                 this._ariaId ||
                 (typeof this.iconId === "string"
                     ? <string>this.iconId
-                    : this.label)
+                    : "")
             )
         }
 
@@ -124,7 +123,6 @@ namespace microcode {
             parent?: IPlaceable
             style?: ButtonStyle
             icon: string | Image
-            label?: string
             ariaId?: string
             x: number
             y: number
@@ -135,7 +133,6 @@ namespace microcode {
             this.xfrm.parent = opts.parent && opts.parent.xfrm
             this.style = opts.style || ButtonStyles.Transparent
             this.iconId = opts.icon
-            this.label = opts.label
             this._ariaId = opts.ariaId
             this.xfrm.localPos.x = opts.x
             this.xfrm.localPos.y = opts.y

@@ -1,8 +1,8 @@
 namespace microcode {
     export type PickerButtonDef = {
         icon: string | Image
-        label?: string
         style?: ButtonStyle
+        ariaId?: string
     }
 
     export class PickerButton extends Button {
@@ -11,7 +11,7 @@ namespace microcode {
                 parent: picker,
                 style: btn.style || ButtonStyles.LightShadowedWhite,
                 icon: btn.icon,
-                label: btn.label,
+                ariaId: btn.ariaId,
                 x: 0,
                 y: 0,
                 onClick: () =>
@@ -52,7 +52,9 @@ namespace microcode {
                 btn.xfrm.parent = this.xfrm
                 const row = Math.floor(idx / MAX_PER_ROW)
                 btn.xfrm.localPos.x =
-                    (cell.width >> 1) + (idx % MAX_PER_ROW) * cell.width + (idx % MAX_PER_ROW)
+                    (cell.width >> 1) +
+                    (idx % MAX_PER_ROW) * cell.width +
+                    (idx % MAX_PER_ROW)
                 btn.xfrm.localPos.y = row * cell.height
             })
             this.bounds = new Bounds()
@@ -143,7 +145,6 @@ namespace microcode {
                     parent: this,
                     style: ButtonStyles.RedBorderedWhite,
                     icon: "delete",
-                    label: "delete",
                     x: 0,
                     y: 0,
                     onClick: () => {
@@ -179,15 +180,20 @@ namespace microcode {
         }
 
         draw() {
-            if (this.visible) {
-                Screen.fillBoundsXfrm(this.xfrm, this.panel, 12)
-                Screen.outlineBoundsXfrm(this.xfrm, this.panel, 1, 15)
-                if (this.title) {
-                    Screen.print(this.title, this.panel.left + 2, this.panel.top + 4, 1, image.font8)
-                }
-                this.groups.forEach(group => group.draw())
-                if (this.deleteBtn) this.deleteBtn.draw()
+            if (!this.visible) return
+            Screen.fillBoundsXfrm(this.xfrm, this.panel, 12)
+            Screen.outlineBoundsXfrm(this.xfrm, this.panel, 1, 15)
+            if (this.title) {
+                Screen.print(
+                    this.title,
+                    this.xfrm.worldPos.x + this.panel.left + 2,
+                    this.xfrm.worldPos.y + this.panel.top + 4,
+                    1,
+                    image.font8
+                )
             }
+            this.groups.forEach(group => group.draw())
+            if (this.deleteBtn) this.deleteBtn.draw()
         }
 
         private layout() {
