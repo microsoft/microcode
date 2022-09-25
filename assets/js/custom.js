@@ -81,9 +81,10 @@ async function flashJacscriptService(service, data) {
         service.nodeData["bytecode"] = undefined
     }
 
-
     if (data !== lastData) {
-        console.debug(`jacscript: restarting ${service} deployment with newer bytecode`)
+        console.debug(
+            `jacscript: restarting ${service} deployment with newer bytecode`
+        )
         flashJacscriptService(service, lastData)
     }
 }
@@ -112,7 +113,22 @@ if (!inIFrame)
             })
             // track connection state and update button
             bus.on(jacdac.CONNECTION_STATE, refreshUI)
-            bus.on(jacdac.ERROR, e => refreshUI)
+            bus.on(jacdac.ERROR, e => {
+                const code = e.code
+                switch (code) {
+                    case jacdac.ERROR_MICROBIT_JACDAC_MISSING: {
+                        console.debug(`jacdac not detected, ask for update`)
+                        showOutdatedFirmwareDialog()
+                        break
+                    }
+                    case jacdac.ERROR_MICROBIT_V1: {
+                        console.debug(`micro:bit v1 detected`)
+                        showOutdatedFirmwareDialog()
+                        break
+                    }
+                }
+                refreshUI()
+            })
             bus.on(jacdac.DEVICE_ANNOUNCE, dev => {
                 if (!lastData) return
                 console.debug(`jacdac: device announced ${dev}, flashing`)
