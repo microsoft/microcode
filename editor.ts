@@ -748,6 +748,7 @@ namespace microcode {
             if (btns.length) {
                 this.editor.picker.addGroup({ btns })
                 this.editor.picker.show({
+                    title: accessibility.ariaToTooltip(name),
                     navigator: () => new SimpleGridNavigator(),
                     onClick: id => {
                         // get from the database

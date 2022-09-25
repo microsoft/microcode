@@ -180,21 +180,20 @@ namespace microcode {
         }
 
         draw() {
-            if (this.visible) {
-                Screen.fillBoundsXfrm(this.xfrm, this.panel, 12)
-                Screen.outlineBoundsXfrm(this.xfrm, this.panel, 1, 15)
-                if (this.title) {
-                    Screen.print(
-                        this.title,
-                        this.panel.left + 2,
-                        this.panel.top + 4,
-                        1,
-                        image.font8
-                    )
-                }
-                this.groups.forEach(group => group.draw())
-                if (this.deleteBtn) this.deleteBtn.draw()
+            if (!this.visible) return
+            Screen.fillBoundsXfrm(this.xfrm, this.panel, 12)
+            Screen.outlineBoundsXfrm(this.xfrm, this.panel, 1, 15)
+            if (this.title) {
+                Screen.print(
+                    this.title,
+                    this.xfrm.worldPos.x + this.panel.left + 2,
+                    this.xfrm.worldPos.y + this.panel.top + 4,
+                    1,
+                    image.font8
+                )
             }
+            this.groups.forEach(group => group.draw())
+            if (this.deleteBtn) this.deleteBtn.draw()
         }
 
         private layout() {
