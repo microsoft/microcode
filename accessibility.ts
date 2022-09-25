@@ -45,6 +45,8 @@ namespace accessibility {
         S6: "temp",
         S7: "radio receive",
         S8: "microphone",
+        "rule": "rule",
+        "add_rule": "add rule",
 
         // filters for TID_SENSOR_PRESS
         F0: "touch pin 0",

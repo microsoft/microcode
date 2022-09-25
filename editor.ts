@@ -637,7 +637,6 @@ namespace microcode {
                         parent: this,
                         style: tile.buttonStyle(),
                         icon: tile.getIcon(),
-                        label: TID_MODIFIER_ICON_EDITOR,
                         x: 0,
                         y: 0,
                         onClick: () => this.editTile(name, index),
@@ -652,17 +651,15 @@ namespace microcode {
         }
 
         private showRuleHandleMenu() {
-            // Add rule conditions
-            const iconIds = [] // .concat(RC_IDS);
-            // "Insert rule above this one"
-            iconIds.push("plus")
-            // "Delete rule"
-            iconIds.push("delete")
-            const btns: PickerButtonDef[] = iconIds.map(iconId => {
-                return {
-                    icon: iconId,
-                }
-            })
+            const btns: PickerButtonDef[] = [
+                {
+                    icon: "plus",
+                    ariaId: "add_rule",
+                },
+                {
+                    icon: "delete",
+                },
+            ]
             this.editor.picker.addGroup({ btns })
             this.editor.picker.show({
                 onClick: iconId => this.handleRuleHandleMenuSelection(iconId),
@@ -719,7 +716,6 @@ namespace microcode {
             const btns: PickerButtonDef[] = suggestions.map(elem => {
                 return {
                     icon: <string>elem.getIcon(),
-                    label: elem.name,
                 }
             })
             // special case for field editor
