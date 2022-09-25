@@ -637,6 +637,7 @@ namespace microcode {
                         parent: this,
                         style: tile.buttonStyle(),
                         icon: tile.getIcon(),
+                        ariaId: tile.tid,
                         x: 0,
                         y: 0,
                         onClick: () => this.editTile(name, index),
