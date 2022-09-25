@@ -155,14 +155,17 @@ namespace microcode {
                 const font = image.font5
                 const w = font.charWidth * n
                 const h = font.charHeight
-                let x = Math.max(
+                const x = Math.max(
                     Screen.LEFT_EDGE + 1,
                     Math.min(
-                        Screen.RIGHT_EDGE - 1,
+                        Screen.RIGHT_EDGE - 1 - w,
                         this.xfrm.localPos.x - (w >> 1)
                     )
                 )
-                let y = this.xfrm.localPos.y + (this.size.width >= 32 ? 14 : 7) + font.charHeight
+                const y = Math.min(
+                    this.xfrm.localPos.y + (this.size.width >= 32 ? 14 : 7) + font.charHeight,
+                    Screen.BOTTOM_EDGE - 1 - font.charHeight
+                )
                 Screen.fillRect(x - 1, y - 1, w + 1, h + 2, 15)
                 Screen.print(text, x, y, 1, font)
             }

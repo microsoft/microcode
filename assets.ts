@@ -32,6 +32,7 @@ namespace microcode {
             this.reg["cancel"] = icondb.btn_cancel
             this.reg["ok"] = icondb.btn_ok
             this.reg["plus"] = icondb.btn_plus
+            this.reg["reset"] = icondb.btn_play
             this.reg["new_file"] = icondb.btn_new_file
             this.reg["log"] = icondb.btn_log
             this.reg["plot"] = icondb.btn_plot

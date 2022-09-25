@@ -30,6 +30,7 @@ namespace microcode {
         private progdef: ProgramDefn
         private currPage: number
         private pageBtn: Button
+        private resetBtn: Button
         private pageEditor: PageEditor
         public cursor: Cursor
         private _changed: boolean
@@ -264,9 +265,18 @@ namespace microcode {
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
                 icon: PAGE_IDS[this.currPage],
-                x: Screen.RIGHT_EDGE - 16,
+                x: Screen.RIGHT_EDGE - 32,
                 y: 8,
                 onClick: () => this.pickPage(),
+            })
+            this.resetBtn = new Button({
+                parent: this.hudroot,
+                icon: icons.get("reset"),
+                style: ButtonStyles.BorderedPurple,
+                ariaId: "reset",
+                x: Screen.RIGHT_EDGE - 12,
+                y: 8,
+                onClick: () => this.saveAndCompileProgram(),
             })
             this.progdef = this.app.load(SAVESLOT_AUTO)
         }
@@ -306,7 +316,7 @@ namespace microcode {
                 this.navigator.clear()
             } else this.navigator = new RuleRowNavigator()
 
-            this.navigator.addButtons([this.pageBtn])
+            this.navigator.addButtons([this.pageBtn, this.resetBtn])
 
             this.pageEditor.addToNavigator()
 
@@ -348,10 +358,9 @@ namespace microcode {
                 Screen.LEFT_EDGE,
                 Screen.TOP_EDGE
             )
-            if (this.pageEditor) {
-                this.pageEditor.draw()
-            }
+            if (this.pageEditor) this.pageEditor.draw()
             this.pageBtn.draw()
+            this.resetBtn.draw()
             this.picker.draw()
             this.cursor.draw()
         }

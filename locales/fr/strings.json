@@ -4,6 +4,7 @@
 
     "when": "lorsque case vide",
     "do": "faire case vide",
+    "reset": "recommencer",
 
     "delete_tile": "efacer tile",
 

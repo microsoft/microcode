@@ -4,6 +4,7 @@
 
     "when": "when empty tile",
     "do": "do empty tile",
+    "reset": "restart",
 
     "delete_tile": "delete tile",
 

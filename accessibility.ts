@@ -34,6 +34,7 @@ namespace accessibility {
 
         //when: "add tile",
         //do: "add tile",
+        reset: "restart",
 
         S1: "always",
         S2: "press",
