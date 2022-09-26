@@ -44,12 +44,11 @@ An event tile can be followed by none, one or more parameter tiles which determi
 -   **release**, defaults to `button A`
 -   **move**, defaults to `shake`
 -   **hear**, defaults to `loud`
--   **radio receive**, defaults to `equals 1`
+-   **radio receive**, defaults to accepting any value
 -   **repeat timer**, defaults to `1/4 second'
--   **variable (A,B,C) changed**, defaults to `equals 1`
+-   **variable (A,B,C) changed**, defaults to accepting any value
 
-The events that are parameterized by a numeric (the last three) can take more than one parameters. The meaning of this sequence
-of numbers is their sum. This allows values great than 5 to be constructed.
+The events that are parameterized by a numeric value (the last three) can take more than one parameters. The meaning of this sequence of numbers is their sum. This allows values great than 5 to be constructed.
 
 ## Do section
 
