@@ -83,7 +83,7 @@ namespace microcode {
         }
 
         protected handleClick(x: number, y: number) {
-            const target = this.navigator.screenToButton(x, y)
+            const target = this.navigator.screenToButton(x - 80, y - 60)
             if (target) {
                 this.moveTo(target)
                 this.cursor.click()

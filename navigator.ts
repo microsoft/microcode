@@ -30,6 +30,7 @@ namespace microcode {
 
         public addButtons(btns: Button[]) {
             this.buttonGroups.push(btns)
+            this.buttons = this.buttons.concat(btns)
         }
 
         public screenToButton(x: number, y: number): Button {
