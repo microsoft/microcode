@@ -370,7 +370,7 @@ function mapAriaId(ariaId) {
 
 function parseSemver(v) {
     const ver = /^v?(\d+)\.(\d+)\.(\d+)$/.exec(v)
-    if (ver) return [parseInt(ver[1]), parseInt(ver[1]), parseInt(ver[2])]
+    if (ver) return [parseInt(ver[1]), parseInt(ver[2]), parseInt(ver[3])]
     else return [0, 0, 0]
 }
 
