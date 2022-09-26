@@ -36,6 +36,7 @@ function makeCodeRun(options) {
                 meta = JSON.parse(metasrc)
             })
             document.body.dataset.version = meta.version
+            document.body.dataset.simUrl = meta.simUrl
             const vel = document.getElementById("version")
             if (meta.version && vel) {
                 const ap = document.createElement("a")
@@ -166,7 +167,6 @@ function makeCodeRun(options) {
 
     function initSimState() {
         const saveSlotKey = "S/sa"
-        const openEditorKey = "S/sao"
         try {
             simState = JSON.parse(localStorage["microcode-simstate"])
         } catch (e) {
@@ -202,13 +202,5 @@ function makeCodeRun(options) {
         window.addEventListener("hashchange", importState, false)
         importState()
         setInterval(saveState, 200)
-    }
-
-    function inIFrame() {
-        try {
-            return typeof window !== "undefined" && window.self !== window.top
-        } catch (e) {
-            return typeof window !== "undefined"
-        }
     }
 }

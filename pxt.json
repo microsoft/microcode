@@ -1,11 +1,11 @@
 {
     "name": "microcode",
-    "version": "1.0.62",
+    "version": "1.1.1",
     "description": "Coding microcontrollers using Arcade",
     "dependencies": {
         "game---light": "*",
         "device": "*",
-        "codal-jacdac-pxt": "github:microsoft/codal-jacdac/pxt#v0.0.11"
+        "codal-jacdac-pxt": "github:microsoft/codal-jacdac/pxt#v1.1.0"
     },
     "files": [
         "config.ts",
