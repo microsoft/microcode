@@ -1,5 +1,5 @@
 namespace jacs {
-    let debugOut = false
+    let debugOut = true
 
     export function addUnique<T>(arr: T[], v: T) {
         let idx = arr.indexOf(v)
@@ -535,7 +535,10 @@ namespace jacs {
         private getValueOut(rule: microcode.RuleDefn) {
             let v = undefined
             for (const m of rule.modifiers) {
-                if (m.category == "value_out") v = m.jdParam
+                if (m.category == "value_out") {
+                    if (v === undefined) v = 0
+                    v += m.jdParam
+                }
             }
             return v
         }
@@ -543,7 +546,10 @@ namespace jacs {
         private getValueIn(rule: microcode.RuleDefn) {
             let v = undefined
             for (const m of rule.filters) {
-                if (m.category == "value_in") v = m.jdParam
+                if (m.category == "value_in") {
+                    if (v === undefined) v = 0
+                    v += m.jdParam
+                }
             }
             return v
         }
