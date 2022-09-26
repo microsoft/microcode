@@ -5,19 +5,6 @@ namespace microcode {
 
         constructor(app: App) {
             super(app)
-            this.initialCompileProgram()
-        }
-
-        private initialCompileProgram() {
-            const progdef = this.app.load(SAVESLOT_AUTO)
-            if (!progdef) return
-
-            control.runInParallel(() => {
-                // this runs after power up; wait a second for all devices to enumerate
-                // (the generated jacs program no longer does that)
-                pause(1000)
-                new jacs.TopWriter().emitProgram(progdef)
-            })
         }
 
         /* override */ startup() {
@@ -58,13 +45,6 @@ namespace microcode {
         /* override */ activate() {
             super.activate()
             this.color = 15
-            let progdef = this.app.load(SAVESLOT_AUTO)
-            if (!progdef) {
-                progdef = new ProgramDefn()
-                this.app.save(SAVESLOT_AUTO, progdef)
-            }
-
-            // this.log("program started", 1)
         }
 
         private drawVersion() {
