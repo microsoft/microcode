@@ -1,4 +1,4 @@
-![Smiley Button MicroCode program](./images/happy_sad.jpg)
+![Smiley Button MicroCode program](./images/rule.jpg)
 
 # MicroCode Language
 
