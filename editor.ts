@@ -910,7 +910,7 @@ namespace microcode {
         }
 
         /* override */ draw() {
-            // don't render when out of screen
+            // don't render when out of screenR
             if (this.xfrm.worldPos.y + this.bounds.top > Screen.BOTTOM_EDGE
                 || this.xfrm.worldPos.y + this.bounds.bottom < Screen.TOP_EDGE) {
                 return
