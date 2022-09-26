@@ -1911,16 +1911,15 @@ f f f f f f f f f f f f f f f f
     . . . b 1 1 1 b 1 1 1 b d b . .
     . . b 1 1 1 1 1 1 1 b d d b . .
     . . c b b b b b b b d d b b . .
+    . . c b b c c c b b d d d b . .
     . . c b c b b b c b d d d b . .
-    . . c b b b b b b b d d d b . .
-    . . c b b b c b b b d b d b d .
-    . . c b b b b b b b d d d b d .
-    . . c b c b b b c b d d b d . .
-    . . c b b b b b b b d b d . . .
+    . . c b b b b b c b d b d b d .
+    . . c b b b c c b b d d d b d .
+    . . c b b b b b b b d d b d . .
+    . . c b b b c b b b d b d . . .
     . . . c c c c c c c b d . . . .
     . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . .
-`
+    . . . . . . . . . . . . . . . .`
     export const inPipeA = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
