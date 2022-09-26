@@ -43,9 +43,9 @@ symbol when shaken.
 The program starts with a rule that uses
 the accelerometer sensor; which by default 
 detects shake events. The 3-face dice is cast
-and the result is piped in pipe A.
+and the result is stored in variable A.
 
-The next 3 rules match the value passed in pipe A
+The next 3 rules match the value passed in variable A
 and display a different symbol for each value, 1, 2 or 3.
 
 ### improvement ideas
