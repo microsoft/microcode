@@ -281,7 +281,6 @@ namespace microcode {
             const target = this.cursor.navigator.screenToButton(x - 80, y - 60)
             if (target) {
                 this.scrollAndMoveButton(target)
-                // TODO: we don't always want to click (LED screen on move, for example)
                 target.click()
             } else if (this.picker.visible) {
                 this.picker.hide()
