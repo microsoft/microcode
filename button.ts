@@ -88,9 +88,7 @@ namespace microcode {
         public get ariaId(): string {
             return (
                 this._ariaId ||
-                (typeof this.iconId === "string"
-                    ? <string>this.iconId
-                    : "")
+                (typeof this.iconId === "string" ? <string>this.iconId : "")
             )
         }
 
@@ -246,6 +244,15 @@ namespace microcode {
         }
 
         /* override */ draw() {
+            // clipping on x axis
+            if (
+                this.xfrm.worldPos.x + this.icon.bounds.right + 1 <
+                    Screen.LEFT_EDGE ||
+                this.xfrm.worldPos.x + this.icon.bounds.left - 1 >
+                    Screen.RIGHT_EDGE
+            )
+                return
+
             Screen.fillBoundsXfrm(this.xfrm, this.icon.bounds, this.style.fill)
             Screen.outlineBoundsXfrm4(
                 this.xfrm,
