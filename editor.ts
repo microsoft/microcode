@@ -288,7 +288,7 @@ namespace microcode {
         protected handleClick(x: number, y: number) {
             const target = this.cursor.navigator.screenToButton(x - 80, y - 60)
             if (target) {
-                this.scrollAndMoveButton(target)
+                this.snapCursorTo(target)
                 target.click()
             } else if (this.picker.visible) {
                 this.picker.hide()
