@@ -106,13 +106,13 @@ namespace accessibility {
         M19twinkle: "twinkle",
         M19yawn: "yawn",
 
-        M20A: "in pipe A",
-        M20B: "in pipe B",
-        M20C: "in pipe C",
+        M20A: "in variable A",
+        M20B: "in variable B",
+        M20C: "in variable C",
 
-        S9A: "out pipe A",
-        S9B: "out pipe B",
-        S9C: "out pipe C",
+        S9A: "out variable A",
+        S9B: "out variable B",
+        S9C: "out variable C",
 
         N0: "editor",
         N1: "new program",
