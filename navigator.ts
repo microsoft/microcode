@@ -272,25 +272,18 @@ namespace microcode {
         }
 
         public move(dir: CursorDir): Button {
-            const doit = (
+            const getButton = (
                 dirY: (btn: Button) => boolean,
                 diffXCurr: (btn: Button) => boolean,
-                sortX: (a: Button, b: Button) => number,
-                sortY: (a: Button, b: Button) => number
+                sortY: (a: Button, b: Button) => number,
+                sortX: (a: Button, b: Button) => number
             ) => {
-                let ret: Button = undefined
-                // Get all buttons ABOVE the current one.
-                const above = this.buttons.filter(dirY)
-                // Filter to just buttons with some HORIZONTAL overlap.
-                // Sort by increasing VERTICAL distance.
-                const overlap = above.filter(diffXCurr).sort(sortY)
-                // Take the first one.
-                ret = overlap.shift()
-                if (!ret) {
-                    // No buttons directly above, so pick the nearest one.
-                    ret = above.sort(sortX).shift()
+                let above = this.buttons.filter(dirY)
+                let getBtn = above.filter(diffXCurr).sort(sortY).shift()
+                if (!getBtn && sortX) {
+                    getBtn = above.sort(sortX).shift()
                 }
-                return ret
+                return getBtn
             }
 
             let btn: Button
@@ -301,7 +294,7 @@ namespace microcode {
                 switch (dir) {
                     case CursorDir.Up:
                     case CursorDir.Down: {
-                        btn = doit(
+                        btn = getButton(
                             btn =>
                                 dir == CursorDir.Up
                                     ? btn.xfrm.worldPos.y <
@@ -314,7 +307,10 @@ namespace microcode {
                                         this.curr.xfrm.worldPos.x
                                 ) <
                                 btn.width >> 1,
-                            (a, b) => b.xfrm.worldPos.y - a.xfrm.worldPos.y,
+                            (a, b) =>
+                                dir == CursorDir.Up
+                                    ? b.xfrm.worldPos.y - a.xfrm.worldPos.y
+                                    : a.xfrm.worldPos.y - b.xfrm.worldPos.y,
                             (a, b) =>
                                 Math.abs(b.xfrm.worldPos.x - a.xfrm.worldPos.x)
                         )
@@ -322,7 +318,7 @@ namespace microcode {
                     }
                     case CursorDir.Left:
                     case CursorDir.Right: {
-                        btn = doit(
+                        btn = getButton(
                             btn =>
                                 dir == CursorDir.Left
                                     ? btn.xfrm.worldPos.x <
@@ -335,9 +331,11 @@ namespace microcode {
                                         this.curr.xfrm.worldPos.y
                                 ) <
                                 btn.height >> 1,
-                            (a, b) => b.xfrm.worldPos.x - a.xfrm.worldPos.x,
                             (a, b) =>
-                                Math.abs(b.xfrm.worldPos.y - a.xfrm.worldPos.y)
+                                dir == CursorDir.Left
+                                    ? b.xfrm.worldPos.x - a.xfrm.worldPos.x
+                                    : a.xfrm.worldPos.x - b.xfrm.worldPos.x,
+                            undefined
                         )
                         break
                     }
