@@ -63,3 +63,5 @@ the gallery of samples.
 
 This project is open source and welcomes contributions and suggestions at https://github.com/microsoft/microcode.
 Read the [developer instructions](./develop.md).
+
+{% include youtube.html id="LWjJL9qegmM" %}
