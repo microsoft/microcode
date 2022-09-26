@@ -30,9 +30,7 @@ the order of the rules only matters when different rules act on the same resourc
 A sensor tile can refer to a hardware feature as simple as a button,
 a thermometer represented by a floating point (or fixed point) value, or an accelerometer with a set of possible events. A sensor could also refer to a GPIO pin, a timer, microphone, radio, or other means for the program to receive notification of a state change or an event.
 
-In the program above, the sensor refers to a press/touch event, without reference to the particular hardware feature (see filters below).
-
-![available filters for press/touch event](/images/pick_microbit.jpg)
+In the program above, the sensor refers to a press/touch event, without reference to the particular hardware feature.
 
 ### Filters
 
