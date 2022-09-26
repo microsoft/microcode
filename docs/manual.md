@@ -15,8 +15,8 @@ There are two ways to run MicroCode:
 -   [web app](https://aka.ms/microcode) with or without micro:bit V2
 -   [micro:bit V2](https://microbit.org) + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
 
-See below for more information about the MicroCode web app, and how to deploy MicroCode to the micro:bit V2. Regardless of which way you run MicroCode, you will probably want to know a little bit about the MicroCode
-or the
+See below for more information about the MicroCode web app, and how to deploy MicroCode to the micro:bit V2. Regardless of which way you run MicroCode, you will probably want to know a little bit about
+MicroCode's:
 
 -   [icon-based language](./language.md)
 -   [samples](./samples.md)
