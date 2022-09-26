@@ -278,7 +278,7 @@ namespace microcode {
         }
 
         protected handleClick(x: number, y: number) {
-            const target = this.cursor.navigator.screenToButton(x, y)
+            const target = this.cursor.navigator.screenToButton(x - 80, y - 60)
             if (target) {
                 this.scrollAndMoveButton(target)
                 this.cursor.click()
