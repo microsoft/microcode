@@ -106,13 +106,13 @@ namespace accessibility {
         M19twinkle: "twinkle",
         M19yawn: "yawn",
 
-        M20A: "in variable A",
-        M20B: "in variable B",
-        M20C: "in variable C",
+        M20A: "put in variable A",
+        M20B: "put in variable B", 
+        M20C: "put in variable C",
 
-        S9A: "out variable A",
-        S9B: "out variable B",
-        S9C: "out variable C",
+        S9A: "variable A changed",
+        S9B: "variable B changed",
+        S9C: "variable C changed",
 
         N0: "editor",
         N1: "new program",
