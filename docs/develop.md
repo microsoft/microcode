@@ -1,5 +1,6 @@
 # Developing MicroCode
 
+MicroCode is open source at https://github.com/microsoft/microcode and welcomes contributions.
 The easiest way to get started is to open this repository in a GitHub Codespace and everything will be ready for you.
 
 We recommend using [Visual Studio Code](https://code.visualstudio.com/) as it provides excellent support
@@ -7,6 +8,7 @@ for MakeCode editing, Git, and Codespaces.
 
 ## Codespaces setup
 
+-   open https://github.com/microsoft/microcode
 -   click on `Code` drop down and select `Create Codespace on main`
 -   you can do your editing from VS Code online or click on `Codespaces` in lower left and select `Open in VS Code` to use the desktop version (must be installed on your machine)
 -   press "Ctrl + `" to open a terminal and you're ready to go!
