@@ -59,7 +59,7 @@ namespace microcode {
             this.reg["heads_tails"] = icondb.sampleHeadsOrTails
             this.reg["reaction_time"] = icondb.sampleReactionTime
             this.reg["hot_potato"] = icondb.sampleHotPotato
-            this.reg["clap_lights"] = icondb.sampleHotPotato
+            this.reg["clap_lights"] = icondb.sampleClapLights
             this.reg["solid_red"] = icondb.solid_red
             this.reg["solid_black"] = icondb.solid_black
 
