@@ -3,7 +3,7 @@ namespace microcode {
         clear: () => void
         addButtons: (btns: Button[]) => void
         move: (dir: CursorDir) => Button
-        getOverlapping: () => Button[]
+        getCurrent: () => Button
         screenToButton: (x: number, y: number) => Button
         initialCursor: (row: number, col: number) => Button
     }
@@ -35,9 +35,25 @@ namespace microcode {
 
         public screenToButton(x: number, y: number): Button {
             const p = new Vec2(x, y)
-            return this.buttons.find(btn =>
+            const target = this.buttons.find(btn =>
                 Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
             )
+            if (target) {
+                for (let row = 0; row < this.buttonGroups.length; row++) {
+                    for (
+                        let col = 0;
+                        col < this.buttonGroups[row].length;
+                        col++
+                    ) {
+                        if (this.buttonGroups[row][col] === target) {
+                            this.row = row
+                            this.col = col
+                            return target
+                        }
+                    }
+                }
+            }
+            return undefined
         }
 
         public move(dir: CursorDir) {
@@ -91,8 +107,8 @@ namespace microcode {
             return btn
         }
 
-        public getOverlapping(): Button[] {
-            return [this.buttonGroups[this.row][this.col]]
+        public getCurrent(): Button {
+            return this.buttonGroups[this.row][this.col]
         }
 
         protected makeGood() {
@@ -391,13 +407,15 @@ namespace microcode {
 
         public screenToButton(x: number, y: number): Button {
             const p = new Vec2(x, y)
-            return this.buttons.find(btn =>
+            const target = this.buttons.find(btn =>
                 Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
             )
+            if (target) this.curr = target
+            return target
         }
 
-        public getOverlapping(): Button[] {
-            return [this.curr]
+        public getCurrent(): Button {
+            return this.curr
         }
 
         public initialCursor(row: number, col: number): Button {

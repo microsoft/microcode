@@ -90,10 +90,9 @@ namespace microcode {
         }
 
         public click(): boolean {
-            let overlapping = this.navigator.getOverlapping() //.sort((a, b) => a.z - b.z);
-            if (overlapping.length) {
-                const btn = overlapping.shift()
-                btn.click()
+            let target = this.navigator.getCurrent() //.sort((a, b) => a.z - b.z);
+            if (target) {
+                target.click()
                 return true
             }
             return false
@@ -163,7 +162,9 @@ namespace microcode {
                     )
                 )
                 const y = Math.min(
-                    this.xfrm.localPos.y + (this.size.width >= 32 ? 14 : 7) + font.charHeight,
+                    this.xfrm.localPos.y +
+                        (this.size.width >= 32 ? 14 : 7) +
+                        font.charHeight,
                     Screen.BOTTOM_EDGE - 1 - font.charHeight
                 )
                 Screen.fillRect(x - 1, y - 1, w + 1, h + 2, 15)
