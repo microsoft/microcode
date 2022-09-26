@@ -193,7 +193,7 @@ namespace microcode {
         private hasDelete: boolean
 
         public initialCursor(row: number = 0, col: number = 0) {
-            this.hasDelete = this.buttonGroups.length == 1
+            this.hasDelete = this.buttonGroups[0].length == 1
             this.row = 2 + (this.hasDelete ? 1 : 0)
             this.col = 2
             const btn = this.buttonGroups[this.row][this.col]
