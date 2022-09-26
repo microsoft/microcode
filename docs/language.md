@@ -28,7 +28,7 @@ the order of the rules only matters when different rules act on the same resourc
 The left-hand side of a rule, the **When** section, starts with an
 event tile from the following list:
 
--   **press** of a button, micro:bit icon, or pin
+-   **press** of button, micro:bit icon, or pin
 -   **release** of button, micro:bit icon, or pin
 -   **move** of accelerometer, in various ways
 -   **hear** a sound, either loud or soft
