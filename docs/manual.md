@@ -18,8 +18,9 @@ There are two ways to run MicroCode:
 See below for more information about the MicroCode web app, micro:bit simulator, and how to deploy MicroCode to the micro:bit V2. Regardless of which way you run MicroCode, you will probably want to know a little bit about the MicroCode
 or the
 
--   [icon-based language](./language.md)
--   [samples](./samples.md)
+* [icon-based language](./language.md)
+* [samples](./samples.md)
+* [FAQ](./faq.md)
 
 ## Web editor
 
@@ -28,20 +29,9 @@ The easiest way to get started with MicroCode is through the web editor ([https:
 -   Arrow keys for D-pad
 -   Space bar for A button
 -   Backscape for B button
+-   Copy the URL to share your program.
 
 <iframe class="editor" src="https://microsoft.github.io/microcode?nofooter=1&embed=1" />
-
-## Web App and micro:bit V2
-
-Click on the micro:bit button at the lower right of the screen and follow the
-on-screen instructions to configure your micro:bit V2 and pair it with the editor.
-Once your micro:bit V2 is paired, the web editor will be able to download Your
-MicroCode program to your microbit. This happens on every edit, so your program
-is always up-to-date (and running)!
-
-## Arcade Shield and micro:bit V2
-
-![Arcade Shield and micro:bit V2](./images/meow1)
 
 ## Micro:bit simulator
 
