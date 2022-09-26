@@ -2,13 +2,11 @@
 
 Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 
-![Chuck a Duck MicroCode program](./images/sample_chuck_a_duck.png)
+{% include youtube.html id="ymP7x8GXgz4" %}
 
 -   Kid friendly iconic editor and small programming language
 -   Runs on the micro:bit V2, no computer or internet needed
 -   Keyboard, screen reader accessible
-
-{% include youtube.html id="ymP7x8GXgz4" %}
 
 ## Try it out!
 
