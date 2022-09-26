@@ -202,7 +202,7 @@ namespace microcode {
                 console.warn(`led: missing aria target`)
                 return
             }
-            if (this.row == 0 && this.col == 0) {
+            if (this.hasDelete() && this.row == 0 && this.col == 0) {
                 if (reportRemoveLED) {
                     accessibility.setLiveContent(<
                         accessibility.TextAccessibilityMessage
@@ -230,7 +230,9 @@ namespace microcode {
                 accessibility.TextAccessibilityMessage
             >{
                 type: "text",
-                value: `led ${this.col} ${this.row} ${status}`,
+                value: `led ${this.col + 1} ${
+                    this.hasDelete() ? this.row : this.row + 1
+                } ${status}`,
             })
         }
     }
