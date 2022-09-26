@@ -240,7 +240,15 @@ namespace microcode {
                         if (this.navigator.getRow() == 0) {
                             this.app.popScene()
                             this.app.pushScene(new Home(this.app))
-                        } else this.scrollAndMove(CursorDir.Back)
+                        } else {
+                            if (this.navigator.atRuleStart()) {
+                                const target = this.navigator.initialCursor(
+                                    0,
+                                    0
+                                )
+                                this.moveTo(target)
+                            } else this.scrollAndMove(CursorDir.Back)
+                        }
                     }
                 }
             )

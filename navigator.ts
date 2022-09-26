@@ -144,6 +144,10 @@ namespace microcode {
             this.rules.push(rule)
         }
 
+        public atRuleStart() {
+            return this.row >= 1 && this.col == 0
+        }
+
         public move(dir: CursorDir) {
             const ret = super.move(dir)
             this.reportAria(ret)
