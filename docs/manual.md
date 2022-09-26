@@ -8,7 +8,7 @@ Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 -   Runs on the micro:bit V2, no computer or internet needed
 -   Keyboard, screen reader accessible
 
-<video src="./videos/microcode.mp4" controls playsinline></video>
+{% include youtube.html id="ymP7x8GXgz4" %}
 
 ## Try it out!
 
