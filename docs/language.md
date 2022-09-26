@@ -32,7 +32,7 @@ event tile from the following list:
 
 -   **press** of a button, micro:bit icon, or pin
 -   **release** of button, micro:bit icon, or pin
--   **move** of accelometer, in various ways
+-   **move** of accelerometer, in various ways
 -   **hear** a sound, either loud or soft
 -   **radio receive** of a number
 -   **repeat timer** of a time
@@ -44,11 +44,12 @@ An event tile can be followed by none, one or more parameter tiles which determi
 -   **release**, defaults to `button A`
 -   **move**, defaults to `shake`
 -   **hear**, defaults to `loud`
--   **radio receive**, defaults to accepting any value
--   **repeat timer**, defaults to `1/4 second'
--   **variable (A,B,C) changed**, defaults to accepting any value
+-   **radio receive**, defaults to `any`
+-   **repeat timer**, defaults to `1/4 second`
+-   **variable (A,B,C) changed**, defaults to `any`
 
-The events that are parameterized by a numeric value (the last three) can take more than one parameters. The meaning of this sequence of numbers is their sum. This allows values great than 5 to be constructed.
+The events that are parameterized by a numeric (the last three) can take more than one parameters. The meaning of this sequence
+of numbers is their sum. This allows values great than 5 to be constructed.
 
 ## Do section
 
@@ -65,14 +66,14 @@ An action tile can be followed by various parameter tiles, depending on type
 of action tile. As with events, every actions has a default parameter, for the
 case where no parameter file is added by the user:
 
--   **screen** shows a happy face by default
--   **sound emoji** plays `giggle` by defaukt
--   **random number** generates a random integer between 1 and 5 (inclusive) by default
--   **radio send** sends the number 1 by default
--   **switch page** switches to page 1 by default
+-   **screen** shows a `happy face` by default
+-   **sound emoji** plays `giggle` by default
+-   **random number** generates a random integer between `1` and `5` (inclusive) by default
+-   **radio send** sends the number `1` by default
+-   **switch page** switches to page `1` by default
 
-Sequences of numeric parameters are summed, as before, allowing the construction of values greater than 5.
+Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5`.
 
 ## Variables
 
-For certain actions that produce values, like the random number generator, the value can be written into variable A, B, C.
+For certain actions that produce values, like the random number generator, the value can be written into variable `A`, `B`, `C`.
