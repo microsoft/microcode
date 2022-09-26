@@ -168,12 +168,11 @@ namespace microcode {
 
     // accessibility for LEDs
     export class LEDNavigator extends RowNavigator {
-        private hasDelete() {
-            return this.buttonGroups[0].length == 1
-        }
+        private hasDelete: boolean
 
         public initialCursor(row: number = 0, col: number = 0) {
-            this.row = 2 + (this.hasDelete() ? 1 : 0)
+            this.hasDelete = this.buttonGroups.length == 1
+            this.row = 2 + (this.hasDelete ? 1 : 0)
             this.col = 2
             const btn = this.buttonGroups[this.row][this.col]
             this.reportAria(btn)
@@ -189,29 +188,26 @@ namespace microcode {
                     let prev = btn.onClick
                     btn.onClick = () => {
                         prev(btn)
-                        this.reportAria(btn, false)
+                        this.reportAria(btn)
                     }
                 } else {
-                    btn.onClick = () => this.reportAria(btn, false)
+                    btn.onClick = () => this.reportAria(btn)
                 }
             })
         }
 
-        protected reportAria(btn: Button, reportRemoveLED: Boolean = true) {
+        protected reportAria(btn: Button) {
             if (!btn) {
                 console.warn(`led: missing aria target`)
                 return
             }
-            if (this.hasDelete() && this.row == 0 && this.col == 0) {
-                if (reportRemoveLED) {
-                    accessibility.setLiveContent(<
-                        accessibility.TextAccessibilityMessage
-                    >{
-                        type: "text",
-                        value: "delete_tile",
-                    })
-                }
-
+            if (this.hasDelete && this.row == 0 && this.col == 0) {
+                accessibility.setLiveContent(<
+                    accessibility.TextAccessibilityMessage
+                >{
+                    type: "text",
+                    value: "delete_tile",
+                })
                 return
             }
 
@@ -231,7 +227,7 @@ namespace microcode {
             >{
                 type: "text",
                 value: `led ${this.col + 1} ${
-                    this.hasDelete() ? this.row : this.row + 1
+                    this.hasDelete ? this.row : this.row + 1
                 } ${status}`,
             })
         }
