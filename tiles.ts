@@ -655,6 +655,7 @@ namespace microcode {
         "pipe_out"
     )
     random_toss.priority = 70
+    random_toss.constraints.disallow = { tiles: [TID_MODIFIER_VALUE_1] }
 
     /*
     const first_random = new RandomEditor()

@@ -27,8 +27,8 @@ the order of the rules only matters when different rules act on the same resourc
 
 ## When section
 
-The left-hand side of a rule, the **When** section refers to an
-event from following list:
+The left-hand side of a rule, the **When** section, starts with an
+event tile from the following list:
 
 -   **press** of a button, micro:bit icon, or pin
 -   **release** of button, micro:bit icon, or pin
@@ -38,7 +38,7 @@ event from following list:
 -   **repeat timer** of a time
 -   **variable (A,B,C) changed** to a number
 
-Each event can be followed by none, one or more parameters, which determines whether or not execution will proceed from the **When** section to the **Do** section, Every event has a default parameter, which is used when no parameter is specified. The defaults are:
+An event tile can be followed by none, one or more parameter tiles which determines whether or not execution will proceed from the **When** section to the **Do** section, Every event has a default parameter, which is used when no parameter is specified. The defaults are:
 
 -   **press**, defaults to `button A`
 -   **release**, defaults to `button A`
@@ -53,4 +53,27 @@ of numbers is their sum. This allows values great than 5 to be constructed.
 
 ## Do section
 
-TBD
+The right-hand side of a rule, the **Do** section, starts with an
+action tile from the following list:
+
+-   **screen** shows an animation sequence on the LED screen.
+-   **sound emoji** plays a given emoji
+-   **random number** generates a random integer between 1 and given upper bound (inclusive)
+-   **radio send** sends a given number over the radio
+-   **switch page** transfers execution control to a given page
+
+An action tile can be followed by various parameter tiles, depending on type
+of action tile. As with events, every actions has a default parameter, for the
+case where no parameter file is added by the user:
+
+-   **screen** shows a happy face by default
+-   **sound emoji** plays `giggle` by defaukt
+-   **random number** generates a random integer between 1 and 5 (inclusive) by default
+-   **radio send** sends the number 1 by default
+-   **switch page** switches to page 1 by default
+
+Sequences of numeric parameters are summed, as before, allowing the construction of values greater than 5.
+
+## Variables
+
+For certain actions that produce values, like the random number generator, the value can be written into variable A, B, C.
