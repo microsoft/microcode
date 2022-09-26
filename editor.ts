@@ -734,8 +734,7 @@ namespace microcode {
                             ruleTiles[index] = newOne
                         }
                         tileUpdated()
-                    },
-                    () => {}
+                    }
                 )
                 return
             }
@@ -911,11 +910,13 @@ namespace microcode {
 
         /* override */ draw() {
             // don't render when out of screenR
-            if (this.xfrm.worldPos.y + this.bounds.top > Screen.BOTTOM_EDGE
-                || this.xfrm.worldPos.y + this.bounds.bottom < Screen.TOP_EDGE) {
+            if (
+                this.xfrm.worldPos.y + this.bounds.top > Screen.BOTTOM_EDGE ||
+                this.xfrm.worldPos.y + this.bounds.bottom < Screen.TOP_EDGE
+            ) {
                 return
             }
-            
+
             Screen.fillBoundsXfrm(this.xfrm, this.bounds, 11)
             Screen.fillBoundsXfrm(this.xfrm, this.whenBounds, 13)
             Screen.outlineBoundsXfrm(this.xfrm, this.bounds, 1, 12)

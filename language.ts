@@ -28,7 +28,7 @@ namespace microcode {
             field: any,
             picker: Picker,
             onHide: () => void,
-            onDelete: () => void
+            onDelete?: () => void
         ) => void // use picker to update field
         toImage: (field: any) => Image // produce an image for the field for tile
         buttonStyle: () => ButtonStyle
