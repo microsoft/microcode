@@ -62,6 +62,7 @@ namespace microcode {
                 case CursorDir.Up: {
                     if (this.row == 0) return undefined
                     this.row--
+                    // because the column in new row may be out of bounds
                     this.makeGood()
                     break
                 }
@@ -70,6 +71,7 @@ namespace microcode {
                     if (this.row == this.buttonGroups.length - 1)
                         return undefined
                     this.row++
+                    // because the column in new row may be out of bounds
                     this.makeGood()
                     break
                 }
@@ -270,130 +272,71 @@ namespace microcode {
         }
 
         public move(dir: CursorDir): Button {
+            const getButton = (
+                dirY: (btn: Button) => boolean,
+                diffXCurr: (btn: Button) => boolean,
+                sortY: (a: Button, b: Button) => number,
+                sortX: (a: Button, b: Button) => number
+            ) => {
+                let above = this.buttons.filter(dirY)
+                let getBtn = above.filter(diffXCurr).sort(sortY).shift()
+                if (!getBtn && sortX) {
+                    getBtn = above.sort(sortX).shift()
+                }
+                return getBtn
+            }
+
             let btn: Button
 
             if (!this.curr) {
                 btn = this.buttons[0]
             } else {
                 switch (dir) {
-                    case CursorDir.Up: {
-                        // Get all buttons ABOVE the current one.
-                        const above = this.buttons.filter(
-                            btn =>
-                                btn.xfrm.worldPos.y < this.curr.xfrm.worldPos.y
-                        )
-                        // Filter to just buttons with some HORIZONTAL overlap.
-                        // Sort by increasing VERTICAL distance.
-                        const overlap = above
-                            .filter(
-                                btn =>
-                                    Math.abs(
-                                        btn.xfrm.worldPos.x -
-                                            this.curr.xfrm.worldPos.x
-                                    ) <
-                                    btn.width >> 1
-                            )
-                            .sort(
-                                (a, b) => b.xfrm.worldPos.y - a.xfrm.worldPos.y
-                            )
-                        // Take the first one.
-                        btn = overlap.shift()
-
-                        if (!btn) {
-                            // No buttons directly above, so pick the nearest one.
-                            btn = above
-                                .sort((a, b) =>
-                                    Math.abs(
-                                        b.xfrm.worldPos.x - a.xfrm.worldPos.x
-                                    )
-                                )
-                                .shift()
-                        }
-                        break
-                    }
+                    case CursorDir.Up:
                     case CursorDir.Down: {
-                        // Get all buttons BELOW the current one.
-                        // Take the first one.
-                        const below = this.buttons.filter(
+                        btn = getButton(
                             btn =>
-                                btn.xfrm.worldPos.y > this.curr.xfrm.worldPos.y
+                                dir == CursorDir.Up
+                                    ? btn.xfrm.worldPos.y <
+                                      this.curr.xfrm.worldPos.y
+                                    : btn.xfrm.worldPos.y >
+                                      this.curr.xfrm.worldPos.y,
+                            btn =>
+                                Math.abs(
+                                    btn.xfrm.worldPos.x -
+                                        this.curr.xfrm.worldPos.x
+                                ) <
+                                btn.width >> 1,
+                            (a, b) =>
+                                dir == CursorDir.Up
+                                    ? b.xfrm.worldPos.y - a.xfrm.worldPos.y
+                                    : a.xfrm.worldPos.y - b.xfrm.worldPos.y,
+                            (a, b) =>
+                                Math.abs(b.xfrm.worldPos.x - a.xfrm.worldPos.x)
                         )
-                        // Filter to just buttons with some HORIZONTAL overlap.
-                        // Sort by increasing VERTICAL distance.
-                        const overlap = below
-                            .filter(
-                                btn =>
-                                    Math.abs(
-                                        btn.xfrm.worldPos.x -
-                                            this.curr.xfrm.worldPos.x
-                                    ) <
-                                    btn.width >> 1
-                            )
-                            .sort(
-                                (a, b) => a.xfrm.worldPos.y - b.xfrm.worldPos.y
-                            )
-
-                        btn = overlap.shift()
-                        if (!btn) {
-                            // No buttons directly below, so pick the nearest one.
-                            btn = below
-                                .sort((a, b) =>
-                                    Math.abs(
-                                        b.xfrm.worldPos.x - a.xfrm.worldPos.x
-                                    )
-                                )
-                                .shift()
-                        }
                         break
                     }
-                    case CursorDir.Left: {
-                        // Get all buttons LEFT of the current one.
-                        // Filter to just buttons with some VERTICAL overlap.
-                        // Sort by increasing HORIZONTAL distance.
-                        // Take the first one.
-                        btn = this.buttons
-                            .filter(
-                                btn =>
-                                    btn.xfrm.worldPos.x <
-                                    this.curr.xfrm.worldPos.x
-                            )
-                            .filter(
-                                btn =>
-                                    Math.abs(
-                                        btn.xfrm.worldPos.y -
-                                            this.curr.xfrm.worldPos.y
-                                    ) <
-                                    btn.width >> 1
-                            )
-                            .sort(
-                                (a, b) => b.xfrm.worldPos.x - a.xfrm.worldPos.x
-                            )
-                            .shift()
-                        break
-                    }
+                    case CursorDir.Left:
                     case CursorDir.Right: {
-                        // Get all buttons RIGHT of the current one.
-                        // Filter to just buttons with some VERTICAL overlap.
-                        // Sort by increasing HORIZONTAL distance.
-                        // Take the first one.
-                        btn = this.buttons
-                            .filter(
-                                btn =>
-                                    btn.xfrm.worldPos.x >
-                                    this.curr.xfrm.worldPos.x
-                            )
-                            .filter(
-                                btn =>
-                                    Math.abs(
-                                        btn.xfrm.worldPos.y -
-                                            this.curr.xfrm.worldPos.y
-                                    ) <
-                                    btn.width >> 1
-                            )
-                            .sort(
-                                (a, b) => a.xfrm.worldPos.x - b.xfrm.worldPos.x
-                            )
-                            .shift()
+                        btn = getButton(
+                            btn =>
+                                dir == CursorDir.Left
+                                    ? btn.xfrm.worldPos.x <
+                                      this.curr.xfrm.worldPos.x
+                                    : btn.xfrm.worldPos.x >
+                                      this.curr.xfrm.worldPos.x,
+                            btn =>
+                                Math.abs(
+                                    btn.xfrm.worldPos.y -
+                                        this.curr.xfrm.worldPos.y
+                                ) <
+                                btn.height >> 1,
+                            (a, b) =>
+                                dir == CursorDir.Left
+                                    ? b.xfrm.worldPos.x - a.xfrm.worldPos.x
+                                    : a.xfrm.worldPos.x - b.xfrm.worldPos.x,
+                            undefined
+                        )
                         break
                     }
                 }
