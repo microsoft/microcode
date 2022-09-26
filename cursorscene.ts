@@ -14,10 +14,8 @@ namespace microcode {
         }
 
         protected moveTo(target: Button) {
-            if (!target) {
-                console.warn(`cursor: missing move target`)
+            if (!target)
                 return
-            }
             this.cursor.moveTo(
                 target.xfrm.worldPos,
                 target.ariaId,

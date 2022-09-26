@@ -156,7 +156,6 @@ namespace microcode {
 
         protected reportAria(ret: Button) {
             if (!ret) {
-                console.warn(`rule: missing aria target`)
                 return
             }
 
@@ -219,7 +218,6 @@ namespace microcode {
 
         protected reportAria(btn: Button) {
             if (!btn) {
-                console.warn(`led: missing aria target`)
                 return
             }
             if (this.hasDelete && this.row == 0 && this.col == 0) {

@@ -37,8 +37,7 @@ namespace microcode {
         }
 
         /* virtual */ destroy() {
-            if (this._destroyed)
-                console.warn(`double destroy on ${this.id}`)
+            if (this._destroyed) console.warn(`double destroy on ${this.id}`)
             this._destroyed = true
             const handlers = this._destroyHandlers || []
             this._destroyHandlers = undefined
