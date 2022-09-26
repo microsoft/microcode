@@ -11,6 +11,7 @@ const inIFrame = (() => {
 
 let bus
 let connectEl
+let lastData
 const refreshUI = () => {
     const supportsWebusb = !!navigator.usb
     if (bus.connected || !supportsWebusb) {
@@ -23,6 +24,40 @@ const refreshUI = () => {
         ? "micro:bit connect"
         : "micro:bit connecting"
     connectEl.setAttribute("title", statusText)
+}
+
+function simPostMessage(channel, data) {
+    const frame = document.getElementById("simframe")
+    if (frame) {
+        const buf = stringToUint8Array(JSON.stringify(data))
+        const msg = {
+            type: "messagepacket",
+            channel,
+            data: buf,
+        }
+        frame.contentWindow.postMessage(msg, document.body.dataset.simUrl)
+    }
+}
+
+const reportBus = () => {
+    try {
+        const state = {
+            selfId: bus.selfDevice.deviceId,
+            devices: bus
+                .devices({ announced: true, ignoreInfrastructure: true })
+                .map(dev => ({
+                    name: dev.name,
+                    id: dev.deviceId,
+                    services: dev.services().map(srv => ({
+                        name: srv.name,
+                        serviceClass: srv.serviceClass,
+                    })),
+                })),
+        }
+        simPostMessage("jacdacState", state)
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 function showOutdatedFirmwareDialog() {
@@ -143,6 +178,7 @@ if (!inIFrame)
                     lastData
                 )
             })
+            bus.on(jacdac.SELF_ANNOUNCE, reportBus)
             // connect must be triggered by a user interaction
             connectEl.onclick = () =>
                 document.getElementById("connectDlg").showModal()
@@ -186,6 +222,10 @@ function uint8ArrayToString(input) {
     let res = ""
     for (let i = 0; i < len; ++i) res += String.fromCharCode(input[i])
     return res
+}
+function stringToUint8Array(str) {
+    const encoder = new TextEncoder()
+    return encoder.encode(str)
 }
 
 let liveRegion
