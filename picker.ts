@@ -228,7 +228,7 @@ namespace microcode {
             this.xfrm.localPos.x = -(this.panel.width >> 1)
             this.xfrm.localPos.y = -(this.panel.height >> 1)
 
-            const btn = this.navigator.initialCursor(0, 0)
+            const btn = this.navigator.initialCursor(this.deleteBtn ? 1 : 0, 0)
             this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
         }
     }

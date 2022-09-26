@@ -364,7 +364,7 @@ namespace microcode {
         }
 
         public initialCursor(row: number, col: number): Button {
-            this.curr = this.buttons[0]
+            this.curr = this.buttons[row]
             return this.curr
         }
     }
