@@ -40,6 +40,10 @@ Once your micro:bit V2 is paired, the web editor will be able to download Your
 MicroCode program to your microbit. This happens on every edit, so your program
 is always up-to-date (and running)!
 
+### Accessibility
+
+MicroCode can be program with keyboard, game controllers (such as XBox controllers), mouse or touch inputs. The editor was designed to integrate with screen readers.
+
 ## micro:bit V2 and Arcade Shield
 
 Click on the version number in the web app to download the MicroCode hex file to your micro:bit V2. When you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you removed the micro:bit from the shield, the program will persist and continue to run.
@@ -47,10 +51,6 @@ Click on the version number in the web app to download the MicroCode hex file to
 ### [micro:bit V2](https://microbit.org) + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
 
 ![Arcade Shield and micro:bit V2](./images/meow1.jpg)
-
-## Accessibility
-
-MicroCode can be program with keyboard, game controllers (such as XBox controllers), mouse or touch inputs. The editor was designed to integrate with screen readers.
 
 ## Sample programs
 
