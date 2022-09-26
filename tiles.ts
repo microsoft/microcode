@@ -142,6 +142,7 @@ namespace microcode {
         },
     }
 
+    /*
     const maxOneValueIn = {
         maxCount: {
             category: "value_in",
@@ -155,6 +156,7 @@ namespace microcode {
             count: 1,
         },
     }
+    */
 
     const always = new SensorDefn(TID_SENSOR_ALWAYS, "Always", Phase.Pre)
     always.hidden = true
@@ -220,7 +222,7 @@ namespace microcode {
         const tile = makeSensor(tid, name, "value_in", 120 + id * 5)
         tile.jdParam = id
         tile.serviceClassName = "pipe"
-        tile.constraints.handling = maxOneValueIn
+        // tile.constraints.handling = maxOneValueIn
     }
 
     makePipe(TID_SENSOR_OUT_PIPE_A, "out of pipe A", 0)
@@ -235,7 +237,7 @@ namespace microcode {
     )
     radio_recv.serviceClassName = "radio"
     radio_recv.eventCode = 0x91
-    radio_recv.constraints.handling = maxOneValueIn
+    // radio_recv.constraints.handling = maxOneValueIn
 
     const magnet = makeSensor(
         TID_SENSOR_MAGNET,
@@ -351,7 +353,7 @@ namespace microcode {
     radio_send.serviceCommand = 0x81
     radio_send.serviceArgFromModifier = (x: number) =>
         Buffer.pack("d", [x || 1])
-    radio_send.constraints.handling = maxOneValueOut
+    // radio_send.constraints.handling = maxOneValueOut
 
     const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "sound_emoji")
     emoji.serviceClassName = "soundPlayer"
