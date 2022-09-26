@@ -10,15 +10,22 @@ namespace microcode {
 
     export class RowNavigator implements INavigator {
         protected buttonGroups: Button[][]
+        protected buttons: Button[]
         protected row: number
         protected col: number
 
         constructor() {
             this.buttonGroups = []
+            this.buttons = []
         }
 
         public clear() {
             this.buttonGroups = []
+            this.buttons = []
+        }
+
+        public getRow() {
+            return this.row
         }
 
         public addButtons(btns: Button[]) {
@@ -26,30 +33,10 @@ namespace microcode {
         }
 
         public screenToButton(x: number, y: number): Button {
-            let tx = -80 + x
-            let ty = -60 + y
-            let hitBtn: Button = undefined
-            const p = new Vec2(tx, ty)
-            let row = 0
-            this.buttonGroups.forEach(g => {
-                let col = 0
-                g.forEach(btn => {
-                    if (
-                        !hitBtn &&
-                        Bounds.Translate(
-                            btn.bounds,
-                            btn.xfrm.worldPos
-                        ).contains(p)
-                    ) {
-                        hitBtn = btn
-                        this.row = row
-                        this.col = col
-                    }
-                    col++
-                })
-                row++
-            })
-            return hitBtn
+            const p = new Vec2(x, y)
+            return this.buttons.find(btn =>
+                Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
+            )
         }
 
         public move(dir: CursorDir) {
@@ -61,6 +48,7 @@ namespace microcode {
                     this.makeGood()
                     break
                 }
+
                 case CursorDir.Down: {
                     if (this.row == this.buttonGroups.length - 1)
                         return undefined
@@ -120,6 +108,7 @@ namespace microcode {
         }
     }
 
+    // this add accessibility for rule
     export class RuleRowNavigator extends RowNavigator {
         private rules: RuleDefn[]
 
@@ -132,10 +121,6 @@ namespace microcode {
         public clear() {
             super.clear()
             this.rules = []
-        }
-
-        public getRow() {
-            return this.row
         }
 
         public addRule(rule: RuleDefn) {
@@ -181,58 +166,10 @@ namespace microcode {
         }
     }
 
+    // accessibility for LEDs
     export class LEDNavigator extends RowNavigator {
-        private rememberCol: number
-
-        constructor() {
-            super()
-            this.rememberCol = 0
-        }
-
         private hasDelete() {
             return this.buttonGroups[0].length == 1
-        }
-
-        public move(dir: CursorDir) {
-            this.makeGood()
-
-            switch (dir) {
-                case CursorDir.Up: {
-                    if (this.row == 0) return undefined
-                    this.row--
-                    if (this.row == 0 && this.hasDelete()) {
-                        this.rememberCol = this.col
-                        this.col = 0
-                    }
-                    break
-                }
-                case CursorDir.Down: {
-                    if (this.row == this.buttonGroups.length - 1)
-                        return undefined
-                    this.row++
-                    if (this.row == 1 && this.hasDelete()) {
-                        this.col = this.rememberCol
-                    }
-                    break
-                }
-
-                case CursorDir.Left: {
-                    if (this.col == 0) return undefined
-                    this.col--
-                    break
-                }
-
-                case CursorDir.Right: {
-                    if (this.col == this.buttonGroups[this.row].length - 1)
-                        return undefined
-                    this.col++
-                    break
-                }
-            }
-
-            const btn = this.buttonGroups[this.row][this.col]
-            this.reportAria(btn)
-            return btn
         }
 
         public initialCursor(row: number = 0, col: number = 0) {

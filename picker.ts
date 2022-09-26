@@ -203,6 +203,9 @@ namespace microcode {
             if (this.deleteBtn || this.title) {
                 top += this.deleteBtn ? this.deleteBtn.height : HEADER
             }
+            if (this.deleteBtn) {
+                this.navigator.addButtons([this.deleteBtn])
+            }
             this.groups.forEach((group, idx) => {
                 group.layout()
                 if (idx === 0) {
@@ -221,7 +224,6 @@ namespace microcode {
                     this.panel.right - (this.deleteBtn.width >> 1) + 1
                 this.deleteBtn.xfrm.localPos.y =
                     this.panel.top + (this.deleteBtn.height >> 1)
-                this.navigator.addButtons([this.deleteBtn])
             }
 
             this.panel.grow(2)
