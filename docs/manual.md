@@ -8,6 +8,8 @@ Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 -   Runs on the micro:bit V2, no computer or internet needed
 -   Keyboard, screen reader accessible
 
+<video src="./videos/microcode.mp4" controls playsinline></video>
+
 ## Try it out!
 
 There are two ways to run MicroCode:
@@ -47,6 +49,10 @@ Click on the version number in the web app to download the MicroCode hex file to
 ### [micro:bit V2](https://microbit.org) + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
 
 ![Arcade Shield and micro:bit V2](./images/meow1.jpg)
+
+## Accessibility
+
+MicroCode can be program with keyboard, game controllers (such as XBox controllers), mouse or touch inputs. The editor was designed to integrate with screen readers.
 
 ## Sample programs
 

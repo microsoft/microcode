@@ -8,6 +8,10 @@ p img {
     image-rendering: pixelated;
 }
 
+video {
+    width: 100%;
+}
+
 iframe.editor {
     border: none;
     width: 100%;
