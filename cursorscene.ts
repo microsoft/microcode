@@ -86,7 +86,7 @@ namespace microcode {
             const target = this.navigator.screenToButton(x - 80, y - 60)
             if (target) {
                 this.moveTo(target)
-                this.cursor.click()
+                target.click()
             }
         }
 
