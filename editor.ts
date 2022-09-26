@@ -282,6 +282,7 @@ namespace microcode {
                 onClick: () => this.saveAndCompileProgram(),
             })
             this.progdef = this.app.load(SAVESLOT_AUTO)
+            if (!this.progdef) this.progdef = new ProgramDefn()
         }
 
         protected handleClick(x: number, y: number) {
