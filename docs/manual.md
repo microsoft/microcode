@@ -20,6 +20,7 @@ or the
 
 * [icon-based language](./language.md)
 * [samples](./samples.md)
+* [FAQ](./faq.md)
 
 ## Web editor
 
@@ -28,7 +29,7 @@ The easiest way to get started with MicroCode is through the web editor ([https:
 -   Arrow keys for D-pad
 -   Space bar for A button
 -   Backscape for B button
-
+-   Copy the URL to share your program.
 
 <iframe class="editor" src="https://microsoft.github.io/microcode?nofooter=1&embed=1" />
 
