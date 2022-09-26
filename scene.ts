@@ -44,7 +44,7 @@ namespace microcode {
         protected handleClick(x: number, y: number) {
             console.log(`click ${this.name} ${x}, ${y}`)
         }
-        
+
         __init() {
             control.eventContext().registerFrameHandler(INPUT_PRIORITY, () => {
                 const dtms = (control.eventContext().deltaTime * 1000) | 0

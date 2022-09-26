@@ -278,9 +278,10 @@ namespace microcode {
         }
 
         protected handleClick(x: number, y: number) {
-            const target = this.cursor.navigator.screenToButton(x, y)
+            const target = this.cursor.navigator.screenToButton(x - 80, y - 60)
             if (target) {
                 this.scrollAndMoveButton(target)
+                // TODO: we don't always want to click (LED screen on move, for example)
                 this.cursor.click()
             } else if (this.picker.visible) {
                 this.picker.hide()
