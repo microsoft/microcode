@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.0.61","target":"arcade","targetVersion":"1.10.25"}
-// total=1997756 new=94.13% cached=0.00% other=5.87%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.0.62","target":"arcade","targetVersion":"1.10.25"}
+// total=1997757 new=94.13% cached=0.00% other=5.87%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -2017,7 +2017,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "rotaryEncoder", 284830153);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "led", 369743088);
     globals.serviceClasses___3876 = (s.tmp_0);
-    globals.VERSION___3885 = ("v1.0.61");
+    globals.VERSION___3885 = ("v1.0.62");
     globals.microcode_Options_toolTips___3940 = (true);
     globals.microcode_Options_repeatKey___3941 = (false);
     r0 = pxsim_Array__mk();
@@ -27164,7 +27164,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetGeneric(globals.microcode_icons_reg___3036, "heads_tails", globals.sampleHeadsOrTails___3154);
     r0 = pxsim_pxtrt.mapSetGeneric(globals.microcode_icons_reg___3036, "reaction_time", globals.sampleReactionTime___3155);
     r0 = pxsim_pxtrt.mapSetGeneric(globals.microcode_icons_reg___3036, "hot_potato", globals.sampleHotPotato___3156);
-    r0 = pxsim_pxtrt.mapSetGeneric(globals.microcode_icons_reg___3036, "clap_lights", globals.sampleHotPotato___3156);
+    r0 = pxsim_pxtrt.mapSetGeneric(globals.microcode_icons_reg___3036, "clap_lights", globals.sampleClapLights___3150);
     r0 = pxsim_pxtrt.mapSetGeneric(globals.microcode_icons_reg___3036, "solid_red", globals.solid_red___3050);
     r0 = pxsim_pxtrt.mapSetGeneric(globals.microcode_icons_reg___3036, "solid_black", globals.solid_black___3051);
     r0 = pxsim_pxtrt.mapSetGeneric(globals.microcode_icons_reg___3036, globals.TID_SENSOR_TIMER___3270, globals.tile_timer___3091);
@@ -27245,7 +27245,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_icons_init__P3039.info = {"start":458,"length":7438,"line":17,"column":8,"endLine":151,"endColumn":9,"fileName":"assets.ts","functionName":"init","argumentNames":[]}
+microcode_icons_init__P3039.info = {"start":458,"length":7439,"line":17,"column":8,"endLine":151,"endColumn":9,"fileName":"assets.ts","functionName":"init","argumentNames":[]}
 
 function microcode_icons_init__P3039_mk(s) {
     checkStack(s.depth);
@@ -39367,7 +39367,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-scaleUp__P3043.info = {"start":14489,"length":529,"line":216,"column":0,"endLine":231,"endColumn":1,"fileName":"assets.ts","functionName":"scaleUp","argumentNames":["led55"]}
+scaleUp__P3043.info = {"start":14490,"length":529,"line":216,"column":0,"endLine":231,"endColumn":1,"fileName":"assets.ts","functionName":"scaleUp","argumentNames":["led55"]}
 
 function scaleUp__P3043_mk(s) {
     checkStack(s.depth);
@@ -47231,7 +47231,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_draw__P3390.info = {"start":11565,"length":356,"line":351,"column":23,"endLine":362,"endColumn":9,"fileName":"editor.ts","functionName":"draw","argumentNames":["this"]}
+microcode_Editor_draw__P3390.info = {"start":11476,"length":356,"line":350,"column":23,"endLine":361,"endColumn":9,"fileName":"editor.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_Editor_draw__P3390_mk(s) {
     checkStack(s.depth);
@@ -47274,7 +47274,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_draw__P6853.info = {"start":16161,"length":70,"line":497,"column":23,"endLine":499,"endColumn":9,"fileName":"editor.ts","functionName":"draw","argumentNames":["this"]}
+microcode_PageEditor_draw__P6853.info = {"start":16072,"length":70,"line":496,"column":23,"endLine":498,"endColumn":9,"fileName":"editor.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_PageEditor_draw__P6853_mk(s) {
     checkStack(s.depth);
@@ -47314,7 +47314,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_draw_inline__P18778.info = {"start":16201,"length":19,"line":498,"column":31,"endLine":498,"endColumn":50,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_draw_inline__P18778.info = {"start":16112,"length":19,"line":497,"column":31,"endLine":497,"endColumn":50,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
 function microcode_PageEditor_draw_inline__P18778_mk(s) {
     checkStack(s.depth);
@@ -47482,7 +47482,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_draw__P6877.info = {"start":30046,"length":825,"line":907,"column":23,"endLine":927,"endColumn":9,"fileName":"editor.ts","functionName":"draw","argumentNames":["this"]}
+microcode_RuleEditor_draw__P6877.info = {"start":29957,"length":825,"line":906,"column":23,"endLine":926,"endColumn":9,"fileName":"editor.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_RuleEditor_draw__P6877_mk(s) {
     checkStack(s.depth);
@@ -47542,7 +47542,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_draw_inline__P18839.info = {"start":30738,"length":122,"line":923,"column":29,"endLine":926,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
+microcode_RuleEditor_draw_inline__P18839.info = {"start":30649,"length":122,"line":922,"column":29,"endLine":925,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
 
 function microcode_RuleEditor_draw_inline__P18839_mk(s) {
     checkStack(s.depth);
@@ -47583,7 +47583,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_draw_inline__P18849.info = {"start":30828,"length":17,"line":925,"column":32,"endLine":925,"endColumn":49,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
+microcode_RuleEditor_draw_inline__P18849.info = {"start":30739,"length":17,"line":924,"column":32,"endLine":924,"endColumn":49,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
 
 function microcode_RuleEditor_draw_inline__P18849_mk(s) {
     checkStack(s.depth);
@@ -47618,7 +47618,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_xfrm__P6858.info = {"start":16740,"length":59,"line":518,"column":8,"endLine":520,"endColumn":9,"fileName":"editor.ts","functionName":"xfrm","argumentNames":["this"]}
+microcode_RuleEditor_xfrm__P6858.info = {"start":16651,"length":59,"line":517,"column":8,"endLine":519,"endColumn":9,"fileName":"editor.ts","functionName":"xfrm","argumentNames":["this"]}
 microcode_RuleEditor_xfrm__P6858.isGetter = true;
 
 function microcode_RuleEditor_xfrm__P6858_mk(s) {
@@ -47741,7 +47741,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_update__P3389.info = {"start":10725,"length":815,"line":322,"column":23,"endLine":349,"endColumn":9,"fileName":"editor.ts","functionName":"update","argumentNames":["this"]}
+microcode_Editor_update__P3389.info = {"start":10636,"length":815,"line":321,"column":23,"endLine":348,"endColumn":9,"fileName":"editor.ts","functionName":"update","argumentNames":["this"]}
 
 function microcode_Editor_update__P3389_mk(s) {
     checkStack(s.depth);
@@ -47879,7 +47879,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_rebuildNavigator__P6840.info = {"start":10317,"length":383,"line":308,"column":8,"endLine":320,"endColumn":9,"fileName":"editor.ts","functionName":"rebuildNavigator","argumentNames":["this"]}
+microcode_Editor_rebuildNavigator__P6840.info = {"start":10228,"length":383,"line":307,"column":8,"endLine":319,"endColumn":9,"fileName":"editor.ts","functionName":"rebuildNavigator","argumentNames":["this"]}
 
 function microcode_Editor_rebuildNavigator__P6840_mk(s) {
     checkStack(s.depth);
@@ -47927,7 +47927,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_addToNavigator__P6848.info = {"start":14733,"length":189,"line":454,"column":8,"endLine":459,"endColumn":9,"fileName":"editor.ts","functionName":"addToNavigator","argumentNames":["this"]}
+microcode_PageEditor_addToNavigator__P6848.info = {"start":14644,"length":189,"line":453,"column":8,"endLine":458,"endColumn":9,"fileName":"editor.ts","functionName":"addToNavigator","argumentNames":["this"]}
 
 function microcode_PageEditor_addToNavigator__P6848_mk(s) {
     checkStack(s.depth);
@@ -47975,7 +47975,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_addToNavigator_inline__P18944.info = {"start":14790,"length":121,"line":455,"column":31,"endLine":458,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_addToNavigator_inline__P18944.info = {"start":14701,"length":121,"line":454,"column":31,"endLine":457,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
 function microcode_PageEditor_addToNavigator_inline__P18944_mk(s) {
     checkStack(s.depth);
@@ -48129,7 +48129,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator__P6873.info = {"start":26387,"length":516,"line":793,"column":8,"endLine":807,"endColumn":9,"fileName":"editor.ts","functionName":"addToNavigator","argumentNames":["this"]}
+microcode_RuleEditor_addToNavigator__P6873.info = {"start":26298,"length":516,"line":792,"column":8,"endLine":806,"endColumn":9,"fileName":"editor.ts","functionName":"addToNavigator","argumentNames":["this"]}
 
 function microcode_RuleEditor_addToNavigator__P6873_mk(s) {
     checkStack(s.depth);
@@ -48166,7 +48166,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator_inline__P18969.info = {"start":26527,"length":17,"line":796,"column":38,"endLine":796,"endColumn":55,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
+microcode_RuleEditor_addToNavigator_inline__P18969.info = {"start":26438,"length":17,"line":795,"column":38,"endLine":795,"endColumn":55,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
 
 function microcode_RuleEditor_addToNavigator_inline__P18969_mk(s) {
     checkStack(s.depth);
@@ -48199,7 +48199,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator_inline__P18980.info = {"start":26584,"length":17,"line":797,"column":38,"endLine":797,"endColumn":55,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
+microcode_RuleEditor_addToNavigator_inline__P18980.info = {"start":26495,"length":17,"line":796,"column":38,"endLine":796,"endColumn":55,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
 
 function microcode_RuleEditor_addToNavigator_inline__P18980_mk(s) {
     checkStack(s.depth);
@@ -48232,7 +48232,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator_inline__P18998.info = {"start":26711,"length":17,"line":801,"column":40,"endLine":801,"endColumn":57,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
+microcode_RuleEditor_addToNavigator_inline__P18998.info = {"start":26622,"length":17,"line":800,"column":40,"endLine":800,"endColumn":57,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
 
 function microcode_RuleEditor_addToNavigator_inline__P18998_mk(s) {
     checkStack(s.depth);
@@ -48265,7 +48265,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator_inline__P19009.info = {"start":26770,"length":17,"line":802,"column":40,"endLine":802,"endColumn":57,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
+microcode_RuleEditor_addToNavigator_inline__P19009.info = {"start":26681,"length":17,"line":801,"column":40,"endLine":801,"endColumn":57,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
 
 function microcode_RuleEditor_addToNavigator_inline__P19009_mk(s) {
     checkStack(s.depth);
@@ -48436,7 +48436,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_update__P6852.info = {"start":16062,"length":74,"line":493,"column":23,"endLine":495,"endColumn":9,"fileName":"editor.ts","functionName":"update","argumentNames":["this"]}
+microcode_PageEditor_update__P6852.info = {"start":15973,"length":74,"line":492,"column":23,"endLine":494,"endColumn":9,"fileName":"editor.ts","functionName":"update","argumentNames":["this"]}
 
 function microcode_PageEditor_update__P6852_mk(s) {
     checkStack(s.depth);
@@ -48476,7 +48476,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_update_inline__P19049.info = {"start":16104,"length":21,"line":494,"column":31,"endLine":494,"endColumn":52,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_update_inline__P19049.info = {"start":16015,"length":21,"line":493,"column":31,"endLine":493,"endColumn":52,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
 function microcode_PageEditor_update_inline__P19049_mk(s) {
     checkStack(s.depth);
@@ -48529,7 +48529,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_update__P6875.info = {"start":26993,"length":387,"line":813,"column":8,"endLine":823,"endColumn":9,"fileName":"editor.ts","functionName":"update","argumentNames":["this"]}
+microcode_RuleEditor_update__P6875.info = {"start":26904,"length":387,"line":812,"column":8,"endLine":822,"endColumn":9,"fileName":"editor.ts","functionName":"update","argumentNames":["this"]}
 
 function microcode_RuleEditor_update__P6875_mk(s) {
     checkStack(s.depth);
@@ -48576,7 +48576,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_addButtons__P3388.info = {"start":10218,"length":89,"line":304,"column":8,"endLine":306,"endColumn":9,"fileName":"editor.ts","functionName":"addButtons","argumentNames":["this","btns"]}
+microcode_Editor_addButtons__P3388.info = {"start":10129,"length":89,"line":303,"column":8,"endLine":305,"endColumn":9,"fileName":"editor.ts","functionName":"addButtons","argumentNames":["this","btns"]}
 
 function microcode_Editor_addButtons__P3388_mk(s) {
     checkStack(s.depth);
@@ -48649,7 +48649,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_activate__P3387.info = {"start":9959,"length":249,"line":295,"column":23,"endLine":302,"endColumn":9,"fileName":"editor.ts","functionName":"activate","argumentNames":["this"]}
+microcode_Editor_activate__P3387.info = {"start":9870,"length":249,"line":294,"column":23,"endLine":301,"endColumn":9,"fileName":"editor.ts","functionName":"activate","argumentNames":["this"]}
 
 function microcode_Editor_activate__P3387_mk(s) {
     checkStack(s.depth);
@@ -49085,7 +49085,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_constructor__P6854.info = {"start":12181,"length":460,"line":374,"column":8,"endLine":387,"endColumn":9,"fileName":"editor.ts","functionName":"inline","argumentNames":["this","editor","parent","pagedef"]}
+microcode_PageEditor_constructor__P6854.info = {"start":12092,"length":460,"line":373,"column":8,"endLine":386,"endColumn":9,"fileName":"editor.ts","functionName":"inline","argumentNames":["this","editor","parent","pagedef"]}
 
 function microcode_PageEditor_constructor__P6854_mk(s) {
     checkStack(s.depth);
@@ -49136,7 +49136,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_inline__P19203.info = {"start":12487,"length":64,"line":383,"column":16,"endLine":383,"endColumn":80,"fileName":"editor.ts","functionName":"inline","argumentNames":["ruledef","index"]}
+microcode_PageEditor_inline__P19203.info = {"start":12398,"length":64,"line":382,"column":16,"endLine":382,"endColumn":80,"fileName":"editor.ts","functionName":"inline","argumentNames":["ruledef","index"]}
 
 function microcode_PageEditor_inline__P19203_mk(s) {
     checkStack(s.depth);
@@ -49228,7 +49228,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_layout__P6847.info = {"start":13767,"length":956,"line":427,"column":8,"endLine":452,"endColumn":9,"fileName":"editor.ts","functionName":"layout","argumentNames":["this"]}
+microcode_PageEditor_layout__P6847.info = {"start":13678,"length":956,"line":426,"column":8,"endLine":451,"endColumn":9,"fileName":"editor.ts","functionName":"layout","argumentNames":["this"]}
 
 function microcode_PageEditor_layout__P6847_mk(s) {
     checkStack(s.depth);
@@ -49270,7 +49270,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_layout_inline__P19219.info = {"start":13851,"length":61,"line":429,"column":35,"endLine":431,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_layout_inline__P19219.info = {"start":13762,"length":61,"line":428,"column":35,"endLine":430,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
 function microcode_PageEditor_layout_inline__P19219_mk(s) {
     checkStack(s.depth);
@@ -49360,7 +49360,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_layout_inline__P19228.info = {"start":14008,"length":346,"line":434,"column":35,"endLine":442,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
+microcode_PageEditor_layout_inline__P19228.info = {"start":13919,"length":346,"line":433,"column":35,"endLine":441,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
 
 function microcode_PageEditor_layout_inline__P19228_mk(s) {
     checkStack(s.depth);
@@ -49412,7 +49412,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_layout_inline__P19268.info = {"start":14477,"length":104,"line":445,"column":35,"endLine":447,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_layout_inline__P19268.info = {"start":14388,"length":104,"line":444,"column":35,"endLine":446,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
 function microcode_PageEditor_layout_inline__P19268_mk(s) {
     checkStack(s.depth);
@@ -49452,7 +49452,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_layout_inline__P19279.info = {"start":14618,"length":80,"line":448,"column":35,"endLine":450,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_layout_inline__P19279.info = {"start":14529,"length":80,"line":447,"column":35,"endLine":449,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
 function microcode_PageEditor_layout_inline__P19279_mk(s) {
     checkStack(s.depth);
@@ -49867,7 +49867,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_layout__P6876.info = {"start":27390,"length":2631,"line":825,"column":8,"endLine":905,"endColumn":9,"fileName":"editor.ts","functionName":"layout","argumentNames":["this"]}
+microcode_RuleEditor_layout__P6876.info = {"start":27301,"length":2631,"line":824,"column":8,"endLine":904,"endColumn":9,"fileName":"editor.ts","functionName":"layout","argumentNames":["this"]}
 
 function microcode_RuleEditor_layout__P6876_mk(s) {
     checkStack(s.depth);
@@ -49923,7 +49923,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-layoutButtons_inline__P19368.info = {"start":28140,"length":335,"line":845,"column":34,"endLine":854,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["btns"]}
+layoutButtons_inline__P19368.info = {"start":28051,"length":335,"line":844,"column":34,"endLine":853,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["btns"]}
 
 function layoutButtons_inline__P19368_mk(s) {
     checkStack(s.depth);
@@ -50019,7 +50019,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-layoutButtons_inline__P19372.info = {"start":28191,"length":269,"line":846,"column":29,"endLine":853,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn","index"]}
+layoutButtons_inline__P19372.info = {"start":28102,"length":269,"line":845,"column":29,"endLine":852,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn","index"]}
 
 function layoutButtons_inline__P19372_mk(s) {
     checkStack(s.depth);
@@ -50069,7 +50069,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-updateSizeFromButtons_inline__P19463.info = {"start":29003,"length":470,"line":876,"column":42,"endLine":888,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["btns"]}
+updateSizeFromButtons_inline__P19463.info = {"start":28914,"length":470,"line":875,"column":42,"endLine":887,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["btns"]}
 
 function updateSizeFromButtons_inline__P19463_mk(s) {
     checkStack(s.depth);
@@ -50149,7 +50149,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-updateSizeFromButtons_inline__P19467.info = {"start":29054,"length":404,"line":877,"column":29,"endLine":887,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
+updateSizeFromButtons_inline__P19467.info = {"start":28965,"length":404,"line":876,"column":29,"endLine":886,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
 
 function updateSizeFromButtons_inline__P19467_mk(s) {
     checkStack(s.depth);
@@ -50233,7 +50233,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_ensureFinalEmptyRule__P6845.info = {"start":12815,"length":469,"line":395,"column":8,"endLine":409,"endColumn":9,"fileName":"editor.ts","functionName":"ensureFinalEmptyRule","argumentNames":["this"]}
+microcode_PageEditor_ensureFinalEmptyRule__P6845.info = {"start":12726,"length":469,"line":394,"column":8,"endLine":408,"endColumn":9,"fileName":"editor.ts","functionName":"ensureFinalEmptyRule","argumentNames":["this"]}
 
 function microcode_PageEditor_ensureFinalEmptyRule__P6845_mk(s) {
     checkStack(s.depth);
@@ -50345,7 +50345,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_trimRules__P6846.info = {"start":13294,"length":463,"line":411,"column":8,"endLine":425,"endColumn":9,"fileName":"editor.ts","functionName":"trimRules","argumentNames":["this"]}
+microcode_PageEditor_trimRules__P6846.info = {"start":13205,"length":463,"line":410,"column":8,"endLine":424,"endColumn":9,"fileName":"editor.ts","functionName":"trimRules","argumentNames":["this"]}
 
 function microcode_PageEditor_trimRules__P6846_mk(s) {
     checkStack(s.depth);
@@ -50419,7 +50419,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_destroy__P6863.info = {"start":19413,"length":332,"line":602,"column":8,"endLine":611,"endColumn":9,"fileName":"editor.ts","functionName":"destroy","argumentNames":["this"]}
+microcode_RuleEditor_destroy__P6863.info = {"start":19324,"length":332,"line":601,"column":8,"endLine":610,"endColumn":9,"fileName":"editor.ts","functionName":"destroy","argumentNames":["this"]}
 
 function microcode_RuleEditor_destroy__P6863_mk(s) {
     checkStack(s.depth);
@@ -50469,7 +50469,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_destroyDoInsertButton__P6861.info = {"start":18571,"length":145,"line":577,"column":8,"endLine":580,"endColumn":9,"fileName":"editor.ts","functionName":"destroyDoInsertButton","argumentNames":["this"]}
+microcode_RuleEditor_destroyDoInsertButton__P6861.info = {"start":18482,"length":145,"line":576,"column":8,"endLine":579,"endColumn":9,"fileName":"editor.ts","functionName":"destroyDoInsertButton","argumentNames":["this"]}
 
 function microcode_RuleEditor_destroyDoInsertButton__P6861_mk(s) {
     checkStack(s.depth);
@@ -50520,7 +50520,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_destroyWhenInsertButton__P6859.info = {"start":17715,"length":153,"line":552,"column":8,"endLine":555,"endColumn":9,"fileName":"editor.ts","functionName":"destroyWhenInsertButton","argumentNames":["this"]}
+microcode_RuleEditor_destroyWhenInsertButton__P6859.info = {"start":17626,"length":153,"line":551,"column":8,"endLine":554,"endColumn":9,"fileName":"editor.ts","functionName":"destroyWhenInsertButton","argumentNames":["this"]}
 
 function microcode_RuleEditor_destroyWhenInsertButton__P6859_mk(s) {
     checkStack(s.depth);
@@ -50582,7 +50582,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_destroyProgramTiles__P6864.info = {"start":19755,"length":380,"line":613,"column":8,"endLine":623,"endColumn":9,"fileName":"editor.ts","functionName":"destroyProgramTiles","argumentNames":["this"]}
+microcode_RuleEditor_destroyProgramTiles__P6864.info = {"start":19666,"length":380,"line":612,"column":8,"endLine":622,"endColumn":9,"fileName":"editor.ts","functionName":"destroyProgramTiles","argumentNames":["this"]}
 
 function microcode_RuleEditor_destroyProgramTiles__P6864_mk(s) {
     checkStack(s.depth);
@@ -50643,7 +50643,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_destroyProgramTiles_inline__P19631.info = {"start":19848,"length":229,"line":615,"column":29,"endLine":621,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
+microcode_RuleEditor_destroyProgramTiles_inline__P19631.info = {"start":19759,"length":229,"line":614,"column":29,"endLine":620,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
 
 function microcode_RuleEditor_destroyProgramTiles_inline__P19631_mk(s) {
     checkStack(s.depth);
@@ -50687,7 +50687,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_destroyProgramTiles_inline__P19641.info = {"start":19948,"length":20,"line":617,"column":44,"endLine":617,"endColumn":64,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
+microcode_RuleEditor_destroyProgramTiles_inline__P19641.info = {"start":19859,"length":20,"line":616,"column":44,"endLine":616,"endColumn":64,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
 
 function microcode_RuleEditor_destroyProgramTiles_inline__P19641_mk(s) {
     checkStack(s.depth);
@@ -50762,7 +50762,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_isEmpty__P6874.info = {"start":26913,"length":70,"line":809,"column":8,"endLine":811,"endColumn":9,"fileName":"editor.ts","functionName":"isEmpty","argumentNames":["this"]}
+microcode_RuleEditor_isEmpty__P6874.info = {"start":26824,"length":70,"line":808,"column":8,"endLine":810,"endColumn":9,"fileName":"editor.ts","functionName":"isEmpty","argumentNames":["this"]}
 
 function microcode_RuleEditor_isEmpty__P6874_mk(s) {
     checkStack(s.depth);
@@ -50948,7 +50948,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_constructor__P6878.info = {"start":16809,"length":896,"line":522,"column":8,"endLine":550,"endColumn":9,"fileName":"editor.ts","functionName":"inline","argumentNames":["this","editor","page","ruledef","index"]}
+microcode_RuleEditor_constructor__P6878.info = {"start":16720,"length":896,"line":521,"column":8,"endLine":549,"endColumn":9,"fileName":"editor.ts","functionName":"inline","argumentNames":["this","editor","page","ruledef","index"]}
 
 function microcode_RuleEditor_constructor__P6878_mk(s) {
     checkStack(s.depth);
@@ -50990,7 +50990,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P19690.info = {"start":17316,"length":31,"line":537,"column":25,"endLine":537,"endColumn":56,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P19690.info = {"start":17227,"length":31,"line":536,"column":25,"endLine":536,"endColumn":56,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P19690_mk(s) {
     checkStack(s.depth);
@@ -51074,7 +51074,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_instantiateProgramTiles__P6865.info = {"start":20145,"length":921,"line":625,"column":8,"endLine":648,"endColumn":9,"fileName":"editor.ts","functionName":"instantiateProgramTiles","argumentNames":["this"]}
+microcode_RuleEditor_instantiateProgramTiles__P6865.info = {"start":20056,"length":921,"line":624,"column":8,"endLine":647,"endColumn":9,"fileName":"editor.ts","functionName":"instantiateProgramTiles","argumentNames":["this"]}
 
 function microcode_RuleEditor_instantiateProgramTiles__P6865_mk(s) {
     checkStack(s.depth);
@@ -51124,7 +51124,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_instantiateProgramTiles_inline__P19714.info = {"start":20332,"length":610,"line":629,"column":29,"endLine":644,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
+microcode_RuleEditor_instantiateProgramTiles_inline__P19714.info = {"start":20243,"length":610,"line":628,"column":29,"endLine":643,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
 
 function microcode_RuleEditor_instantiateProgramTiles_inline__P19714_mk(s) {
     checkStack(s.depth);
@@ -51208,7 +51208,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_instantiateProgramTiles_inline__P19722.info = {"start":20413,"length":514,"line":631,"column":30,"endLine":643,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["tile","index"]}
+microcode_RuleEditor_instantiateProgramTiles_inline__P19722.info = {"start":20324,"length":514,"line":630,"column":30,"endLine":642,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["tile","index"]}
 
 function microcode_RuleEditor_instantiateProgramTiles_inline__P19722_mk(s) {
     checkStack(s.depth);
@@ -51254,7 +51254,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P19736.info = {"start":20769,"length":32,"line":639,"column":33,"endLine":639,"endColumn":65,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P19736.info = {"start":20680,"length":32,"line":638,"column":33,"endLine":638,"endColumn":65,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P19736_mk(s) {
     checkStack(s.depth);
@@ -51304,7 +51304,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_changed__P6849.info = {"start":14932,"length":128,"line":461,"column":8,"endLine":465,"endColumn":9,"fileName":"editor.ts","functionName":"changed","argumentNames":["this"]}
+microcode_PageEditor_changed__P6849.info = {"start":14843,"length":128,"line":460,"column":8,"endLine":464,"endColumn":9,"fileName":"editor.ts","functionName":"changed","argumentNames":["this"]}
 
 function microcode_PageEditor_changed__P6849_mk(s) {
     checkStack(s.depth);
@@ -51402,7 +51402,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_needsDoInsert__P6862.info = {"start":18726,"length":677,"line":582,"column":8,"endLine":600,"endColumn":9,"fileName":"editor.ts","functionName":"needsDoInsert","argumentNames":["this"]}
+microcode_RuleEditor_needsDoInsert__P6862.info = {"start":18637,"length":677,"line":581,"column":8,"endLine":599,"endColumn":9,"fileName":"editor.ts","functionName":"needsDoInsert","argumentNames":["this"]}
 
 function microcode_RuleEditor_needsDoInsert__P6862_mk(s) {
     checkStack(s.depth);
@@ -51448,7 +51448,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P19777.info = {"start":19264,"length":29,"line":595,"column":29,"endLine":595,"endColumn":58,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P19777.info = {"start":19175,"length":29,"line":594,"column":29,"endLine":594,"endColumn":58,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P19777_mk(s) {
     checkStack(s.depth);
@@ -51510,7 +51510,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_showDoInsertMenu__P6871.info = {"start":25988,"length":242,"line":781,"column":8,"endLine":787,"endColumn":9,"fileName":"editor.ts","functionName":"showDoInsertMenu","argumentNames":["this"]}
+microcode_RuleEditor_showDoInsertMenu__P6871.info = {"start":25899,"length":242,"line":780,"column":8,"endLine":786,"endColumn":9,"fileName":"editor.ts","functionName":"showDoInsertMenu","argumentNames":["this"]}
 
 function microcode_RuleEditor_showDoInsertMenu__P6871_mk(s) {
     checkStack(s.depth);
@@ -51557,7 +51557,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_getSuggestions__P6872.info = {"start":26240,"length":137,"line":789,"column":8,"endLine":791,"endColumn":9,"fileName":"editor.ts","functionName":"getSuggestions","argumentNames":["this","name","index"]}
+microcode_RuleEditor_getSuggestions__P6872.info = {"start":26151,"length":137,"line":788,"column":8,"endLine":790,"endColumn":9,"fileName":"editor.ts","functionName":"getSuggestions","argumentNames":["this","name","index"]}
 
 function microcode_RuleEditor_getSuggestions__P6872_mk(s) {
     checkStack(s.depth);
@@ -53904,7 +53904,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_needsWhenInsert__P6860.info = {"start":17878,"length":683,"line":557,"column":8,"endLine":575,"endColumn":9,"fileName":"editor.ts","functionName":"needsWhenInsert","argumentNames":["this"]}
+microcode_RuleEditor_needsWhenInsert__P6860.info = {"start":17789,"length":683,"line":556,"column":8,"endLine":574,"endColumn":9,"fileName":"editor.ts","functionName":"needsWhenInsert","argumentNames":["this"]}
 
 function microcode_RuleEditor_needsWhenInsert__P6860_mk(s) {
     checkStack(s.depth);
@@ -53950,7 +53950,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P20259.info = {"start":18418,"length":31,"line":570,"column":29,"endLine":570,"endColumn":60,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P20259.info = {"start":18329,"length":31,"line":569,"column":29,"endLine":569,"endColumn":60,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P20259_mk(s) {
     checkStack(s.depth);
@@ -54012,7 +54012,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_showWhenInsertMenu__P6870.info = {"start":25742,"length":236,"line":773,"column":8,"endLine":779,"endColumn":9,"fileName":"editor.ts","functionName":"showWhenInsertMenu","argumentNames":["this"]}
+microcode_RuleEditor_showWhenInsertMenu__P6870.info = {"start":25653,"length":236,"line":772,"column":8,"endLine":778,"endColumn":9,"fileName":"editor.ts","functionName":"showWhenInsertMenu","argumentNames":["this"]}
 
 function microcode_RuleEditor_showWhenInsertMenu__P6870_mk(s) {
     checkStack(s.depth);
@@ -54256,7 +54256,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_editTile__P6868.info = {"start":22284,"length":3174,"line":684,"column":8,"endLine":763,"endColumn":9,"fileName":"editor.ts","functionName":"editTile","argumentNames":["this","name","index"]}
+microcode_RuleEditor_editTile__P6868.info = {"start":22195,"length":3174,"line":683,"column":8,"endLine":762,"endColumn":9,"fileName":"editor.ts","functionName":"editTile","argumentNames":["this","name","index"]}
 
 function microcode_RuleEditor_editTile__P6868_mk(s) {
     checkStack(s.depth);
@@ -54348,7 +54348,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-tileUpdated_inline__P20284.info = {"start":22426,"length":427,"line":686,"column":32,"endLine":695,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["editedAdded"]}
+tileUpdated_inline__P20284.info = {"start":22337,"length":427,"line":685,"column":32,"endLine":694,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["editedAdded"]}
 
 function tileUpdated_inline__P20284_mk(s) {
     checkStack(s.depth);
@@ -54393,7 +54393,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_editTile_inline__P20324.info = {"start":23224,"length":135,"line":704,"column":24,"endLine":707,"endColumn":25,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_RuleEditor_editTile_inline__P20324.info = {"start":23135,"length":135,"line":703,"column":24,"endLine":706,"endColumn":25,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_RuleEditor_editTile_inline__P20324_mk(s) {
     checkStack(s.depth);
@@ -54436,7 +54436,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-btns_inline__P20336.info = {"start":23566,"length":116,"line":713,"column":60,"endLine":717,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["elem"]}
+btns_inline__P20336.info = {"start":23477,"length":116,"line":712,"column":60,"endLine":716,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["elem"]}
 
 function btns_inline__P20336_mk(s) {
     checkStack(s.depth);
@@ -54496,7 +54496,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_editTile_inline__P20363.info = {"start":24031,"length":351,"line":725,"column":20,"endLine":733,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_RuleEditor_editTile_inline__P20363.info = {"start":23942,"length":351,"line":724,"column":20,"endLine":732,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_RuleEditor_editTile_inline__P20363_mk(s) {
     checkStack(s.depth);
@@ -54541,7 +54541,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_editTile_inline__P20389.info = {"start":24546,"length":111,"line":739,"column":27,"endLine":742,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_RuleEditor_editTile_inline__P20389.info = {"start":24457,"length":111,"line":738,"column":27,"endLine":741,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function microcode_RuleEditor_editTile_inline__P20389_mk(s) {
     checkStack(s.depth);
@@ -54576,7 +54576,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-navigator_inline__P20407.info = {"start":24892,"length":31,"line":748,"column":31,"endLine":748,"endColumn":62,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+navigator_inline__P20407.info = {"start":24803,"length":31,"line":747,"column":31,"endLine":747,"endColumn":62,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
 function navigator_inline__P20407_mk(s) {
     checkStack(s.depth);
@@ -54641,7 +54641,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P20410.info = {"start":24954,"length":411,"line":749,"column":29,"endLine":758,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":["id"]}
+onClick_inline__P20410.info = {"start":24865,"length":411,"line":748,"column":29,"endLine":757,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":["id"]}
 
 function onClick_inline__P20410_mk(s) {
     checkStack(s.depth);
@@ -54870,7 +54870,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_nextEmpty__P6867.info = {"start":21552,"length":722,"line":666,"column":8,"endLine":682,"endColumn":9,"fileName":"editor.ts","functionName":"nextEmpty","argumentNames":["this","name","index"]}
+microcode_RuleEditor_nextEmpty__P6867.info = {"start":21463,"length":722,"line":665,"column":8,"endLine":681,"endColumn":9,"fileName":"editor.ts","functionName":"nextEmpty","argumentNames":["this","name","index"]}
 
 function microcode_RuleEditor_nextEmpty__P6867_mk(s) {
     checkStack(s.depth);
@@ -55194,7 +55194,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_showRuleHandleMenu__P6866.info = {"start":21076,"length":466,"line":650,"column":8,"endLine":664,"endColumn":9,"fileName":"editor.ts","functionName":"showRuleHandleMenu","argumentNames":["this"]}
+microcode_RuleEditor_showRuleHandleMenu__P6866.info = {"start":20987,"length":466,"line":649,"column":8,"endLine":663,"endColumn":9,"fileName":"editor.ts","functionName":"showRuleHandleMenu","argumentNames":["this"]}
 
 function microcode_RuleEditor_showRuleHandleMenu__P6866_mk(s) {
     checkStack(s.depth);
@@ -55236,7 +55236,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P20544.info = {"start":21464,"length":52,"line":662,"column":25,"endLine":662,"endColumn":77,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
+onClick_inline__P20544.info = {"start":21375,"length":52,"line":661,"column":25,"endLine":661,"endColumn":77,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
 
 function onClick_inline__P20544_mk(s) {
     checkStack(s.depth);
@@ -55301,7 +55301,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_handleRuleHandleMenuSelection__P6869.info = {"start":25468,"length":264,"line":765,"column":8,"endLine":771,"endColumn":9,"fileName":"editor.ts","functionName":"handleRuleHandleMenuSelection","argumentNames":["this","iconId"]}
+microcode_RuleEditor_handleRuleHandleMenuSelection__P6869.info = {"start":25379,"length":264,"line":764,"column":8,"endLine":770,"endColumn":9,"fileName":"editor.ts","functionName":"handleRuleHandleMenuSelection","argumentNames":["this","iconId"]}
 
 function microcode_RuleEditor_handleRuleHandleMenuSelection__P6869_mk(s) {
     checkStack(s.depth);
@@ -55384,7 +55384,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_deleteRuleAt__P6850.info = {"start":15070,"length":346,"line":467,"column":8,"endLine":475,"endColumn":9,"fileName":"editor.ts","functionName":"deleteRuleAt","argumentNames":["this","index"]}
+microcode_PageEditor_deleteRuleAt__P6850.info = {"start":14981,"length":346,"line":466,"column":8,"endLine":474,"endColumn":9,"fileName":"editor.ts","functionName":"deleteRuleAt","argumentNames":["this","index"]}
 
 function microcode_PageEditor_deleteRuleAt__P6850_mk(s) {
     checkStack(s.depth);
@@ -55422,7 +55422,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_deleteRuleAt_inline__P20584.info = {"start":15293,"length":37,"line":472,"column":31,"endLine":472,"endColumn":68,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
+microcode_PageEditor_deleteRuleAt_inline__P20584.info = {"start":15204,"length":37,"line":471,"column":31,"endLine":471,"endColumn":68,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
 
 function microcode_PageEditor_deleteRuleAt_inline__P20584_mk(s) {
     checkStack(s.depth);
@@ -55617,7 +55617,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_insertRuleAt__P6851.info = {"start":15426,"length":611,"line":477,"column":8,"endLine":491,"endColumn":9,"fileName":"editor.ts","functionName":"insertRuleAt","argumentNames":["this","index"]}
+microcode_PageEditor_insertRuleAt__P6851.info = {"start":15337,"length":611,"line":476,"column":8,"endLine":490,"endColumn":9,"fileName":"editor.ts","functionName":"insertRuleAt","argumentNames":["this","index"]}
 
 function microcode_PageEditor_insertRuleAt__P6851_mk(s) {
     checkStack(s.depth);
@@ -55663,7 +55663,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_insertRuleAt_inline__P20663.info = {"start":15914,"length":37,"line":488,"column":31,"endLine":488,"endColumn":68,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
+microcode_PageEditor_insertRuleAt_inline__P20663.info = {"start":15825,"length":37,"line":487,"column":31,"endLine":487,"endColumn":68,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
 
 function microcode_PageEditor_insertRuleAt_inline__P20663_mk(s) {
     checkStack(s.depth);
@@ -55868,7 +55868,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_xfrm__P6843.info = {"start":12112,"length":59,"line":370,"column":8,"endLine":372,"endColumn":9,"fileName":"editor.ts","functionName":"xfrm","argumentNames":["this"]}
+microcode_PageEditor_xfrm__P6843.info = {"start":12023,"length":59,"line":369,"column":8,"endLine":371,"endColumn":9,"fileName":"editor.ts","functionName":"xfrm","argumentNames":["this"]}
 microcode_PageEditor_xfrm__P6843.isGetter = true;
 
 function microcode_PageEditor_xfrm__P6843_mk(s) {
@@ -55916,7 +55916,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_destroy__P6844.info = {"start":12666,"length":139,"line":389,"column":23,"endLine":393,"endColumn":9,"fileName":"editor.ts","functionName":"destroy","argumentNames":["this"]}
+microcode_PageEditor_destroy__P6844.info = {"start":12577,"length":139,"line":388,"column":23,"endLine":392,"endColumn":9,"fileName":"editor.ts","functionName":"destroy","argumentNames":["this"]}
 
 function microcode_PageEditor_destroy__P6844_mk(s) {
     checkStack(s.depth);
@@ -55956,7 +55956,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_destroy_inline__P20738.info = {"start":12709,"length":22,"line":390,"column":31,"endLine":390,"endColumn":53,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_destroy_inline__P20738.info = {"start":12620,"length":22,"line":389,"column":31,"endLine":389,"endColumn":53,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
 function microcode_PageEditor_destroy_inline__P20738_mk(s) {
     checkStack(s.depth);
@@ -56000,7 +56000,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_shutdown__P3386.info = {"start":9840,"length":94,"line":290,"column":23,"endLine":293,"endColumn":9,"fileName":"editor.ts","functionName":"shutdown","argumentNames":["this"]}
+microcode_Editor_shutdown__P3386.info = {"start":9751,"length":94,"line":289,"column":23,"endLine":292,"endColumn":9,"fileName":"editor.ts","functionName":"shutdown","argumentNames":["this"]}
 
 function microcode_Editor_shutdown__P3386_mk(s) {
     checkStack(s.depth);
@@ -56087,7 +56087,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_handleClick__P6839.info = {"start":9390,"length":425,"line":279,"column":8,"endLine":288,"endColumn":9,"fileName":"editor.ts","functionName":"handleClick","argumentNames":["this","x","y"]}
+microcode_Editor_handleClick__P6839.info = {"start":9390,"length":336,"line":279,"column":8,"endLine":287,"endColumn":9,"fileName":"editor.ts","functionName":"handleClick","argumentNames":["this","x","y"]}
 
 function microcode_Editor_handleClick__P6839_mk(s) {
     checkStack(s.depth);
