@@ -95,7 +95,6 @@ namespace microcode {
         }
 
         private pickPage() {
-            // TODO: supply button labels
             const btns: PickerButtonDef[] = PAGE_IDS.map(pageId => {
                 return {
                     icon: pageId,
@@ -110,7 +109,7 @@ namespace microcode {
             })
         }
 
-        private switchToPage(index: number, initCursor: boolean = true) {
+        private switchToPage(index: number) {
             if (index < 0 || index >= this.progdef.pages.length) {
                 return
             }
@@ -129,10 +128,7 @@ namespace microcode {
                 Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2
             )
             this.rebuildNavigator()
-            if (initCursor) {
-                const btn = this.navigator.initialCursor(1, 1)
-                if (btn) this.snapCursorTo(btn)
-            }
+            this.snapCursorTo(this.navigator.initialCursor(1, 1))
         }
 
         public snapCursorTo(btn: Button) {
