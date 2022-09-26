@@ -31,7 +31,7 @@ The easiest way to get started with MicroCode is through the web editor ([https:
 -   Backscape for B button
 -   Copy the URL to share your program.
 
-![MicroCode web app](./images/website.jpg)
+![MicroCode web app](./images/website2.jpg)
 
 ### Web App and micro:bit V2
 
