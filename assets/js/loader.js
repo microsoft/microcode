@@ -142,12 +142,6 @@ function makeCodeRun(options) {
             ch.start({ send })
         })
 
-    // hide simulator link if in sim mode
-    if (inIFrame()) {
-        const simlink = document.getElementById("simulator-link")
-        if (simlink) simlink.remove()
-    }
-
     // helpers
     function setState(st) {
         var r = document.getElementById("root")

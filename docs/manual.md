@@ -36,14 +36,9 @@ The easiest way to get started with MicroCode is through the web editor ([https:
 
 ## Micro:bit simulator
 
-From the web app, make sure that the web browser is not full screen and you will see four links at the bottom of the app (see image above):
+The simulator link will open a page with the MicroCode web app on the right side and a micro:bit simulator and Jacdac dashboard on the left, as shown below. Your MicroCode program is saved, compiled and updated to the micro:bit (simulator or device) on every edit, so everything should be live and running all the time.
 
--   **Manual** (this page)
--   **Simulator**
--   **GitHub** (this repo)
--   **Version #** (links to micro:bit hex file)
-
-Clicking on the simulator link will open a page with the MicroCode web app on the right side and a micro:bit simulator and Jacdac dashboard on the left, as shown below. Your MicroCode program is saved, compiled and updated to the micro:bit (simulator or device) on every edit, so everything should be live and running all the time.
+* [MicroCode + Jacdac + micro:bit simulator](https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#https://microsoft.github.io/microcode/?embed=1)
 
 ![micro:bit simulator and MicroCode web app](./images/webAppSimulators.jpg)
 
