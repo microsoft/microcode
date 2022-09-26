@@ -59,7 +59,7 @@ Click on the version number in the web app to download the MicroCode hex file to
 The MicroCode app has a set of samples built-in. Select the samples button on the MicroCode home page (see below) to reveal
 the gallery of samples.
 
-![MicroCode sample programs](./images/animwebapp.gif)
+![MicroCode sample programs](./images/microCodeVideo.gif)
 
 ## Contributing
 
