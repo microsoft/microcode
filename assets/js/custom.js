@@ -99,6 +99,10 @@ if (!inIFrame)
             connectEl = document.createElement("button")
             connectEl.id = "connectbtn"
             connectEl.tabIndex = "0"
+            const conDiv = document.createElement("div")
+            conDiv.style.marginTop = "0.25rem"
+            conDiv.innerText = "connect"
+            connectEl.append(conDiv)
             const mbitEl = document.createElement("img")
             mbitEl.setAttribute("alt", "micro:bit logo")
             mbitEl.setAttribute(
