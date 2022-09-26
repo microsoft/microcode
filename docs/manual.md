@@ -54,6 +54,13 @@ Click on the version number in the web app to download the MicroCode hex file to
 
 ![Arcade Shield and micro:bit V2](./images/meow1.jpg)
 
+## Sample programs
+
+The MicroCode app has a set of samples built-in. Select the samples button on the MicroCode home page (see below) to reveal
+the gallery of samples.
+
+![MicroCode sample programs](./images/animwebapp.gif)
+
 ## Contributing
 
 This project is open source and welcomes contributions and suggestions at https://github.com/microsoft/microcode.
