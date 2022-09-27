@@ -28,13 +28,13 @@ the order of the rules only matters when different rules act on the same resourc
 The left-hand side of a rule, the **When** section, starts with an
 event tile from the following list:
 
--   **press** of button, micro:bit icon, or pin
--   **release** of button, micro:bit icon, or pin
--   **move** of accelerometer, in various ways
--   **hear** a sound, either loud or soft
--   **radio receive** of a number
--   **repeat timer** of a time
--   **variable (A,B,C) changed** to a number
+-   ![press image](./images/generated/icon_S2.png) **press** of button, micro:bit icon, or pin
+-   ![press image](./images/generated/icon_S2B.png) **release** of button, micro:bit icon, or pin
+-   ![press image](./images/generated/icon_S3.png)**move** of accelerometer, in various ways
+-   ![press image](./images/generated/icon_S8.png) **hear** a sound, either loud or soft
+-   ![press image](./images/generated/icon_S7.png) **radio receive** of a number
+-   ![press image](./images/generated/icon_S4.png) **repeat timer** of a time
+-   ![press image](./images/generated/icon_S9A.png) ![press image](./images/generated/icon_S9B.png) ![press image](./images/generated/icon_S9C.png) **variable (A,B,C) changed** to a number
 
 An event tile can be followed by none, one or more parameter tiles which determines whether or not execution will proceed from the **When** section to the **Do** section, Every event has a default parameter, which is used when no parameter is specified. The defaults are:
 
