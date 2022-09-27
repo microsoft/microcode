@@ -16,6 +16,7 @@ namespace docs {
     let theApp: microcode.App
     export function setup(app: microcode.App) {
         theApp = app
+        _setup()
     }
 
     //% shim=TD_NOOP
