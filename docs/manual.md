@@ -61,6 +61,8 @@ the gallery of samples.
 
 ## Contributing
 
+* Start a discussion thread at [https://github.com/microsoft/microcode/discussions](https://github.com/microsoft/microcode/discussions).
+
 This project is open source and welcomes contributions and suggestions at https://github.com/microsoft/microcode.
 Read the [developer instructions](./develop.md).
 
