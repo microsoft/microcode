@@ -1,8 +1,8 @@
 namespace microcode {
     export class icons {
-        static reg: { [name: string]: ImageG }
+        static reg: { [name: string]: Image }
 
-        public static get(name: string, nullIfMissing = false): ImageG {
+        public static get(name: string, nullIfMissing = false): Image {
             let icon = this.reg[name]
             if (!icon && !nullIfMissing) {
                 icon = this.reg["MISSING"]
@@ -19,26 +19,10 @@ namespace microcode {
             if (this.reg) return
 
             this.reg = {}
-            this.reg["cursor"] = icondb.cursor
-            this.reg["stylus"] = icondb.stylus
-            this.reg["button_white"] = icondb.btn_bknd_white
-            this.reg["button_white_bordered"] = icondb.btn_bknd_white_bordered
-            this.reg["button_beige"] = icondb.btn_bknd_beige
-            this.reg["button_beige_bordered"] = icondb.btn_bknd_beige_bordered
-            this.reg["button_clear"] = icondb.btn_bknd_clear
-            this.reg["button_danger"] = icondb.btn_bknd_danger
-            this.reg["edit"] = icondb.btn_edit
+            // editor icons
             this.reg["delete"] = icondb.btn_delete
-            this.reg["cancel"] = icondb.btn_cancel
-            this.reg["ok"] = icondb.btn_ok
             this.reg["plus"] = icondb.btn_plus
             this.reg["reset"] = icondb.btn_play
-            this.reg["new_file"] = icondb.btn_new_file
-            this.reg["log"] = icondb.btn_log
-            this.reg["plot"] = icondb.btn_plot
-            this.reg["dpad_left"] = icondb.btn_dpad_left
-            this.reg["when"] = icondb.ui_when
-            this.reg["do"] = icondb.ui_do
             this.reg["when_insertion_point"] = icondb.btn_when_insertion_point
             this.reg["do_insertion_point"] = icondb.btn_do_insertion_point
             this.reg["rule_arrow"] = icondb.rule_arrow
@@ -49,6 +33,12 @@ namespace microcode {
             this.reg["edit_program"] = icondb.largeEditIcon
             this.reg["new_program"] = icondb.largeNewProgramIcon
             this.reg["MISSING"] = icondb.MISSING
+
+            // basic colors led editor
+            this.reg["solid_red"] = icondb.solid_red
+            this.reg["solid_black"] = icondb.solid_black
+
+            // sample icons
             this.reg["flashing_heart"] = icondb.sampleFlashingHeart
             this.reg["smiley_buttons"] = icondb.sampleSmileyButtons
             this.reg["clap_lights"] = icondb.sampleClapLights
@@ -60,20 +50,23 @@ namespace microcode {
             this.reg["reaction_time"] = icondb.sampleReactionTime
             this.reg["hot_potato"] = icondb.sampleHotPotato
             this.reg["clap_lights"] = icondb.sampleClapLights
-            this.reg["solid_red"] = icondb.solid_red
-            this.reg["solid_black"] = icondb.solid_black
 
+            // special icons
+            this.reg["plus_operator"] = icondb.minus_operator
+
+            // sensors
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
             this.reg[TID_SENSOR_PRESS] = icondb.finger_press
             this.reg[TID_SENSOR_RELEASE] = icondb.finger_release
             this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
             this.reg[TID_SENSOR_ACCELEROMETER] = icondb.accelerometer
-            this.reg[TID_SENSOR_OUT_PIPE_A] = icondb.outPipeA
-            this.reg[TID_SENSOR_OUT_PIPE_B] = icondb.outPipeB
-            this.reg[TID_SENSOR_OUT_PIPE_C] = icondb.outPipeC
+            this.reg[TID_SENSOR_CUP_A_WRITTEN] = icondb.cupAwritten
+            this.reg[TID_SENSOR_CUP_B_WRITTEN] = icondb.cupBwritten
+            this.reg[TID_SENSOR_CUP_C_WRITTEN] = icondb.cupCwritten
             this.reg[TID_SENSOR_MAGNET] = icondb.magnet
 
+            // filters
             this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
             this.reg[TID_FILTER_PIN_0] = icondb.tile_pin_0
             this.reg[TID_FILTER_PIN_1] = icondb.tile_pin_1
@@ -90,18 +83,25 @@ namespace microcode {
             this.reg[TID_FILTER_VALUE_3] = icondb.tile_value_3
             this.reg[TID_FILTER_VALUE_4] = icondb.tile_value_4
             this.reg[TID_FILTER_VALUE_5] = icondb.tile_value_5
-
             this.reg[TID_FILTER_LOUD] = icondb.speaker
             this.reg[TID_FILTER_QUIET] = icondb.speakerQuiet
 
+            // actuators
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
             this.reg[TID_ACTUATOR_PAINT] = icondb.showScreen
             this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
             this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
             this.reg[TID_ACTUATOR_SPEAKER] = icondb.speakerFun
             this.reg[TID_ACTUATOR_MUSIC] = icondb.music
-            this.reg[TID_ACTUATOR_RANDOM_TOSS] = icondb.diceToss
             this.reg[TID_ACTUATOR_RGB_LED] = icondb.rgbLed
+            this.reg[TID_ACTUATOR_CUP_A_ASSIGN] = icondb.cupAassign
+            this.reg[TID_ACTUATOR_CUP_B_ASSIGN] = icondb.cupBassign
+            this.reg[TID_ACTUATOR_CUP_C_ASSIGN] = icondb.cupCassign
+
+            // modifiers
+            // value producers that are also consumers
+            this.reg[TID_MODIFIER_RANDOM_TOSS] = icondb.diceToss
+            this.reg[TID_MODIFIER_MINUS_OPERATOR] = icondb.minus_operator
 
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
@@ -122,9 +122,6 @@ namespace microcode {
             this.reg[TID_MODIFIER_RGB_LED_COLOR_5] = icondb.tile_color_yellow
             this.reg[TID_MODIFIER_RGB_LED_COLOR_6] = icondb.tile_color_black
 
-            this.reg[TID_MODIFIER_ON] = icondb.tile_on
-            this.reg[TID_MODIFIER_OFF] = icondb.tile_off
-
             this.reg[TID_MODIFIER_EMOJI_GIGGLE] = icondb.soundGiggle
             this.reg[TID_MODIFIER_EMOJI_HAPPY] = icondb.soundHappy
             this.reg[TID_MODIFIER_EMOJI_HELLO] = icondb.soundHello
@@ -136,9 +133,9 @@ namespace microcode {
             this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
             this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
 
-            this.reg[TID_MODIFIER_PIPE_IN_A] = icondb.inPipeA
-            this.reg[TID_MODIFIER_PIPE_IN_B] = icondb.inPipeB
-            this.reg[TID_MODIFIER_PIPE_IN_C] = icondb.inPipeC
+            this.reg[TID_MODIFIER_CUP_A_READ] = icondb.cupAread
+            this.reg[TID_MODIFIER_CUP_B_READ] = icondb.cupBread
+            this.reg[TID_MODIFIER_CUP_C_READ] = icondb.cupCread
 
             this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
             this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.moveFall
@@ -147,9 +144,7 @@ namespace microcode {
             this.reg[TID_FILTER_ACCEL_TILT_LEFT] = icondb.moveTiltLeft
             this.reg[TID_FILTER_ACCEL_TILT_RIGHT] = icondb.moveTiltRight
 
-            // for icon editor
-            this.reg[TID_MODIFIER_COLOR_RED] = icondb.tile_red
-            this.reg[TID_MODIFIER_COLOR_DARKPURPLE] = icondb.tile_darkpurple
+            this.reg[TID_MODIFIER_RADIO_VALUE] = icondb.radio_value
         }
     }
 
@@ -217,7 +212,7 @@ namespace microcode {
 }
 
 // - upscale 5x5 image to 16 x 16
-function scaleUp(led55: ImageG) {
+function scaleUp(led55: Image) {
     const ret = image.create(16, 16)
     ret.fill(15)
     for (let row = 0; row < 5; row++) {
@@ -311,96 +306,6 @@ namespace icondb {
     . . . . . . . . . . . . . . . .
 `
 
-    export const ui_when = img`
-        . 7 7 7 7 7 7 7 .
-        . 7 7 7 1 1 1 7 .
-        . 7 7 7 1 c c 7 .
-        . 7 7 1 1 1 1 7 .
-        . 7 7 c c c c 7 .
-        . 7 7 1 1 7 1 7 .
-        . 7 1 c 1 7 1 7 .
-        . 7 c 1 1 1 1 7 .
-        . 7 7 c c c c 7 .
-        . 7 7 7 1 1 1 7 .
-        . 7 7 7 1 c c 7 .
-        . 7 1 1 1 1 1 7 .
-        . 7 c c c c c 7 .
-        . 7 1 1 1 1 7 7 .
-        . 7 c c c c 1 7 .
-        . 7 7 1 1 1 1 7 .
-        . 7 7 c c c 1 7 .
-        . 7 1 1 1 1 c 7 .
-        . 7 c c c c 7 7 .
-        . 7 7 7 7 7 7 7 .
-        . c c c c c c c .
-    `
-    export const ui_do = img`
-        . 8 8 8 8 8 8 8 .
-        . 8 8 8 8 8 8 8 .
-        . 8 8 8 8 8 8 8 .
-        . 8 8 8 8 8 8 8 .
-        . 8 8 8 8 8 8 8 .
-        . 8 8 8 8 8 8 8 .
-        . 8 8 8 1 1 8 8 .
-        . 8 8 1 c c 1 8 .
-        . 8 8 1 8 8 1 8 .
-        . 8 8 c 1 1 c 8 .
-        . 8 8 8 c c 8 8 .
-        . 8 8 1 1 1 8 8 .
-        . 8 1 c c c 1 8 .
-        . 8 1 8 8 8 1 8 .
-        . 8 1 1 1 1 1 8 .
-        . 8 c c c c c 8 .
-        . 8 8 8 8 8 8 8 .
-        . 8 8 8 8 8 8 8 .
-        . 8 8 8 8 8 8 8 .
-        . 8 8 8 8 8 8 8 .
-        . c c c c c c c .
-    `
-    ///
-    /// CURSOR
-    ///
-    export const cursor = img`
-        ..................
-        ..................
-        ..................
-        ..................
-        ..................
-        ..................
-        ..................
-        ..................
-        .......ff.........
-        .......f5ff.......
-        .......f555ff.....
-        ........f5555ff...
-        ........f555555f..
-        ........f55555f...
-        .........f5555f...
-        .........f5ff55f..
-        ..........f..f5f..
-        ..............f...
-    `
-    export const stylus = img`
-        ...............ff..
-        ..............faaf.
-        .............fa33af
-        ............f4533af
-        ...........f4555af.
-        ..........f45554f..
-        .........f45554f...
-        ........fe5554f....
-        ........fee54f.....
-        ........ffeef......
-        ........ffff.......
-        ...................
-        ...................
-        ...................
-        ...................
-        ...................
-        ...................
-        ...................
-        ...................
-    `
     ///
     /// BUTTON ICONS
     ///
@@ -440,24 +345,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
     `
-    export const btn_edit = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . f f f f f . . . . .
-        . . . . . f a 3 3 3 a f . . . .
-        . . . . . f a 3 3 3 a f . . . .
-        . . . . . f 4 5 5 5 4 f . . . .
-        . . . . . f 4 5 5 5 4 f . . . .
-        . . . . . f 4 5 5 5 4 f . . . .
-        . . . . . f 4 5 5 5 4 f . . . .
-        . . . . . f 4 5 5 5 4 f . . . .
-        . . . . . f 4 5 5 5 4 f . . . .
-        . . . . . f e e e e e f . . . .
-        . . . . . . f e e e f . . . . .
-        . . . . . . . f f f . . . . . .
-        . . . . . . . . f . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
+
     export const btn_delete = img`
         . . . . . . . . . . . . . . . .
         . . . . . . c f f . . . . . . .
@@ -477,42 +365,6 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
     `
 
-    export const btn_cancel = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . c c . . . c c . . . .
-        . . . . . c c c . c c c . . . .
-        . . . . . b c c c c c b . . . .
-        . . . . . . b c c c b . . . . .
-        . . . . . . c c c c c . . . . .
-        . . . . . c c c b c c c . . . .
-        . . . . . c c b . b c c . . . .
-        . . . . . b b . . . b b . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const btn_ok = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . 7 7 . . . .
-        . . . . . . . . . 7 7 7 . . . .
-        . . . . . . . . 7 7 7 6 . . . .
-        . . . . 7 7 . 7 7 7 6 . . . . .
-        . . . . 7 7 7 7 7 6 . . . . . .
-        . . . . 7 7 7 7 6 . . . . . . .
-        . . . . 6 7 7 6 . . . . . . . .
-        . . . . . 6 6 . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
     export const btn_plus = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -531,65 +383,85 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
-    export const btn_new_file = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . f f f f f . . . .
-        . . . . . . f f d d d f . . . .
-        . . . . . f 5 f d d d f . . . .
-        . . . . f 5 5 f d d d f . . . .
-        . . . f f f f f d d d f . . . .
-        . . . f d d d d d d d f . . . .
-        . . . f d d d d d d d f . . . .
-        . . . f d d d d d d d f . . . .
-        . . . f d d d d d d d f . . . .
-        . . . f d d d d d d d f . . . .
-        . . . f f f f f f f f f . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
+
+    export const minus_operator = img`
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . c c c c c c c c c . .
+    . . c c c c c c c c c . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+`
+
+    export const plus_operator = img`
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . c c c . . . . .
+    . . . . . c c c . . . . .
+    . . . . . c c c . . . . .
+    . . c c c c c c c c c . .
+    . . c c c c c c c c c . .
+    . . . . . c c c . . . . .
+    . . . . . c c c . . . . .
+    . . . . . c c c . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+`
 
     export const btn_when_insertion_point = img`
-    dddddddddddddddddd
-    dcddcddcddcddcddcd
-    dddddddddddddddddd
-    dddddddddddddddddd
-    dcddddddddddddddcd
-    dddddddddddddddddd
-    dddddddd11dddddddd
-    dcdddddd11ddddddcd
-    dddddd111111dddddd
-    dddddd111111dddddd
-    dcddddcc11ccddddcd
-    dddddddd11dddddddd
-    ddddddddccdddddddd
-    dcddddddddddddddcd
-    dddddddddddddddddd
-    dddddddddddddddddd
-    dcddcddcddcddcddcd
-    dddddddddddddddddd
+        dddddddddddddddddd
+        dcddcddcddcddcddcd
+        dddddddddddddddddd
+        dddddddddddddddddd
+        dcddddddddddddddcd
+        dddddddddddddddddd
+        dddddddddddddddddd
+        dcdddddccccdddddcd
+        dddddddcddcddddddd
+        dddddddcddcddddddd
+        dcdddddccccdddddcd
+        dddddddddddddddddd
+        dddddddddddddddddd
+        dcddddddddddddddcd
+        dddddddddddddddddd
+        dddddddddddddddddd
+        dcddcddcddcddcddcd
+        dddddddddddddddddd
     `
 
     export const btn_do_insertion_point = img`
-    bbbbbbbbbbbbbbbbbb
-    bdbbdbbdbbdbbdbbdb
-    bbbbbbbbbbbbbbbbbb
-    bbbbbbbbbbbbbbbbbb
-    bdbbbbbbbbbbbbbbdb
-    bbbbbbbbbbbbbbbbbb
-    bbbbbbbb11bbbbbbbb
-    bdbbbbbb11bbbbbbdb
-    bbbbbb111111bbbbbb
-    bbbbbb111111bbbbbb
-    bdbbbbcc11ccbbbbdb
-    bbbbbbbb11bbbbbbbb
-    bbbbbbbbccbbbbbbbb
-    bdbbbbbbbbbbbbbbdb
-    bbbbbbbbbbbbbbbbbb
-    bbbbbbbbbbbbbbbbbb
-    bdbbdbbdbbdbbdbbdb
-    bbbbbbbbbbbbbbbbbb
+        bbbbbbbbbbbbbbbbbb
+        bdbbdbbdbbdbbdbbdb
+        bbbbbbbbbbbbbbbbbb
+        bbbbbbbbbbbbbbbbbb
+        bdbbbbbbbbbbbbbbdb
+        bbbbbbbbbbbbbbbbbb
+        bbbbbbbbbbbbbbbbbb
+        bdbbbbbddddbbbbbdb
+        bbbbbbbdbbdbbbbbbb
+        bbbbbbbdbbdbbbbbbb
+        bdbbbbbddddbbbbbdb
+        bbbbbbbbbbbbbbbbbb
+        bbbbbbbbbbbbbbbbbb
+        bdbbbbbbbbbbbbbbdb
+        bbbbbbbbbbbbbbbbbb
+        bbbbbbbbbbbbbbbbbb
+        bdbbdbbdbbdbbdbbdb
+        bbbbbbbbbbbbbbbbbb
     `
 
     export const rule_arrow = img`
@@ -615,60 +487,6 @@ namespace icondb {
     d d d . . . . . . . . . . .
 `
 
-    export const btn_log = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . f f f f f f f f f f . . .
-        . . f f f f f f f f f f f f . .
-        . . f f 1 1 f 1 1 1 1 1 f f . .
-        . . f f f f f f f f f f f f . .
-        . . f f 1 1 1 1 1 1 f 1 f f . .
-        . . f f f f f f f f f f f f . .
-        . . f f 1 1 1 1 f 1 1 1 f f . .
-        . . f f f f f f f f f f f f . .
-        . . f f 1 f 1 1 1 1 1 1 f f . .
-        . . f f f f f f f f f f f f . .
-        . . . f f f f f f f f f f . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const btn_plot = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . f f f f f f f f f f . . .
-        . . f 6 6 6 6 6 6 6 6 6 6 f . .
-        . . f 6 6 6 6 6 6 6 6 5 5 f . .
-        . . f 6 6 6 6 6 6 6 5 6 6 f . .
-        . . f 6 6 6 6 6 6 5 6 6 6 f . .
-        . . f 9 9 9 9 9 5 9 9 9 9 f . .
-        . . f 6 6 6 6 5 6 6 6 6 6 f . .
-        . . f 6 6 5 5 6 6 6 6 6 6 f . .
-        . . f 5 5 6 6 6 6 6 6 6 6 f . .
-        . . f 6 6 6 6 6 6 6 6 6 6 f . .
-        . . . f f f f f f f f f f . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const btn_dpad_left = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . f f f f . . . . . .
-        . . . . . . f 6 6 f . . . . . .
-        . . . . . . f 6 6 f . . . . . .
-        . . . f f f f 6 6 f f f f . . .
-        . . . f 5 5 5 6 6 6 6 6 f . . .
-        . . . f 5 5 5 6 6 6 6 6 f . . .
-        . . . f f f f 6 6 f f f f . . .
-        . . . . . . f 6 6 f . . . . . .
-        . . . . . . f 6 6 f . . . . . .
-        . . . . . . f f f f . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
     export const btn_next_page = img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -743,122 +561,6 @@ namespace icondb {
         . . . b b b b b b b . . . . . .
         . . . . . . . . . . . . . . . .
 `
-
-    ///
-    /// BUTTON BACKGROUNDS
-    ///
-    export const btn_bknd_white = img`
-        . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 .
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        c 1 1 1 1 1 1 1 1 1 1 1 1 1 1 c
-        . c c c c c c c c c c c c c c .
-    `
-    export const btn_bknd_white_bordered = img`
-        . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 .
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        c 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 c
-        . c c c c c c c c c c c c c c c c .
-    `
-    export const btn_bknd_beige = img`
-        . d d d d d d d d d d d d d d .
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        c d d d d d d d d d d d d d d c
-        . c c c c c c c c c c c c c c .
-    `
-    export const btn_bknd_beige_bordered = img`
-        . d d d d d d d d d d d d d d d d .
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        c d d d d d d d d d d d d d d d d c
-        . c c c c c c c c c c c c c c c c .
-    `
-    export const btn_bknd_clear = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const btn_bknd_danger = img`
-        . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 .
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2
-        . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    `
 
     ///
     /// GENERIC LANGUAGE TILES (NOT HARDWARE SPECIFIC)
@@ -982,42 +684,6 @@ namespace icondb {
         . . . f 7 7 f f f 7 7 7 f . . .
         . . . f 7 7 7 7 7 7 7 7 f . . .
         . . . f f f f f f f f f f . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const tile_red = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . f f f f f f . . . . .
-        . . . . f 2 2 2 2 2 2 f . . . .
-        . . . f 2 2 2 2 2 2 2 2 f . . .
-        . . . f 2 2 2 2 2 2 2 2 f . . .
-        . . . f 2 2 2 2 2 2 2 2 f . . .
-        . . . f 2 2 2 2 2 2 2 2 f . . .
-        . . . f 2 2 2 2 2 2 2 2 f . . .
-        . . . f 2 2 2 2 2 2 2 2 f . . .
-        . . . . f 2 2 2 2 2 2 f . . . .
-        . . . . . f f f f f f . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const tile_darkpurple = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . f f f f f f . . . . .
-        . . . . f c c c c c c f . . . .
-        . . . f c c c c c c c c f . . .
-        . . . f c c c c c c c c f . . .
-        . . . f c c c c c c c c f . . .
-        . . . f c c c c c c c c f . . .
-        . . . f c c c c c c c c f . . .
-        . . . f c c c c c c c c f . . .
-        . . . . f c c c c c c f . . . .
-        . . . . . f f f f f f . . . . .
-        . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
@@ -1206,42 +872,24 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
     `
 
-    export const tile_on = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . f f . . . f . . . . . .
-        . . . f . . f . . f f f . . . .
-        . . . f . . f . . f . . f . . .
-        . . . f . . f . . f . . f . . .
-        . . . . f f . . . f . . f . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const tile_off = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . f f . . f f . .
-        . . . . . . . f . . . f . . . .
-        . . . f f . . f . . . f . . . .
-        . . f . . f . f f . . f f . . .
-        . . f . . f . f . . . f . . . .
-        . . f . . f . f . . . f . . . .
-        . . . f f . . f . . . f . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
+    export const radio_value = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . 8 . . . 8 . . . . . .
+    . . . 8 . . 8 8 8 . . 8 . . . .
+    . 8 . . 8 . . . . . 8 . . 8 . .
+    . . 8 . . 8 8 8 8 8 . . 8 . . .
+    . . . 8 . . . . . . . 8 . . . .
+    . . . . 8 8 8 8 8 8 8 . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . 6 . . . . . . . .
+    . . . . . . 6 9 6 . . . . . . .
+    . . . . . 6 9 9 9 6 . . . . . .
+    . . . . . . 6 9 6 . . . . . . .
+    . . . . . . . 6 . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
 
     export const radio_receive = img`
         . . . . . . . . . . . . . . . .
@@ -2031,114 +1679,92 @@ f f f f f f f f f f f f f f f f
     . . . c c c c c c c b d . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .`
-    export const inPipeA = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . c c c c c c c c
-. . . . . . . c f c d d d d d d
-. . . . . . c 6 f f c 1 1 1 1 1
-. . . . . . c 9 6 f c d d f d d
-6 6 6 6 6 6 6 9 9 6 c d f d f d
-9 9 9 9 9 9 9 9 9 9 c d f f f d
-6 6 6 6 6 6 6 9 9 6 c d f d f d
-. . . . . . c 9 6 f c d f d f d
-. . . . . . c 6 f f c d d d d d
-. . . . . . . c f c b b b b b b
-. . . . . . . . c c c c c c c c
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-`
-    export const inPipeB = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . c c c c c c c c
-. . . . . . . c f c d d d d d d
-. . . . . . c 6 f f c 1 1 1 1 1
-. . . . . . c 9 6 f c d f f d d
-6 6 6 6 6 6 6 9 9 6 c d f d f d
-9 9 9 9 9 9 9 9 9 9 c d f f f d
-6 6 6 6 6 6 6 9 9 6 c d f d f d
-. . . . . . c 9 6 f c d f f d d
-. . . . . . c 6 f f c d d d d d
-. . . . . . . c f c b b b b b b
-. . . . . . . . c c c c c c c c
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-`
-    export const inPipeC = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . c c c c c c c c
-. . . . . . . c f c d d d d d d
-. . . . . . c 6 f f c 1 1 1 1 1
-. . . . . . c 9 6 f c d d f f d
-6 6 6 6 6 6 6 9 9 6 c d f d d d
-9 9 9 9 9 9 9 9 9 9 c d f d d d
-6 6 6 6 6 6 6 9 9 6 c d f d d d
-. . . . . . c 9 6 f c d d f f d
-. . . . . . c 6 f f c d d d d d
-. . . . . . . c f c b b b b b b
-. . . . . . . . c c c c c c c c
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-`
-    export const outPipeA = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-c c c c c c c c . . . . . . . .
-d d d d d d c f c . . . . . . .
-1 1 1 1 1 c f f f c . . 6 . . .
-d d f d d c f f f c . . 9 6 . .
-d f d f d c 6 6 6 6 6 6 9 9 6 .
-d f f f d c 9 9 9 9 9 9 9 9 9 6
-d f d f d c 6 6 6 6 6 6 9 9 6 .
-d f d f d c f f f c . . 9 6 . .
-d d d d d c f f f c . . 6 . . .
-b b b b b b c f c . . . . . . .
-c c c c c c c c . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-`
-    export const outPipeB = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-c c c c c c c c . . . . . . . .
-d d d d d d c f c . . . . . . .
-1 1 1 1 1 c f f f c . . 6 . . .
-d f f d d c f f f c . . 9 6 . .
-d f d f d c 6 6 6 6 6 6 9 9 6 .
-d f f d d c 9 9 9 9 9 9 9 9 9 6
-d f d f d c 6 6 6 6 6 6 9 9 6 .
-d f f d d c f f f c . . 9 6 . .
-d d d d d c f f f c . . 6 . . .
-b b b b b b c f c . . . . . . .
-c c c c c c c c . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-`
-    export const outPipeC = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-c c c c c c c c . . . . . . . .
-d d d d d d c f c . . . . . . .
-1 1 1 1 1 c f f f c . . 6 . . .
-d d f f d c f f f c . . 9 6 . .
-d f d d d c 6 6 6 6 6 6 9 9 6 .
-d f d d d c 9 9 9 9 9 9 9 9 9 6
-d f d d d c 6 6 6 6 6 6 9 9 6 .
-d d f f d c f f f c . . 9 6 . .
-d d d d d c f f f c . . 6 . . .
-b b b b b b c f c . . . . . . .
-c c c c c c c c . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-`
+
+    // create cups from core images
+    const cup = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . c c c c c c c . . . . .
+        . . . c f f f f f f f c . . . .
+        . . c f f f 6 9 6 f f f c . . .
+        . . c c f 6 6 6 6 6 f c c . . .
+        . . c d c c c c c c c b c . . .
+        . . c d 1 d d d d d d b c . . .
+        . . c d 1 d d d d d d b c . . .
+        . . c d 1 d d d d d d b c . . .
+        . . c d 1 d d d d d d b c . . .
+        . . c d 1 d d d d d d b c . . .
+        . . . d 1 d d d d d d b . . . .
+        . . . . 1 d d d d d d . . . . .
+    `
+
+    const labelA = img`
+        . f .
+        f . f
+        f f f
+        f . f
+        f . f
+    `
+    const labelB = img`
+        f f .
+        f . f
+        f f f
+        f . f
+        f f .
+    `
+    const labelC = img`
+        . f f
+        f . .
+        f . .
+        f . .
+        . f f
+    `
+
+    const inFromLeft = img`
+        6 6 6 6 6 6 6 . . . . . . . . .
+        9 9 9 9 9 9 9 6 . . . . . . . .
+        6 6 6 6 6 6 6 9 6 . . . . . . .
+        . . . . . . 6 9 6 . . . . . . .
+        . . . . . . 6 9 6 . . . . . . .
+        . . . . 6 9 9 9 9 9 6 . . . . .
+        . . . . . 6 9 9 9 6 . . . . . .
+        . . . . . . 6 9 6 . . . . . . .
+    `
+
+    const inFromRight = img`
+        . . . . . . . . . 6 6 6 6 6 6 6
+        . . . . . . . . 6 9 9 9 9 9 9 9
+        . . . . . . . 6 9 6 6 6 6 6 6 6
+        . . . . . . . 6 9 6 . . . . . .
+        . . . . . . . 6 9 6 . . . . . .
+        . . . . . 6 9 9 9 9 9 6 . . . .
+        . . . . . . 6 9 9 9 6 . . . . .
+        . . . . . . . 6 9 6 . . . . . .
+    `
+
+    export const cupAread = cup.clone()
+    cupAread.drawTransparentImage(labelA, 6, 10)
+    export const cupBread = cup.clone()
+    cupBread.drawTransparentImage(labelB, 6, 10)
+    export const cupCread = cup.clone()
+    cupCread.drawTransparentImage(labelC, 6, 10)
+
+    export const cupAassign = cupAread.clone()
+    cupAassign.drawTransparentImage(inFromRight, 0, 0)
+    export const cupBassign = cupBread.clone()
+    cupBassign.drawTransparentImage(inFromRight, 0, 0)
+    export const cupCassign = cupCread.clone()
+    cupCassign.drawTransparentImage(inFromRight, 0, 0)
+
+    export const cupAwritten = cupAread.clone()
+    cupAwritten.drawTransparentImage(inFromLeft, 0, 0)
+    export const cupBwritten = cupBread.clone()
+    cupBwritten.drawTransparentImage(inFromLeft, 0, 0)
+    export const cupCwritten = cupCread.clone()
+    cupCwritten.drawTransparentImage(inFromLeft, 0, 0)
+
     export const largeEditIcon = img`
     .666666666666666666666666666666.
     66666666666666666666666666666666

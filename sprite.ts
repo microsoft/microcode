@@ -1,7 +1,7 @@
 namespace microcode {
     export class Sprite extends Component implements IPlaceable, ISizable {
         private xfrm_: Affine
-        private image_: ImageG
+        private image_: Image
         private invisible_: boolean
 
         //% blockCombine block="xfrm" callInDebugger
@@ -17,10 +17,10 @@ namespace microcode {
             return this.image_.height
         }
         //% blockCombine block="image" callInDebugger
-        public get image(): ImageG {
+        public get image(): Image {
             return this.image_
         }
-        public set image(img: ImageG) {
+        public set image(img: Image) {
             this.setImage(img)
         }
         //% blockCombine block="invisible" callInDebugger
@@ -42,10 +42,12 @@ namespace microcode {
                 width: this.width,
                 height: this.height,
             })
-            return b.translate(new Vec2(-(this.width >> 1), -(this.height >> 1)))
+            return b.translate(
+                new Vec2(-(this.width >> 1), -(this.height >> 1))
+            )
         }
 
-        constructor(opts: { parent?: IPlaceable; img: ImageG }) {
+        constructor(opts: { parent?: IPlaceable; img: Image }) {
             super("sprite")
             this.xfrm_ = new Affine()
             this.xfrm_.parent = opts.parent && opts.parent.xfrm
@@ -57,7 +59,7 @@ namespace microcode {
             super.destroy()
         }
 
-        protected setImage(img: ImageG) {
+        protected setImage(img: Image) {
             this.image_ = img
         }
 

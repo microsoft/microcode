@@ -155,7 +155,7 @@ namespace microcode {
             return this
         }
 
-        public static FromImage(i: ImageG): Bounds {
+        public static FromImage(i: Image): Bounds {
             let left = i.width
             let top = i.height
             let right = 0

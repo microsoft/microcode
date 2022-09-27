@@ -580,7 +580,8 @@ namespace jacs {
                     if (m.category == "page") targetPage = m.jdParam
 
                 wr.emitCall(this.pageProc(targetPage).index, [])
-            } else if (actuator.tid == microcode.TID_ACTUATOR_RANDOM_TOSS) {
+            } else if (false) {
+                // (actuator.tid == microcode.TID_ACTUATOR_RANDOM_TOSS) {
                 let v = this.getValueOut(rule)
                 if (v == undefined) v = 5
                 this.currValue().write(

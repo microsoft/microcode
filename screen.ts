@@ -1,6 +1,6 @@
 namespace microcode {
     export class Screen {
-        private static image_: ImageG
+        private static image_: Image
 
         public static WIDTH = screen.width
         public static HEIGHT = screen.height
@@ -26,20 +26,20 @@ namespace microcode {
         public static pos(v: Vec2) {
             return new Vec2(Screen.x(v.x), Screen.y(v.y))
         }
-        public static get image(): ImageG {
+        public static get image(): Image {
             if (!Screen.image_) {
                 Screen.image_ = image.create(screen.width, screen.height)
             }
             return Screen.image_
         }
 
-        public static drawTransparentImage(from: ImageG, x: number, y: number) {
+        public static drawTransparentImage(from: Image, x: number, y: number) {
             Screen.image.drawTransparentImage(from, Screen.x(x), Screen.y(y))
         }
 
         public static drawTransparentImageXfrm(
             xfrm: Affine,
-            from: ImageG,
+            from: Image,
             x: number,
             y: number
         ) {
