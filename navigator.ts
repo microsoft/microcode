@@ -301,7 +301,7 @@ namespace microcode {
                     currRow.push(btn)
                 else {
                     this.sortedButtons.push(currRow)
-                    currRow = []
+                    currRow = [btn]
                 }
             })
             if (currRow.length) this.sortedButtons.push(currRow)
