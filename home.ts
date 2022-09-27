@@ -45,6 +45,7 @@ namespace microcode {
         /* override */ activate() {
             super.activate()
             this.color = 15
+            docs.setup(this.app)
         }
 
         private drawVersion() {

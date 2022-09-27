@@ -124,6 +124,12 @@ async function flashJacscriptService(service, data) {
     }
 }
 
+// docs
+document.addEventListener("DOMContentLoaded", () => {
+    const docsbtn = document.getElementById("docsbtn")
+    if (docsbtn) docsbtn.onclick = () => simPostMessage("docs", {})
+})
+
 // to support downloading directly to device
 if (!inIFrame)
     document.addEventListener("DOMContentLoaded", () => {
@@ -462,8 +468,12 @@ function imgToPng(hex) {
     for (let x = 0; x < w; ++x) {
         for (let y = 0; y < h; ++y) {
             const c = pixels[j++]
-            ctx.fillStyle = palette[c]
-            ctx.fillRect(x, y, 1, 1)
+            if (c > 0) {
+                ctx.fillStyle = palette[c]
+                ctx.fillRect(x, y, 1, 1)
+            } else {
+                ctx.clearRect(x, y, 1, 1)
+            }
         }
     }
     const png = canvas.toDataURL("image/png")
@@ -474,17 +484,27 @@ addSimMessageHandler("docs", async data => {
     const msg = uint8ArrayToString(data)
     const jsg = JSON.parse(msg)
 
-    switch (jsg.type) {
-        case "image": {
-            const name = jsg.name
-            const png = imgToPng(jsg.pixels)
-            const a = document.createElement("a")
-            a.setAttribute("href", png)
-            a.setAttribute("download", `${name}.png`)
-            document.body.append(a)
-            a.click()
+    const container = document.createElement("dialog")
+    container.classList.add("art")
 
-            await delay()
+    jsg.forEach(({ type, name, pixels }) => {
+        const fn = `${type}_${name}`
+        if (!pixels) {
+            console.error(`${fn} missing pixels`)
+            return
         }
-    }
+        const png = imgToPng(pixels)
+        const img = document.createElement("img")
+        img.src = png
+        img.alt = fn
+        const a = document.createElement("a")
+        a.setAttribute("href", png)
+        a.setAttribute("download", `${fn}.png`)
+        a.append(img)
+
+        container.append(a)
+    })
+
+    document.body.append(container)
+    container.showModal()
 })

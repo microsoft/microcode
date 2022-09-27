@@ -37,7 +37,14 @@
                 left: 0.25rem;
                 bottom: 0;
             }
-            #simbtn:visited {
+            #simbtn button {
+                color:white;
+                background: none;
+                border: none;
+                text-decoration: underline;
+                font-size: 14pt;
+            } 
+            #simbtn a:visited {
                 color: white;
             }
             #connectbtn {
@@ -53,6 +60,18 @@
             }
             dialog::backdrop {
                 background: rgba(0, 0, 0, 0.8);
+            }
+            .art {
+                background-color: #333;
+            }
+            .art > a {
+                margin: 0.5rem;
+            }
+            .art > a > img {
+                min-width: 2rem;
+                image-rendering: pixelated;
+                background: black;
+                border: solid 1px #fff;
             }
             .lds-ripple {
                 width: 80px;
@@ -154,11 +173,13 @@
             sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
         >
         </iframe>
-        <a
-            id="simbtn"
-            href="https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001"
-            >sim</a
-        >
+        <div id="simbtn">
+            <a
+                href="https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001"
+                >sim</a
+            >
+            <button id="docsbtn">art</button>
+        </div>
         <script type="text/javascript">
             makeCodeRun({ js: "./js/binary.js" })
         </script>

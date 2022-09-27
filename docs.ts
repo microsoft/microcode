@@ -14,10 +14,9 @@ namespace docs {
     }
 
     let theApp: microcode.App
-    export function renderApp(app: microcode.App) {
+    export function setup(app: microcode.App) {
         theApp = app
-        _renderApp()
-        theApp = undefined
+        control.simmessages.onReceived("docs", () => _renderApp())
     }
 
     interface RenderedImage {
