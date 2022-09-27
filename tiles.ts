@@ -351,17 +351,17 @@ namespace microcode {
     const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
     radio_send.priority = 100
     radio_send.serviceClassName = "radio"
-    radio_send.serviceCommand = 0x81
-    radio_send.serviceArgFromModifier = (x: number) =>
-        Buffer.pack("d", [x || 1])
-    // radio_send.constraints.handling = maxOneValueOut
+    radio_send.jdKind = JdKind.Radio
 
-    const varA = addActuator(TID_ACTUATOR_CUP_A_ASSIGN, "Into A", "value_out")
-    varA.jdParam = 0
-    const varB = addActuator(TID_ACTUATOR_CUP_B_ASSIGN, "Into B", "value_out")
-    varB.jdParam = 1
-    const varC = addActuator(TID_ACTUATOR_CUP_C_ASSIGN, "Into C", "value_out")
-    varC.jdParam = 2
+    function addAssign(tid: string, name: string, id: number) {
+        const theVar = addActuator(tid, name, "value_out")
+        theVar.jdParam = id
+        theVar.jdKind = JdKind.Variable
+    }
+
+    addAssign(TID_ACTUATOR_CUP_A_ASSIGN, "Into A", 0)
+    addAssign(TID_ACTUATOR_CUP_B_ASSIGN, "Into B", 1)
+    addAssign(TID_ACTUATOR_CUP_C_ASSIGN, "Into C", 2)
 
     const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "sound_emoji")
     emoji.serviceClassName = "soundPlayer"
@@ -404,6 +404,7 @@ namespace microcode {
                 kind == "M"
                     ? new ModifierDefn(tid, name + " " + v.toString(), name, 10)
                     : new FilterDefn(tid, name + " " + v.toString(), name, 10)
+            tile.jdKind = JdKind.Literal
             tile.jdParam = v
             // tile.constraints = terminal
             if (kind == "M") tilesDB.modifiers[tid] = tile
@@ -420,6 +421,7 @@ namespace microcode {
     make_vals("page", "M", 1).forEach(m => {
         m.constraints.handling = m.constraints.handling || {}
         m.constraints.handling.terminal = true
+        m.jdKind = JdKind.Page
     })
 
     const numLeds = 8
@@ -459,19 +461,45 @@ namespace microcode {
         return b
     }
 
-    const addReadValue = (tid: string, state: string, varid: number) => {
+    const addReadValue = (
+        tid: string,
+        state: string,
+        kind: JdKind,
+        varid: number
+    ) => {
         const mod = new ModifierDefn(tid, state, "value_out", 10)
         mod.jdParam = varid
+        mod.jdKind = kind
         tilesDB.modifiers[tid] = mod
         return mod
     }
-    addReadValue(TID_MODIFIER_CUP_A_READ, "value of variable A", 0)
-    addReadValue(TID_MODIFIER_CUP_B_READ, "value of variable B", 1)
-    addReadValue(TID_MODIFIER_CUP_C_READ, "value of variable C", 2)
+    addReadValue(
+        TID_MODIFIER_CUP_A_READ,
+        "value of variable A",
+        JdKind.Variable,
+        0
+    )
+    addReadValue(
+        TID_MODIFIER_CUP_B_READ,
+        "value of variable B",
+        JdKind.Variable,
+        1
+    )
+    addReadValue(
+        TID_MODIFIER_CUP_C_READ,
+        "value of variable C",
+        JdKind.Variable,
+        2
+    )
     // TODO: this should only be present when radio receive in When section
-    addReadValue(TID_MODIFIER_RADIO_VALUE, "number from radio", 3)
+    addReadValue(TID_MODIFIER_RADIO_VALUE, "number from radio", JdKind.Radio, 3)
 
-    const random_toss = addReadValue(TID_MODIFIER_RANDOM_TOSS, "Toss", 5)
+    const random_toss = addReadValue(
+        TID_MODIFIER_RANDOM_TOSS,
+        "Toss",
+        JdKind.RandomToss,
+        5
+    )
     random_toss.priority = 70
     random_toss.constraints = {}
     random_toss.constraints.disallow = { tiles: [TID_MODIFIER_VALUE_1] }

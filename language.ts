@@ -36,6 +36,14 @@ namespace microcode {
         deserialize: (s: string) => any
     }
 
+    export enum JdKind {
+        Literal = 1,
+        Variable = 2,
+        Radio = 3,
+        RandomToss = 4,
+        Page = 5,
+    }
+
     export class TileDefn {
         constructor(
             public type: TileType,
@@ -49,6 +57,7 @@ namespace microcode {
         hidden: boolean // Hide from UI?
         constraints: Constraints
         fieldEditor: FieldEditor
+        jdKind: JdKind
         jdParam: any
         jdExternalClass: number
 

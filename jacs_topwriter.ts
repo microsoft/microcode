@@ -533,15 +533,121 @@ namespace jacs {
             ])
         }
 
-        private getValueOut(rule: microcode.RuleDefn) {
-            let v = undefined
-            for (const m of rule.modifiers) {
-                if (m.category == "value_out") {
-                    if (v === undefined) v = 0
-                    v += m.jdParam
-                }
+        private modExpr(mod: microcode.ModifierDefn) {
+            const wr = this.writer
+            switch (mod.jdKind) {
+                case microcode.JdKind.Literal:
+                    return literal(mod.jdParam)
+                case microcode.JdKind.Variable:
+                    return this.pipeVar(mod.jdParam).read(wr)
+                case microcode.JdKind.Radio:
+                    return this.lookupGlobal("radio").read(wr)
+                default:
+                    this.error("can't emit kind: " + mod.jdKind)
+                    return literal(0)
+            }
+        }
+
+        private constantFold(mods: microcode.ModifierDefn[], defl = 0) {
+            if (mods.length == 0) return defl
+            let v = 0
+            for (const m of mods) {
+                if (m.jdKind != microcode.JdKind.Literal) return undefined
+                v += m.jdParam
             }
             return v
+        }
+
+        private emitAddSeq(
+            mods: microcode.ModifierDefn[],
+            target: Variable,
+            defl: number = 0,
+            clear = true
+        ) {
+            const wr = this.writer
+            const addOrSet = (vv: Value) => {
+                target.write(
+                    wr,
+                    clear
+                        ? vv
+                        : wr.emitExpr(OpExpr.EXPR2_ADD, [target.read(wr), vv])
+                )
+                clear = false
+            }
+
+            if (mods.length == 0) target.write(wr, literal(defl))
+            else {
+                if (mods[0].jdKind == microcode.JdKind.RandomToss) {
+                    const bndVar = this.proc.lookupLocal("rndBnd")
+                    mods = mods.slice(1)
+                    let rnd: Value
+                    let folded = this.constantFold(mods, 5)
+                    if (folded != undefined) {
+                        if (folded <= 2) folded = 2
+                        rnd = this.emitRandomInt(folded - 1)
+                    } else {
+                        this.emitAddSeq(mods, bndVar, 5)
+                        wr.emitIf(
+                            // !(2<wr) == 2>=wr == wr<=2, but use negation because of 'bndVar' being possibly nan
+                            wr.emitExpr(OpExpr.EXPR1_NOT, [
+                                wr.emitExpr(OpExpr.EXPR2_LT, [
+                                    literal(2),
+                                    bndVar.read(wr),
+                                ]),
+                            ]),
+                            () => {
+                                bndVar.write(wr, literal(2))
+                            }
+                        )
+                        rnd = wr.emitExpr(OpExpr.EXPR1_RANDOM_INT, [
+                            this.emitAdd(bndVar.read(wr), -1),
+                        ])
+                    }
+                    addOrSet(this.emitAdd(rnd, 1))
+                } else {
+                    const folded = this.constantFold(mods, defl)
+                    if (folded != undefined) {
+                        addOrSet(literal(folded))
+                    } else {
+                        for (let i = 0; i < mods.length; ++i)
+                            addOrSet(this.modExpr(mods[i]))
+                    }
+                }
+            }
+        }
+
+        private breaksValSeq(mod: microcode.ModifierDefn) {
+            switch (mod.jdKind) {
+                case microcode.JdKind.RandomToss:
+                    return true
+                default:
+                    return false
+            }
+        }
+
+        private emitValueOut(rule: microcode.RuleDefn, defl: number) {
+            let currSeq: microcode.ModifierDefn[] = []
+            let first = true
+
+            for (const m of rule.modifiers) {
+                if (m.category == "value_out") {
+                    if (this.breaksValSeq(m) && currSeq.length) {
+                        this.emitAddSeq(currSeq, this.currValue(), 0, first)
+                        currSeq = []
+                        first = false
+                    }
+                    currSeq.push(m)
+                }
+            }
+
+            if (currSeq.length) {
+                this.emitAddSeq(currSeq, this.currValue(), 0, first)
+                first = false
+            }
+
+            if (first) {
+                this.currValue().write(this.writer, literal(defl))
+            }
         }
 
         private getValueIn(rule: microcode.RuleDefn) {
@@ -581,14 +687,25 @@ namespace jacs {
                     if (m.category == "page") targetPage = m.jdParam
 
                 wr.emitCall(this.pageProc(targetPage).index, [])
-            } else if (false) {
-                // (actuator.tid == microcode.TID_ACTUATOR_RANDOM_TOSS) {
-                let v = this.getValueOut(rule)
-                if (v == undefined) v = 5
-                this.currValue().write(
-                    wr,
-                    this.emitAdd(this.emitRandomInt(v - 1), 1)
+            } else if (actuator.jdKind == microcode.JdKind.Variable) {
+                this.emitValueOut(rule, 1)
+                const pv = this.pipeVar(actuator.jdParam)
+                pv.write(wr, this.currValue().read(wr))
+                this.emitSleep(ANTI_FREEZE_DELAY)
+                this.emitSendCmd(
+                    this.pipeRole(actuator.jdParam),
+                    CMD_CONDITION_FIRE
                 )
+            } else if (actuator.jdKind == microcode.JdKind.Radio) {
+                this.emitValueOut(rule, 1)
+                wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [literal(8), literal(0)])
+                wr.emitStmt(OpStmt.STMT4_STORE_BUFFER, [
+                    literal(NumFmt.F64),
+                    literal(0),
+                    literal(0),
+                    this.currValue().read(wr),
+                ])
+                this.emitSendCmd(this.lookupActuatorRole(rule), 0x81)
             } else if (actuator.serviceArgFromModifier) {
                 const role = this.lookupActuatorRole(rule)
                 let jdParam: any = null
@@ -600,18 +717,6 @@ namespace jacs {
                 this.emitSendCmd(role, actuator.serviceCommand)
             } else {
                 this.error(`can't map act role for ${JSON.stringify(actuator)}`)
-            }
-
-            for (const m of rule.modifiers) {
-                if (m.category == "pipe_out") {
-                    const pv = this.pipeVar(m.jdParam)
-                    pv.write(wr, this.currValue().read(wr))
-                    this.emitSleep(ANTI_FREEZE_DELAY)
-                    this.emitSendCmd(
-                        this.pipeRole(m.jdParam),
-                        CMD_CONDITION_FIRE
-                    )
-                }
             }
         }
 
