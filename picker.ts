@@ -216,6 +216,7 @@ namespace microcode {
                 top += group.bounds.height
                 this.navigator.addButtons(group.buttons)
             })
+            this.navigator.finished()
 
             if (this.deleteBtn) {
                 this.deleteBtn.xfrm.localPos.x =
