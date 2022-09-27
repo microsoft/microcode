@@ -478,14 +478,15 @@ namespace jacs {
         private emitSequance(
             rule: microcode.RuleDefn,
             lockvar: Variable,
-            delay: number
+            delay: number,
+            bufSize: number
         ) {
             const actuator = rule.actuators[0]
             const wr = this.writer
             const params = rule.modifiers
                 .map(m => m.serviceCommandArg())
                 .filter(a => !!a)
-            if (params.length == 0) params.push(Buffer.create(6))
+            if (params.length == 0) params.push(Buffer.create(bufSize))
             if (lockvar) lockvar.write(wr, literal(this.currRuleId))
             for (let i = 0; i < params.length; ++i) {
                 const role = this.lookupActuatorRole(rule)
@@ -571,9 +572,9 @@ namespace jacs {
             const wr = this.writer
             if (actuator == null) return // do nothing
             if (actuator.tid == microcode.TID_ACTUATOR_PAINT) {
-                this.emitSequance(rule, this.currAnimation, 400)
+                this.emitSequance(rule, this.currAnimation, 400, 5)
             } else if (actuator.tid == microcode.TID_ACTUATOR_MUSIC) {
-                this.emitSequance(rule, this.currMelody, 400)
+                this.emitSequance(rule, this.currMelody, 400, 6)
             } else if (actuator.tid == microcode.TID_ACTUATOR_SWITCH_PAGE) {
                 let targetPage = 1
                 for (const m of rule.modifiers)
