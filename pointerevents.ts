@@ -6,10 +6,23 @@ namespace pointerevents {
         buttons: number
     }
 
-    const contexts: ((x: number, y: number) => void)[] = []
+    export interface WheelEventMessage {
+        type: "wheel"
+        dx: number
+        dy: number
+        dz: number
+    }
+
+    const contexts: {
+        click: (x: number, y: number) => void
+        wheel: (dx: number, dy: number) => void
+    }[] = []
     //% shim=TD_NOOP
-    export function pushContext(click: (x: number, y: number) => void) {
-        contexts.push(click)
+    export function pushContext(
+        click: (x: number, y: number) => void,
+        wheel: (dx: number, dy: number) => void
+    ) {
+        contexts.push({ click, wheel })
         setup()
     }
 
@@ -21,11 +34,19 @@ namespace pointerevents {
     //% shim=TD_NOOP
     function setup() {
         control.simmessages.onReceived("pointer-events", data => {
-            const msg: PointerEventMessage = JSON.parse(data.toString())
+            const ctx = contexts[contexts.length - 1]
+            if (!ctx) return
+
+            const msg = JSON.parse(
+                data.toString()
+            )
             // down event!
-            if (msg.type === "pointerdown" && msg.buttons) {
-                const handler = contexts[contexts.length - 1]
-                if (handler) handler(msg.x, msg.y)
+            if (msg.type === "pointerdown") {
+                const m = msg as PointerEventMessage
+                ctx.click(m.x, m.y)
+            } else if (msg.type === "wheel") {
+                const m = msg as WheelEventMessage
+                ctx.wheel(m.dx, m.dy)
             }
         })
     }

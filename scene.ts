@@ -30,7 +30,10 @@ namespace microcode {
         /* abstract */ shutdown() {}
 
         /* override */ activate() {
-            pointerevents.pushContext((x, y) => this.handleClick(x, y))
+            pointerevents.pushContext(
+                (x, y) => this.handleClick(x, y),
+                (dx, dy) => console.log(`wheel ${dx} ${dy}`)
+            )
         }
 
         /* override */ deactivate() {
