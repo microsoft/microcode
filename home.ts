@@ -81,7 +81,7 @@ namespace microcode {
                 Screen.LEFT_EDGE +
                     ((Screen.WIDTH - microbitLogo.width) >> 1) +
                     dx,
-                Screen.TOP_EDGE + OFFSET - wordLogo.height + dx + this.yOffset
+                Screen.TOP_EDGE + OFFSET - wordLogo.height + dx + this.yOffset + 4
             )
             if (!this.yOffset) {
                 const tagline = "for micro:bit V2"

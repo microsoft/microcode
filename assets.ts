@@ -177,20 +177,22 @@ namespace microcode {
     ..fffff.........fffff...ffff......fffffff......ffff.............fffffff............fffffff...........fffffff.........ffffffffff......ffffffff...
     `
     export const microbitLogo = img` 
-    .....1111111111111111.....
-    ...11111111111111111111...
-    ..111................111..
-    .111..................111.
-    .11....................11.
-    11.....11........11.....11
-    11....1111......1111....11
-    11....1111......1111....11
-    11.....11........11.....11
-    .11....................11.
-    .111..................111.
-    ..111................111..
-    ...11111111111111111111...
-    .....1111111111111111.....
+    .....1111111111111111.......
+    ...111bbbbbbbbbbbbbbbb1.....
+    ..11bbbbbbbbbbbbbbbbbbbb....
+    .11bbbffffffffffffffffbbb...
+    .1bbbf.................bbb..
+    11bbf..11........11.....bbf.
+    1bbf..11bb......11bb.....bbf
+    1bb...1bbbb.....1bbbb....bbf
+    1bb....bbbbf.....bbbbf...bbf
+    .bb.....bbff......bbff...bbf
+    ..bb.....ff........ff...bbff
+    ..bbb..................bbbf.
+    ...bbb111111111111111.bbbff.
+    ....bbbbbbbbbbbbbbbbbbbbff..
+    .....fbbbbbbbbbbbbbbbbfff...
+    .......ffffffffffffffff.....
     `
 
     export const editorBackground = img`
