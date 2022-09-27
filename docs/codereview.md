@@ -1,28 +1,30 @@
 ## Utils
 
--   math.ts
 -   curves.ts
+-   math.ts
 
 ## Graphics
 
--   screen.ts
 -   affine.ts
--   bounds.ts
--   sprite.ts
--   scene.ts
 -   animation.ts
+-   bounds.ts
+-   screen.ts
+-   sprite.ts
 
 ## User interface
 
--   accessibility.ts
--   component.ts
--   quadtree.ts
--   cursor.ts
 -   button.ts
+-   component.ts
+-   cursor.ts
+-   cursorscene.ts
+-   keymap.ts
 -   menu.ts
+-   navigator.ts
 -   picker.ts
+-   pointerevents.ts
+-   scene.ts
 
-## UI assets
+## UI images
 
 -   assets.ts
 
@@ -37,7 +39,7 @@
 ## Editor
 
 -   editor.ts
--   iconeditor.ts
+-   fieldeditors.ts
 
 ## Compiler
 
@@ -45,6 +47,13 @@
 
 ## Application
 
--   main.ts
+-   accessibility.ts
 -   app.ts
+-   config.ts
+-   docs.ts
 -   home.ts
+-   gallery.ts
+-   main.ts
+-   options.ts
+-   samples.ts
+-   version.ts
