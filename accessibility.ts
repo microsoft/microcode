@@ -125,6 +125,13 @@ namespace accessibility {
         N8: "rock paper scissors",
         N9: "head or tail",
         N10: "clap lights",
+
+        A20_1: "red",
+        A20_2: "green",
+        A20_3: "blue",
+        A20_4: "purple",
+        A20_5: "yellow",
+        A20_6: "black",        
     }
     export function ariaToTooltip(ariaId: string) {
         const s = (liveStrings[ariaId] || "").replaceAll("_", " ")

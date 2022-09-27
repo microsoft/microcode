@@ -106,6 +106,7 @@ namespace microcode {
     export const TID_MODIFIER_RGB_LED_COLOR_3 = "A20_3"
     export const TID_MODIFIER_RGB_LED_COLOR_4 = "A20_4"
     export const TID_MODIFIER_RGB_LED_COLOR_5 = "A20_5"
+    export const TID_MODIFIER_RGB_LED_COLOR_6= "A20_6"
 
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
@@ -436,6 +437,7 @@ namespace microcode {
     addRGB(3, "blue", hex`00002f`)
     addRGB(4, "magenta", hex`2f002f`)
     addRGB(5, "yellow", hex`2f2f00`)
+    addRGB(6, "black", hex`000000`)
     // addRGB(4, "teal", hex`00ffff`)
     // addRGB(4, "white", hex`ffffff`)
 
