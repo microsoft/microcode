@@ -492,23 +492,31 @@ addSimMessageHandler("docs", async data => {
     button.onclick = async () => {
         const dir = await window.showDirectoryPicker()
         if (!dir) return
-        await Promise.all(jsg.map(async ({ type, name, pixels }) => {
-            const png = imgToPng(pixels)
-            const blob = await (await fetch(png)).blob()
-            const fn = `${type}_${name}.png`
-            const file = await dir.getFileHandle(fn, { create: true })
-            const writable = await file.createWritable({
-                keepExistingData: false,
+        await Promise.all(
+            jsg.map(async ({ type, name, pixels }) => {
+                const png = imgToPng(pixels)
+                const blob = await (await fetch(png)).blob()
+                const fn = `${type}_${name}.png`
+                    .replace(/,/g, "_")
+                    .replace(/\/s/g, "_")
+                    .replace(/_+/g, "_")
+                const file = await dir.getFileHandle(fn, { create: true })
+                const writable = await file.createWritable({
+                    keepExistingData: false,
+                })
+                await writable.write(blob)
+                await writable.close()
             })
-            await writable.write(blob)
-            await writable.close()
-        }))
+        )
         alert(`rendering done`)
     }
     container.append(button)
 
     jsg.forEach(({ type, name, pixels }) => {
         const fn = `${type}_${name}`
+            .replace(/,/g, "_")
+            .replace(/\/s/g, "_")
+            .replace(/_+/g, "_")
         if (!pixels) {
             console.error(`${fn} missing pixels`)
             return
