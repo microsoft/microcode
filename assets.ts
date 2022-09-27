@@ -19,18 +19,7 @@ namespace microcode {
             if (this.reg) return
 
             this.reg = {}
-            this.reg["cursor"] = icondb.cursor
-            this.reg["stylus"] = icondb.stylus
-            this.reg["button_white"] = icondb.btn_bknd_white
-            this.reg["button_white_bordered"] = icondb.btn_bknd_white_bordered
-            this.reg["button_beige"] = icondb.btn_bknd_beige
-            this.reg["button_beige_bordered"] = icondb.btn_bknd_beige_bordered
-            this.reg["button_clear"] = icondb.btn_bknd_clear
-            this.reg["button_danger"] = icondb.btn_bknd_danger
-            this.reg["edit"] = icondb.btn_edit
             this.reg["delete"] = icondb.btn_delete
-            this.reg["cancel"] = icondb.btn_cancel
-            this.reg["ok"] = icondb.btn_ok
             this.reg["plus"] = icondb.btn_plus
             this.reg["reset"] = icondb.btn_play
             this.reg["new_file"] = icondb.btn_new_file
@@ -359,50 +348,7 @@ namespace icondb {
         . 8 8 8 8 8 8 8 .
         . c c c c c c c .
     `
-    ///
-    /// CURSOR
-    ///
-    export const cursor = img`
-        ..................
-        ..................
-        ..................
-        ..................
-        ..................
-        ..................
-        ..................
-        ..................
-        .......ff.........
-        .......f5ff.......
-        .......f555ff.....
-        ........f5555ff...
-        ........f555555f..
-        ........f55555f...
-        .........f5555f...
-        .........f5ff55f..
-        ..........f..f5f..
-        ..............f...
-    `
-    export const stylus = img`
-        ...............ff..
-        ..............faaf.
-        .............fa33af
-        ............f4533af
-        ...........f4555af.
-        ..........f45554f..
-        .........f45554f...
-        ........fe5554f....
-        ........fee54f.....
-        ........ffeef......
-        ........ffff.......
-        ...................
-        ...................
-        ...................
-        ...................
-        ...................
-        ...................
-        ...................
-        ...................
-    `
+
     ///
     /// BUTTON ICONS
     ///
@@ -442,24 +388,7 @@ namespace icondb {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
     `
-    export const btn_edit = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . f f f f f . . . . .
-        . . . . . f a 3 3 3 a f . . . .
-        . . . . . f a 3 3 3 a f . . . .
-        . . . . . f 4 5 5 5 4 f . . . .
-        . . . . . f 4 5 5 5 4 f . . . .
-        . . . . . f 4 5 5 5 4 f . . . .
-        . . . . . f 4 5 5 5 4 f . . . .
-        . . . . . f 4 5 5 5 4 f . . . .
-        . . . . . f 4 5 5 5 4 f . . . .
-        . . . . . f e e e e e f . . . .
-        . . . . . . f e e e f . . . . .
-        . . . . . . . f f f . . . . . .
-        . . . . . . . . f . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
+
     export const btn_delete = img`
         . . . . . . . . . . . . . . . .
         . . . . . . c f f . . . . . . .
@@ -479,42 +408,6 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
     `
 
-    export const btn_cancel = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . c c . . . c c . . . .
-        . . . . . c c c . c c c . . . .
-        . . . . . b c c c c c b . . . .
-        . . . . . . b c c c b . . . . .
-        . . . . . . c c c c c . . . . .
-        . . . . . c c c b c c c . . . .
-        . . . . . c c b . b c c . . . .
-        . . . . . b b . . . b b . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const btn_ok = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . 7 7 . . . .
-        . . . . . . . . . 7 7 7 . . . .
-        . . . . . . . . 7 7 7 6 . . . .
-        . . . . 7 7 . 7 7 7 6 . . . . .
-        . . . . 7 7 7 7 7 6 . . . . . .
-        . . . . 7 7 7 7 6 . . . . . . .
-        . . . . 6 7 7 6 . . . . . . . .
-        . . . . . 6 6 . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
     export const btn_plus = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -745,122 +638,6 @@ namespace icondb {
         . . . b b b b b b b . . . . . .
         . . . . . . . . . . . . . . . .
 `
-
-    ///
-    /// BUTTON BACKGROUNDS
-    ///
-    export const btn_bknd_white = img`
-        . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 .
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        c 1 1 1 1 1 1 1 1 1 1 1 1 1 1 c
-        . c c c c c c c c c c c c c c .
-    `
-    export const btn_bknd_white_bordered = img`
-        . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 .
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        c 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 c
-        . c c c c c c c c c c c c c c c c .
-    `
-    export const btn_bknd_beige = img`
-        . d d d d d d d d d d d d d d .
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d
-        c d d d d d d d d d d d d d d c
-        . c c c c c c c c c c c c c c .
-    `
-    export const btn_bknd_beige_bordered = img`
-        . d d d d d d d d d d d d d d d d .
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        d d d d d d d d d d d d d d d d d d
-        c d d d d d d d d d d d d d d d d c
-        . c c c c c c c c c c c c c c c c .
-    `
-    export const btn_bknd_clear = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const btn_bknd_danger = img`
-        . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 .
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-        2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2
-        . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 .
-    `
 
     ///
     /// GENERIC LANGUAGE TILES (NOT HARDWARE SPECIFIC)
