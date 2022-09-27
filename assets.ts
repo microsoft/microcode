@@ -91,6 +91,10 @@ namespace microcode {
             this.reg[TID_FILTER_VALUE_4] = icondb.tile_value_4
             this.reg[TID_FILTER_VALUE_5] = icondb.tile_value_5
 
+            this.reg[TID_FILTER_PIPE_OUT_A] = icondb.outPipeA
+            this.reg[TID_FILTER_PIPE_OUT_B] = icondb.outPipeB
+            this.reg[TID_FILTER_PIPE_OUT_C] = icondb.outPipeC
+
             this.reg[TID_FILTER_LOUD] = icondb.speaker
             this.reg[TID_FILTER_QUIET] = icondb.speakerQuiet
 

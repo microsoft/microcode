@@ -106,6 +106,10 @@ namespace accessibility {
         M19twinkle: "twinkle",
         M19yawn: "yawn",
 
+        F20A: "get variable A's value",
+        F20B: "get variable B's value",
+        F20C: "get variable C's value",
+
         M20A: "get variable A's value",
         M20B: "get variable B's value",
         M20C: "get variable C's value",

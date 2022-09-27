@@ -47,14 +47,17 @@ namespace microcode {
     export const TID_FILTER_LOUD = "F15"
     export const TID_FILTER_QUIET = "F16"
     export const TID_FILTER_ACCEL = "F17"
-    export const TID_FILTER_TIMESPAN_RANDOM = "F18"
-    export const TID_FILTER_TIMESPAN_VERY_LONG = "F19"
     export const TID_FILTER_ACCEL_SHAKE = "F17_shake"
     export const TID_FILTER_ACCEL_FREEFALL = "F17_freefall"
     export const TID_FILTER_ACCEL_TILT_UP = "F17_tilt_up"
     export const TID_FILTER_ACCEL_TILT_DOWN = "F17_tilt_down"
     export const TID_FILTER_ACCEL_TILT_LEFT = "F17_tilt_left"
     export const TID_FILTER_ACCEL_TILT_RIGHT = "F17_tilt_right"
+    export const TID_FILTER_TIMESPAN_RANDOM = "F18"
+    export const TID_FILTER_TIMESPAN_VERY_LONG = "F19"
+    export const TID_FILTER_PIPE_OUT_A = "F20A"
+    export const TID_FILTER_PIPE_OUT_B = "F20B"
+    export const TID_FILTER_PIPE_OUT_C = "F20C"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -476,14 +479,22 @@ namespace microcode {
         return b
     }
 
-    const addPipeModifier = (tid: string, state: string, varid: number) => {
+    const addPipeOutModifier = (tid: string, state: string, varid: number) => {
         const mod = new ModifierDefn(tid, state, "value_out", 10)
         mod.jdParam = varid
         tilesDB.modifiers[tid] = mod
     }
-    addPipeModifier(TID_MODIFIER_PIPE_OUT_A, "value of variable A", 0)
-    addPipeModifier(TID_MODIFIER_PIPE_OUT_B, "value of variable B", 1)
-    addPipeModifier(TID_MODIFIER_PIPE_OUT_C, "value of variable C", 2)
+    addPipeOutModifier(TID_MODIFIER_PIPE_OUT_A, "value of variable A", 0)
+    addPipeOutModifier(TID_MODIFIER_PIPE_OUT_B, "value of variable B", 1)
+    addPipeOutModifier(TID_MODIFIER_PIPE_OUT_C, "value of variable C", 2)
+    const addPipeOutFilter = (tid: string, state: string, varid: number) => {
+        const mod = new FilterDefn(tid, state, "value_in", 10)
+        mod.jdParam = varid
+        tilesDB.filters[tid] = mod
+    }
+    addPipeOutFilter(TID_FILTER_PIPE_OUT_A, "value of variable A", 0)
+    addPipeOutFilter(TID_FILTER_PIPE_OUT_B, "value of variable B", 1)
+    addPipeOutFilter(TID_FILTER_PIPE_OUT_C, "value of variable C", 2)
 
     const iconFieldEditor: FieldEditor = {
         init: img`
