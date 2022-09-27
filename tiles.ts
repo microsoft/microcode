@@ -24,9 +24,9 @@ namespace microcode {
     export const TID_SENSOR_TEMP = "S6"
     export const TID_SENSOR_RADIO_RECEIVE = "S7"
     export const TID_SENSOR_MICROPHONE = "S8"
-    export const TID_SENSOR_OUT_PIPE_A = "S9A"
-    export const TID_SENSOR_OUT_PIPE_B = "S9B"
-    export const TID_SENSOR_OUT_PIPE_C = "S9C"
+    export const TID_SENSOR_CUP_A_WRITTEN = "S9A"
+    export const TID_SENSOR_CUP_B_WRITTEN = "S9B"
+    export const TID_SENSOR_CUP_C_WRITTEN = "S9C"
     export const TID_SENSOR_MAGNET = "S10"
 
     // filters for TID_SENSOR_PRESS
@@ -55,9 +55,6 @@ namespace microcode {
     export const TID_FILTER_ACCEL_TILT_RIGHT = "F17_tilt_right"
     export const TID_FILTER_TIMESPAN_RANDOM = "F18"
     export const TID_FILTER_TIMESPAN_VERY_LONG = "F19"
-    export const TID_FILTER_PIPE_OUT_A = "F20A"
-    export const TID_FILTER_PIPE_OUT_B = "F20B"
-    export const TID_FILTER_PIPE_OUT_C = "F20C"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -67,9 +64,9 @@ namespace microcode {
     export const TID_ACTUATOR_RADIO_SEND = "A6"
     export const TID_ACTUATOR_RANDOM_TOSS = "A7"
     export const TID_ACTUATOR_RGB_LED = "A8"
-    export const TID_ACTUATOR_ASSIGN_A = "A9A"
-    export const TID_ACTUATOR_ASSIGN_B = "A9B"
-    export const TID_ACTUATOR_ASSIGN_C = "A9C"
+    export const TID_ACTUATOR_CUP_A_ASSIGN = "A9A"
+    export const TID_ACTUATOR_CUP_B_ASSIGN = "A9B"
+    export const TID_ACTUATOR_CUP_C_ASSIGN = "A9C"
 
     export const TID_MODIFIER_PAGE_1 = "M1"
     export const TID_MODIFIER_PAGE_2 = "M2"
@@ -102,9 +99,9 @@ namespace microcode {
     export const TID_MODIFIER_EMOJI_TWINKLE = "M19twinkle"
     export const TID_MODIFIER_EMOJI_YAWN = "M19yawn"
 
-    export const TID_MODIFIER_PIPE_OUT_A = "M20A"
-    export const TID_MODIFIER_PIPE_OUT_B = "M20B"
-    export const TID_MODIFIER_PIPE_OUT_C = "M20C"
+    export const TID_MODIFIER_CUP_A_READ = "M20A"
+    export const TID_MODIFIER_CUP_B_READ = "M20B"
+    export const TID_MODIFIER_CUP_C_READ = "M20C"
 
     export const TID_MODIFIER_RGB_LED_COLOR_X = "A20_"
     export const TID_MODIFIER_RGB_LED_COLOR_1 = "A20_1"
@@ -224,16 +221,16 @@ namespace microcode {
         return tile
     }
 
-    function makePipe(tid: string, name: string, id: number) {
+    function makeCupSensor(tid: string, name: string, id: number) {
         const tile = makeSensor(tid, name, "value_in", 120 + id * 5)
         tile.jdParam = id
-        tile.serviceClassName = "pipe"
+        tile.serviceClassName = "cup"
         // tile.constraints.handling = maxOneValueIn
     }
 
-    makePipe(TID_SENSOR_OUT_PIPE_A, "out of pipe A", 0)
-    makePipe(TID_SENSOR_OUT_PIPE_B, "out of pipe B", 1)
-    makePipe(TID_SENSOR_OUT_PIPE_C, "out of pipe C", 2)
+    makeCupSensor(TID_SENSOR_CUP_A_WRITTEN, "cup A written", 0)
+    makeCupSensor(TID_SENSOR_CUP_B_WRITTEN, "cup B written", 1)
+    makeCupSensor(TID_SENSOR_CUP_C_WRITTEN, "cup C written", 2)
 
     const radio_recv = makeSensor(
         TID_SENSOR_RADIO_RECEIVE,
@@ -369,11 +366,11 @@ namespace microcode {
         Buffer.pack("d", [x || 1])
     // radio_send.constraints.handling = maxOneValueOut
 
-    const varA = addActuator(TID_ACTUATOR_ASSIGN_A, "Into A", "value_out")
+    const varA = addActuator(TID_ACTUATOR_CUP_A_ASSIGN, "Into A", "value_out")
     varA.jdParam = 0
-    const varB = addActuator(TID_ACTUATOR_ASSIGN_B, "Into B", "value_out")
+    const varB = addActuator(TID_ACTUATOR_CUP_B_ASSIGN, "Into B", "value_out")
     varB.jdParam = 1
-    const varC = addActuator(TID_ACTUATOR_ASSIGN_C, "Into C", "value_out")
+    const varC = addActuator(TID_ACTUATOR_CUP_C_ASSIGN, "Into C", "value_out")
     varC.jdParam = 2
 
     const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "sound_emoji")
@@ -479,22 +476,19 @@ namespace microcode {
         return b
     }
 
-    const addPipeOutModifier = (tid: string, state: string, varid: number) => {
+    const addCupReadModifier = (tid: string, state: string, varid: number) => {
         const mod = new ModifierDefn(tid, state, "value_out", 10)
         mod.jdParam = varid
         tilesDB.modifiers[tid] = mod
     }
-    addPipeOutModifier(TID_MODIFIER_PIPE_OUT_A, "value of variable A", 0)
-    addPipeOutModifier(TID_MODIFIER_PIPE_OUT_B, "value of variable B", 1)
-    addPipeOutModifier(TID_MODIFIER_PIPE_OUT_C, "value of variable C", 2)
+    addCupReadModifier(TID_MODIFIER_CUP_A_READ, "value of variable A", 0)
+    addCupReadModifier(TID_MODIFIER_CUP_B_READ, "value of variable B", 1)
+    addCupReadModifier(TID_MODIFIER_CUP_C_READ, "value of variable C", 2)
     const addPipeOutFilter = (tid: string, state: string, varid: number) => {
         const mod = new FilterDefn(tid, state, "value_in", 10)
         mod.jdParam = varid
         tilesDB.filters[tid] = mod
     }
-    addPipeOutFilter(TID_FILTER_PIPE_OUT_A, "value of variable A", 0)
-    addPipeOutFilter(TID_FILTER_PIPE_OUT_B, "value of variable B", 1)
-    addPipeOutFilter(TID_FILTER_PIPE_OUT_C, "value of variable C", 2)
 
     const iconFieldEditor: FieldEditor = {
         init: img`

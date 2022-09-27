@@ -1,8 +1,8 @@
 namespace microcode {
     export class icons {
-        static reg: { [name: string]: ImageG }
+        static reg: { [name: string]: Image }
 
-        public static get(name: string, nullIfMissing = false): ImageG {
+        public static get(name: string, nullIfMissing = false): Image {
             let icon = this.reg[name]
             if (!icon && !nullIfMissing) {
                 icon = this.reg["MISSING"]
@@ -69,9 +69,9 @@ namespace microcode {
             this.reg[TID_SENSOR_RELEASE] = icondb.finger_release
             this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
             this.reg[TID_SENSOR_ACCELEROMETER] = icondb.accelerometer
-            this.reg[TID_SENSOR_OUT_PIPE_A] = icondb.outPipeA
-            this.reg[TID_SENSOR_OUT_PIPE_B] = icondb.outPipeB
-            this.reg[TID_SENSOR_OUT_PIPE_C] = icondb.outPipeC
+            this.reg[TID_SENSOR_CUP_A_WRITTEN] = icondb.cupAwritten
+            this.reg[TID_SENSOR_CUP_B_WRITTEN] = icondb.cupBwritten
+            this.reg[TID_SENSOR_CUP_C_WRITTEN] = icondb.cupCwritten
             this.reg[TID_SENSOR_MAGNET] = icondb.magnet
 
             this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
@@ -91,10 +91,6 @@ namespace microcode {
             this.reg[TID_FILTER_VALUE_4] = icondb.tile_value_4
             this.reg[TID_FILTER_VALUE_5] = icondb.tile_value_5
 
-            this.reg[TID_FILTER_PIPE_OUT_A] = icondb.outPipeA
-            this.reg[TID_FILTER_PIPE_OUT_B] = icondb.outPipeB
-            this.reg[TID_FILTER_PIPE_OUT_C] = icondb.outPipeC
-
             this.reg[TID_FILTER_LOUD] = icondb.speaker
             this.reg[TID_FILTER_QUIET] = icondb.speakerQuiet
 
@@ -106,9 +102,9 @@ namespace microcode {
             this.reg[TID_ACTUATOR_MUSIC] = icondb.music
             this.reg[TID_ACTUATOR_RANDOM_TOSS] = icondb.diceToss
             this.reg[TID_ACTUATOR_RGB_LED] = icondb.rgbLed
-            this.reg[TID_ACTUATOR_ASSIGN_A] = icondb.inPipeA
-            this.reg[TID_ACTUATOR_ASSIGN_B] = icondb.inPipeB
-            this.reg[TID_ACTUATOR_ASSIGN_C] = icondb.inPipeC
+            this.reg[TID_ACTUATOR_CUP_A_ASSIGN] = icondb.cupAassign
+            this.reg[TID_ACTUATOR_CUP_B_ASSIGN] = icondb.cupBassign
+            this.reg[TID_ACTUATOR_CUP_C_ASSIGN] = icondb.cupCassign
 
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
@@ -142,9 +138,9 @@ namespace microcode {
             this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
             this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
 
-            this.reg[TID_MODIFIER_PIPE_OUT_A] = icondb.outPipeA
-            this.reg[TID_MODIFIER_PIPE_OUT_B] = icondb.outPipeB
-            this.reg[TID_MODIFIER_PIPE_OUT_C] = icondb.outPipeC
+            this.reg[TID_MODIFIER_CUP_A_READ] = icondb.cupAread
+            this.reg[TID_MODIFIER_CUP_B_READ] = icondb.cupBread
+            this.reg[TID_MODIFIER_CUP_C_READ] = icondb.cupCread
 
             this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
             this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.moveFall
@@ -223,7 +219,7 @@ namespace microcode {
 }
 
 // - upscale 5x5 image to 16 x 16
-function scaleUp(led55: ImageG) {
+function scaleUp(led55: Image) {
     const ret = image.create(16, 16)
     ret.fill(15)
     for (let row = 0; row < 5; row++) {
@@ -1930,114 +1926,90 @@ f f f f f f f f f f f f f f f f
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .`
 
-    export const inPipeA = img`
-        . . . . . . 6 9 6 . . . . . . .
-        . . . . . . 6 9 6 . . . . . . .
-        . . . . . . 6 9 6 . . . . . . .
-        . . . . . . 6 9 6 . . . . . . .
-        . . . . c c 6 9 6 c c . . . . .
-        . . . c 6 9 9 9 9 9 6 c . . . .
-        . . c f f 6 9 9 9 6 f f c . . .
-        . . c c f f 6 9 6 f f c c . . .
-        . . c d c c c c c c c b c . . .
-        . . c d 1 d d d d d d b c . . .
-        . . c d 1 d d f d d d b c . . .
-        . . c d 1 d f d f d d b c . . .
-        . . c d 1 d f f f d d b c . . .
-        . . c d 1 d f d f d d b c . . .
-        . . . d 1 d f d f d d b . . . .
-        . . . . 1 d d d d d d . . . . .
-    `
-    export const inPipeB = img`
-        . . . . . . 6 9 6 . . . . . . .
-        . . . . . . 6 9 6 . . . . . . .
-        . . . . . . 6 9 6 . . . . . . .
-        . . . . . . 6 9 6 . . . . . . .
-        . . . . c c 6 9 6 c c . . . . .
-        . . . c 6 9 9 9 9 9 6 c . . . .
-        . . c f f 6 9 9 9 6 f f c . . .
-        . . c c f f 6 9 6 f f c c . . .
-        . . c d c c c c c c c b c . . .
-        . . c d 1 d d d d d d b c . . .
-        . . c d 1 d f f d d d b c . . .
-        . . c d 1 d f d f d d b c . . .
-        . . c d 1 d f f f d d b c . . .
-        . . c d 1 d f d f d d b c . . .
-        . . . d 1 d f f d d d b . . . .
-        . . . . 1 d d d d d d . . . . .
-    `
-    export const inPipeC = img`
-        . . . . . . 6 9 6 . . . . . . .
-        . . . . . . 6 9 6 . . . . . . .
-        . . . . . . 6 9 6 . . . . . . .
-        . . . . . . 6 9 6 . . . . . . .
-        . . . . c c 6 9 6 c c . . . . .
-        . . . c 6 9 9 9 9 9 6 c . . . .
-        . . c f f 6 9 9 9 6 f f c . . .
-        . . c c f f 6 9 6 f f c c . . .
-        . . c d c c c c c c c b c . . .
-        . . c d 1 d d d d d d b c . . .
-        . . c d 1 d d f f d d b c . . .
-        . . c d 1 d f d d d d b c . . .
-        . . c d 1 d f d d d d b c . . .
-        . . c d 1 d f d d d d b c . . .
-        . . . d 1 d d f f d d b . . . .
-        . . . . 1 d d d d d d . . . . .
-    `
-    export const outPipeA = img`
-        . . . . . . . 6 . . . . . . . .
-        . . . . . . 6 9 6 . . . . . . .
-        . . . . . 6 9 9 9 6 . . . . . .
-        . . . . 6 9 9 9 9 9 6 . . . . .
-        . . . . c c 6 9 6 c c . . . . .
-        . . . c f f 6 9 6 f f c . . . .
+    // create cups from core images
+    const cup = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . c c c c c c c . . . . .
+        . . . c f f f f f f f c . . . .
         . . c f f f 6 9 6 f f f c . . .
-        . . c c f f 6 9 6 f f c c . . .
+        . . c c f 6 6 6 6 6 f c c . . .
         . . c d c c c c c c c b c . . .
         . . c d 1 d d d d d d b c . . .
-        . . c d 1 d d f d d d b c . . .
-        . . c d 1 d f d f d d b c . . .
-        . . c d 1 d f f f d d b c . . .
-        . . c d 1 d f d f d d b c . . .
-        . . . d 1 d f d f d d b . . . .
+        . . c d 1 d d d d d d b c . . .
+        . . c d 1 d d d d d d b c . . .
+        . . c d 1 d d d d d d b c . . .
+        . . c d 1 d d d d d d b c . . .
+        . . . d 1 d d d d d d b . . . .
         . . . . 1 d d d d d d . . . . .
     `
-    export const outPipeB = img`
-        . . . . . . . 6 . . . . . . . .
+
+    const labelA = img`
+        . f .
+        f . f
+        f f f
+        f . f
+        f . f
+    `
+    const labelB = img`
+        f f .
+        f . f
+        f f f
+        f . f
+        f f .
+    `
+    const labelC = img`
+        . f f
+        f . .
+        f . .
+        f . .
+        . f f
+    `
+
+    const inFromLeft = img`
+        6 6 6 6 6 6 6 . . . . . . . . .
+        9 9 9 9 9 9 9 6 . . . . . . . .
+        6 6 6 6 6 6 6 9 6 . . . . . . .
         . . . . . . 6 9 6 . . . . . . .
-        . . . . . 6 9 9 9 6 . . . . . .
-        . . . . 6 9 9 9 9 9 6 . . . . .
-        . . . . c c 6 9 6 c c . . . . .
-        . . . c f f 6 9 6 f f c . . . .
-        . . c f f f 6 9 6 f f f c . . .
-        . . c c f f 6 9 6 f f c c . . .
-        . . c d c c c c c c c b c . . .
-        . . c d 1 d d d d d d b c . . .
-        . . c d 1 d f f d d d b c . . .
-        . . c d 1 d f d f d d b c . . .
-        . . c d 1 d f f f d d b c . . .
-        . . c d 1 d f d f d d b c . . .
-        . . . d 1 d f f d d d b . . . .
-        . . . . 1 d d d d d d . . . . .
-    `
-    export const outPipeC = img`
-        . . . . . . . 6 . . . . . . . .
         . . . . . . 6 9 6 . . . . . . .
-        . . . . . 6 9 9 9 6 . . . . . .
         . . . . 6 9 9 9 9 9 6 . . . . .
-        . . . . c c 6 9 6 c c . . . . .
-        . . . c f f 6 9 6 f f c . . . .
-        . . c f f f 6 9 6 f f f c . . .
-        . . c c f f 6 9 6 f f c c . . .
-        . . c d c c c c c c c b c . . .
-        . . c d 1 d d d d d d b c . . .
-        . . c d 1 d d f f d d b c . . .
-        . . c d 1 d f d d d d b c . . .
-        . . c d 1 d f d d d d b c . . .
-        . . c d 1 d f d d d d b c . . .
-        . . . d 1 d d f f d d b . . . .
-        . . . . 1 d d d d d d . . . . .
+        . . . . . 6 9 9 9 6 . . . . . .
+        . . . . . . 6 9 6 . . . . . . .
     `
+
+    const inFromRight = img`
+        . . . . . . . . . 6 6 6 6 6 6 6
+        . . . . . . . . 6 9 9 9 9 9 9 9
+        . . . . . . . 6 9 6 6 6 6 6 6 6
+        . . . . . . . 6 9 6 . . . . . .
+        . . . . . . . 6 9 6 . . . . . .
+        . . . . . 6 9 9 9 9 9 6 . . . .
+        . . . . . . 6 9 9 9 6 . . . . .
+        . . . . . . . 6 9 6 . . . . . .
+    `
+
+    export const cupAread = cup.clone()
+    cupAread.drawTransparentImage(labelA, 6, 10)
+    export const cupBread = cup.clone()
+    cupBread.drawTransparentImage(labelB, 6, 10)
+    export const cupCread = cup.clone()
+    cupCread.drawTransparentImage(labelC, 6, 10)
+
+    export const cupAassign = cupAread.clone()
+    cupAassign.drawTransparentImage(inFromRight, 0, 0)
+    export const cupBassign = cupBread.clone()
+    cupBassign.drawTransparentImage(inFromRight, 0, 0)
+    export const cupCassign = cupCread.clone()
+    cupCassign.drawTransparentImage(inFromRight, 0, 0)
+
+    export const cupAwritten = cupAread.clone()
+    cupAwritten.drawTransparentImage(inFromLeft, 0, 0)
+    export const cupBwritten = cupBread.clone()
+    cupBwritten.drawTransparentImage(inFromLeft, 0, 0)
+    export const cupCwritten = cupCread.clone()
+    cupCwritten.drawTransparentImage(inFromLeft, 0, 0)
 
     export const largeEditIcon = img`
     .666666666666666666666666666666.
