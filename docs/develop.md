@@ -45,7 +45,7 @@ Note that you can open terminals directly from VS Code by pressing "Ctrl + `".
     a compile web version of the editor
 
 ```bash
-mkc serve
+sh serve.sh
 ```
 
 -   open to web editor at http://127.0.0.1:7001/index.html?pointer-events=1

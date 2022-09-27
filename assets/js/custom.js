@@ -171,6 +171,11 @@ if (!inIFrame)
                         showOutdatedFirmwareDialog()
                         break
                     }
+                    case jacdac.ERROR_TRANSPORT_HF2_NOT_SUPPORTED: {
+                        console.debug(`HF2 not supported`)
+                        showOutdatedFirmwareDialog()
+                        break
+                    }
                 }
                 refreshUI()
             })
