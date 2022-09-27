@@ -64,6 +64,9 @@ namespace microcode {
     export const TID_ACTUATOR_RADIO_SEND = "A6"
     export const TID_ACTUATOR_RANDOM_TOSS = "A7"
     export const TID_ACTUATOR_RGB_LED = "A8"
+    export const TID_ACTUATOR_ASSIGN_A = "A9A"
+    export const TID_ACTUATOR_ASSIGN_B = "A9B"
+    export const TID_ACTUATOR_ASSIGN_C = "A9C"
 
     export const TID_MODIFIER_PAGE_1 = "M1"
     export const TID_MODIFIER_PAGE_2 = "M2"
@@ -323,6 +326,14 @@ namespace microcode {
     addSoundFilter(TID_FILTER_LOUD, "loud", 1)
     addSoundFilter(TID_FILTER_QUIET, "quiet", 2)
 
+    // actuators are:
+
+    // - paint screen
+    // - assign variable
+    // - send radio message
+    // - speaker play
+    // - switch page (micro:bit independent)
+
     function addActuator(
         tid: string,
         name: string,
@@ -354,6 +365,13 @@ namespace microcode {
     radio_send.serviceArgFromModifier = (x: number) =>
         Buffer.pack("d", [x || 1])
     // radio_send.constraints.handling = maxOneValueOut
+
+    const varA = addActuator(TID_ACTUATOR_ASSIGN_A, "Into A", "value_out")
+    varA.jdParam = 0
+    const varB = addActuator(TID_ACTUATOR_ASSIGN_B, "Into B", "value_out")
+    varB.jdParam = 1
+    const varC = addActuator(TID_ACTUATOR_ASSIGN_C, "Into C", "value_out")
+    varC.jdParam = 2
 
     const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "sound_emoji")
     emoji.serviceClassName = "soundPlayer"
@@ -458,6 +476,7 @@ namespace microcode {
         return b
     }
 
+    /*
     const addPipeModifier = (tid: string, state: string, varid: number) => {
         const mod = new ModifierDefn(tid, state, "pipe_out", 10)
         mod.constraints = terminal
@@ -467,6 +486,7 @@ namespace microcode {
     addPipeModifier(TID_MODIFIER_PIPE_IN_A, "Into A", 0)
     addPipeModifier(TID_MODIFIER_PIPE_IN_B, "Into B", 1)
     addPipeModifier(TID_MODIFIER_PIPE_IN_C, "Into C", 2)
+*/
 
     const iconFieldEditor: FieldEditor = {
         init: img`

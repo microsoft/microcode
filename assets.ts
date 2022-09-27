@@ -102,6 +102,9 @@ namespace microcode {
             this.reg[TID_ACTUATOR_MUSIC] = icondb.music
             this.reg[TID_ACTUATOR_RANDOM_TOSS] = icondb.diceToss
             this.reg[TID_ACTUATOR_RGB_LED] = icondb.rgbLed
+            this.reg[TID_ACTUATOR_ASSIGN_A] = icondb.inPipeA
+            this.reg[TID_ACTUATOR_ASSIGN_B] = icondb.inPipeB
+            this.reg[TID_ACTUATOR_ASSIGN_C] = icondb.inPipeC
 
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
