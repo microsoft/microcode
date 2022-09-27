@@ -138,9 +138,9 @@ namespace microcode {
             this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
             this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
 
-            this.reg[TID_MODIFIER_PIPE_IN_A] = icondb.inPipeA
-            this.reg[TID_MODIFIER_PIPE_IN_B] = icondb.inPipeB
-            this.reg[TID_MODIFIER_PIPE_IN_C] = icondb.inPipeC
+            this.reg[TID_MODIFIER_PIPE_OUT_A] = icondb.outPipeA
+            this.reg[TID_MODIFIER_PIPE_OUT_B] = icondb.outPipeB
+            this.reg[TID_MODIFIER_PIPE_OUT_C] = icondb.outPipeC
 
             this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
             this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.moveFall

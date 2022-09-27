@@ -99,9 +99,9 @@ namespace microcode {
     export const TID_MODIFIER_EMOJI_TWINKLE = "M19twinkle"
     export const TID_MODIFIER_EMOJI_YAWN = "M19yawn"
 
-    export const TID_MODIFIER_PIPE_IN_A = "M20A"
-    export const TID_MODIFIER_PIPE_IN_B = "M20B"
-    export const TID_MODIFIER_PIPE_IN_C = "M20C"
+    export const TID_MODIFIER_PIPE_OUT_A = "M20A"
+    export const TID_MODIFIER_PIPE_OUT_B = "M20B"
+    export const TID_MODIFIER_PIPE_OUT_C = "M20C"
 
     export const TID_MODIFIER_RGB_LED_COLOR_X = "A20_"
     export const TID_MODIFIER_RGB_LED_COLOR_1 = "A20_1"
@@ -476,17 +476,14 @@ namespace microcode {
         return b
     }
 
-    /*
     const addPipeModifier = (tid: string, state: string, varid: number) => {
-        const mod = new ModifierDefn(tid, state, "pipe_out", 10)
-        mod.constraints = terminal
+        const mod = new ModifierDefn(tid, state, "value_out", 10)
         mod.jdParam = varid
         tilesDB.modifiers[tid] = mod
     }
-    addPipeModifier(TID_MODIFIER_PIPE_IN_A, "Into A", 0)
-    addPipeModifier(TID_MODIFIER_PIPE_IN_B, "Into B", 1)
-    addPipeModifier(TID_MODIFIER_PIPE_IN_C, "Into C", 2)
-*/
+    addPipeModifier(TID_MODIFIER_PIPE_OUT_A, "value of variable A", 0)
+    addPipeModifier(TID_MODIFIER_PIPE_OUT_B, "value of variable B", 1)
+    addPipeModifier(TID_MODIFIER_PIPE_OUT_C, "value of variable C", 2)
 
     const iconFieldEditor: FieldEditor = {
         init: img`
@@ -671,8 +668,7 @@ namespace microcode {
     const random_toss = addActuator(
         TID_ACTUATOR_RANDOM_TOSS,
         "Toss",
-        "value_out",
-        "pipe_out"
+        "value_out"
     )
     random_toss.priority = 70
     random_toss.constraints.disallow = { tiles: [TID_MODIFIER_VALUE_1] }
