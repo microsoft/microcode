@@ -315,6 +315,19 @@ namespace microcode {
         }
 
         public move(dir: CursorDir): Button {
+            const findNearInX = (btns: Button[], col: number) => {
+                const nearInX = btns
+                    .filter(
+                        btn =>
+                            Math.abs(
+                                btn.xfrm.worldPos.x - this.curr.xfrm.worldPos.x
+                            ) <
+                            btn.width >> 1
+                    )
+                    .shift()
+                if (!nearInX) return btns[col]
+                return nearInX
+            }
             let btn: Button
             if (!this.curr) {
                 btn = this.buttons[0]
@@ -325,7 +338,8 @@ namespace microcode {
                     case CursorDir.Up: {
                         if (row > 0) {
                             const prevRow = this.sortedButtons[row - 1]
-                            if (col < prevRow.length) btn = prevRow[col]
+                            if (col < prevRow.length)
+                                btn = findNearInX(prevRow, col)
                             else {
                                 btn = prevRow[prevRow.length - 1]
                             }
@@ -335,7 +349,8 @@ namespace microcode {
                     case CursorDir.Down: {
                         if (row < this.sortedButtons.length - 1) {
                             const nextRow = this.sortedButtons[row + 1]
-                            if (col < nextRow.length) btn = nextRow[col]
+                            if (col < nextRow.length)
+                                btn = findNearInX(nextRow, col)
                             else {
                                 btn = nextRow[nextRow.length - 1]
                             }
