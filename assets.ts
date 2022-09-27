@@ -138,7 +138,6 @@ namespace microcode {
             this.reg[TID_MODIFIER_CUP_C_READ] = icondb.cupCread
 
             this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
-            this.reg[TID_FILTER_ACCEL_FREEFALL] = icondb.moveFall
             this.reg[TID_FILTER_ACCEL_TILT_UP] = icondb.moveTiltUp
             this.reg[TID_FILTER_ACCEL_TILT_DOWN] = icondb.moveTiltDown
             this.reg[TID_FILTER_ACCEL_TILT_LEFT] = icondb.moveTiltLeft
@@ -1571,24 +1570,6 @@ f f f f f f f f f f f f f f f f
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
-    export const moveFall = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . 8 . . . 8 . . . . .
-        . . . . . . 8 . 8 . 8 . . . . .
-        . . . . . . 8 . 8 . 8 . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . 9 9 9 9 9 9 . . . . .
-        . . . . . 9 9 9 9 9 9 . . . . .
-        . . . . . 6 6 6 6 6 6 . . . . .
-        . . . . . 6 6 6 6 6 6 . . . . .
-        . . . . . f f f f f f . . . . .
-        . . . . . f 5 5 5 5 f . . . . .
-        . . . . . f 5 5 5 5 f . . . . .
-        . . . . . f f f f f f . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-`
 
     export const moveTiltDown = img`
     . . . . . . . . . . . . . . . .

@@ -48,7 +48,6 @@ namespace microcode {
     export const TID_FILTER_QUIET = "F16"
     export const TID_FILTER_ACCEL = "F17"
     export const TID_FILTER_ACCEL_SHAKE = "F17_shake"
-    export const TID_FILTER_ACCEL_FREEFALL = "F17_freefall"
     export const TID_FILTER_ACCEL_TILT_UP = "F17_tilt_up"
     export const TID_FILTER_ACCEL_TILT_DOWN = "F17_tilt_down"
     export const TID_FILTER_ACCEL_TILT_LEFT = "F17_tilt_left"
@@ -111,7 +110,7 @@ namespace microcode {
     export const TID_MODIFIER_RGB_LED_COLOR_3 = "A20_3"
     export const TID_MODIFIER_RGB_LED_COLOR_4 = "A20_4"
     export const TID_MODIFIER_RGB_LED_COLOR_5 = "A20_5"
-    export const TID_MODIFIER_RGB_LED_COLOR_6= "A20_6"
+    export const TID_MODIFIER_RGB_LED_COLOR_6 = "A20_6"
 
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
