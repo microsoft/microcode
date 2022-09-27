@@ -1922,60 +1922,62 @@ f f f f f f f f f f f f f f f f
     . . . c c c c c c c b d . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .`
+
     export const inPipeA = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . c c c c c c c c
-. . . . . . . c f c d d d d d d
-. . . . . . c 6 f f c 1 1 1 1 1
-. . . . . . c 9 6 f c d d f d d
-6 6 6 6 6 6 6 9 9 6 c d f d f d
-9 9 9 9 9 9 9 9 9 9 c d f f f d
-6 6 6 6 6 6 6 9 9 6 c d f d f d
-. . . . . . c 9 6 f c d f d f d
-. . . . . . c 6 f f c d d d d d
-. . . . . . . c f c b b b b b b
-. . . . . . . . c c c c c c c c
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        c c c c c c c c . . . . . . . .
+        d d d d d d c f c . . . . . . .
+        1 1 1 1 1 c f f 6 c . . . . . .
+        d d f d d c f 6 9 c . . . . . .
+        d f d f d c 6 9 9 6 6 6 6 6 6 6
+        d f f f d c 9 9 9 9 9 9 9 9 9 9
+        d f d f d c 6 9 9 6 6 6 6 6 6 6
+        d f d f d c f 6 9 c . . . . . .
+        d d d d d c f f 6 c . . . . . .
+        b b b b b b c f c . . . . . . .
+        c c c c c c c c . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
     export const inPipeB = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . c c c c c c c c
-. . . . . . . c f c d d d d d d
-. . . . . . c 6 f f c 1 1 1 1 1
-. . . . . . c 9 6 f c d f f d d
-6 6 6 6 6 6 6 9 9 6 c d f d f d
-9 9 9 9 9 9 9 9 9 9 c d f f f d
-6 6 6 6 6 6 6 9 9 6 c d f d f d
-. . . . . . c 9 6 f c d f f d d
-. . . . . . c 6 f f c d d d d d
-. . . . . . . c f c b b b b b b
-. . . . . . . . c c c c c c c c
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        c c c c c c c c . . . . . . . .
+        d d d d d d c f c . . . . . . .
+        1 1 1 1 1 c f f 6 c . . . . . .
+        d f f d d c f 6 9 c . . . . . .
+        d f d f d c 6 9 9 6 6 6 6 6 6 6
+        d f f f d c 9 9 9 9 9 9 9 9 9 9
+        d f d f d c 6 9 9 6 6 6 6 6 6 6
+        d f f d d c f 6 9 c . . . . . .
+        d d d d d c f f 6 c . . . . . .
+        b b b b b b c f c . . . . . . .
+        c c c c c c c c . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
     export const inPipeC = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . c c c c c c c c
-. . . . . . . c f c d d d d d d
-. . . . . . c 6 f f c 1 1 1 1 1
-. . . . . . c 9 6 f c d d f f d
-6 6 6 6 6 6 6 9 9 6 c d f d d d
-9 9 9 9 9 9 9 9 9 9 c d f d d d
-6 6 6 6 6 6 6 9 9 6 c d f d d d
-. . . . . . c 9 6 f c d d f f d
-. . . . . . c 6 f f c d d d d d
-. . . . . . . c f c b b b b b b
-. . . . . . . . c c c c c c c c
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        c c c c c c c c . . . . . . . .
+        d d d d d d c f c . . . . . . .
+        1 1 1 1 1 c f f 6 c . . . . . .
+        d d f f d c f 6 9 c . . . . . .
+        d f d d d c 6 9 9 6 6 6 6 6 6 6
+        d f d d d c 9 9 9 9 9 9 9 9 9 9
+        d f d d d c 6 9 9 6 6 6 6 6 6 6
+        d d f f d c f 6 9 c . . . . . .
+        d d d d d c f f 6 c . . . . . .
+        b b b b b b c f c . . . . . . .
+        c c c c c c c c . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+
     export const outPipeA = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
