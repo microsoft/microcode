@@ -16,6 +16,10 @@ namespace docs {
     let theApp: microcode.App
     export function setup(app: microcode.App) {
         theApp = app
+    }
+
+    //% shim=TD_NOOP
+    function _setup() {
         control.simmessages.onReceived("docs", () => _renderApp())
     }
 
