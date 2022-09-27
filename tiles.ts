@@ -62,7 +62,6 @@ namespace microcode {
     export const TID_ACTUATOR_MUSIC = "A4"
     export const TID_ACTUATOR_PAINT = "A5"
     export const TID_ACTUATOR_RADIO_SEND = "A6"
-    export const TID_ACTUATOR_RANDOM_TOSS = "A7"
     export const TID_ACTUATOR_RGB_LED = "A8"
     export const TID_ACTUATOR_CUP_A_ASSIGN = "A9A"
     export const TID_ACTUATOR_CUP_B_ASSIGN = "A9B"
@@ -102,6 +101,9 @@ namespace microcode {
     export const TID_MODIFIER_CUP_A_READ = "M20A"
     export const TID_MODIFIER_CUP_B_READ = "M20B"
     export const TID_MODIFIER_CUP_C_READ = "M20C"
+    export const TID_MODIFIER_RADIO_VALUE = "M21"
+    export const TID_MODIFIER_RANDOM_TOSS = "M22"
+    export const TID_MODIFIER_MINUS_OPERATOR = "M23"
 
     export const TID_MODIFIER_RGB_LED_COLOR_X = "A20_"
     export const TID_MODIFIER_RGB_LED_COLOR_1 = "A20_1"
@@ -123,18 +125,6 @@ namespace microcode {
         filters: {},
         actuators: {},
         modifiers: {},
-    }
-
-    function copyJdSensor(dst: SensorDefn, src: SensorDefn) {
-        dst.serviceClassName = src.serviceClassName
-        dst.eventCode = src.eventCode
-        dst.serviceInstanceIndex = src.serviceInstanceIndex
-    }
-
-    function copyJdActuator(dst: ActuatorDefn, src: ActuatorDefn) {
-        dst.serviceClassName = src.serviceClassName
-        dst.serviceCommand = src.serviceCommand
-        dst.serviceInstanceIndex = src.serviceInstanceIndex
     }
 
     // initialize the database, imperatively!!!
@@ -468,19 +458,22 @@ namespace microcode {
         return b
     }
 
-    const addCupReadModifier = (tid: string, state: string, varid: number) => {
+    const addReadValue = (tid: string, state: string, varid: number) => {
         const mod = new ModifierDefn(tid, state, "value_out", 10)
         mod.jdParam = varid
         tilesDB.modifiers[tid] = mod
+        return mod
     }
-    addCupReadModifier(TID_MODIFIER_CUP_A_READ, "value of variable A", 0)
-    addCupReadModifier(TID_MODIFIER_CUP_B_READ, "value of variable B", 1)
-    addCupReadModifier(TID_MODIFIER_CUP_C_READ, "value of variable C", 2)
-    const addPipeOutFilter = (tid: string, state: string, varid: number) => {
-        const mod = new FilterDefn(tid, state, "value_in", 10)
-        mod.jdParam = varid
-        tilesDB.filters[tid] = mod
-    }
+    addReadValue(TID_MODIFIER_CUP_A_READ, "value of variable A", 0)
+    addReadValue(TID_MODIFIER_CUP_B_READ, "value of variable B", 1)
+    addReadValue(TID_MODIFIER_CUP_C_READ, "value of variable C", 2)
+    // TODO: this should only be present when radio receive in When section
+    addReadValue(TID_MODIFIER_RADIO_VALUE, "number from radio", 3)
+
+    const random_toss = addReadValue(TID_MODIFIER_RANDOM_TOSS, "Toss", 5)
+    random_toss.priority = 70
+    random_toss.constraints = {}
+    random_toss.constraints.disallow = { tiles: [TID_MODIFIER_VALUE_1] }
 
     const iconFieldEditor: FieldEditor = {
         init: img`
@@ -626,18 +619,17 @@ namespace microcode {
         },
     }
 
-    class RandomEditor extends ActuatorDefn {
+    class RandomEditor extends ModifierDefn {
         field: RandomUpper
         first: boolean
         constructor(field: RandomUpper = null) {
-            super(TID_ACTUATOR_RANDOM_TOSS, "Toss")
+            super(TID_MODIFIER_RANDOM_TOSS, "Toss", "value_out", 70)
             this.fieldEditor = randomFieldEditor
             if (field) {
                 this.field = { upper: field.upper }
             } else {
                 this.field = this.fieldEditor.clone(this.fieldEditor.init)
             }
-            this.priority = 70
             this.first = false
             // TODO constraints
         }
@@ -661,14 +653,6 @@ namespace microcode {
             return r
         }
     }
-
-    const random_toss = addActuator(
-        TID_ACTUATOR_RANDOM_TOSS,
-        "Toss",
-        "value_out"
-    )
-    random_toss.priority = 70
-    random_toss.constraints.disallow = { tiles: [TID_MODIFIER_VALUE_1] }
 
     /*
     const first_random = new RandomEditor()

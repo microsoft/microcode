@@ -51,6 +51,9 @@ namespace microcode {
             this.reg["hot_potato"] = icondb.sampleHotPotato
             this.reg["clap_lights"] = icondb.sampleClapLights
 
+            // special icons
+            this.reg["plus_operator"] = icondb.minus_operator
+
             // sensors
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
@@ -90,13 +93,16 @@ namespace microcode {
             this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
             this.reg[TID_ACTUATOR_SPEAKER] = icondb.speakerFun
             this.reg[TID_ACTUATOR_MUSIC] = icondb.music
-            this.reg[TID_ACTUATOR_RANDOM_TOSS] = icondb.diceToss
             this.reg[TID_ACTUATOR_RGB_LED] = icondb.rgbLed
             this.reg[TID_ACTUATOR_CUP_A_ASSIGN] = icondb.cupAassign
             this.reg[TID_ACTUATOR_CUP_B_ASSIGN] = icondb.cupBassign
             this.reg[TID_ACTUATOR_CUP_C_ASSIGN] = icondb.cupCassign
 
             // modifiers
+            // value producers that are also consumers
+            this.reg[TID_MODIFIER_RANDOM_TOSS] = icondb.diceToss
+            this.reg[TID_MODIFIER_MINUS_OPERATOR] = icondb.minus_operator
+
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
             this.reg[TID_MODIFIER_PAGE_3] = icondb.tile_page_3
@@ -136,6 +142,8 @@ namespace microcode {
             this.reg[TID_FILTER_ACCEL_TILT_DOWN] = icondb.moveTiltDown
             this.reg[TID_FILTER_ACCEL_TILT_LEFT] = icondb.moveTiltLeft
             this.reg[TID_FILTER_ACCEL_TILT_RIGHT] = icondb.moveTiltRight
+
+            this.reg[TID_MODIFIER_RADIO_VALUE] = icondb.radio_value
         }
     }
 
@@ -374,6 +382,44 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+
+    export const minus_operator = img`
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . c c c c c c c c c . .
+    . . c c c c c c c c c . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+`
+
+    export const plus_operator = img`
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . c c c . . . . .
+    . . . . . c c c . . . . .
+    . . . . . c c c . . . . .
+    . . c c c c c c c c c . .
+    . . c c c c c c c c c . .
+    . . . . . c c c . . . . .
+    . . . . . c c c . . . . .
+    . . . . . c c c . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+    . . . . . . . . . . . . .
+`
 
     export const btn_when_insertion_point = img`
         dddddddddddddddddd
@@ -824,6 +870,25 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+
+    export const radio_value = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . 8 . . . 8 . . . . . .
+    . . . 8 . . 8 8 8 . . 8 . . . .
+    . 8 . . 8 . . . . . 8 . . 8 . .
+    . . 8 . . 8 8 8 8 8 . . 8 . . .
+    . . . 8 . . . . . . . 8 . . . .
+    . . . . 8 8 8 8 8 8 8 . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . 6 . . . . . . . .
+    . . . . . . 6 9 6 . . . . . . .
+    . . . . . 6 9 9 9 6 . . . . . .
+    . . . . . . 6 9 6 . . . . . . .
+    . . . . . . . 6 . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
 
     export const radio_receive = img`
         . . . . . . . . . . . . . . . .
