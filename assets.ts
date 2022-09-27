@@ -19,6 +19,7 @@ namespace microcode {
             if (this.reg) return
 
             this.reg = {}
+            // editor icons
             this.reg["delete"] = icondb.btn_delete
             this.reg["plus"] = icondb.btn_plus
             this.reg["reset"] = icondb.btn_play
@@ -32,6 +33,12 @@ namespace microcode {
             this.reg["edit_program"] = icondb.largeEditIcon
             this.reg["new_program"] = icondb.largeNewProgramIcon
             this.reg["MISSING"] = icondb.MISSING
+
+            // basic colors led editor
+            this.reg["solid_red"] = icondb.solid_red
+            this.reg["solid_black"] = icondb.solid_black
+
+            // sample icons
             this.reg["flashing_heart"] = icondb.sampleFlashingHeart
             this.reg["smiley_buttons"] = icondb.sampleSmileyButtons
             this.reg["clap_lights"] = icondb.sampleClapLights
@@ -43,9 +50,8 @@ namespace microcode {
             this.reg["reaction_time"] = icondb.sampleReactionTime
             this.reg["hot_potato"] = icondb.sampleHotPotato
             this.reg["clap_lights"] = icondb.sampleClapLights
-            this.reg["solid_red"] = icondb.solid_red
-            this.reg["solid_black"] = icondb.solid_black
 
+            // sensors
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
             this.reg[TID_SENSOR_PRESS] = icondb.finger_press
@@ -57,6 +63,7 @@ namespace microcode {
             this.reg[TID_SENSOR_CUP_C_WRITTEN] = icondb.cupCwritten
             this.reg[TID_SENSOR_MAGNET] = icondb.magnet
 
+            // filters
             this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
             this.reg[TID_FILTER_PIN_0] = icondb.tile_pin_0
             this.reg[TID_FILTER_PIN_1] = icondb.tile_pin_1
@@ -73,10 +80,10 @@ namespace microcode {
             this.reg[TID_FILTER_VALUE_3] = icondb.tile_value_3
             this.reg[TID_FILTER_VALUE_4] = icondb.tile_value_4
             this.reg[TID_FILTER_VALUE_5] = icondb.tile_value_5
-
             this.reg[TID_FILTER_LOUD] = icondb.speaker
             this.reg[TID_FILTER_QUIET] = icondb.speakerQuiet
 
+            // actuators
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
             this.reg[TID_ACTUATOR_PAINT] = icondb.showScreen
             this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
@@ -89,6 +96,7 @@ namespace microcode {
             this.reg[TID_ACTUATOR_CUP_B_ASSIGN] = icondb.cupBassign
             this.reg[TID_ACTUATOR_CUP_C_ASSIGN] = icondb.cupCassign
 
+            // modifiers
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
             this.reg[TID_MODIFIER_PAGE_3] = icondb.tile_page_3
@@ -106,9 +114,6 @@ namespace microcode {
             this.reg[TID_MODIFIER_RGB_LED_COLOR_3] = icondb.tile_value_3
             this.reg[TID_MODIFIER_RGB_LED_COLOR_4] = icondb.tile_value_4
             this.reg[TID_MODIFIER_RGB_LED_COLOR_5] = icondb.tile_value_5
-
-            this.reg[TID_MODIFIER_ON] = icondb.tile_on
-            this.reg[TID_MODIFIER_OFF] = icondb.tile_off
 
             this.reg[TID_MODIFIER_EMOJI_GIGGLE] = icondb.soundGiggle
             this.reg[TID_MODIFIER_EMOJI_HAPPY] = icondb.soundHappy
@@ -131,10 +136,6 @@ namespace microcode {
             this.reg[TID_FILTER_ACCEL_TILT_DOWN] = icondb.moveTiltDown
             this.reg[TID_FILTER_ACCEL_TILT_LEFT] = icondb.moveTiltLeft
             this.reg[TID_FILTER_ACCEL_TILT_RIGHT] = icondb.moveTiltRight
-
-            // for icon editor
-            this.reg[TID_MODIFIER_COLOR_RED] = icondb.tile_red
-            this.reg[TID_MODIFIER_COLOR_DARKPURPLE] = icondb.tile_darkpurple
         }
     }
 
@@ -639,42 +640,6 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
-    export const tile_red = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . f f f f f f . . . . .
-        . . . . f 2 2 2 2 2 2 f . . . .
-        . . . f 2 2 2 2 2 2 2 2 f . . .
-        . . . f 2 2 2 2 2 2 2 2 f . . .
-        . . . f 2 2 2 2 2 2 2 2 f . . .
-        . . . f 2 2 2 2 2 2 2 2 f . . .
-        . . . f 2 2 2 2 2 2 2 2 f . . .
-        . . . f 2 2 2 2 2 2 2 2 f . . .
-        . . . . f 2 2 2 2 2 2 f . . . .
-        . . . . . f f f f f f . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const tile_darkpurple = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . f f f f f f . . . . .
-        . . . . f c c c c c c f . . . .
-        . . . f c c c c c c c c f . . .
-        . . . f c c c c c c c c f . . .
-        . . . f c c c c c c c c f . . .
-        . . . f c c c c c c c c f . . .
-        . . . f c c c c c c c c f . . .
-        . . . f c c c c c c c c f . . .
-        . . . . f c c c c c c f . . . .
-        . . . . . f f f f f f . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
 
     ///
     /// HARDWARE-SPECIFIC LANGUAGE TILES
@@ -856,43 +821,6 @@ namespace icondb {
         . . 4 5 5 5 5 5 5 5 5 5 4 d . .
         . . 4 5 5 4 4 4 4 4 5 5 4 d . .
         . . . 4 4 d . . . . 4 4 d . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-
-    export const tile_on = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . f f . . . f . . . . . .
-        . . . f . . f . . f f f . . . .
-        . . . f . . f . . f . . f . . .
-        . . . f . . f . . f . . f . . .
-        . . . . f f . . . f . . f . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const tile_off = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . f f . . f f . .
-        . . . . . . . f . . . f . . . .
-        . . . f f . . f . . . f . . . .
-        . . f . . f . f f . . f f . . .
-        . . f . . f . f . . . f . . . .
-        . . f . . f . f . . . f . . . .
-        . . . f f . . f . . . f . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `

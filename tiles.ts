@@ -432,14 +432,6 @@ namespace microcode {
         m.constraints.handling.terminal = true
     })
 
-    const switch_states = ["on", "off"]
-    switch_states.forEach(state => {
-        const state_tid = state == "on" ? TID_MODIFIER_ON : TID_MODIFIER_OFF
-        const state_page = new ModifierDefn(state_tid, state, "on_off", 10)
-        state_page.constraints = terminal
-        tilesDB.modifiers[state_tid] = state_page
-    })
-
     const numLeds = 8
     function addRGB(id: number, name: string, buf: Buffer) {
         const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
