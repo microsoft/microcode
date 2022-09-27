@@ -8,7 +8,7 @@ for MakeCode editing, Git, and Codespaces.
 
 ## Codespaces setup
 
--   open https://github.com/microsoft/microcode
+-   open [https://github.com/microsoft/microcode](https://github.com/microsoft/microcode)
 -   click on `Code` drop down and select `Create Codespace on main`
 -   you can do your editing from VS Code online or click on `Codespaces` in lower left and select `Open in VS Code` to use the desktop version (must be installed on your machine)
 -   press "Ctrl + `" to open a terminal and you're ready to go!
@@ -63,6 +63,8 @@ of the local server on http://127.0.0.1:7001/index.html?pointer-events=1. Or,
 https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001/index.html?pointer-events=1
 
 ## Creating artwork
+
+To preview all artwork, click on the `art` icon at the bottom right of the local editor (and wait...). Use `save all` to download all artwork on the `images/generated` folder.
 
 If you want to create/edit new sprites, you should import this web site into https://arcade.makecode.com, using the following directions:
 
