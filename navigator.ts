@@ -309,6 +309,12 @@ namespace microcode {
             this.sortedButtons.forEach(btns =>
                 btns.sort((a, b) => a.xfrm.worldPos.x - b.xfrm.worldPos.x)
             )
+            this.sortedButtons.sort(
+                (a, b) => a[0].xfrm.worldPos.y - b[0].xfrm.worldPos.y
+            )
+            this.sortedButtons.forEach((btns, index) => {
+                console.log(`Row ${index} ${btns.length}`)
+            })
         }
 
         public move(dir: CursorDir): Button {
@@ -327,6 +333,7 @@ namespace microcode {
                                 btn = prevRow[prevRow.length - 1]
                             }
                         }
+                        break
                     }
                     case CursorDir.Down: {
                         if (row < this.sortedButtons.length - 1) {
