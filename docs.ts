@@ -25,7 +25,7 @@ namespace docs {
     }
 
     interface RenderedImage {
-        type: "icon" | "sample" | "icon_sample"
+        type: "icon" | "sample" | "icon_sample" | "image"
         name: string
         pixels: string
     }
@@ -33,13 +33,18 @@ namespace docs {
     //% shim=TD_NOOP
     function _renderApp() {
         const images: RenderedImage[] = []
+        appendImage(images, "image", "home", screen)
         renderIcons(images)
         renderSamples(images, theApp)
+        appendImage(images, "image", "microcode", microcode.wordLogo)
+        appendImage(images, "image", "microbit", microcode.microbitLogo)
+        appendImage(images, "image", "editor_background", microcode.editorBackground)
         control.simmessages.send(
             "docs",
             Buffer.fromUTF8(JSON.stringify(images))
         )
     }
+
 
     function renderSamples(images: RenderedImage[], app: microcode.App) {
         app.popScene()
@@ -72,7 +77,7 @@ namespace docs {
 
     function appendImage(
         images: RenderedImage[],
-        type: "icon" | "sample" | "icon_sample",
+        type: "icon" | "sample" | "icon_sample" | "image",
         name: string,
         img: Image
     ) {
