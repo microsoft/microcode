@@ -78,7 +78,7 @@ namespace docs {
     ) {
         const msg: RenderedImage = {
             type,
-            name: name.replace(" ", "_"),
+            name: name.replaceAll(" ", "_").replaceAll(",", ""),
             pixels: imageToBuffer(img).toHex(),
         }
         images.push(msg)

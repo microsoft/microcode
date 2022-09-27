@@ -127,7 +127,11 @@ async function flashJacscriptService(service, data) {
 // docs
 document.addEventListener("DOMContentLoaded", () => {
     const docsbtn = document.getElementById("docsbtn")
-    if (docsbtn) docsbtn.onclick = () => simPostMessage("docs", {})
+    if (docsbtn)
+        docsbtn.onclick = () => {
+            docsbtn.disabled = true
+            simPostMessage("docs", {})
+        }
 })
 
 // to support downloading directly to device
@@ -485,6 +489,8 @@ function imgToPng(hex) {
     return png
 }
 
+const norm = s => s.replace(/,/g, "_").replace(/\/s/g, "_").replace(/_+/g, "_")
+
 addSimMessageHandler("docs", async data => {
     const msg = uint8ArrayToString(data)
     const jsg = JSON.parse(msg)
@@ -501,10 +507,7 @@ addSimMessageHandler("docs", async data => {
             jsg.map(async ({ type, name, pixels }) => {
                 const png = imgToPng(pixels)
                 const blob = await (await fetch(png)).blob()
-                const fn = `${type}_${name}.png`
-                    .replace(/,/g, "_")
-                    .replace(/\/s/g, "_")
-                    .replace(/_+/g, "_")
+                const fn = norm(`${type}_${name}.png`)
                 const file = await dir.getFileHandle(fn, { create: true })
                 const writable = await file.createWritable({
                     keepExistingData: false,
@@ -513,15 +516,36 @@ addSimMessageHandler("docs", async data => {
                 await writable.close()
             })
         )
+        // markdown docs
+        const md = `## Tiles
+${jsg
+    .filter(({ type }) => type === "icon")
+    .sort(({ name }) => name)
+    .map(
+        ({ type, name }) => `
+### ![${mapAriaId(name)}](./images/generated/${norm(`${type}_${name}`)}.png)  {#${norm(
+            `${type}_${name}`
+        )}}
+
+- ${mapAriaId(name)}
+- ${type}
+
+`
+    )
+    .join("")}`
+        console.log(md)
+        const file = await dir.getFileHandle("reference.md", { create: true })
+        const writable = await file.createWritable({
+            keepExistingData: false,
+        })
+        await writable.write(md)
+        await writable.close()
         alert(`rendering done`)
     }
     container.append(button)
 
     jsg.forEach(({ type, name, pixels }) => {
-        const fn = `${type}_${name}`
-            .replace(/,/g, "_")
-            .replace(/\/s/g, "_")
-            .replace(/_+/g, "_")
+        const fn = norm(`${type}_${name}`)
         if (!pixels) {
             console.error(`${fn} missing pixels`)
             return
