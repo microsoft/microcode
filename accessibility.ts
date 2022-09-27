@@ -106,9 +106,13 @@ namespace accessibility {
         M19twinkle: "twinkle",
         M19yawn: "yawn",
 
-        M20A: "put in variable A",
-        M20B: "put in variable B", 
-        M20C: "put in variable C",
+        M20A: "get variable A's value",
+        M20B: "get variable B's value",
+        M20C: "get variable C's value",
+
+        A9A: "set variable A's value",
+        A9B: "set variable B's value",
+        A9C: "set variable C's value",
 
         S9A: "variable A changed",
         S9B: "variable B changed",
