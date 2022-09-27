@@ -38,19 +38,24 @@ namespace docs {
         renderSamples(images, theApp)
         appendImage(images, "image", "microcode", microcode.wordLogo)
         appendImage(images, "image", "microbit", microcode.microbitLogo)
-        appendImage(images, "image", "editor_background", microcode.editorBackground)
+        appendImage(
+            images,
+            "image",
+            "editor_background",
+            microcode.editorBackground
+        )
         control.simmessages.send(
             "docs",
             Buffer.fromUTF8(JSON.stringify(images))
         )
     }
 
-
     function renderSamples(images: RenderedImage[], app: microcode.App) {
         app.popScene()
         for (const sample of microcode.samples()) {
             console.log(`render sample ${sample.label}`)
-            settings.writeString(microcode.SAVESLOT_AUTO, sample.src)
+            const src = sample.source
+            settings.writeString(microcode.SAVESLOT_AUTO, src)
             const editor = new microcode.Editor(app)
             app.pushScene(editor)
             pause(500)

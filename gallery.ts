@@ -24,7 +24,7 @@ namespace microcode {
                     x: x + 16,
                     y: y + 16,
                     onClick: () => {
-                        settings.writeString(SAVESLOT_AUTO, sample.src)
+                        settings.writeString(SAVESLOT_AUTO, sample.source)
                         this.app.popScene()
                         this.app.pushScene(new Editor(this.app))
                     },
