@@ -1,74 +1,8 @@
 ## Tiles
 
-### ![cursor](./images/generated/icon_cursor.png)  {#icon_cursor}
-
-- cursor
-- icon
-
-
-### ![stylus](./images/generated/icon_stylus.png)  {#icon_stylus}
-
-- stylus
-- icon
-
-
-### ![button white](./images/generated/icon_button_white.png)  {#icon_button_white}
-
-- button white
-- icon
-
-
-### ![button white bordered](./images/generated/icon_button_white_bordered.png)  {#icon_button_white_bordered}
-
-- button white bordered
-- icon
-
-
-### ![button beige](./images/generated/icon_button_beige.png)  {#icon_button_beige}
-
-- button beige
-- icon
-
-
-### ![button beige bordered](./images/generated/icon_button_beige_bordered.png)  {#icon_button_beige_bordered}
-
-- button beige bordered
-- icon
-
-
-### ![button clear](./images/generated/icon_button_clear.png)  {#icon_button_clear}
-
-- button clear
-- icon
-
-
-### ![button danger](./images/generated/icon_button_danger.png)  {#icon_button_danger}
-
-- button danger
-- icon
-
-
-### ![edit](./images/generated/icon_edit.png)  {#icon_edit}
-
-- edit
-- icon
-
-
 ### ![delete](./images/generated/icon_delete.png)  {#icon_delete}
 
 - delete
-- icon
-
-
-### ![cancel](./images/generated/icon_cancel.png)  {#icon_cancel}
-
-- cancel
-- icon
-
-
-### ![ok](./images/generated/icon_ok.png)  {#icon_ok}
-
-- ok
 - icon
 
 
@@ -81,42 +15,6 @@
 ### ![reset](./images/generated/icon_reset.png)  {#icon_reset}
 
 - reset
-- icon
-
-
-### ![new file](./images/generated/icon_new_file.png)  {#icon_new_file}
-
-- new file
-- icon
-
-
-### ![log](./images/generated/icon_log.png)  {#icon_log}
-
-- log
-- icon
-
-
-### ![plot](./images/generated/icon_plot.png)  {#icon_plot}
-
-- plot
-- icon
-
-
-### ![dpad left](./images/generated/icon_dpad_left.png)  {#icon_dpad_left}
-
-- dpad left
-- icon
-
-
-### ![when empty tile](./images/generated/icon_when.png)  {#icon_when}
-
-- when empty tile
-- icon
-
-
-### ![do empty tile](./images/generated/icon_do.png)  {#icon_do}
-
-- do empty tile
 - icon
 
 
@@ -180,6 +78,18 @@
 - icon
 
 
+### ![solid red](./images/generated/icon_solid_red.png)  {#icon_solid_red}
+
+- solid red
+- icon
+
+
+### ![solid black](./images/generated/icon_solid_black.png)  {#icon_solid_black}
+
+- solid black
+- icon
+
+
 ### ![flashing heart](./images/generated/icon_flashing_heart.png)  {#icon_flashing_heart}
 
 - flashing heart
@@ -240,15 +150,9 @@
 - icon
 
 
-### ![solid red](./images/generated/icon_solid_red.png)  {#icon_solid_red}
+### ![plus operator](./images/generated/icon_plus_operator.png)  {#icon_plus_operator}
 
-- solid red
-- icon
-
-
-### ![solid black](./images/generated/icon_solid_black.png)  {#icon_solid_black}
-
-- solid black
+- plus operator
 - icon
 
 
@@ -450,15 +354,39 @@
 - icon
 
 
-### ![random number](./images/generated/icon_A7.png)  {#icon_A7}
-
-- random number
-- icon
-
-
 ### ![A8](./images/generated/icon_A8.png)  {#icon_A8}
 
 - A8
+- icon
+
+
+### ![A9A](./images/generated/icon_A9A.png)  {#icon_A9A}
+
+- A9A
+- icon
+
+
+### ![A9B](./images/generated/icon_A9B.png)  {#icon_A9B}
+
+- A9B
+- icon
+
+
+### ![A9C](./images/generated/icon_A9C.png)  {#icon_A9C}
+
+- A9C
+- icon
+
+
+### ![M22](./images/generated/icon_M22.png)  {#icon_M22}
+
+- M22
+- icon
+
+
+### ![M23](./images/generated/icon_M23.png)  {#icon_M23}
+
+- M23
 - icon
 
 
@@ -558,18 +486,6 @@
 - icon
 
 
-### ![on](./images/generated/icon_M11.png)  {#icon_M11}
-
-- on
-- icon
-
-
-### ![off](./images/generated/icon_M12.png)  {#icon_M12}
-
-- off
-- icon
-
-
 ### ![emoji giggle](./images/generated/icon_M19giggle.png)  {#icon_M19giggle}
 
 - emoji giggle
@@ -654,12 +570,6 @@
 - icon
 
 
-### ![freefall](./images/generated/icon_F17_freefall.png)  {#icon_F17_freefall}
-
-- freefall
-- icon
-
-
 ### ![tilt up](./images/generated/icon_F17_tilt_up.png)  {#icon_F17_tilt_up}
 
 - tilt up
@@ -684,14 +594,8 @@
 - icon
 
 
-### ![red](./images/generated/icon_M16.png)  {#icon_M16}
+### ![M21](./images/generated/icon_M21.png)  {#icon_M21}
 
-- red
-- icon
-
-
-### ![dark purple](./images/generated/icon_M17.png)  {#icon_M17}
-
-- dark purple
+- M21
 - icon
 
