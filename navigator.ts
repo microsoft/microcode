@@ -293,6 +293,7 @@ namespace microcode {
             // for now, we assume the buttons have been added in order by
             // y coordinate
             let currRow: Button[] = []
+            this.buttons.sort((a, b) => a.xfrm.worldPos.y - b.xfrm.worldPos.y)
             this.buttons.forEach(btn => {
                 if (
                     currRow.length == 0 ||
@@ -308,9 +309,6 @@ namespace microcode {
             // sort each row by x coordinate
             this.sortedButtons.forEach(btns =>
                 btns.sort((a, b) => a.xfrm.worldPos.x - b.xfrm.worldPos.x)
-            )
-            this.sortedButtons.sort(
-                (a, b) => a[0].xfrm.worldPos.y - b[0].xfrm.worldPos.y
             )
         }
 
