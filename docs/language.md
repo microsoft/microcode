@@ -1,13 +1,14 @@
-![Smiley Button MicroCode program](./images/rule.jpg)
 
 # MicroCode Language
 
-The MicroCode language is defined in terms of pages, where a page has a list of rules,
+The MicroCode language is defined in terms of **pages**, where a page has a list of **rules**,
 and each rule consists of a **When** section and a **Do** section, each with a list of programming
 **tiles**. The picture above shows a 1-page program with two rules:
 
 -   the first rule shows a happy face on the micro:bit screen when the A button is pressed
 -   the second rule shows a sad face when the B button is pressed.
+
+![Smiley Button MicroCode program](./images/rule.jpg)
 
 ## Pages
 
