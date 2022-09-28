@@ -87,7 +87,7 @@ namespace microcode {
                     wordLogo.height +
                     dx +
                     this.yOffset +
-                    4
+                    2
             )
             if (!this.yOffset) {
                 const tagline = "for micro:bit V2"
