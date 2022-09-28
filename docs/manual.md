@@ -18,13 +18,13 @@ There are two ways to run MicroCode:
 See below for more information about the MicroCode web app, and how to deploy MicroCode to the micro:bit V2. Regardless of which way you run MicroCode, you will probably want to know a little bit about
 MicroCode's:
 
--   [icon-based language](./language.md)
--   [samples](./samples.md)
+-   [![press image](./images/generated/icon_S2.png){:class="icon"}](./language) [icon-based language](./language)
+-   [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon"}](./samples) [samples](./samples)
 -   [FAQ](./faq.md)
 
-## Web editor
+## [Web editor](https://aka.ms/m9)
 
-The easiest way to get started with MicroCode is through the web editor ([https://aka.ms/microcode](https://aka.ms/microcode), shown below). We recommend using the keyboard navigation or a real gamepad!
+The easiest way to get started with MicroCode is through the web editor ([https://aka.ms/microcode](https://aka.ms/microcode), [aka.ms/m9](https://aka.ms/m9) for short). We recommend using the keyboard navigation or a real gamepad!
 
 -   Arrow keys for D-pad
 -   Space bar for A button
