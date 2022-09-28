@@ -253,13 +253,19 @@ namespace microcode {
             )
                 return
 
-            Screen.fillBoundsXfrm(this.xfrm, this.icon.bounds, this.style.fill)
-            Screen.outlineBoundsXfrm4(
-                this.xfrm,
-                this.icon.bounds,
-                1,
-                this.style.borders
-            )
+            if (this.style.fill)
+                Screen.fillBoundsXfrm(
+                    this.xfrm,
+                    this.icon.bounds,
+                    this.style.fill
+                )
+            if (this.style.borders)
+                Screen.outlineBoundsXfrm4(
+                    this.xfrm,
+                    this.icon.bounds,
+                    1,
+                    this.style.borders
+                )
             if (this.style.shadow) {
                 Screen.setPixelXfrm(
                     this.xfrm,
