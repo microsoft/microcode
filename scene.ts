@@ -45,11 +45,11 @@ namespace microcode {
         /* abstract */ draw() {}
 
         protected handleClick(x: number, y: number) {
-            console.log(`click ${this.name} ${x}, ${y}`)
+            //console.log(`click ${this.name} ${x}, ${y}`)
         }
 
         protected handleWheel(dx: number, dy: number) {
-            console.log(`wheel ${dx} ${dy}`)
+            //console.log(`wheel ${dx} ${dy}`)
         }
 
         __init() {
@@ -84,7 +84,7 @@ namespace microcode {
                 .eventContext()
                 .registerFrameHandler(SCREEN_PRIORITY, () => {
                     control.enablePerfCounter()
-                    control.__screen.update
+                    control.__screen.update()
                 })
         }
     }
