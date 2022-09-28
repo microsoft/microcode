@@ -67,6 +67,13 @@ namespace microcode {
             control.eventContext().registerFrameHandler(RENDER_PRIORITY, () => {
                 Screen.image.fill(0)
                 this.draw()
+                if (Options.fps)
+                    Screen.image.print(
+                        control.EventContext.lastStats,
+                        1,
+                        1,
+                        15
+                    )
                 screen.fill(this.color_)
                 screen.drawTransparentImage(Screen.image, 0, 0)
             })
