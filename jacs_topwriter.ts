@@ -630,7 +630,7 @@ namespace jacs {
             let first = true
 
             for (const m of rule.modifiers) {
-                if (m.category == "value_out") {
+                if (m.category == "value_out" || m.category == "constant") {
                     if (this.breaksValSeq(m) && currSeq.length) {
                         this.emitAddSeq(currSeq, this.currValue(), 0, first)
                         currSeq = []
@@ -653,7 +653,7 @@ namespace jacs {
         private getValueIn(rule: microcode.RuleDefn) {
             let v = undefined
             for (const m of rule.filters) {
-                if (m.category == "value_in") {
+                if (m.category == "value_in" || m.category == "constant") {
                     if (v === undefined) v = 0
                     v += m.jdParam
                 }
