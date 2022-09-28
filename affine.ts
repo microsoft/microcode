@@ -79,7 +79,11 @@ namespace microcode {
             if (this.dirty || force) {
                 this.dirty_ = false
                 if (this.parent) {
-                    Vec2.TranslateToRef(this.localPos_, this.parent.worldPos, this.worldPos_)
+                    Vec2.TranslateToRef(
+                        this.localPos_,
+                        this.parent.worldPos,
+                        this.worldPos_
+                    )
                 } else {
                     this.worldPos_.copyFrom(this.localPos)
                 }

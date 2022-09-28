@@ -251,13 +251,7 @@ namespace microcode {
         /* override */ draw() {
             control.enablePerfCounter("Button.draw")
             // clipping on x axis
-            if (
-                this.xfrm.worldPos.x + this.icon.bounds.right + 1 <
-                    Screen.LEFT_EDGE ||
-                this.xfrm.worldPos.x + this.icon.bounds.left - 1 >
-                    Screen.RIGHT_EDGE
-            )
-                return
+            if (this.icon.isOffScreen()) return
 
             this.drawStyle()
             this.drawIcon()

@@ -1,36 +1,18 @@
 namespace microcode {
     export class Sprite extends Component implements IPlaceable, ISizable {
         private xfrm_: Affine
-        private image_: Image
-        private invisible_: boolean
+        image: Image
+        invisible: boolean
 
-        //% blockCombine block="xfrm" callInDebugger
         public get xfrm() {
             return this.xfrm_
         }
-        //% blockCombine block="width" callInDebugger
         public get width() {
-            return this.image_.width
+            return this.image.width
         }
-        //% blockCombine block="height" callInDebugger
         public get height() {
-            return this.image_.height
+            return this.image.height
         }
-        //% blockCombine block="image" callInDebugger
-        public get image(): Image {
-            return this.image_
-        }
-        public set image(img: Image) {
-            this.setImage(img)
-        }
-        //% blockCombine block="invisible" callInDebugger
-        public get invisible() {
-            return this.invisible_
-        }
-        public set invisible(b: boolean) {
-            this.invisible_ = b
-        }
-        //% blockCombine block="hitbox" callInDebugger
         public get hitbox() {
             return Bounds.FromSprite(this)
         }
@@ -55,12 +37,12 @@ namespace microcode {
         }
 
         /* override */ destroy() {
-            this.image_ = undefined
+            this.image = undefined
             super.destroy()
         }
 
         protected setImage(img: Image) {
-            this.image_ = img
+            this.image = img
         }
 
         public bindXfrm(xfrm: Affine) {
@@ -71,24 +53,24 @@ namespace microcode {
             return Occlusions.FromSprite(this, bounds)
         }
 
-        /*
         public isOffScreen(): boolean {
+            const p = this.xfrm.worldPos
             return (
-                this.xfrm.worldPos.x + (this.width >> 1) < Screen.LEFT_EDGE ||
-                this.xfrm.worldPos.y + (this.height >> 1) < Screen.TOP_EDGE ||
-                this.xfrm.worldPos.x - (this.width >> 1) > Screen.RIGHT_EDGE ||
-                this.xfrm.worldPos.y - (this.height >> 1) > Screen.BOTTOM_EDGE
+                p.x + (this.width >> 1) < Screen.LEFT_EDGE ||
+                p.y + (this.height >> 1) < Screen.TOP_EDGE ||
+                p.x - (this.width >> 1) > Screen.RIGHT_EDGE ||
+                p.y - (this.height >> 1) > Screen.BOTTOM_EDGE
             )
         }
         public isClipped(): boolean {
+            const p = this.xfrm.worldPos
             return (
-                this.xfrm.worldPos.x - (this.width >> 1) < Screen.LEFT_EDGE ||
-                this.xfrm.worldPos.y - (this.height >> 1) < Screen.TOP_EDGE ||
-                this.xfrm.worldPos.x + (this.width >> 1) > Screen.RIGHT_EDGE ||
-                this.xfrm.worldPos.y + (this.height >> 1) > Screen.BOTTOM_EDGE
+                p.x - (this.width >> 1) < Screen.LEFT_EDGE ||
+                p.y - (this.height >> 1) < Screen.TOP_EDGE ||
+                p.x + (this.width >> 1) > Screen.RIGHT_EDGE ||
+                p.y + (this.height >> 1) > Screen.BOTTOM_EDGE
             )
         }
-        */
 
         /* override */ draw() {
             control.enablePerfCounter("Icon.draw")
@@ -103,9 +85,9 @@ namespace microcode {
 
             Screen.drawTransparentImageXfrm(
                 this.xfrm,
-                this.image_,
-                -(this.image_.width >> 1),
-                -(this.image_.height >> 1)
+                this.image,
+                -(this.image.width >> 1),
+                -(this.image.height >> 1)
             )
             //this.hitbox.drawRect(15);
         }
