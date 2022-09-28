@@ -132,6 +132,7 @@ namespace microcode {
         }
 
         /* override */ draw() {
+            control.enablePerfCounter("Cursor.draw")
             if (!this.visible) return
 
             Screen.outlineBoundsXfrm(

@@ -249,6 +249,7 @@ namespace microcode {
         }
 
         /* override */ draw() {
+            control.enablePerfCounter("Button.draw")
             // clipping on x axis
             if (
                 this.xfrm.worldPos.x + this.icon.bounds.right + 1 <

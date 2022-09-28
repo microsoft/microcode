@@ -510,6 +510,7 @@ namespace microcode {
         }
 
         /* override */ draw() {
+            control.enablePerfCounter("PageEditor.draw")
             this.rules.forEach(rule => rule.draw())
         }
     }

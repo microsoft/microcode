@@ -178,6 +178,7 @@ namespace microcode {
         }
 
         draw() {
+            control.enablePerfCounter("Picker.draw")
             if (!this.visible) return
             Screen.fillBoundsXfrm(this.xfrm, this.panel, 12)
             Screen.outlineBoundsXfrm(this.xfrm, this.panel, 1, 15)
