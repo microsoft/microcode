@@ -549,6 +549,7 @@ namespace microcode {
                 ariaId: "rule",
                 x: 0,
                 y: 0,
+                style: ButtonStyles.Transparent,
                 onClick: () => this.showRuleHandleMenu(),
             })
             this.arrow = new Sprite({
@@ -923,6 +924,7 @@ namespace microcode {
         }
 
         /* override */ draw() {
+            control.enablePerfCounter("rule.draw")
             // don't render when out of screenR
             if (
                 this.xfrm.worldPos.y + this.bounds.top > Screen.BOTTOM_EDGE ||
@@ -931,9 +933,7 @@ namespace microcode {
                 return
             }
 
-            Screen.fillBoundsXfrm(this.xfrm, this.bounds, 11)
-            Screen.fillBoundsXfrm(this.xfrm, this.whenBounds, 13)
-            Screen.outlineBoundsXfrm(this.xfrm, this.bounds, 1, 12)
+            this.drawBackground()
             this.handleBtn.draw()
             if (this.whenInsertBtn) this.whenInsertBtn.draw()
             this.arrow.draw()
@@ -942,6 +942,13 @@ namespace microcode {
                 const buttons = this.rule[name]
                 buttons.forEach(btn => btn.draw())
             })
+        }
+
+        private drawBackground() {
+            control.enablePerfCounter("rule.draw.bkg")
+            Screen.fillBoundsXfrm(this.xfrm, this.bounds, 11)
+            Screen.fillBoundsXfrm(this.xfrm, this.whenBounds, 13)
+            Screen.outlineBoundsXfrm(this.xfrm, this.bounds, 1, 12)
         }
     }
 }

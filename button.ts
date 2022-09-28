@@ -21,6 +21,11 @@ namespace microcode {
             borders: { top: 1, bottom: 1, left: 1, right: 1 },
             shadow: false,
         }
+        export const RectangleWhite: ButtonStyle = {
+            fill: 1,
+            borders: { top: 0, bottom: 0, left: 0, right: 0 },
+            shadow: false,
+        }
         export const BorderedPurple: ButtonStyle = {
             fill: 11,
             borders: { top: 12, bottom: 12, left: 12, right: 12 },

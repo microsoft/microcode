@@ -71,6 +71,7 @@ namespace microcode {
             return Occlusions.FromSprite(this, bounds)
         }
 
+        /*
         public isOffScreen(): boolean {
             return (
                 this.xfrm.worldPos.x + (this.width >> 1) < Screen.LEFT_EDGE ||
@@ -79,7 +80,6 @@ namespace microcode {
                 this.xfrm.worldPos.y - (this.height >> 1) > Screen.BOTTOM_EDGE
             )
         }
-
         public isClipped(): boolean {
             return (
                 this.xfrm.worldPos.x - (this.width >> 1) < Screen.LEFT_EDGE ||
@@ -88,14 +88,18 @@ namespace microcode {
                 this.xfrm.worldPos.y + (this.height >> 1) > Screen.BOTTOM_EDGE
             )
         }
+        */
 
         /* override */ draw() {
             if (this.invisible) {
                 return
             }
-            if (this.isOffScreen()) {
-                return
-            }
+
+            // perf: this is not really required anymore as rules are clipped vertically and tiles horizontally
+            // if (this.isOffScreen()) {
+            //    return
+            //}
+
             Screen.drawTransparentImageXfrm(
                 this.xfrm,
                 this.image_,

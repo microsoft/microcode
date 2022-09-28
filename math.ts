@@ -23,7 +23,11 @@ namespace microcode {
             this.dirty = true
         }
 
-        constructor(public x_ = 0, public y_ = 0) {}
+        constructor(public x_ = 0, public y_ = 0) {
+            // perf: ensure x_, y_ are integers
+            //control.assert((this.x_ | 0) == this.x_, 123)
+            //control.assert((this.y_ | 0) == this.y_, 123)
+        }
 
         public clone(): Vec2 {
             return new Vec2(this.x, this.y)
