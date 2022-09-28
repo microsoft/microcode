@@ -524,11 +524,10 @@ ${jsg
     .sort(({ name }) => name)
     .map(
         ({ type, name }) => `
-### ![${mapAriaId(name)}](./images/generated/${norm(`${type}_${name}`)}.png){:class="icon"}  {#${norm(
+### ![${mapAriaId(name)}](./images/generated/${norm(
             `${type}_${name}`
-        )}}
+        )}.png){:class="icon"} ${mapAriaId(name)} {#${norm(`${type}_${name}`)}}
 
-- ${mapAriaId(name)}
 - ${type}
 
 `

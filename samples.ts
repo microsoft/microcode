@@ -42,7 +42,7 @@ namespace microcode {
             {
                 label: "rock, paper, scissors",
                 ariaId: "N8",
-                src: `{"progdef":{"P":[{"R":[{"S":["S3"],"A":["A9A"],"F":["F17_shake"],"M":["M22","M8"]},{"S":["S9A"],"A":["A5"],"F":["F8"],"M":["M15(0000001110011100111000000)"]},{"S":["S9A"],"A":["A5"],"F":["F9"],"M":["M15(1111110001100011000111111)"]},{"S":["S9A"],"A":["A5"],"F":["F10"],"M":["M15(1100111010001001101011001)"]},{}]},{"R":[{}]},{"R":[{}]},{"R":[{}]},{}]}}`,
+                b64: 'eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMTdfc2hha2UiXSwiTSI6WyJNMjIiLCJNOCJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTUiXSwiRiI6WyJGOCJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwKSIsIk0xNSgwMDAwMDAxMTEwMDExMTAwMTExMDAwMDAwKSJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTUiXSwiRiI6WyJGOSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwKSIsIk0xNSgxMTExMTEwMDAxMTAwMDExMDAwMTExMTExKSJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTUiXSwiRiI6WyJGMTAiXSwiTSI6WyJNMTUoMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCkiLCJNMTUoMTEwMDExMTAxMDAwMTAwMTEwMTAxMTAwMSkiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19fQ==',
                 icon: "rock_paper_scissors",
             },
             {

@@ -1,699 +1,501 @@
-# Reference 
-
 ## Tiles
 
-### ![cursor](./images/generated/icon_cursor.png)  {#icon_cursor}
+### ![delete](./images/generated/icon_delete.png){:class="icon"} delete {#icon_delete}
 
-- cursor
 - icon
 
 
-### ![stylus](./images/generated/icon_stylus.png)  {#icon_stylus}
+### ![plus](./images/generated/icon_plus.png){:class="icon"} plus {#icon_plus}
 
-- stylus
 - icon
 
 
-### ![button white](./images/generated/icon_button_white.png)  {#icon_button_white}
+### ![reset](./images/generated/icon_reset.png){:class="icon"} reset {#icon_reset}
 
-- button white
 - icon
 
 
-### ![button white bordered](./images/generated/icon_button_white_bordered.png)  {#icon_button_white_bordered}
+### ![when insertion point](./images/generated/icon_when_insertion_point.png){:class="icon"} when insertion point {#icon_when_insertion_point}
 
-- button white bordered
 - icon
 
 
-### ![button beige](./images/generated/icon_button_beige.png)  {#icon_button_beige}
+### ![do insertion point](./images/generated/icon_do_insertion_point.png){:class="icon"} do insertion point {#icon_do_insertion_point}
 
-- button beige
 - icon
 
 
-### ![button beige bordered](./images/generated/icon_button_beige_bordered.png)  {#icon_button_beige_bordered}
+### ![rule arrow](./images/generated/icon_rule_arrow.png){:class="icon"} rule arrow {#icon_rule_arrow}
 
-- button beige bordered
 - icon
 
 
-### ![button clear](./images/generated/icon_button_clear.png)  {#icon_button_clear}
+### ![next page](./images/generated/icon_next_page.png){:class="icon"} next page {#icon_next_page}
 
-- button clear
 - icon
 
 
-### ![button danger](./images/generated/icon_button_danger.png)  {#icon_button_danger}
+### ![prev page](./images/generated/icon_prev_page.png){:class="icon"} prev page {#icon_prev_page}
 
-- button danger
 - icon
 
 
-### ![edit](./images/generated/icon_edit.png)  {#icon_edit}
+### ![rule handle](./images/generated/icon_rule_handle.png){:class="icon"} rule handle {#icon_rule_handle}
 
-- edit
 - icon
 
 
-### ![delete](./images/generated/icon_delete.png)  {#icon_delete}
+### ![paint](./images/generated/icon_paint.png){:class="icon"} paint {#icon_paint}
 
-- delete
 - icon
 
 
-### ![cancel](./images/generated/icon_cancel.png)  {#icon_cancel}
+### ![edit program](./images/generated/icon_edit_program.png){:class="icon"} edit program {#icon_edit_program}
 
-- cancel
 - icon
 
 
-### ![ok](./images/generated/icon_ok.png)  {#icon_ok}
+### ![new program](./images/generated/icon_new_program.png){:class="icon"} new program {#icon_new_program}
 
-- ok
 - icon
 
 
-### ![plus](./images/generated/icon_plus.png)  {#icon_plus}
+### ![MISSING](./images/generated/icon_MISSING.png){:class="icon"} MISSING {#icon_MISSING}
 
-- plus
 - icon
 
 
-### ![reset](./images/generated/icon_reset.png)  {#icon_reset}
+### ![solid red](./images/generated/icon_solid_red.png){:class="icon"} solid red {#icon_solid_red}
 
-- reset
 - icon
 
 
-### ![new file](./images/generated/icon_new_file.png)  {#icon_new_file}
+### ![solid black](./images/generated/icon_solid_black.png){:class="icon"} solid black {#icon_solid_black}
 
-- new file
 - icon
 
 
-### ![log](./images/generated/icon_log.png)  {#icon_log}
+### ![flashing heart](./images/generated/icon_flashing_heart.png){:class="icon"} flashing heart {#icon_flashing_heart}
 
-- log
 - icon
 
 
-### ![plot](./images/generated/icon_plot.png)  {#icon_plot}
+### ![smiley buttons](./images/generated/icon_smiley_buttons.png){:class="icon"} smiley buttons {#icon_smiley_buttons}
 
-- plot
 - icon
 
 
-### ![dpad left](./images/generated/icon_dpad_left.png)  {#icon_dpad_left}
+### ![clap lights](./images/generated/icon_clap_lights.png){:class="icon"} clap lights {#icon_clap_lights}
 
-- dpad left
 - icon
 
 
-### ![when empty tile](./images/generated/icon_when.png)  {#icon_when}
+### ![dice](./images/generated/icon_dice.png){:class="icon"} dice {#icon_dice}
 
-- when empty tile
 - icon
 
 
-### ![do empty tile](./images/generated/icon_do.png)  {#icon_do}
+### ![rock paper scissors](./images/generated/icon_rock_paper_scissors.png){:class="icon"} rock paper scissors {#icon_rock_paper_scissors}
 
-- do empty tile
 - icon
 
 
-### ![when insertion point](./images/generated/icon_when_insertion_point.png)  {#icon_when_insertion_point}
+### ![teleport duck](./images/generated/icon_teleport_duck.png){:class="icon"} teleport duck {#icon_teleport_duck}
 
-- when insertion point
 - icon
 
 
-### ![do insertion point](./images/generated/icon_do_insertion_point.png)  {#icon_do_insertion_point}
+### ![pet hamster](./images/generated/icon_pet_hamster.png){:class="icon"} pet hamster {#icon_pet_hamster}
 
-- do insertion point
 - icon
 
 
-### ![rule arrow](./images/generated/icon_rule_arrow.png)  {#icon_rule_arrow}
+### ![heads tails](./images/generated/icon_heads_tails.png){:class="icon"} heads tails {#icon_heads_tails}
 
-- rule arrow
 - icon
 
 
-### ![next page](./images/generated/icon_next_page.png)  {#icon_next_page}
+### ![reaction time](./images/generated/icon_reaction_time.png){:class="icon"} reaction time {#icon_reaction_time}
 
-- next page
 - icon
 
 
-### ![prev page](./images/generated/icon_prev_page.png)  {#icon_prev_page}
+### ![hot potato](./images/generated/icon_hot_potato.png){:class="icon"} hot potato {#icon_hot_potato}
 
-- prev page
 - icon
 
 
-### ![rule handle](./images/generated/icon_rule_handle.png)  {#icon_rule_handle}
+### ![plus operator](./images/generated/icon_plus_operator.png){:class="icon"} plus operator {#icon_plus_operator}
 
-- rule handle
 - icon
 
 
-### ![paint](./images/generated/icon_paint.png)  {#icon_paint}
+### ![timer](./images/generated/icon_S4.png){:class="icon"} timer {#icon_S4}
 
-- paint
 - icon
 
 
-### ![edit program](./images/generated/icon_edit_program.png)  {#icon_edit_program}
+### ![radio receive](./images/generated/icon_S7.png){:class="icon"} radio receive {#icon_S7}
 
-- edit program
 - icon
 
 
-### ![new program](./images/generated/icon_new_program.png)  {#icon_new_program}
+### ![press](./images/generated/icon_S2.png){:class="icon"} press {#icon_S2}
 
-- new program
 - icon
 
 
-### ![MISSING](./images/generated/icon_MISSING.png)  {#icon_MISSING}
+### ![release](./images/generated/icon_S2B.png){:class="icon"} release {#icon_S2B}
 
-- MISSING
 - icon
 
 
-### ![flashing heart](./images/generated/icon_flashing_heart.png)  {#icon_flashing_heart}
+### ![microphone](./images/generated/icon_S8.png){:class="icon"} microphone {#icon_S8}
 
-- flashing heart
 - icon
 
 
-### ![smiley buttons](./images/generated/icon_smiley_buttons.png)  {#icon_smiley_buttons}
+### ![accelerometer](./images/generated/icon_S3.png){:class="icon"} accelerometer {#icon_S3}
 
-- smiley buttons
 - icon
 
 
-### ![clap lights](./images/generated/icon_clap_lights.png)  {#icon_clap_lights}
+### ![out of variable A](./images/generated/icon_S9A.png){:class="icon"} out of variable A {#icon_S9A}
 
-- clap lights
 - icon
 
 
-### ![dice](./images/generated/icon_dice.png)  {#icon_dice}
+### ![out of variable B](./images/generated/icon_S9B.png){:class="icon"} out of variable B {#icon_S9B}
 
-- dice
 - icon
 
 
-### ![rock paper scissors](./images/generated/icon_rock_paper_scissors.png)  {#icon_rock_paper_scissors}
+### ![out of variable C](./images/generated/icon_S9C.png){:class="icon"} out of variable C {#icon_S9C}
 
-- rock paper scissors
 - icon
 
 
-### ![teleport duck](./images/generated/icon_teleport_duck.png)  {#icon_teleport_duck}
+### ![S10](./images/generated/icon_S10.png){:class="icon"} S10 {#icon_S10}
 
-- teleport duck
 - icon
 
 
-### ![pet hamster](./images/generated/icon_pet_hamster.png)  {#icon_pet_hamster}
+### ![logo](./images/generated/icon_F7.png){:class="icon"} logo {#icon_F7}
 
-- pet hamster
 - icon
 
 
-### ![heads tails](./images/generated/icon_heads_tails.png)  {#icon_heads_tails}
+### ![touch pin 0](./images/generated/icon_F0.png){:class="icon"} touch pin 0 {#icon_F0}
 
-- heads tails
 - icon
 
 
-### ![reaction time](./images/generated/icon_reaction_time.png)  {#icon_reaction_time}
+### ![touch pin 1](./images/generated/icon_F1.png){:class="icon"} touch pin 1 {#icon_F1}
 
-- reaction time
 - icon
 
 
-### ![hot potato](./images/generated/icon_hot_potato.png)  {#icon_hot_potato}
+### ![touch pin 2](./images/generated/icon_F2.png){:class="icon"} touch pin 2 {#icon_F2}
 
-- hot potato
 - icon
 
 
-### ![solid red](./images/generated/icon_solid_red.png)  {#icon_solid_red}
+### ![button A](./images/generated/icon_F3.png){:class="icon"} button A {#icon_F3}
 
-- solid red
 - icon
 
 
-### ![solid black](./images/generated/icon_solid_black.png)  {#icon_solid_black}
+### ![button B](./images/generated/icon_F4.png){:class="icon"} button B {#icon_F4}
 
-- solid black
 - icon
 
 
-### ![timer](./images/generated/icon_S4.png)  {#icon_S4}
+### ![quater of a second](./images/generated/icon_F13.png){:class="icon"} quater of a second {#icon_F13}
 
-- timer
 - icon
 
 
-### ![radio receive](./images/generated/icon_S7.png)  {#icon_S7}
+### ![one second](./images/generated/icon_F14.png){:class="icon"} one second {#icon_F14}
 
-- radio receive
 - icon
 
 
-### ![press](./images/generated/icon_S2.png)  {#icon_S2}
+### ![5 seconds](./images/generated/icon_F19.png){:class="icon"} 5 seconds {#icon_F19}
 
-- press
 - icon
 
 
-### ![release](./images/generated/icon_S2B.png)  {#icon_S2B}
+### ![1 random second](./images/generated/icon_F18.png){:class="icon"} 1 random second {#icon_F18}
 
-- release
 - icon
 
 
-### ![microphone](./images/generated/icon_S8.png)  {#icon_S8}
+### ![1](./images/generated/icon_F8.png){:class="icon"} 1 {#icon_F8}
 
-- microphone
 - icon
 
 
-### ![accelerometer](./images/generated/icon_S3.png)  {#icon_S3}
+### ![2](./images/generated/icon_F9.png){:class="icon"} 2 {#icon_F9}
 
-- accelerometer
 - icon
 
 
-### ![out of variable A](./images/generated/icon_S9A.png)  {#icon_S9A}
+### ![3](./images/generated/icon_F10.png){:class="icon"} 3 {#icon_F10}
 
-- out of variable A
 - icon
 
 
-### ![out of variable B](./images/generated/icon_S9B.png)  {#icon_S9B}
+### ![4](./images/generated/icon_F11.png){:class="icon"} 4 {#icon_F11}
 
-- out of variable B
 - icon
 
 
-### ![out of variable C](./images/generated/icon_S9C.png)  {#icon_S9C}
+### ![5](./images/generated/icon_F12.png){:class="icon"} 5 {#icon_F12}
 
-- out of variable C
 - icon
 
 
-### ![S10](./images/generated/icon_S10.png)  {#icon_S10}
+### ![loud](./images/generated/icon_F15.png){:class="icon"} loud {#icon_F15}
 
-- S10
 - icon
 
 
-### ![logo](./images/generated/icon_F7.png)  {#icon_F7}
+### ![quiet](./images/generated/icon_F16.png){:class="icon"} quiet {#icon_F16}
 
-- logo
 - icon
 
 
-### ![touch pin 0](./images/generated/icon_F0.png)  {#icon_F0}
+### ![switch page](./images/generated/icon_A1.png){:class="icon"} switch page {#icon_A1}
 
-- touch pin 0
 - icon
 
 
-### ![touch pin 1](./images/generated/icon_F1.png)  {#icon_F1}
+### ![screen](./images/generated/icon_A5.png){:class="icon"} screen {#icon_A5}
 
-- touch pin 1
 - icon
 
 
-### ![touch pin 2](./images/generated/icon_F2.png)  {#icon_F2}
+### ![radio send](./images/generated/icon_A6.png){:class="icon"} radio send {#icon_A6}
 
-- touch pin 2
 - icon
 
 
-### ![button A](./images/generated/icon_F3.png)  {#icon_F3}
+### ![microphone](./images/generated/icon_A3.png){:class="icon"} microphone {#icon_A3}
 
-- button A
 - icon
 
 
-### ![button B](./images/generated/icon_F4.png)  {#icon_F4}
+### ![speaker](./images/generated/icon_A2.png){:class="icon"} speaker {#icon_A2}
 
-- button B
 - icon
 
 
-### ![quater of a second](./images/generated/icon_F13.png)  {#icon_F13}
+### ![music](./images/generated/icon_A4.png){:class="icon"} music {#icon_A4}
 
-- quater of a second
 - icon
 
 
-### ![one second](./images/generated/icon_F14.png)  {#icon_F14}
+### ![A8](./images/generated/icon_A8.png){:class="icon"} A8 {#icon_A8}
 
-- one second
 - icon
 
 
-### ![5 seconds](./images/generated/icon_F19.png)  {#icon_F19}
+### ![A9A](./images/generated/icon_A9A.png){:class="icon"} A9A {#icon_A9A}
 
-- 5 seconds
 - icon
 
 
-### ![1 random second](./images/generated/icon_F18.png)  {#icon_F18}
+### ![A9B](./images/generated/icon_A9B.png){:class="icon"} A9B {#icon_A9B}
 
-- 1 random second
 - icon
 
 
-### ![1](./images/generated/icon_F8.png)  {#icon_F8}
+### ![A9C](./images/generated/icon_A9C.png){:class="icon"} A9C {#icon_A9C}
 
-- 1
 - icon
 
 
-### ![2](./images/generated/icon_F9.png)  {#icon_F9}
+### ![M22](./images/generated/icon_M22.png){:class="icon"} M22 {#icon_M22}
 
-- 2
 - icon
 
 
-### ![3](./images/generated/icon_F10.png)  {#icon_F10}
+### ![M23](./images/generated/icon_M23.png){:class="icon"} M23 {#icon_M23}
 
-- 3
 - icon
 
 
-### ![4](./images/generated/icon_F11.png)  {#icon_F11}
+### ![page 1](./images/generated/icon_M1.png){:class="icon"} page 1 {#icon_M1}
 
-- 4
 - icon
 
 
-### ![5](./images/generated/icon_F12.png)  {#icon_F12}
+### ![page 2](./images/generated/icon_M2.png){:class="icon"} page 2 {#icon_M2}
 
-- 5
 - icon
 
 
-### ![loud](./images/generated/icon_F15.png)  {#icon_F15}
+### ![page 3](./images/generated/icon_M3.png){:class="icon"} page 3 {#icon_M3}
 
-- loud
 - icon
 
 
-### ![quiet](./images/generated/icon_F16.png)  {#icon_F16}
+### ![page 4](./images/generated/icon_M4.png){:class="icon"} page 4 {#icon_M4}
 
-- quiet
 - icon
 
 
-### ![switch page](./images/generated/icon_A1.png)  {#icon_A1}
+### ![page 5](./images/generated/icon_M5.png){:class="icon"} page 5 {#icon_M5}
 
-- switch page
 - icon
 
 
-### ![screen](./images/generated/icon_A5.png)  {#icon_A5}
+### ![value 1](./images/generated/icon_M6.png){:class="icon"} value 1 {#icon_M6}
 
-- screen
 - icon
 
 
-### ![radio send](./images/generated/icon_A6.png)  {#icon_A6}
+### ![value 2](./images/generated/icon_M7.png){:class="icon"} value 2 {#icon_M7}
 
-- radio send
 - icon
 
 
-### ![microphone](./images/generated/icon_A3.png)  {#icon_A3}
+### ![value 3](./images/generated/icon_M8.png){:class="icon"} value 3 {#icon_M8}
 
-- microphone
 - icon
 
 
-### ![speaker](./images/generated/icon_A2.png)  {#icon_A2}
+### ![value 4](./images/generated/icon_M9.png){:class="icon"} value 4 {#icon_M9}
 
-- speaker
 - icon
 
 
-### ![music](./images/generated/icon_A4.png)  {#icon_A4}
+### ![value 5](./images/generated/icon_M10.png){:class="icon"} value 5 {#icon_M10}
 
-- music
 - icon
 
 
-### ![random number](./images/generated/icon_A7.png)  {#icon_A7}
+### ![A20 1](./images/generated/icon_A20_1.png){:class="icon"} A20 1 {#icon_A20_1}
 
-- random number
 - icon
 
 
-### ![A8](./images/generated/icon_A8.png)  {#icon_A8}
+### ![A20 2](./images/generated/icon_A20_2.png){:class="icon"} A20 2 {#icon_A20_2}
 
-- A8
 - icon
 
 
-### ![page 1](./images/generated/icon_M1.png)  {#icon_M1}
+### ![A20 3](./images/generated/icon_A20_3.png){:class="icon"} A20 3 {#icon_A20_3}
 
-- page 1
 - icon
 
 
-### ![page 2](./images/generated/icon_M2.png)  {#icon_M2}
+### ![A20 4](./images/generated/icon_A20_4.png){:class="icon"} A20 4 {#icon_A20_4}
 
-- page 2
 - icon
 
 
-### ![page 3](./images/generated/icon_M3.png)  {#icon_M3}
+### ![A20 5](./images/generated/icon_A20_5.png){:class="icon"} A20 5 {#icon_A20_5}
 
-- page 3
 - icon
 
 
-### ![page 4](./images/generated/icon_M4.png)  {#icon_M4}
+### ![A20 6](./images/generated/icon_A20_6.png){:class="icon"} A20 6 {#icon_A20_6}
 
-- page 4
 - icon
 
 
-### ![page 5](./images/generated/icon_M5.png)  {#icon_M5}
+### ![emoji giggle](./images/generated/icon_M19giggle.png){:class="icon"} emoji giggle {#icon_M19giggle}
 
-- page 5
 - icon
 
 
-### ![value 1](./images/generated/icon_M6.png)  {#icon_M6}
+### ![emoji happy](./images/generated/icon_M19happy.png){:class="icon"} emoji happy {#icon_M19happy}
 
-- value 1
 - icon
 
 
-### ![value 2](./images/generated/icon_M7.png)  {#icon_M7}
+### ![emoji hello](./images/generated/icon_M19hello.png){:class="icon"} emoji hello {#icon_M19hello}
 
-- value 2
 - icon
 
 
-### ![value 3](./images/generated/icon_M8.png)  {#icon_M8}
+### ![emoji mysterious](./images/generated/icon_M19mysterious.png){:class="icon"} emoji mysterious {#icon_M19mysterious}
 
-- value 3
 - icon
 
 
-### ![value 4](./images/generated/icon_M9.png)  {#icon_M9}
+### ![emoji sad](./images/generated/icon_M19sad.png){:class="icon"} emoji sad {#icon_M19sad}
 
-- value 4
 - icon
 
 
-### ![value 5](./images/generated/icon_M10.png)  {#icon_M10}
+### ![emoji slide](./images/generated/icon_M19slide.png){:class="icon"} emoji slide {#icon_M19slide}
 
-- value 5
 - icon
 
 
-### ![A20 1](./images/generated/icon_A20_1.png)  {#icon_A20_1}
+### ![emoji soaring](./images/generated/icon_M19soaring.png){:class="icon"} emoji soaring {#icon_M19soaring}
 
-- A20 1
 - icon
 
 
-### ![A20 2](./images/generated/icon_A20_2.png)  {#icon_A20_2}
+### ![emoji spring](./images/generated/icon_M19spring.png){:class="icon"} emoji spring {#icon_M19spring}
 
-- A20 2
 - icon
 
 
-### ![A20 3](./images/generated/icon_A20_3.png)  {#icon_A20_3}
+### ![emoji twinkle](./images/generated/icon_M19twinkle.png){:class="icon"} emoji twinkle {#icon_M19twinkle}
 
-- A20 3
 - icon
 
 
-### ![A20 4](./images/generated/icon_A20_4.png)  {#icon_A20_4}
+### ![emoji yawn](./images/generated/icon_M19yawn.png){:class="icon"} emoji yawn {#icon_M19yawn}
 
-- A20 4
 - icon
 
 
-### ![A20 5](./images/generated/icon_A20_5.png)  {#icon_A20_5}
+### ![in variable A](./images/generated/icon_M20A.png){:class="icon"} in variable A {#icon_M20A}
 
-- A20 5
 - icon
 
 
-### ![A20 6](./images/generated/icon_A20_6.png)  {#icon_A20_6}
+### ![in variable B](./images/generated/icon_M20B.png){:class="icon"} in variable B {#icon_M20B}
 
-- A20 6
 - icon
 
 
-### ![on](./images/generated/icon_M11.png)  {#icon_M11}
+### ![in variable C](./images/generated/icon_M20C.png){:class="icon"} in variable C {#icon_M20C}
 
-- on
 - icon
 
 
-### ![off](./images/generated/icon_M12.png)  {#icon_M12}
+### ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake {#icon_F17_shake}
 
-- off
 - icon
 
 
-### ![emoji giggle](./images/generated/icon_M19giggle.png)  {#icon_M19giggle}
+### ![tilt up](./images/generated/icon_F17_tilt_up.png){:class="icon"} tilt up {#icon_F17_tilt_up}
 
-- emoji giggle
 - icon
 
 
-### ![emoji happy](./images/generated/icon_M19happy.png)  {#icon_M19happy}
+### ![tilt down](./images/generated/icon_F17_tilt_down.png){:class="icon"} tilt down {#icon_F17_tilt_down}
 
-- emoji happy
 - icon
 
 
-### ![emoji hello](./images/generated/icon_M19hello.png)  {#icon_M19hello}
+### ![tilt left](./images/generated/icon_F17_tilt_left.png){:class="icon"} tilt left {#icon_F17_tilt_left}
 
-- emoji hello
 - icon
 
 
-### ![emoji mysterious](./images/generated/icon_M19mysterious.png)  {#icon_M19mysterious}
+### ![tilt right](./images/generated/icon_F17_tilt_right.png){:class="icon"} tilt right {#icon_F17_tilt_right}
 
-- emoji mysterious
 - icon
 
 
-### ![emoji sad](./images/generated/icon_M19sad.png)  {#icon_M19sad}
+### ![M21](./images/generated/icon_M21.png){:class="icon"} M21 {#icon_M21}
 
-- emoji sad
-- icon
-
-
-### ![emoji slide](./images/generated/icon_M19slide.png)  {#icon_M19slide}
-
-- emoji slide
-- icon
-
-
-### ![emoji soaring](./images/generated/icon_M19soaring.png)  {#icon_M19soaring}
-
-- emoji soaring
-- icon
-
-
-### ![emoji spring](./images/generated/icon_M19spring.png)  {#icon_M19spring}
-
-- emoji spring
-- icon
-
-
-### ![emoji twinkle](./images/generated/icon_M19twinkle.png)  {#icon_M19twinkle}
-
-- emoji twinkle
-- icon
-
-
-### ![emoji yawn](./images/generated/icon_M19yawn.png)  {#icon_M19yawn}
-
-- emoji yawn
-- icon
-
-
-### ![in variable A](./images/generated/icon_M20A.png)  {#icon_M20A}
-
-- in variable A
-- icon
-
-
-### ![in variable B](./images/generated/icon_M20B.png)  {#icon_M20B}
-
-- in variable B
-- icon
-
-
-### ![in variable C](./images/generated/icon_M20C.png)  {#icon_M20C}
-
-- in variable C
-- icon
-
-
-### ![shake](./images/generated/icon_F17_shake.png)  {#icon_F17_shake}
-
-- shake
-- icon
-
-
-### ![freefall](./images/generated/icon_F17_freefall.png)  {#icon_F17_freefall}
-
-- freefall
-- icon
-
-
-### ![tilt up](./images/generated/icon_F17_tilt_up.png)  {#icon_F17_tilt_up}
-
-- tilt up
-- icon
-
-
-### ![tilt down](./images/generated/icon_F17_tilt_down.png)  {#icon_F17_tilt_down}
-
-- tilt down
-- icon
-
-
-### ![tilt left](./images/generated/icon_F17_tilt_left.png)  {#icon_F17_tilt_left}
-
-- tilt left
-- icon
-
-
-### ![tilt right](./images/generated/icon_F17_tilt_right.png)  {#icon_F17_tilt_right}
-
-- tilt right
-- icon
-
-
-### ![red](./images/generated/icon_M16.png)  {#icon_M16}
-
-- red
-- icon
-
-
-### ![dark purple](./images/generated/icon_M17.png)  {#icon_M17}
-
-- dark purple
 - icon
 
