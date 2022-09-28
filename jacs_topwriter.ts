@@ -110,27 +110,19 @@ namespace jacs {
                             wr.emitExpr(OpExpr.EXPR0_RET_VAL, []),
                             0,
                             () => {
-                                this.parent.emitLoadBuffer(hex`0a`)
-                                this.parent.emitSendCmd(
+                                this.parent.emitSetReg(
                                     this,
-                                    CMD_SET_REG | JD_REG_STREAMING_SAMPLES
+                                    JD_REG_STREAMING_SAMPLES,
+                                    hex`0a`
                                 )
                             }
                         )
                     }
                     if (needsEnable.indexOf(this.classIdentifier) >= 0) {
-                        this.parent.emitLoadBuffer(hex`01`)
-                        this.parent.emitSendCmd(
-                            this,
-                            CMD_SET_REG | JD_REG_INTENSITY
-                        )
+                        this.parent.emitSetReg(this, JD_REG_INTENSITY, hex`01`)
                         if (this.classIdentifier == serviceClasses["radio"]) {
                             // set group to 1
-                            this.parent.emitLoadBuffer(hex`01`)
-                            this.parent.emitSendCmd(
-                                this,
-                                CMD_SET_REG | 0x80
-                            )
+                            this.parent.emitSetReg(this, 0x80, hex`01`)
                         }
                     }
                     this.top = wr.mkLabel("tp")
@@ -464,6 +456,11 @@ namespace jacs {
                 return evCode
             }
             return null
+        }
+
+        emitSetReg(role: Role, reg: number, buf: string | Buffer) {
+            this.emitLoadBuffer(buf)
+            this.emitSendCmd(role, CMD_SET_REG | reg)
         }
 
         emitLoadBuffer(buf: string | Buffer) {
@@ -915,11 +912,9 @@ namespace jacs {
 
         private emitClearScreen() {
             const scr = this.lookupRole("dotMatrix", 0)
-            this.emitLoadBuffer(hex`00 00 04 00 00`)
-            this.emitSendCmd(scr, jacs.CMD_SET_REG | 0x2)
+            this.emitSetReg(scr, 0x02, hex`00 00 04 00 00`)
             this.emitSleep(50)
-            this.emitLoadBuffer(hex`00 00 00 00 00`)
-            this.emitSendCmd(scr, jacs.CMD_SET_REG | 0x2)
+            this.emitSetReg(scr, 0x02, hex`00 00 00 00 00`)
         }
 
         emitProgram(prog: microcode.ProgramDefn) {
@@ -942,9 +937,7 @@ namespace jacs {
                         literal(mic.index),
                     ]),
                     () => {
-                        this.emitLogString("disable mic")
-                        this.emitLoadBuffer(hex`00`)
-                        this.emitSendCmd(mic, CMD_SET_REG | JD_REG_INTENSITY)
+                        this.emitSetReg(mic, JD_REG_INTENSITY, hex`00`)
                     }
                 )
             })
