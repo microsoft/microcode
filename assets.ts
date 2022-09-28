@@ -29,7 +29,6 @@ namespace microcode {
             this.reg["next_page"] = icondb.btn_next_page
             this.reg["prev_page"] = icondb.btn_prev_page
             this.reg["rule_handle"] = icondb.rule_handle
-            this.reg["paint"] = icondb.paint
             this.reg["edit_program"] = icondb.largeEditIcon
             this.reg["new_program"] = icondb.largeNewProgramIcon
             this.reg["MISSING"] = icondb.MISSING
@@ -42,7 +41,7 @@ namespace microcode {
             this.reg["flashing_heart"] = icondb.sampleFlashingHeart
             this.reg["smiley_buttons"] = icondb.sampleSmileyButtons
             this.reg["clap_lights"] = icondb.sampleClapLights
-            this.reg["dice"] = icondb.sampleDice
+            // this.reg["dice"] = icondb.sampleDice  // nice icon, don't delete, but not currently used
             this.reg["rock_paper_scissors"] = icondb.sampleRockPaperScissors
             this.reg["teleport_duck"] = icondb.sampleTeleportDuck
             this.reg["pet_hamster"] = icondb.samplePetHamster
@@ -52,7 +51,7 @@ namespace microcode {
             this.reg["clap_lights"] = icondb.sampleClapLights
 
             // special icons
-            this.reg["plus_operator"] = icondb.minus_operator
+            this.reg["plus_operator"] = icondb.plus_operator
 
             // sensors
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
@@ -524,24 +523,6 @@ namespace icondb {
         . . . . . . . . . . . . . . . . 
     `
 
-    export const paint = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . e e . . . . .
-        . . . . . . . . e 1 5 e . . . .
-        . . . . . . . e 1 5 e 4 e . . .
-        . . . . . . e 1 5 e 4 e e . . .
-        . . . . . e 5 5 e 4 e e d . . .
-        . . . . e 5 5 e 4 e e d . . . .
-        . . . e d 5 e 4 e e d . . . . .
-        . . . e d d 4 e e d . . . . . .
-        . . . e e d d e d . . . . . . .
-        . . . e e e e d . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
     export const showScreen = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . 2 4 . .
@@ -1891,6 +1872,7 @@ f f f f f f f f f f f f f f f f
     b111111111111111111111111111111b
     .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
+    /*
     export const sampleDice = img`
     .111111111111111111111111111111.
     11111111111111111111111111111111
@@ -1925,7 +1907,8 @@ f f f f f f f f f f f f f f f f
     11111111111111111111111111111111
     b111111111111111111111111111111b
     .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
-`
+`*/
+
     export const sampleClapLights = img`
     .ffffffff8fffffffffffffffffffff.
     fffffffff8ffffffffffffffffffffff
