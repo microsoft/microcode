@@ -3,9 +3,11 @@
 
 @import "{{ site.theme }}";
 
-img {
+img.icon {
     image-rendering: pixelated;
     min-width: 5rem;
+    background: #fff;
+    border-radius: 0.25rem;
 }
 
 p img {
