@@ -213,8 +213,8 @@ namespace microcode {
 
     function makeCupSensor(tid: string, name: string, id: number) {
         const tile = makeSensor(tid, name, "value_in", 120 + id * 5)
+        tile.jdKind = JdKind.Variable
         tile.jdParam = id
-        tile.serviceClassName = "cup"
         tile.priority = 200 + id
         // tile.constraints.handling = maxOneValueIn
     }
