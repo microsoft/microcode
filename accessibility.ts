@@ -109,6 +109,9 @@ namespace accessibility {
         M20A: "variable A",
         M20B: "variable B",
         M20C: "variable C",
+        M21: "radio value",
+        M22: "dice",
+        M23: "minus",
 
         A9A: "set variable A",
         A9B: "set variable B",

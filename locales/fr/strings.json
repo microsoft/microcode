@@ -90,6 +90,10 @@
     "M20B": "in variable B",
     "M20C": "in variable C",
 
+    "M21": "radio value",
+    "M22": "dice",
+    "M23": "minus",
+
     "S9A": "out of variable A",
     "S9B": "out of variable B",
     "S9C": "out of variable C",

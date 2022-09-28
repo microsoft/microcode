@@ -58,7 +58,6 @@
     "A9B": "set variable B",
     "A9C": "set variabl C",
 
-
     "M1": "page 1",
     "M2": "page 2",
     "M3": "page 3",
@@ -93,6 +92,10 @@
     "M20A": "variable A",
     "M20B": "variable B",
     "M20C": "variable C",
+
+    "M21": "radio value",
+    "M22": "dice",
+    "M23": "minus",
 
     "S9A": "variable A changes",
     "S9B": "variable B changes",
