@@ -28,20 +28,19 @@ the order of the rules only matters when different rules act on the same resourc
 
 ## Events
 
+
 The left-hand side of a rule, the `When` section, starts with an
-event tile from the following list:
+event tile from the following dialog, which appears when you select the leftmost empty tile of a rule:
+
+![event tiles in when section](./images/whenDialog.jpg)
 
 -   ![press image](./images/generated/icon_S2.png){:class="icon"} `press` of button, micro:bit icon, or pin
 -   ![release image](./images/generated/icon_S2B.png){:class="icon"} `release` of button, micro:bit icon, or pin
--   ![press image](./images/generated/icon_S3.png){:class="icon"} `move` of accelerometer, in various ways
--   ![press image](./images/generated/icon_S8.png){:class="icon"} `hear` a sound, either loud or soft
--   ![press image](./images/generated/icon_S7.png){:class="icon"} `radio receive` of a number
--   ![press image](./images/generated/icon_S4.png){:class="icon"} `repeat timer` of a time
--   ![press image](./images/generated/icon_S9A.png){:class="icon"} ![press image](./images/generated/icon_S9B.png){:class="icon"} ![press image](./images/generated/icon_S9C.png){:class="icon"} `variable (A,B,C) changed` to a number
-
-The dialog below appears when you select the leftmost empty tile of a rule:
-
-![event tiles in when section](./images/whenDialog.jpg)
+-   ![move image](./images/generated/icon_S3.png){:class="icon"} `move` of accelerometer, in various ways
+-   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear` a sound, either loud or soft
+-   ![radio receive image](./images/generated/icon_S7.png){:class="icon"} `radio receive` of a number
+-   ![repeat timer image](./images/generated/icon_S4.png){:class="icon"} `repeat timer` of a time
+-   ![variable A image](./images/generated/icon_S9A.png){:class="icon"} ![variable B image](./images/generated/icon_S9B.png){:class="icon"} ![variable C image](./images/generated/icon_S9C.png){:class="icon"} `variable (A,B,C) changed` to a number
 
 ## Event parameters
 
@@ -53,6 +52,11 @@ other options include `button B` ![press image](./images/generated/icon_F4.png){
 `pin 0` ![press image](./images/generated/icon_F0.png){:class="icon"}, 
 `pin 1` ![press image](./images/generated/icon_F1.png){:class="icon"}, `pin 2` ![press image](./images/generated/icon_F2.png){:class="icon"}
 -   `release`, defaults and options are the same as for **press**
+
+The dialog below shows the parameters associated with the button press/release events.
+
+![parameters for press/release event](./images/eventParameterDialog.jpg)
+
 -   `move`, defaults to `shake` ![press image](./images/generated/icon_F17_shake.png){:class="icon"}; other options include ...
 -   **hear**, defaults to `loud`; other options include `tilt up`, `tilt down`, `tilt left` and `tilt right`
 -   **radio receive**, defaults to `any`
@@ -60,10 +64,6 @@ other options include `button B` ![press image](./images/generated/icon_F4.png){
 -   **variable (A,B,C) changed**, defaults to `any`
 
 The events that are parameterized by a numeric value (the last three events above) can take more than one parameters that are summed together. This allows values great than 5 to be constructed.
-
-The dialog below shows the paramters associated with the button press/release events.
-
-![parameters for press/release event](./images/eventParameterDialog.jpg)
 
 ## Do section
 
