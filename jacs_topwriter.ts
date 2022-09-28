@@ -119,11 +119,19 @@ namespace jacs {
                         )
                     }
                     if (needsEnable.indexOf(this.classIdentifier) >= 0) {
-                        this.parent.emitLoadBuffer("\x01")
+                        this.parent.emitLoadBuffer(hex`01`)
                         this.parent.emitSendCmd(
                             this,
                             CMD_SET_REG | JD_REG_INTENSITY
                         )
+                        if (this.classIdentifier == serviceClasses["radio"]) {
+                            // set group to 1
+                            this.parent.emitLoadBuffer(hex`01`)
+                            this.parent.emitSendCmd(
+                                this,
+                                CMD_SET_REG | 0x80
+                            )
+                        }
                     }
                     this.top = wr.mkLabel("tp")
                     wr.emitLabel(this.top)
