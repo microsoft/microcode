@@ -553,7 +553,7 @@ namespace microcode {
         constructor(field: Image = null) {
             super(TID_MODIFIER_ICON_EDITOR, "icon editor", "icon_editor", 10)
             this.fieldEditor = iconFieldEditor
-            if (field) this.field = field
+            if (field) this.field = field.clone()
             else this.field = this.fieldEditor.clone(this.fieldEditor.init)
         }
 
@@ -565,7 +565,7 @@ namespace microcode {
             return this.fieldEditor.toImage(this.field)
         }
 
-        getNewInstance(field: any) {
+        getNewInstance(field: any = null) {
             return new IconEditor(field ? field : this.field.clone())
         }
 

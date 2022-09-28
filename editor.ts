@@ -724,14 +724,17 @@ namespace microcode {
                 }
             })
             // special case for field editor
-            if (btns.length == 1 && suggestions[0].fieldEditor) {
-                const theOne = suggestions[0]
-                const fieldEditor = theOne.fieldEditor
+            if (suggestions.length == 1 && suggestions[0].fieldEditor) {
+                let theOne =
+                    index > 0 && ruleTiles[index - 1].fieldEditor // this is a hack to use the value from previous
+                        ? ruleTiles[index - 1] // field editor (should really check they are the same)
+                        : suggestions[0]
+                const newOne = theOne.getNewInstance()
+                const fieldEditor = newOne.fieldEditor
                 fieldEditor.editor(
-                    theOne.getField(),
+                    newOne.getField(),
                     this.editor.picker,
                     () => {
-                        const newOne = theOne.getNewInstance()
                         if (index >= ruleTiles.length) {
                             ruleTiles.push(newOne)
                         } else {
