@@ -54,6 +54,7 @@ namespace microcode {
 
         __init() {
             control.eventContext().registerFrameHandler(INPUT_PRIORITY, () => {
+                control.enablePerfCounter("scene.input")
                 const dtms = (control.eventContext().deltaTime * 1000) | 0
                 controller.left.__update(dtms)
                 controller.right.__update(dtms)
@@ -62,9 +63,11 @@ namespace microcode {
             })
             // Setup frame callbacks.
             control.eventContext().registerFrameHandler(UPDATE_PRIORITY, () => {
+                control.enablePerfCounter("scene.update")
                 this.update()
             })
             control.eventContext().registerFrameHandler(RENDER_PRIORITY, () => {
+                control.enablePerfCounter("scene.render")
                 // perf: render directly on the background image buffer
                 Screen.image.fill(this.color_)
                 this.draw()
@@ -79,7 +82,10 @@ namespace microcode {
             })
             control
                 .eventContext()
-                .registerFrameHandler(SCREEN_PRIORITY, control.__screen.update)
+                .registerFrameHandler(SCREEN_PRIORITY, () => {
+                    control.enablePerfCounter("scene.screen")
+                    control.__screen.update
+                })
         }
     }
 
