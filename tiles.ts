@@ -535,7 +535,7 @@ namespace microcode {
             const ret: string[] = []
             for (let index = 0; index < 25; index++) {
                 let col = index % 5
-                let row = index / 5
+                let row = Math.idiv(index, 5)
                 ret.push(img.getPixel(col, row) ? "1" : "0")
             }
             return ret.join("")
@@ -544,7 +544,7 @@ namespace microcode {
             const img = image.create(5, 5)
             for (let index = 0; index < 25; index++) {
                 let col = index % 5
-                let row = index / 5
+                let row = Math.idiv(index, 5)
                 img.setPixel(col, row, s[index] == "1" ? 1 : 0)
             }
             return img

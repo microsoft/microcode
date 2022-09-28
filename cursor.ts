@@ -116,13 +116,12 @@ namespace microcode {
 
             const currTimeMs = control.millis()
             const elapsedTimeMs = currTimeMs - this.moveStartMs
-            const pctTime = elapsedTimeMs / 50
 
-            if (pctTime < 1) {
-                Vec2.LerpToRef(
+            if (elapsedTimeMs < 63) {
+                Vec2.LerpToRefFix(
                     this.xfrm.localPos,
                     this.moveDest,
-                    pctTime,
+                    elapsedTimeMs << 2,
                     this.xfrm.localPos
                 )
             } else {
