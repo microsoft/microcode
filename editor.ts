@@ -364,17 +364,33 @@ namespace microcode {
         }
 
         /* override */ draw() {
+            this.drawBackground()
+            if (!(this.picker.modal && this.picker.visible)) {
+                this.drawEditor()
+                this.drawPageNavigation()
+            }
+            this.picker.draw()
+            this.cursor.draw()
+        }
+
+        private drawEditor() {
+            control.enablePerfCounter()
+            if (this.pageEditor) this.pageEditor.draw()
+        }
+
+        private drawBackground() {
             control.enablePerfCounter()
             Screen.drawTransparentImage(
                 editorBackground,
                 Screen.LEFT_EDGE,
                 Screen.TOP_EDGE
             )
-            if (this.pageEditor) this.pageEditor.draw()
+        }
+
+        private drawPageNavigation() {
+            control.enablePerfCounter()
             this.pageBtn.draw()
             this.resetBtn.draw()
-            this.picker.draw()
-            this.cursor.draw()
         }
     }
 

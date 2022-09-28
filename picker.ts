@@ -80,6 +80,7 @@ namespace microcode {
         private onDelete: () => void
         private hideOnClick: boolean
         private title: string
+        public modal: boolean
         public visible: boolean
 
         public get xfrm() {
@@ -120,6 +121,7 @@ namespace microcode {
                 onHide?: () => void
                 onDelete?: () => void
                 navigator?: () => INavigator
+                modal?: boolean
             },
             hideOnClick: boolean = true
         ) {
@@ -133,6 +135,7 @@ namespace microcode {
                 this.navigator.clear()
                 this.navigator = new RowNavigator()
             }
+            this.modal = !!opts.modal
             this.hideOnClick = hideOnClick
             this.title = opts.title
             this.prevState = this.cursor.saveState()
@@ -197,8 +200,8 @@ namespace microcode {
 
         private layout() {
             this.panel = new Bounds()
-
-            let top = 2
+            const padding = 2
+            let top = padding
             if (this.deleteBtn || this.title) {
                 top += this.deleteBtn ? this.deleteBtn.height : HEADER
             }
@@ -226,9 +229,9 @@ namespace microcode {
             }
             this.navigator.finished()
 
-            this.panel.grow(2)
-            this.xfrm.localPos.x = -(this.panel.width >> 1)
-            this.xfrm.localPos.y = -(this.panel.height >> 1)
+            this.panel.grow(padding)
+            this.xfrm.localPos.x = padding - (this.panel.width >> 1)
+            this.xfrm.localPos.y = padding - (this.panel.height >> 1)
 
             const btn = this.navigator.initialCursor(this.deleteBtn ? 1 : 0, 0)
             this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
