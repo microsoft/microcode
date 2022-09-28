@@ -475,18 +475,27 @@ namespace jacs {
             ])
         }
 
+        private ruleParams(rule: microcode.RuleDefn, bufSize: number) {
+            const fn = rule.actuators[0].serviceArgFromModifier
+            const params = rule.modifiers
+                .map(m => (fn ? fn(m.jdParam) : m.serviceCommandArg()))
+                .filter(a => !!a)
+            if (params.length == 0) {
+                if (fn) params.push(fn(undefined))
+                else params.push(Buffer.create(bufSize))
+            }
+            return params
+        }
+
         private emitSequance(
             rule: microcode.RuleDefn,
             lockvar: Variable,
             delay: number,
-            bufSize: number
+            bufSize = 0
         ) {
+            const params = this.ruleParams(rule, bufSize)
             const actuator = rule.actuators[0]
             const wr = this.writer
-            const params = rule.modifiers
-                .map(m => m.serviceCommandArg())
-                .filter(a => !!a)
-            if (params.length == 0) params.push(Buffer.create(bufSize))
             if (lockvar) lockvar.write(wr, literal(this.currRuleId))
             for (let i = 0; i < params.length; ++i) {
                 const role = this.lookupActuatorRole(rule)
@@ -708,13 +717,13 @@ namespace jacs {
                 this.emitSendCmd(this.lookupActuatorRole(rule), 0x81)
             } else if (actuator.serviceArgFromModifier) {
                 const role = this.lookupActuatorRole(rule)
-                let jdParam: any = null
-                for (const m of rule.modifiers) {
-                    if (m.jdParam !== undefined) jdParam = m.jdParam
-                }
-                const buf = actuator.serviceArgFromModifier(jdParam)
-                this.emitLoadBuffer(buf)
-                this.emitSendCmd(role, actuator.serviceCommand)
+                this.emitSequance(
+                    rule,
+                    actuator.jdKind == microcode.JdKind.Sequance
+                        ? this.lookupGlobal("lock_" + role.name)
+                        : null,
+                    400
+                )
             } else {
                 this.error(`can't map act role for ${JSON.stringify(actuator)}`)
             }
