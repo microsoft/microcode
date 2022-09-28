@@ -422,45 +422,45 @@ namespace icondb {
 `
 
     export const btn_when_insertion_point = img`
-        dddddddddddddddddd
-        dcddcddcddcddcddcd
-        dddddddddddddddddd
-        dddddddddddddddddd
-        dcddddddddddddddcd
-        dddddddddddddddddd
-        dddddddddddddddddd
-        dcdddddccccdddddcd
-        dddddddcddcddddddd
-        dddddddcddcddddddd
-        dcdddddccccdddddcd
-        dddddddddddddddddd
-        dddddddddddddddddd
-        dcddddddddddddddcd
-        dddddddddddddddddd
-        dddddddddddddddddd
-        dcddcddcddcddcddcd
-        dddddddddddddddddd
+    dddddddddddddddddd
+    dcddcddcddcddcddcd
+    dddddddddddddddddd
+    dddddddddddddddddd
+    dcddddddddddddddcd
+    dddddddddddddddddd
+    dddddddddddddddddd
+    dcddddddddddddddcd
+    dddddddddddddddddd
+    dddddddddddddddddd
+    dcddddddddddddddcd
+    dddddddddddddddddd
+    dddddddddddddddddd
+    dcddddddddddddddcd
+    dddddddddddddddddd
+    dddddddddddddddddd
+    dcddcddcddcddcddcd
+    dddddddddddddddddd
     `
 
     export const btn_do_insertion_point = img`
-        bbbbbbbbbbbbbbbbbb
-        bdbbdbbdbbdbbdbbdb
-        bbbbbbbbbbbbbbbbbb
-        bbbbbbbbbbbbbbbbbb
-        bdbbbbbbbbbbbbbbdb
-        bbbbbbbbbbbbbbbbbb
-        bbbbbbbbbbbbbbbbbb
-        bdbbbbbddddbbbbbdb
-        bbbbbbbdbbdbbbbbbb
-        bbbbbbbdbbdbbbbbbb
-        bdbbbbbddddbbbbbdb
-        bbbbbbbbbbbbbbbbbb
-        bbbbbbbbbbbbbbbbbb
-        bdbbbbbbbbbbbbbbdb
-        bbbbbbbbbbbbbbbbbb
-        bbbbbbbbbbbbbbbbbb
-        bdbbdbbdbbdbbdbbdb
-        bbbbbbbbbbbbbbbbbb
+    bbbbbbbbbbbbbbbbbb
+    bdbbdbbdbbdbbdbbdb
+    bbbbbbbbbbbbbbbbbb
+    bbbbbbbbbbbbbbbbbb
+    bdbbbbbbbbbbbbbbdb
+    bbbbbbbbbbbbbbbbbb
+    bbbbbbbbbbbbbbbbbb
+    bdbbbbbbbbbbbbbbdb
+    bbbbbbbbbbbbbbbbbb
+    bbbbbbbbbbbbbbbbbb
+    bdbbbbbbbbbbbbbbdb
+    bbbbbbbbbbbbbbbbbb
+    bbbbbbbbbbbbbbbbbb
+    bdbbbbbbbbbbbbbbdb
+    bbbbbbbbbbbbbbbbbb
+    bbbbbbbbbbbbbbbbbb
+    bdbbdbbdbbdbbdbbdb
+    bbbbbbbbbbbbbbbbbb
     `
 
     export const rule_arrow = img`
