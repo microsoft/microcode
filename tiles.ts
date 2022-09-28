@@ -37,11 +37,11 @@ namespace microcode {
     export const TID_FILTER_BUTTON_B = "F4"
     // F6
     export const TID_FILTER_LOGO = "F7"
-    export const TID_FILTER_VALUE_1 = "F8"
-    export const TID_FILTER_VALUE_2 = "F9"
-    export const TID_FILTER_VALUE_3 = "F10"
-    export const TID_FILTER_VALUE_4 = "F11"
-    export const TID_FILTER_VALUE_5 = "F12"
+    export const TID_FILTER_COIN_1 = "F8"
+    export const TID_FILTER_COIN_2 = "F9"
+    export const TID_FILTER_COIN_3 = "F10"
+    export const TID_FILTER_COIN_5 = "F11"
+    export const TID_FILTER_COIN_20 = "F12"
     export const TID_FILTER_TIMESPAN_SHORT = "F13"
     export const TID_FILTER_TIMESPAN_LONG = "F14"
     export const TID_FILTER_LOUD = "F15"
@@ -72,11 +72,11 @@ namespace microcode {
     export const TID_MODIFIER_PAGE_4 = "M4"
     export const TID_MODIFIER_PAGE_5 = "M5"
 
-    export const TID_MODIFIER_VALUE_1 = "M6"
-    export const TID_MODIFIER_VALUE_2 = "M7"
-    export const TID_MODIFIER_VALUE_3 = "M8"
-    export const TID_MODIFIER_VALUE_4 = "M9"
-    export const TID_MODIFIER_VALUE_5 = "M10"
+    export const TID_MODIFIER_COIN_1 = "M6"
+    export const TID_MODIFIER_COIN_2 = "M7"
+    export const TID_MODIFIER_COIN_3 = "M8"
+    export const TID_MODIFIER_COIN_5 = "M9"
+    export const TID_MODIFIER_COIN_10 = "M10"
 
     export const TID_MODIFIER_ON = "M11"
     export const TID_MODIFIER_OFF = "M12"
@@ -403,16 +403,17 @@ namespace microcode {
     buzzer.priority = 30
     */
 
+    const coin_vals = [1, 2, 3, 5, 10]
     const make_vals = (name: string, kind: string, start: number) => {
         const tiles: FilterModifierBase[] = []
-        for (let v = 1; v <= 5; v++) {
-            const tid = kind + (start + v - 1)
+        coin_vals.forEach((coin, index) => {
+            const tid = kind + (start + index)
             const tile: FilterModifierBase =
                 kind == "M"
-                    ? new ModifierDefn(tid, v.toString(), name, 10)
-                    : new FilterDefn(tid, v.toString(), name, 10)
+                    ? new ModifierDefn(tid, coin.toString(), name, 10)
+                    : new FilterDefn(tid, coin.toString(), name, 10)
             tile.jdKind = JdKind.Literal
-            tile.jdParam = v
+            tile.jdParam = coin
             // tile.constraints = terminal
             if (kind == "M") tilesDB.modifiers[tid] = tile
             else tilesDB.filters[tid] = tile as FilterDefn
@@ -420,7 +421,7 @@ namespace microcode {
                 provides: [name],
             }
             tiles.push(tile)
-        }
+        })
         return tiles
     }
     make_vals("value_in", "F", 8)
@@ -511,10 +512,6 @@ namespace microcode {
     random_toss.priority = 70
     random_toss.constraints = {}
     random_toss.constraints.allow = { categories: ["constant"] }
-    random_toss.constraints.disallow = {
-        categories: ["value_out"],
-        tiles: [TID_MODIFIER_VALUE_1],
-    }
 
     const iconFieldEditor: FieldEditor = {
         init: img`

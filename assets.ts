@@ -78,11 +78,11 @@ namespace microcode {
             this.reg[TID_FILTER_TIMESPAN_VERY_LONG] =
                 icondb.tile_timespan_fiveSeconds
             this.reg[TID_FILTER_TIMESPAN_RANDOM] = icondb.tile_timespan_random
-            this.reg[TID_FILTER_VALUE_1] = icondb.tile_value_1
-            this.reg[TID_FILTER_VALUE_2] = icondb.tile_value_2
-            this.reg[TID_FILTER_VALUE_3] = icondb.tile_value_3
-            this.reg[TID_FILTER_VALUE_4] = icondb.tile_value_4
-            this.reg[TID_FILTER_VALUE_5] = icondb.tile_value_5
+            this.reg[TID_FILTER_COIN_1] = icondb.tile_coin_1
+            this.reg[TID_FILTER_COIN_2] = icondb.tile_coin_2
+            this.reg[TID_FILTER_COIN_3] = icondb.tile_coin_3
+            this.reg[TID_FILTER_COIN_5] = icondb.tile_coin_5
+            this.reg[TID_FILTER_COIN_20] = icondb.tile_coin_10
             this.reg[TID_FILTER_LOUD] = icondb.speaker
             this.reg[TID_FILTER_QUIET] = icondb.speakerQuiet
 
@@ -109,11 +109,11 @@ namespace microcode {
             this.reg[TID_MODIFIER_PAGE_4] = icondb.tile_page_4
             this.reg[TID_MODIFIER_PAGE_5] = icondb.tile_page_5
 
-            this.reg[TID_MODIFIER_VALUE_1] = icondb.tile_value_1
-            this.reg[TID_MODIFIER_VALUE_2] = icondb.tile_value_2
-            this.reg[TID_MODIFIER_VALUE_3] = icondb.tile_value_3
-            this.reg[TID_MODIFIER_VALUE_4] = icondb.tile_value_4
-            this.reg[TID_MODIFIER_VALUE_5] = icondb.tile_value_5
+            this.reg[TID_MODIFIER_COIN_1] = icondb.tile_coin_1
+            this.reg[TID_MODIFIER_COIN_2] = icondb.tile_coin_2
+            this.reg[TID_MODIFIER_COIN_3] = icondb.tile_coin_3
+            this.reg[TID_MODIFIER_COIN_5] = icondb.tile_coin_5
+            this.reg[TID_MODIFIER_COIN_10] = icondb.tile_coin_10
 
             this.reg[TID_MODIFIER_RGB_LED_COLOR_1] = icondb.tile_color_red
             this.reg[TID_MODIFIER_RGB_LED_COLOR_2] = icondb.tile_color_green
@@ -1089,96 +1089,99 @@ namespace icondb {
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     `
-    export const tile_value_1 = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . 4 4 4 4 4 . . . . . .
-        . . . 4 4 5 5 5 5 5 4 4 . . . .
-        . . 4 5 5 1 1 1 1 1 5 5 4 . . .
-        . . 4 5 1 1 1 1 1 1 1 5 4 . . .
-        . 4 5 1 1 1 1 f 1 1 1 1 5 4 . .
-        . 4 5 1 1 1 f f 1 1 1 1 5 4 d .
-        . 4 5 1 1 1 1 f 1 1 1 1 5 4 d .
-        . 4 5 1 1 1 1 f 1 1 1 1 5 4 d .
-        . 4 5 1 1 1 f f f 1 1 1 5 4 d .
-        . . 4 5 1 1 1 1 1 1 1 5 4 d d .
-        . . 4 5 5 1 1 1 1 1 5 5 4 d . .
-        . . . 4 4 5 5 5 5 5 4 4 d . . .
-        . . . . . 4 4 4 4 4 d d . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const tile_value_2 = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . 4 4 4 4 4 . . . . . .
-        . . . 4 4 5 5 5 5 5 4 4 . . . .
-        . . 4 5 5 1 1 1 1 1 5 5 4 . . .
-        . . 4 5 1 1 1 1 1 1 1 5 4 . . .
-        . 4 5 1 1 1 f f 1 1 1 1 5 4 . .
-        . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
-        . 4 5 1 1 1 1 f 1 1 1 1 5 4 d .
-        . 4 5 1 1 1 f 1 1 1 1 1 5 4 d .
-        . 4 5 1 1 1 f f f 1 1 1 5 4 d .
-        . . 4 5 1 1 1 1 1 1 1 5 4 d d .
-        . . 4 5 5 1 1 1 1 1 5 5 4 d . .
-        . . . 4 4 5 5 5 5 5 4 4 d . . .
-        . . . . . 4 4 4 4 4 d d . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const tile_value_3 = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . 4 4 4 4 4 . . . . . .
-        . . . 4 4 5 5 5 5 5 4 4 . . . .
-        . . 4 5 5 1 1 1 1 1 5 5 4 . . .
-        . . 4 5 1 1 1 1 1 1 1 5 4 . . .
-        . 4 5 1 1 1 f f 1 1 1 1 5 4 . .
-        . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
-        . 4 5 1 1 1 1 f 1 1 1 1 5 4 d .
-        . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
-        . 4 5 1 1 1 f f 1 1 1 1 5 4 d .
-        . . 4 5 1 1 1 1 1 1 1 5 4 d d .
-        . . 4 5 5 1 1 1 1 1 5 5 4 d . .
-        . . . 4 4 5 5 5 5 5 4 4 d . . .
-        . . . . . 4 4 4 4 4 d d . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const tile_value_4 = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . 4 4 4 4 4 . . . . . .
-        . . . 4 4 5 5 5 5 5 4 4 . . . .
-        . . 4 5 5 1 1 1 1 1 5 5 4 . . .
-        . . 4 5 1 1 1 1 1 1 1 5 4 . . .
-        . 4 5 1 1 1 f 1 f 1 1 1 5 4 . .
-        . 4 5 1 1 1 f 1 f 1 1 1 5 4 d .
-        . 4 5 1 1 1 f f f 1 1 1 5 4 d .
-        . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
-        . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
-        . . 4 5 1 1 1 1 1 1 1 5 4 d d .
-        . . 4 5 5 1 1 1 1 1 5 5 4 d . .
-        . . . 4 4 5 5 5 5 5 4 4 d . . .
-        . . . . . 4 4 4 4 4 d d . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
-    export const tile_value_5 = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . 4 4 4 4 4 . . . . . .
-        . . . 4 4 5 5 5 5 5 4 4 . . . .
-        . . 4 5 5 1 1 1 1 1 5 5 4 . . .
-        . . 4 5 1 1 1 1 1 1 1 5 4 . . .
-        . 4 5 1 1 1 f f f 1 1 1 5 4 . .
-        . 4 5 1 1 1 f 1 1 1 1 1 5 4 d .
-        . 4 5 1 1 1 f f 1 1 1 1 5 4 d .
-        . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
-        . 4 5 1 1 1 f f 1 1 1 1 5 4 d .
-        . . 4 5 1 1 1 1 1 1 1 5 4 d d .
-        . . 4 5 5 1 1 1 1 1 5 5 4 d . .
-        . . . 4 4 5 5 5 5 5 4 4 d . . .
-        . . . . . 4 4 4 4 4 d d . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `
+
+    export const tile_coin_1 = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . 4 4 4 4 4 . . . . . .
+    . . . 4 4 5 5 5 5 5 4 4 . . . .
+    . . 4 5 5 1 1 1 1 1 5 5 4 . . .
+    . . 4 5 1 1 1 1 1 1 1 5 4 . . .
+    . 4 5 1 1 1 1 f 1 1 1 1 5 4 . .
+    . 4 5 1 1 1 f f 1 1 1 1 5 4 d .
+    . 4 5 1 1 1 1 f 1 1 1 1 5 4 d .
+    . 4 5 1 1 1 1 f 1 1 1 1 5 4 d .
+    . 4 5 1 1 1 f f f 1 1 1 5 4 d .
+    . . 4 5 1 1 1 1 1 1 1 5 4 d d .
+    . . 4 5 5 1 1 1 1 1 5 5 4 d . .
+    . . . 4 4 5 5 5 5 5 4 4 d . . .
+    . . . . . 4 4 4 4 4 d d . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+    export const tile_coin_2 = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . 4 4 4 4 4 . . . . . .
+    . . . 4 4 5 5 5 5 5 4 4 . . . .
+    . . 4 5 5 1 1 1 1 1 5 5 4 . . .
+    . . 4 5 1 1 1 1 1 1 1 5 4 . . .
+    . 4 5 1 1 1 f f 1 1 1 1 5 4 . .
+    . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
+    . 4 5 1 1 1 1 f 1 1 1 1 5 4 d .
+    . 4 5 1 1 1 f 1 1 1 1 1 5 4 d .
+    . 4 5 1 1 1 f f f 1 1 1 5 4 d .
+    . . 4 5 1 1 1 1 1 1 1 5 4 d d .
+    . . 4 5 5 1 1 1 1 1 5 5 4 d . .
+    . . . 4 4 5 5 5 5 5 4 4 d . . .
+    . . . . . 4 4 4 4 4 d d . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+    export const tile_coin_3 = img`
+. . . . . . . . . . . . . . . .
+. . . . . 4 4 4 4 4 . . . . . .
+. . . 4 4 5 5 5 5 5 4 4 . . . .
+. . 4 5 5 1 1 1 1 1 5 5 4 . . .
+. . 4 5 1 1 1 1 1 1 1 5 4 . . .
+. 4 5 1 1 1 f f 1 1 1 1 5 4 . .
+. 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
+. 4 5 1 1 1 1 f 1 1 1 1 5 4 d .
+. 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
+. 4 5 1 1 1 f f 1 1 1 1 5 4 d .
+. . 4 5 1 1 1 1 1 1 1 5 4 d d .
+. . 4 5 5 1 1 1 1 1 5 5 4 d . .
+. . . 4 4 5 5 5 5 5 4 4 d . . .
+. . . . . 4 4 4 4 4 d d . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+`
+
+    export const tile_coin_5 = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . 4 4 4 4 4 . . . . . .
+    . . . 4 4 5 5 5 5 5 4 4 . . . .
+    . . 4 5 5 1 1 1 1 1 5 5 4 . . .
+    . . 4 5 1 1 1 1 1 1 1 5 4 . . .
+    . 4 5 1 1 1 f f f 1 1 1 5 4 . .
+    . 4 5 1 1 1 f 1 1 1 1 1 5 4 d .
+    . 4 5 1 1 1 f f 1 1 1 1 5 4 d .
+    . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
+    . 4 5 1 1 1 f f 1 1 1 1 5 4 d .
+    . . 4 5 1 1 1 1 1 1 1 5 4 d d .
+    . . 4 5 5 1 1 1 1 1 5 5 4 d . .
+    . . . 4 4 5 5 5 5 5 4 4 d . . .
+    . . . . . 4 4 4 4 4 d d . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+
+    export const tile_coin_10 = img`
+ . . . . . . . . . . . . . . . .
+ . . . . . 4 4 4 4 4 . . . . . .
+ . . . 4 4 5 5 5 5 5 4 4 . . . .
+ . . 4 5 5 1 1 1 1 1 5 5 4 . . .
+ . . 4 5 1 1 1 1 1 1 1 5 4 . . .
+ . 4 5 1 1 f 1 1 1 f 1 1 5 4 . .
+ . 4 5 1 f f 1 1 f 1 f 1 5 4 d .
+ . 4 5 1 1 f 1 1 f 1 f 1 5 4 d .
+ . 4 5 1 1 f 1 1 f 1 f 1 5 4 d .
+ . 4 5 1 f f f 1 1 f 1 1 5 4 d .
+ . . 4 5 1 1 1 1 1 1 1 5 4 d d .
+ . . 4 5 5 1 1 1 1 1 5 5 4 d . .
+ . . . 4 4 5 5 5 5 5 4 4 d . . .
+ . . . . . 4 4 4 4 4 d d . . . .
+ . . . . . . . . . . . . . . . .
+ . . . . . . . . . . . . . . . .
+`
 
     export const rgbLed = img`
     . . . . f f f f f f f . . . . .

@@ -36,6 +36,7 @@ namespace microcode {
 
         public finished() {}
 
+        // this is inefficient
         public screenToButton(x: number, y: number): Button {
             const p = new Vec2(x, y)
             const target = this.buttons.find(btn =>
