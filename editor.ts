@@ -348,13 +348,12 @@ namespace microcode {
 
             const currTimeMs = control.millis()
             const elapsedTimeMs = currTimeMs - this.scrollStartMs
-            const pctTime = elapsedTimeMs / 50
 
-            if (pctTime < 1) {
-                Vec2.LerpToRef(
+            if (elapsedTimeMs < 63) {
+                Vec2.LerpToRefFix(
                     this.scrollroot.xfrm.localPos,
                     this.scrollDest,
-                    pctTime,
+                    elapsedTimeMs << 2,
                     this.scrollroot.xfrm.localPos
                 )
             } else {

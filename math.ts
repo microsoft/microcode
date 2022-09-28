@@ -45,10 +45,6 @@ namespace microcode {
             return this.x * this.x + this.y * this.y
         }
 
-        public mag(): number {
-            return Math.sqrt(this.magSq())
-        }
-
         public floor(): this {
             this.x = Math.floor(this.x)
             this.y = Math.floor(this.y)
@@ -101,22 +97,6 @@ namespace microcode {
             return ref
         }
 
-        public static SetLengthToRef(v: Vec2, len: number, ref: Vec2): Vec2 {
-            Vec2.NormalizeToRef(v, ref)
-            Vec2.ScaleToRef(ref, len, ref)
-            return ref
-        }
-
-        public static NormalizeToRef(v: Vec2, ref: Vec2): Vec2 {
-            const lenSq = v.magSq()
-            if (lenSq !== 0) {
-                const len = Math.sqrt(lenSq)
-                ref.x = v.x / len
-                ref.y = v.y / len
-            }
-            return ref
-        }
-
         public static MaxToRef(a: Vec2, b: Vec2, ref: Vec2): Vec2 {
             ref.x = Math.max(a.x, b.x)
             ref.y = Math.max(a.y, b.y)
@@ -147,15 +127,9 @@ namespace microcode {
             return ref
         }
 
-        public static DivToRef(a: Vec2, b: Vec2, ref: Vec2): Vec2 {
-            ref.x = a.x / b.x
-            ref.y = a.y / b.y
-            return ref
-        }
-
-        public static LerpToRef(a: Vec2, b: Vec2, t: number, ref: Vec2): Vec2 {
-            ref.x = lerp(a.x, b.x, t);
-            ref.y = lerp(a.y, b.y, t);
+        public static LerpToRefFix(a: Vec2, b: Vec2, t: number, ref: Vec2): Vec2 {
+            ref.x = lerpFix(a.x, b.x, t);
+            ref.y = lerpFix(a.y, b.y, t);
             return ref;
         }
 
@@ -176,7 +150,7 @@ namespace microcode {
         }
     }
 
-    export function lerp(a: number, b: number, t: number): number {
-        return a + (b - a) * t
+    export function lerpFix(a: number, b: number, t: number): number {
+        return a + (((b - a) * t) >> 8)
     }
 }

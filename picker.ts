@@ -50,7 +50,7 @@ namespace microcode {
             this.buttons.forEach(btn => cell.add(btn.bounds))
             this.buttons.forEach((btn, idx) => {
                 btn.xfrm.parent = this.xfrm
-                const row = Math.floor(idx / MAX_PER_ROW)
+                const row = Math.idiv(idx, MAX_PER_ROW)
                 btn.xfrm.localPos.x =
                     (cell.width >> 1) +
                     (idx % MAX_PER_ROW) * cell.width +
