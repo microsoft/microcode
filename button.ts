@@ -248,11 +248,12 @@ namespace microcode {
             */
         }
 
+        isOffScreenX(): boolean {
+            return this.icon.isOffScreenX()
+        }
+
         /* override */ draw() {
             control.enablePerfCounter()
-            // clipping on x axis
-            if (this.icon.isOffScreen()) return
-
             this.drawStyle()
             this.drawIcon()
             //const iconbounds = Bounds.Translate(this.icon.bounds, this.icon.xfrm.worldPos);

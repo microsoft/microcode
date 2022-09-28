@@ -942,7 +942,10 @@ namespace microcode {
             if (this.doInsertBtn) this.doInsertBtn.draw()
             repNames.forEach(name => {
                 const buttons = this.rule[name]
-                buttons.forEach(btn => btn.draw())
+                for (let i = 0; i < buttons.length; ++i) {
+                    const btn = buttons[i]
+                    if (!btn.isOffScreenX()) btn.draw()
+                }
             })
         }
 
