@@ -61,6 +61,7 @@ namespace microcode {
     export const TID_ACTUATOR_MUSIC = "A4"
     export const TID_ACTUATOR_PAINT = "A5"
     export const TID_ACTUATOR_RADIO_SEND = "A6"
+    export const TID_ACTUATOR_RADIO_SET_GROUP = "A6A"
     export const TID_ACTUATOR_RGB_LED = "A8"
     export const TID_ACTUATOR_CUP_A_ASSIGN = "A9A"
     export const TID_ACTUATOR_CUP_B_ASSIGN = "A9B"
@@ -358,6 +359,18 @@ namespace microcode {
     radio_send.priority = 100
     radio_send.serviceClassName = "radio"
     radio_send.jdKind = JdKind.Radio
+
+    const radio_set_group = addActuator(
+        TID_ACTUATOR_RADIO_SET_GROUP,
+        "SetGroup",
+        "value_out",
+        "constant"
+    )
+    radio_set_group.priority = 101
+    radio_set_group.serviceClassName = "radio"
+    radio_set_group.jdKind = JdKind.NumFmt
+    radio_set_group.jdParam = jacs.NumFmt.U8
+    radio_set_group.serviceCommand = jacs.CMD_SET_REG | 0x80
 
     function addAssign(tid: string, name: string, id: number) {
         const theVar = addActuator(tid, name, "value_out", "constant")

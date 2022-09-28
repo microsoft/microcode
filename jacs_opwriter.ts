@@ -291,14 +291,14 @@ namespace jacs {
         emitStoreByte(src: Value, off = 0) {
             assertRange(0, off, 0xff)
             this.emitStmt(OpStmt.STMT4_STORE_BUFFER, [
-                literal(OpFmt.U8),
+                literal(NumFmt.U8),
                 literal(off),
                 literal(0),
                 src,
             ])
         }
 
-        emitBufLoad(fmt: OpFmt, off: number, bufidx = 0) {
+        emitBufLoad(fmt: NumFmt, off: number, bufidx = 0) {
             if (bufidx == 0) assertRange(0, off, 0xff)
             return this.emitExpr(OpExpr.EXPR3_LOAD_BUFFER, [
                 literal(fmt),
@@ -307,7 +307,7 @@ namespace jacs {
             ])
         }
 
-        emitBufStore(src: Value, fmt: OpFmt, off: number, bufidx = 0) {
+        emitBufStore(src: Value, fmt: NumFmt, off: number, bufidx = 0) {
             this.emitStmt(OpStmt.STMT4_STORE_BUFFER, [
                 literal(fmt),
                 literal(off),

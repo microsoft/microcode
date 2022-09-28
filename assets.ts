@@ -89,6 +89,7 @@ namespace microcode {
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
             this.reg[TID_ACTUATOR_PAINT] = icondb.showScreen
             this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
+            this.reg[TID_ACTUATOR_RADIO_SET_GROUP] = icondb.radio_set_group
             this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
             this.reg[TID_ACTUATOR_SPEAKER] = icondb.speakerFun
             this.reg[TID_ACTUATOR_MUSIC] = icondb.music
@@ -907,7 +908,24 @@ namespace icondb {
         . . . . . . 6 9 6 . . . . . . .
         . . . . . . . . . . . . . . . .
     `
-
+    export const radio_set_group = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . 8 . . . 8 . . . . . .
+    . . . 8 . . 8 8 8 . . 8 . . . .
+    . 8 . . 8 . . . . . 8 . . 8 . .
+    . . 8 . . 8 8 8 8 8 . . 8 . . .
+    . . . 8 . . . . . . . 8 . . . .
+    . . . . 8 8 8 8 8 8 8 . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . 4 4 4 . . . . 4 4 4 . . .
+    . . 4 5 4 5 4 . . 4 5 4 5 4 . .
+    . . . 4 4 4 . . . . 4 4 4 . . .
+    . . . . . . . . . . . . . . . .
+    . . . 4 4 4 . . . . 4 4 4 . . .
+    . . 4 5 4 5 4 . . 4 5 4 5 4 . .
+    . . . 4 4 4 . . . . 4 4 4 . . .
+    . . . . . . . . . . . . . . . .    
+    `
     export const microbit_logo = img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 

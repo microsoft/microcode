@@ -1,5 +1,5 @@
 namespace jacs {
-    let debugOut = false
+    let debugOut = true
 
     export function addUnique<T>(arr: T[], v: T) {
         let idx = arr.indexOf(v)
@@ -110,20 +110,20 @@ namespace jacs {
                             wr.emitExpr(OpExpr.EXPR0_RET_VAL, []),
                             0,
                             () => {
-                                this.parent.emitLoadBuffer(hex`0a`)
-                                this.parent.emitSendCmd(
+                                this.parent.emitSetReg(
                                     this,
-                                    CMD_SET_REG | JD_REG_STREAMING_SAMPLES
+                                    JD_REG_STREAMING_SAMPLES,
+                                    hex`0a`
                                 )
                             }
                         )
                     }
                     if (needsEnable.indexOf(this.classIdentifier) >= 0) {
-                        this.parent.emitLoadBuffer("\x01")
-                        this.parent.emitSendCmd(
-                            this,
-                            CMD_SET_REG | JD_REG_INTENSITY
-                        )
+                        this.parent.emitSetReg(this, JD_REG_INTENSITY, hex`01`)
+                        if (this.classIdentifier == serviceClasses["radio"]) {
+                            // set group to 1
+                            this.parent.emitSetReg(this, 0x80, hex`01`)
+                        }
                     }
                     this.top = wr.mkLabel("tp")
                     wr.emitLabel(this.top)
@@ -458,6 +458,11 @@ namespace jacs {
             return null
         }
 
+        emitSetReg(role: Role, reg: number, buf: string | Buffer) {
+            this.emitLoadBuffer(buf)
+            this.emitSendCmd(role, CMD_SET_REG | reg)
+        }
+
         emitLoadBuffer(buf: string | Buffer) {
             let len = 0
             if (buf == null) {
@@ -715,6 +720,24 @@ namespace jacs {
                     this.currValue().read(wr),
                 ])
                 this.emitSendCmd(this.lookupActuatorRole(rule), 0x81)
+            } else if (actuator.jdKind == microcode.JdKind.NumFmt) {
+                this.emitValueOut(rule, 1)
+                const fmt: NumFmt = actuator.jdParam
+                const sz = bitSize(fmt) >> 3
+                wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [
+                    literal(sz),
+                    literal(0),
+                ])
+                wr.emitStmt(OpStmt.STMT4_STORE_BUFFER, [
+                    literal(fmt),
+                    literal(0),
+                    literal(0),
+                    this.currValue().read(wr),
+                ])
+                this.emitSendCmd(
+                    this.lookupActuatorRole(rule),
+                    actuator.serviceCommand
+                )
             } else if (actuator.serviceArgFromModifier) {
                 const role = this.lookupActuatorRole(rule)
                 this.emitSequance(
@@ -889,11 +912,9 @@ namespace jacs {
 
         private emitClearScreen() {
             const scr = this.lookupRole("dotMatrix", 0)
-            this.emitLoadBuffer(hex`00 00 04 00 00`)
-            this.emitSendCmd(scr, jacs.CMD_SET_REG | 0x2)
+            this.emitSetReg(scr, 0x02, hex`00 00 04 00 00`)
             this.emitSleep(50)
-            this.emitLoadBuffer(hex`00 00 00 00 00`)
-            this.emitSendCmd(scr, jacs.CMD_SET_REG | 0x2)
+            this.emitSetReg(scr, 0x02, hex`00 00 00 00 00`)
         }
 
         emitProgram(prog: microcode.ProgramDefn) {
@@ -916,9 +937,7 @@ namespace jacs {
                         literal(mic.index),
                     ]),
                     () => {
-                        this.emitLogString("disable mic")
-                        this.emitLoadBuffer(hex`00`)
-                        this.emitSendCmd(mic, CMD_SET_REG | JD_REG_INTENSITY)
+                        this.emitSetReg(mic, JD_REG_INTENSITY, hex`00`)
                     }
                 )
             })
@@ -983,7 +1002,6 @@ namespace jacs {
         // m:b
         button: 0x1473a263,
         dotMatrix: 0x110d154b,
-        bitRadio: 0x1ac986cf,
         soundLevel: 0x14ad1a5d,
         temperature: 0x1421bac7,
         soundPlayer: 0x1403d338,
