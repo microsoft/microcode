@@ -23,7 +23,6 @@ namespace microcode {
         picker.show(
             {
                 title: accessibility.ariaToTooltip(TID_MODIFIER_ICON_EDITOR),
-                modal: true,
                 onClick: (iconId: any, button: PickerButton) => {
                     let on = button.getIcon() === "solid_red"
                     let row = 0,

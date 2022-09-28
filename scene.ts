@@ -7,6 +7,7 @@ namespace microcode {
     export abstract class Scene {
         private xfrm_: Affine
         private color_: number
+        private backgroundCaptured_ = false
 
         //% blockCombine block="xfrm" callInDebugger
         public get xfrm() {
@@ -52,6 +53,25 @@ namespace microcode {
             //console.log(`wheel ${dx} ${dy}`)
         }
 
+        get backgroundCaptured() {
+            return !!this.backgroundCaptured_
+        }
+
+        /**
+         * Captures the current screen image as background image. You must call releaseBackground to resume usual rendering.
+         */
+        captureBackground() {
+            control.assert(
+                !this.backgroundCaptured_,
+                ERROR_DOUBLE_BACKGROUND_CAPTURE
+            )
+            this.backgroundCaptured_ = true
+        }
+
+        releaseBackground() {
+            this.backgroundCaptured_ = false
+        }
+
         __init() {
             control.eventContext().registerFrameHandler(INPUT_PRIORITY, () => {
                 control.enablePerfCounter()
@@ -69,23 +89,16 @@ namespace microcode {
             control.eventContext().registerFrameHandler(RENDER_PRIORITY, () => {
                 control.enablePerfCounter()
                 // perf: render directly on the background image buffer
-                Screen.image.fill(this.color_)
+                if (!this.backgroundCaptured_) Screen.image.fill(this.color_)
                 this.draw()
                 if (Options.fps)
-                    Screen.image.print(
-                        control.EventContext.lastStats,
-                        1,
-                        1,
-                        15
-                    )
+                    Screen.image.print(control.EventContext.lastStats, 1, 1, 15)
                 screen.drawImage(Screen.image, 0, 0)
             })
-            control
-                .eventContext()
-                .registerFrameHandler(SCREEN_PRIORITY, () => {
-                    control.enablePerfCounter()
-                    control.__screen.update()
-                })
+            control.eventContext().registerFrameHandler(SCREEN_PRIORITY, () => {
+                control.enablePerfCounter()
+                control.__screen.update()
+            })
         }
     }
 

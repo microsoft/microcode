@@ -80,7 +80,6 @@ namespace microcode {
         private onDelete: () => void
         private hideOnClick: boolean
         private title: string
-        public modal: boolean
         public visible: boolean
 
         public get xfrm() {
@@ -121,7 +120,6 @@ namespace microcode {
                 onHide?: () => void
                 onDelete?: () => void
                 navigator?: () => INavigator
-                modal?: boolean
             },
             hideOnClick: boolean = true
         ) {
@@ -135,7 +133,6 @@ namespace microcode {
                 this.navigator.clear()
                 this.navigator = new RowNavigator()
             }
-            this.modal = !!opts.modal
             this.hideOnClick = hideOnClick
             this.title = opts.title
             this.prevState = this.cursor.saveState()
