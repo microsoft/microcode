@@ -474,7 +474,7 @@ addSimMessageHandler("accessibility", data => {
     }
     value = value || ""
     if (liveRegion.textContent === value) liveRegion.textContent = ""
-    console.debug(`aria-live: ${value}`)
+    //console.debug(`aria-live: ${value}`)
     liveRegion.textContent = value
 })
 
