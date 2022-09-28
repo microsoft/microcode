@@ -357,6 +357,7 @@ namespace microcode {
         const theVar = addActuator(tid, name, "value_out")
         theVar.jdParam = id
         theVar.jdKind = JdKind.Variable
+        theVar.priority = 200 + id
     }
 
     addAssign(TID_ACTUATOR_CUP_A_ASSIGN, "Into A", 0)
