@@ -113,6 +113,8 @@ namespace accessibility {
         M22: "dice",
         M23: "minus",
 
+        A8: "LED",
+
         A9A: "set variable A",
         A9B: "set variable B",
         A9C: "set variable C",
@@ -132,6 +134,8 @@ namespace accessibility {
         N8: "rock paper scissors",
         N9: "head or tail",
         N10: "clap lights",
+
+        S10: "magnet",
 
         A20_1: "red",
         A20_2: "green",

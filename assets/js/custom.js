@@ -337,9 +337,21 @@ const liveStrings = {
     M20B: "in variable B",
     M20C: "in variable C",
 
-    S9A: "out of variable A",
-    S9B: "out of variable B",
-    S9C: "out of variable C",
+    M21: "radio value",
+    M22: "dice",
+    M23: "minus",
+
+    A8: "LED",
+
+    A9A: "set variable A",
+    A9B: "set variable B",
+    A9C: "set variable C",
+
+    S9A: "variable A changed",
+    S9B: "variable B changed",
+    S9C: "variable C changed",
+
+    S10: "magnet detector",
 
     N0: "editor",
     N1: "new program",
@@ -351,6 +363,13 @@ const liveStrings = {
     N7: "hot potato",
     N8: "rock paper scissors",
     N9: "head or tail",
+
+    A20_1: "red",
+    A20_2: "green",
+    A20_3: "blue",
+    A20_4: "purple",
+    A20_5: "yellow",
+    A20_6: "black",
 }
 
 // load localized strings
