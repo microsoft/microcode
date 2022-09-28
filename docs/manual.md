@@ -31,7 +31,7 @@ The easiest way to get started with MicroCode is through the web editor ([https:
 -   Backspace for B button
 -   Copy the URL to share your program.
 
-[![MicroCode web app](./images/website2.jpg)](https://aka.ms/m9)
+[![MicroCode web app](./images/website2.jpg){:class="screenshot"}](https://aka.ms/m9)
 
 ### Web App and micro:bit V2
 
@@ -50,14 +50,14 @@ Click on the version number in the web app to download the MicroCode hex file to
 
 ### [micro:bit V2](https://microbit.org) + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
 
-![Arcade Shield and micro:bit V2](./images/meow1.jpg)
+![Arcade Shield and micro:bit V2](./images/meow1.jpg){:class="fluid"}
 
 ## Sample programs
 
 The MicroCode app has a set of [samples](./samples) built-in. Select the samples button on the MicroCode home page (see below) to reveal
 the gallery of samples.
 
-![MicroCode sample programs](./images/microCodeVideo.gif)
+![MicroCode sample programs](./images/microCodeVideo.gif){:class="screenshot"}
 
 ## Contributing
 

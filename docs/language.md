@@ -8,7 +8,7 @@ and each rule consists of a **When** section and a **Do** section, each with a l
 -   the first rule shows a happy face on the micro:bit screen when the A button is pressed
 -   the second rule shows a sad face when the B button is pressed.
 
-![Smiley Button MicroCode program](./images/rule.jpg)
+![Smiley Button MicroCode program](./images/rule.jpg){:class="screenshot"}
 
 ## Pages
 
@@ -32,7 +32,7 @@ the order of the rules only matters when different rules act on the same resourc
 The left-hand side of a rule, the `When` section, starts with an
 event tile from the following dialog, which appears when you select the leftmost empty tile of a rule:
 
-![event tiles in when section](./images/whenDialog.jpg)
+![event tiles in when section](./images/whenDialog.jpg){:class="screenshot"}
 
 -   ![press image](./images/generated/icon_S2.png){:class="icon"} `press` of button, micro:bit icon, or pin
 -   ![release image](./images/generated/icon_S2B.png){:class="icon"} `release` of button, micro:bit icon, or pin
@@ -55,7 +55,7 @@ other options include `button B` ![press image](./images/generated/icon_F4.png){
 
 The dialog below shows the parameters associated with the button press/release events.
 
-![parameters for press/release event](./images/eventParameterDialog.jpg)
+![parameters for press/release event](./images/eventParameterDialog.jpg){:class="screenshot"}
 
 -   `move`, defaults to `shake` ![press image](./images/generated/icon_F17_shake.png){:class="icon"}; other options include ...
 -   **hear**, defaults to `loud`; other options include `tilt up`, `tilt down`, `tilt left` and `tilt right`
@@ -90,7 +90,7 @@ case where no parameter tile is given:
 
 Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5`.
 
-![command tiles in do section](./images/doDialog.jpg)
+![command tiles in do section](./images/doDialog.jpg){:class="screenshot"}
 
 ## Constructing numbers
 

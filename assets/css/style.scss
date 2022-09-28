@@ -27,7 +27,11 @@ img.sample {
     margin-bottom: 0.25rem;
 }
 
-p img {
+img.screenshot {
+    width: max(22rem, 100%);
+}
+
+img.fluid {
     width: 100%;
 }
 
