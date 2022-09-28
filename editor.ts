@@ -364,7 +364,7 @@ namespace microcode {
         }
 
         /* override */ draw() {
-            control.enablePerfCounter("Editor.draw")
+            control.enablePerfCounter()
             Screen.drawTransparentImage(
                 editorBackground,
                 Screen.LEFT_EDGE,
@@ -511,7 +511,7 @@ namespace microcode {
         }
 
         /* override */ draw() {
-            control.enablePerfCounter("PageEditor.draw")
+            control.enablePerfCounter()
             this.rules.forEach(rule => rule.draw())
         }
     }
@@ -926,7 +926,7 @@ namespace microcode {
         }
 
         /* override */ draw() {
-            control.enablePerfCounter("rule.draw")
+            control.enablePerfCounter()
             // don't render when out of screenR
             if (
                 this.xfrm.worldPos.y + this.bounds.top > Screen.BOTTOM_EDGE ||
@@ -947,7 +947,7 @@ namespace microcode {
         }
 
         private drawBackground() {
-            control.enablePerfCounter("rule.draw.bkg")
+            control.enablePerfCounter()
             Screen.fillBoundsXfrm(this.xfrm, this.bounds, 11)
             Screen.fillBoundsXfrm(this.xfrm, this.whenBounds, 13)
             Screen.outlineBoundsXfrm(this.xfrm, this.bounds, 1, 12)

@@ -73,7 +73,7 @@ namespace microcode {
         }
 
         /* override */ draw() {
-            control.enablePerfCounter("Icon.draw")
+            control.enablePerfCounter()
             if (this.invisible) {
                 return
             }

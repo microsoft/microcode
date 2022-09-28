@@ -249,7 +249,7 @@ namespace microcode {
         }
 
         /* override */ draw() {
-            control.enablePerfCounter("Button.draw")
+            control.enablePerfCounter()
             // clipping on x axis
             if (this.icon.isOffScreen()) return
 
@@ -262,12 +262,12 @@ namespace microcode {
         }
 
         private drawIcon() {
-            control.enablePerfCounter("Button.draw.icon")
+            control.enablePerfCounter()
             this.icon.draw()
         }
 
         private drawStyle() {
-            control.enablePerfCounter("Button.draw.style")
+            control.enablePerfCounter()
             if (this.style.fill)
                 Screen.fillBoundsXfrm(
                     this.xfrm,
