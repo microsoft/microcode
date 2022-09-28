@@ -442,7 +442,6 @@ namespace microcode {
     function addRGB(id: number, name: string, buf: Buffer) {
         const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
         const mod = new ModifierDefn(tid, name, "rgb_led", 10)
-        mod.constraints = terminal
         tilesDB.modifiers[tid] = mod
         mod.jdParam = buf
     }
@@ -461,6 +460,7 @@ namespace microcode {
     rgbled.serviceClassName = "led"
     rgbled.serviceCommand = jacs.CMD_SET_REG | 2
     rgbled.jdExternalClass = 0x1609d4f0
+    rgbled.jdKind = JdKind.Sequance
     rgbled.serviceArgFromModifier = (buf: Buffer) => {
         if (!buf) buf = hex`2f2f2f`
         let b = buf
