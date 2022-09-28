@@ -578,7 +578,6 @@ namespace jacs {
             if (mods.length == 0) target.write(wr, literal(defl))
             else {
                 if (mods[0].jdKind == microcode.JdKind.RandomToss) {
-                    const bndVar = this.proc.lookupLocal("rndBnd")
                     mods = mods.slice(1)
                     let rnd: Value
                     let folded = this.constantFold(mods, 5)
@@ -586,6 +585,7 @@ namespace jacs {
                         if (folded <= 2) folded = 2
                         rnd = this.emitRandomInt(folded - 1)
                     } else {
+                        const bndVar = this.proc.lookupLocal("rndBnd")
                         this.emitAddSeq(mods, bndVar, 5)
                         wr.emitIf(
                             // !(2<wr) == 2>=wr == wr<=2, but use negation because of 'bndVar' being possibly nan
@@ -812,7 +812,7 @@ namespace jacs {
                 return
             }
 
-            if (rule.sensors[0] && rule.sensors[0].serviceClassName == "pipe") {
+            if (rule.sensors[0] && rule.sensors[0].jdKind == microcode.JdKind.Variable) {
                 const pipeId = rule.sensors[0].jdParam
                 const role = this.pipeRole(pipeId)
                 this.withProcedure(role.getDispatcher(), wr => {
