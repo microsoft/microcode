@@ -549,6 +549,7 @@ namespace microcode {
                 ariaId: "rule",
                 x: 0,
                 y: 0,
+                style: ButtonStyles.Transparent,
                 onClick: () => this.showRuleHandleMenu(),
             })
             this.arrow = new Sprite({
