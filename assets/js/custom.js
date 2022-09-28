@@ -311,8 +311,8 @@ const liveStrings = {
     M6: "value 1",
     M7: "value 2",
     M8: "value 3",
-    M9: "value 4",
-    M10: "value 5",
+    M9: "value 5",
+    M10: "value 10",
 
     M11: "on",
     M12: "off",
