@@ -215,6 +215,7 @@ namespace microcode {
         const tile = makeSensor(tid, name, "value_in", 120 + id * 5)
         tile.jdParam = id
         tile.serviceClassName = "cup"
+        tile.priority = 200 + id
         // tile.constraints.handling = maxOneValueIn
     }
 
@@ -472,6 +473,7 @@ namespace microcode {
         mod.jdParam = varid
         mod.jdKind = kind
         tilesDB.modifiers[tid] = mod
+        mod.priority = 200 + varid
         return mod
     }
     addReadValue(
