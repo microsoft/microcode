@@ -530,7 +530,7 @@ namespace microcode {
         clone: (img: Image) => img.clone(),
         editor: iconEditor,
         toImage: scaleUp,
-        buttonStyle: () => ButtonStyles.BorderedPurple,
+        buttonStyle: () => ButtonStyles.Transparent,
         serialize: (img: Image) => {
             const ret: string[] = []
             for (let index = 0; index < 25; index++) {
