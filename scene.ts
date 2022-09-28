@@ -65,7 +65,8 @@ namespace microcode {
                 this.update()
             })
             control.eventContext().registerFrameHandler(RENDER_PRIORITY, () => {
-                Screen.image.fill(0)
+                // perf: render directly on the background image buffer
+                Screen.image.fill(this.color_)
                 this.draw()
                 if (Options.fps)
                     Screen.image.print(
@@ -74,8 +75,7 @@ namespace microcode {
                         1,
                         15
                     )
-                screen.fill(this.color_)
-                screen.drawTransparentImage(Screen.image, 0, 0)
+                screen.drawImage(Screen.image, 0, 0)
             })
             control
                 .eventContext()

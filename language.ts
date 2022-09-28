@@ -83,7 +83,7 @@ namespace microcode {
         buttonStyle(): ButtonStyle {
             return this.fieldEditor
                 ? this.fieldEditor.buttonStyle()
-                : ButtonStyles.ShadowedWhite
+                : ButtonStyles.FlatWhite
         }
 
         mergeConstraints(dst: Constraints) {

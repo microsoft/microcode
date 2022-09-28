@@ -93,9 +93,12 @@ namespace microcode {
             if (this.invisible) {
                 return
             }
-            if (this.isOffScreen()) {
-                return
-            }
+
+            // perf: this is not really required anymore as rules are clipped vertically and tiles horizontally
+            // if (this.isOffScreen()) {
+            //    return
+            //}
+
             Screen.drawTransparentImageXfrm(
                 this.xfrm,
                 this.image_,
