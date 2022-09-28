@@ -18,8 +18,8 @@ There are two ways to run MicroCode:
 See below for more information about the MicroCode web app, and how to deploy MicroCode to the micro:bit V2. Regardless of which way you run MicroCode, you will probably want to know a little bit about
 MicroCode's:
 
--   [icon-based language](./language.md)
--   [samples](./samples.md)
+-   [![press image](./images/generated/icon_S2.png){:class="icon"}](./language) [icon-based language](./language)
+-   [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon"}](./samples) [samples](./samples)
 -   [FAQ](./faq.md)
 
 ## Web editor
