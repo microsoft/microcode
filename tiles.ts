@@ -403,17 +403,21 @@ namespace microcode {
     buzzer.priority = 30
     */
 
-    const coin_vals = [1, 2, 3, 5, 10]
-    const make_vals = (name: string, kind: string, start: number) => {
+    const make_vals = (
+        values: number[],
+        name: string,
+        kind: string,
+        start: number
+    ) => {
         const tiles: FilterModifierBase[] = []
-        coin_vals.forEach((coin, index) => {
+        values.forEach((v, index) => {
             const tid = kind + (start + index)
             const tile: FilterModifierBase =
                 kind == "M"
-                    ? new ModifierDefn(tid, coin.toString(), name, 10)
-                    : new FilterDefn(tid, coin.toString(), name, 10)
+                    ? new ModifierDefn(tid, v.toString(), name, 10)
+                    : new FilterDefn(tid, v.toString(), name, 10)
             tile.jdKind = JdKind.Literal
-            tile.jdParam = coin
+            tile.jdParam = v
             // tile.constraints = terminal
             if (kind == "M") tilesDB.modifiers[tid] = tile
             else tilesDB.filters[tid] = tile as FilterDefn
@@ -424,9 +428,11 @@ namespace microcode {
         })
         return tiles
     }
-    make_vals("value_in", "F", 8)
-    make_vals("constant", "M", 6)
-    make_vals("page", "M", 1).forEach(m => {
+
+    const coin_values = [1, 2, 3, 5, 10]
+    make_vals(coin_values, "value_in", "F", 8)
+    make_vals(coin_values, "constant", "M", 6)
+    make_vals([1, 2, 3, 4, 5], "page", "M", 1).forEach(m => {
         m.constraints.handling = m.constraints.handling || {}
         m.constraints.handling.terminal = true
         m.jdKind = JdKind.Page
