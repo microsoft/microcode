@@ -1,5 +1,5 @@
 namespace jacs {
-    let debugOut = false
+    let debugOut = true
 
     export function addUnique<T>(arr: T[], v: T) {
         let idx = arr.indexOf(v)
@@ -715,6 +715,24 @@ namespace jacs {
                     this.currValue().read(wr),
                 ])
                 this.emitSendCmd(this.lookupActuatorRole(rule), 0x81)
+            } else if (actuator.jdKind == microcode.JdKind.NumFmt) {
+                this.emitValueOut(rule, 1)
+                const fmt: NumFmt = actuator.jdParam
+                const sz = bitSize(fmt) >> 3
+                wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [
+                    literal(sz),
+                    literal(0),
+                ])
+                wr.emitStmt(OpStmt.STMT4_STORE_BUFFER, [
+                    literal(fmt),
+                    literal(0),
+                    literal(0),
+                    this.currValue().read(wr),
+                ])
+                this.emitSendCmd(
+                    this.lookupActuatorRole(rule),
+                    actuator.serviceCommand
+                )
             } else if (actuator.serviceArgFromModifier) {
                 const role = this.lookupActuatorRole(rule)
                 this.emitSequance(
@@ -983,7 +1001,6 @@ namespace jacs {
         // m:b
         button: 0x1473a263,
         dotMatrix: 0x110d154b,
-        bitRadio: 0x1ac986cf,
         soundLevel: 0x14ad1a5d,
         temperature: 0x1421bac7,
         soundPlayer: 0x1403d338,

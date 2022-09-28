@@ -368,7 +368,9 @@ namespace microcode {
     )
     radio_set_group.priority = 101
     radio_set_group.serviceClassName = "radio"
-    radio_set_group.jdKind = JdKind.Radio
+    radio_set_group.jdKind = JdKind.NumFmt
+    radio_set_group.jdParam = jacs.NumFmt.U8
+    radio_set_group.serviceCommand = jacs.CMD_SET_REG | 0x80
 
     function addAssign(tid: string, name: string, id: number) {
         const theVar = addActuator(tid, name, "value_out", "constant")

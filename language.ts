@@ -43,6 +43,7 @@ namespace microcode {
         RandomToss = 4,
         Page = 5,
         Sequance = 6,
+        NumFmt = 7,
     }
 
     export class TileDefn {

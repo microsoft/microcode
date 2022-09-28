@@ -1,5 +1,5 @@
 namespace jacs {
-    export function bitSize(fmt: OpFmt) {
+    export function bitSize(fmt: NumFmt) {
         return 8 << (fmt & 0b11)
     }
 
