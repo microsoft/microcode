@@ -3,9 +3,16 @@
 
 @import "{{ site.theme }}";
 
+img.icon {
+    image-rendering: pixelated;
+    min-width: 5rem;
+    background: #fff;
+    border-radius: 0.25rem;
+    vertical-align: middle;
+}
+
 p img {
     width: 100%;
-    image-rendering: pixelated;
 }
 
 video {
