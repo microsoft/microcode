@@ -31,12 +31,12 @@ The left-hand side of a rule, the `When` section, starts with an
 event tile from the following list:
 
 -   ![press image](./images/generated/icon_S2.png){:class="icon"} `press` of button, micro:bit icon, or pin
--   ![release image](./images/generated/icon_S2B.png) `release` of button, micro:bit icon, or pin
--   ![press image](./images/generated/icon_S3.png) `move` of accelerometer, in various ways
--   ![press image](./images/generated/icon_S8.png) `hear` a sound, either loud or soft
--   ![press image](./images/generated/icon_S7.png) `radio receive` of a number
--   ![press image](./images/generated/icon_S4.png) `repeat timer` of a time
--   ![press image](./images/generated/icon_S9A.png) ![press image](./images/generated/icon_S9B.png) ![press image](./images/generated/icon_S9C.png) `variable (A,B,C) changed` to a number
+-   ![release image](./images/generated/icon_S2B.png){:class="icon"} `release` of button, micro:bit icon, or pin
+-   ![press image](./images/generated/icon_S3.png){:class="icon"} `move` of accelerometer, in various ways
+-   ![press image](./images/generated/icon_S8.png){:class="icon"} `hear` a sound, either loud or soft
+-   ![press image](./images/generated/icon_S7.png){:class="icon"} `radio receive` of a number
+-   ![press image](./images/generated/icon_S4.png){:class="icon"} `repeat timer` of a time
+-   ![press image](./images/generated/icon_S9A.png){:class="icon"} ![press image](./images/generated/icon_S9B.png){:class="icon"} ![press image](./images/generated/icon_S9C.png){:class="icon"} `variable (A,B,C) changed` to a number
 
 The dialog below appears when you select the leftmost empty tile of a rule:
 
@@ -46,9 +46,13 @@ The dialog below appears when you select the leftmost empty tile of a rule:
 
 An event tile can be followed by none, one or more parameter tiles which determines whether or not execution will proceed from the **When** section to the **Do** section, Every event has a default parameter, which is used when no parameter is specified. The defaults are:
 
--   `press`, defaults to `button A` ![press image](./images/generated/icon_F3.png); other options include `button B` ![press image](./images/generated/icon_F4.png), `micro:bit logo` ![press image](./images/generated/icon_F7.png), `pin 0` ![press image](./images/generated/icon_F0.png), `pin 1` ![press image](./images/generated/icon_F1.png), `pin 2` ![press image](./images/generated/icon_F2.png)
+-   `press`, defaults to `button A` ![press image](./images/generated/icon_F3.png){:class="icon"}; 
+other options include `button B` ![press image](./images/generated/icon_F4.png){:class="icon"}, 
+`micro:bit logo` ![press image](./images/generated/icon_F7.png){:class="icon"}, 
+`pin 0` ![press image](./images/generated/icon_F0.png){:class="icon"}, 
+`pin 1` ![press image](./images/generated/icon_F1.png){:class="icon"}, `pin 2` ![press image](./images/generated/icon_F2.png){:class="icon"}
 -   `release`, defaults and options are the same as for **press**
--   `move`, defaults to `shake` ![press image](./images/generated/icon_F17_shake.png); other options include ...
+-   `move`, defaults to `shake` ![press image](./images/generated/icon_F17_shake.png){:class="icon"}; other options include ...
 -   **hear**, defaults to `loud`; other options include `tilt up`, `tilt down`, `tilt left` and `tilt right`
 -   **radio receive**, defaults to `any`
 -   **repeat timer**, defaults to `1/4 second`
