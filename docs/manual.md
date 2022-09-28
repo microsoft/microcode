@@ -22,9 +22,9 @@ MicroCode's:
 -   [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon"}](./samples) [samples](./samples)
 -   [FAQ](./faq.md)
 
-## Web editor
+## [Web editor](https://aka.ms/m9)
 
-The easiest way to get started with MicroCode is through the web editor ([https://aka.ms/microcode](https://aka.ms/microcode), shown below). We recommend using the keyboard navigation or a real gamepad!
+The easiest way to get started with MicroCode is through the web editor ([https://aka.ms/microcode](https://aka.ms/microcode), [https://aka.ms/m9](https://aka.ms/m9) for short). We recommend using the keyboard navigation or a real gamepad!
 
 -   Arrow keys for D-pad
 -   Space bar for A button
