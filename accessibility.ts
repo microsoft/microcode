@@ -65,7 +65,7 @@ namespace accessibility {
         F19: "5 seconds",
         F15: "loud",
         F16: "quiet",
-        F17: "accelerometer",
+        F17: "move",
         F17_shake: "shake",
         F17_freefall: "freefall",
         F17_tilt_up: "tilt up",

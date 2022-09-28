@@ -42,8 +42,19 @@ is always up-to-date (and running)!
 
 ### Accessibility
 
-MicroCode can be program with keyboard, game controllers (such as XBox controllers), mouse or touch inputs. The editor was designed to integrate with screen readers.
-It is also possible to active the tooltip reading mode to help with early readers.
+We attempted at making the editor as accessible as possible; please send us suggestions to improve the editor in this space.
+
+#### Keyboard navigation
+
+MicroCode can be programmed with keyboard, game controllers (such as XBox controllers), mouse or touch inputs.
+
+#### Screen reader
+
+The editor integrates with existing screen readers, like NVDA.
+
+#### Tooltip read aloud
+
+By clicking on the `voice` button at the bottom of the editor, you can turn on read aloud of editor tooltips. This is useful for students who are starting to struggling to read the words.
 
 ## micro:bit V2 and Arcade Shield
 
@@ -62,7 +73,7 @@ the gallery of samples.
 
 ## Contributing
 
-* Start a discussion thread at [https://github.com/microsoft/microcode/discussions](https://github.com/microsoft/microcode/discussions).
+-   Start a discussion thread at [https://github.com/microsoft/microcode/discussions](https://github.com/microsoft/microcode/discussions).
 
 This project is open source and welcomes contributions and suggestions at https://github.com/microsoft/microcode.
 Read the [developer instructions](./develop.md).
