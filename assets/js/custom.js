@@ -526,14 +526,27 @@ addSimMessageHandler("docs", async data => {
         await Promise.all(
             jsg.map(async ({ type, name, pixels }) => {
                 const png = imgToPng(pixels)
-                const blob = await (await fetch(png)).blob()
-                const fn = norm(`${type}_${name}.png`)
-                const file = await dir.getFileHandle(fn, { create: true })
-                const writable = await file.createWritable({
-                    keepExistingData: false,
-                })
-                await writable.write(blob)
-                await writable.close()
+                // render image as datauri
+                if (type === "image") {
+                    const fn = norm(`${type}_${name}.datauri.txt`)
+                    const file = await dir.getFileHandle(fn, { create: true })
+                    const writable = await file.createWritable({
+                        keepExistingData: false,
+                    })
+                    await writable.write(png)
+                    await writable.close()
+                }
+                // render native format
+                {
+                    const blob = await (await fetch(png)).blob()
+                    const fn = norm(`${type}_${name}.png`)
+                    const file = await dir.getFileHandle(fn, { create: true })
+                    const writable = await file.createWritable({
+                        keepExistingData: false,
+                    })
+                    await writable.write(blob)
+                    await writable.close()
+                }
             })
         )
         // markdown docs
