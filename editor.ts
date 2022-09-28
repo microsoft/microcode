@@ -380,7 +380,7 @@ namespace microcode {
 
     class PageEditor extends Component implements IPlaceable {
         private xfrm_: Affine
-        rules: RuleEditor[]
+        ruleEditors: RuleEditor[]
 
         //% blockCombine block="xfrm" callInDebugger
         public get xfrm() {
@@ -395,7 +395,7 @@ namespace microcode {
             super("page_editor")
             this.xfrm_ = new Affine()
             this.xfrm_.parent = parent.xfrm
-            this.rules = pagedef.rules.map(
+            this.ruleEditors = pagedef.rules.map(
                 (ruledef, index) => new RuleEditor(editor, this, ruledef, index)
             )
             this.ensureFinalEmptyRule()
@@ -403,21 +403,21 @@ namespace microcode {
         }
 
         /* override */ destroy() {
-            this.rules.forEach(rule => rule.destroy())
-            this.rules = undefined
+            this.ruleEditors.forEach(rule => rule.destroy())
+            this.ruleEditors = undefined
             super.destroy()
         }
 
         private ensureFinalEmptyRule() {
-            if (this.rules) {
+            if (this.ruleEditors) {
                 this.trimRules()
                 const ruledefn = new RuleDefn()
-                this.rules.push(
+                this.ruleEditors.push(
                     new RuleEditor(
                         this.editor,
                         this,
                         ruledefn,
-                        this.rules.length
+                        this.ruleEditors.length
                     )
                 )
                 this.pagedef.rules.push(ruledefn)
@@ -425,31 +425,31 @@ namespace microcode {
         }
 
         private trimRules() {
-            if (!this.rules.length) {
+            if (!this.ruleEditors.length) {
                 return
             }
-            let last = this.rules[this.rules.length - 1]
+            let last = this.ruleEditors[this.ruleEditors.length - 1]
             while (last.isEmpty()) {
                 last.destroy()
-                this.rules.pop()
+                this.ruleEditors.pop()
                 this.pagedef.rules.pop()
-                if (!this.rules.length) {
+                if (!this.ruleEditors.length) {
                     return
                 }
-                last = this.rules[this.rules.length - 1]
+                last = this.ruleEditors[this.ruleEditors.length - 1]
             }
         }
 
         private layout() {
-            if (this.rules) {
-                this.rules.forEach(rule => {
+            if (this.ruleEditors) {
+                this.ruleEditors.forEach(rule => {
                     rule.layout()
                 })
                 let left = 10
                 let top = 10
-                this.rules.forEach((rule, index) => {
+                this.ruleEditors.forEach((rule, index) => {
                     if (index) {
-                        top += this.rules[index - 1].bounds.height >> 1
+                        top += this.ruleEditors[index - 1].bounds.height >> 1
                         top += rule.bounds.height >> 1
                         top += 3
                     }
@@ -458,17 +458,17 @@ namespace microcode {
                 })
                 // Make all rules the same width
                 let maxRuleWidth = 0
-                this.rules.forEach(rule => {
+                this.ruleEditors.forEach(rule => {
                     maxRuleWidth = Math.max(maxRuleWidth, rule.bounds.width)
                 })
-                this.rules.forEach(rule => {
+                this.ruleEditors.forEach(rule => {
                     rule.bounds.width = maxRuleWidth
                 })
             }
         }
 
         public addToNavigator() {
-            this.rules.forEach(rule => {
+            this.ruleEditors.forEach(rule => {
                 this.editor.navigator.addRule(rule.ruledef)
                 rule.addToNavigator()
             })
@@ -481,38 +481,40 @@ namespace microcode {
         }
 
         public deleteRuleAt(index: number) {
-            const rule = this.rules[index]
+            const rule = this.ruleEditors[index]
             this.pagedef.deleteRuleAt(index)
-            this.rules.splice(index, 1)
+            this.ruleEditors.splice(index, 1)
             rule.destroy()
-            this.rules.forEach((rule, index) => (rule.index = index))
+            this.ruleEditors.forEach((rule, index) => (rule.index = index))
             this.changed()
             this.editor.saveAndCompileProgram()
         }
 
         public insertRuleAt(index: number) {
-            this.pagedef.insertRuleAt(index)
-            const rules: RuleEditor[] = []
-            for (let i = 0; i < index; ++i) {
-                rules.push(this.rules[i])
+            const newRule = this.pagedef.insertRuleAt(index)
+            if (newRule) {
+                this.editor.saveAndCompileProgram()
+                const rules: RuleEditor[] = []
+                for (let i = 0; i < index; ++i) {
+                    rules.push(this.ruleEditors[i])
+                }
+                rules.push(new RuleEditor(this.editor, this, newRule, index))
+                for (let i = index; i < this.ruleEditors.length; ++i) {
+                    rules.push(this.ruleEditors[i])
+                }
+                this.ruleEditors = rules
+                this.ruleEditors.forEach((rule, index) => (rule.index = index))
+                this.changed()
             }
-            rules.push(new RuleEditor(this.editor, this, new RuleDefn(), index))
-            for (let i = index; i < this.rules.length; ++i) {
-                rules.push(this.rules[i])
-            }
-            this.rules = rules
-            this.rules.forEach((rule, index) => (rule.index = index))
-            this.editor.saveAndCompileProgram()
-            this.changed()
         }
 
         /* override */ update() {
-            this.rules.forEach(rule => rule.update())
+            this.ruleEditors.forEach(rule => rule.update())
         }
 
         /* override */ draw() {
             control.enablePerfCounter()
-            this.rules.forEach(rule => rule.draw())
+            this.ruleEditors.forEach(rule => rule.draw())
         }
     }
 
@@ -526,7 +528,7 @@ namespace microcode {
         whenInsertBtn: Button
         doInsertBtn: Button
         arrow: Sprite
-        rule: ButtonRuleRep
+        ruleButtons: ButtonRuleRep
         bounds: Bounds
         whenBounds: Bounds
         queuedCursorMove: CursorDir
@@ -558,7 +560,7 @@ namespace microcode {
                 parent: this,
                 img: icons.get("rule_arrow"),
             })
-            this.rule = {
+            this.ruleButtons = {
                 sensors: [],
                 filters: [],
                 actuators: [],
@@ -574,9 +576,11 @@ namespace microcode {
 
         private needsWhenInsert() {
             if (
-                this.rule["sensors"].length == 0 ||
-                this.getSuggestions("filters", this.rule["filters"].length)
-                    .length
+                this.ruleButtons["sensors"].length == 0 ||
+                this.getSuggestions(
+                    "filters",
+                    this.ruleButtons["filters"].length
+                ).length
             ) {
                 this.whenInsertBtn = new EditorButton(this.editor, {
                     parent: this,
@@ -599,9 +603,11 @@ namespace microcode {
 
         private needsDoInsert() {
             if (
-                this.rule["actuators"].length == 0 ||
-                this.getSuggestions("modifiers", this.rule["modifiers"].length)
-                    .length
+                this.ruleButtons["actuators"].length == 0 ||
+                this.getSuggestions(
+                    "modifiers",
+                    this.ruleButtons["modifiers"].length
+                ).length
             ) {
                 this.doInsertBtn = new EditorButton(this.editor, {
                     parent: this,
@@ -631,9 +637,9 @@ namespace microcode {
         private destroyProgramTiles() {
             let changed = false
             repNames.forEach(name => {
-                if (this.rule[name].length) {
-                    this.rule[name].forEach(btn => btn.destroy())
-                    this.rule[name] = []
+                if (this.ruleButtons[name].length) {
+                    this.ruleButtons[name].forEach(btn => btn.destroy())
+                    this.ruleButtons[name] = []
                     changed = true
                 }
             })
@@ -656,7 +662,7 @@ namespace microcode {
                         y: 0,
                         onClick: () => this.editTile(name, index),
                     })
-                    this.rule[name].push(button)
+                    this.ruleButtons[name].push(button)
                     changed = true
                 })
             })
@@ -814,13 +820,13 @@ namespace microcode {
         public addToNavigator() {
             const btns: Button[] = []
             btns.push(this.handleBtn)
-            this.rule.sensors.forEach(b => btns.push(b))
-            this.rule.filters.forEach(b => btns.push(b))
+            this.ruleButtons.sensors.forEach(b => btns.push(b))
+            this.ruleButtons.filters.forEach(b => btns.push(b))
 
             if (this.whenInsertBtn) btns.push(this.whenInsertBtn)
 
-            this.rule.actuators.forEach(b => btns.push(b))
-            this.rule.modifiers.forEach(b => btns.push(b))
+            this.ruleButtons.actuators.forEach(b => btns.push(b))
+            this.ruleButtons.modifiers.forEach(b => btns.push(b))
 
             if (this.doInsertBtn) btns.push(this.doInsertBtn)
 
@@ -844,7 +850,7 @@ namespace microcode {
         }
 
         public layout() {
-            const ruleRep = this.rule
+            const ruleRep = this.ruleButtons
             const v = new Vec2()
             this.whenBounds = new Bounds()
 
@@ -941,7 +947,7 @@ namespace microcode {
             this.arrow.draw()
             if (this.doInsertBtn) this.doInsertBtn.draw()
             repNames.forEach(name => {
-                const buttons = this.rule[name]
+                const buttons = this.ruleButtons[name]
                 buttons.forEach(btn => btn.draw())
             })
         }
