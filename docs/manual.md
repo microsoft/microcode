@@ -28,16 +28,16 @@ The easiest way to get started with MicroCode is through the web editor ([https:
 
 -   Arrow keys for D-pad
 -   Space bar for A button
--   Backscape for B button
+-   Backspace for B button
 -   Copy the URL to share your program.
 
-![MicroCode web app](./images/website2.jpg)
+[![MicroCode web app](./images/website2.jpg)](https://aka.ms/m9)
 
 ### Web App and micro:bit V2
 
 Click on the micro:bit button at the lower right of the web app (see above) and follow the on-screen instructions to configure your micro:bit V2 and pair it with the editor.
 Once your micro:bit V2 is paired, the web editor will be able to download Your
-MicroCode program to your microbit. This happens on every edit, so your program
+MicroCode program to your micro:bit. This happens on every edit, so your program
 is always up-to-date (and running)!
 
 ### Accessibility
