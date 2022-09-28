@@ -12,7 +12,7 @@ Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 
 There are two ways to run MicroCode:
 
--   [web app](https://aka.ms/microcode) with [micro:bit V2](https://microbit.org)
+-   [web app](https://aka.ms/microcode) with [micro:bit V2](https://microbit.org) ([aka.ms/m9](https://aka.ms/m9) for short)
 -   [micro:bit V2](https://microbit.org) + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
 
 See below for more information about the MicroCode web app, and how to deploy MicroCode to the micro:bit V2. Regardless of which way you run MicroCode, you will probably want to know a little bit about

@@ -87,6 +87,7 @@ async function flashJacscriptService(service, data) {
 
     await dev.resolveFirmwareVersion(3)
     const firmwareVersion = dev.firmwareVersion
+    console.debug(`firmware version: ${firmwareVersion}`)
     const webFirmwareVersion = document.body.dataset.version
     const semweb = parseSemver(webFirmwareVersion)
     const semcur = parseSemver(firmwareVersion)
