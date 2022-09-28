@@ -240,60 +240,84 @@ namespace microcode {
             dist: number,
             colors: { top: number; left: number; right: number; bottom: number }
         ) {
+            // no borders!
+            if (!colors.top && !colors.left && !colors.right && !colors.bottom)
+                return
+
             const left = bounds.left + xfrm.worldPos.x
             const top = bounds.top + xfrm.worldPos.y
             const right = bounds.right + xfrm.worldPos.x
             const bottom = bounds.bottom + xfrm.worldPos.y
 
             // Left
-            Screen.drawLine(left - dist, top, left - dist, bottom, colors.left)
+            if (colors.left)
+                Screen.drawLine(
+                    left - dist,
+                    top,
+                    left - dist,
+                    bottom,
+                    colors.left
+                )
             // Right
-            Screen.drawLine(
-                right + dist,
-                top,
-                right + dist,
-                bottom,
-                colors.right
-            )
+            if (colors.right)
+                Screen.drawLine(
+                    right + dist,
+                    top,
+                    right + dist,
+                    bottom,
+                    colors.right
+                )
             // Top
-            Screen.drawLine(left, top - dist, right, top - dist, colors.top)
+            if (colors.top)
+                Screen.drawLine(left, top - dist, right, top - dist, colors.top)
             // Bottom
-            Screen.drawLine(
-                left,
-                bottom + dist,
-                right,
-                bottom + dist,
-                colors.bottom
-            )
+            if (colors.bottom)
+                Screen.drawLine(
+                    left,
+                    bottom + dist,
+                    right,
+                    bottom + dist,
+                    colors.bottom
+                )
 
             // Connect corners
             if (dist > 1) {
                 // Left-Top
-                Screen.drawLine(left - dist, top, left, top - dist, colors.left)
+                if (colors.left)
+                    Screen.drawLine(
+                        left - dist,
+                        top,
+                        left,
+                        top - dist,
+                        colors.left
+                    )
                 // Right-Top
-                Screen.drawLine(
-                    right + dist,
-                    top,
-                    right,
-                    top - dist,
-                    colors.right
-                )
+                if (colors.right)
+                    Screen.drawLine(
+                        right + dist,
+                        top,
+                        right,
+                        top - dist,
+                        colors.right
+                    )
                 // Left-Bottom
-                Screen.drawLine(
-                    left - dist,
-                    bottom,
-                    left,
-                    bottom + dist,
-                    colors.left
-                )
+                if (colors.left)
+                    Screen.drawLine(
+                        left - dist,
+                        bottom,
+                        left,
+                        bottom + dist,
+                        colors.left
+                    )
                 // Right-Bottom
-                Screen.drawLine(
-                    right + dist,
-                    bottom,
-                    right,
-                    bottom + dist,
-                    colors.right
-                )
+                if (colors.right)
+                    Screen.drawLine(
+                        right + dist,
+                        bottom,
+                        right,
+                        bottom + dist,
+                        colors.right
+                    )
             }
         }
 
