@@ -25,6 +25,8 @@ the order of the rules only matters when different rules act on the same resourc
 
 ## When section
 
+## Events
+
 The left-hand side of a rule, the `When` section, starts with an
 event tile from the following list:
 
@@ -36,6 +38,12 @@ event tile from the following list:
 -   ![press image](./images/generated/icon_S4.png) `repeat timer` of a time
 -   ![press image](./images/generated/icon_S9A.png) ![press image](./images/generated/icon_S9B.png) ![press image](./images/generated/icon_S9C.png) `variable (A,B,C) changed` to a number
 
+The dialog below appears when you select the leftmost empty tile of a rule:
+
+![event tiles in when section](./images/whenDialog.jpg)
+
+## Event parameters
+
 An event tile can be followed by none, one or more parameter tiles which determines whether or not execution will proceed from the **When** section to the **Do** section, Every event has a default parameter, which is used when no parameter is specified. The defaults are:
 
 -   `press`, defaults to `button A` ![press image](./images/generated/icon_F3.png); other options include `button B` ![press image](./images/generated/icon_F4.png), `micro:bit logo` ![press image](./images/generated/icon_F7.png), `pin 0` ![press image](./images/generated/icon_F0.png), `pin 1` ![press image](./images/generated/icon_F1.png), `pin 2` ![press image](./images/generated/icon_F2.png)
@@ -46,32 +54,47 @@ An event tile can be followed by none, one or more parameter tiles which determi
 -   **repeat timer**, defaults to `1/4 second`
 -   **variable (A,B,C) changed**, defaults to `any`
 
-The events that are parameterized by a numeric (the last three) can take more than one parameters. The meaning of this sequence
-of numbers is their sum. This allows values great than 5 to be constructed.
+The events that are parameterized by a numeric value (the last three events above) can take more than one parameters that are summed together. This allows values great than 5 to be constructed.
+
+The dialog below shows the paramters associated with the button press/release events.
+
+![parameters for press/release event](./images/eventParameterDialog.jpg)
 
 ## Do section
 
+### Commands
+
 The right-hand side of a rule, the **Do** section, starts with an
-action tile from the following list:
+command tile from the following list:
 
 -   **screen** shows an animation sequence on the LED screen.
 -   **sound emoji** plays a given emoji
--   **random number** generates a random integer between 1 and given upper bound (inclusive)
 -   **radio send** sends a given number over the radio
 -   **switch page** transfers execution control to a given page
+-   **set variable** puts a number into a variable (A, B, C)
 
-An action tile can be followed by various parameter tiles, depending on type
-of action tile. As with events, every actions has a default parameter, for the
-case where no parameter file is added by the user:
+A command can be followed by various parameter tiles, depending on the type
+of command. As with events, every command has a default parameter, for the
+case where no parameter tile is given:
 
 -   **screen** shows a `happy face` by default
 -   **sound emoji** plays `giggle` by default
--   **random number** generates a random integer between `1` and `5` (inclusive) by default
 -   **radio send** sends the number `1` by default
 -   **switch page** switches to page `1` by default
+-   **set variable** puts a number into a variable (A, B, C)
 
 Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5`.
 
-## Variables
+![command tiles in do section](./images/doDialog.jpg)
 
-For certain actions that produce values, like the random number generator, the value can be written into variable `A`, `B`, `C`.
+## Constructing numbers
+
+For commands that expect a numeric value (**radio send**, **set variable**), a variety of tiles are available
+
+-   the **constant values** 1, 2, 3, 4, and 5 (maybe we'll add 0 soon)
+-   the **values of variables** A, B, and C
+-   a **random number generator** yields a random integer between `1` and `5` (inclusive) by default
+
+## Coming soon
+
+-   Create negative numbers with minus operator
