@@ -71,6 +71,7 @@ namespace microcode {
             return Occlusions.FromSprite(this, bounds)
         }
 
+        /*
         public isOffScreen(): boolean {
             return (
                 this.xfrm.worldPos.x + (this.width >> 1) < Screen.LEFT_EDGE ||
@@ -79,7 +80,6 @@ namespace microcode {
                 this.xfrm.worldPos.y - (this.height >> 1) > Screen.BOTTOM_EDGE
             )
         }
-
         public isClipped(): boolean {
             return (
                 this.xfrm.worldPos.x - (this.width >> 1) < Screen.LEFT_EDGE ||
@@ -88,6 +88,7 @@ namespace microcode {
                 this.xfrm.worldPos.y + (this.height >> 1) > Screen.BOTTOM_EDGE
             )
         }
+        */
 
         /* override */ draw() {
             if (this.invisible) {

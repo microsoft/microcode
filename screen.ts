@@ -57,15 +57,14 @@ namespace microcode {
             y1: number,
             c: number
         ) {
-            if (c) {
-                Screen.image.drawLine(
-                    Screen.x(x0),
-                    Screen.y(y0),
-                    Screen.x(x1),
-                    Screen.y(y1),
-                    c
-                )
-            }
+            control.assert(c !== 0, 801)
+            Screen.image.drawLine(
+                Screen.x(x0),
+                Screen.y(y0),
+                Screen.x(x1),
+                Screen.y(y1),
+                c
+            )
         }
 
         public static drawLineXfrm(
@@ -76,6 +75,7 @@ namespace microcode {
             y1: number,
             c: number
         ) {
+            control.assert(c !== 0, 801)
             Screen.drawLine(
                 x0 + xfrm.worldPos.x,
                 y0 + xfrm.worldPos.y,
@@ -114,15 +114,8 @@ namespace microcode {
             height: number,
             c: number
         ) {
-            if (c) {
-                Screen.image.drawRect(
-                    Screen.x(x),
-                    Screen.y(y),
-                    width,
-                    height,
-                    c
-                )
-            }
+            control.assert(c !== 0, 801)
+            Screen.image.drawRect(Screen.x(x), Screen.y(y), width, height, c)
         }
 
         public static drawRectXfrm(
@@ -133,6 +126,7 @@ namespace microcode {
             height: number,
             c: number
         ) {
+            control.assert(c !== 0, 801)
             Screen.drawRect(
                 x + xfrm.worldPos.x,
                 y + xfrm.worldPos.y,
@@ -149,15 +143,8 @@ namespace microcode {
             height: number,
             c: number
         ) {
-            if (c) {
-                Screen.image.fillRect(
-                    Screen.x(x),
-                    Screen.y(y),
-                    width,
-                    height,
-                    c
-                )
-            }
+            control.assert(c !== 0, 801)
+            Screen.image.fillRect(Screen.x(x), Screen.y(y), width, height, c)
         }
 
         public static fillRectXfrm(
@@ -168,6 +155,7 @@ namespace microcode {
             height: number,
             c: number
         ) {
+            control.assert(c !== 0, 801)
             Screen.fillRect(
                 x + xfrm.worldPos.x,
                 y + xfrm.worldPos.y,
@@ -178,6 +166,7 @@ namespace microcode {
         }
 
         public static fillBoundsXfrm(xfrm: Affine, bounds: Bounds, c: number) {
+            control.assert(c !== 0, 801)
             Screen.fillRectXfrm(
                 xfrm,
                 bounds.left,
@@ -189,6 +178,7 @@ namespace microcode {
         }
 
         public static drawBoundsXfrm(xfrm: Affine, bounds: Bounds, c: number) {
+            control.assert(c !== 0, 801)
             Screen.drawRectXfrm(
                 xfrm,
                 bounds.left,
@@ -206,6 +196,8 @@ namespace microcode {
             dist: number,
             c: number
         ) {
+            if (!c) return
+
             const left = bounds.left + xfrm.worldPos.x
             const top = bounds.top + xfrm.worldPos.y
             const right = bounds.right + xfrm.worldPos.x
@@ -333,6 +325,7 @@ namespace microcode {
             y: number,
             c: number
         ) {
+            control.assert(c !== 0, 801)
             Screen.setPixel(x + xfrm.worldPos.x, y + xfrm.worldPos.y, c)
         }
 
@@ -344,6 +337,7 @@ namespace microcode {
             font?: image.Font,
             offsets?: texteffects.TextEffectState[]
         ) {
+            control.assert(color !== 0, 801)
             Screen.image.print(
                 text,
                 Screen.x(x),
