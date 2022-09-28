@@ -43,6 +43,7 @@ is always up-to-date (and running)!
 ### Accessibility
 
 MicroCode can be program with keyboard, game controllers (such as XBox controllers), mouse or touch inputs. The editor was designed to integrate with screen readers.
+It is also possible to active the tooltip reading mode to help with early readers.
 
 ## micro:bit V2 and Arcade Shield
 

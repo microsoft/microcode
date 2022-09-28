@@ -133,6 +133,16 @@ document.addEventListener("DOMContentLoaded", () => {
             docsbtn.disabled = true
             simPostMessage("docs", {})
         }
+
+    const voicebtn = document.getElementById("voicebtn")
+    if (voicebtn) {
+        if (!window.speechSynthesis) voicebtn.remove()
+        else
+            voicebtn.onclick = () => {
+                speakTooltips = !speakTooltips
+                speak("tooltip reader enabled")
+            }
+    }
 })
 
 // to support downloading directly to device
@@ -409,12 +419,27 @@ function parseSemver(v) {
     else return [0, 0, 0]
 }
 
+let speakTooltips = false
+function speak(text) {
+    if (!text || !speakTooltips) return
+
+    const synth = window.speechSynthesis
+    synth.cancel()
+    const voice = synth.getVoices()[0]
+    const utterance = new SpeechSynthesisUtterance(text)
+    utterance.voice = voice
+    synth.speak(utterance)
+    synth.resume()
+}
+
 addSimMessageHandler("accessibility", data => {
     // render message
     const msg = JSON.parse(uint8ArrayToString(data))
     let value
     if (msg.type === "tile" || msg.type === "text") {
         value = mapAriaId(msg.value)
+        const tooltip = msg.tooltip
+        speak(tooltip)
     } else if (msg.type == "rule") {
         value = "rule"
         const whens = msg.whens
