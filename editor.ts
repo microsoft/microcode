@@ -295,6 +295,14 @@ namespace microcode {
             }
         }
 
+        protected handleWheel(dx: number, dy: number) {
+            if (dy < 0) {
+                this.scrollAndMove(CursorDir.Up)
+            } else if (dy > 0) {
+                this.scrollAndMove(CursorDir.Down)
+            }
+        }
+
         /* override */ shutdown() {
             this.progdef = undefined
             this.navigator.clear()

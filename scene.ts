@@ -32,7 +32,7 @@ namespace microcode {
         /* override */ activate() {
             pointerevents.pushContext(
                 (x, y) => this.handleClick(x, y),
-                (dx, dy) => console.log(`wheel ${dx} ${dy}`)
+                (dx, dy) => this.handleWheel(dx, dy)
             )
         }
 
@@ -46,6 +46,10 @@ namespace microcode {
 
         protected handleClick(x: number, y: number) {
             console.log(`click ${this.name} ${x}, ${y}`)
+        }
+
+        protected handleWheel(dx: number, dy: number) {
+            console.log(`wheel ${dx} ${dy}`)
         }
 
         __init() {
