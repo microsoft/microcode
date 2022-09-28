@@ -3,9 +3,13 @@
 
 @import "{{ site.theme }}";
 
+img {
+    image-rendering: pixelated;
+    min-width: 5rem;
+}
+
 p img {
     width: 100%;
-    image-rendering: pixelated;
 }
 
 video {
