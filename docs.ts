@@ -63,7 +63,7 @@ namespace docs {
                 images,
                 editor,
                 sample.label,
-                microcode.icons.get(sample.icon)
+                microcode.icons.get(sample.icon, true)
             )
         }
     }
