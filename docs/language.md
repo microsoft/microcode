@@ -1,4 +1,3 @@
-
 # MicroCode Language
 
 The MicroCode language is defined in terms of **pages**, where a page has a list of **rules**,
@@ -28,7 +27,6 @@ the order of the rules only matters when different rules act on the same resourc
 
 ## Events
 
-
 The left-hand side of a rule, the `When` section, starts with an
 event tile from the following dialog, which appears when you select the leftmost empty tile of a rule:
 
@@ -46,11 +44,11 @@ event tile from the following dialog, which appears when you select the leftmost
 
 An event tile can be followed by none, one or more parameter tiles which determines whether or not execution will proceed from the **When** section to the **Do** section, Every event has a default parameter, which is used when no parameter is specified. The defaults are:
 
--   `press`, defaults to `button A` ![press image](./images/generated/icon_F3.png){:class="icon"}; 
-other options include `button B` ![press image](./images/generated/icon_F4.png){:class="icon"}, 
-`micro:bit logo` ![press image](./images/generated/icon_F7.png){:class="icon"}, 
-`pin 0` ![press image](./images/generated/icon_F0.png){:class="icon"}, 
-`pin 1` ![press image](./images/generated/icon_F1.png){:class="icon"}, `pin 2` ![press image](./images/generated/icon_F2.png){:class="icon"}
+-   `press`, defaults to `button A` ![press image](./images/generated/icon_F3.png){:class="icon"};
+    other options include `button B` ![press image](./images/generated/icon_F4.png){:class="icon"},
+    `micro:bit logo` ![press image](./images/generated/icon_F7.png){:class="icon"},
+    `pin 0` ![press image](./images/generated/icon_F0.png){:class="icon"},
+    `pin 1` ![press image](./images/generated/icon_F1.png){:class="icon"}, `pin 2` ![press image](./images/generated/icon_F2.png){:class="icon"}
 -   `release`, defaults and options are the same as for **press**
 
 The dialog below shows the parameters associated with the button press/release events.
@@ -63,7 +61,23 @@ The dialog below shows the parameters associated with the button press/release e
 -   **repeat timer**, defaults to `1/4 second`
 -   **variable (A,B,C) changed**, defaults to `any`
 
-The events that are parameterized by a numeric value (the last three events above) can take more than one parameters that are summed together. This allows values great than 5 to be constructed.
+## Creating values
+
+The events that are parameterized by a numeric value (from the five available coins with value 1, 2, 3, 5, and 10)
+can take a sequence of values that are summed together. Here are the five available coins:
+
+-   `1` ![coin of value 1](./images/generated/icon_F8.png){:class="icon"}
+-   `2`: ![coin of value 2](./images/generated/icon_F9.png){:class="icon"}
+-   `3`: ![coin of value 3](./images/generated/icon_F10.png){:class="icon"}
+-   `5`: ![coin of value 5](./images/generated/icon_F11.png){:class="icon"}
+-   `10`: ![coin of value 10](./images/generated/icon_F12.png){:class="icon"}
+
+The repeat timer is parameterized with various times that can also be sequenced and summed:
+
+-   `1/4 second`: ![1/4 second](./images/generated/icon_F13.png){:class="icon"}
+-   `1 second`: ![1 second](./images/generated/icon_F14.png){:class="icon"}
+-   `5 seconds`: ![5 seconds](./images/generated/icon_F19.png){:class="icon"}
+-   `? seconds`: ![0 to 1 second, chosen randomly](./images/generated/icon_F18.png){:class="icon"} - 0 to 1 second, chosen randomly
 
 ## Do section
 

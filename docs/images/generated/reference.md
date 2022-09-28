@@ -160,22 +160,22 @@
 - icon
 
 
-### ![out of variable A](./images/generated/icon_S9A.png){:class="icon"} out of variable A {#icon_S9A}
+### ![variable A changed](./images/generated/icon_S9A.png){:class="icon"} variable A changed {#icon_S9A}
 
 - icon
 
 
-### ![out of variable B](./images/generated/icon_S9B.png){:class="icon"} out of variable B {#icon_S9B}
+### ![variable B changed](./images/generated/icon_S9B.png){:class="icon"} variable B changed {#icon_S9B}
 
 - icon
 
 
-### ![out of variable C](./images/generated/icon_S9C.png){:class="icon"} out of variable C {#icon_S9C}
+### ![variable C changed](./images/generated/icon_S9C.png){:class="icon"} variable C changed {#icon_S9C}
 
 - icon
 
 
-### ![S10](./images/generated/icon_S10.png){:class="icon"} S10 {#icon_S10}
+### ![magnet detector](./images/generated/icon_S10.png){:class="icon"} magnet detector {#icon_S10}
 
 - icon
 
@@ -295,32 +295,32 @@
 - icon
 
 
-### ![A8](./images/generated/icon_A8.png){:class="icon"} A8 {#icon_A8}
+### ![LED](./images/generated/icon_A8.png){:class="icon"} LED {#icon_A8}
 
 - icon
 
 
-### ![A9A](./images/generated/icon_A9A.png){:class="icon"} A9A {#icon_A9A}
+### ![set variable A](./images/generated/icon_A9A.png){:class="icon"} set variable A {#icon_A9A}
 
 - icon
 
 
-### ![A9B](./images/generated/icon_A9B.png){:class="icon"} A9B {#icon_A9B}
+### ![set variable B](./images/generated/icon_A9B.png){:class="icon"} set variable B {#icon_A9B}
 
 - icon
 
 
-### ![A9C](./images/generated/icon_A9C.png){:class="icon"} A9C {#icon_A9C}
+### ![set variable C](./images/generated/icon_A9C.png){:class="icon"} set variable C {#icon_A9C}
 
 - icon
 
 
-### ![M22](./images/generated/icon_M22.png){:class="icon"} M22 {#icon_M22}
+### ![dice](./images/generated/icon_M22.png){:class="icon"} dice {#icon_M22}
 
 - icon
 
 
-### ![M23](./images/generated/icon_M23.png){:class="icon"} M23 {#icon_M23}
+### ![minus](./images/generated/icon_M23.png){:class="icon"} minus {#icon_M23}
 
 - icon
 
@@ -375,32 +375,32 @@
 - icon
 
 
-### ![A20 1](./images/generated/icon_A20_1.png){:class="icon"} A20 1 {#icon_A20_1}
+### ![red](./images/generated/icon_A20_1.png){:class="icon"} red {#icon_A20_1}
 
 - icon
 
 
-### ![A20 2](./images/generated/icon_A20_2.png){:class="icon"} A20 2 {#icon_A20_2}
+### ![green](./images/generated/icon_A20_2.png){:class="icon"} green {#icon_A20_2}
 
 - icon
 
 
-### ![A20 3](./images/generated/icon_A20_3.png){:class="icon"} A20 3 {#icon_A20_3}
+### ![blue](./images/generated/icon_A20_3.png){:class="icon"} blue {#icon_A20_3}
 
 - icon
 
 
-### ![A20 4](./images/generated/icon_A20_4.png){:class="icon"} A20 4 {#icon_A20_4}
+### ![purple](./images/generated/icon_A20_4.png){:class="icon"} purple {#icon_A20_4}
 
 - icon
 
 
-### ![A20 5](./images/generated/icon_A20_5.png){:class="icon"} A20 5 {#icon_A20_5}
+### ![yellow](./images/generated/icon_A20_5.png){:class="icon"} yellow {#icon_A20_5}
 
 - icon
 
 
-### ![A20 6](./images/generated/icon_A20_6.png){:class="icon"} A20 6 {#icon_A20_6}
+### ![black](./images/generated/icon_A20_6.png){:class="icon"} black {#icon_A20_6}
 
 - icon
 
@@ -495,7 +495,7 @@
 - icon
 
 
-### ![M21](./images/generated/icon_M21.png){:class="icon"} M21 {#icon_M21}
+### ![radio value](./images/generated/icon_M21.png){:class="icon"} radio value {#icon_M21}
 
 - icon
 
