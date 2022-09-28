@@ -11,6 +11,19 @@ img.icon {
     vertical-align: middle;
 }
 
+img.icon-sample {
+    image-rendering: pixelated;
+    width: 8rem;
+    background: #fff;
+    border-radius: 0.25rem;
+    vertical-align: middle;
+}
+
+img.sample {
+    image-rendering: pixelated;
+    width: 100%;
+}
+
 p img {
     width: 100%;
 }

@@ -3,9 +3,9 @@
 These are some of the annotated MicroCode
 samples.
 
-## ![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png) Flashing Heart
+## ![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"} Flashing Heart
 
-![Flashing Heart MicroCode program](./images/generated/sample_flashing_heart.png)
+![Flashing Heart MicroCode program](./images/generated/sample_flashing_heart.png){:class="sample"}
 
 The goal of this program is to show a cute heart animation.
 
@@ -16,9 +16,9 @@ with two images. Since this happens in a loop, it creates a cool heart animation
 
 * add more animation frames to create a better beating heart
 
-## ![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png) Smiley Buttons
+## ![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"} Smiley Buttons
 
-![Smiley Buttons MicroCode program](./images/generated/sample_smiley_buttons.png)
+![Smiley Buttons MicroCode program](./images/generated/sample_smiley_buttons.png){:class="sample"}
 
 The goal of this program is to show a smiley
 when pressing A, and a frowney when
@@ -32,9 +32,9 @@ and prints a frowney.
 
 * add sound emoji for each buttons to make it more lively
 
-## ![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png) Rock Paper Scissors
+## ![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"} Rock Paper Scissors
 
-![Rock Paper Scissors MicroCode program](./images/generated/sample_rock_paper_scissors.png)
+![Rock Paper Scissors MicroCode program](./images/generated/sample_rock_paper_scissors.png){:class="sample"}
 
 The classic game of rock paper scissors
 where the micro:bit display a different
@@ -54,9 +54,9 @@ and display a different symbol for each value, 1, 2 or 3.
 * clear the screen before showing the new symbol
 
 
-## ![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png) Chuck a duck
+## ![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"} Chuck a duck
 
-![Chuck a duck MicroCode program](./images/generated/sample_chuck_a_duck.png)
+![Chuck a duck MicroCode program](./images/generated/sample_chuck_a_duck.png){:class="sample"}
 
 This is a radio program so you'll need 2 micro:bits running to get it to work.
 
@@ -76,9 +76,9 @@ when a radio message is received.
 * add sound emoji when the duck arrives
 * use different radio messages for different images
 
-## ![Hot potato icon](./images/generated/icon_hot_potato.png) Hot potato
+## ![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"} Hot potato
 
-![Hot potato MicroCode program](./images/generated/sample_hot_potato.png)
+![Hot potato MicroCode program](./images/generated/sample_hot_potato.png){:class="sample"}
 
 Pass the hot potato around and make
 sure it does not beep while you have it 
@@ -89,9 +89,9 @@ in your hands!
 * add sound emoji when timer expires
 * add a better expired potato animation
 
-## ![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png) Pet Hamster
+## ![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"} Pet Hamster
 
-![Pet Hamster MicroCode program](./images/generated/sample_pet_hamster.png)
+![Pet Hamster MicroCode program](./images/generated/sample_pet_hamster.png){:class="sample"}
 
 Keep your micropet happy by petting
 its head (Logo) and don't shake it, it does not like that.
@@ -101,9 +101,9 @@ its head (Logo) and don't shake it, it does not like that.
 * use more rules to manipulate the mood of your pet
 
 
-## ![Clap lights icon](./images/generated/icon_sample_clap_lights.png) Clap Lights
+## ![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"} Clap Lights
 
-![Clap lights MicroCode program](./images/generated/sample_clap_lights.png)
+![Clap lights MicroCode program](./images/generated/sample_clap_lights.png){:class="sample"}
 
 Allows to turn on and off the LEDs of the screen. When a loud sound is detected
 switch between page 1 and page 2 where the page start by turning on or off the LEDs.
