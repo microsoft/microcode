@@ -495,7 +495,7 @@ namespace microcode {
         2
     )
     // TODO: this should only be present when radio receive in When section
-    addReadValue(TID_MODIFIER_RADIO_VALUE, "number from radio", JdKind.Radio, 3)
+    // addReadValue(TID_MODIFIER_RADIO_VALUE, "number from radio", JdKind.Radio, 3)
 
     const random_toss = addReadValue(
         TID_MODIFIER_RANDOM_TOSS,
