@@ -259,6 +259,21 @@ namespace microcode {
             )
                 return
 
+            this.drawStyle()
+            this.drawIcon()
+            //const iconbounds = Bounds.Translate(this.icon.bounds, this.icon.xfrm.worldPos);
+            //iconbounds.drawRect(5);
+            //const mybounds = Bounds.Translate(this.bounds, this.xfrm.worldPos);
+            //mybounds.drawRect(14)
+        }
+
+        private drawIcon() {
+            control.enablePerfCounter("Button.draw.icon")
+            this.icon.draw()
+        }
+
+        private drawStyle() {
+            control.enablePerfCounter("Button.draw.style")
             if (this.style.fill)
                 Screen.fillBoundsXfrm(
                     this.xfrm,
@@ -286,11 +301,6 @@ namespace microcode {
                     this.style.borders.bottom
                 )
             }
-            this.icon.draw()
-            //const iconbounds = Bounds.Translate(this.icon.bounds, this.icon.xfrm.worldPos);
-            //iconbounds.drawRect(5);
-            //const mybounds = Bounds.Translate(this.bounds, this.xfrm.worldPos);
-            //mybounds.drawRect(14)
         }
     }
 }

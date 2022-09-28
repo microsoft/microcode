@@ -91,6 +91,7 @@ namespace microcode {
         */
 
         /* override */ draw() {
+            control.enablePerfCounter("Icon.draw")
             if (this.invisible) {
                 return
             }

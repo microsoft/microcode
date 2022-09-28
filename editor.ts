@@ -364,6 +364,7 @@ namespace microcode {
         }
 
         /* override */ draw() {
+            control.enablePerfCounter("Editor.draw")
             Screen.drawTransparentImage(
                 editorBackground,
                 Screen.LEFT_EDGE,
