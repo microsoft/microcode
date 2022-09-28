@@ -349,13 +349,18 @@ namespace microcode {
     paint.serviceInstanceIndex = 0
     paint.priority = 10
 
-    const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, "Send", "value_out")
+    const radio_send = addActuator(
+        TID_ACTUATOR_RADIO_SEND,
+        "Send",
+        "value_out",
+        "constant"
+    )
     radio_send.priority = 100
     radio_send.serviceClassName = "radio"
     radio_send.jdKind = JdKind.Radio
 
     function addAssign(tid: string, name: string, id: number) {
-        const theVar = addActuator(tid, name, "value_out")
+        const theVar = addActuator(tid, name, "value_out", "constant")
         theVar.jdParam = id
         theVar.jdKind = JdKind.Variable
         theVar.priority = 200 + id
@@ -404,8 +409,8 @@ namespace microcode {
             const tid = kind + (start + v - 1)
             const tile: FilterModifierBase =
                 kind == "M"
-                    ? new ModifierDefn(tid, name + " " + v.toString(), name, 10)
-                    : new FilterDefn(tid, name + " " + v.toString(), name, 10)
+                    ? new ModifierDefn(tid, v.toString(), name, 10)
+                    : new FilterDefn(tid, v.toString(), name, 10)
             tile.jdKind = JdKind.Literal
             tile.jdParam = v
             // tile.constraints = terminal
@@ -419,7 +424,7 @@ namespace microcode {
         return tiles
     }
     make_vals("value_in", "F", 8)
-    make_vals("value_out", "M", 6)
+    make_vals("constant", "M", 6)
     make_vals("page", "M", 1).forEach(m => {
         m.constraints.handling = m.constraints.handling || {}
         m.constraints.handling.terminal = true
@@ -505,7 +510,11 @@ namespace microcode {
     )
     random_toss.priority = 70
     random_toss.constraints = {}
-    random_toss.constraints.disallow = { tiles: [TID_MODIFIER_VALUE_1] }
+    random_toss.constraints.allow = { categories: ["constant"] }
+    random_toss.constraints.disallow = {
+        categories: ["value_out"],
+        tiles: [TID_MODIFIER_VALUE_1],
+    }
 
     const iconFieldEditor: FieldEditor = {
         init: img`
@@ -633,62 +642,4 @@ namespace microcode {
     }
 
     tilesDB.modifiers[TID_MODIFIER_MUSIC_EDITOR] = new MusicEditor()
-
-    export type RandomUpper = { upper: number }
-    const randomFieldEditor: FieldEditor = {
-        init: { upper: 3 },
-        clone: (field: RandomUpper) => {
-            return {
-                upper: field.upper,
-            }
-        },
-        editor: randomEditor,
-        toImage: upperToImage,
-        buttonStyle: () => ButtonStyles.ShadowedWhite,
-        serialize: (field: RandomUpper) => field.upper.toString(),
-        deserialize: (upper: string) => {
-            return { upper: parseInt(upper) }
-        },
-    }
-
-    class RandomEditor extends ModifierDefn {
-        field: RandomUpper
-        first: boolean
-        constructor(field: RandomUpper = null) {
-            super(TID_MODIFIER_RANDOM_TOSS, "Toss", "value_out", 70)
-            this.fieldEditor = randomFieldEditor
-            if (field) {
-                this.field = { upper: field.upper }
-            } else {
-                this.field = this.fieldEditor.clone(this.fieldEditor.init)
-            }
-            this.first = false
-            // TODO constraints
-        }
-
-        getField() {
-            return this.field
-        }
-
-        getIcon(): string | Image {
-            return this.first ? this.tid : this.fieldEditor.toImage(this.field)
-        }
-
-        getNewInstance(field: RandomUpper) {
-            return new RandomEditor({
-                upper: field ? field.upper : this.field.upper,
-            })
-        }
-
-        serviceCommandArg() {
-            const r = Buffer.create(6)
-            return r
-        }
-    }
-
-    /*
-    const first_random = new RandomEditor()
-    tilesDB.actuators[TID_ACTUATOR_RANDOM_TOSS] = first_random
-    first_random.first = true
-    */
 }
