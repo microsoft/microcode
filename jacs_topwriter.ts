@@ -630,7 +630,7 @@ namespace jacs {
             let first = true
 
             for (const m of rule.modifiers) {
-                if (m.category == "value_out") {
+                if (m.category == "value_out" || m.category == "constant") {
                     if (this.breaksValSeq(m) && currSeq.length) {
                         this.emitAddSeq(currSeq, this.currValue(), 0, first)
                         currSeq = []
@@ -653,7 +653,7 @@ namespace jacs {
         private getValueIn(rule: microcode.RuleDefn) {
             let v = undefined
             for (const m of rule.filters) {
-                if (m.category == "value_in") {
+                if (m.category == "value_in" || m.category == "constant") {
                     if (v === undefined) v = 0
                     v += m.jdParam
                 }
@@ -812,7 +812,10 @@ namespace jacs {
                 return
             }
 
-            if (rule.sensors[0] && rule.sensors[0].jdKind == microcode.JdKind.Variable) {
+            if (
+                rule.sensors[0] &&
+                rule.sensors[0].jdKind == microcode.JdKind.Variable
+            ) {
                 const pipeId = rule.sensors[0].jdParam
                 const role = this.pipeRole(pipeId)
                 this.withProcedure(role.getDispatcher(), wr => {
@@ -897,6 +900,18 @@ namespace jacs {
             const mainProc = this.addProc("main")
             this.withProcedure(mainProc, wr => {
                 this.emitLogString("MicroCode start!")
+
+                const mic = this.lookupRole("soundLevel", 0)
+                wr.emitIf(
+                    wr.emitExpr(OpExpr.EXPR1_ROLE_IS_CONNECTED, [
+                        literal(mic.index),
+                    ]),
+                    () => {
+                        this.emitLogString("disable mic")
+                        this.emitLoadBuffer(hex`00`)
+                        this.emitSendCmd(mic, CMD_SET_REG | JD_REG_INTENSITY)
+                    }
+                )
             })
 
             this.currPageId = 0

@@ -53,6 +53,14 @@ namespace microcode {
             return Occlusions.FromSprite(this, bounds)
         }
 
+        public isOffScreenX(): boolean {
+            const p = this.xfrm.worldPos
+            return (
+                p.x + (this.width >> 1) < Screen.LEFT_EDGE ||
+                p.x - (this.width >> 1) > Screen.RIGHT_EDGE
+            )
+        }
+        /*
         public isOffScreen(): boolean {
             const p = this.xfrm.worldPos
             return (
@@ -70,8 +78,7 @@ namespace microcode {
                 p.x + (this.width >> 1) > Screen.RIGHT_EDGE ||
                 p.y + (this.height >> 1) > Screen.BOTTOM_EDGE
             )
-        }
-
+        }*/
         /* override */ draw() {
             control.enablePerfCounter()
             if (this.invisible) {

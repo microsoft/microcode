@@ -57,7 +57,7 @@ namespace microcode {
             y1: number,
             c: number
         ) {
-            control.assert(c !== 0, 801)
+            control.assert(c !== 0, ERROR_NOT_INTEGER)
             Screen.image.drawLine(
                 Screen.x(x0),
                 Screen.y(y0),
@@ -75,7 +75,7 @@ namespace microcode {
             y1: number,
             c: number
         ) {
-            control.assert(c !== 0, 801)
+            control.assert(c !== 0, ERROR_NOT_INTEGER)
             Screen.drawLine(
                 x0 + xfrm.worldPos.x,
                 y0 + xfrm.worldPos.y,
@@ -114,7 +114,7 @@ namespace microcode {
             height: number,
             c: number
         ) {
-            control.assert(c !== 0, 801)
+            control.assert(c !== 0, ERROR_NOT_INTEGER)
             Screen.image.drawRect(Screen.x(x), Screen.y(y), width, height, c)
         }
 
@@ -126,7 +126,7 @@ namespace microcode {
             height: number,
             c: number
         ) {
-            control.assert(c !== 0, 801)
+            control.assert(c !== 0, ERROR_NOT_INTEGER)
             Screen.drawRect(
                 x + xfrm.worldPos.x,
                 y + xfrm.worldPos.y,
@@ -143,7 +143,7 @@ namespace microcode {
             height: number,
             c: number
         ) {
-            control.assert(c !== 0, 801)
+            control.assert(c !== 0, ERROR_NOT_INTEGER)
             Screen.image.fillRect(Screen.x(x), Screen.y(y), width, height, c)
         }
 
@@ -155,7 +155,7 @@ namespace microcode {
             height: number,
             c: number
         ) {
-            control.assert(c !== 0, 801)
+            control.assert(c !== 0, ERROR_NOT_INTEGER)
             Screen.fillRect(
                 x + xfrm.worldPos.x,
                 y + xfrm.worldPos.y,
@@ -166,7 +166,7 @@ namespace microcode {
         }
 
         public static fillBoundsXfrm(xfrm: Affine, bounds: Bounds, c: number) {
-            control.assert(c !== 0, 801)
+            control.assert(c !== 0, ERROR_NOT_INTEGER)
             Screen.fillRectXfrm(
                 xfrm,
                 bounds.left,
@@ -178,7 +178,7 @@ namespace microcode {
         }
 
         public static drawBoundsXfrm(xfrm: Affine, bounds: Bounds, c: number) {
-            control.assert(c !== 0, 801)
+            control.assert(c !== 0, ERROR_NOT_INTEGER)
             Screen.drawRectXfrm(
                 xfrm,
                 bounds.left,
@@ -325,7 +325,7 @@ namespace microcode {
             y: number,
             c: number
         ) {
-            control.assert(c !== 0, 801)
+            control.assert(c !== 0, ERROR_NOT_INTEGER)
             Screen.setPixel(x + xfrm.worldPos.x, y + xfrm.worldPos.y, c)
         }
 
@@ -337,7 +337,7 @@ namespace microcode {
             font?: image.Font,
             offsets?: texteffects.TextEffectState[]
         ) {
-            control.assert(color !== 0, 801)
+            control.assert(color !== 0, ERROR_NOT_INTEGER)
             Screen.image.print(
                 text,
                 Screen.x(x),

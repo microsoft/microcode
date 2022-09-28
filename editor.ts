@@ -53,7 +53,7 @@ namespace microcode {
         public renderProgram() {
             this.cursor.visible = false
 
-            console.log(`program: render`)
+            console.debug(`program: render`)
             let imgs: Image[] = []
             let w = 0
             let h = 0
@@ -75,7 +75,6 @@ namespace microcode {
                     h += img.height + margin
                 }
             }
-            console.log(`program: ${w}x${h} pixels`)
             const res = image.create(w, h)
             res.fill(this.color)
             let y = 0
@@ -364,17 +363,33 @@ namespace microcode {
         }
 
         /* override */ draw() {
+            if (!this.backgroundCaptured) {
+                this.drawBackground()
+                this.drawEditor()
+                this.drawPageNavigation()
+            }
+            this.picker.draw()
+            this.cursor.draw()
+        }
+
+        private drawEditor() {
+            control.enablePerfCounter()
+            if (this.pageEditor) this.pageEditor.draw()
+        }
+
+        private drawBackground() {
             control.enablePerfCounter()
             Screen.drawTransparentImage(
                 editorBackground,
                 Screen.LEFT_EDGE,
                 Screen.TOP_EDGE
             )
-            if (this.pageEditor) this.pageEditor.draw()
+        }
+
+        private drawPageNavigation() {
+            control.enablePerfCounter()
             this.pageBtn.draw()
             this.resetBtn.draw()
-            this.picker.draw()
-            this.cursor.draw()
         }
     }
 
@@ -721,11 +736,16 @@ namespace microcode {
                 const theOne = ruleTiles[index]
                 const fieldEditor = theOne.fieldEditor
                 if (fieldEditor) {
+                    this.editor.captureBackground()
                     fieldEditor.editor(
                         theOne.getField(),
                         this.editor.picker,
-                        tileUpdated,
                         () => {
+                            this.editor.releaseBackground()
+                            tileUpdated()
+                        },
+                        () => {
+                            this.editor.releaseBackground()
                             ruleTiles.splice(index, 1)
                             tileUpdated(false)
                         }
@@ -747,10 +767,12 @@ namespace microcode {
                         : suggestions[0]
                 const newOne = theOne.getNewInstance()
                 const fieldEditor = newOne.fieldEditor
+                this.editor.captureBackground()
                 fieldEditor.editor(
                     newOne.getField(),
                     this.editor.picker,
                     () => {
+                        this.editor.releaseBackground()
                         if (index >= ruleTiles.length) {
                             ruleTiles.push(newOne)
                         } else {
@@ -948,7 +970,10 @@ namespace microcode {
             if (this.doInsertBtn) this.doInsertBtn.draw()
             repNames.forEach(name => {
                 const buttons = this.ruleButtons[name]
-                buttons.forEach(btn => btn.draw())
+                for (let i = 0; i < buttons.length; ++i) {
+                    const btn = buttons[i]
+                    if (!btn.isOffScreenX()) btn.draw()
+                }
             })
         }
 
