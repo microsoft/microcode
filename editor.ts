@@ -937,7 +937,7 @@ namespace microcode {
             }
 
             // Ensure that the rule "tray" is at least as wide as the screen
-            this.bounds.width = Math.max(this.bounds.width, 160)
+            this.bounds.width = Math.max(this.bounds.width, Screen.WIDTH)
 
             this.whenBounds.left = this.bounds.left
             this.whenBounds.top = this.bounds.top

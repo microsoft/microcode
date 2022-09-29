@@ -68,6 +68,7 @@ namespace docs {
             const margin = 4
 
             editor.nonEmptyPages().forEach(p => {
+                console.log(`page ${screen.width} ${editor.ruleWidth(p)}`)
                 microcode.Screen.setImageSize(
                     Math.max(screen.width, editor.ruleWidth(p)),
                     editor.pageHeight(p)
