@@ -4,7 +4,7 @@ Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 
 {% include youtube.html id="ymP7x8GXgz4" %}
 
--   Kid friendly iconic editor and small programming language
+-   Kid friendly icon-based editor and small programming language
 -   Runs on the micro:bit V2, no computer or internet needed
 -   Keyboard, screen reader accessible
 
@@ -42,7 +42,7 @@ is always up-to-date (and running)!
 
 ### Accessibility
 
-We attempted at making the editor as accessible as possible; please send us suggestions to improve the editor in this space.
+We attempted to make the editor as accessible as possible; please send us suggestions to improve the accessibility of the editor.
 
 #### Keyboard navigation
 
@@ -54,7 +54,7 @@ The editor integrates with existing screen readers, like NVDA.
 
 #### Tooltip read aloud
 
-By clicking on the `voice` button at the bottom of the editor, you can turn on read aloud of editor tooltips. This is useful for students who are starting to struggling to read the words.
+By clicking on the `voice` button at the bottom of the editor, you can turn on read aloud of editor tooltips. This may be useful for students who are still learning to read.
 
 ## micro:bit V2 and Arcade Shield
 
