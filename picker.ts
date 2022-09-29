@@ -183,10 +183,11 @@ namespace microcode {
             Screen.fillBoundsXfrm(this.xfrm, this.panel, 12)
             Screen.outlineBoundsXfrm(this.xfrm, this.panel, 1, 15)
             if (this.title) {
+                const w = this.xfrm.worldPos
                 Screen.print(
                     this.title,
-                    this.xfrm.worldPos.x + this.panel.left + 2,
-                    this.xfrm.worldPos.y + this.panel.top + 4,
+                    w.x + this.panel.left + 2,
+                    w.y + this.panel.top + 4,
                     1,
                     image.font8
                 )

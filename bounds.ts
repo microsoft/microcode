@@ -217,10 +217,11 @@ namespace microcode {
         ) {}
 
         public static FromSprite(s: Sprite, bounds: Bounds): Occlusions {
-            const left = s.xfrm.worldPos.x - (s.width >> 1)
-            const top = s.xfrm.worldPos.y - (s.height >> 1)
-            const right = s.xfrm.worldPos.x + (s.width >> 1)
-            const bottom = s.xfrm.worldPos.y + (s.height >> 1)
+            const w = s.xfrm.worldPos
+            const left = w.x - (s.width >> 1)
+            const top = w.y - (s.height >> 1)
+            const right = w.x + (s.width >> 1)
+            const bottom = w.y + (s.height >> 1)
             return new Occlusions(
                 bounds.left > left ? bounds.left - left : 0,
                 bounds.top > top ? bounds.top - top : 0,
