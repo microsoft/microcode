@@ -93,7 +93,7 @@ in your hands!
 
 ![Pet Hamster MicroCode program](./images/generated/sample_pet_hamster.png){:class="sample"}
 
-Keep your micropet happy by petting
+Keep your micro:pet happy by petting
 its head (Logo) and don't shake it, it does not like that.
 
 ### improvement ideas
