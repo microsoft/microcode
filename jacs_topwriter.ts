@@ -699,13 +699,12 @@ namespace jacs {
                 let targetPage = 1
                 for (const m of rule.modifiers)
                     if (m.category == "page") targetPage = m.jdParam
-
                 wr.emitCall(this.pageProc(targetPage).index, [])
             } else if (actuator.jdKind == microcode.JdKind.Variable) {
+                this.emitSleep(ANTI_FREEZE_DELAY)
                 this.emitValueOut(rule, 1)
                 const pv = this.pipeVar(actuator.jdParam)
                 pv.write(wr, this.currValue().read(wr))
-                this.emitSleep(ANTI_FREEZE_DELAY)
                 this.emitSendCmd(
                     this.pipeRole(actuator.jdParam),
                     CMD_CONDITION_FIRE
@@ -774,6 +773,7 @@ namespace jacs {
             if (!this.pageProcs[pageIdx]) {
                 this.pageProcs[pageIdx] = this.addProc("startPage" + pageIdx)
                 this.withProcedure(this.pageProcs[pageIdx], wr => {
+                    this.emitSleep(ANTI_FREEZE_DELAY)
                     this.currPage.write(wr, literal(pageIdx))
                 })
             }
