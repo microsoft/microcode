@@ -59,25 +59,19 @@ namespace docs {
             const editor = new microcode.Editor(app)
             app.pushScene(editor)
             pause(500)
-            renderProgram(
-                images,
-                editor,
-                sample.label,
-                microcode.icons.get(sample.icon, true)
-            )
+            renderProgram(images, editor, sample.label)
+            const icon = microcode.icons.get(sample.icon, true)
+            if (icon) appendImage(images, "icon_sample", sample.label, icon)
         }
     }
 
     function renderProgram(
         images: RenderedImage[],
         editor: microcode.Editor,
-        editorName: string,
-        editorIcon: Image
+        editorName: string
     ) {
         const prg = editor.renderProgram()
         appendImage(images, "sample", editorName, prg)
-        if (editorIcon)
-            appendImage(images, "icon_sample", editorName, editorIcon)
     }
 
     function appendImage(
