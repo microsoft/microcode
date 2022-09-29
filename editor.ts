@@ -51,58 +51,37 @@ namespace microcode {
             this._changed = true
         }
 
-        public renderProgram() {
-            this.cursor.visible = false
+        public nonEmptyPages(): number[] {
+            return this.progdef.pages
+                .map((p, i) =>
+                    p.rules.length > 1 ||
+                    (p.rules.length === 1 && !p.rules[0].isEmpty())
+                        ? i
+                        : -1
+                )
+                .filter(i => i > -1)
+        }
 
-            console.debug(`program: render`)
-            let imgs: Image[] = []
-            let w = 0
-            let h = 0
-            const margin = 4
-            for (let p = 0; p < 5; p++) {
-                const page = this.progdef.pages[p]
-                const rules = page.rules
-                if (
-                    rules.length > 1 ||
-                    (rules.length === 1 && !rules[0].isEmpty())
-                ) {
-                    // estimate size and resize screen
-                    Screen.setImageSize(
-                        screen.width,
-                        Math.max(
-                            screen.height,
-                            TOOLBAR_HEIGHT +
-                                TOOLBAR_MARGIN +
-                                (PageEditor.MARGIN * 2 +
-                                    (icondb.rule_arrow.height +
-                                        PageEditor.RULE_MARGIN) *
-                                        rules.length)
-                        )
-                    )
-                    this.layout()
-                    this.switchToPage(p)
-                    this.update()
-                    this.pageEditor.layout()
-                    this.draw()
-                    pause(1000)
-                    const img = Screen.image.clone()
-                    imgs.push(img)
-                    w = Math.max(w, img.width)
-                    h += img.height + margin
-                }
-            }
-            const res = image.create(w, h)
-            res.fill(this.color)
-            let y = 0
-            for (let i = 0; i < imgs.length; ++i) {
-                const img = imgs[i]
-                res.drawTransparentImage(img, 0, y)
-                y += img.height + margin
-            }
+        public ruleWidth(p: number) {
+            return this.pageEditor.ruleEditors[0].bounds.width
+        }
 
-            this.cursor.visible = true
-            Screen.setImageSize(screen.width, screen.height)
-            return res
+        public pageHeight(p: number) {
+            const page = this.progdef.pages[p]
+            const rules = page.rules
+            return (
+                TOOLBAR_HEIGHT +
+                TOOLBAR_MARGIN +
+                PageEditor.MARGIN * 2 +
+                (icondb.rule_arrow.height + PageEditor.RULE_MARGIN) *
+                    rules.length
+            )
+        }
+
+        public renderPage(p: number) {
+            this.switchToPage(p)
+            this.update()
+            this.draw()
         }
 
         public saveAndCompileProgram() {
