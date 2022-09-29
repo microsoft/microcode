@@ -63,7 +63,7 @@ namespace microcode {
         }
 
         public ruleWidth(p: number) {
-            return this.pageEditor.ruleEditors[0].bounds.width
+            return this.pageEditor.ruleEditors[0].innerWidth + 36
         }
 
         public pageHeight(p: number) {
@@ -530,6 +530,7 @@ namespace microcode {
 
     class RuleEditor extends Component implements IPlaceable {
         private xfrm_: Affine
+        innerWidth: number
         handleBtn: Button
         whenInsertBtn: Button
         doInsertBtn: Button
@@ -937,6 +938,7 @@ namespace microcode {
             }
 
             // Ensure that the rule "tray" is at least as wide as the screen
+            this.innerWidth = this.bounds.width
             this.bounds.width = Math.max(this.bounds.width, Screen.WIDTH)
 
             this.whenBounds.left = this.bounds.left
