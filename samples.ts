@@ -91,8 +91,8 @@ namespace microcode {
             {
                 label: "firefly",
                 ariaId: "N11",
-                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IkEiOlsiQTUiXSwiTSI6WyJNMTUoMDAwMDAwMDAwMDAwMTAwMDAwMDAwMDAwMCkiXX0seyJTIjpbIlM3Il0sIkEiOlsiQTlBIl0sIkYiOlsiRjgiXSwiTSI6WyJNMjBBIiwiTTYiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTlBIl0sIkYiOlsiRjEzIl0sIk0iOlsiTTIwQSIsIk02Il19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMSJdLCJGIjpbIkYxMCIsIkYxMSJdLCJNIjpbIk0yIl19LHt9XX0seyJSIjpbeyJBIjpbIkE2Il0sIk0iOlsiTTYiXX0seyJBIjpbIkE5QSJdLCJNIjpbIk02Il19LHsiQSI6WyJBNSJdLCJNIjpbIk0xNSgxMTExMTExMTExMTEwMTExMTExMTExMTExKSJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxMyJdLCJNIjpbIk0xIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX19",
-                icon: "clap_lights",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IkEiOlsiQTUiXSwiTSI6WyJNMTUoMDAwMDAwMDAwMDAwMTAwMDAwMDAwMDAwMCkiXX0seyJTIjpbIlM3Il0sIkEiOlsiQTlBIl0sIkYiOlsiRjgiXSwiTSI6WyJNMjBBIiwiTTYiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTlBIl0sIkYiOlsiRjEzIl0sIk0iOlsiTTIwQSIsIk02Il19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMSJdLCJGIjpbIkYxMCIsIkYxMSJdLCJNIjpbIk0yIl19LHt9XX0seyJSIjpbeyJBIjpbIkE2Il0sIk0iOlsiTTYiXX0seyJBIjpbIkE5QSJdLCJNIjpbIk02Il19LHsiQSI6WyJBNSJdLCJNIjpbIk0xNSgxMTExMTExMTExMTEwMTExMTExMTExMTExKSJdfSx7IkEiOlsiQTIiXSwiTSI6WyJNMTloYXBweSJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxMyIsIkYxMyJdLCJNIjpbIk0xIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX19",
+                icon: "firefly",
             },
             {
                 label: "moves",

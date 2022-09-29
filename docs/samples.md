@@ -53,29 +53,6 @@ and display a different symbol for each value, 1, 2 or 3.
 * add sound emoji whenever shake happens
 * clear the screen before showing the new symbol
 
-
-## ![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"} Chuck a duck
-
-![Chuck a duck MicroCode program](./images/generated/sample_chuck_a_duck.png){:class="sample"}
-
-This is a radio program so you'll need 2 micro:bits running to get it to work.
-
-The program "sends" a duck using the radio
-by pressing A.
-
-In code, the accelerometer sensor is used
-in two rules to clear the screen (duck is gone)
-and send a number using the radio.
-
-The third rule uses the radio filter to render
-the duck on the screen. This rule executes
-when a radio message is received.
-
-### improvement ideas
-
-* add sound emoji when the duck arrives
-* use different radio messages for different images
-
 ## ![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"} Hot potato
 
 ![Hot potato MicroCode program](./images/generated/sample_hot_potato.png){:class="sample"}
@@ -111,3 +88,36 @@ switch between page 1 and page 2 where the page start by turning on or off the L
 ### improvement ideas
 
 * add sounds to notify your user that the command was received
+
+## Multiplayer samples
+
+These sample use the radio and will only work if you have multiple micro:bit talking to each other!
+
+### ![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"} Chuck a duck
+
+![Chuck a duck MicroCode program](./images/generated/sample_chuck_a_duck.png){:class="sample"}
+
+This is a radio program so you'll need 2 micro:bits running to get it to work.
+
+The program "sends" a duck using the radio
+by pressing A.
+
+In code, the accelerometer sensor is used
+in two rules to clear the screen (duck is gone)
+and send a number using the radio.
+
+The third rule uses the radio filter to render
+the duck on the screen. This rule executes
+when a radio message is received.
+
+### improvement ideas
+
+* add sound emoji when the duck arrives
+* use different radio messages for different images
+
+### ![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon-sample"} Firefly
+
+![firefly MicroCode program](./images/generated/sample_firefly.png){:class="sample"}
+
+Just like fireflies in the wild, you can create program that synchronize blinking
+between any number of micro:bit!
