@@ -41,6 +41,7 @@ namespace microcode {
             this.reg["flashing_heart"] = icondb.sampleFlashingHeart
             this.reg["smiley_buttons"] = icondb.sampleSmileyButtons
             this.reg["clap_lights"] = icondb.sampleClapLights
+            this.reg["firefly"] = icondb.sampleFirefly
             // this.reg["dice"] = icondb.sampleDice  // nice icon, don't delete, but not currently used
             this.reg["rock_paper_scissors"] = icondb.sampleRockPaperScissors
             this.reg["teleport_duck"] = icondb.sampleTeleportDuck
@@ -1929,6 +1930,41 @@ f f f f f f f f f f f f f f f f
     .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `*/
 
+export const sampleFirefly = img`
+.ffffffffffffffffffffffffffffff.
+ffffffffffffffffffffffffffffffff
+ffffffffffffffffffffffffffffffff
+ffffffffffffffffffffff444fffffff
+fffffffffffffffffffff45154ffffff
+ffffffffffffffffffff4511154fffff
+ffffffffffffffffffff4511154fffff
+ffffffffffffffffffff4511154fffff
+fffffffffffffffffffff45554ffffff
+ffffffff444fffffffffff444fffffff
+fffffff45154ffffffffffffffffffff
+ffffff4511154fffffffffffffffffff
+ffffff4511154fffffffffffffffffff
+ffffff4511154fffffffffffffffffff
+fffffff45554ffffffffffffffffffff
+ffffffff444fffffffffffffffffffff
+ffffffffffffffffffffffffffffffff
+ffffffffffffffffffffffffffffffff
+ffffffffffffffffffffffffffffffff
+ffffffffffffffffffffffffffffffff
+ffffffffffffffffffffffffffffffff
+ffffffffffffffffffffffffffffffff
+ffffffffffffffffffffffffffffffff
+fffffffffffffffffffff444ffffffff
+ffffffffffffffffffff45154fffffff
+fffffffffffffffffff4511154ffffff
+fffffffffffffffffff4511154ffffff
+fffffffffffffffffff4511154ffffff
+ffffffffffffffffffff45554fffffff
+fffffffffffffffffffff444ffffffff
+ffffffffffffffffffffffffffffffff
+bffffffffffffffffffffffffffffffb
+..bbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
+`
     export const sampleClapLights = img`
     .ffffffff8fffffffffffffffffffff.
     fffffffff8ffffffffffffffffffffff
