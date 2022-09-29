@@ -73,6 +73,7 @@ namespace docs {
     //% shim=TD_NOOP
     function _renderScreenshot() {
         const res = _renderProgram()
+        microcode.Screen.setImageSize(screen.width, screen.height)
         control.simmessages.send(
             "docs",
             Buffer.fromUTF8(
@@ -102,7 +103,6 @@ namespace docs {
         const margin = 4
 
         editor.nonEmptyPages().forEach(p => {
-            console.log(`page ${screen.width} ${editor.ruleWidth(p)}`)
             microcode.Screen.setImageSize(
                 Math.max(screen.width, editor.ruleWidth(p)),
                 editor.pageHeight(p)
