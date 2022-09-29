@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.2.18","target":"arcade","targetVersion":"1.11.1"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.2.19","target":"arcade","targetVersion":"1.11.1"}
 // total=2108437 new=94.02% cached=0.00% other=5.98%
 (function (ectx) {
 'use strict';
@@ -2102,7 +2102,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "rotaryEncoder", 284830153);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "led", 369743088);
     globals.serviceClasses___3875 = (s.tmp_0);
-    globals.VERSION___3884 = ("v1.2.18");
+    globals.VERSION___3884 = ("v1.2.19");
     globals.microcode_Options_toolTips___3941 = (true);
     globals.microcode_Options_repeatKey___3942 = (false);
     globals.microcode_Options_fps___3943 = (false);
