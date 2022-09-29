@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.2.11","target":"arcade","targetVersion":"1.11.1"}
-// total=2085423 new=94.00% cached=0.00% other=6.00%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.2.12","target":"arcade","targetVersion":"1.11.1"}
+// total=2085424 new=94.00% cached=0.00% other=6.00%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -2064,7 +2064,7 @@ switch (step) {
     r0 = pxsim_Array__push(s.tmp_0, "%P := %e");
     r0 = pxsim_Array__push(s.tmp_0, "TERMINATE_FIBER fiber_handle=%e");
     globals.STMT_PRINT_FMTS___3673 = (s.tmp_0);
-    globals.debugOut___6998 = (true);
+    globals.debugOut___6998 = (false);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     r0 = pxsim_Array__push(s.tmp_0, 346888797);
@@ -2091,7 +2091,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "rotaryEncoder", 284830153);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "led", 369743088);
     globals.serviceClasses___3870 = (s.tmp_0);
-    globals.VERSION___3879 = ("v1.2.11");
+    globals.VERSION___3879 = ("v1.2.12");
     globals.microcode_Options_toolTips___3936 = (true);
     globals.microcode_Options_repeatKey___3937 = (false);
     globals.microcode_Options_fps___3938 = (false);
@@ -36720,7 +36720,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_constructor__P3841.info = {"start":4858,"length":16,"line":156,"column":8,"endLine":156,"endColumn":24,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this"]}
+jacs_TopWriter_constructor__P3841.info = {"start":4859,"length":16,"line":156,"column":8,"endLine":156,"endColumn":24,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this"]}
 
 function jacs_TopWriter_constructor__P3841_mk(s) {
     checkStack(s.depth);
@@ -36940,7 +36940,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitProgram__P3865.info = {"start":32393,"length":1282,"line":919,"column":8,"endLine":956,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitProgram","argumentNames":["this","prog"]}
+jacs_TopWriter_emitProgram__P3865.info = {"start":32394,"length":1282,"line":919,"column":8,"endLine":956,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitProgram","argumentNames":["this","prog"]}
 
 function jacs_TopWriter_emitProgram__P3865_mk(s) {
     checkStack(s.depth);
@@ -37034,7 +37034,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitProgram_inline__P16023.info = {"start":32826,"length":439,"line":930,"column":41,"endLine":942,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitProgram_inline__P16023.info = {"start":32827,"length":439,"line":930,"column":41,"endLine":942,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitProgram_inline__P16023_mk(s) {
     checkStack(s.depth);
@@ -37077,7 +37077,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitProgram_inline__P16040.info = {"start":33132,"length":101,"line":938,"column":20,"endLine":940,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitProgram_inline__P16040.info = {"start":33133,"length":101,"line":938,"column":20,"endLine":940,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitProgram_inline__P16040_mk(s) {
     checkStack(s.depth);
@@ -37164,7 +37164,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_deploy__P7037.info = {"start":33685,"length":386,"line":958,"column":8,"endLine":968,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"deploy","argumentNames":["this"]}
+jacs_TopWriter_deploy__P7037.info = {"start":33686,"length":386,"line":958,"column":8,"endLine":968,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"deploy","argumentNames":["this"]}
 
 function jacs_TopWriter_deploy__P7037_mk(s) {
     checkStack(s.depth);
@@ -37733,7 +37733,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_serialize__P7014.info = {"start":6375,"length":4141,"line":200,"column":8,"endLine":324,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"serialize","argumentNames":["this"]}
+jacs_TopWriter_serialize__P7014.info = {"start":6376,"length":4141,"line":200,"column":8,"endLine":324,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"serialize","argumentNames":["this"]}
 
 function jacs_TopWriter_serialize__P7014_mk(s) {
     checkStack(s.depth);
@@ -37876,7 +37876,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-descs_inline__P16276.info = {"start":8783,"length":638,"line":271,"column":50,"endLine":287,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["str","idx"]}
+descs_inline__P16276.info = {"start":8784,"length":638,"line":271,"column":50,"endLine":287,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["str","idx"]}
 
 function descs_inline__P16276_mk(s) {
     checkStack(s.depth);
@@ -38406,7 +38406,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_serialize__P7010.info = {"start":2084,"length":197,"line":80,"column":8,"endLine":85,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"serialize","argumentNames":["this"]}
+jacs_Role_serialize__P7010.info = {"start":2085,"length":197,"line":80,"column":8,"endLine":85,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"serialize","argumentNames":["this"]}
 
 function jacs_Role_serialize__P7010_mk(s) {
     checkStack(s.depth);
@@ -39507,7 +39507,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_printAssembly__P3846.info = {"start":10976,"length":279,"line":341,"column":8,"endLine":348,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"printAssembly","argumentNames":["this"]}
+jacs_TopWriter_printAssembly__P3846.info = {"start":10977,"length":279,"line":341,"column":8,"endLine":348,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"printAssembly","argumentNames":["this"]}
 
 function jacs_TopWriter_printAssembly__P3846_mk(s) {
     checkStack(s.depth);
@@ -39590,7 +39590,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_describeString__P3847.info = {"start":11675,"length":236,"line":361,"column":8,"endLine":366,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"describeString","argumentNames":["this","idx"]}
+jacs_TopWriter_describeString__P3847.info = {"start":11676,"length":236,"line":361,"column":8,"endLine":366,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"describeString","argumentNames":["this","idx"]}
 
 function jacs_TopWriter_describeString__P3847_mk(s) {
     checkStack(s.depth);
@@ -39635,7 +39635,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Procedure_toString__P7005.info = {"start":1283,"length":67,"line":51,"column":8,"endLine":53,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"toString","argumentNames":["this"]}
+jacs_Procedure_toString__P7005.info = {"start":1284,"length":67,"line":51,"column":8,"endLine":53,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"toString","argumentNames":["this"]}
 
 function jacs_Procedure_toString__P7005_mk(s) {
     checkStack(s.depth);
@@ -41423,7 +41423,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_finalize__P7015.info = {"start":11265,"length":400,"line":350,"column":8,"endLine":359,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalize","argumentNames":["this"]}
+jacs_TopWriter_finalize__P7015.info = {"start":11266,"length":400,"line":350,"column":8,"endLine":359,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalize","argumentNames":["this"]}
 
 function jacs_TopWriter_finalize__P7015_mk(s) {
     checkStack(s.depth);
@@ -41501,7 +41501,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_finalize_inline__P17410.info = {"start":11385,"length":179,"line":352,"column":46,"endLine":356,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_finalize_inline__P17410.info = {"start":11386,"length":179,"line":352,"column":46,"endLine":356,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_finalize_inline__P17410_mk(s) {
     checkStack(s.depth);
@@ -41545,7 +41545,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Procedure_finalize__P7004.info = {"start":1214,"length":60,"line":48,"column":8,"endLine":50,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalize","argumentNames":["this"]}
+jacs_Procedure_finalize__P7004.info = {"start":1215,"length":60,"line":48,"column":8,"endLine":50,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalize","argumentNames":["this"]}
 
 function jacs_Procedure_finalize__P7004_mk(s) {
     checkStack(s.depth);
@@ -42154,7 +42154,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_finalizePageProcs__P7034.info = {"start":27202,"length":443,"line":782,"column":8,"endLine":793,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalizePageProcs","argumentNames":["this"]}
+jacs_TopWriter_finalizePageProcs__P7034.info = {"start":27203,"length":443,"line":782,"column":8,"endLine":793,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalizePageProcs","argumentNames":["this"]}
 
 function jacs_TopWriter_finalizePageProcs__P7034_mk(s) {
     checkStack(s.depth);
@@ -42217,7 +42217,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_finalizePageProcs_inline__P17560.info = {"start":27352,"length":268,"line":785,"column":45,"endLine":791,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_finalizePageProcs_inline__P17560.info = {"start":27353,"length":268,"line":785,"column":45,"endLine":791,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_finalizePageProcs_inline__P17560_mk(s) {
     checkStack(s.depth);
@@ -42282,7 +42282,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitSendCmd__P3861.info = {"start":17896,"length":182,"line":542,"column":8,"endLine":547,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitSendCmd","argumentNames":["this","r","cmd"]}
+jacs_TopWriter_emitSendCmd__P3861.info = {"start":17897,"length":182,"line":542,"column":8,"endLine":547,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitSendCmd","argumentNames":["this","r","cmd"]}
 
 function jacs_TopWriter_emitSendCmd__P3861_mk(s) {
     checkStack(s.depth);
@@ -44019,7 +44019,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_pageProc__P7033.info = {"start":26819,"length":373,"line":772,"column":8,"endLine":780,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"pageProc","argumentNames":["this","pageIdx"]}
+jacs_TopWriter_pageProc__P7033.info = {"start":26820,"length":373,"line":772,"column":8,"endLine":780,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"pageProc","argumentNames":["this","pageIdx"]}
 
 function jacs_TopWriter_pageProc__P7033_mk(s) {
     checkStack(s.depth);
@@ -44074,7 +44074,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_pageProc_inline__P18092.info = {"start":27037,"length":87,"line":775,"column":60,"endLine":777,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_pageProc_inline__P18092.info = {"start":27038,"length":87,"line":775,"column":60,"endLine":777,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_pageProc_inline__P18092_mk(s) {
     checkStack(s.depth);
@@ -44136,7 +44136,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Variable_write__P7001.info = {"start":666,"length":117,"line":29,"column":8,"endLine":31,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"write","argumentNames":["this","wr","val"]}
+jacs_Variable_write__P7001.info = {"start":667,"length":117,"line":29,"column":8,"endLine":31,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"write","argumentNames":["this","wr","val"]}
 
 function jacs_Variable_write__P7001_mk(s) {
     checkStack(s.depth);
@@ -44414,7 +44414,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitClearScreen__P7036.info = {"start":32139,"length":244,"line":912,"column":8,"endLine":917,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitClearScreen","argumentNames":["this"]}
+jacs_TopWriter_emitClearScreen__P7036.info = {"start":32140,"length":244,"line":912,"column":8,"endLine":917,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitClearScreen","argumentNames":["this"]}
 
 function jacs_TopWriter_emitClearScreen__P7036_mk(s) {
     checkStack(s.depth);
@@ -44470,7 +44470,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitSleep__P3864.info = {"start":32025,"length":104,"line":908,"column":8,"endLine":910,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitSleep","argumentNames":["this","ms"]}
+jacs_TopWriter_emitSleep__P3864.info = {"start":32026,"length":104,"line":908,"column":8,"endLine":910,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitSleep","argumentNames":["this","ms"]}
 
 function jacs_TopWriter_emitSleep__P3864_mk(s) {
     checkStack(s.depth);
@@ -44511,7 +44511,7 @@ switch (step) {
     return leaveAccessor(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_mainProc__P3848.info = {"start":11921,"length":59,"line":368,"column":8,"endLine":370,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"mainProc","argumentNames":["this"]}
+jacs_TopWriter_mainProc__P3848.info = {"start":11922,"length":59,"line":368,"column":8,"endLine":370,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"mainProc","argumentNames":["this"]}
 jacs_TopWriter_mainProc__P3848.isGetter = true;
 
 function jacs_TopWriter_mainProc__P3848_mk(s) {
@@ -44587,7 +44587,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_finalize__P7011.info = {"start":2291,"length":334,"line":87,"column":8,"endLine":96,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalize","argumentNames":["this"]}
+jacs_Role_finalize__P7011.info = {"start":2292,"length":334,"line":87,"column":8,"endLine":96,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalize","argumentNames":["this"]}
 
 function jacs_Role_finalize__P7011_mk(s) {
     checkStack(s.depth);
@@ -44632,7 +44632,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_finalize_inline__P18207.info = {"start":2401,"length":59,"line":90,"column":55,"endLine":92,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_Role_finalize_inline__P18207.info = {"start":2402,"length":59,"line":90,"column":55,"endLine":92,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_Role_finalize_inline__P18207_mk(s) {
     checkStack(s.depth);
@@ -44676,7 +44676,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_finalize_inline__P18221.info = {"start":2522,"length":92,"line":93,"column":60,"endLine":95,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_Role_finalize_inline__P18221.info = {"start":2523,"length":92,"line":93,"column":60,"endLine":95,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_Role_finalize_inline__P18221_mk(s) {
     checkStack(s.depth);
@@ -45142,7 +45142,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule__P7035.info = {"start":27655,"length":4135,"line":795,"column":8,"endLine":898,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRule","argumentNames":["this","name","rule"]}
+jacs_TopWriter_emitRule__P7035.info = {"start":27656,"length":4135,"line":795,"column":8,"endLine":898,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRule","argumentNames":["this","name","rule"]}
 
 function jacs_TopWriter_emitRule__P7035_mk(s) {
     checkStack(s.depth);
@@ -45206,7 +45206,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-emitBody_inline__P18278.info = {"start":27802,"length":74,"line":797,"column":29,"endLine":798,"endColumn":68,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+emitBody_inline__P18278.info = {"start":27803,"length":74,"line":797,"column":29,"endLine":798,"endColumn":68,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function emitBody_inline__P18278_mk(s) {
     checkStack(s.depth);
@@ -45273,7 +45273,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filterValueIn_inline__P18287.info = {"start":27912,"length":244,"line":800,"column":34,"endLine":807,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["f"]}
+filterValueIn_inline__P18287.info = {"start":27913,"length":244,"line":800,"column":34,"endLine":807,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["f"]}
 
 function filterValueIn_inline__P18287_mk(s) {
     checkStack(s.depth);
@@ -45347,7 +45347,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P18357.info = {"start":28901,"length":425,"line":824,"column":67,"endLine":833,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P18357.info = {"start":28902,"length":425,"line":824,"column":67,"endLine":833,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRule_inline__P18357_mk(s) {
     checkStack(s.depth);
@@ -45427,7 +45427,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P18378.info = {"start":29370,"length":328,"line":834,"column":42,"endLine":842,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P18378.info = {"start":29371,"length":328,"line":834,"column":42,"endLine":842,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRule_inline__P18378_mk(s) {
     checkStack(s.depth);
@@ -45474,7 +45474,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P18420.info = {"start":30037,"length":167,"line":852,"column":57,"endLine":856,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P18420.info = {"start":30038,"length":167,"line":852,"column":57,"endLine":856,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRule_inline__P18420_mk(s) {
     checkStack(s.depth);
@@ -45516,7 +45516,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P18423.info = {"start":30081,"length":104,"line":853,"column":36,"endLine":855,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P18423.info = {"start":30082,"length":104,"line":853,"column":36,"endLine":855,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitRule_inline__P18423_mk(s) {
     checkStack(s.depth);
@@ -45556,7 +45556,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P18425.info = {"start":30127,"length":35,"line":854,"column":38,"endLine":854,"endColumn":73,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P18425.info = {"start":30128,"length":35,"line":854,"column":38,"endLine":854,"endColumn":73,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitRule_inline__P18425_mk(s) {
     checkStack(s.depth);
@@ -45603,7 +45603,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P18449.info = {"start":30387,"length":1392,"line":863,"column":53,"endLine":897,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P18449.info = {"start":30388,"length":1392,"line":863,"column":53,"endLine":897,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRule_inline__P18449_mk(s) {
     checkStack(s.depth);
@@ -45734,7 +45734,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P18452.info = {"start":30427,"length":1337,"line":864,"column":32,"endLine":896,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P18452.info = {"start":30428,"length":1337,"line":864,"column":32,"endLine":896,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitRule_inline__P18452_mk(s) {
     checkStack(s.depth);
@@ -45798,7 +45798,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-loadVal_inline__P18468.info = {"start":30701,"length":246,"line":870,"column":40,"endLine":875,"endColumn":30,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+loadVal_inline__P18468.info = {"start":30702,"length":246,"line":870,"column":40,"endLine":875,"endColumn":30,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function loadVal_inline__P18468_mk(s) {
     checkStack(s.depth);
@@ -45840,7 +45840,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P18483.info = {"start":31121,"length":28,"line":880,"column":28,"endLine":880,"endColumn":56,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P18483.info = {"start":31122,"length":28,"line":880,"column":28,"endLine":880,"endColumn":56,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitRule_inline__P18483_mk(s) {
     checkStack(s.depth);
@@ -45891,7 +45891,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_error__P3853.info = {"start":12605,"length":107,"line":392,"column":8,"endLine":395,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"error","argumentNames":["this","msg"]}
+jacs_TopWriter_error__P3853.info = {"start":12606,"length":107,"line":392,"column":8,"endLine":395,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"error","argumentNames":["this","msg"]}
 
 function jacs_TopWriter_error__P3853_mk(s) {
     checkStack(s.depth);
@@ -45999,7 +45999,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_lookupEventCode__P3858.info = {"start":14533,"length":448,"line":448,"column":8,"endLine":458,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupEventCode","argumentNames":["this","role","rule"]}
+jacs_TopWriter_lookupEventCode__P3858.info = {"start":14534,"length":448,"line":448,"column":8,"endLine":458,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupEventCode","argumentNames":["this","role","rule"]}
 
 function jacs_TopWriter_lookupEventCode__P3858_mk(s) {
     checkStack(s.depth);
@@ -46177,7 +46177,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_lookupSensorRole__P3857.info = {"start":13847,"length":676,"line":433,"column":8,"endLine":446,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupSensorRole","argumentNames":["this","rule"]}
+jacs_TopWriter_lookupSensorRole__P3857.info = {"start":13848,"length":676,"line":433,"column":8,"endLine":446,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupSensorRole","argumentNames":["this","rule"]}
 
 function jacs_TopWriter_lookupSensorRole__P3857_mk(s) {
     checkStack(s.depth);
@@ -46253,7 +46253,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_pipeVar__P7019.info = {"start":17566,"length":96,"line":530,"column":8,"endLine":532,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"pipeVar","argumentNames":["this","id"]}
+jacs_TopWriter_pipeVar__P7019.info = {"start":17567,"length":96,"line":530,"column":8,"endLine":532,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"pipeVar","argumentNames":["this","id"]}
 
 function jacs_TopWriter_pipeVar__P7019_mk(s) {
     checkStack(s.depth);
@@ -46320,7 +46320,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_lookupGlobal__P7018.info = {"start":17394,"length":162,"line":524,"column":8,"endLine":528,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupGlobal","argumentNames":["this","n"]}
+jacs_TopWriter_lookupGlobal__P7018.info = {"start":17395,"length":162,"line":524,"column":8,"endLine":528,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupGlobal","argumentNames":["this","n"]}
 
 function jacs_TopWriter_lookupGlobal__P7018_mk(s) {
     checkStack(s.depth);
@@ -46359,7 +46359,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-g_inline__P18617.info = {"start":17466,"length":16,"line":525,"column":38,"endLine":525,"endColumn":54,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["v"]}
+g_inline__P18617.info = {"start":17467,"length":16,"line":525,"column":38,"endLine":525,"endColumn":54,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["v"]}
 
 function g_inline__P18617_mk(s) {
     checkStack(s.depth);
@@ -46489,7 +46489,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Variable_read__P7000.info = {"start":552,"length":105,"line":26,"column":8,"endLine":28,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"read","argumentNames":["this","wr"]}
+jacs_Variable_read__P7000.info = {"start":553,"length":105,"line":26,"column":8,"endLine":28,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"read","argumentNames":["this","wr"]}
 
 function jacs_Variable_read__P7000_mk(s) {
     checkStack(s.depth);
@@ -46629,7 +46629,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_getDispatcher__P7012.info = {"start":2635,"length":1652,"line":98,"column":8,"endLine":133,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"getDispatcher","argumentNames":["this"]}
+jacs_Role_getDispatcher__P7012.info = {"start":2636,"length":1652,"line":98,"column":8,"endLine":133,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"getDispatcher","argumentNames":["this"]}
 
 function jacs_Role_getDispatcher__P7012_mk(s) {
     checkStack(s.depth);
@@ -46801,7 +46801,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_getDispatcher_inline__P18690.info = {"start":2823,"length":1404,"line":101,"column":59,"endLine":130,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_Role_getDispatcher_inline__P18690.info = {"start":2824,"length":1404,"line":101,"column":59,"endLine":130,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_Role_getDispatcher_inline__P18690_mk(s) {
     checkStack(s.depth);
@@ -46851,7 +46851,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_getDispatcher_inline__P18717.info = {"start":3317,"length":275,"line":111,"column":28,"endLine":117,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_Role_getDispatcher_inline__P18717.info = {"start":3318,"length":275,"line":111,"column":28,"endLine":117,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_Role_getDispatcher_inline__P18717_mk(s) {
     checkStack(s.depth);
@@ -47154,7 +47154,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_pipeRole__P7020.info = {"start":17672,"length":121,"line":534,"column":8,"endLine":536,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"pipeRole","argumentNames":["this","id"]}
+jacs_TopWriter_pipeRole__P7020.info = {"start":17673,"length":121,"line":534,"column":8,"endLine":536,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"pipeRole","argumentNames":["this","id"]}
 
 function jacs_TopWriter_pipeRole__P7020_mk(s) {
     checkStack(s.depth);
@@ -47218,7 +47218,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_addOrGetRole__P3852.info = {"start":12406,"length":189,"line":386,"column":8,"endLine":390,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addOrGetRole","argumentNames":["this","name","classId"]}
+jacs_TopWriter_addOrGetRole__P3852.info = {"start":12407,"length":189,"line":386,"column":8,"endLine":390,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addOrGetRole","argumentNames":["this","name","classId"]}
 
 function jacs_TopWriter_addOrGetRole__P3852_mk(s) {
     checkStack(s.depth);
@@ -47257,7 +47257,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-r_inline__P18849.info = {"start":12490,"length":19,"line":387,"column":38,"endLine":387,"endColumn":57,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["r"]}
+r_inline__P18849.info = {"start":12491,"length":19,"line":387,"column":38,"endLine":387,"endColumn":57,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["r"]}
 
 function r_inline__P18849_mk(s) {
     checkStack(s.depth);
@@ -47310,7 +47310,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_ifCurrPage__P7032.info = {"start":26683,"length":126,"line":768,"column":8,"endLine":770,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"ifCurrPage","argumentNames":["this","then"]}
+jacs_TopWriter_ifCurrPage__P7032.info = {"start":26684,"length":126,"line":768,"column":8,"endLine":770,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"ifCurrPage","argumentNames":["this","then"]}
 
 function jacs_TopWriter_ifCurrPage__P7032_mk(s) {
     checkStack(s.depth);
@@ -47377,7 +47377,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRandomInt__P7028.info = {"start":22834,"length":171,"line":678,"column":8,"endLine":681,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRandomInt","argumentNames":["this","max"]}
+jacs_TopWriter_emitRandomInt__P7028.info = {"start":22835,"length":171,"line":678,"column":8,"endLine":681,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRandomInt","argumentNames":["this","max"]}
 
 function jacs_TopWriter_emitRandomInt__P7028_mk(s) {
     checkStack(s.depth);
@@ -47463,7 +47463,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitAdd__P7029.info = {"start":23015,"length":228,"line":683,"column":8,"endLine":687,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitAdd","argumentNames":["this","a","off"]}
+jacs_TopWriter_emitAdd__P7029.info = {"start":23016,"length":228,"line":683,"column":8,"endLine":687,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitAdd","argumentNames":["this","a","off"]}
 
 function jacs_TopWriter_emitAdd__P7029_mk(s) {
     checkStack(s.depth);
@@ -47539,7 +47539,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_ifEq__P3862.info = {"start":26504,"length":169,"line":763,"column":8,"endLine":766,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"ifEq","argumentNames":["this","v","val","then"]}
+jacs_TopWriter_ifEq__P3862.info = {"start":26505,"length":169,"line":763,"column":8,"endLine":766,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"ifEq","argumentNames":["this","v","val","then"]}
 
 function jacs_TopWriter_ifEq__P3862_mk(s) {
     checkStack(s.depth);
@@ -47635,7 +47635,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_getValueIn__P7027.info = {"start":22456,"length":341,"line":666,"column":8,"endLine":675,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"getValueIn","argumentNames":["this","rule"]}
+jacs_TopWriter_getValueIn__P7027.info = {"start":22457,"length":341,"line":666,"column":8,"endLine":675,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"getValueIn","argumentNames":["this","rule"]}
 
 function jacs_TopWriter_getValueIn__P7027_mk(s) {
     checkStack(s.depth);
@@ -47702,7 +47702,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRuleActuator__P7031.info = {"start":26184,"length":310,"line":754,"column":8,"endLine":761,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRuleActuator","argumentNames":["this","name","rule"]}
+jacs_TopWriter_emitRuleActuator__P7031.info = {"start":26185,"length":310,"line":754,"column":8,"endLine":761,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRuleActuator","argumentNames":["this","name","rule"]}
 
 function jacs_TopWriter_emitRuleActuator__P7031_mk(s) {
     checkStack(s.depth);
@@ -47761,7 +47761,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRuleActuator_inline__P18959.info = {"start":26332,"length":127,"line":756,"column":37,"endLine":759,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRuleActuator_inline__P18959.info = {"start":26333,"length":127,"line":756,"column":37,"endLine":759,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRuleActuator_inline__P18959_mk(s) {
     checkStack(s.depth);
@@ -48265,7 +48265,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRoleCommand__P7030.info = {"start":23253,"length":2921,"line":689,"column":8,"endLine":752,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRoleCommand","argumentNames":["this","rule"]}
+jacs_TopWriter_emitRoleCommand__P7030.info = {"start":23254,"length":2921,"line":689,"column":8,"endLine":752,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRoleCommand","argumentNames":["this","rule"]}
 
 function jacs_TopWriter_emitRoleCommand__P7030_mk(s) {
     checkStack(s.depth);
@@ -48358,7 +48358,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_lookupActuatorRole__P3856.info = {"start":13526,"length":311,"line":424,"column":8,"endLine":431,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupActuatorRole","argumentNames":["this","rule"]}
+jacs_TopWriter_lookupActuatorRole__P3856.info = {"start":13527,"length":311,"line":424,"column":8,"endLine":431,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupActuatorRole","argumentNames":["this","rule"]}
 
 function jacs_TopWriter_lookupActuatorRole__P3856_mk(s) {
     checkStack(s.depth);
@@ -48404,7 +48404,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_currValue__P7021.info = {"start":17803,"length":83,"line":538,"column":8,"endLine":540,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"currValue","argumentNames":["this"]}
+jacs_TopWriter_currValue__P7021.info = {"start":17804,"length":83,"line":538,"column":8,"endLine":540,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"currValue","argumentNames":["this"]}
 
 function jacs_TopWriter_currValue__P7021_mk(s) {
     checkStack(s.depth);
@@ -48467,7 +48467,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Procedure_lookupLocal__P7007.info = {"start":1469,"length":160,"line":57,"column":8,"endLine":61,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupLocal","argumentNames":["this","name"]}
+jacs_Procedure_lookupLocal__P7007.info = {"start":1470,"length":160,"line":57,"column":8,"endLine":61,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupLocal","argumentNames":["this","name"]}
 
 function jacs_Procedure_lookupLocal__P7007_mk(s) {
     checkStack(s.depth);
@@ -48506,7 +48506,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-v_inline__P19165.info = {"start":1534,"length":19,"line":58,"column":37,"endLine":58,"endColumn":56,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["v"]}
+v_inline__P19165.info = {"start":1535,"length":19,"line":58,"column":37,"endLine":58,"endColumn":56,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["v"]}
 
 function v_inline__P19165_mk(s) {
     checkStack(s.depth);
@@ -48553,7 +48553,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Procedure_addLocal__P7006.info = {"start":1359,"length":101,"line":54,"column":8,"endLine":56,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addLocal","argumentNames":["this","name"]}
+jacs_Procedure_addLocal__P7006.info = {"start":1360,"length":101,"line":54,"column":8,"endLine":56,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addLocal","argumentNames":["this","name"]}
 
 function jacs_Procedure_addLocal__P7006_mk(s) {
     checkStack(s.depth);
@@ -48600,7 +48600,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Variable_constructor__P7002.info = {"start":350,"length":193,"line":18,"column":8,"endLine":25,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this","lst","kind","name"]}
+jacs_Variable_constructor__P7002.info = {"start":351,"length":193,"line":18,"column":8,"endLine":25,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this","lst","kind","name"]}
 
 function jacs_Variable_constructor__P7002_mk(s) {
     checkStack(s.depth);
@@ -48766,7 +48766,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitValueOut__P7026.info = {"start":21603,"length":843,"line":641,"column":8,"endLine":664,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitValueOut","argumentNames":["this","rule","defl"]}
+jacs_TopWriter_emitValueOut__P7026.info = {"start":21604,"length":843,"line":641,"column":8,"endLine":664,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitValueOut","argumentNames":["this","rule","defl"]}
 
 function jacs_TopWriter_emitValueOut__P7026_mk(s) {
     checkStack(s.depth);
@@ -49067,7 +49067,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitAddSeq__P7024.info = {"start":19007,"length":2327,"line":574,"column":8,"endLine":630,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitAddSeq","argumentNames":["this","mods","target","defl","clear"]}
+jacs_TopWriter_emitAddSeq__P7024.info = {"start":19008,"length":2327,"line":574,"column":8,"endLine":630,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitAddSeq","argumentNames":["this","mods","target","defl","clear"]}
 
 function jacs_TopWriter_emitAddSeq__P7024_mk(s) {
     checkStack(s.depth);
@@ -49157,7 +49157,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-addOrSet_inline__P19251.info = {"start":19232,"length":266,"line":581,"column":29,"endLine":589,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["vv"]}
+addOrSet_inline__P19251.info = {"start":19233,"length":266,"line":581,"column":29,"endLine":589,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["vv"]}
 
 function addOrSet_inline__P19251_mk(s) {
     checkStack(s.depth);
@@ -49204,7 +49204,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitAddSeq_inline__P19322.info = {"start":20576,"length":98,"line":611,"column":28,"endLine":613,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitAddSeq_inline__P19322.info = {"start":20577,"length":98,"line":611,"column":28,"endLine":613,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitAddSeq_inline__P19322_mk(s) {
     checkStack(s.depth);
@@ -49316,7 +49316,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_modExpr__P7022.info = {"start":18088,"length":580,"line":549,"column":8,"endLine":562,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"modExpr","argumentNames":["this","mod"]}
+jacs_TopWriter_modExpr__P7022.info = {"start":18089,"length":580,"line":549,"column":8,"endLine":562,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"modExpr","argumentNames":["this","mod"]}
 
 function jacs_TopWriter_modExpr__P7022_mk(s) {
     checkStack(s.depth);
@@ -49409,7 +49409,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_constantFold__P7023.info = {"start":18678,"length":319,"line":564,"column":8,"endLine":572,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"constantFold","argumentNames":["this","mods","defl"]}
+jacs_TopWriter_constantFold__P7023.info = {"start":18679,"length":319,"line":564,"column":8,"endLine":572,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"constantFold","argumentNames":["this","mods","defl"]}
 
 function jacs_TopWriter_constantFold__P7023_mk(s) {
     checkStack(s.depth);
@@ -49468,7 +49468,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_breaksValSeq__P7025.info = {"start":21344,"length":249,"line":632,"column":8,"endLine":639,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"breaksValSeq","argumentNames":["this","mod"]}
+jacs_TopWriter_breaksValSeq__P7025.info = {"start":21345,"length":249,"line":632,"column":8,"endLine":639,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"breaksValSeq","argumentNames":["this","mod"]}
 
 function jacs_TopWriter_breaksValSeq__P7025_mk(s) {
     checkStack(s.depth);
@@ -49636,7 +49636,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitSequance__P7017.info = {"start":16230,"length":1154,"line":494,"column":8,"endLine":522,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitSequance","argumentNames":["this","rule","lockvar","delay","bufSize"]}
+jacs_TopWriter_emitSequance__P7017.info = {"start":16231,"length":1154,"line":494,"column":8,"endLine":522,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitSequance","argumentNames":["this","rule","lockvar","delay","bufSize"]}
 
 function jacs_TopWriter_emitSequance__P7017_mk(s) {
     checkStack(s.depth);
@@ -49697,7 +49697,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitSequance_inline__P19485.info = {"start":17200,"length":116,"line":516,"column":28,"endLine":518,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitSequance_inline__P19485.info = {"start":17201,"length":116,"line":516,"column":28,"endLine":518,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitSequance_inline__P19485_mk(s) {
     checkStack(s.depth);
@@ -49821,7 +49821,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitLoadBuffer__P3860.info = {"start":15161,"length":578,"line":465,"column":8,"endLine":480,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitLoadBuffer","argumentNames":["this","buf"]}
+jacs_TopWriter_emitLoadBuffer__P3860.info = {"start":15162,"length":578,"line":465,"column":8,"endLine":480,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitLoadBuffer","argumentNames":["this","buf"]}
 
 function jacs_TopWriter_emitLoadBuffer__P3860_mk(s) {
     checkStack(s.depth);
@@ -49959,7 +49959,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_addString__P3842.info = {"start":4884,"length":633,"line":158,"column":8,"endLine":173,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addString","argumentNames":["this","str"]}
+jacs_TopWriter_addString__P3842.info = {"start":4885,"length":633,"line":158,"column":8,"endLine":173,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addString","argumentNames":["this","str"]}
 
 function jacs_TopWriter_addString__P3842_mk(s) {
     checkStack(s.depth);
@@ -50186,7 +50186,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_ruleParams__P7016.info = {"start":15749,"length":471,"line":482,"column":8,"endLine":492,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"ruleParams","argumentNames":["this","rule","bufSize"]}
+jacs_TopWriter_ruleParams__P7016.info = {"start":15750,"length":471,"line":482,"column":8,"endLine":492,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"ruleParams","argumentNames":["this","rule","bufSize"]}
 
 function jacs_TopWriter_ruleParams__P7016_mk(s) {
     checkStack(s.depth);
@@ -50249,7 +50249,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filter_inline__P19632.info = {"start":15940,"length":49,"line":485,"column":21,"endLine":485,"endColumn":70,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["m"]}
+filter_inline__P19632.info = {"start":15941,"length":49,"line":485,"column":21,"endLine":485,"endColumn":70,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["m"]}
 
 function filter_inline__P19632_mk(s) {
     checkStack(s.depth);
@@ -50290,7 +50290,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-params_inline__P19627.info = {"start":16015,"length":8,"line":486,"column":24,"endLine":486,"endColumn":32,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["a"]}
+params_inline__P19627.info = {"start":16016,"length":8,"line":486,"column":24,"endLine":486,"endColumn":32,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["a"]}
 
 function params_inline__P19627_mk(s) {
     checkStack(s.depth);
@@ -50410,7 +50410,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitSetReg__P3859.info = {"start":14991,"length":160,"line":460,"column":8,"endLine":463,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitSetReg","argumentNames":["this","role","reg","buf"]}
+jacs_TopWriter_emitSetReg__P3859.info = {"start":14992,"length":160,"line":460,"column":8,"endLine":463,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitSetReg","argumentNames":["this","role","reg","buf"]}
 
 function jacs_TopWriter_emitSetReg__P3859_mk(s) {
     checkStack(s.depth);
@@ -51032,7 +51032,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_lookupRole__P3855.info = {"start":12977,"length":539,"line":406,"column":8,"endLine":422,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupRole","argumentNames":["this","name","idx"]}
+jacs_TopWriter_lookupRole__P3855.info = {"start":12978,"length":539,"line":406,"column":8,"endLine":422,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupRole","argumentNames":["this","name","idx"]}
 
 function jacs_TopWriter_lookupRole__P3855_mk(s) {
     checkStack(s.depth);
@@ -51111,7 +51111,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_lookupServiceClass__P3854.info = {"start":12722,"length":245,"line":397,"column":8,"endLine":404,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupServiceClass","argumentNames":["this","name"]}
+jacs_TopWriter_lookupServiceClass__P3854.info = {"start":12723,"length":245,"line":397,"column":8,"endLine":404,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"lookupServiceClass","argumentNames":["this","name"]}
 
 function jacs_TopWriter_lookupServiceClass__P3854_mk(s) {
     checkStack(s.depth);
@@ -51189,7 +51189,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitLogString__P3863.info = {"start":31800,"length":215,"line":900,"column":8,"endLine":906,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitLogString","argumentNames":["this","str"]}
+jacs_TopWriter_emitLogString__P3863.info = {"start":31801,"length":215,"line":900,"column":8,"endLine":906,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitLogString","argumentNames":["this","str"]}
 
 function jacs_TopWriter_emitLogString__P3863_mk(s) {
     checkStack(s.depth);
@@ -51277,7 +51277,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_withProcedure__P3845.info = {"start":10526,"length":440,"line":326,"column":8,"endLine":339,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"withProcedure","argumentNames":["this","proc","f"]}
+jacs_TopWriter_withProcedure__P3845.info = {"start":10527,"length":440,"line":326,"column":8,"endLine":339,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"withProcedure","argumentNames":["this","proc","f"]}
 
 function jacs_TopWriter_withProcedure__P3845_mk(s) {
     checkStack(s.depth);
@@ -51331,7 +51331,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_addProc__P3849.info = {"start":11990,"length":90,"line":372,"column":8,"endLine":374,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addProc","argumentNames":["this","name"]}
+jacs_TopWriter_addProc__P3849.info = {"start":11991,"length":90,"line":372,"column":8,"endLine":374,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addProc","argumentNames":["this","name"]}
 
 function jacs_TopWriter_addProc__P3849_mk(s) {
     checkStack(s.depth);
@@ -51400,7 +51400,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Procedure_constructor__P7008.info = {"start":932,"length":273,"line":39,"column":8,"endLine":47,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this","parent","name","lst"]}
+jacs_Procedure_constructor__P7008.info = {"start":933,"length":273,"line":39,"column":8,"endLine":47,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this","parent","name","lst"]}
 
 function jacs_Procedure_constructor__P7008_mk(s) {
     checkStack(s.depth);
@@ -51603,7 +51603,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_addRole__P3851.info = {"start":12204,"length":192,"line":380,"column":8,"endLine":384,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addRole","argumentNames":["this","name","classId"]}
+jacs_TopWriter_addRole__P3851.info = {"start":12205,"length":192,"line":380,"column":8,"endLine":384,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addRole","argumentNames":["this","name","classId"]}
 
 function jacs_TopWriter_addRole__P3851_mk(s) {
     checkStack(s.depth);
@@ -51671,7 +51671,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_constructor__P7013.info = {"start":1770,"length":304,"line":70,"column":8,"endLine":78,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this","parent","classIdentifier","name"]}
+jacs_Role_constructor__P7013.info = {"start":1771,"length":304,"line":70,"column":8,"endLine":78,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["this","parent","classIdentifier","name"]}
 
 function jacs_Role_constructor__P7013_mk(s) {
     checkStack(s.depth);
@@ -51723,7 +51723,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_addGlobal__P3850.info = {"start":12090,"length":104,"line":376,"column":8,"endLine":378,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addGlobal","argumentNames":["this","name"]}
+jacs_TopWriter_addGlobal__P3850.info = {"start":12091,"length":104,"line":376,"column":8,"endLine":378,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addGlobal","argumentNames":["this","name"]}
 
 function jacs_TopWriter_addGlobal__P3850_mk(s) {
     checkStack(s.depth);
@@ -57523,7 +57523,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_describeCell__P3844.info = {"start":5628,"length":737,"line":179,"column":8,"endLine":198,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"describeCell","argumentNames":["this","ff","idx"]}
+jacs_TopWriter_describeCell__P3844.info = {"start":5629,"length":737,"line":179,"column":8,"endLine":198,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"describeCell","argumentNames":["this","ff","idx"]}
 
 function jacs_TopWriter_describeCell__P3844_mk(s) {
     checkStack(s.depth);
@@ -57584,7 +57584,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_addFloat__P3843.info = {"start":5527,"length":91,"line":175,"column":8,"endLine":177,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addFloat","argumentNames":["this","f"]}
+jacs_TopWriter_addFloat__P3843.info = {"start":5528,"length":91,"line":175,"column":8,"endLine":177,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"addFloat","argumentNames":["this","f"]}
 
 function jacs_TopWriter_addFloat__P3843_mk(s) {
     checkStack(s.depth);
@@ -57631,7 +57631,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_addUnique__P3824.info = {"start":46,"length":190,"line":3,"column":4,"endLine":10,"endColumn":5,"fileName":"jacs_topwriter.ts","functionName":"addUnique","argumentNames":["arr","v"]}
+jacs_addUnique__P3824.info = {"start":47,"length":190,"line":3,"column":4,"endLine":10,"endColumn":5,"fileName":"jacs_topwriter.ts","functionName":"addUnique","argumentNames":["arr","v"]}
 
 function jacs_addUnique__P3824_mk(s) {
     checkStack(s.depth);
