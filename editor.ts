@@ -953,15 +953,17 @@ namespace microcode {
             this.whenBounds.height = this.bounds.height
         }
 
+        isOffScreen(): boolean {
+            const y = this.xfrm.worldPos.y
+            const b = this.bounds
+            return (
+                y + b.top > Screen.BOTTOM_EDGE || y + b.bottom < Screen.TOP_EDGE
+            )
+        }
+
         /* override */ draw() {
             control.enablePerfCounter()
-            // don't render when out of screenR
-            if (
-                this.xfrm.worldPos.y + this.bounds.top > Screen.BOTTOM_EDGE ||
-                this.xfrm.worldPos.y + this.bounds.bottom < Screen.TOP_EDGE
-            ) {
-                return
-            }
+            if (this.isOffScreen()) return
 
             this.drawBackground()
             this.handleBtn.draw()
