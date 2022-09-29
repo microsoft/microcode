@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.2.19","target":"arcade","targetVersion":"1.11.1"}
-// total=2108437 new=94.02% cached=0.00% other=5.98%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v1.2.20","target":"arcade","targetVersion":"1.11.1"}
+// total=2108545 new=94.02% cached=0.00% other=5.98%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -2102,7 +2102,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "rotaryEncoder", 284830153);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "led", 369743088);
     globals.serviceClasses___3875 = (s.tmp_0);
-    globals.VERSION___3884 = ("v1.2.19");
+    globals.VERSION___3884 = ("v1.2.20");
     globals.microcode_Options_toolTips___3941 = (true);
     globals.microcode_Options_repeatKey___3942 = (false);
     globals.microcode_Options_fps___3943 = (false);
@@ -55261,14 +55261,14 @@ switch (step) {
     s.tmp_10 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "label", "chuck a duck");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "ariaId", "N5");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBNSJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBNiJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk02Il19LHsiUyI6WyJTNyJdLCJBIjpbIkE1Il0sIkYiOlsiRjgiXSwiTSI6WyJNMTUoMDExMDAxMTEwMDAxMTExMDExMTAwMDAwMCkiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19fQ==");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBNSJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBNiJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk02Il19LHsiUyI6WyJTNyJdLCJBIjpbIkE1Il0sIkYiOlsiRjgiXSwiTSI6WyJNMTUoMDExMDAxMTEwMDAxMTExMDExMTAwMDAwMCkiXX0seyJTIjpbIlM3Il0sIkEiOlsiQTIiXSwiRiI6WyJGOCJdLCJNIjpbIk0xOWhlbGxvIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfX0=");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "icon", "teleport_duck");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_10);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_11 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_11, "label", "firefly");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_11, "ariaId", "N11");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_11, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IkEiOlsiQTUiXSwiTSI6WyJNMTUoMDAwMDAwMDAwMDAwMTAwMDAwMDAwMDAwMCkiXX0seyJTIjpbIlM3Il0sIkEiOlsiQTlBIl0sIkYiOlsiRjgiXSwiTSI6WyJNMjBBIiwiTTYiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTlBIl0sIkYiOlsiRjEzIl0sIk0iOlsiTTIwQSIsIk02Il19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMSJdLCJGIjpbIkYxMCIsIkYxMSJdLCJNIjpbIk0yIl19LHsiUyI6WyJTNCJdLCJBIjpbIkExIl0sIkYiOlsiRjE0IiwiRjE0IiwiRjE0Il0sIk0iOlsiTTIiXX0se31dfSx7IlIiOlt7IkEiOlsiQTYiXSwiTSI6WyJNNiJdfSx7IkEiOlsiQTlBIl0sIk0iOlsiTTYiXX0seyJBIjpbIkE1Il0sIk0iOlsiTTE1KDExMTExMTExMTExMTAxMTExMTExMTExMTEpIl19LHsiUyI6WyJTNCJdLCJBIjpbIkExIl0sIkYiOlsiRjEzIl0sIk0iOlsiTTEiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfX0=");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_11, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IkEiOlsiQTUiXSwiTSI6WyJNMTUoMDAwMDAwMDAwMDAwMTAwMDAwMDAwMDAwMCkiXX0seyJTIjpbIlM3Il0sIkEiOlsiQTlBIl0sIkYiOlsiRjgiXSwiTSI6WyJNMjBBIiwiTTYiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTlBIl0sIkYiOlsiRjEzIl0sIk0iOlsiTTIwQSIsIk02Il19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMSJdLCJGIjpbIkYxMCIsIkYxMSJdLCJNIjpbIk0yIl19LHsiUyI6WyJTNCJdLCJBIjpbIkExIl0sIkYiOlsiRjE0IiwiRjE0IiwiRjE0Il0sIk0iOlsiTTIiXX0se31dfSx7IlIiOlt7IkEiOlsiQTYiXSwiTSI6WyJNNiJdfSx7IkEiOlsiQTlBIl0sIk0iOlsiTTYiXX0seyJBIjpbIkE1Il0sIk0iOlsiTTE1KDExMTExMTExMTExMTAxMTExMTExMTExMTEpIl19LHsiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTNCJdLCJBIjpbIkExIl0sIkYiOlsiRjEzIl0sIk0iOlsiTTEiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfX0=");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_11, "icon", "firefly");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_11);
     r0 = pxsim_pxtrt.mkMap();
@@ -55291,7 +55291,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_samples__P3948.info = {"start":509,"length":7805,"line":20,"column":4,"endLine":109,"endColumn":5,"fileName":"samples.ts","functionName":"samples","argumentNames":[]}
+microcode_samples__P3948.info = {"start":509,"length":7913,"line":20,"column":4,"endLine":109,"endColumn":5,"fileName":"samples.ts","functionName":"samples","argumentNames":[]}
 
 function microcode_samples__P3948_mk(s) {
     checkStack(s.depth);
@@ -55434,7 +55434,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_samples_inline__P20951.info = {"start":8192,"length":106,"line":106,"column":12,"endLine":107,"endColumn":62,"fileName":"samples.ts","functionName":"inline","argumentNames":["microcode.samples.inline"]}
+microcode_samples_inline__P20951.info = {"start":8300,"length":106,"line":106,"column":12,"endLine":107,"endColumn":62,"fileName":"samples.ts","functionName":"inline","argumentNames":["microcode.samples.inline"]}
 
 function microcode_samples_inline__P20951_mk(s) {
     checkStack(s.depth);
