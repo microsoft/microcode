@@ -48,19 +48,24 @@ Note that you can open terminals directly from VS Code by pressing "Ctrl + `".
 sh serve.sh
 ```
 
--   open to web editor at http://127.0.0.1:7001/index.html?pointer-events=1
+-   open to web editor at http://127.0.0.1:7001/
+
+To flash a micro:bit,
+
 -   build a micro:bit Hex file and deploy
 
 ```bash
-mkc build -d
+mkc build --hw n3 -d
 ```
+
+If you are running in Codespaces, the `-d` option won't work. Instead, right click on `built/binary.hex` in the explorer and select `Download...` to download the hex file to your micro:bit.
 
 ## With Jacdac devtools
 
 To load the local editor in a Jacdac devtools page, click on the **sim** link at the bottom
-of the local server on http://127.0.0.1:7001/index.html?pointer-events=1. Or,
+of the local server on http://127.0.0.1:7001/. Or,
 
-https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001/index.html?pointer-events=1
+https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001/
 
 ## Creating artwork
 
