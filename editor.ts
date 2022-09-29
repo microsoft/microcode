@@ -24,6 +24,7 @@ namespace microcode {
     }
 
     const TOOLBAR_HEIGHT = 17
+    const TOOLBAR_MARGIN = 2
 
     export class Editor extends Scene {
         navigator: RuleRowNavigator
@@ -50,42 +51,37 @@ namespace microcode {
             this._changed = true
         }
 
-        public renderProgram() {
-            this.cursor.visible = false
+        public nonEmptyPages(): number[] {
+            return this.progdef.pages
+                .map((p, i) =>
+                    p.rules.length > 1 ||
+                    (p.rules.length === 1 && !p.rules[0].isEmpty())
+                        ? i
+                        : -1
+                )
+                .filter(i => i > -1)
+        }
 
-            console.debug(`program: render`)
-            let imgs: Image[] = []
-            let w = 0
-            let h = 0
-            const margin = 4
-            for (let page = 0; page < 5; page++) {
-                const progPage = this.progdef.pages[page]
-                if (
-                    progPage.rules.length > 1 ||
-                    (progPage.rules.length === 1 &&
-                        !progPage.rules[0].isEmpty())
-                ) {
-                    this.switchToPage(page)
-                    this.update()
-                    this.draw()
-                    pause(1000)
-                    const img = Screen.image.clone()
-                    imgs.push(img)
-                    w = Math.max(w, img.width)
-                    h += img.height + margin
-                }
-            }
-            const res = image.create(w, h)
-            res.fill(this.color)
-            let y = 0
-            for (let i = 0; i < imgs.length; ++i) {
-                const img = imgs[i]
-                res.drawTransparentImage(img, 0, y)
-                y += img.height + margin
-            }
+        public ruleWidth(p: number) {
+            return this.pageEditor.ruleEditors[0].innerWidth + 36
+        }
 
-            this.cursor.visible = true
-            return res
+        public pageHeight(p: number) {
+            const page = this.progdef.pages[p]
+            const rules = page.rules
+            return (
+                TOOLBAR_HEIGHT +
+                TOOLBAR_MARGIN +
+                PageEditor.MARGIN * 2 +
+                (icondb.rule_arrow.height + PageEditor.RULE_MARGIN) *
+                    rules.length
+            )
+        }
+
+        public renderPage(p: number) {
+            this.switchToPage(p)
+            this.update()
+            this.draw()
         }
 
         public saveAndCompileProgram() {
@@ -168,9 +164,9 @@ namespace microcode {
 
             const occBounds = new Bounds({
                 left: Screen.LEFT_EDGE,
-                top: Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2,
+                top: Screen.TOP_EDGE + TOOLBAR_HEIGHT + TOOLBAR_MARGIN,
                 width: Screen.WIDTH,
-                height: Screen.HEIGHT - (TOOLBAR_HEIGHT + 2),
+                height: Screen.HEIGHT - (TOOLBAR_HEIGHT + TOOLBAR_MARGIN),
             })
             const occ = target.occlusions(occBounds)
 
@@ -250,7 +246,7 @@ namespace microcode {
             this.scrollroot = new Placeable()
             this.scrollroot.xfrm.localPos = new Vec2(
                 Screen.LEFT_EDGE,
-                Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2
+                Screen.TOP_EDGE + TOOLBAR_HEIGHT + TOOLBAR_MARGIN
             )
             this.scrollDest.copyFrom(this.scrollroot.xfrm.localPos)
             this.scrollStartMs = 0
@@ -449,31 +445,32 @@ namespace microcode {
             }
         }
 
-        private layout() {
-            if (this.ruleEditors) {
-                this.ruleEditors.forEach(rule => {
-                    rule.layout()
-                })
-                let left = 10
-                let top = 10
-                this.ruleEditors.forEach((rule, index) => {
-                    if (index) {
-                        top += this.ruleEditors[index - 1].bounds.height >> 1
-                        top += rule.bounds.height >> 1
-                        top += 3
-                    }
-                    rule.xfrm.localPos.x = left
-                    rule.xfrm.localPos.y = top
-                })
-                // Make all rules the same width
-                let maxRuleWidth = 0
-                this.ruleEditors.forEach(rule => {
-                    maxRuleWidth = Math.max(maxRuleWidth, rule.bounds.width)
-                })
-                this.ruleEditors.forEach(rule => {
-                    rule.bounds.width = maxRuleWidth
-                })
-            }
+        public static MARGIN = 10
+        public static RULE_MARGIN = 3
+        public layout() {
+            if (!this.ruleEditors) return
+            this.ruleEditors.forEach(rule => {
+                rule.layout()
+            })
+            let left = PageEditor.MARGIN
+            let top = PageEditor.MARGIN
+            this.ruleEditors.forEach((rule, index) => {
+                if (index) {
+                    top += this.ruleEditors[index - 1].bounds.height >> 1
+                    top += rule.bounds.height >> 1
+                    top += PageEditor.RULE_MARGIN
+                }
+                rule.xfrm.localPos.x = left
+                rule.xfrm.localPos.y = top
+            })
+            // Make all rules the same width
+            let maxRuleWidth = 0
+            this.ruleEditors.forEach(rule => {
+                maxRuleWidth = Math.max(maxRuleWidth, rule.bounds.width)
+            })
+            this.ruleEditors.forEach(rule => {
+                rule.bounds.width = maxRuleWidth
+            })
         }
 
         public addToNavigator() {
@@ -533,6 +530,7 @@ namespace microcode {
 
     class RuleEditor extends Component implements IPlaceable {
         private xfrm_: Affine
+        innerWidth: number
         handleBtn: Button
         whenInsertBtn: Button
         doInsertBtn: Button
@@ -940,7 +938,8 @@ namespace microcode {
             }
 
             // Ensure that the rule "tray" is at least as wide as the screen
-            this.bounds.width = Math.max(this.bounds.width, 160)
+            this.innerWidth = this.bounds.width
+            this.bounds.width = Math.max(this.bounds.width, Screen.WIDTH)
 
             this.whenBounds.left = this.bounds.left
             this.whenBounds.top = this.bounds.top

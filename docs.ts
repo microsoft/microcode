@@ -54,30 +54,53 @@ namespace docs {
         app.popScene()
         for (const sample of microcode.samples()) {
             console.log(`render sample ${sample.label}`)
+            const icon = microcode.icons.get(sample.icon, true)
+            if (icon) appendImage(images, "icon_sample", sample.label, icon)
             const src = sample.source
             settings.writeString(microcode.SAVESLOT_AUTO, src)
             const editor = new microcode.Editor(app)
             app.pushScene(editor)
-            pause(500)
-            renderProgram(
-                images,
-                editor,
-                sample.label,
-                microcode.icons.get(sample.icon, true)
-            )
-        }
-    }
+            editor.cursor.visible = false
 
-    function renderProgram(
-        images: RenderedImage[],
-        editor: microcode.Editor,
-        editorName: string,
-        editorIcon: Image
-    ) {
-        const prg = editor.renderProgram()
-        appendImage(images, "sample", editorName, prg)
-        if (editorIcon)
-            appendImage(images, "icon_sample", editorName, editorIcon)
+            let imgs: Image[] = []
+            let w = 0
+            let h = 0
+            const margin = 4
+
+            editor.nonEmptyPages().forEach(p => {
+                console.log(`page ${screen.width} ${editor.ruleWidth(p)}`)
+                microcode.Screen.setImageSize(
+                    Math.max(screen.width, editor.ruleWidth(p)),
+                    editor.pageHeight(p)
+                )
+                const pageEditor = new microcode.Editor(app)
+                app.pushScene(pageEditor)
+                pageEditor.cursor.visible = false
+                pause(500)
+                pageEditor.renderPage(p)
+                pause(500)
+                const img = microcode.Screen.image.clone()
+                imgs.push(img)
+                w = Math.max(w, img.width)
+                h += img.height + margin
+
+                app.popScene()
+            })
+
+            const res = image.create(w, h)
+            res.fill(editor.color)
+            let y = 0
+            for (let i = 0; i < imgs.length; ++i) {
+                const img = imgs[i]
+                res.drawTransparentImage(img, 0, y)
+                y += img.height + margin
+            }
+
+            appendImage(images, "sample", sample.label, res)
+
+            app.popScene()
+        }
+        microcode.Screen.setImageSize(screen.width, screen.height)
     }
 
     function appendImage(
