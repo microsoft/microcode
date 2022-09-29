@@ -136,6 +136,7 @@ namespace accessibility {
         N8: "rock paper scissors",
         N9: "head or tail",
         N10: "clap lights",
+        N11: "firefly",
 
         S10: "magnet",
 
