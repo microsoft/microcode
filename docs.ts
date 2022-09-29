@@ -13,19 +13,23 @@ namespace docs {
         return buf
     }
 
-    let theApp: microcode.App
-    export function setup(app: microcode.App) {
-        theApp = app
+    let app: microcode.App
+    export function setup(theApp: microcode.App) {
+        app = theApp
         _setup()
     }
 
     //% shim=TD_NOOP
     function _setup() {
-        control.simmessages.onReceived("docs", () => _renderApp())
+        control.simmessages.onReceived("docs", (data: Buffer) => {
+            const msg = JSON.parse(data.toString())
+            if (msg.type === "art") _renderApp()
+            else if (msg.type === "screenshot") _renderScreenshot()
+        })
     }
 
     interface RenderedImage {
-        type: "icon" | "sample" | "icon_sample" | "image"
+        type: "icon" | "sample" | "icon_sample" | "image" | "program"
         name: string
         pixels: string
     }
@@ -35,7 +39,7 @@ namespace docs {
         const images: RenderedImage[] = []
         appendImage(images, "image", "home", screen)
         renderIcons(images)
-        renderSamples(images, theApp)
+        renderSamples(images)
         appendImage(images, "image", "microcode", microcode.wordLogo)
         appendImage(images, "image", "microbit", microcode.microbitLogo)
         appendImage(
@@ -46,11 +50,11 @@ namespace docs {
         )
         control.simmessages.send(
             "docs",
-            Buffer.fromUTF8(JSON.stringify(images))
+            Buffer.fromUTF8(JSON.stringify({ type: "art", images }))
         )
     }
 
-    function renderSamples(images: RenderedImage[], app: microcode.App) {
+    function renderSamples(images: RenderedImage[]) {
         app.popScene()
         for (const sample of microcode.samples()) {
             console.log(`render sample ${sample.label}`)
@@ -58,49 +62,76 @@ namespace docs {
             if (icon) appendImage(images, "icon_sample", sample.label, icon)
             const src = sample.source
             settings.writeString(microcode.SAVESLOT_AUTO, src)
-            const editor = new microcode.Editor(app)
-            app.pushScene(editor)
-            editor.cursor.visible = false
-
-            let imgs: Image[] = []
-            let w = 0
-            let h = 0
-            const margin = 4
-
-            editor.nonEmptyPages().forEach(p => {
-                console.log(`page ${screen.width} ${editor.ruleWidth(p)}`)
-                microcode.Screen.setImageSize(
-                    Math.max(screen.width, editor.ruleWidth(p)),
-                    editor.pageHeight(p)
-                )
-                const pageEditor = new microcode.Editor(app)
-                app.pushScene(pageEditor)
-                pageEditor.cursor.visible = false
-                pause(500)
-                pageEditor.renderPage(p)
-                pause(500)
-                const img = microcode.Screen.image.clone()
-                imgs.push(img)
-                w = Math.max(w, img.width)
-                h += img.height + margin
-
-                app.popScene()
-            })
-
-            const res = image.create(w, h)
-            res.fill(editor.color)
-            let y = 0
-            for (let i = 0; i < imgs.length; ++i) {
-                const img = imgs[i]
-                res.drawTransparentImage(img, 0, y)
-                y += img.height + margin
-            }
-
+            const res = _renderProgram()
             appendImage(images, "sample", sample.label, res)
 
             app.popScene()
         }
         microcode.Screen.setImageSize(screen.width, screen.height)
+    }
+
+    //% shim=TD_NOOP
+    function _renderScreenshot() {
+        const res = _renderProgram()
+        control.simmessages.send(
+            "docs",
+            Buffer.fromUTF8(
+                JSON.stringify({
+                    type: "art",
+                    images: [
+                        {
+                            name: "current",
+                            type: "program",
+                            pixels: imageToBuffer(res).toHex(),
+                        },
+                    ],
+                })
+            )
+        )
+    }
+
+    //% shim=TD_NOOP
+    function _renderProgram() {
+        const editor = new microcode.Editor(app)
+        app.pushScene(editor)
+        editor.cursor.visible = false
+
+        let imgs: Image[] = []
+        let w = 0
+        let h = 0
+        const margin = 4
+
+        editor.nonEmptyPages().forEach(p => {
+            console.log(`page ${screen.width} ${editor.ruleWidth(p)}`)
+            microcode.Screen.setImageSize(
+                Math.max(screen.width, editor.ruleWidth(p)),
+                editor.pageHeight(p)
+            )
+            const pageEditor = new microcode.Editor(app)
+            app.pushScene(pageEditor)
+            pageEditor.cursor.visible = false
+            pause(500)
+            pageEditor.renderPage(p)
+            pause(500)
+            const img = microcode.Screen.image.clone()
+            imgs.push(img)
+            w = Math.max(w, img.width)
+            h += img.height + margin
+
+            app.popScene()
+        })
+
+        const res = image.create(w, h)
+        res.fill(editor.color)
+        let y = 0
+        for (let i = 0; i < imgs.length; ++i) {
+            const img = imgs[i]
+            res.drawTransparentImage(img, 0, y)
+            y += img.height + margin
+        }
+
+        app.popScene()
+        return res
     }
 
     function appendImage(

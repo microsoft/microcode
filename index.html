@@ -135,6 +135,22 @@
             dialog::backdrop {
                 background: rgba(0, 0, 0, 0.8);
             }
+            .art {
+                background-color: #333;
+                overflow-y: auto;
+            }
+            .art button {
+                margin: 1rem;
+            }
+            .art a {
+                margin: 0.5rem;
+            }
+            .art a > img {
+                min-width: 5rem;
+                image-rendering: pixelated;
+                background: #fff;
+                border: solid 1px #000;
+            }            
             .lds-ripple img {
                 width: 20vw;
                 image-rendering: pixelated;
@@ -208,6 +224,7 @@
             >
             <span id="version"></span>
             <button id="voicebtn" aria-label="enable or disable voice reading tooltips">tooltip reader</button>
+            <button id="screenshotbtn" aria-label="save program screenshot as image">screenshot</button>
             <a
                 class="legal"
                 rel="nofollow noopener"

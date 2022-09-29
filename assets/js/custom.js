@@ -131,7 +131,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (docsbtn)
         docsbtn.onclick = () => {
             docsbtn.disabled = true
-            simPostMessage("docs", {})
+            simPostMessage("docs", { type: "art" })
+        }
+    const screenshotbtn = document.getElementById("screenshotbtn")
+    if (screenshotbtn)
+        screenshotbtn.onclick = () => {
+            simPostMessage("docs", { type: "screenshot" })
         }
 
     const voicebtn = document.getElementById("voicebtn")
@@ -537,14 +542,22 @@ function imgToPng(hex) {
 const norm = s => s.replace(/,/g, "_").replace(/\/s/g, "_").replace(/_+/g, "_")
 
 addSimMessageHandler("docs", async data => {
-    const msg = uint8ArrayToString(data)
-    const jsg = JSON.parse(msg)
+    const msg = JSON.parse(uint8ArrayToString(data))
 
+    if (msg.type === "art") showArt(msg.images)
+})
+
+function showArt(jsg) {
     const container = document.createElement("dialog")
     container.classList.add("art")
+    const form = document.createElement("form")
+    form.setAttribute("method", "dialog")
+    container.append(form)
+    const buttons = document.createElement("div")
+    form.append(buttons)
 
     const button = document.createElement("button")
-    button.innerText = "save all"
+    button.innerText = "save"
     button.onclick = async () => {
         const dir = await window.showDirectoryPicker()
         if (!dir) return
@@ -599,7 +612,12 @@ ${jsg
         await writable.close()
         alert(`rendering done`)
     }
-    container.append(button)
+    buttons.append(button)
+
+    const close = document.createElement("button")
+    close.innerText = "close"
+    close.onclick = () => container.close()
+    buttons.append(close)
 
     jsg.forEach(({ type, name, pixels }) => {
         const fn = norm(`${type}_${name}`)
@@ -616,9 +634,9 @@ ${jsg
         a.setAttribute("download", `${fn}.png`)
         a.append(img)
 
-        container.append(a)
+        form.append(a)
     })
 
     document.body.append(container)
     container.showModal()
-})
+}

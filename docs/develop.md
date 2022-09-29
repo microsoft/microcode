@@ -69,7 +69,7 @@ https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&
 
 ## Creating artwork
 
-To preview all artwork, click on the `art` icon at the bottom right of the local editor (and wait...). Use `save all` to download all artwork on the `images/generated` folder.
+To preview all artwork, click on the `art` icon at the bottom right of the local editor (and wait...). Use `save` to download all artwork on the `images/generated` folder.
 
 If you want to create/edit new sprites, you should import this web site into https://arcade.makecode.com, using the following directions:
 
