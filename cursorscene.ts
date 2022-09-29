@@ -14,8 +14,7 @@ namespace microcode {
         }
 
         protected moveTo(target: Button) {
-            if (!target)
-                return
+            if (!target) return
             this.cursor.moveTo(
                 target.xfrm.worldPos,
                 target.ariaId,
@@ -96,12 +95,8 @@ namespace microcode {
             super.activate()
             const btn = this.navigator.initialCursor(0, 0)
             if (btn) {
-                this.cursor.snapTo(
-                    btn.xfrm.worldPos.x,
-                    btn.xfrm.worldPos.y,
-                    btn.ariaId,
-                    btn.bounds
-                )
+                const w = btn.xfrm.worldPos
+                this.cursor.snapTo(w.x, w.y, btn.ariaId, btn.bounds)
                 btn.reportAria()
             }
         }

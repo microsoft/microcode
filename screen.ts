@@ -43,10 +43,11 @@ namespace microcode {
             x: number,
             y: number
         ) {
+            const w = xfrm.worldPos
             Screen.image.drawTransparentImage(
                 from,
-                Screen.x(x + xfrm.worldPos.x),
-                Screen.y(y + xfrm.worldPos.y)
+                Screen.x(x + w.x),
+                Screen.y(y + w.y)
             )
         }
 
@@ -76,13 +77,8 @@ namespace microcode {
             c: number
         ) {
             control.assert(c !== 0, ERROR_NOT_INTEGER)
-            Screen.drawLine(
-                x0 + xfrm.worldPos.x,
-                y0 + xfrm.worldPos.y,
-                x1 + xfrm.worldPos.x,
-                y1 + xfrm.worldPos.y,
-                c
-            )
+            const w = xfrm.worldPos
+            Screen.drawLine(x0 + w.x, y0 + w.y, x1 + w.x, y1 + w.y, c)
         }
 
         public static drawLineShaded(
@@ -127,13 +123,8 @@ namespace microcode {
             c: number
         ) {
             control.assert(c !== 0, ERROR_NOT_INTEGER)
-            Screen.drawRect(
-                x + xfrm.worldPos.x,
-                y + xfrm.worldPos.y,
-                width,
-                height,
-                c
-            )
+            const w = xfrm.worldPos
+            Screen.drawRect(x + w.x, y + w.y, width, height, c)
         }
 
         public static fillRect(
@@ -156,13 +147,8 @@ namespace microcode {
             c: number
         ) {
             control.assert(c !== 0, ERROR_NOT_INTEGER)
-            Screen.fillRect(
-                x + xfrm.worldPos.x,
-                y + xfrm.worldPos.y,
-                width,
-                height,
-                c
-            )
+            const w = xfrm.worldPos
+            Screen.fillRect(x + w.x, y + w.y, width, height, c)
         }
 
         public static fillBoundsXfrm(xfrm: Affine, bounds: Bounds, c: number) {
@@ -198,10 +184,11 @@ namespace microcode {
         ) {
             if (!c) return
 
-            const left = bounds.left + xfrm.worldPos.x
-            const top = bounds.top + xfrm.worldPos.y
-            const right = bounds.right + xfrm.worldPos.x
-            const bottom = bounds.bottom + xfrm.worldPos.y
+            const w = xfrm.worldPos
+            const left = bounds.left + w.x
+            const top = bounds.top + w.y
+            const right = bounds.right + w.x
+            const bottom = bounds.bottom + w.y
 
             // Left
             Screen.drawLine(left - dist, top, left - dist, bottom, c)
@@ -236,10 +223,11 @@ namespace microcode {
             if (!colors.top && !colors.left && !colors.right && !colors.bottom)
                 return
 
-            const left = bounds.left + xfrm.worldPos.x
-            const top = bounds.top + xfrm.worldPos.y
-            const right = bounds.right + xfrm.worldPos.x
-            const bottom = bounds.bottom + xfrm.worldPos.y
+            const w = xfrm.worldPos
+            const left = bounds.left + w.x
+            const top = bounds.top + w.y
+            const right = bounds.right + w.x
+            const bottom = bounds.bottom + w.y
 
             // Left
             if (colors.left)
@@ -326,7 +314,8 @@ namespace microcode {
             c: number
         ) {
             control.assert(c !== 0, ERROR_NOT_INTEGER)
-            Screen.setPixel(x + xfrm.worldPos.x, y + xfrm.worldPos.y, c)
+            const w = xfrm.worldPos
+            Screen.setPixel(x + w.x, y + w.y, c)
         }
 
         public static print(

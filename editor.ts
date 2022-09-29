@@ -131,12 +131,8 @@ namespace microcode {
         }
 
         public snapCursorTo(btn: Button) {
-            this.cursor.snapTo(
-                btn.xfrm.worldPos.x,
-                btn.xfrm.worldPos.y,
-                btn.ariaId,
-                btn.bounds
-            )
+            const w = btn.xfrm.worldPos
+            this.cursor.snapTo(w.x, w.y, btn.ariaId, btn.bounds)
             btn.reportAria()
         }
 
@@ -190,10 +186,8 @@ namespace microcode {
                     new Vec2(xocc, yocc),
                     this.scrollDest
                 )
-                const cursorDest = new Vec2(
-                    target.xfrm.worldPos.x + xocc,
-                    target.xfrm.worldPos.y + yocc
-                )
+                const tw = target.xfrm.worldPos
+                const cursorDest = new Vec2(tw.x + xocc, tw.y + yocc)
                 this.cursor.moveTo(cursorDest, target.ariaId, target.bounds)
             } else {
                 this.moveTo(target)
