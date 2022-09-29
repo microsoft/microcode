@@ -17,6 +17,23 @@ namespace microcode {
             height: Screen.HEIGHT,
         })
 
+        private static updateBounds() {
+            Screen.WIDTH = Screen.image_.width
+            Screen.HEIGHT = Screen.image_.height
+            Screen.HALF_WIDTH = Screen.WIDTH >> 1
+            Screen.HALF_HEIGHT =  Screen.HEIGHT >> 1
+            Screen.LEFT_EDGE = -Screen.HALF_WIDTH
+            Screen.RIGHT_EDGE = Screen.HALF_WIDTH
+            Screen.TOP_EDGE = -Screen.HALF_HEIGHT
+            Screen.BOTTOM_EDGE = Screen.HALF_HEIGHT
+            Screen.BOUNDS = new Bounds({
+                left: Screen.LEFT_EDGE,
+                top: Screen.TOP_EDGE,
+                width: Screen.WIDTH,
+                height: Screen.HEIGHT,
+            })            
+        }
+
         public static x(v: number) {
             return v + Screen.HALF_WIDTH
         }
@@ -29,8 +46,14 @@ namespace microcode {
         public static get image(): Image {
             if (!Screen.image_) {
                 Screen.image_ = image.create(screen.width, screen.height)
+                Screen.updateBounds()
             }
             return Screen.image_
+        }
+
+        public static setImageSize(width: number, height: number) {
+            Screen.image_ = image.create(width, height)
+            Screen.updateBounds()
         }
 
         public static drawTransparentImage(from: Image, x: number, y: number) {
