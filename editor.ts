@@ -244,6 +244,10 @@ namespace microcode {
             this.hudroot.xfrm.localPos = new Vec2(0, Screen.TOP_EDGE)
             this.hudroot.xfrm.tag = "hud"
             this.scrollroot = new Placeable()
+            this.scrollroot.xfrm.localPos = new Vec2(
+                Screen.LEFT_EDGE,
+                Screen.TOP_EDGE + TOOLBAR_HEIGHT + TOOLBAR_MARGIN
+            )
             this.scrollDest.copyFrom(this.scrollroot.xfrm.localPos)
             this.scrollStartMs = 0
             this.cursor = new Cursor()
@@ -253,7 +257,7 @@ namespace microcode {
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
                 icon: PAGE_IDS[this.currPage],
-                x: 0,
+                x: Screen.RIGHT_EDGE - 32,
                 y: 8,
                 onClick: () => this.pickPage(),
             })
@@ -262,24 +266,12 @@ namespace microcode {
                 icon: icons.get("reset"),
                 style: ButtonStyles.BorderedPurple,
                 ariaId: "reset",
-                x: 0,
+                x: Screen.RIGHT_EDGE - 12,
                 y: 8,
                 onClick: () => this.saveAndCompileProgram(),
             })
             this.progdef = this.app.load(SAVESLOT_AUTO)
             if (!this.progdef) this.progdef = new ProgramDefn()
-
-            this.layout()
-        }
-
-        private layout() {
-            this.scrollroot.xfrm.localPos = new Vec2(
-                Screen.LEFT_EDGE,
-                Screen.TOP_EDGE + TOOLBAR_HEIGHT + TOOLBAR_MARGIN
-            )
-            this.scrollDest.copyFrom(this.scrollroot.xfrm.localPos)
-            this.pageBtn.xfrm.localPos.x = Screen.RIGHT_EDGE - 32
-            this.resetBtn.xfrm.localPos.x = Screen.RIGHT_EDGE - 12
         }
 
         protected handleClick(x: number, y: number) {
