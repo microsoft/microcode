@@ -54,7 +54,7 @@ The editor integrates with existing screen readers, like NVDA.
 
 #### Tooltip read aloud
 
-By clicking on the `voice` button at the bottom of the editor, you can turn on read aloud of editor tooltips. This may be useful for students who are still learning to read.
+By clicking on the `tooltip reader` button at the bottom of the editor, you can turn on read aloud of editor tooltips. This may be useful for students who are still learning to read.
 
 ## micro:bit V2 and Arcade Shield
 
