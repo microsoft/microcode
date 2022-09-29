@@ -45,11 +45,6 @@
 - icon
 
 
-### ![paint](./images/generated/icon_paint.png){:class="icon"} paint {#icon_paint}
-
-- icon
-
-
 ### ![edit program](./images/generated/icon_edit_program.png){:class="icon"} edit program {#icon_edit_program}
 
 - icon
@@ -86,11 +81,6 @@
 
 
 ### ![clap lights](./images/generated/icon_clap_lights.png){:class="icon"} clap lights {#icon_clap_lights}
-
-- icon
-
-
-### ![dice](./images/generated/icon_dice.png){:class="icon"} dice {#icon_dice}
 
 - icon
 
@@ -280,6 +270,11 @@
 - icon
 
 
+### ![A6A](./images/generated/icon_A6A.png){:class="icon"} A6A {#icon_A6A}
+
+- icon
+
+
 ### ![microphone](./images/generated/icon_A3.png){:class="icon"} microphone {#icon_A3}
 
 - icon
@@ -365,12 +360,12 @@
 - icon
 
 
-### ![value 4](./images/generated/icon_M9.png){:class="icon"} value 4 {#icon_M9}
+### ![value 5](./images/generated/icon_M9.png){:class="icon"} value 5 {#icon_M9}
 
 - icon
 
 
-### ![value 5](./images/generated/icon_M10.png){:class="icon"} value 5 {#icon_M10}
+### ![value 10](./images/generated/icon_M10.png){:class="icon"} value 10 {#icon_M10}
 
 - icon
 

@@ -72,9 +72,9 @@ namespace microcode {
             return (
                 TOOLBAR_HEIGHT +
                 TOOLBAR_MARGIN +
-                PageEditor.MARGIN * 2 +
-                (icondb.rule_arrow.height + PageEditor.RULE_MARGIN) *
-                    rules.length
+                PageEditor.MARGIN +
+                PageEditor.RULE_MARGIN * (rules.length - 1) +
+                icondb.rule_arrow.height * rules.length
             )
         }
 
