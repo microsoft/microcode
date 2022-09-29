@@ -85,11 +85,6 @@
 - icon
 
 
-### ![firefly](./images/generated/icon_firefly.png){:class="icon"} firefly {#icon_firefly}
-
-- icon
-
-
 ### ![rock paper scissors](./images/generated/icon_rock_paper_scissors.png){:class="icon"} rock paper scissors {#icon_rock_paper_scissors}
 
 - icon
