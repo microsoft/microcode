@@ -898,11 +898,16 @@ namespace jacs {
             })
         }
 
-        emitLogString(str: string) {
+        emitLogString(str: string, arg?: Value) {
+            let local: Variable
+            if (arg) {
+                local = this.proc.lookupLocal("logarg")
+                local.write(this.writer, arg)
+            }
             this.writer.emitStmt(OpStmt.STMT3_LOG_FORMAT, [
                 literal(this.addString(str)),
-                literal(0),
-                literal(0),
+                literal(local ? local.index : 0),
+                literal(local ? 1 : 0),
             ])
         }
 
