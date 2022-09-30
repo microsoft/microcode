@@ -19,9 +19,6 @@ See below for more information about the MicroCode web app, and how to deploy Mi
 MicroCode's:
 
 -   [![press image](./images/generated/icon_S2.png){:class="icon"}](./language) [icon-based language](./language)
-
-![the first program written in MicroCode](./images/generated/sample_first_program.png)
-
 -   [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon"}](./samples) [samples](./samples)
 -   [FAQ](./faq.md)
 
