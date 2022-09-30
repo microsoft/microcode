@@ -30,8 +30,8 @@ MicroCode's:
 The easiest way to get started with MicroCode is through the web editor ([https://aka.ms/microcode](https://aka.ms/microcode), [aka.ms/m9](https://aka.ms/m9) for short). We recommend using the keyboard navigation or a real gamepad!
 
 -   Arrow keys for D-pad
--   `Space` for A button
--   `Backspace` (`delete` on MacOs) for B button
+-   `Enter` or `Space` for `A` button
+-   `Backspace` or `Delete` for `B` button
 -   Copy the URL to share your program.
 
 [![MicroCode web app](./images/website2.jpg){:class="screenshot"}](https://aka.ms/m9)

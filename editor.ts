@@ -209,6 +209,7 @@ namespace microcode {
             makeOnEvent(controller.left.id, CursorDir.Left)
             makeOnEvent(controller.up.id, CursorDir.Up)
             makeOnEvent(controller.down.id, CursorDir.Down)
+            const PLAYER2_OFFSET = 7
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.menu.id,
@@ -225,23 +226,31 @@ namespace microcode {
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
-                controller.B.id,
-                () => {
-                    if (!this.cursor.cancel()) {
-                        if (this.navigator.getRow() == 0) {
-                            this.app.popScene()
-                            this.app.pushScene(new Home(this.app))
-                        } else {
-                            if (this.navigator.atRuleStart()) {
-                                const target = this.navigator.initialCursor(
-                                    0,
-                                    0
-                                )
-                                this.moveTo(target)
-                            } else this.scrollAndMove(CursorDir.Back)
-                        }
+                controller.A.id + PLAYER2_OFFSET,
+                () => this.cursor.click()
+            )
+            const back = () => {
+                if (!this.cursor.cancel()) {
+                    if (this.navigator.getRow() == 0) {
+                        this.app.popScene()
+                        this.app.pushScene(new Home(this.app))
+                    } else {
+                        if (this.navigator.atRuleStart()) {
+                            const target = this.navigator.initialCursor(0, 0)
+                            this.moveTo(target)
+                        } else this.scrollAndMove(CursorDir.Back)
                     }
                 }
+            }
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
+                controller.B.id,
+                back
+            )
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
+                controller.B.id + PLAYER2_OFFSET,
+                back
             )
             this.hudroot = new Placeable()
             this.hudroot.xfrm.localPos = new Vec2(0, Screen.TOP_EDGE)

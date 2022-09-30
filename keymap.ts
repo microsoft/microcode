@@ -18,7 +18,7 @@ namespace keymap {
             keymap.KeyCode.DownArrow,
             keymap.KeyCode.LeftArrow,
             keymap.KeyCode.RightArrow,
-            keymap.KeyCode.Space,
+            keymap.KeyCode.Enter,
             keymap.KeyCode.Backspace
         )
         _setPlayerKeys(
@@ -27,7 +27,7 @@ namespace keymap {
             keymap.KeyCode.Two,
             keymap.KeyCode.Three,
             keymap.KeyCode.Four,
-            keymap.KeyCode.Enter,
+            keymap.KeyCode.Space,
             keymap.KeyCode.Delete
         )
 
