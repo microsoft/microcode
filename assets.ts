@@ -123,6 +123,8 @@ namespace microcode {
             this.reg[TID_MODIFIER_RGB_LED_COLOR_5] = icondb.tile_color_yellow
             this.reg[TID_MODIFIER_RGB_LED_COLOR_6] = icondb.tile_color_black
 
+            this.reg[TID_MODIFIER_SERVO_SET_ANGLE] = icondb.servo_set_angle
+
             this.reg[TID_MODIFIER_EMOJI_GIGGLE] = icondb.soundGiggle
             this.reg[TID_MODIFIER_EMOJI_HAPPY] = icondb.soundHappy
             this.reg[TID_MODIFIER_EMOJI_HELLO] = icondb.soundHello
@@ -2267,6 +2269,25 @@ bffffffffffffffffffffffffffffffb
 `
 
     export const oneToFive = [one, two, three, four, five]
+
+    export const servo_set_angle = img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . 4 2 . . . . . . . 
+    . . . . . . . . 4 2 . . . . . . 
+    . . . 4 2 2 2 2 2 2 2 . . . . . 
+    . 4 2 2 . . . . 4 2 . . . b c . 
+    . . . . . . . 4 2 . . . b c b . 
+    . . . . . . . . . . . b c b . . 
+    . . . . . . . . . . b c b . . . 
+    . . 8 8 8 8 8 8 b b c b 8 8 . . 
+    . 8 8 8 8 8 b b b c b 8 8 8 8 . 
+    . 8 8 8 8 8 b c c c b 8 8 8 8 . 
+    . 8 8 8 8 8 b b b b 8 8 8 8 8 . 
+    . . 8 8 8 8 8 8 8 8 8 8 8 8 . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . .     
+    `
 
     /* maybe use these later
     export const rc_high = img`

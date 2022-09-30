@@ -113,6 +113,8 @@ namespace microcode {
     export const TID_MODIFIER_RGB_LED_COLOR_5 = "A20_5"
     export const TID_MODIFIER_RGB_LED_COLOR_6 = "A20_6"
 
+    export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
+
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
         TID_MODIFIER_PAGE_2,
