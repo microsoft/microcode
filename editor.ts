@@ -31,6 +31,7 @@ namespace microcode {
         private progdef: ProgramDefn
         private currPage: number
         private pageBtn: Button
+        private resetBtn: Button
         private pageEditor: PageEditor
         public cursor: Cursor
         private _changed: boolean
@@ -94,18 +95,11 @@ namespace microcode {
                     icon: pageId,
                 }
             })
-            btns.push({
-                icon: "reset",
-                ariaId: "reset",
-            })
             this.picker.addGroup({ btns })
             this.picker.show({
                 onClick: iconId => {
-                    if (iconId === "reset") this.saveAndCompileProgram()
-                    else {
-                        const index = PAGE_IDS.indexOf(iconId)
-                        this.switchToPage(index)
-                    }
+                    const index = PAGE_IDS.indexOf(iconId)
+                    this.switchToPage(index)
                 },
             })
         }
@@ -215,7 +209,11 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.menu.id,
-                () => this.pickPage()
+                () => {
+                    // go back to home screen
+                    this.app.popScene()
+                    this.app.pushScene(new Home(this.app))
+                }
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
@@ -259,9 +257,18 @@ namespace microcode {
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
                 icon: PAGE_IDS[this.currPage],
-                x: Screen.RIGHT_EDGE - 12,
+                x: Screen.RIGHT_EDGE - 32,
                 y: 8,
                 onClick: () => this.pickPage(),
+            })
+            this.resetBtn = new Button({
+                parent: this.hudroot,
+                icon: icons.get("reset"),
+                style: ButtonStyles.BorderedPurple,
+                ariaId: "reset",
+                x: Screen.RIGHT_EDGE - 12,
+                y: 8,
+                onClick: () => this.saveAndCompileProgram(),
             })
             this.progdef = this.app.load(SAVESLOT_AUTO)
             if (!this.progdef) this.progdef = new ProgramDefn()
@@ -310,7 +317,7 @@ namespace microcode {
                 this.navigator.clear()
             } else this.navigator = new RuleRowNavigator()
 
-            this.navigator.addButtons([this.pageBtn])
+            this.navigator.addButtons([this.pageBtn, this.resetBtn])
 
             this.pageEditor.addToNavigator()
 
@@ -376,6 +383,7 @@ namespace microcode {
         private drawPageNavigation() {
             control.enablePerfCounter()
             this.pageBtn.draw()
+            this.resetBtn.draw()
         }
     }
 

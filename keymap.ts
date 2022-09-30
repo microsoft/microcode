@@ -10,14 +10,6 @@ namespace keymap {
         B: number
     ): void
 
-    //% shim=keymap::_setSystemKeys
-    declare function _setSystemKeys(
-        screenshot: KeyCode,
-        gif: KeyCode,
-        menu: KeyCode,
-        reset: KeyCode
-    ): void
-
     //% shim=TD_NOOP
     export function setupKeys(): void {
         _setPlayerKeys(
@@ -38,7 +30,7 @@ namespace keymap {
             keymap.KeyCode.Enter,
             keymap.KeyCode.Delete
         )
-        _setSystemKeys(KeyCode.S, KeyCode.G, KeyCode.M, KeyCode.R)
+
     }
 
     export enum KeyCode {
