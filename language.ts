@@ -42,7 +42,7 @@ namespace microcode {
         Radio = 3,
         RandomToss = 4,
         Page = 5,
-        Sequance = 6,
+        Sequence = 6,
         NumFmt = 7,
     }
 

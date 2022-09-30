@@ -123,6 +123,8 @@ namespace microcode {
             this.reg[TID_MODIFIER_RGB_LED_COLOR_5] = icondb.tile_color_yellow
             this.reg[TID_MODIFIER_RGB_LED_COLOR_6] = icondb.tile_color_black
 
+            this.reg[TID_MODIFIER_SERVO_SET_ANGLE] = icondb.servo_set_angle
+
             this.reg[TID_MODIFIER_EMOJI_GIGGLE] = icondb.soundGiggle
             this.reg[TID_MODIFIER_EMOJI_HAPPY] = icondb.soundHappy
             this.reg[TID_MODIFIER_EMOJI_HELLO] = icondb.soundHello
@@ -230,7 +232,6 @@ function scaleUp(led55: Image) {
 }
 
 namespace icondb {
-``
     export const MISSING = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1167,22 +1168,22 @@ namespace icondb {
 `
 
     export const rgbLed = img`
-    . . . . f f f f f f f . . . . .
-    . . f f f 4 4 f 9 9 f f f . . .
-    . f 5 5 f 4 4 f 9 9 f b b f . .
-    . f 5 5 f f f f f f f b b f d .
-    f f f f f . . . . . f f f f f d
-    f 4 4 f . . . . . . . f 7 7 f d
-    f 4 4 f . . . . . . . f 7 7 f d
-    f f f f . . . . . . . f f f f d
-    f 2 2 f . . . . . . . f e e f d
-    f 2 2 f . . . . . . . f e e f d
-    f f f f . . . . . . . f f f f d
-    b f 6 6 f f f f f f f c c f b d
-    . f 6 6 f 8 8 f a a f c c f b d
-    . b f f f 8 8 f a a f f f f d d
-    . . b b f f f f f f f b b d . .
-    . . . . d b b b b b b d d . . .
+    . . . . f f f f f f f . . . . . 
+    . . f f f 4 4 f 9 9 f f f . . . 
+    . f 5 5 f 4 4 f 9 9 f b b f . . 
+    . f 5 5 f f f f f f f b b f d . 
+    f f f f f . . . . . f f f f f d 
+    f 4 4 f . . . . . . . f 7 7 f d 
+    f 4 4 f . . . . . . . f 7 7 f d 
+    f f f f . . . . . . . f f f f d 
+    f 2 2 f . . . . . . . f e e f d 
+    f 2 2 f . . . . . . . f e e f d 
+    f f f f . . . . . . . f f f f d 
+    b f 6 6 f f f f f f f c c f b d 
+    . f 6 6 f 8 8 f a a f c c 5 5 5 
+    . b f f f 8 8 f a a f f f 5 5 5 
+    . . b b f f f f f f f b b 5 5 4 
+    . . . . d b b b b b b d d 4 4 . 
 `
 
     export const magnet = img`
@@ -1198,10 +1199,10 @@ namespace icondb {
     . 2 2 . . . . . . . . 6 . . . . 
     . 2 2 2 . . . . . . . . . . 6 . 
     . b 2 2 2 2 2 2 f f . . 6 . . . 
-    . . b 2 2 2 2 2 f f . . . . . 6 
-    . . . b b b b b b b . . 6 . . . 
-    . . . . . . . . . . . . . . 6 . 
-    . . . . . . . . . . 6 . . 6 . .     
+    . . b 2 2 2 2 2 f f . . . 5 5 5 
+    . . . b b b b b b b . . 6 5 5 5 
+    . . . . . . . . . . . . . 5 5 4 
+    . . . . . . . . . . 6 . . 4 4 .   
 `
 
     export const microphone = img`
@@ -1912,7 +1913,7 @@ f f f f f f f f f f f f f f f f
     .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `*/
 
-export const sampleFirefly = img`
+    export const sampleFirefly = img`
 .ffffffffffffffffffffffffffffff.
 ffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffff
@@ -2267,6 +2268,25 @@ bffffffffffffffffffffffffffffffb
 `
 
     export const oneToFive = [one, two, three, four, five]
+
+    export const servo_set_angle = img`
+    . . . . . . . . . . . . . . . . 
+    . . . 8 8 8 . . . . 4 . . . . . 
+    . . 8 8 8 8 8 . . . 2 . . . . . 
+    . . 8 8 8 8 8 . . . 2 4 . . . . 
+    . . 8 8 8 8 8 . . . . 2 . . . . 
+    . . 8 8 8 8 8 . . . . 2 . . . . 
+    . . 8 8 8 8 8 . . . . 2 . . . . 
+    . . 8 b b b 8 . . 4 . 2 . 4 . . 
+    . . 8 b c b b . . 2 4 2 4 2 . . 
+    . . 8 b c c b . . . 2 2 2 . . . 
+    . . 8 8 b b c b . . . 2 . . . . 
+    . . 8 8 8 8 b c b . . . . . . . 
+    . . 8 8 8 8 8 b c b . . . 5 5 5 
+    . . 8 8 8 8 8 . b c b . . 5 5 5 
+    . . . 8 8 8 . . . b c . . 5 5 4 
+    . . . . . . . . . . . b . 4 4 . 
+    `
 
     /* maybe use these later
     export const rc_high = img`
