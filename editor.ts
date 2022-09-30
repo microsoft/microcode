@@ -218,30 +218,35 @@ namespace microcode {
                     this.app.pushScene(new Home(this.app))
                 }
             )
+            const forward = () => this.cursor.click()
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.A.id,
-                () => this.cursor.click()
+                forward
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
-                controller.B.id,
-                () => {
-                    if (!this.cursor.cancel()) {
-                        if (this.navigator.getRow() == 0) {
-                            this.app.popScene()
-                            this.app.pushScene(new Home(this.app))
-                        } else {
-                            if (this.navigator.atRuleStart()) {
-                                const target = this.navigator.initialCursor(
-                                    0,
-                                    0
-                                )
-                                this.moveTo(target)
-                            } else this.scrollAndMove(CursorDir.Back)
-                        }
+                controller.A.id + keymap.PLAYER_OFFSET,
+                forward
+            )
+            
+            const back = () => {
+                if (!this.cursor.cancel()) {
+                    if (this.navigator.getRow() == 0) {
+                        this.app.popScene()
+                        this.app.pushScene(new Home(this.app))
+                    } else {
+                        if (this.navigator.atRuleStart()) {
+                            const target = this.navigator.initialCursor(0, 0)
+                            this.moveTo(target)
+                        } else this.scrollAndMove(CursorDir.Back)
                     }
                 }
+            }
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
+                controller.B.id,
+                back
             )
             this.hudroot = new Placeable()
             this.hudroot.xfrm.localPos = new Vec2(0, Screen.TOP_EDGE)
