@@ -541,7 +541,7 @@ namespace microcode {
     loop.constraints = {}
     loop.constraints.only = ["constant"]
 
-    const iconFieldEditor: FieldEditor = {
+    export const iconFieldEditor: FieldEditor = {
         init: img`
         . . . . .
         . 1 . 1 .

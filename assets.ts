@@ -97,7 +97,8 @@ namespace microcode {
             this.reg[TID_ACTUATOR_CUP_C_ASSIGN] = icondb.cupCassign
 
             // modifiers
-            // value producers that are also consumers
+            TID_MODIFIER_ICON_EDITOR
+            this.reg[TID_MODIFIER_ICON_EDITOR] = icondb.iconEditor
             this.reg[TID_MODIFIER_RANDOM_TOSS] = icondb.diceToss
             this.reg[TID_MODIFIER_LOOP] = icondb.loop
 
@@ -227,7 +228,16 @@ function scaleUp(led55: Image) {
 }
 
 namespace icondb {
-    ;``
+    export const iconEditor = scaleUp(
+        img`
+        . . . . .
+        . 1 . 1 .
+        . . . . . 
+        1 . . . 1
+        . 1 1 1 .
+        `
+    )
+
     export const MISSING = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
