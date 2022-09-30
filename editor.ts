@@ -362,11 +362,15 @@ namespace microcode {
 
         private drawBackground() {
             control.enablePerfCounter()
-            Screen.drawTransparentImage(
-                editorBackground,
-                Screen.LEFT_EDGE,
-                Screen.TOP_EDGE
-            )
+            let x = Screen.LEFT_EDGE
+            while (x < Screen.RIGHT_EDGE) {
+                Screen.drawTransparentImage(
+                    editorBackground,
+                    x,
+                    Screen.TOP_EDGE
+                )
+                x += editorBackground.width
+            }
         }
 
         private drawPageNavigation() {
