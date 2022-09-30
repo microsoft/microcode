@@ -9,8 +9,8 @@ samples.
 
 The goal of this program is to show a cute heart animation.
 
-We use a single rule with a timer. The timer starts a screen animation
-with two images. Since this happens in a loop, it creates a cool heart animation.
+We use a single rule with a ![timer](./images/generated/icon_S4.png){:class="icon"} timer. The timer starts a ![screen](./images/generated/icon_A5.png){:class="icon"} screen animation
+with two images. Each time the timer triggers again, it repaints both images which create the heart animation.
 
 ### improvement ideas
 
@@ -31,6 +31,17 @@ and prints a frowney.
 ### improvement ideas
 
 * add sound emoji for each buttons to make it more lively
+
+## ![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"} Pet Hamster
+
+![Pet Hamster MicroCode program](./images/generated/sample_pet_hamster.png){:class="sample"}
+
+Keep your micro:pet happy by petting
+its head (Logo) and don't shake it, it does not like that.
+
+### improvement ideas
+
+* use more rules to manipulate the mood of your pet
 
 ## ![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"} Rock Paper Scissors
 
@@ -65,18 +76,6 @@ in your hands!
 
 * add sound emoji when timer expires
 * add a better expired potato animation
-
-## ![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"} Pet Hamster
-
-![Pet Hamster MicroCode program](./images/generated/sample_pet_hamster.png){:class="sample"}
-
-Keep your micro:pet happy by petting
-its head (Logo) and don't shake it, it does not like that.
-
-### improvement ideas
-
-* use more rules to manipulate the mood of your pet
-
 
 ## ![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"} Clap Lights
 

@@ -56,7 +56,7 @@ namespace docs {
 
     function renderSamples(images: RenderedImage[]) {
         app.popScene()
-        for (const sample of microcode.samples()) {
+        for (const sample of microcode.samples(false)) {
             console.log(`render sample ${sample.label}`)
             const icon = microcode.icons.get(sample.icon, true)
             if (icon) appendImage(images, "icon_sample", sample.label, icon)

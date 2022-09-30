@@ -15,7 +15,7 @@ namespace microcode {
                 y = -55
             this.sampleButtons = []
             let rowButtons: Button[] = []
-            samples()
+            samples(true)
                 .filter(sample => !!sample.icon)
                 .forEach(sample => {
                     const btn = new Button({
