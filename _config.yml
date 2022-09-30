@@ -10,5 +10,5 @@ include:
 plugins:
   - jekyll-remote-theme
 show_downloads: false
-title: Microsoft MicroCode
-description: Physical computing for young coders
+title: Microsoft MicroCode BETA
+description: Physical computing for young coders on the micro:bit V2
