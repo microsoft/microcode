@@ -45,26 +45,29 @@ The left-hand side of a rule, the `When` section, starts with an
 -   ![repeat timer image](./images/generated/icon_S4.png){:class="icon"} `repeat timer` of a time
 -   ![variable A image](./images/generated/icon_S9A.png){:class="icon"} ![variable B image](./images/generated/icon_S9B.png){:class="icon"} ![variable C image](./images/generated/icon_S9C.png){:class="icon"} `variable (A,B,C) changed` to a number
 
+If the `when` section is left section,
+the rule will run once when the page is started.
+
 ### Event parameters
 
 An event tile can be followed by none, one or more parameter tiles which determines whether or not execution will proceed from the **When** section to the **Do** section, Every event has a default parameter, which is used when no parameter is specified. The defaults are:
 
--   `press`, defaults to `button A` ![press image](./images/generated/icon_F3.png){:class="icon"};
+-   ![press](./images/generated/icon_S2.png){:class="icon"} `press`, defaults to `button A` ![press image](./images/generated/icon_F3.png){:class="icon"};
     other options include `button B` ![press image](./images/generated/icon_F4.png){:class="icon"},
     `micro:bit logo` ![press image](./images/generated/icon_F7.png){:class="icon"},
     `pin 0` ![press image](./images/generated/icon_F0.png){:class="icon"},
     `pin 1` ![press image](./images/generated/icon_F1.png){:class="icon"}, `pin 2` ![press image](./images/generated/icon_F2.png){:class="icon"}
--   `release`, defaults and options are the same as for **press**
+-   ![release](./images/generated/icon_S2B.png){:class="icon"} `release`, defaults and options are the same as for `press`
 
 The dialog below shows the parameters associated with the button press/release events.
 
 ![parameters for press/release event](./images/eventParameterDialog.jpg){:class="screenshot"}
 
--   ![accelerometer](./images/generated/icon_S3.png){:class="icon"} `move`, defaults to ![shake](./images/generated/icon_F17_shake.png){:class="icon"} `shake`; other options include `tilt up`, `tilt down`, `tilt left` and `tilt right`
+-   ![accelerometer](./images/generated/icon_S3.png){:class="icon"} `move`, defaults to ![shake](./images/generated/icon_F17_shake.png){:class="icon"} `shake`; other options include ![tilt up](./images/generated/icon_F17_tilt_up.png){:class="icon"} `tilt up`, ![tilt down](./images/generated/icon_F17_tilt_down.png){:class="icon"} `tilt down`, ![tilt left](./images/generated/icon_F17_tilt_left.png){:class="icon"} `tilt left` and ![tilt right](./images/generated/icon_F17_tilt_right.png){:class="icon"} `tilt right`
 -   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear`, defaults to ![loud](./images/generated/icon_F15.png){:class="icon"}`loud`
 -   ![radio receive](./images/generated/icon_S7.png){:class="icon"} `radio receive`, defaults to `any`
 -   ![timer](./images/generated/icon_S4.png){:class="icon"} `repeat timer`, defaults to `1/4 second`
--   **variable (A,B,C) changed**, defaults to `any`
+-   ![variable A image](./images/generated/icon_S9A.png){:class="icon"} `variable (A,B,C) changed`, defaults to `any` (any value change triggers it)
 
 ### Creating values
 
