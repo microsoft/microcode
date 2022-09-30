@@ -12,7 +12,7 @@ The goal of this program is to show a cute heart animation.
 We use a single rule with a ![timer](./images/generated/icon_S4.png){:class="icon"} timer. The timer starts a ![screen](./images/generated/icon_A5.png){:class="icon"} screen animation
 with two images. Each time the timer triggers again, it repaints both images which create the heart animation.
 
--   ![rule handle](./images/generated/icon_rule_handle.png){:class="icon"} **when** ![timer](./images/generated/icon_S4.png){:class="icon"} timer triggers, ![rule arrow](./images/generated/icon_rule_arrow.png){:class="icon"}**do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with smiley.
+-  **when** ![timer](./images/generated/icon_S4.png){:class="icon"} timer triggers, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with smiley.
 
 ### improvement ideas
 
@@ -27,8 +27,8 @@ The goal of this program is to show a smiley
 when pressing A, and a frowney when
 pressing B.
 
--   ![rule handle](./images/generated/icon_rule_handle.png){:class="icon"} **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, ![rule arrow](./images/generated/icon_rule_arrow.png){:class="icon"} **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with smiley.
--   ![rule handle](./images/generated/icon_rule_handle.png){:class="icon"} **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button B](./images/generated/icon_F4.png){:class="icon"} button B, ![rule arrow](./images/generated/icon_rule_arrow.png){:class="icon"} **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with frowney.
+-   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with smiley.
+-   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button B](./images/generated/icon_F4.png){:class="icon"} button B, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with frowney.
 
 ### improvement ideas
 
