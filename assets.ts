@@ -22,7 +22,6 @@ namespace microcode {
             // editor icons
             this.reg["delete"] = icondb.btn_delete
             this.reg["plus"] = icondb.btn_plus
-            this.reg["reset"] = icondb.btn_play
             this.reg["when_insertion_point"] = icondb.btn_when_insertion_point
             this.reg["do_insertion_point"] = icondb.btn_do_insertion_point
             this.reg["rule_arrow"] = icondb.rule_arrow
@@ -298,24 +297,6 @@ namespace icondb {
     ///
     /// BUTTON ICONS
     ///
-    export const btn_play = img`
-    . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . .
-    . . . . . . . 1 . . . . . . . .
-    . . . . . . . 1 1 . . . . . . .
-    . . . . . 1 1 1 1 1 . . . . . .
-    . . . . 1 1 7 1 1 7 . . . . . .
-    . . . 1 1 7 6 1 7 6 . . . . . .
-    . . . 1 7 6 . 7 6 . . . . . . .
-    . . . 1 7 . . 6 . . 1 7 . . . .
-    . . . 1 7 . . . . . 1 7 . . . .
-    . . . 1 1 7 . . . 1 1 7 . . . .
-    . . . 6 1 1 1 1 1 1 7 6 . . . .
-    . . . . 6 7 7 7 7 7 6 . . . . .
-    . . . . . 6 6 6 6 6 . . . . . .
-    . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . .
-    `
     export const btn_stop = img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -374,23 +355,22 @@ namespace icondb {
     `
 
     export const loop = img`
-. . . . . . . . . . . . . . . .
-. . . . 8 . . . . . . . . . . .
-. . . 8 9 8 8 8 8 8 . . . . . .
-. . 8 9 9 9 9 9 9 9 8 . . . . .
-. 8 9 9 9 9 9 9 9 9 9 8 . . . .
-. . 8 9 9 9 9 9 9 9 9 9 8 . . .
-. . . 8 9 8 8 8 8 9 9 9 9 8 . .
-. . . . 8 . . . . 8 9 9 9 8 . .
-. . . . . . . . . 8 9 9 9 8 . .
-. . . . . . . . . 8 9 9 9 8 . .
-. . . . . . 8 8 8 9 9 9 9 8 . .
-. . . . . 8 9 9 9 9 9 9 9 8 . .
-. . . . . 8 9 9 9 9 9 9 8 . . .
-. . . . . 8 9 9 9 9 9 8 . . . .
-. . . . . . 8 8 8 8 8 . . . . .
-. . . . . . . . . . . . . . . .
-`
+    . . . . . . . . . . . . . . . . 
+    . . . 4 4 4 4 4 4 4 4 4 . . . . 
+    . . 4 e 4 4 4 1 4 4 4 e 4 . . . 
+    . . 4 4 4 4 1 1 4 4 4 4 4 d . . 
+    . . 4 4 4 1 1 1 1 1 4 4 4 d . . 
+    . . 4 4 4 c 1 1 c 1 1 4 4 d . . 
+    . . 4 4 4 f c 1 f c 1 1 4 d . . 
+    . . 4 4 4 4 f c 4 f c 1 4 d . . 
+    . . 4 c 1 4 4 f 4 4 c 1 4 d . . 
+    . . 4 c 1 4 4 4 4 4 c 1 4 d . . 
+    . . 4 c 1 1 4 4 4 c 1 1 4 d . . 
+    . . 4 f c 1 1 1 1 1 1 f 4 d . . 
+    . . 4 4 f c c c c c f 4 4 d . . 
+    . . 4 e 4 f f f f f 4 e 4 d . . 
+    . . . 4 4 4 4 4 4 4 4 4 d d . . 
+    . . . d d d d d d d d d d . . . `
 
     export const btn_when_insertion_point = img`
     dddddddddddddddddd
