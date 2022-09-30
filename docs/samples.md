@@ -120,7 +120,7 @@ when a radio message is received.
 ![firefly MicroCode program](./images/generated/sample_firefly.png){:class="sample"}
 
 Fireflies in the wild synchronize their glowing although there is no leader to give the tempo.
-Go to http://ncase.me/fireflies/ and read about the fireflies synchronization phenomenon.
+Go to [http://ncase.me/fireflies/](http://ncase.me/fireflies/) and read about the fireflies synchronization phenomenon.
 
 Just like fireflies in the wild, you can create program that synchronize blinking
 between any number of micro:bit!
