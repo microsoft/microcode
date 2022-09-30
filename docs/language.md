@@ -36,7 +36,7 @@ but different actions. If the actions of the two rules use the same resource (fo
 show something on the micro:bit screen), then the last rule in order from top to bottom wins. That is,
 the order of the rules only matters when different rules act on the same resource.
 
-## When section {#when}
+## WHEN section {#when}
 
 The left-hand side of a rule, the `When` section, starts with an
 **event** tile from the following dialog, which appears when you select the leftmost empty tile of a rule:
@@ -93,7 +93,7 @@ The repeat timer is parameterized with various times that can also be sequenced 
 -   `5 seconds`: ![5 seconds](./images/generated/icon_F19.png){:class="icon"}
 -   `? seconds`: ![0 to 1 second, chosen randomly](./images/generated/icon_F18.png){:class="icon"} - 0 to 1 second, chosen randomly
 
-## Do section {#do}
+## DO section {#do}
 
 The right-hand side of a rule, the **Do** section, starts with an
 **command** tile from the following list:
@@ -125,3 +125,16 @@ For commands that expect a numeric value (![radio send](./images/generated/icon_
 -   the **constant values** ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, 2, 3, 5, and 10 (maybe we'll add 0 soon)
 -   the **values of variables**  ![out of variable A](./images/generated/icon_S9A.png){:class="icon"} A, B, and C
 -   a ![dice](./images/generated/icon_M22.png){:class="icon"} **random number generator** yields a random integer between `1` and `5` (inclusive) by default
+
+## Jacdac Modules {#jacdac}
+
+MicroCode will detect [Jacdac](https://aka.ms/jacdac) module and automatically display tiles for some of them.
+
+### WHEN modules
+
+- ![magnet detector](./images/generated/icon_S10.png){:class="icon"} `magnet detector` detects the presence of a magnet,
+
+### DO modules
+
+- ![LED](./images/generated/icon_A8.png){:class="icon"} `LED` set a color animation on a programmable LED strip
+- ![servo set angle tile](./images/generated/icon_A21_.png){:class="icon"} `servo` controls the orientation of a servo motor arm. The ![servo set angle tile](./images/generated/icon_A21_.png){:class="icon"} `servo` arm orientation is mapped to the wall clock hours: `0` (or `12`) is on rotated 90 degree from the resting position to the left, `6` is rotated 90 degree right from the rest position.
