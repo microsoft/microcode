@@ -2,6 +2,8 @@
 
 Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 
+> MicroCode is still in **beta** development and might change in the future.
+
 {% include youtube.html id="ymP7x8GXgz4" %}
 
 -   Kid friendly icon-based editor and small programming language
