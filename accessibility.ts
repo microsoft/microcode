@@ -113,7 +113,7 @@ namespace accessibility {
         M20C: "variable C",
         M21: "radio value",
         M22: "dice",
-        M23: "minus",
+        M23: "loop",
 
         A8: "LED",
 

@@ -135,15 +135,15 @@ namespace microcode {
             terminal: true,
         },
     }
-
     /*
-    const maxOneValueIn = {
+    const maxOneLoop = {
         maxCount: {
-            category: "value_in",
+            category: "loop",
             count: 1,
         },
     }
 
+ 
     const maxOneValueOut = {
         maxCount: {
             category: "value_out",
@@ -540,6 +540,7 @@ namespace microcode {
     loop.priority = 80
     loop.constraints = {}
     loop.constraints.allow = { categories: ["constant"] }
+    loop.constraints.disallow = { categories: ["loop"] }
 
     const iconFieldEditor: FieldEditor = {
         init: img`
