@@ -1,4 +1,4 @@
-# [Microsoft MicroCode](https://aka.ms/microcode)
+# [Microsoft MicroCode](https://aka.ms/microcode) (beta)
 
 > MicroCode is still in **beta** development and might change in the future.
 

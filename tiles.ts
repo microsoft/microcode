@@ -113,6 +113,8 @@ namespace microcode {
     export const TID_MODIFIER_RGB_LED_COLOR_5 = "A20_5"
     export const TID_MODIFIER_RGB_LED_COLOR_6 = "A20_6"
 
+    export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
+
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
         TID_MODIFIER_PAGE_2,
@@ -400,10 +402,12 @@ namespace microcode {
         "twinkle",
         "yawn",
     ]
-    emojis.forEach(e => {
+    const emoji_ms = [1478, 1233, 547, 4794, 1687, 1315, 8192, 2083, 6772, 2816]
+    emojis.forEach((e, idx) => {
         const tid = "M19" + e
         const emoji_mod = new ModifierDefn(tid, e, "sound_emoji", 10)
         emoji_mod.jdParam = e
+        emoji_mod.jdDuration = emoji_ms[idx]
         tilesDB.modifiers[tid] = emoji_mod
     })
 
@@ -474,7 +478,7 @@ namespace microcode {
     rgbled.serviceClassName = "led"
     rgbled.serviceCommand = jacs.CMD_SET_REG | 2
     rgbled.jdExternalClass = 0x1609d4f0
-    rgbled.jdKind = JdKind.Sequance
+    rgbled.jdKind = JdKind.Sequence
     rgbled.serviceArgFromModifier = (buf: Buffer) => {
         if (!buf) buf = hex`2f2f2f`
         let b = buf
@@ -488,6 +492,18 @@ namespace microcode {
         }
         return b
     }
+
+    const servoSetAngle = addActuator(
+        TID_MODIFIER_SERVO_SET_ANGLE,
+        "Servo",
+        "constant"
+    )
+    servoSetAngle.priority = 500
+    servoSetAngle.serviceClassName = "servo"
+    servoSetAngle.jdExternalClass = 0x12fc9103
+    servoSetAngle.serviceCommand = jacs.CMD_SET_REG | 2
+    servoSetAngle.jdKind = JdKind.NumFmt
+    servoSetAngle.jdParam = jacs.NumFmt.I32
 
     const addReadValue = (
         tid: string,

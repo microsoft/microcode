@@ -50,6 +50,7 @@ namespace microcode {
             this.reg["reaction_time"] = icondb.sampleReactionTime
             this.reg["hot_potato"] = icondb.sampleHotPotato
             this.reg["clap_lights"] = icondb.sampleClapLights
+            this.reg["railroad_crossing"] = icondb.sampleRailCrossingLight
 
             // sensors
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
@@ -120,6 +121,8 @@ namespace microcode {
             this.reg[TID_MODIFIER_RGB_LED_COLOR_4] = icondb.tile_color_magenta
             this.reg[TID_MODIFIER_RGB_LED_COLOR_5] = icondb.tile_color_yellow
             this.reg[TID_MODIFIER_RGB_LED_COLOR_6] = icondb.tile_color_black
+
+            this.reg[TID_MODIFIER_SERVO_SET_ANGLE] = icondb.servo_set_angle
 
             this.reg[TID_MODIFIER_EMOJI_GIGGLE] = icondb.soundGiggle
             this.reg[TID_MODIFIER_EMOJI_HAPPY] = icondb.soundHappy
@@ -1155,22 +1158,22 @@ namespace icondb {
 `
 
     export const rgbLed = img`
-    . . . . f f f f f f f . . . . .
-    . . f f f 4 4 f 9 9 f f f . . .
-    . f 5 5 f 4 4 f 9 9 f b b f . .
-    . f 5 5 f f f f f f f b b f d .
-    f f f f f . . . . . f f f f f d
-    f 4 4 f . . . . . . . f 7 7 f d
-    f 4 4 f . . . . . . . f 7 7 f d
-    f f f f . . . . . . . f f f f d
-    f 2 2 f . . . . . . . f e e f d
-    f 2 2 f . . . . . . . f e e f d
-    f f f f . . . . . . . f f f f d
-    b f 6 6 f f f f f f f c c f b d
-    . f 6 6 f 8 8 f a a f c c f b d
-    . b f f f 8 8 f a a f f f f d d
-    . . b b f f f f f f f b b d . .
-    . . . . d b b b b b b d d . . .
+    . . . . f f f f f f f . . . . . 
+    . . f f f 4 4 f 9 9 f f f . . . 
+    . f 5 5 f 4 4 f 9 9 f b b f . . 
+    . f 5 5 f f f f f f f b b f d . 
+    f f f f f . . . . . f f f f f d 
+    f 4 4 f . . . . . . . f 7 7 f d 
+    f 4 4 f . . . . . . . f 7 7 f d 
+    f f f f . . . . . . . f f f f d 
+    f 2 2 f . . . . . . . f e e f d 
+    f 2 2 f . . . . . . . f e e f d 
+    f f f f . . . . . . . f f f f d 
+    b f 6 6 f f f f f f f c c f b d 
+    . f 6 6 f 8 8 f a a f c c 5 5 5 
+    . b f f f 8 8 f a a f f f 5 5 5 
+    . . b b f f f f f f f b b 5 5 4 
+    . . . . d b b b b b b d d 4 4 . 
 `
 
     export const magnet = img`
@@ -1186,10 +1189,10 @@ namespace icondb {
     . 2 2 . . . . . . . . 6 . . . . 
     . 2 2 2 . . . . . . . . . . 6 . 
     . b 2 2 2 2 2 2 f f . . 6 . . . 
-    . . b 2 2 2 2 2 f f . . . . . 6 
-    . . . b b b b b b b . . 6 . . . 
-    . . . . . . . . . . . . . . 6 . 
-    . . . . . . . . . . 6 . . 6 . .     
+    . . b 2 2 2 2 2 f f . . . 5 5 5 
+    . . . b b b b b b b . . 6 5 5 5 
+    . . . . . . . . . . . . . 5 5 4 
+    . . . . . . . . . . 6 . . 4 4 .   
 `
 
     export const microphone = img`
@@ -2183,6 +2186,41 @@ bffffffffffffffffffffffffffffffb
     .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
 
+    export const sampleRailCrossingLight = img`
+    .999999991999999999999999999999.
+    99999999999999199999999919999999
+    9999ccccc99999999999999999991999
+    999c44444c9999999991999991999999
+    99c4222224c999999999999999999991
+    99c4222224c999999999999999999999
+    99c4222224c999999999999999999999
+    99c4222224c999999999999999999999
+    99c4222224c999999999999999999999
+    999c44444c9999999999999999999999
+    9999ccccc9999999999999999992d999
+    99999bcb99999999999999999bbd2999
+    9999ccccc99999999999999bbdddb999
+    999c44444c999999999999b2ddbb9999
+    99c4888884c999999999bbdd2b999999
+    99c4888884c99999999b2ddb99999999
+    99c4888884c999999bbdd2b999999999
+    99c4888884c9999bb2ddb99999999999
+    99c4888884c999bddd2b999999999999
+    999c44444c99bbddbb99999999999999
+    9999ccccc99bdddb9999999999999999
+    99999bcbfbb2dbb99999999999999999
+    99999bcbbddd29999999999999999999
+    99999cbdddbb99999999999999999999
+    9999bbddbb9999999999999999999999
+    999b2ddb999999999999999999999999
+    999dd2bc999999999999999999999999
+    9999bccc999999999999999999999999
+    97999ccc999999999999999999999999
+    79979ccc999999999999999999999555
+    99799ccc999999999999999999999555
+    b7777ccceeeeeeeeeeeeeeeeeeeee554
+    .bbbbbbbbbbbbbbbbbbbbbbbbbbbb44.
+    `
     export const settingsGear = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . d d . . . . . . .
@@ -2255,6 +2293,25 @@ bffffffffffffffffffffffffffffffb
 `
 
     export const oneToFive = [one, two, three, four, five]
+
+    export const servo_set_angle = img`
+    . . . . . . . . . . . . . . . . 
+    . . . 8 8 8 . . . . 4 . . . . . 
+    . . 8 8 8 8 8 . . . 2 . . . . . 
+    . . 8 8 8 8 8 . . . 2 4 . . . . 
+    . . 8 8 8 8 8 . . . . 2 . . . . 
+    . . 8 8 8 8 8 . . . . 2 . . . . 
+    . . 8 8 8 8 8 . . . . 2 . . . . 
+    . . 8 b b b 8 . . 4 . 2 . 4 . . 
+    . . 8 b c b b . . 2 4 2 4 2 . . 
+    . . 8 b c c b . . . 2 2 2 . . . 
+    . . 8 8 b b c b . . . 2 . . . . 
+    . . 8 8 8 8 b c b . . . . . . . 
+    . . 8 8 8 8 8 b c b . . . 5 5 5 
+    . . 8 8 8 8 8 . b c b . . 5 5 5 
+    . . . 8 8 8 . . . b c . . 5 5 4 
+    . . . . . . . . . . . b . 4 4 . 
+    `
 
     /* maybe use these later
     export const rc_high = img`
