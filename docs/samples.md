@@ -3,6 +3,18 @@
 These are some of the annotated MicroCode
 samples.
 
+## ![new program](./images/generated/icon_new_program.png){:class="icon"} First program
+
+This is a hidden sample, it is the code you will have in the editor if you keep pressing **A**
+in the editor after selecting the new program sample.
+
+![First MicroCode program](./images/generated/sample_first_program.png){:class="sample"}
+
+The program has one rule that paints a smiley when button A (on the micro:bit) is pressed.
+
+-   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with smiley.
+
+
 ## ![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"} Flashing Heart
 
 ![Flashing Heart MicroCode program](./images/generated/sample_flashing_heart.png){:class="sample"}
