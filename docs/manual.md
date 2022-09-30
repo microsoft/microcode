@@ -5,8 +5,8 @@ Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 {% include youtube.html id="ymP7x8GXgz4" %}
 
 -   Kid friendly icon-based editor and small programming language
--   Runs on the micro:bit V2, no computer or internet needed
--   Keyboard, screen reader accessible
+-   Runs on the micro:bit V2 or in the web
+-   Keyboard, mouse, touch, screen reader accessible
 
 ## Try it out!
 
