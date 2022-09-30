@@ -24,6 +24,7 @@ const refreshUI = () => {
         ? "micro:bit connect"
         : "micro:bit connecting"
     connectEl.setAttribute("title", statusText)
+    connectEl.setAttribute("aria-label", statusText)
 }
 
 function simPostMessage(channel, data) {
@@ -161,9 +162,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const conDiv = document.createElement("div")
         conDiv.style.marginTop = "0.25rem"
         conDiv.innerText = "connect"
+        conDiv.setAttribute("aria-hidden", "true")
         connectEl.append(conDiv)
         const mbitEl = document.createElement("img")
         mbitEl.setAttribute("alt", "micro:bit logo")
+        mbitEl.setAttribute("aria-hidden", "true")
         mbitEl.setAttribute(
             "src",
             "https://cdn.sanity.io/images/ajwvhvgo/production/6aada623aed7540f77754cbd49b36f05d0fd6b86-150x89.svg?w=435&q=80&fit=max&auto=format"
@@ -456,7 +459,10 @@ addSimMessageHandler("accessibility", data => {
             value += ` do ${dos.map(mapAriaId).join(" ")}`
         else value += ` do nothing`
     }
+    setLiveRegion(value)
+})
 
+function setLiveRegion(value) {
     // apply to browser
     if (!liveRegion) {
         const style =
@@ -481,7 +487,7 @@ addSimMessageHandler("accessibility", data => {
     if (liveRegion.textContent === value) liveRegion.textContent = ""
     //console.debug(`aria-live: ${value}`)
     liveRegion.textContent = value
-})
+}
 
 function hexToUint8Array(hex) {
     const bytes = new Uint8Array(Math.ceil(hex.length / 2))
