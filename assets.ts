@@ -51,9 +51,6 @@ namespace microcode {
             this.reg["hot_potato"] = icondb.sampleHotPotato
             this.reg["clap_lights"] = icondb.sampleClapLights
 
-            // special icons
-            this.reg["plus_operator"] = icondb.plus_operator
-
             // sensors
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
@@ -102,7 +99,7 @@ namespace microcode {
             // modifiers
             // value producers that are also consumers
             this.reg[TID_MODIFIER_RANDOM_TOSS] = icondb.diceToss
-            this.reg[TID_MODIFIER_MINUS_OPERATOR] = icondb.minus_operator
+            this.reg[TID_MODIFIER_LOOP] = icondb.loop
 
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
@@ -230,7 +227,7 @@ function scaleUp(led55: Image) {
 }
 
 namespace icondb {
-``
+    ;``
     export const MISSING = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -366,42 +363,23 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
     `
 
-    export const minus_operator = img`
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . c c c c c c c c c . .
-    . . c c c c c c c c c . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-`
-
-    export const plus_operator = img`
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . c c c . . . . .
-    . . . . . c c c . . . . .
-    . . . . . c c c . . . . .
-    . . c c c c c c c c c . .
-    . . c c c c c c c c c . .
-    . . . . . c c c . . . . .
-    . . . . . c c c . . . . .
-    . . . . . c c c . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
+    export const loop = img`
+. . . . . . . . . . . . . . . .
+. . . . 8 . . . . . . . . . . .
+. . . 8 9 8 8 8 8 8 . . . . . .
+. . 8 9 9 9 9 9 9 9 8 . . . . .
+. 8 9 9 9 9 9 9 9 9 9 8 . . . .
+. . 8 9 9 9 9 9 9 9 9 9 8 . . .
+. . . 8 9 8 8 8 8 9 9 9 9 8 . .
+. . . . 8 . . . . 8 9 9 9 8 . .
+. . . . . . . . . 8 9 9 9 8 . .
+. . . . . . . . . 8 9 9 9 8 . .
+. . . . . . 8 8 8 9 9 9 9 8 . .
+. . . . . 8 9 9 9 9 9 9 9 8 . .
+. . . . . 8 9 9 9 9 9 9 8 . . .
+. . . . . 8 9 9 9 9 9 8 . . . .
+. . . . . . 8 8 8 8 8 . . . . .
+. . . . . . . . . . . . . . . .
 `
 
     export const btn_when_insertion_point = img`
@@ -1912,7 +1890,7 @@ f f f f f f f f f f f f f f f f
     .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `*/
 
-export const sampleFirefly = img`
+    export const sampleFirefly = img`
 .ffffffffffffffffffffffffffffff.
 ffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffff

@@ -44,6 +44,7 @@ namespace microcode {
         Page = 5,
         Sequance = 6,
         NumFmt = 7,
+        Loop = 8,
     }
 
     export class TileDefn {
