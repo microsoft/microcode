@@ -20,7 +20,7 @@ Execution of the MicroCode program starts on page 1. All the rules on that page 
 Rules on another page only become active when the program switches to that page
 (via an explicit switch-page action, discussed later).
 
-![Hot potato sample](./images/generated/sample_hot_potato.png){:class="screenshot"}
+![Hot potato sample](./images/generated/sample_hot_potato.png){:class="sample"}
 
 ## Rules and conflicts
 
