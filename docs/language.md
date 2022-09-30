@@ -60,8 +60,8 @@ The dialog below shows the parameters associated with the button press/release e
 
 ![parameters for press/release event](./images/eventParameterDialog.jpg){:class="screenshot"}
 
--   `move`, defaults to `shake` ![press image](./images/generated/icon_F17_shake.png){:class="icon"}; other options include ...
--   **hear**, defaults to `loud`; other options include `tilt up`, `tilt down`, `tilt left` and `tilt right`
+-   ![accelerometer](./images/generated/icon_S3.png){:class="icon"} `move`, defaults to ![shake](./images/generated/icon_F17_shake.png){:class="icon"} `shake`; other options include `tilt up`, `tilt down`, `tilt left` and `tilt right`
+-   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear`, defaults to ![loud](./images/generated/icon_F15.png){:class="icon"}`loud`
 -   **radio receive**, defaults to `any`
 -   **repeat timer**, defaults to `1/4 second`
 -   **variable (A,B,C) changed**, defaults to `any`
@@ -89,7 +89,7 @@ The repeat timer is parameterized with various times that can also be sequenced 
 The right-hand side of a rule, the **Do** section, starts with an
 **command** tile from the following list:
 
--   **screen** shows an animation sequence on the LED screen.
+-   ![screen](./images/generated/icon_A5.png){:class="icon"}  `screen` shows an animation sequence on the LED screen.
 -   **sound emoji** plays a given emoji
 -   **radio send** sends a given number over the radio
 -   **switch page** transfers execution control to a given page
@@ -99,10 +99,10 @@ A command can be followed by various parameter tiles, depending on the type
 of command. As with events, every command has a default parameter, for the
 case where no parameter tile is given:
 
--   **screen** shows a `happy face` by default
--   **sound emoji** plays `giggle` by default
--   **radio send** sends the number `1` by default
--   **switch page** switches to page `1` by default
+-   ![screen](./images/generated/icon_A5.png){:class="icon"} `screen` shows a `happy face` by default
+-   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays ![emoji giggle](./images/generated/icon_M19giggle.png){:class="icon"} `giggle` by default
+-   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends the number `1` by default
+-   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` switches to page `1` by default
 -   **set variable** puts a number into a variable (A, B, C)
 
 Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5`.
