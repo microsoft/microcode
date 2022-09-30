@@ -690,6 +690,7 @@ namespace jacs {
         private emitRoleCommand(rule: microcode.RuleDefn) {
             const actuator = rule.actuators.length ? rule.actuators[0] : null
             const wr = this.writer
+            const currValue = () => this.currValue().read(wr)
             if (actuator == null) return // do nothing
             if (actuator.tid == microcode.TID_ACTUATOR_PAINT) {
                 this.emitSequance(rule, this.currAnimation, 400, 5)
@@ -704,7 +705,7 @@ namespace jacs {
                 this.emitSleep(ANTI_FREEZE_DELAY)
                 this.emitValueOut(rule, 1)
                 const pv = this.pipeVar(actuator.jdParam)
-                pv.write(wr, this.currValue().read(wr))
+                pv.write(wr, currValue())
                 this.emitSendCmd(
                     this.pipeRole(actuator.jdParam),
                     CMD_CONDITION_FIRE
@@ -716,7 +717,7 @@ namespace jacs {
                     literal(NumFmt.F64),
                     literal(0),
                     literal(0),
-                    this.currValue().read(wr),
+                    currValue(),
                 ])
                 this.emitSendCmd(this.lookupActuatorRole(rule), 0x81)
             } else if (actuator.jdKind == microcode.JdKind.NumFmt) {
@@ -727,11 +728,38 @@ namespace jacs {
                     literal(sz),
                     literal(0),
                 ])
+                if (actuator.tid == microcode.TID_MODIFIER_SERVO_SET_ANGLE) {
+                    // TODO no module yet in Jacs
+                    // if (curr >= 12) { curr -= 12 }
+                    wr.emitIf(
+                        wr.emitExpr(OpExpr.EXPR2_LE, [
+                            literal(12),
+                            currValue(),
+                        ]),
+                        () => {
+                            this.currValue().write(
+                                wr,
+                                wr.emitExpr(OpExpr.EXPR2_SUB, [
+                                    currValue(),
+                                    literal(12),
+                                ])
+                            )
+                        }
+                    )
+                    // curr = curr * ((360/12) << 16)
+                    this.currValue().write(
+                        wr,
+                        wr.emitExpr(OpExpr.EXPR2_MUL, [
+                            currValue(),
+                            literal((360 / 12) << 16),
+                        ])
+                    )
+                }
                 wr.emitStmt(OpStmt.STMT4_STORE_BUFFER, [
                     literal(fmt),
                     literal(0),
                     literal(0),
-                    this.currValue().read(wr),
+                    currValue(),
                 ])
                 this.emitSendCmd(
                     this.lookupActuatorRole(rule),
@@ -1001,7 +1029,7 @@ namespace jacs {
     }
 
     export const needsWakeup = [0x14ad1a5d, 0x1f140409, 0x17dc9a1c]
-    export const needsEnable = [0x1ac986cf]
+    export const needsEnable = [0x1ac986cf, 0x12fc9103]
 
     export const serviceClasses: SMap<number> = {
         // m:b
@@ -1019,6 +1047,8 @@ namespace jacs {
         magneticFieldLevel: 0x12fe180f,
         rotaryEncoder: 0x10fa29c9,
         led: 0x1609d4f0,
+        // Others
+        servo: 0x12fc9103,
     }
 
     export const SRV_JACSCRIPT_CONDITION = 0x1196796d

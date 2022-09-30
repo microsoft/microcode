@@ -490,10 +490,17 @@ namespace microcode {
         return b
     }
 
-    const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, "Servo", "constant")
+    const servoSetAngle = addActuator(
+        TID_MODIFIER_SERVO_SET_ANGLE,
+        "Servo",
+        "constant"
+    )
     servoSetAngle.priority = 500
     servoSetAngle.serviceClassName = "servo"
     servoSetAngle.jdExternalClass = 0x12fc9103
+    servoSetAngle.serviceCommand = jacs.CMD_SET_REG | 2
+    servoSetAngle.jdKind = JdKind.NumFmt
+    servoSetAngle.jdParam = jacs.NumFmt.I32
 
     const addReadValue = (
         tid: string,
