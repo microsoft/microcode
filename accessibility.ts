@@ -137,6 +137,7 @@ namespace accessibility {
         N9: "head or tail",
         N10: "clap lights",
         N11: "firefly",
+        N12: "railroad crossing",
 
         S10: "magnet",
 
@@ -146,6 +147,8 @@ namespace accessibility {
         A20_4: "purple",
         A20_5: "yellow",
         A20_6: "black",
+
+        A21_: "servo set angle",
     }
     export function ariaToTooltip(ariaId: string) {
         const s = (liveStrings[ariaId] || "").replaceAll("_", " ")

@@ -50,6 +50,7 @@ namespace microcode {
             this.reg["reaction_time"] = icondb.sampleReactionTime
             this.reg["hot_potato"] = icondb.sampleHotPotato
             this.reg["clap_lights"] = icondb.sampleClapLights
+            this.reg["railroad_crossing"] = icondb.sampleRailCrossingLight
 
             // special icons
             this.reg["plus_operator"] = icondb.plus_operator
@@ -2196,6 +2197,41 @@ bffffffffffffffffffffffffffffffb
     .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
 
+    export const sampleRailCrossingLight = img`
+    .999999991999999999999999999999.
+    99999999999999199999999919999999
+    9999ccccc99999999999999999991999
+    999c44444c9999999991999991999999
+    99c4222224c999999999999999999991
+    99c4222224c999999999999999999999
+    99c4222224c999999999999999999999
+    99c4222224c999999999999999999999
+    99c4222224c999999999999999999999
+    999c44444c9999999999999999999999
+    9999ccccc9999999999999999992d999
+    99999bcb99999999999999999bbd2999
+    9999ccccc99999999999999bbdddb999
+    999c44444c999999999999b2ddbb9999
+    99c4888884c999999999bbdd2b999999
+    99c4888884c99999999b2ddb99999999
+    99c4888884c999999bbdd2b999999999
+    99c4888884c9999bb2ddb99999999999
+    99c4888884c999bddd2b999999999999
+    999c44444c99bbddbb99999999999999
+    9999ccccc99bdddb9999999999999999
+    99999bcbfbb2dbb99999999999999999
+    99999bcbbddd29999999999999999999
+    99999cbdddbb99999999999999999999
+    9999bbddbb9999999999999999999999
+    999b2ddb999999999999999999999999
+    999dd2bc999999999999999999999999
+    9999bccc999999999999999999999999
+    97999ccc999999999999999999999999
+    79979ccc999999999999999999999555
+    99799ccc999999999999999999999555
+    b7777ccceeeeeeeeeeeeeeeeeeeee554
+    .bbbbbbbbbbbbbbbbbbbbbbbbbbbb44.
+    `
     export const settingsGear = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . d d . . . . . . .

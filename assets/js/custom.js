@@ -383,6 +383,8 @@ const liveStrings = {
     A20_4: "purple",
     A20_5: "yellow",
     A20_6: "black",
+
+    A21_: "servo set angle",
 }
 
 // load localized strings
