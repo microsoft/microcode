@@ -31,7 +31,6 @@ namespace microcode {
         private progdef: ProgramDefn
         private currPage: number
         private pageBtn: Button
-        private resetBtn: Button
         private pageEditor: PageEditor
         public cursor: Cursor
         private _changed: boolean
@@ -63,7 +62,12 @@ namespace microcode {
         }
 
         public ruleWidth(p: number) {
-            return this.pageEditor.ruleEditors[0].innerWidth + 36
+            let w = 0
+            const rules = this.pageEditor.ruleEditors
+            for (const rule of rules) {
+                w = Math.max(w, rule.innerWidth)
+            }
+            return w + 36
         }
 
         public pageHeight(p: number) {
@@ -257,18 +261,9 @@ namespace microcode {
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
                 icon: PAGE_IDS[this.currPage],
-                x: Screen.RIGHT_EDGE - 32,
-                y: 8,
-                onClick: () => this.pickPage(),
-            })
-            this.resetBtn = new Button({
-                parent: this.hudroot,
-                icon: icons.get("reset"),
-                style: ButtonStyles.BorderedPurple,
-                ariaId: "reset",
                 x: Screen.RIGHT_EDGE - 12,
                 y: 8,
-                onClick: () => this.saveAndCompileProgram(),
+                onClick: () => this.pickPage(),
             })
             this.progdef = this.app.load(SAVESLOT_AUTO)
             if (!this.progdef) this.progdef = new ProgramDefn()
@@ -317,7 +312,7 @@ namespace microcode {
                 this.navigator.clear()
             } else this.navigator = new RuleRowNavigator()
 
-            this.navigator.addButtons([this.pageBtn, this.resetBtn])
+            this.navigator.addButtons([this.pageBtn])
 
             this.pageEditor.addToNavigator()
 
@@ -383,7 +378,6 @@ namespace microcode {
         private drawPageNavigation() {
             control.enablePerfCounter()
             this.pageBtn.draw()
-            this.resetBtn.draw()
         }
     }
 
