@@ -7,13 +7,17 @@ samples.
 
 ![First MicroCode program](./images/generated/sample_first_program.png){:class="sample"}
 
-This is a hidden sample, it is the code you will have in the editor if you keep pressing **A**
+When you select **new program** and keep pressing **A**
 in the editor after selecting the new program sample.
 
 The program has one rule that paints a smiley when button A (on the micro:bit) is pressed.
 
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with smiley.
 
+### improvement ideas
+
+- keep adding images to create an animation
+- checkout the [smiley buttons](#smiley-buttons) sample to see how to handle button B.
 
 ## ![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"} Flashing Heart
 
@@ -31,7 +35,7 @@ with two images. Each time the timer triggers again, it repaints both images whi
 -   add more animation frames to create a better beating heart
 -   make your own animation
 
-## ![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"} Smiley Buttons
+## ![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"} Smiley Buttons {#smiley-buttons}
 
 ![Smiley Buttons MicroCode program](./images/generated/sample_smiley_buttons.png){:class="sample"}
 
@@ -52,6 +56,19 @@ pressing B.
 
 Keep your micro:pet happy by petting
 its head (Logo) and don't shake it, it does not like that.
+
+- **when** page started, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with neutral mood
+
+Touching the micro:bit logo makes it happy.
+
+-   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![logo](./images/generated/icon_F7.png){:class="icon"} micro:bit logo, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with happy animation.
+-   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![logo](./images/generated/icon_F7.png){:class="icon"} micro:bit logo, **do** ![speaker](./images/generated/icon_A2.png){:class="icon"} play sound emoji ![emoji giggle](./images/generated/icon_M19giggle.png){:class="icon"} giggle.
+
+Shaking makes it unhappy.
+
+-   **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with unhappy animation.
+-   **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![speaker](./images/generated/icon_A2.png){:class="icon"} play sound emoji ![emoji sad](./images/generated/icon_M19sad.png){:class="icon"} sad.
+
 
 ### improvement ideas
 
