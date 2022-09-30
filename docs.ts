@@ -97,17 +97,24 @@ namespace docs {
         app.pushScene(editor)
         editor.cursor.visible = false
 
+        const pages = editor.nonEmptyPages()
+
         let imgs: Image[] = []
         let w = 0
         let h = 0
         const margin = 4
 
+        // compute largest rule width
+        let pw = screen.width
+        for (const p of pages) {
+            editor.switchToPage(p)
+            pw = Math.max(pw, editor.ruleWidth())
+        }
+
+        // render all pages
         editor.nonEmptyPages().forEach(p => {
             editor.switchToPage(p)
-            microcode.Screen.setImageSize(
-                Math.max(screen.width, editor.ruleWidth()),
-                editor.pageHeight()
-            )
+            microcode.Screen.setImageSize(pw, editor.pageHeight())
             const pageEditor = new microcode.Editor(app)
             app.pushScene(pageEditor)
             pageEditor.cursor.visible = false
