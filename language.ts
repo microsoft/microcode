@@ -61,6 +61,7 @@ namespace microcode {
         fieldEditor: FieldEditor
         jdKind: JdKind
         jdParam: any
+        jdDuration: number
         jdExternalClass: number
 
         isVisible() {

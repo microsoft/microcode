@@ -401,11 +401,13 @@ namespace microcode {
         "twinkle",
         "yawn",
     ]
-    emojis.forEach(e => {
+    const emoji_ms = [1478, 1233, 547, 4794, 1687, 1315, 8192, 2083, 6772, 2816]
+    emojis.forEach((e, idx) => {
         const tid = "M19" + e
         const emoji_mod = new ModifierDefn(tid, e, "sound_emoji", 10)
         emoji_mod.constraints = terminal
         emoji_mod.jdParam = e
+        emoji_mod.jdDuration = emoji_ms[idx]
         tilesDB.modifiers[tid] = emoji_mod
     })
 
