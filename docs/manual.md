@@ -9,6 +9,7 @@ Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 -   Kid friendly icon-based editor and small programming language
 -   Runs on the micro:bit V2 or in the web
 -   Keyboard, mouse, touch, screen reader accessible
+-   Accessories support (LEDs, motors, ...) through [Jacdac](https://aka.ms/jacdac)
 
 ## Try it out!
 
