@@ -181,7 +181,7 @@ After half a second, we transition back to page 1 to restart the non-glow phase.
 
 The samples in this section using [Jacdac](https://aka.ms/jacdac) modules to extend the micro:bit with programmable LEDs, servo and other sensors.
 
-### ![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon-sample"} Railroad crossing
+### ![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon-sample"} Railroad crossing {#railroad_crossing}
 
 ![Railroad crossing MicroCode program](./images/generated/sample_railroad_crossing.png){:class="sample"}
 
