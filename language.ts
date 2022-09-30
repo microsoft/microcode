@@ -10,6 +10,7 @@ namespace microcode {
     export interface Constraints {
         provides?: string[]
         requires?: string[]
+        only?: string[]
         allow?: {
             tiles?: string[]
             categories?: string[]
@@ -89,6 +90,8 @@ namespace microcode {
                 : ButtonStyles.FlatWhite
         }
 
+        // the following is just set union - can be simplified
+        // TODO: probably really want a Gen/Kill framework instead
         mergeConstraints(dst: Constraints) {
             const src = this.constraints
             if (!src) {
@@ -99,6 +102,9 @@ namespace microcode {
             }
             if (src.requires) {
                 src.requires.forEach(item => dst.requires.push(item))
+            }
+            if (src.only) {
+                src.only.forEach(item => dst.only.push(item))
             }
             if (src.allow) {
                 ;(src.allow.tiles || []).forEach(item =>
@@ -193,6 +199,10 @@ namespace microcode {
 
         isCompatibleWith(c: Constraints): boolean {
             if (!super.isCompatibleWith(c)) return false
+
+            const only = c.only.some(cat => cat === this.category)
+            if (only) return true
+            if (c.only.length) return false
 
             const allows =
                 c.allow.categories.some(cat => cat === this.category) ||
@@ -513,6 +523,7 @@ namespace microcode {
     function mkConstraints(): Constraints {
         const c: Constraints = {
             provides: [],
+            only: [],
             requires: [],
             allow: {
                 tiles: [],

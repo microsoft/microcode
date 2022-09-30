@@ -721,6 +721,24 @@ namespace microcode {
                 }
                 this.page.changed()
             }
+            const newFieldEditor = (tile: TileDefn) => {
+                const newOne = tile.getNewInstance()
+                const fieldEditor = newOne.fieldEditor
+                this.editor.captureBackground()
+                fieldEditor.editor(
+                    newOne.getField(),
+                    this.editor.picker,
+                    () => {
+                        this.editor.releaseBackground()
+                        if (index >= ruleTiles.length) {
+                            ruleTiles.push(newOne)
+                        } else {
+                            ruleTiles[index] = newOne
+                        }
+                        tileUpdated()
+                    }
+                )
+            }
             if (index < ruleTiles.length) {
                 const theOne = ruleTiles[index]
                 const fieldEditor = theOne.fieldEditor
@@ -754,22 +772,7 @@ namespace microcode {
                     index > 0 && ruleTiles[index - 1].fieldEditor // this is a hack to use the value from previous
                         ? ruleTiles[index - 1] // field editor (should really check they are the same)
                         : suggestions[0]
-                const newOne = theOne.getNewInstance()
-                const fieldEditor = newOne.fieldEditor
-                this.editor.captureBackground()
-                fieldEditor.editor(
-                    newOne.getField(),
-                    this.editor.picker,
-                    () => {
-                        this.editor.releaseBackground()
-                        if (index >= ruleTiles.length) {
-                            ruleTiles.push(newOne)
-                        } else {
-                            ruleTiles[index] = newOne
-                        }
-                        tileUpdated()
-                    }
-                )
+                newFieldEditor(theOne)
                 return
             }
             let onDelete = undefined

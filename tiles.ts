@@ -539,8 +539,7 @@ namespace microcode {
     tilesDB.modifiers[TID_MODIFIER_LOOP] = loop
     loop.priority = 80
     loop.constraints = {}
-    loop.constraints.allow = { categories: ["constant"] }
-    loop.constraints.disallow = { categories: ["loop"] }
+    loop.constraints.only = ["constant"]
 
     const iconFieldEditor: FieldEditor = {
         init: img`
