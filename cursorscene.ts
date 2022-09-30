@@ -46,7 +46,6 @@ namespace microcode {
             )
 
             // click
-            const PLAYER2_OFFSET = 7
             const click = () => this.cursor.click()
             control.onEvent(
                 ControllerButtonEvent.Pressed,
@@ -55,7 +54,7 @@ namespace microcode {
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
-                controller.A.id + PLAYER2_OFFSET,
+                controller.A.id + keymap.PLAYER_OFFSET,
                 click
             )
 
@@ -66,11 +65,6 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.B.id,
-                back
-            )
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.B.id + PLAYER2_OFFSET,
                 back
             )
 

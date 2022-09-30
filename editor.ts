@@ -209,7 +209,6 @@ namespace microcode {
             makeOnEvent(controller.left.id, CursorDir.Left)
             makeOnEvent(controller.up.id, CursorDir.Up)
             makeOnEvent(controller.down.id, CursorDir.Down)
-            const PLAYER2_OFFSET = 7
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.menu.id,
@@ -219,16 +218,18 @@ namespace microcode {
                     this.app.pushScene(new Home(this.app))
                 }
             )
+            const forward = () => this.cursor.click()
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.A.id,
-                () => this.cursor.click()
+                forward
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
-                controller.A.id + PLAYER2_OFFSET,
-                () => this.cursor.click()
+                controller.A.id + keymap.PLAYER_OFFSET,
+                forward
             )
+            
             const back = () => {
                 if (!this.cursor.cancel()) {
                     if (this.navigator.getRow() == 0) {
@@ -245,11 +246,6 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.B.id,
-                back
-            )
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.B.id + PLAYER2_OFFSET,
                 back
             )
             this.hudroot = new Placeable()
