@@ -575,8 +575,10 @@ namespace microcode {
 
     class IconEditor extends ModifierDefn {
         field: Image
+        firstInstance: boolean
         constructor(field: Image = null) {
             super(TID_MODIFIER_ICON_EDITOR, "icon editor", "icon_editor", 10)
+            this.firstInstance = false
             this.fieldEditor = iconFieldEditor
             if (field) this.field = field.clone()
             else this.field = this.fieldEditor.clone(this.fieldEditor.init)
@@ -586,8 +588,10 @@ namespace microcode {
             return this.field
         }
 
-        getIcon(): Image {
-            return this.fieldEditor.toImage(this.field)
+        getIcon(): string | Image {
+            return this.firstInstance
+                ? TID_MODIFIER_ICON_EDITOR
+                : this.fieldEditor.toImage(this.field)
         }
 
         getNewInstance(field: any = null) {
@@ -607,7 +611,9 @@ namespace microcode {
         }
     }
 
-    tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = new IconEditor()
+    const iconEditorTile = new IconEditor()
+    iconEditorTile.firstInstance = true
+    tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = iconEditorTile
 
     export type NoteField = { note: number }
     const musicFieldEditor: FieldEditor = {
