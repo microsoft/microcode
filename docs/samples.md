@@ -14,7 +14,8 @@ with two images. Each time the timer triggers again, it repaints both images whi
 
 ### improvement ideas
 
-* add more animation frames to create a better beating heart
+-   add more animation frames to create a better beating heart
+-   make your own animation
 
 ## ![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"} Smiley Buttons
 
@@ -25,12 +26,12 @@ when pressing A, and a frowney when
 pressing B.
 
 We use 2 rule to handle each buttons. The first rule
-handle a button A pressed and prints a smiley the screen. Similarly, the second rule filters on button B
-and prints a frowney.
+handle a ![button A](./images/generated/icon_F3.png){:class="icon"} button A pressed and prints a smiley the ![screen](./images/generated/icon_A5.png){:class="icon"} screen. The second rule filters on ![button B](./images/generated/icon_F4.png){:class="icon"} button B
+and draws a frowney on the ![screen](./images/generated/icon_A5.png){:class="icon"} screen.
 
 ### improvement ideas
 
-* add sound emoji for each buttons to make it more lively
+-   add sound emoji for each buttons to make it more lively
 
 ## ![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"} Pet Hamster
 
@@ -41,7 +42,7 @@ its head (Logo) and don't shake it, it does not like that.
 
 ### improvement ideas
 
-* use more rules to manipulate the mood of your pet
+-   use more rules to manipulate the mood of your pet
 
 ## ![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"} Rock Paper Scissors
 
@@ -52,7 +53,7 @@ where the micro:bit display a different
 symbol when shaken.
 
 The program starts with a rule that uses
-the accelerometer sensor; which by default 
+the accelerometer sensor; which by default
 detects shake events. The 3-face dice is cast
 and the result is stored in variable A.
 
@@ -61,21 +62,21 @@ and display a different symbol for each value, 1, 2 or 3.
 
 ### improvement ideas
 
-* add sound emoji whenever shake happens
-* clear the screen before showing the new symbol
+-   add sound emoji whenever shake happens
+-   clear the screen before showing the new symbol
 
 ## ![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"} Hot potato
 
 ![Hot potato MicroCode program](./images/generated/sample_hot_potato.png){:class="sample"}
 
 Pass the hot potato around and make
-sure it does not beep while you have it 
+sure it does not beep while you have it
 in your hands!
 
 ### improvement ideas
 
-* add sound emoji when timer expires
-* add a better expired potato animation
+-   add sound emoji when timer expires
+-   add a better expired potato animation
 
 ## ![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"} Clap Lights
 
@@ -86,7 +87,7 @@ switch between page 1 and page 2 where the page start by turning on or off the L
 
 ### improvement ideas
 
-* add sounds to notify your user that the command was received
+-   add sounds to notify your user that the command was received
 
 ## Multiplayer samples
 
@@ -111,8 +112,8 @@ when a radio message is received.
 
 ### improvement ideas
 
-* add sound emoji when the duck arrives
-* use different radio messages for different images
+-   add sound emoji when the duck arrives
+-   use different radio messages for different images
 
 ### ![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon-sample"} Firefly
 
@@ -127,7 +128,7 @@ between any number of micro:bit!
 The firefly program uses two pages, page 1 will run when the light is off
 and page 2 will handle a glow.
 
-In page one, we add a rule that clears the screen and keeps a dot. You can completely clear 
+In page one, we add a rule that clears the screen and keeps a dot. You can completely clear
 the screen but keeping a dot is useful as well.
 
 The clock of the firefly will be held in variable A ("cup A"). It starts at 1 and once it hits 8, the firefly will glow. The next two rules are about moving the clock forward. The `repeat timer 1/4s` rule moves the clock every quarter of a second; the `radio receive 1` moves the clock by 1 whenever a neighboring firefly sent a message.
@@ -137,9 +138,9 @@ Since it is possible that we miss the number `8` because the firefly received ma
 we add one last rule, a `repeat timer every 3s` that transitions to page 2.
 
 On page 2, the `variable A` is reset to 1, a radio message is sent to other firefly so that they can nudge their clock, all the LEDs are turned and a sound is played.
-After half a second, we transition back to page 1 to restart the non-glow phase. 
+After half a second, we transition back to page 1 to restart the non-glow phase.
 
 ### improvement ideas
 
-- use a radio group to avoid interference with other users
-- remix this technique with other programs to create new synchronized experiences!
+-   use a radio group to avoid interference with other users
+-   remix this technique with other programs to create new synchronized experiences!
