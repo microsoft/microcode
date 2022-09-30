@@ -26,7 +26,7 @@ when pressing A, and a frowney when
 pressing B.
 
 We use 2 rule to handle each buttons. The first rule
-handle a ![button A](./images/generated/icon_F3.png){:class="icon"} button A pressed and prints a smiley the ![screen](./images/generated/icon_A5.png){:class="icon"} screen. The second rule filters on ![button B](./images/generated/icon_F4.png){:class="icon"} button B
+handle a ![button A](./images/generated/icon_F3.png){:class="icon"} button A ![press](./images/generated/icon_S2.png){:class="icon"} pressed and prints a smiley the ![screen](./images/generated/icon_A5.png){:class="icon"} screen. The second rule filters on ![button B](./images/generated/icon_F4.png){:class="icon"} button B
 and draws a frowney on the ![screen](./images/generated/icon_A5.png){:class="icon"} screen.
 
 ### improvement ideas
