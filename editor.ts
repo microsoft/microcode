@@ -61,18 +61,17 @@ namespace microcode {
                 .filter(i => i > -1)
         }
 
-        public ruleWidth(p: number) {
+        public ruleWidth() {
             let w = 0
             const rules = this.pageEditor.ruleEditors
             for (const rule of rules) {
                 w = Math.max(w, rule.innerWidth)
             }
-            return w + 36
+            return w + 24
         }
 
-        public pageHeight(p: number) {
-            const page = this.progdef.pages[p]
-            const rules = page.rules
+        public pageHeight() {
+            const rules = this.pageEditor.ruleEditors
             return (
                 TOOLBAR_HEIGHT +
                 TOOLBAR_MARGIN +
@@ -108,7 +107,7 @@ namespace microcode {
             })
         }
 
-        private switchToPage(index: number) {
+        public switchToPage(index: number) {
             if (index < 0 || index >= this.progdef.pages.length) {
                 return
             }

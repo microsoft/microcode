@@ -103,9 +103,10 @@ namespace docs {
         const margin = 4
 
         editor.nonEmptyPages().forEach(p => {
+            editor.switchToPage(p)
             microcode.Screen.setImageSize(
-                Math.max(screen.width, editor.ruleWidth(p)),
-                editor.pageHeight(p)
+                Math.max(screen.width, editor.ruleWidth()),
+                editor.pageHeight()
             )
             const pageEditor = new microcode.Editor(app)
             app.pushScene(pageEditor)
