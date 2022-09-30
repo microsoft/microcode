@@ -3,7 +3,7 @@
 These are some of the annotated MicroCode
 samples.
 
-## ![new program](./images/generated/icon_new_program.png){:class="icon"} First program
+## ![new program](./images/generated/icon_new_program.png){:class="icon-sample"} First program
 
 ![First MicroCode program](./images/generated/sample_first_program.png){:class="sample"}
 
