@@ -1168,22 +1168,22 @@ namespace icondb {
 `
 
     export const rgbLed = img`
-    . . . . f f f f f f f . . . . .
-    . . f f f 4 4 f 9 9 f f f . . .
-    . f 5 5 f 4 4 f 9 9 f b b f . .
-    . f 5 5 f f f f f f f b b f d .
-    f f f f f . . . . . f f f f f d
-    f 4 4 f . . . . . . . f 7 7 f d
-    f 4 4 f . . . . . . . f 7 7 f d
-    f f f f . . . . . . . f f f f d
-    f 2 2 f . . . . . . . f e e f d
-    f 2 2 f . . . . . . . f e e f d
-    f f f f . . . . . . . f f f f d
-    b f 6 6 f f f f f f f c c f b d
-    . f 6 6 f 8 8 f a a f c c f b d
-    . b f f f 8 8 f a a f f f f d d
-    . . b b f f f f f f f b b d . .
-    . . . . d b b b b b b d d . . .
+    . . . . f f f f f f f . . . . . 
+    . . f f f 4 4 f 9 9 f f f . . . 
+    . f 5 5 f 4 4 f 9 9 f b b f . . 
+    . f 5 5 f f f f f f f b b f d . 
+    f f f f f . . . . . f f f f f d 
+    f 4 4 f . . . . . . . f 7 7 f d 
+    f 4 4 f . . . . . . . f 7 7 f d 
+    f f f f . . . . . . . f f f f d 
+    f 2 2 f . . . . . . . f e e f d 
+    f 2 2 f . . . . . . . f e e f d 
+    f f f f . . . . . . . f f f f d 
+    b f 6 6 f f f f f f f c c f b d 
+    . f 6 6 f 8 8 f a a f c c 5 5 5 
+    . b f f f 8 8 f a a f f f 5 5 5 
+    . . b b f f f f f f f b b 5 5 4 
+    . . . . d b b b b b b d d 4 4 . 
 `
 
     export const magnet = img`
@@ -1199,10 +1199,10 @@ namespace icondb {
     . 2 2 . . . . . . . . 6 . . . . 
     . 2 2 2 . . . . . . . . . . 6 . 
     . b 2 2 2 2 2 2 f f . . 6 . . . 
-    . . b 2 2 2 2 2 f f . . . . . 6 
-    . . . b b b b b b b . . 6 . . . 
-    . . . . . . . . . . . . . . 6 . 
-    . . . . . . . . . . 6 . . 6 . .     
+    . . b 2 2 2 2 2 f f . . . 5 5 5 
+    . . . b b b b b b b . . 6 5 5 5 
+    . . . . . . . . . . . . . 5 5 4 
+    . . . . . . . . . . 6 . . 4 4 .   
 `
 
     export const microphone = img`
