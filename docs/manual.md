@@ -29,8 +29,6 @@ The easiest way to get started with MicroCode is through the web editor ([https:
 -   Arrow keys for D-pad
 -   `Space` for A button
 -   `Backspace` (`delete` on MacOs) for B button
--   `M` for menu
--   `R` to reset the entire editor
 -   Copy the URL to share your program.
 
 [![MicroCode web app](./images/website2.jpg){:class="screenshot"}](https://aka.ms/m9)
