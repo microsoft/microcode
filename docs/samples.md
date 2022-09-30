@@ -5,10 +5,10 @@ samples.
 
 ## ![new program](./images/generated/icon_new_program.png){:class="icon"} First program
 
+![First MicroCode program](./images/generated/sample_first_program.png){:class="sample"}
+
 This is a hidden sample, it is the code you will have in the editor if you keep pressing **A**
 in the editor after selecting the new program sample.
-
-![First MicroCode program](./images/generated/sample_first_program.png){:class="sample"}
 
 The program has one rule that paints a smiley when button A (on the micro:bit) is pressed.
 
