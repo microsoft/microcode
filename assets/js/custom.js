@@ -150,80 +150,78 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 })
 
-// to support downloading directly to device
-if (!inIFrame)
-    document.addEventListener("DOMContentLoaded", () => {
-        const script = document.createElement("script")
-        script.setAttribute("type", "text/javascript")
-        script.setAttribute("src", "https://unpkg.com/jacdac-ts/dist/jacdac.js")
-        script.onload = () => {
-            connectEl = document.createElement("button")
-            connectEl.id = "connectbtn"
-            connectEl.tabIndex = "0"
-            const conDiv = document.createElement("div")
-            conDiv.style.marginTop = "0.25rem"
-            conDiv.innerText = "connect"
-            connectEl.append(conDiv)
-            const mbitEl = document.createElement("img")
-            mbitEl.setAttribute("alt", "micro:bit logo")
-            mbitEl.setAttribute(
-                "src",
-                "https://cdn.sanity.io/images/ajwvhvgo/production/6aada623aed7540f77754cbd49b36f05d0fd6b86-150x89.svg?w=435&q=80&fit=max&auto=format"
-            )
-            connectEl.append(mbitEl)
-            // create WebUSB bus
-            bus = jacdac.createWebBus({
-                bluetoothOptions: null,
-                serialOptions: null,
-            })
-            // track connection state and update button
-            bus.on(jacdac.CONNECTION_STATE, refreshUI)
-            bus.on(jacdac.ERROR, e => {
-                const code = e.code
-                switch (code) {
-                    case jacdac.ERROR_MICROBIT_JACDAC_MISSING: {
-                        console.debug(`jacdac not detected, ask for update`)
-                        showOutdatedFirmwareDialog()
-                        break
-                    }
-                    case jacdac.ERROR_MICROBIT_V1: {
-                        console.debug(`micro:bit v1 detected`)
-                        showOutdatedFirmwareDialog()
-                        break
-                    }
-                    case jacdac.ERROR_TRANSPORT_HF2_NOT_SUPPORTED: {
-                        console.debug(`HF2 not supported`)
-                        showOutdatedFirmwareDialog()
-                        break
-                    }
+document.addEventListener("DOMContentLoaded", () => {
+    const script = document.createElement("script")
+    script.setAttribute("type", "text/javascript")
+    script.setAttribute("src", "https://unpkg.com/jacdac-ts/dist/jacdac.js")
+    script.onload = () => {
+        connectEl = document.createElement("button")
+        connectEl.id = "connectbtn"
+        connectEl.tabIndex = "0"
+        const conDiv = document.createElement("div")
+        conDiv.style.marginTop = "0.25rem"
+        conDiv.innerText = "connect"
+        connectEl.append(conDiv)
+        const mbitEl = document.createElement("img")
+        mbitEl.setAttribute("alt", "micro:bit logo")
+        mbitEl.setAttribute(
+            "src",
+            "https://cdn.sanity.io/images/ajwvhvgo/production/6aada623aed7540f77754cbd49b36f05d0fd6b86-150x89.svg?w=435&q=80&fit=max&auto=format"
+        )
+        connectEl.append(mbitEl)
+        // create WebUSB bus
+        bus = jacdac.createWebBus({
+            usbOptions: inIFrame ? null : undefined,
+            bluetoothOptions: null,
+            serialOptions: null,
+        })
+        // track connection state and update button
+        bus.on(jacdac.CONNECTION_STATE, refreshUI)
+        bus.on(jacdac.ERROR, e => {
+            const code = e.code
+            switch (code) {
+                case jacdac.ERROR_MICROBIT_JACDAC_MISSING: {
+                    console.debug(`jacdac not detected, ask for update`)
+                    showOutdatedFirmwareDialog()
+                    break
                 }
-                refreshUI()
-            })
-            bus.on(jacdac.DEVICE_ANNOUNCE, dev => {
-                if (!lastData) return
-                console.debug(`jacdac: device announced ${dev}, flashing`)
-                flashJacscriptServices(
-                    dev.services({
-                        serviceClass: jacdac.SRV_JACSCRIPT_MANAGER,
-                    }),
-                    lastData
-                )
-            })
-            bus.on(jacdac.SELF_ANNOUNCE, reportBus)
-            // connect must be triggered by a user interaction
-            connectEl.onclick = () =>
-                document.getElementById("connectDlg").showModal()
-
-            document.getElementById("webusbBtn").onclick = async () =>
-                bus.connect()
-            document.getElementById("webusbBtn2").onclick = async () =>
-                bus.connect()
-            document.body.append(connectEl)
+                case jacdac.ERROR_MICROBIT_V1: {
+                    console.debug(`micro:bit v1 detected`)
+                    showOutdatedFirmwareDialog()
+                    break
+                }
+                case jacdac.ERROR_TRANSPORT_HF2_NOT_SUPPORTED: {
+                    console.debug(`HF2 not supported`)
+                    showOutdatedFirmwareDialog()
+                    break
+                }
+            }
             refreshUI()
-            bus.autoConnect = true
-        }
-        document.body.append(script)
-    })
+        })
+        bus.on(jacdac.DEVICE_ANNOUNCE, dev => {
+            if (!lastData) return
+            console.debug(`jacdac: device announced ${dev}, flashing`)
+            flashJacscriptServices(
+                dev.services({
+                    serviceClass: jacdac.SRV_JACSCRIPT_MANAGER,
+                }),
+                lastData
+            )
+        })
+        bus.on(jacdac.SELF_ANNOUNCE, reportBus)
+        // connect must be triggered by a user interaction
+        connectEl.onclick = () =>
+            document.getElementById("connectDlg").showModal()
+
+        document.getElementById("webusbBtn").onclick = async () => bus.connect()
+        document.getElementById("webusbBtn2").onclick = async () =>
+            bus.connect()
+        if (!inIFrame) document.body.append(connectEl)
+        refreshUI()
+        bus.autoConnect = true
+    }
+    document.body.append(script)
+})
 
 // send jacscript bytecode to jacdac dashboard
 addSimMessageHandler("jacscript", async data => {
