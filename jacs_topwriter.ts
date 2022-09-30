@@ -741,7 +741,7 @@ namespace jacs {
                 const role = this.lookupActuatorRole(rule)
                 this.emitSequance(
                     rule,
-                    actuator.jdKind == microcode.JdKind.Sequance
+                    actuator.jdKind == microcode.JdKind.Sequence
                         ? this.lookupGlobal("lock_" + role.name)
                         : null,
                     400

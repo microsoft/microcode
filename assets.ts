@@ -232,7 +232,6 @@ function scaleUp(led55: Image) {
 }
 
 namespace icondb {
-``
     export const MISSING = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -1914,7 +1913,7 @@ f f f f f f f f f f f f f f f f
     .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `*/
 
-export const sampleFirefly = img`
+    export const sampleFirefly = img`
 .ffffffffffffffffffffffffffffff.
 ffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffff
@@ -2272,21 +2271,21 @@ bffffffffffffffffffffffffffffffb
 
     export const servo_set_angle = img`
     . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . 4 2 . . . . . . . 
-    . . . . . . . . 4 2 . . . . . . 
-    . . . 4 2 2 2 2 2 2 2 . . . . . 
-    . 4 2 2 . . . . 4 2 . . . b c . 
-    . . . . . . . 4 2 . . . b c b . 
-    . . . . . . . . . . . b c b . . 
-    . . . . . . . . . . b c b . . . 
-    . . 8 8 8 8 8 8 b b c b 8 8 . . 
-    . 8 8 8 8 8 b b b c b 8 8 8 8 . 
-    . 8 8 8 8 8 b c c c b 8 8 8 8 . 
-    . 8 8 8 8 8 b b b b 8 8 8 8 8 . 
-    . . 8 8 8 8 8 8 8 8 8 8 8 8 . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . .     
+    . . . 8 8 8 . . . . 4 . . . . . 
+    . . 8 8 8 8 8 . . . 2 . . . . . 
+    . . 8 8 8 8 8 . . . 2 4 . . . . 
+    . . 8 8 8 8 8 . . . . 2 . . . . 
+    . . 8 8 8 8 8 . . . . 2 . . . . 
+    . . 8 8 8 8 8 . . . . 2 . . . . 
+    . . 8 b b b 8 . . 4 . 2 . 4 . . 
+    . . 8 b c b b . . 2 4 2 4 2 . . 
+    . . 8 b c c b . . . 2 2 2 . . . 
+    . . 8 8 b b c b . . . 2 . . . . 
+    . . 8 8 8 8 b c b . . . . . . . 
+    . . 8 8 8 8 8 b c b . . . 5 5 5 
+    . . 8 8 8 8 8 . b c b . . 5 5 5 
+    . . . 8 8 8 . . . b c . . 5 5 4 
+    . . . . . . . . . . . b . 4 4 . 
     `
 
     /* maybe use these later

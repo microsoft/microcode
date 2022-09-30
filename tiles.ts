@@ -475,7 +475,7 @@ namespace microcode {
     rgbled.serviceClassName = "led"
     rgbled.serviceCommand = jacs.CMD_SET_REG | 2
     rgbled.jdExternalClass = 0x1609d4f0
-    rgbled.jdKind = JdKind.Sequance
+    rgbled.jdKind = JdKind.Sequence
     rgbled.serviceArgFromModifier = (buf: Buffer) => {
         if (!buf) buf = hex`2f2f2f`
         let b = buf
@@ -489,6 +489,11 @@ namespace microcode {
         }
         return b
     }
+
+    const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, "Servo", "servo")
+    servoSetAngle.priority = 500
+    servoSetAngle.serviceClassName = "servo"
+    servoSetAngle.jdExternalClass = 0x12fc9103
 
     const addReadValue = (
         tid: string,
