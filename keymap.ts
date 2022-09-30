@@ -1,4 +1,8 @@
 namespace keymap {
+    export const PLAYER_OFFSET = 7
+    export const A2 = new controller.Button(ControllerButton.A + PLAYER_OFFSET, undefined);
+    export const B2 = new controller.Button(ControllerButton.B + PLAYER_OFFSET, undefined);
+
     //% shim=keymap::_setPlayerKeys
     declare function _setPlayerKeys(
         player: number, // player number is 1-based
@@ -18,7 +22,7 @@ namespace keymap {
             keymap.KeyCode.DownArrow,
             keymap.KeyCode.LeftArrow,
             keymap.KeyCode.RightArrow,
-            keymap.KeyCode.Space,
+            keymap.KeyCode.Enter,
             keymap.KeyCode.Backspace
         )
         _setPlayerKeys(
@@ -27,10 +31,13 @@ namespace keymap {
             keymap.KeyCode.Two,
             keymap.KeyCode.Three,
             keymap.KeyCode.Four,
-            keymap.KeyCode.Enter,
+            keymap.KeyCode.Space,
             keymap.KeyCode.Delete
         )
 
+        A2.onEvent(ControllerButtonEvent.Pressed, () => {
+            control.raiseEvent(ControllerButtonEvent.Pressed, ControllerButton.A + PLAYER_OFFSET)
+        })
     }
 
     export enum KeyCode {

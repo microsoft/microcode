@@ -120,6 +120,11 @@
 - icon
 
 
+### ![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon"} `railroad crossing` {#icon_railroad_crossing}
+
+- icon
+
+
 ### ![plus operator](./images/generated/icon_plus_operator.png){:class="icon"} `plus operator` {#icon_plus_operator}
 
 - icon
@@ -401,6 +406,11 @@
 
 
 ### ![black](./images/generated/icon_A20_6.png){:class="icon"} `black` {#icon_A20_6}
+
+- icon
+
+
+### ![A21 ](./images/generated/icon_A21_.png){:class="icon"} `A21 ` {#icon_A21_}
 
 - icon
 

@@ -54,7 +54,7 @@ namespace microcode {
             )
             control.onEvent(
                 ControllerButtonEvent.Pressed,
-                7 + controller.A.id,
+                controller.A.id + keymap.PLAYER_OFFSET,
                 click
             )
 
@@ -65,11 +65,6 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.B.id,
-                back
-            )
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                7 + controller.B.id,
                 back
             )
 

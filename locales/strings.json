@@ -97,6 +97,8 @@
     "M22": "dice",
     "M23": "repeat",
 
+    "A8": "LED",
+
     "S9A": "variable A changes",
     "S9B": "variable B changes",
     "S9C": "variable C changes",
@@ -113,11 +115,13 @@
     "N9": "head or tail",
     "N10": "clap lights",
     "N11": "firefly",
+    "N12": "railroad crossing",
 
     "A20_1": "red",
     "A20_2": "green",
     "A20_3": "blue",
     "A20_4": "purple",
     "A20_5": "yellow",
-    "A20_6": "black"
+    "A20_6": "black",
+    "A21_": "servo set angle"
 }
