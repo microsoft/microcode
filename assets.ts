@@ -229,26 +229,8 @@ function scaleUp(led55: Image) {
     return ret
 }
 
-const happy5x5 = img`
-        . . . . .
-        . 1 . 1 .
-        . . . . .
-        1 . . . 1
-        . 1 1 1 .
-    `
-
-const sad5x5 = img`
-        . . . . .
-        . 1 . 1 .
-        . . . . .
-        . 1 1 1 .
-        1 . . . 1
-    `
-
 namespace icondb {
-    export const happy = scaleUp(happy5x5)
-    export const sad = scaleUp(sad5x5)
-
+``
     export const MISSING = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .

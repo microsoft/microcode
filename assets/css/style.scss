@@ -11,7 +11,8 @@ img.icon {
     vertical-align: middle;
     margin-bottom: 0.25rem;
 }
-p img.icon {
+p img.icon,
+li img.icon {
     width: 1.5rem;
     min-width: unset;
 }
