@@ -14,7 +14,7 @@ The second rule shows a sad face when the button B is pressed.
 
 ![Smiley Button MicroCode program](./images/rule.jpg){:class="screenshot"}
 
-## Pages
+## Pages {#pages}
 
 Execution of the MicroCode program starts on ![page 1](./images/generated/icon_M1.png){:class="icon"} page 1. All the rules on that page are active.
 Rules on another page only become active when the program switches to that page
@@ -22,7 +22,7 @@ Rules on another page only become active when the program switches to that page
 
 ![Hot potato sample](./images/generated/sample_hot_potato.png){:class="screenshot"}
 
-## Rules and conflicts
+## Rules and conflicts {#rules}
 
 The rules on a page fire in parallel, so if you want to have two different actions take place
 on the press of A button, you would have two rules with the same When section (A button is pressed),
@@ -30,7 +30,7 @@ but different actions. If the actions of the two rules use the same resource (fo
 show something on the micro:bit screen), then the last rule in order from top to bottom wins. That is,
 the order of the rules only matters when different rules act on the same resource.
 
-## When section
+## When section {#when}
 
 The left-hand side of a rule, the `When` section, starts with an
 **event** tile from the following dialog, which appears when you select the leftmost empty tile of a rule:
@@ -87,7 +87,7 @@ The repeat timer is parameterized with various times that can also be sequenced 
 -   `5 seconds`: ![5 seconds](./images/generated/icon_F19.png){:class="icon"}
 -   `? seconds`: ![0 to 1 second, chosen randomly](./images/generated/icon_F18.png){:class="icon"} - 0 to 1 second, chosen randomly
 
-## Do section
+## Do section {#do}
 
 The right-hand side of a rule, the **Do** section, starts with an
 **command** tile from the following list:
