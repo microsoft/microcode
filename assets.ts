@@ -311,22 +311,21 @@ namespace icondb {
     ///
     export const btn_play = img`
     . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . .
-    . . . . . . . 1 . . . . . . . .
-    . . . . . . . 1 1 . . . . . . .
-    . . . . . 1 1 1 1 1 . . . . . .
-    . . . . 1 1 7 1 1 7 . . . . . .
-    . . . 1 1 7 6 1 7 6 . . . . . .
-    . . . 1 7 6 . 7 6 . . . . . . .
-    . . . 1 7 . . 6 . . 1 7 . . . .
-    . . . 1 7 . . . . . 1 7 . . . .
-    . . . 1 1 7 . . . 1 1 7 . . . .
-    . . . 6 1 1 1 1 1 1 7 6 . . . .
+    . . . . . . d . . . . . . . . .
+    . . . . . . d f . . . . . . . .
+    . . . . d d d f f . . . . . . .
+    . . . d d f f f f f . . . . . .
+    . . d d f f 7 f f 7 . . . . . .
+    . . d f f 7 6 f 7 6 . . . . . .
+    . . d f 7 6 . 7 6 . . . . . . .
+    . . d f 7 . . 6 . . f 7 . . . .
+    . . d f 7 . . . . . f 7 . . . .
+    . . . f f 7 . . . f f 7 . . . .
+    . . . 6 f f f f f f 7 6 . . . .
     . . . . 6 7 7 7 7 7 6 . . . . .
     . . . . . 6 6 6 6 6 . . . . . .
     . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . .
-    `
+    . . . . . . . . . . . . . . . .`
     export const btn_stop = img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -1930,7 +1929,7 @@ f f f f f f f f f f f f f f f f
     .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `*/
 
-export const sampleFirefly = img`
+    export const sampleFirefly = img`
 .ffffffffffffffffffffffffffffff.
 ffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffff
