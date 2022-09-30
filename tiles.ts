@@ -493,11 +493,9 @@ namespace microcode {
         return b
     }
 
-    const servoSetAngle = addActuator(
-        TID_MODIFIER_SERVO_SET_ANGLE,
-        "Servo",
-        "constant"
-    )
+    const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, "Servo", [
+        "constant",
+    ])
     servoSetAngle.priority = 500
     servoSetAngle.serviceClassName = "servo"
     servoSetAngle.jdExternalClass = 0x12fc9103
