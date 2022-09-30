@@ -4,8 +4,13 @@ The MicroCode language is defined in terms of **pages**, where a page has a list
 and each rule consists of a **When** section and a **Do** section, each with a list of programming
 **tiles**. The picture below shows a 1-page program with two rules:
 
--   the first rule shows a happy face on the micro:bit screen when the A button is pressed
--   the second rule shows a sad face when the B button is pressed.
+The first rule shows a happy face on the micro:bit screen when the button A is pressed.
+
+-   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with smiley.
+
+The second rule shows a sad face when the button B is pressed.
+
+-   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button B](./images/generated/icon_F4.png){:class="icon"} button B, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with frowney.
 
 ![Smiley Button MicroCode program](./images/rule.jpg){:class="screenshot"}
 
