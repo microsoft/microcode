@@ -1,4 +1,4 @@
-# Frequently Asked Questions
+# ![emoji hello](./images/generated/icon_M19hello.png){:class="icon"} Frequently Asked Questions
 
 ## How do I share my program?
 

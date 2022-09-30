@@ -20,7 +20,7 @@ MicroCode's:
 
 -   [![press image](./images/generated/icon_S2.png){:class="icon"}](./language) [icon-based language](./language)
 -   [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon"}](./samples) [samples](./samples)
--   [FAQ](./faq.md)
+-   ![emoji hello](./images/generated/icon_M19hello.png){:class="icon"} [FAQ](./faq.md)
 
 ## [Web editor](https://aka.ms/m9)
 
