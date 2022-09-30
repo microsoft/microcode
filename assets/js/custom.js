@@ -348,9 +348,9 @@ const liveStrings = {
     M19twinkle: "emoji twinkle",
     M19yawn: "emoji yawn",
 
-    M20A: "in variable A",
-    M20B: "in variable B",
-    M20C: "in variable C",
+    M20A: "get variable A",
+    M20B: "get variable B",
+    M20C: "get variable C",
 
     M21: "radio value",
     M22: "dice",

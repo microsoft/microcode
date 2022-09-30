@@ -16,9 +16,9 @@ The second rule shows a sad face when the button B is pressed.
 
 ## Pages
 
-Execution of the MicroCode program starts on page 1. All the rules on that page are active.
+Execution of the MicroCode program starts on ![page 1](./images/generated/icon_M1.png){:class="icon"} page 1. All the rules on that page are active.
 Rules on another page only become active when the program switches to that page
-(via an explicit switch-page action, discussed later).
+(via an explicit ![switch page](./images/generated/icon_A1.png){:class="icon"} switch-page action, discussed later).
 
 ![Hot potato sample](./images/generated/sample_hot_potato.png){:class="sample"}
 
@@ -62,8 +62,8 @@ The dialog below shows the parameters associated with the button press/release e
 
 -   ![accelerometer](./images/generated/icon_S3.png){:class="icon"} `move`, defaults to ![shake](./images/generated/icon_F17_shake.png){:class="icon"} `shake`; other options include `tilt up`, `tilt down`, `tilt left` and `tilt right`
 -   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear`, defaults to ![loud](./images/generated/icon_F15.png){:class="icon"}`loud`
--   **radio receive**, defaults to `any`
--   **repeat timer**, defaults to `1/4 second`
+-   ![radio receive](./images/generated/icon_S7.png){:class="icon"} `radio receive`, defaults to `any`
+-   ![timer](./images/generated/icon_S4.png){:class="icon"} `repeat timer`, defaults to `1/4 second`
 -   **variable (A,B,C) changed**, defaults to `any`
 
 ### Creating values
@@ -90,10 +90,10 @@ The right-hand side of a rule, the **Do** section, starts with an
 **command** tile from the following list:
 
 -   ![screen](./images/generated/icon_A5.png){:class="icon"}  `screen` shows an animation sequence on the LED screen.
--   **sound emoji** plays a given emoji
--   **radio send** sends a given number over the radio
--   **switch page** transfers execution control to a given page
--   **set variable** puts a number into a variable (A, B, C)
+-   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays a given emoji
+-   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends a given number over the radio
+-   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` transfers execution control to a given page
+-   ![in variable A](./images/generated/icon_M20A.png){:class="icon"} `set variable` puts a number into a variable (A, B, C)
 
 A command can be followed by various parameter tiles, depending on the type
 of command. As with events, every command has a default parameter, for the
@@ -103,7 +103,7 @@ case where no parameter tile is given:
 -   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays ![emoji giggle](./images/generated/icon_M19giggle.png){:class="icon"} `giggle` by default
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends the number `1` by default
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` switches to page `1` by default
--   **set variable** puts a number into a variable (A, B, C)
+-   ![in variable A](./images/generated/icon_M20A.png){:class="icon"} `set variable` puts a number into a variable (A, B, C)
 
 Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5`.
 
@@ -111,8 +111,8 @@ Sequences of numeric parameters are summed, as before, allowing the construction
 
 ### Constructing numbers
 
-For commands that expect a numeric value (**radio send**, **set variable**), a variety of tiles are available
+For commands that expect a numeric value (![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send`, ![in variable A](./images/generated/icon_M20A.png){:class="icon"} `set variable`), a variety of tiles are available
 
--   the **constant values** 1, 2, 3, 5, and 10 (maybe we'll add 0 soon)
--   the **values of variables** A, B, and C
--   a **random number generator** yields a random integer between `1` and `5` (inclusive) by default
+-   the **constant values** ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, 2, 3, 5, and 10 (maybe we'll add 0 soon)
+-   the **values of variables**  ![out of variable A](./images/generated/icon_S9A.png){:class="icon"} A, B, and C
+-   a ![dice](./images/generated/icon_M22.png){:class="icon"} **random number generator** yields a random integer between `1` and `5` (inclusive) by default
