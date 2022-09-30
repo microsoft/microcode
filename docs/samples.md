@@ -12,7 +12,7 @@ The goal of this program is to show a cute heart animation.
 We use a single rule with a ![timer](./images/generated/icon_S4.png){:class="icon"} timer. The timer starts a ![screen](./images/generated/icon_A5.png){:class="icon"} screen animation
 with two images. Each time the timer triggers again, it repaints both images which create the heart animation.
 
--  **when** ![timer](./images/generated/icon_S4.png){:class="icon"} timer triggers, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with smiley.
+-  **when** ![timer](./images/generated/icon_S4.png){:class="icon"} timer triggers, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with heart.
 
 ### improvement ideas
 
