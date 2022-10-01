@@ -410,7 +410,7 @@
 - icon
 
 
-### ![A21 ](./images/generated/icon_A21_.png){:class="icon"} `A21 ` {#icon_A21_}
+### ![servo set angle](./images/generated/icon_A21_.png){:class="icon"} `servo set angle` {#icon_A21_}
 
 - icon
 
