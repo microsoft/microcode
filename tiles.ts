@@ -24,9 +24,9 @@ namespace microcode {
     export const TID_SENSOR_TEMP = "S6"
     export const TID_SENSOR_RADIO_RECEIVE = "S7"
     export const TID_SENSOR_MICROPHONE = "S8"
-    export const TID_SENSOR_CUP_A_WRITTEN = "S9A"
-    export const TID_SENSOR_CUP_B_WRITTEN = "S9B"
-    export const TID_SENSOR_CUP_C_WRITTEN = "S9C"
+    export const TID_SENSOR_CUP_X_WRITTEN = "S9A"
+    export const TID_SENSOR_CUP_Y_WRITTEN = "S9B"
+    export const TID_SENSOR_CUP_Z_WRITTEN = "S9C"
     export const TID_SENSOR_MAGNET = "S10"
 
     // filters for TID_SENSOR_PRESS
@@ -63,9 +63,9 @@ namespace microcode {
     export const TID_ACTUATOR_RADIO_SEND = "A6"
     export const TID_ACTUATOR_RADIO_SET_GROUP = "A6A"
     export const TID_ACTUATOR_RGB_LED = "A8"
-    export const TID_ACTUATOR_CUP_A_ASSIGN = "A9A"
-    export const TID_ACTUATOR_CUP_B_ASSIGN = "A9B"
-    export const TID_ACTUATOR_CUP_C_ASSIGN = "A9C"
+    export const TID_ACTUATOR_CUP_X_ASSIGN = "A9A"
+    export const TID_ACTUATOR_CUP_Y_ASSIGN = "A9B"
+    export const TID_ACTUATOR_CUP_Z_ASSIGN = "A9C"
 
     export const TID_MODIFIER_PAGE_1 = "M1"
     export const TID_MODIFIER_PAGE_2 = "M2"
@@ -98,9 +98,9 @@ namespace microcode {
     export const TID_MODIFIER_EMOJI_TWINKLE = "M19twinkle"
     export const TID_MODIFIER_EMOJI_YAWN = "M19yawn"
 
-    export const TID_MODIFIER_CUP_A_READ = "M20A"
-    export const TID_MODIFIER_CUP_B_READ = "M20B"
-    export const TID_MODIFIER_CUP_C_READ = "M20C"
+    export const TID_MODIFIER_CUP_X_READ = "M20A"
+    export const TID_MODIFIER_CUP_Y_READ = "M20B"
+    export const TID_MODIFIER_CUP_Z_READ = "M20C"
     export const TID_MODIFIER_RADIO_VALUE = "M21"
     export const TID_MODIFIER_RANDOM_TOSS = "M22"
     export const TID_MODIFIER_MINUS_OPERATOR = "M23"
@@ -217,9 +217,9 @@ namespace microcode {
         // tile.constraints.handling = maxOneValueIn
     }
 
-    makeCupSensor(TID_SENSOR_CUP_A_WRITTEN, 0)
-    makeCupSensor(TID_SENSOR_CUP_B_WRITTEN, 1)
-    makeCupSensor(TID_SENSOR_CUP_C_WRITTEN, 2)
+    makeCupSensor(TID_SENSOR_CUP_X_WRITTEN, 0)
+    makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, 1)
+    makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, 2)
 
     const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
     radio_recv.serviceClassName = "radio"
@@ -351,9 +351,9 @@ namespace microcode {
         theVar.priority = 200 + id
     }
 
-    addAssign(TID_ACTUATOR_CUP_A_ASSIGN, 0)
-    addAssign(TID_ACTUATOR_CUP_B_ASSIGN, 1)
-    addAssign(TID_ACTUATOR_CUP_C_ASSIGN, 2)
+    addAssign(TID_ACTUATOR_CUP_X_ASSIGN, 0)
+    addAssign(TID_ACTUATOR_CUP_Y_ASSIGN, 1)
+    addAssign(TID_ACTUATOR_CUP_Z_ASSIGN, 2)
 
     const emoji = addActuator(TID_ACTUATOR_SPEAKER, "sound_emoji")
     emoji.serviceClassName = "soundPlayer"
@@ -482,9 +482,9 @@ namespace microcode {
         mod.priority = 200 + varid
         return mod
     }
-    addReadValue(TID_MODIFIER_CUP_A_READ, JdKind.Variable, 0)
-    addReadValue(TID_MODIFIER_CUP_B_READ, JdKind.Variable, 1)
-    addReadValue(TID_MODIFIER_CUP_C_READ, JdKind.Variable, 2)
+    addReadValue(TID_MODIFIER_CUP_X_READ, JdKind.Variable, 0)
+    addReadValue(TID_MODIFIER_CUP_Y_READ, JdKind.Variable, 1)
+    addReadValue(TID_MODIFIER_CUP_Z_READ, JdKind.Variable, 2)
     // TODO: this should only be present when radio receive in When section
     // addReadValue(TID_MODIFIER_RADIO_VALUE, "number from radio", JdKind.Radio, 3)
 
