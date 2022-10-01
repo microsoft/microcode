@@ -3,6 +3,9 @@
 
 @import "{{ site.theme }}";
 
+img.pixels {
+    image-rendering: pixelated;
+}
 img.icon {
     image-rendering: pixelated;
     min-width: 5rem;
@@ -34,6 +37,7 @@ img.sample {
 
 img.screenshot {
     width: max(22rem, 60%);
+    image-rendering: pixelated;
 }
 
 img.fluid {
