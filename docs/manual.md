@@ -57,7 +57,7 @@ MicroCode can be programmed with keyboard.
 
 #### Gamepad support
 
-MicroCode supports USB gamepad compatible with the [browsers](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad).
+MicroCode supports commercial gamepad compatible with [Web Gamepad](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad).
 
 #### Screen reader
 
