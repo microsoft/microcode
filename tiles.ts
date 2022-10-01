@@ -525,7 +525,7 @@ namespace microcode {
     )
     addReadValue(
         TID_MODIFIER_CUP_Y_READ,
-        "value of variable Z",
+        "value of variable Y",
         JdKind.Variable,
         1
     )
