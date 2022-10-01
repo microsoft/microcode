@@ -76,7 +76,7 @@ The dialog below shows the parameters associated with the button press/release e
 
 ### Conditions on event values
 
-When an event carries a numeric value (in the case of receiving a radio message or a variable being updated), if that value is equal to the number of dots that follows, in total, then execution will proceed to the DO section. Here are the five available coins:
+When an event carries a numeric value (in the case of receiving a radio message or a variable being updated), if that value is equal to the number of dots that follows, in total, then execution will proceed to the DO section. Here are the five available (dot)values:
 
 -   `1 dot` ![one dot](./images/generated/icon_F8.png){:class="icon"}
 -   `2 dots`: ![two dots](./images/generated/icon_F9.png){:class="icon"}

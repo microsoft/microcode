@@ -69,7 +69,7 @@ By clicking on the `tooltip reader` button at the bottom of the editor, you can 
 
 ## micro:bit V2 and Arcade Shield
 
-Click on the version number in the web app to download the MicroCode hex file to your micro:bit V2. When you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you removed the micro:bit from the shield, the program will persist and continue to run.
+Click on the version number in the web app to download the MicroCode hex file to your micro:bit V2. When you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run.
 
 ### [micro:bit V2](https://microbit.org) + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
 
