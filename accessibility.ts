@@ -59,6 +59,13 @@ namespace accessibility {
         F4: "button B",
         // F6
         F7: "logo",
+
+        F8: "1",
+        F9: "2",
+        F10: "3",
+        F11: "4",
+        F12: "5",
+
         F13: "1/4 second",
         F14: "1 second",
         F18: "1 random second",
@@ -90,6 +97,12 @@ namespace accessibility {
         M3: "page 3",
         M4: "page 4",
         M5: "page 5",
+
+        M6: "1",
+        M7: "2",
+        M8: "3",
+        M9: "4",
+        M10: "5",
 
         M11: "on",
         M12: "off",
