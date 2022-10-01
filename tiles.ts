@@ -154,12 +154,12 @@ namespace microcode {
     }
     */
 
-    const always = new SensorDefn(TID_SENSOR_ALWAYS, "Always", Phase.Pre)
+    const always = new SensorDefn(TID_SENSOR_ALWAYS, Phase.Pre)
     always.hidden = true
     tilesDB.sensors[TID_SENSOR_ALWAYS] = always
 
-    function addPress(tid: string, name: string, evt: number) {
-        const press_event = new SensorDefn(tid, name, Phase.Pre)
+    function addPress(tid: string, evt: number) {
+        const press_event = new SensorDefn(tid, Phase.Pre)
         press_event.serviceClassName = "button"
         press_event.eventCode = evt
         press_event.serviceInstanceIndex = 0
@@ -173,11 +173,11 @@ namespace microcode {
         tilesDB.sensors[tid] = press_event
     }
 
-    addPress(TID_SENSOR_PRESS, "press", 1)
-    addPress(TID_SENSOR_RELEASE, "up", 2)
+    addPress(TID_SENSOR_PRESS, 1)
+    addPress(TID_SENSOR_RELEASE, 2)
 
-    function addPressFilter(tid: string, name: string, instanceNo: number) {
-        const press_filter = new FilterDefn(tid, name, "press_event", 10)
+    function addPressFilter(tid: string, instanceNo: number) {
+        const press_filter = new FilterDefn(tid, "press_event", 10)
         press_filter.constraints = {
             handling: {
                 terminal: true,
@@ -190,20 +190,15 @@ namespace microcode {
         press_filter.jdParam = instanceNo
     }
 
-    addPressFilter(TID_FILTER_BUTTON_A, "A", 0)
-    addPressFilter(TID_FILTER_BUTTON_B, "B", 1)
-    addPressFilter(TID_FILTER_LOGO, "Logo", 2)
-    addPressFilter(TID_FILTER_PIN_0, "Pin 0", 3)
-    addPressFilter(TID_FILTER_PIN_1, "Pin 1", 4)
-    addPressFilter(TID_FILTER_PIN_2, "Pin 2", 5)
+    addPressFilter(TID_FILTER_BUTTON_A, 0)
+    addPressFilter(TID_FILTER_BUTTON_B, 1)
+    addPressFilter(TID_FILTER_LOGO, 2)
+    addPressFilter(TID_FILTER_PIN_0, 3)
+    addPressFilter(TID_FILTER_PIN_1, 4)
+    addPressFilter(TID_FILTER_PIN_2, 5)
 
-    const makeSensor = (
-        tid: string,
-        name: string,
-        cat: string,
-        prior: number
-    ) => {
-        const tile = new SensorDefn(tid, name, Phase.Post)
+    const makeSensor = (tid: string, cat: string, prior: number) => {
+        const tile = new SensorDefn(tid, Phase.Post)
         tile.constraints = {
             allow: {
                 categories: [cat],
@@ -214,39 +209,29 @@ namespace microcode {
         return tile
     }
 
-    function makeCupSensor(tid: string, name: string, id: number) {
-        const tile = makeSensor(tid, name, "value_in", 120 + id * 5)
+    function makeCupSensor(tid: string, id: number) {
+        const tile = makeSensor(tid, "value_in", 120 + id * 5)
         tile.jdKind = JdKind.Variable
         tile.jdParam = id
         tile.priority = 200 + id
         // tile.constraints.handling = maxOneValueIn
     }
 
-    makeCupSensor(TID_SENSOR_CUP_A_WRITTEN, "cup A written", 0)
-    makeCupSensor(TID_SENSOR_CUP_B_WRITTEN, "cup B written", 1)
-    makeCupSensor(TID_SENSOR_CUP_C_WRITTEN, "cup C written", 2)
+    makeCupSensor(TID_SENSOR_CUP_A_WRITTEN, 0)
+    makeCupSensor(TID_SENSOR_CUP_B_WRITTEN, 1)
+    makeCupSensor(TID_SENSOR_CUP_C_WRITTEN, 2)
 
-    const radio_recv = makeSensor(
-        TID_SENSOR_RADIO_RECEIVE,
-        "Receive",
-        "value_in",
-        100
-    )
+    const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
     radio_recv.serviceClassName = "radio"
     radio_recv.eventCode = 0x91
     // radio_recv.constraints.handling = maxOneValueIn
 
-    const magnet = makeSensor(
-        TID_SENSOR_MAGNET,
-        "Magnetometer",
-        "no_filters",
-        500
-    )
+    const magnet = makeSensor(TID_SENSOR_MAGNET, "no_filters", 500)
     magnet.serviceClassName = "magneticFieldLevel"
     magnet.eventCode = 1
     magnet.jdExternalClass = 0x12fe180f
 
-    const timer = new SensorDefn(TID_SENSOR_TIMER, "Timer", Phase.Post)
+    const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
     timer.constraints = {
         allow: {
             categories: ["timespan"],
@@ -255,21 +240,17 @@ namespace microcode {
     timer.priority = 110
     tilesDB.sensors[TID_SENSOR_TIMER] = timer
 
-    function addTimespan(tid: string, name: string, ms: number) {
-        const timespan = new FilterDefn(tid, name, "timespan", 10)
+    function addTimespan(tid: string, ms: number) {
+        const timespan = new FilterDefn(tid, "timespan", 10)
         timespan.jdParam = ms
         tilesDB.filters[tid] = timespan
     }
-    addTimespan(TID_FILTER_TIMESPAN_SHORT, "short", 250)
-    addTimespan(TID_FILTER_TIMESPAN_LONG, "long", 1000)
-    addTimespan(TID_FILTER_TIMESPAN_VERY_LONG, "very long", 5000)
-    addTimespan(TID_FILTER_TIMESPAN_RANDOM, "random", -1000)
+    addTimespan(TID_FILTER_TIMESPAN_SHORT, 250)
+    addTimespan(TID_FILTER_TIMESPAN_LONG, 1000)
+    addTimespan(TID_FILTER_TIMESPAN_VERY_LONG, 5000)
+    addTimespan(TID_FILTER_TIMESPAN_RANDOM, -1000)
 
-    const accel = new SensorDefn(
-        TID_SENSOR_ACCELEROMETER,
-        "Accelerometer",
-        Phase.Post
-    )
+    const accel = new SensorDefn(TID_SENSOR_ACCELEROMETER, Phase.Post)
     accel.constraints = {
         allow: {
             categories: ["accel_event"],
@@ -282,7 +263,7 @@ namespace microcode {
 
     function addAccelEvent(id: number, name: string) {
         const tid = TID_FILTER_ACCEL + "_" + name
-        const accelEvent = new FilterDefn(tid, name, "accel_event", 10)
+        const accelEvent = new FilterDefn(tid, "accel_event", 10)
         accelEvent.eventCode = id
         accelEvent.constraints = terminal
         tilesDB.filters[tid] = accelEvent
@@ -297,11 +278,7 @@ namespace microcode {
     addAccelEvent(0x83, "tilt_left")
     addAccelEvent(0x84, "tilt_right")
 
-    const microphone = new SensorDefn(
-        TID_SENSOR_MICROPHONE,
-        "Microphone",
-        Phase.Post
-    )
+    const microphone = new SensorDefn(TID_SENSOR_MICROPHONE, Phase.Post)
     microphone.constraints = {
         allow: {
             categories: ["sound_event"],
@@ -311,14 +288,14 @@ namespace microcode {
     microphone.serviceClassName = "soundLevel"
     microphone.eventCode = 1 // laud by default
     tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
-    function addSoundFilter(tid: string, name: string, eventCode: number) {
-        const soundFilter = new FilterDefn(tid, name, "sound_event", 10)
+    function addSoundFilter(tid: string, eventCode: number) {
+        const soundFilter = new FilterDefn(tid, "sound_event", 10)
         soundFilter.constraints = terminal
         tilesDB.filters[tid] = soundFilter
         soundFilter.eventCode = eventCode
     }
-    addSoundFilter(TID_FILTER_LOUD, "loud", 1)
-    addSoundFilter(TID_FILTER_QUIET, "quiet", 2)
+    addSoundFilter(TID_FILTER_LOUD, 1)
+    addSoundFilter(TID_FILTER_QUIET, 2)
 
     // actuators are:
 
@@ -328,13 +305,8 @@ namespace microcode {
     // - speaker play
     // - switch page (micro:bit independent)
 
-    function addActuator(
-        tid: string,
-        name: string,
-        allow: string,
-        allow2: string = null
-    ) {
-        const actuator = new ActuatorDefn(tid, name)
+    function addActuator(tid: string, allow: string, allow2: string = null) {
+        const actuator = new ActuatorDefn(tid)
         actuator.constraints = {
             allow: {
                 categories: allow2 ? [allow, allow2] : [allow],
@@ -344,9 +316,9 @@ namespace microcode {
         return actuator
     }
 
-    const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, "Switch page", "page")
+    const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, "page")
     swtch.priority = 110
-    const paint = addActuator(TID_ACTUATOR_PAINT, "Paint", "icon_editor")
+    const paint = addActuator(TID_ACTUATOR_PAINT, "icon_editor")
     paint.serviceClassName = "dotMatrix"
     paint.serviceCommand = jacs.CMD_SET_REG | 0x2
     paint.serviceInstanceIndex = 0
@@ -354,7 +326,6 @@ namespace microcode {
 
     const radio_send = addActuator(
         TID_ACTUATOR_RADIO_SEND,
-        "Send",
         "value_out",
         "constant"
     )
@@ -364,7 +335,6 @@ namespace microcode {
 
     const radio_set_group = addActuator(
         TID_ACTUATOR_RADIO_SET_GROUP,
-        "SetGroup",
         "value_out",
         "constant"
     )
@@ -374,18 +344,18 @@ namespace microcode {
     radio_set_group.jdParam = jacs.NumFmt.U8
     radio_set_group.serviceCommand = jacs.CMD_SET_REG | 0x80
 
-    function addAssign(tid: string, name: string, id: number) {
-        const theVar = addActuator(tid, name, "value_out", "constant")
+    function addAssign(tid: string, id: number) {
+        const theVar = addActuator(tid, "value_out", "constant")
         theVar.jdParam = id
         theVar.jdKind = JdKind.Variable
         theVar.priority = 200 + id
     }
 
-    addAssign(TID_ACTUATOR_CUP_A_ASSIGN, "Into A", 0)
-    addAssign(TID_ACTUATOR_CUP_B_ASSIGN, "Into B", 1)
-    addAssign(TID_ACTUATOR_CUP_C_ASSIGN, "Into C", 2)
+    addAssign(TID_ACTUATOR_CUP_A_ASSIGN, 0)
+    addAssign(TID_ACTUATOR_CUP_B_ASSIGN, 1)
+    addAssign(TID_ACTUATOR_CUP_C_ASSIGN, 2)
 
-    const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", "sound_emoji")
+    const emoji = addActuator(TID_ACTUATOR_SPEAKER, "sound_emoji")
     emoji.serviceClassName = "soundPlayer"
     emoji.serviceCommand = 0x80
     emoji.serviceArgFromModifier = (x: string) => x || "hello"
@@ -406,7 +376,7 @@ namespace microcode {
     const emoji_ms = [1478, 1233, 547, 4794, 1687, 1315, 8192, 2083, 6772, 2816]
     emojis.forEach((e, idx) => {
         const tid = "M19" + e
-        const emoji_mod = new ModifierDefn(tid, e, "sound_emoji", 10)
+        const emoji_mod = new ModifierDefn(tid, "sound_emoji", 10)
         emoji_mod.constraints = terminal
         emoji_mod.jdParam = e
         emoji_mod.jdDuration = emoji_ms[idx]
@@ -431,8 +401,8 @@ namespace microcode {
             const tid = kind + (start + index)
             const tile: FilterModifierBase =
                 kind == "M"
-                    ? new ModifierDefn(tid, v.toString(), name, 10)
-                    : new FilterDefn(tid, v.toString(), name, 10)
+                    ? new ModifierDefn(tid, name, 10)
+                    : new FilterDefn(tid, name, 10)
             tile.jdKind = JdKind.Literal
             tile.jdParam = v
             // tile.constraints = terminal
@@ -456,19 +426,19 @@ namespace microcode {
     })
 
     const numLeds = 8
-    function addRGB(id: number, name: string, buf: Buffer) {
+    function addRGB(id: number, buf: Buffer) {
         const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
-        const mod = new ModifierDefn(tid, name, "rgb_led", 10)
+        const mod = new ModifierDefn(tid, "rgb_led", 10)
         tilesDB.modifiers[tid] = mod
         mod.jdParam = buf
     }
 
-    addRGB(1, "red", hex`2f0000`)
-    addRGB(2, "green", hex`002f00`)
-    addRGB(3, "blue", hex`00002f`)
-    addRGB(4, "magenta", hex`2f002f`)
-    addRGB(5, "yellow", hex`2f2f00`)
-    addRGB(6, "black", hex`000000`)
+    addRGB(1, hex`2f0000`)
+    addRGB(2, hex`002f00`)
+    addRGB(3, hex`00002f`)
+    addRGB(4, hex`2f002f`)
+    addRGB(5, hex`2f2f00`)
+    addRGB(6, hex`000000`)
     // addRGB(4, "teal", hex`00ffff`)
     // addRGB(4, "white", hex`ffffff`)
 
@@ -504,43 +474,22 @@ namespace microcode {
     servoSetAngle.jdKind = JdKind.NumFmt
     servoSetAngle.jdParam = jacs.NumFmt.I32
 
-    const addReadValue = (
-        tid: string,
-        state: string,
-        kind: JdKind,
-        varid: number
-    ) => {
-        const mod = new ModifierDefn(tid, state, "value_out", 10)
+    const addReadValue = (tid: string, kind: JdKind, varid: number) => {
+        const mod = new ModifierDefn(tid, "value_out", 10)
         mod.jdParam = varid
         mod.jdKind = kind
         tilesDB.modifiers[tid] = mod
         mod.priority = 200 + varid
         return mod
     }
-    addReadValue(
-        TID_MODIFIER_CUP_A_READ,
-        "value of variable A",
-        JdKind.Variable,
-        0
-    )
-    addReadValue(
-        TID_MODIFIER_CUP_B_READ,
-        "value of variable B",
-        JdKind.Variable,
-        1
-    )
-    addReadValue(
-        TID_MODIFIER_CUP_C_READ,
-        "value of variable C",
-        JdKind.Variable,
-        2
-    )
+    addReadValue(TID_MODIFIER_CUP_A_READ, JdKind.Variable, 0)
+    addReadValue(TID_MODIFIER_CUP_B_READ, JdKind.Variable, 1)
+    addReadValue(TID_MODIFIER_CUP_C_READ, JdKind.Variable, 2)
     // TODO: this should only be present when radio receive in When section
     // addReadValue(TID_MODIFIER_RADIO_VALUE, "number from radio", JdKind.Radio, 3)
 
     const random_toss = addReadValue(
         TID_MODIFIER_RANDOM_TOSS,
-        "Toss",
         JdKind.RandomToss,
         5
     )
@@ -583,7 +532,7 @@ namespace microcode {
     class IconEditor extends ModifierDefn {
         field: Image
         constructor(field: Image = null) {
-            super(TID_MODIFIER_ICON_EDITOR, "icon editor", "icon_editor", 10)
+            super(TID_MODIFIER_ICON_EDITOR, "icon_editor", 10)
             this.fieldEditor = iconFieldEditor
             if (field) this.field = field.clone()
             else this.field = this.fieldEditor.clone(this.fieldEditor.init)
@@ -636,7 +585,7 @@ namespace microcode {
     class MusicEditor extends ModifierDefn {
         field: NoteField
         constructor(field: NoteField = null) {
-            super(TID_MODIFIER_MUSIC_EDITOR, "music editor", "music_editor", 10)
+            super(TID_MODIFIER_MUSIC_EDITOR, "music_editor", 10)
             this.fieldEditor = musicFieldEditor
             if (field) {
                 this.field = { note: field.note }
