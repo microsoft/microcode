@@ -31,7 +31,7 @@ img.icon-sample {
 
 img.sample {
     image-rendering: pixelated;
-    width: 100%;
+    width: max(22rem, 60%);
     margin-bottom: 0.25rem;
 }
 
