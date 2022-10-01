@@ -49,7 +49,15 @@ We attempted to make the editor as accessible as possible; please send us sugges
 
 #### Keyboard navigation
 
-MicroCode can be programmed with keyboard, game controllers (such as XBox controllers), mouse or touch inputs.
+MicroCode can be programmed with keyboard.
+
+-   Arrow keys for D-pad
+-   `Enter` or `Space` for `A` button
+-   `Backspace` for `B` button
+
+#### Gamepad support
+
+MicroCode supports USB gamepad compatible with the [browsers](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad).
 
 #### Screen reader
 
