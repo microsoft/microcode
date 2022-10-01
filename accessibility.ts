@@ -121,22 +121,22 @@ namespace accessibility {
         M19twinkle: "twinkle",
         M19yawn: "yawn",
 
-        M20A: "variable A",
-        M20B: "variable B",
-        M20C: "variable C",
+        M20A: "variable X",
+        M20B: "variable Y",
+        M20C: "variable Z",
         M21: "radio value",
         M22: "dice",
         M23: "minus",
 
         A8: "LED",
 
-        A9A: "set variable A",
-        A9B: "set variable B",
-        A9C: "set variable C",
+        A9A: "set variable X",
+        A9B: "set variable Y",
+        A9C: "set variable Z",
 
-        S9A: "variable A changed",
-        S9B: "variable B changed",
-        S9C: "variable C changed",
+        S9A: "variable X changed",
+        S9B: "variable Y changed",
+        S9C: "variable Z changed",
 
         N0: "editor",
         N1: "new program",

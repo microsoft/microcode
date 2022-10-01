@@ -62,9 +62,9 @@ namespace microcode {
             this.reg[TID_SENSOR_RELEASE] = icondb.finger_release
             this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
             this.reg[TID_SENSOR_ACCELEROMETER] = icondb.accelerometer
-            this.reg[TID_SENSOR_CUP_A_WRITTEN] = icondb.cupAwritten
-            this.reg[TID_SENSOR_CUP_B_WRITTEN] = icondb.cupBwritten
-            this.reg[TID_SENSOR_CUP_C_WRITTEN] = icondb.cupCwritten
+            this.reg[TID_SENSOR_CUP_X_WRITTEN] = icondb.cupXwritten
+            this.reg[TID_SENSOR_CUP_Y_WRITTEN] = icondb.cupYwritten
+            this.reg[TID_SENSOR_CUP_Z_WRITTEN] = icondb.cupZwritten
             this.reg[TID_SENSOR_MAGNET] = icondb.magnet
 
             // filters
@@ -106,9 +106,9 @@ namespace microcode {
             this.reg[TID_ACTUATOR_SPEAKER] = icondb.speakerFun
             this.reg[TID_ACTUATOR_MUSIC] = icondb.music
             this.reg[TID_ACTUATOR_RGB_LED] = icondb.rgbLed
-            this.reg[TID_ACTUATOR_CUP_A_ASSIGN] = icondb.cupAassign
-            this.reg[TID_ACTUATOR_CUP_B_ASSIGN] = icondb.cupBassign
-            this.reg[TID_ACTUATOR_CUP_C_ASSIGN] = icondb.cupCassign
+            this.reg[TID_ACTUATOR_CUP_X_ASSIGN] = icondb.cupXassign
+            this.reg[TID_ACTUATOR_CUP_Y_ASSIGN] = icondb.cupYassign
+            this.reg[TID_ACTUATOR_CUP_Z_ASSIGN] = icondb.cupZassign
 
             // modifiers
             // value producers that are also consumers
@@ -157,9 +157,9 @@ namespace microcode {
             this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
             this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
 
-            this.reg[TID_MODIFIER_CUP_A_READ] = icondb.cupAread
-            this.reg[TID_MODIFIER_CUP_B_READ] = icondb.cupBread
-            this.reg[TID_MODIFIER_CUP_C_READ] = icondb.cupCread
+            this.reg[TID_MODIFIER_CUP_X_READ] = icondb.cupXread
+            this.reg[TID_MODIFIER_CUP_Y_READ] = icondb.cupYread
+            this.reg[TID_MODIFIER_CUP_Z_READ] = icondb.cupZread
 
             this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
             this.reg[TID_FILTER_ACCEL_TILT_UP] = icondb.moveTiltUp
@@ -1670,26 +1670,26 @@ f f f f f f f f f f f f f f f f
 
     // create cups from core images
 
-    const labelA = img`
+    const labelX = img`
+        f . f
+        f . f
         . f .
         f . f
-        f f f
-        f . f
         f . f
     `
-    const labelB = img`
-        f f .
+    const labelY = img`
         f . f
-        f f f
         f . f
-        f f .
+        . f .
+        . f .
+        . f .
     `
-    const labelC = img`
-        . f f
+    const labelZ = img`
+        f f f
+        . . f
+        . f .
         f . .
-        f . .
-        f . .
-        . f f
+        f f f
     `
 
     const cup = img`
@@ -1733,26 +1733,26 @@ f f f f f f f f f f f f f f f f
         . . . . . . . 4 5 4 . . . . . .
     `
 
-    export const cupAread = cup.clone()
-    cupAread.drawTransparentImage(labelA, 6, 10)
-    export const cupBread = cup.clone()
-    cupBread.drawTransparentImage(labelB, 6, 10)
-    export const cupCread = cup.clone()
-    cupCread.drawTransparentImage(labelC, 6, 10)
+    export const cupXread = cup.clone()
+    cupXread.drawTransparentImage(labelX, 6, 10)
+    export const cupYread = cup.clone()
+    cupYread.drawTransparentImage(labelY, 6, 10)
+    export const cupZread = cup.clone()
+    cupZread.drawTransparentImage(labelZ, 6, 10)
 
-    export const cupAassign = cupAread.clone()
-    cupAassign.drawTransparentImage(inFromRight, 0, 0)
-    export const cupBassign = cupBread.clone()
-    cupBassign.drawTransparentImage(inFromRight, 0, 0)
-    export const cupCassign = cupCread.clone()
-    cupCassign.drawTransparentImage(inFromRight, 0, 0)
+    export const cupXassign = cupXread.clone()
+    cupXassign.drawTransparentImage(inFromRight, 0, 0)
+    export const cupYassign = cupYread.clone()
+    cupYassign.drawTransparentImage(inFromRight, 0, 0)
+    export const cupZassign = cupZread.clone()
+    cupZassign.drawTransparentImage(inFromRight, 0, 0)
 
-    export const cupAwritten = cupAread.clone()
-    cupAwritten.drawTransparentImage(inFromLeft, 0, 0)
-    export const cupBwritten = cupBread.clone()
-    cupBwritten.drawTransparentImage(inFromLeft, 0, 0)
-    export const cupCwritten = cupCread.clone()
-    cupCwritten.drawTransparentImage(inFromLeft, 0, 0)
+    export const cupXwritten = cupXread.clone()
+    cupXwritten.drawTransparentImage(inFromLeft, 0, 0)
+    export const cupYwritten = cupYread.clone()
+    cupYwritten.drawTransparentImage(inFromLeft, 0, 0)
+    export const cupZwritten = cupZread.clone()
+    cupZwritten.drawTransparentImage(inFromLeft, 0, 0)
 
     export const largeEditIcon = img`
     .666666666666666666666666666666.

@@ -349,9 +349,9 @@ const liveStrings = {
     M19twinkle: "emoji twinkle",
     M19yawn: "emoji yawn",
 
-    M20A: "get variable A",
-    M20B: "get variable B",
-    M20C: "get variable C",
+    M20A: "get variable X",
+    M20B: "get variable Y",
+    M20C: "get variable Z",
 
     M21: "radio value",
     M22: "dice",
@@ -359,13 +359,13 @@ const liveStrings = {
 
     A8: "LED",
 
-    A9A: "set variable A",
-    A9B: "set variable B",
-    A9C: "set variable C",
+    A9A: "set variable X",
+    A9B: "set variable Y",
+    A9C: "set variable Z",
 
-    S9A: "variable A changed",
-    S9B: "variable B changed",
-    S9C: "variable C changed",
+    S9A: "variable X changed",
+    S9B: "variable Y changed",
+    S9C: "variable Z changed",
 
     S10: "magnet detector",
 

@@ -87,9 +87,9 @@ symbol when shaken.
 The program starts with a rule that uses
 the accelerometer sensor; which by default
 detects shake events. The 3-face dice is cast
-and the result is stored in variable A.
+and the result is stored in variable `X`.
 
-The next 3 rules match the value passed in variable A
+The next 3 rules match the value passed in variable `X`
 and display a different symbol for each value, 1, 2 or 3.
 
 #### improvement ideas
@@ -163,13 +163,13 @@ and page 2 will handle a glow.
 In page one, we add a rule that clears the screen and keeps a dot. You can completely clear
 the screen but keeping a dot is useful as well.
 
-The clock of the firefly will be held in variable A ("cup A"). It starts at 1 and once it hits 8, the firefly will glow. The next two rules are about moving the clock forward. The `repeat timer 1/4s` rule moves the clock every quarter of a second; the `radio receive 1` moves the clock by 1 whenever a neighboring firefly sent a message.
+The clock of the firefly will be held in variable `X` ("cup A"). It starts at 1 and once it hits 8, the firefly will glow. The next two rules are about moving the clock forward. The `repeat timer 1/4s` rule moves the clock every quarter of a second; the `radio receive 1` moves the clock by 1 whenever a neighboring firefly sent a message.
 
-The next rule, `when variable A changed to 8`, transitions to page 2 when the clock hits `8`.
+The next rule, `when variable `X` changed to 8`, transitions to page 2 when the clock hits `8`.
 Since it is possible that we miss the number `8` because the firefly received many radio updates at once,
 we add one last rule, a `repeat timer every 3s` that transitions to page 2.
 
-On page 2, the `variable A` is reset to 1, a radio message is sent to other firefly so that they can nudge their clock, all the LEDs are turned and a sound is played.
+On page 2, the `variable `X`` is reset to 1, a radio message is sent to other firefly so that they can nudge their clock, all the LEDs are turned and a sound is played.
 After half a second, we transition back to page 1 to restart the non-glow phase.
 
 #### improvement ideas

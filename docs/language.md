@@ -48,7 +48,7 @@ The left-hand side of a rule, the `When` section, starts with an
 -   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear` a sound, either loud or soft
 -   ![radio receive image](./images/generated/icon_S7.png){:class="icon"} `radio receive` of a number
 -   ![repeat timer image](./images/generated/icon_S4.png){:class="icon"} `repeat timer` of a time
--   ![variable A image](./images/generated/icon_S9A.png){:class="icon"} ![variable B image](./images/generated/icon_S9B.png){:class="icon"} ![variable C image](./images/generated/icon_S9C.png){:class="icon"} `variable (A,B,C) changed` to a number
+-   ![variable X image](./images/generated/icon_S9A.png){:class="icon"} ![variable Y image](./images/generated/icon_S9B.png){:class="icon"} ![variable Z image](./images/generated/icon_S9C.png){:class="icon"} `variable (X,Y,Z) changed` to a number
 
 If the `when` section is left section,
 the rule will run once when the page is started.
@@ -72,7 +72,7 @@ The dialog below shows the parameters associated with the button press/release e
 -   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear`, defaults to ![loud](./images/generated/icon_F15.png){:class="icon"}`loud`
 -   ![radio receive](./images/generated/icon_S7.png){:class="icon"} `radio receive`, defaults to `any`
 -   ![timer](./images/generated/icon_S4.png){:class="icon"} `repeat timer`, defaults to `1/4 second`
--   ![variable A image](./images/generated/icon_S9A.png){:class="icon"} `variable (A,B,C) changed`, defaults to `any` (any value change triggers it)
+-   ![variable X image](./images/generated/icon_S9A.png){:class="icon"} `variable (X,Y,Z) changed`, defaults to `any` (any value change triggers it)
 
 ### Conditions on event values
 
@@ -102,7 +102,7 @@ The right-hand side of a rule, the **Do** section, starts with an
 -   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays a given emoji
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends a given number over the radio
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` transfers execution control to a given page
--   ![in variable A](./images/generated/icon_M20A.png){:class="icon"} `set variable` puts a number into a variable (A, B, C)
+-   ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable` puts a number into a variable (`X`, `Y`, `Z`)
 
 A command can be followed by various parameter tiles, depending on the type
 of command. As with events, every command has a default parameter, for the
@@ -112,7 +112,7 @@ case where no parameter tile is given:
 -   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays ![emoji giggle](./images/generated/icon_M19giggle.png){:class="icon"} `giggle` by default
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends the number `1` by default
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` switches to page `1` by default
--   ![in variable A](./images/generated/icon_M20A.png){:class="icon"} `set variable` puts a number into a variable (A, B, C)
+-   ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable` puts a number into a variable (`X`, `Y`, `Z`)
 
 Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5 dots`.
 
@@ -120,10 +120,10 @@ Sequences of numeric parameters are summed, as before, allowing the construction
 
 ### Constructing numbers
 
-For commands that expect a numeric value (![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send`, ![in variable A](./images/generated/icon_M20A.png){:class="icon"} `set variable`), a variety of tiles are available
+For commands that expect a numeric value (![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send`, ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable`), a variety of tiles are available
 
 -   the **constant values** ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, 2, 3, 4 and 5 dots (maybe we'll add 0 soon)
--   the **values of variables** ![out of variable A](./images/generated/icon_S9A.png){:class="icon"} A, B, and C
+-   the **values of variables** ![out of variable X](./images/generated/icon_S9A.png){:class="icon"} `X`, `Y`, and `Z`
 -   a ![dice](./images/generated/icon_M22.png){:class="icon"} **random number generator** yields a random integer between `1` and `5` (inclusive) by default
 
 ## Jacdac Modules {#jacdac}
