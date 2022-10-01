@@ -177,9 +177,9 @@ After half a second, we transition back to page 1 to restart the non-glow phase.
 -   use a radio group to avoid interference with other users
 -   remix this technique with other programs to create new synchronized experiences!
 
-## Lights and Motors
+## Accessories
 
-The samples in this section using [Jacdac](https://aka.ms/jacdac) modules to extend the micro:bit with programmable LEDs, servo and other sensors.
+The samples in this section using [Jacdac](https://aka.ms/jacdac) modules to extend the micro:bit with programmable LEDs, servo and other sensors/actuators.
 
 ### ![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon-sample"} Railroad crossing {#railroad_crossing}
 
