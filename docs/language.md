@@ -76,13 +76,13 @@ The dialog below shows the parameters associated with the button press/release e
 
 ### Conditions on event values
 
-When an event carries a numberic value (in the case of receiving a radio message or a variable being updated), if that value is equal to the sum of coins, then execution will proceed to the DO section. Here are the five available coins:
+When an event carries a numeric value (in the case of receiving a radio message or a variable being updated), if that value is equal to the number of dots that follows, in total, then execution will proceed to the DO section. Here are the five available coins:
 
--   `1` ![coin of value 1](./images/generated/icon_F8.png){:class="icon"}
--   `2`: ![coin of value 2](./images/generated/icon_F9.png){:class="icon"}
--   `3`: ![coin of value 3](./images/generated/icon_F10.png){:class="icon"}
--   `5`: ![coin of value 5](./images/generated/icon_F11.png){:class="icon"}
--   `10`: ![coin of value 10](./images/generated/icon_F12.png){:class="icon"}
+-   `1 dot` ![one dot](./images/generated/icon_F8.png){:class="icon"}
+-   `2 dots`: ![two dots](./images/generated/icon_F9.png){:class="icon"}
+-   `3 dots`: ![three dots](./images/generated/icon_F10.png){:class="icon"}
+-   `4 dots`: ![four dots](./images/generated/icon_F11.png){:class="icon"}
+-   `5 dots`: ![five dots](./images/generated/icon_F12.png){:class="icon"}
 
 The repeat timer is parameterized with various times that can also be sequenced and summed:
 
@@ -114,7 +114,7 @@ case where no parameter tile is given:
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` switches to page `1` by default
 -   ![in variable A](./images/generated/icon_M20A.png){:class="icon"} `set variable` puts a number into a variable (A, B, C)
 
-Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5`.
+Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5 dots`.
 
 ![command tiles in do section](./images/doDialog.jpg){:class="screenshot"}
 
@@ -122,7 +122,7 @@ Sequences of numeric parameters are summed, as before, allowing the construction
 
 For commands that expect a numeric value (![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send`, ![in variable A](./images/generated/icon_M20A.png){:class="icon"} `set variable`), a variety of tiles are available
 
--   the **constant values** ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, 2, 3, 5, and 10 (maybe we'll add 0 soon)
+-   the **constant values** ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, 2, 3, 4 and 5 dots (maybe we'll add 0 soon)
 -   the **values of variables** ![out of variable A](./images/generated/icon_S9A.png){:class="icon"} A, B, and C
 -   a ![dice](./images/generated/icon_M22.png){:class="icon"} **random number generator** yields a random integer between `1` and `5` (inclusive) by default
 

@@ -40,8 +40,8 @@ namespace microcode {
     export const TID_FILTER_COIN_1 = "F8"
     export const TID_FILTER_COIN_2 = "F9"
     export const TID_FILTER_COIN_3 = "F10"
-    export const TID_FILTER_COIN_5 = "F11"
-    export const TID_FILTER_COIN_20 = "F12"
+    export const TID_FILTER_COIN_4 = "F11"
+    export const TID_FILTER_COIN_5 = "F12"
     export const TID_FILTER_TIMESPAN_SHORT = "F13"
     export const TID_FILTER_TIMESPAN_LONG = "F14"
     export const TID_FILTER_LOUD = "F15"
@@ -76,8 +76,8 @@ namespace microcode {
     export const TID_MODIFIER_COIN_1 = "M6"
     export const TID_MODIFIER_COIN_2 = "M7"
     export const TID_MODIFIER_COIN_3 = "M8"
-    export const TID_MODIFIER_COIN_5 = "M9"
-    export const TID_MODIFIER_COIN_10 = "M10"
+    export const TID_MODIFIER_COIN_4 = "M9"
+    export const TID_MODIFIER_COIN_5 = "M10"
 
     export const TID_MODIFIER_ON = "M11"
     export const TID_MODIFIER_OFF = "M12"
@@ -446,7 +446,7 @@ namespace microcode {
         return tiles
     }
 
-    const coin_values = [1, 2, 3, 5, 10]
+    const coin_values = [1, 2, 3, 4, 5]
     make_vals(coin_values, "value_in", "F", 8)
     make_vals(coin_values, "constant", "M", 6)
     make_vals([1, 2, 3, 4, 5], "page", "M", 1).forEach(m => {
