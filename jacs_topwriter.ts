@@ -441,8 +441,7 @@ namespace jacs {
             )
                 for (const f of rule.filters)
                     if (typeof f.jdParam == "number") idx = f.jdParam
-            if (!sensor.serviceClassName)
-                this.error(`can't emit ${sensor.name} ${sensor.tid}`)
+            if (!sensor.serviceClassName) this.error(`can't emit ${sensor.tid}`)
             return this.lookupRole(sensor.serviceClassName, idx)
         }
 

@@ -47,11 +47,7 @@ namespace microcode {
     }
 
     export class TileDefn {
-        constructor(
-            public type: TileType,
-            public tid: string,
-            public name: string
-        ) {
+        constructor(public type: TileType, public tid: string) {
             this.priority = 0
         }
 
@@ -166,19 +162,14 @@ namespace microcode {
         public eventCode: number
         public serviceInstanceIndex: number = 0
 
-        constructor(tid: string, name: string, public phase: Phase) {
-            super(TileType.SENSOR, tid, name)
+        constructor(tid: string, public phase: Phase) {
+            super(TileType.SENSOR, tid)
         }
     }
 
     export class FilterModifierBase extends TileDefn {
-        constructor(
-            type: TileType,
-            tid: string,
-            name: string,
-            public category: string
-        ) {
-            super(type, tid, name)
+        constructor(type: TileType, tid: string, public category: string) {
+            super(type, tid)
         }
 
         serviceCommandArg(): string | Buffer {
@@ -210,13 +201,8 @@ namespace microcode {
 
     export class FilterDefn extends FilterModifierBase {
         eventCode: number
-        constructor(
-            tid: string,
-            name: string,
-            category: string,
-            priority: number
-        ) {
-            super(TileType.FILTER, tid, name, category)
+        constructor(tid: string, category: string, priority: number) {
+            super(TileType.FILTER, tid, category)
             this.priority = priority
         }
     }
@@ -227,19 +213,14 @@ namespace microcode {
         public serviceInstanceIndex: number = 0
         public serviceArgFromModifier: (jdParam: any) => string | Buffer
 
-        constructor(tid: string, name: string) {
-            super(TileType.ACTUATOR, tid, name)
+        constructor(tid: string) {
+            super(TileType.ACTUATOR, tid)
         }
     }
 
     export class ModifierDefn extends FilterModifierBase {
-        constructor(
-            tid: string,
-            name: string,
-            category: string,
-            priority: number
-        ) {
-            super(TileType.MODIFIER, tid, name, category)
+        constructor(tid: string, category: string, priority: number) {
+            super(TileType.MODIFIER, tid, category)
             this.priority = priority
         }
     }
