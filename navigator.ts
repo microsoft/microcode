@@ -291,8 +291,6 @@ namespace microcode {
         public finished() {
             this.sortedButtons = []
             // we now need to optimize a bit by sorting and creating rows
-            // for now, we assume the buttons have been added in order by
-            // y coordinate
             let currRow: Button[] = []
             this.buttons.sort((a, b) => a.xfrm.worldPos.y - b.xfrm.worldPos.y)
             this.buttons.forEach(btn => {
