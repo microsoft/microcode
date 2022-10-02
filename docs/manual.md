@@ -51,9 +51,11 @@ We want to make the editor as accessible as possible; please send us suggestions
 
 MicroCode can be accessed with the keyboard:
 
--   Arrow keys for D-pad
+-   Arrow keys to move cursor
 -   `Enter` or `Space` for `A` button
 -   `Backspace` for `B` button
+-   Keep moving the cursor `Up` to go back a screen, if `Backspace` is not available;
+for example, if you are using a 5-input switch panel.
 
 #### Gamepad support
 
