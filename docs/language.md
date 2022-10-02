@@ -50,7 +50,7 @@ The left-hand side of a rule, the `When` section, starts with an
 -   ![repeat timer image](./images/generated/icon_S4.png){:class="icon"} `repeat timer` of a time
 -   ![variable X image](./images/generated/icon_S9A.png){:class="icon"} ![variable Y image](./images/generated/icon_S9B.png){:class="icon"} ![variable Z image](./images/generated/icon_S9C.png){:class="icon"} `variable (X,Y,Z) changed` to a number
 
-If the `when` section is left section,
+If the `when` section is left empty,
 the rule will run once when the page is started.
 
 ### Event parameters and conditions
@@ -76,7 +76,7 @@ The dialog below shows the parameters associated with the button press/release e
 
 ### Conditions on event values
 
-When an event carries a numeric value (in the case of receiving a radio message or a variable being updated), if that value is equal to the number of dots that follows, in total, then execution will proceed to the DO section. Here are the five available (dot)values:
+When an event carries a numeric value (in the case of receiving a radio message or a variable being updated), if that value is equal to the number of dots that follows, in total, then execution will proceed to the DO section. Here are the five available (dot) values:
 
 -   `1 dot` ![one dot](./images/generated/icon_F8.png){:class="icon"}
 -   `2 dots`: ![two dots](./images/generated/icon_F9.png){:class="icon"}
@@ -95,11 +95,11 @@ In the case of the timer, the sum specifies the amount of time to start the time
 
 ## DO section {#do}
 
-The right-hand side of a rule, the **Do** section, starts with an
+The right-hand side of a rule, the **Do** section, starts with a
 **command** tile from the following list:
 
 -   ![screen](./images/generated/icon_A5.png){:class="icon"} `screen` shows an animation sequence on the LED screen.
--   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays a given emoji
+-   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays a sequence of emojis
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends a given number over the radio
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` transfers execution control to a given page
 -   ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable` puts a number into a variable (`X`, `Y`, `Z`)
@@ -122,7 +122,7 @@ Sequences of numeric parameters are summed, as before, allowing the construction
 
 For commands that expect a numeric value (![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send`, ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable`), a variety of tiles are available
 
--   the **constant values** ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, 2, 3, 4 and 5 dots (maybe we'll add 0 soon)
+-   the **constant values** ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, 2, 3, 4 and 5 dots
 -   the **values of variables** ![out of variable X](./images/generated/icon_S9A.png){:class="icon"} `X`, `Y`, and `Z`
 -   a ![dice](./images/generated/icon_M22.png){:class="icon"} **random number generator** yields a random integer between `1` and `5` (inclusive) by default
 
