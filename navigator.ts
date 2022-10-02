@@ -9,6 +9,8 @@ namespace microcode {
         finished: () => void
     }
 
+    export class BackButton {}
+
     export class RowNavigator implements INavigator {
         protected buttonGroups: Button[][]
         protected buttons: Button[]
@@ -64,7 +66,7 @@ namespace microcode {
             this.makeGood()
             switch (dir) {
                 case CursorDir.Up: {
-                    if (this.row == 0) return undefined
+                    if (this.row == 0) throw new BackButton()
                     this.row--
                     // because the column in new row may be out of bounds
                     this.makeGood()
@@ -340,6 +342,8 @@ namespace microcode {
                             else {
                                 btn = prevRow[prevRow.length - 1]
                             }
+                        } else {
+                            throw new BackButton()
                         }
                         break
                     }
