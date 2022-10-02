@@ -133,7 +133,7 @@ namespace docs {
             w = Math.max(w, img.width)
             h += img.height + margin
 
-            r[`page_${p}`] = img
+            r[`page_${p + 1}`] = img
 
             // render individual rules
             const pageEditor = editor.pageEditor
@@ -170,7 +170,7 @@ namespace docs {
                     true,
                     false
                 )
-                r[`page_${p}_rule_${ri}`] = imgr
+                r[`page_${p + 1}_rule_${ri + 1}`] = imgr
             })
             app.popScene()
         })
