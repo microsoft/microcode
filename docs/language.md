@@ -11,11 +11,11 @@ The picture below shows a 1-page program with two rules.
 
 ![Smiley Button MicroCode program](./images/rule.jpg){:class="screenshot"}
 
-The first rule shows a happy face on the micro:bit screen when the button A is pressed.
+![when button A pressed, paint screen with smiley](./images/generated/sample_smiley_buttons_page_1_rule_1.png){:class="rule"}
 
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with smiley.
 
-The second rule shows a sad face when the button B is pressed.
+![when button B pressed, paint screen with frowney](./images/generated/sample_smiley_buttons_page_1_rule_2.png){:class="rule"}
 
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button B](./images/generated/icon_F4.png){:class="icon"} button B, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with frowney.
 
