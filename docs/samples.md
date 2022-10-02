@@ -155,17 +155,14 @@ Fireflies in the wild synchronize their glowing although there is no leader to g
 Go to [http://ncase.me/fireflies/](http://ncase.me/fireflies/) and read about the fireflies synchronization phenomenon.
 
 Just like fireflies in the wild, you can create program that synchronize blinking
-between any number of micro:bit!
-
-The firefly program uses two pages, page 1 will run when the light is off
+between any number of micro:bit! The firefly program uses two pages, page 1 will run when the light is off
 and page 2 will handle a glow.
 
-In page 1', we add a rule that clears the screen and keeps a dot. You can completely clear
-the screen but keeping a dot is useful as well.
+In ![page 1](./images/generated/icon_M1.png){:class="icon"} page 1, we add a rule that clears the screen and keeps a dot ![screen](./images/generated/icon_A5.png){:class="icon"} when the page starts.
 
 The clock of the firefly will be held in ![get variable X](./images/generated/icon_M20A.png){:class="icon"} variable `X`. It starts at ![value 1](./images/generated/icon_M6.png){:class="icon"} 1 and once it reaches 8, the firefly will glow. The next two rules are about moving the clock forward. The ![timer](./images/generated/icon_S4.png){:class="icon"} `repeat timer` rule moves the clock every ![quarter of a second](./images/generated/icon_F13.png){:class="icon"} quarter of a second; the ![radio receive](./images/generated/icon_S7.png){:class="icon"} `radio receive` moves the clock by 1 whenever a neighboring firefly sent a message.
 
-The next rule, ![variable X changed](./images/generated/icon_S9A.png){:class="icon"} `when variable `X` changed to 8`, transitions to ![page 2](./images/generated/icon_M2.png){:class="icon"} page 2 when the clock reaches `8`.
+The next rule, ![variable X changed](./images/generated/icon_S9A.png){:class="icon"} **when** variable `X` changed to 8, transitions to ![page 2](./images/generated/icon_M2.png){:class="icon"} page 2 when the clock reaches `8`.
 Since it is possible that we miss the number `8` because the firefly received many radio updates at once,
 we add one last rule, a `repeat timer every 3s` that transitions to page 2.
 
