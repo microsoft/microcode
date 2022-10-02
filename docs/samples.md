@@ -110,18 +110,18 @@ the accelerometer sensor; which by default
 detects shake events. The 3-face dice is cast
 and the result is stored in variable `X`.
 
-![when shake, set variable X to random number up to 3](./images/generated/sample_rock_paper_scissors_page_1_rule_1.png)
+![when shake, set variable X to random number up to 3](./images/generated/sample_rock_paper_scissors_page_1_rule_1.png){:class="rule"}
 
 -   **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![set variable X](./images/generated/icon_A9A.png){:class="icon"} set variable X to ![dice](./images/generated/icon_M22.png){:class="icon"} random number between 1 and ![value 3](./images/generated/icon_M8.png){:class="icon"} 3.
 
 The next 3 rules match the value passed in variable `X`
 and display a different symbol for each value, 1, 2 or 3.
 
-![when variable X changed to 1, paint rock](./images/generated/sample_rock_paper_scissors_page_1_rule_2.png)
+![when variable X changed to 1, paint rock](./images/generated/sample_rock_paper_scissors_page_1_rule_2.png){:class="rule"}
 
-![when variable X changed to 2, paint paper](./images/generated/sample_rock_paper_scissors_page_1_rule_3.png)
+![when variable X changed to 2, paint paper](./images/generated/sample_rock_paper_scissors_page_1_rule_3.png){:class="rule"}
 
-![when variable X changed to 3, paint scissors](./images/generated/sample_rock_paper_scissors_page_1_rule_4.png)
+![when variable X changed to 3, paint scissors](./images/generated/sample_rock_paper_scissors_page_1_rule_4.png){:class="rule"}
 
 #### improvement ideas
 
