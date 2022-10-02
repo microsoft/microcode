@@ -3,5 +3,6 @@ namespace microcode {
         public static toolTips: boolean = true
         public static repeatKey: boolean = false
         public static fps: boolean = false
+        public static coins: boolean = false
     }
 }

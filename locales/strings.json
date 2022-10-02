@@ -54,9 +54,9 @@
     "A6": "radio send",
     "A6A": "radio set group",
     "A7": "random number",
-    "A9A": "set variable A",
-    "A9B": "set variable B",
-    "A9C": "set variabl C",
+    "A9A": "set variable X",
+    "A9B": "set variable Y",
+    "A9C": "set variabl Z",
 
     "M1": "page 1",
     "M2": "page 2",
@@ -89,9 +89,9 @@
     "M19twinkle": "emoji twinkle",
     "M19yawn": "emoji yawn",
 
-    "M20A": "variable A",
-    "M20B": "variable B",
-    "M20C": "variable C",
+    "M20A": "variable X",
+    "M20B": "variable Y",
+    "M20C": "variable Z",
 
     "M21": "radio value",
     "M22": "dice",
@@ -99,9 +99,9 @@
 
     "A8": "LED",
 
-    "S9A": "variable A changes",
-    "S9B": "variable B changes",
-    "S9C": "variable C changes",
+    "S9A": "variable X changes",
+    "S9B": "variable Y changes",
+    "S9C": "variable Z changes",
 
     "N0": "editor",
     "N1": "new program",

@@ -58,9 +58,9 @@ namespace microcode {
             this.reg[TID_SENSOR_RELEASE] = icondb.finger_release
             this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
             this.reg[TID_SENSOR_ACCELEROMETER] = icondb.accelerometer
-            this.reg[TID_SENSOR_CUP_A_WRITTEN] = icondb.cupAwritten
-            this.reg[TID_SENSOR_CUP_B_WRITTEN] = icondb.cupBwritten
-            this.reg[TID_SENSOR_CUP_C_WRITTEN] = icondb.cupCwritten
+            this.reg[TID_SENSOR_CUP_X_WRITTEN] = icondb.cupXwritten
+            this.reg[TID_SENSOR_CUP_Y_WRITTEN] = icondb.cupYwritten
+            this.reg[TID_SENSOR_CUP_Z_WRITTEN] = icondb.cupZwritten
             this.reg[TID_SENSOR_MAGNET] = icondb.magnet
 
             // filters
@@ -75,11 +75,21 @@ namespace microcode {
             this.reg[TID_FILTER_TIMESPAN_VERY_LONG] =
                 icondb.tile_timespan_fiveSeconds
             this.reg[TID_FILTER_TIMESPAN_RANDOM] = icondb.tile_timespan_random
-            this.reg[TID_FILTER_COIN_1] = icondb.tile_coin_1
-            this.reg[TID_FILTER_COIN_2] = icondb.tile_coin_2
-            this.reg[TID_FILTER_COIN_3] = icondb.tile_coin_3
-            this.reg[TID_FILTER_COIN_5] = icondb.tile_coin_5
-            this.reg[TID_FILTER_COIN_20] = icondb.tile_coin_10
+            this.reg[TID_FILTER_COIN_1] = Options.coins
+                ? icondb.tile_coin_1
+                : icondb.blocks1
+            this.reg[TID_FILTER_COIN_2] = Options.coins
+                ? icondb.tile_coin_2
+                : icondb.blocks2
+            this.reg[TID_FILTER_COIN_3] = Options.coins
+                ? icondb.tile_coin_3
+                : icondb.blocks3
+            this.reg[TID_FILTER_COIN_4] = Options.coins
+                ? icondb.tile_coin_4
+                : icondb.blocks4
+            this.reg[TID_FILTER_COIN_5] = Options.coins
+                ? icondb.tile_coin_5
+                : icondb.blocks5
             this.reg[TID_FILTER_LOUD] = icondb.speaker
             this.reg[TID_FILTER_QUIET] = icondb.speakerQuiet
 
@@ -92,9 +102,9 @@ namespace microcode {
             this.reg[TID_ACTUATOR_SPEAKER] = icondb.speakerFun
             this.reg[TID_ACTUATOR_MUSIC] = icondb.music
             this.reg[TID_ACTUATOR_RGB_LED] = icondb.rgbLed
-            this.reg[TID_ACTUATOR_CUP_A_ASSIGN] = icondb.cupAassign
-            this.reg[TID_ACTUATOR_CUP_B_ASSIGN] = icondb.cupBassign
-            this.reg[TID_ACTUATOR_CUP_C_ASSIGN] = icondb.cupCassign
+            this.reg[TID_ACTUATOR_CUP_X_ASSIGN] = icondb.cupXassign
+            this.reg[TID_ACTUATOR_CUP_Y_ASSIGN] = icondb.cupYassign
+            this.reg[TID_ACTUATOR_CUP_Z_ASSIGN] = icondb.cupZassign
 
             // modifiers
             TID_MODIFIER_ICON_EDITOR
@@ -108,11 +118,21 @@ namespace microcode {
             this.reg[TID_MODIFIER_PAGE_4] = icondb.tile_page_4
             this.reg[TID_MODIFIER_PAGE_5] = icondb.tile_page_5
 
-            this.reg[TID_MODIFIER_COIN_1] = icondb.tile_coin_1
-            this.reg[TID_MODIFIER_COIN_2] = icondb.tile_coin_2
-            this.reg[TID_MODIFIER_COIN_3] = icondb.tile_coin_3
-            this.reg[TID_MODIFIER_COIN_5] = icondb.tile_coin_5
-            this.reg[TID_MODIFIER_COIN_10] = icondb.tile_coin_10
+            this.reg[TID_MODIFIER_COIN_1] = Options.coins
+                ? icondb.tile_coin_1
+                : icondb.blocks1
+            this.reg[TID_MODIFIER_COIN_2] = Options.coins
+                ? icondb.tile_coin_2
+                : icondb.blocks2
+            this.reg[TID_MODIFIER_COIN_3] = Options.coins
+                ? icondb.tile_coin_3
+                : icondb.blocks3
+            this.reg[TID_MODIFIER_COIN_4] = Options.coins
+                ? icondb.tile_coin_4
+                : icondb.blocks4
+            this.reg[TID_MODIFIER_COIN_5] = Options.coins
+                ? icondb.tile_coin_5
+                : icondb.blocks5
 
             this.reg[TID_MODIFIER_RGB_LED_COLOR_1] = icondb.tile_color_red
             this.reg[TID_MODIFIER_RGB_LED_COLOR_2] = icondb.tile_color_green
@@ -134,9 +154,9 @@ namespace microcode {
             this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
             this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
 
-            this.reg[TID_MODIFIER_CUP_A_READ] = icondb.cupAread
-            this.reg[TID_MODIFIER_CUP_B_READ] = icondb.cupBread
-            this.reg[TID_MODIFIER_CUP_C_READ] = icondb.cupCread
+            this.reg[TID_MODIFIER_CUP_X_READ] = icondb.cupXread
+            this.reg[TID_MODIFIER_CUP_Y_READ] = icondb.cupYread
+            this.reg[TID_MODIFIER_CUP_Z_READ] = icondb.cupZread
 
             this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
             this.reg[TID_FILTER_ACCEL_TILT_UP] = icondb.moveTiltUp
@@ -1115,26 +1135,25 @@ namespace icondb {
     . . . 4 4 5 5 5 5 5 4 4 d . . .
     . . . . . 4 4 4 4 4 d d . . . .
     . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . .
-`
+    . . . . . . . . . . . . . . . .`
 
-    export const tile_coin_10 = img`
- . . . . . . . . . . . . . . . .
- . . . . . 4 4 4 4 4 . . . . . .
- . . . 4 4 5 5 5 5 5 4 4 . . . .
- . . 4 5 5 1 1 1 1 1 5 5 4 . . .
- . . 4 5 1 1 1 1 1 1 1 5 4 . . .
- . 4 5 1 1 f 1 1 1 f 1 1 5 4 . .
- . 4 5 1 f f 1 1 f 1 f 1 5 4 d .
- . 4 5 1 1 f 1 1 f 1 f 1 5 4 d .
- . 4 5 1 1 f 1 1 f 1 f 1 5 4 d .
- . 4 5 1 f f f 1 1 f 1 1 5 4 d .
- . . 4 5 1 1 1 1 1 1 1 5 4 d d .
- . . 4 5 5 1 1 1 1 1 5 5 4 d . .
- . . . 4 4 5 5 5 5 5 4 4 d . . .
- . . . . . 4 4 4 4 4 d d . . . .
- . . . . . . . . . . . . . . . .
- . . . . . . . . . . . . . . . .
+    export const tile_coin_4 = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . 4 4 4 4 4 . . . . . .
+    . . . 4 4 5 5 5 5 5 4 4 . . . .
+    . . 4 5 5 1 1 1 1 1 5 5 4 . . .
+    . . 4 5 1 1 1 1 1 1 1 5 4 . . .
+    . 4 5 1 1 1 f 1 f 1 1 1 5 4 . .
+    . 4 5 1 1 1 f 1 f 1 1 1 5 4 d .
+    . 4 5 1 1 1 f f f 1 1 1 5 4 d .
+    . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
+    . 4 5 1 1 1 1 1 f 1 1 1 5 4 d .
+    . . 4 5 1 1 1 1 1 1 1 5 4 d d .
+    . . 4 5 5 1 1 1 1 1 5 5 4 d . .
+    . . . 4 4 5 5 5 5 5 4 4 d . . .
+    . . . . . 4 4 4 4 4 d d . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
 `
 
     export const rgbLed = img`
@@ -1620,26 +1639,26 @@ f f f f f f f f f f f f f f f f
 
     // create cups from core images
 
-    const labelA = img`
+    const labelX = img`
+        f . f
+        f . f
         . f .
         f . f
-        f f f
-        f . f
         f . f
     `
-    const labelB = img`
-        f f .
+    const labelY = img`
         f . f
-        f f f
         f . f
-        f f .
+        . f .
+        . f .
+        . f .
     `
-    const labelC = img`
-        . f f
+    const labelZ = img`
+        f f f
+        . . f
+        . f .
         f . .
-        f . .
-        f . .
-        . f f
+        f f f
     `
 
     const cup = img`
@@ -1683,26 +1702,26 @@ f f f f f f f f f f f f f f f f
         . . . . . . . 4 5 4 . . . . . .
     `
 
-    export const cupAread = cup.clone()
-    cupAread.drawTransparentImage(labelA, 6, 10)
-    export const cupBread = cup.clone()
-    cupBread.drawTransparentImage(labelB, 6, 10)
-    export const cupCread = cup.clone()
-    cupCread.drawTransparentImage(labelC, 6, 10)
+    export const cupXread = cup.clone()
+    cupXread.drawTransparentImage(labelX, 6, 10)
+    export const cupYread = cup.clone()
+    cupYread.drawTransparentImage(labelY, 6, 10)
+    export const cupZread = cup.clone()
+    cupZread.drawTransparentImage(labelZ, 6, 10)
 
-    export const cupAassign = cupAread.clone()
-    cupAassign.drawTransparentImage(inFromRight, 0, 0)
-    export const cupBassign = cupBread.clone()
-    cupBassign.drawTransparentImage(inFromRight, 0, 0)
-    export const cupCassign = cupCread.clone()
-    cupCassign.drawTransparentImage(inFromRight, 0, 0)
+    export const cupXassign = cupXread.clone()
+    cupXassign.drawTransparentImage(inFromRight, 0, 0)
+    export const cupYassign = cupYread.clone()
+    cupYassign.drawTransparentImage(inFromRight, 0, 0)
+    export const cupZassign = cupZread.clone()
+    cupZassign.drawTransparentImage(inFromRight, 0, 0)
 
-    export const cupAwritten = cupAread.clone()
-    cupAwritten.drawTransparentImage(inFromLeft, 0, 0)
-    export const cupBwritten = cupBread.clone()
-    cupBwritten.drawTransparentImage(inFromLeft, 0, 0)
-    export const cupCwritten = cupCread.clone()
-    cupCwritten.drawTransparentImage(inFromLeft, 0, 0)
+    export const cupXwritten = cupXread.clone()
+    cupXwritten.drawTransparentImage(inFromLeft, 0, 0)
+    export const cupYwritten = cupYread.clone()
+    cupYwritten.drawTransparentImage(inFromLeft, 0, 0)
+    export const cupZwritten = cupZread.clone()
+    cupZwritten.drawTransparentImage(inFromLeft, 0, 0)
 
     export const largeEditIcon = img`
     .666666666666666666666666666666.
@@ -2293,6 +2312,97 @@ bffffffffffffffffffffffffffffffb
     . . . . . . . . . . . b . 4 4 . 
     `
 
+    export const blocks1 = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . 4 4 4 4 . . . . . .
+    . . . . . . 4 5 5 4 . . . . . .
+    . . . . . . 4 5 5 4 . . . . . .
+    . . . . . . 4 4 4 4 . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+
+    export const blocks2 = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . 4 4 4 4 . . 4 4 4 4 . . .
+        . . . 4 5 5 4 . . 4 5 5 4 . . .
+        . . . 4 5 5 4 . . 4 5 5 4 . . .
+        . . . 4 4 4 4 . . 4 4 4 4 . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const blocks3 = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . 4 4 4 4 . 4 4 4 4 . 4 4 4 4 .
+        . 4 5 5 4 . 4 5 5 4 . 4 5 5 4 .
+        . 4 5 5 4 . 4 5 5 4 . 4 5 5 4 .
+        . 4 4 4 4 . 4 4 4 4 . 4 4 4 4 .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const blocks4 = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . 4 4 4 4 . . 4 4 4 4 . . .
+        . . . 4 5 5 4 . . 4 5 5 4 . . .
+        . . . 4 5 5 4 . . 4 5 5 4 . . .
+        . . . 4 4 4 4 . . 4 4 4 4 . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . 4 4 4 4 . . 4 4 4 4 . . .
+        . . . 4 5 5 4 . . 4 5 5 4 . . .
+        . . . 4 5 5 4 . . 4 5 5 4 . . .
+        . . . 4 4 4 4 . . 4 4 4 4 . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+    export const blocks5 = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . 4 4 4 4 . 4 4 4 4 . . . .
+        . . . 4 5 5 4 . 4 5 5 4 . . . .
+        . . . 4 5 5 4 . 4 5 5 4 . . . .
+        . . . 4 4 4 4 . 4 4 4 4 . . . .
+        . . . . . . . . . . . . . . . .
+        . 4 4 4 4 . 4 4 4 4 . 4 4 4 4 .
+        . 4 5 5 4 . 4 5 5 4 . 4 5 5 4 .
+        . 4 5 5 4 . 4 5 5 4 . 4 5 5 4 .
+        . 4 4 4 4 . 4 4 4 4 . 4 4 4 4 .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
     /* maybe use these later
     export const rc_high = img`
         . . . . . . . . . . . . . . . .

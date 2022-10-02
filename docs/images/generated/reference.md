@@ -160,17 +160,17 @@
 - icon
 
 
-### ![variable A changed](./images/generated/icon_S9A.png){:class="icon"} `variable A changed` {#icon_S9A}
+### ![variable X changed](./images/generated/icon_S9A.png){:class="icon"} `variable X changed` {#icon_S9A}
 
 - icon
 
 
-### ![variable B changed](./images/generated/icon_S9B.png){:class="icon"} `variable B changed` {#icon_S9B}
+### ![variable Y changed](./images/generated/icon_S9B.png){:class="icon"} `variable Y changed` {#icon_S9B}
 
 - icon
 
 
-### ![variable C changed](./images/generated/icon_S9C.png){:class="icon"} `variable C changed` {#icon_S9C}
+### ![variable Z changed](./images/generated/icon_S9C.png){:class="icon"} `variable Z changed` {#icon_S9C}
 
 - icon
 
@@ -305,17 +305,17 @@
 - icon
 
 
-### ![set variable A](./images/generated/icon_A9A.png){:class="icon"} `set variable A` {#icon_A9A}
+### ![set variable X](./images/generated/icon_A9A.png){:class="icon"} `set variable X` {#icon_A9A}
 
 - icon
 
 
-### ![set variable B](./images/generated/icon_A9B.png){:class="icon"} `set variable B` {#icon_A9B}
+### ![set variable Y](./images/generated/icon_A9B.png){:class="icon"} `set variable Y` {#icon_A9B}
 
 - icon
 
 
-### ![set variable C](./images/generated/icon_A9C.png){:class="icon"} `set variable C` {#icon_A9C}
+### ![set variable Z](./images/generated/icon_A9C.png){:class="icon"} `set variable Z` {#icon_A9C}
 
 - icon
 
@@ -410,7 +410,7 @@
 - icon
 
 
-### ![A21 ](./images/generated/icon_A21_.png){:class="icon"} `A21 ` {#icon_A21_}
+### ![servo set angle](./images/generated/icon_A21_.png){:class="icon"} `servo set angle` {#icon_A21_}
 
 - icon
 
@@ -465,17 +465,17 @@
 - icon
 
 
-### ![get variable A](./images/generated/icon_M20A.png){:class="icon"} `get variable A` {#icon_M20A}
+### ![get variable X](./images/generated/icon_M20A.png){:class="icon"} `get variable X` {#icon_M20A}
 
 - icon
 
 
-### ![get variable B](./images/generated/icon_M20B.png){:class="icon"} `get variable B` {#icon_M20B}
+### ![get variable Y](./images/generated/icon_M20B.png){:class="icon"} `get variable Y` {#icon_M20B}
 
 - icon
 
 
-### ![get variable C](./images/generated/icon_M20C.png){:class="icon"} `get variable C` {#icon_M20C}
+### ![get variable Z](./images/generated/icon_M20C.png){:class="icon"} `get variable Z` {#icon_M20C}
 
 - icon
 

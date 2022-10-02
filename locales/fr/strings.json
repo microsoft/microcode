@@ -86,9 +86,9 @@
     "M19twinkle": "emoji twinkle",
     "M19yawn": "emoji yawn",
 
-    "M20A": "in variable A",
-    "M20B": "in variable B",
-    "M20C": "in variable C",
+    "M20A": "in variable X",
+    "M20B": "in variable Y",
+    "M20C": "in variable Z",
 
     "M21": "radio value",
     "M22": "dice",
@@ -96,9 +96,9 @@
 
     "A8": "LED",
 
-    "S9A": "variable A changed",
-    "S9B": "variable B changed",
-    "S9C": "variable C changed",
+    "S9A": "variable X changed",
+    "S9B": "variable Y changed",
+    "S9C": "variable Z changed",
 
     "N0": "editor",
     "N1": "new program",

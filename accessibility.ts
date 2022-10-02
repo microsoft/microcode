@@ -59,6 +59,13 @@ namespace accessibility {
         F4: "button B",
         // F6
         F7: "logo",
+
+        F8: "1",
+        F9: "2",
+        F10: "3",
+        F11: "4",
+        F12: "5",
+
         F13: "1/4 second",
         F14: "1 second",
         F18: "1 random second",
@@ -91,6 +98,12 @@ namespace accessibility {
         M4: "page 4",
         M5: "page 5",
 
+        M6: "1",
+        M7: "2",
+        M8: "3",
+        M9: "4",
+        M10: "5",
+
         M11: "on",
         M12: "off",
 
@@ -108,22 +121,22 @@ namespace accessibility {
         M19twinkle: "twinkle",
         M19yawn: "yawn",
 
-        M20A: "variable A",
-        M20B: "variable B",
-        M20C: "variable C",
+        M20A: "variable X",
+        M20B: "variable Y",
+        M20C: "variable Z",
         M21: "radio value",
         M22: "dice",
         M23: "repeat",
 
         A8: "LED",
 
-        A9A: "set variable A",
-        A9B: "set variable B",
-        A9C: "set variable C",
+        A9A: "set variable X",
+        A9B: "set variable Y",
+        A9C: "set variable Z",
 
-        S9A: "variable A changed",
-        S9B: "variable B changed",
-        S9C: "variable C changed",
+        S9A: "variable X changed",
+        S9B: "variable Y changed",
+        S9C: "variable Z changed",
 
         N0: "editor",
         N1: "new program",

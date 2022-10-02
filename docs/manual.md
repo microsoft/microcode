@@ -1,4 +1,4 @@
-# [Microsoft MicroCode BETA](https://aka.ms/microcode)
+# Microsoft MicroCode (beta) [https://aka.ms/m9](https://aka.ms/m9)
 
 Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 
@@ -6,16 +6,16 @@ Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 
 {% include youtube.html id="ymP7x8GXgz4" %}
 
--   Kid friendly icon-based editor and small programming language
--   Runs on the micro:bit V2 or in the web
+-   Kid-friendly icon-based code editor and programming language
+-   Runs on the micro:bit V2 or in web browser
 -   Keyboard, mouse, touch, screen reader accessible
--   Accessories support (LEDs, motors, ...) through [Jacdac](https://aka.ms/jacdac)
+-   Accessories (LEDs, motors, ...) supported via [Jacdac](https://aka.ms/jacdac)
 
 ## Try it out!
 
 There are two ways to run MicroCode:
 
--   [web app](https://aka.ms/microcode) with [micro:bit V2](https://microbit.org) ([aka.ms/m9](https://aka.ms/m9) for short)
+-   [web app](https://aka.ms/microcode) with [micro:bit V2](https://microbit.org) connected via WebUSB
 -   [micro:bit V2](https://microbit.org) + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
 
 See below for more information about the MicroCode web app, and how to deploy MicroCode to the micro:bit V2. Regardless of which way you run MicroCode, you will probably want to know a little bit about
@@ -39,17 +39,25 @@ The easiest way to get started with MicroCode is through the web editor ([https:
 ### Web App and micro:bit V2
 
 Click on the micro:bit button at the lower right of the web app (see above) and follow the on-screen instructions to configure your micro:bit V2 and pair it with the editor.
-Once your micro:bit V2 is paired, the web editor will be able to download Your
+Once your micro:bit V2 is paired, the web editor will be able to download your
 MicroCode program to your micro:bit. This happens on every edit, so your program
 is always up-to-date (and running)!
 
 ### Accessibility
 
-We attempted to make the editor as accessible as possible; please send us suggestions to improve the accessibility of the editor.
+We want to make the editor as accessible as possible; please send us suggestions to improve its accessibility.
 
 #### Keyboard navigation
 
-MicroCode can be programmed with keyboard, game controllers (such as XBox controllers), mouse or touch inputs.
+MicroCode can be accessed with the keyboard:
+
+-   Arrow keys for D-pad
+-   `Enter` or `Space` for `A` button
+-   `Backspace` for `B` button
+
+#### Gamepad support
+
+MicroCode supports commercial gamepads compatible with [Web Gamepad](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad).
 
 #### Screen reader
 
@@ -57,11 +65,11 @@ The editor integrates with existing screen readers, like NVDA.
 
 #### Tooltip read aloud
 
-By clicking on the `tooltip reader` button at the bottom of the editor, you can turn on read aloud of editor tooltips. This may be useful for students who are still learning to read.
+By clicking on the `tooltip reader` button at the bottom of the editor, the tooltips will be read aloud. This may be useful for students who are still learning to read.
 
 ## micro:bit V2 and Arcade Shield
 
-Click on the version number in the web app to download the MicroCode hex file to your micro:bit V2. When you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you removed the micro:bit from the shield, the program will persist and continue to run.
+Click on the version number in the web app to download the MicroCode hex file to your micro:bit V2. When you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run.
 
 ### [micro:bit V2](https://microbit.org) + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
 
