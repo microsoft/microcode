@@ -160,16 +160,16 @@ between any number of micro:bit!
 The firefly program uses two pages, page 1 will run when the light is off
 and page 2 will handle a glow.
 
-In page one, we add a rule that clears the screen and keeps a dot. You can completely clear
+In page 1', we add a rule that clears the screen and keeps a dot. You can completely clear
 the screen but keeping a dot is useful as well.
 
-The clock of the firefly will be held in variable `X` ("cup A"). It starts at 1 and once it hits 8, the firefly will glow. The next two rules are about moving the clock forward. The `repeat timer 1/4s` rule moves the clock every quarter of a second; the `radio receive 1` moves the clock by 1 whenever a neighboring firefly sent a message.
+The clock of the firefly will be held in ![get variable X](./images/generated/icon_M20A.png){:class="icon"} variable `X`. It starts at ![value 1](./images/generated/icon_M6.png){:class="icon"} 1 and once it reaches 8, the firefly will glow. The next two rules are about moving the clock forward. The ![timer](./images/generated/icon_S4.png){:class="icon"} `repeat timer` rule moves the clock every ![quarter of a second](./images/generated/icon_F13.png){:class="icon"} quarter of a second; the ![radio receive](./images/generated/icon_S7.png){:class="icon"} `radio receive` moves the clock by 1 whenever a neighboring firefly sent a message.
 
-The next rule, `when variable `X` changed to 8`, transitions to page 2 when the clock hits `8`.
+The next rule, ![variable X changed](./images/generated/icon_S9A.png){:class="icon"} `when variable `X` changed to 8`, transitions to ![page 2](./images/generated/icon_M2.png){:class="icon"} page 2 when the clock reaches `8`.
 Since it is possible that we miss the number `8` because the firefly received many radio updates at once,
 we add one last rule, a `repeat timer every 3s` that transitions to page 2.
 
-On page 2, the `variable `X`` is reset to 1, a radio message is sent to other firefly so that they can nudge their clock, all the LEDs are turned and a sound is played.
+On ![page 2](./images/generated/icon_M2.png) page 2, the variable `X` is ![set variable X](./images/generated/icon_A9A.png){:class="icon"} set to ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, a radio message is sent to other firefly so that they can nudge their clock (![radio send](./images/generated/icon_A6.png){:class="icon"}), all the LEDs are turned and a sound is played.
 After half a second, we transition back to page 1 to restart the non-glow phase.
 
 #### improvement ideas
