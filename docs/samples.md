@@ -49,7 +49,12 @@ The goal of this program is to show a smiley
 when pressing A, and a frowney when
 pressing B.
 
+![when button A pressed, paint screen with smiley](./images/generated/sample_smiley_buttons_page_1_rule_1.png){:class="rule"}
+
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with smiley.
+
+![when button B pressed, paint screen with frowney](./images/generated/sample_smiley_buttons_page_1_rule_2.png){:class="rule"}
+
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button B](./images/generated/icon_F4.png){:class="icon"} button B, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with frowney.
 
 #### improvement ideas
@@ -63,16 +68,28 @@ pressing B.
 Keep your micro:pet happy by petting
 its head (Logo) and don't shake it, it does not like that.
 
+![when page started, paint screen neutral](./images/generated/sample_pet_hamster_page_1_rule_1.png){:class="rule"}
+
 - **when** page started, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with neutral mood
 
 Touching the micro:bit logo makes it happy.
 
+![when touch logo, print happy on screen](./images/generated/sample_pet_hamster_page_1_rule_2.png){:class="rule"}
+
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![logo](./images/generated/icon_F7.png){:class="icon"} micro:bit logo, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with happy animation.
+
+![when touch logo, play giggle sound](./images/generated/sample_pet_hamster_page_1_rule_3.png){:class="rule"}
+
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![logo](./images/generated/icon_F7.png){:class="icon"} micro:bit logo, **do** ![speaker](./images/generated/icon_A2.png){:class="icon"} play sound emoji ![emoji giggle](./images/generated/icon_M19giggle.png){:class="icon"} giggle.
 
 Shaking makes it unhappy.
 
+![when touch logo, print frowney on screen](./images/generated/sample_pet_hamster_page_1_rule_4.png){:class="rule"}
+
 -   **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with unhappy animation.
+
+![when touch logo, play sad sound](./images/generated/sample_pet_hamster_page_1_rule_5.png){:class="rule"}
+
 -   **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![speaker](./images/generated/icon_A2.png){:class="icon"} play sound emoji ![emoji sad](./images/generated/icon_M19sad.png){:class="icon"} sad.
 
 
