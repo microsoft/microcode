@@ -305,8 +305,8 @@ namespace microcode {
     // - speaker play
     // - switch page (micro:bit independent)
 
-    function addActuator(tid: string, name: string, allows: string[]) {
-        const actuator = new ActuatorDefn(tid, name)
+    function addActuator(tid: string, allows: string[]) {
+        const actuator = new ActuatorDefn(tid)
         actuator.constraints = {
             allow: {
                 categories: allows,
@@ -316,18 +316,15 @@ namespace microcode {
         return actuator
     }
 
-    const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, "Switch page", ["page"])
+    const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
     swtch.priority = 110
-    const paint = addActuator(TID_ACTUATOR_PAINT, "Paint", [
-        "icon_editor",
-        "loop",
-    ])
+    const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
     paint.serviceClassName = "dotMatrix"
     paint.serviceCommand = jacs.CMD_SET_REG | 0x2
     paint.serviceInstanceIndex = 0
     paint.priority = 10
 
-    const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, "Send", [
+    const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
         "value_out",
         "constant",
     ])
@@ -335,11 +332,7 @@ namespace microcode {
     radio_send.serviceClassName = "radio"
     radio_send.jdKind = JdKind.Radio
 
-    const radio_set_group = addActuator(
-        TID_ACTUATOR_RADIO_SET_GROUP,
-        "SetGroup",
-        []
-    )
+    const radio_set_group = addActuator(TID_ACTUATOR_RADIO_SET_GROUP, [])
     radio_set_group.constraints = {}
     radio_set_group.constraints.only = ["constant"]
     radio_set_group.priority = 101
@@ -348,8 +341,8 @@ namespace microcode {
     radio_set_group.jdParam = jacs.NumFmt.U8
     radio_set_group.serviceCommand = jacs.CMD_SET_REG | 0x80
 
-    function addAssign(tid: string, name: string, id: number) {
-        const theVar = addActuator(tid, name, ["value_out", "constant"])
+    function addAssign(tid: string, id: number) {
+        const theVar = addActuator(tid, ["value_out", "constant"])
         theVar.jdParam = id
         theVar.jdKind = JdKind.Variable
         theVar.priority = 200 + id
@@ -359,10 +352,7 @@ namespace microcode {
     addAssign(TID_ACTUATOR_CUP_Y_ASSIGN, 1)
     addAssign(TID_ACTUATOR_CUP_Z_ASSIGN, 2)
 
-    const emoji = addActuator(TID_ACTUATOR_SPEAKER, "Speaker", [
-        "sound_emoji",
-        "loop",
-    ])
+    const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
     emoji.serviceClassName = "soundPlayer"
     emoji.serviceCommand = 0x80
     emoji.serviceArgFromModifier = (x: string) => x || "hello"
@@ -383,7 +373,7 @@ namespace microcode {
     const emoji_ms = [1478, 1233, 547, 4794, 1687, 1315, 8192, 2083, 6772, 2816]
     emojis.forEach((e, idx) => {
         const tid = "M19" + e
-        const emoji_mod = new ModifierDefn(tid, e, "sound_emoji", 10)
+        const emoji_mod = new ModifierDefn(tid, e, 10)
         emoji_mod.jdParam = e
         emoji_mod.jdDuration = emoji_ms[idx]
         tilesDB.modifiers[tid] = emoji_mod
@@ -448,10 +438,7 @@ namespace microcode {
     // addRGB(4, "teal", hex`00ffff`)
     // addRGB(4, "white", hex`ffffff`)
 
-    const rgbled = addActuator(TID_ACTUATOR_RGB_LED, "RGB LED", [
-        "rgb_led",
-        "loop",
-    ])
+    const rgbled = addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
     rgbled.priority = 500
     rgbled.serviceClassName = "led"
     rgbled.serviceCommand = jacs.CMD_SET_REG | 2
@@ -471,7 +458,7 @@ namespace microcode {
         return b
     }
 
-    const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, "Servo", [
+    const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, [
         "constant",
     ])
     servoSetAngle.priority = 500
@@ -505,7 +492,7 @@ namespace microcode {
     random_toss.constraints.allow = { categories: ["constant"] }
     random_toss.constraints.disallow = { categories: ["value_out"] }
 
-    const loop = new ModifierDefn(TID_MODIFIER_LOOP, "loop", "loop", 10)
+    const loop = new ModifierDefn(TID_MODIFIER_LOOP, "loop", 10)
     loop.jdKind = JdKind.Loop
     tilesDB.modifiers[TID_MODIFIER_LOOP] = loop
     loop.priority = 80
@@ -548,7 +535,7 @@ namespace microcode {
         field: Image
         firstInstance: boolean
         constructor(field: Image = null) {
-            super(TID_MODIFIER_ICON_EDITOR, "icon editor", "icon_editor", 10)
+            super(TID_MODIFIER_ICON_EDITOR, "icon_editor", 10)
             this.firstInstance = false
             this.fieldEditor = iconFieldEditor
             if (field) this.field = field.clone()
