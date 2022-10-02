@@ -31,7 +31,7 @@ namespace microcode {
         private progdef: ProgramDefn
         private currPage: number
         private pageBtn: Button
-        private pageEditor: PageEditor
+        public pageEditor: PageEditor
         public cursor: Cursor
         private _changed: boolean
         private hudroot: Placeable
@@ -387,7 +387,7 @@ namespace microcode {
 
     class PageEditor extends Component implements IPlaceable {
         private xfrm_: Affine
-        ruleEditors: RuleEditor[]
+        public ruleEditors: RuleEditor[]
 
         //% blockCombine block="xfrm" callInDebugger
         public get xfrm() {

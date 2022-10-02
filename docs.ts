@@ -63,7 +63,14 @@ namespace docs {
             const src = sample.source
             settings.writeString(microcode.SAVESLOT_AUTO, src)
             const res = _renderProgram()
-            appendImage(images, "sample", sample.label, res)
+            Object.keys(res).forEach(iname => {
+                appendImage(
+                    images,
+                    "sample",
+                    iname == "app" ? sample.label : `${sample.label}_${iname}`,
+                    res[iname]
+                )
+            })
 
             app.popScene()
         }
@@ -83,7 +90,7 @@ namespace docs {
                         {
                             name: "current",
                             type: "program",
-                            pixels: imageToBuffer(res).toHex(),
+                            pixels: imageToBuffer(res["app"]).toHex(),
                         },
                     ],
                 })
@@ -92,12 +99,13 @@ namespace docs {
     }
 
     //% shim=TD_NOOP
-    function _renderProgram() {
-        const editor = new microcode.Editor(app)
-        app.pushScene(editor)
-        editor.cursor.visible = false
+    function _renderProgram(): { [name: string]: Image } {
+        const r: { [name: string]: Image } = {}
+        const loader = new microcode.Editor(app)
+        app.pushScene(loader)
+        loader.cursor.visible = false
 
-        const pages = editor.nonEmptyPages()
+        const pages = loader.nonEmptyPages()
 
         let imgs: Image[] = []
         let w = 0
@@ -107,30 +115,69 @@ namespace docs {
         // compute largest rule width
         let pw = screen.width
         for (const p of pages) {
-            editor.switchToPage(p)
-            pw = Math.max(pw, editor.ruleWidth())
+            loader.switchToPage(p)
+            pw = Math.max(pw, loader.ruleWidth())
         }
 
         // render all pages
-        editor.nonEmptyPages().forEach(p => {
-            editor.switchToPage(p)
-            microcode.Screen.setImageSize(pw, editor.pageHeight())
-            const pageEditor = new microcode.Editor(app)
-            app.pushScene(pageEditor)
-            pageEditor.cursor.visible = false
+        loader.nonEmptyPages().forEach(p => {
+            loader.switchToPage(p)
+            microcode.Screen.setImageSize(pw, loader.pageHeight())
+            const editor = new microcode.Editor(app)
+            app.pushScene(editor)
+            editor.cursor.visible = false
             pause(500)
-            pageEditor.renderPage(p)
-            pause(500)
+            editor.renderPage(p)
             const img = microcode.Screen.image.clone()
             imgs.push(img)
             w = Math.max(w, img.width)
             h += img.height + margin
 
+            r[`page_${p}`] = img
+
+            // render individual rules
+            const pageEditor = editor.pageEditor
+            const rulesEditor = pageEditor.ruleEditors
+            rulesEditor.forEach((ruleEditor, ri) => {
+                const bound = ruleEditor.bounds
+                const imgr = image.create(bound.width, bound.height)
+                imgr.fill(loader.color)
+                console.log([
+                    0,
+                    0,
+                    bound.width,
+                    bound.height,
+                    img,
+                    ruleEditor.xfrm.localPos.x,
+                    ruleEditor.xfrm.localPos.y,
+                    ruleEditor.xfrm.localPos.x + bound.left,
+                    ruleEditor.xfrm.localPos.y + bound.top,
+                    bound.width,
+                    bound.height,
+                    true,
+                    false,
+                ])
+                imgr.blit(
+                    0,
+                    0,
+                    bound.width,
+                    bound.height,
+                    img,
+                    ruleEditor.xfrm.localPos.x - bound.left,
+                    ruleEditor.xfrm.localPos.y - bound.top,
+                    bound.width,
+                    bound.height,
+                    true,
+                    false
+                )
+                r[`page_${p}_rule_${ri}`] = imgr
+            })
             app.popScene()
         })
 
         const res = image.create(w, h)
-        res.fill(editor.color)
+        r["app"] = res
+        res.fill(loader.color)
         let y = 0
         for (let i = 0; i < imgs.length; ++i) {
             const img = imgs[i]
@@ -139,7 +186,7 @@ namespace docs {
         }
 
         app.popScene()
-        return res
+        return r
     }
 
     function appendImage(
