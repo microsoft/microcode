@@ -327,12 +327,7 @@ namespace microcode {
     paint.serviceInstanceIndex = 0
     paint.priority = 10
 
-<<<<<<< HEAD
     const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, "Send", [
-=======
-    const radio_send = addActuator(
-        TID_ACTUATOR_RADIO_SEND,
->>>>>>> f6ebb9325e2427dca2c01ced02dc67f348df2a18
         "value_out",
         "constant",
     ])
@@ -342,13 +337,8 @@ namespace microcode {
 
     const radio_set_group = addActuator(
         TID_ACTUATOR_RADIO_SET_GROUP,
-<<<<<<< HEAD
         "SetGroup",
         []
-=======
-        "value_out",
-        "constant"
->>>>>>> f6ebb9325e2427dca2c01ced02dc67f348df2a18
     )
     radio_set_group.constraints = {}
     radio_set_group.constraints.only = ["constant"]
@@ -393,12 +383,7 @@ namespace microcode {
     const emoji_ms = [1478, 1233, 547, 4794, 1687, 1315, 8192, 2083, 6772, 2816]
     emojis.forEach((e, idx) => {
         const tid = "M19" + e
-<<<<<<< HEAD
         const emoji_mod = new ModifierDefn(tid, e, "sound_emoji", 10)
-=======
-        const emoji_mod = new ModifierDefn(tid, "sound_emoji", 10)
-        emoji_mod.constraints = terminal
->>>>>>> f6ebb9325e2427dca2c01ced02dc67f348df2a18
         emoji_mod.jdParam = e
         emoji_mod.jdDuration = emoji_ms[idx]
         tilesDB.modifiers[tid] = emoji_mod
