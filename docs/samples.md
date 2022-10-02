@@ -14,6 +14,8 @@ in the editor after selecting the new program sample.
 
 The program has one rule that paints a smiley when button A (on the micro:bit) is pressed.
 
+![when button A press, show smiley rule](./images/generated/sample_first_program_page_1_rule_1.png)
+
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with smiley.
 
 #### improvement ideas
@@ -29,6 +31,8 @@ The goal of this program is to show a cute heart animation.
 
 We use a single rule with a ![timer](./images/generated/icon_S4.png){:class="icon"} timer. The timer starts a ![screen](./images/generated/icon_A5.png){:class="icon"} screen animation
 with two images. Each time the timer triggers again, it repaints both images which create the heart animation.
+
+![flashing heart rule 1](./images/generated/sample_flashing_heart_page_1_rule_1.png)
 
 -  **when** ![timer](./images/generated/icon_S4.png){:class="icon"} timer triggers, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with heart.
 
