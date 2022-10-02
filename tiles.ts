@@ -353,7 +353,6 @@ namespace microcode {
     const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, "Send", [
         "value_out",
         "constant",
-        "loop",
     ])
     radio_send.priority = 100
     radio_send.serviceClassName = "radio"
@@ -362,8 +361,10 @@ namespace microcode {
     const radio_set_group = addActuator(
         TID_ACTUATOR_RADIO_SET_GROUP,
         "SetGroup",
-        ["value_out", "constant"]
+        []
     )
+    radio_set_group.constraints = {}
+    radio_set_group.constraints.only = ["constant"]
     radio_set_group.priority = 101
     radio_set_group.serviceClassName = "radio"
     radio_set_group.jdKind = JdKind.NumFmt
@@ -371,7 +372,7 @@ namespace microcode {
     radio_set_group.serviceCommand = jacs.CMD_SET_REG | 0x80
 
     function addAssign(tid: string, name: string, id: number) {
-        const theVar = addActuator(tid, name, ["value_out", "constant", "loop"])
+        const theVar = addActuator(tid, name, ["value_out", "constant"])
         theVar.jdParam = id
         theVar.jdKind = JdKind.Variable
         theVar.priority = 200 + id
