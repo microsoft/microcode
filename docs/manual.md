@@ -54,11 +54,8 @@ MicroCode can be accessed with the keyboard:
 -   Arrow keys to move cursor
 -   `Enter` or `Space` for `A` button
 -   `Backspace` for `B` button
-
-MicroCode can also be accessed without button `B`, for example
-if you are using a 5-input switch panel.
-
--   Keep moving the cursor `Up` to go back a screen, if `B` is not available.
+-   Keep moving the cursor `Up` to go back a screen, if `Backspace` is not available;
+for example, if you are using a 5-input switch panel.
 
 #### Gamepad support
 
