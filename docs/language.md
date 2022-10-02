@@ -23,15 +23,15 @@ The second rule shows a sad face when the button B is pressed.
 
 Execution of the MicroCode program starts on ![page 1](./images/generated/icon_M1.png){:class="icon"} page 1. All the rules on that page are active.
 Rules on another page only become active when the program switches to that page
-(via an explicit ![switch page](./images/generated/icon_A1.png){:class="icon"} switch-page action, discussed later).
+(via an explicit ![switch page](./images/generated/icon_A1.png){:class="icon"} switch-page command, discussed later).
 
 ![Hot potato sample](./images/generated/sample_hot_potato.png){:class="screenshot"}
 
 ## Rules and conflicts {#rules}
 
-The rules on a page fire in parallel, so if you want to have two different actions take place
+The rules on a page fire in parallel, so if you want to have two different commands take place
 on the press of A button, you would have two rules with the same When section (A button is pressed),
-but different actions. If the actions of the two rules use the same resource (for example, both actions
+but different commands. If the commands of the two rules use the same resource (for example, both commands
 show something on the micro:bit screen), then the last rule in order from top to bottom wins. That is,
 the order of the rules only matters when different rules act on the same resource.
 
