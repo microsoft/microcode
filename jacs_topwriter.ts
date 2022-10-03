@@ -151,6 +151,7 @@ namespace jacs {
         currRuleId = 0
         currPageId = 0
         pageProcs: Procedure[] = []
+        stopPage: Procedure
 
         pageStartCondition: Role
 
@@ -355,6 +356,9 @@ namespace jacs {
                 wr.emitCall(this.pageProc(1).index, [])
                 wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
             })
+            this.withProcedure(this.stopPage, wr => {
+                wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+            })
             this.finalizePageProcs()
             for (const p of this.procs) p.finalize()
         }
@@ -505,19 +509,17 @@ namespace jacs {
                 const role = this.lookupActuatorRole(rule)
                 this.emitLoadBuffer(params[i])
                 this.emitSendCmd(role, actuator.serviceCommand)
-                if (i != params.length - 1) {
-                    this.emitSleep(delay)
-                    if (lockvar)
-                        wr.emitIf(
-                            wr.emitExpr(OpExpr.EXPR2_NE, [
-                                lockvar.read(wr),
-                                literal(this.currRuleId),
-                            ]),
-                            () => {
-                                wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
-                            }
-                        )
-                }
+                this.emitSleep(delay)
+                if (lockvar)
+                    wr.emitIf(
+                        wr.emitExpr(OpExpr.EXPR2_NE, [
+                            lockvar.read(wr),
+                            literal(this.currRuleId),
+                        ]),
+                        () => {
+                            wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+                        }
+                    )
             }
         }
 
@@ -638,14 +640,18 @@ namespace jacs {
             }
         }
 
-        private emitValueOut(rule: microcode.RuleDefn, defl: number) {
+        private emitValue(
+            trg: Variable,
+            modifiers: microcode.ModifierDefn[],
+            defl: number
+        ) {
             let currSeq: microcode.ModifierDefn[] = []
             let first = true
 
-            for (const m of rule.modifiers) {
+            for (const m of modifiers) {
                 if (m.category == "value_out" || m.category == "constant") {
                     if (this.breaksValSeq(m) && currSeq.length) {
-                        this.emitAddSeq(currSeq, this.currValue(), 0, first)
+                        this.emitAddSeq(currSeq, trg, 0, first)
                         currSeq = []
                         first = false
                     }
@@ -654,13 +660,24 @@ namespace jacs {
             }
 
             if (currSeq.length) {
-                this.emitAddSeq(currSeq, this.currValue(), 0, first)
+                this.emitAddSeq(currSeq, trg, 0, first)
                 first = false
             }
 
-            if (first) {
-                this.currValue().write(this.writer, literal(defl))
+            if (first) trg.write(this.writer, literal(defl))
+        }
+
+        private emitValueOut(rule: microcode.RuleDefn, defl: number) {
+            let modifiers = rule.modifiers
+            let idx = 0
+            for (const m of rule.modifiers) {
+                if (m.jdKind == microcode.JdKind.Loop) {
+                    modifiers = rule.modifiers.slice(0, idx)
+                    break
+                }
+                idx++
             }
+            this.emitValue(this.currValue(), modifiers, defl)
         }
 
         private getValueIn(rule: microcode.RuleDefn) {
@@ -686,11 +703,49 @@ namespace jacs {
             return this.writer.emitExpr(OpExpr.EXPR2_ADD, [a, literal(off)])
         }
 
+        private loopModifierIdx(rule: microcode.RuleDefn) {
+            for (let i = 0; i < rule.modifiers.length; ++i) {
+                if (rule.modifiers[i].jdKind == microcode.JdKind.Loop) return i
+            }
+            return -1
+        }
+
+        private emitPossibleLoop(rule: microcode.RuleDefn) {
+            const idx = this.loopModifierIdx(rule)
+            if (idx < 0) return
+            const args = rule.modifiers.slice(idx + 1)
+            const bound = this.proc.lookupLocal("loopBnd")
+            const index = this.proc.lookupLocal("loopIdx")
+            // TODO Inf not yet supporter in JacsVM
+            if (args.length) this.emitValue(bound, args, Infinity)
+            const wr = this.writer
+            this.emitSleep(ANTI_FREEZE_DELAY)
+            if (args.length) {
+                index.write(wr, this.emitAdd(index.read(wr), 1))
+                wr.emitJumpIfTrue(
+                    wr.top,
+                    wr.emitExpr(OpExpr.EXPR2_LT, [
+                        index.read(wr),
+                        bound.read(wr),
+                    ])
+                )
+            } else {
+                wr.emitJump(wr.top)
+            }
+            const bodyProc = this.proc
+            this.withProcedure(this.stopPage, () => {
+                this.ifCurrPage(() => {
+                    this.terminateProc(bodyProc)
+                })
+            })
+        }
+
         private emitRoleCommand(rule: microcode.RuleDefn) {
             const actuator = rule.actuators.length ? rule.actuators[0] : null
             const wr = this.writer
             const currValue = () => this.currValue().read(wr)
             if (actuator == null) return // do nothing
+
             if (actuator.tid == microcode.TID_ACTUATOR_PAINT) {
                 this.emitSequance(rule, this.currAnimation, 400, 5)
             } else if (actuator.tid == microcode.TID_ACTUATOR_MUSIC) {
@@ -776,6 +831,8 @@ namespace jacs {
             } else {
                 this.error(`can't map act role for ${JSON.stringify(actuator)}`)
             }
+
+            this.emitPossibleLoop(rule)
         }
 
         private emitRuleActuator(name: string, rule: microcode.RuleDefn) {
@@ -800,7 +857,11 @@ namespace jacs {
             if (!this.pageProcs[pageIdx]) {
                 this.pageProcs[pageIdx] = this.addProc("startPage" + pageIdx)
                 this.withProcedure(this.pageProcs[pageIdx], wr => {
+                    // first stop the current page
+                    wr.emitCall(this.stopPage.index, [])
+                    // wait a bit
                     this.emitSleep(ANTI_FREEZE_DELAY)
+                    // and switch to the new page
                     this.currPage.write(wr, literal(pageIdx))
                 })
             }
@@ -818,6 +879,15 @@ namespace jacs {
                         wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
                     })
             }
+        }
+
+        private terminateProc(proc: Procedure) {
+            const wr = this.writer
+            wr.emitStmt(OpStmt.STMT1_TERMINATE_FIBER, [
+                wr.emitExpr(OpExpr.EXPR1_GET_FIBER_HANDLE, [
+                    literal(proc.index),
+                ]),
+            ])
         }
 
         private emitRule(name: string, rule: microcode.RuleDefn) {
@@ -851,11 +921,7 @@ namespace jacs {
                 if (period == 0) period = ANTI_FREEZE_DELAY
                 this.withProcedure(this.pageProc(this.currPageId), wr => {
                     // first, terminate any previous one
-                    wr.emitStmt(OpStmt.STMT1_TERMINATE_FIBER, [
-                        wr.emitExpr(OpExpr.EXPR1_GET_FIBER_HANDLE, [
-                            literal(timer.index),
-                        ]),
-                    ])
+                    this.terminateProc(timer)
                     // then start a new one
                     wr.emitCall(timer.index, [], OpCall.BG_MAX1)
                 })
@@ -959,7 +1025,13 @@ namespace jacs {
                 SRV_JACSCRIPT_CONDITION
             )
 
+            // first add the main proc - proc #0 is the entry point
             const mainProc = this.addProc("main")
+
+            // add any other static procs...
+            this.stopPage = this.addProc("stopPage")
+
+            // generate startup code
             this.withProcedure(mainProc, wr => {
                 this.emitLogString("MicroCode start!")
 
