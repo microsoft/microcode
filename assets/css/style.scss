@@ -3,6 +3,10 @@
 
 @import "{{ site.theme }}";
 
+html {
+	scroll-behavior: smooth;
+}
+
 img.pixels {
     image-rendering: pixelated;
 }
