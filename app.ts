@@ -37,7 +37,7 @@ namespace microcode {
                 progdef: progdef.toObj(),
             }
             const s = JSON.stringify(saved)
-            reportEvent("app.save", { slot, size: s.length })
+            reportEvent("app.save", { slot: slot, size: s.length })
             settings.writeString(slot, s)
         }
 
