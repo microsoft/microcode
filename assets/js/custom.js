@@ -649,3 +649,11 @@ ${jsg
     document.body.append(container)
     container.showModal()
 }
+
+addSimMessageHandler("analytics", data => {
+    const msg = JSON.parse(uint8ArrayToString(data))
+    console.log(msg)
+    if (msg.type === "event") {
+        console.debug(msg.msg, msg.data)
+    }
+})

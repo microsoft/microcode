@@ -8,6 +8,7 @@
         "codal-jacdac-pxt": "github:microsoft/codal-jacdac/pxt#v1.1.2"
     },
     "files": [
+        "analytics.ts",
         "config.ts",
         "main.ts",
         "keymap.ts",
