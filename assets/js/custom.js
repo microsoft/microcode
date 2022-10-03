@@ -316,6 +316,7 @@ const liveStrings = {
     A4: "music",
     A5: "screen",
     A6: "radio send",
+    A6A: "radio set group",
     A7: "random number",
 
     M1: "page 1",
