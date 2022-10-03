@@ -106,9 +106,7 @@ where the micro:bit display a different
 symbol when shaken.
 
 The program starts with a rule that uses
-the accelerometer sensor; which by default
-detects shake events. The 3-face dice is cast
-and the result is stored in variable `X`.
+a shake event and 3-face dice is cast. The result is stored in variable `X`.
 
 ![when shake, set variable X to random number up to 3](./images/generated/sample_rock_paper_scissors_page_1_rule_1.png){:class="rule"}
 
@@ -141,6 +139,7 @@ and display a different symbol for each value, 1, 2 or 3.
 Pass the hot potato around and make
 sure it does not beep while you have it
 in your hands!
+
 
 
 #### improvement ideas
