@@ -242,6 +242,12 @@ when a radio message is received.
 
 - **when** ![radio receive](./images/generated/icon_S7.png){:class="icon"} radio receive ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint duck on screen.
 
+#### Avoiding clashes with groups
+
+If you try this activity with many micro:bits in the same room, they will all start
+to trigger the activity. You can avoid groups interference by 
+
+- have student use a different radio value than ![value 1](./images/generated/icon_M6.png){:class="icon"} 1
 
 #### improvement ideas
 
