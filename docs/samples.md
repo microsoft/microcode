@@ -232,7 +232,7 @@ and send a number using the radio.
 
 ![when shake, do radio send 1](./images/generated/sample_chuck_a_duck_page_1_rule_2.png){:class="rule"}
 
--   **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** [radio send](./images/generated/icon_A6.png){:class="icon"} radio send ![value 1](./images/generated/icon_M6.png){:class="icon"} 1.
+-   **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![radio send](./images/generated/icon_A6.png){:class="icon"} radio send ![value 1](./images/generated/icon_M6.png){:class="icon"} 1.
 
 The third rule uses the radio filter to render
 the duck on the screen. This rule executes
