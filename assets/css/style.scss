@@ -6,10 +6,13 @@
 /**
  * Disable smooth scrolling when users have prefers-reduced-motion enabled
  */
- @media screen and (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
+html {
+    scroll-behavior: smooth;
+}
+@media screen and (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 }
 
 img.pixels {
@@ -38,7 +41,8 @@ img.icon-sample {
     margin-bottom: 0.25rem;
 }
 
-img.sample, img.rule {
+img.sample,
+img.rule {
     image-rendering: pixelated;
     width: max(22rem, 60%);
     margin-bottom: 0.25rem;
