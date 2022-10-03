@@ -656,10 +656,7 @@ addSimMessageHandler("analytics", buf => {
     if (!appInsights) return
 
     const properties = msg.data || {}
-    properties["target"] = "microcode"
-    properties["PxtTargetVersion"] = document.body.dataset.version
-    // MicroCode does not drop any cookie, so this can be true
-    properties["cookie"] = true
+    properties["version"] = document.body.dataset.version
     if (msg.type === "event") {
         console.debug(msg.msg, { properties })
         appInsights.trackEvent({
