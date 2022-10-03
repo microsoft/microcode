@@ -152,7 +152,7 @@ and ![1 random second](./images/generated/icon_F18.png){:class="icon"} 1
 random second, **do**  ![switch page](./images/generated/icon_A1.png){:class="icon"} switches to ![page 2](./images/generated/icon_M2.png){:class="icon"} page 2.
 
 
-#### ![page 2](./images/generated/icon_M2.png) page 2
+#### ![page 2](./images/generated/icon_M2.png){:class="icon"} page 2
 
 ![hot potato page 2](./images/generated/sample_hot_potato_page_2.png){:class="sample"}
 
@@ -219,18 +219,29 @@ These sample use the radio and will only work if you have multiple micro:bit tal
 
 ![Chuck a duck MicroCode program](./images/generated/sample_chuck_a_duck.png){:class="sample"}
 
-This is a radio program so you'll need 2 micro:bits running to get it to work.
-
-The program "sends" a duck using the radio
-by pressing A.
+This is a radio program so you'll need 2 micro:bits running to get it to work. The program "sends" a duck using the radio
+by shacking the micro:bit.
 
 In code, the accelerometer sensor is used
 in two rules to clear the screen (duck is gone)
 and send a number using the radio.
 
+![when shake, do clear screen](./images/generated/sample_chuck_a_duck_page_1_rule_1.png)
+
+- **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} clear screen.
+
+![when shake, do radio send 1](./images/generated/sample_chuck_a_duck_page_1_rule_2.png)
+
+- **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} clear screen.
+
 The third rule uses the radio filter to render
 the duck on the screen. This rule executes
 when a radio message is received.
+
+![when radio receive 1, do show duck](./images/generated/sample_chuck_a_duck_page_1_rule_3.png)
+
+- **when** ![radio receive](./images/generated/icon_S7.png){:class="icon"} radio receive ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint duck on screen.
+
 
 #### improvement ideas
 
