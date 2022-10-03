@@ -7,6 +7,9 @@ Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 {% include youtube.html id="ymP7x8GXgz4" %}
 
 -   Kid-friendly icon-based code editor and programming language
+
+![Smiley Buttons MicroCode program](./images/generated/sample_smiley_buttons.png){:class="sample"}
+
 -   Runs on the micro:bit V2 or in web browser
 -   Keyboard, mouse, touch, screen reader accessible
 -   Accessories (LEDs, motors, ...) supported via [Jacdac](https://aka.ms/jacdac)
