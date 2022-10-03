@@ -650,10 +650,21 @@ ${jsg
     container.showModal()
 }
 
-addSimMessageHandler("analytics", data => {
-    const msg = JSON.parse(uint8ArrayToString(data))
-    console.log(msg)
+addSimMessageHandler("analytics", buf => {
+    const msg = JSON.parse(uint8ArrayToString(buf))
+    const appInsights = window.appInsights
+    if (!appInsights) return
+
+    const properties = msg.data || {}
+    properties["target"] = "microcode"
+    properties["PxtTargetVersion"] = document.body.dataset.version
+    // MicroCode does not drop any cookie, so this can be true
+    properties["cookie"] = true
     if (msg.type === "event") {
-        console.debug(msg.msg, msg.data)
+        console.debug(msg.msg, { properties })
+        appInsights.trackEvent({
+            name: msg.msg,
+            properties,
+        })
     }
 })
