@@ -280,7 +280,7 @@
 - icon
 
 
-### ![A6A](./images/generated/icon_A6A.png){:class="icon"} `A6A` {#icon_A6A}
+### ![radio set group](./images/generated/icon_A6A.png){:class="icon"} `radio set group` {#icon_A6A}
 
 - icon
 

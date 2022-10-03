@@ -1,6 +1,7 @@
 # Samples
 
 [![new program](./images/generated/icon_new_program.png){:class="icon-sample"}](#first-program) [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"}](#flashing-heart) [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"}](#smiley-buttons) [![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"}](#pet-hamster) [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"}](#rock-paper-scissors) [![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"}](#hot-potato) [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"}](#clap-lights) [![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"}](#chuck-a-duck) [![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon-sample"}](#firefly) [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon-sample"}](#railroad-crossing)
+
 ## Single player
 
 ### ![new program](./images/generated/icon_new_program.png){:class="icon-sample"} First program {#first-program}
@@ -146,11 +147,10 @@ Once the timer triggers, the first rule ![switch page](./images/generated/icon_A
 
 ![when timer 5 seconds plus 1 random second, do switch to page 2](./images/generated/sample_hot_potato_page_1_rule_1.png){:class="rule"}
 
-- **when** ![timer](./images/generated/icon_S4.png){:class="icon"} time
-of ![5 seconds](./images/generated/icon_F19.png){:class="icon"} 5s
-and ![1 random second](./images/generated/icon_F18.png){:class="icon"} 1
-random second, **do**  ![switch page](./images/generated/icon_A1.png){:class="icon"} switches to ![page 2](./images/generated/icon_M2.png){:class="icon"} page 2.
-
+-   **when** ![timer](./images/generated/icon_S4.png){:class="icon"} time
+    of ![5 seconds](./images/generated/icon_F19.png){:class="icon"} 5s
+    and ![1 random second](./images/generated/icon_F18.png){:class="icon"} 1
+    random second, **do** ![switch page](./images/generated/icon_A1.png){:class="icon"} switches to ![page 2](./images/generated/icon_M2.png){:class="icon"} page 2.
 
 #### ![page 2](./images/generated/icon_M2.png){:class="icon"} page 2
 
@@ -161,11 +161,11 @@ If the **when** section is empty, the rule runs once at the page start only.
 
 ![when page starts, do paint a skull](./images/generated/sample_hot_potato_page_2_rule_1.png){:class="rule"}
 
-- **when** page starts, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with skull.
+-   **when** page starts, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with skull.
 
 ![when page starts, do play sad sound](./images/generated/sample_hot_potato_page_2_rule_2.png){:class="rule"}
 
-- **when** page starts, **do** ![speaker](./images/generated/icon_A2.png){:class="icon"} play sound emoji ![emoji sad](./images/generated/icon_M19sad.png){:class="icon"} sad.
+-   **when** page starts, **do** ![speaker](./images/generated/icon_A2.png){:class="icon"} play sound emoji ![emoji sad](./images/generated/icon_M19sad.png){:class="icon"} sad.
 
 #### improvement ideas
 
@@ -187,13 +187,13 @@ When a loud sound is detected switch between to page 2
 
 ![when page starts, do paint all leds](./images/generated/sample_clap_lights_page_1_rule_1.png){:class="rule"}
 
-- **when** page starts, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with all leds.
+-   **when** page starts, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with all leds.
 
 ![when loud sond, do switch to page 2](./images/generated/sample_clap_lights_page_1_rule_2.png){:class="rule"}
 
-- **when** ![microphone](./images/generated/icon_S8.png){:class="icon"} microphone detects ![loud](./images/generated/icon_F15.png){:class="icon"} loud sound, **do** ![switch page](./images/generated/icon_A1.png){:class="icon"} switch page to ![page 2](./images/generated/icon_M2.png) page 2.
+-   **when** ![microphone](./images/generated/icon_S8.png){:class="icon"} microphone detects ![loud](./images/generated/icon_F15.png){:class="icon"} loud sound, **do** ![switch page](./images/generated/icon_A1.png){:class="icon"} switch page to ![page 2](./images/generated/icon_M2.png) page 2.
 
-#### ![page 2](./images/generated/icon_M2.png){:class="icon"}  page 2
+#### ![page 2](./images/generated/icon_M2.png){:class="icon"} page 2
 
 ![clap lights page 2](./images/generated/sample_clap_lights_page_2.png){:class="sample"}
 
@@ -201,11 +201,11 @@ Similar to page 1 but in this case, we turn off all the LEDs.
 
 ![when page starts, do turn off all LEDs](./images/generated/sample_clap_lights_page_2_rule_1.png){:class="rule"}
 
-- **when** page starts, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} turn off all LEDs
+-   **when** page starts, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} turn off all LEDs
 
 ![when loud sond, do switch to page 2](./images/generated/sample_clap_lights_page_2_rule_2.png){:class="rule"}
 
-- **when** ![microphone](./images/generated/icon_S8.png){:class="icon"} microphone detects ![loud](./images/generated/icon_F15.png){:class="icon"} loud sound, **do** ![switch page](./images/generated/icon_A1.png){:class="icon"} switch page to ![page 2](./images/generated/icon_M1.png) page 1.
+-   **when** ![microphone](./images/generated/icon_S8.png){:class="icon"} microphone detects ![loud](./images/generated/icon_F15.png){:class="icon"} loud sound, **do** ![switch page](./images/generated/icon_A1.png){:class="icon"} switch page to ![page 2](./images/generated/icon_M1.png) page 1.
 
 #### improvement ideas
 
@@ -228,11 +228,11 @@ and send a number using the radio.
 
 ![when shake, do clear screen](./images/generated/sample_chuck_a_duck_page_1_rule_1.png){:class="rule"}
 
-- **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} clear screen.
+-   **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} clear screen.
 
 ![when shake, do radio send 1](./images/generated/sample_chuck_a_duck_page_1_rule_2.png){:class="rule"}
 
-- **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** [radio send](./images/generated/icon_A6.png){:class="icon"} radio send ![value 1](./images/generated/icon_M6.png){:class="icon"} 1.
+-   **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** [radio send](./images/generated/icon_A6.png){:class="icon"} radio send ![value 1](./images/generated/icon_M6.png){:class="icon"} 1.
 
 The third rule uses the radio filter to render
 the duck on the screen. This rule executes
@@ -240,14 +240,17 @@ when a radio message is received.
 
 ![when radio receive 1, do show duck](./images/generated/sample_chuck_a_duck_page_1_rule_3.png){:class="rule"}
 
-- **when** ![radio receive](./images/generated/icon_S7.png){:class="icon"} radio receive ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint duck on screen.
+-   **when** ![radio receive](./images/generated/icon_S7.png){:class="icon"} radio receive ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint duck on screen.
 
 #### Avoiding clashes with groups
 
 If you try this activity with many micro:bits in the same room, they will all start
-to trigger the activity. You can avoid groups interference by 
+to trigger the activity. You can avoid groups interference by
 
-- have student use a different radio value than ![value 1](./images/generated/icon_M6.png){:class="icon"} 1
+-   have student use a different radio value than ![value 1](./images/generated/icon_M6.png){:class="icon"} 1
+-   add a rule that runs on the start of the page and sets a different radio group (default is 1)
+    using ![radio set group](./images/generated/icon_A6A.png){:class="icon"} `radio set group`.
+    The message only reach other micro:bit in the same group.
 
 #### improvement ideas
 
