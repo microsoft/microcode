@@ -376,6 +376,7 @@ namespace microcode {
         const emoji_mod = new ModifierDefn(tid, e, 10)
         emoji_mod.jdParam = e
         emoji_mod.jdDuration = emoji_ms[idx]
+        emoji_mod.category = "sound_emoji"
         tilesDB.modifiers[tid] = emoji_mod
     })
 
