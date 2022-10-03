@@ -485,7 +485,7 @@ namespace jacs {
 
         private ruleParams(rule: microcode.RuleDefn, bufSize: number) {
             const fn = rule.actuators[0].serviceArgFromModifier
-            const params = rule.modifiers
+            const params = this.baseModifiers(rule)
                 .map(m => (fn ? fn(m.jdParam) : m.serviceCommandArg()))
                 .filter(a => !!a)
             if (params.length == 0) {
@@ -667,17 +667,16 @@ namespace jacs {
             if (first) trg.write(this.writer, literal(defl))
         }
 
-        private emitValueOut(rule: microcode.RuleDefn, defl: number) {
+        private baseModifiers(rule: microcode.RuleDefn) {
             let modifiers = rule.modifiers
-            let idx = 0
-            for (const m of rule.modifiers) {
-                if (m.jdKind == microcode.JdKind.Loop) {
-                    modifiers = rule.modifiers.slice(0, idx)
-                    break
-                }
-                idx++
-            }
-            this.emitValue(this.currValue(), modifiers, defl)
+            for (let i = 0; i < modifiers.length; ++i)
+                if (modifiers[i].jdKind == microcode.JdKind.Loop)
+                    return modifiers.slice(0, i)
+            return modifiers
+        }
+
+        private emitValueOut(rule: microcode.RuleDefn, defl: number) {
+            this.emitValue(this.currValue(), this.baseModifiers(rule), defl)
         }
 
         private getValueIn(rule: microcode.RuleDefn) {
