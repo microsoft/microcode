@@ -226,11 +226,11 @@ In code, the accelerometer sensor is used
 in two rules to clear the screen (duck is gone)
 and send a number using the radio.
 
-![when shake, do clear screen](./images/generated/sample_chuck_a_duck_page_1_rule_1.png)
+![when shake, do clear screen](./images/generated/sample_chuck_a_duck_page_1_rule_1.png){:class="rule"}
 
 - **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} clear screen.
 
-![when shake, do radio send 1](./images/generated/sample_chuck_a_duck_page_1_rule_2.png)
+![when shake, do radio send 1](./images/generated/sample_chuck_a_duck_page_1_rule_2.png){:class="rule"}
 
 - **when** ![accelerometer](./images/generated/icon_S3.png){:class="icon"} ![shake](./images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} clear screen.
 
@@ -238,7 +238,7 @@ The third rule uses the radio filter to render
 the duck on the screen. This rule executes
 when a radio message is received.
 
-![when radio receive 1, do show duck](./images/generated/sample_chuck_a_duck_page_1_rule_3.png)
+![when radio receive 1, do show duck](./images/generated/sample_chuck_a_duck_page_1_rule_3.png){:class="rule"}
 
 - **when** ![radio receive](./images/generated/icon_S7.png){:class="icon"} radio receive ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint duck on screen.
 
