@@ -25,7 +25,7 @@ namespace microcode {
      * @param msg 
      */
     //% shim=TD_ID
-    export function report(msg: AnalyticsEvent) {
+    function report(msg: AnalyticsEvent) {
         const buf = Buffer.fromUTF8(JSON.stringify(msg))
         control.simmessages.send("analytics", buf)
     }
