@@ -650,10 +650,18 @@ ${jsg
     container.showModal()
 }
 
-addSimMessageHandler("analytics", data => {
-    const msg = JSON.parse(uint8ArrayToString(data))
-    console.log(msg)
+addSimMessageHandler("analytics", buf => {
+    const msg = JSON.parse(uint8ArrayToString(buf))
+    const appInsights = window.appInsights
+    if (!appInsights) return
+
+    const properties = msg.data || {}
+    properties["version"] = document.body.dataset.version
     if (msg.type === "event") {
-        console.debug(msg.msg, msg.data)
+        console.debug(msg.msg, { properties })
+        appInsights.trackEvent({
+            name: msg.msg,
+            properties,
+        })
     }
 })
