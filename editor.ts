@@ -202,10 +202,6 @@ namespace microcode {
                 control.onEvent(ControllerButtonEvent.Pressed, id, () =>
                     this.scrollAndMove(dir)
                 )
-                if (Options.repeatKey)
-                    control.onEvent(ControllerButtonEvent.Repeated, id, () =>
-                        this.scrollAndMove(dir)
-                    )
             }
 
             super.startup()

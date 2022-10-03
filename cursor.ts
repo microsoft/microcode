@@ -149,7 +149,7 @@ namespace microcode {
             )
 
             const text = accessibility.ariaToTooltip(this.ariaId)
-            if (Options.toolTips && text) {
+            if (text) {
                 const n = text.length
                 const font = image.font5
                 const w = font.charWidth * n
