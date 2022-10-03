@@ -1,11 +1,9 @@
 # Samples
 
-These are some of the annotated MicroCode
-samples.
-
+[![new program](./images/generated/icon_new_program.png){:class="icon-sample"}](#first-program) [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"}](#flashing-heart) [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"}](#smiley-buttons) [![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"}](#pet-hamster) [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"}](#rock-paper-scissors) [![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"}](#hot-potato) [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"}](#clap-lights) [![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"}](#chuck-a-duck) [![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon-sample"}](#firefly)
 ## Single player
 
-### ![new program](./images/generated/icon_new_program.png){:class="icon-sample"} First program
+### ![new program](./images/generated/icon_new_program.png){:class="icon-sample"} First program {#first-program}
 
 ![First MicroCode program](./images/generated/sample_first_program.png){:class="sample"}
 
@@ -23,7 +21,7 @@ The program has one rule that paints a smiley when button A (on the micro:bit) i
 -   keep adding images to create an animation
 -   checkout the [smiley buttons](#smiley-buttons) sample to see how to handle button B.
 
-## ![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"} Flashing Heart
+## ![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"} Flashing Heart {#flashing-heart}
 
 ![Flashing Heart MicroCode program](./images/generated/sample_flashing_heart.png){:class="sample"}
 
@@ -61,7 +59,7 @@ pressing B.
 
 -   add sound emoji for each buttons to make it more lively
 
-### ![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"} Pet Hamster
+### ![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"} Pet Hamster {#pet-hamster}
 
 ![Pet Hamster MicroCode program](./images/generated/sample_pet_hamster.png){:class="sample"}
 
@@ -96,7 +94,7 @@ Shaking makes it unhappy.
 
 -   use more rules to manipulate the mood of your pet
 
-### ![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"} Rock Paper Scissors
+### ![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"} Rock Paper Scissors {#rock-paper-scissors}
 
 ![Rock Paper Scissors MicroCode program](./images/generated/sample_rock_paper_scissors.png){:class="sample"}
 
@@ -131,7 +129,7 @@ and display a different symbol for each value, 1, 2 or 3.
 -   add sound emoji whenever shake happens
 -   clear the screen before showing the new symbol
 
-### ![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"} Hot potato
+### ![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"} Hot potato {#hot-potato}
 
 ![Hot potato MicroCode program](./images/generated/sample_hot_potato.png){:class="sample"}
 
@@ -174,7 +172,7 @@ If the **when** section is empty, the rule runs once at the page start only.
 -   add sound emoji when timer expires
 -   add a better expired potato animation
 
-### ![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"} Clap Lights
+### ![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"} Clap Lights {#clap-lights}
 
 ![Clap lights MicroCode program](./images/generated/sample_clap_lights.png){:class="sample"}
 
@@ -189,7 +187,7 @@ switch between page 1 and page 2 where the page start by turning on or off the L
 
 These sample use the radio and will only work if you have multiple micro:bit talking to each other!
 
-### ![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"} Chuck a duck
+### ![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"} Chuck a duck {#chuck-a-duck}
 
 ![Chuck a duck MicroCode program](./images/generated/sample_chuck_a_duck.png){:class="sample"}
 
@@ -211,7 +209,7 @@ when a radio message is received.
 -   add sound emoji when the duck arrives
 -   use different radio messages for different images
 
-### ![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon-sample"} Firefly
+### ![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon-sample"} Firefly {#firefly}
 
 ![firefly MicroCode program](./images/generated/sample_firefly.png){:class="sample"}
 
@@ -222,13 +220,23 @@ Just like fireflies in the wild, you can create program that synchronize blinkin
 between any number of micro:bit! The firefly program uses two pages, page 1 will run when the light is off
 and page 2 will handle a glow.
 
+### page 1
+
+![firefly page 1](./images/generated/sample_firefly_page_1.png){:class="sample"}
+
 In ![page 1](./images/generated/icon_M1.png){:class="icon"} page 1, we add a rule that clears the screen and keeps a dot ![screen](./images/generated/icon_A5.png){:class="icon"} when the page starts.
+
+![firefly page 1 rule 1](./images/generated/sample_firefly_page_1_rule_1.png){:class="rule"}
 
 The clock of the firefly will be held in ![get variable X](./images/generated/icon_M20A.png){:class="icon"} variable `X`. It starts at ![value 1](./images/generated/icon_M6.png){:class="icon"} 1 and once it reaches 8, the firefly will glow. The next two rules are about moving the clock forward. The ![timer](./images/generated/icon_S4.png){:class="icon"} `repeat timer` rule moves the clock every ![quarter of a second](./images/generated/icon_F13.png){:class="icon"} quarter of a second; the ![radio receive](./images/generated/icon_S7.png){:class="icon"} `radio receive` moves the clock by 1 whenever a neighboring firefly sent a message.
 
 The next rule, ![variable X changed](./images/generated/icon_S9A.png){:class="icon"} **when** variable `X` changed to 8, transitions to ![page 2](./images/generated/icon_M2.png){:class="icon"} page 2 when the clock reaches `8`.
 Since it is possible that we miss the number `8` because the firefly received many radio updates at once,
 we add one last rule, a `repeat timer every 3s` that transitions to page 2.
+
+#### page 2
+
+![firefly page 1](./images/generated/sample_firefly_page_1.png){:class="sample"}
 
 On ![page 2](./images/generated/icon_M2.png) page 2, the variable `X` is ![set variable X](./images/generated/icon_A9A.png){:class="icon"} set to ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, a radio message is sent to other firefly so that they can nudge their clock (![radio send](./images/generated/icon_A6.png){:class="icon"}), all the LEDs are turned and a sound is played.
 After half a second, we transition back to page 1 to restart the non-glow phase.
