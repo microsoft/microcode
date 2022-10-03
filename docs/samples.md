@@ -242,6 +242,10 @@ when a radio message is received.
 
 -   **when** ![radio receive](./images/generated/icon_S7.png){:class="icon"} radio receive ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint duck on screen.
 
+![when radio receive 1, play hello sound](./images/generated/sample_chuck_a_duck_page_1_rule_4.png){:class="rule"}
+
+-   **when** ![radio receive](./images/generated/icon_S7.png){:class="icon"} radio receive ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, **do** ![speaker](./images/generated/icon_A2.png){:class="icon"} play sound emoji ![emoji giggle](./images/generated/icon_M19hello.png){:class="icon"} hello.
+
 #### Avoiding clashes with groups
 
 If you try this activity with many micro:bits in the same room, they will all start
