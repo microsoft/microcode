@@ -219,7 +219,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("webusbBtn").onclick = async () => bus.connect()
         document.getElementById("webusbBtn2").onclick = async () =>
             bus.connect()
-        if (!inIFrame) document.body.append(connectEl)
+        if (!inIFrame) {
+            document.getElementById("simframe").parentElement.append(connectEl)
+        }
         refreshUI()
         bus.autoConnect = true
     }
