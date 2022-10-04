@@ -355,8 +355,8 @@ namespace microcode {
     const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
     emoji.serviceClassName = "soundPlayer"
     emoji.serviceCommand = 0x80
-    emoji.serviceArgFromModifier = (x: string) => x || "hello"
     emoji.priority = 20
+    emoji.jdKind = JdKind.Sequence
 
     const emojis = [
         "giggle",
@@ -380,11 +380,14 @@ namespace microcode {
         tilesDB.modifiers[tid] = emoji_mod
     })
 
+    emoji.jdParam = tilesDB.modifiers[TID_MODIFIER_EMOJI_GIGGLE]
+
     /*
     const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "music_editor")
     buzzer.serviceClassName = "buzzer"
     buzzer.serviceCommand = 0x80
     buzzer.priority = 30
+    buzzer.jdKind = JdKind.Sequence
     */
 
     const make_vals = (
@@ -445,8 +448,11 @@ namespace microcode {
     rgbled.serviceCommand = jacs.CMD_SET_REG | 2
     rgbled.jdExternalClass = 0x1609d4f0
     rgbled.jdKind = JdKind.Sequence
-    rgbled.serviceArgFromModifier = (buf: Buffer) => {
-        if (!buf) buf = hex`2f2f2f`
+    rgbled.jdParam = tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_1]
+    
+    rgbled.serviceArgFromModifier = (mod: ModifierDefn) => {
+        let buf = mod.serviceCommandArg() as Buffer
+        if (!buf) return null
         let b = buf
         if (buf.length < numLeds * 3) {
             b = Buffer.create(numLeds * 3)

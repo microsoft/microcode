@@ -483,33 +483,34 @@ namespace jacs {
             ])
         }
 
-        private ruleParams(rule: microcode.RuleDefn, bufSize: number) {
-            const fn = rule.actuators[0].serviceArgFromModifier
-            const params = this.baseModifiers(rule)
-                .map(m => (fn ? fn(m.jdParam) : m.serviceCommandArg()))
-                .filter(a => !!a)
-            if (params.length == 0) {
-                if (fn) params.push(fn(undefined))
-                else params.push(Buffer.create(bufSize))
-            }
-            return params
-        }
-
         private emitSequance(
             rule: microcode.RuleDefn,
             lockvar: Variable,
             delay: number,
             bufSize = 0
         ) {
-            const params = this.ruleParams(rule, bufSize)
+            let fn = rule.actuators[0].serviceArgFromModifier
+            if(!fn) fn  = x => x.serviceCommandArg()
+            let params = this.baseModifiers(rule)
+                .filter(m => !!fn(m) )
+            if (params.length == 0) {
+                const defl = rule.actuators[0].jdParam as microcode.ModifierDefn
+                if (defl instanceof microcode.ModifierDefn)
+                    params = [defl]
+                else {
+                    const tile = new microcode.ModifierDefn("", "", 0)
+                    tile.jdParam = Buffer.create(bufSize)
+                }
+            }
+
             const actuator = rule.actuators[0]
             const wr = this.writer
             if (lockvar) lockvar.write(wr, literal(this.currRuleId))
             for (let i = 0; i < params.length; ++i) {
                 const role = this.lookupActuatorRole(rule)
-                this.emitLoadBuffer(params[i])
+                this.emitLoadBuffer(fn(params[i]))
                 this.emitSendCmd(role, actuator.serviceCommand)
-                this.emitSleep(delay)
+                this.emitSleep(params[i].jdDuration || delay)
                 if (lockvar)
                     wr.emitIf(
                         wr.emitExpr(OpExpr.EXPR2_NE, [
@@ -818,7 +819,7 @@ namespace jacs {
                     this.lookupActuatorRole(rule),
                     actuator.serviceCommand
                 )
-            } else if (actuator.serviceArgFromModifier) {
+            } else if (actuator.serviceArgFromModifier || actuator.jdKind == microcode.JdKind.Sequence) {
                 const role = this.lookupActuatorRole(rule)
                 this.emitSequance(
                     rule,
