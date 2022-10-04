@@ -870,7 +870,11 @@ namespace jacs {
         private terminateProc(proc: Procedure) {
             const wr = this.writer
             wr.emitStmt(Op.STMT1_TERMINATE_FIBER, [
-                wr.emitExpr(Op.EXPR1_GET_FIBER_HANDLE, [literal(proc.index)]),
+                wr.emitExpr(Op.EXPR1_GET_FIBER_HANDLE, [
+                    wr.emitExpr(Op.EXPRx_STATIC_FUNCTION, [
+                        literal(proc.index),
+                    ]),
+                ]),
             ])
         }
 

@@ -276,7 +276,9 @@ namespace jacs {
         }
 
         emitCall(procIdx: number, args: CachedValue[], op = OpCall.SYNC) {
-            const proc = literal(procIdx)
+            const proc = this.emitExpr(Op.EXPRx_STATIC_FUNCTION, [
+                literal(procIdx),
+            ])
             const localidx = literal(args[0] ? args[0].index : 0)
             const numargs = literal(args.length)
 
