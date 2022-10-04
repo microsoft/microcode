@@ -2,9 +2,9 @@
 
 > MicroCode is still in **beta** development and might change in the future.
 
-Microsoft MicroCode is a [MakeCode Arcade](https://arcade.makecode.com/) application that allows the creation, modification, and execution of simple reactive programs for microcontroller-based target devices such as the [BBC micro:bit](https://microbit.org) and [Jacdac brains](https://microsoft.github.io/jacdac-docs/start/brains/).
+Microsoft MicroCode is a tile-based language and editor for young coders on the [BBC micro:bit V2](https://microbit.org), inspired by [Kodu Game Lab](https://www.kodugamelab.com/). Microcode runs in the browser or directly on hardware with [Arcade-compatible devices](https://arcade.makecode.com/hardware/).
 
-MicroCode features a tile-based language and editor, inspired by [Kodu Game Lab](https://www.kodugamelab.com/), for creating programs using just the 4-way direction pad and A and B buttons supported by [Arcade-compatible devices](https://arcade.makecode.com/hardware/).
+https://youtu.be/ymP7x8GXgz4
 
 ## Getting started
 
