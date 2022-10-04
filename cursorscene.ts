@@ -13,7 +13,8 @@ namespace microcode {
             try {
                 this.moveTo(this.cursor.move(dir))
             } catch (e) {
-                if (e.kind === "back_button") this.back()
+                if (dir === CursorDir.Up && e.kind === BACK_BUTTON_ERROR_KIND)
+                    this.back()
                 else throw e
             }
         }

@@ -149,12 +149,14 @@ namespace microcode {
                     target.bounds
                 )
         }
-        private scrollAndMove(dir: CursorDir) {
+        private scrollAndMove(dir: CursorDir, skipBack = false) {
             try {
                 const target = this.cursor.move(dir)
                 this.scrollAndMoveButton(target)
             } catch (e) {
-                this.back()
+                if (dir === CursorDir.Up && e.kind === BACK_BUTTON_ERROR_KIND) {
+                    if (!skipBack) this.back()
+                } else throw e
             }
         }
 
@@ -299,7 +301,7 @@ namespace microcode {
 
         protected handleWheel(dx: number, dy: number) {
             if (dy < 0) {
-                this.scrollAndMove(CursorDir.Up)
+                this.scrollAndMove(CursorDir.Up, true)
             } else if (dy > 0) {
                 this.scrollAndMove(CursorDir.Down)
             }
@@ -797,6 +799,7 @@ namespace microcode {
             let onDelete = undefined
             if (index < ruleTiles.length) {
                 onDelete = () => {
+                    reportEvent("tile.delete")
                     ruleTiles.splice(index, 1)
                     tileUpdated(false)
                 }
@@ -817,8 +820,10 @@ namespace microcode {
                             newFieldEditor(theOne)
                         } else {
                             if (index >= ruleTiles.length) {
+                                reportEvent("tile.add", { tid: theOne.tid })
                                 ruleTiles.push(theOne)
                             } else {
+                                reportEvent("tile.insert", { tid: theOne.tid })
                                 ruleTiles[index] = theOne
                             }
                         }
@@ -832,8 +837,10 @@ namespace microcode {
 
         private handleRuleHandleMenuSelection(iconId: string) {
             if (iconId === "plus") {
+                reportEvent("rule.add")
                 this.page.insertRuleAt(this.index)
             } else if (iconId === "delete") {
+                reportEvent("rule.delete")
                 this.page.deleteRuleAt(this.index)
             }
         }

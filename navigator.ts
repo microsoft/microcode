@@ -9,10 +9,11 @@ namespace microcode {
         finished: () => void
     }
 
+    export const BACK_BUTTON_ERROR_KIND = "back_button"
     export class BackButtonError {
         kind: string
         constructor() {
-            this.kind = "back_button"
+            this.kind = BACK_BUTTON_ERROR_KIND
         }
     }
 
