@@ -132,13 +132,13 @@ namespace microcode {
         public snapCursorTo(btn: Button) {
             const w = btn.xfrm.worldPos
             this.cursor.snapTo(w.x, w.y, btn.ariaId, btn.bounds)
-            btn.reportAria()
+            btn.reportAria(true)
         }
 
         public hoverCursorTo(btn: Button) {
             const w = btn.xfrm.worldPos
             this.cursor.setAriaContent(btn.ariaId, w)
-            btn.reportAria()
+            btn.reportAria(false)
         }
 
         private moveTo(target: Button) {

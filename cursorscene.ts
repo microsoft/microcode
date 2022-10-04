@@ -102,7 +102,7 @@ namespace microcode {
             if (btn) {
                 const w = btn.xfrm.worldPos
                 this.cursor.snapTo(w.x, w.y, btn.ariaId, btn.bounds)
-                btn.reportAria()
+                btn.reportAria(true)
             }
         }
 

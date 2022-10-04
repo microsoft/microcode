@@ -116,7 +116,7 @@ namespace microcode {
                 }
             }
             const btn = this.buttonGroups[this.row][this.col]
-            if (btn) btn.reportAria()
+            if (btn) btn.reportAria(true)
             return btn
         }
 
@@ -193,6 +193,7 @@ namespace microcode {
                 accessibilityMessage = <accessibility.TileAccessibilityMessage>{
                     type: "tile",
                     value: (ret ? ret.ariaId : "") || "",
+                    force: true,
                 }
             }
             accessibility.setLiveContent(accessibilityMessage)
@@ -239,6 +240,7 @@ namespace microcode {
                 >{
                     type: "text",
                     value: "delete_tile",
+                    force: true,
                 })
                 return
             }
@@ -261,6 +263,7 @@ namespace microcode {
                 value: `led ${this.col + 1} ${
                     this.hasDelete ? this.row : this.row + 1
                 } ${status}`,
+                force: true,
             })
         }
     }
@@ -384,7 +387,7 @@ namespace microcode {
             }
 
             if (btn) {
-                btn.reportAria()
+                btn.reportAria(true)
                 this.curr = btn
             }
 

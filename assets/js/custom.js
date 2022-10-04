@@ -82,6 +82,9 @@ async function flashJacscriptService(service, data) {
         console.debug(
             `jacscript: invalid or unknown product identifier ${productIdentifier}`
         )
+        window?.appInsights?.trackEvent({
+            name: "firmware.wrongpid"
+        })    
         showOutdatedFirmwareDialog()
         return
     }
@@ -181,6 +184,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // track connection state and update button
         bus.on(jacdac.CONNECTION_STATE, refreshUI)
         bus.on(jacdac.ERROR, e => {
+            appInsights?.trackException(e)
+        
             const code = e.code
             switch (code) {
                 case jacdac.ERROR_MICROBIT_JACDAC_MISSING: {
@@ -447,6 +452,7 @@ addSimMessageHandler("accessibility", data => {
     // render message
     const msg = JSON.parse(uint8ArrayToString(data))
     let value
+    const force = msg.force
     if (msg.type === "tile" || msg.type === "text") {
         value = mapAriaId(msg.value)
         const tooltip = msg.tooltip
@@ -462,10 +468,10 @@ addSimMessageHandler("accessibility", data => {
             value += ` do ${dos.map(mapAriaId).join(" ")}`
         else value += ` do nothing`
     }
-    setLiveRegion(value)
+    setLiveRegion(value, force)
 })
 
-function setLiveRegion(value) {
+function setLiveRegion(value, force) {
     // apply to browser
     if (!liveRegion) {
         const style =
@@ -487,7 +493,7 @@ function setLiveRegion(value) {
         document.body.appendChild(liveRegion)
     }
     value = value || ""
-    if (liveRegion.textContent === value) liveRegion.textContent = ""
+    if (force && liveRegion.textContent === value) liveRegion.textContent = ""
     //console.debug(`aria-live: ${value}`)
     liveRegion.textContent = value
 }

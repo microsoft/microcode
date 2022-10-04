@@ -101,11 +101,12 @@ namespace microcode {
             this._ariaId = value
         }
 
-        reportAria() {
+        reportAria(force = false) {
             const msg: accessibility.TileAccessibilityMessage = {
                 type: "tile",
                 value: this.ariaId,
-                tooltip: accessibility.ariaToTooltip(this.ariaId)
+                tooltip: accessibility.ariaToTooltip(this.ariaId),
+                force,
             }
             accessibility.setLiveContent(msg)
         }
