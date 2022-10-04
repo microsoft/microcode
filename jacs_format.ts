@@ -1,23 +1,31 @@
 namespace jacs {
-    export const JACS_MAX_EXPR_DEPTH = BinFmt.MAX_EXPR_DEPTH
-
-    export function stmtTakesNumber(op: OpStmt) {
-        return !!(STMT_PROPS.charCodeAt(op) & BytecodeFlag.TAKES_NUMBER)
+    export function opTakesNumber(op: Op) {
+        return !!(OP_PROPS.charCodeAt(op) & BytecodeFlag.TAKES_NUMBER)
     }
 
-    export function exprIsStateful(op: OpExpr) {
-        return !(EXPR_PROPS.charCodeAt(op) & BytecodeFlag.IS_STATELESS)
+    export function exprIsStateful(op: Op) {
+        return !(OP_PROPS.charCodeAt(op) & BytecodeFlag.IS_STATELESS)
     }
 
-    export function exprTakesNumber(op: OpExpr) {
-        return !!(EXPR_PROPS.charCodeAt(op) & BytecodeFlag.TAKES_NUMBER)
+    export function opNumRealArgs(op: Op) {
+        return OP_PROPS.charCodeAt(op) & BytecodeFlag.NUM_ARGS_MASK
+    }
+
+    export function opNumArgs(op: Op) {
+        let n = opNumRealArgs(op)
+        if (opTakesNumber(op)) n++
+        return n
+    }
+
+    export function opIsStmt(op: Op) {
+        return !!(OP_PROPS.charCodeAt(op) & BytecodeFlag.IS_STMT)
     }
 
     export enum CellKind {
-        LOCAL = OpExpr.EXPRx_LOAD_LOCAL,
-        GLOBAL = OpExpr.EXPRx_LOAD_GLOBAL,
-        PARAM = OpExpr.EXPRx_LOAD_PARAM,
-        FLOAT_CONST = OpExpr.EXPRx_LITERAL_F64,
+        LOCAL = Op.EXPRx_LOAD_LOCAL,
+        GLOBAL = Op.EXPRx_LOAD_GLOBAL,
+        PARAM = Op.EXPRx_LOAD_PARAM,
+        FLOAT_CONST = Op.EXPRx_LITERAL_F64,
 
         // these cannot be emitted directly
         JD_EVENT = 0x100,
@@ -35,11 +43,11 @@ namespace jacs {
     export function storeStmt(k: CellKind) {
         switch (k) {
             case CellKind.LOCAL:
-                return OpStmt.STMTx1_STORE_LOCAL
+                return Op.STMTx1_STORE_LOCAL
             case CellKind.PARAM:
-                return OpStmt.STMTx1_STORE_PARAM
+                return Op.STMTx1_STORE_PARAM
             case CellKind.GLOBAL:
-                return OpStmt.STMTx1_STORE_GLOBAL
+                return Op.STMTx1_STORE_GLOBAL
             default:
                 return oops("bad kind")
         }
@@ -50,7 +58,7 @@ namespace jacs {
             case CellKind.LOCAL:
             case CellKind.PARAM:
             case CellKind.GLOBAL:
-                return k as any as OpExpr
+                return k as any as Op
             default:
                 return oops("bad kind")
         }

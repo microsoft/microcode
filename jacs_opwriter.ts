@@ -62,8 +62,8 @@ namespace jacs {
         _cachedValue: CachedValue
 
         constructor() {}
-        get depth() {
-            return this.flags & VF_DEPTH_MASK
+        get maxstack() {
+            return (this.flags & VF_DEPTH_MASK) + 1
         }
         get usesState() {
             return !!(this.flags & VF_USES_STATE)
@@ -99,7 +99,7 @@ namespace jacs {
             assert(this.numrefs > 0)
             const r = new Value()
             r.numValue = this.index
-            r.op = OpExpr.EXPRx_LOAD_LOCAL
+            r.op = Op.EXPRx_LOAD_LOCAL
             r.flags = VF_IS_MEMREF // not "using state" - it's temporary
             r._cachedValue = this
             this.numrefs++
@@ -107,7 +107,7 @@ namespace jacs {
         }
         store(v: Value) {
             assert(this.numrefs > 0)
-            this.parent.emitStmt(OpStmt.STMTx1_STORE_LOCAL, [
+            this.parent.emitStmt(Op.STMTx1_STORE_LOCAL, [
                 literal(this.index),
                 v,
             ])
@@ -128,7 +128,7 @@ namespace jacs {
     export function literal(v: number) {
         const r = new Value()
         r.numValue = v
-        r.op = OpExpr.EXPRx_LITERAL
+        r.op = Op.EXPRx_LITERAL
         r.flags = VF_IS_LITERAL
         return r
     }
@@ -165,7 +165,11 @@ namespace jacs {
         srcmap: number[] = []
         private nameIdx: number
 
-        constructor(private prog: TopOpWriter, public name: string, public fnidx: number) {
+        constructor(
+            private prog: TopOpWriter,
+            public name: string,
+            public fnidx: number
+        ) {
             this.top = this.mkLabel("top")
             this.emitLabel(this.top)
             this.binary = Buffer.create(128)
@@ -277,41 +281,32 @@ namespace jacs {
             const numargs = literal(args.length)
 
             if (op == OpCall.SYNC)
-                this.emitStmt(OpStmt.STMT3_CALL, [proc, localidx, numargs])
+                this.emitStmt(Op.STMTx2_CALL, [localidx, numargs, proc])
             else
-                this.emitStmt(OpStmt.STMT4_CALL_BG, [
-                    proc,
+                this.emitStmt(Op.STMTx3_CALL_BG, [
                     localidx,
                     numargs,
+                    proc,
                     literal(op),
                 ])
             for (const c of args) c.free()
         }
 
-        emitStoreByte(src: Value, off = 0) {
-            assertRange(0, off, 0xff)
-            this.emitStmt(OpStmt.STMT4_STORE_BUFFER, [
-                literal(NumFmt.U8),
+        emitBufLoad(fmt: NumFmt, off: number, buf?: Value) {
+            if (!buf) buf = this.emitExpr(Op.EXPR0_PKT_BUFFER, [])
+            return this.emitExpr(Op.EXPR3_LOAD_BUFFER, [
+                buf,
+                literal(fmt),
                 literal(off),
-                literal(0),
-                src,
             ])
         }
 
-        emitBufLoad(fmt: NumFmt, off: number, bufidx = 0) {
-            if (bufidx == 0) assertRange(0, off, 0xff)
-            return this.emitExpr(OpExpr.EXPR3_LOAD_BUFFER, [
+        emitBufStore(src: Value, fmt: NumFmt, off: number, buf?: Value) {
+            if (!buf) buf = this.emitExpr(Op.EXPR0_PKT_BUFFER, [])
+            this.emitStmt(Op.STMT4_STORE_BUFFER, [
+                buf,
                 literal(fmt),
                 literal(off),
-                literal(bufidx),
-            ])
-        }
-
-        emitBufStore(src: Value, fmt: NumFmt, off: number, bufidx = 0) {
-            this.emitStmt(OpStmt.STMT4_STORE_BUFFER, [
-                literal(fmt),
-                literal(off),
-                literal(bufidx),
                 src,
             ])
         }
@@ -389,15 +384,17 @@ namespace jacs {
         }
 
         emitJumpIfTrue(label: Label, cond: Value) {
-            return this.emitJump(label, this.emitExpr(OpExpr.EXPR1_NOT, [cond]))
+            return this.emitJump(label, this.emitExpr(Op.EXPR1_NOT, [cond]))
         }
 
         emitJump(label: Label, cond?: Value) {
             if (cond) cond.adopt()
             this.spillAllStateful()
 
+            if (cond) this.writeValue(cond)
+
             const off0 = this.location()
-            this.writeByte(cond ? OpStmt.STMTx1_JMP_Z : OpStmt.STMTx_JMP)
+            this.writeByte(cond ? Op.STMTx1_JMP_Z : Op.STMTx_JMP)
 
             if (label.offset != -1) {
                 this.writeInt(label.offset - off0)
@@ -406,8 +403,6 @@ namespace jacs {
                 label.uses.push(off0)
                 this.writeInt(0x1000)
             }
-
-            if (cond) this.writeValue(cond)
         }
 
         private oops(msg: string) {
@@ -464,7 +459,7 @@ namespace jacs {
             this.pendingStatefulValues = []
         }
 
-        emitMemRef(op: OpExpr, idx: number) {
+        emitMemRef(op: Op, idx: number) {
             const r = new Value()
             r.numValue = idx
             r.op = op
@@ -473,17 +468,20 @@ namespace jacs {
             return r
         }
 
-        emitExpr(op: OpExpr, args: Value[]) {
-            const n = EXPR_PROPS.charCodeAt(op as number) & 0xf
+        emitExpr(op: Op, args: Value[]) {
+            const n = opNumArgs(op)
             if (n != args.length)
                 oops(`expr ${op} requires ${n}; got ${args.length}`)
 
-            let maxdepth = -1
+            let stack = 0
+            let maxstack = 1
             let usesState = exprIsStateful(op)
             // TODO constant folding
             for (const a of args) {
-                if (a.depth >= JACS_MAX_EXPR_DEPTH - 1) this.spillValue(a)
-                maxdepth = Math.max(a.depth, maxdepth)
+                if (stack + a.maxstack >= BinFmt.MAX_STACK_DEPTH)
+                    this.spillValue(a)
+                maxstack = Math.max(maxstack, stack + a.maxstack)
+                stack++
                 if (a.usesState) usesState = true
                 assert(!(a.flags & VF_HAS_PARENT))
                 a.flags |= VF_HAS_PARENT
@@ -491,7 +489,7 @@ namespace jacs {
             const r = new Value()
             r.args = args
             r.op = op
-            r.flags = maxdepth + 1
+            r.flags = maxstack - 1 // so that r.maxstack == maxstack
             if (usesState) {
                 r.flags |= VF_USES_STATE
                 this.pendingStatefulValues.push(r)
@@ -534,16 +532,20 @@ namespace jacs {
             }
         }
 
-        private writeArgs(firstInt: boolean, args: Value[]) {
+        private writeArgs(op: Op, args: Value[]) {
             let i = 0
-            if (firstInt) {
-                assert(args[0].isLiteral)
-                this.writeInt(args[0].numValue)
-                i = 1
-            }
+            if (opTakesNumber(op)) i = 1
             while (i < args.length) {
                 this.writeValue(args[i])
                 i++
+            }
+            this.writeByte(op)
+            if (opTakesNumber(op)) {
+                assert(args[0].isLiteral)
+                const nval = args[0].numValue
+                if (op == Op.STMTx1_STORE_LOCAL && nval >= LOCAL_OFFSET)
+                    this.localOffsets.push(this.location())
+                this.writeInt(nval)
             }
         }
 
@@ -553,50 +555,41 @@ namespace jacs {
             if (v.isLiteral) {
                 const q = v.numValue
                 if ((q | 0) == q) {
-                    const qq = q + 16 + 0x80
-                    if (0x80 <= qq && qq <= 0xff) this.writeByte(qq)
+                    const qq =
+                        q + BinFmt.DIRECT_CONST_OFFSET + BinFmt.DIRECT_CONST_OP
+                    if (BinFmt.DIRECT_CONST_OFFSET <= qq && qq <= 0xff)
+                        this.writeByte(qq)
                     else {
-                        this.writeByte(OpExpr.EXPRx_LITERAL)
+                        this.writeByte(Op.EXPRx_LITERAL)
                         this.writeInt(q)
                     }
                 } else if (isNaN(q)) {
-                    this.writeByte(OpExpr.EXPR0_NAN)
+                    this.writeByte(Op.EXPR0_NAN)
                 } else {
                     const idx = this.prog.addFloat(q)
-                    this.writeByte(OpExpr.EXPRx_LITERAL_F64)
+                    this.writeByte(Op.EXPRx_LITERAL_F64)
                     this.writeInt(idx)
                 }
             } else if (v.isMemRef) {
-                assert(exprTakesNumber(v.op))
+                assert(opTakesNumber(v.op))
                 this.writeByte(v.op)
-                if (
-                    v.op == OpExpr.EXPRx_LOAD_LOCAL &&
-                    v.numValue >= LOCAL_OFFSET
-                )
+                if (v.op == Op.EXPRx_LOAD_LOCAL && v.numValue >= LOCAL_OFFSET)
                     this.localOffsets.push(this.location())
                 this.writeInt(v.numValue)
                 if (v._cachedValue) v._cachedValue._decr()
             } else if (v.op >= 0x100) {
-                oops("this value can't be emitted")
+                oops("this value cannot be emitted: " + v.op.toString())
             } else {
-                this.writeByte(v.op)
-                this.writeArgs(exprTakesNumber(v.op), v.args)
+                this.writeArgs(v.op, v.args)
             }
         }
 
-        emitStmt(op: OpStmt, args: Value[]) {
-            const n = STMT_PROPS.charCodeAt(op as number) & 0xf
-            if (n != args.length)
-                oops(`stmt ${op} requires ${n}; got ${args.length}`)
+        emitStmt(op: Op, args: Value[]) {
+            assert(opNumArgs(op) == args.length)
+            assert(opIsStmt(op))
             for (const a of args) a.adopt()
-            this.spillAllStateful()
-            this.writeByte(op)
-            if (
-                op == OpStmt.STMTx1_STORE_LOCAL &&
-                args[0].numValue >= LOCAL_OFFSET
-            )
-                this.localOffsets.push(this.location())
-            this.writeArgs(stmtTakesNumber(op), args)
+            this.spillAllStateful() // this doesn't spill adopt()'ed Value's (our arguments)
+            this.writeArgs(op, args)
         }
     }
 

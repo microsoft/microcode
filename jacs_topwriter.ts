@@ -96,18 +96,22 @@ namespace jacs {
             })
         }
 
+        emit(wr: OpWriter) {
+            return wr.emitExpr(Op.EXPRx_STATIC_ROLE, [literal(this.index)])
+        }
+
         getDispatcher() {
             if (!this.dispatcher) {
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
                     if (needsWakeup.indexOf(this.classIdentifier) >= 0) {
-                        wr.emitStmt(OpStmt.STMT3_QUERY_REG, [
-                            literal(this.index),
+                        wr.emitStmt(Op.STMT3_QUERY_REG, [
+                            this.emit(wr),
                             literal(JD_REG_STREAMING_SAMPLES),
                             literal(1000),
                         ])
                         this.parent.ifEq(
-                            wr.emitExpr(OpExpr.EXPR0_RET_VAL, []),
+                            wr.emitExpr(Op.EXPR0_RET_VAL, []),
                             0,
                             () => {
                                 this.parent.emitSetReg(
@@ -127,7 +131,7 @@ namespace jacs {
                     }
                     this.top = wr.mkLabel("tp")
                     wr.emitLabel(this.top)
-                    wr.emitStmt(OpStmt.STMT1_WAIT_ROLE, [literal(this.index)])
+                    wr.emitStmt(Op.STMT1_WAIT_ROLE, [this.emit(wr)])
                 })
             }
             return this.dispatcher
@@ -172,6 +176,12 @@ namespace jacs {
 
             this.stringLiterals.push(str)
             return this.stringLiterals.length - 1
+        }
+
+        emitString(str: string | Buffer) {
+            return this.writer.emitExpr(Op.EXPRx_STATIC_BUFFER, [
+                literal(this.addString(str)),
+            ])
         }
 
         addFloat(f: number): number {
@@ -223,7 +233,6 @@ namespace jacs {
             const roleData = new SectionWriter()
             const strDesc = new SectionWriter()
             const strData = new SectionWriter()
-            const bufferDesc = new SectionWriter()
 
             for (const s of [
                 funDesc,
@@ -232,7 +241,6 @@ namespace jacs {
                 roleData,
                 strDesc,
                 strData,
-                bufferDesc,
             ]) {
                 sectDescs.append(s.desc)
                 sections.push(s)
@@ -354,10 +362,10 @@ namespace jacs {
             this.withProcedure(this.mainProc, wr => {
                 this.emitClearScreen()
                 wr.emitCall(this.pageProc(1).index, [])
-                wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+                wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
             })
             this.withProcedure(this.stopPage, wr => {
-                wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+                wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
             })
             this.finalizePageProcs()
             for (const p of this.procs) p.finalize()
@@ -476,11 +484,8 @@ namespace jacs {
                 len = Buffer.fromUTF8(buf as string).length
             else len = (buf as Buffer).length
             const wr = this.writer
-            wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [literal(len), literal(0)])
-            wr.emitStmt(OpStmt.STMT2_MEMCPY, [
-                literal(this.addString(buf)),
-                literal(0),
-            ])
+            wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(len)])
+            wr.emitStmt(Op.STMT2_SET_PKT, [this.emitString(buf), literal(0)])
         }
 
         private emitSequance(
@@ -490,13 +495,11 @@ namespace jacs {
             bufSize = 0
         ) {
             let fn = rule.actuators[0].serviceArgFromModifier
-            if(!fn) fn  = x => x.serviceCommandArg()
-            let params = this.baseModifiers(rule)
-                .filter(m => !!fn(m) )
+            if (!fn) fn = x => x.serviceCommandArg()
+            let params = this.baseModifiers(rule).filter(m => !!fn(m))
             if (params.length == 0) {
                 const defl = rule.actuators[0].jdParam as microcode.ModifierDefn
-                if (defl instanceof microcode.ModifierDefn)
-                    params = [defl]
+                if (defl instanceof microcode.ModifierDefn) params = [defl]
                 else {
                     const tile = new microcode.ModifierDefn("", "", 0)
                     tile.jdParam = Buffer.create(bufSize)
@@ -513,12 +516,12 @@ namespace jacs {
                 this.emitSleep(params[i].jdDuration || delay)
                 if (lockvar)
                     wr.emitIf(
-                        wr.emitExpr(OpExpr.EXPR2_NE, [
+                        wr.emitExpr(Op.EXPR2_NE, [
                             lockvar.read(wr),
                             literal(this.currRuleId),
                         ]),
                         () => {
-                            wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+                            wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
                         }
                     )
             }
@@ -543,8 +546,8 @@ namespace jacs {
         }
 
         emitSendCmd(r: Role, cmd: number) {
-            this.writer.emitStmt(OpStmt.STMT2_SEND_CMD, [
-                literal(r.index),
+            this.writer.emitStmt(Op.STMT2_SEND_CMD, [
+                r.emit(this.writer),
                 literal(cmd),
             ])
         }
@@ -586,7 +589,7 @@ namespace jacs {
                     wr,
                     clear
                         ? vv
-                        : wr.emitExpr(OpExpr.EXPR2_ADD, [target.read(wr), vv])
+                        : wr.emitExpr(Op.EXPR2_ADD, [target.read(wr), vv])
                 )
                 clear = false
             }
@@ -605,8 +608,8 @@ namespace jacs {
                         this.emitAddSeq(mods, bndVar, 5)
                         wr.emitIf(
                             // !(2<wr) == 2>=wr == wr<=2, but use negation because of 'bndVar' being possibly nan
-                            wr.emitExpr(OpExpr.EXPR1_NOT, [
-                                wr.emitExpr(OpExpr.EXPR2_LT, [
+                            wr.emitExpr(Op.EXPR1_NOT, [
+                                wr.emitExpr(Op.EXPR2_LT, [
                                     literal(2),
                                     bndVar.read(wr),
                                 ]),
@@ -615,7 +618,7 @@ namespace jacs {
                                 bndVar.write(wr, literal(2))
                             }
                         )
-                        rnd = wr.emitExpr(OpExpr.EXPR1_RANDOM_INT, [
+                        rnd = wr.emitExpr(Op.EXPR1_RANDOM_INT, [
                             this.emitAdd(bndVar.read(wr), -1),
                         ])
                     }
@@ -694,13 +697,12 @@ namespace jacs {
         // 0-max inclusive
         private emitRandomInt(max: number) {
             if (max <= 0) return literal(0)
-            return this.writer.emitExpr(OpExpr.EXPR1_RANDOM_INT, [literal(max)])
+            return this.writer.emitExpr(Op.EXPR1_RANDOM_INT, [literal(max)])
         }
 
         private emitAdd(a: Value, off: number) {
-            if (a.op == OpExpr.EXPRx_LITERAL && a.numValue == 0)
-                return literal(off)
-            return this.writer.emitExpr(OpExpr.EXPR2_ADD, [a, literal(off)])
+            if (a.op == Op.EXPRx_LITERAL && a.numValue == 0) return literal(off)
+            return this.writer.emitExpr(Op.EXPR2_ADD, [a, literal(off)])
         }
 
         private loopModifierIdx(rule: microcode.RuleDefn) {
@@ -724,10 +726,7 @@ namespace jacs {
                 index.write(wr, this.emitAdd(index.read(wr), 1))
                 wr.emitJumpIfTrue(
                     wr.top,
-                    wr.emitExpr(OpExpr.EXPR2_LT, [
-                        index.read(wr),
-                        bound.read(wr),
-                    ])
+                    wr.emitExpr(Op.EXPR2_LT, [index.read(wr), bound.read(wr)])
                 )
             } else {
                 wr.emitJump(wr.top)
@@ -766,34 +765,23 @@ namespace jacs {
                 )
             } else if (actuator.jdKind == microcode.JdKind.Radio) {
                 this.emitValueOut(rule, 1)
-                wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [literal(8), literal(0)])
-                wr.emitStmt(OpStmt.STMT4_STORE_BUFFER, [
-                    literal(NumFmt.F64),
-                    literal(0),
-                    literal(0),
-                    currValue(),
-                ])
+                wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(8)])
+                wr.emitBufStore(currValue(), NumFmt.F64, 0)
                 this.emitSendCmd(this.lookupActuatorRole(rule), 0x81)
             } else if (actuator.jdKind == microcode.JdKind.NumFmt) {
                 this.emitValueOut(rule, 1)
                 const fmt: NumFmt = actuator.jdParam
                 const sz = bitSize(fmt) >> 3
-                wr.emitStmt(OpStmt.STMT2_SETUP_BUFFER, [
-                    literal(sz),
-                    literal(0),
-                ])
+                wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
                 if (actuator.tid == microcode.TID_MODIFIER_SERVO_SET_ANGLE) {
                     // TODO no module yet in Jacs
                     // if (curr >= 12) { curr -= 12 }
                     wr.emitIf(
-                        wr.emitExpr(OpExpr.EXPR2_LE, [
-                            literal(12),
-                            currValue(),
-                        ]),
+                        wr.emitExpr(Op.EXPR2_LE, [literal(12), currValue()]),
                         () => {
                             this.currValue().write(
                                 wr,
-                                wr.emitExpr(OpExpr.EXPR2_SUB, [
+                                wr.emitExpr(Op.EXPR2_SUB, [
                                     currValue(),
                                     literal(12),
                                 ])
@@ -803,23 +791,21 @@ namespace jacs {
                     // curr = curr * ((360/12) << 16)
                     this.currValue().write(
                         wr,
-                        wr.emitExpr(OpExpr.EXPR2_MUL, [
+                        wr.emitExpr(Op.EXPR2_MUL, [
                             currValue(),
                             literal((360 / 12) << 16),
                         ])
                     )
                 }
-                wr.emitStmt(OpStmt.STMT4_STORE_BUFFER, [
-                    literal(fmt),
-                    literal(0),
-                    literal(0),
-                    currValue(),
-                ])
+                wr.emitBufStore(currValue(), fmt, 0)
                 this.emitSendCmd(
                     this.lookupActuatorRole(rule),
                     actuator.serviceCommand
                 )
-            } else if (actuator.serviceArgFromModifier || actuator.jdKind == microcode.JdKind.Sequence) {
+            } else if (
+                actuator.serviceArgFromModifier ||
+                actuator.jdKind == microcode.JdKind.Sequence
+            ) {
                 const role = this.lookupActuatorRole(rule)
                 this.emitSequance(
                     rule,
@@ -839,14 +825,14 @@ namespace jacs {
             const body = this.addProc(name)
             this.withProcedure(body, wr => {
                 this.emitRoleCommand(rule)
-                wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+                wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
             })
             return body
         }
 
         ifEq(v: Value, val: number, then: () => void) {
             const wr = this.writer
-            wr.emitIf(wr.emitExpr(OpExpr.EXPR2_EQ, [v, literal(val)]), then)
+            wr.emitIf(wr.emitExpr(Op.EXPR2_EQ, [v, literal(val)]), then)
         }
 
         private ifCurrPage(then: () => void) {
@@ -876,17 +862,15 @@ namespace jacs {
                             this.pageStartCondition,
                             CMD_CONDITION_FIRE
                         )
-                        wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+                        wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
                     })
             }
         }
 
         private terminateProc(proc: Procedure) {
             const wr = this.writer
-            wr.emitStmt(OpStmt.STMT1_TERMINATE_FIBER, [
-                wr.emitExpr(OpExpr.EXPR1_GET_FIBER_HANDLE, [
-                    literal(proc.index),
-                ]),
+            wr.emitStmt(Op.STMT1_TERMINATE_FIBER, [
+                wr.emitExpr(Op.EXPR1_GET_FIBER_HANDLE, [literal(proc.index)]),
             ])
         }
 
@@ -930,7 +914,7 @@ namespace jacs {
                         this.emitRandomInt(randomPeriod),
                         period
                     )
-                    wr.emitStmt(OpStmt.STMT1_SLEEP_MS, [tm])
+                    wr.emitStmt(Op.STMT1_SLEEP_MS, [tm])
                     this.ifCurrPage(emitBody)
                     wr.emitJump(wr.top)
                 })
@@ -961,21 +945,15 @@ namespace jacs {
                         rule.sensors[0] &&
                         rule.sensors[0].serviceClassName == "radio"
                     ) {
-                        const loadVal = () =>
-                            wr.emitExpr(OpExpr.EXPR3_LOAD_BUFFER, [
-                                literal(NumFmt.F64),
-                                literal(12),
-                                literal(0),
-                            ])
-
+                        const loadVal = () => wr.emitBufLoad(NumFmt.F64, 12)
                         this.ifEq(
-                            wr.emitExpr(OpExpr.EXPR0_PKT_REPORT_CODE, []),
+                            wr.emitExpr(Op.EXPR0_PKT_REPORT_CODE, []),
                             code,
                             () => filterValueIn(loadVal)
                         )
                     } else if (code != null) {
                         this.ifEq(
-                            wr.emitExpr(OpExpr.EXPR0_PKT_EV_CODE, []),
+                            wr.emitExpr(Op.EXPR0_PKT_EV_CODE, []),
                             code,
                             emitBody
                         )
@@ -997,15 +975,15 @@ namespace jacs {
                 local = this.proc.lookupLocal("logarg")
                 local.write(this.writer, arg)
             }
-            this.writer.emitStmt(OpStmt.STMT3_LOG_FORMAT, [
-                literal(this.addString(str)),
+            this.writer.emitStmt(Op.STMTx2_LOG_FORMAT, [
                 literal(local ? local.index : 0),
                 literal(local ? 1 : 0),
+                this.emitString(str),
             ])
         }
 
         emitSleep(ms: number) {
-            this.writer.emitStmt(OpStmt.STMT1_SLEEP_MS, [literal(ms)])
+            this.writer.emitStmt(Op.STMT1_SLEEP_MS, [literal(ms)])
         }
 
         private emitClearScreen() {
@@ -1037,9 +1015,7 @@ namespace jacs {
 
                 const mic = this.lookupRole("soundLevel", 0)
                 wr.emitIf(
-                    wr.emitExpr(OpExpr.EXPR1_ROLE_IS_CONNECTED, [
-                        literal(mic.index),
-                    ]),
+                    wr.emitExpr(Op.EXPR1_ROLE_IS_CONNECTED, [mic.emit(wr)]),
                     () => {
                         this.emitSetReg(mic, JD_REG_INTENSITY, hex`00`)
                     }
@@ -1078,8 +1054,8 @@ namespace jacs {
             this.withProcedure(mainProc, wr => {
                 this.emitLoadBuffer(name)
                 this.emitSendCmd(r, 0x80)
-                wr.emitStmt(OpStmt.STMT1_SLEEP_S, [literal(100000)])
-                wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+                wr.emitStmt(Op.STMT1_SLEEP_S, [literal(100000)])
+                wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
             })
             mainProc.finalize()
             this.deploy()
@@ -1091,8 +1067,8 @@ namespace jacs {
             this.withProcedure(mainProc, wr => {
                 this.emitLoadBuffer(buf)
                 this.emitSendCmd(r, 0x80)
-                wr.emitStmt(OpStmt.STMT1_SLEEP_S, [literal(100000)])
-                wr.emitStmt(OpStmt.STMT1_RETURN, [literal(0)])
+                wr.emitStmt(Op.STMT1_SLEEP_S, [literal(100000)])
+                wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
             })
             mainProc.finalize()
             this.deploy()
