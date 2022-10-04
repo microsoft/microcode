@@ -1,20 +1,21 @@
 namespace accessibility {
     export interface AccessibilityMessage {
         type: "text" | "tile" | "rule"
+        force?: boolean
     }
 
-    export interface TextAccessibilityMessage {
+    export interface TextAccessibilityMessage extends AccessibilityMessage {
         type: "text"
         value: string
     }
 
-    export interface TileAccessibilityMessage {
+    export interface TileAccessibilityMessage extends AccessibilityMessage {
         type: "tile"
         value: string
         tooltip: string
     }
 
-    export interface RuleAccessibilityMessage {
+    export interface RuleAccessibilityMessage extends AccessibilityMessage {
         type: "rule"
         dos: string[]
         whens: string[]

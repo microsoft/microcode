@@ -17,23 +17,20 @@ namespace microcode {
     }
 
     export class Cursor extends Component implements IPlaceable {
-        private xfrm_: Affine
+        xfrm: Affine
         navigator: INavigator
         cancelHandlerStack: CursorCancelHandler[]
         moveStartMs: number
         moveDest: Vec2
+        ariaPos: Vec2
         ariaId: string
         size: Bounds
         cycle: number
         visible = true
 
-        public get xfrm() {
-            return this.xfrm_
-        }
-
         constructor() {
             super("cursor")
-            this.xfrm_ = new Affine()
+            this.xfrm = new Affine()
             this.cancelHandlerStack = []
             this.moveDest = new Vec2()
             this.cycle = 1
@@ -47,8 +44,9 @@ namespace microcode {
             this.setAriaContent(ariaId)
         }
 
-        private setAriaContent(ariaId: string) {
+        public setAriaContent(ariaId: string, ariaPos: Vec2 = null) {
             this.ariaId = ariaId || ""
+            this.ariaPos = ariaPos
         }
 
         public snapTo(x: number, y: number, ariaId: string, sizeHint: Bounds) {
@@ -150,21 +148,17 @@ namespace microcode {
 
             const text = accessibility.ariaToTooltip(this.ariaId)
             if (text) {
+                const pos = this.ariaPos || this.xfrm.localPos
                 const n = text.length
                 const font = image.font5
                 const w = font.charWidth * n
                 const h = font.charHeight
                 const x = Math.max(
                     Screen.LEFT_EDGE + 1,
-                    Math.min(
-                        Screen.RIGHT_EDGE - 1 - w,
-                        this.xfrm.localPos.x - (w >> 1)
-                    )
+                    Math.min(Screen.RIGHT_EDGE - 1 - w, pos.x - (w >> 1))
                 )
                 const y = Math.min(
-                    this.xfrm.localPos.y +
-                        (this.size.width >= 32 ? 14 : 7) +
-                        font.charHeight,
+                    pos.y + (this.size.width >= 32 ? 14 : 7) + font.charHeight,
                     Screen.BOTTOM_EDGE - 1 - font.charHeight
                 )
                 Screen.fillRect(x - 1, y - 1, w + 1, h + 2, 15)

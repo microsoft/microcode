@@ -86,6 +86,12 @@ namespace microcode {
             }
         }
 
+        protected handleMove(x: number, y: number) {
+            const target = this.navigator.screenToButton(x - 80, y - 60)
+            if (target)
+                this.cursor.setAriaContent(target.ariaId, target.xfrm.worldPos)
+        }
+
         /* override */ shutdown() {
             this.navigator.clear()
         }
@@ -96,7 +102,7 @@ namespace microcode {
             if (btn) {
                 const w = btn.xfrm.worldPos
                 this.cursor.snapTo(w.x, w.y, btn.ariaId, btn.bounds)
-                btn.reportAria()
+                btn.reportAria(true)
             }
         }
 

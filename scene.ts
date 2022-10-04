@@ -33,6 +33,7 @@ namespace microcode {
         /* override */ activate() {
             pointerevents.pushContext(
                 (x, y) => this.handleClick(x, y),
+                (x, y) => this.handleMove(x, y),
                 (dx, dy) => this.handleWheel(dx, dy)
             )
         }
@@ -45,13 +46,11 @@ namespace microcode {
 
         /* abstract */ draw() {}
 
-        protected handleClick(x: number, y: number) {
-            //console.log(`click ${this.name} ${x}, ${y}`)
-        }
+        protected handleClick(x: number, y: number) {}
 
-        protected handleWheel(dx: number, dy: number) {
-            //console.log(`wheel ${dx} ${dy}`)
-        }
+        protected handleMove(x: number, y: number) {}
+
+        protected handleWheel(dx: number, dy: number) {}
 
         get backgroundCaptured() {
             return !!this.backgroundCaptured_

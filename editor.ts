@@ -132,7 +132,13 @@ namespace microcode {
         public snapCursorTo(btn: Button) {
             const w = btn.xfrm.worldPos
             this.cursor.snapTo(w.x, w.y, btn.ariaId, btn.bounds)
-            btn.reportAria()
+            btn.reportAria(true)
+        }
+
+        public hoverCursorTo(btn: Button) {
+            const w = btn.xfrm.worldPos
+            this.cursor.setAriaContent(btn.ariaId, w)
+            btn.reportAria(false)
         }
 
         private moveTo(target: Button) {
@@ -281,6 +287,13 @@ namespace microcode {
                 target.click()
             } else if (this.picker.visible) {
                 this.picker.hide()
+            }
+        }
+
+        protected handleMove(x: number, y: number) {
+            const target = this.cursor.navigator.screenToButton(x - 80, y - 60)
+            if (target) {
+                this.hoverCursorTo(target)
             }
         }
 
