@@ -356,7 +356,7 @@ const liveStrings = {
 
     M21: "radio value",
     M22: "dice",
-    M23: "minus",
+    M23: "repeat",
 
     A8: "LED",
 

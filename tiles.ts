@@ -103,7 +103,7 @@ namespace microcode {
     export const TID_MODIFIER_CUP_Z_READ = "M20C"
     export const TID_MODIFIER_RADIO_VALUE = "M21"
     export const TID_MODIFIER_RANDOM_TOSS = "M22"
-    export const TID_MODIFIER_MINUS_OPERATOR = "M23"
+    export const TID_MODIFIER_LOOP = "M23"
 
     export const TID_MODIFIER_RGB_LED_COLOR_X = "A20_"
     export const TID_MODIFIER_RGB_LED_COLOR_1 = "A20_1"
@@ -137,15 +137,15 @@ namespace microcode {
             terminal: true,
         },
     }
-
     /*
-    const maxOneValueIn = {
+    const maxOneLoop = {
         maxCount: {
-            category: "value_in",
+            category: "loop",
             count: 1,
         },
     }
 
+ 
     const maxOneValueOut = {
         maxCount: {
             category: "value_out",
@@ -305,39 +305,36 @@ namespace microcode {
     // - speaker play
     // - switch page (micro:bit independent)
 
-    function addActuator(tid: string, allow: string, allow2: string = null) {
+    function addActuator(tid: string, allows: string[]) {
         const actuator = new ActuatorDefn(tid)
         actuator.constraints = {
             allow: {
-                categories: allow2 ? [allow, allow2] : [allow],
+                categories: allows,
             },
         }
         tilesDB.actuators[tid] = actuator
         return actuator
     }
 
-    const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, "page")
+    const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
     swtch.priority = 110
-    const paint = addActuator(TID_ACTUATOR_PAINT, "icon_editor")
+    const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
     paint.serviceClassName = "dotMatrix"
     paint.serviceCommand = jacs.CMD_SET_REG | 0x2
     paint.serviceInstanceIndex = 0
     paint.priority = 10
 
-    const radio_send = addActuator(
-        TID_ACTUATOR_RADIO_SEND,
+    const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
         "value_out",
-        "constant"
-    )
+        "constant",
+    ])
     radio_send.priority = 100
     radio_send.serviceClassName = "radio"
     radio_send.jdKind = JdKind.Radio
 
-    const radio_set_group = addActuator(
-        TID_ACTUATOR_RADIO_SET_GROUP,
-        "value_out",
-        "constant"
-    )
+    const radio_set_group = addActuator(TID_ACTUATOR_RADIO_SET_GROUP, [])
+    radio_set_group.constraints = {}
+    radio_set_group.constraints.only = ["constant"]
     radio_set_group.priority = 101
     radio_set_group.serviceClassName = "radio"
     radio_set_group.jdKind = JdKind.NumFmt
@@ -345,7 +342,7 @@ namespace microcode {
     radio_set_group.serviceCommand = jacs.CMD_SET_REG | 0x80
 
     function addAssign(tid: string, id: number) {
-        const theVar = addActuator(tid, "value_out", "constant")
+        const theVar = addActuator(tid, ["value_out", "constant"])
         theVar.jdParam = id
         theVar.jdKind = JdKind.Variable
         theVar.priority = 200 + id
@@ -355,11 +352,11 @@ namespace microcode {
     addAssign(TID_ACTUATOR_CUP_Y_ASSIGN, 1)
     addAssign(TID_ACTUATOR_CUP_Z_ASSIGN, 2)
 
-    const emoji = addActuator(TID_ACTUATOR_SPEAKER, "sound_emoji")
+    const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
     emoji.serviceClassName = "soundPlayer"
     emoji.serviceCommand = 0x80
-    emoji.serviceArgFromModifier = (x: string) => x || "hello"
     emoji.priority = 20
+    emoji.jdKind = JdKind.Sequence
 
     const emojis = [
         "giggle",
@@ -376,18 +373,21 @@ namespace microcode {
     const emoji_ms = [1478, 1233, 547, 4794, 1687, 1315, 8192, 2083, 6772, 2816]
     emojis.forEach((e, idx) => {
         const tid = "M19" + e
-        const emoji_mod = new ModifierDefn(tid, "sound_emoji", 10)
-        emoji_mod.constraints = terminal
+        const emoji_mod = new ModifierDefn(tid, e, 10)
         emoji_mod.jdParam = e
         emoji_mod.jdDuration = emoji_ms[idx]
+        emoji_mod.category = "sound_emoji"
         tilesDB.modifiers[tid] = emoji_mod
     })
+
+    emoji.jdParam = tilesDB.modifiers[TID_MODIFIER_EMOJI_GIGGLE]
 
     /*
     const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "music_editor")
     buzzer.serviceClassName = "buzzer"
     buzzer.serviceCommand = 0x80
     buzzer.priority = 30
+    buzzer.jdKind = JdKind.Sequence
     */
 
     const make_vals = (
@@ -442,14 +442,17 @@ namespace microcode {
     // addRGB(4, "teal", hex`00ffff`)
     // addRGB(4, "white", hex`ffffff`)
 
-    const rgbled = addActuator(TID_ACTUATOR_RGB_LED, "RGB LED", "rgb_led")
+    const rgbled = addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
     rgbled.priority = 500
     rgbled.serviceClassName = "led"
     rgbled.serviceCommand = jacs.CMD_SET_REG | 2
     rgbled.jdExternalClass = 0x1609d4f0
     rgbled.jdKind = JdKind.Sequence
-    rgbled.serviceArgFromModifier = (buf: Buffer) => {
-        if (!buf) buf = hex`2f2f2f`
+    rgbled.jdParam = tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_1]
+    
+    rgbled.serviceArgFromModifier = (mod: ModifierDefn) => {
+        let buf = mod.serviceCommandArg() as Buffer
+        if (!buf) return null
         let b = buf
         if (buf.length < numLeds * 3) {
             b = Buffer.create(numLeds * 3)
@@ -462,11 +465,9 @@ namespace microcode {
         return b
     }
 
-    const servoSetAngle = addActuator(
-        TID_MODIFIER_SERVO_SET_ANGLE,
-        "Servo",
-        "constant"
-    )
+    const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, [
+        "constant",
+    ])
     servoSetAngle.priority = 500
     servoSetAngle.serviceClassName = "servo"
     servoSetAngle.jdExternalClass = 0x12fc9103
@@ -496,8 +497,16 @@ namespace microcode {
     random_toss.priority = 70
     random_toss.constraints = {}
     random_toss.constraints.allow = { categories: ["constant"] }
+    random_toss.constraints.disallow = { categories: ["value_out"] }
 
-    const iconFieldEditor: FieldEditor = {
+    const loop = new ModifierDefn(TID_MODIFIER_LOOP, "loop", 10)
+    loop.jdKind = JdKind.Loop
+    tilesDB.modifiers[TID_MODIFIER_LOOP] = loop
+    loop.priority = 80
+    loop.constraints = {}
+    loop.constraints.only = ["constant"]
+
+    export const iconFieldEditor: FieldEditor = {
         init: img`
         . . . . .
         . 1 . 1 .
@@ -531,8 +540,10 @@ namespace microcode {
 
     class IconEditor extends ModifierDefn {
         field: Image
+        firstInstance: boolean
         constructor(field: Image = null) {
             super(TID_MODIFIER_ICON_EDITOR, "icon_editor", 10)
+            this.firstInstance = false
             this.fieldEditor = iconFieldEditor
             if (field) this.field = field.clone()
             else this.field = this.fieldEditor.clone(this.fieldEditor.init)
@@ -542,8 +553,10 @@ namespace microcode {
             return this.field
         }
 
-        getIcon(): Image {
-            return this.fieldEditor.toImage(this.field)
+        getIcon(): string | Image {
+            return this.firstInstance
+                ? TID_MODIFIER_ICON_EDITOR
+                : this.fieldEditor.toImage(this.field)
         }
 
         getNewInstance(field: any = null) {
@@ -563,7 +576,9 @@ namespace microcode {
         }
     }
 
-    tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = new IconEditor()
+    const iconEditorTile = new IconEditor()
+    iconEditorTile.firstInstance = true
+    tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = iconEditorTile
 
     export type NoteField = { note: number }
     const musicFieldEditor: FieldEditor = {

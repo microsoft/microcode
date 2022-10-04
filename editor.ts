@@ -727,6 +727,24 @@ namespace microcode {
                 }
                 this.page.changed()
             }
+            const newFieldEditor = (tile: TileDefn) => {
+                const newOne = tile.getNewInstance()
+                const fieldEditor = newOne.fieldEditor
+                this.editor.captureBackground()
+                fieldEditor.editor(
+                    newOne.getField(),
+                    this.editor.picker,
+                    () => {
+                        this.editor.releaseBackground()
+                        if (index >= ruleTiles.length) {
+                            ruleTiles.push(newOne)
+                        } else {
+                            ruleTiles[index] = newOne
+                        }
+                        tileUpdated()
+                    }
+                )
+            }
             if (index < ruleTiles.length) {
                 const theOne = ruleTiles[index]
                 const fieldEditor = theOne.fieldEditor
@@ -760,22 +778,7 @@ namespace microcode {
                     index > 0 && ruleTiles[index - 1].fieldEditor // this is a hack to use the value from previous
                         ? ruleTiles[index - 1] // field editor (should really check they are the same)
                         : suggestions[0]
-                const newOne = theOne.getNewInstance()
-                const fieldEditor = newOne.fieldEditor
-                this.editor.captureBackground()
-                fieldEditor.editor(
-                    newOne.getField(),
-                    this.editor.picker,
-                    () => {
-                        this.editor.releaseBackground()
-                        if (index >= ruleTiles.length) {
-                            ruleTiles.push(newOne)
-                        } else {
-                            ruleTiles[index] = newOne
-                        }
-                        tileUpdated()
-                    }
-                )
+                newFieldEditor(theOne)
                 return
             }
             let onDelete = undefined
@@ -791,12 +794,20 @@ namespace microcode {
                     title: accessibility.ariaToTooltip(name),
                     navigator: () => new SimpleGridNavigator(),
                     onClick: id => {
-                        // get from the database
-                        const newOne = tilesDB[name][id].getNewInstance()
-                        if (index >= ruleTiles.length) {
-                            ruleTiles.push(newOne)
+                        let theOne = tilesDB[name][id]
+                        if (theOne.fieldEditor) {
+                            // there is more work to do                l
+                            theOne =
+                                index > 0 && ruleTiles[index - 1].fieldEditor // this is a hack to use the value from previous
+                                    ? ruleTiles[index - 1] // field editor (should really check they are the same)
+                                    : theOne
+                            newFieldEditor(theOne)
                         } else {
-                            ruleTiles[index] = newOne
+                            if (index >= ruleTiles.length) {
+                                ruleTiles.push(theOne)
+                            } else {
+                                ruleTiles[index] = theOne
+                            }
                         }
                         tileUpdated()
                     },

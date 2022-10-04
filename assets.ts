@@ -22,7 +22,6 @@ namespace microcode {
             // editor icons
             this.reg["delete"] = icondb.btn_delete
             this.reg["plus"] = icondb.btn_plus
-            this.reg["reset"] = icondb.btn_play
             this.reg["when_insertion_point"] = icondb.btn_when_insertion_point
             this.reg["do_insertion_point"] = icondb.btn_do_insertion_point
             this.reg["rule_arrow"] = icondb.rule_arrow
@@ -51,9 +50,6 @@ namespace microcode {
             this.reg["hot_potato"] = icondb.sampleHotPotato
             this.reg["clap_lights"] = icondb.sampleClapLights
             this.reg["railroad_crossing"] = icondb.sampleRailCrossingLight
-
-            // special icons
-            this.reg["plus_operator"] = icondb.plus_operator
 
             // sensors
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
@@ -101,9 +97,10 @@ namespace microcode {
             this.reg[TID_ACTUATOR_CUP_Z_ASSIGN] = icondb.cupZassign
 
             // modifiers
-            // value producers that are also consumers
+            TID_MODIFIER_ICON_EDITOR
+            this.reg[TID_MODIFIER_ICON_EDITOR] = icondb.iconEditor
             this.reg[TID_MODIFIER_RANDOM_TOSS] = icondb.diceToss
-            this.reg[TID_MODIFIER_MINUS_OPERATOR] = icondb.minus_operator
+            this.reg[TID_MODIFIER_LOOP] = icondb.loop
 
             this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
             this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
@@ -233,6 +230,16 @@ function scaleUp(led55: Image) {
 }
 
 namespace icondb {
+    export const iconEditor = scaleUp(
+        img`
+        . . . . .
+        . 1 . 1 .
+        . . . . . 
+        1 . . . 1
+        . 1 1 1 .
+        `
+    )
+
     export const MISSING = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -293,24 +300,6 @@ namespace icondb {
     ///
     /// BUTTON ICONS
     ///
-    export const btn_play = img`
-    . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . .
-    . . . . . . . 1 . . . . . . . .
-    . . . . . . . 1 1 . . . . . . .
-    . . . . . 1 1 1 1 1 . . . . . .
-    . . . . 1 1 7 1 1 7 . . . . . .
-    . . . 1 1 7 6 1 7 6 . . . . . .
-    . . . 1 7 6 . 7 6 . . . . . . .
-    . . . 1 7 . . 6 . . 1 7 . . . .
-    . . . 1 7 . . . . . 1 7 . . . .
-    . . . 1 1 7 . . . 1 1 7 . . . .
-    . . . 6 1 1 1 1 1 1 7 6 . . . .
-    . . . . 6 7 7 7 7 7 6 . . . . .
-    . . . . . 6 6 6 6 6 . . . . . .
-    . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . .
-    `
     export const btn_stop = img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -368,43 +357,23 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
     `
 
-    export const minus_operator = img`
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . c c c c c c c c c . .
-    . . c c c c c c c c c . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-`
-
-    export const plus_operator = img`
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . c c c . . . . .
-    . . . . . c c c . . . . .
-    . . . . . c c c . . . . .
-    . . c c c c c c c c c . .
-    . . c c c c c c c c c . .
-    . . . . . c c c . . . . .
-    . . . . . c c c . . . . .
-    . . . . . c c c . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-    . . . . . . . . . . . . .
-`
+    export const loop = img`
+    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+    4 4 4 4 4 4 4 1 4 4 4 4 4 4 4 4
+    4 4 4 4 4 4 1 1 4 4 4 4 4 4 4 4
+    4 4 4 4 4 1 1 1 1 1 4 4 4 4 4 4
+    4 4 4 4 4 c 1 1 c 1 1 4 4 4 4 4
+    4 4 4 4 4 f c 1 f c 1 1 4 4 4 4
+    4 4 4 4 4 4 f c 4 f c 1 4 4 4 4
+    4 4 4 4 4 4 4 f 4 4 c 1 4 4 4 4
+    4 4 4 4 4 4 4 4 4 4 c 1 4 4 4 4
+    4 4 4 4 4 4 4 4 4 c 1 1 4 4 4 4
+    4 4 4 4 4 4 1 1 1 1 1 f 4 4 4 4
+    4 4 4 4 4 4 c c c c f 4 4 4 4 4
+    4 4 4 4 4 4 f f f f 4 4 4 4 4 4
+    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4  `
 
     export const btn_when_insertion_point = img`
     dddddddddddddddddd
