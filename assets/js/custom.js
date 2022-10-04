@@ -658,7 +658,7 @@ addSimMessageHandler("analytics", buf => {
     const properties = msg.data || {}
     properties["version"] = document.body.dataset.version
     if (msg.type === "event") {
-        console.debug(msg.msg, { properties })
+        //console.debug(msg.msg, { properties })
         appInsights.trackEvent({
             name: msg.msg,
             properties,

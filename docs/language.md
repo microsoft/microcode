@@ -118,6 +118,17 @@ Sequences of numeric parameters are summed, as before, allowing the construction
 
 ![command tiles in do section](./images/doDialog.jpg){:class="screenshot"}
 
+###  ![repeat](./images/generated/icon_M23.png){:class="icon"} `repeat` (loops) {#loops}
+
+A ![repeat](./images/generated/icon_M23.png){:class="icon"} `repeat` tile
+can be added to certain commands to repeat the entire **DO** section. The value tiles
+after `repeat` determine the number of iterations.
+
+![when touch logo, print happy on screen](./images/generated/sample_pet_hamster_page_1_rule_2.png){:class="rule"}
+
+-   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![logo](./images/generated/icon_F7.png){:class="icon"} micro:bit logo, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with happy animation and ![repeat](./images/generated/icon_M23.png){:class="icon"} repeat ![value 3](./images/generated/icon_M8.png){:class="icon"} 3 times.
+
+
 ### Constructing numbers
 
 For commands that expect a numeric value (![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send`, ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable`), a variety of tiles are available
@@ -126,7 +137,7 @@ For commands that expect a numeric value (![radio send](./images/generated/icon_
 -   the **values of variables** ![out of variable X](./images/generated/icon_S9A.png){:class="icon"} `X`, `Y`, and `Z`
 -   a ![dice](./images/generated/icon_M22.png){:class="icon"} **random number generator** yields a random integer between `1` and `5` (inclusive) by default
 
-## Jacdac Modules {#jacdac}
+## Accessories (Jacdac Modules) {#jacdac}
 
 MicroCode will detect [Jacdac](https://aka.ms/jacdac) module and automatically display tiles for some of them.
 
