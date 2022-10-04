@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // track connection state and update button
         bus.on(jacdac.CONNECTION_STATE, refreshUI)
         bus.on(jacdac.ERROR, e => {
-            appInsights?.trackException(e)
+            appInsights?.trackException({ exception: e })
         
             const code = e.code
             switch (code) {
