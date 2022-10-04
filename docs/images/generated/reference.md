@@ -10,11 +10,6 @@
 - icon
 
 
-### ![reset](./images/generated/icon_reset.png){:class="icon"} `reset` {#icon_reset}
-
-- icon
-
-
 ### ![when insertion point](./images/generated/icon_when_insertion_point.png){:class="icon"} `when insertion point` {#icon_when_insertion_point}
 
 - icon
@@ -121,11 +116,6 @@
 
 
 ### ![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon"} `railroad crossing` {#icon_railroad_crossing}
-
-- icon
-
-
-### ![plus operator](./images/generated/icon_plus_operator.png){:class="icon"} `plus operator` {#icon_plus_operator}
 
 - icon
 
@@ -320,12 +310,17 @@
 - icon
 
 
+### ![LED](./images/generated/icon_M15.png){:class="icon"} `LED` {#icon_M15}
+
+- icon
+
+
 ### ![dice](./images/generated/icon_M22.png){:class="icon"} `dice` {#icon_M22}
 
 - icon
 
 
-### ![minus](./images/generated/icon_M23.png){:class="icon"} `minus` {#icon_M23}
+### ![repeat](./images/generated/icon_M23.png){:class="icon"} `repeat` {#icon_M23}
 
 - icon
 
