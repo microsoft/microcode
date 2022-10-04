@@ -3,17 +3,69 @@ namespace jacs {
         return 8 << (fmt & 0b11)
     }
 
-    let getbyte: () => number
     let resolver: InstrArgResolver
+    let jmpoff: number
+
+    class OpTree {
+        args: OpTree[]
+        arg: number
+        constructor(public opcode: number) {}
+    }
 
     export function stringifyInstr(
         getbyte0: () => number,
         resolver0?: InstrArgResolver
     ) {
-        resolver = resolver0
-        getbyte = getbyte0
+        let off = 0
+        jmpoff = NaN
 
-        let res = "    " + doOp()
+        function getbyte() {
+            off++
+            return getbyte0()
+        }
+
+        function decodeInt() {
+            const v = getbyte()
+            if (v < 0xf8) return v
+
+            let r = 0
+            const n = !!(v & 4)
+            const len = (v & 3) + 1
+
+            for (let i = 0; i < len; ++i) {
+                const v = getbyte()
+                r = r << 8
+                r |= v
+            }
+
+            return n ? -r : r
+        }
+
+        resolver = resolver0
+
+        const stack: OpTree[] = []
+
+        for (;;) {
+            const op = getbyte()
+            if (op == 0 && off == 1) return "          .fill 0x00"
+            const e = new OpTree(op)
+            if (opTakesNumber(op)) {
+                if (resolver && resolver.resolverPC)
+                    jmpoff = resolver.resolverPC + off - 1
+                e.arg = decodeInt()
+            }
+            let n = opNumRealArgs(op)
+            if (n) {
+                if (stack.length < n) return "???oops stack underflow"
+                e.args = stack.slice(stack.length - n)
+                while (n--) stack.pop()
+            }
+            stack.push(e)
+            if (opIsStmt(op)) break
+        }
+        if (stack.length != 1) return "???oops bad stack: " + stack.length
+
+        let res = "    " + stringifyExpr(stack[0])
 
         if (resolver) {
             const pc = resolver.resolverPC
@@ -22,8 +74,7 @@ namespace jacs {
 
         return res
     }
-
-    function expandFmt(takesNumber: boolean, fmt: string) {
+    function expandFmt(fmt: string, t: OpTree) {
         let ptr = 0
         let beg = 0
         let r = ""
@@ -39,12 +90,14 @@ namespace jacs {
 
             let e: string
             let eNum: number = null
-            if (takesNumber) {
-                takesNumber = false
-                eNum = decodeInt()
+
+            if (t.arg != undefined) {
+                eNum = t.arg
                 e = eNum + ""
+                t.arg = undefined
             } else {
-                e = stringifyExpr()
+                if (!t.args || !t.args.length) e = "???oops"
+                else e = stringifyExpr(t.args.shift())
                 if (isNumber(e)) eNum = +e
             }
 
@@ -81,18 +134,9 @@ namespace jacs {
         return r
     }
 
-    function doOp() {
-        const op = getbyte()
-        const fmt = STMT_PRINT_FMTS[op]
-        if (!fmt) return `?stmt${op}?`
-        return expandFmt(stmtTakesNumber(op), fmt)
-    }
-
     function jmpOffset(off: number) {
         const offs = (off >= 0 ? "+" : "") + off
-        return resolver && resolver.resolverPC
-            ? resolver.resolverPC + off + (" (" + offs + ")")
-            : offs
+        return isNaN(jmpoff) ? offs : jmpoff + off + (" (" + offs + ")")
     }
 
     function isNumber(s: string) {
@@ -130,30 +174,16 @@ namespace jacs {
         else return ` callop=${op}`
     }
 
-    function decodeInt() {
-        const v = getbyte()
-        if (v < 0xf8) return v
+    function stringifyExpr(t: OpTree): string {
+        const op = t.opcode
 
-        let r = 0
-        const n = !!(v & 4)
-        const len = (v & 3) + 1
+        if (op >= BinFmt.DIRECT_CONST_OP)
+            return (
+                "" + (op - BinFmt.DIRECT_CONST_OP - BinFmt.DIRECT_CONST_OFFSET)
+            )
 
-        for (let i = 0; i < len; ++i) {
-            const v = getbyte()
-            r = r << 8
-            r |= v
-        }
-
-        return n ? -r : r
-    }
-
-    function stringifyExpr(): string {
-        const op = getbyte()
-
-        if (op >= 0x80) return "" + (op - 0x80 - 16)
-
-        const fmt = EXPR_PRINT_FMTS[op]
-        if (!fmt) return `?expr${op}?`
-        return expandFmt(exprTakesNumber(op), fmt)
+        const fmt = OP_PRINT_FMTS[op]
+        if (!fmt) return `???oops op${op}`
+        return expandFmt(fmt, t)
     }
 }
