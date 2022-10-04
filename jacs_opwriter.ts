@@ -391,6 +391,8 @@ namespace jacs {
             if (cond) cond.adopt()
             this.spillAllStateful()
 
+            if (cond) this.writeValue(cond)
+
             const off0 = this.location()
             this.writeByte(cond ? Op.STMTx1_JMP_Z : Op.STMTx_JMP)
 
@@ -401,8 +403,6 @@ namespace jacs {
                 label.uses.push(off0)
                 this.writeInt(0x1000)
             }
-
-            if (cond) this.writeValue(cond)
         }
 
         private oops(msg: string) {
@@ -532,16 +532,20 @@ namespace jacs {
             }
         }
 
-        private writeArgs(firstInt: boolean, args: Value[]) {
+        private writeArgs(op: Op, args: Value[]) {
             let i = 0
-            if (firstInt) {
-                assert(args[0].isLiteral)
-                this.writeInt(args[0].numValue)
-                i = 1
-            }
+            if (opTakesNumber(op)) i = 1
             while (i < args.length) {
                 this.writeValue(args[i])
                 i++
+            }
+            this.writeByte(op)
+            if (opTakesNumber(op)) {
+                assert(args[0].isLiteral)
+                const nval = args[0].numValue
+                if (op == Op.STMTx1_STORE_LOCAL && nval >= LOCAL_OFFSET)
+                    this.localOffsets.push(this.location())
+                this.writeInt(nval)
             }
         }
 
@@ -553,7 +557,7 @@ namespace jacs {
                 if ((q | 0) == q) {
                     const qq =
                         q + BinFmt.DIRECT_CONST_OFFSET + BinFmt.DIRECT_CONST_OP
-                    if (BinFmt.DIRECT_CONST_OP <= qq && qq <= 0xff)
+                    if (BinFmt.DIRECT_CONST_OFFSET <= qq && qq <= 0xff)
                         this.writeByte(qq)
                     else {
                         this.writeByte(Op.EXPRx_LITERAL)
@@ -574,23 +578,18 @@ namespace jacs {
                 this.writeInt(v.numValue)
                 if (v._cachedValue) v._cachedValue._decr()
             } else if (v.op >= 0x100) {
-                oops("this value can't be emitted")
+                oops("this value cannot be emitted: " + v.op.toString())
             } else {
-                this.writeByte(v.op)
-                this.writeArgs(opTakesNumber(v.op), v.args)
+                this.writeArgs(v.op, v.args)
             }
         }
 
         emitStmt(op: Op, args: Value[]) {
-            const n = opNumArgs(op)
-            if (n != args.length)
-                oops(`stmt ${op} requires ${n}; got ${args.length}`)
+            assert(opNumArgs(op) == args.length)
+            assert(opIsStmt(op))
             for (const a of args) a.adopt()
-            this.spillAllStateful()
-            this.writeByte(op)
-            if (op == Op.STMTx1_STORE_LOCAL && args[0].numValue >= LOCAL_OFFSET)
-                this.localOffsets.push(this.location())
-            this.writeArgs(opTakesNumber(op), args)
+            this.spillAllStateful() // this doesn't spill adopt()'ed Value's (our arguments)
+            this.writeArgs(op, args)
         }
     }
 

@@ -19,12 +19,12 @@ namespace jacs {
         let off = 0
         jmpoff = NaN
 
-        function getbyte() {
+        const getbyte = () => {
             off++
             return getbyte0()
         }
 
-        function decodeInt() {
+        const decodeInt = () => {
             const v = getbyte()
             if (v < 0xf8) return v
 
