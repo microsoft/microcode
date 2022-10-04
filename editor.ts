@@ -135,6 +135,12 @@ namespace microcode {
             btn.reportAria()
         }
 
+        public hoverCursorTo(btn: Button) {
+            const w = btn.xfrm.worldPos
+            this.cursor.setAriaContent(btn.ariaId, w)
+            btn.reportAria()
+        }
+
         private moveTo(target: Button) {
             if (target)
                 this.cursor.moveTo(
@@ -281,6 +287,13 @@ namespace microcode {
                 target.click()
             } else if (this.picker.visible) {
                 this.picker.hide()
+            }
+        }
+
+        protected handleMove(x: number, y: number) {
+            const target = this.cursor.navigator.screenToButton(x - 80, y - 60)
+            if (target) {
+                this.hoverCursorTo(target)
             }
         }
 
