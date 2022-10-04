@@ -316,6 +316,7 @@ const liveStrings = {
     A4: "music",
     A5: "screen",
     A6: "radio send",
+    A6A: "radio set group",
     A7: "random number",
 
     M1: "page 1",
@@ -648,3 +649,19 @@ ${jsg
     document.body.append(container)
     container.showModal()
 }
+
+addSimMessageHandler("analytics", buf => {
+    const msg = JSON.parse(uint8ArrayToString(buf))
+    const appInsights = window.appInsights
+    if (!appInsights) return
+
+    const properties = msg.data || {}
+    properties["version"] = document.body.dataset.version
+    if (msg.type === "event") {
+        console.debug(msg.msg, { properties })
+        appInsights.trackEvent({
+            name: msg.msg,
+            properties,
+        })
+    }
+})

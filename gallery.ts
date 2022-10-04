@@ -26,6 +26,9 @@ namespace microcode {
                         x: x + 16,
                         y: y + 16,
                         onClick: () => {
+                            reportEvent("samples.open", {
+                                name: sample.label,
+                            })
                             settings.writeString(SAVESLOT_AUTO, sample.source)
                             this.app.popScene()
                             this.app.pushScene(new Editor(this.app))

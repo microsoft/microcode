@@ -75,21 +75,11 @@ namespace microcode {
             this.reg[TID_FILTER_TIMESPAN_VERY_LONG] =
                 icondb.tile_timespan_fiveSeconds
             this.reg[TID_FILTER_TIMESPAN_RANDOM] = icondb.tile_timespan_random
-            this.reg[TID_FILTER_COIN_1] = Options.coins
-                ? icondb.tile_coin_1
-                : icondb.blocks1
-            this.reg[TID_FILTER_COIN_2] = Options.coins
-                ? icondb.tile_coin_2
-                : icondb.blocks2
-            this.reg[TID_FILTER_COIN_3] = Options.coins
-                ? icondb.tile_coin_3
-                : icondb.blocks3
-            this.reg[TID_FILTER_COIN_4] = Options.coins
-                ? icondb.tile_coin_4
-                : icondb.blocks4
-            this.reg[TID_FILTER_COIN_5] = Options.coins
-                ? icondb.tile_coin_5
-                : icondb.blocks5
+            this.reg[TID_FILTER_COIN_1] = icondb.blocks1
+            this.reg[TID_FILTER_COIN_2] = icondb.blocks2
+            this.reg[TID_FILTER_COIN_3] = icondb.blocks3
+            this.reg[TID_FILTER_COIN_4] = icondb.blocks4
+            this.reg[TID_FILTER_COIN_5] = icondb.blocks5
             this.reg[TID_FILTER_LOUD] = icondb.speaker
             this.reg[TID_FILTER_QUIET] = icondb.speakerQuiet
 
@@ -118,21 +108,11 @@ namespace microcode {
             this.reg[TID_MODIFIER_PAGE_4] = icondb.tile_page_4
             this.reg[TID_MODIFIER_PAGE_5] = icondb.tile_page_5
 
-            this.reg[TID_MODIFIER_COIN_1] = Options.coins
-                ? icondb.tile_coin_1
-                : icondb.blocks1
-            this.reg[TID_MODIFIER_COIN_2] = Options.coins
-                ? icondb.tile_coin_2
-                : icondb.blocks2
-            this.reg[TID_MODIFIER_COIN_3] = Options.coins
-                ? icondb.tile_coin_3
-                : icondb.blocks3
-            this.reg[TID_MODIFIER_COIN_4] = Options.coins
-                ? icondb.tile_coin_4
-                : icondb.blocks4
-            this.reg[TID_MODIFIER_COIN_5] = Options.coins
-                ? icondb.tile_coin_5
-                : icondb.blocks5
+            this.reg[TID_MODIFIER_COIN_1] = icondb.blocks1
+            this.reg[TID_MODIFIER_COIN_2] = icondb.blocks2
+            this.reg[TID_MODIFIER_COIN_3] = icondb.blocks3
+            this.reg[TID_MODIFIER_COIN_4] = icondb.blocks4
+            this.reg[TID_MODIFIER_COIN_5] = icondb.blocks5
 
             this.reg[TID_MODIFIER_RGB_LED_COLOR_1] = icondb.tile_color_red
             this.reg[TID_MODIFIER_RGB_LED_COLOR_2] = icondb.tile_color_green
@@ -1064,6 +1044,7 @@ namespace icondb {
     . . . . . . . . . . . . . . . .
     `
 
+    /*
     export const tile_coin_1 = img`
     . . . . . . . . . . . . . . . .
     . . . . . 4 4 4 4 4 . . . . . .
@@ -1155,6 +1136,7 @@ namespace icondb {
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
+*/
 
     export const rgbLed = img`
     . . . . f f f f f f f . . . . . 

@@ -48,7 +48,7 @@ namespace accessibility {
         S6: "temperature",
         S7: "radio receive",
         S8: "hear",
-        rule: "rule",
+        rule: "when",
         add_rule: "add rule",
 
         // filters for TID_SENSOR_PRESS

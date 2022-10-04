@@ -10,7 +10,12 @@ namespace microcode {
         }
 
         protected moveCursor(dir: CursorDir) {
-            this.moveTo(this.cursor.move(dir))
+            try {
+                this.moveTo(this.cursor.move(dir))
+            } catch (e) {
+                if (e.kind === "back_button") this.back()
+                else throw e
+            }
         }
 
         protected moveTo(target: Button) {
@@ -57,21 +62,20 @@ namespace microcode {
                 controller.A.id + keymap.PLAYER_OFFSET,
                 click
             )
-
-            // back
-            const back = () => {
-                if (!this.cursor.cancel()) this.moveCursor(CursorDir.Back)
-            }
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.B.id,
-                back
+                () => this.back()
             )
 
             this.cursor = new Cursor()
             this.picker = new Picker(this.cursor)
             this.navigator = new RowNavigator()
             this.cursor.navigator = this.navigator
+        }
+
+        back() {
+            if (!this.cursor.cancel()) this.moveCursor(CursorDir.Back)
         }
 
         protected handleClick(x: number, y: number) {

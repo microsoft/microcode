@@ -3,6 +3,18 @@
 
 @import "{{ site.theme }}";
 
+/**
+ * Disable smooth scrolling when users have prefers-reduced-motion enabled
+ */
+html {
+    scroll-behavior: smooth;
+}
+@media screen and (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 img.pixels {
     image-rendering: pixelated;
 }
@@ -15,7 +27,8 @@ img.icon {
     margin-bottom: 0.25rem;
 }
 p img.icon,
-li img.icon {
+li img.icon,
+h4 img.icon {
     width: 1.5rem;
     min-width: unset;
 }
@@ -29,7 +42,8 @@ img.icon-sample {
     margin-bottom: 0.25rem;
 }
 
-img.sample {
+img.sample,
+img.rule {
     image-rendering: pixelated;
     width: max(22rem, 60%);
     margin-bottom: 0.25rem;

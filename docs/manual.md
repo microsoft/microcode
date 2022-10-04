@@ -7,6 +7,9 @@ Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 {% include youtube.html id="ymP7x8GXgz4" %}
 
 -   Kid-friendly icon-based code editor and programming language
+
+![Smiley Buttons MicroCode program](./images/generated/sample_smiley_buttons.png){:class="sample"}
+
 -   Runs on the micro:bit V2 or in web browser
 -   Keyboard, mouse, touch, screen reader accessible
 -   Accessories (LEDs, motors, ...) supported via [Jacdac](https://aka.ms/jacdac)
@@ -21,8 +24,8 @@ There are two ways to run MicroCode:
 See below for more information about the MicroCode web app, and how to deploy MicroCode to the micro:bit V2. Regardless of which way you run MicroCode, you will probably want to know a little bit about
 MicroCode's:
 
--   [![press image](./images/generated/icon_S2.png){:class="icon"}](./language) [icon-based language](./language)
--   [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon"}](./samples) [samples](./samples)
+-   [![press image](./images/generated/icon_S2.png){:class="icon"}](./language) [language reference](./language)
+-   [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon"}](./samples) [Samples](./samples)
 -   ![emoji hello](./images/generated/icon_M19hello.png){:class="icon"} [FAQ](./faq.md)
 
 ## [Web editor](https://aka.ms/m9)
@@ -51,9 +54,11 @@ We want to make the editor as accessible as possible; please send us suggestions
 
 MicroCode can be accessed with the keyboard:
 
--   Arrow keys for D-pad
+-   Arrow keys to move cursor
 -   `Enter` or `Space` for `A` button
 -   `Backspace` for `B` button
+-   Keep moving the cursor `Up` to go back a screen, if `Backspace` is not available;
+for example, if you are using a 5-input switch panel.
 
 #### Gamepad support
 
@@ -79,6 +84,9 @@ Click on the version number in the web app to download the MicroCode hex file to
 
 The MicroCode app has a set of [samples](./samples) built-in. Select the samples button on the MicroCode home page (see below) to reveal
 the gallery of samples.
+
+[![new program](./images/generated/icon_new_program.png){:class="icon-sample"}](./samples#first-program) [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"}](./samples#flashing-heart) [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"}](./samples#smiley-buttons) [![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"}](./samples#pet-hamster) [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"}](./samples#rock-paper-scissors) [![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"}](./samples#hot-potato) [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"}](./samples#clap-lights) [![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"}](./samples#chuck-a-duck) [![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon-sample"}](./samples#firefly) [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon-sample"}](./samples#railroad-crossing)
+
 
 ![MicroCode sample programs](./images/microCodeVideo.gif){:class="screenshot"}
 

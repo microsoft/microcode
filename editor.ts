@@ -31,7 +31,7 @@ namespace microcode {
         private progdef: ProgramDefn
         private currPage: number
         private pageBtn: Button
-        private pageEditor: PageEditor
+        public pageEditor: PageEditor
         public cursor: Cursor
         private _changed: boolean
         private hudroot: Placeable
@@ -144,8 +144,12 @@ namespace microcode {
                 )
         }
         private scrollAndMove(dir: CursorDir) {
-            const target = this.cursor.move(dir)
-            this.scrollAndMoveButton(target)
+            try {
+                const target = this.cursor.move(dir)
+                this.scrollAndMoveButton(target)
+            } catch (e) {
+                this.back()
+            }
         }
 
         private scrollAndMoveButton(target: Button) {
@@ -198,10 +202,6 @@ namespace microcode {
                 control.onEvent(ControllerButtonEvent.Pressed, id, () =>
                     this.scrollAndMove(dir)
                 )
-                if (Options.repeatKey)
-                    control.onEvent(ControllerButtonEvent.Repeated, id, () =>
-                        this.scrollAndMove(dir)
-                    )
             }
 
             super.startup()
@@ -229,24 +229,11 @@ namespace microcode {
                 controller.A.id + keymap.PLAYER_OFFSET,
                 forward
             )
-            
-            const back = () => {
-                if (!this.cursor.cancel()) {
-                    if (this.navigator.getRow() == 0) {
-                        this.app.popScene()
-                        this.app.pushScene(new Home(this.app))
-                    } else {
-                        if (this.navigator.atRuleStart()) {
-                            const target = this.navigator.initialCursor(0, 0)
-                            this.moveTo(target)
-                        } else this.scrollAndMove(CursorDir.Back)
-                    }
-                }
-            }
+
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.B.id,
-                back
+                () => this.back()
             )
             this.hudroot = new Placeable()
             this.hudroot.xfrm.localPos = new Vec2(0, Screen.TOP_EDGE)
@@ -271,6 +258,20 @@ namespace microcode {
             })
             this.progdef = this.app.load(SAVESLOT_AUTO)
             if (!this.progdef) this.progdef = new ProgramDefn()
+        }
+
+        back() {
+            if (!this.cursor.cancel()) {
+                if (this.navigator.getRow() == 0) {
+                    this.app.popScene()
+                    this.app.pushScene(new Home(this.app))
+                } else {
+                    if (this.navigator.atRuleStart()) {
+                        const target = this.navigator.initialCursor(0, 0)
+                        this.moveTo(target)
+                    } else this.scrollAndMove(CursorDir.Back)
+                }
+            }
         }
 
         protected handleClick(x: number, y: number) {
@@ -387,7 +388,7 @@ namespace microcode {
 
     class PageEditor extends Component implements IPlaceable {
         private xfrm_: Affine
-        ruleEditors: RuleEditor[]
+        public ruleEditors: RuleEditor[]
 
         //% blockCombine block="xfrm" callInDebugger
         public get xfrm() {

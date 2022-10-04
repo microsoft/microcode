@@ -12,6 +12,8 @@ namespace microcode {
         constructor() {
             // One interval delay to ensure all static constructors have executed.
             setTimeout(() => {
+                reportEvent("app.start")
+
                 controller.setRepeatDefault(250, 30)
                 keymap.setupKeys()
                 icons.init()
@@ -35,8 +37,7 @@ namespace microcode {
                 progdef: progdef.toObj(),
             }
             const s = JSON.stringify(saved)
-            console.log(`save ${slot} (${s.length}c)`)
-            //console.log(s)
+            reportEvent("app.save", { slot: slot, size: s.length })
             settings.writeString(slot, s)
         }
 
