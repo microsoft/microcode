@@ -53,6 +53,7 @@ function makeCodeRun(options) {
             simUrl.searchParams.set("button-fill", "2d2d2d")
             simUrl.searchParams.set("text-color", "d9d9d9")
             simUrl.searchParams.set("pointer-events", "1")
+            simUrl.searchParams.set("hideSimButtons", "1")
             document
                 .getElementById("simframe")
                 .setAttribute("src", simUrl.toString())
