@@ -80,7 +80,7 @@ namespace microcode {
         }
 
         protected handleClick(x: number, y: number) {
-            const target = this.navigator.screenToButton(x - 80, y - 60)
+            const target = this.navigator.screenToButton(x - Screen.HALF_WIDTH, y - Screen.HALF_HEIGHT)
             if (target) {
                 this.moveTo(target)
                 target.click()
@@ -88,7 +88,7 @@ namespace microcode {
         }
 
         protected handleMove(x: number, y: number) {
-            const target = this.navigator.screenToButton(x - 80, y - 60)
+            const target = this.navigator.screenToButton(x - Screen.HALF_WIDTH, y - Screen.HALF_HEIGHT)
             if (target)
                 this.cursor.setAriaContent(target.ariaId, target.xfrm.worldPos)
         }
