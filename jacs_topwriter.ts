@@ -533,7 +533,7 @@ namespace jacs {
             rule: microcode.RuleDefn,
             delay: number,
             bufSize = 0,
-            shortCutFn = ""
+            shortCutFn?: string
         ) {
             let params = this.baseModifiers(rule).filter(
                 m => !!m.serviceCommandArg()
