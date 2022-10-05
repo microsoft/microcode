@@ -383,7 +383,8 @@
             src="./assets/js/custom.js?v={{ site.github.build_revision }}"
         ></script>
         <style>
-            body {
+            body,
+            dialog {
                 background: black;
                 color: white;
                 font-family: monospace;
@@ -441,9 +442,16 @@
             button:hover {
                 outline: solid 1px #fff;
             }
-            dialog button:focus,
-            dialog button:hover {
-                outline: solid 2px #000;
+            dialog img {
+                width: min(100%, 40vw);
+                image-rendering: pixelated;
+            }
+            dialog::backdrop {
+                background: rgba(50, 0, 50, 0.5);
+            }
+            dialog a {
+                color: #fff;
+                font-weight: bold;
             }
             #connectbtn {
                 position: absolute;
@@ -455,9 +463,6 @@
                 width: 4rem;
                 margin: 0;
                 padding: 0;
-            }
-            dialog::backdrop {
-                background: rgba(0, 0, 0, 0.8);
             }
             .art {
                 background-color: #333;
@@ -581,6 +586,11 @@
         </footer>
         <dialog id="connectDlg">
             <form method="dialog">
+                <img
+                    src="./assets/image_microcode.png"
+                    alt="MicroCode logo"
+                    loading="lazy"
+                />
                 <h3>
                     Program your micro:bit V2 with MicroCode!
                     <button>Close</button>
@@ -598,16 +608,22 @@
                         >
                         to the <code>MICROBIT</code> drive.
                     </li>
-                    <li>Wait for the micro:bit to restart</li>
+                    <li>Wait for the micro:bit to restart.</li>
                     <li>
                         <button id="webusbBtn">Connect</button>, choose "BBC
-                        micro:bit CMSIS-DAP" and press 'Connect' in the dialog.
+                        micro:bit CMSIS-DAP" and press "Connect" in the dialog.
                     </li>
+                    <li>Use the editor to bring the micro:bit to file!</li>
                 </ol>
             </form>
         </dialog>
         <dialog id="outdatedDlg">
             <form method="dialog">
+                <img
+                    src="./assets/image_microcode.png"
+                    alt="MicroCode logo"
+                    loading="lazy"
+                />
                 <h2>
                     You need to update MicroCode on your micro:bit!
                     <button>Close</button>

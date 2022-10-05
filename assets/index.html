@@ -323,7 +323,8 @@
         <script type="text/javascript" src="./js/loader.js"></script>
         <script type="text/javascript" src="./js/custom.js"></script>
         <style>
-            body {
+            body,
+            dialog {
                 background: black;
                 color: white;
                 font-family: monospace;
@@ -331,13 +332,45 @@
                 font-size: 14pt;
             }
 
+            .embed {
+                background: transparent;
+            }
+
             iframe {
                 position: absolute;
-                top: 0;
+                top: 0.5em;
                 left: 0;
                 width: 100%;
-                height: 100%;
+                height: calc(100% - 2.5em);
                 border: none;
+            }
+
+            .nofooter iframe {
+                height: 100%;
+            }
+
+            footer {
+                color: grey;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                left: 0;
+                z-index: 100;
+                text-align: center;
+                font-size: 1em;
+                margin-bottom: 0.25em;
+            }
+
+            footer a {
+                color: grey;
+            }
+            footer a.legal {
+                font-size: 0.6em;
+            }
+
+            .embed footer,
+            .embed footer a {
+                color: black;
             }
             button {
                 border: solid 2px #000;
@@ -349,37 +382,27 @@
             button:hover {
                 outline: solid 1px #fff;
             }
-            dialog button:focus,
-            dialog button:hover {
-                outline: solid 2px #000;
+            dialog img {
+                width: min(100%, 40vw);
+                image-rendering: pixelated;
             }
-            #simbtn {
-                position: absolute;
-                left: 0.25rem;
-                bottom: 0;
+            dialog::backdrop {
+                background: rgba(50, 0, 50, 0.5);
             }
-            #simbtn button {
-                color: white;
-                background: none;
-                border: none;
-                text-decoration: underline;
-                font-size: 14pt;
-            }
-            #simbtn a:visited {
-                color: white;
+            dialog a {
+                color: #fff;
+                font-weight: bold;
             }
             #connectbtn {
                 position: absolute;
                 right: 0.25rem;
                 bottom: 0.5rem;
+                border: none;
             }
             #connectbtn img {
                 width: 4rem;
                 margin: 0;
                 padding: 0;
-            }
-            dialog::backdrop {
-                background: rgba(0, 0, 0, 0.8);
             }
             .art {
                 background-color: #333;
@@ -397,12 +420,10 @@
                 background: #fff;
                 border: solid 1px #000;
             }
-
             .lds-ripple img {
                 width: 20vw;
                 image-rendering: pixelated;
             }
-
             .lds-ripple {
                 width: 80px;
                 height: 80px;
@@ -445,6 +466,10 @@
                     opacity: 0;
                 }
             }
+            #userguide {
+                color: #fff;
+                font-weight: bold;
+            }
         </style>
     </head>
 
@@ -479,6 +504,11 @@
         </script>
         <dialog id="connectDlg">
             <form method="dialog">
+                <img
+                    src="./image_microcode.png"
+                    alt="MicroCode logo"
+                    loading="lazy"
+                />
                 <h3>
                     Program your micro:bit V2 with MicroCode!
                     <button>Close</button>
@@ -499,7 +529,7 @@
                     <li>Wait for the micro:bit to restart</li>
                     <li>
                         <button id="webusbBtn">Connect</button>, choose "BBC
-                        micro:bit CMSIS-DAP" and press 'Connect' in the dialog.
+                        micro:bit CMSIS-DAP" and press "Connect" in the dialog.
                     </li>
                 </ol>
             </form>

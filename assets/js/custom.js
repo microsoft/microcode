@@ -67,6 +67,10 @@ function showOutdatedFirmwareDialog() {
     bus.disconnect()
 }
 
+function showConnectDialog() {
+    document.getElementById("connectDlg").showModal()
+}
+
 async function flashJacscriptServices(services, data) {
     for (const service of services) await flashJacscriptService(service, data)
 }
@@ -217,9 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         })
         bus.on(jacdac.SELF_ANNOUNCE, reportBus)
-        // connect must be triggered by a user interaction
-        connectEl.onclick = () =>
-            document.getElementById("connectDlg").showModal()
+        connectEl.onclick = showConnectDialog
 
         document.getElementById("webusbBtn").onclick = async () => bus.connect()
         document.getElementById("webusbBtn2").onclick = async () =>
@@ -229,6 +231,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         refreshUI()
         bus.autoConnect = true
+
+        setTimeout(() => { 
+            if (bus.connectionStatus === jacdac.DISCONNECTED)
+                showConnectDialog()
+        }, 1000)
     }
     document.body.append(script)
 })
