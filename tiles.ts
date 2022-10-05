@@ -112,6 +112,8 @@ namespace microcode {
     export const TID_MODIFIER_RGB_LED_COLOR_4 = "A20_4"
     export const TID_MODIFIER_RGB_LED_COLOR_5 = "A20_5"
     export const TID_MODIFIER_RGB_LED_COLOR_6 = "A20_6"
+    export const TID_MODIFIER_RGB_LED_COLOR_RAINBOW = "A20_rainbow"
+    export const TID_MODIFIER_RGB_LED_COLOR_SPARKLE = "A20_sparkle"
 
     export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
 
@@ -373,10 +375,9 @@ namespace microcode {
     const emoji_ms = [1478, 1233, 547, 4794, 1687, 1315, 8192, 2083, 6772, 2816]
     emojis.forEach((e, idx) => {
         const tid = "M19" + e
-        const emoji_mod = new ModifierDefn(tid, e, 10)
+        const emoji_mod = new ModifierDefn(tid, "sound_emoji", 10)
         emoji_mod.jdParam = e
         emoji_mod.jdDuration = emoji_ms[idx]
-        emoji_mod.category = "sound_emoji"
         tilesDB.modifiers[tid] = emoji_mod
     })
 
@@ -425,46 +426,39 @@ namespace microcode {
         m.jdKind = JdKind.Page
     })
 
-    const numLeds = 8
-    function addRGB(id: number, buf: Buffer) {
+    function addRGB(id: number, color: number) {
         const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
         const mod = new ModifierDefn(tid, "rgb_led", 10)
         tilesDB.modifiers[tid] = mod
-        mod.jdParam = buf
+        mod.jdExtFun = "led_solid"
+        mod.jdParam = color
     }
 
-    addRGB(1, hex`2f0000`)
-    addRGB(2, hex`002f00`)
-    addRGB(3, hex`00002f`)
-    addRGB(4, hex`2f002f`)
-    addRGB(5, hex`2f2f00`)
-    addRGB(6, hex`000000`)
-    // addRGB(4, "teal", hex`00ffff`)
-    // addRGB(4, "white", hex`ffffff`)
+    addRGB(1, 0x2f0000)
+    addRGB(2, 0x002f00)
+    addRGB(3, 0x00002f)
+    addRGB(4, 0x2f002f)
+    addRGB(5, 0x2f2f00)
+    addRGB(6, 0x000000)
+
+    function addAnim(name: string) {
+        const tid = TID_MODIFIER_RGB_LED_COLOR_X + name
+        const mod = new ModifierDefn(tid, "rgb_led", 11)
+        tilesDB.modifiers[tid] = mod
+        mod.jdExtFun = "led_anim_" + name
+    }
+
+    addAnim("sparkle")
+    addAnim("rainbow")
 
     const rgbled = addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
     rgbled.priority = 500
     rgbled.serviceClassName = "led"
     rgbled.serviceCommand = jacs.CMD_SET_REG | 2
     rgbled.jdExternalClass = 0x1609d4f0
-    rgbled.jdKind = JdKind.Sequence
-    rgbled.jdParam = tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_1]
+    rgbled.jdKind = JdKind.ExtLib
+    rgbled.jdParam = tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
     
-    rgbled.serviceArgFromModifier = (mod: ModifierDefn) => {
-        let buf = mod.serviceCommandArg() as Buffer
-        if (!buf) return null
-        let b = buf
-        if (buf.length < numLeds * 3) {
-            b = Buffer.create(numLeds * 3)
-            let ptr = 0
-            while (ptr < b.length) {
-                b.write(ptr, buf)
-                ptr += buf.length
-            }
-        }
-        return b
-    }
-
     const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, [
         "constant",
     ])

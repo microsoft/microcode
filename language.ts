@@ -46,6 +46,7 @@ namespace microcode {
         Sequence = 6,
         NumFmt = 7,
         Loop = 8,
+        ExtLib = 9,
     }
 
     export class TileDefn {
@@ -58,13 +59,14 @@ namespace microcode {
         constraints: Constraints
         fieldEditor: FieldEditor
         jdKind: JdKind
+        jdExtFun: string
         jdParam: any
         jdDuration: number
         jdExternalClass: number
 
         isVisible() {
             if (this.hidden) return false
-            if (this.jdExternalClass)
+            if (this.jdExternalClass && !jacs.debugOut)
                 return jdc.numServiceInstances(this.jdExternalClass) > 0
             return true
         }
@@ -222,7 +224,6 @@ namespace microcode {
         public serviceClassName: string
         public serviceCommand: number
         public serviceInstanceIndex: number = 0
-        public serviceArgFromModifier: (mod: ModifierDefn) => string | Buffer
 
         constructor(tid: string) {
             super(TileType.ACTUATOR, tid)

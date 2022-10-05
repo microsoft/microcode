@@ -161,9 +161,9 @@ namespace jacs {
         private lineNoStart = -1
         desc = Buffer.create(BinFmt.FUNCTION_HEADER_SIZE)
         offsetInFuncs = -1
-        private maxRegs = 0
         srcmap: number[] = []
         private nameIdx: number
+        external = false
 
         constructor(
             private prog: TopOpWriter,
@@ -185,16 +185,26 @@ namespace jacs {
             return this.binary.slice(0, this.binPtr)
         }
 
+        setExternal(fullbody: Buffer) {
+            const body = fullbody.slice(BinFmt.FUNCTION_HEADER_SIZE)
+            this.desc.write(0, fullbody)
+            this.external = true
+            this.binary = body
+            this.binPtr = this.binary.length
+            return body
+        }
+
         finalizeDesc(off: number, numlocals: number, numargs: number) {
             const flags = 0
-            const buf = Buffer.create(4 * 4)
+            const buf = this.desc
             write32(buf, 0, off)
             write32(buf, 4, this.location())
-            write16(buf, 8, numlocals + this.cachedValues.length)
-            buf[10] = this.maxRegs | (numargs << 4)
-            buf[11] = flags
+            if (!this.external) {
+                write16(buf, 8, numlocals + this.cachedValues.length)
+                buf[10] = numargs
+                buf[11] = flags
+            }
             write16(buf, 12, this.nameIdx)
-            this.desc.write(0, buf)
         }
 
         emitDbg(msg: string) {
@@ -276,7 +286,9 @@ namespace jacs {
         }
 
         emitCall(procIdx: number, args: CachedValue[], op = OpCall.SYNC) {
-            const proc = literal(procIdx)
+            const proc = this.emitExpr(Op.EXPRx_STATIC_FUNCTION, [
+                literal(procIdx),
+            ])
             const localidx = literal(args[0] ? args[0].index : 0)
             const numargs = literal(args.length)
 
@@ -565,6 +577,8 @@ namespace jacs {
                     }
                 } else if (isNaN(q)) {
                     this.writeByte(Op.EXPR0_NAN)
+                } else if (q == null) {
+                    this.writeByte(Op.EXPR0_NULL)
                 } else {
                     const idx = this.prog.addFloat(q)
                     this.writeByte(Op.EXPRx_LITERAL_F64)

@@ -1,5 +1,5 @@
 namespace jacs {
-    let debugOut = false
+    export let debugOut = true
 
     export function addUnique<T>(arr: T[], v: T) {
         let idx = arr.indexOf(v)
@@ -32,7 +32,7 @@ namespace jacs {
         }
     }
 
-    class Procedure {
+    export class Procedure {
         writer: OpWriter
         locals: Variable[] = []
         params: Variable[] = []
@@ -149,9 +149,8 @@ namespace jacs {
         globals: Variable[] = []
         procs: Procedure[] = []
         roles: Role[] = []
+        roleLocks: Variable[] = []
         currPage: Variable
-        currAnimation: Variable
-        currMelody: Variable
         currRuleId = 0
         currPageId = 0
         pageProcs: Procedure[] = []
@@ -360,11 +359,19 @@ namespace jacs {
         private finalize() {
             for (const r of this.roles) r.finalize()
             this.withProcedure(this.mainProc, wr => {
+                for (const g of this.globals)
+                    if (g.name[0] == 'z' && g.name[1] == '_') {
+                        g.write(wr, literal(0))
+                    }
                 this.emitClearScreen()
                 wr.emitCall(this.pageProc(1).index, [])
                 wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
             })
             this.withProcedure(this.stopPage, wr => {
+                for (const v of this.roleLocks) {
+                    wr.emitStmt(Op.STMT1_TERMINATE_FIBER, [v.read(wr)])
+                    v.write(wr, literal(null))
+                }
                 wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
             })
             this.finalizePageProcs()
@@ -488,15 +495,43 @@ namespace jacs {
             wr.emitStmt(Op.STMT2_SET_PKT, [this.emitString(buf), literal(0)])
         }
 
+        private emitExtSequance(rule: microcode.RuleDefn) {
+            let params = this.baseModifiers(rule).filter(m => !!m.jdExtFun)
+            if (params.length == 0) {
+                const defl = rule.actuators[0].jdParam as microcode.ModifierDefn
+                if (defl instanceof microcode.ModifierDefn) params = [defl]
+                else throw "oops"
+            }
+
+            const wr = this.writer
+            const role = this.lookupActuatorRole(rule)
+            this.emitLockCode(role)
+            for (let i = 0; i < params.length; ++i) {
+                const proc = linkFunction(this, params[i].jdExtFun)
+                const hasArg = typeof params[i].jdParam == "number"
+                const args = wr.allocTmpLocals(hasArg ? 2 : 1)
+                args[0].store(role.emit(wr))
+                if (hasArg) args[1].store(literal(params[i].jdParam))
+                wr.emitCall(proc.index, args)
+            }
+        }
+
+        private emitLockCode(role: Role) {
+            const v = this.lookupGlobal(role.name + "_lock")
+            if (this.roleLocks.indexOf(v) < 0) this.roleLocks.push(v)
+            const wr = this.writer
+            wr.emitStmt(Op.STMT1_TERMINATE_FIBER, [v.read(wr)])
+            v.write(wr, wr.emitExpr(Op.EXPR1_GET_FIBER_HANDLE, [literal(null)]))
+        }
+
         private emitSequance(
             rule: microcode.RuleDefn,
-            lockvar: Variable,
             delay: number,
             bufSize = 0
         ) {
-            let fn = rule.actuators[0].serviceArgFromModifier
-            if (!fn) fn = x => x.serviceCommandArg()
-            let params = this.baseModifiers(rule).filter(m => !!fn(m))
+            let params = this.baseModifiers(rule).filter(
+                m => !!m.serviceCommandArg()
+            )
             if (params.length == 0) {
                 const defl = rule.actuators[0].jdParam as microcode.ModifierDefn
                 if (defl instanceof microcode.ModifierDefn) params = [defl]
@@ -507,23 +542,12 @@ namespace jacs {
             }
 
             const actuator = rule.actuators[0]
-            const wr = this.writer
-            if (lockvar) lockvar.write(wr, literal(this.currRuleId))
+            const role = this.lookupActuatorRole(rule)
+            this.emitLockCode(role)
             for (let i = 0; i < params.length; ++i) {
-                const role = this.lookupActuatorRole(rule)
-                this.emitLoadBuffer(fn(params[i]))
+                this.emitLoadBuffer(params[i].serviceCommandArg())
                 this.emitSendCmd(role, actuator.serviceCommand)
                 this.emitSleep(params[i].jdDuration || delay)
-                if (lockvar)
-                    wr.emitIf(
-                        wr.emitExpr(Op.EXPR2_NE, [
-                            lockvar.read(wr),
-                            literal(this.currRuleId),
-                        ]),
-                        () => {
-                            wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
-                        }
-                    )
             }
         }
 
@@ -534,7 +558,7 @@ namespace jacs {
         }
 
         private pipeVar(id: number) {
-            return this.lookupGlobal("pipe" + (id || 0))
+            return this.lookupGlobal("z_pipe" + (id || 0))
         }
 
         private pipeRole(id: number) {
@@ -560,7 +584,7 @@ namespace jacs {
                 case microcode.JdKind.Variable:
                     return this.pipeVar(mod.jdParam).read(wr)
                 case microcode.JdKind.Radio:
-                    return this.lookupGlobal("radio").read(wr)
+                    return this.lookupGlobal("z_radio").read(wr)
                 default:
                     this.error("can't emit kind: " + mod.jdKind)
                     return literal(0)
@@ -746,9 +770,9 @@ namespace jacs {
             if (actuator == null) return // do nothing
 
             if (actuator.tid == microcode.TID_ACTUATOR_PAINT) {
-                this.emitSequance(rule, this.currAnimation, 400, 5)
+                this.emitSequance(rule, 400, 5)
             } else if (actuator.tid == microcode.TID_ACTUATOR_MUSIC) {
-                this.emitSequance(rule, this.currMelody, 400, 6)
+                this.emitSequance(rule, 400, 6)
             } else if (actuator.tid == microcode.TID_ACTUATOR_SWITCH_PAGE) {
                 let targetPage = 1
                 for (const m of rule.modifiers)
@@ -774,7 +798,7 @@ namespace jacs {
                 const sz = bitSize(fmt) >> 3
                 wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
                 if (actuator.tid == microcode.TID_MODIFIER_SERVO_SET_ANGLE) {
-                    // TODO no module yet in Jacs
+                    // TODO no modulo yet in Jacs
                     // if (curr >= 12) { curr -= 12 }
                     wr.emitIf(
                         wr.emitExpr(Op.EXPR2_LE, [literal(12), currValue()]),
@@ -802,18 +826,10 @@ namespace jacs {
                     this.lookupActuatorRole(rule),
                     actuator.serviceCommand
                 )
-            } else if (
-                actuator.serviceArgFromModifier ||
-                actuator.jdKind == microcode.JdKind.Sequence
-            ) {
-                const role = this.lookupActuatorRole(rule)
-                this.emitSequance(
-                    rule,
-                    actuator.jdKind == microcode.JdKind.Sequence
-                        ? this.lookupGlobal("lock_" + role.name)
-                        : null,
-                    400
-                )
+            } else if (actuator.jdKind == microcode.JdKind.Sequence) {
+                this.emitSequance(rule, 400)
+            } else if (actuator.jdKind == microcode.JdKind.ExtLib) {
+                this.emitExtSequance(rule)
             } else {
                 this.error(`can't map act role for ${JSON.stringify(actuator)}`)
             }
@@ -870,7 +886,11 @@ namespace jacs {
         private terminateProc(proc: Procedure) {
             const wr = this.writer
             wr.emitStmt(Op.STMT1_TERMINATE_FIBER, [
-                wr.emitExpr(Op.EXPR1_GET_FIBER_HANDLE, [literal(proc.index)]),
+                wr.emitExpr(Op.EXPR1_GET_FIBER_HANDLE, [
+                    wr.emitExpr(Op.EXPRx_STATIC_FUNCTION, [
+                        literal(proc.index),
+                    ]),
+                ]),
             ])
         }
 
@@ -995,8 +1015,6 @@ namespace jacs {
 
         emitProgram(prog: microcode.ProgramDefn) {
             this.currPage = this.addGlobal("page")
-            this.currAnimation = this.addGlobal("anim")
-            this.currMelody = this.addGlobal("melody")
 
             this.pageStartCondition = this.addRole(
                 "pageStart",
