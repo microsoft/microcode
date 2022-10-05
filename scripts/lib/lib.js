@@ -58,11 +58,11 @@ function led_solid(/** @type LedRole */ led, color) {
 function led_anim_sparkle(/** @type LedRole */ led) {
     var numpix = led_setup_packet(led)
     var iter = 0
-    while (iter < 100) {
+    while (iter < 30) {
         packet.setLength(numpix * 3) // clears packet
         led_set_color(Math.randomInt(numpix - 1), 0xffffff)
         led.pixels.write(packet)
-        wait(0.1)
+        wait(0.06)
         iter = iter + 1
     }
 
@@ -79,8 +79,8 @@ function led_anim_rainbow(/** @type LedRole */ led) {
         var idx = 0
         while (idx < numpix) {
             var h = iter + idx
-            if (h > numpix) h = h - numpix
-            h = clamp(0, (h / numpix * 0x100) | 0, 0xff)
+            if (h >= numpix) h = h - numpix
+            h = clamp(0, Math.idiv(h << 8, numpix), 0xff)
             led_set_color(idx, hsv(h, 0xff, 0xff))
             idx = idx + 1
         }
