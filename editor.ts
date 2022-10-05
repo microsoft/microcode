@@ -11,6 +11,7 @@ namespace microcode {
                 x: number
                 y: number
                 onClick?: (button: Button) => void
+                countOverlay?: number
             }
         ) {
             super(opts)
@@ -685,6 +686,7 @@ namespace microcode {
                         ariaId: tile.tid,
                         x: 0,
                         y: 0,
+                        countOverlay: tile.getCountOverlay(),
                         onClick: () => this.editTile(name, index),
                     })
                     this.ruleButtons[name].push(button)

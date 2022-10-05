@@ -76,6 +76,7 @@ namespace microcode {
         private _ariaId: string
         public onClick?: (button: Button) => void
         private bounds_: Bounds
+        countOverlay: number
 
         //% blockCombine block="xfrm" callInDebugger
         public get xfrm() {
@@ -131,6 +132,7 @@ namespace microcode {
             ariaId?: string
             x: number
             y: number
+            countOverlay?: number
             onClick?: (button: Button) => void
         }) {
             super("button")
@@ -141,6 +143,7 @@ namespace microcode {
             this._ariaId = opts.ariaId
             this.xfrm.localPos.x = opts.x
             this.xfrm.localPos.y = opts.y
+            this.countOverlay = opts.countOverlay
             this.onClick = opts.onClick
             this.buildSprite()
         }
@@ -258,15 +261,25 @@ namespace microcode {
             control.enablePerfCounter()
             this.drawStyle()
             this.drawIcon()
-            //const iconbounds = Bounds.Translate(this.icon.bounds, this.icon.xfrm.worldPos);
-            //iconbounds.drawRect(5);
-            //const mybounds = Bounds.Translate(this.bounds, this.xfrm.worldPos);
-            //mybounds.drawRect(14)
+            this.drawCountOverlay()
         }
 
         private drawIcon() {
             control.enablePerfCounter()
             this.icon.draw()
+        }
+
+        private drawCountOverlay() {
+            const count = this.countOverlay
+            if (!(count > 0)) return
+
+            const font = image.font5
+            const s = count.toString()
+            const h = font.charHeight
+
+            const x = this.xfrm.localPos.x
+            const y = this.xfrm.localPos.y + this.icon.height - h
+            screen.print(s, x, y, 15)
         }
 
         private drawStyle() {

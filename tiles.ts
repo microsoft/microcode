@@ -305,8 +305,12 @@ namespace microcode {
     // - speaker play
     // - switch page (micro:bit independent)
 
-    function addActuator(tid: string, allows: string[]) {
-        const actuator = new ActuatorDefn(tid)
+    function addActuator(
+        tid: string,
+        allows: string[],
+        serviceInstanceIndex = 0
+    ) {
+        const actuator = new ActuatorDefn(tid, serviceInstanceIndex)
         actuator.constraints = {
             allow: {
                 categories: allows,
@@ -449,7 +453,7 @@ namespace microcode {
     rgbled.jdExternalClass = 0x1609d4f0
     rgbled.jdKind = JdKind.Sequence
     rgbled.jdParam = tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_1]
-    
+
     rgbled.serviceArgFromModifier = (mod: ModifierDefn) => {
         let buf = mod.serviceCommandArg() as Buffer
         if (!buf) return null
@@ -465,15 +469,19 @@ namespace microcode {
         return b
     }
 
-    const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, [
-        "constant",
-    ])
-    servoSetAngle.priority = 500
-    servoSetAngle.serviceClassName = "servo"
-    servoSetAngle.jdExternalClass = 0x12fc9103
-    servoSetAngle.serviceCommand = jacs.CMD_SET_REG | 2
-    servoSetAngle.jdKind = JdKind.NumFmt
-    servoSetAngle.jdParam = jacs.NumFmt.I32
+    for (let si = 0; si < 4; ++si) {
+        const servoSetAngle = addActuator(
+            TID_MODIFIER_SERVO_SET_ANGLE + si,
+            ["constant"],
+            si
+        )
+        servoSetAngle.priority = 500
+        servoSetAngle.serviceClassName = "servo"
+        servoSetAngle.jdExternalClass = 0x12fc9103
+        servoSetAngle.serviceCommand = jacs.CMD_SET_REG | 2
+        servoSetAngle.jdKind = JdKind.NumFmt
+        servoSetAngle.jdParam = jacs.NumFmt.I32
+    }
 
     const addReadValue = (tid: string, kind: JdKind, varid: number) => {
         const mod = new ModifierDefn(tid, "value_out", 10)

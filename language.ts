@@ -77,6 +77,10 @@ namespace microcode {
             return this.tid
         }
 
+        getCountOverlay(): number {
+            return -1
+        }
+
         getNewInstance(field: any = null): TileDefn {
             return this
         }
@@ -167,10 +171,19 @@ namespace microcode {
     export class SensorDefn extends TileDefn {
         public serviceClassName: string
         public eventCode: number
-        public serviceInstanceIndex: number = 0
 
-        constructor(tid: string, public phase: Phase) {
+        constructor(
+            tid: string,
+            public phase: Phase,
+            public serviceInstanceIndex: number = 0
+        ) {
             super(TileType.SENSOR, tid)
+        }
+
+        getCountOverlay(): number {
+            return this.serviceInstanceIndex > 0
+                ? this.serviceInstanceIndex + 1
+                : undefined
         }
     }
 
@@ -221,11 +234,16 @@ namespace microcode {
     export class ActuatorDefn extends TileDefn {
         public serviceClassName: string
         public serviceCommand: number
-        public serviceInstanceIndex: number = 0
         public serviceArgFromModifier: (mod: ModifierDefn) => string | Buffer
 
-        constructor(tid: string) {
+        constructor(tid: string, public serviceInstanceIndex = 0) {
             super(TileType.ACTUATOR, tid)
+        }
+
+        getCountOverlay(): number {
+            return this.serviceInstanceIndex > 0
+                ? this.serviceInstanceIndex + 1
+                : undefined
         }
     }
 
