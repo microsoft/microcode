@@ -360,7 +360,7 @@ namespace jacs {
             for (const r of this.roles) r.finalize()
             this.withProcedure(this.mainProc, wr => {
                 for (const g of this.globals)
-                    if (g.name[0] == 'z' && g.name[1] == '_') {
+                    if (g.name[0] == "z" && g.name[1] == "_") {
                         g.write(wr, literal(0))
                     }
                 this.emitClearScreen()
@@ -507,13 +507,18 @@ namespace jacs {
             const role = this.lookupActuatorRole(rule)
             this.emitLockCode(role)
             for (let i = 0; i < params.length; ++i) {
-                const proc = linkFunction(this, params[i].jdExtFun)
-                const hasArg = typeof params[i].jdParam == "number"
-                const args = wr.allocTmpLocals(hasArg ? 2 : 1)
-                args[0].store(role.emit(wr))
-                if (hasArg) args[1].store(literal(params[i].jdParam))
-                wr.emitCall(proc.index, args)
+                const args = [role.emit(wr)]
+                if (typeof params[i].jdParam == "number")
+                    args.push(literal(params[i].jdParam))
+                this.callLinked(params[i].jdExtFun, args)
             }
+        }
+
+        private callLinked(name: string, parms: Value[]) {
+            const proc = linkFunction(this, name)
+            const args = this.writer.allocTmpLocals(parms.length)
+            for (let i = 0; i < parms.length; ++i) args[i].store(parms[i])
+            this.writer.emitCall(proc.index, args)
         }
 
         private emitLockCode(role: Role) {
@@ -1007,10 +1012,27 @@ namespace jacs {
         }
 
         private emitClearScreen() {
+            const loading_anim = hex`
+                0001000000
+                0000010000
+                0000000100
+                0000000002
+                0000000004
+                0000000008
+                0000001000
+                0000100000
+                0010000000
+                0800000000
+                0400000000
+                0200000000
+                0000000000
+            `
             const scr = this.lookupRole("dotMatrix", 0)
-            this.emitSetReg(scr, 0x02, hex`00 00 04 00 00`)
-            this.emitSleep(50)
-            this.emitSetReg(scr, 0x02, hex`00 00 00 00 00`)
+            this.callLinked("dot_animation", [
+                scr.emit(this.writer),
+                this.emitString(loading_anim),
+                literal(30),
+            ])
         }
 
         emitProgram(prog: microcode.ProgramDefn) {

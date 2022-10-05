@@ -89,3 +89,14 @@ function led_anim_rainbow(/** @type LedRole */ led) {
         iter = iter + 1
     }
 }
+
+function dot_animation(/** @type DotMatrixRole */dots, /** @type JDBuffer */ buf, delay) {
+    var pos = 0
+    while (pos < buf.length) {
+        packet.setLength(5)
+        packet.blitAt(0, buf, pos, 5)
+        dots.dots.write(packet)
+        wait(delay / 1000)
+        pos = pos + 5
+    }
+}

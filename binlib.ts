@@ -1,7 +1,5 @@
 namespace jacs {
     export function _binGetProc(idx: number | string) {
-        if (idx == 0 || idx == "main")
-            return hex`000000001000000000000000000000004cf90006904b905a08924a004cfc0800`
         if (idx == 1 || idx == "hsv")
             return hex`
 00000000940000000a000300020000002d0004f8ff1b04c026982a4f002d0204f8ff2d012c26982a4f012d0201
@@ -34,8 +32,12 @@ f9200242394b`
             return hex`
 000000002000000000000300080000002d012d00234df900072d004b2d022d01234df900072d024b2d014b394b
 000000`
-        if (idx == 8 || idx == "_autoRefresh_")
-            return hex`0000000008000000000000000900000004f90209404cfc05`
+        if (idx == 8 || idx == "dot_animation")
+            return hex`
+00000000340000000100030009000000904f0001002d0136234df9002695463b902d01010095482d0004f92002
+422d0204f903e81e3f0100951a4f004cfc29394b000000`
+        if (idx == 9 || idx == "_autoRefresh_")
+            return hex`0000000008000000000000000a00000004f90209404cfc05`
         return null
     }
     export function _binGetString(idx: number): string {
@@ -48,7 +50,8 @@ f9200242394b`
         if (idx == 6) return "led_anim_sparkle"
         if (idx == 7) return "led_anim_rainbow"
         if (idx == 8) return "clamp"
-        if (idx == 9) return "_autoRefresh_"
+        if (idx == 9) return "dot_animation"
+        if (idx == 10) return "_autoRefresh_"
         return null
     }
     export const _binFloatLits = hex`b81e85eb51b8ae3f9a9999999999b93f`

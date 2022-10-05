@@ -28,11 +28,13 @@ function libToFun(lib) {
     r += "export function _binGetProc(idx: number | string) {\n"
     let idx = 0
     for (const proc of lib.procs) {
-        let body = null
-        if (proc.desc.startsWith("h:") && proc.body.startsWith("h:"))
-            body = proc.desc + proc.body.slice(2)
-        r += `if (idx == ${idx} || idx == ${JSON.stringify(proc.name)})\n`
-        r += `  return ${arg(body)}\n`
+        if (proc.name != "main") {
+            let body = null
+            if (proc.desc.startsWith("h:") && proc.body.startsWith("h:"))
+                body = proc.desc + proc.body.slice(2)
+            r += `if (idx == ${idx} || idx == ${JSON.stringify(proc.name)})\n`
+            r += `  return ${arg(body)}\n`
+        }
         idx++
     }
     r += "return null\n}\n"
