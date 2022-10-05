@@ -426,21 +426,30 @@ namespace microcode {
     })
 
     const numLeds = 8
-    function addRGB(id: number, buf: Buffer) {
+    function addRGB(id: number, color: number) {
         const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
         const mod = new ModifierDefn(tid, "rgb_led", 10)
         tilesDB.modifiers[tid] = mod
-        mod.jdParam = buf
+        mod.jdExtFun = "led_solid"
+        mod.jdParam = color
     }
 
-    addRGB(1, hex`2f0000`)
-    addRGB(2, hex`002f00`)
-    addRGB(3, hex`00002f`)
-    addRGB(4, hex`2f002f`)
-    addRGB(5, hex`2f2f00`)
-    addRGB(6, hex`000000`)
-    // addRGB(4, "teal", hex`00ffff`)
-    // addRGB(4, "white", hex`ffffff`)
+    addRGB(1, 0x2f0000)
+    addRGB(2, 0x002f00)
+    addRGB(3, 0x00002f)
+    addRGB(4, 0x2f002f)
+    addRGB(5, 0x2f2f00)
+    addRGB(6, 0x000000)
+
+    function addAnim(name: string) {
+        const tid = TID_MODIFIER_RGB_LED_COLOR_X + name
+        const mod = new ModifierDefn(tid, "rgb_led", 11)
+        tilesDB.modifiers[tid] = mod
+        mod.jdExtFun = "led_anim_" + name
+    }
+
+    addAnim("sparkle")
+    addAnim("rainbow")
 
     const rgbled = addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
     rgbled.priority = 500

@@ -58,6 +58,7 @@ namespace microcode {
         constraints: Constraints
         fieldEditor: FieldEditor
         jdKind: JdKind
+        jdExtFun: string
         jdParam: any
         jdDuration: number
         jdExternalClass: number

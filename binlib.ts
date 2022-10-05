@@ -1,5 +1,5 @@
 namespace jacs {
-    export function _getProc(idx: number | string) {
+    export function _binGetProc(idx: number | string) {
         if (idx == 0 || idx == "main")
             return hex`000100001000000000000000000000004cf90006904b905a08924a004cfc0800`
         if (idx == 1 || idx == "hsv")
@@ -38,4 +38,18 @@ f9200242394b`
             return hex`2803000008000000000000000900000004f90209404cfc05`
         return null
     }
+    export function _binGetString(idx: number): string {
+        if (idx == 0) return "main"
+        if (idx == 1) return "cloud"
+        if (idx == 2) return "hsv"
+        if (idx == 3) return "led_set_color"
+        if (idx == 4) return "led_setup_packet"
+        if (idx == 5) return "led_solid"
+        if (idx == 6) return "led_anim_sparkle"
+        if (idx == 7) return "led_anim_rainbow"
+        if (idx == 8) return "clamp"
+        if (idx == 9) return "_autoRefresh_"
+        return null
+    }
+    export const _binFloatLits = hex`9a9999999999b93f`
 }

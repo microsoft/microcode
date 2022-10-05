@@ -32,7 +32,7 @@ namespace jacs {
         }
     }
 
-    class Procedure {
+    export class Procedure {
         writer: OpWriter
         locals: Variable[] = []
         params: Variable[] = []

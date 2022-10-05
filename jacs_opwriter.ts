@@ -161,9 +161,9 @@ namespace jacs {
         private lineNoStart = -1
         desc = Buffer.create(BinFmt.FUNCTION_HEADER_SIZE)
         offsetInFuncs = -1
-        private maxRegs = 0
         srcmap: number[] = []
         private nameIdx: number
+        external = false
 
         constructor(
             private prog: TopOpWriter,
@@ -185,14 +185,22 @@ namespace jacs {
             return this.binary.slice(0, this.binPtr)
         }
 
+        setExternal(body: Buffer) {
+            this.external = true
+            this.binary = body
+            this.binPtr = this.binary.length
+        }
+
         finalizeDesc(off: number, numlocals: number, numargs: number) {
             const flags = 0
-            const buf = Buffer.create(4 * 4)
+            const buf = Buffer.create(BinFmt.FUNCTION_HEADER_SIZE)
             write32(buf, 0, off)
             write32(buf, 4, this.location())
-            write16(buf, 8, numlocals + this.cachedValues.length)
-            buf[10] = this.maxRegs | (numargs << 4)
-            buf[11] = flags
+            if (!this.external) {
+                write16(buf, 8, numlocals + this.cachedValues.length)
+                buf[10] = numargs << 4
+                buf[11] = flags
+            }
             write16(buf, 12, this.nameIdx)
             this.desc.write(0, buf)
         }
