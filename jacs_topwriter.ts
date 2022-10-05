@@ -359,6 +359,10 @@ namespace jacs {
         private finalize() {
             for (const r of this.roles) r.finalize()
             this.withProcedure(this.mainProc, wr => {
+                for (const g of this.globals)
+                    if (g.name[0] == 'z' && g.name[1] == '_') {
+                        g.write(wr, literal(0))
+                    }
                 this.emitClearScreen()
                 wr.emitCall(this.pageProc(1).index, [])
                 wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
@@ -554,7 +558,7 @@ namespace jacs {
         }
 
         private pipeVar(id: number) {
-            return this.lookupGlobal("pipe" + (id || 0))
+            return this.lookupGlobal("z_pipe" + (id || 0))
         }
 
         private pipeRole(id: number) {
@@ -580,7 +584,7 @@ namespace jacs {
                 case microcode.JdKind.Variable:
                     return this.pipeVar(mod.jdParam).read(wr)
                 case microcode.JdKind.Radio:
-                    return this.lookupGlobal("radio").read(wr)
+                    return this.lookupGlobal("z_radio").read(wr)
                 default:
                     this.error("can't emit kind: " + mod.jdKind)
                     return literal(0)
