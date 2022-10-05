@@ -70,24 +70,21 @@ namespace microcode {
             )
             this.yOffset = Math.min(0, this.yOffset + 2)
             const t = control.millis()
-            const dx = this.yOffset == 0 ? (Math.idiv(t, 800) & 1) - 1 : 0
-            const OFFSET = 36
+            const dy = this.yOffset == 0 ? (Math.idiv(t, 800) & 1) - 1 : 0
+            const margin = 2
+            const OFFSET = (Screen.HEIGHT >> 1) - microbitLogo.height - wordLogo.height - margin
+            const y = Screen.TOP_EDGE + OFFSET + dy
             Screen.drawTransparentImage(
                 wordLogo,
-                Screen.LEFT_EDGE + ((Screen.WIDTH - wordLogo.width) >> 1) + dx,
-                Screen.TOP_EDGE + OFFSET + dx + this.yOffset
+                Screen.LEFT_EDGE + ((Screen.WIDTH - wordLogo.width) >> 1) + dy,
+                y + this.yOffset
             )
             Screen.drawTransparentImage(
                 microbitLogo,
                 Screen.LEFT_EDGE +
                     ((Screen.WIDTH - microbitLogo.width) >> 1) +
-                    dx,
-                Screen.TOP_EDGE +
-                    OFFSET -
-                    wordLogo.height +
-                    dx +
-                    this.yOffset +
-                    2
+                    dy,
+                y - wordLogo.height + this.yOffset + margin
             )
             if (!this.yOffset) {
                 const tagline = "for micro:bit V2"
@@ -95,12 +92,12 @@ namespace microcode {
                     tagline,
                     Screen.LEFT_EDGE +
                         ((Screen.WIDTH + wordLogo.width) >> 1) +
-                        dx -
+                        dy -
                         image.font5.charWidth * tagline.length,
                     Screen.TOP_EDGE +
                         OFFSET +
                         wordLogo.height +
-                        dx +
+                        dy +
                         this.yOffset +
                         1,
                     0xb,

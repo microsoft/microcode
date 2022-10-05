@@ -113,7 +113,7 @@ namespace docs {
         const margin = 4
 
         // compute largest rule width
-        let pw = screen.width
+        let pw = 160
         for (const p of pages) {
             loader.switchToPage(p)
             pw = Math.max(pw, loader.ruleWidth())
