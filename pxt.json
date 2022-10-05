@@ -1,6 +1,6 @@
 {
     "name": "microcode",
-    "version": "1.2.33",
+    "version": "2.2.0",
     "description": "Physical computing library for micro:bit V2",
     "dependencies": {
         "game---light": "*",
