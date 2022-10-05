@@ -185,24 +185,26 @@ namespace jacs {
             return this.binary.slice(0, this.binPtr)
         }
 
-        setExternal(body: Buffer) {
+        setExternal(fullbody: Buffer) {
+            const body = fullbody.slice(BinFmt.FUNCTION_HEADER_SIZE)
+            this.desc.write(0, fullbody)
             this.external = true
             this.binary = body
             this.binPtr = this.binary.length
+            return body
         }
 
         finalizeDesc(off: number, numlocals: number, numargs: number) {
             const flags = 0
-            const buf = Buffer.create(BinFmt.FUNCTION_HEADER_SIZE)
+            const buf = this.desc
             write32(buf, 0, off)
             write32(buf, 4, this.location())
             if (!this.external) {
                 write16(buf, 8, numlocals + this.cachedValues.length)
-                buf[10] = numargs << 4
+                buf[10] = numargs
                 buf[11] = flags
             }
             write16(buf, 12, this.nameIdx)
-            this.desc.write(0, buf)
         }
 
         emitDbg(msg: string) {
@@ -575,7 +577,7 @@ namespace jacs {
                     }
                 } else if (isNaN(q)) {
                     this.writeByte(Op.EXPR0_NAN)
-                }else if (q == null) {
+                } else if (q == null) {
                     this.writeByte(Op.EXPR0_NULL)
                 } else {
                     const idx = this.prog.addFloat(q)

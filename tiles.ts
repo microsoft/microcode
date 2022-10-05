@@ -375,10 +375,9 @@ namespace microcode {
     const emoji_ms = [1478, 1233, 547, 4794, 1687, 1315, 8192, 2083, 6772, 2816]
     emojis.forEach((e, idx) => {
         const tid = "M19" + e
-        const emoji_mod = new ModifierDefn(tid, e, 10)
+        const emoji_mod = new ModifierDefn(tid, "sound_emoji", 10)
         emoji_mod.jdParam = e
         emoji_mod.jdDuration = emoji_ms[idx]
-        emoji_mod.category = "sound_emoji"
         tilesDB.modifiers[tid] = emoji_mod
     })
 

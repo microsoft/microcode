@@ -62,8 +62,7 @@ namespace jacs {
         if (!fullbody) throw "no lib fun: " + name
 
         proc = top.addProc(lname)
-        const body = fullbody.slice(BinFmt.FUNCTION_HEADER_SIZE)
-        proc.writer.setExternal(body)
+        const body = proc.writer.setExternal(fullbody)
         patchBody(top, body, name)
         return proc
     }
