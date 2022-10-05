@@ -162,6 +162,9 @@ namespace accessibility {
         A20_5: "yellow",
         A20_6: "black",
 
+        A20_rainbow: "rainbow",
+        A20_sparkle: "sparkle",
+
         A21_: "servo set angle",
     }
     export function ariaToTooltip(ariaId: string) {
