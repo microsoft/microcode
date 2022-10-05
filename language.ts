@@ -64,8 +64,7 @@ namespace microcode {
 
         isVisible() {
             if (this.hidden) return false
-            if (this.jdExternalClass)
-                return jdc.numServiceInstances(this.jdExternalClass) > 0
+            if (this.jdExternalClass) return true //jdc.numServiceInstances(this.jdExternalClass) > 0
             return true
         }
 
@@ -181,9 +180,9 @@ namespace microcode {
         }
 
         getCountOverlay(): number {
-            return this.serviceInstanceIndex > 0
+            return this.serviceInstanceIndex > -1
                 ? this.serviceInstanceIndex + 1
-                : undefined
+                : -1
         }
     }
 
@@ -241,9 +240,9 @@ namespace microcode {
         }
 
         getCountOverlay(): number {
-            return this.serviceInstanceIndex > 0
+            return this.serviceInstanceIndex > -1
                 ? this.serviceInstanceIndex + 1
-                : undefined
+                : -1
         }
     }
 

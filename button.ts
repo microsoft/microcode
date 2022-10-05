@@ -271,15 +271,19 @@ namespace microcode {
 
         private drawCountOverlay() {
             const count = this.countOverlay
-            if (!(count > 0)) return
+            if (!(count >= 0)) return
 
             const font = image.font5
             const s = count.toString()
+            const w = s.length * font.charWidth
             const h = font.charHeight
 
-            const x = this.xfrm.localPos.x
-            const y = this.xfrm.localPos.y + this.icon.height - h
-            screen.print(s, x, y, 15)
+            const xf = this.xfrm
+            const x = xf.worldPos.x + (this.width >> 1) - w + 1
+            const y = xf.worldPos.y - (this.height >> 1) + 1
+
+            console.log(`s: ${s} h: ${h} x: ${x} y: ${y}`)
+            Screen.print(s, x, y, 15, font)
         }
 
         private drawStyle() {

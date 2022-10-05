@@ -113,7 +113,11 @@ namespace microcode {
     export const TID_MODIFIER_RGB_LED_COLOR_5 = "A20_5"
     export const TID_MODIFIER_RGB_LED_COLOR_6 = "A20_6"
 
-    export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
+    export const TID_MODIFIER_SERVO_SET_ANGLE_X = "A21_"
+    export const TID_MODIFIER_SERVO_SET_ANGLE_1 = "A21_1"
+    export const TID_MODIFIER_SERVO_SET_ANGLE_2 = "A21_2"
+    export const TID_MODIFIER_SERVO_SET_ANGLE_3 = "A21_3"
+    export const TID_MODIFIER_SERVO_SET_ANGLE_4 = "A21_4"
 
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
@@ -471,7 +475,7 @@ namespace microcode {
 
     for (let si = 0; si < 4; ++si) {
         const servoSetAngle = addActuator(
-            TID_MODIFIER_SERVO_SET_ANGLE + si,
+            TID_MODIFIER_SERVO_SET_ANGLE_X + (si + 1),
             ["constant"],
             si
         )

@@ -162,7 +162,10 @@ namespace accessibility {
         A20_5: "yellow",
         A20_6: "black",
 
-        A21_: "servo set angle",
+        A21_1: "servo 1 set angle",
+        A21_2: "servo 2 set angle",
+        A21_3: "servo 3 set angle",
+        A21_4: "servo 4 set angle",
     }
     export function ariaToTooltip(ariaId: string) {
         const s = (liveStrings[ariaId] || "").replaceAll("_", " ")

@@ -121,7 +121,10 @@ namespace microcode {
             this.reg[TID_MODIFIER_RGB_LED_COLOR_5] = icondb.tile_color_yellow
             this.reg[TID_MODIFIER_RGB_LED_COLOR_6] = icondb.tile_color_black
 
-            this.reg[TID_MODIFIER_SERVO_SET_ANGLE] = icondb.servo_set_angle
+            this.reg[TID_MODIFIER_SERVO_SET_ANGLE_1] = icondb.servo_set_angle
+            this.reg[TID_MODIFIER_SERVO_SET_ANGLE_2] = icondb.servo_set_angle
+            this.reg[TID_MODIFIER_SERVO_SET_ANGLE_3] = icondb.servo_set_angle
+            this.reg[TID_MODIFIER_SERVO_SET_ANGLE_4] = icondb.servo_set_angle
 
             this.reg[TID_MODIFIER_EMOJI_GIGGLE] = icondb.soundGiggle
             this.reg[TID_MODIFIER_EMOJI_HAPPY] = icondb.soundHappy
