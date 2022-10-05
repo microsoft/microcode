@@ -33,9 +33,9 @@ function hsv(hue, sat, val) {
 
 function led_set_color(idx, color) {
     idx = idx * 3
-    packet.setAt(idx, "u8", color >> 16)
-    packet.setAt(idx + 1, "u8", color >> 8)
-    packet.setAt(idx + 2, "u8", color)
+    packet.setAt(idx, "u8", (color >> 16) & 0xff)
+    packet.setAt(idx + 1, "u8", (color >> 8) & 0xff)
+    packet.setAt(idx + 2, "u8", color & 0xff)
 }
 
 function led_setup_packet(/** @type LedRole */ led) {
