@@ -135,6 +135,9 @@ async function flashJacscriptService(service, data) {
             name: "firmware.deploy.success",
         })
     } catch (e) {
+        window.appInsights?.trackEvent({
+            name: "firmware.deploy.fail",
+        })
         window.appInsights?.trackException({
             exception: e,
         })
