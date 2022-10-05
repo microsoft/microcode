@@ -1,6 +1,7 @@
 namespace microcode {
     export type PickerButtonDef = {
         icon: string | Image
+        countOverlay?: number
         style?: ButtonStyle
         ariaId?: string
     }
@@ -14,6 +15,7 @@ namespace microcode {
                 ariaId: btn.ariaId,
                 x: 0,
                 y: 0,
+                countOverlay: btn.countOverlay,
                 onClick: () =>
                     this.picker.onButtonClicked(this, <string>btn.icon),
             })

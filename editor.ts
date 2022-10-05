@@ -787,6 +787,7 @@ namespace microcode {
             const btns: PickerButtonDef[] = suggestions.map(elem => {
                 return {
                     icon: <string>elem.getIcon(),
+                    countOverlay: elem.getCountOverlay(),
                 }
             })
             // special case for field editor
