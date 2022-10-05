@@ -86,7 +86,7 @@ async function flashJacscriptService(service, data) {
         console.debug(
             `jacscript: invalid or unknown product identifier ${productIdentifier}`
         )
-        window?.appInsights?.trackEvent({
+        window.appInsights?.trackEvent({
             name: "firmware.wrongpid",
         })
         showOutdatedFirmwareDialog()
@@ -101,6 +101,10 @@ async function flashJacscriptService(service, data) {
     const semcur = parseSemver(firmwareVersion)
     if (semweb[0] > semcur[0] || semweb[1] > semcur[1]) {
         console.debug(`outdated firmware: ${firmwareVersion}`)
+        window.appInsights?.trackEvent({
+            name: "firmware.outdated",
+            firmwareVersion,
+        })
         showOutdatedFirmwareDialog()
         return
     }
@@ -109,11 +113,17 @@ async function flashJacscriptService(service, data) {
         console.trace(
             `jacscript: deployment to ${service} in progress, skipping`
         )
+        window.appInsights?.trackEvent({ name: "jacscript.deploy.concurrent" })
         return
     }
 
     try {
         console.debug(`jacscript: deploying to ${service}`)
+        window.appInsights?.trackEvent({
+            name: "firmware.deploy",
+            firmwareVersion,
+            bytes: data.length,
+        })
         service.nodeData["bytecode"] = data
         await jacdac.OutPipe.sendBytes(
             service,
@@ -121,6 +131,14 @@ async function flashJacscriptService(service, data) {
             data
         )
         console.debug(`jacscript: deployed to ${service}`)
+        window.appInsights?.trackEvent({
+            name: "firmware.deploy.success",
+        })
+    } catch (e) {
+        window.appInsights?.trackException({
+            exception: e,
+        })
+        throw e
     } finally {
         service.nodeData["bytecode"] = undefined
     }
@@ -129,6 +147,9 @@ async function flashJacscriptService(service, data) {
         console.debug(
             `jacscript: restarting ${service} deployment with newer bytecode`
         )
+        window.appInsights?.trackEvent({
+            name: "firmware.deploy.redo",
+        })
         flashJacscriptService(service, lastData)
     }
 }
