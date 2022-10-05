@@ -78,7 +78,7 @@ namespace microcode {
         }
 
         getCountOverlay(): number {
-            return -1
+            return undefined
         }
 
         getNewInstance(field: any = null): TileDefn {
@@ -183,7 +183,7 @@ namespace microcode {
         getCountOverlay(): number {
             return this.serviceInstanceIndex > -1
                 ? this.serviceInstanceIndex + 1
-                : -1
+                : undefined
         }
     }
 
@@ -243,7 +243,7 @@ namespace microcode {
         getCountOverlay(): number {
             return this.serviceInstanceIndex > -1
                 ? this.serviceInstanceIndex + 1
-                : -1
+                : undefined
         }
     }
 

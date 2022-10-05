@@ -271,7 +271,7 @@ namespace microcode {
 
         private drawCountOverlay() {
             const count = this.countOverlay
-            if (!(count >= 0)) return
+            if (count === undefined || count === 1) return
 
             const font = image.font5
             const s = count.toString()
