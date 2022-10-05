@@ -112,6 +112,8 @@ namespace microcode {
     export const TID_MODIFIER_RGB_LED_COLOR_4 = "A20_4"
     export const TID_MODIFIER_RGB_LED_COLOR_5 = "A20_5"
     export const TID_MODIFIER_RGB_LED_COLOR_6 = "A20_6"
+    export const TID_MODIFIER_RGB_LED_COLOR_RAINBOW = "A20_rainbow"
+    export const TID_MODIFIER_RGB_LED_COLOR_SPARKLE = "A20_sparkle"
 
     export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
 
@@ -425,7 +427,6 @@ namespace microcode {
         m.jdKind = JdKind.Page
     })
 
-    const numLeds = 8
     function addRGB(id: number, color: number) {
         const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
         const mod = new ModifierDefn(tid, "rgb_led", 10)
@@ -456,24 +457,9 @@ namespace microcode {
     rgbled.serviceClassName = "led"
     rgbled.serviceCommand = jacs.CMD_SET_REG | 2
     rgbled.jdExternalClass = 0x1609d4f0
-    rgbled.jdKind = JdKind.Sequence
-    rgbled.jdParam = tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_1]
+    rgbled.jdKind = JdKind.ExtLib
+    rgbled.jdParam = tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
     
-    rgbled.serviceArgFromModifier = (mod: ModifierDefn) => {
-        let buf = mod.serviceCommandArg() as Buffer
-        if (!buf) return null
-        let b = buf
-        if (buf.length < numLeds * 3) {
-            b = Buffer.create(numLeds * 3)
-            let ptr = 0
-            while (ptr < b.length) {
-                b.write(ptr, buf)
-                ptr += buf.length
-            }
-        }
-        return b
-    }
-
     const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, [
         "constant",
     ])

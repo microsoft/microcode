@@ -488,6 +488,26 @@ namespace jacs {
             wr.emitStmt(Op.STMT2_SET_PKT, [this.emitString(buf), literal(0)])
         }
 
+        private emitExtSequance(rule: microcode.RuleDefn) {
+            let params = this.baseModifiers(rule).filter(m => !!m.jdExtFun)
+            if (params.length == 0) {
+                const defl = rule.actuators[0].jdParam as microcode.ModifierDefn
+                if (defl instanceof microcode.ModifierDefn) params = [defl]
+                else throw "oops"
+            }
+
+            const wr = this.writer
+            const role = this.lookupActuatorRole(rule)
+            for (let i = 0; i < params.length; ++i) {
+                const proc = linkFunction(this, params[i].jdExtFun)
+                const hasArg = typeof params[i].jdParam == "number"
+                const args = wr.allocTmpLocals(hasArg ? 2 : 1)
+                args[0].store(role.emit(wr))
+                if (hasArg) args[1].store(literal(params[i].jdParam))
+                wr.emitCall(proc.index, args)
+            }
+        }
+
         private emitSequance(
             rule: microcode.RuleDefn,
             lockvar: Variable,
@@ -814,6 +834,8 @@ namespace jacs {
                         : null,
                     400
                 )
+            } else if (actuator.jdKind == microcode.JdKind.ExtLib) {
+                this.emitExtSequance(rule)
             } else {
                 this.error(`can't map act role for ${JSON.stringify(actuator)}`)
             }

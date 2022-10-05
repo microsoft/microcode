@@ -46,6 +46,7 @@ namespace microcode {
         Sequence = 6,
         NumFmt = 7,
         Loop = 8,
+        ExtLib = 9,
     }
 
     export class TileDefn {
@@ -65,8 +66,8 @@ namespace microcode {
 
         isVisible() {
             if (this.hidden) return false
-            if (this.jdExternalClass)
-                return jdc.numServiceInstances(this.jdExternalClass) > 0
+            //if (this.jdExternalClass)
+            //    return jdc.numServiceInstances(this.jdExternalClass) > 0
             return true
         }
 
