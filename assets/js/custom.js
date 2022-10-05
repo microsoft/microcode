@@ -87,8 +87,8 @@ async function flashJacscriptService(service, data) {
             `jacscript: invalid or unknown product identifier ${productIdentifier}`
         )
         window?.appInsights?.trackEvent({
-            name: "firmware.wrongpid"
-        })    
+            name: "firmware.wrongpid",
+        })
         showOutdatedFirmwareDialog()
         return
     }
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
         bus.on(jacdac.CONNECTION_STATE, refreshUI)
         bus.on(jacdac.ERROR, e => {
             appInsights?.trackException({ exception: e })
-        
+
             const code = e.code
             switch (code) {
                 case jacdac.ERROR_MICROBIT_JACDAC_MISSING: {
@@ -232,8 +232,8 @@ document.addEventListener("DOMContentLoaded", () => {
         refreshUI()
         bus.autoConnect = true
 
-        setTimeout(() => { 
-            if (bus.connectionStatus === jacdac.DISCONNECTED)
+        setTimeout(() => {
+            if (bus.connectionStatus === jacdac.DISCONNECTED && !!navigator.usb)
                 showConnectDialog()
         }, 1000)
     }
