@@ -1,6 +1,6 @@
 namespace microcode {
     export class Options {
-        public static fps: boolean = true
-        public static profiling = true
+        public static fps = false
+        public static profiling = false
     }
 }
