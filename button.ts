@@ -282,7 +282,6 @@ namespace microcode {
             const x = xf.worldPos.x + (this.width >> 1) - w + 1
             const y = xf.worldPos.y - (this.height >> 1) + 1
 
-            console.log(`s: ${s} h: ${h} x: ${x} y: ${y}`)
             Screen.print(s, x, y, 15, font)
         }
 
