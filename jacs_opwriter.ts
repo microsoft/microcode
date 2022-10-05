@@ -575,6 +575,8 @@ namespace jacs {
                     }
                 } else if (isNaN(q)) {
                     this.writeByte(Op.EXPR0_NAN)
+                }else if (q == null) {
+                    this.writeByte(Op.EXPR0_NULL)
                 } else {
                     const idx = this.prog.addFloat(q)
                     this.writeByte(Op.EXPRx_LITERAL_F64)

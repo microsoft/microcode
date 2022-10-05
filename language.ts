@@ -224,7 +224,6 @@ namespace microcode {
         public serviceClassName: string
         public serviceCommand: number
         public serviceInstanceIndex: number = 0
-        public serviceArgFromModifier: (mod: ModifierDefn) => string | Buffer
 
         constructor(tid: string) {
             super(TileType.ACTUATOR, tid)
