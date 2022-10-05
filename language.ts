@@ -66,8 +66,8 @@ namespace microcode {
 
         isVisible() {
             if (this.hidden) return false
-            //if (this.jdExternalClass)
-            //    return jdc.numServiceInstances(this.jdExternalClass) > 0
+            if (this.jdExternalClass && !jacs.debugOut)
+                return jdc.numServiceInstances(this.jdExternalClass) > 0
             return true
         }
 

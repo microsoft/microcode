@@ -75,6 +75,7 @@ function led_anim_rainbow(/** @type LedRole */ led) {
     var numpix = led_setup_packet(led)
     var iter = 0
     while (iter < numpix) {
+        packet.setLength(numpix * 3)
         var idx = 0
         while (idx < numpix) {
             var h = iter + idx
@@ -88,4 +89,3 @@ function led_anim_rainbow(/** @type LedRole */ led) {
         iter = iter + 1
     }
 }
-
