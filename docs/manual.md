@@ -14,13 +14,6 @@ Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 -   Keyboard, mouse, touch, screen reader accessible
 -   Accessories (LEDs, motors, ...) supported via [Jacdac](https://aka.ms/jacdac)
 
-## Try it out!
-
-There are two ways to run MicroCode:
-
--   [web app](https://aka.ms/microcode) with [micro:bit V2](https://microbit.org) connected via WebUSB
--   [micro:bit V2](https://microbit.org) + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
-
 See below for more information about the MicroCode web app, and how to deploy MicroCode to the micro:bit V2. Regardless of which way you run MicroCode, you will probably want to know a little bit about
 MicroCode's:
 
@@ -28,7 +21,7 @@ MicroCode's:
 -   [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon"}](./samples) [Samples](./samples)
 -   ![emoji hello](./images/generated/icon_M19hello.png){:class="icon"} [FAQ](./faq.md)
 
-## [Web editor](https://aka.ms/m9)
+## [Web editor](https://aka.ms/m9) {#web}
 
 The easiest way to get started with MicroCode is through the web editor ([https://aka.ms/microcode](https://aka.ms/microcode), [aka.ms/m9](https://aka.ms/m9) for short). We recommend using the keyboard navigation or a real gamepad!
 
@@ -72,14 +65,6 @@ The editor integrates with existing screen readers, like NVDA.
 
 By clicking on the `tooltip reader` button at the bottom of the editor, the tooltips will be read aloud. This may be useful for students who are still learning to read.
 
-## micro:bit V2 and Arcade Shield
-
-Click on the version number in the web app to download the MicroCode hex file to your micro:bit V2. When you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run.
-
-### [micro:bit V2](https://microbit.org) + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
-
-![Arcade Shield and micro:bit V2](./images/meow1.jpg){:class="fluid"}
-
 ## Sample programs
 
 The MicroCode app has a set of [samples](./samples) built-in. Select the samples button on the MicroCode home page (see below) to reveal
@@ -87,8 +72,17 @@ the gallery of samples.
 
 [![new program](./images/generated/icon_new_program.png){:class="icon-sample"}](./samples#first-program) [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"}](./samples#flashing-heart) [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"}](./samples#smiley-buttons) [![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"}](./samples#pet-hamster) [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"}](./samples#rock-paper-scissors) [![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"}](./samples#hot-potato) [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"}](./samples#clap-lights) [![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"}](./samples#chuck-a-duck) [![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon-sample"}](./samples#firefly) [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon-sample"}](./samples#railroad-crossing)
 
-
 ![MicroCode sample programs](./images/microCodeVideo.gif){:class="screenshot"}
+
+## micro:bit V2 and Arcade Shield
+
+> This functionality is experimental.
+
+Click on the version number in the web app to download the MicroCode hex file to your micro:bit V2. When you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run.
+
+### [micro:bit V2](https://microbit.org) + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
+
+![Arcade Shield and micro:bit V2](./images/meow1.jpg){:class="fluid"}
 
 ## Contributing
 
