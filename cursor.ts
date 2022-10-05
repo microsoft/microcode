@@ -91,6 +91,8 @@ namespace microcode {
             let target = this.navigator.getCurrent() //.sort((a, b) => a.z - b.z);
             if (target) {
                 target.click()
+                if (Options.profiling)
+                    control.heapSnapshot()                    
                 return true
             }
             return false

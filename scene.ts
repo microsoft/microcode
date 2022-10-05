@@ -36,10 +36,12 @@ namespace microcode {
                 (x, y) => this.handleMove(x, y),
                 (dx, dy) => this.handleWheel(dx, dy)
             )
+            if (Options.profiling) control.heapSnapshot()
         }
 
         /* override */ deactivate() {
             pointerevents.popContext()
+            if (Options.profiling) control.heapSnapshot()
         }
 
         /* abstract */ update() {}
@@ -92,7 +94,8 @@ namespace microcode {
                 this.draw()
                 if (Options.fps)
                     Screen.image.print(control.EventContext.lastStats, 1, 1, 15)
-                screen.drawImage(Screen.image, 0, 0)
+                if (screen !== Screen.image)
+                    screen.drawImage(Screen.image, 0, 0)
             })
             control.eventContext().registerFrameHandler(SCREEN_PRIORITY, () => {
                 control.enablePerfCounter()
