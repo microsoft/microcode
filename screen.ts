@@ -45,10 +45,14 @@ namespace microcode {
         }
         public static get image(): Image {
             if (!Screen.image_) {
-                Screen.image_ = image.create(screen.width, screen.height)
+                Screen.image_ = screen
                 Screen.updateBounds()
             }
             return Screen.image_
+        }
+        public static resetScreenImage() {
+            Screen.image_ = screen
+            Screen.updateBounds()
         }
 
         public static setImageSize(width: number, height: number) {

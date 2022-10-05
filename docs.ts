@@ -74,13 +74,13 @@ namespace docs {
 
             app.popScene()
         }
-        microcode.Screen.setImageSize(screen.width, screen.height)
+        microcode.Screen.resetScreenImage()
     }
 
     //% shim=TD_NOOP
     function _renderScreenshot() {
         const res = _renderProgram()
-        microcode.Screen.setImageSize(screen.width, screen.height)
+        microcode.Screen.resetScreenImage()
         control.simmessages.send(
             "docs",
             Buffer.fromUTF8(
