@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
         bus.autoConnect = true
 
         setTimeout(() => {
-            if (bus.connectionStatus === jacdac.DISCONNECTED && !!navigator.usb)
+            if (!bus.connected && !!navigator.usb)
                 showConnectDialog()
         }, 2000)
     }
