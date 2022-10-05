@@ -532,7 +532,8 @@ namespace jacs {
         private emitSequance(
             rule: microcode.RuleDefn,
             delay: number,
-            bufSize = 0
+            bufSize = 0,
+            shortCutFn = ""
         ) {
             let params = this.baseModifiers(rule).filter(
                 m => !!m.serviceCommandArg()
@@ -549,10 +550,27 @@ namespace jacs {
             const actuator = rule.actuators[0]
             const role = this.lookupActuatorRole(rule)
             this.emitLockCode(role)
-            for (let i = 0; i < params.length; ++i) {
-                this.emitLoadBuffer(params[i].serviceCommandArg())
-                this.emitSendCmd(role, actuator.serviceCommand)
-                this.emitSleep(params[i].jdDuration || delay)
+
+            const wr = this.writer
+            if (shortCutFn && params.length > 1) {
+                const b = Buffer.create(bufSize * params.length)
+                for (let i = 0; i < params.length; ++i) {
+                    b.write(
+                        i * bufSize,
+                        params[i].serviceCommandArg() as Buffer
+                    )
+                }
+                this.callLinked(shortCutFn, [
+                    role.emit(wr),
+                    this.emitString(b),
+                    literal(params[0].jdDuration || delay),
+                ])
+            } else {
+                for (let i = 0; i < params.length; ++i) {
+                    this.emitLoadBuffer(params[i].serviceCommandArg())
+                    this.emitSendCmd(role, actuator.serviceCommand)
+                    this.emitSleep(params[i].jdDuration || delay)
+                }
             }
         }
 
@@ -775,7 +793,7 @@ namespace jacs {
             if (actuator == null) return // do nothing
 
             if (actuator.tid == microcode.TID_ACTUATOR_PAINT) {
-                this.emitSequance(rule, 400, 5)
+                this.emitSequance(rule, 400, 5, "dot_animation")
             } else if (actuator.tid == microcode.TID_ACTUATOR_MUSIC) {
                 this.emitSequance(rule, 400, 6)
             } else if (actuator.tid == microcode.TID_ACTUATOR_SWITCH_PAGE) {
