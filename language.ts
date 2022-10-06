@@ -254,7 +254,7 @@ namespace microcode {
 
         get sensor() {
             if (this.sensors.length == 0)
-                return tilesDB.sensors[TID_SENSOR_ALWAYS]
+                return tilesDB.sensors[TID_SENSOR_START_PAGE]
             return this.sensors[0]
         }
 

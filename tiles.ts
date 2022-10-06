@@ -15,7 +15,7 @@ namespace microcode {
 
     // Once a tid is assigned, it can NEVER BE CHANGED OR REPURPOSED.
     // Every tid must be unique in the set of all tids.
-    export const TID_SENSOR_ALWAYS = "S1"
+    export const TID_SENSOR_START_PAGE = "S1"
     export const TID_SENSOR_PRESS = "S2"
     export const TID_SENSOR_RELEASE = "S2B"
     export const TID_SENSOR_ACCELEROMETER = "S3"
@@ -181,9 +181,10 @@ namespace microcode {
     }
 
     function addSensorTiles() {
-        const always = new SensorDefn(TID_SENSOR_ALWAYS, Phase.Pre)
-        always.hidden = true
-        tilesDB.sensors[TID_SENSOR_ALWAYS] = always
+        const startPage = new SensorDefn(TID_SENSOR_START_PAGE, Phase.Pre)
+       // startPage.hidden = true
+        startPage.priority = 108
+        tilesDB.sensors[TID_SENSOR_START_PAGE] = startPage
 
         addButtonTiles()
 
@@ -310,6 +311,7 @@ namespace microcode {
 
         const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
         swtch.priority = 110
+
         const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
         paint.serviceClassName = "dotMatrix"
         paint.serviceCommand = jacs.CMD_SET_REG | 0x2
