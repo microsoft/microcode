@@ -138,366 +138,360 @@ namespace microcode {
             terminal: true,
         },
     }
-    /*
-    const maxOneLoop = {
-        maxCount: {
-            category: "loop",
-            count: 1,
-        },
-    }
 
- 
-    const maxOneValueOut = {
-        maxCount: {
-            category: "value_out",
-            count: 1,
-        },
-    }
-    */
-
-    const always = new SensorDefn(TID_SENSOR_ALWAYS, Phase.Pre)
-    always.hidden = true
-    tilesDB.sensors[TID_SENSOR_ALWAYS] = always
-
-    function addPress(tid: string, evt: number) {
-        const press_event = new SensorDefn(tid, Phase.Pre)
-        press_event.serviceClassName = "button"
-        press_event.eventCode = evt
-        press_event.serviceInstanceIndex = 0
-        press_event.constraints = {
-            provides: ["input"],
-            allow: {
-                categories: ["press_event"],
-            },
-        }
-        press_event.priority = 9 + evt
-        tilesDB.sensors[tid] = press_event
-    }
-
-    addPress(TID_SENSOR_PRESS, 1)
-    addPress(TID_SENSOR_RELEASE, 2)
-
-    function addPressFilter(tid: string, instanceNo: number) {
-        const press_filter = new FilterDefn(tid, "press_event", 10)
-        press_filter.constraints = {
-            handling: {
-                terminal: true,
-            },
-            allow: {
-                categories: ["press_event"],
-            },
-        }
-        tilesDB.filters[tid] = press_filter
-        press_filter.jdParam = instanceNo
-    }
-
-    addPressFilter(TID_FILTER_BUTTON_A, 0)
-    addPressFilter(TID_FILTER_BUTTON_B, 1)
-    addPressFilter(TID_FILTER_LOGO, 2)
-    addPressFilter(TID_FILTER_PIN_0, 3)
-    addPressFilter(TID_FILTER_PIN_1, 4)
-    addPressFilter(TID_FILTER_PIN_2, 5)
-
-    const makeSensor = (tid: string, cat: string, prior: number) => {
-        const tile = new SensorDefn(tid, Phase.Post)
-        tile.constraints = {
-            allow: {
-                categories: [cat],
-            },
-        }
-        tile.priority = prior
-        tilesDB.sensors[tid] = tile
-        return tile
-    }
-
-    function makeCupSensor(tid: string, id: number) {
-        const tile = makeSensor(tid, "value_in", 120 + id * 5)
-        tile.jdKind = JdKind.Variable
-        tile.jdParam = id
-        tile.priority = 200 + id
-        // tile.constraints.handling = maxOneValueIn
-    }
-
-    makeCupSensor(TID_SENSOR_CUP_X_WRITTEN, 0)
-    makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, 1)
-    makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, 2)
-
-    const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
-    radio_recv.serviceClassName = "radio"
-    radio_recv.eventCode = 0x91
-    // radio_recv.constraints.handling = maxOneValueIn
-
-    const magnet = makeSensor(TID_SENSOR_MAGNET, "no_filters", 500)
-    magnet.serviceClassName = "magneticFieldLevel"
-    magnet.eventCode = 1
-    magnet.jdExternalClass = 0x12fe180f
-
-    const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
-    timer.constraints = {
-        allow: {
-            categories: ["timespan"],
-        },
-    }
-    timer.priority = 110
-    tilesDB.sensors[TID_SENSOR_TIMER] = timer
-
-    function addTimespan(tid: string, ms: number) {
-        const timespan = new FilterDefn(tid, "timespan", 10)
-        timespan.jdParam = ms
-        tilesDB.filters[tid] = timespan
-    }
-    addTimespan(TID_FILTER_TIMESPAN_SHORT, 250)
-    addTimespan(TID_FILTER_TIMESPAN_LONG, 1000)
-    addTimespan(TID_FILTER_TIMESPAN_VERY_LONG, 5000)
-    addTimespan(TID_FILTER_TIMESPAN_RANDOM, -1000)
-
-    const accel = new SensorDefn(TID_SENSOR_ACCELEROMETER, Phase.Post)
-    accel.constraints = {
-        allow: {
-            categories: ["accel_event"],
-        },
-    }
-    accel.serviceClassName = "accelerometer"
-    accel.eventCode = 0x8b // shake
-    accel.priority = 20
-    tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
-
-    function addAccelEvent(id: number, name: string) {
-        const tid = TID_FILTER_ACCEL + "_" + name
-        const accelEvent = new FilterDefn(tid, "accel_event", 10)
-        accelEvent.eventCode = id
-        accelEvent.constraints = terminal
-        tilesDB.filters[tid] = accelEvent
-        return accelEvent
-    }
-
-    addAccelEvent(0x8b, "shake")
-    // don't want kids to throw micro:bit on the ground
-    // addAccelEvent(0x87, "freefall")
-    addAccelEvent(0x81, "tilt_up")
-    addAccelEvent(0x82, "tilt_down")
-    addAccelEvent(0x83, "tilt_left")
-    addAccelEvent(0x84, "tilt_right")
-
-    const microphone = new SensorDefn(TID_SENSOR_MICROPHONE, Phase.Post)
-    microphone.constraints = {
-        allow: {
-            categories: ["sound_event"],
-        },
-    }
-    microphone.priority = 30
-    microphone.serviceClassName = "soundLevel"
-    microphone.eventCode = 1 // laud by default
-    tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
-    function addSoundFilter(tid: string, eventCode: number) {
-        const soundFilter = new FilterDefn(tid, "sound_event", 10)
-        soundFilter.constraints = terminal
-        tilesDB.filters[tid] = soundFilter
-        soundFilter.eventCode = eventCode
-    }
-    addSoundFilter(TID_FILTER_LOUD, 1)
-    addSoundFilter(TID_FILTER_QUIET, 2)
-
-    // actuators are:
-
-    // - paint screen
-    // - assign variable
-    // - send radio message
-    // - speaker play
-    // - switch page (micro:bit independent)
-
-    function addActuator(tid: string, allows: string[]) {
-        const actuator = new ActuatorDefn(tid)
-        actuator.constraints = {
-            allow: {
-                categories: allows,
-            },
-        }
-        tilesDB.actuators[tid] = actuator
-        return actuator
-    }
-
-    const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
-    swtch.priority = 110
-    const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
-    paint.serviceClassName = "dotMatrix"
-    paint.serviceCommand = jacs.CMD_SET_REG | 0x2
-    paint.serviceInstanceIndex = 0
-    paint.priority = 10
-
-    const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
-        "value_out",
-        "constant",
-    ])
-    radio_send.priority = 100
-    radio_send.serviceClassName = "radio"
-    radio_send.jdKind = JdKind.Radio
-
-    const radio_set_group = addActuator(TID_ACTUATOR_RADIO_SET_GROUP, [])
-    radio_set_group.constraints = {}
-    radio_set_group.constraints.only = ["constant"]
-    radio_set_group.priority = 101
-    radio_set_group.serviceClassName = "radio"
-    radio_set_group.jdKind = JdKind.NumFmt
-    radio_set_group.jdParam = jacs.NumFmt.U8
-    radio_set_group.serviceCommand = jacs.CMD_SET_REG | 0x80
-
-    function addAssign(tid: string, id: number) {
-        const theVar = addActuator(tid, ["value_out", "constant"])
-        theVar.jdParam = id
-        theVar.jdKind = JdKind.Variable
-        theVar.priority = 200 + id
-    }
-
-    addAssign(TID_ACTUATOR_CUP_X_ASSIGN, 0)
-    addAssign(TID_ACTUATOR_CUP_Y_ASSIGN, 1)
-    addAssign(TID_ACTUATOR_CUP_Z_ASSIGN, 2)
-
-    const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
-    emoji.serviceClassName = "soundPlayer"
-    emoji.serviceCommand = 0x80
-    emoji.priority = 20
-    emoji.jdKind = JdKind.Sequence
-
-    const emojis = [
-        "giggle",
-        "happy",
-        "hello",
-        "mysterious",
-        "sad",
-        "slide",
-        "soaring",
-        "spring",
-        "twinkle",
-        "yawn",
-    ]
-    const emoji_ms = [1478, 1233, 547, 4794, 1687, 1315, 8192, 2083, 6772, 2816]
-    emojis.forEach((e, idx) => {
-        const tid = "M19" + e
-        const emoji_mod = new ModifierDefn(tid, "sound_emoji", 10)
-        emoji_mod.jdParam = e
-        emoji_mod.jdDuration = emoji_ms[idx]
-        tilesDB.modifiers[tid] = emoji_mod
-    })
-
-    emoji.jdParam = tilesDB.modifiers[TID_MODIFIER_EMOJI_GIGGLE]
-
-    /*
-    const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "music_editor")
-    buzzer.serviceClassName = "buzzer"
-    buzzer.serviceCommand = 0x80
-    buzzer.priority = 30
-    buzzer.jdKind = JdKind.Sequence
-    */
-
-    const make_vals = (
-        values: number[],
-        name: string,
-        kind: string,
-        start: number
-    ) => {
-        const tiles: FilterModifierBase[] = []
-        values.forEach((v, index) => {
-            const tid = kind + (start + index)
-            const tile: FilterModifierBase =
-                kind == "M"
-                    ? new ModifierDefn(tid, name, 10)
-                    : new FilterDefn(tid, name, 10)
-            tile.jdKind = JdKind.Literal
-            tile.jdParam = v
-            // tile.constraints = terminal
-            if (kind == "M") tilesDB.modifiers[tid] = tile
-            else tilesDB.filters[tid] = tile as FilterDefn
-            tile.constraints = {
-                provides: [name],
+    function addButtonTiles() {
+        function addPress(tid: string, evt: number) {
+            const press_event = new SensorDefn(tid, Phase.Pre)
+            press_event.serviceClassName = "button"
+            press_event.eventCode = evt
+            press_event.serviceInstanceIndex = 0
+            press_event.constraints = {
+                provides: ["input"],
+                allow: {
+                    categories: ["press_event"],
+                },
             }
-            tiles.push(tile)
+            press_event.priority = 9 + evt
+            tilesDB.sensors[tid] = press_event
+        }
+
+        addPress(TID_SENSOR_PRESS, 1)
+        addPress(TID_SENSOR_RELEASE, 2)
+
+        function addPressFilter(tid: string, instanceNo: number) {
+            const press_filter = new FilterDefn(tid, "press_event", 10)
+            press_filter.constraints = {
+                handling: {
+                    terminal: true,
+                },
+                allow: {
+                    categories: ["press_event"],
+                },
+            }
+            tilesDB.filters[tid] = press_filter
+            press_filter.jdParam = instanceNo
+        }
+
+        addPressFilter(TID_FILTER_BUTTON_A, 0)
+        addPressFilter(TID_FILTER_BUTTON_B, 1)
+        addPressFilter(TID_FILTER_LOGO, 2)
+        addPressFilter(TID_FILTER_PIN_0, 3)
+        addPressFilter(TID_FILTER_PIN_1, 4)
+        addPressFilter(TID_FILTER_PIN_2, 5)
+    }
+
+    function addSensorTiles() {
+        const always = new SensorDefn(TID_SENSOR_ALWAYS, Phase.Pre)
+        always.hidden = true
+        tilesDB.sensors[TID_SENSOR_ALWAYS] = always
+
+        addButtonTiles()
+
+        function makeSensor(tid: string, cat: string, prior: number) {
+            const tile = new SensorDefn(tid, Phase.Post)
+            tile.constraints = {
+                allow: {
+                    categories: [cat],
+                },
+            }
+            tile.priority = prior
+            tilesDB.sensors[tid] = tile
+            return tile
+        }
+
+        function makeCupSensor(tid: string, id: number) {
+            const tile = makeSensor(tid, "value_in", 120 + id * 5)
+            tile.jdKind = JdKind.Variable
+            tile.jdParam = id
+            tile.priority = 200 + id
+            // tile.constraints.handling = maxOneValueIn
+        }
+
+        makeCupSensor(TID_SENSOR_CUP_X_WRITTEN, 0)
+        makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, 1)
+        makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, 2)
+
+        const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
+        radio_recv.serviceClassName = "radio"
+        radio_recv.eventCode = 0x91
+        // radio_recv.constraints.handling = maxOneValueIn
+
+        const magnet = makeSensor(TID_SENSOR_MAGNET, "no_filters", 500)
+        magnet.serviceClassName = "magneticFieldLevel"
+        magnet.eventCode = 1
+        magnet.jdExternalClass = 0x12fe180f
+
+        const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
+        timer.constraints = {
+            allow: {
+                categories: ["timespan"],
+            },
+        }
+        timer.priority = 110
+        tilesDB.sensors[TID_SENSOR_TIMER] = timer
+
+        function addTimespan(tid: string, ms: number) {
+            const timespan = new FilterDefn(tid, "timespan", 10)
+            timespan.jdParam = ms
+            tilesDB.filters[tid] = timespan
+        }
+        addTimespan(TID_FILTER_TIMESPAN_SHORT, 250)
+        addTimespan(TID_FILTER_TIMESPAN_LONG, 1000)
+        addTimespan(TID_FILTER_TIMESPAN_VERY_LONG, 5000)
+        addTimespan(TID_FILTER_TIMESPAN_RANDOM, -1000)
+
+        const accel = new SensorDefn(TID_SENSOR_ACCELEROMETER, Phase.Post)
+        accel.constraints = {
+            allow: {
+                categories: ["accel_event"],
+            },
+        }
+        accel.serviceClassName = "accelerometer"
+        accel.eventCode = 0x8b // shake
+        accel.priority = 20
+        tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
+
+        function addAccelEvent(id: number, name: string) {
+            const tid = TID_FILTER_ACCEL + "_" + name
+            const accelEvent = new FilterDefn(tid, "accel_event", 10)
+            accelEvent.eventCode = id
+            accelEvent.constraints = terminal
+            tilesDB.filters[tid] = accelEvent
+            return accelEvent
+        }
+
+        addAccelEvent(0x8b, "shake")
+        // don't want kids to throw micro:bit on the ground
+        // addAccelEvent(0x87, "freefall")
+        addAccelEvent(0x81, "tilt_up")
+        addAccelEvent(0x82, "tilt_down")
+        addAccelEvent(0x83, "tilt_left")
+        addAccelEvent(0x84, "tilt_right")
+
+        const microphone = new SensorDefn(TID_SENSOR_MICROPHONE, Phase.Post)
+        microphone.constraints = {
+            allow: {
+                categories: ["sound_event"],
+            },
+        }
+        microphone.priority = 30
+        microphone.serviceClassName = "soundLevel"
+        microphone.eventCode = 1 // laud by default
+        tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
+        function addSoundFilter(tid: string, eventCode: number) {
+            const soundFilter = new FilterDefn(tid, "sound_event", 10)
+            soundFilter.constraints = terminal
+            tilesDB.filters[tid] = soundFilter
+            soundFilter.eventCode = eventCode
+        }
+        addSoundFilter(TID_FILTER_LOUD, 1)
+        addSoundFilter(TID_FILTER_QUIET, 2)
+    }
+
+    function addActuatorTiles() {
+        // actuators are:
+
+        // - paint screen
+        // - assign variable
+        // - send radio message
+        // - speaker play
+        // - switch page (micro:bit independent)
+
+        function addActuator(tid: string, allows: string[]) {
+            const actuator = new ActuatorDefn(tid)
+            actuator.constraints = {
+                allow: {
+                    categories: allows,
+                },
+            }
+            tilesDB.actuators[tid] = actuator
+            return actuator
+        }
+
+        const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
+        swtch.priority = 110
+        const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
+        paint.serviceClassName = "dotMatrix"
+        paint.serviceCommand = jacs.CMD_SET_REG | 0x2
+        paint.serviceInstanceIndex = 0
+        paint.priority = 10
+
+        const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
+            "value_out",
+            "constant",
+        ])
+        radio_send.priority = 100
+        radio_send.serviceClassName = "radio"
+        radio_send.jdKind = JdKind.Radio
+
+        const radio_set_group = addActuator(TID_ACTUATOR_RADIO_SET_GROUP, [])
+        radio_set_group.constraints = {}
+        radio_set_group.constraints.only = ["constant"]
+        radio_set_group.priority = 101
+        radio_set_group.serviceClassName = "radio"
+        radio_set_group.jdKind = JdKind.NumFmt
+        radio_set_group.jdParam = jacs.NumFmt.U8
+        radio_set_group.serviceCommand = jacs.CMD_SET_REG | 0x80
+
+        function addAssign(tid: string, id: number) {
+            const theVar = addActuator(tid, ["value_out", "constant"])
+            theVar.jdParam = id
+            theVar.jdKind = JdKind.Variable
+            theVar.priority = 200 + id
+        }
+
+        addAssign(TID_ACTUATOR_CUP_X_ASSIGN, 0)
+        addAssign(TID_ACTUATOR_CUP_Y_ASSIGN, 1)
+        addAssign(TID_ACTUATOR_CUP_Z_ASSIGN, 2)
+
+        const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
+        emoji.serviceClassName = "soundPlayer"
+        emoji.serviceCommand = 0x80
+        emoji.priority = 20
+        emoji.jdKind = JdKind.Sequence
+
+        const emojis = [
+            "giggle",
+            "happy",
+            "hello",
+            "mysterious",
+            "sad",
+            "slide",
+            "soaring",
+            "spring",
+            "twinkle",
+            "yawn",
+        ]
+        const emoji_ms = [
+            1478, 1233, 547, 4794, 1687, 1315, 8192, 2083, 6772, 2816,
+        ]
+        emojis.forEach((e, idx) => {
+            const tid = "M19" + e
+            const emoji_mod = new ModifierDefn(tid, "sound_emoji", 10)
+            emoji_mod.jdParam = e
+            emoji_mod.jdDuration = emoji_ms[idx]
+            tilesDB.modifiers[tid] = emoji_mod
         })
-        return tiles
+
+        emoji.jdParam = tilesDB.modifiers[TID_MODIFIER_EMOJI_GIGGLE]
+
+        /*
+        const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "music_editor")
+        buzzer.serviceClassName = "buzzer"
+        buzzer.serviceCommand = 0x80
+        buzzer.priority = 30
+        buzzer.jdKind = JdKind.Sequence
+        */
+
+        const make_vals = (
+            values: number[],
+            name: string,
+            kind: string,
+            start: number
+        ) => {
+            const tiles: FilterModifierBase[] = []
+            values.forEach((v, index) => {
+                const tid = kind + (start + index)
+                const tile: FilterModifierBase =
+                    kind == "M"
+                        ? new ModifierDefn(tid, name, 10)
+                        : new FilterDefn(tid, name, 10)
+                tile.jdKind = JdKind.Literal
+                tile.jdParam = v
+                // tile.constraints = terminal
+                if (kind == "M") tilesDB.modifiers[tid] = tile
+                else tilesDB.filters[tid] = tile as FilterDefn
+                tile.constraints = {
+                    provides: [name],
+                }
+                tiles.push(tile)
+            })
+            return tiles
+        }
+
+        const coin_values = [1, 2, 3, 4, 5]
+        make_vals(coin_values, "value_in", "F", 8)
+        make_vals(coin_values, "constant", "M", 6)
+        make_vals([1, 2, 3, 4, 5], "page", "M", 1).forEach(m => {
+            m.constraints.handling = m.constraints.handling || {}
+            m.constraints.handling.terminal = true
+            m.jdKind = JdKind.Page
+        })
+
+        function addRGB(id: number, color: number) {
+            const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
+            const mod = new ModifierDefn(tid, "rgb_led", 10)
+            tilesDB.modifiers[tid] = mod
+            mod.jdExtFun = "led_solid"
+            mod.jdParam = color
+        }
+
+        addRGB(1, 0x2f0000)
+        addRGB(2, 0x002f00)
+        addRGB(3, 0x00002f)
+        addRGB(4, 0x2f002f)
+        addRGB(5, 0x2f2f00)
+        addRGB(6, 0x000000)
+
+        function addAnim(name: string) {
+            const tid = TID_MODIFIER_RGB_LED_COLOR_X + name
+            const mod = new ModifierDefn(tid, "rgb_led", 11)
+            tilesDB.modifiers[tid] = mod
+            mod.jdExtFun = "led_anim_" + name
+        }
+
+        addAnim("sparkle")
+        addAnim("rainbow")
+
+        const rgbled = addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
+        rgbled.priority = 500
+        rgbled.serviceClassName = "led"
+        rgbled.serviceCommand = jacs.CMD_SET_REG | 2
+        rgbled.jdExternalClass = 0x1609d4f0
+        rgbled.jdKind = JdKind.ExtLib
+        rgbled.jdParam = tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
+
+        const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, [
+            "constant",
+        ])
+        servoSetAngle.priority = 500
+        servoSetAngle.serviceClassName = "servo"
+        servoSetAngle.jdExternalClass = 0x12fc9103
+        servoSetAngle.serviceCommand = jacs.CMD_SET_REG | 2
+        servoSetAngle.jdKind = JdKind.NumFmt
+        servoSetAngle.jdParam = jacs.NumFmt.I32
+
+        const addReadValue = (tid: string, kind: JdKind, varid: number) => {
+            const mod = new ModifierDefn(tid, "value_out", 10)
+            mod.jdParam = varid
+            mod.jdKind = kind
+            tilesDB.modifiers[tid] = mod
+            mod.priority = 200 + varid
+            return mod
+        }
+        addReadValue(TID_MODIFIER_CUP_X_READ, JdKind.Variable, 0)
+        addReadValue(TID_MODIFIER_CUP_Y_READ, JdKind.Variable, 1)
+        addReadValue(TID_MODIFIER_CUP_Z_READ, JdKind.Variable, 2)
+        // TODO: this should only be present when radio receive in When section
+        // addReadValue(TID_MODIFIER_RADIO_VALUE, "number from radio", JdKind.Radio, 3)
+
+        const random_toss = addReadValue(
+            TID_MODIFIER_RANDOM_TOSS,
+            JdKind.RandomToss,
+            5
+        )
+        random_toss.priority = 70
+        random_toss.constraints = {}
+        random_toss.constraints.allow = { categories: ["constant"] }
+        random_toss.constraints.disallow = { categories: ["value_out"] }
+
+        const loop = new ModifierDefn(TID_MODIFIER_LOOP, "loop", 10)
+        loop.jdKind = JdKind.Loop
+        tilesDB.modifiers[TID_MODIFIER_LOOP] = loop
+        loop.priority = 80
+        loop.constraints = {}
+        loop.constraints.only = ["constant"]
     }
-
-    const coin_values = [1, 2, 3, 4, 5]
-    make_vals(coin_values, "value_in", "F", 8)
-    make_vals(coin_values, "constant", "M", 6)
-    make_vals([1, 2, 3, 4, 5], "page", "M", 1).forEach(m => {
-        m.constraints.handling = m.constraints.handling || {}
-        m.constraints.handling.terminal = true
-        m.jdKind = JdKind.Page
-    })
-
-    function addRGB(id: number, color: number) {
-        const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
-        const mod = new ModifierDefn(tid, "rgb_led", 10)
-        tilesDB.modifiers[tid] = mod
-        mod.jdExtFun = "led_solid"
-        mod.jdParam = color
-    }
-
-    addRGB(1, 0x2f0000)
-    addRGB(2, 0x002f00)
-    addRGB(3, 0x00002f)
-    addRGB(4, 0x2f002f)
-    addRGB(5, 0x2f2f00)
-    addRGB(6, 0x000000)
-
-    function addAnim(name: string) {
-        const tid = TID_MODIFIER_RGB_LED_COLOR_X + name
-        const mod = new ModifierDefn(tid, "rgb_led", 11)
-        tilesDB.modifiers[tid] = mod
-        mod.jdExtFun = "led_anim_" + name
-    }
-
-    addAnim("sparkle")
-    addAnim("rainbow")
-
-    const rgbled = addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
-    rgbled.priority = 500
-    rgbled.serviceClassName = "led"
-    rgbled.serviceCommand = jacs.CMD_SET_REG | 2
-    rgbled.jdExternalClass = 0x1609d4f0
-    rgbled.jdKind = JdKind.ExtLib
-    rgbled.jdParam = tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
-    
-    const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, [
-        "constant",
-    ])
-    servoSetAngle.priority = 500
-    servoSetAngle.serviceClassName = "servo"
-    servoSetAngle.jdExternalClass = 0x12fc9103
-    servoSetAngle.serviceCommand = jacs.CMD_SET_REG | 2
-    servoSetAngle.jdKind = JdKind.NumFmt
-    servoSetAngle.jdParam = jacs.NumFmt.I32
-
-    const addReadValue = (tid: string, kind: JdKind, varid: number) => {
-        const mod = new ModifierDefn(tid, "value_out", 10)
-        mod.jdParam = varid
-        mod.jdKind = kind
-        tilesDB.modifiers[tid] = mod
-        mod.priority = 200 + varid
-        return mod
-    }
-    addReadValue(TID_MODIFIER_CUP_X_READ, JdKind.Variable, 0)
-    addReadValue(TID_MODIFIER_CUP_Y_READ, JdKind.Variable, 1)
-    addReadValue(TID_MODIFIER_CUP_Z_READ, JdKind.Variable, 2)
-    // TODO: this should only be present when radio receive in When section
-    // addReadValue(TID_MODIFIER_RADIO_VALUE, "number from radio", JdKind.Radio, 3)
-
-    const random_toss = addReadValue(
-        TID_MODIFIER_RANDOM_TOSS,
-        JdKind.RandomToss,
-        5
-    )
-    random_toss.priority = 70
-    random_toss.constraints = {}
-    random_toss.constraints.allow = { categories: ["constant"] }
-    random_toss.constraints.disallow = { categories: ["value_out"] }
-
-    const loop = new ModifierDefn(TID_MODIFIER_LOOP, "loop", 10)
-    loop.jdKind = JdKind.Loop
-    tilesDB.modifiers[TID_MODIFIER_LOOP] = loop
-    loop.priority = 80
-    loop.constraints = {}
-    loop.constraints.only = ["constant"]
 
     export const iconFieldEditor: FieldEditor = {
         init: img`
@@ -569,7 +563,17 @@ namespace microcode {
         }
     }
 
-    const iconEditorTile = new IconEditor()
-    iconEditorTile.firstInstance = true
-    tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = iconEditorTile
+    function addFieldEditors() {
+        const iconEditorTile = new IconEditor()
+        iconEditorTile.firstInstance = true
+        tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = iconEditorTile
+    }
+
+    function addTiles() {
+        addSensorTiles()
+        addActuatorTiles()
+        addFieldEditors()
+    }
+
+    addTiles()
 }
