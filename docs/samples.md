@@ -7,6 +7,7 @@
 -   [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"} rock paper scissors](./samples/rock-paper-scissors)
 -   [![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"} hot potato](./samples/hot-potato)
 -   [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"} clap lights](./samples/clap-lights)
+-   [![reaction time](./images/generated/icon_reaction_time.png){:class="icon"} reaction time](./samples/reaction-time)
 -   [![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"} chuck a duck](./samples/chuck-a-duck)
 -   [![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon-sample"} firefly](./samples/firefly)
 -   [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon-sample"} railroad crossing](./samples/railroad-crossing)
