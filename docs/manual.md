@@ -1,12 +1,10 @@
-# Microsoft MicroCode (beta)
+# Microsoft MicroCode for micro:bit (beta)
 
 Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 
 > MicroCode is still in **beta** development and might change in the future.
 
-{% include youtube.html id="ymP7x8GXgz4" %}
-
--   Kid-friendly icon-based live code editor and [programming language](./language)
+-   Kid-friendly icon-based, live, structured code editor and [programming language](./language)
 
 ![Smiley Buttons MicroCode program](./images/generated/sample_smiley_buttons.png){:class="sample"}
 
@@ -43,7 +41,7 @@ MicroCode can be accessed with the keyboard:
 -   `Enter` or `Space` for `A` button
 -   `Backspace` for `B` button
 -   Keep moving the cursor `Up` to go back a screen, if `Backspace` is not available;
-for example, if you are using a 5-input switch panel.
+    for example, if you are using a 5-input switch panel.
 
 #### Gamepad support
 
@@ -75,6 +73,8 @@ Click on the version number in the web app to download the MicroCode hex file to
 ### [micro:bit V2](https://microbit.org) + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
 
 ![Arcade Shield and micro:bit V2](./images/meow1.jpg){:class="fluid"}
+
+{% include youtube.html id="ymP7x8GXgz4" %}
 
 {% include youtube.html id="LWjJL9qegmM" %}
 
