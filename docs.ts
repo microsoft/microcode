@@ -142,21 +142,6 @@ namespace docs {
                 const bound = ruleEditor.bounds
                 const imgr = image.create(bound.width, bound.height)
                 imgr.fill(loader.color)
-                console.log([
-                    0,
-                    0,
-                    bound.width,
-                    bound.height,
-                    img,
-                    ruleEditor.xfrm.localPos.x,
-                    ruleEditor.xfrm.localPos.y,
-                    ruleEditor.xfrm.localPos.x + bound.left,
-                    ruleEditor.xfrm.localPos.y + bound.top,
-                    bound.width,
-                    bound.height,
-                    true,
-                    false,
-                ])
                 imgr.blit(
                     0,
                     0,

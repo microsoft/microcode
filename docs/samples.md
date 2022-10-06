@@ -69,7 +69,7 @@ its head (Logo) and don't shake it, it does not like that.
 
 ![when page started, paint screen neutral](./images/generated/sample_pet_hamster_page_1_rule_1.png){:class="rule"}
 
--   **when** page started, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with neutral mood
+-   **when** ![page start](./images/generated/icon_S1.png){:class="icon"} page started, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with neutral mood
 
 Touching the micro:bit logo makes it happy.
 
@@ -161,11 +161,11 @@ If the **when** section is empty, the rule runs once at the page start only.
 
 ![when page starts, do paint a skull](./images/generated/sample_hot_potato_page_2_rule_1.png){:class="rule"}
 
--   **when** page starts, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with skull.
+-   **when** ![page start](./images/generated/icon_S1.png){:class="icon"} page start, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with skull.
 
 ![when page starts, do play sad sound](./images/generated/sample_hot_potato_page_2_rule_2.png){:class="rule"}
 
--   **when** page starts, **do** ![speaker](./images/generated/icon_A2.png){:class="icon"} play sound emoji ![emoji sad](./images/generated/icon_M19sad.png){:class="icon"} sad.
+-   **when** ![page start](./images/generated/icon_S1.png){:class="icon"} page start, **do** ![speaker](./images/generated/icon_A2.png){:class="icon"} play sound emoji ![emoji sad](./images/generated/icon_M19sad.png){:class="icon"} sad.
 
 #### improvement ideas
 
@@ -187,7 +187,7 @@ When a loud sound is detected switch between to page 2
 
 ![when page starts, do paint all leds](./images/generated/sample_clap_lights_page_1_rule_1.png){:class="rule"}
 
--   **when** page starts, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with all leds.
+-   **when** ![page start](./images/generated/icon_S1.png){:class="icon"} page start, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with all leds.
 
 ![when loud sond, do switch to page 2](./images/generated/sample_clap_lights_page_1_rule_2.png){:class="rule"}
 
@@ -201,7 +201,7 @@ Similar to page 1 but in this case, we turn off all the LEDs.
 
 ![when page starts, do turn off all LEDs](./images/generated/sample_clap_lights_page_2_rule_1.png){:class="rule"}
 
--   **when** page starts, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} turn off all LEDs
+-   **when** ![page start](./images/generated/icon_S1.png){:class="icon"} page start, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} turn off all LEDs
 
 ![when loud sond, do switch to page 2](./images/generated/sample_clap_lights_page_2_rule_2.png){:class="rule"}
 
