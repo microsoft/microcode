@@ -252,6 +252,12 @@ namespace microcode {
             this.modifiers = []
         }
 
+        get sensor() {
+            if (this.sensors.length == 0)
+                return tilesDB.sensors[TID_SENSOR_ALWAYS]
+            return this.sensors[0]
+        }
+
         public getRuleRep(): RuleRep {
             return {
                 sensors: this.sensors,
