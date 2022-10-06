@@ -85,7 +85,6 @@ namespace microcode {
     export const TID_MODIFIER_ICON_EDITOR = "M15"
     export const TID_MODIFIER_COLOR_RED = "M16"
     export const TID_MODIFIER_COLOR_DARKPURPLE = "M17"
-    export const TID_MODIFIER_MUSIC_EDITOR = "M18"
 
     export const TID_MODIFIER_EMOJI_GIGGLE = "M19giggle"
     export const TID_MODIFIER_EMOJI_HAPPY = "M19happy"
@@ -573,63 +572,4 @@ namespace microcode {
     const iconEditorTile = new IconEditor()
     iconEditorTile.firstInstance = true
     tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = iconEditorTile
-
-    export type NoteField = { note: number }
-    const musicFieldEditor: FieldEditor = {
-        init: { note: 0 },
-        clone: (field: NoteField) => {
-            return {
-                note: field.note,
-            }
-        },
-        editor: musicEditor,
-        toImage: noteToImage,
-        buttonStyle: () => ButtonStyles.ShadowedWhite,
-        serialize: (field: NoteField) => field.note.toString(),
-        deserialize: (note: string) => {
-            return { note: parseInt(note) }
-        },
-    }
-
-    class MusicEditor extends ModifierDefn {
-        field: NoteField
-        constructor(field: NoteField = null) {
-            super(TID_MODIFIER_MUSIC_EDITOR, "music_editor", 10)
-            this.fieldEditor = musicFieldEditor
-            if (field) {
-                this.field = { note: field.note }
-            } else {
-                this.field = this.fieldEditor.clone(this.fieldEditor.init)
-            }
-        }
-
-        getField() {
-            return this.field
-        }
-
-        getIcon(): Image {
-            return this.fieldEditor.toImage(this.field)
-        }
-
-        getNewInstance(field: NoteField) {
-            return new MusicEditor({
-                note: field ? field.note : this.field.note,
-            })
-        }
-
-        serviceCommandArg() {
-            // generated with scripts/notes.js:
-            const periodMap = hex`ee0e4d0dda0b2f0bf709e108e9077707a706ed059805fc047004f403bc03`
-            const note = Math.clamp(0, this.field.note, 15)
-            const period = periodMap.getNumber(NumberFormat.UInt16LE, note << 1)
-
-            const r = Buffer.create(6)
-            r.setNumber(NumberFormat.UInt16LE, 0, period)
-            r.setNumber(NumberFormat.UInt16LE, 2, period >> 1)
-            r.setNumber(NumberFormat.UInt16LE, 4, 400) // ms
-            return r
-        }
-    }
-
-    tilesDB.modifiers[TID_MODIFIER_MUSIC_EDITOR] = new MusicEditor()
 }
