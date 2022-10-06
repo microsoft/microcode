@@ -24,11 +24,15 @@ namespace jacs {
             this.index = lst.length
             lst.push(this)
         }
+        get varIndex() {
+            if (this.kind == CellKind.LOCAL) return LOCAL_OFFSET + this.index
+            else return this.index
+        }
         read(wr: OpWriter) {
-            return wr.emitExpr(loadExpr(this.kind), [literal(this.index)])
+            return wr.emitMemRef(loadExpr(this.kind), this.varIndex)
         }
         write(wr: OpWriter, val: Value) {
-            wr.emitStmt(storeStmt(this.kind), [literal(this.index), val])
+            wr.emitStmt(storeStmt(this.kind), [literal(this.varIndex), val])
         }
     }
 
@@ -762,7 +766,17 @@ namespace jacs {
             const wr = this.writer
             this.emitSleep(ANTI_FREEZE_DELAY)
             if (args.length) {
-                index.write(wr, this.emitAdd(index.read(wr), 1))
+                index.write(
+                    wr,
+                    this.emitAdd(
+                        // NaN -> 0
+                        wr.emitExpr(Op.EXPR2_BIT_OR, [
+                            index.read(wr),
+                            literal(0),
+                        ]),
+                        1
+                    )
+                )
                 wr.emitJumpIfTrue(
                     wr.top,
                     wr.emitExpr(Op.EXPR2_LT, [index.read(wr), bound.read(wr)])
