@@ -618,7 +618,10 @@ namespace microcode {
                     parent: this,
                     style: ButtonStyles.Transparent,
                     icon: "when_insertion_point",
-                    ariaId: "when",
+                    ariaId:
+                        this.ruleButtons["sensors"].length == 0
+                            ? "when"
+                            : undefined,
                     x: 0,
                     y: 0,
                     onClick: () => this.showWhenInsertMenu(),
@@ -645,7 +648,10 @@ namespace microcode {
                     parent: this,
                     style: ButtonStyles.Transparent,
                     icon: "do_insertion_point",
-                    ariaId: "do",
+                    ariaId:
+                        this.ruleButtons["actuators"].length == 0
+                            ? "do"
+                            : undefined,
                     x: 0,
                     y: 0,
                     onClick: () => this.showDoInsertMenu(),
