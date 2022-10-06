@@ -112,7 +112,7 @@ case where no parameter tile is given:
 -   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays ![emoji giggle](./images/generated/icon_M19giggle.png){:class="icon"} `giggle` by default
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends the number `1` by default
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` switches to page `1` by default
--   ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable` puts a number into a variable (`X`, `Y`, `Z`)
+-   ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable` puts a number into a variable (`X`, `Y`, `Z`); defaults to `1`
 
 Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5 dots`.
 
