@@ -309,7 +309,7 @@ const liveStrings = {
 
     delete_tile: "delete tile",
 
-    S1: "always",
+    S1: "page start",
     S2: "press",
     S2B: "release",
     S3: "accelerometer",

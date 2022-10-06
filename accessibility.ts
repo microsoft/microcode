@@ -43,7 +43,7 @@ namespace accessibility {
         when: "when",
         do: "do",
 
-        S1: "start",
+        S1: "page start",
         S2: "press",
         S2B: "release",
         S3: "move",

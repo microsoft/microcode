@@ -62,6 +62,7 @@ namespace microcode {
             this.reg[TID_SENSOR_CUP_Y_WRITTEN] = icondb.cupYwritten
             this.reg[TID_SENSOR_CUP_Z_WRITTEN] = icondb.cupZwritten
             this.reg[TID_SENSOR_MAGNET] = icondb.magnet
+            this.reg[TID_SENSOR_START_PAGE] = icondb.tile_start_page
 
             // filters
             this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
@@ -534,6 +535,25 @@ namespace icondb {
         . . . . . . . f f f f f f f d .
         . . . . . . . . d d d d d d d .
         . . . . . . . . . . . . . . . .
+    `
+
+    export const tile_start_page = img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . f f f f f f f . . . 
+    . . . . . f f 9 9 9 9 9 f . . . 
+    . . . . f 9 f 9 9 9 9 9 f . . . 
+    . . . f f f f 8 9 9 9 9 f . . . 
+    . . . f 9 9 9 a 8 9 9 9 f . . . 
+    8 8 8 8 8 8 8 a a 8 9 9 f . . . 
+    a a a a a a a a a a 8 9 f . . . 
+    8 8 8 8 8 8 8 a a 8 9 9 f . . . 
+    . . . f 9 9 9 a 8 9 9 9 f . . . 
+    . . . f 9 9 9 8 9 9 9 9 f . . . 
+    . . . f 9 9 9 9 9 9 9 9 f . . . 
+    . . . f f f f f f f f f f . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . .     
     `
 
     export const tile_page_1 = img`
