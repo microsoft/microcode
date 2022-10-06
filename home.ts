@@ -72,7 +72,7 @@ namespace microcode {
             const t = control.millis()
             const dy = this.yOffset == 0 ? (Math.idiv(t, 800) & 1) - 1 : 0
             const margin = 2
-            const OFFSET = (Screen.HEIGHT >> 1) - microbitLogo.height - wordLogo.height - margin
+            const OFFSET = (Screen.HEIGHT >> 1) - wordLogo.height - margin
             const y = Screen.TOP_EDGE + OFFSET + dy
             Screen.drawTransparentImage(
                 wordLogo,
