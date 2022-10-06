@@ -174,15 +174,43 @@ function makeCodeRun(options) {
             simState = {}
         }
 
+        const decompressProgram = hash => {
+            try {
+                const decompressed = fflate.decompressSync(
+                    fflate.strToU8(atob(hash), true)
+                )
+                return fflate.strFromU8(decompressed)
+            } catch {
+                console.debug(e)
+                return hash
+            }
+        }
+
+        const compressProgram = hash => {
+            try {
+                return btoa(
+                    fflate.strFromU8(
+                        fflate.compressSync(fflate.strToU8(hash)),
+                        true
+                    )
+                )
+            } catch (e) {
+                console.debug(e)
+                return hash
+            }
+        }
+
         const importState = () => {
             const hash = window.location.hash.replace(/^#/, "")
+            const hashProgram = decompressProgram(hash)
             const currentProgram = simState[saveSlotKey] || ""
-            if (hash && currentProgram !== hash) {
-                console.debug(`importing program from hash`, { hash })
-                simState[saveSlotKey] = hash
+
+            if (hashProgram && currentProgram !== hashProgram) {
+                console.debug(`importing program from hash`, { hashProgram })
+                simState[saveSlotKey] = hashProgram
                 simStateChanged = true
                 saveState()
-                window.location.hash = ''
+                window.location.hash = ""
                 window.location.reload()
             }
         }
@@ -191,11 +219,9 @@ function makeCodeRun(options) {
             if (simStateChanged) {
                 localStorage["microcode-simstate"] = JSON.stringify(simState)
                 const currentProgram = simState[saveSlotKey] || ""
-                window.history.pushState(
-                    simState,
-                    undefined,
-                    `#${currentProgram}`
-                )
+
+                const hash = compressProgram(currentProgram)
+                window.history.pushState(simState, undefined, `#${hash}`)
             }
             simStateChanged = false
         }
