@@ -457,7 +457,7 @@ namespace jacs {
 
         lookupSensorRole(rule: microcode.RuleDefn) {
             const sensor = rule.sensor
-            if (sensor.tid == microcode.TID_SENSOR_ALWAYS)
+            if (sensor.tid == microcode.TID_SENSOR_START_PAGE)
                 return this.pageStartCondition
             let idx = sensor.serviceInstanceIndex
             if (
