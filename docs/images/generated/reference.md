@@ -170,6 +170,11 @@
 - icon
 
 
+### ![page start](./images/generated/icon_S1.png){:class="icon"} `page start` {#icon_S1}
+
+- icon
+
+
 ### ![logo](./images/generated/icon_F7.png){:class="icon"} `logo` {#icon_F7}
 
 - icon
@@ -260,7 +265,7 @@
 - icon
 
 
-### ![screen](./images/generated/icon_A5.png){:class="icon"} `screen` {#icon_A5}
+### ![paint screen](./images/generated/icon_A5.png){:class="icon"} `paint screen` {#icon_A5}
 
 - icon
 
@@ -310,7 +315,7 @@
 - icon
 
 
-### ![LED](./images/generated/icon_M15.png){:class="icon"} `LED` {#icon_M15}
+### ![LED image](./images/generated/icon_M15.png){:class="icon"} `LED image` {#icon_M15}
 
 - icon
 
@@ -401,6 +406,16 @@
 
 
 ### ![black](./images/generated/icon_A20_6.png){:class="icon"} `black` {#icon_A20_6}
+
+- icon
+
+
+### ![rainbow](./images/generated/icon_A20_rainbow.png){:class="icon"} `rainbow` {#icon_A20_rainbow}
+
+- icon
+
+
+### ![sparkle](./images/generated/icon_A20_sparkle.png){:class="icon"} `sparkle` {#icon_A20_sparkle}
 
 - icon
 
