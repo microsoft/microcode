@@ -1,4 +1,4 @@
-# ![Pet hamster icon](/docs/images/generated/icon_sample_pet_hamster.png){:class="icon-sample"} Pet Hamster {#pet-hamster}
+# ![Pet hamster icon](../images/generated/icon_sample_pet_hamster.png){:class="icon-sample"} Pet Hamster {#pet-hamster}
 
 ![Pet Hamster MicroCode program](/docs/images/generated/sample_pet_hamster.png){:class="sample"}
 
