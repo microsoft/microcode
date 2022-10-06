@@ -26,7 +26,17 @@ namespace microcode {
             this.color_ = 12
         }
 
-        /* abstract */ startup() {}
+        /* abstract */ startup() {
+            if (Options.menuProfiling) {
+                control.onEvent(
+                    ControllerButtonEvent.Pressed,
+                    controller.menu.id,
+                    () => {
+                        control.heapSnapshot()
+                    }
+                )
+            }
+        }
 
         /* abstract */ shutdown() {}
 

@@ -217,15 +217,16 @@ namespace microcode {
             makeOnEvent(controller.left.id, CursorDir.Left)
             makeOnEvent(controller.up.id, CursorDir.Up)
             makeOnEvent(controller.down.id, CursorDir.Down)
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.menu.id,
-                () => {
-                    // go back to home screen
-                    this.app.popScene()
-                    this.app.pushScene(new Home(this.app))
-                }
-            )
+            if (!Options.menuProfiling)
+                control.onEvent(
+                    ControllerButtonEvent.Pressed,
+                    controller.menu.id,
+                    () => {
+                        // go back to home screen
+                        this.app.popScene()
+                        this.app.pushScene(new Home(this.app))
+                    }
+                )
             const forward = () => this.cursor.click()
             control.onEvent(
                 ControllerButtonEvent.Pressed,
@@ -283,7 +284,10 @@ namespace microcode {
         }
 
         protected handleClick(x: number, y: number) {
-            const target = this.cursor.navigator.screenToButton(x - Screen.HALF_WIDTH, y - Screen.HALF_HEIGHT)
+            const target = this.cursor.navigator.screenToButton(
+                x - Screen.HALF_WIDTH,
+                y - Screen.HALF_HEIGHT
+            )
             if (target) {
                 this.snapCursorTo(target)
                 target.click()
@@ -293,7 +297,10 @@ namespace microcode {
         }
 
         protected handleMove(x: number, y: number) {
-            const target = this.cursor.navigator.screenToButton(x - Screen.HALF_WIDTH, y - Screen.HALF_HEIGHT)
+            const target = this.cursor.navigator.screenToButton(
+                x - Screen.HALF_WIDTH,
+                y - Screen.HALF_HEIGHT
+            )
             if (target) {
                 this.hoverCursorTo(target)
             }
