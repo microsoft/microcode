@@ -271,7 +271,6 @@ namespace jacs {
                 roleData.append(r.serialize())
             }
 
-
             const descs = this.stringLiterals.map((str, idx) => {
                 let buf: Buffer
                 let len: number
@@ -457,8 +456,9 @@ namespace jacs {
         }
 
         lookupSensorRole(rule: microcode.RuleDefn) {
-            const sensor = rule.sensors.length ? rule.sensors[0] : null
-            if (!sensor) return this.pageStartCondition
+            const sensor = rule.sensor
+            if (sensor.tid == microcode.TID_SENSOR_ALWAYS)
+                return this.pageStartCondition
             let idx = sensor.serviceInstanceIndex
             if (
                 sensor.tid == microcode.TID_SENSOR_PRESS ||
@@ -471,8 +471,8 @@ namespace jacs {
         }
 
         lookupEventCode(role: Role, rule: microcode.RuleDefn) {
-            const sensor = rule.sensors.length ? rule.sensors[0] : null
-            if (sensor && sensor.eventCode != undefined) {
+            const sensor = rule.sensor
+            if (sensor.eventCode != undefined) {
                 let evCode = sensor.eventCode
                 for (const m of rule.filters) {
                     if (m.eventCode !== undefined) evCode = m.eventCode
@@ -942,10 +942,8 @@ namespace jacs {
                 }
             }
 
-            if (
-                rule.sensors[0] &&
-                rule.sensors[0].tid == microcode.TID_SENSOR_TIMER
-            ) {
+            const sensor = rule.sensor
+            if (sensor.tid == microcode.TID_SENSOR_TIMER) {
                 const timer = this.addProc(name + "_timer")
                 let period = 0
                 let randomPeriod = 0
@@ -975,11 +973,8 @@ namespace jacs {
                 return
             }
 
-            if (
-                rule.sensors[0] &&
-                rule.sensors[0].jdKind == microcode.JdKind.Variable
-            ) {
-                const pipeId = rule.sensors[0].jdParam
+            if (sensor.jdKind == microcode.JdKind.Variable) {
+                const pipeId = sensor.jdParam
                 const role = this.pipeRole(pipeId)
                 this.withProcedure(role.getDispatcher(), wr => {
                     this.ifCurrPage(() => {
@@ -995,10 +990,7 @@ namespace jacs {
             this.withProcedure(role.getDispatcher(), wr => {
                 this.ifCurrPage(() => {
                     const code = this.lookupEventCode(role, rule)
-                    if (
-                        rule.sensors[0] &&
-                        rule.sensors[0].serviceClassName == "radio"
-                    ) {
+                    if (sensor.serviceClassName == "radio") {
                         const loadVal = () => wr.emitBufLoad(NumFmt.F64, 12)
                         this.ifEq(
                             wr.emitExpr(Op.EXPR0_PKT_REPORT_CODE, []),
