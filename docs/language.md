@@ -122,7 +122,7 @@ Sequences of numeric parameters are summed, as before, allowing the construction
 
 A ![repeat](./images/generated/icon_M23.png){:class="icon"} `repeat` tile
 can be added to certain commands to repeat the entire **DO** section. The value tiles
-after `repeat` determine the number of iterations.
+after `repeat` determine the number of iterations. If no value is given, it repeats forever.
 
 ![when touch logo, print happy on screen](./images/generated/sample_pet_hamster_page_1_rule_2.png){:class="rule"}
 

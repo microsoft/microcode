@@ -2,8 +2,9 @@ namespace microcode {
     // Auto-save slot
     export const SAVESLOT_AUTO = "sa"
 
-    type SavedState = {
+    interface SavedState {
         progdef: any
+        version?: string
     }
 
     export class App {
@@ -35,6 +36,7 @@ namespace microcode {
         public save(slot: string, progdef: ProgramDefn) {
             const saved: SavedState = {
                 progdef: progdef.toObj(),
+                version: microcode.VERSION,
             }
             const s = JSON.stringify(saved)
             reportEvent("app.save", { slot: slot, size: s.length })

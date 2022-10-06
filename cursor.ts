@@ -9,7 +9,7 @@ namespace microcode {
         Back,
     }
 
-    export type CursorState = {
+    export interface CursorState {
         navigator: INavigator
         pos: Vec2
         ariaId: string
@@ -91,8 +91,7 @@ namespace microcode {
             let target = this.navigator.getCurrent() //.sort((a, b) => a.z - b.z);
             if (target) {
                 target.click()
-                if (Options.profiling)
-                    control.heapSnapshot()                    
+                if (Options.profiling) control.heapSnapshot()
                 return true
             }
             return false

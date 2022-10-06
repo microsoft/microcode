@@ -1,5 +1,5 @@
 namespace microcode {
-    export type ButtonStyle = {
+    export interface ButtonStyle {
         fill: number
         borders: { top: number; bottom: number; left: number; right: number }
         shadow: boolean
