@@ -8,7 +8,10 @@ https://youtu.be/ymP7x8GXgz4
 
 ## Getting started
 
-To get started, please see the [MicroCode manual](https://microsoft.github.io/microcode/docs/manual) or [try it now!](https://aka.ms/microcode).
+To get started,
+
+-   read the [MicroCode manual](https://microsoft.github.io/microcode/docs/manual)
+-   [try it now!](https://aka.ms/microcode).
 
 ## Development
 

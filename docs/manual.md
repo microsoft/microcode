@@ -9,7 +9,7 @@ Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 ![Smiley Buttons MicroCode program](./images/generated/sample_smiley_buttons.png){:class="sample"}
 
 -   Keyboard, mouse, touch, screen reader accessible
--   Accessories (LEDs, servosß, ...) supported via [Jacdac](https://aka.ms/jacdac)
+-   Accessories (LEDs, servos, ...) supported via [Jacdac](https://aka.ms/jacdac)
 
 ## [Web editor](https://aka.ms/m9) {#web}
 
