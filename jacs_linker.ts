@@ -2,7 +2,7 @@ namespace jacs {
     function functionName(idx: number) {
         const desc = _binGetProc(idx)
         const nameidx = desc.getNumber(NumberFormat.UInt16LE, 12)
-        return _binGetString(nameidx)
+        return _binGetString(nameidx) as string
     }
 
     function patchBody(top: TopWriter, body: Buffer, name: string) {

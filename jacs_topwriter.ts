@@ -849,6 +849,10 @@ namespace jacs {
                 )
             } else if (actuator.jdKind == microcode.JdKind.Sequence) {
                 this.emitSequance(rule, 400)
+            } else if (actuator.jdKind == microcode.JdKind.ExtLibFn) {
+                this.emitValueOut(rule, 1)
+                const role = this.lookupActuatorRole(rule)
+                this.callLinked(actuator.jdParam, [role.emit(wr), currValue()])
             } else {
                 this.error(`can't map act role for ${JSON.stringify(actuator)}`)
             }

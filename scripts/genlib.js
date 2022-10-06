@@ -39,7 +39,7 @@ function libToFun(lib) {
     }
     r += "return null\n}\n"
 
-    r += "export function _binGetString(idx: number): string {\n"
+    r += "export function _binGetString(idx: number): string | Buffer {\n"
     idx = 0
     for (const body of lib.strings) {
         r += `if (idx == ${idx})\n`

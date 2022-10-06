@@ -87,6 +87,7 @@ namespace microcode {
             // actuators
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
             this.reg[TID_ACTUATOR_PAINT] = icondb.showScreen
+            this.reg[TID_ACTUATOR_SHOW_NUMBER] = icondb.showNumber
             this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
             this.reg[TID_ACTUATOR_RADIO_SET_GROUP] = icondb.radio_set_group
             this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
@@ -501,6 +502,25 @@ namespace icondb {
         . . . b b b b b b b . . . . . .
         . . . . . . . . . . . . . . . .
 `
+
+    export const showNumber = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . 4 4 4 . .
+        . . . . 2 . . . . . 4 5 1 5 4 .
+        . . . . 2 . . . . . 4 1 1 1 4 .
+        . 2 . . 2 . . . . . 4 5 1 5 4 .
+        . . 2 . 2 . . . . . . 4 4 4 . .
+        . . . . . . . . . . . . . . . .
+        . . f f f f f f f . . . . . . .
+        . . f f f 2 2 f f b . . . . . .
+        . . f f 2 f 2 f f b . . . . . .
+        . . f 2 f f 2 f f b . 2 2 2 2 .
+        . . f 2 2 2 2 2 f b . . . . . .
+        . . f f f f 2 f f b . 2 . . . .
+        . . f f f f f f f b . . 2 . . .
+        . . . b b b b b b b . . . . . .
+        . . . . . . . . . . . . . . . .
+        `
 
     ///
     /// GENERIC LANGUAGE TILES (NOT HARDWARE SPECIFIC)
@@ -1699,7 +1719,7 @@ f f f f f f f f f f f f f f f f
 . . . d 1 d f d f d d b . . . .
 . . . . 1 d d d d d d . . . . .
 `
-export const cupYread = img`
+    export const cupYread = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
@@ -1717,7 +1737,7 @@ export const cupYread = img`
 . . . d 1 d d f d d d b . . . .
 . . . . 1 d d d d d d . . . . .
 `
-export const cupZread = img`
+    export const cupZread = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
@@ -1735,7 +1755,7 @@ export const cupZread = img`
 . . . d 1 d f f f d d b . . . .
 . . . . 1 d d d d d d . . . . .
 `
-export const cupXassign = img`
+    export const cupXassign = img`
 . . . . . . . . . 4 4 4 4 4 4 4
 . . . . . . . . 4 5 5 5 5 5 5 5
 . . . . . . . 4 5 4 4 4 4 4 4 4
@@ -1753,7 +1773,7 @@ export const cupXassign = img`
 . . . d 1 d f d f d d b . . . .
 . . . . 1 d d d d d d . . . . .
 `
-export const cupYassign = img`
+    export const cupYassign = img`
 . . . . . . . . . 4 4 4 4 4 4 4
 . . . . . . . . 4 5 5 5 5 5 5 5
 . . . . . . . 4 5 4 4 4 4 4 4 4
@@ -1771,7 +1791,7 @@ export const cupYassign = img`
 . . . d 1 d d f d d d b . . . .
 . . . . 1 d d d d d d . . . . .
 `
-export const cupZassign = img`
+    export const cupZassign = img`
 . . . . . . . . . 4 4 4 4 4 4 4
 . . . . . . . . 4 5 5 5 5 5 5 5
 . . . . . . . 4 5 4 4 4 4 4 4 4
@@ -1789,7 +1809,7 @@ export const cupZassign = img`
 . . . d 1 d f f f d d b . . . .
 . . . . 1 d d d d d d . . . . .
 `
-export const cupXwritten = img`
+    export const cupXwritten = img`
 4 4 4 4 4 4 4 . . . . . . . . .
 5 5 5 5 5 5 5 4 . . . . . . . .
 4 4 4 4 4 4 4 5 4 . . . . . . .
@@ -1807,7 +1827,7 @@ export const cupXwritten = img`
 . . . d 1 d f d f d d b . . . .
 . . . . 1 d d d d d d . . . . .
 `
-export const cupYwritten = img`
+    export const cupYwritten = img`
 4 4 4 4 4 4 4 . . . . . . . . .
 5 5 5 5 5 5 5 4 . . . . . . . .
 4 4 4 4 4 4 4 5 4 . . . . . . .
@@ -1825,7 +1845,7 @@ export const cupYwritten = img`
 . . . d 1 d d f d d d b . . . .
 . . . . 1 d d d d d d . . . . .
 `
-export const cupZwritten = img`
+    export const cupZwritten = img`
 4 4 4 4 4 4 4 . . . . . . . . .
 5 5 5 5 5 5 5 4 . . . . . . . .
 4 4 4 4 4 4 4 5 4 . . . . . . .

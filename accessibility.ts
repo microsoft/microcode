@@ -95,6 +95,7 @@ namespace accessibility {
         A6: "radio send",
         A6A: "radio set group",
         A7: "random number",
+        A10: "show number",
 
         M1: "page 1",
         M2: "page 2",

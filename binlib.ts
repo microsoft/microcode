@@ -36,11 +36,17 @@ f9200242394b`
             return hex`
 00000000340000000100030009000000904f0001002d0136234df9002695463b902d01010095482d0004f92002
 422d0204f903e81e3f0100951a4f004cfc29394b000000`
-        if (idx == 9 || idx == "_autoRefresh_")
-            return hex`0000000008000000000000000a00000004f90209404cfc05`
+        if (idx == 9 || idx == "dot_showNumber")
+            return hex`
+0000000080000000030002000a0000002d0118901c520195469a2d01224f000100194df9000a2d01f3224f0001
+004df9002f2d019a204f012d0101019a262c4f023b90330bc7010192261a92483b93330bc7010292261a92484c
+f9002a2d0190234f000100154df9000af32d01234f0001004df900079a52013b90330b2d01952695482d0004f9
+20024205013f394b00`
+        if (idx == 10 || idx == "_autoRefresh_")
+            return hex`0000000008000000000000000c00000004f90209404cfc05`
         return null
     }
-    export function _binGetString(idx: number): string {
+    export function _binGetString(idx: number): string | Buffer {
         if (idx == 0) return "main"
         if (idx == 1) return "cloud"
         if (idx == 2) return "hsv"
@@ -51,7 +57,12 @@ f9200242394b`
         if (idx == 7) return "led_anim_rainbow"
         if (idx == 8) return "clamp"
         if (idx == 9) return "dot_animation"
-        if (idx == 10) return "_autoRefresh_"
+        if (idx == 10) return "dot_showNumber"
+        if (idx == 11)
+            return hex`
+0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a
+02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f`
+        if (idx == 12) return "_autoRefresh_"
         return null
     }
     export const _binFloatLits = hex`b81e85eb51b8ae3f9a9999999999b93f`

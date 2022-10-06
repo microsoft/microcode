@@ -66,6 +66,7 @@ namespace microcode {
     export const TID_ACTUATOR_CUP_X_ASSIGN = "A9A"
     export const TID_ACTUATOR_CUP_Y_ASSIGN = "A9B"
     export const TID_ACTUATOR_CUP_Z_ASSIGN = "A9C"
+    export const TID_ACTUATOR_SHOW_NUMBER = "A10"
 
     export const TID_MODIFIER_PAGE_1 = "M1"
     export const TID_MODIFIER_PAGE_2 = "M2"
@@ -319,7 +320,6 @@ namespace microcode {
         const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
         paint.serviceClassName = "dotMatrix"
         paint.serviceCommand = jacs.CMD_SET_REG | 0x2
-        paint.serviceInstanceIndex = 0
         paint.priority = 10
         paint.jdKind = JdKind.Sequence
         paint.jdParam = "dot_animation"
@@ -350,11 +350,17 @@ namespace microcode {
             theVar.jdParam = id
             theVar.jdKind = JdKind.Variable
             theVar.priority = 200 + id
+            return theVar
         }
 
         addAssign(TID_ACTUATOR_CUP_X_ASSIGN, 0)
         addAssign(TID_ACTUATOR_CUP_Y_ASSIGN, 1)
         addAssign(TID_ACTUATOR_CUP_Z_ASSIGN, 2)
+
+        const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER, 10)
+        showNum.jdKind = JdKind.ExtLibFn
+        showNum.jdParam = "dot_showNumber"
+        showNum.serviceClassName = "dotMatrix"
 
         const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
         emoji.serviceClassName = "soundPlayer"
