@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.2.12","target":"arcade","targetVersion":"1.11.3"}
-// total=2246485 new=94.18% cached=0.00% other=5.82%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.2.13","target":"arcade","targetVersion":"1.11.3"}
+// total=2246609 new=94.18% cached=0.00% other=5.82%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1523,7 +1523,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___3977 = (s.tmp_0);
     globals._binFloatLits___3990 = (_hex6573);
-    globals.VERSION___3992 = ("v2.2.12");
+    globals.VERSION___3992 = ("v2.2.13");
     globals.BACK_BUTTON_ERROR_KIND___4004 = ("back_button");
     globals.microcode_Options_fps___4052 = (false);
     globals.microcode_Options_profiling___4053 = (false);
@@ -59374,7 +59374,7 @@ switch (step) {
     s.tmp_10 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "label", "reaction time");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "ariaId", "N6");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDEwMDAwMDAwMDAwMDAwKSIsIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSIsIk0xNSgwMDAwMDAwMDAwMDAwMTAwMDAwMDAwMDAwKSIsIk0yMyJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxOCIsIkYxOCIsIkYxOCIsIkYxOCIsIkYxOCJdLCJNIjpbIk0yIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMTExMTExMTExMTExMTExMTExMTExMTExMSkiXX0seyJTIjpbIlMxIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTloZWxsbyJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBMSJdLCJGIjpbIkYwIl0sIk0iOlsiTTMiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTEiXSwiRiI6WyJGMSJdLCJNIjpbIk00Il19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMDAxMDAwMTAwMDExMTEwMDEwMDAwMDEwMCkiLCJNMTUoMDAwMTAwMDEwMDAxMTExMDAxMDAwMDAxMCkiLCJNMjMiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTkiXSwiTSI6WyJNMSJdfSx7fV19LHsiUiI6W3siUyI6WyJTMSJdLCJBIjpbIkE1Il0sIk0iOlsiTTE1KDAwMTAwMDAwMTAxMTExMTAwMDEwMDAxMDApIiwiTTE1KDAxMDAwMDAxMDAxMTExMDAwMTAwMDEwMDApIiwiTTIzIl19LHsiUyI6WyJTNCJdLCJBIjpbIkExIl0sIkYiOlsiRjE5Il0sIk0iOlsiTTEiXX0se31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuMi4xMSJ9");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDEwMDAwMDAwMDAwMDAwKSIsIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSIsIk0xNSgwMDAwMDAwMDAwMDAwMTAwMDAwMDAwMDAwKSIsIk0yMyJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxOCIsIkYxOCIsIkYxOCIsIkYxOCIsIkYxOCJdLCJNIjpbIk0yIl19LHsiUyI6WyJTMiJdLCJBIjpbIkExIl0sIkYiOlsiRjMiXSwiTSI6WyJNNCJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBMSJdLCJGIjpbIkY0Il0sIk0iOlsiTTMiXX0se31dfSx7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgxMTExMTExMTExMTExMTExMTExMTExMTExKSJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTMiJdLCJBIjpbIkExIl0sIkYiOlsiRjMiXSwiTSI6WyJNMyJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBMSJdLCJGIjpbIkY0Il0sIk0iOlsiTTQiXX0se31dfSx7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDEwMDAxMDAwMTExMTAwMTAwMDAwMTAwKSIsIk0xNSgwMDAxMDAwMTAwMDExMTEwMDEwMDAwMDEwKSIsIk0yMyJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSJdLCJNIjpbIk0xIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMDAxMDAwMDAxMDExMTExMDAwMTAwMDEwMCkiLCJNMTUoMDEwMDAwMDEwMDExMTEwMDAxMDAwMTAwMCkiLCJNMjMiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTkiXSwiTSI6WyJNMSJdfSx7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi4yLjEyIn0=");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "icon", "reaction_time");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_10);
     r0 = pxsim_pxtrt.mkMap();
@@ -59432,7 +59432,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_samples__P4059.info = {"start":509,"length":10721,"line":20,"column":4,"endLine":125,"endColumn":5,"fileName":"samples.ts","functionName":"samples","argumentNames":["withIcon"]}
+microcode_samples__P4059.info = {"start":509,"length":10845,"line":20,"column":4,"endLine":125,"endColumn":5,"fileName":"samples.ts","functionName":"samples","argumentNames":["withIcon"]}
 
 function microcode_samples__P4059_mk(s) {
     checkStack(s.depth);
@@ -59515,7 +59515,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-map_inline__P22228.info = {"start":11031,"length":33,"line":120,"column":20,"endLine":120,"endColumn":53,"fileName":"samples.ts","functionName":"inline","argumentNames":["map.inline"]}
+map_inline__P22228.info = {"start":11155,"length":33,"line":120,"column":20,"endLine":120,"endColumn":53,"fileName":"samples.ts","functionName":"inline","argumentNames":["map.inline"]}
 
 function map_inline__P22228_mk(s) {
     checkStack(s.depth);
@@ -59651,7 +59651,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_samples_inline__P22237.info = {"start":11100,"length":110,"line":122,"column":16,"endLine":123,"endColumn":66,"fileName":"samples.ts","functionName":"inline","argumentNames":["microcode.samples.inline"]}
+microcode_samples_inline__P22237.info = {"start":11224,"length":110,"line":122,"column":16,"endLine":123,"endColumn":66,"fileName":"samples.ts","functionName":"inline","argumentNames":["microcode.samples.inline"]}
 
 function microcode_samples_inline__P22237_mk(s) {
     checkStack(s.depth);
