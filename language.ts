@@ -37,16 +37,28 @@ namespace microcode {
         deserialize: (s: string) => any
     }
 
+    // let P be jdParam
     export enum JdKind {
-        Literal = 1,
-        Variable = 2,
-        Radio = 3,
-        RandomToss = 4,
-        Page = 5,
-        Sequence = 6,
-        NumFmt = 7,
-        Loop = 8,
-        ExtLib = 9,
+        Literal = 1, // value is P
+        Variable, // value is variables[P]
+        Page, // value is page[P]
+        EventCode,
+        ServiceInstanceIndex,
+        ServiceCommandArg, // argument of command sent will be set to P; P2 is duration in ms for Sequance
+        ExtLibFn, // call external function P(P2)
+        Timespan,
+
+        Loop, // repeat modifier
+
+        // Filter/actuator kinds
+        Radio, // radio send/recv
+        RandomToss, // random number
+        NumFmt, // on actuator - P is numfmt
+
+        // for each modifier (defaults to [defaultModifier]), do ...
+        // P is a shortcut external function
+        // P2 is service arg size
+        Sequence,
     }
 
     export class TileDefn {
@@ -55,19 +67,14 @@ namespace microcode {
         }
 
         priority: number
-        hidden: boolean // Hide from UI?
         constraints: Constraints
         fieldEditor: FieldEditor
         jdKind: JdKind
-        jdExtFun: string
         jdParam: any
-        jdDuration: number
-        jdExternalClass: number
+        jdParam2: number
 
         isVisible() {
-            if (this.hidden) return false
-            if (this.jdExternalClass && !jacs.debugOut)
-                return jdc.numServiceInstances(this.jdExternalClass) > 0
+            // if needed, use negative priority?
             return true
         }
 
@@ -166,11 +173,25 @@ namespace microcode {
         Post,
     }
 
-    export class SensorDefn extends TileDefn {
-        public serviceClassName: string
-        public eventCode: number
-        public serviceInstanceIndex: number = 0
+    export class StmtTileDefn extends TileDefn {
+        constructor(type: TileType, tid: string) {
+            super(type, tid)
+        }
 
+        public serviceClassName: string
+        public serviceInstanceIndex: number = 0
+        public jdExternalClass: number
+
+        isVisible() {
+            if (!super.isVisible()) return false
+            if (this.jdExternalClass && !jacs.debugOut)
+                return jdc.numServiceInstances(this.jdExternalClass) > 0
+            return true
+        }
+    }
+
+    export class SensorDefn extends StmtTileDefn {
+        public eventCode: number
         constructor(tid: string, public phase: Phase) {
             super(TileType.SENSOR, tid)
         }
@@ -213,17 +234,15 @@ namespace microcode {
     }
 
     export class FilterDefn extends FilterModifierBase {
-        eventCode: number
         constructor(tid: string, category: string, priority: number) {
             super(TileType.FILTER, tid, category)
             this.priority = priority
         }
     }
 
-    export class ActuatorDefn extends TileDefn {
-        public serviceClassName: string
+    export class ActuatorDefn extends StmtTileDefn {
         public serviceCommand: number
-        public serviceInstanceIndex: number = 0
+        public defaultModifier: ModifierDefn
 
         constructor(tid: string) {
             super(TileType.ACTUATOR, tid)

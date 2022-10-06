@@ -169,6 +169,7 @@ namespace microcode {
                 },
             }
             tilesDB.filters[tid] = press_filter
+            press_filter.jdKind = JdKind.ServiceInstanceIndex
             press_filter.jdParam = instanceNo
         }
 
@@ -182,7 +183,6 @@ namespace microcode {
 
     function addSensorTiles() {
         const startPage = new SensorDefn(TID_SENSOR_START_PAGE, Phase.Pre)
-       // startPage.hidden = true
         startPage.priority = 108
         tilesDB.sensors[TID_SENSOR_START_PAGE] = startPage
 
@@ -233,6 +233,7 @@ namespace microcode {
 
         function addTimespan(tid: string, ms: number) {
             const timespan = new FilterDefn(tid, "timespan", 10)
+            timespan.jdKind = JdKind.Timespan
             timespan.jdParam = ms
             tilesDB.filters[tid] = timespan
         }
@@ -255,7 +256,8 @@ namespace microcode {
         function addAccelEvent(id: number, name: string) {
             const tid = TID_FILTER_ACCEL + "_" + name
             const accelEvent = new FilterDefn(tid, "accel_event", 10)
-            accelEvent.eventCode = id
+            accelEvent.jdKind = JdKind.EventCode
+            accelEvent.jdParam = id
             accelEvent.constraints = terminal
             tilesDB.filters[tid] = accelEvent
             return accelEvent
@@ -283,7 +285,8 @@ namespace microcode {
             const soundFilter = new FilterDefn(tid, "sound_event", 10)
             soundFilter.constraints = terminal
             tilesDB.filters[tid] = soundFilter
-            soundFilter.eventCode = eventCode
+            soundFilter.jdKind = JdKind.EventCode
+            soundFilter.jdParam = eventCode
         }
         addSoundFilter(TID_FILTER_LOUD, 1)
         addSoundFilter(TID_FILTER_QUIET, 2)
@@ -317,6 +320,10 @@ namespace microcode {
         paint.serviceCommand = jacs.CMD_SET_REG | 0x2
         paint.serviceInstanceIndex = 0
         paint.priority = 10
+        paint.jdKind = JdKind.Sequence
+        paint.jdParam = "dot_animation"
+        paint.jdParam2 = 5
+        paint.defaultModifier = new IconEditor()
 
         const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
             "value_out",
@@ -370,20 +377,13 @@ namespace microcode {
         emojis.forEach((e, idx) => {
             const tid = "M19" + e
             const emoji_mod = new ModifierDefn(tid, "sound_emoji", 10)
+            emoji_mod.jdKind = JdKind.ServiceCommandArg
             emoji_mod.jdParam = e
-            emoji_mod.jdDuration = emoji_ms[idx]
+            emoji_mod.jdParam2 = emoji_ms[idx]
             tilesDB.modifiers[tid] = emoji_mod
         })
 
-        emoji.jdParam = tilesDB.modifiers[TID_MODIFIER_EMOJI_GIGGLE]
-
-        /*
-        const buzzer = addActuator(TID_ACTUATOR_MUSIC, "Music", "music_editor")
-        buzzer.serviceClassName = "buzzer"
-        buzzer.serviceCommand = 0x80
-        buzzer.priority = 30
-        buzzer.jdKind = JdKind.Sequence
-        */
+        emoji.defaultModifier = tilesDB.modifiers[TID_MODIFIER_EMOJI_GIGGLE]
 
         function make_vals(
             values: number[],
@@ -424,8 +424,9 @@ namespace microcode {
             const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
             const mod = new ModifierDefn(tid, "rgb_led", 10)
             tilesDB.modifiers[tid] = mod
-            mod.jdExtFun = "led_solid"
-            mod.jdParam = color
+            mod.jdKind = JdKind.ExtLibFn
+            mod.jdParam = "led_solid"
+            mod.jdParam2 = color
         }
 
         addRGB(1, 0x2f0000)
@@ -439,7 +440,8 @@ namespace microcode {
             const tid = TID_MODIFIER_RGB_LED_COLOR_X + name
             const mod = new ModifierDefn(tid, "rgb_led", 11)
             tilesDB.modifiers[tid] = mod
-            mod.jdExtFun = "led_anim_" + name
+            mod.jdKind = JdKind.ExtLibFn
+            mod.jdParam = "led_anim_" + name
         }
 
         addAnim("sparkle")
@@ -450,8 +452,9 @@ namespace microcode {
         rgbled.serviceClassName = "led"
         rgbled.serviceCommand = jacs.CMD_SET_REG | 2
         rgbled.jdExternalClass = 0x1609d4f0
-        rgbled.jdKind = JdKind.ExtLib
-        rgbled.jdParam = tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
+        rgbled.jdKind = JdKind.Sequence
+        rgbled.defaultModifier =
+            tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
 
         const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, [
             "constant",
@@ -536,6 +539,8 @@ namespace microcode {
             this.fieldEditor = iconFieldEditor
             if (field) this.field = field.clone()
             else this.field = this.fieldEditor.clone(this.fieldEditor.init)
+            this.jdKind = JdKind.ServiceCommandArg
+            this.jdParam2 = 400 // ms
         }
 
         getField() {
