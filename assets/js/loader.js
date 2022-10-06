@@ -181,7 +181,7 @@ function makeCodeRun(options) {
                     fflate.strToU8(atob(hash), true)
                 )
                 return fflate.strFromU8(decompressed)
-            } catch {
+            } catch(e) {
                 console.debug(e)
                 return hash
             }
