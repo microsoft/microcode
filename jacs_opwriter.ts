@@ -182,7 +182,8 @@ namespace jacs {
 
         serialize() {
             while (this.location() & 3) this.writeByte(0)
-            return this.binary.slice(0, this.binPtr)
+            this.binary = this.binary.slice(0, this.binPtr)
+            return this.binary
         }
 
         setExternal(fullbody: Buffer) {

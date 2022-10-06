@@ -271,11 +271,6 @@ namespace jacs {
                 roleData.append(r.serialize())
             }
 
-            /*
-            for (const b of this.buffers) {
-                bufferDesc.append(b.serialize())
-            }
-            */
 
             const descs = this.stringLiterals.map((str, idx) => {
                 let buf: Buffer
@@ -301,9 +296,6 @@ namespace jacs {
                 s.finalize(off)
                 off += s.size
             }
-            const mask = BinFmt.BINARY_SIZE_ALIGN - 1
-            off = (off + mask) & ~mask
-            const outp = Buffer.create(off)
 
             // shift offsets from strData-local to global
             for (const d of descs) {
@@ -317,6 +309,20 @@ namespace jacs {
                     proc.params.length
                 )
             }
+
+            // GC stuff before we allocate the final buffer
+            this.writer = undefined
+            this.proc = undefined
+            this.procs = undefined
+            this.pageProcs = undefined
+            this.roleLocks = undefined
+            this.pageStartCondition = undefined
+            this.stopPage = undefined
+            this.roles = undefined
+
+            const mask = BinFmt.BINARY_SIZE_ALIGN - 1
+            off = (off + mask) & ~mask
+            const outp = Buffer.create(off)
 
             off = 0
             for (const s of sections) {
@@ -866,6 +872,7 @@ namespace jacs {
                 this.emitRoleCommand(rule)
                 wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
             })
+            body.writer.serialize() // trim the buffer
             return body
         }
 
@@ -1062,13 +1069,13 @@ namespace jacs {
             )
 
             // first add the main proc - proc #0 is the entry point
-            const mainProc = this.addProc("main")
+            this.addProc("main")
 
             // add any other static procs...
             this.stopPage = this.addProc("stopPage")
 
             // generate startup code
-            this.withProcedure(mainProc, wr => {
+            this.withProcedure(this.mainProc, wr => {
                 this.emitLogString("MicroCode start!")
 
                 const mic = this.lookupRole("soundLevel", 0)

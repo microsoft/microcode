@@ -8,6 +8,7 @@ namespace microcode {
     /**
      * Sends an event to analytics.
      */
+    //% shim=TD_NOOP
     export function reportEvent(
         event: string,
         data?: { [name: string]: string | number }
@@ -24,7 +25,7 @@ namespace microcode {
      * Sends an analytics message
      * @param msg 
      */
-    //% shim=TD_ID
+    //% shim=TD_NOOP
     function report(msg: AnalyticsEvent) {
         const buf = Buffer.fromUTF8(JSON.stringify(msg))
         control.simmessages.send("analytics", buf)

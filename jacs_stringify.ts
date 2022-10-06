@@ -70,6 +70,7 @@ namespace jacs {
         if (resolver) {
             const pc = resolver.resolverPC
             res = (pc > 9999 ? pc : ("    " + pc).slice(-4)) + ": " + res
+            resolver = null // unroot it
         }
 
         return res
