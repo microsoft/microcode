@@ -105,7 +105,7 @@ namespace microcode {
             {
                 label: "railroad crossing",
                 ariaId: "N12",
-                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBMjFfIl0sIkYiOlsiRjMiXSwiTSI6WyJNNiJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBOCJdLCJGIjpbIkYzIl0sIk0iOlsiQTIwXzEiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTIxXyJdLCJGIjpbIkY0Il0sIk0iOlsiTTEwIl19LHsiUyI6WyJTMiJdLCJBIjpbIkE4Il0sIkYiOlsiRjQiXSwiTSI6WyJBMjBfMyJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX19",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBMjFfIl0sIkYiOlsiRjMiXSwiTSI6WyJNNiJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBOCJdLCJGIjpbIkYzIl0sIk0iOlsiQTIwXzEiLCJBMjBfNiIsIk0yMyJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBMjFfIl0sIkYiOlsiRjQiXSwiTSI6WyJNMTAiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTgiXSwiRiI6WyJGNCJdLCJNIjpbIkEyMF8zIiwiQTIwXzYiLCJNMjMiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTgiXSwiRiI6WyJGNyJdLCJNIjpbIkEyMF9yYWluYm93IiwiTTIzIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfX0=",
                 icon: "railroad_crossing",
             },
             {

@@ -121,8 +121,8 @@ namespace microcode {
             this.reg[TID_MODIFIER_RGB_LED_COLOR_5] = icondb.tile_color_yellow
             this.reg[TID_MODIFIER_RGB_LED_COLOR_6] = icondb.tile_color_black
 
-            this.reg[TID_MODIFIER_RGB_LED_COLOR_RAINBOW] = icondb.tile_page_1
-            this.reg[TID_MODIFIER_RGB_LED_COLOR_SPARKLE] = icondb.tile_page_2
+            this.reg[TID_MODIFIER_RGB_LED_COLOR_RAINBOW] = icondb.tile_rainbow
+            this.reg[TID_MODIFIER_RGB_LED_COLOR_SPARKLE] = icondb.tile_sparkle
 
             this.reg[TID_MODIFIER_SERVO_SET_ANGLE] = icondb.servo_set_angle
 
@@ -993,6 +993,44 @@ namespace icondb {
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     `
+    export const tile_sparkle = img`
+    c c c c c c c c c c c c c c c c
+    c c d c c c c c c c c c c c c c
+    c d 1 d c c c c c c c c c d c c
+    c c d c c c c c c c c c c c c c
+    c c c c c c c d c c d c c c c c
+    c c c c c c c c c d 1 d c c c c
+    c c c c c c c c c c d c c c c c
+    c d c c c c c c c c c c c c c c
+    c c c c c c c c c c c c c c c c
+    c c c c c c d c c 1 c c c c c c
+    c c c c c d 1 d c c c c c c c c
+    c c c c c c d c c c c c c c c c
+    c c c c c c c c c c c c c d c c
+    c c c c c c c c c c c c d 1 d c
+    c c c d c c c c c c c c c d c c
+    c c c c c c c c c c c c c c c c
+    `
+
+    export const tile_rainbow = img`
+    . . . . . . . . . . . . . . . . 
+    . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 . 
+    2 2 2 4 4 4 4 4 4 4 4 4 4 2 2 2 
+    2 2 4 4 4 4 4 4 4 4 4 4 4 4 2 2 
+    2 4 4 5 5 5 5 5 5 5 5 5 5 4 4 2 
+    4 4 5 5 5 5 5 5 5 5 5 5 5 5 4 4 
+    4 5 5 5 7 7 7 7 7 7 7 7 5 5 5 4 
+    5 5 7 7 7 7 7 7 7 7 7 7 7 7 5 5 
+    5 7 7 7 7 8 8 8 8 8 8 7 7 7 7 5 
+    7 7 7 7 8 8 8 8 8 8 8 8 7 7 7 5 
+    7 7 7 8 8 8 c c c c 8 8 8 7 7 7 
+    7 7 8 8 8 c c c c c c 8 8 8 7 7 
+    7 7 8 8 c c a a a a c c 8 8 7 7 
+    7 7 8 8 c c a . . a c c 8 8 7 7 
+    . . . . . . . . . . . . . . . .     
+    `
+
     export const tile_color_green = img`
     . . . . . . . . . . . . . . . .
     . . . . . 1 1 1 1 1 . . . . . .
