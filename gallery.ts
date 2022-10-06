@@ -44,7 +44,7 @@ namespace microcode {
                         x = -72
                     }
                 })
-            this.navigator.addButtons(rowButtons)
+            if (rowButtons.length > 0) this.navigator.addButtons(rowButtons)
         }
 
         protected moveCursor(dir: CursorDir) {
