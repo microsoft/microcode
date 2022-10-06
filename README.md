@@ -4,7 +4,7 @@
 
 Microsoft MicroCode is a tile-based language and editor for young coders on the [BBC micro:bit V2](https://microbit.org), inspired by [Kodu Game Lab](https://www.kodugamelab.com/). Microcode runs in the browser or directly on hardware with [Arcade-compatible devices](https://arcade.makecode.com/hardware/).
 
-https://youtu.be/ymP7x8GXgz4
+![MicroCode screenshot](./docs/images/generated/sample_smiley_buttons.png)
 
 ## Getting started
 
