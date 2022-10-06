@@ -602,7 +602,7 @@ namespace jacs {
                     return literal(mod.jdParam)
                 case microcode.JdKind.Variable:
                     return this.pipeVar(mod.jdParam).read(wr)
-                case microcode.JdKind.Radio:
+                case microcode.JdKind.RadioValue:
                     return this.lookupGlobal("z_radio").read(wr)
                 default:
                     this.error("can't emit kind: " + mod.jdKind)
@@ -813,11 +813,6 @@ namespace jacs {
                     this.pipeRole(actuator.jdParam),
                     CMD_CONDITION_FIRE
                 )
-            } else if (actuator.jdKind == microcode.JdKind.Radio) {
-                this.emitValueOut(rule, 1)
-                wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(8)])
-                wr.emitBufStore(currValue(), NumFmt.F64, 0)
-                this.emitSendCmd(this.lookupActuatorRole(rule), 0x81)
             } else if (actuator.jdKind == microcode.JdKind.NumFmt) {
                 this.emitValueOut(rule, 1)
                 const fmt: NumFmt = actuator.jdParam
@@ -920,6 +915,8 @@ namespace jacs {
         }
 
         private emitRule(name: string, rule: microcode.RuleDefn) {
+            if (rule.isEmpty()) return
+
             const body = this.emitRuleActuator(name, rule)
             const emitBody = () =>
                 this.writer.emitCall(body.index, [], OpCall.BG_MAX1)
@@ -981,12 +978,18 @@ namespace jacs {
             this.withProcedure(role.getDispatcher(), wr => {
                 this.ifCurrPage(() => {
                     const code = this.lookupEventCode(role, rule)
-                    if (sensor.serviceClassName == "radio") {
-                        const loadVal = () => wr.emitBufLoad(NumFmt.F64, 12)
+                    if (sensor.jdKind == microcode.JdKind.Radio) {
                         this.ifEq(
                             wr.emitExpr(Op.EXPR0_PKT_REPORT_CODE, []),
                             code,
-                            () => filterValueIn(loadVal)
+                            () => {
+                                const radioVar = this.lookupGlobal("z_radio")
+                                radioVar.write(
+                                    wr,
+                                    wr.emitBufLoad(NumFmt.F64, 12)
+                                )
+                                filterValueIn(() => radioVar.read(wr))
+                            }
                         )
                     } else if (code != null) {
                         this.ifEq(
