@@ -383,12 +383,12 @@ namespace microcode {
         buzzer.jdKind = JdKind.Sequence
         */
 
-        const make_vals = (
+        function make_vals(
             values: number[],
             name: string,
             kind: string,
             start: number
-        ) => {
+        ) {
             const tiles: FilterModifierBase[] = []
             values.forEach((v, index) => {
                 const tid = kind + (start + index)
@@ -461,7 +461,7 @@ namespace microcode {
         servoSetAngle.jdKind = JdKind.NumFmt
         servoSetAngle.jdParam = jacs.NumFmt.I32
 
-        const addReadValue = (tid: string, kind: JdKind, varid: number) => {
+        function addReadValue(tid: string, kind: JdKind, varid: number) {
             const mod = new ModifierDefn(tid, "value_out", 10)
             mod.jdParam = varid
             mod.jdKind = kind
