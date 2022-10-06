@@ -270,7 +270,7 @@ Go to [http://ncase.me/fireflies/](http://ncase.me/fireflies/) and read about th
 
 Just like fireflies in the wild, you can create program that synchronize blinking
 between any number of micro:bit! The firefly program uses two pages, page 1 will run when the light is off
-and page 2 will handle a glow.
+and page 2 will handle a glow. **You will need 3 micro:bit to make the synchronization work!**
 
 ### ![page 1](./images/generated/icon_M1.png){:class="icon"} page 1
 
