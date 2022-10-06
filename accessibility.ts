@@ -40,6 +40,9 @@ namespace accessibility {
         sensors: "when",
         actuators: "do",
 
+        when: "when",
+        do: "do",
+
         S1: "start",
         S2: "press",
         S2B: "release",
@@ -49,7 +52,7 @@ namespace accessibility {
         S6: "temperature",
         S7: "radio receive",
         S8: "hear",
-        rule: "when",
+        rule: "rule",
         add_rule: "add rule",
 
         // filters for TID_SENSOR_PRESS
@@ -81,14 +84,14 @@ namespace accessibility {
         F17_tilt_left: "tilt left",
         F17_tilt_right: "tilt right",
 
-        C0: "editor",
+        C0: "edit",
         C1: "samples",
 
         A1: "switch page",
         A2: "sound emoji",
         A3: "microphone",
         A4: "music",
-        A5: "screen",
+        A5: "paint screen",
         A6: "radio send",
         A6A: "radio set group",
         A7: "random number",
@@ -108,7 +111,7 @@ namespace accessibility {
         M11: "on",
         M12: "off",
 
-        M15: "LEDs",
+        M15: "LED image",
         M18: "music",
 
         M19giggle: "giggle",
@@ -139,7 +142,7 @@ namespace accessibility {
         S9B: "variable Y changed",
         S9C: "variable Z changed",
 
-        N0: "editor",
+        N0: "edit",
         N1: "new program",
         N2: "flashing heart",
         N3: "smiley buttons",

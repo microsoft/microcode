@@ -352,7 +352,7 @@ const liveStrings = {
     A2: "speaker",
     A3: "microphone",
     A4: "music",
-    A5: "screen",
+    A5: "paint screen",
     A6: "radio send",
     A6A: "radio set group",
     A7: "random number",
@@ -372,10 +372,12 @@ const liveStrings = {
     M11: "on",
     M12: "off",
 
-    M15: "LED",
+    M15: "LED image",
     M16: "red",
     M17: "dark purple",
     M18: "music editor",
+
+    do: "do",
 
     M19giggle: "emoji giggle",
     M19happy: "emoji happy",

@@ -50,7 +50,7 @@
     "A2": "speaker",
     "A3": "microphone",
     "A4": "music",
-    "A5": "screen",
+    "A5": "paint screen",
     "A6": "radio send",
     "A6A": "radio set group",
     "A7": "random number",
@@ -70,7 +70,7 @@
     "M11": "on",
     "M12": "off",
 
-    "M15": "LED",
+    "M15": "LED image",
     "M16": "red",
     "M17": "dark purple",
     "M18": "music editor",
@@ -95,6 +95,9 @@
     "M23": "repeat",
 
     "A8": "LED",
+    "A9A": "set variable X",
+    "A9B": "set variable Y",
+    "A9C": "set variable Z",
 
     "S9A": "variable X changed",
     "S9B": "variable Y changed",
