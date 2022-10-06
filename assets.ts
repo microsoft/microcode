@@ -1623,91 +1623,168 @@ f f f f f f f f f f f f f f f f
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .`
 
-    // create cups from core images
-
-    const labelX = img`
-        f . f
-        f . f
-        . f .
-        f . f
-        f . f
-    `
-    const labelY = img`
-        f . f
-        f . f
-        . f .
-        . f .
-        . f .
-    `
-    const labelZ = img`
-        f f f
-        . . f
-        . f .
-        f . .
-        f f f
-    `
-
-    const cup = img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . c c c c c c c . . . . .
-        . . . c f f f f f f f c . . . .
-        . . c f f f 4 5 4 f f f c . . .
-        . . c c f 4 5 5 5 4 f c c . . .
-        . . c d c c c c c c c b c . . .
-        . . c d 1 d d d d d d b c . . .
-        . . c d 1 d d d d d d b c . . .
-        . . c d 1 d d d d d d b c . . .
-        . . c d 1 d d d d d d b c . . .
-        . . c d 1 d d d d d d b c . . .
-        . . . d 1 d d d d d d b . . . .
-        . . . . 1 d d d d d d . . . . .
-    `
-
-    const inFromLeft = img`
-        4 4 4 4 4 4 4 . . . . . . . . .
-        5 5 5 5 5 5 5 4 . . . . . . . .
-        4 4 4 4 4 4 4 5 4 . . . . . . .
-        . . . . . . 4 5 4 . . . . . . .
-        . . . . . . 4 5 4 . . . . . . .
-        . . . . 4 5 5 5 5 5 4 . . . . .
-        . . . . . 4 5 5 5 4 . . . . . .
-        . . . . . . 4 5 4 . . . . . . .
-    `
-
-    const inFromRight = img`
-        . . . . . . . . . 4 4 4 4 4 4 4
-        . . . . . . . . 4 5 5 5 5 5 5 5
-        . . . . . . . 4 5 4 4 4 4 4 4 4
-        . . . . . . . 4 5 4 . . . . . .
-        . . . . . . . 4 5 4 . . . . . .
-        . . . . . 4 5 5 5 5 5 4 . . . .
-        . . . . . . 4 5 5 5 4 . . . . .
-        . . . . . . . 4 5 4 . . . . . .
-    `
-
-    export const cupXread = cup.clone()
-    cupXread.drawTransparentImage(labelX, 6, 10)
-    export const cupYread = cup.clone()
-    cupYread.drawTransparentImage(labelY, 6, 10)
-    export const cupZread = cup.clone()
-    cupZread.drawTransparentImage(labelZ, 6, 10)
-
-    export const cupXassign = cupXread.clone()
-    cupXassign.drawTransparentImage(inFromRight, 0, 0)
-    export const cupYassign = cupYread.clone()
-    cupYassign.drawTransparentImage(inFromRight, 0, 0)
-    export const cupZassign = cupZread.clone()
-    cupZassign.drawTransparentImage(inFromRight, 0, 0)
-
-    export const cupXwritten = cupXread.clone()
-    cupXwritten.drawTransparentImage(inFromLeft, 0, 0)
-    export const cupYwritten = cupYread.clone()
-    cupYwritten.drawTransparentImage(inFromLeft, 0, 0)
-    export const cupZwritten = cupZread.clone()
-    cupZwritten.drawTransparentImage(inFromLeft, 0, 0)
+    export const cupXread = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . c c c c c c c . . . . .
+. . . c f f f f f f f c . . . .
+. . c f f f 4 5 4 f f f c . . .
+. . c c f 4 5 5 5 4 f c c . . .
+. . c d c c c c c c c b c . . .
+. . c d 1 d d d d d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . c d 1 d d f d d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . . d 1 d f d f d d b . . . .
+. . . . 1 d d d d d d . . . . .
+`
+export const cupYread = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . c c c c c c c . . . . .
+. . . c f f f f f f f c . . . .
+. . c f f f 4 5 4 f f f c . . .
+. . c c f 4 5 5 5 4 f c c . . .
+. . c d c c c c c c c b c . . .
+. . c d 1 d d d d d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . c d 1 d d f d d d b c . . .
+. . c d 1 d d f d d d b c . . .
+. . . d 1 d d f d d d b . . . .
+. . . . 1 d d d d d d . . . . .
+`
+export const cupZread = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . c c c c c c c . . . . .
+. . . c f f f f f f f c . . . .
+. . c f f f 4 5 4 f f f c . . .
+. . c c f 4 5 5 5 4 f c c . . .
+. . c d c c c c c c c b c . . .
+. . c d 1 d d d d d d b c . . .
+. . c d 1 d f f f d d b c . . .
+. . c d 1 d d d f d d b c . . .
+. . c d 1 d d f d d d b c . . .
+. . c d 1 d f d d d d b c . . .
+. . . d 1 d f f f d d b . . . .
+. . . . 1 d d d d d d . . . . .
+`
+export const cupXassign = img`
+. . . . . . . . . 4 4 4 4 4 4 4
+. . . . . . . . 4 5 5 5 5 5 5 5
+. . . . . . . 4 5 4 4 4 4 4 4 4
+. . . . . . . 4 5 4 . . . . . .
+. . . . c c c 4 5 4 c . . . . .
+. . . c f 4 5 5 5 5 5 4 . . . .
+. . c f f f 4 5 5 5 4 f c . . .
+. . c c f 4 5 4 5 4 f c c . . .
+. . c d c c c c c c c b c . . .
+. . c d 1 d d d d d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . c d 1 d d f d d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . . d 1 d f d f d d b . . . .
+. . . . 1 d d d d d d . . . . .
+`
+export const cupYassign = img`
+. . . . . . . . . 4 4 4 4 4 4 4
+. . . . . . . . 4 5 5 5 5 5 5 5
+. . . . . . . 4 5 4 4 4 4 4 4 4
+. . . . . . . 4 5 4 . . . . . .
+. . . . c c c 4 5 4 c . . . . .
+. . . c f 4 5 5 5 5 5 4 . . . .
+. . c f f f 4 5 5 5 4 f c . . .
+. . c c f 4 5 4 5 4 f c c . . .
+. . c d c c c c c c c b c . . .
+. . c d 1 d d d d d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . c d 1 d d f d d d b c . . .
+. . c d 1 d d f d d d b c . . .
+. . . d 1 d d f d d d b . . . .
+. . . . 1 d d d d d d . . . . .
+`
+export const cupZassign = img`
+. . . . . . . . . 4 4 4 4 4 4 4
+. . . . . . . . 4 5 5 5 5 5 5 5
+. . . . . . . 4 5 4 4 4 4 4 4 4
+. . . . . . . 4 5 4 . . . . . .
+. . . . c c c 4 5 4 c . . . . .
+. . . c f 4 5 5 5 5 5 4 . . . .
+. . c f f f 4 5 5 5 4 f c . . .
+. . c c f 4 5 4 5 4 f c c . . .
+. . c d c c c c c c c b c . . .
+. . c d 1 d d d d d d b c . . .
+. . c d 1 d f f f d d b c . . .
+. . c d 1 d d d f d d b c . . .
+. . c d 1 d d f d d d b c . . .
+. . c d 1 d f d d d d b c . . .
+. . . d 1 d f f f d d b . . . .
+. . . . 1 d d d d d d . . . . .
+`
+export const cupXwritten = img`
+4 4 4 4 4 4 4 . . . . . . . . .
+5 5 5 5 5 5 5 4 . . . . . . . .
+4 4 4 4 4 4 4 5 4 . . . . . . .
+. . . . . . 4 5 4 . . . . . . .
+. . . . c c 4 5 4 c c . . . . .
+. . . c 4 5 5 5 5 5 4 c . . . .
+. . c f f 4 5 5 5 4 f f c . . .
+. . c c f 4 4 5 4 4 f c c . . .
+. . c d c c c c c c c b c . . .
+. . c d 1 d d d d d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . c d 1 d d f d d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . . d 1 d f d f d d b . . . .
+. . . . 1 d d d d d d . . . . .
+`
+export const cupYwritten = img`
+4 4 4 4 4 4 4 . . . . . . . . .
+5 5 5 5 5 5 5 4 . . . . . . . .
+4 4 4 4 4 4 4 5 4 . . . . . . .
+. . . . . . 4 5 4 . . . . . . .
+. . . . c c 4 5 4 c c . . . . .
+. . . c 4 5 5 5 5 5 4 c . . . .
+. . c f f 4 5 5 5 4 f f c . . .
+. . c c f 4 4 5 4 4 f c c . . .
+. . c d c c c c c c c b c . . .
+. . c d 1 d d d d d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . c d 1 d f d f d d b c . . .
+. . c d 1 d d f d d d b c . . .
+. . c d 1 d d f d d d b c . . .
+. . . d 1 d d f d d d b . . . .
+. . . . 1 d d d d d d . . . . .
+`
+export const cupZwritten = img`
+4 4 4 4 4 4 4 . . . . . . . . .
+5 5 5 5 5 5 5 4 . . . . . . . .
+4 4 4 4 4 4 4 5 4 . . . . . . .
+. . . . . . 4 5 4 . . . . . . .
+. . . . c c 4 5 4 c c . . . . .
+. . . c 4 5 5 5 5 5 4 c . . . .
+. . c f f 4 5 5 5 4 f f c . . .
+. . c c f 4 4 5 4 4 f c c . . .
+. . c d c c c c c c c b c . . .
+. . c d 1 d d d d d d b c . . .
+. . c d 1 d f f f d d b c . . .
+. . c d 1 d d d f d d b c . . .
+. . c d 1 d d f d d d b c . . .
+. . c d 1 d f d d d d b c . . .
+. . . d 1 d f f f d d b . . . .
+. . . . 1 d d d d d d . . . . .
+`
 
     export const largeEditIcon = img`
     .666666666666666666666666666666.

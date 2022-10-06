@@ -81,6 +81,8 @@ If you want to create/edit new sprites, you should import this web site into htt
 
 You might also be able to commit and push directly from the web site, but we find that this isn't very reliable.
 
+Some art images are precomputed, you will need to load scripts/renderart.ts in MakeCode Arcade and copy the console output back into the project.
+
 ## Updating GitHub pages
 
 To bump and refresh the github pages javascript and pre-built .hex file, run this script
