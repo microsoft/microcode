@@ -533,6 +533,10 @@ namespace jacs {
             const wr = this.writer
             wr.emitStmt(Op.STMT1_TERMINATE_FIBER, [v.read(wr)])
             v.write(wr, wr.emitExpr(Op.EXPR1_GET_FIBER_HANDLE, [literal(null)]))
+            // shift the "logical top" for loop code
+            const lbl = wr.mkLabel("top2")
+            wr.emitLabel(lbl)
+            wr.top = lbl
         }
 
         private emitSequance(
