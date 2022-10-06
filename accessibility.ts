@@ -37,8 +37,8 @@ namespace accessibility {
         //when: "add tile",
         //do: "add tile",
         reset: "restart",
-        sensors: "when",
-        actuators: "do",
+        sensors: "when...",
+        actuators: "do...",
 
         when: "when",
         do: "do",
