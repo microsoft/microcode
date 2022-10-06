@@ -215,6 +215,7 @@ namespace microcode {
         const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
         radio_recv.serviceClassName = "radio"
         radio_recv.eventCode = 0x91
+        radio_recv.jdKind = JdKind.Radio
         // radio_recv.constraints.handling = maxOneValueIn
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "no_filters", 500)
@@ -331,7 +332,9 @@ namespace microcode {
         ])
         radio_send.priority = 100
         radio_send.serviceClassName = "radio"
-        radio_send.jdKind = JdKind.Radio
+        radio_send.serviceCommand = 0x81
+        radio_send.jdKind = JdKind.NumFmt
+        radio_send.jdParam = jacs.NumFmt.F64
 
         const radio_set_group = addActuator(TID_ACTUATOR_RADIO_SET_GROUP, [])
         radio_set_group.constraints = {}
@@ -477,8 +480,9 @@ namespace microcode {
         addReadValue(TID_MODIFIER_CUP_X_READ, JdKind.Variable, 0)
         addReadValue(TID_MODIFIER_CUP_Y_READ, JdKind.Variable, 1)
         addReadValue(TID_MODIFIER_CUP_Z_READ, JdKind.Variable, 2)
+        
         // TODO: this should only be present when radio receive in When section
-        // addReadValue(TID_MODIFIER_RADIO_VALUE, "number from radio", JdKind.Radio, 3)
+        addReadValue(TID_MODIFIER_RADIO_VALUE, JdKind.RadioValue, 0)
 
         const random_toss = addReadValue(
             TID_MODIFIER_RANDOM_TOSS,

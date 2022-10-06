@@ -47,6 +47,7 @@ namespace microcode {
         ServiceCommandArg, // argument of command sent will be set to P; P2 is duration in ms for Sequance
         ExtLibFn, // call external function P(P2)
         Timespan,
+        RadioValue,
 
         Loop, // repeat modifier
 
