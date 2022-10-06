@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.2.13","target":"arcade","targetVersion":"1.11.3"}
-// total=2246609 new=94.18% cached=0.00% other=5.82%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.2.14","target":"arcade","targetVersion":"1.11.3"}
+// total=2246478 new=94.18% cached=0.00% other=5.82%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1523,7 +1523,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___3977 = (s.tmp_0);
     globals._binFloatLits___3990 = (_hex6573);
-    globals.VERSION___3992 = ("v2.2.13");
+    globals.VERSION___3992 = ("v2.2.14");
     globals.BACK_BUTTON_ERROR_KIND___4004 = ("back_button");
     globals.microcode_Options_fps___4052 = (false);
     globals.microcode_Options_profiling___4053 = (false);
@@ -27335,8 +27335,8 @@ switch (step) {
     s.t___13864 = undefined;
     s.dy___13867 = undefined;
     s.OFFSET___13880 = undefined;
-    s.y___13892 = undefined;
-    s.tagline___13940 = undefined;
+    s.y___13889 = undefined;
+    s.tagline___13937 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -27385,21 +27385,17 @@ switch (step) {
     s.tmp_4 = r0;
     s.dy___13867 = (s.tmp_4);
     r0 = (globals.microcode_Screen_HEIGHT___3592 >> 1);
-    s.tmp_2 = r0;
-    r0 = pxsim_ImageMethods.height(globals.microbitLogo___3079);
-    s.tmp_3 = r0;
-    r0 = (s.tmp_2 - s.tmp_3);
     s.tmp_1 = r0;
     r0 = pxsim_ImageMethods.height(globals.wordLogo___3078);
-    s.tmp_4 = r0;
-    r0 = (s.tmp_1 - s.tmp_4);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 - s.tmp_2);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 - 2);
     s.OFFSET___13880 = (r0);
     r0 = (globals.microcode_Screen_TOP_EDGE___3597 + s.OFFSET___13880);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 + s.dy___13867);
-    s.y___13892 = (r0);
+    s.y___13889 = (r0);
     s.tmp_0 = microcode_Screen_drawTransparentImage__P3606_mk(s);
     s.tmp_0.arg0 = globals.wordLogo___3078;
     s.tmp_2 = r0 = globals.microcode_Screen_LEFT_EDGE___3595;
@@ -27416,7 +27412,7 @@ switch (step) {
     s.tmp_0.arg1 = r0;
     r0 = s.arg0.fields["yOffset"];
     s.tmp_7 = r0;
-    r0 = (s.y___13892 + s.tmp_7);
+    r0 = (s.y___13889 + s.tmp_7);
     s.tmp_0.arg2 = r0;
     s.callLocIdx = 1089; s.pc = 7; return s.tmp_0;
   case 7:
@@ -27435,7 +27431,7 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = (s.tmp_1 + s.dy___13867);
     s.tmp_0.arg1 = r0;
-    s.tmp_9 = r0 = s.y___13892;
+    s.tmp_9 = r0 = s.y___13889;
     r0 = pxsim_ImageMethods.height(globals.wordLogo___3078);
     s.tmp_10 = r0;
     r0 = (s.tmp_9 - s.tmp_10);
@@ -27457,9 +27453,9 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    s.tagline___13940 = ("for micro:bit V2");
+    s.tagline___13937 = ("for micro:bit V2");
     s.tmp_0 = microcode_Screen_print__P3621_mk(s);
-    s.tmp_0.arg0 = s.tagline___13940;
+    s.tmp_0.arg0 = s.tagline___13937;
     s.tmp_3 = r0 = globals.microcode_Screen_LEFT_EDGE___3595;
     s.tmp_6 = r0 = globals.microcode_Screen_WIDTH___3591;
     r0 = pxsim_ImageMethods.width(globals.wordLogo___3078);
@@ -27485,7 +27481,7 @@ switch (step) {
   case 10:
     r0 = s.retval;
     s.tmp_9 = r0;
-    r0 = pxsim_String_.length(s.tagline___13940);
+    r0 = pxsim_String_.length(s.tagline___13937);
     s.tmp_11 = r0;
     r0 = (s.tmp_9 * s.tmp_11);
     s.tmp_8 = r0;
@@ -27543,7 +27539,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_draw__P3496.info = {"start":1766,"length":1782,"line":62,"column":23,"endLine":111,"endColumn":9,"fileName":"home.ts","functionName":"draw","argumentNames":["this"]}
+microcode_Home_draw__P3496.info = {"start":1766,"length":1760,"line":62,"column":23,"endLine":111,"endColumn":9,"fileName":"home.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_Home_draw__P3496_mk(s) {
     checkStack(s.depth);
@@ -27571,8 +27567,8 @@ function microcode_Home_draw__P3496_mk(s) {
   t___13864: undefined,
   dy___13867: undefined,
   OFFSET___13880: undefined,
-  y___13892: undefined,
-  tagline___13940: undefined,
+  y___13889: undefined,
+  tagline___13937: undefined,
   arg0: undefined,
 } }
 
@@ -27824,7 +27820,7 @@ switch (step) {
 
     s.tmp_0 = control_simmessages_onReceived__P432_mk(s);
     s.tmp_0.arg0 = "docs";
-    s.tmp_0.arg1 = docs__setup_inline__P14023;
+    s.tmp_0.arg1 = docs__setup_inline__P14020;
     s.callLocIdx = 2101; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
@@ -27846,7 +27842,7 @@ function docs__setup__P6586_mk(s) {
 
 
 
-function docs__setup_inline__P14023(s) {
+function docs__setup_inline__P14020(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -27856,7 +27852,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.msg___14025 = undefined;
+    s.msg___14022 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -27867,9 +27863,9 @@ switch (step) {
     s.callLocIdx = 2096; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
-    s.msg___14025 = (r0);
+    s.msg___14022 = (r0);
     s.tmp_2 = if_type_1_mk(s);
-    s.tmp_2.arg0 = s.msg___14025;
+    s.tmp_2.arg0 = s.msg___14022;
     if (!s.tmp_2.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_2.arg0, "type");
     } else {
@@ -27892,7 +27888,7 @@ switch (step) {
     { step = 4; continue; }
   case 1:
     s.tmp_2 = if_type_1_mk(s);
-    s.tmp_2.arg0 = s.msg___14025;
+    s.tmp_2.arg0 = s.msg___14022;
     if (!s.tmp_2.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_2.arg0, "type");
     } else {
@@ -27919,18 +27915,18 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-docs__setup_inline__P14023.info = {"start":597,"length":198,"line":23,"column":47,"endLine":27,"endColumn":9,"fileName":"docs.ts","functionName":"inline","argumentNames":["data"]}
+docs__setup_inline__P14020.info = {"start":597,"length":198,"line":23,"column":47,"endLine":27,"endColumn":9,"fileName":"docs.ts","functionName":"inline","argumentNames":["data"]}
 
-function docs__setup_inline__P14023_mk(s) {
+function docs__setup_inline__P14020_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: docs__setup_inline__P14023, depth: s.depth + 1,
+        parent: s, fn: docs__setup_inline__P14020, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  msg___14025: undefined,
+  msg___14022: undefined,
   arg0: undefined,
 } }
 
@@ -27948,12 +27944,12 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.res___14041 = undefined;
+    s.res___14038 = undefined;
     s.tmp_0 = docs__renderProgram__P6591_mk(s);
     s.callLocIdx = 2121; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.res___14041 = (r0);
+    s.res___14038 = (r0);
     s.tmp_0 = microcode_Screen_resetScreenImage__P3604_mk(s);
     s.callLocIdx = 2122; s.pc = 2; return s.tmp_0;
   case 2:
@@ -27966,7 +27962,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "name", "current");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "type", "program");
     s.tmp_4 = docs_imageToBuffer__P6584_mk(s);
-    r0 = pxsim_pxtrt.mapGetGeneric(s.res___14041, "app");
+    r0 = pxsim_pxtrt.mapGetGeneric(s.res___14038, "app");
     s.tmp_4.arg0 = r0;
     s.callLocIdx = 2123; s.pc = 3; return s.tmp_4;
   case 3:
@@ -28010,7 +28006,7 @@ function docs__renderScreenshot__P6590_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  res___14041: undefined,
+  res___14038: undefined,
 } }
 
 
@@ -28027,59 +28023,59 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.w___14057 = undefined;
-    s.h___14060 = undefined;
-    s.buf___14063 = undefined;
-    s.j___14071 = undefined;
-    s.x___14078 = undefined;
-    s.y___14083 = undefined;
+    s.w___14054 = undefined;
+    s.h___14057 = undefined;
+    s.buf___14060 = undefined;
+    s.j___14068 = undefined;
+    s.x___14075 = undefined;
+    s.y___14080 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = pxsim_ImageMethods.width(s.arg0);
-    s.w___14057 = (r0);
+    s.w___14054 = (r0);
     r0 = pxsim_ImageMethods.height(s.arg0);
-    s.h___14060 = (r0);
-    r0 = (s.w___14057 * s.h___14060);
+    s.h___14057 = (r0);
+    r0 = (s.w___14054 * s.h___14057);
     s.tmp_1 = r0;
     r0 = (1 + s.tmp_1);
     s.tmp_0 = r0;
     r0 = pxsim.control.createBuffer(s.tmp_0);
-    s.buf___14063 = (r0);
-    s.j___14071 = (0);
-    s.tmp_0 = r0 = s.j___14071;
+    s.buf___14060 = (r0);
+    s.j___14068 = (0);
+    s.tmp_0 = r0 = s.j___14068;
     r0 = (s.tmp_0 + 1);
-    s.j___14071 = (r0);
-    r0 = pxsim.BufferMethods.setByte(s.buf___14063, s.tmp_0, s.w___14057);
-    s.x___14078 = (0);
+    s.j___14068 = (r0);
+    r0 = pxsim.BufferMethods.setByte(s.buf___14060, s.tmp_0, s.w___14054);
+    s.x___14075 = (0);
   case 1:
-    r0 = (s.x___14078 < s.w___14057);
+    r0 = (s.x___14075 < s.w___14054);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    s.y___14083 = (0);
+    s.y___14080 = (0);
   case 2:
-    r0 = (s.y___14083 < s.h___14060);
+    r0 = (s.y___14080 < s.h___14057);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    s.tmp_1 = r0 = s.j___14071;
+    s.tmp_1 = r0 = s.j___14068;
     r0 = (s.tmp_1 + 1);
-    s.j___14071 = (r0);
-    s.tmp_2 = r0 = s.buf___14063;
-    r0 = pxsim_ImageMethods.getPixel(s.arg0, s.x___14078, s.y___14083);
+    s.j___14068 = (r0);
+    s.tmp_2 = r0 = s.buf___14060;
+    r0 = pxsim_ImageMethods.getPixel(s.arg0, s.x___14075, s.y___14080);
     s.tmp_3 = r0;
     r0 = pxsim.BufferMethods.setByte(s.tmp_2, s.tmp_1, s.tmp_3);
-    r0 = (s.y___14083 + 1);
-    s.y___14083 = (r0);
+    r0 = (s.y___14080 + 1);
+    s.y___14080 = (r0);
     { step = 2; continue; }
   case 3:
-    r0 = (s.x___14078 + 1);
-    s.x___14078 = (r0);
+    r0 = (s.x___14075 + 1);
+    s.x___14075 = (r0);
     { step = 1; continue; }
   case 4:
-    r0 = s.buf___14063;
+    r0 = s.buf___14060;
     return leave(s, r0)
   default: oops()
 } } }
@@ -28094,12 +28090,12 @@ function docs_imageToBuffer__P6584_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  w___14057: undefined,
-  h___14060: undefined,
-  buf___14063: undefined,
-  j___14071: undefined,
-  x___14078: undefined,
-  y___14083: undefined,
+  w___14054: undefined,
+  h___14057: undefined,
+  buf___14060: undefined,
+  j___14068: undefined,
+  x___14075: undefined,
+  y___14080: undefined,
   arg0: undefined,
 } }
 
@@ -28150,22 +28146,22 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.r___14108 = undefined;
-    s.loader___14110 = undefined;
-    s.pages___14120 = undefined;
-    s.imgs___14124 = undefined;
-    s.w___14126 = undefined;
-    s.h___14127 = undefined;
-    s.pw___14130 = undefined;
-    s.p___14132 = undefined;
+    s.r___14105 = undefined;
+    s.loader___14107 = undefined;
+    s.pages___14117 = undefined;
+    s.imgs___14121 = undefined;
+    s.w___14123 = undefined;
+    s.h___14124 = undefined;
+    s.pw___14127 = undefined;
+    s.p___14129 = undefined;
     s.unnamed196___U8 = undefined;
     s.unnamed197___U9 = undefined;
-    s.res___14268 = undefined;
-    s.y___14281 = undefined;
-    s.i___14282 = undefined;
-    s.img___14288 = undefined;
+    s.res___14265 = undefined;
+    s.y___14278 = undefined;
+    s.i___14279 = undefined;
+    s.img___14285 = undefined;
     r0 = pxsim_pxtrt.mkMap();
-    s.r___14108 = (r0);
+    s.r___14105 = (r0);
     r0 = pxsim_pxtcore_mkClassInstance(microcode_Editor__C3431_VT);
     s.tmp_0 = r0;
     s.tmp_1 = microcode_Editor_constructor__P3436_mk(s);
@@ -28174,35 +28170,35 @@ switch (step) {
     s.callLocIdx = 2125; s.pc = 5; return s.tmp_1;
   case 5:
     r0 = s.retval;
-    s.loader___14110 = (s.tmp_0);
+    s.loader___14107 = (s.tmp_0);
     s.tmp_0 = microcode_App_pushScene__P3413_mk(s);
     s.tmp_0.arg0 = globals.app___6585;
-    s.tmp_0.arg1 = s.loader___14110;
+    s.tmp_0.arg1 = s.loader___14107;
     s.callLocIdx = 2126; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
-    r0 = s.loader___14110.fields["cursor"];
+    r0 = s.loader___14107.fields["cursor"];
     s.tmp_0 = r0;
     r0 = (s.tmp_0).fields["visible"] = (false);
     s.tmp_0 = microcode_Editor_nonEmptyPages__P3438_mk(s);
-    s.tmp_0.arg0 = s.loader___14110;
+    s.tmp_0.arg0 = s.loader___14107;
     s.callLocIdx = 2127; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
-    s.pages___14120 = (r0);
+    s.pages___14117 = (r0);
     r0 = pxsim_Array__mk();
-    s.imgs___14124 = (r0);
+    s.imgs___14121 = (r0);
     r0 = pxsim_pxtrt.mklocRef();
-    s.w___14126 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.w___14126, 0);
+    s.w___14123 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.w___14123, 0);
     r0 = pxsim_pxtrt.mklocRef();
-    s.h___14127 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.h___14127, 0);
+    s.h___14124 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.h___14124, 0);
     r0 = pxsim_pxtrt.mklocRef();
-    s.pw___14130 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.pw___14130, 160);
-    s.p___14132 = (undefined);
-    s.unnamed196___U8 = (s.pages___14120);
+    s.pw___14127 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.pw___14127, 160);
+    s.p___14129 = (undefined);
+    s.unnamed196___U8 = (s.pages___14117);
     s.unnamed197___U9 = (0);
   case 1:
     s.tmp_0 = r0 = s.unnamed197___U9;
@@ -28211,19 +28207,19 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
     r0 = pxsim_Array__getAt(s.unnamed196___U8, s.unnamed197___U9);
-    s.p___14132 = (r0);
+    s.p___14129 = (r0);
     s.tmp_2 = microcode_Editor_switchToPage__P3443_mk(s);
-    s.tmp_2.arg0 = s.loader___14110;
-    s.tmp_2.arg1 = s.p___14132;
+    s.tmp_2.arg0 = s.loader___14107;
+    s.tmp_2.arg1 = s.p___14129;
     s.callLocIdx = 2128; s.pc = 8; return s.tmp_2;
   case 8:
     r0 = s.retval;
-    s.tmp_0 = r0 = s.pw___14130;
+    s.tmp_0 = r0 = s.pw___14127;
     s.tmp_2 = Math_max__P130_mk(s);
-    r0 = pxsim_pxtrt_ldlocRef(s.pw___14130);
+    r0 = pxsim_pxtrt_ldlocRef(s.pw___14127);
     s.tmp_2.arg0 = r0;
     s.tmp_3 = microcode_Editor_ruleWidth__P3439_mk(s);
-    s.tmp_3.arg0 = s.loader___14110;
+    s.tmp_3.arg0 = s.loader___14107;
     s.callLocIdx = 2129; s.pc = 10; return s.tmp_3;
   case 10:
     r0 = s.retval;
@@ -28238,17 +28234,17 @@ switch (step) {
     { step = 1; continue; }
   case 2:
     s.unnamed196___U8 = (undefined);
-    r0 = pxsim_pxtcore_mkAction(6, docs__renderProgram_inline__P14145);
+    r0 = pxsim_pxtcore_mkAction(6, docs__renderProgram_inline__P14142);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.loader___14110);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.pw___14130);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.imgs___14124);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.w___14126);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 4, s.h___14127);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 5, s.r___14108);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.loader___14107);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.pw___14127);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.imgs___14121);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.w___14123);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 4, s.h___14124);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 5, s.r___14105);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     s.tmp_2 = microcode_Editor_nonEmptyPages__P3438_mk(s);
-    s.tmp_2.arg0 = s.loader___14110;
+    s.tmp_2.arg0 = s.loader___14107;
     s.callLocIdx = 2131; s.pc = 12; return s.tmp_2;
   case 12:
     r0 = s.retval;
@@ -28257,39 +28253,39 @@ switch (step) {
     s.callLocIdx = 2151; s.pc = 11; return s.tmp_1;
   case 11:
     r0 = s.retval;
-    r0 = pxsim_pxtrt_ldlocRef(s.w___14126);
+    r0 = pxsim_pxtrt_ldlocRef(s.w___14123);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_ldlocRef(s.h___14127);
+    r0 = pxsim_pxtrt_ldlocRef(s.h___14124);
     s.tmp_1 = r0;
     r0 = pxsim.image.create(s.tmp_0, s.tmp_1);
-    s.res___14268 = (r0);
-    r0 = pxsim_pxtrt.mapSetGeneric(s.r___14108, "app", s.res___14268);
-    s.tmp_0 = r0 = s.res___14268;
-    r0 = s.loader___14110.fields["color_"];
+    s.res___14265 = (r0);
+    r0 = pxsim_pxtrt.mapSetGeneric(s.r___14105, "app", s.res___14265);
+    s.tmp_0 = r0 = s.res___14265;
+    r0 = s.loader___14107.fields["color_"];
     s.tmp_1 = r0;
     r0 = pxsim_ImageMethods.fill(s.tmp_0, s.tmp_1);
-    s.y___14281 = (0);
-    s.i___14282 = (0);
+    s.y___14278 = (0);
+    s.i___14279 = (0);
   case 3:
-    s.tmp_1 = r0 = s.i___14282;
-    r0 = pxsim_Array__length(s.imgs___14124);
+    s.tmp_1 = r0 = s.i___14279;
+    r0 = pxsim_Array__length(s.imgs___14121);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    r0 = pxsim_Array__getAt(s.imgs___14124, s.i___14282);
-    s.img___14288 = (r0);
-    r0 = pxsim_ImageMethods.drawTransparentImage(s.res___14268, s.img___14288, 0, s.y___14281);
-    s.tmp_0 = r0 = s.y___14281;
-    r0 = pxsim_ImageMethods.height(s.img___14288);
+    r0 = pxsim_Array__getAt(s.imgs___14121, s.i___14279);
+    s.img___14285 = (r0);
+    r0 = pxsim_ImageMethods.drawTransparentImage(s.res___14265, s.img___14285, 0, s.y___14278);
+    s.tmp_0 = r0 = s.y___14278;
+    r0 = pxsim_ImageMethods.height(s.img___14285);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 + 4);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 + s.tmp_1);
-    s.y___14281 = (r0);
-    r0 = (s.i___14282 + 1);
-    s.i___14282 = (r0);
+    s.y___14278 = (r0);
+    r0 = (s.i___14279 + 1);
+    s.i___14279 = (r0);
     { step = 3; continue; }
   case 4:
     s.tmp_0 = microcode_App_popScene__P3414_mk(s);
@@ -28297,7 +28293,7 @@ switch (step) {
     s.callLocIdx = 2153; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
-    r0 = s.r___14108;
+    r0 = s.r___14105;
     return leave(s, r0)
   default: oops()
 } } }
@@ -28312,27 +28308,27 @@ function docs__renderProgram__P6591_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  r___14108: undefined,
-  loader___14110: undefined,
-  pages___14120: undefined,
-  imgs___14124: undefined,
-  w___14126: undefined,
-  h___14127: undefined,
-  pw___14130: undefined,
-  p___14132: undefined,
+  r___14105: undefined,
+  loader___14107: undefined,
+  pages___14117: undefined,
+  imgs___14121: undefined,
+  w___14123: undefined,
+  h___14124: undefined,
+  pw___14127: undefined,
+  p___14129: undefined,
   unnamed196___U8: undefined,
   unnamed197___U9: undefined,
-  res___14268: undefined,
-  y___14281: undefined,
-  i___14282: undefined,
-  img___14288: undefined,
+  res___14265: undefined,
+  y___14278: undefined,
+  i___14279: undefined,
+  img___14285: undefined,
 } }
 
 
 
 
 
-function docs__renderProgram_inline__P14145(s) {
+function docs__renderProgram_inline__P14142(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -28342,10 +28338,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.editor___14154 = undefined;
-    s.img___14168 = undefined;
-    s.pageEditor___14197 = undefined;
-    s.rulesEditor___14200 = undefined;
+    s.editor___14151 = undefined;
+    s.img___14165 = undefined;
+    s.pageEditor___14194 = undefined;
+    s.rulesEditor___14197 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -28376,14 +28372,14 @@ switch (step) {
     s.callLocIdx = 2135; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
-    s.editor___14154 = (s.tmp_0);
+    s.editor___14151 = (s.tmp_0);
     s.tmp_0 = microcode_App_pushScene__P3413_mk(s);
     s.tmp_0.arg0 = globals.app___6585;
-    s.tmp_0.arg1 = s.editor___14154;
+    s.tmp_0.arg1 = s.editor___14151;
     s.callLocIdx = 2136; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
-    r0 = s.editor___14154.fields["cursor"];
+    r0 = s.editor___14151.fields["cursor"];
     s.tmp_0 = r0;
     r0 = (s.tmp_0).fields["visible"] = (false);
     s.tmp_0 = pause__P413_mk(s);
@@ -28392,7 +28388,7 @@ switch (step) {
   case 6:
     r0 = s.retval;
     s.tmp_0 = microcode_Editor_renderPage__P3441_mk(s);
-    s.tmp_0.arg0 = s.editor___14154;
+    s.tmp_0.arg0 = s.editor___14151;
     s.tmp_0.arg1 = s.arg0;
     s.callLocIdx = 2138; s.pc = 7; return s.tmp_0;
   case 7:
@@ -28403,13 +28399,13 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_ImageMethods.clone(s.tmp_0);
-    s.img___14168 = (r0);
-    r0 = pxsim_Array__push(s.caps[2], s.img___14168);
+    s.img___14165 = (r0);
+    r0 = pxsim_Array__push(s.caps[2], s.img___14165);
     s.tmp_0 = r0 = s.caps[3];
     s.tmp_2 = Math_max__P130_mk(s);
     r0 = pxsim_pxtrt_ldlocRef(s.caps[3]);
     s.tmp_2.arg0 = r0;
-    r0 = pxsim_ImageMethods.width(s.img___14168);
+    r0 = pxsim_ImageMethods.width(s.img___14165);
     s.tmp_2.arg1 = r0;
     s.callLocIdx = 2140; s.pc = 9; return s.tmp_2;
   case 9:
@@ -28419,7 +28415,7 @@ switch (step) {
     s.tmp_0 = r0 = s.caps[4];
     r0 = pxsim_pxtrt_ldlocRef(s.caps[4]);
     s.tmp_2 = r0;
-    r0 = pxsim_ImageMethods.height(s.img___14168);
+    r0 = pxsim_ImageMethods.height(s.img___14165);
     s.tmp_4 = r0;
     r0 = (s.tmp_4 + 4);
     s.tmp_3 = r0;
@@ -28440,19 +28436,19 @@ switch (step) {
     s.tmp_2 = r0;
     r0 = pxsim_String__concat("page_", s.tmp_2);
     s.tmp_1 = r0;
-    r0 = pxsim_pxtrt.mapSetGeneric(s.tmp_0, s.tmp_1, s.img___14168);
-    r0 = s.editor___14154.fields["pageEditor"];
-    s.pageEditor___14197 = (r0);
-    r0 = s.pageEditor___14197.fields["ruleEditors"];
-    s.rulesEditor___14200 = (r0);
-    r0 = pxsim_pxtcore_mkAction(4, docs__renderProgram_inline__P14206);
+    r0 = pxsim_pxtrt.mapSetGeneric(s.tmp_0, s.tmp_1, s.img___14165);
+    r0 = s.editor___14151.fields["pageEditor"];
+    s.pageEditor___14194 = (r0);
+    r0 = s.pageEditor___14194.fields["ruleEditors"];
+    s.rulesEditor___14197 = (r0);
+    r0 = pxsim_pxtcore_mkAction(4, docs__renderProgram_inline__P14203);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[0]);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.img___14168);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.img___14165);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.caps[5]);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.arg0);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
-    s.tmp_1.arg0 = s.rulesEditor___14200;
+    s.tmp_1.arg0 = s.rulesEditor___14197;
     s.tmp_1.arg1 = s.tmp_0;
     s.callLocIdx = 2149; s.pc = 11; return s.tmp_1;
   case 11:
@@ -28466,22 +28462,22 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-docs__renderProgram_inline__P14145.info = {"start":3670,"length":1376,"line":122,"column":39,"endLine":160,"endColumn":9,"fileName":"docs.ts","functionName":"inline","argumentNames":["p"]}
+docs__renderProgram_inline__P14142.info = {"start":3670,"length":1376,"line":122,"column":39,"endLine":160,"endColumn":9,"fileName":"docs.ts","functionName":"inline","argumentNames":["p"]}
 
-function docs__renderProgram_inline__P14145_mk(s) {
+function docs__renderProgram_inline__P14142_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: docs__renderProgram_inline__P14145, depth: s.depth + 1,
+        parent: s, fn: docs__renderProgram_inline__P14142, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  editor___14154: undefined,
-  img___14168: undefined,
-  pageEditor___14197: undefined,
-  rulesEditor___14200: undefined,
+  editor___14151: undefined,
+  img___14165: undefined,
+  pageEditor___14194: undefined,
+  rulesEditor___14197: undefined,
   arg0: undefined,
 } }
 
@@ -28489,7 +28485,7 @@ function docs__renderProgram_inline__P14145_mk(s) {
 
 
 
-function docs__renderProgram_inline__P14206(s) {
+function docs__renderProgram_inline__P14203(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -28499,32 +28495,32 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.bound___14209 = undefined;
-    s.imgr___14213 = undefined;
+    s.bound___14206 = undefined;
+    s.imgr___14210 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0.fields["bounds"];
-    s.bound___14209 = (r0);
-    r0 = s.bound___14209.fields["width"];
+    s.bound___14206 = (r0);
+    r0 = s.bound___14206.fields["width"];
     s.tmp_0 = r0;
-    r0 = s.bound___14209.fields["height"];
+    r0 = s.bound___14206.fields["height"];
     s.tmp_1 = r0;
     r0 = pxsim.image.create(s.tmp_0, s.tmp_1);
-    s.imgr___14213 = (r0);
-    s.tmp_0 = r0 = s.imgr___14213;
+    s.imgr___14210 = (r0);
+    s.tmp_0 = r0 = s.imgr___14210;
     r0 = s.caps[0].fields["color_"];
     s.tmp_1 = r0;
     r0 = pxsim_ImageMethods.fill(s.tmp_0, s.tmp_1);
     s.tmp_0 = helpers_imageBlit__P1633_mk(s);
-    s.tmp_0.arg0 = s.imgr___14213;
+    s.tmp_0.arg0 = s.imgr___14210;
     s.tmp_0.arg1 = 0;
     s.tmp_0.arg2 = 0;
-    r0 = s.bound___14209.fields["width"];
+    r0 = s.bound___14206.fields["width"];
     s.tmp_0.arg3 = r0;
-    r0 = s.bound___14209.fields["height"];
+    r0 = s.bound___14206.fields["height"];
     s.tmp_0.arg4 = r0;
     s.tmp_0.arg5 = s.caps[1];
     r0 = s.arg0.fields["xfrm_"];
@@ -28533,7 +28529,7 @@ switch (step) {
     s.tmp_2 = r0;
     r0 = s.tmp_2.fields["x_"];
     s.tmp_1 = r0;
-    r0 = s.bound___14209.fields["left"];
+    r0 = s.bound___14206.fields["left"];
     s.tmp_4 = r0;
     r0 = (s.tmp_1 - s.tmp_4);
     s.tmp_0.arg6 = r0;
@@ -28543,13 +28539,13 @@ switch (step) {
     s.tmp_6 = r0;
     r0 = s.tmp_6.fields["y_"];
     s.tmp_5 = r0;
-    r0 = s.bound___14209.fields["top"];
+    r0 = s.bound___14206.fields["top"];
     s.tmp_8 = r0;
     r0 = (s.tmp_5 - s.tmp_8);
     s.tmp_0.arg7 = r0;
-    r0 = s.bound___14209.fields["width"];
+    r0 = s.bound___14206.fields["width"];
     s.tmp_0.arg8 = r0;
-    r0 = s.bound___14209.fields["height"];
+    r0 = s.bound___14206.fields["height"];
     s.tmp_0.arg9 = r0;
     s.tmp_0.arg10 = true;
     s.tmp_0.arg11 = false;
@@ -28585,17 +28581,17 @@ switch (step) {
     s.tmp_6 = r0;
     r0 = pxsim_String__concat(s.tmp_2, s.tmp_6);
     s.tmp_1 = r0;
-    r0 = pxsim_pxtrt.mapSetGeneric(s.tmp_0, s.tmp_1, s.imgr___14213);
+    r0 = pxsim_pxtrt.mapSetGeneric(s.tmp_0, s.tmp_1, s.imgr___14210);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-docs__renderProgram_inline__P14206.info = {"start":4336,"length":672,"line":140,"column":32,"endLine":158,"endColumn":13,"fileName":"docs.ts","functionName":"inline","argumentNames":["ruleEditor","ri"]}
+docs__renderProgram_inline__P14203.info = {"start":4336,"length":672,"line":140,"column":32,"endLine":158,"endColumn":13,"fileName":"docs.ts","functionName":"inline","argumentNames":["ruleEditor","ri"]}
 
-function docs__renderProgram_inline__P14206_mk(s) {
+function docs__renderProgram_inline__P14203_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: docs__renderProgram_inline__P14206, depth: s.depth + 1,
+        parent: s, fn: docs__renderProgram_inline__P14203, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -28606,8 +28602,8 @@ function docs__renderProgram_inline__P14206_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  bound___14209: undefined,
-  imgr___14213: undefined,
+  bound___14206: undefined,
+  imgr___14210: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -28667,8 +28663,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.prevScene___14315 = undefined;
-    s.currScene___14326 = undefined;
+    s.prevScene___14312 = undefined;
+    s.currScene___14323 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -28678,16 +28674,16 @@ switch (step) {
     r0 = s.arg0.fields["scenes"];
     s.tmp_0 = r0;
     r0 = pxsim_Array_.pop(s.tmp_0);
-    s.prevScene___14315 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.prevScene___14315);
+    s.prevScene___14312 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.prevScene___14312);
     if (!r0) { step = 1; continue; }
     s.tmp_0 = microcode_Scene_deactivate__P3196_mk(s);
-    s.tmp_0.arg0 = s.prevScene___14315;
+    s.tmp_0.arg0 = s.prevScene___14312;
     s.callLocIdx = 349; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.tmp_0 = microcode_Scene__C3188_v1_1_mk(s);
-    s.tmp_0.arg0 = s.prevScene___14315;
+    s.tmp_0.arg0 = s.prevScene___14312;
     if (!checkSubtype(s.tmp_0.arg0, microcode_Scene__C3188_VT)) failedCast(s.tmp_0.arg0);
     s.tmp_0.fn = s.tmp_0.arg0.vtable.methods.shutdown;
     s.pc = 6; return s.tmp_0;
@@ -28704,11 +28700,11 @@ switch (step) {
     s.callLocIdx = 351; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
-    s.currScene___14326 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.currScene___14326);
+    s.currScene___14323 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.currScene___14323);
     if (!r0) { step = 3; continue; }
     s.tmp_0 = microcode_Scene__C3188_v2_1_mk(s);
-    s.tmp_0.arg0 = s.currScene___14326;
+    s.tmp_0.arg0 = s.currScene___14323;
     if (!checkSubtype(s.tmp_0.arg0, microcode_Scene__C3188_VT)) failedCast(s.tmp_0.arg0);
     s.tmp_0.fn = s.tmp_0.arg0.vtable.methods.activate;
     s.pc = 9; return s.tmp_0;
@@ -28728,8 +28724,8 @@ function microcode_SceneManager_popScene__P3207_mk(s) {
         parent: s, fn: microcode_SceneManager_popScene__P3207, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  prevScene___14315: undefined,
-  currScene___14326: undefined,
+  prevScene___14312: undefined,
+  currScene___14323: undefined,
   arg0: undefined,
 } }
 
@@ -28747,8 +28743,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.ctx___14334 = undefined;
-    s.context___14342 = undefined;
+    s.ctx___14331 = undefined;
+    s.context___14339 = undefined;
     r0 = pxsim_numops_toBoolDecr(globals.eventContexts___4169);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
@@ -28759,8 +28755,8 @@ switch (step) {
   case 1:
   case 2:
     r0 = pxsim_Array_.pop(globals.eventContexts___4169);
-    s.ctx___14334 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.ctx___14334);
+    s.ctx___14331 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.ctx___14331);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -28770,7 +28766,7 @@ switch (step) {
   case 3:
   case 4:
     s.tmp_2 = control_EventContext_unregister__P402_mk(s);
-    s.tmp_2.arg0 = s.ctx___14334;
+    s.tmp_2.arg0 = s.ctx___14331;
     s.callLocIdx = 130; s.pc = 8; return s.tmp_2;
   case 8:
     r0 = s.retval;
@@ -28780,11 +28776,11 @@ switch (step) {
     r0 = (s.tmp_2 - 1);
     s.tmp_1 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, s.tmp_1);
-    s.context___14342 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.context___14342);
+    s.context___14339 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.context___14339);
     if (!r0) { step = 5; continue; }
     s.tmp_0 = control_EventContext_register__P401_mk(s);
-    s.tmp_0.arg0 = s.context___14342;
+    s.tmp_0.arg0 = s.context___14339;
     s.callLocIdx = 131; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
@@ -28807,8 +28803,8 @@ function control_popEventContext__P410_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  ctx___14334: undefined,
-  context___14342: undefined,
+  ctx___14331: undefined,
+  context___14339: undefined,
 } }
 
 
@@ -28825,7 +28821,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.h___14355 = undefined;
+    s.h___14352 = undefined;
     s.unnamed110___U1 = undefined;
     s.unnamed111___U2 = undefined;
     if (s.lambdaArgs) {
@@ -28834,7 +28830,7 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, control_EventContext__C395_VT)) failedCast(r0);
-    s.h___14355 = (undefined);
+    s.h___14352 = (undefined);
     r0 = s.arg0.fields["handlers"];
     s.unnamed110___U1 = (r0);
     s.unnamed111___U2 = (0);
@@ -28845,9 +28841,9 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
     r0 = pxsim_Array__getAt(s.unnamed110___U1, s.unnamed111___U2);
-    s.h___14355 = (r0);
+    s.h___14352 = (r0);
     s.tmp_2 = control_EventHandler_register__P4162_mk(s);
-    s.tmp_2.arg0 = s.h___14355;
+    s.tmp_2.arg0 = s.h___14352;
     s.callLocIdx = 121; s.pc = 3; return s.tmp_2;
   case 3:
     r0 = s.retval;
@@ -28875,7 +28871,7 @@ function control_EventContext_register__P401_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  h___14355: undefined,
+  h___14352: undefined,
   unnamed110___U1: undefined,
   unnamed111___U2: undefined,
   arg0: undefined,
@@ -29333,7 +29329,7 @@ switch (step) {
     s.tmp_0 = helpers_arrayForEach__P109_mk(s);
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = microcode_PageEditor_draw_inline__P14467;
+    s.tmp_0.arg1 = microcode_PageEditor_draw_inline__P14464;
     s.callLocIdx = 842; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
@@ -29356,7 +29352,7 @@ function microcode_PageEditor_draw__P6401_mk(s) {
 
 
 
-function microcode_PageEditor_draw_inline__P14467(s) {
+function microcode_PageEditor_draw_inline__P14464(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -29381,12 +29377,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_draw_inline__P14467.info = {"start":17640,"length":19,"line":547,"column":37,"endLine":547,"endColumn":56,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_draw_inline__P14464.info = {"start":17640,"length":19,"line":547,"column":37,"endLine":547,"endColumn":56,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
-function microcode_PageEditor_draw_inline__P14467_mk(s) {
+function microcode_PageEditor_draw_inline__P14464_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_PageEditor_draw_inline__P14467, depth: s.depth + 1,
+        parent: s, fn: microcode_PageEditor_draw_inline__P14464, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -29472,7 +29468,7 @@ switch (step) {
     r0 = s.retval;
   case 5:
   case 6:
-    r0 = pxsim_pxtcore_mkAction(1, microcode_RuleEditor_draw_inline__P14500);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_RuleEditor_draw_inline__P14497);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
@@ -29503,7 +29499,7 @@ function microcode_RuleEditor_draw__P6430_mk(s) {
 
 
 
-function microcode_RuleEditor_draw_inline__P14500(s) {
+function microcode_RuleEditor_draw_inline__P14497(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -29513,9 +29509,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.buttons___14502 = undefined;
-    s.i___14508 = undefined;
-    s.btn___14514 = undefined;
+    s.buttons___14499 = undefined;
+    s.i___14505 = undefined;
+    s.btn___14511 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -29523,20 +29519,20 @@ switch (step) {
     r0 = s.caps[0].fields["ruleButtons"];
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt.mapGetGeneric(s.tmp_0, s.arg0);
-    s.buttons___14502 = (r0);
-    s.i___14508 = (0);
+    s.buttons___14499 = (r0);
+    s.i___14505 = (0);
   case 1:
-    s.tmp_1 = r0 = s.i___14508;
-    r0 = pxsim_Array__length(s.buttons___14502);
+    s.tmp_1 = r0 = s.i___14505;
+    r0 = pxsim_Array__length(s.buttons___14499);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    r0 = pxsim_Array__getAt(s.buttons___14502, s.i___14508);
-    s.btn___14514 = (r0);
+    r0 = pxsim_Array__getAt(s.buttons___14499, s.i___14505);
+    s.btn___14511 = (r0);
     s.tmp_3 = microcode_Button_isOffScreenX__P3050_mk(s);
-    s.tmp_3.arg0 = s.btn___14514;
+    s.tmp_3.arg0 = s.btn___14511;
     s.callLocIdx = 1005; s.pc = 5; return s.tmp_3;
   case 5:
     r0 = s.retval;
@@ -29548,7 +29544,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
     s.tmp_4 = microcode_Button__C3028_v2_1_mk(s);
-    s.tmp_4.arg0 = s.btn___14514;
+    s.tmp_4.arg0 = s.btn___14511;
     if (!checkSubtype(s.tmp_4.arg0, microcode_Button__C3028_VT)) failedCast(s.tmp_4.arg0);
     s.tmp_4.fn = s.tmp_4.arg0.vtable.methods.draw;
     s.pc = 6; return s.tmp_4;
@@ -29556,29 +29552,29 @@ switch (step) {
     r0 = s.retval;
   case 2:
   case 3:
-    r0 = (s.i___14508 + 1);
-    s.i___14508 = (r0);
+    r0 = (s.i___14505 + 1);
+    s.i___14505 = (r0);
     { step = 1; continue; }
   case 4:
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_draw_inline__P14500.info = {"start":34129,"length":254,"line":1012,"column":29,"endLine":1018,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
+microcode_RuleEditor_draw_inline__P14497.info = {"start":34129,"length":254,"line":1012,"column":29,"endLine":1018,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
 
-function microcode_RuleEditor_draw_inline__P14500_mk(s) {
+function microcode_RuleEditor_draw_inline__P14497_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_RuleEditor_draw_inline__P14500, depth: s.depth + 1,
+        parent: s, fn: microcode_RuleEditor_draw_inline__P14497, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  buttons___14502: undefined,
-  i___14508: undefined,
-  btn___14514: undefined,
+  buttons___14499: undefined,
+  i___14505: undefined,
+  btn___14511: undefined,
   arg0: undefined,
 } }
 
@@ -29636,7 +29632,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.p___14532 = undefined;
+    s.p___14529 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -29649,8 +29645,8 @@ switch (step) {
     s.callLocIdx = 646; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    s.p___14532 = (r0);
-    r0 = s.p___14532.fields["x_"];
+    s.p___14529 = (r0);
+    r0 = s.p___14529.fields["x_"];
     s.tmp_2 = r0;
     r0 = s.arg0.fields["image"];
     s.tmp_5 = r0;
@@ -29667,7 +29663,7 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 2; continue; }
   case 1:
-    r0 = s.p___14532.fields["x_"];
+    r0 = s.p___14529.fields["x_"];
     s.tmp_7 = r0;
     r0 = s.arg0.fields["image"];
     s.tmp_10 = r0;
@@ -29704,7 +29700,7 @@ function microcode_Sprite_isOffScreenX__P3428_mk(s) {
   tmp_9: undefined,
   tmp_10: undefined,
   tmp_11: undefined,
-  p___14532: undefined,
+  p___14529: undefined,
   arg0: undefined,
 } }
 
@@ -29785,8 +29781,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.y___14569 = undefined;
-    s.b___14573 = undefined;
+    s.y___14566 = undefined;
+    s.b___14570 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -29801,12 +29797,12 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["y_"];
-    s.y___14569 = (r0);
+    s.y___14566 = (r0);
     r0 = s.arg0.fields["bounds"];
-    s.b___14573 = (r0);
-    r0 = s.b___14573.fields["top"];
+    s.b___14570 = (r0);
+    r0 = s.b___14570.fields["top"];
     s.tmp_2 = r0;
-    r0 = (s.y___14569 + s.tmp_2);
+    r0 = (s.y___14566 + s.tmp_2);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 > globals.microcode_Screen_BOTTOM_EDGE___3598);
     s.tmp_0 = r0;
@@ -29815,10 +29811,10 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 2; continue; }
   case 1:
-    s.tmp_4 = r0 = s.y___14569;
-    r0 = s.b___14573.fields["top"];
+    s.tmp_4 = r0 = s.y___14566;
+    r0 = s.b___14570.fields["top"];
     s.tmp_7 = r0;
-    r0 = s.b___14573.fields["height"];
+    r0 = s.b___14570.fields["height"];
     s.tmp_8 = r0;
     r0 = (s.tmp_7 + s.tmp_8);
     s.tmp_6 = r0;
@@ -29851,8 +29847,8 @@ function microcode_RuleEditor_isOffScreen__P6429_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  y___14569: undefined,
-  b___14573: undefined,
+  y___14566: undefined,
+  b___14570: undefined,
   arg0: undefined,
 } }
 
@@ -29870,31 +29866,31 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.x___14593 = undefined;
+    s.x___14590 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, microcode_Editor__C3431_VT)) failedCast(r0);
-    s.x___14593 = (globals.microcode_Screen_LEFT_EDGE___3595);
+    s.x___14590 = (globals.microcode_Screen_LEFT_EDGE___3595);
   case 1:
-    r0 = (s.x___14593 < globals.microcode_Screen_RIGHT_EDGE___3596);
+    r0 = (s.x___14590 < globals.microcode_Screen_RIGHT_EDGE___3596);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
     s.tmp_1 = microcode_Screen_drawTransparentImage__P3606_mk(s);
     s.tmp_1.arg0 = globals.editorBackground___3080;
-    s.tmp_1.arg1 = s.x___14593;
+    s.tmp_1.arg1 = s.x___14590;
     s.tmp_1.arg2 = globals.microcode_Screen_TOP_EDGE___3597;
     s.callLocIdx = 798; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
-    s.tmp_0 = r0 = s.x___14593;
+    s.tmp_0 = r0 = s.x___14590;
     r0 = pxsim_ImageMethods.width(globals.editorBackground___3080);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 + s.tmp_1);
-    s.x___14593 = (r0);
+    s.x___14590 = (r0);
     { step = 1; continue; }
   case 2:
     r0 = undefined;
@@ -29910,7 +29906,7 @@ function microcode_Editor_drawBackground__P6387_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  x___14593: undefined,
+  x___14590: undefined,
   arg0: undefined,
 } }
 
@@ -29975,8 +29971,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.currTimeMs___14626 = undefined;
-    s.elapsedTimeMs___14629 = undefined;
+    s.currTimeMs___14623 = undefined;
+    s.elapsedTimeMs___14626 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -30015,12 +30011,12 @@ switch (step) {
   case 3:
   case 4:
     r0 = pxsim.control.millis();
-    s.currTimeMs___14626 = (r0);
+    s.currTimeMs___14623 = (r0);
     r0 = s.arg0.fields["scrollStartMs"];
     s.tmp_0 = r0;
-    r0 = (s.currTimeMs___14626 - s.tmp_0);
-    s.elapsedTimeMs___14629 = (r0);
-    r0 = (s.elapsedTimeMs___14629 < 63);
+    r0 = (s.currTimeMs___14623 - s.tmp_0);
+    s.elapsedTimeMs___14626 = (r0);
+    r0 = (s.elapsedTimeMs___14626 < 63);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
@@ -30033,7 +30029,7 @@ switch (step) {
     s.tmp_1.arg0 = r0;
     r0 = s.arg0.fields["scrollDest"];
     s.tmp_1.arg1 = r0;
-    r0 = (s.elapsedTimeMs___14629 << 2);
+    r0 = (s.elapsedTimeMs___14626 << 2);
     s.tmp_1.arg2 = r0;
     r0 = s.arg0.fields["scrollroot"];
     s.tmp_5 = r0;
@@ -30084,8 +30080,8 @@ function microcode_Editor_update__P3451_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  currTimeMs___14626: undefined,
-  elapsedTimeMs___14629: undefined,
+  currTimeMs___14623: undefined,
+  elapsedTimeMs___14626: undefined,
   arg0: undefined,
 } }
 
@@ -30103,8 +30099,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.currTimeMs___14664 = undefined;
-    s.elapsedTimeMs___14667 = undefined;
+    s.currTimeMs___14661 = undefined;
+    s.elapsedTimeMs___14664 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -30117,12 +30113,12 @@ switch (step) {
   case 5:
     r0 = s.retval;
     r0 = pxsim.control.millis();
-    s.currTimeMs___14664 = (r0);
+    s.currTimeMs___14661 = (r0);
     r0 = s.arg0.fields["moveStartMs"];
     s.tmp_0 = r0;
-    r0 = (s.currTimeMs___14664 - s.tmp_0);
-    s.elapsedTimeMs___14667 = (r0);
-    r0 = (s.elapsedTimeMs___14667 < 63);
+    r0 = (s.currTimeMs___14661 - s.tmp_0);
+    s.elapsedTimeMs___14664 = (r0);
+    r0 = (s.elapsedTimeMs___14664 < 63);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
@@ -30133,7 +30129,7 @@ switch (step) {
     s.tmp_1.arg0 = r0;
     r0 = s.arg0.fields["moveDest"];
     s.tmp_1.arg1 = r0;
-    r0 = (s.elapsedTimeMs___14667 << 2);
+    r0 = (s.elapsedTimeMs___14664 << 2);
     s.tmp_1.arg2 = r0;
     r0 = s.arg0.fields["xfrm"];
     s.tmp_3 = r0;
@@ -30155,7 +30151,7 @@ switch (step) {
   case 7:
     r0 = s.retval;
   case 2:
-    r0 = (s.currTimeMs___14664 % 1000);
+    r0 = (s.currTimeMs___14661 % 1000);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 < 500);
     s.tmp_0 = r0;
@@ -30184,8 +30180,8 @@ function microcode_Cursor_update__P3487_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  currTimeMs___14664: undefined,
-  elapsedTimeMs___14667: undefined,
+  currTimeMs___14661: undefined,
+  elapsedTimeMs___14664: undefined,
   arg0: undefined,
 } }
 
@@ -30497,7 +30493,7 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, microcode_PageEditor__C6389_VT)) failedCast(r0);
-    r0 = pxsim_pxtcore_mkAction(1, microcode_PageEditor_addToNavigator_inline__P14767);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_PageEditor_addToNavigator_inline__P14764);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
@@ -30527,7 +30523,7 @@ function microcode_PageEditor_addToNavigator__P6396_mk(s) {
 
 
 
-function microcode_PageEditor_addToNavigator_inline__P14767(s) {
+function microcode_PageEditor_addToNavigator_inline__P14764(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -30559,12 +30555,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_addToNavigator_inline__P14767.info = {"start":16031,"length":121,"line":501,"column":37,"endLine":504,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_addToNavigator_inline__P14764.info = {"start":16031,"length":121,"line":501,"column":37,"endLine":504,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
-function microcode_PageEditor_addToNavigator_inline__P14767_mk(s) {
+function microcode_PageEditor_addToNavigator_inline__P14764_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_PageEditor_addToNavigator_inline__P14767, depth: s.depth + 1,
+        parent: s, fn: microcode_PageEditor_addToNavigator_inline__P14764, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -30584,7 +30580,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.btns___14780 = undefined;
+    s.btns___14777 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -30592,13 +30588,13 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, microcode_RuleEditor__C6408_VT)) failedCast(r0);
     r0 = pxsim_Array__mk();
-    s.btns___14780 = (r0);
+    s.btns___14777 = (r0);
     r0 = s.arg0.fields["handleBtn"];
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.btns___14780, s.tmp_0);
-    r0 = pxsim_pxtcore_mkAction(1, microcode_RuleEditor_addToNavigator_inline__P14792);
+    r0 = pxsim_Array__push(s.btns___14777, s.tmp_0);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_RuleEditor_addToNavigator_inline__P14789);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.btns___14780);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.btns___14777);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     s.tmp_2 = if_sensors_1_mk(s);
     r0 = s.arg0.fields["ruleButtons"];
@@ -30618,9 +30614,9 @@ switch (step) {
     s.callLocIdx = 921; s.pc = 5; return s.tmp_1;
   case 5:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_RuleEditor_addToNavigator_inline__P14803);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_RuleEditor_addToNavigator_inline__P14800);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.btns___14780);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.btns___14777);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     s.tmp_2 = if_filters_1_mk(s);
     r0 = s.arg0.fields["ruleButtons"];
@@ -30646,12 +30642,12 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     r0 = s.arg0.fields["whenInsertBtn"];
     s.tmp_1 = r0;
-    r0 = pxsim_Array__push(s.btns___14780, s.tmp_1);
+    r0 = pxsim_Array__push(s.btns___14777, s.tmp_1);
   case 1:
   case 2:
-    r0 = pxsim_pxtcore_mkAction(1, microcode_RuleEditor_addToNavigator_inline__P14821);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_RuleEditor_addToNavigator_inline__P14818);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.btns___14780);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.btns___14777);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     s.tmp_2 = if_actuators_1_mk(s);
     r0 = s.arg0.fields["ruleButtons"];
@@ -30671,9 +30667,9 @@ switch (step) {
     s.callLocIdx = 925; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_RuleEditor_addToNavigator_inline__P14832);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_RuleEditor_addToNavigator_inline__P14829);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.btns___14780);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.btns___14777);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     s.tmp_2 = if_modifiers_1_mk(s);
     r0 = s.arg0.fields["ruleButtons"];
@@ -30699,13 +30695,13 @@ switch (step) {
     if (!r0) { step = 3; continue; }
     r0 = s.arg0.fields["doInsertBtn"];
     s.tmp_1 = r0;
-    r0 = pxsim_Array__push(s.btns___14780, s.tmp_1);
+    r0 = pxsim_Array__push(s.btns___14777, s.tmp_1);
   case 3:
   case 4:
     s.tmp_0 = microcode_Editor_addButtons__P3450_mk(s);
     r0 = s.arg0.fields["editor"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = s.btns___14780;
+    s.tmp_0.arg1 = s.btns___14777;
     s.callLocIdx = 928; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
@@ -30723,7 +30719,7 @@ function microcode_RuleEditor_addToNavigator__P6425_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  btns___14780: undefined,
+  btns___14777: undefined,
   arg0: undefined,
 } }
 
@@ -30731,7 +30727,7 @@ function microcode_RuleEditor_addToNavigator__P6425_mk(s) {
 
 
 
-function microcode_RuleEditor_addToNavigator_inline__P14792(s) {
+function microcode_RuleEditor_addToNavigator_inline__P14789(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -30750,12 +30746,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator_inline__P14792.info = {"start":29948,"length":17,"line":883,"column":45,"endLine":883,"endColumn":62,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
+microcode_RuleEditor_addToNavigator_inline__P14789.info = {"start":29948,"length":17,"line":883,"column":45,"endLine":883,"endColumn":62,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
 
-function microcode_RuleEditor_addToNavigator_inline__P14792_mk(s) {
+function microcode_RuleEditor_addToNavigator_inline__P14789_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_RuleEditor_addToNavigator_inline__P14792, depth: s.depth + 1,
+        parent: s, fn: microcode_RuleEditor_addToNavigator_inline__P14789, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
 } }
@@ -30764,7 +30760,7 @@ function microcode_RuleEditor_addToNavigator_inline__P14792_mk(s) {
 
 
 
-function microcode_RuleEditor_addToNavigator_inline__P14803(s) {
+function microcode_RuleEditor_addToNavigator_inline__P14800(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -30783,12 +30779,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator_inline__P14803.info = {"start":30012,"length":17,"line":884,"column":45,"endLine":884,"endColumn":62,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
+microcode_RuleEditor_addToNavigator_inline__P14800.info = {"start":30012,"length":17,"line":884,"column":45,"endLine":884,"endColumn":62,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
 
-function microcode_RuleEditor_addToNavigator_inline__P14803_mk(s) {
+function microcode_RuleEditor_addToNavigator_inline__P14800_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_RuleEditor_addToNavigator_inline__P14803, depth: s.depth + 1,
+        parent: s, fn: microcode_RuleEditor_addToNavigator_inline__P14800, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
 } }
@@ -30797,7 +30793,7 @@ function microcode_RuleEditor_addToNavigator_inline__P14803_mk(s) {
 
 
 
-function microcode_RuleEditor_addToNavigator_inline__P14821(s) {
+function microcode_RuleEditor_addToNavigator_inline__P14818(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -30816,12 +30812,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator_inline__P14821.info = {"start":30146,"length":17,"line":888,"column":47,"endLine":888,"endColumn":64,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
+microcode_RuleEditor_addToNavigator_inline__P14818.info = {"start":30146,"length":17,"line":888,"column":47,"endLine":888,"endColumn":64,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
 
-function microcode_RuleEditor_addToNavigator_inline__P14821_mk(s) {
+function microcode_RuleEditor_addToNavigator_inline__P14818_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_RuleEditor_addToNavigator_inline__P14821, depth: s.depth + 1,
+        parent: s, fn: microcode_RuleEditor_addToNavigator_inline__P14818, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
 } }
@@ -30830,7 +30826,7 @@ function microcode_RuleEditor_addToNavigator_inline__P14821_mk(s) {
 
 
 
-function microcode_RuleEditor_addToNavigator_inline__P14832(s) {
+function microcode_RuleEditor_addToNavigator_inline__P14829(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -30849,12 +30845,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_addToNavigator_inline__P14832.info = {"start":30212,"length":17,"line":889,"column":47,"endLine":889,"endColumn":64,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
+microcode_RuleEditor_addToNavigator_inline__P14829.info = {"start":30212,"length":17,"line":889,"column":47,"endLine":889,"endColumn":64,"fileName":"editor.ts","functionName":"inline","argumentNames":["b"]}
 
-function microcode_RuleEditor_addToNavigator_inline__P14832_mk(s) {
+function microcode_RuleEditor_addToNavigator_inline__P14829_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_RuleEditor_addToNavigator_inline__P14832, depth: s.depth + 1,
+        parent: s, fn: microcode_RuleEditor_addToNavigator_inline__P14829, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
 } }
@@ -31058,7 +31054,7 @@ switch (step) {
     s.tmp_0 = helpers_arrayForEach__P109_mk(s);
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = microcode_PageEditor_update_inline__P14878;
+    s.tmp_0.arg1 = microcode_PageEditor_update_inline__P14875;
     s.callLocIdx = 841; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
@@ -31081,7 +31077,7 @@ function microcode_PageEditor_update__P6400_mk(s) {
 
 
 
-function microcode_PageEditor_update_inline__P14878(s) {
+function microcode_PageEditor_update_inline__P14875(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -31106,12 +31102,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_update_inline__P14878.info = {"start":17497,"length":21,"line":542,"column":37,"endLine":542,"endColumn":58,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_update_inline__P14875.info = {"start":17497,"length":21,"line":542,"column":37,"endLine":542,"endColumn":58,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
-function microcode_PageEditor_update_inline__P14878_mk(s) {
+function microcode_PageEditor_update_inline__P14875_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_PageEditor_update_inline__P14878, depth: s.depth + 1,
+        parent: s, fn: microcode_PageEditor_update_inline__P14875, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -31186,7 +31182,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.rules___14899 = undefined;
+    s.rules___14896 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -31195,11 +31191,11 @@ switch (step) {
     if (!checkSubtype(r0, microcode_Editor__C3431_VT)) failedCast(r0);
     r0 = s.arg0.fields["pageEditor"];
     r0 = r0.fields["ruleEditors"];
-    s.rules___14899 = (r0);
+    s.rules___14896 = (r0);
     r0 = (19 + globals.microcode_PageEditor_MARGIN___6404);
     s.tmp_1 = r0;
     s.tmp_3 = r0 = globals.microcode_PageEditor_RULE_MARGIN___6406;
-    r0 = pxsim_Array__length(s.rules___14899);
+    r0 = pxsim_Array__length(s.rules___14896);
     s.tmp_5 = r0;
     r0 = (s.tmp_5 - 1);
     s.tmp_4 = r0;
@@ -31209,7 +31205,7 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_ImageMethods.height(globals.rule_arrow___3093);
     s.tmp_7 = r0;
-    r0 = pxsim_Array__length(s.rules___14899);
+    r0 = pxsim_Array__length(s.rules___14896);
     s.tmp_8 = r0;
     r0 = (s.tmp_7 * s.tmp_8);
     s.tmp_6 = r0;
@@ -31233,7 +31229,7 @@ function microcode_Editor_pageHeight__P3440_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  rules___14899: undefined,
+  rules___14896: undefined,
   arg0: undefined,
 } }
 
@@ -31292,9 +31288,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.w___14929 = undefined;
-    s.rules___14930 = undefined;
-    s.rule___14935 = undefined;
+    s.w___14926 = undefined;
+    s.rules___14927 = undefined;
+    s.rule___14932 = undefined;
     s.unnamed126___U3 = undefined;
     s.unnamed127___U4 = undefined;
     if (s.lambdaArgs) {
@@ -31303,12 +31299,12 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, microcode_Editor__C3431_VT)) failedCast(r0);
-    s.w___14929 = (0);
+    s.w___14926 = (0);
     r0 = s.arg0.fields["pageEditor"];
     r0 = r0.fields["ruleEditors"];
-    s.rules___14930 = (r0);
-    s.rule___14935 = (undefined);
-    s.unnamed126___U3 = (s.rules___14930);
+    s.rules___14927 = (r0);
+    s.rule___14932 = (undefined);
+    s.unnamed126___U3 = (s.rules___14927);
     s.unnamed127___U4 = (0);
   case 1:
     s.tmp_0 = r0 = s.unnamed127___U4;
@@ -31317,21 +31313,21 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
     r0 = pxsim_Array__getAt(s.unnamed126___U3, s.unnamed127___U4);
-    s.rule___14935 = (r0);
+    s.rule___14932 = (r0);
     s.tmp_2 = Math_max__P130_mk(s);
-    s.tmp_2.arg0 = s.w___14929;
-    r0 = s.rule___14935.fields["innerWidth"];
+    s.tmp_2.arg0 = s.w___14926;
+    r0 = s.rule___14932.fields["innerWidth"];
     s.tmp_2.arg1 = r0;
     s.callLocIdx = 664; s.pc = 3; return s.tmp_2;
   case 3:
     r0 = s.retval;
-    s.w___14929 = (r0);
+    s.w___14926 = (r0);
     r0 = (s.unnamed127___U4 + 1);
     s.unnamed127___U4 = (r0);
     { step = 1; continue; }
   case 2:
     s.unnamed126___U3 = (undefined);
-    r0 = (s.w___14929 + 24);
+    r0 = (s.w___14926 + 24);
     return leave(s, r0)
   default: oops()
 } } }
@@ -31345,9 +31341,9 @@ function microcode_Editor_ruleWidth__P3439_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  w___14929: undefined,
-  rules___14930: undefined,
-  rule___14935: undefined,
+  w___14926: undefined,
+  rules___14927: undefined,
+  rule___14932: undefined,
   unnamed126___U3: undefined,
   unnamed127___U4: undefined,
   arg0: undefined,
@@ -31518,7 +31514,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.w___15003 = undefined;
+    s.w___15000 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -31532,13 +31528,13 @@ switch (step) {
     s.callLocIdx = 681; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.w___15003 = (r0);
+    s.w___15000 = (r0);
     s.tmp_0 = microcode_Cursor_snapTo__P3479_mk(s);
     r0 = s.arg0.fields["cursor"];
     s.tmp_0.arg0 = r0;
-    r0 = s.w___15003.fields["x_"];
+    r0 = s.w___15000.fields["x_"];
     s.tmp_0.arg1 = r0;
-    r0 = s.w___15003.fields["y_"];
+    r0 = s.w___15000.fields["y_"];
     s.tmp_0.arg2 = r0;
     s.tmp_1 = microcode_Button_ariaId__P3033_mk(s);
     s.tmp_1.arg0 = s.arg1;
@@ -31570,7 +31566,7 @@ function microcode_Editor_snapCursorTo__P3444_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  w___15003: undefined,
+  w___15000: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -31798,7 +31794,7 @@ switch (step) {
     s.callLocIdx = 802; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(2, microcode_PageEditor_inline__P15075);
+    r0 = pxsim_pxtcore_mkAction(2, microcode_PageEditor_inline__P15072);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg1);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg0);
@@ -31847,7 +31843,7 @@ function microcode_PageEditor_constructor__P6402_mk(s) {
 
 
 
-function microcode_PageEditor_inline__P15075(s) {
+function microcode_PageEditor_inline__P15072(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -31877,12 +31873,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_inline__P15075.info = {"start":13588,"length":64,"line":428,"column":16,"endLine":428,"endColumn":80,"fileName":"editor.ts","functionName":"inline","argumentNames":["ruledef","index"]}
+microcode_PageEditor_inline__P15072.info = {"start":13588,"length":64,"line":428,"column":16,"endLine":428,"endColumn":80,"fileName":"editor.ts","functionName":"inline","argumentNames":["ruledef","index"]}
 
-function microcode_PageEditor_inline__P15075_mk(s) {
+function microcode_PageEditor_inline__P15072_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_PageEditor_inline__P15075, depth: s.depth + 1,
+        parent: s, fn: microcode_PageEditor_inline__P15072, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -31904,9 +31900,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.left___15096 = undefined;
-    s.top___15098 = undefined;
-    s.maxRuleWidth___15139 = undefined;
+    s.left___15093 = undefined;
+    s.top___15095 = undefined;
+    s.maxRuleWidth___15136 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -31927,19 +31923,19 @@ switch (step) {
     s.tmp_3 = helpers_arrayForEach__P109_mk(s);
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_3.arg0 = r0;
-    s.tmp_3.arg1 = microcode_PageEditor_layout_inline__P15092;
+    s.tmp_3.arg1 = microcode_PageEditor_layout_inline__P15089;
     s.callLocIdx = 814; s.pc = 4; return s.tmp_3;
   case 4:
     r0 = s.retval;
-    s.left___15096 = (globals.microcode_PageEditor_MARGIN___6404);
+    s.left___15093 = (globals.microcode_PageEditor_MARGIN___6404);
     r0 = pxsim_pxtrt.mklocRef();
-    s.top___15098 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.top___15098, globals.microcode_PageEditor_MARGIN___6404);
-    r0 = pxsim_pxtcore_mkAction(3, microcode_PageEditor_layout_inline__P15103);
+    s.top___15095 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.top___15095, globals.microcode_PageEditor_MARGIN___6404);
+    r0 = pxsim_pxtcore_mkAction(3, microcode_PageEditor_layout_inline__P15100);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.top___15098);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.left___15096);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.top___15095);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.left___15093);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_1.arg0 = r0;
@@ -31948,11 +31944,11 @@ switch (step) {
   case 5:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mklocRef();
-    s.maxRuleWidth___15139 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.maxRuleWidth___15139, 0);
-    r0 = pxsim_pxtcore_mkAction(1, microcode_PageEditor_layout_inline__P15143);
+    s.maxRuleWidth___15136 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.maxRuleWidth___15136, 0);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_PageEditor_layout_inline__P15140);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.maxRuleWidth___15139);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.maxRuleWidth___15136);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_1.arg0 = r0;
@@ -31960,9 +31956,9 @@ switch (step) {
     s.callLocIdx = 823; s.pc = 6; return s.tmp_1;
   case 6:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_PageEditor_layout_inline__P15154);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_PageEditor_layout_inline__P15151);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.maxRuleWidth___15139);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.maxRuleWidth___15136);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_1.arg0 = r0;
@@ -31986,9 +31982,9 @@ function microcode_PageEditor_layout__P6395_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  left___15096: undefined,
-  top___15098: undefined,
-  maxRuleWidth___15139: undefined,
+  left___15093: undefined,
+  top___15095: undefined,
+  maxRuleWidth___15136: undefined,
   arg0: undefined,
 } }
 
@@ -31996,7 +31992,7 @@ function microcode_PageEditor_layout__P6395_mk(s) {
 
 
 
-function microcode_PageEditor_layout_inline__P15092(s) {
+function microcode_PageEditor_layout_inline__P15089(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -32019,12 +32015,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_layout_inline__P15092.info = {"start":15109,"length":53,"line":476,"column":37,"endLine":478,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_layout_inline__P15089.info = {"start":15109,"length":53,"line":476,"column":37,"endLine":478,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
-function microcode_PageEditor_layout_inline__P15092_mk(s) {
+function microcode_PageEditor_layout_inline__P15089_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_PageEditor_layout_inline__P15092, depth: s.depth + 1,
+        parent: s, fn: microcode_PageEditor_layout_inline__P15089, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -32034,7 +32030,7 @@ function microcode_PageEditor_layout_inline__P15092_mk(s) {
 
 
 
-function microcode_PageEditor_layout_inline__P15103(s) {
+function microcode_PageEditor_layout_inline__P15100(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -32109,12 +32105,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_layout_inline__P15103.info = {"start":15282,"length":341,"line":481,"column":37,"endLine":489,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
+microcode_PageEditor_layout_inline__P15100.info = {"start":15282,"length":341,"line":481,"column":37,"endLine":489,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
 
-function microcode_PageEditor_layout_inline__P15103_mk(s) {
+function microcode_PageEditor_layout_inline__P15100_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_PageEditor_layout_inline__P15103, depth: s.depth + 1,
+        parent: s, fn: microcode_PageEditor_layout_inline__P15100, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -32131,7 +32127,7 @@ function microcode_PageEditor_layout_inline__P15103_mk(s) {
 
 
 
-function microcode_PageEditor_layout_inline__P15143(s) {
+function microcode_PageEditor_layout_inline__P15140(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -32161,12 +32157,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_layout_inline__P15143.info = {"start":15740,"length":96,"line":492,"column":37,"endLine":494,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_layout_inline__P15140.info = {"start":15740,"length":96,"line":492,"column":37,"endLine":494,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
-function microcode_PageEditor_layout_inline__P15143_mk(s) {
+function microcode_PageEditor_layout_inline__P15140_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_PageEditor_layout_inline__P15143, depth: s.depth + 1,
+        parent: s, fn: microcode_PageEditor_layout_inline__P15140, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -32178,7 +32174,7 @@ function microcode_PageEditor_layout_inline__P15143_mk(s) {
 
 
 
-function microcode_PageEditor_layout_inline__P15154(s) {
+function microcode_PageEditor_layout_inline__P15151(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -32201,12 +32197,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_layout_inline__P15154.info = {"start":15875,"length":72,"line":495,"column":37,"endLine":497,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_layout_inline__P15151.info = {"start":15875,"length":72,"line":495,"column":37,"endLine":497,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
-function microcode_PageEditor_layout_inline__P15154_mk(s) {
+function microcode_PageEditor_layout_inline__P15151_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_PageEditor_layout_inline__P15154, depth: s.depth + 1,
+        parent: s, fn: microcode_PageEditor_layout_inline__P15151, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -32227,14 +32223,14 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.ruleRep___15161 = undefined;
-    s.v___15164 = undefined;
-    s.whenTiles___15172 = undefined;
-    s.doTiles___15181 = undefined;
-    s.firstWhenTile___15204 = undefined;
-    s.lastWhenTile___15207 = undefined;
-    s.layoutButtons___15242 = undefined;
-    s.updateSizeFromButtons___15337 = undefined;
+    s.ruleRep___15158 = undefined;
+    s.v___15161 = undefined;
+    s.whenTiles___15169 = undefined;
+    s.doTiles___15178 = undefined;
+    s.firstWhenTile___15201 = undefined;
+    s.lastWhenTile___15204 = undefined;
+    s.layoutButtons___15239 = undefined;
+    s.updateSizeFromButtons___15334 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -32242,7 +32238,7 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, microcode_RuleEditor__C6408_VT)) failedCast(r0);
     r0 = s.arg0.fields["ruleButtons"];
-    s.ruleRep___15161 = (r0);
+    s.ruleRep___15158 = (r0);
     r0 = pxsim_pxtcore_mkClassInstance(microcode_Vec2__C3562_VT);
     s.tmp_0 = r0;
     s.tmp_1 = microcode_Vec2_constructor__P3568_mk(s);
@@ -32252,7 +32248,7 @@ switch (step) {
     s.callLocIdx = 930; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
-    s.v___15164 = (s.tmp_0);
+    s.v___15161 = (s.tmp_0);
     r0 = pxsim_pxtcore_mkClassInstance(microcode_Bounds__C3498_VT);
     s.tmp_0 = r0;
     s.tmp_1 = microcode_Bounds_constructor__P3511_mk(s);
@@ -32264,7 +32260,7 @@ switch (step) {
     r0 = (s.arg0).fields["whenBounds"] = (s.tmp_0);
     s.tmp_0 = helpers_arrayConcat__P113_mk(s);
     s.tmp_1 = if_sensors_1_mk(s);
-    s.tmp_1.arg0 = s.ruleRep___15161;
+    s.tmp_1.arg0 = s.ruleRep___15158;
     if (!s.tmp_1.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_1.arg0, "sensors");
     } else {
@@ -32277,7 +32273,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
     s.tmp_2 = if_filters_1_mk(s);
-    s.tmp_2.arg0 = s.ruleRep___15161;
+    s.tmp_2.arg0 = s.ruleRep___15158;
     if (!s.tmp_2.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_2.arg0, "filters");
     } else {
@@ -32292,10 +32288,10 @@ switch (step) {
     s.callLocIdx = 934; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    s.whenTiles___15172 = (r0);
+    s.whenTiles___15169 = (r0);
     s.tmp_0 = helpers_arrayConcat__P113_mk(s);
     s.tmp_1 = if_actuators_1_mk(s);
-    s.tmp_1.arg0 = s.ruleRep___15161;
+    s.tmp_1.arg0 = s.ruleRep___15158;
     if (!s.tmp_1.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_1.arg0, "actuators");
     } else {
@@ -32308,7 +32304,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
     s.tmp_2 = if_modifiers_1_mk(s);
-    s.tmp_2.arg0 = s.ruleRep___15161;
+    s.tmp_2.arg0 = s.ruleRep___15158;
     if (!s.tmp_2.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_2.arg0, "modifiers");
     } else {
@@ -32323,14 +32319,14 @@ switch (step) {
     s.callLocIdx = 937; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
-    s.doTiles___15181 = (r0);
+    s.doTiles___15178 = (r0);
     r0 = s.arg0.fields["whenInsertBtn"];
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     r0 = s.arg0.fields["whenInsertBtn"];
     s.tmp_1 = r0;
-    r0 = pxsim_Array__push(s.whenTiles___15172, s.tmp_1);
+    r0 = pxsim_Array__push(s.whenTiles___15169, s.tmp_1);
   case 1:
   case 2:
     r0 = s.arg0.fields["doInsertBtn"];
@@ -32339,29 +32335,29 @@ switch (step) {
     if (!r0) { step = 3; continue; }
     r0 = s.arg0.fields["doInsertBtn"];
     s.tmp_1 = r0;
-    r0 = pxsim_Array__push(s.doTiles___15181, s.tmp_1);
+    r0 = pxsim_Array__push(s.doTiles___15178, s.tmp_1);
   case 3:
   case 4:
-    r0 = pxsim_Array__getAt(s.whenTiles___15172, 0);
-    s.firstWhenTile___15204 = (r0);
-    s.tmp_0 = r0 = s.whenTiles___15172;
-    r0 = pxsim_Array__length(s.whenTiles___15172);
+    r0 = pxsim_Array__getAt(s.whenTiles___15169, 0);
+    s.firstWhenTile___15201 = (r0);
+    s.tmp_0 = r0 = s.whenTiles___15169;
+    r0 = pxsim_Array__length(s.whenTiles___15169);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 - 1);
     s.tmp_1 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, s.tmp_1);
-    s.lastWhenTile___15207 = (r0);
+    s.lastWhenTile___15204 = (r0);
     s.tmp_0 = microcode_Affine_localPos__P3552_mk(s);
     r0 = s.arg0.fields["handleBtn"];
     s.tmp_1 = r0;
     r0 = s.tmp_1.fields["xfrm_"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = s.v___15164;
+    s.tmp_0.arg1 = s.v___15161;
     s.callLocIdx = 939; s.pc = 17; return s.tmp_0;
   case 17:
     r0 = s.retval;
     s.tmp_0 = microcode_Vec2_x__P3565_mk(s);
-    s.tmp_1 = r0 = s.v___15164;
+    s.tmp_1 = r0 = s.v___15161;
     s.tmp_0.arg0 = r0;
     r0 = s.tmp_1.fields["x_"];
     s.tmp_2 = r0;
@@ -32379,16 +32375,16 @@ switch (step) {
     r0 = s.retval;
     r0 = s.arg0.fields["whenBounds"];
     s.tmp_0 = r0;
-    r0 = s.v___15164.fields["x_"];
+    r0 = s.v___15161.fields["x_"];
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["left"] = (s.tmp_1);
     s.tmp_0 = microcode_Vec2_x__P3565_mk(s);
-    s.tmp_1 = r0 = s.v___15164;
+    s.tmp_1 = r0 = s.v___15161;
     s.tmp_0.arg0 = r0;
     r0 = s.tmp_1.fields["x_"];
     s.tmp_2 = r0;
     s.tmp_5 = microcode_Button_width__P3031_mk(s);
-    s.tmp_5.arg0 = s.firstWhenTile___15204;
+    s.tmp_5.arg0 = s.firstWhenTile___15201;
     s.callLocIdx = 944; s.pc = 21; return s.tmp_5;
   case 21:
     r0 = s.retval;
@@ -32401,7 +32397,7 @@ switch (step) {
   case 20:
     r0 = s.retval;
     s.tmp_0 = microcode_Vec2_x__P3565_mk(s);
-    s.tmp_1 = r0 = s.v___15164;
+    s.tmp_1 = r0 = s.v___15161;
     s.tmp_0.arg0 = r0;
     r0 = s.tmp_1.fields["x_"];
     s.tmp_2 = r0;
@@ -32410,23 +32406,23 @@ switch (step) {
     s.callLocIdx = 948; s.pc = 22; return s.tmp_0;
   case 22:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, layoutButtons_inline__P15243);
+    r0 = pxsim_pxtcore_mkAction(1, layoutButtons_inline__P15240);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.v___15164);
-    s.layoutButtons___15242 = (s.tmp_0);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.v___15161);
+    s.layoutButtons___15239 = (s.tmp_0);
     s.tmp_0 = lambda_2_mk(s);
-    s.tmp_0.argL = s.layoutButtons___15242;
-    s.tmp_0.arg0 = s.whenTiles___15172;
+    s.tmp_0.argL = s.layoutButtons___15239;
+    s.tmp_0.arg0 = s.whenTiles___15169;
     setupLambda(s.tmp_0, s.tmp_0.argL);
     s.callLocIdx = 960; s.pc = 23; return s.tmp_0;
   case 23:
     r0 = s.retval;
     s.tmp_0 = microcode_Vec2_x__P3565_mk(s);
-    s.tmp_1 = r0 = s.v___15164;
+    s.tmp_1 = r0 = s.v___15161;
     s.tmp_0.arg0 = r0;
     r0 = s.tmp_1.fields["x_"];
     s.tmp_2 = r0;
-    r0 = s.lastWhenTile___15207.fields["bounds_"];
+    r0 = s.lastWhenTile___15204.fields["bounds_"];
     r0 = r0.fields["width"];
     s.tmp_4 = r0;
     r0 = (s.tmp_4 >> 1);
@@ -32439,13 +32435,13 @@ switch (step) {
     s.tmp_0 = microcode_Bounds_right__P3504_mk(s);
     r0 = s.arg0.fields["whenBounds"];
     s.tmp_0.arg0 = r0;
-    r0 = s.v___15164.fields["x_"];
+    r0 = s.v___15161.fields["x_"];
     s.tmp_0.arg1 = r0;
     s.callLocIdx = 965; s.pc = 25; return s.tmp_0;
   case 25:
     r0 = s.retval;
     s.tmp_0 = microcode_Vec2_x__P3565_mk(s);
-    s.tmp_1 = r0 = s.v___15164;
+    s.tmp_1 = r0 = s.v___15161;
     s.tmp_0.arg0 = r0;
     r0 = s.tmp_1.fields["x_"];
     s.tmp_2 = r0;
@@ -32465,7 +32461,7 @@ switch (step) {
   case 26:
     r0 = s.retval;
     s.tmp_0 = microcode_Vec2_x__P3565_mk(s);
-    s.tmp_1 = r0 = s.v___15164;
+    s.tmp_1 = r0 = s.v___15161;
     s.tmp_0.arg0 = r0;
     r0 = s.tmp_1.fields["x_"];
     s.tmp_2 = r0;
@@ -32481,13 +32477,13 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = s.tmp_1.fields["localPos_"];
     s.tmp_0.arg0 = r0;
-    r0 = s.v___15164.fields["x_"];
+    r0 = s.v___15161.fields["x_"];
     s.tmp_0.arg1 = r0;
     s.callLocIdx = 974; s.pc = 29; return s.tmp_0;
   case 29:
     r0 = s.retval;
     s.tmp_0 = microcode_Vec2_x__P3565_mk(s);
-    s.tmp_1 = r0 = s.v___15164;
+    s.tmp_1 = r0 = s.v___15161;
     s.tmp_0.arg0 = r0;
     r0 = s.tmp_1.fields["x_"];
     s.tmp_2 = r0;
@@ -32505,7 +32501,7 @@ switch (step) {
   case 30:
     r0 = s.retval;
     s.tmp_0 = microcode_Vec2_x__P3565_mk(s);
-    s.tmp_1 = r0 = s.v___15164;
+    s.tmp_1 = r0 = s.v___15161;
     s.tmp_0.arg0 = r0;
     r0 = s.tmp_1.fields["x_"];
     s.tmp_2 = r0;
@@ -32515,8 +32511,8 @@ switch (step) {
   case 32:
     r0 = s.retval;
     s.tmp_0 = lambda_2_mk(s);
-    s.tmp_0.argL = s.layoutButtons___15242;
-    s.tmp_0.arg0 = s.doTiles___15181;
+    s.tmp_0.argL = s.layoutButtons___15239;
+    s.tmp_0.arg0 = s.doTiles___15178;
     setupLambda(s.tmp_0, s.tmp_0.argL);
     s.callLocIdx = 980; s.pc = 33; return s.tmp_0;
   case 33:
@@ -32530,27 +32526,27 @@ switch (step) {
     s.tmp_2 = r0;
     r0 = s.tmp_2.fields["xfrm_"];
     s.tmp_1.arg0 = r0;
-    s.tmp_1.arg1 = s.v___15164;
+    s.tmp_1.arg1 = s.v___15161;
     s.callLocIdx = 982; s.pc = 34; return s.tmp_1;
   case 34:
     r0 = s.retval;
   case 5:
   case 6:
     r0 = (s.arg0).fields["bounds"] = (undefined);
-    r0 = pxsim_pxtcore_mkAction(1, updateSizeFromButtons_inline__P15338);
+    r0 = pxsim_pxtcore_mkAction(1, updateSizeFromButtons_inline__P15335);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    s.updateSizeFromButtons___15337 = (s.tmp_0);
+    s.updateSizeFromButtons___15334 = (s.tmp_0);
     s.tmp_0 = lambda_2_mk(s);
-    s.tmp_0.argL = s.updateSizeFromButtons___15337;
-    s.tmp_0.arg0 = s.whenTiles___15172;
+    s.tmp_0.argL = s.updateSizeFromButtons___15334;
+    s.tmp_0.arg0 = s.whenTiles___15169;
     setupLambda(s.tmp_0, s.tmp_0.argL);
     s.callLocIdx = 994; s.pc = 35; return s.tmp_0;
   case 35:
     r0 = s.retval;
     s.tmp_0 = lambda_2_mk(s);
-    s.tmp_0.argL = s.updateSizeFromButtons___15337;
-    s.tmp_0.arg0 = s.doTiles___15181;
+    s.tmp_0.argL = s.updateSizeFromButtons___15334;
+    s.tmp_0.arg0 = s.doTiles___15178;
     setupLambda(s.tmp_0, s.tmp_0.argL);
     s.callLocIdx = 995; s.pc = 36; return s.tmp_0;
   case 36:
@@ -32633,14 +32629,14 @@ function microcode_RuleEditor_layout__P6428_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  ruleRep___15161: undefined,
-  v___15164: undefined,
-  whenTiles___15172: undefined,
-  doTiles___15181: undefined,
-  firstWhenTile___15204: undefined,
-  lastWhenTile___15207: undefined,
-  layoutButtons___15242: undefined,
-  updateSizeFromButtons___15337: undefined,
+  ruleRep___15158: undefined,
+  v___15161: undefined,
+  whenTiles___15169: undefined,
+  doTiles___15178: undefined,
+  firstWhenTile___15201: undefined,
+  lastWhenTile___15204: undefined,
+  layoutButtons___15239: undefined,
+  updateSizeFromButtons___15334: undefined,
   arg0: undefined,
 } }
 
@@ -32648,7 +32644,7 @@ function microcode_RuleEditor_layout__P6428_mk(s) {
 
 
 
-function layoutButtons_inline__P15243(s) {
+function layoutButtons_inline__P15240(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -32662,7 +32658,7 @@ switch (step) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkAction(2, layoutButtons_inline__P15247);
+    r0 = pxsim_pxtcore_mkAction(2, layoutButtons_inline__P15244);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.caps[0]);
@@ -32676,12 +32672,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-layoutButtons_inline__P15243.info = {"start":31589,"length":335,"line":932,"column":34,"endLine":941,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["btns"]}
+layoutButtons_inline__P15240.info = {"start":31589,"length":335,"line":932,"column":34,"endLine":941,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["btns"]}
 
-function layoutButtons_inline__P15243_mk(s) {
+function layoutButtons_inline__P15240_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: layoutButtons_inline__P15243, depth: s.depth + 1,
+        parent: s, fn: layoutButtons_inline__P15240, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -32692,7 +32688,7 @@ function layoutButtons_inline__P15243_mk(s) {
 
 
 
-function layoutButtons_inline__P15247(s) {
+function layoutButtons_inline__P15244(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -32772,12 +32768,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-layoutButtons_inline__P15247.info = {"start":31640,"length":269,"line":933,"column":29,"endLine":940,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn","index"]}
+layoutButtons_inline__P15244.info = {"start":31640,"length":269,"line":933,"column":29,"endLine":940,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn","index"]}
 
-function layoutButtons_inline__P15247_mk(s) {
+function layoutButtons_inline__P15244_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: layoutButtons_inline__P15247, depth: s.depth + 1,
+        parent: s, fn: layoutButtons_inline__P15244, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -32795,7 +32791,7 @@ function layoutButtons_inline__P15247_mk(s) {
 
 
 
-function updateSizeFromButtons_inline__P15338(s) {
+function updateSizeFromButtons_inline__P15335(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -32809,7 +32805,7 @@ switch (step) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkAction(1, updateSizeFromButtons_inline__P15342);
+    r0 = pxsim_pxtcore_mkAction(1, updateSizeFromButtons_inline__P15339);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[0]);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
@@ -32822,12 +32818,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-updateSizeFromButtons_inline__P15338.info = {"start":32452,"length":470,"line":963,"column":42,"endLine":975,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["btns"]}
+updateSizeFromButtons_inline__P15335.info = {"start":32452,"length":470,"line":963,"column":42,"endLine":975,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["btns"]}
 
-function updateSizeFromButtons_inline__P15338_mk(s) {
+function updateSizeFromButtons_inline__P15335_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: updateSizeFromButtons_inline__P15338, depth: s.depth + 1,
+        parent: s, fn: updateSizeFromButtons_inline__P15335, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -32838,7 +32834,7 @@ function updateSizeFromButtons_inline__P15338_mk(s) {
 
 
 
-function updateSizeFromButtons_inline__P15342(s) {
+function updateSizeFromButtons_inline__P15339(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -32902,12 +32898,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-updateSizeFromButtons_inline__P15342.info = {"start":32503,"length":404,"line":964,"column":29,"endLine":974,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
+updateSizeFromButtons_inline__P15339.info = {"start":32503,"length":404,"line":964,"column":29,"endLine":974,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
 
-function updateSizeFromButtons_inline__P15342_mk(s) {
+function updateSizeFromButtons_inline__P15339_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: updateSizeFromButtons_inline__P15342, depth: s.depth + 1,
+        parent: s, fn: updateSizeFromButtons_inline__P15339, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -32934,7 +32930,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.ruledefn___15415 = undefined;
+    s.ruledefn___15412 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -32957,7 +32953,7 @@ switch (step) {
     s.callLocIdx = 810; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
-    s.ruledefn___15415 = (s.tmp_0);
+    s.ruledefn___15412 = (s.tmp_0);
     r0 = pxsim_pxtcore_mkClassInstance(microcode_RuleEditor__C6408_VT);
     s.tmp_0 = r0;
     s.tmp_1 = microcode_RuleEditor_constructor__P6432_mk(s);
@@ -32965,7 +32961,7 @@ switch (step) {
     r0 = s.arg0.fields["editor"];
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.arg0;
-    s.tmp_1.arg3 = s.ruledefn___15415;
+    s.tmp_1.arg3 = s.ruledefn___15412;
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_2 = r0;
     r0 = pxsim_Array__length(s.tmp_2);
@@ -32979,7 +32975,7 @@ switch (step) {
     r0 = s.arg0.fields["pagedef"];
     r0 = r0.fields["rules"];
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.ruledefn___15415);
+    r0 = pxsim_Array__push(s.tmp_0, s.ruledefn___15412);
   case 1:
   case 2:
     r0 = undefined;
@@ -32997,7 +32993,7 @@ function microcode_PageEditor_ensureFinalEmptyRule__P6393_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  ruledefn___15415: undefined,
+  ruledefn___15412: undefined,
   arg0: undefined,
 } }
 
@@ -33067,7 +33063,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.last___15454 = undefined;
+    s.last___15451 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -33096,10 +33092,10 @@ switch (step) {
     r0 = (s.tmp_6 - 1);
     s.tmp_5 = r0;
     r0 = pxsim_Array__getAt(s.tmp_4, s.tmp_5);
-    s.last___15454 = (r0);
+    s.last___15451 = (r0);
   case 3:
     s.tmp_1 = microcode_RuleEditor_isEmpty__P6426_mk(s);
-    s.tmp_1.arg0 = s.last___15454;
+    s.tmp_1.arg0 = s.last___15451;
     s.callLocIdx = 812; s.pc = 8; return s.tmp_1;
   case 8:
     r0 = s.retval;
@@ -33107,7 +33103,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
     s.tmp_2 = microcode_RuleEditor__C6408_v0_1_mk(s);
-    s.tmp_2.arg0 = s.last___15454;
+    s.tmp_2.arg0 = s.last___15451;
     if (!checkSubtype(s.tmp_2.arg0, microcode_RuleEditor__C6408_VT)) failedCast(s.tmp_2.arg0);
     s.tmp_2.fn = s.tmp_2.arg0.vtable.methods.destroy;
     s.pc = 9; return s.tmp_2;
@@ -33142,7 +33138,7 @@ switch (step) {
     r0 = (s.tmp_6 - 1);
     s.tmp_5 = r0;
     r0 = pxsim_Array__getAt(s.tmp_4, s.tmp_5);
-    s.last___15454 = (r0);
+    s.last___15451 = (r0);
     { step = 3; continue; }
   case 6:
   case 7:
@@ -33165,7 +33161,7 @@ function microcode_PageEditor_trimRules__P6394_mk(s) {
   tmp_5: undefined,
   tmp_6: undefined,
   tmp_7: undefined,
-  last___15454: undefined,
+  last___15451: undefined,
   arg0: undefined,
 } }
 
@@ -33351,7 +33347,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.changed___15522 = undefined;
+    s.changed___15519 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -33359,19 +33355,19 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, microcode_RuleEditor__C6408_VT)) failedCast(r0);
     r0 = pxsim_pxtrt.mklocRef();
-    s.changed___15522 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.changed___15522, false);
-    r0 = pxsim_pxtcore_mkAction(2, microcode_RuleEditor_destroyProgramTiles_inline__P15525);
+    s.changed___15519 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.changed___15519, false);
+    r0 = pxsim_pxtcore_mkAction(2, microcode_RuleEditor_destroyProgramTiles_inline__P15522);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.changed___15522);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.changed___15519);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     s.tmp_1.arg0 = globals.repNames___6407;
     s.tmp_1.arg1 = s.tmp_0;
     s.callLocIdx = 865; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
-    r0 = pxsim_pxtrt_ldlocRef(s.changed___15522);
+    r0 = pxsim_pxtrt_ldlocRef(s.changed___15519);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
@@ -33396,7 +33392,7 @@ function microcode_RuleEditor_destroyProgramTiles__P6416_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  changed___15522: undefined,
+  changed___15519: undefined,
   arg0: undefined,
 } }
 
@@ -33404,7 +33400,7 @@ function microcode_RuleEditor_destroyProgramTiles__P6416_mk(s) {
 
 
 
-function microcode_RuleEditor_destroyProgramTiles_inline__P15525(s) {
+function microcode_RuleEditor_destroyProgramTiles_inline__P15522(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -33431,7 +33427,7 @@ switch (step) {
     s.tmp_4 = r0;
     r0 = pxsim_pxtrt.mapGetGeneric(s.tmp_4, s.arg0);
     s.tmp_3.arg0 = r0;
-    s.tmp_3.arg1 = microcode_RuleEditor_destroyProgramTiles_inline__P15535;
+    s.tmp_3.arg1 = microcode_RuleEditor_destroyProgramTiles_inline__P15532;
     s.callLocIdx = 864; s.pc = 3; return s.tmp_3;
   case 3:
     r0 = s.retval;
@@ -33448,12 +33444,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_destroyProgramTiles_inline__P15525.info = {"start":21749,"length":250,"line":676,"column":29,"endLine":682,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
+microcode_RuleEditor_destroyProgramTiles_inline__P15522.info = {"start":21749,"length":250,"line":676,"column":29,"endLine":682,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
 
-function microcode_RuleEditor_destroyProgramTiles_inline__P15525_mk(s) {
+function microcode_RuleEditor_destroyProgramTiles_inline__P15522_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_RuleEditor_destroyProgramTiles_inline__P15525, depth: s.depth + 1,
+        parent: s, fn: microcode_RuleEditor_destroyProgramTiles_inline__P15522, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -33467,7 +33463,7 @@ function microcode_RuleEditor_destroyProgramTiles_inline__P15525_mk(s) {
 
 
 
-function microcode_RuleEditor_destroyProgramTiles_inline__P15535(s) {
+function microcode_RuleEditor_destroyProgramTiles_inline__P15532(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -33492,12 +33488,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_destroyProgramTiles_inline__P15535.info = {"start":21863,"length":20,"line":678,"column":51,"endLine":678,"endColumn":71,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
+microcode_RuleEditor_destroyProgramTiles_inline__P15532.info = {"start":21863,"length":20,"line":678,"column":51,"endLine":678,"endColumn":71,"fileName":"editor.ts","functionName":"inline","argumentNames":["btn"]}
 
-function microcode_RuleEditor_destroyProgramTiles_inline__P15535_mk(s) {
+function microcode_RuleEditor_destroyProgramTiles_inline__P15532_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_RuleEditor_destroyProgramTiles_inline__P15535, depth: s.depth + 1,
+        parent: s, fn: microcode_RuleEditor_destroyProgramTiles_inline__P15532, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -33698,7 +33694,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "x", 0);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 0);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "style", globals.Transparent___3021);
-    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P15585);
+    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P15582);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg0);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "onClick", s.tmp_2);
@@ -33777,7 +33773,7 @@ function microcode_RuleEditor_constructor__P6432_mk(s) {
 
 
 
-function onClick_inline__P15585(s) {
+function onClick_inline__P15582(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -33796,12 +33792,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P15585.info = {"start":18838,"length":31,"line":588,"column":25,"endLine":588,"endColumn":56,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P15582.info = {"start":18838,"length":31,"line":588,"column":25,"endLine":588,"endColumn":56,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function onClick_inline__P15585_mk(s) {
+function onClick_inline__P15582_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: onClick_inline__P15585, depth: s.depth + 1,
+        parent: s, fn: onClick_inline__P15582, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -33820,8 +33816,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.rule___15601 = undefined;
-    s.changed___15606 = undefined;
+    s.rule___15598 = undefined;
+    s.changed___15603 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -33839,15 +33835,15 @@ switch (step) {
     s.callLocIdx = 868; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
-    s.rule___15601 = (r0);
+    s.rule___15598 = (r0);
     r0 = pxsim_pxtrt.mklocRef();
-    s.changed___15606 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.changed___15606, false);
-    r0 = pxsim_pxtcore_mkAction(3, microcode_RuleEditor_instantiateProgramTiles_inline__P15609);
+    s.changed___15603 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.changed___15603, false);
+    r0 = pxsim_pxtcore_mkAction(3, microcode_RuleEditor_instantiateProgramTiles_inline__P15606);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.rule___15601);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.rule___15598);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.changed___15606);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.changed___15603);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     s.tmp_1.arg0 = globals.repNames___6407;
     s.tmp_1.arg1 = s.tmp_0;
@@ -33864,7 +33860,7 @@ switch (step) {
     s.callLocIdx = 875; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
-    r0 = pxsim_pxtrt_ldlocRef(s.changed___15606);
+    r0 = pxsim_pxtrt_ldlocRef(s.changed___15603);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
@@ -33889,8 +33885,8 @@ function microcode_RuleEditor_instantiateProgramTiles__P6417_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  rule___15601: undefined,
-  changed___15606: undefined,
+  rule___15598: undefined,
+  changed___15603: undefined,
   arg0: undefined,
 } }
 
@@ -33898,7 +33894,7 @@ function microcode_RuleEditor_instantiateProgramTiles__P6417_mk(s) {
 
 
 
-function microcode_RuleEditor_instantiateProgramTiles_inline__P15609(s) {
+function microcode_RuleEditor_instantiateProgramTiles_inline__P15606(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -33908,20 +33904,20 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.tiles___15611 = undefined;
+    s.tiles___15608 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = pxsim_pxtrt.mapGetGeneric(s.caps[0], s.arg0);
-    s.tiles___15611 = (r0);
-    r0 = pxsim_pxtcore_mkAction(3, microcode_RuleEditor_instantiateProgramTiles_inline__P15617);
+    s.tiles___15608 = (r0);
+    r0 = pxsim_pxtcore_mkAction(3, microcode_RuleEditor_instantiateProgramTiles_inline__P15614);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[1]);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg0);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.caps[2]);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
-    s.tmp_1.arg0 = s.tiles___15611;
+    s.tmp_1.arg0 = s.tiles___15608;
     s.tmp_1.arg1 = s.tmp_0;
     s.callLocIdx = 872; s.pc = 1; return s.tmp_1;
   case 1:
@@ -33930,16 +33926,16 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_instantiateProgramTiles_inline__P15609.info = {"start":22254,"length":617,"line":690,"column":29,"endLine":705,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
+microcode_RuleEditor_instantiateProgramTiles_inline__P15606.info = {"start":22254,"length":617,"line":690,"column":29,"endLine":705,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["name"]}
 
-function microcode_RuleEditor_instantiateProgramTiles_inline__P15609_mk(s) {
+function microcode_RuleEditor_instantiateProgramTiles_inline__P15606_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_RuleEditor_instantiateProgramTiles_inline__P15609, depth: s.depth + 1,
+        parent: s, fn: microcode_RuleEditor_instantiateProgramTiles_inline__P15606, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  tiles___15611: undefined,
+  tiles___15608: undefined,
   arg0: undefined,
 } }
 
@@ -33947,7 +33943,7 @@ function microcode_RuleEditor_instantiateProgramTiles_inline__P15609_mk(s) {
 
 
 
-function microcode_RuleEditor_instantiateProgramTiles_inline__P15617(s) {
+function microcode_RuleEditor_instantiateProgramTiles_inline__P15614(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -33957,7 +33953,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.button___15620 = undefined;
+    s.button___15617 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -33989,7 +33985,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "ariaId", s.tmp_6);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "x", 0);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 0);
-    r0 = pxsim_pxtcore_mkAction(3, onClick_inline__P15631);
+    r0 = pxsim_pxtcore_mkAction(3, onClick_inline__P15628);
     s.tmp_7 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_7, 0, s.caps[0]);
     r0 = pxsim_pxtrt_stclo(s.tmp_7, 1, s.caps[1]);
@@ -34003,23 +33999,23 @@ switch (step) {
     s.callLocIdx = 871; s.pc = 3; return s.tmp_8;
   case 3:
     r0 = s.retval;
-    s.button___15620 = (s.tmp_0);
+    s.button___15617 = (s.tmp_0);
     r0 = s.caps[0].fields["ruleButtons"];
     s.tmp_1 = r0;
     r0 = pxsim_pxtrt.mapGetGeneric(s.tmp_1, s.caps[1]);
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.button___15620);
+    r0 = pxsim_Array__push(s.tmp_0, s.button___15617);
     r0 = pxsim_pxtrt_stlocRef(s.caps[2], true);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_instantiateProgramTiles_inline__P15617.info = {"start":22335,"length":521,"line":692,"column":30,"endLine":704,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["tile","index"]}
+microcode_RuleEditor_instantiateProgramTiles_inline__P15614.info = {"start":22335,"length":521,"line":692,"column":30,"endLine":704,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["tile","index"]}
 
-function microcode_RuleEditor_instantiateProgramTiles_inline__P15617_mk(s) {
+function microcode_RuleEditor_instantiateProgramTiles_inline__P15614_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_RuleEditor_instantiateProgramTiles_inline__P15617, depth: s.depth + 1,
+        parent: s, fn: microcode_RuleEditor_instantiateProgramTiles_inline__P15614, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -34030,7 +34026,7 @@ function microcode_RuleEditor_instantiateProgramTiles_inline__P15617_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  button___15620: undefined,
+  button___15617: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -34039,7 +34035,7 @@ function microcode_RuleEditor_instantiateProgramTiles_inline__P15617_mk(s) {
 
 
 
-function onClick_inline__P15631(s) {
+function onClick_inline__P15628(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -34060,12 +34056,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P15631.info = {"start":22691,"length":32,"line":700,"column":33,"endLine":700,"endColumn":65,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P15628.info = {"start":22691,"length":32,"line":700,"column":33,"endLine":700,"endColumn":65,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function onClick_inline__P15631_mk(s) {
+function onClick_inline__P15628_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: onClick_inline__P15631, depth: s.depth + 1,
+        parent: s, fn: onClick_inline__P15628, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -34200,7 +34196,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "ariaId", s.tmp_15);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "x", 0);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "y", 0);
-    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P15677);
+    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P15674);
     s.tmp_16 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_16, 0, s.arg0);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "onClick", s.tmp_16);
@@ -34257,7 +34253,7 @@ function microcode_RuleEditor_needsDoInsert__P6414_mk(s) {
 
 
 
-function onClick_inline__P15677(s) {
+function onClick_inline__P15674(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -34276,12 +34272,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P15677.info = {"start":21165,"length":29,"line":656,"column":29,"endLine":656,"endColumn":58,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P15674.info = {"start":21165,"length":29,"line":656,"column":29,"endLine":656,"endColumn":58,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function onClick_inline__P15677_mk(s) {
+function onClick_inline__P15674_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: onClick_inline__P15677, depth: s.depth + 1,
+        parent: s, fn: onClick_inline__P15674, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -34412,19 +34408,19 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.all___15702 = undefined;
-    s.existing___15735 = undefined;
-    s.ruleRep___15737 = undefined;
-    s.i___15741 = undefined;
-    s.last___15758 = undefined;
-    s.constraints___15775 = undefined;
+    s.all___15699 = undefined;
+    s.existing___15732 = undefined;
+    s.ruleRep___15734 = undefined;
+    s.i___15738 = undefined;
+    s.last___15755 = undefined;
+    s.constraints___15772 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.arg2 = (s.lambdaArgs[2]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkAction(1, filter_inline__P15712);
+    r0 = pxsim_pxtcore_mkAction(1, filter_inline__P15709);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg1);
     s.tmp_1 = helpers_arraySort__P105_mk(s);
@@ -34439,16 +34435,16 @@ switch (step) {
   case 24:
     r0 = s.retval;
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = sort_inline__P15718;
+    s.tmp_2.arg1 = sort_inline__P15715;
     s.callLocIdx = 483; s.pc = 23; return s.tmp_2;
   case 23:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
-    s.tmp_1.arg1 = all_inline__P15704;
+    s.tmp_1.arg1 = all_inline__P15701;
     s.callLocIdx = 484; s.pc = 22; return s.tmp_1;
   case 22:
     r0 = s.retval;
-    s.all___15702 = (r0);
+    s.all___15699 = (r0);
     r0 = (s.arg1 === "sensors");
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
@@ -34462,46 +34458,46 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 3; continue; }
-    r0 = s.all___15702;
+    r0 = s.all___15699;
     { step = 21; continue; }
   case 3:
   case 4:
     r0 = pxsim_Array__mk();
-    s.existing___15735 = (r0);
+    s.existing___15732 = (r0);
     s.tmp_0 = microcode_RuleDefn_getRuleRep__P3290_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.callLocIdx = 485; s.pc = 25; return s.tmp_0;
   case 25:
     r0 = s.retval;
-    s.ruleRep___15737 = (r0);
-    s.i___15741 = (0);
+    s.ruleRep___15734 = (r0);
+    s.i___15738 = (0);
   case 5:
-    r0 = (s.i___15741 < s.arg2);
+    r0 = (s.i___15738 < s.arg2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
-    s.tmp_1 = r0 = s.existing___15735;
-    r0 = pxsim_pxtrt.mapGetGeneric(s.ruleRep___15737, s.arg1);
+    s.tmp_1 = r0 = s.existing___15732;
+    r0 = pxsim_pxtrt.mapGetGeneric(s.ruleRep___15734, s.arg1);
     s.tmp_3 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_3, s.i___15741);
+    r0 = pxsim_Array__getAt(s.tmp_3, s.i___15738);
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_2);
-    r0 = (s.i___15741 + 1);
-    s.i___15741 = (r0);
+    r0 = (s.i___15738 + 1);
+    s.i___15738 = (r0);
     { step = 5; continue; }
   case 6:
-    r0 = pxsim_Array__length(s.existing___15735);
+    r0 = pxsim_Array__length(s.existing___15732);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 13; continue; }
-    s.tmp_1 = r0 = s.existing___15735;
-    r0 = pxsim_Array__length(s.existing___15735);
+    s.tmp_1 = r0 = s.existing___15732;
+    r0 = pxsim_Array__length(s.existing___15732);
     s.tmp_3 = r0;
     r0 = (s.tmp_3 - 1);
     s.tmp_2 = r0;
     r0 = pxsim_Array__getAt(s.tmp_1, s.tmp_2);
-    s.last___15758 = (r0);
-    r0 = s.last___15758.fields["constraints"];
+    s.last___15755 = (r0);
+    r0 = s.last___15755.fields["constraints"];
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 7; continue; }
@@ -34509,7 +34505,7 @@ switch (step) {
     { step = 8; continue; }
   case 7:
     s.tmp_1 = if_handling_1_mk(s);
-    r0 = s.last___15758.fields["constraints"];
+    r0 = s.last___15755.fields["constraints"];
     s.tmp_1.arg0 = r0;
     if (!s.tmp_1.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_1.arg0, "handling");
@@ -34530,7 +34526,7 @@ switch (step) {
     { step = 10; continue; }
   case 9:
     s.tmp_4 = if_handling_1_mk(s);
-    r0 = s.last___15758.fields["constraints"];
+    r0 = s.last___15755.fields["constraints"];
     s.tmp_4.arg0 = r0;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "handling");
@@ -34559,7 +34555,7 @@ switch (step) {
     s.callLocIdx = 488; s.pc = 28; return s.tmp_6;
   case 28:
     r0 = s.retval;
-    s.constraints___15775 = (r0);
+    s.constraints___15772 = (r0);
     r0 = (s.arg1 === "modifiers");
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
@@ -34580,7 +34576,7 @@ switch (step) {
     s.tmp_4 = r0;
     r0 = pxsim_Array__getAt(s.tmp_4, 0);
     s.tmp_3.arg0 = r0;
-    s.tmp_3.arg1 = s.constraints___15775;
+    s.tmp_3.arg1 = s.constraints___15772;
     s.callLocIdx = 489; s.pc = 29; return s.tmp_3;
   case 29:
     r0 = s.retval;
@@ -34597,26 +34593,26 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_Array__getAt(s.tmp_3, 0);
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = s.constraints___15775;
+    s.tmp_2.arg1 = s.constraints___15772;
     s.callLocIdx = 490; s.pc = 30; return s.tmp_2;
   case 30:
     r0 = s.retval;
   case 19:
   case 20:
-    r0 = pxsim_pxtcore_mkAction(1, microcode_Language_getTileSuggestions_inline__P15797);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_Language_getTileSuggestions_inline__P15794);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.constraints___15775);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.constraints___15772);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
-    s.tmp_1.arg0 = s.existing___15735;
+    s.tmp_1.arg0 = s.existing___15732;
     s.tmp_1.arg1 = s.tmp_0;
     s.callLocIdx = 492; s.pc = 31; return s.tmp_1;
   case 31:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_Language_getTileSuggestions_inline__P15804);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_Language_getTileSuggestions_inline__P15801);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.constraints___15775);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.constraints___15772);
     s.tmp_1 = helpers_arrayFilter__P110_mk(s);
-    s.tmp_1.arg0 = s.all___15702;
+    s.tmp_1.arg0 = s.all___15699;
     s.tmp_1.arg1 = s.tmp_0;
     s.callLocIdx = 493; s.pc = 32; return s.tmp_1;
   case 32:
@@ -34639,12 +34635,12 @@ function microcode_Language_getTileSuggestions__P3312_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  all___15702: undefined,
-  existing___15735: undefined,
-  ruleRep___15737: undefined,
-  i___15741: undefined,
-  last___15758: undefined,
-  constraints___15775: undefined,
+  all___15699: undefined,
+  existing___15732: undefined,
+  ruleRep___15734: undefined,
+  i___15738: undefined,
+  last___15755: undefined,
+  constraints___15772: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -34654,7 +34650,7 @@ function microcode_Language_getTileSuggestions__P3312_mk(s) {
 
 
 
-function filter_inline__P15712(s) {
+function filter_inline__P15709(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -34674,12 +34670,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filter_inline__P15712.info = {"start":14944,"length":23,"line":480,"column":21,"endLine":480,"endColumn":44,"fileName":"language.ts","functionName":"inline","argumentNames":["id"]}
+filter_inline__P15709.info = {"start":14944,"length":23,"line":480,"column":21,"endLine":480,"endColumn":44,"fileName":"language.ts","functionName":"inline","argumentNames":["id"]}
 
-function filter_inline__P15712_mk(s) {
+function filter_inline__P15709_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: filter_inline__P15712, depth: s.depth + 1,
+        parent: s, fn: filter_inline__P15709, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -34689,7 +34685,7 @@ function filter_inline__P15712_mk(s) {
 
 
 
-function sort_inline__P15718(s) {
+function sort_inline__P15715(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -34713,12 +34709,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-sort_inline__P15718.info = {"start":14993,"length":36,"line":481,"column":24,"endLine":481,"endColumn":60,"fileName":"language.ts","functionName":"inline","argumentNames":["tile"]}
+sort_inline__P15715.info = {"start":14993,"length":36,"line":481,"column":24,"endLine":481,"endColumn":60,"fileName":"language.ts","functionName":"inline","argumentNames":["tile"]}
 
-function sort_inline__P15718_mk(s) {
+function sort_inline__P15715_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: sort_inline__P15718, depth: s.depth + 1,
+        parent: s, fn: sort_inline__P15715, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -34728,7 +34724,7 @@ function sort_inline__P15718_mk(s) {
 
 
 
-function all_inline__P15704(s) {
+function all_inline__P15701(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -34751,12 +34747,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-all_inline__P15704.info = {"start":15053,"length":37,"line":482,"column":22,"endLine":482,"endColumn":59,"fileName":"language.ts","functionName":"inline","argumentNames":["t1","t2"]}
+all_inline__P15701.info = {"start":15053,"length":37,"line":482,"column":22,"endLine":482,"endColumn":59,"fileName":"language.ts","functionName":"inline","argumentNames":["t1","t2"]}
 
-function all_inline__P15704_mk(s) {
+function all_inline__P15701_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: all_inline__P15704, depth: s.depth + 1,
+        parent: s, fn: all_inline__P15701, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -34768,7 +34764,7 @@ function all_inline__P15704_mk(s) {
 
 
 
-function microcode_Language_getTileSuggestions_inline__P15797(s) {
+function microcode_Language_getTileSuggestions_inline__P15794(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -34792,12 +34788,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Language_getTileSuggestions_inline__P15797.info = {"start":16217,"length":42,"line":513,"column":29,"endLine":513,"endColumn":71,"fileName":"language.ts","functionName":"inline","argumentNames":["tile"]}
+microcode_Language_getTileSuggestions_inline__P15794.info = {"start":16217,"length":42,"line":513,"column":29,"endLine":513,"endColumn":71,"fileName":"language.ts","functionName":"inline","argumentNames":["tile"]}
 
-function microcode_Language_getTileSuggestions_inline__P15797_mk(s) {
+function microcode_Language_getTileSuggestions_inline__P15794_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_Language_getTileSuggestions_inline__P15797, depth: s.depth + 1,
+        parent: s, fn: microcode_Language_getTileSuggestions_inline__P15794, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -34807,7 +34803,7 @@ function microcode_Language_getTileSuggestions_inline__P15797_mk(s) {
 
 
 
-function microcode_Language_getTileSuggestions_inline__P15804(s) {
+function microcode_Language_getTileSuggestions_inline__P15801(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -34832,12 +34828,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Language_getTileSuggestions_inline__P15804.info = {"start":16292,"length":42,"line":515,"column":30,"endLine":515,"endColumn":72,"fileName":"language.ts","functionName":"inline","argumentNames":["tile"]}
+microcode_Language_getTileSuggestions_inline__P15801.info = {"start":16292,"length":42,"line":515,"column":30,"endLine":515,"endColumn":72,"fileName":"language.ts","functionName":"inline","argumentNames":["tile"]}
 
-function microcode_Language_getTileSuggestions_inline__P15804_mk(s) {
+function microcode_Language_getTileSuggestions_inline__P15801_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_Language_getTileSuggestions_inline__P15804, depth: s.depth + 1,
+        parent: s, fn: microcode_Language_getTileSuggestions_inline__P15801, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -34857,8 +34853,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.compat___15817 = undefined;
-    s.compat___15839 = undefined;
+    s.compat___15814 = undefined;
+    s.compat___15836 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -34895,11 +34891,11 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_3);
     if (!r0) { step = 5; continue; }
     r0 = pxsim_pxtrt.mklocRef();
-    s.compat___15817 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.compat___15817, false);
-    r0 = pxsim_pxtcore_mkAction(2, microcode_TileDefn_isCompatibleWith_inline__P15822);
+    s.compat___15814 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.compat___15814, false);
+    r0 = pxsim_pxtcore_mkAction(2, microcode_TileDefn_isCompatibleWith_inline__P15819);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.compat___15817);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.compat___15814);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg1);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     s.tmp_2 = if_requires_1_mk(s);
@@ -34920,7 +34916,7 @@ switch (step) {
     s.callLocIdx = 395; s.pc = 13; return s.tmp_1;
   case 13:
     r0 = s.retval;
-    r0 = pxsim_pxtrt_ldlocRef(s.compat___15817);
+    r0 = pxsim_pxtrt_ldlocRef(s.compat___15814);
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     s.tmp_1 = r0;
@@ -34950,11 +34946,11 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_3);
     if (!r0) { step = 9; continue; }
     r0 = pxsim_pxtrt.mklocRef();
-    s.compat___15839 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.compat___15839, true);
-    r0 = pxsim_pxtcore_mkAction(2, microcode_TileDefn_isCompatibleWith_inline__P15845);
+    s.compat___15836 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.compat___15836, true);
+    r0 = pxsim_pxtcore_mkAction(2, microcode_TileDefn_isCompatibleWith_inline__P15842);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.compat___15839);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.compat___15836);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg1);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     s.tmp_3 = if_handling_1_mk(s);
@@ -34976,7 +34972,7 @@ switch (step) {
     s.callLocIdx = 403; s.pc = 16; return s.tmp_1;
   case 16:
     r0 = s.retval;
-    r0 = pxsim_pxtrt_ldlocRef(s.compat___15839);
+    r0 = pxsim_pxtrt_ldlocRef(s.compat___15836);
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     s.tmp_1 = r0;
@@ -35007,8 +35003,8 @@ function microcode_TileDefn_isCompatibleWith__P3258_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  compat___15817: undefined,
-  compat___15839: undefined,
+  compat___15814: undefined,
+  compat___15836: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -35017,7 +35013,7 @@ function microcode_TileDefn_isCompatibleWith__P3258_mk(s) {
 
 
 
-function microcode_TileDefn_isCompatibleWith_inline__P15822(s) {
+function microcode_TileDefn_isCompatibleWith_inline__P15819(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -35038,7 +35034,7 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 2; continue; }
   case 1:
-    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_isCompatibleWith_inline__P15830);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_isCompatibleWith_inline__P15827);
     s.tmp_1 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_1, 0, s.arg0);
     s.tmp_2 = helpers_arraySome__P107_mk(s);
@@ -35067,12 +35063,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_isCompatibleWith_inline__P15822.info = {"start":4308,"length":87,"line":145,"column":20,"endLine":146,"endColumn":80,"fileName":"language.ts","functionName":"inline","argumentNames":["req"]}
+microcode_TileDefn_isCompatibleWith_inline__P15819.info = {"start":4308,"length":87,"line":145,"column":20,"endLine":146,"endColumn":80,"fileName":"language.ts","functionName":"inline","argumentNames":["req"]}
 
-function microcode_TileDefn_isCompatibleWith_inline__P15822_mk(s) {
+function microcode_TileDefn_isCompatibleWith_inline__P15819_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_TileDefn_isCompatibleWith_inline__P15822, depth: s.depth + 1,
+        parent: s, fn: microcode_TileDefn_isCompatibleWith_inline__P15819, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -35086,7 +35082,7 @@ function microcode_TileDefn_isCompatibleWith_inline__P15822_mk(s) {
 
 
 
-function microcode_TileDefn_isCompatibleWith_inline__P15830(s) {
+function microcode_TileDefn_isCompatibleWith_inline__P15827(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -35104,12 +35100,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_isCompatibleWith_inline__P15830.info = {"start":4375,"length":18,"line":146,"column":60,"endLine":146,"endColumn":78,"fileName":"language.ts","functionName":"inline","argumentNames":["pro"]}
+microcode_TileDefn_isCompatibleWith_inline__P15827.info = {"start":4375,"length":18,"line":146,"column":60,"endLine":146,"endColumn":78,"fileName":"language.ts","functionName":"inline","argumentNames":["pro"]}
 
-function microcode_TileDefn_isCompatibleWith_inline__P15830_mk(s) {
+function microcode_TileDefn_isCompatibleWith_inline__P15827_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_TileDefn_isCompatibleWith_inline__P15830, depth: s.depth + 1,
+        parent: s, fn: microcode_TileDefn_isCompatibleWith_inline__P15827, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
 } }
@@ -35118,7 +35114,7 @@ function microcode_TileDefn_isCompatibleWith_inline__P15830_mk(s) {
 
 
 
-function microcode_TileDefn_isCompatibleWith_inline__P15845(s) {
+function microcode_TileDefn_isCompatibleWith_inline__P15842(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -35128,8 +35124,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.rule___15849 = undefined;
-    s.count___15856 = undefined;
+    s.rule___15846 = undefined;
+    s.count___15853 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -35159,14 +35155,14 @@ switch (step) {
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = pxsim_pxtrt.mapGetGeneric(s.tmp_3, s.arg0);
-    s.rule___15849 = (r0);
+    s.rule___15846 = (r0);
     r0 = (s.arg0 === "maxCount");
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    r0 = pxsim_pxtcore_mkAction(1, length_inline__P15861);
+    r0 = pxsim_pxtcore_mkAction(1, length_inline__P15858);
     s.tmp_1 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_1, 0, s.rule___15849);
+    r0 = pxsim_pxtrt_stclo(s.tmp_1, 0, s.rule___15846);
     s.tmp_3 = helpers_arrayFilter__P110_mk(s);
     s.tmp_4 = if_provides_1_mk(s);
     s.tmp_4.arg0 = s.caps[1];
@@ -35187,11 +35183,11 @@ switch (step) {
     r0 = s.retval;
     s.tmp_2 = r0;
     r0 = pxsim_Array__length(s.tmp_2);
-    s.count___15856 = (r0);
+    s.count___15853 = (r0);
     s.tmp_0 = r0 = s.caps[0];
-    s.tmp_2 = r0 = s.count___15856;
+    s.tmp_2 = r0 = s.count___15853;
     s.tmp_4 = if_count_1_mk(s);
-    s.tmp_4.arg0 = s.rule___15849;
+    s.tmp_4.arg0 = s.rule___15846;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "count");
     } else {
@@ -35213,20 +35209,20 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_isCompatibleWith_inline__P15845.info = {"start":4632,"length":544,"line":153,"column":48,"endLine":164,"endColumn":17,"fileName":"language.ts","functionName":"inline","argumentNames":["name"]}
+microcode_TileDefn_isCompatibleWith_inline__P15842.info = {"start":4632,"length":544,"line":153,"column":48,"endLine":164,"endColumn":17,"fileName":"language.ts","functionName":"inline","argumentNames":["name"]}
 
-function microcode_TileDefn_isCompatibleWith_inline__P15845_mk(s) {
+function microcode_TileDefn_isCompatibleWith_inline__P15842_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_TileDefn_isCompatibleWith_inline__P15845, depth: s.depth + 1,
+        parent: s, fn: microcode_TileDefn_isCompatibleWith_inline__P15842, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  rule___15849: undefined,
-  count___15856: undefined,
+  rule___15846: undefined,
+  count___15853: undefined,
   arg0: undefined,
 } }
 
@@ -35234,7 +35230,7 @@ function microcode_TileDefn_isCompatibleWith_inline__P15845_mk(s) {
 
 
 
-function length_inline__P15861(s) {
+function length_inline__P15858(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -35266,12 +35262,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-length_inline__P15861.info = {"start":5023,"length":28,"line":160,"column":28,"endLine":160,"endColumn":56,"fileName":"language.ts","functionName":"inline","argumentNames":["pro"]}
+length_inline__P15858.info = {"start":5023,"length":28,"line":160,"column":28,"endLine":160,"endColumn":56,"fileName":"language.ts","functionName":"inline","argumentNames":["pro"]}
 
-function length_inline__P15861_mk(s) {
+function length_inline__P15858_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: length_inline__P15861, depth: s.depth + 1,
+        parent: s, fn: length_inline__P15858, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -35293,26 +35289,26 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.len___15878 = undefined;
-    s.i___15881 = undefined;
+    s.len___15875 = undefined;
+    s.i___15878 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = pxsim_Array__length(s.arg0);
-    s.len___15878 = (r0);
-    s.i___15881 = (0);
+    s.len___15875 = (r0);
+    s.i___15878 = (0);
   case 1:
-    r0 = (s.i___15881 < s.len___15878);
+    r0 = (s.i___15878 < s.len___15875);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
     s.tmp_2 = lambda_3_mk(s);
     s.tmp_2.argL = s.arg1;
-    r0 = pxsim_Array__getAt(s.arg0, s.i___15881);
+    r0 = pxsim_Array__getAt(s.arg0, s.i___15878);
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = s.i___15881;
+    s.tmp_2.arg1 = s.i___15878;
     setupLambda(s.tmp_2, s.tmp_2.argL);
     s.callLocIdx = 5; s.pc = 6; return s.tmp_2;
   case 6:
@@ -35324,8 +35320,8 @@ switch (step) {
     { step = 5; continue; }
   case 2:
   case 3:
-    r0 = (s.i___15881 + 1);
-    s.i___15881 = (r0);
+    r0 = (s.i___15878 + 1);
+    s.i___15878 = (r0);
     { step = 1; continue; }
   case 4:
     r0 = false;
@@ -35343,8 +35339,8 @@ function helpers_arraySome__P107_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  len___15878: undefined,
-  i___15881: undefined,
+  len___15875: undefined,
+  i___15878: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -35363,9 +35359,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.src___15895 = undefined;
-    s.keys___16002 = undefined;
-    s.key___16008 = undefined;
+    s.src___15892 = undefined;
+    s.keys___15999 = undefined;
+    s.key___16005 = undefined;
     s.unnamed124___U3 = undefined;
     s.unnamed125___U4 = undefined;
     if (s.lambdaArgs) {
@@ -35376,8 +35372,8 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, microcode_TileDefn__C3244_VT)) failedCast(r0);
     r0 = s.arg0.fields["constraints"];
-    s.src___15895 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.src___15895);
+    s.src___15892 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.src___15892);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -35387,7 +35383,7 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_3 = if_provides_1_mk(s);
-    s.tmp_3.arg0 = s.src___15895;
+    s.tmp_3.arg0 = s.src___15892;
     if (!s.tmp_3.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_3.arg0, "provides");
     } else {
@@ -35401,12 +35397,12 @@ switch (step) {
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 3; continue; }
-    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15905);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15902);
     s.tmp_4 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_4, 0, s.arg1);
     s.tmp_5 = helpers_arrayForEach__P109_mk(s);
     s.tmp_6 = if_provides_1_mk(s);
-    s.tmp_6.arg0 = s.src___15895;
+    s.tmp_6.arg0 = s.src___15892;
     if (!s.tmp_6.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_6.arg0, "provides");
     } else {
@@ -35425,7 +35421,7 @@ switch (step) {
   case 3:
   case 4:
     s.tmp_1 = if_requires_1_mk(s);
-    s.tmp_1.arg0 = s.src___15895;
+    s.tmp_1.arg0 = s.src___15892;
     if (!s.tmp_1.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_1.arg0, "requires");
     } else {
@@ -35439,12 +35435,12 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
-    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15917);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15914);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg1);
     s.tmp_3 = helpers_arrayForEach__P109_mk(s);
     s.tmp_4 = if_requires_1_mk(s);
-    s.tmp_4.arg0 = s.src___15895;
+    s.tmp_4.arg0 = s.src___15892;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "requires");
     } else {
@@ -35463,7 +35459,7 @@ switch (step) {
   case 5:
   case 6:
     s.tmp_1 = if_only_1_mk(s);
-    s.tmp_1.arg0 = s.src___15895;
+    s.tmp_1.arg0 = s.src___15892;
     if (!s.tmp_1.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_1.arg0, "only");
     } else {
@@ -35477,12 +35473,12 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
-    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15929);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15926);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg1);
     s.tmp_3 = helpers_arrayForEach__P109_mk(s);
     s.tmp_4 = if_only_1_mk(s);
-    s.tmp_4.arg0 = s.src___15895;
+    s.tmp_4.arg0 = s.src___15892;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "only");
     } else {
@@ -35501,7 +35497,7 @@ switch (step) {
   case 7:
   case 8:
     s.tmp_1 = if_allow_1_mk(s);
-    s.tmp_1.arg0 = s.src___15895;
+    s.tmp_1.arg0 = s.src___15892;
     if (!s.tmp_1.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_1.arg0, "allow");
     } else {
@@ -35517,7 +35513,7 @@ switch (step) {
     if (!r0) { step = 13; continue; }
     s.tmp_3 = if_tiles_1_mk(s);
     s.tmp_4 = if_allow_1_mk(s);
-    s.tmp_4.arg0 = s.src___15895;
+    s.tmp_4.arg0 = s.src___15892;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "allow");
     } else {
@@ -35549,7 +35545,7 @@ switch (step) {
   case 10:
     // jmp value (already in r0)
     s.tmp_5 = r0;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15945);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15942);
     s.tmp_6 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_6, 0, s.arg1);
     s.tmp_7 = helpers_arrayForEach__P109_mk(s);
@@ -35560,7 +35556,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = if_categories_1_mk(s);
     s.tmp_2 = if_allow_1_mk(s);
-    s.tmp_2.arg0 = s.src___15895;
+    s.tmp_2.arg0 = s.src___15892;
     if (!s.tmp_2.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_2.arg0, "allow");
     } else {
@@ -35592,7 +35588,7 @@ switch (step) {
   case 12:
     // jmp value (already in r0)
     s.tmp_3 = r0;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15960);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15957);
     s.tmp_4 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_4, 0, s.arg1);
     s.tmp_5 = helpers_arrayForEach__P109_mk(s);
@@ -35604,7 +35600,7 @@ switch (step) {
   case 13:
   case 14:
     s.tmp_1 = if_disallow_1_mk(s);
-    s.tmp_1.arg0 = s.src___15895;
+    s.tmp_1.arg0 = s.src___15892;
     if (!s.tmp_1.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_1.arg0, "disallow");
     } else {
@@ -35620,7 +35616,7 @@ switch (step) {
     if (!r0) { step = 19; continue; }
     s.tmp_3 = if_tiles_1_mk(s);
     s.tmp_4 = if_disallow_1_mk(s);
-    s.tmp_4.arg0 = s.src___15895;
+    s.tmp_4.arg0 = s.src___15892;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "disallow");
     } else {
@@ -35652,7 +35648,7 @@ switch (step) {
   case 16:
     // jmp value (already in r0)
     s.tmp_5 = r0;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15977);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15974);
     s.tmp_6 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_6, 0, s.arg1);
     s.tmp_7 = helpers_arrayForEach__P109_mk(s);
@@ -35663,7 +35659,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = if_categories_1_mk(s);
     s.tmp_2 = if_disallow_1_mk(s);
-    s.tmp_2.arg0 = s.src___15895;
+    s.tmp_2.arg0 = s.src___15892;
     if (!s.tmp_2.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_2.arg0, "disallow");
     } else {
@@ -35695,7 +35691,7 @@ switch (step) {
   case 18:
     // jmp value (already in r0)
     s.tmp_3 = r0;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15992);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_TileDefn_mergeConstraints_inline__P15989);
     s.tmp_4 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_4, 0, s.arg1);
     s.tmp_5 = helpers_arrayForEach__P109_mk(s);
@@ -35707,7 +35703,7 @@ switch (step) {
   case 19:
   case 20:
     s.tmp_1 = if_handling_1_mk(s);
-    s.tmp_1.arg0 = s.src___15895;
+    s.tmp_1.arg0 = s.src___15892;
     if (!s.tmp_1.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_1.arg0, "handling");
     } else {
@@ -35722,7 +35718,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 23; continue; }
     s.tmp_3 = if_handling_1_mk(s);
-    s.tmp_3.arg0 = s.src___15895;
+    s.tmp_3.arg0 = s.src___15892;
     if (!s.tmp_3.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_3.arg0, "handling");
     } else {
@@ -35735,9 +35731,9 @@ switch (step) {
     r0 = s.retval;
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt.keysOf(s.tmp_2);
-    s.keys___16002 = (r0);
-    s.key___16008 = (undefined);
-    s.unnamed124___U3 = (s.keys___16002);
+    s.keys___15999 = (r0);
+    s.key___16005 = (undefined);
+    s.unnamed124___U3 = (s.keys___15999);
     s.unnamed125___U4 = (0);
   case 21:
     s.tmp_0 = r0 = s.unnamed125___U4;
@@ -35746,7 +35742,7 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 22; continue; }
     r0 = pxsim_Array__getAt(s.unnamed124___U3, s.unnamed125___U4);
-    s.key___16008 = (r0);
+    s.key___16005 = (r0);
     s.tmp_3 = if_handling_1_mk(s);
     s.tmp_3.arg0 = s.arg1;
     if (!s.tmp_3.arg0.vtable.iface) {
@@ -35760,9 +35756,9 @@ switch (step) {
   case 51:
     r0 = s.retval;
     s.tmp_2 = r0;
-    s.tmp_4 = r0 = s.key___16008;
+    s.tmp_4 = r0 = s.key___16005;
     s.tmp_7 = if_handling_1_mk(s);
-    s.tmp_7.arg0 = s.src___15895;
+    s.tmp_7.arg0 = s.src___15892;
     if (!s.tmp_7.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_7.arg0, "handling");
     } else {
@@ -35774,7 +35770,7 @@ switch (step) {
   case 52:
     r0 = s.retval;
     s.tmp_6 = r0;
-    r0 = pxsim_pxtrt.mapGetGeneric(s.tmp_6, s.key___16008);
+    r0 = pxsim_pxtrt.mapGetGeneric(s.tmp_6, s.key___16005);
     s.tmp_5 = r0;
     r0 = pxsim_pxtrt.mapSetGeneric(s.tmp_2, s.tmp_4, s.tmp_5);
     r0 = (s.unnamed125___U4 + 1);
@@ -35804,9 +35800,9 @@ function microcode_TileDefn_mergeConstraints__P3257_mk(s) {
   tmp_5: undefined,
   tmp_6: undefined,
   tmp_7: undefined,
-  src___15895: undefined,
-  keys___16002: undefined,
-  key___16008: undefined,
+  src___15892: undefined,
+  keys___15999: undefined,
+  key___16005: undefined,
   unnamed124___U3: undefined,
   unnamed125___U4: undefined,
   arg0: undefined,
@@ -35817,7 +35813,7 @@ function microcode_TileDefn_mergeConstraints__P3257_mk(s) {
 
 
 
-function microcode_TileDefn_mergeConstraints_inline__P15905(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15902(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -35849,12 +35845,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints_inline__P15905.info = {"start":2913,"length":31,"line":107,"column":37,"endLine":107,"endColumn":68,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
+microcode_TileDefn_mergeConstraints_inline__P15902.info = {"start":2913,"length":31,"line":107,"column":37,"endLine":107,"endColumn":68,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
 
-function microcode_TileDefn_mergeConstraints_inline__P15905_mk(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15902_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15905, depth: s.depth + 1,
+        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15902, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -35865,7 +35861,7 @@ function microcode_TileDefn_mergeConstraints_inline__P15905_mk(s) {
 
 
 
-function microcode_TileDefn_mergeConstraints_inline__P15917(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15914(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -35897,12 +35893,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints_inline__P15917.info = {"start":3029,"length":31,"line":110,"column":37,"endLine":110,"endColumn":68,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
+microcode_TileDefn_mergeConstraints_inline__P15914.info = {"start":3029,"length":31,"line":110,"column":37,"endLine":110,"endColumn":68,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
 
-function microcode_TileDefn_mergeConstraints_inline__P15917_mk(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15914_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15917, depth: s.depth + 1,
+        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15914, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -35913,7 +35909,7 @@ function microcode_TileDefn_mergeConstraints_inline__P15917_mk(s) {
 
 
 
-function microcode_TileDefn_mergeConstraints_inline__P15929(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15926(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -35945,12 +35941,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints_inline__P15929.info = {"start":3137,"length":27,"line":113,"column":33,"endLine":113,"endColumn":60,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
+microcode_TileDefn_mergeConstraints_inline__P15926.info = {"start":3137,"length":27,"line":113,"column":33,"endLine":113,"endColumn":60,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
 
-function microcode_TileDefn_mergeConstraints_inline__P15929_mk(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15926_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15929, depth: s.depth + 1,
+        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15926, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -35961,7 +35957,7 @@ function microcode_TileDefn_mergeConstraints_inline__P15929_mk(s) {
 
 
 
-function microcode_TileDefn_mergeConstraints_inline__P15945(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15942(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -36005,12 +36001,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints_inline__P15945.info = {"start":3258,"length":54,"line":116,"column":49,"endLine":117,"endColumn":46,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
+microcode_TileDefn_mergeConstraints_inline__P15942.info = {"start":3258,"length":54,"line":116,"column":49,"endLine":117,"endColumn":46,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
 
-function microcode_TileDefn_mergeConstraints_inline__P15945_mk(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15942_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15945, depth: s.depth + 1,
+        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15942, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -36022,7 +36018,7 @@ function microcode_TileDefn_mergeConstraints_inline__P15945_mk(s) {
 
 
 
-function microcode_TileDefn_mergeConstraints_inline__P15960(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15957(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -36066,12 +36062,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints_inline__P15960.info = {"start":3385,"length":59,"line":119,"column":54,"endLine":120,"endColumn":51,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
+microcode_TileDefn_mergeConstraints_inline__P15957.info = {"start":3385,"length":59,"line":119,"column":54,"endLine":120,"endColumn":51,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
 
-function microcode_TileDefn_mergeConstraints_inline__P15960_mk(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15957_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15960, depth: s.depth + 1,
+        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15957, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -36083,7 +36079,7 @@ function microcode_TileDefn_mergeConstraints_inline__P15960_mk(s) {
 
 
 
-function microcode_TileDefn_mergeConstraints_inline__P15977(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15974(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -36127,12 +36123,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints_inline__P15977.info = {"start":3561,"length":57,"line":124,"column":52,"endLine":125,"endColumn":49,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
+microcode_TileDefn_mergeConstraints_inline__P15974.info = {"start":3561,"length":57,"line":124,"column":52,"endLine":125,"endColumn":49,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
 
-function microcode_TileDefn_mergeConstraints_inline__P15977_mk(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15974_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15977, depth: s.depth + 1,
+        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15974, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -36144,7 +36140,7 @@ function microcode_TileDefn_mergeConstraints_inline__P15977_mk(s) {
 
 
 
-function microcode_TileDefn_mergeConstraints_inline__P15992(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15989(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -36188,12 +36184,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_TileDefn_mergeConstraints_inline__P15992.info = {"start":3694,"length":62,"line":127,"column":57,"endLine":128,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
+microcode_TileDefn_mergeConstraints_inline__P15989.info = {"start":3694,"length":62,"line":127,"column":57,"endLine":128,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["item"]}
 
-function microcode_TileDefn_mergeConstraints_inline__P15992_mk(s) {
+function microcode_TileDefn_mergeConstraints_inline__P15989_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15992, depth: s.depth + 1,
+        parent: s, fn: microcode_TileDefn_mergeConstraints_inline__P15989, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -36215,7 +36211,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.c___16017 = undefined;
+    s.c___16014 = undefined;
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
     r0 = pxsim_Array__mk();
@@ -36248,8 +36244,8 @@ switch (step) {
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_10 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "handling", s.tmp_10);
-    s.c___16017 = (s.tmp_0);
-    r0 = s.c___16017;
+    s.c___16014 = (s.tmp_0);
+    r0 = s.c___16014;
     return leave(s, r0)
   default: oops()
 } } }
@@ -36271,7 +36267,7 @@ function microcode_mkConstraints__P6268_mk(s) {
   tmp_8: undefined,
   tmp_9: undefined,
   tmp_10: undefined,
-  c___16017: undefined,
+  c___16014: undefined,
 } }
 
 
@@ -36344,7 +36340,7 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_3);
     if (!r0) { step = 3; continue; }
-    s.arg1 = (helpers_arraySort_inline__P16037);
+    s.arg1 = (helpers_arraySort_inline__P16034);
   case 3:
   case 4:
     s.tmp_0 = helpers_sortHelper__P4090_mk(s);
@@ -36375,7 +36371,7 @@ function helpers_arraySort__P105_mk(s) {
 
 
 
-function helpers_arraySort_inline__P16037(s) {
+function helpers_arraySort_inline__P16034(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -36385,26 +36381,26 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.aIsUndef___16040 = undefined;
-    s.bIsUndef___16044 = undefined;
-    s.aIsNull___16055 = undefined;
-    s.bIsNull___16059 = undefined;
+    s.aIsUndef___16037 = undefined;
+    s.bIsUndef___16041 = undefined;
+    s.aIsNull___16052 = undefined;
+    s.bIsNull___16056 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = (s.arg0 === undefined);
-    s.aIsUndef___16040 = (r0);
+    s.aIsUndef___16037 = (r0);
     r0 = (s.arg1 === undefined);
-    s.bIsUndef___16044 = (r0);
-    s.tmp_0 = r0 = s.aIsUndef___16040;
+    s.bIsUndef___16041 = (r0);
+    s.tmp_0 = r0 = s.aIsUndef___16037;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 1; continue; }
     r0 = s.tmp_0;
     { step = 2; continue; }
   case 1:
-    r0 = s.bIsUndef___16044;
+    r0 = s.bIsUndef___16041;
   case 2:
     // jmp value (already in r0)
     s.tmp_1 = r0;
@@ -36414,13 +36410,13 @@ switch (step) {
     { step = 17; continue; }
     { step = 8; continue; }
   case 3:
-    r0 = pxsim_numops_toBoolDecr(s.aIsUndef___16040);
+    r0 = pxsim_numops_toBoolDecr(s.aIsUndef___16037);
     if (!r0) { step = 4; continue; }
     r0 = 1;
     { step = 17; continue; }
     { step = 7; continue; }
   case 4:
-    r0 = pxsim_numops_toBoolDecr(s.bIsUndef___16044);
+    r0 = pxsim_numops_toBoolDecr(s.bIsUndef___16041);
     if (!r0) { step = 5; continue; }
     r0 = -1;
     { step = 17; continue; }
@@ -36429,16 +36425,16 @@ switch (step) {
   case 7:
   case 8:
     r0 = (s.arg0 === null);
-    s.aIsNull___16055 = (r0);
+    s.aIsNull___16052 = (r0);
     r0 = (s.arg1 === null);
-    s.bIsNull___16059 = (r0);
-    s.tmp_0 = r0 = s.aIsNull___16055;
+    s.bIsNull___16056 = (r0);
+    s.tmp_0 = r0 = s.aIsNull___16052;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 9; continue; }
     r0 = s.tmp_0;
     { step = 10; continue; }
   case 9:
-    r0 = s.bIsNull___16059;
+    r0 = s.bIsNull___16056;
   case 10:
     // jmp value (already in r0)
     s.tmp_1 = r0;
@@ -36448,13 +36444,13 @@ switch (step) {
     { step = 17; continue; }
     { step = 16; continue; }
   case 11:
-    r0 = pxsim_numops_toBoolDecr(s.aIsNull___16055);
+    r0 = pxsim_numops_toBoolDecr(s.aIsNull___16052);
     if (!r0) { step = 12; continue; }
     r0 = 1;
     { step = 17; continue; }
     { step = 15; continue; }
   case 12:
-    r0 = pxsim_numops_toBoolDecr(s.bIsNull___16059);
+    r0 = pxsim_numops_toBoolDecr(s.bIsNull___16056);
     if (!r0) { step = 13; continue; }
     r0 = -1;
     { step = 17; continue; }
@@ -36493,12 +36489,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-helpers_arraySort_inline__P16037.info = {"start":5826,"length":636,"line":209,"column":25,"endLine":224,"endColumn":13,"fileName":"pxt_modules/base/pxt-helpers.ts","functionName":"inline","argumentNames":["a","b"]}
+helpers_arraySort_inline__P16034.info = {"start":5826,"length":636,"line":209,"column":25,"endLine":224,"endColumn":13,"fileName":"pxt_modules/base/pxt-helpers.ts","functionName":"inline","argumentNames":["a","b"]}
 
-function helpers_arraySort_inline__P16037_mk(s) {
+function helpers_arraySort_inline__P16034_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: helpers_arraySort_inline__P16037, depth: s.depth + 1,
+        parent: s, fn: helpers_arraySort_inline__P16034, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -36508,10 +36504,10 @@ function helpers_arraySort_inline__P16037_mk(s) {
   tmp_5: undefined,
   tmp_6: undefined,
   tmp_7: undefined,
-  aIsUndef___16040: undefined,
-  bIsUndef___16044: undefined,
-  aIsNull___16055: undefined,
-  bIsNull___16059: undefined,
+  aIsUndef___16037: undefined,
+  bIsUndef___16041: undefined,
+  aIsNull___16052: undefined,
+  bIsNull___16056: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -36530,9 +36526,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.len___16094 = undefined;
-    s.i___16097 = undefined;
-    s.j___16103 = undefined;
+    s.len___16091 = undefined;
+    s.i___16094 = undefined;
+    s.j___16100 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -36560,28 +36556,28 @@ switch (step) {
   case 3:
   case 4:
     r0 = pxsim_Array__length(s.arg0);
-    s.len___16094 = (r0);
-    s.i___16097 = (0);
+    s.len___16091 = (r0);
+    s.i___16094 = (0);
   case 5:
-    s.tmp_1 = r0 = s.i___16097;
-    r0 = (s.len___16094 - 1);
+    s.tmp_1 = r0 = s.i___16094;
+    r0 = (s.len___16091 - 1);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 10; continue; }
-    r0 = (s.i___16097 + 1);
-    s.j___16103 = (r0);
+    r0 = (s.i___16094 + 1);
+    s.j___16100 = (r0);
   case 6:
-    r0 = (s.j___16103 < s.len___16094);
+    r0 = (s.j___16100 < s.len___16091);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
     s.tmp_3 = lambda_3_mk(s);
     s.tmp_3.argL = s.arg1;
-    r0 = pxsim_Array__getAt(s.arg0, s.i___16097);
+    r0 = pxsim_Array__getAt(s.arg0, s.i___16094);
     s.tmp_3.arg0 = r0;
-    r0 = pxsim_Array__getAt(s.arg0, s.j___16103);
+    r0 = pxsim_Array__getAt(s.arg0, s.j___16100);
     s.tmp_3.arg1 = r0;
     setupLambda(s.tmp_3, s.tmp_3.argL);
     s.callLocIdx = 1; s.pc = 12; return s.tmp_3;
@@ -36594,19 +36590,19 @@ switch (step) {
     if (!r0) { step = 7; continue; }
     s.tmp_4 = helpers_swap__P4089_mk(s);
     s.tmp_4.arg0 = s.arg0;
-    s.tmp_4.arg1 = s.i___16097;
-    s.tmp_4.arg2 = s.j___16103;
+    s.tmp_4.arg1 = s.i___16094;
+    s.tmp_4.arg2 = s.j___16100;
     s.callLocIdx = 2; s.pc = 13; return s.tmp_4;
   case 13:
     r0 = s.retval;
   case 7:
   case 8:
-    r0 = (s.j___16103 + 1);
-    s.j___16103 = (r0);
+    r0 = (s.j___16100 + 1);
+    s.j___16100 = (r0);
     { step = 6; continue; }
   case 9:
-    r0 = (s.i___16097 + 1);
-    s.i___16097 = (r0);
+    r0 = (s.i___16094 + 1);
+    s.i___16094 = (r0);
     { step = 5; continue; }
   case 10:
     r0 = s.arg0;
@@ -36626,9 +36622,9 @@ function helpers_sortHelper__P4090_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  len___16094: undefined,
-  i___16097: undefined,
-  j___16103: undefined,
+  len___16091: undefined,
+  i___16094: undefined,
+  j___16100: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -36647,7 +36643,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.temp___16132 = undefined;
+    s.temp___16129 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -36655,13 +36651,13 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = pxsim_Array__getAt(s.arg0, s.arg1);
-    s.temp___16132 = (r0);
+    s.temp___16129 = (r0);
     s.tmp_0 = r0 = s.arg0;
     s.tmp_1 = r0 = s.arg1;
     r0 = pxsim_Array__getAt(s.arg0, s.arg2);
     s.tmp_2 = r0;
     r0 = pxsim_Array_.setAt(s.tmp_0, s.tmp_1, s.tmp_2);
-    r0 = pxsim_Array_.setAt(s.arg0, s.arg2, s.temp___16132);
+    r0 = pxsim_Array_.setAt(s.arg0, s.arg2, s.temp___16129);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -36676,7 +36672,7 @@ function helpers_swap__P4089_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  temp___16132: undefined,
+  temp___16129: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -36761,7 +36757,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "ariaId", s.tmp_15);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "x", 0);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "y", 0);
-    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P16167);
+    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P16164);
     s.tmp_16 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_16, 0, s.arg0);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "onClick", s.tmp_16);
@@ -36818,7 +36814,7 @@ function microcode_RuleEditor_needsWhenInsert__P6412_mk(s) {
 
 
 
-function onClick_inline__P16167(s) {
+function onClick_inline__P16164(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -36837,12 +36833,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P16167.info = {"start":20132,"length":31,"line":626,"column":29,"endLine":626,"endColumn":60,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P16164.info = {"start":20132,"length":31,"line":626,"column":29,"endLine":626,"endColumn":60,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function onClick_inline__P16167_mk(s) {
+function onClick_inline__P16164_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: onClick_inline__P16167, depth: s.depth + 1,
+        parent: s, fn: onClick_inline__P16164, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -36927,15 +36923,15 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.ruleTiles___16184 = undefined;
-    s.tileUpdated___16191 = undefined;
-    s.newFieldEditor___16212 = undefined;
-    s.theOne___16255 = undefined;
-    s.fieldEditor___16259 = undefined;
-    s.suggestions___16286 = undefined;
-    s.btns___16291 = undefined;
-    s.theOne___16306 = undefined;
-    s.onDelete___16321 = undefined;
+    s.ruleTiles___16181 = undefined;
+    s.tileUpdated___16188 = undefined;
+    s.newFieldEditor___16209 = undefined;
+    s.theOne___16252 = undefined;
+    s.fieldEditor___16256 = undefined;
+    s.suggestions___16283 = undefined;
+    s.btns___16288 = undefined;
+    s.theOne___16303 = undefined;
+    s.onDelete___16318 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -36952,32 +36948,32 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt.mapGetGeneric(s.tmp_0, s.arg1);
-    s.ruleTiles___16184 = (r0);
-    r0 = pxsim_pxtcore_mkAction(3, tileUpdated_inline__P16192);
+    s.ruleTiles___16181 = (r0);
+    r0 = pxsim_pxtcore_mkAction(3, tileUpdated_inline__P16189);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg1);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.arg2);
-    s.tileUpdated___16191 = (s.tmp_0);
-    r0 = pxsim_pxtcore_mkAction(4, newFieldEditor_inline__P16213);
+    s.tileUpdated___16188 = (s.tmp_0);
+    r0 = pxsim_pxtcore_mkAction(4, newFieldEditor_inline__P16210);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg2);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.ruleTiles___16184);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.tileUpdated___16191);
-    s.newFieldEditor___16212 = (s.tmp_0);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.ruleTiles___16181);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.tileUpdated___16188);
+    s.newFieldEditor___16209 = (s.tmp_0);
     s.tmp_1 = r0 = s.arg2;
-    r0 = pxsim_Array__length(s.ruleTiles___16184);
+    r0 = pxsim_Array__length(s.ruleTiles___16181);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    r0 = pxsim_Array__getAt(s.ruleTiles___16184, s.arg2);
-    s.theOne___16255 = (r0);
-    r0 = s.theOne___16255.fields["fieldEditor"];
-    s.fieldEditor___16259 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.fieldEditor___16259);
+    r0 = pxsim_Array__getAt(s.ruleTiles___16181, s.arg2);
+    s.theOne___16252 = (r0);
+    r0 = s.theOne___16252.fields["fieldEditor"];
+    s.fieldEditor___16256 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.fieldEditor___16256);
     if (!r0) { step = 1; continue; }
     s.tmp_0 = microcode_Scene_captureBackground__P3200_mk(s);
     r0 = s.arg0.fields["editor"];
@@ -36985,20 +36981,20 @@ switch (step) {
     s.callLocIdx = 890; s.pc = 19; return s.tmp_0;
   case 19:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(2, microcode_RuleEditor_editTile_inline__P16273);
+    r0 = pxsim_pxtcore_mkAction(2, microcode_RuleEditor_editTile_inline__P16270);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.tileUpdated___16191);
-    r0 = pxsim_pxtcore_mkAction(4, microcode_RuleEditor_editTile_inline__P16278);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.tileUpdated___16188);
+    r0 = pxsim_pxtcore_mkAction(4, microcode_RuleEditor_editTile_inline__P16275);
     s.tmp_1 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_1, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_1, 1, s.ruleTiles___16184);
+    r0 = pxsim_pxtrt_stclo(s.tmp_1, 1, s.ruleTiles___16181);
     r0 = pxsim_pxtrt_stclo(s.tmp_1, 2, s.arg2);
-    r0 = pxsim_pxtrt_stclo(s.tmp_1, 3, s.tileUpdated___16191);
+    r0 = pxsim_pxtrt_stclo(s.tmp_1, 3, s.tileUpdated___16188);
     s.tmp_2 = if_editor_5_mk(s);
-    s.tmp_2.arg0 = s.fieldEditor___16259;
+    s.tmp_2.arg0 = s.fieldEditor___16256;
     s.tmp_3 = microcode_TileDefn__C3244_v1_1_mk(s);
-    s.tmp_3.arg0 = s.theOne___16255;
+    s.tmp_3.arg0 = s.theOne___16252;
     if (!checkSubtype(s.tmp_3.arg0, microcode_TileDefn__C3244_VT)) failedCast(s.tmp_3.arg0);
     s.tmp_3.fn = s.tmp_3.arg0.vtable.methods.getField;
     s.pc = 21; return s.tmp_3;
@@ -37033,15 +37029,15 @@ switch (step) {
     s.callLocIdx = 897; s.pc = 22; return s.tmp_0;
   case 22:
     r0 = s.retval;
-    s.suggestions___16286 = (r0);
+    s.suggestions___16283 = (r0);
     s.tmp_0 = helpers_arrayMap__P106_mk(s);
-    s.tmp_0.arg0 = s.suggestions___16286;
-    s.tmp_0.arg1 = btns_inline__P16293;
+    s.tmp_0.arg0 = s.suggestions___16283;
+    s.tmp_0.arg1 = btns_inline__P16290;
     s.callLocIdx = 898; s.pc = 23; return s.tmp_0;
   case 23:
     r0 = s.retval;
-    s.btns___16291 = (r0);
-    r0 = pxsim_Array__length(s.suggestions___16286);
+    s.btns___16288 = (r0);
+    r0 = pxsim_Array__length(s.suggestions___16283);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 1);
     s.tmp_0 = r0;
@@ -37050,7 +37046,7 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 6; continue; }
   case 5:
-    r0 = pxsim_Array__getAt(s.suggestions___16286, 0);
+    r0 = pxsim_Array__getAt(s.suggestions___16283, 0);
     r0 = r0.fields["fieldEditor"];
   case 6:
     // jmp value (already in r0)
@@ -37064,7 +37060,7 @@ switch (step) {
     r0 = s.tmp_3;
     { step = 8; continue; }
   case 7:
-    s.tmp_4 = r0 = s.ruleTiles___16184;
+    s.tmp_4 = r0 = s.ruleTiles___16181;
     r0 = (s.arg2 - 1);
     s.tmp_5 = r0;
     r0 = pxsim_Array__getAt(s.tmp_4, s.tmp_5);
@@ -37074,20 +37070,20 @@ switch (step) {
     s.tmp_6 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_6);
     if (!r0) { step = 9; continue; }
-    s.tmp_7 = r0 = s.ruleTiles___16184;
+    s.tmp_7 = r0 = s.ruleTiles___16181;
     r0 = (s.arg2 - 1);
     s.tmp_8 = r0;
     r0 = pxsim_Array__getAt(s.tmp_7, s.tmp_8);
     { step = 10; continue; }
   case 9:
-    r0 = pxsim_Array__getAt(s.suggestions___16286, 0);
+    r0 = pxsim_Array__getAt(s.suggestions___16283, 0);
   case 10:
     // jmp value (already in r0)
     s.tmp_9 = r0;
-    s.theOne___16306 = (s.tmp_9);
+    s.theOne___16303 = (s.tmp_9);
     s.tmp_0 = lambda_2_mk(s);
-    s.tmp_0.argL = s.newFieldEditor___16212;
-    s.tmp_0.arg0 = s.theOne___16306;
+    s.tmp_0.argL = s.newFieldEditor___16209;
+    s.tmp_0.arg0 = s.theOne___16303;
     setupLambda(s.tmp_0, s.tmp_0.argL);
     s.callLocIdx = 899; s.pc = 24; return s.tmp_0;
   case 24:
@@ -37095,29 +37091,29 @@ switch (step) {
     { step = 17; continue; }
   case 11:
   case 12:
-    s.onDelete___16321 = (undefined);
+    s.onDelete___16318 = (undefined);
     s.tmp_1 = r0 = s.arg2;
-    r0 = pxsim_Array__length(s.ruleTiles___16184);
+    r0 = pxsim_Array__length(s.ruleTiles___16181);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 13; continue; }
-    r0 = pxsim_pxtcore_mkAction(3, microcode_RuleEditor_editTile_inline__P16328);
+    r0 = pxsim_pxtcore_mkAction(3, microcode_RuleEditor_editTile_inline__P16325);
     s.tmp_3 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_3, 0, s.ruleTiles___16184);
+    r0 = pxsim_pxtrt_stclo(s.tmp_3, 0, s.ruleTiles___16181);
     r0 = pxsim_pxtrt_stclo(s.tmp_3, 1, s.arg2);
-    r0 = pxsim_pxtrt_stclo(s.tmp_3, 2, s.tileUpdated___16191);
-    s.onDelete___16321 = (s.tmp_3);
+    r0 = pxsim_pxtrt_stclo(s.tmp_3, 2, s.tileUpdated___16188);
+    s.onDelete___16318 = (s.tmp_3);
   case 13:
   case 14:
-    r0 = pxsim_Array__length(s.btns___16291);
+    r0 = pxsim_Array__length(s.btns___16288);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 15; continue; }
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_1 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "btns", s.btns___16291);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "btns", s.btns___16288);
     s.tmp_2 = microcode_Picker_addGroup__P3541_mk(s);
     r0 = s.arg0.fields["editor"];
     r0 = r0.fields["picker"];
@@ -37135,16 +37131,16 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "title", s.tmp_1);
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "navigator", navigator_inline__P16348);
-    r0 = pxsim_pxtcore_mkAction(5, onClick_inline__P16351);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "navigator", navigator_inline__P16345);
+    r0 = pxsim_pxtcore_mkAction(5, onClick_inline__P16348);
     s.tmp_3 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_3, 0, s.arg1);
     r0 = pxsim_pxtrt_stclo(s.tmp_3, 1, s.arg2);
-    r0 = pxsim_pxtrt_stclo(s.tmp_3, 2, s.ruleTiles___16184);
-    r0 = pxsim_pxtrt_stclo(s.tmp_3, 3, s.newFieldEditor___16212);
-    r0 = pxsim_pxtrt_stclo(s.tmp_3, 4, s.tileUpdated___16191);
+    r0 = pxsim_pxtrt_stclo(s.tmp_3, 2, s.ruleTiles___16181);
+    r0 = pxsim_pxtrt_stclo(s.tmp_3, 3, s.newFieldEditor___16209);
+    r0 = pxsim_pxtrt_stclo(s.tmp_3, 4, s.tileUpdated___16188);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "onClick", s.tmp_3);
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "onDelete", s.onDelete___16321);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "onDelete", s.onDelete___16318);
     s.tmp_4 = microcode_Picker_show__P3543_mk(s);
     r0 = s.arg0.fields["editor"];
     r0 = r0.fields["picker"];
@@ -37178,15 +37174,15 @@ function microcode_RuleEditor_editTile__P6420_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  ruleTiles___16184: undefined,
-  tileUpdated___16191: undefined,
-  newFieldEditor___16212: undefined,
-  theOne___16255: undefined,
-  fieldEditor___16259: undefined,
-  suggestions___16286: undefined,
-  btns___16291: undefined,
-  theOne___16306: undefined,
-  onDelete___16321: undefined,
+  ruleTiles___16181: undefined,
+  tileUpdated___16188: undefined,
+  newFieldEditor___16209: undefined,
+  theOne___16252: undefined,
+  fieldEditor___16256: undefined,
+  suggestions___16283: undefined,
+  btns___16288: undefined,
+  theOne___16303: undefined,
+  onDelete___16318: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -37196,7 +37192,7 @@ function microcode_RuleEditor_editTile__P6420_mk(s) {
 
 
 
-function tileUpdated_inline__P16192(s) {
+function tileUpdated_inline__P16189(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -37258,12 +37254,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-tileUpdated_inline__P16192.info = {"start":24355,"length":427,"line":747,"column":32,"endLine":756,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["editedAdded"]}
+tileUpdated_inline__P16189.info = {"start":24355,"length":427,"line":747,"column":32,"endLine":756,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["editedAdded"]}
 
-function tileUpdated_inline__P16192_mk(s) {
+function tileUpdated_inline__P16189_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: tileUpdated_inline__P16192, depth: s.depth + 1,
+        parent: s, fn: tileUpdated_inline__P16189, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -37275,7 +37271,7 @@ function tileUpdated_inline__P16192_mk(s) {
 
 
 
-function newFieldEditor_inline__P16213(s) {
+function newFieldEditor_inline__P16210(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -37285,8 +37281,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.newOne___16215 = undefined;
-    s.fieldEditor___16220 = undefined;
+    s.newOne___16212 = undefined;
+    s.fieldEditor___16217 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -37299,26 +37295,26 @@ switch (step) {
     s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.newOne___16215 = (r0);
-    r0 = s.newOne___16215.fields["fieldEditor"];
-    s.fieldEditor___16220 = (r0);
+    s.newOne___16212 = (r0);
+    r0 = s.newOne___16212.fields["fieldEditor"];
+    s.fieldEditor___16217 = (r0);
     s.tmp_0 = microcode_Scene_captureBackground__P3200_mk(s);
     r0 = s.caps[0].fields["editor"];
     s.tmp_0.arg0 = r0;
     s.callLocIdx = 886; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(5, newFieldEditor_inline__P16234);
+    r0 = pxsim_pxtcore_mkAction(5, newFieldEditor_inline__P16231);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[0]);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.caps[1]);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.caps[2]);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.newOne___16215);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.newOne___16212);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 4, s.caps[3]);
     s.tmp_1 = if_editor_5_mk(s);
-    s.tmp_1.arg0 = s.fieldEditor___16220;
+    s.tmp_1.arg0 = s.fieldEditor___16217;
     s.tmp_2 = microcode_TileDefn__C3244_v1_1_mk(s);
-    s.tmp_2.arg0 = s.newOne___16215;
+    s.tmp_2.arg0 = s.newOne___16212;
     if (!checkSubtype(s.tmp_2.arg0, microcode_TileDefn__C3244_VT)) failedCast(s.tmp_2.arg0);
     s.tmp_2.fn = s.tmp_2.arg0.vtable.methods.getField;
     s.pc = 4; return s.tmp_2;
@@ -37345,18 +37341,18 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-newFieldEditor_inline__P16213.info = {"start":24818,"length":689,"line":757,"column":35,"endLine":774,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["tile"]}
+newFieldEditor_inline__P16210.info = {"start":24818,"length":689,"line":757,"column":35,"endLine":774,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["tile"]}
 
-function newFieldEditor_inline__P16213_mk(s) {
+function newFieldEditor_inline__P16210_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: newFieldEditor_inline__P16213, depth: s.depth + 1,
+        parent: s, fn: newFieldEditor_inline__P16210, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  newOne___16215: undefined,
-  fieldEditor___16220: undefined,
+  newOne___16212: undefined,
+  fieldEditor___16217: undefined,
   arg0: undefined,
 } }
 
@@ -37364,7 +37360,7 @@ function newFieldEditor_inline__P16213_mk(s) {
 
 
 
-function newFieldEditor_inline__P16234(s) {
+function newFieldEditor_inline__P16231(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -37403,12 +37399,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-newFieldEditor_inline__P16234.info = {"start":25131,"length":344,"line":764,"column":20,"endLine":772,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+newFieldEditor_inline__P16231.info = {"start":25131,"length":344,"line":764,"column":20,"endLine":772,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function newFieldEditor_inline__P16234_mk(s) {
+function newFieldEditor_inline__P16231_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: newFieldEditor_inline__P16234, depth: s.depth + 1,
+        parent: s, fn: newFieldEditor_inline__P16231, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -37419,7 +37415,7 @@ function newFieldEditor_inline__P16234_mk(s) {
 
 
 
-function microcode_RuleEditor_editTile_inline__P16273(s) {
+function microcode_RuleEditor_editTile_inline__P16270(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -37446,12 +37442,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_editTile_inline__P16273.info = {"start":25893,"length":135,"line":783,"column":24,"endLine":786,"endColumn":25,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_RuleEditor_editTile_inline__P16270.info = {"start":25893,"length":135,"line":783,"column":24,"endLine":786,"endColumn":25,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function microcode_RuleEditor_editTile_inline__P16273_mk(s) {
+function microcode_RuleEditor_editTile_inline__P16270_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_RuleEditor_editTile_inline__P16273, depth: s.depth + 1,
+        parent: s, fn: microcode_RuleEditor_editTile_inline__P16270, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -37460,7 +37456,7 @@ function microcode_RuleEditor_editTile_inline__P16273_mk(s) {
 
 
 
-function microcode_RuleEditor_editTile_inline__P16278(s) {
+function microcode_RuleEditor_editTile_inline__P16275(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -37494,12 +37490,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_editTile_inline__P16278.info = {"start":26054,"length":195,"line":787,"column":24,"endLine":791,"endColumn":25,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_RuleEditor_editTile_inline__P16275.info = {"start":26054,"length":195,"line":787,"column":24,"endLine":791,"endColumn":25,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function microcode_RuleEditor_editTile_inline__P16278_mk(s) {
+function microcode_RuleEditor_editTile_inline__P16275_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_RuleEditor_editTile_inline__P16278, depth: s.depth + 1,
+        parent: s, fn: microcode_RuleEditor_editTile_inline__P16275, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -37508,7 +37504,7 @@ function microcode_RuleEditor_editTile_inline__P16278_mk(s) {
 
 
 
-function btns_inline__P16293(s) {
+function btns_inline__P16290(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -37537,12 +37533,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-btns_inline__P16293.info = {"start":26456,"length":116,"line":797,"column":60,"endLine":801,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["elem"]}
+btns_inline__P16290.info = {"start":26456,"length":116,"line":797,"column":60,"endLine":801,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["elem"]}
 
-function btns_inline__P16293_mk(s) {
+function btns_inline__P16290_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: btns_inline__P16293, depth: s.depth + 1,
+        parent: s, fn: btns_inline__P16290, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -37554,7 +37550,7 @@ function btns_inline__P16293_mk(s) {
 
 
 
-function microcode_RuleEditor_editTile_inline__P16328(s) {
+function microcode_RuleEditor_editTile_inline__P16325(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -37588,12 +37584,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_RuleEditor_editTile_inline__P16328.info = {"start":27164,"length":158,"line":813,"column":27,"endLine":817,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_RuleEditor_editTile_inline__P16325.info = {"start":27164,"length":158,"line":813,"column":27,"endLine":817,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function microcode_RuleEditor_editTile_inline__P16328_mk(s) {
+function microcode_RuleEditor_editTile_inline__P16325_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_RuleEditor_editTile_inline__P16328, depth: s.depth + 1,
+        parent: s, fn: microcode_RuleEditor_editTile_inline__P16325, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -37602,7 +37598,7 @@ function microcode_RuleEditor_editTile_inline__P16328_mk(s) {
 
 
 
-function navigator_inline__P16348(s) {
+function navigator_inline__P16345(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -37623,12 +37619,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-navigator_inline__P16348.info = {"start":27557,"length":31,"line":823,"column":31,"endLine":823,"endColumn":62,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+navigator_inline__P16345.info = {"start":27557,"length":31,"line":823,"column":31,"endLine":823,"endColumn":62,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function navigator_inline__P16348_mk(s) {
+function navigator_inline__P16345_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: navigator_inline__P16348, depth: s.depth + 1,
+        parent: s, fn: navigator_inline__P16345, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -37638,7 +37634,7 @@ function navigator_inline__P16348_mk(s) {
 
 
 
-function onClick_inline__P16351(s) {
+function onClick_inline__P16348(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -37648,7 +37644,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.theOne___16353 = undefined;
+    s.theOne___16350 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -37656,8 +37652,8 @@ switch (step) {
     r0 = pxsim_pxtrt.mapGetGeneric(globals.tilesDB___3404, s.caps[0]);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt.mapGetGeneric(s.tmp_0, s.arg0);
-    s.theOne___16353 = (r0);
-    r0 = s.theOne___16353.fields["fieldEditor"];
+    s.theOne___16350 = (r0);
+    r0 = s.theOne___16350.fields["fieldEditor"];
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
@@ -37684,14 +37680,14 @@ switch (step) {
     r0 = pxsim_Array__getAt(s.tmp_5, s.tmp_6);
     { step = 4; continue; }
   case 3:
-    r0 = s.theOne___16353;
+    r0 = s.theOne___16350;
   case 4:
     // jmp value (already in r0)
     s.tmp_7 = r0;
-    s.theOne___16353 = (s.tmp_7);
+    s.theOne___16350 = (s.tmp_7);
     s.tmp_0 = lambda_2_mk(s);
     s.tmp_0.argL = s.caps[3];
-    s.tmp_0.arg0 = s.theOne___16353;
+    s.tmp_0.arg0 = s.theOne___16350;
     setupLambda(s.tmp_0, s.tmp_0.argL);
     s.callLocIdx = 906; s.pc = 9; return s.tmp_0;
   case 9:
@@ -37707,7 +37703,7 @@ switch (step) {
     if (!r0) { step = 6; continue; }
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_3 = r0;
-    r0 = s.theOne___16353.fields["tid"];
+    r0 = s.theOne___16350.fields["tid"];
     s.tmp_4 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_3, "tid", s.tmp_4);
     s.tmp_5 = microcode_reportEvent__P2877_mk(s);
@@ -37716,12 +37712,12 @@ switch (step) {
     s.callLocIdx = 907; s.pc = 10; return s.tmp_5;
   case 10:
     r0 = s.retval;
-    r0 = pxsim_Array__push(s.caps[2], s.theOne___16353);
+    r0 = pxsim_Array__push(s.caps[2], s.theOne___16350);
     { step = 7; continue; }
   case 6:
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
-    r0 = s.theOne___16353.fields["tid"];
+    r0 = s.theOne___16350.fields["tid"];
     s.tmp_1 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "tid", s.tmp_1);
     s.tmp_2 = microcode_reportEvent__P2877_mk(s);
@@ -37730,7 +37726,7 @@ switch (step) {
     s.callLocIdx = 908; s.pc = 11; return s.tmp_2;
   case 11:
     r0 = s.retval;
-    r0 = pxsim_Array_.setAt(s.caps[2], s.caps[1], s.theOne___16353);
+    r0 = pxsim_Array_.setAt(s.caps[2], s.caps[1], s.theOne___16350);
   case 7:
   case 8:
     s.tmp_0 = lambda_2_mk(s);
@@ -37744,12 +37740,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P16351.info = {"start":27619,"length":1077,"line":824,"column":29,"endLine":843,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":["id"]}
+onClick_inline__P16348.info = {"start":27619,"length":1077,"line":824,"column":29,"endLine":843,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":["id"]}
 
-function onClick_inline__P16351_mk(s) {
+function onClick_inline__P16348_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: onClick_inline__P16351, depth: s.depth + 1,
+        parent: s, fn: onClick_inline__P16348, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -37759,7 +37755,7 @@ function onClick_inline__P16351_mk(s) {
   tmp_5: undefined,
   tmp_6: undefined,
   tmp_7: undefined,
-  theOne___16353: undefined,
+  theOne___16350: undefined,
   arg0: undefined,
 } }
 
@@ -38327,11 +38323,11 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.page___16539 = undefined;
+    s.page___16536 = undefined;
     s.unnamed190___U1 = undefined;
     s.unnamed191___U2 = undefined;
-    s.ruleIdx___16545 = undefined;
-    s.rule___16547 = undefined;
+    s.ruleIdx___16542 = undefined;
+    s.rule___16544 = undefined;
     s.unnamed192___U5 = undefined;
     s.unnamed193___U6 = undefined;
     if (s.lambdaArgs) {
@@ -38375,7 +38371,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["stopPage"] = (s.tmp_1);
-    r0 = pxsim_pxtcore_mkAction(1, jacs_TopWriter_emitProgram_inline__P16513);
+    r0 = pxsim_pxtcore_mkAction(1, jacs_TopWriter_emitProgram_inline__P16510);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = jacs_TopWriter_withProcedure__P3952_mk(s);
@@ -38389,7 +38385,7 @@ switch (step) {
   case 9:
     r0 = s.retval;
     r0 = (s.arg0).fields["currPageId"] = (0);
-    s.page___16539 = (undefined);
+    s.page___16536 = (undefined);
     r0 = s.arg1.fields["pages"];
     s.unnamed190___U1 = (r0);
     s.unnamed191___U2 = (0);
@@ -38400,16 +38396,16 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 4; continue; }
     r0 = pxsim_Array__getAt(s.unnamed190___U1, s.unnamed191___U2);
-    s.page___16539 = (r0);
+    s.page___16536 = (r0);
     s.tmp_2 = r0 = s.arg0;
     r0 = s.tmp_2.fields["currPageId"];
     s.tmp_4 = r0;
     r0 = (s.tmp_4 + 1);
     s.tmp_3 = r0;
     r0 = (s.tmp_2).fields["currPageId"] = (s.tmp_3);
-    s.ruleIdx___16545 = (0);
-    s.rule___16547 = (undefined);
-    r0 = s.page___16539.fields["rules"];
+    s.ruleIdx___16542 = (0);
+    s.rule___16544 = (undefined);
+    r0 = s.page___16536.fields["rules"];
     s.unnamed192___U5 = (r0);
     s.unnamed193___U6 = (0);
   case 2:
@@ -38419,16 +38415,16 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 3; continue; }
     r0 = pxsim_Array__getAt(s.unnamed192___U5, s.unnamed193___U6);
-    s.rule___16547 = (r0);
+    s.rule___16544 = (r0);
     s.tmp_2 = r0 = s.arg0;
     r0 = s.tmp_2.fields["currRuleId"];
     s.tmp_4 = r0;
     r0 = (s.tmp_4 + 1);
     s.tmp_3 = r0;
     r0 = (s.tmp_2).fields["currRuleId"] = (s.tmp_3);
-    s.tmp_0 = r0 = s.ruleIdx___16545;
+    s.tmp_0 = r0 = s.ruleIdx___16542;
     r0 = (s.tmp_0 + 1);
-    s.ruleIdx___16545 = (r0);
+    s.ruleIdx___16542 = (r0);
     s.tmp_1 = jacs_TopWriter_emitRule__P6555_mk(s);
     s.tmp_1.arg0 = s.arg0;
     r0 = s.arg0.fields["currPageId"];
@@ -38475,7 +38471,7 @@ switch (step) {
     s.tmp_8 = r0;
     r0 = pxsim_String__concat(s.tmp_2, s.tmp_8);
     s.tmp_1.arg1 = r0;
-    s.tmp_1.arg2 = s.rule___16547;
+    s.tmp_1.arg2 = s.rule___16544;
     s.callLocIdx = 1921; s.pc = 10; return s.tmp_1;
   case 10:
     r0 = s.retval;
@@ -38519,11 +38515,11 @@ function jacs_TopWriter_emitProgram__P3972_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  page___16539: undefined,
+  page___16536: undefined,
   unnamed190___U1: undefined,
   unnamed191___U2: undefined,
-  ruleIdx___16545: undefined,
-  rule___16547: undefined,
+  ruleIdx___16542: undefined,
+  rule___16544: undefined,
   unnamed192___U5: undefined,
   unnamed193___U6: undefined,
   arg0: undefined,
@@ -38534,7 +38530,7 @@ function jacs_TopWriter_emitProgram__P3972_mk(s) {
 
 
 
-function jacs_TopWriter_emitProgram_inline__P16513(s) {
+function jacs_TopWriter_emitProgram_inline__P16510(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -38544,7 +38540,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.mic___16517 = undefined;
+    s.mic___16514 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -38563,21 +38559,21 @@ switch (step) {
     s.callLocIdx = 1915; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
-    s.mic___16517 = (r0);
+    s.mic___16514 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     s.tmp_2 = jacs_Role_emit__P6525_mk(s);
-    s.tmp_2.arg0 = s.mic___16517;
+    s.tmp_2.arg0 = s.mic___16514;
     s.tmp_2.arg1 = s.arg0;
     s.callLocIdx = 1916; s.pc = 3; return s.tmp_2;
   case 3:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
-    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitProgram_inline__P16530);
+    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitProgram_inline__P16527);
     s.tmp_3 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_3, 0, s.caps[0]);
-    r0 = pxsim_pxtrt_stclo(s.tmp_3, 1, s.mic___16517);
+    r0 = pxsim_pxtrt_stclo(s.tmp_3, 1, s.mic___16514);
     s.tmp_4 = jacs_OpWriter_emitIf__P3890_mk(s);
     s.tmp_4.arg0 = s.arg0;
     s.tmp_5 = jacs_OpWriter_emitExpr__P3896_mk(s);
@@ -38597,12 +38593,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitProgram_inline__P16513.info = {"start":37854,"length":382,"line":1067,"column":46,"endLine":1077,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitProgram_inline__P16510.info = {"start":37854,"length":382,"line":1067,"column":46,"endLine":1077,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
-function jacs_TopWriter_emitProgram_inline__P16513_mk(s) {
+function jacs_TopWriter_emitProgram_inline__P16510_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitProgram_inline__P16513, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitProgram_inline__P16510, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -38610,7 +38606,7 @@ function jacs_TopWriter_emitProgram_inline__P16513_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  mic___16517: undefined,
+  mic___16514: undefined,
   arg0: undefined,
 } }
 
@@ -38618,7 +38614,7 @@ function jacs_TopWriter_emitProgram_inline__P16513_mk(s) {
 
 
 
-function jacs_TopWriter_emitProgram_inline__P16530(s) {
+function jacs_TopWriter_emitProgram_inline__P16527(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -38632,7 +38628,7 @@ switch (step) {
     s.tmp_0.arg0 = s.caps[0];
     s.tmp_0.arg1 = s.caps[1];
     s.tmp_0.arg2 = 1;
-    s.tmp_0.arg3 = _hex16535;
+    s.tmp_0.arg3 = _hex16532;
     s.callLocIdx = 1918; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
@@ -38640,17 +38636,17 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitProgram_inline__P16530.info = {"start":38103,"length":101,"line":1073,"column":20,"endLine":1075,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitProgram_inline__P16527.info = {"start":38103,"length":101,"line":1073,"column":20,"endLine":1075,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
-function jacs_TopWriter_emitProgram_inline__P16530_mk(s) {
+function jacs_TopWriter_emitProgram_inline__P16527_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitProgram_inline__P16530, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitProgram_inline__P16527, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
 
-const _hex16535 = pxsim.BufferMethods.createBufferFromHex("00")
+const _hex16532 = pxsim.BufferMethods.createBufferFromHex("00")
 
 
 
@@ -38665,7 +38661,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.bin___16581 = undefined;
+    s.bin___16578 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -38706,11 +38702,11 @@ switch (step) {
     s.callLocIdx = 1927; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
-    s.bin___16581 = (r0);
+    s.bin___16578 = (r0);
     r0 = pxsim_numops_toBoolDecr(globals.debugOut___3919);
     if (!r0) { step = 6; continue; }
     s.tmp_0 = console_log__P380_mk(s);
-    r0 = pxsim.BufferMethods.toHex(s.bin___16581);
+    r0 = pxsim.BufferMethods.toHex(s.bin___16578);
     s.tmp_0.arg0 = r0;
     s.callLocIdx = 1928; s.pc = 13; return s.tmp_0;
   case 13:
@@ -38718,7 +38714,7 @@ switch (step) {
   case 6:
   case 7:
     s.tmp_0 = jdc_deploy__P2870_mk(s);
-    s.tmp_0.arg0 = s.bin___16581;
+    s.tmp_0.arg0 = s.bin___16578;
     s.callLocIdx = 1929; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
@@ -38736,7 +38732,7 @@ function jacs_TopWriter_deploy__P6557_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  bin___16581: undefined,
+  bin___16578: undefined,
   arg0: undefined,
 } }
 
@@ -38787,47 +38783,47 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.fixHeader___16597 = undefined;
-    s.sectDescs___16601 = undefined;
-    s.sections___16605 = undefined;
-    s.hd___16609 = undefined;
-    s.funDesc___16627 = undefined;
-    s.funData___16631 = undefined;
-    s.floatData___16635 = undefined;
-    s.roleData___16639 = undefined;
-    s.strDesc___16643 = undefined;
-    s.strData___16647 = undefined;
-    s.s___16652 = undefined;
+    s.fixHeader___16594 = undefined;
+    s.sectDescs___16598 = undefined;
+    s.sections___16602 = undefined;
+    s.hd___16606 = undefined;
+    s.funDesc___16624 = undefined;
+    s.funData___16628 = undefined;
+    s.floatData___16632 = undefined;
+    s.roleData___16636 = undefined;
+    s.strDesc___16640 = undefined;
+    s.strData___16644 = undefined;
+    s.s___16649 = undefined;
     s.unnamed146___U11 = undefined;
     s.unnamed147___U12 = undefined;
-    s.proc___16677 = undefined;
+    s.proc___16674 = undefined;
     s.unnamed148___U14 = undefined;
     s.unnamed149___U15 = undefined;
-    s.floatBuf___16695 = undefined;
-    s.i___16702 = undefined;
-    s.f___16709 = undefined;
-    s.r___16751 = undefined;
+    s.floatBuf___16692 = undefined;
+    s.i___16699 = undefined;
+    s.f___16706 = undefined;
+    s.r___16748 = undefined;
     s.unnamed150___U20 = undefined;
     s.unnamed151___U21 = undefined;
-    s.descs___16758 = undefined;
-    s.off___16808 = undefined;
-    s.s___16810 = undefined;
+    s.descs___16755 = undefined;
+    s.off___16805 = undefined;
+    s.s___16807 = undefined;
     s.unnamed152___U25 = undefined;
     s.unnamed153___U26 = undefined;
-    s.d___16821 = undefined;
+    s.d___16818 = undefined;
     s.unnamed154___U28 = undefined;
     s.unnamed155___U29 = undefined;
-    s.proc___16832 = undefined;
+    s.proc___16829 = undefined;
     s.unnamed156___U31 = undefined;
     s.unnamed157___U32 = undefined;
-    s.outp___16886 = undefined;
-    s.s___16892 = undefined;
+    s.outp___16883 = undefined;
+    s.s___16889 = undefined;
     s.unnamed158___U35 = undefined;
     s.unnamed159___U36 = undefined;
-    s.d___16895 = undefined;
+    s.d___16892 = undefined;
     s.unnamed160___U38 = undefined;
     s.unnamed161___U39 = undefined;
-    s.left___16908 = undefined;
+    s.left___16905 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -38842,7 +38838,7 @@ switch (step) {
     s.callLocIdx = 1613; s.pc = 23; return s.tmp_1;
   case 23:
     r0 = s.retval;
-    s.fixHeader___16597 = (s.tmp_0);
+    s.fixHeader___16594 = (s.tmp_0);
     r0 = pxsim_pxtcore_mkClassInstance(jacs_SectionWriter__C3899_VT);
     s.tmp_0 = r0;
     s.tmp_1 = jacs_SectionWriter_constructor__P3904_mk(s);
@@ -38851,14 +38847,14 @@ switch (step) {
     s.callLocIdx = 1614; s.pc = 24; return s.tmp_1;
   case 24:
     r0 = s.retval;
-    s.sectDescs___16601 = (s.tmp_0);
+    s.sectDescs___16598 = (s.tmp_0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.fixHeader___16597);
-    r0 = pxsim_Array__push(s.tmp_0, s.sectDescs___16601);
-    s.sections___16605 = (s.tmp_0);
+    r0 = pxsim_Array__push(s.tmp_0, s.fixHeader___16594);
+    r0 = pxsim_Array__push(s.tmp_0, s.sectDescs___16598);
+    s.sections___16602 = (s.tmp_0);
     r0 = pxsim.control.createBuffer(64);
-    s.hd___16609 = (r0);
+    s.hd___16606 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     r0 = pxsim_Array__push(s.tmp_0, 1399021898);
@@ -38869,7 +38865,7 @@ switch (step) {
     r0 = pxsim_Array__length(s.tmp_2);
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
-    s.tmp_3 = r0 = s.hd___16609;
+    s.tmp_3 = r0 = s.hd___16606;
     s.tmp_5 = Buffer_pack__P213_mk(s);
     s.tmp_5.arg0 = "IIIH";
     s.tmp_5.arg1 = s.tmp_0;
@@ -38879,8 +38875,8 @@ switch (step) {
     s.tmp_4 = r0;
     r0 = pxsim.BufferMethods.write(s.tmp_3, 0, s.tmp_4);
     s.tmp_0 = jacs_SectionWriter_append__P3907_mk(s);
-    s.tmp_0.arg0 = s.fixHeader___16597;
-    s.tmp_0.arg1 = s.hd___16609;
+    s.tmp_0.arg0 = s.fixHeader___16594;
+    s.tmp_0.arg1 = s.hd___16606;
     s.callLocIdx = 1616; s.pc = 26; return s.tmp_0;
   case 26:
     r0 = s.retval;
@@ -38892,7 +38888,7 @@ switch (step) {
     s.callLocIdx = 1617; s.pc = 27; return s.tmp_1;
   case 27:
     r0 = s.retval;
-    s.funDesc___16627 = (s.tmp_0);
+    s.funDesc___16624 = (s.tmp_0);
     r0 = pxsim_pxtcore_mkClassInstance(jacs_SectionWriter__C3899_VT);
     s.tmp_0 = r0;
     s.tmp_1 = jacs_SectionWriter_constructor__P3904_mk(s);
@@ -38901,7 +38897,7 @@ switch (step) {
     s.callLocIdx = 1618; s.pc = 28; return s.tmp_1;
   case 28:
     r0 = s.retval;
-    s.funData___16631 = (s.tmp_0);
+    s.funData___16628 = (s.tmp_0);
     r0 = pxsim_pxtcore_mkClassInstance(jacs_SectionWriter__C3899_VT);
     s.tmp_0 = r0;
     s.tmp_1 = jacs_SectionWriter_constructor__P3904_mk(s);
@@ -38910,7 +38906,7 @@ switch (step) {
     s.callLocIdx = 1619; s.pc = 29; return s.tmp_1;
   case 29:
     r0 = s.retval;
-    s.floatData___16635 = (s.tmp_0);
+    s.floatData___16632 = (s.tmp_0);
     r0 = pxsim_pxtcore_mkClassInstance(jacs_SectionWriter__C3899_VT);
     s.tmp_0 = r0;
     s.tmp_1 = jacs_SectionWriter_constructor__P3904_mk(s);
@@ -38919,7 +38915,7 @@ switch (step) {
     s.callLocIdx = 1620; s.pc = 30; return s.tmp_1;
   case 30:
     r0 = s.retval;
-    s.roleData___16639 = (s.tmp_0);
+    s.roleData___16636 = (s.tmp_0);
     r0 = pxsim_pxtcore_mkClassInstance(jacs_SectionWriter__C3899_VT);
     s.tmp_0 = r0;
     s.tmp_1 = jacs_SectionWriter_constructor__P3904_mk(s);
@@ -38928,7 +38924,7 @@ switch (step) {
     s.callLocIdx = 1621; s.pc = 31; return s.tmp_1;
   case 31:
     r0 = s.retval;
-    s.strDesc___16643 = (s.tmp_0);
+    s.strDesc___16640 = (s.tmp_0);
     r0 = pxsim_pxtcore_mkClassInstance(jacs_SectionWriter__C3899_VT);
     s.tmp_0 = r0;
     s.tmp_1 = jacs_SectionWriter_constructor__P3904_mk(s);
@@ -38937,16 +38933,16 @@ switch (step) {
     s.callLocIdx = 1622; s.pc = 32; return s.tmp_1;
   case 32:
     r0 = s.retval;
-    s.strData___16647 = (s.tmp_0);
-    s.s___16652 = (undefined);
+    s.strData___16644 = (s.tmp_0);
+    s.s___16649 = (undefined);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.funDesc___16627);
-    r0 = pxsim_Array__push(s.tmp_0, s.funData___16631);
-    r0 = pxsim_Array__push(s.tmp_0, s.floatData___16635);
-    r0 = pxsim_Array__push(s.tmp_0, s.roleData___16639);
-    r0 = pxsim_Array__push(s.tmp_0, s.strDesc___16643);
-    r0 = pxsim_Array__push(s.tmp_0, s.strData___16647);
+    r0 = pxsim_Array__push(s.tmp_0, s.funDesc___16624);
+    r0 = pxsim_Array__push(s.tmp_0, s.funData___16628);
+    r0 = pxsim_Array__push(s.tmp_0, s.floatData___16632);
+    r0 = pxsim_Array__push(s.tmp_0, s.roleData___16636);
+    r0 = pxsim_Array__push(s.tmp_0, s.strDesc___16640);
+    r0 = pxsim_Array__push(s.tmp_0, s.strData___16644);
     s.unnamed146___U11 = (s.tmp_0);
     s.unnamed147___U12 = (0);
   case 1:
@@ -38956,21 +38952,21 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
     r0 = pxsim_Array__getAt(s.unnamed146___U11, s.unnamed147___U12);
-    s.s___16652 = (r0);
+    s.s___16649 = (r0);
     s.tmp_2 = jacs_SectionWriter_append__P3907_mk(s);
-    s.tmp_2.arg0 = s.sectDescs___16601;
-    r0 = s.s___16652.fields["desc"];
+    s.tmp_2.arg0 = s.sectDescs___16598;
+    r0 = s.s___16649.fields["desc"];
     s.tmp_2.arg1 = r0;
     s.callLocIdx = 1623; s.pc = 33; return s.tmp_2;
   case 33:
     r0 = s.retval;
-    r0 = pxsim_Array__push(s.sections___16605, s.s___16652);
+    r0 = pxsim_Array__push(s.sections___16602, s.s___16649);
     r0 = (s.unnamed147___U12 + 1);
     s.unnamed147___U12 = (r0);
     { step = 1; continue; }
   case 2:
     s.unnamed146___U11 = (undefined);
-    s.tmp_0 = r0 = s.funDesc___16627;
+    s.tmp_0 = r0 = s.funDesc___16624;
     r0 = s.arg0.fields["procs"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__length(s.tmp_3);
@@ -38978,7 +38974,7 @@ switch (step) {
     r0 = (16 * s.tmp_2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["size"] = (s.tmp_1);
-    s.proc___16677 = (undefined);
+    s.proc___16674 = (undefined);
     r0 = s.arg0.fields["procs"];
     s.unnamed148___U14 = (r0);
     s.unnamed149___U15 = (0);
@@ -38989,24 +38985,24 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 4; continue; }
     r0 = pxsim_Array__getAt(s.unnamed148___U14, s.unnamed149___U15);
-    s.proc___16677 = (r0);
+    s.proc___16674 = (r0);
     s.tmp_2 = jacs_SectionWriter_append__P3907_mk(s);
-    s.tmp_2.arg0 = s.funDesc___16627;
-    r0 = s.proc___16677.fields["writer"];
+    s.tmp_2.arg0 = s.funDesc___16624;
+    r0 = s.proc___16674.fields["writer"];
     r0 = r0.fields["desc"];
     s.tmp_2.arg1 = r0;
     s.callLocIdx = 1624; s.pc = 34; return s.tmp_2;
   case 34:
     r0 = s.retval;
-    r0 = s.proc___16677.fields["writer"];
+    r0 = s.proc___16674.fields["writer"];
     s.tmp_0 = r0;
-    r0 = s.funData___16631.fields["currSize"];
+    r0 = s.funData___16628.fields["currSize"];
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["offsetInFuncs"] = (s.tmp_1);
     s.tmp_0 = jacs_SectionWriter_append__P3907_mk(s);
-    s.tmp_0.arg0 = s.funData___16631;
+    s.tmp_0.arg0 = s.funData___16628;
     s.tmp_1 = jacs_OpWriter_serialize__P3869_mk(s);
-    r0 = s.proc___16677.fields["writer"];
+    r0 = s.proc___16674.fields["writer"];
     s.tmp_1.arg0 = r0;
     s.callLocIdx = 1625; s.pc = 36; return s.tmp_1;
   case 36:
@@ -39027,10 +39023,10 @@ switch (step) {
     r0 = (s.tmp_1 * 8);
     s.tmp_0 = r0;
     r0 = pxsim.control.createBuffer(s.tmp_0);
-    s.floatBuf___16695 = (r0);
-    s.i___16702 = (0);
+    s.floatBuf___16692 = (r0);
+    s.i___16699 = (0);
   case 5:
-    s.tmp_1 = r0 = s.i___16702;
+    s.tmp_1 = r0 = s.i___16699;
     r0 = s.arg0.fields["floatLiterals"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__length(s.tmp_3);
@@ -39041,42 +39037,42 @@ switch (step) {
     if (!r0) { step = 8; continue; }
     r0 = s.arg0.fields["floatLiterals"];
     s.tmp_4 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_4, s.i___16702);
-    s.f___16709 = (r0);
-    r0 = (s.f___16709 | 0);
+    r0 = pxsim_Array__getAt(s.tmp_4, s.i___16699);
+    s.f___16706 = (r0);
+    r0 = (s.f___16706 | 0);
     s.tmp_1 = r0;
-    r0 = (s.tmp_1 == s.f___16709);
+    r0 = (s.tmp_1 == s.f___16706);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
-    s.tmp_2 = r0 = s.floatBuf___16695;
-    r0 = (s.i___16702 << 3);
+    s.tmp_2 = r0 = s.floatBuf___16692;
+    r0 = (s.i___16699 << 3);
     s.tmp_3 = r0;
-    r0 = pxsim.BufferMethods.setNumber(s.tmp_2, 5, s.tmp_3, s.f___16709);
-    s.tmp_0 = r0 = s.floatBuf___16695;
-    r0 = (s.i___16702 << 3);
+    r0 = pxsim.BufferMethods.setNumber(s.tmp_2, 5, s.tmp_3, s.f___16706);
+    s.tmp_0 = r0 = s.floatBuf___16692;
+    r0 = (s.i___16699 << 3);
     s.tmp_2 = r0;
     r0 = (4 + s.tmp_2);
     s.tmp_1 = r0;
     r0 = pxsim.BufferMethods.setNumber(s.tmp_0, 5, s.tmp_1, -1);
     { step = 7; continue; }
   case 6:
-    s.tmp_0 = r0 = s.floatBuf___16695;
-    r0 = (s.i___16702 << 3);
+    s.tmp_0 = r0 = s.floatBuf___16692;
+    r0 = (s.i___16699 << 3);
     s.tmp_1 = r0;
-    r0 = pxsim.BufferMethods.setNumber(s.tmp_0, 14, s.tmp_1, s.f___16709);
+    r0 = pxsim.BufferMethods.setNumber(s.tmp_0, 14, s.tmp_1, s.f___16706);
   case 7:
-    r0 = (s.i___16702 + 1);
-    s.i___16702 = (r0);
+    r0 = (s.i___16699 + 1);
+    s.i___16699 = (r0);
     { step = 5; continue; }
   case 8:
     s.tmp_0 = jacs_SectionWriter_append__P3907_mk(s);
-    s.tmp_0.arg0 = s.floatData___16635;
-    s.tmp_0.arg1 = s.floatBuf___16695;
+    s.tmp_0.arg0 = s.floatData___16632;
+    s.tmp_0.arg1 = s.floatBuf___16692;
     s.callLocIdx = 1627; s.pc = 37; return s.tmp_0;
   case 37:
     r0 = s.retval;
-    s.r___16751 = (undefined);
+    s.r___16748 = (undefined);
     r0 = s.arg0.fields["roles"];
     s.unnamed150___U20 = (r0);
     s.unnamed151___U21 = (0);
@@ -39087,11 +39083,11 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 10; continue; }
     r0 = pxsim_Array__getAt(s.unnamed150___U20, s.unnamed151___U21);
-    s.r___16751 = (r0);
+    s.r___16748 = (r0);
     s.tmp_2 = jacs_SectionWriter_append__P3907_mk(s);
-    s.tmp_2.arg0 = s.roleData___16639;
+    s.tmp_2.arg0 = s.roleData___16636;
     s.tmp_3 = jacs_Role_serialize__P6523_mk(s);
-    s.tmp_3.arg0 = s.r___16751;
+    s.tmp_3.arg0 = s.r___16748;
     s.callLocIdx = 1628; s.pc = 39; return s.tmp_3;
   case 39:
     r0 = s.retval;
@@ -39104,10 +39100,10 @@ switch (step) {
     { step = 9; continue; }
   case 10:
     s.unnamed150___U20 = (undefined);
-    r0 = pxsim_pxtcore_mkAction(2, descs_inline__P16760);
+    r0 = pxsim_pxtcore_mkAction(2, descs_inline__P16757);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.strData___16647);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.strDesc___16643);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.strData___16644);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.strDesc___16640);
     s.tmp_1 = helpers_arrayMap__P106_mk(s);
     r0 = s.arg0.fields["stringLiterals"];
     s.tmp_1.arg0 = r0;
@@ -39115,15 +39111,15 @@ switch (step) {
     s.callLocIdx = 1634; s.pc = 40; return s.tmp_1;
   case 40:
     r0 = s.retval;
-    s.descs___16758 = (r0);
+    s.descs___16755 = (r0);
     s.tmp_0 = jacs_SectionWriter_align__P3906_mk(s);
-    s.tmp_0.arg0 = s.strData___16647;
+    s.tmp_0.arg0 = s.strData___16644;
     s.callLocIdx = 1635; s.pc = 41; return s.tmp_0;
   case 41:
     r0 = s.retval;
-    s.off___16808 = (0);
-    s.s___16810 = (undefined);
-    s.unnamed152___U25 = (s.sections___16605);
+    s.off___16805 = (0);
+    s.s___16807 = (undefined);
+    s.unnamed152___U25 = (s.sections___16602);
     s.unnamed153___U26 = (0);
   case 11:
     s.tmp_0 = r0 = s.unnamed153___U26;
@@ -39132,24 +39128,24 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 12; continue; }
     r0 = pxsim_Array__getAt(s.unnamed152___U25, s.unnamed153___U26);
-    s.s___16810 = (r0);
+    s.s___16807 = (r0);
     s.tmp_2 = jacs_SectionWriter_finalize__P3905_mk(s);
-    s.tmp_2.arg0 = s.s___16810;
-    s.tmp_2.arg1 = s.off___16808;
+    s.tmp_2.arg0 = s.s___16807;
+    s.tmp_2.arg1 = s.off___16805;
     s.callLocIdx = 1636; s.pc = 42; return s.tmp_2;
   case 42:
     r0 = s.retval;
-    r0 = s.s___16810.fields["size"];
+    r0 = s.s___16807.fields["size"];
     s.tmp_0 = r0;
-    r0 = (s.off___16808 + s.tmp_0);
-    s.off___16808 = (r0);
+    r0 = (s.off___16805 + s.tmp_0);
+    s.off___16805 = (r0);
     r0 = (s.unnamed153___U26 + 1);
     s.unnamed153___U26 = (r0);
     { step = 11; continue; }
   case 12:
     s.unnamed152___U25 = (undefined);
-    s.d___16821 = (undefined);
-    s.unnamed154___U28 = (s.descs___16758);
+    s.d___16818 = (undefined);
+    s.unnamed154___U28 = (s.descs___16755);
     s.unnamed155___U29 = (0);
   case 13:
     s.tmp_0 = r0 = s.unnamed155___U29;
@@ -39158,13 +39154,13 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 14; continue; }
     r0 = pxsim_Array__getAt(s.unnamed154___U28, s.unnamed155___U29);
-    s.d___16821 = (r0);
+    s.d___16818 = (r0);
     s.tmp_2 = jacs_write32__P3818_mk(s);
-    s.tmp_2.arg0 = s.d___16821;
+    s.tmp_2.arg0 = s.d___16818;
     s.tmp_2.arg1 = 0;
-    r0 = pxsim.BufferMethods.getNumber(s.d___16821, 11, 0);
+    r0 = pxsim.BufferMethods.getNumber(s.d___16818, 11, 0);
     s.tmp_3 = r0;
-    r0 = s.strData___16647.fields["offset"];
+    r0 = s.strData___16644.fields["offset"];
     s.tmp_4 = r0;
     r0 = (s.tmp_3 + s.tmp_4);
     s.tmp_2.arg2 = r0;
@@ -39176,7 +39172,7 @@ switch (step) {
     { step = 13; continue; }
   case 14:
     s.unnamed154___U28 = (undefined);
-    s.proc___16832 = (undefined);
+    s.proc___16829 = (undefined);
     r0 = s.arg0.fields["procs"];
     s.unnamed156___U31 = (r0);
     s.unnamed157___U32 = (0);
@@ -39187,22 +39183,22 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 16; continue; }
     r0 = pxsim_Array__getAt(s.unnamed156___U31, s.unnamed157___U32);
-    s.proc___16832 = (r0);
+    s.proc___16829 = (r0);
     s.tmp_2 = jacs_OpWriter_finalizeDesc__P3871_mk(s);
-    r0 = s.proc___16832.fields["writer"];
+    r0 = s.proc___16829.fields["writer"];
     s.tmp_2.arg0 = r0;
-    r0 = s.funData___16631.fields["offset"];
+    r0 = s.funData___16628.fields["offset"];
     s.tmp_3 = r0;
-    r0 = s.proc___16832.fields["writer"];
+    r0 = s.proc___16829.fields["writer"];
     r0 = r0.fields["offsetInFuncs"];
     s.tmp_4 = r0;
     r0 = (s.tmp_3 + s.tmp_4);
     s.tmp_2.arg1 = r0;
-    r0 = s.proc___16832.fields["locals"];
+    r0 = s.proc___16829.fields["locals"];
     s.tmp_5 = r0;
     r0 = pxsim_Array__length(s.tmp_5);
     s.tmp_2.arg2 = r0;
-    r0 = s.proc___16832.fields["params"];
+    r0 = s.proc___16829.fields["params"];
     s.tmp_6 = r0;
     r0 = pxsim_Array__length(s.tmp_6);
     s.tmp_2.arg3 = r0;
@@ -39222,15 +39218,15 @@ switch (step) {
     r0 = (s.arg0).fields["pageStartCondition"] = (undefined);
     r0 = (s.arg0).fields["stopPage"] = (undefined);
     r0 = (s.arg0).fields["roles"] = (undefined);
-    r0 = (s.off___16808 + 31);
+    r0 = (s.off___16805 + 31);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 & -32);
-    s.off___16808 = (r0);
-    r0 = pxsim.control.createBuffer(s.off___16808);
-    s.outp___16886 = (r0);
-    s.off___16808 = (0);
-    s.s___16892 = (undefined);
-    s.unnamed158___U35 = (s.sections___16605);
+    s.off___16805 = (r0);
+    r0 = pxsim.control.createBuffer(s.off___16805);
+    s.outp___16883 = (r0);
+    s.off___16805 = (0);
+    s.s___16889 = (undefined);
+    s.unnamed158___U35 = (s.sections___16602);
     s.unnamed159___U36 = (0);
   case 17:
     s.tmp_0 = r0 = s.unnamed159___U36;
@@ -39239,9 +39235,9 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 20; continue; }
     r0 = pxsim_Array__getAt(s.unnamed158___U35, s.unnamed159___U36);
-    s.s___16892 = (r0);
-    s.d___16895 = (undefined);
-    r0 = s.s___16892.fields["data"];
+    s.s___16889 = (r0);
+    s.d___16892 = (undefined);
+    r0 = s.s___16889.fields["data"];
     s.unnamed160___U38 = (r0);
     s.unnamed161___U39 = (0);
   case 18:
@@ -39251,13 +39247,13 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 19; continue; }
     r0 = pxsim_Array__getAt(s.unnamed160___U38, s.unnamed161___U39);
-    s.d___16895 = (r0);
-    r0 = pxsim.BufferMethods.write(s.outp___16886, s.off___16808, s.d___16895);
-    s.tmp_0 = r0 = s.off___16808;
-    r0 = pxsim.BufferMethods.length(s.d___16895);
+    s.d___16892 = (r0);
+    r0 = pxsim.BufferMethods.write(s.outp___16883, s.off___16805, s.d___16892);
+    s.tmp_0 = r0 = s.off___16805;
+    r0 = pxsim.BufferMethods.length(s.d___16892);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 + s.tmp_1);
-    s.off___16808 = (r0);
+    s.off___16805 = (r0);
     r0 = (s.unnamed161___U39 + 1);
     s.unnamed161___U39 = (r0);
     { step = 18; continue; }
@@ -39268,18 +39264,18 @@ switch (step) {
     { step = 17; continue; }
   case 20:
     s.unnamed158___U35 = (undefined);
-    r0 = pxsim.BufferMethods.length(s.outp___16886);
+    r0 = pxsim.BufferMethods.length(s.outp___16883);
     s.tmp_0 = r0;
-    r0 = (s.tmp_0 - s.off___16808);
-    s.left___16908 = (r0);
-    r0 = (0 <= s.left___16908);
+    r0 = (s.tmp_0 - s.off___16805);
+    s.left___16905 = (r0);
+    r0 = (0 <= s.left___16905);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 21; continue; }
     r0 = s.tmp_0;
     { step = 22; continue; }
   case 21:
-    r0 = (s.left___16908 < 32);
+    r0 = (s.left___16905 < 32);
   case 22:
     // jmp value (already in r0)
     s.tmp_1 = r0;
@@ -39289,7 +39285,7 @@ switch (step) {
     s.callLocIdx = 1640; s.pc = 45; return s.tmp_2;
   case 45:
     r0 = s.retval;
-    r0 = s.outp___16886;
+    r0 = s.outp___16883;
     return leave(s, r0)
   default: oops()
 } } }
@@ -39307,47 +39303,47 @@ function jacs_TopWriter_serialize__P6528_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  fixHeader___16597: undefined,
-  sectDescs___16601: undefined,
-  sections___16605: undefined,
-  hd___16609: undefined,
-  funDesc___16627: undefined,
-  funData___16631: undefined,
-  floatData___16635: undefined,
-  roleData___16639: undefined,
-  strDesc___16643: undefined,
-  strData___16647: undefined,
-  s___16652: undefined,
+  fixHeader___16594: undefined,
+  sectDescs___16598: undefined,
+  sections___16602: undefined,
+  hd___16606: undefined,
+  funDesc___16624: undefined,
+  funData___16628: undefined,
+  floatData___16632: undefined,
+  roleData___16636: undefined,
+  strDesc___16640: undefined,
+  strData___16644: undefined,
+  s___16649: undefined,
   unnamed146___U11: undefined,
   unnamed147___U12: undefined,
-  proc___16677: undefined,
+  proc___16674: undefined,
   unnamed148___U14: undefined,
   unnamed149___U15: undefined,
-  floatBuf___16695: undefined,
-  i___16702: undefined,
-  f___16709: undefined,
-  r___16751: undefined,
+  floatBuf___16692: undefined,
+  i___16699: undefined,
+  f___16706: undefined,
+  r___16748: undefined,
   unnamed150___U20: undefined,
   unnamed151___U21: undefined,
-  descs___16758: undefined,
-  off___16808: undefined,
-  s___16810: undefined,
+  descs___16755: undefined,
+  off___16805: undefined,
+  s___16807: undefined,
   unnamed152___U25: undefined,
   unnamed153___U26: undefined,
-  d___16821: undefined,
+  d___16818: undefined,
   unnamed154___U28: undefined,
   unnamed155___U29: undefined,
-  proc___16832: undefined,
+  proc___16829: undefined,
   unnamed156___U31: undefined,
   unnamed157___U32: undefined,
-  outp___16886: undefined,
-  s___16892: undefined,
+  outp___16883: undefined,
+  s___16889: undefined,
   unnamed158___U35: undefined,
   unnamed159___U36: undefined,
-  d___16895: undefined,
+  d___16892: undefined,
   unnamed160___U38: undefined,
   unnamed161___U39: undefined,
-  left___16908: undefined,
+  left___16905: undefined,
   arg0: undefined,
 } }
 
@@ -39355,7 +39351,7 @@ function jacs_TopWriter_serialize__P6528_mk(s) {
 
 
 
-function descs_inline__P16760(s) {
+function descs_inline__P16757(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -39365,9 +39361,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.buf___16766 = undefined;
-    s.len___16767 = undefined;
-    s.desc___16788 = undefined;
+    s.buf___16763 = undefined;
+    s.len___16764 = undefined;
+    s.desc___16785 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -39391,21 +39387,21 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_3, "\u0000");
     s.tmp_2 = r0;
     r0 = pxsim.control.createBufferFromUTF8(s.tmp_2);
-    s.buf___16766 = (r0);
-    r0 = pxsim.BufferMethods.length(s.buf___16766);
+    s.buf___16763 = (r0);
+    r0 = pxsim.BufferMethods.length(s.buf___16763);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 - 1);
-    s.len___16767 = (r0);
+    s.len___16764 = (r0);
     { step = 2; continue; }
   case 1:
-    s.buf___16766 = (s.arg0);
-    r0 = pxsim.BufferMethods.length(s.buf___16766);
-    s.len___16767 = (r0);
+    s.buf___16763 = (s.arg0);
+    r0 = pxsim.BufferMethods.length(s.buf___16763);
+    s.len___16764 = (r0);
   case 2:
     r0 = pxsim.control.createBuffer(8);
-    s.desc___16788 = (r0);
+    s.desc___16785 = (r0);
     s.tmp_0 = jacs_write32__P3818_mk(s);
-    s.tmp_0.arg0 = s.desc___16788;
+    s.tmp_0.arg0 = s.desc___16785;
     s.tmp_0.arg1 = 0;
     r0 = s.caps[0].fields["currSize"];
     s.tmp_0.arg2 = r0;
@@ -39413,42 +39409,42 @@ switch (step) {
   case 4:
     r0 = s.retval;
     s.tmp_0 = jacs_write32__P3818_mk(s);
-    s.tmp_0.arg0 = s.desc___16788;
+    s.tmp_0.arg0 = s.desc___16785;
     s.tmp_0.arg1 = 4;
-    s.tmp_0.arg2 = s.len___16767;
+    s.tmp_0.arg2 = s.len___16764;
     s.callLocIdx = 1631; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.tmp_0 = jacs_SectionWriter_append__P3907_mk(s);
     s.tmp_0.arg0 = s.caps[0];
-    s.tmp_0.arg1 = s.buf___16766;
+    s.tmp_0.arg1 = s.buf___16763;
     s.callLocIdx = 1632; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     s.tmp_0 = jacs_SectionWriter_append__P3907_mk(s);
     s.tmp_0.arg0 = s.caps[1];
-    s.tmp_0.arg1 = s.desc___16788;
+    s.tmp_0.arg1 = s.desc___16785;
     s.callLocIdx = 1633; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
-    r0 = s.desc___16788;
+    r0 = s.desc___16785;
     return leave(s, r0)
   default: oops()
 } } }
-descs_inline__P16760.info = {"start":9001,"length":638,"line":277,"column":50,"endLine":293,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["str","idx"]}
+descs_inline__P16757.info = {"start":9001,"length":638,"line":277,"column":50,"endLine":293,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["str","idx"]}
 
-function descs_inline__P16760_mk(s) {
+function descs_inline__P16757_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: descs_inline__P16760, depth: s.depth + 1,
+        parent: s, fn: descs_inline__P16757, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  buf___16766: undefined,
-  len___16767: undefined,
-  desc___16788: undefined,
+  buf___16763: undefined,
+  len___16764: undefined,
+  desc___16785: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -39520,7 +39516,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.buf___16938 = undefined;
+    s.buf___16935 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -39531,16 +39527,16 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_OpWriter__C3857_VT)) failedCast(r0);
     r0 = s.arg0.fields["desc"];
-    s.buf___16938 = (r0);
+    s.buf___16935 = (r0);
     s.tmp_0 = jacs_write32__P3818_mk(s);
-    s.tmp_0.arg0 = s.buf___16938;
+    s.tmp_0.arg0 = s.buf___16935;
     s.tmp_0.arg1 = 0;
     s.tmp_0.arg2 = s.arg1;
     s.callLocIdx = 1436; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_0 = jacs_write32__P3818_mk(s);
-    s.tmp_0.arg0 = s.buf___16938;
+    s.tmp_0.arg0 = s.buf___16935;
     s.tmp_0.arg1 = 4;
     r0 = s.arg0.fields["binPtr"];
     s.tmp_0.arg2 = r0;
@@ -39556,7 +39552,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_3 = jacs_write16__P3820_mk(s);
-    s.tmp_3.arg0 = s.buf___16938;
+    s.tmp_3.arg0 = s.buf___16935;
     s.tmp_3.arg1 = 8;
     s.tmp_4 = r0 = s.arg2;
     r0 = s.arg0.fields["cachedValues"];
@@ -39568,12 +39564,12 @@ switch (step) {
     s.callLocIdx = 1439; s.pc = 5; return s.tmp_3;
   case 5:
     r0 = s.retval;
-    r0 = pxsim.BufferMethods.setByte(s.buf___16938, 10, s.arg3);
-    r0 = pxsim.BufferMethods.setByte(s.buf___16938, 11, 0);
+    r0 = pxsim.BufferMethods.setByte(s.buf___16935, 10, s.arg3);
+    r0 = pxsim.BufferMethods.setByte(s.buf___16935, 11, 0);
   case 1:
   case 2:
     s.tmp_0 = jacs_write16__P3820_mk(s);
-    s.tmp_0.arg0 = s.buf___16938;
+    s.tmp_0.arg0 = s.buf___16935;
     s.tmp_0.arg1 = 12;
     r0 = s.arg0.fields["nameIdx"];
     s.tmp_0.arg2 = r0;
@@ -39598,7 +39594,7 @@ function jacs_OpWriter_finalizeDesc__P3871_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  buf___16938: undefined,
+  buf___16935: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -39939,7 +39935,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.r___17063 = undefined;
+    s.r___17060 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -39947,9 +39943,9 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_Role__C6522_VT)) failedCast(r0);
     r0 = pxsim.control.createBuffer(8);
-    s.r___17063 = (r0);
+    s.r___17060 = (r0);
     s.tmp_0 = jacs_write32__P3818_mk(s);
-    s.tmp_0.arg0 = s.r___17063;
+    s.tmp_0.arg0 = s.r___17060;
     s.tmp_0.arg1 = 0;
     r0 = s.arg0.fields["classIdentifier"];
     s.tmp_0.arg2 = r0;
@@ -39957,14 +39953,14 @@ switch (step) {
   case 1:
     r0 = s.retval;
     s.tmp_0 = jacs_write16__P3820_mk(s);
-    s.tmp_0.arg0 = s.r___17063;
+    s.tmp_0.arg0 = s.r___17060;
     s.tmp_0.arg1 = 4;
     r0 = s.arg0.fields["stringIndex"];
     s.tmp_0.arg2 = r0;
     s.callLocIdx = 1584; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
-    r0 = s.r___17063;
+    r0 = s.r___17060;
     return leave(s, r0)
   default: oops()
 } } }
@@ -39976,7 +39972,7 @@ function jacs_Role_serialize__P6523_mk(s) {
         parent: s, fn: jacs_Role_serialize__P6523, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  r___17063: undefined,
+  r___17060: undefined,
   arg0: undefined,
 } }
 
@@ -40055,7 +40051,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.copy___17117 = undefined;
+    s.copy___17114 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -40108,11 +40104,11 @@ switch (step) {
     r0 = (s.tmp_5 * 2);
     s.tmp_4 = r0;
     r0 = pxsim.control.createBuffer(s.tmp_4);
-    s.copy___17117 = (r0);
+    s.copy___17114 = (r0);
     r0 = s.arg0.fields["binary"];
     s.tmp_0 = r0;
-    r0 = pxsim.BufferMethods.write(s.copy___17117, 0, s.tmp_0);
-    r0 = (s.arg0).fields["binary"] = (s.copy___17117);
+    r0 = pxsim.BufferMethods.write(s.copy___17114, 0, s.tmp_0);
+    r0 = (s.arg0).fields["binary"] = (s.copy___17114);
   case 5:
   case 6:
     s.tmp_0 = r0 = s.arg0;
@@ -40142,7 +40138,7 @@ function jacs_OpWriter_writeByte__P6512_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  copy___17117: undefined,
+  copy___17114: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -40367,7 +40363,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.buf___17197 = undefined;
+    s.buf___17194 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -40380,17 +40376,17 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim.control.createBuffer(s.tmp_0);
-    s.buf___17197 = (r0);
+    s.buf___17194 = (r0);
     s.tmp_0 = Buffer___packUnpackCore__P214_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
-    s.tmp_0.arg2 = s.buf___17197;
+    s.tmp_0.arg2 = s.buf___17194;
     s.tmp_0.arg3 = true;
     s.tmp_0.arg4 = 0;
     s.callLocIdx = 42; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
-    r0 = s.buf___17197;
+    r0 = s.buf___17194;
     return leave(s, r0)
   default: oops()
 } } }
@@ -40403,7 +40399,7 @@ function Buffer_pack__P213_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  buf___17197: undefined,
+  buf___17194: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -40422,12 +40418,12 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.isBig___17212 = undefined;
-    s.idx___17213 = undefined;
-    s.i___17214 = undefined;
-    s.i0___17225 = undefined;
-    s.reps___17233 = undefined;
-    s.fmt___17255 = undefined;
+    s.isBig___17209 = undefined;
+    s.idx___17210 = undefined;
+    s.i___17211 = undefined;
+    s.i0___17222 = undefined;
+    s.reps___17230 = undefined;
+    s.fmt___17252 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -40436,18 +40432,18 @@ switch (step) {
       s.arg4 = (s.lambdaArgs[4]);
       s.lambdaArgs = null;
     }
-    s.isBig___17212 = (false);
-    s.idx___17213 = (0);
-    s.i___17214 = (0);
+    s.isBig___17209 = (false);
+    s.idx___17210 = (0);
+    s.i___17211 = (0);
   case 1:
-    s.tmp_1 = r0 = s.i___17214;
+    s.tmp_1 = r0 = s.i___17211;
     r0 = pxsim_String_.length(s.arg0);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 23; continue; }
-    r0 = pxsim_String_.charAt(s.arg0, s.i___17214);
+    r0 = pxsim_String_.charAt(s.arg0, s.i___17211);
     s.tmp_3 = r0;
     r0 = pxsim_pxtcore.switch_eq(" ", s.tmp_3);
     if (r0) { step = 2; continue; }
@@ -40464,17 +40460,17 @@ switch (step) {
   case 2:
   case 3:
   case 4:
-    s.isBig___17212 = (false);
+    s.isBig___17209 = (false);
     { step = 22; continue; }
   case 5:
   case 6:
-    s.isBig___17212 = (true);
+    s.isBig___17209 = (true);
     { step = 22; continue; }
   case 7:
-    s.i0___17225 = (s.i___17214);
+    s.i0___17222 = (s.i___17211);
   case 8:
     s.tmp_1 = Buffer_isDigit__P4111_mk(s);
-    r0 = pxsim_String_.charAt(s.arg0, s.i___17214);
+    r0 = pxsim_String_.charAt(s.arg0, s.i___17211);
     s.tmp_1.arg0 = r0;
     s.callLocIdx = 43; s.pc = 24; return s.tmp_1;
   case 24:
@@ -40482,20 +40478,20 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
-    r0 = (s.i___17214 + 1);
-    s.i___17214 = (r0);
+    r0 = (s.i___17211 + 1);
+    s.i___17211 = (r0);
     { step = 8; continue; }
   case 9:
-    s.reps___17233 = (1);
-    r0 = (s.i0___17225 != s.i___17214);
+    s.reps___17230 = (1);
+    r0 = (s.i0___17222 != s.i___17211);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 10; continue; }
     s.tmp_1 = parseInt__P97_mk(s);
     s.tmp_2 = helpers_stringSlice__P119_mk(s);
     s.tmp_2.arg0 = s.arg0;
-    s.tmp_2.arg1 = s.i0___17225;
-    s.tmp_2.arg2 = s.i___17214;
+    s.tmp_2.arg1 = s.i0___17222;
+    s.tmp_2.arg2 = s.i___17211;
     s.callLocIdx = 44; s.pc = 26; return s.tmp_2;
   case 26:
     r0 = s.retval;
@@ -40504,39 +40500,39 @@ switch (step) {
     s.callLocIdx = 45; s.pc = 25; return s.tmp_1;
   case 25:
     r0 = s.retval;
-    s.reps___17233 = (r0);
+    s.reps___17230 = (r0);
   case 10:
   case 11:
-    r0 = pxsim_String_.charAt(s.arg0, s.i___17214);
+    r0 = pxsim_String_.charAt(s.arg0, s.i___17211);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == "x");
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 12; continue; }
-    r0 = (s.arg4 + s.reps___17233);
+    r0 = (s.arg4 + s.reps___17230);
     s.arg4 = (r0);
     { step = 21; continue; }
   case 12:
   case 13:
-    s.tmp_0 = r0 = s.reps___17233;
+    s.tmp_0 = r0 = s.reps___17230;
     r0 = (s.tmp_0 - 1);
-    s.reps___17233 = (r0);
+    s.reps___17230 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 20; continue; }
     s.tmp_1 = Buffer_getFormat__P4110_mk(s);
-    r0 = pxsim_String_.charAt(s.arg0, s.i___17214);
+    r0 = pxsim_String_.charAt(s.arg0, s.i___17211);
     s.tmp_1.arg0 = r0;
-    s.tmp_1.arg1 = s.isBig___17212;
+    s.tmp_1.arg1 = s.isBig___17209;
     s.callLocIdx = 46; s.pc = 27; return s.tmp_1;
   case 27:
     r0 = s.retval;
-    s.fmt___17255 = (r0);
-    r0 = (s.fmt___17255 === null);
+    s.fmt___17252 = (r0);
+    r0 = (s.fmt___17252 === null);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 14; continue; }
     s.tmp_1 = control_fail__P333_mk(s);
-    r0 = pxsim_String_.charAt(s.arg0, s.i___17214);
+    r0 = pxsim_String_.charAt(s.arg0, s.i___17211);
     s.tmp_3 = r0;
     if ((s.tmp_3) && (s.tmp_3).vtable) {
     setupResume(s, 29);
@@ -40558,11 +40554,11 @@ switch (step) {
     if (!r0) { step = 17; continue; }
     r0 = pxsim_numops_toBoolDecr(s.arg3);
     if (!r0) { step = 15; continue; }
-    s.tmp_0 = r0 = s.idx___17213;
+    s.tmp_0 = r0 = s.idx___17210;
     r0 = (s.tmp_0 + 1);
-    s.idx___17213 = (r0);
+    s.idx___17210 = (r0);
     s.tmp_1 = r0 = s.arg2;
-    s.tmp_2 = r0 = s.fmt___17255;
+    s.tmp_2 = r0 = s.fmt___17252;
     s.tmp_3 = r0 = s.arg4;
     r0 = pxsim_Array__getAt(s.arg1, s.tmp_0);
     s.tmp_4 = r0;
@@ -40570,7 +40566,7 @@ switch (step) {
     { step = 16; continue; }
   case 15:
     s.tmp_0 = r0 = s.arg1;
-    r0 = pxsim.BufferMethods.getNumber(s.arg2, s.fmt___17255, s.arg4);
+    r0 = pxsim.BufferMethods.getNumber(s.arg2, s.fmt___17252, s.arg4);
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
   case 16:
@@ -40578,7 +40574,7 @@ switch (step) {
   case 18:
     s.tmp_0 = r0 = s.arg4;
     s.tmp_2 = Buffer_sizeOfNumberFormat__P215_mk(s);
-    s.tmp_2.arg0 = s.fmt___17255;
+    s.tmp_2.arg0 = s.fmt___17252;
     s.callLocIdx = 48; s.pc = 30; return s.tmp_2;
   case 30:
     r0 = s.retval;
@@ -40590,8 +40586,8 @@ switch (step) {
   case 20:
   case 21:
   case 22:
-    r0 = (s.i___17214 + 1);
-    s.i___17214 = (r0);
+    r0 = (s.i___17211 + 1);
+    s.i___17211 = (r0);
     { step = 1; continue; }
   case 23:
     r0 = s.arg4;
@@ -40610,12 +40606,12 @@ function Buffer___packUnpackCore__P214_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  isBig___17212: undefined,
-  idx___17213: undefined,
-  i___17214: undefined,
-  i0___17225: undefined,
-  reps___17233: undefined,
-  fmt___17255: undefined,
+  isBig___17209: undefined,
+  idx___17210: undefined,
+  i___17211: undefined,
+  i0___17222: undefined,
+  reps___17230: undefined,
+  fmt___17252: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -40785,13 +40781,13 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.start___17340 = undefined;
-    s.sign___17370 = undefined;
-    s.output___17415 = undefined;
-    s.hasDigit___17416 = undefined;
-    s.i___17417 = undefined;
-    s.code___17424 = undefined;
-    s.val___17431 = undefined;
+    s.start___17337 = undefined;
+    s.sign___17367 = undefined;
+    s.output___17412 = undefined;
+    s.hasDigit___17413 = undefined;
+    s.i___17414 = undefined;
+    s.code___17421 = undefined;
+    s.val___17428 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -40838,9 +40834,9 @@ switch (step) {
     { step = 46; continue; }
   case 7:
   case 8:
-    s.start___17340 = (0);
+    s.start___17337 = (0);
   case 9:
-    s.tmp_1 = r0 = s.start___17340;
+    s.tmp_1 = r0 = s.start___17337;
     r0 = pxsim_String_.length(s.arg0);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
@@ -40851,7 +40847,7 @@ switch (step) {
     { step = 11; continue; }
   case 10:
     s.tmp_3 = helpers_isWhitespace__P124_mk(s);
-    r0 = pxsim_String_.charCodeAt(s.arg0, s.start___17340);
+    r0 = pxsim_String_.charCodeAt(s.arg0, s.start___17337);
     s.tmp_3.arg0 = r0;
     s.callLocIdx = 0; s.pc = 47; return s.tmp_3;
   case 47:
@@ -40861,11 +40857,11 @@ switch (step) {
     s.tmp_4 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 12; continue; }
-    r0 = (s.start___17340 + 1);
-    s.start___17340 = (r0);
+    r0 = (s.start___17337 + 1);
+    s.start___17337 = (r0);
     { step = 9; continue; }
   case 12:
-    s.tmp_1 = r0 = s.start___17340;
+    s.tmp_1 = r0 = s.start___17337;
     r0 = pxsim_String_.length(s.arg0);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 === s.tmp_2);
@@ -40876,8 +40872,8 @@ switch (step) {
     { step = 46; continue; }
   case 13:
   case 14:
-    s.sign___17370 = (1);
-    r0 = pxsim_String_.charAt(s.arg0, s.start___17340);
+    s.sign___17367 = (1);
+    r0 = pxsim_String_.charAt(s.arg0, s.start___17337);
     s.tmp_0 = r0;
     r0 = pxsim_pxtcore.switch_eq("-", s.tmp_0);
     if (r0) { step = 15; continue; }
@@ -40886,10 +40882,10 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 17; continue; }
   case 15:
-    s.sign___17370 = (-1);
+    s.sign___17367 = (-1);
   case 16:
-    r0 = (s.start___17340 + 1);
-    s.start___17340 = (r0);
+    r0 = (s.start___17337 + 1);
+    s.start___17337 = (r0);
   case 17:
     r0 = pxsim_numops_toBoolDecr(s.arg1);
     s.tmp_1 = r0;
@@ -40909,7 +40905,7 @@ switch (step) {
     r0 = s.tmp_2;
     { step = 21; continue; }
   case 20:
-    r0 = pxsim_String_.charAt(s.arg0, s.start___17340);
+    r0 = pxsim_String_.charAt(s.arg0, s.start___17337);
     s.tmp_3 = r0;
     r0 = ("0" === s.tmp_3);
   case 21:
@@ -40921,7 +40917,7 @@ switch (step) {
     { step = 25; continue; }
   case 22:
     s.tmp_7 = r0 = s.arg0;
-    r0 = (s.start___17340 + 1);
+    r0 = (s.start___17337 + 1);
     s.tmp_8 = r0;
     r0 = pxsim_String_.charAt(s.tmp_7, s.tmp_8);
     s.tmp_6 = r0;
@@ -40933,7 +40929,7 @@ switch (step) {
     { step = 24; continue; }
   case 23:
     s.tmp_10 = r0 = s.arg0;
-    r0 = (s.start___17340 + 1);
+    r0 = (s.start___17337 + 1);
     s.tmp_11 = r0;
     r0 = pxsim_String_.charAt(s.tmp_10, s.tmp_11);
     s.tmp_9 = r0;
@@ -40948,8 +40944,8 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_13);
     if (!r0) { step = 26; continue; }
     s.arg1 = (16);
-    r0 = (s.start___17340 + 2);
-    s.start___17340 = (r0);
+    r0 = (s.start___17337 + 2);
+    s.start___17337 = (r0);
     { step = 29; continue; }
   case 26:
     r0 = pxsim_numops_toBoolDecr(s.arg1);
@@ -40962,73 +40958,73 @@ switch (step) {
   case 27:
   case 28:
   case 29:
-    s.output___17415 = (0);
-    s.hasDigit___17416 = (false);
-    s.i___17417 = (s.start___17340);
+    s.output___17412 = (0);
+    s.hasDigit___17413 = (false);
+    s.i___17414 = (s.start___17337);
   case 30:
-    s.tmp_1 = r0 = s.i___17417;
+    s.tmp_1 = r0 = s.i___17414;
     r0 = pxsim_String_.length(s.arg0);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 45; continue; }
-    r0 = pxsim_String_.charCodeAt(s.arg0, s.i___17417);
+    r0 = pxsim_String_.charCodeAt(s.arg0, s.i___17414);
     s.tmp_3 = r0;
     r0 = (s.tmp_3 | 32);
-    s.code___17424 = (r0);
-    s.val___17431 = (undefined);
-    r0 = (s.code___17424 >= 48);
+    s.code___17421 = (r0);
+    s.val___17428 = (undefined);
+    r0 = (s.code___17421 >= 48);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 31; continue; }
     r0 = s.tmp_0;
     { step = 32; continue; }
   case 31:
-    r0 = (s.code___17424 < 58);
+    r0 = (s.code___17421 < 58);
   case 32:
     // jmp value (already in r0)
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 33; continue; }
-    r0 = (s.code___17424 - 48);
-    s.val___17431 = (r0);
+    r0 = (s.code___17421 - 48);
+    s.val___17428 = (r0);
     { step = 38; continue; }
   case 33:
-    r0 = (s.code___17424 >= 97);
+    r0 = (s.code___17421 >= 97);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 34; continue; }
     r0 = s.tmp_0;
     { step = 35; continue; }
   case 34:
-    r0 = (s.code___17424 < 123);
+    r0 = (s.code___17421 < 123);
   case 35:
     // jmp value (already in r0)
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 36; continue; }
-    r0 = (10 + s.code___17424);
+    r0 = (10 + s.code___17421);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 - 97);
-    s.val___17431 = (r0);
+    s.val___17428 = (r0);
   case 36:
   case 37:
   case 38:
-    r0 = (s.val___17431 == undefined);
+    r0 = (s.val___17428 == undefined);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (!r0) { step = 39; continue; }
     r0 = s.tmp_0;
     { step = 40; continue; }
   case 39:
-    r0 = (s.val___17431 >= s.arg1);
+    r0 = (s.val___17428 >= s.arg1);
   case 40:
     // jmp value (already in r0)
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 43; continue; }
-    r0 = pxsim_numops_toBoolDecr(s.hasDigit___17416);
+    r0 = pxsim_numops_toBoolDecr(s.hasDigit___17413);
     s.tmp_3 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_3);
     s.tmp_2 = r0;
@@ -41041,16 +41037,16 @@ switch (step) {
     { step = 45; continue; }
   case 43:
   case 44:
-    s.hasDigit___17416 = (true);
-    r0 = (s.output___17415 * s.arg1);
+    s.hasDigit___17413 = (true);
+    r0 = (s.output___17412 * s.arg1);
     s.tmp_0 = r0;
-    r0 = (s.tmp_0 + s.val___17431);
-    s.output___17415 = (r0);
-    r0 = (s.i___17417 + 1);
-    s.i___17417 = (r0);
+    r0 = (s.tmp_0 + s.val___17428);
+    s.output___17412 = (r0);
+    r0 = (s.i___17414 + 1);
+    s.i___17414 = (r0);
     { step = 30; continue; }
   case 45:
-    r0 = (s.sign___17370 * s.output___17415);
+    r0 = (s.sign___17367 * s.output___17412);
   case 46:
     return leave(s, r0)
   default: oops()
@@ -41076,13 +41072,13 @@ function parseInt__P97_mk(s) {
   tmp_11: undefined,
   tmp_12: undefined,
   tmp_13: undefined,
-  start___17340: undefined,
-  sign___17370: undefined,
-  output___17415: undefined,
-  hasDigit___17416: undefined,
-  i___17417: undefined,
-  code___17424: undefined,
-  val___17431: undefined,
+  start___17337: undefined,
+  sign___17367: undefined,
+  output___17412: undefined,
+  hasDigit___17413: undefined,
+  i___17414: undefined,
+  code___17421: undefined,
+  val___17428: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -41173,21 +41169,21 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.code___17488 = undefined;
+    s.code___17485 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = pxsim_String_.charCodeAt(s.arg0, 0);
-    s.code___17488 = (r0);
-    r0 = (48 <= s.code___17488);
+    s.code___17485 = (r0);
+    r0 = (48 <= s.code___17485);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 1; continue; }
     r0 = s.tmp_0;
     { step = 2; continue; }
   case 1:
-    r0 = (s.code___17488 <= 57);
+    r0 = (s.code___17485 <= 57);
   case 2:
     // jmp value (already in r0)
     s.tmp_1 = r0;
@@ -41204,7 +41200,7 @@ function Buffer_isDigit__P4111_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  code___17488: undefined,
+  code___17485: undefined,
   arg0: undefined,
 } }
 
@@ -41364,17 +41360,17 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.p___17525 = undefined;
+    s.p___17522 = undefined;
     s.unnamed162___U1 = undefined;
     s.unnamed163___U2 = undefined;
-    s.idx___17531 = undefined;
+    s.idx___17528 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
-    s.p___17525 = (undefined);
+    s.p___17522 = (undefined);
     r0 = s.arg0.fields["procs"];
     s.unnamed162___U1 = (r0);
     s.unnamed163___U2 = (0);
@@ -41385,10 +41381,10 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
     r0 = pxsim_Array__getAt(s.unnamed162___U1, s.unnamed163___U2);
-    s.p___17525 = (r0);
+    s.p___17522 = (r0);
     s.tmp_2 = console_log__P380_mk(s);
     s.tmp_3 = jacs_Procedure_toString__P3929_mk(s);
-    s.tmp_3.arg0 = s.p___17525;
+    s.tmp_3.arg0 = s.p___17522;
     s.callLocIdx = 1643; s.pc = 6; return s.tmp_3;
   case 6:
     r0 = s.retval;
@@ -41401,9 +41397,9 @@ switch (step) {
     { step = 1; continue; }
   case 2:
     s.unnamed162___U1 = (undefined);
-    s.idx___17531 = (0);
+    s.idx___17528 = (0);
   case 3:
-    s.tmp_1 = r0 = s.idx___17531;
+    s.tmp_1 = r0 = s.idx___17528;
     r0 = s.arg0.fields["stringLiterals"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__length(s.tmp_3);
@@ -41413,12 +41409,12 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
     s.tmp_4 = console_log__P380_mk(s);
-    if ((s.idx___17531) && (s.idx___17531).vtable) {
+    if ((s.idx___17528) && (s.idx___17528).vtable) {
     setupResume(s, 8);
-    pxsim_String__stringConv(s.idx___17531);
+    pxsim_String__stringConv(s.idx___17528);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.idx___17531) + ""; }
+    } else { s.retval = (s.idx___17528) + ""; }
   case 8:
     r0 = s.retval;
     s.tmp_7 = r0;
@@ -41435,7 +41431,7 @@ switch (step) {
     s.tmp_5 = r0;
     s.tmp_10 = jacs_TopWriter_describeString__P3954_mk(s);
     s.tmp_10.arg0 = s.arg0;
-    s.tmp_10.arg1 = s.idx___17531;
+    s.tmp_10.arg1 = s.idx___17528;
     s.callLocIdx = 1645; s.pc = 10; return s.tmp_10;
   case 10:
     r0 = s.retval;
@@ -41454,8 +41450,8 @@ switch (step) {
     s.callLocIdx = 1646; s.pc = 7; return s.tmp_4;
   case 7:
     r0 = s.retval;
-    r0 = (s.idx___17531 + 1);
-    s.idx___17531 = (r0);
+    r0 = (s.idx___17528 + 1);
+    s.idx___17528 = (r0);
     { step = 3; continue; }
   case 4:
     r0 = undefined;
@@ -41480,10 +41476,10 @@ function jacs_TopWriter_printAssembly__P3953_mk(s) {
   tmp_8: undefined,
   tmp_9: undefined,
   tmp_10: undefined,
-  p___17525: undefined,
+  p___17522: undefined,
   unnamed162___U1: undefined,
   unnamed163___U2: undefined,
-  idx___17531: undefined,
+  idx___17528: undefined,
   arg0: undefined,
 } }
 
@@ -41501,7 +41497,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.s___17555 = undefined;
+    s.s___17552 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -41512,8 +41508,8 @@ switch (step) {
     r0 = s.arg0.fields["stringLiterals"];
     s.tmp_0 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, s.arg1);
-    s.s___17555 = (r0);
-    r0 = (s.s___17555 == null);
+    s.s___17552 = (r0);
+    r0 = (s.s___17552 == null);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
@@ -41521,14 +41517,14 @@ switch (step) {
     { step = 5; continue; }
   case 1:
   case 2:
-    r0 = pxsim_pxtcore.typeOf(s.s___17555);
+    r0 = pxsim_pxtcore.typeOf(s.s___17552);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 == "string");
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 3; continue; }
     s.tmp_3 = JSON_stringify__P387_mk(s);
-    s.tmp_3.arg0 = s.s___17555;
+    s.tmp_3.arg0 = s.s___17552;
     s.tmp_3.arg1 = null;
     s.tmp_3.arg2 = 0;
     s.callLocIdx = 1666; s.pc = 6; return s.tmp_3;
@@ -41537,7 +41533,7 @@ switch (step) {
     { step = 5; continue; }
     { step = 4; continue; }
   case 3:
-    r0 = pxsim.BufferMethods.toHex(s.s___17555);
+    r0 = pxsim.BufferMethods.toHex(s.s___17552);
     { step = 5; continue; }
   case 4:
     r0 = undefined;
@@ -41556,7 +41552,7 @@ function jacs_TopWriter_describeString__P3954_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  s___17555: undefined,
+  s___17552: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -41615,11 +41611,11 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.res___17576 = undefined;
-    s.ptr___17592 = undefined;
-    s.commentPtr___17593 = undefined;
-    s.getbyte___17594 = undefined;
-    s.c___17617 = undefined;
+    s.res___17573 = undefined;
+    s.ptr___17589 = undefined;
+    s.commentPtr___17590 = undefined;
+    s.getbyte___17591 = undefined;
+    s.c___17614 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -41655,18 +41651,18 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_1, s.tmp_5);
     s.tmp_0 = r0;
     r0 = pxsim_String__concat(s.tmp_0, ":\n");
-    s.res___17576 = (r0);
+    s.res___17573 = (r0);
     r0 = pxsim_pxtrt.mklocRef();
-    s.ptr___17592 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.ptr___17592, 0);
-    s.commentPtr___17593 = (0);
-    r0 = pxsim_pxtcore_mkAction(2, getbyte_inline__P17595);
+    s.ptr___17589 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.ptr___17589, 0);
+    s.commentPtr___17590 = (0);
+    r0 = pxsim_pxtcore_mkAction(2, getbyte_inline__P17592);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.ptr___17592);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.ptr___17589);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg0);
-    s.getbyte___17594 = (s.tmp_0);
+    s.getbyte___17591 = (s.tmp_0);
   case 1:
-    r0 = pxsim_pxtrt_ldlocRef(s.ptr___17592);
+    r0 = pxsim_pxtrt_ldlocRef(s.ptr___17589);
     s.tmp_1 = r0;
     r0 = s.arg0.fields["binPtr"];
     s.tmp_2 = r0;
@@ -41675,7 +41671,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
   case 2:
-    s.tmp_4 = r0 = s.commentPtr___17593;
+    s.tmp_4 = r0 = s.commentPtr___17590;
     r0 = s.arg0.fields["comments"];
     s.tmp_6 = r0;
     r0 = pxsim_Array__length(s.tmp_6);
@@ -41686,11 +41682,11 @@ switch (step) {
     if (!r0) { step = 5; continue; }
     r0 = s.arg0.fields["comments"];
     s.tmp_7 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_7, s.commentPtr___17593);
-    s.c___17617 = (r0);
-    r0 = s.c___17617.fields["offset"];
+    r0 = pxsim_Array__getAt(s.tmp_7, s.commentPtr___17590);
+    s.c___17614 = (r0);
+    r0 = s.c___17614.fields["offset"];
     s.tmp_1 = r0;
-    r0 = pxsim_pxtrt_ldlocRef(s.ptr___17592);
+    r0 = pxsim_pxtrt_ldlocRef(s.ptr___17589);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 > s.tmp_2);
     s.tmp_0 = r0;
@@ -41699,19 +41695,19 @@ switch (step) {
     { step = 5; continue; }
   case 3:
   case 4:
-    r0 = (s.commentPtr___17593 + 1);
-    s.commentPtr___17593 = (r0);
-    if ((s.res___17576) && (s.res___17576).vtable) {
+    r0 = (s.commentPtr___17590 + 1);
+    s.commentPtr___17590 = (r0);
+    if ((s.res___17573) && (s.res___17573).vtable) {
     setupResume(s, 11);
-    pxsim_String__stringConv(s.res___17576);
+    pxsim_String__stringConv(s.res___17573);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.res___17576) + ""; }
+    } else { s.retval = (s.res___17573) + ""; }
   case 11:
     r0 = s.retval;
     s.tmp_0 = r0;
     s.tmp_7 = helpers_stringReplaceAll__P117_mk(s);
-    r0 = s.c___17617.fields["comment"];
+    r0 = s.c___17614.fields["comment"];
     s.tmp_7.arg0 = r0;
     s.tmp_7.arg1 = "\n";
     s.tmp_7.arg2 = "\n; ";
@@ -41751,13 +41747,13 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_String__concat(s.tmp_0, s.tmp_1);
-    s.res___17576 = (r0);
+    s.res___17573 = (r0);
     { step = 2; continue; }
   case 5:
     s.tmp_0 = if_resolverPC_2_mk(s);
     r0 = s.arg0.fields["prog"];
     s.tmp_0.arg0 = r0;
-    r0 = pxsim_pxtrt_ldlocRef(s.ptr___17592);
+    r0 = pxsim_pxtrt_ldlocRef(s.ptr___17589);
     s.tmp_0.arg1 = r0;
     if (!s.tmp_0.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapSetByString(s.tmp_0.arg0, "resolverPC", s.tmp_0.arg1);
@@ -41769,17 +41765,17 @@ switch (step) {
     }
   case 16:
     r0 = s.retval;
-    if ((s.res___17576) && (s.res___17576).vtable) {
+    if ((s.res___17573) && (s.res___17573).vtable) {
     setupResume(s, 17);
-    pxsim_String__stringConv(s.res___17576);
+    pxsim_String__stringConv(s.res___17573);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.res___17576) + ""; }
+    } else { s.retval = (s.res___17573) + ""; }
   case 17:
     r0 = s.retval;
     s.tmp_0 = r0;
     s.tmp_5 = jacs_stringifyInstr__P3815_mk(s);
-    s.tmp_5.arg0 = s.getbyte___17594;
+    s.tmp_5.arg0 = s.getbyte___17591;
     r0 = s.arg0.fields["prog"];
     s.tmp_5.arg1 = r0;
     s.callLocIdx = 1463; s.pc = 18; return s.tmp_5;
@@ -41807,10 +41803,10 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_String__concat(s.tmp_0, s.tmp_1);
-    s.res___17576 = (r0);
+    s.res___17573 = (r0);
     { step = 1; continue; }
   case 6:
-    r0 = pxsim_pxtrt_ldlocRef(s.ptr___17592);
+    r0 = pxsim_pxtrt_ldlocRef(s.ptr___17589);
     s.tmp_1 = r0;
     r0 = s.arg0.fields["binPtr"];
     s.tmp_2 = r0;
@@ -41818,20 +41814,20 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
-    if ((s.res___17576) && (s.res___17576).vtable) {
+    if ((s.res___17573) && (s.res___17573).vtable) {
     setupResume(s, 21);
-    pxsim_String__stringConv(s.res___17576);
+    pxsim_String__stringConv(s.res___17573);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.res___17576) + ""; }
+    } else { s.retval = (s.res___17573) + ""; }
   case 21:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = pxsim_String__concat(s.tmp_3, "!!! binary mis-alignment\n");
-    s.res___17576 = (r0);
+    s.res___17573 = (r0);
   case 7:
   case 8:
-    r0 = s.res___17576;
+    r0 = s.res___17573;
     return leave(s, r0)
   default: oops()
 } } }
@@ -41850,11 +41846,11 @@ function jacs_OpWriter_getAssembly__P3885_mk(s) {
   tmp_5: undefined,
   tmp_6: undefined,
   tmp_7: undefined,
-  res___17576: undefined,
-  ptr___17592: undefined,
-  commentPtr___17593: undefined,
-  getbyte___17594: undefined,
-  c___17617: undefined,
+  res___17573: undefined,
+  ptr___17589: undefined,
+  commentPtr___17590: undefined,
+  getbyte___17591: undefined,
+  c___17614: undefined,
   arg0: undefined,
 } }
 
@@ -41862,7 +41858,7 @@ function jacs_OpWriter_getAssembly__P3885_mk(s) {
 
 
 
-function getbyte_inline__P17595(s) {
+function getbyte_inline__P17592(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -41897,12 +41893,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-getbyte_inline__P17595.info = {"start":9540,"length":111,"line":330,"column":28,"endLine":333,"endColumn":13,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":[]}
+getbyte_inline__P17592.info = {"start":9540,"length":111,"line":330,"column":28,"endLine":333,"endColumn":13,"fileName":"jacs_opwriter.ts","functionName":"inline","argumentNames":[]}
 
-function getbyte_inline__P17595_mk(s) {
+function getbyte_inline__P17592_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: getbyte_inline__P17595, depth: s.depth + 1,
+        parent: s, fn: getbyte_inline__P17592, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -41927,52 +41923,52 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.off___17679 = undefined;
-    s.getbyte___17682 = undefined;
-    s.decodeInt___17687 = undefined;
-    s.stack___17732 = undefined;
-    s.op___17735 = undefined;
-    s.e___17743 = undefined;
-    s.n___17763 = undefined;
-    s.res___17802 = undefined;
-    s.pc___17811 = undefined;
+    s.off___17676 = undefined;
+    s.getbyte___17679 = undefined;
+    s.decodeInt___17684 = undefined;
+    s.stack___17729 = undefined;
+    s.op___17732 = undefined;
+    s.e___17740 = undefined;
+    s.n___17760 = undefined;
+    s.res___17799 = undefined;
+    s.pc___17808 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = pxsim_pxtrt.mklocRef();
-    s.off___17679 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.off___17679, 0);
+    s.off___17676 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.off___17676, 0);
     globals.jmpoff___6482 = (NaN);
-    r0 = pxsim_pxtcore_mkAction(2, getbyte_inline__P17683);
+    r0 = pxsim_pxtcore_mkAction(2, getbyte_inline__P17680);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.off___17679);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.off___17676);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg0);
-    s.getbyte___17682 = (s.tmp_0);
-    r0 = pxsim_pxtcore_mkAction(1, decodeInt_inline__P17688);
+    s.getbyte___17679 = (s.tmp_0);
+    r0 = pxsim_pxtcore_mkAction(1, decodeInt_inline__P17685);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.getbyte___17682);
-    s.decodeInt___17687 = (s.tmp_0);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.getbyte___17679);
+    s.decodeInt___17684 = (s.tmp_0);
     globals.resolver___6481 = (s.arg1);
     r0 = pxsim_Array__mk();
-    s.stack___17732 = (r0);
+    s.stack___17729 = (r0);
   case 1:
     s.tmp_0 = lambda_1_mk(s);
-    s.tmp_0.argL = s.getbyte___17682;
+    s.tmp_0.argL = s.getbyte___17679;
     setupLambda(s.tmp_0, s.tmp_0.argL);
     s.callLocIdx = 1395; s.pc = 28; return s.tmp_0;
   case 28:
     r0 = s.retval;
-    s.op___17735 = (r0);
-    r0 = (s.op___17735 == 0);
+    s.op___17732 = (r0);
+    r0 = (s.op___17732 == 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 2; continue; }
     r0 = s.tmp_0;
     { step = 3; continue; }
   case 2:
-    r0 = pxsim_pxtrt_ldlocRef(s.off___17679);
+    r0 = pxsim_pxtrt_ldlocRef(s.off___17676);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 1);
   case 3:
@@ -41988,13 +41984,13 @@ switch (step) {
     s.tmp_3 = r0;
     s.tmp_4 = jacs_OpTree_constructor__P6484_mk(s);
     s.tmp_4.arg0 = s.tmp_3;
-    s.tmp_4.arg1 = s.op___17735;
+    s.tmp_4.arg1 = s.op___17732;
     s.callLocIdx = 1396; s.pc = 29; return s.tmp_4;
   case 29:
     r0 = s.retval;
-    s.e___17743 = (s.tmp_3);
+    s.e___17740 = (s.tmp_3);
     s.tmp_1 = jacs_opTakesNumber__P3768_mk(s);
-    s.tmp_1.arg0 = s.op___17735;
+    s.tmp_1.arg0 = s.op___17732;
     s.callLocIdx = 1397; s.pc = 30; return s.tmp_1;
   case 30:
     r0 = s.retval;
@@ -42037,7 +42033,7 @@ switch (step) {
   case 32:
     r0 = s.retval;
     s.tmp_6 = r0;
-    r0 = pxsim_pxtrt_ldlocRef(s.off___17679);
+    r0 = pxsim_pxtrt_ldlocRef(s.off___17676);
     s.tmp_8 = r0;
     r0 = (s.tmp_6 + s.tmp_8);
     s.tmp_5 = r0;
@@ -42045,9 +42041,9 @@ switch (step) {
     globals.jmpoff___6482 = (r0);
   case 8:
   case 9:
-    s.tmp_0 = r0 = s.e___17743;
+    s.tmp_0 = r0 = s.e___17740;
     s.tmp_2 = lambda_1_mk(s);
-    s.tmp_2.argL = s.decodeInt___17687;
+    s.tmp_2.argL = s.decodeInt___17684;
     setupLambda(s.tmp_2, s.tmp_2.argL);
     s.callLocIdx = 1400; s.pc = 33; return s.tmp_2;
   case 33:
@@ -42056,15 +42052,15 @@ switch (step) {
     r0 = (s.tmp_0).fields["arg"] = (s.tmp_1);
   case 10:
   case 11:
-    r0 = pxsim_String_.charCodeAt(globals.OP_PROPS___3715, s.op___17735);
+    r0 = pxsim_String_.charCodeAt(globals.OP_PROPS___3715, s.op___17732);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 & 15);
-    s.n___17763 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.n___17763);
+    s.n___17760 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.n___17760);
     if (!r0) { step = 16; continue; }
-    r0 = pxsim_Array__length(s.stack___17732);
+    r0 = pxsim_Array__length(s.stack___17729);
     s.tmp_1 = r0;
-    r0 = (s.tmp_1 < s.n___17763);
+    r0 = (s.tmp_1 < s.n___17760);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 12; continue; }
@@ -42072,12 +42068,12 @@ switch (step) {
     { step = 27; continue; }
   case 12:
   case 13:
-    s.tmp_2 = r0 = s.e___17743;
+    s.tmp_2 = r0 = s.e___17740;
     s.tmp_4 = helpers_arraySlice__P115_mk(s);
-    s.tmp_4.arg0 = s.stack___17732;
-    r0 = pxsim_Array__length(s.stack___17732);
+    s.tmp_4.arg0 = s.stack___17729;
+    r0 = pxsim_Array__length(s.stack___17729);
     s.tmp_5 = r0;
-    r0 = (s.tmp_5 - s.n___17763);
+    r0 = (s.tmp_5 - s.n___17760);
     s.tmp_4.arg1 = r0;
     s.tmp_4.arg2 = undefined;
     s.callLocIdx = 1402; s.pc = 34; return s.tmp_4;
@@ -42086,19 +42082,19 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = (s.tmp_2).fields["args"] = (s.tmp_3);
   case 14:
-    s.tmp_0 = r0 = s.n___17763;
+    s.tmp_0 = r0 = s.n___17760;
     r0 = (s.tmp_0 - 1);
-    s.n___17763 = (r0);
+    s.n___17760 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 15; continue; }
-    r0 = pxsim_Array_.pop(s.stack___17732);
+    r0 = pxsim_Array_.pop(s.stack___17729);
     { step = 14; continue; }
   case 15:
   case 16:
   case 17:
-    r0 = pxsim_Array__push(s.stack___17732, s.e___17743);
+    r0 = pxsim_Array__push(s.stack___17729, s.e___17740);
     s.tmp_1 = jacs_opIsStmt__P3772_mk(s);
-    s.tmp_1.arg0 = s.op___17735;
+    s.tmp_1.arg0 = s.op___17732;
     s.callLocIdx = 1403; s.pc = 35; return s.tmp_1;
   case 35:
     r0 = s.retval;
@@ -42110,13 +42106,13 @@ switch (step) {
   case 19:
     { step = 1; continue; }
   case 20:
-    r0 = pxsim_Array__length(s.stack___17732);
+    r0 = pxsim_Array__length(s.stack___17729);
     s.tmp_3 = r0;
     r0 = (s.tmp_3 != 1);
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 21; continue; }
-    r0 = pxsim_Array__length(s.stack___17732);
+    r0 = pxsim_Array__length(s.stack___17729);
     s.tmp_5 = r0;
     if ((s.tmp_5) && (s.tmp_5).vtable) {
     setupResume(s, 36);
@@ -42132,7 +42128,7 @@ switch (step) {
   case 21:
   case 22:
     s.tmp_8 = jacs_stringifyExpr__P6490_mk(s);
-    r0 = pxsim_Array__getAt(s.stack___17732, 0);
+    r0 = pxsim_Array__getAt(s.stack___17729, 0);
     s.tmp_8.arg0 = r0;
     s.callLocIdx = 1404; s.pc = 37; return s.tmp_8;
   case 37:
@@ -42148,7 +42144,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_6 = r0;
     r0 = pxsim_String__concat("    ", s.tmp_6);
-    s.res___17802 = (r0);
+    s.res___17799 = (r0);
     r0 = pxsim_numops_toBoolDecr(globals.resolver___6481);
     if (!r0) { step = 25; continue; }
     s.tmp_0 = if_resolverPC_1_mk(s);
@@ -42163,21 +42159,21 @@ switch (step) {
     }
   case 39:
     r0 = s.retval;
-    s.pc___17811 = (r0);
-    r0 = (s.pc___17811 > 9999);
+    s.pc___17808 = (r0);
+    r0 = (s.pc___17808 > 9999);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 23; continue; }
-    r0 = s.pc___17811;
+    r0 = s.pc___17808;
     { step = 24; continue; }
   case 23:
     s.tmp_1 = helpers_stringSlice__P119_mk(s);
-    if ((s.pc___17811) && (s.pc___17811).vtable) {
+    if ((s.pc___17808) && (s.pc___17808).vtable) {
     setupResume(s, 41);
-    pxsim_String__stringConv(s.pc___17811);
+    pxsim_String__stringConv(s.pc___17808);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.pc___17811) + ""; }
+    } else { s.retval = (s.pc___17808) + ""; }
   case 41:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -42211,21 +42207,21 @@ switch (step) {
   case 43:
     r0 = s.retval;
     s.tmp_4 = r0;
-    if ((s.res___17802) && (s.res___17802).vtable) {
+    if ((s.res___17799) && (s.res___17799).vtable) {
     setupResume(s, 44);
-    pxsim_String__stringConv(s.res___17802);
+    pxsim_String__stringConv(s.res___17799);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.res___17802) + ""; }
+    } else { s.retval = (s.res___17799) + ""; }
   case 44:
     r0 = s.retval;
     s.tmp_7 = r0;
     r0 = pxsim_String__concat(s.tmp_4, s.tmp_7);
-    s.res___17802 = (r0);
+    s.res___17799 = (r0);
     globals.resolver___6481 = (null);
   case 25:
   case 26:
-    r0 = s.res___17802;
+    r0 = s.res___17799;
   case 27:
     return leave(s, r0)
   default: oops()
@@ -42246,15 +42242,15 @@ function jacs_stringifyInstr__P3815_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  off___17679: undefined,
-  getbyte___17682: undefined,
-  decodeInt___17687: undefined,
-  stack___17732: undefined,
-  op___17735: undefined,
-  e___17743: undefined,
-  n___17763: undefined,
-  res___17802: undefined,
-  pc___17811: undefined,
+  off___17676: undefined,
+  getbyte___17679: undefined,
+  decodeInt___17684: undefined,
+  stack___17729: undefined,
+  op___17732: undefined,
+  e___17740: undefined,
+  n___17760: undefined,
+  res___17799: undefined,
+  pc___17808: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -42263,7 +42259,7 @@ function jacs_stringifyInstr__P3815_mk(s) {
 
 
 
-function getbyte_inline__P17683(s) {
+function getbyte_inline__P17680(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -42288,12 +42284,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-getbyte_inline__P17683.info = {"start":453,"length":65,"line":21,"column":24,"endLine":24,"endColumn":9,"fileName":"jacs_stringify.ts","functionName":"inline","argumentNames":[]}
+getbyte_inline__P17680.info = {"start":453,"length":65,"line":21,"column":24,"endLine":24,"endColumn":9,"fileName":"jacs_stringify.ts","functionName":"inline","argumentNames":[]}
 
-function getbyte_inline__P17683_mk(s) {
+function getbyte_inline__P17680_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: getbyte_inline__P17683, depth: s.depth + 1,
+        parent: s, fn: getbyte_inline__P17680, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -42304,7 +42300,7 @@ function getbyte_inline__P17683_mk(s) {
 
 
 
-function decodeInt_inline__P17688(s) {
+function decodeInt_inline__P17685(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -42314,29 +42310,29 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.v___17689 = undefined;
-    s.r___17695 = undefined;
-    s.n___17696 = undefined;
-    s.len___17702 = undefined;
-    s.i___17708 = undefined;
-    s.v___17713 = undefined;
+    s.v___17686 = undefined;
+    s.r___17692 = undefined;
+    s.n___17693 = undefined;
+    s.len___17699 = undefined;
+    s.i___17705 = undefined;
+    s.v___17710 = undefined;
     s.tmp_0 = lambda_1_mk(s);
     s.tmp_0.argL = s.caps[0];
     setupLambda(s.tmp_0, s.tmp_0.argL);
     s.callLocIdx = 1393; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
-    s.v___17689 = (r0);
-    r0 = (s.v___17689 < 248);
+    s.v___17686 = (r0);
+    r0 = (s.v___17686 < 248);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
-    r0 = s.v___17689;
+    r0 = s.v___17686;
     { step = 7; continue; }
   case 1:
   case 2:
-    s.r___17695 = (0);
-    r0 = (s.v___17689 & 4);
+    s.r___17692 = (0);
+    r0 = (s.v___17686 & 4);
     s.tmp_3 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_3);
     s.tmp_2 = r0;
@@ -42345,14 +42341,14 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     s.tmp_0 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_0);
-    s.n___17696 = (r0);
-    r0 = (s.v___17689 & 3);
+    s.n___17693 = (r0);
+    r0 = (s.v___17686 & 3);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 + 1);
-    s.len___17702 = (r0);
-    s.i___17708 = (0);
+    s.len___17699 = (r0);
+    s.i___17705 = (0);
   case 3:
-    r0 = (s.i___17708 < s.len___17702);
+    r0 = (s.i___17705 < s.len___17699);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
@@ -42362,21 +42358,21 @@ switch (step) {
     s.callLocIdx = 1394; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
-    s.v___17713 = (r0);
-    r0 = (s.r___17695 << 8);
-    s.r___17695 = (r0);
-    r0 = (s.r___17695 | s.v___17713);
-    s.r___17695 = (r0);
-    r0 = (s.i___17708 + 1);
-    s.i___17708 = (r0);
+    s.v___17710 = (r0);
+    r0 = (s.r___17692 << 8);
+    s.r___17692 = (r0);
+    r0 = (s.r___17692 | s.v___17710);
+    s.r___17692 = (r0);
+    r0 = (s.i___17705 + 1);
+    s.i___17705 = (r0);
     { step = 3; continue; }
   case 4:
-    r0 = pxsim_numops_toBoolDecr(s.n___17696);
+    r0 = pxsim_numops_toBoolDecr(s.n___17693);
     if (!r0) { step = 5; continue; }
-    r0 = (0 - s.r___17695);
+    r0 = (0 - s.r___17692);
     { step = 6; continue; }
   case 5:
-    r0 = s.r___17695;
+    r0 = s.r___17692;
   case 6:
     // jmp value (already in r0)
     s.tmp_0 = r0;
@@ -42385,23 +42381,23 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-decodeInt_inline__P17688.info = {"start":546,"length":351,"line":26,"column":26,"endLine":41,"endColumn":9,"fileName":"jacs_stringify.ts","functionName":"inline","argumentNames":[]}
+decodeInt_inline__P17685.info = {"start":546,"length":351,"line":26,"column":26,"endLine":41,"endColumn":9,"fileName":"jacs_stringify.ts","functionName":"inline","argumentNames":[]}
 
-function decodeInt_inline__P17688_mk(s) {
+function decodeInt_inline__P17685_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: decodeInt_inline__P17688, depth: s.depth + 1,
+        parent: s, fn: decodeInt_inline__P17685, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  v___17689: undefined,
-  r___17695: undefined,
-  n___17696: undefined,
-  len___17702: undefined,
-  i___17708: undefined,
-  v___17713: undefined,
+  v___17686: undefined,
+  r___17692: undefined,
+  n___17693: undefined,
+  len___17699: undefined,
+  i___17705: undefined,
+  v___17710: undefined,
 } }
 
 
@@ -42418,21 +42414,21 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.op___17840 = undefined;
-    s.fmt___17857 = undefined;
+    s.op___17837 = undefined;
+    s.fmt___17854 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0.fields["opcode"];
-    s.op___17840 = (r0);
-    r0 = (s.op___17840 >= 128);
+    s.op___17837 = (r0);
+    r0 = (s.op___17837 >= 128);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     r0 = pxsim_String_.mkEmpty();
     s.tmp_1 = r0;
-    r0 = (s.op___17840 - 128);
+    r0 = (s.op___17837 - 128);
     s.tmp_4 = r0;
     r0 = (s.tmp_4 - 16);
     s.tmp_3 = r0;
@@ -42449,20 +42445,20 @@ switch (step) {
     { step = 5; continue; }
   case 1:
   case 2:
-    r0 = pxsim_Array__getAt(globals.OP_PRINT_FMTS___3765, s.op___17840);
-    s.fmt___17857 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.fmt___17857);
+    r0 = pxsim_Array__getAt(globals.OP_PRINT_FMTS___3765, s.op___17837);
+    s.fmt___17854 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.fmt___17854);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    if ((s.op___17840) && (s.op___17840).vtable) {
+    if ((s.op___17837) && (s.op___17837).vtable) {
     setupResume(s, 7);
-    pxsim_String__stringConv(s.op___17840);
+    pxsim_String__stringConv(s.op___17837);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.op___17840) + ""; }
+    } else { s.retval = (s.op___17837) + ""; }
   case 7:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -42471,7 +42467,7 @@ switch (step) {
   case 3:
   case 4:
     s.tmp_3 = jacs_expandFmt__P6485_mk(s);
-    s.tmp_3.arg0 = s.fmt___17857;
+    s.tmp_3.arg0 = s.fmt___17854;
     s.tmp_3.arg1 = s.arg0;
     s.callLocIdx = 1420; s.pc = 8; return s.tmp_3;
   case 8:
@@ -42492,8 +42488,8 @@ function jacs_stringifyExpr__P6490_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  op___17840: undefined,
-  fmt___17857: undefined,
+  op___17837: undefined,
+  fmt___17854: undefined,
   arg0: undefined,
 } }
 
@@ -42511,54 +42507,54 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.ptr___17873 = undefined;
-    s.beg___17874 = undefined;
-    s.r___17875 = undefined;
-    s.e___17904 = undefined;
-    s.eNum___17905 = undefined;
-    s.ff___17942 = undefined;
-    s.pref___17972 = undefined;
+    s.ptr___17870 = undefined;
+    s.beg___17871 = undefined;
+    s.r___17872 = undefined;
+    s.e___17901 = undefined;
+    s.eNum___17902 = undefined;
+    s.ff___17939 = undefined;
+    s.pref___17969 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    s.ptr___17873 = (0);
-    s.beg___17874 = (0);
+    s.ptr___17870 = (0);
+    s.beg___17871 = (0);
     r0 = pxsim_String_.mkEmpty();
-    s.r___17875 = (r0);
+    s.r___17872 = (r0);
   case 1:
-    s.tmp_1 = r0 = s.ptr___17873;
+    s.tmp_1 = r0 = s.ptr___17870;
     r0 = pxsim_String_.length(s.arg0);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 24; continue; }
-    r0 = pxsim_String_.charCodeAt(s.arg0, s.ptr___17873);
+    r0 = pxsim_String_.charCodeAt(s.arg0, s.ptr___17870);
     s.tmp_4 = r0;
     r0 = (s.tmp_4 != 37);
     s.tmp_3 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_3);
     if (!r0) { step = 2; continue; }
-    r0 = (s.ptr___17873 + 1);
-    s.ptr___17873 = (r0);
+    r0 = (s.ptr___17870 + 1);
+    s.ptr___17870 = (r0);
     { step = 1; continue; }
   case 2:
   case 3:
-    if ((s.r___17875) && (s.r___17875).vtable) {
+    if ((s.r___17872) && (s.r___17872).vtable) {
     setupResume(s, 25);
-    pxsim_String__stringConv(s.r___17875);
+    pxsim_String__stringConv(s.r___17872);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.r___17875) + ""; }
+    } else { s.retval = (s.r___17872) + ""; }
   case 25:
     r0 = s.retval;
     s.tmp_0 = r0;
     s.tmp_3 = helpers_stringSlice__P119_mk(s);
     s.tmp_3.arg0 = s.arg0;
-    s.tmp_3.arg1 = s.beg___17874;
-    s.tmp_3.arg2 = s.ptr___17873;
+    s.tmp_3.arg1 = s.beg___17871;
+    s.tmp_3.arg2 = s.ptr___17870;
     s.callLocIdx = 1407; s.pc = 26; return s.tmp_3;
   case 26:
     r0 = s.retval;
@@ -42573,13 +42569,13 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_String__concat(s.tmp_0, s.tmp_1);
-    s.r___17875 = (r0);
-    r0 = (s.ptr___17873 + 1);
-    s.ptr___17873 = (r0);
-    r0 = (s.ptr___17873 + 1);
-    s.beg___17874 = (r0);
-    s.e___17904 = (undefined);
-    s.eNum___17905 = (null);
+    s.r___17872 = (r0);
+    r0 = (s.ptr___17870 + 1);
+    s.ptr___17870 = (r0);
+    r0 = (s.ptr___17870 + 1);
+    s.beg___17871 = (r0);
+    s.e___17901 = (undefined);
+    s.eNum___17902 = (null);
     r0 = s.arg1.fields["arg"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 != undefined);
@@ -42587,20 +42583,20 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
     r0 = s.arg1.fields["arg"];
-    s.eNum___17905 = (r0);
-    if ((s.eNum___17905) && (s.eNum___17905).vtable) {
+    s.eNum___17902 = (r0);
+    if ((s.eNum___17902) && (s.eNum___17902).vtable) {
     setupResume(s, 28);
-    pxsim_String__stringConv(s.eNum___17905);
+    pxsim_String__stringConv(s.eNum___17902);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.eNum___17905) + ""; }
+    } else { s.retval = (s.eNum___17902) + ""; }
   case 28:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_String_.mkEmpty();
     s.tmp_1 = r0;
     r0 = pxsim_String__concat(s.tmp_0, s.tmp_1);
-    s.e___17904 = (r0);
+    s.e___17901 = (r0);
     r0 = (s.arg1).fields["arg"] = (undefined);
     { step = 11; continue; }
   case 4:
@@ -42627,7 +42623,7 @@ switch (step) {
     s.tmp_6 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_6);
     if (!r0) { step = 7; continue; }
-    s.e___17904 = ("???oops");
+    s.e___17901 = ("???oops");
     { step = 8; continue; }
   case 7:
     s.tmp_0 = jacs_stringifyExpr__P6490_mk(s);
@@ -42638,24 +42634,24 @@ switch (step) {
     s.callLocIdx = 1409; s.pc = 29; return s.tmp_0;
   case 29:
     r0 = s.retval;
-    s.e___17904 = (r0);
+    s.e___17901 = (r0);
   case 8:
     s.tmp_1 = jacs_isNumber__P6487_mk(s);
-    s.tmp_1.arg0 = s.e___17904;
+    s.tmp_1.arg0 = s.e___17901;
     s.callLocIdx = 1410; s.pc = 30; return s.tmp_1;
   case 30:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
-    r0 = (s.e___17904 - 0);
-    s.eNum___17905 = (r0);
+    r0 = (s.e___17901 - 0);
+    s.eNum___17902 = (r0);
   case 9:
   case 10:
   case 11:
-    r0 = pxsim_String_.charAt(s.arg0, s.ptr___17873);
-    s.ff___17942 = (r0);
-    s.tmp_0 = r0 = s.ff___17942;
+    r0 = pxsim_String_.charAt(s.arg0, s.ptr___17870);
+    s.ff___17939 = (r0);
+    s.tmp_0 = r0 = s.ff___17939;
     r0 = pxsim_pxtcore.switch_eq("e", s.tmp_0);
     if (r0) { step = 12; continue; }
     r0 = pxsim_pxtcore.switch_eq("n", s.tmp_0);
@@ -42670,35 +42666,35 @@ switch (step) {
     { step = 23; continue; }
   case 13:
     s.tmp_1 = jacs_numfmt__P6488_mk(s);
-    s.tmp_1.arg0 = s.e___17904;
+    s.tmp_1.arg0 = s.e___17901;
     s.callLocIdx = 1411; s.pc = 31; return s.tmp_1;
   case 31:
     r0 = s.retval;
-    s.e___17904 = (r0);
+    s.e___17901 = (r0);
     { step = 23; continue; }
   case 14:
     s.tmp_0 = jacs_callop__P6489_mk(s);
-    s.tmp_0.arg0 = s.e___17904;
+    s.tmp_0.arg0 = s.e___17901;
     s.callLocIdx = 1412; s.pc = 32; return s.tmp_0;
   case 32:
     r0 = s.retval;
-    s.e___17904 = (r0);
+    s.e___17901 = (r0);
     { step = 23; continue; }
   case 15:
     s.tmp_0 = jacs_jmpOffset__P6486_mk(s);
-    s.tmp_0.arg0 = s.eNum___17905;
+    s.tmp_0.arg0 = s.eNum___17902;
     s.callLocIdx = 1413; s.pc = 33; return s.tmp_0;
   case 33:
     r0 = s.retval;
-    s.e___17904 = (r0);
+    s.e___17901 = (r0);
     { step = 23; continue; }
   case 16:
-    if ((s.ff___17942) && (s.ff___17942).vtable) {
+    if ((s.ff___17939) && (s.ff___17939).vtable) {
     setupResume(s, 34);
-    pxsim_String__stringConv(s.ff___17942);
+    pxsim_String__stringConv(s.ff___17939);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.ff___17942) + ""; }
+    } else { s.retval = (s.ff___17939) + ""; }
   case 34:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -42713,18 +42709,18 @@ switch (step) {
   case 35:
     r0 = s.retval;
     s.tmp_0 = r0;
-    if ((s.e___17904) && (s.e___17904).vtable) {
+    if ((s.e___17901) && (s.e___17901).vtable) {
     setupResume(s, 36);
-    pxsim_String__stringConv(s.e___17904);
+    pxsim_String__stringConv(s.e___17901);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.e___17904) + ""; }
+    } else { s.retval = (s.e___17901) + ""; }
   case 36:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = pxsim_String__concat(s.tmp_0, s.tmp_3);
-    s.e___17904 = (r0);
-    r0 = (s.eNum___17905 != null);
+    s.e___17901 = (r0);
+    r0 = (s.eNum___17902 != null);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 17; continue; }
@@ -42739,8 +42735,8 @@ switch (step) {
     if (!r0) { step = 21; continue; }
     s.tmp_2 = if_describeCell_3_mk(s);
     s.tmp_2.arg0 = globals.resolver___6481;
-    s.tmp_2.arg1 = s.ff___17942;
-    s.tmp_2.arg2 = s.eNum___17905;
+    s.tmp_2.arg1 = s.ff___17939;
+    s.tmp_2.arg2 = s.eNum___17902;
     if (!s.tmp_2.arg0.vtable.iface) {
       setupLambda(s.tmp_2, pxsim_pxtrt.mapGetByString(s.tmp_2.arg0, "describeCell"), 3);
       s.callLocIdx = 1414; s.pc = 37; return s.tmp_2;
@@ -42752,70 +42748,70 @@ switch (step) {
     }
   case 37:
     r0 = s.retval;
-    s.pref___17972 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.pref___17972);
+    s.pref___17969 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.pref___17969);
     if (!r0) { step = 19; continue; }
-    if ((s.pref___17972) && (s.pref___17972).vtable) {
+    if ((s.pref___17969) && (s.pref___17969).vtable) {
     setupResume(s, 38);
-    pxsim_String__stringConv(s.pref___17972);
+    pxsim_String__stringConv(s.pref___17969);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.pref___17972) + ""; }
+    } else { s.retval = (s.pref___17969) + ""; }
   case 38:
     r0 = s.retval;
     s.tmp_0 = r0;
-    if ((s.e___17904) && (s.e___17904).vtable) {
+    if ((s.e___17901) && (s.e___17901).vtable) {
     setupResume(s, 39);
-    pxsim_String__stringConv(s.e___17904);
+    pxsim_String__stringConv(s.e___17901);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.e___17904) + ""; }
+    } else { s.retval = (s.e___17901) + ""; }
   case 39:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_String__concat(s.tmp_0, s.tmp_1);
-    s.e___17904 = (r0);
+    s.e___17901 = (r0);
   case 19:
   case 20:
   case 21:
   case 22:
   case 23:
-    if ((s.r___17875) && (s.r___17875).vtable) {
+    if ((s.r___17872) && (s.r___17872).vtable) {
     setupResume(s, 40);
-    pxsim_String__stringConv(s.r___17875);
+    pxsim_String__stringConv(s.r___17872);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.r___17875) + ""; }
+    } else { s.retval = (s.r___17872) + ""; }
   case 40:
     r0 = s.retval;
     s.tmp_0 = r0;
-    if ((s.e___17904) && (s.e___17904).vtable) {
+    if ((s.e___17901) && (s.e___17901).vtable) {
     setupResume(s, 41);
-    pxsim_String__stringConv(s.e___17904);
+    pxsim_String__stringConv(s.e___17901);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.e___17904) + ""; }
+    } else { s.retval = (s.e___17901) + ""; }
   case 41:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_String__concat(s.tmp_0, s.tmp_1);
-    s.r___17875 = (r0);
-    r0 = (s.ptr___17873 + 1);
-    s.ptr___17873 = (r0);
+    s.r___17872 = (r0);
+    r0 = (s.ptr___17870 + 1);
+    s.ptr___17870 = (r0);
     { step = 1; continue; }
   case 24:
-    if ((s.r___17875) && (s.r___17875).vtable) {
+    if ((s.r___17872) && (s.r___17872).vtable) {
     setupResume(s, 42);
-    pxsim_String__stringConv(s.r___17875);
+    pxsim_String__stringConv(s.r___17872);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.r___17875) + ""; }
+    } else { s.retval = (s.r___17872) + ""; }
   case 42:
     r0 = s.retval;
     s.tmp_0 = r0;
     s.tmp_3 = helpers_stringSlice__P119_mk(s);
     s.tmp_3.arg0 = s.arg0;
-    s.tmp_3.arg1 = s.beg___17874;
+    s.tmp_3.arg1 = s.beg___17871;
     s.tmp_3.arg2 = undefined;
     s.callLocIdx = 1415; s.pc = 43; return s.tmp_3;
   case 43:
@@ -42831,8 +42827,8 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_String__concat(s.tmp_0, s.tmp_1);
-    s.r___17875 = (r0);
-    r0 = s.r___17875;
+    s.r___17872 = (r0);
+    r0 = s.r___17872;
     return leave(s, r0)
   default: oops()
 } } }
@@ -42850,13 +42846,13 @@ function jacs_expandFmt__P6485_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  ptr___17873: undefined,
-  beg___17874: undefined,
-  r___17875: undefined,
-  e___17904: undefined,
-  eNum___17905: undefined,
-  ff___17942: undefined,
-  pref___17972: undefined,
+  ptr___17870: undefined,
+  beg___17871: undefined,
+  r___17872: undefined,
+  e___17901: undefined,
+  eNum___17902: undefined,
+  ff___17939: undefined,
+  pref___17969: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -42875,7 +42871,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.offs___18005 = undefined;
+    s.offs___18002 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -42910,7 +42906,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = pxsim_String__concat(s.tmp_2, s.tmp_3);
-    s.offs___18005 = (r0);
+    s.offs___18002 = (r0);
     s.tmp_1 = isNaN__P93_mk(s);
     s.tmp_1.arg0 = globals.jmpoff___6482;
     s.callLocIdx = 1416; s.pc = 7; return s.tmp_1;
@@ -42919,7 +42915,7 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    r0 = s.offs___18005;
+    r0 = s.offs___18002;
     { step = 4; continue; }
   case 3:
     r0 = (globals.jmpoff___6482 + s.arg0);
@@ -42933,12 +42929,12 @@ switch (step) {
   case 8:
     r0 = s.retval;
     s.tmp_2 = r0;
-    if ((s.offs___18005) && (s.offs___18005).vtable) {
+    if ((s.offs___18002) && (s.offs___18002).vtable) {
     setupResume(s, 9);
-    pxsim_String__stringConv(s.offs___18005);
+    pxsim_String__stringConv(s.offs___18002);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.offs___18005) + ""; }
+    } else { s.retval = (s.offs___18002) + ""; }
   case 9:
     r0 = s.retval;
     s.tmp_8 = r0;
@@ -42989,7 +42985,7 @@ function jacs_jmpOffset__P6486_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  offs___18005: undefined,
+  offs___18002: undefined,
   arg0: undefined,
 } }
 
@@ -43137,11 +43133,11 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.v___18063 = undefined;
-    s.fmt___18066 = undefined;
-    s.bitsz___18069 = undefined;
-    s.letter___18073 = undefined;
-    s.shift___18078 = undefined;
+    s.v___18060 = undefined;
+    s.fmt___18063 = undefined;
+    s.bitsz___18066 = undefined;
+    s.letter___18070 = undefined;
+    s.shift___18075 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -43163,37 +43159,37 @@ switch (step) {
   case 1:
   case 2:
     r0 = (s.arg0 - 0);
-    s.v___18063 = (r0);
-    r0 = (s.v___18063 & 15);
-    s.fmt___18066 = (r0);
-    r0 = (s.fmt___18066 & 3);
+    s.v___18060 = (r0);
+    r0 = (s.v___18060 & 15);
+    s.fmt___18063 = (r0);
+    r0 = (s.fmt___18063 & 3);
     s.tmp_0 = r0;
     r0 = (8 << s.tmp_0);
-    s.bitsz___18069 = (r0);
+    s.bitsz___18066 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     r0 = pxsim_Array__push(s.tmp_0, "u");
     r0 = pxsim_Array__push(s.tmp_0, "i");
     r0 = pxsim_Array__push(s.tmp_0, "f");
     r0 = pxsim_Array__push(s.tmp_0, "x");
-    r0 = (s.fmt___18066 >> 2);
+    r0 = (s.fmt___18063 >> 2);
     s.tmp_1 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, s.tmp_1);
-    s.letter___18073 = (r0);
-    r0 = (s.v___18063 >> 4);
-    s.shift___18078 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.shift___18078);
+    s.letter___18070 = (r0);
+    r0 = (s.v___18060 >> 4);
+    s.shift___18075 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.shift___18075);
     if (!r0) { step = 3; continue; }
-    if ((s.letter___18073) && (s.letter___18073).vtable) {
+    if ((s.letter___18070) && (s.letter___18070).vtable) {
     setupResume(s, 7);
-    pxsim_String__stringConv(s.letter___18073);
+    pxsim_String__stringConv(s.letter___18070);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.letter___18073) + ""; }
+    } else { s.retval = (s.letter___18070) + ""; }
   case 7:
     r0 = s.retval;
     s.tmp_4 = r0;
-    r0 = (s.bitsz___18069 - s.shift___18078);
+    r0 = (s.bitsz___18066 - s.shift___18075);
     s.tmp_6 = r0;
     if ((s.tmp_6) && (s.tmp_6).vtable) {
     setupResume(s, 8);
@@ -43226,12 +43222,12 @@ switch (step) {
   case 10:
     r0 = s.retval;
     s.tmp_0 = r0;
-    if ((s.shift___18078) && (s.shift___18078).vtable) {
+    if ((s.shift___18075) && (s.shift___18075).vtable) {
     setupResume(s, 11);
-    pxsim_String__stringConv(s.shift___18078);
+    pxsim_String__stringConv(s.shift___18075);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.shift___18078) + ""; }
+    } else { s.retval = (s.shift___18075) + ""; }
   case 11:
     r0 = s.retval;
     s.tmp_7 = r0;
@@ -43239,21 +43235,21 @@ switch (step) {
     { step = 5; continue; }
     { step = 4; continue; }
   case 3:
-    if ((s.letter___18073) && (s.letter___18073).vtable) {
+    if ((s.letter___18070) && (s.letter___18070).vtable) {
     setupResume(s, 12);
-    pxsim_String__stringConv(s.letter___18073);
+    pxsim_String__stringConv(s.letter___18070);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.letter___18073) + ""; }
+    } else { s.retval = (s.letter___18070) + ""; }
   case 12:
     r0 = s.retval;
     s.tmp_8 = r0;
-    if ((s.bitsz___18069) && (s.bitsz___18069).vtable) {
+    if ((s.bitsz___18066) && (s.bitsz___18066).vtable) {
     setupResume(s, 13);
-    pxsim_String__stringConv(s.bitsz___18069);
+    pxsim_String__stringConv(s.bitsz___18066);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.bitsz___18069) + ""; }
+    } else { s.retval = (s.bitsz___18066) + ""; }
   case 13:
     r0 = s.retval;
     s.tmp_9 = r0;
@@ -43282,11 +43278,11 @@ function jacs_numfmt__P6488_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  v___18063: undefined,
-  fmt___18066: undefined,
-  bitsz___18069: undefined,
-  letter___18073: undefined,
-  shift___18078: undefined,
+  v___18060: undefined,
+  fmt___18063: undefined,
+  bitsz___18066: undefined,
+  letter___18070: undefined,
+  shift___18075: undefined,
   arg0: undefined,
 } }
 
@@ -43339,21 +43335,21 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.i___18110 = undefined;
+    s.i___18107 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
-    s.i___18110 = (0);
+    s.i___18107 = (0);
   case 1:
-    s.tmp_1 = r0 = s.i___18110;
+    s.tmp_1 = r0 = s.i___18107;
     r0 = pxsim_String_.length(s.arg0);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    r0 = pxsim_String_.charAt(s.arg0, s.i___18110);
+    r0 = pxsim_String_.charAt(s.arg0, s.i___18107);
     s.tmp_5 = r0;
     r0 = pxsim_String_.indexOf("0123456789", s.tmp_5, undefined);
     s.tmp_4 = r0;
@@ -43365,8 +43361,8 @@ switch (step) {
     { step = 5; continue; }
   case 2:
   case 3:
-    r0 = (s.i___18110 + 1);
-    s.i___18110 = (r0);
+    r0 = (s.i___18107 + 1);
+    s.i___18107 = (r0);
     { step = 1; continue; }
   case 4:
     r0 = true;
@@ -43387,7 +43383,7 @@ function jacs_isNumber__P6487_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  i___18110: undefined,
+  i___18107: undefined,
   arg0: undefined,
 } }
 
@@ -43603,10 +43599,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.r___18161 = undefined;
+    s.r___18158 = undefined;
     s.unnamed164___U1 = undefined;
     s.unnamed165___U2 = undefined;
-    s.p___18229 = undefined;
+    s.p___18226 = undefined;
     s.unnamed170___U4 = undefined;
     s.unnamed171___U5 = undefined;
     if (s.lambdaArgs) {
@@ -43615,7 +43611,7 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
-    s.r___18161 = (undefined);
+    s.r___18158 = (undefined);
     r0 = s.arg0.fields["roles"];
     s.unnamed164___U1 = (r0);
     s.unnamed165___U2 = (0);
@@ -43626,9 +43622,9 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
     r0 = pxsim_Array__getAt(s.unnamed164___U1, s.unnamed165___U2);
-    s.r___18161 = (r0);
+    s.r___18158 = (r0);
     s.tmp_2 = jacs_Role_finalize__P6524_mk(s);
-    s.tmp_2.arg0 = s.r___18161;
+    s.tmp_2.arg0 = s.r___18158;
     s.callLocIdx = 1647; s.pc = 5; return s.tmp_2;
   case 5:
     r0 = s.retval;
@@ -43637,7 +43633,7 @@ switch (step) {
     { step = 1; continue; }
   case 2:
     s.unnamed164___U1 = (undefined);
-    r0 = pxsim_pxtcore_mkAction(1, jacs_TopWriter_finalize_inline__P18168);
+    r0 = pxsim_pxtcore_mkAction(1, jacs_TopWriter_finalize_inline__P18165);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = jacs_TopWriter_withProcedure__P3952_mk(s);
@@ -43650,7 +43646,7 @@ switch (step) {
     s.callLocIdx = 1656; s.pc = 6; return s.tmp_1;
   case 6:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, jacs_TopWriter_finalize_inline__P18204);
+    r0 = pxsim_pxtcore_mkAction(1, jacs_TopWriter_finalize_inline__P18201);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = jacs_TopWriter_withProcedure__P3952_mk(s);
@@ -43666,7 +43662,7 @@ switch (step) {
     s.callLocIdx = 1664; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
-    s.p___18229 = (undefined);
+    s.p___18226 = (undefined);
     r0 = s.arg0.fields["procs"];
     s.unnamed170___U4 = (r0);
     s.unnamed171___U5 = (0);
@@ -43677,9 +43673,9 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 4; continue; }
     r0 = pxsim_Array__getAt(s.unnamed170___U4, s.unnamed171___U5);
-    s.p___18229 = (r0);
+    s.p___18226 = (r0);
     s.tmp_2 = jacs_Procedure_finalize__P3928_mk(s);
-    s.tmp_2.arg0 = s.p___18229;
+    s.tmp_2.arg0 = s.p___18226;
     s.callLocIdx = 1665; s.pc = 9; return s.tmp_2;
   case 9:
     r0 = s.retval;
@@ -43702,10 +43698,10 @@ function jacs_TopWriter_finalize__P6529_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  r___18161: undefined,
+  r___18158: undefined,
   unnamed164___U1: undefined,
   unnamed165___U2: undefined,
-  p___18229: undefined,
+  p___18226: undefined,
   unnamed170___U4: undefined,
   unnamed171___U5: undefined,
   arg0: undefined,
@@ -43715,7 +43711,7 @@ function jacs_TopWriter_finalize__P6529_mk(s) {
 
 
 
-function jacs_TopWriter_finalize_inline__P18168(s) {
+function jacs_TopWriter_finalize_inline__P18165(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -43725,14 +43721,14 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.g___18171 = undefined;
+    s.g___18168 = undefined;
     s.unnamed166___U1 = undefined;
     s.unnamed167___U2 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
-    s.g___18171 = (undefined);
+    s.g___18168 = (undefined);
     r0 = s.caps[0].fields["globals"];
     s.unnamed166___U1 = (r0);
     s.unnamed167___U2 = (0);
@@ -43743,8 +43739,8 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
     r0 = pxsim_Array__getAt(s.unnamed166___U1, s.unnamed167___U2);
-    s.g___18171 = (r0);
-    r0 = s.g___18171.fields["name"];
+    s.g___18168 = (r0);
+    r0 = s.g___18168.fields["name"];
     s.tmp_4 = r0;
     r0 = pxsim_String_.charAt(s.tmp_4, 0);
     s.tmp_3 = r0;
@@ -43755,7 +43751,7 @@ switch (step) {
     r0 = s.tmp_2;
     { step = 3; continue; }
   case 2:
-    r0 = s.g___18171.fields["name"];
+    r0 = s.g___18168.fields["name"];
     s.tmp_6 = r0;
     r0 = pxsim_String_.charAt(s.tmp_6, 1);
     s.tmp_5 = r0;
@@ -43766,7 +43762,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_7);
     if (!r0) { step = 4; continue; }
     s.tmp_8 = jacs_Variable_write__P6520_mk(s);
-    s.tmp_8.arg0 = s.g___18171;
+    s.tmp_8.arg0 = s.g___18168;
     s.tmp_8.arg1 = s.arg0;
     s.tmp_9 = jacs_literal__P3854_mk(s);
     s.tmp_9.arg0 = 0;
@@ -43825,12 +43821,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_finalize_inline__P18168.info = {"start":11969,"length":355,"line":369,"column":46,"endLine":377,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_finalize_inline__P18165.info = {"start":11969,"length":355,"line":369,"column":46,"endLine":377,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
-function jacs_TopWriter_finalize_inline__P18168_mk(s) {
+function jacs_TopWriter_finalize_inline__P18165_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_finalize_inline__P18168, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_finalize_inline__P18165, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -43842,7 +43838,7 @@ function jacs_TopWriter_finalize_inline__P18168_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  g___18171: undefined,
+  g___18168: undefined,
   unnamed166___U1: undefined,
   unnamed167___U2: undefined,
   arg0: undefined,
@@ -43852,7 +43848,7 @@ function jacs_TopWriter_finalize_inline__P18168_mk(s) {
 
 
 
-function jacs_TopWriter_finalize_inline__P18204(s) {
+function jacs_TopWriter_finalize_inline__P18201(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -43862,14 +43858,14 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.v___18207 = undefined;
+    s.v___18204 = undefined;
     s.unnamed168___U1 = undefined;
     s.unnamed169___U2 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
-    s.v___18207 = (undefined);
+    s.v___18204 = (undefined);
     r0 = s.caps[0].fields["roleLocks"];
     s.unnamed168___U1 = (r0);
     s.unnamed169___U2 = (0);
@@ -43880,11 +43876,11 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
     r0 = pxsim_Array__getAt(s.unnamed168___U1, s.unnamed169___U2);
-    s.v___18207 = (r0);
+    s.v___18204 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_2 = r0;
     s.tmp_4 = jacs_Variable_read__P6519_mk(s);
-    s.tmp_4.arg0 = s.v___18207;
+    s.tmp_4.arg0 = s.v___18204;
     s.tmp_4.arg1 = s.arg0;
     s.callLocIdx = 1657; s.pc = 3; return s.tmp_4;
   case 3:
@@ -43899,7 +43895,7 @@ switch (step) {
   case 4:
     r0 = s.retval;
     s.tmp_0 = jacs_Variable_write__P6520_mk(s);
-    s.tmp_0.arg0 = s.v___18207;
+    s.tmp_0.arg0 = s.v___18204;
     s.tmp_0.arg1 = s.arg0;
     s.tmp_1 = jacs_literal__P3854_mk(s);
     s.tmp_1.arg0 = null;
@@ -43935,12 +43931,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_finalize_inline__P18204.info = {"start":12372,"length":267,"line":378,"column":46,"endLine":384,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_finalize_inline__P18201.info = {"start":12372,"length":267,"line":378,"column":46,"endLine":384,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
-function jacs_TopWriter_finalize_inline__P18204_mk(s) {
+function jacs_TopWriter_finalize_inline__P18201_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_finalize_inline__P18204, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_finalize_inline__P18201, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -43948,7 +43944,7 @@ function jacs_TopWriter_finalize_inline__P18204_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  v___18207: undefined,
+  v___18204: undefined,
   unnamed168___U1: undefined,
   unnamed169___U2: undefined,
   arg0: undefined,
@@ -44009,10 +44005,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.l___18240 = undefined;
+    s.l___18237 = undefined;
     s.unnamed136___U1 = undefined;
     s.unnamed137___U2 = undefined;
-    s.off___18257 = undefined;
+    s.off___18254 = undefined;
     s.unnamed138___U4 = undefined;
     s.unnamed139___U5 = undefined;
     if (s.lambdaArgs) {
@@ -44021,7 +44017,7 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_OpWriter__C3857_VT)) failedCast(r0);
-    s.l___18240 = (undefined);
+    s.l___18237 = (undefined);
     r0 = s.arg0.fields["labels"];
     s.unnamed136___U1 = (r0);
     s.unnamed137___U2 = (0);
@@ -44032,14 +44028,14 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 4; continue; }
     r0 = pxsim_Array__getAt(s.unnamed136___U1, s.unnamed137___U2);
-    s.l___18240 = (r0);
-    r0 = s.l___18240.fields["uses"];
+    s.l___18237 = (r0);
+    r0 = s.l___18237.fields["uses"];
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 2; continue; }
     s.tmp_3 = jacs_OpWriter_oops__P6509_mk(s);
     s.tmp_3.arg0 = s.arg0;
-    r0 = s.l___18240.fields["name"];
+    r0 = s.l___18237.fields["name"];
     s.tmp_6 = r0;
     if ((s.tmp_6) && (s.tmp_6).vtable) {
     setupResume(s, 10);
@@ -44069,7 +44065,7 @@ switch (step) {
     s.callLocIdx = 1500; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    s.off___18257 = (undefined);
+    s.off___18254 = (undefined);
     r0 = s.arg0.fields["localOffsets"];
     s.unnamed138___U4 = (r0);
     s.unnamed139___U5 = (0);
@@ -44080,10 +44076,10 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 8; continue; }
     r0 = pxsim_Array__getAt(s.unnamed138___U4, s.unnamed139___U5);
-    s.off___18257 = (r0);
+    s.off___18254 = (r0);
     r0 = s.arg0.fields["binary"];
     s.tmp_4 = r0;
-    r0 = pxsim.BufferMethods.getByte(s.tmp_4, s.off___18257);
+    r0 = pxsim.BufferMethods.getByte(s.tmp_4, s.off___18254);
     s.tmp_3 = r0;
     r0 = (100 <= s.tmp_3);
     s.tmp_2 = r0;
@@ -44094,7 +44090,7 @@ switch (step) {
   case 6:
     r0 = s.arg0.fields["binary"];
     s.tmp_6 = r0;
-    r0 = pxsim.BufferMethods.getByte(s.tmp_6, s.off___18257);
+    r0 = pxsim.BufferMethods.getByte(s.tmp_6, s.off___18254);
     s.tmp_5 = r0;
     r0 = (s.tmp_5 < 248);
   case 7:
@@ -44108,10 +44104,10 @@ switch (step) {
     r0 = s.retval;
     r0 = s.arg0.fields["binary"];
     s.tmp_0 = r0;
-    s.tmp_1 = r0 = s.off___18257;
+    s.tmp_1 = r0 = s.off___18254;
     r0 = s.arg0.fields["binary"];
     s.tmp_5 = r0;
-    r0 = pxsim.BufferMethods.getByte(s.tmp_5, s.off___18257);
+    r0 = pxsim.BufferMethods.getByte(s.tmp_5, s.off___18254);
     s.tmp_4 = r0;
     r0 = (s.tmp_4 - 100);
     s.tmp_3 = r0;
@@ -44151,10 +44147,10 @@ function jacs_OpWriter_patchLabels__P3894_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  l___18240: undefined,
+  l___18237: undefined,
   unnamed136___U1: undefined,
   unnamed137___U2: undefined,
-  off___18257: undefined,
+  off___18254: undefined,
   unnamed138___U4: undefined,
   unnamed139___U5: undefined,
   arg0: undefined,
@@ -44174,10 +44170,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.c___18296 = undefined;
+    s.c___18293 = undefined;
     s.unnamed132___U1 = undefined;
     s.unnamed133___U2 = undefined;
-    s.e___18318 = undefined;
+    s.e___18315 = undefined;
     s.unnamed134___U4 = undefined;
     s.unnamed135___U5 = undefined;
     if (s.lambdaArgs) {
@@ -44205,7 +44201,7 @@ switch (step) {
     { step = 13; continue; }
   case 1:
   case 2:
-    s.c___18296 = (undefined);
+    s.c___18293 = (undefined);
     r0 = s.arg0.fields["cachedValues"];
     s.unnamed132___U1 = (r0);
     s.unnamed133___U2 = (0);
@@ -44216,14 +44212,14 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
     r0 = pxsim_Array__getAt(s.unnamed132___U1, s.unnamed133___U2);
-    s.c___18296 = (r0);
-    r0 = (s.c___18296 !== null);
+    s.c___18293 = (r0);
+    r0 = (s.c___18293 !== null);
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 4; continue; }
     s.tmp_3 = jacs_OpWriter_oops__P6509_mk(s);
     s.tmp_3.arg0 = s.arg0;
-    r0 = s.c___18296.fields["index"];
+    r0 = s.c___18293.fields["index"];
     s.tmp_8 = r0;
     if ((s.tmp_8) && (s.tmp_8).vtable) {
     setupResume(s, 16);
@@ -44238,7 +44234,7 @@ switch (step) {
     s.tmp_6 = r0;
     r0 = pxsim_String__concat(s.tmp_6, " still has ");
     s.tmp_5 = r0;
-    r0 = s.c___18296.fields["numrefs"];
+    r0 = s.c___18293.fields["numrefs"];
     s.tmp_10 = r0;
     if ((s.tmp_10) && (s.tmp_10).vtable) {
     setupResume(s, 17);
@@ -44263,7 +44259,7 @@ switch (step) {
     { step = 3; continue; }
   case 6:
     s.unnamed132___U1 = (undefined);
-    s.e___18318 = (undefined);
+    s.e___18315 = (undefined);
     r0 = s.arg0.fields["pendingStatefulValues"];
     s.unnamed134___U4 = (r0);
     s.unnamed135___U5 = (0);
@@ -44274,9 +44270,9 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 12; continue; }
     r0 = pxsim_Array__getAt(s.unnamed134___U4, s.unnamed135___U5);
-    s.e___18318 = (r0);
+    s.e___18315 = (r0);
     s.tmp_3 = jacs_Value_usesState__P3841_mk(s);
-    s.tmp_3.arg0 = s.e___18318;
+    s.tmp_3.arg0 = s.e___18315;
     s.callLocIdx = 1496; s.pc = 18; return s.tmp_3;
   case 18:
     r0 = s.retval;
@@ -44287,7 +44283,7 @@ switch (step) {
     { step = 9; continue; }
   case 8:
     s.tmp_6 = jacs_Value_hasParent__P3842_mk(s);
-    s.tmp_6.arg0 = s.e___18318;
+    s.tmp_6.arg0 = s.e___18315;
     s.callLocIdx = 1497; s.pc = 19; return s.tmp_6;
   case 19:
     r0 = s.retval;
@@ -44336,10 +44332,10 @@ function jacs_OpWriter_assertNoTemps__P3893_mk(s) {
   tmp_8: undefined,
   tmp_9: undefined,
   tmp_10: undefined,
-  c___18296: undefined,
+  c___18293: undefined,
   unnamed132___U1: undefined,
   unnamed133___U2: undefined,
-  e___18318: undefined,
+  e___18315: undefined,
   unnamed134___U4: undefined,
   unnamed135___U5: undefined,
   arg0: undefined,
@@ -44549,7 +44545,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.proc___18355 = undefined;
+    s.proc___18352 = undefined;
     s.unnamed186___U1 = undefined;
     s.unnamed187___U2 = undefined;
     if (s.lambdaArgs) {
@@ -44558,7 +44554,7 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
-    s.proc___18355 = (undefined);
+    s.proc___18352 = (undefined);
     r0 = s.arg0.fields["pageProcs"];
     s.unnamed186___U1 = (r0);
     s.unnamed187___U2 = (0);
@@ -44569,15 +44565,15 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 4; continue; }
     r0 = pxsim_Array__getAt(s.unnamed186___U1, s.unnamed187___U2);
-    s.proc___18355 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.proc___18355);
+    s.proc___18352 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.proc___18352);
     if (!r0) { step = 2; continue; }
-    r0 = pxsim_pxtcore_mkAction(1, jacs_TopWriter_finalizePageProcs_inline__P18361);
+    r0 = pxsim_pxtcore_mkAction(1, jacs_TopWriter_finalizePageProcs_inline__P18358);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg0);
     s.tmp_3 = jacs_TopWriter_withProcedure__P3952_mk(s);
     s.tmp_3.arg0 = s.arg0;
-    s.tmp_3.arg1 = s.proc___18355;
+    s.tmp_3.arg1 = s.proc___18352;
     s.tmp_3.arg2 = s.tmp_2;
     s.callLocIdx = 1849; s.pc = 5; return s.tmp_3;
   case 5:
@@ -44604,7 +44600,7 @@ function jacs_TopWriter_finalizePageProcs__P6553_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  proc___18355: undefined,
+  proc___18352: undefined,
   unnamed186___U1: undefined,
   unnamed187___U2: undefined,
   arg0: undefined,
@@ -44614,7 +44610,7 @@ function jacs_TopWriter_finalizePageProcs__P6553_mk(s) {
 
 
 
-function jacs_TopWriter_finalizePageProcs_inline__P18361(s) {
+function jacs_TopWriter_finalizePageProcs_inline__P18358(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -44656,12 +44652,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_finalizePageProcs_inline__P18361.info = {"start":31605,"length":264,"line":895,"column":45,"endLine":901,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_finalizePageProcs_inline__P18358.info = {"start":31605,"length":264,"line":895,"column":45,"endLine":901,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
-function jacs_TopWriter_finalizePageProcs_inline__P18361_mk(s) {
+function jacs_TopWriter_finalizePageProcs_inline__P18358_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_finalizePageProcs_inline__P18361, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_finalizePageProcs_inline__P18358, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -44920,7 +44916,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.r___18418 = undefined;
+    s.r___18415 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -44932,14 +44928,14 @@ switch (step) {
     r0 = pxsim_pxtcore_mkClassInstance(jacs_Value__C3832_VT);
     s.tmp_0 = r0;
     r0 = undefined;
-    s.r___18418 = (s.tmp_0);
-    r0 = (s.r___18418).fields["numValue"] = (s.arg2);
-    r0 = (s.r___18418).fields["op"] = (s.arg1);
-    r0 = (s.r___18418).fields["flags"] = (2304);
+    s.r___18415 = (s.tmp_0);
+    r0 = (s.r___18415).fields["numValue"] = (s.arg2);
+    r0 = (s.r___18415).fields["op"] = (s.arg1);
+    r0 = (s.r___18415).fields["flags"] = (2304);
     r0 = s.arg0.fields["pendingStatefulValues"];
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.r___18418);
-    r0 = s.r___18418;
+    r0 = pxsim_Array__push(s.tmp_0, s.r___18415);
+    r0 = s.r___18415;
     return leave(s, r0)
   default: oops()
 } } }
@@ -44951,7 +44947,7 @@ function jacs_OpWriter_emitMemRef__P3895_mk(s) {
         parent: s, fn: jacs_OpWriter_emitMemRef__P3895, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  r___18418: undefined,
+  r___18415: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -45005,7 +45001,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.a___18455 = undefined;
+    s.a___18452 = undefined;
     s.unnamed144___U1 = undefined;
     s.unnamed145___U2 = undefined;
     if (s.lambdaArgs) {
@@ -45042,7 +45038,7 @@ switch (step) {
     s.callLocIdx = 1557; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
-    s.a___18455 = (undefined);
+    s.a___18452 = (undefined);
     s.unnamed144___U1 = (s.arg2);
     s.unnamed145___U2 = (0);
   case 1:
@@ -45052,9 +45048,9 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
     r0 = pxsim_Array__getAt(s.unnamed144___U1, s.unnamed145___U2);
-    s.a___18455 = (r0);
+    s.a___18452 = (r0);
     s.tmp_2 = jacs_Value_adopt__P3845_mk(s);
-    s.tmp_2.arg0 = s.a___18455;
+    s.tmp_2.arg0 = s.a___18452;
     s.callLocIdx = 1558; s.pc = 7; return s.tmp_2;
   case 7:
     r0 = s.retval;
@@ -45090,7 +45086,7 @@ function jacs_OpWriter_emitStmt__P3898_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  a___18455: undefined,
+  a___18452: undefined,
   unnamed144___U1: undefined,
   unnamed145___U2: undefined,
   arg0: undefined,
@@ -45112,8 +45108,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.i___18466 = undefined;
-    s.nval___18488 = undefined;
+    s.i___18463 = undefined;
+    s.nval___18485 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -45122,7 +45118,7 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_OpWriter__C3857_VT)) failedCast(r0);
-    s.i___18466 = (0);
+    s.i___18463 = (0);
     s.tmp_1 = jacs_opTakesNumber__P3768_mk(s);
     s.tmp_1.arg0 = s.arg1;
     s.callLocIdx = 1526; s.pc = 11; return s.tmp_1;
@@ -45131,11 +45127,11 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
-    s.i___18466 = (1);
+    s.i___18463 = (1);
   case 1:
   case 2:
   case 3:
-    s.tmp_1 = r0 = s.i___18466;
+    s.tmp_1 = r0 = s.i___18463;
     r0 = pxsim_Array__length(s.arg2);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
@@ -45144,13 +45140,13 @@ switch (step) {
     if (!r0) { step = 4; continue; }
     s.tmp_3 = jacs_OpWriter_writeValue__P6515_mk(s);
     s.tmp_3.arg0 = s.arg0;
-    r0 = pxsim_Array__getAt(s.arg2, s.i___18466);
+    r0 = pxsim_Array__getAt(s.arg2, s.i___18463);
     s.tmp_3.arg1 = r0;
     s.callLocIdx = 1527; s.pc = 12; return s.tmp_3;
   case 12:
     r0 = s.retval;
-    r0 = (s.i___18466 + 1);
-    s.i___18466 = (r0);
+    r0 = (s.i___18463 + 1);
+    s.i___18463 = (r0);
     { step = 3; continue; }
   case 4:
     s.tmp_0 = jacs_OpWriter_writeByte__P6512_mk(s);
@@ -45181,7 +45177,7 @@ switch (step) {
     r0 = s.retval;
     r0 = pxsim_Array__getAt(s.arg2, 0);
     r0 = r0.fields["numValue"];
-    s.nval___18488 = (r0);
+    s.nval___18485 = (r0);
     r0 = (s.arg1 == 79);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
@@ -45189,7 +45185,7 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 6; continue; }
   case 5:
-    r0 = (s.nval___18488 >= 100);
+    r0 = (s.nval___18485 >= 100);
   case 6:
     // jmp value (already in r0)
     s.tmp_1 = r0;
@@ -45204,7 +45200,7 @@ switch (step) {
   case 8:
     s.tmp_0 = jacs_OpWriter_writeInt__P6513_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.nval___18488;
+    s.tmp_0.arg1 = s.nval___18485;
     s.callLocIdx = 1533; s.pc = 17; return s.tmp_0;
   case 17:
     r0 = s.retval;
@@ -45225,8 +45221,8 @@ function jacs_OpWriter_writeArgs__P6514_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  i___18466: undefined,
-  nval___18488: undefined,
+  i___18463: undefined,
+  nval___18485: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -45246,10 +45242,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.b___18523 = undefined;
-    s.hddone___18532 = undefined;
-    s.shift___18533 = undefined;
-    s.q___18537 = undefined;
+    s.b___18520 = undefined;
+    s.hddone___18529 = undefined;
+    s.shift___18530 = undefined;
+    s.q___18534 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -45287,38 +45283,38 @@ switch (step) {
     r0 = s.retval;
     { step = 14; continue; }
   case 3:
-    s.b___18523 = (248);
+    s.b___18520 = (248);
     r0 = (s.arg1 < 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    r0 = (s.b___18523 | 4);
-    s.b___18523 = (r0);
+    r0 = (s.b___18520 | 4);
+    s.b___18520 = (r0);
     r0 = (0 - s.arg1);
     s.arg1 = (r0);
   case 4:
   case 5:
-    s.hddone___18532 = (false);
-    s.shift___18533 = (3);
+    s.hddone___18529 = (false);
+    s.shift___18530 = (3);
   case 6:
-    r0 = (s.shift___18533 >= 0);
+    r0 = (s.shift___18530 >= 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 13; continue; }
     s.tmp_2 = r0 = s.arg1;
-    r0 = (8 * s.shift___18533);
+    r0 = (8 * s.shift___18530);
     s.tmp_3 = r0;
     r0 = (s.tmp_2 >> s.tmp_3);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 & 255);
-    s.q___18537 = (r0);
-    s.tmp_0 = r0 = s.q___18537;
+    s.q___18534 = (r0);
+    s.tmp_0 = r0 = s.q___18534;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 7; continue; }
     r0 = s.tmp_0;
     { step = 8; continue; }
   case 7:
-    r0 = pxsim_numops_toBoolDecr(s.hddone___18532);
+    r0 = pxsim_numops_toBoolDecr(s.hddone___18529);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
   case 8:
@@ -45328,26 +45324,26 @@ switch (step) {
     if (!r0) { step = 9; continue; }
     s.tmp_3 = jacs_OpWriter_writeByte__P6512_mk(s);
     s.tmp_3.arg0 = s.arg0;
-    r0 = (s.b___18523 | s.shift___18533);
+    r0 = (s.b___18520 | s.shift___18530);
     s.tmp_3.arg1 = r0;
     s.callLocIdx = 1524; s.pc = 17; return s.tmp_3;
   case 17:
     r0 = s.retval;
-    s.hddone___18532 = (true);
+    s.hddone___18529 = (true);
   case 9:
   case 10:
-    r0 = pxsim_numops_toBoolDecr(s.hddone___18532);
+    r0 = pxsim_numops_toBoolDecr(s.hddone___18529);
     if (!r0) { step = 11; continue; }
     s.tmp_0 = jacs_OpWriter_writeByte__P6512_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.q___18537;
+    s.tmp_0.arg1 = s.q___18534;
     s.callLocIdx = 1525; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
   case 11:
   case 12:
-    r0 = (s.shift___18533 - 1);
-    s.shift___18533 = (r0);
+    r0 = (s.shift___18530 - 1);
+    s.shift___18530 = (r0);
     { step = 6; continue; }
   case 13:
   case 14:
@@ -45366,10 +45362,10 @@ function jacs_OpWriter_writeInt__P6513_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  b___18523: undefined,
-  hddone___18532: undefined,
-  shift___18533: undefined,
-  q___18537: undefined,
+  b___18520: undefined,
+  hddone___18529: undefined,
+  shift___18530: undefined,
+  q___18534: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -45438,9 +45434,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.q___18584 = undefined;
-    s.qq___18592 = undefined;
-    s.idx___18619 = undefined;
+    s.q___18581 = undefined;
+    s.qq___18589 = undefined;
+    s.idx___18616 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -45476,25 +45472,25 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 11; continue; }
     r0 = s.arg1.fields["numValue"];
-    s.q___18584 = (r0);
-    r0 = (s.q___18584 | 0);
+    s.q___18581 = (r0);
+    r0 = (s.q___18581 | 0);
     s.tmp_1 = r0;
-    r0 = (s.tmp_1 == s.q___18584);
+    r0 = (s.tmp_1 == s.q___18581);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
-    r0 = (s.q___18584 + 16);
+    r0 = (s.q___18581 + 16);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 + 128);
-    s.qq___18592 = (r0);
-    r0 = (16 <= s.qq___18592);
+    s.qq___18589 = (r0);
+    r0 = (16 <= s.qq___18589);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 1; continue; }
     r0 = s.tmp_0;
     { step = 2; continue; }
   case 1:
-    r0 = (s.qq___18592 <= 255);
+    r0 = (s.qq___18589 <= 255);
   case 2:
     // jmp value (already in r0)
     s.tmp_1 = r0;
@@ -45502,7 +45498,7 @@ switch (step) {
     if (!r0) { step = 3; continue; }
     s.tmp_2 = jacs_OpWriter_writeByte__P6512_mk(s);
     s.tmp_2.arg0 = s.arg0;
-    s.tmp_2.arg1 = s.qq___18592;
+    s.tmp_2.arg1 = s.qq___18589;
     s.callLocIdx = 1536; s.pc = 25; return s.tmp_2;
   case 25:
     r0 = s.retval;
@@ -45516,7 +45512,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = jacs_OpWriter_writeInt__P6513_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.q___18584;
+    s.tmp_0.arg1 = s.q___18581;
     s.callLocIdx = 1538; s.pc = 27; return s.tmp_0;
   case 27:
     r0 = s.retval;
@@ -45524,7 +45520,7 @@ switch (step) {
     { step = 10; continue; }
   case 5:
     s.tmp_1 = isNaN__P93_mk(s);
-    s.tmp_1.arg0 = s.q___18584;
+    s.tmp_1.arg0 = s.q___18581;
     s.callLocIdx = 1539; s.pc = 28; return s.tmp_1;
   case 28:
     r0 = s.retval;
@@ -45539,7 +45535,7 @@ switch (step) {
     r0 = s.retval;
     { step = 9; continue; }
   case 6:
-    r0 = (s.q___18584 == null);
+    r0 = (s.q___18581 == null);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
@@ -45554,7 +45550,7 @@ switch (step) {
     s.tmp_0 = if_addFloat_2_mk(s);
     r0 = s.arg0.fields["prog"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = s.q___18584;
+    s.tmp_0.arg1 = s.q___18581;
     if (!s.tmp_0.arg0.vtable.iface) {
       setupLambda(s.tmp_0, pxsim_pxtrt.mapGetByString(s.tmp_0.arg0, "addFloat"), 2);
       s.callLocIdx = 1542; s.pc = 31; return s.tmp_0;
@@ -45566,7 +45562,7 @@ switch (step) {
     }
   case 31:
     r0 = s.retval;
-    s.idx___18619 = (r0);
+    s.idx___18616 = (r0);
     s.tmp_0 = jacs_OpWriter_writeByte__P6512_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = 5;
@@ -45575,7 +45571,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = jacs_OpWriter_writeInt__P6513_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.idx___18619;
+    s.tmp_0.arg1 = s.idx___18616;
     s.callLocIdx = 1544; s.pc = 33; return s.tmp_0;
   case 33:
     r0 = s.retval;
@@ -45712,9 +45708,9 @@ function jacs_OpWriter_writeValue__P6515_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  q___18584: undefined,
-  qq___18592: undefined,
-  idx___18619: undefined,
+  q___18581: undefined,
+  qq___18589: undefined,
+  idx___18616: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -45867,7 +45863,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.e___18719 = undefined;
+    s.e___18716 = undefined;
     s.unnamed140___U1 = undefined;
     s.unnamed141___U2 = undefined;
     if (s.lambdaArgs) {
@@ -45876,7 +45872,7 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_OpWriter__C3857_VT)) failedCast(r0);
-    s.e___18719 = (undefined);
+    s.e___18716 = (undefined);
     r0 = s.arg0.fields["pendingStatefulValues"];
     s.unnamed140___U1 = (r0);
     s.unnamed141___U2 = (0);
@@ -45887,9 +45883,9 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
     r0 = pxsim_Array__getAt(s.unnamed140___U1, s.unnamed141___U2);
-    s.e___18719 = (r0);
+    s.e___18716 = (r0);
     s.tmp_3 = jacs_Value_usesState__P3841_mk(s);
-    s.tmp_3.arg0 = s.e___18719;
+    s.tmp_3.arg0 = s.e___18716;
     s.callLocIdx = 1507; s.pc = 7; return s.tmp_3;
   case 7:
     r0 = s.retval;
@@ -45900,7 +45896,7 @@ switch (step) {
     { step = 3; continue; }
   case 2:
     s.tmp_6 = jacs_Value_hasParent__P3842_mk(s);
-    s.tmp_6.arg0 = s.e___18719;
+    s.tmp_6.arg0 = s.e___18716;
     s.callLocIdx = 1508; s.pc = 8; return s.tmp_6;
   case 8:
     r0 = s.retval;
@@ -45915,7 +45911,7 @@ switch (step) {
     if (!r0) { step = 4; continue; }
     s.tmp_8 = jacs_OpWriter_spillValue__P6510_mk(s);
     s.tmp_8.arg0 = s.arg0;
-    s.tmp_8.arg1 = s.e___18719;
+    s.tmp_8.arg1 = s.e___18716;
     s.callLocIdx = 1509; s.pc = 9; return s.tmp_8;
   case 9:
     r0 = s.retval;
@@ -45950,7 +45946,7 @@ function jacs_OpWriter_spillAllStateful__P6511_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  e___18719: undefined,
+  e___18716: undefined,
   unnamed140___U1: undefined,
   unnamed141___U2: undefined,
   arg0: undefined,
@@ -45970,7 +45966,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.l___18735 = undefined;
+    s.l___18732 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -45983,9 +45979,9 @@ switch (step) {
     s.callLocIdx = 1502; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.l___18735 = (r0);
+    s.l___18732 = (r0);
     s.tmp_0 = jacs_CachedValue_store__P3851_mk(s);
-    s.tmp_0.arg0 = s.l___18735;
+    s.tmp_0.arg0 = s.l___18732;
     s.tmp_0.arg1 = s.arg1;
     s.callLocIdx = 1503; s.pc = 2; return s.tmp_0;
   case 2:
@@ -45993,7 +45989,7 @@ switch (step) {
     s.tmp_0 = jacs_Value__set__P3846_mk(s);
     s.tmp_0.arg0 = s.arg1;
     s.tmp_1 = jacs_CachedValue_emit__P3850_mk(s);
-    s.tmp_1.arg0 = s.l___18735;
+    s.tmp_1.arg0 = s.l___18732;
     s.callLocIdx = 1504; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
@@ -46002,7 +45998,7 @@ switch (step) {
   case 3:
     r0 = s.retval;
     s.tmp_0 = jacs_CachedValue_free__P3853_mk(s);
-    s.tmp_0.arg0 = s.l___18735;
+    s.tmp_0.arg0 = s.l___18732;
     s.callLocIdx = 1506; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
@@ -46019,7 +46015,7 @@ function jacs_OpWriter_spillValue__P6510_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  l___18735: undefined,
+  l___18732: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -46078,7 +46074,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.r___18755 = undefined;
+    s.r___18752 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -46097,20 +46093,20 @@ switch (step) {
     r0 = pxsim_pxtcore_mkClassInstance(jacs_Value__C3832_VT);
     s.tmp_0 = r0;
     r0 = undefined;
-    s.r___18755 = (s.tmp_0);
+    s.r___18752 = (s.tmp_0);
     r0 = s.arg0.fields["index"];
     s.tmp_0 = r0;
-    r0 = (s.r___18755).fields["numValue"] = (s.tmp_0);
-    r0 = (s.r___18755).fields["op"] = (1);
-    r0 = (s.r___18755).fields["flags"] = (2048);
-    r0 = (s.r___18755).fields["_cachedValue"] = (s.arg0);
+    r0 = (s.r___18752).fields["numValue"] = (s.tmp_0);
+    r0 = (s.r___18752).fields["op"] = (1);
+    r0 = (s.r___18752).fields["flags"] = (2048);
+    r0 = (s.r___18752).fields["_cachedValue"] = (s.arg0);
     s.tmp_0 = r0 = s.arg0;
     r0 = s.tmp_0.fields["numrefs"];
     s.tmp_2 = r0;
     r0 = (s.tmp_2 + 1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["numrefs"] = (s.tmp_1);
-    r0 = s.r___18755;
+    r0 = s.r___18752;
     return leave(s, r0)
   default: oops()
 } } }
@@ -46124,7 +46120,7 @@ function jacs_CachedValue_emit__P3850_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  r___18755: undefined,
+  r___18752: undefined,
   arg0: undefined,
 } }
 
@@ -46321,10 +46317,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.run___18824 = undefined;
-    s.runStart___18825 = undefined;
-    s.i___18826 = undefined;
-    s.i___18863 = undefined;
+    s.run___18821 = undefined;
+    s.runStart___18822 = undefined;
+    s.i___18823 = undefined;
+    s.i___18860 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -46332,11 +46328,11 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_OpWriter__C3857_VT)) failedCast(r0);
-    s.run___18824 = (0);
-    s.runStart___18825 = (0);
-    s.i___18826 = (0);
+    s.run___18821 = (0);
+    s.runStart___18822 = (0);
+    s.i___18823 = (0);
   case 1:
-    s.tmp_1 = r0 = s.i___18826;
+    s.tmp_1 = r0 = s.i___18823;
     r0 = s.arg0.fields["cachedValues"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__length(s.tmp_3);
@@ -46347,53 +46343,53 @@ switch (step) {
     if (!r0) { step = 6; continue; }
     r0 = s.arg0.fields["cachedValues"];
     s.tmp_6 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_6, s.i___18826);
+    r0 = pxsim_Array__getAt(s.tmp_6, s.i___18823);
     s.tmp_5 = r0;
     r0 = (s.tmp_5 == null);
     s.tmp_4 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 2; continue; }
-    r0 = (s.run___18824 + 1);
-    s.run___18824 = (r0);
+    r0 = (s.run___18821 + 1);
+    s.run___18821 = (r0);
     { step = 3; continue; }
   case 2:
-    s.run___18824 = (0);
-    r0 = (s.i___18826 + 1);
-    s.runStart___18825 = (r0);
+    s.run___18821 = (0);
+    r0 = (s.i___18823 + 1);
+    s.runStart___18822 = (r0);
   case 3:
-    r0 = (s.run___18824 >= s.arg1);
+    r0 = (s.run___18821 >= s.arg1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
     { step = 6; continue; }
   case 4:
   case 5:
-    r0 = (s.i___18826 + 1);
-    s.i___18826 = (r0);
+    r0 = (s.i___18823 + 1);
+    s.i___18823 = (r0);
     { step = 1; continue; }
   case 6:
   case 7:
-    r0 = (s.run___18824 < s.arg1);
+    r0 = (s.run___18821 < s.arg1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 8; continue; }
     r0 = s.arg0.fields["cachedValues"];
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_1, null);
-    r0 = (s.run___18824 + 1);
-    s.run___18824 = (r0);
+    r0 = (s.run___18821 + 1);
+    s.run___18821 = (r0);
     { step = 7; continue; }
   case 8:
-    s.i___18863 = (0);
+    s.i___18860 = (0);
   case 9:
-    r0 = (s.i___18863 < s.arg1);
+    r0 = (s.i___18860 < s.arg1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 10; continue; }
     s.tmp_1 = jacs_assert__P3817_mk(s);
     r0 = s.arg0.fields["cachedValues"];
     s.tmp_3 = r0;
-    r0 = (s.runStart___18825 + s.i___18863);
+    r0 = (s.runStart___18822 + s.i___18860);
     s.tmp_4 = r0;
     r0 = pxsim_Array__getAt(s.tmp_3, s.tmp_4);
     s.tmp_2 = r0;
@@ -46408,25 +46404,25 @@ switch (step) {
     s.tmp_1 = jacs_CachedValue_constructor__P3849_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
     s.tmp_1.arg1 = s.arg0;
-    r0 = (s.runStart___18825 + s.i___18863);
+    r0 = (s.runStart___18822 + s.i___18860);
     s.tmp_1.arg2 = r0;
     s.callLocIdx = 1442; s.pc = 12; return s.tmp_1;
   case 12:
     r0 = s.retval;
     r0 = s.arg0.fields["cachedValues"];
     s.tmp_2 = r0;
-    r0 = (s.runStart___18825 + s.i___18863);
+    r0 = (s.runStart___18822 + s.i___18860);
     s.tmp_3 = r0;
     r0 = pxsim_Array_.setAt(s.tmp_2, s.tmp_3, s.tmp_0);
-    r0 = (s.i___18863 + 1);
-    s.i___18863 = (r0);
+    r0 = (s.i___18860 + 1);
+    s.i___18860 = (r0);
     { step = 9; continue; }
   case 10:
     s.tmp_0 = helpers_arraySlice__P115_mk(s);
     r0 = s.arg0.fields["cachedValues"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = s.runStart___18825;
-    r0 = (s.runStart___18825 + s.arg1);
+    s.tmp_0.arg1 = s.runStart___18822;
+    r0 = (s.runStart___18822 + s.arg1);
     s.tmp_0.arg2 = r0;
     s.callLocIdx = 1443; s.pc = 13; return s.tmp_0;
   case 13:
@@ -46448,10 +46444,10 @@ function jacs_OpWriter_allocTmpLocals__P3875_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  run___18824: undefined,
-  runStart___18825: undefined,
-  i___18826: undefined,
-  i___18863: undefined,
+  run___18821: undefined,
+  runStart___18822: undefined,
+  i___18823: undefined,
+  i___18860: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -46568,7 +46564,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.n___18915 = undefined;
+    s.n___18912 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -46576,7 +46572,7 @@ switch (step) {
     r0 = pxsim_String_.charCodeAt(globals.OP_PROPS___3715, s.arg0);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 & 15);
-    s.n___18915 = (r0);
+    s.n___18912 = (r0);
     s.tmp_1 = jacs_opTakesNumber__P3768_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.callLocIdx = 1389; s.pc = 3; return s.tmp_1;
@@ -46585,11 +46581,11 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
-    r0 = (s.n___18915 + 1);
-    s.n___18915 = (r0);
+    r0 = (s.n___18912 + 1);
+    s.n___18912 = (r0);
   case 1:
   case 2:
-    r0 = s.n___18915;
+    r0 = s.n___18912;
     return leave(s, r0)
   default: oops()
 } } }
@@ -46602,7 +46598,7 @@ function jacs_opNumArgs__P3771_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  n___18915: undefined,
+  n___18912: undefined,
   arg0: undefined,
 } }
 
@@ -46658,7 +46654,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_6 = r0;
     r0 = pxsim_Array_.setAt(s.tmp_4, s.tmp_5, s.tmp_6);
-    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_pageProc_inline__P18944);
+    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_pageProc_inline__P18941);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg1);
@@ -46704,7 +46700,7 @@ function jacs_TopWriter_pageProc__P6552_mk(s) {
 
 
 
-function jacs_TopWriter_pageProc_inline__P18944(s) {
+function jacs_TopWriter_pageProc_inline__P18941(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -46752,12 +46748,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_pageProc_inline__P18944.info = {"start":31044,"length":333,"line":880,"column":60,"endLine":887,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_pageProc_inline__P18941.info = {"start":31044,"length":333,"line":880,"column":60,"endLine":887,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
-function jacs_TopWriter_pageProc_inline__P18944_mk(s) {
+function jacs_TopWriter_pageProc_inline__P18941_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_pageProc_inline__P18944, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_pageProc_inline__P18941, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -46835,10 +46831,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.proc___18976 = undefined;
-    s.localidx___18983 = undefined;
-    s.numargs___18991 = undefined;
-    s.c___19014 = undefined;
+    s.proc___18973 = undefined;
+    s.localidx___18980 = undefined;
+    s.numargs___18988 = undefined;
+    s.c___19011 = undefined;
     s.unnamed128___U4 = undefined;
     s.unnamed129___U5 = undefined;
     if (s.lambdaArgs) {
@@ -46866,7 +46862,7 @@ switch (step) {
     s.callLocIdx = 1446; s.pc = 8; return s.tmp_3;
   case 8:
     r0 = s.retval;
-    s.proc___18976 = (r0);
+    s.proc___18973 = (r0);
     r0 = pxsim_Array__getAt(s.arg2, 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
@@ -46884,23 +46880,23 @@ switch (step) {
     s.callLocIdx = 1447; s.pc = 9; return s.tmp_2;
   case 9:
     r0 = s.retval;
-    s.localidx___18983 = (r0);
+    s.localidx___18980 = (r0);
     s.tmp_0 = jacs_literal__P3854_mk(s);
     r0 = pxsim_Array__length(s.arg2);
     s.tmp_0.arg0 = r0;
     s.callLocIdx = 1448; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
-    s.numargs___18991 = (r0);
+    s.numargs___18988 = (r0);
     r0 = (s.arg3 == 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
     r0 = pxsim_Array__mk();
     s.tmp_1 = r0;
-    r0 = pxsim_Array__push(s.tmp_1, s.localidx___18983);
-    r0 = pxsim_Array__push(s.tmp_1, s.numargs___18991);
-    r0 = pxsim_Array__push(s.tmp_1, s.proc___18976);
+    r0 = pxsim_Array__push(s.tmp_1, s.localidx___18980);
+    r0 = pxsim_Array__push(s.tmp_1, s.numargs___18988);
+    r0 = pxsim_Array__push(s.tmp_1, s.proc___18973);
     s.tmp_2 = jacs_OpWriter_emitStmt__P3898_mk(s);
     s.tmp_2.arg0 = s.arg0;
     s.tmp_2.arg1 = 73;
@@ -46912,9 +46908,9 @@ switch (step) {
   case 3:
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.localidx___18983);
-    r0 = pxsim_Array__push(s.tmp_0, s.numargs___18991);
-    r0 = pxsim_Array__push(s.tmp_0, s.proc___18976);
+    r0 = pxsim_Array__push(s.tmp_0, s.localidx___18980);
+    r0 = pxsim_Array__push(s.tmp_0, s.numargs___18988);
+    r0 = pxsim_Array__push(s.tmp_0, s.proc___18973);
     s.tmp_2 = jacs_literal__P3854_mk(s);
     s.tmp_2.arg0 = s.arg3;
     s.callLocIdx = 1450; s.pc = 12; return s.tmp_2;
@@ -46930,7 +46926,7 @@ switch (step) {
   case 13:
     r0 = s.retval;
   case 4:
-    s.c___19014 = (undefined);
+    s.c___19011 = (undefined);
     s.unnamed128___U4 = (s.arg2);
     s.unnamed129___U5 = (0);
   case 5:
@@ -46940,9 +46936,9 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
     r0 = pxsim_Array__getAt(s.unnamed128___U4, s.unnamed129___U5);
-    s.c___19014 = (r0);
+    s.c___19011 = (r0);
     s.tmp_2 = jacs_CachedValue_free__P3853_mk(s);
-    s.tmp_2.arg0 = s.c___19014;
+    s.tmp_2.arg0 = s.c___19011;
     s.callLocIdx = 1452; s.pc = 14; return s.tmp_2;
   case 14:
     r0 = s.retval;
@@ -46966,10 +46962,10 @@ function jacs_OpWriter_emitCall__P3882_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  proc___18976: undefined,
-  localidx___18983: undefined,
-  numargs___18991: undefined,
-  c___19014: undefined,
+  proc___18973: undefined,
+  localidx___18980: undefined,
+  numargs___18988: undefined,
+  c___19011: undefined,
   unnamed128___U4: undefined,
   unnamed129___U5: undefined,
   arg0: undefined,
@@ -46992,15 +46988,15 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.loading_anim___19019 = undefined;
-    s.scr___19022 = undefined;
+    s.loading_anim___19016 = undefined;
+    s.scr___19019 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
-    s.loading_anim___19019 = (_hex19020);
+    s.loading_anim___19016 = (_hex19017);
     s.tmp_0 = jacs_TopWriter_lookupRole__P3962_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = "dotMatrix";
@@ -47008,11 +47004,11 @@ switch (step) {
     s.callLocIdx = 1904; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.scr___19022 = (r0);
+    s.scr___19019 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     s.tmp_2 = jacs_Role_emit__P6525_mk(s);
-    s.tmp_2.arg0 = s.scr___19022;
+    s.tmp_2.arg0 = s.scr___19019;
     r0 = s.arg0.fields["writer"];
     s.tmp_2.arg1 = r0;
     s.callLocIdx = 1905; s.pc = 2; return s.tmp_2;
@@ -47022,7 +47018,7 @@ switch (step) {
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
     s.tmp_4 = jacs_TopWriter_emitString__P3949_mk(s);
     s.tmp_4.arg0 = s.arg0;
-    s.tmp_4.arg1 = s.loading_anim___19019;
+    s.tmp_4.arg1 = s.loading_anim___19016;
     s.callLocIdx = 1906; s.pc = 3; return s.tmp_4;
   case 3:
     r0 = s.retval;
@@ -47061,12 +47057,12 @@ function jacs_TopWriter_emitClearScreen__P6556_mk(s) {
   tmp_5: undefined,
   tmp_6: undefined,
   tmp_7: undefined,
-  loading_anim___19019: undefined,
-  scr___19022: undefined,
+  loading_anim___19016: undefined,
+  scr___19019: undefined,
   arg0: undefined,
 } }
 
-const _hex19020 = pxsim.BufferMethods.createBufferFromHex("0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000")
+const _hex19017 = pxsim.BufferMethods.createBufferFromHex("0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000")
 
 
 
@@ -47144,8 +47140,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.i___19049 = undefined;
-    s.i___19065 = undefined;
+    s.i___19046 = undefined;
+    s.i___19062 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -47159,9 +47155,9 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
-    s.i___19049 = (0);
+    s.i___19046 = (0);
   case 1:
-    s.tmp_1 = r0 = s.i___19049;
+    s.tmp_1 = r0 = s.i___19046;
     r0 = s.arg0.fields["stringLiterals"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__length(s.tmp_3);
@@ -47173,25 +47169,25 @@ switch (step) {
     s.tmp_5 = r0 = s.arg1;
     r0 = s.arg0.fields["stringLiterals"];
     s.tmp_7 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_7, s.i___19049);
+    r0 = pxsim_Array__getAt(s.tmp_7, s.i___19046);
     s.tmp_6 = r0;
     r0 = (s.tmp_5 == s.tmp_6);
     s.tmp_4 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 2; continue; }
-    r0 = s.i___19049;
+    r0 = s.i___19046;
     { step = 13; continue; }
   case 2:
   case 3:
-    r0 = (s.i___19049 + 1);
-    s.i___19049 = (r0);
+    r0 = (s.i___19046 + 1);
+    s.i___19046 = (r0);
     { step = 1; continue; }
   case 4:
     { step = 12; continue; }
   case 5:
-    s.i___19065 = (0);
+    s.i___19062 = (0);
   case 6:
-    s.tmp_1 = r0 = s.i___19065;
+    s.tmp_1 = r0 = s.i___19062;
     r0 = s.arg0.fields["stringLiterals"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__length(s.tmp_3);
@@ -47202,7 +47198,7 @@ switch (step) {
     if (!r0) { step = 11; continue; }
     r0 = s.arg0.fields["stringLiterals"];
     s.tmp_7 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_7, s.i___19065);
+    r0 = pxsim_Array__getAt(s.tmp_7, s.i___19062);
     s.tmp_6 = r0;
     r0 = pxsim_pxtcore.typeOf(s.tmp_6);
     s.tmp_5 = r0;
@@ -47217,7 +47213,7 @@ switch (step) {
     s.tmp_8.arg0 = s.arg1;
     r0 = s.arg0.fields["stringLiterals"];
     s.tmp_9 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_9, s.i___19065);
+    r0 = pxsim_Array__getAt(s.tmp_9, s.i___19062);
     s.tmp_8.arg1 = r0;
     s.callLocIdx = 1607; s.pc = 14; return s.tmp_8;
   case 14:
@@ -47227,12 +47223,12 @@ switch (step) {
     s.tmp_10 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_10);
     if (!r0) { step = 9; continue; }
-    r0 = s.i___19065;
+    r0 = s.i___19062;
     { step = 13; continue; }
   case 9:
   case 10:
-    r0 = (s.i___19065 + 1);
-    s.i___19065 = (r0);
+    r0 = (s.i___19062 + 1);
+    s.i___19062 = (r0);
     { step = 6; continue; }
   case 11:
   case 12:
@@ -47266,8 +47262,8 @@ function jacs_TopWriter_addString__P3948_mk(s) {
   tmp_8: undefined,
   tmp_9: undefined,
   tmp_10: undefined,
-  i___19049: undefined,
-  i___19065: undefined,
+  i___19046: undefined,
+  i___19062: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -47286,7 +47282,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.i___19115 = undefined;
+    s.i___19112 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -47341,18 +47337,18 @@ switch (step) {
     { step = 11; continue; }
   case 5:
   case 6:
-    s.i___19115 = (0);
+    s.i___19112 = (0);
   case 7:
-    s.tmp_1 = r0 = s.i___19115;
+    s.tmp_1 = r0 = s.i___19112;
     r0 = pxsim.BufferMethods.length(s.arg0);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 10; continue; }
-    r0 = pxsim.BufferMethods.getByte(s.arg0, s.i___19115);
+    r0 = pxsim.BufferMethods.getByte(s.arg0, s.i___19112);
     s.tmp_4 = r0;
-    r0 = pxsim.BufferMethods.getByte(s.arg1, s.i___19115);
+    r0 = pxsim.BufferMethods.getByte(s.arg1, s.i___19112);
     s.tmp_5 = r0;
     r0 = (s.tmp_4 != s.tmp_5);
     s.tmp_3 = r0;
@@ -47362,8 +47358,8 @@ switch (step) {
     { step = 11; continue; }
   case 8:
   case 9:
-    r0 = (s.i___19115 + 1);
-    s.i___19115 = (r0);
+    r0 = (s.i___19112 + 1);
+    s.i___19112 = (r0);
     { step = 7; continue; }
   case 10:
     r0 = true;
@@ -47393,7 +47389,7 @@ function helpers_bufferEquals__P187_mk(s) {
   tmp_12: undefined,
   tmp_13: undefined,
   tmp_14: undefined,
-  i___19115: undefined,
+  i___19112: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -47412,9 +47408,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.proc___19133 = undefined;
-    s.args___19137 = undefined;
-    s.i___19144 = undefined;
+    s.proc___19130 = undefined;
+    s.args___19134 = undefined;
+    s.i___19141 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -47429,7 +47425,7 @@ switch (step) {
     s.callLocIdx = 1690; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    s.proc___19133 = (r0);
+    s.proc___19130 = (r0);
     s.tmp_0 = jacs_OpWriter_allocTmpLocals__P3875_mk(s);
     r0 = s.arg0.fields["writer"];
     s.tmp_0.arg0 = r0;
@@ -47438,10 +47434,10 @@ switch (step) {
     s.callLocIdx = 1691; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
-    s.args___19137 = (r0);
-    s.i___19144 = (0);
+    s.args___19134 = (r0);
+    s.i___19141 = (0);
   case 1:
-    s.tmp_1 = r0 = s.i___19144;
+    s.tmp_1 = r0 = s.i___19141;
     r0 = pxsim_Array__length(s.arg2);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
@@ -47449,23 +47445,23 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
     s.tmp_3 = jacs_CachedValue_store__P3851_mk(s);
-    r0 = pxsim_Array__getAt(s.args___19137, s.i___19144);
+    r0 = pxsim_Array__getAt(s.args___19134, s.i___19141);
     s.tmp_3.arg0 = r0;
-    r0 = pxsim_Array__getAt(s.arg2, s.i___19144);
+    r0 = pxsim_Array__getAt(s.arg2, s.i___19141);
     s.tmp_3.arg1 = r0;
     s.callLocIdx = 1692; s.pc = 5; return s.tmp_3;
   case 5:
     r0 = s.retval;
-    r0 = (s.i___19144 + 1);
-    s.i___19144 = (r0);
+    r0 = (s.i___19141 + 1);
+    s.i___19141 = (r0);
     { step = 1; continue; }
   case 2:
     s.tmp_0 = jacs_OpWriter_emitCall__P3882_mk(s);
     r0 = s.arg0.fields["writer"];
     s.tmp_0.arg0 = r0;
-    r0 = s.proc___19133.fields["index"];
+    r0 = s.proc___19130.fields["index"];
     s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = s.args___19137;
+    s.tmp_0.arg2 = s.args___19134;
     s.tmp_0.arg3 = 0;
     s.callLocIdx = 1693; s.pc = 6; return s.tmp_0;
   case 6:
@@ -47485,9 +47481,9 @@ function jacs_TopWriter_callLinked__P6530_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  proc___19133: undefined,
-  args___19137: undefined,
-  i___19144: undefined,
+  proc___19130: undefined,
+  args___19134: undefined,
+  i___19141: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -47507,10 +47503,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.lname___19166 = undefined;
-    s.proc___19172 = undefined;
-    s.fullbody___19185 = undefined;
-    s.body___19200 = undefined;
+    s.lname___19163 = undefined;
+    s.proc___19169 = undefined;
+    s.fullbody___19182 = undefined;
+    s.body___19197 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -47526,10 +47522,10 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_String__concat("_l_", s.tmp_0);
-    s.lname___19166 = (r0);
-    r0 = pxsim_pxtcore_mkAction(1, proc_inline__P19176);
+    s.lname___19163 = (r0);
+    r0 = pxsim_pxtcore_mkAction(1, proc_inline__P19173);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.lname___19166);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.lname___19163);
     s.tmp_1 = helpers_arrayFind__P111_mk(s);
     r0 = s.arg0.fields["procs"];
     s.tmp_1.arg0 = r0;
@@ -47537,10 +47533,10 @@ switch (step) {
     s.callLocIdx = 1942; s.pc = 7; return s.tmp_1;
   case 7:
     r0 = s.retval;
-    s.proc___19172 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.proc___19172);
+    s.proc___19169 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.proc___19169);
     if (!r0) { step = 1; continue; }
-    r0 = s.proc___19172;
+    r0 = s.proc___19169;
     { step = 5; continue; }
   case 1:
   case 2:
@@ -47549,8 +47545,8 @@ switch (step) {
     s.callLocIdx = 1943; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
-    s.fullbody___19185 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.fullbody___19185);
+    s.fullbody___19182 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.fullbody___19182);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -47572,27 +47568,27 @@ switch (step) {
   case 4:
     s.tmp_4 = jacs_TopWriter_addProc__P3956_mk(s);
     s.tmp_4.arg0 = s.arg0;
-    s.tmp_4.arg1 = s.lname___19166;
+    s.tmp_4.arg1 = s.lname___19163;
     s.callLocIdx = 1944; s.pc = 10; return s.tmp_4;
   case 10:
     r0 = s.retval;
-    s.proc___19172 = (r0);
+    s.proc___19169 = (r0);
     s.tmp_0 = jacs_OpWriter_setExternal__P3870_mk(s);
-    r0 = s.proc___19172.fields["writer"];
+    r0 = s.proc___19169.fields["writer"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = s.fullbody___19185;
+    s.tmp_0.arg1 = s.fullbody___19182;
     s.callLocIdx = 1945; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    s.body___19200 = (r0);
+    s.body___19197 = (r0);
     s.tmp_0 = jacs_patchBody__P6572_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.body___19200;
+    s.tmp_0.arg1 = s.body___19197;
     s.tmp_0.arg2 = s.arg1;
     s.callLocIdx = 1946; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
-    r0 = s.proc___19172;
+    r0 = s.proc___19169;
   case 5:
     return leave(s, r0)
   default: oops()
@@ -47609,10 +47605,10 @@ function jacs_linkFunction__P3986_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  lname___19166: undefined,
-  proc___19172: undefined,
-  fullbody___19185: undefined,
-  body___19200: undefined,
+  lname___19163: undefined,
+  proc___19169: undefined,
+  fullbody___19182: undefined,
+  body___19197: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -47621,7 +47617,7 @@ function jacs_linkFunction__P3986_mk(s) {
 
 
 
-function proc_inline__P19176(s) {
+function proc_inline__P19173(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -47641,12 +47637,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-proc_inline__P19176.info = {"start":2116,"length":20,"line":57,"column":34,"endLine":57,"endColumn":54,"fileName":"jacs_linker.ts","functionName":"inline","argumentNames":["p"]}
+proc_inline__P19173.info = {"start":2116,"length":20,"line":57,"column":34,"endLine":57,"endColumn":54,"fileName":"jacs_linker.ts","functionName":"inline","argumentNames":["p"]}
 
-function proc_inline__P19176_mk(s) {
+function proc_inline__P19173_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: proc_inline__P19176, depth: s.depth + 1,
+        parent: s, fn: proc_inline__P19173, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -47666,34 +47662,34 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.i___19214 = undefined;
-    s.op___19220 = undefined;
-    s.intarg___19224 = undefined;
-    s.len___19236 = undefined;
-    s.patched___19248 = undefined;
-    s.b___19258 = undefined;
-    s.called___19276 = undefined;
-    s.f___19285 = undefined;
+    s.i___19211 = undefined;
+    s.op___19217 = undefined;
+    s.intarg___19221 = undefined;
+    s.len___19233 = undefined;
+    s.patched___19245 = undefined;
+    s.b___19255 = undefined;
+    s.called___19273 = undefined;
+    s.f___19282 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.arg2 = (s.lambdaArgs[2]);
       s.lambdaArgs = null;
     }
-    s.i___19214 = (0);
+    s.i___19211 = (0);
   case 1:
-    s.tmp_1 = r0 = s.i___19214;
+    s.tmp_1 = r0 = s.i___19211;
     r0 = pxsim.BufferMethods.length(s.arg1);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 21; continue; }
-    r0 = pxsim.BufferMethods.getByte(s.arg1, s.i___19214);
-    s.op___19220 = (r0);
-    s.intarg___19224 = (null);
+    r0 = pxsim.BufferMethods.getByte(s.arg1, s.i___19211);
+    s.op___19217 = (r0);
+    s.intarg___19221 = (null);
     s.tmp_1 = jacs_opTakesNumber__P3768_mk(s);
-    r0 = pxsim.BufferMethods.getByte(s.arg1, s.i___19214);
+    r0 = pxsim.BufferMethods.getByte(s.arg1, s.i___19211);
     s.tmp_1.arg0 = r0;
     s.callLocIdx = 1932; s.pc = 23; return s.tmp_1;
   case 23:
@@ -47701,28 +47697,28 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    r0 = (s.i___19214 + 1);
+    r0 = (s.i___19211 + 1);
     s.tmp_2 = r0;
-    s.i___19214 = (r0);
+    s.i___19211 = (r0);
     r0 = pxsim.BufferMethods.getByte(s.arg1, s.tmp_2);
-    s.intarg___19224 = (r0);
-    r0 = (s.intarg___19224 >= 248);
+    s.intarg___19221 = (r0);
+    r0 = (s.intarg___19221 >= 248);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
-    r0 = (s.intarg___19224 & 3);
+    r0 = (s.intarg___19221 & 3);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 + 1);
-    s.len___19236 = (r0);
-    r0 = (s.i___19214 + s.len___19236);
-    s.i___19214 = (r0);
-    s.intarg___19224 = (null);
+    s.len___19233 = (r0);
+    r0 = (s.i___19211 + s.len___19233);
+    s.i___19211 = (r0);
+    s.intarg___19221 = (null);
   case 2:
   case 3:
   case 4:
   case 5:
-    s.patched___19248 = (null);
-    s.tmp_0 = r0 = s.op___19220;
+    s.patched___19245 = (null);
+    s.tmp_0 = r0 = s.op___19217;
     r0 = pxsim_pxtcore.switch_eq(51, s.tmp_0);
     if (r0) { step = 6; continue; }
     r0 = pxsim_pxtcore.switch_eq(90, s.tmp_0);
@@ -47739,23 +47735,23 @@ switch (step) {
     { step = 14; continue; }
   case 6:
     s.tmp_1 = jacs__binGetString__P3989_mk(s);
-    s.tmp_1.arg0 = s.intarg___19224;
+    s.tmp_1.arg0 = s.intarg___19221;
     s.callLocIdx = 1933; s.pc = 24; return s.tmp_1;
   case 24:
     r0 = s.retval;
-    s.b___19258 = (r0);
-    r0 = (s.b___19258 == null);
+    s.b___19255 = (r0);
+    r0 = (s.b___19255 == null);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
     s.tmp_1 = jacs_TopWriter_error__P3960_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    if ((s.intarg___19224) && (s.intarg___19224).vtable) {
+    if ((s.intarg___19221) && (s.intarg___19221).vtable) {
     setupResume(s, 26);
-    pxsim_String__stringConv(s.intarg___19224);
+    pxsim_String__stringConv(s.intarg___19221);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.intarg___19224) + ""; }
+    } else { s.retval = (s.intarg___19221) + ""; }
   case 26:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -47769,17 +47765,17 @@ switch (step) {
   case 8:
     s.tmp_0 = jacs_TopWriter_addString__P3948_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.b___19258;
+    s.tmp_0.arg1 = s.b___19255;
     s.callLocIdx = 1935; s.pc = 27; return s.tmp_0;
   case 27:
     r0 = s.retval;
-    s.patched___19248 = (r0);
+    s.patched___19245 = (r0);
     { step = 14; continue; }
   case 9:
     s.tmp_0 = jacs_linkFunction__P3986_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_1 = jacs_functionName__P6571_mk(s);
-    s.tmp_1.arg0 = s.intarg___19224;
+    s.tmp_1.arg0 = s.intarg___19221;
     s.callLocIdx = 1936; s.pc = 29; return s.tmp_1;
   case 29:
     r0 = s.retval;
@@ -47787,35 +47783,35 @@ switch (step) {
     s.callLocIdx = 1937; s.pc = 28; return s.tmp_0;
   case 28:
     r0 = s.retval;
-    s.called___19276 = (r0);
-    r0 = s.called___19276.fields["index"];
-    s.patched___19248 = (r0);
+    s.called___19273 = (r0);
+    r0 = s.called___19273.fields["index"];
+    s.patched___19245 = (r0);
     { step = 14; continue; }
   case 10:
     s.tmp_0 = r0 = globals._binFloatLits___3990;
-    r0 = (s.intarg___19224 * 8);
+    r0 = (s.intarg___19221 * 8);
     s.tmp_1 = r0;
     r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 14, s.tmp_1);
-    s.f___19285 = (r0);
+    s.f___19282 = (r0);
     s.tmp_0 = jacs_TopWriter_addFloat__P3950_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.f___19285;
+    s.tmp_0.arg1 = s.f___19282;
     s.callLocIdx = 1938; s.pc = 30; return s.tmp_0;
   case 30:
     r0 = s.retval;
-    s.patched___19248 = (r0);
+    s.patched___19245 = (r0);
     { step = 14; continue; }
   case 11:
   case 12:
   case 13:
     s.tmp_0 = jacs_TopWriter_error__P3960_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    if ((s.op___19220) && (s.op___19220).vtable) {
+    if ((s.op___19217) && (s.op___19217).vtable) {
     setupResume(s, 32);
-    pxsim_String__stringConv(s.op___19220);
+    pxsim_String__stringConv(s.op___19217);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.op___19220) + ""; }
+    } else { s.retval = (s.op___19217) + ""; }
   case 32:
     r0 = s.retval;
     s.tmp_5 = r0;
@@ -47836,12 +47832,12 @@ switch (step) {
     s.tmp_2 = r0;
     r0 = pxsim_String__concat(s.tmp_2, ":");
     s.tmp_1 = r0;
-    if ((s.i___19214) && (s.i___19214).vtable) {
+    if ((s.i___19211) && (s.i___19211).vtable) {
     setupResume(s, 34);
-    pxsim_String__stringConv(s.i___19214);
+    pxsim_String__stringConv(s.i___19211);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.i___19214) + ""; }
+    } else { s.retval = (s.i___19211) + ""; }
   case 34:
     r0 = s.retval;
     s.tmp_7 = r0;
@@ -47852,11 +47848,11 @@ switch (step) {
     r0 = s.retval;
     { step = 22; continue; }
   case 14:
-    r0 = (s.patched___19248 != null);
+    r0 = (s.patched___19245 != null);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 19; continue; }
-    r0 = (s.intarg___19224 == null);
+    r0 = (s.intarg___19221 == null);
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 15; continue; }
@@ -47868,18 +47864,18 @@ switch (step) {
     r0 = s.retval;
     { step = 18; continue; }
   case 15:
-    r0 = (s.patched___19248 > 248);
+    r0 = (s.patched___19245 > 248);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 16; continue; }
     s.tmp_1 = jacs_TopWriter_error__P3960_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    if ((s.patched___19248) && (s.patched___19248).vtable) {
+    if ((s.patched___19245) && (s.patched___19245).vtable) {
     setupResume(s, 37);
-    pxsim_String__stringConv(s.patched___19248);
+    pxsim_String__stringConv(s.patched___19245);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.patched___19248) + ""; }
+    } else { s.retval = (s.patched___19245) + ""; }
   case 37:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -47890,13 +47886,13 @@ switch (step) {
     r0 = s.retval;
     { step = 17; continue; }
   case 16:
-    r0 = pxsim.BufferMethods.setByte(s.arg1, s.i___19214, s.patched___19248);
+    r0 = pxsim.BufferMethods.setByte(s.arg1, s.i___19211, s.patched___19245);
   case 17:
   case 18:
   case 19:
   case 20:
-    r0 = (s.i___19214 + 1);
-    s.i___19214 = (r0);
+    r0 = (s.i___19211 + 1);
+    s.i___19211 = (r0);
     { step = 1; continue; }
   case 21:
   case 22:
@@ -47919,14 +47915,14 @@ function jacs_patchBody__P6572_mk(s) {
   tmp_5: undefined,
   tmp_6: undefined,
   tmp_7: undefined,
-  i___19214: undefined,
-  op___19220: undefined,
-  intarg___19224: undefined,
-  len___19236: undefined,
-  patched___19248: undefined,
-  b___19258: undefined,
-  called___19276: undefined,
-  f___19285: undefined,
+  i___19211: undefined,
+  op___19217: undefined,
+  intarg___19221: undefined,
+  len___19233: undefined,
+  patched___19245: undefined,
+  b___19255: undefined,
+  called___19273: undefined,
+  f___19282: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -47989,24 +47985,24 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.idx___19344 = undefined;
+    s.idx___19341 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = pxsim_Array_.indexOf(s.arg0, s.arg1, undefined);
-    s.idx___19344 = (r0);
-    r0 = (s.idx___19344 < 0);
+    s.idx___19341 = (r0);
+    r0 = (s.idx___19341 < 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     r0 = pxsim_Array__length(s.arg0);
-    s.idx___19344 = (r0);
+    s.idx___19341 = (r0);
     r0 = pxsim_Array__push(s.arg0, s.arg1);
   case 1:
   case 2:
-    r0 = s.idx___19344;
+    r0 = s.idx___19341;
     return leave(s, r0)
   default: oops()
 } } }
@@ -48018,7 +48014,7 @@ function jacs_addUnique__P3920_mk(s) {
         parent: s, fn: jacs_addUnique__P3920, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  idx___19344: undefined,
+  idx___19341: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -48037,8 +48033,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.desc___19361 = undefined;
-    s.nameidx___19365 = undefined;
+    s.desc___19358 = undefined;
+    s.nameidx___19362 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -48048,11 +48044,11 @@ switch (step) {
     s.callLocIdx = 1930; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.desc___19361 = (r0);
-    r0 = pxsim.BufferMethods.getNumber(s.desc___19361, 4, 12);
-    s.nameidx___19365 = (r0);
+    s.desc___19358 = (r0);
+    r0 = pxsim.BufferMethods.getNumber(s.desc___19358, 4, 12);
+    s.nameidx___19362 = (r0);
     s.tmp_0 = jacs__binGetString__P3989_mk(s);
-    s.tmp_0.arg0 = s.nameidx___19365;
+    s.tmp_0.arg0 = s.nameidx___19362;
     s.callLocIdx = 1931; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
@@ -48067,8 +48063,8 @@ function jacs_functionName__P6571_mk(s) {
         parent: s, fn: jacs_functionName__P6571, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  desc___19361: undefined,
-  nameidx___19365: undefined,
+  desc___19358: undefined,
+  nameidx___19362: undefined,
   arg0: undefined,
 } }
 
@@ -48272,7 +48268,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.body___19408 = undefined;
+    s.body___19405 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -48281,19 +48277,19 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_OpWriter__C3857_VT)) failedCast(r0);
     r0 = pxsim.BufferMethods.slice(s.arg1, 16, -1);
-    s.body___19408 = (r0);
+    s.body___19405 = (r0);
     r0 = s.arg0.fields["desc"];
     s.tmp_0 = r0;
     r0 = pxsim.BufferMethods.write(s.tmp_0, 0, s.arg1);
     r0 = (s.arg0).fields["external"] = (true);
-    r0 = (s.arg0).fields["binary"] = (s.body___19408);
+    r0 = (s.arg0).fields["binary"] = (s.body___19405);
     s.tmp_0 = r0 = s.arg0;
     r0 = s.arg0.fields["binary"];
     s.tmp_2 = r0;
     r0 = pxsim.BufferMethods.length(s.tmp_2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["binPtr"] = (s.tmp_1);
-    r0 = s.body___19408;
+    r0 = s.body___19405;
     return leave(s, r0)
   default: oops()
 } } }
@@ -48307,7 +48303,7 @@ function jacs_OpWriter_setExternal__P3870_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  body___19408: undefined,
+  body___19405: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -48343,7 +48339,7 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 3; continue; }
-    r0 = _hex19437;
+    r0 = _hex19434;
     { step = 37; continue; }
   case 3:
   case 4:
@@ -48360,7 +48356,7 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_3);
     if (!r0) { step = 7; continue; }
-    r0 = _hex19444;
+    r0 = _hex19441;
     { step = 37; continue; }
   case 7:
   case 8:
@@ -48377,7 +48373,7 @@ switch (step) {
     s.tmp_5 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_5);
     if (!r0) { step = 11; continue; }
-    r0 = _hex19451;
+    r0 = _hex19448;
     { step = 37; continue; }
   case 11:
   case 12:
@@ -48394,7 +48390,7 @@ switch (step) {
     s.tmp_7 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_7);
     if (!r0) { step = 15; continue; }
-    r0 = _hex19458;
+    r0 = _hex19455;
     { step = 37; continue; }
   case 15:
   case 16:
@@ -48411,7 +48407,7 @@ switch (step) {
     s.tmp_9 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_9);
     if (!r0) { step = 19; continue; }
-    r0 = _hex19465;
+    r0 = _hex19462;
     { step = 37; continue; }
   case 19:
   case 20:
@@ -48428,7 +48424,7 @@ switch (step) {
     s.tmp_11 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_11);
     if (!r0) { step = 23; continue; }
-    r0 = _hex19472;
+    r0 = _hex19469;
     { step = 37; continue; }
   case 23:
   case 24:
@@ -48445,7 +48441,7 @@ switch (step) {
     s.tmp_13 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_13);
     if (!r0) { step = 27; continue; }
-    r0 = _hex19479;
+    r0 = _hex19476;
     { step = 37; continue; }
   case 27:
   case 28:
@@ -48462,7 +48458,7 @@ switch (step) {
     s.tmp_15 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_15);
     if (!r0) { step = 31; continue; }
-    r0 = _hex19486;
+    r0 = _hex19483;
     { step = 37; continue; }
   case 31:
   case 32:
@@ -48479,7 +48475,7 @@ switch (step) {
     s.tmp_17 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_17);
     if (!r0) { step = 35; continue; }
-    r0 = _hex19493;
+    r0 = _hex19490;
     { step = 37; continue; }
   case 35:
   case 36:
@@ -48516,15 +48512,15 @@ function jacs__binGetProc__P3988_mk(s) {
   arg0: undefined,
 } }
 
-const _hex19437 = pxsim.BufferMethods.createBufferFromHex("00000000940000000a000300020000002d0004f8ff1b04c026982a4f002d0204f8ff2d012c26982a4f012d0201012c4f020100cf1b4f030103010226962a01011a4f04cf01032c010226962a01011a4f050100962a4f060106901f4df9001401054f0701044f0801014f094cf900280106911f4df9001401014f0701054f0801044f094cf9001001044f0701014f0801054f090107a029010898291c01091c4b394b0000")
-const _hex19444 = pxsim.BufferMethods.createBufferFromHex("000000003400000000000200030000002d00932652003b902d002d01a02a04f8ff1b513b902d00911a2d01982a04f8ff1b513b902d00921a2d0104f8ff1b51394b000000")
-const _hex19451 = pxsim.BufferMethods.createBufferFromHex("000000001800000001000100040000002d0004f9018290413b9190034f00010093264601004b394b")
-const _hex19458 = pxsim.BufferMethods.createBufferFromHex("000000003c00000004000200050000002d004f00915a034900064f02904f0301030102234df9001a01034f002d014f01925a0249000103911a4f034cfc1c2d0004f9200242913f394b000000")
-const _hex19465 = pxsim.BufferMethods.createBufferFromHex("000000005000000004000100060000002d004f00915a034900064f02904f030103ae234df9002f01029326460102912c174f0004faffffff4f01925a0249002d0004f920024205003f0103911a4f034cfc3001029326462d0004f9200242394b")
-const _hex19472 = pxsim.BufferMethods.createBufferFromHex("000000009800000009000100070000002d004f00915a034900064f05904f0601060105234df900800105932646904f0701070105234df9005c010601071a4f0801050108224df9000b010801052c4f08904f00010898290105204f0104f8ff4f02935a074900064f0801074f0001084f0204f8ff4f0304f8ff4f04935a014902064f01925a0249000107911a4f074cfc5e2d0004f920024205013f0106911a4f064cfc82394b0000")
-const _hex19479 = pxsim.BufferMethods.createBufferFromHex("000000002000000000000300080000002d012d00234df900072d004b2d022d01234df900072d024b2d014b394b000000")
-const _hex19486 = pxsim.BufferMethods.createBufferFromHex("00000000340000000100030009000000904f0001002d0136234df9002695463b902d01010095482d0004f92002422d0204f903e81e3f0100951a4f004cfc29394b000000")
-const _hex19493 = pxsim.BufferMethods.createBufferFromHex("0000000008000000000000000a00000004f90209404cfc05")
+const _hex19434 = pxsim.BufferMethods.createBufferFromHex("00000000940000000a000300020000002d0004f8ff1b04c026982a4f002d0204f8ff2d012c26982a4f012d0201012c4f020100cf1b4f030103010226962a01011a4f04cf01032c010226962a01011a4f050100962a4f060106901f4df9001401054f0701044f0801014f094cf900280106911f4df9001401014f0701054f0801044f094cf9001001044f0701014f0801054f090107a029010898291c01091c4b394b0000")
+const _hex19441 = pxsim.BufferMethods.createBufferFromHex("000000003400000000000200030000002d00932652003b902d002d01a02a04f8ff1b513b902d00911a2d01982a04f8ff1b513b902d00921a2d0104f8ff1b51394b000000")
+const _hex19448 = pxsim.BufferMethods.createBufferFromHex("000000001800000001000100040000002d0004f9018290413b9190034f00010093264601004b394b")
+const _hex19455 = pxsim.BufferMethods.createBufferFromHex("000000003c00000004000200050000002d004f00915a034900064f02904f0301030102234df9001a01034f002d014f01925a0249000103911a4f034cfc1c2d0004f9200242913f394b000000")
+const _hex19462 = pxsim.BufferMethods.createBufferFromHex("000000005000000004000100060000002d004f00915a034900064f02904f030103ae234df9002f01029326460102912c174f0004faffffff4f01925a0249002d0004f920024205003f0103911a4f034cfc3001029326462d0004f9200242394b")
+const _hex19469 = pxsim.BufferMethods.createBufferFromHex("000000009800000009000100070000002d004f00915a034900064f05904f0601060105234df900800105932646904f0701070105234df9005c010601071a4f0801050108224df9000b010801052c4f08904f00010898290105204f0104f8ff4f02935a074900064f0801074f0001084f0204f8ff4f0304f8ff4f04935a014902064f01925a0249000107911a4f074cfc5e2d0004f920024205013f0106911a4f064cfc82394b0000")
+const _hex19476 = pxsim.BufferMethods.createBufferFromHex("000000002000000000000300080000002d012d00234df900072d004b2d022d01234df900072d024b2d014b394b000000")
+const _hex19483 = pxsim.BufferMethods.createBufferFromHex("00000000340000000100030009000000904f0001002d0136234df9002695463b902d01010095482d0004f92002422d0204f903e81e3f0100951a4f004cfc29394b000000")
+const _hex19490 = pxsim.BufferMethods.createBufferFromHex("0000000008000000000000000a00000004f90209404cfc05")
 
 
 
@@ -48539,28 +48535,28 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.len___19497 = undefined;
-    s.i___19500 = undefined;
-    s.v___19505 = undefined;
+    s.len___19494 = undefined;
+    s.i___19497 = undefined;
+    s.v___19502 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = pxsim_Array__length(s.arg0);
-    s.len___19497 = (r0);
-    s.i___19500 = (0);
+    s.len___19494 = (r0);
+    s.i___19497 = (0);
   case 1:
-    r0 = (s.i___19500 < s.len___19497);
+    r0 = (s.i___19497 < s.len___19494);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    r0 = pxsim_Array__getAt(s.arg0, s.i___19500);
-    s.v___19505 = (r0);
+    r0 = pxsim_Array__getAt(s.arg0, s.i___19497);
+    s.v___19502 = (r0);
     s.tmp_1 = lambda_3_mk(s);
     s.tmp_1.argL = s.arg1;
-    s.tmp_1.arg0 = s.v___19505;
-    s.tmp_1.arg1 = s.i___19500;
+    s.tmp_1.arg0 = s.v___19502;
+    s.tmp_1.arg1 = s.i___19497;
     setupLambda(s.tmp_1, s.tmp_1.argL);
     s.callLocIdx = 8; s.pc = 6; return s.tmp_1;
   case 6:
@@ -48568,12 +48564,12 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
-    r0 = s.v___19505;
+    r0 = s.v___19502;
     { step = 5; continue; }
   case 2:
   case 3:
-    r0 = (s.i___19500 + 1);
-    s.i___19500 = (r0);
+    r0 = (s.i___19497 + 1);
+    s.i___19497 = (r0);
     { step = 1; continue; }
   case 4:
     r0 = undefined;
@@ -48590,9 +48586,9 @@ function helpers_arrayFind__P111_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  len___19497: undefined,
-  i___19500: undefined,
-  v___19505: undefined,
+  len___19494: undefined,
+  i___19497: undefined,
+  v___19502: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -48611,7 +48607,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.r___19517 = undefined;
+    s.r___19514 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -48619,11 +48615,11 @@ switch (step) {
     r0 = pxsim_pxtcore_mkClassInstance(jacs_Value__C3832_VT);
     s.tmp_0 = r0;
     r0 = undefined;
-    s.r___19517 = (s.tmp_0);
-    r0 = (s.r___19517).fields["numValue"] = (s.arg0);
-    r0 = (s.r___19517).fields["op"] = (4);
-    r0 = (s.r___19517).fields["flags"] = (1024);
-    r0 = s.r___19517;
+    s.r___19514 = (s.tmp_0);
+    r0 = (s.r___19514).fields["numValue"] = (s.arg0);
+    r0 = (s.r___19514).fields["op"] = (4);
+    r0 = (s.r___19514).fields["flags"] = (1024);
+    r0 = s.r___19514;
     return leave(s, r0)
   default: oops()
 } } }
@@ -48635,7 +48631,7 @@ function jacs_literal__P3854_mk(s) {
         parent: s, fn: jacs_literal__P3854, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  r___19517: undefined,
+  r___19514: undefined,
   arg0: undefined,
 } }
 
@@ -48802,7 +48798,7 @@ switch (step) {
     { step = 3; continue; }
   case 1:
   case 2:
-    r0 = pxsim_pxtcore_mkAction(1, jacs_Role_finalize_inline__P19563);
+    r0 = pxsim_pxtcore_mkAction(1, jacs_Role_finalize_inline__P19560);
     s.tmp_3 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_3, 0, s.arg0);
     s.tmp_4 = jacs_TopWriter_withProcedure__P3952_mk(s);
@@ -48814,7 +48810,7 @@ switch (step) {
     s.callLocIdx = 1586; s.pc = 4; return s.tmp_4;
   case 4:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, jacs_Role_finalize_inline__P19577);
+    r0 = pxsim_pxtcore_mkAction(1, jacs_Role_finalize_inline__P19574);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = jacs_TopWriter_withProcedure__P3952_mk(s);
@@ -48854,7 +48850,7 @@ function jacs_Role_finalize__P6524_mk(s) {
 
 
 
-function jacs_Role_finalize_inline__P19563(s) {
+function jacs_Role_finalize_inline__P19560(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -48880,12 +48876,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_finalize_inline__P19563.info = {"start":2561,"length":59,"line":94,"column":55,"endLine":96,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_Role_finalize_inline__P19560.info = {"start":2561,"length":59,"line":94,"column":55,"endLine":96,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
-function jacs_Role_finalize_inline__P19563_mk(s) {
+function jacs_Role_finalize_inline__P19560_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_Role_finalize_inline__P19563, depth: s.depth + 1,
+        parent: s, fn: jacs_Role_finalize_inline__P19560, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -48895,7 +48891,7 @@ function jacs_Role_finalize_inline__P19563_mk(s) {
 
 
 
-function jacs_Role_finalize_inline__P19577(s) {
+function jacs_Role_finalize_inline__P19574(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -48924,12 +48920,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_finalize_inline__P19577.info = {"start":2682,"length":92,"line":97,"column":60,"endLine":99,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_Role_finalize_inline__P19574.info = {"start":2682,"length":92,"line":97,"column":60,"endLine":99,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
-function jacs_Role_finalize_inline__P19577_mk(s) {
+function jacs_Role_finalize_inline__P19574_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_Role_finalize_inline__P19577, depth: s.depth + 1,
+        parent: s, fn: jacs_Role_finalize_inline__P19574, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -48949,7 +48945,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.off0___19596 = undefined;
+    s.off0___19593 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -48983,7 +48979,7 @@ switch (step) {
   case 3:
   case 4:
     r0 = s.arg0.fields["binPtr"];
-    s.off0___19596 = (r0);
+    s.off0___19593 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.arg2);
     if (!r0) { step = 5; continue; }
     r0 = 77;
@@ -49009,7 +49005,7 @@ switch (step) {
     s.tmp_2.arg0 = s.arg0;
     r0 = s.arg1.fields["offset"];
     s.tmp_3 = r0;
-    r0 = (s.tmp_3 - s.off0___19596);
+    r0 = (s.tmp_3 - s.off0___19593);
     s.tmp_2.arg1 = r0;
     s.callLocIdx = 1489; s.pc = 15; return s.tmp_2;
   case 15:
@@ -49032,7 +49028,7 @@ switch (step) {
   case 9:
     r0 = s.arg1.fields["uses"];
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.off0___19596);
+    r0 = pxsim_Array__push(s.tmp_0, s.off0___19593);
     s.tmp_0 = jacs_OpWriter_writeInt__P6513_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = 4096;
@@ -49056,7 +49052,7 @@ function jacs_OpWriter_emitJump__P3892_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  off0___19596: undefined,
+  off0___19593: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -49076,19 +49072,19 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.body___19630 = undefined;
-    s.emitBody___19635 = undefined;
-    s.filterValueIn___19644 = undefined;
-    s.sensor___19659 = undefined;
-    s.timer___19666 = undefined;
-    s.period___19674 = undefined;
-    s.randomPeriod___19675 = undefined;
-    s.m___19677 = undefined;
+    s.body___19627 = undefined;
+    s.emitBody___19632 = undefined;
+    s.filterValueIn___19641 = undefined;
+    s.sensor___19656 = undefined;
+    s.timer___19663 = undefined;
+    s.period___19671 = undefined;
+    s.randomPeriod___19672 = undefined;
+    s.m___19674 = undefined;
     s.unnamed188___U8 = undefined;
     s.unnamed189___U9 = undefined;
-    s.pipeId___19748 = undefined;
-    s.role___19751 = undefined;
-    s.role___19768 = undefined;
+    s.pipeId___19745 = undefined;
+    s.role___19748 = undefined;
+    s.role___19765 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -49115,25 +49111,25 @@ switch (step) {
     s.callLocIdx = 1855; s.pc = 21; return s.tmp_2;
   case 21:
     r0 = s.retval;
-    s.body___19630 = (r0);
-    r0 = pxsim_pxtcore_mkAction(2, emitBody_inline__P19636);
+    s.body___19627 = (r0);
+    r0 = pxsim_pxtcore_mkAction(2, emitBody_inline__P19633);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.body___19630);
-    s.emitBody___19635 = (s.tmp_0);
-    r0 = pxsim_pxtcore_mkAction(3, filterValueIn_inline__P19645);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.body___19627);
+    s.emitBody___19632 = (s.tmp_0);
+    r0 = pxsim_pxtcore_mkAction(3, filterValueIn_inline__P19642);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg2);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.emitBody___19635);
-    s.filterValueIn___19644 = (s.tmp_0);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.emitBody___19632);
+    s.filterValueIn___19641 = (s.tmp_0);
     s.tmp_0 = microcode_RuleDefn_sensor__P3289_mk(s);
     s.tmp_0.arg0 = s.arg2;
     s.callLocIdx = 1861; s.pc = 22; return s.tmp_0;
   case 22:
     r0 = s.retval;
-    s.sensor___19659 = (r0);
-    r0 = s.sensor___19659.fields["tid"];
+    s.sensor___19656 = (r0);
+    r0 = s.sensor___19656.fields["tid"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == globals.TID_SENSOR_TIMER___3319);
     s.tmp_0 = r0;
@@ -49155,14 +49151,14 @@ switch (step) {
     s.callLocIdx = 1862; s.pc = 23; return s.tmp_2;
   case 23:
     r0 = s.retval;
-    s.timer___19666 = (r0);
+    s.timer___19663 = (r0);
     r0 = pxsim_pxtrt.mklocRef();
-    s.period___19674 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.period___19674, 0);
+    s.period___19671 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.period___19671, 0);
     r0 = pxsim_pxtrt.mklocRef();
-    s.randomPeriod___19675 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.randomPeriod___19675, 0);
-    s.m___19677 = (undefined);
+    s.randomPeriod___19672 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.randomPeriod___19672, 0);
+    s.m___19674 = (undefined);
     r0 = s.arg2.fields["filters"];
     s.unnamed188___U8 = (r0);
     s.unnamed189___U9 = (0);
@@ -49173,33 +49169,33 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 8; continue; }
     r0 = pxsim_Array__getAt(s.unnamed188___U8, s.unnamed189___U9);
-    s.m___19677 = (r0);
-    r0 = s.m___19677.fields["jdKind"];
+    s.m___19674 = (r0);
+    r0 = s.m___19674.fields["jdKind"];
     s.tmp_3 = r0;
     r0 = (s.tmp_3 == 8);
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 6; continue; }
-    r0 = s.m___19677.fields["jdParam"];
+    r0 = s.m___19674.fields["jdParam"];
     s.tmp_5 = r0;
     r0 = (s.tmp_5 >= 0);
     s.tmp_4 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 4; continue; }
-    s.tmp_6 = r0 = s.period___19674;
-    r0 = pxsim_pxtrt_ldlocRef(s.period___19674);
+    s.tmp_6 = r0 = s.period___19671;
+    r0 = pxsim_pxtrt_ldlocRef(s.period___19671);
     s.tmp_8 = r0;
-    r0 = s.m___19677.fields["jdParam"];
+    r0 = s.m___19674.fields["jdParam"];
     s.tmp_9 = r0;
     r0 = (s.tmp_8 + s.tmp_9);
     s.tmp_7 = r0;
     r0 = pxsim_pxtrt_stlocRef(s.tmp_6, s.tmp_7);
     { step = 5; continue; }
   case 4:
-    s.tmp_0 = r0 = s.randomPeriod___19675;
-    r0 = pxsim_pxtrt_ldlocRef(s.randomPeriod___19675);
+    s.tmp_0 = r0 = s.randomPeriod___19672;
+    r0 = pxsim_pxtrt_ldlocRef(s.randomPeriod___19672);
     s.tmp_2 = r0;
-    r0 = s.m___19677.fields["jdParam"];
+    r0 = s.m___19674.fields["jdParam"];
     s.tmp_4 = r0;
     r0 = (0 - s.tmp_4);
     s.tmp_3 = r0;
@@ -49214,7 +49210,7 @@ switch (step) {
     { step = 3; continue; }
   case 8:
     s.unnamed188___U8 = (undefined);
-    r0 = pxsim_pxtrt_ldlocRef(s.period___19674);
+    r0 = pxsim_pxtrt_ldlocRef(s.period___19671);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 0);
     s.tmp_0 = r0;
@@ -49223,7 +49219,7 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 10; continue; }
   case 9:
-    r0 = pxsim_pxtrt_ldlocRef(s.randomPeriod___19675);
+    r0 = pxsim_pxtrt_ldlocRef(s.randomPeriod___19672);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 == 0);
   case 10:
@@ -49231,22 +49227,22 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_3);
     if (!r0) { step = 11; continue; }
-    r0 = pxsim_pxtrt_stlocRef(s.period___19674, 1000);
+    r0 = pxsim_pxtrt_stlocRef(s.period___19671, 1000);
   case 11:
   case 12:
-    r0 = pxsim_pxtrt_ldlocRef(s.period___19674);
+    r0 = pxsim_pxtrt_ldlocRef(s.period___19671);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 13; continue; }
-    r0 = pxsim_pxtrt_stlocRef(s.period___19674, 50);
+    r0 = pxsim_pxtrt_stlocRef(s.period___19671, 50);
   case 13:
   case 14:
-    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitRule_inline__P19712);
+    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitRule_inline__P19709);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.timer___19666);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.timer___19663);
     s.tmp_1 = jacs_TopWriter_withProcedure__P3952_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.tmp_2 = jacs_TopWriter_pageProc__P6552_mk(s);
@@ -49261,15 +49257,15 @@ switch (step) {
     s.callLocIdx = 1866; s.pc = 25; return s.tmp_1;
   case 25:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(4, jacs_TopWriter_emitRule_inline__P19724);
+    r0 = pxsim_pxtcore_mkAction(4, jacs_TopWriter_emitRule_inline__P19721);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.randomPeriod___19675);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.period___19674);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.emitBody___19635);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.randomPeriod___19672);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.period___19671);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.emitBody___19632);
     s.tmp_1 = jacs_TopWriter_withProcedure__P3952_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.tmp_1.arg1 = s.timer___19666;
+    s.tmp_1.arg1 = s.timer___19663;
     s.tmp_1.arg2 = s.tmp_0;
     s.callLocIdx = 1872; s.pc = 27; return s.tmp_1;
   case 27:
@@ -49277,30 +49273,30 @@ switch (step) {
     { step = 19; continue; }
   case 15:
   case 16:
-    r0 = s.sensor___19659.fields["jdKind"];
+    r0 = s.sensor___19656.fields["jdKind"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 17; continue; }
-    r0 = s.sensor___19659.fields["jdParam"];
-    s.pipeId___19748 = (r0);
+    r0 = s.sensor___19656.fields["jdParam"];
+    s.pipeId___19745 = (r0);
     s.tmp_0 = jacs_TopWriter_pipeRole__P6535_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.pipeId___19748;
+    s.tmp_0.arg1 = s.pipeId___19745;
     s.callLocIdx = 1873; s.pc = 28; return s.tmp_0;
   case 28:
     r0 = s.retval;
-    s.role___19751 = (r0);
-    r0 = pxsim_pxtcore_mkAction(3, jacs_TopWriter_emitRule_inline__P19758);
+    s.role___19748 = (r0);
+    r0 = pxsim_pxtcore_mkAction(3, jacs_TopWriter_emitRule_inline__P19755);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.filterValueIn___19644);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.pipeId___19748);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.filterValueIn___19641);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.pipeId___19745);
     s.tmp_1 = jacs_TopWriter_withProcedure__P3952_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.tmp_2 = jacs_Role_getDispatcher__P6526_mk(s);
-    s.tmp_2.arg0 = s.role___19751;
+    s.tmp_2.arg0 = s.role___19748;
     s.callLocIdx = 1874; s.pc = 30; return s.tmp_2;
   case 30:
     r0 = s.retval;
@@ -49318,7 +49314,7 @@ switch (step) {
     s.callLocIdx = 1880; s.pc = 31; return s.tmp_0;
   case 31:
     r0 = s.retval;
-    s.role___19768 = (r0);
+    s.role___19765 = (r0);
     if ((s.arg1) && (s.arg1).vtable) {
     setupResume(s, 32);
     pxsim_String__stringConv(s.arg1);
@@ -49328,7 +49324,7 @@ switch (step) {
   case 32:
     r0 = s.retval;
     s.tmp_0 = r0;
-    r0 = s.role___19768.fields["name"];
+    r0 = s.role___19765.fields["name"];
     s.tmp_4 = r0;
     if ((s.tmp_4) && (s.tmp_4).vtable) {
     setupResume(s, 33);
@@ -49352,18 +49348,18 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_String__concat(s.tmp_0, s.tmp_1);
     s.arg1 = (r0);
-    r0 = pxsim_pxtcore_mkAction(6, jacs_TopWriter_emitRule_inline__P19787);
+    r0 = pxsim_pxtcore_mkAction(6, jacs_TopWriter_emitRule_inline__P19784);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.role___19768);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.role___19765);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.arg2);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.sensor___19659);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 4, s.filterValueIn___19644);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 5, s.emitBody___19635);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.sensor___19656);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 4, s.filterValueIn___19641);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 5, s.emitBody___19632);
     s.tmp_1 = jacs_TopWriter_withProcedure__P3952_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.tmp_2 = jacs_Role_getDispatcher__P6526_mk(s);
-    s.tmp_2.arg0 = s.role___19768;
+    s.tmp_2.arg0 = s.role___19765;
     s.callLocIdx = 1881; s.pc = 36; return s.tmp_2;
   case 36:
     r0 = s.retval;
@@ -49394,19 +49390,19 @@ function jacs_TopWriter_emitRule__P6555_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  body___19630: undefined,
-  emitBody___19635: undefined,
-  filterValueIn___19644: undefined,
-  sensor___19659: undefined,
-  timer___19666: undefined,
-  period___19674: undefined,
-  randomPeriod___19675: undefined,
-  m___19677: undefined,
+  body___19627: undefined,
+  emitBody___19632: undefined,
+  filterValueIn___19641: undefined,
+  sensor___19656: undefined,
+  timer___19663: undefined,
+  period___19671: undefined,
+  randomPeriod___19672: undefined,
+  m___19674: undefined,
   unnamed188___U8: undefined,
   unnamed189___U9: undefined,
-  pipeId___19748: undefined,
-  role___19751: undefined,
-  role___19768: undefined,
+  pipeId___19745: undefined,
+  role___19748: undefined,
+  role___19765: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -49416,7 +49412,7 @@ function jacs_TopWriter_emitRule__P6555_mk(s) {
 
 
 
-function emitBody_inline__P19636(s) {
+function emitBody_inline__P19633(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -49441,12 +49437,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-emitBody_inline__P19636.info = {"start":32459,"length":74,"line":920,"column":29,"endLine":921,"endColumn":68,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+emitBody_inline__P19633.info = {"start":32459,"length":74,"line":920,"column":29,"endLine":921,"endColumn":68,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
-function emitBody_inline__P19636_mk(s) {
+function emitBody_inline__P19633_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: emitBody_inline__P19636, depth: s.depth + 1,
+        parent: s, fn: emitBody_inline__P19633, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -49455,7 +49451,7 @@ function emitBody_inline__P19636_mk(s) {
 
 
 
-function filterValueIn_inline__P19645(s) {
+function filterValueIn_inline__P19642(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -49465,7 +49461,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.v___19647 = undefined;
+    s.v___19644 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -49476,8 +49472,8 @@ switch (step) {
     s.callLocIdx = 1857; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    s.v___19647 = (r0);
-    r0 = (s.v___19647 !== undefined);
+    s.v___19644 = (r0);
+    r0 = (s.v___19644 !== undefined);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
@@ -49490,7 +49486,7 @@ switch (step) {
   case 5:
     r0 = s.retval;
     s.tmp_1.arg1 = r0;
-    s.tmp_1.arg2 = s.v___19647;
+    s.tmp_1.arg2 = s.v___19644;
     s.tmp_1.arg3 = s.caps[2];
     s.callLocIdx = 1859; s.pc = 4; return s.tmp_1;
   case 4:
@@ -49508,17 +49504,17 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filterValueIn_inline__P19645.info = {"start":32569,"length":244,"line":923,"column":34,"endLine":930,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["f"]}
+filterValueIn_inline__P19642.info = {"start":32569,"length":244,"line":923,"column":34,"endLine":930,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["f"]}
 
-function filterValueIn_inline__P19645_mk(s) {
+function filterValueIn_inline__P19642_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: filterValueIn_inline__P19645, depth: s.depth + 1,
+        parent: s, fn: filterValueIn_inline__P19642, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  v___19647: undefined,
+  v___19644: undefined,
   arg0: undefined,
 } }
 
@@ -49526,7 +49522,7 @@ function filterValueIn_inline__P19645_mk(s) {
 
 
 
-function jacs_TopWriter_emitRule_inline__P19712(s) {
+function jacs_TopWriter_emitRule_inline__P19709(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -49560,12 +49556,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P19712.info = {"start":33532,"length":237,"line":945,"column":67,"endLine":950,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P19709.info = {"start":33532,"length":237,"line":945,"column":67,"endLine":950,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
-function jacs_TopWriter_emitRule_inline__P19712_mk(s) {
+function jacs_TopWriter_emitRule_inline__P19709_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitRule_inline__P19712, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitRule_inline__P19709, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -49575,7 +49571,7 @@ function jacs_TopWriter_emitRule_inline__P19712_mk(s) {
 
 
 
-function jacs_TopWriter_emitRule_inline__P19724(s) {
+function jacs_TopWriter_emitRule_inline__P19721(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -49585,7 +49581,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.tm___19726 = undefined;
+    s.tm___19723 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -49605,10 +49601,10 @@ switch (step) {
     s.callLocIdx = 1868; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.tm___19726 = (r0);
+    s.tm___19723 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.tm___19726);
+    r0 = pxsim_Array__push(s.tmp_0, s.tm___19723);
     s.tmp_1 = jacs_OpWriter_emitStmt__P3898_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.tmp_1.arg1 = 64;
@@ -49634,16 +49630,62 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P19724.info = {"start":33813,"length":324,"line":951,"column":42,"endLine":959,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P19721.info = {"start":33813,"length":324,"line":951,"column":42,"endLine":959,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
-function jacs_TopWriter_emitRule_inline__P19724_mk(s) {
+function jacs_TopWriter_emitRule_inline__P19721_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitRule_inline__P19724, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitRule_inline__P19721, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  tm___19726: undefined,
+  tm___19723: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function jacs_TopWriter_emitRule_inline__P19755(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = pxsim_pxtcore_mkAction(4, jacs_TopWriter_emitRule_inline__P19758);
+    s.tmp_0 = r0;
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[1]);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.caps[0]);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.caps[2]);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.arg0);
+    s.tmp_1 = jacs_TopWriter_ifCurrPage__P6551_mk(s);
+    s.tmp_1.arg0 = s.caps[0];
+    s.tmp_1.arg1 = s.tmp_0;
+    s.callLocIdx = 1878; s.pc = 1; return s.tmp_1;
+  case 1:
+    r0 = s.retval;
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+jacs_TopWriter_emitRule_inline__P19755.info = {"start":34393,"length":167,"line":966,"column":57,"endLine":970,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+
+function jacs_TopWriter_emitRule_inline__P19755_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: jacs_TopWriter_emitRule_inline__P19755, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
   arg0: undefined,
 } }
 
@@ -49661,53 +49703,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    if (s.lambdaArgs) {
-      s.arg0 = (s.lambdaArgs[0]);
-      s.lambdaArgs = null;
-    }
-    r0 = pxsim_pxtcore_mkAction(4, jacs_TopWriter_emitRule_inline__P19761);
-    s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[1]);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.caps[0]);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.caps[2]);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.arg0);
-    s.tmp_1 = jacs_TopWriter_ifCurrPage__P6551_mk(s);
-    s.tmp_1.arg0 = s.caps[0];
-    s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 1878; s.pc = 1; return s.tmp_1;
-  case 1:
-    r0 = s.retval;
-    r0 = undefined;
-    return leave(s, r0)
-  default: oops()
-} } }
-jacs_TopWriter_emitRule_inline__P19758.info = {"start":34393,"length":167,"line":966,"column":57,"endLine":970,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
-
-function jacs_TopWriter_emitRule_inline__P19758_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: jacs_TopWriter_emitRule_inline__P19758, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  tmp_0: undefined,
-  tmp_1: undefined,
-  arg0: undefined,
-} }
-
-
-
-
-
-function jacs_TopWriter_emitRule_inline__P19761(s) {
-let r0 = s.r0, step = s.pc;
-s.pc = -1;
-
-
-while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
-switch (step) {
-  case 0:
-
-    r0 = pxsim_pxtcore_mkAction(3, jacs_TopWriter_emitRule_inline__P19763);
+    r0 = pxsim_pxtcore_mkAction(3, jacs_TopWriter_emitRule_inline__P19760);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[1]);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.caps[2]);
@@ -49723,12 +49719,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P19761.info = {"start":34437,"length":104,"line":967,"column":36,"endLine":969,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P19758.info = {"start":34437,"length":104,"line":967,"column":36,"endLine":969,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
-function jacs_TopWriter_emitRule_inline__P19761_mk(s) {
+function jacs_TopWriter_emitRule_inline__P19758_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitRule_inline__P19761, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitRule_inline__P19758, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -49738,7 +49734,7 @@ function jacs_TopWriter_emitRule_inline__P19761_mk(s) {
 
 
 
-function jacs_TopWriter_emitRule_inline__P19763(s) {
+function jacs_TopWriter_emitRule_inline__P19760(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -49763,12 +49759,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P19763.info = {"start":34483,"length":35,"line":968,"column":38,"endLine":968,"endColumn":73,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P19760.info = {"start":34483,"length":35,"line":968,"column":38,"endLine":968,"endColumn":73,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
-function jacs_TopWriter_emitRule_inline__P19763_mk(s) {
+function jacs_TopWriter_emitRule_inline__P19760_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitRule_inline__P19763, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitRule_inline__P19760, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -49778,7 +49774,7 @@ function jacs_TopWriter_emitRule_inline__P19763_mk(s) {
 
 
 
-function jacs_TopWriter_emitRule_inline__P19787(s) {
+function jacs_TopWriter_emitRule_inline__P19784(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -49792,7 +49788,7 @@ switch (step) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkAction(7, jacs_TopWriter_emitRule_inline__P19790);
+    r0 = pxsim_pxtcore_mkAction(7, jacs_TopWriter_emitRule_inline__P19787);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[0]);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.caps[1]);
@@ -49811,12 +49807,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P19787.info = {"start":34743,"length":1350,"line":977,"column":53,"endLine":1008,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P19784.info = {"start":34743,"length":1350,"line":977,"column":53,"endLine":1008,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
-function jacs_TopWriter_emitRule_inline__P19787_mk(s) {
+function jacs_TopWriter_emitRule_inline__P19784_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitRule_inline__P19787, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitRule_inline__P19784, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -49827,7 +49823,7 @@ function jacs_TopWriter_emitRule_inline__P19787_mk(s) {
 
 
 
-function jacs_TopWriter_emitRule_inline__P19790(s) {
+function jacs_TopWriter_emitRule_inline__P19787(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -49837,7 +49833,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.code___19791 = undefined;
+    s.code___19788 = undefined;
     s.tmp_0 = jacs_TopWriter_lookupEventCode__P3965_mk(s);
     s.tmp_0.arg0 = s.caps[0];
     s.tmp_0.arg1 = s.caps[1];
@@ -49845,14 +49841,14 @@ switch (step) {
     s.callLocIdx = 1882; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
-    s.code___19791 = (r0);
+    s.code___19788 = (r0);
     r0 = s.caps[3].fields["jdKind"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 11);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
-    r0 = pxsim_pxtcore_mkAction(3, jacs_TopWriter_emitRule_inline__P19806);
+    r0 = pxsim_pxtcore_mkAction(3, jacs_TopWriter_emitRule_inline__P19803);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.caps[0]);
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 1, s.caps[4]);
@@ -49868,14 +49864,14 @@ switch (step) {
   case 9:
     r0 = s.retval;
     s.tmp_3.arg1 = r0;
-    s.tmp_3.arg2 = s.code___19791;
+    s.tmp_3.arg2 = s.code___19788;
     s.tmp_3.arg3 = s.tmp_2;
     s.callLocIdx = 1889; s.pc = 8; return s.tmp_3;
   case 8:
     r0 = s.retval;
     { step = 6; continue; }
   case 1:
-    r0 = (s.code___19791 != null);
+    r0 = (s.code___19788 != null);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
@@ -49890,7 +49886,7 @@ switch (step) {
   case 11:
     r0 = s.retval;
     s.tmp_1.arg1 = r0;
-    s.tmp_1.arg2 = s.code___19791;
+    s.tmp_1.arg2 = s.code___19788;
     s.tmp_1.arg3 = s.caps[6];
     s.callLocIdx = 1891; s.pc = 10; return s.tmp_1;
   case 10:
@@ -49924,26 +49920,26 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P19790.info = {"start":34783,"length":1295,"line":978,"column":32,"endLine":1007,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P19787.info = {"start":34783,"length":1295,"line":978,"column":32,"endLine":1007,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
-function jacs_TopWriter_emitRule_inline__P19790_mk(s) {
+function jacs_TopWriter_emitRule_inline__P19787_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitRule_inline__P19790, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitRule_inline__P19787, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  code___19791: undefined,
+  code___19788: undefined,
 } }
 
 
 
 
 
-function jacs_TopWriter_emitRule_inline__P19806(s) {
+function jacs_TopWriter_emitRule_inline__P19803(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -49953,16 +49949,16 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.radioVar___19807 = undefined;
+    s.radioVar___19804 = undefined;
     s.tmp_0 = jacs_TopWriter_lookupGlobal__P6533_mk(s);
     s.tmp_0.arg0 = s.caps[0];
     s.tmp_0.arg1 = "z_radio";
     s.callLocIdx = 1884; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.radioVar___19807 = (r0);
+    s.radioVar___19804 = (r0);
     s.tmp_0 = jacs_Variable_write__P6520_mk(s);
-    s.tmp_0.arg0 = s.radioVar___19807;
+    s.tmp_0.arg0 = s.radioVar___19804;
     s.tmp_0.arg1 = s.caps[1];
     s.tmp_1 = jacs_OpWriter_emitBufLoad__P3883_mk(s);
     s.tmp_1.arg0 = s.caps[1];
@@ -49976,9 +49972,9 @@ switch (step) {
     s.callLocIdx = 1886; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitRule_inline__P19819);
+    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitRule_inline__P19816);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.radioVar___19807);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.radioVar___19804);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.caps[1]);
     s.tmp_1 = lambda_2_mk(s);
     s.tmp_1.argL = s.caps[2];
@@ -49991,23 +49987,23 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P19806.info = {"start":35092,"length":375,"line":984,"column":28,"endLine":991,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P19803.info = {"start":35092,"length":375,"line":984,"column":28,"endLine":991,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
-function jacs_TopWriter_emitRule_inline__P19806_mk(s) {
+function jacs_TopWriter_emitRule_inline__P19803_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitRule_inline__P19806, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitRule_inline__P19803, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  radioVar___19807: undefined,
+  radioVar___19804: undefined,
 } }
 
 
 
 
 
-function jacs_TopWriter_emitRule_inline__P19819(s) {
+function jacs_TopWriter_emitRule_inline__P19816(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -50026,12 +50022,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P19819.info = {"start":35413,"length":23,"line":990,"column":46,"endLine":990,"endColumn":69,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P19816.info = {"start":35413,"length":23,"line":990,"column":46,"endLine":990,"endColumn":69,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
-function jacs_TopWriter_emitRule_inline__P19819_mk(s) {
+function jacs_TopWriter_emitRule_inline__P19816_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitRule_inline__P19819, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitRule_inline__P19816, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -50136,7 +50132,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.g___19859 = undefined;
+    s.g___19856 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -50144,7 +50140,7 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
-    r0 = pxsim_pxtcore_mkAction(1, g_inline__P19863);
+    r0 = pxsim_pxtcore_mkAction(1, g_inline__P19860);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg1);
     s.tmp_1 = helpers_arrayFind__P111_mk(s);
@@ -50154,8 +50150,8 @@ switch (step) {
     s.callLocIdx = 1716; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
-    s.g___19859 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.g___19859);
+    s.g___19856 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.g___19856);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -50167,10 +50163,10 @@ switch (step) {
     s.callLocIdx = 1717; s.pc = 4; return s.tmp_2;
   case 4:
     r0 = s.retval;
-    s.g___19859 = (r0);
+    s.g___19856 = (r0);
   case 1:
   case 2:
-    r0 = s.g___19859;
+    r0 = s.g___19856;
     return leave(s, r0)
   default: oops()
 } } }
@@ -50184,7 +50180,7 @@ function jacs_TopWriter_lookupGlobal__P6533_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  g___19859: undefined,
+  g___19856: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -50193,7 +50189,7 @@ function jacs_TopWriter_lookupGlobal__P6533_mk(s) {
 
 
 
-function g_inline__P19863(s) {
+function g_inline__P19860(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -50213,12 +50209,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-g_inline__P19863.info = {"start":19525,"length":16,"line":573,"column":38,"endLine":573,"endColumn":54,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["v"]}
+g_inline__P19860.info = {"start":19525,"length":16,"line":573,"column":38,"endLine":573,"endColumn":54,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["v"]}
 
-function g_inline__P19863_mk(s) {
+function g_inline__P19860_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: g_inline__P19863, depth: s.depth + 1,
+        parent: s, fn: g_inline__P19860, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -50238,9 +50234,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.sensor___19878 = undefined;
-    s.evCode___19885 = undefined;
-    s.m___19889 = undefined;
+    s.sensor___19875 = undefined;
+    s.evCode___19882 = undefined;
+    s.m___19886 = undefined;
     s.unnamed176___U3 = undefined;
     s.unnamed177___U4 = undefined;
     if (s.lambdaArgs) {
@@ -50256,16 +50252,16 @@ switch (step) {
     s.callLocIdx = 1681; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
-    s.sensor___19878 = (r0);
-    r0 = s.sensor___19878.fields["eventCode"];
+    s.sensor___19875 = (r0);
+    r0 = s.sensor___19875.fields["eventCode"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 != undefined);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
-    r0 = s.sensor___19878.fields["eventCode"];
-    s.evCode___19885 = (r0);
-    s.m___19889 = (undefined);
+    r0 = s.sensor___19875.fields["eventCode"];
+    s.evCode___19882 = (r0);
+    s.m___19886 = (undefined);
     r0 = s.arg2.fields["filters"];
     s.unnamed176___U3 = (r0);
     s.unnamed177___U4 = (0);
@@ -50276,15 +50272,15 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 4; continue; }
     r0 = pxsim_Array__getAt(s.unnamed176___U3, s.unnamed177___U4);
-    s.m___19889 = (r0);
-    r0 = s.m___19889.fields["jdKind"];
+    s.m___19886 = (r0);
+    r0 = s.m___19886.fields["jdKind"];
     s.tmp_3 = r0;
     r0 = (s.tmp_3 == 4);
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 2; continue; }
-    r0 = s.m___19889.fields["jdParam"];
-    s.evCode___19885 = (r0);
+    r0 = s.m___19886.fields["jdParam"];
+    s.evCode___19882 = (r0);
   case 2:
   case 3:
     r0 = (s.unnamed177___U4 + 1);
@@ -50292,7 +50288,7 @@ switch (step) {
     { step = 1; continue; }
   case 4:
     s.unnamed176___U3 = (undefined);
-    r0 = s.evCode___19885;
+    r0 = s.evCode___19882;
     { step = 7; continue; }
   case 5:
   case 6:
@@ -50312,9 +50308,9 @@ function jacs_TopWriter_lookupEventCode__P3965_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  sensor___19878: undefined,
-  evCode___19885: undefined,
-  m___19889: undefined,
+  sensor___19875: undefined,
+  evCode___19882: undefined,
+  m___19886: undefined,
   unnamed176___U3: undefined,
   unnamed177___U4: undefined,
   arg0: undefined,
@@ -50336,9 +50332,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.sensor___19903 = undefined;
-    s.idx___19912 = undefined;
-    s.f___19916 = undefined;
+    s.sensor___19900 = undefined;
+    s.idx___19909 = undefined;
+    s.f___19913 = undefined;
     s.unnamed174___U3 = undefined;
     s.unnamed175___U4 = undefined;
     if (s.lambdaArgs) {
@@ -50353,8 +50349,8 @@ switch (step) {
     s.callLocIdx = 1678; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
-    s.sensor___19903 = (r0);
-    r0 = s.sensor___19903.fields["tid"];
+    s.sensor___19900 = (r0);
+    r0 = s.sensor___19900.fields["tid"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == globals.TID_SENSOR_START_PAGE___3315);
     s.tmp_0 = r0;
@@ -50364,9 +50360,9 @@ switch (step) {
     { step = 9; continue; }
   case 1:
   case 2:
-    r0 = s.sensor___19903.fields["serviceInstanceIndex"];
-    s.idx___19912 = (r0);
-    s.f___19916 = (undefined);
+    r0 = s.sensor___19900.fields["serviceInstanceIndex"];
+    s.idx___19909 = (r0);
+    s.f___19913 = (undefined);
     r0 = s.arg1.fields["filters"];
     s.unnamed174___U3 = (r0);
     s.unnamed175___U4 = (0);
@@ -50377,15 +50373,15 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
     r0 = pxsim_Array__getAt(s.unnamed174___U3, s.unnamed175___U4);
-    s.f___19916 = (r0);
-    r0 = s.f___19916.fields["jdKind"];
+    s.f___19913 = (r0);
+    r0 = s.f___19913.fields["jdKind"];
     s.tmp_3 = r0;
     r0 = (s.tmp_3 == 5);
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 4; continue; }
-    r0 = s.f___19916.fields["jdParam"];
-    s.idx___19912 = (r0);
+    r0 = s.f___19913.fields["jdParam"];
+    s.idx___19909 = (r0);
   case 4:
   case 5:
     r0 = (s.unnamed175___U4 + 1);
@@ -50393,7 +50389,7 @@ switch (step) {
     { step = 3; continue; }
   case 6:
     s.unnamed174___U3 = (undefined);
-    r0 = s.sensor___19903.fields["serviceClassName"];
+    r0 = s.sensor___19900.fields["serviceClassName"];
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     s.tmp_1 = r0;
@@ -50403,7 +50399,7 @@ switch (step) {
     if (!r0) { step = 7; continue; }
     s.tmp_3 = jacs_TopWriter_error__P3960_mk(s);
     s.tmp_3.arg0 = s.arg0;
-    r0 = s.sensor___19903.fields["tid"];
+    r0 = s.sensor___19900.fields["tid"];
     s.tmp_5 = r0;
     if ((s.tmp_5) && (s.tmp_5).vtable) {
     setupResume(s, 12);
@@ -50423,9 +50419,9 @@ switch (step) {
   case 8:
     s.tmp_0 = jacs_TopWriter_lookupRole__P3962_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    r0 = s.sensor___19903.fields["serviceClassName"];
+    r0 = s.sensor___19900.fields["serviceClassName"];
     s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = s.idx___19912;
+    s.tmp_0.arg2 = s.idx___19909;
     s.callLocIdx = 1680; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
@@ -50446,9 +50442,9 @@ function jacs_TopWriter_lookupSensorRole__P3964_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  sensor___19903: undefined,
-  idx___19912: undefined,
-  f___19916: undefined,
+  sensor___19900: undefined,
+  idx___19909: undefined,
+  f___19913: undefined,
   unnamed174___U3: undefined,
   unnamed175___U4: undefined,
   arg0: undefined,
@@ -50570,7 +50566,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_4 = r0;
     r0 = (s.tmp_3).fields["dispatcher"] = (s.tmp_4);
-    r0 = pxsim_pxtcore_mkAction(1, jacs_Role_getDispatcher_inline__P19969);
+    r0 = pxsim_pxtcore_mkAction(1, jacs_Role_getDispatcher_inline__P19966);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = jacs_TopWriter_withProcedure__P3952_mk(s);
@@ -50610,7 +50606,7 @@ function jacs_Role_getDispatcher__P6526_mk(s) {
 
 
 
-function jacs_Role_getDispatcher_inline__P19969(s) {
+function jacs_Role_getDispatcher_inline__P19966(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -50663,7 +50659,7 @@ switch (step) {
     s.callLocIdx = 1596; s.pc = 10; return s.tmp_10;
   case 10:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, jacs_Role_getDispatcher_inline__P19995);
+    r0 = pxsim_pxtcore_mkAction(1, jacs_Role_getDispatcher_inline__P19992);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[0]);
     s.tmp_1 = jacs_TopWriter_ifEq__P3969_mk(s);
@@ -50698,7 +50694,7 @@ switch (step) {
     s.tmp_3.arg0 = r0;
     s.tmp_3.arg1 = s.caps[0];
     s.tmp_3.arg2 = 1;
-    s.tmp_3.arg3 = _hex20015;
+    s.tmp_3.arg3 = _hex20012;
     s.callLocIdx = 1600; s.pc = 13; return s.tmp_3;
   case 13:
     r0 = s.retval;
@@ -50715,7 +50711,7 @@ switch (step) {
     s.tmp_3.arg0 = r0;
     s.tmp_3.arg1 = s.caps[0];
     s.tmp_3.arg2 = 128;
-    s.tmp_3.arg3 = _hex20024;
+    s.tmp_3.arg3 = _hex20021;
     s.callLocIdx = 1601; s.pc = 14; return s.tmp_3;
   case 14:
     r0 = s.retval;
@@ -50760,12 +50756,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_getDispatcher_inline__P19969.info = {"start":3099,"length":1380,"line":109,"column":59,"endLine":138,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_Role_getDispatcher_inline__P19966.info = {"start":3099,"length":1380,"line":109,"column":59,"endLine":138,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
-function jacs_Role_getDispatcher_inline__P19969_mk(s) {
+function jacs_Role_getDispatcher_inline__P19966_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_Role_getDispatcher_inline__P19969, depth: s.depth + 1,
+        parent: s, fn: jacs_Role_getDispatcher_inline__P19966, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -50781,13 +50777,13 @@ function jacs_Role_getDispatcher_inline__P19969_mk(s) {
   arg0: undefined,
 } }
 
-const _hex20015 = pxsim.BufferMethods.createBufferFromHex("01")
-const _hex20024 = pxsim.BufferMethods.createBufferFromHex("01")
+const _hex20012 = pxsim.BufferMethods.createBufferFromHex("01")
+const _hex20021 = pxsim.BufferMethods.createBufferFromHex("01")
 
 
 
 
-function jacs_Role_getDispatcher_inline__P19995(s) {
+function jacs_Role_getDispatcher_inline__P19992(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -50802,7 +50798,7 @@ switch (step) {
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = s.caps[0];
     s.tmp_0.arg2 = 3;
-    s.tmp_0.arg3 = _hex20001;
+    s.tmp_0.arg3 = _hex19998;
     s.callLocIdx = 1598; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
@@ -50810,17 +50806,17 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_getDispatcher_inline__P19995.info = {"start":3579,"length":275,"line":119,"column":28,"endLine":125,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_Role_getDispatcher_inline__P19992.info = {"start":3579,"length":275,"line":119,"column":28,"endLine":125,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
-function jacs_Role_getDispatcher_inline__P19995_mk(s) {
+function jacs_Role_getDispatcher_inline__P19992_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_Role_getDispatcher_inline__P19995, depth: s.depth + 1,
+        parent: s, fn: jacs_Role_getDispatcher_inline__P19992, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
 
-const _hex20001 = pxsim.BufferMethods.createBufferFromHex("0a")
+const _hex19998 = pxsim.BufferMethods.createBufferFromHex("0a")
 
 
 
@@ -50890,10 +50886,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.u___20062 = undefined;
+    s.u___20059 = undefined;
     s.unnamed130___U1 = undefined;
     s.unnamed131___U2 = undefined;
-    s.v___20065 = undefined;
+    s.v___20062 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -50907,7 +50903,7 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    s.u___20062 = (undefined);
+    s.u___20059 = (undefined);
     r0 = s.arg1.fields["uses"];
     s.unnamed130___U1 = (r0);
     s.unnamed131___U2 = (0);
@@ -50918,20 +50914,20 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
     r0 = pxsim_Array__getAt(s.unnamed130___U1, s.unnamed131___U2);
-    s.u___20062 = (r0);
+    s.u___20059 = (r0);
     r0 = s.arg1.fields["offset"];
     s.tmp_2 = r0;
-    r0 = (s.tmp_2 - s.u___20062);
-    s.v___20065 = (r0);
+    r0 = (s.tmp_2 - s.u___20059);
+    s.v___20062 = (r0);
     s.tmp_0 = jacs_assert__P3817_mk(s);
-    r0 = (s.v___20065 >= 0);
+    r0 = (s.v___20062 >= 0);
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = undefined;
     s.callLocIdx = 1465; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.tmp_0 = jacs_assert__P3817_mk(s);
-    r0 = (s.v___20065 <= 65535);
+    r0 = (s.v___20062 <= 65535);
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = undefined;
     s.callLocIdx = 1466; s.pc = 6; return s.tmp_0;
@@ -50939,16 +50935,16 @@ switch (step) {
     r0 = s.retval;
     r0 = s.arg0.fields["binary"];
     s.tmp_0 = r0;
-    r0 = (s.u___20062 + 2);
+    r0 = (s.u___20059 + 2);
     s.tmp_1 = r0;
-    r0 = (s.v___20065 >> 8);
+    r0 = (s.v___20062 >> 8);
     s.tmp_2 = r0;
     r0 = pxsim.BufferMethods.setByte(s.tmp_0, s.tmp_1, s.tmp_2);
     r0 = s.arg0.fields["binary"];
     s.tmp_0 = r0;
-    r0 = (s.u___20062 + 3);
+    r0 = (s.u___20059 + 3);
     s.tmp_1 = r0;
-    r0 = (s.v___20065 & 255);
+    r0 = (s.v___20062 & 255);
     s.tmp_2 = r0;
     r0 = pxsim.BufferMethods.setByte(s.tmp_0, s.tmp_1, s.tmp_2);
     r0 = (s.unnamed131___U2 + 1);
@@ -50973,10 +50969,10 @@ function jacs_OpWriter__setLabelOffset__P3888_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  u___20062: undefined,
+  u___20059: undefined,
   unnamed130___U1: undefined,
   unnamed131___U2: undefined,
-  v___20065: undefined,
+  v___20062: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -50996,7 +50992,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.l___20099 = undefined;
+    s.l___20096 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -51012,11 +51008,11 @@ switch (step) {
     s.callLocIdx = 1464; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
-    s.l___20099 = (s.tmp_0);
+    s.l___20096 = (s.tmp_0);
     r0 = s.arg0.fields["labels"];
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.l___20099);
-    r0 = s.l___20099;
+    r0 = pxsim_Array__push(s.tmp_0, s.l___20096);
+    r0 = s.l___20096;
     return leave(s, r0)
   default: oops()
 } } }
@@ -51029,7 +51025,7 @@ function jacs_OpWriter_mkLabel__P3887_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  l___20099: undefined,
+  l___20096: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -51140,7 +51136,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.r___20124 = undefined;
+    s.r___20121 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -51149,7 +51145,7 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
-    r0 = pxsim_pxtcore_mkAction(1, r_inline__P20126);
+    r0 = pxsim_pxtcore_mkAction(1, r_inline__P20123);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg1);
     s.tmp_1 = helpers_arrayFind__P111_mk(s);
@@ -51159,10 +51155,10 @@ switch (step) {
     s.callLocIdx = 1671; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
-    s.r___20124 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.r___20124);
+    s.r___20121 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.r___20121);
     if (!r0) { step = 1; continue; }
-    r0 = s.r___20124;
+    r0 = s.r___20121;
     { step = 3; continue; }
   case 1:
   case 2:
@@ -51186,7 +51182,7 @@ function jacs_TopWriter_addOrGetRole__P3959_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  r___20124: undefined,
+  r___20121: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -51196,7 +51192,7 @@ function jacs_TopWriter_addOrGetRole__P3959_mk(s) {
 
 
 
-function r_inline__P20126(s) {
+function r_inline__P20123(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -51216,12 +51212,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-r_inline__P20126.info = {"start":13565,"length":19,"line":415,"column":38,"endLine":415,"endColumn":57,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["r"]}
+r_inline__P20123.info = {"start":13565,"length":19,"line":415,"column":38,"endLine":415,"endColumn":57,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["r"]}
 
-function r_inline__P20126_mk(s) {
+function r_inline__P20123_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: r_inline__P20126, depth: s.depth + 1,
+        parent: s, fn: r_inline__P20123, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -51457,7 +51453,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.wr___20186 = undefined;
+    s.wr___20183 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -51466,7 +51462,7 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
     r0 = s.arg0.fields["writer"];
-    s.wr___20186 = (r0);
+    s.wr___20183 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     s.tmp_2 = jacs_literal__P3854_mk(s);
@@ -51480,7 +51476,7 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_3 = r0;
     s.tmp_5 = jacs_OpWriter_emitExpr__P3896_mk(s);
-    s.tmp_5.arg0 = s.wr___20186;
+    s.tmp_5.arg0 = s.wr___20183;
     s.tmp_5.arg1 = 90;
     s.tmp_5.arg2 = s.tmp_0;
     s.callLocIdx = 1851; s.pc = 2; return s.tmp_5;
@@ -51491,7 +51487,7 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_6 = r0;
     s.tmp_8 = jacs_OpWriter_emitExpr__P3896_mk(s);
-    s.tmp_8.arg0 = s.wr___20186;
+    s.tmp_8.arg0 = s.wr___20183;
     s.tmp_8.arg1 = 47;
     s.tmp_8.arg2 = s.tmp_3;
     s.callLocIdx = 1852; s.pc = 3; return s.tmp_8;
@@ -51500,7 +51496,7 @@ switch (step) {
     s.tmp_7 = r0;
     r0 = pxsim_Array__push(s.tmp_6, s.tmp_7);
     s.tmp_9 = jacs_OpWriter_emitStmt__P3898_mk(s);
-    s.tmp_9.arg0 = s.wr___20186;
+    s.tmp_9.arg0 = s.wr___20183;
     s.tmp_9.arg1 = 83;
     s.tmp_9.arg2 = s.tmp_6;
     s.callLocIdx = 1853; s.pc = 4; return s.tmp_9;
@@ -51527,7 +51523,7 @@ function jacs_TopWriter_terminateProc__P6554_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  wr___20186: undefined,
+  wr___20183: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -51615,7 +51611,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.wr___20218 = undefined;
+    s.wr___20215 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -51626,7 +51622,7 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
     r0 = s.arg0.fields["writer"];
-    s.wr___20218 = (r0);
+    s.wr___20215 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.arg1);
@@ -51638,9 +51634,9 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
     s.tmp_3 = jacs_OpWriter_emitIf__P3890_mk(s);
-    s.tmp_3.arg0 = s.wr___20218;
+    s.tmp_3.arg0 = s.wr___20215;
     s.tmp_4 = jacs_OpWriter_emitExpr__P3896_mk(s);
-    s.tmp_4.arg0 = s.wr___20218;
+    s.tmp_4.arg0 = s.wr___20215;
     s.tmp_4.arg1 = 31;
     s.tmp_4.arg2 = s.tmp_0;
     s.callLocIdx = 1836; s.pc = 3; return s.tmp_4;
@@ -51668,7 +51664,7 @@ function jacs_TopWriter_ifEq__P3969_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  wr___20218: undefined,
+  wr___20215: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -51689,8 +51685,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.v___20234 = undefined;
-    s.m___20237 = undefined;
+    s.v___20231 = undefined;
+    s.m___20234 = undefined;
     s.unnamed182___U2 = undefined;
     s.unnamed183___U3 = undefined;
     if (s.lambdaArgs) {
@@ -51700,8 +51696,8 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
-    s.v___20234 = (undefined);
-    s.m___20237 = (undefined);
+    s.v___20231 = (undefined);
+    s.m___20234 = (undefined);
     r0 = s.arg1.fields["filters"];
     s.unnamed182___U2 = (r0);
     s.unnamed183___U3 = (0);
@@ -51712,24 +51708,24 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
     r0 = pxsim_Array__getAt(s.unnamed182___U2, s.unnamed183___U3);
-    s.m___20237 = (r0);
-    r0 = s.m___20237.fields["jdKind"];
+    s.m___20234 = (r0);
+    r0 = s.m___20234.fields["jdKind"];
     s.tmp_3 = r0;
     r0 = (s.tmp_3 == 1);
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 4; continue; }
-    r0 = (s.v___20234 === undefined);
+    r0 = (s.v___20231 === undefined);
     s.tmp_4 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 2; continue; }
-    s.v___20234 = (0);
+    s.v___20231 = (0);
   case 2:
   case 3:
-    r0 = s.m___20237.fields["jdParam"];
+    r0 = s.m___20234.fields["jdParam"];
     s.tmp_0 = r0;
-    r0 = (s.v___20234 + s.tmp_0);
-    s.v___20234 = (r0);
+    r0 = (s.v___20231 + s.tmp_0);
+    s.v___20231 = (r0);
   case 4:
   case 5:
     r0 = (s.unnamed183___U3 + 1);
@@ -51737,7 +51733,7 @@ switch (step) {
     { step = 1; continue; }
   case 6:
     s.unnamed182___U2 = (undefined);
-    r0 = s.v___20234;
+    r0 = s.v___20231;
     return leave(s, r0)
   default: oops()
 } } }
@@ -51753,8 +51749,8 @@ function jacs_TopWriter_getValueIn__P6544_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  v___20234: undefined,
-  m___20237: undefined,
+  v___20231: undefined,
+  m___20234: undefined,
   unnamed182___U2: undefined,
   unnamed183___U3: undefined,
   arg0: undefined,
@@ -51775,7 +51771,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.body___20257 = undefined;
+    s.body___20254 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -51790,25 +51786,25 @@ switch (step) {
     s.callLocIdx = 1829; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.body___20257 = (r0);
-    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitRuleActuator_inline__P20263);
+    s.body___20254 = (r0);
+    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitRuleActuator_inline__P20260);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg2);
     s.tmp_1 = jacs_TopWriter_withProcedure__P3952_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.tmp_1.arg1 = s.body___20257;
+    s.tmp_1.arg1 = s.body___20254;
     s.tmp_1.arg2 = s.tmp_0;
     s.callLocIdx = 1833; s.pc = 2; return s.tmp_1;
   case 2:
     r0 = s.retval;
     s.tmp_0 = jacs_OpWriter_serialize__P3869_mk(s);
-    r0 = s.body___20257.fields["writer"];
+    r0 = s.body___20254.fields["writer"];
     s.tmp_0.arg0 = r0;
     s.callLocIdx = 1834; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    r0 = s.body___20257;
+    r0 = s.body___20254;
     return leave(s, r0)
   default: oops()
 } } }
@@ -51821,7 +51817,7 @@ function jacs_TopWriter_emitRuleActuator__P6550_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  body___20257: undefined,
+  body___20254: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -51831,7 +51827,7 @@ function jacs_TopWriter_emitRuleActuator__P6550_mk(s) {
 
 
 
-function jacs_TopWriter_emitRuleActuator_inline__P20263(s) {
+function jacs_TopWriter_emitRuleActuator_inline__P20260(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -51871,12 +51867,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRuleActuator_inline__P20263.info = {"start":30292,"length":123,"line":860,"column":37,"endLine":863,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRuleActuator_inline__P20260.info = {"start":30292,"length":123,"line":860,"column":37,"endLine":863,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
-function jacs_TopWriter_emitRuleActuator_inline__P20263_mk(s) {
+function jacs_TopWriter_emitRuleActuator_inline__P20260_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitRuleActuator_inline__P20263, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitRuleActuator_inline__P20260, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -51899,16 +51895,16 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.actuator___20278 = undefined;
-    s.wr___20286 = undefined;
-    s.currValue___20289 = undefined;
-    s.targetPage___20301 = undefined;
-    s.m___20303 = undefined;
+    s.actuator___20275 = undefined;
+    s.wr___20283 = undefined;
+    s.currValue___20286 = undefined;
+    s.targetPage___20298 = undefined;
+    s.m___20300 = undefined;
     s.unnamed184___U5 = undefined;
     s.unnamed185___U6 = undefined;
-    s.pv___20328 = undefined;
-    s.fmt___20348 = undefined;
-    s.sz___20351 = undefined;
+    s.pv___20325 = undefined;
+    s.fmt___20345 = undefined;
+    s.sz___20348 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -51931,29 +51927,29 @@ switch (step) {
   case 2:
     // jmp value (already in r0)
     s.tmp_3 = r0;
-    s.actuator___20278 = (s.tmp_3);
+    s.actuator___20275 = (s.tmp_3);
     r0 = s.arg0.fields["writer"];
-    s.wr___20286 = (r0);
-    r0 = pxsim_pxtcore_mkAction(2, currValue_inline__P20290);
+    s.wr___20283 = (r0);
+    r0 = pxsim_pxtcore_mkAction(2, currValue_inline__P20287);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.wr___20286);
-    s.currValue___20289 = (s.tmp_0);
-    r0 = (s.actuator___20278 == null);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.wr___20283);
+    s.currValue___20286 = (s.tmp_0);
+    r0 = (s.actuator___20275 == null);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
     { step = 19; continue; }
   case 3:
   case 4:
-    r0 = s.actuator___20278.fields["tid"];
+    r0 = s.actuator___20275.fields["tid"];
     s.tmp_2 = r0;
     r0 = (s.tmp_2 == globals.TID_ACTUATOR_SWITCH_PAGE___3351);
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 9; continue; }
-    s.targetPage___20301 = (1);
-    s.m___20303 = (undefined);
+    s.targetPage___20298 = (1);
+    s.m___20300 = (undefined);
     r0 = s.arg1.fields["modifiers"];
     s.unnamed184___U5 = (r0);
     s.unnamed185___U6 = (0);
@@ -51964,15 +51960,15 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 8; continue; }
     r0 = pxsim_Array__getAt(s.unnamed184___U5, s.unnamed185___U6);
-    s.m___20303 = (r0);
-    r0 = s.m___20303.fields["jdKind"];
+    s.m___20300 = (r0);
+    r0 = s.m___20300.fields["jdKind"];
     s.tmp_3 = r0;
     r0 = (s.tmp_3 == 3);
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 6; continue; }
-    r0 = s.m___20303.fields["jdParam"];
-    s.targetPage___20301 = (r0);
+    r0 = s.m___20300.fields["jdParam"];
+    s.targetPage___20298 = (r0);
   case 6:
   case 7:
     r0 = (s.unnamed185___U6 + 1);
@@ -51981,10 +51977,10 @@ switch (step) {
   case 8:
     s.unnamed184___U5 = (undefined);
     s.tmp_0 = jacs_OpWriter_emitCall__P3882_mk(s);
-    s.tmp_0.arg0 = s.wr___20286;
+    s.tmp_0.arg0 = s.wr___20283;
     s.tmp_1 = jacs_TopWriter_pageProc__P6552_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.tmp_1.arg1 = s.targetPage___20301;
+    s.tmp_1.arg1 = s.targetPage___20298;
     s.callLocIdx = 1794; s.pc = 21; return s.tmp_1;
   case 21:
     r0 = s.retval;
@@ -51998,7 +51994,7 @@ switch (step) {
     r0 = s.retval;
     { step = 18; continue; }
   case 9:
-    r0 = s.actuator___20278.fields["jdKind"];
+    r0 = s.actuator___20275.fields["jdKind"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 2);
     s.tmp_0 = r0;
@@ -52019,17 +52015,17 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = jacs_TopWriter_pipeVar__P6534_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    r0 = s.actuator___20278.fields["jdParam"];
+    r0 = s.actuator___20275.fields["jdParam"];
     s.tmp_0.arg1 = r0;
     s.callLocIdx = 1798; s.pc = 24; return s.tmp_0;
   case 24:
     r0 = s.retval;
-    s.pv___20328 = (r0);
+    s.pv___20325 = (r0);
     s.tmp_0 = jacs_Variable_write__P6520_mk(s);
-    s.tmp_0.arg0 = s.pv___20328;
-    s.tmp_0.arg1 = s.wr___20286;
+    s.tmp_0.arg0 = s.pv___20325;
+    s.tmp_0.arg1 = s.wr___20283;
     s.tmp_1 = lambda_1_mk(s);
-    s.tmp_1.argL = s.currValue___20289;
+    s.tmp_1.argL = s.currValue___20286;
     setupLambda(s.tmp_1, s.tmp_1.argL);
     s.callLocIdx = 1799; s.pc = 26; return s.tmp_1;
   case 26:
@@ -52042,7 +52038,7 @@ switch (step) {
     s.tmp_0.arg0 = s.arg0;
     s.tmp_1 = jacs_TopWriter_pipeRole__P6535_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    r0 = s.actuator___20278.fields["jdParam"];
+    r0 = s.actuator___20275.fields["jdParam"];
     s.tmp_1.arg1 = r0;
     s.callLocIdx = 1801; s.pc = 28; return s.tmp_1;
   case 28:
@@ -52054,7 +52050,7 @@ switch (step) {
     r0 = s.retval;
     { step = 17; continue; }
   case 10:
-    r0 = s.actuator___20278.fields["jdKind"];
+    r0 = s.actuator___20275.fields["jdKind"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 13);
     s.tmp_0 = r0;
@@ -52067,31 +52063,31 @@ switch (step) {
     s.callLocIdx = 1803; s.pc = 29; return s.tmp_2;
   case 29:
     r0 = s.retval;
-    r0 = s.actuator___20278.fields["jdParam"];
-    s.fmt___20348 = (r0);
-    r0 = (s.fmt___20348 & 3);
+    r0 = s.actuator___20275.fields["jdParam"];
+    s.fmt___20345 = (r0);
+    r0 = (s.fmt___20345 & 3);
     s.tmp_1 = r0;
     r0 = (8 << s.tmp_1);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 >> 3);
-    s.sz___20351 = (r0);
+    s.sz___20348 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     s.tmp_2 = jacs_literal__P3854_mk(s);
-    s.tmp_2.arg0 = s.sz___20351;
+    s.tmp_2.arg0 = s.sz___20348;
     s.callLocIdx = 1805; s.pc = 30; return s.tmp_2;
   case 30:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
     s.tmp_3 = jacs_OpWriter_emitStmt__P3898_mk(s);
-    s.tmp_3.arg0 = s.wr___20286;
+    s.tmp_3.arg0 = s.wr___20283;
     s.tmp_3.arg1 = 70;
     s.tmp_3.arg2 = s.tmp_0;
     s.callLocIdx = 1806; s.pc = 31; return s.tmp_3;
   case 31:
     r0 = s.retval;
-    r0 = s.actuator___20278.fields["tid"];
+    r0 = s.actuator___20275.fields["tid"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == globals.TID_MODIFIER_SERVO_SET_ANGLE___3402);
     s.tmp_0 = r0;
@@ -52107,22 +52103,22 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_2, s.tmp_3);
     s.tmp_6 = lambda_1_mk(s);
-    s.tmp_6.argL = s.currValue___20289;
+    s.tmp_6.argL = s.currValue___20286;
     setupLambda(s.tmp_6, s.tmp_6.argL);
     s.callLocIdx = 1808; s.pc = 33; return s.tmp_6;
   case 33:
     r0 = s.retval;
     s.tmp_5 = r0;
     r0 = pxsim_Array__push(s.tmp_2, s.tmp_5);
-    r0 = pxsim_pxtcore_mkAction(3, jacs_TopWriter_emitRoleCommand_inline__P20375);
+    r0 = pxsim_pxtcore_mkAction(3, jacs_TopWriter_emitRoleCommand_inline__P20372);
     s.tmp_7 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_7, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_7, 1, s.wr___20286);
-    r0 = pxsim_pxtrt_stclo(s.tmp_7, 2, s.currValue___20289);
+    r0 = pxsim_pxtrt_stclo(s.tmp_7, 1, s.wr___20283);
+    r0 = pxsim_pxtrt_stclo(s.tmp_7, 2, s.currValue___20286);
     s.tmp_8 = jacs_OpWriter_emitIf__P3890_mk(s);
-    s.tmp_8.arg0 = s.wr___20286;
+    s.tmp_8.arg0 = s.wr___20283;
     s.tmp_9 = jacs_OpWriter_emitExpr__P3896_mk(s);
-    s.tmp_9.arg0 = s.wr___20286;
+    s.tmp_9.arg0 = s.wr___20283;
     s.tmp_9.arg1 = 34;
     s.tmp_9.arg2 = s.tmp_2;
     s.callLocIdx = 1809; s.pc = 35; return s.tmp_9;
@@ -52137,7 +52133,7 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     s.tmp_2 = lambda_1_mk(s);
-    s.tmp_2.argL = s.currValue___20289;
+    s.tmp_2.argL = s.currValue___20286;
     setupLambda(s.tmp_2, s.tmp_2.argL);
     s.callLocIdx = 1817; s.pc = 36; return s.tmp_2;
   case 36:
@@ -52159,9 +52155,9 @@ switch (step) {
   case 39:
     r0 = s.retval;
     s.tmp_5.arg0 = r0;
-    s.tmp_5.arg1 = s.wr___20286;
+    s.tmp_5.arg1 = s.wr___20283;
     s.tmp_7 = jacs_OpWriter_emitExpr__P3896_mk(s);
-    s.tmp_7.arg0 = s.wr___20286;
+    s.tmp_7.arg0 = s.wr___20283;
     s.tmp_7.arg1 = 38;
     s.tmp_7.arg2 = s.tmp_0;
     s.callLocIdx = 1819; s.pc = 40; return s.tmp_7;
@@ -52174,15 +52170,15 @@ switch (step) {
   case 11:
   case 12:
     s.tmp_0 = jacs_OpWriter_emitBufStore__P3884_mk(s);
-    s.tmp_0.arg0 = s.wr___20286;
+    s.tmp_0.arg0 = s.wr___20283;
     s.tmp_1 = lambda_1_mk(s);
-    s.tmp_1.argL = s.currValue___20289;
+    s.tmp_1.argL = s.currValue___20286;
     setupLambda(s.tmp_1, s.tmp_1.argL);
     s.callLocIdx = 1821; s.pc = 42; return s.tmp_1;
   case 42:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = s.fmt___20348;
+    s.tmp_0.arg2 = s.fmt___20345;
     s.tmp_0.arg3 = 0;
     s.tmp_0.arg4 = undefined;
     s.callLocIdx = 1822; s.pc = 41; return s.tmp_0;
@@ -52197,14 +52193,14 @@ switch (step) {
   case 44:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    r0 = s.actuator___20278.fields["serviceCommand"];
+    r0 = s.actuator___20275.fields["serviceCommand"];
     s.tmp_0.arg2 = r0;
     s.callLocIdx = 1824; s.pc = 43; return s.tmp_0;
   case 43:
     r0 = s.retval;
     { step = 16; continue; }
   case 13:
-    r0 = s.actuator___20278.fields["jdKind"];
+    r0 = s.actuator___20275.fields["jdKind"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 14);
     s.tmp_0 = r0;
@@ -52222,7 +52218,7 @@ switch (step) {
     s.tmp_0 = jacs_TopWriter_error__P3960_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_3 = JSON_stringify__P387_mk(s);
-    s.tmp_3.arg0 = s.actuator___20278;
+    s.tmp_3.arg0 = s.actuator___20275;
     s.tmp_3.arg1 = null;
     s.tmp_3.arg2 = 0;
     s.callLocIdx = 1826; s.pc = 47; return s.tmp_3;
@@ -52275,16 +52271,16 @@ function jacs_TopWriter_emitRoleCommand__P6549_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  actuator___20278: undefined,
-  wr___20286: undefined,
-  currValue___20289: undefined,
-  targetPage___20301: undefined,
-  m___20303: undefined,
+  actuator___20275: undefined,
+  wr___20283: undefined,
+  currValue___20286: undefined,
+  targetPage___20298: undefined,
+  m___20300: undefined,
   unnamed184___U5: undefined,
   unnamed185___U6: undefined,
-  pv___20328: undefined,
-  fmt___20348: undefined,
-  sz___20351: undefined,
+  pv___20325: undefined,
+  fmt___20345: undefined,
+  sz___20348: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -52293,7 +52289,7 @@ function jacs_TopWriter_emitRoleCommand__P6549_mk(s) {
 
 
 
-function currValue_inline__P20290(s) {
+function currValue_inline__P20287(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -52317,12 +52313,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-currValue_inline__P20290.info = {"start":27529,"length":31,"line":797,"column":30,"endLine":797,"endColumn":61,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+currValue_inline__P20287.info = {"start":27529,"length":31,"line":797,"column":30,"endLine":797,"endColumn":61,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
-function currValue_inline__P20290_mk(s) {
+function currValue_inline__P20287_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: currValue_inline__P20290, depth: s.depth + 1,
+        parent: s, fn: currValue_inline__P20287, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -52332,7 +52328,7 @@ function currValue_inline__P20290_mk(s) {
 
 
 
-function jacs_TopWriter_emitRoleCommand_inline__P20375(s) {
+function jacs_TopWriter_emitRoleCommand_inline__P20372(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -52382,12 +52378,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRoleCommand_inline__P20375.info = {"start":28944,"length":344,"line":825,"column":24,"endLine":833,"endColumn":25,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRoleCommand_inline__P20372.info = {"start":28944,"length":344,"line":825,"column":24,"endLine":833,"endColumn":25,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
-function jacs_TopWriter_emitRoleCommand_inline__P20375_mk(s) {
+function jacs_TopWriter_emitRoleCommand_inline__P20372_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitRoleCommand_inline__P20375, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitRoleCommand_inline__P20372, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -52413,12 +52409,12 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.idx___20425 = undefined;
-    s.args___20431 = undefined;
-    s.bound___20440 = undefined;
-    s.index___20446 = undefined;
-    s.wr___20458 = undefined;
-    s.bodyProc___20496 = undefined;
+    s.idx___20422 = undefined;
+    s.args___20428 = undefined;
+    s.bound___20437 = undefined;
+    s.index___20443 = undefined;
+    s.wr___20455 = undefined;
+    s.bodyProc___20493 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -52432,8 +52428,8 @@ switch (step) {
     s.callLocIdx = 1773; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
-    s.idx___20425 = (r0);
-    r0 = (s.idx___20425 < 0);
+    s.idx___20422 = (r0);
+    r0 = (s.idx___20422 < 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
@@ -52443,13 +52439,13 @@ switch (step) {
     s.tmp_1 = helpers_arraySlice__P115_mk(s);
     r0 = s.arg1.fields["modifiers"];
     s.tmp_1.arg0 = r0;
-    r0 = (s.idx___20425 + 1);
+    r0 = (s.idx___20422 + 1);
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = undefined;
     s.callLocIdx = 1774; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
-    s.args___20431 = (r0);
+    s.args___20428 = (r0);
     s.tmp_0 = jacs_Procedure_lookupLocal__P3931_mk(s);
     r0 = s.arg0.fields["proc"];
     s.tmp_0.arg0 = r0;
@@ -52457,7 +52453,7 @@ switch (step) {
     s.callLocIdx = 1775; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
-    s.bound___20440 = (r0);
+    s.bound___20437 = (r0);
     s.tmp_0 = jacs_Procedure_lookupLocal__P3931_mk(s);
     r0 = s.arg0.fields["proc"];
     s.tmp_0.arg0 = r0;
@@ -52465,15 +52461,15 @@ switch (step) {
     s.callLocIdx = 1776; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    s.index___20446 = (r0);
-    r0 = pxsim_Array__length(s.args___20431);
+    s.index___20443 = (r0);
+    r0 = pxsim_Array__length(s.args___20428);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
     s.tmp_1 = jacs_TopWriter_emitValue__P6541_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.tmp_1.arg1 = s.bound___20440;
-    s.tmp_1.arg2 = s.args___20431;
+    s.tmp_1.arg1 = s.bound___20437;
+    s.tmp_1.arg2 = s.args___20428;
     s.tmp_1.arg3 = Infinity;
     s.callLocIdx = 1777; s.pc = 12; return s.tmp_1;
   case 12:
@@ -52481,22 +52477,22 @@ switch (step) {
   case 3:
   case 4:
     r0 = s.arg0.fields["writer"];
-    s.wr___20458 = (r0);
+    s.wr___20455 = (r0);
     s.tmp_0 = jacs_TopWriter_emitSleep__P3971_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = 50;
     s.callLocIdx = 1778; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
-    r0 = pxsim_Array__length(s.args___20431);
+    r0 = pxsim_Array__length(s.args___20428);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
     r0 = pxsim_Array__mk();
     s.tmp_1 = r0;
     s.tmp_3 = jacs_Variable_read__P6519_mk(s);
-    s.tmp_3.arg0 = s.index___20446;
-    s.tmp_3.arg1 = s.wr___20458;
+    s.tmp_3.arg0 = s.index___20443;
+    s.tmp_3.arg1 = s.wr___20455;
     s.callLocIdx = 1779; s.pc = 14; return s.tmp_3;
   case 14:
     r0 = s.retval;
@@ -52510,12 +52506,12 @@ switch (step) {
     s.tmp_4 = r0;
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_4);
     s.tmp_6 = jacs_Variable_write__P6520_mk(s);
-    s.tmp_6.arg0 = s.index___20446;
-    s.tmp_6.arg1 = s.wr___20458;
+    s.tmp_6.arg0 = s.index___20443;
+    s.tmp_6.arg1 = s.wr___20455;
     s.tmp_7 = jacs_TopWriter_emitAdd__P6546_mk(s);
     s.tmp_7.arg0 = s.arg0;
     s.tmp_8 = jacs_OpWriter_emitExpr__P3896_mk(s);
-    s.tmp_8.arg0 = s.wr___20458;
+    s.tmp_8.arg0 = s.wr___20455;
     s.tmp_8.arg1 = 28;
     s.tmp_8.arg2 = s.tmp_1;
     s.callLocIdx = 1781; s.pc = 18; return s.tmp_8;
@@ -52533,27 +52529,27 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     s.tmp_2 = jacs_Variable_read__P6519_mk(s);
-    s.tmp_2.arg0 = s.index___20446;
-    s.tmp_2.arg1 = s.wr___20458;
+    s.tmp_2.arg0 = s.index___20443;
+    s.tmp_2.arg1 = s.wr___20455;
     s.callLocIdx = 1784; s.pc = 19; return s.tmp_2;
   case 19:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
     s.tmp_4 = jacs_Variable_read__P6519_mk(s);
-    s.tmp_4.arg0 = s.bound___20440;
-    s.tmp_4.arg1 = s.wr___20458;
+    s.tmp_4.arg0 = s.bound___20437;
+    s.tmp_4.arg1 = s.wr___20455;
     s.callLocIdx = 1785; s.pc = 20; return s.tmp_4;
   case 20:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_3);
     s.tmp_5 = jacs_OpWriter_emitJumpIfTrue__P3891_mk(s);
-    s.tmp_5.arg0 = s.wr___20458;
-    r0 = s.wr___20458.fields["top"];
+    s.tmp_5.arg0 = s.wr___20455;
+    r0 = s.wr___20455.fields["top"];
     s.tmp_5.arg1 = r0;
     s.tmp_6 = jacs_OpWriter_emitExpr__P3896_mk(s);
-    s.tmp_6.arg0 = s.wr___20458;
+    s.tmp_6.arg0 = s.wr___20455;
     s.tmp_6.arg1 = 35;
     s.tmp_6.arg2 = s.tmp_0;
     s.callLocIdx = 1786; s.pc = 22; return s.tmp_6;
@@ -52566,8 +52562,8 @@ switch (step) {
     { step = 6; continue; }
   case 5:
     s.tmp_0 = jacs_OpWriter_emitJump__P3892_mk(s);
-    s.tmp_0.arg0 = s.wr___20458;
-    r0 = s.wr___20458.fields["top"];
+    s.tmp_0.arg0 = s.wr___20455;
+    r0 = s.wr___20455.fields["top"];
     s.tmp_0.arg1 = r0;
     s.tmp_0.arg2 = undefined;
     s.callLocIdx = 1788; s.pc = 23; return s.tmp_0;
@@ -52575,11 +52571,11 @@ switch (step) {
     r0 = s.retval;
   case 6:
     r0 = s.arg0.fields["proc"];
-    s.bodyProc___20496 = (r0);
-    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitPossibleLoop_inline__P20502);
+    s.bodyProc___20493 = (r0);
+    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitPossibleLoop_inline__P20499);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.bodyProc___20496);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.bodyProc___20493);
     s.tmp_1 = jacs_TopWriter_withProcedure__P3952_mk(s);
     s.tmp_1.arg0 = s.arg0;
     r0 = s.arg0.fields["stopPage"];
@@ -52609,12 +52605,12 @@ function jacs_TopWriter_emitPossibleLoop__P6548_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  idx___20425: undefined,
-  args___20431: undefined,
-  bound___20440: undefined,
-  index___20446: undefined,
-  wr___20458: undefined,
-  bodyProc___20496: undefined,
+  idx___20422: undefined,
+  args___20428: undefined,
+  bound___20437: undefined,
+  index___20443: undefined,
+  wr___20455: undefined,
+  bodyProc___20493: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -52623,7 +52619,7 @@ function jacs_TopWriter_emitPossibleLoop__P6548_mk(s) {
 
 
 
-function jacs_TopWriter_emitPossibleLoop_inline__P20502(s) {
+function jacs_TopWriter_emitPossibleLoop_inline__P20499(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -52633,7 +52629,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitPossibleLoop_inline__P20504);
+    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitPossibleLoop_inline__P20501);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[0]);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.caps[1]);
@@ -52647,12 +52643,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitPossibleLoop_inline__P20502.info = {"start":27184,"length":129,"line":787,"column":46,"endLine":791,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitPossibleLoop_inline__P20499.info = {"start":27184,"length":129,"line":787,"column":46,"endLine":791,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
-function jacs_TopWriter_emitPossibleLoop_inline__P20502_mk(s) {
+function jacs_TopWriter_emitPossibleLoop_inline__P20499_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitPossibleLoop_inline__P20502, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitPossibleLoop_inline__P20499, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -52662,7 +52658,7 @@ function jacs_TopWriter_emitPossibleLoop_inline__P20502_mk(s) {
 
 
 
-function jacs_TopWriter_emitPossibleLoop_inline__P20504(s) {
+function jacs_TopWriter_emitPossibleLoop_inline__P20501(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -52682,12 +52678,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitPossibleLoop_inline__P20504.info = {"start":27224,"length":74,"line":788,"column":32,"endLine":790,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitPossibleLoop_inline__P20501.info = {"start":27224,"length":74,"line":788,"column":32,"endLine":790,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
-function jacs_TopWriter_emitPossibleLoop_inline__P20504_mk(s) {
+function jacs_TopWriter_emitPossibleLoop_inline__P20501_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitPossibleLoop_inline__P20504, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitPossibleLoop_inline__P20501, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -52764,9 +52760,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.currSeq___20520 = undefined;
-    s.first___20522 = undefined;
-    s.m___20524 = undefined;
+    s.currSeq___20517 = undefined;
+    s.first___20519 = undefined;
+    s.m___20521 = undefined;
     s.unnamed180___U3 = undefined;
     s.unnamed181___U4 = undefined;
     if (s.lambdaArgs) {
@@ -52779,9 +52775,9 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
     r0 = pxsim_Array__mk();
-    s.currSeq___20520 = (r0);
-    s.first___20522 = (true);
-    s.m___20524 = (undefined);
+    s.currSeq___20517 = (r0);
+    s.first___20519 = (true);
+    s.m___20521 = (undefined);
     s.unnamed180___U3 = (s.arg2);
     s.unnamed181___U4 = (0);
   case 1:
@@ -52791,8 +52787,8 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 10; continue; }
     r0 = pxsim_Array__getAt(s.unnamed180___U3, s.unnamed181___U4);
-    s.m___20524 = (r0);
-    r0 = s.m___20524.fields["category"];
+    s.m___20521 = (r0);
+    r0 = s.m___20521.fields["category"];
     s.tmp_3 = r0;
     r0 = (s.tmp_3 == "value_out");
     s.tmp_2 = r0;
@@ -52801,7 +52797,7 @@ switch (step) {
     r0 = s.tmp_2;
     { step = 3; continue; }
   case 2:
-    r0 = s.m___20524.fields["category"];
+    r0 = s.m___20521.fields["category"];
     s.tmp_4 = r0;
     r0 = (s.tmp_4 == "constant");
   case 3:
@@ -52811,7 +52807,7 @@ switch (step) {
     if (!r0) { step = 8; continue; }
     s.tmp_7 = jacs_TopWriter_breaksValSeq__P6540_mk(s);
     s.tmp_7.arg0 = s.arg0;
-    s.tmp_7.arg1 = s.m___20524;
+    s.tmp_7.arg1 = s.m___20521;
     s.callLocIdx = 1758; s.pc = 15; return s.tmp_7;
   case 15:
     r0 = s.retval;
@@ -52821,7 +52817,7 @@ switch (step) {
     r0 = s.tmp_6;
     { step = 5; continue; }
   case 4:
-    r0 = pxsim_Array__length(s.currSeq___20520);
+    r0 = pxsim_Array__length(s.currSeq___20517);
   case 5:
     // jmp value (already in r0)
     s.tmp_8 = r0;
@@ -52829,19 +52825,19 @@ switch (step) {
     if (!r0) { step = 6; continue; }
     s.tmp_9 = jacs_TopWriter_emitAddSeq__P6539_mk(s);
     s.tmp_9.arg0 = s.arg0;
-    s.tmp_9.arg1 = s.currSeq___20520;
+    s.tmp_9.arg1 = s.currSeq___20517;
     s.tmp_9.arg2 = s.arg1;
     s.tmp_9.arg3 = 0;
-    s.tmp_9.arg4 = s.first___20522;
+    s.tmp_9.arg4 = s.first___20519;
     s.callLocIdx = 1759; s.pc = 16; return s.tmp_9;
   case 16:
     r0 = s.retval;
     r0 = pxsim_Array__mk();
-    s.currSeq___20520 = (r0);
-    s.first___20522 = (false);
+    s.currSeq___20517 = (r0);
+    s.first___20519 = (false);
   case 6:
   case 7:
-    r0 = pxsim_Array__push(s.currSeq___20520, s.m___20524);
+    r0 = pxsim_Array__push(s.currSeq___20517, s.m___20521);
   case 8:
   case 9:
     r0 = (s.unnamed181___U4 + 1);
@@ -52849,23 +52845,23 @@ switch (step) {
     { step = 1; continue; }
   case 10:
     s.unnamed180___U3 = (undefined);
-    r0 = pxsim_Array__length(s.currSeq___20520);
+    r0 = pxsim_Array__length(s.currSeq___20517);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 11; continue; }
     s.tmp_1 = jacs_TopWriter_emitAddSeq__P6539_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.tmp_1.arg1 = s.currSeq___20520;
+    s.tmp_1.arg1 = s.currSeq___20517;
     s.tmp_1.arg2 = s.arg1;
     s.tmp_1.arg3 = 0;
-    s.tmp_1.arg4 = s.first___20522;
+    s.tmp_1.arg4 = s.first___20519;
     s.callLocIdx = 1760; s.pc = 17; return s.tmp_1;
   case 17:
     r0 = s.retval;
-    s.first___20522 = (false);
+    s.first___20519 = (false);
   case 11:
   case 12:
-    r0 = pxsim_numops_toBoolDecr(s.first___20522);
+    r0 = pxsim_numops_toBoolDecr(s.first___20519);
     if (!r0) { step = 13; continue; }
     s.tmp_0 = jacs_Variable_write__P6520_mk(s);
     s.tmp_0.arg0 = s.arg1;
@@ -52903,9 +52899,9 @@ function jacs_TopWriter_emitValue__P6541_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  currSeq___20520: undefined,
-  first___20522: undefined,
-  m___20524: undefined,
+  currSeq___20517: undefined,
+  first___20519: undefined,
+  m___20521: undefined,
   unnamed180___U3: undefined,
   unnamed181___U4: undefined,
   arg0: undefined,
@@ -52928,13 +52924,13 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.wr___20569 = undefined;
-    s.addOrSet___20572 = undefined;
-    s.rnd___20606 = undefined;
-    s.folded___20607 = undefined;
-    s.bndVar___20620 = undefined;
-    s.folded___20663 = undefined;
-    s.i___20674 = undefined;
+    s.wr___20566 = undefined;
+    s.addOrSet___20569 = undefined;
+    s.rnd___20603 = undefined;
+    s.folded___20604 = undefined;
+    s.bndVar___20617 = undefined;
+    s.folded___20660 = undefined;
+    s.i___20671 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -52950,13 +52946,13 @@ switch (step) {
     r0 = pxsim_pxtrt_stlocRef(s.tmp_0, s.arg4);
     s.arg4 = (s.tmp_0);
     r0 = s.arg0.fields["writer"];
-    s.wr___20569 = (r0);
-    r0 = pxsim_pxtcore_mkAction(3, addOrSet_inline__P20573);
+    s.wr___20566 = (r0);
+    r0 = pxsim_pxtcore_mkAction(3, addOrSet_inline__P20570);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg2);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.wr___20569);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.wr___20566);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.arg4);
-    s.addOrSet___20572 = (s.tmp_0);
+    s.addOrSet___20569 = (s.tmp_0);
     r0 = pxsim_Array__length(s.arg1);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 0);
@@ -52965,7 +52961,7 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     s.tmp_2 = jacs_Variable_write__P6520_mk(s);
     s.tmp_2.arg0 = s.arg2;
-    s.tmp_2.arg1 = s.wr___20569;
+    s.tmp_2.arg1 = s.wr___20566;
     s.tmp_3 = jacs_literal__P3854_mk(s);
     s.tmp_3.arg0 = s.arg3;
     s.callLocIdx = 1734; s.pc = 14; return s.tmp_3;
@@ -52999,26 +52995,26 @@ switch (step) {
     s.callLocIdx = 1737; s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
-    s.folded___20607 = (r0);
-    r0 = (s.folded___20607 != undefined);
+    s.folded___20604 = (r0);
+    r0 = (s.folded___20604 != undefined);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    r0 = (s.folded___20607 <= 2);
+    r0 = (s.folded___20604 <= 2);
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 2; continue; }
-    s.folded___20607 = (2);
+    s.folded___20604 = (2);
   case 2:
   case 3:
     s.tmp_0 = jacs_TopWriter_emitRandomInt__P6545_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    r0 = (s.folded___20607 - 1);
+    r0 = (s.folded___20604 - 1);
     s.tmp_0.arg1 = r0;
     s.callLocIdx = 1738; s.pc = 17; return s.tmp_0;
   case 17:
     r0 = s.retval;
-    s.rnd___20606 = (r0);
+    s.rnd___20603 = (r0);
     { step = 5; continue; }
   case 4:
     s.tmp_0 = jacs_Procedure_lookupLocal__P3931_mk(s);
@@ -53028,11 +53024,11 @@ switch (step) {
     s.callLocIdx = 1739; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
-    s.bndVar___20620 = (r0);
+    s.bndVar___20617 = (r0);
     s.tmp_0 = jacs_TopWriter_emitAddSeq__P6539_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
-    s.tmp_0.arg2 = s.bndVar___20620;
+    s.tmp_0.arg2 = s.bndVar___20617;
     s.tmp_0.arg3 = 5;
     s.tmp_0.arg4 = true;
     s.callLocIdx = 1740; s.pc = 19; return s.tmp_0;
@@ -53048,8 +53044,8 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
     s.tmp_4 = jacs_Variable_read__P6519_mk(s);
-    s.tmp_4.arg0 = s.bndVar___20620;
-    s.tmp_4.arg1 = s.wr___20569;
+    s.tmp_4.arg0 = s.bndVar___20617;
+    s.tmp_4.arg1 = s.wr___20566;
     s.callLocIdx = 1742; s.pc = 21; return s.tmp_4;
   case 21:
     r0 = s.retval;
@@ -53058,7 +53054,7 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_5 = r0;
     s.tmp_7 = jacs_OpWriter_emitExpr__P3896_mk(s);
-    s.tmp_7.arg0 = s.wr___20569;
+    s.tmp_7.arg0 = s.wr___20566;
     s.tmp_7.arg1 = 35;
     s.tmp_7.arg2 = s.tmp_0;
     s.callLocIdx = 1743; s.pc = 22; return s.tmp_7;
@@ -53066,14 +53062,14 @@ switch (step) {
     r0 = s.retval;
     s.tmp_6 = r0;
     r0 = pxsim_Array__push(s.tmp_5, s.tmp_6);
-    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitAddSeq_inline__P20644);
+    r0 = pxsim_pxtcore_mkAction(2, jacs_TopWriter_emitAddSeq_inline__P20641);
     s.tmp_8 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_8, 0, s.bndVar___20620);
-    r0 = pxsim_pxtrt_stclo(s.tmp_8, 1, s.wr___20569);
+    r0 = pxsim_pxtrt_stclo(s.tmp_8, 0, s.bndVar___20617);
+    r0 = pxsim_pxtrt_stclo(s.tmp_8, 1, s.wr___20566);
     s.tmp_9 = jacs_OpWriter_emitIf__P3890_mk(s);
-    s.tmp_9.arg0 = s.wr___20569;
+    s.tmp_9.arg0 = s.wr___20566;
     s.tmp_10 = jacs_OpWriter_emitExpr__P3896_mk(s);
-    s.tmp_10.arg0 = s.wr___20569;
+    s.tmp_10.arg0 = s.wr___20566;
     s.tmp_10.arg1 = 21;
     s.tmp_10.arg2 = s.tmp_5;
     s.callLocIdx = 1744; s.pc = 24; return s.tmp_10;
@@ -53090,8 +53086,8 @@ switch (step) {
     s.tmp_2 = jacs_TopWriter_emitAdd__P6546_mk(s);
     s.tmp_2.arg0 = s.arg0;
     s.tmp_3 = jacs_Variable_read__P6519_mk(s);
-    s.tmp_3.arg0 = s.bndVar___20620;
-    s.tmp_3.arg1 = s.wr___20569;
+    s.tmp_3.arg0 = s.bndVar___20617;
+    s.tmp_3.arg1 = s.wr___20566;
     s.callLocIdx = 1748; s.pc = 26; return s.tmp_3;
   case 26:
     r0 = s.retval;
@@ -53103,19 +53099,19 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
     s.tmp_4 = jacs_OpWriter_emitExpr__P3896_mk(s);
-    s.tmp_4.arg0 = s.wr___20569;
+    s.tmp_4.arg0 = s.wr___20566;
     s.tmp_4.arg1 = 23;
     s.tmp_4.arg2 = s.tmp_0;
     s.callLocIdx = 1750; s.pc = 27; return s.tmp_4;
   case 27:
     r0 = s.retval;
-    s.rnd___20606 = (r0);
+    s.rnd___20603 = (r0);
   case 5:
     s.tmp_0 = lambda_2_mk(s);
-    s.tmp_0.argL = s.addOrSet___20572;
+    s.tmp_0.argL = s.addOrSet___20569;
     s.tmp_1 = jacs_TopWriter_emitAdd__P6546_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.tmp_1.arg1 = s.rnd___20606;
+    s.tmp_1.arg1 = s.rnd___20603;
     s.tmp_1.arg2 = 1;
     s.callLocIdx = 1751; s.pc = 29; return s.tmp_1;
   case 29:
@@ -53134,15 +53130,15 @@ switch (step) {
     s.callLocIdx = 1753; s.pc = 30; return s.tmp_0;
   case 30:
     r0 = s.retval;
-    s.folded___20663 = (r0);
-    r0 = (s.folded___20663 != undefined);
+    s.folded___20660 = (r0);
+    r0 = (s.folded___20660 != undefined);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
     s.tmp_1 = lambda_2_mk(s);
-    s.tmp_1.argL = s.addOrSet___20572;
+    s.tmp_1.argL = s.addOrSet___20569;
     s.tmp_2 = jacs_literal__P3854_mk(s);
-    s.tmp_2.arg0 = s.folded___20663;
+    s.tmp_2.arg0 = s.folded___20660;
     s.callLocIdx = 1754; s.pc = 32; return s.tmp_2;
   case 32:
     r0 = s.retval;
@@ -53153,9 +53149,9 @@ switch (step) {
     r0 = s.retval;
     { step = 10; continue; }
   case 7:
-    s.i___20674 = (0);
+    s.i___20671 = (0);
   case 8:
-    s.tmp_1 = r0 = s.i___20674;
+    s.tmp_1 = r0 = s.i___20671;
     r0 = pxsim_Array__length(s.arg1);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
@@ -53163,10 +53159,10 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
     s.tmp_3 = lambda_2_mk(s);
-    s.tmp_3.argL = s.addOrSet___20572;
+    s.tmp_3.argL = s.addOrSet___20569;
     s.tmp_4 = jacs_TopWriter_modExpr__P6537_mk(s);
     s.tmp_4.arg0 = s.arg0;
-    r0 = pxsim_Array__getAt(s.arg1, s.i___20674);
+    r0 = pxsim_Array__getAt(s.arg1, s.i___20671);
     s.tmp_4.arg1 = r0;
     s.callLocIdx = 1756; s.pc = 34; return s.tmp_4;
   case 34:
@@ -53176,8 +53172,8 @@ switch (step) {
     s.callLocIdx = 1757; s.pc = 33; return s.tmp_3;
   case 33:
     r0 = s.retval;
-    r0 = (s.i___20674 + 1);
-    s.i___20674 = (r0);
+    r0 = (s.i___20671 + 1);
+    s.i___20671 = (r0);
     { step = 8; continue; }
   case 9:
   case 10:
@@ -53205,13 +53201,13 @@ function jacs_TopWriter_emitAddSeq__P6539_mk(s) {
   tmp_8: undefined,
   tmp_9: undefined,
   tmp_10: undefined,
-  wr___20569: undefined,
-  addOrSet___20572: undefined,
-  rnd___20606: undefined,
-  folded___20607: undefined,
-  bndVar___20620: undefined,
-  folded___20663: undefined,
-  i___20674: undefined,
+  wr___20566: undefined,
+  addOrSet___20569: undefined,
+  rnd___20603: undefined,
+  folded___20604: undefined,
+  bndVar___20617: undefined,
+  folded___20660: undefined,
+  i___20671: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -53223,7 +53219,7 @@ function jacs_TopWriter_emitAddSeq__P6539_mk(s) {
 
 
 
-function addOrSet_inline__P20573(s) {
+function addOrSet_inline__P20570(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -53277,12 +53273,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-addOrSet_inline__P20573.info = {"start":21299,"length":262,"line":629,"column":29,"endLine":637,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["vv"]}
+addOrSet_inline__P20570.info = {"start":21299,"length":262,"line":629,"column":29,"endLine":637,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["vv"]}
 
-function addOrSet_inline__P20573_mk(s) {
+function addOrSet_inline__P20570_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: addOrSet_inline__P20573, depth: s.depth + 1,
+        parent: s, fn: addOrSet_inline__P20570, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -53298,7 +53294,7 @@ function addOrSet_inline__P20573_mk(s) {
 
 
 
-function jacs_TopWriter_emitAddSeq_inline__P20644(s) {
+function jacs_TopWriter_emitAddSeq_inline__P20641(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -53324,12 +53320,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitAddSeq_inline__P20644.info = {"start":22631,"length":98,"line":659,"column":28,"endLine":661,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitAddSeq_inline__P20641.info = {"start":22631,"length":98,"line":659,"column":28,"endLine":661,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
-function jacs_TopWriter_emitAddSeq_inline__P20644_mk(s) {
+function jacs_TopWriter_emitAddSeq_inline__P20641_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: jacs_TopWriter_emitAddSeq_inline__P20644, depth: s.depth + 1,
+        parent: s, fn: jacs_TopWriter_emitAddSeq_inline__P20641, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -53349,7 +53345,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.wr___20689 = undefined;
+    s.wr___20686 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -53358,7 +53354,7 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
     r0 = s.arg0.fields["writer"];
-    s.wr___20689 = (r0);
+    s.wr___20686 = (r0);
     r0 = s.arg1.fields["jdKind"];
     s.tmp_0 = r0;
     r0 = pxsim_pxtcore.switch_eq(1, s.tmp_0);
@@ -53387,7 +53383,7 @@ switch (step) {
   case 8:
     r0 = s.retval;
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = s.wr___20689;
+    s.tmp_2.arg1 = s.wr___20686;
     s.callLocIdx = 1726; s.pc = 7; return s.tmp_2;
   case 7:
     r0 = s.retval;
@@ -53401,7 +53397,7 @@ switch (step) {
   case 10:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
-    s.tmp_4.arg1 = s.wr___20689;
+    s.tmp_4.arg1 = s.wr___20686;
     s.callLocIdx = 1728; s.pc = 9; return s.tmp_4;
   case 9:
     r0 = s.retval;
@@ -53452,7 +53448,7 @@ function jacs_TopWriter_modExpr__P6537_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  wr___20689: undefined,
+  wr___20686: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -53471,8 +53467,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.v___20724 = undefined;
-    s.m___20726 = undefined;
+    s.v___20721 = undefined;
+    s.m___20723 = undefined;
     s.unnamed178___U2 = undefined;
     s.unnamed179___U3 = undefined;
     if (s.lambdaArgs) {
@@ -53493,8 +53489,8 @@ switch (step) {
     { step = 7; continue; }
   case 1:
   case 2:
-    s.v___20724 = (0);
-    s.m___20726 = (undefined);
+    s.v___20721 = (0);
+    s.m___20723 = (undefined);
     s.unnamed178___U2 = (s.arg1);
     s.unnamed179___U3 = (0);
   case 3:
@@ -53504,8 +53500,8 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
     r0 = pxsim_Array__getAt(s.unnamed178___U2, s.unnamed179___U3);
-    s.m___20726 = (r0);
-    r0 = s.m___20726.fields["jdKind"];
+    s.m___20723 = (r0);
+    r0 = s.m___20723.fields["jdKind"];
     s.tmp_3 = r0;
     r0 = (s.tmp_3 != 1);
     s.tmp_2 = r0;
@@ -53515,16 +53511,16 @@ switch (step) {
     { step = 7; continue; }
   case 4:
   case 5:
-    r0 = s.m___20726.fields["jdParam"];
+    r0 = s.m___20723.fields["jdParam"];
     s.tmp_4 = r0;
-    r0 = (s.v___20724 + s.tmp_4);
-    s.v___20724 = (r0);
+    r0 = (s.v___20721 + s.tmp_4);
+    s.v___20721 = (r0);
     r0 = (s.unnamed179___U3 + 1);
     s.unnamed179___U3 = (r0);
     { step = 3; continue; }
   case 6:
     s.unnamed178___U2 = (undefined);
-    r0 = s.v___20724;
+    r0 = s.v___20721;
   case 7:
     return leave(s, r0)
   default: oops()
@@ -53541,8 +53537,8 @@ function jacs_TopWriter_constantFold__P6538_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  v___20724: undefined,
-  m___20726: undefined,
+  v___20721: undefined,
+  m___20723: undefined,
   unnamed178___U2: undefined,
   unnamed179___U3: undefined,
   arg0: undefined,
@@ -53614,7 +53610,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.v___20747 = undefined;
+    s.v___20744 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -53622,7 +53618,7 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_Procedure__C3922_VT)) failedCast(r0);
-    r0 = pxsim_pxtcore_mkAction(1, v_inline__P20751);
+    r0 = pxsim_pxtcore_mkAction(1, v_inline__P20748);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg1);
     s.tmp_1 = helpers_arrayFind__P111_mk(s);
@@ -53632,8 +53628,8 @@ switch (step) {
     s.callLocIdx = 1580; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
-    s.v___20747 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.v___20747);
+    s.v___20744 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.v___20744);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -53645,10 +53641,10 @@ switch (step) {
     s.callLocIdx = 1581; s.pc = 4; return s.tmp_2;
   case 4:
     r0 = s.retval;
-    s.v___20747 = (r0);
+    s.v___20744 = (r0);
   case 1:
   case 2:
-    r0 = s.v___20747;
+    r0 = s.v___20744;
     return leave(s, r0)
   default: oops()
 } } }
@@ -53662,7 +53658,7 @@ function jacs_Procedure_lookupLocal__P3931_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  v___20747: undefined,
+  v___20744: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -53671,7 +53667,7 @@ function jacs_Procedure_lookupLocal__P3931_mk(s) {
 
 
 
-function v_inline__P20751(s) {
+function v_inline__P20748(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -53691,12 +53687,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-v_inline__P20751.info = {"start":1694,"length":19,"line":62,"column":37,"endLine":62,"endColumn":56,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["v"]}
+v_inline__P20748.info = {"start":1694,"length":19,"line":62,"column":37,"endLine":62,"endColumn":56,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["v"]}
 
-function v_inline__P20751_mk(s) {
+function v_inline__P20748_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: v_inline__P20751, depth: s.depth + 1,
+        parent: s, fn: v_inline__P20748, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -53814,7 +53810,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.i___20782 = undefined;
+    s.i___20779 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -53822,9 +53818,9 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
-    s.i___20782 = (0);
+    s.i___20779 = (0);
   case 1:
-    s.tmp_1 = r0 = s.i___20782;
+    s.tmp_1 = r0 = s.i___20779;
     r0 = s.arg1.fields["modifiers"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__length(s.tmp_3);
@@ -53835,19 +53831,19 @@ switch (step) {
     if (!r0) { step = 4; continue; }
     r0 = s.arg1.fields["modifiers"];
     s.tmp_6 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_6, s.i___20782);
+    r0 = pxsim_Array__getAt(s.tmp_6, s.i___20779);
     r0 = r0.fields["jdKind"];
     s.tmp_5 = r0;
     r0 = (s.tmp_5 == 10);
     s.tmp_4 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 2; continue; }
-    r0 = s.i___20782;
+    r0 = s.i___20779;
     { step = 5; continue; }
   case 2:
   case 3:
-    r0 = (s.i___20782 + 1);
-    s.i___20782 = (r0);
+    r0 = (s.i___20779 + 1);
+    s.i___20779 = (r0);
     { step = 1; continue; }
   case 4:
     r0 = -1;
@@ -53869,7 +53865,7 @@ function jacs_TopWriter_loopModifierIdx__P6547_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  i___20782: undefined,
+  i___20779: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -53888,17 +53884,17 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.actuator___20805 = undefined;
-    s.shortCutFn___20809 = undefined;
-    s.bufSize___20812 = undefined;
-    s.params___20816 = undefined;
-    s.role___20844 = undefined;
-    s.wr___20850 = undefined;
-    s.b___20858 = undefined;
-    s.i___20865 = undefined;
-    s.i___20897 = undefined;
-    s.p___20903 = undefined;
-    s.args___20927 = undefined;
+    s.actuator___20802 = undefined;
+    s.shortCutFn___20806 = undefined;
+    s.bufSize___20809 = undefined;
+    s.params___20813 = undefined;
+    s.role___20841 = undefined;
+    s.wr___20847 = undefined;
+    s.b___20855 = undefined;
+    s.i___20862 = undefined;
+    s.i___20894 = undefined;
+    s.p___20900 = undefined;
+    s.args___20924 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -53910,10 +53906,10 @@ switch (step) {
     r0 = s.arg1.fields["actuators"];
     s.tmp_0 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, 0);
-    s.actuator___20805 = (r0);
-    r0 = s.actuator___20805.fields["jdParam"];
-    s.shortCutFn___20809 = (r0);
-    r0 = s.actuator___20805.fields["jdParam2"];
+    s.actuator___20802 = (r0);
+    r0 = s.actuator___20802.fields["jdParam"];
+    s.shortCutFn___20806 = (r0);
+    r0 = s.actuator___20802.fields["jdParam2"];
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (!r0) { step = 1; continue; }
@@ -53924,10 +53920,10 @@ switch (step) {
   case 2:
     // jmp value (already in r0)
     s.tmp_1 = r0;
-    s.bufSize___20812 = (s.tmp_1);
-    r0 = pxsim_pxtcore_mkAction(1, params_inline__P20820);
+    s.bufSize___20809 = (s.tmp_1);
+    r0 = pxsim_pxtcore_mkAction(1, params_inline__P20817);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.shortCutFn___20809);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.shortCutFn___20806);
     s.tmp_1 = helpers_arrayFilter__P110_mk(s);
     s.tmp_2 = jacs_TopWriter_baseModifiers__P6542_mk(s);
     s.tmp_2.arg0 = s.arg0;
@@ -53940,8 +53936,8 @@ switch (step) {
     s.callLocIdx = 1703; s.pc = 23; return s.tmp_1;
   case 23:
     r0 = s.retval;
-    s.params___20816 = (r0);
-    r0 = pxsim_Array__length(s.params___20816);
+    s.params___20813 = (r0);
+    r0 = pxsim_Array__length(s.params___20813);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 0);
     s.tmp_0 = r0;
@@ -53955,7 +53951,7 @@ switch (step) {
     r0 = r0.fields["defaultModifier"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_2, s.tmp_3);
-    s.params___20816 = (s.tmp_2);
+    s.params___20813 = (s.tmp_2);
   case 3:
   case 4:
     s.tmp_0 = jacs_TopWriter_lookupActuatorRole__P3963_mk(s);
@@ -53964,22 +53960,22 @@ switch (step) {
     s.callLocIdx = 1704; s.pc = 25; return s.tmp_0;
   case 25:
     r0 = s.retval;
-    s.role___20844 = (r0);
+    s.role___20841 = (r0);
     s.tmp_0 = jacs_TopWriter_emitLockCode__P6531_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.role___20844;
+    s.tmp_0.arg1 = s.role___20841;
     s.callLocIdx = 1705; s.pc = 26; return s.tmp_0;
   case 26:
     r0 = s.retval;
     r0 = s.arg0.fields["writer"];
-    s.wr___20850 = (r0);
-    s.tmp_0 = r0 = s.shortCutFn___20809;
+    s.wr___20847 = (r0);
+    s.tmp_0 = r0 = s.shortCutFn___20806;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 5; continue; }
     r0 = s.tmp_0;
     { step = 6; continue; }
   case 5:
-    r0 = pxsim_Array__length(s.params___20816);
+    r0 = pxsim_Array__length(s.params___20813);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 > 1);
   case 6:
@@ -53987,27 +53983,27 @@ switch (step) {
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 11; continue; }
-    s.tmp_4 = r0 = s.bufSize___20812;
-    r0 = pxsim_Array__length(s.params___20816);
+    s.tmp_4 = r0 = s.bufSize___20809;
+    r0 = pxsim_Array__length(s.params___20813);
     s.tmp_5 = r0;
     r0 = (s.tmp_4 * s.tmp_5);
     s.tmp_3 = r0;
     r0 = pxsim.control.createBuffer(s.tmp_3);
-    s.b___20858 = (r0);
-    s.i___20865 = (0);
+    s.b___20855 = (r0);
+    s.i___20862 = (0);
   case 7:
-    s.tmp_1 = r0 = s.i___20865;
-    r0 = pxsim_Array__length(s.params___20816);
+    s.tmp_1 = r0 = s.i___20862;
+    r0 = pxsim_Array__length(s.params___20813);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 8; continue; }
-    s.tmp_3 = r0 = s.b___20858;
-    r0 = (s.i___20865 * s.bufSize___20812);
+    s.tmp_3 = r0 = s.b___20855;
+    r0 = (s.i___20862 * s.bufSize___20809);
     s.tmp_4 = r0;
     s.tmp_6 = microcode_FilterModifierBase__C3271_v5_1_mk(s);
-    r0 = pxsim_Array__getAt(s.params___20816, s.i___20865);
+    r0 = pxsim_Array__getAt(s.params___20813, s.i___20862);
     s.tmp_6.arg0 = r0;
     if (!checkSubtype(s.tmp_6.arg0, microcode_FilterModifierBase__C3271_VT)) failedCast(s.tmp_6.arg0);
     s.tmp_6.fn = s.tmp_6.arg0.vtable.methods.serviceCommandArg;
@@ -54016,15 +54012,15 @@ switch (step) {
     r0 = s.retval;
     s.tmp_5 = r0;
     r0 = pxsim.BufferMethods.write(s.tmp_3, s.tmp_4, s.tmp_5);
-    r0 = (s.i___20865 + 1);
-    s.i___20865 = (r0);
+    r0 = (s.i___20862 + 1);
+    s.i___20862 = (r0);
     { step = 7; continue; }
   case 8:
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     s.tmp_2 = jacs_Role_emit__P6525_mk(s);
-    s.tmp_2.arg0 = s.role___20844;
-    s.tmp_2.arg1 = s.wr___20850;
+    s.tmp_2.arg0 = s.role___20841;
+    s.tmp_2.arg1 = s.wr___20847;
     s.callLocIdx = 1706; s.pc = 28; return s.tmp_2;
   case 28:
     r0 = s.retval;
@@ -54032,13 +54028,13 @@ switch (step) {
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
     s.tmp_4 = jacs_TopWriter_emitString__P3949_mk(s);
     s.tmp_4.arg0 = s.arg0;
-    s.tmp_4.arg1 = s.b___20858;
+    s.tmp_4.arg1 = s.b___20855;
     s.callLocIdx = 1707; s.pc = 29; return s.tmp_4;
   case 29:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_3);
-    r0 = pxsim_Array__getAt(s.params___20816, 0);
+    r0 = pxsim_Array__getAt(s.params___20813, 0);
     r0 = r0.fields["jdParam2"];
     s.tmp_5 = r0;
     r0 = pxsim_numops_toBool(s.tmp_5);
@@ -54059,25 +54055,25 @@ switch (step) {
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_7);
     s.tmp_9 = jacs_TopWriter_callLinked__P6530_mk(s);
     s.tmp_9.arg0 = s.arg0;
-    s.tmp_9.arg1 = s.shortCutFn___20809;
+    s.tmp_9.arg1 = s.shortCutFn___20806;
     s.tmp_9.arg2 = s.tmp_0;
     s.callLocIdx = 1709; s.pc = 31; return s.tmp_9;
   case 31:
     r0 = s.retval;
     { step = 22; continue; }
   case 11:
-    s.i___20897 = (0);
+    s.i___20894 = (0);
   case 12:
-    s.tmp_1 = r0 = s.i___20897;
-    r0 = pxsim_Array__length(s.params___20816);
+    s.tmp_1 = r0 = s.i___20894;
+    r0 = pxsim_Array__length(s.params___20813);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 21; continue; }
-    r0 = pxsim_Array__getAt(s.params___20816, s.i___20897);
-    s.p___20903 = (r0);
-    r0 = s.p___20903.fields["jdKind"];
+    r0 = pxsim_Array__getAt(s.params___20813, s.i___20894);
+    s.p___20900 = (r0);
+    r0 = s.p___20900.fields["jdKind"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 6);
     s.tmp_0 = r0;
@@ -54086,7 +54082,7 @@ switch (step) {
     s.tmp_2 = jacs_TopWriter_emitLoadBuffer__P3967_mk(s);
     s.tmp_2.arg0 = s.arg0;
     s.tmp_3 = microcode_FilterModifierBase__C3271_v5_1_mk(s);
-    s.tmp_3.arg0 = s.p___20903;
+    s.tmp_3.arg0 = s.p___20900;
     if (!checkSubtype(s.tmp_3.arg0, microcode_FilterModifierBase__C3271_VT)) failedCast(s.tmp_3.arg0);
     s.tmp_3.fn = s.tmp_3.arg0.vtable.methods.serviceCommandArg;
     s.pc = 33; return s.tmp_3;
@@ -54098,13 +54094,13 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = jacs_TopWriter_emitSendCmd__P3968_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.role___20844;
-    r0 = s.actuator___20805.fields["serviceCommand"];
+    s.tmp_0.arg1 = s.role___20841;
+    r0 = s.actuator___20802.fields["serviceCommand"];
     s.tmp_0.arg2 = r0;
     s.callLocIdx = 1711; s.pc = 34; return s.tmp_0;
   case 34:
     r0 = s.retval;
-    r0 = s.p___20903.fields["jdParam2"];
+    r0 = s.p___20900.fields["jdParam2"];
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (!r0) { step = 13; continue; }
@@ -54123,7 +54119,7 @@ switch (step) {
     r0 = s.retval;
     { step = 20; continue; }
   case 15:
-    r0 = s.p___20903.fields["jdKind"];
+    r0 = s.p___20900.fields["jdKind"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 7);
     s.tmp_0 = r0;
@@ -54132,23 +54128,23 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_2 = r0;
     s.tmp_4 = jacs_Role_emit__P6525_mk(s);
-    s.tmp_4.arg0 = s.role___20844;
-    s.tmp_4.arg1 = s.wr___20850;
+    s.tmp_4.arg0 = s.role___20841;
+    s.tmp_4.arg1 = s.wr___20847;
     s.callLocIdx = 1713; s.pc = 36; return s.tmp_4;
   case 36:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_2, s.tmp_3);
-    s.args___20927 = (s.tmp_2);
-    r0 = s.p___20903.fields["jdParam2"];
+    s.args___20924 = (s.tmp_2);
+    r0 = s.p___20900.fields["jdParam2"];
     s.tmp_1 = r0;
     r0 = (s.tmp_1 !== undefined);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 16; continue; }
-    s.tmp_2 = r0 = s.args___20927;
+    s.tmp_2 = r0 = s.args___20924;
     s.tmp_4 = jacs_literal__P3854_mk(s);
-    r0 = s.p___20903.fields["jdParam2"];
+    r0 = s.p___20900.fields["jdParam2"];
     s.tmp_4.arg0 = r0;
     s.callLocIdx = 1714; s.pc = 37; return s.tmp_4;
   case 37:
@@ -54159,9 +54155,9 @@ switch (step) {
   case 17:
     s.tmp_0 = jacs_TopWriter_callLinked__P6530_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    r0 = s.p___20903.fields["jdParam"];
+    r0 = s.p___20900.fields["jdParam"];
     s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = s.args___20927;
+    s.tmp_0.arg2 = s.args___20924;
     s.callLocIdx = 1715; s.pc = 38; return s.tmp_0;
   case 38:
     r0 = s.retval;
@@ -54170,8 +54166,8 @@ switch (step) {
     r0 = pxsim_pxtcore.throwValue("oops");
   case 19:
   case 20:
-    r0 = (s.i___20897 + 1);
-    s.i___20897 = (r0);
+    r0 = (s.i___20894 + 1);
+    s.i___20894 = (r0);
     { step = 12; continue; }
   case 21:
   case 22:
@@ -54196,17 +54192,17 @@ function jacs_TopWriter_emitSequance__P6532_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  actuator___20805: undefined,
-  shortCutFn___20809: undefined,
-  bufSize___20812: undefined,
-  params___20816: undefined,
-  role___20844: undefined,
-  wr___20850: undefined,
-  b___20858: undefined,
-  i___20865: undefined,
-  i___20897: undefined,
-  p___20903: undefined,
-  args___20927: undefined,
+  actuator___20802: undefined,
+  shortCutFn___20806: undefined,
+  bufSize___20809: undefined,
+  params___20813: undefined,
+  role___20841: undefined,
+  wr___20847: undefined,
+  b___20855: undefined,
+  i___20862: undefined,
+  i___20894: undefined,
+  p___20900: undefined,
+  args___20924: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -54216,7 +54212,7 @@ function jacs_TopWriter_emitSequance__P6532_mk(s) {
 
 
 
-function params_inline__P20820(s) {
+function params_inline__P20817(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -54260,12 +54256,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-params_inline__P20820.info = {"start":17711,"length":149,"line":529,"column":16,"endLine":531,"endColumn":66,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["m"]}
+params_inline__P20817.info = {"start":17711,"length":149,"line":529,"column":16,"endLine":531,"endColumn":66,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["m"]}
 
-function params_inline__P20820_mk(s) {
+function params_inline__P20817_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: params_inline__P20820, depth: s.depth + 1,
+        parent: s, fn: params_inline__P20817, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -54290,8 +54286,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.len___20951 = undefined;
-    s.wr___20968 = undefined;
+    s.len___20948 = undefined;
+    s.wr___20965 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -54299,7 +54295,7 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
-    s.len___20951 = (0);
+    s.len___20948 = (0);
     r0 = (s.arg1 == null);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
@@ -54323,25 +54319,25 @@ switch (step) {
     r0 = pxsim.control.createBufferFromUTF8(s.arg1);
     s.tmp_2 = r0;
     r0 = pxsim.BufferMethods.length(s.tmp_2);
-    s.len___20951 = (r0);
+    s.len___20948 = (r0);
     { step = 4; continue; }
   case 3:
     r0 = pxsim.BufferMethods.length(s.arg1);
-    s.len___20951 = (r0);
+    s.len___20948 = (r0);
   case 4:
     r0 = s.arg0.fields["writer"];
-    s.wr___20968 = (r0);
+    s.wr___20965 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     s.tmp_2 = jacs_literal__P3854_mk(s);
-    s.tmp_2.arg0 = s.len___20951;
+    s.tmp_2.arg0 = s.len___20948;
     s.callLocIdx = 1685; s.pc = 6; return s.tmp_2;
   case 6:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
     s.tmp_3 = jacs_OpWriter_emitStmt__P3898_mk(s);
-    s.tmp_3.arg0 = s.wr___20968;
+    s.tmp_3.arg0 = s.wr___20965;
     s.tmp_3.arg1 = 70;
     s.tmp_3.arg2 = s.tmp_0;
     s.callLocIdx = 1686; s.pc = 7; return s.tmp_3;
@@ -54365,7 +54361,7 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_3);
     s.tmp_5 = jacs_OpWriter_emitStmt__P3898_mk(s);
-    s.tmp_5.arg0 = s.wr___20968;
+    s.tmp_5.arg0 = s.wr___20965;
     s.tmp_5.arg1 = 71;
     s.tmp_5.arg2 = s.tmp_0;
     s.callLocIdx = 1689; s.pc = 10; return s.tmp_5;
@@ -54388,8 +54384,8 @@ function jacs_TopWriter_emitLoadBuffer__P3967_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  len___20951: undefined,
-  wr___20968: undefined,
+  len___20948: undefined,
+  wr___20965: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -54474,9 +54470,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.v___20999 = undefined;
-    s.wr___21020 = undefined;
-    s.lbl___21039 = undefined;
+    s.v___20996 = undefined;
+    s.wr___21017 = undefined;
+    s.lbl___21036 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -54502,10 +54498,10 @@ switch (step) {
     s.callLocIdx = 1694; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    s.v___20999 = (r0);
+    s.v___20996 = (r0);
     r0 = s.arg0.fields["roleLocks"];
     s.tmp_2 = r0;
-    r0 = pxsim_Array_.indexOf(s.tmp_2, s.v___20999, undefined);
+    r0 = pxsim_Array_.indexOf(s.tmp_2, s.v___20996, undefined);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 < 0);
     s.tmp_0 = r0;
@@ -54513,23 +54509,23 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     r0 = s.arg0.fields["roleLocks"];
     s.tmp_3 = r0;
-    r0 = pxsim_Array__push(s.tmp_3, s.v___20999);
+    r0 = pxsim_Array__push(s.tmp_3, s.v___20996);
   case 1:
   case 2:
     r0 = s.arg0.fields["writer"];
-    s.wr___21020 = (r0);
+    s.wr___21017 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     s.tmp_2 = jacs_Variable_read__P6519_mk(s);
-    s.tmp_2.arg0 = s.v___20999;
-    s.tmp_2.arg1 = s.wr___21020;
+    s.tmp_2.arg0 = s.v___20996;
+    s.tmp_2.arg1 = s.wr___21017;
     s.callLocIdx = 1695; s.pc = 5; return s.tmp_2;
   case 5:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
     s.tmp_3 = jacs_OpWriter_emitStmt__P3898_mk(s);
-    s.tmp_3.arg0 = s.wr___21020;
+    s.tmp_3.arg0 = s.wr___21017;
     s.tmp_3.arg1 = 83;
     s.tmp_3.arg2 = s.tmp_0;
     s.callLocIdx = 1696; s.pc = 6; return s.tmp_3;
@@ -54545,10 +54541,10 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
     s.tmp_3 = jacs_Variable_write__P6520_mk(s);
-    s.tmp_3.arg0 = s.v___20999;
-    s.tmp_3.arg1 = s.wr___21020;
+    s.tmp_3.arg0 = s.v___20996;
+    s.tmp_3.arg1 = s.wr___21017;
     s.tmp_4 = jacs_OpWriter_emitExpr__P3896_mk(s);
-    s.tmp_4.arg0 = s.wr___21020;
+    s.tmp_4.arg0 = s.wr___21017;
     s.tmp_4.arg1 = 47;
     s.tmp_4.arg2 = s.tmp_0;
     s.callLocIdx = 1698; s.pc = 9; return s.tmp_4;
@@ -54559,19 +54555,19 @@ switch (step) {
   case 8:
     r0 = s.retval;
     s.tmp_0 = jacs_OpWriter_mkLabel__P3887_mk(s);
-    s.tmp_0.arg0 = s.wr___21020;
+    s.tmp_0.arg0 = s.wr___21017;
     s.tmp_0.arg1 = "top2";
     s.callLocIdx = 1700; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
-    s.lbl___21039 = (r0);
+    s.lbl___21036 = (r0);
     s.tmp_0 = jacs_OpWriter_emitLabel__P3889_mk(s);
-    s.tmp_0.arg0 = s.wr___21020;
-    s.tmp_0.arg1 = s.lbl___21039;
+    s.tmp_0.arg0 = s.wr___21017;
+    s.tmp_0.arg1 = s.lbl___21036;
     s.callLocIdx = 1701; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    r0 = (s.wr___21020).fields["top"] = (s.lbl___21039);
+    r0 = (s.wr___21017).fields["top"] = (s.lbl___21036);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -54588,9 +54584,9 @@ function jacs_TopWriter_emitLockCode__P6531_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  v___20999: undefined,
-  wr___21020: undefined,
-  lbl___21039: undefined,
+  v___20996: undefined,
+  wr___21017: undefined,
+  lbl___21036: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -54609,8 +54605,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.modifiers___21052 = undefined;
-    s.i___21055 = undefined;
+    s.modifiers___21049 = undefined;
+    s.i___21052 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -54619,17 +54615,17 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
     r0 = s.arg1.fields["modifiers"];
-    s.modifiers___21052 = (r0);
-    s.i___21055 = (0);
+    s.modifiers___21049 = (r0);
+    s.i___21052 = (0);
   case 1:
-    s.tmp_1 = r0 = s.i___21055;
-    r0 = pxsim_Array__length(s.modifiers___21052);
+    s.tmp_1 = r0 = s.i___21052;
+    r0 = pxsim_Array__length(s.modifiers___21049);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    r0 = pxsim_Array__getAt(s.modifiers___21052, s.i___21055);
+    r0 = pxsim_Array__getAt(s.modifiers___21049, s.i___21052);
     r0 = r0.fields["jdKind"];
     s.tmp_4 = r0;
     r0 = (s.tmp_4 == 10);
@@ -54637,20 +54633,20 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_3);
     if (!r0) { step = 2; continue; }
     s.tmp_5 = helpers_arraySlice__P115_mk(s);
-    s.tmp_5.arg0 = s.modifiers___21052;
+    s.tmp_5.arg0 = s.modifiers___21049;
     s.tmp_5.arg1 = 0;
-    s.tmp_5.arg2 = s.i___21055;
+    s.tmp_5.arg2 = s.i___21052;
     s.callLocIdx = 1763; s.pc = 6; return s.tmp_5;
   case 6:
     r0 = s.retval;
     { step = 5; continue; }
   case 2:
   case 3:
-    r0 = (s.i___21055 + 1);
-    s.i___21055 = (r0);
+    r0 = (s.i___21052 + 1);
+    s.i___21052 = (r0);
     { step = 1; continue; }
   case 4:
-    r0 = s.modifiers___21052;
+    r0 = s.modifiers___21049;
   case 5:
     return leave(s, r0)
   default: oops()
@@ -54668,8 +54664,8 @@ function jacs_TopWriter_baseModifiers__P6542_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  modifiers___21052: undefined,
-  i___21055: undefined,
+  modifiers___21049: undefined,
+  i___21052: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -54688,7 +54684,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.act___21076 = undefined;
+    s.act___21073 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -54711,8 +54707,8 @@ switch (step) {
   case 2:
     // jmp value (already in r0)
     s.tmp_3 = r0;
-    s.act___21076 = (s.tmp_3);
-    r0 = pxsim_numops_toBoolDecr(s.act___21076);
+    s.act___21073 = (s.tmp_3);
+    r0 = pxsim_numops_toBoolDecr(s.act___21073);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -54724,9 +54720,9 @@ switch (step) {
   case 4:
     s.tmp_2 = jacs_TopWriter_lookupRole__P3962_mk(s);
     s.tmp_2.arg0 = s.arg0;
-    r0 = s.act___21076.fields["serviceClassName"];
+    r0 = s.act___21073.fields["serviceClassName"];
     s.tmp_2.arg1 = r0;
-    r0 = s.act___21076.fields["serviceInstanceIndex"];
+    r0 = s.act___21073.fields["serviceInstanceIndex"];
     s.tmp_2.arg2 = r0;
     s.callLocIdx = 1677; s.pc = 6; return s.tmp_2;
   case 6:
@@ -54746,7 +54742,7 @@ function jacs_TopWriter_lookupActuatorRole__P3963_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  act___21076: undefined,
+  act___21073: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -55067,14 +55063,14 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.n___21149 = undefined;
-    s.stack___21173 = undefined;
-    s.maxstack___21174 = undefined;
-    s.usesState___21175 = undefined;
-    s.a___21179 = undefined;
+    s.n___21146 = undefined;
+    s.stack___21170 = undefined;
+    s.maxstack___21171 = undefined;
+    s.usesState___21172 = undefined;
+    s.a___21176 = undefined;
     s.unnamed142___U5 = undefined;
     s.unnamed143___U6 = undefined;
-    s.r___21214 = undefined;
+    s.r___21211 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -55088,8 +55084,8 @@ switch (step) {
     s.callLocIdx = 1511; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    s.n___21149 = (r0);
-    s.tmp_1 = r0 = s.n___21149;
+    s.n___21146 = (r0);
+    s.tmp_1 = r0 = s.n___21146;
     r0 = pxsim_Array__length(s.arg2);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 != s.tmp_2);
@@ -55110,12 +55106,12 @@ switch (step) {
     s.tmp_7 = r0;
     r0 = pxsim_String__concat(s.tmp_7, " requires ");
     s.tmp_6 = r0;
-    if ((s.n___21149) && (s.n___21149).vtable) {
+    if ((s.n___21146) && (s.n___21146).vtable) {
     setupResume(s, 14);
-    pxsim_String__stringConv(s.n___21149);
+    pxsim_String__stringConv(s.n___21146);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.n___21149) + ""; }
+    } else { s.retval = (s.n___21146) + ""; }
   case 14:
     r0 = s.retval;
     s.tmp_9 = r0;
@@ -55141,8 +55137,8 @@ switch (step) {
     r0 = s.retval;
   case 1:
   case 2:
-    s.stack___21173 = (0);
-    s.maxstack___21174 = (1);
+    s.stack___21170 = (0);
+    s.maxstack___21171 = (1);
     r0 = pxsim_String_.charCodeAt(globals.OP_PROPS___3715, s.arg1);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 & 64);
@@ -55150,8 +55146,8 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     s.tmp_0 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_0);
-    s.usesState___21175 = (r0);
-    s.a___21179 = (undefined);
+    s.usesState___21172 = (r0);
+    s.a___21176 = (undefined);
     s.unnamed142___U5 = (s.arg2);
     s.unnamed143___U6 = (0);
   case 3:
@@ -55161,9 +55157,9 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 8; continue; }
     r0 = pxsim_Array__getAt(s.unnamed142___U5, s.unnamed143___U6);
-    s.a___21179 = (r0);
-    s.tmp_4 = r0 = s.stack___21173;
-    r0 = s.a___21179.fields["flags"];
+    s.a___21176 = (r0);
+    s.tmp_4 = r0 = s.stack___21170;
+    r0 = s.a___21176.fields["flags"];
     s.tmp_7 = r0;
     r0 = (s.tmp_7 & 255);
     s.tmp_6 = r0;
@@ -55177,16 +55173,16 @@ switch (step) {
     if (!r0) { step = 4; continue; }
     s.tmp_8 = jacs_OpWriter_spillValue__P6510_mk(s);
     s.tmp_8.arg0 = s.arg0;
-    s.tmp_8.arg1 = s.a___21179;
+    s.tmp_8.arg1 = s.a___21176;
     s.callLocIdx = 1515; s.pc = 16; return s.tmp_8;
   case 16:
     r0 = s.retval;
   case 4:
   case 5:
     s.tmp_0 = Math_max__P130_mk(s);
-    s.tmp_0.arg0 = s.maxstack___21174;
-    s.tmp_1 = r0 = s.stack___21173;
-    r0 = s.a___21179.fields["flags"];
+    s.tmp_0.arg0 = s.maxstack___21171;
+    s.tmp_1 = r0 = s.stack___21170;
+    r0 = s.a___21176.fields["flags"];
     s.tmp_4 = r0;
     r0 = (s.tmp_4 & 255);
     s.tmp_3 = r0;
@@ -55197,22 +55193,22 @@ switch (step) {
     s.callLocIdx = 1517; s.pc = 17; return s.tmp_0;
   case 17:
     r0 = s.retval;
-    s.maxstack___21174 = (r0);
-    r0 = (s.stack___21173 + 1);
-    s.stack___21173 = (r0);
+    s.maxstack___21171 = (r0);
+    r0 = (s.stack___21170 + 1);
+    s.stack___21170 = (r0);
     s.tmp_1 = jacs_Value_usesState__P3841_mk(s);
-    s.tmp_1.arg0 = s.a___21179;
+    s.tmp_1.arg0 = s.a___21176;
     s.callLocIdx = 1518; s.pc = 18; return s.tmp_1;
   case 18:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
-    s.usesState___21175 = (true);
+    s.usesState___21172 = (true);
   case 6:
   case 7:
     s.tmp_0 = jacs_assert__P3817_mk(s);
-    r0 = s.a___21179.fields["flags"];
+    r0 = s.a___21176.fields["flags"];
     s.tmp_3 = r0;
     r0 = (s.tmp_3 & 512);
     s.tmp_2 = r0;
@@ -55224,7 +55220,7 @@ switch (step) {
     s.callLocIdx = 1519; s.pc = 19; return s.tmp_0;
   case 19:
     r0 = s.retval;
-    s.tmp_0 = r0 = s.a___21179;
+    s.tmp_0 = r0 = s.a___21176;
     r0 = s.tmp_0.fields["flags"];
     s.tmp_2 = r0;
     r0 = (s.tmp_2 | 512);
@@ -55238,16 +55234,16 @@ switch (step) {
     r0 = pxsim_pxtcore_mkClassInstance(jacs_Value__C3832_VT);
     s.tmp_0 = r0;
     r0 = undefined;
-    s.r___21214 = (s.tmp_0);
-    r0 = (s.r___21214).fields["args"] = (s.arg2);
-    r0 = (s.r___21214).fields["op"] = (s.arg1);
-    s.tmp_0 = r0 = s.r___21214;
-    r0 = (s.maxstack___21174 - 1);
+    s.r___21211 = (s.tmp_0);
+    r0 = (s.r___21211).fields["args"] = (s.arg2);
+    r0 = (s.r___21211).fields["op"] = (s.arg1);
+    s.tmp_0 = r0 = s.r___21211;
+    r0 = (s.maxstack___21171 - 1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["flags"] = (s.tmp_1);
-    r0 = pxsim_numops_toBoolDecr(s.usesState___21175);
+    r0 = pxsim_numops_toBoolDecr(s.usesState___21172);
     if (!r0) { step = 9; continue; }
-    s.tmp_0 = r0 = s.r___21214;
+    s.tmp_0 = r0 = s.r___21211;
     r0 = s.tmp_0.fields["flags"];
     s.tmp_2 = r0;
     r0 = (s.tmp_2 | 256);
@@ -55255,10 +55251,10 @@ switch (step) {
     r0 = (s.tmp_0).fields["flags"] = (s.tmp_1);
     r0 = s.arg0.fields["pendingStatefulValues"];
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.r___21214);
+    r0 = pxsim_Array__push(s.tmp_0, s.r___21211);
   case 9:
   case 10:
-    r0 = s.r___21214;
+    r0 = s.r___21211;
     return leave(s, r0)
   default: oops()
 } } }
@@ -55281,14 +55277,14 @@ function jacs_OpWriter_emitExpr__P3896_mk(s) {
   tmp_9: undefined,
   tmp_10: undefined,
   tmp_11: undefined,
-  n___21149: undefined,
-  stack___21173: undefined,
-  maxstack___21174: undefined,
-  usesState___21175: undefined,
-  a___21179: undefined,
+  n___21146: undefined,
+  stack___21170: undefined,
+  maxstack___21171: undefined,
+  usesState___21172: undefined,
+  a___21176: undefined,
   unnamed142___U5: undefined,
   unnamed143___U6: undefined,
-  r___21214: undefined,
+  r___21211: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -55390,9 +55386,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.endIf___21261 = undefined;
-    s.elseIf___21265 = undefined;
-    s.skipIf___21281 = undefined;
+    s.endIf___21258 = undefined;
+    s.elseIf___21262 = undefined;
+    s.skipIf___21278 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -55410,17 +55406,17 @@ switch (step) {
     s.callLocIdx = 1470; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    s.endIf___21261 = (r0);
+    s.endIf___21258 = (r0);
     s.tmp_0 = jacs_OpWriter_mkLabel__P3887_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = "elseif";
     s.callLocIdx = 1471; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
-    s.elseIf___21265 = (r0);
+    s.elseIf___21262 = (r0);
     s.tmp_0 = jacs_OpWriter_emitJump__P3892_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.elseIf___21265;
+    s.tmp_0.arg1 = s.elseIf___21262;
     s.tmp_0.arg2 = s.arg1;
     s.callLocIdx = 1472; s.pc = 5; return s.tmp_0;
   case 5:
@@ -55433,14 +55429,14 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = jacs_OpWriter_emitJump__P3892_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.endIf___21261;
+    s.tmp_0.arg1 = s.endIf___21258;
     s.tmp_0.arg2 = undefined;
     s.callLocIdx = 1474; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     s.tmp_0 = jacs_OpWriter_emitLabel__P3889_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.elseIf___21265;
+    s.tmp_0.arg1 = s.elseIf___21262;
     s.callLocIdx = 1475; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
@@ -55452,7 +55448,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = jacs_OpWriter_emitLabel__P3889_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.endIf___21261;
+    s.tmp_0.arg1 = s.endIf___21258;
     s.callLocIdx = 1477; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
@@ -55464,10 +55460,10 @@ switch (step) {
     s.callLocIdx = 1478; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    s.skipIf___21281 = (r0);
+    s.skipIf___21278 = (r0);
     s.tmp_0 = jacs_OpWriter_emitJump__P3892_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.skipIf___21281;
+    s.tmp_0.arg1 = s.skipIf___21278;
     s.tmp_0.arg2 = s.arg1;
     s.callLocIdx = 1479; s.pc = 12; return s.tmp_0;
   case 12:
@@ -55480,7 +55476,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = jacs_OpWriter_emitLabel__P3889_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.skipIf___21281;
+    s.tmp_0.arg1 = s.skipIf___21278;
     s.callLocIdx = 1481; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
@@ -55497,9 +55493,9 @@ function jacs_OpWriter_emitIf__P3890_mk(s) {
         parent: s, fn: jacs_OpWriter_emitIf__P3890, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  endIf___21261: undefined,
-  elseIf___21265: undefined,
-  skipIf___21281: undefined,
+  endIf___21258: undefined,
+  elseIf___21262: undefined,
+  skipIf___21278: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -55520,12 +55516,12 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.id___21294 = undefined;
-    s.ptr___21302 = undefined;
-    s.r___21304 = undefined;
+    s.id___21291 = undefined;
+    s.ptr___21299 = undefined;
+    s.r___21301 = undefined;
     s.unnamed172___U3 = undefined;
     s.unnamed173___U4 = undefined;
-    s.r___21317 = undefined;
+    s.r___21314 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -55540,8 +55536,8 @@ switch (step) {
     s.callLocIdx = 1675; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
-    s.id___21294 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.id___21294);
+    s.id___21291 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.id___21291);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -55551,8 +55547,8 @@ switch (step) {
     { step = 11; continue; }
   case 1:
   case 2:
-    s.ptr___21302 = (0);
-    s.r___21304 = (undefined);
+    s.ptr___21299 = (0);
+    s.r___21301 = (undefined);
     r0 = s.arg0.fields["roles"];
     s.unnamed172___U3 = (r0);
     s.unnamed173___U4 = (0);
@@ -55563,23 +55559,23 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 8; continue; }
     r0 = pxsim_Array__getAt(s.unnamed172___U3, s.unnamed173___U4);
-    s.r___21304 = (r0);
-    r0 = s.r___21304.fields["classIdentifier"];
+    s.r___21301 = (r0);
+    r0 = s.r___21301.fields["classIdentifier"];
     s.tmp_3 = r0;
-    r0 = (s.tmp_3 == s.id___21294);
+    r0 = (s.tmp_3 == s.id___21291);
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 6; continue; }
-    r0 = (s.ptr___21302 == s.arg2);
+    r0 = (s.ptr___21299 == s.arg2);
     s.tmp_4 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 4; continue; }
-    r0 = s.r___21304;
+    r0 = s.r___21301;
     { step = 11; continue; }
   case 4:
   case 5:
-    r0 = (s.ptr___21302 + 1);
-    s.ptr___21302 = (r0);
+    r0 = (s.ptr___21299 + 1);
+    s.ptr___21299 = (r0);
   case 6:
   case 7:
     r0 = (s.unnamed173___U4 + 1);
@@ -55588,7 +55584,7 @@ switch (step) {
   case 8:
     s.unnamed172___U3 = (undefined);
   case 9:
-    r0 = (s.ptr___21302 <= s.arg2);
+    r0 = (s.ptr___21299 <= s.arg2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 10; continue; }
@@ -55614,27 +55610,27 @@ switch (step) {
   case 15:
     r0 = s.retval;
     s.tmp_2 = r0;
-    if ((s.ptr___21302) && (s.ptr___21302).vtable) {
+    if ((s.ptr___21299) && (s.ptr___21299).vtable) {
     setupResume(s, 16);
-    pxsim_String__stringConv(s.ptr___21302);
+    pxsim_String__stringConv(s.ptr___21299);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.ptr___21302) + ""; }
+    } else { s.retval = (s.ptr___21299) + ""; }
   case 16:
     r0 = s.retval;
     s.tmp_5 = r0;
     r0 = pxsim_String__concat(s.tmp_2, s.tmp_5);
     s.tmp_1.arg1 = r0;
-    s.tmp_1.arg2 = s.id___21294;
+    s.tmp_1.arg2 = s.id___21291;
     s.callLocIdx = 1676; s.pc = 13; return s.tmp_1;
   case 13:
     r0 = s.retval;
-    s.r___21317 = (r0);
-    r0 = (s.ptr___21302 + 1);
-    s.ptr___21302 = (r0);
+    s.r___21314 = (r0);
+    r0 = (s.ptr___21299 + 1);
+    s.ptr___21299 = (r0);
     { step = 9; continue; }
   case 10:
-    r0 = s.r___21317;
+    r0 = s.r___21314;
   case 11:
     return leave(s, r0)
   default: oops()
@@ -55652,12 +55648,12 @@ function jacs_TopWriter_lookupRole__P3962_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  id___21294: undefined,
-  ptr___21302: undefined,
-  r___21304: undefined,
+  id___21291: undefined,
+  ptr___21299: undefined,
+  r___21301: undefined,
   unnamed172___U3: undefined,
   unnamed173___U4: undefined,
-  r___21317: undefined,
+  r___21314: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -55677,7 +55673,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.id___21339 = undefined;
+    s.id___21336 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -55686,8 +55682,8 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, jacs_TopWriter__C3932_VT)) failedCast(r0);
     r0 = pxsim_pxtrt.mapGetGeneric(globals.serviceClasses___3977, s.arg1);
-    s.id___21339 = (r0);
-    r0 = (s.id___21339 === undefined);
+    s.id___21336 = (r0);
+    r0 = (s.id___21336 === undefined);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
@@ -55713,7 +55709,7 @@ switch (step) {
     { step = 3; continue; }
   case 1:
   case 2:
-    r0 = s.id___21339;
+    r0 = s.id___21336;
   case 3:
     return leave(s, r0)
   default: oops()
@@ -55729,7 +55725,7 @@ function jacs_TopWriter_lookupServiceClass__P3961_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  id___21339: undefined,
+  id___21336: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -55748,7 +55744,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.local___21357 = undefined;
+    s.local___21354 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -55766,9 +55762,9 @@ switch (step) {
     s.callLocIdx = 1896; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
-    s.local___21357 = (r0);
+    s.local___21354 = (r0);
     s.tmp_0 = jacs_Variable_write__P6520_mk(s);
-    s.tmp_0.arg0 = s.local___21357;
+    s.tmp_0.arg0 = s.local___21354;
     r0 = s.arg0.fields["writer"];
     s.tmp_0.arg1 = r0;
     s.tmp_0.arg2 = s.arg2;
@@ -55777,9 +55773,9 @@ switch (step) {
     r0 = s.retval;
   case 1:
   case 2:
-    r0 = pxsim_numops_toBoolDecr(s.local___21357);
+    r0 = pxsim_numops_toBoolDecr(s.local___21354);
     if (!r0) { step = 3; continue; }
-    r0 = s.local___21357.fields["index"];
+    r0 = s.local___21354.fields["index"];
     { step = 4; continue; }
   case 3:
     r0 = 0;
@@ -55795,7 +55791,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_2);
-    r0 = pxsim_numops_toBoolDecr(s.local___21357);
+    r0 = pxsim_numops_toBoolDecr(s.local___21354);
     if (!r0) { step = 5; continue; }
     r0 = 1;
     { step = 6; continue; }
@@ -55848,7 +55844,7 @@ function jacs_TopWriter_emitLogString__P3970_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  local___21357: undefined,
+  local___21354: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -55906,8 +55902,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.prevProc___21392 = undefined;
-    s.r___21395 = undefined;
+    s.prevProc___21389 = undefined;
+    s.r___21392 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -55930,7 +55926,7 @@ switch (step) {
   case 4:
     r0 = s.retval;
     r0 = s.arg0.fields["proc"];
-    s.prevProc___21392 = (r0);
+    s.prevProc___21389 = (r0);
     r0 = pxsim_pxtcore.beginTry(1);
     r0 = (s.arg0).fields["proc"] = (s.arg1);
     r0 = s.arg1.fields["writer"];
@@ -55944,19 +55940,19 @@ switch (step) {
     s.callLocIdx = 1642; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
-    s.r___21395 = (r0);
+    s.r___21392 = (r0);
     r0 = pxsim_pxtcore.endTry();
   case 1:
-    r0 = (s.arg0).fields["proc"] = (s.prevProc___21392);
-    r0 = pxsim_numops_toBoolDecr(s.prevProc___21392);
+    r0 = (s.arg0).fields["proc"] = (s.prevProc___21389);
+    r0 = pxsim_numops_toBoolDecr(s.prevProc___21389);
     if (!r0) { step = 2; continue; }
-    r0 = s.prevProc___21392.fields["writer"];
+    r0 = s.prevProc___21389.fields["writer"];
     s.tmp_0 = r0;
     r0 = (s.arg0).fields["writer"] = (s.tmp_0);
   case 2:
   case 3:
     r0 = pxsim_pxtcore.endFinally();
-    r0 = s.r___21395;
+    r0 = s.r___21392;
     return leave(s, r0)
   default: oops()
 } } }
@@ -55971,8 +55967,8 @@ function jacs_TopWriter_withProcedure__P3952_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  prevProc___21392: undefined,
-  r___21395: undefined,
+  prevProc___21389: undefined,
+  r___21392: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -56249,7 +56245,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.r___21485 = undefined;
+    s.r___21482 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -56268,7 +56264,7 @@ switch (step) {
     s.callLocIdx = 1669; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
-    s.r___21485 = (s.tmp_0);
+    s.r___21482 = (s.tmp_0);
     r0 = pxsim_Array_.indexOf(globals.needsEnable___3976, s.arg2, undefined);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 >= 0);
@@ -56276,13 +56272,13 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_2 = jacs_Role_getDispatcher__P6526_mk(s);
-    s.tmp_2.arg0 = s.r___21485;
+    s.tmp_2.arg0 = s.r___21482;
     s.callLocIdx = 1670; s.pc = 4; return s.tmp_2;
   case 4:
     r0 = s.retval;
   case 1:
   case 2:
-    r0 = s.r___21485;
+    r0 = s.r___21482;
     return leave(s, r0)
   default: oops()
 } } }
@@ -56296,7 +56292,7 @@ function jacs_TopWriter_addRole__P3958_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  r___21485: undefined,
+  r___21482: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -56433,8 +56429,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.saved___21529 = undefined;
-    s.s___21534 = undefined;
+    s.saved___21526 = undefined;
+    s.s___21531 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -56453,19 +56449,19 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "progdef", s.tmp_1);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "version", globals.VERSION___3992);
-    s.saved___21529 = (s.tmp_0);
+    s.saved___21526 = (s.tmp_0);
     s.tmp_0 = JSON_stringify__P387_mk(s);
-    s.tmp_0.arg0 = s.saved___21529;
+    s.tmp_0.arg0 = s.saved___21526;
     s.tmp_0.arg1 = null;
     s.tmp_0.arg2 = 0;
     s.callLocIdx = 620; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
-    s.s___21534 = (r0);
+    s.s___21531 = (r0);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "slot", s.arg1);
-    r0 = pxsim_String_.length(s.s___21534);
+    r0 = pxsim_String_.length(s.s___21531);
     s.tmp_1 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "size", s.tmp_1);
     s.tmp_2 = microcode_reportEvent__P2877_mk(s);
@@ -56476,7 +56472,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = settings_writeString__P1739_mk(s);
     s.tmp_0.arg0 = s.arg1;
-    s.tmp_0.arg1 = s.s___21534;
+    s.tmp_0.arg1 = s.s___21531;
     s.callLocIdx = 622; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
@@ -56494,8 +56490,8 @@ function microcode_App_save__P3411_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  saved___21529: undefined,
-  s___21534: undefined,
+  saved___21526: undefined,
+  s___21531: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -56526,7 +56522,7 @@ switch (step) {
     s.tmp_2 = helpers_arrayMap__P106_mk(s);
     r0 = s.arg0.fields["pages"];
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = P_inline__P21549;
+    s.tmp_2.arg1 = P_inline__P21546;
     s.callLocIdx = 477; s.pc = 1; return s.tmp_2;
   case 1:
     r0 = s.retval;
@@ -56553,7 +56549,7 @@ function microcode_ProgramDefn_toObj__P3309_mk(s) {
 
 
 
-function P_inline__P21549(s) {
+function P_inline__P21546(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -56575,12 +56571,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-P_inline__P21549.info = {"start":14216,"length":20,"line":456,"column":34,"endLine":456,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
+P_inline__P21546.info = {"start":14216,"length":20,"line":456,"column":34,"endLine":456,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
 
-function P_inline__P21549_mk(s) {
+function P_inline__P21546_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: P_inline__P21549, depth: s.depth + 1,
+        parent: s, fn: P_inline__P21546, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -56600,7 +56596,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.obj___21554 = undefined;
+    s.obj___21551 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -56612,15 +56608,15 @@ switch (step) {
     s.tmp_2 = helpers_arrayMap__P106_mk(s);
     r0 = s.arg0.fields["rules"];
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = R_inline__P21559;
+    s.tmp_2.arg1 = R_inline__P21556;
     s.callLocIdx = 465; s.pc = 3; return s.tmp_2;
   case 3:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "R", s.tmp_1);
-    s.obj___21554 = (s.tmp_0);
+    s.obj___21551 = (s.tmp_0);
     s.tmp_4 = if_R_1_mk(s);
-    s.tmp_4.arg0 = s.obj___21554;
+    s.tmp_4.arg0 = s.obj___21551;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "R");
     } else {
@@ -56640,10 +56636,10 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
-    r0 = pxsim_pxtrt.mapDeleteByString(s.obj___21554, "R");
+    r0 = pxsim_pxtrt.mapDeleteByString(s.obj___21551, "R");
   case 1:
   case 2:
-    r0 = s.obj___21554;
+    r0 = s.obj___21551;
     return leave(s, r0)
   default: oops()
 } } }
@@ -56659,7 +56655,7 @@ function microcode_PageDefn_toObj__P3302_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  obj___21554: undefined,
+  obj___21551: undefined,
   arg0: undefined,
 } }
 
@@ -56667,7 +56663,7 @@ function microcode_PageDefn_toObj__P3302_mk(s) {
 
 
 
-function R_inline__P21559(s) {
+function R_inline__P21556(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -56689,12 +56685,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-R_inline__P21559.info = {"start":13158,"length":20,"line":416,"column":34,"endLine":416,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
+R_inline__P21556.info = {"start":13158,"length":20,"line":416,"column":34,"endLine":416,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
 
-function R_inline__P21559_mk(s) {
+function R_inline__P21556_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: R_inline__P21559, depth: s.depth + 1,
+        parent: s, fn: R_inline__P21556, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -56714,18 +56710,18 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.addField___21572 = undefined;
-    s.obj___21598 = undefined;
+    s.addField___21569 = undefined;
+    s.obj___21595 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, microcode_RuleDefn__C3283_VT)) failedCast(r0);
-    s.addField___21572 = (addField_inline__P21573);
-    r0 = pxsim_pxtcore_mkAction(1, S_inline__P21603);
+    s.addField___21569 = (addField_inline__P21570);
+    r0 = pxsim_pxtcore_mkAction(1, S_inline__P21600);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.addField___21572);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.addField___21569);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_1 = r0;
     s.tmp_3 = helpers_arrayMap__P106_mk(s);
@@ -56737,9 +56733,9 @@ switch (step) {
     r0 = s.retval;
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "S", s.tmp_2);
-    r0 = pxsim_pxtcore_mkAction(1, A_inline__P21610);
+    r0 = pxsim_pxtcore_mkAction(1, A_inline__P21607);
     s.tmp_4 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_4, 0, s.addField___21572);
+    r0 = pxsim_pxtrt_stclo(s.tmp_4, 0, s.addField___21569);
     s.tmp_6 = helpers_arrayMap__P106_mk(s);
     r0 = s.arg0.fields["actuators"];
     s.tmp_6.arg0 = r0;
@@ -56749,9 +56745,9 @@ switch (step) {
     r0 = s.retval;
     s.tmp_5 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "A", s.tmp_5);
-    r0 = pxsim_pxtcore_mkAction(1, F_inline__P21617);
+    r0 = pxsim_pxtcore_mkAction(1, F_inline__P21614);
     s.tmp_7 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_7, 0, s.addField___21572);
+    r0 = pxsim_pxtrt_stclo(s.tmp_7, 0, s.addField___21569);
     s.tmp_9 = helpers_arrayMap__P106_mk(s);
     r0 = s.arg0.fields["filters"];
     s.tmp_9.arg0 = r0;
@@ -56761,9 +56757,9 @@ switch (step) {
     r0 = s.retval;
     s.tmp_8 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "F", s.tmp_8);
-    r0 = pxsim_pxtcore_mkAction(1, M_inline__P21624);
+    r0 = pxsim_pxtcore_mkAction(1, M_inline__P21621);
     s.tmp_10 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_10, 0, s.addField___21572);
+    r0 = pxsim_pxtrt_stclo(s.tmp_10, 0, s.addField___21569);
     s.tmp_12 = helpers_arrayMap__P106_mk(s);
     r0 = s.arg0.fields["modifiers"];
     s.tmp_12.arg0 = r0;
@@ -56773,9 +56769,9 @@ switch (step) {
     r0 = s.retval;
     s.tmp_11 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "M", s.tmp_11);
-    s.obj___21598 = (s.tmp_1);
+    s.obj___21595 = (s.tmp_1);
     s.tmp_4 = if_S_1_mk(s);
-    s.tmp_4.arg0 = s.obj___21598;
+    s.tmp_4.arg0 = s.obj___21595;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "S");
     } else {
@@ -56795,11 +56791,11 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
-    r0 = pxsim_pxtrt.mapDeleteByString(s.obj___21598, "S");
+    r0 = pxsim_pxtrt.mapDeleteByString(s.obj___21595, "S");
   case 1:
   case 2:
     s.tmp_4 = if_A_1_mk(s);
-    s.tmp_4.arg0 = s.obj___21598;
+    s.tmp_4.arg0 = s.obj___21595;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "A");
     } else {
@@ -56819,11 +56815,11 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    r0 = pxsim_pxtrt.mapDeleteByString(s.obj___21598, "A");
+    r0 = pxsim_pxtrt.mapDeleteByString(s.obj___21595, "A");
   case 3:
   case 4:
     s.tmp_4 = if_F_1_mk(s);
-    s.tmp_4.arg0 = s.obj___21598;
+    s.tmp_4.arg0 = s.obj___21595;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "F");
     } else {
@@ -56843,11 +56839,11 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
-    r0 = pxsim_pxtrt.mapDeleteByString(s.obj___21598, "F");
+    r0 = pxsim_pxtrt.mapDeleteByString(s.obj___21595, "F");
   case 5:
   case 6:
     s.tmp_4 = if_M_1_mk(s);
-    s.tmp_4.arg0 = s.obj___21598;
+    s.tmp_4.arg0 = s.obj___21595;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "M");
     } else {
@@ -56867,10 +56863,10 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
-    r0 = pxsim_pxtrt.mapDeleteByString(s.obj___21598, "M");
+    r0 = pxsim_pxtrt.mapDeleteByString(s.obj___21595, "M");
   case 7:
   case 8:
-    r0 = s.obj___21598;
+    r0 = s.obj___21595;
     return leave(s, r0)
   default: oops()
 } } }
@@ -56894,8 +56890,8 @@ function microcode_RuleDefn_toObj__P3293_mk(s) {
   tmp_10: undefined,
   tmp_11: undefined,
   tmp_12: undefined,
-  addField___21572: undefined,
-  obj___21598: undefined,
+  addField___21569: undefined,
+  obj___21595: undefined,
   arg0: undefined,
 } }
 
@@ -56903,7 +56899,7 @@ function microcode_RuleDefn_toObj__P3293_mk(s) {
 
 
 
-function addField_inline__P21573(s) {
+function addField_inline__P21570(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -56913,7 +56909,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.ret___21577 = undefined;
+    s.ret___21574 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -56974,8 +56970,8 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_2, s.tmp_7);
     s.tmp_1 = r0;
     r0 = pxsim_String__concat(s.tmp_1, ")");
-    s.ret___21577 = (r0);
-    r0 = s.ret___21577;
+    s.ret___21574 = (r0);
+    r0 = s.ret___21574;
     { step = 3; continue; }
     { step = 2; continue; }
   case 1:
@@ -56987,12 +56983,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-addField_inline__P21573.info = {"start":9223,"length":307,"line":303,"column":29,"endLine":312,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+addField_inline__P21570.info = {"start":9223,"length":307,"line":303,"column":29,"endLine":312,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
-function addField_inline__P21573_mk(s) {
+function addField_inline__P21570_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: addField_inline__P21573, depth: s.depth + 1,
+        parent: s, fn: addField_inline__P21570, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -57005,7 +57001,7 @@ function addField_inline__P21573_mk(s) {
   tmp_8: undefined,
   tmp_9: undefined,
   tmp_10: undefined,
-  ret___21577: undefined,
+  ret___21574: undefined,
   arg0: undefined,
 } }
 
@@ -57013,7 +57009,7 @@ function addField_inline__P21573_mk(s) {
 
 
 
-function S_inline__P21603(s) {
+function S_inline__P21600(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -57037,12 +57033,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-S_inline__P21603.info = {"start":9593,"length":16,"line":314,"column":36,"endLine":314,"endColumn":52,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+S_inline__P21600.info = {"start":9593,"length":16,"line":314,"column":36,"endLine":314,"endColumn":52,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
-function S_inline__P21603_mk(s) {
+function S_inline__P21600_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: S_inline__P21603, depth: s.depth + 1,
+        parent: s, fn: S_inline__P21600, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -57052,7 +57048,7 @@ function S_inline__P21603_mk(s) {
 
 
 
-function A_inline__P21610(s) {
+function A_inline__P21607(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -57076,12 +57072,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-A_inline__P21610.info = {"start":9650,"length":16,"line":315,"column":38,"endLine":315,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+A_inline__P21607.info = {"start":9650,"length":16,"line":315,"column":38,"endLine":315,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
-function A_inline__P21610_mk(s) {
+function A_inline__P21607_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: A_inline__P21610, depth: s.depth + 1,
+        parent: s, fn: A_inline__P21607, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -57091,7 +57087,7 @@ function A_inline__P21610_mk(s) {
 
 
 
-function F_inline__P21617(s) {
+function F_inline__P21614(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -57115,12 +57111,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-F_inline__P21617.info = {"start":9705,"length":16,"line":316,"column":36,"endLine":316,"endColumn":52,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+F_inline__P21614.info = {"start":9705,"length":16,"line":316,"column":36,"endLine":316,"endColumn":52,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
-function F_inline__P21617_mk(s) {
+function F_inline__P21614_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: F_inline__P21617, depth: s.depth + 1,
+        parent: s, fn: F_inline__P21614, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -57130,7 +57126,7 @@ function F_inline__P21617_mk(s) {
 
 
 
-function M_inline__P21624(s) {
+function M_inline__P21621(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -57154,12 +57150,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-M_inline__P21624.info = {"start":9762,"length":16,"line":317,"column":38,"endLine":317,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+M_inline__P21621.info = {"start":9762,"length":16,"line":317,"column":38,"endLine":317,"endColumn":54,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
-function M_inline__P21624_mk(s) {
+function M_inline__P21621_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: M_inline__P21624, depth: s.depth + 1,
+        parent: s, fn: M_inline__P21621, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -57397,7 +57393,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.btns___21692 = undefined;
+    s.btns___21689 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -57415,10 +57411,10 @@ switch (step) {
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_2, "icon", "delete");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_2);
-    s.btns___21692 = (s.tmp_1);
+    s.btns___21689 = (s.tmp_1);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "btns", s.btns___21692);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "btns", s.btns___21689);
     s.tmp_1 = microcode_Picker_addGroup__P3541_mk(s);
     r0 = s.arg0.fields["editor"];
     r0 = r0.fields["picker"];
@@ -57427,7 +57423,7 @@ switch (step) {
     s.callLocIdx = 877; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P21703);
+    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P21700);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     r0 = pxsim_pxtrt.mkMap();
@@ -57456,7 +57452,7 @@ function microcode_RuleEditor_showRuleHandleMenu__P6418_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  btns___21692: undefined,
+  btns___21689: undefined,
   arg0: undefined,
 } }
 
@@ -57464,7 +57460,7 @@ function microcode_RuleEditor_showRuleHandleMenu__P6418_mk(s) {
 
 
 
-function onClick_inline__P21703(s) {
+function onClick_inline__P21700(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -57488,12 +57484,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P21703.info = {"start":23393,"length":52,"line":723,"column":25,"endLine":723,"endColumn":77,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
+onClick_inline__P21700.info = {"start":23393,"length":52,"line":723,"column":25,"endLine":723,"endColumn":77,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
 
-function onClick_inline__P21703_mk(s) {
+function onClick_inline__P21700_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: onClick_inline__P21703, depth: s.depth + 1,
+        parent: s, fn: onClick_inline__P21700, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -57592,7 +57588,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.rule___21729 = undefined;
+    s.rule___21726 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -57603,7 +57599,7 @@ switch (step) {
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_0 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, s.arg1);
-    s.rule___21729 = (r0);
+    s.rule___21726 = (r0);
     s.tmp_0 = microcode_PageDefn_deleteRuleAt__P3300_mk(s);
     r0 = s.arg0.fields["pagedef"];
     s.tmp_0.arg0 = r0;
@@ -57620,7 +57616,7 @@ switch (step) {
   case 2:
     r0 = s.retval;
     s.tmp_0 = microcode_RuleEditor__C6408_v0_1_mk(s);
-    s.tmp_0.arg0 = s.rule___21729;
+    s.tmp_0.arg0 = s.rule___21726;
     if (!checkSubtype(s.tmp_0.arg0, microcode_RuleEditor__C6408_VT)) failedCast(s.tmp_0.arg0);
     s.tmp_0.fn = s.tmp_0.arg0.vtable.methods.destroy;
     s.pc = 3; return s.tmp_0;
@@ -57629,7 +57625,7 @@ switch (step) {
     s.tmp_0 = helpers_arrayForEach__P109_mk(s);
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = microcode_PageEditor_deleteRuleAt_inline__P21747;
+    s.tmp_0.arg1 = microcode_PageEditor_deleteRuleAt_inline__P21744;
     s.callLocIdx = 833; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
@@ -57656,7 +57652,7 @@ function microcode_PageEditor_deleteRuleAt__P6398_mk(s) {
         parent: s, fn: microcode_PageEditor_deleteRuleAt__P6398, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  rule___21729: undefined,
+  rule___21726: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -57665,7 +57661,7 @@ function microcode_PageEditor_deleteRuleAt__P6398_mk(s) {
 
 
 
-function microcode_PageEditor_deleteRuleAt_inline__P21747(s) {
+function microcode_PageEditor_deleteRuleAt_inline__P21744(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -57686,12 +57682,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_deleteRuleAt_inline__P21747.info = {"start":16552,"length":37,"line":518,"column":37,"endLine":518,"endColumn":74,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
+microcode_PageEditor_deleteRuleAt_inline__P21744.info = {"start":16552,"length":37,"line":518,"column":37,"endLine":518,"endColumn":74,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
 
-function microcode_PageEditor_deleteRuleAt_inline__P21747_mk(s) {
+function microcode_PageEditor_deleteRuleAt_inline__P21744_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_PageEditor_deleteRuleAt_inline__P21747, depth: s.depth + 1,
+        parent: s, fn: microcode_PageEditor_deleteRuleAt_inline__P21744, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -57782,10 +57778,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.newRule___21773 = undefined;
-    s.rules___21783 = undefined;
-    s.i___21785 = undefined;
-    s.i___21808 = undefined;
+    s.newRule___21770 = undefined;
+    s.rules___21780 = undefined;
+    s.i___21782 = undefined;
+    s.i___21805 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -57800,8 +57796,8 @@ switch (step) {
     s.callLocIdx = 836; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
-    s.newRule___21773 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.newRule___21773);
+    s.newRule___21770 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.newRule___21770);
     if (!r0) { step = 5; continue; }
     s.tmp_0 = microcode_Editor_saveAndCompileProgram__P3442_mk(s);
     r0 = s.arg0.fields["editor"];
@@ -57810,21 +57806,21 @@ switch (step) {
   case 8:
     r0 = s.retval;
     r0 = pxsim_Array__mk();
-    s.rules___21783 = (r0);
-    s.i___21785 = (0);
+    s.rules___21780 = (r0);
+    s.i___21782 = (0);
   case 1:
-    r0 = (s.i___21785 < s.arg1);
+    r0 = (s.i___21782 < s.arg1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
-    s.tmp_1 = r0 = s.rules___21783;
+    s.tmp_1 = r0 = s.rules___21780;
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_3 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_3, s.i___21785);
+    r0 = pxsim_Array__getAt(s.tmp_3, s.i___21782);
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_2);
-    r0 = (s.i___21785 + 1);
-    s.i___21785 = (r0);
+    r0 = (s.i___21782 + 1);
+    s.i___21782 = (r0);
     { step = 1; continue; }
   case 2:
     r0 = pxsim_pxtcore_mkClassInstance(microcode_RuleEditor__C6408_VT);
@@ -57834,15 +57830,15 @@ switch (step) {
     r0 = s.arg0.fields["editor"];
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.arg0;
-    s.tmp_1.arg3 = s.newRule___21773;
+    s.tmp_1.arg3 = s.newRule___21770;
     s.tmp_1.arg4 = s.arg1;
     s.callLocIdx = 838; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
-    r0 = pxsim_Array__push(s.rules___21783, s.tmp_0);
-    s.i___21808 = (s.arg1);
+    r0 = pxsim_Array__push(s.rules___21780, s.tmp_0);
+    s.i___21805 = (s.arg1);
   case 3:
-    s.tmp_1 = r0 = s.i___21808;
+    s.tmp_1 = r0 = s.i___21805;
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__length(s.tmp_3);
@@ -57851,21 +57847,21 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    s.tmp_4 = r0 = s.rules___21783;
+    s.tmp_4 = r0 = s.rules___21780;
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_6 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_6, s.i___21808);
+    r0 = pxsim_Array__getAt(s.tmp_6, s.i___21805);
     s.tmp_5 = r0;
     r0 = pxsim_Array__push(s.tmp_4, s.tmp_5);
-    r0 = (s.i___21808 + 1);
-    s.i___21808 = (r0);
+    r0 = (s.i___21805 + 1);
+    s.i___21805 = (r0);
     { step = 3; continue; }
   case 4:
-    r0 = (s.arg0).fields["ruleEditors"] = (s.rules___21783);
+    r0 = (s.arg0).fields["ruleEditors"] = (s.rules___21780);
     s.tmp_0 = helpers_arrayForEach__P109_mk(s);
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = microcode_PageEditor_insertRuleAt_inline__P21831;
+    s.tmp_0.arg1 = microcode_PageEditor_insertRuleAt_inline__P21828;
     s.callLocIdx = 839; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
@@ -57894,10 +57890,10 @@ function microcode_PageEditor_insertRuleAt__P6399_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  newRule___21773: undefined,
-  rules___21783: undefined,
-  i___21785: undefined,
-  i___21808: undefined,
+  newRule___21770: undefined,
+  rules___21780: undefined,
+  i___21782: undefined,
+  i___21805: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -57906,7 +57902,7 @@ function microcode_PageEditor_insertRuleAt__P6399_mk(s) {
 
 
 
-function microcode_PageEditor_insertRuleAt_inline__P21831(s) {
+function microcode_PageEditor_insertRuleAt_inline__P21828(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -57927,12 +57923,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_insertRuleAt_inline__P21831.info = {"start":17331,"length":37,"line":536,"column":41,"endLine":536,"endColumn":78,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
+microcode_PageEditor_insertRuleAt_inline__P21828.info = {"start":17331,"length":37,"line":536,"column":41,"endLine":536,"endColumn":78,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule","index"]}
 
-function microcode_PageEditor_insertRuleAt_inline__P21831_mk(s) {
+function microcode_PageEditor_insertRuleAt_inline__P21828_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_PageEditor_insertRuleAt_inline__P21831, depth: s.depth + 1,
+        parent: s, fn: microcode_PageEditor_insertRuleAt_inline__P21828, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -57953,10 +57949,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.newRule___21848 = undefined;
-    s.newRules___21851 = undefined;
-    s.i___21853 = undefined;
-    s.i___21871 = undefined;
+    s.newRule___21845 = undefined;
+    s.newRules___21848 = undefined;
+    s.i___21850 = undefined;
+    s.i___21868 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -57989,29 +57985,29 @@ switch (step) {
     s.callLocIdx = 463; s.pc = 10; return s.tmp_6;
   case 10:
     r0 = s.retval;
-    s.newRule___21848 = (s.tmp_5);
+    s.newRule___21845 = (s.tmp_5);
     r0 = pxsim_Array__mk();
-    s.newRules___21851 = (r0);
-    s.i___21853 = (0);
+    s.newRules___21848 = (r0);
+    s.i___21850 = (0);
   case 3:
-    r0 = (s.i___21853 < s.arg1);
+    r0 = (s.i___21850 < s.arg1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    s.tmp_1 = r0 = s.newRules___21851;
+    s.tmp_1 = r0 = s.newRules___21848;
     r0 = s.arg0.fields["rules"];
     s.tmp_3 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_3, s.i___21853);
+    r0 = pxsim_Array__getAt(s.tmp_3, s.i___21850);
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_2);
-    r0 = (s.i___21853 + 1);
-    s.i___21853 = (r0);
+    r0 = (s.i___21850 + 1);
+    s.i___21850 = (r0);
     { step = 3; continue; }
   case 4:
-    r0 = pxsim_Array__push(s.newRules___21851, s.newRule___21848);
-    s.i___21871 = (s.arg1);
+    r0 = pxsim_Array__push(s.newRules___21848, s.newRule___21845);
+    s.i___21868 = (s.arg1);
   case 5:
-    s.tmp_1 = r0 = s.i___21871;
+    s.tmp_1 = r0 = s.i___21868;
     r0 = s.arg0.fields["rules"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__length(s.tmp_3);
@@ -58020,18 +58016,18 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
-    s.tmp_4 = r0 = s.newRules___21851;
+    s.tmp_4 = r0 = s.newRules___21848;
     r0 = s.arg0.fields["rules"];
     s.tmp_6 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_6, s.i___21871);
+    r0 = pxsim_Array__getAt(s.tmp_6, s.i___21868);
     s.tmp_5 = r0;
     r0 = pxsim_Array__push(s.tmp_4, s.tmp_5);
-    r0 = (s.i___21871 + 1);
-    s.i___21871 = (r0);
+    r0 = (s.i___21868 + 1);
+    s.i___21868 = (r0);
     { step = 5; continue; }
   case 6:
-    r0 = (s.arg0).fields["rules"] = (s.newRules___21851);
-    r0 = s.newRule___21848;
+    r0 = (s.arg0).fields["rules"] = (s.newRules___21848);
+    r0 = s.newRule___21845;
     { step = 9; continue; }
   case 7:
   case 8:
@@ -58054,10 +58050,10 @@ function microcode_PageDefn_insertRuleAt__P3301_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  newRule___21848: undefined,
-  newRules___21851: undefined,
-  i___21853: undefined,
-  i___21871: undefined,
+  newRule___21845: undefined,
+  newRules___21848: undefined,
+  i___21850: undefined,
+  i___21868: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -58163,41 +58159,41 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.res___21905 = undefined;
-    s.len___21907 = undefined;
-    s.i___21910 = undefined;
+    s.res___21902 = undefined;
+    s.len___21904 = undefined;
+    s.i___21907 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = pxsim_Array__mk();
-    s.res___21905 = (r0);
+    s.res___21902 = (r0);
     r0 = pxsim_Array__length(s.arg0);
-    s.len___21907 = (r0);
-    s.i___21910 = (0);
+    s.len___21904 = (r0);
+    s.i___21907 = (0);
   case 1:
-    r0 = (s.i___21910 < s.len___21907);
+    r0 = (s.i___21907 < s.len___21904);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
-    s.tmp_1 = r0 = s.res___21905;
+    s.tmp_1 = r0 = s.res___21902;
     s.tmp_3 = lambda_3_mk(s);
     s.tmp_3.argL = s.arg1;
-    r0 = pxsim_Array__getAt(s.arg0, s.i___21910);
+    r0 = pxsim_Array__getAt(s.arg0, s.i___21907);
     s.tmp_3.arg0 = r0;
-    s.tmp_3.arg1 = s.i___21910;
+    s.tmp_3.arg1 = s.i___21907;
     setupLambda(s.tmp_3, s.tmp_3.argL);
     s.callLocIdx = 4; s.pc = 3; return s.tmp_3;
   case 3:
     r0 = s.retval;
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_2);
-    r0 = (s.i___21910 + 1);
-    s.i___21910 = (r0);
+    r0 = (s.i___21907 + 1);
+    s.i___21907 = (r0);
     { step = 1; continue; }
   case 2:
-    r0 = s.res___21905;
+    r0 = s.res___21902;
     return leave(s, r0)
   default: oops()
 } } }
@@ -58212,9 +58208,9 @@ function helpers_arrayMap__P106_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  res___21905: undefined,
-  len___21907: undefined,
-  i___21910: undefined,
+  res___21902: undefined,
+  len___21904: undefined,
+  i___21907: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -58242,7 +58238,7 @@ switch (step) {
     s.tmp_0 = helpers_arrayForEach__P109_mk(s);
     r0 = s.arg0.fields["ruleEditors"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = microcode_PageEditor_destroy_inline__P21930;
+    s.tmp_0.arg1 = microcode_PageEditor_destroy_inline__P21927;
     s.callLocIdx = 807; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
@@ -58271,7 +58267,7 @@ function microcode_PageEditor_destroy__P6392_mk(s) {
 
 
 
-function microcode_PageEditor_destroy_inline__P21930(s) {
+function microcode_PageEditor_destroy_inline__P21927(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -58296,12 +58292,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageEditor_destroy_inline__P21930.info = {"start":13816,"length":22,"line":435,"column":37,"endLine":435,"endColumn":59,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageEditor_destroy_inline__P21927.info = {"start":13816,"length":22,"line":435,"column":37,"endLine":435,"endColumn":59,"fileName":"editor.ts","functionName":"inline","argumentNames":["rule"]}
 
-function microcode_PageEditor_destroy_inline__P21930_mk(s) {
+function microcode_PageEditor_destroy_inline__P21927_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_PageEditor_destroy_inline__P21930, depth: s.depth + 1,
+        parent: s, fn: microcode_PageEditor_destroy_inline__P21927, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -58332,12 +58328,12 @@ switch (step) {
     r0 = s.arg0.fields["progdef"];
     r0 = r0.fields["pages"];
     s.tmp_1.arg0 = r0;
-    s.tmp_1.arg1 = filter_inline__P21944;
+    s.tmp_1.arg1 = filter_inline__P21941;
     s.callLocIdx = 662; s.pc = 2; return s.tmp_1;
   case 2:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = microcode_Editor_nonEmptyPages_inline__P21965;
+    s.tmp_0.arg1 = microcode_Editor_nonEmptyPages_inline__P21962;
     s.callLocIdx = 663; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
@@ -58360,7 +58356,7 @@ function microcode_Editor_nonEmptyPages__P3438_mk(s) {
 
 
 
-function filter_inline__P21944(s) {
+function filter_inline__P21941(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -58429,12 +58425,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filter_inline__P21944.info = {"start":1435,"length":176,"line":54,"column":21,"endLine":58,"endColumn":28,"fileName":"editor.ts","functionName":"inline","argumentNames":["p","i"]}
+filter_inline__P21941.info = {"start":1435,"length":176,"line":54,"column":21,"endLine":58,"endColumn":28,"fileName":"editor.ts","functionName":"inline","argumentNames":["p","i"]}
 
-function filter_inline__P21944_mk(s) {
+function filter_inline__P21941_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: filter_inline__P21944, depth: s.depth + 1,
+        parent: s, fn: filter_inline__P21941, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -58457,7 +58453,7 @@ function filter_inline__P21944_mk(s) {
 
 
 
-function microcode_Editor_nonEmptyPages_inline__P21965(s) {
+function microcode_Editor_nonEmptyPages_inline__P21962(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -58475,12 +58471,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_nonEmptyPages_inline__P21965.info = {"start":1654,"length":11,"line":60,"column":24,"endLine":60,"endColumn":35,"fileName":"editor.ts","functionName":"inline","argumentNames":["i"]}
+microcode_Editor_nonEmptyPages_inline__P21962.info = {"start":1654,"length":11,"line":60,"column":24,"endLine":60,"endColumn":35,"fileName":"editor.ts","functionName":"inline","argumentNames":["i"]}
 
-function microcode_Editor_nonEmptyPages_inline__P21965_mk(s) {
+function microcode_Editor_nonEmptyPages_inline__P21962_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_Editor_nonEmptyPages_inline__P21965, depth: s.depth + 1,
+        parent: s, fn: microcode_Editor_nonEmptyPages_inline__P21962, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
 } }
@@ -58561,11 +58557,11 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.images___21980 = undefined;
+    s.images___21977 = undefined;
     r0 = pxsim_Array__mk();
-    s.images___21980 = (r0);
+    s.images___21977 = (r0);
     s.tmp_0 = docs_appendImage__P6592_mk(s);
-    s.tmp_0.arg0 = s.images___21980;
+    s.tmp_0.arg0 = s.images___21977;
     s.tmp_0.arg1 = "image";
     s.tmp_0.arg2 = "home";
     s.tmp_0.arg3 = globals.screen___1710;
@@ -58573,17 +58569,17 @@ switch (step) {
   case 1:
     r0 = s.retval;
     s.tmp_0 = docs_renderIcons__P6593_mk(s);
-    s.tmp_0.arg0 = s.images___21980;
+    s.tmp_0.arg0 = s.images___21977;
     s.callLocIdx = 2103; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     s.tmp_0 = docs_renderSamples__P6589_mk(s);
-    s.tmp_0.arg0 = s.images___21980;
+    s.tmp_0.arg0 = s.images___21977;
     s.callLocIdx = 2104; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_0 = docs_appendImage__P6592_mk(s);
-    s.tmp_0.arg0 = s.images___21980;
+    s.tmp_0.arg0 = s.images___21977;
     s.tmp_0.arg1 = "image";
     s.tmp_0.arg2 = "microcode";
     s.tmp_0.arg3 = globals.wordLogo___3078;
@@ -58591,7 +58587,7 @@ switch (step) {
   case 4:
     r0 = s.retval;
     s.tmp_0 = docs_appendImage__P6592_mk(s);
-    s.tmp_0.arg0 = s.images___21980;
+    s.tmp_0.arg0 = s.images___21977;
     s.tmp_0.arg1 = "image";
     s.tmp_0.arg2 = "microbit";
     s.tmp_0.arg3 = globals.microbitLogo___3079;
@@ -58599,7 +58595,7 @@ switch (step) {
   case 5:
     r0 = s.retval;
     s.tmp_0 = docs_appendImage__P6592_mk(s);
-    s.tmp_0.arg0 = s.images___21980;
+    s.tmp_0.arg0 = s.images___21977;
     s.tmp_0.arg1 = "image";
     s.tmp_0.arg2 = "editor_background";
     s.tmp_0.arg3 = globals.editorBackground___3080;
@@ -58609,7 +58605,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "type", "art");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "images", s.images___21980);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "images", s.images___21977);
     s.tmp_3 = JSON_stringify__P387_mk(s);
     s.tmp_3.arg0 = s.tmp_0;
     s.tmp_3.arg1 = null;
@@ -58636,7 +58632,7 @@ function docs__renderApp__P6588_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  images___21980: undefined,
+  images___21977: undefined,
 } }
 
 
@@ -58653,12 +58649,12 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.sample___22009 = undefined;
+    s.sample___22006 = undefined;
     s.unnamed194___U1 = undefined;
     s.unnamed195___U2 = undefined;
-    s.icon___22019 = undefined;
-    s.src___22031 = undefined;
-    s.res___22037 = undefined;
+    s.icon___22016 = undefined;
+    s.src___22028 = undefined;
+    s.res___22034 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -58668,7 +58664,7 @@ switch (step) {
     s.callLocIdx = 2109; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
-    s.sample___22009 = (undefined);
+    s.sample___22006 = (undefined);
     s.tmp_0 = microcode_samples__P4059_mk(s);
     s.tmp_0.arg0 = false;
     s.callLocIdx = 2110; s.pc = 6; return s.tmp_0;
@@ -58683,9 +58679,9 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 4; continue; }
     r0 = pxsim_Array__getAt(s.unnamed194___U1, s.unnamed195___U2);
-    s.sample___22009 = (r0);
+    s.sample___22006 = (r0);
     s.tmp_2 = console_log__P380_mk(s);
-    r0 = s.sample___22009.fields["label"];
+    r0 = s.sample___22006.fields["label"];
     s.tmp_4 = r0;
     if ((s.tmp_4) && (s.tmp_4).vtable) {
     setupResume(s, 8);
@@ -58702,35 +58698,35 @@ switch (step) {
   case 7:
     r0 = s.retval;
     s.tmp_0 = microcode_icons_get__P3075_mk(s);
-    r0 = s.sample___22009.fields["icon"];
+    r0 = s.sample___22006.fields["icon"];
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = true;
     s.callLocIdx = 2112; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
-    s.icon___22019 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.icon___22019);
+    s.icon___22016 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.icon___22016);
     if (!r0) { step = 2; continue; }
     s.tmp_0 = docs_appendImage__P6592_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = "icon_sample";
-    r0 = s.sample___22009.fields["label"];
+    r0 = s.sample___22006.fields["label"];
     s.tmp_0.arg2 = r0;
-    s.tmp_0.arg3 = s.icon___22019;
+    s.tmp_0.arg3 = s.icon___22016;
     s.callLocIdx = 2113; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
   case 2:
   case 3:
     s.tmp_0 = microcode_Sample_source__P4058_mk(s);
-    s.tmp_0.arg0 = s.sample___22009;
+    s.tmp_0.arg0 = s.sample___22006;
     s.callLocIdx = 2114; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    s.src___22031 = (r0);
+    s.src___22028 = (r0);
     s.tmp_0 = settings_writeString__P1739_mk(s);
     s.tmp_0.arg0 = globals.SAVESLOT_AUTO___3407;
-    s.tmp_0.arg1 = s.src___22031;
+    s.tmp_0.arg1 = s.src___22028;
     s.callLocIdx = 2115; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
@@ -58738,14 +58734,14 @@ switch (step) {
     s.callLocIdx = 2116; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
-    s.res___22037 = (r0);
-    r0 = pxsim_pxtcore_mkAction(3, docs_renderSamples_inline__P22044);
+    s.res___22034 = (r0);
+    r0 = pxsim_pxtcore_mkAction(3, docs_renderSamples_inline__P22041);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.sample___22009);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.res___22037);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.sample___22006);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.res___22034);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
-    r0 = pxsim_pxtrt.keysOf(s.res___22037);
+    r0 = pxsim_pxtrt.keysOf(s.res___22034);
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = s.tmp_0;
     s.callLocIdx = 2118; s.pc = 14; return s.tmp_1;
@@ -58781,12 +58777,12 @@ function docs_renderSamples__P6589_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  sample___22009: undefined,
+  sample___22006: undefined,
   unnamed194___U1: undefined,
   unnamed195___U2: undefined,
-  icon___22019: undefined,
-  src___22031: undefined,
-  res___22037: undefined,
+  icon___22016: undefined,
+  src___22028: undefined,
+  res___22034: undefined,
   arg0: undefined,
 } }
 
@@ -58794,7 +58790,7 @@ function docs_renderSamples__P6589_mk(s) {
 
 
 
-function docs_renderSamples_inline__P22044(s) {
+function docs_renderSamples_inline__P22041(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -58858,12 +58854,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-docs_renderSamples_inline__P22044.info = {"start":2096,"length":240,"line":65,"column":37,"endLine":72,"endColumn":13,"fileName":"docs.ts","functionName":"inline","argumentNames":["iname"]}
+docs_renderSamples_inline__P22041.info = {"start":2096,"length":240,"line":65,"column":37,"endLine":72,"endColumn":13,"fileName":"docs.ts","functionName":"inline","argumentNames":["iname"]}
 
-function docs_renderSamples_inline__P22044_mk(s) {
+function docs_renderSamples_inline__P22041_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: docs_renderSamples_inline__P22044, depth: s.depth + 1,
+        parent: s, fn: docs_renderSamples_inline__P22041, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -58974,8 +58970,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.sz___22088 = undefined;
-    s.res___22093 = undefined;
+    s.sz___22085 = undefined;
+    s.res___22090 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -58986,16 +58982,16 @@ switch (step) {
     s.callLocIdx = 38; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.sz___22088 = (r0);
-    r0 = pxsim.control.createBuffer(s.sz___22088);
-    s.res___22093 = (r0);
+    s.sz___22085 = (r0);
+    r0 = pxsim.control.createBuffer(s.sz___22085);
+    s.res___22090 = (r0);
     s.tmp_0 = Buffer_fromBase64Core__P4108_mk(s);
-    s.tmp_0.arg0 = s.res___22093;
+    s.tmp_0.arg0 = s.res___22090;
     s.tmp_0.arg1 = s.arg0;
     s.callLocIdx = 39; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
-    r0 = s.res___22093;
+    r0 = s.res___22090;
     return leave(s, r0)
   default: oops()
 } } }
@@ -59007,8 +59003,8 @@ function Buffer_fromBase64__P207_mk(s) {
         parent: s, fn: Buffer_fromBase64__P207, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  sz___22088: undefined,
-  res___22093: undefined,
+  sz___22085: undefined,
+  res___22090: undefined,
   arg0: undefined,
 } }
 
@@ -59026,72 +59022,72 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.len___22103 = undefined;
-    s.dp___22106 = undefined;
-    s.i___22107 = undefined;
-    s.x0___22112 = undefined;
-    s.x1___22118 = undefined;
-    s.x2___22126 = undefined;
-    s.x3___22134 = undefined;
+    s.len___22100 = undefined;
+    s.dp___22103 = undefined;
+    s.i___22104 = undefined;
+    s.x0___22109 = undefined;
+    s.x1___22115 = undefined;
+    s.x2___22123 = undefined;
+    s.x3___22131 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = pxsim_String_.length(s.arg1);
-    s.len___22103 = (r0);
-    s.dp___22106 = (0);
-    s.i___22107 = (0);
+    s.len___22100 = (r0);
+    s.dp___22103 = (0);
+    s.i___22104 = (0);
   case 1:
-    r0 = (s.i___22107 < s.len___22103);
+    r0 = (s.i___22104 < s.len___22100);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 20; continue; }
     s.tmp_1 = Buffer_b64Idx__P4107_mk(s);
-    r0 = pxsim_String_.charAt(s.arg1, s.i___22107);
+    r0 = pxsim_String_.charAt(s.arg1, s.i___22104);
     s.tmp_1.arg0 = r0;
     s.callLocIdx = 34; s.pc = 21; return s.tmp_1;
   case 21:
     r0 = s.retval;
-    s.x0___22112 = (r0);
+    s.x0___22109 = (r0);
     s.tmp_0 = Buffer_b64Idx__P4107_mk(s);
     s.tmp_1 = r0 = s.arg1;
-    r0 = (s.i___22107 + 1);
+    r0 = (s.i___22104 + 1);
     s.tmp_2 = r0;
     r0 = pxsim_String_.charAt(s.tmp_1, s.tmp_2);
     s.tmp_0.arg0 = r0;
     s.callLocIdx = 35; s.pc = 22; return s.tmp_0;
   case 22:
     r0 = s.retval;
-    s.x1___22118 = (r0);
+    s.x1___22115 = (r0);
     s.tmp_0 = Buffer_b64Idx__P4107_mk(s);
     s.tmp_1 = r0 = s.arg1;
-    r0 = (s.i___22107 + 2);
+    r0 = (s.i___22104 + 2);
     s.tmp_2 = r0;
     r0 = pxsim_String_.charAt(s.tmp_1, s.tmp_2);
     s.tmp_0.arg0 = r0;
     s.callLocIdx = 36; s.pc = 23; return s.tmp_0;
   case 23:
     r0 = s.retval;
-    s.x2___22126 = (r0);
+    s.x2___22123 = (r0);
     s.tmp_0 = Buffer_b64Idx__P4107_mk(s);
     s.tmp_1 = r0 = s.arg1;
-    r0 = (s.i___22107 + 3);
+    r0 = (s.i___22104 + 3);
     s.tmp_2 = r0;
     r0 = pxsim_String_.charAt(s.tmp_1, s.tmp_2);
     s.tmp_0.arg0 = r0;
     s.callLocIdx = 37; s.pc = 24; return s.tmp_0;
   case 24:
     r0 = s.retval;
-    s.x3___22134 = (r0);
-    r0 = (s.x0___22112 < 0);
+    s.x3___22131 = (r0);
+    r0 = (s.x0___22109 < 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (!r0) { step = 2; continue; }
     r0 = s.tmp_0;
     { step = 3; continue; }
   case 2:
-    r0 = (s.x1___22118 < 0);
+    r0 = (s.x1___22115 < 0);
   case 3:
     // jmp value (already in r0)
     s.tmp_1 = r0;
@@ -59103,68 +59099,68 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.arg0);
     if (!r0) { step = 6; continue; }
     s.tmp_2 = r0 = s.arg0;
-    s.tmp_3 = r0 = s.dp___22106;
-    r0 = (s.x0___22112 << 2);
+    s.tmp_3 = r0 = s.dp___22103;
+    r0 = (s.x0___22109 << 2);
     s.tmp_5 = r0;
-    r0 = (s.x1___22118 >> 4);
+    r0 = (s.x1___22115 >> 4);
     s.tmp_6 = r0;
     r0 = (s.tmp_5 | s.tmp_6);
     s.tmp_4 = r0;
     r0 = pxsim.BufferMethods.setByte(s.tmp_2, s.tmp_3, s.tmp_4);
   case 6:
   case 7:
-    r0 = (s.dp___22106 + 1);
-    s.dp___22106 = (r0);
-    r0 = (s.x2___22126 >= 0);
+    r0 = (s.dp___22103 + 1);
+    s.dp___22103 = (r0);
+    r0 = (s.x2___22123 >= 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 14; continue; }
     r0 = pxsim_numops_toBoolDecr(s.arg0);
     if (!r0) { step = 8; continue; }
     s.tmp_1 = r0 = s.arg0;
-    s.tmp_2 = r0 = s.dp___22106;
-    r0 = (s.x1___22118 << 4);
+    s.tmp_2 = r0 = s.dp___22103;
+    r0 = (s.x1___22115 << 4);
     s.tmp_4 = r0;
-    r0 = (s.x2___22126 >> 2);
+    r0 = (s.x2___22123 >> 2);
     s.tmp_5 = r0;
     r0 = (s.tmp_4 | s.tmp_5);
     s.tmp_3 = r0;
     r0 = pxsim.BufferMethods.setByte(s.tmp_1, s.tmp_2, s.tmp_3);
   case 8:
   case 9:
-    r0 = (s.dp___22106 + 1);
-    s.dp___22106 = (r0);
-    r0 = (s.x3___22134 >= 0);
+    r0 = (s.dp___22103 + 1);
+    s.dp___22103 = (r0);
+    r0 = (s.x3___22131 >= 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 12; continue; }
     r0 = pxsim_numops_toBoolDecr(s.arg0);
     if (!r0) { step = 10; continue; }
     s.tmp_1 = r0 = s.arg0;
-    s.tmp_2 = r0 = s.dp___22106;
-    r0 = (s.x2___22126 << 6);
+    s.tmp_2 = r0 = s.dp___22103;
+    r0 = (s.x2___22123 << 6);
     s.tmp_4 = r0;
-    r0 = (s.tmp_4 | s.x3___22134);
+    r0 = (s.tmp_4 | s.x3___22131);
     s.tmp_3 = r0;
     r0 = pxsim.BufferMethods.setByte(s.tmp_1, s.tmp_2, s.tmp_3);
   case 10:
   case 11:
-    r0 = (s.dp___22106 + 1);
-    s.dp___22106 = (r0);
+    r0 = (s.dp___22103 + 1);
+    s.dp___22103 = (r0);
   case 12:
   case 13:
     { step = 19; continue; }
   case 14:
-    r0 = (s.x3___22134 >= 0);
+    r0 = (s.x3___22131 >= 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (!r0) { step = 15; continue; }
     r0 = s.tmp_0;
     { step = 16; continue; }
   case 15:
-    r0 = (s.i___22107 + 4);
+    r0 = (s.i___22104 + 4);
     s.tmp_1 = r0;
-    r0 = (s.tmp_1 < s.len___22103);
+    r0 = (s.tmp_1 < s.len___22100);
   case 16:
     // jmp value (already in r0)
     s.tmp_2 = r0;
@@ -59174,11 +59170,11 @@ switch (step) {
   case 17:
   case 18:
   case 19:
-    r0 = (s.i___22107 + 4);
-    s.i___22107 = (r0);
+    r0 = (s.i___22104 + 4);
+    s.i___22104 = (r0);
     { step = 1; continue; }
   case 20:
-    r0 = s.dp___22106;
+    r0 = s.dp___22103;
     return leave(s, r0)
   default: oops()
 } } }
@@ -59196,13 +59192,13 @@ function Buffer_fromBase64Core__P4108_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  len___22103: undefined,
-  dp___22106: undefined,
-  i___22107: undefined,
-  x0___22112: undefined,
-  x1___22118: undefined,
-  x2___22126: undefined,
-  x3___22134: undefined,
+  len___22100: undefined,
+  dp___22103: undefined,
+  i___22104: undefined,
+  x0___22109: undefined,
+  x1___22115: undefined,
+  x2___22123: undefined,
+  x3___22131: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -59221,7 +59217,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.r___22212 = undefined;
+    s.r___22209 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -59260,15 +59256,15 @@ switch (step) {
   case 7:
   case 8:
     r0 = pxsim_String_.indexOf(globals._b64___193, s.arg0, undefined);
-    s.r___22212 = (r0);
-    r0 = (s.r___22212 < 0);
+    s.r___22209 = (r0);
+    r0 = (s.r___22209 < 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
     r0 = pxsim_pxtcore.throwValue("Invalid Base64");
   case 9:
   case 10:
-    r0 = s.r___22212;
+    r0 = s.r___22209;
   case 11:
     return leave(s, r0)
   default: oops()
@@ -59284,7 +59280,7 @@ function Buffer_b64Idx__P4107_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  r___22212: undefined,
+  r___22209: undefined,
   arg0: undefined,
 } }
 
@@ -59302,7 +59298,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.s___22223 = undefined;
+    s.s___22220 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -59413,19 +59409,19 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_16, "label", "coins");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_16, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk02Il19LHsiUyI6WyJTMiJdLCJBIjpbIkE5QSJdLCJGIjpbIkY0Il0sIk0iOlsiTTIwQSIsIk02Il19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkYxMCJdLCJNIjpbIk0xNSgwMTExMTAwMDAxMDAxMTEwMDAwMTAxMTExKSJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTUiXSwiRiI6WyJGMTEiXSwiTSI6WyJNMTUoMTExMTAxMDAwMDExMTEwMDAwMTAxMTEwMCkiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkE1Il0sIkYiOlsiRjEyIl0sIk0iOlsiTTE1KDEwMTExMTAxMDExMDEwMTEwMTAxMTAxMTEpIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfX0=");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_16);
-    s.s___22223 = (s.tmp_1);
-    r0 = pxsim_pxtcore_mkAction(1, map_inline__P22228);
+    s.s___22220 = (s.tmp_1);
+    r0 = pxsim_pxtcore_mkAction(1, map_inline__P22225);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = helpers_arrayMap__P106_mk(s);
     s.tmp_2 = helpers_arrayFilter__P110_mk(s);
-    s.tmp_2.arg0 = s.s___22223;
+    s.tmp_2.arg0 = s.s___22220;
     s.tmp_2.arg1 = s.tmp_0;
     s.callLocIdx = 2086; s.pc = 2; return s.tmp_2;
   case 2:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
-    s.tmp_1.arg1 = microcode_samples_inline__P22237;
+    s.tmp_1.arg1 = microcode_samples_inline__P22234;
     s.callLocIdx = 2094; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
@@ -59456,7 +59452,7 @@ function microcode_samples__P4059_mk(s) {
   tmp_14: undefined,
   tmp_15: undefined,
   tmp_16: undefined,
-  s___22223: undefined,
+  s___22220: undefined,
   arg0: undefined,
 } }
 
@@ -59464,7 +59460,7 @@ function microcode_samples__P4059_mk(s) {
 
 
 
-function map_inline__P22228(s) {
+function map_inline__P22225(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -59474,7 +59470,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.icon___22230 = undefined;
+    s.icon___22227 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -59491,7 +59487,7 @@ switch (step) {
     }
   case 3:
     r0 = s.retval;
-    s.icon___22230 = (r0);
+    s.icon___22227 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.caps[0]);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
@@ -59501,7 +59497,7 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 2; continue; }
   case 1:
-    r0 = pxsim_numops_toBoolDecr(s.icon___22230);
+    r0 = pxsim_numops_toBoolDecr(s.icon___22227);
     s.tmp_4 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_4);
     s.tmp_3 = r0;
@@ -59515,12 +59511,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-map_inline__P22228.info = {"start":11155,"length":33,"line":120,"column":20,"endLine":120,"endColumn":53,"fileName":"samples.ts","functionName":"inline","argumentNames":["map.inline"]}
+map_inline__P22225.info = {"start":11155,"length":33,"line":120,"column":20,"endLine":120,"endColumn":53,"fileName":"samples.ts","functionName":"inline","argumentNames":["map.inline"]}
 
-function map_inline__P22228_mk(s) {
+function map_inline__P22225_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: map_inline__P22228, depth: s.depth + 1,
+        parent: s, fn: map_inline__P22225, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -59528,7 +59524,7 @@ function map_inline__P22228_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  icon___22230: undefined,
+  icon___22227: undefined,
   arg0: undefined,
 } }
 
@@ -59536,7 +59532,7 @@ function map_inline__P22228_mk(s) {
 
 
 
-function microcode_samples_inline__P22237(s) {
+function microcode_samples_inline__P22234(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -59546,12 +59542,12 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.label___22239 = undefined;
-    s.ariaId___22240 = undefined;
-    s.src___22241 = undefined;
-    s.icon___22242 = undefined;
-    s.b64___22243 = undefined;
-    s.buf___22244 = undefined;
+    s.label___22236 = undefined;
+    s.ariaId___22237 = undefined;
+    s.src___22238 = undefined;
+    s.icon___22239 = undefined;
+    s.b64___22240 = undefined;
+    s.buf___22241 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -59568,7 +59564,7 @@ switch (step) {
     }
   case 1:
     r0 = s.retval;
-    s.label___22239 = (r0);
+    s.label___22236 = (r0);
     s.tmp_1 = if_ariaId_1_mk(s);
     s.tmp_1.arg0 = s.arg0;
     if (!s.tmp_1.arg0.vtable.iface) {
@@ -59581,7 +59577,7 @@ switch (step) {
     }
   case 2:
     r0 = s.retval;
-    s.ariaId___22240 = (r0);
+    s.ariaId___22237 = (r0);
     s.tmp_2 = if_src_1_mk(s);
     s.tmp_2.arg0 = s.arg0;
     if (!s.tmp_2.arg0.vtable.iface) {
@@ -59594,7 +59590,7 @@ switch (step) {
     }
   case 3:
     r0 = s.retval;
-    s.src___22241 = (r0);
+    s.src___22238 = (r0);
     s.tmp_3 = if_icon_1_mk(s);
     s.tmp_3.arg0 = s.arg0;
     if (!s.tmp_3.arg0.vtable.iface) {
@@ -59607,7 +59603,7 @@ switch (step) {
     }
   case 4:
     r0 = s.retval;
-    s.icon___22242 = (r0);
+    s.icon___22239 = (r0);
     s.tmp_4 = if_b64_1_mk(s);
     s.tmp_4.arg0 = s.arg0;
     if (!s.tmp_4.arg0.vtable.iface) {
@@ -59620,7 +59616,7 @@ switch (step) {
     }
   case 5:
     r0 = s.retval;
-    s.b64___22243 = (r0);
+    s.b64___22240 = (r0);
     s.tmp_5 = if_buf_1_mk(s);
     s.tmp_5.arg0 = s.arg0;
     if (!s.tmp_5.arg0.vtable.iface) {
@@ -59633,17 +59629,17 @@ switch (step) {
     }
   case 6:
     r0 = s.retval;
-    s.buf___22244 = (r0);
+    s.buf___22241 = (r0);
     r0 = pxsim_pxtcore_mkClassInstance(microcode_Sample__C4056_VT);
     s.tmp_0 = r0;
     s.tmp_1 = microcode_Sample_constructor__P4057_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
-    s.tmp_1.arg1 = s.label___22239;
-    s.tmp_1.arg2 = s.ariaId___22240;
-    s.tmp_1.arg3 = s.icon___22242;
-    s.tmp_1.arg4 = s.src___22241;
-    s.tmp_1.arg5 = s.b64___22243;
-    s.tmp_1.arg6 = s.buf___22244;
+    s.tmp_1.arg1 = s.label___22236;
+    s.tmp_1.arg2 = s.ariaId___22237;
+    s.tmp_1.arg3 = s.icon___22239;
+    s.tmp_1.arg4 = s.src___22238;
+    s.tmp_1.arg5 = s.b64___22240;
+    s.tmp_1.arg6 = s.buf___22241;
     s.callLocIdx = 2093; s.pc = 7; return s.tmp_1;
   case 7:
     r0 = s.retval;
@@ -59651,12 +59647,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_samples_inline__P22237.info = {"start":11224,"length":110,"line":122,"column":16,"endLine":123,"endColumn":66,"fileName":"samples.ts","functionName":"inline","argumentNames":["microcode.samples.inline"]}
+microcode_samples_inline__P22234.info = {"start":11224,"length":110,"line":122,"column":16,"endLine":123,"endColumn":66,"fileName":"samples.ts","functionName":"inline","argumentNames":["microcode.samples.inline"]}
 
-function microcode_samples_inline__P22237_mk(s) {
+function microcode_samples_inline__P22234_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_samples_inline__P22237, depth: s.depth + 1,
+        parent: s, fn: microcode_samples_inline__P22234, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -59664,12 +59660,12 @@ function microcode_samples_inline__P22237_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  label___22239: undefined,
-  ariaId___22240: undefined,
-  src___22241: undefined,
-  icon___22242: undefined,
-  b64___22243: undefined,
-  buf___22244: undefined,
+  label___22236: undefined,
+  ariaId___22237: undefined,
+  src___22238: undefined,
+  icon___22239: undefined,
+  b64___22240: undefined,
+  buf___22241: undefined,
   arg0: undefined,
 } }
 
@@ -59739,10 +59735,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.name___22258 = undefined;
+    s.name___22255 = undefined;
     s.unnamed198___U1 = undefined;
     s.unnamed199___U2 = undefined;
-    s.icon___22266 = undefined;
+    s.icon___22263 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -59751,7 +59747,7 @@ switch (step) {
     s.callLocIdx = 2157; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    s.name___22258 = (undefined);
+    s.name___22255 = (undefined);
     s.tmp_0 = microcode_icons_names__P3076_mk(s);
     s.callLocIdx = 2158; s.pc = 4; return s.tmp_0;
   case 4:
@@ -59765,14 +59761,14 @@ switch (step) {
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
     r0 = pxsim_Array__getAt(s.unnamed198___U1, s.unnamed199___U2);
-    s.name___22258 = (r0);
+    s.name___22255 = (r0);
     s.tmp_2 = console_log__P380_mk(s);
-    if ((s.name___22258) && (s.name___22258).vtable) {
+    if ((s.name___22255) && (s.name___22255).vtable) {
     setupResume(s, 6);
-    pxsim_String__stringConv(s.name___22258);
+    pxsim_String__stringConv(s.name___22255);
     checkResumeConsumed();
     return;
-    } else { s.retval = (s.name___22258) + ""; }
+    } else { s.retval = (s.name___22255) + ""; }
   case 6:
     r0 = s.retval;
     s.tmp_3 = r0;
@@ -59782,17 +59778,17 @@ switch (step) {
   case 5:
     r0 = s.retval;
     s.tmp_0 = microcode_icons_get__P3075_mk(s);
-    s.tmp_0.arg0 = s.name___22258;
+    s.tmp_0.arg0 = s.name___22255;
     s.tmp_0.arg1 = false;
     s.callLocIdx = 2160; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
-    s.icon___22266 = (r0);
+    s.icon___22263 = (r0);
     s.tmp_0 = docs_appendImage__P6592_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = "icon";
-    s.tmp_0.arg2 = s.name___22258;
-    s.tmp_0.arg3 = s.icon___22266;
+    s.tmp_0.arg2 = s.name___22255;
+    s.tmp_0.arg3 = s.icon___22263;
     s.callLocIdx = 2161; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
@@ -59816,10 +59812,10 @@ function docs_renderIcons__P6593_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  name___22258: undefined,
+  name___22255: undefined,
   unnamed198___U1: undefined,
   unnamed199___U2: undefined,
-  icon___22266: undefined,
+  icon___22263: undefined,
   arg0: undefined,
 } }
 
@@ -59869,7 +59865,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.msg___22282 = undefined;
+    s.msg___22279 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -59906,8 +59902,8 @@ switch (step) {
     r0 = pxsim.BufferMethods.toHex(s.tmp_5);
     s.tmp_4 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "pixels", s.tmp_4);
-    s.msg___22282 = (s.tmp_0);
-    r0 = pxsim_Array__push(s.arg0, s.msg___22282);
+    s.msg___22279 = (s.tmp_0);
+    r0 = pxsim_Array__push(s.arg0, s.msg___22279);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -59926,7 +59922,7 @@ function docs_appendImage__P6592_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  msg___22282: undefined,
+  msg___22279: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -59947,7 +59943,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.btns___22334 = undefined;
+    s.btns___22331 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -59969,7 +59965,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "ariaId", "C0");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "x", -25);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 30);
-    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P22306);
+    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P22303);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg0);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "onClick", s.tmp_2);
@@ -59990,7 +59986,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "ariaId", "C1");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "x", 25);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 30);
-    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P22323);
+    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P22320);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg0);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "onClick", s.tmp_2);
@@ -60009,11 +60005,11 @@ switch (step) {
     r0 = s.arg0.fields["samplesBtn"];
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_2);
-    s.btns___22334 = (s.tmp_0);
+    s.btns___22331 = (s.tmp_0);
     s.tmp_0 = if_addButtons_2_mk(s);
     r0 = s.arg0.fields["navigator"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = s.btns___22334;
+    s.tmp_0.arg1 = s.btns___22331;
     if (!s.tmp_0.arg0.vtable.iface) {
       setupLambda(s.tmp_0, pxsim_pxtrt.mapGetByString(s.tmp_0.arg0, "addButtons"), 2);
       s.callLocIdx = 1080; s.pc = 4; return s.tmp_0;
@@ -60040,7 +60036,7 @@ function microcode_Home_startup__P3494_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  btns___22334: undefined,
+  btns___22331: undefined,
   arg0: undefined,
 } }
 
@@ -60048,7 +60044,7 @@ function microcode_Home_startup__P3494_mk(s) {
 
 
 
-function onClick_inline__P22306(s) {
+function onClick_inline__P22303(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -60084,12 +60080,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P22306.info = {"start":507,"length":126,"line":19,"column":25,"endLine":22,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P22303.info = {"start":507,"length":126,"line":19,"column":25,"endLine":22,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
 
-function onClick_inline__P22306_mk(s) {
+function onClick_inline__P22303_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: onClick_inline__P22306, depth: s.depth + 1,
+        parent: s, fn: onClick_inline__P22303, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -60100,7 +60096,7 @@ function onClick_inline__P22306_mk(s) {
 
 
 
-function onClick_inline__P22323(s) {
+function onClick_inline__P22320(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -60136,12 +60132,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P22323.info = {"start":919,"length":134,"line":32,"column":25,"endLine":35,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P22320.info = {"start":919,"length":134,"line":32,"column":25,"endLine":35,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
 
-function onClick_inline__P22323_mk(s) {
+function onClick_inline__P22320_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: onClick_inline__P22323, depth: s.depth + 1,
+        parent: s, fn: onClick_inline__P22320, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -60256,8 +60252,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.btn___22357 = undefined;
-    s.w___22363 = undefined;
+    s.btn___22354 = undefined;
+    s.w___22360 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -60285,36 +60281,36 @@ switch (step) {
     }
   case 4:
     r0 = s.retval;
-    s.btn___22357 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.btn___22357);
+    s.btn___22354 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.btn___22354);
     if (!r0) { step = 1; continue; }
     s.tmp_0 = microcode_Affine_worldPos__P3550_mk(s);
-    r0 = s.btn___22357.fields["xfrm_"];
+    r0 = s.btn___22354.fields["xfrm_"];
     s.tmp_0.arg0 = r0;
     s.callLocIdx = 2077; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
-    s.w___22363 = (r0);
+    s.w___22360 = (r0);
     s.tmp_0 = microcode_Cursor_snapTo__P3479_mk(s);
     r0 = s.arg0.fields["cursor"];
     s.tmp_0.arg0 = r0;
-    r0 = s.w___22363.fields["x_"];
+    r0 = s.w___22360.fields["x_"];
     s.tmp_0.arg1 = r0;
-    r0 = s.w___22363.fields["y_"];
+    r0 = s.w___22360.fields["y_"];
     s.tmp_0.arg2 = r0;
     s.tmp_1 = microcode_Button_ariaId__P3033_mk(s);
-    s.tmp_1.arg0 = s.btn___22357;
+    s.tmp_1.arg0 = s.btn___22354;
     s.callLocIdx = 2080; s.pc = 7; return s.tmp_1;
   case 7:
     r0 = s.retval;
     s.tmp_0.arg3 = r0;
-    r0 = s.btn___22357.fields["bounds_"];
+    r0 = s.btn___22354.fields["bounds_"];
     s.tmp_0.arg4 = r0;
     s.callLocIdx = 2082; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     s.tmp_0 = microcode_Button_reportAria__P3035_mk(s);
-    s.tmp_0.arg0 = s.btn___22357;
+    s.tmp_0.arg0 = s.btn___22354;
     s.tmp_0.arg1 = true;
     s.callLocIdx = 2083; s.pc = 8; return s.tmp_0;
   case 8:
@@ -60334,8 +60330,8 @@ function microcode_CursorScene_activate__P4047_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  btn___22357: undefined,
-  w___22363: undefined,
+  btn___22354: undefined,
+  w___22360: undefined,
   arg0: undefined,
 } }
 
@@ -60353,7 +60349,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.target___22383 = undefined;
+    s.target___22380 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -60380,20 +60376,20 @@ switch (step) {
     }
   case 3:
     r0 = s.retval;
-    s.target___22383 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.target___22383);
+    s.target___22380 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.target___22380);
     if (!r0) { step = 1; continue; }
     s.tmp_0 = microcode_Cursor_setAriaContent__P3478_mk(s);
     r0 = s.arg0.fields["cursor"];
     s.tmp_0.arg0 = r0;
     s.tmp_1 = microcode_Button_ariaId__P3033_mk(s);
-    s.tmp_1.arg0 = s.target___22383;
+    s.tmp_1.arg0 = s.target___22380;
     s.callLocIdx = 2069; s.pc = 5; return s.tmp_1;
   case 5:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
     s.tmp_2 = microcode_Affine_worldPos__P3550_mk(s);
-    r0 = s.target___22383.fields["xfrm_"];
+    r0 = s.target___22380.fields["xfrm_"];
     s.tmp_2.arg0 = r0;
     s.callLocIdx = 2071; s.pc = 6; return s.tmp_2;
   case 6:
@@ -60418,7 +60414,7 @@ function microcode_CursorScene_handleMove__P6439_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  target___22383: undefined,
+  target___22380: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -60438,7 +60434,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.target___22406 = undefined;
+    s.target___22403 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -60465,17 +60461,17 @@ switch (step) {
     }
   case 3:
     r0 = s.retval;
-    s.target___22406 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.target___22406);
+    s.target___22403 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.target___22403);
     if (!r0) { step = 1; continue; }
     s.tmp_0 = microcode_CursorScene_moveTo__P6437_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.target___22406;
+    s.tmp_0.arg1 = s.target___22403;
     s.callLocIdx = 2066; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     s.tmp_0 = microcode_Button_click__P3047_mk(s);
-    s.tmp_0.arg0 = s.target___22406;
+    s.tmp_0.arg0 = s.target___22403;
     s.callLocIdx = 2067; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
@@ -60493,7 +60489,7 @@ function microcode_CursorScene_handleClick__P6438_mk(s) {
         parent: s, fn: microcode_CursorScene_handleClick__P6438, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  target___22406: undefined,
+  target___22403: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -60585,7 +60581,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.click___22466 = undefined;
+    s.click___22463 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -60597,7 +60593,7 @@ switch (step) {
     s.callLocIdx = 2051; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_CursorScene_startup_inline__P22442);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_CursorScene_startup_inline__P22439);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = control_onEvent__P391_mk(s);
@@ -60609,7 +60605,7 @@ switch (step) {
     s.callLocIdx = 2052; s.pc = 2; return s.tmp_1;
   case 2:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_CursorScene_startup_inline__P22449);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_CursorScene_startup_inline__P22446);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = control_onEvent__P391_mk(s);
@@ -60621,7 +60617,7 @@ switch (step) {
     s.callLocIdx = 2053; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_CursorScene_startup_inline__P22456);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_CursorScene_startup_inline__P22453);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = control_onEvent__P391_mk(s);
@@ -60633,7 +60629,7 @@ switch (step) {
     s.callLocIdx = 2054; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_CursorScene_startup_inline__P22463);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_CursorScene_startup_inline__P22460);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = control_onEvent__P391_mk(s);
@@ -60645,15 +60641,15 @@ switch (step) {
     s.callLocIdx = 2055; s.pc = 5; return s.tmp_1;
   case 5:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, click_inline__P22467);
+    r0 = pxsim_pxtcore_mkAction(1, click_inline__P22464);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    s.click___22466 = (s.tmp_0);
+    s.click___22463 = (s.tmp_0);
     s.tmp_0 = control_onEvent__P391_mk(s);
     s.tmp_0.arg0 = 2049;
     r0 = globals.A___1807.fields["id"];
     s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = s.click___22466;
+    s.tmp_0.arg2 = s.click___22463;
     s.tmp_0.arg3 = 16;
     s.callLocIdx = 2057; s.pc = 6; return s.tmp_0;
   case 6:
@@ -60664,12 +60660,12 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = (s.tmp_1 + 7);
     s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = s.click___22466;
+    s.tmp_0.arg2 = s.click___22463;
     s.tmp_0.arg3 = 16;
     s.callLocIdx = 2058; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_CursorScene_startup_inline__P22487);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_CursorScene_startup_inline__P22484);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = control_onEvent__P391_mk(s);
@@ -60725,7 +60721,7 @@ function microcode_CursorScene_startup__P4044_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  click___22466: undefined,
+  click___22463: undefined,
   arg0: undefined,
 } }
 
@@ -60733,7 +60729,7 @@ function microcode_CursorScene_startup__P4044_mk(s) {
 
 
 
-function microcode_CursorScene_startup_inline__P22442(s) {
+function microcode_CursorScene_startup_inline__P22439(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -60755,12 +60751,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_CursorScene_startup_inline__P22442.info = {"start":991,"length":38,"line":35,"column":16,"endLine":35,"endColumn":54,"fileName":"cursorscene.ts","functionName":"inline","argumentNames":[]}
+microcode_CursorScene_startup_inline__P22439.info = {"start":991,"length":38,"line":35,"column":16,"endLine":35,"endColumn":54,"fileName":"cursorscene.ts","functionName":"inline","argumentNames":[]}
 
-function microcode_CursorScene_startup_inline__P22442_mk(s) {
+function microcode_CursorScene_startup_inline__P22439_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_CursorScene_startup_inline__P22442, depth: s.depth + 1,
+        parent: s, fn: microcode_CursorScene_startup_inline__P22439, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -60769,7 +60765,7 @@ function microcode_CursorScene_startup_inline__P22442_mk(s) {
 
 
 
-function microcode_CursorScene_startup_inline__P22449(s) {
+function microcode_CursorScene_startup_inline__P22446(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -60791,12 +60787,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_CursorScene_startup_inline__P22449.info = {"start":1170,"length":35,"line":40,"column":16,"endLine":40,"endColumn":51,"fileName":"cursorscene.ts","functionName":"inline","argumentNames":[]}
+microcode_CursorScene_startup_inline__P22446.info = {"start":1170,"length":35,"line":40,"column":16,"endLine":40,"endColumn":51,"fileName":"cursorscene.ts","functionName":"inline","argumentNames":[]}
 
-function microcode_CursorScene_startup_inline__P22449_mk(s) {
+function microcode_CursorScene_startup_inline__P22446_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_CursorScene_startup_inline__P22449, depth: s.depth + 1,
+        parent: s, fn: microcode_CursorScene_startup_inline__P22446, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -60805,7 +60801,7 @@ function microcode_CursorScene_startup_inline__P22449_mk(s) {
 
 
 
-function microcode_CursorScene_startup_inline__P22456(s) {
+function microcode_CursorScene_startup_inline__P22453(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -60827,12 +60823,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_CursorScene_startup_inline__P22456.info = {"start":1348,"length":37,"line":45,"column":16,"endLine":45,"endColumn":53,"fileName":"cursorscene.ts","functionName":"inline","argumentNames":[]}
+microcode_CursorScene_startup_inline__P22453.info = {"start":1348,"length":37,"line":45,"column":16,"endLine":45,"endColumn":53,"fileName":"cursorscene.ts","functionName":"inline","argumentNames":[]}
 
-function microcode_CursorScene_startup_inline__P22456_mk(s) {
+function microcode_CursorScene_startup_inline__P22453_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_CursorScene_startup_inline__P22456, depth: s.depth + 1,
+        parent: s, fn: microcode_CursorScene_startup_inline__P22453, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -60841,7 +60837,7 @@ function microcode_CursorScene_startup_inline__P22456_mk(s) {
 
 
 
-function microcode_CursorScene_startup_inline__P22463(s) {
+function microcode_CursorScene_startup_inline__P22460(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -60863,12 +60859,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_CursorScene_startup_inline__P22463.info = {"start":1528,"length":37,"line":50,"column":16,"endLine":50,"endColumn":53,"fileName":"cursorscene.ts","functionName":"inline","argumentNames":[]}
+microcode_CursorScene_startup_inline__P22460.info = {"start":1528,"length":37,"line":50,"column":16,"endLine":50,"endColumn":53,"fileName":"cursorscene.ts","functionName":"inline","argumentNames":[]}
 
-function microcode_CursorScene_startup_inline__P22463_mk(s) {
+function microcode_CursorScene_startup_inline__P22460_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_CursorScene_startup_inline__P22463, depth: s.depth + 1,
+        parent: s, fn: microcode_CursorScene_startup_inline__P22460, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -60877,7 +60873,7 @@ function microcode_CursorScene_startup_inline__P22463_mk(s) {
 
 
 
-function click_inline__P22467(s) {
+function click_inline__P22464(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -60896,12 +60892,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-click_inline__P22467.info = {"start":1628,"length":25,"line":54,"column":26,"endLine":54,"endColumn":51,"fileName":"cursorscene.ts","functionName":"inline","argumentNames":[]}
+click_inline__P22464.info = {"start":1628,"length":25,"line":54,"column":26,"endLine":54,"endColumn":51,"fileName":"cursorscene.ts","functionName":"inline","argumentNames":[]}
 
-function click_inline__P22467_mk(s) {
+function click_inline__P22464_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: click_inline__P22467, depth: s.depth + 1,
+        parent: s, fn: click_inline__P22464, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -60910,7 +60906,7 @@ function click_inline__P22467_mk(s) {
 
 
 
-function microcode_CursorScene_startup_inline__P22487(s) {
+function microcode_CursorScene_startup_inline__P22484(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -60929,12 +60925,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_CursorScene_startup_inline__P22487.info = {"start":2092,"length":17,"line":68,"column":16,"endLine":68,"endColumn":33,"fileName":"cursorscene.ts","functionName":"inline","argumentNames":[]}
+microcode_CursorScene_startup_inline__P22484.info = {"start":2092,"length":17,"line":68,"column":16,"endLine":68,"endColumn":33,"fileName":"cursorscene.ts","functionName":"inline","argumentNames":[]}
 
-function microcode_CursorScene_startup_inline__P22487_mk(s) {
+function microcode_CursorScene_startup_inline__P22484_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_CursorScene_startup_inline__P22487, depth: s.depth + 1,
+        parent: s, fn: microcode_CursorScene_startup_inline__P22484, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -61082,7 +61078,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.e___22541 = undefined;
+    s.e___22538 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -61108,7 +61104,7 @@ switch (step) {
     { step = 6; continue; }
   case 1:
     r0 = pxsim_pxtcore.getThrownValue();
-    s.e___22541 = (r0);
+    s.e___22538 = (r0);
     r0 = (s.arg1 === 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
@@ -61117,7 +61113,7 @@ switch (step) {
     { step = 3; continue; }
   case 2:
     s.tmp_2 = if_kind_1_mk(s);
-    s.tmp_2.arg0 = s.e___22541;
+    s.tmp_2.arg0 = s.e___22538;
     if (!s.tmp_2.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_2.arg0, "kind");
     } else {
@@ -61142,7 +61138,7 @@ switch (step) {
     r0 = s.retval;
     { step = 5; continue; }
   case 4:
-    r0 = pxsim_pxtcore.throwValue(s.e___22541);
+    r0 = pxsim_pxtcore.throwValue(s.e___22538);
   case 5:
   case 6:
     r0 = undefined;
@@ -61161,7 +61157,7 @@ function microcode_CursorScene_moveCursor__P6436_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  e___22541: undefined,
+  e___22538: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -61541,7 +61537,7 @@ switch (step) {
     s.tmp_0 = helpers_arrayForEach__P109_mk(s);
     r0 = s.arg0.fields["sampleButtons"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = microcode_SamplesGallery_draw_inline__P22625;
+    s.tmp_0.arg1 = microcode_SamplesGallery_draw_inline__P22622;
     s.callLocIdx = 2183; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
@@ -61569,7 +61565,7 @@ function microcode_SamplesGallery_draw__P4068_mk(s) {
 
 
 
-function microcode_SamplesGallery_draw_inline__P22625(s) {
+function microcode_SamplesGallery_draw_inline__P22622(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -61594,12 +61590,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_SamplesGallery_draw_inline__P22625.info = {"start":2376,"length":13,"line":71,"column":39,"endLine":71,"endColumn":52,"fileName":"gallery.ts","functionName":"inline","argumentNames":["s"]}
+microcode_SamplesGallery_draw_inline__P22622.info = {"start":2376,"length":13,"line":71,"column":39,"endLine":71,"endColumn":52,"fileName":"gallery.ts","functionName":"inline","argumentNames":["s"]}
 
-function microcode_SamplesGallery_draw_inline__P22625_mk(s) {
+function microcode_SamplesGallery_draw_inline__P22622_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_SamplesGallery_draw_inline__P22625, depth: s.depth + 1,
+        parent: s, fn: microcode_SamplesGallery_draw_inline__P22622, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -61739,9 +61735,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.x___22652 = undefined;
-    s.y___22655 = undefined;
-    s.rowButtons___22661 = undefined;
+    s.x___22649 = undefined;
+    s.y___22652 = undefined;
+    s.rowButtons___22658 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -61754,27 +61750,27 @@ switch (step) {
   case 3:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mklocRef();
-    s.x___22652 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.x___22652, -72);
+    s.x___22649 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.x___22649, -72);
     r0 = pxsim_pxtrt.mklocRef();
-    s.y___22655 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.y___22655, -55);
+    s.y___22652 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.y___22652, -55);
     s.tmp_0 = r0 = s.arg0;
     r0 = pxsim_Array__mk();
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["sampleButtons"] = (s.tmp_1);
     r0 = pxsim_pxtrt.mklocRef();
-    s.rowButtons___22661 = (r0);
-    s.tmp_0 = r0 = s.rowButtons___22661;
+    s.rowButtons___22658 = (r0);
+    s.tmp_0 = r0 = s.rowButtons___22658;
     r0 = pxsim_Array__mk();
     s.tmp_1 = r0;
     r0 = pxsim_pxtrt_stlocRef(s.tmp_0, s.tmp_1);
-    r0 = pxsim_pxtcore_mkAction(4, microcode_SamplesGallery_startup_inline__P22672);
+    r0 = pxsim_pxtcore_mkAction(4, microcode_SamplesGallery_startup_inline__P22669);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.x___22652);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.y___22655);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.x___22649);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.y___22652);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.rowButtons___22661);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.rowButtons___22658);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     s.tmp_2 = helpers_arrayFilter__P110_mk(s);
     s.tmp_3 = microcode_samples__P4059_mk(s);
@@ -61783,7 +61779,7 @@ switch (step) {
   case 6:
     r0 = s.retval;
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = forEach_inline__P22666;
+    s.tmp_2.arg1 = forEach_inline__P22663;
     s.callLocIdx = 2165; s.pc = 5; return s.tmp_2;
   case 5:
     r0 = s.retval;
@@ -61792,7 +61788,7 @@ switch (step) {
     s.callLocIdx = 2174; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
-    r0 = pxsim_pxtrt_ldlocRef(s.rowButtons___22661);
+    r0 = pxsim_pxtrt_ldlocRef(s.rowButtons___22658);
     s.tmp_2 = r0;
     r0 = pxsim_Array__length(s.tmp_2);
     s.tmp_1 = r0;
@@ -61803,7 +61799,7 @@ switch (step) {
     s.tmp_3 = if_addButtons_2_mk(s);
     r0 = s.arg0.fields["navigator"];
     s.tmp_3.arg0 = r0;
-    r0 = pxsim_pxtrt_ldlocRef(s.rowButtons___22661);
+    r0 = pxsim_pxtrt_ldlocRef(s.rowButtons___22658);
     s.tmp_3.arg1 = r0;
     if (!s.tmp_3.arg0.vtable.iface) {
       setupLambda(s.tmp_3, pxsim_pxtrt.mapGetByString(s.tmp_3.arg0, "addButtons"), 2);
@@ -61833,9 +61829,9 @@ function microcode_SamplesGallery_startup__P4066_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  x___22652: undefined,
-  y___22655: undefined,
-  rowButtons___22661: undefined,
+  x___22649: undefined,
+  y___22652: undefined,
+  rowButtons___22658: undefined,
   arg0: undefined,
 } }
 
@@ -61843,7 +61839,7 @@ function microcode_SamplesGallery_startup__P4066_mk(s) {
 
 
 
-function forEach_inline__P22666(s) {
+function forEach_inline__P22663(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -61869,12 +61865,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-forEach_inline__P22666.info = {"start":464,"length":23,"line":18,"column":24,"endLine":18,"endColumn":47,"fileName":"gallery.ts","functionName":"inline","argumentNames":["sample"]}
+forEach_inline__P22663.info = {"start":464,"length":23,"line":18,"column":24,"endLine":18,"endColumn":47,"fileName":"gallery.ts","functionName":"inline","argumentNames":["sample"]}
 
-function forEach_inline__P22666_mk(s) {
+function forEach_inline__P22663_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: forEach_inline__P22666, depth: s.depth + 1,
+        parent: s, fn: forEach_inline__P22663, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -61887,7 +61883,7 @@ function forEach_inline__P22666_mk(s) {
 
 
 
-function microcode_SamplesGallery_startup_inline__P22672(s) {
+function microcode_SamplesGallery_startup_inline__P22669(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -61897,7 +61893,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.btn___22674 = undefined;
+    s.btn___22671 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -61924,7 +61920,7 @@ switch (step) {
     r0 = (s.tmp_7 + 16);
     s.tmp_6 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", s.tmp_6);
-    r0 = pxsim_pxtcore_mkAction(2, onClick_inline__P22689);
+    r0 = pxsim_pxtcore_mkAction(2, onClick_inline__P22686);
     s.tmp_8 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_8, 0, s.arg0);
     r0 = pxsim_pxtrt_stclo(s.tmp_8, 1, s.caps[2]);
@@ -61935,13 +61931,13 @@ switch (step) {
     s.callLocIdx = 2172; s.pc = 3; return s.tmp_9;
   case 3:
     r0 = s.retval;
-    s.btn___22674 = (s.tmp_0);
+    s.btn___22671 = (s.tmp_0);
     r0 = s.caps[2].fields["sampleButtons"];
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.btn___22674);
+    r0 = pxsim_Array__push(s.tmp_0, s.btn___22671);
     r0 = pxsim_pxtrt_ldlocRef(s.caps[3]);
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.btn___22674);
+    r0 = pxsim_Array__push(s.tmp_0, s.btn___22671);
     s.tmp_0 = r0 = s.caps[0];
     r0 = pxsim_pxtrt_ldlocRef(s.caps[0]);
     s.tmp_2 = r0;
@@ -61989,12 +61985,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_SamplesGallery_startup_inline__P22672.info = {"start":514,"length":1102,"line":19,"column":25,"endLine":45,"endColumn":17,"fileName":"gallery.ts","functionName":"inline","argumentNames":["sample"]}
+microcode_SamplesGallery_startup_inline__P22669.info = {"start":514,"length":1102,"line":19,"column":25,"endLine":45,"endColumn":17,"fileName":"gallery.ts","functionName":"inline","argumentNames":["sample"]}
 
-function microcode_SamplesGallery_startup_inline__P22672_mk(s) {
+function microcode_SamplesGallery_startup_inline__P22669_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_SamplesGallery_startup_inline__P22672, depth: s.depth + 1,
+        parent: s, fn: microcode_SamplesGallery_startup_inline__P22669, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -62006,7 +62002,7 @@ function microcode_SamplesGallery_startup_inline__P22672_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  btn___22674: undefined,
+  btn___22671: undefined,
   arg0: undefined,
 } }
 
@@ -62014,7 +62010,7 @@ function microcode_SamplesGallery_startup_inline__P22672_mk(s) {
 
 
 
-function onClick_inline__P22689(s) {
+function onClick_inline__P22686(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -62072,12 +62068,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P22689.info = {"start":859,"length":370,"line":27,"column":33,"endLine":34,"endColumn":25,"fileName":"gallery.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P22686.info = {"start":859,"length":370,"line":27,"column":33,"endLine":34,"endColumn":25,"fileName":"gallery.ts","functionName":"inline","argumentNames":[]}
 
-function onClick_inline__P22689_mk(s) {
+function onClick_inline__P22686_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: onClick_inline__P22689, depth: s.depth + 1,
+        parent: s, fn: onClick_inline__P22686, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -62178,7 +62174,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.page___22751 = undefined;
+    s.page___22748 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -62192,18 +62188,18 @@ switch (step) {
     s.callLocIdx = 459; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
-    s.page___22751 = (s.tmp_0);
-    s.tmp_0 = r0 = s.page___22751;
+    s.page___22748 = (s.tmp_0);
+    s.tmp_0 = r0 = s.page___22748;
     s.tmp_2 = helpers_arrayMap__P106_mk(s);
     r0 = s.arg0.fields["rules"];
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = microcode_PageDefn_clone_inline__P22759;
+    s.tmp_2.arg1 = microcode_PageDefn_clone_inline__P22756;
     s.callLocIdx = 461; s.pc = 2; return s.tmp_2;
   case 2:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["rules"] = (s.tmp_1);
-    r0 = s.page___22751;
+    r0 = s.page___22748;
     return leave(s, r0)
   default: oops()
 } } }
@@ -62217,7 +62213,7 @@ function microcode_PageDefn_clone__P3298_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  page___22751: undefined,
+  page___22748: undefined,
   arg0: undefined,
 } }
 
@@ -62225,7 +62221,7 @@ function microcode_PageDefn_clone__P3298_mk(s) {
 
 
 
-function microcode_PageDefn_clone_inline__P22759(s) {
+function microcode_PageDefn_clone_inline__P22756(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -62247,12 +62243,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageDefn_clone_inline__P22759.info = {"start":11886,"length":20,"line":376,"column":40,"endLine":376,"endColumn":60,"fileName":"language.ts","functionName":"inline","argumentNames":["rule"]}
+microcode_PageDefn_clone_inline__P22756.info = {"start":11886,"length":20,"line":376,"column":40,"endLine":376,"endColumn":60,"fileName":"language.ts","functionName":"inline","argumentNames":["rule"]}
 
-function microcode_PageDefn_clone_inline__P22759_mk(s) {
+function microcode_PageDefn_clone_inline__P22756_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_PageDefn_clone_inline__P22759, depth: s.depth + 1,
+        parent: s, fn: microcode_PageDefn_clone_inline__P22756, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -62281,7 +62277,7 @@ switch (step) {
     s.tmp_0 = r0 = s.arg0;
     s.tmp_2 = helpers_arrayMap__P106_mk(s);
     s.tmp_2.arg0 = globals.PAGE_IDS___3403;
-    s.tmp_2.arg1 = microcode_ProgramDefn_inline__P22769;
+    s.tmp_2.arg1 = microcode_ProgramDefn_inline__P22766;
     s.callLocIdx = 472; s.pc = 1; return s.tmp_2;
   case 1:
     r0 = s.retval;
@@ -62308,7 +62304,7 @@ function microcode_ProgramDefn_constructor__P3306_mk(s) {
 
 
 
-function microcode_ProgramDefn_inline__P22769(s) {
+function microcode_ProgramDefn_inline__P22766(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -62333,12 +62329,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_ProgramDefn_inline__P22769.info = {"start":13834,"length":20,"line":441,"column":38,"endLine":441,"endColumn":58,"fileName":"language.ts","functionName":"inline","argumentNames":["id"]}
+microcode_ProgramDefn_inline__P22766.info = {"start":13834,"length":20,"line":441,"column":38,"endLine":441,"endColumn":58,"fileName":"language.ts","functionName":"inline","argumentNames":["id"]}
 
-function microcode_ProgramDefn_inline__P22769_mk(s) {
+function microcode_ProgramDefn_inline__P22766_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_ProgramDefn_inline__P22769, depth: s.depth + 1,
+        parent: s, fn: microcode_ProgramDefn_inline__P22766, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -62359,7 +62355,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.brain___22774 = undefined;
+    s.brain___22771 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -62373,18 +62369,18 @@ switch (step) {
     s.callLocIdx = 473; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
-    s.brain___22774 = (s.tmp_0);
-    s.tmp_0 = r0 = s.brain___22774;
+    s.brain___22771 = (s.tmp_0);
+    s.tmp_0 = r0 = s.brain___22771;
     s.tmp_2 = helpers_arrayMap__P106_mk(s);
     r0 = s.arg0.fields["pages"];
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = microcode_ProgramDefn_clone_inline__P22782;
+    s.tmp_2.arg1 = microcode_ProgramDefn_clone_inline__P22779;
     s.callLocIdx = 475; s.pc = 2; return s.tmp_2;
   case 2:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["pages"] = (s.tmp_1);
-    r0 = s.brain___22774;
+    r0 = s.brain___22771;
     return leave(s, r0)
   default: oops()
 } } }
@@ -62398,7 +62394,7 @@ function microcode_ProgramDefn_clone__P3307_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  brain___22774: undefined,
+  brain___22771: undefined,
   arg0: undefined,
 } }
 
@@ -62406,7 +62402,7 @@ function microcode_ProgramDefn_clone__P3307_mk(s) {
 
 
 
-function microcode_ProgramDefn_clone_inline__P22782(s) {
+function microcode_ProgramDefn_clone_inline__P22779(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -62428,12 +62424,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_ProgramDefn_clone_inline__P22782.info = {"start":13990,"length":20,"line":446,"column":41,"endLine":446,"endColumn":61,"fileName":"language.ts","functionName":"inline","argumentNames":["page"]}
+microcode_ProgramDefn_clone_inline__P22779.info = {"start":13990,"length":20,"line":446,"column":41,"endLine":446,"endColumn":61,"fileName":"language.ts","functionName":"inline","argumentNames":["page"]}
 
-function microcode_ProgramDefn_clone_inline__P22782_mk(s) {
+function microcode_ProgramDefn_clone_inline__P22779_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_ProgramDefn_clone_inline__P22782, depth: s.depth + 1,
+        parent: s, fn: microcode_ProgramDefn_clone_inline__P22779, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -62700,8 +62696,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.p___22842 = undefined;
-    s.target___22847 = undefined;
+    s.p___22839 = undefined;
+    s.target___22844 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -62719,10 +62715,10 @@ switch (step) {
     s.callLocIdx = 2033; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
-    s.p___22842 = (s.tmp_0);
-    r0 = pxsim_pxtcore_mkAction(1, target_inline__P22849);
+    s.p___22839 = (s.tmp_0);
+    r0 = pxsim_pxtcore_mkAction(1, target_inline__P22846);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.p___22842);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.p___22839);
     s.tmp_1 = helpers_arrayFind__P111_mk(s);
     r0 = s.arg0.fields["buttons"];
     s.tmp_1.arg0 = r0;
@@ -62730,13 +62726,13 @@ switch (step) {
     s.callLocIdx = 2039; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
-    s.target___22847 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.target___22847);
+    s.target___22844 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.target___22844);
     if (!r0) { step = 1; continue; }
-    r0 = (s.arg0).fields["curr"] = (s.target___22847);
+    r0 = (s.arg0).fields["curr"] = (s.target___22844);
   case 1:
   case 2:
-    r0 = s.target___22847;
+    r0 = s.target___22844;
     return leave(s, r0)
   default: oops()
 } } }
@@ -62749,8 +62745,8 @@ function microcode_SimpleGridNavigator_screenToButton__P4035_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  p___22842: undefined,
-  target___22847: undefined,
+  p___22839: undefined,
+  target___22844: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -62760,7 +62756,7 @@ function microcode_SimpleGridNavigator_screenToButton__P4035_mk(s) {
 
 
 
-function target_inline__P22849(s) {
+function target_inline__P22846(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -62796,12 +62792,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-target_inline__P22849.info = {"start":13021,"length":82,"line":399,"column":45,"endLine":400,"endColumn":75,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
+target_inline__P22846.info = {"start":13021,"length":82,"line":399,"column":45,"endLine":400,"endColumn":75,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
 
-function target_inline__P22849_mk(s) {
+function target_inline__P22846_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: target_inline__P22849, depth: s.depth + 1,
+        parent: s, fn: target_inline__P22846, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -62934,14 +62930,14 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.findNearInX___22892 = undefined;
-    s.btn___22924 = undefined;
-    s.row___22931 = undefined;
-    s.col___22934 = undefined;
-    s.prevRow___22952 = undefined;
-    s.nextRow___22979 = undefined;
-    s.prevRow___23010 = undefined;
-    s.nextRow___23042 = undefined;
+    s.findNearInX___22889 = undefined;
+    s.btn___22921 = undefined;
+    s.row___22928 = undefined;
+    s.col___22931 = undefined;
+    s.prevRow___22949 = undefined;
+    s.nextRow___22976 = undefined;
+    s.prevRow___23007 = undefined;
+    s.nextRow___23039 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -62949,10 +62945,10 @@ switch (step) {
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, microcode_SimpleGridNavigator__C4027_VT)) failedCast(r0);
-    r0 = pxsim_pxtcore_mkAction(1, findNearInX_inline__P22893);
+    r0 = pxsim_pxtcore_mkAction(1, findNearInX_inline__P22890);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    s.findNearInX___22892 = (s.tmp_0);
+    s.findNearInX___22889 = (s.tmp_0);
     r0 = s.arg0.fields["curr"];
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
@@ -62964,7 +62960,7 @@ switch (step) {
     r0 = s.arg0.fields["buttons"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__getAt(s.tmp_3, 0);
-    s.btn___22924 = (r0);
+    s.btn___22921 = (r0);
     { step = 23; continue; }
   case 1:
     s.tmp_0 = microcode_SimpleGridNavigator_getRow__P6580_mk(s);
@@ -62972,15 +62968,15 @@ switch (step) {
     s.callLocIdx = 2028; s.pc = 26; return s.tmp_0;
   case 26:
     r0 = s.retval;
-    s.row___22931 = (r0);
+    s.row___22928 = (r0);
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_1 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_1, s.row___22931);
+    r0 = pxsim_Array__getAt(s.tmp_1, s.row___22928);
     s.tmp_0 = r0;
     r0 = s.arg0.fields["curr"];
     s.tmp_2 = r0;
     r0 = pxsim_Array_.indexOf(s.tmp_0, s.tmp_2, undefined);
-    s.col___22934 = (r0);
+    s.col___22931 = (r0);
     s.tmp_0 = r0 = s.arg1;
     r0 = pxsim_pxtcore.switch_eq(0, s.tmp_0);
     if (r0) { step = 2; continue; }
@@ -62993,41 +62989,41 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 22; continue; }
   case 2:
-    r0 = (s.row___22931 > 0);
+    r0 = (s.row___22928 > 0);
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 5; continue; }
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_2 = r0;
-    r0 = (s.row___22931 - 1);
+    r0 = (s.row___22928 - 1);
     s.tmp_3 = r0;
     r0 = pxsim_Array__getAt(s.tmp_2, s.tmp_3);
-    s.prevRow___22952 = (r0);
-    s.tmp_1 = r0 = s.col___22934;
-    r0 = pxsim_Array__length(s.prevRow___22952);
+    s.prevRow___22949 = (r0);
+    s.tmp_1 = r0 = s.col___22931;
+    r0 = pxsim_Array__length(s.prevRow___22949);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
     s.tmp_3 = lambda_3_mk(s);
-    s.tmp_3.argL = s.findNearInX___22892;
-    s.tmp_3.arg0 = s.prevRow___22952;
-    s.tmp_3.arg1 = s.col___22934;
+    s.tmp_3.argL = s.findNearInX___22889;
+    s.tmp_3.arg0 = s.prevRow___22949;
+    s.tmp_3.arg1 = s.col___22931;
     setupLambda(s.tmp_3, s.tmp_3.argL);
     s.callLocIdx = 2029; s.pc = 27; return s.tmp_3;
   case 27:
     r0 = s.retval;
-    s.btn___22924 = (r0);
+    s.btn___22921 = (r0);
     { step = 4; continue; }
   case 3:
-    s.tmp_0 = r0 = s.prevRow___22952;
-    r0 = pxsim_Array__length(s.prevRow___22952);
+    s.tmp_0 = r0 = s.prevRow___22949;
+    r0 = pxsim_Array__length(s.prevRow___22949);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 - 1);
     s.tmp_1 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, s.tmp_1);
-    s.btn___22924 = (r0);
+    s.btn___22921 = (r0);
   case 4:
     { step = 6; continue; }
   case 5:
@@ -63042,7 +63038,7 @@ switch (step) {
   case 6:
     { step = 22; continue; }
   case 7:
-    s.tmp_3 = r0 = s.row___22931;
+    s.tmp_3 = r0 = s.row___22928;
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_6 = r0;
     r0 = pxsim_Array__length(s.tmp_6);
@@ -63055,80 +63051,80 @@ switch (step) {
     if (!r0) { step = 10; continue; }
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_7 = r0;
-    r0 = (s.row___22931 + 1);
+    r0 = (s.row___22928 + 1);
     s.tmp_8 = r0;
     r0 = pxsim_Array__getAt(s.tmp_7, s.tmp_8);
-    s.nextRow___22979 = (r0);
-    s.tmp_1 = r0 = s.col___22934;
-    r0 = pxsim_Array__length(s.nextRow___22979);
+    s.nextRow___22976 = (r0);
+    s.tmp_1 = r0 = s.col___22931;
+    r0 = pxsim_Array__length(s.nextRow___22976);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 8; continue; }
     s.tmp_3 = lambda_3_mk(s);
-    s.tmp_3.argL = s.findNearInX___22892;
-    s.tmp_3.arg0 = s.nextRow___22979;
-    s.tmp_3.arg1 = s.col___22934;
+    s.tmp_3.argL = s.findNearInX___22889;
+    s.tmp_3.arg0 = s.nextRow___22976;
+    s.tmp_3.arg1 = s.col___22931;
     setupLambda(s.tmp_3, s.tmp_3.argL);
     s.callLocIdx = 2031; s.pc = 29; return s.tmp_3;
   case 29:
     r0 = s.retval;
-    s.btn___22924 = (r0);
+    s.btn___22921 = (r0);
     { step = 9; continue; }
   case 8:
-    s.tmp_0 = r0 = s.nextRow___22979;
-    r0 = pxsim_Array__length(s.nextRow___22979);
+    s.tmp_0 = r0 = s.nextRow___22976;
+    r0 = pxsim_Array__length(s.nextRow___22976);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 - 1);
     s.tmp_1 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, s.tmp_1);
-    s.btn___22924 = (r0);
+    s.btn___22921 = (r0);
   case 9:
   case 10:
   case 11:
     { step = 22; continue; }
   case 12:
-    r0 = (s.col___22934 > 0);
+    r0 = (s.col___22931 > 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 13; continue; }
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_2 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_2, s.row___22931);
+    r0 = pxsim_Array__getAt(s.tmp_2, s.row___22928);
     s.tmp_1 = r0;
-    r0 = (s.col___22934 - 1);
+    r0 = (s.col___22931 - 1);
     s.tmp_3 = r0;
     r0 = pxsim_Array__getAt(s.tmp_1, s.tmp_3);
-    s.btn___22924 = (r0);
+    s.btn___22921 = (r0);
     { step = 16; continue; }
   case 13:
-    r0 = (s.row___22931 > 0);
+    r0 = (s.row___22928 > 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 14; continue; }
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_1 = r0;
-    r0 = (s.row___22931 - 1);
+    r0 = (s.row___22928 - 1);
     s.tmp_2 = r0;
     r0 = pxsim_Array__getAt(s.tmp_1, s.tmp_2);
-    s.prevRow___23010 = (r0);
-    s.tmp_0 = r0 = s.prevRow___23010;
-    r0 = pxsim_Array__length(s.prevRow___23010);
+    s.prevRow___23007 = (r0);
+    s.tmp_0 = r0 = s.prevRow___23007;
+    r0 = pxsim_Array__length(s.prevRow___23007);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 - 1);
     s.tmp_1 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, s.tmp_1);
-    s.btn___22924 = (r0);
+    s.btn___22921 = (r0);
   case 14:
   case 15:
   case 16:
     { step = 22; continue; }
   case 17:
-    s.tmp_1 = r0 = s.col___22934;
+    s.tmp_1 = r0 = s.col___22931;
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_5 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_5, s.row___22931);
+    r0 = pxsim_Array__getAt(s.tmp_5, s.row___22928);
     s.tmp_4 = r0;
     r0 = pxsim_Array__length(s.tmp_4);
     s.tmp_3 = r0;
@@ -63140,15 +63136,15 @@ switch (step) {
     if (!r0) { step = 18; continue; }
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_7 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_7, s.row___22931);
+    r0 = pxsim_Array__getAt(s.tmp_7, s.row___22928);
     s.tmp_6 = r0;
-    r0 = (s.col___22934 + 1);
+    r0 = (s.col___22931 + 1);
     s.tmp_8 = r0;
     r0 = pxsim_Array__getAt(s.tmp_6, s.tmp_8);
-    s.btn___22924 = (r0);
+    s.btn___22921 = (r0);
     { step = 21; continue; }
   case 18:
-    s.tmp_1 = r0 = s.row___22931;
+    s.tmp_1 = r0 = s.row___22928;
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_4 = r0;
     r0 = pxsim_Array__length(s.tmp_4);
@@ -63161,26 +63157,26 @@ switch (step) {
     if (!r0) { step = 19; continue; }
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_5 = r0;
-    r0 = (s.row___22931 + 1);
+    r0 = (s.row___22928 + 1);
     s.tmp_6 = r0;
     r0 = pxsim_Array__getAt(s.tmp_5, s.tmp_6);
-    s.nextRow___23042 = (r0);
-    r0 = pxsim_Array__getAt(s.nextRow___23042, 0);
-    s.btn___22924 = (r0);
+    s.nextRow___23039 = (r0);
+    r0 = pxsim_Array__getAt(s.nextRow___23039, 0);
+    s.btn___22921 = (r0);
   case 19:
   case 20:
   case 21:
   case 22:
   case 23:
-    r0 = pxsim_numops_toBoolDecr(s.btn___22924);
+    r0 = pxsim_numops_toBoolDecr(s.btn___22921);
     if (!r0) { step = 24; continue; }
     s.tmp_0 = microcode_Button_reportAria__P3035_mk(s);
-    s.tmp_0.arg0 = s.btn___22924;
+    s.tmp_0.arg0 = s.btn___22921;
     s.tmp_0.arg1 = true;
     s.callLocIdx = 2032; s.pc = 30; return s.tmp_0;
   case 30:
     r0 = s.retval;
-    r0 = (s.arg0).fields["curr"] = (s.btn___22924);
+    r0 = (s.arg0).fields["curr"] = (s.btn___22921);
   case 24:
   case 25:
     r0 = s.arg0.fields["curr"];
@@ -63203,14 +63199,14 @@ function microcode_SimpleGridNavigator_move__P4034_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  findNearInX___22892: undefined,
-  btn___22924: undefined,
-  row___22931: undefined,
-  col___22934: undefined,
-  prevRow___22952: undefined,
-  nextRow___22979: undefined,
-  prevRow___23010: undefined,
-  nextRow___23042: undefined,
+  findNearInX___22889: undefined,
+  btn___22921: undefined,
+  row___22928: undefined,
+  col___22931: undefined,
+  prevRow___22949: undefined,
+  nextRow___22976: undefined,
+  prevRow___23007: undefined,
+  nextRow___23039: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -63219,7 +63215,7 @@ function microcode_SimpleGridNavigator_move__P4034_mk(s) {
 
 
 
-function findNearInX_inline__P22893(s) {
+function findNearInX_inline__P22890(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -63229,13 +63225,13 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.nearInX___22896 = undefined;
+    s.nearInX___22893 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkAction(1, shift_inline__P22901);
+    r0 = pxsim_pxtcore_mkAction(1, shift_inline__P22898);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[0]);
     s.tmp_2 = helpers_arrayFilter__P110_mk(s);
@@ -63246,8 +63242,8 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_Array_.removeAt(s.tmp_1, 0);
-    s.nearInX___22896 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.nearInX___22896);
+    s.nearInX___22893 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.nearInX___22893);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -63257,22 +63253,22 @@ switch (step) {
     { step = 3; continue; }
   case 1:
   case 2:
-    r0 = s.nearInX___22896;
+    r0 = s.nearInX___22893;
   case 3:
     return leave(s, r0)
   default: oops()
 } } }
-findNearInX_inline__P22893.info = {"start":10068,"length":467,"line":325,"column":32,"endLine":337,"endColumn":13,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btns","col"]}
+findNearInX_inline__P22890.info = {"start":10068,"length":467,"line":325,"column":32,"endLine":337,"endColumn":13,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btns","col"]}
 
-function findNearInX_inline__P22893_mk(s) {
+function findNearInX_inline__P22890_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: findNearInX_inline__P22893, depth: s.depth + 1,
+        parent: s, fn: findNearInX_inline__P22890, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  nearInX___22896: undefined,
+  nearInX___22893: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -63281,7 +63277,7 @@ function findNearInX_inline__P22893_mk(s) {
 
 
 
-function shift_inline__P22901(s) {
+function shift_inline__P22898(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -63334,12 +63330,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-shift_inline__P22901.info = {"start":10193,"length":199,"line":328,"column":24,"endLine":332,"endColumn":42,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
+shift_inline__P22898.info = {"start":10193,"length":199,"line":328,"column":24,"endLine":332,"endColumn":42,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
 
-function shift_inline__P22901_mk(s) {
+function shift_inline__P22898_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: shift_inline__P22901, depth: s.depth + 1,
+        parent: s, fn: shift_inline__P22898, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -63370,16 +63366,16 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.row___23060 = undefined;
+    s.row___23057 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, microcode_SimpleGridNavigator__C4027_VT)) failedCast(r0);
-    s.row___23060 = (0);
+    s.row___23057 = (0);
   case 1:
-    s.tmp_1 = r0 = s.row___23060;
+    s.tmp_1 = r0 = s.row___23057;
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__length(s.tmp_3);
@@ -63402,7 +63398,7 @@ switch (step) {
     s.tmp_11 = microcode_Affine_worldPos__P3550_mk(s);
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_14 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_14, s.row___23060);
+    r0 = pxsim_Array__getAt(s.tmp_14, s.row___23057);
     s.tmp_13 = r0;
     r0 = pxsim_Array__getAt(s.tmp_13, 0);
     s.tmp_12 = r0;
@@ -63418,12 +63414,12 @@ switch (step) {
     s.tmp_4 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 2; continue; }
-    r0 = s.row___23060;
+    r0 = s.row___23057;
     { step = 5; continue; }
   case 2:
   case 3:
-    r0 = (s.row___23060 + 1);
-    s.row___23060 = (r0);
+    r0 = (s.row___23057 + 1);
+    s.row___23057 = (r0);
     { step = 1; continue; }
   case 4:
     r0 = -1;
@@ -63453,7 +63449,7 @@ function microcode_SimpleGridNavigator_getRow__P6580_mk(s) {
   tmp_12: undefined,
   tmp_13: undefined,
   tmp_14: undefined,
-  row___23060: undefined,
+  row___23057: undefined,
   arg0: undefined,
 } }
 
@@ -63516,7 +63512,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.currRow___23095 = undefined;
+    s.currRow___23092 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -63528,21 +63524,21 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["sortedButtons"] = (s.tmp_1);
     r0 = pxsim_pxtrt.mklocRef();
-    s.currRow___23095 = (r0);
-    s.tmp_0 = r0 = s.currRow___23095;
+    s.currRow___23092 = (r0);
+    s.tmp_0 = r0 = s.currRow___23092;
     r0 = pxsim_Array__mk();
     s.tmp_1 = r0;
     r0 = pxsim_pxtrt_stlocRef(s.tmp_0, s.tmp_1);
     s.tmp_0 = helpers_arraySort__P105_mk(s);
     r0 = s.arg0.fields["buttons"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = microcode_SimpleGridNavigator_finished_inline__P23100;
+    s.tmp_0.arg1 = microcode_SimpleGridNavigator_finished_inline__P23097;
     s.callLocIdx = 2002; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(2, microcode_SimpleGridNavigator_finished_inline__P23115);
+    r0 = pxsim_pxtcore_mkAction(2, microcode_SimpleGridNavigator_finished_inline__P23112);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.currRow___23095);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.currRow___23092);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg0);
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     r0 = s.arg0.fields["buttons"];
@@ -63551,7 +63547,7 @@ switch (step) {
     s.callLocIdx = 2009; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
-    r0 = pxsim_pxtrt_ldlocRef(s.currRow___23095);
+    r0 = pxsim_pxtrt_ldlocRef(s.currRow___23092);
     s.tmp_1 = r0;
     r0 = pxsim_Array__length(s.tmp_1);
     s.tmp_0 = r0;
@@ -63559,7 +63555,7 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_2 = r0;
-    r0 = pxsim_pxtrt_ldlocRef(s.currRow___23095);
+    r0 = pxsim_pxtrt_ldlocRef(s.currRow___23092);
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_2, s.tmp_3);
   case 1:
@@ -63567,7 +63563,7 @@ switch (step) {
     s.tmp_0 = helpers_arrayForEach__P109_mk(s);
     r0 = s.arg0.fields["sortedButtons"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = microcode_SimpleGridNavigator_finished_inline__P23152;
+    s.tmp_0.arg1 = microcode_SimpleGridNavigator_finished_inline__P23149;
     s.callLocIdx = 2017; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
@@ -63586,7 +63582,7 @@ function microcode_SimpleGridNavigator_finished__P4033_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  currRow___23095: undefined,
+  currRow___23092: undefined,
   arg0: undefined,
 } }
 
@@ -63594,7 +63590,7 @@ function microcode_SimpleGridNavigator_finished__P4033_mk(s) {
 
 
 
-function microcode_SimpleGridNavigator_finished_inline__P23100(s) {
+function microcode_SimpleGridNavigator_finished_inline__P23097(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -63631,12 +63627,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_SimpleGridNavigator_finished_inline__P23100.info = {"start":9307,"length":47,"line":305,"column":30,"endLine":305,"endColumn":77,"fileName":"navigator.ts","functionName":"inline","argumentNames":["a","b"]}
+microcode_SimpleGridNavigator_finished_inline__P23097.info = {"start":9307,"length":47,"line":305,"column":30,"endLine":305,"endColumn":77,"fileName":"navigator.ts","functionName":"inline","argumentNames":["a","b"]}
 
-function microcode_SimpleGridNavigator_finished_inline__P23100_mk(s) {
+function microcode_SimpleGridNavigator_finished_inline__P23097_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_SimpleGridNavigator_finished_inline__P23100, depth: s.depth + 1,
+        parent: s, fn: microcode_SimpleGridNavigator_finished_inline__P23097, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -63652,7 +63648,7 @@ function microcode_SimpleGridNavigator_finished_inline__P23100_mk(s) {
 
 
 
-function microcode_SimpleGridNavigator_finished_inline__P23115(s) {
+function microcode_SimpleGridNavigator_finished_inline__P23112(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -63724,12 +63720,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_SimpleGridNavigator_finished_inline__P23115.info = {"start":9389,"length":342,"line":306,"column":33,"endLine":316,"endColumn":13,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
+microcode_SimpleGridNavigator_finished_inline__P23112.info = {"start":9389,"length":342,"line":306,"column":33,"endLine":316,"endColumn":13,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
 
-function microcode_SimpleGridNavigator_finished_inline__P23115_mk(s) {
+function microcode_SimpleGridNavigator_finished_inline__P23112_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_SimpleGridNavigator_finished_inline__P23115, depth: s.depth + 1,
+        parent: s, fn: microcode_SimpleGridNavigator_finished_inline__P23112, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -63751,7 +63747,7 @@ function microcode_SimpleGridNavigator_finished_inline__P23115_mk(s) {
 
 
 
-function microcode_SimpleGridNavigator_finished_inline__P23152(s) {
+function microcode_SimpleGridNavigator_finished_inline__P23149(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -63767,19 +63763,19 @@ switch (step) {
     }
     s.tmp_0 = helpers_arraySort__P105_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = microcode_SimpleGridNavigator_finished_inline__P23156;
+    s.tmp_0.arg1 = microcode_SimpleGridNavigator_finished_inline__P23153;
     s.callLocIdx = 2016; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
   default: oops()
 } } }
-microcode_SimpleGridNavigator_finished_inline__P23152.info = {"start":9882,"length":82,"line":319,"column":39,"endLine":320,"endColumn":74,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btns"]}
+microcode_SimpleGridNavigator_finished_inline__P23149.info = {"start":9882,"length":82,"line":319,"column":39,"endLine":320,"endColumn":74,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btns"]}
 
-function microcode_SimpleGridNavigator_finished_inline__P23152_mk(s) {
+function microcode_SimpleGridNavigator_finished_inline__P23149_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_SimpleGridNavigator_finished_inline__P23152, depth: s.depth + 1,
+        parent: s, fn: microcode_SimpleGridNavigator_finished_inline__P23149, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -63789,7 +63785,7 @@ function microcode_SimpleGridNavigator_finished_inline__P23152_mk(s) {
 
 
 
-function microcode_SimpleGridNavigator_finished_inline__P23156(s) {
+function microcode_SimpleGridNavigator_finished_inline__P23153(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -63826,12 +63822,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_SimpleGridNavigator_finished_inline__P23156.info = {"start":9916,"length":47,"line":320,"column":26,"endLine":320,"endColumn":73,"fileName":"navigator.ts","functionName":"inline","argumentNames":["a","b"]}
+microcode_SimpleGridNavigator_finished_inline__P23153.info = {"start":9916,"length":47,"line":320,"column":26,"endLine":320,"endColumn":73,"fileName":"navigator.ts","functionName":"inline","argumentNames":["a","b"]}
 
-function microcode_SimpleGridNavigator_finished_inline__P23156_mk(s) {
+function microcode_SimpleGridNavigator_finished_inline__P23153_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_SimpleGridNavigator_finished_inline__P23156, depth: s.depth + 1,
+        parent: s, fn: microcode_SimpleGridNavigator_finished_inline__P23153, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -63993,7 +63989,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.rule___23189 = undefined;
+    s.rule___23186 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -64007,8 +64003,8 @@ switch (step) {
     s.callLocIdx = 429; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
-    s.rule___23189 = (s.tmp_0);
-    s.tmp_0 = r0 = s.rule___23189;
+    s.rule___23186 = (s.tmp_0);
+    s.tmp_0 = r0 = s.rule___23186;
     s.tmp_2 = helpers_arraySlice__P115_mk(s);
     r0 = s.arg0.fields["sensors"];
     s.tmp_2.arg0 = r0;
@@ -64019,7 +64015,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["sensors"] = (s.tmp_1);
-    s.tmp_0 = r0 = s.rule___23189;
+    s.tmp_0 = r0 = s.rule___23186;
     s.tmp_2 = helpers_arraySlice__P115_mk(s);
     r0 = s.arg0.fields["actuators"];
     s.tmp_2.arg0 = r0;
@@ -64030,7 +64026,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["actuators"] = (s.tmp_1);
-    s.tmp_0 = r0 = s.rule___23189;
+    s.tmp_0 = r0 = s.rule___23186;
     s.tmp_2 = helpers_arraySlice__P115_mk(s);
     r0 = s.arg0.fields["filters"];
     s.tmp_2.arg0 = r0;
@@ -64041,7 +64037,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["filters"] = (s.tmp_1);
-    s.tmp_0 = r0 = s.rule___23189;
+    s.tmp_0 = r0 = s.rule___23186;
     s.tmp_2 = helpers_arraySlice__P115_mk(s);
     r0 = s.arg0.fields["modifiers"];
     s.tmp_2.arg0 = r0;
@@ -64052,7 +64048,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["modifiers"] = (s.tmp_1);
-    r0 = s.rule___23189;
+    r0 = s.rule___23186;
     return leave(s, r0)
   default: oops()
 } } }
@@ -64066,7 +64062,7 @@ function microcode_RuleDefn_clone__P3291_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  rule___23189: undefined,
+  rule___23186: undefined,
   arg0: undefined,
 } }
 
@@ -64084,7 +64080,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.ret___23219 = undefined;
+    s.ret___23216 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -64098,14 +64094,14 @@ switch (step) {
     s.callLocIdx = 1970; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.ret___23219 = (r0);
+    s.ret___23216 = (r0);
     s.tmp_0 = microcode_RuleRowNavigator_reportAria__P6577_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.ret___23219;
+    s.tmp_0.arg1 = s.ret___23216;
     s.callLocIdx = 1971; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
-    r0 = s.ret___23219;
+    r0 = s.ret___23216;
     return leave(s, r0)
   default: oops()
 } } }
@@ -64117,7 +64113,7 @@ function microcode_RuleRowNavigator_move__P4023_mk(s) {
         parent: s, fn: microcode_RuleRowNavigator_move__P4023, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  ret___23219: undefined,
+  ret___23216: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -64136,10 +64132,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.accessibilityMessage___23230 = undefined;
-    s.ruleDef___23238 = undefined;
-    s.whens___23245 = undefined;
-    s.dos___23263 = undefined;
+    s.accessibilityMessage___23227 = undefined;
+    s.ruleDef___23235 = undefined;
+    s.whens___23242 = undefined;
+    s.dos___23260 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -64180,20 +64176,20 @@ switch (step) {
     r0 = (s.tmp_8 - 1);
     s.tmp_7 = r0;
     r0 = pxsim_Array__getAt(s.tmp_6, s.tmp_7);
-    s.ruleDef___23238 = (r0);
+    s.ruleDef___23235 = (r0);
     s.tmp_0 = helpers_arrayConcat__P113_mk(s);
     s.tmp_1 = helpers_arrayMap__P106_mk(s);
-    r0 = s.ruleDef___23238.fields["sensors"];
+    r0 = s.ruleDef___23235.fields["sensors"];
     s.tmp_1.arg0 = r0;
-    s.tmp_1.arg1 = concat_inline__P23253;
+    s.tmp_1.arg1 = concat_inline__P23250;
     s.callLocIdx = 1972; s.pc = 13; return s.tmp_1;
   case 13:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
     s.tmp_2 = helpers_arrayMap__P106_mk(s);
-    r0 = s.ruleDef___23238.fields["filters"];
+    r0 = s.ruleDef___23235.fields["filters"];
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = whens_inline__P23248;
+    s.tmp_2.arg1 = whens_inline__P23245;
     s.callLocIdx = 1973; s.pc = 14; return s.tmp_2;
   case 14:
     r0 = s.retval;
@@ -64201,20 +64197,20 @@ switch (step) {
     s.callLocIdx = 1974; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
-    s.whens___23245 = (r0);
+    s.whens___23242 = (r0);
     s.tmp_0 = helpers_arrayConcat__P113_mk(s);
     s.tmp_1 = helpers_arrayMap__P106_mk(s);
-    r0 = s.ruleDef___23238.fields["actuators"];
+    r0 = s.ruleDef___23235.fields["actuators"];
     s.tmp_1.arg0 = r0;
-    s.tmp_1.arg1 = concat_inline__P23271;
+    s.tmp_1.arg1 = concat_inline__P23268;
     s.callLocIdx = 1975; s.pc = 16; return s.tmp_1;
   case 16:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
     s.tmp_2 = helpers_arrayMap__P106_mk(s);
-    r0 = s.ruleDef___23238.fields["modifiers"];
+    r0 = s.ruleDef___23235.fields["modifiers"];
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = dos_inline__P23266;
+    s.tmp_2.arg1 = dos_inline__P23263;
     s.callLocIdx = 1976; s.pc = 17; return s.tmp_2;
   case 17:
     r0 = s.retval;
@@ -64222,13 +64218,13 @@ switch (step) {
     s.callLocIdx = 1977; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
-    s.dos___23263 = (r0);
+    s.dos___23260 = (r0);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "type", "rule");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "whens", s.whens___23245);
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "dos", s.dos___23263);
-    s.accessibilityMessage___23230 = (s.tmp_0);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "whens", s.whens___23242);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "dos", s.dos___23260);
+    s.accessibilityMessage___23227 = (s.tmp_0);
     { step = 10; continue; }
   case 5:
     r0 = pxsim_pxtrt.mkMap();
@@ -64258,10 +64254,10 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "value", s.tmp_3);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "force", true);
-    s.accessibilityMessage___23230 = (s.tmp_0);
+    s.accessibilityMessage___23227 = (s.tmp_0);
   case 10:
     s.tmp_0 = accessibility_setLiveContent__P3007_mk(s);
-    s.tmp_0.arg0 = s.accessibilityMessage___23230;
+    s.tmp_0.arg0 = s.accessibilityMessage___23227;
     s.callLocIdx = 1979; s.pc = 19; return s.tmp_0;
   case 19:
     r0 = s.retval;
@@ -64286,10 +64282,10 @@ function microcode_RuleRowNavigator_reportAria__P6577_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  accessibilityMessage___23230: undefined,
-  ruleDef___23238: undefined,
-  whens___23245: undefined,
-  dos___23263: undefined,
+  accessibilityMessage___23227: undefined,
+  ruleDef___23235: undefined,
+  whens___23242: undefined,
+  dos___23260: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -64298,7 +64294,7 @@ function microcode_RuleRowNavigator_reportAria__P6577_mk(s) {
 
 
 
-function concat_inline__P23253(s) {
+function concat_inline__P23250(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -64316,12 +64312,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-concat_inline__P23253.info = {"start":5536,"length":10,"line":180,"column":25,"endLine":180,"endColumn":35,"fileName":"navigator.ts","functionName":"inline","argumentNames":["s"]}
+concat_inline__P23250.info = {"start":5536,"length":10,"line":180,"column":25,"endLine":180,"endColumn":35,"fileName":"navigator.ts","functionName":"inline","argumentNames":["s"]}
 
-function concat_inline__P23253_mk(s) {
+function concat_inline__P23250_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: concat_inline__P23253, depth: s.depth + 1,
+        parent: s, fn: concat_inline__P23250, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
 } }
@@ -64330,7 +64326,7 @@ function concat_inline__P23253_mk(s) {
 
 
 
-function whens_inline__P23248(s) {
+function whens_inline__P23245(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -64348,12 +64344,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-whens_inline__P23248.info = {"start":5596,"length":10,"line":181,"column":48,"endLine":181,"endColumn":58,"fileName":"navigator.ts","functionName":"inline","argumentNames":["s"]}
+whens_inline__P23245.info = {"start":5596,"length":10,"line":181,"column":48,"endLine":181,"endColumn":58,"fileName":"navigator.ts","functionName":"inline","argumentNames":["s"]}
 
-function whens_inline__P23248_mk(s) {
+function whens_inline__P23245_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: whens_inline__P23248, depth: s.depth + 1,
+        parent: s, fn: whens_inline__P23245, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
 } }
@@ -64362,7 +64358,7 @@ function whens_inline__P23248_mk(s) {
 
 
 
-function concat_inline__P23271(s) {
+function concat_inline__P23268(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -64380,12 +64376,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-concat_inline__P23271.info = {"start":5691,"length":10,"line":184,"column":25,"endLine":184,"endColumn":35,"fileName":"navigator.ts","functionName":"inline","argumentNames":["s"]}
+concat_inline__P23268.info = {"start":5691,"length":10,"line":184,"column":25,"endLine":184,"endColumn":35,"fileName":"navigator.ts","functionName":"inline","argumentNames":["s"]}
 
-function concat_inline__P23271_mk(s) {
+function concat_inline__P23268_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: concat_inline__P23271, depth: s.depth + 1,
+        parent: s, fn: concat_inline__P23268, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
 } }
@@ -64394,7 +64390,7 @@ function concat_inline__P23271_mk(s) {
 
 
 
-function dos_inline__P23266(s) {
+function dos_inline__P23263(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -64412,12 +64408,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-dos_inline__P23266.info = {"start":5753,"length":10,"line":185,"column":50,"endLine":185,"endColumn":60,"fileName":"navigator.ts","functionName":"inline","argumentNames":["s"]}
+dos_inline__P23263.info = {"start":5753,"length":10,"line":185,"column":50,"endLine":185,"endColumn":60,"fileName":"navigator.ts","functionName":"inline","argumentNames":["s"]}
 
-function dos_inline__P23266_mk(s) {
+function dos_inline__P23263_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: dos_inline__P23266, depth: s.depth + 1,
+        parent: s, fn: dos_inline__P23263, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
 } }
@@ -64705,8 +64701,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.target___23343 = undefined;
-    s.e___23351 = undefined;
+    s.target___23340 = undefined;
+    s.e___23348 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -64723,10 +64719,10 @@ switch (step) {
     s.callLocIdx = 698; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
-    s.target___23343 = (r0);
+    s.target___23340 = (r0);
     s.tmp_0 = microcode_Editor_scrollAndMoveButton__P6381_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.target___23343;
+    s.tmp_0.arg1 = s.target___23340;
     s.callLocIdx = 699; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
@@ -64734,7 +64730,7 @@ switch (step) {
     { step = 8; continue; }
   case 1:
     r0 = pxsim_pxtcore.getThrownValue();
-    s.e___23351 = (r0);
+    s.e___23348 = (r0);
     r0 = (s.arg1 === 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBool(s.tmp_0);
@@ -64743,7 +64739,7 @@ switch (step) {
     { step = 3; continue; }
   case 2:
     s.tmp_2 = if_kind_1_mk(s);
-    s.tmp_2.arg0 = s.e___23351;
+    s.tmp_2.arg0 = s.e___23348;
     if (!s.tmp_2.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_2.arg0, "kind");
     } else {
@@ -64776,7 +64772,7 @@ switch (step) {
   case 5:
     { step = 7; continue; }
   case 6:
-    r0 = pxsim_pxtcore.throwValue(s.e___23351);
+    r0 = pxsim_pxtcore.throwValue(s.e___23348);
   case 7:
   case 8:
     r0 = undefined;
@@ -64797,8 +64793,8 @@ function microcode_Editor_scrollAndMove__P6380_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  target___23343: undefined,
-  e___23351: undefined,
+  target___23340: undefined,
+  e___23348: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -64818,7 +64814,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.target___23389 = undefined;
+    s.target___23386 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -64889,10 +64885,10 @@ switch (step) {
     s.pc = 12; return s.tmp_2;
   case 12:
     r0 = s.retval;
-    s.target___23389 = (r0);
+    s.target___23386 = (r0);
     s.tmp_0 = microcode_Editor_moveTo__P6379_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.target___23389;
+    s.tmp_0.arg1 = s.target___23386;
     s.callLocIdx = 768; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
@@ -64928,7 +64924,7 @@ function microcode_Editor_back__P3447_mk(s) {
   tmp_5: undefined,
   tmp_6: undefined,
   tmp_7: undefined,
-  target___23389: undefined,
+  target___23386: undefined,
   arg0: undefined,
 } }
 
@@ -65097,12 +65093,12 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.occBounds___23448 = undefined;
-    s.occ___23463 = undefined;
-    s.xocc___23488 = undefined;
-    s.yocc___23499 = undefined;
-    s.tw___23521 = undefined;
-    s.cursorDest___23525 = undefined;
+    s.occBounds___23445 = undefined;
+    s.occ___23460 = undefined;
+    s.xocc___23485 = undefined;
+    s.yocc___23496 = undefined;
+    s.tw___23518 = undefined;
+    s.cursorDest___23522 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -65204,16 +65200,16 @@ switch (step) {
     s.callLocIdx = 708; s.pc = 24; return s.tmp_5;
   case 24:
     r0 = s.retval;
-    s.occBounds___23448 = (s.tmp_0);
+    s.occBounds___23445 = (s.tmp_0);
     s.tmp_0 = microcode_Button_occlusions__P3043_mk(s);
     s.tmp_0.arg0 = s.arg1;
-    s.tmp_0.arg1 = s.occBounds___23448;
+    s.tmp_0.arg1 = s.occBounds___23445;
     s.callLocIdx = 709; s.pc = 25; return s.tmp_0;
   case 25:
     r0 = s.retval;
-    s.occ___23463 = (r0);
+    s.occ___23460 = (r0);
     s.tmp_1 = microcode_Occlusions_has__P3530_mk(s);
-    s.tmp_1.arg0 = s.occ___23463;
+    s.tmp_1.arg0 = s.occ___23460;
     s.callLocIdx = 710; s.pc = 26; return s.tmp_1;
   case 26:
     r0 = s.retval;
@@ -65257,40 +65253,40 @@ switch (step) {
     r0 = pxsim.control.millis();
     s.tmp_13 = r0;
     r0 = (s.tmp_12).fields["scrollStartMs"] = (s.tmp_13);
-    r0 = s.occ___23463.fields["left"];
+    r0 = s.occ___23460.fields["left"];
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 11; continue; }
-    r0 = s.occ___23463.fields["left"];
+    r0 = s.occ___23460.fields["left"];
     { step = 12; continue; }
   case 11:
-    r0 = s.occ___23463.fields["right"];
+    r0 = s.occ___23460.fields["right"];
     s.tmp_1 = r0;
     r0 = (0 - s.tmp_1);
   case 12:
     // jmp value (already in r0)
     s.tmp_2 = r0;
-    s.xocc___23488 = (s.tmp_2);
-    r0 = s.occ___23463.fields["top"];
+    s.xocc___23485 = (s.tmp_2);
+    r0 = s.occ___23460.fields["top"];
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 13; continue; }
-    r0 = s.occ___23463.fields["top"];
+    r0 = s.occ___23460.fields["top"];
     { step = 14; continue; }
   case 13:
-    r0 = s.occ___23463.fields["bottom"];
+    r0 = s.occ___23460.fields["bottom"];
     s.tmp_1 = r0;
     r0 = (0 - s.tmp_1);
   case 14:
     // jmp value (already in r0)
     s.tmp_2 = r0;
-    s.yocc___23499 = (s.tmp_2);
+    s.yocc___23496 = (s.tmp_2);
     r0 = pxsim_pxtcore_mkClassInstance(microcode_Vec2__C3562_VT);
     s.tmp_0 = r0;
     s.tmp_1 = microcode_Vec2_constructor__P3568_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
-    s.tmp_1.arg1 = s.xocc___23488;
-    s.tmp_1.arg2 = s.yocc___23499;
+    s.tmp_1.arg1 = s.xocc___23485;
+    s.tmp_1.arg2 = s.yocc___23496;
     s.callLocIdx = 717; s.pc = 27; return s.tmp_1;
   case 27:
     r0 = s.retval;
@@ -65313,27 +65309,27 @@ switch (step) {
     s.callLocIdx = 720; s.pc = 29; return s.tmp_0;
   case 29:
     r0 = s.retval;
-    s.tw___23521 = (r0);
+    s.tw___23518 = (r0);
     r0 = pxsim_pxtcore_mkClassInstance(microcode_Vec2__C3562_VT);
     s.tmp_0 = r0;
     s.tmp_1 = microcode_Vec2_constructor__P3568_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
-    r0 = s.tw___23521.fields["x_"];
+    r0 = s.tw___23518.fields["x_"];
     s.tmp_2 = r0;
-    r0 = (s.tmp_2 + s.xocc___23488);
+    r0 = (s.tmp_2 + s.xocc___23485);
     s.tmp_1.arg1 = r0;
-    r0 = s.tw___23521.fields["y_"];
+    r0 = s.tw___23518.fields["y_"];
     s.tmp_3 = r0;
-    r0 = (s.tmp_3 + s.yocc___23499);
+    r0 = (s.tmp_3 + s.yocc___23496);
     s.tmp_1.arg2 = r0;
     s.callLocIdx = 723; s.pc = 30; return s.tmp_1;
   case 30:
     r0 = s.retval;
-    s.cursorDest___23525 = (s.tmp_0);
+    s.cursorDest___23522 = (s.tmp_0);
     s.tmp_0 = microcode_Cursor_moveTo__P3477_mk(s);
     r0 = s.arg0.fields["cursor"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = s.cursorDest___23525;
+    s.tmp_0.arg1 = s.cursorDest___23522;
     s.tmp_1 = microcode_Button_ariaId__P3033_mk(s);
     s.tmp_1.arg0 = s.arg1;
     s.callLocIdx = 724; s.pc = 32; return s.tmp_1;
@@ -65380,12 +65376,12 @@ function microcode_Editor_scrollAndMoveButton__P6381_mk(s) {
   tmp_11: undefined,
   tmp_12: undefined,
   tmp_13: undefined,
-  occBounds___23448: undefined,
-  occ___23463: undefined,
-  xocc___23488: undefined,
-  yocc___23499: undefined,
-  tw___23521: undefined,
-  cursorDest___23525: undefined,
+  occBounds___23445: undefined,
+  occ___23460: undefined,
+  xocc___23485: undefined,
+  yocc___23496: undefined,
+  tw___23518: undefined,
+  cursorDest___23522: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -65605,11 +65601,11 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.w___23578 = undefined;
-    s.left___23582 = undefined;
-    s.top___23589 = undefined;
-    s.right___23596 = undefined;
-    s.bottom___23604 = undefined;
+    s.w___23575 = undefined;
+    s.left___23579 = undefined;
+    s.top___23586 = undefined;
+    s.right___23593 = undefined;
+    s.bottom___23601 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -65621,8 +65617,8 @@ switch (step) {
     s.callLocIdx = 1126; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
-    s.w___23578 = (r0);
-    r0 = s.w___23578.fields["x_"];
+    s.w___23575 = (r0);
+    r0 = s.w___23575.fields["x_"];
     s.tmp_0 = r0;
     r0 = s.arg0.fields["image"];
     s.tmp_3 = r0;
@@ -65631,8 +65627,8 @@ switch (step) {
     r0 = (s.tmp_2 >> 1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 - s.tmp_1);
-    s.left___23582 = (r0);
-    r0 = s.w___23578.fields["y_"];
+    s.left___23579 = (r0);
+    r0 = s.w___23575.fields["y_"];
     s.tmp_0 = r0;
     r0 = s.arg0.fields["image"];
     s.tmp_3 = r0;
@@ -65641,8 +65637,8 @@ switch (step) {
     r0 = (s.tmp_2 >> 1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 - s.tmp_1);
-    s.top___23589 = (r0);
-    r0 = s.w___23578.fields["x_"];
+    s.top___23586 = (r0);
+    r0 = s.w___23575.fields["x_"];
     s.tmp_0 = r0;
     r0 = s.arg0.fields["image"];
     s.tmp_3 = r0;
@@ -65651,8 +65647,8 @@ switch (step) {
     r0 = (s.tmp_2 >> 1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 + s.tmp_1);
-    s.right___23596 = (r0);
-    r0 = s.w___23578.fields["y_"];
+    s.right___23593 = (r0);
+    r0 = s.w___23575.fields["y_"];
     s.tmp_0 = r0;
     r0 = s.arg0.fields["image"];
     s.tmp_3 = r0;
@@ -65661,18 +65657,18 @@ switch (step) {
     r0 = (s.tmp_2 >> 1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 + s.tmp_1);
-    s.bottom___23604 = (r0);
+    s.bottom___23601 = (r0);
     r0 = pxsim_pxtcore_mkClassInstance(microcode_Occlusions__C3529_VT);
     s.tmp_0 = r0;
     r0 = s.arg1.fields["left"];
     s.tmp_2 = r0;
-    r0 = (s.tmp_2 > s.left___23582);
+    r0 = (s.tmp_2 > s.left___23579);
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 1; continue; }
     r0 = s.arg1.fields["left"];
     s.tmp_3 = r0;
-    r0 = (s.tmp_3 - s.left___23582);
+    r0 = (s.tmp_3 - s.left___23579);
     { step = 2; continue; }
   case 1:
     r0 = 0;
@@ -65681,13 +65677,13 @@ switch (step) {
     s.tmp_4 = r0;
     r0 = s.arg1.fields["top"];
     s.tmp_6 = r0;
-    r0 = (s.tmp_6 > s.top___23589);
+    r0 = (s.tmp_6 > s.top___23586);
     s.tmp_5 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_5);
     if (!r0) { step = 3; continue; }
     r0 = s.arg1.fields["top"];
     s.tmp_7 = r0;
-    r0 = (s.tmp_7 - s.top___23589);
+    r0 = (s.tmp_7 - s.top___23586);
     { step = 4; continue; }
   case 3:
     r0 = 0;
@@ -65702,11 +65698,11 @@ switch (step) {
     s.tmp_11 = r0;
     r0 = (s.tmp_11 - 1);
     s.tmp_10 = r0;
-    r0 = (s.tmp_10 < s.right___23596);
+    r0 = (s.tmp_10 < s.right___23593);
     s.tmp_9 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_9);
     if (!r0) { step = 5; continue; }
-    s.tmp_14 = r0 = s.right___23596;
+    s.tmp_14 = r0 = s.right___23593;
     r0 = s.arg1.fields["left"];
     s.tmp_17 = r0;
     r0 = s.arg1.fields["width"];
@@ -65730,11 +65726,11 @@ switch (step) {
     s.tmp_22 = r0;
     r0 = (s.tmp_22 - 1);
     s.tmp_21 = r0;
-    r0 = (s.tmp_21 < s.bottom___23604);
+    r0 = (s.tmp_21 < s.bottom___23601);
     s.tmp_20 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_20);
     if (!r0) { step = 7; continue; }
-    s.tmp_25 = r0 = s.bottom___23604;
+    s.tmp_25 = r0 = s.bottom___23601;
     r0 = s.arg1.fields["top"];
     s.tmp_28 = r0;
     r0 = s.arg1.fields["height"];
@@ -65802,11 +65798,11 @@ function microcode_Occlusions_FromSprite__P3532_mk(s) {
   tmp_29: undefined,
   tmp_30: undefined,
   tmp_31: undefined,
-  w___23578: undefined,
-  left___23582: undefined,
-  top___23589: undefined,
-  right___23596: undefined,
-  bottom___23604: undefined,
+  w___23575: undefined,
+  left___23579: undefined,
+  top___23586: undefined,
+  right___23593: undefined,
+  bottom___23601: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -65871,7 +65867,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.xfrm___23648 = undefined;
+    s.xfrm___23645 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -65879,17 +65875,17 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, microcode_Button__C3028_VT)) failedCast(r0);
     r0 = s.arg0.fields["xfrm_"];
-    s.xfrm___23648 = (r0);
+    s.xfrm___23645 = (r0);
   case 1:
-    r0 = s.xfrm___23648.fields["parent_"];
+    r0 = s.xfrm___23645.fields["parent_"];
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
-    r0 = s.xfrm___23648.fields["parent_"];
-    s.xfrm___23648 = (r0);
+    r0 = s.xfrm___23645.fields["parent_"];
+    s.xfrm___23645 = (r0);
     { step = 1; continue; }
   case 2:
-    r0 = s.xfrm___23648;
+    r0 = s.xfrm___23645;
     return leaveAccessor(s, r0)
   default: oops()
 } } }
@@ -65902,7 +65898,7 @@ function microcode_Button_rootXfrm__P3037_mk(s) {
         parent: s, fn: microcode_Button_rootXfrm__P3037, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  xfrm___23648: undefined,
+  xfrm___23645: undefined,
   arg0: undefined,
 } }
 
@@ -65955,7 +65951,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.target___23663 = undefined;
+    s.target___23660 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -65983,12 +65979,12 @@ switch (step) {
     }
   case 3:
     r0 = s.retval;
-    s.target___23663 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.target___23663);
+    s.target___23660 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.target___23660);
     if (!r0) { step = 1; continue; }
     s.tmp_0 = microcode_Editor_hoverCursorTo__P3445_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.target___23663;
+    s.tmp_0.arg1 = s.target___23660;
     s.callLocIdx = 775; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
@@ -66006,7 +66002,7 @@ function microcode_Editor_handleMove__P6383_mk(s) {
         parent: s, fn: microcode_Editor_handleMove__P6383, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  target___23663: undefined,
+  target___23660: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -66026,7 +66022,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.w___23680 = undefined;
+    s.w___23677 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -66040,7 +66036,7 @@ switch (step) {
     s.callLocIdx = 689; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.w___23680 = (r0);
+    s.w___23677 = (r0);
     s.tmp_0 = microcode_Cursor_setAriaContent__P3478_mk(s);
     r0 = s.arg0.fields["cursor"];
     s.tmp_0.arg0 = r0;
@@ -66050,7 +66046,7 @@ switch (step) {
   case 3:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = s.w___23680;
+    s.tmp_0.arg2 = s.w___23677;
     s.callLocIdx = 691; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
@@ -66073,7 +66069,7 @@ function microcode_Editor_hoverCursorTo__P3445_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  w___23680: undefined,
+  w___23677: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -66092,7 +66088,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.target___23695 = undefined;
+    s.target___23692 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -66120,17 +66116,17 @@ switch (step) {
     }
   case 5:
     r0 = s.retval;
-    s.target___23695 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.target___23695);
+    s.target___23692 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.target___23692);
     if (!r0) { step = 1; continue; }
     s.tmp_0 = microcode_Editor_snapCursorTo__P3444_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.target___23695;
+    s.tmp_0.arg1 = s.target___23692;
     s.callLocIdx = 771; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     s.tmp_0 = microcode_Button_click__P3047_mk(s);
-    s.tmp_0.arg0 = s.target___23695;
+    s.tmp_0.arg0 = s.target___23692;
     s.callLocIdx = 772; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
@@ -66163,7 +66159,7 @@ function microcode_Editor_handleClick__P6382_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  target___23695: undefined,
+  target___23692: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -66183,25 +66179,25 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.makeOnEvent___23719 = undefined;
-    s.forward___23763 = undefined;
+    s.makeOnEvent___23716 = undefined;
+    s.forward___23760 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
     if (!checkSubtype(r0, microcode_Editor__C3431_VT)) failedCast(r0);
-    r0 = pxsim_pxtcore_mkAction(1, makeOnEvent_inline__P23720);
+    r0 = pxsim_pxtcore_mkAction(1, makeOnEvent_inline__P23717);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    s.makeOnEvent___23719 = (s.tmp_0);
+    s.makeOnEvent___23716 = (s.tmp_0);
     s.tmp_0 = microcode_Scene_startup__P3193_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.callLocIdx = 730; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.tmp_0 = lambda_3_mk(s);
-    s.tmp_0.argL = s.makeOnEvent___23719;
+    s.tmp_0.argL = s.makeOnEvent___23716;
     r0 = globals.right___1811.fields["id"];
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = 3;
@@ -66210,7 +66206,7 @@ switch (step) {
   case 6:
     r0 = s.retval;
     s.tmp_0 = lambda_3_mk(s);
-    s.tmp_0.argL = s.makeOnEvent___23719;
+    s.tmp_0.argL = s.makeOnEvent___23716;
     r0 = globals.left___1809.fields["id"];
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = 2;
@@ -66219,7 +66215,7 @@ switch (step) {
   case 7:
     r0 = s.retval;
     s.tmp_0 = lambda_3_mk(s);
-    s.tmp_0.argL = s.makeOnEvent___23719;
+    s.tmp_0.argL = s.makeOnEvent___23716;
     r0 = globals.up___1810.fields["id"];
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = 0;
@@ -66228,7 +66224,7 @@ switch (step) {
   case 8:
     r0 = s.retval;
     s.tmp_0 = lambda_3_mk(s);
-    s.tmp_0.argL = s.makeOnEvent___23719;
+    s.tmp_0.argL = s.makeOnEvent___23716;
     r0 = globals.down___1812.fields["id"];
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = 1;
@@ -66242,7 +66238,7 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
-    r0 = pxsim_pxtcore_mkAction(1, microcode_Editor_startup_inline__P23752);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_Editor_startup_inline__P23749);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg0);
     s.tmp_3 = control_onEvent__P391_mk(s);
@@ -66256,15 +66252,15 @@ switch (step) {
     r0 = s.retval;
   case 1:
   case 2:
-    r0 = pxsim_pxtcore_mkAction(1, forward_inline__P23764);
+    r0 = pxsim_pxtcore_mkAction(1, forward_inline__P23761);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    s.forward___23763 = (s.tmp_0);
+    s.forward___23760 = (s.tmp_0);
     s.tmp_0 = control_onEvent__P391_mk(s);
     s.tmp_0.arg0 = 2049;
     r0 = globals.A___1807.fields["id"];
     s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = s.forward___23763;
+    s.tmp_0.arg2 = s.forward___23760;
     s.tmp_0.arg3 = 16;
     s.callLocIdx = 740; s.pc = 11; return s.tmp_0;
   case 11:
@@ -66275,12 +66271,12 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = (s.tmp_1 + 7);
     s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = s.forward___23763;
+    s.tmp_0.arg2 = s.forward___23760;
     s.tmp_0.arg3 = 16;
     s.callLocIdx = 741; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, microcode_Editor_startup_inline__P23784);
+    r0 = pxsim_pxtcore_mkAction(1, microcode_Editor_startup_inline__P23781);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = control_onEvent__P391_mk(s);
@@ -66403,7 +66399,7 @@ switch (step) {
     s.tmp_5 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "x", s.tmp_5);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 8);
-    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P23853);
+    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P23850);
     s.tmp_6 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_6, 0, s.arg0);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "onClick", s.tmp_6);
@@ -66462,8 +66458,8 @@ function microcode_Editor_startup__P3446_mk(s) {
   tmp_5: undefined,
   tmp_6: undefined,
   tmp_7: undefined,
-  makeOnEvent___23719: undefined,
-  forward___23763: undefined,
+  makeOnEvent___23716: undefined,
+  forward___23760: undefined,
   arg0: undefined,
 } }
 
@@ -66471,7 +66467,7 @@ function microcode_Editor_startup__P3446_mk(s) {
 
 
 
-function makeOnEvent_inline__P23720(s) {
+function makeOnEvent_inline__P23717(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -66486,7 +66482,7 @@ switch (step) {
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkAction(2, makeOnEvent_inline__P23726);
+    r0 = pxsim_pxtcore_mkAction(2, makeOnEvent_inline__P23723);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[0]);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg1);
@@ -66502,12 +66498,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-makeOnEvent_inline__P23720.info = {"start":6513,"length":182,"line":208,"column":32,"endLine":212,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["id","dir"]}
+makeOnEvent_inline__P23717.info = {"start":6513,"length":182,"line":208,"column":32,"endLine":212,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["id","dir"]}
 
-function makeOnEvent_inline__P23720_mk(s) {
+function makeOnEvent_inline__P23717_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: makeOnEvent_inline__P23720, depth: s.depth + 1,
+        parent: s, fn: makeOnEvent_inline__P23717, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -66519,7 +66515,7 @@ function makeOnEvent_inline__P23720_mk(s) {
 
 
 
-function makeOnEvent_inline__P23726(s) {
+function makeOnEvent_inline__P23723(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -66540,12 +66536,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-makeOnEvent_inline__P23726.info = {"start":6614,"length":49,"line":209,"column":67,"endLine":210,"endColumn":43,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+makeOnEvent_inline__P23723.info = {"start":6614,"length":49,"line":209,"column":67,"endLine":210,"endColumn":43,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function makeOnEvent_inline__P23726_mk(s) {
+function makeOnEvent_inline__P23723_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: makeOnEvent_inline__P23726, depth: s.depth + 1,
+        parent: s, fn: makeOnEvent_inline__P23723, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -66554,7 +66550,7 @@ function makeOnEvent_inline__P23726_mk(s) {
 
 
 
-function microcode_Editor_startup_inline__P23752(s) {
+function microcode_Editor_startup_inline__P23749(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -66590,12 +66586,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup_inline__P23752.info = {"start":7147,"length":186,"line":223,"column":20,"endLine":227,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_Editor_startup_inline__P23749.info = {"start":7147,"length":186,"line":223,"column":20,"endLine":227,"endColumn":21,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function microcode_Editor_startup_inline__P23752_mk(s) {
+function microcode_Editor_startup_inline__P23749_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_Editor_startup_inline__P23752, depth: s.depth + 1,
+        parent: s, fn: microcode_Editor_startup_inline__P23749, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -66606,7 +66602,7 @@ function microcode_Editor_startup_inline__P23752_mk(s) {
 
 
 
-function forward_inline__P23764(s) {
+function forward_inline__P23761(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -66625,12 +66621,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-forward_inline__P23764.info = {"start":7380,"length":25,"line":229,"column":28,"endLine":229,"endColumn":53,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+forward_inline__P23761.info = {"start":7380,"length":25,"line":229,"column":28,"endLine":229,"endColumn":53,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function forward_inline__P23764_mk(s) {
+function forward_inline__P23761_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: forward_inline__P23764, depth: s.depth + 1,
+        parent: s, fn: forward_inline__P23761, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -66639,7 +66635,7 @@ function forward_inline__P23764_mk(s) {
 
 
 
-function microcode_Editor_startup_inline__P23784(s) {
+function microcode_Editor_startup_inline__P23781(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -66658,12 +66654,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Editor_startup_inline__P23784.info = {"start":7849,"length":17,"line":244,"column":16,"endLine":244,"endColumn":33,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+microcode_Editor_startup_inline__P23781.info = {"start":7849,"length":17,"line":244,"column":16,"endLine":244,"endColumn":33,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function microcode_Editor_startup_inline__P23784_mk(s) {
+function microcode_Editor_startup_inline__P23781_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_Editor_startup_inline__P23784, depth: s.depth + 1,
+        parent: s, fn: microcode_Editor_startup_inline__P23781, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -66672,7 +66668,7 @@ function microcode_Editor_startup_inline__P23784_mk(s) {
 
 
 
-function onClick_inline__P23853(s) {
+function onClick_inline__P23850(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -66691,12 +66687,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P23853.info = {"start":8751,"length":21,"line":265,"column":25,"endLine":265,"endColumn":46,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P23850.info = {"start":8751,"length":21,"line":265,"column":25,"endLine":265,"endColumn":46,"fileName":"editor.ts","functionName":"inline","argumentNames":[]}
 
-function onClick_inline__P23853_mk(s) {
+function onClick_inline__P23850_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: onClick_inline__P23853, depth: s.depth + 1,
+        parent: s, fn: onClick_inline__P23850, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -66715,8 +66711,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.s___23870 = undefined;
-    s.saved___23875 = undefined;
+    s.s___23867 = undefined;
+    s.saved___23872 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -66729,20 +66725,20 @@ switch (step) {
     s.callLocIdx = 623; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
-    s.s___23870 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.s___23870);
+    s.s___23867 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.s___23867);
     if (!r0) { step = 3; continue; }
     s.tmp_0 = JSON_parse__P388_mk(s);
-    s.tmp_0.arg0 = s.s___23870;
+    s.tmp_0.arg0 = s.s___23867;
     s.callLocIdx = 624; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
-    s.saved___23875 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.saved___23875);
+    s.saved___23872 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.saved___23872);
     if (!r0) { step = 1; continue; }
     s.tmp_0 = microcode_ProgramDefn_FromObj__P3310_mk(s);
     s.tmp_1 = if_progdef_1_mk(s);
-    s.tmp_1.arg0 = s.saved___23875;
+    s.tmp_1.arg0 = s.saved___23872;
     if (!s.tmp_1.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_1.arg0, "progdef");
     } else {
@@ -66776,8 +66772,8 @@ function microcode_App_load__P3412_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  s___23870: undefined,
-  saved___23875: undefined,
+  s___23867: undefined,
+  saved___23872: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -66796,8 +66792,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.defn___23892 = undefined;
-    s.pages___23902 = undefined;
+    s.defn___23889 = undefined;
+    s.pages___23899 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -66823,7 +66819,7 @@ switch (step) {
     s.callLocIdx = 479; s.pc = 10; return s.tmp_1;
   case 10:
     r0 = s.retval;
-    s.defn___23892 = (s.tmp_0);
+    s.defn___23889 = (s.tmp_0);
     s.tmp_0 = r0 = s.arg0;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 3; continue; }
@@ -66848,11 +66844,11 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_3);
     if (!r0) { step = 7; continue; }
     r0 = pxsim_pxtrt.mapGetGeneric(s.arg0, "P");
-    s.pages___23902 = (r0);
-    s.tmp_0 = r0 = s.defn___23892;
+    s.pages___23899 = (r0);
+    s.tmp_0 = r0 = s.defn___23889;
     s.tmp_2 = helpers_arrayMap__P106_mk(s);
-    s.tmp_2.arg0 = s.pages___23902;
-    s.tmp_2.arg1 = microcode_ProgramDefn_FromObj_inline__P23909;
+    s.tmp_2.arg0 = s.pages___23899;
+    s.tmp_2.arg1 = microcode_ProgramDefn_FromObj_inline__P23906;
     s.callLocIdx = 481; s.pc = 11; return s.tmp_2;
   case 11:
     r0 = s.retval;
@@ -66860,7 +66856,7 @@ switch (step) {
     r0 = (s.tmp_0).fields["pages"] = (s.tmp_1);
   case 7:
   case 8:
-    r0 = s.defn___23892;
+    r0 = s.defn___23889;
     return leave(s, r0)
   default: oops()
 } } }
@@ -66875,8 +66871,8 @@ function microcode_ProgramDefn_FromObj__P3310_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  defn___23892: undefined,
-  pages___23902: undefined,
+  defn___23889: undefined,
+  pages___23899: undefined,
   arg0: undefined,
 } }
 
@@ -66884,7 +66880,7 @@ function microcode_ProgramDefn_FromObj__P3310_mk(s) {
 
 
 
-function microcode_ProgramDefn_FromObj_inline__P23909(s) {
+function microcode_ProgramDefn_FromObj_inline__P23906(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -66906,12 +66902,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_ProgramDefn_FromObj_inline__P23909.info = {"start":14604,"length":37,"line":467,"column":39,"endLine":467,"endColumn":76,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
+microcode_ProgramDefn_FromObj_inline__P23906.info = {"start":14604,"length":37,"line":467,"column":39,"endLine":467,"endColumn":76,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
 
-function microcode_ProgramDefn_FromObj_inline__P23909_mk(s) {
+function microcode_ProgramDefn_FromObj_inline__P23906_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_ProgramDefn_FromObj_inline__P23909, depth: s.depth + 1,
+        parent: s, fn: microcode_ProgramDefn_FromObj_inline__P23906, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -66931,8 +66927,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.defn___23921 = undefined;
-    s.rules___23927 = undefined;
+    s.defn___23918 = undefined;
+    s.rules___23924 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -66958,7 +66954,7 @@ switch (step) {
     s.callLocIdx = 468; s.pc = 6; return s.tmp_1;
   case 6:
     r0 = s.retval;
-    s.defn___23921 = (s.tmp_0);
+    s.defn___23918 = (s.tmp_0);
     r0 = pxsim_pxtrt.mapGetGeneric(s.arg0, "R");
     s.tmp_1 = r0;
     r0 = pxsim_Array_.isArray(s.tmp_1);
@@ -66966,11 +66962,11 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
     r0 = pxsim_pxtrt.mapGetGeneric(s.arg0, "R");
-    s.rules___23927 = (r0);
-    s.tmp_0 = r0 = s.defn___23921;
+    s.rules___23924 = (r0);
+    s.tmp_0 = r0 = s.defn___23918;
     s.tmp_2 = helpers_arrayMap__P106_mk(s);
-    s.tmp_2.arg0 = s.rules___23927;
-    s.tmp_2.arg1 = microcode_PageDefn_FromObj_inline__P23934;
+    s.tmp_2.arg0 = s.rules___23924;
+    s.tmp_2.arg1 = microcode_PageDefn_FromObj_inline__P23931;
     s.callLocIdx = 470; s.pc = 7; return s.tmp_2;
   case 7:
     r0 = s.retval;
@@ -66978,7 +66974,7 @@ switch (step) {
     r0 = (s.tmp_0).fields["rules"] = (s.tmp_1);
   case 3:
   case 4:
-    r0 = s.defn___23921;
+    r0 = s.defn___23918;
     return leave(s, r0)
   default: oops()
 } } }
@@ -66992,8 +66988,8 @@ function microcode_PageDefn_FromObj__P3303_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  defn___23921: undefined,
-  rules___23927: undefined,
+  defn___23918: undefined,
+  rules___23924: undefined,
   arg0: undefined,
 } }
 
@@ -67001,7 +66997,7 @@ function microcode_PageDefn_FromObj__P3303_mk(s) {
 
 
 
-function microcode_PageDefn_FromObj_inline__P23934(s) {
+function microcode_PageDefn_FromObj_inline__P23931(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -67023,12 +67019,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_PageDefn_FromObj_inline__P23934.info = {"start":13620,"length":37,"line":431,"column":39,"endLine":431,"endColumn":76,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
+microcode_PageDefn_FromObj_inline__P23931.info = {"start":13620,"length":37,"line":431,"column":39,"endLine":431,"endColumn":76,"fileName":"language.ts","functionName":"inline","argumentNames":["elem"]}
 
-function microcode_PageDefn_FromObj_inline__P23934_mk(s) {
+function microcode_PageDefn_FromObj_inline__P23931_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: microcode_PageDefn_FromObj_inline__P23934, depth: s.depth + 1,
+        parent: s, fn: microcode_PageDefn_FromObj_inline__P23931, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -67048,9 +67044,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.extractField___23940 = undefined;
-    s.defn___24009 = undefined;
-    s.parseTile___24012 = undefined;
+    s.extractField___23937 = undefined;
+    s.defn___24006 = undefined;
+    s.parseTile___24009 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -67059,7 +67055,7 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stlocRef(s.tmp_0, s.arg0);
     s.arg0 = (s.tmp_0);
-    s.extractField___23940 = (extractField_inline__P23941);
+    s.extractField___23937 = (extractField_inline__P23938);
     r0 = pxsim_pxtcore_mkClassInstance(microcode_RuleDefn__C3283_VT);
     s.tmp_0 = r0;
     s.tmp_1 = microcode_RuleDefn_constructor__P3288_mk(s);
@@ -67067,12 +67063,12 @@ switch (step) {
     s.callLocIdx = 450; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
-    s.defn___24009 = (s.tmp_0);
-    r0 = pxsim_pxtcore_mkAction(2, parseTile_inline__P24013);
+    s.defn___24006 = (s.tmp_0);
+    r0 = pxsim_pxtcore_mkAction(2, parseTile_inline__P24010);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.extractField___23940);
-    s.parseTile___24012 = (s.tmp_0);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.extractField___23937);
+    s.parseTile___24009 = (s.tmp_0);
     r0 = pxsim_pxtrt_ldlocRef(s.arg0);
     s.tmp_2 = r0;
     r0 = pxsim_pxtcore.typeOf(s.tmp_2);
@@ -67092,9 +67088,9 @@ switch (step) {
     r0 = pxsim_pxtrt_stlocRef(s.tmp_3, s.tmp_4);
   case 1:
   case 2:
-    s.tmp_0 = r0 = s.defn___24009;
+    s.tmp_0 = r0 = s.defn___24006;
     s.tmp_2 = lambda_3_mk(s);
-    s.tmp_2.argL = s.parseTile___24012;
+    s.tmp_2.argL = s.parseTile___24009;
     s.tmp_2.arg0 = "S";
     s.tmp_2.arg1 = "sensors";
     setupLambda(s.tmp_2, s.tmp_2.argL);
@@ -67103,9 +67099,9 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["sensors"] = (s.tmp_1);
-    s.tmp_0 = r0 = s.defn___24009;
+    s.tmp_0 = r0 = s.defn___24006;
     s.tmp_2 = lambda_3_mk(s);
-    s.tmp_2.argL = s.parseTile___24012;
+    s.tmp_2.argL = s.parseTile___24009;
     s.tmp_2.arg0 = "A";
     s.tmp_2.arg1 = "actuators";
     setupLambda(s.tmp_2, s.tmp_2.argL);
@@ -67114,9 +67110,9 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["actuators"] = (s.tmp_1);
-    s.tmp_0 = r0 = s.defn___24009;
+    s.tmp_0 = r0 = s.defn___24006;
     s.tmp_2 = lambda_3_mk(s);
-    s.tmp_2.argL = s.parseTile___24012;
+    s.tmp_2.argL = s.parseTile___24009;
     s.tmp_2.arg0 = "F";
     s.tmp_2.arg1 = "filters";
     setupLambda(s.tmp_2, s.tmp_2.argL);
@@ -67125,9 +67121,9 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["filters"] = (s.tmp_1);
-    s.tmp_0 = r0 = s.defn___24009;
+    s.tmp_0 = r0 = s.defn___24006;
     s.tmp_2 = lambda_3_mk(s);
-    s.tmp_2.argL = s.parseTile___24012;
+    s.tmp_2.argL = s.parseTile___24009;
     s.tmp_2.arg0 = "M";
     s.tmp_2.arg1 = "modifiers";
     setupLambda(s.tmp_2, s.tmp_2.argL);
@@ -67136,7 +67132,7 @@ switch (step) {
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["modifiers"] = (s.tmp_1);
-    r0 = s.defn___24009;
+    r0 = s.defn___24006;
     return leave(s, r0)
   default: oops()
 } } }
@@ -67153,9 +67149,9 @@ function microcode_RuleDefn_FromObj__P3294_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  extractField___23940: undefined,
-  defn___24009: undefined,
-  parseTile___24012: undefined,
+  extractField___23937: undefined,
+  defn___24006: undefined,
+  parseTile___24009: undefined,
   arg0: undefined,
 } }
 
@@ -67163,7 +67159,7 @@ function microcode_RuleDefn_FromObj__P3294_mk(s) {
 
 
 
-function extractField_inline__P23941(s) {
+function extractField_inline__P23938(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -67177,19 +67173,19 @@ switch (step) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkAction(1, extractField_inline__P23943);
+    r0 = pxsim_pxtcore_mkAction(1, extractField_inline__P23940);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     r0 = s.tmp_0;
     return leave(s, r0)
   default: oops()
 } } }
-extractField_inline__P23941.info = {"start":10090,"length":859,"line":327,"column":33,"endLine":346,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+extractField_inline__P23938.info = {"start":10090,"length":859,"line":327,"column":33,"endLine":346,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
-function extractField_inline__P23941_mk(s) {
+function extractField_inline__P23938_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: extractField_inline__P23941, depth: s.depth + 1,
+        parent: s, fn: extractField_inline__P23938, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -67199,7 +67195,7 @@ function extractField_inline__P23941_mk(s) {
 
 
 
-function extractField_inline__P23943(s) {
+function extractField_inline__P23940(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -67209,34 +67205,34 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.hasField___23945 = undefined;
-    s.elem___23952 = undefined;
-    s.tile___23966 = undefined;
-    s.field___23972 = undefined;
-    s.newOne___23988 = undefined;
+    s.hasField___23942 = undefined;
+    s.elem___23949 = undefined;
+    s.tile___23963 = undefined;
+    s.field___23969 = undefined;
+    s.newOne___23985 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = pxsim_String_.indexOf(s.arg0, "(", undefined);
-    s.hasField___23945 = (r0);
-    r0 = (s.hasField___23945 >= 0);
+    s.hasField___23942 = (r0);
+    r0 = (s.hasField___23942 >= 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
     s.tmp_1 = helpers_stringSubstr__P118_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.tmp_1.arg1 = 0;
-    s.tmp_1.arg2 = s.hasField___23945;
+    s.tmp_1.arg2 = s.hasField___23942;
     s.callLocIdx = 447; s.pc = 8; return s.tmp_1;
   case 8:
     r0 = s.retval;
-    s.elem___23952 = (r0);
+    s.elem___23949 = (r0);
     r0 = pxsim_pxtrt.mapGetGeneric(globals.tilesDB___3404, s.caps[0]);
     s.tmp_3 = r0;
     r0 = pxsim_pxtrt.keysOf(s.tmp_3);
     s.tmp_2 = r0;
-    r0 = pxsim_Array_.indexOf(s.tmp_2, s.elem___23952, undefined);
+    r0 = pxsim_Array_.indexOf(s.tmp_2, s.elem___23949, undefined);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 >= 0);
     s.tmp_0 = r0;
@@ -67244,20 +67240,20 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     r0 = pxsim_pxtrt.mapGetGeneric(globals.tilesDB___3404, s.caps[0]);
     s.tmp_4 = r0;
-    r0 = pxsim_pxtrt.mapGetGeneric(s.tmp_4, s.elem___23952);
-    s.tile___23966 = (r0);
+    r0 = pxsim_pxtrt.mapGetGeneric(s.tmp_4, s.elem___23949);
+    s.tile___23963 = (r0);
     s.tmp_0 = if_deserialize_2_mk(s);
-    r0 = s.tile___23966.fields["fieldEditor"];
+    r0 = s.tile___23963.fields["fieldEditor"];
     s.tmp_0.arg0 = r0;
     s.tmp_1 = helpers_stringSubstr__P118_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    r0 = (s.hasField___23945 + 1);
+    r0 = (s.hasField___23942 + 1);
     s.tmp_1.arg1 = r0;
     r0 = pxsim_String_.length(s.arg0);
     s.tmp_3 = r0;
     r0 = (s.tmp_3 - 2);
     s.tmp_2 = r0;
-    r0 = (s.tmp_2 - s.hasField___23945);
+    r0 = (s.tmp_2 - s.hasField___23942);
     s.tmp_1.arg2 = r0;
     s.callLocIdx = 448; s.pc = 10; return s.tmp_1;
   case 10:
@@ -67274,17 +67270,17 @@ switch (step) {
     }
   case 9:
     r0 = s.retval;
-    s.field___23972 = (r0);
+    s.field___23969 = (r0);
     s.tmp_0 = microcode_TileDefn__C3244_v3_2_mk(s);
-    s.tmp_0.arg0 = s.tile___23966;
-    s.tmp_0.arg1 = s.field___23972;
+    s.tmp_0.arg0 = s.tile___23963;
+    s.tmp_0.arg1 = s.field___23969;
     if (!checkSubtype(s.tmp_0.arg0, microcode_TileDefn__C3244_VT)) failedCast(s.tmp_0.arg0);
     s.tmp_0.fn = s.tmp_0.arg0.vtable.methods.getNewInstance;
     s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    s.newOne___23988 = (r0);
-    r0 = s.newOne___23988;
+    s.newOne___23985 = (r0);
+    r0 = s.newOne___23985;
     { step = 7; continue; }
     { step = 2; continue; }
   case 1:
@@ -67320,12 +67316,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-extractField_inline__P23943.info = {"start":10105,"length":844,"line":327,"column":48,"endLine":346,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["s"]}
+extractField_inline__P23940.info = {"start":10105,"length":844,"line":327,"column":48,"endLine":346,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["s"]}
 
-function extractField_inline__P23943_mk(s) {
+function extractField_inline__P23940_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: extractField_inline__P23943, depth: s.depth + 1,
+        parent: s, fn: extractField_inline__P23940, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -67333,11 +67329,11 @@ function extractField_inline__P23943_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  hasField___23945: undefined,
-  elem___23952: undefined,
-  tile___23966: undefined,
-  field___23972: undefined,
-  newOne___23988: undefined,
+  hasField___23942: undefined,
+  elem___23949: undefined,
+  tile___23963: undefined,
+  field___23969: undefined,
+  newOne___23985: undefined,
   arg0: undefined,
 } }
 
@@ -67345,7 +67341,7 @@ function extractField_inline__P23943_mk(s) {
 
 
 
-function parseTile_inline__P24013(s) {
+function parseTile_inline__P24010(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -67355,7 +67351,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.tiles___24020 = undefined;
+    s.tiles___24017 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -67372,10 +67368,10 @@ switch (step) {
     r0 = pxsim_pxtrt_ldlocRef(s.caps[0]);
     s.tmp_3 = r0;
     r0 = pxsim_pxtrt.mapGetGeneric(s.tmp_3, s.arg0);
-    s.tiles___24020 = (r0);
+    s.tiles___24017 = (r0);
     s.tmp_0 = helpers_arrayFilter__P110_mk(s);
     s.tmp_1 = helpers_arrayMap__P106_mk(s);
-    s.tmp_1.arg0 = s.tiles___24020;
+    s.tmp_1.arg0 = s.tiles___24017;
     s.tmp_2 = lambda_2_mk(s);
     s.tmp_2.argL = s.caps[1];
     s.tmp_2.arg0 = s.arg1;
@@ -67388,7 +67384,7 @@ switch (step) {
   case 5:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = parseTile_inline__P24029;
+    s.tmp_0.arg1 = parseTile_inline__P24026;
     s.callLocIdx = 453; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
@@ -67400,18 +67396,18 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-parseTile_inline__P24013.info = {"start":11020,"length":275,"line":348,"column":30,"endLine":354,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["single","name"]}
+parseTile_inline__P24010.info = {"start":11020,"length":275,"line":348,"column":30,"endLine":354,"endColumn":13,"fileName":"language.ts","functionName":"inline","argumentNames":["single","name"]}
 
-function parseTile_inline__P24013_mk(s) {
+function parseTile_inline__P24010_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: parseTile_inline__P24013, depth: s.depth + 1,
+        parent: s, fn: parseTile_inline__P24010, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  tiles___24020: undefined,
+  tiles___24017: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -67420,7 +67416,7 @@ function parseTile_inline__P24013_mk(s) {
 
 
 
-function parseTile_inline__P24029(s) {
+function parseTile_inline__P24026(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -67444,12 +67440,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-parseTile_inline__P24029.info = {"start":11228,"length":8,"line":351,"column":69,"endLine":351,"endColumn":77,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
+parseTile_inline__P24026.info = {"start":11228,"length":8,"line":351,"column":69,"endLine":351,"endColumn":77,"fileName":"language.ts","functionName":"inline","argumentNames":["t"]}
 
-function parseTile_inline__P24029_mk(s) {
+function parseTile_inline__P24026_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: parseTile_inline__P24029, depth: s.depth + 1,
+        parent: s, fn: parseTile_inline__P24026, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -67533,7 +67529,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.btns___24071 = undefined;
+    s.btns___24068 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -67542,14 +67538,14 @@ switch (step) {
     if (!checkSubtype(r0, microcode_Editor__C3431_VT)) failedCast(r0);
     s.tmp_0 = helpers_arrayMap__P106_mk(s);
     s.tmp_0.arg0 = globals.PAGE_IDS___3403;
-    s.tmp_0.arg1 = btns_inline__P24073;
+    s.tmp_0.arg1 = btns_inline__P24070;
     s.callLocIdx = 669; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.btns___24071 = (r0);
+    s.btns___24068 = (r0);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "btns", s.btns___24071);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "btns", s.btns___24068);
     s.tmp_1 = microcode_Picker_addGroup__P3541_mk(s);
     r0 = s.arg0.fields["picker"];
     s.tmp_1.arg0 = r0;
@@ -67557,7 +67553,7 @@ switch (step) {
     s.callLocIdx = 670; s.pc = 2; return s.tmp_1;
   case 2:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P24085);
+    r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P24082);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     r0 = pxsim_pxtrt.mkMap();
@@ -67585,7 +67581,7 @@ function microcode_Editor_pickPage__P6378_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  btns___24071: undefined,
+  btns___24068: undefined,
   arg0: undefined,
 } }
 
@@ -67593,7 +67589,7 @@ function microcode_Editor_pickPage__P6378_mk(s) {
 
 
 
-function btns_inline__P24073(s) {
+function btns_inline__P24070(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -67614,12 +67610,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-btns_inline__P24073.info = {"start":2658,"length":102,"line":95,"column":57,"endLine":99,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["pageId"]}
+btns_inline__P24070.info = {"start":2658,"length":102,"line":95,"column":57,"endLine":99,"endColumn":13,"fileName":"editor.ts","functionName":"inline","argumentNames":["pageId"]}
 
-function btns_inline__P24073_mk(s) {
+function btns_inline__P24070_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: btns_inline__P24073, depth: s.depth + 1,
+        parent: s, fn: btns_inline__P24070, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -67629,7 +67625,7 @@ function btns_inline__P24073_mk(s) {
 
 
 
-function onClick_inline__P24085(s) {
+function onClick_inline__P24082(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -67639,16 +67635,16 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.index___24087 = undefined;
+    s.index___24084 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
     r0 = pxsim_Array_.indexOf(globals.PAGE_IDS___3403, s.arg0, undefined);
-    s.index___24087 = (r0);
+    s.index___24084 = (r0);
     s.tmp_0 = microcode_Editor_switchToPage__P3443_mk(s);
     s.tmp_0.arg0 = s.caps[0];
-    s.tmp_0.arg1 = s.index___24087;
+    s.tmp_0.arg1 = s.index___24084;
     s.callLocIdx = 671; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
@@ -67656,15 +67652,15 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P24085.info = {"start":2861,"length":133,"line":102,"column":25,"endLine":105,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
+onClick_inline__P24082.info = {"start":2861,"length":133,"line":102,"column":25,"endLine":105,"endColumn":17,"fileName":"editor.ts","functionName":"inline","argumentNames":["iconId"]}
 
-function onClick_inline__P24085_mk(s) {
+function onClick_inline__P24082_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: onClick_inline__P24085, depth: s.depth + 1,
+        parent: s, fn: onClick_inline__P24082, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  index___24087: undefined,
+  index___24084: undefined,
   arg0: undefined,
 } }
 
@@ -67728,10 +67724,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.p___24106 = undefined;
-    s.target___24111 = undefined;
-    s.row___24127 = undefined;
-    s.col___24134 = undefined;
+    s.p___24103 = undefined;
+    s.target___24108 = undefined;
+    s.row___24124 = undefined;
+    s.col___24131 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -67749,10 +67745,10 @@ switch (step) {
     s.callLocIdx = 1956; s.pc = 10; return s.tmp_1;
   case 10:
     r0 = s.retval;
-    s.p___24106 = (s.tmp_0);
-    r0 = pxsim_pxtcore_mkAction(1, target_inline__P24113);
+    s.p___24103 = (s.tmp_0);
+    r0 = pxsim_pxtcore_mkAction(1, target_inline__P24110);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.p___24106);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.p___24103);
     s.tmp_1 = helpers_arrayFind__P111_mk(s);
     r0 = s.arg0.fields["buttons"];
     s.tmp_1.arg0 = r0;
@@ -67760,12 +67756,12 @@ switch (step) {
     s.callLocIdx = 1962; s.pc = 11; return s.tmp_1;
   case 11:
     r0 = s.retval;
-    s.target___24111 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.target___24111);
+    s.target___24108 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.target___24108);
     if (!r0) { step = 7; continue; }
-    s.row___24127 = (0);
+    s.row___24124 = (0);
   case 1:
-    s.tmp_1 = r0 = s.row___24127;
+    s.tmp_1 = r0 = s.row___24124;
     r0 = s.arg0.fields["buttonGroups"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__length(s.tmp_3);
@@ -67774,12 +67770,12 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
-    s.col___24134 = (0);
+    s.col___24131 = (0);
   case 2:
-    s.tmp_1 = r0 = s.col___24134;
+    s.tmp_1 = r0 = s.col___24131;
     r0 = s.arg0.fields["buttonGroups"];
     s.tmp_4 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_4, s.row___24127);
+    r0 = pxsim_Array__getAt(s.tmp_4, s.row___24124);
     s.tmp_3 = r0;
     r0 = pxsim_Array__length(s.tmp_3);
     s.tmp_2 = r0;
@@ -67789,26 +67785,26 @@ switch (step) {
     if (!r0) { step = 5; continue; }
     r0 = s.arg0.fields["buttonGroups"];
     s.tmp_8 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_8, s.row___24127);
+    r0 = pxsim_Array__getAt(s.tmp_8, s.row___24124);
     s.tmp_7 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_7, s.col___24134);
+    r0 = pxsim_Array__getAt(s.tmp_7, s.col___24131);
     s.tmp_6 = r0;
-    r0 = (s.tmp_6 === s.target___24111);
+    r0 = (s.tmp_6 === s.target___24108);
     s.tmp_5 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_5);
     if (!r0) { step = 3; continue; }
-    r0 = (s.arg0).fields["row"] = (s.row___24127);
-    r0 = (s.arg0).fields["col"] = (s.col___24134);
-    r0 = s.target___24111;
+    r0 = (s.arg0).fields["row"] = (s.row___24124);
+    r0 = (s.arg0).fields["col"] = (s.col___24131);
+    r0 = s.target___24108;
     { step = 9; continue; }
   case 3:
   case 4:
-    r0 = (s.col___24134 + 1);
-    s.col___24134 = (r0);
+    r0 = (s.col___24131 + 1);
+    s.col___24131 = (r0);
     { step = 2; continue; }
   case 5:
-    r0 = (s.row___24127 + 1);
-    s.row___24127 = (r0);
+    r0 = (s.row___24124 + 1);
+    s.row___24124 = (r0);
     { step = 1; continue; }
   case 6:
   case 7:
@@ -67834,10 +67830,10 @@ function microcode_RowNavigator_screenToButton__P4014_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  p___24106: undefined,
-  target___24111: undefined,
-  row___24127: undefined,
-  col___24134: undefined,
+  p___24103: undefined,
+  target___24108: undefined,
+  row___24124: undefined,
+  col___24131: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -67847,7 +67843,7 @@ function microcode_RowNavigator_screenToButton__P4014_mk(s) {
 
 
 
-function target_inline__P24113(s) {
+function target_inline__P24110(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -67883,12 +67879,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-target_inline__P24113.info = {"start":1368,"length":82,"line":49,"column":45,"endLine":50,"endColumn":75,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
+target_inline__P24110.info = {"start":1368,"length":82,"line":49,"column":45,"endLine":50,"endColumn":75,"fileName":"navigator.ts","functionName":"inline","argumentNames":["btn"]}
 
-function target_inline__P24113_mk(s) {
+function target_inline__P24110_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: target_inline__P24113, depth: s.depth + 1,
+        parent: s, fn: target_inline__P24110, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -68025,13 +68021,13 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.state___24178 = undefined;
-    s.devices___24183 = undefined;
-    s.count___24187 = undefined;
-    s.d___24188 = undefined;
-    s.dev___24194 = undefined;
-    s.s___24198 = undefined;
-    s.srv___24206 = undefined;
+    s.state___24175 = undefined;
+    s.devices___24180 = undefined;
+    s.count___24184 = undefined;
+    s.d___24185 = undefined;
+    s.dev___24191 = undefined;
+    s.s___24195 = undefined;
+    s.srv___24203 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -68040,8 +68036,8 @@ switch (step) {
     s.callLocIdx = 220; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
-    s.state___24178 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.state___24178);
+    s.state___24175 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.state___24175);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -68067,24 +68063,24 @@ switch (step) {
     }
   case 11:
     r0 = s.retval;
-    s.devices___24183 = (r0);
-    s.count___24187 = (0);
-    s.d___24188 = (0);
+    s.devices___24180 = (r0);
+    s.count___24184 = (0);
+    s.d___24185 = (0);
   case 3:
-    s.tmp_1 = r0 = s.d___24188;
-    r0 = pxsim_Array__length(s.devices___24183);
+    s.tmp_1 = r0 = s.d___24185;
+    r0 = pxsim_Array__length(s.devices___24180);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 8; continue; }
-    r0 = pxsim_Array__getAt(s.devices___24183, s.d___24188);
-    s.dev___24194 = (r0);
-    s.s___24198 = (0);
+    r0 = pxsim_Array__getAt(s.devices___24180, s.d___24185);
+    s.dev___24191 = (r0);
+    s.s___24195 = (0);
   case 4:
-    s.tmp_1 = r0 = s.s___24198;
+    s.tmp_1 = r0 = s.s___24195;
     s.tmp_4 = if_services_1_mk(s);
-    s.tmp_4.arg0 = s.dev___24194;
+    s.tmp_4.arg0 = s.dev___24191;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "services");
     } else {
@@ -68103,7 +68099,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
     s.tmp_6 = if_services_1_mk(s);
-    s.tmp_6.arg0 = s.dev___24194;
+    s.tmp_6.arg0 = s.dev___24191;
     if (!s.tmp_6.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_6.arg0, "services");
     } else {
@@ -68115,10 +68111,10 @@ switch (step) {
   case 14:
     r0 = s.retval;
     s.tmp_5 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_5, s.s___24198);
-    s.srv___24206 = (r0);
+    r0 = pxsim_Array__getAt(s.tmp_5, s.s___24195);
+    s.srv___24203 = (r0);
     s.tmp_2 = if_serviceClass_1_mk(s);
-    s.tmp_2.arg0 = s.srv___24206;
+    s.tmp_2.arg0 = s.srv___24203;
     if (!s.tmp_2.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_2.arg0, "serviceClass");
     } else {
@@ -68134,19 +68130,19 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
-    r0 = (s.count___24187 + 1);
-    s.count___24187 = (r0);
+    r0 = (s.count___24184 + 1);
+    s.count___24184 = (r0);
   case 5:
   case 6:
-    r0 = (s.s___24198 + 1);
-    s.s___24198 = (r0);
+    r0 = (s.s___24195 + 1);
+    s.s___24195 = (r0);
     { step = 4; continue; }
   case 7:
-    r0 = (s.d___24188 + 1);
-    s.d___24188 = (r0);
+    r0 = (s.d___24185 + 1);
+    s.d___24185 = (r0);
     { step = 3; continue; }
   case 8:
-    r0 = s.count___24187;
+    r0 = s.count___24184;
   case 9:
     return leave(s, r0)
   default: oops()
@@ -68165,13 +68161,13 @@ function jdc_numServiceInstances__P2871_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  state___24178: undefined,
-  devices___24183: undefined,
-  count___24187: undefined,
-  d___24188: undefined,
-  dev___24194: undefined,
-  s___24198: undefined,
-  srv___24206: undefined,
+  state___24175: undefined,
+  devices___24180: undefined,
+  count___24184: undefined,
+  d___24185: undefined,
+  dev___24191: undefined,
+  s___24195: undefined,
+  srv___24203: undefined,
   arg0: undefined,
 } }
 
@@ -68189,7 +68185,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.state___24226 = undefined;
+    s.state___24223 = undefined;
     r0 = pxsim_numops_toBoolDecr(globals._jacdacStateBuffer___5974);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
@@ -68214,8 +68210,8 @@ switch (step) {
     s.callLocIdx = 218; s.pc = 4; return s.tmp_5;
   case 4:
     r0 = s.retval;
-    s.state___24226 = (r0);
-    r0 = s.state___24226;
+    s.state___24223 = (r0);
+    r0 = s.state___24223;
   case 3:
     return leave(s, r0)
   default: oops()
@@ -68233,7 +68229,7 @@ function jdc_jacdacState__P5975_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  state___24226: undefined,
+  state___24223: undefined,
 } }
 
 
@@ -68250,10 +68246,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.buf___24235 = undefined;
-    s.col___24239 = undefined;
-    s.v___24243 = undefined;
-    s.row___24244 = undefined;
+    s.buf___24232 = undefined;
+    s.col___24236 = undefined;
+    s.v___24240 = undefined;
+    s.row___24241 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -68261,43 +68257,43 @@ switch (step) {
     r0 = s.arg0;
     if (!checkSubtype(r0, microcode_IconEditor__C6353_VT)) failedCast(r0);
     r0 = pxsim.control.createBuffer(5);
-    s.buf___24235 = (r0);
-    s.col___24239 = (0);
+    s.buf___24232 = (r0);
+    s.col___24236 = (0);
   case 1:
-    r0 = (s.col___24239 < 5);
+    r0 = (s.col___24236 < 5);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
-    s.v___24243 = (0);
-    s.row___24244 = (0);
+    s.v___24240 = (0);
+    s.row___24241 = (0);
   case 2:
-    r0 = (s.row___24244 < 5);
+    r0 = (s.row___24241 < 5);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
     r0 = s.arg0.fields["field"];
     s.tmp_2 = r0;
-    r0 = pxsim_ImageMethods.getPixel(s.tmp_2, s.col___24239, s.row___24244);
+    r0 = pxsim_ImageMethods.getPixel(s.tmp_2, s.col___24236, s.row___24241);
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 3; continue; }
-    s.tmp_3 = r0 = s.v___24243;
-    r0 = (1 << s.row___24244);
+    s.tmp_3 = r0 = s.v___24240;
+    r0 = (1 << s.row___24241);
     s.tmp_4 = r0;
     r0 = (s.tmp_3 | s.tmp_4);
-    s.v___24243 = (r0);
+    s.v___24240 = (r0);
   case 3:
   case 4:
-    r0 = (s.row___24244 + 1);
-    s.row___24244 = (r0);
+    r0 = (s.row___24241 + 1);
+    s.row___24241 = (r0);
     { step = 2; continue; }
   case 5:
-    r0 = pxsim.BufferMethods.setByte(s.buf___24235, s.col___24239, s.v___24243);
-    r0 = (s.col___24239 + 1);
-    s.col___24239 = (r0);
+    r0 = pxsim.BufferMethods.setByte(s.buf___24232, s.col___24236, s.v___24240);
+    r0 = (s.col___24236 + 1);
+    s.col___24236 = (r0);
     { step = 1; continue; }
   case 6:
-    r0 = s.buf___24235;
+    r0 = s.buf___24232;
     return leave(s, r0)
   default: oops()
 } } }
@@ -68313,10 +68309,10 @@ function microcode_IconEditor_serviceCommandArg__P6358_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  buf___24235: undefined,
-  col___24239: undefined,
-  v___24243: undefined,
-  row___24244: undefined,
+  buf___24232: undefined,
+  col___24236: undefined,
+  v___24240: undefined,
+  row___24241: undefined,
   arg0: undefined,
 } }
 
@@ -68490,9 +68486,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.only___24299 = undefined;
-    s.allows___24314 = undefined;
-    s.disallows___24339 = undefined;
+    s.only___24296 = undefined;
+    s.allows___24311 = undefined;
+    s.disallows___24336 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -68517,7 +68513,7 @@ switch (step) {
     { step = 15; continue; }
   case 1:
   case 2:
-    r0 = pxsim_pxtcore_mkAction(1, only_inline__P24301);
+    r0 = pxsim_pxtcore_mkAction(1, only_inline__P24298);
     s.tmp_4 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_4, 0, s.arg0);
     s.tmp_5 = helpers_arraySome__P107_mk(s);
@@ -68538,8 +68534,8 @@ switch (step) {
     s.callLocIdx = 411; s.pc = 17; return s.tmp_5;
   case 17:
     r0 = s.retval;
-    s.only___24299 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.only___24299);
+    s.only___24296 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.only___24296);
     if (!r0) { step = 3; continue; }
     r0 = true;
     { step = 15; continue; }
@@ -68566,7 +68562,7 @@ switch (step) {
     { step = 15; continue; }
   case 5:
   case 6:
-    r0 = pxsim_pxtcore_mkAction(1, allows_inline__P24317);
+    r0 = pxsim_pxtcore_mkAction(1, allows_inline__P24314);
     s.tmp_3 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_3, 0, s.arg0);
     s.tmp_5 = helpers_arraySome__P107_mk(s);
@@ -68605,7 +68601,7 @@ switch (step) {
     r0 = s.tmp_4;
     { step = 8; continue; }
   case 7:
-    r0 = pxsim_pxtcore_mkAction(1, allows_inline__P24331);
+    r0 = pxsim_pxtcore_mkAction(1, allows_inline__P24328);
     s.tmp_8 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_8, 0, s.arg0);
     s.tmp_9 = helpers_arraySome__P107_mk(s);
@@ -68641,8 +68637,8 @@ switch (step) {
   case 8:
     // jmp value (already in r0)
     s.tmp_12 = r0;
-    s.allows___24314 = (s.tmp_12);
-    r0 = pxsim_numops_toBoolDecr(s.allows___24314);
+    s.allows___24311 = (s.tmp_12);
+    r0 = pxsim_numops_toBoolDecr(s.allows___24311);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -68652,7 +68648,7 @@ switch (step) {
     { step = 15; continue; }
   case 9:
   case 10:
-    r0 = pxsim_pxtcore_mkAction(1, disallows_inline__P24343);
+    r0 = pxsim_pxtcore_mkAction(1, disallows_inline__P24340);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg0);
     s.tmp_6 = helpers_arraySome__P107_mk(s);
@@ -68695,7 +68691,7 @@ switch (step) {
     r0 = s.tmp_3;
     { step = 12; continue; }
   case 11:
-    r0 = pxsim_pxtcore_mkAction(1, disallows_inline__P24355);
+    r0 = pxsim_pxtcore_mkAction(1, disallows_inline__P24352);
     s.tmp_9 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_9, 0, s.arg0);
     s.tmp_12 = helpers_arraySome__P107_mk(s);
@@ -68735,8 +68731,8 @@ switch (step) {
   case 12:
     // jmp value (already in r0)
     s.tmp_15 = r0;
-    s.disallows___24339 = (s.tmp_15);
-    r0 = pxsim_numops_toBoolDecr(s.disallows___24339);
+    s.disallows___24336 = (s.tmp_15);
+    r0 = pxsim_numops_toBoolDecr(s.disallows___24336);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -68774,9 +68770,9 @@ function microcode_FilterModifierBase_isCompatibleWith__P3274_mk(s) {
   tmp_13: undefined,
   tmp_14: undefined,
   tmp_15: undefined,
-  only___24299: undefined,
-  allows___24314: undefined,
-  disallows___24339: undefined,
+  only___24296: undefined,
+  allows___24311: undefined,
+  disallows___24336: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -68785,7 +68781,7 @@ function microcode_FilterModifierBase_isCompatibleWith__P3274_mk(s) {
 
 
 
-function only_inline__P24301(s) {
+function only_inline__P24298(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -68805,12 +68801,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-only_inline__P24301.info = {"start":6677,"length":28,"line":218,"column":37,"endLine":218,"endColumn":65,"fileName":"language.ts","functionName":"inline","argumentNames":["cat"]}
+only_inline__P24298.info = {"start":6677,"length":28,"line":218,"column":37,"endLine":218,"endColumn":65,"fileName":"language.ts","functionName":"inline","argumentNames":["cat"]}
 
-function only_inline__P24301_mk(s) {
+function only_inline__P24298_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: only_inline__P24301, depth: s.depth + 1,
+        parent: s, fn: only_inline__P24298, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -68820,7 +68816,7 @@ function only_inline__P24301_mk(s) {
 
 
 
-function allows_inline__P24317(s) {
+function allows_inline__P24314(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -68840,12 +68836,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-allows_inline__P24317.info = {"start":6853,"length":28,"line":223,"column":40,"endLine":223,"endColumn":68,"fileName":"language.ts","functionName":"inline","argumentNames":["cat"]}
+allows_inline__P24314.info = {"start":6853,"length":28,"line":223,"column":40,"endLine":223,"endColumn":68,"fileName":"language.ts","functionName":"inline","argumentNames":["cat"]}
 
-function allows_inline__P24317_mk(s) {
+function allows_inline__P24314_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: allows_inline__P24317, depth: s.depth + 1,
+        parent: s, fn: allows_inline__P24314, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -68855,7 +68851,7 @@ function allows_inline__P24317_mk(s) {
 
 
 
-function allows_inline__P24331(s) {
+function allows_inline__P24328(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -68875,12 +68871,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-allows_inline__P24331.info = {"start":6921,"length":23,"line":224,"column":35,"endLine":224,"endColumn":58,"fileName":"language.ts","functionName":"inline","argumentNames":["tid"]}
+allows_inline__P24328.info = {"start":6921,"length":23,"line":224,"column":35,"endLine":224,"endColumn":58,"fileName":"language.ts","functionName":"inline","argumentNames":["tid"]}
 
-function allows_inline__P24331_mk(s) {
+function allows_inline__P24328_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: allows_inline__P24331, depth: s.depth + 1,
+        parent: s, fn: allows_inline__P24328, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -68890,7 +68886,7 @@ function allows_inline__P24331_mk(s) {
 
 
 
-function disallows_inline__P24343(s) {
+function disallows_inline__P24340(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -68910,12 +68906,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-disallows_inline__P24343.info = {"start":7059,"length":28,"line":228,"column":44,"endLine":228,"endColumn":72,"fileName":"language.ts","functionName":"inline","argumentNames":["cat"]}
+disallows_inline__P24340.info = {"start":7059,"length":28,"line":228,"column":44,"endLine":228,"endColumn":72,"fileName":"language.ts","functionName":"inline","argumentNames":["cat"]}
 
-function disallows_inline__P24343_mk(s) {
+function disallows_inline__P24340_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: disallows_inline__P24343, depth: s.depth + 1,
+        parent: s, fn: disallows_inline__P24340, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -68925,7 +68921,7 @@ function disallows_inline__P24343_mk(s) {
 
 
 
-function disallows_inline__P24355(s) {
+function disallows_inline__P24352(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -68945,12 +68941,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-disallows_inline__P24355.info = {"start":7131,"length":23,"line":229,"column":39,"endLine":229,"endColumn":62,"fileName":"language.ts","functionName":"inline","argumentNames":["tid"]}
+disallows_inline__P24352.info = {"start":7131,"length":23,"line":229,"column":39,"endLine":229,"endColumn":62,"fileName":"language.ts","functionName":"inline","argumentNames":["tid"]}
 
-function disallows_inline__P24355_mk(s) {
+function disallows_inline__P24352_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: disallows_inline__P24355, depth: s.depth + 1,
+        parent: s, fn: disallows_inline__P24352, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
