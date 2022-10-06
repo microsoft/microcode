@@ -83,6 +83,11 @@ You might also be able to commit and push directly from the web site, but we fin
 
 Some art images are precomputed, you will need to load scripts/renderart.ts in MakeCode Arcade and copy the console output back into the project.
 
+## Updating sample
+
+- Browse to http://127.0.0.1:7001/index.html?compress=0
+- Once your sample is ready, copy the string after `#` and copy it into `samples.ts`
+
 ## Updating GitHub pages
 
 To bump and refresh the github pages javascript and pre-built .hex file, run this script
