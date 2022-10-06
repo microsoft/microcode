@@ -91,6 +91,16 @@ sh ./bump.sh
 
 A GitHub Action will trigger and update the web site within a few minutes.
 
+## Re-building library
+
+There is library of LED animations etc in `scripts/lib/lib.js`. To rebuild, make sure you have `jacscript` checkedout
+parallel to `microbit` and run:
+
+```bash
+cd scripts
+./genlib.sh
+```
+
 ## Overview of implementation
 
 ### Local files
