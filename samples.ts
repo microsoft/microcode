@@ -4,17 +4,11 @@ namespace microcode {
             public label: string,
             public ariaId: string,
             public icon: string,
-            private src: string,
-            private b64: string,
-            private buf: Buffer
+            private b64: string
         ) {}
 
         get source() {
-            return (
-                this.src ||
-                (this.buf ? this.buf.toString() : undefined) ||
-                Buffer.fromBase64(this.b64).toString()
-            )
+            return Buffer.fromBase64(this.b64).toString()
         }
     }
 
@@ -22,9 +16,7 @@ namespace microcode {
         const s: {
             label: string
             ariaId?: string
-            src?: string
             b64?: string
-            buf?: Buffer
             // leave empty to hide sample
             icon?: string
         }[] = [
@@ -130,8 +122,8 @@ namespace microcode {
         return s
             .filter(({ icon }) => !withIcon || !!icon)
             .map(
-                ({ label, ariaId, src, icon, b64, buf }) =>
-                    new Sample(label, ariaId, icon, src, b64, buf)
+                ({ label, ariaId, icon, b64 }) =>
+                    new Sample(label, ariaId, icon, b64)
             )
     }
 }
