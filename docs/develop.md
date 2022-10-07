@@ -1,3 +1,7 @@
+---
+image: ./docs/images/generated/sample_smiley_buttons.png
+---
+
 # Developing MicroCode
 
 MicroCode is open source at https://github.com/microsoft/microcode and welcomes contributions.

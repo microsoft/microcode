@@ -1,3 +1,7 @@
+---
+image: ./docs/images/generated/sample_railroad_crossing.png
+---
+
 # Jacdac
 
 MicroCode integrates with [Jacdac](https://aka.ms.jacdac) in several ways

@@ -1,3 +1,7 @@
+---
+image: ./docs/images/generated/sample_smiley_buttons.png
+---
+
 # ![emoji hello](./images/generated/icon_M19hello.png){:class="icon"} Frequently Asked Questions
 
 ## How do I share my program?

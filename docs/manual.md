@@ -1,3 +1,7 @@
+---
+image: ./docs/images/generated/sample_smiley_buttons.png
+---
+
 # [Microsoft MicroCode](https://aka.ms/m9) for micro:bit (beta)
 
 Physical computing for young coders on the [micro:bit V2](https://microbit.org).
