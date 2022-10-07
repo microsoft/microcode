@@ -48,12 +48,14 @@ namespace microcode {
         }
 
         public load(slot: string): ProgramDefn {
-            const s = settings.readString(slot)
-            if (s) {
-                const saved: SavedState = JSON.parse(s)
-                if (saved) {
-                    return ProgramDefn.FromObj(saved.progdef)
+            try {
+                const s = settings.readString(slot)
+                if (s) {
+                    const saved: SavedState = JSON.parse(s)
+                    if (saved) return ProgramDefn.FromObj(saved.progdef)
                 }
+            } catch (e) {
+                console.log(e)
             }
             return undefined
         }
