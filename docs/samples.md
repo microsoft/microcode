@@ -23,6 +23,7 @@ These sample use multiple pages in their programs.
 -   [![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon"} hot potato](./samples/hot-potato)
 -   [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon"} clap lights](./samples/clap-lights)
 -   [![reaction time](./images/generated/icon_reaction_time.png){:class="icon"} reaction time](./samples/reaction-time)
+-   [double counter](./samples/double-counter)
 
 ## Radio
 
