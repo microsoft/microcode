@@ -47,7 +47,7 @@ The left-hand side of a rule, the `When` section, starts with an
 -   ![move image](./images/generated/icon_S3.png){:class="icon"} `move` of accelerometer, in various ways
 -   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear` a sound, either loud or soft
 -   ![radio receive image](./images/generated/icon_S7.png){:class="icon"} `radio receive` of a number
--   ![repeat timer image](./images/generated/icon_S4.png){:class="icon"} `repeat timer` of a time
+-   ![timer image](./images/generated/icon_S4.png){:class="icon"} `timer` of a time
 -   ![variable X image](./images/generated/icon_S9A.png){:class="icon"} ![variable Y image](./images/generated/icon_S9B.png){:class="icon"} ![variable Z image](./images/generated/icon_S9C.png){:class="icon"} `variable (X,Y,Z) changed` to a number
 
 If the `when` section is left empty,
@@ -71,7 +71,7 @@ The dialog below shows the parameters associated with the button press/release e
 -   ![accelerometer](./images/generated/icon_S3.png){:class="icon"} `move`, defaults to ![shake](./images/generated/icon_F17_shake.png){:class="icon"} `shake`; other options include ![tilt up](./images/generated/icon_F17_tilt_up.png){:class="icon"} `tilt up`, ![tilt down](./images/generated/icon_F17_tilt_down.png){:class="icon"} `tilt down`, ![tilt left](./images/generated/icon_F17_tilt_left.png){:class="icon"} `tilt left` and ![tilt right](./images/generated/icon_F17_tilt_right.png){:class="icon"} `tilt right`
 -   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear`, defaults to ![loud](./images/generated/icon_F15.png){:class="icon"}`loud`
 -   ![radio receive](./images/generated/icon_S7.png){:class="icon"} `radio receive`, defaults to `any`
--   ![timer](./images/generated/icon_S4.png){:class="icon"} `repeat timer`, defaults to `1/4 second`
+-   ![timer](./images/generated/icon_S4.png){:class="icon"} `timer`, defaults to `1/4 second`
 -   ![variable X image](./images/generated/icon_S9A.png){:class="icon"} `variable (X,Y,Z) changed`, defaults to `any` (any value change triggers it)
 
 ### Conditions on event values
@@ -84,7 +84,7 @@ When an event carries a numeric value (in the case of receiving a radio message 
 -   `4 dots`: ![four dots](./images/generated/icon_F11.png){:class="icon"}
 -   `5 dots`: ![five dots](./images/generated/icon_F12.png){:class="icon"}
 
-The repeat timer is parameterized with various times that can also be sequenced and summed:
+The `timer` is parameterized with various times that can also be sequenced and summed:
 
 -   `1/4 second`: ![1/4 second](./images/generated/icon_F13.png){:class="icon"}
 -   `1 second`: ![1 second](./images/generated/icon_F14.png){:class="icon"}

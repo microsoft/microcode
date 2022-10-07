@@ -33,14 +33,18 @@ namespace microcode {
             }, 1)
         }
 
+        public saveSource(slot: string, s: string) {
+            reportEvent("app.save", { slot: slot, size: s.length })
+            settings.writeString(slot, s)
+        }
+
         public save(slot: string, progdef: ProgramDefn) {
             const saved: SavedState = {
                 progdef: progdef.toObj(),
                 version: microcode.VERSION,
             }
             const s = JSON.stringify(saved)
-            reportEvent("app.save", { slot: slot, size: s.length })
-            settings.writeString(slot, s)
+            this.saveSource(slot, s)
         }
 
         public load(slot: string): ProgramDefn {

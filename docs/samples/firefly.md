@@ -23,7 +23,7 @@ The ![radio receive](../images/generated/icon_S7.png){:class="icon"} `radio rece
 
 ![when radio receive, do increment X by 1](../images/generated/sample_firefly_page_1_rule_2.png){:class="rule"}
 
-The ![timer](../images/generated/icon_S4.png){:class="icon"} `repeat timer` rule moves the clock every ![quarter of a second](../images/generated/icon_F13.png){:class="icon"} quarter of a second;
+The ![timer](../images/generated/icon_S4.png){:class="icon"} `timer` rule moves the clock every ![quarter of a second](../images/generated/icon_F13.png){:class="icon"} quarter of a second;
 
 ![when timer quarter of second, do increment X by 1](../images/generated/sample_firefly_page_1_rule_3.png){:class="rule"}
 
@@ -32,7 +32,7 @@ The next rule, ![variable X changed](../images/generated/icon_S9A.png){:class="i
 ![when variable X changed to 8, switch to page 2](../images/generated/sample_firefly_page_1_rule_4.png){:class="rule"}
 
 Since it is possible that we miss the number `8` because the firefly received many radio updates at once,
-we add one last rule, a `repeat timer every 3s` that transitions to page 2.
+we add one last rule, a `timer every 3s` that transitions to page 2.
 
 ![when timer 3s, do switch to page 2](../images/generated/sample_firefly_page_1_rule_5.png){:class="rule"}
 

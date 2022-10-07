@@ -47,7 +47,7 @@ namespace accessibility {
         S2: "press",
         S2B: "release",
         S3: "move",
-        S4: "repeat timer",
+        S4: "timer",
         S5: "light",
         S6: "temperature",
         S7: "radio receive",
