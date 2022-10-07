@@ -70,7 +70,7 @@ namespace microcode {
             {
                 label: "head or tail",
                 ariaId: "N9",
-                src: `{"progdef":{"P":[{"R":[{"S":["S3"],"A":["A9A"],"M":["M22","M7"]},{"S":["S9A"],"A":["A5"],"F":["F8"],"M":["M15(1111110101111110111001110)"]},{"S":["S9A"],"A":["A5"],"F":["F9"],"M":["M15(1111110001100011000111111)"]},{}]},{"R":[{}]},{"R":[{}]},{"R":[{}]},{}]}}`,
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBOUEiXSwiTSI6WyJNMjIiLCJNNyJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTUiXSwiRiI6WyJGOCJdLCJNIjpbIk0xNSgxMTExMTEwMTAxMTExMTEwMTExMDAxMTEwKSJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTUiXSwiRiI6WyJGOSJdLCJNIjpbIk0xNSgxMTExMTEwMDAxMTAwMDExMDAwMTExMTExKSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi4yLjE1In0=",
                 icon: "heads_tails",
             },
             {
