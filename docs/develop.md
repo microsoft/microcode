@@ -65,7 +65,7 @@ If you are running in Codespaces, the `-d` option won't work. Instead, right cli
 To load the local editor in a Jacdac devtools page, click on the **sim** link at the bottom
 of the local server on http://127.0.0.1:7001/. Or,
 
-https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001/
+https://microsoft.github.io/jacdac-docs/clients/javascript/devtools?jacscript=1&simulators=microbitmicrocode#http://127.0.0.1:7001/index.html?usb=0
 
 ## Creating artwork
 

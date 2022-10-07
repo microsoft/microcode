@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
         connectEl.append(mbitEl)
         // create WebUSB bus
         bus = jacdac.createWebBus({
-            usbOptions: inIFrame ? null : undefined,
+            usbOptions: /usb=0/i.test(window.location.href) ? null : undefined,
             bluetoothOptions: null,
             serialOptions: null,
         })
