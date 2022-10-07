@@ -806,7 +806,7 @@ namespace jacs {
                 wr.emitCall(this.pageProc(targetPage).index, [])
             } else if (actuator.jdKind == microcode.JdKind.Variable) {
                 this.emitSleep(ANTI_FREEZE_DELAY)
-                this.emitValueOut(rule, 1)
+                this.emitValueOut(rule, 0)
                 const pv = this.pipeVar(actuator.jdParam)
                 pv.write(wr, currValue())
                 this.emitSendCmd(
