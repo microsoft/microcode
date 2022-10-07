@@ -156,6 +156,7 @@ namespace accessibility {
         N10: "clap lights",
         N11: "firefly",
         N12: "railroad crossing",
+        N13: "7 seconds clap",
 
         S10: "magnet",
 
