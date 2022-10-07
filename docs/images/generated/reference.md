@@ -265,7 +265,12 @@
 - icon
 
 
-### ![paint screen](./images/generated/icon_A5.png){:class="icon"} `paint screen` {#icon_A5}
+### ![show image](./images/generated/icon_A5.png){:class="icon"} `show image` {#icon_A5}
+
+- icon
+
+
+### ![A10](./images/generated/icon_A10.png){:class="icon"} `A10` {#icon_A10}
 
 - icon
 
