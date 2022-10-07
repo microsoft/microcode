@@ -523,6 +523,8 @@ addSimMessageHandler("accessibility", data => {
 })
 
 async function playClick() {
+    if (speakTooltips) return
+
     const clickAudio = document.getElementById("clickAudio")
     try {
         if (!clickAudio.readyState) return
@@ -534,7 +536,6 @@ async function playClick() {
 }
 
 function setLiveRegion(value, force) {
-    playClick()
     // apply to browser
     if (!liveRegion) {
         const style =
@@ -559,6 +560,7 @@ function setLiveRegion(value, force) {
     if (force && liveRegion.textContent === value) liveRegion.textContent = ""
     //console.debug(`aria-live: ${value}`)
     liveRegion.textContent = value
+    playClick()
 }
 
 function hexToUint8Array(hex) {
