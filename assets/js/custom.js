@@ -475,12 +475,18 @@ function parseSemver(v) {
 }
 
 let speakTooltips = false
+let voice
 function speak(text) {
     if (!text || !speakTooltips) return
 
     const synth = window.speechSynthesis
     synth.cancel()
-    const voice = synth.getVoices()[0]
+    if (!voice) {
+        const lang = navigator.language
+        const voices =
+            synth.getVoices().filter(v => v.lang === lang) || synth.getVoices()
+        voice = voices[0]
+    }
     const utterance = new SpeechSynthesisUtterance(text)
     utterance.voice = voice
     synth.speak(utterance)
