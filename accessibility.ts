@@ -88,10 +88,10 @@ namespace accessibility {
         C1: "samples",
 
         A1: "switch page",
-        A2: "sound emoji",
+        A2: "play sound",
         A3: "microphone",
         A4: "music",
-        A5: "paint screen",
+        A5: "show image",
         A6: "radio send",
         A6A: "radio set group",
         A7: "random number",

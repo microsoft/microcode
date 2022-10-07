@@ -11,13 +11,13 @@ The picture below shows a 1-page program with two rules.
 
 ![Smiley Button MicroCode program](./images/rule.jpg){:class="screenshot"}
 
-![when button A pressed, paint screen with smiley](./images/generated/sample_smiley_buttons_page_1_rule_1.png){:class="rule"}
+![when button A pressed, show image smiley](./images/generated/sample_smiley_buttons_page_1_rule_1.png){:class="rule"}
 
--   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with smiley.
+-   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} show image smiley.
 
-![when button B pressed, paint screen with frowney](./images/generated/sample_smiley_buttons_page_1_rule_2.png){:class="rule"}
+![when button B pressed, show image frowney](./images/generated/sample_smiley_buttons_page_1_rule_2.png){:class="rule"}
 
--   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button B](./images/generated/icon_F4.png){:class="icon"} button B, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with frowney.
+-   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button B](./images/generated/icon_F4.png){:class="icon"} button B, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} show image frowney.
 
 ## Pages {#pages}
 
@@ -126,7 +126,7 @@ after `repeat` determine the number of iterations. If no value is given, it repe
 
 ![when touch logo, print happy on screen](./images/generated/sample_pet_hamster_page_1_rule_2.png){:class="rule"}
 
--   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![logo](./images/generated/icon_F7.png){:class="icon"} micro:bit logo, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} paint screen with happy animation and ![repeat](./images/generated/icon_M23.png){:class="icon"} repeat ![value 3](./images/generated/icon_M8.png){:class="icon"} 3 times.
+-   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![logo](./images/generated/icon_F7.png){:class="icon"} micro:bit logo, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} show image happy animation and ![repeat](./images/generated/icon_M23.png){:class="icon"} repeat ![value 3](./images/generated/icon_M8.png){:class="icon"} 3 times.
 
 ### Constructing numbers
 

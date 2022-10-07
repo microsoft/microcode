@@ -13,7 +13,7 @@ When a loud sound is detected switch between to page 2
 
 ![when page starts, do paint all leds](../images/generated/sample_clap_lights_page_1_rule_1.png){:class="rule"}
 
--   **when** ![page start](../images/generated/icon_S1.png){:class="icon"} page start, **do** ![screen](../images/generated/icon_A5.png){:class="icon"} paint screen with all leds.
+-   **when** ![page start](../images/generated/icon_S1.png){:class="icon"} page start, **do** ![screen](../images/generated/icon_A5.png){:class="icon"} show image with all leds.
 
 ![when loud sond, do switch to page 2](../images/generated/sample_clap_lights_page_1_rule_2.png){:class="rule"}
 

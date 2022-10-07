@@ -9,7 +9,7 @@ The program has one rule that paints a smiley when button A (on the micro:bit) i
 
 ![when button A press, show smiley rule](../images/generated/sample_first_program_page_1_rule_1.png){:class="rule"}
 
--   **when** ![press](../images/generated/icon_S2.png){:class="icon"} press ![button A](../images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](../images/generated/icon_A5.png){:class="icon"} paint screen with smiley.
+-   **when** ![press](../images/generated/icon_S2.png){:class="icon"} press ![button A](../images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](../images/generated/icon_A5.png){:class="icon"} show image smiley.
 
 ## improvement ideas
 

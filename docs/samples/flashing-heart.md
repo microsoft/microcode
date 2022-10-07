@@ -9,7 +9,7 @@ with two images. Each time the timer triggers again, it repaints both images whi
 
 ![flashing heart rule 1](../images/generated/sample_flashing_heart_page_1_rule_1.png){:class="rule"}
 
--   **when** ![timer](../images/generated/icon_S4.png){:class="icon"} timer triggers, **do** ![screen](../images/generated/icon_A5.png){:class="icon"} paint screen with heart.
+-   **when** ![timer](../images/generated/icon_S4.png){:class="icon"} timer triggers, **do** ![screen](../images/generated/icon_A5.png){:class="icon"} show image heart.
 
 ## improvement ideas
 

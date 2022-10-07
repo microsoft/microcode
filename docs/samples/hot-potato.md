@@ -29,7 +29,7 @@ If the **when** section is empty, the rule runs once at the page start only.
 
 ![when page starts, do paint a skull](../images/generated/sample_hot_potato_page_2_rule_1.png){:class="rule"}
 
--   **when** ![page start](../images/generated/icon_S1.png){:class="icon"} page start, **do** ![screen](../images/generated/icon_A5.png){:class="icon"} paint screen with skull.
+-   **when** ![page start](../images/generated/icon_S1.png){:class="icon"} page start, **do** ![screen](../images/generated/icon_A5.png){:class="icon"} show image skull.
 
 ![when page starts, do play sad sound](../images/generated/sample_hot_potato_page_2_rule_2.png){:class="rule"}
 
