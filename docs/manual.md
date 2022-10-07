@@ -1,4 +1,4 @@
-# Microsoft MicroCode for micro:bit (beta)
+# [Microsoft MicroCode](https://aka.ms/m9) for micro:bit (beta)
 
 Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 
@@ -8,12 +8,13 @@ Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 
 ![Smiley Buttons MicroCode program](./images/generated/sample_smiley_buttons.png){:class="sample"}
 
--   Keyboard, mouse, touch, screen reader accessible
+-   Live, the code is downloaded to the micro:bit on every edit
+-   Cursor based navigation with keyboard, mouse, touch, screen reader support
 -   Accessories (LEDs, servos, ...) supported via [Jacdac](https://aka.ms/jacdac)
 
 ## [Web editor](https://aka.ms/m9) {#web}
 
-The easiest way to get started with MicroCode is through the web editor ([https://aka.ms/microcode](https://aka.ms/microcode), [aka.ms/m9](https://aka.ms/m9) for short). We recommend using the keyboard navigation or a real gamepad!
+The MicroCode web editor is at [aka.ms/m9](https://aka.ms/m9). We recommend using the keyboard navigation.
 
 -   Arrow keys for D-pad
 -   `Enter` or `Space` for `A` button
@@ -22,7 +23,7 @@ The easiest way to get started with MicroCode is through the web editor ([https:
 
 [![MicroCode web app](./images/website2.jpg){:class="screenshot"}](https://aka.ms/m9)
 
-### Deploy to micro:bit V2
+### Automatic download to micro:bit V2
 
 Click on the micro:bit button at the lower right of the web app (see above) and follow the on-screen instructions to configure your micro:bit V2 and pair it with the editor.
 Once your micro:bit V2 is paired, the web editor will be able to download your
@@ -43,7 +44,7 @@ MicroCode can be accessed with the keyboard:
 -   Keep moving the cursor `Up` to go back a screen, if `Backspace` is not available;
     for example, if you are using a 5-input switch panel.
 
-#### Gamepad support
+#### Gamepads
 
 MicroCode supports commercial gamepads compatible with [Web Gamepad](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad).
 
@@ -60,7 +61,7 @@ By clicking on the `tooltip reader` button at the bottom of the editor, the tool
 The MicroCode app has a set of [samples](./samples) built-in. Select the samples button on the MicroCode home page (see below) to reveal
 the gallery of samples.
 
-[![new program](./images/generated/icon_new_program.png){:class="icon-sample"}](./samples/first-program) [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"}](./samples/flashing-heart) [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"}](./samples/smiley-buttons) [![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"}](./samples/pet-hamster) [![Head or tails icon](./images/generated/icon_sample_head_or_tail.png){:class="icon"} head or tail](./samples/head-or-tail) [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"}](./samples/rock-paper-scissors) [![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"}](./samples/hot-potato) [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"}](./samples/clap-lights) [![reaction time](./images/generated/icon_reaction_time.png){:class="icon-sample"} reaction time](./samples/reaction-time)
+[![new program](./images/generated/icon_new_program.png){:class="icon-sample"}](./samples/first-program) [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"}](./samples/flashing-heart) [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"}](./samples/smiley-buttons) [![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"}](./samples/pet-hamster) [![Head or tails icon](./images/generated/icon_sample_head_or_tail.png){:class="icon"}](./samples/head-or-tail) [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"}](./samples/rock-paper-scissors) [![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"}](./samples/hot-potato) [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"}](./samples/clap-lights) [![reaction time](./images/generated/icon_reaction_time.png){:class="icon-sample"}](./samples/reaction-time)
 [![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"}](./samples/chuck-a-duck) [![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon-sample"}](./samples/firefly) [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon-sample"}](./samples/railroad-crossing)
 
 ![MicroCode sample programs](./images/microCodeVideo.gif){:class="screenshot"}
