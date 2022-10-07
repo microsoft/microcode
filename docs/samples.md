@@ -7,11 +7,16 @@
 -   [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon"} flashing heart](./samples/flashing-heart)
 -   [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon"} simley buttons](./samples/smiley-buttons)
 -   [![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon"} pet hamster](./samples/pet-hamster)
+
+## Variables
+
+These sample use variables to store and read numeric values.
+
 - [![Head or tails icon](./images/generated/icon_sample_head_or_tail.png){:class="icon"} head or tail](.samples/head-or-tail)
 -   [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon"} rock paper scissors](./samples/rock-paper-scissors)
 -   [counter](./samples/counter)
 
-## Multiple pages
+## Pages
 
 These sample use multiple pages in their programs.
 
@@ -19,7 +24,7 @@ These sample use multiple pages in their programs.
 -   [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon"} clap lights](./samples/clap-lights)
 -   [![reaction time](./images/generated/icon_reaction_time.png){:class="icon"} reaction time](./samples/reaction-time)
 
-## Multiplayer
+## Radio
 
 These programs use radio to send messages between multiple
 micro:bits.
