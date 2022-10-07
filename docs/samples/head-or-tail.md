@@ -1,3 +1,7 @@
+---
+image: ./docs/images/generated/sample_head_or_tail.png
+---
+
 # ![Head or tail icon](../images/generated/icon_sample_head_or_tail.png){:class="icon-sample"} Head or tail
 
 ![Head or tail MicroCode program](../images/generated/sample_head_or_tail.png){:class="sample"}

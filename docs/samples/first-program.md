@@ -1,4 +1,8 @@
-# ![new program](../images/generated/icon_new_program.png){:class="icon-sample"} First program {#first-program}
+---
+image: ./docs/images/generated/sample_first_program.png
+---
+
+# ![new program](../images/generated/icon_new_program.png){:class="icon-sample"} First program
 
 ![First MicroCode program](../images/generated/sample_first_program.png){:class="sample"}
 

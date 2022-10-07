@@ -1,4 +1,8 @@
-# ![Rock Paper Scissors icon](../images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"} Rock Paper Scissors {#rock-paper-scissors}
+---
+image: ./docs/images/generated/sample_rock_paper_scissors.png
+---
+
+# ![Rock Paper Scissors icon](../images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"} Rock Paper Scissors
 
 ![Rock Paper Scissors MicroCode program](../images/generated/sample_rock_paper_scissors.png){:class="sample"}
 

@@ -1,4 +1,8 @@
-# ![Smiley Buttons icon](../images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"} Smiley Buttons {#smiley-buttons}
+---
+image: ./docs/images/generated/icon_sample_smiley_buttons.png
+---
+
+# ![Smiley Buttons icon](../images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"} Smiley Buttons
 
 ![Smiley Buttons MicroCode program](../images/generated/sample_smiley_buttons.png){:class="sample"}
 

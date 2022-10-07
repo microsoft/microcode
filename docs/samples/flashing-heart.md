@@ -1,4 +1,8 @@
-# ![Flashing Heart icon](../images/generated/icon_sample_flashing_heart.png){:class="icon-sample"} Flashing Heart {#flashing-heart}
+---
+image: ./docs/images/generated/icon_sample_flashing_heart.png
+---
+
+# ![Flashing Heart icon](../images/generated/icon_sample_flashing_heart.png){:class="icon-sample"} Flashing Heart
 
 ![Flashing Heart MicroCode program](../images/generated/sample_flashing_heart.png){:class="sample"}
 

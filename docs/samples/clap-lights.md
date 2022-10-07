@@ -1,4 +1,8 @@
-# ![Clap lights icon](../images/generated/icon_sample_clap_lights.png){:class="icon-sample"} Clap Lights {#clap-lights}
+---
+image: ./docs/images/generated/sample_clap_lights.png
+---
+
+# ![Clap lights icon](../images/generated/icon_sample_clap_lights.png){:class="icon-sample"} Clap Lights
 
 ![Clap lights MicroCode program](../images/generated/sample_clap_lights.png){:class="sample"}
 

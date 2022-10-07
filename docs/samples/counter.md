@@ -1,3 +1,7 @@
+---
+image: ./docs/images/generated/sample_counter.png
+---
+
 # Counter
 
 ![counter program](../images/generated/sample_counter.png){:class="sample"}

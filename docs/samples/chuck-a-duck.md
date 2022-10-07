@@ -2,7 +2,7 @@
 image: ./docs/images/generated/sample_chuck_a_duck.png
 ---
 
-# ![Chuck a duck icon](../images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"} Chuck a duck {#chuck-a-duck}
+# ![Chuck a duck icon](../images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"} Chuck a duck
 
 ![Chuck a duck MicroCode program](../images/generated/sample_chuck_a_duck.png){:class="sample"}
 

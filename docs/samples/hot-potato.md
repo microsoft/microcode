@@ -1,4 +1,8 @@
-# ![Hot potato icon](../images/generated/icon_hot_potato.png){:class="icon-sample"} Hot potato {#hot-potato}
+---
+image: ./docs/images/generated/sample_hot_potato.png
+---
+
+# ![Hot potato icon](../images/generated/icon_hot_potato.png){:class="icon-sample"} Hot potato
 
 ![Hot potato MicroCode program](../images/generated/sample_hot_potato.png){:class="sample"}
 

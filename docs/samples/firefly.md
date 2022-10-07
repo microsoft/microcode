@@ -1,4 +1,8 @@
-# ![Firefly icon](../images/generated/icon_sample_firefly.png){:class="icon-sample"} Firefly {#firefly}
+---
+image: ./docs/images/generated/sample_firefly.png
+---
+
+# ![Firefly icon](../images/generated/icon_sample_firefly.png){:class="icon-sample"} Firefly
 
 ![firefly MicroCode program](../images/generated/sample_firefly.png){:class="sample"}
 
