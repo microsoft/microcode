@@ -600,17 +600,18 @@ function imgToPng(hex) {
     const pixels = hexToUint8Array(hex)
     const w = pixels[0]
     const h = (pixels.length - 1) / w
-    canvas.width = w
-    canvas.height = h
+    const f = 2
+    canvas.width = w * 2
+    canvas.height = h * 2
     let j = 1
     for (let x = 0; x < w; ++x) {
         for (let y = 0; y < h; ++y) {
             const c = pixels[j++]
             if (c > 0) {
                 ctx.fillStyle = palette[c]
-                ctx.fillRect(x, y, 1, 1)
+                ctx.fillRect(x * f, y * f, f, f)
             } else {
-                ctx.clearRect(x, y, 1, 1)
+                ctx.clearRect(x * f, y * f, f, f)
             }
         }
     }
