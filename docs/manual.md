@@ -6,6 +6,8 @@ image: ./docs/images/generated/sample_smiley_buttons.png
 
 Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 
+<video src="./docs/videos/smiley-buttons.mp4" controls="true"></video>
+
 > MicroCode is still in **beta** development and might change in the future.
 
 -   Kid-friendly icon-based, live, structured code editor and [programming language](./language)
