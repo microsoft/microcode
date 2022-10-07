@@ -183,12 +183,6 @@ namespace microcode {
     }
 
     function addSensorTiles() {
-        const startPage = new SensorDefn(TID_SENSOR_START_PAGE, Phase.Pre)
-        startPage.priority = 108
-        tilesDB.sensors[TID_SENSOR_START_PAGE] = startPage
-
-        addButtonTiles()
-
         function makeSensor(tid: string, cat: string, prior: number) {
             const tile = new SensorDefn(tid, Phase.Post)
             tile.constraints = {
@@ -200,6 +194,10 @@ namespace microcode {
             tilesDB.sensors[tid] = tile
             return tile
         }
+
+        makeSensor(TID_SENSOR_START_PAGE, "timespan", 108)
+
+        addButtonTiles()
 
         function makeCupSensor(tid: string, id: number) {
             const tile = makeSensor(tid, "value_in", 120 + id * 5)

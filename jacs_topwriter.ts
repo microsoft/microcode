@@ -935,7 +935,17 @@ namespace jacs {
             }
 
             const sensor = rule.sensor
-            if (sensor.tid == microcode.TID_SENSOR_TIMER) {
+            let isTimer = sensor.tid == microcode.TID_SENSOR_TIMER
+            let once = false
+            if (
+                sensor.tid == microcode.TID_SENSOR_START_PAGE &&
+                rule.filters.some(f => f.jdKind == microcode.JdKind.Timespan)
+            ) {
+                isTimer = true
+                once = true
+            }
+
+            if (isTimer) {
                 const timer = this.addProc(name + "_timer")
                 let period = 0
                 let randomPeriod = 0
@@ -960,7 +970,8 @@ namespace jacs {
                     )
                     wr.emitStmt(Op.STMT1_SLEEP_MS, [tm])
                     this.ifCurrPage(emitBody)
-                    wr.emitJump(wr.top)
+                    if (once) wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
+                    else wr.emitJump(wr.top)
                 })
                 return
             }
