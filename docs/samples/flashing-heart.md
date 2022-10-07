@@ -1,5 +1,5 @@
 ---
-image: ./docs/images/generated/icon_sample_flashing_heart.png
+image: ./docs/images/generated/sample_flashing_heart.png
 ---
 
 # ![Flashing Heart icon](../images/generated/icon_sample_flashing_heart.png){:class="icon-sample"} Flashing Heart
