@@ -40,3 +40,8 @@ Similar to page 1 but in this case, we turn off all the LEDs.
 ## improvement ideas
 
 -   add sounds to notify your user that the command was received
+
+
+## Video
+
+<video class="sample" src="../videos/clap-lights.mp4" controls="true"></video>

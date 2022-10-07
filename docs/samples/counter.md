@@ -15,3 +15,8 @@ This program counts how many times you press `button A`.
 ![when press button A, increment variable X](../images/generated/sample_counter_page_1_rule_2.png){:class="rule"}
 
 -   **when** ![variable X changed](../images/generated/icon_S9A.png){:class="icon"} variable X changed, **do** show variable `X` value.
+
+
+## Video
+
+<video class="sample" src="../videos/counter.mp4" controls="true"></video>

@@ -21,3 +21,8 @@ pressing B.
 #### improvement ideas
 
 -   add sound emoji for each buttons to make it more lively
+
+
+## Video
+
+<video class="sample" src="../videos/smiley-buttons.mp4" controls="true"></video>

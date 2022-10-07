@@ -43,7 +43,11 @@ to trigger the activity. You can avoid groups interference by
     using ![radio set group](../images/generated/icon_A6A.png){:class="icon"} `radio set group`.
     The message only reach other micro:bit in the same group.
 
-## improvement ideas
+## Improvement ideas
 
 -   add sound emoji when the duck arrives
 -   use different radio messages for different images
+
+## Video
+
+<video class="sample" src="../videos/chuck-a-duck.mp4" controls="true"></video>

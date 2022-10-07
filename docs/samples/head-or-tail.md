@@ -30,3 +30,8 @@ and display a different symbol for each value, 1 or 2.
 
 -   add sound emoji whenever shake happens
 -   clear the screen before showing the new symbol
+
+
+## Video
+
+<video class="sample" src="../videos/head-or-tail.mp4" controls="true"></video>

@@ -36,3 +36,8 @@ and display a different symbol for each value, 1, 2 or 3.
 
 -   add sound emoji whenever shake happens
 -   clear the screen before showing the new symbol
+
+
+## Video
+
+<video class="sample" src="../videos/rock-paper-scissors.mp4" controls="true"></video>
