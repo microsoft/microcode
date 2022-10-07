@@ -1,3 +1,6 @@
+---
+image: ./images/generated/icon_sample_flashing_heart.png
+---
 # Samples
 
 -   [![new program](./images/generated/icon_new_program.png){:class="icon"} first program](./samples/first-program)
