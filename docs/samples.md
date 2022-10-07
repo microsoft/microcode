@@ -1,5 +1,5 @@
 ---
-image: ./images/generated/icon_sample_flashing_heart.png
+image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 # Samples
 
