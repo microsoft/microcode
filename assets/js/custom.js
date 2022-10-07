@@ -522,7 +522,18 @@ addSimMessageHandler("accessibility", data => {
     setLiveRegion(value, force)
 })
 
+function playClick() {
+    const clickAudio = document.getElementById("clickAudio")
+    try {
+        if (!clickAudio.readyState) return
+        clickAudio.play()
+    } catch (e) {
+        console.debug(e)
+    }
+}
+
 function setLiveRegion(value, force) {
+    playClick()
     // apply to browser
     if (!liveRegion) {
         const style =
