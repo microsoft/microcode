@@ -522,11 +522,12 @@ addSimMessageHandler("accessibility", data => {
     setLiveRegion(value, force)
 })
 
-function playClick() {
+async function playClick() {
     const clickAudio = document.getElementById("clickAudio")
     try {
         if (!clickAudio.readyState) return
-        clickAudio.play()
+        clickAudio.pause()
+        await clickAudio.play()
     } catch (e) {
         console.debug(e)
     }
