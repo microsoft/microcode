@@ -12,7 +12,7 @@
 
 These sample use variables to store and read numeric values.
 
-- [![Head or tails icon](./images/generated/icon_sample_head_or_tail.png){:class="icon"} head or tail](.samples/head-or-tail)
+- [![Head or tails icon](./images/generated/icon_sample_head_or_tail.png){:class="icon"} head or tail](./samples/head-or-tail)
 -   [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon"} rock paper scissors](./samples/rock-paper-scissors)
 -   [counter](./samples/counter)
 
