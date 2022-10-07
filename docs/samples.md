@@ -8,7 +8,7 @@
 -   [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon"} simley buttons](./samples/smiley-buttons)
 -   [![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon"} pet hamster](./samples/pet-hamster)
 -   [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon"} rock paper scissors](./samples/rock-paper-scissors)
-- [counter](./samples/counter)
+-   [counter](./samples/counter)
 
 ## Multiple pages
 
@@ -31,5 +31,4 @@ micro:bits.
 These sample use [Jacdac](https://aka.ms/jacdac) module
 to extend the micro:bit with LEDs, servos and other accessories.
 
--   [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon-sample"} railroad crossing](./samples/railroad-crossing)
-
+-   [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon"} railroad crossing](./samples/railroad-crossing)
