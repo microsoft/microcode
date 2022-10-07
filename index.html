@@ -624,6 +624,33 @@
                 </ol>
             </form>
         </dialog>
+        <dialog id="notsupportedDlg">
+            <form method="dialog">
+                <img
+                    src="./assets/image_microcode.png"
+                    alt="MicroCode logo"
+                    loading="lazy"
+                    class="logo"
+                />
+                <h2>
+                    This browser does not support download to the micro:bit.
+                    <button>Close</button>
+                </h2>
+                <p>
+                    MicroCode uses
+                    <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/API/USB"
+                        >WebUSB</a
+                    >
+                    to download code to the micro:bit. To enable this feature,
+                    use Microsoft Edge, Google Chrome or
+                    <a href="https://caniuse.com/webusb"
+                        >https://caniuse.com/webusb</a
+                    >
+                    to find a compatible browser.
+                </p>
+            </form>
+        </dialog>
         <dialog id="outdatedDlg">
             <form method="dialog">
                 <img

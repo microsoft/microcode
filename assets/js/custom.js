@@ -71,6 +71,10 @@ function showConnectDialog() {
     document.getElementById("connectDlg").showModal()
 }
 
+function showWebUSBNotSupportedDialog() {
+    document.getElementById("notsupportedDlg").showModal()
+}
+
 async function flashJacscriptServices(services, data) {
     for (const service of services) await flashJacscriptService(service, data)
 }
@@ -257,7 +261,9 @@ document.addEventListener("DOMContentLoaded", () => {
         bus.autoConnect = true
 
         setTimeout(() => {
-            if (!bus.connected && !!navigator.usb) showConnectDialog()
+            const supportsWebusb = !!navigator.usb
+            if (!supportsWebusb) showWebUSBNotSupportedDialog()
+            else if (!bus.connected) showConnectDialog()
         }, 2000)
     }
     document.body.append(script)
