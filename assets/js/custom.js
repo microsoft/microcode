@@ -257,8 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
         bus.autoConnect = true
 
         setTimeout(() => {
-            if (!bus.connected && !!navigator.usb)
-                showConnectDialog()
+            if (!bus.connected && !!navigator.usb) showConnectDialog()
         }, 2000)
     }
     document.body.append(script)
@@ -410,7 +409,6 @@ const liveStrings = {
 
     S10: "magnet detector",
 
-    N0: "editor",
     N1: "new program",
     N2: "flashing heart",
     N3: "smiley buttons",
@@ -420,6 +418,11 @@ const liveStrings = {
     N7: "hot potato",
     N8: "rock paper scissors",
     N9: "head or tail",
+    N10: "clap lights",
+    N11: "firefly",
+    N12: "railroad crossing",
+    N13: "7 seconds clap",
+    N14: "counter",
 
     A20_1: "red",
     A20_2: "green",

@@ -51,6 +51,11 @@ namespace microcode {
                 icon: "smiley_buttons",
             },
             {
+                label: "counter",
+                ariaId: "N14",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk0yMEEiLCJNNiJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi4yLjE1In0=",
+            },
+            {
                 label: "pet hamster",
                 ariaId: "N4",
                 b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDExMDExMDAwMDAwMTExMDAwMDAwKSJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkY3Il0sIk0iOlsiTTE1KDAwMDAwMDEwMTAwMDAwMDEwMDAxMDExMTApIiwiTTE1KDAwMDAwMTEwMTEwMDAwMDAxMTEwMDAwMDApIiwiTTIzIiwiTTgiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTIiXSwiRiI6WyJGNyJdLCJNIjpbIk0xOWdpZ2dsZSJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBNSJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk0xNSgwMDAwMDAxMDEwMDAwMDAwMTExMDEwMDAxKSIsIk0xNSgwMDAwMDExMDExMDAwMDAwMTExMDAwMDAwKSIsIk0yMyIsIk04Il19LHsiUyI6WyJTMyJdLCJBIjpbIkEyIl0sIkYiOlsiRjE3X3NoYWtlIl0sIk0iOlsiTTE5c2FkIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjIuNSJ9",

@@ -143,7 +143,6 @@ namespace accessibility {
         S9B: "variable Y changed",
         S9C: "variable Z changed",
 
-        N0: "edit",
         N1: "new program",
         N2: "flashing heart",
         N3: "smiley buttons",
@@ -157,6 +156,7 @@ namespace accessibility {
         N11: "firefly",
         N12: "railroad crossing",
         N13: "7 seconds clap",
+        N14: "counter",
 
         S10: "magnet",
 
