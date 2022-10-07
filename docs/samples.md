@@ -7,6 +7,7 @@
 -   [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon"} flashing heart](./samples/flashing-heart)
 -   [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon"} simley buttons](./samples/smiley-buttons)
 -   [![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon"} pet hamster](./samples/pet-hamster)
+- [![Head or tails icon](./images/generated/icon_sample_head_or_tail.png){:class="icon"} head or tail](.samples/head-or-tail)
 -   [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon"} rock paper scissors](./samples/rock-paper-scissors)
 -   [counter](./samples/counter)
 
