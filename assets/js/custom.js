@@ -521,15 +521,14 @@ addSimMessageHandler("accessibility", data => {
     }
     setLiveRegion(value, force)
 })
-
+const clickSound = new Howl({
+    src: ["./assets/sounds/click.wav", "./sounds/click.wav"],
+})
 async function playClick() {
     if (speakTooltips) return
-
-    const clickAudio = document.getElementById("clickAudio")
     try {
-        if (!clickAudio.readyState) return
-        clickAudio.pause()
-        await clickAudio.play()
+        clickSound.stop()
+        clickSound.play()
     } catch (e) {
         console.debug(e)
     }
