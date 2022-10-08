@@ -34,4 +34,4 @@ and display a different symbol for each value, 1 or 2.
 
 ## Video
 
-<video class="sample" src="../videos/head-or-tail.mp4" controls="true"></video>
+<video class="sample" poster="../videos/head-or-tail.png" src="../videos/head-or-tail.mp4" controls="true"></video>

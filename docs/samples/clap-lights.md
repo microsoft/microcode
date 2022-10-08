@@ -44,4 +44,4 @@ Similar to page 1 but in this case, we turn off all the LEDs.
 
 ## Video
 
-<video class="sample" src="../videos/clap-lights.mp4" controls="true"></video>
+<video class="sample" poster="../videos/clap-lights.png" src="../videos/clap-lights.mp4" controls="true"></video>

@@ -40,4 +40,4 @@ and display a different symbol for each value, 1, 2 or 3.
 
 ## Video
 
-<video class="sample" src="../videos/rock-paper-scissors.mp4" controls="true"></video>
+<video class="sample" poster="../videos/head-or-tail.png" src="../videos/rock-paper-scissors.mp4" controls="true"></video>
