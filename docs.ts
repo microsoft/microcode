@@ -122,11 +122,13 @@ namespace docs {
         // render all pages
         loader.nonEmptyPages().forEach(p => {
             loader.switchToPage(p)
+            loader.pageEditor.layout()
             microcode.Screen.setImageSize(pw, loader.pageHeight())
             const editor = new microcode.Editor(app)
             app.pushScene(editor)
             editor.cursor.visible = false
             pause(500)
+            microcode.Screen.image.fill(editor.color)
             editor.renderPage(p)
             const img = microcode.Screen.image.clone()
             imgs.push(img)

@@ -270,7 +270,7 @@
 - icon
 
 
-### ![A10](./images/generated/icon_A10.png){:class="icon"} `A10` {#icon_A10}
+### ![show number](./images/generated/icon_A10.png){:class="icon"} `show number` {#icon_A10}
 
 - icon
 
