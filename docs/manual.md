@@ -13,7 +13,7 @@ Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 <video class="sample" poster="./videos/smiley-buttons.png" src="./videos/smiley-buttons.mp4" controls="true"></video>
 
 -   Live, the code is downloaded to the micro:bit on every edit
--   Cursor based navigation with keyboard, mouse, touch, screen reader support
+-   Cursor based navigation with keyboard (switch access compatible), mouse, touch, screen reader support
 -   Accessories (LEDs, servos, ...) supported via [Jacdac](https://aka.ms/jacdac)
 
 ## [Web editor](https://aka.ms/m9) {#web}
