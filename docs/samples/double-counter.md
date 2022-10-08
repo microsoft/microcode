@@ -7,6 +7,9 @@ image: ./docs/images/generated/sample_double_counter.png
 ![double counter program](../images/generated/sample_double_counter.png){:class="sample"}
 
 This program counts how many times you press `button A` or `button B`.
+
+-   [Open in MicroCode](/microcode/#H4sIANizQWMAA6VRy27CMBD8pQBNqxxxFIW1cKJgQx63QopwakqlgGLz9XXsVBAjTpxWs5qdndn9UrjbHYOfKt4cofn9ADHnqTjrCkMlurZ8fY14QTueUXjPFUaE43oZ4kTPbOHbk2l+OOwWyAcxCZYLzVeGxwg1PGR5kSThaE6RSOsWXqt9MNMTRIHwWs01ezMmkMWlwauGGB/M+khIgxBwjVnp6vjZy7tt5hU3u+LEmbdZz8GgQfv+nZYca8HYNxOnKpftVuF6T+XzO7O5mzd8uLH9xX9OP7M4trj0rA/P6DMGXcahx1NXJ11bjy/sHjI/+ZX+R591vxk0+rvOnPvNJjdOiKdVga+feXCB5sTrBi6Ev8mE4uAPhFD/6bgCAAA=)
+
 Page 1 is used to track `A` and page `2` for `B`. This is a more advanced version of the [counter sample](./counter).
 
 ## ![page 1](../images/generated/icon_M1.png){:class="icon"} page 1

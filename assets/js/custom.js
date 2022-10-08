@@ -681,7 +681,7 @@ ${samples.map(
               )}.png){:class="icon-sample"}`
             : "no icon"
     }
--  [Open in MicroCode](/#${compressProgram(b64)})
+-  [Open in MicroCode](/microcode/#${compressProgram(b64)})
 
 `
 )}
