@@ -8,7 +8,7 @@ image: ./docs/images/generated/sample_smiley_buttons.png
 ## The basics
 
 -   [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon"} flashing heart](./samples/flashing-heart)
--   [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon"} simley buttons](./samples/smiley-buttons)
+-   [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon"} smiley buttons](./samples/smiley-buttons)
 -   [![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon"} pet hamster](./samples/pet-hamster)
 
 ## Variables
