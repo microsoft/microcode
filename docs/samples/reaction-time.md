@@ -21,7 +21,7 @@ This program uses 4 pages:
 ![Reaction time page 1 MicroCode program](../images/generated/sample_reaction_time_page_1.png){:class="sample"}
 
 This is the page where players see a "loader animation"
-and wait for the signal. 
+and wait for the signal.
 
 ![loader animation rule](../images/generated/sample_reaction_time_page_1_rule_1.png){:class="rule"}
 
@@ -30,7 +30,7 @@ After 5s + 5 random seconds, we switch to page 2.
 ![timer to play rule](../images/generated/sample_reaction_time_page_1_rule_2.png){:class="rule"}
 
 If any player presses A early, we transition to page 4 since
-player B won. 
+player B won.
 
 ![false start rule for A rule](../images/generated/sample_reaction_time_page_1_rule_3.png){:class="rule"}
 
@@ -56,7 +56,7 @@ Then we add rules to switch pages on button press, but unlike page 1, pressing m
 
 ![when press B, switch to page 4](../images/generated/sample_reaction_time_page_2_rule_4.png){:class="rule"}
 
-## ![page 3](../images/generated/icon_M3.png){:class="icon"} page 
+## ![page 3](../images/generated/icon_M3.png){:class="icon"} page 3
 
 Player A victory page.
 
@@ -75,7 +75,6 @@ And the game restart after 5 seconds.
 Player B victory page, similar to page 3.
 
 ![page 4 player B victory](../images/generated/sample_reaction_time_page_4.png){:class="sample"}
-
 
 ## improvement ideas
 
