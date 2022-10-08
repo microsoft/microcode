@@ -8,7 +8,7 @@ image: ./docs/images/generated/sample_24_7_clap.png
 
 Clap as many times as you can in 7 seconds, but no more than 24 times... that's the game and it will make you crazy.
 
--   [Open in MicroCode](/microcode/#H4sIANizQWMAA6VTTU/DMAz9S+sYoB126LqopCytqqbrthvdmMiWlUmd6Mevx04aQQoFCQ6W4/TZfn5xn5ug2p2nxdZfnenxck+lKyJ5BU87z8CXIm2JWCeViBN6lzXBnIlgv/SCEHJyehrVUfYic79+o9KZLh8A3ygcZ4nCzTWO3MY6NnnjX/AOlaMScIoD58R5XLg1W5BKGXfRMDaG8YWKymAhRixgEKsweDbeYGnb5xF53/L2dbypQ3uOhhEiMA5Bl0NSf9IttnXr1YkSCvNBPc94u+4XXmnvHXr1mNB1hr1Vv5v7Ol2vRyXsQoL34Ln6Llmt9SdqlphT1Zvr3iHjsnjK9kXup6LLH8gjlf2OtEI9/6JTZOsOff7Fv91k0PdH7jCblZO+qv1RO6T2Dc+4Y9rw3jupXRjG4l2HN9gj0zxunE4X/f8dVh/z0WIrd0V4yccTEYlgzMSkXR5dcYhns3foezqfyAMAAA==)
+-   [Open in MicroCode](/microcode/#H4sIAO69QWMAA6VSUU/CMBD+SxtEzR5hNLOTbpnrGPjmQGKhTBKQbfx6r9c2sdNpog+X67Xf3X339V66uFkfgvopWhzo7nhH5USk8gyeGs/An0RxJWKZNyLL6W3ZxVMm4s08jBPIqejea9PyVVZRe6HSD+b3gO8Qx1mOuKnGkZtMxzZv9Avep9I7AQ45cE78h9mkZTPSoPGJMhVbU/GRisZiIVZYwCgsYtTZeoul1z6PNPyWd6TjVZu4c3SMEKHiBHTZ5u0n3TJXt16dNKcwH9QLrXfrfuFV9P6hV48JXWfYO/XN3OdgufROsAu5ugfP8V2yVutPcJaMU+zNde+EcVk/l5u6igph8gfySOP+I22Unn/RKXV1hz7/4n9dldD3R+4wm5NTvOH+4A7hvqmz2jFt6j7c4y4MY9WdwVvsjvV5eD0NkcejQB4R45iH3uFndN0uzN4o/NjoM/bhrRGbw6Jbj+Slgjdar7r5jr2zMA4+AOK+a9kMBAAA)
 
 The game has 3 pages: page 1 is for clapping, page 2 is victory and score, page 3 is game over.
 
@@ -49,3 +49,16 @@ The last two rules handle transitioning to winning or loosing state.
 -   when the counter hits 25, the player clapped too many time and switch to page 3 for game over
 
 ![when variable X changed to 25, switch to page 3](../images/generated/sample_24_7_clap_page_1_rule_6.png){:class="rule"}
+
+## ![page 2](../images/generated/icon_M2.png){:class="icon"} page 2
+
+![24 7 clap page 2](../images/generated/sample_24_7_clap_page_2.png){:class="sample"}
+
+The 7 second expired and the player clapped 24 or less times,
+show score and switch back to page 1 after 10 seconds.
+
+## ![page 3](../images/generated/icon_M2.png){:class="icon"} page 3
+
+![24 7 clap page 3](../images/generated/sample_24_7_clap_page_3.png){:class="sample"}
+
+The player clapped too many times, show game over animation and switch back to page 1.
