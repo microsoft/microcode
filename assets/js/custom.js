@@ -693,7 +693,7 @@ ${jsg
         })
         await writable.write(md)
         await writable.close()
-        alert(`rendering done`)
+        window.location.reload()
     }
     buttons.append(button)
 
