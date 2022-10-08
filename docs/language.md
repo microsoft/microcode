@@ -15,7 +15,7 @@ The picture below shows a 1-page program with two rules.
 
 ![Smiley Button MicroCode program](./images/rule.jpg){:class="screenshot"}
 
-![when button A pressed, show image smiley](./images/generated/sample_smiley_buttons_page_1_rule_1.png){:class="rule"}
+![when button A pressed, show image smiley](./images/generated/sample_smiley_button s_page_1_rule_1.png){:class="rule"}
 
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} show image smiley.
 
@@ -102,7 +102,8 @@ In the case of the timer, the sum specifies the amount of time to start the time
 The right-hand side of a rule, the **Do** section, starts with a
 **command** tile from the following list:
 
--   ![screen](./images/generated/icon_A5.png){:class="icon"} `screen` shows an animation sequence on the LED screen.
+-   ![screen](./images/generated/icon_A5.png){:class="icon"} `show image` shows an animation sequence on the LED screen.
+-   ![show number](./images/generated/icon/icon_A10.png){:class="icon"} `show number` shows a numberic value between 0 and 99
 -   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays a sequence of emojis
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends a given number over the radio
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` transfers execution control to a given page
