@@ -84,6 +84,12 @@ Click on the version number in the web app to download the MicroCode hex file to
 
 {% include youtube.html id="LWjJL9qegmM" %}
 
+## Acknoledgments
+
+-   [@loretod101](https://twitter.com/loretod101) on advising on accessibility features, including switch access support.
+-   [@BillSeiver](https://twitter.com/BillSiever) on feedback for tiles, including the `page start` tile
+-   Microsoft Garage for kick starting this project during the 2022 Microsoft Hackathon.
+
 ## Contributing
 
 -   Post your suggestions or questions at https://forum.makecode.com
