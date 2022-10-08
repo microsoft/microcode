@@ -1,6 +1,7 @@
 ---
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
+
 # Samples
 
 -   [![new program](./images/generated/icon_new_program.png){:class="icon"} first program](./samples/first-program)
@@ -15,7 +16,7 @@ image: ./docs/images/generated/sample_smiley_buttons.png
 
 These sample use variables to store and read numeric values.
 
-- [![Head or tails icon](./images/generated/icon_sample_head_or_tail.png){:class="icon"} head or tail](./samples/head-or-tail)
+-   [![Head or tails icon](./images/generated/icon_sample_head_or_tail.png){:class="icon"} head or tail](./samples/head-or-tail)
 -   [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon"} rock paper scissors](./samples/rock-paper-scissors)
 -   [counter](./samples/counter)
 
@@ -27,6 +28,7 @@ These sample use multiple pages in their programs.
 -   [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon"} clap lights](./samples/clap-lights)
 -   [![reaction time](./images/generated/icon_reaction_time.png){:class="icon"} reaction time](./samples/reaction-time)
 -   [double counter](./samples/double-counter)
+-   [24 7 clap game](./samples/24-7-clap)
 
 ## Radio
 
