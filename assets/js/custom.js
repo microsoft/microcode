@@ -620,15 +620,15 @@ function imgToPng(hex) {
     return png
 }
 
-const norm = s => s.replace(/,/g, "_").replace(/\/s/g, "_").replace(/_+/g, "_")
+const norm = s => s.replace(/,/g, "_").replace(/\/s+/g, "_").replace(/_+/g, "_")
 
 addSimMessageHandler("docs", async data => {
     const msg = JSON.parse(uint8ArrayToString(data))
 
-    if (msg.type === "art") showArt(msg.images)
+    if (msg.type === "art") showArt(msg.images, msg.samples)
 })
 
-function showArt(jsg) {
+function showArt(jsg, samples) {
     const container = document.createElement("dialog")
     container.classList.add("art")
     const form = document.createElement("form")
@@ -668,6 +668,25 @@ function showArt(jsg) {
                 }
             })
         )
+        // markdown samples
+        const mds = `# Samples
+${samples.map(
+    ({ label, b64, icon }) => `
+## ${label}
+
+-  ${
+        icon
+            ? `![${label} icon](./images/generated/icon_sample_${norm(
+                  label
+              )}.png){:class="icon-sample"}`
+            : "no icon"
+    }
+-  [Open in MicroCode](/#${compressProgram(b64)})
+
+`
+)}
+`
+        await writeText(dir, "samples.md", mds)
         // markdown docs
         const md = `## Tiles
 ${jsg
@@ -686,13 +705,7 @@ ${jsg
 `
     )
     .join("")}`
-        console.log(md)
-        const file = await dir.getFileHandle("reference.md", { create: true })
-        const writable = await file.createWritable({
-            keepExistingData: false,
-        })
-        await writable.write(md)
-        await writable.close()
+        await writeText(dir, "reference.md", md)
         window.location.reload()
     }
     buttons.append(button)
@@ -722,6 +735,15 @@ ${jsg
 
     document.body.append(container)
     container.showModal()
+
+    async function writeText(dir, fn, content) {
+        const file = await dir.getFileHandle(fn, { create: true })
+        const writable = await file.createWritable({
+            keepExistingData: false,
+        })
+        await writable.write(content)
+        await writable.close()
+    }
 }
 
 addSimMessageHandler("analytics", buf => {

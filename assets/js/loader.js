@@ -12,6 +12,20 @@ function addSimMessageHandler(
     }
 }
 
+function compressProgram(hash) {
+    try {
+        return btoa(
+            fflate.strFromU8(
+                fflate.compressSync(fflate.strToU8(hash)),
+                true
+            )
+        )
+    } catch (e) {
+        console.debug(e)
+        return hash
+    }
+}
+
 function makeCodeRun(options) {
     var code = ""
     var isReady = false
@@ -187,21 +201,6 @@ function makeCodeRun(options) {
             }
         }
 
-        const compressProgram = hash => {
-            if (!useCompression) return hash
-            try {
-                return btoa(
-                    fflate.strFromU8(
-                        fflate.compressSync(fflate.strToU8(hash)),
-                        true
-                    )
-                )
-            } catch (e) {
-                console.debug(e)
-                return hash
-            }
-        }
-
         const importState = () => {
             const hash = window.location.hash.replace(/^#/, "")
             const hashProgram = decompressProgram(hash)
@@ -222,7 +221,7 @@ function makeCodeRun(options) {
                 localStorage["microcode-simstate"] = JSON.stringify(simState)
                 const currentProgram = simState[saveSlotKey] || ""
 
-                const hash = compressProgram(currentProgram)
+                const hash = useCompression ? compressProgram(currentProgram) : currentProgram
                 window.history.pushState(simState, undefined, `#${hash}`)
             }
             simStateChanged = false

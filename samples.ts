@@ -12,7 +12,7 @@ namespace microcode {
         }
     }
 
-    export function samples(withIcon: boolean): Sample[] {
+    export function rawSamples() {
         const s: {
             label: string
             ariaId?: string
@@ -82,9 +82,9 @@ namespace microcode {
                 icon: "clap_lights",
             },
             {
-                label: "7 seconds clap",
+                label: "24 7 clap",
                 ariaId: "N13",
-                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTMSJdLCJBIjpbIkE5QSJdLCJNIjpbIk02Il19LHsiUyI6WyJTMSJdLCJBIjpbIkE1Il0sIk0iOlsiTTE1KDAxMDEwMDEwMTAwMTAxMDExMDExMDEwMTApIiwiTTE1KDAwMTEwMDAxMTAwMDExMDAxMTExMDAxMTApIiwiTTIzIl19LHsiUyI6WyJTOCJdLCJBIjpbIkE5QSJdLCJGIjpbIkYxNSJdLCJNIjpbIk0yMEEiLCJNNiJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxNCIsIkYxNCJdLCJNIjpbIk0yIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTlnaWdnbGUiXX0seyJTIjpbIlMxIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQSJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxOSJdLCJNIjpbIk0xIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi4yLjE0In0=",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTMSJdLCJBIjpbIkE5QSJdLCJNIjpbIk02Il19LHsiUyI6WyJTMSJdLCJBIjpbIkE1Il0sIk0iOlsiTTE1KDAxMDEwMDEwMTAwMTAxMDExMDExMDEwMTApIiwiTTE1KDAwMTEwMDAxMTAwMDExMDAxMTExMDAxMTApIiwiTTIzIl19LHsiUyI6WyJTOCJdLCJBIjpbIkE5QSJdLCJGIjpbIkYxNSJdLCJNIjpbIk0yMEEiLCJNNiJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxNCIsIkYxNCJdLCJNIjpbIk0yIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMSJdLCJGIjpbIkYxMiIsIkYxMiIsIkYxMiIsIkYxMiIsIkYxMiJdLCJNIjpbIk0zIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTlnaWdnbGUiXX0seyJTIjpbIlMxIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQSJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxOSJdLCJNIjpbIk0xIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTlzYWQiXX0seyJTIjpbIlMxIl0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMTExMTExMDEwMTAxMTEwMDAwMDAwMTExMCkiLCJNMTUoMTExMTExMDEwMTAxMTEwMDExMTAwMDAwMCkiLCJNMjMiXX0se31dfSx7IlIiOlt7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi4zLjAifQ==",
             },
             {
                 label: "reaction time",
@@ -123,6 +123,11 @@ namespace microcode {
                 b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk02Il19LHsiUyI6WyJTMiJdLCJBIjpbIkE5QSJdLCJGIjpbIkY0Il0sIk0iOlsiTTIwQSIsIk02Il19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkYxMCJdLCJNIjpbIk0xNSgwMTExMTAwMDAxMDAxMTEwMDAwMTAxMTExKSJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTUiXSwiRiI6WyJGMTEiXSwiTSI6WyJNMTUoMTExMTAxMDAwMDExMTEwMDAwMTAxMTEwMCkiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkE1Il0sIkYiOlsiRjEyIl0sIk0iOlsiTTE1KDEwMTExMTAxMDExMDEwMTEwMTAxMTAxMTEpIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfX0=",
             },
         ]
+        return s
+    }
+
+    export function samples(withIcon: boolean): Sample[] {
+        const s = rawSamples()
         return s
             .filter(({ icon }) => !withIcon || !!icon)
             .map(

@@ -50,7 +50,13 @@ namespace docs {
         )
         control.simmessages.send(
             "docs",
-            Buffer.fromUTF8(JSON.stringify({ type: "art", images }))
+            Buffer.fromUTF8(
+                JSON.stringify({
+                    type: "art",
+                    samples: microcode.rawSamples(),
+                    images,
+                })
+            )
         )
     }
 
