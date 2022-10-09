@@ -23,7 +23,7 @@ The MicroCode web editor is at [aka.ms/m9](https://aka.ms/m9). We recommend usin
 -   Arrow keys for D-pad
 -   `Enter` or `Space` for `A` button
 -   `Backspace` for `B` button
--   `[` or `Page Up` to go to the next page, `]` or `Page Down` to go to the previous page
+-   `]` or `Page Up` to go to the next page, `[` or `Page Down` to go to the previous page
 -   Copy the URL to share your program.
 
 [![MicroCode web app](./images/website2.jpg){:class="screenshot"}](https://aka.ms/m9)
