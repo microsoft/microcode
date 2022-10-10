@@ -42,6 +42,7 @@ namespace accessibility {
 
         when: "when",
         do: "do",
+        connect: "connect",
 
         S1: "page start",
         S2: "press",

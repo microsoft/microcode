@@ -4,6 +4,7 @@
 
     "when": "when empty tile",
     "do": "do empty tile",
+    "connect": "connect to micro:bit",
 
     "delete_tile": "delete tile",
 
