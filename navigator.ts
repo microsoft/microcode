@@ -102,8 +102,10 @@ namespace microcode {
                     if (this.col == this.buttonGroups[this.row].length - 1) {
                         if (this.row < this.buttonGroups.length - 1) {
                             this.row++
-                            this.col = -1
-                        } else return undefined
+                        } else {
+                            this.row = 0
+                        }
+                        this.col = -1
                     }
                     this.col++
                     break

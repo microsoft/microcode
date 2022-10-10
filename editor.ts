@@ -400,7 +400,11 @@ namespace microcode {
                 this.navigator.clear()
             } else this.navigator = new RuleRowNavigator()
 
-            this.navigator.addButtons([this.connectBtn, this.pageBtn])
+            this.navigator.addButtons(
+                this.connectBtn.visible()
+                    ? [this.connectBtn, this.pageBtn]
+                    : [this.pageBtn]
+            )
 
             this.pageEditor.addToNavigator()
 
@@ -467,7 +471,9 @@ namespace microcode {
             control.enablePerfCounter()
             // if dot matrix is visible, then we're connected to some Jacdac bus
             // TODO: move cursor to next button when visible?
+            const wasVisible = this.connectBtn.visible()
             this.connectBtn.setVisible(jdc.numServiceInstances(0x110d154b) == 0)
+            if (wasVisible !== this.connectBtn.visible()) this.changed()
             if (this.connectBtn.visible()) this.connectBtn.draw()
             this.pageBtn.draw()
         }
