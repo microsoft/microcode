@@ -32,3 +32,5 @@ The ![LED](../images/generated/icon_A8.png){:class="icon"} `LED` uses a [program
 ![when press button B, show LED rainbow animation and repeat](../images/generated/sample_railroad_crossing_page_1_rule_5.png){:class="rule"}
 
 -   **when** ![press](../images/generated/icon_S2.png){:class="icon"} press ![logo](../images/generated/icon_F7.png){:class="icon"} button B, **do** ![LED](../images/generated/icon_A8.png){:class="icon"} LED show rainbow animation.
+
+<video class="sample" poster="../videos/jacdac-led.png" src="../videos/jacdac-led.mp4" controls="true"></video>
