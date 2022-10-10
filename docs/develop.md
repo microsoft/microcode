@@ -111,7 +111,7 @@ sh scripts/setup-jekyll.sh
 then launch jekyll
 
 ```bash
-jekyll serve
+bundle exec jekyll serve
 ```
 
 and nav to http://localhost:4000
