@@ -54,7 +54,7 @@ namespace microcode {
             return this.progdef.pages
                 .map((p, i) =>
                     p.rules.length > 1 ||
-                    (p.rules.length === 1 && !p.rules[0].isEmpty())
+                        (p.rules.length === 1 && !p.rules[0].isEmpty())
                         ? i
                         : -1
                 )
@@ -288,7 +288,7 @@ namespace microcode {
             const prevPage = () =>
                 this.switchToPage(
                     (this.currPage + this.progdef.pages.length - 1) %
-                        this.progdef.pages.length
+                    this.progdef.pages.length
                 )
             // page up, page down
             control.onEvent(
@@ -328,7 +328,7 @@ namespace microcode {
             }
         }
 
-        private setupP2keys() {}
+        private setupP2keys() { }
 
         protected handleClick(x: number, y: number) {
             const target = this.cursor.navigator.screenToButton(
@@ -793,23 +793,21 @@ namespace microcode {
         private editTile(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
             const tileUpdated = (tile: TileDefn) => {
-   if(tile) {
-                if (index >= ruleTiles.length) {
-reportEvent("tile.add", { tid: tile.tid })
-                            ruleTiles.push(tile)
-                        } else {
-reportEvent("tile.update", { tid: tile.tid })
-                            ruleTiles[index] = tile
-// TODO check for compatibility of following tiles
-                        } 
-} else {
-ruleTiles.splice(index, 1)
-reportEvent("tile.delete")
-
-// TODO check for compatibility of following tiles
-
-}
-Language.ensureValid(this.ruledef)
+                if (tile) {
+                    if (index >= ruleTiles.length) {
+                        reportEvent("tile.add", { tid: tile.tid })
+                        ruleTiles.push(tile)
+                    } else {
+                        reportEvent("tile.update", { tid: tile.tid })
+                        ruleTiles[index] = tile
+                        // TODO check for compatibility of following tiles
+                    }
+                } else {
+                    ruleTiles.splice(index, 1)
+                    reportEvent("tile.delete")
+                    // TODO check for compatibility of following tiles
+                }
+                Language.ensureValid(this.ruledef)
                 this.editor.saveAndCompileProgram()
                 this.instantiateProgramTiles()
                 if (editedAdded && this.nextEmpty(name, index)) {
@@ -827,7 +825,7 @@ Language.ensureValid(this.ruledef)
                     this.editor.picker,
                     () => {
                         this.editor.releaseBackground()
-                      
+
                         tileUpdated(newOne)
                     }
                 )
@@ -846,7 +844,7 @@ Language.ensureValid(this.ruledef)
                         },
                         () => {
                             this.editor.releaseBackground()
-                         
+
                             tileUpdated(undefined)
                         }
                     )
@@ -889,9 +887,9 @@ Language.ensureValid(this.ruledef)
                                     : theOne
                             newFieldEditor(theOne)
                         } else {
-                        tileUpdated(theOne)
-                    },
-                    onDelete,
+                            tileUpdated(theOne)
+                        },
+                        onDelete,
                 })
             }
             return
