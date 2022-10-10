@@ -792,8 +792,24 @@ namespace microcode {
 
         private editTile(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
-            const tileUpdated = (editedAdded: boolean = true) => {
-                Language.ensureValid(this.ruledef)
+            const tileUpdated = (tile: TileDefn) => {
+   if(tile) {
+                if (index >= ruleTiles.length) {
+reportEvent("tile.add", { tid: tile.tid })
+                            ruleTiles.push(tile)
+                        } else {
+reportEvent("tile.update", { tid: tile.tid })
+                            ruleTiles[index] = tile
+// TODO check for compatibility of following tiles
+                        } 
+} else {
+ruleTiles.splice(index, 1)
+reportEvent("tile.delete")
+
+// TODO check for compatibility of following tiles
+
+}
+Language.ensureValid(this.ruledef)
                 this.editor.saveAndCompileProgram()
                 this.instantiateProgramTiles()
                 if (editedAdded && this.nextEmpty(name, index)) {
@@ -811,12 +827,8 @@ namespace microcode {
                     this.editor.picker,
                     () => {
                         this.editor.releaseBackground()
-                        if (index >= ruleTiles.length) {
-                            ruleTiles.push(newOne)
-                        } else {
-                            ruleTiles[index] = newOne
-                        }
-                        tileUpdated()
+                      
+                        tileUpdated(newOne)
                     }
                 )
             }
@@ -830,12 +842,12 @@ namespace microcode {
                         this.editor.picker,
                         () => {
                             this.editor.releaseBackground()
-                            tileUpdated()
+                            tileUpdated(theOne)
                         },
                         () => {
                             this.editor.releaseBackground()
-                            ruleTiles.splice(index, 1)
-                            tileUpdated(false)
+                         
+                            tileUpdated(undefined)
                         }
                     )
                     return
@@ -859,9 +871,7 @@ namespace microcode {
             let onDelete = undefined
             if (index < ruleTiles.length) {
                 onDelete = () => {
-                    reportEvent("tile.delete")
-                    ruleTiles.splice(index, 1)
-                    tileUpdated(false)
+                    tileUpdated(undefined)
                 }
             }
             if (btns.length) {
@@ -879,15 +889,7 @@ namespace microcode {
                                     : theOne
                             newFieldEditor(theOne)
                         } else {
-                            if (index >= ruleTiles.length) {
-                                reportEvent("tile.add", { tid: theOne.tid })
-                                ruleTiles.push(theOne)
-                            } else {
-                                reportEvent("tile.insert", { tid: theOne.tid })
-                                ruleTiles[index] = theOne
-                            }
-                        }
-                        tileUpdated()
+                        tileUpdated(theOne)
                     },
                     onDelete,
                 })
