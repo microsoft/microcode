@@ -1,6 +1,6 @@
 # Microsoft MicroCode [https://aka.ms/m9](https://aka.ms/m9) (beta)
 
-> MicroCode is still in **beta** development and might change in the future.
+> MicroCode is still in **beta** development and might change in the future. Post your suggestions or questions on the [forum](https://forum.makecode.com/c/60).
 
 Microsoft MicroCode is a tile-based language and editor for young coders on the [BBC micro:bit V2](https://microbit.org), inspired by [Kodu Game Lab](https://www.kodugamelab.com/). Microcode runs in the browser or directly on hardware with [Arcade-compatible devices](https://arcade.makecode.com/hardware/).
 

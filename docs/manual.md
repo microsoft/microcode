@@ -6,7 +6,7 @@ image: ./docs/images/generated/sample_smiley_buttons.png
 
 Physical computing for young coders on the [micro:bit V2](https://microbit.org).
 
-> MicroCode is still in **beta** development and might change in the future.
+> MicroCode is still in **beta** development and might change in the future. Post your suggestions or questions on the [forum](https://forum.makecode.com/c/60).
 
 -   Kid-friendly icon-based, live, structured code editor and [programming language](./language)
 
@@ -88,7 +88,7 @@ Click on the version number in the web app to download the MicroCode hex file to
 
 {% include youtube.html id="LWjJL9qegmM" %}
 
-## Acknoledgments
+## Acknowledgments
 
 -   [@loretod101](https://twitter.com/loretod101) on advising on accessibility features, including switch access support.
 -   [@BillSeiver](https://twitter.com/BillSiever) on feedback for tiles, including the `page start` tile
@@ -96,7 +96,7 @@ Click on the version number in the web app to download the MicroCode hex file to
 
 ## Contributing
 
--   Post your suggestions or questions at https://forum.makecode.com
+-   Post your suggestions or questions at [https://forum.makecode.com/c/60](https://forum.makecode.com/c/60).
 
 This project is open source and welcomes contributions and suggestions at https://github.com/microsoft/microcode.
 Read the [developer instructions](./develop.md).
