@@ -1,7 +1,25 @@
 namespace keymap {
     export const PLAYER_OFFSET = 7
-    export const A2 = new controller.Button(ControllerButton.A + PLAYER_OFFSET, undefined);
-    export const B2 = new controller.Button(ControllerButton.B + PLAYER_OFFSET, undefined);
+    export const Up2 = new controller.Button(
+        ControllerButton.Up + PLAYER_OFFSET,
+        undefined
+    )
+    export const Down2 = new controller.Button(
+        ControllerButton.Down + PLAYER_OFFSET,
+        undefined
+    )
+    export const Left2 = new controller.Button(
+        ControllerButton.Left + PLAYER_OFFSET,
+        undefined
+    )
+    export const Right2 = new controller.Button(
+        ControllerButton.Right + PLAYER_OFFSET,
+        undefined
+    )
+    export const A2 = new controller.Button(
+        ControllerButton.A + PLAYER_OFFSET,
+        undefined
+    )
 
     //% shim=keymap::_setPlayerKeys
     declare function _setPlayerKeys(
@@ -27,16 +45,43 @@ namespace keymap {
         )
         _setPlayerKeys(
             2,
-            keymap.KeyCode.One,
-            keymap.KeyCode.Two,
-            keymap.KeyCode.Three,
-            keymap.KeyCode.Four,
+            keymap.KeyCode.PageUp,
+            keymap.KeyCode.PageDown,
+            keymap.KeyCode.OpenBracket,
+            keymap.KeyCode.ClosedBracket,
             keymap.KeyCode.Space,
             keymap.KeyCode.Delete
         )
 
+        Up2.onEvent(ControllerButtonEvent.Pressed, () => {
+            control.raiseEvent(
+                ControllerButtonEvent.Pressed,
+                ControllerButton.Up + PLAYER_OFFSET
+            )
+        })
+        Down2.onEvent(ControllerButtonEvent.Pressed, () => {
+            control.raiseEvent(
+                ControllerButtonEvent.Pressed,
+                ControllerButton.Down + PLAYER_OFFSET
+            )
+        })
+        Left2.onEvent(ControllerButtonEvent.Pressed, () => {
+            control.raiseEvent(
+                ControllerButtonEvent.Pressed,
+                ControllerButton.Left + PLAYER_OFFSET
+            )
+        })
+        Right2.onEvent(ControllerButtonEvent.Pressed, () => {
+            control.raiseEvent(
+                ControllerButtonEvent.Pressed,
+                ControllerButton.Right + PLAYER_OFFSET
+            )
+        })
         A2.onEvent(ControllerButtonEvent.Pressed, () => {
-            control.raiseEvent(ControllerButtonEvent.Pressed, ControllerButton.A + PLAYER_OFFSET)
+            control.raiseEvent(
+                ControllerButtonEvent.Pressed,
+                ControllerButton.A + PLAYER_OFFSET
+            )
         })
     }
 

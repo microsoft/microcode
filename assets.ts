@@ -25,8 +25,6 @@ namespace microcode {
             this.reg["when_insertion_point"] = icondb.btn_when_insertion_point
             this.reg["do_insertion_point"] = icondb.btn_do_insertion_point
             this.reg["rule_arrow"] = icondb.rule_arrow
-            this.reg["next_page"] = icondb.btn_next_page
-            this.reg["prev_page"] = icondb.btn_prev_page
             this.reg["rule_handle"] = icondb.rule_handle
             this.reg["edit_program"] = icondb.largeEditIcon
             this.reg["new_program"] = icondb.largeNewProgramIcon
@@ -445,44 +443,6 @@ namespace icondb {
     d d d d . . . . . . . . . .
     d d d . . . . . . . . . . .
 `
-
-    export const btn_next_page = img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 1 1 . . . . . . . . 
-        . . . . . . 1 1 1 . . . . . . . 
-        . . . . . . c 1 1 1 . . . . . . 
-        . . . . . . . c 1 1 1 . . . . . 
-        . . . . . . . . c 1 1 1 . . . . 
-        . . . . . . . . 1 1 1 c . . . . 
-        . . . . . . . 1 1 1 c . . . . . 
-        . . . . . . 1 1 1 c . . . . . . 
-        . . . . . . 1 1 c . . . . . . . 
-        . . . . . . c c . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-    `
-
-    export const btn_prev_page = img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . 1 1 . . . . . . 
-        . . . . . . . 1 1 1 . . . . . . 
-        . . . . . . 1 1 1 c . . . . . . 
-        . . . . . 1 1 1 c . . . . . . . 
-        . . . . 1 1 1 c . . . . . . . . 
-        . . . . c 1 1 1 . . . . . . . . 
-        . . . . . c 1 1 1 . . . . . . . 
-        . . . . . . c 1 1 1 . . . . . . 
-        . . . . . . . c 1 1 . . . . . . 
-        . . . . . . . . c c . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-    `
 
     export const showScreen = img`
         . . . . . . . . . . . . . . . .

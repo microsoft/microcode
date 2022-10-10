@@ -227,23 +227,6 @@ namespace microcode {
                         this.app.pushScene(new Home(this.app))
                     }
                 )
-            const forward = () => this.cursor.click()
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.A.id,
-                forward
-            )
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.A.id + keymap.PLAYER_OFFSET,
-                forward
-            )
-
-            control.onEvent(
-                ControllerButtonEvent.Pressed,
-                controller.B.id,
-                () => this.back()
-            )
             this.hudroot = new Placeable()
             this.hudroot.xfrm.localPos = new Vec2(0, Screen.TOP_EDGE)
             this.hudroot.xfrm.tag = "hud"
@@ -272,6 +255,63 @@ namespace microcode {
                 this.app.saveSource(SAVESLOT_AUTO, samples(true)[1].source)
                 this.progdef = this.app.load(SAVESLOT_AUTO)
             }
+
+            this.configureP1Keys()
+            this.configureP2Keys()
+        }
+
+        private configureP1Keys() {
+            const forward = () => this.cursor.click()
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
+                controller.A.id,
+                forward
+            )
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
+                controller.A.id + keymap.PLAYER_OFFSET,
+                forward
+            )
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
+                controller.B.id,
+                () => this.back()
+            )
+        }
+
+        private configureP2Keys() {
+            // P2 bindings
+            const nextPage = () =>
+                this.switchToPage(
+                    (this.currPage + 1) % this.progdef.pages.length
+                )
+            const prevPage = () =>
+                this.switchToPage(
+                    (this.currPage + this.progdef.pages.length - 1) %
+                        this.progdef.pages.length
+                )
+            // page up, page down
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
+                ControllerButton.Up + keymap.PLAYER_OFFSET,
+                nextPage
+            )
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
+                ControllerButton.Down + keymap.PLAYER_OFFSET,
+                prevPage
+            )
+            // next, prev page
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
+                ControllerButton.Left + keymap.PLAYER_OFFSET,
+                prevPage
+            )
+            control.onEvent(
+                ControllerButtonEvent.Pressed,
+                ControllerButton.Right + keymap.PLAYER_OFFSET,
+                nextPage
+            )
         }
 
         back() {
@@ -287,6 +327,8 @@ namespace microcode {
                 }
             }
         }
+
+        private setupP2keys() {}
 
         protected handleClick(x: number, y: number) {
             const target = this.cursor.navigator.screenToButton(
