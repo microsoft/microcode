@@ -35,6 +35,8 @@ Once your micro:bit V2 is paired, the web editor will be able to download your
 MicroCode program to your micro:bit. This happens on every edit, so your program
 is always up-to-date (and running)!
 
+If you micro:bit disconnect, you will see a micro:bit icon show up on the upper left corner of the editor. Click on that button to reconnect again
+
 ### Accessibility
 
 We want to make the editor as accessible as possible; please send us suggestions to improve its accessibility.
@@ -48,6 +50,7 @@ MicroCode can be accessed with the keyboard:
 -   `Backspace` for `B` button
 -   Keep moving the cursor `Up` to go back a screen, if `Backspace` is not available;
     for example, if you are using a 5-input switch panel.
+-   Keep moving `Right` or `Left` to wrap around the user interface; for example, if you are using a 2-input switch panel.
 
 #### Gamepads
 
