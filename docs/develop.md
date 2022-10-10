@@ -89,8 +89,8 @@ Some art images are precomputed, you will need to load scripts/renderart.ts in M
 
 ## Updating sample
 
-- Browse to http://127.0.0.1:7001/index.html?compress=0
-- Once your sample is ready, copy the string after `#` and copy it into `samples.ts`
+-   Browse to http://127.0.0.1:7001/index.html?compress=0
+-   Once your sample is ready, copy the string after `#` and copy it into `samples.ts`
 
 ## Updating GitHub pages
 
@@ -101,6 +101,20 @@ sh ./bump.sh
 ```
 
 A GitHub Action will trigger and update the web site within a few minutes.
+
+To run Jekyll locally, run the Jekyll setup script
+
+```bash
+sh scripts/setup-jekyll.sh
+```
+
+then launch jekyll
+
+```bash
+jekyll serve
+```
+
+and nav to http://localhost:4000
 
 ## Re-building library
 
