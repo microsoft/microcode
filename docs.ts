@@ -108,6 +108,7 @@ namespace docs {
     function _renderProgram(): { [name: string]: Image } {
         const r: { [name: string]: Image } = {}
         const loader = new microcode.Editor(app)
+        loader.rendering = true
         app.pushScene(loader)
         loader.cursor.visible = false
 
@@ -131,6 +132,7 @@ namespace docs {
             loader.pageEditor.layout()
             microcode.Screen.setImageSize(pw, loader.pageHeight())
             const editor = new microcode.Editor(app)
+            editor.rendering = true
             app.pushScene(editor)
             editor.cursor.visible = false
             pause(500)

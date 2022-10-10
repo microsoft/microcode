@@ -908,15 +908,15 @@ namespace icondb {
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
-    . . . . f f f f f f f f d . . .
-    . . . f d 1 1 1 1 1 1 1 f d . .
-    . . f d . . . . . . . . 1 f d .
+    . . . . f f f f f f f f . . . .
+    . . . f d d d d d d d d f . . .
+    . . f d . . . . . . . . . f . .
+    . . f d f f . . . . f f . f d .
     . . f d f f d . . . f f d f d .
-    . . f d f f d . . . f f d f d .
-    . . f d . 1 1 . . . . 1 1 f d .
-    . . . f d . . . . . . . f d . .
-    . . . . f f f f f f f f d . . .
-    . . . . . 1 1 1 1 1 1 1 . . . .
+    . . f d . d d . . . . d d f d .
+    . . . f d . . . . . . . f d d .
+    . . . . f f f f f f f f d d . .
+    . . . . . d d d d d d d d . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .

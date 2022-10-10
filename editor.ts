@@ -46,6 +46,7 @@ namespace microcode {
         private scrollStartMs: number
         private scrollDest: Vec2
         public picker: Picker
+        public rendering = false
 
         constructor(app: App) {
             super(app, "editor")
@@ -446,7 +447,7 @@ namespace microcode {
                 this.drawNav()
             }
             this.picker.draw()
-            this.cursor.draw()
+            if (!this.rendering) this.cursor.draw()
         }
 
         private drawEditor() {
@@ -471,10 +472,14 @@ namespace microcode {
             control.enablePerfCounter()
             // if dot matrix is visible, then we're connected to some Jacdac bus
             // TODO: move cursor to next button when visible?
-            const wasVisible = this.connectBtn.visible()
-            this.connectBtn.setVisible(jdc.numServiceInstances(0x110d154b) == 0)
-            if (wasVisible !== this.connectBtn.visible()) this.changed()
-            if (this.connectBtn.visible()) this.connectBtn.draw()
+            if (!this.rendering) {
+                const wasVisible = this.connectBtn.visible()
+                this.connectBtn.setVisible(
+                    jdc.numServiceInstances(0x110d154b) == 0
+                )
+                if (wasVisible !== this.connectBtn.visible()) this.changed()
+                if (this.connectBtn.visible()) this.connectBtn.draw()
+            }
             this.pageBtn.draw()
         }
     }
