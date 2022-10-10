@@ -72,7 +72,12 @@ the gallery of samples.
 [![new program](./images/generated/icon_new_program.png){:class="icon-sample"}](./samples/first-program) [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"}](./samples/flashing-heart) [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"}](./samples/smiley-buttons) [![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"}](./samples/pet-hamster) [![Head or tails icon](./images/generated/icon_sample_head_or_tail.png){:class="icon-sample"}](./samples/head-or-tail) [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"}](./samples/rock-paper-scissors) [![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"}](./samples/hot-potato) [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"}](./samples/clap-lights) [![reaction time](./images/generated/icon_reaction_time.png){:class="icon-sample"}](./samples/reaction-time)
 [![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"}](./samples/chuck-a-duck) [![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon-sample"}](./samples/firefly) [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon-sample"}](./samples/railroad-crossing)
 
-![MicroCode sample programs](./images/microCodeVideo.gif){:class="screenshot"}
+## Accessories
+
+MicroCode supports Jacdac modules to extend the micro:bit device with LEDs, servos, motors, ...
+In this video, we launch an LED animation when a clap is detected.
+
+<video class="sample" poster="./videos/jacdac-led.png" src="./videos/jacdac-led.mp4" controls="true"></video>
 
 ## micro:bit V2 and Arcade Shield
 
