@@ -790,6 +790,9 @@ namespace microcode {
             )
         }
 
+private deleteIcompatibleTiles(name: string, index: number) {
+        }
+
         private editTile(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
             const tileUpdated = (tile: TileDefn) => {
@@ -800,12 +803,18 @@ namespace microcode {
                     } else {
                         reportEvent("tile.update", { tid: tile.tid })
                         ruleTiles[index] = tile
-                        // TODO check for compatibility of following tiles
+                        if (name == "sensors")
+                            this.deleteIcompatibleTiles("filters",0)
+                        else if (name == "actuators")
+                            this.deleteIcompatibleTiles("modifiers",0)
+                        else
+                            this.deleteIcompatibleTiles(name, index +1)
                     }
                 } else {
                     ruleTiles.splice(index, 1)
                     reportEvent("tile.delete")
-                    // TODO check for compatibility of following tiles
+                    if (name == "filters" || name == "modifiers")
+                        this.deleteIcompatibleTiles(name, index)
                 }
                 Language.ensureValid(this.ruledef)
                 this.editor.saveAndCompileProgram()
