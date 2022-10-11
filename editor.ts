@@ -824,16 +824,15 @@ namespace microcode {
         private deleteIcompatibleTiles(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
 
-            while(index < ruleTiles.length) {
-                 const suggestions = this.getSuggestions(name, index)
-                 const compatible = suggestions.indexOf(t => t.tid == ruleTiles[index].tid) >= 0
+            while (index < ruleTiles.length) {
+                const suggestions = this.getSuggestions(name, index)
+                const compatible = suggestions.indexOf(t => t.tid == ruleTiles[index].tid) >= 0
 
-  if (compatible) index++
-  else
-     ruleTiles.splice(index, ruleTiles.length-index)
-}
-
-}
+                if (compatible) index++
+                else
+                    ruleTiles.splice(index, ruleTiles.length - index)
+            }
+        }
 
         private editTile(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
