@@ -531,11 +531,14 @@ addSimMessageHandler("accessibility", data => {
     }
     setLiveRegion(value, force)
 })
-const clickSound = new Howl({
-    src: ["./assets/sounds/click.wav", "./sounds/click.wav"],
-})
+const clickSound =
+    typeof Howl !== "undefined"
+        ? new Howl({
+              src: ["./assets/sounds/click.wav", "./sounds/click.wav"],
+          })
+        : undefined
 async function playClick() {
-    if (speakTooltips) return
+    if (speakTooltips || !clickSound) return
     try {
         clickSound.stop()
         clickSound.play()
