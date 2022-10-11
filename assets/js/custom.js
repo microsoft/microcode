@@ -453,12 +453,18 @@ const liveStrings = {
     A21_: "servo set angle",
 }
 
+const supportedLanguages = ["fr"]
 // load localized strings
 async function loadTranslations() {
     const url = new URL(window.location.href)
-    const lang = url.searchParams.get("lang") || navigator.language
-    const neutral = lang.split("-", 1)[0]
+    const lang = (
+        url.searchParams.get("lang") ||
+        navigator.language ||
+        "en"
+    ).toLocaleLowerCase()
+    const neutral = lang.split("-", 1)[0] || ""
     if (/^en/.test(lang)) return // default language
+    if (!supportedLanguages[lang] && !supportedTanguages[neutral]) return // not supported
 
     let translations
     const resp = await fetch(`./locales/${lang}/strings.json`)
