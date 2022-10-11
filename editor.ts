@@ -164,6 +164,11 @@ namespace microcode {
             } catch (e) {
                 if (dir === CursorDir.Up && e.kind === BACK_BUTTON_ERROR_KIND) {
                     if (!skipBack) this.back()
+                } else if (
+                    dir == CursorDir.Down &&
+                    e.kind == FORWARD_BUTTON_ERROR_KIND
+                ) {
+                    if (!skipBack) this.forward()
                 } else throw e
             }
         }
@@ -296,8 +301,12 @@ namespace microcode {
             )
         }
 
-        private nextPage() {
-            this.switchToPage((this.currPage + 1) % this.progdef.pages.length)
+        private nextPage(startRow = 1, startCol = 1) {
+            this.switchToPage(
+                (this.currPage + 1) % this.progdef.pages.length,
+                startRow,
+                startCol
+            )
         }
 
         private prevPage(startRow = 1, startCol = 1) {
@@ -352,6 +361,10 @@ namespace microcode {
                     } else this.scrollAndMove(CursorDir.Back)
                 }
             }
+        }
+
+        forward() {
+            if (!this.picker.visible) this.nextPage(0, -1)
         }
 
         protected handleClick(x: number, y: number) {

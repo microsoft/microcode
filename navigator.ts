@@ -10,10 +10,11 @@ namespace microcode {
     }
 
     export const BACK_BUTTON_ERROR_KIND = "back_button"
-    export class BackButtonError {
+    export const FORWARD_BUTTON_ERROR_KIND = "forward_button"
+    export class NavigationError {
         kind: string
-        constructor() {
-            this.kind = BACK_BUTTON_ERROR_KIND
+        constructor(kind: string) {
+            this.kind = kind
         }
     }
 
@@ -72,7 +73,8 @@ namespace microcode {
             this.makeGood()
             switch (dir) {
                 case CursorDir.Up: {
-                    if (this.row == 0) throw new BackButtonError()
+                    if (this.row == 0)
+                        throw new NavigationError(BACK_BUTTON_ERROR_KIND)
                     this.row--
                     // because the column in new row may be out of bounds
                     this.makeGood()
@@ -81,7 +83,7 @@ namespace microcode {
 
                 case CursorDir.Down: {
                     if (this.row == this.buttonGroups.length - 1)
-                        return undefined
+                        throw new NavigationError(FORWARD_BUTTON_ERROR_KIND)
                     this.row++
                     // because the column in new row may be out of bounds
                     this.makeGood()
@@ -360,7 +362,7 @@ namespace microcode {
                                 btn = prevRow[prevRow.length - 1]
                             }
                         } else {
-                            throw new BackButtonError()
+                            throw new NavigationError(BACK_BUTTON_ERROR_KIND)
                         }
                         break
                     }

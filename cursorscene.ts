@@ -15,6 +15,11 @@ namespace microcode {
             } catch (e) {
                 if (dir === CursorDir.Up && e.kind === BACK_BUTTON_ERROR_KIND)
                     this.back()
+                else if (
+                    dir === CursorDir.Down &&
+                    e.kind === FORWARD_BUTTON_ERROR_KIND
+                )
+                    return
                 else throw e
             }
         }
@@ -80,7 +85,10 @@ namespace microcode {
         }
 
         protected handleClick(x: number, y: number) {
-            const target = this.navigator.screenToButton(x - Screen.HALF_WIDTH, y - Screen.HALF_HEIGHT)
+            const target = this.navigator.screenToButton(
+                x - Screen.HALF_WIDTH,
+                y - Screen.HALF_HEIGHT
+            )
             if (target) {
                 this.moveTo(target)
                 target.click()
@@ -88,7 +96,10 @@ namespace microcode {
         }
 
         protected handleMove(x: number, y: number) {
-            const target = this.navigator.screenToButton(x - Screen.HALF_WIDTH, y - Screen.HALF_HEIGHT)
+            const target = this.navigator.screenToButton(
+                x - Screen.HALF_WIDTH,
+                y - Screen.HALF_HEIGHT
+            )
             if (target)
                 this.cursor.setAriaContent(target.ariaId, target.xfrm.worldPos)
         }
