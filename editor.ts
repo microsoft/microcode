@@ -26,7 +26,7 @@ namespace microcode {
     const TOOLBAR_HEIGHT = 17
     const TOOLBAR_MARGIN = 2
 
-    //% shim=TD_NOOPh editedAdded = true
+    //% shim=TD_NOOP
     function connectJacdac() {
         const buf = Buffer.fromUTF8(JSON.stringify({ type: "connect" }))
         control.simmessages.send("usb", buf)
