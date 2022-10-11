@@ -821,7 +821,7 @@ namespace microcode {
             )
         }
 
-        private deleteIcompatibleTiles(name: string, index: number) {
+        private deleteIncompatibleTiles(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
 
             while (index < ruleTiles.length) {
@@ -845,11 +845,11 @@ namespace microcode {
                         reportEvent("tile.update", { tid: tile.tid })
                         ruleTiles[index] = tile
                         if (name == "sensors")
-                            this.deleteIcompatibleTiles("filters",0)
+                            this.deleteIncompatibleTiles("filters",0)
                         else if (name == "actuators")
-                            this.deleteIcompatibleTiles("modifiers",0)
+                            this.deleteIncompatibleTiles("modifiers",0)
                         else
-                            this.deleteIcompatibleTiles(name, index +1)
+                            this.deleteIncompatibleTiles(name, index +1)
                     }
                 } else {
                     ruleTiles.splice(index, 1)
