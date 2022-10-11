@@ -18,9 +18,12 @@ Physical computing for young coders and coders with disabilities on the [micro:b
 
 ## [Web editor](https://aka.ms/m9) {#web}
 
-The MicroCode web editor is at [aka.ms/m9](https://aka.ms/m9). We recommend using the keyboard navigation.
+The MicroCode web editor is at [aka.ms/m9](https://aka.ms/m9). We recommend using the keyboard navigation. MicroCode is designed to be friendly to switch access devices.
 
--   Arrow keys for D-pad
+-   `Left`, `Right`, `Up`, `Down` moves the cursor
+    -   the `Left` and `Right` keys will wrap around in the editor on the **same** page
+    -   the `Up` key on top of the screen will act as `back`. It will go back the pages until page 1 is in focus, then pressing up will go back to the start screen.
+    -   the `Down` key will wrap around the pages
 -   `Enter` or `Space` for `A` button
 -   `Backspace` for `B` button
 -   `]` or `Page Up` to go to the next page, `[` or `Page Down` to go to the previous page
