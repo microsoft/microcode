@@ -115,7 +115,7 @@ namespace microcode {
             })
         }
 
-        public switchToPage(index: number) {
+        public switchToPage(index: number, startRow = 1, startCol = 1) {
             if (index < 0 || index >= this.progdef.pages.length) {
                 return
             }
@@ -134,7 +134,7 @@ namespace microcode {
                 Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2
             )
             this.rebuildNavigator()
-            this.snapCursorTo(this.navigator.initialCursor(1, 1))
+            this.snapCursorTo(this.navigator.initialCursor(startRow, startCol))
         }
 
         public snapCursorTo(btn: Button) {
@@ -164,6 +164,11 @@ namespace microcode {
             } catch (e) {
                 if (dir === CursorDir.Up && e.kind === BACK_BUTTON_ERROR_KIND) {
                     if (!skipBack) this.back()
+                } else if (
+                    dir == CursorDir.Down &&
+                    e.kind == FORWARD_BUTTON_ERROR_KIND
+                ) {
+                    if (!skipBack) this.forward()
                 } else throw e
             }
         }
@@ -296,6 +301,23 @@ namespace microcode {
             )
         }
 
+        private nextPage(startRow = 1, startCol = 1) {
+            this.switchToPage(
+                (this.currPage + 1) % this.progdef.pages.length,
+                startRow,
+                startCol
+            )
+        }
+
+        private prevPage(startRow = 1, startCol = 1) {
+            this.switchToPage(
+                (this.currPage + this.progdef.pages.length - 1) %
+                    this.progdef.pages.length,
+                startRow,
+                startCol
+            )
+        }
+
         private configureP2Keys() {
             // P2 bindings
             const nextPage = () =>
@@ -334,8 +356,12 @@ namespace microcode {
         back() {
             if (!this.cursor.cancel()) {
                 if (this.navigator.getRow() == 0) {
-                    this.app.popScene()
-                    this.app.pushScene(new Home(this.app))
+                    if (this.currPage > 0) {
+                        this.prevPage(0, -1)
+                    } else {
+                        this.app.popScene()
+                        this.app.pushScene(new Home(this.app))
+                    }
                 } else {
                     if (this.navigator.atRuleStart()) {
                         const target = this.navigator.initialCursor(0, 0)
@@ -344,9 +370,11 @@ namespace microcode {
                 }
             }
         }
+        
+        forward() {
+            if (!this.picker.visible) this.nextPage(0, -1)
+        }
 
-        private setupP2keys() { }
-  
         protected handleClick(x: number, y: number) {
             const target = this.cursor.navigator.screenToButton(
                 x - Screen.HALF_WIDTH,
