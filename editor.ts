@@ -854,9 +854,9 @@ namespace microcode {
 
             while (index < ruleTiles.length) {
                 const suggestions = this.getSuggestions(name, index)
-                const compatible = suggestions.indexOf(t => t.tid == ruleTiles[index].tid) >= 0
+                const compatible = suggestions.find(t => t.tid == ruleTiles[index].tid)
 
-                if (compatible) index++
+                if (compatible.length) index++
                 else
                     ruleTiles.splice(index, ruleTiles.length - index)
             }
