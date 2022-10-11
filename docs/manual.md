@@ -4,9 +4,9 @@ image: ./docs/images/generated/sample_smiley_buttons.png
 
 # [Microsoft MicroCode](https://aka.ms/m9) for micro:bit (beta)
 
-Physical computing for young coders on the [micro:bit V2](https://microbit.org).
+Physical computing for young coders and coders with disabilities on the [micro:bit V2](https://microbit.org).
 
-> MicroCode is still in **beta** development and might change in the future.
+> MicroCode is still in **beta** development and might change in the future. Post your suggestions or questions on the [forum](https://forum.makecode.com/c/60).
 
 -   Kid-friendly icon-based, live, structured code editor and [programming language](./language)
 
@@ -35,6 +35,8 @@ Once your micro:bit V2 is paired, the web editor will be able to download your
 MicroCode program to your micro:bit. This happens on every edit, so your program
 is always up-to-date (and running)!
 
+If you micro:bit disconnect, you will see a micro:bit icon show up on the upper left corner of the editor. Click on that button to reconnect again
+
 ### Accessibility
 
 We want to make the editor as accessible as possible; please send us suggestions to improve its accessibility.
@@ -48,6 +50,7 @@ MicroCode can be accessed with the keyboard:
 -   `Backspace` for `B` button
 -   Keep moving the cursor `Up` to go back a screen, if `Backspace` is not available;
     for example, if you are using a 5-input switch panel.
+-   Keep moving `Right` or `Left` to wrap around the user interface; for example, if you are using a 2-input switch panel.
 
 #### Gamepads
 
@@ -69,7 +72,12 @@ the gallery of samples.
 [![new program](./images/generated/icon_new_program.png){:class="icon-sample"}](./samples/first-program) [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"}](./samples/flashing-heart) [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"}](./samples/smiley-buttons) [![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"}](./samples/pet-hamster) [![Head or tails icon](./images/generated/icon_sample_head_or_tail.png){:class="icon-sample"}](./samples/head-or-tail) [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"}](./samples/rock-paper-scissors) [![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"}](./samples/hot-potato) [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"}](./samples/clap-lights) [![reaction time](./images/generated/icon_reaction_time.png){:class="icon-sample"}](./samples/reaction-time)
 [![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"}](./samples/chuck-a-duck) [![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon-sample"}](./samples/firefly) [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon-sample"}](./samples/railroad-crossing)
 
-![MicroCode sample programs](./images/microCodeVideo.gif){:class="screenshot"}
+## Accessories
+
+MicroCode supports Jacdac modules to extend the micro:bit device with LEDs, servos, motors, ...
+In this video, we launch an LED animation when a clap is detected.
+
+<video class="sample" poster="./videos/jacdac-led.png" src="./videos/jacdac-led.mp4" controls="true"></video>
 
 ## micro:bit V2 and Arcade Shield
 
@@ -85,7 +93,7 @@ Click on the version number in the web app to download the MicroCode hex file to
 
 {% include youtube.html id="LWjJL9qegmM" %}
 
-## Acknoledgments
+## Acknowledgments
 
 -   [@loretod101](https://twitter.com/loretod101) on advising on accessibility features, including switch access support.
 -   [@BillSeiver](https://twitter.com/BillSiever) on feedback for tiles, including the `page start` tile
@@ -93,7 +101,7 @@ Click on the version number in the web app to download the MicroCode hex file to
 
 ## Contributing
 
--   Post your suggestions or questions at https://forum.makecode.com
+-   Post your suggestions or questions at [https://forum.makecode.com/c/60](https://forum.makecode.com/c/60).
 
 This project is open source and welcomes contributions and suggestions at https://github.com/microsoft/microcode.
 Read the [developer instructions](./develop.md).

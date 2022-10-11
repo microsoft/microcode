@@ -303,6 +303,14 @@ function stringToUint8Array(str) {
     return encoder.encode(str)
 }
 
+addSimMessageHandler("usb", async data => {
+    const msg = JSON.parse(uint8ArrayToString(data))
+    if (msg.type === "connect") {
+        console.debug(`jacdac: usb connect`)
+        bus.connect()
+    }
+})
+
 let liveRegion
 // keep in sync with en-US.json
 const liveStrings = {
@@ -311,6 +319,7 @@ const liveStrings = {
 
     when: "when empty tile",
     do: "do empty tile",
+    connect: "connect to micro:bit",
 
     delete_tile: "delete tile",
 

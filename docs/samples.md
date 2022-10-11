@@ -37,6 +37,7 @@ micro:bits.
 
 -   [![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon"} chuck a duck](./samples/chuck-a-duck)
 -   [![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon"} firefly](./samples/firefly)
+-   [zombie detector](./samples/zombie-detector)
 
 ## Accessories
 
@@ -44,3 +45,4 @@ These sample use [Jacdac](https://aka.ms/jacdac) module
 to extend the micro:bit with LEDs, servos and other accessories.
 
 -   [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon"} railroad crossing](./samples/railroad-crossing)
+-   [inchworm robot](./samples/inchworm)

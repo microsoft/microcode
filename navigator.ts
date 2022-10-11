@@ -92,8 +92,10 @@ namespace microcode {
                     if (this.col == 0) {
                         if (this.row > 0) {
                             this.row--
-                            this.col = this.buttonGroups[this.row].length - 1
-                        } else return undefined
+                        } else {
+                            this.row = this.buttonGroups.length - 1
+                        }
+                        this.col = this.buttonGroups[this.row].length - 1
                     } else this.col--
                     break
                 }
@@ -102,8 +104,10 @@ namespace microcode {
                     if (this.col == this.buttonGroups[this.row].length - 1) {
                         if (this.row < this.buttonGroups.length - 1) {
                             this.row++
-                            this.col = -1
-                        } else return undefined
+                        } else {
+                            this.row = 0
+                        }
+                        this.col = -1
                     }
                     this.col++
                     break
@@ -372,6 +376,12 @@ namespace microcode {
                         else if (row > 0) {
                             const prevRow = this.sortedButtons[row - 1]
                             btn = prevRow[prevRow.length - 1]
+                        } else {
+                            const prevRow =
+                                this.sortedButtons[
+                                    this.sortedButtons.length - 1
+                                ]
+                            btn = prevRow[prevRow.length - 1]
                         }
                         break
                     }
@@ -380,6 +390,9 @@ namespace microcode {
                             btn = this.sortedButtons[row][col + 1]
                         else if (row < this.sortedButtons.length - 1) {
                             const nextRow = this.sortedButtons[row + 1]
+                            btn = nextRow[0]
+                        } else {
+                            const nextRow = this.sortedButtons[0]
                             btn = nextRow[0]
                         }
                         break

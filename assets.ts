@@ -903,6 +903,25 @@ namespace icondb {
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
 `
+    export const microbit_logo_btn = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . f f f f f f f f . . . .
+    . . . f d d d d d d d d f . . .
+    . . f d . . . . . . . . . f . .
+    . . f d f f . . . . f f . f d .
+    . . f d f f d . . . f f d f d .
+    . . f d . d d . . . . d d f d .
+    . . . f d . . . . . . . f d d .
+    . . . . f f f f f f f f d d . .
+    . . . . . d d d d d d d d . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+
     export const finger_press = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . f . . . . . . . .

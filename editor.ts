@@ -26,10 +26,17 @@ namespace microcode {
     const TOOLBAR_HEIGHT = 17
     const TOOLBAR_MARGIN = 2
 
+    //% shim=TD_NOOP
+    function connectJacdac() {
+        const buf = Buffer.fromUTF8(JSON.stringify({ type: "connect" }))
+        control.simmessages.send("usb", buf)
+    }
+
     export class Editor extends Scene {
         navigator: RuleRowNavigator
         private progdef: ProgramDefn
         private currPage: number
+        private connectBtn: Button
         private pageBtn: Button
         public pageEditor: PageEditor
         public cursor: Cursor
@@ -39,6 +46,7 @@ namespace microcode {
         private scrollStartMs: number
         private scrollDest: Vec2
         public picker: Picker
+        public rendering = false
 
         constructor(app: App) {
             super(app, "editor")
@@ -240,6 +248,15 @@ namespace microcode {
             this.cursor = new Cursor()
             this.picker = new Picker(this.cursor)
             this.currPage = 0
+            this.connectBtn = new EditorButton(this, {
+                parent: this.hudroot,
+                style: ButtonStyles.BorderedPurple,
+                icon: icondb.microbit_logo_btn,
+                ariaId: "connect",
+                x: Screen.LEFT_EDGE + 12,
+                y: 8,
+                onClick: () => connectJacdac(),
+            })
             this.pageBtn = new EditorButton(this, {
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
@@ -329,7 +346,7 @@ namespace microcode {
         }
 
         private setupP2keys() { }
-
+  
         protected handleClick(x: number, y: number) {
             const target = this.cursor.navigator.screenToButton(
                 x - Screen.HALF_WIDTH,
@@ -386,7 +403,11 @@ namespace microcode {
                 this.navigator.clear()
             } else this.navigator = new RuleRowNavigator()
 
-            this.navigator.addButtons([this.pageBtn])
+            this.navigator.addButtons(
+                this.connectBtn.visible()
+                    ? [this.connectBtn, this.pageBtn]
+                    : [this.pageBtn]
+            )
 
             this.pageEditor.addToNavigator()
 
@@ -425,10 +446,10 @@ namespace microcode {
             if (!this.backgroundCaptured) {
                 this.drawBackground()
                 this.drawEditor()
-                this.drawPageNavigation()
+                this.drawNav()
             }
             this.picker.draw()
-            this.cursor.draw()
+            if (!this.rendering) this.cursor.draw()
         }
 
         private drawEditor() {
@@ -449,8 +470,18 @@ namespace microcode {
             }
         }
 
-        private drawPageNavigation() {
+        private drawNav() {
             control.enablePerfCounter()
+            // if dot matrix is visible, then we're connected to some Jacdac bus
+            // TODO: move cursor to next button when visible?
+            if (!this.rendering) {
+                const wasVisible = this.connectBtn.visible()
+                this.connectBtn.setVisible(
+                    jdc.numServiceInstances(0x110d154b) == 0
+                )
+                if (wasVisible !== this.connectBtn.visible()) this.changed()
+                if (this.connectBtn.visible()) this.connectBtn.draw()
+            }
             this.pageBtn.draw()
         }
     }
