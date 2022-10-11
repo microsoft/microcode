@@ -26,8 +26,7 @@ namespace microcode {
     const TOOLBAR_HEIGHT = 17
     const TOOLBAR_MARGIN = 2
 
-
-    //% shim=TD_NOOP
+    //% shim=TD_NOOPh editedAdded = true
     function connectJacdac() {
         const buf = Buffer.fromUTF8(JSON.stringify({ type: "connect" }))
         control.simmessages.send("usb", buf)
@@ -866,6 +865,7 @@ namespace microcode {
         private editTile(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
             const tileUpdated = (tile: TileDefn) => {
+                const editedAdded = !!tile
                 if (tile) {
                     if (index >= ruleTiles.length) {
                         reportEvent("tile.add", { tid: tile.tid })
