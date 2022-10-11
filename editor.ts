@@ -855,7 +855,7 @@ namespace microcode {
                     ruleTiles.splice(index, 1)
                     reportEvent("tile.delete")
                     if (name == "filters" || name == "modifiers")
-                        this.deleteIcompatibleTiles(name, index)
+                        this.deleteIncompatibleTiles(name, index)
                 }
                 Language.ensureValid(this.ruledef)
                 this.editor.saveAndCompileProgram()
