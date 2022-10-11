@@ -965,10 +965,10 @@ namespace microcode {
                                     ? ruleTiles[index - 1] // field editor (should really check they are the same)
                                     : theOne
                             newFieldEditor(theOne)
-                        } else {
-                            tileUpdated(theOne)
-                        },
-                        onDelete,
+                        }
+                        tileUpdated(theOne)
+                    },
+                    onDelete,
                 })
             }
             return
