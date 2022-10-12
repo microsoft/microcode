@@ -321,15 +321,8 @@ namespace microcode {
 
         private configureP2Keys() {
             // P2 bindings
-            const nextPage = () =>
-                this.switchToPage(
-                    (this.currPage + 1) % this.progdef.pages.length
-                )
-            const prevPage = () =>
-                this.switchToPage(
-                    (this.currPage + this.progdef.pages.length - 1) %
-                        this.progdef.pages.length
-                )
+            const nextPage = () => this.nextPage()
+            const prevPage = () => this.prevPage()
             // page up, page down
             control.onEvent(
                 ControllerButtonEvent.Pressed,
