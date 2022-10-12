@@ -1,5 +1,5 @@
 namespace microcode {
-    class EditorButton extends Button {
+    export class EditorButton extends Button {
         constructor(
             private editor: Editor,
             opts: {
@@ -508,7 +508,7 @@ namespace microcode {
         }
     }
 
-    class PageEditor extends Component implements IPlaceable {
+    export class PageEditor extends Component implements IPlaceable {
         private xfrm_: Affine
         public ruleEditors: RuleEditor[]
 
