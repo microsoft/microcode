@@ -159,7 +159,7 @@ namespace microcode {
                     group.buttons.push(button)
                 })
             })
-            this.layout(selected)
+            this.layout(opts.selected)
             this.visible = true
         }
 
