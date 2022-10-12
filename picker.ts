@@ -120,6 +120,7 @@ namespace microcode {
                 onHide?: () => void
                 onDelete?: () => void
                 navigator?: () => INavigator
+                selected?: number
             },
             hideOnClick: boolean = true
         ) {
@@ -158,7 +159,7 @@ namespace microcode {
                     group.buttons.push(button)
                 })
             })
-            this.layout()
+            this.layout(selected)
             this.visible = true
         }
 
@@ -196,7 +197,7 @@ namespace microcode {
             if (this.deleteBtn) this.deleteBtn.draw()
         }
 
-        private layout() {
+        private layout(selected: number) {
             this.panel = new Bounds()
             const padding = 2
             let top = padding
@@ -231,7 +232,8 @@ namespace microcode {
             this.xfrm.localPos.x = padding - (this.panel.width >> 1)
             this.xfrm.localPos.y = padding - (this.panel.height >> 1)
 
-            const btn = this.navigator.initialCursor(this.deleteBtn ? 1 : 0, 0)
+            if (selected === undefined) selected = 0
+            const btn = this.navigator.initialCursor(this.deleteBtn ? 1 : 0, selected)
             this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
         }
     }
