@@ -320,6 +320,7 @@ namespace microcode {
         }
 
         private configureP2Keys() {
+            // P2 bindings
             const nextPage = () => this.nextPage()
             const prevPage = () => this.prevPage()
             // page up, page down
@@ -842,9 +843,43 @@ namespace microcode {
             )
         }
 
+        private deleteIncompatibleTiles(name: string, index: number) {
+            const ruleTiles = this.ruledef.getRuleRep()[name]
+
+            while (index < ruleTiles.length) {
+                const suggestions = this.getSuggestions(name, index)
+                const compatible = suggestions.find(
+                    t => t.tid == ruleTiles[index].tid
+                )
+
+                if (compatible) index++
+                else ruleTiles.splice(index, ruleTiles.length - index)
+            }
+        }
+
         private editTile(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
-            const tileUpdated = (editedAdded: boolean = true) => {
+            const tileUpdated = (tile: TileDefn) => {
+                const editedAdded = !!tile
+                if (tile) {
+                    if (index >= ruleTiles.length) {
+                        reportEvent("tile.add", { tid: tile.tid })
+                        ruleTiles.push(tile)
+                    } else {
+                        reportEvent("tile.update", { tid: tile.tid })
+                        ruleTiles[index] = tile
+                        if (name == "sensors")
+                            this.deleteIncompatibleTiles("filters", 0)
+                        else if (name == "actuators")
+                            this.deleteIncompatibleTiles("modifiers", 0)
+                        else this.deleteIncompatibleTiles(name, index + 1)
+                    }
+                } else {
+                    ruleTiles.splice(index, 1)
+                    reportEvent("tile.delete")
+                    if (name == "filters" || name == "modifiers")
+                        this.deleteIncompatibleTiles(name, index)
+                }
                 Language.ensureValid(this.ruledef)
                 this.editor.saveAndCompileProgram()
                 this.instantiateProgramTiles()
@@ -863,12 +898,8 @@ namespace microcode {
                     this.editor.picker,
                     () => {
                         this.editor.releaseBackground()
-                        if (index >= ruleTiles.length) {
-                            ruleTiles.push(newOne)
-                        } else {
-                            ruleTiles[index] = newOne
-                        }
-                        tileUpdated()
+
+                        tileUpdated(newOne)
                     }
                 )
             }
@@ -882,12 +913,12 @@ namespace microcode {
                         this.editor.picker,
                         () => {
                             this.editor.releaseBackground()
-                            tileUpdated()
+                            tileUpdated(theOne)
                         },
                         () => {
                             this.editor.releaseBackground()
-                            ruleTiles.splice(index, 1)
-                            tileUpdated(false)
+
+                            tileUpdated(undefined)
                         }
                     )
                     return
@@ -911,9 +942,7 @@ namespace microcode {
             let onDelete = undefined
             if (index < ruleTiles.length) {
                 onDelete = () => {
-                    reportEvent("tile.delete")
-                    ruleTiles.splice(index, 1)
-                    tileUpdated(false)
+                    tileUpdated(undefined)
                 }
             }
             if (btns.length) {
@@ -930,16 +959,8 @@ namespace microcode {
                                     ? ruleTiles[index - 1] // field editor (should really check they are the same)
                                     : theOne
                             newFieldEditor(theOne)
-                        } else {
-                            if (index >= ruleTiles.length) {
-                                reportEvent("tile.add", { tid: theOne.tid })
-                                ruleTiles.push(theOne)
-                            } else {
-                                reportEvent("tile.insert", { tid: theOne.tid })
-                                ruleTiles[index] = theOne
-                            }
                         }
-                        tileUpdated()
+                        tileUpdated(theOne)
                     },
                     onDelete,
                 })
