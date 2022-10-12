@@ -62,7 +62,7 @@ namespace microcode {
             return this.progdef.pages
                 .map((p, i) =>
                     p.rules.length > 1 ||
-                        (p.rules.length === 1 && !p.rules[0].isEmpty())
+                    (p.rules.length === 1 && !p.rules[0].isEmpty())
                         ? i
                         : -1
                 )
@@ -328,7 +328,7 @@ namespace microcode {
             const prevPage = () =>
                 this.switchToPage(
                     (this.currPage + this.progdef.pages.length - 1) %
-                    this.progdef.pages.length
+                        this.progdef.pages.length
                 )
             // page up, page down
             control.onEvent(
@@ -371,7 +371,7 @@ namespace microcode {
                 }
             }
         }
-        
+
         forward() {
             if (!this.picker.visible) this.nextPage(0, -1)
         }
@@ -855,11 +855,12 @@ namespace microcode {
 
             while (index < ruleTiles.length) {
                 const suggestions = this.getSuggestions(name, index)
-                const compatible = suggestions.find(t => t.tid == ruleTiles[index].tid)
+                const compatible = suggestions.find(
+                    t => t.tid == ruleTiles[index].tid
+                )
 
                 if (compatible) index++
-                else
-                    ruleTiles.splice(index, ruleTiles.length - index)
+                else ruleTiles.splice(index, ruleTiles.length - index)
             }
         }
 
@@ -875,11 +876,10 @@ namespace microcode {
                         reportEvent("tile.update", { tid: tile.tid })
                         ruleTiles[index] = tile
                         if (name == "sensors")
-                            this.deleteIncompatibleTiles("filters",0)
+                            this.deleteIncompatibleTiles("filters", 0)
                         else if (name == "actuators")
-                            this.deleteIncompatibleTiles("modifiers",0)
-                        else
-                            this.deleteIncompatibleTiles(name, index +1)
+                            this.deleteIncompatibleTiles("modifiers", 0)
+                        else this.deleteIncompatibleTiles(name, index + 1)
                     }
                 } else {
                     ruleTiles.splice(index, 1)
@@ -1154,6 +1154,3 @@ namespace microcode {
         }
     }
 }
-
-
-
