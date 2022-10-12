@@ -291,10 +291,12 @@ namespace microcode {
                 return
             }
             let onDelete = undefined
+            let selected = undefined
             if (index < ruleTiles.length) {
                 onDelete = () => {
                     tileUpdated(undefined)
                 }
+                selected = index
             }
             if (btns.length) {
                 this.editor.picker.addGroup({ btns })
@@ -314,6 +316,7 @@ namespace microcode {
                         tileUpdated(theOne)
                     },
                     onDelete,
+                    selected
                 })
             }
             return
