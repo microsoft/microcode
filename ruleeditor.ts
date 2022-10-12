@@ -296,7 +296,7 @@ namespace microcode {
                 onDelete = () => {
                     tileUpdated(undefined)
                 }
-                selected = btns.indexOf(btns.find(b => b.iconId === ruleTiles[index].tid))
+                selected = btns.indexOf(btns.find(b => b.icon === ruleTiles[index].tid))
             }
             if (btns.length) {
                 this.editor.picker.addGroup({ btns })
