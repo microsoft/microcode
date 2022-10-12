@@ -1,4 +1,4 @@
-# Microsoft MicroCode [https://aka.ms/m9](https://aka.ms/m9) (beta)
+# Microsoft MicroCode [https://aka.ms/m9](https://aka.ms/m9)
 
 > MicroCode is still in **beta** development and might change in the future. Post your suggestions or questions on the [forum](https://forum.makecode.com/c/60).
 
