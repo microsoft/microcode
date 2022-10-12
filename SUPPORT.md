@@ -10,4 +10,4 @@ For help and questions about using this project, please use [MakeCode forums](ht
 
 ## Microsoft Support Policy
 
-Support for MicrocCde is limited to the resources listed above.
+Support for MicroCode is limited to the resources listed above.
