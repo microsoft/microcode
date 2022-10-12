@@ -133,6 +133,7 @@ namespace microcode {
                 Screen.LEFT_EDGE,
                 Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2
             )
+            this.scrollDest.copyFrom(this.scrollroot.xfrm.localPos)
             this.rebuildNavigator()
             this.snapCursorTo(this.navigator.initialCursor(startRow, startCol))
         }
