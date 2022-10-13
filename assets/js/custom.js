@@ -328,14 +328,8 @@ async function loadTranslations() {
 
     console.debug(`loading translations for ${lang}`)
     // load en language strings
-    tooltipStrings = await (
-        await fetch(
-            `./locales/tooltips.json?v=${document.body.dataset.version}`
-        )
-    ).json()
-    ariaLiveStrings = await (
-        await fetch(`./locales/strings.json?v=${document.body.dataset.version}`)
-    ).json()
+    tooltipStrings = await (await fetch(`./locales/tooltips.json`)).json()
+    ariaLiveStrings = await (await fetch(`./locales/strings.json`)).json()
     merge(ariaLiveStrings, tooltipStrings)
 
     // load translations
@@ -354,9 +348,7 @@ async function mergeTranslationsLang(lang) {
     await mergeTranslations("tooltips", tooltipStrings)
 
     async function mergeTranslations(fn, strings) {
-        const resp = await fetch(
-            `./locales/${lang}/${fn}.json?v=${document.body.dataset.version}`
-        )
+        const resp = await fetch(`./locales/${lang}/${fn}.json`)
         if (resp.status === 200) {
             console.debug(`loading translations for ${lang}/${fn}`)
             const translations = await resp.json()
