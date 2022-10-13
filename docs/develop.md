@@ -87,6 +87,15 @@ You might also be able to commit and push directly from the web site, but we fin
 
 Some art images are precomputed, you will need to load scripts/renderart.ts in MakeCode Arcade and copy the console output back into the project.
 
+## Localization of tooltips
+
+-   [ ] update tooltips in `locales/tooltips.json`
+-   [ ] run script to refresh ts files
+
+```bash
+node scripts/locs.js
+```
+
 ## Updating sample
 
 -   Browse to http://127.0.0.1:7001/index.html?compress=0
