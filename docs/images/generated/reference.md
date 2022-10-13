@@ -25,16 +25,6 @@
 - icon
 
 
-### ![next page](./images/generated/icon_next_page.png){:class="icon"} `next page` {#icon_next_page}
-
-- icon
-
-
-### ![prev page](./images/generated/icon_prev_page.png){:class="icon"} `prev page` {#icon_prev_page}
-
-- icon
-
-
 ### ![rule handle](./images/generated/icon_rule_handle.png){:class="icon"} `rule handle` {#icon_rule_handle}
 
 - icon
