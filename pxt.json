@@ -45,7 +45,8 @@
         "samples.ts",
         "docs.ts",
         "gallery.ts",
-        "pointerevents.ts"
+        "pointerevents.ts",
+        "tooltips.ts"
     ],
     "testFiles": [],
     "targetVersions": {

@@ -384,9 +384,6 @@ const liveStrings = {
     M9: "value 5",
     M10: "value 10",
 
-    M11: "on",
-    M12: "off",
-
     M15: "LED image",
     M16: "red",
     M17: "dark purple",
