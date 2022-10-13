@@ -65,7 +65,7 @@ The editor integrates with existing screen readers, like NVDA.
 
 #### Tooltip read aloud
 
-By clicking on the `tooltip reader` button at the bottom of the editor, the tooltips will be read aloud. This may be useful for students who are still learning to read.
+By clicking on the `tooltip reader` button at the bottom of the editor, the tooltips will be read aloud. This may be useful for students who are still learning to read. See [localization](./localization) to help translating the tooltips.
 
 ## [Sample programs](./samples)
 

@@ -325,7 +325,11 @@ async function loadTranslations() {
         navigator.language ||
         "en"
     ).toLocaleLowerCase()
-    const neutral = lang.split("-", 1)[0] || ""
+    let neutral = lang.split("-", 1)[0] || ""
+    if (!supportedLanguages[neutral] && supportedLanguages[lang]) {
+        lang = "en"
+        neutral = "en"
+    }
 
     console.debug(`loading translations for ${lang}`)
     // load en language strings
