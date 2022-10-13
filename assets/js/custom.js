@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
         else
             voicebtn.onclick = () => {
                 speakTooltips = !speakTooltips
-                speak("tooltip reader enabled")
+                speak(liveRegion.textContent || "")
             }
     }
 })
@@ -312,6 +312,7 @@ addSimMessageHandler("usb", async data => {
 })
 
 let liveRegion
+let lang
 let tooltipStrings = {}
 let ariaLiveStrings = {}
 
@@ -319,7 +320,7 @@ const supportedLanguages = { fr: 1 }
 // load localized strings
 async function loadTranslations() {
     const url = new URL(window.location.href)
-    const lang = (
+    lang = (
         url.searchParams.get("lang") ||
         navigator.language ||
         "en"
@@ -382,10 +383,12 @@ function speak(text) {
     const synth = window.speechSynthesis
     synth.cancel()
     if (!voice) {
-        const lang = navigator.language
-        const voices =
-            synth.getVoices().filter(v => v.lang === lang) || synth.getVoices()
+        let voices = synth.getVoices().filter(v => v.lang === lang)
+        if (!voices.length)
+            voices = synth.getVoices().filter(v => v.lang.indexOf(lang) === 0)
+        if (!voices.length) voices = synth.getVoices()
         voice = voices[0]
+        console.debug(`voice found`, { voice })
     }
     const utterance = new SpeechSynthesisUtterance(text)
     utterance.voice = voice
