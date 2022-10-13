@@ -91,11 +91,12 @@ Some art images are precomputed, you will need to load scripts/renderart.ts in M
 
 ### Strings
 
-The localization files should be in sub-folder of `locales` using the language iso code, eg `locales/fr-fr`.
+The editor will automatically switch to the user language is supported or use the `?lang=<isocode>` to force.
+The localization files should be in sub-folder of `locales` using the language iso code, eg `locales/fr/tooltips.json`.
 
 -   [ ] `locales/tooltips.json` contains the tooltips displayed on the micro:bit screen
 
-Make sure to run script to refresh ts files
+Make sure to run script to refresh ts files if you modify `locales/tooltips.json`.
 
 ```bash
 node scripts/locs.js
