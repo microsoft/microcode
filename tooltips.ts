@@ -1,6 +1,6 @@
 // auto-generated, run 'node scripts/locs.js' to refresh
 namespace microcode {
-    const tooltips: any = {
+    export const tooltips: any = {
   "reset": "restart",
   "sensors": "when...",
   "actuators": "do...",

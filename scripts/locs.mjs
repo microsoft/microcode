@@ -5,6 +5,6 @@ const tooltips = JSON.parse(
 
 const ts = `// auto-generated, run 'node scripts/locs.js' to refresh
 namespace microcode {
-    const tooltips: any = ${JSON.stringify(tooltips, null, 2)}
+    export const tooltips: any = ${JSON.stringify(tooltips, null, 2)}
 }`
 writeFileSync("./tooltips.ts", ts)
