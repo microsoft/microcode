@@ -87,7 +87,7 @@ namespace microcode {
                 y - wordLogo.height + this.yOffset + margin
             )
             if (!this.yOffset) {
-                const tagline = accessibility.ariaToTooltip("tagline")
+                const tagline = accessibility.resolveTooltip("tagline")
                 Screen.print(
                     tagline,
                     Screen.LEFT_EDGE +

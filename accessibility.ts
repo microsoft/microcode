@@ -43,9 +43,13 @@ namespace accessibility {
         control.simmessages.send("loc", Buffer.fromUTF8("{}"))
     }
 
+    export function resolveTooltip(id: string) {
+        const tooltip = microcode.tooltips[id] as string
+        const s = tooltip || ""
+        return s
+    }
+
     export function ariaToTooltip(ariaId: string) {
-        const tooltip = microcode.tooltips[ariaId] as string
-        const s = (tooltip || "").replaceAll("_", " ")
-        return s.toUpperCase()
+        return resolveTooltip(ariaId).replaceAll("_", " ").toUpperCase()
     }
 }
