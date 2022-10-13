@@ -312,145 +312,10 @@ addSimMessageHandler("usb", async data => {
 })
 
 let liveRegion
-// keep in sync with en-US.json
-const liveStrings = {
-    hud: "head over display",
-    insertion_point: "empty tile",
+let tooltipStrings = {}
+let ariaLiveStrings = {}
 
-    when: "when empty tile",
-    do: "do empty tile",
-    connect: "connect to micro:bit",
-
-    delete_tile: "delete tile",
-
-    S1: "page start",
-    S2: "press",
-    S2B: "release",
-    S3: "accelerometer",
-    S4: "timer",
-    S5: "light",
-    S6: "temp",
-    S7: "radio receive",
-    S8: "microphone",
-
-    F0: "touch pin 0",
-    F1: "touch pin 1",
-    F2: "touch pin 2",
-    F3: "button A",
-    F4: "button B",
-
-    F7: "logo",
-    F8: "1",
-    F9: "2",
-    F10: "3",
-    F11: "4",
-    F12: "5",
-    F13: "quater of a second",
-    F14: "one second",
-    F15: "loud",
-    F16: "quiet",
-    F17: "accelerometer",
-    F18: "1 random second",
-    F19: "5 seconds",
-    F17_shake: "shake",
-    F17_freefall: "freefall",
-    F17_tilt_up: "tilt up",
-    F17_tilt_down: "tilt down",
-    F17_tilt_left: "tilt left",
-    F17_tilt_right: "tilt right",
-
-    C0: "MicroCode open editor",
-    C1: "browse samples",
-
-    A1: "switch page",
-    A2: "speaker",
-    A3: "microphone",
-    A4: "music",
-    A5: "show image",
-    A6: "radio send",
-    A6A: "radio set group",
-    A7: "random number",
-    A10: "show number",
-
-    M1: "page 1",
-    M2: "page 2",
-    M3: "page 3",
-    M4: "page 4",
-    M5: "page 5",
-
-    M6: "value 1",
-    M7: "value 2",
-    M8: "value 3",
-    M9: "value 5",
-    M10: "value 10",
-
-    M15: "LED image",
-    M16: "red",
-    M17: "dark purple",
-    M18: "music editor",
-
-    do: "do",
-
-    M19giggle: "emoji giggle",
-    M19happy: "emoji happy",
-    M19hello: "emoji hello",
-    M19mysterious: "emoji mysterious",
-    M19sad: "emoji sad",
-    M19slide: "emoji slide",
-    M19soaring: "emoji soaring",
-    M19spring: "emoji spring",
-    M19twinkle: "emoji twinkle",
-    M19yawn: "emoji yawn",
-
-    M20A: "get variable X",
-    M20B: "get variable Y",
-    M20C: "get variable Z",
-
-    M21: "radio value",
-    M22: "dice",
-    M23: "repeat",
-
-    A8: "LED",
-
-    A9A: "set variable X",
-    A9B: "set variable Y",
-    A9C: "set variable Z",
-
-    S9A: "variable X changed",
-    S9B: "variable Y changed",
-    S9C: "variable Z changed",
-
-    S10: "magnet detector",
-
-    N1: "new program",
-    N2: "flashing heart",
-    N3: "smiley buttons",
-    N4: "pet hamster",
-    N5: "chuck a duck",
-    N6: "reaction time",
-    N7: "hot potato",
-    N8: "rock paper scissors",
-    N9: "head or tail",
-    N10: "clap lights",
-    N11: "firefly",
-    N12: "railroad crossing",
-    N13: "7 seconds clap",
-    N14: "counter",
-
-    A20_1: "red",
-    A20_2: "green",
-    A20_3: "blue",
-    A20_4: "purple",
-    A20_5: "yellow",
-    A20_6: "black",
-
-    A20_rainbow: "rainbow",
-    A20_sparkle: "sparkle",
-
-    A21_: "servo set angle",
-}
-
-const supportedLanguages = ["fr"]
+const supportedLanguages = { fr: 1 }
 // load localized strings
 async function loadTranslations() {
     const url = new URL(window.location.href)
@@ -460,31 +325,47 @@ async function loadTranslations() {
         "en"
     ).toLocaleLowerCase()
     const neutral = lang.split("-", 1)[0] || ""
-    if (/^en/.test(lang)) return // default language
-    if (!supportedLanguages[lang] && !supportedTanguages[neutral]) return // not supported
 
-    let translations
-    const resp = await fetch(`./locales/${lang}/strings.json`)
-    if (resp.status === 200) {
-        console.debug(`loading translations for ${lang}`)
-        translations = await resp.json()
-    } else if (lang != neutral) {
-        const resp = await fetch(`./locales/${neutral}/strings.json`)
+    console.debug(`loading translations for ${lang}`)
+    // load en language strings
+    tooltipStrings = await (await fetch(`./locales/tooltips.json`)).json()
+    ariaLiveStrings = await (await fetch(`./locales/strings.json`)).json()
+    merge(ariaLiveStrings, tooltipStrings)
+
+    // load translations
+    if (supportedLanguages[neutral]) await mergeTranslationsLang(neutral)
+    if (lang !== neutral && supportedLanguages[lang])
+        await mergeTranslationsLang(lang)
+}
+let loadTranslationsPromise = loadTranslations()
+
+function merge(to, from) {
+    Object.entries(from || {}).forEach(([key, value]) => (to[key] = value))
+}
+
+async function mergeTranslationsLang(lang) {
+    await mergeTranslations("strings", ariaLiveStrings)
+    await mergeTranslations("tooltips", tooltipStrings)
+
+    async function mergeTranslations(fn, strings) {
+        const resp = await fetch(`./locales/${lang}/${fn}.json`)
         if (resp.status === 200) {
-            console.debug(`loaded neutral translations for ${lang}`)
-            translations = await resp.json()
+            console.debug(`loading translations for ${lang}/${fn}`)
+            const translations = await resp.json()
+            merge(strings, translations)
         }
     }
-
-    // merge translations
-    Object.entries(translations || {}).forEach(
-        ([key, value]) => (liveStrings[key] = value)
-    )
 }
-loadTranslations()
+
+async function simPostStrings() {
+    console.debug(`loc: send strings to editor`)
+    await loadTranslationsPromise
+    simPostMessage("loc", tooltipStrings)
+}
+addSimMessageHandler("loc", simPostStrings)
 
 function mapAriaId(ariaId) {
-    return (liveStrings[ariaId] || ariaId).split(/_/g).join(" ")
+    return (ariaLiveStrings[ariaId] || ariaId).split(/_/g).join(" ")
 }
 
 function parseSemver(v) {

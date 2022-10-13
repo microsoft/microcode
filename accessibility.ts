@@ -30,6 +30,19 @@ namespace accessibility {
         control.simmessages.send("accessibility", data)
     }
 
+    //% shim=TD_NOOP
+    export function init() {
+        control.simmessages.onReceived("loc", data => {
+            console.log(`received locs`)
+            const strings = JSON.parse(data.toString())
+            console.log(strings)
+            Object.keys(strings).forEach(
+                k => (microcode.tooltips[k] = strings[k])
+            )
+        })
+        control.simmessages.send("loc", Buffer.fromUTF8("{}"))
+    }
+
     export function ariaToTooltip(ariaId: string) {
         const tooltip = microcode.tooltips[ariaId] as string
         const s = (tooltip || "").replaceAll("_", " ")
