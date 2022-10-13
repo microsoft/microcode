@@ -1,7 +1,7 @@
 // auto-generated, run 'node scripts/locs.js' to refresh
 namespace microcode {
     export const tooltips: any = {
-  "reset": "restart",
+  "tagline": "for micro:bit V2",
   "sensors": "when...",
   "actuators": "do...",
   "when": "when",
@@ -36,7 +36,6 @@ namespace microcode {
   "F15": "loud",
   "F16": "quiet",
   "F17_shake": "shake",
-  "F17_freefall": "freefall",
   "F17_tilt_up": "tilt up",
   "F17_tilt_down": "tilt down",
   "F17_tilt_left": "tilt left",

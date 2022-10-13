@@ -87,7 +87,7 @@ namespace microcode {
                 y - wordLogo.height + this.yOffset + margin
             )
             if (!this.yOffset) {
-                const tagline = "for micro:bit V2"
+                const tagline = accessibility.ariaToTooltip("tagline")
                 Screen.print(
                     tagline,
                     Screen.LEFT_EDGE +
