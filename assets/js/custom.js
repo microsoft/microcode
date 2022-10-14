@@ -316,20 +316,93 @@ let lang
 let tooltipStrings = {}
 let ariaLiveStrings = {}
 
-const supportedLanguages = { fr: 1 }
+const supportedLanguages = [
+    "af",
+    "sq",
+    "ar",
+    "hy-AM",
+    "az",
+    "eu",
+    "bn",
+    "bi",
+    "bg",
+    "ca",
+    "zh-CN",
+    "zh-TW",
+    "zh-HK",
+    "hr",
+    "cs",
+    "da",
+    "nl",
+    "en",
+    "et",
+    "fo",
+    "fi",
+    "fr",
+    "fr-CA",
+    "gl",
+    "ka",
+    "de",
+    "el",
+    "gu-IN",
+    "haw",
+    "he",
+    "hi",
+    "hu",
+    "is",
+    "id",
+    "it",
+    "ja",
+    "kab",
+    "kn",
+    "kk",
+    "ko",
+    "ku",
+    "kmr",
+    "lv",
+    "lt",
+    "ms",
+    "ml-IN",
+    "mr",
+    "no",
+    "nb",
+    "nn-NO",
+    "ps",
+    "fa",
+    "pl",
+    "pt-PT",
+    "pt-BR",
+    "pa-IN",
+    "ro",
+    "ru",
+    "sat",
+    "sr",
+    "si-LK",
+    "sk",
+    "sl",
+    "es-ES",
+    "es-MX",
+    "su",
+    "sw",
+    "sw-TZ",
+    "sv-SE",
+    "tl",
+    "ta",
+    "te",
+    "th",
+    "tr",
+    "uk",
+    "ur-IN",
+    "ur-PK",
+    "vi",
+    "cy",
+]
 // load localized strings
 async function loadTranslations() {
     const url = new URL(window.location.href)
-    lang = (
-        url.searchParams.get("lang") ||
-        navigator.language ||
-        "en"
-    ).toLocaleLowerCase()
-    let neutral = lang.split("-", 1)[0] || ""
-    if (!supportedLanguages[neutral] && supportedLanguages[lang]) {
-        lang = "en"
-        neutral = "en"
-    }
+    lang = url.searchParams.get("lang") || navigator.language || "en"
+    if (supportedLanguages.indexOf(lang) < 0) lang = lang.split("-", 1)[0] || ""
+    if (supportedLanguages.indexOf(lang) < 0) lang = "en"
 
     console.debug(`loading translations for ${lang}`)
     // load en language strings
@@ -338,9 +411,7 @@ async function loadTranslations() {
     merge(ariaLiveStrings, tooltipStrings)
 
     // load translations
-    if (supportedLanguages[neutral]) await mergeTranslationsLang(neutral)
-    if (lang !== neutral && supportedLanguages[lang])
-        await mergeTranslationsLang(lang)
+    if (lang !== "en") await mergeTranslationsLang(lang)
 }
 let loadTranslationsPromise = loadTranslations()
 
@@ -349,11 +420,13 @@ function merge(to, from) {
 }
 
 async function mergeTranslationsLang(lang) {
-    await mergeTranslations("strings", ariaLiveStrings)
+    //   await mergeTranslations("strings", ariaLiveStrings)
     await mergeTranslations("tooltips", tooltipStrings)
 
     async function mergeTranslations(fn, strings) {
-        const resp = await fetch(`./locales/${lang}/${fn}.json`)
+        const resp = await fetch(
+            `https://distributions.crowdin.net/5d4efd10823e1adf47b30e7ngzx/content/${lang}/microcode/tooltips.json`
+        )
         if (resp.status === 200) {
             console.debug(`loading translations for ${lang}/${fn}`)
             const translations = await resp.json()
