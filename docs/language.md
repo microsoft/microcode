@@ -107,7 +107,7 @@ The right-hand side of a rule, the **Do** section, starts with a
 -   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays a sequence of emojis
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends a given number over the radio
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` transfers execution control to a given page
--   ![put variable X](./images/generated/icon_A9A.png){:class="icon"} `set variable` puts a number into a variable (`X`, `Y`, `Z`)
+-   ![set variable X](./images/generated/icon_A9A.png){:class="icon"} `set variable` puts a number into a variable (`X`, `Y`, `Z`); defaults to 0 if no value specified 
 
 A command can be followed by various parameter tiles, depending on the type
 of command. As with events, every command has a default parameter, for the
