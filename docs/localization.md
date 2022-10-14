@@ -8,9 +8,13 @@ The editor will automatically switch to the user language if supported or if the
 
 -   for example, [French](../?lang=fr)
 
+## Getting started
+
 The localization is handled through [Crowdin](https://crowdin.com). You will need to get a translator account to get started.
 
--   open [tooltips string](https://crowdin.com/translate/makecode/12056)
+-   **translate [tooltips string](https://crowdin.com/translate/makecode/12056)**
+
+Note that there is a delay between approving translations in crowdin and having them available in the web site.
 
 ## Adding tooltips in source code
 
