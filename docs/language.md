@@ -103,7 +103,7 @@ The right-hand side of a rule, the **Do** section, starts with a
 **command** tile from the following list:
 
 -   ![screen](./images/generated/icon_A5.png){:class="icon"} `show image` shows an animation sequence on the LED screen.
--   ![show number](./images/generated/icon/icon_A10.png){:class="icon"} `show number` shows a numberic value between 0 and 99
+-   ![show number](./images/generated/icon_A10.png){:class="icon"} `show number` shows a numeric value between 0 and 99
 -   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays a sequence of emojis
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends a given number over the radio
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` transfers execution control to a given page
