@@ -28,6 +28,7 @@ These sample use multiple pages in their programs.
 -   [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon"} clap lights](./samples/clap-lights)
 -   [![reaction time](./images/generated/icon_reaction_time.png){:class="icon"} reaction time](./samples/reaction-time)
 -   [double counter](./samples/double-counter)
+-   [battery charger prank](./samples/battery-charger-prank)
 -   [24 7 clap game](./samples/24-7-clap)
 
 ## Radio
@@ -38,6 +39,7 @@ micro:bits.
 -   [![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon"} chuck a duck](./samples/chuck-a-duck)
 -   [![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon"} firefly](./samples/firefly)
 -   [zombie detector](./samples/zombie-detector)
+-   [green light red light](./samples/green-light-red-light)
 
 ## Accessories
 

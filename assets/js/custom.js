@@ -316,20 +316,93 @@ let lang
 let tooltipStrings = {}
 let ariaLiveStrings = {}
 
-const supportedLanguages = { fr: 1 }
+const supportedLanguages = [
+    "af",
+    "sq",
+    "ar",
+    "hy-AM",
+    "az",
+    "eu",
+    "bn",
+    "bi",
+    "bg",
+    "ca",
+    "zh-CN",
+    "zh-TW",
+    "zh-HK",
+    "hr",
+    "cs",
+    "da",
+    "nl",
+    "en",
+    "et",
+    "fo",
+    "fi",
+    "fr",
+    "fr-CA",
+    "gl",
+    "ka",
+    "de",
+    "el",
+    "gu-IN",
+    "haw",
+    "he",
+    "hi",
+    "hu",
+    "is",
+    "id",
+    "it",
+    "ja",
+    "kab",
+    "kn",
+    "kk",
+    "ko",
+    "ku",
+    "kmr",
+    "lv",
+    "lt",
+    "ms",
+    "ml-IN",
+    "mr",
+    "no",
+    "nb",
+    "nn-NO",
+    "ps",
+    "fa",
+    "pl",
+    "pt-PT",
+    "pt-BR",
+    "pa-IN",
+    "ro",
+    "ru",
+    "sat",
+    "sr",
+    "si-LK",
+    "sk",
+    "sl",
+    "es-ES",
+    "es-MX",
+    "su",
+    "sw",
+    "sw-TZ",
+    "sv-SE",
+    "tl",
+    "ta",
+    "te",
+    "th",
+    "tr",
+    "uk",
+    "ur-IN",
+    "ur-PK",
+    "vi",
+    "cy",
+]
 // load localized strings
 async function loadTranslations() {
     const url = new URL(window.location.href)
-    lang = (
-        url.searchParams.get("lang") ||
-        navigator.language ||
-        "en"
-    ).toLocaleLowerCase()
-    let neutral = lang.split("-", 1)[0] || ""
-    if (!supportedLanguages[neutral] && supportedLanguages[lang]) {
-        lang = "en"
-        neutral = "en"
-    }
+    lang = url.searchParams.get("lang") || navigator.language || "en"
+    if (supportedLanguages.indexOf(lang) < 0) lang = lang.split("-", 1)[0] || ""
+    if (supportedLanguages.indexOf(lang) < 0) lang = "en"
 
     console.debug(`loading translations for ${lang}`)
     // load en language strings
@@ -338,22 +411,31 @@ async function loadTranslations() {
     merge(ariaLiveStrings, tooltipStrings)
 
     // load translations
-    if (supportedLanguages[neutral]) await mergeTranslationsLang(neutral)
-    if (lang !== neutral && supportedLanguages[lang])
+    if (lang !== "en") {
         await mergeTranslationsLang(lang)
+    }
 }
 let loadTranslationsPromise = loadTranslations()
 
 function merge(to, from) {
-    Object.entries(from || {}).forEach(([key, value]) => (to[key] = value))
+    Object.entries(from || {}).forEach(
+        ([key, value]) =>
+            (to[key] = value.normalize("NFD").replace(/\p{Diacritic}/gu, ""))
+    )
 }
 
 async function mergeTranslationsLang(lang) {
-    await mergeTranslations("strings", ariaLiveStrings)
+    //   await mergeTranslations("strings", ariaLiveStrings)
+    const distributionhash = "5d4efd10823e1adf47b30e7ngzx"
+    const cdn = `https://distributions.crowdin.net/${distributionhash}/`
+    const manifest = await (await fetch(`${cdn}manifest.json`)).json()
+    const timestamp = manifest.timestamp
     await mergeTranslations("tooltips", tooltipStrings)
 
     async function mergeTranslations(fn, strings) {
-        const resp = await fetch(`./locales/${lang}/${fn}.json`)
+        const resp = await fetch(
+            `${cdn}content/${lang}/microcode/tooltips.json?timestamp=${timestamp}`
+        )
         if (resp.status === 200) {
             console.debug(`loading translations for ${lang}/${fn}`)
             const translations = await resp.json()
@@ -656,6 +738,7 @@ addSimMessageHandler("analytics", buf => {
 
     const properties = msg.data || {}
     properties["version"] = document.body.dataset.version
+    properties["lang"] = lang
     if (msg.type === "event") {
         //console.debug(msg.msg, { properties })
         appInsights.trackEvent({

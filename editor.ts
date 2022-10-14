@@ -817,6 +817,7 @@ namespace microcode {
                 },
                 {
                     icon: "delete",
+                    ariaId: "delete_rule",
                 },
             ]
             this.editor.picker.addGroup({ btns })

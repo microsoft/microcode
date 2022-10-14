@@ -28,6 +28,6 @@ const files = readdirSync("./locales", { withFileTypes: true }).filter(f =>
 )
 
 writeLoc("")
-for (const file of files) {
-    const stat = writeLoc(file.name)
-}
+//for (const file of files) {
+  //  const stat = writeLoc(file.name)
+//}

@@ -40,6 +40,11 @@ is always up-to-date (and running)!
 
 If you micro:bit disconnect, you will see a micro:bit icon show up on the upper left corner of the editor. Click on that button to reconnect again
 
+### Localization
+
+MicroCode is community translated through Crowdin. Please read on [localization](./localization) to get started.
+MicroCode will pick up the user language from the browser, or you can force the locale by adding `?lang=[code]` where `[code]` is the language iso code.
+
 ### Accessibility
 
 We want to make the editor as accessible as possible; please send us suggestions to improve its accessibility.
@@ -65,7 +70,7 @@ The editor integrates with existing screen readers, like NVDA.
 
 #### Tooltip read aloud
 
-By clicking on the `tooltip reader` button at the bottom of the editor, the tooltips will be read aloud. This may be useful for students who are still learning to read. See [localization](./localization) to help translating the tooltips.
+By clicking on the `tooltip reader` button at the bottom of the editor, the tooltips will be read aloud. This may be useful for students who are still learning to read.
 
 ## [Sample programs](./samples)
 

@@ -18,6 +18,7 @@ namespace microcode {
   "S8": "hear",
   "rule": "rule",
   "add_rule": "add rule",
+  "delete_rule": "delete rule",
   "F0": "touch pin 0",
   "F1": "touch pin 1",
   "F2": "touch pin 2",
