@@ -98,9 +98,10 @@ Click on the version number in the web app to download the MicroCode hex file to
 
 ## Acknowledgments
 
+-   Microsoft Garage for kick starting this project during the 2022 Microsoft Hackathon.
 -   [@loretod101](https://twitter.com/loretod101) on advising on accessibility features, including switch access support.
 -   [@BillSeiver](https://twitter.com/BillSiever) on feedback for tiles, including the `page start` tile
--   Microsoft Garage for kick starting this project during the 2022 Microsoft Hackathon.
+-   [@eliseli\_](https://twitter.com/eliseli_) for the Spanish translation
 
 ## Contributing
 
