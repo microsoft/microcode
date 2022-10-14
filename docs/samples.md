@@ -28,7 +28,7 @@ These sample use multiple pages in their programs.
 -   [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon"} clap lights](./samples/clap-lights)
 -   [![reaction time](./images/generated/icon_reaction_time.png){:class="icon"} reaction time](./samples/reaction-time)
 -   [double counter](./samples/double-counter)
--   [battery charge prank](./samples/battery-charger-prank)
+-   [battery charger prank](./samples/battery-charger-prank)
 -   [24 7 clap game](./samples/24-7-clap)
 
 ## Radio
