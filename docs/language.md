@@ -107,7 +107,7 @@ The right-hand side of a rule, the **Do** section, starts with a
 -   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays a sequence of emojis
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends a given number over the radio
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` transfers execution control to a given page
--   ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable` puts a number into a variable (`X`, `Y`, `Z`)
+-   ![put variable X](./images/generated/icon_A9A.png){:class="icon"} `set variable` puts a number into a variable (`X`, `Y`, `Z`)
 
 A command can be followed by various parameter tiles, depending on the type
 of command. As with events, every command has a default parameter, for the
@@ -117,8 +117,7 @@ case where no parameter tile is given:
 -   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays ![emoji giggle](./images/generated/icon_M19giggle.png){:class="icon"} `giggle` by default
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends the number `1` by default
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` switches to page `1` by default
--   ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable` puts a number into a variable (`X`, `Y`, `Z`); defaults to `0`
-
+-   ![get variable X](./images/generated/icon_M20A.png){:class="icon"} `get variable` gets the number from a variable (`X`, `Y`, `Z`); defaults to `0` if variable wasn't previously set
 Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5 dots`.
 
 ![command tiles in do section](./images/doDialog.jpg){:class="screenshot"}
