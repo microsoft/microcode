@@ -6,7 +6,11 @@ image: ./docs/images/generated/sample_smiley_buttons.png
 
 The editor will automatically switch to the user language if supported or if the `?lang=<isocode>` is used in the URL.
 
--   for example, [French](../?lang=fr)
+## Example localizations
+
+-   [French](../?lang=fr)
+-   [Polish](../?lang=pl)
+-   [Spanish](../?lang=es-ES)
 
 ## Getting started
 
