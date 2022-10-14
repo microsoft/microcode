@@ -411,7 +411,9 @@ async function loadTranslations() {
     merge(ariaLiveStrings, tooltipStrings)
 
     // load translations
-    if (lang !== "en") await mergeTranslationsLang(lang)
+    if (lang !== "en") {
+        await mergeTranslationsLang(lang)
+    }
 }
 let loadTranslationsPromise = loadTranslations()
 
@@ -424,11 +426,15 @@ function merge(to, from) {
 
 async function mergeTranslationsLang(lang) {
     //   await mergeTranslations("strings", ariaLiveStrings)
+    const distributionhash = "5d4efd10823e1adf47b30e7ngzx"
+    const cdn = `https://distributions.crowdin.net/${distributionhash}/`
+    const manifest = await (await fetch(`${cdn}manifest.json`)).json()
+    const timestamp = manifest.timestamp
     await mergeTranslations("tooltips", tooltipStrings)
 
     async function mergeTranslations(fn, strings) {
         const resp = await fetch(
-            `https://distributions.crowdin.net/5d4efd10823e1adf47b30e7ngzx/content/${lang}/microcode/tooltips.json`
+            `${cdn}content/${lang}/microcode/tooltips.json?timestamp=${timestamp}`
         )
         if (resp.status === 200) {
             console.debug(`loading translations for ${lang}/${fn}`)
