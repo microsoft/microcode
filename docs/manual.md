@@ -43,6 +43,7 @@ If you micro:bit disconnect, you will see a micro:bit icon show up on the upper 
 ### Localization
 
 MicroCode is community translated through Crowdin. Please read on [localization](./localization) to get started.
+MicroCode will pick up the user language from the browser, or you can force the locale by adding `?lang=[code]` where `[code]` is the language iso code.
 
 ### Accessibility
 
