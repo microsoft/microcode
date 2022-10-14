@@ -18,7 +18,8 @@ Physical computing for young coders and coders with disabilities on the [micro:b
 
 ## [Web editor](https://aka.ms/m9) {#web}
 
-The MicroCode web editor is at [aka.ms/m9](https://aka.ms/m9). We recommend using the keyboard navigation. MicroCode is designed to be friendly to switch access devices.
+The MicroCode web editor is at [aka.ms/m9](https://aka.ms/m9). We recommend using the keyboard navigation. 
+MicroCode is designed to be friendly to switch access devices.
 
 -   `Left`, `Right`, `Up`, `Down` moves the cursor
     -   the `Left` and `Right` keys will wrap around in the editor on the **same** page
@@ -33,12 +34,14 @@ The MicroCode web editor is at [aka.ms/m9](https://aka.ms/m9). We recommend usin
 
 ### Automatic download to micro:bit V2
 
-Click on the micro:bit button at the lower right of the web app (see above) and follow the on-screen instructions to configure your micro:bit V2 and pair it with the editor.
+Click on the micro:bit button at the lower right of the web app (see above) and follow 
+the on-screen instructions to configure your micro:bit V2 and pair it with the editor.
 Once your micro:bit V2 is paired, the web editor will be able to download your
 MicroCode program to your micro:bit. This happens on every edit, so your program
 is always up-to-date (and running)!
 
-If you micro:bit disconnect, you will see a micro:bit icon show up on the upper left corner of the editor. Click on that button to reconnect again
+If your micro:bit disconnects, you will see a micro:bit icon show up on the upper left corner of the editor. 
+Click on that button to reconnect again.
 
 ### Localization
 
@@ -58,7 +61,8 @@ MicroCode can be accessed with the keyboard:
 -   `Backspace` for `B` button
 -   Keep moving the cursor `Up` to go back a screen, if `Backspace` is not available;
     for example, if you are using a 5-input switch panel.
--   Keep moving `Right` or `Left` to wrap around the user interface; for example, if you are using a 2-input switch panel.
+-   Keep moving `Right` or `Left` to wrap around the user interface; for example, 
+    if you are using a 2-input switch panel.
 
 #### Gamepads
 
