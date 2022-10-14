@@ -39,6 +39,7 @@ micro:bits.
 -   [![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon"} chuck a duck](./samples/chuck-a-duck)
 -   [![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon"} firefly](./samples/firefly)
 -   [zombie detector](./samples/zombie-detector)
+-   [green light red light](./samples/green-light-red-light)
 
 ## Accessories
 

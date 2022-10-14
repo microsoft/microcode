@@ -2,7 +2,7 @@
 image: ./docs/images/generated/sample_battery_charger_prank.png
 ---
 
-# ![Battery charge icon](../images/generated/icon_sample_battery_charger_prank.png){:class="icon-sample"} Battery charger prank
+# Battery charger prank
 
 ![Battery charger prank MicroCode program](../images/generated/sample_battery_charger_prank.png){:class="sample"}
 
