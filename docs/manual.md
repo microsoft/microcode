@@ -30,7 +30,7 @@ MicroCode is designed to be friendly to switch access devices.
 -   `]` or `Page Up` to go to the next page, `[` or `Page Down` to go to the previous page
 -   Copy the URL to share your program.
 
-[![MicroCode web app](./images/website2.jpg){:class="screenshot"}](https://aka.ms/m9)
+{% include youtube.html id="mbF-HU9IZ-A" %}
 
 ### Automatic download to micro:bit V2
 
