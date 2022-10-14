@@ -416,7 +416,10 @@ async function loadTranslations() {
 let loadTranslationsPromise = loadTranslations()
 
 function merge(to, from) {
-    Object.entries(from || {}).forEach(([key, value]) => (to[key] = value))
+    Object.entries(from || {}).forEach(
+        ([key, value]) =>
+            (to[key] = value.normalize("NFD").replace(/\p{Diacritic}/gu, ""))
+    )
 }
 
 async function mergeTranslationsLang(lang) {
