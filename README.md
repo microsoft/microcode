@@ -8,8 +8,6 @@ Microsoft MicroCode is a tile-based language and editor, for young coders and co
 
 ## Getting started
 
-To get started,
-
 -   read the [MicroCode manual](https://microsoft.github.io/microcode/docs/manual)
 -   [try it now!](https://aka.ms/microcode).
 
