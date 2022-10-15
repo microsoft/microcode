@@ -8,9 +8,11 @@ The editor will automatically switch to the user language if supported or if the
 
 ## Example localizations
 
+-   [Croatian](../?lang=hr)
 -   [French](../?lang=fr)
 -   [Polish](../?lang=pl)
 -   [Spanish](../?lang=es-ES)
+-   [Turkish](../?lang=tr)
 
 ## Getting started
 
