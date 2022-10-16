@@ -3,6 +3,7 @@ image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 
 # [Microsoft MicroCode](https://aka.ms/m9) for micro:bit
+
 Physical computing for young learners on the [micro:bit V2](https://microbit.org).
 
 > MicroCode is still in **beta** development and might change in the future. Post your suggestions or questions on the [forum](https://forum.makecode.com/c/60).
@@ -17,7 +18,7 @@ Physical computing for young learners on the [micro:bit V2](https://microbit.org
 
 ## [Web editor](https://aka.ms/m9) {#web}
 
-The MicroCode web editor is at [aka.ms/m9](https://aka.ms/m9). We recommend using the keyboard navigation. 
+The MicroCode web editor is at [aka.ms/m9](https://aka.ms/m9). We recommend using the keyboard navigation.
 MicroCode is designed to be friendly to switch access devices.
 
 -   `Left`, `Right`, `Up`, `Down` moves the cursor
@@ -33,19 +34,32 @@ MicroCode is designed to be friendly to switch access devices.
 
 ### Automatic download to micro:bit V2
 
-Click on the micro:bit button at the lower right of the web app (see above) and follow 
+Click on the micro:bit button at the lower right of the web app (see above) and follow
 the on-screen instructions to configure your micro:bit V2 and pair it with the editor.
 Once your micro:bit V2 is paired, the web editor will be able to download your
 MicroCode program to your micro:bit. This happens on every edit, so your program
 is always up-to-date (and running)!
 
-If your micro:bit disconnects, you will see a micro:bit icon show up on the upper left corner of the editor. 
+If your micro:bit disconnects, you will see a micro:bit icon show up on the upper left corner of the editor.
 Click on that button to reconnect again.
 
 ### Localization
 
 MicroCode is community translated through Crowdin. Please read on [localization](./localization) to get started.
 MicroCode will pick up the user language from the browser, or you can force the locale by adding `?lang=[code]` where `[code]` is the language iso code.
+
+-   [Catalan](../?lang=ca)
+-   [Croatian](../?lang=hr)
+-   [English](../)
+-   [German](../?lang=de)
+-   [French](../?lang=fr)
+-   [French, Canada](../?lang=fr-CA)
+-   [Italian](../?lang=it)
+-   [Polish](../?lang=pl)
+-   [Portuguese, Brazilian](../?lang=pt-BR)
+-   [Spanish](../?lang=es-ES)
+-   [Spanish (Mexico)](../?lang=es-MX)
+-   [Turkish](../?lang=tr)
 
 ### Accessibility
 
@@ -60,7 +74,7 @@ MicroCode can be accessed with the keyboard:
 -   `Backspace` for `B` button
 -   Keep moving the cursor `Up` to go back a screen, if `Backspace` is not available;
     for example, if you are using a 5-input switch panel.
--   Keep moving `Right` or `Left` to wrap around the user interface; for example, 
+-   Keep moving `Right` or `Left` to wrap around the user interface; for example,
     if you are using a 2-input switch panel.
 
 #### Gamepads
