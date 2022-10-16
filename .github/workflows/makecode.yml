@@ -36,7 +36,3 @@ jobs:
       - name: build hardware N3
         run: |
           makecode --hw N3
-      - name: build localized hex files
-        run: |
-          npm install node-fetch
-          node ./scripts/lochex.mjs
