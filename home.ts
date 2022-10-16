@@ -49,13 +49,13 @@ namespace microcode {
         }
 
         private drawVersion() {
+            const font = image.font5
             Screen.print(
                 microcode.VERSION,
-                Screen.RIGHT_EDGE -
-                    image.font5.charWidth * microcode.VERSION.length,
-                Screen.BOTTOM_EDGE - image.font5.charHeight - 1,
+                Screen.RIGHT_EDGE - font.charWidth * microcode.VERSION.length,
+                Screen.BOTTOM_EDGE - font.charHeight - 1,
                 0xb,
-                image.font5
+                font
             )
         }
 
@@ -93,7 +93,7 @@ namespace microcode {
                     Screen.LEFT_EDGE +
                         ((Screen.WIDTH + wordLogo.width) >> 1) +
                         dy -
-                        image.font5.charWidth * tagline.length,
+                        microcode.font.charWidth * tagline.length,
                     Screen.TOP_EDGE +
                         OFFSET +
                         wordLogo.height +
@@ -101,7 +101,7 @@ namespace microcode {
                         this.yOffset +
                         1,
                     0xb,
-                    image.font5
+                    microcode.font
                 )
             }
 

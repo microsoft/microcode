@@ -16,6 +16,11 @@ languages.unshift("en")
 console.log({ languages, timestamp })
 const supported = []
 
+const fonts = {
+    ar: 12,
+    ja: 12,
+}
+
 for (const lang of languages.filter(l => l !== "pxt")) {
     console.log(`build hex for '${lang}'`)
     const translations = await (
@@ -36,6 +41,8 @@ for (const lang of languages.filter(l => l !== "pxt")) {
 
     const ts = `// auto-generated, run 'node scripts/locs.js' to refresh
 namespace microcode {
+    export const lang = "${lang}"
+    export const font = image.font${fonts[lang] || 5}
     export const tooltips: any = ${JSON.stringify(translations, null, 2)}
 }`
     writeFileSync("./tooltips.ts", ts, { encoding: "utf8" })

@@ -151,7 +151,7 @@ namespace microcode {
             if (text) {
                 const pos = this.ariaPos || this.xfrm.localPos
                 const n = text.length
-                const font = image.font5
+                const font = microcode.font
                 const w = font.charWidth * n
                 const h = font.charHeight
                 const x = Math.max(

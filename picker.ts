@@ -189,7 +189,7 @@ namespace microcode {
                     w.x + this.panel.left + 2,
                     w.y + this.panel.top + 4,
                     1,
-                    image.font8
+                    microcode.font
                 )
             }
             this.groups.forEach(group => group.draw())
