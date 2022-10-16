@@ -2,8 +2,7 @@
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 
-# [Microsoft MicroCode](https://aka.ms/m9) for micro:bit (beta)
-
+# [Microsoft MicroCode](https://aka.ms/m9) for micro:bit
 Physical computing for young and variable learners on the [micro:bit V2](https://microbit.org).
 
 > MicroCode is still in **beta** development and might change in the future. Post your suggestions or questions on the [forum](https://forum.makecode.com/c/60).
