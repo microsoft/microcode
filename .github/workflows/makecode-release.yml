@@ -37,6 +37,9 @@ jobs:
         run: |
           cp ./built/binary.js ./assets/js/binary.js
           cp ./built/n3/binary.hex ./assets/firmware.hex
+      - name: build localized hex files
+          npm install node-fetch
+          node ./scripts/lochex.mjs
       - name: upload modified assets
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
