@@ -38,6 +38,7 @@ jobs:
           cp ./built/binary.js ./assets/js/binary.js
           cp ./built/n3/binary.hex ./assets/firmware.hex
       - name: build localized hex files
+        run: |
           npm install node-fetch
           node ./scripts/lochex.mjs
       - name: upload modified assets
