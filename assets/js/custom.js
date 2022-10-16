@@ -188,7 +188,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (supportedLanguages.indexOf(editorLang) > -1) {
         const fws = document.getElementsByClassName("firmware-download")
         for (let i = 0; i < fws.length; ++i)
-            fws.href = `/microcode/assets/hex/microcode-${editorLang.toLowerCase()}.hex`
+            fws[i].setAttribute(
+                "href",
+                `/microcode/assets/hex/microcode-${editorLang.toLowerCase()}.hex`
+            )
     }
 })
 
