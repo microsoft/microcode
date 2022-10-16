@@ -185,10 +185,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
     }
 
-    if (supportedLanguages[lang]) {
+    if (supportedLanguages[editorLang]) {
         const fws = document.getElementsByClassName("firmware-download")
         for (let i = 0; i < fws.length; ++i)
-            fws.src = `/microcode/assets/hex/microcode-${lang.toLowerCase()}.hex`
+            fws.src = `/microcode/assets/hex/microcode-${editorLang.toLowerCase()}.hex`
     }
 })
 
@@ -318,7 +318,6 @@ addSimMessageHandler("usb", async data => {
 })
 
 let liveRegion
-let lang
 let tooltipStrings = {}
 let ariaLiveStrings = {}
 
@@ -354,7 +353,7 @@ async function loadTranslations() {
 
     // load translations
     if (editorLang !== "en") {
-        await mergeTranslationsLang(editorLang)
+        await mergeTranslationsLang()
     }
 }
 let loadTranslationsPromise = loadTranslations()
@@ -366,7 +365,7 @@ function merge(to, from) {
     )
 }
 
-async function mergeTranslationsLang(lang) {
+async function mergeTranslationsLang() {
     //   await mergeTranslations("strings", ariaLiveStrings)
     const distributionhash = "5d4efd10823e1adf47b30e7ngzx"
     const cdn = `https://distributions.crowdin.net/${distributionhash}/`
@@ -376,10 +375,10 @@ async function mergeTranslationsLang(lang) {
 
     async function mergeTranslations(fn, strings) {
         const resp = await fetch(
-            `${cdn}content/${lang}/microcode/tooltips.json?timestamp=${timestamp}`
+            `${cdn}content/${editorLang}/microcode/tooltips.json?timestamp=${timestamp}`
         )
         if (resp.status === 200) {
-            console.debug(`loading translations for ${lang}/${fn}`)
+            console.debug(`loading translations for ${editorLang}/${fn}`)
             const translations = await resp.json()
             merge(strings, translations)
         }
@@ -682,7 +681,7 @@ addSimMessageHandler("analytics", buf => {
 
     const properties = msg.data || {}
     properties["version"] = document.body.dataset.version
-    properties["lang"] = lang
+    properties["lang"] = editorLang
     if (msg.type === "event") {
         //console.debug(msg.msg, { properties })
         appInsights.trackEvent({
