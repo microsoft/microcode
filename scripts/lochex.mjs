@@ -42,7 +42,7 @@ for (const lang of languages.filter(l => l !== "pxt")) {
     const ts = `// auto-generated, run 'node scripts/locs.js' to refresh
 namespace microcode {
     export const lang = "${lang}"
-    export const font = image.font${fonts[lang] || 5}
+    export const font = image.font${fonts[lang] || 8}
     export const tooltips: any = ${JSON.stringify(translations, null, 2)}
 }`
     writeFileSync("./tooltips.ts", ts, { encoding: "utf8" })

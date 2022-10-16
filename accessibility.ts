@@ -50,6 +50,6 @@ namespace accessibility {
     }
 
     export function ariaToTooltip(ariaId: string) {
-        return resolveTooltip(ariaId).replaceAll("_", " ").toUpperCase()
+        return resolveTooltip(ariaId).replaceAll("_", " ")
     }
 }
