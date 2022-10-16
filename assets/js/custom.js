@@ -337,21 +337,24 @@ const supportedLanguages = [
     "tr",
 ]
 const url = new URL(window.location.href)
-lang = url.searchParams.get("lang") || navigator.language || "en"
-// load localized strings
-async function loadTranslations() {
+const editorLang = (() => {
+    let lang = url.searchParams.get("lang") || navigator.language || "en"
     if (supportedLanguages.indexOf(lang) < 0) lang = lang.split("-", 1)[0] || ""
     if (supportedLanguages.indexOf(lang) < 0) lang = "en"
+    return lang
+})()
 
-    console.debug(`loading translations for ${lang}`)
+// load localized strings
+async function loadTranslations() {
+    console.debug(`loading translations for ${editorLang}`)
     // load en language strings
     tooltipStrings = await (await fetch(`./locales/tooltips.json`)).json()
     ariaLiveStrings = await (await fetch(`./locales/strings.json`)).json()
     merge(ariaLiveStrings, tooltipStrings)
 
     // load translations
-    if (lang !== "en") {
-        await mergeTranslationsLang(lang)
+    if (editorLang !== "en") {
+        await mergeTranslationsLang(editorLang)
     }
 }
 let loadTranslationsPromise = loadTranslations()
@@ -408,9 +411,11 @@ function speak(text) {
     const synth = window.speechSynthesis
     synth.cancel()
     if (!voice) {
-        let voices = synth.getVoices().filter(v => v.lang === lang)
+        let voices = synth.getVoices().filter(v => v.lang === editorLang)
         if (!voices.length)
-            voices = synth.getVoices().filter(v => v.lang.indexOf(lang) === 0)
+            voices = synth
+                .getVoices()
+                .filter(v => v.lang.indexOf(editorLang) === 0)
         if (!voices.length) voices = synth.getVoices()
         voice = voices[0]
         console.debug(`voice found`, { voice })
