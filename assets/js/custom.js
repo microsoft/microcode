@@ -184,6 +184,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 speak(liveRegion.textContent || "")
             }
     }
+
+    if (supportedLanguages[lang]) {
+        const fws = document.getElementsByClassName("firmware-download")
+        for (let i = 0; i < fws.length; ++i)
+            fws.src = `/microcode/assets/hex/microcode-${lang.toLowerCase()}.hex`
+    }
 })
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -330,10 +336,10 @@ const supportedLanguages = [
     "es-MX",
     "tr",
 ]
+const url = new URL(window.location.href)
+lang = url.searchParams.get("lang") || navigator.language || "en"
 // load localized strings
 async function loadTranslations() {
-    const url = new URL(window.location.href)
-    lang = url.searchParams.get("lang") || navigator.language || "en"
     if (supportedLanguages.indexOf(lang) < 0) lang = lang.split("-", 1)[0] || ""
     if (supportedLanguages.indexOf(lang) < 0) lang = "en"
 
