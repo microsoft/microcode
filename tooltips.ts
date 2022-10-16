@@ -1,5 +1,7 @@
 // auto-generated, run 'node scripts/locs.js' to refresh
 namespace microcode {
+  export const lang = "en"
+  export const font = image.font5
     export const tooltips: any = {
   "tagline": "for micro:bit V2",
   "sensors": "when...",

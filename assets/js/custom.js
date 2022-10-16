@@ -184,6 +184,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 speak(liveRegion.textContent || "")
             }
     }
+
+    if (supportedLanguages[lang]) {
+        const fws = document.getElementsByClassName("firmware-download")
+        for (let i = 0; i < fws.length; ++i)
+            fws.src = `/microcode/assets/hex/microcode-${lang.toLowerCase()}.hex`
+    }
 })
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -317,90 +323,23 @@ let tooltipStrings = {}
 let ariaLiveStrings = {}
 
 const supportedLanguages = [
-    "af",
-    "sq",
-    "ar",
-    "hy-AM",
-    "az",
-    "eu",
-    "bn",
-    "bi",
-    "bg",
-    "ca",
-    "zh-CN",
-    "zh-TW",
-    "zh-HK",
-    "hr",
-    "cs",
-    "da",
-    "nl",
     "en",
-    "et",
-    "fo",
-    "fi",
+    "ca",
+    "hr",
     "fr",
     "fr-CA",
-    "gl",
-    "ka",
     "de",
-    "el",
-    "gu-IN",
-    "haw",
-    "he",
-    "hi",
-    "hu",
-    "is",
-    "id",
     "it",
-    "ja",
-    "kab",
-    "kn",
-    "kk",
-    "ko",
-    "ku",
-    "kmr",
-    "lv",
-    "lt",
-    "ms",
-    "ml-IN",
-    "mr",
-    "no",
-    "nb",
-    "nn-NO",
-    "ps",
-    "fa",
     "pl",
-    "pt-PT",
     "pt-BR",
-    "pa-IN",
-    "ro",
-    "ru",
-    "sat",
-    "sr",
-    "si-LK",
-    "sk",
-    "sl",
     "es-ES",
     "es-MX",
-    "su",
-    "sw",
-    "sw-TZ",
-    "sv-SE",
-    "tl",
-    "ta",
-    "te",
-    "th",
     "tr",
-    "uk",
-    "ur-IN",
-    "ur-PK",
-    "vi",
-    "cy",
 ]
+const url = new URL(window.location.href)
+lang = url.searchParams.get("lang") || navigator.language || "en"
 // load localized strings
 async function loadTranslations() {
-    const url = new URL(window.location.href)
-    lang = url.searchParams.get("lang") || navigator.language || "en"
     if (supportedLanguages.indexOf(lang) < 0) lang = lang.split("-", 1)[0] || ""
     if (supportedLanguages.indexOf(lang) < 0) lang = "en"
 

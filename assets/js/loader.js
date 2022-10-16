@@ -48,15 +48,6 @@ function makeCodeRun(options) {
             })
             document.body.dataset.version = meta.version
             document.body.dataset.simUrl = meta.simUrl
-            const vel = document.getElementById("version")
-            if (meta.version && vel) {
-                const ap = document.createElement("a")
-                ap.download = `microcode.${meta.version}.hex`
-                ap.href =
-                    "https://microsoft.github.io/microcode/assets/firmware.hex"
-                ap.innerText = meta.version
-                vel.appendChild(ap)
-            }
             // load simulator with correct version
             const simUrl = new URL(meta.simUrl)
             simUrl.searchParams.set("background-color", "3f3f3f")
