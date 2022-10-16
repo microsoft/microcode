@@ -1,4 +1,10 @@
-import { writeFileSync, readFileSync, copyFileSync } from "fs"
+import {
+    writeFileSync,
+    readFileSync,
+    copyFileSync,
+    mkdirSync,
+    existsSync,
+} from "fs"
 import fetch from "node-fetch"
 import { execSync } from "child_process"
 
@@ -34,6 +40,11 @@ for (const lang of languages.filter(l => l !== "pxt")) {
         console.log(`  not enough translations`)
         continue
     }
+
+    const dn = `./assets/strings/${lang}`
+    if (!existsSync(dn)) mkdirSync(dn)
+    writeFileSync(`${dn}/tooltips.json`, JSON.stringify(translations, null, 2))
+
     // merge translations
     Object.keys(tooltips)
         .filter(k => !translations[k])
