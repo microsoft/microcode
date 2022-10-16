@@ -11,7 +11,10 @@ const cdn = `https://distributions.crowdin.net/${distributionhash}/`
 const manifest = await (await fetch(`${cdn}manifest.json`)).json()
 const { languages, timestamp } = manifest
 
+languages.splice(languages.indexOf("en"), 1)
+languages.unshift("en")
 console.log({ languages, timestamp })
+const supported = []
 
 for (const lang of languages.filter(l => l !== "pxt")) {
     console.log(`build hex for '${lang}'`)
@@ -43,4 +46,7 @@ namespace microcode {
         "./built/n3/binary.hex",
         `./assets/hex/microcode-${lang.toLowerCase()}.hex`
     )
+    supported.push(lang)
 }
+
+writeFileSync("./assets/languages.json", JSON.stringify(supported, null, 2))
