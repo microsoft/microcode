@@ -12,7 +12,7 @@ The localization is handled through [Crowdin](https://crowdin.com). You will nee
 
 -   **translate [tooltips string](https://crowdin.com/translate/makecode/12056)**
 
-Once your translations are added, someone will have to approve if you are a proofreader, go a head and approve them. Then send us a comment on the crowdin message board to refresh the build.
+Once your translations are added, someone will have to approve if you are a proofreader, go ahead and approve them. Then send us a comment on the crowdin message board to refresh the build.
 
 ## Adding tooltips in source code
 
