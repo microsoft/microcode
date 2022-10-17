@@ -368,7 +368,7 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 function mapAriaId(ariaId) {
-    return (tooltipStrings[ariaId] || ariaId).split(/_/g).join(" ")
+    return tooltipStrings[ariaId] || ""
 }
 
 function parseSemver(v) {
