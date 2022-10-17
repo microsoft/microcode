@@ -61,7 +61,7 @@ namespace microcode {
     writeFileSync("./tooltips.ts", ts, { encoding: "utf8" })
 
     // build js
-    execSync("makecode")
+    execSync("makecode --java-script")
     copyFileSync(
         "./built/binary.js",
         `./assets/js/binary-${lang.toLowerCase()}.js`
