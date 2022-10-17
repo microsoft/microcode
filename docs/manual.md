@@ -55,6 +55,7 @@ MicroCode will pick up the user language from the browser, or you can force the 
 -   [French](../?lang=fr)
 -   [French, Canada](../?lang=fr-CA)
 -   [Italian](../?lang=it)
+-   [Japanese](../?lang=ja)
 -   [Polish](../?lang=pl)
 -   [Portuguese, Brazilian](../?lang=pt-BR)
 -   [Spanish](../?lang=es-ES)
