@@ -382,6 +382,7 @@ let voice
 function speak(text) {
     if (!text || !speakTooltips) return
 
+    console.debug(`speak ${text}`)
     const synth = window.speechSynthesis
     synth.cancel()
     if (!voice) {
@@ -461,7 +462,7 @@ function setLiveRegion(value, force) {
     }
     value = value || ""
     if (force && liveRegion.textContent === value) liveRegion.textContent = ""
-    //console.debug(`aria-live: ${value}`)
+    console.debug(`aria-live: ${value}`)
     liveRegion.textContent = value
     playClick()
 }
