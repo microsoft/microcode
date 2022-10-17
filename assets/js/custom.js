@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // track connection state and update button
         bus.on(jacdac.CONNECTION_STATE, refreshUI)
         bus.on(jacdac.ERROR, e => {
-            appInsights?.trackException({ exception: e })
+            window.appInsights?.trackException({ exception: e })
 
             const code = e.code
             switch (code) {
@@ -396,7 +396,9 @@ function speak(text) {
         console.debug(`voice found`, { voice })
     }
     const utterance = new SpeechSynthesisUtterance(text)
+    utterance.lang = editorLang
     utterance.voice = voice
+    utterance.rate = 1.25
     synth.speak(utterance)
     synth.resume()
 }
