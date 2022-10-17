@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
         else
             voicebtn.onclick = () => {
                 speakTooltips = !speakTooltips
-                speak(liveRegion.textContent || "")
+                speak(liveRegion.dataset["text"] || "")
             }
     }
 
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // track connection state and update button
         bus.on(jacdac.CONNECTION_STATE, refreshUI)
         bus.on(jacdac.ERROR, e => {
-            appInsights?.trackException({ exception: e })
+            window.appInsights?.trackException({ exception: e })
 
             const code = e.code
             switch (code) {
@@ -322,7 +322,6 @@ addSimMessageHandler("usb", async data => {
 
 let liveRegion
 let tooltipStrings = {}
-let ariaLiveStrings = {}
 
 const supportedLanguages = [
     "en",
@@ -332,6 +331,7 @@ const supportedLanguages = [
     "fr-CA",
     "de",
     "it",
+    "ja",
     "pl",
     "pt-BR",
     "es-ES",
@@ -339,64 +339,36 @@ const supportedLanguages = [
     "tr",
 ]
 const url = new URL(window.location.href)
-const editorLang = (() => {
+const editorLang = (window.editor = (() => {
     let lang = url.searchParams.get("lang") || navigator.language || "en"
     if (supportedLanguages.indexOf(lang) < 0) lang = lang.split("-", 1)[0] || ""
     if (supportedLanguages.indexOf(lang) < 0) lang = "en"
     return lang
-})()
+})())
+
+async function fetchJSON(url) {
+    const resp = await fetch(url)
+    if (!resp.ok) return undefined
+    return await resp.json()
+}
 
 // load localized strings
 async function loadTranslations() {
     console.debug(`loading translations for ${editorLang}`)
-    // load en language strings
-    tooltipStrings = await (await fetch(`./locales/tooltips.json`)).json()
-    ariaLiveStrings = await (await fetch(`./locales/strings.json`)).json()
-    merge(ariaLiveStrings, tooltipStrings)
-
-    // load translations
-    if (editorLang !== "en") {
-        await mergeTranslationsLang()
-    }
+    const build = document.body.dataset["build"] || "local"
+    tooltipStrings =
+        (await fetchJSON(
+            `./assets/strings/${editorLang}/tooltips.json?v=${build}`
+        )) || {}
 }
-let loadTranslationsPromise = loadTranslations()
+let loadTranslationsPromise
 
-function merge(to, from) {
-    Object.entries(from || {}).forEach(
-        ([key, value]) =>
-            (to[key] = value.normalize("NFD").replace(/\p{Diacritic}/gu, ""))
-    )
-}
-
-async function mergeTranslationsLang() {
-    //   await mergeTranslations("strings", ariaLiveStrings)
-    const distributionhash = "5d4efd10823e1adf47b30e7ngzx"
-    const cdn = `https://distributions.crowdin.net/${distributionhash}/`
-    const manifest = await (await fetch(`${cdn}manifest.json`)).json()
-    const timestamp = manifest.timestamp
-    await mergeTranslations("tooltips", tooltipStrings)
-
-    async function mergeTranslations(fn, strings) {
-        const resp = await fetch(
-            `${cdn}content/${editorLang}/microcode/tooltips.json?timestamp=${timestamp}`
-        )
-        if (resp.status === 200) {
-            console.debug(`loading translations for ${editorLang}/${fn}`)
-            const translations = await resp.json()
-            merge(strings, translations)
-        }
-    }
-}
-
-async function simPostStrings() {
-    console.debug(`loc: send strings to editor`)
-    await loadTranslationsPromise
-    simPostMessage("loc", tooltipStrings)
-}
-addSimMessageHandler("loc", simPostStrings)
+window.addEventListener("DOMContentLoaded", () => {
+    loadTranslationsPromise = loadTranslations()
+})
 
 function mapAriaId(ariaId) {
-    return (ariaLiveStrings[ariaId] || ariaId).split(/_/g).join(" ")
+    return tooltipStrings[ariaId] || ""
 }
 
 function parseSemver(v) {
@@ -410,6 +382,7 @@ let voice
 function speak(text) {
     if (!text || !speakTooltips) return
 
+    console.debug(`speak ${text}`)
     const synth = window.speechSynthesis
     synth.cancel()
     if (!voice) {
@@ -423,7 +396,9 @@ function speak(text) {
         console.debug(`voice found`, { voice })
     }
     const utterance = new SpeechSynthesisUtterance(text)
+    utterance.lang = editorLang
     utterance.voice = voice
+    utterance.rate = 1.25
     synth.speak(utterance)
     synth.resume()
 }
@@ -435,8 +410,7 @@ addSimMessageHandler("accessibility", data => {
     const force = msg.force
     if (msg.type === "tile" || msg.type === "text") {
         value = mapAriaId(msg.value)
-        const tooltip = msg.tooltip
-        speak(tooltip)
+        speak(value)
     } else if (msg.type == "rule") {
         value = "rule"
         const whens = msg.whens
@@ -489,7 +463,8 @@ function setLiveRegion(value, force) {
     }
     value = value || ""
     if (force && liveRegion.textContent === value) liveRegion.textContent = ""
-    //console.debug(`aria-live: ${value}`)
+    console.debug(`aria-live: ${value}`)
+    liveRegion.dataset["text"] = value
     liveRegion.textContent = value
     playClick()
 }
