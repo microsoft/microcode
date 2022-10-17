@@ -322,7 +322,6 @@ addSimMessageHandler("usb", async data => {
 
 let liveRegion
 let tooltipStrings = {}
-let ariaLiveStrings = {}
 
 const supportedLanguages = [
     "en",
@@ -357,17 +356,10 @@ async function fetchJSON(url) {
 async function loadTranslations() {
     console.debug(`loading translations for ${editorLang}`)
     const build = document.body.dataset["build"] || "local"
-    // load en language strings
     tooltipStrings =
-        (await fetchJSON(`./locales/tooltips.json?v=${build}`)) || {}
-    ariaLiveStrings =
-        (await fetchJSON(`./locales/strings.json?v=${build}`)) || {}
-    merge(ariaLiveStrings, tooltipStrings)
-
-    // load translations
-    if (editorLang !== "en") {
-        await mergeTranslationsLang()
-    }
+        (await fetchJSON(
+            `./assets/strings/${editorLang}/tooltips.json?v=${build}`
+        )) || {}
 }
 let loadTranslationsPromise
 
@@ -375,28 +367,8 @@ window.addEventListener("DOMContentLoaded", () => {
     loadTranslationsPromise = loadTranslations()
 })
 
-function merge(to, from) {
-    Object.entries(from || {}).forEach(([key, value]) => (to[key] = value))
-}
-
-async function mergeTranslationsLang() {
-    const build = document.body.dataset["build"] || "local"
-    //   await mergeTranslations("strings", ariaLiveStrings)
-    await mergeTranslations("tooltips", tooltipStrings)
-
-    async function mergeTranslations(fn, strings) {
-        const translations = await fetchJSON(
-            `./assets/strings/${editorLang}/tooltips.json?v=${build}`
-        )
-        if (translations) {
-            console.debug(`loading translations for ${editorLang}/${fn}`)
-            merge(strings, translations)
-        }
-    }
-}
-
 function mapAriaId(ariaId) {
-    return (ariaLiveStrings[ariaId] || ariaId).split(/_/g).join(" ")
+    return (tooltipStrings[ariaId] || ariaId).split(/_/g).join(" ")
 }
 
 function parseSemver(v) {
