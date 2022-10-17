@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
         else
             voicebtn.onclick = () => {
                 speakTooltips = !speakTooltips
-                speak(liveRegion.textContent || "")
+                speak(liveRegion.dataset["text"] || "")
             }
     }
 
@@ -410,8 +410,7 @@ addSimMessageHandler("accessibility", data => {
     const force = msg.force
     if (msg.type === "tile" || msg.type === "text") {
         value = mapAriaId(msg.value)
-        const tooltip = msg.tooltip
-        speak(tooltip)
+        speak(value)
     } else if (msg.type == "rule") {
         value = "rule"
         const whens = msg.whens
@@ -465,6 +464,7 @@ function setLiveRegion(value, force) {
     value = value || ""
     if (force && liveRegion.textContent === value) liveRegion.textContent = ""
     console.debug(`aria-live: ${value}`)
+    liveRegion.dataset["text"] = value
     liveRegion.textContent = value
     playClick()
 }
