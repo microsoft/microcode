@@ -18,7 +18,6 @@ namespace microcode {
                 controller.setRepeatDefault(250, 30)
                 keymap.setupKeys()
                 icons.init()
-                accessibility.init()
 
                 // start jacscript
                 jdc.setParameters(

@@ -42,7 +42,7 @@ for (const lang of languages.filter(l => l !== "pxt")) {
         continue
     }
 
-    console.log(`  build hex`)
+    console.log(`  build js, hex`)
     const dn = `./assets/strings/${lang}`
     if (!existsSync(dn)) mkdirSync(dn)
     writeFileSync(`${dn}/tooltips.json`, JSON.stringify(translations, null, 2))
@@ -60,6 +60,12 @@ namespace microcode {
 }`
     writeFileSync("./tooltips.ts", ts, { encoding: "utf8" })
 
+    // build js
+    execSync("makecode")
+    copyFileSync(
+        "./built/binary.js",
+        `./assets/js/binary-${lang.toLowerCase()}.js`
+    )
     // build hex
     execSync("makecode --hw n3")
     copyFileSync(

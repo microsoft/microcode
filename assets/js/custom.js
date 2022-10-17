@@ -332,6 +332,7 @@ const supportedLanguages = [
     "fr-CA",
     "de",
     "it",
+    "ja",
     "pl",
     "pt-BR",
     "es-ES",
@@ -339,12 +340,12 @@ const supportedLanguages = [
     "tr",
 ]
 const url = new URL(window.location.href)
-const editorLang = (() => {
+const editorLang = (window.editor = (() => {
     let lang = url.searchParams.get("lang") || navigator.language || "en"
     if (supportedLanguages.indexOf(lang) < 0) lang = lang.split("-", 1)[0] || ""
     if (supportedLanguages.indexOf(lang) < 0) lang = "en"
     return lang
-})()
+})())
 
 async function fetchJSON(url) {
     const resp = await fetch(url)
@@ -375,10 +376,7 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 function merge(to, from) {
-    Object.entries(from || {}).forEach(
-        ([key, value]) =>
-            (to[key] = value.normalize("NFD").replace(/\p{Diacritic}/gu, ""))
-    )
+    Object.entries(from || {}).forEach(([key, value]) => (to[key] = value))
 }
 
 async function mergeTranslationsLang() {
@@ -396,13 +394,6 @@ async function mergeTranslationsLang() {
         }
     }
 }
-
-async function simPostStrings() {
-    console.debug(`loc: send strings to editor`, { tooltipStrings })
-    await loadTranslationsPromise
-    simPostMessage("loc", tooltipStrings)
-}
-addSimMessageHandler("loc", simPostStrings)
 
 function mapAriaId(ariaId) {
     return (ariaLiveStrings[ariaId] || ariaId).split(/_/g).join(" ")
