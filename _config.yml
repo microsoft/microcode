@@ -2,7 +2,7 @@ makecode:
   target: arcade
   platform: arcade
   home_url: https://arcade.makecode.com/
-remote_theme: pages-themes/hacker@v0.2.0
+remote_theme: pages-themes/cayman@v0.2.0
 include:
   - assets
   - docs
@@ -12,3 +12,4 @@ plugins:
 show_downloads: false
 title: Microsoft MicroCode (beta)
 description: Physical computing for young coders on the micro:bit V2 (beta)
+show_downloads: false

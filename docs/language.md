@@ -15,7 +15,7 @@ The picture below shows a 1-page program with two rules.
 
 ![Smiley Button MicroCode program](./images/rule.jpg){:class="screenshot"}
 
-![when button A pressed, show image smiley](./images/generated/sample_smiley_button s_page_1_rule_1.png){:class="rule"}
+![when button A pressed, show image smiley](./images/generated/sample_smiley_buttons_page_1_rule_1.png){:class="rule"}
 
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} show image smiley.
 
