@@ -748,10 +748,7 @@ namespace microcode {
                     parent: this,
                     style: ButtonStyles.Transparent,
                     icon: "do_insertion_point",
-                    ariaId:
-                        this.ruleButtons["actuators"].length == 0
-                            ? "do"
-                            : undefined,
+                    ariaId: "do",
                     x: 0,
                     y: 0,
                     onClick: () => this.showDoInsertMenu(),
