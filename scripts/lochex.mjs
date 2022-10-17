@@ -17,9 +17,10 @@ const cdn = `https://distributions.crowdin.net/${distributionhash}/`
 const manifest = await (await fetch(`${cdn}manifest.json`)).json()
 const { languages, timestamp } = manifest
 
+console.log(`crowdin languages`, { languages })
+
 languages.splice(languages.indexOf("en"), 1)
 languages.unshift("en")
-console.log({ languages, timestamp })
 const supported = []
 
 const fonts = {
@@ -41,6 +42,7 @@ for (const lang of languages.filter(l => l !== "pxt")) {
         continue
     }
 
+    console.log(`  build hex`)
     const dn = `./assets/strings/${lang}`
     if (!existsSync(dn)) mkdirSync(dn)
     writeFileSync(`${dn}/tooltips.json`, JSON.stringify(translations, null, 2))
@@ -68,3 +70,4 @@ namespace microcode {
 }
 
 writeFileSync("./assets/languages.json", JSON.stringify(supported, null, 2))
+console.log(`supported languages`, { supported })
