@@ -346,12 +346,21 @@ const editorLang = (() => {
     return lang
 })()
 
+async function fetchJSON(url) {
+    const resp = await fetch(url)
+    if (!resp.ok) return undefined
+    return await resp.json()
+}
+
 // load localized strings
 async function loadTranslations() {
     console.debug(`loading translations for ${editorLang}`)
+    const build = document.body.dataset["build"] || "local"
     // load en language strings
-    tooltipStrings = await (await fetch(`./locales/tooltips.json`)).json()
-    ariaLiveStrings = await (await fetch(`./locales/strings.json`)).json()
+    tooltipStrings =
+        (await fetchJSON(`./locales/tooltips.json?v=${build}`)) || {}
+    ariaLiveStrings =
+        (await fetchJSON(`./locales/strings.json?v=${build}`)) || {}
     merge(ariaLiveStrings, tooltipStrings)
 
     // load translations
@@ -359,7 +368,11 @@ async function loadTranslations() {
         await mergeTranslationsLang()
     }
 }
-let loadTranslationsPromise = loadTranslations()
+let loadTranslationsPromise
+
+window.addEventListener("DOMContentLoaded", () => {
+    loadTranslationsPromise = loadTranslations()
+})
 
 function merge(to, from) {
     Object.entries(from || {}).forEach(
@@ -369,27 +382,23 @@ function merge(to, from) {
 }
 
 async function mergeTranslationsLang() {
+    const build = document.body.dataset["build"] || "local"
     //   await mergeTranslations("strings", ariaLiveStrings)
-    const distributionhash = "5d4efd10823e1adf47b30e7ngzx"
-    const cdn = `https://distributions.crowdin.net/${distributionhash}/`
-    const manifest = await (await fetch(`${cdn}manifest.json`)).json()
-    const timestamp = manifest.timestamp
     await mergeTranslations("tooltips", tooltipStrings)
 
     async function mergeTranslations(fn, strings) {
-        const resp = await fetch(
-            `${cdn}content/${editorLang}/microcode/tooltips.json?timestamp=${timestamp}`
+        const translations = await fetchJSON(
+            `./assets/strings/${editorLang}/tooltips.json?v=${build}`
         )
-        if (resp.status === 200) {
+        if (translations) {
             console.debug(`loading translations for ${editorLang}/${fn}`)
-            const translations = await resp.json()
             merge(strings, translations)
         }
     }
 }
 
 async function simPostStrings() {
-    console.debug(`loc: send strings to editor`)
+    console.debug(`loc: send strings to editor`, { tooltipStrings })
     await loadTranslationsPromise
     simPostMessage("loc", tooltipStrings)
 }
