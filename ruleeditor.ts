@@ -241,7 +241,7 @@ namespace microcode {
                 this.page.changed()
             }
             const newFieldEditor = (tile: TileDefn, del = false) => {
-                const newOne = tile.getNewInstance()
+                const newOne = del ? tile : tile.getNewInstance()
                 const fieldEditor = newOne.fieldEditor
                 this.editor.captureBackground()
                 fieldEditor.editor(
