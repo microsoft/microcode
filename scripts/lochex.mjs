@@ -32,11 +32,14 @@ const fonts = {
 
 for (const lang of languages.filter(l => l !== "pxt")) {
     console.log(`build hex for '${lang}'`)
-    const translations = await (
-        await fetch(
-            `${cdn}content/${lang}/microcode/tooltips.json?timestamp=${timestamp}`
-        )
-    ).json()
+    const translations =
+        lang === "en"
+            ? JSON.parse(JSON.stringify(tooltips))
+            : await (
+                  await fetch(
+                      `${cdn}content/${lang}/microcode/tooltips.json?timestamp=${timestamp}`
+                  )
+              ).json()
     const ntranslate = Object.keys(translations).length
     console.debug(`  found ${ntranslate} translations`)
     if (lang !== "en" && ntranslate < ntooltips * 0.8) {
