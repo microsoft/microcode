@@ -3,6 +3,7 @@ namespace microcode {
         icon: string | Image
         style?: ButtonStyle
         ariaId?: string
+        start?: boolean
     }
 
     export class PickerButton extends Button {
@@ -74,6 +75,7 @@ namespace microcode {
         private navigator: INavigator
         private prevState: CursorState
         private deleteBtn: Button
+        private startBtn: Button
         private panel: Bounds
         private onClick: (btn: string, button?: Button) => void
         private onHide: () => void
@@ -124,6 +126,7 @@ namespace microcode {
             },
             hideOnClick: boolean = true
         ) {
+            this.startBtn = undefined
             this.onClick = opts.onClick
             this.onHide = opts.onHide
             this.onDelete = opts.onDelete
@@ -157,9 +160,11 @@ namespace microcode {
                 btns.forEach(btn => {
                     const button = new PickerButton(this, btn)
                     group.buttons.push(button)
+                    if (btn.start)
+                        this.startBtn = button
                 })
             })
-            this.layout(opts.selected)
+            this.layout()
             this.visible = true
         }
 
@@ -197,7 +202,7 @@ namespace microcode {
             if (this.deleteBtn) this.deleteBtn.draw()
         }
 
-        private layout(selected: number) {
+        private layout() {
             this.panel = new Bounds()
             const padding = 2
             let top = padding
@@ -232,9 +237,14 @@ namespace microcode {
             this.xfrm.localPos.x = padding - (this.panel.width >> 1)
             this.xfrm.localPos.y = padding - (this.panel.height >> 1)
 
-            if (selected === undefined) selected = 0
-            const btn = this.navigator.initialCursor(this.deleteBtn ? 1 : 0, selected)
-            this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
+            if (!this.startBtn) {
+                const btn = this.navigator.initialCursor(this.deleteBtn ? 1 : 0, 0)
+                this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
+            } else {
+                const btn = this.startBtn
+                this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
+                this.navigator.screenToButton(btn.xfrm.worldPos.x, btn.xfrm.worldPos.y)
+            }
         }
     }
 

@@ -249,7 +249,6 @@ namespace microcode {
                     this.editor.picker,
                     () => {
                         this.editor.releaseBackground()
-
                         tileUpdated(newOne)
                     }
                 )
@@ -291,12 +290,13 @@ namespace microcode {
                 return
             }
             let onDelete = undefined
-            let selected = undefined
             if (index < ruleTiles.length) {
                 onDelete = () => {
                     tileUpdated(undefined)
                 }
-                selected = btns.indexOf(btns.find(b => b.icon === ruleTiles[index].tid))
+                const selected = btns.indexOf(btns.find(b => b.icon === ruleTiles[index].tid))
+                if (selected >= 0)
+                    btns[selected].start = true
             }
             if (btns.length) {
                 this.editor.picker.addGroup({ btns })
@@ -315,8 +315,7 @@ namespace microcode {
                         }
                         tileUpdated(theOne)
                     },
-                    onDelete,
-                    selected
+                    onDelete
                 })
             }
             return
