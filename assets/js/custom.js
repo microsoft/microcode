@@ -90,9 +90,7 @@ async function flashJacscriptService(service, data) {
         console.debug(
             `jacscript: invalid or unknown product identifier ${productIdentifier}`
         )
-        window.appInsights?.trackEvent({
-            name: "firmware.wrongpid",
-        })
+        trackEvent("firmware.wrongpid")
         showOutdatedFirmwareDialog()
         return
     }
@@ -105,8 +103,7 @@ async function flashJacscriptService(service, data) {
     const semcur = parseSemver(firmwareVersion)
     if (semweb[0] > semcur[0] || semweb[1] > semcur[1]) {
         console.debug(`outdated firmware: ${firmwareVersion}`)
-        window.appInsights?.trackEvent({
-            name: "firmware.outdated",
+        trackEvent("firmware.outdated", {
             firmwareVersion,
         })
         showOutdatedFirmwareDialog()
@@ -117,14 +114,13 @@ async function flashJacscriptService(service, data) {
         console.trace(
             `jacscript: deployment to ${service} in progress, skipping`
         )
-        window.appInsights?.trackEvent({ name: "jacscript.deploy.concurrent" })
+        trackEvent("jacscript.deploy.concurrent")
         return
     }
 
     try {
         console.debug(`jacscript: deploying to ${service}`)
-        window.appInsights?.trackEvent({
-            name: "firmware.deploy",
+        trackEvent("firmware.deploy", {
             firmwareVersion,
             bytes: data.length,
         })
@@ -135,13 +131,9 @@ async function flashJacscriptService(service, data) {
             data
         )
         console.debug(`jacscript: deployed to ${service}`)
-        window.appInsights?.trackEvent({
-            name: "firmware.deploy.success",
-        })
+        trackEvent("firmware.deploy.success")
     } catch (e) {
-        window.appInsights?.trackEvent({
-            name: "firmware.deploy.fail",
-        })
+        trackEvent("firmware.deploy.fail")
         window.appInsights?.trackException({
             exception: e,
         })
@@ -154,9 +146,7 @@ async function flashJacscriptService(service, data) {
         console.debug(
             `jacscript: restarting ${service} deployment with newer bytecode`
         )
-        window.appInsights?.trackEvent({
-            name: "firmware.deploy.redo",
-        })
+        trackEvent("firmware.deploy.redo")
         flashJacscriptService(service, lastData)
     }
 }
@@ -655,19 +645,21 @@ ${jsg
     }
 }
 
-addSimMessageHandler("analytics", buf => {
-    const msg = JSON.parse(uint8ArrayToString(buf))
+function trackEvent(name, props) {
     const appInsights = window.appInsights
     if (!appInsights) return
 
-    const properties = msg.data || {}
+    const properties = props || {}
     properties["version"] = document.body.dataset.version
     properties["lang"] = editorLang
-    if (msg.type === "event") {
-        //console.debug(msg.msg, { properties })
-        appInsights.trackEvent({
-            name: msg.msg,
-            properties,
-        })
-    }
+    // console.debug(msg.msg, { properties })
+    appInsights.trackEvent({
+        name,
+        properties,
+    })
+}
+
+addSimMessageHandler("analytics", buf => {
+    const msg = JSON.parse(uint8ArrayToString(buf))
+    if (msg.type === "event") trackEvent(msg.msg, msg.data)
 })
