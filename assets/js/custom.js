@@ -325,7 +325,9 @@ let tooltipStrings = {}
 
 const supportedLanguages = [
     "en",
+    "eu",
     "ca",
+    "zh-CN",
     "hr",
     "fr",
     "fr-CA",
@@ -337,6 +339,7 @@ const supportedLanguages = [
     "es-ES",
     "es-MX",
     "tr",
+    "cy",
 ]
 const url = new URL(window.location.href)
 const editorLang = (window.editor = (() => {

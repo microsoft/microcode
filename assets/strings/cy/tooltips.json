@@ -1,8 +1,4 @@
-// auto-generated, run 'node scripts/locs.js' to refresh
-namespace microcode {
-    export const lang = "cy"
-    export const font = image.font8
-    export const tooltips: any = {
+{
   "tagline": "ar gyfer micro: bit V2",
   "sensors": "pryd...",
   "actuators": "gwneud...",
@@ -113,5 +109,4 @@ namespace microcode {
   "A20_rainbow": "enfys",
   "A20_sparkle": "disgleirio",
   "A21_": "gosod ongl servo"
-}
 }

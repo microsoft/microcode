@@ -26,6 +26,8 @@ const supported = []
 const fonts = {
     ar: 12,
     ja: 12,
+    "zh-CN": 12,
+    ko: 12,
 }
 
 for (const lang of languages.filter(l => l !== "pxt")) {

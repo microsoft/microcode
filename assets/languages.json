@@ -1,6 +1,8 @@
 [
   "en",
+  "eu",
   "ca",
+  "zh-CN",
   "hr",
   "fr",
   "fr-CA",
@@ -11,5 +13,6 @@
   "pt-BR",
   "es-ES",
   "es-MX",
-  "tr"
+  "tr",
+  "cy"
 ]

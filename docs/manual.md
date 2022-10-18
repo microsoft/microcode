@@ -48,7 +48,9 @@ Click on that button to reconnect again.
 MicroCode is community translated through Crowdin. Please read on [localization](./localization) to get started.
 MicroCode will pick up the user language from the browser, or you can force the locale by adding `?lang=[code]` where `[code]` is the language iso code.
 
+-   [Basque](../?lang=eu)
 -   [Catalan](../?lang=ca)
+-   [Chinese simplified](../?lang=zh-CN)
 -   [Croatian](../?lang=hr)
 -   [English](../)
 -   [German](../?lang=de)
@@ -61,6 +63,7 @@ MicroCode will pick up the user language from the browser, or you can force the 
 -   [Spanish](../?lang=es-ES)
 -   [Spanish (Mexico)](../?lang=es-MX)
 -   [Turkish](../?lang=tr)
+-   [Welsh](../?lang=cy)
 
 ### Accessibility
 
