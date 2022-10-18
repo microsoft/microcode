@@ -151,7 +151,7 @@ namespace microcode {
             if (text) {
                 const pos = this.ariaPos || this.xfrm.localPos
                 const n = text.length
-                const font = image.font5
+                const font = microcode.font
                 const w = font.charWidth * n
                 const h = font.charHeight
                 const x = Math.max(
@@ -159,7 +159,7 @@ namespace microcode {
                     Math.min(Screen.RIGHT_EDGE - 1 - w, pos.x - (w >> 1))
                 )
                 const y = Math.min(
-                    pos.y + (this.size.width >= 32 ? 14 : 7) + font.charHeight,
+                    pos.y + (this.size.width >> 1) + (font.charHeight >> 1) + 1,
                     Screen.BOTTOM_EDGE - 1 - font.charHeight
                 )
                 Screen.fillRect(x - 1, y - 1, w + 1, h + 2, 15)

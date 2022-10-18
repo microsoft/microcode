@@ -80,9 +80,6 @@ namespace microcode {
     export const TID_MODIFIER_COIN_4 = "M9"
     export const TID_MODIFIER_COIN_5 = "M10"
 
-    export const TID_MODIFIER_ON = "M11"
-    export const TID_MODIFIER_OFF = "M12"
-
     export const TID_MODIFIER_ICON_EDITOR = "M15"
     export const TID_MODIFIER_COLOR_RED = "M16"
     export const TID_MODIFIER_COLOR_DARKPURPLE = "M17"

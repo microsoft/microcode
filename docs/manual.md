@@ -2,9 +2,9 @@
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 
-# [Microsoft MicroCode](https://aka.ms/m9) for micro:bit (beta)
+# [Microsoft MicroCode](https://aka.ms/m9) for micro:bit
 
-Physical computing for young coders and coders with disabilities on the [micro:bit V2](https://microbit.org).
+Physical computing for young learners on the [micro:bit V2](https://microbit.org).
 
 > MicroCode is still in **beta** development and might change in the future. Post your suggestions or questions on the [forum](https://forum.makecode.com/c/60).
 
@@ -18,7 +18,8 @@ Physical computing for young coders and coders with disabilities on the [micro:b
 
 ## [Web editor](https://aka.ms/m9) {#web}
 
-The MicroCode web editor is at [aka.ms/m9](https://aka.ms/m9). We recommend using the keyboard navigation. MicroCode is designed to be friendly to switch access devices.
+The MicroCode web editor is at [aka.ms/m9](https://aka.ms/m9). We recommend using the keyboard navigation.
+MicroCode is designed to be friendly to switch access devices.
 
 -   `Left`, `Right`, `Up`, `Down` moves the cursor
     -   the `Left` and `Right` keys will wrap around in the editor on the **same** page
@@ -29,16 +30,40 @@ The MicroCode web editor is at [aka.ms/m9](https://aka.ms/m9). We recommend usin
 -   `]` or `Page Up` to go to the next page, `[` or `Page Down` to go to the previous page
 -   Copy the URL to share your program.
 
-[![MicroCode web app](./images/website2.jpg){:class="screenshot"}](https://aka.ms/m9)
+{% include youtube.html id="mbF-HU9IZ-A" %}
 
 ### Automatic download to micro:bit V2
 
-Click on the micro:bit button at the lower right of the web app (see above) and follow the on-screen instructions to configure your micro:bit V2 and pair it with the editor.
+Click on the micro:bit button at the lower right of the web app (see above) and follow
+the on-screen instructions to configure your micro:bit V2 and pair it with the editor.
 Once your micro:bit V2 is paired, the web editor will be able to download your
 MicroCode program to your micro:bit. This happens on every edit, so your program
 is always up-to-date (and running)!
 
-If you micro:bit disconnect, you will see a micro:bit icon show up on the upper left corner of the editor. Click on that button to reconnect again
+If your micro:bit disconnects, you will see a micro:bit icon show up on the upper left corner of the editor.
+Click on that button to reconnect again.
+
+### Localization
+
+MicroCode is community translated through Crowdin. Please read on [localization](./localization) to get started.
+MicroCode will pick up the user language from the browser, or you can force the locale by adding `?lang=[code]` where `[code]` is the language iso code.
+
+-   [Basque](../?lang=eu) ([download](../assets/hex/microcode-eu.hex))
+-   [Catalan](../?lang=ca) ([download](../assets/hex/microcode-ca.hex))
+-   [Chinese simplified](../?lang=zh-CN) ([download](../assets/hex/microcode-zh-cn.hex))
+-   [Croatian](../?lang=hr) ([download](../assets/hex/microcode-hr.hex))
+-   [English](../) ([download](../assets/hex/microcode-en.hex))
+-   [German](../?lang=de) ([download](../assets/hex/microcode-de.hex))
+-   [French](../?lang=fr) ([download](../assets/hex/microcode-fr.hex))
+-   [French, Canada](../?lang=fr-CA) ([download](../assets/hex/microcode-fr-ca.hex))
+-   [Italian](../?lang=it) ([download](../assets/hex/microcode-it.hex))
+-   [Japanese](../?lang=ja) ([download](../assets/hex/microcode-ja.hex))
+-   [Polish](../?lang=pl) ([download](../assets/hex/microcode-pl.hex))
+-   [Portuguese, Brazilian](../?lang=pt-BR) ([download](../assets/hex/microcode-pt-br.hex))
+-   [Spanish](../?lang=es-ES) ([download](../assets/hex/microcode-es-es.hex))
+-   [Spanish (Mexico)](../?lang=es-MX) ([download](../assets/hex/microcode-es-mx.hex))
+-   [Turkish](../?lang=tr) ([download](../assets/hex/microcode-tr.hex))
+-   [Welsh](../?lang=cy) ([download](../assets/hex/microcode-cy.hex))
 
 ### Accessibility
 
@@ -53,7 +78,8 @@ MicroCode can be accessed with the keyboard:
 -   `Backspace` for `B` button
 -   Keep moving the cursor `Up` to go back a screen, if `Backspace` is not available;
     for example, if you are using a 5-input switch panel.
--   Keep moving `Right` or `Left` to wrap around the user interface; for example, if you are using a 2-input switch panel.
+-   Keep moving `Right` or `Left` to wrap around the user interface; for example,
+    if you are using a 2-input switch panel.
 
 #### Gamepads
 
@@ -98,9 +124,10 @@ Click on the version number in the web app to download the MicroCode hex file to
 
 ## Acknowledgments
 
+-   Microsoft Garage for kick starting this project during the 2022 Microsoft Hackathon.
 -   [@loretod101](https://twitter.com/loretod101) on advising on accessibility features, including switch access support.
 -   [@BillSeiver](https://twitter.com/BillSiever) on feedback for tiles, including the `page start` tile
--   Microsoft Garage for kick starting this project during the 2022 Microsoft Hackathon.
+-   [@eliseli\_](https://twitter.com/eliseli_) for the Spanish translation
 
 ## Contributing
 

@@ -25,16 +25,6 @@
 - icon
 
 
-### ![next page](./images/generated/icon_next_page.png){:class="icon"} `next page` {#icon_next_page}
-
-- icon
-
-
-### ![prev page](./images/generated/icon_prev_page.png){:class="icon"} `prev page` {#icon_prev_page}
-
-- icon
-
-
 ### ![rule handle](./images/generated/icon_rule_handle.png){:class="icon"} `rule handle` {#icon_rule_handle}
 
 - icon
@@ -120,407 +110,407 @@
 - icon
 
 
-### ![timer](./images/generated/icon_S4.png){:class="icon"} `timer` {#icon_S4}
+### ![S4](./images/generated/icon_S4.png){:class="icon"} `S4` {#icon_S4}
 
 - icon
 
 
-### ![radio receive](./images/generated/icon_S7.png){:class="icon"} `radio receive` {#icon_S7}
+### ![S7](./images/generated/icon_S7.png){:class="icon"} `S7` {#icon_S7}
 
 - icon
 
 
-### ![press](./images/generated/icon_S2.png){:class="icon"} `press` {#icon_S2}
+### ![S2](./images/generated/icon_S2.png){:class="icon"} `S2` {#icon_S2}
 
 - icon
 
 
-### ![release](./images/generated/icon_S2B.png){:class="icon"} `release` {#icon_S2B}
+### ![S2B](./images/generated/icon_S2B.png){:class="icon"} `S2B` {#icon_S2B}
 
 - icon
 
 
-### ![microphone](./images/generated/icon_S8.png){:class="icon"} `microphone` {#icon_S8}
+### ![S8](./images/generated/icon_S8.png){:class="icon"} `S8` {#icon_S8}
 
 - icon
 
 
-### ![accelerometer](./images/generated/icon_S3.png){:class="icon"} `accelerometer` {#icon_S3}
+### ![S3](./images/generated/icon_S3.png){:class="icon"} `S3` {#icon_S3}
 
 - icon
 
 
-### ![variable X changed](./images/generated/icon_S9A.png){:class="icon"} `variable X changed` {#icon_S9A}
+### ![S9A](./images/generated/icon_S9A.png){:class="icon"} `S9A` {#icon_S9A}
 
 - icon
 
 
-### ![variable Y changed](./images/generated/icon_S9B.png){:class="icon"} `variable Y changed` {#icon_S9B}
+### ![S9B](./images/generated/icon_S9B.png){:class="icon"} `S9B` {#icon_S9B}
 
 - icon
 
 
-### ![variable Z changed](./images/generated/icon_S9C.png){:class="icon"} `variable Z changed` {#icon_S9C}
+### ![S9C](./images/generated/icon_S9C.png){:class="icon"} `S9C` {#icon_S9C}
 
 - icon
 
 
-### ![magnet detector](./images/generated/icon_S10.png){:class="icon"} `magnet detector` {#icon_S10}
+### ![S10](./images/generated/icon_S10.png){:class="icon"} `S10` {#icon_S10}
 
 - icon
 
 
-### ![page start](./images/generated/icon_S1.png){:class="icon"} `page start` {#icon_S1}
+### ![S1](./images/generated/icon_S1.png){:class="icon"} `S1` {#icon_S1}
 
 - icon
 
 
-### ![logo](./images/generated/icon_F7.png){:class="icon"} `logo` {#icon_F7}
+### ![F7](./images/generated/icon_F7.png){:class="icon"} `F7` {#icon_F7}
 
 - icon
 
 
-### ![touch pin 0](./images/generated/icon_F0.png){:class="icon"} `touch pin 0` {#icon_F0}
+### ![F0](./images/generated/icon_F0.png){:class="icon"} `F0` {#icon_F0}
 
 - icon
 
 
-### ![touch pin 1](./images/generated/icon_F1.png){:class="icon"} `touch pin 1` {#icon_F1}
+### ![F1](./images/generated/icon_F1.png){:class="icon"} `F1` {#icon_F1}
 
 - icon
 
 
-### ![touch pin 2](./images/generated/icon_F2.png){:class="icon"} `touch pin 2` {#icon_F2}
+### ![F2](./images/generated/icon_F2.png){:class="icon"} `F2` {#icon_F2}
 
 - icon
 
 
-### ![button A](./images/generated/icon_F3.png){:class="icon"} `button A` {#icon_F3}
+### ![F3](./images/generated/icon_F3.png){:class="icon"} `F3` {#icon_F3}
 
 - icon
 
 
-### ![button B](./images/generated/icon_F4.png){:class="icon"} `button B` {#icon_F4}
+### ![F4](./images/generated/icon_F4.png){:class="icon"} `F4` {#icon_F4}
 
 - icon
 
 
-### ![quater of a second](./images/generated/icon_F13.png){:class="icon"} `quater of a second` {#icon_F13}
+### ![F13](./images/generated/icon_F13.png){:class="icon"} `F13` {#icon_F13}
 
 - icon
 
 
-### ![one second](./images/generated/icon_F14.png){:class="icon"} `one second` {#icon_F14}
+### ![F14](./images/generated/icon_F14.png){:class="icon"} `F14` {#icon_F14}
 
 - icon
 
 
-### ![5 seconds](./images/generated/icon_F19.png){:class="icon"} `5 seconds` {#icon_F19}
+### ![F19](./images/generated/icon_F19.png){:class="icon"} `F19` {#icon_F19}
 
 - icon
 
 
-### ![1 random second](./images/generated/icon_F18.png){:class="icon"} `1 random second` {#icon_F18}
+### ![F18](./images/generated/icon_F18.png){:class="icon"} `F18` {#icon_F18}
 
 - icon
 
 
-### ![1](./images/generated/icon_F8.png){:class="icon"} `1` {#icon_F8}
+### ![F8](./images/generated/icon_F8.png){:class="icon"} `F8` {#icon_F8}
 
 - icon
 
 
-### ![2](./images/generated/icon_F9.png){:class="icon"} `2` {#icon_F9}
+### ![F9](./images/generated/icon_F9.png){:class="icon"} `F9` {#icon_F9}
 
 - icon
 
 
-### ![3](./images/generated/icon_F10.png){:class="icon"} `3` {#icon_F10}
+### ![F10](./images/generated/icon_F10.png){:class="icon"} `F10` {#icon_F10}
 
 - icon
 
 
-### ![4](./images/generated/icon_F11.png){:class="icon"} `4` {#icon_F11}
+### ![F11](./images/generated/icon_F11.png){:class="icon"} `F11` {#icon_F11}
 
 - icon
 
 
-### ![5](./images/generated/icon_F12.png){:class="icon"} `5` {#icon_F12}
+### ![F12](./images/generated/icon_F12.png){:class="icon"} `F12` {#icon_F12}
 
 - icon
 
 
-### ![loud](./images/generated/icon_F15.png){:class="icon"} `loud` {#icon_F15}
+### ![F15](./images/generated/icon_F15.png){:class="icon"} `F15` {#icon_F15}
 
 - icon
 
 
-### ![quiet](./images/generated/icon_F16.png){:class="icon"} `quiet` {#icon_F16}
+### ![F16](./images/generated/icon_F16.png){:class="icon"} `F16` {#icon_F16}
 
 - icon
 
 
-### ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` {#icon_A1}
+### ![A1](./images/generated/icon_A1.png){:class="icon"} `A1` {#icon_A1}
 
 - icon
 
 
-### ![show image](./images/generated/icon_A5.png){:class="icon"} `show image` {#icon_A5}
+### ![A5](./images/generated/icon_A5.png){:class="icon"} `A5` {#icon_A5}
 
 - icon
 
 
-### ![show number](./images/generated/icon_A10.png){:class="icon"} `show number` {#icon_A10}
+### ![A10](./images/generated/icon_A10.png){:class="icon"} `A10` {#icon_A10}
 
 - icon
 
 
-### ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` {#icon_A6}
+### ![A6](./images/generated/icon_A6.png){:class="icon"} `A6` {#icon_A6}
 
 - icon
 
 
-### ![radio set group](./images/generated/icon_A6A.png){:class="icon"} `radio set group` {#icon_A6A}
+### ![A6A](./images/generated/icon_A6A.png){:class="icon"} `A6A` {#icon_A6A}
 
 - icon
 
 
-### ![microphone](./images/generated/icon_A3.png){:class="icon"} `microphone` {#icon_A3}
+### ![A3](./images/generated/icon_A3.png){:class="icon"} `A3` {#icon_A3}
 
 - icon
 
 
-### ![speaker](./images/generated/icon_A2.png){:class="icon"} `speaker` {#icon_A2}
+### ![A2](./images/generated/icon_A2.png){:class="icon"} `A2` {#icon_A2}
 
 - icon
 
 
-### ![music](./images/generated/icon_A4.png){:class="icon"} `music` {#icon_A4}
+### ![A4](./images/generated/icon_A4.png){:class="icon"} `A4` {#icon_A4}
 
 - icon
 
 
-### ![LED](./images/generated/icon_A8.png){:class="icon"} `LED` {#icon_A8}
+### ![A8](./images/generated/icon_A8.png){:class="icon"} `A8` {#icon_A8}
 
 - icon
 
 
-### ![set variable X](./images/generated/icon_A9A.png){:class="icon"} `set variable X` {#icon_A9A}
+### ![A9A](./images/generated/icon_A9A.png){:class="icon"} `A9A` {#icon_A9A}
 
 - icon
 
 
-### ![set variable Y](./images/generated/icon_A9B.png){:class="icon"} `set variable Y` {#icon_A9B}
+### ![A9B](./images/generated/icon_A9B.png){:class="icon"} `A9B` {#icon_A9B}
 
 - icon
 
 
-### ![set variable Z](./images/generated/icon_A9C.png){:class="icon"} `set variable Z` {#icon_A9C}
+### ![A9C](./images/generated/icon_A9C.png){:class="icon"} `A9C` {#icon_A9C}
 
 - icon
 
 
-### ![LED image](./images/generated/icon_M15.png){:class="icon"} `LED image` {#icon_M15}
+### ![M15](./images/generated/icon_M15.png){:class="icon"} `M15` {#icon_M15}
 
 - icon
 
 
-### ![dice](./images/generated/icon_M22.png){:class="icon"} `dice` {#icon_M22}
+### ![M22](./images/generated/icon_M22.png){:class="icon"} `M22` {#icon_M22}
 
 - icon
 
 
-### ![repeat](./images/generated/icon_M23.png){:class="icon"} `repeat` {#icon_M23}
+### ![M23](./images/generated/icon_M23.png){:class="icon"} `M23` {#icon_M23}
 
 - icon
 
 
-### ![page 1](./images/generated/icon_M1.png){:class="icon"} `page 1` {#icon_M1}
+### ![M1](./images/generated/icon_M1.png){:class="icon"} `M1` {#icon_M1}
 
 - icon
 
 
-### ![page 2](./images/generated/icon_M2.png){:class="icon"} `page 2` {#icon_M2}
+### ![M2](./images/generated/icon_M2.png){:class="icon"} `M2` {#icon_M2}
 
 - icon
 
 
-### ![page 3](./images/generated/icon_M3.png){:class="icon"} `page 3` {#icon_M3}
+### ![M3](./images/generated/icon_M3.png){:class="icon"} `M3` {#icon_M3}
 
 - icon
 
 
-### ![page 4](./images/generated/icon_M4.png){:class="icon"} `page 4` {#icon_M4}
+### ![M4](./images/generated/icon_M4.png){:class="icon"} `M4` {#icon_M4}
 
 - icon
 
 
-### ![page 5](./images/generated/icon_M5.png){:class="icon"} `page 5` {#icon_M5}
+### ![M5](./images/generated/icon_M5.png){:class="icon"} `M5` {#icon_M5}
 
 - icon
 
 
-### ![value 1](./images/generated/icon_M6.png){:class="icon"} `value 1` {#icon_M6}
+### ![M6](./images/generated/icon_M6.png){:class="icon"} `M6` {#icon_M6}
 
 - icon
 
 
-### ![value 2](./images/generated/icon_M7.png){:class="icon"} `value 2` {#icon_M7}
+### ![M7](./images/generated/icon_M7.png){:class="icon"} `M7` {#icon_M7}
 
 - icon
 
 
-### ![value 3](./images/generated/icon_M8.png){:class="icon"} `value 3` {#icon_M8}
+### ![M8](./images/generated/icon_M8.png){:class="icon"} `M8` {#icon_M8}
 
 - icon
 
 
-### ![value 5](./images/generated/icon_M9.png){:class="icon"} `value 5` {#icon_M9}
+### ![M9](./images/generated/icon_M9.png){:class="icon"} `M9` {#icon_M9}
 
 - icon
 
 
-### ![value 10](./images/generated/icon_M10.png){:class="icon"} `value 10` {#icon_M10}
+### ![M10](./images/generated/icon_M10.png){:class="icon"} `M10` {#icon_M10}
 
 - icon
 
 
-### ![red](./images/generated/icon_A20_1.png){:class="icon"} `red` {#icon_A20_1}
+### ![A20 1](./images/generated/icon_A20_1.png){:class="icon"} `A20 1` {#icon_A20_1}
 
 - icon
 
 
-### ![green](./images/generated/icon_A20_2.png){:class="icon"} `green` {#icon_A20_2}
+### ![A20 2](./images/generated/icon_A20_2.png){:class="icon"} `A20 2` {#icon_A20_2}
 
 - icon
 
 
-### ![blue](./images/generated/icon_A20_3.png){:class="icon"} `blue` {#icon_A20_3}
+### ![A20 3](./images/generated/icon_A20_3.png){:class="icon"} `A20 3` {#icon_A20_3}
 
 - icon
 
 
-### ![purple](./images/generated/icon_A20_4.png){:class="icon"} `purple` {#icon_A20_4}
+### ![A20 4](./images/generated/icon_A20_4.png){:class="icon"} `A20 4` {#icon_A20_4}
 
 - icon
 
 
-### ![yellow](./images/generated/icon_A20_5.png){:class="icon"} `yellow` {#icon_A20_5}
+### ![A20 5](./images/generated/icon_A20_5.png){:class="icon"} `A20 5` {#icon_A20_5}
 
 - icon
 
 
-### ![black](./images/generated/icon_A20_6.png){:class="icon"} `black` {#icon_A20_6}
+### ![A20 6](./images/generated/icon_A20_6.png){:class="icon"} `A20 6` {#icon_A20_6}
 
 - icon
 
 
-### ![rainbow](./images/generated/icon_A20_rainbow.png){:class="icon"} `rainbow` {#icon_A20_rainbow}
+### ![A20 rainbow](./images/generated/icon_A20_rainbow.png){:class="icon"} `A20 rainbow` {#icon_A20_rainbow}
 
 - icon
 
 
-### ![sparkle](./images/generated/icon_A20_sparkle.png){:class="icon"} `sparkle` {#icon_A20_sparkle}
+### ![A20 sparkle](./images/generated/icon_A20_sparkle.png){:class="icon"} `A20 sparkle` {#icon_A20_sparkle}
 
 - icon
 
 
-### ![servo set angle](./images/generated/icon_A21_.png){:class="icon"} `servo set angle` {#icon_A21_}
+### ![A21 ](./images/generated/icon_A21_.png){:class="icon"} `A21 ` {#icon_A21_}
 
 - icon
 
 
-### ![emoji giggle](./images/generated/icon_M19giggle.png){:class="icon"} `emoji giggle` {#icon_M19giggle}
+### ![M19giggle](./images/generated/icon_M19giggle.png){:class="icon"} `M19giggle` {#icon_M19giggle}
 
 - icon
 
 
-### ![emoji happy](./images/generated/icon_M19happy.png){:class="icon"} `emoji happy` {#icon_M19happy}
+### ![M19happy](./images/generated/icon_M19happy.png){:class="icon"} `M19happy` {#icon_M19happy}
 
 - icon
 
 
-### ![emoji hello](./images/generated/icon_M19hello.png){:class="icon"} `emoji hello` {#icon_M19hello}
+### ![M19hello](./images/generated/icon_M19hello.png){:class="icon"} `M19hello` {#icon_M19hello}
 
 - icon
 
 
-### ![emoji mysterious](./images/generated/icon_M19mysterious.png){:class="icon"} `emoji mysterious` {#icon_M19mysterious}
+### ![M19mysterious](./images/generated/icon_M19mysterious.png){:class="icon"} `M19mysterious` {#icon_M19mysterious}
 
 - icon
 
 
-### ![emoji sad](./images/generated/icon_M19sad.png){:class="icon"} `emoji sad` {#icon_M19sad}
+### ![M19sad](./images/generated/icon_M19sad.png){:class="icon"} `M19sad` {#icon_M19sad}
 
 - icon
 
 
-### ![emoji slide](./images/generated/icon_M19slide.png){:class="icon"} `emoji slide` {#icon_M19slide}
+### ![M19slide](./images/generated/icon_M19slide.png){:class="icon"} `M19slide` {#icon_M19slide}
 
 - icon
 
 
-### ![emoji soaring](./images/generated/icon_M19soaring.png){:class="icon"} `emoji soaring` {#icon_M19soaring}
+### ![M19soaring](./images/generated/icon_M19soaring.png){:class="icon"} `M19soaring` {#icon_M19soaring}
 
 - icon
 
 
-### ![emoji spring](./images/generated/icon_M19spring.png){:class="icon"} `emoji spring` {#icon_M19spring}
+### ![M19spring](./images/generated/icon_M19spring.png){:class="icon"} `M19spring` {#icon_M19spring}
 
 - icon
 
 
-### ![emoji twinkle](./images/generated/icon_M19twinkle.png){:class="icon"} `emoji twinkle` {#icon_M19twinkle}
+### ![M19twinkle](./images/generated/icon_M19twinkle.png){:class="icon"} `M19twinkle` {#icon_M19twinkle}
 
 - icon
 
 
-### ![emoji yawn](./images/generated/icon_M19yawn.png){:class="icon"} `emoji yawn` {#icon_M19yawn}
+### ![M19yawn](./images/generated/icon_M19yawn.png){:class="icon"} `M19yawn` {#icon_M19yawn}
 
 - icon
 
 
-### ![get variable X](./images/generated/icon_M20A.png){:class="icon"} `get variable X` {#icon_M20A}
+### ![M20A](./images/generated/icon_M20A.png){:class="icon"} `M20A` {#icon_M20A}
 
 - icon
 
 
-### ![get variable Y](./images/generated/icon_M20B.png){:class="icon"} `get variable Y` {#icon_M20B}
+### ![M20B](./images/generated/icon_M20B.png){:class="icon"} `M20B` {#icon_M20B}
 
 - icon
 
 
-### ![get variable Z](./images/generated/icon_M20C.png){:class="icon"} `get variable Z` {#icon_M20C}
+### ![M20C](./images/generated/icon_M20C.png){:class="icon"} `M20C` {#icon_M20C}
 
 - icon
 
 
-### ![shake](./images/generated/icon_F17_shake.png){:class="icon"} `shake` {#icon_F17_shake}
+### ![F17 shake](./images/generated/icon_F17_shake.png){:class="icon"} `F17 shake` {#icon_F17_shake}
 
 - icon
 
 
-### ![tilt up](./images/generated/icon_F17_tilt_up.png){:class="icon"} `tilt up` {#icon_F17_tilt_up}
+### ![F17 tilt up](./images/generated/icon_F17_tilt_up.png){:class="icon"} `F17 tilt up` {#icon_F17_tilt_up}
 
 - icon
 
 
-### ![tilt down](./images/generated/icon_F17_tilt_down.png){:class="icon"} `tilt down` {#icon_F17_tilt_down}
+### ![F17 tilt down](./images/generated/icon_F17_tilt_down.png){:class="icon"} `F17 tilt down` {#icon_F17_tilt_down}
 
 - icon
 
 
-### ![tilt left](./images/generated/icon_F17_tilt_left.png){:class="icon"} `tilt left` {#icon_F17_tilt_left}
+### ![F17 tilt left](./images/generated/icon_F17_tilt_left.png){:class="icon"} `F17 tilt left` {#icon_F17_tilt_left}
 
 - icon
 
 
-### ![tilt right](./images/generated/icon_F17_tilt_right.png){:class="icon"} `tilt right` {#icon_F17_tilt_right}
+### ![F17 tilt right](./images/generated/icon_F17_tilt_right.png){:class="icon"} `F17 tilt right` {#icon_F17_tilt_right}
 
 - icon
 
 
-### ![radio value](./images/generated/icon_M21.png){:class="icon"} `radio value` {#icon_M21}
+### ![M21](./images/generated/icon_M21.png){:class="icon"} `M21` {#icon_M21}
 
 - icon
 

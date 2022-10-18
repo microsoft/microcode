@@ -14,7 +14,10 @@ html {
         scroll-behavior: auto;
     }
 }
-
+.page-header {
+    color: #000;
+    background: none !important;
+}
 img.pixels {
     image-rendering: pixelated;
 }

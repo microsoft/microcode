@@ -37,6 +37,10 @@ jobs:
         run: |
           cp ./built/binary.js ./assets/js/binary.js
           cp ./built/n3/binary.hex ./assets/firmware.hex
+      - name: build localized hex files
+        run: |
+          yarn install --frozen-lockfile
+          node ./scripts/lochex.mjs
       - name: upload modified assets
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

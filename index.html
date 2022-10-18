@@ -11,11 +11,14 @@
         <meta name="author" content="Microsoft" />
         <meta
             name="keywords"
-            content="coding,pre-reader,microcode,education,microbit"
+            content="coding,pre-reader,microcode,education,microbit,ks1,csk3,k-3,k-5,computing"
         />
         <link rel="icon" href="./assets/favicon.png" type="image/png" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Microsoft MicroCode for micro:bit V2" />
+        <meta
+            name="twitter:title"
+            content="Microsoft MicroCode for micro:bit"
+        />
         <meta
             name="twitter:description"
             content="{{ site.github.project_tagline }}"
@@ -539,7 +542,7 @@
         </style>
     </head>
 
-    <body id="root">
+    <body id="root" data-build="{{ site.github.build_revision }}">
         <div id="loader" class="lds-ripple">
             <div></div>
             <div></div>
@@ -564,7 +567,6 @@
                 href="https://{{ site.github.owner_name }}.github.io/{{ site.github.repository_name }}/docs/manual"
                 >User Guide</a
             >
-            <span id="version"></span>
             <button
                 id="voicebtn"
                 aria-label="enable or disable voice reading tooltips"
@@ -610,8 +612,9 @@
                     </li>
                     <li>
                         <a
+                            class="firmware-download"
                             href="https://microsoft.github.io/microcode/assets/firmware.hex"
-                            download="microcode.hex"
+                            download
                             >Download MicroCode</a
                         >
                         to the <code>MICROBIT</code> drive.
@@ -669,8 +672,9 @@
                 <ol>
                     <li>
                         <a
+                            class="firmware-download"
                             href="https://microsoft.github.io/microcode/assets/firmware.hex"
-                            download="microcode.hex"
+                            download
                             >Download MicroCode</a
                         >
                         to the <code>MICROBIT</code> drive.
@@ -685,7 +689,7 @@
         </dialog>
         <script type="text/javascript">
             makeCodeRun({
-                js: "./assets/js/binary.js?v={{ site.github.build_revision }}",
+                js: `./assets/js/binary-${editorLang.toLowerCase()}.js?v={{ site.github.build_revision }}`,
             })
 
             if (window.location && window.location.search) {

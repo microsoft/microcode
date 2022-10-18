@@ -2,16 +2,14 @@
 
 > MicroCode is still in **beta** development and might change in the future. Post your suggestions or questions on the [forum](https://forum.makecode.com/c/60).
 
-Microsoft MicroCode is a tile-based language and editor for young coders and coders with disabilities on the [BBC micro:bit V2](https://microbit.org), inspired by [Kodu Game Lab](https://www.kodugamelab.com/). MicroCode runs in the browser or directly on hardware with [Arcade-compatible devices](https://arcade.makecode.com/hardware/).
+Microsoft MicroCode is a tile-based programming language and editor for young learners on the [BBC micro:bit V2](https://microbit.org). MicroCode runs in the browser or directly on hardware with [Arcade-compatible devices](https://arcade.makecode.com/hardware/).
 
 ![MicroCode screenshot](./docs/images/generated/sample_smiley_buttons.png)
 
 ## Getting started
 
-To get started,
-
 -   read the [MicroCode manual](https://microsoft.github.io/microcode/docs/manual)
--   [try it now!](https://aka.ms/microcode).
+-   [try it now!](https://aka.ms/microcode)
 
 ## Development
 

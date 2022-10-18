@@ -90,9 +90,7 @@ async function flashJacscriptService(service, data) {
         console.debug(
             `jacscript: invalid or unknown product identifier ${productIdentifier}`
         )
-        window.appInsights?.trackEvent({
-            name: "firmware.wrongpid",
-        })
+        trackEvent("firmware.wrongpid")
         showOutdatedFirmwareDialog()
         return
     }
@@ -105,8 +103,7 @@ async function flashJacscriptService(service, data) {
     const semcur = parseSemver(firmwareVersion)
     if (semweb[0] > semcur[0] || semweb[1] > semcur[1]) {
         console.debug(`outdated firmware: ${firmwareVersion}`)
-        window.appInsights?.trackEvent({
-            name: "firmware.outdated",
+        trackEvent("firmware.outdated", {
             firmwareVersion,
         })
         showOutdatedFirmwareDialog()
@@ -117,14 +114,13 @@ async function flashJacscriptService(service, data) {
         console.trace(
             `jacscript: deployment to ${service} in progress, skipping`
         )
-        window.appInsights?.trackEvent({ name: "jacscript.deploy.concurrent" })
+        trackEvent("jacscript.deploy.concurrent")
         return
     }
 
     try {
         console.debug(`jacscript: deploying to ${service}`)
-        window.appInsights?.trackEvent({
-            name: "firmware.deploy",
+        trackEvent("firmware.deploy", {
             firmwareVersion,
             bytes: data.length,
         })
@@ -135,13 +131,9 @@ async function flashJacscriptService(service, data) {
             data
         )
         console.debug(`jacscript: deployed to ${service}`)
-        window.appInsights?.trackEvent({
-            name: "firmware.deploy.success",
-        })
+        trackEvent("firmware.deploy.success")
     } catch (e) {
-        window.appInsights?.trackEvent({
-            name: "firmware.deploy.fail",
-        })
+        trackEvent("firmware.deploy.fail")
         window.appInsights?.trackException({
             exception: e,
         })
@@ -154,9 +146,7 @@ async function flashJacscriptService(service, data) {
         console.debug(
             `jacscript: restarting ${service} deployment with newer bytecode`
         )
-        window.appInsights?.trackEvent({
-            name: "firmware.deploy.redo",
-        })
+        trackEvent("firmware.deploy.redo")
         flashJacscriptService(service, lastData)
     }
 }
@@ -181,8 +171,17 @@ document.addEventListener("DOMContentLoaded", () => {
         else
             voicebtn.onclick = () => {
                 speakTooltips = !speakTooltips
-                speak("tooltip reader enabled")
+                speak(liveRegion.dataset["text"] || "")
             }
+    }
+
+    if (supportedLanguages.indexOf(editorLang) > -1) {
+        const fws = document.getElementsByClassName("firmware-download")
+        for (let i = 0; i < fws.length; ++i)
+            fws[i].setAttribute(
+                "href",
+                `/microcode/assets/hex/microcode-${editorLang.toLowerCase()}.hex`
+            )
     }
 })
 
@@ -216,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // track connection state and update button
         bus.on(jacdac.CONNECTION_STATE, refreshUI)
         bus.on(jacdac.ERROR, e => {
-            appInsights?.trackException({ exception: e })
+            window.appInsights?.trackException({ exception: e })
 
             const code = e.code
             switch (code) {
@@ -312,182 +311,57 @@ addSimMessageHandler("usb", async data => {
 })
 
 let liveRegion
-// keep in sync with en-US.json
-const liveStrings = {
-    hud: "head over display",
-    insertion_point: "empty tile",
+let tooltipStrings = {}
 
-    when: "when empty tile",
-    do: "do empty tile",
-    connect: "connect to micro:bit",
+const supportedLanguages = [
+    "en",
+    "eu",
+    "ca",
+    "zh-CN",
+    "hr",
+    "fr",
+    "fr-CA",
+    "de",
+    "it",
+    "ja",
+    "pl",
+    "pt-BR",
+    "es-ES",
+    "es-MX",
+    "tr",
+    "cy",
+]
+const url = new URL(window.location.href)
+const editorLang = (window.editor = (() => {
+    let lang = url.searchParams.get("lang") || navigator.language || "en"
+    if (supportedLanguages.indexOf(lang) < 0) lang = lang.split("-", 1)[0] || ""
+    if (supportedLanguages.indexOf(lang) < 0) lang = "en"
+    return lang
+})())
 
-    delete_tile: "delete tile",
-
-    S1: "page start",
-    S2: "press",
-    S2B: "release",
-    S3: "accelerometer",
-    S4: "timer",
-    S5: "light",
-    S6: "temp",
-    S7: "radio receive",
-    S8: "microphone",
-
-    F0: "touch pin 0",
-    F1: "touch pin 1",
-    F2: "touch pin 2",
-    F3: "button A",
-    F4: "button B",
-
-    F7: "logo",
-    F8: "1",
-    F9: "2",
-    F10: "3",
-    F11: "4",
-    F12: "5",
-    F13: "quater of a second",
-    F14: "one second",
-    F15: "loud",
-    F16: "quiet",
-    F17: "accelerometer",
-    F18: "1 random second",
-    F19: "5 seconds",
-    F17_shake: "shake",
-    F17_freefall: "freefall",
-    F17_tilt_up: "tilt up",
-    F17_tilt_down: "tilt down",
-    F17_tilt_left: "tilt left",
-    F17_tilt_right: "tilt right",
-
-    C0: "MicroCode open editor",
-    C1: "browse samples",
-
-    A1: "switch page",
-    A2: "speaker",
-    A3: "microphone",
-    A4: "music",
-    A5: "show image",
-    A6: "radio send",
-    A6A: "radio set group",
-    A7: "random number",
-    A10: "show number",
-
-    M1: "page 1",
-    M2: "page 2",
-    M3: "page 3",
-    M4: "page 4",
-    M5: "page 5",
-
-    M6: "value 1",
-    M7: "value 2",
-    M8: "value 3",
-    M9: "value 5",
-    M10: "value 10",
-
-    M11: "on",
-    M12: "off",
-
-    M15: "LED image",
-    M16: "red",
-    M17: "dark purple",
-    M18: "music editor",
-
-    do: "do",
-
-    M19giggle: "emoji giggle",
-    M19happy: "emoji happy",
-    M19hello: "emoji hello",
-    M19mysterious: "emoji mysterious",
-    M19sad: "emoji sad",
-    M19slide: "emoji slide",
-    M19soaring: "emoji soaring",
-    M19spring: "emoji spring",
-    M19twinkle: "emoji twinkle",
-    M19yawn: "emoji yawn",
-
-    M20A: "get variable X",
-    M20B: "get variable Y",
-    M20C: "get variable Z",
-
-    M21: "radio value",
-    M22: "dice",
-    M23: "repeat",
-
-    A8: "LED",
-
-    A9A: "set variable X",
-    A9B: "set variable Y",
-    A9C: "set variable Z",
-
-    S9A: "variable X changed",
-    S9B: "variable Y changed",
-    S9C: "variable Z changed",
-
-    S10: "magnet detector",
-
-    N1: "new program",
-    N2: "flashing heart",
-    N3: "smiley buttons",
-    N4: "pet hamster",
-    N5: "chuck a duck",
-    N6: "reaction time",
-    N7: "hot potato",
-    N8: "rock paper scissors",
-    N9: "head or tail",
-    N10: "clap lights",
-    N11: "firefly",
-    N12: "railroad crossing",
-    N13: "7 seconds clap",
-    N14: "counter",
-
-    A20_1: "red",
-    A20_2: "green",
-    A20_3: "blue",
-    A20_4: "purple",
-    A20_5: "yellow",
-    A20_6: "black",
-
-    A20_rainbow: "rainbow",
-    A20_sparkle: "sparkle",
-
-    A21_: "servo set angle",
+async function fetchJSON(url) {
+    const resp = await fetch(url)
+    if (!resp.ok) return undefined
+    return await resp.json()
 }
 
-const supportedLanguages = ["fr"]
 // load localized strings
 async function loadTranslations() {
-    const url = new URL(window.location.href)
-    const lang = (
-        url.searchParams.get("lang") ||
-        navigator.language ||
-        "en"
-    ).toLocaleLowerCase()
-    const neutral = lang.split("-", 1)[0] || ""
-    if (/^en/.test(lang)) return // default language
-    if (!supportedLanguages[lang] && !supportedTanguages[neutral]) return // not supported
-
-    let translations
-    const resp = await fetch(`./locales/${lang}/strings.json`)
-    if (resp.status === 200) {
-        console.debug(`loading translations for ${lang}`)
-        translations = await resp.json()
-    } else if (lang != neutral) {
-        const resp = await fetch(`./locales/${neutral}/strings.json`)
-        if (resp.status === 200) {
-            console.debug(`loaded neutral translations for ${lang}`)
-            translations = await resp.json()
-        }
-    }
-
-    // merge translations
-    Object.entries(translations || {}).forEach(
-        ([key, value]) => (liveStrings[key] = value)
-    )
+    console.debug(`loading translations for ${editorLang}`)
+    const build = document.body.dataset["build"] || "local"
+    tooltipStrings =
+        (await fetchJSON(
+            `./assets/strings/${editorLang}/tooltips.json?v=${build}`
+        )) || {}
 }
-loadTranslations()
+let loadTranslationsPromise
+
+window.addEventListener("DOMContentLoaded", () => {
+    loadTranslationsPromise = loadTranslations()
+})
 
 function mapAriaId(ariaId) {
-    return (liveStrings[ariaId] || ariaId).split(/_/g).join(" ")
+    return tooltipStrings[ariaId] || ""
 }
 
 function parseSemver(v) {
@@ -501,16 +375,23 @@ let voice
 function speak(text) {
     if (!text || !speakTooltips) return
 
+    console.debug(`speak ${text}`)
     const synth = window.speechSynthesis
     synth.cancel()
     if (!voice) {
-        const lang = navigator.language
-        const voices =
-            synth.getVoices().filter(v => v.lang === lang) || synth.getVoices()
+        let voices = synth.getVoices().filter(v => v.lang === editorLang)
+        if (!voices.length)
+            voices = synth
+                .getVoices()
+                .filter(v => v.lang.indexOf(editorLang) === 0)
+        if (!voices.length) voices = synth.getVoices()
         voice = voices[0]
+        console.debug(`voice found`, { voice })
     }
     const utterance = new SpeechSynthesisUtterance(text)
+    utterance.lang = editorLang
     utterance.voice = voice
+    utterance.rate = 1.2
     synth.speak(utterance)
     synth.resume()
 }
@@ -522,8 +403,7 @@ addSimMessageHandler("accessibility", data => {
     const force = msg.force
     if (msg.type === "tile" || msg.type === "text") {
         value = mapAriaId(msg.value)
-        const tooltip = msg.tooltip
-        speak(tooltip)
+        speak(value)
     } else if (msg.type == "rule") {
         value = "rule"
         const whens = msg.whens
@@ -576,7 +456,8 @@ function setLiveRegion(value, force) {
     }
     value = value || ""
     if (force && liveRegion.textContent === value) liveRegion.textContent = ""
-    //console.debug(`aria-live: ${value}`)
+    console.debug(`aria-live: ${value}`)
+    liveRegion.dataset["text"] = value
     liveRegion.textContent = value
     playClick()
 }
@@ -764,18 +645,21 @@ ${jsg
     }
 }
 
-addSimMessageHandler("analytics", buf => {
-    const msg = JSON.parse(uint8ArrayToString(buf))
+function trackEvent(name, props) {
     const appInsights = window.appInsights
     if (!appInsights) return
 
-    const properties = msg.data || {}
+    const properties = props || {}
     properties["version"] = document.body.dataset.version
-    if (msg.type === "event") {
-        //console.debug(msg.msg, { properties })
-        appInsights.trackEvent({
-            name: msg.msg,
-            properties,
-        })
-    }
+    properties["lang"] = editorLang
+    // console.debug(msg.msg, { properties })
+    appInsights.trackEvent({
+        name,
+        properties,
+    })
+}
+
+addSimMessageHandler("analytics", buf => {
+    const msg = JSON.parse(uint8ArrayToString(buf))
+    if (msg.type === "event") trackEvent(msg.msg, msg.data)
 })
