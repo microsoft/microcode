@@ -391,7 +391,7 @@ function speak(text) {
     const utterance = new SpeechSynthesisUtterance(text)
     utterance.lang = editorLang
     utterance.voice = voice
-    utterance.rate = 1.25
+    utterance.rate = 1.2
     synth.speak(utterance)
     synth.resume()
 }
