@@ -3,6 +3,7 @@ namespace microcode {
         icon: string | Image
         style?: ButtonStyle
         ariaId?: string
+        start?: boolean
     }
 
     export class PickerButton extends Button {
@@ -74,6 +75,7 @@ namespace microcode {
         private navigator: INavigator
         private prevState: CursorState
         private deleteBtn: Button
+        private startBtn: Button
         private panel: Bounds
         private onClick: (btn: string, button?: Button) => void
         private onHide: () => void
@@ -120,9 +122,11 @@ namespace microcode {
                 onHide?: () => void
                 onDelete?: () => void
                 navigator?: () => INavigator
+                selected?: number
             },
             hideOnClick: boolean = true
         ) {
+            this.startBtn = undefined
             this.onClick = opts.onClick
             this.onHide = opts.onHide
             this.onDelete = opts.onDelete
@@ -156,6 +160,8 @@ namespace microcode {
                 btns.forEach(btn => {
                     const button = new PickerButton(this, btn)
                     group.buttons.push(button)
+                    if (btn.start)
+                        this.startBtn = button
                 })
             })
             this.layout()
@@ -231,8 +237,14 @@ namespace microcode {
             this.xfrm.localPos.x = padding - (this.panel.width >> 1)
             this.xfrm.localPos.y = padding - (this.panel.height >> 1)
 
-            const btn = this.navigator.initialCursor(this.deleteBtn ? 1 : 0, 0)
-            this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
+            if (!this.startBtn) {
+                const btn = this.navigator.initialCursor(this.deleteBtn ? 1 : 0, 0)
+                this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
+            } else {
+                const btn = this.startBtn
+                this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
+                this.navigator.screenToButton(btn.xfrm.worldPos.x, btn.xfrm.worldPos.y)
+            }
         }
     }
 

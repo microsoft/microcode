@@ -23,6 +23,7 @@
         "app.ts",
         "sprite.ts",
         "editor.ts",
+        "ruleeditor.ts", 
         "cursor.ts",
         "home.ts",
         "bounds.ts",
