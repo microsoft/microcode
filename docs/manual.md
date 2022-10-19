@@ -46,7 +46,6 @@ Click on that button to reconnect again.
 ### Localization
 
 MicroCode is community translated through Crowdin. Please read on [localization](./localization) to get started.
-MicroCode will pick up the user language from the browser, or you can force the locale by adding `?lang=[code]` where `[code]` is the language iso code.
 
 -   [Basque](../eu.html) ([download](../assets/hex/microcode-eu.hex))
 -   [Catalan](../ca.html) ([download](../assets/hex/microcode-ca.hex))
