@@ -48,22 +48,22 @@ Click on that button to reconnect again.
 MicroCode is community translated through Crowdin. Please read on [localization](./localization) to get started.
 MicroCode will pick up the user language from the browser, or you can force the locale by adding `?lang=[code]` where `[code]` is the language iso code.
 
--   [Basque](../eu) ([download](../assets/hex/microcode-eu.hex))
--   [Catalan](../ca) ([download](../assets/hex/microcode-ca.hex))
--   [Chinese simplified](../zh-CN) ([download](../assets/hex/microcode-zh-cn.hex))
--   [Croatian](../hr) ([download](../assets/hex/microcode-hr.hex))
+-   [Basque](../eu.html) ([download](../assets/hex/microcode-eu.hex))
+-   [Catalan](../ca.html) ([download](../assets/hex/microcode-ca.hex))
+-   [Chinese simplified](../zh-CN.html) ([download](../assets/hex/microcode-zh-cn.hex))
+-   [Croatian](../hr.html) ([download](../assets/hex/microcode-hr.hex))
 -   [English](../) ([download](../assets/hex/microcode-en.hex))
--   [German](../de) ([download](../assets/hex/microcode-de.hex))
--   [French](../fr) ([download](../assets/hex/microcode-fr.hex))
--   [French, Canada](../fr-CA) ([download](../assets/hex/microcode-fr-ca.hex))
--   [Italian](../it) ([download](../assets/hex/microcode-it.hex))
--   [Japanese](../ja) ([download](../assets/hex/microcode-ja.hex))
--   [Polish](../pl) ([download](../assets/hex/microcode-pl.hex))
--   [Portuguese, Brazilian](../pt-BR) ([download](../assets/hex/microcode-pt-br.hex))
--   [Spanish](../es-ES) ([download](../assets/hex/microcode-es-es.hex))
--   [Spanish (Mexico)](../es-MX) ([download](../assets/hex/microcode-es-mx.hex))
--   [Turkish](../tr) ([download](../assets/hex/microcode-tr.hex))
--   [Welsh](../cy) ([download](../assets/hex/microcode-cy.hex))
+-   [German](../de.html) ([download](../assets/hex/microcode-de.hex))
+-   [French](../fr-fr.html) ([download](../assets/hex/microcode-fr.hex))
+-   [French, Canada](../fr-CA.html) ([download](../assets/hex/microcode-fr-ca.hex))
+-   [Italian](../it.html) ([download](../assets/hex/microcode-it.hex))
+-   [Japanese](../ja.html) ([download](../assets/hex/microcode-ja.hex))
+-   [Polish](../pl.html) ([download](../assets/hex/microcode-pl.hex))
+-   [Portuguese, Brazilian](../pt-BR.html) ([download](../assets/hex/microcode-pt-br.hex))
+-   [Spanish](../es-ES.html) ([download](../assets/hex/microcode-es-es.hex))
+-   [Spanish (Mexico)](../es-MX.html) ([download](../assets/hex/microcode-es-mx.hex))
+-   [Turkish](../tr.html) ([download](../assets/hex/microcode-tr.hex))
+-   [Welsh](../cy.html) ([download](../assets/hex/microcode-cy.hex))
 
 ### Accessibility
 
