@@ -576,6 +576,26 @@ namespace microcode {
         }
     }
 
+    export interface Melody {
+        notes: string
+        tempo: number
+    }
+    export const melodyFieldEditor: FieldEditor = {
+        init: { notes: `01234567`, tempo: 120 },
+        clone: (melody: Melody) => { return { notes: melody.notes, tempo: melody.tempo } },
+        editor: iconEditor,
+        toImage: scaleUp,
+        buttonStyle: () => ButtonStyles.Transparent,
+        serialize: (melody: Melody) => melody.notes + "," + melody.tempo,
+        deserialize: (s: string) => {
+            const sp = s.split(",")
+            return {
+                notes: sp[0],
+                tempo: parseInt(sp[1])
+            }
+        },
+    }
+
     function addFieldEditors() {
         const iconEditorTile = new IconEditor()
         iconEditorTile.firstInstance = true
