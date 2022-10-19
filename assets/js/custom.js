@@ -10,21 +10,12 @@ const inIFrame = (() => {
 })()
 
 let bus
-let connectEl
 let lastData
 const refreshUI = () => {
     const supportsWebusb = !!navigator.usb
     if (bus.connected || !supportsWebusb) {
-        connectEl.style.display = "none"
         document.getElementById("connectDlg").close()
-    } else connectEl.style.display = "inherit"
-    const statusText = bus.connected
-        ? "micro:bit connected"
-        : bus.disconnected
-        ? "micro:bit connect"
-        : "micro:bit connecting"
-    connectEl.setAttribute("title", statusText)
-    connectEl.setAttribute("aria-label", statusText)
+    }
 }
 
 function simPostMessage(channel, data) {
@@ -198,22 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
     script.setAttribute("type", "text/javascript")
     script.setAttribute("src", "https://unpkg.com/jacdac-ts/dist/jacdac.js")
     script.onload = () => {
-        connectEl = document.createElement("button")
-        connectEl.id = "connectbtn"
-        connectEl.tabIndex = "0"
-        const conDiv = document.createElement("div")
-        conDiv.style.marginTop = "0.25rem"
-        conDiv.innerText = "connect"
-        conDiv.setAttribute("aria-hidden", "true")
-        connectEl.append(conDiv)
-        const mbitEl = document.createElement("img")
-        mbitEl.setAttribute("alt", "micro:bit logo")
-        mbitEl.setAttribute("aria-hidden", "true")
-        mbitEl.setAttribute(
-            "src",
-            "https://cdn.sanity.io/images/ajwvhvgo/production/6aada623aed7540f77754cbd49b36f05d0fd6b86-150x89.svg?w=435&q=80&fit=max&auto=format"
-        )
-        connectEl.append(mbitEl)
         // create WebUSB bus
         bus = jacdac.createWebBus({
             usbOptions: /usb=0/i.test(window.location.href) ? null : undefined,
@@ -256,14 +231,10 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         })
         bus.on(jacdac.SELF_ANNOUNCE, reportBus)
-        connectEl.onclick = showConnectDialog
 
         const webusbBtns = document.getElementsByClassName("webusbBtn")
         for (let i = 0; i < webusbBtns.length; ++i) {
             webusbBtns[i].onclick = async () => bus.connect()
-        }
-        if (!inIFrame) {
-            document.getElementById("simframe").parentElement.append(connectEl)
         }
         refreshUI()
         bus.autoConnect = true
@@ -314,8 +285,7 @@ function stringToUint8Array(str) {
 addSimMessageHandler("usb", async data => {
     const msg = JSON.parse(uint8ArrayToString(data))
     if (msg.type === "connect") {
-        console.debug(`jacdac: usb connect`)
-        bus.connect()
+        showConnectDialog()
     }
 })
 

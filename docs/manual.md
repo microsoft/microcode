@@ -34,8 +34,9 @@ MicroCode is designed to be friendly to switch access devices.
 
 ### Automatic download to micro:bit V2
 
-Click on the micro:bit button at the lower right of the web app (see above) and follow
-the on-screen instructions to configure your micro:bit V2 and pair it with the editor.
+When the editor does not detect any micro:bit, it will automatically prompt you with instructions
+on how to connect.
+
 Once your micro:bit V2 is paired, the web editor will be able to download your
 MicroCode program to your micro:bit. This happens on every edit, so your program
 is always up-to-date (and running)!
