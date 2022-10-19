@@ -4,6 +4,10 @@ image: ./docs/images/generated/sample_smiley_buttons.png
 
 # Samples
 
+Annotated example programs.
+
+![Smiley Buttons MicroCode program](./images/generated/sample_smiley_buttons.png){:class="sample"}
+
 -   [![new program](./images/generated/icon_new_program.png){:class="icon"} first program](./samples/first-program)
 
 ## The basics
