@@ -84,7 +84,7 @@ lang: ${lang}
 ---
 {% include editor.html %}
 `
-    writeFileSync(`./${lang}.md`, html, { encoding: "utf8" })
+    writeFileSync(`./${lang}.html`, html, { encoding: "utf8" })
 }
 
 writeFileSync("./assets/languages.json", JSON.stringify(supported, null, 2))
