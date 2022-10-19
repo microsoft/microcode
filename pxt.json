@@ -1,6 +1,6 @@
 {
     "name": "microcode",
-    "version": "2.4.6",
+    "version": "2.4.7",
     "description": "Physical computing library for micro:bit V2",
     "dependencies": {
         "game---light": "*",
@@ -23,7 +23,7 @@
         "app.ts",
         "sprite.ts",
         "editor.ts",
-        "ruleeditor.ts", 
+        "ruleeditor.ts",
         "cursor.ts",
         "home.ts",
         "bounds.ts",
