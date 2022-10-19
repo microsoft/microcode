@@ -160,8 +160,7 @@ namespace microcode {
                 btns.forEach(btn => {
                     const button = new PickerButton(this, btn)
                     group.buttons.push(button)
-                    if (btn.start)
-                        this.startBtn = button
+                    if (btn.start) this.startBtn = button
                 })
             })
             this.layout()
@@ -238,12 +237,20 @@ namespace microcode {
             this.xfrm.localPos.y = padding - (this.panel.height >> 1)
 
             if (!this.startBtn) {
-                const btn = this.navigator.initialCursor(this.deleteBtn ? 1 : 0, 0)
+                const btn = this.navigator.initialCursor(
+                    this.deleteBtn ? 1 : 0,
+                    0
+                )
                 this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
+                btn.reportAria()
             } else {
                 const btn = this.startBtn
                 this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
-                this.navigator.screenToButton(btn.xfrm.worldPos.x, btn.xfrm.worldPos.y)
+                this.navigator.screenToButton(
+                    btn.xfrm.worldPos.x,
+                    btn.xfrm.worldPos.y
+                )
+                btn.reportAria()
             }
         }
     }

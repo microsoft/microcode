@@ -399,21 +399,21 @@ function speak(text) {
 addSimMessageHandler("accessibility", data => {
     // render message
     const msg = JSON.parse(uint8ArrayToString(data))
+    console.debug(`aria`, msg)
     let value
     const force = msg.force
     if (msg.type === "tile" || msg.type === "text") {
         value = mapAriaId(msg.value)
         speak(value)
     } else if (msg.type == "rule") {
-        value = "rule"
+        value = mapAriaId("rule")
+        value += ` ${mapAriaId("when")} `
         const whens = msg.whens
-        if (whens && whens.length > 0)
-            value += ` when ${whens.map(mapAriaId).join(" ")}`
-        else value += ` when starting`
+        if (whens && whens.length > 0) value += whens.map(mapAriaId).join(" ")
+        else value += mapAriaId("S1")
+        value += ` ${mapAriaId("do")} `
         const dos = msg.dos
-        if (dos && dos.length > 0)
-            value += ` do ${dos.map(mapAriaId).join(" ")}`
-        else value += ` do nothing`
+        if (dos && dos.length > 0) value += dos.map(mapAriaId).join(" ")
     }
     setLiveRegion(value, force)
 })

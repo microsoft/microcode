@@ -1,5 +1,4 @@
 namespace microcode {
-
     type ButtonRuleRep = { [name: string]: Button[] }
 
     const repNames = ["sensors", "filters", "actuators", "modifiers"]
@@ -294,9 +293,10 @@ namespace microcode {
                 onDelete = () => {
                     tileUpdated(undefined)
                 }
-                const selected = btns.indexOf(btns.find(b => b.icon === ruleTiles[index].tid))
-                if (selected >= 0)
-                    btns[selected].start = true
+                const selected = btns.indexOf(
+                    btns.find(b => b.icon === ruleTiles[index].tid)
+                )
+                if (selected >= 0) btns[selected].start = true
             }
             if (btns.length) {
                 this.editor.picker.addGroup({ btns })
@@ -315,7 +315,7 @@ namespace microcode {
                         }
                         tileUpdated(theOne)
                     },
-                    onDelete
+                    onDelete,
                 })
             }
             return
