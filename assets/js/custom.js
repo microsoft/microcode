@@ -152,7 +152,9 @@ async function flashJacscriptService(service, data) {
 }
 
 // docs
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    initLang()
+    await loadTranslations()
     const docsbtn = document.getElementById("docsbtn")
     if (docsbtn)
         docsbtn.onclick = () => {
@@ -183,6 +185,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 `/microcode/assets/hex/microcode-${editorLang.toLowerCase()}.hex`
             )
     }
+
+    makeCodeRun({
+        js: `./assets/js/binary-${editorLang.toLowerCase()}.js?v={{ site.github.build_revision }}`,
+    })
 })
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -331,13 +337,6 @@ const supportedLanguages = [
     "tr",
     "cy",
 ]
-const url = new URL(window.location.href)
-const editorLang = (window.editor = (() => {
-    let lang = url.searchParams.get("lang") || navigator.language || "en"
-    if (supportedLanguages.indexOf(lang) < 0) lang = lang.split("-", 1)[0] || ""
-    if (supportedLanguages.indexOf(lang) < 0) lang = "en"
-    return lang
-})())
 
 async function fetchJSON(url) {
     const resp = await fetch(url)
@@ -346,6 +345,35 @@ async function fetchJSON(url) {
 }
 
 // load localized strings
+let editorLang
+function initLang() {
+    const url = new URL(window.location.href)
+    editorLang =
+        url.searchParams.get("lang") ||
+        (document.firstElementChild.lang !== "en-US"
+            ? document.firstElementChild.lang
+            : undefined) ||
+        navigator.language ||
+        "en"
+    if (supportedLanguages.indexOf(editorLang) < 0)
+        editorLang = editorLang.split("-", 1)[0] || ""
+    if (supportedLanguages.indexOf(editorLang) < 0) editorLang = "en"
+    window.editor = editorLang
+
+    const noFooter = !!url.searchParams.get("nofooter")
+    const embed = !!url.searchParams.get("embed")
+    const root = document.querySelector("#root")
+
+    if (noFooter) {
+        const footer = document.querySelector("#footer")
+        if (root) root.className += " nofooter"
+        if (footer) footer.remove()
+    }
+    if (embed && root) {
+        root.className += " embed"
+    }
+}
+let loadTranslationsPromise
 async function loadTranslations() {
     console.debug(`loading translations for ${editorLang}`)
     const build = document.body.dataset["build"] || "local"
@@ -354,11 +382,6 @@ async function loadTranslations() {
             `./assets/strings/${editorLang}/tooltips.json?v=${build}`
         )) || {}
 }
-let loadTranslationsPromise
-
-window.addEventListener("DOMContentLoaded", () => {
-    loadTranslationsPromise = loadTranslations()
-})
 
 function mapAriaId(ariaId) {
     return tooltipStrings[ariaId] || ""

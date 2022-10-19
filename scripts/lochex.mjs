@@ -78,6 +78,13 @@ namespace microcode {
         `./assets/hex/microcode-${lang.toLowerCase()}.hex`
     )
     supported.push(lang)
+
+    const html = `---
+lang: ${lang}
+---
+{% include editor.html %}
+`
+    writeFileSync(`./${lang}.html`, html, { encoding: "utf8" })
 }
 
 writeFileSync("./assets/languages.json", JSON.stringify(supported, null, 2))
