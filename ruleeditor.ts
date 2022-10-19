@@ -239,8 +239,8 @@ namespace microcode {
                 }
                 this.page.changed()
             }
-            const newFieldEditor = (tile: TileDefn) => {
-                const newOne = tile.getNewInstance()
+            const newFieldEditor = (tile: TileDefn, del = false) => {
+                const newOne = del ? tile : tile.getNewInstance()
                 const fieldEditor = newOne.fieldEditor
                 this.editor.captureBackground()
                 fieldEditor.editor(
@@ -249,29 +249,18 @@ namespace microcode {
                     () => {
                         this.editor.releaseBackground()
                         tileUpdated(newOne)
-                    }
-                )
-            }
-            if (index < ruleTiles.length) {
-                const theOne = ruleTiles[index]
-                const fieldEditor = theOne.fieldEditor
-                if (fieldEditor) {
-                    this.editor.captureBackground()
-                    fieldEditor.editor(
-                        theOne.getField(),
-                        this.editor.picker,
+                    }, 
+                    del ?
                         () => {
                             this.editor.releaseBackground()
-                            tileUpdated(theOne)
-                        },
-                        () => {
-                            this.editor.releaseBackground()
-
                             tileUpdated(undefined)
                         }
-                    )
-                    return
-                }
+                        : undefined
+                )
+            }
+            if (index < ruleTiles.length && ruleTiles[index].fieldEditor) {
+                newFieldEditor(ruleTiles[index], true)
+                return
             }
             const suggestions = this.getSuggestions(name, index)
             const btns: PickerButtonDef[] = suggestions.map(elem => {
