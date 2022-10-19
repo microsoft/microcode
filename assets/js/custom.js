@@ -153,8 +153,10 @@ async function flashJacscriptService(service, data) {
 
 // docs
 document.addEventListener("DOMContentLoaded", async () => {
+    const build = document.body.dataset["build"] || "local"
+
     initLang()
-    await loadTranslations()
+    await loadTranslations(build)
     const docsbtn = document.getElementById("docsbtn")
     if (docsbtn)
         docsbtn.onclick = () => {
@@ -187,7 +189,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     makeCodeRun({
-        js: `./assets/js/binary-${editorLang.toLowerCase()}.js?v={{ site.github.build_revision }}`,
+        js: `./assets/js/binary-${editorLang.toLowerCase()}.js?v=${build}`,
     })
 })
 
@@ -375,9 +377,8 @@ function initLang() {
     }
 }
 let loadTranslationsPromise
-async function loadTranslations() {
+async function loadTranslations(build) {
     console.debug(`loading translations for ${editorLang}`)
-    const build = document.body.dataset["build"] || "local"
     tooltipStrings =
         (await fetchJSON(
             `./assets/strings/${editorLang}/tooltips.json?v=${build}`
