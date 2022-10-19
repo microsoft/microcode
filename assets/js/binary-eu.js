@@ -1,5 +1,5 @@
 // meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.7","target":"arcade","targetVersion":"1.11.8"}
-// total=2300852 new=94.26% cached=0.00% other=5.74%
+// total=2300861 new=94.26% cached=0.00% other=5.74%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1575,7 +1575,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_6", "beltza");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_rainbow", "ostadarra");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_sparkle", "distira");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A21_", "servo set angle");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A21_", "serboaren angelua ezarri");
     globals.tooltips___4135 = (s.tmp_0);
     s.tmp_0 = setTimeout__P423_mk(s);
     s.tmp_0.arg0 = inline__P6651;

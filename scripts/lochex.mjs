@@ -52,7 +52,20 @@ for (const lang of languages.filter(l => l !== "pxt")) {
     console.log(`  build js, hex`)
     const dn = `./assets/strings/${lang}`
     if (!existsSync(dn)) mkdirSync(dn)
-    writeFileSync(`${dn}/tooltips.json`, JSON.stringify(translations, null, 2))
+    writeFileSync(
+        `${dn}/tooltips.json`,
+        JSON.stringify(translations, null, 2),
+        { encoding: "utf-8" }
+    )
+
+    const dialogs = await (
+        await fetch(
+            `${cdn}content/${lang}/microcode/dialogs.html?timestamp=${timestamp}`
+        )
+    ).text()
+    writeFileSync(`./_includes/dialogs-${lang}.html`, dialogs, {
+        encoding: "utf-8",
+    })
 
     // merge translations
     Object.keys(tooltips)
@@ -97,6 +110,7 @@ writeFileSync(
             lang =>
                 `<link rel="alternate" hreflang="${lang}" href="/{{ site.github.repository_name }}/${lang}" />`
         )
-        .join("\n")
+        .join("\n"),
+    { encoding: "utf-8" }
 )
 console.log(`supported languages`, { supported })
