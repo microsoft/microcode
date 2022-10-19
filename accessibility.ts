@@ -12,7 +12,6 @@ namespace accessibility {
     export interface TileAccessibilityMessage extends AccessibilityMessage {
         type: "tile"
         value: string
-        tooltip: string
     }
 
     export interface RuleAccessibilityMessage extends AccessibilityMessage {

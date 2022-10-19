@@ -105,7 +105,6 @@ namespace microcode {
             const msg: accessibility.TileAccessibilityMessage = {
                 type: "tile",
                 value: this.ariaId,
-                tooltip: accessibility.ariaToTooltip(this.ariaId),
                 force,
             }
             accessibility.setLiveContent(msg)
