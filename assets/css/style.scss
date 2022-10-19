@@ -59,11 +59,13 @@ img.rule {
     image-rendering: pixelated;
     width: max(22rem, 60%);
     margin-bottom: 0.25rem;
+    border-radius: 0.25rem;
 }
 
 img.screenshot {
     width: max(22rem, 60%);
     image-rendering: pixelated;
+    border-radius: 0.25rem;
 }
 
 img.fluid {
