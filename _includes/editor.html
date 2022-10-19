@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang }}">
     <head>
-        {% include head-custom.html %}
+        {% include head-custom.html %} {% include hreflang.html %}
         <script src="https://unpkg.com/fflate"></script>
         <script src="https://unpkg.com/howler"></script>
         <script
@@ -184,7 +184,6 @@
             >
             </iframe>
         </div>
-        {% include footer.html %}
-        {% include dialogs.html %}
+        {% include footer.html %} {% include dialogs.html %}
     </body>
 </html>

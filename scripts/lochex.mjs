@@ -21,12 +21,14 @@ console.log(`crowdin languages`, { languages })
 
 languages.splice(languages.indexOf("en"), 1)
 languages.unshift("en")
+
 const supported = []
 
 const fonts = {
     ar: 12,
     ja: 12,
     "zh-CN": 12,
+    "zh-HK": 12,
     ko: 12,
 }
 
@@ -88,4 +90,13 @@ lang: ${lang}
 }
 
 writeFileSync("./assets/languages.json", JSON.stringify(supported, null, 2))
+writeFileSync(
+    "./_includes/hreflang.html",
+    supported
+        .map(
+            lang =>
+                `<link rel="alternate" hreflang="${lang}" href="/{{ site.github.repository_name }}/${lang}" />`
+        )
+        .join("\n")
+)
 console.log(`supported languages`, { supported })

@@ -351,7 +351,7 @@ function initLang() {
     const url = new URL(window.location.href)
     editorLang =
         url.searchParams.get("lang") ||
-        (document.firstElementChild.lang !== "en-US"
+        (document.firstElementChild.lang !== "en"
             ? document.firstElementChild.lang
             : undefined) ||
         navigator.language ||
