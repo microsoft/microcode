@@ -256,9 +256,10 @@ document.addEventListener("DOMContentLoaded", () => {
         bus.on(jacdac.SELF_ANNOUNCE, reportBus)
         connectEl.onclick = showConnectDialog
 
-        document.getElementById("webusbBtn").onclick = async () => bus.connect()
-        document.getElementById("webusbBtn2").onclick = async () =>
-            bus.connect()
+        const webusbBtns = document.getElementsByClassName("webusbBtn")
+        for (let i = 0; i < webusbBtns.length; ++i) {
+            webusbBtns[i].onclick = async () => bus.connect()
+        }
         if (!inIFrame) {
             document.getElementById("simframe").parentElement.append(connectEl)
         }
