@@ -2,7 +2,7 @@
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 
-# Samples
+# MicroCode Samples
 
 Annotated example programs.
 
