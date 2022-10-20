@@ -23,6 +23,7 @@
 -   picker.ts
 -   pointerevents.ts
 -   scene.ts
+-   tooltips.ts
 
 ## UI images
 
@@ -39,15 +40,18 @@
 ## Editor
 
 -   editor.ts
+-   ruleeditor.ts
 -   fieldeditors.ts
 
-## Compiler
+## Compiler and runtime
 
 -   jacs\_\*.ts
+-   binlib.ts
 
 ## Application
 
 -   accessibility.ts
+-   analytics.ts
 -   app.ts
 -   config.ts
 -   docs.ts
@@ -57,3 +61,8 @@
 -   options.ts
 -   samples.ts
 -   version.ts
+
+## Doc generation
+
+-   docs.ts
+
