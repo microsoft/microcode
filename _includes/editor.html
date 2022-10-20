@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang }}">
+    <head>
+        {% include head-custom.html %} {% include hreflang.html %}
+        <script src="https://unpkg.com/fflate"></script>
+        <script src="https://unpkg.com/howler"></script>
+        <script
+            type="text/javascript"
+            src="./assets/js/loader.js?v={{ site.github.build_revision }}"
+        ></script>
+        <script
+            type="text/javascript"
+            src="./assets/js/custom.js?v={{ site.github.build_revision }}"
+        ></script>
+        <style>
+            body,
+            dialog {
+                background: black;
+                color: white;
+                font-family: monospace;
+                overflow: hidden;
+                font-size: 14pt;
+            }
+
+            .embed {
+                background: transparent;
+            }
+
+            iframe {
+                position: absolute;
+                top: 0.5em;
+                left: 0;
+                width: 100%;
+                height: calc(100% - 2.5em);
+                border: none;
+            }
+
+            .nofooter iframe {
+                height: 100%;
+            }
+
+            footer {
+                color: grey;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                left: 0;
+                z-index: 100;
+                text-align: center;
+                font-size: 1em;
+                margin-bottom: 0.25em;
+            }
+
+            footer a {
+                color: grey;
+            }
+            footer .legal {
+                font-size: 0.6em;
+            }
+
+            .embed footer,
+            .embed footer a {
+                color: black;
+            }
+            button {
+                border: solid 2px #000;
+                cursor: pointer;
+                background-color: #fff;
+                border-radius: 1em;
+                font-size: 1em;
+            }
+            button:focus,
+            button:hover {
+                outline: solid 1px #fff;
+            }
+            dialog img.logo {
+                width: min(100%, 40vw);
+                image-rendering: pixelated;
+            }
+            dialog::backdrop {
+                background: rgba(60, 0, 60, 0.6);
+            }
+            dialog a {
+                color: #fff;
+                font-weight: bold;
+            }
+            .art {
+                background-color: #333;
+                overflow-y: auto;
+            }
+            .art button {
+                margin: 1rem;
+            }
+            .art a {
+                margin: 0.5rem;
+            }
+            .art a > img {
+                min-width: 5rem;
+                image-rendering: pixelated;
+                background: #fff;
+                border: solid 1px #000;
+            }
+            .lds-ripple img {
+                width: 20vw;
+                image-rendering: pixelated;
+            }
+            .lds-ripple {
+                width: 80px;
+                height: 80px;
+                margin: auto;
+                position: absolute;
+                margin: auto;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: -1;
+            }
+
+            .lds-ripple div {
+                position: absolute;
+                border: 4px solid #fff;
+                opacity: 1;
+                border-radius: 50%;
+                animation: lds-ripple 3s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+            }
+
+            .lds-ripple div:nth-child(2) {
+                animation-delay: -0.5s;
+            }
+
+            @keyframes lds-ripple {
+                0% {
+                    top: 10vw;
+                    left: 10vw;
+                    width: 0;
+                    height: 0;
+                    opacity: 1;
+                }
+
+                100% {
+                    top: 0px;
+                    left: 0px;
+                    width: 20vw;
+                    height: 20vw;
+                    opacity: 0;
+                }
+            }
+            #userguide {
+                color: #fff;
+                font-weight: bold;
+            }
+            audio {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body id="root" data-build="{{ site.github.build_revision }}">
+        <div id="loader" class="lds-ripple">
+            <div></div>
+            <div></div>
+            <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJAAAAAWCAYAAAAvrxV9AAAAAXNSR0IArs4c6QAABARJREFUaEPlWttx3DAMlHpwAy4i1cQf5z7iyWScPnwfdjUpwg24B2VACzIE4bEkpbm7JB9JThJIEFwuFpDGYRiGaZom+lf/GcdxtK6jNnrcaDxvnlu57sWQ/M/WPd3fL/Ef39+XmOvr8jfHhZ/ne9Jexu6ovRh54LffZ3OvHp4eNyBCbLxnrPFuBSSWn3JjvBiS3fcfJxdIZfNPd5/Dnz8GAsHqGoHw559x+vXtE2jnj4GfL9cNews82r899qIAKFo4OSInysAzP0+sNljjPjw9lkN5y6Bh35FY6HWaB1IwUAkOA2g21qxCgPGYiu01gI7aCwhADCI0YASSfx1AaCysg6JBlDEQscwKEBaAFINdHYCYhjO2+h8YqAc8vLErVpcMdLr7SleUqgwWshhIaqENYzlZZo9sADNQTcphx16fX1bifL5+0ylsD/DwIeNUvmibWessKZI1j3FdshLZ82/5f5lqL57CWgA02+gKzxXl1hxeBRNVFfJeSyVZEO5UoIhmRGMVFSg1sbAEs7ZHAVRbTR7KQFnp2FrBRBWedW+jOUTboqZyQthHsOzw+vwSYkmmkNZYaEFPvxGZsWHBxpgcBiD2xysdkc3wKpiIBahcdk5bYb6j5hUbskrROo3LNTGAenxqXZMEUM/8IYBogdYp8q4LgZhWYS2pQAYcPWXSJ8pMR80b6TsLRPL5Hp8YQLXx0ACqtee9SAFEQZcB4IV7ZTo7FpXxHjsh2oHSUWvAj5wXqGisbn/ayI1iwrGoSVuaAYNMsTzqpWKaHwKQIYZTuwxAgagr0wVOZ+y2sc9Aj+iWqLel9YTedEuYskj3DkOvTz32Fpt6LJoCwesaRyyQNRItcCFOg0CQVZ489eZakXkzVhVpsuq1j8emvT5p+wik3kEnLZlVcjTPtQHIesWxaQMkpzZ8AWyI+pXo9TRFxkAWiDJx6o1ppUNrzah9C4BAOXHdAPLaAJcCkNaDXpDl6Y3EKQqAWlBrAB4BIGa5q2GgOU18fcowqzurDbAngCrmLUzVIuAtoAHpGIlFpAdX9p7mTORERkRVIno12N4aiAfPTm+mr6I3/Vn/iH3IurZRbyeLuEh1KSB7YkGD99ijn3pchIHQVKA3Azi1Gz2jx2jZfFTUVoJn8bXXpxZ7WTl69paQ1q94LgagllSQNRKBXkzpRLc2zY4CY69PLfYSQLX2kp0uBiBaQM3JQTq3CIB65rUYpnUNPWDcixFlvBrWUTRW+StrtXvUnNmBn3NM0UtH2RCT+gYcO8oqTfM6A+41Vu84ob303QIhvSoEXwAv2PGabjwX8ump2aIXzqafc8zPmh/2z/c8P9CxQyAFN5H1S/OWNVjT944T2cv50LhqHxe7v+PVXF6WP+4hAAAAAElFTkSuQmCC"
+            />
+        </div>
+        <div>
+            <iframe
+                id="simframe"
+                title="MicroCode editor"
+                allowfullscreen="allowfullscreen"
+                sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
+            >
+            </iframe>
+        </div>
+        {% include footer.html %} {% include dialogs-{{ page.lang }}.html %}
+    </body>
+</html>

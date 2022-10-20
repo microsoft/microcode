@@ -21,12 +21,14 @@ console.log(`crowdin languages`, { languages })
 
 languages.splice(languages.indexOf("en"), 1)
 languages.unshift("en")
+
 const supported = []
 
 const fonts = {
     ar: 12,
     ja: 12,
     "zh-CN": 12,
+    "zh-HK": 12,
     ko: 12,
 }
 
@@ -50,7 +52,20 @@ for (const lang of languages.filter(l => l !== "pxt")) {
     console.log(`  build js, hex`)
     const dn = `./assets/strings/${lang}`
     if (!existsSync(dn)) mkdirSync(dn)
-    writeFileSync(`${dn}/tooltips.json`, JSON.stringify(translations, null, 2))
+    writeFileSync(
+        `${dn}/tooltips.json`,
+        JSON.stringify(translations, null, 2),
+        { encoding: "utf-8" }
+    )
+
+    const dialogs = await (
+        await fetch(
+            `${cdn}content/${lang}/microcode/dialogs.html?timestamp=${timestamp}`
+        )
+    ).text()
+    writeFileSync(`./_includes/dialogs-${lang}.html`, dialogs, {
+        encoding: "utf-8",
+    })
 
     // merge translations
     Object.keys(tooltips)
@@ -78,7 +93,24 @@ namespace microcode {
         `./assets/hex/microcode-${lang.toLowerCase()}.hex`
     )
     supported.push(lang)
+
+    const html = `---
+lang: ${lang}
+---
+{% include editor.html %}
+`
+    writeFileSync(`./${lang}.html`, html, { encoding: "utf8" })
 }
 
 writeFileSync("./assets/languages.json", JSON.stringify(supported, null, 2))
+writeFileSync(
+    "./_includes/hreflang.html",
+    supported
+        .map(
+            lang =>
+                `<link rel="alternate" hreflang="${lang}" href="/{{ site.github.repository_name }}/${lang}" />`
+        )
+        .join("\n"),
+    { encoding: "utf-8" }
+)
 console.log(`supported languages`, { supported })

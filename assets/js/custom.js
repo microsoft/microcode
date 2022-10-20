@@ -10,21 +10,12 @@ const inIFrame = (() => {
 })()
 
 let bus
-let connectEl
 let lastData
 const refreshUI = () => {
     const supportsWebusb = !!navigator.usb
     if (bus.connected || !supportsWebusb) {
-        connectEl.style.display = "none"
         document.getElementById("connectDlg").close()
-    } else connectEl.style.display = "inherit"
-    const statusText = bus.connected
-        ? "micro:bit connected"
-        : bus.disconnected
-        ? "micro:bit connect"
-        : "micro:bit connecting"
-    connectEl.setAttribute("title", statusText)
-    connectEl.setAttribute("aria-label", statusText)
+    }
 }
 
 function simPostMessage(channel, data) {
@@ -152,7 +143,11 @@ async function flashJacscriptService(service, data) {
 }
 
 // docs
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    const build = document.body.dataset["build"] || "local"
+
+    initLang()
+    await loadTranslations(build)
     const docsbtn = document.getElementById("docsbtn")
     if (docsbtn)
         docsbtn.onclick = () => {
@@ -183,6 +178,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 `/microcode/assets/hex/microcode-${editorLang.toLowerCase()}.hex`
             )
     }
+
+    makeCodeRun({
+        js: `./assets/js/binary-${editorLang.toLowerCase()}.js?v=${build}`,
+    })
 })
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -190,22 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
     script.setAttribute("type", "text/javascript")
     script.setAttribute("src", "https://unpkg.com/jacdac-ts/dist/jacdac.js")
     script.onload = () => {
-        connectEl = document.createElement("button")
-        connectEl.id = "connectbtn"
-        connectEl.tabIndex = "0"
-        const conDiv = document.createElement("div")
-        conDiv.style.marginTop = "0.25rem"
-        conDiv.innerText = "connect"
-        conDiv.setAttribute("aria-hidden", "true")
-        connectEl.append(conDiv)
-        const mbitEl = document.createElement("img")
-        mbitEl.setAttribute("alt", "micro:bit logo")
-        mbitEl.setAttribute("aria-hidden", "true")
-        mbitEl.setAttribute(
-            "src",
-            "https://cdn.sanity.io/images/ajwvhvgo/production/6aada623aed7540f77754cbd49b36f05d0fd6b86-150x89.svg?w=435&q=80&fit=max&auto=format"
-        )
-        connectEl.append(mbitEl)
         // create WebUSB bus
         bus = jacdac.createWebBus({
             usbOptions: /usb=0/i.test(window.location.href) ? null : undefined,
@@ -248,13 +231,10 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         })
         bus.on(jacdac.SELF_ANNOUNCE, reportBus)
-        connectEl.onclick = showConnectDialog
 
-        document.getElementById("webusbBtn").onclick = async () => bus.connect()
-        document.getElementById("webusbBtn2").onclick = async () =>
-            bus.connect()
-        if (!inIFrame) {
-            document.getElementById("simframe").parentElement.append(connectEl)
+        const webusbBtns = document.getElementsByClassName("webusbBtn")
+        for (let i = 0; i < webusbBtns.length; ++i) {
+            webusbBtns[i].onclick = async () => bus.connect()
         }
         refreshUI()
         bus.autoConnect = true
@@ -305,8 +285,7 @@ function stringToUint8Array(str) {
 addSimMessageHandler("usb", async data => {
     const msg = JSON.parse(uint8ArrayToString(data))
     if (msg.type === "connect") {
-        console.debug(`jacdac: usb connect`)
-        bus.connect()
+        showConnectDialog()
     }
 })
 
@@ -318,6 +297,7 @@ const supportedLanguages = [
     "eu",
     "ca",
     "zh-CN",
+    "zh-HK",
     "hr",
     "fr",
     "fr-CA",
@@ -331,13 +311,6 @@ const supportedLanguages = [
     "tr",
     "cy",
 ]
-const url = new URL(window.location.href)
-const editorLang = (window.editor = (() => {
-    let lang = url.searchParams.get("lang") || navigator.language || "en"
-    if (supportedLanguages.indexOf(lang) < 0) lang = lang.split("-", 1)[0] || ""
-    if (supportedLanguages.indexOf(lang) < 0) lang = "en"
-    return lang
-})())
 
 async function fetchJSON(url) {
     const resp = await fetch(url)
@@ -346,19 +319,42 @@ async function fetchJSON(url) {
 }
 
 // load localized strings
-async function loadTranslations() {
+let editorLang
+function initLang() {
+    const url = new URL(window.location.href)
+    editorLang =
+        url.searchParams.get("lang") ||
+        (document.firstElementChild.lang !== "en"
+            ? document.firstElementChild.lang
+            : undefined) ||
+        navigator.language ||
+        "en"
+    if (supportedLanguages.indexOf(editorLang) < 0)
+        editorLang = editorLang.split("-", 1)[0] || ""
+    if (supportedLanguages.indexOf(editorLang) < 0) editorLang = "en"
+    window.editor = editorLang
+
+    const noFooter = !!url.searchParams.get("nofooter")
+    const embed = !!url.searchParams.get("embed")
+    const root = document.querySelector("#root")
+
+    if (noFooter) {
+        const footer = document.querySelector("#footer")
+        if (root) root.className += " nofooter"
+        if (footer) footer.remove()
+    }
+    if (embed && root) {
+        root.className += " embed"
+    }
+}
+let loadTranslationsPromise
+async function loadTranslations(build) {
     console.debug(`loading translations for ${editorLang}`)
-    const build = document.body.dataset["build"] || "local"
     tooltipStrings =
         (await fetchJSON(
             `./assets/strings/${editorLang}/tooltips.json?v=${build}`
         )) || {}
 }
-let loadTranslationsPromise
-
-window.addEventListener("DOMContentLoaded", () => {
-    loadTranslationsPromise = loadTranslations()
-})
 
 function mapAriaId(ariaId) {
     return tooltipStrings[ariaId] || ""

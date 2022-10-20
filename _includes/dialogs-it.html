@@ -1,0 +1,89 @@
+<dialog id="connectDlg">
+    <form method="dialog">
+        <img
+            src="./assets/image_microcode.png"
+            alt="Logo MicroCode"
+            loading="lazy"
+            class="logo"
+        />
+        <h3>
+            Programma il tuo micro:bit V2 con MicroCode!
+            <button>Chiudi</button>
+        </h3>
+        <ol>
+            <li>
+                Collega il tuo micro:bit <b>V2</b>
+                al tuo computer, utilizzando il cavo USB. (micro:bit V1 non è
+                supportato)
+            </li>
+            <li>
+                <a
+                    class="firmware-download"
+                    href="https://microsoft.github.io/microcode/assets/firmware.hex"
+                    download
+>Scarica MicroCode</a
+>
+                sull'unità <code>MICROBIT</code>.
+            </li>
+            <li>Attendere il riavvio del micro:bit.</li>
+            <li>
+                <button class="webusbBtn">Connetti</button>, scegli "BBC
+                micro:bit CMSIS-DAP" e premi "Connetti" nella finestra di dialogo.
+            </li>
+            <li>Usa l'editor per dare vita al micro:bit!</li>
+        </ol>
+    </form>
+</dialog>
+<dialog id="notsupportedDlg">
+    <form method="dialog">
+        <img
+            src="./assets/image_microcode.png"
+            alt="Logo MicroCode"
+            loading="lazy"
+            class="logo"
+        />
+        <h2>
+            Questo browser non supporta il download su micro:bit.
+            <button>Chiudi</button>
+        </h2>
+        <p>
+            MicroCode uses
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/USB"
+                >WebUSB</a
+>
+            to download code to the micro:bit. To enable this feature, use
+            Microsoft Edge, Google Chrome or
+            <a href="https://caniuse.com/webusb">https://caniuse.com/webusb</a>
+            to find a compatible browser.
+        </p>
+    </form>
+</dialog>
+<dialog id="outdatedDlg">
+    <form method="dialog">
+        <img
+            src="./assets/image_microcode.png"
+            alt="Logo MicroCode"
+            loading="lazy"
+        />
+        <h2>
+            Devi aggiornare MicroCode sul tuo micro:bit!
+            <button>Chiudi</button>
+        </h2>
+        <ol>
+            <li>
+                <a
+                    class="firmware-download"
+                    href="https://microsoft.github.io/microcode/assets/firmware.hex"
+                    download
+>Scarica MicroCode</a
+>
+                sull'unità <code>MICROBIT</code>.
+            </li>
+            <li>Attendere il riavvio del micro:bit.</li>
+            <li>
+                <button class="webusbBtn">Connetti</button>, scegli "BBC
+                micro:bit CMSIS-DAP" e premi "Connetti" nella finestra di dialogo.
+            </li>
+        </ol>
+    </form>
+</dialog>

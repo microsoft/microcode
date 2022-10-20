@@ -1,0 +1,89 @@
+<dialog id="connectDlg">
+    <form method="dialog">
+        <img
+            src="./assets/image_microcode.png"
+            alt="MicroCode logosu"
+            loading="lazy"
+            class="logo"
+        />
+        <h3>
+            Micro:bit V2'nizi MicroCode ile programlayın!
+            <button>Kapat</button>
+        </h3>
+        <ol>
+            <li>
+                USB kablosunu kullanarak micro:bit <b>V2</b>
+                bilgisayarınıza bağlayın. (mikro:bit V1
+                desteklenmez)
+            </li>
+            <li>
+                <a
+                    class="firmware-download"
+                    href="https://microsoft.github.io/microcode/assets/firmware.hex"
+                    download
+>MicroCode</a
+>
+ <code>MICROBIT</code> sürücüsüne indirin.
+            </li>
+            <li>Micro:bit'in yeniden başlatılmasını bekleyin.</li>
+            <li>
+                <button class="webusbBtn">Bağlan</button>"BBC
+                micro:bit CMSIS-DAP" ı seçin ve iletişim kutusunda "Bağlan" a basın.
+            </li>
+            <li>Micro:bit'i hayata geçirmek için editörü kullanın!</li>
+        </ol>
+    </form>
+</dialog>
+<dialog id="notsupportedDlg">
+    <form method="dialog">
+        <img
+            src="./assets/image_microcode.png"
+            alt="MicroCode logosu"
+            loading="lazy"
+            class="logo"
+        />
+        <h2>
+            Bu tarayıcı micro:bit'e indirmeyi desteklemez.
+            <button>Kapat</button>
+        </h2>
+        <p>
+            MicroCode, micro:bit
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/USB"
+                >e kod indirmek için WebUSB</a
+>
+            kullanır. Bu özelliği etkinleştirmek için
+            Microsoft Edge, Google Chrome veya
+            <a href="https://caniuse.com/webusb">https://caniuse.com/webusb</a>
+            kullanarak uyumlu bir tarayıcı bulun.
+        </p>
+    </form>
+</dialog>
+<dialog id="outdatedDlg">
+    <form method="dialog">
+        <img
+            src="./assets/image_microcode.png"
+            alt="MicroCode logosu"
+            loading="lazy"
+        />
+        <h2>
+            MicroCode'u micro:bit'inizde güncellemeniz gerekiyor!
+            <button>Kapat</button>
+        </h2>
+        <ol>
+            <li>
+                <a
+                    class="firmware-download"
+                    href="https://microsoft.github.io/microcode/assets/firmware.hex"
+                    download
+>MicroCode</a
+>
+ <code>MICROBIT</code> sürücüsüne indirin.
+            </li>
+            <li>Micro:bit'in yeniden başlatılmasını bekleyin.</li>
+            <li>
+                <button class="webusbBtn">Bağlan</button>"BBC
+                micro:bit CMSIS-DAP" ı seçin ve iletişim kutusunda "Bağlan" a basın.
+            </li>
+        </ol>
+    </form>
+</dialog>

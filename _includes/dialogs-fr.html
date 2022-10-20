@@ -1,0 +1,89 @@
+<dialog id="connectDlg">
+    <form method="dialog">
+        <img
+            src="./assets/image_microcode.png"
+            alt="Logo Microsoft"
+            loading="lazy"
+            class="logo"
+        />
+        <h3>
+            Programmez votre micro:bit V2 avec MicroCode!
+            <button>Fermer</button>
+        </h3>
+        <ol>
+            <li>
+                Connectez votre micro:bit <b>V2</b>
+                à votre ordinateur en utilisant le câble USB. (micro:bit V1 n’est
+                pas supporté)
+            </li>
+            <li>
+                <a
+                    class="firmware-download"
+                    href="https://microsoft.github.io/microcode/assets/firmware.hex"
+                    download
+>Téléchargez MicroCode</a
+>
+                sur le lecteur <code>MICROBIT</code>.
+            </li>
+            <li>Attendez que le micro:bit redémarre.</li>
+            <li>
+                <button class="webusbBtn">Connectez</button>, choisissez "BBC
+                CMSIS-DAP" et appuyez sur "Connecter" dans la boîte de dialogue.
+            </li>
+            <li>Utilisez l'éditeur pour donner vie au micro:bit !</li>
+        </ol>
+    </form>
+</dialog>
+<dialog id="notsupportedDlg">
+    <form method="dialog">
+        <img
+            src="./assets/image_microcode.png"
+            alt="Logo Microsoft"
+            loading="lazy"
+            class="logo"
+        />
+        <h2>
+            Ce navigateur ne supporte pas le téléchargement sur le micro:bit.
+            <button>Fermer</button>
+        </h2>
+        <p>
+            MicroCode utilise
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/USB"
+                >WebUSB</a
+>
+            pour télécharger du code sur le micro:bit. Pour activer cette fonctionnalité,
+            utilisez Microsoft Edge, Google Chrome ou
+            <a href="https://caniuse.com/webusb">https://caniuse.com/webusb</a>
+            pour trouver un navigateur compatible.
+        </p>
+    </form>
+</dialog>
+<dialog id="outdatedDlg">
+    <form method="dialog">
+        <img
+            src="./assets/image_microcode.png"
+            alt="Logo Microsoft"
+            loading="lazy"
+        />
+        <h2>
+            Vous devez mettre à jour MicroCode sur votre micro:bit!
+            <button>Fermer</button>
+        </h2>
+        <ol>
+            <li>
+                <a
+                    class="firmware-download"
+                    href="https://microsoft.github.io/microcode/assets/firmware.hex"
+                    download
+>Téléchargez MicroCode</a
+>
+                sur le lecteur <code>MICROBIT</code>.
+            </li>
+            <li>Attendez que le micro:bit redémarre.</li>
+            <li>
+                <button class="webusbBtn">Connectez</button>, choisissez "BBC
+                CMSIS-DAP" et appuyez sur "Connecter" dans la boîte de dialogue.
+            </li>
+        </ol>
+    </form>
+</dialog>

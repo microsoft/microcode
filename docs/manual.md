@@ -2,7 +2,7 @@
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 
-# [Microsoft MicroCode](https://aka.ms/m9) for micro:bit
+# MicroCode User Guide
 
 Physical computing for young learners on the [micro:bit V2](https://microbit.org).
 
@@ -34,8 +34,9 @@ MicroCode is designed to be friendly to switch access devices.
 
 ### Automatic download to micro:bit V2
 
-Click on the micro:bit button at the lower right of the web app (see above) and follow
-the on-screen instructions to configure your micro:bit V2 and pair it with the editor.
+When the editor does not detect any micro:bit, it will automatically prompt you with instructions
+on how to connect.
+
 Once your micro:bit V2 is paired, the web editor will be able to download your
 MicroCode program to your micro:bit. This happens on every edit, so your program
 is always up-to-date (and running)!
@@ -46,24 +47,24 @@ Click on that button to reconnect again.
 ### Localization
 
 MicroCode is community translated through Crowdin. Please read on [localization](./localization) to get started.
-MicroCode will pick up the user language from the browser, or you can force the locale by adding `?lang=[code]` where `[code]` is the language iso code.
 
--   [Basque](../?lang=eu) ([download](../assets/hex/microcode-eu.hex))
--   [Catalan](../?lang=ca) ([download](../assets/hex/microcode-ca.hex))
--   [Chinese simplified](../?lang=zh-CN) ([download](../assets/hex/microcode-zh-cn.hex))
--   [Croatian](../?lang=hr) ([download](../assets/hex/microcode-hr.hex))
+-   [Basque](../eu.html) ([download](../assets/hex/microcode-eu.hex))
+-   [Catalan](../ca.html) ([download](../assets/hex/microcode-ca.hex))
+-   [Chinese Simplified](../zh-CN.html) ([download](../assets/hex/microcode-zh-cn.hex))
+-   [Chinese Traditional, Hong Kong](../zh-HK.html) ([download](../assets/hex/microcode-zh-hk.hex))
+-   [Croatian](../hr.html) ([download](../assets/hex/microcode-hr.hex))
 -   [English](../) ([download](../assets/hex/microcode-en.hex))
--   [German](../?lang=de) ([download](../assets/hex/microcode-de.hex))
--   [French](../?lang=fr) ([download](../assets/hex/microcode-fr.hex))
--   [French, Canada](../?lang=fr-CA) ([download](../assets/hex/microcode-fr-ca.hex))
--   [Italian](../?lang=it) ([download](../assets/hex/microcode-it.hex))
--   [Japanese](../?lang=ja) ([download](../assets/hex/microcode-ja.hex))
--   [Polish](../?lang=pl) ([download](../assets/hex/microcode-pl.hex))
--   [Portuguese, Brazilian](../?lang=pt-BR) ([download](../assets/hex/microcode-pt-br.hex))
--   [Spanish](../?lang=es-ES) ([download](../assets/hex/microcode-es-es.hex))
--   [Spanish (Mexico)](../?lang=es-MX) ([download](../assets/hex/microcode-es-mx.hex))
--   [Turkish](../?lang=tr) ([download](../assets/hex/microcode-tr.hex))
--   [Welsh](../?lang=cy) ([download](../assets/hex/microcode-cy.hex))
+-   [German](../de.html) ([download](../assets/hex/microcode-de.hex))
+-   [French](../fr.html) ([download](../assets/hex/microcode-fr.hex))
+-   [French, Canada](../fr-CA.html) ([download](../assets/hex/microcode-fr-ca.hex))
+-   [Italian](../it.html) ([download](../assets/hex/microcode-it.hex))
+-   [Japanese](../ja.html) ([download](../assets/hex/microcode-ja.hex))
+-   [Polish](../pl.html) ([download](../assets/hex/microcode-pl.hex))
+-   [Portuguese, Brazilian](../pt-BR.html) ([download](../assets/hex/microcode-pt-br.hex))
+-   [Spanish](../es-ES.html) ([download](../assets/hex/microcode-es-es.hex))
+-   [Spanish, Mexico](../es-MX.html) ([download](../assets/hex/microcode-es-mx.hex))
+-   [Turkish](../tr.html) ([download](../assets/hex/microcode-tr.hex))
+-   [Welsh](../cy.html) ([download](../assets/hex/microcode-cy.hex))
 
 ### Accessibility
 

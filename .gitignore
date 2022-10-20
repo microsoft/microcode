@@ -14,3 +14,4 @@ codal-jacdac-pxt
 codal-jacdac
 *.Identifier
 Gemfile.lock
+.jekyll-metadata
