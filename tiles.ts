@@ -504,6 +504,24 @@ namespace microcode {
         loop.constraints.only = ["constant"]
     }
 
+    // - upscale 5x5 image to 16 x 16
+    function melodyToImage(melody: Melody) {
+        const ret = image.create(16, 16)
+        ret.fill(15)
+        for (let col = 0; col < 8; col++) {
+            if (melody.notes[col] === ".")
+                continue
+            const row = parseInt(melody.notes[col])
+            const color = 1
+            const ncol = col << 1, nrow = row << 1    
+            ret.setPixel(nrow, ncol, color)
+            ret.setPixel(nrow + 1, ncol, color)
+            ret.setPixel(nrow, ncol + 1, color)
+            ret.setPixel(nrow + 1, ncol + 1, color)
+        }
+        return ret
+    }
+    
     export const iconFieldEditor: FieldEditor = {
         init: img`
         . . . . .
@@ -583,8 +601,8 @@ namespace microcode {
     export const melodyFieldEditor: FieldEditor = {
         init: { notes: `01234567`, tempo: 120 },
         clone: (melody: Melody) => { return { notes: melody.notes, tempo: melody.tempo } },
-        editor: iconEditor,
-        toImage: scaleUp,
+        editor: melodyEditor,
+        toImage: melodyToImage,
         buttonStyle: () => ButtonStyles.Transparent,
         serialize: (melody: Melody) => melody.notes + "," + melody.tempo,
         deserialize: (s: string) => {

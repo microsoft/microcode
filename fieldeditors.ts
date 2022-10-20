@@ -48,7 +48,7 @@ namespace microcode {
     }
 
 
-    export function melody(
+    export function melodyEditor(
         melody: Melody,
         picker: Picker,
         onHide: () => void,
