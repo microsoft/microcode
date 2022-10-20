@@ -131,10 +131,15 @@ namespace microcode {
             return ref
         }
 
-        public static LerpToRefFix(a: Vec2, b: Vec2, t: number, ref: Vec2): Vec2 {
-            ref.x = lerpFix(a.x, b.x, t);
-            ref.y = lerpFix(a.y, b.y, t);
-            return ref;
+        public static LerpToRefFix(
+            a: Vec2,
+            b: Vec2,
+            t: number,
+            ref: Vec2
+        ): Vec2 {
+            ref.x = lerpFix(a.x, b.x, t)
+            ref.y = lerpFix(a.y, b.y, t)
+            return ref
         }
 
         public static RandomRangeToRef(
