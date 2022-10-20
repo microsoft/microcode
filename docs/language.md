@@ -2,7 +2,7 @@
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 
-# MicroCode Language
+# Language
 
 The MicroCode language is defined in terms of **pages**, where a page has a list of **rules**,
 and each rule consists of a **When** section and a **Do** section, each with a list of programming
