@@ -97,6 +97,7 @@ namespace microcode {
                 onHide,
                 onDelete,
                 navigator: () => new LEDNavigator(),
+                maxPerRpw: 8
             },
             false
         )
