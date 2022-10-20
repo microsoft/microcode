@@ -324,8 +324,10 @@ namespace microcode {
         paint.jdParam2 = 5
         paint.defaultModifier = new IconEditor()
 
-        const music = addActuator(TID_ACTUATOR_MUSIC, ["melody_editor", "loop"])
-        music.priority = 11
+        if (Options.melody) {
+            const music = addActuator(TID_ACTUATOR_MUSIC, ["melody_editor", "loop"])
+            music.priority = 11
+        }
 
         const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
             "value_out",
@@ -359,7 +361,7 @@ namespace microcode {
         addAssign(TID_ACTUATOR_CUP_Z_ASSIGN, 2)
 
         const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER, 10)
-        showNum.priority = 11
+        showNum.priority = 199
         showNum.jdKind = JdKind.ExtLibFn
         showNum.jdParam = "dot_showNumber"
         showNum.serviceClassName = "dotMatrix"
