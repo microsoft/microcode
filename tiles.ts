@@ -596,11 +596,11 @@ namespace microcode {
                 continue
             const row = parseInt(melody.notes[col])
             const color = 15
-            const ncol = col << 1, nrow = row << 1    
-            ret.setPixel(nrow, ncol, color)
-            ret.setPixel(nrow + 1, ncol, color)
-            ret.setPixel(nrow, ncol + 1, color)
-            ret.setPixel(nrow + 1, ncol + 1, color)
+            const ncol = col << 1, nrow = (7-row) << 1    
+            ret.setPixel(ncol, nrow, color)
+            ret.setPixel(ncol + 1, nrow, color)
+            ret.setPixel(ncol, nrow + 1, color)
+            ret.setPixel(ncol + 1, nrow + 1, color)
         }
         return ret
     }

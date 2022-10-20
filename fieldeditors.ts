@@ -60,7 +60,7 @@ namespace microcode {
             return note_icon
         }
 
-        for (let row = 0; row < 8; row++) {
+        for (let row = 7; row >=0; row--) {
             let btns: PickerButtonDef[] = []
             for (let col = 0; col < 8; col++) {
                 btns.push({
@@ -73,7 +73,7 @@ namespace microcode {
 
         picker.show(
             {
-                title: accessibility.ariaToTooltip(TID_MODIFIER_ICON_EDITOR),
+                title: accessibility.ariaToTooltip(TID_MODIFIER_MELODY_EDITOR),
                 onClick: (iconId: any, button: PickerButton) => {
                     let on = button.getIcon() === "note_on"
                     let row = 0,
