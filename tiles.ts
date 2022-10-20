@@ -646,7 +646,7 @@ namespace microcode {
         }
 
         getNewInstance(field: any = null) {
-            return new MelodyEditor(field ? field : this.field.clone())
+            return new MelodyEditor(field ? field : { notes: field.notes.slice(0), tempo: field.tempo})
         }
 
         serviceCommandArg() {

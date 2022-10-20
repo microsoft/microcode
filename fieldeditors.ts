@@ -86,11 +86,9 @@ namespace microcode {
                             break
                         }
                     }
-                    if (getIcon(col, row) === "note_on") {
-                        melody.notes[col] = "."
-                    } else {
-                        melody.notes[col] = row.toString()
-                    }
+                    melody.notes = melody.notes.slice(0, col) +
+                        (getIcon(col, row) === "note_on" ? "." : row.toString())
+                        + melody.notes.slice(col + 1)
                     for (row = 0; row < 8; row++) {
                         button.picker.groups[row].buttons[col].setIcon(getIcon(col, row))
                     }
