@@ -99,6 +99,8 @@ The `timer` is parameterized with various times that can also be sequenced and s
 
 In the case of the timer, the sum specifies the amount of time to start the timer with.
 
+![command tiles in do section](./images/doDialog.jpg){:class="screenshot"}
+
 ## DO section {#do}
 
 The right-hand side of a rule, the **Do** section, starts with a
@@ -122,7 +124,6 @@ case where no parameter tile is given:
 -   ![get variable X](./images/generated/icon_M20A.png){:class="icon"} `get variable` gets the number from a variable (`X`, `Y`, `Z`); defaults to `0` if variable wasn't previously set.
 Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5 dots`.
 
-![command tiles in do section](./images/doDialog.jpg){:class="screenshot"}
 
 ### Constructing numbers
 
