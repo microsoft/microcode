@@ -60,7 +60,7 @@ namespace microcode {
             return note_icon
         }
 
-        for (let row = 7; row >=0; row--) {
+        for (let row = 0; row < 8; row++) {
             let btns: PickerButtonDef[] = []
             for (let col = 0; col < 8; col++) {
                 btns.push({

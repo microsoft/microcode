@@ -596,7 +596,7 @@ namespace microcode {
                 continue
             const row = parseInt(melody.notes[col])
             const color = 15
-            const ncol = col << 1, nrow = (7-row) << 1    
+            const ncol = col << 1, nrow = row << 1    
             ret.setPixel(ncol, nrow, color)
             ret.setPixel(ncol + 1, nrow, color)
             ret.setPixel(ncol, nrow + 1, color)
@@ -605,8 +605,12 @@ namespace microcode {
         return ret
     }
     
+    // notes are in reverse order of scale
+    // - 7 = C
+    // - 6 = D
+    // - 5 = E. etc
     export const melodyFieldEditor: FieldEditor = {
-        init: { notes: `01234567`, tempo: 120 },
+        init: { notes: `76543210`, tempo: 120 },
         clone: (melody: Melody) => { return { notes: melody.notes.slice(0), tempo: melody.tempo } },
         editor: melodyEditor,
         toImage: melodyToImage,
