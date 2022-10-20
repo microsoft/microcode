@@ -628,7 +628,7 @@ namespace microcode {
         constructor(field: Melody = null) {
             super(TID_MODIFIER_MELODY_EDITOR, "melody_editor", 10)
             this.firstInstance = false
-            this.fieldEditor = iconFieldEditor
+            this.fieldEditor = melodyFieldEditor
             if (field) this.field = { notes: field.notes.slice(0), tempo: field.tempo}
             else this.field = this.fieldEditor.clone(this.fieldEditor.init)
             this.jdKind = JdKind.ServiceCommandArg
@@ -641,7 +641,7 @@ namespace microcode {
 
         getIcon(): string | Image {
             return this.firstInstance
-                ? TID_MODIFIER_ICON_EDITOR
+                ? TID_MODIFIER_MELODY_EDITOR
                 : this.fieldEditor.toImage(this.field)
         }
 
@@ -661,7 +661,7 @@ namespace microcode {
         iconEditorTile.firstInstance = true
         tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = iconEditorTile
         const melodyEditorTile = new MelodyEditor()
-        iconEditorTile.firstInstance = true
+        melodyEditorTile.firstInstance = true
         tilesDB.modifiers[TID_MODIFIER_MELODY_EDITOR] = melodyEditorTile
     }
 
