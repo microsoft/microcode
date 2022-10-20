@@ -12,9 +12,9 @@ MicroCode supports events, conditions on the events, sequencing,
 loops, variables, and simple arithmetic (addition, for now) over constants and variables.
 See [samples](./samples) for a list of annotated examples.
 
-The picture below shows a 1-page program with two rules.
+The picture below shows a 1-page program with four rules.
 
-![Smiley Button MicroCode program](./images/rule.jpg){:class="screenshot"}
+![Smiley Button MicroCode program](./images/generated/sample_smiley_buttons.png){:class="screenshot"}
 
 ![when button A pressed, show image smiley](./images/generated/sample_smiley_buttons_page_1_rule_1.png){:class="rule"}
 
