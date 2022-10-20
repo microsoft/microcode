@@ -101,7 +101,10 @@ namespace microcode {
     export const TID_MODIFIER_RADIO_VALUE = "M21"
     export const TID_MODIFIER_RANDOM_TOSS = "M22"
     export const TID_MODIFIER_LOOP = "M23"
+    export const TID_MODIFIER_MELODY_EDITOR = "M24"
 
+    // TODO: these strings don't follow the allocation convention
+    // TODO: for modifiers
     export const TID_MODIFIER_RGB_LED_COLOR_X = "A20_"
     export const TID_MODIFIER_RGB_LED_COLOR_1 = "A20_1"
     export const TID_MODIFIER_RGB_LED_COLOR_2 = "A20_2"
@@ -113,6 +116,7 @@ namespace microcode {
     export const TID_MODIFIER_RGB_LED_COLOR_SPARKLE = "A20_sparkle"
 
     export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
+
 
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
@@ -321,6 +325,10 @@ namespace microcode {
         paint.jdParam2 = 5
         paint.defaultModifier = new IconEditor()
 
+
+        const music = addActuator(TID_ACTUATOR_MUSIC, ["melody_editor", "loop"])
+        music.priority = 11
+
         const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
             "value_out",
             "constant",
@@ -504,24 +512,6 @@ namespace microcode {
         loop.constraints.only = ["constant"]
     }
 
-    // - upscale 5x5 image to 16 x 16
-    function melodyToImage(melody: Melody) {
-        const ret = image.create(16, 16)
-        ret.fill(15)
-        for (let col = 0; col < 8; col++) {
-            if (melody.notes[col] === ".")
-                continue
-            const row = parseInt(melody.notes[col])
-            const color = 1
-            const ncol = col << 1, nrow = row << 1    
-            ret.setPixel(nrow, ncol, color)
-            ret.setPixel(nrow + 1, ncol, color)
-            ret.setPixel(nrow, ncol + 1, color)
-            ret.setPixel(nrow + 1, ncol + 1, color)
-        }
-        return ret
-    }
-    
     export const iconFieldEditor: FieldEditor = {
         init: img`
         . . . . .
@@ -598,9 +588,27 @@ namespace microcode {
         notes: string
         tempo: number
     }
+
+    function melodyToImage(melody: Melody) {
+        const ret = image.create(16, 16)
+        ret.fill(15)
+        for (let col = 0; col < 8; col++) {
+            if (melody.notes[col] === ".")
+                continue
+            const row = parseInt(melody.notes[col])
+            const color = 1
+            const ncol = col << 1, nrow = row << 1    
+            ret.setPixel(nrow, ncol, color)
+            ret.setPixel(nrow + 1, ncol, color)
+            ret.setPixel(nrow, ncol + 1, color)
+            ret.setPixel(nrow + 1, ncol + 1, color)
+        }
+        return ret
+    }
+    
     export const melodyFieldEditor: FieldEditor = {
         init: { notes: `01234567`, tempo: 120 },
-        clone: (melody: Melody) => { return { notes: melody.notes, tempo: melody.tempo } },
+        clone: (melody: Melody) => { return { notes: melody.notes.slice(0), tempo: melody.tempo } },
         editor: melodyEditor,
         toImage: melodyToImage,
         buttonStyle: () => ButtonStyles.Transparent,
@@ -614,10 +622,47 @@ namespace microcode {
         },
     }
 
+    class MelodyEditor extends ModifierDefn {
+        field: Melody
+        firstInstance: boolean
+        constructor(field: Melody = null) {
+            super(TID_MODIFIER_MELODY_EDITOR, "melody_editor", 10)
+            this.firstInstance = false
+            this.fieldEditor = iconFieldEditor
+            if (field) this.field = { notes: field.notes.slice(0), tempo: field.tempo}
+            else this.field = this.fieldEditor.clone(this.fieldEditor.init)
+            this.jdKind = JdKind.ServiceCommandArg
+            this.jdParam2 = 400 // ms
+        }
+
+        getField() {
+            return this.field
+        }
+
+        getIcon(): string | Image {
+            return this.firstInstance
+                ? TID_MODIFIER_ICON_EDITOR
+                : this.fieldEditor.toImage(this.field)
+        }
+
+        getNewInstance(field: any = null) {
+            return new MelodyEditor(field ? field : this.field.clone())
+        }
+
+        serviceCommandArg() {
+            const buf = Buffer.create(5)
+            return buf
+        }
+    }
+
+
     function addFieldEditors() {
         const iconEditorTile = new IconEditor()
         iconEditorTile.firstInstance = true
         tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = iconEditorTile
+        const melodyEditorTile = new MelodyEditor()
+        iconEditorTile.firstInstance = true
+        tilesDB.modifiers[TID_MODIFIER_MELODY_EDITOR] = melodyEditorTile
     }
 
     function addTiles() {
