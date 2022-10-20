@@ -33,6 +33,8 @@ namespace microcode {
             // basic colors led editor
             this.reg["solid_red"] = icondb.solid_red
             this.reg["solid_black"] = icondb.solid_black
+            this.reg["note_on"] = icondb.note_on
+            this.reg["note_off"] = icondb.note_off
 
             // sample icons
             this.reg["flashing_heart"] = icondb.sampleFlashingHeart
@@ -1331,46 +1333,30 @@ namespace icondb {
 . . . . . . . . . . . . . . . .
 `
 
-    export const staffEGB = img`
-f f f f f f f f f f f f f f f f
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-f f f f f f f f f f f f f f f f
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-f f f f f f f f f f f f f f f f
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-f f f f f f f f f f f f f f f f
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-f f f f f f f f f f f f f f f f
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
+export const note_on = img`
+. f f f f f f f .
+f f f f f f f f f
+f f f f f f f f f
+f f f f f f f f f
+f f f f f f f f f
+f f f f f f f f f
+f f f f f f f f f
+. f f f f f f f .
 `
-
-    export const noteStemUp = img`
-. . . . 8
-. . . . 8
-. . . . 8
-. . . . 8
-. . . . 8
-. . 8 8 8
-. 8 8 8 8
-. 8 8 8 .
+    
+export const note_off = img`
+. f f f f f f f .
+f 1 1 1 1 1 1 1 f
+f 1 1 1 1 1 1 1 f
+f 1 1 1 1 1 1 1 f
+f 1 1 1 1 1 1 1 f
+f 1 1 1 1 1 1 1 f
+f 1 1 1 1 1 1 1 f
+. f f f f f f f .
 `
-    export const noteStemDown = img`
-. . 8 8 8
-. 8 8 8 8
-. 8 8 8 .
-. 8 . . .
-. 8 . . .
-. 8 . . .
-. 8 . . .
-. 8 . . .
-`
-
+    
+    
+    
     export const accelerometer = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . 8 . . . . . . .
