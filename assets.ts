@@ -99,8 +99,8 @@ namespace microcode {
             this.reg[TID_ACTUATOR_CUP_Z_ASSIGN] = icondb.cupZassign
 
             // modifiers
-            TID_MODIFIER_ICON_EDITOR
             this.reg[TID_MODIFIER_ICON_EDITOR] = icondb.iconEditor
+            this.reg[TID_MODIFIER_MELODY_EDITOR] = icondb.melodyEditor
             this.reg[TID_MODIFIER_RANDOM_TOSS] = icondb.diceToss
             this.reg[TID_MODIFIER_LOOP] = icondb.loop
 
@@ -216,6 +216,24 @@ namespace microcode {
     `
 }
 
+function melodyToImage(melody: microcode.Melody) {
+    const ret = image.create(16, 16)
+    ret.fill(1)
+    for (let col = 0; col < 8; col++) {
+        if (melody.notes[col] === ".")
+            continue
+        const row = parseInt(melody.notes[col])
+        const color = 15
+        const ncol = col << 1, nrow = row << 1    
+        ret.setPixel(ncol, nrow, color)
+        ret.setPixel(ncol + 1, nrow, color)
+        ret.setPixel(ncol, nrow + 1, color)
+        ret.setPixel(ncol + 1, nrow + 1, color)
+    }
+    return ret
+}
+
+
 // - upscale 5x5 image to 16 x 16
 function scaleUp(led55: Image) {
     const ret = image.create(16, 16)
@@ -244,6 +262,11 @@ namespace icondb {
         . 1 1 1 .
         `
     )
+
+    export const melodyEditor = melodyToImage({
+        notes: "76543210",
+        tempo: 0
+    })
 
     export const MISSING = img`
         . . . . . . . . . . . . . . . .

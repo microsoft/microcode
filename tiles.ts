@@ -588,23 +588,7 @@ namespace microcode {
         tempo: number
     }
 
-    function melodyToImage(melody: Melody) {
-        const ret = image.create(16, 16)
-        ret.fill(1)
-        for (let col = 0; col < 8; col++) {
-            if (melody.notes[col] === ".")
-                continue
-            const row = parseInt(melody.notes[col])
-            const color = 15
-            const ncol = col << 1, nrow = row << 1    
-            ret.setPixel(ncol, nrow, color)
-            ret.setPixel(ncol + 1, nrow, color)
-            ret.setPixel(ncol, nrow + 1, color)
-            ret.setPixel(ncol + 1, nrow + 1, color)
-        }
-        return ret
-    }
-    
+
     // notes are in reverse order of scale
     // - 7 = C
     // - 6 = D
