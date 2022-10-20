@@ -16,10 +16,24 @@ The localization is handled through [Crowdin](https://crowdin.com). You will nee
 
 Once your translations are added, someone will have to approve if you are a proofreader, go ahead and approve them. Then send us a comment on the crowdin message board to refresh the build.
 
-## Adding tooltips in source code
+## Developer zone
 
-Make sure to run script to refresh ts files if you modify `locales/tooltips.json`.
+### Adding tooltips in source code
+
+-   add new tooltip to `locales/tooltips.json`
+-   refresh tooltips.ts
 
 ```bash
-node scripts/locs.js
+node scripts/locs.js en
 ```
+
+### Updating crowdin
+
+-   Go to https://crowdin.com/project/makecode/content/files
+-   click on `Update` for `microcode/tooltips.json` and load `locales/tooltips.json`.
+
+### Refreshing translations
+
+-   go to https://crowdin.com/project/makecode/tools/content-delivery
+-   click `Release` on the microcode distribution
+-   bump repo

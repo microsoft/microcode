@@ -7,6 +7,7 @@ import {
 } from "fs"
 import fetch from "node-fetch"
 import { execSync } from "child_process"
+import process from "process"
 
 const tooltips = JSON.parse(
     readFileSync("./locales/tooltips.json", { encoding: "utf-8" })
@@ -15,12 +16,18 @@ const ntooltips = Object.keys(tooltips).length
 const distributionhash = "5d4efd10823e1adf47b30e7ngzx"
 const cdn = `https://distributions.crowdin.net/${distributionhash}/`
 const manifest = await (await fetch(`${cdn}manifest.json`)).json()
-const { languages, timestamp } = manifest
+let { languages, timestamp } = manifest
 
 console.log(`crowdin languages`, { languages })
 
 languages.splice(languages.indexOf("en"), 1)
 languages.unshift("en")
+
+let singleFile = false
+if (process.argv[2]) {
+    singleFile = true
+    languages = [process.argv[2]]
+}
 
 const supported = []
 
@@ -102,15 +109,17 @@ lang: ${lang}
     writeFileSync(`./${lang}.html`, html, { encoding: "utf8" })
 }
 
-writeFileSync("./assets/languages.json", JSON.stringify(supported, null, 2))
-writeFileSync(
-    "./_includes/hreflang.html",
-    supported
-        .map(
-            lang =>
-                `<link rel="alternate" hreflang="${lang}" href="/{{ site.github.repository_name }}/${lang}" />`
-        )
-        .join("\n"),
-    { encoding: "utf-8" }
-)
+if (!singleFile) {
+    writeFileSync("./assets/languages.json", JSON.stringify(supported, null, 2))
+    writeFileSync(
+        "./_includes/hreflang.html",
+        supported
+            .map(
+                lang =>
+                    `<link rel="alternate" hreflang="${lang}" href="/{{ site.github.repository_name }}/${lang}" />`
+            )
+            .join("\n"),
+        { encoding: "utf-8" }
+    )
+}
 console.log(`supported languages`, { supported })
