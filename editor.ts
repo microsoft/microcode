@@ -648,5 +648,4 @@ namespace microcode {
             this.ruleEditors.forEach(rule => rule.draw())
         }
     }
-
 }
