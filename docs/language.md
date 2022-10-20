@@ -52,9 +52,9 @@ The left-hand side of a rule, the `When` section, starts with an
 -   ![move image](./images/generated/icon_S3.png){:class="icon"} `move` of accelerometer, in various ways
 -   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear` a sound, either loud or soft
 -   ![radio receive image](./images/generated/icon_S7.png){:class="icon"} `radio receive` of a number
+-   ![start page image](./images/generated/icon_S1.png){:class="icon"} `start page` only runs when the page is started (or switched to), with an optional delay
 -   ![timer image](./images/generated/icon_S4.png){:class="icon"} `timer` of a time
 -   ![variable X image](./images/generated/icon_S9A.png){:class="icon"} ![variable Y image](./images/generated/icon_S9B.png){:class="icon"} ![variable Z image](./images/generated/icon_S9C.png){:class="icon"} `variable (X,Y,Z) changed` to a number
--   ![start page image](./images/generated/icon_S1.png){:class="icon"} `start page` only runs when the page is started (or switched to), with an optional delay
 
 If the `when` section is left empty,
 the rule will run once when the page is started.
