@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.10","target":"arcade","targetVersion":"1.11.10"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.11","target":"arcade","targetVersion":"1.11.10"}
 // total=2302759 new=94.27% cached=0.00% other=5.73%
 (function (ectx) {
 'use strict';
@@ -1455,7 +1455,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___4136 = (s.tmp_0);
     globals._binFloatLits___4149 = (_hex6755);
-    globals.VERSION___4151 = ("v2.4.10");
+    globals.VERSION___4151 = ("v2.4.11");
     globals.BACK_BUTTON_ERROR_KIND___4163 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4164 = ("forward_button");
     globals.microcode_Options_fps___4212 = (false);
