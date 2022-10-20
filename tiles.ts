@@ -117,7 +117,6 @@ namespace microcode {
 
     export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
 
-
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
         TID_MODIFIER_PAGE_2,
@@ -325,7 +324,6 @@ namespace microcode {
         paint.jdParam2 = 5
         paint.defaultModifier = new IconEditor()
 
-
         const music = addActuator(TID_ACTUATOR_MUSIC, ["melody_editor", "loop"])
         music.priority = 11
 
@@ -490,7 +488,7 @@ namespace microcode {
         addReadValue(TID_MODIFIER_CUP_X_READ, JdKind.Variable, 0)
         addReadValue(TID_MODIFIER_CUP_Y_READ, JdKind.Variable, 1)
         addReadValue(TID_MODIFIER_CUP_Z_READ, JdKind.Variable, 2)
-        
+
         // TODO: this should only be present when radio receive in When section
         addReadValue(TID_MODIFIER_RADIO_VALUE, JdKind.RadioValue, 0)
 
@@ -551,7 +549,9 @@ namespace microcode {
             super(TID_MODIFIER_ICON_EDITOR, "icon_editor", 10)
             this.firstInstance = false
             this.fieldEditor = iconFieldEditor
-            this.field = this.fieldEditor.clone(field ? field : this.fieldEditor.init)
+            this.field = this.fieldEditor.clone(
+                field ? field : this.fieldEditor.init
+            )
             this.jdKind = JdKind.ServiceCommandArg
             this.jdParam2 = 400 // ms
         }
@@ -588,14 +588,15 @@ namespace microcode {
         tempo: number
     }
 
-
     // notes are in reverse order of scale
     // - 7 = C
     // - 6 = D
     // - 5 = E. etc
     export const melodyFieldEditor: FieldEditor = {
         init: { notes: `76543210`, tempo: 120 },
-        clone: (melody: Melody) => { return { notes: melody.notes.slice(0), tempo: melody.tempo } },
+        clone: (melody: Melody) => {
+            return { notes: melody.notes.slice(0), tempo: melody.tempo }
+        },
         editor: melodyEditor,
         toImage: melodyToImage,
         buttonStyle: () => ButtonStyles.Transparent,
@@ -604,7 +605,7 @@ namespace microcode {
             const sp = s.split(",")
             return {
                 notes: sp[0],
-                tempo: parseInt(sp[1])
+                tempo: parseInt(sp[1]),
             }
         },
     }
@@ -616,7 +617,9 @@ namespace microcode {
             super(TID_MODIFIER_MELODY_EDITOR, "melody_editor", 10)
             this.firstInstance = false
             this.fieldEditor = melodyFieldEditor
-            this.field = this.fieldEditor.clone(field ? field : this.fieldEditor.init)
+            this.field = this.fieldEditor.clone(
+                field ? field : this.fieldEditor.init
+            )
             this.jdKind = JdKind.ServiceCommandArg
             this.jdParam2 = 400 // ms
         }
@@ -632,7 +635,9 @@ namespace microcode {
         }
 
         getNewInstance(field: any = null) {
-            return new MelodyEditor(field ? field : this.fieldEditor.clone(this.field))
+            return new MelodyEditor(
+                field ? field : this.fieldEditor.clone(this.field)
+            )
         }
 
         serviceCommandArg() {
@@ -640,7 +645,6 @@ namespace microcode {
             return buf
         }
     }
-
 
     function addFieldEditors() {
         const iconEditorTile = new IconEditor()
