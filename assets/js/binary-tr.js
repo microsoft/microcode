@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.8","target":"arcade","targetVersion":"1.11.10"}
-// total=2301658 new=94.27% cached=0.00% other=5.73%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.9","target":"arcade","targetVersion":"1.11.10"}
+// total=2302398 new=94.27% cached=0.00% other=5.73%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1455,7 +1455,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___4136 = (s.tmp_0);
     globals._binFloatLits___4149 = (_hex6755);
-    globals.VERSION___4151 = ("v2.4.8");
+    globals.VERSION___4151 = ("v2.4.9");
     globals.BACK_BUTTON_ERROR_KIND___4163 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4164 = ("forward_button");
     globals.microcode_Options_fps___4212 = (false);
@@ -60136,123 +60136,128 @@ switch (step) {
     s.tmp_5 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_5, "label", "counter");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_5, "ariaId", "N14");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_5, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk0yMEEiLCJNNiJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi4yLjE1In0=");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_5, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk0yMEEiLCJNNiJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQSJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTloZWxsbyJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi40LjgifQ==");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_5);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_6 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_6, "label", "double counter");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_6, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhhcHB5Il19LHsiUyI6WyJTMSJdLCJBIjpbIkExMCJdLCJNIjpbIk0yMEEiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTlBIl0sIkYiOlsiRjMiXSwiTSI6WyJNMjBBIiwiTTYiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkExMCJdLCJNIjpbIk0yMEEiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTEiXSwiRiI6WyJGNCJdLCJNIjpbIk0yIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTloZWxsbyJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBMTAiXSwiTSI6WyJNMjBCIl19LHsiUyI6WyJTMiJdLCJBIjpbIkE5QiJdLCJGIjpbIkY0Il0sIk0iOlsiTTIwQiIsIk02Il19LHsiUyI6WyJTOUIiXSwiQSI6WyJBMTAiXSwiTSI6WyJNMjBCIl19LHsiUyI6WyJTMiJdLCJBIjpbIkExIl0sIkYiOlsiRjMiXSwiTSI6WyJNMSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuMi4xNSJ9");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_6, "label", "times table");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_6, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBOUIiXSwiRiI6WyJGMTdfc2hha2UiXSwiTSI6WyJNMjIiLCJNOSIsIk0xMCJdfSx7IlMiOlsiUzlCIl0sIkEiOlsiQTlBIl0sIk0iOlsiTTIwQiJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk0yMEEiLCJNMjBCIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMTAiXSwiTSI6WyJNMjBBIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuOCJ9");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_6);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_7 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_7, "label", "pet hamster");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_7, "ariaId", "N4");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_7, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDExMDExMDAwMDAwMTExMDAwMDAwKSJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkY3Il0sIk0iOlsiTTE1KDAwMDAwMDEwMTAwMDAwMDEwMDAxMDExMTApIiwiTTE1KDAwMDAwMTEwMTEwMDAwMDAxMTEwMDAwMDApIiwiTTIzIiwiTTgiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTIiXSwiRiI6WyJGNyJdLCJNIjpbIk0xOWdpZ2dsZSJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBNSJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk0xNSgwMDAwMDAxMDEwMDAwMDAwMTExMDEwMDAxKSIsIk0xNSgwMDAwMDExMDExMDAwMDAwMTExMDAwMDAwKSIsIk0yMyIsIk04Il19LHsiUyI6WyJTMyJdLCJBIjpbIkEyIl0sIkYiOlsiRjE3X3NoYWtlIl0sIk0iOlsiTTE5c2FkIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjIuNSJ9");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_7, "icon", "pet_hamster");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_7, "label", "double counter");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_7, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhhcHB5Il19LHsiUyI6WyJTMSJdLCJBIjpbIkExMCJdLCJNIjpbIk0yMEEiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTlBIl0sIkYiOlsiRjMiXSwiTSI6WyJNMjBBIiwiTTYiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkExMCJdLCJNIjpbIk0yMEEiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTEiXSwiRiI6WyJGNCJdLCJNIjpbIk0yIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTloZWxsbyJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBMTAiXSwiTSI6WyJNMjBCIl19LHsiUyI6WyJTMiJdLCJBIjpbIkE5QiJdLCJGIjpbIkY0Il0sIk0iOlsiTTIwQiIsIk02Il19LHsiUyI6WyJTOUIiXSwiQSI6WyJBMTAiXSwiTSI6WyJNMjBCIl19LHsiUyI6WyJTMiJdLCJBIjpbIkExIl0sIkYiOlsiRjMiXSwiTSI6WyJNMSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuMi4xNSJ9");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_7);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_8 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "label", "head or tail");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "ariaId", "N9");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBOUEiXSwiTSI6WyJNMjIiLCJNNyJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOXNsaWRlIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY4Il0sIk0iOlsiTTE1KDExMTExMTAxMDExMTExMTAxMTEwMDExMTApIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY5Il0sIk0iOlsiTTE1KDExMTExMTAwMDExMDAwMTEwMDAxMTExMTEpIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuNyJ9");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "icon", "heads_tails");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "label", "pet hamster");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "ariaId", "N4");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDExMDExMDAwMDAwMTExMDAwMDAwKSJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkY3Il0sIk0iOlsiTTE1KDAwMDAwMDEwMTAwMDAwMDEwMDAxMDExMTApIiwiTTE1KDAwMDAwMTEwMTEwMDAwMDAxMTEwMDAwMDApIiwiTTIzIiwiTTgiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTIiXSwiRiI6WyJGNyJdLCJNIjpbIk0xOWdpZ2dsZSJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBNSJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk0xNSgwMDAwMDAxMDEwMDAwMDAwMTExMDEwMDAxKSIsIk0xNSgwMDAwMDExMDExMDAwMDAwMTExMDAwMDAwKSIsIk0yMyIsIk04Il19LHsiUyI6WyJTMyJdLCJBIjpbIkEyIl0sIkYiOlsiRjE3X3NoYWtlIl0sIk0iOlsiTTE5c2FkIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjIuNSJ9");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_8, "icon", "pet_hamster");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_8);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_9 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "label", "rock, paper, scissors");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "ariaId", "N8");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMTdfc2hha2UiXSwiTSI6WyJNMjIiLCJNOCJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBMiJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk0xOXNsaWRlIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY4Il0sIk0iOlsiTTE1KDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDApIiwiTTE1KDAwMDAwMDExMTAwMTExMDAxMTEwMDAwMDApIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY5Il0sIk0iOlsiTTE1KDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDApIiwiTTE1KDExMTExMTAwMDExMDAwMTEwMDAxMTExMTEpIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkYxMCJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwKSIsIk0xNSgxMTAwMTExMDEwMDAxMDAxMTAxMDExMDAxKSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi40LjcifQ==");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "icon", "rock_paper_scissors");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "label", "head or tail");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "ariaId", "N9");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBOUEiXSwiTSI6WyJNMjIiLCJNNyJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOXNsaWRlIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY4Il0sIk0iOlsiTTE1KDExMTExMTAxMDExMTExMTAxMTEwMDExMTApIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY5Il0sIk0iOlsiTTE1KDExMTExMTAwMDExMDAwMTEwMDAxMTExMTEpIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuNyJ9");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_9, "icon", "heads_tails");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_9);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_10 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "label", "hot potato");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "ariaId", "N7");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxOCIsIkYxOCJdLCJNIjpbIk0yIl19LHsiUyI6WyJTNCJdLCJBIjpbIkE1Il0sIk0iOlsiTTE1KDAwMDAwMDAwMDAwMDEwMDAwMDAwMDAwMDApIiwiTTE1KDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDApIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMTExMTExMDEwMTExMTExMDExMTAwMTExMCkiXX0seyJTIjpbIlMxIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTlzYWQiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuNyJ9");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "icon", "hot_potato");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "label", "rock, paper, scissors");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "ariaId", "N8");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMTdfc2hha2UiXSwiTSI6WyJNMjIiLCJNOCJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBMiJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk0xOXNsaWRlIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY4Il0sIk0iOlsiTTE1KDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDApIiwiTTE1KDAwMDAwMDExMTAwMTExMDAxMTEwMDAwMDApIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY5Il0sIk0iOlsiTTE1KDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDApIiwiTTE1KDExMTExMTAwMDExMDAwMTEwMDAxMTExMTEpIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkYxMCJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwKSIsIk0xNSgxMTAwMTExMDEwMDAxMDAxMTAxMDExMDAxKSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi40LjcifQ==");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_10, "icon", "rock_paper_scissors");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_10);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_11 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_11, "label", "clap lights");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_11, "ariaId", "N10");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_11, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgxMTExMTExMTExMTExMTExMTExMTExMTExKSJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTOCJdLCJBIjpbIkExIl0sIkYiOlsiRjE1Il0sIk0iOlsiTTIiXX0se31dfSx7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwKSJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOXlhd24iXX0seyJTIjpbIlM4Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTUiXSwiTSI6WyJNMSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC43In0=");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_11, "icon", "clap_lights");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_11, "label", "hot potato");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_11, "ariaId", "N7");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_11, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxOCIsIkYxOCJdLCJNIjpbIk0yIl19LHsiUyI6WyJTNCJdLCJBIjpbIkE1Il0sIk0iOlsiTTE1KDAwMDAwMDAwMDAwMDEwMDAwMDAwMDAwMDApIiwiTTE1KDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDApIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMTExMTExMDEwMTExMTExMDExMTAwMTExMCkiXX0seyJTIjpbIlMxIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTlzYWQiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuNyJ9");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_11, "icon", "hot_potato");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_11);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_12 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_12, "label", "24 7 clap");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_12, "ariaId", "N13");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_12, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTMSJdLCJBIjpbIkE5QSJdLCJNIjpbIk02Il19LHsiUyI6WyJTMSJdLCJBIjpbIkE1Il0sIk0iOlsiTTE1KDAxMDEwMDEwMTAwMTAxMDExMDExMDEwMTApIiwiTTE1KDAwMTEwMDAxMTAwMDExMDAxMTExMDAxMTApIiwiTTIzIl19LHsiUyI6WyJTOCJdLCJBIjpbIkE5QSJdLCJGIjpbIkYxNSJdLCJNIjpbIk0yMEEiLCJNNiJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxNCIsIkYxNCJdLCJNIjpbIk0yIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMSJdLCJGIjpbIkYxMiIsIkYxMiIsIkYxMiIsIkYxMiIsIkYxMiJdLCJNIjpbIk0zIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTlnaWdnbGUiXX0seyJTIjpbIlMxIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQSJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxOSJdLCJNIjpbIk0xIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTlzYWQiXX0seyJTIjpbIlMxIl0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMTExMTExMDEwMTAxMTEwMDAwMDAwMTExMCkiLCJNMTUoMTExMTExMDEwMTAxMTEwMDExMTAwMDAwMCkiLCJNMjMiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTkiLCJGMTkiXSwiTSI6WyJNMSJdfSx7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjMuMCJ9");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_12, "label", "clap lights");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_12, "ariaId", "N10");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_12, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgxMTExMTExMTExMTExMTExMTExMTExMTExKSJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTOCJdLCJBIjpbIkExIl0sIkYiOlsiRjE1Il0sIk0iOlsiTTIiXX0se31dfSx7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwKSJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOXlhd24iXX0seyJTIjpbIlM4Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTUiXSwiTSI6WyJNMSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC43In0=");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_12, "icon", "clap_lights");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_12);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_13 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_13, "label", "reaction time");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_13, "ariaId", "N6");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_13, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDEwMDAwMDAwMDAwMDAwKSIsIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSIsIk0xNSgwMDAwMDAwMDAwMDAwMTAwMDAwMDAwMDAwKSIsIk0yMyJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxOCIsIkYxOCIsIkYxOCIsIkYxOCIsIkYxOCJdLCJNIjpbIk0yIl19LHsiUyI6WyJTMiJdLCJBIjpbIkExIl0sIkYiOlsiRjMiXSwiTSI6WyJNNCJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBMSJdLCJGIjpbIkY0Il0sIk0iOlsiTTMiXX0se31dfSx7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgxMTExMTExMTExMTExMTExMTExMTExMTExKSJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTMiJdLCJBIjpbIkExIl0sIkYiOlsiRjMiXSwiTSI6WyJNMyJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBMSJdLCJGIjpbIkY0Il0sIk0iOlsiTTQiXX0se31dfSx7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDEwMDAxMDAwMTExMTAwMTAwMDAwMTAwKSIsIk0xNSgwMDAxMDAwMTAwMDExMTEwMDEwMDAwMDEwKSIsIk0yMyJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSJdLCJNIjpbIk0xIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMDAxMDAwMDAxMDExMTExMDAwMTAwMDEwMCkiLCJNMTUoMDEwMDAwMDEwMDExMTEwMDAxMDAwMTAwMCkiLCJNMjMiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTkiXSwiTSI6WyJNMSJdfSx7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi4yLjEyIn0=");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_13, "icon", "reaction_time");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_13, "label", "24 7 clap");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_13, "ariaId", "N13");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_13, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTMSJdLCJBIjpbIkE5QSJdLCJNIjpbIk02Il19LHsiUyI6WyJTMSJdLCJBIjpbIkE1Il0sIk0iOlsiTTE1KDAxMDEwMDEwMTAwMTAxMDExMDExMDEwMTApIiwiTTE1KDAwMTEwMDAxMTAwMDExMDAxMTExMDAxMTApIiwiTTIzIl19LHsiUyI6WyJTOCJdLCJBIjpbIkE5QSJdLCJGIjpbIkYxNSJdLCJNIjpbIk0yMEEiLCJNNiJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxNCIsIkYxNCJdLCJNIjpbIk0yIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMSJdLCJGIjpbIkYxMiIsIkYxMiIsIkYxMiIsIkYxMiIsIkYxMiJdLCJNIjpbIk0zIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTlnaWdnbGUiXX0seyJTIjpbIlMxIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQSJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxOSJdLCJNIjpbIk0xIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTlzYWQiXX0seyJTIjpbIlMxIl0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMTExMTExMDEwMTAxMTEwMDAwMDAwMTExMCkiLCJNMTUoMTExMTExMDEwMTAxMTEwMDExMTAwMDAwMCkiLCJNMjMiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTkiLCJGMTkiXSwiTSI6WyJNMSJdfSx7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjMuMCJ9");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_13);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_14 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_14, "label", "chuck a duck");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_14, "ariaId", "N5");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_14, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBNSJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBNiJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk02Il19LHsiUyI6WyJTNyJdLCJBIjpbIkE1Il0sIkYiOlsiRjgiXSwiTSI6WyJNMTUoMDExMDAxMTEwMDAxMTExMDExMTAwMDAwMCkiXX0seyJTIjpbIlM3Il0sIkEiOlsiQTIiXSwiRiI6WyJGOCJdLCJNIjpbIk0xOWhlbGxvIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfX0=");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_14, "icon", "teleport_duck");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_14, "label", "reaction time");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_14, "ariaId", "N6");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_14, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDEwMDAwMDAwMDAwMDAwKSIsIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSIsIk0xNSgwMDAwMDAwMDAwMDAwMTAwMDAwMDAwMDAwKSIsIk0yMyJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxOCIsIkYxOCIsIkYxOCIsIkYxOCIsIkYxOCJdLCJNIjpbIk0yIl19LHsiUyI6WyJTMiJdLCJBIjpbIkExIl0sIkYiOlsiRjMiXSwiTSI6WyJNNCJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBMSJdLCJGIjpbIkY0Il0sIk0iOlsiTTMiXX0se31dfSx7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgxMTExMTExMTExMTExMTExMTExMTExMTExKSJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTMiJdLCJBIjpbIkExIl0sIkYiOlsiRjMiXSwiTSI6WyJNMyJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBMSJdLCJGIjpbIkY0Il0sIk0iOlsiTTQiXX0se31dfSx7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDEwMDAxMDAwMTExMTAwMTAwMDAwMTAwKSIsIk0xNSgwMDAxMDAwMTAwMDExMTEwMDEwMDAwMDEwKSIsIk0yMyJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSJdLCJNIjpbIk0xIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMDAxMDAwMDAxMDExMTExMDAwMTAwMDEwMCkiLCJNMTUoMDEwMDAwMDEwMDExMTEwMDAxMDAwMTAwMCkiLCJNMjMiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTkiXSwiTSI6WyJNMSJdfSx7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi4yLjEyIn0=");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_14, "icon", "reaction_time");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_14);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_15 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_15, "label", "zombie detector");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_15, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzQiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSIsIk0xNSgwMDAwMDAxMDEwMDAwMDAwMTAxMDAwMDAwKSIsIk0xNSgxMDAwMTAwMDAwMDAwMDAwMDAwMDEwMDAxKSIsIk0xNSgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwKSJdfSx7IlMiOlsiUzciXSwiQSI6WyJBMSJdLCJGIjpbIkY4Il0sIk0iOlsiTTIiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTEiXSwiRiI6WyJGNyJdLCJNIjpbIk0zIl19LHt9XX0seyJSIjpbeyJTIjpbIlM0Il0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMDAxMDAwMDEwMDAwMTAwMDAwMDAwMDEwMCkiLCJNMTUoMDEwMTAwMTAxMDAxMDEwMDAwMDAwMTAxMCkiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTIiXSwiRiI6WyJGMTQiXSwiTSI6WyJNMTlteXN0ZXJpb3VzIl19LHsiUyI6WyJTNCJdLCJBIjpbIkExIl0sIkYiOlsiRjE5Il0sIk0iOlsiTTEiXX0se31dfSx7IlIiOlt7IlMiOlsiUzQiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgxMTExMTEwMTAxMDExMTAwMDAwMDAxMTEwKSIsIk0xNSgxMTExMTEwMTAxMDExMTAwMTExMDAwMDAwKSJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBNiJdLCJNIjpbIk02Il19LHt9XX0seyJSIjpbe31dfSx7fV19fQ==");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_15, "label", "chuck a duck");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_15, "ariaId", "N5");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_15, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBNSJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBNiJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk02Il19LHsiUyI6WyJTNyJdLCJBIjpbIkE1Il0sIkYiOlsiRjgiXSwiTSI6WyJNMTUoMDExMDAxMTEwMDAxMTExMDExMTAwMDAwMCkiXX0seyJTIjpbIlM3Il0sIkEiOlsiQTIiXSwiRiI6WyJGOCJdLCJNIjpbIk0xOWhlbGxvIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfX0=");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_15, "icon", "teleport_duck");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_15);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_16 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_16, "label", "firefly");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_16, "ariaId", "N11");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_16, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSJdfSx7IlMiOlsiUzciXSwiQSI6WyJBOUEiXSwiTSI6WyJNMjBBIiwiTTYiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTlBIl0sIkYiOlsiRjEzIl0sIk0iOlsiTTIwQSIsIk02Il19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMSJdLCJGIjpbIkYxMCIsIkYxMiJdLCJNIjpbIk0yIl19LHsiUyI6WyJTNCJdLCJBIjpbIkExIl0sIkYiOlsiRjE0IiwiRjE0IiwiRjE0Il0sIk0iOlsiTTIiXX0se31dfSx7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNiJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBOUEiXSwiTSI6WyJNNiJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgxMTExMTExMTExMTEwMTExMTExMTExMTExKSJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTNCJdLCJBIjpbIkExIl0sIkYiOlsiRjEzIl0sIk0iOlsiTTEiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjIuNSJ9");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_16, "icon", "firefly");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_16, "label", "zombie detector");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_16, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzQiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSIsIk0xNSgwMDAwMDAxMDEwMDAwMDAwMTAxMDAwMDAwKSIsIk0xNSgxMDAwMTAwMDAwMDAwMDAwMDAwMDEwMDAxKSIsIk0xNSgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwKSJdfSx7IlMiOlsiUzciXSwiQSI6WyJBMSJdLCJGIjpbIkY4Il0sIk0iOlsiTTIiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTEiXSwiRiI6WyJGNyJdLCJNIjpbIk0zIl19LHt9XX0seyJSIjpbeyJTIjpbIlM0Il0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMDAxMDAwMDEwMDAwMTAwMDAwMDAwMDEwMCkiLCJNMTUoMDEwMTAwMTAxMDAxMDEwMDAwMDAwMTAxMCkiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTIiXSwiRiI6WyJGMTQiXSwiTSI6WyJNMTlteXN0ZXJpb3VzIl19LHsiUyI6WyJTNCJdLCJBIjpbIkExIl0sIkYiOlsiRjE5Il0sIk0iOlsiTTEiXX0se31dfSx7IlIiOlt7IlMiOlsiUzQiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgxMTExMTEwMTAxMDExMTAwMDAwMDAxMTEwKSIsIk0xNSgxMTExMTEwMTAxMDExMTAwMTExMDAwMDAwKSJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBNiJdLCJNIjpbIk02Il19LHt9XX0seyJSIjpbe31dfSx7fV19fQ==");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_16);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_17 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_17, "label", "railroad crossing");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_17, "ariaId", "N12");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_17, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBMjFfIl0sIkYiOlsiRjMiXSwiTSI6WyJNNiJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBOCJdLCJGIjpbIkYzIl0sIk0iOlsiQTIwXzEiLCJBMjBfNiIsIk0yMyJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBMjFfIl0sIkYiOlsiRjQiXSwiTSI6WyJNMTAiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTgiXSwiRiI6WyJGNCJdLCJNIjpbIkEyMF8zIiwiQTIwXzYiLCJNMjMiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTgiXSwiRiI6WyJGNyJdLCJNIjpbIkEyMF9yYWluYm93IiwiTTIzIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfX0=");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_17, "icon", "railroad_crossing");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_17, "label", "firefly");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_17, "ariaId", "N11");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_17, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSJdfSx7IlMiOlsiUzciXSwiQSI6WyJBOUEiXSwiTSI6WyJNMjBBIiwiTTYiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTlBIl0sIkYiOlsiRjEzIl0sIk0iOlsiTTIwQSIsIk02Il19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMSJdLCJGIjpbIkYxMCIsIkYxMiJdLCJNIjpbIk0yIl19LHsiUyI6WyJTNCJdLCJBIjpbIkExIl0sIkYiOlsiRjE0IiwiRjE0IiwiRjE0Il0sIk0iOlsiTTIiXX0se31dfSx7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNiJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBOUEiXSwiTSI6WyJNNiJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgxMTExMTExMTExMTEwMTExMTExMTExMTExKSJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTNCJdLCJBIjpbIkExIl0sIkYiOlsiRjEzIl0sIk0iOlsiTTEiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjIuNSJ9");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_17, "icon", "firefly");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_17);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_18 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_18, "label", "moves");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_18, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBNSJdLCJGIjpbIkYxN190aWx0X2Rvd24iXSwiTSI6WyJNMTUoMTExMDAxMDAxMDEwMDEwMTAwMTAxMTEwMCkiXX0seyJTIjpbIlMzIl0sIkEiOlsiQTUiXSwiRiI6WyJGMTdfdGlsdF91cCJdLCJNIjpbIk0xNSgxMDAxMDEwMDEwMTAwMTAxMDAxMDExMTEwKSJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBNSJdLCJGIjpbIkYxN190aWx0X2xlZnQiXSwiTSI6WyJNMTUoMTAwMDAxMDAwMDEwMDAwMTAwMDAxMTExMCkiXX0seyJTIjpbIlMzIl0sIkEiOlsiQTUiXSwiRiI6WyJGMTdfdGlsdF9yaWdodCJdLCJNIjpbIk0xNSgxMTEwMDEwMDEwMTExMDAxMDAxMDEwMDEwKSJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBNSJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk0xNSgxMTExMDEwMDAwMTExMTAwMDAxMDExMTEwKSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX19");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_18, "label", "railroad crossing");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_18, "ariaId", "N12");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_18, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBMjFfIl0sIkYiOlsiRjMiXSwiTSI6WyJNNiJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBOCJdLCJGIjpbIkYzIl0sIk0iOlsiQTIwXzEiLCJBMjBfNiIsIk0yMyJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBMjFfIl0sIkYiOlsiRjQiXSwiTSI6WyJNMTAiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTgiXSwiRiI6WyJGNCJdLCJNIjpbIkEyMF8zIiwiQTIwXzYiLCJNMjMiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTgiXSwiRiI6WyJGNyJdLCJNIjpbIkEyMF9yYWluYm93IiwiTTIzIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfX0=");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_18, "icon", "railroad_crossing");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_18);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_19 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_19, "label", "coins");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_19, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk02Il19LHsiUyI6WyJTMiJdLCJBIjpbIkE5QSJdLCJGIjpbIkY0Il0sIk0iOlsiTTIwQSIsIk02Il19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkYxMCJdLCJNIjpbIk0xNSgwMTExMTAwMDAxMDAxMTEwMDAwMTAxMTExKSJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTUiXSwiRiI6WyJGMTEiXSwiTSI6WyJNMTUoMTExMTAxMDAwMDExMTEwMDAwMTAxMTEwMCkiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkE1Il0sIkYiOlsiRjEyIl0sIk0iOlsiTTE1KDEwMTExMTAxMDExMDEwMTEwMTAxMTAxMTEpIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfX0=");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_19, "label", "moves");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_19, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBNSJdLCJGIjpbIkYxN190aWx0X2Rvd24iXSwiTSI6WyJNMTUoMTExMDAxMDAxMDEwMDEwMTAwMTAxMTEwMCkiXX0seyJTIjpbIlMzIl0sIkEiOlsiQTUiXSwiRiI6WyJGMTdfdGlsdF91cCJdLCJNIjpbIk0xNSgxMDAxMDEwMDEwMTAwMTAxMDAxMDExMTEwKSJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBNSJdLCJGIjpbIkYxN190aWx0X2xlZnQiXSwiTSI6WyJNMTUoMTAwMDAxMDAwMDEwMDAwMTAwMDAxMTExMCkiXX0seyJTIjpbIlMzIl0sIkEiOlsiQTUiXSwiRiI6WyJGMTdfdGlsdF9yaWdodCJdLCJNIjpbIk0xNSgxMTEwMDEwMDEwMTExMDAxMDAxMDEwMDEwKSJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBNSJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk0xNSgxMTExMDEwMDAwMTExMTAwMDAxMDExMTEwKSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX19");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_19);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_20 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_20, "label", "inchworm");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_20, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBMjFfIl0sIk0iOlsiTTYiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTMiLCJGMTMiXSwiTSI6WyJNMiJdfSx7fV19LHsiUiI6W3siUyI6WyJTMSJdLCJBIjpbIkEyMV8iXSwiTSI6WyJNMTAiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTMiLCJGMTMiXSwiTSI6WyJNMSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuMy4wIn0=");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_20, "label", "coins");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_20, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk02Il19LHsiUyI6WyJTMiJdLCJBIjpbIkE5QSJdLCJGIjpbIkY0Il0sIk0iOlsiTTIwQSIsIk02Il19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkYxMCJdLCJNIjpbIk0xNSgwMTExMTAwMDAxMDAxMTEwMDAwMTAxMTExKSJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTUiXSwiRiI6WyJGMTEiXSwiTSI6WyJNMTUoMTExMTAxMDAwMDExMTEwMDAwMTAxMTEwMCkiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkE1Il0sIkYiOlsiRjEyIl0sIk0iOlsiTTE1KDEwMTExMTAxMDExMDEwMTEwMTAxMTAxMTEpIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfX0=");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_20);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_21 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_21, "label", "head guess");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_21, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTMSJdLCJBIjpbIkE5QSJdLCJNIjpbIk0yMiIsIk04Il19LHsiUyI6WyJTMSJdLCJBIjpbIkE5QiJdLCJNIjpbIk02Il19LHsiUyI6WyJTMyJdLCJBIjpbIkE5QSJdLCJGIjpbIkYxN190aWx0X2Rvd24iXSwiTSI6WyJNMjIiLCJNOCJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMTdfdGlsdF91cCJdLCJNIjpbIk0yMiIsIk04Il19LHsiUyI6WyJTMyJdLCJBIjpbIkE5QiJdLCJGIjpbIkYxN190aWx0X3VwIl0sIk0iOlsiTTIwQiIsIk02Il19LHsiUyI6WyJTNCJdLCJBIjpbIkExIl0sIkYiOlsiRjE5IiwiRjE5IiwiRjE5IiwiRjE5Il0sIk0iOlsiTTIiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkE1Il0sIkYiOlsiRjgiXSwiTSI6WyJNMTUoMDExMDAxMTExMDAxMTExMDExMTAwMDAwMCkiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkE1Il0sIkYiOlsiRjkiXSwiTSI6WyJNMTUoMTExMTAxMDAwMDEwMDAwMTAwMDAxMTExMCkiLCJNMTUoMTExMTAxMDAxMDExMTEwMTAwMTAxMDAxMCkiLCJNMTUoMTExMTEwMDEwMDAwMTAwMDAxMDAwMDEwMCkiLCJNMjMiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkE1Il0sIkYiOlsiRjEwIl0sIk0iOlsiTTE1KDExMTAwMTAwMTAxMDAxMDEwMDEwMTExMDApIiwiTTE1KDExMTEwMTAwMTAxMDAxMDEwMDEwMTExMTApIiwiTTE1KDExMTEwMTAwMDAxMDExMDEwMDEwMTExMTApIiwiTTIzIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQiJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWdpZ2dsZSJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxOSJdLCJNIjpbIk0xIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX1dfSwidmVyc2lvbiI6InYyLjMuNyJ9");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_21, "label", "inchworm");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_21, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBMjFfIl0sIk0iOlsiTTYiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTMiLCJGMTMiXSwiTSI6WyJNMiJdfSx7fV19LHsiUiI6W3siUyI6WyJTMSJdLCJBIjpbIkEyMV8iXSwiTSI6WyJNMTAiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTMiLCJGMTMiXSwiTSI6WyJNMSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuMy4wIn0=");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_21);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_22 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_22, "label", "battery charger prank");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_22, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMTExMDAxMDEwMDEwMTAwMTAxMDAxMTEwKSIsIk0xNSgwMTExMDAxMDEwMDEwMTAwMTAxMDAxMDEwKSIsIk0yMyJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBMSJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk0yIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMDExMTAwMTAxMDAxMDEwMDEwMTAwMTExMCkiLCJNMTUoMDExMTAwMTAxMDAxMDEwMDExMTAwMTExMCkiLCJNMTUoMDExMTAwMTAxMDAxMTEwMDExMTAwMTExMCkiLCJNMTUoMDExMTAwMTExMDAxMTEwMDExMTAwMTExMCkiLCJNMjMiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTkiXSwiTSI6WyJNMSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuMy43In0=");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_22, "label", "head guess");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_22, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHsiUyI6WyJTMSJdLCJBIjpbIkE5QSJdLCJNIjpbIk0yMiIsIk04Il19LHsiUyI6WyJTMSJdLCJBIjpbIkE5QiJdLCJNIjpbIk02Il19LHsiUyI6WyJTMyJdLCJBIjpbIkE5QSJdLCJGIjpbIkYxN190aWx0X2Rvd24iXSwiTSI6WyJNMjIiLCJNOCJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMTdfdGlsdF91cCJdLCJNIjpbIk0yMiIsIk04Il19LHsiUyI6WyJTMyJdLCJBIjpbIkE5QiJdLCJGIjpbIkYxN190aWx0X3VwIl0sIk0iOlsiTTIwQiIsIk02Il19LHsiUyI6WyJTNCJdLCJBIjpbIkExIl0sIkYiOlsiRjE5IiwiRjE5IiwiRjE5IiwiRjE5Il0sIk0iOlsiTTIiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkE1Il0sIkYiOlsiRjgiXSwiTSI6WyJNMTUoMDExMDAxMTExMDAxMTExMDExMTAwMDAwMCkiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkE1Il0sIkYiOlsiRjkiXSwiTSI6WyJNMTUoMTExMTAxMDAwMDEwMDAwMTAwMDAxMTExMCkiLCJNMTUoMTExMTAxMDAxMDExMTEwMTAwMTAxMDAxMCkiLCJNMTUoMTExMTEwMDEwMDAwMTAwMDAxMDAwMDEwMCkiLCJNMjMiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkE1Il0sIkYiOlsiRjEwIl0sIk0iOlsiTTE1KDExMTAwMTAwMTAxMDAxMDEwMDEwMTExMDApIiwiTTE1KDExMTEwMTAwMTAxMDAxMDEwMDEwMTExMTApIiwiTTE1KDExMTEwMTAwMDAxMDExMDEwMDEwMTExMTApIiwiTTIzIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQiJdfSx7IlMiOlsiUzEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWdpZ2dsZSJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMSJdLCJGIjpbIkYxOSIsIkYxOSJdLCJNIjpbIk0xIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX1dfSwidmVyc2lvbiI6InYyLjMuNyJ9");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_22);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_23 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_23, "label", "green light red light");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_23, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBMSJdLCJGIjpbIkY3Il0sIk0iOlsiTTIiXX0seyJTIjpbIlM3Il0sIkEiOlsiQTEiXSwiRiI6WyJGOSJdLCJNIjpbIk0zIl19LHsiUyI6WyJTMSJdLCJBIjpbIkE1Il0sIk0iOlsiTTE1KDEwMTAwMTExMTEwMDEwMTAxMTEwMDEwMDApIiwiTTE1KDAwMTAwMTExMTEwMDEwMDAxMTEwMDAwMDApIiwiTTE1KDAwMTAxMTExMTExMDEwMDAxMTEwMDAwMTApIiwiTTIzIl19LHsiUyI6WyJTMSJdLCJBIjpbIkEyIl0sIk0iOlsiTTE5aGVsbG8iXX0se31dfSx7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBOUEiXSwiTSI6WyJNNiJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBNiJdLCJNIjpbIk0yMEEiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTlBIl0sIkYiOlsiRjMiXSwiTSI6WyJNNiJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGNCJdLCJNIjpbIk03Il19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY4Il0sIk0iOlsiTTE1KDEwMTAwMTExMTEwMDEwMTAxMTEwMDEwMDApIiwiTTE1KDAwMTAwMTExMTEwMDEwMDAxMTEwMDAwMDApIiwiTTE1KDAwMTAxMTExMTExMDEwMDAxMTEwMDAwMTApIiwiTTIzIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY5Il0sIk0iOlsiTTE1KDEwMDAxMDEwMTAwMDEwMDAxMDEwMTAwMDEpIl19LHt9XX0seyJSIjpbeyJTIjpbIlMzIl0sIkEiOlsiQTIiXSwiRiI6WyJGMTdfc2hha2UiXSwiTSI6WyJNMTlzYWQiXX0seyJTIjpbIlMzIl0sIkEiOlsiQTUiXSwiRiI6WyJGMTdfc2hha2UiXSwiTSI6WyJNMTUoMTExMTExMDEwMTAxMTEwMDAwMDAwMTExMCkiLCJNMTUoMTExMTExMDEwMTAxMTEwMDExMTAwMDAwMCkiLCJNMjMiXX0seyJTIjpbIlM3Il0sIkEiOlsiQTEiXSwiRiI6WyJGOCJdLCJNIjpbIk0xIl19LHt9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC4wIn0=");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_23, "label", "battery charger prank");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_23, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMTExMDAxMDEwMDEwMTAwMTAxMDAxMTEwKSIsIk0xNSgwMTExMDAxMDEwMDEwMTAwMTAxMDAxMDEwKSIsIk0yMyJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBMSJdLCJGIjpbIkYxN19zaGFrZSJdLCJNIjpbIk0yIl19LHt9XX0seyJSIjpbeyJTIjpbIlMxIl0sIkEiOlsiQTUiXSwiTSI6WyJNMTUoMDExMTAwMTAxMDAxMDEwMDEwMTAwMTExMCkiLCJNMTUoMDExMTAwMTAxMDAxMDEwMDExMTAwMTExMCkiLCJNMTUoMDExMTAwMTAxMDAxMTEwMDExMTAwMTExMCkiLCJNMTUoMDExMTAwMTExMDAxMTEwMDExMTAwMTExMCkiLCJNMjMiXX0seyJTIjpbIlM0Il0sIkEiOlsiQTEiXSwiRiI6WyJGMTkiXSwiTSI6WyJNMSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuMy43In0=");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_23);
+    r0 = pxsim_pxtrt.mkMap();
+    s.tmp_24 = r0;
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_24, "label", "green light red light");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_24, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBMSJdLCJGIjpbIkY3Il0sIk0iOlsiTTIiXX0seyJTIjpbIlM3Il0sIkEiOlsiQTEiXSwiRiI6WyJGOSJdLCJNIjpbIk0zIl19LHsiUyI6WyJTMSJdLCJBIjpbIkE1Il0sIk0iOlsiTTE1KDEwMTAwMTExMTEwMDEwMTAxMTEwMDEwMDApIiwiTTE1KDAwMTAwMTExMTEwMDEwMDAxMTEwMDAwMDApIiwiTTE1KDAwMTAxMTExMTExMDEwMDAxMTEwMDAwMTApIiwiTTIzIl19LHsiUyI6WyJTMSJdLCJBIjpbIkEyIl0sIk0iOlsiTTE5aGVsbG8iXX0se31dfSx7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBOUEiXSwiTSI6WyJNNiJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBNiJdLCJNIjpbIk0yMEEiXX0seyJTIjpbIlMyIl0sIkEiOlsiQTlBIl0sIkYiOlsiRjMiXSwiTSI6WyJNNiJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGNCJdLCJNIjpbIk03Il19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY4Il0sIk0iOlsiTTE1KDEwMTAwMTExMTEwMDEwMTAxMTEwMDEwMDApIiwiTTE1KDAwMTAwMTExMTEwMDEwMDAxMTEwMDAwMDApIiwiTTE1KDAwMTAxMTExMTExMDEwMDAxMTEwMDAwMTApIiwiTTIzIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY5Il0sIk0iOlsiTTE1KDEwMDAxMDEwMTAwMDEwMDAxMDEwMTAwMDEpIl19LHt9XX0seyJSIjpbeyJTIjpbIlMzIl0sIkEiOlsiQTIiXSwiRiI6WyJGMTdfc2hha2UiXSwiTSI6WyJNMTlzYWQiXX0seyJTIjpbIlMzIl0sIkEiOlsiQTUiXSwiRiI6WyJGMTdfc2hha2UiXSwiTSI6WyJNMTUoMTExMTExMDEwMTAxMTEwMDAwMDAwMTExMCkiLCJNMTUoMTExMTExMDEwMTAxMTEwMDExMTAwMDAwMCkiLCJNMjMiXX0seyJTIjpbIlM3Il0sIkEiOlsiQTEiXSwiRiI6WyJGOCJdLCJNIjpbIk0xIl19LHt9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC4wIn0=");
+    r0 = pxsim_Array__push(s.tmp_1, s.tmp_24);
     s.s___22597 = (s.tmp_1);
     r0 = s.s___22597;
     return leave(s, r0)
   default: oops()
 } } }
-microcode_rawSamples__P4219.info = {"start":319,"length":17672,"line":14,"column":4,"endLine":142,"endColumn":5,"fileName":"samples.ts","functionName":"rawSamples","argumentNames":[]}
+microcode_rawSamples__P4219.info = {"start":319,"length":18256,"line":14,"column":4,"endLine":146,"endColumn":5,"fileName":"samples.ts","functionName":"rawSamples","argumentNames":[]}
 
 function microcode_rawSamples__P4219_mk(s) {
     checkStack(s.depth);
@@ -60283,6 +60288,7 @@ function microcode_rawSamples__P4219_mk(s) {
   tmp_21: undefined,
   tmp_22: undefined,
   tmp_23: undefined,
+  tmp_24: undefined,
   s___22597: undefined,
 } }
 
@@ -60938,7 +60944,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_samples__P4220.info = {"start":17997,"length":302,"line":144,"column":4,"endLine":152,"endColumn":5,"fileName":"samples.ts","functionName":"samples","argumentNames":["withIcon"]}
+microcode_samples__P4220.info = {"start":18581,"length":302,"line":148,"column":4,"endLine":156,"endColumn":5,"fileName":"samples.ts","functionName":"samples","argumentNames":["withIcon"]}
 
 function microcode_samples__P4220_mk(s) {
     checkStack(s.depth);
@@ -61007,7 +61013,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-map_inline__P22811.info = {"start":18120,"length":33,"line":147,"column":20,"endLine":147,"endColumn":53,"fileName":"samples.ts","functionName":"inline","argumentNames":["map.inline"]}
+map_inline__P22811.info = {"start":18704,"length":33,"line":151,"column":20,"endLine":151,"endColumn":53,"fileName":"samples.ts","functionName":"inline","argumentNames":["map.inline"]}
 
 function map_inline__P22811_mk(s) {
     checkStack(s.depth);
@@ -61113,7 +61119,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_samples_inline__P22820.info = {"start":18189,"length":90,"line":149,"column":16,"endLine":150,"endColumn":56,"fileName":"samples.ts","functionName":"inline","argumentNames":["microcode.samples.inline"]}
+microcode_samples_inline__P22820.info = {"start":18773,"length":90,"line":153,"column":16,"endLine":154,"endColumn":56,"fileName":"samples.ts","functionName":"inline","argumentNames":["microcode.samples.inline"]}
 
 function microcode_samples_inline__P22820_mk(s) {
     checkStack(s.depth);
