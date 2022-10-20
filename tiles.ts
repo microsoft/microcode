@@ -551,8 +551,7 @@ namespace microcode {
             super(TID_MODIFIER_ICON_EDITOR, "icon_editor", 10)
             this.firstInstance = false
             this.fieldEditor = iconFieldEditor
-            if (field) this.field = field.clone()
-            else this.field = this.fieldEditor.clone(this.fieldEditor.init)
+            this.field = this.fieldEditor.clone(field ? field : this.fieldEditor.init)
             this.jdKind = JdKind.ServiceCommandArg
             this.jdParam2 = 400 // ms
         }
@@ -629,8 +628,7 @@ namespace microcode {
             super(TID_MODIFIER_MELODY_EDITOR, "melody_editor", 10)
             this.firstInstance = false
             this.fieldEditor = melodyFieldEditor
-            if (field) this.field = { notes: field.notes.slice(0), tempo: field.tempo}
-            else this.field = this.fieldEditor.clone(this.fieldEditor.init)
+            this.field = this.fieldEditor.clone(field ? field : this.fieldEditor.init)
             this.jdKind = JdKind.ServiceCommandArg
             this.jdParam2 = 400 // ms
         }
@@ -646,7 +644,7 @@ namespace microcode {
         }
 
         getNewInstance(field: any = null) {
-            return new MelodyEditor(field ? field : { notes: field.notes.slice(0), tempo: field.tempo})
+            return new MelodyEditor(field ? field : this.fieldEditor.clone(this.field))
         }
 
         serviceCommandArg() {
