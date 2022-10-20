@@ -220,11 +220,11 @@ function melodyToImage(melody: microcode.Melody) {
     const ret = image.create(16, 16)
     ret.fill(1)
     for (let col = 0; col < 8; col++) {
-        if (melody.notes[col] === ".")
-            continue
+        if (melody.notes[col] === ".") continue
         const row = parseInt(melody.notes[col])
         const color = 15
-        const ncol = col << 1, nrow = row << 1    
+        const ncol = col << 1,
+            nrow = row << 1
         ret.setPixel(ncol, nrow, color)
         ret.setPixel(ncol + 1, nrow, color)
         ret.setPixel(ncol, nrow + 1, color)
@@ -232,7 +232,6 @@ function melodyToImage(melody: microcode.Melody) {
     }
     return ret
 }
-
 
 // - upscale 5x5 image to 16 x 16
 function scaleUp(led55: Image) {
@@ -265,7 +264,7 @@ namespace icondb {
 
     export const melodyEditor = melodyToImage({
         notes: "76543210",
-        tempo: 0
+        tempo: 0,
     })
 
     export const MISSING = img`
@@ -1356,7 +1355,7 @@ namespace icondb {
 . . . . . . . . . . . . . . . .
 `
 
-export const note_on = img`
+    export const note_on = img`
 . f f f f f f f .
 f f f f f f f f f
 f f f f f f f f f
@@ -1366,8 +1365,8 @@ f f f f f f f f f
 f f f f f f f f f
 . f f f f f f f .
 `
-    
-export const note_off = img`
+
+    export const note_off = img`
 . f f f f f f f .
 f 1 1 1 1 1 1 1 f
 f 1 1 1 1 1 1 1 f
@@ -1377,9 +1376,7 @@ f 1 1 1 1 1 1 1 f
 f 1 1 1 1 1 1 1 f
 . f f f f f f f .
 `
-    
-    
-    
+
     export const accelerometer = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . 8 . . . . . . .
