@@ -16,13 +16,17 @@ The picture below shows a 1-page program with four rules.
 
 ![Smiley Button MicroCode program](./images/generated/sample_smiley_buttons.png){:class="screenshot"}
 
+The first two rule run when A is pressed.
+
 ![when button A pressed, show image smiley](./images/generated/sample_smiley_buttons_page_1_rule_1.png){:class="rule"}
 
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} show image smiley.
 
-![when button B pressed, show image frowney](./images/generated/sample_smiley_buttons_page_1_rule_2.png){:class="rule"}
+![when button A pressed, play happy sound](../images/generated/sample_smiley_buttons_page_1_rule_2.png){:class="rule"}
 
--   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button B](./images/generated/icon_F4.png){:class="icon"} button B, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} show image frowney.
+-   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![button A](./images/generated/icon_F3.png){:class="icon"} button A, **do** ![speaker](./images/generated/icon_A2.png){:class="icon"} play sound emoji ![emoji happy](./images/generated/icon_M19happy.png){:class="icon"} happy.
+
+The other rules are similar but trigger for button B.
 
 ## Pages {#pages}
 
@@ -111,7 +115,7 @@ The right-hand side of a rule, the **Do** section, starts with a
 -   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays a sequence of emojis
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends a given number over the radio
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` transfers execution control to a given page
--   ![set variable X](./images/generated/icon_A9A.png){:class="icon"} `set variable` puts a number into a variable (`X`, `Y`, `Z`); defaults to 0 if no value specified 
+-   ![set variable X](./images/generated/icon_A9A.png){:class="icon"} `set variable` puts a number into a variable (`X`, `Y`, `Z`); defaults to 0 if no value specified
 
 A command can be followed by various parameter tiles, depending on the type
 of command. As with events, every command has a default parameter, for the
@@ -122,8 +126,7 @@ case where no parameter tile is given:
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends the number `1` by default
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` switches to page `1` by default
 -   ![get variable X](./images/generated/icon_M20A.png){:class="icon"} `get variable` gets the number from a variable (`X`, `Y`, `Z`); defaults to `0` if variable wasn't previously set.
-Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5 dots`.
-
+    Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5 dots`.
 
 ### Constructing numbers
 
@@ -142,7 +145,6 @@ after `repeat` determine the number of iterations. If no value is given, it repe
 ![when touch logo, print happy on screen](./images/generated/sample_pet_hamster_page_1_rule_2.png){:class="rule"}
 
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![logo](./images/generated/icon_F7.png){:class="icon"} micro:bit logo, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} show image happy animation and ![repeat](./images/generated/icon_M23.png){:class="icon"} repeat ![value 3](./images/generated/icon_M8.png){:class="icon"} 3 times.
-
 
 ## Accessories (Jacdac Modules) {#jacdac}
 

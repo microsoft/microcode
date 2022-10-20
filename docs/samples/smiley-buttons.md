@@ -6,17 +6,24 @@ image: ./docs/images/generated/sample_smiley_buttons.png
 
 ![Smiley Buttons MicroCode program](../images/generated/sample_smiley_buttons.png){:class="sample"}
 
-The goal of this program is to show a smiley
-when pressing A, and a frowney animation (2 frames) that repeats 3 times when
-pressing B.
+The goal of this program is to show a smiley and plays a happy sound
+when pressing A, and a frowney animation and unhappy sound when B is pressed.
 
 ![when button A pressed, show image smiley](../images/generated/sample_smiley_buttons_page_1_rule_1.png){:class="rule"}
 
 -   **when** ![press](../images/generated/icon_S2.png){:class="icon"} press ![button A](../images/generated/icon_F3.png){:class="icon"} button A, **do** ![screen](../images/generated/icon_A5.png){:class="icon"} show image smiley.
 
-![when button B pressed, show image frowney and repeat 3 times](../images/generated/sample_smiley_buttons_page_1_rule_3.png){:class="rule"}
+![when button A pressed, play happy sound](../images/generated/sample_smiley_buttons_page_1_rule_2.png){:class="rule"}
 
--   **when** ![press](../images/generated/icon_S2.png){:class="icon"} press ![button B](../images/generated/icon_F4.png){:class="icon"} button B, **do** ![screen](../images/generated/icon_A5.png){:class="icon"} show image frowney, and ![repeat](../images/generated/icon_M23.png){:class="icon"} repeat ![value 3](../images/generated/icon_M8.png){:class="icon"} 3 times.
+-   **when** ![press](../images/generated/icon_S2.png){:class="icon"} press ![button A](../images/generated/icon_F3.png){:class="icon"} button A, **do** ![speaker](../images/generated/icon_A2.png){:class="icon"} play sound emoji ![emoji happy](../images/generated/icon_M19happy.png){:class="icon"} happy.
+
+![when button B pressed, show image frowney ](../images/generated/sample_smiley_buttons_page_1_rule_3.png){:class="rule"}
+
+-   **when** ![press](../images/generated/icon_S2.png){:class="icon"} press ![button B](../images/generated/icon_F4.png){:class="icon"} button B, **do** ![screen](../images/generated/icon_A5.png){:class="icon"} show image frowney.
+
+![when button B pressed, play sad sound](../images/generated/sample_smiley_buttons_page_1_rule_4.png){:class="rule"}
+
+-   **when** ![press](../images/generated/icon_S2.png){:class="icon"} press ![button A](../images/generated/icon_F3.png){:class="icon"} button A, **do** ![speaker](../images/generated/icon_A2.png){:class="icon"} play sound emoji ![emoji sad](../images/generated/icon_M19sad.png){:class="icon"} sad.
 
 #### improvement ideas
 
