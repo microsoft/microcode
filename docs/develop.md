@@ -141,6 +141,28 @@ cd scripts
 ./genlib.sh
 ```
 
+## Localization
+
+### Adding tooltips in source code
+
+-   add new tooltip to `locales/tooltips.json`
+-   refresh tooltips.ts
+
+```bash
+node scripts/locs.js en
+```
+
+### Updating crowdin
+
+-   Go to https://crowdin.com/project/makecode/content/files
+-   click on `Update` for `microcode/tooltips.json` and load `locales/tooltips.json`.
+
+### Refreshing translations
+
+-   go to https://crowdin.com/project/makecode/tools/content-delivery
+-   click `Release` on the microcode distribution
+-   bump repo
+
 ## Overview of implementation
 
 ### Local files
