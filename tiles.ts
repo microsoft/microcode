@@ -590,12 +590,12 @@ namespace microcode {
 
     function melodyToImage(melody: Melody) {
         const ret = image.create(16, 16)
-        ret.fill(15)
+        ret.fill(1)
         for (let col = 0; col < 8; col++) {
             if (melody.notes[col] === ".")
                 continue
             const row = parseInt(melody.notes[col])
-            const color = 1
+            const color = 15
             const ncol = col << 1, nrow = row << 1    
             ret.setPixel(nrow, ncol, color)
             ret.setPixel(nrow + 1, ncol, color)
