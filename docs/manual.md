@@ -2,7 +2,7 @@
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 
-# MicroCode User Guide
+# User Guide
 
 Physical computing for young learners on the [micro:bit V2](https://microbit.org).
 
