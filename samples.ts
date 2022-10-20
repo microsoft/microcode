@@ -45,7 +45,11 @@ namespace microcode {
             {
                 label: "counter",
                 ariaId: "N14",
-                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk0yMEEiLCJNNiJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi4yLjE1In0=",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk0yMEEiLCJNNiJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQSJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTIiXSwiTSI6WyJNMTloZWxsbyJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi40LjgifQ==",
+            },
+            {
+                label: "times table",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBOUIiXSwiRiI6WyJGMTdfc2hha2UiXSwiTSI6WyJNMjIiLCJNOSIsIk0xMCJdfSx7IlMiOlsiUzlCIl0sIkEiOlsiQTlBIl0sIk0iOlsiTTIwQiJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk0yMEEiLCJNMjBCIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMTAiXSwiTSI6WyJNMjBBIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWhlbGxvIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuOCJ9",
             },
             {
                 label: "double counter",

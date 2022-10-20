@@ -8,7 +8,7 @@ image: ./docs/images/generated/sample_counter.png
 
 This program counts how many times you press `button A`.
 
--  [Open in MicroCode](/microcode/#H4sIANizQWMAA02OyQqDMBRFfykOtLjoopZgX3DARq24dIKnUQQFm359Y+Kiq8uBO3WS7c3kzVVQTDAsVxB3TMSmFE6NlK6YfwFLvmPK4fKWzE9yqvmFmoNIsjZ8sFh11DASGVGKB8fI2p5//nqED4KsMFLNaUZ3w0RzlsGecpPpC8sLnypzbDibV5ZkVX/5sdE51tlrfhqv8cBciWaOl9p2MUFmR+jKcKAWzOT2A9tY6ZLwAAAA)
+-  [Open in MicroCode](/microcode/#H4sIAMG4UGMAA4WPywqDMBBFfyl90OKii7YEO8EoNvGBS19lNFpBQe3XNxoX3XV1OTD3cqaY2Zg1VpvYYQNVdwZ1RU8NOmFLrrPH4AMYixF9AadoZjcvoCs/cWWbzyx37szVGynUZOaU4sIusrwU08+OuoEiPdR0ZV/S0TBZWUoYffGvY1ykcXG5VO8kmvpUOyy9MtxZzkP3FrfDYMUx6fWfYnErDrtt2/xnbs0NtInKWrdL90f0kO05HolTvbD0L5cvGfuL7ygBAAA=)
 
 ![when press button A, increment variable X](../images/generated/sample_counter_page_1_rule_1.png){:class="rule"}
 
