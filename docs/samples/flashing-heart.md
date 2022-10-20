@@ -15,7 +15,12 @@ with two images. Each time the timer triggers again, it repaints both images whi
 
 -   **when** ![timer](../images/generated/icon_S4.png){:class="icon"} timer triggers, **do** ![screen](../images/generated/icon_A5.png){:class="icon"} show image heart.
 
+![flashing heart rule 2](../images/generated/sample_flashing_heart_page_1_rule_2.png){:class="rule"}
+
+-   **when** ![timer](../images/generated/icon_S4.png){:class="icon"} timer triggers, **do** ![speaker](../images/generated/icon_A2.png){:class="icon"}play sound ![emoji hello](../images/generated/icon_M19hello.png){:class="icon"} hello.
+
 ## improvement ideas
 
 -   add more animation frames to create a better beating heart
+-   add more sounds
 -   make your own animation

@@ -9,11 +9,12 @@ and each rule consists of a **When** section and a **Do** section, each with a l
 **tiles**.
 
 MicroCode supports events, conditions on the events, sequencing,
-loops, and variables. See [samples](./samples) for a list of annotated examples.
+loops, variables, and simple arithmetic (addition, for now) over constants and variables.
+See [samples](./samples) for a list of annotated examples.
 
-The picture below shows a 1-page program with two rules.
+The picture below shows a 1-page program with four rules.
 
-![Smiley Button MicroCode program](./images/rule.jpg){:class="screenshot"}
+![Smiley Button MicroCode program](./images/generated/sample_smiley_buttons.png){:class="screenshot"}
 
 ![when button A pressed, show image smiley](./images/generated/sample_smiley_buttons_page_1_rule_1.png){:class="rule"}
 
@@ -51,6 +52,7 @@ The left-hand side of a rule, the `When` section, starts with an
 -   ![move image](./images/generated/icon_S3.png){:class="icon"} `move` of accelerometer, in various ways
 -   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear` a sound, either loud or soft
 -   ![radio receive image](./images/generated/icon_S7.png){:class="icon"} `radio receive` of a number
+-   ![start page image](./images/generated/icon_S1.png){:class="icon"} `start page` only runs when the page is started (or switched to), with an optional delay
 -   ![timer image](./images/generated/icon_S4.png){:class="icon"} `timer` of a time
 -   ![variable X image](./images/generated/icon_S9A.png){:class="icon"} ![variable Y image](./images/generated/icon_S9B.png){:class="icon"} ![variable Z image](./images/generated/icon_S9C.png){:class="icon"} `variable (X,Y,Z) changed` to a number
 
@@ -97,6 +99,8 @@ The `timer` is parameterized with various times that can also be sequenced and s
 
 In the case of the timer, the sum specifies the amount of time to start the timer with.
 
+![command tiles in do section](./images/doDialog.jpg){:class="screenshot"}
+
 ## DO section {#do}
 
 The right-hand side of a rule, the **Do** section, starts with a
@@ -117,10 +121,17 @@ case where no parameter tile is given:
 -   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays ![emoji giggle](./images/generated/icon_M19giggle.png){:class="icon"} `giggle` by default
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends the number `1` by default
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` switches to page `1` by default
--   ![get variable X](./images/generated/icon_M20A.png){:class="icon"} `get variable` gets the number from a variable (`X`, `Y`, `Z`); defaults to `0` if variable wasn't previously set
+-   ![get variable X](./images/generated/icon_M20A.png){:class="icon"} `get variable` gets the number from a variable (`X`, `Y`, `Z`); defaults to `0` if variable wasn't previously set.
 Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5 dots`.
 
-![command tiles in do section](./images/doDialog.jpg){:class="screenshot"}
+
+### Constructing numbers
+
+For commands that expect a numeric value (![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send`, ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable`), a variety of tiles are available
+
+-   the **constant values** ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, 2, 3, 4 and 5 dots
+-   the **values of variables** ![out of variable X](./images/generated/icon_S9A.png){:class="icon"} `X`, `Y`, and `Z`
+-   a ![dice](./images/generated/icon_M22.png){:class="icon"} **random number generator** yields a random integer between `1` and `5` (inclusive) by default
 
 ### ![repeat](./images/generated/icon_M23.png){:class="icon"} `repeat` (loops) {#loops}
 
@@ -132,13 +143,6 @@ after `repeat` determine the number of iterations. If no value is given, it repe
 
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![logo](./images/generated/icon_F7.png){:class="icon"} micro:bit logo, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} show image happy animation and ![repeat](./images/generated/icon_M23.png){:class="icon"} repeat ![value 3](./images/generated/icon_M8.png){:class="icon"} 3 times.
 
-### Constructing numbers
-
-For commands that expect a numeric value (![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send`, ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable`), a variety of tiles are available
-
--   the **constant values** ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, 2, 3, 4 and 5 dots
--   the **values of variables** ![out of variable X](./images/generated/icon_S9A.png){:class="icon"} `X`, `Y`, and `Z`
--   a ![dice](./images/generated/icon_M22.png){:class="icon"} **random number generator** yields a random integer between `1` and `5` (inclusive) by default
 
 ## Accessories (Jacdac Modules) {#jacdac}
 

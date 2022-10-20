@@ -249,12 +249,12 @@ namespace microcode {
                     () => {
                         this.editor.releaseBackground()
                         tileUpdated(newOne)
-                    }, 
-                    del ?
-                        () => {
-                            this.editor.releaseBackground()
-                            tileUpdated(undefined)
-                        }
+                    },
+                    del
+                        ? () => {
+                              this.editor.releaseBackground()
+                              tileUpdated(undefined)
+                          }
                         : undefined
                 )
             }

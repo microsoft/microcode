@@ -24,6 +24,10 @@ Once the timer triggers, the first rule ![switch page](../images/generated/icon_
     and ![1 random second](../images/generated/icon_F18.png){:class="icon"} 1
     random second, **do** ![switch page](../images/generated/icon_A1.png){:class="icon"} switches to ![page 2](../images/generated/icon_M2.png){:class="icon"} page 2.
 
+![when timer , do screen animation](../images/generated/sample_hot_potato_page_1_rule_2.png){:class="rule"}
+
+-   **when** ![timer](../images/generated/icon_S4.png){:class="icon"}, **do** paint screen animation (blinking dot).
+
 ## ![page 2](../images/generated/icon_M2.png){:class="icon"} page 2
 
 ![hot potato page 2](../images/generated/sample_hot_potato_page_2.png){:class="sample"}

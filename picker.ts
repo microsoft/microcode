@@ -46,16 +46,16 @@ namespace microcode {
             this.bounds = undefined
         }
 
-        public layout() {
+        public layout(maxPerRow: number) {
             const cell = new Bounds()
             this.buttons.forEach(btn => cell.add(btn.bounds))
             this.buttons.forEach((btn, idx) => {
                 btn.xfrm.parent = this.xfrm
-                const row = Math.idiv(idx, MAX_PER_ROW)
+                const row = Math.idiv(idx, maxPerRow)
                 btn.xfrm.localPos.x =
                     (cell.width >> 1) +
-                    (idx % MAX_PER_ROW) * cell.width +
-                    (idx % MAX_PER_ROW)
+                    (idx % maxPerRow) * cell.width +
+                    (idx % maxPerRow)
                 btn.xfrm.localPos.y = row * cell.height
             })
             this.bounds = new Bounds()
@@ -122,7 +122,7 @@ namespace microcode {
                 onHide?: () => void
                 onDelete?: () => void
                 navigator?: () => INavigator
-                selected?: number
+                maxPerRpw?: number
             },
             hideOnClick: boolean = true
         ) {
@@ -163,7 +163,7 @@ namespace microcode {
                     if (btn.start) this.startBtn = button
                 })
             })
-            this.layout()
+            this.layout(opts.maxPerRpw ? opts.maxPerRpw : MAX_PER_ROW)
             this.visible = true
         }
 
@@ -201,7 +201,7 @@ namespace microcode {
             if (this.deleteBtn) this.deleteBtn.draw()
         }
 
-        private layout() {
+        private layout(maxPerRow: number) {
             this.panel = new Bounds()
             const padding = 2
             let top = padding
@@ -212,7 +212,7 @@ namespace microcode {
                 this.navigator.addButtons([this.deleteBtn])
             }
             this.groups.forEach((group, idx) => {
-                group.layout()
+                group.layout(maxPerRow)
                 if (idx === 0) {
                     top += group.buttons[0].height >> 1
                 } else {

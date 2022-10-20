@@ -2,7 +2,7 @@
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 
-# [Microsoft MicroCode](https://aka.ms/m9) for micro:bit
+# MicroCode User Guide
 
 Physical computing for young learners on the [micro:bit V2](https://microbit.org).
 
@@ -50,7 +50,8 @@ MicroCode is community translated through Crowdin. Please read on [localization]
 
 -   [Basque](../eu.html) ([download](../assets/hex/microcode-eu.hex))
 -   [Catalan](../ca.html) ([download](../assets/hex/microcode-ca.hex))
--   [Chinese simplified](../zh-CN.html) ([download](../assets/hex/microcode-zh-cn.hex))
+-   [Chinese Simplified](../zh-CN.html) ([download](../assets/hex/microcode-zh-cn.hex))
+-   [Chinese Traditional, Hong Kong](../zh-HK.html) ([download](../assets/hex/microcode-zh-hk.hex))
 -   [Croatian](../hr.html) ([download](../assets/hex/microcode-hr.hex))
 -   [English](../) ([download](../assets/hex/microcode-en.hex))
 -   [German](../de.html) ([download](../assets/hex/microcode-de.hex))
@@ -61,7 +62,7 @@ MicroCode is community translated through Crowdin. Please read on [localization]
 -   [Polish](../pl.html) ([download](../assets/hex/microcode-pl.hex))
 -   [Portuguese, Brazilian](../pt-BR.html) ([download](../assets/hex/microcode-pt-br.hex))
 -   [Spanish](../es-ES.html) ([download](../assets/hex/microcode-es-es.hex))
--   [Spanish (Mexico)](../es-MX.html) ([download](../assets/hex/microcode-es-mx.hex))
+-   [Spanish, Mexico](../es-MX.html) ([download](../assets/hex/microcode-es-mx.hex))
 -   [Turkish](../tr.html) ([download](../assets/hex/microcode-tr.hex))
 -   [Welsh](../cy.html) ([download](../assets/hex/microcode-cy.hex))
 

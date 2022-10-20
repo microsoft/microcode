@@ -35,7 +35,10 @@ namespace jacs {
                     patched = called.index
                     break
                 case Op.EXPRx_LITERAL_F64:
-                    const f = _binFloatLits.getNumber(NumberFormat.Float64LE, intarg * 8)
+                    const f = _binFloatLits.getNumber(
+                        NumberFormat.Float64LE,
+                        intarg * 8
+                    )
                     patched = top.addFloat(f)
                     break
                 case Op.EXPRx_STATIC_ROLE:

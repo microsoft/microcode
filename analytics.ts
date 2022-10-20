@@ -23,7 +23,7 @@ namespace microcode {
 
     /**
      * Sends an analytics message
-     * @param msg 
+     * @param msg
      */
     //% shim=TD_NOOP
     function report(msg: AnalyticsEvent) {

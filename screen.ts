@@ -21,7 +21,7 @@ namespace microcode {
             Screen.WIDTH = Screen.image_.width
             Screen.HEIGHT = Screen.image_.height
             Screen.HALF_WIDTH = Screen.WIDTH >> 1
-            Screen.HALF_HEIGHT =  Screen.HEIGHT >> 1
+            Screen.HALF_HEIGHT = Screen.HEIGHT >> 1
             Screen.LEFT_EDGE = -Screen.HALF_WIDTH
             Screen.RIGHT_EDGE = Screen.HALF_WIDTH
             Screen.TOP_EDGE = -Screen.HALF_HEIGHT
@@ -31,7 +31,7 @@ namespace microcode {
                 top: Screen.TOP_EDGE,
                 width: Screen.WIDTH,
                 height: Screen.HEIGHT,
-            })            
+            })
         }
 
         public static x(v: number) {

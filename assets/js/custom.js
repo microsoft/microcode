@@ -297,6 +297,7 @@ const supportedLanguages = [
     "eu",
     "ca",
     "zh-CN",
+    "zh-HK",
     "hr",
     "fr",
     "fr-CA",
