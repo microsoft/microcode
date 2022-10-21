@@ -32,7 +32,6 @@ and display a different symbol for each value, 1 or 2.
 
 ## improvement ideas
 
--   add sound emoji whenever shake happens
 -   clear the screen before showing the new symbol
 
 ## Video
