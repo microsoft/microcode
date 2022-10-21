@@ -325,8 +325,17 @@ namespace microcode {
         paint.defaultModifier = new IconEditor()
 
         if (Options.melody) {
-            const music = addActuator(TID_ACTUATOR_MUSIC, ["melody_editor", "loop"])
+            const music = addActuator(TID_ACTUATOR_MUSIC, [
+                "melody_editor",
+                "loop",
+            ])
             music.priority = 11
+            music.serviceClassName = "buzzer"
+            music.serviceCommand = jacs.CMD_SET_REG | 0x2
+            music.jdKind = JdKind.Sequence
+            music.jdParam = "note_sequence"
+            // music.jdParam2 = 6
+            // music.defaultModifier = new MelodyEditor()
         }
 
         const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
