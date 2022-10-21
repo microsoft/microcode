@@ -521,7 +521,7 @@ namespace jacs {
             wr.top = lbl
         }
 
-        private emitSequance(rule: microcode.RuleDefn, delay: number) {
+        private emitSequence(rule: microcode.RuleDefn, delay: number) {
             const actuator = rule.actuators[0]
             const shortCutFn = actuator.jdParam
             const bufSize = actuator.jdParam2 || 5
@@ -848,7 +848,7 @@ namespace jacs {
                     actuator.serviceCommand
                 )
             } else if (actuator.jdKind == microcode.JdKind.Sequence) {
-                this.emitSequance(rule, 400)
+                this.emitSequence(rule, 400)
             } else if (actuator.jdKind == microcode.JdKind.ExtLibFn) {
                 this.emitValueOut(rule, 1)
                 const role = this.lookupActuatorRole(rule)
