@@ -1,6 +1,65 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang }}">
     <head>
+        <meta charset="utf-8" />
+        <title>{{ site.github.project_title }}</title>
+        <meta name="description" content="{{ site.github.project_tagline }}" />
+        <meta name="author" content="Microsoft" />
+        <meta
+            name="keywords"
+            content="coding,pre-reader,microcode,education,microbit,ks1,csk3,k-3,k-5,computing"
+        />
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="/{{ site.github.repository_name }}/assets/favicon.png"
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta
+            name="twitter:title"
+            content="Microsoft MicroCode for micro:bit"
+        />
+        <meta
+            name="twitter:description"
+            content="{{ site.github.project_tagline }}"
+        />
+        <meta
+            name="twitter:image"
+            content="https://microsoft.github.io/microcode/assets/twitter.png"
+        />
+        <meta
+            name="twitter:image:alt"
+            content="The splash screen of MicroCode"
+        />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-title"
+            content="{{ site.github.project_title }}"
+        />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="translucent-black"
+        />
+        <meta name="format-detection" content="telephone=no" />
+        <meta
+            name="application-name"
+            content="{{ site.github.project_title }}"
+        />
+        <meta name="theme-color" content="#000" />
+        <meta property="og:title" content="{{ site.github.project_title }}" />
+        <meta
+            property="og:site_name"
+            content="{{ site.github.project_title }}"
+        />
+        <meta
+            property="og:description"
+            content="{{ site.github.project_tagline }}"
+        />
+        <meta
+            property="og:image"
+            content="/{{ site.github.repository_name }}/assets/image.png"
+        />
         {% include head-custom.html %} {% include hreflang.html %}
         <script src="https://unpkg.com/fflate"></script>
         <script src="https://unpkg.com/howler"></script>
