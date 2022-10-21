@@ -87,21 +87,6 @@ You might also be able to commit and push directly from the web site, but we fin
 
 Some art images are precomputed, you will need to load scripts/renderart.ts in MakeCode Arcade and copy the console output back into the project.
 
-## Localization
-
-### Strings
-
-The editor will automatically switch to the user language is supported or use the `?lang=<isocode>` to force.
-The localization files should be in sub-folder of `locales` using the language iso code, eg `locales/fr/tooltips.json`.
-
--   [ ] `locales/tooltips.json` contains the tooltips displayed on the micro:bit screen
-
-Make sure to run script to refresh ts files if you modify `locales/tooltips.json`.
-
-```bash
-node scripts/locs.js
-```
-
 ## Updating sample
 
 -   Browse to http://127.0.0.1:7001/index.html?compress=0
@@ -142,6 +127,9 @@ cd scripts
 ```
 
 ## Localization
+
+-   [ ] `locales/tooltips.json` contains the tooltips displayed on the micro:bit screen
+-   [ ] `_includes/dialogs.html` contains the webusb dialogs
 
 ### Adding tooltips in source code
 
