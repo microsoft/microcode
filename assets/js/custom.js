@@ -395,7 +395,7 @@ function speak(text) {
 addSimMessageHandler("accessibility", data => {
     // render message
     const msg = JSON.parse(uint8ArrayToString(data))
-    console.debug(`aria`, msg)
+    //console.debug(`aria`, msg)
     let value
     const force = msg.force
     if (msg.type === "tile" || msg.type === "text") {
@@ -452,7 +452,7 @@ function setLiveRegion(value, force) {
     }
     value = value || ""
     if (force && liveRegion.textContent === value) liveRegion.textContent = ""
-    console.debug(`aria-live: ${value}`)
+    //console.debug(`aria-live: ${value}`)
     liveRegion.dataset["text"] = value
     liveRegion.textContent = value
     playClick()
