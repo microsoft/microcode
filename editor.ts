@@ -146,7 +146,7 @@ namespace microcode {
 
         public hoverCursorTo(btn: Button) {
             const w = btn.xfrm.worldPos
-            this.cursor.setAriaContent(btn.ariaId, w)
+            this.cursor.snapTo(w.x, w.y, btn.ariaId, btn.bounds)
             btn.reportAria(false)
         }
 

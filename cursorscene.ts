@@ -96,12 +96,15 @@ namespace microcode {
         }
 
         protected handleMove(x: number, y: number) {
-            const target = this.navigator.screenToButton(
+            const btn = this.navigator.screenToButton(
                 x - Screen.HALF_WIDTH,
                 y - Screen.HALF_HEIGHT
             )
-            if (target)
-                this.cursor.setAriaContent(target.ariaId, target.xfrm.worldPos)
+            if (btn) {
+                const w = btn.xfrm.worldPos
+                this.cursor.snapTo(w.x, w.y, btn.ariaId, btn.bounds)
+                btn.reportAria(true)
+            }
         }
 
         /* override */ shutdown() {
