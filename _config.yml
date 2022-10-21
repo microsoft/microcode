@@ -9,6 +9,7 @@ include:
   - README.md
 plugins:
   - jekyll-remote-theme
+  - jekyll-sitemap
 show_downloads: false
 title: Microsoft MicroCode (beta)
 description: Physical computing for young learners on the micro:bit V2 (beta)
