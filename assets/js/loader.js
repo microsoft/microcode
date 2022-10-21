@@ -154,7 +154,7 @@ function makeCodeRun(options) {
 
     function postMessage(msg) {
         const frame = document.getElementById("simframe")
-        if (frame) frame.contentWindow.postMessage(msg, meta.simUrl)
+        if (frame && meta) frame.contentWindow.postMessage(msg, meta.simUrl)
     }
 
     function sendReq(url, cb) {
