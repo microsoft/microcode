@@ -55,6 +55,16 @@
 - icon
 
 
+### ![](./images/generated/icon_note_on.png){:class="icon"} `` {#icon_note_on}
+
+- icon
+
+
+### ![](./images/generated/icon_note_off.png){:class="icon"} `` {#icon_note_off}
+
+- icon
+
+
 ### ![](./images/generated/icon_flashing_heart.png){:class="icon"} `` {#icon_flashing_heart}
 
 - icon
@@ -311,6 +321,11 @@
 
 
 ### ![](./images/generated/icon_M15.png){:class="icon"} `` {#icon_M15}
+
+- icon
+
+
+### ![](./images/generated/icon_M24.png){:class="icon"} `` {#icon_M24}
 
 - icon
 

@@ -2,19 +2,18 @@
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 
-# MicroCode User Guide
-
-Physical computing for young learners on the [micro:bit V2](https://microbit.org).
+# User Guide
 
 > MicroCode is still in **beta** development and might change in the future. Post your suggestions or questions on the [forum](https://forum.makecode.com/c/60).
 
--   Kid-friendly icon-based, live, structured code editor and [programming language](./language)
+Physical computing for young learners on the [micro:bit V2](https://microbit.org):
 
-<video class="sample" poster="./videos/smiley-buttons.png" src="./videos/smiley-buttons.mp4" controls="true"></video>
-
+-   Kid-friendly, icon-based, structured code editor and [programming language](./language)
 -   Live, the code is downloaded to the micro:bit on every edit
 -   Cursor based navigation with keyboard (switch access compatible), mouse, touch, screen reader support
 -   Accessories (LEDs, servos, ...) supported via [Jacdac](https://aka.ms/jacdac)
+
+<video class="sample" poster="./videos/smiley-buttons.png" src="./videos/smiley-buttons.mp4" controls="true"></video>
 
 ## [Web editor](https://aka.ms/m9) {#web}
 
@@ -53,6 +52,7 @@ MicroCode is community translated through Crowdin. Please read on [localization]
 -   [Chinese Simplified](../zh-CN.html) ([download](../assets/hex/microcode-zh-cn.hex))
 -   [Chinese Traditional, Hong Kong](../zh-HK.html) ([download](../assets/hex/microcode-zh-hk.hex))
 -   [Croatian](../hr.html) ([download](../assets/hex/microcode-hr.hex))
+-   [Dutch](../nl.html) ([download](../assets/hex/microcode-nl.hex))
 -   [English](../) ([download](../assets/hex/microcode-en.hex))
 -   [German](../de.html) ([download](../assets/hex/microcode-de.hex))
 -   [French](../fr.html) ([download](../assets/hex/microcode-fr.hex))

@@ -2,7 +2,7 @@
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 
-# MicroCode Samples
+# Samples
 
 Annotated example programs.
 
@@ -20,8 +20,19 @@ Annotated example programs.
 
 These sample use variables to store and read numeric values.
 
--   [![Head or tails icon](./images/generated/icon_sample_head_or_tail.png){:class="icon"} head or tail](./samples/head-or-tail)
+### Dices
+
+These samples store a random number and use to build mini games.
+
+-   [![Head or tail icon](./images/generated/icon_sample_head_or_tail.png){:class="icon"} head or tail](./samples/head-or-tail)
+-   [crooked head or tail](./samples/crooked-head-or-tail)
+
 -   [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon"} rock paper scissors](./samples/rock-paper-scissors)
+
+### Counters
+
+These sample use variables to build counters.
+
 -   [counter](./samples/counter)
 -   [times table](./samples/times-table)
 
