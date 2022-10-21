@@ -119,6 +119,8 @@ Click on the version number in the web app to download the MicroCode hex file to
 
 ![Arcade Shield and micro:bit V2](./images/meow1.jpg){:class="fluid"}
 
+{% include youtube.html id="g53_aEVH8oA" %}
+
 {% include youtube.html id="ymP7x8GXgz4" %}
 
 {% include youtube.html id="LWjJL9qegmM" %}

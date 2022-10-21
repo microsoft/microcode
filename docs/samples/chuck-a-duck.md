@@ -51,3 +51,5 @@ to trigger the activity. You can avoid groups interference by
 ## Video
 
 <video class="sample" poster="../videos/chuck-a-duck.png" src="../videos/chuck-a-duck.mp4" controls="true"></video>
+
+{% include youtube.html id="g53_aEVH8oA" %}
