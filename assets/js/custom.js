@@ -299,6 +299,8 @@ const supportedLanguages = [
     "zh-CN",
     "zh-HK",
     "hr",
+    "nl",
+    "fil",
     "fr",
     "fr-CA",
     "de",
@@ -310,7 +312,6 @@ const supportedLanguages = [
     "es-MX",
     "tr",
     "cy",
-    "nl",
 ]
 
 async function fetchJSON(url) {

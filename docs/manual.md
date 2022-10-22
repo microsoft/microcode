@@ -1,5 +1,6 @@
 ---
 image: ./docs/images/generated/sample_smiley_buttons.png
+description: User guide for the MicroCode editor
 ---
 
 # User Guide
@@ -55,6 +56,7 @@ MicroCode is community translated through Crowdin. Please read on [localization]
 -   [Dutch](../nl.html) ([download](../assets/hex/microcode-nl.hex))
 -   [English](../) ([download](../assets/hex/microcode-en.hex))
 -   [German](../de.html) ([download](../assets/hex/microcode-de.hex))
+-   [Filipino](../fil.html) ([download](../assets/hex/microcode-fil.hex))
 -   [French](../fr.html) ([download](../assets/hex/microcode-fr.hex))
 -   [French, Canada](../fr-CA.html) ([download](../assets/hex/microcode-fr-ca.hex))
 -   [Italian](../it.html) ([download](../assets/hex/microcode-it.hex))

@@ -4,6 +4,8 @@ image: ./docs/images/generated/sample_railroad_crossing.png
 
 # Jacdac
 
+![Smiley Button MicroCode program](./images/generated/sample_railroad_crossing.png){:class="screenshot"}
+
 MicroCode integrates with [Jacdac](https://aka.ms.jacdac) in several ways
 
 -   the MicroCode program is compiled to the bytecode of the Jacdac virtual machine (JDVM), which can be run on the same micro:bit or exported to other micro:bits
