@@ -335,7 +335,7 @@ namespace microcode {
             music.jdKind = JdKind.Sequence
             music.jdParam = "note_sequence"
             // music.jdParam2 = 6
-            // music.defaultModifier = new MelodyEditor()
+            music.defaultModifier = new MelodyEditor()
         }
 
         const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
@@ -600,9 +600,17 @@ namespace microcode {
     }
 
     // notes are in reverse order of scale
-    // - 7 = C
-    // - 6 = D
-    // - 5 = E. etc
+    const noteToFreq = {
+        "7": 262, // C4
+        "6": 294, // D4
+        "5": 330, // E4
+        "4": 349, // F4
+        "3": 392, // G4
+        "2": 440, // A4
+        "1": 494, // B4
+        "0": 523, // C5
+    }
+
     export const melodyFieldEditor: FieldEditor = {
         init: { notes: `76543210`, tempo: 120 },
         clone: (melody: Melody) => {
