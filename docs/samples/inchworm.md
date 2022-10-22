@@ -1,8 +1,7 @@
 ---
+title: Inch Worm
 image: ./docs/images/generated/sample_inchworm.png
 ---
-
-# Inch worm
 
 ![zombie detector program](../images/generated/sample_inchworm.png){:class="sample"}
 
