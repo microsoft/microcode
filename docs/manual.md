@@ -44,7 +44,7 @@ is always up-to-date (and running)!
 If your micro:bit disconnects, you will see a micro:bit icon show up on the upper left corner of the editor.
 Click on that button to reconnect again.
 
-### Localization
+### Localization {:#localization}
 
 MicroCode is community translated through Crowdin. Please read on [localization](./localization) to get started.
 
