@@ -370,7 +370,7 @@ namespace microcode {
         addAssign(TID_ACTUATOR_CUP_Z_ASSIGN, 2)
 
         const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER, 10)
-        showNum.priority = 199
+        showNum.priority = 11
         showNum.jdKind = JdKind.ExtLibFn
         showNum.jdParam = "dot_showNumber"
         showNum.serviceClassName = "dotMatrix"
