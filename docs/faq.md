@@ -3,7 +3,7 @@ title: Frequently Asked Questions
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 
-# ![emoji hello](./images/generated/icon_M19hello.png){:class="icon"} Frequently Asked Questions
+![emoji hello](./images/generated/icon_M19hello.png){:class="icon"}
 
 ## How do I share my program?
 

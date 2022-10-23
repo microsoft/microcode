@@ -1,7 +1,7 @@
 ---
 title: Firefly
 image: ./docs/images/generated/sample_firefly.png
-description: Synchronized glowing
+description: Synchronized glowing using radio just like real fireflies.
 ---
 
 ![Firefly icon](../images/generated/icon_sample_firefly.png){:class="icon-sample"}
@@ -70,4 +70,3 @@ After half a second, we transition back to page 1 to restart the non-glow phase.
 
 -   use a radio group to avoid interference with other users
 -   remix this technique with other programs to create new synchronized experiences!
-
