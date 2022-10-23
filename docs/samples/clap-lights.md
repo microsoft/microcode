@@ -1,8 +1,10 @@
 ---
+title: Clap Lights
 image: ./docs/images/generated/sample_clap_lights.png
+description: Clap to turn on the lights
 ---
 
-# ![Clap lights icon](../images/generated/icon_sample_clap_lights.png){:class="icon-sample"} Clap Lights
+![Clap lights icon](../images/generated/icon_sample_clap_lights.png){:class="icon-sample"}
 
 ![Clap lights MicroCode program](../images/generated/sample_clap_lights.png){:class="sample"}
 
@@ -48,7 +50,6 @@ Similar to page 1 but in this case, we turn off all the LEDs.
 ## improvement ideas
 
 -   add sounds to notify your user that the command was received
-
 
 ## Video
 

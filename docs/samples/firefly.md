@@ -1,8 +1,10 @@
 ---
+title: Firefly
 image: ./docs/images/generated/sample_firefly.png
+description: Synchronized glowing
 ---
 
-# ![Firefly icon](../images/generated/icon_sample_firefly.png){:class="icon-sample"} Firefly
+![Firefly icon](../images/generated/icon_sample_firefly.png){:class="icon-sample"}
 
 ![firefly MicroCode program](../images/generated/sample_firefly.png){:class="sample"}
 

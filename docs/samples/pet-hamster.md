@@ -1,8 +1,9 @@
 ---
+title: Pet Hamster
 image: ./docs/images/generated/sample_pet_hamster.png
 ---
 
-# ![Pet hamster icon](../images/generated/icon_sample_pet_hamster.png){:class="icon-sample"} Pet Hamster
+![Pet hamster icon](../images/generated/icon_sample_pet_hamster.png){:class="icon-sample"}
 
 ![Pet Hamster MicroCode program](../images/generated/sample_pet_hamster.png){:class="sample"}
 

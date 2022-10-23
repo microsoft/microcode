@@ -1,8 +1,10 @@
 ---
+title: First program
 image: ./docs/images/generated/sample_first_program.png
+description: Getting started with MicroCode
 ---
 
-# ![new program](../images/generated/icon_new_program.png){:class="icon-sample"} First program
+![new program](../images/generated/icon_new_program.png){:class="icon-sample"}
 
 ![First MicroCode program](../images/generated/sample_first_program.png){:class="sample"}
 

@@ -1,8 +1,9 @@
 ---
+time: Reaction time
 image: ./docs/images/generated/sample_reaction_time.png
 ---
 
-# ![reaction time](../images/generated/icon_reaction_time.png){:class="icon-sample"} Reaction time
+![reaction time](../images/generated/icon_reaction_time.png){:class="icon-sample"}
 
 ![Reaction time MicroCode program](../images/generated/sample_reaction_time.png){:class="sample"}
 

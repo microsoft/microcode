@@ -1,8 +1,9 @@
 ---
+title: Rock Paper Scissors
 image: ./docs/images/generated/sample_rock_paper_scissors.png
 ---
 
-# ![Rock Paper Scissors icon](../images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"} Rock Paper Scissors
+![Rock Paper Scissors icon](../images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"}
 
 ![Rock Paper Scissors MicroCode program](../images/generated/sample_rock_paper_scissors.png){:class="sample"}
 
@@ -39,7 +40,6 @@ and display a different symbol for each value, 1, 2 or 3.
 ## improvement ideas
 
 -   increase the range of the dice and add more images!
-
 
 ## Video
 

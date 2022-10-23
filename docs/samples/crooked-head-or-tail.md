@@ -1,8 +1,7 @@
 ---
+title: Crooked Head or tail
 image: ./docs/images/generated/sample_crooked_head_or_tail.png
 ---
-
-# Crooked Head or tail
 
 ![Crooked Head or tail MicroCode program](../images/generated/sample_crooked_head_or_tail.png){:class="sample"}
 

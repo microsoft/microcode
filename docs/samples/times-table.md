@@ -1,8 +1,7 @@
 ---
+title: Times Table
 image: ./docs/images/generated/sample_times_table.png
 ---
-
-# Times Table
 
 ![times table program](../images/generated/sample_times_table.png){:class="sample"}
 

@@ -1,6 +1,7 @@
 ---
 title: Chuck a duck
 image: ./docs/images/generated/sample_chuck_a_duck.png
+description: Send a duck to your friends
 ---
 
 ![Chuck a duck icon](../images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"}
