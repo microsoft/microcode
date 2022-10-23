@@ -1,4 +1,5 @@
 ---
+title: Frequently Asked Questions
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 

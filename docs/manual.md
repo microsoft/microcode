@@ -1,9 +1,8 @@
 ---
+title: User Guide
 image: ./docs/images/generated/sample_smiley_buttons.png
 description: User guide for the MicroCode editor
 ---
-
-# User Guide
 
 > MicroCode is still in **beta** development and might change in the future. Post your suggestions or questions on the [forum](https://forum.makecode.com/c/60).
 

@@ -1,8 +1,7 @@
 ---
+title: Jacdac
 image: ./docs/images/generated/sample_railroad_crossing.png
 ---
-
-# Jacdac
 
 ![Smiley Button MicroCode program](./images/generated/sample_railroad_crossing.png){:class="screenshot"}
 
