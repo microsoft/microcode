@@ -127,6 +127,10 @@ Click on the version number in the web app to download the MicroCode hex file to
 
 {% include youtube.html id="LWjJL9qegmM" %}
 
+## Community pages
+
+-   [KittenBot MicroCode introductin](https://mp.weixin.qq.com/s/yBQMU2IAbeHgr-ok05THTA)
+
 ## Acknowledgments
 
 -   Microsoft Garage for kick starting this project during the 2022 Microsoft Hackathon.
