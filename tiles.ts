@@ -182,7 +182,7 @@ namespace microcode {
         addPressFilter(TID_FILTER_PIN_2, 5)
     }
 
-    function addSensorTiles() {
+    function addSensorAndFilterTiles() {
         function makeSensor(tid: string, cat: string, prior: number) {
             const tile = new SensorDefn(tid, Phase.Post)
             tile.constraints = {
@@ -292,15 +292,7 @@ namespace microcode {
         addSoundFilter(TID_FILTER_QUIET, 2)
     }
 
-    function addActuatorTiles() {
-        // actuators are:
-
-        // - paint screen
-        // - assign variable
-        // - send radio message
-        // - speaker play
-        // - switch page (micro:bit independent)
-
+    function addActuatorAndModifierTiles() {
         function addActuator(tid: string, allows: string[]) {
             const actuator = new ActuatorDefn(tid)
             actuator.constraints = {
@@ -312,9 +304,7 @@ namespace microcode {
             return actuator
         }
 
-        const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
-        swtch.priority = 110
-
+        // these are in order (see priority field) as will be shown in the dialog
         const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
         paint.serviceClassName = "dotMatrix"
         paint.serviceCommand = jacs.CMD_SET_REG | 0x2
@@ -324,17 +314,29 @@ namespace microcode {
         paint.jdParam2 = 5
         paint.defaultModifier = new IconEditor()
 
-        if (Options.melody) {
+        const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER, 10)
+        showNum.priority = 11
+        showNum.jdKind = JdKind.ExtLibFn
+        showNum.jdParam = "dot_showNumber"
+        showNum.serviceClassName = "dotMatrix"
+
+        const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
+        emoji.serviceClassName = "soundPlayer"
+        emoji.serviceCommand = 0x80
+        emoji.priority = 20
+        emoji.jdKind = JdKind.Sequence
+
+        if (true) {
             const music = addActuator(TID_ACTUATOR_MUSIC, [
                 "melody_editor",
                 "loop",
             ])
-            music.priority = 11
+            music.priority = 22
             music.serviceClassName = "buzzer"
             music.serviceCommand = 0x80
             music.jdKind = JdKind.Sequence
-            music.jdParam = "note_sequence"
-            music.jdParam2 = 6
+            //music.jdParam = "note_sequence"
+            //music.jdParam2 = 6
             music.defaultModifier = new MelodyEditor()
         }
 
@@ -357,6 +359,9 @@ namespace microcode {
         radio_set_group.jdParam = jacs.NumFmt.U8
         radio_set_group.serviceCommand = jacs.CMD_SET_REG | 0x80
 
+        const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
+        swtch.priority = 110
+
         function addAssign(tid: string, id: number) {
             const theVar = addActuator(tid, ["value_out", "constant"])
             theVar.jdParam = id
@@ -368,18 +373,6 @@ namespace microcode {
         addAssign(TID_ACTUATOR_CUP_X_ASSIGN, 0)
         addAssign(TID_ACTUATOR_CUP_Y_ASSIGN, 1)
         addAssign(TID_ACTUATOR_CUP_Z_ASSIGN, 2)
-
-        const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER, 10)
-        showNum.priority = 11
-        showNum.jdKind = JdKind.ExtLibFn
-        showNum.jdParam = "dot_showNumber"
-        showNum.serviceClassName = "dotMatrix"
-
-        const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
-        emoji.serviceClassName = "soundPlayer"
-        emoji.serviceCommand = 0x80
-        emoji.priority = 20
-        emoji.jdKind = JdKind.Sequence
 
         const emojis = [
             "giggle",
@@ -686,8 +679,8 @@ namespace microcode {
     }
 
     function addTiles() {
-        addSensorTiles()
-        addActuatorTiles()
+        addSensorAndFilterTiles()
+        addActuatorAndModifierTiles()
         addFieldEditors()
     }
 
