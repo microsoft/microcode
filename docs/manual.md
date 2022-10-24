@@ -128,7 +128,7 @@ Click on the version number in the web app to download the MicroCode hex file to
 
 ## Community pages
 
--   [KittenBot MicroCode introductin](https://mp.weixin.qq.com/s/yBQMU2IAbeHgr-ok05THTA)
+-   [KittenBot MicroCode introduction](https://mp.weixin.qq.com/s/yBQMU2IAbeHgr-ok05THTA)
 
 ## Acknowledgments
 
