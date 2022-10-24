@@ -593,27 +593,16 @@ namespace microcode {
     }
 
     // notes are in reverse order of scale
-    const noteToFreq = {
-        "7": 262, // C4
-        "6": 294, // D4
-        "5": 330, // E4
-        "4": 349, // F4
-        "3": 392, // G4
-        "2": 440, // A4
-        "1": 494, // B4
-        "0": 523, // C5
+    const noteToFreq: { [note: string]: number } = {
+        "7": 261.63, // C4
+        "6": 293.66, // D4
+        "5": 329.63, // E4
+        "4": 349.23, // F4
+        "3": 392.0, // G4
+        "2": 440.0, // A4
+        "1": 493.88, // B4
+        "0": 523.25, // C5
     }
-
-    /*
-        lowlevel command play_tone @ 0x80 {
-            period: u16 us
-            duty: u16 us
-            duration: u16 ms
-        }
-        Play a PWM tone with given period and duty for given duration. 
-        To play tone at frequency FHz and volume V(in 0..1) you will 
-        want to send P = 1000000 / F and D = P * V / 2.
-    */
 
     export const melodyFieldEditor: FieldEditor = {
         init: { notes: `76543210`, tempo: 120 },
@@ -644,7 +633,7 @@ namespace microcode {
                 field ? field : this.fieldEditor.init
             )
             this.jdKind = JdKind.ServiceCommandArg
-            this.jdParam2 = 400 // ms
+            this.jdParam2 = 250 // ms
         }
 
         getField() {
@@ -664,9 +653,22 @@ namespace microcode {
         }
 
         serviceCommandArg() {
-            // 8 notes, so 8 buffers (optimize later)
-            const buf = Buffer.create(6)
-            return [buf]
+            let res: Buffer[] = []
+            for (let i = 0; i < 8; i++) {
+                const note = this.field.notes[i]
+                if (note === ".") res.push(null)
+                else {
+                    const buf = Buffer.create(6)
+                    const period = 1000000 / noteToFreq[note]
+                    const duty = (period * 0.5) / 2
+                    const duration = 250
+                    buf.setNumber(NumberFormat.UInt16LE, 0, period)
+                    buf.setNumber(NumberFormat.UInt16LE, 0, duty)
+                    buf.setNumber(NumberFormat.UInt16LE, 0, duration)
+                    res.push(buf)
+                }
+            }
+            return res
         }
     }
 
