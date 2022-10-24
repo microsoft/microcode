@@ -113,7 +113,9 @@ The right-hand side of a rule, the **Do** section, starts with a
 -   ![screen](./images/generated/icon_A5.png){:class="icon"} `show image` shows an animation sequence on the LED screen.
 -   ![show number](./images/generated/icon_A10.png){:class="icon"} `show number` shows a numeric value between 0 and 99
 -   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays a sequence of emojis
+-   ![play notes](./images/generated/icon_A4.png){:class="icon"} `play notes` plays a sequence of notes (from the C major scale)
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends a given number over the radio
+-   ![radio set group](./images/generated/icon_A6A.png){:class="icon"} `radio set group` takes a number and ensures that radio messages from a different group number are ignored (the default radio group is 1, which means all micro:bits see all messages)
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` transfers execution control to a given page
 -   ![set variable X](./images/generated/icon_A9A.png){:class="icon"} `set variable` puts a number into a variable (`X`, `Y`, `Z`); defaults to 0 if no value specified
 
