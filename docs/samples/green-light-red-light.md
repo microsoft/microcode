@@ -1,8 +1,7 @@
 ---
+title: Green light red light
 image: ./docs/images/generated/sample_green_light_red_light.png
 ---
-
-# Green light red light
 
 ![Green light red light MicroCode program](../images/generated/sample_green_light_red_light.png){:class="sample"}
 

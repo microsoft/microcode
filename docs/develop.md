@@ -1,8 +1,7 @@
 ---
+title: Developer Docs
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
-
-# Developing MicroCode
 
 MicroCode is open source at https://github.com/microsoft/microcode and welcomes contributions.
 The easiest way to get started is to open this repository in a GitHub Codespace and everything will be ready for you.

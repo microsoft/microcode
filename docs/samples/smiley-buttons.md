@@ -1,8 +1,9 @@
 ---
+title: Smiley Buttons
 image: ./docs/images/generated/sample_smiley_buttons.png
 ---
 
-# ![Smiley Buttons icon](../images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"} Smiley Buttons
+![Smiley Buttons icon](../images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"}
 
 ![Smiley Buttons MicroCode program](../images/generated/sample_smiley_buttons.png){:class="sample"}
 

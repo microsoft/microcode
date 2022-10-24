@@ -1,8 +1,9 @@
 ---
+title: Railroad crossing
 image: ./docs/images/generated/sample_railroad_crossing.png
 ---
 
-# ![railroad crossing](../images/generated/icon_railroad_crossing.png){:class="icon-sample"} Railroad crossing
+![railroad crossing](../images/generated/icon_railroad_crossing.png){:class="icon-sample"}
 
 ![Railroad crossing MicroCode program](../images/generated/sample_railroad_crossing.png){:class="sample"}
 

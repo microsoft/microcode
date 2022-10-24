@@ -1,9 +1,8 @@
 ---
+title: Samples
 image: ./docs/images/generated/sample_smiley_buttons.png
 description: Annotated example programs.
 ---
-
-# Samples
 
 Annotated example programs.
 

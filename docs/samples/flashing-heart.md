@@ -1,8 +1,10 @@
 ---
+title: Flashing Heart
 image: ./docs/images/generated/sample_flashing_heart.png
+description: Show animations on the screen
 ---
 
-# ![Flashing Heart icon](../images/generated/icon_sample_flashing_heart.png){:class="icon-sample"} Flashing Heart
+![Flashing Heart icon](../images/generated/icon_sample_flashing_heart.png){:class="icon-sample"}
 
 ![Flashing Heart MicroCode program](../images/generated/sample_flashing_heart.png){:class="sample"}
 

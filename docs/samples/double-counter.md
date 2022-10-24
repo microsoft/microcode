@@ -1,8 +1,7 @@
 ---
+title: Double Counter
 image: ./docs/images/generated/sample_double_counter.png
 ---
-
-# Double Counter
 
 ![double counter program](../images/generated/sample_double_counter.png){:class="sample"}
 
@@ -23,12 +22,11 @@ To get started, we play a sound and show the value of variable `X`.
 
 ![when page start, play happy sound](../images/generated/sample_double_counter_page_1_rule_1.png){:class="rule"}
 
-- when page start, play happy sound
+-   when page start, play happy sound
 
 ![when page start, show variable X value](../images/generated/sample_double_counter_page_1_rule_2.png){:class="rule"}
 
-- when page start, show value of variable `X`
-
+-   when page start, show value of variable `X`
 
 The next two rules, implement a counter using the variable `X` and button `A`.
 
@@ -44,7 +42,7 @@ Finally, the last rule switches to page 2 to have the other counter.
 
 ![when press button B, switch to page 2](../images/generated/sample_double_counter_page_1_rule_5.png){:class="rule"}
 
-- when press button B, switch to page 2
+-   when press button B, switch to page 2
 
 ## ![page 2](../images/generated/icon_M2.png){:class="icon"} page 2
 

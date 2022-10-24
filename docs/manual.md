@@ -1,9 +1,8 @@
 ---
+title: User Guide
 image: ./docs/images/generated/sample_smiley_buttons.png
 description: User guide for the MicroCode editor
 ---
-
-# User Guide
 
 > MicroCode is still in **beta** development and might change in the future. Post your suggestions or questions on the [forum](https://forum.makecode.com/c/60).
 
@@ -126,6 +125,10 @@ Click on the version number in the web app to download the MicroCode hex file to
 {% include youtube.html id="ymP7x8GXgz4" %}
 
 {% include youtube.html id="LWjJL9qegmM" %}
+
+## Community pages
+
+-   [KittenBot MicroCode introductin](https://mp.weixin.qq.com/s/yBQMU2IAbeHgr-ok05THTA)
 
 ## Acknowledgments
 

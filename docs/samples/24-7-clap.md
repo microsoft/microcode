@@ -1,8 +1,8 @@
 ---
+title: 24 7 clap
 image: ./docs/images/generated/sample_24_7_clap.png
+description: Clap as many times as you can in 7 seconds, but no more than 24 times...
 ---
-
-# 24 7 clap
 
 ![24 7 clap MicroCode program](../images/generated/sample_24_7_clap.png){:class="sample"}
 

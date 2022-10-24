@@ -1,10 +1,8 @@
 ---
-title: Localizing MicroCode
+title: Localization
 image: ./docs/images/localization.png
 description: Instruction to help localize MicroCode
 ---
-
-# Localizing MicroCode
 
 ![Play hello sound in zh-CH](./images/localization.png){:class="screenshot"}
 
