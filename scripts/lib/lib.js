@@ -101,6 +101,19 @@ function dot_animation(/** @type DotMatrixRole */dots, /** @type JDBuffer */ buf
     }
 }
 
+function note_sequence(/** @type BuzzerRole */buzzer, /** @type JDBuffer */ buf) {
+    var pos = 0
+    while (pos < buf.length) {
+        packet.setLength(6)
+        packet.blitAt(0, buf, pos, 6)
+        var delay = packet.getAt(4,"u16")
+        buzzer.playTone(packet)
+        wait(delay / 1000)
+        pos = pos + 6
+    }
+}
+
+
 const _dot_showNumber_nums = hex`
 0e 11 11 0e 00
 00 12 1f 10 00

@@ -182,7 +182,7 @@ namespace microcode {
         addPressFilter(TID_FILTER_PIN_2, 5)
     }
 
-    function addSensorTiles() {
+    function addSensorAndFilterTiles() {
         function makeSensor(tid: string, cat: string, prior: number) {
             const tile = new SensorDefn(tid, Phase.Post)
             tile.constraints = {
@@ -292,15 +292,7 @@ namespace microcode {
         addSoundFilter(TID_FILTER_QUIET, 2)
     }
 
-    function addActuatorTiles() {
-        // actuators are:
-
-        // - paint screen
-        // - assign variable
-        // - send radio message
-        // - speaker play
-        // - switch page (micro:bit independent)
-
+    function addActuatorAndModifierTiles() {
         function addActuator(tid: string, allows: string[]) {
             const actuator = new ActuatorDefn(tid)
             actuator.constraints = {
@@ -312,9 +304,7 @@ namespace microcode {
             return actuator
         }
 
-        const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
-        swtch.priority = 110
-
+        // these are in order (see priority field) as will be shown in the dialog
         const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
         paint.serviceClassName = "dotMatrix"
         paint.serviceCommand = jacs.CMD_SET_REG | 0x2
@@ -324,19 +314,26 @@ namespace microcode {
         paint.jdParam2 = 5
         paint.defaultModifier = new IconEditor()
 
-        if (Options.melody) {
-            const music = addActuator(TID_ACTUATOR_MUSIC, [
-                "melody_editor",
-                "loop",
-            ])
-            music.priority = 11
-            music.serviceClassName = "buzzer"
-            music.serviceCommand = 0x80
-            music.jdKind = JdKind.Sequence
-            music.jdParam = "note_sequence"
-            music.jdParam2 = 6
-            music.defaultModifier = new MelodyEditor()
-        }
+        const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER, 10)
+        showNum.priority = 11
+        showNum.jdKind = JdKind.ExtLibFn
+        showNum.jdParam = "dot_showNumber"
+        showNum.serviceClassName = "dotMatrix"
+
+        const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
+        emoji.serviceClassName = "soundPlayer"
+        emoji.serviceCommand = 0x80
+        emoji.priority = 20
+        emoji.jdKind = JdKind.Sequence
+
+        const music = addActuator(TID_ACTUATOR_MUSIC, ["melody_editor", "loop"])
+        music.priority = 22
+        music.serviceClassName = "buzzer"
+        music.serviceCommand = 0x80
+        music.jdKind = JdKind.Sequence
+        music.jdParam = "note_sequence"
+        music.jdParam2 = 6
+        music.defaultModifier = new MelodyEditor()
 
         const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
             "value_out",
@@ -357,6 +354,9 @@ namespace microcode {
         radio_set_group.jdParam = jacs.NumFmt.U8
         radio_set_group.serviceCommand = jacs.CMD_SET_REG | 0x80
 
+        const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
+        swtch.priority = 110
+
         function addAssign(tid: string, id: number) {
             const theVar = addActuator(tid, ["value_out", "constant"])
             theVar.jdParam = id
@@ -368,18 +368,6 @@ namespace microcode {
         addAssign(TID_ACTUATOR_CUP_X_ASSIGN, 0)
         addAssign(TID_ACTUATOR_CUP_Y_ASSIGN, 1)
         addAssign(TID_ACTUATOR_CUP_Z_ASSIGN, 2)
-
-        const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER, 10)
-        showNum.priority = 11
-        showNum.jdKind = JdKind.ExtLibFn
-        showNum.jdParam = "dot_showNumber"
-        showNum.serviceClassName = "dotMatrix"
-
-        const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
-        emoji.serviceClassName = "soundPlayer"
-        emoji.serviceCommand = 0x80
-        emoji.priority = 20
-        emoji.jdKind = JdKind.Sequence
 
         const emojis = [
             "giggle",
@@ -590,7 +578,7 @@ namespace microcode {
                 }
                 buf[col] = v
             }
-            return buf
+            return [buf]
         }
     }
 
@@ -600,27 +588,16 @@ namespace microcode {
     }
 
     // notes are in reverse order of scale
-    const noteToFreq = {
-        "7": 262, // C4
-        "6": 294, // D4
-        "5": 330, // E4
-        "4": 349, // F4
-        "3": 392, // G4
-        "2": 440, // A4
-        "1": 494, // B4
-        "0": 523, // C5
+    const noteToFreq: { [note: string]: number } = {
+        "7": 261.63, // C4
+        "6": 293.66, // D4
+        "5": 329.63, // E4
+        "4": 349.23, // F4
+        "3": 392.0, // G4
+        "2": 440.0, // A4
+        "1": 493.88, // B4
+        "0": 523.25, // C5
     }
-
-    /*
-        lowlevel command play_tone @ 0x80 {
-            period: u16 us
-            duty: u16 us
-            duration: u16 ms
-        }
-        Play a PWM tone with given period and duty for given duration. 
-        To play tone at frequency FHz and volume V(in 0..1) you will 
-        want to send P = 1000000 / F and D = P * V / 2.
-    */
 
     export const melodyFieldEditor: FieldEditor = {
         init: { notes: `76543210`, tempo: 120 },
@@ -651,7 +628,7 @@ namespace microcode {
                 field ? field : this.fieldEditor.init
             )
             this.jdKind = JdKind.ServiceCommandArg
-            this.jdParam2 = 400 // ms
+            this.jdParam2 = 250 // ms
         }
 
         getField() {
@@ -671,8 +648,20 @@ namespace microcode {
         }
 
         serviceCommandArg() {
-            const buf = Buffer.create(5)
-            return buf
+            let res: Buffer[] = []
+            for (let i = 0; i < 8; i++) {
+                const note = this.field.notes[i]
+                const buf = Buffer.create(6)
+                const period =
+                    1000000 / (note !== "." ? noteToFreq[note] : 1000)
+                const duty = note === "." ? 0 : (period * 0.5) / 2
+                const duration = 250
+                buf.setNumber(NumberFormat.UInt16LE, 0, period)
+                buf.setNumber(NumberFormat.UInt16LE, 2, duty)
+                buf.setNumber(NumberFormat.UInt16LE, 4, duration)
+                res.push(buf)
+            }
+            return res
         }
     }
 
@@ -686,8 +675,8 @@ namespace microcode {
     }
 
     function addTiles() {
-        addSensorTiles()
-        addActuatorTiles()
+        addSensorAndFilterTiles()
+        addActuatorAndModifierTiles()
         addFieldEditors()
     }
 
