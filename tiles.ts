@@ -331,10 +331,10 @@ namespace microcode {
             ])
             music.priority = 11
             music.serviceClassName = "buzzer"
-            music.serviceCommand = jacs.CMD_SET_REG | 0x2
+            music.serviceCommand = 0x80
             music.jdKind = JdKind.Sequence
             music.jdParam = "note_sequence"
-            // music.jdParam2 = 6
+            music.jdParam2 = 6
             music.defaultModifier = new MelodyEditor()
         }
 
@@ -610,6 +610,17 @@ namespace microcode {
         "1": 494, // B4
         "0": 523, // C5
     }
+
+    /*
+        lowlevel command play_tone @ 0x80 {
+            period: u16 us
+            duty: u16 us
+            duration: u16 ms
+        }
+        Play a PWM tone with given period and duty for given duration. 
+        To play tone at frequency FHz and volume V(in 0..1) you will 
+        want to send P = 1000000 / F and D = P * V / 2.
+    */
 
     export const melodyFieldEditor: FieldEditor = {
         init: { notes: `76543210`, tempo: 120 },
