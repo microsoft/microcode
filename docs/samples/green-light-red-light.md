@@ -1,6 +1,7 @@
 ---
 title: Green light red light
 image: ./docs/images/generated/sample_green_light_red_light.png
+description: Playing the classic 'green ligt, red light' using the radio
 ---
 
 ![Green light red light MicroCode program](../images/generated/sample_green_light_red_light.png){:class="sample"}

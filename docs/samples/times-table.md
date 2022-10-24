@@ -1,6 +1,7 @@
 ---
 title: Times Table
 image: ./docs/images/generated/sample_times_table.png
+description: Practice times table math with this program
 ---
 
 ![times table program](../images/generated/sample_times_table.png){:class="sample"}

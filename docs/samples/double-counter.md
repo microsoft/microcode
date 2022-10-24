@@ -1,6 +1,7 @@
 ---
 title: Double Counter
 image: ./docs/images/generated/sample_double_counter.png
+description: A counter for button A and button B
 ---
 
 ![double counter program](../images/generated/sample_double_counter.png){:class="sample"}

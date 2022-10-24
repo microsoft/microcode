@@ -85,7 +85,7 @@ MicroCode can be accessed with the keyboard:
 
 #### Gamepads
 
-MicroCode supports commercial gamepads compatible with [Web Gamepad](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad).
+MicroCode supports game console controllers compatible with [Web Gamepad](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad).
 
 #### Screen reader
 

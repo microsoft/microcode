@@ -1,6 +1,7 @@
 ---
 title: Smiley Buttons
 image: ./docs/images/generated/sample_smiley_buttons.png
+description: Show your moods using buttons and screen
 ---
 
 ![Smiley Buttons icon](../images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"}

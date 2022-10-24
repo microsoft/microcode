@@ -1,6 +1,7 @@
 ---
 title: Counter
 image: ./docs/images/generated/sample_counter.png
+description: Count how many times button A is pressed
 ---
 
 ![counter program](../images/generated/sample_counter.png){:class="sample"}
