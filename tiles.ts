@@ -657,8 +657,8 @@ namespace microcode {
                 const duty = note === "." ? 0 : (period * 0.5) / 2
                 const duration = 250
                 buf.setNumber(NumberFormat.UInt16LE, 0, period)
-                buf.setNumber(NumberFormat.UInt16LE, 0, duty)
-                buf.setNumber(NumberFormat.UInt16LE, 0, duration)
+                buf.setNumber(NumberFormat.UInt16LE, 2, duty)
+                buf.setNumber(NumberFormat.UInt16LE, 4, duration)
                 res.push(buf)
             }
             return res
