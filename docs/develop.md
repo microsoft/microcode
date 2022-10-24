@@ -117,8 +117,8 @@ and nav to http://localhost:4000
 
 ## Re-building library
 
-There is library of LED animations etc in `scripts/lib/lib.js`. To rebuild, make sure you have `jacscript` checkedout
-parallel to `microbit` and run:
+There is library of LED animations etc in `scripts/lib/lib.js`. To rebuild, make sure you have `jacscript` checked out
+parallel to `microcode` and run:
 
 ```bash
 cd scripts
