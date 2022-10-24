@@ -539,11 +539,17 @@ namespace jacs {
             const wr = this.writer
 
             if (shortCutFn && params.length > 1) {
-                const b = Buffer.create(bufSize * params.length)
+                const numBuffers = params.reduce(
+                    (sum, tile) => tile.serviceCommandArg().length + sum,
+                    0
+                )
+                const b = Buffer.create(bufSize * numBuffers)
+                let index = 0
                 for (let i = 0; i < params.length; ++i) {
                     ;(params[i].serviceCommandArg() as Buffer[]).forEach(
                         buf => {
-                            b.write(i * bufSize, buf)
+                            b.write(index, buf)
+                            index += bufSize
                         }
                     )
                 }
