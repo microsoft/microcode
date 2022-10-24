@@ -107,7 +107,7 @@ function note_sequence(/** @type BuzzerRole */buzzer, /** @type JDBuffer */ buf)
         packet.setLength(6)
         packet.blitAt(0, buf, pos, 6)
         var delay = packet.getAt(4,"u16")
-        buzzer.play_tone(packet)
+        buzzer.playTone(packet)
         wait(delay / 1000)
         pos = pos + 6
     }
