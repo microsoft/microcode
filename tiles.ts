@@ -326,19 +326,14 @@ namespace microcode {
         emoji.priority = 20
         emoji.jdKind = JdKind.Sequence
 
-        if (true) {
-            const music = addActuator(TID_ACTUATOR_MUSIC, [
-                "melody_editor",
-                "loop",
-            ])
-            music.priority = 22
-            music.serviceClassName = "buzzer"
-            music.serviceCommand = 0x80
-            music.jdKind = JdKind.Sequence
-            music.jdParam = "note_sequence"
-            music.jdParam2 = 6
-            music.defaultModifier = new MelodyEditor()
-        }
+        const music = addActuator(TID_ACTUATOR_MUSIC, ["melody_editor", "loop"])
+        music.priority = 22
+        music.serviceClassName = "buzzer"
+        music.serviceCommand = 0x80
+        music.jdKind = JdKind.Sequence
+        music.jdParam = "note_sequence"
+        music.jdParam2 = 6
+        music.defaultModifier = new MelodyEditor()
 
         const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
             "value_out",
