@@ -481,7 +481,7 @@ namespace microcode {
 
         private drawBackground() {
             control.enablePerfCounter()
-            let x = Screen.LEFT_EDGE
+            let x = Screen.LEFT_EDGE -(this.currPage << 4)
             while (x < Screen.RIGHT_EDGE) {
                 Screen.drawTransparentImage(
                     editorBackground,
