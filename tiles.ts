@@ -583,7 +583,7 @@ namespace microcode {
                 }
                 buf[col] = v
             }
-            return buf
+            return [buf]
         }
     }
 
@@ -664,8 +664,9 @@ namespace microcode {
         }
 
         serviceCommandArg() {
-            const buf = Buffer.create(5)
-            return buf
+            // 8 notes, so 8 buffers (optimize later)
+            const buf = Buffer.create(6)
+            return [buf]
         }
     }
 

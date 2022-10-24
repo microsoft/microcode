@@ -541,10 +541,12 @@ namespace jacs {
             if (shortCutFn && params.length > 1) {
                 const b = Buffer.create(bufSize * params.length)
                 for (let i = 0; i < params.length; ++i) {
-                    b.write(
-                        i * bufSize,
-                        params[i].serviceCommandArg() as Buffer
-                    )
+                    (params[i].serviceCommandArg() as (Buffer[])).forEach(buf => {
+                        b.write(
+                            i * bufSize,
+                            buf
+                        )
+                    }
                 }
                 this.callLinked(shortCutFn, [
                     role.emit(wr),
@@ -555,9 +557,11 @@ namespace jacs {
                 for (let i = 0; i < params.length; ++i) {
                     const p = params[i]
                     if (p.jdKind == microcode.JdKind.ServiceCommandArg) {
-                        this.emitLoadBuffer(p.serviceCommandArg())
-                        this.emitSendCmd(role, actuator.serviceCommand)
-                        this.emitSleep(p.jdParam2 || delay)
+                        p.serviceCommandArg().forEach(buf => {
+                            this.emitLoadBuffer(buf)
+                            this.emitSendCmd(role, actuator.serviceCommand)
+                            this.emitSleep(p.jdParam2 || delay)
+                        }
                     } else if (p.jdKind == microcode.JdKind.ExtLibFn) {
                         const args = [role.emit(wr)]
                         if (p.jdParam2 !== undefined)
