@@ -335,8 +335,8 @@ namespace microcode {
             music.serviceClassName = "buzzer"
             music.serviceCommand = 0x80
             music.jdKind = JdKind.Sequence
-            //music.jdParam = "note_sequence"
-            //music.jdParam2 = 6
+            music.jdParam = "note_sequence"
+            music.jdParam2 = 6
             music.defaultModifier = new MelodyEditor()
         }
 
