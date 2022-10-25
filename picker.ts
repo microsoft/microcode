@@ -122,7 +122,7 @@ namespace microcode {
                 onHide?: () => void
                 onDelete?: () => void
                 navigator?: () => INavigator
-                maxPerRpw?: number
+                maxPerRow?: number
             },
             hideOnClick: boolean = true
         ) {
@@ -163,7 +163,7 @@ namespace microcode {
                     if (btn.start) this.startBtn = button
                 })
             })
-            this.layout(opts.maxPerRpw ? opts.maxPerRpw : MAX_PER_ROW)
+            this.layout(opts.maxPerRow ? opts.maxPerRow : MAX_PER_ROW)
             this.visible = true
         }
 

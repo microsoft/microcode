@@ -78,7 +78,6 @@ namespace microcode {
             {
                 title: accessibility.ariaToTooltip(TID_MODIFIER_MELODY_EDITOR),
                 onClick: (iconId: any, button: PickerButton) => {
-                    let on = button.getIcon() === "note_on"
                     let row = 0,
                         col = 0
                     for (; row < 8; row++) {
@@ -110,8 +109,8 @@ namespace microcode {
                 },
                 onHide,
                 onDelete,
-                navigator: () => new LEDNavigator(),
-                maxPerRpw: 8,
+                navigator: () => new MelodyNavigator(),
+                maxPerRow: 8,
             },
             false
         )

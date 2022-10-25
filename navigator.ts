@@ -264,14 +264,12 @@ namespace microcode {
             let btn = super.reportAria(b)
             if (!btn) return null
             let color = btn.getIcon()
-            let status
+            let status = "unknown"
 
             if (color == "solid_red") {
                 status = "on"
             } else if (color == "solid_black") {
                 status = "off"
-            } else {
-                status = "unknown"
             }
 
             accessibility.setLiveContent(<
@@ -283,6 +281,16 @@ namespace microcode {
                 } ${status}`,
                 force: true,
             })
+            return btn
+        }
+    }
+
+    // accessibility for melody
+    export class MelodyNavigator extends MatrixNavigator {
+        protected reportAria(b: Button) {
+            let btn = super.reportAria(b)
+            if (!btn) return null
+            let color = btn.getIcon()
             return btn
         }
     }
