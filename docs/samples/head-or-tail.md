@@ -16,9 +16,9 @@ a shake event and 2-face dice is cast. The result is stored in variable `X`.
 
 -   **when** ![accelerometer](../images/generated/icon_S3.png){:class="icon"} ![shake](../images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![set variable X](../images/generated/icon_A9A.png){:class="icon"} set variable X to ![dice](../images/generated/icon_M22.png){:class="icon"} random number between 1 and ![value 3](../images/generated/icon_M8.png){:class="icon"} 3.
 
-![when shake, play sound hello](../images/generated/sample_head_or_tail_page_1_rule_2.png){:class="rule"}
+![when shake, play an arpeggio](../images/generated/sample_head_or_tail_page_1_rule_2.png){:class="rule"}
 
--   **when** ![accelerometer](../images/generated/icon_S3.png){:class="icon"} ![shake](../images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![speaker](../images/generated/icon_A2.png){:class="icon"}play sound ![emoji slide](../images/generated/icon_M19slide.png){:class="icon"} hello.
+-   **when** ![accelerometer](../images/generated/icon_S3.png){:class="icon"} ![shake](../images/generated/icon_F17_shake.png){:class="icon"} shake, **do** ![speaker](../images/generated/icon_A2.png){:class="icon"}play an arpeggio using the melody maker ![emoji slide](../images/generated/icon_M19slide.png){:class="icon"} hello.
 
 The next 2 rules match the value passed in variable `X`
 and display a different symbol for each value, 1 or 2.
