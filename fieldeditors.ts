@@ -89,6 +89,12 @@ namespace microcode {
                             break
                         }
                     }
+                    if (getIcon(col, row) !== "note_on") {
+                        const note = row.toString()
+                        const buf = Buffer.create(6)
+                        setNote(buf, 0, note)
+                        new jacs.TopWriter().deployFreq(buf)
+                    }
                     melody.notes =
                         melody.notes.slice(0, col) +
                         (getIcon(col, row) === "note_on"
