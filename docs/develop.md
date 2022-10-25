@@ -101,7 +101,9 @@ sh ./bump.sh
 
 A GitHub Action will trigger and update the web site within a few minutes.
 
-To run Jekyll locally, run the Jekyll setup script
+## Running Jekyll locally
+
+It is easiest to launch a codespace to get the right setup to run Jekyll (Ruby). Run the Jekyll setup script
 
 ```bash
 sh scripts/setup-jekyll.sh
