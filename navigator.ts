@@ -123,8 +123,12 @@ namespace microcode {
                 }
             }
             const btn = this.buttonGroups[this.row][this.col]
-            if (btn) btn.reportAria(true)
+            this.reportAria(btn)
             return btn
+        }
+
+        protected reportAria(btn: Button) {
+            if (btn) btn.reportAria(true)
         }
 
         public getCurrent(): Button {
@@ -170,12 +174,6 @@ namespace microcode {
 
         public atRuleStart() {
             return this.row >= 1 && this.col == 0
-        }
-
-        public move(dir: CursorDir) {
-            const ret = super.move(dir)
-            this.reportAria(ret)
-            return ret
         }
 
         protected reportAria(ret: Button) {
@@ -244,14 +242,13 @@ namespace microcode {
 
     // accessibility for LEDs
     export class LEDNavigator extends MatrixNavigator {
-        protected reportAria(b: Button) {
-            let btn = super.reportAria(b)
+        protected reportAria(b: Button): Button {
+            const btn = super.reportAria(b)
             if (!btn) return null
-            let status = btn.getIcon() == "solid_red" ? "on" : "off"
-            let report = `led ${this.col + 1} ${
+            const status = btn.getIcon() == "solid_red" ? "on" : "off"
+            const report = `led ${this.col + 1} ${
                 this.hasDelete ? this.row : this.row + 1
             } ${status}`
-            console.log(report)
             accessibility.setLiveContent(<
                 accessibility.TextAccessibilityMessage
             >{
@@ -259,27 +256,29 @@ namespace microcode {
                 value: report,
                 force: true,
             })
-            return btn
+            return null
         }
     }
 
     // accessibility for melody
     export class MelodyNavigator extends MatrixNavigator {
-        protected reportAria(b: Button) {
+        protected reportAria(b: Button): Button {
             let btn = super.reportAria(b)
             if (!btn) return null
-            let status = btn.getIcon() === "note_on" ? "on" : "off"
-            let noteIndex = this.hasDelete ? this.row - 1 : this.row
-            let noteName = noteNames[noteIndex]
-
+            const status = btn.getIcon() === "note_on" ? "on" : "off"
+            const noteIndex = this.hasDelete ? this.row - 1 : this.row
+            const noteName = noteNames[noteIndex]
+            const report = `note ${noteName} in column ${
+                this.col + 1
+            } ${status}`
             accessibility.setLiveContent(<
                 accessibility.TextAccessibilityMessage
             >{
                 type: "text",
-                value: `note ${noteName} in column ${this.col + 1} ${status}`,
+                value: report,
                 force: true,
             })
-            return btn
+            return null
         }
     }
 
