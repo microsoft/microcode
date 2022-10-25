@@ -211,9 +211,8 @@ namespace microcode {
         }
     }
 
-    // accessibility for LEDs
-    export class LEDNavigator extends RowNavigator {
-        private hasDelete: boolean
+    class MatrixNavigator extends RowNavigator {
+        protected hasDelete: boolean
 
         public initialCursor(row: number = 0, col: number = 0) {
             this.hasDelete = this.buttonGroups[0].length == 1
@@ -243,7 +242,7 @@ namespace microcode {
 
         protected reportAria(btn: Button) {
             if (!btn) {
-                return
+                return null
             }
             if (this.hasDelete && this.row == 0 && this.col == 0) {
                 accessibility.setLiveContent(<
@@ -253,9 +252,17 @@ namespace microcode {
                     value: "delete_tile",
                     force: true,
                 })
-                return
+                return null
             }
+            return btn
+        }
+    }
 
+    // accessibility for LEDs
+    export class LEDNavigator extends MatrixNavigator {
+        protected reportAria(b: Button) {
+            let btn = super.reportAria(b)
+            if (!btn) return null
             let color = btn.getIcon()
             let status
 
@@ -276,6 +283,7 @@ namespace microcode {
                 } ${status}`,
                 force: true,
             })
+            return btn
         }
     }
 
