@@ -540,9 +540,11 @@ namespace jacs {
 
             if (shortCutFn && params.length > 1) {
                 const totalBufferSize = params.reduce(
-                    (sum, tile) => tile.serviceCommandArg().length + sum,
+                    (sum, tile) =>
+                        (tile.serviceCommandArg() as Buffer).length + sum,
                     0
                 )
+                console.log(`totalBufSize = ${totalBufferSize}`)
                 const b = Buffer.create(totalBufferSize)
                 let index = 0
                 for (let i = 0; i < params.length; ++i) {
