@@ -211,9 +211,8 @@ namespace microcode {
         }
     }
 
-    // accessibility for LEDs
-    export class LEDNavigator extends RowNavigator {
-        private hasDelete: boolean
+    class MatrixNavigator extends RowNavigator {
+        protected hasDelete: boolean
 
         public initialCursor(row: number = 0, col: number = 0) {
             this.hasDelete = this.buttonGroups[0].length == 1
@@ -225,25 +224,9 @@ namespace microcode {
             return btn
         }
 
-        public addButtons(btns: Button[]) {
-            super.addButtons(btns)
-
-            btns.forEach(btn => {
-                if (btn.onClick) {
-                    let prev = btn.onClick
-                    btn.onClick = () => {
-                        prev(btn)
-                        this.reportAria(btn)
-                    }
-                } else {
-                    btn.onClick = () => this.reportAria(btn)
-                }
-            })
-        }
-
         protected reportAria(btn: Button) {
             if (!btn) {
-                return
+                return null
             }
             if (this.hasDelete && this.row == 0 && this.col == 0) {
                 accessibility.setLiveContent(<
@@ -253,29 +236,50 @@ namespace microcode {
                     value: "delete_tile",
                     force: true,
                 })
-                return
+                return null
             }
+            return btn
+        }
+    }
 
-            let color = btn.getIcon()
-            let status
+    // accessibility for LEDs
+    export class LEDNavigator extends MatrixNavigator {
+        protected reportAria(b: Button) {
+            let btn = super.reportAria(b)
+            if (!btn) return null
+            let status = btn.getIcon() == "solid_red" ? "on" : "off"
+            let report = `led ${this.col + 1} ${
+                this.hasDelete ? this.row : this.row + 1
+            } ${status}`
+            console.log(report)
+            accessibility.setLiveContent(<
+                accessibility.TextAccessibilityMessage
+            >{
+                type: "text",
+                value: report,
+                force: true,
+            })
+            return btn
+        }
+    }
 
-            if (color == "solid_red") {
-                status = "on"
-            } else if (color == "solid_black") {
-                status = "off"
-            } else {
-                status = "unknown"
-            }
+    // accessibility for melody
+    export class MelodyNavigator extends MatrixNavigator {
+        protected reportAria(b: Button) {
+            let btn = super.reportAria(b)
+            if (!btn) return null
+            let status = btn.getIcon() === "note_on" ? "on" : "off"
+            let noteIndex = this.hasDelete ? this.row - 1 : this.row
+            let noteName = noteNames[noteIndex]
 
             accessibility.setLiveContent(<
                 accessibility.TextAccessibilityMessage
             >{
                 type: "text",
-                value: `led ${this.col + 1} ${
-                    this.hasDelete ? this.row : this.row + 1
-                } ${status}`,
+                value: `note ${noteName} in column ${this.col + 1} ${status}`,
                 force: true,
             })
+            return btn
         }
     }
 

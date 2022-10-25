@@ -578,7 +578,7 @@ namespace microcode {
                 }
                 buf[col] = v
             }
-            return [buf]
+            return buf
         }
     }
 
@@ -588,6 +588,17 @@ namespace microcode {
     }
 
     // notes are in reverse order of scale
+    export const noteNames = [
+        "high C", // 0
+        "B",
+        "A",
+        "G",
+        "F",
+        "E",
+        "D",
+        "middle C", // 7
+    ]
+
     const noteToFreq: { [note: string]: number } = {
         "7": 261.63, // C4
         "6": 293.66, // D4
@@ -597,6 +608,15 @@ namespace microcode {
         "2": 440.0, // A4
         "1": 493.88, // B4
         "0": 523.25, // C5
+    }
+
+    export function setNote(buf: Buffer, offset: number, note: string) {
+        const period = 1000000 / (note !== "." ? noteToFreq[note] : 1000)
+        const duty = note === "." ? 0 : (period * 0.5) / 2
+        const duration = 250
+        buf.setNumber(NumberFormat.UInt16LE, offset + 0, period)
+        buf.setNumber(NumberFormat.UInt16LE, offset + 2, duty)
+        buf.setNumber(NumberFormat.UInt16LE, offset + 4, duration)
     }
 
     export const melodyFieldEditor: FieldEditor = {
@@ -648,20 +668,11 @@ namespace microcode {
         }
 
         serviceCommandArg() {
-            let res: Buffer[] = []
+            const buf = Buffer.create(6 * 8)
             for (let i = 0; i < 8; i++) {
-                const note = this.field.notes[i]
-                const buf = Buffer.create(6)
-                const period =
-                    1000000 / (note !== "." ? noteToFreq[note] : 1000)
-                const duty = note === "." ? 0 : (period * 0.5) / 2
-                const duration = 250
-                buf.setNumber(NumberFormat.UInt16LE, 0, period)
-                buf.setNumber(NumberFormat.UInt16LE, 2, duty)
-                buf.setNumber(NumberFormat.UInt16LE, 4, duration)
-                res.push(buf)
+                setNote(buf, i * 6, this.field.notes[i])
             }
-            return res
+            return buf
         }
     }
 

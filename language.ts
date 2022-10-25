@@ -203,13 +203,13 @@ namespace microcode {
             super(type, tid)
         }
 
-        serviceCommandArg(): (string | Buffer)[] {
+        serviceCommandArg(): string | Buffer {
             if (
                 typeof this.jdParam == "string" ||
                 typeof this.jdParam == "object"
             )
-                return [this.jdParam]
-            return []
+                return this.jdParam
+            return null
             // throw "bad jdParam: " + this.name + " / " + this.jdParam
         }
 

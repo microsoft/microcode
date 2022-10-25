@@ -538,20 +538,18 @@ namespace jacs {
 
             const wr = this.writer
 
-            if (shortCutFn && params.length > 1) {
-                const numBuffers = params.reduce(
-                    (sum, tile) => tile.serviceCommandArg().length + sum,
+            if (shortCutFn) {
+                const totalBufferSize = params.reduce(
+                    (sum, tile) =>
+                        (tile.serviceCommandArg() as Buffer).length + sum,
                     0
                 )
-                const b = Buffer.create(bufSize * numBuffers)
+                const b = Buffer.create(totalBufferSize)
                 let index = 0
                 for (let i = 0; i < params.length; ++i) {
-                    ;(params[i].serviceCommandArg() as Buffer[]).forEach(
-                        buf => {
-                            b.write(index, buf)
-                            index += bufSize
-                        }
-                    )
+                    const buf = params[i].serviceCommandArg() as Buffer
+                    b.write(index, buf)
+                    index += buf.length
                 }
                 this.callLinked(shortCutFn, [
                     role.emit(wr),
@@ -562,11 +560,9 @@ namespace jacs {
                 for (let i = 0; i < params.length; ++i) {
                     const p = params[i]
                     if (p.jdKind == microcode.JdKind.ServiceCommandArg) {
-                        p.serviceCommandArg().forEach(buf => {
-                            this.emitLoadBuffer(buf)
-                            this.emitSendCmd(role, actuator.serviceCommand)
-                            this.emitSleep(p.jdParam2 || delay)
-                        })
+                        this.emitLoadBuffer(p.serviceCommandArg())
+                        this.emitSendCmd(role, actuator.serviceCommand)
+                        this.emitSleep(p.jdParam2 || delay)
                     } else if (p.jdKind == microcode.JdKind.ExtLibFn) {
                         const args = [role.emit(wr)]
                         if (p.jdParam2 !== undefined)
