@@ -263,14 +263,7 @@ namespace microcode {
         protected reportAria(b: Button) {
             let btn = super.reportAria(b)
             if (!btn) return null
-            let color = btn.getIcon()
-            let status = "unknown"
-
-            if (color == "solid_red") {
-                status = "on"
-            } else if (color == "solid_black") {
-                status = "off"
-            }
+            let status = btn.getIcon() == "solid_red" ? "on" : "off"
 
             accessibility.setLiveContent(<
                 accessibility.TextAccessibilityMessage
@@ -290,7 +283,17 @@ namespace microcode {
         protected reportAria(b: Button) {
             let btn = super.reportAria(b)
             if (!btn) return null
-            let color = btn.getIcon()
+            let status = btn.getIcon() === "note_on" ? "on" : "off"
+            let noteIndex = this.hasDelete ? this.row - 1 : this.row
+            let noteName = noteNames[noteIndex]
+
+            accessibility.setLiveContent(<
+                accessibility.TextAccessibilityMessage
+            >{
+                type: "text",
+                value: `note ${noteName} in column ${this.col + 1} ${status}`,
+                force: true,
+            })
             return btn
         }
     }

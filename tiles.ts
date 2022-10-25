@@ -588,6 +588,17 @@ namespace microcode {
     }
 
     // notes are in reverse order of scale
+    export const noteNames = [
+        "high C", // 0
+        "B",
+        "A",
+        "G",
+        "F",
+        "E",
+        "D",
+        "middle C", // 7
+    ]
+
     const noteToFreq: { [note: string]: number } = {
         "7": 261.63, // C4
         "6": 293.66, // D4
