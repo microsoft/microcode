@@ -578,7 +578,7 @@ namespace microcode {
                 }
                 buf[col] = v
             }
-            return [buf]
+            return buf
         }
     }
 
@@ -648,20 +648,18 @@ namespace microcode {
         }
 
         serviceCommandArg() {
-            let res: Buffer[] = []
+            const buf = Buffer.create(6 * 8)
             for (let i = 0; i < 8; i++) {
                 const note = this.field.notes[i]
-                const buf = Buffer.create(6)
                 const period =
                     1000000 / (note !== "." ? noteToFreq[note] : 1000)
                 const duty = note === "." ? 0 : (period * 0.5) / 2
                 const duration = 250
-                buf.setNumber(NumberFormat.UInt16LE, 0, period)
-                buf.setNumber(NumberFormat.UInt16LE, 2, duty)
-                buf.setNumber(NumberFormat.UInt16LE, 4, duration)
-                res.push(buf)
+                buf.setNumber(NumberFormat.UInt16LE, i * 6 + 0, period)
+                buf.setNumber(NumberFormat.UInt16LE, i * 6 + 2, duty)
+                buf.setNumber(NumberFormat.UInt16LE, i * 6 + 4, duration)
             }
-            return res
+            return buf
         }
     }
 
