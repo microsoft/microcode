@@ -538,7 +538,7 @@ namespace jacs {
 
             const wr = this.writer
 
-            if (shortCutFn && params.length > 1) {
+            if (shortCutFn) {
                 const totalBufferSize = params.reduce(
                     (sum, tile) =>
                         (tile.serviceCommandArg() as Buffer).length + sum,
