@@ -599,6 +599,15 @@ namespace microcode {
         "0": 523.25, // C5
     }
 
+    export function setNote(buf: Buffer, offset: number, note: string) {
+        const period = 1000000 / (note !== "." ? noteToFreq[note] : 1000)
+        const duty = note === "." ? 0 : (period * 0.5) / 2
+        const duration = 250
+        buf.setNumber(NumberFormat.UInt16LE, offset + 0, period)
+        buf.setNumber(NumberFormat.UInt16LE, offset + 2, duty)
+        buf.setNumber(NumberFormat.UInt16LE, offset + 4, duration)
+    }
+
     export const melodyFieldEditor: FieldEditor = {
         init: { notes: `76543210`, tempo: 120 },
         clone: (melody: Melody) => {
@@ -650,14 +659,7 @@ namespace microcode {
         serviceCommandArg() {
             const buf = Buffer.create(6 * 8)
             for (let i = 0; i < 8; i++) {
-                const note = this.field.notes[i]
-                const period =
-                    1000000 / (note !== "." ? noteToFreq[note] : 1000)
-                const duty = note === "." ? 0 : (period * 0.5) / 2
-                const duration = 250
-                buf.setNumber(NumberFormat.UInt16LE, i * 6 + 0, period)
-                buf.setNumber(NumberFormat.UInt16LE, i * 6 + 2, duty)
-                buf.setNumber(NumberFormat.UInt16LE, i * 6 + 4, duration)
+                setNote(buf, i * 6, this.field.notes[i])
             }
             return buf
         }
