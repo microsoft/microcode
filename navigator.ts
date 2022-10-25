@@ -224,22 +224,6 @@ namespace microcode {
             return btn
         }
 
-        public addButtons(btns: Button[]) {
-            super.addButtons(btns)
-
-            btns.forEach(btn => {
-                if (btn.onClick) {
-                    let prev = btn.onClick
-                    btn.onClick = () => {
-                        prev(btn)
-                        this.reportAria(btn)
-                    }
-                } else {
-                    btn.onClick = () => this.reportAria(btn)
-                }
-            })
-        }
-
         protected reportAria(btn: Button) {
             if (!btn) {
                 return null
@@ -264,14 +248,15 @@ namespace microcode {
             let btn = super.reportAria(b)
             if (!btn) return null
             let status = btn.getIcon() == "solid_red" ? "on" : "off"
-
+            let report = `led ${this.col + 1} ${
+                this.hasDelete ? this.row : this.row + 1
+            } ${status}`
+            console.log(report)
             accessibility.setLiveContent(<
                 accessibility.TextAccessibilityMessage
             >{
                 type: "text",
-                value: `led ${this.col + 1} ${
-                    this.hasDelete ? this.row : this.row + 1
-                } ${status}`,
+                value: report,
                 force: true,
             })
             return btn
