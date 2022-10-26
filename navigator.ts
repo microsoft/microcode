@@ -268,9 +268,7 @@ namespace microcode {
             const status = btn.getIcon() === "note_on" ? "on" : "off"
             const noteIndex = this.hasDelete ? this.row - 1 : this.row
             const noteName = noteNames[noteIndex]
-            const report = `note ${noteName} in column ${
-                this.col + 1
-            } ${status}`
+            const report = `${noteName} ${status}`
             accessibility.setLiveContent(<
                 accessibility.TextAccessibilityMessage
             >{
