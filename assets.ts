@@ -1356,25 +1356,41 @@ namespace icondb {
     . . . . . . . . . . . . . . . . 
 `
     export const note_on = img`
-. f f f f f f f .
-f f f f f f f f f
-f f f f f f f f f
-f f f f f f f f f
-f f f f f f f f f
-f f f f f f f f f
-f f f f f f f f f
-. f f f f f f f .
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 c c c c 1 1 1 1 1
+1 1 1 1 1 1 c f f f f c 1 1 1 1
+1 1 1 1 1 c f f f f f f c 1 1 1
+1 1 1 1 c f f f f f f f f c 1 1
+1 1 1 1 c f f f f f f f f c 1 1
+1 1 1 c f f f f f f f f f c 1 1
+1 1 1 c f f f f f f f f f c 1 1
+1 1 1 c f f f f f f f f f c 1 1
+1 1 1 c f f f f f f f f f c 1 1
+1 1 1 c f f f f f f f f c 1 1 1
+1 1 1 c f f f f f f f f c 1 1 1
+1 1 1 1 c f f f f f f c 1 1 1 1
+1 1 1 1 1 c f f f f c 1 1 1 1 1
+1 1 1 1 1 1 c c c c 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 `
 
     export const note_off = img`
-. f f f f f f f .
-f 1 1 1 1 1 1 1 f
-f 1 1 1 1 1 1 1 f
-f 1 1 1 1 1 1 1 f
-f 1 1 1 1 1 1 1 f
-f 1 1 1 1 1 1 1 f
-f 1 1 1 1 1 1 1 f
-. f f f f f f f .
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 f 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 `
 
     export const accelerometer = img`
