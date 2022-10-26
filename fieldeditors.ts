@@ -57,15 +57,15 @@ namespace microcode {
             const note_icon =
                 melody.notes[col] === "."
                     ? "note_off"
-                    : parseInt(melody.notes[col]) === row
+                    : parseInt(melody.notes[col]) === NUM_NOTES - 1 - row
                     ? "note_on"
                     : "note_off"
             return note_icon
         }
 
-        for (let row = 0; row < 8; row++) {
+        for (let row = 0; row < 5; row++) {
             let btns: PickerButtonDef[] = []
-            for (let col = 0; col < 8; col++) {
+            for (let col = 0; col < 5; col++) {
                 btns.push({
                     icon: getIcon(col, row),
                     style: ButtonStyles.Transparent,
@@ -80,7 +80,8 @@ namespace microcode {
                 onClick: (iconId: any, button: PickerButton) => {
                     let row = 0,
                         col = 0
-                    for (; row < 8; row++) {
+                    // note that this row is graphics, not music
+                    for (; row < NUM_NOTES; row++) {
                         let index =
                             button.picker.groups[row].buttons.indexOf(button)
                         if (index >= 0) {
@@ -89,7 +90,7 @@ namespace microcode {
                         }
                     }
                     if (getIcon(col, row) !== "note_on") {
-                        const note = row.toString()
+                        const note = (NUM_NOTES - 1 - row).toString()
                         const buf = Buffer.create(6)
                         setNote(buf, 0, note)
                         new jacs.TopWriter().deployFreq(buf)
@@ -98,9 +99,9 @@ namespace microcode {
                         melody.notes.slice(0, col) +
                         (getIcon(col, row) === "note_on"
                             ? "."
-                            : row.toString()) +
+                            : (NUM_NOTES - 1 - row).toString()) +
                         melody.notes.slice(col + 1)
-                    for (row = 0; row < 8; row++) {
+                    for (row = 0; row < NUM_NOTES; row++) {
                         button.picker.groups[row].buttons[col].setIcon(
                             getIcon(col, row)
                         )
@@ -110,7 +111,6 @@ namespace microcode {
                 onHide,
                 onDelete,
                 navigator: () => new MelodyNavigator(),
-                maxPerRow: 8,
             },
             false
         )
