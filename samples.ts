@@ -64,7 +64,7 @@ namespace microcode {
             {
                 label: "head or tail",
                 ariaId: "N9",
-                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBOUEiXSwiTSI6WyJNMjIiLCJNNyJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBNCJdLCJNIjpbIk0yNCgwMjQyMCwxMjApIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY4Il0sIk0iOlsiTTE1KDExMTExMTAxMDExMTExMTAxMTEwMDExMTApIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY5Il0sIk0iOlsiTTE1KDExMTExMTAwMDExMDAwMTEwMDAxMTExMTEpIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuMTQifQ==",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBOUEiXSwiTSI6WyJNMjIiLCJNNyJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBNCJdLCJNIjpbIk0yNCgwMjQyMCwxMjApIiwiTTI0KDAuLi4wLDEyMCkiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkE1Il0sIkYiOlsiRjgiXSwiTSI6WyJNMTUoMTExMTExMDEwMTExMTExMDExMTAwMTExMCkiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkE1Il0sIkYiOlsiRjkiXSwiTSI6WyJNMTUoMTExMTExMDAwMTEwMDAxMTAwMDExMTExMSkiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC4xNSJ9",
                 icon: "heads_tails",
             },
             {

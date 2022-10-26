@@ -63,9 +63,9 @@ namespace microcode {
             return note_icon
         }
 
-        for (let row = 0; row < 5; row++) {
+        for (let row = 0; row < NUM_NOTES; row++) {
             let btns: PickerButtonDef[] = []
-            for (let col = 0; col < 5; col++) {
+            for (let col = 0; col < MELODY_LENGTH; col++) {
                 btns.push({
                     icon: getIcon(col, row),
                     style: ButtonStyles.Transparent,

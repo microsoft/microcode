@@ -587,7 +587,7 @@ namespace microcode {
         tempo: number
     }
 
-    export const MELODY_LENGTH = 5
+    export const MELODY_LENGTH = 4
     export const NUM_NOTES = 5
 
     export const noteNames = [
@@ -622,7 +622,7 @@ namespace microcode {
     }
 
     export const melodyFieldEditor: FieldEditor = {
-        init: { notes: `02420`, tempo: 120 },
+        init: { notes: `0240`, tempo: 120 },
         clone: (melody: Melody) => {
             return { notes: melody.notes.slice(0), tempo: melody.tempo }
         },
