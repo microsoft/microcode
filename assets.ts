@@ -216,39 +216,43 @@ namespace microcode {
     `
 }
 
-function melodyToImage(melody: microcode.Melody) {
-    const ret = image.create(16, 16)
-    ret.fill(1)
-    for (let col = 0; col < microcode.MELODY_LENGTH; col++) {
-        if (melody.notes[col] === ".") continue
-        const row = microcode.NUM_NOTES - 1 - parseInt(melody.notes[col])
-        const color = 15
-        const ncol = col * 3,
-            nrow = row * 3
-        ret.drawRect(ncol, nrow, 3, 3, color)
-    }
-    return ret
-}
-
-// - upscale 5x5 image to 16 x 16
-function scaleUp(led55: Image) {
-    const ret = image.create(16, 16)
-    ret.fill(15)
-    for (let row = 0; row < 5; row++) {
-        for (let col = 0; col < 5; col++) {
-            const color = led55.getPixel(row, col) ? 2 : 15
-            const nrow = 1 + row * 3,
-                ncol = 1 + col * 3
-            ret.setPixel(nrow, ncol, color)
-            ret.setPixel(nrow + 1, ncol, color)
-            ret.setPixel(nrow, ncol + 1, color)
-            ret.setPixel(nrow + 1, ncol + 1, color)
-        }
-    }
-    return ret
-}
-
 namespace icondb {
+    const note3x3 = img`
+    . f f
+    f f c
+    f c c
+    `
+    export function melodyToImage(melody: microcode.Melody) {
+        const ret = image.create(16, 16)
+        ret.fill(1)
+        for (let col = 0; col < microcode.MELODY_LENGTH; col++) {
+            if (melody.notes[col] === ".") continue
+            const row = microcode.NUM_NOTES - 1 - parseInt(melody.notes[col])
+            const color = 15
+            const ncol = col * 3 + 1,
+                nrow = row * 3
+            ret.drawTransparentImage(note3x3, ncol, nrow)
+        }
+        return ret
+    }
+
+    // - upscale 5x5 image to 16 x 16
+    export function scaleUp(led55: Image) {
+        const ret = image.create(16, 16)
+        ret.fill(15)
+        for (let row = 0; row < 5; row++) {
+            for (let col = 0; col < 5; col++) {
+                const color = led55.getPixel(row, col) ? 2 : 15
+                const nrow = 1 + row * 3,
+                    ncol = 1 + col * 3
+                ret.setPixel(nrow, ncol, color)
+                ret.setPixel(nrow + 1, ncol, color)
+                ret.setPixel(nrow, ncol + 1, color)
+                ret.setPixel(nrow + 1, ncol + 1, color)
+            }
+        }
+        return ret
+    }
     export const iconEditor = scaleUp(
         img`
         . . . . .
@@ -1351,7 +1355,6 @@ namespace icondb {
     . . . b b b . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
 `
-
     export const note_on = img`
 . f f f f f f f .
 f f f f f f f f f

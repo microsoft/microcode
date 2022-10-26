@@ -519,7 +519,7 @@ namespace microcode {
         `,
         clone: (img: Image) => img.clone(),
         editor: iconEditor,
-        toImage: scaleUp,
+        toImage: icondb.scaleUp,
         buttonStyle: () => ButtonStyles.Transparent,
         serialize: (img: Image) => {
             const ret: string[] = []
@@ -627,7 +627,7 @@ namespace microcode {
             return { notes: melody.notes.slice(0), tempo: melody.tempo }
         },
         editor: melodyEditor,
-        toImage: melodyToImage,
+        toImage: icondb.melodyToImage,
         buttonStyle: () => ButtonStyles.Transparent,
         serialize: (melody: Melody) => melody.notes + "," + melody.tempo,
         deserialize: (s: string) => {

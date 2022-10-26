@@ -90,7 +90,7 @@ namespace microcode {
                         }
                     }
                     if (getIcon(col, row) !== "note_on") {
-                        const note = row.toString()
+                        const note = (NUM_NOTES - 1 - row).toString()
                         const buf = Buffer.create(6)
                         setNote(buf, 0, note)
                         new jacs.TopWriter().deployFreq(buf)
