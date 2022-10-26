@@ -587,27 +587,29 @@ namespace microcode {
         tempo: number
     }
 
-    // notes are in reverse order of scale
+    export const MELODY_LENGTH = 5
+    export const NUM_NOTES = 5
+
     export const noteNames = [
-        "high C", // 0
-        "B",
-        "A",
-        "G",
-        "F",
-        "E",
+        "middle C",
         "D",
-        "middle C", // 7
+        "E",
+        "F",
+        "G",
+        "A",
+        "B",
+        "high C",
     ]
 
     const noteToFreq: { [note: string]: number } = {
-        "7": 261.63, // C4
-        "6": 293.66, // D4
-        "5": 329.63, // E4
-        "4": 349.23, // F4
-        "3": 392.0, // G4
-        "2": 440.0, // A4
-        "1": 493.88, // B4
-        "0": 523.25, // C5
+        "0": 261.63, // C4
+        "1": 293.66, // D4
+        "2": 329.63, // E4
+        "3": 349.23, // F4
+        "4": 392.0, // G4
+        "5": 440.0, // A4
+        "6": 493.88, // B4
+        "7": 523.25, // C5
     }
 
     export function setNote(buf: Buffer, offset: number, note: string) {
@@ -620,7 +622,7 @@ namespace microcode {
     }
 
     export const melodyFieldEditor: FieldEditor = {
-        init: { notes: `76543210`, tempo: 120 },
+        init: { notes: `01234`, tempo: 120 },
         clone: (melody: Melody) => {
             return { notes: melody.notes.slice(0), tempo: melody.tempo }
         },
@@ -669,7 +671,7 @@ namespace microcode {
 
         serviceCommandArg() {
             const buf = Buffer.create(6 * 8)
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < MELODY_LENGTH; i++) {
                 setNote(buf, i * 6, this.field.notes[i])
             }
             return buf

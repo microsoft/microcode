@@ -219,16 +219,13 @@ namespace microcode {
 function melodyToImage(melody: microcode.Melody) {
     const ret = image.create(16, 16)
     ret.fill(1)
-    for (let col = 0; col < 8; col++) {
+    for (let col = 0; col < microcode.MELODY_LENGTH; col++) {
         if (melody.notes[col] === ".") continue
-        const row = parseInt(melody.notes[col])
+        const row = microcode.NUM_NOTES - 1 - parseInt(melody.notes[col])
         const color = 15
-        const ncol = col << 1,
-            nrow = row << 1
-        ret.setPixel(ncol, nrow, color)
-        ret.setPixel(ncol + 1, nrow, color)
-        ret.setPixel(ncol, nrow + 1, color)
-        ret.setPixel(ncol + 1, nrow + 1, color)
+        const ncol = col * 3,
+            nrow = row * 3
+        ret.drawRect(ncol, nrow, 3, 3, color)
     }
     return ret
 }
