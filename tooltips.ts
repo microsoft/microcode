@@ -82,7 +82,7 @@ namespace microcode {
         M21: "radio value",
         M22: "dice",
         M23: "repeat",
-        M24: "notes",
+        M24: "melody",
         A8: "LED",
         A9A: "set variable X",
         A9B: "set variable Y",
