@@ -220,7 +220,7 @@ namespace icondb {
     const note3x3 = img`
     . f f
     f f c
-    f c c
+    f c d
     `
     export function melodyToImage(melody: microcode.Melody) {
         const ret = image.create(16, 16)
@@ -264,7 +264,7 @@ namespace icondb {
     )
 
     export const melodyEditor = melodyToImage({
-        notes: "76543210",
+        notes: "02420",
         tempo: 0,
     })
 

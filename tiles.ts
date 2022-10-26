@@ -622,7 +622,7 @@ namespace microcode {
     }
 
     export const melodyFieldEditor: FieldEditor = {
-        init: { notes: `01234`, tempo: 120 },
+        init: { notes: `02420`, tempo: 120 },
         clone: (melody: Melody) => {
             return { notes: melody.notes.slice(0), tempo: melody.tempo }
         },
