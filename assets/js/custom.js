@@ -308,6 +308,7 @@ const supportedLanguages = [
     "ja",
     "pl",
     "pt-BR",
+    "ru",
     "es-ES",
     "es-MX",
     "tr",
