@@ -130,7 +130,23 @@ case where no parameter tile is given:
 -   ![get variable X](./images/generated/icon_M20A.png){:class="icon"} `get variable` gets the number from a variable (`X`, `Y`, `Z`); defaults to `0` if variable wasn't previously set.
     Sequences of numeric parameters are summed, as before, allowing the construction of values greater than `5 dots`.
 
-### Constructing numbers
+### Asset editors
+
+Two editors are provided to allow the creation of 5x5 LED images and simple melodies.
+
+#### LED image editor
+
+THe LED image editor lets you select which LEDs are on/off for a frame of an animation. You can continue to add LED images in a sequence (the editor will make a copy of the last image):
+
+<video class="sample" poster="../videos/ledFieldEditor.png" src="../videos/ledFieldEditor.mp4" controls="true"></video>
+
+#### Melody editor
+
+The melody editor lets you compose a four note sequence, where each note can be C,D,E,F, or G:
+
+TODO
+
+##d# Constructing numbers
 
 For commands that expect a numeric value (![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send`, ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable`), a variety of tiles are available
 
