@@ -144,7 +144,7 @@ THe LED image editor lets you select which LEDs are on/off for a frame of an ani
 
 The melody editor lets you compose a four note sequence, where each note can be C,D,E,F, or G:
 
-TODO
+<video class="sample" poster="./videos/melodyFieldEditor.png" src="./videos/melodyFieldEditor.mp4" controls="true"></video>
 
 ##d# Constructing numbers
 
