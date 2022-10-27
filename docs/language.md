@@ -138,7 +138,7 @@ Two editors are provided to allow the creation of 5x5 LED images and simple melo
 
 THe LED image editor lets you select which LEDs are on/off for a frame of an animation. You can continue to add LED images in a sequence (the editor will make a copy of the last image):
 
-<video class="sample" poster="../videos/ledFieldEditor.png" src="../videos/ledFieldEditor.mp4" controls="true"></video>
+<video class="sample" poster="./videos/ledFieldEditor.png" src="./videos/ledFieldEditor.mp4" controls="true"></video>
 
 #### Melody editor
 
