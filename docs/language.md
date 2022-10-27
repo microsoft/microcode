@@ -146,7 +146,7 @@ The melody editor lets you compose a four note sequence, where each note can be 
 
 <video class="sample" poster="./videos/melodyFieldEditor.png" src="./videos/melodyFieldEditor.mp4" controls="true"></video>
 
-##d# Constructing numbers
+### Constructing numbers
 
 For commands that expect a numeric value (![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send`, ![in variable X](./images/generated/icon_M20A.png){:class="icon"} `set variable`), a variety of tiles are available
 
