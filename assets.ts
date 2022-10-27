@@ -217,11 +217,11 @@ namespace microcode {
 }
 
 namespace icondb {
-    const note3x3 = img`
-    . f f
-    f f c
-    f c d
-    `
+    const note4x3 = img`
+    . f f .
+    f c c .
+    f c c .
+`
     export function melodyToImage(melody: microcode.Melody) {
         const ret = image.create(16, 16)
         ret.fill(1)
@@ -229,9 +229,9 @@ namespace icondb {
             if (melody.notes[col] === ".") continue
             const row = microcode.NUM_NOTES - 1 - parseInt(melody.notes[col])
             const color = 15
-            const ncol = col * 3 + 1,
-                nrow = row * 3
-            ret.drawTransparentImage(note3x3, ncol, nrow)
+            const ncol = col << 2,
+                nrow = row * 3 + 1
+            ret.drawTransparentImage(note4x3, ncol, nrow)
         }
         return ret
     }
@@ -264,7 +264,7 @@ namespace icondb {
     )
 
     export const melodyEditor = melodyToImage({
-        notes: "02420",
+        notes: "0240",
         tempo: 0,
     })
 
