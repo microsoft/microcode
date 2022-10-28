@@ -91,7 +91,7 @@
     "M22": "dice",
     "M23": "repeat",
     "M24": "melody",
-    
+
     "A8": "LED",
 
     "A9A": "set variable X",
@@ -129,5 +129,9 @@
     "A20_rainbow": "rainbow",
     "A20_sparkle": "sparkle",
 
-    "A21_": "servo set angle"
+    "A21_": "servo set angle",
+
+    "SR_LED": "led {x} {y} {state}",
+    "SR_ON": "on",
+    "SR_OFF": "off"
 }
