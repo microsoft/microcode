@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/beta---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.16","target":"arcade","targetVersion":"1.11.17"}
-// total=2364896 new=94.18% cached=0.00% other=5.82%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.17","target":"arcade","targetVersion":"1.11.20"}
+// total=2364985 new=94.19% cached=0.00% other=5.81%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1287,14 +1287,15 @@ switch (step) {
     globals.iconFieldEditor___3520 = (s.tmp_0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, "middle C");
+    r0 = pxsim_Array__push(s.tmp_0, "C");
     r0 = pxsim_Array__push(s.tmp_0, "D");
     r0 = pxsim_Array__push(s.tmp_0, "E");
     r0 = pxsim_Array__push(s.tmp_0, "F");
     r0 = pxsim_Array__push(s.tmp_0, "G");
     r0 = pxsim_Array__push(s.tmp_0, "A");
     r0 = pxsim_Array__push(s.tmp_0, "B");
-    r0 = pxsim_Array__push(s.tmp_0, "high C");
+    r0 = pxsim_Array__push(s.tmp_0, "C");
+    r0 = pxsim_Array__push(s.tmp_0, "D");
     globals.noteNames___3526 = (s.tmp_0);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
@@ -1306,6 +1307,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "5", 440);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "6", 493.88);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "7", 523.25);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "8", 587.33);
     globals.noteToFreq___6579 = (s.tmp_0);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
@@ -1506,7 +1508,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___4146 = (s.tmp_0);
     globals._binFloatLits___4159 = (_hex6818);
-    globals.VERSION___4161 = ("v2.4.16");
+    globals.VERSION___4161 = ("v2.4.17");
     globals.BACK_BUTTON_ERROR_KIND___4174 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4175 = ("forward_button");
     globals.microcode_Options_fps___4222 = (false);
@@ -2154,7 +2156,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-clone_inline__P6581.info = {"start":22346,"length":104,"line":625,"column":15,"endLine":627,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["melody"]}
+clone_inline__P6581.info = {"start":22295,"length":104,"line":617,"column":15,"endLine":619,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["melody"]}
 
 function clone_inline__P6581_mk(s) {
     checkStack(s.depth);
@@ -2188,7 +2190,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-buttonStyle_inline__P6591.info = {"start":22542,"length":30,"line":630,"column":21,"endLine":630,"endColumn":51,"fileName":"tiles.ts","functionName":"inline","argumentNames":[]}
+buttonStyle_inline__P6591.info = {"start":22491,"length":30,"line":622,"column":21,"endLine":622,"endColumn":51,"fileName":"tiles.ts","functionName":"inline","argumentNames":[]}
 
 function buttonStyle_inline__P6591_mk(s) {
     checkStack(s.depth);
@@ -2274,7 +2276,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-serialize_inline__P6593.info = {"start":22593,"length":53,"line":631,"column":19,"endLine":631,"endColumn":72,"fileName":"tiles.ts","functionName":"inline","argumentNames":["melody"]}
+serialize_inline__P6593.info = {"start":22542,"length":53,"line":623,"column":19,"endLine":623,"endColumn":72,"fileName":"tiles.ts","functionName":"inline","argumentNames":["melody"]}
 
 function serialize_inline__P6593_mk(s) {
     checkStack(s.depth);
@@ -2337,7 +2339,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-deserialize_inline__P6606.info = {"start":22669,"length":167,"line":632,"column":21,"endLine":638,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["s"]}
+deserialize_inline__P6606.info = {"start":22618,"length":167,"line":624,"column":21,"endLine":630,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["s"]}
 
 function deserialize_inline__P6606_mk(s) {
     checkStack(s.depth);
@@ -11273,7 +11275,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_addTiles__P6626.info = {"start":24396,"length":125,"line":689,"column":4,"endLine":693,"endColumn":5,"fileName":"tiles.ts","functionName":"addTiles","argumentNames":[]}
+microcode_addTiles__P6626.info = {"start":24345,"length":125,"line":681,"column":4,"endLine":685,"endColumn":5,"fileName":"tiles.ts","functionName":"addTiles","argumentNames":[]}
 
 function microcode_addTiles__P6626_mk(s) {
     checkStack(s.depth);
@@ -11351,7 +11353,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_addFieldEditors__P6625.info = {"start":24024,"length":366,"line":680,"column":4,"endLine":687,"endColumn":5,"fileName":"tiles.ts","functionName":"addFieldEditors","argumentNames":[]}
+microcode_addFieldEditors__P6625.info = {"start":23973,"length":366,"line":672,"column":4,"endLine":679,"endColumn":5,"fileName":"tiles.ts","functionName":"addFieldEditors","argumentNames":[]}
 
 function microcode_addFieldEditors__P6625_mk(s) {
     checkStack(s.depth);
@@ -11440,7 +11442,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MelodyEditor_constructor__P6624.info = {"start":22952,"length":406,"line":644,"column":8,"endLine":653,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["this","field"]}
+microcode_MelodyEditor_constructor__P6624.info = {"start":22901,"length":406,"line":636,"column":8,"endLine":645,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["this","field"]}
 
 function microcode_MelodyEditor_constructor__P6624_mk(s) {
     checkStack(s.depth);
@@ -30420,7 +30422,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_setNote__P3527.info = {"start":21801,"length":431,"line":614,"column":4,"endLine":621,"endColumn":5,"fileName":"tiles.ts","functionName":"setNote","argumentNames":["buf","offset","note"]}
+microcode_setNote__P3527.info = {"start":21750,"length":431,"line":606,"column":4,"endLine":613,"endColumn":5,"fileName":"tiles.ts","functionName":"setNote","argumentNames":["buf","offset","note"]}
 
 function microcode_setNote__P3527_mk(s) {
     checkStack(s.depth);
@@ -71435,7 +71437,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MelodyEditor_serviceCommandArg__P6623.info = {"start":23788,"length":224,"line":671,"column":8,"endLine":677,"endColumn":9,"fileName":"tiles.ts","functionName":"serviceCommandArg","argumentNames":["this"]}
+microcode_MelodyEditor_serviceCommandArg__P6623.info = {"start":23737,"length":224,"line":663,"column":8,"endLine":669,"endColumn":9,"fileName":"tiles.ts","functionName":"serviceCommandArg","argumentNames":["this"]}
 
 function microcode_MelodyEditor_serviceCommandArg__P6623_mk(s) {
     checkStack(s.depth);
@@ -71508,7 +71510,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MelodyEditor_getNewInstance__P6622.info = {"start":23615,"length":163,"line":665,"column":8,"endLine":669,"endColumn":9,"fileName":"tiles.ts","functionName":"getNewInstance","argumentNames":["this","field"]}
+microcode_MelodyEditor_getNewInstance__P6622.info = {"start":23564,"length":163,"line":657,"column":8,"endLine":661,"endColumn":9,"fileName":"tiles.ts","functionName":"getNewInstance","argumentNames":["this","field"]}
 
 function microcode_MelodyEditor_getNewInstance__P6622_mk(s) {
     checkStack(s.depth);
@@ -71573,7 +71575,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MelodyEditor_getIcon__P6621.info = {"start":23430,"length":175,"line":659,"column":8,"endLine":663,"endColumn":9,"fileName":"tiles.ts","functionName":"getIcon","argumentNames":["this"]}
+microcode_MelodyEditor_getIcon__P6621.info = {"start":23379,"length":175,"line":651,"column":8,"endLine":655,"endColumn":9,"fileName":"tiles.ts","functionName":"getIcon","argumentNames":["this"]}
 
 function microcode_MelodyEditor_getIcon__P6621_mk(s) {
     checkStack(s.depth);
@@ -71610,7 +71612,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MelodyEditor_getField__P6620.info = {"start":23368,"length":52,"line":655,"column":8,"endLine":657,"endColumn":9,"fileName":"tiles.ts","functionName":"getField","argumentNames":["this"]}
+microcode_MelodyEditor_getField__P6620.info = {"start":23317,"length":52,"line":647,"column":8,"endLine":649,"endColumn":9,"fileName":"tiles.ts","functionName":"getField","argumentNames":["this"]}
 
 function microcode_MelodyEditor_getField__P6620_mk(s) {
     checkStack(s.depth);
