@@ -245,15 +245,15 @@ namespace microcode {
         protected reportAria(b: Button): Button {
             const btn = super.reportAria(b)
             if (!btn) return null
-            const status = btn.getIcon() == "solid_red" ? "on" : "off"
-            const report = `led ${this.col + 1} ${
-                this.hasDelete ? this.row : this.row + 1
-            } ${status}`
+
+            const on = btn.getIcon() == "solid_red"
             accessibility.setLiveContent(<
-                accessibility.TextAccessibilityMessage
+                accessibility.LEDAccessibilityMessage
             >{
-                type: "text",
-                value: report,
+                type: "led",
+                on,
+                x: this.col,
+                y: this.row,
                 force: true,
             })
             return null
@@ -265,15 +265,14 @@ namespace microcode {
         protected reportAria(b: Button): Button {
             let btn = super.reportAria(b)
             if (!btn) return null
-            const status = btn.getIcon() === "note_on" ? "on" : "off"
-            const noteIndex = this.hasDelete ? this.row - 1 : this.row
-            const noteName = noteNames[noteIndex]
-            const report = `${noteName} ${status}`
+            const on = btn.getIcon() === "note_on"
+            const index = this.hasDelete ? this.row - 1 : this.row
             accessibility.setLiveContent(<
-                accessibility.TextAccessibilityMessage
+                accessibility.NoteAccessibilityMessage
             >{
-                type: "text",
-                value: report,
+                type: "note",
+                on,
+                index,
                 force: true,
             })
             return null
