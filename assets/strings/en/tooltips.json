@@ -109,5 +109,9 @@
   "A20_6": "black",
   "A20_rainbow": "rainbow",
   "A20_sparkle": "sparkle",
-  "A21_": "servo set angle"
+  "A21_": "servo set angle",
+  "SR_LED": "LED {x} {y} {state}",
+  "SR_NOTE": "note {index} {state}",
+  "SR_ON": "on",
+  "SR_OFF": "off"
 }
