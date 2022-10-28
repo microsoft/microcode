@@ -424,6 +424,12 @@ addSimMessageHandler("accessibility", data => {
         const y = msg.y
         const format = mapAriaId("SR_LED", "LED {x} {y} {state}")
         value = stringFormat(format, { state, x, y })
+    } else if (msg.type == "note") {
+        const on = msg.on
+        const state = on ? mapAriaId("SR_ON", "on") : mapAriaId("SR_OFF", "off")
+        const index = "CDEFGABCD".charAt(msg.index)
+        const format = mapAriaId("SR_NOTE", "note {index} {state}")
+        value = stringFormat(format, { state, index })
     } else {
         console.error("unknown accessibility message", msg)
     }
@@ -468,7 +474,7 @@ function setLiveRegion(value, force) {
     }
     value = value || ""
     if (force && liveRegion.textContent === value) liveRegion.textContent = ""
-    //console.debug(`aria-live: ${value}`)
+    console.debug(`aria-live: ${value}`)
     liveRegion.dataset["text"] = value
     liveRegion.textContent = value
     playClick()

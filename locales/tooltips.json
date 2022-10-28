@@ -131,7 +131,8 @@
 
     "A21_": "servo set angle",
 
-    "SR_LED": "led {x} {y} {state}",
+    "SR_LED": "LED {x} {y} {state}",
+    "SR_NOTE": "note {index} {state}",
     "SR_ON": "on",
     "SR_OFF": "off"
 }
