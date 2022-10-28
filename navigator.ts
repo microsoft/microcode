@@ -7,6 +7,7 @@ namespace microcode {
         screenToButton: (x: number, y: number) => Button
         initialCursor: (row: number, col: number) => Button
         finished: () => void
+        updateAria: () => void
     }
 
     export const BACK_BUTTON_ERROR_KIND = "back_button"
@@ -125,6 +126,10 @@ namespace microcode {
             const btn = this.buttonGroups[this.row][this.col]
             this.reportAria(btn)
             return btn
+        }
+
+        public updateAria() {
+            this.reportAria(this.getCurrent())
         }
 
         protected reportAria(btn: Button) {
@@ -412,6 +417,10 @@ namespace microcode {
             }
 
             return this.curr
+        }
+
+        public updateAria() {
+            this.curr.reportAria(true)
         }
 
         public screenToButton(x: number, y: number): Button {
