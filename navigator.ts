@@ -7,6 +7,7 @@ namespace microcode {
         screenToButton: (x: number, y: number) => Button
         initialCursor: (row: number, col: number) => Button
         finished: () => void
+        updateAria: () => void
     }
 
     export const BACK_BUTTON_ERROR_KIND = "back_button"
@@ -123,8 +124,16 @@ namespace microcode {
                 }
             }
             const btn = this.buttonGroups[this.row][this.col]
-            if (btn) btn.reportAria(true)
+            this.reportAria(btn)
             return btn
+        }
+
+        public updateAria() {
+            this.reportAria(this.getCurrent())
+        }
+
+        protected reportAria(btn: Button) {
+            if (btn) btn.reportAria(true)
         }
 
         public getCurrent(): Button {
@@ -170,12 +179,6 @@ namespace microcode {
 
         public atRuleStart() {
             return this.row >= 1 && this.col == 0
-        }
-
-        public move(dir: CursorDir) {
-            const ret = super.move(dir)
-            this.reportAria(ret)
-            return ret
         }
 
         protected reportAria(ret: Button) {
@@ -244,42 +247,40 @@ namespace microcode {
 
     // accessibility for LEDs
     export class LEDNavigator extends MatrixNavigator {
-        protected reportAria(b: Button) {
-            let btn = super.reportAria(b)
+        protected reportAria(b: Button): Button {
+            const btn = super.reportAria(b)
             if (!btn) return null
-            let status = btn.getIcon() == "solid_red" ? "on" : "off"
-            let report = `led ${this.col + 1} ${
-                this.hasDelete ? this.row : this.row + 1
-            } ${status}`
-            console.log(report)
+
+            const on = btn.getIcon() == "solid_red"
             accessibility.setLiveContent(<
-                accessibility.TextAccessibilityMessage
+                accessibility.LEDAccessibilityMessage
             >{
-                type: "text",
-                value: report,
+                type: "led",
+                on,
+                x: this.col,
+                y: this.row,
                 force: true,
             })
-            return btn
+            return null
         }
     }
 
     // accessibility for melody
     export class MelodyNavigator extends MatrixNavigator {
-        protected reportAria(b: Button) {
+        protected reportAria(b: Button): Button {
             let btn = super.reportAria(b)
             if (!btn) return null
-            let status = btn.getIcon() === "note_on" ? "on" : "off"
-            let noteIndex = this.hasDelete ? this.row - 1 : this.row
-            let noteName = noteNames[noteIndex]
-
+            const on = btn.getIcon() === "note_on"
+            const index = this.hasDelete ? this.row - 1 : this.row
             accessibility.setLiveContent(<
-                accessibility.TextAccessibilityMessage
+                accessibility.NoteAccessibilityMessage
             >{
-                type: "text",
-                value: `note ${noteName} in column ${this.col + 1} ${status}`,
+                type: "note",
+                on,
+                index,
                 force: true,
             })
-            return btn
+            return null
         }
     }
 
@@ -416,6 +417,10 @@ namespace microcode {
             }
 
             return this.curr
+        }
+
+        public updateAria() {
+            this.curr.reportAria(true)
         }
 
         public screenToButton(x: number, y: number): Button {

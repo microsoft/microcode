@@ -38,6 +38,7 @@ namespace microcode {
                     image5x5.setPixel(col, row, on ? 0 : 1)
                     button.setIcon(getColor(col, row))
                     picker.draw()
+                    picker.navigator.updateAria()
                 },
                 onHide,
                 onDelete,
@@ -107,6 +108,7 @@ namespace microcode {
                         )
                     }
                     picker.draw()
+                    picker.navigator.updateAria()
                 },
                 onHide,
                 onDelete,

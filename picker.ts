@@ -71,8 +71,10 @@ namespace microcode {
 
     export class Picker extends Component implements IPlaceable {
         public groups: PickerGroup[]
+        public navigator: INavigator
+        public visible: boolean
+
         private xfrm_: Affine
-        private navigator: INavigator
         private prevState: CursorState
         private deleteBtn: Button
         private startBtn: Button
@@ -82,7 +84,6 @@ namespace microcode {
         private onDelete: () => void
         private hideOnClick: boolean
         private title: string
-        public visible: boolean
 
         public get xfrm() {
             return this.xfrm_

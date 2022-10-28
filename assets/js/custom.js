@@ -18,6 +18,8 @@ const refreshUI = () => {
     }
 }
 
+const stringFormat = (s, args) => s.replace(/{(\w+)}/g, (_, id) => args[id])
+
 function simPostMessage(channel, data) {
     const frame = document.getElementById("simframe")
     if (frame) {
@@ -361,8 +363,8 @@ async function loadTranslations(build) {
         )) || {}
 }
 
-function mapAriaId(ariaId) {
-    return tooltipStrings[ariaId] || ""
+function mapAriaId(ariaId, missing) {
+    return tooltipStrings[ariaId] || missing || ""
 }
 
 function parseSemver(v) {
@@ -408,13 +410,28 @@ addSimMessageHandler("accessibility", data => {
         speak(value)
     } else if (msg.type == "rule") {
         value = mapAriaId("rule")
-        value += ` ${mapAriaId("when")} `
+        value += `: ${mapAriaId("when")} `
         const whens = msg.whens
         if (whens && whens.length > 0) value += whens.map(mapAriaId).join(" ")
         else value += mapAriaId("S1")
-        value += ` ${mapAriaId("do")} `
+        value += `, ${mapAriaId("do")} `
         const dos = msg.dos
         if (dos && dos.length > 0) value += dos.map(mapAriaId).join(" ")
+    } else if (msg.type == "led") {
+        const on = msg.on
+        const state = on ? mapAriaId("SR_ON", "on") : mapAriaId("SR_OFF", "off")
+        const x = msg.x
+        const y = msg.y
+        const format = mapAriaId("SR_LED", "LED {x} {y} {state}")
+        value = stringFormat(format, { state, x, y })
+    } else if (msg.type == "note") {
+        const on = msg.on
+        const state = on ? mapAriaId("SR_ON", "on") : mapAriaId("SR_OFF", "off")
+        const index = "CDEFGABCD".charAt(msg.index)
+        const format = mapAriaId("SR_NOTE", "note {index} {state}")
+        value = stringFormat(format, { state, index })
+    } else {
+        console.error("unknown accessibility message", msg)
     }
     setLiveRegion(value, force)
 })
@@ -457,7 +474,7 @@ function setLiveRegion(value, force) {
     }
     value = value || ""
     if (force && liveRegion.textContent === value) liveRegion.textContent = ""
-    //console.debug(`aria-live: ${value}`)
+    console.debug(`aria-live: ${value}`)
     liveRegion.dataset["text"] = value
     liveRegion.textContent = value
     playClick()
