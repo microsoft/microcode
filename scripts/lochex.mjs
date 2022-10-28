@@ -79,7 +79,7 @@ for (const lang of languages.filter(l => l !== "pxt")) {
         .filter(k => !translations[k])
         .forEach(k => (translations[k] = tooltips[k]))
 
-    const ts = `// auto-generated, run 'node scripts/locs.js' to refresh
+    const ts = `// auto-generated, run 'node scripts/lochex.mjs' to refresh
 namespace microcode {
     export const lang = "${lang}"
     export const font = image.font${fonts[lang] || 8}

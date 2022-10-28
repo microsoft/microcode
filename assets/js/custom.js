@@ -285,7 +285,9 @@ function stringToUint8Array(str) {
 addSimMessageHandler("usb", async data => {
     const msg = JSON.parse(uint8ArrayToString(data))
     if (msg.type === "connect") {
-        showConnectDialog()
+        const supportsWebusb = !!navigator.usb
+        if (!supportsWebusb) showWebUSBNotSupportedDialog()
+        else showConnectDialog()
     }
 })
 

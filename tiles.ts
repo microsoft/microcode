@@ -590,16 +590,7 @@ namespace microcode {
     export const MELODY_LENGTH = 4
     export const NUM_NOTES = 5
 
-    export const noteNames = [
-        "middle C",
-        "D",
-        "E",
-        "F",
-        "G",
-        "A",
-        "B",
-        "high C",
-    ]
+    export const noteNames = ["C", "D", "E", "F", "G", "A", "B", "C", "D"]
 
     const noteToFreq: { [note: string]: number } = {
         "0": 261.63, // C4
@@ -610,6 +601,7 @@ namespace microcode {
         "5": 440.0, // A4
         "6": 493.88, // B4
         "7": 523.25, // C5
+        "8": 587.33, // D5
     }
 
     export function setNote(buf: Buffer, offset: number, note: string) {

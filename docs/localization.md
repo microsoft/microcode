@@ -8,10 +8,9 @@ description: Instruction to help localize MicroCode
 
 You can point directly to a localized by doing `/<icodecode>` like `/fr` (case-sensitive).
 
-The list of supported languages is available
-in the [User Guide](./manual).
+The list of supported languages is available in the [User Guide](./manual#localization).
 
-## Getting started
+## Helping with translations
 
 The localization is handled through [Crowdin](https://crowdin.com). You will need to get a translator account to get started.
 
