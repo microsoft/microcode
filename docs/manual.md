@@ -61,6 +61,7 @@ MicroCode is community translated through Crowdin. Please read on [localization]
 -   [French, Canada](../fr-CA.html) ([download](../assets/hex/microcode-fr-ca.hex))
 -   [Italian](../it.html) ([download](../assets/hex/microcode-it.hex))
 -   [Japanese](../ja.html) ([download](../assets/hex/microcode-ja.hex))
+-   [Korean](../ko.html) ([download](../assets/hex/microcode-ko.hex))
 -   [Polish](../pl.html) ([download](../assets/hex/microcode-pl.hex))
 -   [Portuguese, Brazilian](../pt-BR.html) ([download](../assets/hex/microcode-pt-br.hex))
 -   [Russian](../ru.html) ([download](../assets/hex/microcode-ru.hex))

@@ -317,6 +317,7 @@ const supportedLanguages = [
     "es-MX",
     "tr",
     "cy",
+    "ko"
 ]
 
 async function fetchJSON(url) {
