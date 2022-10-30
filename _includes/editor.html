@@ -60,7 +60,9 @@
             property="og:image"
             content="/{{ site.github.repository_name }}/assets/image.png"
         />
-        {% include head-custom.html %} {% include hreflang.html %}
+        {% include head-custom.html %}
+        <link rel="alternate" hreflang="x-default" href="/microcode/" />
+        {% include hreflang.html %}
         <script src="https://unpkg.com/fflate"></script>
         <script src="https://unpkg.com/howler"></script>
         <script
