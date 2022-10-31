@@ -204,7 +204,6 @@ namespace microcode {
             tile.jdKind = JdKind.Variable
             tile.jdParam = id
             tile.priority = 200 + id
-            // tile.constraints.handling = maxOneValueIn
         }
 
         makeCupSensor(TID_SENSOR_CUP_X_WRITTEN, 0)
@@ -215,7 +214,7 @@ namespace microcode {
         radio_recv.serviceClassName = "radio"
         radio_recv.eventCode = 0x91
         radio_recv.jdKind = JdKind.Radio
-        // radio_recv.constraints.handling = maxOneValueIn
+        radio_recv.constraints = { provides: [TID_SENSOR_RADIO_RECEIVE] }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "no_filters", 500)
         magnet.serviceClassName = "magneticFieldLevel"
@@ -488,8 +487,13 @@ namespace microcode {
         addReadValue(TID_MODIFIER_CUP_Y_READ, JdKind.Variable, 1)
         addReadValue(TID_MODIFIER_CUP_Z_READ, JdKind.Variable, 2)
 
-        // TODO: this should only be present when radio receive in When section
-        addReadValue(TID_MODIFIER_RADIO_VALUE, JdKind.RadioValue, 0)
+        const radio_value = addReadValue(
+            TID_MODIFIER_RADIO_VALUE,
+            JdKind.RadioValue,
+            0
+        )
+        radio_value.priority = 199
+        radio_value.constraints = { requires: [TID_SENSOR_RADIO_RECEIVE] }
 
         const random_toss = addReadValue(
             TID_MODIFIER_RANDOM_TOSS,
