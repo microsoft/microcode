@@ -152,6 +152,7 @@ For commands that expect a numeric value (![radio send](./images/generated/icon_
 
 -   the **constant values** ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, 2, 3, 4 and 5 dots
 -   the **values of variables** ![out of variable X](./images/generated/icon_S9A.png){:class="icon"} `X`, `Y`, and `Z`
+-   the **value of the radio receive event** ![value of radio receive event](./images/generated/icon_M21.png){:class="icon"}, only available if **WHEN** section has radio receive event ![radio receive event](./images/generated/icon_S7.png){:class="icon"}
 -   a ![dice](./images/generated/icon_M22.png){:class="icon"} **random number generator** yields a random integer between `1` and `5` (inclusive) by default
 
 ### ![repeat](./images/generated/icon_M23.png){:class="icon"} `repeat` (loops) {#loops}
