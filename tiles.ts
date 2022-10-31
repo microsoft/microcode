@@ -214,7 +214,7 @@ namespace microcode {
         radio_recv.serviceClassName = "radio"
         radio_recv.eventCode = 0x91
         radio_recv.jdKind = JdKind.Radio
-        radio_recv.constraints = { provides: [TID_SENSOR_RADIO_RECEIVE] }
+        radio_recv.constraints.provides = [TID_SENSOR_RADIO_RECEIVE]
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "no_filters", 500)
         magnet.serviceClassName = "magneticFieldLevel"
