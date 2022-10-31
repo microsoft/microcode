@@ -195,16 +195,29 @@ namespace microcode {
         }
 
         private deleteIncompatibleTiles(name: string, index: number) {
-            const ruleTiles = this.ruledef.getRuleRep()[name]
+            const doit = (name: string, index: number) => {
+                const ruleTiles = this.ruledef.getRuleRep()[name]
 
-            while (index < ruleTiles.length) {
-                const suggestions = this.getSuggestions(name, index)
-                const compatible = suggestions.find(
-                    t => t.tid == ruleTiles[index].tid
-                )
+                while (index < ruleTiles.length) {
+                    const suggestions = this.getSuggestions(name, index)
+                    const compatible = suggestions.find(
+                        t => t.tid == ruleTiles[index].tid
+                    )
 
-                if (compatible) index++
-                else ruleTiles.splice(index, ruleTiles.length - index)
+                    if (compatible) index++
+                    else {
+                        ruleTiles.splice(index, ruleTiles.length - index)
+                        return false
+                    }
+                }
+                return true
+            }
+            doit(name, index)
+            if (name === "filters") {
+                // a change in the the when section may affect the do section
+                let ok = doit("actuators", 0)
+                if (ok) doit("modifiers", 0)
+                else this.ruledef.getRuleRep()["modifiers"] = []
             }
         }
 
