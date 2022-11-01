@@ -34,6 +34,7 @@ These samples store a random number and use to build mini games.
 These sample use variables to build counters.
 
 -   [counter](./samples/counter)
+-   [step counter](./samples/step-counter)
 -   [times table](./samples/times-table)
 
 ## Pages

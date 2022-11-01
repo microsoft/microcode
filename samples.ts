@@ -146,6 +146,10 @@ namespace microcode {
                 label: "crooked head or tail",
                 b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBOUEiXSwiTSI6WyJNMjIiLCJNOCJdfSx7IlMiOlsiUzMiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOXNsaWRlIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY4Il0sIk0iOlsiTTE1KDExMTExMTAxMDExMTExMTAxMTEwMDExMTApIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkY5Il0sIk0iOlsiTTE1KDExMTExMTAwMDExMDAwMTEwMDAxMTExMTEpIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBNSJdLCJGIjpbIkYxMCJdLCJNIjpbIk0xNSgxMTExMTEwMDAxMTAwMDExMDAwMTExMTExKSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi40LjExIn0=",
             },
+            {
+                label: "step counter",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzMiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMTdfc2hha2UiXSwiTSI6WyJNMjBBIiwiTTYiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkExMCJdLCJNIjpbIk0yMEEiXX0seyJTIjpbIlM5QSJdLCJBIjpbIkEyIl0sIk0iOlsiTTE5aGVsbG8iXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC4xOSJ9",
+            },
         ]
         return s
     }
