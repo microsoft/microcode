@@ -317,7 +317,7 @@ const supportedLanguages = [
     "es-MX",
     "tr",
     "cy",
-    "ko"
+    "ko",
 ]
 
 async function fetchJSON(url) {
@@ -558,7 +558,7 @@ function showArt(jsg, samples) {
     const button = document.createElement("button")
     button.innerText = "save"
     button.onclick = async () => {
-        const dir = await window.showDirectoryPicker()
+        const dir = await window.showDirectoryPicker({ mode: "readwrite" })
         if (!dir) return
         await Promise.all(
             jsg.map(async ({ type, name, pixels }) => {
