@@ -36,14 +36,6 @@ Rules on another page only become active when the program switches to that page
 
 ![Hot potato sample](./images/generated/sample_hot_potato.png){:class="screenshot"}
 
-## Rules and conflicts {#rules}
-
-The rules on a page fire in parallel, so if you want to have two different commands take place
-on the press of A button, you would have two rules with the same When section (A button is pressed),
-but different commands. If the commands of the two rules use the same resource (for example, both commands
-show something on the micro:bit screen), then the last rule in order from top to bottom wins. That is,
-the order of the rules only matters when different rules act on the same resource.
-
 ## WHEN section {#when}
 
 The left-hand side of a rule, the `When` section, starts with an
