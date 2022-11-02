@@ -30,18 +30,25 @@ The other rules are similar but trigger for button B.
 
 ## Pages {#pages}
 
-Execution of the MicroCode program starts on ![page 1](./images/generated/icon_M1.png){:class="icon"} page 1. All the rules on that page are active.
-Rules on another page only become active when the program switches to that page
+Execution of the MicroCode program starts on ![page 1](./images/generated/icon_M1.png){:class="icon"} page 1. All the rules on that page are active. Rules on another page only become active when the program switches to that page
 (via an explicit ![switch page](./images/generated/icon_A1.png){:class="icon"} switch-page command, discussed later).
+Any rules that might still be executing on the current page (like an animation in a loop) are terminated before
+the page switch takes place (you can never have rules from different pages executing at the same time).
 
 ![Hot potato sample](./images/generated/sample_hot_potato.png){:class="screenshot"}
 
 ## Events and rule execution
 
-Events come to MicroCode exactly one at a time. For example, if you push the A and B buttons at the same
-time, MicroCode will see them ordered (either A before B, or B before A). This is true of all the events
-that are possible on the left side of the `When` section. Given an event, MicroCode executes the rules
-for that event in the order they appear on the current page.
+Events are processed by MicroCode one at a time. For example, if you push the A and B buttons at (roughly)
+the same time, then MicroCode will process either A before B or it will process B before A.
+Given an event, MicroCode processes the event by executing the rules for that event in the
+order they appear on the current page. For each rule, this means evaluating if the conditions
+on the event in the `When` section hold and, if so, starting the rule's `Do` section.
+
+Most of the commands in the `Do` section complete quickly, such as assigning a value to a variable;
+others, like the display of a sequence of images take time proportional to sequence's length;
+furthermore, an animation or sound sequence can be repeated multiple times
+(or without bound) using a repeat tile.
 
 ## WHEN section {#when}
 
