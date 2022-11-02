@@ -36,6 +36,13 @@ Rules on another page only become active when the program switches to that page
 
 ![Hot potato sample](./images/generated/sample_hot_potato.png){:class="screenshot"}
 
+## Events and rule execution
+
+Events come to MicroCode exactly one at a time. For example, if you push the A and B buttons at the same
+time, MicroCode will see them ordered (either A before B, or B before A). This is true of all the events
+that are possible on the left side of the `When` section. Given an event, MicroCode executes the rules
+for that event in the order they appear on the current page.
+
 ## WHEN section {#when}
 
 The left-hand side of a rule, the `When` section, starts with an
