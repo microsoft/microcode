@@ -31,10 +31,14 @@ These samples store a random number and use to build mini games.
 
 ### Counters
 
-These sample use variables to build counters.
+These sample use variables to build counters using buttons, movement or sounds.
 
 -   [counter](./samples/counter)
 -   [step counter](./samples/step-counter)
+-   [clap counter](./samples/clap-counter)
+
+This counters are a bit more involved.
+
 -   [times table](./samples/times-table)
 
 ## Pages
