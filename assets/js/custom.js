@@ -54,18 +54,22 @@ const reportBus = () => {
     }
 }
 
-function showOutdatedFirmwareDialog() {
-    const outdatedDlg = document.getElementById("outdatedDlg")
-    outdatedDlg.showModal()
+function showModal(id) {
     bus.disconnect()
+    const el = document.getElementById(id)
+    el.showModal()
+}
+
+function showOutdatedFirmwareDialog() {
+    showModal("outdatedDlg")
 }
 
 function showConnectDialog() {
-    document.getElementById("connectDlg").showModal()
+    showModal("connectDlg")
 }
 
 function showWebUSBNotSupportedDialog() {
-    document.getElementById("notsupportedDlg").showModal()
+    showModal("notsupportedDlg")
 }
 
 async function flashJacscriptServices(services, data) {
