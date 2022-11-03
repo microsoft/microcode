@@ -28,7 +28,7 @@ The first two rules run when A is pressed.
 
 The other rules are similar but trigger for button B.
 
-## Pages {#pages}
+## Pages and rule execution {#pages}
 
 Execution of the MicroCode program starts on ![page 1](./images/generated/icon_M1.png){:class="icon"} page 1. All the rules on that page are active. Rules on another page only become active when the program switches to that page
 (via an explicit ![switch page](./images/generated/icon_A1.png){:class="icon"} switch-page command, discussed later).
@@ -37,7 +37,7 @@ the page switch takes place (you can never have rules from different pages execu
 
 ![Hot potato sample](./images/generated/sample_hot_potato.png){:class="screenshot"}
 
-## Events and rule execution
+### Events and rule ordering
 
 Events are processed by MicroCode one at a time. For example, if you push the A and B buttons at (roughly)
 the same time, then MicroCode will process either A before B or it will process B before A.
@@ -45,10 +45,14 @@ Given an event, MicroCode processes the event by executing the rules for that ev
 order they appear on the current page. For each rule, this means evaluating if the conditions
 on the event in the `When` section hold and, if so, starting the rule's `Do` section.
 
+### Rule termination
+
 Most of the commands in the `Do` section complete quickly, such as assigning a value to a variable;
 others, like the display of a sequence of images take time proportional to sequence's length;
 furthermore, an animation or sound sequence can be repeated multiple times
-(or without bound) using a repeat tile.
+(or without bound) using a repeat tile. In the case of an animation, a currently
+running rule that is using the micro:bit screen
+will be terminated if a new rule that also uses the micro:bit screen is started.
 
 ## WHEN section {#when}
 
