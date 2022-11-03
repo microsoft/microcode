@@ -54,22 +54,22 @@ const reportBus = () => {
     }
 }
 
-function showModal(id) {
-    bus.disconnect()
+async function showModal(id) {
+    await bus.disconnect()
     const el = document.getElementById(id)
     el.showModal()
 }
 
-function showOutdatedFirmwareDialog() {
-    showModal("outdatedDlg")
+async function showOutdatedFirmwareDialog() {
+    await showModal("outdatedDlg")
 }
 
-function showConnectDialog() {
-    showModal("connectDlg")
+async function showConnectDialog() {
+    await showModal("connectDlg")
 }
 
-function showWebUSBNotSupportedDialog() {
-    showModal("notsupportedDlg")
+async function showWebUSBNotSupportedDialog() {
+    await showModal("notsupportedDlg")
 }
 
 async function flashJacscriptServices(services, data) {
@@ -88,7 +88,7 @@ async function flashJacscriptService(service, data) {
             `jacscript: invalid or unknown product identifier ${productIdentifier}`
         )
         trackEvent("firmware.wrongpid")
-        showOutdatedFirmwareDialog()
+        await showOutdatedFirmwareDialog()
         return
     }
 
@@ -103,7 +103,7 @@ async function flashJacscriptService(service, data) {
         trackEvent("firmware.outdated", {
             firmwareVersion,
         })
-        showOutdatedFirmwareDialog()
+        await showOutdatedFirmwareDialog()
         return
     }
 
@@ -245,10 +245,10 @@ document.addEventListener("DOMContentLoaded", () => {
         refreshUI()
         bus.autoConnect = true
 
-        setTimeout(() => {
+        setTimeout(async () => {
             const supportsWebusb = !!navigator.usb
-            if (!supportsWebusb) showWebUSBNotSupportedDialog()
-            else if (!bus.connected) showConnectDialog()
+            if (!supportsWebusb) await showWebUSBNotSupportedDialog()
+            else if (!bus.connected) await showConnectDialog()
         }, 2000)
     }
     document.body.append(script)
