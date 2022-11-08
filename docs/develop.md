@@ -138,7 +138,7 @@ cd scripts
 -   refresh tooltips.ts
 
 ```bash
-node scripts/lochex.js en
+node scripts/lochex.mjs en
 ```
 
 ### Updating crowdin
