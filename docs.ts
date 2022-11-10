@@ -86,19 +86,22 @@ namespace docs {
     //% shim=TD_NOOP
     function _renderScreenshot() {
         const res = _renderProgram()
+        const images: RenderedImage[] = []
+        Object.keys(res).forEach(iname =>
+            appendImage(
+                images,
+                "program",
+                iname == "app" ? "current" : `current_${iname}`,
+                res[iname]
+            )
+        )
         microcode.Screen.resetScreenImage()
         control.simmessages.send(
             "docs",
             Buffer.fromUTF8(
                 JSON.stringify({
                     type: "art",
-                    images: [
-                        {
-                            name: "current",
-                            type: "program",
-                            pixels: imageToBuffer(res["app"]).toHex(),
-                        },
-                    ],
+                    images,
                 })
             )
         )
@@ -186,7 +189,7 @@ namespace docs {
 
     function appendImage(
         images: RenderedImage[],
-        type: "icon" | "sample" | "icon_sample" | "image",
+        type: "icon" | "sample" | "icon_sample" | "image" | "program",
         name: string,
         img: Image
     ) {

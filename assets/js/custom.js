@@ -647,6 +647,7 @@ ${jsg
         const img = document.createElement("img")
         img.src = png
         img.alt = fn
+        img.title = name
         const a = document.createElement("a")
         a.setAttribute("href", png)
         a.setAttribute("download", `${fn}.png`)
