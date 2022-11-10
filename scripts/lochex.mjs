@@ -65,14 +65,16 @@ for (const lang of languages.filter(l => l !== "pxt")) {
         { encoding: "utf-8" }
     )
 
-    const dialogs = await (
-        await fetch(
-            `${cdn}content/${lang}/microcode/dialogs.html?timestamp=${timestamp}`
-        )
-    ).text()
-    writeFileSync(`./_includes/dialogs-${lang}.html`, dialogs, {
-        encoding: "utf-8",
-    })
+    for (const fn of ["dialogs", "legal"]) {
+        const dialogs = await (
+            await fetch(
+                `${cdn}content/${lang}/microcode/${fn}.html?timestamp=${timestamp}`
+            )
+        ).text()
+        writeFileSync(`./_includes/${fn}-${lang}.html`, dialogs, {
+            encoding: "utf-8",
+        })
+    }
 
     // merge translations
     Object.keys(tooltips)
