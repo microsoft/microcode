@@ -4,8 +4,6 @@ image: ./docs/images/generated/sample_smiley_buttons.png
 description: User guide for the MicroCode editor
 ---
 
-> MicroCode is still in **beta** development and might change in the future. Post your suggestions or questions on the [forum](https://forum.makecode.com/c/60).
-
 Physical computing for young learners on the [micro:bit V2](https://microbit.org):
 
 -   Kid-friendly, icon-based, structured code editor and [programming language](./language)

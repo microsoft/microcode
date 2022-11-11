@@ -12,5 +12,5 @@ plugins:
     - jekyll-sitemap
     - jekyll-loading-lazy
 show_downloads: false
-title: Microsoft MicroCode (beta)
-description: Physical computing for young learners on the micro:bit V2 (beta)
+title: Microsoft MicroCode
+description: Physical computing for young learners on the micro:bit V2

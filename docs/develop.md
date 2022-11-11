@@ -160,7 +160,7 @@ This little app packs a lot into a small footprint: graphics, UI, editor, compil
 
 ### Dependencies
 
-This app is built with [MakeCode Arcade](https://arcade.makecode.com/beta), specifically targeting the NRF52833 MCU of the micro:bit V2 (for now). There are a number of repos containing the C++ of the underlying CODAL runtime:
+This app is built with [MakeCode Arcade](https://arcade.makecode.com/), specifically targeting the NRF52833 MCU of the micro:bit V2 (for now). There are a number of repos containing the C++ of the underlying CODAL runtime:
 
 -   https://github.com/microsoft/codal-jacdac: an add-on to CODAL that provides Jacdac runtime, virtual machine, and services representing micro:bit features
 -   https://github.com/microsoft/pxt-arcade: the MakeCode Arcade editor, with support for NFR52833, the MCU of the micro:bit V2, which depends on
