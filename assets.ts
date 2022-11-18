@@ -400,13 +400,14 @@ namespace icondb {
 
     export const arith_equals = img`
 . . . . . . . .
-. . . . . . . .
-. . . . . . . .
 . f f f f f f .
-. . . . . . . .
 . f f f f f f .
 . . . . . . . .
 . . . . . . . .
+. f f f f f f .
+. f f f f f f .
+. . . . . . . .
+
 `
 
     export const loop = img`

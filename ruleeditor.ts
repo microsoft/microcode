@@ -148,9 +148,24 @@ namespace microcode {
                         y: 0,
                         onClick: () => this.editTile(name, index),
                     })
+                    if (name == "filters" && index == 0) {
+                        const sensor = rule["sensors"][0]
+                        if (
+                            sensor.jdKind == JdKind.Radio ||
+                            sensor.jdKind == JdKind.Variable
+                        ) {
+                            const plus = new EditorButton(this.editor, {
+                                parent: this,
+                                style: tile.buttonStyle(),
+                                icon: "=",
+                                ariaId: "equals",
+                                x: 0,
+                                y: 0,
+                            })
+                            this.ruleButtons[name].push(plus)
+                        }
+                    }
                     this.ruleButtons[name].push(button)
-                    // TODO: if this tile is a sensor that yields a numeric value
-                    // TODO: and there is a filter tile, then add equals sign
                     if (index < tiles.length - 1) {
                         if (
                             (tile.jdKind == JdKind.Literal ||
