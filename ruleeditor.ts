@@ -149,16 +149,21 @@ namespace microcode {
                         onClick: () => this.editTile(name, index),
                     })
                     this.ruleButtons[name].push(button)
+                    // TODO: if this tile is a sensor that yields a numeric value
+                    // TODO: and there is a filter tile, then add equals sign
                     if (index < tiles.length - 1) {
                         if (
-                            tile.jdKind == JdKind.Literal &&
-                            tiles[index + 1].jdKind == JdKind.Literal
+                            (tile.jdKind == JdKind.Literal ||
+                                tile.jdKind == JdKind.Variable) &&
+                            (tiles[index + 1].jdKind == JdKind.Literal ||
+                                tiles[index + 1].jdKind == JdKind.Variable ||
+                                tiles[index + 1].jdKind == JdKind.RandomToss)
                         ) {
                             const plus = new EditorButton(this.editor, {
                                 parent: this,
                                 style: tile.buttonStyle(),
                                 icon: "+",
-                                ariaId: tile.tid,
+                                ariaId: "plus",
                                 x: 0,
                                 y: 0,
                             })

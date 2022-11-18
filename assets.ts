@@ -23,6 +23,7 @@ namespace microcode {
             this.reg["delete"] = icondb.btn_delete
             this.reg["plus"] = icondb.btn_plus
             this.reg["+"] = icondb.arith_plus
+            this.reg["="] = icondb.arith_equals
             this.reg["when_insertion_point"] = icondb.btn_when_insertion_point
             this.reg["do_insertion_point"] = icondb.btn_do_insertion_point
             this.reg["rule_arrow"] = icondb.rule_arrow
@@ -395,6 +396,17 @@ namespace icondb {
     . . . f f . . .
     . . . f f . . .
     . . . . . . . .
+`
+
+    export const arith_equals = img`
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. f f f f f f .
+. . . . . . . .
+. f f f f f f .
+. . . . . . . .
+. . . . . . . .
 `
 
     export const loop = img`
