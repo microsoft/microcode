@@ -22,6 +22,8 @@ namespace microcode {
             // editor icons
             this.reg["delete"] = icondb.btn_delete
             this.reg["plus"] = icondb.btn_plus
+            this.reg["arith_plus"] = icondb.arith_plus
+            this.reg["arith_equals"] = icondb.arith_equals
             this.reg["when_insertion_point"] = icondb.btn_when_insertion_point
             this.reg["do_insertion_point"] = icondb.btn_do_insertion_point
             this.reg["rule_arrow"] = icondb.rule_arrow
@@ -83,6 +85,9 @@ namespace microcode {
             this.reg[TID_FILTER_COIN_5] = icondb.blocks5
             this.reg[TID_FILTER_LOUD] = icondb.speaker
             this.reg[TID_FILTER_QUIET] = icondb.speakerQuiet
+            this.reg[TID_FILTER_CUP_X_READ] = icondb.cupXread
+            this.reg[TID_FILTER_CUP_Y_READ] = icondb.cupYread
+            this.reg[TID_FILTER_CUP_Z_READ] = icondb.cupZread
 
             // actuators
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
@@ -384,6 +389,29 @@ namespace icondb {
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+
+    export const arith_plus = img`
+    . . . . . . . .
+    . . . f f . . .
+    . . . f f . . .
+    . f f f f f f .
+    . f f f f f f .
+    . . . f f . . .
+    . . . f f . . .
+    . . . . . . . .
+`
+
+    export const arith_equals = img`
+    . . . . . . . .
+    . f f f f f f .
+    . f f f f f f .
+    . . . . . . . .
+    . . . . . . . .
+    . f f f f f f .
+    . f f f f f f .
+    . . . . . . . .
+
+`
 
     export const loop = img`
     4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 

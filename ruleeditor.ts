@@ -58,18 +58,16 @@ namespace microcode {
 
         private needsWhenInsert() {
             if (
-                this.ruleButtons["sensors"].length == 0 ||
-                this.getSuggestions(
-                    "filters",
-                    this.ruleButtons["filters"].length
-                ).length
+                this.ruledef["sensors"].length == 0 ||
+                this.getSuggestions("filters", this.ruledef["filters"].length)
+                    .length
             ) {
                 this.whenInsertBtn = new EditorButton(this.editor, {
                     parent: this,
                     style: ButtonStyles.Transparent,
                     icon: "when_insertion_point",
                     ariaId:
-                        this.ruleButtons["sensors"].length == 0
+                        this.ruledef["sensors"].length == 0
                             ? "when"
                             : undefined,
                     x: 0,
@@ -88,10 +86,10 @@ namespace microcode {
 
         private needsDoInsert() {
             if (
-                this.ruleButtons["actuators"].length == 0 ||
+                this.ruledef["actuators"].length == 0 ||
                 this.getSuggestions(
                     "modifiers",
-                    this.ruleButtons["modifiers"].length
+                    this.ruledef["modifiers"].length
                 ).length
             ) {
                 this.doInsertBtn = new EditorButton(this.editor, {
@@ -99,7 +97,7 @@ namespace microcode {
                     style: ButtonStyles.Transparent,
                     icon: "do_insertion_point",
                     ariaId:
-                        this.ruleButtons["actuators"].length == 0
+                        this.ruledef["actuators"].length == 0
                             ? "do"
                             : undefined,
                     x: 0,
@@ -150,7 +148,43 @@ namespace microcode {
                         y: 0,
                         onClick: () => this.editTile(name, index),
                     })
+                    if (name == "filters" && index == 0) {
+                        const sensor = rule["sensors"][0]
+                        if (
+                            sensor.jdKind == JdKind.Radio ||
+                            sensor.jdKind == JdKind.Variable
+                        ) {
+                            const plus = new EditorButton(this.editor, {
+                                parent: this,
+                                style: tile.buttonStyle(),
+                                icon: "arith_equals",
+                                ariaId: "arith_equals",
+                                x: 0,
+                                y: 0,
+                            })
+                            this.ruleButtons[name].push(plus)
+                        }
+                    }
                     this.ruleButtons[name].push(button)
+                    if (index < tiles.length - 1) {
+                        if (
+                            (tile.jdKind == JdKind.Literal ||
+                                tile.jdKind == JdKind.Variable) &&
+                            (tiles[index + 1].jdKind == JdKind.Literal ||
+                                tiles[index + 1].jdKind == JdKind.Variable ||
+                                tiles[index + 1].jdKind == JdKind.RandomToss)
+                        ) {
+                            const plus = new EditorButton(this.editor, {
+                                parent: this,
+                                style: tile.buttonStyle(),
+                                icon: "arith_plus",
+                                ariaId: "arith_plus",
+                                x: 0,
+                                y: 0,
+                            })
+                            this.ruleButtons[name].push(plus)
+                        }
+                    }
                     changed = true
                 })
             })
