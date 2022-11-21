@@ -22,8 +22,8 @@ namespace microcode {
             // editor icons
             this.reg["delete"] = icondb.btn_delete
             this.reg["plus"] = icondb.btn_plus
-            this.reg["+"] = icondb.arith_plus
-            this.reg["="] = icondb.arith_equals
+            this.reg["arith_plus"] = icondb.arith_plus
+            this.reg["arith_equals"] = icondb.arith_equals
             this.reg["when_insertion_point"] = icondb.btn_when_insertion_point
             this.reg["do_insertion_point"] = icondb.btn_do_insertion_point
             this.reg["rule_arrow"] = icondb.rule_arrow

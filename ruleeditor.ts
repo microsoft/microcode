@@ -157,8 +157,8 @@ namespace microcode {
                             const plus = new EditorButton(this.editor, {
                                 parent: this,
                                 style: tile.buttonStyle(),
-                                icon: "=",
-                                ariaId: "equals",
+                                icon: "arith_equals",
+                                ariaId: "arith_equals",
                                 x: 0,
                                 y: 0,
                             })
@@ -177,8 +177,8 @@ namespace microcode {
                             const plus = new EditorButton(this.editor, {
                                 parent: this,
                                 style: tile.buttonStyle(),
-                                icon: "+",
-                                ariaId: "plus",
+                                icon: "arith_plus",
+                                ariaId: "arith_plus",
                                 x: 0,
                                 y: 0,
                             })
