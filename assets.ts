@@ -85,6 +85,9 @@ namespace microcode {
             this.reg[TID_FILTER_COIN_5] = icondb.blocks5
             this.reg[TID_FILTER_LOUD] = icondb.speaker
             this.reg[TID_FILTER_QUIET] = icondb.speakerQuiet
+            this.reg[TID_FILTER_CUP_X_READ] = icondb.cupXread
+            this.reg[TID_FILTER_CUP_Y_READ] = icondb.cupYread
+            this.reg[TID_FILTER_CUP_Z_READ] = icondb.cupZread
 
             // actuators
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
@@ -399,14 +402,14 @@ namespace icondb {
 `
 
     export const arith_equals = img`
-. . . . . . . .
-. f f f f f f .
-. f f f f f f .
-. . . . . . . .
-. . . . . . . .
-. f f f f f f .
-. f f f f f f .
-. . . . . . . .
+    . . . . . . . .
+    . f f f f f f .
+    . f f f f f f .
+    . . . . . . . .
+    . . . . . . . .
+    . f f f f f f .
+    . f f f f f f .
+    . . . . . . . .
 
 `
 
