@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.25","target":"arcade","targetVersion":"1.11.20"}
-// total=2390969 new=94.19% cached=0.00% other=5.81%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.26","target":"arcade","targetVersion":"1.11.20"}
+// total=2391097 new=94.19% cached=0.00% other=5.81%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1504,7 +1504,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___4161 = (s.tmp_0);
     globals._binFloatLits___4174 = (_hex6841);
-    globals.VERSION___4176 = ("v2.4.25");
+    globals.VERSION___4176 = ("v2.4.26");
     globals.BACK_BUTTON_ERROR_KIND___4190 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4191 = ("forward_button");
     globals.microcode_Options_fps___4239 = (false);
@@ -1918,7 +1918,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-clone_inline__P6528.info = {"start":19887,"length":27,"line":538,"column":15,"endLine":538,"endColumn":42,"fileName":"tiles.ts","functionName":"inline","argumentNames":["img"]}
+clone_inline__P6528.info = {"start":20042,"length":27,"line":544,"column":15,"endLine":544,"endColumn":42,"fileName":"tiles.ts","functionName":"inline","argumentNames":["img"]}
 
 function clone_inline__P6528_mk(s) {
     checkStack(s.depth);
@@ -1946,7 +1946,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-buttonStyle_inline__P6535.info = {"start":19998,"length":30,"line":541,"column":21,"endLine":541,"endColumn":51,"fileName":"tiles.ts","functionName":"inline","argumentNames":[]}
+buttonStyle_inline__P6535.info = {"start":20153,"length":30,"line":547,"column":21,"endLine":547,"endColumn":51,"fileName":"tiles.ts","functionName":"inline","argumentNames":[]}
 
 function buttonStyle_inline__P6535_mk(s) {
     checkStack(s.depth);
@@ -2015,7 +2015,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-serialize_inline__P6537.info = {"start":20049,"length":308,"line":542,"column":19,"endLine":550,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["img"]}
+serialize_inline__P6537.info = {"start":20204,"length":308,"line":548,"column":19,"endLine":556,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["img"]}
 
 function serialize_inline__P6537_mk(s) {
     checkStack(s.depth);
@@ -2087,7 +2087,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-deserialize_inline__P6564.info = {"start":20380,"length":307,"line":551,"column":21,"endLine":559,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["s"]}
+deserialize_inline__P6564.info = {"start":20535,"length":307,"line":557,"column":21,"endLine":565,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["s"]}
 
 function deserialize_inline__P6564_mk(s) {
     checkStack(s.depth);
@@ -2163,7 +2163,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-clone_inline__P6604.info = {"start":23012,"length":104,"line":636,"column":15,"endLine":638,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["melody"]}
+clone_inline__P6604.info = {"start":23167,"length":104,"line":642,"column":15,"endLine":644,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["melody"]}
 
 function clone_inline__P6604_mk(s) {
     checkStack(s.depth);
@@ -2197,7 +2197,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-buttonStyle_inline__P6614.info = {"start":23208,"length":30,"line":641,"column":21,"endLine":641,"endColumn":51,"fileName":"tiles.ts","functionName":"inline","argumentNames":[]}
+buttonStyle_inline__P6614.info = {"start":23363,"length":30,"line":647,"column":21,"endLine":647,"endColumn":51,"fileName":"tiles.ts","functionName":"inline","argumentNames":[]}
 
 function buttonStyle_inline__P6614_mk(s) {
     checkStack(s.depth);
@@ -2283,7 +2283,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-serialize_inline__P6616.info = {"start":23259,"length":53,"line":642,"column":19,"endLine":642,"endColumn":72,"fileName":"tiles.ts","functionName":"inline","argumentNames":["melody"]}
+serialize_inline__P6616.info = {"start":23414,"length":53,"line":648,"column":19,"endLine":648,"endColumn":72,"fileName":"tiles.ts","functionName":"inline","argumentNames":["melody"]}
 
 function serialize_inline__P6616_mk(s) {
     checkStack(s.depth);
@@ -2346,7 +2346,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-deserialize_inline__P6629.info = {"start":23335,"length":167,"line":643,"column":21,"endLine":649,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["s"]}
+deserialize_inline__P6629.info = {"start":23490,"length":167,"line":649,"column":21,"endLine":655,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["s"]}
 
 function deserialize_inline__P6629_mk(s) {
     checkStack(s.depth);
@@ -11287,7 +11287,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_addTiles__P6649.info = {"start":25062,"length":125,"line":700,"column":4,"endLine":704,"endColumn":5,"fileName":"tiles.ts","functionName":"addTiles","argumentNames":[]}
+microcode_addTiles__P6649.info = {"start":25217,"length":125,"line":706,"column":4,"endLine":710,"endColumn":5,"fileName":"tiles.ts","functionName":"addTiles","argumentNames":[]}
 
 function microcode_addTiles__P6649_mk(s) {
     checkStack(s.depth);
@@ -11365,7 +11365,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_addFieldEditors__P6648.info = {"start":24690,"length":366,"line":691,"column":4,"endLine":698,"endColumn":5,"fileName":"tiles.ts","functionName":"addFieldEditors","argumentNames":[]}
+microcode_addFieldEditors__P6648.info = {"start":24845,"length":366,"line":697,"column":4,"endLine":704,"endColumn":5,"fileName":"tiles.ts","functionName":"addFieldEditors","argumentNames":[]}
 
 function microcode_addFieldEditors__P6648_mk(s) {
     checkStack(s.depth);
@@ -11454,7 +11454,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MelodyEditor_constructor__P6647.info = {"start":23618,"length":406,"line":655,"column":8,"endLine":664,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["this","field"]}
+microcode_MelodyEditor_constructor__P6647.info = {"start":23773,"length":406,"line":661,"column":8,"endLine":670,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["this","field"]}
 
 function microcode_MelodyEditor_constructor__P6647_mk(s) {
     checkStack(s.depth);
@@ -11686,7 +11686,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_IconEditor_constructor__P6598.info = {"start":20800,"length":399,"line":565,"column":8,"endLine":574,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["this","field"]}
+microcode_IconEditor_constructor__P6598.info = {"start":20955,"length":399,"line":571,"column":8,"endLine":580,"endColumn":9,"fileName":"tiles.ts","functionName":"inline","argumentNames":["this","field"]}
 
 function microcode_IconEditor_constructor__P6598_mk(s) {
     checkStack(s.depth);
@@ -11738,8 +11738,8 @@ switch (step) {
     s.tmp_1 = addActuator__P9942_mk(s);
     s.tmp_1.arg0 = globals.TID_ACTUATOR_PAINT___3484;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 550; s.pc = 1; return s.tmp_1;
-  case 1:
+    s.callLocIdx = 550; s.pc = 3; return s.tmp_1;
+  case 3:
     r0 = s.retval;
     s.paint___9959 = (r0);
     r0 = (s.paint___9959).fields["serviceClassName"] = ("dotMatrix");
@@ -11753,15 +11753,15 @@ switch (step) {
     s.tmp_1 = microcode_IconEditor_constructor__P6598_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
     s.tmp_1.arg1 = null;
-    s.callLocIdx = 551; s.pc = 2; return s.tmp_1;
-  case 2:
+    s.callLocIdx = 551; s.pc = 4; return s.tmp_1;
+  case 4:
     r0 = s.retval;
     r0 = (s.paint___9959).fields["defaultModifier"] = (s.tmp_0);
     s.tmp_0 = addAssign__P9987_mk(s);
     s.tmp_0.arg0 = globals.TID_ACTUATOR_SHOW_NUMBER___3491;
     s.tmp_0.arg1 = 10;
-    s.callLocIdx = 552; s.pc = 3; return s.tmp_0;
-  case 3:
+    s.callLocIdx = 552; s.pc = 5; return s.tmp_0;
+  case 5:
     r0 = s.retval;
     s.showNum___9984 = (r0);
     r0 = (s.showNum___9984).fields["priority"] = (11);
@@ -11775,8 +11775,8 @@ switch (step) {
     s.tmp_1 = addActuator__P9942_mk(s);
     s.tmp_1.arg0 = globals.TID_ACTUATOR_SPEAKER___3481;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 553; s.pc = 4; return s.tmp_1;
-  case 4:
+    s.callLocIdx = 553; s.pc = 6; return s.tmp_1;
+  case 6:
     r0 = s.retval;
     s.emoji___9998 = (r0);
     r0 = (s.emoji___9998).fields["serviceClassName"] = ("soundPlayer");
@@ -11790,8 +11790,8 @@ switch (step) {
     s.tmp_1 = addActuator__P9942_mk(s);
     s.tmp_1.arg0 = globals.TID_ACTUATOR_MUSIC___3483;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 554; s.pc = 5; return s.tmp_1;
-  case 5:
+    s.callLocIdx = 554; s.pc = 7; return s.tmp_1;
+  case 7:
     r0 = s.retval;
     s.music___10012 = (r0);
     r0 = (s.music___10012).fields["priority"] = (22);
@@ -11805,8 +11805,8 @@ switch (step) {
     s.tmp_1 = microcode_MelodyEditor_constructor__P6647_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
     s.tmp_1.arg1 = null;
-    s.callLocIdx = 555; s.pc = 6; return s.tmp_1;
-  case 6:
+    s.callLocIdx = 555; s.pc = 8; return s.tmp_1;
+  case 8:
     r0 = s.retval;
     r0 = (s.music___10012).fields["defaultModifier"] = (s.tmp_0);
     r0 = pxsim_Array__mk();
@@ -11816,8 +11816,8 @@ switch (step) {
     s.tmp_1 = addActuator__P9942_mk(s);
     s.tmp_1.arg0 = globals.TID_ACTUATOR_RADIO_SEND___3485;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 556; s.pc = 7; return s.tmp_1;
-  case 7:
+    s.callLocIdx = 556; s.pc = 9; return s.tmp_1;
+  case 9:
     r0 = s.retval;
     s.radio_send___10034 = (r0);
     r0 = (s.radio_send___10034).fields["priority"] = (100);
@@ -11829,8 +11829,8 @@ switch (step) {
     s.tmp_0.arg0 = globals.TID_ACTUATOR_RADIO_SET_GROUP___3486;
     r0 = pxsim_Array__mk();
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 557; s.pc = 8; return s.tmp_0;
-  case 8:
+    s.callLocIdx = 557; s.pc = 10; return s.tmp_0;
+  case 10:
     r0 = s.retval;
     s.radio_set_group___10051 = (r0);
     s.tmp_0 = r0 = s.radio_set_group___10051;
@@ -11850,9 +11850,9 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["set/only"];
       if (s.tmp_1.fn === null) { s.tmp_1.arg0.fields["only"] = s.tmp_1.arg1; }
       else if (s.tmp_1.fn === undefined) { failedCast(s.tmp_1.arg0) } 
-     else { s.callLocIdx = 558; s.pc = 9; return s.tmp_1; }
+     else { s.callLocIdx = 558; s.pc = 11; return s.tmp_1; }
     }
-  case 9:
+  case 11:
     r0 = s.retval;
     r0 = (s.radio_set_group___10051).fields["priority"] = (101);
     r0 = (s.radio_set_group___10051).fields["serviceClassName"] = ("radio");
@@ -11865,28 +11865,28 @@ switch (step) {
     s.tmp_1 = addActuator__P9942_mk(s);
     s.tmp_1.arg0 = globals.TID_ACTUATOR_SWITCH_PAGE___3480;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 559; s.pc = 10; return s.tmp_1;
-  case 10:
+    s.callLocIdx = 559; s.pc = 12; return s.tmp_1;
+  case 12:
     r0 = s.retval;
     s.swtch___10077 = (r0);
     r0 = (s.swtch___10077).fields["priority"] = (110);
     s.tmp_0 = addAssign__P9987_mk(s);
     s.tmp_0.arg0 = globals.TID_ACTUATOR_CUP_X_ASSIGN___3488;
     s.tmp_0.arg1 = 0;
-    s.callLocIdx = 561; s.pc = 11; return s.tmp_0;
-  case 11:
+    s.callLocIdx = 561; s.pc = 13; return s.tmp_0;
+  case 13:
     r0 = s.retval;
     s.tmp_0 = addAssign__P9987_mk(s);
     s.tmp_0.arg0 = globals.TID_ACTUATOR_CUP_Y_ASSIGN___3489;
     s.tmp_0.arg1 = 1;
-    s.callLocIdx = 562; s.pc = 12; return s.tmp_0;
-  case 12:
+    s.callLocIdx = 562; s.pc = 14; return s.tmp_0;
+  case 14:
     r0 = s.retval;
     s.tmp_0 = addAssign__P9987_mk(s);
     s.tmp_0.arg0 = globals.TID_ACTUATOR_CUP_Z_ASSIGN___3490;
     s.tmp_0.arg1 = 2;
-    s.callLocIdx = 563; s.pc = 13; return s.tmp_0;
-  case 13:
+    s.callLocIdx = 563; s.pc = 15; return s.tmp_0;
+  case 15:
     r0 = s.retval;
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
@@ -11920,8 +11920,8 @@ switch (step) {
     s.tmp_1 = helpers_arrayForEach__P109_mk(s);
     s.tmp_1.arg0 = s.emojis___10109;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 566; s.pc = 14; return s.tmp_1;
-  case 14:
+    s.callLocIdx = 566; s.pc = 16; return s.tmp_1;
+  case 16:
     r0 = s.retval;
     s.tmp_0 = r0 = s.emoji___9998;
     s.tmp_3 = if_modifiers_1_mk(s);
@@ -11932,9 +11932,9 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["modifiers"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["modifiers"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 567; s.pc = 15; return s.tmp_3; }
+     else { s.callLocIdx = 567; s.pc = 17; return s.tmp_3; }
     }
-  case 15:
+  case 17:
     r0 = s.retval;
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt.mapGetGeneric(s.tmp_2, globals.TID_MODIFIER_EMOJI_GIGGLE___3505);
@@ -11953,16 +11953,16 @@ switch (step) {
     s.tmp_0.arg1 = "value_in";
     s.tmp_0.arg2 = "F";
     s.tmp_0.arg3 = 8;
-    s.callLocIdx = 573; s.pc = 16; return s.tmp_0;
-  case 16:
+    s.callLocIdx = 573; s.pc = 18; return s.tmp_0;
+  case 18:
     r0 = s.retval;
     s.tmp_0 = make_vals__P10148_mk(s);
     s.tmp_0.arg0 = s.coin_values___10209;
     s.tmp_0.arg1 = "constant";
     s.tmp_0.arg2 = "M";
     s.tmp_0.arg3 = 6;
-    s.callLocIdx = 574; s.pc = 17; return s.tmp_0;
-  case 17:
+    s.callLocIdx = 574; s.pc = 19; return s.tmp_0;
+  case 19:
     r0 = s.retval;
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
@@ -11977,59 +11977,59 @@ switch (step) {
     s.tmp_2.arg1 = "page";
     s.tmp_2.arg2 = "M";
     s.tmp_2.arg3 = 1;
-    s.callLocIdx = 575; s.pc = 19; return s.tmp_2;
-  case 19:
+    s.callLocIdx = 575; s.pc = 21; return s.tmp_2;
+  case 21:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = microcode_addActuatorAndModifierTiles_inline__P10218;
-    s.callLocIdx = 580; s.pc = 18; return s.tmp_1;
-  case 18:
+    s.callLocIdx = 580; s.pc = 20; return s.tmp_1;
+  case 20:
     r0 = s.retval;
     s.tmp_0 = addRGB__P10236_mk(s);
     s.tmp_0.arg0 = 1;
     s.tmp_0.arg1 = 3080192;
-    s.callLocIdx = 583; s.pc = 20; return s.tmp_0;
-  case 20:
+    s.callLocIdx = 583; s.pc = 22; return s.tmp_0;
+  case 22:
     r0 = s.retval;
     s.tmp_0 = addRGB__P10236_mk(s);
     s.tmp_0.arg0 = 2;
     s.tmp_0.arg1 = 12032;
-    s.callLocIdx = 584; s.pc = 21; return s.tmp_0;
-  case 21:
+    s.callLocIdx = 584; s.pc = 23; return s.tmp_0;
+  case 23:
     r0 = s.retval;
     s.tmp_0 = addRGB__P10236_mk(s);
     s.tmp_0.arg0 = 3;
     s.tmp_0.arg1 = 47;
-    s.callLocIdx = 585; s.pc = 22; return s.tmp_0;
-  case 22:
+    s.callLocIdx = 585; s.pc = 24; return s.tmp_0;
+  case 24:
     r0 = s.retval;
     s.tmp_0 = addRGB__P10236_mk(s);
     s.tmp_0.arg0 = 4;
     s.tmp_0.arg1 = 3080239;
-    s.callLocIdx = 586; s.pc = 23; return s.tmp_0;
-  case 23:
+    s.callLocIdx = 586; s.pc = 25; return s.tmp_0;
+  case 25:
     r0 = s.retval;
     s.tmp_0 = addRGB__P10236_mk(s);
     s.tmp_0.arg0 = 5;
     s.tmp_0.arg1 = 3092224;
-    s.callLocIdx = 587; s.pc = 24; return s.tmp_0;
-  case 24:
+    s.callLocIdx = 587; s.pc = 26; return s.tmp_0;
+  case 26:
     r0 = s.retval;
     s.tmp_0 = addRGB__P10236_mk(s);
     s.tmp_0.arg0 = 6;
     s.tmp_0.arg1 = 0;
-    s.callLocIdx = 588; s.pc = 25; return s.tmp_0;
-  case 25:
+    s.callLocIdx = 588; s.pc = 27; return s.tmp_0;
+  case 27:
     r0 = s.retval;
     s.tmp_0 = addAnim__P10269_mk(s);
     s.tmp_0.arg0 = "sparkle";
-    s.callLocIdx = 591; s.pc = 26; return s.tmp_0;
-  case 26:
+    s.callLocIdx = 591; s.pc = 28; return s.tmp_0;
+  case 28:
     r0 = s.retval;
     s.tmp_0 = addAnim__P10269_mk(s);
     s.tmp_0.arg0 = "rainbow";
-    s.callLocIdx = 592; s.pc = 27; return s.tmp_0;
-  case 27:
+    s.callLocIdx = 592; s.pc = 29; return s.tmp_0;
+  case 29:
     r0 = s.retval;
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
@@ -12038,8 +12038,8 @@ switch (step) {
     s.tmp_1 = addActuator__P9942_mk(s);
     s.tmp_1.arg0 = globals.TID_ACTUATOR_RGB_LED___3487;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 593; s.pc = 28; return s.tmp_1;
-  case 28:
+    s.callLocIdx = 593; s.pc = 30; return s.tmp_1;
+  case 30:
     r0 = s.retval;
     s.rgbled___10298 = (r0);
     r0 = (s.rgbled___10298).fields["priority"] = (500);
@@ -12056,9 +12056,9 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["modifiers"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["modifiers"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 594; s.pc = 29; return s.tmp_3; }
+     else { s.callLocIdx = 594; s.pc = 31; return s.tmp_3; }
     }
-  case 29:
+  case 31:
     r0 = s.retval;
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt.mapGetGeneric(s.tmp_2, globals.TID_MODIFIER_RGB_LED_COLOR_RAINBOW___3529);
@@ -12070,8 +12070,8 @@ switch (step) {
     s.tmp_1 = addActuator__P9942_mk(s);
     s.tmp_1.arg0 = globals.TID_MODIFIER_SERVO_SET_ANGLE___3531;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 595; s.pc = 30; return s.tmp_1;
-  case 30:
+    s.callLocIdx = 595; s.pc = 32; return s.tmp_1;
+  case 32:
     r0 = s.retval;
     s.servoSetAngle___10322 = (r0);
     r0 = (s.servoSetAngle___10322).fields["priority"] = (500);
@@ -12080,54 +12080,58 @@ switch (step) {
     r0 = (s.servoSetAngle___10322).fields["serviceCommand"] = (8194);
     r0 = (s.servoSetAngle___10322).fields["jdKind"] = (13);
     r0 = (s.servoSetAngle___10322).fields["jdParam"] = (6);
+    r0 = pxsim_numops_toBoolDecr(false);
+    if (!r0) { step = 1; continue; }
     s.tmp_0 = addFilterReadValue__P10344_mk(s);
     s.tmp_0.arg0 = globals.TID_FILTER_CUP_X_READ___3477;
     s.tmp_0.arg1 = 2;
     s.tmp_0.arg2 = 0;
-    s.callLocIdx = 598; s.pc = 31; return s.tmp_0;
-  case 31:
+    s.callLocIdx = 598; s.pc = 33; return s.tmp_0;
+  case 33:
     r0 = s.retval;
     s.tmp_0 = addFilterReadValue__P10344_mk(s);
     s.tmp_0.arg0 = globals.TID_FILTER_CUP_Y_READ___3478;
     s.tmp_0.arg1 = 2;
     s.tmp_0.arg2 = 1;
-    s.callLocIdx = 599; s.pc = 32; return s.tmp_0;
-  case 32:
+    s.callLocIdx = 599; s.pc = 34; return s.tmp_0;
+  case 34:
     r0 = s.retval;
     s.tmp_0 = addFilterReadValue__P10344_mk(s);
     s.tmp_0.arg0 = globals.TID_FILTER_CUP_Z_READ___3479;
     s.tmp_0.arg1 = 2;
     s.tmp_0.arg2 = 2;
-    s.callLocIdx = 600; s.pc = 33; return s.tmp_0;
-  case 33:
+    s.callLocIdx = 600; s.pc = 35; return s.tmp_0;
+  case 35:
     r0 = s.retval;
+  case 1:
+  case 2:
     s.tmp_0 = addReadValue__P10378_mk(s);
     s.tmp_0.arg0 = globals.TID_MODIFIER_CUP_X_READ___3515;
     s.tmp_0.arg1 = 2;
     s.tmp_0.arg2 = 0;
-    s.callLocIdx = 603; s.pc = 34; return s.tmp_0;
-  case 34:
+    s.callLocIdx = 603; s.pc = 36; return s.tmp_0;
+  case 36:
     r0 = s.retval;
     s.tmp_0 = addReadValue__P10378_mk(s);
     s.tmp_0.arg0 = globals.TID_MODIFIER_CUP_Y_READ___3516;
     s.tmp_0.arg1 = 2;
     s.tmp_0.arg2 = 1;
-    s.callLocIdx = 604; s.pc = 35; return s.tmp_0;
-  case 35:
+    s.callLocIdx = 604; s.pc = 37; return s.tmp_0;
+  case 37:
     r0 = s.retval;
     s.tmp_0 = addReadValue__P10378_mk(s);
     s.tmp_0.arg0 = globals.TID_MODIFIER_CUP_Z_READ___3517;
     s.tmp_0.arg1 = 2;
     s.tmp_0.arg2 = 2;
-    s.callLocIdx = 605; s.pc = 36; return s.tmp_0;
-  case 36:
+    s.callLocIdx = 605; s.pc = 38; return s.tmp_0;
+  case 38:
     r0 = s.retval;
     s.tmp_0 = addReadValue__P10378_mk(s);
     s.tmp_0.arg0 = globals.TID_MODIFIER_RADIO_VALUE___3518;
     s.tmp_0.arg1 = 9;
     s.tmp_0.arg2 = 0;
-    s.callLocIdx = 606; s.pc = 37; return s.tmp_0;
-  case 37:
+    s.callLocIdx = 606; s.pc = 39; return s.tmp_0;
+  case 39:
     r0 = s.retval;
     s.radio_value___10412 = (r0);
     r0 = (s.radio_value___10412).fields["priority"] = (199);
@@ -12142,8 +12146,8 @@ switch (step) {
     s.tmp_0.arg0 = globals.TID_MODIFIER_RANDOM_TOSS___3519;
     s.tmp_0.arg1 = 12;
     s.tmp_0.arg2 = 5;
-    s.callLocIdx = 607; s.pc = 38; return s.tmp_0;
-  case 38:
+    s.callLocIdx = 607; s.pc = 40; return s.tmp_0;
+  case 40:
     r0 = s.retval;
     s.random_toss___10423 = (r0);
     r0 = (s.random_toss___10423).fields["priority"] = (70);
@@ -12167,9 +12171,9 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["set/allow"];
       if (s.tmp_2.fn === null) { s.tmp_2.arg0.fields["allow"] = s.tmp_2.arg1; }
       else if (s.tmp_2.fn === undefined) { failedCast(s.tmp_2.arg0) } 
-     else { s.callLocIdx = 608; s.pc = 39; return s.tmp_2; }
+     else { s.callLocIdx = 608; s.pc = 41; return s.tmp_2; }
     }
-  case 39:
+  case 41:
     r0 = s.retval;
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
@@ -12187,9 +12191,9 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["set/disallow"];
       if (s.tmp_2.fn === null) { s.tmp_2.arg0.fields["disallow"] = s.tmp_2.arg1; }
       else if (s.tmp_2.fn === undefined) { failedCast(s.tmp_2.arg0) } 
-     else { s.callLocIdx = 609; s.pc = 40; return s.tmp_2; }
+     else { s.callLocIdx = 609; s.pc = 42; return s.tmp_2; }
     }
-  case 40:
+  case 42:
     r0 = s.retval;
     r0 = pxsim_pxtcore_mkClassInstance(microcode_ModifierDefn__C3407_VT);
     s.tmp_0 = r0;
@@ -12198,8 +12202,8 @@ switch (step) {
     s.tmp_1.arg1 = globals.TID_MODIFIER_LOOP___3520;
     s.tmp_1.arg2 = "loop";
     s.tmp_1.arg3 = 10;
-    s.callLocIdx = 610; s.pc = 41; return s.tmp_1;
-  case 41:
+    s.callLocIdx = 610; s.pc = 43; return s.tmp_1;
+  case 43:
     r0 = s.retval;
     s.loop___10440 = (s.tmp_0);
     r0 = (s.loop___10440).fields["jdKind"] = (10);
@@ -12211,9 +12215,9 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["modifiers"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["modifiers"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 611; s.pc = 42; return s.tmp_1; }
+     else { s.callLocIdx = 611; s.pc = 44; return s.tmp_1; }
     }
-  case 42:
+  case 44:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt.mapSetGeneric(s.tmp_0, globals.TID_MODIFIER_LOOP___3520, s.loop___10440);
@@ -12235,15 +12239,15 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["set/only"];
       if (s.tmp_1.fn === null) { s.tmp_1.arg0.fields["only"] = s.tmp_1.arg1; }
       else if (s.tmp_1.fn === undefined) { failedCast(s.tmp_1.arg0) } 
-     else { s.callLocIdx = 612; s.pc = 43; return s.tmp_1; }
+     else { s.callLocIdx = 612; s.pc = 45; return s.tmp_1; }
     }
-  case 43:
+  case 45:
     r0 = s.retval;
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-microcode_addActuatorAndModifierTiles__P6524.info = {"start":11188,"length":8511,"line":296,"column":4,"endLine":528,"endColumn":5,"fileName":"tiles.ts","functionName":"addActuatorAndModifierTiles","argumentNames":[]}
+microcode_addActuatorAndModifierTiles__P6524.info = {"start":11188,"length":8666,"line":296,"column":4,"endLine":534,"endColumn":5,"fileName":"tiles.ts","functionName":"addActuatorAndModifierTiles","argumentNames":[]}
 
 function microcode_addActuatorAndModifierTiles__P6524_mk(s) {
     checkStack(s.depth);
@@ -12975,7 +12979,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.mod___10348 = undefined;
+    s.filter___10348 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -12992,9 +12996,9 @@ switch (step) {
     s.callLocIdx = 596; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
-    s.mod___10348 = (s.tmp_0);
-    r0 = (s.mod___10348).fields["jdParam"] = (s.arg2);
-    r0 = (s.mod___10348).fields["jdKind"] = (s.arg1);
+    s.filter___10348 = (s.tmp_0);
+    r0 = (s.filter___10348).fields["jdParam"] = (s.arg2);
+    r0 = (s.filter___10348).fields["jdKind"] = (s.arg1);
     s.tmp_1 = if_filters_1_mk(s);
     s.tmp_1.arg0 = globals.tilesDB___3533;
     if (!s.tmp_1.arg0.vtable.iface) {
@@ -13008,16 +13012,16 @@ switch (step) {
   case 2:
     r0 = s.retval;
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt.mapSetGeneric(s.tmp_0, s.arg0, s.mod___10348);
-    s.tmp_0 = r0 = s.mod___10348;
+    r0 = pxsim_pxtrt.mapSetGeneric(s.tmp_0, s.arg0, s.filter___10348);
+    s.tmp_0 = r0 = s.filter___10348;
     r0 = (200 + s.arg2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["priority"] = (s.tmp_1);
-    r0 = s.mod___10348;
+    r0 = s.filter___10348;
     return leave(s, r0)
   default: oops()
 } } }
-addFilterReadValue__P10344.info = {"start":17815,"length":304,"line":480,"column":8,"endLine":487,"endColumn":9,"fileName":"tiles.ts","functionName":"addFilterReadValue","argumentNames":["tid","kind","varid"]}
+addFilterReadValue__P10344.info = {"start":17840,"length":412,"line":481,"column":12,"endLine":492,"endColumn":13,"fileName":"tiles.ts","functionName":"addFilterReadValue","argumentNames":["tid","kind","varid"]}
 
 function addFilterReadValue__P10344_mk(s) {
     checkStack(s.depth);
@@ -13026,7 +13030,7 @@ function addFilterReadValue__P10344_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  mod___10348: undefined,
+  filter___10348: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -13088,7 +13092,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-addReadValue__P10378.info = {"start":18339,"length":303,"line":492,"column":8,"endLine":499,"endColumn":9,"fileName":"tiles.ts","functionName":"addReadValue","argumentNames":["tid","kind","varid"]}
+addReadValue__P10378.info = {"start":18494,"length":303,"line":498,"column":8,"endLine":505,"endColumn":9,"fileName":"tiles.ts","functionName":"addReadValue","argumentNames":["tid","kind","varid"]}
 
 function addReadValue__P10378_mk(s) {
     checkStack(s.depth);
@@ -30568,7 +30572,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_setNote__P3541.info = {"start":22467,"length":431,"line":625,"column":4,"endLine":632,"endColumn":5,"fileName":"tiles.ts","functionName":"setNote","argumentNames":["buf","offset","note"]}
+microcode_setNote__P3541.info = {"start":22622,"length":431,"line":631,"column":4,"endLine":638,"endColumn":5,"fileName":"tiles.ts","functionName":"setNote","argumentNames":["buf","offset","note"]}
 
 function microcode_setNote__P3541_mk(s) {
     checkStack(s.depth);
@@ -71928,7 +71932,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MelodyEditor_serviceCommandArg__P6646.info = {"start":24454,"length":224,"line":682,"column":8,"endLine":688,"endColumn":9,"fileName":"tiles.ts","functionName":"serviceCommandArg","argumentNames":["this"]}
+microcode_MelodyEditor_serviceCommandArg__P6646.info = {"start":24609,"length":224,"line":688,"column":8,"endLine":694,"endColumn":9,"fileName":"tiles.ts","functionName":"serviceCommandArg","argumentNames":["this"]}
 
 function microcode_MelodyEditor_serviceCommandArg__P6646_mk(s) {
     checkStack(s.depth);
@@ -72001,7 +72005,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MelodyEditor_getNewInstance__P6645.info = {"start":24281,"length":163,"line":676,"column":8,"endLine":680,"endColumn":9,"fileName":"tiles.ts","functionName":"getNewInstance","argumentNames":["this","field"]}
+microcode_MelodyEditor_getNewInstance__P6645.info = {"start":24436,"length":163,"line":682,"column":8,"endLine":686,"endColumn":9,"fileName":"tiles.ts","functionName":"getNewInstance","argumentNames":["this","field"]}
 
 function microcode_MelodyEditor_getNewInstance__P6645_mk(s) {
     checkStack(s.depth);
@@ -72066,7 +72070,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MelodyEditor_getIcon__P6644.info = {"start":24096,"length":175,"line":670,"column":8,"endLine":674,"endColumn":9,"fileName":"tiles.ts","functionName":"getIcon","argumentNames":["this"]}
+microcode_MelodyEditor_getIcon__P6644.info = {"start":24251,"length":175,"line":676,"column":8,"endLine":680,"endColumn":9,"fileName":"tiles.ts","functionName":"getIcon","argumentNames":["this"]}
 
 function microcode_MelodyEditor_getIcon__P6644_mk(s) {
     checkStack(s.depth);
@@ -72103,7 +72107,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_MelodyEditor_getField__P6643.info = {"start":24034,"length":52,"line":666,"column":8,"endLine":668,"endColumn":9,"fileName":"tiles.ts","functionName":"getField","argumentNames":["this"]}
+microcode_MelodyEditor_getField__P6643.info = {"start":24189,"length":52,"line":672,"column":8,"endLine":674,"endColumn":9,"fileName":"tiles.ts","functionName":"getField","argumentNames":["this"]}
 
 function microcode_MelodyEditor_getField__P6643_mk(s) {
     checkStack(s.depth);
@@ -72178,7 +72182,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_IconEditor_serviceCommandArg__P6597.info = {"start":21579,"length":351,"line":590,"column":8,"endLine":600,"endColumn":9,"fileName":"tiles.ts","functionName":"serviceCommandArg","argumentNames":["this"]}
+microcode_IconEditor_serviceCommandArg__P6597.info = {"start":21734,"length":351,"line":596,"column":8,"endLine":606,"endColumn":9,"fileName":"tiles.ts","functionName":"serviceCommandArg","argumentNames":["this"]}
 
 function microcode_IconEditor_serviceCommandArg__P6597_mk(s) {
     checkStack(s.depth);
@@ -72241,7 +72245,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_IconEditor_getNewInstance__P6596.info = {"start":21454,"length":115,"line":586,"column":8,"endLine":588,"endColumn":9,"fileName":"tiles.ts","functionName":"getNewInstance","argumentNames":["this","field"]}
+microcode_IconEditor_getNewInstance__P6596.info = {"start":21609,"length":115,"line":592,"column":8,"endLine":594,"endColumn":9,"fileName":"tiles.ts","functionName":"getNewInstance","argumentNames":["this","field"]}
 
 function microcode_IconEditor_getNewInstance__P6596_mk(s) {
     checkStack(s.depth);
@@ -72306,7 +72310,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_IconEditor_getIcon__P6595.info = {"start":21271,"length":173,"line":580,"column":8,"endLine":584,"endColumn":9,"fileName":"tiles.ts","functionName":"getIcon","argumentNames":["this"]}
+microcode_IconEditor_getIcon__P6595.info = {"start":21426,"length":173,"line":586,"column":8,"endLine":590,"endColumn":9,"fileName":"tiles.ts","functionName":"getIcon","argumentNames":["this"]}
 
 function microcode_IconEditor_getIcon__P6595_mk(s) {
     checkStack(s.depth);
@@ -72343,7 +72347,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_IconEditor_getField__P6594.info = {"start":21209,"length":52,"line":576,"column":8,"endLine":578,"endColumn":9,"fileName":"tiles.ts","functionName":"getField","argumentNames":["this"]}
+microcode_IconEditor_getField__P6594.info = {"start":21364,"length":52,"line":582,"column":8,"endLine":584,"endColumn":9,"fileName":"tiles.ts","functionName":"getField","argumentNames":["this"]}
 
 function microcode_IconEditor_getField__P6594_mk(s) {
     checkStack(s.depth);
