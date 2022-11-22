@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 document.addEventListener("DOMContentLoaded", () => {
     const script = document.createElement("script")
     script.setAttribute("type", "text/javascript")
-    script.setAttribute("src", "https://unpkg.com/jacdac-ts/dist/jacdac.js")
+    script.setAttribute("src", "https://unpkg.com/jacdac-ts@1.28.7/dist/jacdac.js")
     script.onload = () => {
         // create WebUSB bus
         bus = jacdac.createWebBus({
