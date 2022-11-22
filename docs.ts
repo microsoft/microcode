@@ -130,7 +130,7 @@ namespace docs {
             pw = Math.max(pw, rw)
         }
         // when the width is too large (>255?), bad things happen
-        pw = Math.min(240, pw)
+        pw = Math.min(255, pw)
 
         // render all pages
         loader.nonEmptyPages().forEach(p => {
