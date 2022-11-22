@@ -478,17 +478,23 @@ namespace microcode {
         servoSetAngle.jdKind = JdKind.NumFmt
         servoSetAngle.jdParam = jacs.NumFmt.I32
 
-        function addFilterReadValue(tid: string, kind: JdKind, varid: number) {
-            const mod = new FilterDefn(tid, "value_in", 10)
-            mod.jdParam = varid
-            mod.jdKind = kind
-            tilesDB.filters[tid] = mod
-            mod.priority = 200 + varid
-            return mod
+        if (false) {
+            function addFilterReadValue(
+                tid: string,
+                kind: JdKind,
+                varid: number
+            ) {
+                const filter = new FilterDefn(tid, "value_in", 10)
+                filter.jdParam = varid
+                filter.jdKind = kind
+                tilesDB.filters[tid] = filter
+                filter.priority = 200 + varid
+                return filter
+            }
+            addFilterReadValue(TID_FILTER_CUP_X_READ, JdKind.Variable, 0)
+            addFilterReadValue(TID_FILTER_CUP_Y_READ, JdKind.Variable, 1)
+            addFilterReadValue(TID_FILTER_CUP_Z_READ, JdKind.Variable, 2)
         }
-        addFilterReadValue(TID_FILTER_CUP_X_READ, JdKind.Variable, 0)
-        addFilterReadValue(TID_FILTER_CUP_Y_READ, JdKind.Variable, 1)
-        addFilterReadValue(TID_FILTER_CUP_Z_READ, JdKind.Variable, 2)
 
         function addReadValue(tid: string, kind: JdKind, varid: number) {
             const mod = new ModifierDefn(tid, "value_out", 10)
