@@ -126,8 +126,11 @@ namespace docs {
         let pw = 160
         for (const p of pages) {
             loader.switchToPage(p)
-            pw = Math.max(pw, loader.ruleWidth())
+            const rw = loader.ruleWidth()
+            pw = Math.max(pw, rw)
         }
+        // when the width is too large (>255?), bad things happen
+        pw = Math.min(240, pw)
 
         // render all pages
         loader.nonEmptyPages().forEach(p => {
