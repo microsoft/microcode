@@ -626,7 +626,7 @@ namespace jacs {
         }
 
         private emitAddSeq(
-            mods: microcode.ModifierDefn[],
+            mods: microcode.FilterModifierBase[],
             target: Variable,
             defl: number = 0,
             clear = true
@@ -694,14 +694,18 @@ namespace jacs {
 
         private emitValue(
             trg: Variable,
-            modifiers: microcode.ModifierDefn[],
+            modifiers: microcode.FilterModifierBase[],
             defl: number
         ) {
-            let currSeq: microcode.ModifierDefn[] = []
+            let currSeq: microcode.FilterModifierBase[] = []
             let first = true
 
             for (const m of modifiers) {
-                if (m.category == "value_out" || m.category == "constant") {
+                if (
+                    m.category == "value_in" ||
+                    m.category == "value_out" ||
+                    m.category == "constant"
+                ) {
                     if (this.breaksValSeq(m) && currSeq.length) {
                         this.emitAddSeq(currSeq, trg, 0, first)
                         currSeq = []
@@ -729,17 +733,6 @@ namespace jacs {
 
         private emitValueOut(rule: microcode.RuleDefn, defl: number) {
             this.emitValue(this.currValue(), this.baseModifiers(rule), defl)
-        }
-
-        private getValueIn(rule: microcode.RuleDefn) {
-            let v = undefined
-            for (const m of rule.filters) {
-                if (m.jdKind == microcode.JdKind.Literal) {
-                    if (v === undefined) v = 0
-                    v += m.jdParam
-                }
-            }
-            return v
         }
 
         // 0-max inclusive
@@ -931,12 +924,13 @@ namespace jacs {
                 this.writer.emitCall(body.index, [], OpCall.BG_MAX1)
 
             const filterValueIn = (f: () => Value) => {
-                const v = this.getValueIn(rule)
-                if (v !== undefined) {
-                    this.ifEq(f(), v, emitBody)
-                } else {
-                    emitBody()
-                }
+                this.emitValue(this.currValue(), rule.filters, 0)
+                const wr = this.writer
+                const currValue = () => this.currValue().read(wr)
+                wr.emitIf(
+                    wr.emitExpr(Op.EXPR2_EQ, [f(), currValue()]),
+                    emitBody
+                )
             }
 
             const sensor = rule.sensor
