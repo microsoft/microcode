@@ -19,6 +19,8 @@
     "rule": "rule",
     "add_rule": "add rule",
     "delete_rule": "delete rule",
+    "arith_equals": "equals",
+    "arith_plus": "plus",
 
     "F0": "touch pin 0",
     "F1": "touch pin 1",
@@ -44,6 +46,9 @@
     "F17_tilt_down": "tilt down",
     "F17_tilt_left": "tilt left",
     "F17_tilt_right": "tilt right",
+    "F20A": "variable X",
+    "F20B": "variable Y",
+    "F20C": "variable Z",
 
     "C0": "edit",
     "C1": "samples",

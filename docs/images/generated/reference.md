@@ -10,6 +10,16 @@
 - icon
 
 
+### ![](./images/generated/icon_arith_plus.png){:class="icon"} `` {#icon_arith_plus}
+
+- icon
+
+
+### ![](./images/generated/icon_arith_equals.png){:class="icon"} `` {#icon_arith_equals}
+
+- icon
+
+
 ### ![](./images/generated/icon_when_insertion_point.png){:class="icon"} `` {#icon_when_insertion_point}
 
 - icon
@@ -256,6 +266,21 @@
 
 
 ### ![](./images/generated/icon_F16.png){:class="icon"} `` {#icon_F16}
+
+- icon
+
+
+### ![](./images/generated/icon_F20A.png){:class="icon"} `` {#icon_F20A}
+
+- icon
+
+
+### ![](./images/generated/icon_F20B.png){:class="icon"} `` {#icon_F20B}
+
+- icon
+
+
+### ![](./images/generated/icon_F20C.png){:class="icon"} `` {#icon_F20C}
 
 - icon
 

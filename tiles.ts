@@ -54,6 +54,9 @@ namespace microcode {
     export const TID_FILTER_ACCEL_TILT_RIGHT = "F17_tilt_right"
     export const TID_FILTER_TIMESPAN_RANDOM = "F18"
     export const TID_FILTER_TIMESPAN_VERY_LONG = "F19"
+    export const TID_FILTER_CUP_X_READ = "F20A"
+    export const TID_FILTER_CUP_Y_READ = "F20B"
+    export const TID_FILTER_CUP_Z_READ = "F20C"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -474,6 +477,24 @@ namespace microcode {
         servoSetAngle.serviceCommand = jacs.CMD_SET_REG | 2
         servoSetAngle.jdKind = JdKind.NumFmt
         servoSetAngle.jdParam = jacs.NumFmt.I32
+
+        if (false) {
+            function addFilterReadValue(
+                tid: string,
+                kind: JdKind,
+                varid: number
+            ) {
+                const filter = new FilterDefn(tid, "value_in", 10)
+                filter.jdParam = varid
+                filter.jdKind = kind
+                tilesDB.filters[tid] = filter
+                filter.priority = 200 + varid
+                return filter
+            }
+            addFilterReadValue(TID_FILTER_CUP_X_READ, JdKind.Variable, 0)
+            addFilterReadValue(TID_FILTER_CUP_Y_READ, JdKind.Variable, 1)
+            addFilterReadValue(TID_FILTER_CUP_Z_READ, JdKind.Variable, 2)
+        }
 
         function addReadValue(tid: string, kind: JdKind, varid: number) {
             const mod = new ModifierDefn(tid, "value_out", 10)
