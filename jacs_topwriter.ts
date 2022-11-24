@@ -924,13 +924,15 @@ namespace jacs {
                 this.writer.emitCall(body.index, [], OpCall.BG_MAX1)
 
             const filterValueIn = (f: () => Value) => {
-                this.emitValue(this.currValue(), rule.filters, 0)
-                const wr = this.writer
-                const currValue = () => this.currValue().read(wr)
-                wr.emitIf(
-                    wr.emitExpr(Op.EXPR2_EQ, [f(), currValue()]),
-                    emitBody
-                )
+                if (rule.filters.length) {
+                    this.emitValue(this.currValue(), rule.filters, 0)
+                    const wr = this.writer
+                    const currValue = () => this.currValue().read(wr)
+                    wr.emitIf(
+                        wr.emitExpr(Op.EXPR2_EQ, [f(), currValue()]),
+                        emitBody
+                    )
+                } else emitBody()
             }
 
             const sensor = rule.sensor
