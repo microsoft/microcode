@@ -202,16 +202,17 @@ namespace microcode {
 
         addButtonTiles()
 
-        function makeCupSensor(tid: string, id: number) {
+        function makeCupSensor(tid: string, id: number, disallow: string) {
             const tile = makeSensor(tid, "value_in", 120 + id * 5)
             tile.jdKind = JdKind.Variable
             tile.jdParam = id
             tile.priority = 200 + id
+            tile.constraints.disallow = { tiles: [disallow] }
         }
 
-        makeCupSensor(TID_SENSOR_CUP_X_WRITTEN, 0)
-        makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, 1)
-        makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, 2)
+        makeCupSensor(TID_SENSOR_CUP_X_WRITTEN, 0, TID_FILTER_CUP_X_READ)
+        makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, 1, TID_FILTER_CUP_Y_READ)
+        makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, 2, TID_FILTER_CUP_Z_READ)
 
         const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
         radio_recv.serviceClassName = "radio"
