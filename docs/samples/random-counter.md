@@ -6,14 +6,8 @@ description: Count up to random value!
 
 ![random counter program](../images/generated/sample_random_counter.png){:class="sample"}
 
-This program counts how many times you clap using the microphone.
+When you press the A button, this program sets variable `X` to a random number between 2, sets variable `Y` to zero, and
+then displays the value of variable `X`. Each time you press the B button, the value of variable `Y` is increased by one.
+When the value of variable `Y` becomes equal to the value of variable `X`, a smiley face is shown.
 
--   [Open in MicroCode](/microcode/#H4sIALqMYmMAAz2OyQ6CMBRFf0nEIV1KQ7ANhWALVHYqYlpBTYAwfL2Pgq5uTt67w32g3a1Cr8xLKqI/e1IeVFg2oGRRBlqreHwoyTsVcbJLB+qEsWv4pAx7TMSGxXwPmHYcooDFWUm5qqFHQP4V8rYRp7mPqWP46fYMGw5mXg3MhezJY1t5wfv/liKxkH+ELVOn3aAll0++36/5wXSdSTpeUtQS/Va5Jm2AN33IKfoCQYD9p/AAAAA=)
-
-![when shake detected, increment variable X](../images/generated/sample_clap_counter_page_1_rule_1.png){:class="rule"}
-
--   **when** ![microphone](../images/generated/icon_S8.png){:class="icon"} microphone detects ![loud](../images/generated/icon_F15.png){:class="icon"} loud sound, **do** ![set variable X](../images/generated/icon_A9A.png){:class="icon"} set variable `X` to ![get variable X](../images/generated/icon_M20A.png){:class="icon"} variable `X` plus ![value 1](../images/generated/icon_M6.png){:class="icon"} `value 1`
-
-![when variable X changed, show variable X](../images/generated/sample_clap_counter_page_1_rule_2.png){:class="rule"}
-
--   **when** ![variable X changed, show variable X  alue](../images/generated/icon_S9A.png){:class="icon"} variable X changed, **do** show variable `X` value.
+-   [Open in MicroCode](/microcode/#eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk02IiwiTTIyIiwiTTEwIl19LHsiUyI6WyJTMiJdLCJBIjpbIkE5QiJdLCJGIjpbIkYzIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMTAiXSwiTSI6WyJNMjBBIl19LHsiUyI6WyJTMiJdLCJBIjpbIkE5QiJdLCJGIjpbIkY0Il0sIk0iOlsiTTIwQiIsIk02Il19LHsiUyI6WyJTOUIiXSwiQSI6WyJBNSJdLCJGIjpbIkYyMEEiXSwiTSI6WyJNMTUoMDAwMDAwMTAxMDAwMDAwMTAwMDEwMTExMCkiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC4yNyJ9)
