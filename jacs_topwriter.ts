@@ -600,7 +600,7 @@ namespace jacs {
             ])
         }
 
-        private modExpr(mod: microcode.ModifierDefn) {
+        private modExpr(mod: microcode.FilterModifierBase) {
             const wr = this.writer
             switch (mod.jdKind) {
                 case microcode.JdKind.Literal:
@@ -615,7 +615,7 @@ namespace jacs {
             }
         }
 
-        private constantFold(mods: microcode.ModifierDefn[], defl = 0) {
+        private constantFold(mods: microcode.FilterModifierBase[], defl = 0) {
             if (mods.length == 0) return defl
             let v = 0
             for (const m of mods) {
@@ -683,7 +683,7 @@ namespace jacs {
             }
         }
 
-        private breaksValSeq(mod: microcode.ModifierDefn) {
+        private breaksValSeq(mod: microcode.FilterModifierBase) {
             switch (mod.jdKind) {
                 case microcode.JdKind.RandomToss:
                     return true
