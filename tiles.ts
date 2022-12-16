@@ -35,7 +35,9 @@ namespace microcode {
     export const TID_FILTER_PIN_2 = "F2"
     export const TID_FILTER_BUTTON_A = "F3"
     export const TID_FILTER_BUTTON_B = "F4"
-    // F6
+    export const TID_FILTER_KITA_BUTTON_1 = "F5"
+    export const TID_FILTER_KITA_BUTTON_2 = "F6"
+
     export const TID_FILTER_LOGO = "F7"
     export const TID_FILTER_COIN_1 = "F8"
     export const TID_FILTER_COIN_2 = "F9"
@@ -183,6 +185,8 @@ namespace microcode {
         addPressFilter(TID_FILTER_PIN_0, 3)
         addPressFilter(TID_FILTER_PIN_1, 4)
         addPressFilter(TID_FILTER_PIN_2, 5)
+        addPressFilter(TID_FILTER_KITA_BUTTON_1, 6)
+        addPressFilter(TID_FILTER_KITA_BUTTON_2, 7)
     }
 
     function addSensorAndFilterTiles() {
