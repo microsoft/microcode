@@ -232,6 +232,11 @@ namespace microcode {
         magnet.eventCode = 1
         magnet.jdExternalClass = 0x12fe180f
 
+        const light = makeSensor(TID_SENSOR_LIGHT, "no_filters", 500)
+        magnet.serviceClassName = "lightLevel"
+        magnet.eventCode = 1
+        magnet.jdExternalClass = 0x17dc9a1c
+
         const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
         timer.constraints = {
             allow: {

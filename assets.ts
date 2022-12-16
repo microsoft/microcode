@@ -64,6 +64,7 @@ namespace microcode {
             this.reg[TID_SENSOR_CUP_Y_WRITTEN] = icondb.cupYwritten
             this.reg[TID_SENSOR_CUP_Z_WRITTEN] = icondb.cupZwritten
             this.reg[TID_SENSOR_MAGNET] = icondb.magnet
+            this.reg[TID_SENSOR_LIGHT] = icondb.light_sensor
             this.reg[TID_SENSOR_START_PAGE] = icondb.tile_start_page
 
             // filters
@@ -1291,6 +1292,25 @@ namespace icondb {
     . . . b b b b b b b . . 6 5 5 5 
     . . . . . . . . . . . . . 5 5 4 
     . . . . . . . . . . 6 . . 4 4 .   
+`
+
+    export const light_sensor = img`
+. . . . . . . . . . . . . . . .
+. . . . . . 5 5 5 . . . . . . .
+. . . . . 5 4 4 4 5 . . . . . .
+. . . . . 5 4 4 4 5 . . . . . .
+. . . . . 5 4 4 4 5 . . . . . .
+. . . . . . 5 5 5 . . . . . . .
+. . . . 5 . . . . . 5 . . . . .
+. . . 5 . . . 5 . . . 5 . . . .
+. . . . . 5 . . . 5 . . . . . .
+. 5 . . 5 . . 5 . . 5 . . 5 . .
+. . . 5 . . . . . . . 5 . . . .
+. . . . . . . 5 . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . 2 2 2 2 2 . . . . . .
+. . . f f f f f f f f f . . . .
+. . . . . . . . . . . . . . . .
 `
 
     export const microphone = img`
