@@ -74,8 +74,16 @@ namespace microcode {
         jdParam: any
         jdParam2: number
 
+        public jdExternalClass: number
+
         isVisible() {
-            // if needed, use negative priority?
+            if (this.jdExternalClass && !jacs.debugOut) {
+                const count = jdc.numServiceInstances(this.jdExternalClass)
+                // special case for buttons, which already exist on micro:bit (6 of them)
+                return this.jdExternalClass == 0x1473a263
+                    ? count > 6
+                    : count > 0
+            }
             return true
         }
 
@@ -181,14 +189,6 @@ namespace microcode {
 
         public serviceClassName: string
         public serviceInstanceIndex: number = 0
-        public jdExternalClass: number
-
-        isVisible() {
-            if (!super.isVisible()) return false
-            if (this.jdExternalClass && !jacs.debugOut)
-                return jdc.numServiceInstances(this.jdExternalClass) > 0
-            return true
-        }
     }
 
     export class SensorDefn extends StmtTileDefn {

@@ -177,6 +177,7 @@ namespace microcode {
             tilesDB.filters[tid] = press_filter
             press_filter.jdKind = JdKind.ServiceInstanceIndex
             press_filter.jdParam = instanceNo
+            return press_filter
         }
 
         addPressFilter(TID_FILTER_BUTTON_A, 0)
@@ -185,8 +186,10 @@ namespace microcode {
         addPressFilter(TID_FILTER_PIN_0, 3)
         addPressFilter(TID_FILTER_PIN_1, 4)
         addPressFilter(TID_FILTER_PIN_2, 5)
-        addPressFilter(TID_FILTER_KITA_BUTTON_1, 6)
-        addPressFilter(TID_FILTER_KITA_BUTTON_2, 7)
+        const kitA_1 = addPressFilter(TID_FILTER_KITA_BUTTON_1, 6)
+        const kitA_2 = addPressFilter(TID_FILTER_KITA_BUTTON_2, 7)
+        kitA_1.jdExternalClass = 0x1473a263
+        kitA_2.jdExternalClass = 0x1473a263
     }
 
     function addSensorAndFilterTiles() {
