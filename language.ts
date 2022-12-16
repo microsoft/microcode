@@ -48,6 +48,7 @@ namespace microcode {
         ExtLibFn, // call external function P(P2)
         Timespan,
         RadioValue,
+        LightLevel,
 
         Loop, // repeat modifier
 
@@ -73,13 +74,13 @@ namespace microcode {
         jdKind: JdKind
         jdParam: any
         jdParam2: number
-
-        public jdExternalClass: number
+        jdExternalClass: number
 
         isVisible() {
             if (this.jdExternalClass && !jacs.debugOut) {
                 const count = jdc.numServiceInstances(this.jdExternalClass)
                 // special case for buttons, which already exist on micro:bit (6 of them)
+                // we also have light sensor on board micro:bit (1 of them), as well as in Kit A
                 return this.jdExternalClass == 0x1473a263
                     ? count > 6
                     : count > 0

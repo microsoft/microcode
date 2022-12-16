@@ -1007,6 +1007,16 @@ namespace jacs {
                                 filterValueIn(() => radioVar.read(wr))
                             }
                         )
+                    } else if (sensor.jdKind == microcode.JdKind.LightLevel) {
+                        wr.emitIf(
+                            wr.emitExpr(Op.EXPR2_LT, [
+                                literal(0.6),
+                                wr.emitExpr(Op.EXPR0_PKT_REG_GET_CODE, [
+                                    literal(0x101),
+                                ]),
+                            ]),
+                            emitBody
+                        )
                     } else if (code != null) {
                         this.ifEq(
                             wr.emitExpr(Op.EXPR0_PKT_EV_CODE, []),
