@@ -30,6 +30,9 @@ function hsv(hue, sat, val) {
     return (r << 16) | (g << 8) | b
 }
 
+function get_light_level(/** @type LightLevelRole */ light) {
+    return light.lightLevel.read()
+}
 
 function led_set_color(idx, color) {
     idx = idx * 3
