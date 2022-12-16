@@ -1011,7 +1011,7 @@ namespace jacs {
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_LT, [
                                 literal(0.6),
-                                wr.emitExpr(Op.EXPR0_PKT_REG_GET_CODE, [
+                                wr.emitExpr(Op.EXPR0_PKT_REG_GET_CODE, [  // expr 11 requires 0; got 1
                                     literal(0x101),
                                 ]),
                             ]),
