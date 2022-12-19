@@ -28,6 +28,7 @@ namespace microcode {
     export const TID_SENSOR_CUP_Y_WRITTEN = "S9B"
     export const TID_SENSOR_CUP_Z_WRITTEN = "S9C"
     export const TID_SENSOR_MAGNET = "S10"
+    export const TID_SENSOR_SLIDER = "S11"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -202,7 +203,7 @@ namespace microcode {
             }
             tile.priority = prior
             tilesDB.sensors[tid] = tile
-            return tile
+            return tile  
         }
 
         makeSensor(TID_SENSOR_START_PAGE, "timespan", 108)

@@ -64,6 +64,7 @@ namespace microcode {
             this.reg[TID_SENSOR_CUP_Y_WRITTEN] = icondb.cupYwritten
             this.reg[TID_SENSOR_CUP_Z_WRITTEN] = icondb.cupZwritten
             this.reg[TID_SENSOR_MAGNET] = icondb.magnet
+            this.reg[TID_SENSOR_SLIDER] = icondb.kita_slider
             this.reg[TID_SENSOR_LIGHT] = icondb.light_sensor
             this.reg[TID_SENSOR_START_PAGE] = icondb.tile_start_page
 
@@ -2596,24 +2597,43 @@ bffffffffffffffffffffffffffffffb
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+    export const kita_slider = img`
+    . . . . . . 6 6 6 6 6 . . . . .
+    . . . . . 6 6 6 f 6 6 6 . . . .
+    . . . . . 6 6 f f f 6 6 . . . .
+    . . . . . 6 6 f c f 6 6 . . . .
+    . . . . . 6 6 f c f 6 6 . . . .
+    . . . . . 6 6 f c f 6 6 . . . .
+    . . . . . 6 6 f c f 6 6 . . . .
+    . . . . . 6 9 9 9 9 9 6 . . . .
+    . . . . . 6 9 9 9 9 9 6 . . . .
+    . . . . . 6 6 f c f 6 6 . . . .
+    . . . . . 6 6 f c f 6 6 . . . .
+    . . . . . 6 6 f c f 6 6 . . . .
+    . . . . . 6 6 f c f 6 6 . . . .
+    . . . . . 6 6 f f f 6 6 . . . .
+    . . . . . 6 6 6 f 6 6 6 . . . .
+    . . . . . . 6 6 6 6 6 . . . . .
+`
+
     export const kita_button = img`
     . . . . . . . . . . . . . . . .
-    . . . 6 6 . 6 6 6 6 . 6 6 . . .
-    . . . 6 6 . 6 6 6 6 . 6 6 . . .
-    . . . 6 6 6 6 6 6 6 6 6 6 . . .
-    . . . 6 6 f f f f f f 6 6 . . .
-    . . . 6 f f c c c c f f 6 . . .
-    . . . 6 f c f f f f c f 6 . . .
-    . . . 6 f c f f f f c f 6 . . .
-    . . . 6 f c f f f f c f 6 . . .
-    . . . 6 f c f f f f c f 6 . . .
-    . . . 6 f f c c c c f f 6 . . .
-    . . . 6 6 f f f f f f 6 6 . . .
-    . . . 6 6 6 6 6 6 6 6 6 6 . . .
-    . . . 6 6 . 6 6 6 6 . 6 6 . . .
-    . . . 6 6 . 6 6 6 6 . 6 6 . . .
     . . . . . . . . . . . . . . . .
-   `
+    . . . . 6 6 6 6 6 6 6 6 . . . .
+    . . . 6 6 6 6 6 6 6 6 6 6 . . .
+    . . . 6 6 f f f f f f 6 6 . . .
+    . . . 6 f f 9 9 9 9 f f 6 . . .
+    . . . 6 f 9 f f f f 9 f 6 . . .
+    . . . 6 f 9 f f f f 9 f 6 . . .
+    . . . 6 f 9 f f f f 9 f 6 . . .
+    . . . 6 f 9 f f f f 9 f 6 . . .
+    . . . 6 f f 9 9 9 9 f f 6 . . .
+    . . . 6 6 f f f f f f 6 6 . . .
+    . . . 6 6 6 6 6 6 6 6 6 6 . . .
+    . . . . 6 6 6 6 6 6 6 6 . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
 
     /* maybe use these later
     export const rc_high = img`
