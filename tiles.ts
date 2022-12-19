@@ -203,7 +203,7 @@ namespace microcode {
             }
             tile.priority = prior
             tilesDB.sensors[tid] = tile
-            return tile  
+            return tile
         }
 
         makeSensor(TID_SENSOR_START_PAGE, "timespan", 108)
@@ -232,6 +232,19 @@ namespace microcode {
         magnet.serviceClassName = "magneticFieldLevel"
         magnet.eventCode = 1
         magnet.jdExternalClass = 0x12fe180f
+
+        const slider = makeSensor(TID_SENSOR_SLIDER, "value_in", 500)
+        slider.serviceClassName = "potentiometer"
+        slider.jdExternalClass = 0x1f274746
+        slider.constraints.allow.categories = []
+        slider.constraints.allow.tiles = [
+            TID_FILTER_COIN_1,
+            TID_FILTER_COIN_2,
+            TID_FILTER_COIN_3,
+            TID_FILTER_COIN_4,
+            TID_FILTER_COIN_5,
+        ]
+        slider.constraints.handling.terminal = true
 
         const light = makeSensor(TID_SENSOR_LIGHT, "no_filters", 500)
         light.serviceClassName = "lightLevel"
