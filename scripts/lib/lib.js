@@ -34,6 +34,11 @@ function get_light_level(/** @type LightLevelRole */ light) {
     return light.lightLevel.read()
 }
 
+function slider_to_1_to_5(/** @type PotentiometerRole */ potentiometer) {
+    var slider = potentiometer.position.read()
+    return Math.idiv(slider, 23) + 1
+}
+
 function led_set_color(idx, color) {
     idx = idx * 3
     packet.setAt(idx, "u8", (color >> 16) & 0xff)
