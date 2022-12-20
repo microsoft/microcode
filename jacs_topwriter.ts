@@ -1043,7 +1043,9 @@ namespace jacs {
                         const sliderVar = this.proc.lookupLocal("z_slider")
                         sliderVar.write(wr, wr.emitExpr(Op.EXPR0_RET_VAL, []))
                         filterValueIn(() => sliderVar.read(wr))
-                        /*
+                        /* 
+                        // TODO: the following logic doesn't work because we are 
+                        //       at the rule level here
                         const sliderVar = this.lookupGlobal("z_slider")
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_NE, [
