@@ -36,7 +36,7 @@ function get_light_level(/** @type LightLevelRole */ light) {
 
 function slider_to_1_to_5(/** @type PotentiometerRole */ potentiometer) {
     var slider = potentiometer.position.read()
-    return Math.idiv(slider, 23) + 1
+    return Math.idiv(100 * slider, 23) + 1
 }
 
 function led_set_color(idx, color) {

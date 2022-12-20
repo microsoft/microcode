@@ -1008,18 +1008,11 @@ namespace jacs {
                             }
                         )
                     } else if (sensor.jdKind == microcode.JdKind.Slider) {
-                        this.ifEq(
-                            wr.emitExpr(Op.EXPR0_PKT_REPORT_CODE, []),
-                            code,
-                            () => {
-                                const sliderVar = this.lookupGlobal("z_slider")
-                                sliderVar.write(
-                                    wr,
-                                    wr.emitBufLoad(NumFmt.U16, 12) // TODO: where does 12 come from?
-                                )
-                                filterValueIn(() => sliderVar.read(wr))
-                            }
-                        )
+                        this.callLinked("slider_to_1_to_5", [role.emit(wr)])
+                        // TODO: only invoke if change of value
+                        const sliderVar = this.lookupGlobal("z_slider")
+                        sliderVar.write(wr, wr.emitExpr(Op.EXPR0_RET_VAL, []))
+                        filterValueIn(() => sliderVar.read(wr))
                     } else if (sensor.jdKind == microcode.JdKind.LightLevel) {
                         this.callLinked("get_light_level", [role.emit(wr)])
                         wr.emitIf(
@@ -1168,7 +1161,7 @@ namespace jacs {
         }
     }
 
-    export const needsWakeup = [0x14ad1a5d, 0x1f140409, 0x17dc9a1c]
+    export const needsWakeup = [0x14ad1a5d, 0x1f140409, 0x17dc9a1c, 0x1f274746]
     export const needsEnable = [0x1ac986cf, 0x12fc9103]
 
     export const serviceClasses: SMap<number> = {
