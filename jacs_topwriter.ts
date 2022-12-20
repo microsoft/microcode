@@ -1009,10 +1009,21 @@ namespace jacs {
                         )
                     } else if (sensor.jdKind == microcode.JdKind.Slider) {
                         this.callLinked("slider_to_1_to_5", [role.emit(wr)])
-                        // TODO: only invoke if change of value
+                        this.currValue().write(
+                            wr,
+                            wr.emitExpr(Op.EXPR0_RET_VAL, [])
+                        )
                         const sliderVar = this.lookupGlobal("z_slider")
-                        sliderVar.write(wr, wr.emitExpr(Op.EXPR0_RET_VAL, []))
-                        filterValueIn(() => sliderVar.read(wr))
+                        wr.emitIf(
+                            wr.emitExpr(Op.EXPR2_NE, [
+                                this.currValue().read(wr),
+                                sliderVar.read(wr),
+                            ]),
+                            () => {
+                                sliderVar.write(wr, this.currValue().read(wr))
+                                filterValueIn(() => sliderVar.read(wr))
+                            }
+                        )
                     } else if (sensor.jdKind == microcode.JdKind.LightLevel) {
                         this.callLinked("get_light_level", [role.emit(wr)])
                         wr.emitIf(
