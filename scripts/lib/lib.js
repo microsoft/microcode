@@ -34,6 +34,10 @@ function get_light_level(/** @type LightLevelRole */ light) {
     return light.lightLevel.read()
 }
 
+function get_rotary(/** @type RotaryEncoderRole */ rotary) {
+    return rotary.position.read()
+}
+
 function slider_to_1_to_5(/** @type PotentiometerRole */ potentiometer) {
     var slider = potentiometer.position.read()
     return Math.idiv(100 * slider, 23) + 1

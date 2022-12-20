@@ -1007,12 +1007,8 @@ namespace jacs {
                                 filterValueIn(() => radioVar.read(wr))
                             }
                         )
-                    } else if (sensor.jdKind == microcode.JdKind.Slider) {
-                        wr.emitStmt(Op.STMT3_QUERY_REG, [
-                            role.emit(wr),
-                            literal(JD_REG_READING),
-                            literal(100),
-                        ])
+                    } else if (sensor.jdKind == microcode.JdKind.Rotary) {
+                        this.callLinked("get_rotary", [role.emit(wr)])
                         this.currValue().write(
                             wr,
                             wr.emitExpr(Op.EXPR0_RET_VAL, [])
@@ -1043,7 +1039,7 @@ namespace jacs {
                                 )
                             }
                         )
-                    } else if (sensor.jdKind == microcode.JdKind.Rotary) {
+                    } else if (sensor.jdKind == microcode.JdKind.Slider) {
                         this.callLinked("slider_to_1_to_5", [role.emit(wr)])
                         this.currValue().write(
                             wr,
