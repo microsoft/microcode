@@ -1008,6 +1008,42 @@ namespace jacs {
                             }
                         )
                     } else if (sensor.jdKind == microcode.JdKind.Slider) {
+                        wr.emitStmt(Op.STMT3_QUERY_REG, [
+                            role.emit(wr),
+                            literal(JD_REG_READING),
+                            literal(100),
+                        ])
+                        this.currValue().write(
+                            wr,
+                            wr.emitExpr(Op.EXPR0_RET_VAL, [])
+                        )
+                        const rotaryVar = this.lookupGlobal("z_rotary")
+                        wr.emitIf(
+                            wr.emitExpr(Op.EXPR2_LT, [
+                                this.currValue().read(wr),
+                                rotaryVar.read(wr),
+                            ]),
+                            () => {
+                                rotaryVar.write(wr, this.currValue().read(wr))
+                                if (sensor.jdParam == 1) emitBody()
+                            },
+                            () => {
+                                wr.emitIf(
+                                    wr.emitExpr(Op.EXPR2_LT, [
+                                        rotaryVar.read(wr),
+                                        this.currValue().read(wr),
+                                    ]),
+                                    () => {
+                                        rotaryVar.write(
+                                            wr,
+                                            this.currValue().read(wr)
+                                        )
+                                        if (sensor.jdParam == 2) emitBody()
+                                    }
+                                )
+                            }
+                        )
+                    } else if (sensor.jdKind == microcode.JdKind.Rotary) {
                         this.callLinked("slider_to_1_to_5", [role.emit(wr)])
                         this.currValue().write(
                             wr,
@@ -1205,6 +1241,7 @@ namespace jacs {
 
     export const JD_REG_STREAMING_SAMPLES = 3
     export const JD_REG_INTENSITY = 1
+    export const JD_REG_READING = 0x101
 
     // delay on sending stuff in pipes and changing pages
     export const ANTI_FREEZE_DELAY = 50
