@@ -61,6 +61,8 @@ namespace microcode {
     export const TID_FILTER_CUP_X_READ = "F20A"
     export const TID_FILTER_CUP_Y_READ = "F20B"
     export const TID_FILTER_CUP_Z_READ = "F20C"
+    export const TID_FILTER_ROTARY_LEFT = "F21L"
+    export const TID_FILTER_ROTARY_RIGHT = "F21R"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -248,10 +250,20 @@ namespace microcode {
         slider.jdKind = JdKind.Slider
         slider.constraints.handling = { terminal: true }
 
-        const rotary = makeSensor(TID_SENSOR_ROTARY, "left_right", 500)
+        const rotary = makeSensor(TID_SENSOR_ROTARY, "rotary_event", 500)
         rotary.serviceClassName = "rotaryEncoder"
         rotary.jdExternalClass = 0x10fa29c9
         rotary.jdKind = JdKind.Rotary
+
+        function addRotaryEvent(tid: string, id: number) {
+            const rotaryEvent = new FilterDefn(tid, "rotary_event", 10)
+            rotaryEvent.jdParam = id
+            rotaryEvent.constraints = terminal
+            tilesDB.filters[tid] = rotaryEvent
+            return rotaryEvent
+        }
+        addRotaryEvent(TID_FILTER_ROTARY_LEFT, 1)
+        addRotaryEvent(TID_FILTER_ROTARY_RIGHT, 2)
 
         const light = makeSensor(TID_SENSOR_LIGHT, "no_filters", 500)
         light.serviceClassName = "lightLevel"
