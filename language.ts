@@ -473,6 +473,14 @@ namespace microcode {
         }
     }
 
+    function isTerminal(tile: TileDefn) {
+        return (
+            tile.constraints &&
+            tile.constraints.handling &&
+            tile.constraints.handling["terminal"]
+        )
+    }
+
     export class Language {
         public static getTileSuggestions(
             rule: RuleDefn,
@@ -497,9 +505,9 @@ namespace microcode {
             if (existing.length) {
                 const last = existing[existing.length - 1]
                 if (
-                    last.constraints &&
-                    last.constraints.handling &&
-                    last.constraints.handling["terminal"]
+                    isTerminal(last) ||
+                    (name === "filters" && isTerminal(rule.sensors[0])) ||
+                    (name === "modifiers" && isTerminal(rule.actuators[0]))
                 ) {
                     return []
                 }
