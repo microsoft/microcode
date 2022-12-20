@@ -1040,21 +1040,24 @@ namespace jacs {
                         )
                     } else if (sensor.jdKind == microcode.JdKind.Slider) {
                         this.callLinked("slider_to_1_to_5", [role.emit(wr)])
-                        this.currValue().write(
-                            wr,
-                            wr.emitExpr(Op.EXPR0_RET_VAL, [])
-                        )
+                        const sliderVar = this.proc.lookupLocal("z_slider")
+                        sliderVar.write(wr, wr.emitExpr(Op.EXPR0_RET_VAL, []))
+                        filterValueIn(() => sliderVar.read(wr))
+                        /*
                         const sliderVar = this.lookupGlobal("z_slider")
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_NE, [
-                                this.currValue().read(wr),
+                                wr.emitExpr(Op.EXPR0_RET_VAL, []),
                                 sliderVar.read(wr),
                             ]),
                             () => {
-                                sliderVar.write(wr, this.currValue().read(wr))
+                                sliderVar.write(
+                                    wr,
+                                    wr.emitExpr(Op.EXPR0_RET_VAL, [])
+                                )
                                 filterValueIn(() => sliderVar.read(wr))
                             }
-                        )
+                        )*/
                     } else if (sensor.jdKind == microcode.JdKind.LightLevel) {
                         this.callLinked("get_light_level", [role.emit(wr)])
                         wr.emitIf(
