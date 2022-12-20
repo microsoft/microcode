@@ -94,6 +94,8 @@ namespace microcode {
             this.reg[TID_FILTER_CUP_X_READ] = icondb.cupXread
             this.reg[TID_FILTER_CUP_Y_READ] = icondb.cupYread
             this.reg[TID_FILTER_CUP_Z_READ] = icondb.cupZread
+            this.reg[TID_FILTER_ROTARY_LEFT] = icondb.kita_rotary_left
+            this.reg[TID_FILTER_ROTARY_RIGHT] = icondb.kita_rotary_right
 
             // actuators
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
@@ -2655,42 +2657,42 @@ bffffffffffffffffffffffffffffffb
 . . . . . . . . . . . . . . . .
 `
 
-    const kita_rotary_left = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . 9 9 9 f f . . . . . .
-. . . . 9 f f f f f f . . . . .
-. . . 9 f f f f f f f f . . . .
-. . . 9 f f f f f f f f . . . .
-. 9 9 9 9 9 f f f f f f . . . .
-. . 9 9 9 f f f f f f f . . . .
-. . . 9 f f f f f f f . . . . .
-. . . . . f f f f f . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
+    export const kita_rotary_left = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . 9 9 9 9 8 . . . . .
+    . . . . . 9 9 9 9 9 8 . . . . .
+    . . . . 9 9 9 8 . . . . . . . .
+    . . . . 9 9 8 . . . . . . . . .
+    . . . . 9 9 8 . . . . . . . . .
+    . . 9 9 9 9 9 9 8 . . . . . . .
+    . . . 9 9 9 9 8 . . . . . . . .
+    . . . . 9 9 8 . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
 `
 
-    const kita_rotary_right = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . f f 9 9 9 . . . . . .
-. . . . f f f f f f 9 . . . . .
-. . . f f f f f f f f 9 . . . .
-. . . f f f f f f f f 9 . . . .
-. . . f f f f f f 9 9 9 9 9 . .
-. . . f f f f f f f 9 9 9 . . .
-. . . . f f f f f f f 9 . . . .
-. . . . . f f f f f . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
+    export const kita_rotary_right = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . 8 9 9 9 9 . . . . . .
+    . . . . . 8 9 9 9 9 9 . . . . .
+    . . . . . . . . 8 9 9 9 . . . .
+    . . . . . . . . . 8 9 9 . . . .
+    . . . . . . . . . 8 9 9 . . . .
+    . . . . . . . 8 9 9 9 9 9 9 . .
+    . . . . . . . . 8 9 9 9 9 . . .
+    . . . . . . . . . 8 9 9 . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
 `
 
     /* maybe use these later
