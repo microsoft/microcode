@@ -1009,30 +1009,29 @@ namespace jacs {
                         )
                     } else if (sensor.jdKind == microcode.JdKind.Rotary) {
                         this.callLinked("get_rotary", [role.emit(wr)])
-                        this.currValue().write(
-                            wr,
-                            wr.emitExpr(Op.EXPR0_RET_VAL, [])
-                        )
                         const rotaryVar = this.lookupGlobal("z_rotary")
                         wr.emitIf(
-                            wr.emitExpr(Op.EXPR2_LT, [
-                                this.currValue().read(wr),
+                            wr.emitExpr(Op.EXPR2_NE, [
+                                wr.emitExpr(Op.EXPR0_RET_VAL, []),
                                 rotaryVar.read(wr),
                             ]),
-                            () => {
-                                rotaryVar.write(wr, this.currValue().read(wr))
-                                if (sensor.jdParam == 1) emitBody()
-                            },
                             () => {
                                 wr.emitIf(
                                     wr.emitExpr(Op.EXPR2_LT, [
                                         rotaryVar.read(wr),
-                                        this.currValue().read(wr),
+                                        wr.emitExpr(Op.EXPR0_RET_VAL, []),
                                     ]),
                                     () => {
                                         rotaryVar.write(
                                             wr,
-                                            this.currValue().read(wr)
+                                            wr.emitExpr(Op.EXPR0_RET_VAL, [])
+                                        )
+                                        if (sensor.jdParam == 1) emitBody()
+                                    },
+                                    () => {
+                                        rotaryVar.write(
+                                            wr,
+                                            wr.emitExpr(Op.EXPR0_RET_VAL, [])
                                         )
                                         if (sensor.jdParam == 2) emitBody()
                                     }
