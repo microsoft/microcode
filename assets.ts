@@ -65,6 +65,7 @@ namespace microcode {
             this.reg[TID_SENSOR_CUP_Z_WRITTEN] = icondb.cupZwritten
             this.reg[TID_SENSOR_MAGNET] = icondb.magnet
             this.reg[TID_SENSOR_SLIDER] = icondb.kita_slider
+            this.reg[TID_SENSOR_ROTARY] = icondb.kita_rotary
             this.reg[TID_SENSOR_LIGHT] = icondb.light_sensor
             this.reg[TID_SENSOR_START_PAGE] = icondb.tile_start_page
 
@@ -2633,6 +2634,63 @@ bffffffffffffffffffffffffffffffb
     . . . . 6 6 6 6 6 6 6 6 . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
+`
+
+    export const kita_rotary = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . 6 6 6 6 6 6 6 6 6 . . . .
+. . 6 6 6 6 6 6 6 6 6 6 6 . . .
+. . 6 6 6 d d d d d 6 6 6 . . .
+. . 6 6 d f f 1 f f d 6 6 . . .
+. . 6 d f f f 1 f f f d 6 . . .
+. . 6 d f f f 1 f f f d 6 . . .
+. . 6 d f f f f f f f d 6 . . .
+. . 6 d f f f f f f f d 6 . . .
+. . 6 6 d f f f f f d 6 6 . . .
+. . 6 6 6 d d d d d 6 6 6 . . .
+. . 6 6 6 6 6 6 6 6 6 6 6 . . .
+. . . 6 6 6 6 6 6 6 6 6 . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+`
+
+    const kita_rotary_left = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . 9 9 9 f f . . . . . .
+. . . . 9 f f f f f f . . . . .
+. . . 9 f f f f f f f f . . . .
+. . . 9 f f f f f f f f . . . .
+. 9 9 9 9 9 f f f f f f . . . .
+. . 9 9 9 f f f f f f f . . . .
+. . . 9 f f f f f f f . . . . .
+. . . . . f f f f f . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+`
+
+    const kita_rotary_right = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . f f 9 9 9 . . . . . .
+. . . . f f f f f f 9 . . . . .
+. . . f f f f f f f f 9 . . . .
+. . . f f f f f f f f 9 . . . .
+. . . f f f f f f 9 9 9 9 9 . .
+. . . f f f f f f f 9 9 9 . . .
+. . . . f f f f f f f 9 . . . .
+. . . . . f f f f f . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
 `
 
     /* maybe use these later

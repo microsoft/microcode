@@ -29,6 +29,7 @@ namespace microcode {
     export const TID_SENSOR_CUP_Z_WRITTEN = "S9C"
     export const TID_SENSOR_MAGNET = "S10"
     export const TID_SENSOR_SLIDER = "S11"
+    export const TID_SENSOR_ROTARY = "S12"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -246,6 +247,11 @@ namespace microcode {
         ]
         slider.jdKind = JdKind.Slider
         slider.constraints.handling = { terminal: true }
+
+        const rotary = makeSensor(TID_SENSOR_ROTARY, "left_right", 500)
+        rotary.serviceClassName = "rotaryEncoder"
+        rotary.jdExternalClass = 0x10fa29c9
+        rotary.jdKind = JdKind.Rotary
 
         const light = makeSensor(TID_SENSOR_LIGHT, "no_filters", 500)
         light.serviceClassName = "lightLevel"

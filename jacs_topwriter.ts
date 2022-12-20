@@ -1172,7 +1172,9 @@ namespace jacs {
         }
     }
 
-    export const needsWakeup = [0x14ad1a5d, 0x1f140409, 0x17dc9a1c, 0x1f274746]
+    export const needsWakeup = [
+        0x14ad1a5d, 0x1f140409, 0x17dc9a1c, 0x1f274746, 0x10fa29c9,
+    ]
     export const needsEnable = [0x1ac986cf, 0x12fc9103]
 
     export const serviceClasses: SMap<number> = {

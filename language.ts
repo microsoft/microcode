@@ -50,6 +50,7 @@ namespace microcode {
         RadioValue,
         LightLevel,
         Slider,
+        Rotary,
 
         Loop, // repeat modifier
 
