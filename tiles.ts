@@ -245,6 +245,7 @@ namespace microcode {
             TID_FILTER_COIN_5,
         ]
         slider.constraints.handling.terminal = true
+        slider.jdKind = JdKind.Slider
 
         const light = makeSensor(TID_SENSOR_LIGHT, "no_filters", 500)
         light.serviceClassName = "lightLevel"

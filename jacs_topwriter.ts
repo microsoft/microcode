@@ -1007,6 +1007,19 @@ namespace jacs {
                                 filterValueIn(() => radioVar.read(wr))
                             }
                         )
+                    } else if (sensor.jdKind == microcode.JdKind.Slider) {
+                        this.ifEq(
+                            wr.emitExpr(Op.EXPR0_PKT_REPORT_CODE, []),
+                            code,
+                            () => {
+                                const sliderVar = this.lookupGlobal("z_slider")
+                                sliderVar.write(
+                                    wr,
+                                    wr.emitBufLoad(NumFmt.U16, 12) // TODO: where does 12 come from?
+                                )
+                                filterValueIn(() => sliderVar.read(wr))
+                            }
+                        )
                     } else if (sensor.jdKind == microcode.JdKind.LightLevel) {
                         this.callLinked("get_light_level", [role.emit(wr)])
                         wr.emitIf(

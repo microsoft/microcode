@@ -49,6 +49,7 @@ namespace microcode {
         Timespan,
         RadioValue,
         LightLevel,
+        Slider,
 
         Loop, // repeat modifier
 
