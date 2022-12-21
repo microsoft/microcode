@@ -166,6 +166,9 @@ namespace microcode {
                 label: "count turns",
                 b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEyIl0sIkEiOlsiQTlBIl0sIkYiOlsiRjIxTCJdLCJNIjpbIk0yMEEiLCJNNiJdfSx7IlMiOlsiUzEyIl0sIkEiOlsiQTlCIl0sIkYiOlsiRjIxUiJdLCJNIjpbIk0yMEIiLCJNNiJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQSJdfSx7IlMiOlsiUzlCIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQiJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi40LjI4In0=",
             },
+            // TODO: keys
+            // TODO: magnet sensor
+            // TODO: light sensor
         ]
         return s
     }

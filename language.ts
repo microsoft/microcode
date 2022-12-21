@@ -48,8 +48,6 @@ namespace microcode {
         ExtLibFn, // call external function P(P2)
         Timespan,
         RadioValue,
-        LightLevel,
-        Slider,
         Rotary,
 
         Loop, // repeat modifier

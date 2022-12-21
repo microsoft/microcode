@@ -231,11 +231,8 @@ namespace microcode {
         radio_recv.jdKind = JdKind.Radio
         radio_recv.constraints.provides = [TID_SENSOR_RADIO_RECEIVE]
 
-        const magnet = makeSensor(TID_SENSOR_MAGNET, "no_filters", 500)
-        magnet.serviceClassName = "magneticFieldLevel"
-        magnet.eventCode = 1
-        magnet.jdExternalClass = 0x12fe180f
-
+        // the following three tiles are treated similarly, as
+        // the sensor values are mapped into [1,2,3,4,5]
         const slider = makeSensor(TID_SENSOR_SLIDER, "value_in", 500)
         slider.serviceClassName = "potentiometer"
         slider.jdExternalClass = 0x1f274746
@@ -247,8 +244,17 @@ namespace microcode {
             TID_FILTER_COIN_4,
             TID_FILTER_COIN_5,
         ]
-        slider.jdKind = JdKind.Slider
         slider.constraints.handling = { terminal: true }
+
+        const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
+        magnet.serviceClassName = "magneticFieldLevel"
+        magnet.jdExternalClass = 0x12fe180f
+        magnet.constraints = slider.constraints
+
+        const light = makeSensor(TID_SENSOR_LIGHT, "value_in", 500)
+        light.serviceClassName = "lightLevel"
+        light.jdExternalClass = 0x17dc9a1c
+        light.constraints = slider.constraints
 
         const rotary = makeSensor(TID_SENSOR_ROTARY, "rotary_event", 500)
         rotary.serviceClassName = "rotaryEncoder"
@@ -266,11 +272,6 @@ namespace microcode {
         }
         addRotaryEvent(TID_FILTER_ROTARY_LEFT, 1)
         addRotaryEvent(TID_FILTER_ROTARY_RIGHT, 2)
-
-        const light = makeSensor(TID_SENSOR_LIGHT, "no_filters", 500)
-        light.serviceClassName = "lightLevel"
-        light.jdExternalClass = 0x17dc9a1c
-        light.jdKind = JdKind.LightLevel
 
         const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
         timer.constraints = {
