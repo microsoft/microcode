@@ -137,10 +137,12 @@ namespace jacs {
                     wr.emitLabel(this.top)
                     wr.emitStmt(Op.STMT1_WAIT_ROLE, [this.emit(wr)])
                     if (this.classIdentifier == serviceClasses.potentiometer) {
-                        // TODO: make global variable role_specific
-                        const sliderVar = this.parent.lookupGlobal("z_slider")
-                        const sliderVarChanged =
-                            this.parent.lookupGlobal("z_slider_changed")
+                        const sliderVar = this.parent.lookupGlobal(
+                            "z_slider" + this.index
+                        )
+                        const sliderVarChanged = this.parent.lookupGlobal(
+                            "z_slider_changed" + this.index
+                        )
                         sliderVarChanged.write(wr, literal(0))
                         this.parent.callLinked("slider_to_1_to_5", [
                             this.emit(wr),
@@ -1067,9 +1069,12 @@ namespace jacs {
                             }
                         )
                     } else if (sensor.jdKind == microcode.JdKind.Slider) {
-                        const sliderVar = this.proc.lookupLocal("z_slider")
-                        const sliderVarChanged =
-                            this.proc.lookupLocal("z_slider_changed")
+                        const sliderVar = this.lookupGlobal(
+                            "z_slider" + role.index
+                        )
+                        const sliderVarChanged = this.lookupGlobal(
+                            "z_slider_changed" + role.index
+                        )
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_EQ, [
                                 literal(1),
