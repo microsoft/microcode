@@ -1239,12 +1239,12 @@ namespace jacs {
     }
 
     export const needsWakeup = [
-        { classId: 0x14ad1a5d, convert: undefined },
-        { classId: 0x1f140409, convert: undefined },
-        { classId: 0x17dc9a1c, convert: "light_1_to_5" },
-        { classId: 0x1f274746, convert: "slider_1_to_5" },
-        { classId: 0x10fa29c9, convert: undefined },
-        { classId: 0x12fe180f, convert: "magnet_1_to_5" },
+        { classId: 0x14ad1a5d, convert: undefined }, // soundLevel
+        { classId: 0x1f140409, convert: undefined }, // accelerometer
+        { classId: 0x17dc9a1c, convert: "light_1_to_5" }, // JD light level
+        { classId: 0x1f274746, convert: "slider_1_to_5" }, // JD slider
+        { classId: 0x10fa29c9, convert: undefined }, // JD rotary
+        { classId: 0x12fe180f, convert: "magnet_1_to_5" }, // JD magnet
     ]
 
     export const needsEnable = [0x1ac986cf, 0x12fc9103]
