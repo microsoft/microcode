@@ -106,6 +106,25 @@ namespace jacs {
 
         getDispatcher() {
             if (!this.dispatcher) {
+                // TODO: need special logic for slider and other roles
+                // TODO: that we need to create events for
+                /* 
+                        // TODO: the following logic doesn't work because we are 
+                        //       at the rule level here
+                        const sliderVar = this.lookupGlobal("z_slider")
+                        wr.emitIf(
+                            wr.emitExpr(Op.EXPR2_NE, [
+                                wr.emitExpr(Op.EXPR0_RET_VAL, []),
+                                sliderVar.read(wr),
+                            ]),
+                            () => {
+                                sliderVar.write(
+                                    wr,
+                                    wr.emitExpr(Op.EXPR0_RET_VAL, [])
+                                )
+                                filterValueIn(() => sliderVar.read(wr))
+                            }
+                        )*/
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
                     if (needsWakeup.indexOf(this.classIdentifier) >= 0) {
@@ -991,7 +1010,10 @@ namespace jacs {
             const role = this.lookupSensorRole(rule)
             name += "_" + role.name
 
+            // get the procedure for this role
             this.withProcedure(role.getDispatcher(), wr => {
+                // because all rules with same role are put in same
+                // procedure, we need to make sure we are on the current page
                 this.ifCurrPage(() => {
                     const code = this.lookupEventCode(role, rule)
                     if (sensor.jdKind == microcode.JdKind.Radio) {
@@ -1043,23 +1065,6 @@ namespace jacs {
                         const sliderVar = this.proc.lookupLocal("z_slider")
                         sliderVar.write(wr, wr.emitExpr(Op.EXPR0_RET_VAL, []))
                         filterValueIn(() => sliderVar.read(wr))
-                        /* 
-                        // TODO: the following logic doesn't work because we are 
-                        //       at the rule level here
-                        const sliderVar = this.lookupGlobal("z_slider")
-                        wr.emitIf(
-                            wr.emitExpr(Op.EXPR2_NE, [
-                                wr.emitExpr(Op.EXPR0_RET_VAL, []),
-                                sliderVar.read(wr),
-                            ]),
-                            () => {
-                                sliderVar.write(
-                                    wr,
-                                    wr.emitExpr(Op.EXPR0_RET_VAL, [])
-                                )
-                                filterValueIn(() => sliderVar.read(wr))
-                            }
-                        )*/
                     } else if (sensor.jdKind == microcode.JdKind.LightLevel) {
                         this.callLinked("get_light_level", [role.emit(wr)])
                         wr.emitIf(
