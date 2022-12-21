@@ -160,8 +160,9 @@ namespace jacs {
                                 sliderVarChanged.write(wr, literal(1))
                             }
                         )
-                    }
-                    if (this.classIdentifier == serviceClasses.rotaryEncoder) {
+                    } else if (
+                        this.classIdentifier == serviceClasses.rotaryEncoder
+                    ) {
                         const rotaryVar = this.parent.lookupGlobal(
                             "z_rotary" + this.index
                         )
@@ -182,15 +183,19 @@ namespace jacs {
                                         wr.emitExpr(Op.EXPR0_RET_VAL, []),
                                     ]),
                                     () => {
+                                        rotaryVar.write(
+                                            wr,
+                                            wr.emitExpr(Op.EXPR0_RET_VAL, [])
+                                        )
                                         rotaryVarChanged.write(wr, literal(1))
                                     },
                                     () => {
+                                        rotaryVar.write(
+                                            wr,
+                                            wr.emitExpr(Op.EXPR0_RET_VAL, [])
+                                        )
                                         rotaryVarChanged.write(wr, literal(2))
                                     }
-                                )
-                                rotaryVar.write(
-                                    wr,
-                                    wr.emitExpr(Op.EXPR0_RET_VAL, [])
                                 )
                             }
                         )
