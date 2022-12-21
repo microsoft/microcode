@@ -108,10 +108,10 @@ namespace jacs {
             if (!this.dispatcher) {
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
-                    const wakeupIndex = needsWakeup.indexOf(
-                        this.classIdentifier
+                    const wakeup = needsWakeup.find(
+                        r => r.classId == this.classIdentifier
                     )
-                    if (wakeupIndex >= 0) {
+                    if (wakeup) {
                         wr.emitStmt(Op.STMT3_QUERY_REG, [
                             this.emit(wr),
                             literal(JD_REG_STREAMING_SAMPLES),
@@ -139,7 +139,7 @@ namespace jacs {
                     this.top = wr.mkLabel("tp")
                     wr.emitLabel(this.top)
                     wr.emitStmt(Op.STMT1_WAIT_ROLE, [this.emit(wr)])
-                    if (from1to5[wakeupIndex]) {
+                    if (wakeup && wakeup.convert) {
                         const roleGlobal = this.parent.lookupGlobal(
                             "z_role15_" + this.index
                         )
@@ -147,9 +147,7 @@ namespace jacs {
                             "z_role15_c_" + this.index
                         )
                         roleGlobalChanged.write(wr, literal(0))
-                        this.parent.callLinked(from1to5[wakeupIndex], [
-                            this.emit(wr),
-                        ])
+                        this.parent.callLinked(wakeup.convert, [this.emit(wr)])
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_NE, [
                                 wr.emitExpr(Op.EXPR0_RET_VAL, []),
@@ -1057,7 +1055,9 @@ namespace jacs {
 
             const role = this.lookupSensorRole(rule)
             name += "_" + role.name
-            const wakeupIndex = needsWakeup.indexOf(role.classIdentifier)
+            const wakeup = needsWakeup.find(
+                r => r.classId == role.classIdentifier
+            )
 
             // get the procedure for this role
             this.withProcedure(role.getDispatcher(), wr => {
@@ -1083,7 +1083,7 @@ namespace jacs {
                             "z_rotary_changed" + role.index
                         )
                         this.ifEq(rotaryVarChanged.read(wr), code, emitBody)
-                    } else if (wakeupIndex >= 0 || from1to5[wakeupIndex]) {
+                    } else if (wakeup && wakeup.convert) {
                         const roleGlobal = this.lookupGlobal(
                             "z_role_15_" + role.index
                         )
@@ -1239,16 +1239,14 @@ namespace jacs {
     }
 
     export const needsWakeup = [
-        0x14ad1a5d, 0x1f140409, 0x17dc9a1c, 0x1f274746, 0x10fa29c9, 0x12fe180f,
+        { classId: 0x14ad1a5d, convert: undefined },
+        { classId: 0x1f140409, convert: undefined },
+        { classId: 0x17dc9a1c, convert: "light_1_to_5" },
+        { classId: 0x1f274746, convert: "slider_1_to_5" },
+        { classId: 0x10fa29c9, convert: undefined },
+        { classId: 0x12fe180f, convert: "magnet_1_to_5" },
     ]
-    export const from1to5 = [
-        "",
-        "",
-        "light_1_to_5",
-        "slider_1_to_5",
-        "",
-        "magnet_1_to_5",
-    ]
+
     export const needsEnable = [0x1ac986cf, 0x12fc9103]
 
     export const serviceClasses: SMap<number> = {
