@@ -254,6 +254,7 @@ namespace microcode {
         rotary.serviceClassName = "rotaryEncoder"
         rotary.jdExternalClass = 0x10fa29c9
         rotary.jdKind = JdKind.Rotary
+        rotary.eventCode = 1
 
         function addRotaryEvent(tid: string, id: number) {
             const rotaryEvent = new FilterDefn(tid, "rotary_event", 10)

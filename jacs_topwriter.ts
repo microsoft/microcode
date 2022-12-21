@@ -162,6 +162,38 @@ namespace jacs {
                         )
                     }
                     if (this.classIdentifier == serviceClasses.rotaryEncoder) {
+                        const rotaryVar = this.parent.lookupGlobal(
+                            "z_rotary" + this.index
+                        )
+                        const rotaryVarChanged = this.parent.lookupGlobal(
+                            "z_rotary_changed" + this.index
+                        )
+                        rotaryVarChanged.write(wr, literal(0))
+                        this.parent.callLinked("get_rotary", [this.emit(wr)])
+                        wr.emitIf(
+                            wr.emitExpr(Op.EXPR2_NE, [
+                                wr.emitExpr(Op.EXPR0_RET_VAL, []),
+                                rotaryVar.read(wr),
+                            ]),
+                            () => {
+                                wr.emitIf(
+                                    wr.emitExpr(Op.EXPR2_LT, [
+                                        rotaryVar.read(wr),
+                                        wr.emitExpr(Op.EXPR0_RET_VAL, []),
+                                    ]),
+                                    () => {
+                                        rotaryVarChanged.write(wr, literal(1))
+                                    },
+                                    () => {
+                                        rotaryVarChanged.write(wr, literal(2))
+                                    }
+                                )
+                                rotaryVar.write(
+                                    wr,
+                                    wr.emitExpr(Op.EXPR0_RET_VAL, [])
+                                )
+                            }
+                        )
                     }
                 })
             }
@@ -1038,36 +1070,10 @@ namespace jacs {
                             }
                         )
                     } else if (sensor.jdKind == microcode.JdKind.Rotary) {
-                        this.callLinked("get_rotary", [role.emit(wr)])
-                        const rotaryVar = this.lookupGlobal("z_rotary")
-                        wr.emitIf(
-                            wr.emitExpr(Op.EXPR2_NE, [
-                                wr.emitExpr(Op.EXPR0_RET_VAL, []),
-                                rotaryVar.read(wr),
-                            ]),
-                            () => {
-                                wr.emitIf(
-                                    wr.emitExpr(Op.EXPR2_LT, [
-                                        rotaryVar.read(wr),
-                                        wr.emitExpr(Op.EXPR0_RET_VAL, []),
-                                    ]),
-                                    () => {
-                                        rotaryVar.write(
-                                            wr,
-                                            wr.emitExpr(Op.EXPR0_RET_VAL, [])
-                                        )
-                                        if (sensor.jdParam == 1) emitBody()
-                                    },
-                                    () => {
-                                        rotaryVar.write(
-                                            wr,
-                                            wr.emitExpr(Op.EXPR0_RET_VAL, [])
-                                        )
-                                        if (sensor.jdParam == 2) emitBody()
-                                    }
-                                )
-                            }
+                        const rotaryVarChanged = this.lookupGlobal(
+                            "z_rotary_changed" + role.index
                         )
+                        this.ifEq(rotaryVarChanged.read(wr), code, emitBody)
                     } else if (sensor.jdKind == microcode.JdKind.Slider) {
                         const sliderVar = this.lookupGlobal(
                             "z_slider" + role.index
