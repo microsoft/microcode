@@ -106,25 +106,6 @@ namespace jacs {
 
         getDispatcher() {
             if (!this.dispatcher) {
-                // TODO: need special logic for slider and other roles
-                // TODO: that we need to create events for
-                /* 
-                        // TODO: the following logic doesn't work because we are 
-                        //       at the rule level here
-                        const sliderVar = this.lookupGlobal("z_slider")
-                        wr.emitIf(
-                            wr.emitExpr(Op.EXPR2_NE, [
-                                wr.emitExpr(Op.EXPR0_RET_VAL, []),
-                                sliderVar.read(wr),
-                            ]),
-                            () => {
-                                sliderVar.write(
-                                    wr,
-                                    wr.emitExpr(Op.EXPR0_RET_VAL, [])
-                                )
-                                filterValueIn(() => sliderVar.read(wr))
-                            }
-                        )*/
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
                     if (needsWakeup.indexOf(this.classIdentifier) >= 0) {
@@ -155,6 +136,31 @@ namespace jacs {
                     this.top = wr.mkLabel("tp")
                     wr.emitLabel(this.top)
                     wr.emitStmt(Op.STMT1_WAIT_ROLE, [this.emit(wr)])
+                    if (this.classIdentifier == serviceClasses.potentiometer) {
+                        // TODO: make global variable role_specific
+                        const sliderVar = this.parent.lookupGlobal("z_slider")
+                        const sliderVarChanged =
+                            this.parent.lookupGlobal("z_slider_changed")
+                        sliderVarChanged.write(wr, literal(0))
+                        this.parent.callLinked("slider_to_1_to_5", [
+                            this.emit(wr),
+                        ])
+                        wr.emitIf(
+                            wr.emitExpr(Op.EXPR2_NE, [
+                                wr.emitExpr(Op.EXPR0_RET_VAL, []),
+                                sliderVar.read(wr),
+                            ]),
+                            () => {
+                                sliderVar.write(
+                                    wr,
+                                    wr.emitExpr(Op.EXPR0_RET_VAL, [])
+                                )
+                                sliderVarChanged.write(wr, literal(1))
+                            }
+                        )
+                    }
+                    if (this.classIdentifier == serviceClasses.rotaryEncoder) {
+                    }
                 })
             }
             return this.dispatcher
@@ -521,7 +527,7 @@ namespace jacs {
             wr.emitStmt(Op.STMT2_SET_PKT, [this.emitString(buf), literal(0)])
         }
 
-        private callLinked(name: string, parms: Value[]) {
+        callLinked(name: string, parms: Value[]) {
             const proc = linkFunction(this, name)
             const args = this.writer.allocTmpLocals(parms.length)
             for (let i = 0; i < parms.length; ++i) args[i].store(parms[i])
@@ -594,7 +600,7 @@ namespace jacs {
             }
         }
 
-        private lookupGlobal(n: string) {
+        lookupGlobal(n: string) {
             let g = this.globals.find(v => v.name == n)
             if (!g) g = this.addGlobal(n)
             return g
@@ -1061,10 +1067,18 @@ namespace jacs {
                             }
                         )
                     } else if (sensor.jdKind == microcode.JdKind.Slider) {
-                        this.callLinked("slider_to_1_to_5", [role.emit(wr)])
                         const sliderVar = this.proc.lookupLocal("z_slider")
-                        sliderVar.write(wr, wr.emitExpr(Op.EXPR0_RET_VAL, []))
-                        filterValueIn(() => sliderVar.read(wr))
+                        const sliderVarChanged =
+                            this.proc.lookupLocal("z_slider_changed")
+                        wr.emitIf(
+                            wr.emitExpr(Op.EXPR2_EQ, [
+                                literal(1),
+                                sliderVarChanged.read(wr),
+                            ]),
+                            () => {
+                                filterValueIn(() => sliderVar.read(wr))
+                            }
+                        )
                     } else if (sensor.jdKind == microcode.JdKind.LightLevel) {
                         this.callLinked("get_light_level", [role.emit(wr)])
                         wr.emitIf(
