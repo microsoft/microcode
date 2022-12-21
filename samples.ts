@@ -162,6 +162,10 @@ namespace microcode {
                 label: "slider",
                 b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzExIl0sIkEiOlsiQTEwIl0sIkYiOlsiRjgiXSwiTSI6WyJNNiJdfSx7IlMiOlsiUzExIl0sIkEiOlsiQTEwIl0sIkYiOlsiRjkiXSwiTSI6WyJNNyJdfSx7IlMiOlsiUzExIl0sIkEiOlsiQTEwIl0sIkYiOlsiRjEwIl0sIk0iOlsiTTgiXX0seyJTIjpbIlMxMSJdLCJBIjpbIkExMCJdLCJGIjpbIkYxMSJdLCJNIjpbIk05Il19LHsiUyI6WyJTMTEiXSwiQSI6WyJBMTAiXSwiRiI6WyJGMTIiXSwiTSI6WyJNMTAiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC4yOCJ9",
             },
+            {
+                label: "count turns",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEyIl0sIkEiOlsiQTlBIl0sIkYiOlsiRjIxTCJdLCJNIjpbIk0yMEEiLCJNNiJdfSx7IlMiOlsiUzEyIl0sIkEiOlsiQTlCIl0sIkYiOlsiRjIxUiJdLCJNIjpbIk0yMEIiLCJNNiJdfSx7IlMiOlsiUzlBIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQSJdfSx7IlMiOlsiUzlCIl0sIkEiOlsiQTEwIl0sIk0iOlsiTTIwQiJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX0sInZlcnNpb24iOiJ2Mi40LjI4In0=",
+            },
         ]
         return s
     }
