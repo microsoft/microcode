@@ -260,6 +260,7 @@ namespace microcode {
             const rotaryEvent = new FilterDefn(tid, "rotary_event", 10)
             rotaryEvent.jdParam = id
             rotaryEvent.constraints = terminal
+            rotaryEvent.jdKind = JdKind.EventCode
             tilesDB.filters[tid] = rotaryEvent
             return rotaryEvent
         }
