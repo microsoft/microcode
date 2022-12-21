@@ -141,10 +141,10 @@ namespace jacs {
                     wr.emitStmt(Op.STMT1_WAIT_ROLE, [this.emit(wr)])
                     if (wakeup && wakeup.convert) {
                         const roleGlobal = this.parent.lookupGlobal(
-                            "z_role15_" + this.index
+                            "z_role" + this.index
                         )
                         const roleGlobalChanged = this.parent.lookupGlobal(
-                            "z_role15_c_" + this.index
+                            "z_role_c" + this.index
                         )
                         roleGlobalChanged.write(wr, literal(0))
                         this.parent.callLinked(wakeup.convert, [this.emit(wr)])
@@ -1085,10 +1085,10 @@ namespace jacs {
                         this.ifEq(rotaryVarChanged.read(wr), code, emitBody)
                     } else if (wakeup && wakeup.convert) {
                         const roleGlobal = this.lookupGlobal(
-                            "z_role_15_" + role.index
+                            "z_role" + role.index
                         )
                         const roleGlobalChanged = this.lookupGlobal(
-                            "z_role_15_c" + role.index
+                            "z_role_c" + role.index
                         )
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_EQ, [
