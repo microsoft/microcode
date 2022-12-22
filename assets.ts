@@ -2641,9 +2641,9 @@ bffffffffffffffffffffffffffffffb
         . . . . . . . . . . . . . . . .
         . . . 6 6 6 6 6 6 6 6 . . . . .
         . . 6 6 6 6 6 6 6 6 6 6 . . . .
-        . . 6 c f f f f f f c 6 . f f f
+        . . 6 c f f f f f f c 6 . f f .
         . . 6 f f c c c c f f 6 . . . f
-        . . 6 f c f f f f c f 6 . f f f
+        . . 6 f c f f f f c f 6 . . f .
         . . 6 f c f f f f c f 6 . f . .
         . . 6 f c f f f f c f 6 . f f f
         . . 6 f c f f f f c f 6 . . . .
