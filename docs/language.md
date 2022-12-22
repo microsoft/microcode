@@ -181,7 +181,16 @@ MicroCode will detect [Jacdac](https://aka.ms/jacdac) module and automatically d
 
 ### WHEN modules
 
--   ![magnet detector](./images/generated/icon_S10.png){:class="icon"} `magnet detector` detects the presence of a magnet,
+#### Sensors
+
+-   ![magnet sensor](./images/generated/icon_S10.png){:class="icon"} `magnet sensor` detects the presence of a magnet,
+-   ![light sensor](./images/generated/icon_S5.png){:class="icon"} `light sensors` measures the amount of light
+
+#### User inputs
+
+-   ![slider](./images/generated/icon_S11.png){:class="icon"} `slider` XYZ
+-   ![dial](./images/generated/icon_S12.png){:class="icon"} `dial` XYZ
+-   ![key](./images/generated/icon_F5.png){:class="icon"} `key` XYZ
 
 ### DO modules
 
