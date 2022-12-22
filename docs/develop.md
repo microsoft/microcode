@@ -174,7 +174,7 @@ This app is built with [MakeCode Arcade](https://arcade.makecode.com/), specific
 -   run:
 
 ```bash
-npm install -g pxt-cli
+npm install -g pxt-core
 cd pxt-arcade
 yarn install
 mkdir projects

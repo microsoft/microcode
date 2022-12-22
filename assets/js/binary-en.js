@@ -1,5 +1,5 @@
 // meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.28","target":"arcade","targetVersion":"1.11.20"}
-// total=2427865 new=94.22% cached=0.00% other=5.78%
+// total=2385590 new=94.18% cached=0.00% other=5.82%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1524,14 +1524,14 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "rotaryEncoder", 284830153);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "led", 369743088);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
-    globals.serviceClasses___4177 = (s.tmp_0);
-    globals._binFloatLits___4191 = (_hex6871);
-    globals.VERSION___4193 = ("v2.4.28");
-    globals.BACK_BUTTON_ERROR_KIND___4207 = ("back_button");
-    globals.FORWARD_BUTTON_ERROR_KIND___4208 = ("forward_button");
-    globals.microcode_Options_fps___4256 = (false);
-    globals.microcode_Options_profiling___4257 = (false);
-    globals.microcode_Options_menuProfiling___4258 = (false);
+    globals.serviceClasses___4161 = (s.tmp_0);
+    globals._binFloatLits___4174 = (_hex6840);
+    globals.VERSION___4176 = ("v2.4.28");
+    globals.BACK_BUTTON_ERROR_KIND___4190 = ("back_button");
+    globals.FORWARD_BUTTON_ERROR_KIND___4191 = ("forward_button");
+    globals.microcode_Options_fps___4239 = (false);
+    globals.microcode_Options_profiling___4240 = (false);
+    globals.microcode_Options_menuProfiling___4241 = (false);
     r0 = pxsim_Array__mk();
     globals.contexts___6901 = (r0);
     globals.font___4289 = (globals.font8___1653);
@@ -20754,7 +20754,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_deployFreq__P4174.info = {"start":46533,"length":476,"line":1231,"column":8,"endLine":1242,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"deployFreq","argumentNames":["this","buf"]}
+jacs_TopWriter_deployFreq__P4158.info = {"start":40399,"length":465,"line":1134,"column":8,"endLine":1145,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"deployFreq","argumentNames":["this","buf"]}
 
 function jacs_TopWriter_deployFreq__P4174_mk(s) {
     checkStack(s.depth);
@@ -20836,7 +20836,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_deployFreq_inline__P12643.info = {"start":46704,"length":233,"line":1234,"column":41,"endLine":1239,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_deployFreq_inline__P12489.info = {"start":40567,"length":228,"line":1137,"column":41,"endLine":1142,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_deployFreq_inline__P12643_mk(s) {
     checkStack(s.depth);
@@ -20926,7 +20926,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_deploy__P6852.info = {"start":45629,"length":396,"line":1206,"column":8,"endLine":1216,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"deploy","argumentNames":["this"]}
+jacs_TopWriter_deploy__P6824.info = {"start":39520,"length":386,"line":1109,"column":8,"endLine":1119,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"deploy","argumentNames":["this"]}
 
 function jacs_TopWriter_deploy__P6852_mk(s) {
     checkStack(s.depth);
@@ -30127,7 +30127,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_Role_getDispatcher_inline__P15415.info = {"start":6676,"length":1146,"line":178,"column":28,"endLine":199,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_ifEq__P4153.info = {"start":30781,"length":165,"line":870,"column":8,"endLine":873,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"ifEq","argumentNames":["this","v","val","then"]}
 
 function jacs_Role_getDispatcher_inline__P15415_mk(s) {
     checkStack(s.depth);
@@ -54333,7 +54333,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitProgram__P4172.info = {"start":44271,"length":1346,"line":1165,"column":8,"endLine":1204,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitProgram","argumentNames":["this","prog"]}
+jacs_TopWriter_emitProgram__P4156.info = {"start":38203,"length":1307,"line":1068,"column":8,"endLine":1107,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitProgram","argumentNames":["this","prog"]}
 
 function jacs_TopWriter_emitProgram__P4172_mk(s) {
     checkStack(s.depth);
@@ -54427,7 +54427,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitProgram_inline__P21555.info = {"start":44801,"length":392,"line":1180,"column":46,"endLine":1190,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitProgram_inline__P20679.info = {"start":38718,"length":382,"line":1083,"column":46,"endLine":1093,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitProgram_inline__P21555_mk(s) {
     checkStack(s.depth);
@@ -54470,7 +54470,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitProgram_inline__P21572.info = {"start":45056,"length":103,"line":1186,"column":20,"endLine":1188,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitProgram_inline__P20696.info = {"start":38967,"length":101,"line":1089,"column":20,"endLine":1091,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitProgram_inline__P21572_mk(s) {
     checkStack(s.depth);
@@ -54904,7 +54904,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_finalizePageProcs__P6848.info = {"start":35873,"length":450,"line":958,"column":8,"endLine":969,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalizePageProcs","argumentNames":["this"]}
+jacs_TopWriter_finalizePageProcs__P6820.info = {"start":31721,"length":439,"line":894,"column":8,"endLine":905,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"finalizePageProcs","argumentNames":["this"]}
 
 function jacs_TopWriter_finalizePageProcs__P6848_mk(s) {
     checkStack(s.depth);
@@ -54967,7 +54967,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_finalizePageProcs_inline__P21696.info = {"start":36026,"length":270,"line":961,"column":45,"endLine":967,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_finalizePageProcs_inline__P20821.info = {"start":31871,"length":264,"line":897,"column":45,"endLine":903,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_finalizePageProcs_inline__P21696_mk(s) {
     checkStack(s.depth);
@@ -55055,7 +55055,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_pageProc__P6847.info = {"start":35229,"length":632,"line":943,"column":8,"endLine":956,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"pageProc","argumentNames":["this","pageIdx"]}
+jacs_TopWriter_pageProc__P6819.info = {"start":31092,"length":619,"line":879,"column":8,"endLine":892,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"pageProc","argumentNames":["this","pageIdx"]}
 
 function jacs_TopWriter_pageProc__P6847_mk(s) {
     checkStack(s.depth);
@@ -55127,7 +55127,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_pageProc_inline__P21728.info = {"start":35450,"length":340,"line":946,"column":60,"endLine":953,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_pageProc_inline__P20905.info = {"start":31310,"length":333,"line":882,"column":60,"endLine":889,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_pageProc_inline__P21728_mk(s) {
     checkStack(s.depth);
@@ -55181,7 +55181,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitSleep__P4171.info = {"start":43450,"length":102,"line":1137,"column":8,"endLine":1139,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitSleep","argumentNames":["this","ms"]}
+jacs_TopWriter_emitSleep__P4155.info = {"start":37410,"length":100,"line":1040,"column":8,"endLine":1042,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitSleep","argumentNames":["this","ms"]}
 
 function jacs_TopWriter_emitSleep__P4171_mk(s) {
     checkStack(s.depth);
@@ -55264,7 +55264,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitClearScreen__P6851.info = {"start":43564,"length":695,"line":1141,"column":8,"endLine":1163,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitClearScreen","argumentNames":["this"]}
+jacs_TopWriter_emitClearScreen__P6823.info = {"start":37520,"length":673,"line":1044,"column":8,"endLine":1066,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitClearScreen","argumentNames":["this"]}
 
 function jacs_TopWriter_emitClearScreen__P6851_mk(s) {
     checkStack(s.depth);
@@ -55795,7 +55795,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule__P6850.info = {"start":36714,"length":6279,"line":982,"column":8,"endLine":1122,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRule","argumentNames":["this","name","rule"]}
+jacs_TopWriter_emitRule__P6822.info = {"start":32538,"length":4430,"line":918,"column":8,"endLine":1025,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRule","argumentNames":["this","name","rule"]}
 
 function jacs_TopWriter_emitRule__P6850_mk(s) {
     checkStack(s.depth);
@@ -55861,7 +55861,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-emitBody_inline__P21814.info = {"start":36905,"length":75,"line":986,"column":29,"endLine":987,"endColumn":68,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+emitBody_inline__P21411.info = {"start":32725,"length":74,"line":922,"column":29,"endLine":923,"endColumn":68,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function emitBody_inline__P21814_mk(s) {
     checkStack(s.depth);
@@ -55964,7 +55964,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-filterValueIn_inline__P21823.info = {"start":37018,"length":461,"line":989,"column":34,"endLine":999,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["f"]}
+filterValueIn_inline__P21420.info = {"start":32835,"length":451,"line":925,"column":34,"endLine":935,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["f"]}
 
 function filterValueIn_inline__P21823_mk(s) {
     checkStack(s.depth);
@@ -56011,7 +56011,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-currValue_inline__P21836.info = {"start":37238,"length":31,"line":993,"column":38,"endLine":993,"endColumn":69,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+currValue_inline__P21433.info = {"start":33051,"length":31,"line":929,"column":38,"endLine":929,"endColumn":69,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function currValue_inline__P21836_mk(s) {
     checkStack(s.depth);
@@ -56046,7 +56046,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P21868.info = {"start":37739,"length":42,"line":1006,"column":34,"endLine":1006,"endColumn":76,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["f"]}
+jacs_TopWriter_emitRule_inline__P21465.info = {"start":33539,"length":42,"line":942,"column":34,"endLine":942,"endColumn":76,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["f"]}
 
 function jacs_TopWriter_emitRule_inline__P21868_mk(s) {
     checkStack(s.depth);
@@ -56095,7 +56095,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P21923.info = {"start":38536,"length":242,"line":1024,"column":67,"endLine":1029,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P21520.info = {"start":34318,"length":237,"line":960,"column":67,"endLine":965,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRule_inline__P21923_mk(s) {
     checkStack(s.depth);
@@ -56192,7 +56192,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P21935.info = {"start":38823,"length":411,"line":1030,"column":42,"endLine":1039,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P21532.info = {"start":34599,"length":402,"line":966,"column":42,"endLine":975,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRule_inline__P21935_mk(s) {
     checkStack(s.depth);
@@ -56242,7 +56242,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P21975.info = {"start":39497,"length":171,"line":1046,"column":57,"endLine":1050,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P21572.info = {"start":35257,"length":167,"line":982,"column":57,"endLine":986,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRule_inline__P21975_mk(s) {
     checkStack(s.depth);
@@ -56284,7 +56284,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P21978.info = {"start":39542,"length":106,"line":1047,"column":36,"endLine":1049,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P21575.info = {"start":35301,"length":104,"line":983,"column":36,"endLine":985,"endColumn":21,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitRule_inline__P21978_mk(s) {
     checkStack(s.depth);
@@ -56324,7 +56324,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P21980.info = {"start":39589,"length":35,"line":1048,"column":38,"endLine":1048,"endColumn":73,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P21577.info = {"start":35347,"length":35,"line":984,"column":38,"endLine":984,"endColumn":73,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitRule_inline__P21980_mk(s) {
     checkStack(s.depth);
@@ -56372,7 +56372,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P22003.info = {"start":39906,"length":3075,"line":1058,"column":53,"endLine":1121,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRule_inline__P21600.info = {"start":35607,"length":1350,"line":993,"column":53,"endLine":1024,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRule_inline__P22003_mk(s) {
     checkStack(s.depth);
@@ -56674,7 +56674,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P22006.info = {"start":40095,"length":2870,"line":1061,"column":32,"endLine":1120,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P21603.info = {"start":35647,"length":1295,"line":994,"column":32,"endLine":1023,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitRule_inline__P22006_mk(s) {
     checkStack(s.depth);
@@ -56747,7 +56747,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P22022.info = {"start":40410,"length":382,"line":1067,"column":28,"endLine":1074,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P21619.info = {"start":35956,"length":375,"line":1000,"column":28,"endLine":1007,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitRule_inline__P22022_mk(s) {
     checkStack(s.depth);
@@ -56782,7 +56782,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRule_inline__P22035.info = {"start":40737,"length":23,"line":1073,"column":46,"endLine":1073,"endColumn":69,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRule_inline__P21632.info = {"start":36277,"length":23,"line":1006,"column":46,"endLine":1006,"endColumn":69,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitRule_inline__P22035_mk(s) {
     checkStack(s.depth);
@@ -57444,7 +57444,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_ifCurrPage__P6846.info = {"start":35089,"length":128,"line":939,"column":8,"endLine":941,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"ifCurrPage","argumentNames":["this","then"]}
+jacs_TopWriter_ifCurrPage__P6818.info = {"start":30956,"length":126,"line":875,"column":8,"endLine":877,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"ifCurrPage","argumentNames":["this","then"]}
 
 function jacs_TopWriter_ifCurrPage__P6846_mk(s) {
     checkStack(s.depth);
@@ -57511,7 +57511,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRandomInt__P6840.info = {"start":29341,"length":170,"line":802,"column":8,"endLine":805,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRandomInt","argumentNames":["this","max"]}
+jacs_TopWriter_emitRandomInt__P6812.info = {"start":25345,"length":167,"line":738,"column":8,"endLine":741,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRandomInt","argumentNames":["this","max"]}
 
 function jacs_TopWriter_emitRandomInt__P6840_mk(s) {
     checkStack(s.depth);
@@ -57597,7 +57597,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitAdd__P6841.info = {"start":29523,"length":207,"line":807,"column":8,"endLine":810,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitAdd","argumentNames":["this","a","off"]}
+jacs_TopWriter_emitAdd__P6813.info = {"start":25522,"length":204,"line":743,"column":8,"endLine":746,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitAdd","argumentNames":["this","a","off"]}
 
 function jacs_TopWriter_emitAdd__P6841_mk(s) {
     checkStack(s.depth);
@@ -57685,7 +57685,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_terminateProc__P6849.info = {"start":36335,"length":367,"line":971,"column":8,"endLine":980,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"terminateProc","argumentNames":["this","proc"]}
+jacs_TopWriter_terminateProc__P6821.info = {"start":32170,"length":358,"line":907,"column":8,"endLine":916,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"terminateProc","argumentNames":["this","proc"]}
 
 function jacs_TopWriter_terminateProc__P6849_mk(s) {
     checkStack(s.depth);
@@ -58115,7 +58115,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitValue__P6837.info = {"start":27836,"length":983,"line":758,"column":8,"endLine":787,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitValue","argumentNames":["this","trg","modifiers","defl"]}
+jacs_TopWriter_emitValue__P6809.info = {"start":23884,"length":954,"line":694,"column":8,"endLine":723,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitValue","argumentNames":["this","trg","modifiers","defl"]}
 
 function jacs_TopWriter_emitValue__P6837_mk(s) {
     checkStack(s.depth);
@@ -58418,7 +58418,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitAddSeq__P6835.info = {"start":25177,"length":2373,"line":691,"column":8,"endLine":747,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitAddSeq","argumentNames":["this","mods","target","defl","clear"]}
+jacs_TopWriter_emitAddSeq__P6807.info = {"start":21292,"length":2317,"line":627,"column":8,"endLine":683,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitAddSeq","argumentNames":["this","mods","target","defl","clear"]}
 
 function jacs_TopWriter_emitAddSeq__P6835_mk(s) {
     checkStack(s.depth);
@@ -58508,7 +58508,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-addOrSet_inline__P22420.info = {"start":25415,"length":270,"line":698,"column":29,"endLine":706,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["vv"]}
+addOrSet_inline__P21964.info = {"start":21523,"length":262,"line":634,"column":29,"endLine":642,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["vv"]}
 
 function addOrSet_inline__P22420_mk(s) {
     checkStack(s.depth);
@@ -58555,7 +58555,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitAddSeq_inline__P22491.info = {"start":26777,"length":100,"line":728,"column":28,"endLine":730,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitAddSeq_inline__P22035.info = {"start":22855,"length":98,"line":664,"column":28,"endLine":666,"endColumn":29,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitAddSeq_inline__P22491_mk(s) {
     checkStack(s.depth);
@@ -58667,7 +58667,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_modExpr__P6833.info = {"start":24214,"length":606,"line":666,"column":8,"endLine":679,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"modExpr","argumentNames":["this","mod"]}
+jacs_TopWriter_modExpr__P6805.info = {"start":20354,"length":593,"line":602,"column":8,"endLine":615,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"modExpr","argumentNames":["this","mod"]}
 
 function jacs_TopWriter_modExpr__P6833_mk(s) {
     checkStack(s.depth);
@@ -58760,7 +58760,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_constantFold__P6834.info = {"start":24832,"length":333,"line":681,"column":8,"endLine":689,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"constantFold","argumentNames":["this","mods","defl"]}
+jacs_TopWriter_constantFold__P6806.info = {"start":20957,"length":325,"line":617,"column":8,"endLine":625,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"constantFold","argumentNames":["this","mods","defl"]}
 
 function jacs_TopWriter_constantFold__P6834_mk(s) {
     checkStack(s.depth);
@@ -58819,7 +58819,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_breaksValSeq__P6836.info = {"start":27562,"length":262,"line":749,"column":8,"endLine":756,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"breaksValSeq","argumentNames":["this","mod"]}
+jacs_TopWriter_breaksValSeq__P6808.info = {"start":23619,"length":255,"line":685,"column":8,"endLine":692,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"breaksValSeq","argumentNames":["this","mod"]}
 
 function jacs_TopWriter_breaksValSeq__P6836_mk(s) {
     checkStack(s.depth);
@@ -58882,7 +58882,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRuleActuator__P6845.info = {"start":34528,"length":369,"line":924,"column":8,"endLine":932,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRuleActuator","argumentNames":["this","name","rule"]}
+jacs_TopWriter_emitRuleActuator__P6817.info = {"start":30410,"length":361,"line":860,"column":8,"endLine":868,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRuleActuator","argumentNames":["this","name","rule"]}
 
 function jacs_TopWriter_emitRuleActuator__P6845_mk(s) {
     checkStack(s.depth);
@@ -58941,7 +58941,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRuleActuator_inline__P22601.info = {"start":34678,"length":126,"line":926,"column":37,"endLine":929,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
+jacs_TopWriter_emitRuleActuator_inline__P22145.info = {"start":30558,"length":123,"line":862,"column":37,"endLine":865,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":["wr"]}
 
 function jacs_TopWriter_emitRuleActuator_inline__P22601_mk(s) {
     checkStack(s.depth);
@@ -59378,7 +59378,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRoleCommand__P6844.info = {"start":31397,"length":3119,"line":856,"column":8,"endLine":922,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRoleCommand","argumentNames":["this","rule"]}
+jacs_TopWriter_emitRoleCommand__P6816.info = {"start":27347,"length":3053,"line":792,"column":8,"endLine":858,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitRoleCommand","argumentNames":["this","rule"]}
 
 function jacs_TopWriter_emitRoleCommand__P6844_mk(s) {
     checkStack(s.depth);
@@ -59438,7 +59438,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-currValue_inline__P22628.info = {"start":31595,"length":31,"line":859,"column":30,"endLine":859,"endColumn":61,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+currValue_inline__P22172.info = {"start":27542,"length":31,"line":795,"column":30,"endLine":795,"endColumn":61,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function currValue_inline__P22628_mk(s) {
     checkStack(s.depth);
@@ -59503,7 +59503,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitRoleCommand_inline__P22713.info = {"start":33038,"length":352,"line":887,"column":24,"endLine":895,"endColumn":25,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitRoleCommand_inline__P22257.info = {"start":28957,"length":344,"line":823,"column":24,"endLine":831,"endColumn":25,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitRoleCommand_inline__P22713_mk(s) {
     checkStack(s.depth);
@@ -59714,7 +59714,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitPossibleLoop__P6843.info = {"start":29998,"length":1387,"line":819,"column":8,"endLine":854,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitPossibleLoop","argumentNames":["this","rule"]}
+jacs_TopWriter_emitPossibleLoop__P6815.info = {"start":25985,"length":1352,"line":755,"column":8,"endLine":790,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitPossibleLoop","argumentNames":["this","rule"]}
 
 function jacs_TopWriter_emitPossibleLoop__P6843_mk(s) {
     checkStack(s.depth);
@@ -59768,7 +59768,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitPossibleLoop_inline__P22858.info = {"start":31240,"length":133,"line":849,"column":46,"endLine":853,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitPossibleLoop_inline__P22402.info = {"start":27197,"length":129,"line":785,"column":46,"endLine":789,"endColumn":13,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitPossibleLoop_inline__P22858_mk(s) {
     checkStack(s.depth);
@@ -59803,7 +59803,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitPossibleLoop_inline__P22860.info = {"start":31281,"length":76,"line":850,"column":32,"endLine":852,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
+jacs_TopWriter_emitPossibleLoop_inline__P22404.info = {"start":27237,"length":74,"line":786,"column":32,"endLine":788,"endColumn":17,"fileName":"jacs_topwriter.ts","functionName":"inline","argumentNames":[]}
 
 function jacs_TopWriter_emitPossibleLoop_inline__P22860_mk(s) {
     checkStack(s.depth);
@@ -59926,7 +59926,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_loopModifierIdx__P6842.info = {"start":29742,"length":244,"line":812,"column":8,"endLine":817,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"loopModifierIdx","argumentNames":["this","rule"]}
+jacs_TopWriter_loopModifierIdx__P6814.info = {"start":25736,"length":239,"line":748,"column":8,"endLine":753,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"loopModifierIdx","argumentNames":["this","rule"]}
 
 function jacs_TopWriter_loopModifierIdx__P6842_mk(s) {
     checkStack(s.depth);
@@ -60655,7 +60655,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_baseModifiers__P6838.info = {"start":28831,"length":307,"line":789,"column":8,"endLine":795,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"baseModifiers","argumentNames":["this","rule"]}
+jacs_TopWriter_baseModifiers__P6810.info = {"start":24848,"length":301,"line":725,"column":8,"endLine":731,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"baseModifiers","argumentNames":["this","rule"]}
 
 function jacs_TopWriter_baseModifiers__P6838_mk(s) {
     checkStack(s.depth);
@@ -60886,7 +60886,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitValueOut__P6839.info = {"start":29150,"length":151,"line":797,"column":8,"endLine":799,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitValueOut","argumentNames":["this","rule","defl"]}
+jacs_TopWriter_emitValueOut__P6811.info = {"start":25159,"length":149,"line":733,"column":8,"endLine":735,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitValueOut","argumentNames":["this","rule","defl"]}
 
 function jacs_TopWriter_emitValueOut__P6839_mk(s) {
     checkStack(s.depth);
@@ -60998,7 +60998,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-jacs_TopWriter_emitLogString__P4170.info = {"start":43005,"length":433,"line":1124,"column":8,"endLine":1135,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitLogString","argumentNames":["this","str","arg"]}
+jacs_TopWriter_emitLogString__P4154.info = {"start":36978,"length":422,"line":1027,"column":8,"endLine":1038,"endColumn":9,"fileName":"jacs_topwriter.ts","functionName":"emitLogString","argumentNames":["this","str","arg"]}
 
 function jacs_TopWriter_emitLogString__P4170_mk(s) {
     checkStack(s.depth);
@@ -63704,17 +63704,12 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_28, "label", "random counter");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_28, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk02IiwiTTIyIiwiTTEwIl19LHsiUyI6WyJTMiJdLCJBIjpbIkE5QiJdLCJGIjpbIkYzIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMTAiXSwiTSI6WyJNMjBBIl19LHsiUyI6WyJTMiJdLCJBIjpbIkE5QiJdLCJGIjpbIkY0Il0sIk0iOlsiTTIwQiIsIk02Il19LHsiUyI6WyJTOUIiXSwiQSI6WyJBNSJdLCJGIjpbIkYyMEEiXSwiTSI6WyJNMTUoMDAwMDAwMTAxMDAwMDAwMTAwMDEwMTExMCkiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC4yNyJ9");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_28);
-    r0 = pxsim_pxtrt.mkMap();
-    s.tmp_29 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_29, "label", "slider");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_29, "b64", "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzExIl0sIkEiOlsiQTEwIl0sIkYiOlsiRjgiXSwiTSI6WyJNNiJdfSx7IlMiOlsiUzExIl0sIkEiOlsiQTEwIl0sIkYiOlsiRjkiXSwiTSI6WyJNNyJdfSx7IlMiOlsiUzExIl0sIkEiOlsiQTEwIl0sIkYiOlsiRjEwIl0sIk0iOlsiTTgiXX0seyJTIjpbIlMxMSJdLCJBIjpbIkExMCJdLCJGIjpbIkYxMSJdLCJNIjpbIk05Il19LHsiUyI6WyJTMTEiXSwiQSI6WyJBMTAiXSwiRiI6WyJGMTIiXSwiTSI6WyJNMTAiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC4yOCJ9");
-    r0 = pxsim_Array__push(s.tmp_1, s.tmp_29);
-    s.s___23746 = (s.tmp_1);
-    r0 = s.s___23746;
+    s.s___23298 = (s.tmp_1);
+    r0 = s.s___23298;
     return leave(s, r0)
   default: oops()
 } } }
-microcode_rawSamples__P4263.info = {"start":333,"length":20889,"line":14,"column":4,"endLine":166,"endColumn":5,"fileName":"samples.ts","functionName":"rawSamples","argumentNames":[]}
+microcode_rawSamples__P4246.info = {"start":319,"length":20210,"line":14,"column":4,"endLine":162,"endColumn":5,"fileName":"samples.ts","functionName":"rawSamples","argumentNames":[]}
 
 function microcode_rawSamples__P4263_mk(s) {
     checkStack(s.depth);
@@ -63750,8 +63745,7 @@ function microcode_rawSamples__P4263_mk(s) {
   tmp_26: undefined,
   tmp_27: undefined,
   tmp_28: undefined,
-  tmp_29: undefined,
-  s___23746: undefined,
+  s___23298: undefined,
 } }
 
 
@@ -64406,7 +64400,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_samples__P4264.info = {"start":21230,"length":310,"line":168,"column":4,"endLine":176,"endColumn":5,"fileName":"samples.ts","functionName":"samples","argumentNames":["withIcon"]}
+microcode_samples__P4247.info = {"start":20535,"length":302,"line":164,"column":4,"endLine":172,"endColumn":5,"fileName":"samples.ts","functionName":"samples","argumentNames":["withIcon"]}
 
 function microcode_samples__P4264_mk(s) {
     checkStack(s.depth);
@@ -64475,7 +64469,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-map_inline__P23960.info = {"start":21356,"length":33,"line":171,"column":20,"endLine":171,"endColumn":53,"fileName":"samples.ts","functionName":"inline","argumentNames":["map.inline"]}
+map_inline__P23512.info = {"start":20658,"length":33,"line":167,"column":20,"endLine":167,"endColumn":53,"fileName":"samples.ts","functionName":"inline","argumentNames":["map.inline"]}
 
 function map_inline__P23960_mk(s) {
     checkStack(s.depth);
@@ -64581,7 +64575,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_samples_inline__P23969.info = {"start":21427,"length":91,"line":173,"column":16,"endLine":174,"endColumn":56,"fileName":"samples.ts","functionName":"inline","argumentNames":["microcode.samples.inline"]}
+microcode_samples_inline__P23521.info = {"start":20727,"length":90,"line":169,"column":16,"endLine":170,"endColumn":56,"fileName":"samples.ts","functionName":"inline","argumentNames":["microcode.samples.inline"]}
 
 function microcode_samples_inline__P23969_mk(s) {
     checkStack(s.depth);
