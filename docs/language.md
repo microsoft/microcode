@@ -189,7 +189,7 @@ MicroCode will detect [Jacdac](https://aka.ms/jacdac) modules and automatically 
 #### User inputs
 
 -   ![slider](./images/generated/icon_S11.png){:class="icon"} `slider` measures the position of a physical slider (1-5, where 1 is minimum position and 5 is maximum position)
--   ![dial](./images/generated/icon_S12.png){:class="icon"} `dial` triggers two events (turn left and turn right)
+-   ![dial](./images/generated/icon_S12.png){:class="icon"} `dial` has two associated events: turn left ![turn left](./images/generated/icon_F21L.png){:class="icon"} and turn right ![turn right](./images/generated/icon_F21R.png){:class="icon"}
 -   ![key](./images/generated/icon_F5.png){:class="icon"} `key` is available in the press/release event.
 
 ### DO modules
