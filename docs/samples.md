@@ -63,10 +63,16 @@ micro:bits.
 -   [zombie detector](./samples/zombie-detector)
 -   [green light red light](./samples/green-light-red-light)
 
-## Accessories
+## Jacdac modules
 
-These sample use [Jacdac](https://aka.ms/jacdac) module
-to extend the micro:bit with LEDs, servos and other accessories.
+These samples use [Jacdac](https://aka.ms/jacdac) modules to extend the capabilities of the
+micro:bit. The programming tiles for the modules appear in MicroCode when the modules are
+plugged in (either via a Jacdaptor or the Kittenbot shield)
 
 -   [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon"} railroad crossing](./samples/railroad-crossing)
 -   [inchworm robot](./samples/inchworm)
+-   [measure light](./samples/light-levels)
+-   [detect magnet](./samples/magnet-levels)
+-   [slider](./samples)
+-   [turn dial](./samples)
+-   [push keys](./samples)
