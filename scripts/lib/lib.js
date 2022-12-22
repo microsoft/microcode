@@ -31,6 +31,24 @@ function hsv(hue, sat, val) {
 }
 
 
+function get_rotary(/** @type RotaryEncoderRole */ rotary) {
+    return rotary.position.read()
+}
+
+function slider_1_to_5(/** @type PotentiometerRole */ potentiometer) {
+    var slider = potentiometer.position.read()
+    return Math.round(4 * slider) + 1
+}
+
+function light_1_to_5(/** @type LightLevelRole */ light) {
+    return Math.round(4 * light.lightLevel.read()) + 1
+}
+
+function magnet_1_to_5(/** @type MagneticFieldLevelRole */ magnet) {
+    var level = Math.abs(magnet.strength.read())
+    return Math.round(4 * level) + 1
+}
+
 function led_set_color(idx, color) {
     idx = idx * 3
     packet.setAt(idx, "u8", (color >> 16) & 0xff)

@@ -63,10 +63,16 @@ micro:bits.
 -   [zombie detector](./samples/zombie-detector)
 -   [green light red light](./samples/green-light-red-light)
 
-## Accessories
+## Jacdac modules
 
-These sample use [Jacdac](https://aka.ms/jacdac) module
-to extend the micro:bit with LEDs, servos and other accessories.
+These samples use [Jacdac](https://aka.ms/jacdac) modules to extend the capabilities of the
+micro:bit. The programming tiles for the modules appear in MicroCode when the modules are
+plugged in (either via a Jacdaptor or the Kittenbot shield). All the modules from [Kittenbot Jacdac Kit A](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacstarterkitawithjacdaptorformicrobitv2v10/) are supported.
 
 -   [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon"} railroad crossing](./samples/railroad-crossing)
 -   [inchworm robot](./samples/inchworm)
+-   [![measure light](./images/generated/icon_S5.png){:class="icon"} measure light](./samples/light-levels)
+-   [![detect magnet](./images/generated/icon_S10.png){:class="icon"} detect magnet](./samples/magnet-levels)
+-   [![slider](./images/generated/icon_S11.png){:class="icon"} slider](./samples/slider-levels)
+-   [![dial](./images/generated/icon_S12.png){:class="icon"} turn dial](./samples/count-turns)
+-   [![key demo](./images/generated/icon_F5.png){:class="icon"} key demo](./samples/key-demo)

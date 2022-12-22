@@ -175,13 +175,22 @@ after `repeat` determine the number of iterations. If no value is given, it repe
 
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![logo](./images/generated/icon_F7.png){:class="icon"} micro:bit logo, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} show image happy animation and ![repeat](./images/generated/icon_M23.png){:class="icon"} repeat ![value 3](./images/generated/icon_M8.png){:class="icon"} 3 times.
 
-## Accessories (Jacdac Modules) {#jacdac}
+## Jacdac Modules {#jacdac}
 
-MicroCode will detect [Jacdac](https://aka.ms/jacdac) module and automatically display tiles for some of them.
+MicroCode will detect [Jacdac](https://aka.ms/jacdac) modules and automatically display tiles for some of them. Tiles are available for all modules in [Kittenbot Jacdac Kit A](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacstarterkitawithjacdaptorformicrobitv2v10/). Tiles appear when the modules are connected.
 
 ### WHEN modules
 
--   ![magnet detector](./images/generated/icon_S10.png){:class="icon"} `magnet detector` detects the presence of a magnet,
+#### Sensors
+
+-   ![magnet sensor](./images/generated/icon_S10.png){:class="icon"} `magnet sensor` detects the presence of a magnet (levels 1 - 5, where 1 means no magnet present and 5 means strong presence of magnetic field)
+-   ![light sensor](./images/generated/icon_S5.png){:class="icon"} `light sensor` measures the amount of light (levels 1 - 5, where 1 means little light present and 5 means a lot of light present)
+
+#### User inputs
+
+-   ![slider](./images/generated/icon_S11.png){:class="icon"} `slider` measures the position of a physical slider (1-5, where 1 is minimum position and 5 is maximum position)
+-   ![dial](./images/generated/icon_S12.png){:class="icon"} `dial` has two associated events: turn left ![turn left](./images/generated/icon_F21L.png){:class="icon"} and turn right ![turn right](./images/generated/icon_F21R.png){:class="icon"}
+-   ![key](./images/generated/icon_F5.png){:class="icon"} `key` is available in the press/release event.
 
 ### DO modules
 

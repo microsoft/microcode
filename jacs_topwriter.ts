@@ -108,7 +108,10 @@ namespace jacs {
             if (!this.dispatcher) {
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
-                    if (needsWakeup.indexOf(this.classIdentifier) >= 0) {
+                    const wakeup = needsWakeup.find(
+                        r => r.classId == this.classIdentifier
+                    )
+                    if (wakeup) {
                         wr.emitStmt(Op.STMT3_QUERY_REG, [
                             this.emit(wr),
                             literal(JD_REG_STREAMING_SAMPLES),
@@ -136,6 +139,68 @@ namespace jacs {
                     this.top = wr.mkLabel("tp")
                     wr.emitLabel(this.top)
                     wr.emitStmt(Op.STMT1_WAIT_ROLE, [this.emit(wr)])
+                    if (wakeup && wakeup.convert) {
+                        const roleGlobal = this.parent.lookupGlobal(
+                            "z_role" + this.index
+                        )
+                        const roleGlobalChanged = this.parent.lookupGlobal(
+                            "z_role_c" + this.index
+                        )
+                        roleGlobalChanged.write(wr, literal(0))
+                        this.parent.callLinked(wakeup.convert, [this.emit(wr)])
+                        wr.emitIf(
+                            wr.emitExpr(Op.EXPR2_NE, [
+                                wr.emitExpr(Op.EXPR0_RET_VAL, []),
+                                roleGlobal.read(wr),
+                            ]),
+                            () => {
+                                roleGlobal.write(
+                                    wr,
+                                    wr.emitExpr(Op.EXPR0_RET_VAL, [])
+                                )
+                                roleGlobalChanged.write(wr, literal(1))
+                            }
+                        )
+                    } else if (
+                        this.classIdentifier == serviceClasses.rotaryEncoder
+                    ) {
+                        const rotaryVar = this.parent.lookupGlobal(
+                            "z_rotary" + this.index
+                        )
+                        const rotaryVarChanged = this.parent.lookupGlobal(
+                            "z_rotary_changed" + this.index
+                        )
+                        rotaryVarChanged.write(wr, literal(0))
+                        this.parent.callLinked("get_rotary", [this.emit(wr)])
+                        wr.emitIf(
+                            wr.emitExpr(Op.EXPR2_NE, [
+                                wr.emitExpr(Op.EXPR0_RET_VAL, []),
+                                rotaryVar.read(wr),
+                            ]),
+                            () => {
+                                wr.emitIf(
+                                    wr.emitExpr(Op.EXPR2_LT, [
+                                        rotaryVar.read(wr),
+                                        wr.emitExpr(Op.EXPR0_RET_VAL, []),
+                                    ]),
+                                    () => {
+                                        rotaryVar.write(
+                                            wr,
+                                            wr.emitExpr(Op.EXPR0_RET_VAL, [])
+                                        )
+                                        rotaryVarChanged.write(wr, literal(1))
+                                    },
+                                    () => {
+                                        rotaryVar.write(
+                                            wr,
+                                            wr.emitExpr(Op.EXPR0_RET_VAL, [])
+                                        )
+                                        rotaryVarChanged.write(wr, literal(2))
+                                    }
+                                )
+                            }
+                        )
+                    }
                 })
             }
             return this.dispatcher
@@ -502,7 +567,7 @@ namespace jacs {
             wr.emitStmt(Op.STMT2_SET_PKT, [this.emitString(buf), literal(0)])
         }
 
-        private callLinked(name: string, parms: Value[]) {
+        callLinked(name: string, parms: Value[]) {
             const proc = linkFunction(this, name)
             const args = this.writer.allocTmpLocals(parms.length)
             for (let i = 0; i < parms.length; ++i) args[i].store(parms[i])
@@ -575,7 +640,7 @@ namespace jacs {
             }
         }
 
-        private lookupGlobal(n: string) {
+        lookupGlobal(n: string) {
             let g = this.globals.find(v => v.name == n)
             if (!g) g = this.addGlobal(n)
             return g
@@ -990,8 +1055,14 @@ namespace jacs {
 
             const role = this.lookupSensorRole(rule)
             name += "_" + role.name
+            const wakeup = needsWakeup.find(
+                r => r.classId == role.classIdentifier
+            )
 
+            // get the procedure for this role
             this.withProcedure(role.getDispatcher(), wr => {
+                // because all rules with same role are put in same
+                // procedure, we need to make sure we are on the current page
                 this.ifCurrPage(() => {
                     const code = this.lookupEventCode(role, rule)
                     if (sensor.jdKind == microcode.JdKind.Radio) {
@@ -1005,6 +1076,27 @@ namespace jacs {
                                     wr.emitBufLoad(NumFmt.F64, 12)
                                 )
                                 filterValueIn(() => radioVar.read(wr))
+                            }
+                        )
+                    } else if (sensor.jdKind == microcode.JdKind.Rotary) {
+                        const rotaryVarChanged = this.lookupGlobal(
+                            "z_rotary_changed" + role.index
+                        )
+                        this.ifEq(rotaryVarChanged.read(wr), code, emitBody)
+                    } else if (wakeup && wakeup.convert) {
+                        const roleGlobal = this.lookupGlobal(
+                            "z_role" + role.index
+                        )
+                        const roleGlobalChanged = this.lookupGlobal(
+                            "z_role_c" + role.index
+                        )
+                        wr.emitIf(
+                            wr.emitExpr(Op.EXPR2_EQ, [
+                                literal(1),
+                                roleGlobalChanged.read(wr),
+                            ]),
+                            () => {
+                                filterValueIn(() => roleGlobal.read(wr))
                             }
                         )
                     } else if (code != null) {
@@ -1146,7 +1238,15 @@ namespace jacs {
         }
     }
 
-    export const needsWakeup = [0x14ad1a5d, 0x1f140409, 0x17dc9a1c]
+    export const needsWakeup = [
+        { classId: 0x14ad1a5d, convert: undefined }, // soundLevel
+        { classId: 0x1f140409, convert: undefined }, // accelerometer
+        { classId: 0x17dc9a1c, convert: "light_1_to_5" }, // JD light level
+        { classId: 0x1f274746, convert: "slider_1_to_5" }, // JD slider
+        { classId: 0x10fa29c9, convert: undefined }, // JD rotary
+        { classId: 0x12fe180f, convert: "magnet_1_to_5" }, // JD magnet
+    ]
+
     export const needsEnable = [0x1ac986cf, 0x12fc9103]
 
     export const serviceClasses: SMap<number> = {
@@ -1177,6 +1277,7 @@ namespace jacs {
 
     export const JD_REG_STREAMING_SAMPLES = 3
     export const JD_REG_INTENSITY = 1
+    export const JD_REG_READING = 0x101
 
     // delay on sending stuff in pipes and changing pages
     export const ANTI_FREEZE_DELAY = 50

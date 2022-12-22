@@ -48,6 +48,7 @@ namespace microcode {
         ExtLibFn, // call external function P(P2)
         Timespan,
         RadioValue,
+        Rotary,
 
         Loop, // repeat modifier
 
@@ -73,9 +74,17 @@ namespace microcode {
         jdKind: JdKind
         jdParam: any
         jdParam2: number
+        jdExternalClass: number
 
         isVisible() {
-            // if needed, use negative priority?
+            if (this.jdExternalClass && !jacs.debugOut) {
+                const count = jdc.numServiceInstances(this.jdExternalClass)
+                // special case for buttons, which already exist on micro:bit (6 of them)
+                // we also have light sensor on board micro:bit (1 of them), as well as in Kit A
+                return this.jdExternalClass == 0x1473a263
+                    ? count > 6
+                    : count > 0
+            }
             return true
         }
 
@@ -181,14 +190,6 @@ namespace microcode {
 
         public serviceClassName: string
         public serviceInstanceIndex: number = 0
-        public jdExternalClass: number
-
-        isVisible() {
-            if (!super.isVisible()) return false
-            if (this.jdExternalClass && !jacs.debugOut)
-                return jdc.numServiceInstances(this.jdExternalClass) > 0
-            return true
-        }
     }
 
     export class SensorDefn extends StmtTileDefn {
@@ -471,6 +472,14 @@ namespace microcode {
         }
     }
 
+    function isTerminal(tile: TileDefn) {
+        return (
+            tile.constraints &&
+            tile.constraints.handling &&
+            tile.constraints.handling["terminal"]
+        )
+    }
+
     export class Language {
         public static getTileSuggestions(
             rule: RuleDefn,
@@ -495,9 +504,9 @@ namespace microcode {
             if (existing.length) {
                 const last = existing[existing.length - 1]
                 if (
-                    last.constraints &&
-                    last.constraints.handling &&
-                    last.constraints.handling["terminal"]
+                    isTerminal(last) ||
+                    (name === "filters" && isTerminal(rule.sensors[0])) ||
+                    (name === "modifiers" && isTerminal(rule.actuators[0]))
                 ) {
                     return []
                 }

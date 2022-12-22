@@ -64,6 +64,9 @@ namespace microcode {
             this.reg[TID_SENSOR_CUP_Y_WRITTEN] = icondb.cupYwritten
             this.reg[TID_SENSOR_CUP_Z_WRITTEN] = icondb.cupZwritten
             this.reg[TID_SENSOR_MAGNET] = icondb.magnet
+            this.reg[TID_SENSOR_SLIDER] = icondb.kita_slider
+            this.reg[TID_SENSOR_ROTARY] = icondb.kita_rotary
+            this.reg[TID_SENSOR_LIGHT] = icondb.light_sensor
             this.reg[TID_SENSOR_START_PAGE] = icondb.tile_start_page
 
             // filters
@@ -73,6 +76,9 @@ namespace microcode {
             this.reg[TID_FILTER_PIN_2] = icondb.tile_pin_2
             this.reg[TID_FILTER_BUTTON_A] = icondb.tile_button_a
             this.reg[TID_FILTER_BUTTON_B] = icondb.tile_button_b
+            this.reg[TID_FILTER_KITA_KEY_1] = icondb.kita_key_1
+            this.reg[TID_FILTER_KITA_KEY_2] = icondb.kita_key_2
+
             this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short
             this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long
             this.reg[TID_FILTER_TIMESPAN_VERY_LONG] =
@@ -88,6 +94,8 @@ namespace microcode {
             this.reg[TID_FILTER_CUP_X_READ] = icondb.cupXread
             this.reg[TID_FILTER_CUP_Y_READ] = icondb.cupYread
             this.reg[TID_FILTER_CUP_Z_READ] = icondb.cupZread
+            this.reg[TID_FILTER_ROTARY_LEFT] = icondb.kita_rotary_left
+            this.reg[TID_FILTER_ROTARY_RIGHT] = icondb.kita_rotary_right
 
             // actuators
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
@@ -1288,6 +1296,25 @@ namespace icondb {
     . . . b b b b b b b . . 6 5 5 5 
     . . . . . . . . . . . . . 5 5 4 
     . . . . . . . . . . 6 . . 4 4 .   
+`
+
+    export const light_sensor = img`
+. . . . . . . . . . . . . . . .
+. . 8 8 8 8 5 5 5 8 8 8 8 . . .
+. . 8 8 8 5 4 4 4 5 8 8 8 . . .
+. . 8 8 8 5 4 4 4 5 8 8 8 . . .
+. . 8 8 8 5 4 4 4 5 8 8 8 . . .
+. . 8 8 8 8 5 5 5 8 8 8 8 . . .
+. . 8 8 5 8 8 8 8 8 5 8 8 . . .
+. . 8 5 8 8 8 5 8 8 8 5 8 . . .
+. . 8 8 8 5 8 8 8 5 8 8 8 . . .
+. . 8 8 5 8 8 5 8 8 5 8 8 . . .
+. . 8 5 8 8 8 8 8 8 8 5 8 . . .
+. . 8 8 8 8 8 5 8 8 8 8 8 . . .
+. . 8 8 8 8 8 8 8 8 8 8 8 5 5 5
+. . 8 8 8 2 2 2 2 2 8 8 8 5 5 5
+. . 8 f f f f f f f f f 8 5 5 4
+. . . . . . . . . . . . . 4 4 .
 `
 
     export const microphone = img`
@@ -2573,6 +2600,118 @@ bffffffffffffffffffffffffffffffb
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
     `
+    export const kita_slider = img`
+        . . . . . . 6 6 6 6 6 . . . . .
+        . . . . . 6 6 6 f 6 6 6 . . . .
+        . . . . . 6 6 f f f 6 6 . . . .
+        . . . . . 6 6 f c f 6 6 . . . .
+        . . . . . 6 6 f c f 6 6 . . . .
+        . . . . . 6 6 f c f 6 6 . . . .
+        . . . . . 6 6 f c f 6 6 . . . .
+        . . . . . 6 9 9 9 9 9 6 . . . .
+        . . . . . 6 9 9 9 9 9 6 . . . .
+        . . . . . 6 6 f c f 6 6 . . . .
+        . . . . . 6 6 f c f 6 6 . . . .
+        . . . . . 6 6 f c f 6 6 . . . .
+        . . . . . 6 6 f c f 6 6 . 5 5 5
+        . . . . . 6 6 f f f 6 6 . 5 5 5
+        . . . . . 6 6 6 f 6 6 6 . 5 5 4
+        . . . . . . 6 6 6 6 6 . . 4 4 .
+    `
+    export const kita_key_1 = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . 6 6 6 6 6 6 6 6 . . . . .
+        . . 6 6 6 6 6 6 6 6 6 6 . . . .
+        . . 6 c f f f f f f c 6 . . f .
+        . . 6 f f c c c c f f 6 . f f .
+        . . 6 f c f f f f c f 6 . . f .
+        . . 6 f c f f f f c f 6 . . f .
+        . . 6 f c f f f f c f 6 . f f f
+        . . 6 f c f f f f c f 6 . . . .
+        . . 6 f f c c c c f f 6 . . . .
+        . . 6 c f f f f f f c 6 . . . .
+        . . 6 6 6 6 6 6 6 6 6 6 . 5 5 5
+        . . . 6 6 6 6 6 6 6 6 . . 5 5 5
+        . . . . . . . . . . . . . 5 5 4
+        . . . . . . . . . . . . . 4 4 .
+    `
+    export const kita_key_2 = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . 6 6 6 6 6 6 6 6 . . . . .
+        . . 6 6 6 6 6 6 6 6 6 6 . . . .
+        . . 6 c f f f f f f c 6 . f f .
+        . . 6 f f c c c c f f 6 . . . f
+        . . 6 f c f f f f c f 6 . . f .
+        . . 6 f c f f f f c f 6 . f . .
+        . . 6 f c f f f f c f 6 . f f f
+        . . 6 f c f f f f c f 6 . . . .
+        . . 6 f f c c c c f f 6 . . . .
+        . . 6 c f f f f f f c 6 . . . .
+        . . 6 6 6 6 6 6 6 6 6 6 . 5 5 5
+        . . . 6 6 6 6 6 6 6 6 . . 5 5 5
+        . . . . . . . . . . . . . 5 5 4
+        . . . . . . . . . . . . . 4 4 .
+    `
+
+    export const kita_rotary = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . 6 6 6 6 6 6 6 . . . . .
+        . . . 6 6 6 6 6 6 6 6 6 . . . .
+        . . 6 6 6 d d d d d 6 6 6 . . .
+        . . 6 6 d f f 1 f f d 6 6 . . .
+        . . 6 d f f f 1 f f f d 6 . . .
+        . . 6 d f f f 1 f f f d 6 . . .
+        . . 6 d f f f f f f f d 6 . . .
+        . . 6 d f f f f f f f d 6 . . .
+        . . 6 6 d f f f f f d 6 6 . . .
+        . . 6 6 6 d d d d d 6 6 6 . . .
+        . . . 6 6 6 6 6 6 6 6 6 . 5 5 5
+        . . . . 6 6 6 6 6 6 6 . . 5 5 5
+        . . . . . . . . . . . . . 5 5 4
+        . . . . . . . . . . . . . 4 4 .
+    `
+
+    export const kita_rotary_left = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . 9 9 9 9 8 . . . . .
+    . . . . . 9 9 9 9 9 8 . . . . .
+    . . . . 9 9 9 8 . . . . . . . .
+    . . . . 9 9 8 . . . . . . . . .
+    . . . . 9 9 8 . . . . . . . . .
+    . . 9 9 9 9 9 9 8 . . . . . . .
+    . . . 9 9 9 9 8 . . . . . . . .
+    . . . . 9 9 8 . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+
+    export const kita_rotary_right = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . 8 9 9 9 9 . . . . . .
+    . . . . . 8 9 9 9 9 9 . . . . .
+    . . . . . . . . 8 9 9 9 . . . .
+    . . . . . . . . . 8 9 9 . . . .
+    . . . . . . . . . 8 9 9 . . . .
+    . . . . . . . 8 9 9 9 9 9 9 . .
+    . . . . . . . . 8 9 9 9 9 . . .
+    . . . . . . . . . 8 9 9 . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+
     /* maybe use these later
     export const rc_high = img`
         . . . . . . . . . . . . . . . .

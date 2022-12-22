@@ -28,6 +28,8 @@ namespace microcode {
     export const TID_SENSOR_CUP_Y_WRITTEN = "S9B"
     export const TID_SENSOR_CUP_Z_WRITTEN = "S9C"
     export const TID_SENSOR_MAGNET = "S10"
+    export const TID_SENSOR_SLIDER = "S11"
+    export const TID_SENSOR_ROTARY = "S12"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -35,7 +37,9 @@ namespace microcode {
     export const TID_FILTER_PIN_2 = "F2"
     export const TID_FILTER_BUTTON_A = "F3"
     export const TID_FILTER_BUTTON_B = "F4"
-    // F6
+    export const TID_FILTER_KITA_KEY_1 = "F5"
+    export const TID_FILTER_KITA_KEY_2 = "F6"
+
     export const TID_FILTER_LOGO = "F7"
     export const TID_FILTER_COIN_1 = "F8"
     export const TID_FILTER_COIN_2 = "F9"
@@ -57,6 +61,8 @@ namespace microcode {
     export const TID_FILTER_CUP_X_READ = "F20A"
     export const TID_FILTER_CUP_Y_READ = "F20B"
     export const TID_FILTER_CUP_Z_READ = "F20C"
+    export const TID_FILTER_ROTARY_LEFT = "F21L"
+    export const TID_FILTER_ROTARY_RIGHT = "F21R"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -175,6 +181,7 @@ namespace microcode {
             tilesDB.filters[tid] = press_filter
             press_filter.jdKind = JdKind.ServiceInstanceIndex
             press_filter.jdParam = instanceNo
+            return press_filter
         }
 
         addPressFilter(TID_FILTER_BUTTON_A, 0)
@@ -183,6 +190,10 @@ namespace microcode {
         addPressFilter(TID_FILTER_PIN_0, 3)
         addPressFilter(TID_FILTER_PIN_1, 4)
         addPressFilter(TID_FILTER_PIN_2, 5)
+        const kitA_1 = addPressFilter(TID_FILTER_KITA_KEY_1, 6)
+        const kitA_2 = addPressFilter(TID_FILTER_KITA_KEY_2, 7)
+        kitA_1.jdExternalClass = 0x1473a263
+        kitA_2.jdExternalClass = 0x1473a263
     }
 
     function addSensorAndFilterTiles() {
@@ -220,10 +231,47 @@ namespace microcode {
         radio_recv.jdKind = JdKind.Radio
         radio_recv.constraints.provides = [TID_SENSOR_RADIO_RECEIVE]
 
-        const magnet = makeSensor(TID_SENSOR_MAGNET, "no_filters", 500)
+        // the following three tiles are treated similarly, as
+        // the sensor values are mapped into [1,2,3,4,5]
+        const slider = makeSensor(TID_SENSOR_SLIDER, "value_in", 500)
+        slider.serviceClassName = "potentiometer"
+        slider.jdExternalClass = 0x1f274746
+        slider.constraints.allow.categories = []
+        slider.constraints.allow.tiles = [
+            TID_FILTER_COIN_1,
+            TID_FILTER_COIN_2,
+            TID_FILTER_COIN_3,
+            TID_FILTER_COIN_4,
+            TID_FILTER_COIN_5,
+        ]
+        slider.constraints.handling = { terminal: true }
+
+        const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
         magnet.serviceClassName = "magneticFieldLevel"
-        magnet.eventCode = 1
         magnet.jdExternalClass = 0x12fe180f
+        magnet.constraints = slider.constraints
+
+        const light = makeSensor(TID_SENSOR_LIGHT, "value_in", 500)
+        light.serviceClassName = "lightLevel"
+        light.jdExternalClass = 0x17dc9a1c
+        light.constraints = slider.constraints
+
+        const rotary = makeSensor(TID_SENSOR_ROTARY, "rotary_event", 500)
+        rotary.serviceClassName = "rotaryEncoder"
+        rotary.jdExternalClass = 0x10fa29c9
+        rotary.jdKind = JdKind.Rotary
+        rotary.eventCode = 1
+
+        function addRotaryEvent(tid: string, id: number) {
+            const rotaryEvent = new FilterDefn(tid, "rotary_event", 10)
+            rotaryEvent.jdParam = id
+            rotaryEvent.constraints = terminal
+            rotaryEvent.jdKind = JdKind.EventCode
+            tilesDB.filters[tid] = rotaryEvent
+            return rotaryEvent
+        }
+        addRotaryEvent(TID_FILTER_ROTARY_LEFT, 1)
+        addRotaryEvent(TID_FILTER_ROTARY_RIGHT, 2)
 
         const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
         timer.constraints = {
@@ -525,8 +573,7 @@ namespace microcode {
         loop.jdKind = JdKind.Loop
         tilesDB.modifiers[TID_MODIFIER_LOOP] = loop
         loop.priority = 80
-        loop.constraints = {}
-        loop.constraints.only = ["constant"]
+        loop.constraints = { only: ["constant"] }
     }
 
     export const iconFieldEditor: FieldEditor = {
