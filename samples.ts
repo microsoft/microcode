@@ -159,8 +159,12 @@ namespace microcode {
                 b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBOUEiXSwiRiI6WyJGMyJdLCJNIjpbIk02IiwiTTIyIiwiTTEwIl19LHsiUyI6WyJTMiJdLCJBIjpbIkE5QiJdLCJGIjpbIkYzIl19LHsiUyI6WyJTOUEiXSwiQSI6WyJBMTAiXSwiTSI6WyJNMjBBIl19LHsiUyI6WyJTMiJdLCJBIjpbIkE5QiJdLCJGIjpbIkY0Il0sIk0iOlsiTTIwQiIsIk02Il19LHsiUyI6WyJTOUIiXSwiQSI6WyJBNSJdLCJGIjpbIkYyMEEiXSwiTSI6WyJNMTUoMDAwMDAwMTAxMDAwMDAwMTAwMDEwMTExMCkiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC4yNyJ9",
             },
             {
-                label: "slider",
+                label: "slider levels",
                 b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzExIl0sIkEiOlsiQTEwIl0sIkYiOlsiRjgiXSwiTSI6WyJNNiJdfSx7IlMiOlsiUzExIl0sIkEiOlsiQTEwIl0sIkYiOlsiRjkiXSwiTSI6WyJNNyJdfSx7IlMiOlsiUzExIl0sIkEiOlsiQTEwIl0sIkYiOlsiRjEwIl0sIk0iOlsiTTgiXX0seyJTIjpbIlMxMSJdLCJBIjpbIkExMCJdLCJGIjpbIkYxMSJdLCJNIjpbIk05Il19LHsiUyI6WyJTMTEiXSwiQSI6WyJBMTAiXSwiRiI6WyJGMTIiXSwiTSI6WyJNMTAiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC4yOCJ9",
+            },
+            {
+                label: "light levels",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzUiXSwiQSI6WyJBMTAiXSwiRiI6WyJGOCJdLCJNIjpbIk02Il19LHsiUyI6WyJTNSJdLCJBIjpbIkExMCJdLCJGIjpbIkY5Il0sIk0iOlsiTTciXX0seyJTIjpbIlM1Il0sIkEiOlsiQTEwIl0sIkYiOlsiRjEwIl0sIk0iOlsiTTgiXX0seyJTIjpbIlM1Il0sIkEiOlsiQTEwIl0sIkYiOlsiRjExIl0sIk0iOlsiTTkiXX0seyJTIjpbIlM1Il0sIkEiOlsiQTEwIl0sIkYiOlsiRjEyIl0sIk0iOlsiTTEwIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuMjgifQ==",
             },
             {
                 label: "count turns",
