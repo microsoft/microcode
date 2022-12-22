@@ -177,20 +177,20 @@ after `repeat` determine the number of iterations. If no value is given, it repe
 
 ## Jacdac Modules {#jacdac}
 
-MicroCode will detect [Jacdac](https://aka.ms/jacdac) module and automatically display tiles for some of them.
+MicroCode will detect [Jacdac](https://aka.ms/jacdac) modules and automatically display tiles for some of them. Tiles are available for all modules in [Kittenbot Jacdac Kit A](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacstarterkitawithjacdaptorformicrobitv2v10/). Tiles appear when the modules are connected.
 
 ### WHEN modules
 
 #### Sensors
 
--   ![magnet sensor](./images/generated/icon_S10.png){:class="icon"} `magnet sensor` detects the presence of a magnet,
--   ![light sensor](./images/generated/icon_S5.png){:class="icon"} `light sensors` measures the amount of light
+-   ![magnet sensor](./images/generated/icon_S10.png){:class="icon"} `magnet sensor` detects the presence of a magnet (levels 1 - 5, where 1 means no magnet present and 5 means strong presence of magnetic field)
+-   ![light sensor](./images/generated/icon_S5.png){:class="icon"} `light sensor` measures the amount of light (levels 1 - 5, where 1 means little light present and 5 means a lot of light present)
 
 #### User inputs
 
--   ![slider](./images/generated/icon_S11.png){:class="icon"} `slider` XYZ
--   ![dial](./images/generated/icon_S12.png){:class="icon"} `dial` XYZ
--   ![key](./images/generated/icon_F5.png){:class="icon"} `key` XYZ
+-   ![slider](./images/generated/icon_S11.png){:class="icon"} `slider` measures the position of a physical slider (1-5, where 1 is minimum position and 5 is maximum position)
+-   ![dial](./images/generated/icon_S12.png){:class="icon"} `dial` triggers two events (turn left and turn right)
+-   ![key](./images/generated/icon_F5.png){:class="icon"} `key` is available in the press/release event.
 
 ### DO modules
 
