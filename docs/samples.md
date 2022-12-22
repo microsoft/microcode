@@ -74,5 +74,5 @@ plugged in (either via a Jacdaptor or the Kittenbot shield). All the modules fro
 -   [![measure light](./images/generated/icon_S5.png){:class="icon"} measure light](./samples/light-levels)
 -   [![detect magnet](./images/generated/icon_S10.png){:class="icon"}detect magnet](./samples/magnet-levels)
 -   [![slider](./images/generated/icon_S11.png){:class="icon"}slider](./samples/slider-levels)
--   [![dial](./images/generated/icon_S12.png){:class="icon"}turn dial](./samples)
--   [![key](./images/generated/icon_F5.png){:class="icon"} push keys](./samples)
+-   [![dial](./images/generated/icon_S12.png){:class="icon"}turn dial](./samples/count-turns)
+-   [![key](./images/generated/icon_F5.png){:class="icon"} push keys](./samples/key-demo)
