@@ -175,7 +175,7 @@ after `repeat` determine the number of iterations. If no value is given, it repe
 
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![logo](./images/generated/icon_F7.png){:class="icon"} micro:bit logo, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} show image happy animation and ![repeat](./images/generated/icon_M23.png){:class="icon"} repeat ![value 3](./images/generated/icon_M8.png){:class="icon"} 3 times.
 
-## Accessories (Jacdac Modules) {#jacdac}
+## Jacdac Modules {#jacdac}
 
 MicroCode will detect [Jacdac](https://aka.ms/jacdac) module and automatically display tiles for some of them.
 
