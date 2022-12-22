@@ -202,16 +202,17 @@ namespace microcode {
 
         addButtonTiles()
 
-        function makeCupSensor(tid: string, id: number) {
+        function makeCupSensor(tid: string, id: number, disallow: string) {
             const tile = makeSensor(tid, "value_in", 120 + id * 5)
             tile.jdKind = JdKind.Variable
             tile.jdParam = id
             tile.priority = 200 + id
+            tile.constraints.disallow = { tiles: [disallow] }
         }
 
-        makeCupSensor(TID_SENSOR_CUP_X_WRITTEN, 0)
-        makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, 1)
-        makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, 2)
+        makeCupSensor(TID_SENSOR_CUP_X_WRITTEN, 0, TID_FILTER_CUP_X_READ)
+        makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, 1, TID_FILTER_CUP_Y_READ)
+        makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, 2, TID_FILTER_CUP_Z_READ)
 
         const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
         radio_recv.serviceClassName = "radio"
@@ -478,23 +479,17 @@ namespace microcode {
         servoSetAngle.jdKind = JdKind.NumFmt
         servoSetAngle.jdParam = jacs.NumFmt.I32
 
-        if (false) {
-            function addFilterReadValue(
-                tid: string,
-                kind: JdKind,
-                varid: number
-            ) {
-                const filter = new FilterDefn(tid, "value_in", 10)
-                filter.jdParam = varid
-                filter.jdKind = kind
-                tilesDB.filters[tid] = filter
-                filter.priority = 200 + varid
-                return filter
-            }
-            addFilterReadValue(TID_FILTER_CUP_X_READ, JdKind.Variable, 0)
-            addFilterReadValue(TID_FILTER_CUP_Y_READ, JdKind.Variable, 1)
-            addFilterReadValue(TID_FILTER_CUP_Z_READ, JdKind.Variable, 2)
+        function addFilterReadValue(tid: string, kind: JdKind, varid: number) {
+            const filter = new FilterDefn(tid, "value_in", 10)
+            filter.jdParam = varid
+            filter.jdKind = kind
+            tilesDB.filters[tid] = filter
+            filter.priority = 200 + varid
+            return filter
         }
+        addFilterReadValue(TID_FILTER_CUP_X_READ, JdKind.Variable, 0)
+        addFilterReadValue(TID_FILTER_CUP_Y_READ, JdKind.Variable, 1)
+        addFilterReadValue(TID_FILTER_CUP_Z_READ, JdKind.Variable, 2)
 
         function addReadValue(tid: string, kind: JdKind, varid: number) {
             const mod = new ModifierDefn(tid, "value_out", 10)

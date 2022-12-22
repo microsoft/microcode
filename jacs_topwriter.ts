@@ -600,7 +600,7 @@ namespace jacs {
             ])
         }
 
-        private modExpr(mod: microcode.ModifierDefn) {
+        private modExpr(mod: microcode.FilterModifierBase) {
             const wr = this.writer
             switch (mod.jdKind) {
                 case microcode.JdKind.Literal:
@@ -615,7 +615,7 @@ namespace jacs {
             }
         }
 
-        private constantFold(mods: microcode.ModifierDefn[], defl = 0) {
+        private constantFold(mods: microcode.FilterModifierBase[], defl = 0) {
             if (mods.length == 0) return defl
             let v = 0
             for (const m of mods) {
@@ -626,7 +626,7 @@ namespace jacs {
         }
 
         private emitAddSeq(
-            mods: microcode.ModifierDefn[],
+            mods: microcode.FilterModifierBase[],
             target: Variable,
             defl: number = 0,
             clear = true
@@ -683,7 +683,7 @@ namespace jacs {
             }
         }
 
-        private breaksValSeq(mod: microcode.ModifierDefn) {
+        private breaksValSeq(mod: microcode.FilterModifierBase) {
             switch (mod.jdKind) {
                 case microcode.JdKind.RandomToss:
                     return true
@@ -694,14 +694,18 @@ namespace jacs {
 
         private emitValue(
             trg: Variable,
-            modifiers: microcode.ModifierDefn[],
+            modifiers: microcode.FilterModifierBase[],
             defl: number
         ) {
-            let currSeq: microcode.ModifierDefn[] = []
+            let currSeq: microcode.FilterModifierBase[] = []
             let first = true
 
             for (const m of modifiers) {
-                if (m.category == "value_out" || m.category == "constant") {
+                if (
+                    m.category == "value_in" ||
+                    m.category == "value_out" ||
+                    m.category == "constant"
+                ) {
                     if (this.breaksValSeq(m) && currSeq.length) {
                         this.emitAddSeq(currSeq, trg, 0, first)
                         currSeq = []
@@ -729,17 +733,6 @@ namespace jacs {
 
         private emitValueOut(rule: microcode.RuleDefn, defl: number) {
             this.emitValue(this.currValue(), this.baseModifiers(rule), defl)
-        }
-
-        private getValueIn(rule: microcode.RuleDefn) {
-            let v = undefined
-            for (const m of rule.filters) {
-                if (m.jdKind == microcode.JdKind.Literal) {
-                    if (v === undefined) v = 0
-                    v += m.jdParam
-                }
-            }
-            return v
         }
 
         // 0-max inclusive
@@ -931,12 +924,15 @@ namespace jacs {
                 this.writer.emitCall(body.index, [], OpCall.BG_MAX1)
 
             const filterValueIn = (f: () => Value) => {
-                const v = this.getValueIn(rule)
-                if (v !== undefined) {
-                    this.ifEq(f(), v, emitBody)
-                } else {
-                    emitBody()
-                }
+                if (rule.filters.length) {
+                    this.emitValue(this.currValue(), rule.filters, 0)
+                    const wr = this.writer
+                    const currValue = () => this.currValue().read(wr)
+                    wr.emitIf(
+                        wr.emitExpr(Op.EXPR2_EQ, [f(), currValue()]),
+                        emitBody
+                    )
+                } else emitBody()
             }
 
             const sensor = rule.sensor

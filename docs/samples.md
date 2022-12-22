@@ -31,19 +31,20 @@ These samples store a random number and use to build mini games.
 
 ### Counters
 
-These sample use variables to build counters using buttons, movement or sounds.
+These sample use variables to build counters using buttons, movement or sounds:
 
 -   [counter](./samples/counter)
 -   [step counter](./samples/step-counter)
 -   [clap counter](./samples/clap-counter)
+-   [random counter](./samples/random-counter)
 
-This counters are a bit more involved.
+These counters are a bit more involved:
 
 -   [times table](./samples/times-table)
 
 ## Pages
 
-These sample use multiple pages in their programs.
+These sample use multiple pages in their programs:
 
 -   [![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon"} hot potato](./samples/hot-potato)
 -   [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon"} clap lights](./samples/clap-lights)
