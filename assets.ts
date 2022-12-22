@@ -76,8 +76,8 @@ namespace microcode {
             this.reg[TID_FILTER_PIN_2] = icondb.tile_pin_2
             this.reg[TID_FILTER_BUTTON_A] = icondb.tile_button_a
             this.reg[TID_FILTER_BUTTON_B] = icondb.tile_button_b
-            this.reg[TID_FILTER_KITA_BUTTON_1] = icondb.kita_button
-            this.reg[TID_FILTER_KITA_BUTTON_2] = icondb.kita_button
+            this.reg[TID_FILTER_KITA_KEY_1] = icondb.kita_key
+            this.reg[TID_FILTER_KITA_KEY_2] = icondb.kita_key
 
             this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short
             this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long
@@ -2619,19 +2619,19 @@ bffffffffffffffffffffffffffffffb
         . . . . . . 6 6 6 6 6 . . 4 4 .
     `
 
-    export const kita_button = img`
+    export const kita_key = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
         . . . 6 6 6 6 6 6 6 6 . . . . .
         . . 6 6 6 6 6 6 6 6 6 6 . . . .
-        . . 6 6 f f f f f f 6 6 . . . .
-        . . 6 f f 9 9 9 9 f f 6 . . . .
-        . . 6 f 9 f f f f 9 f 6 . . . .
-        . . 6 f 9 f f f f 9 f 6 . . . .
-        . . 6 f 9 f f f f 9 f 6 . . . .
-        . . 6 f 9 f f f f 9 f 6 . . . .
-        . . 6 f f 9 9 9 9 f f 6 . . . .
-        . . 6 6 f f f f f f 6 6 . . . .
+        . . 6 c f f f f f f c 6 . . . .
+        . . 6 f f c c c c f f 6 . . . .
+        . . 6 f c f f f f c f 6 . . . .
+        . . 6 f c f f f f c f 6 . . . .
+        . . 6 f c f f f f c f 6 . . . .
+        . . 6 f c f f f f c f 6 . . . .
+        . . 6 f f c c c c f f 6 . . . .
+        . . 6 c f f f f f f c 6 . . . .
         . . 6 6 6 6 6 6 6 6 6 6 . 5 5 5
         . . . 6 6 6 6 6 6 6 6 . . 5 5 5
         . . . . . . . . . . . . . 5 5 4

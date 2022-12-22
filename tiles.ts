@@ -37,8 +37,8 @@ namespace microcode {
     export const TID_FILTER_PIN_2 = "F2"
     export const TID_FILTER_BUTTON_A = "F3"
     export const TID_FILTER_BUTTON_B = "F4"
-    export const TID_FILTER_KITA_BUTTON_1 = "F5"
-    export const TID_FILTER_KITA_BUTTON_2 = "F6"
+    export const TID_FILTER_KITA_KEY_1 = "F5"
+    export const TID_FILTER_KITA_KEY_2 = "F6"
 
     export const TID_FILTER_LOGO = "F7"
     export const TID_FILTER_COIN_1 = "F8"
@@ -190,8 +190,8 @@ namespace microcode {
         addPressFilter(TID_FILTER_PIN_0, 3)
         addPressFilter(TID_FILTER_PIN_1, 4)
         addPressFilter(TID_FILTER_PIN_2, 5)
-        const kitA_1 = addPressFilter(TID_FILTER_KITA_BUTTON_1, 6)
-        const kitA_2 = addPressFilter(TID_FILTER_KITA_BUTTON_2, 7)
+        const kitA_1 = addPressFilter(TID_FILTER_KITA_KEY_1, 6)
+        const kitA_2 = addPressFilter(TID_FILTER_KITA_KEY_2, 7)
         kitA_1.jdExternalClass = 0x1473a263
         kitA_2.jdExternalClass = 0x1473a263
     }
