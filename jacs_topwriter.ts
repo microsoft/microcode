@@ -180,8 +180,8 @@ namespace jacs {
                             () => {
                                 wr.emitIf(
                                     wr.emitExpr(Op.EXPR2_LT, [
-                                        rotaryVar.read(wr),
                                         wr.emitExpr(Op.EXPR0_RET_VAL, []),
+                                        rotaryVar.read(wr),
                                     ]),
                                     () => {
                                         rotaryVar.write(
