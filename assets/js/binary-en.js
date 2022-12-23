@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.29","target":"arcade","targetVersion":"1.11.20"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.30","target":"arcade","targetVersion":"1.11.20"}
 // total=2436371 new=94.23% cached=0.00% other=5.77%
 (function (ectx) {
 'use strict';
@@ -1554,7 +1554,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___4176 = (s.tmp_0);
     globals._binFloatLits___4190 = (_hex6872);
-    globals.VERSION___4192 = ("v2.4.29");
+    globals.VERSION___4192 = ("v2.4.30");
     globals.BACK_BUTTON_ERROR_KIND___4206 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4207 = ("forward_button");
     globals.microcode_Options_fps___4255 = (false);
@@ -30183,19 +30183,19 @@ switch (step) {
 
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    s.tmp_2 = jacs_Variable_read__P6818_mk(s);
-    s.tmp_2.arg0 = s.caps[1];
-    s.tmp_2.arg1 = s.caps[0];
+    s.tmp_2 = jacs_OpWriter_emitExpr__P4093_mk(s);
+    s.tmp_2.arg0 = s.caps[0];
+    s.tmp_2.arg1 = 6;
+    r0 = pxsim_Array__mk();
+    s.tmp_2.arg2 = r0;
     s.callLocIdx = 1754; s.pc = 1; return s.tmp_2;
   case 1:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
-    s.tmp_4 = jacs_OpWriter_emitExpr__P4093_mk(s);
-    s.tmp_4.arg0 = s.caps[0];
-    s.tmp_4.arg1 = 6;
-    r0 = pxsim_Array__mk();
-    s.tmp_4.arg2 = r0;
+    s.tmp_4 = jacs_Variable_read__P6818_mk(s);
+    s.tmp_4.arg0 = s.caps[1];
+    s.tmp_4.arg1 = s.caps[0];
     s.callLocIdx = 1755; s.pc = 2; return s.tmp_4;
   case 2:
     r0 = s.retval;

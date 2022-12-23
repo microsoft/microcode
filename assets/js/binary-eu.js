@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.29","target":"arcade","targetVersion":"1.11.20"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.30","target":"arcade","targetVersion":"1.11.20"}
 // total=2436694 new=94.23% cached=0.00% other=5.77%
 (function (ectx) {
 'use strict';
@@ -1554,7 +1554,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___4176 = (s.tmp_0);
     globals._binFloatLits___4190 = (_hex6872);
-    globals.VERSION___4192 = ("v2.4.29");
+    globals.VERSION___4192 = ("v2.4.30");
     globals.BACK_BUTTON_ERROR_KIND___4206 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4207 = ("forward_button");
     globals.microcode_Options_fps___4255 = (false);
@@ -1580,6 +1580,10 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S6", "tenperatura");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S7", "irratiak jasotzean");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S8", "entzun");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9A", "X aldagaia aldatuta");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9B", "Y aldagaia aldatuta");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9C", "Z aldagaia aldatuta");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S10", "imana");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "rule", "araua");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "add_rule", "araua gehitu");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "delete_rule", "araua ezabatu");
@@ -1605,6 +1609,9 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F17_tilt_down", "beherantz makurtu");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F17_tilt_left", "okertu ezkerrerantz");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F17_tilt_right", "okertu eskuinerantz");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20A", "X aldagaia");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20B", "Y aldagaia");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20C", "Z aldagaia");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "C0", "editatu");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "C1", "adibideak");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A1", "orria aldatu");
@@ -1649,9 +1656,6 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A9A", "ezarri X aldagaia");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A9B", "ezarri Y aldagaia");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A9C", "ezarri Z aldagaia");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9A", "X aldagaia aldatuta");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9B", "Y aldagaia aldatuta");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9C", "Z aldagaia aldatuta");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N1", "programa berria");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N2", "bihotz kliskari");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N3", "botoi irribarretsuak");
@@ -1666,7 +1670,6 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N12", "trenbide-pasagunea");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N13", "7 segundo txalo");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N14", "kontagailua");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S10", "imana");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_1", "gorria");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_2", "berdea");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_3", "urdina");
@@ -1682,9 +1685,6 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "arith_plus", "plus");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F5", "key 1");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F6", "key 2");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20A", "variable X");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20B", "variable Y");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20C", "variable Z");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21L", "turn left");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21R", "turn right");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_LED", "LED {x} {y} {state}");
@@ -30183,19 +30183,19 @@ switch (step) {
 
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    s.tmp_2 = jacs_Variable_read__P6818_mk(s);
-    s.tmp_2.arg0 = s.caps[1];
-    s.tmp_2.arg1 = s.caps[0];
+    s.tmp_2 = jacs_OpWriter_emitExpr__P4093_mk(s);
+    s.tmp_2.arg0 = s.caps[0];
+    s.tmp_2.arg1 = 6;
+    r0 = pxsim_Array__mk();
+    s.tmp_2.arg2 = r0;
     s.callLocIdx = 1754; s.pc = 1; return s.tmp_2;
   case 1:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
-    s.tmp_4 = jacs_OpWriter_emitExpr__P4093_mk(s);
-    s.tmp_4.arg0 = s.caps[0];
-    s.tmp_4.arg1 = 6;
-    r0 = pxsim_Array__mk();
-    s.tmp_4.arg2 = r0;
+    s.tmp_4 = jacs_Variable_read__P6818_mk(s);
+    s.tmp_4.arg0 = s.caps[1];
+    s.tmp_4.arg1 = s.caps[0];
     s.callLocIdx = 1755; s.pc = 2; return s.tmp_4;
   case 2:
     r0 = s.retval;

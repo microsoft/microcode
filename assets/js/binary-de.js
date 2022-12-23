@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.29","target":"arcade","targetVersion":"1.11.20"}
-// total=2436787 new=94.23% cached=0.00% other=5.77%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.30","target":"arcade","targetVersion":"1.11.20"}
+// total=2436796 new=94.23% cached=0.00% other=5.77%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1554,7 +1554,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___4176 = (s.tmp_0);
     globals._binFloatLits___4190 = (_hex6872);
-    globals.VERSION___4192 = ("v2.4.29");
+    globals.VERSION___4192 = ("v2.4.30");
     globals.BACK_BUTTON_ERROR_KIND___4206 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4207 = ("forward_button");
     globals.microcode_Options_fps___4255 = (false);
@@ -1580,9 +1580,15 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S6", "Temperatur");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S7", "Funkempfang");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S8", "hören");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9A", "Variable X geändert");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9B", "Variable Y geändert");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9C", "Variable Z geändert");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S10", "Magnet");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "rule", "Regel");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "add_rule", "Regel hinzufügen");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "delete_rule", "Regel löschen");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "arith_equals", "gleich");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "arith_plus", "plus");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F0", "Touch-Pin 0");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F1", "Touch-Pin 1");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F2", "Touch-Pin 2");
@@ -1605,6 +1611,9 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F17_tilt_down", "nach unten gekippt");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F17_tilt_left", "nach links neigen");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F17_tilt_right", "nach rechts neigen");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20A", "Platzhalter X");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20B", "Platzhalter Y");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20C", "Platzhalter Z");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "C0", "bearbeiten");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "C1", "Beispiele");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A1", "Seite wechseln");
@@ -1648,9 +1657,6 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A9A", "setze Platzhalter X");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A9B", "setze Platzhalter Y");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A9C", "setze Platzhalter Z");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9A", "Variable X geändert");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9B", "Variable Y geändert");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9C", "Variable Z geändert");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N1", "Neues Programm");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N2", "blinkendes Herz");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N3", "Smiley-Tasten");
@@ -1665,7 +1671,6 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N12", "Bahnübergang");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N13", "7 Sekunden klatschen");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N14", "Zähler");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S10", "Magnet");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_1", "Rot");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_2", "Grün");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_3", "Blau");
@@ -1675,22 +1680,17 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_rainbow", "Regenbogen");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_sparkle", "Funkeln");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A21_", "Servo-Einstellwinkel");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_LED", "LED {x} {y} {state}");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_NOTE", "Note {index} {state}");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_ON", "an");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_OFF", "aus");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S11", "slider");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S12", "dial");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "arith_equals", "equals");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "arith_plus", "plus");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F5", "key 1");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F6", "key 2");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20A", "variable X");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20B", "variable Y");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20C", "variable Z");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21L", "turn left");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21R", "turn right");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "M24", "melody");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_LED", "LED {x} {y} {state}");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_NOTE", "note {index} {state}");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_ON", "on");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_OFF", "off");
     globals.tooltips___4289 = (s.tmp_0);
     s.tmp_0 = setTimeout__P423_mk(s);
     s.tmp_0.arg0 = inline__P6907;
@@ -30183,19 +30183,19 @@ switch (step) {
 
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    s.tmp_2 = jacs_Variable_read__P6818_mk(s);
-    s.tmp_2.arg0 = s.caps[1];
-    s.tmp_2.arg1 = s.caps[0];
+    s.tmp_2 = jacs_OpWriter_emitExpr__P4093_mk(s);
+    s.tmp_2.arg0 = s.caps[0];
+    s.tmp_2.arg1 = 6;
+    r0 = pxsim_Array__mk();
+    s.tmp_2.arg2 = r0;
     s.callLocIdx = 1754; s.pc = 1; return s.tmp_2;
   case 1:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
-    s.tmp_4 = jacs_OpWriter_emitExpr__P4093_mk(s);
-    s.tmp_4.arg0 = s.caps[0];
-    s.tmp_4.arg1 = 6;
-    r0 = pxsim_Array__mk();
-    s.tmp_4.arg2 = r0;
+    s.tmp_4 = jacs_Variable_read__P6818_mk(s);
+    s.tmp_4.arg0 = s.caps[1];
+    s.tmp_4.arg1 = s.caps[0];
     s.callLocIdx = 1755; s.pc = 2; return s.tmp_4;
   case 2:
     r0 = s.retval;

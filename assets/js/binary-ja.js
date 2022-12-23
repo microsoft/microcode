@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.29","target":"arcade","targetVersion":"1.11.20"}
-// total=2443752 new=94.25% cached=0.00% other=5.75%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.30","target":"arcade","targetVersion":"1.11.20"}
+// total=2443731 new=94.25% cached=0.00% other=5.75%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1554,7 +1554,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___4176 = (s.tmp_0);
     globals._binFloatLits___4190 = (_hex6872);
-    globals.VERSION___4192 = ("v2.4.29");
+    globals.VERSION___4192 = ("v2.4.30");
     globals.BACK_BUTTON_ERROR_KIND___4206 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4207 = ("forward_button");
     globals.microcode_Options_fps___4255 = (false);
@@ -1580,6 +1580,10 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S6", "温度");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S7", "無線で受信");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S8", "聞く");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9A", "変数Xが変更された");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9B", "変数Yが変更された");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9C", "変数Zが変更された");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S10", "磁石");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "rule", "ルール");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "add_rule", "ルールを追加");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "delete_rule", "ルールを削除");
@@ -1605,6 +1609,9 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F17_tilt_down", "下に傾いた");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F17_tilt_left", "左に傾いた");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F17_tilt_right", "右に傾いた");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20A", "変数X");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20B", "変数Y");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20C", "変数Z");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "C0", "編集");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "C1", "サンプル");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A1", "ページを切り替え");
@@ -1649,9 +1656,6 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A9A", "変数Xを設定");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A9B", "変数Yを設定");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A9C", "変数Zを設定");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9A", "変数Xが変更された");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9B", "変数Yが変更された");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9C", "変数Zが変更された");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N1", "新しいプログラム");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N2", "点滅するハート");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N3", "スマイリーボタン");
@@ -1666,7 +1670,6 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N12", "踏切");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N13", "7秒の拍手");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "N14", "カウンター");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S10", "磁石");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_1", "赤");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_2", "緑");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A20_3", "青");
@@ -1682,9 +1685,6 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "arith_plus", "plus");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F5", "key 1");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F6", "key 2");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20A", "variable X");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20B", "variable Y");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20C", "variable Z");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21L", "turn left");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21R", "turn right");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_LED", "LED {x} {y} {state}");
@@ -30183,19 +30183,19 @@ switch (step) {
 
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    s.tmp_2 = jacs_Variable_read__P6818_mk(s);
-    s.tmp_2.arg0 = s.caps[1];
-    s.tmp_2.arg1 = s.caps[0];
+    s.tmp_2 = jacs_OpWriter_emitExpr__P4093_mk(s);
+    s.tmp_2.arg0 = s.caps[0];
+    s.tmp_2.arg1 = 6;
+    r0 = pxsim_Array__mk();
+    s.tmp_2.arg2 = r0;
     s.callLocIdx = 1754; s.pc = 1; return s.tmp_2;
   case 1:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
-    s.tmp_4 = jacs_OpWriter_emitExpr__P4093_mk(s);
-    s.tmp_4.arg0 = s.caps[0];
-    s.tmp_4.arg1 = 6;
-    r0 = pxsim_Array__mk();
-    s.tmp_4.arg2 = r0;
+    s.tmp_4 = jacs_Variable_read__P6818_mk(s);
+    s.tmp_4.arg0 = s.caps[1];
+    s.tmp_4.arg1 = s.caps[0];
     s.callLocIdx = 1755; s.pc = 2; return s.tmp_4;
   case 2:
     r0 = s.retval;
