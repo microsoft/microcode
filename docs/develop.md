@@ -152,13 +152,7 @@ node scripts/lochex.mjs en
 -   click `Release` on the microcode distribution
 -   bump repo
 
-## Overview of implementation
-
-### Local files
-
-This little app packs a lot into a small footprint: graphics, UI, editor, compiler, and runtime. [Read more](./codereview.md)...
-
-### Dependencies
+## Dependencies
 
 This app is built with [MakeCode Arcade](https://arcade.makecode.com/), specifically targeting the NRF52833 MCU of the micro:bit V2 (for now). There are a number of repos containing the C++ of the underlying CODAL runtime:
 
