@@ -16,3 +16,5 @@ Click the `screenshot` button at the bottom to get a rendered image of your prog
 ## How do I translate MicroCode?
 
 Checkout the [localization](./localization) to see how you can help or use a localized build of MicroCode.
+
+## MORE WORK ON FAQ
