@@ -36,6 +36,7 @@ namespace microcode {
         navigator: RuleRowNavigator
         private progdef: ProgramDefn
         private currPage: number
+        private diskBtn: Button
         private connectBtn: Button
         private pageBtn: Button
         public pageEditor: PageEditor
@@ -254,12 +255,21 @@ namespace microcode {
             this.cursor = new Cursor()
             this.picker = new Picker(this.cursor)
             this.currPage = 0
+            this.diskBtn = new EditorButton(this, {
+                parent: this.hudroot,
+                style: ButtonStyles.BorderedPurple,
+                icon: icondb.disk,
+                ariaId: "disk",
+                x: Screen.LEFT_EDGE + 12,
+                y: 8,
+                onClick: () => connectJacdac(),
+            })
             this.connectBtn = new EditorButton(this, {
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
                 icon: icondb.microbit_logo_btn,
                 ariaId: "connect",
-                x: Screen.LEFT_EDGE + 12,
+                x: Screen.LEFT_EDGE + 28,
                 y: 8,
                 onClick: () => connectJacdac(),
             })
@@ -427,8 +437,8 @@ namespace microcode {
 
             this.navigator.addButtons(
                 this.connectBtn.visible()
-                    ? [this.connectBtn, this.pageBtn]
-                    : [this.pageBtn]
+                    ? [this.diskBtn, this.connectBtn, this.pageBtn]
+                    : [this.diskBtn, this.pageBtn]
             )
 
             this.pageEditor.addToNavigator()
@@ -481,7 +491,7 @@ namespace microcode {
 
         private drawBackground() {
             control.enablePerfCounter()
-            let x = Screen.LEFT_EDGE -(this.currPage << 4)
+            let x = Screen.LEFT_EDGE - (this.currPage << 4)
             while (x < Screen.RIGHT_EDGE) {
                 Screen.drawTransparentImage(
                     editorBackground,
@@ -497,6 +507,7 @@ namespace microcode {
             // if dot matrix is visible, then we're connected to some Jacdac bus
             // TODO: move cursor to next button when visible?
             if (!this.rendering) {
+                this.diskBtn.draw()
                 const wasVisible = this.connectBtn.visible()
                 this.connectBtn.setVisible(
                     jdc.numServiceInstances(0x110d154b) == 0

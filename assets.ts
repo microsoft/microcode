@@ -31,6 +31,7 @@ namespace microcode {
             this.reg["edit_program"] = icondb.largeEditIcon
             this.reg["new_program"] = icondb.largeNewProgramIcon
             this.reg["MISSING"] = icondb.MISSING
+            this.reg["disk"] = icondb.disk
 
             // basic colors led editor
             this.reg["solid_red"] = icondb.solid_red
@@ -280,6 +281,25 @@ namespace icondb {
         notes: "0240",
         tempo: 0,
     })
+
+    export const disk = img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . 8 b b b b 8 8 b b 8 . . . .
+        . . 8 b b b b 8 8 b b 8 8 . . .
+        . . 8 b b b b 8 8 b b 8 8 8 . .
+        . . 8 b b b b b b b b 8 8 8 . .
+        . . 8 8 8 8 8 8 8 8 8 8 8 8 . .
+        . . 8 8 8 8 8 8 8 8 8 8 8 8 . .
+        . . 8 8 3 3 3 3 3 3 3 3 8 8 . .
+        . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+        . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+        . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+        . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+        . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        `
 
     export const MISSING = img`
         . . . . . . . . . . . . . . . .
