@@ -67,7 +67,9 @@ namespace microcode {
             this.picker.show({
                 title: "Load from",
                 onClick: iconId => {
-                    // this.app.save(iconId, this.progdef)
+                    this.app.load(iconId)
+                    this.app.popScene()
+                    this.app.pushScene(new Editor(this.app))
                 },
             })
         }
