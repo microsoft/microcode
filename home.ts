@@ -45,13 +45,31 @@ namespace microcode {
                 ariaId: "load",
                 x: 50,
                 y: 30,
-                onClick: () => {},
+                onClick: () => {
+                    this.pickDiskSLot()
+                },
             })
 
             const btns: Button[] = [this.editBtn, this.samplesBtn, this.diskBtn]
 
             this.navigator.addButtons(btns)
             // handle menu?
+        }
+
+        // TODO: need logic for display and hiding picker
+        private pickDiskSLot() {
+            const btns: PickerButtonDef[] = disk_slots.map(slot => {
+                return {
+                    icon: slot,
+                }
+            })
+            this.picker.addGroup({ btns })
+            this.picker.show({
+                title: "Load from",
+                onClick: iconId => {
+                    // this.app.save(iconId, this.progdef)
+                },
+            })
         }
 
         /* override */ activate() {
