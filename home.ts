@@ -2,6 +2,7 @@ namespace microcode {
     export class Home extends CursorScene {
         samplesBtn: Button
         editBtn: Button
+        diskBtn: Button
 
         constructor(app: App) {
             super(app)
@@ -15,7 +16,7 @@ namespace microcode {
                 style: ButtonStyles.Transparent,
                 icon: "edit_program",
                 ariaId: "C0",
-                x: -25,
+                x: -50,
                 y: 30,
                 onClick: () => {
                     this.app.popScene()
@@ -28,7 +29,7 @@ namespace microcode {
                 style: ButtonStyles.Transparent,
                 icon: "rock_paper_scissors",
                 ariaId: "C1",
-                x: 25,
+                x: 0,
                 y: 30,
                 onClick: () => {
                     this.app.popScene()
@@ -36,7 +37,18 @@ namespace microcode {
                 },
             })
 
-            const btns: Button[] = [this.editBtn, this.samplesBtn]
+            // TOOD: need a large button
+            this.diskBtn = new Button({
+                parent: null,
+                style: ButtonStyles.BorderedPurple,
+                icon: "disk",
+                ariaId: "load",
+                x: 50,
+                y: 30,
+                onClick: () => {},
+            })
+
+            const btns: Button[] = [this.editBtn, this.samplesBtn, this.diskBtn]
 
             this.navigator.addButtons(btns)
             // handle menu?

@@ -111,8 +111,7 @@ namespace microcode {
             this.picker.show({
                 title: "Save to",
                 onClick: iconId => {
-                    const index = disk_slots.indexOf(iconId)
-                    // save current program to slot
+                    this.app.save(iconId, this.progdef)
                 },
             })
         }
