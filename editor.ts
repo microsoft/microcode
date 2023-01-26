@@ -101,6 +101,22 @@ namespace microcode {
             new jacs.TopWriter().emitProgram(this.progdef)
         }
 
+        private pickDiskSLot() {
+            const btns: PickerButtonDef[] = disk_slots.map(slot => {
+                return {
+                    icon: slot,
+                }
+            })
+            this.picker.addGroup({ btns })
+            this.picker.show({
+                title: "Save to",
+                onClick: iconId => {
+                    const index = disk_slots.indexOf(iconId)
+                    // save current program to slot
+                },
+            })
+        }
+
         private pickPage() {
             const btns: PickerButtonDef[] = PAGE_IDS.map(pageId => {
                 return {
@@ -262,14 +278,14 @@ namespace microcode {
                 ariaId: "disk",
                 x: Screen.LEFT_EDGE + 12,
                 y: 8,
-                onClick: () => connectJacdac(),
+                onClick: () => this.pickDiskSLot(),
             })
             this.connectBtn = new EditorButton(this, {
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
                 icon: icondb.microbit_logo_btn,
                 ariaId: "connect",
-                x: Screen.LEFT_EDGE + 28,
+                x: Screen.LEFT_EDGE + 36,
                 y: 8,
                 onClick: () => connectJacdac(),
             })
