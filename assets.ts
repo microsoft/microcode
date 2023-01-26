@@ -35,6 +35,7 @@ namespace microcode {
             this.reg["disk1"] = icondb.disk1
             this.reg["disk2"] = icondb.disk2
             this.reg["disk3"] = icondb.disk3
+            this.reg["largeDisk"] = icondb.largeDiskIcon
 
             // basic colors led editor
             this.reg["solid_red"] = icondb.solid_red
@@ -287,14 +288,14 @@ namespace icondb {
 
     export const disk = img`
     . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . .
     . . 8 d d d d 8 8 d d 8 . . . .
     . . 8 d d d d 8 8 d d 8 8 . . .
     . . 8 d d d d 8 8 d d 8 8 8 . .
     . . 8 d d d d d d d d 8 8 8 . .
     . . 8 8 8 8 8 8 8 8 8 8 8 8 . .
-    . . 8 8 8 8 8 8 8 8 8 8 8 8 . .
     . . 8 8 3 3 3 3 3 3 3 3 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
     . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
     . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
     . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
@@ -360,6 +361,18 @@ namespace icondb {
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
+
+    function makeLargeDisk() {
+        const ret = image.create(32, 32)
+        ret.fill(1)
+        ret.drawImage(disk, 0, 0)
+        ret.drawImage(disk1, 16, 0)
+        ret.drawImage(disk2, 0, 16)
+        ret.drawImage(disk3, 16, 16)
+        return ret
+    }
+
+    export const largeDiskIcon = makeLargeDisk()
 
     export const MISSING = img`
         . . . . . . . . . . . . . . . .

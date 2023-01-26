@@ -40,8 +40,8 @@ namespace microcode {
             // TOOD: need a large button
             this.diskBtn = new Button({
                 parent: null,
-                style: ButtonStyles.BorderedPurple,
-                icon: "disk",
+                style: ButtonStyles.Transparent,
+                icon: "largeDisk",
                 ariaId: "load",
                 x: 50,
                 y: 30,
@@ -119,6 +119,7 @@ namespace microcode {
 
             this.samplesBtn.draw()
             this.editBtn.draw()
+            this.diskBtn.draw()
             this.drawVersion()
             super.draw()
         }
