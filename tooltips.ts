@@ -29,6 +29,7 @@ namespace microcode {
   "delete_rule": "delete rule",
   "arith_equals": "equals",
   "arith_plus": "plus",
+  "disk": "save",
   "F0": "touch pin 0",
   "F1": "touch pin 1",
   "F2": "touch pin 2",
