@@ -65,9 +65,9 @@ namespace microcode {
             this.picker.show({
                 title: accessibility.ariaToTooltip("load"),
                 onClick: iconId => {
-                    // what if not defined?
                     let s = settings.readString(iconId)
                     if (!s) {
+                        // handles case where nothing is in slot
                         const b64 = rawSamples()[0].b64
                         s = Buffer.fromBase64(b64).toString()
                     }
