@@ -56,7 +56,7 @@ namespace microcode {
         }
 
         private pickDiskSLot() {
-            const btns: PickerButtonDef[] = disk_slots.map(slot => {
+            const btns: PickerButtonDef[] = diskSlots.map(slot => {
                 return {
                     icon: slot,
                 }
