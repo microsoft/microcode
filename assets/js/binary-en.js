@@ -1,5 +1,5 @@
 // meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.30","target":"arcade","targetVersion":"1.11.20"}
-// total=2456299 new=94.26% cached=0.00% other=5.74%
+// total=2456298 new=94.26% cached=0.00% other=5.74%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -42587,7 +42587,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_draw__P3693.info = {"start":3152,"length":1869,"line":100,"column":23,"endLine":150,"endColumn":9,"fileName":"home.ts","functionName":"draw","argumentNames":["this"]}
+microcode_Home_draw__P3693.info = {"start":3051,"length":1869,"line":98,"column":23,"endLine":148,"endColumn":9,"fileName":"home.ts","functionName":"draw","argumentNames":["this"]}
 
 function microcode_Home_draw__P3693_mk(s) {
     checkStack(s.depth);
@@ -42692,7 +42692,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_drawVersion__P6759.info = {"start":2745,"length":333,"line":88,"column":8,"endLine":97,"endColumn":9,"fileName":"home.ts","functionName":"drawVersion","argumentNames":["this"]}
+microcode_Home_drawVersion__P6759.info = {"start":2644,"length":333,"line":86,"column":8,"endLine":95,"endColumn":9,"fileName":"home.ts","functionName":"drawVersion","argumentNames":["this"]}
 
 function microcode_Home_drawVersion__P6759_mk(s) {
     checkStack(s.depth);
@@ -42806,7 +42806,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_activate__P3692.info = {"start":2617,"length":116,"line":82,"column":23,"endLine":86,"endColumn":9,"fileName":"home.ts","functionName":"activate","argumentNames":["this"]}
+microcode_Home_activate__P3692.info = {"start":2516,"length":116,"line":80,"column":23,"endLine":84,"endColumn":9,"fileName":"home.ts","functionName":"activate","argumentNames":["this"]}
 
 function microcode_Home_activate__P3692_mk(s) {
     checkStack(s.depth);
@@ -65082,7 +65082,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "icon", "edit_program");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "ariaId", "C0");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "x", -50);
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 30);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 40);
     r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P24101);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg0);
@@ -65103,7 +65103,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "icon", "rock_paper_scissors");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "ariaId", "C1");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "x", 0);
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 30);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 40);
     r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P24118);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg0);
@@ -65124,7 +65124,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "icon", "largeDisk");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "ariaId", "load");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "x", 50);
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 30);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 40);
     r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P24135);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg0);
@@ -65167,7 +65167,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_startup__P3691.info = {"start":241,"length":1453,"line":10,"column":23,"endLine":56,"endColumn":9,"fileName":"home.ts","functionName":"startup","argumentNames":["this"]}
+microcode_Home_startup__P3691.info = {"start":241,"length":1411,"line":10,"column":23,"endLine":55,"endColumn":9,"fileName":"home.ts","functionName":"startup","argumentNames":["this"]}
 
 function microcode_Home_startup__P3691_mk(s) {
     checkStack(s.depth);
@@ -65309,7 +65309,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P24135.info = {"start":1439,"length":67,"line":47,"column":25,"endLine":49,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
+onClick_inline__P24135.info = {"start":1397,"length":67,"line":46,"column":25,"endLine":48,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":[]}
 
 function onClick_inline__P24135_mk(s) {
     checkStack(s.depth);
@@ -65376,7 +65376,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_Home_pickDiskSLot__P6758.info = {"start":1765,"length":825,"line":59,"column":8,"endLine":80,"endColumn":9,"fileName":"home.ts","functionName":"pickDiskSLot","argumentNames":["this"]}
+microcode_Home_pickDiskSLot__P6758.info = {"start":1664,"length":825,"line":57,"column":8,"endLine":78,"endColumn":9,"fileName":"home.ts","functionName":"pickDiskSLot","argumentNames":["this"]}
 
 function microcode_Home_pickDiskSLot__P6758_mk(s) {
     checkStack(s.depth);
@@ -65415,7 +65415,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-btns_inline__P24152.info = {"start":1850,"length":102,"line":60,"column":59,"endLine":64,"endColumn":13,"fileName":"home.ts","functionName":"inline","argumentNames":["slot"]}
+btns_inline__P24152.info = {"start":1749,"length":102,"line":58,"column":59,"endLine":62,"endColumn":13,"fileName":"home.ts","functionName":"inline","argumentNames":["slot"]}
 
 function btns_inline__P24152_mk(s) {
     checkStack(s.depth);
@@ -65519,7 +65519,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-onClick_inline__P24165.info = {"start":2093,"length":469,"line":68,"column":25,"endLine":78,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":["iconId"]}
+onClick_inline__P24165.info = {"start":1992,"length":469,"line":66,"column":25,"endLine":76,"endColumn":17,"fileName":"home.ts","functionName":"inline","argumentNames":["iconId"]}
 
 function onClick_inline__P24165_mk(s) {
     checkStack(s.depth);
