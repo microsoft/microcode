@@ -31,6 +31,11 @@ namespace microcode {
             this.reg["edit_program"] = icondb.largeEditIcon
             this.reg["new_program"] = icondb.largeNewProgramIcon
             this.reg["MISSING"] = icondb.MISSING
+            this.reg["disk"] = icondb.disk
+            this.reg["disk1"] = icondb.disk1
+            this.reg["disk2"] = icondb.disk2
+            this.reg["disk3"] = icondb.disk3
+            this.reg["largeDisk"] = icondb.largeDiskIcon
 
             // basic colors led editor
             this.reg["solid_red"] = icondb.solid_red
@@ -280,6 +285,98 @@ namespace icondb {
         notes: "0240",
         tempo: 0,
     })
+
+    export const disk = img`
+    . . . . . . . . . . . . . . . .
+    . . 8 d d d d 8 8 d d 8 . . . .
+    . . 8 d d d d 8 8 d d 8 8 . . .
+    . . 8 d d d d 8 8 d d 8 8 8 . .
+    . . 8 d d d d d d d d 8 8 8 . .
+    . . 8 8 8 8 8 8 8 8 8 8 8 8 . .
+    . . 8 8 3 3 3 3 3 3 3 3 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+
+    export const disk1 = img`
+    . . . . . . . . . . . . . . . .
+    . . 8 d d d d 8 8 d d 8 . . . .
+    . . 8 d d d d 8 8 d d 8 8 . . .
+    . . 8 d d d d 8 8 d d 8 8 8 . .
+    . . 8 d d d d d d d d 8 8 8 . .
+    . . 8 8 8 8 8 8 8 8 8 8 8 8 . .
+    . . 8 8 3 3 3 3 3 3 3 3 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . 8 8 1 1 1 1 f 1 1 1 8 8 . .
+    . . 8 8 1 1 1 f f 1 1 1 8 8 . .
+    . . 8 8 1 1 1 1 f 1 1 1 8 8 . .
+    . . 8 8 1 1 1 1 f 1 1 1 8 8 . .
+    . . 8 8 1 1 1 f f f 1 1 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+
+    export const disk2 = img`
+    . . . . . . . . . . . . . . . .
+    . . 8 d d d d 8 8 d d 8 . . . .
+    . . 8 d d d d 8 8 d d 8 8 . . .
+    . . 8 d d d d 8 8 d d 8 8 8 . .
+    . . 8 d d d d d d d d 8 8 8 . .
+    . . 8 8 8 8 8 8 8 8 8 8 8 8 . .
+    . . 8 8 3 3 3 3 3 3 3 3 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . 8 8 1 1 1 f f 1 1 1 8 8 . .
+    . . 8 8 1 1 1 1 1 f 1 1 8 8 . .
+    . . 8 8 1 1 1 1 f 1 1 1 8 8 . .
+    . . 8 8 1 1 1 f 1 1 1 1 8 8 . .
+    . . 8 8 1 1 1 f f f 1 1 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+
+    export const disk3 = img`
+    . . . . . . . . . . . . . . . .
+    . . 8 d d d d 8 8 d d 8 . . . .
+    . . 8 d d d d 8 8 d d 8 8 . . .
+    . . 8 d d d d 8 8 d d 8 8 8 . .
+    . . 8 d d d d d d d d 8 8 8 . .
+    . . 8 8 8 8 8 8 8 8 8 8 8 8 . .
+    . . 8 8 3 3 3 3 3 3 3 3 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . 8 8 1 1 1 f f 1 1 1 8 8 . .
+    . . 8 8 1 1 1 1 1 f 1 1 8 8 . .
+    . . 8 8 1 1 1 1 f f 1 1 8 8 . .
+    . . 8 8 1 1 1 1 1 f 1 1 8 8 . .
+    . . 8 8 1 1 1 f f 1 1 1 8 8 . .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+
+    function makeLargeDisk() {
+        const ret = image.create(32, 33)
+        ret.fill(6)
+        ret.drawTransparentImage(disk, 8, 8)
+        ret.setPixel(0, 0, 0)
+        ret.setPixel(0, 32, 0)
+        ret.setPixel(31, 0, 0)
+        ret.setPixel(31, 32, 0)
+        ret.drawLine(1, 32, 30, 32, 11)
+        ret.setPixel(0, 31, 11)
+        ret.setPixel(31, 31, 11)
+        return ret
+    }
+
+    export const largeDiskIcon = makeLargeDisk()
 
     export const MISSING = img`
         . . . . . . . . . . . . . . . .

@@ -2,6 +2,7 @@ namespace microcode {
     export class Home extends CursorScene {
         samplesBtn: Button
         editBtn: Button
+        diskBtn: Button
 
         constructor(app: App) {
             super(app)
@@ -15,8 +16,8 @@ namespace microcode {
                 style: ButtonStyles.Transparent,
                 icon: "edit_program",
                 ariaId: "C0",
-                x: -25,
-                y: 30,
+                x: -50,
+                y: 40,
                 onClick: () => {
                     this.app.popScene()
                     this.app.pushScene(new Editor(this.app))
@@ -28,18 +29,53 @@ namespace microcode {
                 style: ButtonStyles.Transparent,
                 icon: "rock_paper_scissors",
                 ariaId: "C1",
-                x: 25,
-                y: 30,
+                x: 0,
+                y: 40,
                 onClick: () => {
                     this.app.popScene()
                     this.app.pushScene(new SamplesGallery(this.app))
                 },
             })
 
-            const btns: Button[] = [this.editBtn, this.samplesBtn]
+            this.diskBtn = new Button({
+                parent: null,
+                style: ButtonStyles.Transparent,
+                icon: "largeDisk",
+                ariaId: "load",
+                x: 50,
+                y: 40,
+                onClick: () => {
+                    this.pickDiskSLot()
+                },
+            })
+
+            const btns: Button[] = [this.editBtn, this.samplesBtn, this.diskBtn]
 
             this.navigator.addButtons(btns)
             // handle menu?
+        }
+
+        private pickDiskSLot() {
+            const btns: PickerButtonDef[] = diskSlots.map(slot => {
+                return {
+                    icon: slot,
+                }
+            })
+            this.picker.addGroup({ btns })
+            this.picker.show({
+                title: accessibility.ariaToTooltip("load"),
+                onClick: iconId => {
+                    let s = settings.readString(iconId)
+                    if (!s) {
+                        // handles case where nothing is in slot
+                        const b64 = rawSamples()[0].b64
+                        s = Buffer.fromBase64(b64).toString()
+                    }
+                    settings.writeString(SAVESLOT_AUTO, s)
+                    this.app.popScene()
+                    this.app.pushScene(new Editor(this.app))
+                },
+            })
         }
 
         /* override */ activate() {
@@ -107,6 +143,7 @@ namespace microcode {
 
             this.samplesBtn.draw()
             this.editBtn.draw()
+            this.diskBtn.draw()
             this.drawVersion()
             super.draw()
         }
