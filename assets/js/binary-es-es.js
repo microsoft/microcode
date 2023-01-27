@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.31","target":"arcade","targetVersion":"1.11.20"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.32","target":"arcade","targetVersion":"1.11.20"}
 // total=2457505 new=94.26% cached=0.00% other=5.74%
 (function (ectx) {
 'use strict';
@@ -1575,7 +1575,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___4183 = (s.tmp_0);
     globals._binFloatLits___4197 = (_hex6892);
-    globals.VERSION___4199 = ("v2.4.31");
+    globals.VERSION___4199 = ("v2.4.32");
     globals.BACK_BUTTON_ERROR_KIND___4213 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4214 = ("forward_button");
     globals.microcode_Options_fps___4262 = (false);
@@ -65093,7 +65093,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "icon", "edit_program");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "ariaId", "C0");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "x", -50);
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 40);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 30);
     r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P24101);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg0);
@@ -65114,7 +65114,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "icon", "rock_paper_scissors");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "ariaId", "C1");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "x", 0);
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 40);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 30);
     r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P24118);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg0);
@@ -65135,7 +65135,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "icon", "largeDisk");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "ariaId", "load");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "x", 50);
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 40);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_1, "y", 30);
     r0 = pxsim_pxtcore_mkAction(1, onClick_inline__P24135);
     s.tmp_2 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.arg0);
