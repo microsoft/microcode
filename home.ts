@@ -67,7 +67,13 @@ namespace microcode {
             this.picker.show({
                 title: "Load from",
                 onClick: iconId => {
-                    this.app.load(iconId)
+                    // what if not defined?
+                    let s = settings.readString(iconId)
+                    if (!s) {
+                        const b64 = rawSamples()[0].b64
+                        s = Buffer.fromBase64(b64).toString()
+                    }
+                    settings.writeString(SAVESLOT_AUTO, s)
                     this.app.popScene()
                     this.app.pushScene(new Editor(this.app))
                 },

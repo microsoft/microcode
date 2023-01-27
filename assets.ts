@@ -365,8 +365,7 @@ namespace icondb {
     function makeLargeDisk() {
         const ret = image.create(32, 32)
         ret.fill(6)
-        ret.drawTransparentImage(disk, 0, 0)
-        ret.drawTransparentImage(disk1, 16, 0)
+        ret.drawTransparentImage(disk1, 8, 0)
         ret.drawTransparentImage(disk2, 0, 16)
         ret.drawTransparentImage(disk3, 16, 16)
         ret.setPixel(0, 0, 0)
