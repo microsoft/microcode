@@ -96,6 +96,10 @@ The editor integrates with existing screen readers, like NVDA.
 
 By clicking on the `tooltip reader` button at the bottom of the editor, the tooltips will be read aloud. This may be useful for students who are still learning to read.
 
+## Program slots
+
+MicroCode provides three slots for saving user programs for later load/restore. From the editor, click on the disk icon in the upper left to select which slot to save the current program to. From the home screen, select the disk icon to load a program from one of the three save slots.
+
 ## [Sample programs](./samples)
 
 The MicroCode app has a set of [samples](./samples) built-in. Select the samples button on the MicroCode home page (see below) to reveal

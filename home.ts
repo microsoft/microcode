@@ -17,7 +17,7 @@ namespace microcode {
                 icon: "edit_program",
                 ariaId: "C0",
                 x: -50,
-                y: 40,
+                y: 30,
                 onClick: () => {
                     this.app.popScene()
                     this.app.pushScene(new Editor(this.app))
@@ -30,7 +30,7 @@ namespace microcode {
                 icon: "rock_paper_scissors",
                 ariaId: "C1",
                 x: 0,
-                y: 40,
+                y: 30,
                 onClick: () => {
                     this.app.popScene()
                     this.app.pushScene(new SamplesGallery(this.app))
@@ -43,7 +43,7 @@ namespace microcode {
                 icon: "largeDisk",
                 ariaId: "load",
                 x: 50,
-                y: 40,
+                y: 30,
                 onClick: () => {
                     this.pickDiskSLot()
                 },
