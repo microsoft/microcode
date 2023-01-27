@@ -63,7 +63,7 @@ namespace microcode {
             })
             this.picker.addGroup({ btns })
             this.picker.show({
-                title: "Load from",
+                title: accessibility.ariaToTooltip("load"),
                 onClick: iconId => {
                     // what if not defined?
                     let s = settings.readString(iconId)

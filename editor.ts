@@ -109,7 +109,7 @@ namespace microcode {
             })
             this.picker.addGroup({ btns })
             this.picker.show({
-                title: "Save to",
+                title: accessibility.ariaToTooltip("disk"),
                 onClick: iconId => {
                     this.app.save(iconId, this.progdef)
                 },
