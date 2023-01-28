@@ -55,6 +55,31 @@
 - icon
 
 
+### ![](./images/generated/icon_disk.png){:class="icon"} `` {#icon_disk}
+
+- icon
+
+
+### ![](./images/generated/icon_disk1.png){:class="icon"} `` {#icon_disk1}
+
+- icon
+
+
+### ![](./images/generated/icon_disk2.png){:class="icon"} `` {#icon_disk2}
+
+- icon
+
+
+### ![](./images/generated/icon_disk3.png){:class="icon"} `` {#icon_disk3}
+
+- icon
+
+
+### ![](./images/generated/icon_largeDisk.png){:class="icon"} `` {#icon_largeDisk}
+
+- icon
+
+
 ### ![](./images/generated/icon_solid_red.png){:class="icon"} `` {#icon_solid_red}
 
 - icon
