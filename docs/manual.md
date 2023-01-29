@@ -96,7 +96,7 @@ The editor integrates with existing screen readers, like NVDA.
 
 By clicking on the `tooltip reader` button at the bottom of the editor, the tooltips will be read aloud. This may be useful for students who are still learning to read.
 
-## Program slots
+## Program slots ![disk icon 1](./images/generated/icon_disk1.png) ![disk icon 2](./images/generated/icon_disk2.png) ![disk icon 3](./images/generated/icon_disk3.png)
 
 MicroCode provides three slots for saving user programs for later load/restore. From the editor, click on the disk icon
 ![disk icon](./images/generated/icon_disk.png)
