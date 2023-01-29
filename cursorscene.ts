@@ -85,18 +85,20 @@ namespace microcode {
         }
 
         protected handleClick(x: number, y: number) {
-            const target = this.navigator.screenToButton(
+            const target = this.cursor.navigator.screenToButton(
                 x - Screen.HALF_WIDTH,
                 y - Screen.HALF_HEIGHT
             )
             if (target) {
                 this.moveTo(target)
                 target.click()
+            } else if (this.picker.visible) {
+                this.picker.hide()
             }
         }
 
         protected handleMove(x: number, y: number) {
-            const btn = this.navigator.screenToButton(
+            const btn = this.cursor.navigator.screenToButton(
                 x - Screen.HALF_WIDTH,
                 y - Screen.HALF_HEIGHT
             )
