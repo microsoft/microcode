@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.33","target":"arcade","targetVersion":"1.11.20"}
-// total=2457748 new=94.27% cached=0.00% other=5.73%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.34","target":"arcade","targetVersion":"1.11.20"}
+// total=2457751 new=94.27% cached=0.00% other=5.73%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1575,7 +1575,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___4183 = (s.tmp_0);
     globals._binFloatLits___4197 = (_hex6892);
-    globals.VERSION___4199 = ("v2.4.33");
+    globals.VERSION___4199 = ("v2.4.34");
     globals.BACK_BUTTON_ERROR_KIND___4213 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4214 = ("forward_button");
     globals.microcode_Options_fps___4262 = (false);
@@ -1608,6 +1608,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "rule", "araua");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "add_rule", "araua gehitu");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "delete_rule", "araua ezabatu");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "load", "kargatu");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F0", "0 ukipen-pina");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F1", "1 ukipen-pina");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F2", "2 ukipen-pina");
@@ -1705,7 +1706,6 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "arith_equals", "equals");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "arith_plus", "plus");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "disk", "save");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "load", "load");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F5", "key 1");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F6", "key 2");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21L", "turn left");

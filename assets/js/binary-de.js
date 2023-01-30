@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.33","target":"arcade","targetVersion":"1.11.20"}
-// total=2457850 new=94.27% cached=0.00% other=5.73%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.34","target":"arcade","targetVersion":"1.11.20"}
+// total=2457885 new=94.27% cached=0.00% other=5.73%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1575,7 +1575,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___4183 = (s.tmp_0);
     globals._binFloatLits___4197 = (_hex6892);
-    globals.VERSION___4199 = ("v2.4.33");
+    globals.VERSION___4199 = ("v2.4.34");
     globals.BACK_BUTTON_ERROR_KIND___4213 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4214 = ("forward_button");
     globals.microcode_Options_fps___4262 = (false);
@@ -1605,16 +1605,22 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9B", "Variable Y geändert");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9C", "Variable Z geändert");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S10", "Magnet");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S11", "Schieberegler");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S12", "wählen");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "rule", "Regel");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "add_rule", "Regel hinzufügen");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "delete_rule", "Regel löschen");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "arith_equals", "gleich");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "arith_plus", "plus");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "disk", "speichern");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "load", "laden");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F0", "Touch-Pin 0");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F1", "Touch-Pin 1");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F2", "Touch-Pin 2");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F3", "Knopf A");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F4", "Knopf B");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F5", "Taste 1");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F6", "Taste 2");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F7", "Logo");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F8", "1");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F9", "2");
@@ -1635,6 +1641,8 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20A", "Platzhalter X");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20B", "Platzhalter Y");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20C", "Platzhalter Z");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21L", "nach links drehen");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21R", "nach rechts drehen");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "C0", "bearbeiten");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "C1", "Beispiele");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A1", "Seite wechseln");
@@ -1705,14 +1713,6 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_NOTE", "Note {index} {state}");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_ON", "an");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_OFF", "aus");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S11", "slider");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S12", "dial");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "disk", "save");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "load", "load");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F5", "key 1");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F6", "key 2");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21L", "turn left");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21R", "turn right");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "M24", "melody");
     globals.tooltips___4296 = (s.tmp_0);
     s.tmp_0 = setTimeout__P423_mk(s);

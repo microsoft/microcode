@@ -23,6 +23,8 @@
   "rule": "regla",
   "add_rule": "afegir regla",
   "delete_rule": "esborrar la regla",
+  "arith_equals": "és igual a",
+  "arith_plus": "més",
   "F0": "toca el pin 0",
   "F1": "toca el pin 1",
   "F2": "toca el pin 2",
@@ -118,5 +120,9 @@
   "A20_6": "negre",
   "A20_rainbow": "arc de Sant Martí",
   "A20_sparkle": "espurna",
-  "A21_": "angle de configuració del servo"
+  "A21_": "angle de configuració del servo",
+  "SR_LED": "LED {x} {y} {state}",
+  "SR_NOTE": "nota {index} {state}",
+  "SR_ON": "encès",
+  "SR_OFF": "apagat"
 }

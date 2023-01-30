@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.33","target":"arcade","targetVersion":"1.11.20"}
-// total=2459521 new=94.27% cached=0.00% other=5.73%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.34","target":"arcade","targetVersion":"1.11.20"}
+// total=2459545 new=94.27% cached=0.00% other=5.73%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1575,7 +1575,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___4183 = (s.tmp_0);
     globals._binFloatLits___4197 = (_hex6892);
-    globals.VERSION___4199 = ("v2.4.33");
+    globals.VERSION___4199 = ("v2.4.34");
     globals.BACK_BUTTON_ERROR_KIND___4213 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4214 = ("forward_button");
     globals.microcode_Options_fps___4262 = (false);
@@ -1605,6 +1605,8 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9B", "переменная Y изменена");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S9C", "переменная Z изменена");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S10", "магнит");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S11", "слайдер");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S12", "вызов");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "rule", "правило");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "add_rule", "добавить правило");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "delete_rule", "удалить правило");
@@ -1615,6 +1617,8 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F2", "сенсорный контакт 2");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F3", "кнопка A");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F4", "кнопка B");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F5", "клавиша 1");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F6", "клавиша 2");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F7", "логотип");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F8", "1");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F9", "2");
@@ -1635,6 +1639,8 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20A", "переменная Х");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20B", "переменная Y");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F20C", "переменная Z");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21L", "повернуть налево");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21R", "повернуть направо");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "C0", "изменить");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "C1", "образцы");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "A1", "переключить страницу");
@@ -1705,14 +1711,8 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_LED", "Светодиод {x} {y} {state}");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_NOTE", "примечание {index} {state}");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_OFF", "выключить");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S11", "slider");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "S12", "dial");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "disk", "save");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "load", "load");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F5", "key 1");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F6", "key 2");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21L", "turn left");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F21R", "turn right");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_ON", "on");
     globals.tooltips___4296 = (s.tmp_0);
     s.tmp_0 = setTimeout__P423_mk(s);

@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.33","target":"arcade","targetVersion":"1.11.20"}
-// total=2457754 new=94.27% cached=0.00% other=5.73%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.4.34","target":"arcade","targetVersion":"1.11.20"}
+// total=2457759 new=94.27% cached=0.00% other=5.73%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1575,7 +1575,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "servo", 318542083);
     globals.serviceClasses___4183 = (s.tmp_0);
     globals._binFloatLits___4197 = (_hex6892);
-    globals.VERSION___4199 = ("v2.4.33");
+    globals.VERSION___4199 = ("v2.4.34");
     globals.BACK_BUTTON_ERROR_KIND___4213 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4214 = ("forward_button");
     globals.microcode_Options_fps___4262 = (false);
@@ -1612,6 +1612,8 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "delete_rule", "usuń regułę");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "arith_equals", "równa się");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "arith_plus", "plus");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "disk", "zapisz");
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "load", "załaduj");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F0", "pin dotykowy 0");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F1", "pin dotykowy 1");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "F2", "pin dotykowy 2");
@@ -1712,8 +1714,6 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_NOTE", "notatka {index} {state}");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_ON", "włączony");
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "SR_OFF", "wyłączony");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "disk", "save");
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "load", "load");
     globals.tooltips___4296 = (s.tmp_0);
     s.tmp_0 = setTimeout__P423_mk(s);
     s.tmp_0.arg0 = inline__P6927;
