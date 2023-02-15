@@ -268,10 +268,10 @@ namespace microcode {
         rotary.eventCode = 1
 
         const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event", 500)
-        rotary.serviceClassName = "temperature"
-        rotary.jdExternalClass = 0x1421bac7
-        rotary.jdKind = JdKind.Temp
-        rotary.eventCode = 1
+        temp.serviceClassName = "temperature"
+        temp.jdExternalClass = 0x1421bac7
+        temp.jdKind = JdKind.Temp
+        temp.eventCode = 1
 
         function addEvent(tid: string, type: string, id: number) {
             const rotaryEvent = new FilterDefn(tid, type, 10)
