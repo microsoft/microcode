@@ -1083,7 +1083,10 @@ namespace jacs {
                                 filterValueIn(() => radioVar.read(wr))
                             }
                         )
-                    } else if (sensor.jdKind == microcode.JdKind.Rotary) {
+                    } else if (
+                        sensor.jdKind == microcode.JdKind.Rotary ||
+                        sensor.jdKind == microcode.JdKind.Temp
+                    ) {
                         const rotaryVarChanged = this.lookupGlobal(
                             "z_rotary_changed" + role.index
                         )

@@ -231,7 +231,7 @@ namespace microcode {
         const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event", 99)
         temp.serviceClassName = "temperature"
         temp.jdKind = JdKind.Temp
-        temp.eventCode = 1
+        temp.eventCode = 2
 
         const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
         radio_recv.serviceClassName = "radio"
@@ -280,8 +280,8 @@ namespace microcode {
         }
         addEvent(TID_FILTER_ROTARY_LEFT, "rotary_event", 1)
         addEvent(TID_FILTER_ROTARY_RIGHT, "rotary_event", 2)
-        addEvent(TID_FILTER_TEMP_UP, "temperature_event", 1)
-        addEvent(TID_FILTER_TEMP_DOWN, "temperature_event", 2)
+        addEvent(TID_FILTER_TEMP_UP, "temperature_event", 2)
+        addEvent(TID_FILTER_TEMP_DOWN, "temperature_event", 1)
 
         const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
         timer.constraints = {
