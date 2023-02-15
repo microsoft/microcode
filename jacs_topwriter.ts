@@ -673,7 +673,7 @@ namespace jacs {
         private modExpr(mod: microcode.FilterModifierBase) {
             const wr = this.writer
             switch (mod.jdKind) {
-                case microcode.JdKind.Temp:
+                case microcode.JdKind.Temperature:
                     const temp = this.lookupGlobal("z_temp").read(wr)
                     return literal(0)
                 case microcode.JdKind.Literal:
@@ -1088,7 +1088,7 @@ namespace jacs {
                         )
                     } else if (
                         sensor.jdKind == microcode.JdKind.Rotary ||
-                        sensor.jdKind == microcode.JdKind.Temp
+                        sensor.jdKind == microcode.JdKind.Temperature
                     ) {
                         const rotaryVarChanged = this.lookupGlobal(
                             "z_rotary_changed" + role.index

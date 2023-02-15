@@ -230,7 +230,7 @@ namespace microcode {
 
         const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event", 99)
         temp.serviceClassName = "temperature"
-        temp.jdKind = JdKind.Temp
+        temp.jdKind = JdKind.Temperature
         temp.eventCode = 2
 
         const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
@@ -571,7 +571,7 @@ namespace microcode {
 
         const temperature_value = addReadValue(
             TID_MODIFIER_TEMP_READ,
-            JdKind.Temp,
+            JdKind.Temperature,
             0
         )
         temperature_value.constraints = {}
