@@ -115,8 +115,6 @@ namespace microcode {
     export const TID_MODIFIER_MELODY_EDITOR = "M24"
     export const TID_MODIFIER_TEMP_READ = "M25"
 
-    // TODO: these strings don't follow the allocation convention
-    // TODO: for modifiers
     export const TID_MODIFIER_RGB_LED_COLOR_X = "A20_"
     export const TID_MODIFIER_RGB_LED_COLOR_1 = "A20_1"
     export const TID_MODIFIER_RGB_LED_COLOR_2 = "A20_2"
