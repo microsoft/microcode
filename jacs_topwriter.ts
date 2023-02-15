@@ -674,8 +674,8 @@ namespace jacs {
             const wr = this.writer
             switch (mod.jdKind) {
                 case microcode.JdKind.Temperature:
-                    const temp = this.lookupGlobal("z_temp").read(wr)
-                    return literal(0)
+                    const temperature = this.lookupGlobal("z_temp").read(wr)
+                    return temperature
                 case microcode.JdKind.Literal:
                     return literal(mod.jdParam)
                 case microcode.JdKind.Variable:
