@@ -166,9 +166,9 @@ namespace jacs {
                         this.classIdentifier == serviceClasses.temperature
                     ) {
                         const isRotary = serviceClasses.rotaryEncoder
-                        const rotaryVar = this.parent.lookupGlobal(
-                            "z_rotary" + this.index
-                        )
+                        const rotaryVar = isRotary
+                            ? this.parent.lookupGlobal("z_rotary" + this.index)
+                            : this.parent.lookupGlobal("z_temp")
                         const rotaryVarChanged = this.parent.lookupGlobal(
                             "z_rotary_changed" + this.index
                         )
@@ -674,7 +674,7 @@ namespace jacs {
             const wr = this.writer
             switch (mod.jdKind) {
                 case microcode.JdKind.Temp:
-                    // TODO: get the temperature
+                    const temp = this.lookupGlobal("z_temp").read(wr)
                     return literal(0)
                 case microcode.JdKind.Literal:
                     return literal(mod.jdParam)
