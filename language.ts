@@ -49,6 +49,7 @@ namespace microcode {
         Timespan,
         RadioValue,
         Rotary,
+        Temp,
 
         Loop, // repeat modifier
 

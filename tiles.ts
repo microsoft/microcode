@@ -63,6 +63,8 @@ namespace microcode {
     export const TID_FILTER_CUP_Z_READ = "F20C"
     export const TID_FILTER_ROTARY_LEFT = "F21L"
     export const TID_FILTER_ROTARY_RIGHT = "F21R"
+    export const TID_FILTER_TEMP_UP = "F22U"
+    export const TID_FILTER_TEMP_DOWN = "F22D"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -111,6 +113,7 @@ namespace microcode {
     export const TID_MODIFIER_RANDOM_TOSS = "M22"
     export const TID_MODIFIER_LOOP = "M23"
     export const TID_MODIFIER_MELODY_EDITOR = "M24"
+    export const TID_MODIFIER_TEMP_READ = "M25"
 
     // TODO: these strings don't follow the allocation convention
     // TODO: for modifiers
@@ -264,16 +267,24 @@ namespace microcode {
         rotary.jdKind = JdKind.Rotary
         rotary.eventCode = 1
 
-        function addRotaryEvent(tid: string, id: number) {
-            const rotaryEvent = new FilterDefn(tid, "rotary_event", 10)
+        const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event", 500)
+        rotary.serviceClassName = "temperature"
+        rotary.jdExternalClass = 0x1421bac7
+        rotary.jdKind = JdKind.Temp
+        rotary.eventCode = 1
+
+        function addEvent(tid: string, type: string, id: number) {
+            const rotaryEvent = new FilterDefn(tid, type, 10)
             rotaryEvent.jdParam = id
             rotaryEvent.constraints = terminal
             rotaryEvent.jdKind = JdKind.EventCode
             tilesDB.filters[tid] = rotaryEvent
             return rotaryEvent
         }
-        addRotaryEvent(TID_FILTER_ROTARY_LEFT, 1)
-        addRotaryEvent(TID_FILTER_ROTARY_RIGHT, 2)
+        addEvent(TID_FILTER_ROTARY_LEFT, "rotary_event", 1)
+        addEvent(TID_FILTER_ROTARY_RIGHT, "rotary_event", 2)
+        addEvent(TID_FILTER_TEMP_UP, "temperature_event", 1)
+        addEvent(TID_FILTER_TEMP_DOWN, "temperature_event", 2)
 
         const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
         timer.constraints = {
