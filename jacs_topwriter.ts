@@ -673,6 +673,9 @@ namespace jacs {
         private modExpr(mod: microcode.FilterModifierBase) {
             const wr = this.writer
             switch (mod.jdKind) {
+                case microcode.JdKind.Temp:
+                    // TODO: get the temperature
+                    return literal(0)
                 case microcode.JdKind.Literal:
                     return literal(mod.jdParam)
                 case microcode.JdKind.Variable:
