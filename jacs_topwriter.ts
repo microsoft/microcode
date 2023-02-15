@@ -162,8 +162,10 @@ namespace jacs {
                             }
                         )
                     } else if (
-                        this.classIdentifier == serviceClasses.rotaryEncoder
+                        this.classIdentifier == serviceClasses.rotaryEncoder ||
+                        this.classIdentifier == serviceClasses.temperature
                     ) {
+                        const isRotary = serviceClasses.rotaryEncoder
                         const rotaryVar = this.parent.lookupGlobal(
                             "z_rotary" + this.index
                         )
@@ -171,7 +173,10 @@ namespace jacs {
                             "z_rotary_changed" + this.index
                         )
                         rotaryVarChanged.write(wr, literal(0))
-                        this.parent.callLinked("get_rotary", [this.emit(wr)])
+                        this.parent.callLinked(
+                            isRotary ? "get_rotary" : "round_temp",
+                            [this.emit(wr)]
+                        )
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_NE, [
                                 wr.emitExpr(Op.EXPR0_RET_VAL, []),
@@ -1239,7 +1244,7 @@ namespace jacs {
     }
 
     export const needsWakeup = [
-        { classId: 0x1421bac7, convert: "round_temp" }, // soundLevel
+        { classId: 0x1421bac7, convert: undefined }, // soundLevel
         { classId: 0x14ad1a5d, convert: undefined }, // soundLevel
         { classId: 0x1f140409, convert: undefined }, // accelerometer
         { classId: 0x17dc9a1c, convert: "light_1_to_5" }, // JD light level
