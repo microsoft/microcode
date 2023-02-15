@@ -62,6 +62,8 @@
     "F20C": "variable Z",
     "F21L": "turn left",
     "F21R": "turn right",
+    "F22U": "hotter",
+    "F22D": "cooler",
 
     "C0": "edit",
     "C1": "samples",
@@ -109,6 +111,7 @@
     "M22": "dice",
     "M23": "repeat",
     "M24": "melody",
+    "M25": "temperature",
 
     "A8": "LED",
 

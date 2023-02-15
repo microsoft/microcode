@@ -230,6 +230,11 @@ namespace microcode {
         makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, 1, TID_FILTER_CUP_Y_READ)
         makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, 2, TID_FILTER_CUP_Z_READ)
 
+        const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event", 99)
+        temp.serviceClassName = "temperature"
+        temp.jdKind = JdKind.Temp
+        temp.eventCode = 1
+
         const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
         radio_recv.serviceClassName = "radio"
         radio_recv.eventCode = 0x91
@@ -266,12 +271,6 @@ namespace microcode {
         rotary.jdExternalClass = 0x10fa29c9
         rotary.jdKind = JdKind.Rotary
         rotary.eventCode = 1
-
-        const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event", 500)
-        temp.serviceClassName = "temperature"
-        temp.jdExternalClass = 0x1421bac7
-        temp.jdKind = JdKind.Temp
-        temp.eventCode = 1
 
         function addEvent(tid: string, type: string, id: number) {
             const rotaryEvent = new FilterDefn(tid, type, 10)
@@ -571,6 +570,13 @@ namespace microcode {
         )
         radio_value.priority = 199
         radio_value.constraints = { requires: [TID_SENSOR_RADIO_RECEIVE] }
+
+        const temperature_value = addReadValue(
+            TID_MODIFIER_TEMP_READ,
+            JdKind.Temp,
+            0
+        )
+        temperature_value.priority = 198
 
         const random_toss = addReadValue(
             TID_MODIFIER_RANDOM_TOSS,
