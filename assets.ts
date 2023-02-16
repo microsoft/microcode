@@ -71,6 +71,7 @@ namespace microcode {
             this.reg[TID_SENSOR_MAGNET] = icondb.magnet
             this.reg[TID_SENSOR_SLIDER] = icondb.kita_slider
             this.reg[TID_SENSOR_ROTARY] = icondb.kita_rotary
+            this.reg[TID_SENSOR_TEMP] = icondb.thermometer
             this.reg[TID_SENSOR_LIGHT] = icondb.light_sensor
             this.reg[TID_SENSOR_START_PAGE] = icondb.tile_start_page
 
@@ -101,6 +102,8 @@ namespace microcode {
             this.reg[TID_FILTER_CUP_Z_READ] = icondb.cupZread
             this.reg[TID_FILTER_ROTARY_LEFT] = icondb.kita_rotary_left
             this.reg[TID_FILTER_ROTARY_RIGHT] = icondb.kita_rotary_right
+            this.reg[TID_FILTER_TEMP_WARMER] = icondb.temp_warmer
+            this.reg[TID_FILTER_TEMP_COLDER] = icondb.temp_colder
 
             // actuators
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
@@ -160,6 +163,7 @@ namespace microcode {
             this.reg[TID_MODIFIER_CUP_X_READ] = icondb.cupXread
             this.reg[TID_MODIFIER_CUP_Y_READ] = icondb.cupYread
             this.reg[TID_MODIFIER_CUP_Z_READ] = icondb.cupZread
+            this.reg[TID_MODIFIER_TEMP_READ] = icondb.thermometer
 
             this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
             this.reg[TID_FILTER_ACCEL_TILT_UP] = icondb.moveTiltUp
@@ -1393,6 +1397,62 @@ namespace icondb {
     . . . b b b b b b b . . 6 5 5 5 
     . . . . . . . . . . . . . 5 5 4 
     . . . . . . . . . . 6 . . 4 4 .   
+`
+    export const thermometer = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . f . . . . . . . .
+    . . . . . . f d f . . . . . . .
+    . . . . . . f d f . . . . . . .
+    . . . . . . f d f . . . . . . .
+    . . . . . . f d f . . . . . . .
+    . . . . . . f 2 f . . . . . . .
+    . . . . . . f 2 f . . . . . . .
+    . . . . . . f 2 f . . . . . . .
+    . . . . . . f 2 f . . . . . . .
+    . . . . . f 2 2 2 f . . . . . .
+    . . . . f 2 2 2 2 2 f . . . . .
+    . . . . f 2 2 2 2 2 f . . . . .
+    . . . . . f 2 2 2 f . . . . . .
+    . . . . . . f f f . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
+
+    export const temp_warmer = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . f . . . . . . . .
+. . . . . . f 2 f . . . . . . .
+. . . . . f 2 2 2 f . . . . . .
+. . . . f 2 2 2 2 2 f . . . . .
+. . . f 2 2 2 2 2 2 2 f . . . .
+. . . f f f 2 2 2 f f f . . . .
+. . . . . f 2 2 2 f . . . . . .
+. . . . . f 2 2 2 f . . . . . .
+. . . . . f 2 2 2 f . . . . . .
+. . . . . f 2 2 2 f . . . . . .
+. . . . . f 2 2 2 f . . . . . .
+. . . . . f f f f f . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+`
+
+    export const temp_colder = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . f f f f f . . . . . .
+    . . . . . f 9 9 9 f . . . . . .
+    . . . . . f 9 9 9 f . . . . . .
+    . . . . . f 9 9 9 f . . . . . .
+    . . . . . f 9 9 9 f . . . . . .
+    . . . . . f 9 9 9 f . . . . . .
+    . . . f f f 9 9 9 f f f . . . .
+    . . . f 9 9 9 9 9 9 9 f . . . .
+    . . . . f 9 9 9 9 9 f . . . . .
+    . . . . . f 9 9 9 f . . . . . .
+    . . . . . . f 9 f . . . . . . .
+    . . . . . . . f . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
 `
 
     export const light_sensor = img`

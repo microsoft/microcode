@@ -63,6 +63,8 @@ namespace microcode {
     export const TID_FILTER_CUP_Z_READ = "F20C"
     export const TID_FILTER_ROTARY_LEFT = "F21L"
     export const TID_FILTER_ROTARY_RIGHT = "F21R"
+    export const TID_FILTER_TEMP_WARMER = "F22U"
+    export const TID_FILTER_TEMP_COLDER = "F22D"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -111,9 +113,8 @@ namespace microcode {
     export const TID_MODIFIER_RANDOM_TOSS = "M22"
     export const TID_MODIFIER_LOOP = "M23"
     export const TID_MODIFIER_MELODY_EDITOR = "M24"
+    export const TID_MODIFIER_TEMP_READ = "M25"
 
-    // TODO: these strings don't follow the allocation convention
-    // TODO: for modifiers
     export const TID_MODIFIER_RGB_LED_COLOR_X = "A20_"
     export const TID_MODIFIER_RGB_LED_COLOR_1 = "A20_1"
     export const TID_MODIFIER_RGB_LED_COLOR_2 = "A20_2"
@@ -227,6 +228,11 @@ namespace microcode {
         makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, 1, TID_FILTER_CUP_Y_READ)
         makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, 2, TID_FILTER_CUP_Z_READ)
 
+        const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event", 99)
+        temp.serviceClassName = "temperature"
+        temp.jdKind = JdKind.Temperature
+        temp.eventCode = 2
+
         const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
         radio_recv.serviceClassName = "radio"
         radio_recv.eventCode = 0x91
@@ -264,16 +270,18 @@ namespace microcode {
         rotary.jdKind = JdKind.Rotary
         rotary.eventCode = 1
 
-        function addRotaryEvent(tid: string, id: number) {
-            const rotaryEvent = new FilterDefn(tid, "rotary_event", 10)
+        function addEvent(tid: string, type: string, id: number) {
+            const rotaryEvent = new FilterDefn(tid, type, 10)
             rotaryEvent.jdParam = id
             rotaryEvent.constraints = terminal
             rotaryEvent.jdKind = JdKind.EventCode
             tilesDB.filters[tid] = rotaryEvent
             return rotaryEvent
         }
-        addRotaryEvent(TID_FILTER_ROTARY_LEFT, 1)
-        addRotaryEvent(TID_FILTER_ROTARY_RIGHT, 2)
+        addEvent(TID_FILTER_ROTARY_LEFT, "rotary_event", 1)
+        addEvent(TID_FILTER_ROTARY_RIGHT, "rotary_event", 2)
+        addEvent(TID_FILTER_TEMP_WARMER, "temperature_event", 2)
+        addEvent(TID_FILTER_TEMP_COLDER, "temperature_event", 1)
 
         const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
         timer.constraints = {
@@ -560,6 +568,14 @@ namespace microcode {
         )
         radio_value.priority = 199
         radio_value.constraints = { requires: [TID_SENSOR_RADIO_RECEIVE] }
+
+        const temperature_value = addReadValue(
+            TID_MODIFIER_TEMP_READ,
+            JdKind.Temperature,
+            0
+        )
+        temperature_value.constraints = {}
+        temperature_value.priority = 198
 
         const random_toss = addReadValue(
             TID_MODIFIER_RANDOM_TOSS,

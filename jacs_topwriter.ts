@@ -162,40 +162,46 @@ namespace jacs {
                             }
                         )
                     } else if (
-                        this.classIdentifier == serviceClasses.rotaryEncoder
+                        this.classIdentifier == serviceClasses.rotaryEncoder ||
+                        this.classIdentifier == serviceClasses.temperature
                     ) {
-                        const rotaryVar = this.parent.lookupGlobal(
-                            "z_rotary" + this.index
+                        const isRotary =
+                            this.classIdentifier == serviceClasses.rotaryEncoder
+                        const sensorVar = isRotary
+                            ? this.parent.lookupGlobal("z_rotary" + this.index)
+                            : this.parent.lookupGlobal("z_temp")
+                        const sensorVarChanged = this.parent.lookupGlobal(
+                            "z_var_changed" + this.index
                         )
-                        const rotaryVarChanged = this.parent.lookupGlobal(
-                            "z_rotary_changed" + this.index
+                        sensorVarChanged.write(wr, literal(0))
+                        this.parent.callLinked(
+                            isRotary ? "get_rotary" : "round_temp",
+                            [this.emit(wr)]
                         )
-                        rotaryVarChanged.write(wr, literal(0))
-                        this.parent.callLinked("get_rotary", [this.emit(wr)])
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_NE, [
                                 wr.emitExpr(Op.EXPR0_RET_VAL, []),
-                                rotaryVar.read(wr),
+                                sensorVar.read(wr),
                             ]),
                             () => {
                                 wr.emitIf(
                                     wr.emitExpr(Op.EXPR2_LT, [
                                         wr.emitExpr(Op.EXPR0_RET_VAL, []),
-                                        rotaryVar.read(wr),
+                                        sensorVar.read(wr),
                                     ]),
                                     () => {
-                                        rotaryVar.write(
+                                        sensorVar.write(
                                             wr,
                                             wr.emitExpr(Op.EXPR0_RET_VAL, [])
                                         )
-                                        rotaryVarChanged.write(wr, literal(1))
+                                        sensorVarChanged.write(wr, literal(1))
                                     },
                                     () => {
-                                        rotaryVar.write(
+                                        sensorVar.write(
                                             wr,
                                             wr.emitExpr(Op.EXPR0_RET_VAL, [])
                                         )
-                                        rotaryVarChanged.write(wr, literal(2))
+                                        sensorVarChanged.write(wr, literal(2))
                                     }
                                 )
                             }
@@ -665,9 +671,25 @@ namespace jacs {
             ])
         }
 
+        private modExprSetup(mod: microcode.FilterModifierBase) {
+            const wr = this.writer
+            switch (mod.jdKind) {
+                case microcode.JdKind.Temperature:
+                    const temperatureRole = this.lookupRole("temperature", 0)
+                    const temperatureVar = this.lookupGlobal("z_temp")
+                    this.callLinked("round_temp", [temperatureRole.emit(wr)])
+                    temperatureVar.write(wr, wr.emitExpr(Op.EXPR0_RET_VAL, []))
+                    break
+                default:
+                    break
+            }
+        }
+
         private modExpr(mod: microcode.FilterModifierBase) {
             const wr = this.writer
             switch (mod.jdKind) {
+                case microcode.JdKind.Temperature:
+                    return this.lookupGlobal("z_temp").read(wr)
                 case microcode.JdKind.Literal:
                     return literal(mod.jdParam)
                 case microcode.JdKind.Variable:
@@ -741,6 +763,8 @@ namespace jacs {
                     if (folded != undefined) {
                         addOrSet(literal(folded))
                     } else {
+                        for (let i = 0; i < mods.length; ++i)
+                            this.modExprSetup(mods[i])
                         for (let i = 0; i < mods.length; ++i)
                             addOrSet(this.modExpr(mods[i]))
                     }
@@ -1078,11 +1102,14 @@ namespace jacs {
                                 filterValueIn(() => radioVar.read(wr))
                             }
                         )
-                    } else if (sensor.jdKind == microcode.JdKind.Rotary) {
-                        const rotaryVarChanged = this.lookupGlobal(
-                            "z_rotary_changed" + role.index
+                    } else if (
+                        sensor.jdKind == microcode.JdKind.Rotary ||
+                        sensor.jdKind == microcode.JdKind.Temperature
+                    ) {
+                        const varChanged = this.lookupGlobal(
+                            "z_var_changed" + role.index
                         )
-                        this.ifEq(rotaryVarChanged.read(wr), code, emitBody)
+                        this.ifEq(varChanged.read(wr), code, emitBody)
                     } else if (wakeup && wakeup.convert) {
                         const roleGlobal = this.lookupGlobal(
                             "z_role" + role.index
@@ -1239,6 +1266,7 @@ namespace jacs {
     }
 
     export const needsWakeup = [
+        { classId: 0x1421bac7, convert: undefined }, // soundLevel
         { classId: 0x14ad1a5d, convert: undefined }, // soundLevel
         { classId: 0x1f140409, convert: undefined }, // accelerometer
         { classId: 0x17dc9a1c, convert: "light_1_to_5" }, // JD light level

@@ -65,6 +65,7 @@ The left-hand side of a rule, the `When` section, starts with an
 -   ![release image](./images/generated/icon_S2B.png){:class="icon"} `release` of button, micro:bit icon, or pin
 -   ![move image](./images/generated/icon_S3.png){:class="icon"} `move` of accelerometer, in various ways
 -   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear` a sound, either loud or soft
+-   ![temperature change image](./images/generated/icon_S6.png){:class="icon"} `temperature change`, either `warmer` or `colder`
 -   ![radio receive image](./images/generated/icon_S7.png){:class="icon"} `radio receive` of a number
 -   ![start page image](./images/generated/icon_S1.png){:class="icon"} `start page` only runs when the page is started (or switched to), with an optional delay
 -   ![timer image](./images/generated/icon_S4.png){:class="icon"} `timer` of a time
@@ -90,6 +91,11 @@ The dialog below shows the parameters associated with the button press/release e
 
 -   ![accelerometer](./images/generated/icon_S3.png){:class="icon"} `move`, defaults to ![shake](./images/generated/icon_F17_shake.png){:class="icon"} `shake`; other options include ![tilt up](./images/generated/icon_F17_tilt_up.png){:class="icon"} `tilt up`, ![tilt down](./images/generated/icon_F17_tilt_down.png){:class="icon"} `tilt down`, ![tilt left](./images/generated/icon_F17_tilt_left.png){:class="icon"} `tilt left` and ![tilt right](./images/generated/icon_F17_tilt_right.png){:class="icon"} `tilt right`
 -   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear`, defaults to ![loud](./images/generated/icon_F15.png){:class="icon"}`loud`
+-   ![temperature change](./images/generated/icon_S6.png){:class="icon"} `temperature change`, either 1 degree (Celcius) `warmer`
+    ![warmer](./images/generated/icon_F22U.png){:class="icon"} or `colder`
+    ![colder](./images/generated/icon_F22D.png){:class="icon"}
+    (defaults to `warmer`)
+
 -   ![radio receive](./images/generated/icon_S7.png){:class="icon"} `radio receive`, defaults to `any`
 -   ![timer](./images/generated/icon_S4.png){:class="icon"} `timer`, defaults to `1/4 second`
 -   ![variable X image](./images/generated/icon_S9A.png){:class="icon"} `variable (X,Y,Z) changed`, defaults to `any` (any value change triggers it)
@@ -163,6 +169,7 @@ For commands that expect a numeric value (![radio send](./images/generated/icon_
 -   the **constant values** ![value 1](./images/generated/icon_M6.png){:class="icon"} 1, 2, 3, 4 and 5 dots
 -   the **values of variables** ![out of variable X](./images/generated/icon_S9A.png){:class="icon"} `X`, `Y`, and `Z`
 -   the **value of the radio receive event** ![value of radio receive event](./images/generated/icon_M21.png){:class="icon"}, only available if **WHEN** section has radio receive event ![radio receive event](./images/generated/icon_S7.png){:class="icon"}
+-   the **value of the temperature sensor** ![value of temperature sensor](./images/generated/icon_M25.png){:class="icon"}, always available
 -   a ![dice](./images/generated/icon_M22.png){:class="icon"} **random number generator** yields a random integer between `1` and `5` (inclusive) by default
 
 ### ![repeat](./images/generated/icon_M23.png){:class="icon"} `repeat` (loops) {#loops}
