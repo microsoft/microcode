@@ -670,14 +670,25 @@ namespace jacs {
             ])
         }
 
+        private modExprSetup(mod: microcode.FilterModifierBase) {
+            const wr = this.writer
+            switch (mod.jdKind) {
+                case microcode.JdKind.Temperature:
+                    const temperatureRole = this.lookupRole("temperature", 0)
+                    const temperatureVar = this.lookupGlobal("z_temp")
+                    this.callLinked("round_temp", [temperatureRole.emit(wr)])
+                    temperatureVar.write(wr, wr.emitExpr(Op.EXPR0_RET_VAL, []))
+                    break
+                default:
+                    break
+            }
+        }
+
         private modExpr(mod: microcode.FilterModifierBase) {
             const wr = this.writer
             switch (mod.jdKind) {
-                case microcode.JdKind.Temperature: {
-                    const tempRole = this.lookupRole("temperature", 0)
-                    this.callLinked("round_temp", [tempRole.emit(wr)])
-                    return wr.emitExpr(Op.EXPR0_RET_VAL, [])
-                }
+                case microcode.JdKind.Temperature:
+                    return this.lookupGlobal("z_temp").read(wr)
                 case microcode.JdKind.Literal:
                     return literal(mod.jdParam)
                 case microcode.JdKind.Variable:
@@ -751,6 +762,8 @@ namespace jacs {
                     if (folded != undefined) {
                         addOrSet(literal(folded))
                     } else {
+                        for (let i = 0; i < mods.length; ++i)
+                            this.modExprSetup(mods[i])
                         for (let i = 0; i < mods.length; ++i)
                             addOrSet(this.modExpr(mods[i]))
                     }
