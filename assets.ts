@@ -102,8 +102,8 @@ namespace microcode {
             this.reg[TID_FILTER_CUP_Z_READ] = icondb.cupZread
             this.reg[TID_FILTER_ROTARY_LEFT] = icondb.kita_rotary_left
             this.reg[TID_FILTER_ROTARY_RIGHT] = icondb.kita_rotary_right
-            this.reg[TID_FILTER_TEMP_UP] = icondb.tempUp
-            this.reg[TID_FILTER_TEMP_DOWN] = icondb.tempDown
+            this.reg[TID_FILTER_TEMP_HOTTER] = icondb.temp_hotter
+            this.reg[TID_FILTER_TEMP_COLDER] = icondb.temp_colder
 
             // actuators
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
@@ -1417,7 +1417,7 @@ namespace icondb {
     . . . . . . . . . . . . . . . .
 `
 
-    export const tempUp = img`
+    export const temp_hotter = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . f . . . . . . . .
@@ -1436,7 +1436,7 @@ namespace icondb {
 . . . . . . . . . . . . . . . .
 `
 
-    export const tempDown = img`
+    export const temp_colder = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . f f f f f . . . . . .

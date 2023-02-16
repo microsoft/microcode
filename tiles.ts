@@ -63,8 +63,8 @@ namespace microcode {
     export const TID_FILTER_CUP_Z_READ = "F20C"
     export const TID_FILTER_ROTARY_LEFT = "F21L"
     export const TID_FILTER_ROTARY_RIGHT = "F21R"
-    export const TID_FILTER_TEMP_UP = "F22U"
-    export const TID_FILTER_TEMP_DOWN = "F22D"
+    export const TID_FILTER_TEMP_HOTTER = "F22U"
+    export const TID_FILTER_TEMP_COLDER = "F22D"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -280,8 +280,8 @@ namespace microcode {
         }
         addEvent(TID_FILTER_ROTARY_LEFT, "rotary_event", 1)
         addEvent(TID_FILTER_ROTARY_RIGHT, "rotary_event", 2)
-        addEvent(TID_FILTER_TEMP_UP, "temperature_event", 2)
-        addEvent(TID_FILTER_TEMP_DOWN, "temperature_event", 1)
+        addEvent(TID_FILTER_TEMP_HOTTER, "temperature_event", 2)
+        addEvent(TID_FILTER_TEMP_COLDER, "temperature_event", 1)
 
         const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
         timer.constraints = {
