@@ -673,9 +673,11 @@ namespace jacs {
         private modExpr(mod: microcode.FilterModifierBase) {
             const wr = this.writer
             switch (mod.jdKind) {
-                case microcode.JdKind.Temperature:
-                    const temperature = this.lookupGlobal("z_temp").read(wr)
-                    return temperature
+                case microcode.JdKind.Temperature: {
+                    const tempRole = this.lookupRole("temperature", 0)
+                    this.callLinked("round_temp", [tempRole.emit(wr)])
+                    return wr.emitExpr(Op.EXPR0_RET_VAL, [])
+                }
                 case microcode.JdKind.Literal:
                     return literal(mod.jdParam)
                 case microcode.JdKind.Variable:
