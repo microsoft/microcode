@@ -60,7 +60,7 @@ namespace microcode {
   "F20C": "variable Z",
   "F21L": "turn left",
   "F21R": "turn right",
-  "F22U": "hotter",
+  "F22U": "warmer",
   "F22D": "colder",
   "C0": "edit",
   "C1": "samples",

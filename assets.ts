@@ -102,7 +102,7 @@ namespace microcode {
             this.reg[TID_FILTER_CUP_Z_READ] = icondb.cupZread
             this.reg[TID_FILTER_ROTARY_LEFT] = icondb.kita_rotary_left
             this.reg[TID_FILTER_ROTARY_RIGHT] = icondb.kita_rotary_right
-            this.reg[TID_FILTER_TEMP_HOTTER] = icondb.temp_hotter
+            this.reg[TID_FILTER_TEMP_WARMER] = icondb.temp_warmer
             this.reg[TID_FILTER_TEMP_COLDER] = icondb.temp_colder
 
             // actuators
@@ -1417,7 +1417,7 @@ namespace icondb {
     . . . . . . . . . . . . . . . .
 `
 
-    export const temp_hotter = img`
+    export const temp_warmer = img`
 . . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . . .
 . . . . . . . f . . . . . . . .
