@@ -165,14 +165,15 @@ namespace jacs {
                         this.classIdentifier == serviceClasses.rotaryEncoder ||
                         this.classIdentifier == serviceClasses.temperature
                     ) {
-                        const isRotary = serviceClasses.rotaryEncoder
-                        const rotaryVar = isRotary
+                        const isRotary =
+                            this.classIdentifier == serviceClasses.rotaryEncoder
+                        const sensorVar = isRotary
                             ? this.parent.lookupGlobal("z_rotary" + this.index)
                             : this.parent.lookupGlobal("z_temp")
-                        const rotaryVarChanged = this.parent.lookupGlobal(
-                            "z_rotary_changed" + this.index
+                        const sensorVarChanged = this.parent.lookupGlobal(
+                            "z_var_changed" + this.index
                         )
-                        rotaryVarChanged.write(wr, literal(0))
+                        sensorVarChanged.write(wr, literal(0))
                         this.parent.callLinked(
                             isRotary ? "get_rotary" : "round_temp",
                             [this.emit(wr)]
@@ -180,27 +181,27 @@ namespace jacs {
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_NE, [
                                 wr.emitExpr(Op.EXPR0_RET_VAL, []),
-                                rotaryVar.read(wr),
+                                sensorVar.read(wr),
                             ]),
                             () => {
                                 wr.emitIf(
                                     wr.emitExpr(Op.EXPR2_LT, [
                                         wr.emitExpr(Op.EXPR0_RET_VAL, []),
-                                        rotaryVar.read(wr),
+                                        sensorVar.read(wr),
                                     ]),
                                     () => {
-                                        rotaryVar.write(
+                                        sensorVar.write(
                                             wr,
                                             wr.emitExpr(Op.EXPR0_RET_VAL, [])
                                         )
-                                        rotaryVarChanged.write(wr, literal(1))
+                                        sensorVarChanged.write(wr, literal(1))
                                     },
                                     () => {
-                                        rotaryVar.write(
+                                        sensorVar.write(
                                             wr,
                                             wr.emitExpr(Op.EXPR0_RET_VAL, [])
                                         )
-                                        rotaryVarChanged.write(wr, literal(2))
+                                        sensorVarChanged.write(wr, literal(2))
                                     }
                                 )
                             }
@@ -1105,10 +1106,10 @@ namespace jacs {
                         sensor.jdKind == microcode.JdKind.Rotary ||
                         sensor.jdKind == microcode.JdKind.Temperature
                     ) {
-                        const rotaryVarChanged = this.lookupGlobal(
-                            "z_rotary_changed" + role.index
+                        const varChanged = this.lookupGlobal(
+                            "z_var_changed" + role.index
                         )
-                        this.ifEq(rotaryVarChanged.read(wr), code, emitBody)
+                        this.ifEq(varChanged.read(wr), code, emitBody)
                     } else if (wakeup && wakeup.convert) {
                         const roleGlobal = this.lookupGlobal(
                             "z_role" + role.index
