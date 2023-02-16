@@ -1,48 +1,48 @@
 name: Build+Release
 on:
-  push:
-    tags:
-      - v**
+    push:
+        tags:
+            - v**
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}          
-      - name: Cache npm and makecode
-        uses: actions/cache@v2
-        with:
-            path: |
-                ~/.npm
-                ~/.pxt/mkc-cache
-            key: ${{ runner.os }}-${{ hashFiles('pxt.json') }}-${{ hashFiles('mkc*json') }}
-            restore-keys: |
-                ${{ runner.os }}-
-      - name: npm install makecode
-        run: |
-            npm install -g makecode
-      - name: build js
-        run: |
-          makecode --java-script -u
-      - name: build hardware N3
-        run: |
-          makecode --hw N3
-      - name: copy files
-        run: |
-          cp ./built/binary.js ./assets/js/binary.js
-          cp ./built/n3/binary.hex ./assets/firmware.hex
-      - name: build localized hex files
-        run: |
-          yarn install --frozen-lockfile
-          node ./scripts/lochex.mjs
-      - name: upload modified assets
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          file_pattern: 'assets/* _includes/*'
-          branch: main
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [16.x]
+        steps:
+            - uses: actions/checkout@v3
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: Cache npm and makecode
+              uses: actions/cache@v2
+              with:
+                  path: |
+                      ~/.npm
+                      ~/.pxt/mkc-cache
+                  key: ${{ runner.os }}-${{ hashFiles('pxt.json') }}-${{ hashFiles('mkc*json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-
+            - name: npm install makecode@0.34.5
+              run: |
+                  npm install -g makecode@0.34.5
+            - name: build js
+              run: |
+                  makecode --java-script -u
+            - name: build hardware N3
+              run: |
+                  makecode --hw N3
+            - name: copy files
+              run: |
+                  cp ./built/binary.js ./assets/js/binary.js
+                  cp ./built/n3/binary.hex ./assets/firmware.hex
+            - name: build localized hex files
+              run: |
+                  yarn install --frozen-lockfile
+                  node ./scripts/lochex.mjs
+            - name: upload modified assets
+              uses: stefanzweifel/git-auto-commit-action@v4
+              with:
+                  file_pattern: "assets/* _includes/*"
+                  branch: main

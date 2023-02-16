@@ -26,7 +26,7 @@ jobs:
                   key: ${{ runner.os }}-${{ hashFiles('pxt.json') }}-${{ hashFiles('mkc*json') }}
                   restore-keys: |
                       ${{ runner.os }}-
-            - name: npm install makecode
+            - name: npm install makecode@0.34.5
               run: |
                   npm install -g makecode@0.34.5
             - name: build js
