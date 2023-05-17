@@ -72,7 +72,7 @@ namespace microcode {
         private icon: Sprite
         //private text: TextSprite;
         private style: ButtonStyle
-        private iconId: string | Image
+        private iconId: number | Image
         private _ariaId: string
         public onClick?: (button: Button) => void
         private bounds_: Bounds
@@ -126,7 +126,7 @@ namespace microcode {
         constructor(opts: {
             parent?: IPlaceable
             style?: ButtonStyle
-            icon: string | Image
+            icon: number | Image
             ariaId?: string
             x: number
             y: number
@@ -158,7 +158,7 @@ namespace microcode {
             return this.iconId
         }
 
-        public setIcon(iconId: string) {
+        public setIcon(iconId: number) {
             this.iconId = iconId
             this.buildSprite()
         }
@@ -175,7 +175,7 @@ namespace microcode {
             this.icon = new Sprite({
                 parent: this,
                 img:
-                    typeof this.iconId == "string"
+                    typeof this.iconId == "number"
                         ? icons.get(this.iconId)
                         : this.iconId,
             })

@@ -1,8 +1,8 @@
 namespace microcode {
     export class icons {
-        static reg: { [name: string]: Image }
+        static reg: { [name: string | number]: Image }
 
-        public static get(name: string, nullIfMissing = false): Image {
+        public static get(name: string | number, nullIfMissing = false): Image {
             let icon = this.reg[name]
             if (!icon && !nullIfMissing) {
                 icon = this.reg["MISSING"]
@@ -58,25 +58,22 @@ namespace microcode {
             this.reg["clap_lights"] = icondb.sampleClapLights
             this.reg["railroad_crossing"] = icondb.sampleRailCrossingLight
 
-            // sensors
-            this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
-            this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
+            // TODO: make this a buffer of pointers???
+            this.reg[TID_SENSOR_START_PAGE] = icondb.tile_start_page
             this.reg[TID_SENSOR_PRESS] = icondb.finger_press
             this.reg[TID_SENSOR_RELEASE] = icondb.finger_release
-            this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
             this.reg[TID_SENSOR_ACCELEROMETER] = icondb.accelerometer
+            this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
+            this.reg[TID_SENSOR_LIGHT] = icondb.light_sensor
+            this.reg[TID_SENSOR_TEMP] = icondb.thermometer
+            this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
+            this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
             this.reg[TID_SENSOR_CUP_X_WRITTEN] = icondb.cupXwritten
             this.reg[TID_SENSOR_CUP_Y_WRITTEN] = icondb.cupYwritten
             this.reg[TID_SENSOR_CUP_Z_WRITTEN] = icondb.cupZwritten
             this.reg[TID_SENSOR_MAGNET] = icondb.magnet
             this.reg[TID_SENSOR_SLIDER] = icondb.kita_slider
             this.reg[TID_SENSOR_ROTARY] = icondb.kita_rotary
-            this.reg[TID_SENSOR_TEMP] = icondb.thermometer
-            this.reg[TID_SENSOR_LIGHT] = icondb.light_sensor
-            this.reg[TID_SENSOR_START_PAGE] = icondb.tile_start_page
-
-            // filters
-            this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
             this.reg[TID_FILTER_PIN_0] = icondb.tile_pin_0
             this.reg[TID_FILTER_PIN_1] = icondb.tile_pin_1
             this.reg[TID_FILTER_PIN_2] = icondb.tile_pin_2
@@ -84,19 +81,24 @@ namespace microcode {
             this.reg[TID_FILTER_BUTTON_B] = icondb.tile_button_b
             this.reg[TID_FILTER_KITA_KEY_1] = icondb.kita_key_1
             this.reg[TID_FILTER_KITA_KEY_2] = icondb.kita_key_2
-
-            this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short
-            this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long
-            this.reg[TID_FILTER_TIMESPAN_VERY_LONG] =
-                icondb.tile_timespan_fiveSeconds
-            this.reg[TID_FILTER_TIMESPAN_RANDOM] = icondb.tile_timespan_random
+            this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
             this.reg[TID_FILTER_COIN_1] = icondb.blocks1
             this.reg[TID_FILTER_COIN_2] = icondb.blocks2
             this.reg[TID_FILTER_COIN_3] = icondb.blocks3
             this.reg[TID_FILTER_COIN_4] = icondb.blocks4
             this.reg[TID_FILTER_COIN_5] = icondb.blocks5
+            this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short
+            this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long
             this.reg[TID_FILTER_LOUD] = icondb.speaker
             this.reg[TID_FILTER_QUIET] = icondb.speakerQuiet
+            this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
+            this.reg[TID_FILTER_ACCEL_TILT_UP] = icondb.moveTiltUp
+            this.reg[TID_FILTER_ACCEL_TILT_DOWN] = icondb.moveTiltDown
+            this.reg[TID_FILTER_ACCEL_TILT_LEFT] = icondb.moveTiltLeft
+            this.reg[TID_FILTER_ACCEL_TILT_RIGHT] = icondb.moveTiltRight
+            this.reg[TID_FILTER_TIMESPAN_RANDOM] = icondb.tile_timespan_random
+            this.reg[TID_FILTER_TIMESPAN_VERY_LONG] =
+                icondb.tile_timespan_fiveSeconds
             this.reg[TID_FILTER_CUP_X_READ] = icondb.cupXread
             this.reg[TID_FILTER_CUP_Y_READ] = icondb.cupYread
             this.reg[TID_FILTER_CUP_Z_READ] = icondb.cupZread
@@ -104,15 +106,14 @@ namespace microcode {
             this.reg[TID_FILTER_ROTARY_RIGHT] = icondb.kita_rotary_right
             this.reg[TID_FILTER_TEMP_WARMER] = icondb.temp_warmer
             this.reg[TID_FILTER_TEMP_COLDER] = icondb.temp_colder
-
-            // actuators
             this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
+            this.reg[TID_ACTUATOR_SPEAKER] = icondb.speakerFun
+            this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
+
             this.reg[TID_ACTUATOR_PAINT] = icondb.showScreen
             this.reg[TID_ACTUATOR_SHOW_NUMBER] = icondb.showNumber
             this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
             this.reg[TID_ACTUATOR_RADIO_SET_GROUP] = icondb.radio_set_group
-            this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
-            this.reg[TID_ACTUATOR_SPEAKER] = icondb.speakerFun
             this.reg[TID_ACTUATOR_MUSIC] = icondb.music
             this.reg[TID_ACTUATOR_RGB_LED] = icondb.rgbLed
             this.reg[TID_ACTUATOR_CUP_X_ASSIGN] = icondb.cupXassign
@@ -164,12 +165,6 @@ namespace microcode {
             this.reg[TID_MODIFIER_CUP_Y_READ] = icondb.cupYread
             this.reg[TID_MODIFIER_CUP_Z_READ] = icondb.cupZread
             this.reg[TID_MODIFIER_TEMP_READ] = icondb.thermometer
-
-            this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
-            this.reg[TID_FILTER_ACCEL_TILT_UP] = icondb.moveTiltUp
-            this.reg[TID_FILTER_ACCEL_TILT_DOWN] = icondb.moveTiltDown
-            this.reg[TID_FILTER_ACCEL_TILT_LEFT] = icondb.moveTiltLeft
-            this.reg[TID_FILTER_ACCEL_TILT_RIGHT] = icondb.moveTiltRight
 
             this.reg[TID_MODIFIER_RADIO_VALUE] = icondb.radio_value
         }
