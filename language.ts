@@ -8,15 +8,15 @@ namespace microcode {
 
     // TODO: make into class
     export interface Constraints {
-        provides?: string[]
-        requires?: string[]
+        provides?: (number | string)[] // TODO
+        requires?: number[]
         only?: string[]
         allow?: {
-            tiles?: string[]
+            tiles?: number[]
             categories?: string[]
         }
         disallow?: {
-            tiles?: string[]
+            tiles?: number[]
             categories?: string[]
         }
         handling?: { [id: string]: any }
@@ -65,7 +65,7 @@ namespace microcode {
     }
 
     export class TileDefn {
-        constructor(public type: TileType, public tid: string) {
+        constructor(public type: TileType, public tid: number) {
             this.priority = 0
         }
 
@@ -93,7 +93,7 @@ namespace microcode {
             return undefined
         }
 
-        getIcon(): string | Image {
+        getIcon(): number | Image {
             return this.tid
         }
 
@@ -185,7 +185,7 @@ namespace microcode {
     }
 
     export class StmtTileDefn extends TileDefn {
-        constructor(type: TileType, tid: string) {
+        constructor(type: TileType, tid: number) {
             super(type, tid)
         }
 
@@ -195,13 +195,13 @@ namespace microcode {
 
     export class SensorDefn extends StmtTileDefn {
         public eventCode: number
-        constructor(tid: string, public phase: Phase) {
+        constructor(tid: number, public phase: Phase) {
             super(TileType.SENSOR, tid)
         }
     }
 
     export class FilterModifierBase extends TileDefn {
-        constructor(type: TileType, tid: string, public category: string) {
+        constructor(type: TileType, tid: number, public category: string) {
             super(type, tid)
         }
 
@@ -237,7 +237,7 @@ namespace microcode {
     }
 
     export class FilterDefn extends FilterModifierBase {
-        constructor(tid: string, category: string, priority: number) {
+        constructor(tid: number, category: string, priority: number) {
             super(TileType.FILTER, tid, category)
             this.priority = priority
         }
@@ -247,13 +247,13 @@ namespace microcode {
         public serviceCommand: number
         public defaultModifier: ModifierDefn
 
-        constructor(tid: string) {
+        constructor(tid: number) {
             super(TileType.ACTUATOR, tid)
         }
     }
 
     export class ModifierDefn extends FilterModifierBase {
-        constructor(tid: string, category: string, priority: number) {
+        constructor(tid: number, category: string, priority: number) {
             super(TileType.MODIFIER, tid, category)
             this.priority = priority
         }
