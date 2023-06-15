@@ -145,7 +145,18 @@ of command. As with events, every command has a default parameter, for the
 case where no parameter tile is given:
 
 -   ![screen](./images/generated/icon_A5.png){:class="icon"} `screen` shows a `happy face` by default
--   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays ![emoji giggle](./images/generated/icon_M19giggle.png){:class="icon"} `giggle` by default
+-   ![speaker](./images/generated/icon_A2.png){:class="icon"} `sound emoji` plays ![emoji giggle](./images/generated/icon_M19giggle.png){:class="icon"} `giggle` by default.
+    The other sound emojis are 
+    - ![emoji giggle](./images/generated/icon_M19giggle.png){:class="icon"} 
+    - ![emoji giggle](./images/generated/icon_M19happy.png){:class="icon"} 
+    - ![emoji giggle](./images/generated/icon_M19hello.png){:class="icon"} 
+    - ![emoji giggle](./images/generated/icon_M19mysterious.png){:class="icon"} 
+    - ![emoji giggle](./images/generated/icon_M19sad.png){:class="icon"} 
+    - ![emoji giggle](./images/generated/icon_M19slide.png){:class="icon"} 
+    - ![emoji giggle](./images/generated/icon_M19soaring.png){:class="icon"} 
+    - ![emoji giggle](./images/generated/icon_M19spring.png){:class="icon"} 
+    - ![emoji giggle](./images/generated/icon_M19twinkle.png){:class="icon"} 
+    - ![emoji giggle](./images/generated/icon_M19yawn.png){:class="icon"} 
 -   ![radio send](./images/generated/icon_A6.png){:class="icon"} `radio send` sends the number `1` by default
 -   ![switch page](./images/generated/icon_A1.png){:class="icon"} `switch page` switches to page `1` by default
 -   ![get variable X](./images/generated/icon_M20A.png){:class="icon"} `get variable` gets the number from a variable (`X`, `Y`, `Z`); defaults to `0` if variable wasn't previously set. Also
