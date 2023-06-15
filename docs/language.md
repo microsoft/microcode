@@ -34,6 +34,11 @@ Execution of the MicroCode program starts on ![page 1](./images/generated/icon_M
 (via an explicit ![switch page](./images/generated/icon_A1.png){:class="icon"} switch-page command, discussed later).
 Any rules that might still be executing on the current page (like an animation in a loop) are terminated before
 the page switch takes place (you can never have rules from different pages executing at the same time).
+There are five pages in total: ![page 1](./images/generated/icon_M1.png){:class="icon"} 
+![page 2](./images/generated/icon_M2.png){:class="icon"} 
+![page 3](./images/generated/icon_M3.png){:class="icon"} 
+![page 4](./images/generated/icon_M4.png){:class="icon"} 
+![page 5](./images/generated/icon_M5.png){:class="icon"} 
 
 ![Hot potato sample](./images/generated/sample_hot_potato.png){:class="screenshot"}
 
