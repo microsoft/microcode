@@ -95,7 +95,7 @@ The dialog below shows the parameters associated with the button press/release e
 ![parameters for press/release event](./images/eventParameterDialog.jpg){:class="screenshot"}
 
 -   ![accelerometer](./images/generated/icon_S3.png){:class="icon"} `move`, defaults to ![shake](./images/generated/icon_F17_shake.png){:class="icon"} `shake`; other options include ![tilt up](./images/generated/icon_F17_tilt_up.png){:class="icon"} `tilt up`, ![tilt down](./images/generated/icon_F17_tilt_down.png){:class="icon"} `tilt down`, ![tilt left](./images/generated/icon_F17_tilt_left.png){:class="icon"} `tilt left` and ![tilt right](./images/generated/icon_F17_tilt_right.png){:class="icon"} `tilt right`
--   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear`, defaults to ![loud](./images/generated/icon_F15.png){:class="icon"}`loud`
+-   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear`, defaults to ![loud](./images/generated/icon_F15.png){:class="icon"}`loud`, ![soft](./images/generated/icon_F16.png){:class="icon"}`soft`
 -   ![temperature change](./images/generated/icon_S6.png){:class="icon"} `temperature change`, either 1 degree (Celcius) `warmer`
     ![warmer](./images/generated/icon_F22U.png){:class="icon"} or `colder`
     ![colder](./images/generated/icon_F22D.png){:class="icon"}
