@@ -44,6 +44,7 @@ namespace microcode {
             this.reg["note_off"] = icondb.note_off
 
             // sample icons
+            /*
             this.reg["flashing_heart"] = icondb.sampleFlashingHeart
             this.reg["smiley_buttons"] = icondb.sampleSmileyButtons
             this.reg["clap_lights"] = icondb.sampleClapLights
@@ -57,7 +58,8 @@ namespace microcode {
             this.reg["hot_potato"] = icondb.sampleHotPotato
             this.reg["clap_lights"] = icondb.sampleClapLights
             this.reg["railroad_crossing"] = icondb.sampleRailCrossingLight
-
+*/
+            
             // sensors
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
             this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive

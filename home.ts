@@ -27,13 +27,19 @@ namespace microcode {
             this.samplesBtn = new Button({
                 parent: null,
                 style: ButtonStyles.Transparent,
-                icon: "rock_paper_scissors",
+                icon: "new_program",
                 ariaId: "C1",
                 x: 0,
                 y: 30,
                 onClick: () => {
                     this.app.popScene()
-                    this.app.pushScene(new SamplesGallery(this.app))
+                    reportEvent("samples.open", {
+                        name: "new program",
+                    })
+                    // settings.writeString(SAVESLOT_AUTO, sample.source)
+                    this.app.popScene()
+                    this.app.pushScene(new Editor(this.app))
+                    // this.app.pushScene(new SamplesGallery(this.app))
                 },
             })
 
