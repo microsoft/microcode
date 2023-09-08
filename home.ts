@@ -74,7 +74,7 @@ namespace microcode {
                     let s = settings.readString(iconId)
                     if (!s) {
                         // handles case where nothing is in slot
-                        const b64 = rawSamples()[0].b64
+                        const b64 = "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX19"
                         s = Buffer.fromBase64(b64).toString()
                     }
                     settings.writeString(SAVESLOT_AUTO, s)
@@ -87,7 +87,8 @@ namespace microcode {
         /* override */ activate() {
             super.activate()
             this.color = 15
-            docs.setup(this.app)
+            //TODO
+            //docs.setup(this.app)
         }
 
         private drawVersion() {

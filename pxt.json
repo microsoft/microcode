@@ -43,9 +43,6 @@
         "navigator.ts",
         "cursorscene.ts",
         "options.ts",
-        "samples.ts",
-        "docs.ts",
-        "gallery.ts",
         "pointerevents.ts",
         "tooltips.ts"
     ],

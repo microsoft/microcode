@@ -300,7 +300,8 @@ namespace microcode {
             if (!this.progdef) {
                 // onboarding experience
                 // load first sample if this is the first program being loaded
-                this.app.saveSource(SAVESLOT_AUTO, samples(true)[1].source)
+                // TODO
+                // this.app.saveSource(SAVESLOT_AUTO, samples(true)[1].source)
                 this.progdef = this.app.load(SAVESLOT_AUTO)
             }
 
