@@ -12,24 +12,17 @@ namespace microcode {
         }
     }
 
-    export function rawSamples() {
-        const s: {
-            label: string
-            ariaId?: string
-            b64?: string
-            // leave empty to hide sample
-            icon?: string
-        }[] = [
-            {
-                label: "new program",
-                ariaId: "N1",
-                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX19",
-                icon: "new_program",
-            },
-            {
-                label: "first program",
-                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkYzIl0sIk0iOlsiTTE1KDAwMDAwMDEwMTAwMDAwMDEwMDAxMDExMTApIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjMiXSwiTSI6WyJNMTlnaWdnbGUiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC43In0",
-            },
+    type rawSampleList = {
+        label: string
+        ariaId?: string
+        b64?: string
+        // leave empty to hide sample
+        icon?: string
+    }[]
+
+    //% shim=TD_NOOP
+    function rawWebAppSamples(s: rawSampleList) {
+        s.concat([      
             {
                 label: "flashing heart",
                 ariaId: "N2",
@@ -177,13 +170,29 @@ namespace microcode {
             {
                 label: "key demo",
                 b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkY1Il0sIk0iOlsiTTE1KDAwMDAwMDEwMTAwMDAwMDEwMDAxMDExMTApIl19LHsiUyI6WyJTMiJdLCJBIjpbIkE1Il0sIkYiOlsiRjYiXSwiTSI6WyJNMTUoMDAwMDAwMTAxMDAwMDAwMDExMTAxMDAwMSkiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC4yOCJ9",
-            },
-        ]
-        return s
+                },
+        ])
     }
 
+    export function rawSamples() {
+        const s: rawSampleList = [
+            {
+                label: "new program",
+                ariaId: "N1",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX19",
+                icon: "new_program",
+            },
+            {
+                label: "first program",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkYzIl0sIk0iOlsiTTE1KDAwMDAwMDEwMTAwMDAwMDEwMDAxMDExMTApIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjMiXSwiTSI6WyJNMTlnaWdnbGUiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC43In0",
+                },
+            ]
+            return s
+        }
+    
     export function samples(withIcon: boolean): Sample[] {
         const s = rawSamples()
+        rawWebAppSamples(s)
         return s
             .filter(({ icon }) => !withIcon || !!icon)
             .map(

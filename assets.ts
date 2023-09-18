@@ -1,6 +1,25 @@
 namespace microcode {
+
+    type name2Image { [name: string]: Image }
+
+    //% shim=TD_NOOP
+    function extraSamples(reg: name2Image) {
+        reg["smiley_buttons"] = icondb.sampleSmileyButtons
+        reg["clap_lights"] = icondb.sampleClapLights
+        reg["firefly"] = icondb.sampleFirefly
+        // this.reg["dice"] = icondb.sampleDice  // nice icon, don't delete, but not currently used
+        reg["rock_paper_scissors"] = icondb.sampleRockPaperScissors
+        reg["teleport_duck"] = icondb.sampleTeleportDuck
+        reg["pet_hamster"] = icondb.samplePetHamster
+        reg["heads_tails"] = icondb.sampleHeadsOrTails
+        reg["reaction_time"] = icondb.sampleReactionTime
+        reg["hot_potato"] = icondb.sampleHotPotato
+        reg["clap_lights"] = icondb.sampleClapLights
+        reg["railroad_crossing"] = icondb.sampleRailCrossingLight
+    }
+
     export class icons {
-        static reg: { [name: string]: Image }
+        static reg: name2Image
 
         public static get(name: string, nullIfMissing = false): Image {
             let icon = this.reg[name]
@@ -19,6 +38,7 @@ namespace microcode {
             if (this.reg) return
 
             this.reg = {}
+            extraSamples(this.reg)
             // editor icons
             this.reg["delete"] = icondb.btn_delete
             this.reg["plus"] = icondb.btn_plus
@@ -45,18 +65,6 @@ namespace microcode {
 
             // sample icons
             this.reg["flashing_heart"] = icondb.sampleFlashingHeart
-            this.reg["smiley_buttons"] = icondb.sampleSmileyButtons
-            this.reg["clap_lights"] = icondb.sampleClapLights
-            this.reg["firefly"] = icondb.sampleFirefly
-            // this.reg["dice"] = icondb.sampleDice  // nice icon, don't delete, but not currently used
-            this.reg["rock_paper_scissors"] = icondb.sampleRockPaperScissors
-            this.reg["teleport_duck"] = icondb.sampleTeleportDuck
-            this.reg["pet_hamster"] = icondb.samplePetHamster
-            this.reg["heads_tails"] = icondb.sampleHeadsOrTails
-            this.reg["reaction_time"] = icondb.sampleReactionTime
-            this.reg["hot_potato"] = icondb.sampleHotPotato
-            this.reg["clap_lights"] = icondb.sampleClapLights
-            this.reg["railroad_crossing"] = icondb.sampleRailCrossingLight
 
             // sensors
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
