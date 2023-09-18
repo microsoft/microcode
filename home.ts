@@ -27,7 +27,7 @@ namespace microcode {
             this.samplesBtn = new Button({
                 parent: null,
                 style: ButtonStyles.Transparent,
-                icon: "rock_paper_scissors",
+                icon: "smiley_buttons",
                 ariaId: "C1",
                 x: 0,
                 y: 30,
