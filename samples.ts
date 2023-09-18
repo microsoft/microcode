@@ -24,16 +24,14 @@ namespace microcode {
     function rawWebAppSamples(s: rawSampleList) {
         s.concat([      
             {
+                label: "first program",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkYzIl0sIk0iOlsiTTE1KDAwMDAwMDEwMTAwMDAwMDEwMDAxMDExMTApIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjMiXSwiTSI6WyJNMTlnaWdnbGUiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC43In0",
+                },
+            {
                 label: "flashing heart",
                 ariaId: "N2",
                 b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzQiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMTAxMDEwMTAxMTAwMDEwMTAxMDAwMTAwKSIsIk0xNSgwMDAwMDAxMDEwMDExMTAwMDEwMDAwMDAwKSJdfSx7IlMiOlsiUzQiXSwiQSI6WyJBMiJdLCJNIjpbIk0xOWdpZ2dsZSJdfSx7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX1dfSwidmVyc2lvbiI6InYyLjQuNyJ9",
                 icon: "flashing_heart",
-            },
-            {
-                label: "smiley buttons",
-                ariaId: "N3",
-                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkYzIl0sIk0iOlsiTTE1KDExMDExMTEwMTEwMDAwMDEwMDAxMDExMTApIiwiTTE1KDExMDExMDAwMDAxMDAwMTAxMTEwMDAwMDApIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjMiXSwiTSI6WyJNMTloYXBweSJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkY0Il0sIk0iOlsiTTE1KDExMDExMTEwMTEwMDAwMDAxMTEwMTAwMDEpIiwiTTE1KDExMDExMTEwMTEwMDAwMDAwMDAwMTExMTEpIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjQiXSwiTSI6WyJNMTlzYWQiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC43In0=",
-                icon: "smiley_buttons",
             },
             {
                 label: "counter",
@@ -183,10 +181,11 @@ namespace microcode {
                 icon: "new_program",
             },
             {
-                label: "first program",
-                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkYzIl0sIk0iOlsiTTE1KDAwMDAwMDEwMTAwMDAwMDEwMDAxMDExMTApIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjMiXSwiTSI6WyJNMTlnaWdnbGUiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC43In0",
-                },
-            ]
+                label: "smiley buttons",
+                ariaId: "N3",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkYzIl0sIk0iOlsiTTE1KDExMDExMTEwMTEwMDAwMDEwMDAxMDExMTApIiwiTTE1KDExMDExMDAwMDAxMDAwMTAxMTEwMDAwMDApIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjMiXSwiTSI6WyJNMTloYXBweSJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkY0Il0sIk0iOlsiTTE1KDExMDExMTEwMTEwMDAwMDAxMTEwMTAwMDEpIiwiTTE1KDExMDExMTEwMTEwMDAwMDAwMDAwMTExMTEpIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjQiXSwiTSI6WyJNMTlzYWQiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC43In0=",
+                icon: "smiley_buttons",
+            }]
             return s
         }
     

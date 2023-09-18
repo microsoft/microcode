@@ -4,9 +4,9 @@ namespace microcode {
 
     //% shim=TD_NOOP
     function extraSamples(reg: name2Image) {
-        reg["smiley_buttons"] = icondb.sampleSmileyButtons
         reg["clap_lights"] = icondb.sampleClapLights
         reg["firefly"] = icondb.sampleFirefly
+        reg["flashing_heart"] = icondb.sampleFlashingHeart
         // this.reg["dice"] = icondb.sampleDice  // nice icon, don't delete, but not currently used
         reg["rock_paper_scissors"] = icondb.sampleRockPaperScissors
         reg["teleport_duck"] = icondb.sampleTeleportDuck
@@ -64,7 +64,7 @@ namespace microcode {
             this.reg["note_off"] = icondb.note_off
 
             // sample icons
-            this.reg["flashing_heart"] = icondb.sampleFlashingHeart
+            this.reg["smiley_buttons"] = icondb.sampleSmileyButtons
 
             // sensors
             this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
