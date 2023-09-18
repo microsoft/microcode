@@ -1,6 +1,6 @@
 namespace microcode {
 
-    type name2Image { [name: string]: Image }
+    type name2Image = { [name: string]: Image }
 
     //% shim=TD_NOOP
     function extraSamples(reg: name2Image) {
