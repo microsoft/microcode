@@ -5,7 +5,7 @@ namespace microcode {
             public ariaId: string,
             public icon: string,
             private b64: string
-        ) {}
+        ) { }
 
         get source() {
             return Buffer.fromBase64(this.b64).toString()
@@ -21,8 +21,8 @@ namespace microcode {
     }[]
 
     //% shim=TD_NOOP
-    function rawWebAppSamples(s: rawSampleList) {
-        s.concat([      
+    function rawWebAppSamples(r: { s: rawSampleList }) {
+        r.s = r.s.concat([      
             {
                 label: "first program",
                 b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkYzIl0sIk0iOlsiTTE1KDAwMDAwMDEwMTAwMDAwMDEwMDAxMDExMTApIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjMiXSwiTSI6WyJNMTlnaWdnbGUiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC43In0",
@@ -191,8 +191,9 @@ namespace microcode {
     
     export function samples(withIcon: boolean): Sample[] {
         const s = rawSamples()
-        rawWebAppSamples(s)
-        return s
+        const r = { s: s}
+        rawWebAppSamples(r)
+        return r.s
             .filter(({ icon }) => !withIcon || !!icon)
             .map(
                 ({ label, ariaId, icon, b64 }) =>
