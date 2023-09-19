@@ -1,0 +1,27 @@
+{
+    "name": "microcode-robot",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "maqueen": "github:dfrobot/pxt-maqueen#v1.7.2"
+    },
+    "files": [
+        "main.ts",
+        "README.md",
+        "protocol.ts",
+        "robot.ts",
+        "micromaqueenrobot.ts",
+        "radio.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "6.0.18",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}

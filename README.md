@@ -15,7 +15,7 @@ There are three Arcade shields available on the market today:
 - [Kittenbot's newbit Arcade shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
 - [ELECFREAK's micro:bit Retro Arcade shield](https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade
 )
-- [ICShopping's Game:bit](https://www.icshop.com.tw/products/368112100118). Email them [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site is only allows ordering/delivery in Taiwan).
+- [ICShopping's Game:bit](https://www.icshop.com.tw/products/368112100118). Email them [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site only allows ordering/delivery in Taiwan).
 
 ## Getting started
 
