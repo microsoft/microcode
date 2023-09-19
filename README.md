@@ -1,8 +1,17 @@
 # Microsoft MicroCode [https://aka.ms/m9](https://aka.ms/m9)
 
-Microsoft MicroCode is a tile-based programming language and editor for young learners on the [BBC micro:bit V2](https://microbit.org). MicroCode runs in the browser or directly on the micro:bit V2 with an [Arcade shield](https://www.kittenbot.cc/products/newbit-arcade-shield).
+Microsoft MicroCode is an icon-based programming language and editor for young learners to code with the [BBC micro:bit V2](https://microbit.org). MicroCode runs in the browser or directly on the micro:bit V2 with an [Arcade shield accessory](#arcade-shields-for-microbit-v2).
 
 ![MicroCode screenshot](./docs/images/generated/sample_smiley_buttons.png)
+
+## Arcade shields for micro:bit V2
+
+There are three Arcade shields available on the market today:
+
+- [Kittenbot's newbit Arcade shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
+- [ELECFREAK's micro:bit Retro Arcade shield](https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade
+)
+- [ICShopping's Game:bit](https://www.icshop.com.tw/products/368112100118). Email them [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site is only allows ordering/delivery in Taiwan).
 
 ## Getting started
 
