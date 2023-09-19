@@ -2,9 +2,7 @@ namespace microcode {
     const MESSAGE_MAGIC = 0xf498
 
     export enum RobotCommand {
-        SetRobotDriver = 0x0001,
-        MotorRun = 0x0002,
-        MotorStop = 0x0003,
+        MotorRun = 0x0001,
     }
     export enum RobotDrivers {
         MicroMaqqueen = 0x01

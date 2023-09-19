@@ -1,10 +1,6 @@
 ## Microsoft MicroCode [https://aka.ms/microcode](https://aka.ms/microcode)
 
-Microsoft MicroCode is an icon-based programming language and editor for young learners to code with the [BBC micro:bit V2](https://microbit.org). MicroCode runs in the browser or directly on the micro:bit V2 with an [Arcade shield accessory](#arcade-shields-for-microbit-v2).
-
-## Happy/Sad program
-
-Here's the classic micro:bit *Happy-A-button/Sad-B-button* program in MicroCode:
+Microsoft MicroCode is an icon-based programming language and editor for young learners to code with the [BBC micro:bit V2](https://microbit.org). MicroCode allows you to program the micro:bit V2 with only an [Arcade shield accessory](#arcade-shields-for-microbit-v2) - *no other computer is required!* If you prefer the web browser, there's also a MicroCode web app that connects to your micro:bit V2 over WebUSB. Here's the classic micro:bit *Happy-A-button/Sad-B-button* program in MicroCode:
 
 ![MicroCode screenshot](./docs/images/generated/sample_smiley_buttons.png)
 
