@@ -34,12 +34,10 @@ After downloading the MicroCode hex file to your micro:bit V2, whenever you plug
 
 ## [Web editor](https://aka.ms/m9) {#web}
 
-The MicroCode web editor is at [aka.ms/microcode](https://aka.ms/microcode). 
-
 <video class="sample" poster="./videos/smiley-buttons.png" src="./videos/smiley-buttons.mp4" controls="true"></video>
 
-We recommend using the keyboard navigation.
-MicroCode is designed to be friendly to switch access devices.
+The MicroCode web editor is at [aka.ms/microcode](https://aka.ms/microcode). 
+We recommend using the keyboard navigation:
 
 -   `Left`, `Right`, `Up`, `Down` moves the cursor
     -   the `Left` and `Right` keys will wrap around in the editor on the **same** page
@@ -49,8 +47,6 @@ MicroCode is designed to be friendly to switch access devices.
 -   `Backspace` for `B` button
 -   `]` or `Page Up` to go to the next page, `[` or `Page Down` to go to the previous page
 -   Copy the URL to share your program.
-
-{% include youtube.html id="mbF-HU9IZ-A" %}
 
 ### Automatic download to micro:bit V2 {#download}
 
@@ -128,9 +124,11 @@ In this video, we launch an LED animation when a clap is detected.
 
 <video class="sample" poster="./videos/jacdac-led.png" src="./videos/jacdac-led.mp4" controls="true"></video>
 
-## Community pages
+## Community pages and videos
 
 -   [KittenBot MicroCode introduction](https://mp.weixin.qq.com/s/yBQMU2IAbeHgr-ok05THTA)
+
+{% include youtube.html id="mbF-HU9IZ-A" %}
 
 ## Acknowledgments
 
