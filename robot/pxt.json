@@ -3,11 +3,9 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*",
-        "microcode": "github:microsoft/microcode"
+        "maqueen": "github:dfrobot/pxt-maqueen#v1.7.2"
     },
     "files": [
-        "main.blocks",
         "main.ts",
         "README.md"
     ],
@@ -21,5 +19,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
