@@ -4,20 +4,22 @@ image: ./docs/images/generated/sample_smiley_buttons.png
 description: User guide for the MicroCode editor
 ---
 
+{% include youtube.html id="g53_aEVH8oA" %}
+
 Physical computing for young learners with the [micro:bit V2](https://microbit.org) (*no tablet/laptop/desktop required*):
 
 -   [arcade shields](#arcade-shields) for the micro:bit V2 enable "on the go" programming with familiar game console controls
--   kid-friendly, icon-based, structured code editor and [programming model](./language)
--   save your favorite programs in [three program slots](#program-slots)
+-   kid-friendly, icon-based, structured code editor and [programming language](./language)
 -   lots of [sample programs](./samples) to get started
--   [translated](#localization) in 20+ languages
+-   save your favorite programs in [three program slots](#program-slots)
 -   accessories (LEDs, servos, ...) supported via [Jacdac](https://aka.ms/jacdac)
+-   [translated](#localization) in 20+ languages
 
 ## Getting started
 
 Regardless of whether you are using the Arcade shield or web app, you first need to download the (localized) MicroCode hex file to your micro:bit V2.  There are two ways to do this:
 1. visit the [web app](https://aka.ms/microcode) and follow directions to connect your micro:bit and [automatically download over WebUSB](#download)
-2. visit the [localization](#localization) section to download the MicroCode hex file to your computer and copy to your micro:bit V2 (plugged into your computer via USB).
+2. visit the [localization](#localization) section to *download* the MicroCode hex file to your computer and copy to your micro:bit V2 (plugged into your computer via USB).
 
 ## Arcade shields {#arcade-shields}
 
@@ -29,10 +31,6 @@ Three Arcade shields for the micro:bit V2 are available on the market today:
 - [ICShopping's Game:bit](https://www.icshop.com.tw/products/368112100118). Email them [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site is only allows ordering/delivery in Taiwan).
 
 After downloading the MicroCode hex file to your micro:bit V2, whenever you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run (assuming the micro:bit is still powered, of course).
-
-{% include youtube.html id="g53_aEVH8oA" %}
-
-{% include youtube.html id="ymP7x8GXgz4" %}
 
 ## [Web editor](https://aka.ms/m9) {#web}
 
