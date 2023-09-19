@@ -1,5 +1,5 @@
 namespace microcode {
-    export class MicroMaqqueenRobot implements Robot {
+    export class DFRobotMicroMaqqueenRobot implements Robot {
         motorRun(left: number, right: number): void {
             if (left === right) {
                 if (left === 0)
@@ -20,6 +20,4 @@ namespace microcode {
             }
         }
     }
-
-    robot = new MicroMaqqueenRobot()
 }
