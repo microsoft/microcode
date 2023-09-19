@@ -3,14 +3,18 @@ namespace microcode {
     radio.setGroup(group)
 
     export function nextGroup() {
-        group = (group + 1) % 10
+        group = (group + 1) % 99
         if (group === 0) group = 1
         radio.setGroup(group)
         showRadioStatus()
     }
 
     export function showRadioStatus() {
-        basic.showNumber(group, 0)
+        led.stopAnimation()
+        if (group < 10)
+            basic.showNumber(group, 10)
+        else
+            whaleysans.showNumber(group)
     }
 
     export function sendCommand(cmd: RobotCommand, payload: Buffer) {
