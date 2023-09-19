@@ -4,19 +4,43 @@ image: ./docs/images/generated/sample_smiley_buttons.png
 description: User guide for the MicroCode editor
 ---
 
-Physical computing for young learners on the [micro:bit V2](https://microbit.org):
+Physical computing for young learners with the [micro:bit V2](https://microbit.org) (*no tablet/laptop/desktop required*):
 
--   Kid-friendly, icon-based, structured code editor and [programming language](./language)
--   Live, the code is downloaded to the micro:bit on every edit
--   Cursor based navigation with keyboard (switch access compatible), mouse, touch, screen reader support
--   Accessories (LEDs, servos, ...) supported via [Jacdac](https://aka.ms/jacdac)
--   [Translated](#localization) in 20+ languages
+-   [arcade shields](#arcade-shields) for the micro:bit V2 enable "on the go" programming with familiar game console controls
+-   kid-friendly, icon-based, structured code editor and [programming model](./language)
+-   save your favorite programs in [three program slots](#program-slots)
+-   lots of [sample programs](./samples) to get started
+-   [translated](#localization) in 20+ languages
+-   accessories (LEDs, servos, ...) supported via [Jacdac](https://aka.ms/jacdac)
 
-<video class="sample" poster="./videos/smiley-buttons.png" src="./videos/smiley-buttons.mp4" controls="true"></video>
+## Getting started
+
+Regardless of whether you are using the Arcade shield or web app, you first need to download the (localized) MicroCode hex file to your micro:bit V2.  There are two ways to do this:
+1. visit the [web app](https://aka.ms/microcode) and follow directions to connect your micro:bit and [automatically download over WebUSB](#download)
+2. visit the [localization](#localization) section to download the MicroCode hex file to your computer and copy to your micro:bit V2 (plugged into your computer via USB).
+
+## Arcade shields {#arcade-shields}
+
+Three Arcade shields for the micro:bit V2 are available on the market today:
+
+- [Kittenbot's newbit Arcade shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
+- [ELECFREAK's micro:bit Retro Arcade shield](https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade
+)
+- [ICShopping's Game:bit](https://www.icshop.com.tw/products/368112100118). Email them [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site is only allows ordering/delivery in Taiwan).
+
+After downloading the MicroCode hex file to your micro:bit V2, whenever you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run (assuming the micro:bit is still powered, of course).
+
+{% include youtube.html id="g53_aEVH8oA" %}
+
+{% include youtube.html id="ymP7x8GXgz4" %}
 
 ## [Web editor](https://aka.ms/m9) {#web}
 
-The MicroCode web editor is at [aka.ms/m9](https://aka.ms/m9). We recommend using the keyboard navigation.
+The MicroCode web editor is at [aka.ms/microcode](https://aka.ms/microcode). 
+
+<video class="sample" poster="./videos/smiley-buttons.png" src="./videos/smiley-buttons.mp4" controls="true"></video>
+
+We recommend using the keyboard navigation.
 MicroCode is designed to be friendly to switch access devices.
 
 -   `Left`, `Right`, `Up`, `Down` moves the cursor
@@ -30,17 +54,14 @@ MicroCode is designed to be friendly to switch access devices.
 
 {% include youtube.html id="mbF-HU9IZ-A" %}
 
-### Automatic download to micro:bit V2
+### Automatic download to micro:bit V2 {#download}
 
 When the editor does not detect any micro:bit, it will automatically prompt you with instructions
-on how to connect.
-
-Once your micro:bit V2 is paired, the web editor will be able to download your
+on how to connect. Once your micro:bit V2 is paired, the web editor will be able to download your
 MicroCode program to your micro:bit. This happens on every edit, so your program
 is always up-to-date (and running)!
 
-If your micro:bit disconnects, you will see a micro:bit icon show up on the upper left corner of the editor.
-Click on that button to reconnect again.
+> If your micro:bit disconnects, you will see a micro:bit icon show up on the upper left corner of the editor. Click on that button to reconnect again.
 
 ### Localization {#localization}
 
@@ -96,19 +117,11 @@ The editor integrates with existing screen readers, like NVDA.
 
 By clicking on the `tooltip reader` button at the bottom of the editor, the tooltips will be read aloud. This may be useful for students who are still learning to read.
 
-## Program slots ![disk icon 1](./images/generated/icon_disk1.png) ![disk icon 2](./images/generated/icon_disk2.png) ![disk icon 3](./images/generated/icon_disk3.png)
+## Program slots ![disk icon 1](./images/generated/icon_disk1.png) ![disk icon 2](./images/generated/icon_disk2.png) ![disk icon 3](./images/generated/icon_disk3.png) {#program-slots}
 
 MicroCode provides three slots for saving user programs for later load/restore. From the editor, click on the disk icon
 ![disk icon](./images/generated/icon_disk.png)
 in the upper left to select which slot to save the current program to. From the home screen, select the disk icon to load a program from one of the three save slots.
-
-## [Sample programs](./samples)
-
-The MicroCode app has a set of [samples](./samples) built-in. Select the samples button on the MicroCode home page (see below) to reveal
-the gallery of samples.
-
-[![new program](./images/generated/icon_new_program.png){:class="icon-sample"}](./samples/first-program) [![Flashing Heart icon](./images/generated/icon_sample_flashing_heart.png){:class="icon-sample"}](./samples/flashing-heart) [![Smiley Buttons icon](./images/generated/icon_sample_smiley_buttons.png){:class="icon-sample"}](./samples/smiley-buttons) [![Pet hamster icon](./images/generated/icon_sample_pet_hamster.png){:class="icon-sample"}](./samples/pet-hamster) [![Head or tails icon](./images/generated/icon_sample_head_or_tail.png){:class="icon-sample"}](./samples/head-or-tail) [![Rock Paper Scissors icon](./images/generated/icon_sample_rock_paper_scissors.png){:class="icon-sample"}](./samples/rock-paper-scissors) [![Hot potato icon](./images/generated/icon_hot_potato.png){:class="icon-sample"}](./samples/hot-potato) [![Clap lights icon](./images/generated/icon_sample_clap_lights.png){:class="icon-sample"}](./samples/clap-lights) [![reaction time](./images/generated/icon_reaction_time.png){:class="icon-sample"}](./samples/reaction-time)
-[![Chuck a duck icon](./images/generated/icon_sample_chuck_a_duck.png){:class="icon-sample"}](./samples/chuck-a-duck) [![Firefly icon](./images/generated/icon_sample_firefly.png){:class="icon-sample"}](./samples/firefly) [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon-sample"}](./samples/railroad-crossing)
 
 ## Accessories
 
@@ -116,22 +129,6 @@ MicroCode supports Jacdac modules to extend the micro:bit device with LEDs, serv
 In this video, we launch an LED animation when a clap is detected.
 
 <video class="sample" poster="./videos/jacdac-led.png" src="./videos/jacdac-led.mp4" controls="true"></video>
-
-## micro:bit V2 and Arcade Shield {#arcade-shield}
-
-> This functionality is experimental.
-
-Click on the version number in the web app to download the MicroCode hex file to your micro:bit V2. When you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run.
-
-### [micro:bit V2](https://microbit.org) + [Arcade Shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
-
-![Arcade Shield and micro:bit V2](./images/meow1.jpg){:class="fluid"}
-
-{% include youtube.html id="g53_aEVH8oA" %}
-
-{% include youtube.html id="ymP7x8GXgz4" %}
-
-{% include youtube.html id="LWjJL9qegmM" %}
 
 ## Community pages
 
