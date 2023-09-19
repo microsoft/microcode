@@ -13,7 +13,7 @@ namespace microcode {
 
     export function setGroup(newGroup: number) {
         if (newGroup < 0)
-            newGroup += MAX_GROUPS 
+            newGroup += MAX_GROUPS
         group = newGroup % MAX_GROUPS
         radio.setGroup(group)
         showRadioStatus()
@@ -40,15 +40,10 @@ namespace microcode {
         const payload = msg.payload
         switch (cmd) {
             case RobotCommand.MotorRun: {
-                const left = payload.getNumber(NumberFormat.Int8LE, 0)
-                const right = payload.getNumber(NumberFormat.Int8LE, 1)
+                const left = Math.clamp(-255, 255, payload.getNumber(NumberFormat.Int16LE, 0))
+                const right = Math.clamp(-255, 255, payload.getNumber(NumberFormat.Int16LE, 2))
                 console.log(`motor run ${left} ${right}`)
                 robot.motorRun(left, right)
-                break
-            }
-            case RobotCommand.MotorStop: {
-                console.log(`motor stop`)
-                robot.motorStop()
                 break
             }
         }

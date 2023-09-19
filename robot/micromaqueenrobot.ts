@@ -19,9 +19,6 @@ namespace microcode {
                     maqueen.motorRun(maqueen.Motors.All, right < 0 ? maqueen.Dir.CCW : maqueen.Dir.CW, right)
             }
         }
-        motorStop() {
-            maqueen.motorStop(maqueen.Motors.All)
-        }
     }
 
     robot = new MicroMaqqueenRobot()
