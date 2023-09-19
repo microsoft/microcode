@@ -1,16 +1,30 @@
 namespace microcode {
+    const MAX_GROUPS = 100
     let group = 1
     radio.setGroup(group)
 
+    export function previousGroup() {
+        setGroup(group === 1 ? MAX_GROUPS - 1 : group - 1)
+    }
+
     export function nextGroup() {
-        group = (group + 1) % 10
-        if (group === 0) group = 1
+        setGroup(group === MAX_GROUPS - 1 ? 1 : group + 1)
+    }
+
+    export function setGroup(newGroup: number) {
+        if (newGroup < 0)
+            newGroup += MAX_GROUPS 
+        group = newGroup % MAX_GROUPS
         radio.setGroup(group)
         showRadioStatus()
     }
 
     export function showRadioStatus() {
-        basic.showNumber(group, 0)
+        led.stopAnimation()
+        if (group < 10)
+            basic.showNumber(group, 10)
+        else
+            whaleysans.showNumber(group)
     }
 
     export function sendCommand(cmd: RobotCommand, payload: Buffer) {
