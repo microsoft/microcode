@@ -246,9 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
         bus.autoConnect = true
 
         setTimeout(async () => {
-            const supportsWebusb = !!navigator.usb
-            if (!supportsWebusb) await showWebUSBNotSupportedDialog()
-            else if (!bus.connected) await showConnectDialog()
+            if (!bus.connected) await showConnectDialog()
         }, 2000)
     }
     document.body.append(script)

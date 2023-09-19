@@ -138,6 +138,10 @@
                 width: min(100%, 40vw);
                 image-rendering: pixelated;
             }
+            dialog img.shield {
+                width: min(40%, 20vw);
+                border-radius: 1rem;
+            }
             dialog::backdrop {
                 background: rgba(60, 0, 60, 0.6);
             }
@@ -238,6 +242,6 @@
             >
             </iframe>
         </div>
-        {% include footer.html %} {% include dialogs-{{ page.lang }}.html %}
+        {% include footer.html %} {% include dialogs.html %}
     </body>
 </html>
