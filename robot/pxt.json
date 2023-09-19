@@ -3,7 +3,8 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "maqueen": "github:dfrobot/pxt-maqueen#v1.7.2"
+        "maqueen": "github:dfrobot/pxt-maqueen#v1.7.2",
+        "WhaleySansFont": "github:makecode-extensions/whaleysansfont#v1.1.0"
     },
     "files": [
         "main.ts",
