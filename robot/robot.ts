@@ -1,10 +1,9 @@
 namespace microcode {
     export interface Robot {
         /*
-        Set the power on motors where `left` and `right` are in [-255,255]
-        Set left and right to 0 to stop.
+        Set the power on motors where `speed` is a [-100, 100]
         */
-        motorRun(left: number, right: number): void;
+        motorRun(speed: number): void;
     }
 
     export let robot: Robot

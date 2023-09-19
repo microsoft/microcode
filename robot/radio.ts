@@ -40,10 +40,9 @@ namespace microcode {
         const payload = msg.payload
         switch (cmd) {
             case RobotCommand.MotorRun: {
-                const left = Math.clamp(-255, 255, payload.getNumber(NumberFormat.Int16LE, 0))
-                const right = Math.clamp(-255, 255, payload.getNumber(NumberFormat.Int16LE, 2))
-                console.log(`motor run ${left} ${right}`)
-                robot.motorRun(left, right)
+                const speed = Math.clamp(-100, 255, payload.getNumber(NumberFormat.Int16LE, 0))
+                console.log(`motor run ${speed}`)
+                robot.motorRun(speed)
                 break
             }
         }
