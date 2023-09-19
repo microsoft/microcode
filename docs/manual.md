@@ -117,7 +117,7 @@ In this video, we launch an LED animation when a clap is detected.
 
 <video class="sample" poster="./videos/jacdac-led.png" src="./videos/jacdac-led.mp4" controls="true"></video>
 
-## micro:bit V2 and Arcade Shield
+## micro:bit V2 and Arcade Shield {#arcade-shield}
 
 > This functionality is experimental.
 
