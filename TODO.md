@@ -1,0 +1,8 @@
+- code generation for car tiles
+- extensions [jacdac, car]
+  - extension interface
+      - also need some interface for tile description
+  - add metadata for a program (what extensions are needed)
+  - factor out jacdac modules and car into extensions
+    - assets.ts
+    - tiles.ts
