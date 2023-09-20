@@ -1,10 +1,20 @@
 namespace microcode {
     export interface Robot {
         /*
-        Set the power on motors where `left` and `right` are in [-255,255]
-        Set left and right to 0 to stop.
+        Makes the robot move at % `speed` ([-100, 100]). Negative goes backgward, 0 stops.
         */
-        motorRun(left: number, right: number): void;
+        motorRun(speed: number): void;
+
+
+        /**
+         * Makes the robot turn at % `speed`. Positive turns clock-wize/right, negative turns counter-clockwize/left.
+         */
+        motorTurn(speed: number): void;
+
+        /**
+         * Optional: sets the color on the LED array as a 24bit RGB color
+         */
+        headlightsSetColor(red: number, green: number, blue: number): void;
     }
 
     export let robot: Robot

@@ -27,25 +27,16 @@ namespace microcode {
             whaleysans.showNumber(group)
     }
 
+    let nextMessageId = 0
     export function sendCommand(cmd: RobotCommand, payload: Buffer) {
-        const buf = createRobotCommand(cmd, payload)
+        nextMessageId = (nextMessageId + 1) % 0xff
+        const buf = encodeRobotMessage({ messageId: nextMessageId, cmd, payload })
         radio.sendBuffer(buf)
     }
 
     // handle radio package messages
     radio.onReceivedBuffer(buf => {
-        const msg = readRobotCommand(buf)
-        if (!msg) return
-        const cmd = msg.cmd
-        const payload = msg.payload
-        switch (cmd) {
-            case RobotCommand.MotorRun: {
-                const left = Math.clamp(-255, 255, payload.getNumber(NumberFormat.Int16LE, 0))
-                const right = Math.clamp(-255, 255, payload.getNumber(NumberFormat.Int16LE, 2))
-                console.log(`motor run ${left} ${right}`)
-                robot.motorRun(left, right)
-                break
-            }
-        }
+        const msg = decodeRobotCommand(buf)
+        robotDriver.dispatch(msg)
     })
 }

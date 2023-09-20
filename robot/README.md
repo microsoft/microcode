@@ -1,24 +1,21 @@
+# microcode robot
 
-> Open this page at [https://microsoft.github.io/microcode/](https://microsoft.github.io/microcode/)
+This project is a robot driver designed to run on a micro:bit v1 or v2 on a rover robot;
+and controlled by a microcode program running on the arcade shield.
 
-## Use as Extension
+## Hardware requirement
 
-This repository can be added as an **extension** in MakeCode.
+The firmware is designed for popular rover robots found in the micro:bit ecosystem:
 
-* open [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/microsoft/microcode/robot** and import
+- motors that can be forward, backward, left, right turns. precise detection of distance is not needed.
 
-## Edit this project
+The following features are found often but are optional:
 
-To edit this repository in MakeCode.
+- RGB LEDs
+- Buzzer
+- Programmable LED strip
 
-* open [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/microsoft/microcode/robot** and click import
+## Usage
 
-#### Metadata (used for search, rendering)
-
-* for PXT/microbit
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+Download this firmware onto the micro:bit that stays on the robot. Then use microcode to send commands
+to the robot.
