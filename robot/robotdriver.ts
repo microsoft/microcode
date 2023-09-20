@@ -14,13 +14,21 @@ namespace microcode {
             this.lastCommandTime = control.millis()
         }
 
+        private setHeadlingSpeedColor(speed: number) {
+            if (speed === 0) this.robot.headlightsSetColor(0, 0, 0)
+            else if (speed > 0) this.robot.headlightsSetColor(0, 0, 0xff)
+            else this.robot.headlightsSetColor(0xff, 0, 0)
+        }
+
         private motorRun(speed: number) {
             this.keepAlive()
+            this.setHeadlingSpeedColor(speed)
             this.robot.motorRun(speed)
         }
 
         private motorTurn(speed: number) {
             this.keepAlive()
+            this.setHeadlingSpeedColor(speed)
             this.robot.motorTurn(speed)
         }
 
@@ -35,8 +43,8 @@ namespace microcode {
         }
 
         stop() {
+            this.setHeadlingSpeedColor(0)
             this.robot.motorRun(0)
-            this.robot.headlightsSetColor(0, 0, 0)
         }
 
         dispatch(msg: RobotMessage) {
