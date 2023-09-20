@@ -1,4 +1,6 @@
 - code generation for car tiles
+- keep MicroCode radio numbers to small range (0-99)
+- range for car control (1000-)
 - extensions [jacdac, car]
   - extension interface
       - also need some interface for tile description
