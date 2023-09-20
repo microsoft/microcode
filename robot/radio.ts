@@ -27,15 +27,24 @@ namespace microcode {
             whaleysans.showNumber(group)
     }
 
+    let nextMessageId = 0
     export function sendCommand(cmd: RobotCommand, payload: Buffer) {
-        const buf = createRobotCommand(cmd, payload)
+        nextMessageId = (nextMessageId + 1) % 0xff
+        const buf = encodeRobotMessage({ messageId: nextMessageId, cmd, payload })
         radio.sendBuffer(buf)
     }
 
     // handle radio package messages
+    let lastReceivedMessageId: number = undefined
     radio.onReceivedBuffer(buf => {
-        const msg = readRobotCommand(buf)
+        const msg = decodeRobotCommand(buf)
         if (!msg) return
+
+        const messageId = msg.messageId
+        if (lastReceivedMessageId === messageId)
+            return // duplicate
+
+        // decode message
         const cmd = msg.cmd
         const payload = msg.payload
         switch (cmd) {
