@@ -31,3 +31,5 @@ basic.forever(() => {
         basic.pause(1000)
     })
 })
+
+robotDriver.playMelody(Melodies.BaDing)

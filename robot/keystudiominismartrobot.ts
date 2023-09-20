@@ -1,5 +1,8 @@
 namespace microcode {
-    export class KeyStudioMiniSmartRobot implements Robot {
+    export class KeyStudioMiniSmartRobot extends Robot {
+        constructor() {
+            super()
+        }
 
         motorRun(speed: number) {
             if (speed === 0) {

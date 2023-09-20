@@ -80,7 +80,11 @@ namespace microcode {
         pins.i2cWriteBuffer(PWM_ADD, buf);
     }
 
-    export class YahboomTinybitRobot implements Robot {
+    export class YahboomTinybitRobot extends Robot {
+        constructor() {
+            super()
+        }
+
         motorRun(speed: number): void {
             if (speed === 0)
                 Car_stop()
