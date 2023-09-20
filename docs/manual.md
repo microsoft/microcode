@@ -21,7 +21,7 @@ Regardless of whether you are using the Arcade shield or web app, you first need
 1. visit the [web app](https://aka.ms/microcode) and follow directions to connect your micro:bit and [automatically download over WebUSB](#download)
 2. visit the [localization](#localization) section to *download* the MicroCode hex file to your computer and copy to your micro:bit V2 (plugged into your computer via USB).
 
-## Arcade shields {#arcade-shields}
+## Arcade shields {#arcade-shield}
 
 Three Arcade shields for the micro:bit V2 are available on the market today:
 
