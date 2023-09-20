@@ -1,4 +1,5 @@
-microcode.robotDriver = new microcode.RobotDriver(new microcode.KeyStudioMiniSmartRobot())
+const robot = new microcode.YahboomTinybitRobot()
+microcode.robotDriver = new microcode.RobotDriver(robot)
 
 // configure group using button A/B, cycle through groups 1-99
 input.onButtonPressed(Button.A, () => {

@@ -1,6 +1,5 @@
 {
     "name": "microcode-robot",
-    "version": "2.4.39",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -16,7 +15,8 @@
         "radio.ts",
         "keystudiominismartrobot.ts",
         "main.ts",
-        "robotdriver.ts"
+        "robotdriver.ts",
+        "yahboomtinybit.ts"
     ],
     "testFiles": [
         "test.ts"

@@ -1,0 +1,106 @@
+namespace microcode {
+    // https://github.com/YahboomTechnology/Tiny-bitLib/blob/master/main.ts
+    const PWM_ADD = 0x01
+    const MOTOR = 0x02
+    const RGB = 0x01
+
+    let car_flag_old = 0; //0：两电机正转 1：两电机反转 2:左旋 3：右旋
+    let car_flag_new = 0; //0：两电机正转 1：两电机反转 2:左旋 3：右旋
+    function setPwmMotor(mode: number, speed1: number, speed2: number): void {
+        if (mode < 0 || mode > 6)
+            return;
+
+        let buf = pins.createBuffer(5);
+        buf[0] = MOTOR;
+        switch (mode) {
+            case 0: buf[1] = 0; buf[2] = 0; buf[3] = 0; buf[4] = 0; break;              //stop
+            case 1: buf[1] = speed1; buf[2] = 0; buf[3] = speed2; buf[4] = 0; car_flag_new = 0; break;    //run
+            case 2: buf[1] = 0; buf[2] = speed1; buf[3] = 0; buf[4] = speed2; car_flag_new = 1; break;    //back
+            case 3: buf[1] = 0; buf[2] = 0; buf[3] = speed2; buf[4] = 0; car_flag_new = 0; break;    //left
+            case 4: buf[1] = speed1; buf[2] = 0; buf[3] = 0; buf[4] = 0; car_flag_new = 0; break;    //right
+            case 5: buf[1] = 0; buf[2] = speed1; buf[3] = speed2; buf[4] = 0; car_flag_new = 2; break;    //tleft
+            case 6: buf[1] = speed1; buf[2] = 0; buf[3] = 0; buf[4] = speed2; car_flag_new = 3; break;    //tright
+        }
+        if (car_flag_new != car_flag_old) //上一次状态是正转，这次是反转
+        {
+            let bufff = pins.createBuffer(5);
+            bufff[0] = MOTOR;
+            bufff[1] = 0; bufff[2] = 0; bufff[3] = 0; bufff[4] = 0;
+            pins.i2cWriteBuffer(PWM_ADD, buf);//停止100ms
+            basic.pause(100);
+            car_flag_old = car_flag_new;
+        }
+        pins.i2cWriteBuffer(PWM_ADD, buf);
+    }
+
+    function Car_run(speed1: number, speed2: number) {
+
+
+        setPwmMotor(1, speed1, speed2);
+    }
+
+    function Car_back(speed1: number, speed2: number) {
+
+        setPwmMotor(2, speed1, speed2);
+    }
+
+    function Car_left(speed1: number, speed2: number) {
+
+        setPwmMotor(3, speed1, speed2);
+    }
+
+    function Car_right(speed1: number, speed2: number) {
+
+        setPwmMotor(4, speed1, speed2);
+    }
+
+    function Car_stop() {
+
+        setPwmMotor(0, 0, 0);
+    }
+
+    function Car_spinleft(speed1: number, speed2: number) {
+
+        setPwmMotor(5, speed1, speed2);
+    }
+
+    function Car_spinright(speed1: number, speed2: number) {
+
+        setPwmMotor(6, speed1, speed2);
+    }
+
+    function setPwmRGB(red: number, green: number, blue: number): void {
+
+        let buf = pins.createBuffer(4);
+        buf[0] = RGB;
+        buf[1] = red;
+        buf[2] = green;
+        buf[3] = blue;
+
+        pins.i2cWriteBuffer(PWM_ADD, buf);
+    }
+
+    export class YahboomTinybitRobot implements Robot {
+        motorRun(speed: number): void {
+            if (speed === 0)
+                Car_stop()
+            else if (speed > 0)
+                Car_run(speed, speed)
+            else
+                Car_back(-speed, -speed)
+        }
+
+        motorTurn(speed: number): void {
+            if (speed === 0)
+                Car_stop()
+            else if (speed > 0)
+                Car_spinright(speed, 0)
+            else 
+                Car_spinleft(0, -speed)
+        }
+
+        headlightsSetColor(red: number, green: number, blue: number) {
+            setPwmRGB(red, green, blue)
+        }
+    }
+}
