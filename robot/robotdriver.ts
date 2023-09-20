@@ -20,13 +20,13 @@ namespace microcode {
             else this.robot.headlightsSetColor(0xff, 0, 0)
         }
 
-        private motorRun(speed: number) {
+        motorRun(speed: number) {
             this.keepAlive()
             this.setHeadlingSpeedColor(speed)
             this.robot.motorRun(speed)
         }
 
-        private motorTurn(speed: number) {
+        motorTurn(speed: number) {
             this.keepAlive()
             this.setHeadlingSpeedColor(speed)
             this.robot.motorTurn(speed)
