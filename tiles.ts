@@ -127,6 +127,13 @@ namespace microcode {
 
     export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
 
+    export const TID_ACTUATOR_CAR = "CAR"
+    export const TID_ACTUATOR_CAR_FORWARD = "CAR1"
+    export const TID_ACTUATOR_CAR_REVERSE = "CAR2"
+    export const TID_ACTUATOR_CAR_TURN_LEFT = "CAR3"
+    export const TID_ACTUATOR_CAR_TURN_RIGHT = "CAR4"
+    export const TID_ACTUATOR_CAR_STOP = "CAR5"
+
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
         TID_MODIFIER_PAGE_2,
@@ -418,6 +425,9 @@ namespace microcode {
         const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
         swtch.priority = 110
 
+        const car = addActuator(TID_ACTUATOR_CAR, ["car"])
+        car.priority = 200
+
         function addAssign(tid: string, id: number) {
             const theVar = addActuator(tid, ["value_out", "constant"])
             theVar.jdParam = id
@@ -466,14 +476,13 @@ namespace microcode {
             values.forEach((v, index) => {
                 const tid = kind + (start + index)
                 const tile: FilterModifierBase =
-                    kind == "M"
-                        ? new ModifierDefn(tid, name, 10)
-                        : new FilterDefn(tid, name, 10)
-                tile.jdKind = JdKind.Literal
+                    kind == "F"
+                        ? new FilterDefn(tid, name, 10) 
+                        : new ModifierDefn(tid, name, 10)
+                tile.jdKind = kind == "CAR" ? JdKind.Car : JdKind.Literal
                 tile.jdParam = v
-                // tile.constraints = terminal
-                if (kind == "M") tilesDB.modifiers[tid] = tile
-                else tilesDB.filters[tid] = tile as FilterDefn
+                if (kind == "F") tilesDB.filters[tid] = tile as FilterDefn
+                else tilesDB.modifiers[tid] = tile
                 tile.constraints = {
                     provides: [name],
                 }
@@ -482,14 +491,15 @@ namespace microcode {
             return tiles
         }
 
-        const coin_values = [1, 2, 3, 4, 5]
-        make_vals(coin_values, "value_in", "F", 8)
-        make_vals(coin_values, "constant", "M", 6)
-        make_vals([1, 2, 3, 4, 5], "page", "M", 1).forEach(m => {
+        const one_to_five = [1, 2, 3, 4, 5]
+        make_vals(one_to_five, "value_in", "F", 8)
+        make_vals(one_to_five, "constant", "M", 6)
+        make_vals(one_to_five, "page", "M", 1).forEach(m => {
             m.constraints.handling = m.constraints.handling || {}
             m.constraints.handling.terminal = true
             m.jdKind = JdKind.Page
         })
+        make_vals(one_to_five, "car", "CAR", 1)
 
         function addRGB(id: number, color: number) {
             const tid = TID_MODIFIER_RGB_LED_COLOR_X + id

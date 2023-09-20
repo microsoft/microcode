@@ -19,13 +19,12 @@ namespace microcode {
     }
 
     function carImages(reg: name2Image) {
-        reg["car"] = icondb.car
-        reg["car_forward"] = icondb.car_forward
-        reg["car_reverse"] = icondb.car_reverse
-        reg["car_left_turn"] = icondb.car_left_turn
-        reg["car_right_turn"] = icondb.car_right_turn
-        reg["car_stop"] = icondb.car_stop
-
+        reg[TID_ACTUATOR_CAR] = icondb.car
+        reg[TID_ACTUATOR_CAR_FORWARD] = icondb.car_forward
+        reg[TID_ACTUATOR_CAR_REVERSE] = icondb.car_reverse
+        reg[TID_ACTUATOR_CAR_TURN_LEFT] = icondb.car_left_turn
+        reg[TID_ACTUATOR_CAR_TURN_RIGHT] = icondb.car_right_turn
+        reg[TID_ACTUATOR_CAR_STOP] = icondb.car_stop
     }
 
     // TODO: factor out all the jacdac stuff into separate file/class
@@ -185,7 +184,7 @@ namespace microcode {
             // micro:bit modifiers
             this.reg[TID_MODIFIER_ICON_EDITOR] = icondb.iconEditor
             this.reg[TID_MODIFIER_MELODY_EDITOR] = icondb.melodyEditor
-            
+
             this.reg[TID_MODIFIER_EMOJI_GIGGLE] = icondb.soundGiggle
             this.reg[TID_MODIFIER_EMOJI_HAPPY] = icondb.soundHappy
             this.reg[TID_MODIFIER_EMOJI_HELLO] = icondb.soundHello
