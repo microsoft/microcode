@@ -1,6 +1,6 @@
 namespace microcode {
     const MAX_GROUPS = 100
-    let group = 1
+    let group = control.deviceSerialNumber() % 100
     radio.setGroup(group)
 
     export function previousGroup() {
