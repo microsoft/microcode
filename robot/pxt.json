@@ -27,5 +27,6 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "tsprj",
+    "version": "2.4.39"
 }
