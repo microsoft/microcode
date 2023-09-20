@@ -18,6 +18,16 @@ namespace microcode {
         reg["railroad_crossing"] = icondb.sampleRailCrossingLight
     }
 
+    function carImages(reg: name2Image) {
+        reg["car"] = icondb.car
+        reg["car_forward"] = icondb.car_forward
+        reg["car_reverse"] = icondb.car_reverse
+        reg["car_left_turn"] = icondb.car_left_turn
+        reg["car_right_turn"] = icondb.car_right_turn
+        reg["car_stop"] = icondb.car_stop
+
+    }
+
     export class icons {
         static reg: name2Image
 
@@ -2896,6 +2906,122 @@ bffffffffffffffffffffffffffffffb
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
+    
+    
+export const car = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . f f f f f f f f . . . .
+. . . f f 1 1 1 1 1 1 f f . . .
+. . f f 1 1 1 1 1 1 1 1 f f . .
+. . f f 1 1 1 1 1 1 1 1 f f . .
+. . f f 1 1 1 1 1 1 1 1 f f . .
+. f f f f f f f f f f f f f f .
+. f f 9 f f f f f f f f 9 f f .
+. f 9 1 9 f f f f f f 9 1 9 f .
+. f f 9 f f f f f f f f 9 f f .
+. f f f f f f f f f f f f f f .
+. . f f . . . . . . . . f f . .
+. . f f . . . . . . . . f f . .
+. . f f . . . . . . . . f f . .
+. . . . . . . . . . . . . . . .
+`
+
+export const car_forward = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . c . . . . . . . .
+. . . . . . c 7 c . . . . . . .
+. . . . . c 7 7 7 c . . . . . .
+. . . . c 7 7 7 7 7 c . . . . .
+. . . c 7 7 7 7 7 7 7 c . . . .
+. . . c 7 7 7 7 7 7 7 c . . . .
+. . . c c c 7 7 7 c c c . . . .
+. . . . . c 7 7 7 c . . . . . .
+. . . . . c 7 7 7 c . . . . . .
+. . . . . c 7 7 7 c . . . . . .
+. . . . . c 7 7 7 c . . . . . .
+. . . . . c 7 7 7 c . . . . . .
+. . . . . c c c c c . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+`
+
+export const car_reverse = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . c c c c c . . . . .
+. . . . . . c 7 7 7 c . . . . .
+. . . . . . c 7 7 7 c . . . . .
+. . . . . . c 7 7 7 c . . . . .
+. . . . . . c 7 7 7 c . . . . .
+. . . . . . c 7 7 7 c . . . . .
+. . . . c c c 7 7 7 c c c . . .
+. . . . c 7 7 7 7 7 7 7 c . . .
+. . . . c 7 7 7 7 7 7 7 c . . .
+. . . . . c 7 7 7 7 7 c . . . .
+. . . . . . c 7 7 7 c . . . . .
+. . . . . . . c 7 c . . . . . .
+. . . . . . . . c . . . . . . .
+. . . . . . . . . . . . . . . .
+`
+
+export const car_left_turn = img`
+. . . . . . . . . . . . . . . .
+. . . . . c c c . . . . . . . .
+. . . . c 7 7 c . . . . . . . .
+. . . c 7 7 7 c c c c . . . . .
+. . c 7 7 7 7 7 7 7 7 c . . . .
+. c 7 7 7 7 7 7 7 7 7 7 c . . .
+. . c 7 7 7 7 7 7 7 7 7 7 c . .
+. . . c 7 7 7 c c 7 7 7 7 7 c .
+. . . . c 7 7 c . c 7 7 7 7 c .
+. . . . . c c c . . c 7 7 7 c .
+. . . . . . . . . . c 7 7 7 c .
+. . . . . . . . . . c 7 7 7 c .
+. . . . . . . . . . c 7 7 7 c .
+. . . . . . . . . . c 7 7 7 c .
+. . . . . . . . . . c c c c c .
+. . . . . . . . . . . . . . . .
+`
+    
+export const car_right_turn = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . c c c . . . . .
+. . . . . . . . c 7 7 c . . . .
+. . . . . c c c c 7 7 7 c . . .
+. . . . c 7 7 7 7 7 7 7 7 c . .
+. . . c 7 7 7 7 7 7 7 7 7 7 c .
+. . c 7 7 7 7 7 7 7 7 7 7 c . .
+. c 7 7 7 7 7 c c 7 7 7 c . . .
+. c 7 7 7 7 c . c 7 7 c . . . .
+. c 7 7 7 c . . c c c . . . . .
+. c 7 7 7 c . . . . . . . . . .
+. c 7 7 7 c . . . . . . . . . .
+. c 7 7 7 c . . . . . . . . . .
+. c 7 7 7 c . . . . . . . . . .
+. c c c c c . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+`
+    
+export const car_stop = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . 1 1 1 1 1 1 . . . . .
+. . . . 1 2 2 2 2 2 2 1 . . . .
+. . . 1 2 2 2 2 2 2 2 2 1 . . .
+. . 1 2 2 2 1 1 1 1 2 2 2 1 . .
+. 1 2 2 2 1 2 2 2 2 1 2 2 2 1 .
+. 1 2 2 2 1 2 2 2 2 2 2 2 2 1 .
+. 1 2 2 2 2 1 1 1 1 2 2 2 2 1 .
+. 1 2 2 2 2 2 2 2 2 1 2 2 2 1 .
+. 1 2 2 2 1 2 2 2 2 1 2 2 2 1 .
+. . 1 2 2 2 1 1 1 1 2 2 2 1 . .
+. . . 1 2 2 2 2 2 2 2 2 1 . . .
+. . . . 1 2 2 2 2 2 2 1 . . . .
+. . . . . 1 1 1 1 1 1 . . . . .
+. . . . . . . . . . . . . . . .
+`
+
 
     /* maybe use these later
     export const rc_high = img`
