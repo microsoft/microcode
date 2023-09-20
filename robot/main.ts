@@ -1,5 +1,6 @@
-const robot = new microcode.YahboomTinybitRobot()
+//const robot = new microcode.YahboomTinybitRobot()
 //const robot = new microcode.KeyStudioMiniSmartRobot()
+const robot = new microcode.ElecfreaksCutebotRobot()
 const robotDriver = new microcode.RobotDriver(robot)
 
 // configure group using button A/B, cycle through groups 1-99
