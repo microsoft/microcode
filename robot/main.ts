@@ -13,3 +13,7 @@ basic.forever(() => {
     microcode.showRadioStatus()
     basic.pause(1000)
 })
+
+// init
+microcode.robot.motorRun(0)
+microcode.robot.ledSetColor(0, 0, 0)

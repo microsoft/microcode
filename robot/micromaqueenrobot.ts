@@ -8,5 +8,9 @@ namespace microcode {
                 maqueen.motorRun(maqueen.Motors.All, dir, Math.abs(speed))
             }
         }
+
+        ledSetColor(red: number, green: number, blue: number) {
+            // TODO
+        }
     }
 }

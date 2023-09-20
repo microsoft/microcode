@@ -8,13 +8,13 @@
         "pxt-k-bit": "github:mworkfun/pxt-k-bit#v1.0.0"
     },
     "files": [
-        "main.ts",
         "README.md",
         "protocol.ts",
         "robot.ts",
         "micromaqueenrobot.ts",
         "radio.ts",
-        "keystudiominismartrobot.ts"
+        "keystudiominismartrobot.ts",
+        "main.ts"
     ],
     "testFiles": [
         "test.ts"
