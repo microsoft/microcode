@@ -35,40 +35,8 @@ namespace microcode {
     }
 
     // handle radio package messages
-    let lastReceivedMessageId: number = undefined
     radio.onReceivedBuffer(buf => {
         const msg = decodeRobotCommand(buf)
-        if (!msg) return
-
-        const messageId = msg.messageId
-        if (lastReceivedMessageId === messageId) {
-            robot.keepAlive()
-            return // duplicate
-        }
-
-        // decode message
-        const cmd = msg.cmd
-        const payload = msg.payload
-        switch (cmd) {
-            case RobotCommand.MotorRun: {
-                const speed = Math.clamp(-100, 100, payload.getNumber(NumberFormat.Int16LE, 0))
-                console.log(`motor run ${speed}`)
-                robot.motorRun(speed)
-                break
-            }
-            case RobotCommand.MotorTurn: {
-                const speed = Math.clamp(-100, 100, payload.getNumber(NumberFormat.Int16LE, 0))
-                console.log(`motor turn ${speed}`)
-                robot.motorTurn(speed)
-                break
-            }
-            case RobotCommand.LedSetColor: {
-                const red = payload[0]
-                const green = payload[1]
-                const blue = payload[2]
-                console.log(`led set color ${red} ${green} ${blue}`)
-                robot.ledSetColor(red, green, blue)
-            }
-        }
+        robotDriver.dispatch(msg)
     })
 }
