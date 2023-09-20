@@ -14,7 +14,8 @@
         "micromaqueenrobot.ts",
         "radio.ts",
         "keystudiominismartrobot.ts",
-        "main.ts"
+        "main.ts",
+        "robotdriver.ts"
     ],
     "testFiles": [
         "test.ts"

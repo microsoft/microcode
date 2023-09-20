@@ -16,7 +16,4 @@ namespace microcode {
          */
         ledSetColor(red: number, green: number, blue: number): void;
     }
-
-    export let robot: Robot
-
 }
