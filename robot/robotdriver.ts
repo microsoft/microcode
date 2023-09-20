@@ -24,9 +24,9 @@ namespace microcode {
             this.robot.motorTurn(speed)
         }
 
-        private ledSetColor(red: number, green: number, blue: number) {
+        private headlightsSetColor(red: number, green: number, blue: number) {
             this.keepAlive()
-            this.robot.ledSetColor(red, green, blue)
+            this.robot.headlightsSetColor(red, green, blue)
         }
 
         checkAlive() {
@@ -36,7 +36,7 @@ namespace microcode {
 
         stop() {
             this.robot.motorRun(0)
-            this.robot.ledSetColor(0, 0, 0)
+            this.robot.headlightsSetColor(0, 0, 0)
         }
 
         dispatch(msg: RobotMessage) {
@@ -65,12 +65,12 @@ namespace microcode {
                     this.motorTurn(speed)
                     break
                 }
-                case RobotCommand.LedSetColor: {
+                case RobotCommand.HeadlightsSetColor: {
                     const red = payload[0]
                     const green = payload[1]
                     const blue = payload[2]
-                    console.log(`led set color ${red} ${green} ${blue}`)
-                    this.ledSetColor(red, green, blue)
+                    console.log(`headlights set color ${red} ${green} ${blue}`)
+                    this.headlightsSetColor(red, green, blue)
                 }
             }
         }

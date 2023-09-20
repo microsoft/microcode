@@ -19,7 +19,7 @@ namespace microcode {
          * Sets the robot LED to a 24bit RGB color
          *     rgb: u24
          */
-        LedSetColor = 0x03,
+        HeadlightsSetColor = 0x03,
     }
 
     export interface RobotMessage {

@@ -17,7 +17,7 @@ namespace microcode {
             }
         }
 
-        ledSetColor(red: number, green: number, blue: number) {
+        headlightsSetColor(red: number, green: number, blue: number) {
             // TODO
         }
     }

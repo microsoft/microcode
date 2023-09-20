@@ -14,6 +14,9 @@ namespace microcode {
         /**
          * Optional: sets the color on the LED array as a 24bit RGB color
          */
-        ledSetColor(red: number, green: number, blue: number): void;
+        headlightsSetColor(red: number, green: number, blue: number): void;
     }
+
+    export let robot: Robot
+
 }
