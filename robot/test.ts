@@ -5,5 +5,7 @@ basic.forever(() => {
         basic.pause(1000)
         microcode.robot.motorRun(0)
         basic.pause(100)
+        microcode.robot.motorTurn(speed)
+        basic.pause(1000)
     })
 })
