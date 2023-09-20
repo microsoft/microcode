@@ -45,6 +45,13 @@ namespace microcode {
                 robot.motorRun(speed)
                 break
             }
+            case RobotCommand.LedSetColor: {
+                const red = payload[0]
+                const green = payload[1]
+                const blue = payload[2]
+                console.log(`led set color ${red} ${green} ${blue}`)
+                robot.ledSetColor(red, green, blue)
+            }
         }
     })
 }
