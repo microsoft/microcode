@@ -1,5 +1,9 @@
 namespace microcode {
     export class Robot {
+        musicVolume = 64
+        maxRunSpeed = 100
+        maxTurnSpeed = 100
+
         constructor() {
 
         }

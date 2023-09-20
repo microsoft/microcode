@@ -5,7 +5,6 @@ namespace microcode {
         readonly robot: Robot
         private lastReceivedMessageId: number = undefined
         private lastCommandTime: number
-        musicVolume: number = 64
 
         constructor(robot: Robot) {
             this.robot = robot
@@ -23,12 +22,14 @@ namespace microcode {
 
         motorRun(speed: number) {
             this.keepAlive()
-            this.setHeadlingSpeedColor(speed)            
+            speed = speed > 0 ? Math.min(this.robot.maxRunSpeed, speed) : Math.max(-this.robot.maxRunSpeed, speed)
+            this.setHeadlingSpeedColor(speed)
             this.robot.motorRun(speed)
         }
 
         motorTurn(speed: number) {
             this.keepAlive()
+            speed = speed > 0 ? Math.min(this.robot.maxTurnSpeed, speed) : Math.max(-this.robot.maxTurnSpeed, speed)
             this.setHeadlingSpeedColor(speed)
             this.robot.motorTurn(speed)
         }
@@ -49,14 +50,14 @@ namespace microcode {
         }
 
         playMelody(melody: Melodies) {
-            if (this.musicVolume > 0) {
-                music.setVolume(this.musicVolume)
-                music.play(music.builtInPlayableMelody(melody), music.PlaybackMode.InBackground)
-            }
+            if (this.robot.musicVolume <= 0) return
+            music.setVolume(this.robot.musicVolume)
+            music.play(music.builtInPlayableMelody(melody), music.PlaybackMode.InBackground)
         }
 
         playTone(frequency: number) {
-            music.setVolume(this.musicVolume)
+            if (this.robot.musicVolume <= 0) return
+            music.setVolume(this.robot.musicVolume)
             music.playTone(frequency, 200)
         }
 

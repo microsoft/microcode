@@ -27,7 +27,7 @@ basic.forever(() => {
         robotDriver.motorRun(speed)
         basic.pause(1000)
         robotDriver.motorRun(0)
-        basic.pause(100)
+        basic.pause(500)
         robotDriver.motorTurn(speed)
         basic.pause(1000)
     })

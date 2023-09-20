@@ -59,6 +59,9 @@ namespace microcode {
     export class ElecfreaksCutebotRobot extends Robot {
         constructor() {
             super()
+            this.musicVolume = 168;
+            this.maxRunSpeed = 50;
+            this.maxTurnSpeed = 50;
         }
 
         motorRun(speed: number) {
