@@ -3,7 +3,8 @@ namespace microcode {
 
     export enum RobotCommand {
         MotorRun = 0x0001,
-        LedSetColor = 0x0002,
+        MotorTurn = 0x0002,
+        LedSetColor = 0x0010,
     }
 
     export function createRobotCommand(cmd: RobotCommand, payload: Buffer) {
