@@ -1,5 +1,5 @@
 basic.forever(() => {
-    [0, 100, -100, 50, -50].forEach(speed => {
+    [0, 80, -80, 50, -50].forEach(speed => {
         game.addScore(1)
         microcode.robotDriver.motorRun(speed)
         basic.pause(1000)
