@@ -83,6 +83,4 @@ namespace microcode {
             }
         }
     }
-
-    export let robotDriver: RobotDriver
 }
