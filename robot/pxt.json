@@ -1,5 +1,6 @@
 {
     "name": "microcode-robot",
+    "version": "2.4.39",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -27,6 +28,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "tsprj",
-    "version": "2.4.39"
+    "preferredEditor": "tsprj"
 }
