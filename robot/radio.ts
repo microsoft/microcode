@@ -41,8 +41,10 @@ namespace microcode {
         if (!msg) return
 
         const messageId = msg.messageId
-        if (lastReceivedMessageId === messageId)
+        if (lastReceivedMessageId === messageId) {
+            robot.keepAlive()
             return // duplicate
+        }
 
         // decode message
         const cmd = msg.cmd

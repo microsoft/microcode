@@ -7,25 +7,25 @@ namespace microcode {
 
         constructor(robot: Robot) {
             this.robot = robot
-            this.ping()
         }
 
-        private ping() {
+
+        keepAlive() {
             this.lastCommandTime = control.millis()
         }
 
         motorRun(speed: number) {
-            this.ping()
+            this.keepAlive()
             this.robot.motorRun(speed)
         }
 
         motorTurn(speed: number) {
-            this.ping()
+            this.keepAlive()
             this.robot.motorTurn(speed)
         }
 
         ledSetColor(red: number, green: number, blue: number) {
-            this.ping()
+            this.keepAlive()
             this.robot.ledSetColor(red, green, blue)
         }
 
