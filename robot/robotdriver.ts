@@ -6,6 +6,9 @@ namespace microcode {
         private lastReceivedMessageId: number = undefined
         private lastCommandTime: number
         private running = false
+        private lastUltrasonicDistance: number
+
+        private showRadio: number
 
         constructor(robot: Robot) {
             this.robot = robot
@@ -17,7 +20,16 @@ namespace microcode {
             if (this.running) return
 
             this.running = true
+            this.showRadio = 20
             this.playMelody(Melodies.BaDing)
+            input.onButtonPressed(Button.A, () => {
+                previousGroup()
+                this.showRadio = 20
+            })
+            input.onButtonPressed(Button.B, () => {
+                nextGroup()
+                this.showRadio = 20
+            })
             startRadioReceiver(robotDriver)
             control.inBackground(() => this.backgroundWork())
         }
@@ -25,8 +37,33 @@ namespace microcode {
         private backgroundWork() {
             while (this.running) {
                 robotDriver.checkAlive()
-                showRadioStatus()
-                basic.pause(1000)
+                if(this.showRadio-- > 0)
+                    showRadioStatus()
+                else
+                    this.showSensors()
+                basic.pause(100)
+
+            }
+        }
+
+        private showSensors() {
+            const lineState = this.lineState()
+            const dist = this.ultrasonicDistance()
+
+            // render
+            basic.clearScreen()
+            // render left/right lines
+            const left = (lineState & RobotLineState.Left) === RobotLineState.Left
+            const right = (lineState & RobotLineState.Right) === RobotLineState.Right
+            for (let i = 0; i < 5; ++i) {
+                if (left) led.plot(0, i); else led.unplot(0, i)
+                if (right) led.plot(4, i); else led.unplot(4, i)
+            }
+            // render sonar
+            if (dist > 0) {
+                for (let x = 1; x < 4; x++)
+                    for (let y = 0; y < 5; y++)
+                        if (dist > 0 && dist < 5 + y * 5) led.plot(x, y); else led.unplot(x, y)
             }
         }
 
@@ -55,7 +92,14 @@ namespace microcode {
         }
 
         ultrasonicDistance() {
-            return this.robot.ultrasonicDistance()
+            const dist = this.robot.ultrasonicDistance()
+            if (dist > 0)
+                this.lastUltrasonicDistance = dist
+            return this.lastUltrasonicDistance
+        }
+
+        lineState(): RobotLineState {
+            return this.robot.lineState()
         }
 
         private headlightsSetColor(red: number, green: number, blue: number) {
