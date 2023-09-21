@@ -1,11 +1,7 @@
-//const robot = new microcode.YahboomTinybitRobot()
-//const robot = new microcode.KeyStudioMiniSmartRobot()
-const robot = new microcode.ElecfreaksCutebotRobot()
-const robotDriver = new microcode.RobotDriver(robot)
 
+//const robotDriver = microcode.elecfreaksCuteBot
+const robotDriver = microcode.dfRobotMicroMaqueen
 
-// init
-robotDriver.start()
 basic.forever(() => {
     const dist = robotDriver.ultrasonicDistance()
     if (dist > 10)

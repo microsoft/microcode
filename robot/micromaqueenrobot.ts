@@ -1,15 +1,19 @@
 namespace microcode {
-    export class DFRobotMicroMaqqueenRobot extends Robot {
+    class DFRobotMicroMaqqueenRobot extends robots.Robot {
         constructor() {
             super()
         }
 
-        motorRun(speed: number): void {
-            if (speed === 0)
+        motorRun(left: number, right: number): void {
+            if (left === 0 && right === 0)
                 maqueen.motorStop(maqueen.Motors.All)
-            else {
+            else if (left === right) {
+                const speed = left
                 const dir = speed < 0 ? maqueen.Dir.CCW : maqueen.Dir.CW
                 maqueen.motorRun(maqueen.Motors.All, dir, Math.abs(speed))
+            } else {
+                maqueen.motorRun(maqueen.Motors.M1, left < 0 ? maqueen.Dir.CCW : maqueen.Dir.CW, Math.abs(left))
+                maqueen.motorRun(maqueen.Motors.M2, right < 0 ? maqueen.Dir.CCW : maqueen.Dir.CW, Math.abs(right))
             }
         }
 
@@ -35,4 +39,10 @@ namespace microcode {
             return (left << 0) | (right << 1)
         }
     }
+
+    /**
+     * DFRobot micro maqueen
+     */
+    //% fixedInstance whenUsed block="dfrobot micro maqueen"
+    export const dfRobotMicroMaqueen = new RobotDriver(new DFRobotMicroMaqqueenRobot())
 }

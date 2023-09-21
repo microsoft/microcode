@@ -1,15 +1,15 @@
-namespace microcode {
-    export enum RobotLineState {
-        None = 0,
-        Left = 0x01,
-        Right = 0x02
-    }
+enum RobotLineState {
+    None = 0,
+    Left = 0x01,
+    Right = 0x02
+}
+
+namespace microcode.robots {
 
     export class Robot {
         musicVolume = 64
         maxRunSpeed = 100
         maxTurnSpeed = 100
-        motorDrift = 0
 
         constructor() {
 
@@ -18,7 +18,7 @@ namespace microcode {
         /*
         Makes the robot move at % `speed` ([-100, 100]). Negative goes backgward, 0 stops.
         */
-        motorRun(speed: number): void {
+        motorRun(left: number, right: number): void {
 
         }
 

@@ -111,14 +111,19 @@ namespace microcode {
 
     }
 
-    export class YahboomTinybitRobot extends Robot {
+    class YahboomTinybitRobot extends robots.Robot {
         constructor() {
             super()
         }
 
-        motorRun(speed: number): void {
-            if (speed === 0)
+        motorRun(left: number, right: number): void {
+            const speed = (left + right) >> 1
+            if (left === 0 && right === 0)
                 Car_stop()
+            else if (left >= 0 && right >= 0)
+                Car_run(left, right)
+            else if (left <= 0 && right <= 0)
+                Car_back(-left, -right)
             else if (speed > 0)
                 Car_run(speed, speed)
             else
@@ -151,4 +156,11 @@ namespace microcode {
             return (left << 0) | (right << 1)
         }
     }
+
+    /**
+     * Yahboom Tiny:bit
+     */
+    //% fixedInstance whenUsed block="yahboom tiny:bit"
+    export const yahboomTinyBit = new RobotDriver(new YahboomTinybitRobot())
+
 }

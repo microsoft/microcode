@@ -1,28 +1,38 @@
 namespace microcode {
-    export const ROBOT_TIMEOUT = 1000
+    const ROBOT_TIMEOUT = 1000
     const SHOW_RADIO_COUNT = 50
 
     enum RobotSpeedMode {
         Run, Turn
     }
 
+    /**
+     * 
+     */
+    //% fixedInstances
     export class RobotDriver {
-        readonly robot: Robot
+        readonly robot: robots.Robot
         private lastReceivedMessageId: number = undefined
         private lastCommandTime: number
         private running = false
-        private lastUltrasonicDistance: number  = 100
+        private lastUltrasonicDistance: number = 100
         private showRadio: number
         private currentSpeed: number = 0
         private targetSpeed: number = 0
         private speedMode = RobotSpeedMode.Run
 
-        constructor(robot: Robot) {
-            this.robot = robot
+        runDrift = 0
 
-            this.stop()
+        constructor(robot: robots.Robot) {
+            this.robot = robot
         }
 
+        /**
+         * Starts the motor driver
+         */
+        //% block="robot %this start"
+        //% blockId=microcoderobotstart
+        //% weight=100
         start() {
             if (this.running) return
 
@@ -33,23 +43,39 @@ namespace microcode {
             this.ultrasonicDistance()
             this.lineState()
             input.onButtonPressed(Button.A, () => {
-                previousGroup()
+                robots.previousGroup()
                 this.showRadio = SHOW_RADIO_COUNT
             })
             input.onButtonPressed(Button.B, () => {
-                nextGroup()
+                robots.nextGroup()
                 this.showRadio = SHOW_RADIO_COUNT
             })
-            startRadioReceiver(robotDriver)
+            robots.startRadioReceiver(robotDriver)
             control.inBackground(() => this.backgroundWork())
+        }
+
+
+        /**
+             * A value that corrects the ratio of power between the left and the right motor
+             * to account for hardware differences.
+             */
+        //% block="robot %this set motor drift to %drift"
+        //% blockId="microcoderobotsetmotordrift"
+        //% weight=10
+        //% drift.min=-10
+        //% drift.max=20
+        setMotorDrift(drift: number) {
+            if (isNaN(drift)) return
+            this.start()
+            this.runDrift = Math.clamp(-10, 10, drift)
         }
 
         private backgroundWork() {
             while (this.running) {
                 this.checkAlive()
                 this.updateSpeed()
-                if(this.showRadio-- > 0)
-                    showRadioStatus()
+                if (this.showRadio-- > 0)
+                    robots.showRadioStatus()
                 else
                     this.showSensors()
                 basic.pause(20)
@@ -62,10 +88,14 @@ namespace microcode {
 
             const alpha = 0.8
             this.currentSpeed = this.currentSpeed * alpha + this.targetSpeed * (1 - alpha)
-            if (Math.abs(this.currentSpeed - this.targetSpeed) < 10) 
+            if (Math.abs(this.currentSpeed - this.targetSpeed) < 10)
                 this.currentSpeed = this.targetSpeed
-            if (this.speedMode === RobotSpeedMode.Run)
-                this.robot.motorRun(this.currentSpeed)
+            if (this.speedMode === RobotSpeedMode.Run) {
+                let d = Math.abs(this.currentSpeed) > this.runDrift ? this.runDrift >> 1 : 0
+                const left = this.currentSpeed - d
+                const right = this.currentSpeed + d
+                this.robot.motorRun(left, right)
+            }
             else
                 this.robot.motorTurn(this.targetSpeed)
             if (this.currentSpeed === 0) {
@@ -148,7 +178,7 @@ namespace microcode {
 
         stop() {
             this.setHeadlingSpeedColor(0)
-            this.robot.motorRun(0)
+            this.robot.motorRun(0, 0)
         }
 
         playMelody(melody: Melodies) {
@@ -163,7 +193,7 @@ namespace microcode {
             music.playTone(frequency, 200)
         }
 
-        dispatch(msg: RobotMessage) {
+        dispatch(msg: robots.RobotMessage) {
             if (!msg) return
 
             const messageId = msg.messageId
@@ -177,13 +207,13 @@ namespace microcode {
             const cmd = msg.cmd
             const payload = msg.payload
             switch (cmd) {
-                case RobotCommand.MotorRun: {
+                case robots.RobotCommand.MotorRun: {
                     const speed = Math.clamp(-100, 100, payload.getNumber(NumberFormat.Int16LE, 0))
                     console.log(`motor run ${speed}`)
                     this.motorRun(speed)
                     break
                 }
-                case RobotCommand.MotorTurn: {
+                case robots.RobotCommand.MotorTurn: {
                     const speed = Math.clamp(-100, 100, payload.getNumber(NumberFormat.Int16LE, 0))
                     console.log(`motor turn ${speed}`)
                     this.motorTurn(speed)

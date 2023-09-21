@@ -1,11 +1,12 @@
 namespace microcode {
-    export class KeyStudioMiniSmartRobot extends Robot {
+    class KeyStudioMiniSmartRobot extends robots.Robot {
         constructor() {
             super()
         }
 
-        motorRun(speed: number) {
-            if (speed === 0) {
+        motorRun(left: number, right: number) {
+            const speed = (left + right) >> 1
+            if (speed == 0) {
                 this.motorStop()
             }
             else {
@@ -41,4 +42,9 @@ namespace microcode {
         }
     }
 
+    /**
+     * Mini Smart Robot from KeyStudio
+     */
+    //% fixedInstance whenUsed block="keystudio mini smart robot"
+    export const keyStudioMiniSmartRobot = new RobotDriver(new KeyStudioMiniSmartRobot())
 }

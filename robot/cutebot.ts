@@ -69,26 +69,23 @@ namespace microcode {
         return Math.floor(d * 34 / 2 / 1000);
     }
 
-    export class ElecfreaksCutebotRobot extends Robot {
+    class ElecfreaksCutebotRobot extends robots.Robot {
         constructor() {
             super()
             this.musicVolume = 168;
             this.maxRunSpeed = 50;
             this.maxTurnSpeed = 40;
-            this.motorDrift = 6;
 
             pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
             pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
             pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
         }
 
-        motorRun(speed: number) {
-            const d= this.motorDrift >> 1
-            motors(speed - d, speed + d)
+        motorRun(left: number, right: number) {
+            motors(left, right)
         }
 
         motorTurn(speed: number) {
-            const d = this.motorDrift >> 1
             if (speed > 0)
                 motors(0, speed)
             else
@@ -110,4 +107,10 @@ namespace microcode {
             return (left << 0) | (right << 1)
         }
     }
+
+    /**
+     * Cute:bot from Elecfreaks
+     */
+    //% fixedInstance whenUsed block="elecfreaks cutebot"
+    export const elecfreaksCuteBot = new RobotDriver(new ElecfreaksCutebotRobot())
 }

@@ -1,4 +1,4 @@
-namespace microcode {
+namespace microcode.robots {
     const MESSAGE_MAGIC = 0xf498
 
     /**
