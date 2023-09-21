@@ -5,9 +5,29 @@ namespace microcode {
         readonly robot: Robot
         private lastReceivedMessageId: number = undefined
         private lastCommandTime: number
+        private running = false
 
         constructor(robot: Robot) {
             this.robot = robot
+
+            this.stop()
+        }
+
+        start() {
+            if (this.running) return
+
+            this.running = true
+            this.playMelody(Melodies.BaDing)
+            startRadioReceiver(robotDriver)
+            control.inBackground(() => this.backgroundWork())
+        }
+
+        private backgroundWork() {
+            while (this.running) {
+                robotDriver.checkAlive()
+                showRadioStatus()
+                basic.pause(1000)
+            }
         }
 
         keepAlive() {

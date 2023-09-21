@@ -1,13 +1,13 @@
 namespace microcode {
     const MAX_GROUPS = 100
-    let group = control.deviceSerialNumber() % 100
+    let group = control.deviceSerialNumber() % 99 + 1
     radio.setGroup(group)
 
-    export function previousGroup() {
+    function previousGroup() {
         setGroup(group === 1 ? MAX_GROUPS - 1 : group - 1)
     }
 
-    export function nextGroup() {
+    function nextGroup() {
         setGroup(group === MAX_GROUPS - 1 ? 1 : group + 1)
     }
 
@@ -35,6 +35,14 @@ namespace microcode {
     }
 
     export function startRadioReceiver(robotDriver: RobotDriver) {
+        // configure group using button A/B, cycle through groups 1-99
+        input.onButtonPressed(Button.A, () => {
+            previousGroup()
+        })
+        input.onButtonPressed(Button.B, () => {
+            nextGroup()
+        })
+
         // handle radio package messages
         radio.onReceivedBuffer(buf => {
             const msg = decodeRobotCommand(buf)
