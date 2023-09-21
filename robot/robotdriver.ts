@@ -1,5 +1,6 @@
 namespace microcode {
     export const ROBOT_TIMEOUT = 1000
+    const SHOW_RADIO_COUNT = 50
 
     enum RobotSpeedMode {
         Run, Turn
@@ -26,18 +27,18 @@ namespace microcode {
             if (this.running) return
 
             this.running = true
-            this.showRadio = 20
+            this.showRadio = SHOW_RADIO_COUNT
             this.playMelody(Melodies.BaDing)
             // wake up sensors
             this.ultrasonicDistance()
             this.lineState()
             input.onButtonPressed(Button.A, () => {
                 previousGroup()
-                this.showRadio = 20
+                this.showRadio = SHOW_RADIO_COUNT
             })
             input.onButtonPressed(Button.B, () => {
                 nextGroup()
-                this.showRadio = 20
+                this.showRadio = SHOW_RADIO_COUNT
             })
             startRadioReceiver(robotDriver)
             control.inBackground(() => this.backgroundWork())
@@ -51,8 +52,7 @@ namespace microcode {
                     showRadioStatus()
                 else
                     this.showSensors()
-                basic.pause(100)
-
+                basic.pause(20)
             }
         }
 
@@ -122,6 +122,7 @@ namespace microcode {
 
         motorStop() {
             this.motorRun(0)
+            pause(400)
         }
 
         ultrasonicDistance() {
