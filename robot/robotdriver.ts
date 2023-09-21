@@ -34,6 +34,10 @@ namespace microcode {
             this.robot.motorTurn(speed)
         }
 
+        ultrasonicDistance() {
+            return this.robot.ultrasonicDistance()
+        }
+
         private headlightsSetColor(red: number, green: number, blue: number) {
             this.keepAlive()
             this.robot.headlightsSetColor(red, green, blue)
@@ -86,13 +90,6 @@ namespace microcode {
                     console.log(`motor turn ${speed}`)
                     this.motorTurn(speed)
                     break
-                }
-                case RobotCommand.HeadlightsSetColor: {
-                    const red = payload[0]
-                    const green = payload[1]
-                    const blue = payload[2]
-                    console.log(`headlights set color ${red} ${green} ${blue}`)
-                    this.headlightsSetColor(red, green, blue)
                 }
             }
         }

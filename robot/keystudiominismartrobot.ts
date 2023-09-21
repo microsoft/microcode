@@ -31,6 +31,10 @@ namespace microcode {
             k_Bit.LED_brightness(0xff)
             k_Bit.SetLed(red, green, blue)
         }
+
+        ultrasonicDistance(): number {
+            return k_Bit.ultra()
+        }
     }
 
 }

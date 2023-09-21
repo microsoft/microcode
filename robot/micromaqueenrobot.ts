@@ -24,5 +24,9 @@ namespace microcode {
         headlightsSetColor(red: number, green: number, blue: number) {
             // TODO
         }
+
+        ultrasonicDistance(): number {
+            return maqueen.Ultrasonic(PingUnit.Centimeters, 100)
+        }
     }
 }

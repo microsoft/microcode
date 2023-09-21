@@ -45,7 +45,7 @@ namespace microcode {
 
     }
 
-    export function singleheadlights(r: number, g: number, b: number): void {
+    function singleheadlights(r: number, g: number, b: number): void {
         let buf = pins.createBuffer(4);
             buf[0] = 0x04;
             buf[1] = r;
@@ -54,6 +54,20 @@ namespace microcode {
             pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
             buf[0] = 0x08;
             pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
+    }
+
+    function ultrasonic(): number {
+        // send pulse
+        pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
+        pins.digitalWritePin(DigitalPin.P8, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(DigitalPin.P8, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(DigitalPin.P8, 0);
+        // read pulse
+        const maxCmDistance = 100
+        const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance * 50);
+        return Math.floor(d * 34 / 2 / 1000);
     }
 
     export class ElecfreaksCutebotRobot extends Robot {
@@ -77,6 +91,10 @@ namespace microcode {
 
         headlightsSetColor(red: number, green: number, blue: number) {
             singleheadlights(red, green, blue)
+        }
+
+        ultrasonicDistance(): number {
+            return ultrasonic()
         }
     }
 }

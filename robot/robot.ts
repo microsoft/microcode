@@ -29,6 +29,13 @@ namespace microcode {
         headlightsSetColor(red: number, green: number, blue: number): void {
 
         }
+
+        /**
+         * Optional: reads the sonar, in cm
+         */
+        ultrasonicDistance(): number {
+            return undefined
+        }
     }
 
     export let robot: Robot

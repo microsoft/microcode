@@ -16,10 +16,10 @@ namespace microcode {
          */
         MotorTurn = 0x02,
         /**
-         * Sets the robot LED to a 24bit RGB color
-         *     rgb: u24
+         * Report ultrasonic distance in cm
+         *     distance: f32
          */
-        HeadlightsSetColor = 0x03,
+        UltrasonicDistance = 0x10
     }
 
     export interface RobotMessage {
