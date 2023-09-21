@@ -14,7 +14,8 @@
         "keystudiominismartrobot.ts",
         "robotdriver.ts",
         "yahboomtinybit.ts",
-        "cutebot.ts"
+        "cutebot.ts",
+        "blocks.ts"
     ],
     "testFiles": [
         "test.ts"

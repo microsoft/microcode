@@ -29,6 +29,8 @@ namespace microcode {
 
         constructor(robot: robots.Robot) {
             this.robot = robot
+
+            microcode.robotDriver = this
         }
 
         /**
@@ -56,22 +58,6 @@ namespace microcode {
             })
             this.startRadioReceiver()
             control.inBackground(() => this.backgroundWork())
-        }
-
-
-        /**
-             * A value that corrects the ratio of power between the left and the right motor
-             * to account for hardware differences.
-             */
-        //% block="robot %this set motor drift to %drift"
-        //% blockId="microcoderobotsetmotordrift"
-        //% weight=10
-        //% drift.min=-10
-        //% drift.max=20
-        setMotorDrift(drift: number) {
-            if (isNaN(drift)) return
-            this.start()
-            this.runDrift = Math.clamp(-10, 10, drift)
         }
 
         private backgroundWork() {
