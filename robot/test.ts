@@ -1,6 +1,7 @@
 //microcode.elecfreaksCuteBot.start()
-microcode.yahboomTinyBit.start()
-microcode.setMotorDrift(-4)
+//microcode.yahboomTinyBit.start()
+microcode.keyStudioMiniSmartRobot.start()
+microcode.setMotorDrift(0)
 
 const robotDriver = microcode.robotDriver
 basic.forever(() => {

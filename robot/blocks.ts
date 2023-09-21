@@ -10,7 +10,6 @@ namespace microcode {
     //% drift.min=-10
     //% drift.max=20
     export function setMotorDrift(drift: number) {
-        if (isNaN(drift)) return
         if (!robotDriver)
             throw "You must start a robot first"
         robotDriver.runDrift = Math.clamp(-10, 10, drift)

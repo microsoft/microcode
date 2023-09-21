@@ -124,6 +124,7 @@ namespace microcode {
         }
         L_brightness = Math.map(br, 0, 255, 4095, 0);
     }
+    /*
     function SetLed(red: number, green: number, blue: number) {
         if (!PCA9685_Initialized) {
             init_PCA9685();
@@ -136,7 +137,7 @@ namespace microcode {
         setPwm(6, 0, R);
         setPwm(5, 0, G);
         setPwm(4, 0, B);
-    }
+    }*/
 
     class KeyStudioMiniSmartRobot extends robots.Robot {
         lastTime = 0;
@@ -169,11 +170,6 @@ namespace microcode {
                 const dir = speed >= 0 ? DIR.TurnRight : DIR.TurnLeft
                 run(dir, Math.abs(speed))
             }
-        }
-
-        headlightsSetColor(red: number, green: number, blue: number) {
-            LED_brightness(0xff)
-            SetLed(red, green, blue)
         }
 
         ultrasonicDistance(): number {
