@@ -35,6 +35,10 @@ namespace microcode {
         ultrasonicDistance(): number {
             return k_Bit.ultra()
         }
+
+        lineState(): RobotLineState {
+            return k_Bit.LineTracking()
+        }
     }
 
 }

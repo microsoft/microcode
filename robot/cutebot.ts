@@ -47,18 +47,17 @@ namespace microcode {
 
     function singleheadlights(r: number, g: number, b: number): void {
         let buf = pins.createBuffer(4);
-            buf[0] = 0x04;
-            buf[1] = r;
-            buf[2] = g;
-            buf[3] = b;
-            pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
-            buf[0] = 0x08;
-            pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
+        buf[0] = 0x04;
+        buf[1] = r;
+        buf[2] = g;
+        buf[3] = b;
+        pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
+        buf[0] = 0x08;
+        pins.i2cWriteBuffer(STM8_ADDRESSS, buf);
     }
 
     function ultrasonic(): number {
         // send pulse
-        pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
         pins.digitalWritePin(DigitalPin.P8, 0);
         control.waitMicros(2);
         pins.digitalWritePin(DigitalPin.P8, 1);
@@ -76,6 +75,10 @@ namespace microcode {
             this.musicVolume = 168;
             this.maxRunSpeed = 50;
             this.maxTurnSpeed = 50;
+
+            pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
+            pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
+            pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
         }
 
         motorRun(speed: number) {
@@ -95,6 +98,13 @@ namespace microcode {
 
         ultrasonicDistance(): number {
             return ultrasonic()
+        }
+
+        lineState(): RobotLineState {
+            const left = pins.digitalReadPin(DigitalPin.P13);
+            const right = pins.digitalReadPin(DigitalPin.P14);
+
+            return (left << 0) | (right << 1)
         }
     }
 }

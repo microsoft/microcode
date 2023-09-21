@@ -141,5 +141,14 @@ namespace microcode {
         ultrasonicDistance(): number {
             return Ultrasonic_CarV2()
         }
+
+        lineState(): RobotLineState {
+            pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
+            pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
+            const left = pins.digitalReadPin(DigitalPin.P13);
+            const right = pins.digitalReadPin(DigitalPin.P14);
+
+            return (left << 0) | (right << 1)
+        }
     }
 }

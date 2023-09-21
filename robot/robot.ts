@@ -1,4 +1,10 @@
 namespace microcode {
+    export enum RobotLineState {
+        None = 0,
+        Left = 0x01,
+        Right = 0x02
+    }
+
     export class Robot {
         musicVolume = 64
         maxRunSpeed = 100
@@ -35,6 +41,10 @@ namespace microcode {
          */
         ultrasonicDistance(): number {
             return undefined
+        }
+
+        lineState(): RobotLineState {
+            return RobotLineState.None
         }
     }
 

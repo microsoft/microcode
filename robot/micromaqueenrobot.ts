@@ -28,5 +28,11 @@ namespace microcode {
         ultrasonicDistance(): number {
             return maqueen.Ultrasonic(PingUnit.Centimeters, 100)
         }
+
+        lineState(): RobotLineState {
+            const left = maqueen.readPatrol(maqueen.Patrol.PatrolLeft)
+            const right = maqueen.readPatrol(maqueen.Patrol.PatrolRight)
+            return (left << 0) | (right << 1)
+        }
     }
 }
