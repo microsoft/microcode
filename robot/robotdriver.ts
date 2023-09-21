@@ -1,3 +1,7 @@
+/**
+ * Microcode Robot
+ */
+//% color="#ff6800" icon="\uf1b9" weight=15
 namespace microcode {
     const ROBOT_TIMEOUT = 1000
     const SHOW_RADIO_COUNT = 50

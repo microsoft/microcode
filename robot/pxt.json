@@ -4,8 +4,7 @@
         "core": "*",
         "radio": "*",
         "maqueen": "github:dfrobot/pxt-maqueen#v1.7.2",
-        "WhaleySansFont": "github:makecode-extensions/whaleysansfont#v1.1.0",
-        "pxt-k-bit": "github:mworkfun/pxt-k-bit#v1.0.0"
+        "WhaleySansFont": "github:makecode-extensions/whaleysansfont#v1.1.0"
     },
     "files": [
         "README.md",
