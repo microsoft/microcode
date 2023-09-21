@@ -6,6 +6,9 @@ namespace microcode {
     const ROBOT_TIMEOUT = 1000
     const SHOW_RADIO_COUNT = 50
 
+    const RUN_STOP_THRESHOLD = 10
+    const MODE_SWITCH_THRESHOLD = 2
+
     enum RobotSpeedMode {
         Run, Turn
     }
@@ -87,9 +90,9 @@ namespace microcode {
 
             // transition from one mode to the other, robot should stop
             if (this.currentSpeedMode !== this.targetSpeedMode) {
-                const alpha = 0.8
+                const alpha = 0.5
                 this.currentSpeed = this.currentSpeed * alpha
-                if (Math.abs(this.currentSpeed) < 10) {
+                if (Math.abs(this.currentSpeed) < MODE_SWITCH_THRESHOLD) {
                     this.currentSpeed = 0
                     this.currentSpeedMode = this.targetSpeedMode
                 }
@@ -101,14 +104,15 @@ namespace microcode {
                     this.currentSpeed = this.targetSpeed
             }
 
+            const speed = Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD ? 0 : this.currentSpeed
             if (this.currentSpeedMode === RobotSpeedMode.Run) {
-                let d = Math.abs(this.currentSpeed) > this.runDrift ? this.runDrift >> 1 : 0
-                const left = this.currentSpeed - d
-                const right = this.currentSpeed + d
+                let d = speed > this.runDrift ? this.runDrift >> 1 : 0
+                const left = speed - d
+                const right = speed + d
                 this.robot.motorRun(left, right)
             }
             else
-                this.robot.motorTurn(this.targetSpeed)
+                this.robot.motorTurn(speed)
         }
 
         private showSensors() {
@@ -165,9 +169,14 @@ namespace microcode {
         }
 
         ultrasonicDistance() {
-            const dist = this.robot.ultrasonicDistance()
-            if (dist > 0)
-                this.lastUltrasonicDistance = dist
+            let retry = 3
+            while(retry-- > 0) {
+                const dist = this.robot.ultrasonicDistance()
+                if (dist > 0) {
+                    this.lastUltrasonicDistance = dist
+                    break
+                }
+            }
             return this.lastUltrasonicDistance
         }
 
