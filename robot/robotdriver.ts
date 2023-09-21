@@ -36,7 +36,7 @@ namespace microcode {
         /**
          * Starts the motor driver
          */
-        //% block="robot %this start"
+        //% block="robot start %this"
         //% blockId=microcoderobotstart
         //% weight=100
         start() {

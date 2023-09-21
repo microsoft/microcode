@@ -4,7 +4,7 @@ namespace microcode {
     /**
     * A value that corrects the ratio of power between the left and the right motor to account for hardware differences.
     */
-    //% block="robot Fset motor drift to %drift"
+    //% block="robot set motor drift to %drift"
     //% blockId="microcoderobotsetmotordrift"
     //% weight=10
     //% drift.min=-10
