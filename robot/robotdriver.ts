@@ -79,8 +79,12 @@ namespace microcode {
 
         private startRadioReceiver() {
             // handle radio package messages
-            radio.onReceivedBuffer(buf => {
-                const msg = robots.decodeRobotCommand(buf)
+            //radio.onReceivedBuffer(buf => {
+            //    const msg = robots.decodeRobotCommand(buf)
+            //    this.dispatch(msg)
+            //})
+            radio.onReceivedNumber(code => {
+                const msg = robots.decodeRobotCompactCommand(code)
                 this.dispatch(msg)
             })
         }
