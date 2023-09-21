@@ -9,6 +9,7 @@ namespace microcode {
         musicVolume = 64
         maxRunSpeed = 100
         maxTurnSpeed = 100
+        motorDrift = 0
 
         constructor() {
 

@@ -74,7 +74,8 @@ namespace microcode {
             super()
             this.musicVolume = 168;
             this.maxRunSpeed = 50;
-            this.maxTurnSpeed = 50;
+            this.maxTurnSpeed = 40;
+            this.motorDrift = 6;
 
             pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
             pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
@@ -82,10 +83,12 @@ namespace microcode {
         }
 
         motorRun(speed: number) {
-            motors(speed, speed)
+            const d= this.motorDrift >> 1
+            motors(speed - d, speed + d)
         }
 
         motorTurn(speed: number) {
+            const d = this.motorDrift >> 1
             if (speed > 0)
                 motors(0, speed)
             else

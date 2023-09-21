@@ -1,14 +1,20 @@
 namespace microcode {
     export const ROBOT_TIMEOUT = 1000
 
+    enum RobotSpeedMode {
+        Run, Turn
+    }
+
     export class RobotDriver {
         readonly robot: Robot
         private lastReceivedMessageId: number = undefined
         private lastCommandTime: number
         private running = false
-        private lastUltrasonicDistance: number
-
+        private lastUltrasonicDistance: number  = 100
         private showRadio: number
+        private currentSpeed: number = 0
+        private targetSpeed: number = 0
+        private speedMode = RobotSpeedMode.Run
 
         constructor(robot: Robot) {
             this.robot = robot
@@ -22,6 +28,9 @@ namespace microcode {
             this.running = true
             this.showRadio = 20
             this.playMelody(Melodies.BaDing)
+            // wake up sensors
+            this.ultrasonicDistance()
+            this.lineState()
             input.onButtonPressed(Button.A, () => {
                 previousGroup()
                 this.showRadio = 20
@@ -36,13 +45,31 @@ namespace microcode {
 
         private backgroundWork() {
             while (this.running) {
-                robotDriver.checkAlive()
+                this.checkAlive()
+                this.updateSpeed()
                 if(this.showRadio-- > 0)
                     showRadioStatus()
                 else
                     this.showSensors()
                 basic.pause(100)
 
+            }
+        }
+
+
+        private updateSpeed() {
+            if (this.currentSpeed === this.targetSpeed) return
+
+            const alpha = 0.8
+            this.currentSpeed = this.currentSpeed * alpha + this.targetSpeed * (1 - alpha)
+            if (Math.abs(this.currentSpeed - this.targetSpeed) < 10) 
+                this.currentSpeed = this.targetSpeed
+            if (this.speedMode === RobotSpeedMode.Run)
+                this.robot.motorRun(this.currentSpeed)
+            else
+                this.robot.motorTurn(this.targetSpeed)
+            if (this.currentSpeed === 0) {
+                pause(800)
             }
         }
 
@@ -81,14 +108,20 @@ namespace microcode {
             this.keepAlive()
             speed = speed > 0 ? Math.min(this.robot.maxRunSpeed, speed) : Math.max(-this.robot.maxRunSpeed, speed)
             this.setHeadlingSpeedColor(speed)
-            this.robot.motorRun(speed)
+            this.speedMode = RobotSpeedMode.Run
+            this.targetSpeed = speed
         }
 
         motorTurn(speed: number) {
             this.keepAlive()
             speed = speed > 0 ? Math.min(this.robot.maxTurnSpeed, speed) : Math.max(-this.robot.maxTurnSpeed, speed)
             this.setHeadlingSpeedColor(speed)
-            this.robot.motorTurn(speed)
+            this.speedMode = RobotSpeedMode.Turn
+            this.targetSpeed = speed
+        }
+
+        motorStop() {
+            this.motorRun(0)
         }
 
         ultrasonicDistance() {

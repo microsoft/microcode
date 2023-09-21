@@ -6,14 +6,17 @@ const robotDriver = new microcode.RobotDriver(robot)
 
 // init
 robotDriver.start()
-
 basic.forever(() => {
-    [0, 80, -80].forEach(speed => {
-        robotDriver.motorRun(speed)
-        basic.pause(1000)
-        robotDriver.motorRun(0)
-        basic.pause(500)
-        robotDriver.motorTurn(speed)
-        basic.pause(1000)
-    })
+    const dist = robotDriver.ultrasonicDistance()
+    if (dist > 10)
+        robotDriver.motorRun(100)
+    else {
+        robotDriver.motorStop()
+        robotDriver.motorRun(-50)
+        pause(400)
+        robotDriver.motorStop()
+        robotDriver.motorTurn(50)
+        pause(400)
+        robotDriver.motorStop()
+    }
 })
