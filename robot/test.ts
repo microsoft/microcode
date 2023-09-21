@@ -1,4 +1,5 @@
 microcode.elecfreaksCuteBot.start()
+microcode.setMotorDrift(6)
 
 const robotDriver = microcode.robotDriver
 basic.forever(() => {
