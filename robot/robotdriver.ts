@@ -22,8 +22,9 @@ namespace microcode {
         private lastUltrasonicDistance: number = 100
         private showRadio: number
         private currentSpeed: number = 0
+        private currentSpeedMode = RobotSpeedMode.Run
         private targetSpeed: number = 0
-        private speedMode = RobotSpeedMode.Run
+        private targetSpeedMode = RobotSpeedMode.Run
 
         runDrift = 0
 
@@ -82,13 +83,25 @@ namespace microcode {
 
 
         private updateSpeed() {
-            if (this.currentSpeed === this.targetSpeed) return
+            if (this.currentSpeed === this.targetSpeed && this.currentSpeedMode === this.targetSpeedMode) return // nothing to do
 
-            const alpha = 0.8
-            this.currentSpeed = this.currentSpeed * alpha + this.targetSpeed * (1 - alpha)
-            if (Math.abs(this.currentSpeed - this.targetSpeed) < 10)
-                this.currentSpeed = this.targetSpeed
-            if (this.speedMode === RobotSpeedMode.Run) {
+            // transition from one mode to the other, robot should stop
+            if (this.currentSpeedMode !== this.targetSpeedMode) {
+                const alpha = 0.8
+                this.currentSpeed = this.currentSpeed * alpha
+                if (Math.abs(this.currentSpeed) < 10) {
+                    this.currentSpeed = 0
+                    this.currentSpeedMode = this.targetSpeedMode
+                }
+            }
+            else {
+                const alpha = 0.8
+                this.currentSpeed = this.currentSpeed * alpha + this.targetSpeed * (1 - alpha)
+                if (Math.abs(this.currentSpeed - this.targetSpeed) < 10)
+                    this.currentSpeed = this.targetSpeed
+            }
+
+            if (this.currentSpeedMode === RobotSpeedMode.Run) {
                 let d = Math.abs(this.currentSpeed) > this.runDrift ? this.runDrift >> 1 : 0
                 const left = this.currentSpeed - d
                 const right = this.currentSpeed + d
@@ -96,9 +109,6 @@ namespace microcode {
             }
             else
                 this.robot.motorTurn(this.targetSpeed)
-            if (this.currentSpeed === 0) {
-                pause(800)
-            }
         }
 
         private showSensors() {
@@ -137,7 +147,7 @@ namespace microcode {
             this.keepAlive()
             speed = speed > 0 ? Math.min(this.robot.maxRunSpeed, speed) : Math.max(-this.robot.maxRunSpeed, speed)
             this.setHeadlingSpeedColor(speed)
-            this.speedMode = RobotSpeedMode.Run
+            this.targetSpeedMode = RobotSpeedMode.Run
             this.targetSpeed = speed
         }
 
@@ -146,7 +156,7 @@ namespace microcode {
             this.keepAlive()
             speed = speed > 0 ? Math.min(this.robot.maxTurnSpeed, speed) : Math.max(-this.robot.maxTurnSpeed, speed)
             this.setHeadlingSpeedColor(speed)
-            this.speedMode = RobotSpeedMode.Turn
+            this.targetSpeedMode = RobotSpeedMode.Turn
             this.targetSpeed = speed
         }
 
