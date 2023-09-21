@@ -1,5 +1,6 @@
-const robotDriver = microcode.elecfreaksCuteBot
-robotDriver.start()
+microcode.elecfreaksCuteBot.start()
+
+const robotDriver = microcode.robotDriver
 basic.forever(() => {
     const dist = robotDriver.ultrasonicDistance()
     if (dist > 10)
