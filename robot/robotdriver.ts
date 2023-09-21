@@ -29,6 +29,7 @@ namespace microcode {
         private targetSpeed: number = 0
         private targetSpeedMode = RobotSpeedMode.Run
 
+        safe = false
         runDrift = 0
 
         constructor(robot: robots.Robot) {
@@ -190,6 +191,7 @@ namespace microcode {
         }
 
         checkAlive() {
+            if (!this.safe) return;
             if (control.millis() - this.lastCommandTime > ROBOT_TIMEOUT)
                 this.stop()
         }
