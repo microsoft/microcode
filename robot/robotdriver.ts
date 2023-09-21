@@ -54,7 +54,7 @@ namespace microcode {
                 robots.nextGroup()
                 this.showRadio = SHOW_RADIO_COUNT
             })
-            robots.startRadioReceiver(robotDriver)
+            this.startRadioReceiver()
             control.inBackground(() => this.backgroundWork())
         }
 
@@ -84,6 +84,14 @@ namespace microcode {
                     this.showSensors()
                 basic.pause(20)
             }
+        }
+
+        private startRadioReceiver() {
+            // handle radio package messages
+            radio.onReceivedBuffer(buf => {
+                const msg = robots.decodeRobotCommand(buf)
+                this.dispatch(msg)
+            })
         }
 
 

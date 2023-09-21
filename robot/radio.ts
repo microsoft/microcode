@@ -32,12 +32,4 @@ namespace microcode.robots {
         const buf = encodeRobotMessage({ messageId: nextMessageId, cmd, payload })
         radio.sendBuffer(buf)
     }
-
-    export function startRadioReceiver(robotDriver: RobotDriver) {
-        // handle radio package messages
-        radio.onReceivedBuffer(buf => {
-            const msg = decodeRobotCommand(buf)
-            robotDriver.dispatch(msg)
-        })
-    }
 }
