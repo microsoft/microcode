@@ -135,6 +135,7 @@ namespace microcode {
         }
 
         motorRun(speed: number) {
+            this.start()
             this.keepAlive()
             speed = speed > 0 ? Math.min(this.robot.maxRunSpeed, speed) : Math.max(-this.robot.maxRunSpeed, speed)
             this.setHeadlingSpeedColor(speed)
@@ -143,6 +144,7 @@ namespace microcode {
         }
 
         motorTurn(speed: number) {
+            this.start()
             this.keepAlive()
             speed = speed > 0 ? Math.min(this.robot.maxTurnSpeed, speed) : Math.max(-this.robot.maxTurnSpeed, speed)
             this.setHeadlingSpeedColor(speed)
@@ -152,7 +154,6 @@ namespace microcode {
 
         motorStop() {
             this.motorRun(0)
-            pause(400)
         }
 
         ultrasonicDistance() {
