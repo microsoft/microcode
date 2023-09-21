@@ -98,6 +98,19 @@ namespace microcode {
         return Math.floor(length);
     }
 
+    function Ultrasonic_CarV2(): number {
+        pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
+        pins.digitalWritePin(DigitalPin.P16, 0);
+        control.waitMicros(4);
+        pins.digitalWritePin(DigitalPin.P16, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(DigitalPin.P16, 0);
+
+        let d = pins.pulseIn(DigitalPin.P15, PulseValue.High, 500 * 58);
+        return Math.floor(d / 58);
+
+    }
+
     export class YahboomTinybitRobot extends Robot {
         constructor() {
             super()
@@ -126,7 +139,7 @@ namespace microcode {
         }
 
         ultrasonicDistance(): number {
-            return Ultrasonic_Car()
+            return Ultrasonic_CarV2()
         }
     }
 }
