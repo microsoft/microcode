@@ -114,6 +114,10 @@ namespace microcode {
     class YahboomTinybitRobot extends robots.Robot {
         constructor() {
             super()
+
+            pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
+            pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
+            this.maxLineTrackingSpeed = 60
         }
 
         motorRun(left: number, right: number): void {
@@ -148,8 +152,6 @@ namespace microcode {
         }
 
         lineState(): RobotLineState {
-            pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
-            pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
             const left = pins.digitalReadPin(DigitalPin.P13);
             const right = pins.digitalReadPin(DigitalPin.P14);
 

@@ -63,6 +63,8 @@ namespace microcode {
                 this.showRadio = SHOW_RADIO_COUNT
             })
             this.startRadioReceiver()
+            basic.forever(() => this.showLines())
+            basic.forever(() => this.showSonar())
             control.inBackground(() => this.backgroundWork())
         }
 
@@ -70,11 +72,7 @@ namespace microcode {
             while (this.running) {
                 this.checkAlive()
                 this.updateSpeed()
-                if (this.showRadio-- > 0)
-                    robots.showRadioStatus()
-                else
-                    this.showSensors()
-                basic.pause(20)
+                basic.pause(5)
             }
         }
 
@@ -112,12 +110,12 @@ namespace microcode {
             if (this.currentSpeedMode === RobotSpeedMode.Run) {
                 let d = speed > this.runDrift ? this.runDrift >> 1 : 0
                 if (speed > 0) {
-                    speed = Math.min(speed, 20)
+                    speed = Math.min(speed, this.robot.maxLineTrackingSpeed)
                     const lines = this.lineState()
                     if (lines === RobotLineState.Left)
-                        d -= speed * 0.8
+                        d += speed * 1
                     else if (lines === RobotLineState.Right)
-                        d += speed * 0.8
+                        d -= speed * 1
                 }
                 const left = speed - d
                 const right = speed + d
@@ -127,19 +125,21 @@ namespace microcode {
                 this.robot.motorTurn(speed)
         }
 
-        private showSensors() {
+        private showLines() {
             const lineState = this.lineState()
-            const dist = this.ultrasonicDistance()
-
-            // render
-            basic.clearScreen()
             // render left/right lines
             const left = (lineState & RobotLineState.Left) === RobotLineState.Left
             const right = (lineState & RobotLineState.Right) === RobotLineState.Right
             for (let i = 0; i < 5; ++i) {
-                if (left) led.plot(0, i); else led.unplot(0, i)
-                if (right) led.plot(4, i); else led.unplot(4, i)
+                if (left) led.plot(4, i); else led.unplot(4, i)
+                if (right) led.plot(0, i); else led.unplot(0, i)
             }
+            console.log({ lineState, left, right })
+        }
+
+        private showSonar() {
+            const dist = this.ultrasonicDistance()
+            console.log({ dist })
             // render sonar
             if (dist > 0) {
                 for (let x = 1; x < 4; x++)

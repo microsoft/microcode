@@ -75,6 +75,7 @@ namespace microcode {
             this.musicVolume = 168;
             this.maxRunSpeed = 50;
             this.maxTurnSpeed = 40;
+            this.maxLineTrackingSpeed = 20;
 
             pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
             pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
@@ -101,8 +102,8 @@ namespace microcode {
         }
 
         lineState(): RobotLineState {
-            const left = pins.digitalReadPin(DigitalPin.P13);
-            const right = pins.digitalReadPin(DigitalPin.P14);
+            const left = pins.digitalReadPin(DigitalPin.P13) ? 0 : 1;
+            const right = pins.digitalReadPin(DigitalPin.P14) ? 0:1;
 
             return (left << 0) | (right << 1)
         }
