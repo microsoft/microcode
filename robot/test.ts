@@ -1,15 +1,18 @@
-//microcode.elecfreaksCuteBot.start()
+microcode.elecfreaksCuteBot.start()
 //microcode.yahboomTinyBit.start()
-microcode.keyStudioMiniSmartRobot.start()
+//microcode.keyStudioMiniSmartRobot.start()
 microcode.setMotorDrift(0)
 
 const robotDriver = microcode.robotDriver
+robotDriver.motorRun(30)
+/*
 basic.forever(() => {
     robotDriver.motorRun(100)
     pause(1500)
     robotDriver.motorRun(-100)
     pause(1500)
-
+})
+*/
 /*    
 
     const dist = robotDriver.ultrasonicDistance()
@@ -22,4 +25,3 @@ basic.forever(() => {
         pause(800)
     }
     */
-})

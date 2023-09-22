@@ -31,6 +31,7 @@ namespace microcode {
 
         safe = false
         runDrift = 0
+        lineDrift = 10
 
         constructor(robot: robots.Robot) {
             this.robot = robot
@@ -91,8 +92,6 @@ namespace microcode {
 
 
         private updateSpeed() {
-            if (this.currentSpeed === this.targetSpeed && this.currentSpeedMode === this.targetSpeedMode) return // nothing to do
-
             // transition from one mode to the other, robot should stop
             if (this.currentSpeedMode !== this.targetSpeedMode) {
                 const alpha = 0.5
@@ -112,8 +111,16 @@ namespace microcode {
             const speed = Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD ? 0 : this.currentSpeed
             if (this.currentSpeedMode === RobotSpeedMode.Run) {
                 let d = speed > this.runDrift ? this.runDrift >> 1 : 0
+                if (speed > 0) {
+                    const lines = this.lineState()
+                    if (lines === RobotLineState.Left)
+                        d -= speed * 0.5
+                    else if (lines === RobotLineState.Right)
+                        d += speed * 0.5
+                }
                 const left = speed - d
                 const right = speed + d
+                console.log({ left, right })
                 this.robot.motorRun(left, right)
             }
             else
