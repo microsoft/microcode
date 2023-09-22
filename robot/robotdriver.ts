@@ -4,7 +4,7 @@
 //% color="#ff6800" icon="\uf1b9" weight=15
 namespace microcode {
     const ROBOT_TIMEOUT = 1000
-    const SHOW_RADIO_COUNT = 50
+    const SHOW_RADIO_COUNT = 20
 
     const RUN_STOP_THRESHOLD = 10
     const MODE_SWITCH_THRESHOLD = 2
@@ -63,7 +63,7 @@ namespace microcode {
                 this.showRadio = SHOW_RADIO_COUNT
             })
             this.startRadioReceiver()
-            basic.forever(() => this.showLines())
+            basic.forever(() => this.showLineState())
             basic.forever(() => this.showSonar())
             control.inBackground(() => this.backgroundWork())
         }
@@ -71,6 +71,10 @@ namespace microcode {
         private backgroundWork() {
             while (this.running) {
                 this.checkAlive()
+                if (this.showRadio > 0) {
+                    this.showRadio--
+                    microcode.robots.showRadioStatus()
+                }
                 this.updateSpeed()
                 basic.pause(5)
             }
@@ -120,12 +124,31 @@ namespace microcode {
                 const left = speed - d
                 const right = speed + d
                 this.robot.motorRun(left, right)
+                this.showMotorState(left, right)
             }
-            else
+            else {
                 this.robot.motorTurn(speed)
+                this.showMotorState(speed > 0 ? speed : 0, speed <= 0 ? 0 : -speed)
+            }
         }
 
-        private showLines() {
+        private showMotorState(left: number, right: number) {
+            if (this.showRadio > 0) return
+            this.showSingleMotorState(3, left)
+            this.showSingleMotorState(1, right)
+        }
+
+        private showSingleMotorState(x: number, speed: number) {
+            if (Math.abs(speed) < 30) led.unplot(x, 2); else led.plot(x, 2)
+            if (speed >= 30) led.plot(x, 1); else led.unplot(x, 1)
+            if (speed >= 50) led.plot(x, 0); else led.unplot(x, 0)
+            if (speed <= -30) led.plot(x, 3); else led.unplot(x, 3)
+            if (speed <= -50) led.plot(x, 4); else led.unplot(x, 4)
+        }
+
+        private showLineState() {
+            if (this.showRadio > 0) return
+
             const lineState = this.lineState()
             // render left/right lines
             const left = (lineState & RobotLineState.Left) === RobotLineState.Left
@@ -134,17 +157,18 @@ namespace microcode {
                 if (left) led.plot(4, i); else led.unplot(4, i)
                 if (right) led.plot(0, i); else led.unplot(0, i)
             }
-            console.log({ lineState, left, right })
         }
 
+
         private showSonar() {
+            if (this.showRadio > 0) return
+
             const dist = this.ultrasonicDistance()
             console.log({ dist })
             // render sonar
             if (dist > 0) {
-                for (let x = 1; x < 4; x++)
-                    for (let y = 0; y < 5; y++)
-                        if (dist > 0 && dist < 5 + y * 5) led.plot(x, y); else led.unplot(x, y)
+                for (let y = 0; y < 5; y++)
+                    if (dist > 0 && dist < 5 + y * 5) led.plot(2, y); else led.unplot(2, y)
             }
         }
 
@@ -182,7 +206,7 @@ namespace microcode {
 
         ultrasonicDistance() {
             let retry = 3
-            while(retry-- > 0) {
+            while (retry-- > 0) {
                 const dist = this.robot.ultrasonicDistance()
                 if (dist > 0) {
                     this.lastUltrasonicDistance = dist

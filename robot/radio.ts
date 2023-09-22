@@ -1,6 +1,6 @@
 namespace microcode.robots {
-    const MAX_GROUPS = 100
-    let group = control.deviceSerialNumber() % 99 + 1
+    const MAX_GROUPS = 21
+    let group = control.deviceSerialNumber() % 9 + 1
     radio.setGroup(group)
 
     export function previousGroup() {
