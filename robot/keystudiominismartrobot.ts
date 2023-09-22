@@ -206,5 +206,5 @@ namespace microcode {
      * Mini Smart Robot from KeyStudio
      */
     //% fixedInstance whenUsed block="keystudio mini smart robot"
-    export const keyStudioMiniSmartRobot = new RobotDriver(new KeyStudioMiniSmartRobot())
+    //export const keyStudioMiniSmartRobot = new RobotDriver(new KeyStudioMiniSmartRobot())
 }
