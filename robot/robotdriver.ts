@@ -108,19 +108,19 @@ namespace microcode {
                     this.currentSpeed = this.targetSpeed
             }
 
-            const speed = Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD ? 0 : this.currentSpeed
+            let speed = Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD ? 0 : this.currentSpeed
             if (this.currentSpeedMode === RobotSpeedMode.Run) {
                 let d = speed > this.runDrift ? this.runDrift >> 1 : 0
                 if (speed > 0) {
+                    speed = Math.min(speed, 20)
                     const lines = this.lineState()
                     if (lines === RobotLineState.Left)
-                        d -= speed * 0.5
+                        d -= speed * 0.8
                     else if (lines === RobotLineState.Right)
-                        d += speed * 0.5
+                        d += speed * 0.8
                 }
                 const left = speed - d
                 const right = speed + d
-                console.log({ left, right })
                 this.robot.motorRun(left, right)
             }
             else
