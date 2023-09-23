@@ -92,7 +92,6 @@ namespace microcode {
             })
         }
 
-
         private updateSpeed() {
             // transition from one mode to the other, robot should stop
             if (this.currentSpeedMode !== this.targetSpeedMode) {
@@ -114,12 +113,14 @@ namespace microcode {
             if (this.currentSpeedMode === RobotSpeedMode.Run) {
                 let d = speed > this.runDrift ? this.runDrift >> 1 : 0
                 if (speed > 0) {
-                    speed = Math.min(speed, this.robot.maxLineTrackingSpeed)
                     const lines = this.lineState()
-                    if (lines === RobotLineState.Left)
-                        d += speed * 1
-                    else if (lines === RobotLineState.Right)
-                        d -= speed * 1
+                    if (lines) {
+                        speed = Math.min(speed, this.robot.maxLineTrackingSpeed)
+                        if (lines === RobotLineState.Left)
+                            d += speed
+                        else if (lines === RobotLineState.Right)
+                            d -= speed
+                    }
                 }
                 const left = speed - d
                 const right = speed + d
