@@ -37,8 +37,9 @@ namespace microcode {
                     }
                     image5x5.setPixel(col, row, on ? 0 : 1)
                     button.setIcon(getColor(col, row))
-                    picker.draw()
+                    button.draw()
                     picker.navigator.updateAria()
+                    // control.heapSnapshot()
                 },
                 onHide,
                 onDelete,
