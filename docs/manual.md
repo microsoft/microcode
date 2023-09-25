@@ -28,48 +28,48 @@ Three Arcade shields for the micro:bit V2 are available on the market today, as 
 <table>
 <tr valign="top">
 <td width="33%" >
-
-[Kittenbot's newbit Arcade shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
-
+<a href="https://www.kittenbot.cc/products/newbit-arcade-shield">
+Kittenbot's newbit Arcade shield
+</a>
 </td><td width="33%" >
-
-[ELECFREAK's micro:bit Arcade shield](https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade)
-
+<a href="https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade">
+ELECFREAK's micro:bit Arcade shield
+</a>
 </td>
 <td width="33%" >
-
-[ICShopping's Game:bit Arcade shield](https://www.icshop.com.tw/products/368112100118)
-
+<a href="https://www.icshop.com.tw/products/368112100118">
+ICShopping's Game:bit Arcade shield
+</a>
 </td></tr>
 <tr>
 <td>
-
-[![Kittenbot's newbit Arcade shield](../assets/newbit-shield.png)](https://www.kittenbot.cc/products/newbit-arcade-shield)
-
+<a alt="Kittenbot's newbit Arcade shield" href="https://www.kittenbot.cc/products/newbit-arcade-shield">
+<img src="../assets/newbit-shield.png">
+</a>
 </td><td>
-
-[![ELECFREAK's micro:bit Retro Arcade shield](../assets/elecfreaks-shield.png)](https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade)
-
+<a alt="ELECFREAK's micro:bit Retro Arcade shield" href="https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade">
+<img src="../assets/elecfreaks-shield.png">
+</a>
 </td><td>
-
-[![ICShopping's Game:bit](../assets/gamebit-shield.png)](https://www.icshop.com.tw/products/368112100118)
-
+<a alt="ICShopping's Game:bit" href="https://www.icshop.com.tw/products/368112100118">
+<img src="../assets/gamebit-shield.png">
+</a>
 </td></tr>
 <tr valign="top">
 <td>
 
-Small screen. No battery or battery pack included. 3.7V JST power jack on back. One [Jacdac](https://aka.ms/jacdac) port. 
+Small screen. No battery or battery pack included. 3.7V JST power jack on back. One <a href="https://aka.ms/jacdac">Jacdac</a> port. 
 
 </td>
 
 <td>
 
-Assembly required. Small screen. AAA Battery pack on back. One [Jacdac](https://aka.ms/jacdac) port. 
+Assembly required. Small screen. AAA Battery pack on back. One <a href="https://aka.ms/jacdac">Jacdac</a> port. 
 
 </td>
 <td>
 
-No assembly required. Large screen and 3d-printed enclosure with LiPo battery inside. Two [Jacdac](https://aka.ms/jacdac) ports. Email at [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site only allows ordering/delivery in Taiwan). 
+No assembly required. Large screen and 3d-printed enclosure with LiPo battery inside. Two <a href="https://aka.ms/jacdac">Jacdac</a> ports.  Email at <a ref="mailto:oa@icshop.com.tw">mailto:oa@icshop.com.tw</a> to get a quote (the web site only allows ordering/delivery in Taiwan). 
 
 
 </td>
