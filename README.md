@@ -22,23 +22,45 @@ There are three Arcade shields available on the market today:
 <td width="33%" >
 
 [ICShopping's Game:bit](https://www.icshop.com.tw/products/368112100118)
-Email them [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site only allows ordering/delivery in Taiwan). 
 
 </td></tr>
 <tr>
 <td>
 
-![Kittenbot's newbit Arcade shield](./assets/newbit-shield.png)
+[![Kittenbot's newbit Arcade shield](./assets/newbit-shield.png)](https://www.kittenbot.cc/products/newbit-arcade-shield)
 
 </td><td>
 
-![ELECFREAK's micro:bit Retro Arcade shield](./assets/elecfreaks-shield.png)
+[![ELECFREAK's micro:bit Retro Arcade shield](./assets/elecfreaks-shield.png)](https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade)
 
 </td><td>
 
-![ICShopping's Game:bit](./assets/gamebit-shield.png)
+[![ICShopping's Game:bit](./assets/gamebit-shield.png)](https://www.icshop.com.tw/products/368112100118)
 
-</td></tr></table>
+</td></tr>
+<tr>
+<td>
+
+Small screen. No battery or battery pack included. 3.7V JST power jack on back. Jacdac supported.
+
+</td>
+
+<td>
+
+Assembly required. Small screen. Battery pack on back. 
+
+</td>
+<td>
+
+No assembly required. Large screen and 3d-printed enclosure with lipo battery inside. 
+
+Email at [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site only allows ordering/delivery in Taiwan). 
+
+</td>
+</tr>
+
+
+</table>
 
 ## Getting started
 
