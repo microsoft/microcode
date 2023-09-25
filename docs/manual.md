@@ -23,14 +23,12 @@ Regardless of whether you are using the Arcade shield or web app, you first need
 
 ## Arcade shields {#arcade-shield}
 
-Three Arcade shields for the micro:bit V2 are available on the market today:
+Three Arcade shields for the micro:bit V2 are available on the market today, as shown below. After downloading the MicroCode hex file to your micro:bit V2, whenever you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run (assuming the micro:bit is still powered, of course).
 
-- [Kittenbot's newbit Arcade shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
+- [Kittenbot's newbit Arcade shield](https://www.kittenbot.cc/products/newbit-arcade-shield) ![Kittenbot's newbit Arcade shield](./assets/newbit-shield.png)
 - [ELECFREAK's micro:bit Retro Arcade shield](https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade
-)
-- [ICShopping's Game:bit](https://www.icshop.com.tw/products/368112100118). Email them [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site is only allows ordering/delivery in Taiwan).
-
-After downloading the MicroCode hex file to your micro:bit V2, whenever you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run (assuming the micro:bit is still powered, of course).
+) ![ELECFREAK's micro:bit Retro Arcade shield](./assets/elecfreaks-shield.png)
+- [ICShopping's Game:bit](https://www.icshop.com.tw/products/368112100118) Email them [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site only allows ordering/delivery in Taiwan). ![ICShopping's Game:bit](./assets/gamebit-shield.png)
 
 ## [Web editor](https://aka.ms/m9) {#web}
 
