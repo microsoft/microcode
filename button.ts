@@ -158,9 +158,12 @@ namespace microcode {
             return this.iconId
         }
 
-        public setIcon(iconId: string) {
+        public setIcon(iconId: string, img?: Image) {
             this.iconId = iconId
-            this.buildSprite()
+            if (img)
+                this.icon.setImage(img)
+            else
+                this.buildSprite()
         }
 
         public getImage() {
