@@ -6,7 +6,7 @@ Microsoft MicroCode is an icon-based programming language and editor for young l
 
 ## Arcade shields for micro:bit V2
 
-There are three Arcade shields available on the market today:
+There are three Arcade shields available on the market today, as shown below.
 
 <table>
 <tr valign="top">
@@ -52,7 +52,7 @@ Assembly required. Small screen. AAA Battery pack on back. One [Jacdac](https://
 </td>
 <td>
 
-No assembly required. Large screen and 3d-printed enclosure with LiPo battery inside. Two [Jacdac](https://aka.ms/jacdac) port. Email at [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site only allows ordering/delivery in Taiwan). 
+No assembly required. Large screen and 3d-printed enclosure with LiPo battery inside. Two [Jacdac](https://aka.ms/jacdac) ports. Email at [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site only allows ordering/delivery in Taiwan). 
 
 
 </td>
