@@ -9,19 +9,19 @@ Microsoft MicroCode is an icon-based programming language and editor for young l
 There are three Arcade shields available on the market today:
 
 <table>
-<tr>
+<tr valign="top">
 <td width="33%" >
 
 [Kittenbot's newbit Arcade shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
 
 </td><td width="33%" >
 
-[ELECFREAK's micro:bit Retro Arcade shield](https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade)
+[ELECFREAK's micro:bit Arcade shield](https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade)
 
 </td>
 <td width="33%" >
 
-[ICShopping's Game:bit](https://www.icshop.com.tw/products/368112100118)
+[ICShopping's Game:bit Arcade shield](https://www.icshop.com.tw/products/368112100118)
 
 </td></tr>
 <tr>
@@ -38,23 +38,22 @@ There are three Arcade shields available on the market today:
 [![ICShopping's Game:bit](./assets/gamebit-shield.png)](https://www.icshop.com.tw/products/368112100118)
 
 </td></tr>
-<tr>
+<tr valign="top">
 <td>
 
-Small screen. No battery or battery pack included. 3.7V JST power jack on back. Jacdac supported.
+Small screen. No battery or battery pack included. 3.7V JST power jack on back. One [Jacdac](https://aka.ms/jacdac) port. 
 
 </td>
 
 <td>
 
-Assembly required. Small screen. Battery pack on back. 
+Assembly required. Small screen. AAA Battery pack on back. One [Jacdac](https://aka.ms/jacdac) port. 
 
 </td>
 <td>
 
-No assembly required. Large screen and 3d-printed enclosure with lipo battery inside. 
+No assembly required. Large screen and 3d-printed enclosure with LiPo battery inside. Two [Jacdac](https://aka.ms/jacdac) port. Email at [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site only allows ordering/delivery in Taiwan). 
 
-Email at [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site only allows ordering/delivery in Taiwan). 
 
 </td>
 </tr>
