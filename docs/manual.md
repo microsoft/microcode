@@ -25,7 +25,6 @@ Regardless of whether you are using the Arcade shield or web app, you first need
 
 Three Arcade shields for the micro:bit V2 are available on the market today, as shown below. After downloading the MicroCode hex file to your micro:bit V2, whenever you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run (assuming the micro:bit is still powered, of course).
 
-
 <table>
 <tr valign="top">
 <td width="33%" >
@@ -45,15 +44,15 @@ Three Arcade shields for the micro:bit V2 are available on the market today, as 
 <tr>
 <td>
 
-[![Kittenbot's newbit Arcade shield](./assets/newbit-shield.png)](https://www.kittenbot.cc/products/newbit-arcade-shield)
+[![Kittenbot's newbit Arcade shield](../assets/newbit-shield.png)](https://www.kittenbot.cc/products/newbit-arcade-shield)
 
 </td><td>
 
-[![ELECFREAK's micro:bit Retro Arcade shield](./assets/elecfreaks-shield.png)](https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade)
+[![ELECFREAK's micro:bit Retro Arcade shield](../assets/elecfreaks-shield.png)](https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade)
 
 </td><td>
 
-[![ICShopping's Game:bit](./assets/gamebit-shield.png)](https://www.icshop.com.tw/products/368112100118)
+[![ICShopping's Game:bit](../assets/gamebit-shield.png)](https://www.icshop.com.tw/products/368112100118)
 
 </td></tr>
 <tr valign="top">
