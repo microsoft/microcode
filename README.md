@@ -8,10 +8,37 @@ Microsoft MicroCode is an icon-based programming language and editor for young l
 
 There are three Arcade shields available on the market today:
 
-- [Kittenbot's newbit Arcade shield](https://www.kittenbot.cc/products/newbit-arcade-shield) ![Kittenbot's newbit Arcade shield](./assets/newbit-shield.png)
-- [ELECFREAK's micro:bit Retro Arcade shield](https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade
-) ![ELECFREAK's micro:bit Retro Arcade shield](./assets/elecfreaks-shield.png)
-- [ICShopping's Game:bit](https://www.icshop.com.tw/products/368112100118) Email them [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site only allows ordering/delivery in Taiwan). ![ICShopping's Game:bit](./assets/gamebit-shield.png)
+<table>
+<tr>
+<td width="33%" >
+
+[Kittenbot's newbit Arcade shield](https://www.kittenbot.cc/products/newbit-arcade-shield)
+
+</td><td width="33%" >
+
+[ELECFREAK's micro:bit Retro Arcade shield](https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade)
+
+</td>
+<td width="33%" >
+
+[ICShopping's Game:bit](https://www.icshop.com.tw/products/368112100118)
+Email them [oa@icshop.com.tw](mailto:oa@icshop.com.tw) to get a quote (the web site only allows ordering/delivery in Taiwan). 
+
+</td></tr>
+<tr>
+<td>
+
+![Kittenbot's newbit Arcade shield](./assets/newbit-shield.png)
+
+</td><td>
+
+![ELECFREAK's micro:bit Retro Arcade shield](./assets/elecfreaks-shield.png)
+
+</td><td>
+
+![ICShopping's Game:bit](./assets/gamebit-shield.png)
+
+</td></tr></table>
 
 ## Getting started
 
