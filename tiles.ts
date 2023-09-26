@@ -249,28 +249,23 @@ namespace microcode {
 
         // the following three tiles are treated similarly, as
         // the sensor values are mapped into [1,2,3,4,5]
+        const only5 = [
+            TID_FILTER_COIN_1,
+            TID_FILTER_COIN_2,
+            TID_FILTER_COIN_3,
+            TID_FILTER_COIN_4,
+            TID_FILTER_COIN_5,
+        ]
         const slider = makeSensor(TID_SENSOR_SLIDER, "value_in", 500)
         slider.serviceClassName = "potentiometer"
         slider.jdExternalClass = 0x1f274746
         slider.constraints.allow.categories = []
-        slider.constraints.allow.tiles = [
-            TID_FILTER_COIN_1,
-            TID_FILTER_COIN_2,
-            TID_FILTER_COIN_3,
-            TID_FILTER_COIN_4,
-            TID_FILTER_COIN_5,
-        ]
+        slider.constraints.allow.tiles = only5
         slider.constraints.handling = { terminal: true }
 
         const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in", 500)
         wall.constraints.allow.categories = []
-        wall.constraints.allow.tiles = [
-            TID_FILTER_COIN_1,
-            TID_FILTER_COIN_2,
-            TID_FILTER_COIN_3,
-            TID_FILTER_COIN_4,
-            TID_FILTER_COIN_5,
-        ]
+        wall.constraints.allow.tiles = only5
         wall.constraints.handling = { terminal: true }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
