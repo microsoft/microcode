@@ -62,7 +62,7 @@ namespace microcode {
         // P is a shortcut external function
         // P2 is service arg size
         Sequence,
-        Car
+        SequenceWithNumFmt // for sending stuff to a separate device via radio
     }
 
     export class TileDefn {

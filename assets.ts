@@ -71,7 +71,7 @@ namespace microcode {
 
             this.reg = {}
             extraSamples(this.reg)
-            carImages(this.reg)
+            if (car_tiles) carImages(this.reg)
             jacdacImages(this.reg)
             // editor icons
             this.reg["delete"] = icondb.btn_delete

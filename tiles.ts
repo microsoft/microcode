@@ -263,10 +263,12 @@ namespace microcode {
         slider.constraints.allow.tiles = only5
         slider.constraints.handling = { terminal: true }
 
-        const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in", 500)
-        wall.constraints.allow.categories = []
-        wall.constraints.allow.tiles = only5
-        wall.constraints.handling = { terminal: true }
+        if (car_tiles) {
+            const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in", 500)
+            wall.constraints.allow.categories = []
+            wall.constraints.allow.tiles = only5
+            wall.constraints.handling = { terminal: true }
+        }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
         magnet.serviceClassName = "magneticFieldLevel"
@@ -432,9 +434,15 @@ namespace microcode {
         const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
         swtch.priority = 110
 
-        const car = addActuator(TID_ACTUATOR_CAR, ["car"])
-        car.priority = 200
-
+        if (car_tiles) {
+            const car = addActuator(TID_ACTUATOR_CAR, ["car"])
+            car.priority = 200
+            car.jdKind = JdKind.SequenceWithNumFmt
+            car.serviceClassName = "radio"
+            car.serviceCommand = 0x81 
+            car.jdParam = jacs.NumFmt.F64
+        }
+        
         function addAssign(tid: string, id: number) {
             const theVar = addActuator(tid, ["value_out", "constant"])
             theVar.jdParam = id
@@ -486,7 +494,7 @@ namespace microcode {
                     kind == "F"
                         ? new FilterDefn(tid, name, 10) 
                         : new ModifierDefn(tid, name, 10)
-                tile.jdKind = kind == "CAR" ? JdKind.Car : JdKind.Literal
+                tile.jdKind = kind == "CAR" ? JdKind.NumFmt : JdKind.Literal
                 tile.jdParam = v
                 if (kind == "F") tilesDB.filters[tid] = tile as FilterDefn
                 else tilesDB.modifiers[tid] = tile
@@ -506,7 +514,16 @@ namespace microcode {
             m.constraints.handling.terminal = true
             m.jdKind = JdKind.Page
         })
-        make_vals(one_to_five, "car", "CAR", 1)
+        if (car_tiles) {
+            const robot_commands =
+                [   0xfffff001, // forward
+                    0xfffff002, // reverse
+                    0xfffff003, // left
+                    0xfffff004, // right
+                    0xfffff005  // stop
+                ]
+            make_vals(robot_commands, "car", "CAR", 1)
+        }
 
         function addRGB(id: number, color: number) {
             const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
