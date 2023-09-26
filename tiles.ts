@@ -437,10 +437,9 @@ namespace microcode {
         if (car_tiles) {
             const car = addActuator(TID_ACTUATOR_CAR, ["car"])
             car.priority = 200
-            car.jdKind = JdKind.SequenceWithNumFmt
+            car.jdKind = JdKind.Sequence
             car.serviceClassName = "radio"
             car.serviceCommand = 0x81 
-            car.jdParam = jacs.NumFmt.F64
         }
         
         function addAssign(tid: string, id: number) {
@@ -495,7 +494,8 @@ namespace microcode {
                         ? new FilterDefn(tid, name, 10) 
                         : new ModifierDefn(tid, name, 10)
                 tile.jdKind = kind == "CAR" ? JdKind.NumFmt : JdKind.Literal
-                tile.jdParam = v
+                tile.jdParam = kind == "CAR" ? jacs.NumFmt.F64 : v
+                tile.jdParam2 = kind == "CAR" ? v : 0;
                 if (kind == "F") tilesDB.filters[tid] = tile as FilterDefn
                 else tilesDB.modifiers[tid] = tile
                 tile.constraints = {

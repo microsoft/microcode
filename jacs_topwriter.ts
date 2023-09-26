@@ -595,12 +595,12 @@ namespace jacs {
         private emitSequence(rule: microcode.RuleDefn, delay: number) {
             const actuator = rule.actuators[0]
             const shortCutFn = actuator.jdParam
-            const bufSize = actuator.jdParam2 || 5
 
             let params = this.baseModifiers(rule).filter(
                 m =>
                     (m.jdKind == microcode.JdKind.ExtLibFn && !shortCutFn) ||
-                    m.jdKind == microcode.JdKind.ServiceCommandArg
+                    m.jdKind == microcode.JdKind.ServiceCommandArg ||
+                    m.jdKind === microcode.JdKind.NumFmt
             )
             if (params.length == 0) params = [rule.actuators[0].defaultModifier]
 
@@ -639,7 +639,14 @@ namespace jacs {
                         if (p.jdParam2 !== undefined)
                             args.push(literal(p.jdParam2))
                         this.callLinked(p.jdParam, args)
-                    } else {
+                    } else if (p.jdKind == microcode.JdKind.NumFmt && p.jdParam == NumFmt.F64) {
+                        // TODO: generalize this to work with other formats
+                        wr.emitExpr(Op.EXPRx_LITERAL_F64, [literal(p.jdParam2)])
+                        const fmt: NumFmt = p.jdParam
+                        const sz = bitSize(fmt) >> 3
+                        wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
+                        this.emitSendCmd(role, actuator.serviceCommand)
+                    }  else {
                         throw "oops"
                     }
                 }
