@@ -19,7 +19,7 @@ namespace microcode.robots {
          * Report ultrasonic distance in cm
          *     distance: f32
          */
-        UltrasonicDistance = 0x10
+        UltrasonicDistance = 0x10,
     }
 
     /**
@@ -27,10 +27,16 @@ namespace microcode.robots {
      */
     export const enum RobotCompactCommand {
         MotorRunForward = 0xfffff001,
-        MotorTurnBackward = 0xfffff002,
+        MotorRunBackward = 0xfffff002,
         MotorTurnLeft = 0xfffff003,
         MotorTurnRight = 0xfffff004,
         MotorStop = 0xfffff005,
+
+        Obstacle1 = 0xfffff11,
+        Obstacle2 = 0xfffff12,
+        Obstacle3 = 0xfffff13,
+        Obstacle4 = 0xfffff14,
+        Obstacle5 = 0xfffff15,
     }
 
     export interface RobotMessage {
@@ -50,7 +56,7 @@ namespace microcode.robots {
 
     /**
      * Encodes the command and payload into a buffer that can be sent via radio
-     * 
+     *
      *   0 magic, u16
      *   2 message id, u8
      *   3 cmd, u8
@@ -84,7 +90,7 @@ namespace microcode.robots {
         return <RobotMessage>{
             messageId: messageId,
             cmd: cmd,
-            payload: payload
+            payload: payload,
         }
     }
 
@@ -98,19 +104,27 @@ namespace microcode.robots {
         let payload: Buffer
         switch (msg) {
             case RobotCompactCommand.MotorRunForward:
-            case RobotCompactCommand.MotorTurnBackward:
+            case RobotCompactCommand.MotorRunBackward:
             case RobotCompactCommand.MotorStop: {
                 cmd = RobotCommand.MotorRun
                 payload = Buffer.create(2)
                 if (msg !== RobotCompactCommand.MotorStop)
-                    payload.setNumber(NumberFormat.Int16LE, 0, msg === RobotCompactCommand.MotorRunForward ? 100 : -100)
+                    payload.setNumber(
+                        NumberFormat.Int16LE,
+                        0,
+                        msg === RobotCompactCommand.MotorRunForward ? 100 : -100
+                    )
                 break
             }
             case RobotCompactCommand.MotorTurnLeft:
             case RobotCompactCommand.MotorTurnRight: {
                 cmd = RobotCommand.MotorTurn
                 payload = Buffer.create(2)
-                payload.setNumber(NumberFormat.Int16LE, 0, msg === RobotCompactCommand.MotorTurnRight ? 100 : -100)
+                payload.setNumber(
+                    NumberFormat.Int16LE,
+                    0,
+                    msg === RobotCompactCommand.MotorTurnRight ? 100 : -100
+                )
                 break
             }
             default:
