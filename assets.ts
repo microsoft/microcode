@@ -25,6 +25,7 @@ namespace microcode {
         reg[TID_ACTUATOR_CAR_TURN_LEFT] = icondb.car_left_turn
         reg[TID_ACTUATOR_CAR_TURN_RIGHT] = icondb.car_right_turn
         reg[TID_ACTUATOR_CAR_STOP] = icondb.car_stop
+        reg[TID_SENSOR_CAR_WALL] = icondb.car_wall
     }
 
     // TODO: factor out all the jacdac stuff into separate file/class
@@ -3030,7 +3031,24 @@ export const car_stop = img`
     . . . . . . . . . . . . . . . .
 `
 
-
+export const car_wall = img`
+    . . . . . . . . . . . . . . . .
+    b b b b b b b b b b b b b b b b
+    2 2 2 2 b 2 2 2 2 b 2 2 2 2 b 2
+    2 2 2 2 b 2 2 2 2 b 2 2 2 2 b 2
+    b b b b b b b b b b b b b b b b
+    2 2 b 2 2 2 2 b 2 2 2 2 b 2 2 2
+    2 2 b 2 2 2 2 b 2 2 2 2 b 2 2 2
+    b b b b b b b b b b b b b b b b
+    2 2 2 2 b 2 2 2 2 b 2 2 2 2 b 2
+    2 2 2 2 b 2 2 2 2 b 2 2 2 2 b 2
+    b b b b b b b b b b b b b b b b
+    2 2 b 2 2 2 2 b 2 2 2 2 b 2 2 2
+    2 2 b 2 2 2 2 b 2 2 2 2 b 2 2 2
+    b b b b b b b b b b b b b b b b
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+`
 
     /* maybe use these later
     export const rc_high = img`

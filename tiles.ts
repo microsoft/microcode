@@ -30,6 +30,7 @@ namespace microcode {
     export const TID_SENSOR_MAGNET = "S10"
     export const TID_SENSOR_SLIDER = "S11"
     export const TID_SENSOR_ROTARY = "S12"
+    export const TID_SENSOR_CAR_WALL = "S13"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -260,6 +261,17 @@ namespace microcode {
             TID_FILTER_COIN_5,
         ]
         slider.constraints.handling = { terminal: true }
+
+        const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in", 500)
+        wall.constraints.allow.categories = []
+        wall.constraints.allow.tiles = [
+            TID_FILTER_COIN_1,
+            TID_FILTER_COIN_2,
+            TID_FILTER_COIN_3,
+            TID_FILTER_COIN_4,
+            TID_FILTER_COIN_5,
+        ]
+        wall.constraints.handling = { terminal: true }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
         magnet.serviceClassName = "magneticFieldLevel"
