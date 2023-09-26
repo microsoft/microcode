@@ -32,6 +32,7 @@ namespace microcode.robots {
         MotorTurnRight = 0xfffff004,
         MotorStop = 0xfffff005,
 
+        Obstacle0 = 0xfffff10,
         Obstacle1 = 0xfffff11,
         Obstacle2 = 0xfffff12,
         Obstacle3 = 0xfffff13,
