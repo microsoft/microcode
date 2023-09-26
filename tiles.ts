@@ -515,14 +515,14 @@ namespace microcode {
             m.jdKind = JdKind.Page
         })
         if (car_tiles) {
-            const robot_commands =
+            const car_commands =
                 [   0xfffff001, // forward
                     0xfffff002, // reverse
                     0xfffff003, // left
                     0xfffff004, // right
                     0xfffff005  // stop
                 ]
-            make_vals(robot_commands, "car", "CAR", 1)
+            make_vals(car_commands, "car", "CAR", 1)
         }
 
         function addRGB(id: number, color: number) {

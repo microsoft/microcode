@@ -1106,6 +1106,8 @@ namespace jacs {
                                     wr,
                                     wr.emitBufLoad(NumFmt.F64, 12)
                                 )
+                                // TODO: ignore values in tiles.ts: car_commands
+                                // TODO: special case on wall collision
                                 filterValueIn(() => radioVar.read(wr))
                             }
                         )
