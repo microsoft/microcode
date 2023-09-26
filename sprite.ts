@@ -41,7 +41,7 @@ namespace microcode {
             super.destroy()
         }
 
-        protected setImage(img: Image) {
+        public setImage(img: Image) {
             this.image = img
         }
 

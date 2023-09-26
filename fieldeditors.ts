@@ -20,6 +20,9 @@ namespace microcode {
             picker.addGroup({ btns })
         }
 
+        const red = icons.get("solid_red")
+        const black = icons.get("solid_black")
+
         picker.show(
             {
                 title: accessibility.ariaToTooltip(TID_MODIFIER_ICON_EDITOR),
@@ -36,9 +39,10 @@ namespace microcode {
                         }
                     }
                     image5x5.setPixel(col, row, on ? 0 : 1)
-                    button.setIcon(getColor(col, row))
-                    picker.draw()
+                    button.setIcon(getColor(col, row), on ? black : red)
+                    button.draw()
                     picker.navigator.updateAria()
+                    //control.heapSnapshot()
                 },
                 onHide,
                 onDelete,

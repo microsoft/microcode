@@ -1,19 +1,18 @@
-microcode.robotDriver = new microcode.RobotDriver(new microcode.KeyStudioMiniSmartRobot())
 
-// configure group using button A/B, cycle through groups 1-99
-input.onButtonPressed(Button.A, () => {
-    microcode.previousGroup()
-})
-input.onButtonPressed(Button.B, () => {
-    microcode.nextGroup()
-})
+//const robotDriver = microcode.elecfreaksCuteBot
+const robotDriver = microcode.dfRobotMicroMaqueen
 
-// show status
 basic.forever(() => {
-    microcode.robotDriver.checkAlive()
-    microcode.showRadioStatus()
-    basic.pause(1000)
+    const dist = robotDriver.ultrasonicDistance()
+    if (dist > 10)
+        robotDriver.motorRun(100)
+    else {
+        robotDriver.motorStop()
+        robotDriver.motorRun(-50)
+        pause(400)
+        robotDriver.motorStop()
+        robotDriver.motorTurn(50)
+        pause(400)
+        robotDriver.motorStop()
+    }
 })
-
-// init
-microcode.robotDriver.stop()

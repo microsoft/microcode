@@ -1,6 +1,6 @@
-namespace microcode {
-    const MAX_GROUPS = 100
-    let group = 1
+namespace microcode.robots {
+    const MAX_GROUPS = 21
+    let group = control.deviceSerialNumber() % 9 + 1
     radio.setGroup(group)
 
     export function previousGroup() {
@@ -16,7 +16,6 @@ namespace microcode {
             newGroup += MAX_GROUPS
         group = newGroup % MAX_GROUPS
         radio.setGroup(group)
-        showRadioStatus()
     }
 
     export function showRadioStatus() {
@@ -33,10 +32,4 @@ namespace microcode {
         const buf = encodeRobotMessage({ messageId: nextMessageId, cmd, payload })
         radio.sendBuffer(buf)
     }
-
-    // handle radio package messages
-    radio.onReceivedBuffer(buf => {
-        const msg = decodeRobotCommand(buf)
-        robotDriver.dispatch(msg)
-    })
 }

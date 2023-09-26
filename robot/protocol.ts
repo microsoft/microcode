@@ -1,10 +1,10 @@
-namespace microcode {
+namespace microcode.robots {
     const MESSAGE_MAGIC = 0xf498
 
     /**
      * List of commands supported by the micro:bit robot program
      */
-    export enum RobotCommand {
+    export const enum RobotCommand {
         /**
          * Runs the robot forward and backward.
          *     speed: i16 %
@@ -16,10 +16,21 @@ namespace microcode {
          */
         MotorTurn = 0x02,
         /**
-         * Sets the robot LED to a 24bit RGB color
-         *     rgb: u24
+         * Report ultrasonic distance in cm
+         *     distance: f32
          */
-        HeadlightsSetColor = 0x03,
+        UltrasonicDistance = 0x10
+    }
+
+    /**
+     * Compact commands through radio numbers
+     */
+    export const enum RobotCompactCommand {
+        MotorRunForward = 0xfffff001,
+        MotorTurnBackward = 0xfffff002,
+        MotorTurnLeft = 0xfffff003,
+        MotorTurnRight = 0xfffff004,
+        MotorStop = 0xfffff005,
     }
 
     export interface RobotMessage {
@@ -66,7 +77,7 @@ namespace microcode {
 
         const magic = msg.getNumber(NumberFormat.UInt16LE, 0)
         if (magic !== MESSAGE_MAGIC) return undefined
-  
+
         const messageId = msg.getNumber(NumberFormat.UInt8LE, 2)
         const cmd = msg.getNumber(NumberFormat.UInt8LE, 3)
         const payload = msg.slice(4)
@@ -75,5 +86,37 @@ namespace microcode {
             cmd: cmd,
             payload: payload
         }
+    }
+
+    /**
+     * Decode compact radio message
+     */
+    export function decodeRobotCompactCommand(msg: number): RobotMessage {
+        msg = msg >> 0
+        const messageId = control.micros()
+        let cmd: RobotCommand
+        let payload: Buffer
+        switch (msg) {
+            case RobotCompactCommand.MotorRunForward:
+            case RobotCompactCommand.MotorTurnBackward:
+            case RobotCompactCommand.MotorStop: {
+                cmd = RobotCommand.MotorRun
+                payload = Buffer.create(2)
+                if (msg !== RobotCompactCommand.MotorStop)
+                    payload.setNumber(NumberFormat.Int16LE, 0, msg === RobotCompactCommand.MotorRunForward ? 100 : -100)
+                break
+            }
+            case RobotCompactCommand.MotorTurnLeft:
+            case RobotCompactCommand.MotorTurnRight: {
+                cmd = RobotCommand.MotorTurn
+                payload = Buffer.create(2)
+                payload.setNumber(NumberFormat.Int16LE, 0, msg === RobotCompactCommand.MotorTurnRight ? 100 : -100)
+                break
+            }
+            default:
+                return undefined
+        }
+
+        return { messageId, cmd, payload }
     }
 }
