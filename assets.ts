@@ -20,11 +20,11 @@ namespace microcode {
 
     function carImages(reg: name2Image) {
         reg[TID_ACTUATOR_CAR] = icondb.car
-        reg[TID_ACTUATOR_CAR_FORWARD] = icondb.car_forward
-        reg[TID_ACTUATOR_CAR_REVERSE] = icondb.car_reverse
-        reg[TID_ACTUATOR_CAR_TURN_LEFT] = icondb.car_left_turn
-        reg[TID_ACTUATOR_CAR_TURN_RIGHT] = icondb.car_right_turn
-        reg[TID_ACTUATOR_CAR_STOP] = icondb.car_stop
+        reg[TID_MODIFIER_CAR_FORWARD] = icondb.car_forward
+        reg[TID_MODIFIER_CAR_REVERSE] = icondb.car_reverse
+        reg[TID_MODIFIER_CAR_TURN_LEFT] = icondb.car_left_turn
+        reg[TID_MODIFIER_CAR_TURN_RIGHT] = icondb.car_right_turn
+        reg[TID_MODIFIER_CAR_STOP] = icondb.car_stop
         reg[TID_SENSOR_CAR_WALL] = icondb.car_wall
     }
 

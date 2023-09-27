@@ -129,11 +129,11 @@ namespace microcode {
     export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
 
     export const TID_ACTUATOR_CAR = "CAR"
-    export const TID_ACTUATOR_CAR_FORWARD = "CAR1"
-    export const TID_ACTUATOR_CAR_REVERSE = "CAR2"
-    export const TID_ACTUATOR_CAR_TURN_LEFT = "CAR3"
-    export const TID_ACTUATOR_CAR_TURN_RIGHT = "CAR4"
-    export const TID_ACTUATOR_CAR_STOP = "CAR5"
+    export const TID_MODIFIER_CAR_FORWARD = "CAR1"
+    export const TID_MODIFIER_CAR_REVERSE = "CAR2"
+    export const TID_MODIFIER_CAR_TURN_LEFT = "CAR3"
+    export const TID_MODIFIER_CAR_TURN_RIGHT = "CAR4"
+    export const TID_MODIFIER_CAR_STOP = "CAR5"
 
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
@@ -434,14 +434,6 @@ namespace microcode {
         const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
         swtch.priority = 110
 
-        if (car_tiles) {
-            const car = addActuator(TID_ACTUATOR_CAR, ["car"])
-            car.priority = 200
-            car.jdKind = JdKind.Sequence
-            car.serviceClassName = "radio"
-            car.serviceCommand = 0x81 
-        }
-        
         function addAssign(tid: string, id: number) {
             const theVar = addActuator(tid, ["value_out", "constant"])
             theVar.jdParam = id
@@ -514,6 +506,7 @@ namespace microcode {
             m.constraints.handling.terminal = true
             m.jdKind = JdKind.Page
         })
+
         if (car_tiles) {
             const car_commands =
                 [   0xfffff001, // forward
@@ -523,6 +516,13 @@ namespace microcode {
                     0xfffff005  // stop
                 ]
             make_vals(car_commands, "car", "CAR", 1)
+            
+            const car = addActuator(TID_ACTUATOR_CAR, ["car"])
+            car.priority = 200
+            car.jdKind = JdKind.Sequence
+            car.serviceClassName = "radio"
+            car.serviceCommand = 0x81 
+            car.defaultModifier = tilesDB.modifiers[TID_MODIFIER_CAR_STOP]
         }
 
         function addRGB(id: number, color: number) {
