@@ -1,0 +1,10 @@
+- code generation for car tiles
+- keep MicroCode radio numbers to small range (0-99)
+- range for car control (1000-)
+- extensions [jacdac, car]
+  - extension interface
+      - also need some interface for tile description
+  - add metadata for a program (what extensions are needed)
+  - factor out jacdac modules and car into extensions
+    - assets.ts
+    - tiles.ts
