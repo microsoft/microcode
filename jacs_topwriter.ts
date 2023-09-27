@@ -641,11 +641,11 @@ namespace jacs {
                         this.callLinked(p.jdParam, args)
                     } else if (p.jdKind == microcode.JdKind.NumFmt && p.jdParam == NumFmt.F64) {
                         // TODO: generalize this to work with other formats
-                        wr.emitBufStore(literal(p.jdParam2, Op.EXPRx_LITERAL_F64),
-                            NumFmt.F64, 0)
-                        const fmt: NumFmt = p.jdParam
+                        const fmt: NumFmt = NumFmt.F64
                         const sz = bitSize(fmt) >> 3
                         wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
+                        wr.emitBufStore(literal(p.jdParam2, Op.EXPRx_LITERAL_F64),
+                            NumFmt.F64, 0)
                         this.emitSendCmd(role, actuator.serviceCommand)
                     }  else {
                         throw "oops"
