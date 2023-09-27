@@ -153,15 +153,15 @@ namespace microcode {
             return undefined
         }
     }
+}
 
-    // this is needed for compat with most recent version of arcade
-    namespace game {    
-        export function addScenePushHandler(handler: (oldScene: any) => void) {
+// this is needed for compat with most recent version of arcade
+namespace game {    
+    export function addScenePushHandler(handler: (oldScene: any) => void) {
 
-        }
+    }
 
-        export function addScenePopHandler(handler: (oldScene: any) => void) {
+    export function addScenePopHandler(handler: (oldScene: any) => void) {
 
-        }
     }
 }
