@@ -99,7 +99,6 @@ namespace microcode.robots {
      * Decode compact radio message
      */
     export function decodeRobotCompactCommand(msg: number): RobotMessage {
-        msg = msg >> 0
         const messageId = control.micros()
         let cmd: RobotCommand
         let payload: Buffer
