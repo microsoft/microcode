@@ -33,10 +33,15 @@ jobs:
             - name: build hardware N3
               run: |
                   makecode --hw N3
+            - name: build robot
+              run: |
+                  cd robot
+                  makecode
             - name: copy files
               run: |
                   cp ./built/binary.js ./assets/js/binary.js
                   cp ./built/n3/binary.hex ./assets/firmware.hex
+                  cp ./robot/built/binary.hex ./assets/robot.hex
             - name: build localized hex files
               run: |
                   yarn install --frozen-lockfile

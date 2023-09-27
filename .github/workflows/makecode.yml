@@ -35,3 +35,7 @@ jobs:
             - name: build hardware N3
               run: |
                   makecode --hw N3
+            - name: build robot
+              run: |
+                  cd robot
+                  makecode

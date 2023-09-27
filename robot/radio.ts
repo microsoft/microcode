@@ -1,6 +1,6 @@
 namespace microcode.robots {
-    const MAX_GROUPS = 21
-    let group = control.deviceSerialNumber() % 9 + 1
+    const MAX_GROUPS = 10
+    let group = (control.deviceSerialNumber() % 9) + 1
     radio.setGroup(group)
 
     export function previousGroup() {
@@ -12,24 +12,28 @@ namespace microcode.robots {
     }
 
     export function setGroup(newGroup: number) {
-        if (newGroup < 0)
-            newGroup += MAX_GROUPS
+        if (newGroup < 0) newGroup += MAX_GROUPS
         group = newGroup % MAX_GROUPS
         radio.setGroup(group)
     }
 
     export function showRadioStatus() {
         led.stopAnimation()
-        if (group < 10)
-            basic.showNumber(group, 10)
-        else
-            whaleysans.showNumber(group)
+        basic.showNumber(group, 10)
     }
 
     let nextMessageId = 0
     export function sendCommand(cmd: RobotCommand, payload: Buffer) {
         nextMessageId = (nextMessageId + 1) % 0xff
-        const buf = encodeRobotMessage({ messageId: nextMessageId, cmd, payload })
+        const buf = encodeRobotMessage({
+            messageId: nextMessageId,
+            cmd,
+            payload,
+        })
         radio.sendBuffer(buf)
+    }
+
+    export function sendCompactCommand(cmd: RobotCompactCommand) {
+        radio.sendNumber(cmd)
     }
 }

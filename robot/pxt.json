@@ -2,8 +2,7 @@
     "name": "microcode-robot",
     "dependencies": {
         "core": "*",
-        "radio": "*",
-        "WhaleySansFont": "github:makecode-extensions/whaleysansfont#v1.1.0"
+        "radio": "*"
     },
     "files": [
         "README.md",

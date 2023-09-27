@@ -10,11 +10,12 @@ namespace microcode {
     const MODE_SWITCH_THRESHOLD = 2
 
     enum RobotSpeedMode {
-        Run, Turn
+        Run,
+        Turn,
     }
 
     /**
-     * 
+     *
      */
     //% fixedInstances
     export class RobotDriver {
@@ -102,15 +103,18 @@ namespace microcode {
                     this.currentSpeed = 0
                     this.currentSpeedMode = this.targetSpeedMode
                 }
-            }
-            else {
+            } else {
                 const alpha = 0.8
-                this.currentSpeed = this.currentSpeed * alpha + this.targetSpeed * (1 - alpha)
+                this.currentSpeed =
+                    this.currentSpeed * alpha + this.targetSpeed * (1 - alpha)
                 if (Math.abs(this.currentSpeed - this.targetSpeed) < 10)
                     this.currentSpeed = this.targetSpeed
             }
 
-            let speed = Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD ? 0 : this.currentSpeed
+            let speed =
+                Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD
+                    ? 0
+                    : this.currentSpeed
             if (this.currentSpeedMode === RobotSpeedMode.Run) {
                 let d = speed > this.runDrift ? this.runDrift >> 1 : 0
                 if (speed > 0) {
@@ -118,8 +122,7 @@ namespace microcode {
                     if (lines) {
                         speed = Math.min(speed, this.robot.maxLineTrackingSpeed)
                         this.currentSpeed = Math.min(this.currentSpeed, speed)
-                        if (lines === RobotLineState.Left)
-                            d += speed * 0.8
+                        if (lines === RobotLineState.Left) d += speed * 0.8
                         else if (lines === RobotLineState.Right)
                             d -= speed * 0.8
                     }
@@ -129,10 +132,12 @@ namespace microcode {
                 const right = speed + d
                 this.robot.motorRun(left, right)
                 this.showMotorState(left, right)
-            }
-            else {
+            } else {
                 this.robot.motorTurn(speed)
-                this.showMotorState(speed > 0 ? speed : 0, speed <= 0 ? 0 : -speed)
+                this.showMotorState(
+                    speed > 0 ? speed : 0,
+                    speed <= 0 ? 0 : -speed
+                )
             }
         }
 
@@ -143,11 +148,16 @@ namespace microcode {
         }
 
         private showSingleMotorState(x: number, speed: number) {
-            if (Math.abs(speed) < 30) led.unplot(x, 2); else led.plot(x, 2)
-            if (speed >= 30) led.plot(x, 1); else led.unplot(x, 1)
-            if (speed >= 50) led.plot(x, 0); else led.unplot(x, 0)
-            if (speed <= -30) led.plot(x, 3); else led.unplot(x, 3)
-            if (speed <= -50) led.plot(x, 4); else led.unplot(x, 4)
+            if (Math.abs(speed) < 30) led.unplot(x, 2)
+            else led.plot(x, 2)
+            if (speed >= 30) led.plot(x, 1)
+            else led.unplot(x, 1)
+            if (speed >= 50) led.plot(x, 0)
+            else led.unplot(x, 0)
+            if (speed <= -30) led.plot(x, 3)
+            else led.unplot(x, 3)
+            if (speed <= -50) led.plot(x, 4)
+            else led.unplot(x, 4)
         }
 
         private showLineState() {
@@ -155,24 +165,31 @@ namespace microcode {
 
             const lineState = this.lineState()
             // render left/right lines
-            const left = (lineState & RobotLineState.Left) === RobotLineState.Left
-            const right = (lineState & RobotLineState.Right) === RobotLineState.Right
+            const left =
+                (lineState & RobotLineState.Left) === RobotLineState.Left
+            const right =
+                (lineState & RobotLineState.Right) === RobotLineState.Right
             for (let i = 0; i < 5; ++i) {
-                if (left) led.plot(4, i); else led.unplot(4, i)
-                if (right) led.plot(0, i); else led.unplot(0, i)
+                if (left) led.plot(4, i)
+                else led.unplot(4, i)
+                if (right) led.plot(0, i)
+                else led.unplot(0, i)
             }
         }
-
 
         private showSonar() {
             if (this.showRadio > 0) return
 
             const dist = this.ultrasonicDistance()
-            console.log({ dist })
             // render sonar
             if (dist > 0) {
                 for (let y = 0; y < 5; y++)
-                    if (dist > 0 && dist < 5 + y * 5) led.plot(2, y); else led.unplot(2, y)
+                    if (dist > 0 && dist < 5 + y * 5) led.plot(2, y)
+                    else led.unplot(2, y)
+
+                const d = Math.min(1, Math.max(5, Math.round(dist / 5)))
+                const msg = microcode.robots.RobotCompactCommand.Obstacle0 | d
+                microcode.robots.sendCompactCommand(msg)
             }
         }
 
@@ -189,7 +206,10 @@ namespace microcode {
         motorRun(speed: number) {
             this.start()
             this.keepAlive()
-            speed = speed > 0 ? Math.min(this.robot.maxRunSpeed, speed) : Math.max(-this.robot.maxRunSpeed, speed)
+            speed =
+                speed > 0
+                    ? Math.min(this.robot.maxRunSpeed, speed)
+                    : Math.max(-this.robot.maxRunSpeed, speed)
             this.setHeadlingSpeedColor(speed)
             this.targetSpeedMode = RobotSpeedMode.Run
             this.targetSpeed = speed
@@ -198,7 +218,10 @@ namespace microcode {
         motorTurn(speed: number) {
             this.start()
             this.keepAlive()
-            speed = speed > 0 ? Math.min(this.robot.maxTurnSpeed, speed) : Math.max(-this.robot.maxTurnSpeed, speed)
+            speed =
+                speed > 0
+                    ? Math.min(this.robot.maxTurnSpeed, speed)
+                    : Math.max(-this.robot.maxTurnSpeed, speed)
             this.setHeadlingSpeedColor(speed)
             this.targetSpeedMode = RobotSpeedMode.Turn
             this.targetSpeed = speed
@@ -230,7 +253,7 @@ namespace microcode {
         }
 
         checkAlive() {
-            if (!this.safe) return;
+            if (!this.safe) return
             if (control.millis() - this.lastCommandTime > ROBOT_TIMEOUT)
                 this.stop()
         }
@@ -243,7 +266,10 @@ namespace microcode {
         playMelody(melody: Melodies) {
             if (this.robot.musicVolume <= 0) return
             music.setVolume(this.robot.musicVolume)
-            music.play(music.builtInPlayableMelody(melody), music.PlaybackMode.InBackground)
+            music.play(
+                music.builtInPlayableMelody(melody),
+                music.PlaybackMode.InBackground
+            )
         }
 
         playTone(frequency: number) {
@@ -267,13 +293,21 @@ namespace microcode {
             const payload = msg.payload
             switch (cmd) {
                 case robots.RobotCommand.MotorRun: {
-                    const speed = Math.clamp(-100, 100, payload.getNumber(NumberFormat.Int16LE, 0))
+                    const speed = Math.clamp(
+                        -100,
+                        100,
+                        payload.getNumber(NumberFormat.Int16LE, 0)
+                    )
                     console.log(`motor run ${speed}`)
                     this.motorRun(speed)
                     break
                 }
                 case robots.RobotCommand.MotorTurn: {
-                    const speed = Math.clamp(-100, 100, payload.getNumber(NumberFormat.Int16LE, 0))
+                    const speed = Math.clamp(
+                        -100,
+                        100,
+                        payload.getNumber(NumberFormat.Int16LE, 0)
+                    )
                     console.log(`motor turn ${speed}`)
                     this.motorTurn(speed)
                     break
