@@ -30,6 +30,7 @@ namespace microcode {
     export const TID_SENSOR_MAGNET = "S10"
     export const TID_SENSOR_SLIDER = "S11"
     export const TID_SENSOR_ROTARY = "S12"
+    export const TID_SENSOR_CAR_WALL = "S13"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -126,6 +127,13 @@ namespace microcode {
     export const TID_MODIFIER_RGB_LED_COLOR_SPARKLE = "A20_sparkle"
 
     export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
+
+    export const TID_ACTUATOR_CAR = "CAR"
+    export const TID_MODIFIER_CAR_FORWARD = "CAR1"
+    export const TID_MODIFIER_CAR_REVERSE = "CAR2"
+    export const TID_MODIFIER_CAR_TURN_LEFT = "CAR3"
+    export const TID_MODIFIER_CAR_TURN_RIGHT = "CAR4"
+    export const TID_MODIFIER_CAR_STOP = "CAR5"
 
     export const PAGE_IDS = [
         TID_MODIFIER_PAGE_1,
@@ -241,18 +249,26 @@ namespace microcode {
 
         // the following three tiles are treated similarly, as
         // the sensor values are mapped into [1,2,3,4,5]
-        const slider = makeSensor(TID_SENSOR_SLIDER, "value_in", 500)
-        slider.serviceClassName = "potentiometer"
-        slider.jdExternalClass = 0x1f274746
-        slider.constraints.allow.categories = []
-        slider.constraints.allow.tiles = [
+        const only5 = [
             TID_FILTER_COIN_1,
             TID_FILTER_COIN_2,
             TID_FILTER_COIN_3,
             TID_FILTER_COIN_4,
             TID_FILTER_COIN_5,
         ]
+        const slider = makeSensor(TID_SENSOR_SLIDER, "value_in", 500)
+        slider.serviceClassName = "potentiometer"
+        slider.jdExternalClass = 0x1f274746
+        slider.constraints.allow.categories = []
+        slider.constraints.allow.tiles = only5
         slider.constraints.handling = { terminal: true }
+
+        if (car_tiles) {
+            const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in", 500)
+            wall.constraints.allow.categories = []
+            wall.constraints.allow.tiles = only5
+            wall.constraints.handling = { terminal: true }
+        }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
         magnet.serviceClassName = "magneticFieldLevel"
@@ -466,14 +482,14 @@ namespace microcode {
             values.forEach((v, index) => {
                 const tid = kind + (start + index)
                 const tile: FilterModifierBase =
-                    kind == "M"
-                        ? new ModifierDefn(tid, name, 10)
-                        : new FilterDefn(tid, name, 10)
-                tile.jdKind = JdKind.Literal
-                tile.jdParam = v
-                // tile.constraints = terminal
-                if (kind == "M") tilesDB.modifiers[tid] = tile
-                else tilesDB.filters[tid] = tile as FilterDefn
+                    kind == "F"
+                        ? new FilterDefn(tid, name, 10) 
+                        : new ModifierDefn(tid, name, 10)
+                tile.jdKind = kind == "CAR" ? JdKind.NumFmt : JdKind.Literal
+                tile.jdParam = kind == "CAR" ? jacs.NumFmt.F64 : v
+                tile.jdParam2 = kind == "CAR" ? v : 0;
+                if (kind == "F") tilesDB.filters[tid] = tile as FilterDefn
+                else tilesDB.modifiers[tid] = tile
                 tile.constraints = {
                     provides: [name],
                 }
@@ -482,14 +498,32 @@ namespace microcode {
             return tiles
         }
 
-        const coin_values = [1, 2, 3, 4, 5]
-        make_vals(coin_values, "value_in", "F", 8)
-        make_vals(coin_values, "constant", "M", 6)
-        make_vals([1, 2, 3, 4, 5], "page", "M", 1).forEach(m => {
+        const one_to_five = [1, 2, 3, 4, 5]
+        make_vals(one_to_five, "value_in", "F", 8)
+        make_vals(one_to_five, "constant", "M", 6)
+        make_vals(one_to_five, "page", "M", 1).forEach(m => {
             m.constraints.handling = m.constraints.handling || {}
             m.constraints.handling.terminal = true
             m.jdKind = JdKind.Page
         })
+
+        if (car_tiles) {
+            const car_commands =
+                [   0xfffff001, // forward
+                    0xfffff002, // reverse
+                    0xfffff003, // left
+                    0xfffff004, // right
+                    0xfffff005  // stop
+                ]
+            make_vals(car_commands, "car", "CAR", 1)
+            
+            const car = addActuator(TID_ACTUATOR_CAR, ["car"])
+            car.priority = 200
+            car.jdKind = JdKind.Sequence
+            car.serviceClassName = "radio"
+            car.serviceCommand = 0x81 
+            car.defaultModifier = tilesDB.modifiers[TID_MODIFIER_CAR_STOP]
+        }
 
         function addRGB(id: number, color: number) {
             const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
