@@ -39,3 +39,5 @@ jobs:
               run: |
                   cd robot
                   makecode
+                  makecode -c mkc-cutebot.json
+                  makecode -c mkc-yahboomtinybit.json
