@@ -125,10 +125,10 @@ namespace jacs {
         }
     }
 
-    export function literal(v: number) {
+    export function literal(v: number, op = Op.EXPRx_LITERAL) {
         const r = new Value()
         r.numValue = v
-        r.op = Op.EXPRx_LITERAL
+        r.op = op
         r.flags = VF_IS_LITERAL
         return r
     }
