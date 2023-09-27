@@ -641,7 +641,8 @@ namespace jacs {
                         this.callLinked(p.jdParam, args)
                     } else if (p.jdKind == microcode.JdKind.NumFmt && p.jdParam == NumFmt.F64) {
                         // TODO: generalize this to work with other formats
-                        wr.emitExpr(Op.EXPRx_LITERAL_F64, [literal(p.jdParam2, Op.EXPRx_LITERAL_F64)])
+                        wr.emitBufStore(literal(p.jdParam2, Op.EXPRx_LITERAL_F64),
+                            NumFmt.F64, 0)
                         const fmt: NumFmt = p.jdParam
                         const sz = bitSize(fmt) >> 3
                         wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])

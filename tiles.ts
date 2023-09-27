@@ -518,7 +518,7 @@ namespace microcode {
             make_vals(car_commands, "car", "CAR", 1)
             
             const car = addActuator(TID_ACTUATOR_CAR, ["car"])
-            car.priority = 200
+            car.priority = 900
             car.jdKind = JdKind.Sequence
             car.serviceClassName = "radio"
             car.serviceCommand = 0x81 
