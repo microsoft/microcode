@@ -218,8 +218,8 @@ namespace microcode {
 
         private setHeadlingSpeedColor(speed: number) {
             if (speed === 0) this.robot.headlightsSetColor(0, 0, 0)
-            else if (speed > 0) this.robot.headlightsSetColor(0, 0, 0xff)
-            else this.robot.headlightsSetColor(0xff, 0, 0)
+            else if (speed > 0) this.robot.headlightsSetColor(0, 0, 0xf0)
+            else this.robot.headlightsSetColor(0xf0, 0, 0)
         }
 
         motorRun(speed: number) {
