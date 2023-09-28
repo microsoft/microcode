@@ -93,7 +93,6 @@ namespace microcode {
             })
         }
 
-        private lastLines: RobotLineState = RobotLineState.None
         private updateSpeed() {
             // transition from one mode to the other, robot should stop
             if (this.currentSpeedMode !== this.targetSpeedMode) {
@@ -126,7 +125,6 @@ namespace microcode {
                         else if (lines === RobotLineState.Right)
                             d -= speed * 0.8
                     }
-                    this.lastLines = lines
                 }
                 const left = speed - d
                 const right = speed + d
@@ -291,6 +289,9 @@ namespace microcode {
             this.lastReceivedMessageId = messageId
             const cmd = msg.cmd
             const payload = msg.payload
+
+            console.log({ cmd, payload: payload.toHex() })
+
             switch (cmd) {
                 case robots.RobotCommand.MotorRun: {
                     const speed = Math.clamp(
