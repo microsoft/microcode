@@ -3,7 +3,7 @@ namespace microcode {
 
     //https://github.com/elecfreaks/pxt-cutebot/blob/master/cutebot.ts
     function motors(lspeed: number, rspeed: number): void {
-        let buf = pins.createBuffer(4)
+        const buf = pins.createBuffer(4)
         /*
         if (lspeed > 100) {
             lspeed = 100;
@@ -87,8 +87,9 @@ namespace microcode {
         }
 
         motorTurn(speed: number) {
-            if (speed > 0) motors(speed, 0)
-            else motors(0, -speed)
+            const op = Math.abs(speed) >> 1
+            if (speed > 0) motors(speed, Math.constrain(this.maxTurnSpeed - speed, 0, op))
+            else motors(Math.constrain(this.maxTurnSpeed + speed, 0, op), -speed)
         }
 
         headlightsSetColor(red: number, green: number, blue: number) {
