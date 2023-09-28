@@ -647,6 +647,12 @@ namespace jacs {
                         wr.emitBufStore(literal(p.jdParam2, Op.EXPRx_LITERAL_F64),
                             NumFmt.F64, 0)
                         this.emitSendCmd(role, actuator.serviceCommand)
+                        this.emitSleep(5)
+                        wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
+                        wr.emitBufStore(literal(p.jdParam2, Op.EXPRx_LITERAL_F64),
+                            NumFmt.F64, 0)
+                        this.emitSendCmd(role, actuator.serviceCommand)
+                        this.emitSleep(500)
                     }  else {
                         throw "oops"
                     }
