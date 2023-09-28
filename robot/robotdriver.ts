@@ -6,8 +6,14 @@ namespace microcode {
     const ROBOT_TIMEOUT = 1000
     const SHOW_RADIO_COUNT = 20
 
-    const RUN_STOP_THRESHOLD = 10
+    const RUN_STOP_THRESHOLD = 8
+    const TURN_STOP_THRESHOLD = 8
     const MODE_SWITCH_THRESHOLD = 2
+    const TARGET_SPEED_THRESHOLD = 8
+    const MODE_TRANSITION_ALPHA = 0.6
+    const SPEED_TRANSITION_ALPHA = 0.9
+    const ULTRASONIC_MIN_READING = 1
+    const LINE_TURN_ALPHA = 0.7
 
     enum RobotSpeedMode {
         Run,
@@ -23,16 +29,21 @@ namespace microcode {
         private lastReceivedMessageId: number = undefined
         private lastCommandTime: number
         private running = false
-        private lastUltrasonicDistance: number = 100
+        private currentUltrasonicDistance: number = 100
         private showRadio: number
         private currentSpeed: number = 0
         private currentSpeedMode = RobotSpeedMode.Run
         private targetSpeed: number = 0
         private targetSpeedMode = RobotSpeedMode.Run
 
+        debug = true
         safe = false
         runDrift = 0
         lineDrift = 10
+
+        private log(name: string, value: number) {
+            serial.writeValue(name, value)
+        }
 
         constructor(robot: robots.Robot) {
             this.robot = robot
@@ -96,45 +107,52 @@ namespace microcode {
         private updateSpeed() {
             // transition from one mode to the other, robot should stop
             if (this.currentSpeedMode !== this.targetSpeedMode) {
-                const alpha = 0.5
+                const alpha = MODE_TRANSITION_ALPHA
                 this.currentSpeed = this.currentSpeed * alpha
                 if (Math.abs(this.currentSpeed) < MODE_SWITCH_THRESHOLD) {
                     this.currentSpeed = 0
                     this.currentSpeedMode = this.targetSpeedMode
                 }
             } else {
-                const alpha = 0.8
+                const alpha = SPEED_TRANSITION_ALPHA
                 this.currentSpeed =
                     this.currentSpeed * alpha + this.targetSpeed * (1 - alpha)
-                if (Math.abs(this.currentSpeed - this.targetSpeed) < 10)
+                if (Math.abs(this.currentSpeed - this.targetSpeed) < TARGET_SPEED_THRESHOLD)
                     this.currentSpeed = this.targetSpeed
             }
 
-            let speed =
-                Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD
-                    ? 0
-                    : this.currentSpeed
             if (this.currentSpeedMode === RobotSpeedMode.Run) {
-                let d = speed > this.runDrift ? this.runDrift >> 1 : 0
-                if (speed > 0) {
+                let s =
+                    Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD
+                        ? 0
+                        : this.currentSpeed
+                let d = Math.abs(s) > Math.abs(this.runDrift) ? this.runDrift / 2 : 0
+                if (s > 0) {
                     const lines = this.lineState()
                     if (lines) {
-                        speed = Math.min(speed, this.robot.maxLineTrackingSpeed)
-                        this.currentSpeed = Math.min(this.currentSpeed, speed)
-                        if (lines === RobotLineState.Left) d += speed * 0.8
+                        s = Math.min(s, this.robot.maxLineTrackingSpeed)
+                        this.currentSpeed = Math.min(this.currentSpeed, s)
+                        if (lines === RobotLineState.Left) d += s * LINE_TURN_ALPHA
                         else if (lines === RobotLineState.Right)
-                            d -= speed * 0.8
+                            d -= s * LINE_TURN_ALPHA
                     }
                 }
-                const left = speed - d
-                const right = speed + d
+                const left = s - d
+                const right = s + d
+                this.log(`motor left`, left)
+                this.log(`motor right`, right)
                 this.robot.motorRun(left, right)
                 this.showMotorState(left, right)
             } else {
-                this.robot.motorTurn(speed)
+                let s =
+                    Math.abs(this.currentSpeed) < TURN_STOP_THRESHOLD
+                        ? 0
+                        : this.currentSpeed
+                this.log(`motor turn`, s)
+                this.robot.motorTurn(s)
                 this.showMotorState(
-                    speed > 0 ? speed : 0,
-                    speed <= 0 ? 0 : -speed
+                    s > 0 ? s : 0,
+                    s <= 0 ? 0 : -s
                 )
             }
         }
@@ -165,8 +183,10 @@ namespace microcode {
             // render left/right lines
             const left =
                 (lineState & RobotLineState.Left) === RobotLineState.Left
+            this.log(`line left`, left ? 1 : 0)
             const right =
                 (lineState & RobotLineState.Right) === RobotLineState.Right
+            this.log(`line right`, right ? 1 : 0)
             for (let i = 0; i < 5; ++i) {
                 if (left) led.plot(4, i)
                 else led.unplot(4, i)
@@ -179,8 +199,9 @@ namespace microcode {
             if (this.showRadio > 0) return
 
             const dist = this.ultrasonicDistance()
+            this.log(`sonar dist`, dist)
             // render sonar
-            if (dist > 0) {
+            if (dist > ULTRASONIC_MIN_READING) {
                 for (let y = 0; y < 5; y++)
                     if (dist > 0 && dist < 5 + y * 5) led.plot(2, y)
                     else led.unplot(2, y)
@@ -207,7 +228,7 @@ namespace microcode {
             speed =
                 speed > 0
                     ? Math.min(this.robot.maxRunSpeed, speed)
-                    : Math.max(-this.robot.maxRunSpeed, speed)
+                    : Math.max(-this.robot.maxBackSpeed, speed)
             this.setHeadlingSpeedColor(speed)
             this.targetSpeedMode = RobotSpeedMode.Run
             this.targetSpeed = speed
@@ -233,12 +254,12 @@ namespace microcode {
             let retry = 3
             while (retry-- > 0) {
                 const dist = this.robot.ultrasonicDistance()
-                if (dist > 0) {
-                    this.lastUltrasonicDistance = dist
+                if (dist > 1) {
+                    this.currentUltrasonicDistance = dist
                     break
                 }
             }
-            return this.lastUltrasonicDistance
+            return this.currentUltrasonicDistance
         }
 
         lineState(): RobotLineState {
@@ -290,8 +311,6 @@ namespace microcode {
             const cmd = msg.cmd
             const payload = msg.payload
 
-            console.log({ cmd, payload: payload.toHex() })
-
             switch (cmd) {
                 case robots.RobotCommand.MotorRun: {
                     const speed = Math.clamp(
@@ -299,7 +318,6 @@ namespace microcode {
                         100,
                         payload.getNumber(NumberFormat.Int16LE, 0)
                     )
-                    console.log(`motor run ${speed}`)
                     this.motorRun(speed)
                     break
                 }
@@ -309,7 +327,6 @@ namespace microcode {
                         100,
                         payload.getNumber(NumberFormat.Int16LE, 0)
                     )
-                    console.log(`motor turn ${speed}`)
                     this.motorTurn(speed)
                     break
                 }

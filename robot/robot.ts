@@ -8,9 +8,10 @@ namespace microcode.robots {
 
     export class Robot {
         musicVolume = 64
-        maxRunSpeed = 100
-        maxTurnSpeed = 100
-        maxLineTrackingSpeed = 100
+        maxRunSpeed = 80
+        maxBackSpeed = 50
+        maxTurnSpeed = 60
+        maxLineTrackingSpeed = 40
 
         constructor() {
 
