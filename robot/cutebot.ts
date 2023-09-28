@@ -76,7 +76,7 @@ namespace microcode {
             this.maxRunSpeed = 30
             this.maxBackSpeed = 20
             this.maxTurnSpeed = 20
-            this.maxLineTrackingSpeed = 18
+            this.maxLineTrackingSpeed = 25
 
             pins.setPull(DigitalPin.P8, PinPullMode.PullNone)
             pins.setPull(DigitalPin.P13, PinPullMode.PullNone)

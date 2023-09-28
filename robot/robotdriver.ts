@@ -126,19 +126,23 @@ namespace microcode {
                     Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD
                         ? 0
                         : this.currentSpeed
-                let d = Math.abs(s) > Math.abs(this.runDrift) ? this.runDrift / 2 : 0
-                if (s > 0) {
+                const d = Math.abs(s) > Math.abs(this.runDrift) ? this.runDrift / 2 : 0
+                let left = s - d
+                let right = s + d
+                if (s > 0) { // going forward
                     const lines = this.lineState()
                     if (lines) {
-                        s = Math.min(s, this.robot.maxLineTrackingSpeed)
-                        this.currentSpeed = Math.min(this.currentSpeed, s)
-                        if (lines === RobotLineState.Left) d += s * LINE_TURN_ALPHA
-                        else if (lines === RobotLineState.Right)
-                            d -= s * LINE_TURN_ALPHA
+                        this.currentSpeed = s = this.robot.maxLineTrackingSpeed
+                        if (lines === RobotLineState.Left) {
+                            left = 0
+                            right = s
+                        }
+                        else if (lines === RobotLineState.Right) {
+                            right = 0
+                            left = s
+                        }
                     }
                 }
-                const left = s - d
-                const right = s + d
                 this.log(`motor left`, left)
                 this.log(`motor right`, right)
                 this.robot.motorRun(left, right)
@@ -183,10 +187,9 @@ namespace microcode {
             // render left/right lines
             const left =
                 (lineState & RobotLineState.Left) === RobotLineState.Left
-            this.log(`line left`, left ? 1 : 0)
             const right =
                 (lineState & RobotLineState.Right) === RobotLineState.Right
-            this.log(`line right`, right ? 1 : 0)
+            this.log(`line`, lineState)
             for (let i = 0; i < 5; ++i) {
                 if (left) led.plot(4, i)
                 else led.unplot(4, i)
