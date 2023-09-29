@@ -265,9 +265,12 @@ namespace microcode {
 
         if (car_tiles) {
             const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in", 500)
+            wall.serviceClassName = "radio"
+            wall.eventCode = 0x91
+            wall.jdKind = JdKind.Radio
             wall.constraints.allow.categories = []
             wall.constraints.allow.tiles = only5
-            wall.constraints.handling = { terminal: true }
+            wall.constraints.handling = { terminal: true }   
         }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
