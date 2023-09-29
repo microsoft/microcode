@@ -1113,9 +1113,29 @@ namespace jacs {
                                     wr,
                                     wr.emitBufLoad(NumFmt.F64, 12)
                                 )
-                                // TODO: ignore values in tiles.ts: car_commands
-                                // TODO: special case on wall collision
-                                filterValueIn(() => radioVar.read(wr))
+                                // hack for keeping car radio from interfering with user radio
+                                if (sensor.tid == microcode.TID_SENSOR_CAR_WALL) {
+                                    wr.emitIf(
+                                        wr.emitExpr(Op.EXPR2_LT, [
+                                            literal(0xfffff10),
+                                            radioVar.read(wr),
+                                        ]),
+                                        () => {
+                                            radioVar.write(
+                                                wr,
+                                                wr.emitExpr(Op.EXPR2_SUB, [radioVar.read(wr), literal(0xfffff10)]))
+                                            filterValueIn(() => radioVar.read(wr))
+                                        })
+                                } else {
+                                    wr.emitIf(
+                                        wr.emitExpr(Op.EXPR2_LT, [
+                                            radioVar.read(wr),
+                                            literal(0xfffff10)
+                                        ]),
+                                        () => {
+                                            filterValueIn(() => radioVar.read(wr))
+                                        })
+                                }
                             }
                         )
                     } else if (
