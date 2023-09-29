@@ -198,6 +198,7 @@ namespace microcode {
             }
         }
 
+        private lastSonarValue = 0
         private showSonar() {
             if (this.showRadio > 0) return
 
@@ -205,13 +206,16 @@ namespace microcode {
             this.log(`sonar dist`, dist)
             // render sonar
             if (dist > ULTRASONIC_MIN_READING) {
+                const d = Math.clamp(1, 5, Math.ceil(dist / 5))
                 for (let y = 0; y < 5; y++)
-                    if (dist > 0 && dist < 5 + y * 5) led.plot(2, y)
+                    if (y + 1 >= d) led.plot(2, y)
                     else led.unplot(2, y)
 
-                const d = Math.min(1, Math.max(5, Math.round(dist / 5)))
-                const msg = microcode.robots.RobotCompactCommand.Obstacle0 | d
-                microcode.robots.sendCompactCommand(msg)
+                if (d !== this.lastSonarValue) {
+                    this.lastSonarValue = d
+                    const msg = microcode.robots.RobotCompactCommand.Obstacle0 | d
+                    microcode.robots.sendCompactCommand(msg)
+                }
             }
         }
 
