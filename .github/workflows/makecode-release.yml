@@ -45,7 +45,6 @@ jobs:
               run: |
                   cp ./built/binary.js ./assets/js/binary.js
                   cp ./built/n3/binary.hex ./assets/firmware.hex
-                  cp ./robot/built/binary.hex ./assets/robot.hex
             - name: build localized hex files
               run: |
                   yarn install --frozen-lockfile
