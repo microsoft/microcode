@@ -35,6 +35,7 @@ namespace microcode {
         private currentSpeedMode = RobotSpeedMode.Run
         private targetSpeed: number = 0
         private targetSpeedMode = RobotSpeedMode.Run
+        private currentLineState: RobotLineState = RobotLineState.None
 
         debug = true
         safe = false
@@ -42,7 +43,7 @@ namespace microcode {
         lineDrift = 10
 
         private log(name: string, value: number) {
-            serial.writeValue(name, value)
+           // serial.writeValue(name, value)
         }
 
         constructor(robot: robots.Robot) {
@@ -130,9 +131,9 @@ namespace microcode {
                 let left = s - d
                 let right = s + d
                 if (s > 0) { // going forward
-                    const lines = this.lineState()
+                    const lines = this.currentLineState
                     if (lines) {
-                        this.currentSpeed = s = this.robot.maxLineTrackingSpeed
+                        this.currentSpeed = s = Math.sign(s) * this.robot.maxLineTrackingSpeed
                         if (lines === RobotLineState.Left) {
                             left = 0
                             right = s
@@ -270,7 +271,9 @@ namespace microcode {
         }
 
         lineState(): RobotLineState {
-            return this.robot.lineState()
+            const ls = this.robot.lineState()
+            this.currentLineState = ls
+            return ls
         }
 
         private headlightsSetColor(red: number, green: number, blue: number) {

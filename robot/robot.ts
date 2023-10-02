@@ -1,7 +1,8 @@
 enum RobotLineState {
     None = 0,
     Left = 0x01,
-    Right = 0x02
+    Right = 0x02,
+    Both = Left | Right
 }
 
 namespace microcode.robots {
