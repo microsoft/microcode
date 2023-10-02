@@ -65,7 +65,6 @@ namespace microcode {
 
             this.running = true
             this.showRadio = SHOW_RADIO_COUNT
-            this.playMelody(Melodies.BaDing)
             // wake up sensors
             this.ultrasonicDistance()
             this.lineState()
@@ -223,9 +222,7 @@ namespace microcode {
                     this.lastSonarValue = d
                     const msg = microcode.robots.RobotCompactCommand.Obstacle | d
                     microcode.robots.sendCompactCommand(msg)
-                    this.stopToneMillis = control.millis() + 200 + d * 25
-
-                    music.ringTone(2400 - d * 400)
+                    this.playTone(2400 - d * 400, 200 + d * 25)
                 }
             }
         }
@@ -306,19 +303,11 @@ namespace microcode {
             this.robot.motorRun(0, 0)
         }
 
-        playMelody(melody: Melodies) {
+        playTone(frequency: number, duration: number) {
             if (this.robot.musicVolume <= 0) return
             music.setVolume(this.robot.musicVolume)
-            music.play(
-                music.builtInPlayableMelody(melody),
-                music.PlaybackMode.InBackground
-            )
-        }
-
-        playTone(frequency: number) {
-            if (this.robot.musicVolume <= 0) return
-            music.setVolume(this.robot.musicVolume)
-            music.playTone(frequency, 200)
+            this.stopToneMillis = control.millis() + duration
+            music.ringTone(frequency)
         }
 
         dispatch(msg: robots.RobotMessage) {
