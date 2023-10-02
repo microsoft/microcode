@@ -263,7 +263,7 @@ namespace microcode {
         slider.constraints.allow.tiles = only5
         slider.constraints.handling = { terminal: true }
 
-        if (car_tiles) {
+        if (CAR_TILES) {
             const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in", 500)
             wall.serviceClassName = "radio"
             wall.eventCode = 0x91
@@ -510,7 +510,7 @@ namespace microcode {
             m.jdKind = JdKind.Page
         })
 
-        if (car_tiles) {
+        if (CAR_TILES) {
             const car_commands =
                 [   0xfffff001, // forward
                     0xfffff002, // reverse
