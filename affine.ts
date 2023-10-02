@@ -57,7 +57,8 @@ namespace microcode {
         }
 
         private computeWorldPos(): Vec2 {
-            const pos = this.localPos_
+            const pos = new Vec2()
+            pos.copyFrom(this.localPos_)
             let parent = this.parent_
             while (parent) {
                 Vec2.TranslateToRef(pos, parent.localPos, pos)
