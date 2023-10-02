@@ -10,25 +10,10 @@ namespace microcode {
     export class Affine {
         private localPos_: Vec2
         private parent_: Affine
-        private dirty_: boolean
-        private worldPos_: Vec2
-        public tag: string
-
-        //% blockCombine block="dirty" callInDebugger
-        public get dirty(): boolean {
-            return (
-                this.dirty_ ||
-                this.localPos_.dirty ||
-                (this.parent && this.parent.dirty)
-            )
-        }
 
         //% blockCombine block="worldPos" callInDebugger
         public get worldPos() {
-            if (this.dirty) {
-                this.recalc()
-            }
-            return this.worldPos_
+            return this.computeWorldPos()
         }
 
         //% blockCombine block="localPos" callInDebugger
@@ -37,7 +22,6 @@ namespace microcode {
         }
         public set localPos(v: Vec2) {
             this.localPos_.copyFrom(v)
-            this.dirty_ = true
         }
 
         //% blockCombine block="parent" callInDebugger
@@ -46,7 +30,6 @@ namespace microcode {
         }
         public set parent(p: Affine) {
             this.parent_ = p
-            this.dirty_ = true
         }
 
         //% blockCombine block="root" callInDebugger
@@ -60,8 +43,6 @@ namespace microcode {
 
         constructor() {
             this.localPos_ = new Vec2()
-            this.worldPos_ = new Vec2()
-            this.dirty_ = true
         }
 
         public copyFrom(src: Affine): this {
@@ -75,19 +56,14 @@ namespace microcode {
             return aff
         }
 
-        public recalc(force = false) {
-            if (this.dirty || force) {
-                this.dirty_ = false
-                if (this.parent) {
-                    Vec2.TranslateToRef(
-                        this.localPos_,
-                        this.parent.worldPos,
-                        this.worldPos_
-                    )
-                } else {
-                    this.worldPos_.copyFrom(this.localPos)
-                }
+        private computeWorldPos(): Vec2 {
+            const pos = this.localPos_
+            let parent = this.parent_
+            while (parent) {
+                Vec2.TranslateToRef(pos, parent.localPos, pos)
+                parent = parent.parent
             }
+            return pos
         }
 
         public transformToRef(v: Vec2, ref: Vec2): Vec2 {

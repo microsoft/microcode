@@ -202,11 +202,6 @@ namespace microcode {
                 return
             }
 
-            if (target.rootXfrm.tag === "hud") {
-                this.moveTo(target)
-                return
-            }
-
             const occBounds = new Bounds({
                 left: Screen.LEFT_EDGE,
                 top: Screen.TOP_EDGE + TOOLBAR_HEIGHT + TOOLBAR_MARGIN,
@@ -259,7 +254,6 @@ namespace microcode {
                 )
             this.hudroot = new Placeable()
             this.hudroot.xfrm.localPos = new Vec2(0, Screen.TOP_EDGE)
-            this.hudroot.xfrm.tag = "hud"
             this.scrollroot = new Placeable()
             this.scrollroot.xfrm.localPos = new Vec2(
                 Screen.LEFT_EDGE,
