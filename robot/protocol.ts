@@ -20,6 +20,19 @@ namespace microcode.robots {
          *     distance: f32
          */
         UltrasonicDistance = 0x10,
+
+        /**
+         * The line sensor state changed
+         *      state: RobotLineState
+         */
+        LineState = 0x11,
+    }
+
+    export const enum RobotLineState {
+        None = 0,
+        Left = 0x01,
+        Right = 0x02,
+        Both = Left | Right
     }
 
     /**
@@ -32,12 +45,23 @@ namespace microcode.robots {
         MotorTurnRight = 0xfffff004,
         MotorStop = 0xfffff005,
 
-        Obstacle0 = 0xfffff10,
-        Obstacle1 = 0xfffff11,
-        Obstacle2 = 0xfffff12,
-        Obstacle3 = 0xfffff13,
-        Obstacle4 = 0xfffff14,
-        Obstacle5 = 0xfffff15,
+        /**
+         * sonar detected obstable
+         */
+        Obstacle = 0xfffff10,
+        Obstacle1 = Obstacle | 0x1,
+        Obstacle2 = Obstacle | 0x2,
+        Obstacle3 = Obstacle | 0x3,
+        Obstacle4 = Obstacle | 0x4,
+        Obstacle5 = Obstacle | 0x5,
+
+        /**
+         * Line sensor state change
+         */
+        LineState = 0xfffff20,
+        Left = LineState | RobotLineState.Left,
+        Right = LineState | RobotLineState.Right,
+        Both = LineState | RobotLineState.Both,
     }
 
     export interface RobotMessage {

@@ -1,9 +1,3 @@
-enum RobotLineState {
-    None = 0,
-    Left = 0x01,
-    Right = 0x02
-}
-
 namespace microcode.robots {
 
     export class Robot {

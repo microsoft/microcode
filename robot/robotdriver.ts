@@ -35,6 +35,9 @@ namespace microcode {
         private currentSpeedMode = RobotSpeedMode.Run
         private targetSpeed: number = 0
         private targetSpeedMode = RobotSpeedMode.Run
+        private currentLineState: microcode.robots.RobotLineState = microcode.robots.RobotLineState.None
+
+        private stopToneMillis: number = 0
 
         debug = true
         safe = false
@@ -42,7 +45,7 @@ namespace microcode {
         lineDrift = 10
 
         private log(name: string, value: number) {
-            serial.writeValue(name, value)
+           // serial.writeValue(name, value)
         }
 
         constructor(robot: robots.Robot) {
@@ -62,7 +65,6 @@ namespace microcode {
 
             this.running = true
             this.showRadio = SHOW_RADIO_COUNT
-            this.playMelody(Melodies.BaDing)
             // wake up sensors
             this.ultrasonicDistance()
             this.lineState()
@@ -83,6 +85,10 @@ namespace microcode {
         private backgroundWork() {
             while (this.running) {
                 this.checkAlive()
+                if (this.stopToneMillis && this.stopToneMillis < control.millis()) {
+                    music.stopAllSounds()
+                    this.stopToneMillis = 0
+                }
                 if (this.showRadio > 0) {
                     this.showRadio--
                     microcode.robots.showRadioStatus()
@@ -130,14 +136,14 @@ namespace microcode {
                 let left = s - d
                 let right = s + d
                 if (s > 0) { // going forward
-                    const lines = this.lineState()
+                    const lines = this.currentLineState
                     if (lines) {
-                        this.currentSpeed = s = this.robot.maxLineTrackingSpeed
-                        if (lines === RobotLineState.Left) {
+                        this.currentSpeed = s = Math.sign(s) * this.robot.maxLineTrackingSpeed
+                        if (lines === microcode.robots.RobotLineState.Left) {
                             left = 0
                             right = s
                         }
-                        else if (lines === RobotLineState.Right) {
+                        else if (lines === microcode.robots.RobotLineState.Right) {
                             right = 0
                             left = s
                         }
@@ -186,9 +192,9 @@ namespace microcode {
             const lineState = this.lineState()
             // render left/right lines
             const left =
-                (lineState & RobotLineState.Left) === RobotLineState.Left
+                (lineState & microcode.robots.RobotLineState.Left) === microcode.robots.RobotLineState.Left
             const right =
-                (lineState & RobotLineState.Right) === RobotLineState.Right
+                (lineState & microcode.robots.RobotLineState.Right) === microcode.robots.RobotLineState.Right
             this.log(`line`, lineState)
             for (let i = 0; i < 5; ++i) {
                 if (left) led.plot(4, i)
@@ -207,14 +213,16 @@ namespace microcode {
             // render sonar
             if (dist > ULTRASONIC_MIN_READING) {
                 const d = Math.clamp(1, 5, Math.ceil(dist / 5))
+                console.log(`d: ${d}`)
                 for (let y = 0; y < 5; y++)
                     if (y + 1 >= d) led.plot(2, y)
                     else led.unplot(2, y)
 
                 if (d !== this.lastSonarValue) {
                     this.lastSonarValue = d
-                    const msg = microcode.robots.RobotCompactCommand.Obstacle0 | d
+                    const msg = microcode.robots.RobotCompactCommand.Obstacle | d
                     microcode.robots.sendCompactCommand(msg)
+                    this.playTone(2400 - d * 400, 200 + d * 25)
                 }
             }
         }
@@ -269,8 +277,14 @@ namespace microcode {
             return this.currentUltrasonicDistance
         }
 
-        lineState(): RobotLineState {
-            return this.robot.lineState()
+        lineState(): microcode.robots.RobotLineState {
+            const ls = this.robot.lineState()
+            if (ls !== this.currentLineState) {
+                this.currentLineState = ls
+                const msg = microcode.robots.RobotCompactCommand.LineState | this.currentLineState
+                microcode.robots.sendCompactCommand(msg)                
+            }
+            return ls
         }
 
         private headlightsSetColor(red: number, green: number, blue: number) {
@@ -289,19 +303,11 @@ namespace microcode {
             this.robot.motorRun(0, 0)
         }
 
-        playMelody(melody: Melodies) {
+        playTone(frequency: number, duration: number) {
             if (this.robot.musicVolume <= 0) return
             music.setVolume(this.robot.musicVolume)
-            music.play(
-                music.builtInPlayableMelody(melody),
-                music.PlaybackMode.InBackground
-            )
-        }
-
-        playTone(frequency: number) {
-            if (this.robot.musicVolume <= 0) return
-            music.setVolume(this.robot.musicVolume)
-            music.playTone(frequency, 200)
+            this.stopToneMillis = control.millis() + duration
+            music.ringTone(frequency)
         }
 
         dispatch(msg: robots.RobotMessage) {
