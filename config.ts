@@ -10,5 +10,5 @@ namespace userconfig {
 namespace microcode {
     export const ERROR_NOT_INTEGER = 101
     export const ERROR_DOUBLE_BACKGROUND_CAPTURE = 102
-    export const car_tiles = false
+    export const car_tiles = true
 }

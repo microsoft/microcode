@@ -31,6 +31,7 @@ namespace microcode {
     export const TID_SENSOR_SLIDER = "S11"
     export const TID_SENSOR_ROTARY = "S12"
     export const TID_SENSOR_CAR_WALL = "S13"
+    export const TID_SENSOR_LINE = "S14"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -66,6 +67,11 @@ namespace microcode {
     export const TID_FILTER_ROTARY_RIGHT = "F21R"
     export const TID_FILTER_TEMP_WARMER = "F22U"
     export const TID_FILTER_TEMP_COLDER = "F22D"
+    export const TID_FILTER_LINE_LEFT = "F23L"
+    export const TID_FILTER_LINE_RIGHT = "F23R"
+    export const TID_FILTER_LINE_BOTH = "F23B"
+    export const TID_FILTER_LINE_NEITHER = "F23N"
+
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -270,7 +276,15 @@ namespace microcode {
             wall.jdKind = JdKind.Radio
             wall.constraints.allow.categories = []
             wall.constraints.allow.tiles = only5
-            wall.constraints.handling = { terminal: true }   
+            wall.constraints.handling = { terminal: true }
+
+            const line = makeSensor(TID_SENSOR_LINE, "line", 505)
+            line.serviceClassName = "radio"
+            line.eventCode = 0x91
+            line.jdKind = JdKind.Radio
+            line.constraints.allow.categories = []
+            line.constraints.allow.tiles = [TID_FILTER_LINE_LEFT, TID_FILTER_LINE_RIGHT, TID_FILTER_LINE_BOTH, TID_FILTER_LINE_NEITHER]
+            line.constraints.handling = { terminal: true }
         }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
@@ -301,6 +315,11 @@ namespace microcode {
         addEvent(TID_FILTER_ROTARY_RIGHT, "rotary_event", 2)
         addEvent(TID_FILTER_TEMP_WARMER, "temperature_event", 2)
         addEvent(TID_FILTER_TEMP_COLDER, "temperature_event", 1)
+        
+        addEvent(TID_FILTER_LINE_BOTH, "line", 0xfffff23)
+        addEvent(TID_FILTER_LINE_LEFT, "line", 0xfffff21)
+        addEvent(TID_FILTER_LINE_RIGHT, "line", 0xfffff22)
+        addEvent(TID_FILTER_LINE_NEITHER, "line", 0xfffff20)
 
         const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
         timer.constraints = {
