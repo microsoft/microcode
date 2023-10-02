@@ -37,6 +37,8 @@ namespace microcode {
         private targetSpeedMode = RobotSpeedMode.Run
         private currentLineState: microcode.robots.RobotLineState = microcode.robots.RobotLineState.None
 
+        private stopToneMillis: number = 0
+
         debug = true
         safe = false
         runDrift = 0
@@ -84,6 +86,10 @@ namespace microcode {
         private backgroundWork() {
             while (this.running) {
                 this.checkAlive()
+                if (this.stopToneMillis && this.stopToneMillis < control.millis()) {
+                    music.stopAllSounds()
+                    this.stopToneMillis = 0
+                }
                 if (this.showRadio > 0) {
                     this.showRadio--
                     microcode.robots.showRadioStatus()
@@ -208,6 +214,7 @@ namespace microcode {
             // render sonar
             if (dist > ULTRASONIC_MIN_READING) {
                 const d = Math.clamp(1, 5, Math.ceil(dist / 5))
+                console.log(`d: ${d}`)
                 for (let y = 0; y < 5; y++)
                     if (y + 1 >= d) led.plot(2, y)
                     else led.unplot(2, y)
@@ -216,6 +223,9 @@ namespace microcode {
                     this.lastSonarValue = d
                     const msg = microcode.robots.RobotCompactCommand.Obstacle | d
                     microcode.robots.sendCompactCommand(msg)
+                    this.stopToneMillis = control.millis() + 200 + d * 25
+
+                    music.ringTone(2400 - d * 400)
                 }
             }
         }

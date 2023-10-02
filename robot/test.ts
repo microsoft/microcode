@@ -3,9 +3,8 @@ microcode.elecfreaksCuteBot.start()
 //microcode.keyStudioMiniSmartRobot.start()
 microcode.setMotorDrift(6)
 
-microcode.robotDriver.motorRun(100)
+//microcode.robotDriver.motorRun(100)
 
-/*
 basic.forever(() => {
     const dist = microcode.robotDriver.ultrasonicDistance()
     if (dist > 10) microcode.robotDriver.motorRun(100)
@@ -19,4 +18,3 @@ basic.forever(() => {
         microcode.robotDriver.motorStop()
     }
 })
-*/
