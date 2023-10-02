@@ -3056,22 +3056,22 @@ export const car_wall = img`
 `
     
 export const line_sensor = img`
-. . . . . . . . . . . . . . . .
-. f f f f f 1 f 1 f f f f f . .
-. f f f f f 1 f 1 f f f f f . .
-. f f f f f 1 9 1 f f f f f . .
-. f f f f 9 1 f 1 9 f f f f . .
-. f f f 9 f 1 f 1 f 9 f f f . .
-. f f 9 f f 1 f 1 f f 9 f f . .
-. f 9 f f f 1 f 1 f f f 9 f . .
-. f f f f f 1 f 1 f f f f f . .
-. f f f f f 1 9 1 f f f f f . .
-. f f f f 9 1 f 1 9 f f f f . .
-. f f f 9 f 1 f 1 f 9 f f f . .
-. f f 9 f f 1 f 1 f f 9 f f . .
-. f 9 f f f 1 f 1 f f f 9 f . .
-. f f f f f 1 f 1 f f f f f . .
-. . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . . . . . . . . . . . . . . . .
 `
 export const line_neither_on = img`
 . . . . . . . . . . . . . . . .
