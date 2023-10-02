@@ -35,7 +35,7 @@ namespace microcode {
         private currentSpeedMode = RobotSpeedMode.Run
         private targetSpeed: number = 0
         private targetSpeedMode = RobotSpeedMode.Run
-        private currentLineState: RobotLineState = RobotLineState.None
+        private currentLineState: microcode.robots.RobotLineState = microcode.robots.RobotLineState.None
 
         debug = true
         safe = false
@@ -134,11 +134,11 @@ namespace microcode {
                     const lines = this.currentLineState
                     if (lines) {
                         this.currentSpeed = s = Math.sign(s) * this.robot.maxLineTrackingSpeed
-                        if (lines === RobotLineState.Left) {
+                        if (lines === microcode.robots.RobotLineState.Left) {
                             left = 0
                             right = s
                         }
-                        else if (lines === RobotLineState.Right) {
+                        else if (lines === microcode.robots.RobotLineState.Right) {
                             right = 0
                             left = s
                         }
@@ -187,9 +187,9 @@ namespace microcode {
             const lineState = this.lineState()
             // render left/right lines
             const left =
-                (lineState & RobotLineState.Left) === RobotLineState.Left
+                (lineState & microcode.robots.RobotLineState.Left) === microcode.robots.RobotLineState.Left
             const right =
-                (lineState & RobotLineState.Right) === RobotLineState.Right
+                (lineState & microcode.robots.RobotLineState.Right) === microcode.robots.RobotLineState.Right
             this.log(`line`, lineState)
             for (let i = 0; i < 5; ++i) {
                 if (left) led.plot(4, i)
@@ -214,7 +214,7 @@ namespace microcode {
 
                 if (d !== this.lastSonarValue) {
                     this.lastSonarValue = d
-                    const msg = microcode.robots.RobotCompactCommand.Obstacle0 | d
+                    const msg = microcode.robots.RobotCompactCommand.Obstacle | d
                     microcode.robots.sendCompactCommand(msg)
                 }
             }
@@ -270,9 +270,13 @@ namespace microcode {
             return this.currentUltrasonicDistance
         }
 
-        lineState(): RobotLineState {
+        lineState(): microcode.robots.RobotLineState {
             const ls = this.robot.lineState()
-            this.currentLineState = ls
+            if (ls !== this.currentLineState) {
+                this.currentLineState = ls
+                const msg = microcode.robots.RobotCompactCommand.LineState | this.currentLineState
+                microcode.robots.sendCompactCommand(msg)                
+            }
             return ls
         }
 

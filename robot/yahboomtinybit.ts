@@ -151,7 +151,7 @@ namespace microcode {
             return Ultrasonic_CarV2()
         }
 
-        lineState(): RobotLineState {
+        lineState(): microcode.robots.RobotLineState {
             const left = pins.digitalReadPin(DigitalPin.P13);
             const right = pins.digitalReadPin(DigitalPin.P14);
 
