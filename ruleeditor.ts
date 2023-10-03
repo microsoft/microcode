@@ -150,8 +150,9 @@ namespace microcode {
                     })
                     if (name == "filters" && index == 0) {
                         const sensor = rule["sensors"][0]
+                        // TODO: this logic should be part of the SensorTileDefn
                         if (
-                            sensor.jdKind == JdKind.Radio ||
+                            (sensor.jdKind == JdKind.Radio && sensor.tid != TID_SENSOR_LINE) ||
                             sensor.jdKind == JdKind.Variable
                         ) {
                             const plus = new EditorButton(this.editor, {
