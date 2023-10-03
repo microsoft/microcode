@@ -296,12 +296,12 @@ namespace microcode {
         rotary.eventCode = 1
 
         function addEvent(tid: string, type: string, id: number) {
-            const rotaryEvent = new FilterDefn(tid, type, 10)
-            rotaryEvent.jdParam = id
-            rotaryEvent.constraints = terminal
-            rotaryEvent.jdKind = JdKind.EventCode
-            tilesDB.filters[tid] = rotaryEvent
-            return rotaryEvent
+            const ev = new FilterDefn(tid, type, 10)
+            ev.jdParam = id
+            ev.constraints = terminal
+            ev.jdKind = JdKind.EventCode
+            tilesDB.filters[tid] = ev
+            return ev
         }
         addEvent(TID_FILTER_ROTARY_LEFT, "rotary_event", 1)
         addEvent(TID_FILTER_ROTARY_RIGHT, "rotary_event", 2)
@@ -309,10 +309,12 @@ namespace microcode {
         addEvent(TID_FILTER_TEMP_COLDER, "temperature_event", 1)
         
         if (car_tiles) {
-            addEvent(TID_FILTER_LINE_BOTH, "line", 0xfffff23)
-            addEvent(TID_FILTER_LINE_LEFT, "line", 0xfffff21)
-            addEvent(TID_FILTER_LINE_RIGHT, "line", 0xfffff22)
+            const both = addEvent(TID_FILTER_LINE_BOTH, "line", 0xfffff23)
+            const left = addEvent(TID_FILTER_LINE_LEFT, "line", 0xfffff21)
+            const right = addEvent(TID_FILTER_LINE_RIGHT, "line", 0xfffff22)
             const neither = addEvent(TID_FILTER_LINE_NEITHER, "line", 0xfffff20)
+            both.jdKind = left.jdKind = right.jdKind = neither.jdKind = JdKind.Literal
+
             const line = makeSensor(TID_SENSOR_LINE, "line", 505)
             line.serviceClassName = "radio"
             line.eventCode = 0x91

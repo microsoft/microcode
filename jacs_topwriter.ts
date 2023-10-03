@@ -807,7 +807,8 @@ namespace jacs {
                 if (
                     m.category == "value_in" ||
                     m.category == "value_out" ||
-                    m.category == "constant"
+                    m.category == "constant" ||
+                    m.category == "line"
                 ) {
                     if (this.breaksValSeq(m) && currSeq.length) {
                         this.emitAddSeq(currSeq, trg, 0, first)
@@ -1130,7 +1131,7 @@ namespace jacs {
                                             } else {
                                                 wr.emitIf(
                                                     wr.emitExpr(Op.EXPR2_LT, [
-                                                        literal(0xfffff1F),
+                                                        literal(0xfffff1f),
                                                         radioVar.read(wr),
                                                     ]),
                                                     () => { filterValueIn(() => radioVar.read(wr)) }
