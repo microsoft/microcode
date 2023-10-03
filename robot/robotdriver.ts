@@ -244,7 +244,7 @@ namespace microcode {
 
                 if (d !== this.lastSonarValue) {
                     this.lastSonarValue = d
-                    const msg = microcode.robots.RobotCompactCommand.Obstacle | d
+                    const msg = microcode.robots.RobotCompactCommand.ObstacleState | d
                     microcode.robots.sendCompactCommand(msg)
                     this.playTone(2400 - d * 400, 200 + d * 25)
                 }
