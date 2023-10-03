@@ -31,6 +31,7 @@ namespace microcode {
     export const TID_SENSOR_SLIDER = "S11"
     export const TID_SENSOR_ROTARY = "S12"
     export const TID_SENSOR_CAR_WALL = "S13"
+    export const TID_SENSOR_LINE = "S14"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -66,6 +67,11 @@ namespace microcode {
     export const TID_FILTER_ROTARY_RIGHT = "F21R"
     export const TID_FILTER_TEMP_WARMER = "F22U"
     export const TID_FILTER_TEMP_COLDER = "F22D"
+    export const TID_FILTER_LINE_LEFT = "F23L"
+    export const TID_FILTER_LINE_RIGHT = "F23R"
+    export const TID_FILTER_LINE_BOTH = "F23B"
+    export const TID_FILTER_LINE_NEITHER = "F23N"
+
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -290,17 +296,33 @@ namespace microcode {
         rotary.eventCode = 1
 
         function addEvent(tid: string, type: string, id: number) {
-            const rotaryEvent = new FilterDefn(tid, type, 10)
-            rotaryEvent.jdParam = id
-            rotaryEvent.constraints = terminal
-            rotaryEvent.jdKind = JdKind.EventCode
-            tilesDB.filters[tid] = rotaryEvent
-            return rotaryEvent
+            const ev = new FilterDefn(tid, type, 10)
+            ev.jdParam = id
+            ev.constraints = terminal
+            ev.jdKind = JdKind.EventCode
+            tilesDB.filters[tid] = ev
+            return ev
         }
         addEvent(TID_FILTER_ROTARY_LEFT, "rotary_event", 1)
         addEvent(TID_FILTER_ROTARY_RIGHT, "rotary_event", 2)
         addEvent(TID_FILTER_TEMP_WARMER, "temperature_event", 2)
         addEvent(TID_FILTER_TEMP_COLDER, "temperature_event", 1)
+        
+        if (CAR_TILES) {
+            const both = addEvent(TID_FILTER_LINE_BOTH, "line", robots.RobotCompactCommand.Both)
+            const left = addEvent(TID_FILTER_LINE_LEFT, "line", robots.RobotCompactCommand.Left)
+            const right = addEvent(TID_FILTER_LINE_RIGHT, "line", robots.RobotCompactCommand.Right  )
+            const neither = addEvent(TID_FILTER_LINE_NEITHER, "line", robots.RobotCompactCommand.LineState)
+            both.jdKind = left.jdKind = right.jdKind = neither.jdKind = JdKind.Literal
+
+            const line = makeSensor(TID_SENSOR_LINE, "line", 505)
+            line.serviceClassName = "radio"
+            line.eventCode = 0x91
+            line.jdKind = JdKind.Radio
+            line.constraints.allow.categories = []
+            line.constraints.allow.tiles = [TID_FILTER_LINE_LEFT, TID_FILTER_LINE_RIGHT, TID_FILTER_LINE_BOTH, TID_FILTER_LINE_NEITHER]
+            line.constraints.handling = { terminal: true }
+        }
 
         const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
         timer.constraints = {
@@ -359,7 +381,7 @@ namespace microcode {
         }
         microphone.priority = 30
         microphone.serviceClassName = "soundLevel"
-        microphone.eventCode = 1 // laud by default
+        microphone.eventCode = 1 // loud by default
         tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
         function addSoundFilter(tid: string, eventCode: number) {
             const soundFilter = new FilterDefn(tid, "sound_event", 10)
@@ -512,11 +534,11 @@ namespace microcode {
 
         if (CAR_TILES) {
             const car_commands = [
-                microcode.robots.RobotCompactCommand.MotorRunForward, // forward
-                microcode.robots.RobotCompactCommand.MotorRunBackward, // reverse
-                microcode.robots.RobotCompactCommand.MotorTurnLeft, // left
-                microcode.robots.RobotCompactCommand.MotorTurnRight, // right
-                microcode.robots.RobotCompactCommand.MotorStop, // stop
+                microcode.robots.RobotCompactCommand.MotorRunForward,
+                microcode.robots.RobotCompactCommand.MotorRunBackward,
+                microcode.robots.RobotCompactCommand.MotorTurnLeft, 
+                microcode.robots.RobotCompactCommand.MotorTurnRight,
+                microcode.robots.RobotCompactCommand.MotorStop,
             ]
             make_vals(car_commands, "car", "CAR", 1)
 

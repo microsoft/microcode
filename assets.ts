@@ -26,6 +26,11 @@ namespace microcode {
         reg[TID_MODIFIER_CAR_TURN_RIGHT] = icondb.car_right_turn
         reg[TID_MODIFIER_CAR_STOP] = icondb.car_stop
         reg[TID_SENSOR_CAR_WALL] = icondb.car_wall
+        reg[TID_SENSOR_LINE] = icondb.line_sensor
+        reg[TID_FILTER_LINE_LEFT] = icondb.line_left_on
+        reg[TID_FILTER_LINE_RIGHT] = icondb.line_right_on
+        reg[TID_FILTER_LINE_BOTH] = icondb.line_both_on
+        reg[TID_FILTER_LINE_NEITHER] = icondb.line_neither_on
     }
 
     // TODO: factor out all the jacdac stuff into separate file/class
@@ -3048,6 +3053,97 @@ export const car_wall = img`
     b b b b b b b b b b b b b b b b
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
+`
+    
+export const line_sensor = img`
+    . . . . . . . . . . . . . . . .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . b d d d d d f f d d d d d b .
+    . . . . . . . . . . . . . . . .
+`
+export const line_neither_on = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . d d . d d . . . . . .
+. . . . d 1 d . d 1 d . . . . .
+. . . d 1 1 d . d 1 1 d . . . .
+. . d 1 1 1 d . d 1 1 1 d . . .
+. d 1 1 1 1 d . d 1 1 1 1 d . .
+. d 1 1 1 1 d . d 1 1 1 1 d . .
+. d 1 1 1 1 d . d 1 1 1 1 d . .
+. d 1 1 1 1 d . d 1 1 1 1 d . .
+. d 1 1 1 d . . . d 1 1 1 d . .
+. d 1 1 d . . . . . d 1 1 d . .
+. d 1 d . . . . . . . d 1 d . .
+. d d . . . . . . . . . d d . .
+. . . . . . . . . . . . . . . .
+`
+export const line_left_on = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . d d . d d . . . . . .
+. . . . d 7 d . d 1 d . . . . .
+. . . d 7 7 d . d 1 1 d . . . .
+. . d 7 7 7 d . d 1 1 1 d . . .
+. d 7 7 7 7 d . d 1 1 1 1 d . .
+. d 7 7 7 7 d . d 1 1 1 1 d . .
+. d 7 7 7 7 d . d 1 1 1 1 d . .
+. d 7 7 7 7 d . d 1 1 1 1 d . .
+. d 7 7 7 d . . . d 1 1 1 d . .
+. d 7 7 d . . . . . d 1 1 d . .
+. d 7 d . . . . . . . d 1 d . .
+. d d . . . . . . . . . d d . .
+. . . . . . . . . . . . . . . .
+`
+export const line_right_on = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . d d . d d . . . . . .
+. . . . d 1 d . d 7 d . . . . .
+. . . d 1 1 d . d 7 7 d . . . .
+. . d 1 1 1 d . d 7 7 7 d . . .
+. d 1 1 1 1 d . d 7 7 7 7 d . .
+. d 1 1 1 1 d . d 7 7 7 7 d . .
+. d 1 1 1 1 d . d 7 7 7 7 d . .
+. d 1 1 1 1 d . d 7 7 7 7 d . .
+. d 1 1 1 d . . . d 7 7 7 d . .
+. d 1 1 d . . . . . d 7 7 d . .
+. d 1 d . . . . . . . d 7 d . .
+. d d . . . . . . . . . d d . .
+. . . . . . . . . . . . . . . .
+`
+export const line_both_on = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . d d . d d . . . . . .
+. . . . d 7 d . d 7 d . . . . .
+. . . d 7 7 d . d 7 7 d . . . .
+. . d 7 7 7 d . d 7 7 7 d . . .
+. d 7 7 7 7 d . d 7 7 7 7 d . .
+. d 7 7 7 7 d . d 7 7 7 7 d . .
+. d 7 7 7 7 d . d 7 7 7 7 d . .
+. d 7 7 7 7 d . d 7 7 7 7 d . .
+. d 7 7 7 d . . . d 7 7 7 d . .
+. d 7 7 d . . . . . d 7 7 d . .
+. d 7 d . . . . . . . d 7 d . .
+. d d . . . . . . . . . d d . .
+. . . . . . . . . . . . . . . .
 `
 
     /* maybe use these later

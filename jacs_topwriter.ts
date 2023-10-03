@@ -816,7 +816,8 @@ namespace jacs {
                 if (
                     m.category == "value_in" ||
                     m.category == "value_out" ||
-                    m.category == "constant"
+                    m.category == "constant" ||
+                    m.category == "line"
                 ) {
                     if (this.breaksValSeq(m) && currSeq.length) {
                         this.emitAddSeq(currSeq, trg, 0, first)
@@ -1123,44 +1124,43 @@ namespace jacs {
                                     wr.emitBufLoad(NumFmt.F64, 12)
                                 )
                                 // hack for keeping car radio from interfering with user radio
-                                if (
-                                    sensor.tid == microcode.TID_SENSOR_CAR_WALL
-                                ) {
+                                if (sensor.tid == microcode.TID_SENSOR_CAR_WALL || 
+                                    sensor.tid == microcode.TID_SENSOR_LINE) {
                                     wr.emitIf(
                                         wr.emitExpr(Op.EXPR2_LT, [
                                             literal(
-                                                microcode.robots
-                                                    .RobotCompactCommand
-                                                    .ObstacleState
+                                                microcode.robots.RobotCompactCommand.ObstacleState
                                             ),
                                             radioVar.read(wr),
                                         ]),
                                         () => {
-                                            radioVar.write(
-                                                wr,
-                                                wr.emitExpr(Op.EXPR2_SUB, [
-                                                    radioVar.read(wr),
-                                                    literal(
-                                                        microcode.robots
-                                                            .RobotCompactCommand
-                                                            .ObstacleState
-                                                    ),
-                                                ])
-                                            )
-                                            filterValueIn(() =>
-                                                radioVar.read(wr)
-                                            )
+                                            if (sensor.tid == microcode.TID_SENSOR_CAR_WALL) {
+                                                radioVar.write(
+                                                    wr,
+                                                    wr.emitExpr(Op.EXPR2_SUB, [
+                                                        radioVar.read(wr),
+                                                        literal(
+                                                            microcode.robots.RobotCompactCommand.ObstacleState
+                                                        ),
+                                                    ])
+                                                )
+                                                filterValueIn(() => radioVar.read(wr))
+                                            } else {
+                                                wr.emitIf(
+                                                    wr.emitExpr(Op.EXPR2_LE, [
+                                                        literal(microcode.robots.RobotCompactCommand.LineState),
+                                                        radioVar.read(wr),
+                                                    ]),
+                                                    () => { filterValueIn(() => radioVar.read(wr)) }
+                                                )
+                                            }
                                         }
                                     )
                                 } else {
                                     wr.emitIf(
                                         wr.emitExpr(Op.EXPR2_LT, [
                                             radioVar.read(wr),
-                                            literal(
-                                                microcode.robots
-                                                    .RobotCompactCommand
-                                                    .ObstacleState
-                                            ),
+                                            literal(microcode.robots.RobotCompactCommand.ObstacleState),
                                         ]),
                                         () => {
                                             filterValueIn(() =>
