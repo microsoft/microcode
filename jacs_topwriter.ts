@@ -1129,9 +1129,7 @@ namespace jacs {
                                     wr.emitIf(
                                         wr.emitExpr(Op.EXPR2_LT, [
                                             literal(
-                                                microcode.robots
-                                                    .RobotCompactCommand
-                                                    .ObstacleState
+                                                microcode.robots.RobotCompactCommand.ObstacleState
                                             ),
                                             radioVar.read(wr),
                                         ]),
@@ -1142,17 +1140,15 @@ namespace jacs {
                                                     wr.emitExpr(Op.EXPR2_SUB, [
                                                         radioVar.read(wr),
                                                         literal(
-                                                            microcode.robots
-                                                                .RobotCompactCommand
-                                                                .ObstacleState
+                                                            microcode.robots.RobotCompactCommand.ObstacleState
                                                         ),
                                                     ])
                                                 )
                                                 filterValueIn(() => radioVar.read(wr))
                                             } else {
                                                 wr.emitIf(
-                                                    wr.emitExpr(Op.EXPR2_LT, [
-                                                        literal(0xfffff1f),
+                                                    wr.emitExpr(Op.EXPR2_LE, [
+                                                        literal(microcode.robots.RobotCompactCommand.LineState),
                                                         radioVar.read(wr),
                                                     ]),
                                                     () => { filterValueIn(() => radioVar.read(wr)) }
@@ -1164,11 +1160,7 @@ namespace jacs {
                                     wr.emitIf(
                                         wr.emitExpr(Op.EXPR2_LT, [
                                             radioVar.read(wr),
-                                            literal(
-                                                microcode.robots
-                                                    .RobotCompactCommand
-                                                    .ObstacleState
-                                            ),
+                                            literal(microcode.robots.RobotCompactCommand.ObstacleState),
                                         ]),
                                         () => {
                                             filterValueIn(() =>

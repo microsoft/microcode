@@ -308,11 +308,11 @@ namespace microcode {
         addEvent(TID_FILTER_TEMP_WARMER, "temperature_event", 2)
         addEvent(TID_FILTER_TEMP_COLDER, "temperature_event", 1)
         
-        if (car_tiles) {
-            const both = addEvent(TID_FILTER_LINE_BOTH, "line", 0xfffff23)
-            const left = addEvent(TID_FILTER_LINE_LEFT, "line", 0xfffff21)
-            const right = addEvent(TID_FILTER_LINE_RIGHT, "line", 0xfffff22)
-            const neither = addEvent(TID_FILTER_LINE_NEITHER, "line", 0xfffff20)
+        if (CAR_TILES) {
+            const both = addEvent(TID_FILTER_LINE_BOTH, "line", robots.RobotCompactCommand.Both)
+            const left = addEvent(TID_FILTER_LINE_LEFT, "line", robots.RobotCompactCommand.Left)
+            const right = addEvent(TID_FILTER_LINE_RIGHT, "line", robots.RobotCompactCommand.Right  )
+            const neither = addEvent(TID_FILTER_LINE_NEITHER, "line", robots.RobotCompactCommand.LineState)
             both.jdKind = left.jdKind = right.jdKind = neither.jdKind = JdKind.Literal
 
             const line = makeSensor(TID_SENSOR_LINE, "line", 505)
@@ -534,11 +534,11 @@ namespace microcode {
 
         if (CAR_TILES) {
             const car_commands = [
-                microcode.robots.RobotCompactCommand.MotorRunForward, // forward
-                microcode.robots.RobotCompactCommand.MotorRunBackward, // reverse
-                microcode.robots.RobotCompactCommand.MotorTurnLeft, // left
-                microcode.robots.RobotCompactCommand.MotorTurnRight, // right
-                microcode.robots.RobotCompactCommand.MotorStop, // stop
+                microcode.robots.RobotCompactCommand.MotorRunForward,
+                microcode.robots.RobotCompactCommand.MotorRunBackward,
+                microcode.robots.RobotCompactCommand.MotorTurnLeft, 
+                microcode.robots.RobotCompactCommand.MotorTurnRight,
+                microcode.robots.RobotCompactCommand.MotorStop,
             ]
             make_vals(car_commands, "car", "CAR", 1)
 
