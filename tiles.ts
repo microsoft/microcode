@@ -277,14 +277,6 @@ namespace microcode {
             wall.constraints.allow.categories = []
             wall.constraints.allow.tiles = only5
             wall.constraints.handling = { terminal: true }
-
-            const line = makeSensor(TID_SENSOR_LINE, "line", 505)
-            line.serviceClassName = "radio"
-            line.eventCode = 0x91
-            line.jdKind = JdKind.Radio
-            line.constraints.allow.categories = []
-            line.constraints.allow.tiles = [TID_FILTER_LINE_LEFT, TID_FILTER_LINE_RIGHT, TID_FILTER_LINE_BOTH, TID_FILTER_LINE_NEITHER]
-            line.constraints.handling = { terminal: true }
         }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
@@ -316,10 +308,19 @@ namespace microcode {
         addEvent(TID_FILTER_TEMP_WARMER, "temperature_event", 2)
         addEvent(TID_FILTER_TEMP_COLDER, "temperature_event", 1)
         
-        addEvent(TID_FILTER_LINE_BOTH, "line", 0xfffff23)
-        addEvent(TID_FILTER_LINE_LEFT, "line", 0xfffff21)
-        addEvent(TID_FILTER_LINE_RIGHT, "line", 0xfffff22)
-        addEvent(TID_FILTER_LINE_NEITHER, "line", 0xfffff20)
+        if (car_tiles) {
+            addEvent(TID_FILTER_LINE_BOTH, "line", 0xfffff23)
+            addEvent(TID_FILTER_LINE_LEFT, "line", 0xfffff21)
+            addEvent(TID_FILTER_LINE_RIGHT, "line", 0xfffff22)
+            const neither = addEvent(TID_FILTER_LINE_NEITHER, "line", 0xfffff20)
+            const line = makeSensor(TID_SENSOR_LINE, "line", 505)
+            line.serviceClassName = "radio"
+            line.eventCode = 0x91
+            line.jdKind = JdKind.Radio
+            line.constraints.allow.categories = []
+            line.constraints.allow.tiles = [TID_FILTER_LINE_LEFT, TID_FILTER_LINE_RIGHT, TID_FILTER_LINE_BOTH, TID_FILTER_LINE_NEITHER]
+            line.constraints.handling = { terminal: true }
+        }
 
         const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
         timer.constraints = {
@@ -378,7 +379,7 @@ namespace microcode {
         }
         microphone.priority = 30
         microphone.serviceClassName = "soundLevel"
-        microphone.eventCode = 1 // laud by default
+        microphone.eventCode = 1 // loud by default
         tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
         function addSoundFilter(tid: string, eventCode: number) {
             const soundFilter = new FilterDefn(tid, "sound_event", 10)

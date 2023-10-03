@@ -1114,16 +1114,18 @@ namespace jacs {
                                     wr.emitBufLoad(NumFmt.F64, 12)
                                 )
                                 // hack for keeping car radio from interfering with user radio
-                                if (sensor.tid == microcode.TID_SENSOR_CAR_WALL) {
+                                if (sensor.tid == microcode.TID_SENSOR_CAR_WALL || 
+                                    sensor.tid == microcode.TID_SENSOR_LINE) {
                                     wr.emitIf(
                                         wr.emitExpr(Op.EXPR2_LT, [
                                             literal(0xfffff10),
                                             radioVar.read(wr),
                                         ]),
                                         () => {
-                                            radioVar.write(
-                                                wr,
-                                                wr.emitExpr(Op.EXPR2_SUB, [radioVar.read(wr), literal(0xfffff10)]))
+                                            if (sensor.tid == microcode.TID_SENSOR_CAR_WALL)
+                                                radioVar.write(
+                                                    wr,
+                                                    wr.emitExpr(Op.EXPR2_SUB, [radioVar.read(wr), literal(0xfffff10)]))
                                             filterValueIn(() => radioVar.read(wr))
                                         })
                                 } else {
