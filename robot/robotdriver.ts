@@ -45,10 +45,6 @@ namespace microcode {
         runDrift = 0
         lineDrift = 10
 
-        private log(name: string, value: number) {
-            // serial.writeValue(name, value)
-        }
-
         constructor(robot: robots.Robot) {
             this.robot = robot
 
@@ -216,8 +212,7 @@ namespace microcode {
                 (lineState & microcode.robots.RobotLineState.Left) === microcode.robots.RobotLineState.Left
             const right =
                 (lineState & microcode.robots.RobotLineState.Right) === microcode.robots.RobotLineState.Right
-            this.log(`line`, lineState)
-            for (let i = 0; i < 5; ++i) {
+            for (let i = 1; i < 5; ++i) {
                 if (left) led.plot(4, i)
                 else led.unplot(4, i)
                 if (right) led.plot(0, i)
