@@ -10,8 +10,8 @@ namespace microcode {
     const TURN_STOP_THRESHOLD = 8
     const MODE_SWITCH_THRESHOLD = 2
     const TARGET_SPEED_THRESHOLD = 8
-    const MODE_TRANSITION_ALPHA = 0.6
-    const SPEED_TRANSITION_ALPHA = 0.9
+    const MODE_TRANSITION_ALPHA = 0.2
+    const SPEED_TRANSITION_ALPHA = 0.8
     const ULTRASONIC_MIN_READING = 1
     const LINE_TURN_ALPHA = 0.7
 
@@ -29,7 +29,7 @@ namespace microcode {
         private lastReceivedMessageId: number = undefined
         private lastCommandTime: number
         private running = false
-        private currentUltrasonicDistance: number = 100
+        currentUltrasonicDistance: number = 100
         private showConfiguration: number
         private configDrift = false
         private currentSpeed: number = 0
@@ -117,8 +117,8 @@ namespace microcode {
                             basic.showString("RADIO", 85)
                         basic.showNumber(microcode.robots.radioGroup, 100)
                     }
-                } else
-                    this.updateSpeed()
+                }
+                this.updateSpeed()
                 basic.pause(5)
             }
         }
@@ -212,9 +212,9 @@ namespace microcode {
         }
 
         private showLineState() {
+            const lineState = this.lineState()
             if (this.showConfiguration) return
 
-            const lineState = this.lineState()
             // render left/right lines
             const left =
                 (lineState & microcode.robots.RobotLineState.Left) === microcode.robots.RobotLineState.Left
@@ -231,13 +231,12 @@ namespace microcode {
 
         private lastSonarValue = 0
         private showSonar() {
+            const dist = this.ultrasonicDistance()
             if (this.showConfiguration) return
 
-            const dist = this.ultrasonicDistance()
             // render sonar
             if (dist > ULTRASONIC_MIN_READING) {
                 const d = Math.clamp(1, 5, Math.ceil(dist / 5))
-                console.log(`d: ${d}`)
                 for (let y = 0; y < 5; y++)
                     if (y + 1 >= d) led.plot(2, y)
                     else led.unplot(2, y)

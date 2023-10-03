@@ -1,20 +1,20 @@
-microcode.elecfreaksCuteBot.start()
-//microcode.yahboomTinyBit.start()
+//microcode.elecfreaksCuteBot.start()
+microcode.yahboomTinyBit.start()
 //microcode.keyStudioMiniSmartRobot.start()
-microcode.setMotorDrift(6)
+//microcode.setMotorDrift(6)
 
-//microcode.robotDriver.motorRun(100)
+//microcode.robotDriver.motorTurn(-100)
 
 basic.forever(() => {
-    const dist = microcode.robotDriver.ultrasonicDistance()
-    if (dist > 10) microcode.robotDriver.motorRun(100)
+    const dist = microcode.robotDriver.currentUltrasonicDistance
+    if (dist > 10) {
+        microcode.robotDriver.motorRun(100)
+        pause(200)
+    }
     else {
-        microcode.robotDriver.motorStop()
         microcode.robotDriver.motorRun(-100)
-        pause(400)
-        microcode.robotDriver.motorStop()
+        basic.pause(1000)
         microcode.robotDriver.motorTurn(100)
-        pause(400)
-        microcode.robotDriver.motorStop()
+        basic.pause(1000)
     }
 })
