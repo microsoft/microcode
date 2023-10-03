@@ -1122,11 +1122,20 @@ namespace jacs {
                                             radioVar.read(wr),
                                         ]),
                                         () => {
-                                            if (sensor.tid == microcode.TID_SENSOR_CAR_WALL)
+                                            if (sensor.tid == microcode.TID_SENSOR_CAR_WALL) {
                                                 radioVar.write(
                                                     wr,
                                                     wr.emitExpr(Op.EXPR2_SUB, [radioVar.read(wr), literal(0xfffff10)]))
-                                            filterValueIn(() => radioVar.read(wr))
+                                                filterValueIn(() => radioVar.read(wr))
+                                            } else {
+                                                wr.emitIf(
+                                                    wr.emitExpr(Op.EXPR2_LT, [
+                                                        literal(0xfffff1F),
+                                                        radioVar.read(wr),
+                                                    ]),
+                                                    () => { filterValueIn(() => radioVar.read(wr)) }
+                                                )
+                                            }
                                         })
                                 } else {
                                     wr.emitIf(
