@@ -10,7 +10,7 @@ namespace microcode {
     const MODE_SWITCH_THRESHOLD = 2
     const TARGET_SPEED_THRESHOLD = 4
     const MODE_TRANSITION_ALPHA = 0.2
-    const SPEED_TRANSITION_ALPHA = 0.91
+    const SPEED_TRANSITION_ALPHA = 0.915
     const ULTRASONIC_MIN_READING = 1
     const LINE_TURN_ALPHA = 0.7
 
@@ -278,6 +278,7 @@ namespace microcode {
             this.setHeadlingSpeedColor(speed)
             this.targetSpeedMode = RobotSpeedMode.Turn
             this.targetSpeed = speed
+            this.currentSpeed = 0
         }
 
         motorStop() {

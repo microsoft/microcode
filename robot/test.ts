@@ -1,5 +1,5 @@
-microcode.elecfreaksCuteBot.start()
-//microcode.yahboomTinyBit.start()
+//microcode.elecfreaksCuteBot.start()
+microcode.yahboomTinyBit.start()
 //microcode.keyStudioMiniSmartRobot.start()
 //microcode.setMotorDrift(6)
 /*

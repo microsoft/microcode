@@ -118,15 +118,16 @@ namespace microcode {
             pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
             pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
 
-            this.maxLineRunSpeed = 80
+            this.maxLineRunSpeed = 64
             this.maxLineTurnSpeed = 80
-            this.maxRunSpeed = 80
-            this.maxBackSpeed = 70
+            this.maxRunSpeed = 75
+            this.maxBackSpeed = 64
             this.maxTurnSpeed = 80
         }
 
         motorRun(left: number, right: number): void {
             const speed = (left + right) >> 1
+            console.log(`run: ${speed}`)
             if (left === 0 && right === 0)
                 Car_stop()
             else if (left >= 0 && right >= 0)
@@ -140,12 +141,13 @@ namespace microcode {
         }
 
         motorTurn(speed: number): void {
+            console.log(`turn: ${speed}`)
             if (speed === 0)
                 Car_stop()
             else if (speed > 0)
-                Car_spinright(speed, 0)
+                Car_right(speed, speed / 2)
             else
-                Car_spinleft(0, -speed)
+                Car_left(-speed / 2, -speed)
         }
 
         headlightsSetColor(red: number, green: number, blue: number) {
@@ -153,8 +155,8 @@ namespace microcode {
         }
 
         ultrasonicDistance(): number {
-            const b = control.ramSize()
-            if (b <= 16384)
+            const v = control.hardwareVersion()
+            if (v === "1")
                 return Ultrasonic_CarV1()
             else 
                 return Ultrasonic_CarV2()
