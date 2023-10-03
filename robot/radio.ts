@@ -1,25 +1,20 @@
 namespace microcode.robots {
     const MAX_GROUPS = 10
-    let group = (control.deviceSerialNumber() % 9) + 1
-    radio.setGroup(group)
+    export let radioGroup = (control.deviceSerialNumber() % 9) + 1
+    radio.setGroup(radioGroup)
 
     export function previousGroup() {
-        setGroup(group === 1 ? MAX_GROUPS - 1 : group - 1)
+        setGroup(radioGroup === 1 ? MAX_GROUPS - 1 : radioGroup - 1)
     }
 
     export function nextGroup() {
-        setGroup(group === MAX_GROUPS - 1 ? 1 : group + 1)
+        setGroup(radioGroup === MAX_GROUPS - 1 ? 1 : radioGroup + 1)
     }
 
     export function setGroup(newGroup: number) {
         if (newGroup < 0) newGroup += MAX_GROUPS
-        group = newGroup % MAX_GROUPS
-        radio.setGroup(group)
-    }
-
-    export function showRadioStatus() {
-        led.stopAnimation()
-        basic.showNumber(group, 10)
+        radioGroup = newGroup % MAX_GROUPS
+        radio.setGroup(radioGroup)
     }
 
     let nextMessageId = 0
