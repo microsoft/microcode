@@ -73,10 +73,11 @@ namespace microcode {
         constructor() {
             super()
             this.musicVolume = 168
-            this.maxRunSpeed = 40
+            this.maxRunSpeed = 35
             this.maxBackSpeed = 20
             this.maxTurnSpeed = 30
-            this.maxLineTrackingSpeed = 25
+            this.maxLineRunSpeed = 25
+            this.maxLineTurnSpeed = 25
 
             pins.setPull(DigitalPin.P8, PinPullMode.PullNone)
             pins.setPull(DigitalPin.P13, PinPullMode.PullNone)

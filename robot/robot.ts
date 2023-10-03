@@ -5,7 +5,8 @@ namespace microcode.robots {
         maxRunSpeed = 80
         maxBackSpeed = 50
         maxTurnSpeed = 60
-        maxLineTrackingSpeed = 40
+        maxLineRunSpeed = 40
+        maxLineTurnSpeed = 50
 
         constructor() {
 
