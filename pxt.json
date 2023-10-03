@@ -47,7 +47,8 @@
         "docs.ts",
         "gallery.ts",
         "pointerevents.ts",
-        "tooltips.ts"
+        "tooltips.ts",
+        "robot/protocol.ts"
     ],
     "testFiles": [],
     "targetVersions": {

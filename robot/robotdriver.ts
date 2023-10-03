@@ -4,14 +4,14 @@
 //% color="#ff6800" icon="\uf1b9" weight=15
 namespace microcode {
     const ROBOT_TIMEOUT = 1000
-    const SHOW_RADIO_COUNT = 20
+    const SHOW_CONFIG_COUNT = 6
 
     const RUN_STOP_THRESHOLD = 8
     const TURN_STOP_THRESHOLD = 8
     const MODE_SWITCH_THRESHOLD = 2
     const TARGET_SPEED_THRESHOLD = 8
-    const MODE_TRANSITION_ALPHA = 0.6
-    const SPEED_TRANSITION_ALPHA = 0.9
+    const MODE_TRANSITION_ALPHA = 0.2
+    const SPEED_TRANSITION_ALPHA = 0.8
     const ULTRASONIC_MIN_READING = 1
     const LINE_TURN_ALPHA = 0.7
 
@@ -29,8 +29,9 @@ namespace microcode {
         private lastReceivedMessageId: number = undefined
         private lastCommandTime: number
         private running = false
-        private currentUltrasonicDistance: number = 100
-        private showRadio: number
+        currentUltrasonicDistance: number = 100
+        private showConfiguration: number
+        private configDrift = false
         private currentSpeed: number = 0
         private currentSpeedMode = RobotSpeedMode.Run
         private targetSpeed: number = 0
@@ -45,7 +46,7 @@ namespace microcode {
         lineDrift = 10
 
         private log(name: string, value: number) {
-           // serial.writeValue(name, value)
+            // serial.writeValue(name, value)
         }
 
         constructor(robot: robots.Robot) {
@@ -64,17 +65,30 @@ namespace microcode {
             if (this.running) return
 
             this.running = true
-            this.showRadio = SHOW_RADIO_COUNT
+            this.showConfiguration = SHOW_CONFIG_COUNT
             // wake up sensors
             this.ultrasonicDistance()
             this.lineState()
             input.onButtonPressed(Button.A, () => {
-                robots.previousGroup()
-                this.showRadio = SHOW_RADIO_COUNT
+                if (this.configDrift)
+                    this.runDrift--
+                else
+                    robots.previousGroup()
+                this.showConfiguration = SHOW_CONFIG_COUNT - 1
+                led.stopAnimation()
             })
             input.onButtonPressed(Button.B, () => {
-                robots.nextGroup()
-                this.showRadio = SHOW_RADIO_COUNT
+                if (this.configDrift)
+                    this.runDrift++
+                else
+                    robots.nextGroup()
+                this.showConfiguration = SHOW_CONFIG_COUNT - 1
+                led.stopAnimation()
+            })
+            input.onButtonPressed(Button.AB, () => {
+                this.configDrift = !this.configDrift
+                this.showConfiguration = SHOW_CONFIG_COUNT
+                led.stopAnimation()
             })
             this.startRadioReceiver()
             basic.forever(() => this.showLineState())
@@ -89,9 +103,20 @@ namespace microcode {
                     music.stopAllSounds()
                     this.stopToneMillis = 0
                 }
-                if (this.showRadio > 0) {
-                    this.showRadio--
-                    microcode.robots.showRadioStatus()
+                const cf = this.showConfiguration
+                if (cf > 0) {
+                    this.showConfiguration--
+                    led.stopAnimation()
+                    if (this.configDrift) {
+                        if (cf === SHOW_CONFIG_COUNT)
+                            basic.showString("DRIFT", 85)
+                        basic.showNumber(this.runDrift, 100)
+                    }
+                    else {
+                        if (cf === SHOW_CONFIG_COUNT)
+                            basic.showString("RADIO", 85)
+                        basic.showNumber(microcode.robots.radioGroup, 100)
+                    }
                 }
                 this.updateSpeed()
                 basic.pause(5)
@@ -168,7 +193,7 @@ namespace microcode {
         }
 
         private showMotorState(left: number, right: number) {
-            if (this.showRadio > 0) return
+            if (this.showConfiguration) return
             this.showSingleMotorState(3, left)
             this.showSingleMotorState(1, right)
         }
@@ -187,9 +212,9 @@ namespace microcode {
         }
 
         private showLineState() {
-            if (this.showRadio > 0) return
-
             const lineState = this.lineState()
+            if (this.showConfiguration) return
+
             // render left/right lines
             const left =
                 (lineState & microcode.robots.RobotLineState.Left) === microcode.robots.RobotLineState.Left
@@ -206,21 +231,19 @@ namespace microcode {
 
         private lastSonarValue = 0
         private showSonar() {
-            if (this.showRadio > 0) return
-
             const dist = this.ultrasonicDistance()
-            this.log(`sonar dist`, dist)
+            if (this.showConfiguration) return
+
             // render sonar
             if (dist > ULTRASONIC_MIN_READING) {
                 const d = Math.clamp(1, 5, Math.ceil(dist / 5))
-                console.log(`d: ${d}`)
                 for (let y = 0; y < 5; y++)
                     if (y + 1 >= d) led.plot(2, y)
                     else led.unplot(2, y)
 
                 if (d !== this.lastSonarValue) {
                     this.lastSonarValue = d
-                    const msg = microcode.robots.RobotCompactCommand.Obstacle | d
+                    const msg = microcode.robots.RobotCompactCommand.ObstacleState | d
                     microcode.robots.sendCompactCommand(msg)
                     this.playTone(2400 - d * 400, 200 + d * 25)
                 }
@@ -282,7 +305,7 @@ namespace microcode {
             if (ls !== this.currentLineState) {
                 this.currentLineState = ls
                 const msg = microcode.robots.RobotCompactCommand.LineState | this.currentLineState
-                microcode.robots.sendCompactCommand(msg)                
+                microcode.robots.sendCompactCommand(msg)
             }
             return ls
         }

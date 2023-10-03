@@ -171,6 +171,10 @@ In this video, we launch an LED animation when a clap is detected.
 
 <video class="sample" poster="./videos/jacdac-led.png" src="./videos/jacdac-led.mp4" controls="true"></video>
 
+## [Robot](./robot)
+
+Program a robot using microcode...
+
 ## Community pages and videos
 
 -   [KittenBot MicroCode introduction](https://mp.weixin.qq.com/s/yBQMU2IAbeHgr-ok05THTA)

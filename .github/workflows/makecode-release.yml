@@ -40,7 +40,7 @@ jobs:
                   makecode -c mkc-cutebot.json
                   cp ./built/binary.hex ../assets/robot-cutebot.hex
                   makecode -c mkc-yahboomtinybit.json
-                  cp ./built/binary.hex ../assets/robot-yahboomtinybit.hex
+                  cp ./built/binary.hex ../assets/robot-tinybit.hex
             - name: copy files
               run: |
                   cp ./built/binary.js ./assets/js/binary.js

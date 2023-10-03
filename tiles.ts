@@ -269,7 +269,7 @@ namespace microcode {
         slider.constraints.allow.tiles = only5
         slider.constraints.handling = { terminal: true }
 
-        if (car_tiles) {
+        if (CAR_TILES) {
             const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in", 500)
             wall.serviceClassName = "radio"
             wall.eventCode = 0x91
@@ -508,11 +508,11 @@ namespace microcode {
                 const tid = kind + (start + index)
                 const tile: FilterModifierBase =
                     kind == "F"
-                        ? new FilterDefn(tid, name, 10) 
+                        ? new FilterDefn(tid, name, 10)
                         : new ModifierDefn(tid, name, 10)
                 tile.jdKind = kind == "CAR" ? JdKind.NumFmt : JdKind.Literal
                 tile.jdParam = kind == "CAR" ? jacs.NumFmt.F64 : v
-                tile.jdParam2 = kind == "CAR" ? v : 0;
+                tile.jdParam2 = kind == "CAR" ? v : 0
                 if (kind == "F") tilesDB.filters[tid] = tile as FilterDefn
                 else tilesDB.modifiers[tid] = tile
                 tile.constraints = {
@@ -532,21 +532,21 @@ namespace microcode {
             m.jdKind = JdKind.Page
         })
 
-        if (car_tiles) {
-            const car_commands =
-                [   0xfffff001, // forward
-                    0xfffff002, // reverse
-                    0xfffff003, // left
-                    0xfffff004, // right
-                    0xfffff005  // stop
-                ]
+        if (CAR_TILES) {
+            const car_commands = [
+                microcode.robots.RobotCompactCommand.MotorRunForward, // forward
+                microcode.robots.RobotCompactCommand.MotorRunBackward, // reverse
+                microcode.robots.RobotCompactCommand.MotorTurnLeft, // left
+                microcode.robots.RobotCompactCommand.MotorTurnRight, // right
+                microcode.robots.RobotCompactCommand.MotorStop, // stop
+            ]
             make_vals(car_commands, "car", "CAR", 1)
-            
+
             const car = addActuator(TID_ACTUATOR_CAR, ["car"])
             car.priority = 900
             car.jdKind = JdKind.Sequence
             car.serviceClassName = "radio"
-            car.serviceCommand = 0x81 
+            car.serviceCommand = 0x81
             car.defaultModifier = tilesDB.modifiers[TID_MODIFIER_CAR_STOP]
         }
 

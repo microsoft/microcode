@@ -80,7 +80,7 @@ namespace microcode {
         pins.i2cWriteBuffer(PWM_ADD, buf);
     }
 
-    function Ultrasonic_Car(): number {
+    function Ultrasonic_CarV1(): number {
 
         let list: Array<number> = [0, 0, 0, 0, 0];
         for (let i = 0; i < 5; i++) {
@@ -117,7 +117,11 @@ namespace microcode {
 
             pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
             pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
-            this.maxLineTrackingSpeed = 60
+
+            this.maxLineTrackingSpeed = 80
+            this.maxRunSpeed = 80
+            this.maxBackSpeed = 70
+            this.maxTurnSpeed = 80
         }
 
         motorRun(left: number, right: number): void {
@@ -139,7 +143,7 @@ namespace microcode {
                 Car_stop()
             else if (speed > 0)
                 Car_spinright(speed, 0)
-            else 
+            else
                 Car_spinleft(0, -speed)
         }
 
@@ -148,7 +152,11 @@ namespace microcode {
         }
 
         ultrasonicDistance(): number {
-            return Ultrasonic_CarV2()
+            const b = control.ramSize()
+            if (b <= 16384)
+                return Ultrasonic_CarV1()
+            else 
+                return Ultrasonic_CarV2()
         }
 
         lineState(): microcode.robots.RobotLineState {

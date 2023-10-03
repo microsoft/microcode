@@ -639,21 +639,30 @@ namespace jacs {
                         if (p.jdParam2 !== undefined)
                             args.push(literal(p.jdParam2))
                         this.callLinked(p.jdParam, args)
-                    } else if (p.jdKind == microcode.JdKind.NumFmt && p.jdParam == NumFmt.F64) {
+                    } else if (
+                        p.jdKind == microcode.JdKind.NumFmt &&
+                        p.jdParam == NumFmt.F64
+                    ) {
                         // TODO: generalize this to work with other formats
                         const fmt: NumFmt = NumFmt.F64
                         const sz = bitSize(fmt) >> 3
                         wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
-                        wr.emitBufStore(literal(p.jdParam2, Op.EXPRx_LITERAL_F64),
-                            NumFmt.F64, 0)
+                        wr.emitBufStore(
+                            literal(p.jdParam2, Op.EXPRx_LITERAL_F64),
+                            NumFmt.F64,
+                            0
+                        )
                         this.emitSendCmd(role, actuator.serviceCommand)
                         this.emitSleep(5)
                         wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
-                        wr.emitBufStore(literal(p.jdParam2, Op.EXPRx_LITERAL_F64),
-                            NumFmt.F64, 0)
+                        wr.emitBufStore(
+                            literal(p.jdParam2, Op.EXPRx_LITERAL_F64),
+                            NumFmt.F64,
+                            0
+                        )
                         this.emitSendCmd(role, actuator.serviceCommand)
                         this.emitSleep(500)
-                    }  else {
+                    } else {
                         throw "oops"
                     }
                 }
@@ -1119,14 +1128,26 @@ namespace jacs {
                                     sensor.tid == microcode.TID_SENSOR_LINE) {
                                     wr.emitIf(
                                         wr.emitExpr(Op.EXPR2_LT, [
-                                            literal(0xfffff10),
+                                            literal(
+                                                microcode.robots
+                                                    .RobotCompactCommand
+                                                    .ObstacleState
+                                            ),
                                             radioVar.read(wr),
                                         ]),
                                         () => {
                                             if (sensor.tid == microcode.TID_SENSOR_CAR_WALL) {
                                                 radioVar.write(
                                                     wr,
-                                                    wr.emitExpr(Op.EXPR2_SUB, [radioVar.read(wr), literal(0xfffff10)]))
+                                                    wr.emitExpr(Op.EXPR2_SUB, [
+                                                        radioVar.read(wr),
+                                                        literal(
+                                                            microcode.robots
+                                                                .RobotCompactCommand
+                                                                .ObstacleState
+                                                        ),
+                                                    ])
+                                                )
                                                 filterValueIn(() => radioVar.read(wr))
                                             } else {
                                                 wr.emitIf(
@@ -1137,16 +1158,24 @@ namespace jacs {
                                                     () => { filterValueIn(() => radioVar.read(wr)) }
                                                 )
                                             }
-                                        })
+                                        }
+                                    )
                                 } else {
                                     wr.emitIf(
                                         wr.emitExpr(Op.EXPR2_LT, [
                                             radioVar.read(wr),
-                                            literal(0xfffff10)
+                                            literal(
+                                                microcode.robots
+                                                    .RobotCompactCommand
+                                                    .ObstacleState
+                                            ),
                                         ]),
                                         () => {
-                                            filterValueIn(() => radioVar.read(wr))
-                                        })
+                                            filterValueIn(() =>
+                                                radioVar.read(wr)
+                                            )
+                                        }
+                                    )
                                 }
                             }
                         )
