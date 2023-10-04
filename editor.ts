@@ -202,6 +202,11 @@ namespace microcode {
                 return
             }
 
+            if (target.xfrm.root === this.hudroot.xfrm) {
+                this.moveTo(target)
+                return
+            }
+
             const occBounds = new Bounds({
                 left: Screen.LEFT_EDGE,
                 top: Screen.TOP_EDGE + TOOLBAR_HEIGHT + TOOLBAR_MARGIN,
