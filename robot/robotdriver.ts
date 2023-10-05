@@ -107,17 +107,21 @@ namespace microcode {
                         if (cf === SHOW_CONFIG_COUNT)
                             basic.showString("DRIFT", 85)
                         basic.showNumber(this.runDrift, 100)
+                        basic.clearScreen()
                     }
                     else {
                         if (cf === SHOW_CONFIG_COUNT)
                             basic.showString("RADIO", 85)
                         basic.showNumber(microcode.robots.radioGroup, 100)
+                        basic.clearScreen()
                     }
                 }
                 this.updateSpeed()
                 basic.pause(5)
             }
         }
+
+        private inRadioMessageId = 0
 
         private startRadioReceiver() {
             // handle radio package messages
@@ -218,6 +222,10 @@ namespace microcode {
                 if (right) led.plot(0, i)
                 else led.unplot(0, i)
             }
+            if (this.inRadioMessageId % 2)
+                led.plot(4, 0)
+            else
+                led.unplot(4, 0)
         }
 
         private lastSonarValue = 0
@@ -347,6 +355,7 @@ namespace microcode {
                         payload.getNumber(NumberFormat.Int16LE, 0)
                     )
                     this.motorRun(speed)
+                    this.inRadioMessageId++
                     break
                 }
                 case robots.RobotCommand.MotorTurn: {
@@ -356,6 +365,7 @@ namespace microcode {
                         payload.getNumber(NumberFormat.Int16LE, 0)
                     )
                     this.motorTurn(speed)
+                    this.inRadioMessageId++
                     break
                 }
             }
