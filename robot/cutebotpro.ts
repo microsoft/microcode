@@ -29,9 +29,6 @@ namespace microcode {
 
 
     function pwmCruiseControl(speedL: number, speedR: number): void {
-        console.log(`left: ${speedL}`)
-        console.log(`right: ${speedR}`)
-
         let i2cBuffer = pins.createBuffer(7)
 
         if (speedL == 0)
@@ -219,11 +216,11 @@ namespace microcode {
         constructor() {
             super()
             this.musicVolume = 168
-            this.maxRunSpeed = 80
-            this.maxBackSpeed = 80
-            this.maxTurnSpeed = 70
-            this.maxLineRunSpeed = 50
-            this.maxLineTurnSpeed = 50
+            this.maxRunSpeed = 50
+            this.maxBackSpeed = 50
+            this.maxTurnSpeed = 50
+            this.maxLineRunSpeed = 30
+            this.maxLineTurnSpeed = 30
 
             const v = readVersions()
             console.log(`cutebot pro version: ${v}`)
@@ -235,7 +232,7 @@ namespace microcode {
 
         motorTurn(speed: number) {
             console.log(`speed: ${speed}`)
-            const op = Math.abs(speed) >> 1
+            const op = Math.abs(speed) / 3
             if (speed > 0) pwmCruiseControl(speed, Math.constrain(this.maxTurnSpeed - speed, 0, op))
             else pwmCruiseControl(Math.constrain(this.maxTurnSpeed + speed, 0, op), -speed)
         }
@@ -250,8 +247,30 @@ namespace microcode {
 
         lineState(): microcode.robots.RobotLineState {
             const state = trackbitStateValue()
-            const left = (state & (0x01 | 0x02)) ? 1 : 0
-            const right = (state & (0x04 | 0x08)) ? 1 : 0
+            let left = 0
+            let right = 0
+            switch (state) {
+                case TrackbitStateType.Tracking_State_0: // oooo
+                case TrackbitStateType.Tracking_State_4: // xoox
+                case TrackbitStateType.Tracking_State_10: // oxox
+                case TrackbitStateType.Tracking_State_15: // oxox
+                    break
+                case TrackbitStateType.Tracking_State_1: // oxxo
+                case TrackbitStateType.Tracking_State_5: // xxxx
+                    left = 1; right = 1; break
+                case TrackbitStateType.Tracking_State_3: // oxoo
+                case TrackbitStateType.Tracking_State_7: // xxox
+                case TrackbitStateType.Tracking_State_8: // xooo
+                case TrackbitStateType.Tracking_State_9: // xxxo
+                case TrackbitStateType.Tracking_State_11: // xxoo
+                    left = 1; break;
+                case TrackbitStateType.Tracking_State_2: // ooxo
+                case TrackbitStateType.Tracking_State_7: // xxox
+                case TrackbitStateType.Tracking_State_12: // ooox
+                case TrackbitStateType.Tracking_State_13: // oxxx
+                case TrackbitStateType.Tracking_State_14: // ooxx
+                    right = 1; break
+            }
 
             return (left << 0) | (right << 1)
         }
