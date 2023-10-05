@@ -15,7 +15,8 @@
         "robotdriver.ts",
         "yahboomtinybit.ts",
         "cutebot.ts",
-        "blocks.ts"
+        "blocks.ts",
+        "cutebotpro.ts"
     ],
     "testFiles": [
         "test.ts"

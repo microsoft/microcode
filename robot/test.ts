@@ -1,8 +1,11 @@
-microcode.elecfreaksCuteBot.start()
+//microcode.elecfreaksCuteBot.start()
+microcode.elecfreaksCuteBotPro.start()
 //microcode.yahboomTinyBit.start()
 //microcode.keyStudioMiniSmartRobot.start()
 //microcode.setMotorDrift(6)
-/*
+
+microcode.robotDriver.motorRun(100)
+
 basic.forever(() => {
     const lines = microcode.robotDriver.currentLineState
     if (lines === microcode.robots.RobotLineState.Left)
@@ -12,4 +15,3 @@ basic.forever(() => {
     else
         microcode.robotDriver.motorRun(100)
 })
-*/

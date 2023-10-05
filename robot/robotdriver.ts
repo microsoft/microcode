@@ -177,13 +177,13 @@ namespace microcode {
                 this.robot.motorRun(left, right)
                 this.showMotorState(left, right)
             } else {
+                let s = this.currentSpeed
                 if (lines)
-                    this.currentSpeed = Math.sign(this.currentSpeed) * Math.min(Math.abs(this.currentSpeed), this.robot.maxLineTurnSpeed)
-                console.log(`cs ${this.currentSpeed}, ts: ${this.targetSpeed}`)
-                this.robot.motorTurn(this.currentSpeed)
+                    s = Math.sign(this.currentSpeed) * Math.min(Math.abs(this.currentSpeed), this.robot.maxLineTurnSpeed)
+                this.robot.motorTurn(s)
                 this.showMotorState(
-                    this.currentSpeed > 0 ? this.currentSpeed : 0,
-                    this.currentSpeed <= 0 ? 0 : -this.currentSpeed
+                    s > 0 ? s : 0,
+                    s <= 0 ? 0 : -s
                 )
             }
         }
