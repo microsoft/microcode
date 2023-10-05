@@ -356,6 +356,7 @@ namespace microcode {
                     )
                     this.motorRun(speed)
                     this.inRadioMessageId++
+                    this.playTone(440, 50)
                     break
                 }
                 case robots.RobotCommand.MotorTurn: {
@@ -366,6 +367,7 @@ namespace microcode {
                     )
                     this.motorTurn(speed)
                     this.inRadioMessageId++
+                    this.playTone(932, 50)
                     break
                 }
             }
