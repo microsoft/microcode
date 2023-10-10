@@ -69,7 +69,7 @@ namespace microcode {
         }
     }
 
-    export class Picker extends Component implements IPlaceable {
+    export class Picker implements IComponent, IPlaceable {
         public groups: PickerGroup[]
         public navigator: INavigator
         public visible: boolean
@@ -90,7 +90,6 @@ namespace microcode {
         }
 
         constructor(private cursor: Cursor) {
-            super("picker")
             this.xfrm_ = new Affine()
             this.groups = []
             this.navigator = new RowNavigator()

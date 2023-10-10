@@ -195,13 +195,6 @@ namespace microcode {
                 return
             }
 
-            if (target.destroyed) {
-                console.warn(
-                    `scroll/move destroyed sprite '${target.id} ${target.ariaId}'`
-                )
-                return
-            }
-
             if (target.rootXfrm.tag === "hud") {
                 this.moveTo(target)
                 return
@@ -461,8 +454,7 @@ namespace microcode {
             this.cursor.navigator = this.navigator
         }
 
-        /* override */ update() {
-            super.update()
+        update() {
 
             if (this.pageEditor) {
                 this.pageEditor.update()
@@ -534,7 +526,7 @@ namespace microcode {
         }
     }
 
-    export class PageEditor extends Component implements IPlaceable {
+    export class PageEditor implements IComponent, IPlaceable {
         private xfrm_: Affine
         public ruleEditors: RuleEditor[]
 
@@ -548,7 +540,6 @@ namespace microcode {
             parent: IPlaceable,
             private pagedef: PageDefn
         ) {
-            super("page_editor")
             this.xfrm_ = new Affine()
             this.xfrm_.parent = parent.xfrm
             this.ruleEditors = pagedef.rules.map(
@@ -558,10 +549,9 @@ namespace microcode {
             this.layout()
         }
 
-        /* override */ destroy() {
+        destroy() {
             this.ruleEditors.forEach(rule => rule.destroy())
             this.ruleEditors = undefined
-            super.destroy()
         }
 
         private ensureFinalEmptyRule() {

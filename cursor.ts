@@ -16,7 +16,7 @@ namespace microcode {
         size: Bounds
     }
 
-    export class Cursor extends Component implements IPlaceable {
+    export class Cursor implements IComponent, IPlaceable {
         xfrm: Affine
         navigator: INavigator
         cancelHandlerStack: CursorCancelHandler[]
@@ -29,7 +29,6 @@ namespace microcode {
         visible = true
 
         constructor() {
-            super("cursor")
             this.xfrm = new Affine()
             this.cancelHandlerStack = []
             this.moveDest = new Vec2()

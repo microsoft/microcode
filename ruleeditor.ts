@@ -3,7 +3,7 @@ namespace microcode {
 
     const repNames = ["sensors", "filters", "actuators", "modifiers"]
 
-    export class RuleEditor extends Component implements IPlaceable {
+    export class RuleEditor implements IComponent, IPlaceable {
         private xfrm_: Affine
         innerWidth: number
         handleBtn: Button
@@ -26,7 +26,6 @@ namespace microcode {
             public ruledef: RuleDefn,
             public index: number
         ) {
-            super("rule_editor")
             this.xfrm_ = new Affine()
             this.xfrm_.parent = page.xfrm
             this.handleBtn = new EditorButton(editor, {
@@ -117,7 +116,6 @@ namespace microcode {
             this.handleBtn = undefined
             this.whenInsertBtn = undefined
             this.doInsertBtn = undefined
-            super.destroy()
         }
 
         private destroyProgramTiles() {

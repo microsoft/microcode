@@ -67,7 +67,7 @@ namespace microcode {
         return borderTop(style) + borderBottom(style)
     }
 
-    export class Button extends Component implements ISizable, IPlaceable {
+    export class Button implements IComponent, ISizable, IPlaceable {
         private xfrm_: Affine
         private icon: Sprite
         //private text: TextSprite;
@@ -132,7 +132,6 @@ namespace microcode {
             y: number
             onClick?: (button: Button) => void
         }) {
-            super("button")
             this.xfrm_ = new Affine()
             this.xfrm.parent = opts.parent && opts.parent.xfrm
             this.style = opts.style || ButtonStyles.Transparent
@@ -148,10 +147,7 @@ namespace microcode {
             if (this.icon) {
                 this.icon.destroy()
             }
-            //if (this.text) { this.text.destroy(); }
             this.icon = undefined
-            //this.text = undefined;
-            super.destroy()
         }
 
         public getIcon() {

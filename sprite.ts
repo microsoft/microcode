@@ -1,5 +1,5 @@
 namespace microcode {
-    export class Sprite extends Component implements IPlaceable, ISizable {
+    export class Sprite implements IComponent, IPlaceable, ISizable {
         private xfrm_: Affine
         image: Image
         invisible: boolean
@@ -30,7 +30,6 @@ namespace microcode {
         }
 
         constructor(opts: { parent?: IPlaceable; img: Image }) {
-            super("sprite")
             this.xfrm_ = new Affine()
             this.xfrm_.parent = opts.parent && opts.parent.xfrm
             this.image = opts.img
