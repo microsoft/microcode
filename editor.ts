@@ -202,7 +202,7 @@ namespace microcode {
                 return
             }
 
-            if (target.rootXfrm.tag === "hud") {
+            if (target.xfrm.root === this.hudroot.xfrm) {
                 this.moveTo(target)
                 return
             }
@@ -259,7 +259,6 @@ namespace microcode {
                 )
             this.hudroot = new Placeable()
             this.hudroot.xfrm.localPos = new Vec2(0, Screen.TOP_EDGE)
-            this.hudroot.xfrm.tag = "hud"
             this.scrollroot = new Placeable()
             this.scrollroot.xfrm.localPos = new Vec2(
                 Screen.LEFT_EDGE,
