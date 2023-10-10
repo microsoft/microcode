@@ -104,10 +104,6 @@ namespace microcode {
             return false
         }
 
-        destroy() {
-            this.navigator = undefined
-        }
-
         update() {
             const currTimeMs = control.millis()
             const elapsedTimeMs = currTimeMs - this.moveStartMs
@@ -126,7 +122,7 @@ namespace microcode {
             this.cycle = currTimeMs % 1000 < 500 ? 1 : 0
         }
 
-        /* override */ draw() {
+        draw() {
             control.enablePerfCounter()
             if (!this.visible) return
 

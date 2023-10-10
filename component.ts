@@ -1,7 +1,6 @@
 namespace microcode {
 
     export interface IComponent {
-        destroy: () => void
         update: () => void
         draw: () => void
     }

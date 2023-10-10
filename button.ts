@@ -142,14 +142,7 @@ namespace microcode {
             this.onClick = opts.onClick
             this.buildSprite()
         }
-
-        destroy() {
-            if (this.icon) {
-                this.icon.destroy()
-            }
-            this.icon = undefined
-        }
-
+        
         public getIcon() {
             return this.iconId
         }
@@ -167,10 +160,6 @@ namespace microcode {
         }
 
         private buildSprite() {
-            if (this.icon) {
-                this.icon.destroy()
-            }
-            //if (this.text) { this.text.destroy(); }
             this.icon = new Sprite({
                 parent: this,
                 img:
@@ -179,9 +168,6 @@ namespace microcode {
                         : this.iconId,
             })
             this.icon.xfrm.parent = this.xfrm
-            //this.icon.xfrm.localPos.x = borderLeft(this.style);
-            //this.icon.xfrm.localPos.y = borderTop(this.style);
-
             // This isn't quite right, but it's close enough for now
             this.bounds_ = Bounds.GrowXY(
                 this.icon.bounds,
@@ -220,46 +206,18 @@ namespace microcode {
             }
         }
 
-        hover(hov: boolean) {
-            /*
-            if (hov && this.text) { return; }
-            if (!hov && !this.text) { return; }
-            if (!this.label) { return; }
-            if (!this.visible()) { return; }
-            if (hov) {
-                this.text = textsprite.create(this.label, 1, 15);
-                this.text.setBorder(1, 15);
-                this.text.x = this.x;
-                this.text.y = this.y - this.height;
-                this.text.z = this.icon.z;
-            } else {
-                this.text.destroy();
-                this.text = undefined;
-            }
-            */
-        }
+        hover(hov: boolean) { }
 
-        /* override */ update() {
-            /*
-            if (this.text) {
-                this.text.x = this.x;
-                this.text.y = this.y - this.height;
-            }
-            */
-        }
+        update() { }
 
         isOffScreenX(): boolean {
             return this.icon.isOffScreenX()
         }
 
-        /* override */ draw() {
+        draw() {
             control.enablePerfCounter()
             this.drawStyle()
             this.drawIcon()
-            //const iconbounds = Bounds.Translate(this.icon.bounds, this.icon.xfrm.worldPos);
-            //iconbounds.drawRect(5);
-            //const mybounds = Bounds.Translate(this.bounds, this.xfrm.worldPos);
-            //mybounds.drawRect(14)
         }
 
         private drawIcon() {

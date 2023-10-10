@@ -35,9 +35,6 @@ namespace microcode {
             this.image = opts.img
         }
 
-        destroy() {
-            this.image = undefined
-        }
         update() { }
 
         public setImage(img: Image) {

@@ -1,27 +1,4 @@
 namespace microcode {
-    export class EditorButton extends Button {
-        constructor(
-            private editor: Editor,
-            opts: {
-                parent?: IPlaceable
-                style?: ButtonStyle
-                icon: string | Image
-                ariaId?: string
-                label?: string
-                x: number
-                y: number
-                onClick?: (button: Button) => void
-            }
-        ) {
-            super(opts)
-            editor.changed()
-        }
-
-        destroy() {
-            this.editor.changed()
-            super.destroy()
-        }
-    }
 
     const TOOLBAR_HEIGHT = 17
     const TOOLBAR_MARGIN = 2
@@ -134,9 +111,6 @@ namespace microcode {
         public switchToPage(index: number, startRow = 1, startCol = 1) {
             if (index < 0 || index >= this.progdef.pages.length) {
                 return
-            }
-            if (this.pageEditor) {
-                this.pageEditor.destroy()
             }
             this.currPage = index
             this.pageBtn.setIcon(PAGE_IDS[this.currPage])
@@ -263,7 +237,7 @@ namespace microcode {
             this.cursor = new Cursor()
             this.picker = new Picker(this.cursor)
             this.currPage = 0
-            this.diskBtn = new EditorButton(this, {
+            this.diskBtn = new Button({
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
                 icon: icondb.disk,
@@ -272,7 +246,7 @@ namespace microcode {
                 y: 8,
                 onClick: () => this.pickDiskSLot(),
             })
-            this.connectBtn = new EditorButton(this, {
+            this.connectBtn = new Button({
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
                 icon: icondb.microbit_logo_btn,
@@ -281,7 +255,7 @@ namespace microcode {
                 y: 8,
                 onClick: () => connectJacdac(),
             })
-            this.pageBtn = new EditorButton(this, {
+            this.pageBtn = new Button({
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
                 icon: PAGE_IDS[this.currPage],
@@ -549,11 +523,6 @@ namespace microcode {
             this.layout()
         }
 
-        destroy() {
-            this.ruleEditors.forEach(rule => rule.destroy())
-            this.ruleEditors = undefined
-        }
-
         private ensureFinalEmptyRule() {
             if (this.ruleEditors) {
                 this.trimRules()
@@ -576,7 +545,6 @@ namespace microcode {
             }
             let last = this.ruleEditors[this.ruleEditors.length - 1]
             while (last.isEmpty()) {
-                last.destroy()
                 this.ruleEditors.pop()
                 this.pagedef.rules.pop()
                 if (!this.ruleEditors.length) {
@@ -631,7 +599,6 @@ namespace microcode {
             const rule = this.ruleEditors[index]
             this.pagedef.deleteRuleAt(index)
             this.ruleEditors.splice(index, 1)
-            rule.destroy()
             this.ruleEditors.forEach((rule, index) => (rule.index = index))
             this.changed()
             this.editor.saveAndCompileProgram()
