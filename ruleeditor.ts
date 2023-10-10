@@ -114,6 +114,7 @@ namespace microcode {
                     changed = true
                 }
             })
+            // TODO: do we really need this?
             if (changed) this.editor.changed()
         }
 
@@ -374,7 +375,7 @@ namespace microcode {
             return Language.getTileSuggestions(this.ruledef, name, index)
         }
 
-        public addToNavigator() {
+        public getRuleButtons() {
             // TODO: can this be done lazily instead?
             const btns: Button[] = []
             btns.push(this.handleBtn)
@@ -388,7 +389,7 @@ namespace microcode {
 
             if (this.doInsertBtn) btns.push(this.doInsertBtn)
 
-            this.editor.addButtons(btns)
+            return btns
         }
 
         public isEmpty() {

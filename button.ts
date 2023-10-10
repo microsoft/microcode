@@ -70,12 +70,10 @@ namespace microcode {
     export class Button implements IComponent, ISizable, IPlaceable {
         private xfrm_: Affine
         private icon: Sprite
-        //private text: TextSprite;
         private style: ButtonStyle
         private iconId: string | Image
         private _ariaId: string
         public onClick?: (button: Button) => void
-        private bounds_: Bounds
 
         //% blockCombine block="xfrm" callInDebugger
         public get xfrm() {
@@ -112,7 +110,12 @@ namespace microcode {
 
         public get bounds() {
             // Returns bounds in local space
-            return this.bounds_
+            // This isn't quite right, but it's close enough for now
+            return Bounds.GrowXY(
+                            this.icon.bounds,
+                            borderLeft(this.style),
+                            borderTop(this.style)
+                        )
         }
 
         public get rootXfrm(): Affine {
@@ -142,7 +145,7 @@ namespace microcode {
             this.onClick = opts.onClick
             this.buildSprite()
         }
-        
+
         public getIcon() {
             return this.iconId
         }
@@ -168,12 +171,6 @@ namespace microcode {
                         : this.iconId,
             })
             this.icon.xfrm.parent = this.xfrm
-            // This isn't quite right, but it's close enough for now
-            this.bounds_ = Bounds.GrowXY(
-                this.icon.bounds,
-                borderLeft(this.style),
-                borderTop(this.style)
-            )
         }
 
         public occlusions(bounds: Bounds) {

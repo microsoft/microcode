@@ -585,7 +585,7 @@ namespace microcode {
         public addToNavigator() {
             this.ruleEditors.forEach(rule => {
                 this.editor.navigator.addRule(rule.ruledef)
-                rule.addToNavigator()
+                this.editor.addButtons(rule.getRuleButtons())
             })
         }
 
@@ -622,11 +622,11 @@ namespace microcode {
             }
         }
 
-        /* override */ update() {
+        update() {
             this.ruleEditors.forEach(rule => rule.update())
         }
 
-        /* override */ draw() {
+        draw() {
             control.enablePerfCounter()
             this.ruleEditors.forEach(rule => rule.draw())
         }

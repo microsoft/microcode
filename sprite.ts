@@ -56,43 +56,17 @@ namespace microcode {
                 p.x - (this.width >> 1) > Screen.RIGHT_EDGE
             )
         }
-        /*
-        public isOffScreen(): boolean {
-            const p = this.xfrm.worldPos
-            return (
-                p.x + (this.width >> 1) < Screen.LEFT_EDGE ||
-                p.y + (this.height >> 1) < Screen.TOP_EDGE ||
-                p.x - (this.width >> 1) > Screen.RIGHT_EDGE ||
-                p.y - (this.height >> 1) > Screen.BOTTOM_EDGE
-            )
-        }
-        public isClipped(): boolean {
-            const p = this.xfrm.worldPos
-            return (
-                p.x - (this.width >> 1) < Screen.LEFT_EDGE ||
-                p.y - (this.height >> 1) < Screen.TOP_EDGE ||
-                p.x + (this.width >> 1) > Screen.RIGHT_EDGE ||
-                p.y + (this.height >> 1) > Screen.BOTTOM_EDGE
-            )
-        }*/
         draw() {
             control.enablePerfCounter()
             if (this.invisible) {
                 return
             }
-
-            // perf: this is not really required anymore as rules are clipped vertically and tiles horizontally
-            // if (this.isOffScreen()) {
-            //    return
-            //}
-
             Screen.drawTransparentImageXfrm(
                 this.xfrm,
                 this.image,
                 -(this.image.width >> 1),
                 -(this.image.height >> 1)
             )
-            //this.hitbox.drawRect(15);
         }
     }
 
