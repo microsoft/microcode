@@ -35,10 +35,10 @@ namespace microcode {
             this.image = opts.img
         }
 
-        /* override */ destroy() {
+        destroy() {
             this.image = undefined
-            super.destroy()
         }
+        update() { }
 
         public setImage(img: Image) {
             this.image = img
@@ -78,7 +78,7 @@ namespace microcode {
                 p.y + (this.height >> 1) > Screen.BOTTOM_EDGE
             )
         }*/
-        /* override */ draw() {
+        draw() {
             control.enablePerfCounter()
             if (this.invisible) {
                 return

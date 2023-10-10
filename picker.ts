@@ -69,7 +69,7 @@ namespace microcode {
         }
     }
 
-    export class Picker implements IComponent, IPlaceable {
+    export class Picker implements IPlaceable {
         public groups: PickerGroup[]
         public navigator: INavigator
         public visible: boolean

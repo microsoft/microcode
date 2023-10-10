@@ -15,7 +15,7 @@ namespace microcode {
         height: number
     }
 
-    export class Placeable implements IComponent, IPlaceable {
+    export class Placeable implements IPlaceable {
         private xfrm_: Affine
         //% blockCombine block="xfrm" callInDebugger
         public get xfrm() {

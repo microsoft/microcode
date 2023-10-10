@@ -104,14 +104,11 @@ namespace microcode {
             return false
         }
 
-        /* override */ destroy() {
+        destroy() {
             this.navigator = undefined
-            super.destroy()
         }
 
-        /* override */ update() {
-            super.update()
-
+        update() {
             const currTimeMs = control.millis()
             const elapsedTimeMs = currTimeMs - this.moveStartMs
 
