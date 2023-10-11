@@ -39,13 +39,6 @@ namespace microcode {
             this.xfrm.parent = picker.xfrm
         }
 
-        public destroy() {
-            this.buttons.forEach(btn => btn.destroy())
-            this.buttons = undefined
-            this.opts = undefined
-            this.bounds = undefined
-        }
-
         public layout(maxPerRow: number) {
             const cell = new Bounds()
             this.buttons.forEach(btn => cell.add(btn.bounds))
@@ -69,7 +62,7 @@ namespace microcode {
         }
     }
 
-    export class Picker extends Component implements IPlaceable {
+    export class Picker implements IPlaceable {
         public groups: PickerGroup[]
         public navigator: INavigator
         public visible: boolean
@@ -90,7 +83,6 @@ namespace microcode {
         }
 
         constructor(private cursor: Cursor) {
-            super("picker")
             this.xfrm_ = new Affine()
             this.groups = []
             this.navigator = new RowNavigator()
@@ -172,11 +164,7 @@ namespace microcode {
             this.visible = false
             this.navigator.clear()
             this.cursor.restoreState(this.prevState)
-            this.groups.forEach(group => group.destroy())
-            if (this.deleteBtn) {
-                this.deleteBtn.destroy()
-                this.deleteBtn = undefined
-            }
+            this.deleteBtn = undefined
             this.groups = []
             if (this.onHide) {
                 this.onHide()

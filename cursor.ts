@@ -16,7 +16,7 @@ namespace microcode {
         size: Bounds
     }
 
-    export class Cursor extends Component implements IPlaceable {
+    export class Cursor implements IComponent, IPlaceable {
         xfrm: Affine
         navigator: INavigator
         cancelHandlerStack: CursorCancelHandler[]
@@ -29,7 +29,6 @@ namespace microcode {
         visible = true
 
         constructor() {
-            super("cursor")
             this.xfrm = new Affine()
             this.cancelHandlerStack = []
             this.moveDest = new Vec2()
@@ -105,14 +104,7 @@ namespace microcode {
             return false
         }
 
-        /* override */ destroy() {
-            this.navigator = undefined
-            super.destroy()
-        }
-
-        /* override */ update() {
-            super.update()
-
+        update() {
             const currTimeMs = control.millis()
             const elapsedTimeMs = currTimeMs - this.moveStartMs
 
@@ -130,7 +122,7 @@ namespace microcode {
             this.cycle = currTimeMs % 1000 < 500 ? 1 : 0
         }
 
-        /* override */ draw() {
+        draw() {
             control.enablePerfCounter()
             if (!this.visible) return
 

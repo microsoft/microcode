@@ -67,15 +67,13 @@ namespace microcode {
         return borderTop(style) + borderBottom(style)
     }
 
-    export class Button extends Component implements ISizable, IPlaceable {
+    export class Button implements IComponent, ISizable, IPlaceable {
         private xfrm_: Affine
         private icon: Sprite
-        //private text: TextSprite;
         private style: ButtonStyle
         private iconId: string | Image
         private _ariaId: string
         public onClick?: (button: Button) => void
-        private bounds_: Bounds
 
         //% blockCombine block="xfrm" callInDebugger
         public get xfrm() {
@@ -112,7 +110,12 @@ namespace microcode {
 
         public get bounds() {
             // Returns bounds in local space
-            return this.bounds_
+            // This isn't quite right, but it's close enough for now
+            return Bounds.GrowXY(
+                            this.icon.bounds,
+                            borderLeft(this.style),
+                            borderTop(this.style)
+                        )
         }
 
         public get rootXfrm(): Affine {
@@ -132,7 +135,6 @@ namespace microcode {
             y: number
             onClick?: (button: Button) => void
         }) {
-            super("button")
             this.xfrm_ = new Affine()
             this.xfrm.parent = opts.parent && opts.parent.xfrm
             this.style = opts.style || ButtonStyles.Transparent
@@ -142,16 +144,6 @@ namespace microcode {
             this.xfrm.localPos.y = opts.y
             this.onClick = opts.onClick
             this.buildSprite()
-        }
-
-        destroy() {
-            if (this.icon) {
-                this.icon.destroy()
-            }
-            //if (this.text) { this.text.destroy(); }
-            this.icon = undefined
-            //this.text = undefined;
-            super.destroy()
         }
 
         public getIcon() {
@@ -171,10 +163,6 @@ namespace microcode {
         }
 
         private buildSprite() {
-            if (this.icon) {
-                this.icon.destroy()
-            }
-            //if (this.text) { this.text.destroy(); }
             this.icon = new Sprite({
                 parent: this,
                 img:
@@ -183,15 +171,6 @@ namespace microcode {
                         : this.iconId,
             })
             this.icon.xfrm.parent = this.xfrm
-            //this.icon.xfrm.localPos.x = borderLeft(this.style);
-            //this.icon.xfrm.localPos.y = borderTop(this.style);
-
-            // This isn't quite right, but it's close enough for now
-            this.bounds_ = Bounds.GrowXY(
-                this.icon.bounds,
-                borderLeft(this.style),
-                borderTop(this.style)
-            )
         }
 
         public occlusions(bounds: Bounds) {
@@ -224,46 +203,18 @@ namespace microcode {
             }
         }
 
-        hover(hov: boolean) {
-            /*
-            if (hov && this.text) { return; }
-            if (!hov && !this.text) { return; }
-            if (!this.label) { return; }
-            if (!this.visible()) { return; }
-            if (hov) {
-                this.text = textsprite.create(this.label, 1, 15);
-                this.text.setBorder(1, 15);
-                this.text.x = this.x;
-                this.text.y = this.y - this.height;
-                this.text.z = this.icon.z;
-            } else {
-                this.text.destroy();
-                this.text = undefined;
-            }
-            */
-        }
+        hover(hov: boolean) { }
 
-        /* override */ update() {
-            /*
-            if (this.text) {
-                this.text.x = this.x;
-                this.text.y = this.y - this.height;
-            }
-            */
-        }
+        update() { }
 
         isOffScreenX(): boolean {
             return this.icon.isOffScreenX()
         }
 
-        /* override */ draw() {
+        draw() {
             control.enablePerfCounter()
             this.drawStyle()
             this.drawIcon()
-            //const iconbounds = Bounds.Translate(this.icon.bounds, this.icon.xfrm.worldPos);
-            //iconbounds.drawRect(5);
-            //const mybounds = Bounds.Translate(this.bounds, this.xfrm.worldPos);
-            //mybounds.drawRect(14)
         }
 
         private drawIcon() {

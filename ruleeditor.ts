@@ -3,7 +3,7 @@ namespace microcode {
 
     const repNames = ["sensors", "filters", "actuators", "modifiers"]
 
-    export class RuleEditor extends Component implements IPlaceable {
+    export class RuleEditor implements IComponent, IPlaceable {
         private xfrm_: Affine
         innerWidth: number
         handleBtn: Button
@@ -26,10 +26,9 @@ namespace microcode {
             public ruledef: RuleDefn,
             public index: number
         ) {
-            super("rule_editor")
             this.xfrm_ = new Affine()
             this.xfrm_.parent = page.xfrm
-            this.handleBtn = new EditorButton(editor, {
+            this.handleBtn = new Button({
                 parent: this,
                 icon: "rule_handle",
                 ariaId: "rule",
@@ -52,7 +51,6 @@ namespace microcode {
         }
 
         private destroyWhenInsertButton() {
-            if (this.whenInsertBtn) this.whenInsertBtn.destroy()
             this.whenInsertBtn = undefined
         }
 
@@ -62,7 +60,7 @@ namespace microcode {
                 this.getSuggestions("filters", this.ruledef["filters"].length)
                     .length
             ) {
-                this.whenInsertBtn = new EditorButton(this.editor, {
+                this.whenInsertBtn = new Button({
                     parent: this,
                     style: ButtonStyles.Transparent,
                     icon: "when_insertion_point",
@@ -80,7 +78,6 @@ namespace microcode {
         }
 
         private destroyDoInsertButton() {
-            if (this.doInsertBtn) this.doInsertBtn.destroy()
             this.doInsertBtn = undefined
         }
 
@@ -92,7 +89,7 @@ namespace microcode {
                     this.ruledef["modifiers"].length
                 ).length
             ) {
-                this.doInsertBtn = new EditorButton(this.editor, {
+                this.doInsertBtn = new Button({
                     parent: this,
                     style: ButtonStyles.Transparent,
                     icon: "do_insertion_point",
@@ -109,26 +106,15 @@ namespace microcode {
             }
         }
 
-        destroy() {
-            this.destroyProgramTiles()
-            this.handleBtn.destroy()
-            this.destroyWhenInsertButton()
-            this.destroyDoInsertButton()
-            this.handleBtn = undefined
-            this.whenInsertBtn = undefined
-            this.doInsertBtn = undefined
-            super.destroy()
-        }
-
         private destroyProgramTiles() {
             let changed = false
             repNames.forEach(name => {
                 if (this.ruleButtons[name].length) {
-                    this.ruleButtons[name].forEach(btn => btn.destroy())
                     this.ruleButtons[name] = []
                     changed = true
                 }
             })
+            // TODO: do we really need this?
             if (changed) this.editor.changed()
         }
 
@@ -139,7 +125,7 @@ namespace microcode {
             repNames.forEach(name => {
                 const tiles = rule[name]
                 tiles.forEach((tile, index) => {
-                    const button = new EditorButton(this.editor, {
+                    const button = new Button({
                         parent: this,
                         style: tile.buttonStyle(),
                         icon: tile.getIcon(),
@@ -155,7 +141,7 @@ namespace microcode {
                             (sensor.jdKind == JdKind.Radio && sensor.tid != TID_SENSOR_LINE) ||
                             sensor.jdKind == JdKind.Variable
                         ) {
-                            const plus = new EditorButton(this.editor, {
+                            const plus = new Button({
                                 parent: this,
                                 style: tile.buttonStyle(),
                                 icon: "arith_equals",
@@ -175,7 +161,7 @@ namespace microcode {
                                 tiles[index + 1].jdKind == JdKind.Variable ||
                                 tiles[index + 1].jdKind == JdKind.RandomToss)
                         ) {
-                            const plus = new EditorButton(this.editor, {
+                            const plus = new Button({
                                 parent: this,
                                 style: tile.buttonStyle(),
                                 icon: "arith_plus",
@@ -389,7 +375,8 @@ namespace microcode {
             return Language.getTileSuggestions(this.ruledef, name, index)
         }
 
-        public addToNavigator() {
+        public getRuleButtons() {
+            // TODO: can this be done lazily instead?
             const btns: Button[] = []
             btns.push(this.handleBtn)
             this.ruleButtons.sensors.forEach(b => btns.push(b))
@@ -402,7 +389,7 @@ namespace microcode {
 
             if (this.doInsertBtn) btns.push(this.doInsertBtn)
 
-            this.editor.addButtons(btns)
+            return btns
         }
 
         public isEmpty() {
