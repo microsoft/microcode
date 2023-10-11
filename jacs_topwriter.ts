@@ -54,7 +54,7 @@ namespace jacs {
             this.writer.patchLabels()
         }
         toString() {
-            return this.writer.getAssembly()
+            return "" // this.writer.getAssembly()
         }
         addLocal(name: string) {
             return new Variable(this.locals, CellKind.LOCAL, name)

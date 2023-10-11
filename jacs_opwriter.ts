@@ -420,7 +420,7 @@ namespace jacs {
 
         private oops(msg: string) {
             try {
-                console.log(this.getAssembly())
+                // console.log(this.getAssembly())
             } catch {}
             oops(msg)
         }
