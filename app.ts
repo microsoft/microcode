@@ -39,19 +39,21 @@ namespace microcode {
         }
 
         public save(slot: string, progdef: ProgramDefn) {
-            const saved: SavedState = {
+            let saved: SavedState = {
                 progdef: progdef.toObj(),
                 version: microcode.VERSION,
             }
-            const s = JSON.stringify(saved)
+            let s = JSON.stringify(saved)
+            saved = undefined
             this.saveSource(slot, s)
         }
 
         public load(slot: string): ProgramDefn {
             try {
-                const s = settings.readString(slot)
+                let s = settings.readString(slot)
                 if (s) {
                     const saved: SavedState = JSON.parse(s)
+                    s = undefined
                     if (saved) return ProgramDefn.FromObj(saved.progdef)
                 }
             } catch (e) {
