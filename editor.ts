@@ -24,6 +24,7 @@ namespace microcode {
         private scrollDest: Vec2
         public picker: Picker
         public rendering = false
+        private dirty = false
 
         constructor(app: App) {
             super(app, "editor")
@@ -69,6 +70,7 @@ namespace microcode {
         public renderPage(p: number) {
             this.switchToPage(p)
             this.update()
+            this.dirty = true
             this.draw()
         }
 
@@ -131,21 +133,25 @@ namespace microcode {
             const w = btn.xfrm.worldPos
             this.cursor.snapTo(w.x, w.y, btn.ariaId, btn.bounds)
             btn.reportAria(true)
+            this.dirty = true
         }
 
         public hoverCursorTo(btn: Button) {
             const w = btn.xfrm.worldPos
             this.cursor.snapTo(w.x, w.y, btn.ariaId, btn.bounds)
             btn.reportAria(false)
+            this.dirty = true
         }
 
         private moveTo(target: Button) {
-            if (target)
+            if (target) {
                 this.cursor.moveTo(
                     target.xfrm.worldPos,
                     target.ariaId,
                     target.bounds
                 )
+                this.dirty = true
+            }
         }
         private scrollAndMove(dir: CursorDir, skipBack = false) {
             try {
@@ -196,6 +202,7 @@ namespace microcode {
                 const tw = target.xfrm.worldPos
                 const cursorDest = new Vec2(tw.x + xocc, tw.y + yocc)
                 this.cursor.moveTo(cursorDest, target.ariaId, target.bounds)
+                this.dirty = true
             } else {
                 this.moveTo(target)
             }
@@ -274,7 +281,9 @@ namespace microcode {
         }
 
         private configureP1Keys() {
-            const forward = () => this.cursor.click()
+            const forward = () => {
+                this.cursor.click(); this.dirty = true
+            }
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.A.id,
@@ -355,6 +364,7 @@ namespace microcode {
                     } else this.scrollAndMove(CursorDir.Back)
                 }
             }
+            this.dirty = true
         }
 
         forward() {
@@ -455,14 +465,20 @@ namespace microcode {
         }
 
         draw() {
-            if (!this.backgroundCaptured) {
-                this.drawBackground()
-                this.drawEditor()
-                this.drawNav()
+            if (this.dirty) {
+                if (!this.picker.visible)
+                    Screen.image.fill(this.color)
+                if (!this.backgroundCaptured) {
+                    this.drawBackground()
+                    this.drawEditor()
+                    this.drawNav()
+                }
+                this.picker.draw()
+                if (!this.rendering) this.cursor.draw()
+                this.dirty = false
+                return true
             }
-            this.picker.draw()
-            if (!this.rendering) this.cursor.draw()
-            return true
+            return false
         }
 
         private drawEditor() {

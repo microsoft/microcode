@@ -71,6 +71,7 @@ namespace microcode {
             )
             this.sampleButtons.forEach(s => s.draw())
             super.draw()
+            return true
         }
     }
 }

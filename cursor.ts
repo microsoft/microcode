@@ -105,21 +105,22 @@ namespace microcode {
         }
 
         update() {
-            const currTimeMs = control.millis()
-            const elapsedTimeMs = currTimeMs - this.moveStartMs
+            this.xfrm.localPos.copyFrom(this.moveDest)
+            // const currTimeMs = control.millis()
+            // const elapsedTimeMs = currTimeMs - this.moveStartMs
 
-            if (elapsedTimeMs < 63) {
-                Vec2.LerpToRefFix(
-                    this.xfrm.localPos,
-                    this.moveDest,
-                    elapsedTimeMs << 2,
-                    this.xfrm.localPos
-                )
-            } else {
-                this.xfrm.localPos.copyFrom(this.moveDest)
-            }
+            // if (elapsedTimeMs < 63) {
+            //     Vec2.LerpToRefFix(
+            //         this.xfrm.localPos,
+            //         this.moveDest,
+            //         elapsedTimeMs << 2,
+            //         this.xfrm.localPos
+            //     )
+            // } else {
+            //     this.xfrm.localPos.copyFrom(this.moveDest)
+            // }
 
-            this.cycle = currTimeMs % 1000 < 500 ? 1 : 0
+            // this.cycle = currTimeMs % 1000 < 500 ? 1 : 0
         }
 
         draw() {
