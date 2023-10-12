@@ -35,6 +35,8 @@ namespace microcode {
 
         public saveSource(slot: string, s: string) {
             reportEvent("app.save", { slot: slot, size: s.length })
+            console.log(`save to ${slot}: ${s.length}b`)
+            profile()
             settings.writeString(slot, s)
         }
 

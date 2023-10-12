@@ -346,6 +346,8 @@ namespace microcode {
                     } else {
                         this.app.popScene()
                         this.app.pushScene(new Home(this.app))
+                        // back to home screen from editor, stop jacscript by running empty program
+                        new jacs.TopWriter().deployEmpty()
                     }
                 } else {
                     if (this.navigator.atRuleStart()) {

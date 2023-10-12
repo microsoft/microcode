@@ -1124,34 +1124,54 @@ namespace jacs {
                                     wr.emitBufLoad(NumFmt.F64, 12)
                                 )
                                 // hack for keeping car radio from interfering with user radio
-                                if (sensor.tid == microcode.TID_SENSOR_CAR_WALL || 
-                                    sensor.tid == microcode.TID_SENSOR_LINE) {
+                                if (
+                                    sensor.tid ==
+                                        microcode.TID_SENSOR_CAR_WALL ||
+                                    sensor.tid == microcode.TID_SENSOR_LINE
+                                ) {
                                     wr.emitIf(
                                         wr.emitExpr(Op.EXPR2_LT, [
                                             literal(
-                                                microcode.robots.RobotCompactCommand.ObstacleState
+                                                microcode.robots
+                                                    .RobotCompactCommand
+                                                    .ObstacleState
                                             ),
                                             radioVar.read(wr),
                                         ]),
                                         () => {
-                                            if (sensor.tid == microcode.TID_SENSOR_CAR_WALL) {
+                                            if (
+                                                sensor.tid ==
+                                                microcode.TID_SENSOR_CAR_WALL
+                                            ) {
                                                 radioVar.write(
                                                     wr,
                                                     wr.emitExpr(Op.EXPR2_SUB, [
                                                         radioVar.read(wr),
                                                         literal(
-                                                            microcode.robots.RobotCompactCommand.ObstacleState
+                                                            microcode.robots
+                                                                .RobotCompactCommand
+                                                                .ObstacleState
                                                         ),
                                                     ])
                                                 )
-                                                filterValueIn(() => radioVar.read(wr))
+                                                filterValueIn(() =>
+                                                    radioVar.read(wr)
+                                                )
                                             } else {
                                                 wr.emitIf(
                                                     wr.emitExpr(Op.EXPR2_LE, [
-                                                        literal(microcode.robots.RobotCompactCommand.LineState),
+                                                        literal(
+                                                            microcode.robots
+                                                                .RobotCompactCommand
+                                                                .LineState
+                                                        ),
                                                         radioVar.read(wr),
                                                     ]),
-                                                    () => { filterValueIn(() => radioVar.read(wr)) }
+                                                    () => {
+                                                        filterValueIn(() =>
+                                                            radioVar.read(wr)
+                                                        )
+                                                    }
                                                 )
                                             }
                                         }
@@ -1160,7 +1180,11 @@ namespace jacs {
                                     wr.emitIf(
                                         wr.emitExpr(Op.EXPR2_LT, [
                                             radioVar.read(wr),
-                                            literal(microcode.robots.RobotCompactCommand.ObstacleState),
+                                            literal(
+                                                microcode.robots
+                                                    .RobotCompactCommand
+                                                    .ObstacleState
+                                            ),
                                         ]),
                                         () => {
                                             filterValueIn(() =>
@@ -1299,13 +1323,21 @@ namespace jacs {
             if (this.hasErrors) {
                 if (debugOut) this.printAssembly()
                 console.error("errors; not deploying")
+                return -1
             } else {
                 if (debugOut) this.printAssembly()
                 const bin = this.serialize()
                 if (debugOut) console.log(bin.toHex())
                 microcode.profile()
-                jdc.deploy(bin)
+                console.log(`jacscript bytecode: ${bin.length}b`)
+                return jdc.deploy(bin)
             }
+        }
+
+        deployEmpty() {
+            const mainProc = this.addProc("main")
+            mainProc.finalize()
+            return this.deploy()
         }
 
         deploySound(name: string) {
@@ -1318,7 +1350,7 @@ namespace jacs {
                 wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
             })
             mainProc.finalize()
-            this.deploy()
+            return this.deploy()
         }
 
         deployFreq(buf: Buffer) {
@@ -1331,7 +1363,7 @@ namespace jacs {
                 wr.emitStmt(Op.STMT1_RETURN, [literal(0)])
             })
             mainProc.finalize()
-            this.deploy()
+            return this.deploy()
         }
     }
 
