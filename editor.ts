@@ -20,15 +20,12 @@ namespace microcode {
         private _changed: boolean
         private hudroot: Placeable
         private scrollroot: Placeable
-        private scrollStartMs: number
-        private scrollDest: Vec2
         public picker: Picker
         public rendering = false
         private dirty = false
 
         constructor(app: App) {
             super(app, "editor")
-            this.scrollDest = new Vec2()
             this.color = 6
         }
 
@@ -124,7 +121,6 @@ namespace microcode {
                 Screen.LEFT_EDGE,
                 Screen.TOP_EDGE + TOOLBAR_HEIGHT + 2
             )
-            this.scrollDest.copyFrom(this.scrollroot.xfrm.localPos)
             this.rebuildNavigator()
             this.snapCursorTo(this.navigator.initialCursor(startRow, startCol))
         }
@@ -189,23 +185,15 @@ namespace microcode {
 
             if (occ.has && !this.picker.visible) {
                 // don't scroll if picker is visible
-                if (this.scrollroot.xfrm.localPos.x !== this.scrollDest.x)
-                    return // Already animating
-                this.scrollStartMs = control.millis()
                 const xocc = occ.left ? occ.left : -occ.right
                 const yocc = occ.top ? occ.top : -occ.bottom
                 Vec2.TranslateToRef(
                     this.scrollroot.xfrm.localPos,
                     new Vec2(xocc, yocc),
-                    this.scrollDest
+                    this.scrollroot.xfrm.localPos
                 )
-                const tw = target.xfrm.worldPos
-                const cursorDest = new Vec2(tw.x + xocc, tw.y + yocc)
-                this.cursor.moveTo(cursorDest, target.ariaId, target.bounds)
-                this.dirty = true
-            } else {
-                this.moveTo(target)
             }
+            this.moveTo(target)
         }
 
         /* override */ startup() {
@@ -237,8 +225,6 @@ namespace microcode {
                 Screen.LEFT_EDGE,
                 Screen.TOP_EDGE + TOOLBAR_HEIGHT + TOOLBAR_MARGIN
             )
-            this.scrollDest.copyFrom(this.scrollroot.xfrm.localPos)
-            this.scrollStartMs = 0
             this.cursor = new Cursor()
             this.picker = new Picker(this.cursor)
             this.currPage = 0
@@ -446,21 +432,7 @@ namespace microcode {
                 this._changed = false
                 this.rebuildNavigator()
             }
-
-            const currTimeMs = control.millis()
-            const elapsedTimeMs = currTimeMs - this.scrollStartMs
-
-            if (elapsedTimeMs < 63) {
-                Vec2.LerpToRefFix(
-                    this.scrollroot.xfrm.localPos,
-                    this.scrollDest,
-                    elapsedTimeMs << 2,
-                    this.scrollroot.xfrm.localPos
-                )
-            } else {
-                this.scrollroot.xfrm.localPos.copyFrom(this.scrollDest)
-            }
-
+            // TODO: need this anymore???
             this.cursor.update()
         }
 
@@ -475,9 +447,7 @@ namespace microcode {
                 this.picker.draw()
                 if (!this.rendering) this.cursor.draw()
                 this.dirty = false
-                return true
             }
-            return false
         }
 
         private drawEditor() {
@@ -644,7 +614,6 @@ namespace microcode {
         draw() {
             control.enablePerfCounter()
             this.ruleEditors.forEach(rule => rule.draw())
-            return true
         }
     }
 }

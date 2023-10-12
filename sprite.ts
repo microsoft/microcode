@@ -59,7 +59,7 @@ namespace microcode {
         draw() {
             control.enablePerfCounter()
             if (this.invisible) {
-                return false
+                return
             }
             Screen.drawTransparentImageXfrm(
                 this.xfrm,
@@ -67,7 +67,6 @@ namespace microcode {
                 -(this.image.width >> 1),
                 -(this.image.height >> 1)
             )
-            return true
         }
     }
 

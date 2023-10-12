@@ -146,7 +146,6 @@ namespace microcode {
             this.diskBtn.draw()
             this.drawVersion()
             super.draw()
-            return true
         }
     }
 }
