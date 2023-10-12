@@ -85,7 +85,12 @@ for (const lang of languages.filter(l => l !== "pxt")) {
 namespace microcode {
     export const lang = "${lang}"
     export const font = image.font${fonts[lang] || 8}
-    export const tooltips: any = ${JSON.stringify(translations, null, 2)}
+    export function resolveTooltip(id: string) {
+        let res: string = ""
+        if (!id) return id
+${Object.keys(translations).map(key => `        else if (id === "${key}") res = "${translations[key]}";`).join("\n")}        
+        return res
+    }
 }`
     writeFileSync("./tooltips.ts", ts, { encoding: "utf8" })
 
