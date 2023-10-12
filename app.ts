@@ -39,9 +39,9 @@ namespace microcode {
             settings.writeString(slot, s)
         }
 
-        public save(slot: string, progdef: ProgramDefn) {
+        public save(slot: string, prog: ProgramDefn) {
             let saved: SavedState = {
-                progdef: progdef.toJson(),
+                progdef: progDefnToJson(prog),
                 version: microcode.VERSION,
             }
             let s = JSON.stringify(saved)
@@ -55,7 +55,7 @@ namespace microcode {
                 if (s) {
                     const saved: SavedState = JSON.parse(s)
                     s = undefined
-                    if (saved) return ProgramDefn.fromJson(saved.progdef)
+                    if (saved) return progDefnFromJson(saved.progdef)
                 }
             } catch (e) {
                 console.log(e)

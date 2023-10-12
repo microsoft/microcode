@@ -302,69 +302,70 @@ namespace microcode {
             return this.sensors.length === 0 && this.actuators.length === 0
         }
 
-        public toJson(): any {
-            const addField = (t: TileDefn) => {
-                if (t.fieldEditor) {
-                    const ret = `${t.tid}(${t.fieldEditor.serialize(
-                        t.getField()
-                    )})`
-                    return ret
+    }
+
+    export function ruleDefnToJson(rule: RuleDefn): any {
+        const addField = (t: TileDefn) => {
+            if (t.fieldEditor) {
+                const ret = `${t.tid}(${t.fieldEditor.serialize(
+                    t.getField()
+                )})`
+                return ret
+            } else {
+                return t.tid
+            }
+        }
+        const obj = {
+            S: rule.sensors.map(t => addField(t)),
+            A: rule.actuators.map(t => addField(t)),
+            F: rule.filters.map(t => addField(t)),
+            M: rule.modifiers.map(t => addField(t)),
+        }
+        if (!obj.S.length) delete obj.S
+        if (!obj.A.length) delete obj.A
+        if (!obj.F.length) delete obj.F
+        if (!obj.M.length) delete obj.M
+        return obj
+    }
+
+    function ruleDefnFromJson(obj: any): RuleDefn {
+        const extractField = (t: string) => (s: string) => {
+            let hasField = s.indexOf("(")
+            if (hasField >= 0) {
+                const elem = s.substr(0, hasField)
+                if (Object.keys(tilesDB[t]).indexOf(elem) >= 0) {
+                    const tile = tilesDB[t][elem]
+                    const field = tile.fieldEditor.deserialize(
+                        s.substr(hasField + 1, s.length - 2 - hasField)
+                    )
+                    const newOne = tile.getNewInstance(field)
+                    return newOne
                 } else {
-                    return t.tid
+                    return undefined
                 }
+            } else {
+                return Object.keys(tilesDB[t]).indexOf(s) >= 0
+                    ? tilesDB[t][s]
+                    : undefined
             }
-            const obj = {
-                S: this.sensors.map(t => addField(t)),
-                A: this.actuators.map(t => addField(t)),
-                F: this.filters.map(t => addField(t)),
-                M: this.modifiers.map(t => addField(t)),
+        }
+        const defn = new RuleDefn()
+        const parseTile = (single: string, name: string) => {
+            if (Array.isArray(obj[single])) {
+                const tiles: any[] = obj[single]
+                return <any>tiles.map(extractField(name)).filter(t => !!t)
             }
-            if (!obj.S.length) delete obj.S
-            if (!obj.A.length) delete obj.A
-            if (!obj.F.length) delete obj.F
-            if (!obj.M.length) delete obj.M
-            return obj
+            return []
+        }
+        if (typeof obj === "string") {
+            obj = JSON.parse(obj)
         }
 
-        public static fromJson(obj: any): RuleDefn {
-            const extractField = (t: string) => (s: string) => {
-                let hasField = s.indexOf("(")
-                if (hasField >= 0) {
-                    const elem = s.substr(0, hasField)
-                    if (Object.keys(tilesDB[t]).indexOf(elem) >= 0) {
-                        const tile = tilesDB[t][elem]
-                        const field = tile.fieldEditor.deserialize(
-                            s.substr(hasField + 1, s.length - 2 - hasField)
-                        )
-                        const newOne = tile.getNewInstance(field)
-                        return newOne
-                    } else {
-                        return undefined
-                    }
-                } else {
-                    return Object.keys(tilesDB[t]).indexOf(s) >= 0
-                        ? tilesDB[t][s]
-                        : undefined
-                }
-            }
-            const defn = new RuleDefn()
-            const parseTile = (single: string, name: string) => {
-                if (Array.isArray(obj[single])) {
-                    const tiles: any[] = obj[single]
-                    return <any>tiles.map(extractField(name)).filter(t => !!t)
-                }
-                return []
-            }
-            if (typeof obj === "string") {
-                obj = JSON.parse(obj)
-            }
-
-            defn.sensors = parseTile("S", "sensors")
-            defn.actuators = parseTile("A", "actuators")
-            defn.filters = parseTile("F", "filters")
-            defn.modifiers = parseTile("M", "modifiers")
-            return defn
-        }
+        defn.sensors = parseTile("S", "sensors")
+        defn.actuators = parseTile("A", "actuators")
+        defn.filters = parseTile("F", "filters")
+        defn.modifiers = parseTile("M", "modifiers")
+        return defn
     }
 
     export class PageDefn {
@@ -413,28 +414,28 @@ namespace microcode {
             }
             return undefined
         }
+    }
 
-        public toJson(): any {
-            const obj = {
-                R: this.rules.map(elem => elem.toJson()),
-            }
-            if (!obj.R.length) {
-                delete obj.R
-            }
-            return obj
+    function pageDefnToJson(page: PageDefn): any {
+        const obj = {
+            R: page.rules.map(ruleDefnToJson),
         }
+        if (!obj.R.length) {
+            delete obj.R
+        }
+        return obj
+    }
 
-        public static fromJson(obj: any): PageDefn {
-            if (typeof obj === "string") {
-                obj = JSON.parse(obj)
-            }
-            const defn = new PageDefn()
-            if (Array.isArray(obj["R"])) {
-                const rules: any[] = obj["R"]
-                defn.rules = rules.map((elem: any) => RuleDefn.fromJson(elem))
-            }
-            return defn
+    function pageDefnFromJson(obj: any): PageDefn {
+        if (typeof obj === "string") {
+            obj = JSON.parse(obj)
         }
+        const defn = new PageDefn()
+        if (Array.isArray(obj["R"])) {
+            const rules: any[] = obj["R"]
+            defn.rules = rules.map(ruleDefnFromJson)
+        }
+        return defn
     }
 
     export class ProgramDefn {
@@ -453,24 +454,24 @@ namespace microcode {
         public trim() {
             this.pages.map(page => page.trim())
         }
+    }
 
-        public toJson(): any {
-            return {
-                P: this.pages.map(elem => elem.toJson()),
-            }
+    export function progDefnToJson(prog: ProgramDefn): any {
+        return {
+            P: prog.pages.map(pageDefnToJson),
         }
+    }
 
-        public static fromJson(obj: any): ProgramDefn {
-            if (typeof obj === "string") {
-                obj = JSON.parse(obj)
-            }
-            const defn = new ProgramDefn()
-            if (obj && obj["P"] && Array.isArray(obj["P"])) {
-                const pages: any[] = obj["P"]
-                defn.pages = pages.map((elem: any) => PageDefn.fromJson(elem))
-            }
-            return defn
+    export function progDefnFromJson(obj: any): ProgramDefn {
+        if (typeof obj === "string") {
+            obj = JSON.parse(obj)
         }
+        const defn = new ProgramDefn()
+        if (obj && obj["P"] && Array.isArray(obj["P"])) {
+            const pages: any[] = obj["P"]
+            defn.pages = pages.map(pageDefnFromJson)
+        }
+        return defn
     }
 
     function isTerminal(tile: TileDefn) {
