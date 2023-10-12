@@ -112,5 +112,10 @@
   "A20_6": "preto",
   "A20_rainbow": "arco-íris",
   "A20_sparkle": "faísca",
-  "A21_": "defina ângulo servo"
+  "A21_": "defina ângulo servo",
+  "CAR1": "para frente",
+  "CAR5": "parar",
+  "F23L": "esquerda",
+  "F23R": "direita",
+  "F23N": "nenhum"
 }

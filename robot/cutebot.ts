@@ -35,7 +35,7 @@ namespace microcode {
         } else {
             buf[0] = 0x02
             buf[1] = 0x01
-            buf[2] = rspeed
+            buf[2] = -rspeed
             buf[3] = 0 //补位
         }
         pins.i2cWriteBuffer(STM8_ADDRESSS, buf) //写入左轮
@@ -74,7 +74,7 @@ namespace microcode {
             super()
             this.musicVolume = 168
             this.maxRunSpeed = 40
-            this.maxBackSpeed = 20
+            this.maxBackSpeed = 28
             this.maxTurnSpeed = 60
             this.maxLineRunSpeed = 28
             this.maxLineTurnSpeed = 60
@@ -96,7 +96,7 @@ namespace microcode {
             return ultrasonic()
         }
 
-        lineState(): microcode.robots.RobotLineState {
+        lineState(): RobotLineState {
             const left = pins.digitalReadPin(DigitalPin.P13) ? 0 : 1
             const right = pins.digitalReadPin(DigitalPin.P14) ? 0 : 1
 
@@ -107,7 +107,7 @@ namespace microcode {
     /**
      * Cute:bot from Elecfreaks
      */
-    //% fixedInstance whenUsed block="elecfreaks cutebot"
+    //% fixedInstance whenUsed block="elecfreaks cutebot" weight=100
     export const elecfreaksCuteBot = new RobotDriver(
         new ElecfreaksCutebotRobot()
     )

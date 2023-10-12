@@ -1,0 +1,103 @@
+<dialog id="connectDlg">
+    <form method="dialog">
+        <img
+            src="./assets/image_microcode.png"
+            alt="MicroCode logó"
+            loading="lazy"
+            class="logo"
+        />
+        <h3>
+            Programozd a micro:bit V2-t a MicroCode-dal!
+            <button>Bezárás</button>
+        </h3>
+        <h4>Prepare your micro:bit V2</h4>
+        <ul>
+            <li>
+                Connect your micro:bit <b>V2</b>
+                to your computer. (micro:bit V1 is not supported)
+            </li>
+            <li>
+                <a
+                    class="firmware-download"
+                    href="https://microsoft.github.io/microcode/assets/firmware.hex"
+                    download="microcode.hex"
+                    >MicroCode letöltése</a
+>
+                a <code>MICROBIT</code> meghajtóra.
+            </li>
+            <li>Wait for the micro:bit to restart</li>
+        </ul>
+        <h4>Code on a <a href="https://microsoft.github.io/microcode/docs/manual#arcade-shield">micro:bit Arcade Shield</a></h4>
+        <a href="https://microsoft.github.io/microcode/docs/manual#arcade-shield">
+        <img src="./assets/image_shield.jpg"
+            alt="A photograph of a micro:bit Arcade shield displaying the microcode landing page"
+            loading="lazy"
+            class="shield" />
+        </a>
+        <ul>
+            <li>
+                Plug your micro:bit into your micro:bit Arcade shield and start coding!
+            </li>
+        </ul>
+        <h4>Code in your Web Browser</h4>
+        <ul>
+            <li>
+                <button class="webusbBtn">Csatlakozz</button>, válaszd ki a "BBC
+                micro:bit CMSIS-DAP"-t és nyomd meg a "Csatlakozás" gombot a párbeszédpanelen.
+            </li>
+        </ul>
+    </form>
+</dialog>
+<dialog id="notsupportedDlg">
+    <form method="dialog">
+        <img
+            src="./assets/image_microcode.png"
+            alt="MicroCode logó"
+            loading="lazy"
+            class="logo"
+        />
+        <h2>
+            Ez a böngésző nem támogatja a micro:bitre történő feltöltést.
+            <button>Bezárás</button>
+        </h2>
+        <p>
+            A MicroCode a
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/USB"
+                >WebUSB</a
+>
+            segítségével tölti fel a kódot a micro:bitre. A funkció engedélyezéséhez használd a
+            Microsoft Edge, Google Chrome vagy a
+            <a href="https://caniuse.com/webusb">https://caniuse.com/webusb</a>
+            weboldalt a kompatibilis böngésző keresésére.
+        </p>
+    </form>
+</dialog>
+<dialog id="outdatedDlg">
+    <form method="dialog">
+        <img
+            src="./assets/image_microcode.png"
+            alt="MicroCode logó"
+            loading="lazy"
+        />
+        <h2>
+            Frissítened kell a MicroCode-ot a micro:biteden!
+            <button>Bezárás</button>
+        </h2>
+        <ol>
+            <li>
+                <a
+                    class="firmware-download"
+                    href="https://microsoft.github.io/microcode/assets/firmware.hex"
+                    download
+>MicroCode letöltése</a
+>
+                a <code>MICROBIT</code> meghajtóra.
+            </li>
+            <li>Várj, amíg a micro:bit újraindul.</li>
+            <li>
+                <button class="webusbBtn">Csatlakozz</button>, válaszd ki a "BBC
+                micro:bit CMSIS-DAP"-t és nyomd meg a "Csatlakozás" gombot a párbeszédpanelen.
+            </li>
+        </ol>
+    </form>
+</dialog>

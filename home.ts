@@ -96,7 +96,7 @@ namespace microcode {
         }
 
         private yOffset = -Screen.HEIGHT >> 1
-        /* override */ draw() {
+        draw() {
             Screen.fillRect(
                 Screen.LEFT_EDGE,
                 Screen.TOP_EDGE,

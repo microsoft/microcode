@@ -114,5 +114,9 @@
   "A20_6": "crna",
   "A20_rainbow": "boje duge",
   "A20_sparkle": "svjetlucanje",
-  "A21_": "postavi kut servo motora"
+  "A21_": "postavi kut servo motora",
+  "CAR5": "zaustavi",
+  "F23L": "lijevo",
+  "F23R": "desno",
+  "F23N": "nepoznato"
 }

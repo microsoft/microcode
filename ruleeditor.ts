@@ -501,7 +501,7 @@ namespace microcode {
 
         draw() {
             control.enablePerfCounter()
-            if (this.isOffScreen()) return false
+            if (this.isOffScreen()) return
 
             this.drawBackground()
             this.handleBtn.draw()
@@ -515,7 +515,6 @@ namespace microcode {
                     if (!btn.isOffScreenX()) btn.draw()
                 }
             })
-            return true
         }
 
         private drawBackground() {

@@ -25,14 +25,12 @@ namespace microcode {
         ariaPos: Vec2
         ariaId: string
         size: Bounds
-        cycle: number
         visible = true
 
         constructor() {
             this.xfrm = new Affine()
             this.cancelHandlerStack = []
             this.moveDest = new Vec2()
-            this.cycle = 1
             this.setSize()
         }
 
@@ -105,38 +103,24 @@ namespace microcode {
         }
 
         update() {
-            const currTimeMs = control.millis()
-            const elapsedTimeMs = currTimeMs - this.moveStartMs
-
-            if (elapsedTimeMs < 63) {
-                Vec2.LerpToRefFix(
-                    this.xfrm.localPos,
-                    this.moveDest,
-                    elapsedTimeMs << 2,
-                    this.xfrm.localPos
-                )
-            } else {
-                this.xfrm.localPos.copyFrom(this.moveDest)
-            }
-
-            this.cycle = currTimeMs % 1000 < 500 ? 1 : 0
+            this.xfrm.localPos.copyFrom(this.moveDest)
         }
 
         draw() {
             control.enablePerfCounter()
-            if (!this.visible) return false
+            if (!this.visible) return
 
             Screen.outlineBoundsXfrm(
                 this.xfrm,
                 this.size,
                 1,
-                this.cycle ? 6 : 9
+                6
             )
             Screen.outlineBoundsXfrm(
                 this.xfrm,
                 this.size,
                 2,
-                this.cycle ? 9 : 6
+                9
             )
 
             const text = accessibility.ariaToTooltip(this.ariaId)
@@ -157,7 +141,6 @@ namespace microcode {
                 Screen.fillRect(x - 1, y - 1, w + 1, h + 2, 15)
                 Screen.print(text, x, y, 1, font)
             }
-            return true
         }
     }
 }

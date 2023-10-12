@@ -10,28 +10,42 @@
             Programmeer je micro:bit V2 met MicroCode!
             <button>Sluiten</button>
         </h3>
-        <ol>
+        <h4>Prepare your micro:bit V2</h4>
+        <ul>
             <li>
-                Sluit je micro:bit <b>V2</b>
-                aan op je computer met behulp van de USB-kabel. (micro:bit V1 wordt niet
-                ondersteund)
+                Connect your micro:bit <b>V2</b>
+                to your computer. (micro:bit V1 is not supported)
             </li>
             <li>
                 <a
                     class="firmware-download"
                     href="https://microsoft.github.io/microcode/assets/firmware.hex"
-                    download
->Download MicroCode</a
+                    download="microcode.hex"
+                    >Download MicroCode</a
 >
                 naar de <code>MICROBIT</code> drive.
             </li>
-            <li>Wacht tot de micro:bit opnieuw is opgestart.</li>
+            <li>Wait for the micro:bit to restart</li>
+        </ul>
+        <h4>Code on a <a href="https://microsoft.github.io/microcode/docs/manual#arcade-shield">micro:bit Arcade Shield</a></h4>
+        <a href="https://microsoft.github.io/microcode/docs/manual#arcade-shield">
+        <img src="./assets/image_shield.jpg"
+            alt="A photograph of a micro:bit Arcade shield displaying the microcode landing page"
+            loading="lazy"
+            class="shield" />
+        </a>
+        <ul>
+            <li>
+                Plug your micro:bit into your micro:bit Arcade shield and start coding!
+            </li>
+        </ul>
+        <h4>Code in your Web Browser</h4>
+        <ul>
             <li>
                 <button class="webusbBtn">Verbind</button>, kies "BBC
                 micro:bit CMSIS-DAP" en druk op "Verbinden" in het dialoogvenster.
             </li>
-            <li>Gebruik de editor om de micro:bit tot leven te brengen!</li>
-        </ol>
+        </ul>
     </form>
 </dialog>
 <dialog id="notsupportedDlg">
@@ -79,7 +93,7 @@
 >
                 naar de <code>MICROBIT</code> drive.
             </li>
-            <li>Wacht tot de micro:bit opnieuw opstart.</li>
+            <li>Wacht tot de micro:bit opnieuw is opgestart.</li>
             <li>
                 <button class="webusbBtn">Verbind</button>, kies "BBC
                 micro:bit CMSIS-DAP" en druk op "Verbinden" in het dialoogvenster.

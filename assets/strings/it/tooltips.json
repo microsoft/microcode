@@ -85,6 +85,7 @@
   "M21": "valore radio",
   "M22": "dado",
   "M23": "ripeti",
+  "M25": "temperatura",
   "A8": "LED",
   "A9A": "imposta variabile X",
   "A9B": "imposta variabile Y",
@@ -111,5 +112,11 @@
   "A20_rainbow": "arcobaleno",
   "A20_sparkle": "scintilla",
   "A21_": "angolo di impostazione del servomotore",
-  "SR_OFF": "off"
+  "SR_OFF": "off",
+  "CAR1": "avanti",
+  "CAR5": "ferma",
+  "S14": "linea",
+  "F23L": "sinistra",
+  "F23R": "destra",
+  "F23N": "Nulla"
 }

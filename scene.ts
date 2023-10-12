@@ -4,7 +4,7 @@ namespace microcode {
     const RENDER_PRIORITY = 30
     const SCREEN_PRIORITY = 100
 
-    export abstract class Scene {
+    export abstract class Scene implements IComponent {
         private xfrm_: Affine
         private color_: number
         private backgroundCaptured_ = false
@@ -100,7 +100,6 @@ namespace microcode {
             control.eventContext().registerFrameHandler(RENDER_PRIORITY, () => {
                 control.enablePerfCounter()
                 // perf: render directly on the background image buffer
-                if (!this.backgroundCaptured_) Screen.image.fill(this.color_)
                 this.draw()
                 if (Options.fps)
                     Screen.image.print(control.EventContext.lastStats, 1, 1, 15)
@@ -109,7 +108,6 @@ namespace microcode {
             })
             control.eventContext().registerFrameHandler(SCREEN_PRIORITY, () => {
                 control.enablePerfCounter()
-                // TODO: only update if image changed
                 control.__screen.update()
             })
         }
@@ -157,12 +155,8 @@ namespace microcode {
 }
 
 // this is needed for compat with most recent version of arcade
-namespace game {    
-    export function addScenePushHandler(handler: (oldScene: any) => void) {
+namespace game {
+    export function addScenePushHandler(handler: (oldScene: any) => void) {}
 
-    }
-
-    export function addScenePopHandler(handler: (oldScene: any) => void) {
-
-    }
+    export function addScenePopHandler(handler: (oldScene: any) => void) {}
 }
