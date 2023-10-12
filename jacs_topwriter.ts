@@ -106,9 +106,10 @@ namespace jacs {
 
         getDispatcher() {
             if (!this.dispatcher) {
+                const wakers = needsWakeup()
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
-                    const wakeup = needsWakeup.find(
+                    const wakeup = wakers.find(
                         r => r.classId == this.classIdentifier
                     )
                     if (wakeup) {
@@ -129,9 +130,10 @@ namespace jacs {
                             }
                         )
                     }
-                    if (needsEnable.indexOf(this.classIdentifier) >= 0) {
+                    const enablers = needsEnable()
+                    if (enablers.indexOf(this.classIdentifier) >= 0) {
                         this.parent.emitSetReg(this, JD_REG_INTENSITY, hex`01`)
-                        if (this.classIdentifier == serviceClasses["radio"]) {
+                        if (this.classIdentifier == serviceClass("radio")) {
                             // set group to 1
                             this.parent.emitSetReg(this, 0x80, hex`01`)
                         }
@@ -162,11 +164,12 @@ namespace jacs {
                             }
                         )
                     } else if (
-                        this.classIdentifier == serviceClasses.rotaryEncoder ||
-                        this.classIdentifier == serviceClasses.temperature
+                        this.classIdentifier == serviceClass("rotaryEncoder") ||
+                        this.classIdentifier == serviceClass("temperature")
                     ) {
                         const isRotary =
-                            this.classIdentifier == serviceClasses.rotaryEncoder
+                            this.classIdentifier ==
+                            serviceClass("rotaryEncoder")
                         const sensorVar = isRotary
                             ? this.parent.lookupGlobal("z_rotary" + this.index)
                             : this.parent.lookupGlobal("z_temp")
@@ -479,7 +482,7 @@ namespace jacs {
 
         addRole(name: string, classId: number) {
             const r = new Role(this, classId, name)
-            if (needsEnable.indexOf(classId) >= 0) r.getDispatcher()
+            if (needsEnable().indexOf(classId) >= 0) r.getDispatcher()
             return r
         }
 
@@ -495,7 +498,7 @@ namespace jacs {
         }
 
         lookupServiceClass(name: string) {
-            const id = serviceClasses[name]
+            const id = serviceClass(name)
             if (id === undefined) {
                 this.error(`service '${name}' not defined`)
                 return 0
@@ -1103,7 +1106,7 @@ namespace jacs {
 
             const role = this.lookupSensorRole(rule)
             name += "_" + role.name
-            const wakeup = needsWakeup.find(
+            const wakeup = needsWakeup().find(
                 r => r.classId == role.classIdentifier
             )
 
@@ -1367,36 +1370,58 @@ namespace jacs {
         }
     }
 
-    export const needsWakeup = [
-        { classId: 0x1421bac7, convert: undefined }, // soundLevel
-        { classId: 0x14ad1a5d, convert: undefined }, // soundLevel
-        { classId: 0x1f140409, convert: undefined }, // accelerometer
-        { classId: 0x17dc9a1c, convert: "light_1_to_5" }, // JD light level
-        { classId: 0x1f274746, convert: "slider_1_to_5" }, // JD slider
-        { classId: 0x10fa29c9, convert: undefined }, // JD rotary
-        { classId: 0x12fe180f, convert: "magnet_1_to_5" }, // JD magnet
-    ]
+    function needsWakeup() {
+        return [
+            { classId: 0x1421bac7, convert: undefined }, // soundLevel
+            { classId: 0x14ad1a5d, convert: undefined }, // soundLevel
+            { classId: 0x1f140409, convert: undefined }, // accelerometer
+            { classId: 0x17dc9a1c, convert: "light_1_to_5" }, // JD light level
+            { classId: 0x1f274746, convert: "slider_1_to_5" }, // JD slider
+            { classId: 0x10fa29c9, convert: undefined }, // JD rotary
+            { classId: 0x12fe180f, convert: "magnet_1_to_5" }, // JD magnet
+        ]
+    }
 
-    export const needsEnable = [0x1ac986cf, 0x12fc9103]
+    function needsEnable() {
+        return [0x1ac986cf, 0x12fc9103]
+    }
 
-    export const serviceClasses: SMap<number> = {
+    function serviceClass(name: string): number {
+        switch (name) {
+            case "button":
+                return 0x1473a263
+            case "dotMatrix":
+                return 0x110d154b
+            case "soundLevel":
+                return 0x14ad1a5d
+            case "temperature":
+                return 0x1421bac7
+            case "soundPlayer":
+                return 0x1403d338
+            case "buzzer":
+                return 0x1b57b1d7
+            case "accelerometer":
+                return 0x1f140409
+            case "radio":
+                return 0x1ac986cf
+            // Kit-A
+            case "potentiometer":
+                return 0x1f274746
+            case "lightLevel":
+                return 0x17dc9a1c
+            case "magneticFieldLevel":
+                return 0x12fe180f
+            case "rotaryEncoder":
+                return 0x10fa29c9
+            case "led":
+                return 0x1609d4f0
+            // Others
+            case "servo":
+                return 0x12fc9103
+            default:
+                return undefined
+        }
         // m:b
-        button: 0x1473a263,
-        dotMatrix: 0x110d154b,
-        soundLevel: 0x14ad1a5d,
-        temperature: 0x1421bac7,
-        soundPlayer: 0x1403d338,
-        buzzer: 0x1b57b1d7,
-        accelerometer: 0x1f140409,
-        radio: 0x1ac986cf,
-        // Kit-A
-        potentiometer: 0x1f274746,
-        lightLevel: 0x17dc9a1c,
-        magneticFieldLevel: 0x12fe180f,
-        rotaryEncoder: 0x10fa29c9,
-        led: 0x1609d4f0,
-        // Others
-        servo: 0x12fc9103,
     }
 
     export const SRV_JACSCRIPT_CONDITION = 0x1196796d

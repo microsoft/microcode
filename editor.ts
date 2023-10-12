@@ -1,5 +1,4 @@
 namespace microcode {
-
     const TOOLBAR_HEIGHT = 17
     const TOOLBAR_MARGIN = 2
 
@@ -79,7 +78,7 @@ namespace microcode {
         }
 
         private pickDiskSLot() {
-            const btns: PickerButtonDef[] = diskSlots.map(slot => {
+            const btns: PickerButtonDef[] = diskSlots().map(slot => {
                 return {
                     icon: slot,
                 }
@@ -430,7 +429,6 @@ namespace microcode {
         }
 
         update() {
-
             if (this.pageEditor) {
                 this.pageEditor.update()
             }

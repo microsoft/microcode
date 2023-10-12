@@ -148,7 +148,7 @@ namespace microcode {
         TID_MODIFIER_PAGE_5,
     ]
 
-    export const diskSlots = ["disk1", "disk2", "disk3"]
+    export function diskSlots() { return ["disk1", "disk2", "disk3"] }
 
     export const tilesDB: TileDatabase = {
         sensors: {},
