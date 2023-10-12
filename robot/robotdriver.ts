@@ -136,6 +136,11 @@ namespace microcode {
         }
 
         private updateSpeed() {
+            console.log(`tmode: ${this.targetSpeedMode}`)
+            console.log(`tspeed: ${this.targetSpeed}`)
+            console.log(`cmode: ${this.currentSpeedMode}`)
+            console.log(`cspeed: ${this.currentSpeed}`)
+
             // transition from one mode to the other, robot should stop
             if (this.currentSpeedMode !== this.targetSpeedMode) {
                 const alpha = MODE_TRANSITION_ALPHA
@@ -174,25 +179,32 @@ namespace microcode {
                         }
                     }
                 }
-                console.log(`left: ${left}`)
-                console.log(`right: ${right}`)
-                this.robot.motorRun(left, right)
-                this.showMotorState(left, right)
+                this.setMotorState(left, right)
             } else {
                 let s = this.currentSpeed
                 if (lines)
-                    s = s * Math.min(Math.abs(s), this.robot.maxLineTurnSpeed)
-                console.log(`speed: ${s}`)
-                this.robot.motorTurn(s)
-                this.showMotorState(
-                    s > 0 ? s : 0,
-                    s <= 0 ? 0 : -s
-                )
+                    s = Math.sign(s) * Math.min(Math.abs(s), this.robot.maxLineTurnSpeed)
+                let left = 0
+                let right = 0
+                const op = Math.abs(s) / 3
+                if (s > 0) {
+                    right = Math.constrain(this.robot.maxTurnSpeed + s, 0, op)
+                    left = s
+                } else {
+                    right = -s
+                    left = Math.constrain(this.robot.maxTurnSpeed - s, 0, op)
+                }
+                this.setMotorState(left, right)
             }
         }
 
-        private showMotorState(left: number, right: number) {
+        private setMotorState(left: number, right: number) {
+            left = Math.round(left)
+            right = Math.round(right)
+            this.robot.motorRun(left, right)
             if (this.showConfiguration) return
+            console.log(`left: ${left}`)
+            console.log(`right: ${right}`)
             this.showSingleMotorState(3, left)
             this.showSingleMotorState(1, right)
         }
@@ -269,9 +281,11 @@ namespace microcode {
                 speed > 0
                     ? Math.min(this.robot.maxRunSpeed, speed)
                     : Math.max(-this.robot.maxBackSpeed, speed)
-            this.setHeadlingSpeedColor(speed)
-            this.targetSpeedMode = RobotSpeedMode.Run
-            this.targetSpeed = speed
+            if (this.targetSpeedMode !== RobotSpeedMode.Run || this.targetSpeed !== speed) {
+                this.setHeadlingSpeedColor(speed)
+                this.targetSpeedMode = RobotSpeedMode.Run
+                this.targetSpeed = speed
+            }
         }
 
         motorTurn(speed: number) {
@@ -281,10 +295,11 @@ namespace microcode {
                 speed > 0
                     ? Math.min(this.robot.maxTurnSpeed, speed)
                     : Math.max(-this.robot.maxTurnSpeed, speed)
-            this.setHeadlingSpeedColor(speed)
-            this.targetSpeedMode = RobotSpeedMode.Turn
-            this.targetSpeed = speed
-            this.currentSpeed = 0
+            if (this.targetSpeedMode !== RobotSpeedMode.Turn || this.targetSpeed !== speed) {
+                this.setHeadlingSpeedColor(speed)
+                this.targetSpeedMode = RobotSpeedMode.Turn
+                this.targetSpeed = speed
+            }
         }
 
         motorStop() {

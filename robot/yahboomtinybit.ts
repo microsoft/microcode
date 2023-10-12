@@ -140,6 +140,7 @@ namespace microcode {
                 Car_back(-speed, -speed)
         }
 
+        /*
         motorTurn(speed: number): void {
             console.log(`turn: ${speed}`)
             if (speed === 0)
@@ -149,6 +150,7 @@ namespace microcode {
             else
                 Car_left(-speed / 2, -speed)
         }
+        */
 
         headlightsSetColor(red: number, green: number, blue: number) {
             setPwmRGB(red, green, blue)

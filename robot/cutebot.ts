@@ -23,7 +23,7 @@ namespace microcode {
         } else {
             buf[0] = 0x01
             buf[1] = 0x01
-            buf[2] = lspeed * -1
+            buf[2] = -lspeed
             buf[3] = 0 //补位
         }
         pins.i2cWriteBuffer(STM8_ADDRESSS, buf) //写入左轮
@@ -35,7 +35,7 @@ namespace microcode {
         } else {
             buf[0] = 0x02
             buf[1] = 0x01
-            buf[2] = rspeed * -1
+            buf[2] = rspeed
             buf[3] = 0 //补位
         }
         pins.i2cWriteBuffer(STM8_ADDRESSS, buf) //写入左轮
@@ -73,11 +73,11 @@ namespace microcode {
         constructor() {
             super()
             this.musicVolume = 168
-            this.maxRunSpeed = 35
+            this.maxRunSpeed = 40
             this.maxBackSpeed = 20
-            this.maxTurnSpeed = 30
-            this.maxLineRunSpeed = 25
-            this.maxLineTurnSpeed = 27
+            this.maxTurnSpeed = 60
+            this.maxLineRunSpeed = 28
+            this.maxLineTurnSpeed = 60
 
             pins.setPull(DigitalPin.P8, PinPullMode.PullNone)
             pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
@@ -86,12 +86,6 @@ namespace microcode {
 
         motorRun(left: number, right: number) {
             motors(left, right)
-        }
-
-        motorTurn(speed: number) {
-            const op = Math.abs(speed) >> 1
-            if (speed > 0) motors(speed, Math.constrain(this.maxTurnSpeed - speed, 0, op))
-            else motors(Math.constrain(this.maxTurnSpeed + speed, 0, op), -speed)
         }
 
         headlightsSetColor(red: number, green: number, blue: number) {

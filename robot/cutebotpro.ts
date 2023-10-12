@@ -230,13 +230,6 @@ namespace microcode {
             pwmCruiseControl(left, right)
         }
 
-        motorTurn(speed: number) {
-            console.log(`speed: ${speed}`)
-            const op = Math.abs(speed) / 3
-            if (speed > 0) pwmCruiseControl(speed, Math.constrain(this.maxTurnSpeed - speed, 0, op))
-            else pwmCruiseControl(Math.constrain(this.maxTurnSpeed + speed, 0, op), -speed)
-        }
-
         headlightsSetColor(red: number, green: number, blue: number) {
             singleHeadlights(CutebotProRGBLight.RGBA, red, green, blue)
         }

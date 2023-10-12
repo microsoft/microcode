@@ -19,14 +19,6 @@ namespace microcode.robots {
 
         }
 
-
-        /**
-         * Makes the robot turn at % `speed`. Positive turns clock-wize/right, negative turns counter-clockwize/left.
-         */
-        motorTurn(speed: number): void {
-
-        }
-
         /**
          * Optional: sets the color on the LED array as a 24bit RGB color
          */

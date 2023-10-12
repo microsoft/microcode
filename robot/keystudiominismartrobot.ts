@@ -163,15 +163,6 @@ namespace microcode {
             carStop()
         }
 
-        motorTurn(speed: number) {
-            if (speed === 0) {
-                this.motorStop()
-            } else {
-                const dir = speed >= 0 ? DIR.TurnRight : DIR.TurnLeft
-                run(dir, Math.abs(speed))
-            }
-        }
-
         ultrasonicDistance(): number {
             //send trig pulse
             pins.digitalWritePin(TRIG_PIN, 0)
