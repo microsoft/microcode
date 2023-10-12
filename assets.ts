@@ -1,209 +1,201 @@
 namespace microcode {
 
-    type name2Image = { [name: string]: Image }
+    let extraImage: Image = null
 
     //% shim=TD_NOOP
-    function extraSamples(reg: name2Image) {
-        reg["clap_lights"] = icondb.sampleClapLights
-        reg["firefly"] = icondb.sampleFirefly
-        reg["flashing_heart"] = icondb.sampleFlashingHeart
-        // this.reg["dice"] = icondb.sampleDice  // nice icon, don't delete, but not currently used
-        reg["rock_paper_scissors"] = icondb.sampleRockPaperScissors
-        reg["teleport_duck"] = icondb.sampleTeleportDuck
-        reg["pet_hamster"] = icondb.samplePetHamster
-        reg["heads_tails"] = icondb.sampleHeadsOrTails
-        reg["reaction_time"] = icondb.sampleReactionTime
-        reg["hot_potato"] = icondb.sampleHotPotato
-        reg["clap_lights"] = icondb.sampleClapLights
-        reg["railroad_crossing"] = icondb.sampleRailCrossingLight
+    function extraSamples(name: string) {
+        if (name == "clap_lights") extraImage = icondb.sampleClapLights
+        if (name == "firefly") extraImage = icondb.sampleFirefly
+        if (name == "flashing_heart") extraImage = icondb.sampleFlashingHeart
+        // if (name == "dice") extraImage = icondb.sampleDice  // nice icon, don't delete, but not currently used
+        if (name == "rock_paper_scissors") extraImage = icondb.sampleRockPaperScissors
+        if (name == "teleport_duck") extraImage = icondb.sampleTeleportDuck
+        if (name == "pet_hamster") extraImage = icondb.samplePetHamster
+        if (name == "heads_tails") extraImage = icondb.sampleHeadsOrTails
+        if (name == "reaction_time") extraImage = icondb.sampleReactionTime
+        if (name == "hot_potato") extraImage = icondb.sampleHotPotato
+        if (name == "clap_lights") extraImage = icondb.sampleClapLights
+        if (name == "railroad_crossing") extraImage = icondb.sampleRailCrossingLight
     }
 
-    function carImages(reg: name2Image) {
-        reg[TID_ACTUATOR_CAR] = icondb.car
-        reg[TID_MODIFIER_CAR_FORWARD] = icondb.car_forward
-        reg[TID_MODIFIER_CAR_REVERSE] = icondb.car_reverse
-        reg[TID_MODIFIER_CAR_TURN_LEFT] = icondb.car_left_turn
-        reg[TID_MODIFIER_CAR_TURN_RIGHT] = icondb.car_right_turn
-        reg[TID_MODIFIER_CAR_STOP] = icondb.car_stop
-        reg[TID_SENSOR_CAR_WALL] = icondb.car_wall
-        reg[TID_SENSOR_LINE] = icondb.line_sensor
-        reg[TID_FILTER_LINE_LEFT] = icondb.line_left_on
-        reg[TID_FILTER_LINE_RIGHT] = icondb.line_right_on
-        reg[TID_FILTER_LINE_BOTH] = icondb.line_both_on
-        reg[TID_FILTER_LINE_NEITHER] = icondb.line_neither_on
+    function carImages(name: string) {
+        if (name == TID_ACTUATOR_CAR) return icondb.car
+        if (name == TID_MODIFIER_CAR_FORWARD) return icondb.car_forward
+        if (name == TID_MODIFIER_CAR_REVERSE) return icondb.car_reverse
+        if (name == TID_MODIFIER_CAR_TURN_LEFT) return icondb.car_left_turn
+        if (name == TID_MODIFIER_CAR_TURN_RIGHT) return icondb.car_right_turn
+        if (name == TID_MODIFIER_CAR_STOP) return icondb.car_stop
+        if (name == TID_SENSOR_CAR_WALL) return icondb.car_wall
+        if (name == TID_SENSOR_LINE) return icondb.line_sensor
+        if (name == TID_FILTER_LINE_LEFT) return icondb.line_left_on
+        if (name == TID_FILTER_LINE_RIGHT) return icondb.line_right_on
+        if (name == TID_FILTER_LINE_BOTH) return icondb.line_both_on
+        if (name == TID_FILTER_LINE_NEITHER) return icondb.line_neither_on
+        return null
     }
 
     // TODO: factor out all the jacdac stuff into separate file/class
     // TODO: so we can generate different builds
-    function jacdacImages(reg: name2Image) {
-        reg[TID_FILTER_KITA_KEY_1] = icondb.kita_key_1
-        reg[TID_FILTER_KITA_KEY_2] = icondb.kita_key_2
-        reg[TID_SENSOR_MAGNET] = icondb.magnet
-        reg[TID_SENSOR_SLIDER] = icondb.kita_slider
-        reg[TID_SENSOR_ROTARY] = icondb.kita_rotary
-        reg[TID_FILTER_ROTARY_LEFT] = icondb.kita_rotary_left
-        reg[TID_FILTER_ROTARY_RIGHT] = icondb.kita_rotary_right
-        reg[TID_ACTUATOR_RGB_LED] = icondb.rgbLed
-        reg[TID_MODIFIER_RGB_LED_COLOR_1] = icondb.tile_color_red
-        reg[TID_MODIFIER_RGB_LED_COLOR_2] = icondb.tile_color_green
-        reg[TID_MODIFIER_RGB_LED_COLOR_3] = icondb.tile_color_blue
-        reg[TID_MODIFIER_RGB_LED_COLOR_4] = icondb.tile_color_magenta
-        reg[TID_MODIFIER_RGB_LED_COLOR_5] = icondb.tile_color_yellow
-        reg[TID_MODIFIER_RGB_LED_COLOR_6] = icondb.tile_color_black
-        reg[TID_MODIFIER_RGB_LED_COLOR_RAINBOW] = icondb.tile_rainbow
-        reg[TID_MODIFIER_RGB_LED_COLOR_SPARKLE] = icondb.tile_sparkle
-        reg[TID_MODIFIER_SERVO_SET_ANGLE] = icondb.servo_set_angle
+    function jacdacImages(name: string) {
+        if (name == TID_FILTER_KITA_KEY_1) return icondb.kita_key_1
+        if (name == TID_FILTER_KITA_KEY_2) return icondb.kita_key_2
+        if (name == TID_SENSOR_MAGNET) return icondb.magnet
+        if (name == TID_SENSOR_SLIDER) return icondb.kita_slider
+        if (name == TID_SENSOR_ROTARY) return icondb.kita_rotary
+        if (name == TID_FILTER_ROTARY_LEFT) return icondb.kita_rotary_left
+        if (name == TID_FILTER_ROTARY_RIGHT) return icondb.kita_rotary_right
+        if (name == TID_ACTUATOR_RGB_LED) return icondb.rgbLed
+        if (name == TID_MODIFIER_RGB_LED_COLOR_1) return icondb.tile_color_red
+        if (name == TID_MODIFIER_RGB_LED_COLOR_2) return icondb.tile_color_green
+        if (name == TID_MODIFIER_RGB_LED_COLOR_3) return icondb.tile_color_blue
+        if (name == TID_MODIFIER_RGB_LED_COLOR_4) return icondb.tile_color_magenta
+        if (name == TID_MODIFIER_RGB_LED_COLOR_5) return icondb.tile_color_yellow
+        if (name == TID_MODIFIER_RGB_LED_COLOR_6) return icondb.tile_color_black
+        if (name == TID_MODIFIER_RGB_LED_COLOR_RAINBOW) return icondb.tile_rainbow
+        if (name == TID_MODIFIER_RGB_LED_COLOR_SPARKLE) return icondb.tile_sparkle
+        if (name == TID_MODIFIER_SERVO_SET_ANGLE) return icondb.servo_set_angle
+        return null
     }
 
     export class icons {
-        static reg: name2Image
 
         public static get(name: string, nullIfMissing = false): Image {
-            let icon = this.reg[name]
-            if (!icon && !nullIfMissing) {
-                icon = this.reg["MISSING"]
-            }
-            return icon
-        }
-
-        public static names() {
-            icons.init()
-            return Object.keys(this.reg)
-        }
-
-        public static init() {
-            if (this.reg) return
-
-            this.reg = {}
-            extraSamples(this.reg)
-            if (CAR_TILES) carImages(this.reg)
-            jacdacImages(this.reg)
             // editor icons
-            this.reg["delete"] = icondb.btn_delete
-            this.reg["plus"] = icondb.btn_plus
-            this.reg["arith_plus"] = icondb.arith_plus
-            this.reg["arith_equals"] = icondb.arith_equals
-            this.reg["when_insertion_point"] = icondb.btn_when_insertion_point
-            this.reg["do_insertion_point"] = icondb.btn_do_insertion_point
-            this.reg["rule_arrow"] = icondb.rule_arrow
-            this.reg["rule_handle"] = icondb.rule_handle
-            this.reg["edit_program"] = icondb.largeEditIcon
-            this.reg["new_program"] = icondb.largeNewProgramIcon
-            this.reg["MISSING"] = icondb.MISSING
-            this.reg["disk"] = icondb.disk
-            this.reg["disk1"] = icondb.disk1
-            this.reg["disk2"] = icondb.disk2
-            this.reg["disk3"] = icondb.disk3
-            this.reg["largeDisk"] = icondb.largeDiskIcon
+            if (name == "delete") return icondb.btn_delete
+            if (name == "plus") return icondb.btn_plus
+            if (name == "arith_plus") return icondb.arith_plus
+            if (name == "arith_equals") return icondb.arith_equals
+            if (name == "when_insertion_point") return icondb.btn_when_insertion_point
+            if (name == "do_insertion_point") return icondb.btn_do_insertion_point
+            if (name == "rule_arrow") return icondb.rule_arrow
+            if (name == "rule_handle") return icondb.rule_handle
+            if (name == "edit_program") return icondb.largeEditIcon
+            if (name == "new_program") return icondb.largeNewProgramIcon
+            if (name == "MISSING") return icondb.MISSING
+            if (name == "disk") return icondb.disk
+            if (name == "disk1") return icondb.disk1
+            if (name == "disk2") return icondb.disk2
+            if (name == "disk3") return icondb.disk3
+            if (name == "largeDisk") return icondb.largeDiskIcon
 
             // basic colors led editor
-            this.reg["solid_red"] = icondb.solid_red
-            this.reg["solid_black"] = icondb.solid_black
-            this.reg["note_on"] = icondb.note_on
-            this.reg["note_off"] = icondb.note_off
+            if (name == "solid_red") return icondb.solid_red
+            if (name == "solid_black") return icondb.solid_black
+            if (name == "note_on") return icondb.note_on
+            if (name == "note_off") return icondb.note_off
 
             // sample icons
-            this.reg["smiley_buttons"] = icondb.sampleSmileyButtons
+            if (name == "smiley_buttons") return icondb.sampleSmileyButtons
 
             // pages
 
-            this.reg[TID_SENSOR_START_PAGE] = icondb.tile_start_page
-            this.reg[TID_ACTUATOR_SWITCH_PAGE] = icondb.tile_switch_page
-            this.reg[TID_MODIFIER_PAGE_1] = icondb.tile_page_1
-            this.reg[TID_MODIFIER_PAGE_2] = icondb.tile_page_2
-            this.reg[TID_MODIFIER_PAGE_3] = icondb.tile_page_3
-            this.reg[TID_MODIFIER_PAGE_4] = icondb.tile_page_4
-            this.reg[TID_MODIFIER_PAGE_5] = icondb.tile_page_5
+            if (name == TID_SENSOR_START_PAGE) return icondb.tile_start_page
+            if (name == TID_ACTUATOR_SWITCH_PAGE) return icondb.tile_switch_page
+            if (name == TID_MODIFIER_PAGE_1) return icondb.tile_page_1
+            if (name == TID_MODIFIER_PAGE_2) return icondb.tile_page_2
+            if (name == TID_MODIFIER_PAGE_3) return icondb.tile_page_3
+            if (name == TID_MODIFIER_PAGE_4) return icondb.tile_page_4
+            if (name == TID_MODIFIER_PAGE_5) return icondb.tile_page_5
 
             // looping
-            this.reg[TID_MODIFIER_LOOP] = icondb.loop
+            if (name == TID_MODIFIER_LOOP) return icondb.loop
 
             // variables
 
-            this.reg[TID_SENSOR_CUP_X_WRITTEN] = icondb.cupXwritten
-            this.reg[TID_SENSOR_CUP_Y_WRITTEN] = icondb.cupYwritten
-            this.reg[TID_SENSOR_CUP_Z_WRITTEN] = icondb.cupZwritten
-            this.reg[TID_FILTER_CUP_X_READ] = icondb.cupXread
-            this.reg[TID_FILTER_CUP_Y_READ] = icondb.cupYread
-            this.reg[TID_FILTER_CUP_Z_READ] = icondb.cupZread
-            this.reg[TID_ACTUATOR_CUP_X_ASSIGN] = icondb.cupXassign
-            this.reg[TID_ACTUATOR_CUP_Y_ASSIGN] = icondb.cupYassign
-            this.reg[TID_ACTUATOR_CUP_Z_ASSIGN] = icondb.cupZassign
-            this.reg[TID_MODIFIER_CUP_X_READ] = icondb.cupXread
-            this.reg[TID_MODIFIER_CUP_Y_READ] = icondb.cupYread
-            this.reg[TID_MODIFIER_CUP_Z_READ] = icondb.cupZread
+            if (name == TID_SENSOR_CUP_X_WRITTEN) return icondb.cupXwritten
+            if (name == TID_SENSOR_CUP_Y_WRITTEN) return icondb.cupYwritten
+            if (name == TID_SENSOR_CUP_Z_WRITTEN) return icondb.cupZwritten
+            if (name == TID_FILTER_CUP_X_READ) return icondb.cupXread
+            if (name == TID_FILTER_CUP_Y_READ) return icondb.cupYread
+            if (name == TID_FILTER_CUP_Z_READ) return icondb.cupZread
+            if (name == TID_ACTUATOR_CUP_X_ASSIGN) return icondb.cupXassign
+            if (name == TID_ACTUATOR_CUP_Y_ASSIGN) return icondb.cupYassign
+            if (name == TID_ACTUATOR_CUP_Z_ASSIGN) return icondb.cupZassign
+            if (name == TID_MODIFIER_CUP_X_READ) return icondb.cupXread
+            if (name == TID_MODIFIER_CUP_Y_READ) return icondb.cupYread
+            if (name == TID_MODIFIER_CUP_Z_READ) return icondb.cupZread
 
             // numbers
-            this.reg[TID_MODIFIER_RANDOM_TOSS] = icondb.diceToss
-            this.reg[TID_FILTER_COIN_1] = icondb.blocks1
-            this.reg[TID_FILTER_COIN_2] = icondb.blocks2
-            this.reg[TID_FILTER_COIN_3] = icondb.blocks3
-            this.reg[TID_FILTER_COIN_4] = icondb.blocks4
-            this.reg[TID_FILTER_COIN_5] = icondb.blocks5
-            this.reg[TID_MODIFIER_COIN_1] = icondb.blocks1
-            this.reg[TID_MODIFIER_COIN_2] = icondb.blocks2
-            this.reg[TID_MODIFIER_COIN_3] = icondb.blocks3
-            this.reg[TID_MODIFIER_COIN_4] = icondb.blocks4
-            this.reg[TID_MODIFIER_COIN_5] = icondb.blocks5
+            if (name == TID_MODIFIER_RANDOM_TOSS) return icondb.diceToss
+            if (name == TID_FILTER_COIN_1) return icondb.blocks1
+            if (name == TID_FILTER_COIN_2) return icondb.blocks2
+            if (name == TID_FILTER_COIN_3) return icondb.blocks3
+            if (name == TID_FILTER_COIN_4) return icondb.blocks4
+            if (name == TID_FILTER_COIN_5) return icondb.blocks5
+            if (name == TID_MODIFIER_COIN_1) return icondb.blocks1
+            if (name == TID_MODIFIER_COIN_2) return icondb.blocks2
+            if (name == TID_MODIFIER_COIN_3) return icondb.blocks3
+            if (name == TID_MODIFIER_COIN_4) return icondb.blocks4
+            if (name == TID_MODIFIER_COIN_5) return icondb.blocks5
 
             // micro:bit sensors
-            this.reg[TID_SENSOR_ACCELEROMETER] = icondb.accelerometer
-            this.reg[TID_SENSOR_TIMER] = icondb.tile_timer
-            this.reg[TID_SENSOR_RADIO_RECEIVE] = icondb.radio_receive
-            this.reg[TID_SENSOR_PRESS] = icondb.finger_press
-            this.reg[TID_SENSOR_RELEASE] = icondb.finger_release
-            this.reg[TID_SENSOR_MICROPHONE] = icondb.microphone
-            this.reg[TID_SENSOR_TEMP] = icondb.thermometer
-            this.reg[TID_SENSOR_LIGHT] = icondb.light_sensor
+            if (name == TID_SENSOR_ACCELEROMETER) return icondb.accelerometer
+            if (name == TID_SENSOR_TIMER) return icondb.tile_timer
+            if (name == TID_SENSOR_RADIO_RECEIVE) return icondb.radio_receive
+            if (name == TID_SENSOR_PRESS) return icondb.finger_press
+            if (name == TID_SENSOR_RELEASE) return icondb.finger_release
+            if (name == TID_SENSOR_MICROPHONE) return icondb.microphone
+            if (name == TID_SENSOR_TEMP) return icondb.thermometer
+            if (name == TID_SENSOR_LIGHT) return icondb.light_sensor
 
             // micro:bit filters
-            this.reg[TID_FILTER_LOGO] = icondb.microbit_logo
-            this.reg[TID_FILTER_PIN_0] = icondb.tile_pin_0
-            this.reg[TID_FILTER_PIN_1] = icondb.tile_pin_1
-            this.reg[TID_FILTER_PIN_2] = icondb.tile_pin_2
-            this.reg[TID_FILTER_BUTTON_A] = icondb.tile_button_a
-            this.reg[TID_FILTER_BUTTON_B] = icondb.tile_button_b
-            this.reg[TID_FILTER_TIMESPAN_SHORT] = icondb.tile_timespan_short
-            this.reg[TID_FILTER_TIMESPAN_LONG] = icondb.tile_timespan_long
-            this.reg[TID_FILTER_TIMESPAN_VERY_LONG] =
-                icondb.tile_timespan_fiveSeconds
-            this.reg[TID_FILTER_TIMESPAN_RANDOM] = icondb.tile_timespan_random
-            this.reg[TID_FILTER_LOUD] = icondb.speaker
-            this.reg[TID_FILTER_QUIET] = icondb.speakerQuiet
-            this.reg[TID_FILTER_TEMP_WARMER] = icondb.temp_warmer
-            this.reg[TID_FILTER_TEMP_COLDER] = icondb.temp_colder
-            this.reg[TID_FILTER_ACCEL_SHAKE] = icondb.moveShake
-            this.reg[TID_FILTER_ACCEL_TILT_UP] = icondb.moveTiltUp
-            this.reg[TID_FILTER_ACCEL_TILT_DOWN] = icondb.moveTiltDown
-            this.reg[TID_FILTER_ACCEL_TILT_LEFT] = icondb.moveTiltLeft
-            this.reg[TID_FILTER_ACCEL_TILT_RIGHT] = icondb.moveTiltRight
+            if (name == TID_FILTER_LOGO) return icondb.microbit_logo
+            if (name == TID_FILTER_PIN_0) return icondb.tile_pin_0
+            if (name == TID_FILTER_PIN_1) return icondb.tile_pin_1
+            if (name == TID_FILTER_PIN_2) return icondb.tile_pin_2
+            if (name == TID_FILTER_BUTTON_A) return icondb.tile_button_a
+            if (name == TID_FILTER_BUTTON_B) return icondb.tile_button_b
+            if (name == TID_FILTER_TIMESPAN_SHORT) return icondb.tile_timespan_short
+            if (name == TID_FILTER_TIMESPAN_LONG) return icondb.tile_timespan_long
+            if (name == TID_FILTER_TIMESPAN_VERY_LONG) return icondb.tile_timespan_fiveSeconds
+            if (name == TID_FILTER_TIMESPAN_RANDOM) return icondb.tile_timespan_random
+            if (name == TID_FILTER_LOUD) return icondb.speaker
+            if (name == TID_FILTER_QUIET) return icondb.speakerQuiet
+            if (name == TID_FILTER_TEMP_WARMER) return icondb.temp_warmer
+            if (name == TID_FILTER_TEMP_COLDER) return icondb.temp_colder
+            if (name == TID_FILTER_ACCEL_SHAKE) return icondb.moveShake
+            if (name == TID_FILTER_ACCEL_TILT_UP) return icondb.moveTiltUp
+            if (name == TID_FILTER_ACCEL_TILT_DOWN) return icondb.moveTiltDown
+            if (name == TID_FILTER_ACCEL_TILT_LEFT) return icondb.moveTiltLeft
+            if (name == TID_FILTER_ACCEL_TILT_RIGHT) return icondb.moveTiltRight
 
             // micro:bit actuators
-            this.reg[TID_ACTUATOR_PAINT] = icondb.showScreen
-            this.reg[TID_ACTUATOR_SHOW_NUMBER] = icondb.showNumber
-            this.reg[TID_ACTUATOR_RADIO_SEND] = icondb.radio_send
-            this.reg[TID_ACTUATOR_RADIO_SET_GROUP] = icondb.radio_set_group
-            this.reg[TID_ACTUATOR_MICROPHONE] = icondb.microphone
-            this.reg[TID_ACTUATOR_SPEAKER] = icondb.speakerFun
-            this.reg[TID_ACTUATOR_MUSIC] = icondb.music
+            if (name == TID_ACTUATOR_PAINT) return icondb.showScreen
+            if (name == TID_ACTUATOR_SHOW_NUMBER) return icondb.showNumber
+            if (name == TID_ACTUATOR_RADIO_SEND) return icondb.radio_send
+            if (name == TID_ACTUATOR_RADIO_SET_GROUP) return icondb.radio_set_group
+            if (name == TID_ACTUATOR_MICROPHONE) return icondb.microphone
+            if (name == TID_ACTUATOR_SPEAKER) return icondb.speakerFun
+            if (name == TID_ACTUATOR_MUSIC) return icondb.music
 
             // micro:bit modifiers
-            this.reg[TID_MODIFIER_ICON_EDITOR] = icondb.iconEditor
-            this.reg[TID_MODIFIER_MELODY_EDITOR] = icondb.melodyEditor
+            if (name == TID_MODIFIER_ICON_EDITOR) return icondb.iconEditor
+            if (name == TID_MODIFIER_MELODY_EDITOR) return icondb.melodyEditor
 
-            this.reg[TID_MODIFIER_EMOJI_GIGGLE] = icondb.soundGiggle
-            this.reg[TID_MODIFIER_EMOJI_HAPPY] = icondb.soundHappy
-            this.reg[TID_MODIFIER_EMOJI_HELLO] = icondb.soundHello
-            this.reg[TID_MODIFIER_EMOJI_MYSTERIOUS] = icondb.soundMysterious
-            this.reg[TID_MODIFIER_EMOJI_SAD] = icondb.soundSad
-            this.reg[TID_MODIFIER_EMOJI_SLIDE] = icondb.soundSlide
-            this.reg[TID_MODIFIER_EMOJI_SOARING] = icondb.soundSoaring
-            this.reg[TID_MODIFIER_EMOJI_SPRING] = icondb.soundSpring
-            this.reg[TID_MODIFIER_EMOJI_TWINKLE] = icondb.soundTwinkle
-            this.reg[TID_MODIFIER_EMOJI_YAWN] = icondb.soundYawn
+            if (name == TID_MODIFIER_EMOJI_GIGGLE) return icondb.soundGiggle
+            if (name == TID_MODIFIER_EMOJI_HAPPY) return icondb.soundHappy
+            if (name == TID_MODIFIER_EMOJI_HELLO) return icondb.soundHello
+            if (name == TID_MODIFIER_EMOJI_MYSTERIOUS) return icondb.soundMysterious
+            if (name == TID_MODIFIER_EMOJI_SAD) return icondb.soundSad
+            if (name == TID_MODIFIER_EMOJI_SLIDE) return icondb.soundSlide
+            if (name == TID_MODIFIER_EMOJI_SOARING) return icondb.soundSoaring
+            if (name == TID_MODIFIER_EMOJI_SPRING) return icondb.soundSpring
+            if (name == TID_MODIFIER_EMOJI_TWINKLE) return icondb.soundTwinkle
+            if (name == TID_MODIFIER_EMOJI_YAWN) return icondb.soundYawn
 
-            this.reg[TID_MODIFIER_TEMP_READ] = icondb.thermometer
-            this.reg[TID_MODIFIER_RADIO_VALUE] = icondb.radio_value
+            if (name == TID_MODIFIER_TEMP_READ) return icondb.thermometer
+            if (name == TID_MODIFIER_RADIO_VALUE) return icondb.radio_value
+
+            // micro:bit car
+            const car = carImages(name)
+            if (car) return car
+            const jacdac = jacdacImages(name)
+            if (jacdac) return jacdac
+            extraImage = null
+            extraSamples(name)  // only for web app
+            if (extraImage) return extraImage
+            if (nullIfMissing) return null
+            return icondb.MISSING
         }
     }
 
