@@ -302,7 +302,7 @@ namespace microcode {
             return this.sensors.length === 0 && this.actuators.length === 0
         }
 
-        public toObj(): any {
+        public toJson(): any {
             const addField = (t: TileDefn) => {
                 if (t.fieldEditor) {
                     const ret = `${t.tid}(${t.fieldEditor.serialize(
@@ -326,7 +326,7 @@ namespace microcode {
             return obj
         }
 
-        public static FromObj(obj: any): RuleDefn {
+        public static fromJson(obj: any): RuleDefn {
             const extractField = (t: string) => (s: string) => {
                 let hasField = s.indexOf("(")
                 if (hasField >= 0) {
@@ -414,9 +414,9 @@ namespace microcode {
             return undefined
         }
 
-        public toObj(): any {
+        public toJson(): any {
             const obj = {
-                R: this.rules.map(elem => elem.toObj()),
+                R: this.rules.map(elem => elem.toJson()),
             }
             if (!obj.R.length) {
                 delete obj.R
@@ -424,14 +424,14 @@ namespace microcode {
             return obj
         }
 
-        public static FromObj(obj: any): PageDefn {
+        public static fromJson(obj: any): PageDefn {
             if (typeof obj === "string") {
                 obj = JSON.parse(obj)
             }
             const defn = new PageDefn()
             if (Array.isArray(obj["R"])) {
                 const rules: any[] = obj["R"]
-                defn.rules = rules.map((elem: any) => RuleDefn.FromObj(elem))
+                defn.rules = rules.map((elem: any) => RuleDefn.fromJson(elem))
             }
             return defn
         }
@@ -454,20 +454,20 @@ namespace microcode {
             this.pages.map(page => page.trim())
         }
 
-        public toObj(): any {
+        public toJson(): any {
             return {
-                P: this.pages.map(elem => elem.toObj()),
+                P: this.pages.map(elem => elem.toJson()),
             }
         }
 
-        public static FromObj(obj: any): ProgramDefn {
+        public static fromJson(obj: any): ProgramDefn {
             if (typeof obj === "string") {
                 obj = JSON.parse(obj)
             }
             const defn = new ProgramDefn()
             if (obj && obj["P"] && Array.isArray(obj["P"])) {
                 const pages: any[] = obj["P"]
-                defn.pages = pages.map((elem: any) => PageDefn.FromObj(elem))
+                defn.pages = pages.map((elem: any) => PageDefn.fromJson(elem))
             }
             return defn
         }
