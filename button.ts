@@ -1,46 +1,57 @@
 namespace microcode {
-    export interface ButtonStyle {
-        fill: number
-        borders: { top: number; bottom: number; left: number; right: number }
-        shadow: boolean
+    export class Borders {
+        constructor(
+            public top: number,
+            public bottom: number,
+            public left: number,
+            public right: number
+        ) {}
+    }
+
+    export class ButtonStyle {
+        constructor(
+            public fill: number,
+            public borders: Borders,
+            public shadow: boolean
+        ) {}
     }
 
     export namespace ButtonStyles {
-        export const ShadowedWhite: ButtonStyle = {
-            fill: 1,
-            borders: { top: 1, bottom: 12, left: 1, right: 1 },
-            shadow: true,
-        }
-        export const LightShadowedWhite: ButtonStyle = {
-            fill: 1,
-            borders: { top: 1, bottom: 11, left: 1, right: 1 },
-            shadow: true,
-        }
-        export const FlatWhite: ButtonStyle = {
-            fill: 1,
-            borders: { top: 1, bottom: 1, left: 1, right: 1 },
-            shadow: false,
-        }
-        export const RectangleWhite: ButtonStyle = {
-            fill: 1,
-            borders: { top: 0, bottom: 0, left: 0, right: 0 },
-            shadow: false,
-        }
-        export const BorderedPurple: ButtonStyle = {
-            fill: 11,
-            borders: { top: 12, bottom: 12, left: 12, right: 12 },
-            shadow: false,
-        }
-        export const RedBorderedWhite: ButtonStyle = {
-            fill: 1,
-            borders: { top: 2, bottom: 2, left: 2, right: 2 },
-            shadow: false,
-        }
-        export const Transparent: ButtonStyle = {
-            fill: 0,
-            borders: { top: 0, bottom: 0, left: 0, right: 0 },
-            shadow: false,
-        }
+        export const ShadowedWhite = new ButtonStyle(
+            1,
+            new Borders(1, 12, 1, 1),
+            true
+        )
+        export const LightShadowedWhite = new ButtonStyle(
+            1,
+            new Borders(1, 11, 1, 1),
+            true
+        )
+        export const FlatWhite = new ButtonStyle(
+            1,
+            new Borders(1, 1, 1, 1),
+            false
+        )
+        export const RectangleWhite = new ButtonStyle(
+            1,
+            new Borders(0, 0, 0, 0),
+            false
+        )
+        export const BorderedPurple = new ButtonStyle(
+            11,
+            new Borders(12, 12, 12, 12),
+            false
+        )
+        export const RedBorderedWhite = new ButtonStyle(
+            1,
+            new Borders(2, 2, 2, 2),
+            false
+        )
+        export const Transparent = new ButtonStyle(
+            0,
+            new Borders(0, 0, 0, 0),
+            false
+        )
     }
 
     export function borderLeft(style: ButtonStyle) {
@@ -112,10 +123,10 @@ namespace microcode {
             // Returns bounds in local space
             // This isn't quite right, but it's close enough for now
             return Bounds.GrowXY(
-                            this.icon.bounds,
-                            borderLeft(this.style),
-                            borderTop(this.style)
-                        )
+                this.icon.bounds,
+                borderLeft(this.style),
+                borderTop(this.style)
+            )
         }
 
         public get rootXfrm(): Affine {
@@ -152,10 +163,8 @@ namespace microcode {
 
         public setIcon(iconId: string, img?: Image) {
             this.iconId = iconId
-            if (img)
-                this.icon.setImage(img)
-            else
-                this.buildSprite()
+            if (img) this.icon.setImage(img)
+            else this.buildSprite()
         }
 
         public getImage() {
@@ -203,9 +212,9 @@ namespace microcode {
             }
         }
 
-        hover(hov: boolean) { }
+        hover(hov: boolean) {}
 
-        update() { }
+        update() {}
 
         isOffScreenX(): boolean {
             return this.icon.isOffScreenX()
