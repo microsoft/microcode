@@ -1,6 +1,6 @@
 namespace microcode {
     export class Vec2 {
-        public dirty: boolean
+        //public dirty: boolean
         //public readonly: boolean;
 
         //% blockCombine block="x" callInDebugger
@@ -10,7 +10,7 @@ namespace microcode {
         public set x(v) {
             //if (this.readonly) throw "hey";
             this.x_ = v
-            this.dirty = true
+            //this.dirty = true
         }
 
         //% blockCombine block="y" callInDebugger
@@ -20,7 +20,7 @@ namespace microcode {
         public set y(v) {
             //if (this.readonly) throw "hey";
             this.y_ = v
-            this.dirty = true
+            //this.dirty = true
         }
 
         constructor(public x_ = 0, public y_ = 0) {
