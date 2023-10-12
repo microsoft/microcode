@@ -2701,7 +2701,6 @@ bffffffffffffffffffffffffffffffb
 . . . . . .
 `
 
-    export const oneToFive = [one, two, three, four, five]
 
     export const servo_set_angle = img`
     . . . . . . . . . . . . . . . . 

@@ -140,15 +140,19 @@ namespace microcode {
     export const TID_MODIFIER_CAR_TURN_RIGHT = "CAR4"
     export const TID_MODIFIER_CAR_STOP = "CAR5"
 
-    export const PAGE_IDS = [
-        TID_MODIFIER_PAGE_1,
-        TID_MODIFIER_PAGE_2,
-        TID_MODIFIER_PAGE_3,
-        TID_MODIFIER_PAGE_4,
-        TID_MODIFIER_PAGE_5,
-    ]
+    export function PAGE_IDS() {
+        return [
+            TID_MODIFIER_PAGE_1,
+            TID_MODIFIER_PAGE_2,
+            TID_MODIFIER_PAGE_3,
+            TID_MODIFIER_PAGE_4,
+            TID_MODIFIER_PAGE_5,
+        ]
+    }
 
-    export function diskSlots() { return ["disk1", "disk2", "disk3"] }
+    export function diskSlots() {
+        return ["disk1", "disk2", "disk3"]
+    }
 
     export const tilesDB: TileDatabase = {
         sensors: {},

@@ -441,7 +441,7 @@ namespace microcode {
         pages: PageDefn[]
 
         constructor() {
-            this.pages = PAGE_IDS.map(id => new PageDefn())
+            this.pages = PAGE_IDS().map(id => new PageDefn())
         }
 
         public clone(): ProgramDefn {

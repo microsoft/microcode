@@ -1,7 +1,9 @@
 namespace microcode {
     type ButtonRuleRep = { [name: string]: Button[] }
 
-    const repNames = ["sensors", "filters", "actuators", "modifiers"]
+    function repNames() {
+        return ["sensors", "filters", "actuators", "modifiers"]
+    }
 
     export class RuleEditor implements IComponent, IPlaceable {
         private xfrm_: Affine
@@ -108,7 +110,7 @@ namespace microcode {
 
         private destroyProgramTiles() {
             let changed = false
-            repNames.forEach(name => {
+            repNames().forEach(name => {
                 if (this.ruleButtons[name].length) {
                     this.ruleButtons[name] = []
                     changed = true
@@ -122,7 +124,7 @@ namespace microcode {
             this.destroyProgramTiles()
             const rule = this.ruledef.getRuleRep()
             let changed = false
-            repNames.forEach(name => {
+            repNames().forEach(name => {
                 const tiles = rule[name]
                 tiles.forEach((tile, index) => {
                     const button = new Button({
@@ -138,7 +140,8 @@ namespace microcode {
                         const sensor = rule["sensors"][0]
                         // TODO: this logic should be part of the SensorTileDefn
                         if (
-                            (sensor.jdKind == JdKind.Radio && sensor.tid != TID_SENSOR_LINE) ||
+                            (sensor.jdKind == JdKind.Radio &&
+                                sensor.tid != TID_SENSOR_LINE) ||
                             sensor.jdKind == JdKind.Variable
                         ) {
                             const plus = new Button({
@@ -508,7 +511,7 @@ namespace microcode {
             if (this.whenInsertBtn) this.whenInsertBtn.draw()
             this.arrow.draw()
             if (this.doInsertBtn) this.doInsertBtn.draw()
-            repNames.forEach(name => {
+            repNames().forEach(name => {
                 const buttons = this.ruleButtons[name]
                 for (let i = 0; i < buttons.length; ++i) {
                     const btn = buttons[i]
