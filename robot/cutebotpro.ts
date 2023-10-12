@@ -238,7 +238,7 @@ namespace microcode {
             return ultrasonic()
         }
 
-        lineState(): microcode.robots.RobotLineState {
+        lineState(): RobotLineState {
             const state = trackbitStateValue()
             let left = 0
             let right = 0

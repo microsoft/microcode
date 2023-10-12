@@ -36,7 +36,7 @@ namespace microcode {
         private targetSpeed: number = 0
         turnRatio = 0
         private targetMotorMode = RobotMotorMode.Run
-        currentLineState: microcode.robots.RobotLineState = microcode.robots.RobotLineState.None
+        currentLineState: RobotLineState = RobotLineState.None
 
         private stopToneMillis: number = 0
         lineAssist = false
@@ -49,7 +49,7 @@ namespace microcode {
         constructor(robot: robots.Robot) {
             this.robot = robot
 
-            microcode.robotDriver = this
+            microcode.robot = this
         }
 
         /**
@@ -168,11 +168,11 @@ namespace microcode {
                 if (lines && s > 0) { // going forward
                     this.currentSpeed = s = Math.min(s, this.robot.maxLineRunSpeed)
                     if (this.lineAssist) {
-                        if (lines === microcode.robots.RobotLineState.Left) {
+                        if (lines === RobotLineState.Left) {
                             left = 0
                             right = s
                         }
-                        else if (lines === microcode.robots.RobotLineState.Right) {
+                        else if (lines === RobotLineState.Right) {
                             right = 0
                             left = s
                         }
@@ -234,9 +234,9 @@ namespace microcode {
 
             // render left/right lines
             const left =
-                (lineState & microcode.robots.RobotLineState.Left) === microcode.robots.RobotLineState.Left
+                (lineState & RobotLineState.Left) === RobotLineState.Left
             const right =
-                (lineState & microcode.robots.RobotLineState.Right) === microcode.robots.RobotLineState.Right
+                (lineState & RobotLineState.Right) === RobotLineState.Right
             for (let i = 1; i < 5; ++i) {
                 if (left) led.plot(4, i)
                 else led.unplot(4, i)
@@ -334,7 +334,7 @@ namespace microcode {
             return this.currentUltrasonicDistance
         }
 
-        lineState(): microcode.robots.RobotLineState {
+        lineState(): RobotLineState {
             const ls = this.robot.lineState()
             if (ls !== this.currentLineState) {
                 this.currentLineState = ls

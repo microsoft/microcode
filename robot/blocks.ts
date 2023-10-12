@@ -1,8 +1,8 @@
 namespace microcode {
-    export let robotDriver: RobotDriver;
+    export let robot: RobotDriver;
 
     function checkRobotDriver() {
-        if (!robotDriver)
+        if (!robot)
             throw "Add 'robot start' block"
     }
 
@@ -18,7 +18,7 @@ namespace microcode {
     //% speed.max=100
     export function motorRun(speed: number) {
         checkRobotDriver()
-        robotDriver.motorRun(speed)
+        robot.motorRun(speed)
     }
 
     /**
@@ -38,7 +38,7 @@ namespace microcode {
     //% turnRatio.defl=100
     export function motorTurn(turnRatio: number, speed: number) {
         checkRobotDriver()
-        robotDriver.motorTurn(turnRatio, speed)
+        robot.motorTurn(turnRatio, speed)
     }
 
     /**
@@ -50,7 +50,7 @@ namespace microcode {
     //% blockid="microcoderobotmotorstop"
     export function motorStop() {
         checkRobotDriver()
-        robotDriver.motorStop()
+        robot.motorStop()
     }
 
     /**
@@ -64,6 +64,17 @@ namespace microcode {
     //% drift.max=20
     export function setMotorDrift(drift: number) {
         checkRobotDriver()
-        robotDriver.runDrift = Math.clamp(-10, 10, drift)
+        robot.runDrift = Math.clamp(-10, 10, drift)
+    }
+
+    /**
+     * Checks the state of lines
+     */
+    //% block="robot detect lines $state"
+    //% blockId=microcoderobotdetectlines
+    //% group="Sensors"
+    export function detectLines(state: RobotLineState): boolean {
+        checkRobotDriver()
+        return robot.lineState() === state
     }
 }

@@ -119,10 +119,10 @@ namespace microcode {
             pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
 
             this.maxLineRunSpeed = 64
-            this.maxLineTurnSpeed = 80
+            this.maxLineTurnSpeed = 90
             this.maxRunSpeed = 75
             this.maxBackSpeed = 64
-            this.maxTurnSpeed = 80
+            this.maxTurnSpeed = 90
         }
 
         motorRun(left: number, right: number): void {
@@ -164,7 +164,7 @@ namespace microcode {
                 return Ultrasonic_CarV2()
         }
 
-        lineState(): microcode.robots.RobotLineState {
+        lineState(): RobotLineState {
             const left = pins.digitalReadPin(DigitalPin.P13);
             const right = pins.digitalReadPin(DigitalPin.P14);
 

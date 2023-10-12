@@ -96,7 +96,7 @@ namespace microcode {
             return ultrasonic()
         }
 
-        lineState(): microcode.robots.RobotLineState {
+        lineState(): RobotLineState {
             const left = pins.digitalReadPin(DigitalPin.P13) ? 0 : 1
             const right = pins.digitalReadPin(DigitalPin.P14) ? 0 : 1
 

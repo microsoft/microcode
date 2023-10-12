@@ -187,7 +187,7 @@ namespace microcode {
             return Math.round(ret / 40);
         }
 
-        lineState(): microcode.robots.RobotLineState {
+        lineState(): RobotLineState {
             const val = pins.digitalReadPin(DigitalPin.P12) << 0 | pins.digitalReadPin(DigitalPin.P13) << 1;
             return val;
         }
