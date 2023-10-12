@@ -56,7 +56,9 @@ namespace microcode {
 
         /* abstract */ update() {}
 
-        /* abstract */ draw() { return true }
+        /* abstract */ draw() {
+            return true
+        }
 
         protected handleClick(x: number, y: number) {}
 
@@ -83,7 +85,6 @@ namespace microcode {
             this.backgroundCaptured_ = false
         }
 
-        private draw_dirty: boolean = true
         __init() {
             control.eventContext().registerFrameHandler(INPUT_PRIORITY, () => {
                 control.enablePerfCounter()
@@ -101,7 +102,7 @@ namespace microcode {
             control.eventContext().registerFrameHandler(RENDER_PRIORITY, () => {
                 control.enablePerfCounter()
                 // perf: render directly on the background image buffer
-                this.draw_dirty = this.draw()
+                this.draw()
                 if (Options.fps)
                     Screen.image.print(control.EventContext.lastStats, 1, 1, 15)
                 if (screen !== Screen.image)
@@ -109,9 +110,7 @@ namespace microcode {
             })
             control.eventContext().registerFrameHandler(SCREEN_PRIORITY, () => {
                 control.enablePerfCounter()
-                if (this.draw_dirty)
-                    control.__screen.update()
-                this.draw_dirty = false
+                control.__screen.update()
             })
         }
     }
@@ -158,12 +157,8 @@ namespace microcode {
 }
 
 // this is needed for compat with most recent version of arcade
-namespace game {    
-    export function addScenePushHandler(handler: (oldScene: any) => void) {
+namespace game {
+    export function addScenePushHandler(handler: (oldScene: any) => void) {}
 
-    }
-
-    export function addScenePopHandler(handler: (oldScene: any) => void) {
-
-    }
+    export function addScenePopHandler(handler: (oldScene: any) => void) {}
 }
