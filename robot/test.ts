@@ -8,6 +8,7 @@ microcode.elecfreaksCuteBot.start()
 microcode.elecfreaksCuteBot.robot.maxLineRunSpeed = 28
 microcode.elecfreaksCuteBot.robot.maxLineTurnSpeed = 26
 
+//microcode.robotDriver.motorRun(-100)
 /*
 microcode.robotDriver.motorRun(100)
 let i = 0
