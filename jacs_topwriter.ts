@@ -1303,6 +1303,7 @@ namespace jacs {
                 if (debugOut) this.printAssembly()
                 const bin = this.serialize()
                 if (debugOut) console.log(bin.toHex())
+                if (microcode.Options.profiling) control.heapSnapshot()
                 jdc.deploy(bin)
             }
         }
