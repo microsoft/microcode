@@ -107,11 +107,16 @@ namespace microcode.robots {
             case RobotCompactCommand.MotorTurnLeft:
             case RobotCompactCommand.MotorTurnRight: {
                 cmd = RobotCommand.MotorTurn
-                payload = Buffer.create(2)
+                payload = Buffer.create(4)
                 payload.setNumber(
                     NumberFormat.Int16LE,
                     0,
                     msg === RobotCompactCommand.MotorTurnRight ? 100 : -100
+                )
+                payload.setNumber(
+                    NumberFormat.Int16LE,
+                    2,
+                    100
                 )
                 break
             }

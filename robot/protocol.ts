@@ -1,10 +1,15 @@
+const enum RobotLineState {
+    //% block="none"
+    None = 0,
+    //% block="left"
+    Left = 0x01,
+    //% block="right"
+    Right = 0x02,
+    //% block="both"
+    Both = Left | Right,
+}
+
 namespace microcode.robots {
-    export const enum RobotLineState {
-        None = 0,
-        Left = 0x01,
-        Right = 0x02,
-        Both = Left | Right,
-    }
 
     /**
      * Compact commands through radio numbers

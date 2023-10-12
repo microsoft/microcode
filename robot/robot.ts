@@ -37,7 +37,4 @@ namespace microcode.robots {
             return RobotLineState.None
         }
     }
-
-    export let robot: Robot
-
 }
