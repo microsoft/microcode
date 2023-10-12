@@ -466,8 +466,7 @@ namespace microcode {
 
         draw() {
             if (this.dirty) {
-                if (!this.picker.visible)
-                    Screen.image.fill(this.color)
+                Screen.image.fill(this.color)
                 if (!this.backgroundCaptured) {
                     this.drawBackground()
                     this.drawEditor()
