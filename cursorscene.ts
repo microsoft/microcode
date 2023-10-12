@@ -130,7 +130,6 @@ namespace microcode {
         /* override */ draw() {
             this.picker.draw()
             this.cursor.draw()
-            return true
         }
     }
 }

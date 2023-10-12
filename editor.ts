@@ -615,7 +615,6 @@ namespace microcode {
         draw() {
             control.enablePerfCounter()
             this.ruleEditors.forEach(rule => rule.draw())
-            return true
         }
     }
 }

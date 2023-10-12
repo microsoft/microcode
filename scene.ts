@@ -56,9 +56,7 @@ namespace microcode {
 
         /* abstract */ update() {}
 
-        /* abstract */ draw() {
-            return true
-        }
+        /* abstract */ draw() {}
 
         protected handleClick(x: number, y: number) {}
 

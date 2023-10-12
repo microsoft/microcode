@@ -108,7 +108,7 @@ namespace microcode {
 
         draw() {
             control.enablePerfCounter()
-            if (!this.visible) return false
+            if (!this.visible) return
 
             Screen.outlineBoundsXfrm(
                 this.xfrm,
@@ -141,7 +141,6 @@ namespace microcode {
                 Screen.fillRect(x - 1, y - 1, w + 1, h + 2, 15)
                 Screen.print(text, x, y, 1, font)
             }
-            return true
         }
     }
 }
