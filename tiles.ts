@@ -72,7 +72,6 @@ namespace microcode {
     export const TID_FILTER_LINE_BOTH = "F23B"
     export const TID_FILTER_LINE_NEITHER = "F23N"
 
-
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
     export const TID_ACTUATOR_MICROPHONE = "A3"
@@ -307,20 +306,45 @@ namespace microcode {
         addEvent(TID_FILTER_ROTARY_RIGHT, "rotary_event", 2)
         addEvent(TID_FILTER_TEMP_WARMER, "temperature_event", 2)
         addEvent(TID_FILTER_TEMP_COLDER, "temperature_event", 1)
-        
+
         if (CAR_TILES) {
-            const both = addEvent(TID_FILTER_LINE_BOTH, "line", robots.RobotCompactCommand.Both)
-            const left = addEvent(TID_FILTER_LINE_LEFT, "line", robots.RobotCompactCommand.Left)
-            const right = addEvent(TID_FILTER_LINE_RIGHT, "line", robots.RobotCompactCommand.Right  )
-            const neither = addEvent(TID_FILTER_LINE_NEITHER, "line", robots.RobotCompactCommand.LineState)
-            both.jdKind = left.jdKind = right.jdKind = neither.jdKind = JdKind.Literal
+            const both = addEvent(
+                TID_FILTER_LINE_BOTH,
+                "line",
+                robots.RobotCompactCommand.Both
+            )
+            const left = addEvent(
+                TID_FILTER_LINE_LEFT,
+                "line",
+                robots.RobotCompactCommand.Left
+            )
+            const right = addEvent(
+                TID_FILTER_LINE_RIGHT,
+                "line",
+                robots.RobotCompactCommand.Right
+            )
+            const neither = addEvent(
+                TID_FILTER_LINE_NEITHER,
+                "line",
+                robots.RobotCompactCommand.LineState
+            )
+            both.jdKind =
+                left.jdKind =
+                right.jdKind =
+                neither.jdKind =
+                    JdKind.Literal
 
             const line = makeSensor(TID_SENSOR_LINE, "line", 505)
             line.serviceClassName = "radio"
             line.eventCode = 0x91
             line.jdKind = JdKind.Radio
             line.constraints.allow.categories = []
-            line.constraints.allow.tiles = [TID_FILTER_LINE_LEFT, TID_FILTER_LINE_RIGHT, TID_FILTER_LINE_BOTH, TID_FILTER_LINE_NEITHER]
+            line.constraints.allow.tiles = [
+                TID_FILTER_LINE_LEFT,
+                TID_FILTER_LINE_RIGHT,
+                TID_FILTER_LINE_BOTH,
+                TID_FILTER_LINE_NEITHER,
+            ]
             line.constraints.handling = { terminal: true }
         }
 
@@ -536,7 +560,7 @@ namespace microcode {
             const car_commands = [
                 microcode.robots.RobotCompactCommand.MotorRunForward,
                 microcode.robots.RobotCompactCommand.MotorRunBackward,
-                microcode.robots.RobotCompactCommand.MotorTurnLeft, 
+                microcode.robots.RobotCompactCommand.MotorTurnLeft,
                 microcode.robots.RobotCompactCommand.MotorTurnRight,
                 microcode.robots.RobotCompactCommand.MotorStop,
             ]
@@ -734,21 +758,21 @@ namespace microcode {
     export const MELODY_LENGTH = 4
     export const NUM_NOTES = 5
 
-    export const noteNames = ["C", "D", "E", "F", "G", "A", "B", "C", "D"]
-
-    const noteToFreq: { [note: string]: number } = {
-        "0": 261.63, // C4
-        "1": 293.66, // D4
-        "2": 329.63, // E4
-        "3": 349.23, // F4
-        "4": 392.0, // G4
-        "5": 440.0, // A4
-        "6": 493.88, // B4
-        "7": 523.25, // C5
-        "8": 587.33, // D5
-    }
+    //export const noteNames = ["C", "D", "E", "F", "G", "A", "B", "C", "D"]
 
     export function setNote(buf: Buffer, offset: number, note: string) {
+        const noteToFreq: { [note: string]: number } = {
+            "0": 261.63, // C4
+            "1": 293.66, // D4
+            "2": 329.63, // E4
+            "3": 349.23, // F4
+            "4": 392.0, // G4
+            "5": 440.0, // A4
+            "6": 493.88, // B4
+            "7": 523.25, // C5
+            "8": 587.33, // D5
+        }
+
         const period = 1000000 / (note !== "." ? noteToFreq[note] : 1000)
         const duty = note === "." ? 0 : (period * 0.5) / 2
         const duration = 250
