@@ -192,9 +192,8 @@ namespace microcode {
                     new Vec2(xocc, yocc),
                     this.scrollroot.xfrm.localPos
                 )
-
-                this.moveTo(target)
             }
+            this.moveTo(target)
         }
 
         /* override */ startup() {
