@@ -62,6 +62,7 @@ namespace microcode {
 
             this.running = true
             this.showConfiguration = SHOW_CONFIG_COUNT
+            this.robot.headlightsSetColor(0, 0xff, 0)
             // wake up sensors
             this.ultrasonicDistance()
             this.lineState()
@@ -299,6 +300,7 @@ namespace microcode {
                 this.setHeadlingSpeedColor(speed)
                 this.targetSpeedMode = RobotSpeedMode.Turn
                 this.targetSpeed = speed
+                this.currentSpeed = 0
             }
         }
 

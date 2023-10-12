@@ -4,8 +4,12 @@ microcode.elecfreaksCuteBot.start()
 //microcode.keyStudioMiniSmartRobot.start()
 //microcode.setMotorDrift(6)
 
-microcode.robotDriver.motorRun(100)
+// microcode...
+microcode.elecfreaksCuteBot.robot.maxLineRunSpeed = 28
+microcode.elecfreaksCuteBot.robot.maxLineTurnSpeed = 26
 
+/*
+microcode.robotDriver.motorRun(100)
 let i = 0
 basic.forever(() => {
     const lines = microcode.robotDriver.currentLineState
@@ -21,3 +25,4 @@ basic.forever(() => {
     else
         microcode.robotDriver.motorRun(100)
 })
+*/
