@@ -2,7 +2,7 @@ namespace microcode {
 
     export interface IComponent {
         update: () => void
-        draw: () => void
+        draw: () => boolean
     }
 
     export interface IPlaceable {

@@ -226,6 +226,7 @@ namespace microcode {
             control.enablePerfCounter()
             this.drawStyle()
             this.drawIcon()
+            return true
         }
 
         private drawIcon() {

@@ -109,6 +109,7 @@ namespace microcode {
             })
             control.eventContext().registerFrameHandler(SCREEN_PRIORITY, () => {
                 control.enablePerfCounter()
+                // TODO: only update if image changed
                 control.__screen.update()
             })
         }

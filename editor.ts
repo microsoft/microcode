@@ -454,7 +454,7 @@ namespace microcode {
             this.cursor.update()
         }
 
-        /* override */ draw() {
+        draw() {
             if (!this.backgroundCaptured) {
                 this.drawBackground()
                 this.drawEditor()
@@ -462,6 +462,7 @@ namespace microcode {
             }
             this.picker.draw()
             if (!this.rendering) this.cursor.draw()
+            return true
         }
 
         private drawEditor() {
@@ -628,6 +629,7 @@ namespace microcode {
         draw() {
             control.enablePerfCounter()
             this.ruleEditors.forEach(rule => rule.draw())
+            return true
         }
     }
 }
