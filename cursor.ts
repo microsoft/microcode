@@ -90,7 +90,7 @@ namespace microcode {
             let target = this.navigator.getCurrent() //.sort((a, b) => a.z - b.z);
             if (target) {
                 target.click()
-                if (Options.profiling) control.heapSnapshot()
+                profile()
                 return true
             }
             return false

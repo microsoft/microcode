@@ -46,12 +46,12 @@ namespace microcode {
                 (x, y) => this.handleMove(x, y),
                 (dx, dy) => this.handleWheel(dx, dy)
             )
-            if (Options.profiling) control.heapSnapshot()
+            profile()
         }
 
         /* override */ deactivate() {
             pointerevents.popContext()
-            if (Options.profiling) control.heapSnapshot()
+            profile()
         }
 
         /* abstract */ update() {}
