@@ -149,5 +149,19 @@
     "SR_LED": "LED {x} {y} {state}",
     "SR_NOTE": "note {index} {state}",
     "SR_ON": "on",
-    "SR_OFF": "off"
+    "SR_OFF": "off",
+
+    "CAR": "robot",
+    "CAR1": "forward",
+    "CAR2": "reverse",
+    "CAR3": "turn left",
+    "CAR4": "turn right",
+    "CAR5": "stop",
+
+    "S13": "wall",
+    "S14": "line",
+    "F23L": "left",
+    "F23R": "right",
+    "F23B": "both",
+    "F23N": "none"
 }

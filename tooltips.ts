@@ -135,7 +135,19 @@ namespace microcode {
         else if (id === "SR_LED") res = "LED {x} {y} {state}";
         else if (id === "SR_NOTE") res = "note {index} {state}";
         else if (id === "SR_ON") res = "on";
-        else if (id === "SR_OFF") res = "off";        
+        else if (id === "SR_OFF") res = "off";
+        else if (id === "CAR") res = "robot";
+        else if (id === "CAR1") res = "forward";
+        else if (id === "CAR2") res = "reverse";
+        else if (id === "CAR3") res = "turn left";
+        else if (id === "CAR4") res = "turn right";
+        else if (id === "CAR5") res = "stop";
+        else if (id === "S13") res = "wall";
+        else if (id === "S14") res = "line";
+        else if (id === "F23L") res = "left";
+        else if (id === "F23R") res = "right";
+        else if (id === "F23B") res = "both";
+        else if (id === "F23N") res = "none";        
         return res
     }
 }
