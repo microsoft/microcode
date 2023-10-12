@@ -164,6 +164,7 @@ namespace jacs {
         VOID = 11,
     }
 
+    /*
     export const OP_PRINT_FMTS = [
         null,
         "%L",
@@ -274,4 +275,5 @@ namespace jacs {
         "any",
         "void",
     ]
+    */
 } // jacs
