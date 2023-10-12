@@ -7,31 +7,45 @@
             class="logo"
         />
         <h3>
-            Program your micro:bit V2 with MicroCode!
-            <button>Close</button>
+            Programmiere deinen micro:bit V2 mit MicroCode!
+            <button>Schließen</button>
         </h3>
-        <ol>
+        <h4>Prepare your micro:bit V2</h4>
+        <ul>
             <li>
                 Connect your micro:bit <b>V2</b>
-                to your computer using the USB cable. (micro:bit V1 is not
-                supported)
+                to your computer. (micro:bit V1 is not supported)
             </li>
             <li>
                 <a
                     class="firmware-download"
                     href="https://microsoft.github.io/microcode/assets/firmware.hex"
-                    download
->Download MicroCode</a
+                    download="microcode.hex"
+                    >Lade MicroCode</a
 >
-                to the <code>MICROBIT</code> drive.
+                auf das <code>MICROBIT</code> Laufwerk herunter.
             </li>
-            <li>Wait for the micro:bit to restart.</li>
+            <li>Wait for the micro:bit to restart</li>
+        </ul>
+        <h4>Code on a <a href="https://microsoft.github.io/microcode/docs/manual#arcade-shield">micro:bit Arcade Shield</a></h4>
+        <a href="https://microsoft.github.io/microcode/docs/manual#arcade-shield">
+        <img src="./assets/image_shield.jpg"
+            alt="A photograph of a micro:bit Arcade shield displaying the microcode landing page"
+            loading="lazy"
+            class="shield" />
+        </a>
+        <ul>
             <li>
-                <button class="webusbBtn">Connect</button>, choose "BBC
-                micro:bit CMSIS-DAP" and press "Connect" in the dialog.
+                Plug your micro:bit into your micro:bit Arcade shield and start coding!
             </li>
-            <li>Use the editor to bring the micro:bit to life!</li>
-        </ol>
+        </ul>
+        <h4>Code in your Web Browser</h4>
+        <ul>
+            <li>
+                <button class="webusbBtn">Verbinden</button>, wähle "BBC
+                micro:bit CMSIS-DAP" und drücke "Verbinden" im Dialog.
+            </li>
+        </ul>
     </form>
 </dialog>
 <dialog id="notsupportedDlg">
@@ -43,18 +57,18 @@
             class="logo"
         />
         <h2>
-            This browser does not support download to the micro:bit.
-            <button>Close</button>
+            Dieser Browser unterstützt den Download zum micro:bit nicht.
+            <button>Schließen</button>
         </h2>
         <p>
-            MicroCode uses
+            MicroCode verwendet
             <a href="https://developer.mozilla.org/en-US/docs/Web/API/USB"
                 >WebUSB</a
 >
-            to download code to the micro:bit. To enable this feature, use
-            Microsoft Edge, Google Chrome or
+            um Code auf den micro:bit herunterzuladen. Um diese Funktion zu aktivieren, verwende
+            Microsoft Edge, Google Chrome oder
             <a href="https://caniuse.com/webusb">https://caniuse.com/webusb</a>
-            to find a compatible browser.
+            , um einen kompatiblen Browser zu finden.
         </p>
     </form>
 </dialog>
@@ -66,8 +80,8 @@
             loading="lazy"
         />
         <h2>
-            You need to update MicroCode on your micro:bit!
-            <button>Close</button>
+            Du musst MicroCode auf deinem micro:bit aktualisieren!
+            <button>Schließen</button>
         </h2>
         <ol>
             <li>
@@ -75,14 +89,14 @@
                     class="firmware-download"
                     href="https://microsoft.github.io/microcode/assets/firmware.hex"
                     download
->Download MicroCode</a
+>Lade MicroCode</a
 >
-                to the <code>MICROBIT</code> drive.
+                auf das <code>MICROBIT</code> Laufwerk herunter.
             </li>
-            <li>Wait for the micro:bit to restart.</li>
+            <li>Warte, bis der micro:bit neu gestartet wird.</li>
             <li>
-                <button class="webusbBtn">Connect</button>, choose "BBC
-                micro:bit CMSIS-DAP" and press "Connect" in the dialog.
+                <button class="webusbBtn">Verbinden</button>, wähle "BBC
+                micro:bit CMSIS-DAP" und drücke "Verbinden" im Dialog.
             </li>
         </ol>
     </form>

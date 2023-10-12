@@ -126,5 +126,12 @@
   "SR_LED": "LED {x} {y} {state}",
   "SR_NOTE": "notatka {index} {state}",
   "SR_ON": "włączony",
-  "SR_OFF": "wyłączony"
+  "SR_OFF": "wyłączony",
+  "CAR1": "do przodu",
+  "CAR3": "skręć w lewo",
+  "CAR4": "skręć w prawo",
+  "CAR5": "zatrzymaj",
+  "F23L": "lewa",
+  "F23R": "prawa",
+  "F23N": "brak"
 }

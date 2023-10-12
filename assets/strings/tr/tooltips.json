@@ -86,13 +86,14 @@
   "M22": "zar",
   "M23": "tekrarla",
   "M24": "melodi",
+  "M25": "sıcaklık",
   "A8": "LED",
   "A9A": "X değişkenini ayarla",
   "A9B": "Y değişkenini ayarla",
   "A9C": "Z değişkenini ayarla",
   "N1": "yeni program",
   "N2": "yanıp sönen kalp",
-  "N3": "gülen yüz düğmeleri",
+  "N3": "gülen yüz tuşları",
   "N4": "evcil hayvan hamster",
   "N5": "kıkırdayan ördek",
   "N6": "reaksiyon süresi",
@@ -112,5 +113,11 @@
   "A20_6": "siyah",
   "A20_rainbow": "gökkuşağı",
   "A20_sparkle": "pırıltı",
-  "A21_": "servo ayar açısı"
+  "A21_": "servo ayar açısı",
+  "CAR1": "ileri",
+  "CAR5": "dur",
+  "S14": "çizgi",
+  "F23L": "sol",
+  "F23R": "sağ",
+  "F23N": "hiçbiri"
 }

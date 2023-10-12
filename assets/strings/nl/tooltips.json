@@ -112,5 +112,10 @@
   "A20_6": "zwart",
   "A20_rainbow": "regenboog",
   "A20_sparkle": "fonkeling",
-  "A21_": "servo hoek instellen"
+  "A21_": "servo hoek instellen",
+  "CAR1": "vooruit",
+  "CAR5": "stop",
+  "F23L": "links",
+  "F23R": "rechts",
+  "F23N": "geen"
 }
