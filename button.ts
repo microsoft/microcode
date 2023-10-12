@@ -32,11 +32,13 @@ namespace microcode {
             new Borders(1, 1, 1, 1),
             false
         )
+        /*
         export const RectangleWhite = new ButtonStyle(
             1,
             new Borders(0, 0, 0, 0),
             false
         )
+        */
         export const BorderedPurple = new ButtonStyle(
             11,
             new Borders(12, 12, 12, 12),
