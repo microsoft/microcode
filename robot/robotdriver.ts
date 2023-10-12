@@ -298,6 +298,11 @@ namespace microcode {
             this.start()
             this.keepAlive()
             turnRatio = Math.clamp(-200, 200, turnRatio)
+            if (turnRatio === 0) { // special case
+                this.motorRun(speed)
+                return
+            }
+
             speed =
                 speed > 0
                     ? Math.min(this.robot.maxTurnSpeed, speed)
