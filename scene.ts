@@ -85,6 +85,14 @@ namespace microcode {
 
         private draw_dirty: boolean = true
         __init() {
+            control.eventContext().registerFrameHandler(INPUT_PRIORITY, () => {
+                control.enablePerfCounter()
+                const dtms = (control.eventContext().deltaTime * 1000) | 0
+                controller.left.__update(dtms)
+                controller.right.__update(dtms)
+                controller.up.__update(dtms)
+                controller.down.__update(dtms)
+            })
             // Setup frame callbacks.
             control.eventContext().registerFrameHandler(UPDATE_PRIORITY, () => {
                 control.enablePerfCounter()
