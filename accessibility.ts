@@ -42,13 +42,7 @@ namespace accessibility {
         control.simmessages.send("accessibility", data)
     }
 
-    export function resolveTooltip(id: string) {
-        const tooltip = microcode.tooltips[id] as string
-        const s = tooltip || ""
-        return s
-    }
-
     export function ariaToTooltip(ariaId: string) {
-        return resolveTooltip(ariaId).replaceAll("_", " ")
+        return microcode.resolveTooltip(ariaId).replaceAll("_", " ")
     }
 }
