@@ -12,9 +12,16 @@ namespace microcode.robots {
         MotorRun = 0x01,
         /**
          * Turn the robot left and right. Right is positive values.
+         *     turnRatio: i16 [-200,200]
          *     speed: i16 %
          */
         MotorTurn = 0x02,
+
+        /**
+         * Controls the opening angle of the arm
+         */
+        MotorArm = 0x03,
+
         /**
          * Report ultrasonic distance in cm
          *     distance: f32
@@ -109,7 +116,7 @@ namespace microcode.robots {
                         0,
                         speed
                     )
-                    if(msg === RobotCompactCommand.MotorRunForwardFast)
+                    if(msg !== RobotCompactCommand.MotorRunForwardFast)
                         payload[2] = 1
                 }
                 break
@@ -138,6 +145,13 @@ namespace microcode.robots {
                     2,
                     speed
                 )
+                break
+            }
+            case RobotCompactCommand.MotorArmClose:
+            case RobotCompactCommand.MotorArmOpen: {
+                cmd = RobotCommand.MotorArm
+                payload = Buffer.create(2)
+                payload.setNumber(NumberFormat.UInt16LE, 0, msg === RobotCompactCommand.MotorArmClose ? 0 : 100)
                 break
             }
             default:

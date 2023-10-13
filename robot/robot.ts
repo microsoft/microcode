@@ -20,6 +20,13 @@ namespace microcode.robots {
         }
 
         /**
+         * Open robotic arm if present, in %
+         */
+        armOpen(aperture: number) {
+
+        }
+
+        /**
          * Optional: sets the color on the LED array as a 24bit RGB color
          */
         headlightsSetColor(red: number, green: number, blue: number): void {

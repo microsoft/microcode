@@ -24,6 +24,8 @@ namespace microcode.robots {
         MotorRunForwardFast = MotorState | 0x6,
         MotorSpinLeft = MotorState | 0x7,
         MotorSpinRight = MotorState | 0x8,
+        MotorArmOpen = MotorState | 0x9,
+        MotorArmClose = MotorState | 0xa,
 
         /**
          * sonar detected obstable

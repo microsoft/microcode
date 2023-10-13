@@ -23,11 +23,11 @@ namespace microcode {
     export class RobotDriver {
         readonly robot: robots.Robot
         private lastReceivedMessageId: number = undefined
-        private lastCommandTime: number
         private running = false
         currentUltrasonicDistance: number = 100
         private showConfiguration: boolean = false
         private configDrift = false
+        private currentArmAperture = -1
         private currentSpeed: number = 0
         private currentMotorMode = RobotMotorMode.Run
         private targetSpeed: number = 0
@@ -112,8 +112,15 @@ namespace microcode {
                 this.updateTone()
                 this.updateLineState()
                 this.updateSpeed()
+                this.updateArm()
                 basic.pause(5)
             }
+        }
+
+        private updateArm() {
+            if (this.currentArmAperture < 0) return
+
+            this.robot.armOpen(this.currentArmAperture)
         }
 
         private inRadioMessageId = 0
@@ -255,19 +262,19 @@ namespace microcode {
             }
         }
 
-        keepAlive() {
-            this.lastCommandTime = control.millis()
-        }
-
         private setHeadlingSpeedColor(speed: number) {
             if (speed === 0) this.robot.headlightsSetColor(0, 0, 0)
             else if (speed > 0) this.robot.headlightsSetColor(0, 0, 0xf0)
             else this.robot.headlightsSetColor(0xf0, 0, 0)
         }
 
+        armOpen(aperture: number) {
+            this.start()
+            this.currentArmAperture = Math.clamp(-1, 100, Math.round(aperture))
+        }
+
         motorRun(speed: number) {
             this.start()
-            this.keepAlive()
             speed =
                 speed > 0
                     ? Math.min(this.robot.maxRunSpeed, speed)
@@ -281,7 +288,6 @@ namespace microcode {
 
         motorTurn(turnRatio: number, speed: number) {
             this.start()
-            this.keepAlive()
             turnRatio = Math.clamp(-200, 200, turnRatio)
             if (turnRatio === 0) { // special case
                 this.motorRun(speed)
@@ -330,7 +336,6 @@ namespace microcode {
         }
 
         private headlightsSetColor(red: number, green: number, blue: number) {
-            this.keepAlive()
             this.robot.headlightsSetColor(red, green, blue)
         }
 
@@ -358,7 +363,6 @@ namespace microcode {
 
             const messageId = msg.messageId
             if (this.lastReceivedMessageId === messageId) {
-                this.keepAlive()
                 return // duplicate
             }
 
@@ -381,15 +385,18 @@ namespace microcode {
                     break
                 }
                 case robots.RobotCommand.MotorTurn: {
-                    const turnRatio = Math.clamp(
-                        -200,
-                        200,
-                        payload.getNumber(NumberFormat.Int16LE, 0)
-                    )
-                    const speed = Math.clamp(-100, 100, payload.getNumber(NumberFormat.Int16LE, 2))
+                    const turnRatio = payload.getNumber(NumberFormat.Int16LE, 0)
+                    const speed = payload.getNumber(NumberFormat.Int16LE, 2)
                     this.motorTurn(turnRatio, speed)
                     this.inRadioMessageId++
                     this.playTone(932, 50)
+                    break
+                }
+                case robots.RobotCommand.MotorArm: {
+                    const aperture = payload.getNumber(NumberFormat.Int16LE, 0)
+                    this.armOpen(aperture)
+                    this.inRadioMessageId++
+                    this.playTone(1132, 50)
                     break
                 }
             }
