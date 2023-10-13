@@ -422,7 +422,7 @@ addSimMessageHandler("accessibility", data => {
         value += `, ${mapAriaId("do")} `
         const dos = msg.dos
         if (dos && dos.length > 0) value += dos.map(mapAriaId).join(" ")
-        speak("rule")
+        speak(mapAriaId("rule"))
     } else if (msg.type == "led") {
         const on = msg.on
         const state = on ? mapAriaId("SR_ON", "on") : mapAriaId("SR_OFF", "off")
