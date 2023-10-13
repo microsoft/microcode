@@ -69,6 +69,10 @@ Write down the drift parameter as you will have to configure it every time you r
 The tiles are documented
 in the [language robot section](./language#robot).
 
+## Samples
+
+The samples are listed on the [samples page](./samples.md#robot).
+
 ## Troubleshooting
 
 This is a quick check list to make sure you have the best experience with the microcode robot:

@@ -1,5 +1,5 @@
 ---
-title: Detect light level
+title: Robot avoiding walls
 image: ./docs/images/generated/sample_robot_avoid_wall.png
 description: A robot that avoids walls
 ---
@@ -18,7 +18,7 @@ The next rule runs on start and orders the robot to move forward. The robot will
 
 ![when page starts, robot move forward](../images/generated/sample_robot_avoid_wall_page_1_rule_2.png){:class="rule"}
 
-The robot constantly repots the distance measured by
+The robot constantly reports the distance measured by
 the ultrasonic sonar. When the distance changes, the robot sends a message to the microcode program.
 The 2 dots roughly mean 10cm + 2 x 5cm = 20cm (more or less).
 
