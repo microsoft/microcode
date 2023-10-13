@@ -326,34 +326,40 @@ namespace microcode {
 
         public static fromBuffer(br: BufferReader) {
             const defn = new RuleDefn()
+            assert(!br.eof())
             const sensorEnum = br.readByte()
             const sensorTid = enumToTid(sensorEnum)
             defn.sensors.push(tilesDB.sensors[sensorTid])
-            while (!br.eof() && br.peekByte() != Tid.END_OF_WHEN) {
+            assert(!br.eof())
+            while (br.peekByte() != Tid.END_OF_WHEN) {
                 const filterEnum = br.readByte()
                 const filterTid = enumToTid(filterEnum)
-                defn.filters.push(tilesDB.filters[filterTid])    
+                defn.filters.push(tilesDB.filters[filterTid])
+                assert(!br.eof())
             }
-            br.readByte()
+            br.readByte()  // consume END_OF_WHEN
+            assert(!br.eof())
             if (br.peekByte() == Tid.END_OF_RULE) {
                 br.readByte()
                 return defn
             }
+            assert(!br.eof())
             const actuatorEnum = br.readByte()
             const actuatorTid = enumToTid(actuatorEnum)
             defn.actuators.push(tilesDB.actuators[actuatorTid])
-            while (!br.eof() && br.peekByte() != Tid.END_OF_RULE) {
+            assert(!br.eof())
+            while (br.peekByte() != Tid.END_OF_RULE) {
                 const modifierEnum = br.readByte()
                 const modifierTid = enumToTid(modifierEnum)
                 const modifier = tilesDB.modifiers[modifierTid]
                 if (modifier.fieldEditor) {
-                    // TODO: length from fieldEditor
                     const field = modifier.fieldEditor.fromBuffer(br)
                     const newOne = modifier.getNewInstance(field)
                     defn.modifiers.push(<any>newOne)
                 }
+                assert(!br.eof())
             }
-            br.readByte()
+            br.readByte() // consume END_OF_RULE
             return defn
         }
     }
@@ -476,10 +482,12 @@ namespace microcode {
 
         public static fromBuffer(br: BufferReader) {
             const defn = new PageDefn()
-            while (!br.eof() && br.peekByte() != Tid.END_OF_PAGE) {
-                br.readByte()
+            assert(!br.eof())
+            while (br.peekByte() != Tid.END_OF_PAGE) {
                 defn.rules.push(RuleDefn.fromBuffer(br))
+                assert(!br.eof())
             }
+            br.readByte()
             return defn
         }
     }
@@ -533,10 +541,13 @@ namespace microcode {
 
         public static fromBuffer(br: BufferReader) {
             const defn = new ProgramDefn()
-            while (!br.eof() && br.peekByte() != Tid.END_OF_PROG) {
-                br.readByte()
+            assert(!br.eof())
+            while (br.peekByte() != Tid.END_OF_PROG) {
                 defn.pages.push(PageDefn.fromBuffer(br))
+                assert(!br.eof())
             }
+            br.readByte()
+            assert(br.eof())
             return defn
         }
     }

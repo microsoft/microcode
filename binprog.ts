@@ -376,7 +376,7 @@ namespace microcode {
         return undefined
     }
 
-    function assert(cond: boolean, msg?: string) {
+    export function assert(cond: boolean, msg?: string) {
         if (!cond) {
             if (msg == null) msg = "Assertion failed"
             throw msg
