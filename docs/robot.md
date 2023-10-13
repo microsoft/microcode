@@ -29,7 +29,7 @@ The following features are found often but are optional:
 
 ### Yahboom Tiny:bit
 
-[![Photograph of the Tiny:bit](./images/tinybit.jpeg)
+![Photograph of the Tiny:bit](./images/tinybit.jpeg)
 
 -   Download [robot-tinybit.hex](https://microsoft.github.io/microcode/assets/robot-tinybit.hex)
 
@@ -78,4 +78,4 @@ This is a quick check list to make sure you have the best experience with the mi
 
 ## Add your robot
 
-The source of the robot firmware are at https://github.com/microsoft/microcode/tree/main/robot. We accept pull request to add new robots.
+The source of the robot firmware are at [https://github.com/microsoft/microcode/tree/main/robot](https://github.com/microsoft/microcode/tree/main/robot). We accept pull request to add new robots.

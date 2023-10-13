@@ -8,7 +8,7 @@ description: A robot that avoids walls
 
 -   [Open in MicroCode](/microcode/#eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNkEiXSwiTSI6WyJNOCJdfSx7IlMiOlsiUzEiXSwiQSI6WyJDQVIiXSwiTSI6WyJDQVIxIl19LHsiUyI6WyJTMTMiXSwiQSI6WyJDQVIiXSwiRiI6WyJGOSJdLCJNIjpbIkNBUjMiLCJDQVIxIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuNDMifQ)
 
-The program starts by setting the radio group displayed by the robot micro:bit. This is the same group that the microcode program will use to communicate with the robot. In this example, we use 3 dots but this is probably different for your robot.
+The program starts by setting the radio group displayed by the [robot micro:bit](../robot.md). This is the same group that the microcode program will use to communicate with the robot. In this example, we use 3 dots but this is probably different for your robot.
 
 ![when page starts, set radio group of robot](../images/generated/sample_robot_avoid_wall_page_1_rule_1.png){:class="rule"}
 
