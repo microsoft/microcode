@@ -403,5 +403,10 @@ namespace microcode {
             }
             this.buf[this.ptr++] = v
         }
+
+        public writeBuffer(b: Buffer) {
+            for (let i = 0; i < b.length; ++i)
+                this.writeByte(b[i])
+        }
     }
 }

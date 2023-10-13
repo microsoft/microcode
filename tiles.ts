@@ -707,6 +707,28 @@ namespace microcode {
             }
             return img
         },
+        toBuffer: (img: Image) => {
+            const ret = Buffer.create(4)
+            for (let index = 0; index < 25; index++) {
+                let byte = index >> 3
+                let bit = index & 7
+                let col = index % 5
+                let row = Math.idiv(index, 5)
+                ret[byte] |= img.getPixel(col, row) << bit
+            }
+            return ret
+        },
+        fromBuffer: (buf: Buffer) => {
+            const img = image.create(5, 5)
+            for (let index = 0; index < 25; index++) {
+                let byte = index >> 3
+                let bit = index & 7
+                let col = index % 5
+                let row = Math.idiv(index, 5)
+                img.setPixel(col, row, (buf[byte] >> bit) & 1)
+            }
+            return img
+        }
     }
 
     class IconEditor extends ModifierDefn {
@@ -797,6 +819,16 @@ namespace microcode {
                 tempo: parseInt(sp[1]),
             }
         },
+        toBuffer: (melody: Melody) => {
+            const buf = Buffer.create(3)
+            buf.setUint8(0, melody.tempo)
+            // TODO
+            return buf
+        },
+        fromBuffer: (buf: Buffer) => {
+            // TODO
+            return undefined
+        }
     }
 
     class MelodyEditor extends ModifierDefn {

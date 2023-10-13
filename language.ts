@@ -35,6 +35,8 @@ namespace microcode {
         buttonStyle: () => ButtonStyle
         serialize: (field: any) => string
         deserialize: (s: string) => any
+        toBuffer: (field: any) => Buffer
+        fromBuffer: (buf: Buffer) => any
     }
 
     // let P be jdParam
