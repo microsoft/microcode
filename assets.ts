@@ -294,26 +294,40 @@ namespace icondb {
         return ret
     }
 
-    // - upscale 5x5 image to 16 x 16
-    export function scaleUp(led55: Image) {
+    // - upscale 5x5 image to 16 x 16, add halo
+    export function renderMicrobitLEDs(led55: Image) {
         const ret = image.create(16, 16)
         ret.fill(15)
         for (let row = 0; row < 5; row++) {
             for (let col = 0; col < 5; col++) {
-                const color = led55.getPixel(row, col) ? 2 : 15
+                const on = led55.getPixel(row, col)
+                if (!on) continue
+
+                const color = 0x2
+                const halo = 0xe
                 const nrow = 1 + row * 3,
                     ncol = 1 + col * 3
                 ret.setPixel(nrow, ncol, color)
                 ret.setPixel(nrow + 1, ncol, color)
                 ret.setPixel(nrow, ncol + 1, color)
                 ret.setPixel(nrow + 1, ncol + 1, color)
+                // halo
+                ret.setPixel(nrow - 1, ncol, halo)
+                ret.setPixel(nrow - 1, ncol + 1, halo)
+                ret.setPixel(nrow + 2, ncol, halo)
+                ret.setPixel(nrow + 2, ncol + 1, halo)
+
+                ret.setPixel(nrow, ncol - 1, halo)
+                ret.setPixel(nrow + 1, ncol - 1, halo)
+                ret.setPixel(nrow, ncol + 2, halo)
+                ret.setPixel(nrow + 1, ncol + 2, halo)
             }
         }
         return ret
     }
 
     /*
-    export const iconEditor = scaleUp(
+    export const iconEditor = renderMicrobitLEDs(
         img`
         . . . . .
         . 1 . 1 .

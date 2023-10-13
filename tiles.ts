@@ -691,7 +691,7 @@ namespace microcode {
         `,
         clone: (img: Image) => img.clone(),
         editor: iconEditor,
-        toImage: icondb.scaleUp,
+        toImage: icondb.renderMicrobitLEDs,
         buttonStyle: () => ButtonStyles.Transparent,
         serialize: (img: Image) => {
             const ret: string[] = []
