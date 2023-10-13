@@ -302,6 +302,15 @@ namespace microcode {
             return this.sensors.length === 0 && this.actuators.length === 0
         }
 
+        public toBuffer(bw: BufferWriter) {
+            bw.writeByte(tidToEnum(this.sensor.tid))
+            this.filters.forEach(filter => bw.writeByte(tidToEnum(filter.tid)))
+            bw.writeByte(Tid.END_OF_WHEN)
+            this.actuators.forEach(act => bw.writeByte(tidToEnum(act.tid)))
+            // TODO: field editor logic
+            this.modifiers.forEach(mod => bw.writeByte(tidToEnum(mod.tid)))
+            bw.writeByte(Tid.END_OF_RULE)
+        }
     }
 
     export function ruleDefnToJson(rule: RuleDefn): any {
@@ -414,6 +423,11 @@ namespace microcode {
             }
             return undefined
         }
+
+        public toBuffer(bw: BufferWriter) {
+            this.rules.forEach(rule => rule.toBuffer(bw))
+            bw.writeByte(Tid.END_OF_PAGE)
+        }
     }
 
     function pageDefnToJson(page: PageDefn): any {
@@ -456,7 +470,11 @@ namespace microcode {
         }
 
         public toBuffer() {
-            
+            const bw = new BufferWriter()
+            // TODO: magic number and version
+            this.pages.forEach(page => page.toBuffer(bw))
+            bw.writeByte(Tid.END_OF_PROG)
+            return bw.buffer
         }
     }
 

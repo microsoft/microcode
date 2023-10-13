@@ -368,7 +368,15 @@ namespace microcode {
         }
     }
 
-    export function assert(cond: boolean, msg?: string) {
+    export function toFieldEditor(tid: Tid) {
+        if (tid == Tid.TID_MODIFIER_ICON_EDITOR)
+            return "icon-editor"
+        else if (tid == Tid.TID_MODIFIER_MELODY_EDITOR)
+            return "melody-editor"
+        return undefined
+    }
+
+    function assert(cond: boolean, msg?: string) {
         if (!cond) {
             if (msg == null) msg = "Assertion failed"
             throw msg
