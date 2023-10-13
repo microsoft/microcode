@@ -26,6 +26,10 @@ namespace microcode {
         if (name == TID_MODIFIER_CAR_TURN_LEFT) return icondb.car_left_turn
         if (name == TID_MODIFIER_CAR_TURN_RIGHT) return icondb.car_right_turn
         if (name == TID_MODIFIER_CAR_STOP) return icondb.car_stop
+        if (name == TID_MODIFIER_CAR_FORWARD_FAST)
+            return icondb.car_forward_fast
+        if (name == TID_MODIFIER_CAR_SPIN_LEFT) return icondb.car_left_spin
+        if (name == TID_MODIFIER_CAR_SPIN_RIGHT) return icondb.car_right_spin
         if (name == TID_SENSOR_CAR_WALL) return icondb.car_wall
         if (name == TID_SENSOR_LINE) return icondb.line_sensor
         if (name == TID_FILTER_LINE_LEFT) return icondb.line_left_on
@@ -3024,6 +3028,24 @@ bffffffffffffffffffffffffffffffb
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
+    export const car_forward_fast = img`
+    . . . . . . . c . . . . . . . .
+    . . . . . . c 7 c . . . . . . .
+    . . . . . c 7 7 7 c . . . . . .
+    . . . . c 7 7 7 7 7 c . . . . .
+    . . . c 7 7 7 7 7 7 7 c . . . .
+    . . . c 7 7 7 7 7 7 7 c . . . .
+    . . . c c c c c c c c c d . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . c c c c c . . . . . .
+    . . . . . c 7 7 7 c d . . . . .
+    . . . . . c c c c c d . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . c 7 7 7 c . . . . . .
+    . . . . . c c c c c d . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . c 7 7 7 c d . . . . .    
+    `
 
     export const car_reverse = img`
     . . . . . . . . . . . . . . . .
@@ -3063,6 +3085,25 @@ bffffffffffffffffffffffffffffffb
     . . . . . . . . . . . . . . . .
 `
 
+    export const car_left_spin = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . c c c c c . . . . . .
+    . . . . c 7 7 7 7 7 c . . . . .
+    . . . c 7 7 7 7 7 7 7 c . . . .
+    . . c 7 7 7 7 7 7 7 7 7 c . . .
+    . . c 7 7 7 c c 7 7 7 7 7 c . .
+    c c c 7 7 7 c c c 7 7 7 7 7 c .
+    c 7 7 7 7 7 7 7 c c 7 7 7 7 c .
+    c 7 7 7 7 7 7 7 c d c 7 7 7 c d
+    . c 7 7 7 7 7 c d . c 7 7 7 c d
+    . . c 7 7 7 c d . . c 7 7 7 c d
+    . . . c 7 c d . . . c 7 7 7 c d
+    . . . . c . . . . . c 7 7 7 c d
+    . . . . . . . . . . c c c c c .
+    . . . . . . . . . . . . . . . .    
+    `
+
     export const car_right_turn = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . c c c . . . . .
@@ -3081,6 +3122,25 @@ bffffffffffffffffffffffffffffffb
     . c c c c c . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
+
+    export const car_right_spin = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . c c c c c . . . . . .
+    . . . . c 7 7 7 7 7 c . . . . .
+    . . . c 7 7 7 7 7 7 7 c . . . .
+    . . c 7 7 7 7 7 7 7 7 7 c . . .
+    . c 7 7 7 7 7 c c 7 7 7 c . . .
+    c 7 7 7 7 7 c c c 7 7 7 c c c .
+    c 7 7 7 7 c c 7 7 7 7 7 7 7 c d
+    c 7 7 7 c d c 7 7 7 7 7 7 7 c d
+    c 7 7 7 c d . c 7 7 7 7 7 c d .
+    c 7 7 7 c d . . c 7 7 7 c d . .
+    c 7 7 7 c d . . . c 7 c d . . .
+    c 7 7 7 c . . . . . c d . . . .
+    c c c c c . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .    
+    `
 
     export const car_stop = img`
 . . . . . . . . . . . . . . . . 

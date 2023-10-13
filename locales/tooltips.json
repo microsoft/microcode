@@ -157,6 +157,9 @@
     "CAR3": "turn left",
     "CAR4": "turn right",
     "CAR5": "stop",
+    "CAR6": "fast forward",
+    "CAR7": "spin left",
+    "CAR8": "spin right",
 
     "S13": "wall",
     "S14": "line",
