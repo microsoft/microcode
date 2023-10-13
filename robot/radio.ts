@@ -1,5 +1,5 @@
 namespace microcode.robots {
-    const MAX_GROUPS = 10
+    const MAX_GROUPS = 32
     export let radioGroup = (control.deviceSerialNumber() % 9) + 1
     radio.setGroup(radioGroup)
 
