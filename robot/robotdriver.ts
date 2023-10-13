@@ -158,24 +158,14 @@ namespace microcode {
                 const d = Math.abs(s) > Math.abs(this.runDrift) ? this.runDrift / 2 : 0
                 let left = s - d
                 let right = s + d
-                if (lines && s > 0) { // going forward
+                if (this.lineAssist && lines && s > 0) { // going forward
                     this.currentSpeed = s = Math.min(s, this.robot.maxLineRunSpeed)
-                    if (this.lineAssist) {
-                        if (lines === RobotLineState.Left) {
-                            left = 0
-                            right = s
-                        }
-                        else if (lines === RobotLineState.Right) {
-                            right = 0
-                            left = s
-                        }
-                    }
                 }
                 this.setMotorState(left, right)
             } else {
                 console.log(`turnratio: ${this.turnRatio}`)
                 let s = this.currentSpeed
-                if (lines)
+                if (this.lineAssist && lines)
                     s = Math.sign(s) * Math.min(Math.abs(s), this.robot.maxLineTurnSpeed)
                 const ns = Math.abs(s)
 
@@ -384,6 +374,7 @@ namespace microcode {
                         100,
                         payload.getNumber(NumberFormat.Int16LE, 0)
                     )
+                    this.lineAssist = !!payload[2]
                     this.motorRun(speed)
                     this.inRadioMessageId++
                     this.playTone(440, 50)

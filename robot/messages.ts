@@ -96,7 +96,7 @@ namespace microcode.robots {
             case RobotCompactCommand.MotorRunBackward:
             case RobotCompactCommand.MotorStop: {
                 cmd = RobotCommand.MotorRun
-                payload = Buffer.create(2)
+                payload = Buffer.create(3)
                 if (msg !== RobotCompactCommand.MotorStop) {
                     let speed = 0
                     switch (msg) {
@@ -109,6 +109,8 @@ namespace microcode.robots {
                         0,
                         speed
                     )
+                    if(msg === RobotCompactCommand.MotorRunForwardFast)
+                        payload[2] = 1
                 }
                 break
             }
