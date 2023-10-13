@@ -41,13 +41,13 @@ There are three Arcade shields available on the market today, as shown below.
 <tr valign="top">
 <td>
 
-Small screen. No battery or battery pack included. 3.7V JST power jack on back. One [Jacdac](https://aka.ms/jacdac) port. 
+Small screen. 3.7V JST power jack on back. One [Jacdac](https://aka.ms/jacdac) port. 
 
 </td>
 
 <td>
 
-Assembly required. Small screen. AAA Battery pack on back. One [Jacdac](https://aka.ms/jacdac) port. 
+Assembly required. Small screen. Battery pack on back. One [Jacdac](https://aka.ms/jacdac) port. 
 
 </td>
 <td>
