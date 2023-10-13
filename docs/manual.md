@@ -71,7 +71,7 @@ Assembly required. Small screen. AAA Battery pack on back. One <a href="https://
 </td>
 <td>
 
-No assembly required. Large screen and 3d-printed enclosure with LiPo battery inside. Two <a href="https://aka.ms/jacdac">Jacdac</a> ports. Email at <a ref="mailto:oa@icshop.com.tw">mailto:oa@icshop.com.tw</a> to get a quote (the web site only allows ordering/delivery in Taiwan).
+No assembly required. Large screen and 3d-printed enclosure with LiPo battery inside. Two <a href="https://aka.ms/jacdac">Jacdac</a> ports.
 
 </td>
 </tr>
