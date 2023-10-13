@@ -46,7 +46,7 @@ namespace microcode {
             settings.writeBuffer(slot, buf)
         }
 
-        public save(slot: string, prog: ProgramDefn) {
+        private save(slot: string, prog: ProgramDefn) {
             let saved: SavedState = {
                 progdef: progDefnToJson(prog),
                 version: microcode.VERSION,
@@ -60,7 +60,7 @@ namespace microcode {
             this.saveBuffer(slot, prog.toBuffer())
         }
 
-        public load(slot: string): ProgramDefn {
+        private load(slot: string): ProgramDefn {
             try {
                 let s = settings.readString(slot)
                 if (s) {
