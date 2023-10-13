@@ -100,9 +100,9 @@ namespace microcode.robots {
                 if (msg !== RobotCompactCommand.MotorStop) {
                     let speed = 0
                     switch (msg) {
-                        case RobotCompactCommand.MotorRunForward: speed = 50; break;
+                        case RobotCompactCommand.MotorRunForward: speed = 40; break;
                         case RobotCompactCommand.MotorRunForwardFast: speed = 100; break;
-                        case RobotCompactCommand.MotorRunBackward: speed = -50; break;
+                        case RobotCompactCommand.MotorRunBackward: speed = -100; break;
                     }
                     payload.setNumber(
                         NumberFormat.Int16LE,
@@ -123,8 +123,8 @@ namespace microcode.robots {
                 switch (msg) {
                     case RobotCompactCommand.MotorTurnLeft: turnRatio = 50; speed = 100; break;
                     case RobotCompactCommand.MotorTurnRight: turnRatio = -50; speed = 100; break;
-                    case RobotCompactCommand.MotorSpinLeft: turnRatio = 100; speed = 80; break;
-                    case RobotCompactCommand.MotorSpinRight: turnRatio = -100; speed = 80; break;
+                    case RobotCompactCommand.MotorSpinLeft: turnRatio = 200; speed = 80; break;
+                    case RobotCompactCommand.MotorSpinRight: turnRatio = -200; speed = 80; break;
                 }
                 payload.setNumber(
                     NumberFormat.Int16LE,
