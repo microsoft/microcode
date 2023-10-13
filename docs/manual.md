@@ -39,7 +39,7 @@ ELECFREAK's micro:bit Arcade shield
 </a>
 </td>
 <td width="33%" >
-<a href="https://www.icshop.com.tw/products/368112100118">
+<a href="https://www.icshop.com.tw/products/368112100137?locale=en">
 ICShopping's Game:bit Arcade shield
 </a>
 </td></tr>
