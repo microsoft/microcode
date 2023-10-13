@@ -1,6 +1,6 @@
-//microcode.elecfreaksCuteBot.start()
+microcode.elecfreaksCuteBot.start()
 //microcode.elecfreaksCuteBotPro.start()
-microcode.yahboomTinyBit.start()
+//microcode.yahboomTinyBit.start()
 //microcode.keyStudioMiniSmartRobot.start()
 //microcode.setMotorDrift(6)
 
@@ -17,7 +17,7 @@ input.onButtonPressed(Button.B, () => {
     microcode.robotDriver.motorTurn(tr, 50)
 })
 */
-
+/*
 basic.forever(() => {
     const lines = r.lineState()
     if (lines === RobotLineState.Left) {
@@ -27,4 +27,4 @@ basic.forever(() => {
         r.motorTurn(100, 100)
     } else
         r.motorRun(80)
-})
+})*/

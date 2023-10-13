@@ -91,32 +91,50 @@ namespace microcode.robots {
         let cmd: RobotCommand
         let payload: Buffer
         switch (msg) {
+            case RobotCompactCommand.MotorRunForwardFast:
             case RobotCompactCommand.MotorRunForward:
             case RobotCompactCommand.MotorRunBackward:
             case RobotCompactCommand.MotorStop: {
                 cmd = RobotCommand.MotorRun
                 payload = Buffer.create(2)
-                if (msg !== RobotCompactCommand.MotorStop)
+                if (msg !== RobotCompactCommand.MotorStop) {
+                    let speed = 0
+                    switch (msg) {
+                        case RobotCompactCommand.MotorRunForward: speed = 50; break;
+                        case RobotCompactCommand.MotorRunForwardFast: speed = 100; break;
+                        case RobotCompactCommand.MotorRunBackward: speed = -50; break;
+                    }
                     payload.setNumber(
                         NumberFormat.Int16LE,
                         0,
-                        msg === RobotCompactCommand.MotorRunForward ? 100 : -100
+                        speed
                     )
+                }
                 break
             }
+            case RobotCompactCommand.MotorSpinLeft:
+            case RobotCompactCommand.MotorSpinRight:
             case RobotCompactCommand.MotorTurnLeft:
             case RobotCompactCommand.MotorTurnRight: {
                 cmd = RobotCommand.MotorTurn
                 payload = Buffer.create(4)
+                let turnRatio = 0
+                let speed = 100
+                switch (msg) {
+                    case RobotCompactCommand.MotorTurnLeft: turnRatio = 50; speed = 100; break;
+                    case RobotCompactCommand.MotorTurnRight: turnRatio = -50; speed = 100; break;
+                    case RobotCompactCommand.MotorSpinLeft: turnRatio = 100; speed = 80; break;
+                    case RobotCompactCommand.MotorSpinRight: turnRatio = -100; speed = 80; break;
+                }
                 payload.setNumber(
                     NumberFormat.Int16LE,
                     0,
-                    msg === RobotCompactCommand.MotorTurnRight ? 100 : -100
+                    turnRatio
                 )
                 payload.setNumber(
                     NumberFormat.Int16LE,
                     2,
-                    100
+                    speed
                 )
                 break
             }
