@@ -1,6 +1,6 @@
 namespace microcode {
     // should fit into a byte
-    enum Tid {
+    export enum Tid {
         // we need markers to indicate the end of a program, page, rule, when
         END_OF_PROG = 0,
         END_OF_PAGE,
@@ -376,7 +376,7 @@ namespace microcode {
     }
 
     // use this to manage a buffer that may grow
-    class BufferWriter {
+    export class BufferWriter {
         private buf: Buffer
         private ptr: number = 0
 
