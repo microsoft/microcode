@@ -40,11 +40,7 @@ namespace microcode {
 
         private stopToneMillis: number = 0
         lineAssist = false
-
-        debug = true
-        safe = false
         runDrift = 0
-        lineDrift = 10
 
         constructor(robot: robots.Robot) {
             this.robot = robot
@@ -116,7 +112,6 @@ namespace microcode {
 
         private backgroundWork() {
             while (this.running) {
-                this.checkAlive()
                 this.updateTone()
                 this.updateLineState()
                 this.updateSpeed()
@@ -350,12 +345,6 @@ namespace microcode {
         private headlightsSetColor(red: number, green: number, blue: number) {
             this.keepAlive()
             this.robot.headlightsSetColor(red, green, blue)
-        }
-
-        checkAlive() {
-            if (!this.safe) return
-            if (control.millis() - this.lastCommandTime > ROBOT_TIMEOUT)
-                this.stop()
         }
 
         stop() {
