@@ -379,6 +379,7 @@ namespace microcode {
     export function assert(cond: boolean, msg?: string) {
         if (!cond) {
             if (msg == null) msg = "Assertion failed"
+            console.debug(msg)
             throw msg
         }
     }
@@ -395,7 +396,8 @@ namespace microcode {
         public get buffer() { return this.buf }
 
         public writeByte(v: number) {
-            assert(0 <= v && v <= 0xff && (v | 0) == v)
+            console.log(v)
+            assert(0 <= v && v <= 0xff && (v | 0) == v, "writeByte: v=" + v.toString())
             if (this.ptr >= this.buf.length) {
                 const copy = Buffer.create(this.buf.length * 2)
                 copy.write(0, this.buf)

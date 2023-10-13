@@ -2,7 +2,7 @@ namespace microcode {
     // Auto-save slot
     export const SAVESLOT_AUTO = "sa"
 
-    interface SavedState {
+    export interface SavedState {
         progdef: any
         version?: string
     }
@@ -57,6 +57,7 @@ namespace microcode {
         }
 
         public saveAsBuffer(slot: string, prog: ProgramDefn) {
+            console.log("saveAsBuffer")
             this.saveBuffer(slot, prog.toBuffer())
         }
 

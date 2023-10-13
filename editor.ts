@@ -258,8 +258,9 @@ namespace microcode {
             if (!this.progdef) {
                 // onboarding experience
                 // load first sample if this is the first program being loaded
-                this.progdef = progDefnFromJson(samples(true)[0].source) 
-                this.app.saveAsBuffer(SAVESLOT_AUTO, this.progdef)
+                const saved: SavedState = JSON.parse(samples(true)[0].source)
+                const progdef = progDefnFromJson(saved.progdef)
+                this.app.saveAsBuffer(SAVESLOT_AUTO, progdef)
             }
 
             this.configureP1Keys()
