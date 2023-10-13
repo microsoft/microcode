@@ -130,10 +130,10 @@ namespace microcode.robots {
                 let turnRatio = 0
                 let speed = 100
                 switch (msg) {
-                    case RobotCompactCommand.MotorTurnLeft: turnRatio = 50; speed = 100; break;
-                    case RobotCompactCommand.MotorTurnRight: turnRatio = -50; speed = 100; break;
-                    case RobotCompactCommand.MotorSpinLeft: turnRatio = 200; speed = 80; break;
-                    case RobotCompactCommand.MotorSpinRight: turnRatio = -200; speed = 80; break;
+                    case RobotCompactCommand.MotorTurnLeft: turnRatio = -50; speed = 100; break;
+                    case RobotCompactCommand.MotorTurnRight: turnRatio = 50; speed = 100; break;
+                    case RobotCompactCommand.MotorSpinLeft: turnRatio = -200; speed = 80; break;
+                    case RobotCompactCommand.MotorSpinRight: turnRatio = 200; speed = 80; break;
                 }
                 payload.setNumber(
                     NumberFormat.Int16LE,
