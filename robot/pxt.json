@@ -16,7 +16,8 @@
         "yahboomtinybit.ts",
         "cutebot.ts",
         "blocks.ts",
-        "cutebotpro.ts"
+        "cutebotpro.ts",
+        "minilfr.ts"
     ],
     "testFiles": [
         "test.ts"
