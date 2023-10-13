@@ -29,7 +29,7 @@ namespace microcode {
         private lastCommandTime: number
         private running = false
         currentUltrasonicDistance: number = 100
-        private showConfiguration: number
+        private showConfiguration: boolean = false
         private configDrift = false
         private currentSpeed: number = 0
         private currentMotorMode = RobotMotorMode.Run
@@ -52,6 +52,43 @@ namespace microcode {
             microcode.robot = this
         }
 
+        private configureButtons() {
+            input.onButtonPressed(Button.A, () => {
+                this.playTone(440, 500)
+                if (this.configDrift)
+                    this.runDrift--
+                else
+                    robots.previousGroup()
+                this.showConfigurationState()
+            })
+            input.onButtonPressed(Button.B, () => {
+                this.playTone(640, 500)
+                if (this.configDrift)
+                    this.runDrift++
+                else
+                    robots.nextGroup()
+                this.showConfigurationState()
+            })
+            input.onButtonPressed(Button.AB, () => {
+                this.playTone(840, 500)
+                this.configDrift = !this.configDrift
+                this.showConfigurationState(true)
+            })
+        }
+
+        private showConfigurationState(showTitle?: boolean) {
+            this.showConfiguration = true
+            const title = this.configDrift ? "DRIFT" : "RADIO"
+            const value = this.configDrift ? this.runDrift : robots.radioGroup
+            led.stopAnimation()
+            if (showTitle) {
+                basic.clearScreen()
+                basic.showString(title, 60)
+            }
+            basic.showNumber(value, 50)
+            this.showConfiguration = false
+        }
+
         /**
          * Starts the motor driver
          */
@@ -62,63 +99,23 @@ namespace microcode {
             if (this.running) return
 
             this.running = true
-            this.showConfiguration = SHOW_CONFIG_COUNT
             this.robot.headlightsSetColor(0, 0xff, 0)
             // wake up sensors
             this.motorStop()
             this.ultrasonicDistance()
             this.lineState()
-            input.onButtonPressed(Button.A, () => {
-                if (this.configDrift)
-                    this.runDrift--
-                else
-                    robots.previousGroup()
-                this.showConfiguration = SHOW_CONFIG_COUNT - 1
-                led.stopAnimation()
-            })
-            input.onButtonPressed(Button.B, () => {
-                if (this.configDrift)
-                    this.runDrift++
-                else
-                    robots.nextGroup()
-                this.showConfiguration = SHOW_CONFIG_COUNT - 1
-                led.stopAnimation()
-            })
-            input.onButtonPressed(Button.AB, () => {
-                this.configDrift = !this.configDrift
-                this.showConfiguration = SHOW_CONFIG_COUNT
-                led.stopAnimation()
-            })
             this.startRadioReceiver()
-            basic.forever(() => this.showLineState())
-            basic.forever(() => this.showSonar())
+            this.configureButtons()
+            basic.forever(() => this.updateSonar()) // potentially slower
             control.inBackground(() => this.backgroundWork())
+            this.showConfigurationState(true)
         }
 
         private backgroundWork() {
             while (this.running) {
                 this.checkAlive()
-                if (this.stopToneMillis && this.stopToneMillis < control.millis()) {
-                    music.stopAllSounds()
-                    this.stopToneMillis = 0
-                }
-                const cf = this.showConfiguration
-                if (cf > 0) {
-                    this.showConfiguration--
-                    led.stopAnimation()
-                    if (this.configDrift) {
-                        if (cf === SHOW_CONFIG_COUNT)
-                            basic.showString("DRIFT", 85)
-                        basic.showNumber(this.runDrift, 100)
-                        basic.clearScreen()
-                    }
-                    else {
-                        if (cf === SHOW_CONFIG_COUNT)
-                            basic.showString("RADIO", 85)
-                        basic.showNumber(microcode.robots.radioGroup, 100)
-                        basic.clearScreen()
-                    }
-                }
+                this.updateTone()
+                this.updateLineState()
                 this.updateSpeed()
                 basic.pause(5)
             }
@@ -216,6 +213,8 @@ namespace microcode {
         }
 
         private showSingleMotorState(x: number, speed: number) {
+            if (this.showConfiguration) return
+
             if (Math.abs(speed) < 30) led.unplot(x, 2)
             else led.plot(x, 2)
             if (speed >= 30) led.plot(x, 1)
@@ -228,7 +227,7 @@ namespace microcode {
             else led.unplot(x, 4)
         }
 
-        private showLineState() {
+        private updateLineState() {
             const lineState = this.lineState()
             if (this.showConfiguration) return
 
@@ -250,7 +249,7 @@ namespace microcode {
         }
 
         private lastSonarValue = 0
-        private showSonar() {
+        private updateSonar() {
             const dist = this.ultrasonicDistance()
             if (this.showConfiguration) return
 
@@ -365,6 +364,13 @@ namespace microcode {
             music.setVolume(this.robot.musicVolume)
             this.stopToneMillis = control.millis() + duration
             music.ringTone(frequency)
+        }
+
+        private updateTone() {
+            if (this.stopToneMillis && this.stopToneMillis < control.millis()) {
+                music.stopAllSounds()
+                this.stopToneMillis = 0
+            }
         }
 
         dispatch(msg: robots.RobotMessage) {
