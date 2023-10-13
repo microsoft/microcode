@@ -25,6 +25,7 @@ namespace microbin {
         TID_SENSOR_ROTARY,
         TID_SENSOR_CAR_WALL,
         TID_SENSOR_LINE,
+        SENSOR_END,
 
         ACTUATOR_START = 40,
         TID_ACTUATOR_SWITCH_PAGE = 40,
@@ -40,6 +41,7 @@ namespace microbin {
         TID_ACTUATOR_CUP_Z_ASSIGN,
         TID_ACTUATOR_SHOW_NUMBER,
         TID_ACTUATOR_CAR,
+        ACTUATOR_END,
      
         FILTER_START = 70,
         TID_FILTER_PIN_0 = 70,
@@ -78,6 +80,7 @@ namespace microbin {
         TID_FILTER_LINE_RIGHT,
         TID_FILTER_LINE_BOTH,
         TID_FILTER_LINE_NEITHER,
+        FILTER_END,
      
         MODIFIER_START = 150,
         TID_MODIFIER_PAGE_1 = 150,
@@ -126,6 +129,7 @@ namespace microbin {
         TID_MODIFIER_CAR_TURN_LEFT,
         TID_MODIFIER_CAR_TURN_RIGHT,
         TID_MODIFIER_CAR_STOP,
+        MODIFER_END
     }
 
     export function tidToEnum(t: string) {
@@ -361,6 +365,35 @@ namespace microbin {
             case Tid.TID_MODIFIER_CAR_TURN_RIGHT: return microcode.TID_MODIFIER_CAR_TURN_RIGHT
             case Tid.TID_MODIFIER_CAR_STOP: return microcode.TID_MODIFIER_CAR_STOP
             default: return undefined
+        }
+    }
+
+    export function assert(cond: boolean, msg?: string) {
+        if (!cond) {
+            if (msg == null) msg = "Assertion failed"
+            throw msg
+        }
+    }
+
+    // use this to manage a buffer that may grow
+    class BufferWriter {
+        private buf: Buffer
+        private ptr: number = 0
+
+        constructor() {
+            this.buf = Buffer.create(128)
+        }
+
+        public get buffer() { return this.buf }
+
+        public writeByte(v: number) {
+            assert(0 <= v && v <= 0xff && (v | 0) == v)
+            if (this.ptr >= this.buf.length) {
+                const copy = Buffer.create(this.buf.length * 2)
+                copy.write(0, this.buf)
+                this.buf = copy
+            }
+            this.buf[this.ptr++] = v
         }
     }
 }
