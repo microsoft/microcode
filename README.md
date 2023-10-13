@@ -35,7 +35,7 @@ There are three Arcade shields available on the market today, as shown below.
 
 </td><td>
 
-[![ICShopping's Game:bit](./assets/gamebit-shield.png)](https://www.icshop.com.tw/products/368112100118)
+[![ICShopping's Game:bit](./assets/gamebit-shield.png)](https://www.icshop.com.tw/products/368112100137?locale=en)
 
 </td></tr>
 <tr valign="top">
