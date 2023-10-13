@@ -78,7 +78,7 @@ No assembly required. Large screen and 3d-printed enclosure with LiPo battery in
 
 </table>
 
-## [Web editor](https://aka.ms/m9) {#web}
+## Web editor
 
 <video class="sample" poster="./videos/smiley-buttons.png" src="./videos/smiley-buttons.mp4" controls="true"></video>
 
@@ -177,13 +177,11 @@ to follow lines, avoid obstacles and more. [Learn more](./robot)
 
 [![Photograph of the Cutebot](./images/cutebot.jpeg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
 
-## Community pages and videos
+## Community
 
 -   [KittenBot MicroCode introduction](https://mp.weixin.qq.com/s/yBQMU2IAbeHgr-ok05THTA)
 
 {% include youtube.html id="mbF-HU9IZ-A" %}
-
-## Acknowledgments
 
 -   Microsoft Garage for kick starting this project during the 2022 Microsoft Hackathon.
 -   [@loretod101](https://twitter.com/loretod101) on advising on accessibility features, including switch access support.
