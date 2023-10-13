@@ -53,7 +53,7 @@ ICShopping's Game:bit Arcade shield
 <img src="../assets/elecfreaks-shield.png">
 </a>
 </td><td>
-<a alt="ICShopping's Game:bit" href="https://www.icshop.com.tw/products/368112100118">
+<a alt="ICShopping's Game:bit" href="https://www.icshop.com.tw/products/368112100137?locale=en">
 <img src="../assets/gamebit-shield.png">
 </a>
 </td></tr>
