@@ -309,8 +309,12 @@ namespace microcode {
             this.filters.forEach(filter => bw.writeByte(tidToEnum(filter.tid)))
             bw.writeByte(Tid.END_OF_WHEN)
             this.actuators.forEach(act => bw.writeByte(tidToEnum(act.tid)))
-            // TODO: field editor logic
-            this.modifiers.forEach(mod => bw.writeByte(tidToEnum(mod.tid)))
+            this.modifiers.forEach(mod => {
+                bw.writeByte(tidToEnum(mod.tid))
+                if (mod.fieldEditor) {
+                    bw.writeBuffer(mod.fieldEditor.toBuffer(mod.getField()))
+                }
+            })
             bw.writeByte(Tid.END_OF_RULE)
         }
     }
