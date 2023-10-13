@@ -6,15 +6,30 @@ Microcode supports programming a separate micro:bit robot.
 
 You will need one of the following micro:bit robot and an extra micro:bit (v1 or v2) to run on the robot. (Contact us if your robot is not listed)
 
+### Hardware requirements
+
+The firmware is designed for popular rover robots found in the micro:bit ecosystem
+(and more can be added):
+
+-   2 motors that can be forward, backward, left, right turns. Precise detection of distance is **not** needed.
+-   a line sensor that can detect black and white lines
+-   a distance sensor, typically an ultrasonic sensor
+
+The following features are found often but are optional:
+
+-   RGB LEDs
+-   Buzzer
+-   Programmable LED strip
+
 ### Elecfreaks Cutebot
 
-[![Photograph of the Cutebot](https://images.elecfreaks.com/catalog/product/cache/7918c6953a45f9302b15c05016f89bfd/e/f/ef08209-12.jpg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
+[![Photograph of the Cutebot](./images/cutebot.jpeg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
 
 -   Download [robot-cutebox.hex](https://microsoft.github.io/microcode/assets/robot-cutebox.hex) to micro:bit attached to the Cutebot
 
 ### Yahboom Tiny:bit
 
-[![Photograph of the Tiny:bit](http://www.yahboom.net/Public/images/newsimg/65019ce3abf0c.jpg)](http://www.yahboom.net/study/Tiny:bit)
+[![Photograph of the Tiny:bit](./images/tinybit.jpeg)
 
 -   Download [robot-tinybit.hex](https://microsoft.github.io/microcode/assets/robot-tinybit.hex)
 
@@ -30,6 +45,8 @@ On the robot micro:bit,
 On the microcode side,
 
 -   Use the ![radio set group](./images/generated/icon_A6A.png){:class="icon"} `radio set group` to configure the same group number as the robot micro:bit
+
+![setting radio group 3 on page start](./images/generated/sample_robot_shake_page_1_rule_1.png){:class="rule"}
 
 ## Calibrating motor drift
 
@@ -47,6 +64,11 @@ On the robot micro:bit,
 
 Write down the drift parameter as you will have to configure it every time you reset the robot micro:bit.
 
+## Tiles
+
+The tiles are documented
+in the [language robot section](./language#robot).
+
 ## Troubleshooting
 
 This is a quick check list to make sure you have the best experience with the microcode robot:
@@ -54,7 +76,6 @@ This is a quick check list to make sure you have the best experience with the mi
 -   **Charge your batteries** - everything starts to fall apart once the battery level gets low! Keep those batteries topped off!
 -   **Double check the radio groups** - make sure the microcode program and the robot are on the same radio group
 
-## Tiles
+## Add your robot
 
-The tiles are documented
-in the [language robot section](./language#robot).
+The source of the robot firmware are at https://github.com/microsoft/microcode/tree/main/robot. We accept pull request to add new robots.
