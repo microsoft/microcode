@@ -36,7 +36,7 @@ namespace microcode {
         serialize: (field: any) => string
         deserialize: (s: string) => any
         toBuffer: (field: any) => Buffer
-        fromBuffer: (buf: Buffer) => any
+        fromBuffer: (buf: BufferReader) => any
     }
 
     // let P be jdParam
@@ -317,6 +317,39 @@ namespace microcode {
             })
             bw.writeByte(Tid.END_OF_RULE)
         }
+
+        public static fromBuffer(br: BufferReader) {
+            const defn = new RuleDefn()
+            const sensorEnum = br.readByte()
+            const sensorTid = enumToTid(sensorEnum)
+            defn.sensors.push(tilesDB.sensors[sensorTid])
+            while (!br.eof() && br.peekByte() != Tid.END_OF_WHEN) {
+                const filterEnum = br.readByte()
+                const filterTid = enumToTid(filterEnum)
+                defn.filters.push(tilesDB.filters[filterTid])    
+            }
+            br.readByte()
+            if (br.peekByte() == Tid.END_OF_RULE) {
+                br.readByte()
+                return defn
+            }
+            const actuatorEnum = br.readByte()
+            const actuatorTid = enumToTid(actuatorEnum)
+            defn.actuators.push(tilesDB.actuators[actuatorTid])
+            while (!br.eof() && br.peekByte() != Tid.END_OF_RULE) {
+                const modifierEnum = br.readByte()
+                const modifierTid = enumToTid(modifierEnum)
+                const modifier = tilesDB.modifiers[modifierTid]
+                if (modifier.fieldEditor) {
+                    // TODO: length from fieldEditor
+                    const field = modifier.fieldEditor.fromBuffer(br)
+                    const newOne = modifier.getNewInstance(field)
+                    defn.modifiers.push(<any>newOne)
+                }
+            }
+            br.readByte()
+            return defn
+        }
     }
 
     export function ruleDefnToJson(rule: RuleDefn): any {
@@ -434,6 +467,15 @@ namespace microcode {
             this.rules.forEach(rule => rule.toBuffer(bw))
             bw.writeByte(Tid.END_OF_PAGE)
         }
+
+        public static fromBuffer(br: BufferReader) {
+            const defn = new PageDefn()
+            while (!br.eof() && br.peekByte() != Tid.END_OF_PAGE) {
+                br.readByte()
+                defn.rules.push(RuleDefn.fromBuffer(br))
+            }
+            return defn
+        }
     }
 
     function pageDefnToJson(page: PageDefn): any {
@@ -481,6 +523,15 @@ namespace microcode {
             this.pages.forEach(page => page.toBuffer(bw))
             bw.writeByte(Tid.END_OF_PROG)
             return bw.buffer
+        }
+
+        public static fromBuffer(br: BufferReader) {
+            const defn = new ProgramDefn()
+            while (!br.eof() && br.peekByte() != Tid.END_OF_PROG) {
+                br.readByte()
+                defn.pages.push(PageDefn.fromBuffer(br))
+            }
+            return defn
         }
     }
 

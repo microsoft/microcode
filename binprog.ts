@@ -409,4 +409,33 @@ namespace microcode {
                 this.writeByte(b[i])
         }
     }
+
+    export class BufferReader {
+        constructor(private buf: Buffer, private ptr: number = 0) {
+        }
+
+        public get buffer() { return this.buf }
+
+        public eof() {
+            return this.ptr >= this.buf.length
+        }
+
+        public peekByte() {
+            assert(this.ptr < this.buf.length)
+            return this.buf[this.ptr]
+        }
+
+        public readByte() {
+            assert(this.ptr < this.buf.length)
+            return this.buf[this.ptr++]
+        }
+
+        public readBuffer(len: number) {
+            assert(this.ptr + len <= this.buf.length)
+            const b = Buffer.create(len)
+            for (let i = 0; i < len; ++i)
+                b[i] = this.buf[this.ptr++]
+            return b
+        }
+    }
 }

@@ -718,7 +718,8 @@ namespace microcode {
             }
             return ret
         },
-        fromBuffer: (buf: Buffer) => {
+        fromBuffer: (br: BufferReader) => {
+            const buf = br.readBuffer(4)
             const img = image.create(5, 5)
             for (let index = 0; index < 25; index++) {
                 let byte = index >> 3
@@ -825,8 +826,8 @@ namespace microcode {
             // TODO
             return buf
         },
-        fromBuffer: (buf: Buffer) => {
-            // TODO
+        fromBuffer: (br: BufferReader) => {
+            const buf = br.readBuffer(3)
             return undefined
         }
     }
