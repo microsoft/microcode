@@ -39,6 +39,13 @@ namespace microcode {
             settings.writeString(slot, s)
         }
 
+        public saveBuffer(slot: string, buf: Buffer) {
+            reportEvent("app.save", { slot: slot, size: buf.length })
+            console.log(`save to ${slot}: ${buf.length}b`)
+            profile()
+            settings.writeBuffer(slot, buf)
+        }
+
         public save(slot: string, prog: ProgramDefn) {
             let saved: SavedState = {
                 progdef: progDefnToJson(prog),
@@ -49,6 +56,10 @@ namespace microcode {
             this.saveSource(slot, s)
         }
 
+        public saveAsBuffer(slot: string, prog: ProgramDefn) {
+            this.saveBuffer(slot, prog.toBuffer())
+        }
+
         public load(slot: string): ProgramDefn {
             try {
                 let s = settings.readString(slot)
@@ -56,6 +67,18 @@ namespace microcode {
                     const saved: SavedState = JSON.parse(s)
                     s = undefined
                     if (saved) return progDefnFromJson(saved.progdef)
+                }
+            } catch (e) {
+                console.log(e)
+            }
+            return undefined
+        }
+
+        public loadFromBuffer(slot: string): ProgramDefn {
+            try {
+                let buf = settings.readBuffer(slot)
+                if (buf) {
+                    return ProgramDefn.fromBuffer(new BufferReader(buf))
                 }
             } catch (e) {
                 console.log(e)

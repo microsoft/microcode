@@ -22,6 +22,7 @@ namespace microcode {
         handling?: { [id: string]: any }
     }
 
+    // TODO: make into class
     export interface FieldEditor {
         init: any
         clone: (field: any) => any
@@ -66,6 +67,11 @@ namespace microcode {
         Sequence,
     }
 
+    // TODO: clean up with new enum representation
+    // - get ride of TileType and tid
+    // - use a list instead of priority and sorting
+    // - move fieldEditor out of TileDefn, only need for a few tiles
+    // - separate editor info (constraints) from compiler info
     export class TileDefn {
         constructor(public type: TileType, public tid: string) {
             this.priority = 0
