@@ -218,10 +218,13 @@ Make to start your program by setting the same radio group as the robot.
 The robot motor commands start with a car and a sequence of move directions.
 
 -   ![robot](./images/generated/icon_CAR.png){:class="icon"} `robot`, start the robot motor commands
--   ![robot forward](./images/generated/icon_CAR1.png){:class="icon"} `forward`, instructs the robot to move forward
+-   ![robot forward](./images/generated/icon_CAR1.png){:class="icon"} `forward`, instructs the robot to move forward. The robot will slow down on lines.
+-   ![robot fast forward](./images/generated/icon_CAR6.png){:class="icon"} `fast forward`, instructs the robot to move forward at maximum speed
 -   ![robot backward](./images/generated/icon_CAR2.png){:class="icon"} `reverse`, instructs the robot to move backward
--   ![robot turn left](./images/generated/icon_CAR3.png){:class="icon"} `turn left`, instructs the robot to turn left
--   ![robot turn right](./images/generated/icon_CAR4.png){:class="icon"} `turn right`, instructs the robot to turn right
+-   ![robot turn left](./images/generated/icon_CAR3.png){:class="icon"} `turn left`, instructs the robot to turn left. The robot will slow down on lines.
+-   ![robot spin left](./images/generated/icon_CAR7.png){:class="icon"} `spin left`, instructs the robot to spin left
+-   ![robot turn right](./images/generated/icon_CAR4.png){:class="icon"} `turn right`, instructs the robot to turn right. The robot will slow down on lines.
+-   ![robot spin right](./images/generated/icon_CAR8.png){:class="icon"} `spin right`, instructs the robot to spin right
 -   ![robot stop](./images/generated/icon_CAR4.png){:class="icon"} `stop`, instructs the robot to stop
 
 The forward, backward, left, right and stop blocks
@@ -238,6 +241,6 @@ and the line sensor as a line tile.
 -   ![wall](./images/generated/icon_S13.png){:class="icon"} `wall`, triggers when an obstacle is detected;
     (levels 1 - 5, where 1 means obstacle close, 5 means far away in multiple of 5cm)
 -   ![line](./images/generated/icon_S14.png){:class="icon"} `wall`, triggers when the line following detector have detected a change; followed by a line state: ![both line detected](./images/generated/icon_F23B.png){:class="icon"} both,
-    ![no line detected](./images/generated/icon_F23N.png){:class="icon"} non,
+    ![no line detected](./images/generated/icon_F23N.png){:class="icon"} none,
     ![left line detected](./images/generated/icon_F23L.png){:class="icon"} left,
     ![right detected](./images/generated/icon_F23R.png){:class="icon"} right.
