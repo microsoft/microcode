@@ -132,6 +132,7 @@ namespace microcode {
             //    const msg = robots.decodeRobotCommand(buf)
             //    this.dispatch(msg)
             //})
+            radio.setTransmitSerialNumber(true)
             radio.onReceivedNumber(code => {
                 const msg = robots.decodeRobotCompactCommand(code)
                 this.dispatch(msg)
