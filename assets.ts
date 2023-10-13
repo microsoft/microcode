@@ -311,6 +311,8 @@ namespace icondb {
         }
         return ret
     }
+
+    /*
     export const iconEditor = scaleUp(
         img`
         . . . . .
@@ -320,11 +322,60 @@ namespace icondb {
         . 1 1 1 .
         `
     )
+    */
+    export const iconEditor = img`
+    f f f f f f f f f f f f f f f f 
+    f f f f f f f f f f f f f f f f 
+    f f f f f f f f f f f f f f f f 
+    f f f f e e f f f f e e f f f f 
+    f f f e 2 2 e f f e 2 2 e f f f 
+    f f f e 2 2 e f f e 2 2 e f f f 
+    f f f f e e f f f f e e f f f f 
+    f f f f f f f f f f f f f f f f 
+    f f f f f f f f f f f f f f f f 
+    f e e f f f f f f f f f f e e f 
+    e 2 2 e f f f f f f f f e 2 2 e 
+    e 2 2 e f f f f f f f f e 2 2 e 
+    f e e f e e f e e f e e f e e f 
+    f f f e 2 2 e 2 2 e 2 2 e f f f 
+    f f f e 2 2 e 2 2 e 2 2 e f f f 
+    f f f f e e f e e f e e f f f f 
+    `
+    function renderImg(i: Image) {
+        let r = ""
+        for (let y = 0; y < i.height; ++y) {
+            let line = ""
+            for (let x = 0; x < i.width; ++x)
+                line += "0123456789abcdef"[i.getPixel(x, y)] + " "
+            r += line + "\n"
+        }
+        console.log(`\nimg\`\n${r}\``)
+    }
 
+    /*
     export const melodyEditor = melodyToImage({
         notes: "0240",
         tempo: 0,
     })
+    */
+    export const melodyEditor = img`
+    1111111111111111
+    111111111ff11111
+    11111111fcc11111
+    11111111fcc11111
+    1111111111111111
+    1111111111111111
+    1111111111111111
+    11111ff111111111
+    1111fcc111111111
+    1111fcc111111111
+    1111111111111111
+    1111111111111111
+    1111111111111111
+    1ff1111111111ff1
+    fcc111111111fcc1
+    fcc111111111fcc1    
+    `
 
     export const disk = img`
     . . . . . . . . . . . . . . . .
@@ -2700,7 +2751,6 @@ bffffffffffffffffffffffffffffffb
 . f f f . .
 . . . . . .
 `
-
 
     export const servo_set_angle = img`
     . . . . . . . . . . . . . . . . 
