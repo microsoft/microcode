@@ -2,6 +2,8 @@
 
 Microcode supports programming a separate micro:bit robot.
 
+![robot avoid wall program](./images/generated/sample_robot_avoid_wall.png){:class="sample"}
+
 ## Preparing the robot micro:bit
 
 You will need one of the following micro:bit robot and an extra micro:bit (v1 or v2) to run on the robot. (Contact us if your robot is not listed)

@@ -175,7 +175,9 @@ In this video, we launch an LED animation when a clap is detected.
 Remote control a micro:robot using microcode
 to follow lines, avoid obstacles and more. [Learn more](./robot)
 
-[![Photograph of the Cutebot](./images/cutebot.jpeg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
+![robot avoid wall program](./images/generated/sample_robot_avoid_wall.png){:class="sample"}
+
+[![Photograph of the Cutebot](./images/cutebot.jpeg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html){:class="sample"}
 
 ## Community
 
