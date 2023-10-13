@@ -454,6 +454,10 @@ namespace microcode {
         public trim() {
             this.pages.map(page => page.trim())
         }
+
+        public toBuffer() {
+            
+        }
     }
 
     export function progDefnToJson(prog: ProgramDefn): any {
