@@ -482,7 +482,7 @@ function setLiveRegion(value, force) {
     }
     value = value || ""
     if (force && liveRegion.textContent === value) liveRegion.textContent = ""
-    console.debug(`aria-live: ${value}`)
+    if (value) console.debug(`aria-live: ${value}`)
     liveRegion.dataset["text"] = value
     liveRegion.textContent = value
     playClick()
