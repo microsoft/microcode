@@ -54,6 +54,7 @@ namespace microcode {
 
         private configureButtons() {
             input.onButtonPressed(Button.A, () => {
+                if (this.showConfiguration) return
                 this.playTone(440, 500)
                 if (this.configDrift)
                     this.runDrift--
@@ -62,6 +63,7 @@ namespace microcode {
                 this.showConfigurationState()
             })
             input.onButtonPressed(Button.B, () => {
+                if (this.showConfiguration) return
                 this.playTone(640, 500)
                 if (this.configDrift)
                     this.runDrift++
@@ -70,6 +72,7 @@ namespace microcode {
                 this.showConfigurationState()
             })
             input.onButtonPressed(Button.AB, () => {
+                if (this.showConfiguration) return
                 this.playTone(840, 500)
                 this.configDrift = !this.configDrift
                 this.showConfigurationState(true)
