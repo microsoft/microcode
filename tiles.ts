@@ -823,12 +823,29 @@ namespace microcode {
         toBuffer: (melody: Melody) => {
             const buf = Buffer.create(3)
             buf.setUint8(0, melody.tempo)
-            // TODO
+            // convert the melody notes into list of integers
+            const notes = melody.notes.split("").map(n => parseInt(n))
+            // fill the buffer with the notes, 4 bits for each note
+            for (let i = 0; i < MELODY_LENGTH; i++) {
+                const note = notes[i] || 0
+                const byte = i >> 1
+                const bit = (i & 1) << 2
+                buf.setUint8(byte + 1, buf.getUint8(byte + 1) | (note << bit))
+            }
             return buf
         },
         fromBuffer: (br: BufferReader) => {
             const buf = br.readBuffer(3)
-            return undefined
+            const tempo = buf[0]
+            let notes = ""
+            // read the notes from the buffer
+            for (let i = 0; i < MELODY_LENGTH; i++) {
+                const byte = i >> 1
+                const bit = (i & 1) << 2
+                const note = (buf[byte + 1] >> bit) & 0xf
+                notes += note.toString()
+            }
+            return { tempo, notes }
         }
     }
 
