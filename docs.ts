@@ -205,32 +205,33 @@ namespace docs {
     }
 
     function names() {
-        return ["clap_lights", "firefly", "flashing_heart", "rock_paper_scissors",
+        return [
+            "clap_lights", "firefly", "flashing_heart", "rock_paper_scissors",
             "teleport_duck", "pet_hamster", "heads_tails", "reaction_time", "hot_potato",
             "clap_lights", "railroad_crossing",
             microcode.TID_ACTUATOR_CAR, microcode.TID_MODIFIER_CAR_FORWARD, microcode.TID_MODIFIER_CAR_REVERSE,
-            microcode.TID_MODIFIER_CAR_TURN_LEFT, microcode.TID_MODIFIER_CAR_TURN_RIGHT, 
+            microcode.TID_MODIFIER_CAR_TURN_LEFT, microcode.TID_MODIFIER_CAR_TURN_RIGHT,
             microcode.TID_MODIFIER_CAR_STOP, microcode.TID_SENSOR_CAR_WALL, microcode.TID_SENSOR_LINE,
             microcode.TID_FILTER_LINE_LEFT, microcode.TID_FILTER_LINE_RIGHT, microcode.TID_FILTER_LINE_BOTH,
             microcode.TID_FILTER_LINE_NEITHER,
-            microcode.TID_FILTER_KITA_KEY_1, 
+            microcode.TID_FILTER_KITA_KEY_1,
             microcode.TID_FILTER_KITA_KEY_2,
             microcode.TID_SENSOR_MAGNET,
             microcode.TID_SENSOR_SLIDER,
             microcode.TID_SENSOR_ROTARY,
             microcode.TID_FILTER_ROTARY_LEFT,
             microcode.TID_FILTER_ROTARY_RIGHT,
-             microcode.TID_ACTUATOR_RGB_LED,
-             microcode.TID_MODIFIER_RGB_LED_COLOR_1,
-             microcode.TID_MODIFIER_RGB_LED_COLOR_2,
-             microcode.TID_MODIFIER_RGB_LED_COLOR_3,
-             microcode.TID_MODIFIER_RGB_LED_COLOR_4,
-             microcode.TID_MODIFIER_RGB_LED_COLOR_5,
-             microcode.TID_MODIFIER_RGB_LED_COLOR_6,
-             microcode.TID_MODIFIER_RGB_LED_COLOR_RAINBOW,
-             microcode.TID_MODIFIER_RGB_LED_COLOR_SPARKLE,
+            microcode.TID_ACTUATOR_RGB_LED,
+            microcode.TID_MODIFIER_RGB_LED_COLOR_1,
+            microcode.TID_MODIFIER_RGB_LED_COLOR_2,
+            microcode.TID_MODIFIER_RGB_LED_COLOR_3,
+            microcode.TID_MODIFIER_RGB_LED_COLOR_4,
+            microcode.TID_MODIFIER_RGB_LED_COLOR_5,
+            microcode.TID_MODIFIER_RGB_LED_COLOR_6,
+            microcode.TID_MODIFIER_RGB_LED_COLOR_RAINBOW,
+            microcode.TID_MODIFIER_RGB_LED_COLOR_SPARKLE,
             microcode.TID_MODIFIER_SERVO_SET_ANGLE,
-                         // editor icons
+            // editor icons
             "delete",
             "plus",
             "arith_plus",
@@ -248,7 +249,7 @@ namespace docs {
             "disk3",
             "largeDisk",
             // basic colors led editor
-           "solid_red",
+            "solid_red",
             "solid_black",
             "note_on",
             "note_off",
@@ -348,8 +349,9 @@ namespace docs {
 
             , microcode.TID_MODIFIER_TEMP_READ
             , microcode.TID_MODIFIER_RADIO_VALUE
-        ] 
+        ]
     }
+    
     function renderIcons(images: RenderedImage[]) {
         for (const name of names()) {
             console.log(`render icon ${name}`)
