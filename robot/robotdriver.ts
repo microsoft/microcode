@@ -3,9 +3,6 @@
  */
 //% color="#ff6800" icon="\uf1b9" weight=15
 namespace microcode {
-    const ROBOT_TIMEOUT = 1000
-    const SHOW_CONFIG_COUNT = 6
-
     const RUN_STOP_THRESHOLD = 2
     const MODE_SWITCH_THRESHOLD = 2
     const TARGET_SPEED_THRESHOLD = 4
