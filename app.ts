@@ -57,7 +57,6 @@ namespace microcode {
         }
 
         public saveAsBuffer(slot: string, prog: ProgramDefn) {
-            console.log("saveAsBuffer")
             this.saveBuffer(slot, prog.toBuffer())
         }
 

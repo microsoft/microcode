@@ -396,7 +396,6 @@ namespace microcode {
         public get buffer() { return this.buf }
 
         public writeByte(v: number) {
-            console.log(v)
             assert(0 <= v && v <= 0xff && (v | 0) == v, "writeByte: v=" + v.toString())
             if (this.ptr >= this.buf.length) {
                 const copy = Buffer.create(this.buf.length * 2)

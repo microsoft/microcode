@@ -329,11 +329,13 @@ namespace microcode {
             assert(!br.eof())
             const sensorEnum = br.readByte()
             const sensorTid = enumToTid(sensorEnum)
+            console.log(sensorTid)
             defn.sensors.push(tilesDB.sensors[sensorTid])
             assert(!br.eof())
             while (br.peekByte() != Tid.END_OF_WHEN) {
                 const filterEnum = br.readByte()
                 const filterTid = enumToTid(filterEnum)
+                console.log(filterTid)
                 defn.filters.push(tilesDB.filters[filterTid])
                 assert(!br.eof())
             }
@@ -346,11 +348,13 @@ namespace microcode {
             assert(!br.eof())
             const actuatorEnum = br.readByte()
             const actuatorTid = enumToTid(actuatorEnum)
+            console.log(actuatorTid)
             defn.actuators.push(tilesDB.actuators[actuatorTid])
             assert(!br.eof())
             while (br.peekByte() != Tid.END_OF_RULE) {
                 const modifierEnum = br.readByte()
                 const modifierTid = enumToTid(modifierEnum)
+                console.log(modifierTid)
                 const modifier = tilesDB.modifiers[modifierTid]
                 if (modifier.fieldEditor) {
                     const field = modifier.fieldEditor.fromBuffer(br)
@@ -547,7 +551,6 @@ namespace microcode {
                 assert(!br.eof())
             }
             br.readByte()
-            assert(br.eof())
             return defn
         }
     }
