@@ -14,6 +14,12 @@ namespace microcode {
     const ULTRASONIC_MIN_READING = 1
     const LINE_ASSIST_LOST_THRESHOLD = 72
 
+    function radioGroupFromDeviceSerialNumber()
+    {
+        const sn = control.deviceLongSerialNumber()
+        return (sn.hash(10) % 9) + 1
+    }
+
     /**
      *
      */
@@ -46,8 +52,6 @@ namespace microcode {
 
         constructor(robot: robots.Robot) {
             this.robot = robot
-            const sn = control.deviceSerialNumber()
-            this.setRadioGroup(Math.abs(control.deviceSerialNumber() % 9) + 1)
             microcode.robot = this
         }
 
@@ -134,6 +138,7 @@ namespace microcode {
         private inRadioMessageId = 0
 
         private startRadioReceiver() {
+            this.setRadioGroup(radioGroupFromDeviceSerialNumber())
             radio.setTransmitSerialNumber(true);
             radio.onReceivedNumber(code => {
                 this.decodeRobotCompactCommand(code)

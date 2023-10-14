@@ -5,7 +5,7 @@ microcode.elecfreaksCuteBot.start()
 //microcode.setMotorDrift(6)
 
 //microcode.setRadioGroup(3)
-microcode.setMotorDrift(0)
+microcode.setMotorDrift(2)
 
 //const r = microcode.robot
 //r.lineAssist = true
