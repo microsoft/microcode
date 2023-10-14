@@ -9,6 +9,7 @@ namespace microcode {
     const TARGET_TURN_RATIO_THRESHOLD = 20
     const TURN_RATIO_TRANSITION_ALPHA = 0.8
     const ULTRASONIC_MIN_READING = 1
+    const LINE_ASSIST_LOST_THRESHOLD = 64
 
     /**
      *
@@ -28,6 +29,7 @@ namespace microcode {
         private targetTurnRatio: number = 0
 
         currentLineState: RobotLineState = RobotLineState.None
+        private currentLineStateCounter = 0
 
         private stopToneMillis: number = 0
         lineAssist = false
@@ -153,8 +155,11 @@ namespace microcode {
                 this.setMotorState(0, 0)
             else {
                 let s = this.currentSpeed
-                if (this.lineAssist && s > 0)
-                    s = Math.min(Math.abs(s), this.robot.maxLineSpeed)
+                if (this.lineAssist && s > 0) {
+                    if (this.currentLineState // left, right, front
+                        || this.currentLineStateCounter < LINE_ASSIST_LOST_THRESHOLD) // recently lost line
+                        s = Math.min(Math.abs(s), this.robot.maxLineSpeed)
+                }
                 const ns = Math.abs(s)
 
                 let left = 0
@@ -286,13 +291,15 @@ namespace microcode {
             return this.currentUltrasonicDistance
         }
 
-        lineState(): RobotLineState {
+        private lineState(): RobotLineState {
             const ls = this.robot.lineState()
             if (ls !== this.currentLineState) {
                 this.currentLineState = ls
+                this.currentLineStateCounter = 0
                 const msg = microcode.robots.RobotCompactCommand.LineState | this.currentLineState
                 microcode.robots.sendCompactCommand(msg)
             }
+            this.currentLineStateCounter++
             return ls
         }
 

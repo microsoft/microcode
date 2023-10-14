@@ -59,6 +59,6 @@ namespace microcode {
     //% group="Sensors"
     export function detectLines(state: RobotLineState): boolean {
         checkRobotDriver()
-        return robot.lineState() === state
+        return robot.currentLineState === state
     }
 }

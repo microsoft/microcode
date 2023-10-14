@@ -7,10 +7,6 @@ microcode.elecfreaksCuteBot.start()
 const r = microcode.robot
 r.lineAssist = true
 
-r.motorRun(200, 100)
-pause(400)
-r.motorStop()
-pause(1000)
 
 basic.forever(() => {
     const lines = r.currentLineState
@@ -21,7 +17,7 @@ basic.forever(() => {
     else if (lines === RobotLineState.Both)
         r.motorRun(0, 100)
     else
-        r.motorRun(-50, 100)
+        r.motorRun(-150, 100)
 })
 
 /*
