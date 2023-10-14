@@ -166,23 +166,6 @@ namespace microcode {
                 )
                 if (!compat) return false
             }
-            // Check c.handling against this tile
-            if (c.handling) {
-                let compat = true
-                Object.keys(c.handling).forEach((name: any) => {
-                    if (!compat) return
-                    const rule = c.handling[name]
-                    // MAX_COUNT rule: Allow at most N tiles of this type
-                    if (name === "maxCount") {
-                        // Count the instances of rule.category in c.provides
-                        const count = c.provides.filter(
-                            pro => pro === rule.category
-                        ).length
-                        compat = count < rule.count
-                    }
-                })
-                if (!compat) return false
-            }
             return true
         }
     }
