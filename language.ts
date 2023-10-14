@@ -72,7 +72,7 @@ namespace microcode {
     // - move fieldEditor out of TileDefn, only need for a few tiles
     // - separate editor info (constraints) from compiler info
     export class TileDefn {
-        constructor(public type: TileType, public tid: string) {
+        constructor(public tid: string) {
             this.priority = 0
         }
 
@@ -170,8 +170,8 @@ namespace microcode {
     }
 
     export class StmtTileDefn extends TileDefn {
-        constructor(type: TileType, tid: string) {
-            super(type, tid)
+        constructor(tid: string) {
+            super(tid)
         }
 
         public serviceClassName: string
@@ -181,13 +181,13 @@ namespace microcode {
     export class SensorDefn extends StmtTileDefn {
         public eventCode: number
         constructor(tid: string) {
-            super(TileType.SENSOR, tid)
+            super(tid)
         }
     }
 
     export class FilterModifierBase extends TileDefn {
         constructor(type: TileType, tid: string, public category: string) {
-            super(type, tid)
+            super(tid)
         }
 
         serviceCommandArg(): string | Buffer {
@@ -233,7 +233,7 @@ namespace microcode {
         public defaultModifier: ModifierDefn
 
         constructor(tid: string) {
-            super(TileType.ACTUATOR, tid)
+            super(tid)
         }
     }
 
