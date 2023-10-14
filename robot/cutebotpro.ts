@@ -216,9 +216,6 @@ namespace microcode {
         constructor() {
             super()
             this.musicVolume = 168
-            this.maxRunSpeed = 50
-            this.maxBackSpeed = 50
-            this.maxTurnSpeed = 50
             this.maxLineRunSpeed = 30
             this.maxLineTurnSpeed = 30
 

@@ -2,9 +2,6 @@ namespace microcode.robots {
 
     export class Robot {
         musicVolume = 64
-        maxRunSpeed = 80
-        maxBackSpeed = 50
-        maxTurnSpeed = 60
         maxLineRunSpeed = 40
         maxLineTurnSpeed = 50
 
