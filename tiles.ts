@@ -36,12 +36,6 @@ namespace microcode {
 
     // initialize the database, imperatively!!!
 
-    const terminal = {
-        handling: {
-            terminal: true,
-        },
-    }
-
     function addButtonTiles() {
         function addPress(tid: string, evt: number) {
             const press_event = new SensorDefn(tid)
@@ -63,9 +57,6 @@ namespace microcode {
         function addPressFilter(tid: string, instanceNo: number) {
             const press_filter = new FilterDefn(tid, "press_event", 10)
             press_filter.constraints = {
-                handling: {
-                    terminal: true,
-                },
                 allow: {
                     categories: ["press_event"],
                 },
@@ -142,7 +133,6 @@ namespace microcode {
         slider.jdExternalClass = 0x1f274746
         slider.constraints.allow.categories = []
         slider.constraints.allow.tiles = only5
-        slider.constraints.handling = { terminal: true }
 
         if (CAR_TILES) {
             const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in", 500)
@@ -151,7 +141,6 @@ namespace microcode {
             wall.jdKind = JdKind.Radio
             wall.constraints.allow.categories = []
             wall.constraints.allow.tiles = only5
-            wall.constraints.handling = { terminal: true }
         }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
@@ -173,7 +162,6 @@ namespace microcode {
         function addEvent(tid: string, type: string, id: number) {
             const ev = new FilterDefn(tid, type, 10)
             ev.jdParam = id
-            ev.constraints = terminal
             ev.jdKind = JdKind.EventCode
             tilesDB.filters[tid] = ev
             return ev
@@ -221,7 +209,6 @@ namespace microcode {
                 TID_FILTER_LINE_BOTH,
                 TID_FILTER_LINE_NEITHER,
             ]
-            line.constraints.handling = { terminal: true }
         }
 
         const timer = new SensorDefn(TID_SENSOR_TIMER)
@@ -260,7 +247,6 @@ namespace microcode {
             const accelEvent = new FilterDefn(tid, "accel_event", 10)
             accelEvent.jdKind = JdKind.EventCode
             accelEvent.jdParam = id
-            accelEvent.constraints = terminal
             tilesDB.filters[tid] = accelEvent
             return accelEvent
         }
@@ -285,7 +271,6 @@ namespace microcode {
         tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
         function addSoundFilter(tid: string, eventCode: number) {
             const soundFilter = new FilterDefn(tid, "sound_event", 10)
-            soundFilter.constraints = terminal
             tilesDB.filters[tid] = soundFilter
             soundFilter.jdKind = JdKind.EventCode
             soundFilter.jdParam = eventCode
@@ -424,8 +409,6 @@ namespace microcode {
         make_vals(one_to_five, "value_in", "F", 8)
         make_vals(one_to_five, "constant", "M", 6)
         make_vals(one_to_five, "page", "M", 1).forEach(m => {
-            m.constraints.handling = m.constraints.handling || {}
-            m.constraints.handling.terminal = true
             m.jdKind = JdKind.Page
         })
 

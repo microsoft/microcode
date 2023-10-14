@@ -753,6 +753,42 @@ namespace microcode {
         return tid >= Tid.MODIFIER_START && tid < Tid.MODIFER_END
     }
 
+    export function isTidTerminal(tid: string) {
+        switch (tid) {
+            // TODO: with enum, convert to range check
+            // TODO: better to do terminal on sensor/actuator?
+            case TID_SENSOR_SLIDER:
+            case TID_SENSOR_CAR_WALL:
+            case TID_FILTER_BUTTON_A:
+            case TID_FILTER_BUTTON_B:
+            case TID_FILTER_LOGO:
+            case TID_FILTER_PIN_0:``
+            case TID_FILTER_PIN_1:
+            case TID_FILTER_PIN_2:
+            case TID_FILTER_KITA_KEY_1:
+            case TID_FILTER_KITA_KEY_2:
+            case TID_FILTER_ROTARY_LEFT:
+            case TID_FILTER_ROTARY_RIGHT:
+            case TID_FILTER_TEMP_WARMER:
+            case TID_FILTER_TEMP_COLDER:
+            case TID_FILTER_ACCEL_SHAKE:
+            case TID_FILTER_ACCEL_TILT_UP:
+            case TID_FILTER_ACCEL_TILT_DOWN:
+            case TID_FILTER_ACCEL_TILT_LEFT:
+            case TID_FILTER_ACCEL_TILT_RIGHT:
+            case TID_FILTER_LOUD:
+            case TID_FILTER_QUIET:
+            case TID_MODIFIER_PAGE_1:
+            case TID_MODIFIER_PAGE_2:
+            case TID_MODIFIER_PAGE_3:
+            case TID_MODIFIER_PAGE_4:
+            case TID_MODIFIER_PAGE_5:
+                return true
+            default:
+                return false
+        }
+    }
+
     export function assert(cond: boolean, msg?: string) {
         if (!cond) {
             if (msg == null) msg = "Assertion failed"
