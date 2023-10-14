@@ -280,15 +280,6 @@ namespace microcode {
             }
         }
 
-        public clone(): RuleDefn {
-            const rule = new RuleDefn()
-            rule.sensors = this.sensors.slice(0)
-            rule.actuators = this.actuators.slice(0)
-            rule.filters = this.filters.slice(0)
-            rule.modifiers = this.modifiers.slice(0)
-            return rule
-        }
-
         public isEmpty(): boolean {
             return this.sensors.length === 0 && this.actuators.length === 0
         }
@@ -353,12 +344,6 @@ namespace microcode {
             this.rules = []
         }
 
-        public clone(): PageDefn {
-            const page = new PageDefn()
-            page.rules = this.rules.map(rule => rule.clone())
-            return page
-        }
-
         public trim() {
             while (
                 this.rules.length &&
@@ -415,12 +400,6 @@ namespace microcode {
 
         constructor() {
             this.pages = PAGE_IDS().map(id => new PageDefn())
-        }
-
-        public clone(): ProgramDefn {
-            const brain = new ProgramDefn()
-            brain.pages = this.pages.map(page => page.clone())
-            return brain
         }
 
         public trim() {
