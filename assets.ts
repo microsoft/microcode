@@ -3182,20 +3182,20 @@ d d d d d d d d d d d d d d d d
 
     export const line_sensor = img`
     . . . . . . . . . . . . . . . .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
+    . b d d d d c f f c d d d d b .
+    . b d d d d c f f c d d d d b .
+    . b d d d d c f f c d d d d b .
+    . d d d d d c f f c d d d d d .
+    . d d d d d c f f c d d d d d .
+    . d d d d d c f f c d d d d d .
+    . b d d d d c f f c d d d d b .
+    . b d d d d c f f c d d d d b .
+    . b d d d d c f f c d d d d b .
+    . d d d d d c f f c d d d d d .
+    . d d d d d c f f c d d d d d .
+    . d d d d d c f f c d d d d d .
+    . b d d d d c f f c d d d d b .
+    . b d d d d c f f c d d d d b .
     . . . . . . . . . . . . . . . .
 `
     export const line_neither_on = img`
@@ -3217,58 +3217,57 @@ d d d d d d d d d d d d d d d d
 . . . . . . . . . . . . . . . .
 `
     export const line_left_on = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . d d . d d . . . . . .
-. . . . d 7 d . d 1 d . . . . .
-. . . d 7 7 d . d 1 1 d . . . .
-. . d 7 7 7 d . d 1 1 1 d . . .
-. d 7 7 7 7 d . d 1 1 1 1 d . .
-. d 7 7 7 7 d . d 1 1 1 1 d . .
-. d 7 7 7 7 d . d 1 1 1 1 d . .
-. d 7 7 7 7 d . d 1 1 1 1 d . .
-. d 7 7 7 d . . . d 1 1 1 d . .
-. d 7 7 d . . . . . d 1 1 d . .
-. d 7 d . . . . . . . d 1 d . .
-. d d . . . . . . . . . d d . .
-. . . . . . . . . . . . . . . .
-`
+    . c f f f c . . . . . . . . . .
+    . c f f f c . . . . . . . . . .
+    . c f f f b . . . . . . . . . .
+    . c f f f d d . d d . . . . . .
+    . c f f d 7 d . d 1 d . . . . .
+    . c f d 7 7 d . d 1 1 d . . . .
+    . b d 7 7 7 d . d 1 1 1 d . . .
+    . d 7 7 7 7 d . d 1 1 1 1 d . .
+    . d 7 7 7 7 d . d 1 1 1 1 d . .
+    . d 7 7 7 7 d . d 1 1 1 1 d . .
+    . d 7 7 7 7 d . d 1 1 1 1 d . .
+    . d 7 7 7 d . . . d 1 1 1 d . .
+    . d 7 7 d b . . . . d 1 1 d . .
+    . d 7 d f c . . . . . d 1 d . .
+    . d d f f c . . . . . . d d . .
+    . b f f f c . . . . . . . . . .`
     export const line_right_on = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . d d . d d . . . . . .
-. . . . d 1 d . d 7 d . . . . .
-. . . d 1 1 d . d 7 7 d . . . .
-. . d 1 1 1 d . d 7 7 7 d . . .
-. d 1 1 1 1 d . d 7 7 7 7 d . .
-. d 1 1 1 1 d . d 7 7 7 7 d . .
-. d 1 1 1 1 d . d 7 7 7 7 d . .
-. d 1 1 1 1 d . d 7 7 7 7 d . .
-. d 1 1 1 d . . . d 7 7 7 d . .
-. d 1 1 d . . . . . d 7 7 d . .
-. d 1 d . . . . . . . d 7 d . .
-. d d . . . . . . . . . d d . .
-. . . . . . . . . . . . . . . .
+    . . . . . . . . . c f f f c . .
+    . . . . . . . . . c f f f c . .
+    . . . . . . . . . b f f f c . .
+    . . . . . d d . d d f f f c . .
+    . . . . d 1 d . d 7 d f f c . .
+    . . . d 1 1 d . d 7 7 d f c . .
+    . . d 1 1 1 d . d 7 7 7 d b . .
+    . d 1 1 1 1 d . d 7 7 7 7 d . .
+    . d 1 1 1 1 d . d 7 7 7 7 d . .
+    . d 1 1 1 1 d . d 7 7 7 7 d . .
+    . d 1 1 1 1 d . d 7 7 7 7 d . .
+    . d 1 1 1 d . . . d 7 7 7 d . .
+    . d 1 1 d . . . . b d 7 7 d . .
+    . d 1 d . . . . . c f d 7 d . .
+    . d d . . . . . . c f f d d . .
+    . . . . . . . . . c f f f b . .
 `
     export const line_both_on = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . d d . d d . . . . . .
-. . . . d 7 d . d 7 d . . . . .
-. . . d 7 7 d . d 7 7 d . . . .
-. . d 7 7 7 d . d 7 7 7 d . . .
-. d 7 7 7 7 d . d 7 7 7 7 d . .
-. d 7 7 7 7 d . d 7 7 7 7 d . .
-. d 7 7 7 7 d . d 7 7 7 7 d . .
-. d 7 7 7 7 d . d 7 7 7 7 d . .
-. d 7 7 7 d . . . d 7 7 7 d . .
-. d 7 7 d . . . . . d 7 7 d . .
-. d 7 d . . . . . . . d 7 d . .
-. d d . . . . . . . . . d d . .
-. . . . . . . . . . . . . . . .
+    . . . . . c f f f c . . . . . .
+    . . . . . c f f f c . . . . . .
+    . . . . . b f f f b . . . . . .
+    . . . . . d d f d d . . . . . .
+    . . . . d 7 d f d 7 d . . . . .
+    . . . d 7 7 d f d 7 7 d . . . .
+    . . d 7 7 7 d f d 7 7 7 d . . .
+    . d 7 7 7 7 d f d 7 7 7 7 d . .
+    . d 7 7 7 7 d f d 7 7 7 7 d . .
+    . d 7 7 7 7 d f d 7 7 7 7 d . .
+    . d 7 7 7 7 d f d 7 7 7 7 d . .
+    . d 7 7 7 d f f f d 7 7 7 d . .
+    . d 7 7 d b f f f b d 7 7 d . .
+    . d 7 d . c f f f c . d 7 d . .
+    . d d . . c f f f c . . d d . .
+    . . . . . c f f f c . . . . . .
 `
 
     /* maybe use these later
