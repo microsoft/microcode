@@ -138,49 +138,42 @@ namespace microcode {
                 const alpha = SPEED_TRANSITION_ALPHA
                 this.currentSpeed =
                     this.currentSpeed * alpha + this.targetSpeed * (1 - alpha)
-                if (Math.abs(this.currentSpeed - this.targetSpeed) < TARGET_SPEED_THRESHOLD) {
+                if (Math.abs(this.currentSpeed - this.targetSpeed) < TARGET_SPEED_THRESHOLD)
                     this.currentSpeed = this.targetSpeed
-                }
             }
             // smoth update of turn ratio
             {
                 const alpha = TURN_RATIO_TRANSITION_ALPHA
                 this.currentTurnRatio =
                     this.currentTurnRatio * alpha + this.targetTurnRatio * (1 - alpha)
-                if (Math.abs(this.currentTurnRatio - this.targetTurnRatio) < TARGET_TURN_RATIO_THRESHOLD) {
+                if (Math.abs(this.currentTurnRatio - this.targetTurnRatio) < TARGET_TURN_RATIO_THRESHOLD)
                     this.currentTurnRatio = this.targetTurnRatio
-                }
             }
 
-            const lines = this.currentLineState
-            // running straight
-            if (this.currentTurnRatio === 0) {
-                let s =
-                    Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD
-                        ? 0
-                        : this.currentSpeed
-                const d = Math.abs(s) > Math.abs(this.runDrift) ? this.runDrift / 2 : 0
-                let left = s - d
-                let right = s + d
-                if (this.lineAssist && lines && s > 0) // going forward
-                    this.currentSpeed = s = Math.min(s, this.robot.maxLineRunSpeed)
-                this.setMotorState(left, right)
-            } else {
+            if (Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD) {
+                this.setMotorState(0, 0)
+            }
+            else {
                 let s = this.currentSpeed
-                if (this.lineAssist && lines)
-                    s = Math.sign(s) * Math.min(Math.abs(s), this.robot.maxLineTurnSpeed)
+                if (this.lineAssist && this.currentLineState && s > 0)
+                    s = Math.min(Math.abs(s), this.robot.maxLineTurnSpeed)
                 const ns = Math.abs(s)
 
-                let left: number
-                let right: number
+                let left = 0
+                let right = 0
                 // apply turn ratio
                 if (this.currentTurnRatio < 0) {
-                    right = s
-                    left = s * (1 + (this.currentTurnRatio / 100))
+                    right += s
+                    left += s * (1 + (this.currentTurnRatio / 100))
                 } else {
-                    left = s
-                    right = s * (1 - (this.currentTurnRatio / 100))
+                    left += s
+                    right += s * (1 - (this.currentTurnRatio / 100))
                 }
+
+                // apply drift
+                const drift = Math.abs(s) > Math.abs(this.runDrift) ? this.runDrift / 2 : 0
+                left -= drift
+                right += drift
 
                 // clamp
                 left = Math.clamp(-ns, ns, Math.round(left))
