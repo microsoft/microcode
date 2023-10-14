@@ -754,10 +754,16 @@ namespace microcode {
     }
 
     export function isTidNotTerminal(tid: Tid) {
-        if (tid == Tid.TID_SENSOR_CAR_WALL) return true
-        // TODO: wall sensor only gets one value, same with slider
-        // TODO: switch page only gets one value
+        // the following sensors and actuators are terminal
+        if (
+            tid == Tid.TID_SENSOR_CAR_WALL ||
+            tid == Tid.TID_SENSOR_SLIDER ||
+            tid == Tid.TID_ACTUATOR_SWITCH_PAGE
+        )
+            return false
+        // everything else except some filters is not terminal
         if (!isFilter(tid)) return true
+        // the following filters are not terminal
         if (
             (Tid.TID_FILTER_COIN_1 <= tid && tid <= Tid.TID_FILTER_COIN_5) ||
             (Tid.TID_FILTER_TIMESPAN_SHORT <= tid &&
@@ -766,6 +772,7 @@ namespace microcode {
                 tid <= Tid.TID_FILTER_CUP_Z_READ)
         )
             return true
+        // all other filters are terminal
         return false
     }
 
