@@ -65,13 +65,17 @@ namespace microcode {
             this.picker.show({
                 title: accessibility.ariaToTooltip("load"),
                 onClick: iconId => {
-                    let s = settings.readString(iconId)
-                    if (!s) {
+                    let buf = settings.readBuffer(iconId)
+                    if (!buf) {
                         // handles case where nothing is in slot
-                        const b64 = rawSamples()[0].b64
-                        s = Buffer.fromBase64(b64).toString()
+                        buf = Buffer.create(5)
+                        buf[0] = Tid.END_OF_PAGE
+                        buf[1] = Tid.END_OF_PAGE
+                        buf[2] = Tid.END_OF_PAGE
+                        buf[3] = Tid.END_OF_PAGE
+                        buf[4] = Tid.END_OF_PROG
                     }
-                    settings.writeString(SAVESLOT_AUTO, s)
+                    settings.writeBuffer(SAVESLOT_AUTO, buf)
                     this.app.popScene()
                     this.app.pushScene(new Editor(this.app))
                 },
