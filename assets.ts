@@ -316,15 +316,16 @@ namespace icondb {
                 ret.setPixel(nrow, ncol + 1, color)
                 ret.setPixel(nrow + 1, ncol + 1, color)
                 // halo
+                /*
                 ret.setPixel(nrow - 1, ncol, halo)
                 ret.setPixel(nrow - 1, ncol + 1, halo)
                 ret.setPixel(nrow + 2, ncol, halo)
                 ret.setPixel(nrow + 2, ncol + 1, halo)
-
                 ret.setPixel(nrow, ncol - 1, halo)
                 ret.setPixel(nrow + 1, ncol - 1, halo)
                 ret.setPixel(nrow, ncol + 2, halo)
                 ret.setPixel(nrow + 1, ncol + 2, halo)
+                */
             }
         }
         return ret
