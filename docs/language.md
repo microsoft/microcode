@@ -218,7 +218,7 @@ Make to start your program by setting the same radio group as the robot.
 The robot motor commands start with a car and a sequence of move directions.
 
 -   ![robot](./images/generated/icon_CAR.png){:class="icon"} `robot`, start the robot motor commands
--   ![robot forward](./images/generated/icon_CAR1.png){:class="icon"} `forward`, instructs the robot to move forward. The robot will slow down on lines.
+-   ![robot forward](./images/generated/icon_CAR1.png){:class="icon"} `forward`, instructs the robot to move forward.
 -   ![robot fast forward](./images/generated/icon_CAR6.png){:class="icon"} `fast forward`, instructs the robot to move forward at maximum speed
 -   ![robot backward](./images/generated/icon_CAR2.png){:class="icon"} `reverse`, instructs the robot to move backward
 -   ![robot turn left](./images/generated/icon_CAR3.png){:class="icon"} `turn left`, instructs the robot to turn left. The robot will slow down on lines.

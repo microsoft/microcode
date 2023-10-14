@@ -179,8 +179,12 @@ namespace microcode {
             },
             {
                 label: "robot avoid wall",
-                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNkEiXSwiTSI6WyJNOCJdfSx7IlMiOlsiUzEiXSwiQSI6WyJDQVIiXSwiTSI6WyJDQVIxIl19LHsiUyI6WyJTMTMiXSwiQSI6WyJDQVIiXSwiRiI6WyJGOSJdLCJNIjpbIkNBUjMiLCJDQVIxIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuNDMifQ=="
-            }
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNkEiXSwiTSI6WyJNOCJdfSx7IlMiOlsiUzEiXSwiQSI6WyJDQVIiXSwiTSI6WyJDQVIxIl19LHsiUyI6WyJTMTMiXSwiQSI6WyJDQVIiXSwiRiI6WyJGOSJdLCJNIjpbIkNBUjMiLCJDQVIxIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuNDMifQ==",
+            },
+            {
+                label: "robot line follow",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNkEiXSwiTSI6WyJNOCJdfSx7IlMiOlsiUzE0Il0sIkEiOlsiQ0FSIl0sIkYiOlsiRjIzQiJdLCJNIjpbIkNBUjEiXX0seyJTIjpbIlMxNCJdLCJBIjpbIkNBUiJdLCJGIjpbIkYyM0wiXSwiTSI6WyJDQVIzIl19LHsiUyI6WyJTMTQiXSwiQSI6WyJDQVIiXSwiRiI6WyJGMjNSIl0sIk0iOlsiQ0FSNCJdfSx7IlMiOlsiUzE0Il0sIkEiOlsiQ0FSIl0sIkYiOlsiRjIzTiJdLCJNIjpbIkNBUjgiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC40NyJ9",
+            },
         ])
     }
 
