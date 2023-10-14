@@ -68,12 +68,9 @@ namespace microcode {
                     let buf = settings.readBuffer(iconId)
                     if (!buf) {
                         // handles case where nothing is in slot
-                        buf = Buffer.create(5)
-                        buf[0] = Tid.END_OF_PAGE
-                        buf[1] = Tid.END_OF_PAGE
-                        buf[2] = Tid.END_OF_PAGE
-                        buf[3] = Tid.END_OF_PAGE
-                        buf[4] = Tid.END_OF_PROG
+                        buf = Buffer.create(6)
+                        for (let i = 0; i < 5; ++i) buf[i] = Tid.END_OF_PAGE
+                        buf[5] = Tid.END_OF_PROG
                     }
                     settings.writeBuffer(SAVESLOT_AUTO, buf)
                     this.app.popScene()
