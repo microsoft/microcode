@@ -165,8 +165,6 @@ namespace microcode {
         constructor(tid: string) {
             super(tid)
         }
-
-        public serviceClassName: string
         public serviceInstanceIndex: number = 0
     }
 

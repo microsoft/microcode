@@ -39,7 +39,6 @@ namespace microcode {
     function addButtonTiles() {
         function addPress(tid: string, evt: number) {
             const press_event = new SensorDefn(tid)
-            press_event.serviceClassName = "button"
             press_event.serviceInstanceIndex = 0
             press_event.constraints = {
                 allow: {
@@ -108,11 +107,9 @@ namespace microcode {
         makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, 2, TID_FILTER_CUP_Z_READ)
 
         const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event", 99)
-        temp.serviceClassName = "temperature"
         temp.jdKind = JdKind.Temperature
 
         const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
-        radio_recv.serviceClassName = "radio"
         radio_recv.jdKind = JdKind.Radio
         radio_recv.constraints.provides = [TID_SENSOR_RADIO_RECEIVE]
 
@@ -126,31 +123,26 @@ namespace microcode {
             TID_FILTER_COIN_5,
         ]
         const slider = makeSensor(TID_SENSOR_SLIDER, "value_in", 500)
-        slider.serviceClassName = "potentiometer"
         slider.jdExternalClass = 0x1f274746
         slider.constraints.allow.categories = []
         slider.constraints.allow.tiles = only5
 
         if (CAR_TILES) {
             const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in", 500)
-            wall.serviceClassName = "radio"
             wall.jdKind = JdKind.Radio
             wall.constraints.allow.categories = []
             wall.constraints.allow.tiles = only5
         }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
-        magnet.serviceClassName = "magneticFieldLevel"
         magnet.jdExternalClass = 0x12fe180f
         magnet.constraints = slider.constraints
 
         const light = makeSensor(TID_SENSOR_LIGHT, "value_in", 500)
-        light.serviceClassName = "lightLevel"
         light.jdExternalClass = 0x17dc9a1c
         light.constraints = slider.constraints
 
         const rotary = makeSensor(TID_SENSOR_ROTARY, "rotary_event", 500)
-        rotary.serviceClassName = "rotaryEncoder"
         rotary.jdExternalClass = 0x10fa29c9
         rotary.jdKind = JdKind.Rotary
 
@@ -194,7 +186,6 @@ namespace microcode {
                     JdKind.Literal
 
             const line = makeSensor(TID_SENSOR_LINE, "line", 505)
-            line.serviceClassName = "radio"
             line.jdKind = JdKind.Radio
             line.constraints.allow.categories = []
             line.constraints.allow.tiles = [
@@ -231,7 +222,6 @@ namespace microcode {
                 categories: ["accel_event"],
             },
         }
-        accel.serviceClassName = "accelerometer"
         accel.priority = 20
         tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
 
@@ -259,7 +249,6 @@ namespace microcode {
             },
         }
         microphone.priority = 30
-        microphone.serviceClassName = "soundLevel"
         tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
         function addSoundFilter(tid: string, eventCode: number) {
             const soundFilter = new FilterDefn(tid, "sound_event", 10)
@@ -285,7 +274,6 @@ namespace microcode {
 
         // these are in order (see priority field) as will be shown in the dialog
         const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
-        paint.serviceClassName = "dotMatrix"
         paint.serviceCommand = jacs.CMD_SET_REG | 0x2
         paint.priority = 10
         paint.jdKind = JdKind.Sequence
@@ -297,17 +285,14 @@ namespace microcode {
         showNum.priority = 11
         showNum.jdKind = JdKind.ExtLibFn
         showNum.jdParam = "dot_showNumber"
-        showNum.serviceClassName = "dotMatrix"
 
         const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
-        emoji.serviceClassName = "soundPlayer"
         emoji.serviceCommand = 0x80
         emoji.priority = 20
         emoji.jdKind = JdKind.Sequence
 
         const music = addActuator(TID_ACTUATOR_MUSIC, ["melody_editor", "loop"])
         music.priority = 22
-        music.serviceClassName = "buzzer"
         music.serviceCommand = 0x80
         music.jdKind = JdKind.Sequence
         music.jdParam = "note_sequence"
@@ -319,7 +304,6 @@ namespace microcode {
             "constant",
         ])
         radio_send.priority = 100
-        radio_send.serviceClassName = "radio"
         radio_send.serviceCommand = 0x81
         radio_send.jdKind = JdKind.NumFmt
         radio_send.jdParam = jacs.NumFmt.F64
@@ -328,7 +312,6 @@ namespace microcode {
         radio_set_group.constraints = {}
         radio_set_group.constraints.only = ["constant"]
         radio_set_group.priority = 101
-        radio_set_group.serviceClassName = "radio"
         radio_set_group.jdKind = JdKind.NumFmt
         radio_set_group.jdParam = jacs.NumFmt.U8
         radio_set_group.serviceCommand = jacs.CMD_SET_REG | 0x80
@@ -420,7 +403,6 @@ namespace microcode {
             const car = addActuator(TID_ACTUATOR_CAR, ["car"])
             car.priority = 900
             car.jdKind = JdKind.Sequence
-            car.serviceClassName = "radio"
             car.serviceCommand = 0x81
             car.defaultModifier = tilesDB.modifiers[TID_MODIFIER_CAR_STOP]
         }
@@ -454,7 +436,6 @@ namespace microcode {
 
         const rgbled = addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
         rgbled.priority = 500
-        rgbled.serviceClassName = "led"
         rgbled.serviceCommand = jacs.CMD_SET_REG | 2
         rgbled.jdExternalClass = 0x1609d4f0
         rgbled.jdKind = JdKind.Sequence
@@ -465,7 +446,6 @@ namespace microcode {
             "constant",
         ])
         servoSetAngle.priority = 500
-        servoSetAngle.serviceClassName = "servo"
         servoSetAngle.jdExternalClass = 0x12fc9103
         servoSetAngle.serviceCommand = jacs.CMD_SET_REG | 2
         servoSetAngle.jdKind = JdKind.NumFmt

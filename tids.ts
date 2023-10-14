@@ -799,6 +799,48 @@ namespace microcode {
         }
     }
 
+    export function serviceClassName(tid: Tid) {
+        switch (tid) {
+            case Tid.TID_SENSOR_PRESS:
+            case Tid.TID_SENSOR_RELEASE:
+                return "button"
+            case Tid.TID_SENSOR_TEMP:
+                return "temperature"
+            case Tid.TID_SENSOR_RADIO_RECEIVE:
+            case Tid.TID_ACTUATOR_RADIO_SEND:
+            case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
+            case Tid.TID_SENSOR_LINE:
+            case Tid.TID_SENSOR_CAR_WALL:
+            case Tid.TID_ACTUATOR_CAR:
+                return "radio"
+            case Tid.TID_SENSOR_SLIDER:
+                return "potentiometer"
+            case Tid.TID_SENSOR_MAGNET:
+                return "magneticFieldLevel"
+            case Tid.TID_SENSOR_LIGHT:
+                return "lightLevel"
+            case Tid.TID_SENSOR_ROTARY:
+                return "rotaryEncoder"
+            case Tid.TID_SENSOR_ACCELEROMETER:
+                return "accelerometer"
+            case Tid.TID_SENSOR_MICROPHONE:
+                return "soundLevel"
+            case Tid.TID_ACTUATOR_PAINT:
+            case Tid.TID_ACTUATOR_SHOW_NUMBER:
+                return "dotMatrix"
+            case Tid.TID_ACTUATOR_SPEAKER:
+                return "soundPlayer"
+            case Tid.TID_ACTUATOR_MUSIC:
+                return "buzzer"
+            case Tid.TID_ACTUATOR_RGB_LED:
+                return "led"
+            case Tid.TID_MODIFIER_SERVO_SET_ANGLE:
+                return "servo"
+            default:
+                return undefined
+        }
+    }
+
     // TODO: we don't need separate bits for everything.
     // TODO: only certain things can be combined. Analyze and optimize
     export enum TidKinds {

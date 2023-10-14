@@ -528,7 +528,7 @@ namespace jacs {
             const act = rule.actuators.length ? rule.actuators[0] : null
             if (!act) return this.pageStartCondition
             return this.lookupRole(
-                act.serviceClassName,
+                microcode.serviceClassName(microcode.tidToEnum(act.tid)),
                 act.serviceInstanceIndex
             )
         }
@@ -541,8 +541,11 @@ namespace jacs {
             for (const f of rule.filters)
                 if (f.jdKind == microcode.JdKind.ServiceInstanceIndex)
                     idx = f.jdParam
-            if (!sensor.serviceClassName) this.error(`can't emit ${sensor.tid}`)
-            return this.lookupRole(sensor.serviceClassName, idx)
+            const scn = microcode.serviceClassName(
+                microcode.tidToEnum(sensor.tid)
+            )
+            if (!scn) this.error(`can't emit ${sensor.tid}`)
+            return this.lookupRole(scn, idx)
         }
 
         lookupEventCode(role: Role, rule: microcode.RuleDefn) {
