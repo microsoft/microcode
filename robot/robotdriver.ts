@@ -5,11 +5,12 @@
 namespace microcode {
     const RUN_STOP_THRESHOLD = 2
     const TARGET_SPEED_THRESHOLD = 4
-    const SPEED_TRANSITION_ALPHA = 0.915
+    const SPEED_TRANSITION_ALPHA = 0.97
+    const SPEED_BRAKE_TRANSITION_ALPHA = 0.8
     const TARGET_TURN_RATIO_THRESHOLD = 20
-    const TURN_RATIO_TRANSITION_ALPHA = 0.8
+    const TURN_RATIO_TRANSITION_ALPHA = 0.2
     const ULTRASONIC_MIN_READING = 1
-    const LINE_ASSIST_LOST_THRESHOLD = 64
+    const LINE_ASSIST_LOST_THRESHOLD = 72
 
     /**
      *
@@ -136,9 +137,15 @@ namespace microcode {
         private updateSpeed() {
             // smooth update of speed
             {
-                const alpha = SPEED_TRANSITION_ALPHA
+                const accelerating = this.targetSpeed > 0 && this.currentSpeed < this.targetSpeed
+                const alpha = accelerating ? SPEED_TRANSITION_ALPHA : SPEED_BRAKE_TRANSITION_ALPHA
                 this.currentSpeed =
                     this.currentSpeed * alpha + this.targetSpeed * (1 - alpha)
+                if (this.lineAssist && this.currentSpeed > 0) {
+                    if (this.currentLineState // left, right, front
+                        || this.currentLineStateCounter < LINE_ASSIST_LOST_THRESHOLD) // recently lost line
+                        this.currentSpeed = Math.min(this.currentSpeed, this.robot.maxLineSpeed)
+                }
                 if (Math.abs(this.currentSpeed - this.targetSpeed) < TARGET_SPEED_THRESHOLD)
                     this.currentSpeed = this.targetSpeed
             }
@@ -155,11 +162,6 @@ namespace microcode {
                 this.setMotorState(0, 0)
             else {
                 let s = this.currentSpeed
-                if (this.lineAssist && s > 0) {
-                    if (this.currentLineState // left, right, front
-                        || this.currentLineStateCounter < LINE_ASSIST_LOST_THRESHOLD) // recently lost line
-                        s = Math.min(Math.abs(s), this.robot.maxLineSpeed)
-                }
                 const ns = Math.abs(s)
 
                 let left = 0
@@ -340,13 +342,13 @@ namespace microcode {
                     let turnRatio = 0
                     let speed = 0
                     switch (msg) {
-                        case microcode.robots.RobotCompactCommand.MotorRunForward: speed = 40; break;
+                        case microcode.robots.RobotCompactCommand.MotorRunForward: speed = 70; break;
                         case microcode.robots.RobotCompactCommand.MotorRunForwardFast: speed = 100; break;
-                        case microcode.robots.RobotCompactCommand.MotorRunBackward: speed = -100; break;
-                        case microcode.robots.RobotCompactCommand.MotorTurnLeft: turnRatio = -50; speed = 100; break;
-                        case microcode.robots.RobotCompactCommand.MotorTurnRight: turnRatio = 50; speed = 100; break;
-                        case microcode.robots.RobotCompactCommand.MotorSpinLeft: turnRatio = -200; speed = 70; break;
-                        case microcode.robots.RobotCompactCommand.MotorSpinRight: turnRatio = 200; speed = 70; break;
+                        case microcode.robots.RobotCompactCommand.MotorRunBackward: speed = -50; break;
+                        case microcode.robots.RobotCompactCommand.MotorTurnLeft: turnRatio = -50; speed = 70; break;
+                        case microcode.robots.RobotCompactCommand.MotorTurnRight: turnRatio = 50; speed = 70; break;
+                        case microcode.robots.RobotCompactCommand.MotorSpinLeft: turnRatio = -200; speed = 60; break;
+                        case microcode.robots.RobotCompactCommand.MotorSpinRight: turnRatio = 200; speed = 60; break;
                     }
                     this.motorRun(turnRatio, speed);
                     this.playTone(440, 50)
