@@ -201,7 +201,6 @@ namespace microcode {
     }
 
     export class ActuatorDefn extends StmtTileDefn {
-        public serviceCommand: number
         public defaultModifier: ModifierDefn
 
         constructor(tid: string) {

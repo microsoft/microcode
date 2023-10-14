@@ -636,9 +636,12 @@ namespace jacs {
             } else {
                 for (let i = 0; i < params.length; ++i) {
                     const p = params[i]
+                    const command = microcode.serviceCommand(
+                        microcode.tidToEnum(actuator.tid)
+                    )
                     if (p.jdKind == microcode.JdKind.ServiceCommandArg) {
                         this.emitLoadBuffer(p.serviceCommandArg())
-                        this.emitSendCmd(role, actuator.serviceCommand)
+                        this.emitSendCmd(role, command)
                         this.emitSleep(p.jdParam2 || delay)
                     } else if (p.jdKind == microcode.JdKind.ExtLibFn) {
                         const args = [role.emit(wr)]
@@ -658,7 +661,7 @@ namespace jacs {
                             NumFmt.F64,
                             0
                         )
-                        this.emitSendCmd(role, actuator.serviceCommand)
+                        this.emitSendCmd(role, command)
                         this.emitSleep(5)
                         wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
                         wr.emitBufStore(
@@ -666,7 +669,7 @@ namespace jacs {
                             NumFmt.F64,
                             0
                         )
-                        this.emitSendCmd(role, actuator.serviceCommand)
+                        this.emitSendCmd(role, command)
                         this.emitSleep(500)
                     } else {
                         throw "oops"
@@ -962,7 +965,7 @@ namespace jacs {
                 wr.emitBufStore(currValue(), fmt, 0)
                 this.emitSendCmd(
                     this.lookupActuatorRole(rule),
-                    actuator.serviceCommand
+                    microcode.serviceCommand(microcode.tidToEnum(actuator.tid))
                 )
             } else if (actuator.jdKind == microcode.JdKind.Sequence) {
                 this.emitSequence(rule, 400)

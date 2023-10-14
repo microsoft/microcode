@@ -273,7 +273,6 @@ namespace microcode {
 
         // these are in order (see priority field) as will be shown in the dialog
         const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
-        paint.serviceCommand = jacs.CMD_SET_REG | 0x2
         paint.priority = 10
         paint.jdKind = JdKind.Sequence
         paint.jdParam = "dot_animation"
@@ -286,13 +285,11 @@ namespace microcode {
         showNum.jdParam = "dot_showNumber"
 
         const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
-        emoji.serviceCommand = 0x80
         emoji.priority = 20
         emoji.jdKind = JdKind.Sequence
 
         const music = addActuator(TID_ACTUATOR_MUSIC, ["melody_editor", "loop"])
         music.priority = 22
-        music.serviceCommand = 0x80
         music.jdKind = JdKind.Sequence
         music.jdParam = "note_sequence"
         music.jdParam2 = 6
@@ -303,7 +300,6 @@ namespace microcode {
             "constant",
         ])
         radio_send.priority = 100
-        radio_send.serviceCommand = 0x81
         radio_send.jdKind = JdKind.NumFmt
         radio_send.jdParam = jacs.NumFmt.F64
 
@@ -313,7 +309,6 @@ namespace microcode {
         radio_set_group.priority = 101
         radio_set_group.jdKind = JdKind.NumFmt
         radio_set_group.jdParam = jacs.NumFmt.U8
-        radio_set_group.serviceCommand = jacs.CMD_SET_REG | 0x80
 
         const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
         swtch.priority = 110
@@ -402,7 +397,6 @@ namespace microcode {
             const car = addActuator(TID_ACTUATOR_CAR, ["car"])
             car.priority = 900
             car.jdKind = JdKind.Sequence
-            car.serviceCommand = 0x81
             car.defaultModifier = tilesDB.modifiers[TID_MODIFIER_CAR_STOP]
         }
 
@@ -435,7 +429,6 @@ namespace microcode {
 
         const rgbled = addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
         rgbled.priority = 500
-        rgbled.serviceCommand = jacs.CMD_SET_REG | 2
         rgbled.jdExternalClass = 0x1609d4f0
         rgbled.jdKind = JdKind.Sequence
         rgbled.defaultModifier =
@@ -446,7 +439,6 @@ namespace microcode {
         ])
         servoSetAngle.priority = 500
         servoSetAngle.jdExternalClass = 0x12fc9103
-        servoSetAngle.serviceCommand = jacs.CMD_SET_REG | 2
         servoSetAngle.jdKind = JdKind.NumFmt
         servoSetAngle.jdParam = jacs.NumFmt.I32
 

@@ -841,6 +841,25 @@ namespace microcode {
         }
     }
 
+    export function serviceCommand(tid: Tid) {
+        switch (tid) {
+            case Tid.TID_ACTUATOR_PAINT:
+            case Tid.TID_ACTUATOR_RGB_LED:
+                return jacs.CMD_SET_REG | 0x2
+            case Tid.TID_ACTUATOR_SPEAKER:
+            case Tid.TID_ACTUATOR_MUSIC:
+                return 0x80
+            case Tid.TID_ACTUATOR_CAR:
+            case Tid.TID_ACTUATOR_RADIO_SEND:
+                return 0x81
+            case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
+            case Tid.TID_MODIFIER_SERVO_SET_ANGLE:
+                return jacs.CMD_SET_REG | 0x80
+            default:
+                return undefined
+        }
+    }
+
     // TODO: we don't need separate bits for everything.
     // TODO: only certain things can be combined. Analyze and optimize
     export enum TidKinds {
