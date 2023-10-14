@@ -52,11 +52,33 @@ namespace microcode {
     }
 
     /**
+     * Gets the distance reported by the distance sensor
+     */
+    //% block="robot obstacle distance"
+    //% blockId=microcoderobotobstacledistance
+    //% group="Input"
+    export function obstacleDistance() {
+        checkRobotDriver()
+        return robot.currentUltrasonicDistance
+    }
+
+    /**
+     * Gets the distance reported by the distance sensor
+     */
+    //% block="robot on obstacle changed"
+    //% blockId=microcoderobotobstacledistancechanged
+    //% group="Input"
+    export function onObstacleChanged(handler: () => void) {
+        checkRobotDriver()
+        microcode.robots.onEvent(microcode.robots.RobotCompactCommand.ObstacleState, handler)
+    }
+
+    /**
      * Checks the state of lines
      */
     //% block="robot detect lines $state"
     //% blockId=microcoderobotdetectlines
-    //% group="Sensors"
+    //% group="Input"
     export function detectLines(state: RobotLineState): boolean {
         checkRobotDriver()
         return robot.currentLineState === state
@@ -67,10 +89,10 @@ namespace microcode {
      */
     //% block="robot on line $state detected"
     //% blockId=microcoderobotondetectlines
-    //% group="Sensors"
+    //% group="Input"
     export function onLineDetected(state: RobotLineState, handler: () => void) {
         const msg = microcode.robots.RobotCompactCommand.LineState | state
-        microcode.onEvent(msg, handler)
+        microcode.robots.onEvent(msg, handler)
     }
 
     /**

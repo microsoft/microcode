@@ -2,6 +2,7 @@
  * Microcode Robot
  */
 //% color="#ff6800" icon="\uf1b9" weight=15
+//% groups=['Move', 'Input', 'Configuration']
 namespace microcode {
     const RUN_STOP_THRESHOLD = 2
     const TARGET_SPEED_THRESHOLD = 4
@@ -11,15 +12,6 @@ namespace microcode {
     const TURN_RATIO_TRANSITION_ALPHA = 0.2
     const ULTRASONIC_MIN_READING = 1
     const LINE_ASSIST_LOST_THRESHOLD = 72
-
-    const ROBOT_EVENT_ID = 7325
-    function raiseEvent(event: robots.RobotCompactCommand) {
-        microcode.robots.sendCompactCommand(event)
-        control.raiseEvent(ROBOT_EVENT_ID, event)
-    }
-    export function onEvent(event: robots.RobotCompactCommand, handler: () => void) {
-        control.onEvent(ROBOT_EVENT_ID, event, handler)
-    }
 
     /**
      *
@@ -102,6 +94,7 @@ namespace microcode {
         //% block="robot start %this"
         //% blockId=microcoderobotstart
         //% weight=100
+        //% group="Configuration"
         start() {
             if (this.running) return
 
@@ -264,7 +257,8 @@ namespace microcode {
                     this.lastSonarValue = d
                     this.playTone(2400 - d * 400, 200 + d * 25)
                     const msg = microcode.robots.RobotCompactCommand.ObstacleState | d
-                    raiseEvent(msg)
+                    microcode.robots.sendCompactCommand(msg)
+                    microcode.robots.raiseEvent(microcode.robots.RobotCompactCommand.ObstacleState)
                 }
             }
         }
@@ -313,7 +307,8 @@ namespace microcode {
                 this.currentLineState = ls
                 this.currentLineStateCounter = 0
                 const msg = microcode.robots.RobotCompactCommand.LineState | this.currentLineState
-                raiseEvent(msg)
+                microcode.robots.sendCompactCommand(msg)
+                microcode.robots.raiseEvent(msg)
             }
             this.currentLineStateCounter++
             return ls
