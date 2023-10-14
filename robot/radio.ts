@@ -17,17 +17,6 @@ namespace microcode.robots {
         radio.setGroup(radioGroup)
     }
 
-    let nextMessageId = 0
-    export function sendCommand(cmd: RobotCommand, payload: Buffer) {
-        nextMessageId = (nextMessageId + 1) % 0xff
-        const buf = encodeRobotMessage({
-            messageId: nextMessageId,
-            cmd,
-            payload,
-        })
-        radio.sendBuffer(buf)
-    }
-
     export function sendCompactCommand(cmd: RobotCompactCommand) {
         radio.sendNumber(cmd)
     }

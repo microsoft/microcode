@@ -216,8 +216,7 @@ namespace microcode {
         constructor() {
             super()
             this.musicVolume = 168
-            this.maxLineRunSpeed = 30
-            this.maxLineTurnSpeed = 30
+            this.maxLineSpeed = 30
 
             const v = readVersions()
             console.log(`cutebot pro version: ${v}`)

@@ -127,8 +127,7 @@ namespace microcode {
             //})
             radio.setTransmitSerialNumber(true);
             radio.onReceivedNumber(code => {
-                const msg = robots.decodeRobotCompactCommand(code)
-                this.dispatch(msg)
+                this.decodeRobotCompactCommand(code)
             })
         }
 
@@ -150,13 +149,12 @@ namespace microcode {
                     this.currentTurnRatio = this.targetTurnRatio
             }
 
-            if (Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD) {
+            if (Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD)
                 this.setMotorState(0, 0)
-            }
             else {
                 let s = this.currentSpeed
-                if (this.lineAssist && this.currentLineState && s > 0)
-                    s = Math.min(Math.abs(s), this.robot.maxLineTurnSpeed)
+                if (this.lineAssist && s > 0)
+                    s = Math.min(Math.abs(s), this.robot.maxLineSpeed)
                 const ns = Math.abs(s)
 
                 let left = 0
@@ -321,33 +319,38 @@ namespace microcode {
             }
         }
 
-        dispatch(msg: robots.RobotMessage) {
-            if (!msg) return
-
-            const messageId = msg.messageId
-            if (this.lastReceivedMessageId === messageId) {
-                return // duplicate
-            }
-
-            // decode message
-            this.lastReceivedMessageId = messageId
-            const cmd = msg.cmd
-            const payload = msg.payload
-
-            switch (cmd) {
-                case robots.RobotCommand.MotorTurn: {
-                    const turnRatio = payload.getNumber(NumberFormat.Int16LE, 0)
-                    const speed = payload.getNumber(NumberFormat.Int16LE, 2)
-                    this.motorRun(turnRatio, speed)
-                    this.inRadioMessageId++
+        private decodeRobotCompactCommand(msg: number) {
+            this.inRadioMessageId++
+            switch (msg) {
+                case microcode.robots.RobotCompactCommand.MotorStop:
+                case microcode.robots.RobotCompactCommand.MotorTurnLeft:
+                case microcode.robots.RobotCompactCommand.MotorTurnRight:
+                case microcode.robots.RobotCompactCommand.MotorSpinLeft:
+                case microcode.robots.RobotCompactCommand.MotorSpinRight:
+                case microcode.robots.RobotCompactCommand.MotorRunForwardFast:
+                case microcode.robots.RobotCompactCommand.MotorRunForward:
+                case microcode.robots.RobotCompactCommand.MotorRunBackward: {
+                    let turnRatio = 0
+                    let speed = 0
+                    switch (msg) {
+                        case microcode.robots.RobotCompactCommand.MotorRunForward: speed = 40; break;
+                        case microcode.robots.RobotCompactCommand.MotorRunForwardFast: speed = 100; break;
+                        case microcode.robots.RobotCompactCommand.MotorRunBackward: speed = -100; break;
+                        case microcode.robots.RobotCompactCommand.MotorTurnLeft: turnRatio = -50; speed = 100; break;
+                        case microcode.robots.RobotCompactCommand.MotorTurnRight: turnRatio = 50; speed = 100; break;
+                        case microcode.robots.RobotCompactCommand.MotorSpinLeft: turnRatio = -200; speed = 70; break;
+                        case microcode.robots.RobotCompactCommand.MotorSpinRight: turnRatio = 200; speed = 70; break;
+                    }
+                    this.motorRun(turnRatio, speed);
                     this.playTone(440, 50)
                     break
                 }
-                case robots.RobotCommand.MotorArm: {
-                    const aperture = payload.getNumber(NumberFormat.Int16LE, 0)
-                    this.armOpen(aperture)
-                    this.inRadioMessageId++
-                    this.playTone(1132, 50)
+                case microcode.robots.RobotCompactCommand.MotorArmClose: {
+                    this.armOpen(0)
+                    break
+                }
+                case microcode.robots.RobotCompactCommand.MotorArmOpen: {
+                    this.armOpen(100)
                     break
                 }
             }
