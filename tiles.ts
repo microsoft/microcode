@@ -49,7 +49,6 @@ namespace microcode {
             press_event.eventCode = evt
             press_event.serviceInstanceIndex = 0
             press_event.constraints = {
-                provides: ["input"],
                 allow: {
                     categories: ["press_event"],
                 },
@@ -416,9 +415,6 @@ namespace microcode {
                 tile.jdParam2 = kind == "CAR" ? v : 0
                 if (kind == "F") tilesDB.filters[tid] = tile as FilterDefn
                 else tilesDB.modifiers[tid] = tile
-                tile.constraints = {
-                    provides: [name],
-                }
                 tiles.push(tile)
             })
             return tiles
