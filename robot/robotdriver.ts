@@ -12,14 +12,25 @@ namespace microcode {
     const ULTRASONIC_MIN_READING = 1
     const LINE_ASSIST_LOST_THRESHOLD = 72
 
+    const ROBOT_EVENT_ID = 7325
+    function raiseEvent(event: robots.RobotCompactCommand) {
+        microcode.robots.sendCompactCommand(event)
+        control.raiseEvent(ROBOT_EVENT_ID, event)
+    }
+    export function onEvent(event: robots.RobotCompactCommand, handler: () => void) {
+        control.onEvent(ROBOT_EVENT_ID, event, handler)
+    }
+
     /**
      *
      */
     //% fixedInstances
     export class RobotDriver {
         readonly robot: robots.Robot
-        private lastReceivedMessageId: number = undefined
         private running = false
+        /**
+         * Gets the latest distance returned by the se nsor
+         */
         currentUltrasonicDistance: number = 100
         private showConfiguration: boolean = false
         private configDrift = false
@@ -29,11 +40,14 @@ namespace microcode {
         private currentTurnRatio = 0
         private targetTurnRatio: number = 0
 
+        /**
+         * Gets the latest line sensor state
+         */
         currentLineState: RobotLineState = RobotLineState.None
         private currentLineStateCounter = 0
 
         private stopToneMillis: number = 0
-        lineAssist = false
+        lineAssist = true
         runDrift = 0
 
         constructor(robot: robots.Robot) {
@@ -248,9 +262,9 @@ namespace microcode {
 
                 if (d !== this.lastSonarValue) {
                     this.lastSonarValue = d
-                    const msg = microcode.robots.RobotCompactCommand.ObstacleState | d
-                    microcode.robots.sendCompactCommand(msg)
                     this.playTone(2400 - d * 400, 200 + d * 25)
+                    const msg = microcode.robots.RobotCompactCommand.ObstacleState | d
+                    raiseEvent(msg)
                 }
             }
         }
@@ -299,14 +313,10 @@ namespace microcode {
                 this.currentLineState = ls
                 this.currentLineStateCounter = 0
                 const msg = microcode.robots.RobotCompactCommand.LineState | this.currentLineState
-                microcode.robots.sendCompactCommand(msg)
+                raiseEvent(msg)
             }
             this.currentLineStateCounter++
             return ls
-        }
-
-        private headlightsSetColor(red: number, green: number, blue: number) {
-            this.robot.headlightsSetColor(red, green, blue)
         }
 
         stop() {

@@ -30,7 +30,7 @@ namespace microcode {
     */
     //% weight=50
     //% group="Motors"
-    //% block="robot stop"
+    //% block="robot motor stop"
     //% blockid="microcoderobotmotorstop"
     export function motorStop() {
         checkRobotDriver()
@@ -44,11 +44,11 @@ namespace microcode {
     //% blockId="microcoderobotsetmotordrift"
     //% group="Motors"
     //% weight=10
-    //% drift.min=-10
-    //% drift.max=20
+    //% drift.min=-25
+    //% drift.max=25
     export function setMotorDrift(drift: number) {
         checkRobotDriver()
-        robot.runDrift = Math.clamp(-10, 10, drift)
+        robot.runDrift = Math.clamp(-25, 25, drift)
     }
 
     /**
@@ -60,5 +60,28 @@ namespace microcode {
     export function detectLines(state: RobotLineState): boolean {
         checkRobotDriver()
         return robot.currentLineState === state
+    }
+
+    /**
+     * Registers an event to run when the line detection state changes
+     */
+    //% block="robot on line $state detected"
+    //% blockId=microcoderobotondetectlines
+    //% group="Sensors"
+    export function onLineDetected(state: RobotLineState, handler: () => void) {
+        const msg = microcode.robots.RobotCompactCommand.LineState | state
+        microcode.onEvent(msg, handler)
+    }
+
+    /**
+     * 
+     */
+    //% block="robot set line assist to $enabled"
+    //% blockId="microcoderobotsetlineassist"
+    //% group="Configuration"
+    //% enabled=toggleOnOff
+    export function setLineAssist(enabled: boolean): void {
+        checkRobotDriver()
+        robot.lineAssist = !!enabled
     }
 }
