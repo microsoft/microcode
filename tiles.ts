@@ -39,7 +39,6 @@ namespace microcode {
     function addButtonTiles() {
         function addPress(tid: string, evt: number) {
             const press_event = new SensorDefn(tid)
-            press_event.serviceInstanceIndex = 0
             press_event.constraints = {
                 allow: {
                     categories: ["press_event"],

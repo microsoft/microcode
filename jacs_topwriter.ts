@@ -529,7 +529,7 @@ namespace jacs {
             if (!act) return this.pageStartCondition
             return this.lookupRole(
                 microcode.serviceClassName(microcode.tidToEnum(act.tid)),
-                act.serviceInstanceIndex
+                0 // default
             )
         }
 
@@ -537,7 +537,7 @@ namespace jacs {
             const sensor = rule.sensor
             if (sensor.tid == microcode.TID_SENSOR_START_PAGE)
                 return this.pageStartCondition
-            let idx = sensor.serviceInstanceIndex
+            let idx = 0 // default
             for (const f of rule.filters)
                 if (f.jdKind == microcode.JdKind.ServiceInstanceIndex)
                     idx = f.jdParam

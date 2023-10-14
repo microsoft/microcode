@@ -161,13 +161,7 @@ namespace microcode {
         }
     }
 
-    export class StmtTileDefn extends TileDefn {
-        constructor(tid: string) {
-            super(tid)
-        }
-        public serviceInstanceIndex: number = 0
-    }
-
+    export class StmtTileDefn extends TileDefn {}
     export class SensorDefn extends StmtTileDefn {}
 
     export class FilterModifierBase extends TileDefn {
