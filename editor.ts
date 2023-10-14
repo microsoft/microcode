@@ -256,6 +256,7 @@ namespace microcode {
             })
             this.progdef = this.app.loadFromBuffer(SAVESLOT_AUTO)
             if (!this.progdef) {
+                console.log("HERE")
                 // onboarding experience
                 // load first sample if this is the first program being loaded
                 const saved: SavedState = JSON.parse(samples(true)[0].source)
