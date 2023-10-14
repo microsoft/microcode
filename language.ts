@@ -34,7 +34,6 @@ namespace microcode {
         ) => void // use picker to update field
         toImage: (field: any) => Image // produce an image for the field for tile
         buttonStyle: () => ButtonStyle
-        serialize: (field: any) => string
         deserialize: (s: string) => any
         toBuffer: (field: any) => Buffer
         fromBuffer: (buf: BufferReader) => any

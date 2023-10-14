@@ -13,136 +13,6 @@ namespace microcode {
         modifiers: ModifierMap
     }
 
-    // Once a tid is assigned, it can NEVER BE CHANGED OR REPURPOSED.
-    // Every tid must be unique in the set of all tids.
-    export const TID_SENSOR_START_PAGE = "S1"
-    export const TID_SENSOR_PRESS = "S2"
-    export const TID_SENSOR_RELEASE = "S2B"
-    export const TID_SENSOR_ACCELEROMETER = "S3"
-    export const TID_SENSOR_TIMER = "S4"
-    export const TID_SENSOR_LIGHT = "S5"
-    export const TID_SENSOR_TEMP = "S6"
-    export const TID_SENSOR_RADIO_RECEIVE = "S7"
-    export const TID_SENSOR_MICROPHONE = "S8"
-    export const TID_SENSOR_CUP_X_WRITTEN = "S9A"
-    export const TID_SENSOR_CUP_Y_WRITTEN = "S9B"
-    export const TID_SENSOR_CUP_Z_WRITTEN = "S9C"
-    export const TID_SENSOR_MAGNET = "S10"
-    export const TID_SENSOR_SLIDER = "S11"
-    export const TID_SENSOR_ROTARY = "S12"
-    export const TID_SENSOR_CAR_WALL = "S13"
-    export const TID_SENSOR_LINE = "S14"
-
-    // filters for TID_SENSOR_PRESS
-    export const TID_FILTER_PIN_0 = "F0"
-    export const TID_FILTER_PIN_1 = "F1"
-    export const TID_FILTER_PIN_2 = "F2"
-    export const TID_FILTER_BUTTON_A = "F3"
-    export const TID_FILTER_BUTTON_B = "F4"
-    export const TID_FILTER_KITA_KEY_1 = "F5"
-    export const TID_FILTER_KITA_KEY_2 = "F6"
-
-    export const TID_FILTER_LOGO = "F7"
-    export const TID_FILTER_COIN_1 = "F8"
-    export const TID_FILTER_COIN_2 = "F9"
-    export const TID_FILTER_COIN_3 = "F10"
-    export const TID_FILTER_COIN_4 = "F11"
-    export const TID_FILTER_COIN_5 = "F12"
-    export const TID_FILTER_TIMESPAN_SHORT = "F13"
-    export const TID_FILTER_TIMESPAN_LONG = "F14"
-    export const TID_FILTER_LOUD = "F15"
-    export const TID_FILTER_QUIET = "F16"
-    export const TID_FILTER_ACCEL = "F17"
-    export const TID_FILTER_ACCEL_SHAKE = "F17_shake"
-    export const TID_FILTER_ACCEL_TILT_UP = "F17_tilt_up"
-    export const TID_FILTER_ACCEL_TILT_DOWN = "F17_tilt_down"
-    export const TID_FILTER_ACCEL_TILT_LEFT = "F17_tilt_left"
-    export const TID_FILTER_ACCEL_TILT_RIGHT = "F17_tilt_right"
-    export const TID_FILTER_TIMESPAN_RANDOM = "F18"
-    export const TID_FILTER_TIMESPAN_VERY_LONG = "F19"
-    export const TID_FILTER_CUP_X_READ = "F20A"
-    export const TID_FILTER_CUP_Y_READ = "F20B"
-    export const TID_FILTER_CUP_Z_READ = "F20C"
-    export const TID_FILTER_ROTARY_LEFT = "F21L"
-    export const TID_FILTER_ROTARY_RIGHT = "F21R"
-    export const TID_FILTER_TEMP_WARMER = "F22U"
-    export const TID_FILTER_TEMP_COLDER = "F22D"
-    export const TID_FILTER_LINE_LEFT = "F23L"
-    export const TID_FILTER_LINE_RIGHT = "F23R"
-    export const TID_FILTER_LINE_BOTH = "F23B"
-    export const TID_FILTER_LINE_NEITHER = "F23N"
-
-    export const TID_ACTUATOR_SWITCH_PAGE = "A1"
-    export const TID_ACTUATOR_SPEAKER = "A2"
-    export const TID_ACTUATOR_MICROPHONE = "A3"
-    export const TID_ACTUATOR_MUSIC = "A4"
-    export const TID_ACTUATOR_PAINT = "A5"
-    export const TID_ACTUATOR_RADIO_SEND = "A6"
-    export const TID_ACTUATOR_RADIO_SET_GROUP = "A6A"
-    export const TID_ACTUATOR_RGB_LED = "A8"
-    export const TID_ACTUATOR_CUP_X_ASSIGN = "A9A"
-    export const TID_ACTUATOR_CUP_Y_ASSIGN = "A9B"
-    export const TID_ACTUATOR_CUP_Z_ASSIGN = "A9C"
-    export const TID_ACTUATOR_SHOW_NUMBER = "A10"
-
-    export const TID_MODIFIER_PAGE_1 = "M1"
-    export const TID_MODIFIER_PAGE_2 = "M2"
-    export const TID_MODIFIER_PAGE_3 = "M3"
-    export const TID_MODIFIER_PAGE_4 = "M4"
-    export const TID_MODIFIER_PAGE_5 = "M5"
-
-    export const TID_MODIFIER_COIN_1 = "M6"
-    export const TID_MODIFIER_COIN_2 = "M7"
-    export const TID_MODIFIER_COIN_3 = "M8"
-    export const TID_MODIFIER_COIN_4 = "M9"
-    export const TID_MODIFIER_COIN_5 = "M10"
-
-    export const TID_MODIFIER_ICON_EDITOR = "M15"
-    export const TID_MODIFIER_COLOR_RED = "M16"
-    export const TID_MODIFIER_COLOR_DARKPURPLE = "M17"
-
-    export const TID_MODIFIER_EMOJI_GIGGLE = "M19giggle"
-    export const TID_MODIFIER_EMOJI_HAPPY = "M19happy"
-    export const TID_MODIFIER_EMOJI_HELLO = "M19hello"
-    export const TID_MODIFIER_EMOJI_MYSTERIOUS = "M19mysterious"
-    export const TID_MODIFIER_EMOJI_SAD = "M19sad"
-    export const TID_MODIFIER_EMOJI_SLIDE = "M19slide"
-    export const TID_MODIFIER_EMOJI_SOARING = "M19soaring"
-    export const TID_MODIFIER_EMOJI_SPRING = "M19spring"
-    export const TID_MODIFIER_EMOJI_TWINKLE = "M19twinkle"
-    export const TID_MODIFIER_EMOJI_YAWN = "M19yawn"
-
-    export const TID_MODIFIER_CUP_X_READ = "M20A"
-    export const TID_MODIFIER_CUP_Y_READ = "M20B"
-    export const TID_MODIFIER_CUP_Z_READ = "M20C"
-    export const TID_MODIFIER_RADIO_VALUE = "M21"
-    export const TID_MODIFIER_RANDOM_TOSS = "M22"
-    export const TID_MODIFIER_LOOP = "M23"
-    export const TID_MODIFIER_MELODY_EDITOR = "M24"
-    export const TID_MODIFIER_TEMP_READ = "M25"
-
-    export const TID_MODIFIER_RGB_LED_COLOR_X = "A20_"
-    export const TID_MODIFIER_RGB_LED_COLOR_1 = "A20_1"
-    export const TID_MODIFIER_RGB_LED_COLOR_2 = "A20_2"
-    export const TID_MODIFIER_RGB_LED_COLOR_3 = "A20_3"
-    export const TID_MODIFIER_RGB_LED_COLOR_4 = "A20_4"
-    export const TID_MODIFIER_RGB_LED_COLOR_5 = "A20_5"
-    export const TID_MODIFIER_RGB_LED_COLOR_6 = "A20_6"
-    export const TID_MODIFIER_RGB_LED_COLOR_RAINBOW = "A20_rainbow"
-    export const TID_MODIFIER_RGB_LED_COLOR_SPARKLE = "A20_sparkle"
-
-    export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
-
-    export const TID_ACTUATOR_CAR = "CAR"
-    export const TID_MODIFIER_CAR_FORWARD = "CAR1"
-    export const TID_MODIFIER_CAR_REVERSE = "CAR2"
-    export const TID_MODIFIER_CAR_TURN_LEFT = "CAR3"
-    export const TID_MODIFIER_CAR_TURN_RIGHT = "CAR4"
-    export const TID_MODIFIER_CAR_STOP = "CAR5"
-    export const TID_MODIFIER_CAR_FORWARD_FAST = "CAR6"
-    export const TID_MODIFIER_CAR_SPIN_LEFT = "CAR7"
-    export const TID_MODIFIER_CAR_SPIN_RIGHT = "CAR8"
-
     export function PAGE_IDS() {
         return [
             TID_MODIFIER_PAGE_1,
@@ -699,15 +569,6 @@ namespace microcode {
         editor: iconEditor,
         toImage: icondb.renderMicrobitLEDs,
         buttonStyle: () => ButtonStyles.Transparent,
-        serialize: (img: Image) => {
-            const ret: string[] = []
-            for (let index = 0; index < 25; index++) {
-                let col = index % 5
-                let row = Math.idiv(index, 5)
-                ret.push(img.getPixel(col, row) ? "1" : "0")
-            }
-            return ret.join("")
-        },
         deserialize: (s: string) => {
             const img = image.create(5, 5)
             for (let index = 0; index < 25; index++) {
@@ -822,7 +683,6 @@ namespace microcode {
         editor: melodyEditor,
         toImage: icondb.melodyToImage,
         buttonStyle: () => ButtonStyles.Transparent,
-        serialize: (melody: Melody) => melody.notes + "," + melody.tempo,
         deserialize: (s: string) => {
             const sp = s.split(",")
             return {
