@@ -5,7 +5,7 @@ namespace microcode {
             public ariaId: string,
             public icon: string,
             private b64: string
-        ) { }
+        ) {}
 
         get source() {
             return Buffer.fromBase64(this.b64).toString()
@@ -22,11 +22,11 @@ namespace microcode {
 
     //% shim=TD_NOOP
     function rawWebAppSamples(r: { s: rawSampleList }) {
-        r.s = r.s.concat([      
+        r.s = r.s.concat([
             {
                 label: "first program",
                 b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkYzIl0sIk0iOlsiTTE1KDAwMDAwMDEwMTAwMDAwMDEwMDAxMDExMTApIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjMiXSwiTSI6WyJNMTlnaWdnbGUiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC43In0",
-                },
+            },
             {
                 label: "flashing heart",
                 ariaId: "N2",
@@ -168,7 +168,19 @@ namespace microcode {
             {
                 label: "key demo",
                 b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNSJdLCJNIjpbIk0xNSgwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwKSJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkY1Il0sIk0iOlsiTTE1KDAwMDAwMDEwMTAwMDAwMDEwMDAxMDExMTApIl19LHsiUyI6WyJTMiJdLCJBIjpbIkE1Il0sIkYiOlsiRjYiXSwiTSI6WyJNMTUoMDAwMDAwMTAxMDAwMDAwMDExMTAxMDAwMSkiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC4yOCJ9",
-                },
+            },
+            {
+                label: "robot shake",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNkEiXSwiTSI6WyJNOCJdfSx7IlMiOlsiUzMiXSwiQSI6WyJDQVIiXSwiRiI6WyJGMTdfdGlsdF9kb3duIl0sIk0iOlsiQ0FSMSJdfSx7IlMiOlsiUzMiXSwiQSI6WyJDQVIiXSwiRiI6WyJGMTdfdGlsdF91cCJdLCJNIjpbIkNBUjUiXX0seyJTIjpbIlMzIl0sIkEiOlsiQ0FSIl0sIkYiOlsiRjE3X3RpbHRfbGVmdCJdLCJNIjpbIkNBUjMiLCJDQVI1Il19LHsiUyI6WyJTMyJdLCJBIjpbIkNBUiJdLCJGIjpbIkYxN190aWx0X3JpZ2h0Il0sIk0iOlsiQ0FSNCIsIkNBUjUiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC40MyJ9",
+            },
+            {
+                label: "robot wake",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNkEiXSwiTSI6WyJNOCJdfSx7IlMiOlsiUzgiXSwiQSI6WyJDQVIiXSwiTSI6WyJDQVIzIiwiQ0FSMyIsIkNBUjMiLCJDQVI1Il19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuNDMifQ==",
+            },
+            {
+                label: "robot avoid wall",
+                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNkEiXSwiTSI6WyJNOCJdfSx7IlMiOlsiUzEiXSwiQSI6WyJDQVIiXSwiTSI6WyJDQVIxIl19LHsiUyI6WyJTMTMiXSwiQSI6WyJDQVIiXSwiRiI6WyJGOSJdLCJNIjpbIkNBUjMiLCJDQVIxIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuNDMifQ=="
+            }
         ])
     }
 
@@ -185,13 +197,14 @@ namespace microcode {
                 ariaId: "N3",
                 b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkYzIl0sIk0iOlsiTTE1KDExMDExMTEwMTEwMDAwMDEwMDAxMDExMTApIiwiTTE1KDExMDExMDAwMDAxMDAwMTAxMTEwMDAwMDApIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjMiXSwiTSI6WyJNMTloYXBweSJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkY0Il0sIk0iOlsiTTE1KDExMDExMTEwMTEwMDAwMDAxMTEwMTAwMDEpIiwiTTE1KDExMDExMTEwMTEwMDAwMDAwMDAwMTExMTEpIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjQiXSwiTSI6WyJNMTlzYWQiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC43In0=",
                 icon: "smiley_buttons",
-            }]
-            return s
-        }
-    
+            },
+        ]
+        return s
+    }
+
     export function samples(withIcon: boolean): Sample[] {
         const s = rawSamples()
-        const r = { s: s}
+        const r = { s: s }
         rawWebAppSamples(r)
         return r.s
             .filter(({ icon }) => !withIcon || !!icon)

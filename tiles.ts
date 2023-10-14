@@ -139,16 +139,23 @@ namespace microcode {
     export const TID_MODIFIER_CAR_TURN_LEFT = "CAR3"
     export const TID_MODIFIER_CAR_TURN_RIGHT = "CAR4"
     export const TID_MODIFIER_CAR_STOP = "CAR5"
+    export const TID_MODIFIER_CAR_FORWARD_FAST = "CAR6"
+    export const TID_MODIFIER_CAR_SPIN_LEFT = "CAR7"
+    export const TID_MODIFIER_CAR_SPIN_RIGHT = "CAR8"
 
-    export const PAGE_IDS = [
-        TID_MODIFIER_PAGE_1,
-        TID_MODIFIER_PAGE_2,
-        TID_MODIFIER_PAGE_3,
-        TID_MODIFIER_PAGE_4,
-        TID_MODIFIER_PAGE_5,
-    ]
+    export function PAGE_IDS() {
+        return [
+            TID_MODIFIER_PAGE_1,
+            TID_MODIFIER_PAGE_2,
+            TID_MODIFIER_PAGE_3,
+            TID_MODIFIER_PAGE_4,
+            TID_MODIFIER_PAGE_5,
+        ]
+    }
 
-    export function diskSlots() { return ["disk1", "disk2", "disk3"] }
+    export function diskSlots() {
+        return ["disk1", "disk2", "disk3"]
+    }
 
     export const tilesDB: TileDatabase = {
         sensors: {},
@@ -563,6 +570,9 @@ namespace microcode {
                 microcode.robots.RobotCompactCommand.MotorTurnLeft,
                 microcode.robots.RobotCompactCommand.MotorTurnRight,
                 microcode.robots.RobotCompactCommand.MotorStop,
+                microcode.robots.RobotCompactCommand.MotorRunForwardFast,
+                microcode.robots.RobotCompactCommand.MotorSpinLeft,
+                microcode.robots.RobotCompactCommand.MotorSpinRight,
             ]
             make_vals(car_commands, "car", "CAR", 1)
 
@@ -687,7 +697,7 @@ namespace microcode {
         `,
         clone: (img: Image) => img.clone(),
         editor: iconEditor,
-        toImage: icondb.scaleUp,
+        toImage: icondb.renderMicrobitLEDs,
         buttonStyle: () => ButtonStyles.Transparent,
         serialize: (img: Image) => {
             const ret: string[] = []

@@ -192,7 +192,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 document.addEventListener("DOMContentLoaded", () => {
     const script = document.createElement("script")
     script.setAttribute("type", "text/javascript")
-    script.setAttribute("src", "https://unpkg.com/jacdac-ts@1.28.7/dist/jacdac.js")
+    script.setAttribute(
+        "src",
+        "https://unpkg.com/jacdac-ts@1.28.7/dist/jacdac.js"
+    )
     script.onload = () => {
         // create WebUSB bus
         bus = jacdac.createWebBus({
@@ -419,6 +422,7 @@ addSimMessageHandler("accessibility", data => {
         value += `, ${mapAriaId("do")} `
         const dos = msg.dos
         if (dos && dos.length > 0) value += dos.map(mapAriaId).join(" ")
+        speak(mapAriaId("rule"))
     } else if (msg.type == "led") {
         const on = msg.on
         const state = on ? mapAriaId("SR_ON", "on") : mapAriaId("SR_OFF", "off")
@@ -426,12 +430,14 @@ addSimMessageHandler("accessibility", data => {
         const y = msg.y
         const format = mapAriaId("SR_LED", "LED {x} {y} {state}")
         value = stringFormat(format, { state, x, y })
+        speak(value)
     } else if (msg.type == "note") {
         const on = msg.on
         const state = on ? mapAriaId("SR_ON", "on") : mapAriaId("SR_OFF", "off")
         const index = "CDEFGABCD".charAt(msg.index)
         const format = mapAriaId("SR_NOTE", "note {index} {state}")
         value = stringFormat(format, { state, index })
+        speak(value)
     } else {
         console.error("unknown accessibility message", msg)
     }
@@ -440,8 +446,8 @@ addSimMessageHandler("accessibility", data => {
 const clickSound =
     typeof Howl !== "undefined"
         ? new Howl({
-            src: ["./assets/sounds/click.wav", "./sounds/click.wav"],
-        })
+              src: ["./assets/sounds/click.wav", "./sounds/click.wav"],
+          })
         : undefined
 async function playClick() {
     if (speakTooltips || !clickSound) return
@@ -476,7 +482,7 @@ function setLiveRegion(value, force) {
     }
     value = value || ""
     if (force && liveRegion.textContent === value) liveRegion.textContent = ""
-    console.debug(`aria-live: ${value}`)
+    if (value) console.debug(`aria-live: ${value}`)
     liveRegion.dataset["text"] = value
     liveRegion.textContent = value
     playClick()
@@ -590,39 +596,40 @@ function showArt(jsg, samples) {
         // markdown samples
         const mds = `# Samples
 ${samples.map(
-            ({ label, b64, icon }) => `
+    ({ label, b64, icon }) => `
 ## ${label}
 
--  ${icon
-                    ? `![${label} icon](./images/generated/icon_sample_${norm(
-                        label
-                    )}.png){:class="icon-sample"}`
-                    : "no icon"
-                }
+-  ${
+        icon
+            ? `![${label} icon](./images/generated/icon_sample_${norm(
+                  label
+              )}.png){:class="icon-sample"}`
+            : "no icon"
+    }
 -  [Open in MicroCode](/microcode/#${compressProgram(b64)})
 
 `
-        )}
+)}
 `
         await writeText(dir, "samples.md", mds)
         // markdown docs
         const md = `## Tiles
 ${jsg
-                .filter(({ type }) => type === "icon")
-                .sort(({ name }) => name)
-                .map(
-                    ({ type, name }) => `
+    .filter(({ type }) => type === "icon")
+    .sort(({ name }) => name)
+    .map(
+        ({ type, name }) => `
 ### ![${mapAriaId(name)}](./images/generated/${norm(
-                        `${type}_${name}`
-                    )}.png){:class="icon"} \`${mapAriaId(name)}\` {#${norm(
-                        `${type}_${name}`
-                    )}}
+            `${type}_${name}`
+        )}.png){:class="icon"} \`${mapAriaId(name)}\` {#${norm(
+            `${type}_${name}`
+        )}}
 
 - ${type}
 
 `
-                )
-                .join("")}`
+    )
+    .join("")}`
         await writeText(dir, "reference.md", md)
         window.location.reload()
     }

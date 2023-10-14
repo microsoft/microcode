@@ -92,7 +92,7 @@ namespace microcode {
         }
 
         private pickPage() {
-            const btns: PickerButtonDef[] = PAGE_IDS.map(pageId => {
+            const btns: PickerButtonDef[] = PAGE_IDS().map(pageId => {
                 return {
                     icon: pageId,
                 }
@@ -100,7 +100,7 @@ namespace microcode {
             this.picker.addGroup({ btns })
             this.picker.show({
                 onClick: iconId => {
-                    const index = PAGE_IDS.indexOf(iconId)
+                    const index = PAGE_IDS().indexOf(iconId)
                     this.switchToPage(index)
                 },
             })
@@ -111,7 +111,7 @@ namespace microcode {
                 return
             }
             this.currPage = index
-            this.pageBtn.setIcon(PAGE_IDS[this.currPage])
+            this.pageBtn.setIcon(PAGE_IDS()[this.currPage])
             this.pageEditor = new PageEditor(
                 this,
                 this.scrollroot,
@@ -249,7 +249,7 @@ namespace microcode {
             this.pageBtn = new Button({
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
-                icon: PAGE_IDS[this.currPage],
+                icon: PAGE_IDS()[this.currPage],
                 x: Screen.RIGHT_EDGE - 12,
                 y: 8,
                 onClick: () => this.pickPage(),
@@ -397,7 +397,7 @@ namespace microcode {
 
         /* override */ activate() {
             super.activate()
-            this.pageBtn.setIcon(PAGE_IDS[this.currPage])
+            this.pageBtn.setIcon(PAGE_IDS()[this.currPage])
             if (!this.pageEditor) {
                 this.switchToPage(this.currPage)
             }

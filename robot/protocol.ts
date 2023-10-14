@@ -21,11 +21,16 @@ namespace microcode.robots {
         MotorTurnLeft = MotorState | 0x3,
         MotorTurnRight = MotorState | 0x4,
         MotorStop = MotorState | 0x5,
+        MotorRunForwardFast = MotorState | 0x6,
+        MotorSpinLeft = MotorState | 0x7,
+        MotorSpinRight = MotorState | 0x8,
+        MotorArmOpen = MotorState | 0x9,
+        MotorArmClose = MotorState | 0xa,
 
         /**
          * sonar detected obstable
          */
-        ObstacleState = 0xfffff10,
+        ObstacleState = 0xfffff20,
         Obstacle1 = ObstacleState | 0x1,
         Obstacle2 = ObstacleState | 0x2,
         Obstacle3 = ObstacleState | 0x3,
@@ -35,7 +40,7 @@ namespace microcode.robots {
         /**
          * Line sensor state change
          */
-        LineState = 0xfffff20,
+        LineState = 0xfffff30,
         Left = LineState | RobotLineState.Left,
         Right = LineState | RobotLineState.Right,
         Both = LineState | RobotLineState.Both,

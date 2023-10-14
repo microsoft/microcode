@@ -12,9 +12,16 @@ namespace microcode.robots {
         MotorRun = 0x01,
         /**
          * Turn the robot left and right. Right is positive values.
+         *     turnRatio: i16 [-200,200]
          *     speed: i16 %
          */
         MotorTurn = 0x02,
+
+        /**
+         * Controls the opening angle of the arm
+         */
+        MotorArm = 0x03,
+
         /**
          * Report ultrasonic distance in cm
          *     distance: f32
@@ -91,33 +98,60 @@ namespace microcode.robots {
         let cmd: RobotCommand
         let payload: Buffer
         switch (msg) {
+            case RobotCompactCommand.MotorRunForwardFast:
             case RobotCompactCommand.MotorRunForward:
             case RobotCompactCommand.MotorRunBackward:
             case RobotCompactCommand.MotorStop: {
                 cmd = RobotCommand.MotorRun
-                payload = Buffer.create(2)
-                if (msg !== RobotCompactCommand.MotorStop)
+                payload = Buffer.create(3)
+                if (msg !== RobotCompactCommand.MotorStop) {
+                    let speed = 0
+                    switch (msg) {
+                        case RobotCompactCommand.MotorRunForward: speed = 40; break;
+                        case RobotCompactCommand.MotorRunForwardFast: speed = 100; break;
+                        case RobotCompactCommand.MotorRunBackward: speed = -100; break;
+                    }
                     payload.setNumber(
                         NumberFormat.Int16LE,
                         0,
-                        msg === RobotCompactCommand.MotorRunForward ? 100 : -100
+                        speed
                     )
+                    if(msg !== RobotCompactCommand.MotorRunForwardFast)
+                        payload[2] = 1
+                }
                 break
             }
+            case RobotCompactCommand.MotorSpinLeft:
+            case RobotCompactCommand.MotorSpinRight:
             case RobotCompactCommand.MotorTurnLeft:
             case RobotCompactCommand.MotorTurnRight: {
                 cmd = RobotCommand.MotorTurn
                 payload = Buffer.create(4)
+                let turnRatio = 0
+                let speed = 100
+                switch (msg) {
+                    case RobotCompactCommand.MotorTurnLeft: turnRatio = -50; speed = 100; break;
+                    case RobotCompactCommand.MotorTurnRight: turnRatio = 50; speed = 100; break;
+                    case RobotCompactCommand.MotorSpinLeft: turnRatio = -200; speed = 80; break;
+                    case RobotCompactCommand.MotorSpinRight: turnRatio = 200; speed = 80; break;
+                }
                 payload.setNumber(
                     NumberFormat.Int16LE,
                     0,
-                    msg === RobotCompactCommand.MotorTurnRight ? 100 : -100
+                    turnRatio
                 )
                 payload.setNumber(
                     NumberFormat.Int16LE,
                     2,
-                    100
+                    speed
                 )
+                break
+            }
+            case RobotCompactCommand.MotorArmClose:
+            case RobotCompactCommand.MotorArmOpen: {
+                cmd = RobotCommand.MotorArm
+                payload = Buffer.create(2)
+                payload.setNumber(NumberFormat.UInt16LE, 0, msg === RobotCompactCommand.MotorArmClose ? 0 : 100)
                 break
             }
             default:

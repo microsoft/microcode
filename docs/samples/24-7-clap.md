@@ -57,7 +57,7 @@ The last two rules handle transitioning to winning or loosing state.
 The 7 second expired and the player clapped 24 or less times,
 show score and switch back to page 1 after 10 seconds.
 
-## ![page 3](../images/generated/icon_M2.png){:class="icon"} page 3
+## ![page 3](../images/generated/icon_M3.png){:class="icon"} page 3
 
 ![24 7 clap page 3](../images/generated/sample_24_7_clap_page_3.png){:class="sample"}
 

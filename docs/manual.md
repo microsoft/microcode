@@ -6,20 +6,22 @@ description: User guide for the MicroCode editor
 
 {% include youtube.html id="g53_aEVH8oA" %}
 
-Physical computing for young learners with the [micro:bit V2](https://microbit.org) (*no tablet/laptop/desktop required*):
+Physical computing and robotics for young learners with the [micro:bit V2](https://microbit.org) (_no tablet/laptop/desktop required_):
 
 -   [arcade shields](#arcade-shields) for the micro:bit V2 enable "on the go" programming with familiar game console controls
 -   kid-friendly, icon-based, structured code editor and [programming language](./language)
 -   lots of [sample programs](./samples) to get started
 -   save your favorite programs in [three program slots](#program-slots)
 -   accessories (LEDs, servos, ...) supported via [Jacdac](https://aka.ms/jacdac)
+-   remote control of robots (2 wheel rovers) using micro:bit radio
 -   [translated](#localization) in 20+ languages
 
 ## Getting started
 
-Regardless of whether you are using the Arcade shield or web app, you first need to download the (localized) MicroCode hex file to your micro:bit V2.  There are two ways to do this:
+Regardless of whether you are using the Arcade shield or web app, you first need to download the (localized) MicroCode hex file to your micro:bit V2. There are two ways to do this:
+
 1. visit the [web app](https://aka.ms/microcode) and follow directions to connect your micro:bit and [automatically download over WebUSB](#download)
-2. visit the [localization](#localization) section to *download* the MicroCode hex file to your computer and copy to your micro:bit V2 (plugged into your computer via USB).
+2. visit the [localization](#localization) section to _download_ the MicroCode hex file to your computer and copy to your micro:bit V2 (plugged into your computer via USB).
 
 ## Arcade shields {#arcade-shield}
 
@@ -37,7 +39,7 @@ ELECFREAK's micro:bit Arcade shield
 </a>
 </td>
 <td width="33%" >
-<a href="https://www.icshop.com.tw/products/368112100118">
+<a href="https://www.icshop.com.tw/products/368112100137?locale=en">
 ICShopping's Game:bit Arcade shield
 </a>
 </td></tr>
@@ -51,39 +53,36 @@ ICShopping's Game:bit Arcade shield
 <img src="../assets/elecfreaks-shield.png">
 </a>
 </td><td>
-<a alt="ICShopping's Game:bit" href="https://www.icshop.com.tw/products/368112100118">
+<a alt="ICShopping's Game:bit" href="https://www.icshop.com.tw/products/368112100137?locale=en">
 <img src="../assets/gamebit-shield.png">
 </a>
 </td></tr>
 <tr valign="top">
 <td>
 
-Small screen. No battery or battery pack included. 3.7V JST power jack on back. One <a href="https://aka.ms/jacdac">Jacdac</a> port. 
+Small screen. No battery or battery pack included. 3.7V JST power jack on back. One <a href="https://aka.ms/jacdac">Jacdac</a> port.
 
 </td>
 
 <td>
 
-Assembly required. Small screen. AAA Battery pack on back. One <a href="https://aka.ms/jacdac">Jacdac</a> port. 
+Assembly required. Small screen. AAA Battery pack on back. One <a href="https://aka.ms/jacdac">Jacdac</a> port.
 
 </td>
 <td>
 
-No assembly required. Large screen and 3d-printed enclosure with LiPo battery inside. Two <a href="https://aka.ms/jacdac">Jacdac</a> ports.  Email at <a ref="mailto:oa@icshop.com.tw">mailto:oa@icshop.com.tw</a> to get a quote (the web site only allows ordering/delivery in Taiwan). 
-
+No assembly required. Large screen and 3d-printed enclosure with LiPo battery inside. Two <a href="https://aka.ms/jacdac">Jacdac</a> ports.
 
 </td>
 </tr>
 
-
 </table>
 
-
-## [Web editor](https://aka.ms/m9) {#web}
+## Web editor
 
 <video class="sample" poster="./videos/smiley-buttons.png" src="./videos/smiley-buttons.mp4" controls="true"></video>
 
-The MicroCode web editor is at [aka.ms/microcode](https://aka.ms/microcode). 
+The MicroCode web editor is at [aka.ms/microcode](https://aka.ms/microcode).
 We recommend using the keyboard navigation:
 
 -   `Left`, `Right`, `Up`, `Down` moves the cursor
@@ -158,9 +157,9 @@ The editor integrates with existing screen readers, like NVDA.
 
 By clicking on the `tooltip reader` button at the bottom of the editor, the tooltips will be read aloud. This may be useful for students who are still learning to read.
 
-## Program slots ![disk icon 1](./images/generated/icon_disk1.png) ![disk icon 2](./images/generated/icon_disk2.png) ![disk icon 3](./images/generated/icon_disk3.png) {#program-slots}
+#### Program slots ![disk icon 1](./images/generated/icon_disk1.png) ![disk icon 2](./images/generated/icon_disk2.png) ![disk icon 3](./images/generated/icon_disk3.png) {#program-slots}
 
-MicroCode provides three slots for saving user programs for later load/restore. From the editor, click on the disk icon
+There are three slots for saving user programs for later load/restore. From the editor, click on the disk icon
 ![disk icon](./images/generated/icon_disk.png)
 in the upper left to select which slot to save the current program to. From the home screen, select the disk icon to load a program from one of the three save slots.
 
@@ -171,17 +170,20 @@ In this video, we launch an LED animation when a clap is detected.
 
 <video class="sample" poster="./videos/jacdac-led.png" src="./videos/jacdac-led.mp4" controls="true"></video>
 
-## [Robot](./robot)
+## micro:bit Robot
 
-Program a robot using microcode...
+Remote control a micro:robot using microcode
+to follow lines, avoid obstacles and more. [Learn more](./robot)
 
-## Community pages and videos
+![robot avoid wall program](./images/generated/sample_robot_avoid_wall.png){:class="sample"}
+
+[![Photograph of the Cutebot](./images/cutebot.jpeg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html){:class="sample"}
+
+## Community
 
 -   [KittenBot MicroCode introduction](https://mp.weixin.qq.com/s/yBQMU2IAbeHgr-ok05THTA)
 
 {% include youtube.html id="mbF-HU9IZ-A" %}
-
-## Acknowledgments
 
 -   Microsoft Garage for kick starting this project during the 2022 Microsoft Hackathon.
 -   [@loretod101](https://twitter.com/loretod101) on advising on accessibility features, including switch access support.
