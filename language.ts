@@ -337,6 +337,8 @@ namespace microcode {
                     const field = modifier.fieldEditor.fromBuffer(br)
                     const newOne = modifier.getNewInstance(field)
                     defn.modifiers.push(<any>newOne)
+                } else {
+                    defn.modifiers.push(modifier)
                 }
                 assert(!br.eof())
             }
@@ -347,9 +349,7 @@ namespace microcode {
     export function ruleDefnToJson(rule: RuleDefn): any {
         const addField = (t: TileDefn) => {
             if (t.fieldEditor) {
-                const ret = `${t.tid}(${t.fieldEditor.serialize(
-                    t.getField()
-                )})`
+                const ret = `${t.tid}(${t.fieldEditor.serialize(t.getField())})`
                 return ret
             } else {
                 return t.tid
