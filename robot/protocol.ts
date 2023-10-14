@@ -44,5 +44,6 @@ namespace microcode.robots {
         Left = LineState | RobotLineState.Left,
         Right = LineState | RobotLineState.Right,
         Both = LineState | RobotLineState.Both,
+        None = LineState | RobotLineState.None,
     }
 }

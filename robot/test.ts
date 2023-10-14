@@ -5,8 +5,24 @@ microcode.elecfreaksCuteBot.start()
 //microcode.setMotorDrift(6)
 
 const r = microcode.robot
-r.lineAssist = false
+r.lineAssist = true
 
+/*
+basic.forever(() => {
+    const lines = r.currentLineState
+    if (lines === RobotLineState.Left)
+        r.motorRun(-80, 100)
+    else if (lines === RobotLineState.Right)
+        r.motorRun(80, 100)
+    else if (lines === RobotLineState.Both)
+        r.motorRun(0, 100)
+    else
+        r.motorRun(-150, 100)
+})
+*/
+
+/*
+// calibrate
 basic.forever(() => {
     r.motorRun(0, 50)
     pause(2000)
@@ -17,8 +33,10 @@ basic.forever(() => {
     r.motorStop()
     pause(1000)
 })
+*/
 
 /*
+// test motors
 basic.forever(() => {
     r.motorRun(0, 80)
     pause(400)

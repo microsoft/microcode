@@ -118,8 +118,7 @@ namespace microcode {
             pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
             pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
 
-            this.maxLineRunSpeed = 64
-            this.maxLineTurnSpeed = 90
+            this.maxLineSpeed = 64
         }
 
         motorRun(left: number, right: number): void {

@@ -1,8 +1,9 @@
 # Robot
 
-Microcode supports programming a separate micro:bit robot.
+Microcode supports programming a separate micro:bit robot equipped with two motors,
+sonar and line sensors.
 
-![robot avoid wall program](./images/generated/sample_robot_avoid_wall.png){:class="sample"}
+![robot line following](./images/generated/sample_robot_line_follow.png.png){:class="sample"}
 
 ## Preparing the robot micro:bit
 
@@ -37,7 +38,7 @@ The following features are found often but are optional:
 
 ## Configuring the radio group
 
-The microcode editor and the robot micro:bit communiate using the radio. These are the steps to configure the robot and the microcode:
+The microcode editor and the robot micro:bit communicate using the radio. These are the steps to configure the robot and the microcode:
 
 On the robot micro:bit,
 
