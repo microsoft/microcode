@@ -74,19 +74,6 @@ namespace microcode {
         jdKind: JdKind
         jdParam: any
         jdParam2: number
-        jdExternalClass: number
-
-        isVisible() {
-            if (this.jdExternalClass && !jacs.debugOut) {
-                const count = jdc.numServiceInstances(this.jdExternalClass)
-                // special case for buttons, which already exist on micro:bit (6 of them)
-                // we also have light sensor on board micro:bit (1 of them), as well as in Kit A
-                return this.jdExternalClass == 0x1473a263
-                    ? count > 6
-                    : count > 0
-            }
-            return true
-        }
 
         getField(): any {
             return undefined
@@ -405,7 +392,7 @@ namespace microcode {
         ): TileDefn[] {
             const all = Object.keys(tilesDB[name])
                 .map(id => tilesDB[name][id])
-                .filter((tile: TileDefn) => tile.isVisible())
+                .filter((tile: TileDefn) => isVisible(tidToEnum(tile.tid)))
                 .sort((t1, t2) => t1.priority - t2.priority)
 
             if (name === "sensors" || name === "actuators") return all

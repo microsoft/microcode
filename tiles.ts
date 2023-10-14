@@ -72,8 +72,6 @@ namespace microcode {
         addPressFilter(TID_FILTER_PIN_2, 5)
         const kitA_1 = addPressFilter(TID_FILTER_KITA_KEY_1, 6)
         const kitA_2 = addPressFilter(TID_FILTER_KITA_KEY_2, 7)
-        kitA_1.jdExternalClass = 0x1473a263
-        kitA_2.jdExternalClass = 0x1473a263
     }
 
     function addSensorAndFilterTiles() {
@@ -122,7 +120,6 @@ namespace microcode {
             TID_FILTER_COIN_5,
         ]
         const slider = makeSensor(TID_SENSOR_SLIDER, "value_in", 500)
-        slider.jdExternalClass = 0x1f274746
         slider.constraints.allow.categories = []
         slider.constraints.allow.tiles = only5
 
@@ -134,15 +131,12 @@ namespace microcode {
         }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
-        magnet.jdExternalClass = 0x12fe180f
         magnet.constraints = slider.constraints
 
         const light = makeSensor(TID_SENSOR_LIGHT, "value_in", 500)
-        light.jdExternalClass = 0x17dc9a1c
         light.constraints = slider.constraints
 
         const rotary = makeSensor(TID_SENSOR_ROTARY, "rotary_event", 500)
-        rotary.jdExternalClass = 0x10fa29c9
         rotary.jdKind = JdKind.Rotary
 
         function addEvent(tid: string, type: string, id: number) {
@@ -429,7 +423,6 @@ namespace microcode {
 
         const rgbled = addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
         rgbled.priority = 500
-        rgbled.jdExternalClass = 0x1609d4f0
         rgbled.jdKind = JdKind.Sequence
         rgbled.defaultModifier =
             tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
@@ -438,7 +431,6 @@ namespace microcode {
             "constant",
         ])
         servoSetAngle.priority = 500
-        servoSetAngle.jdExternalClass = 0x12fc9103
         servoSetAngle.jdKind = JdKind.NumFmt
         servoSetAngle.jdParam = jacs.NumFmt.I32
 

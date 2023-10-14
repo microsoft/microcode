@@ -860,6 +860,39 @@ namespace microcode {
         }
     }
 
+    export function jdExternalClass(tid: Tid) {
+        switch (tid) {
+            case Tid.TID_FILTER_KITA_KEY_1:
+            case Tid.TID_FILTER_KITA_KEY_2:
+                return 0x1473a263
+            case Tid.TID_SENSOR_SLIDER:
+                return 0x1f274746
+            case Tid.TID_SENSOR_MAGNET:
+                return 0x12fe180f
+            case Tid.TID_SENSOR_LIGHT:
+                return 0x17dc9a1c
+            case Tid.TID_SENSOR_ROTARY:
+                return 0x10fa29c9
+            case Tid.TID_ACTUATOR_RGB_LED:
+                return 0x1609d4f0
+            case Tid.TID_MODIFIER_SERVO_SET_ANGLE:
+                return 0x12fc9103
+            default:
+                return undefined
+        }
+    }
+
+    export function isVisible(tid: Tid) {
+        const ext = jdExternalClass(tid)
+        if (ext && !jacs.debugOut) {
+            const count = jdc.numServiceInstances(ext)
+            // special case for buttons, which already exist on micro:bit (6 of them)
+            // we also have light sensor on board micro:bit (1 of them), as well as in Kit A
+            return ext == 0x1473a263 ? count > 6 : count > 0
+        }
+        return true
+    }
+
     // TODO: we don't need separate bits for everything.
     // TODO: only certain things can be combined. Analyze and optimize
     export enum TidKinds {
