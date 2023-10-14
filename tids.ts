@@ -187,6 +187,8 @@ namespace microcode {
         TID_FILTER_COIN_5,
         TID_FILTER_TIMESPAN_SHORT,
         TID_FILTER_TIMESPAN_LONG,
+        TID_FILTER_TIMESPAN_RANDOM,
+        TID_FILTER_TIMESPAN_VERY_LONG,
         TID_FILTER_LOUD,
         TID_FILTER_QUIET,
         TID_FILTER_ACCEL,
@@ -195,8 +197,6 @@ namespace microcode {
         TID_FILTER_ACCEL_TILT_DOWN,
         TID_FILTER_ACCEL_TILT_LEFT,
         TID_FILTER_ACCEL_TILT_RIGHT,
-        TID_FILTER_TIMESPAN_RANDOM,
-        TID_FILTER_TIMESPAN_VERY_LONG,
         TID_FILTER_CUP_X_READ,
         TID_FILTER_CUP_Y_READ,
         TID_FILTER_CUP_Z_READ,
@@ -753,40 +753,17 @@ namespace microcode {
         return tid >= Tid.MODIFIER_START && tid < Tid.MODIFER_END
     }
 
-    export function isTidTerminal(tid: string) {
-        switch (tid) {
-            // TODO: with enum, convert to range check
-            // TODO: better to do terminal on sensor/actuator?
-            case TID_SENSOR_SLIDER:
-            case TID_SENSOR_CAR_WALL:
-            case TID_FILTER_BUTTON_A:
-            case TID_FILTER_BUTTON_B:
-            case TID_FILTER_LOGO:
-            case TID_FILTER_PIN_0:``
-            case TID_FILTER_PIN_1:
-            case TID_FILTER_PIN_2:
-            case TID_FILTER_KITA_KEY_1:
-            case TID_FILTER_KITA_KEY_2:
-            case TID_FILTER_ROTARY_LEFT:
-            case TID_FILTER_ROTARY_RIGHT:
-            case TID_FILTER_TEMP_WARMER:
-            case TID_FILTER_TEMP_COLDER:
-            case TID_FILTER_ACCEL_SHAKE:
-            case TID_FILTER_ACCEL_TILT_UP:
-            case TID_FILTER_ACCEL_TILT_DOWN:
-            case TID_FILTER_ACCEL_TILT_LEFT:
-            case TID_FILTER_ACCEL_TILT_RIGHT:
-            case TID_FILTER_LOUD:
-            case TID_FILTER_QUIET:
-            case TID_MODIFIER_PAGE_1:
-            case TID_MODIFIER_PAGE_2:
-            case TID_MODIFIER_PAGE_3:
-            case TID_MODIFIER_PAGE_4:
-            case TID_MODIFIER_PAGE_5:
-                return true
-            default:
-                return false
-        }
+    export function isTidNotTerminal(tid: Tid) {
+        if (!isFilter(tid)) return true
+        if (
+            (Tid.TID_FILTER_COIN_1 <= tid && tid <= Tid.TID_FILTER_COIN_5) ||
+            (Tid.TID_FILTER_TIMESPAN_SHORT <= tid &&
+                tid <= Tid.TID_FILTER_TIMESPAN_VERY_LONG) ||
+            (Tid.TID_FILTER_CUP_X_READ <= tid &&
+                tid <= Tid.TID_FILTER_CUP_Z_READ)
+        )
+            return true
+        return false
     }
 
     export function assert(cond: boolean, msg?: string) {
