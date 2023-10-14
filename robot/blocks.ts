@@ -105,6 +105,7 @@ namespace microcode {
     export function setMotorDrift(drift: number) {
         checkRobotDriver()
         robot.runDrift = Math.clamp(-25, 25, drift)
+        led.stopAnimation()
     }
 
     /**
@@ -119,5 +120,6 @@ namespace microcode {
     export function setRadioGroup(group: number) {
         checkRobotDriver()
         robot.setRadioGroup(group)
+        led.stopAnimation()
     }
 }

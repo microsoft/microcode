@@ -17,7 +17,7 @@ namespace microcode {
     function radioGroupFromDeviceSerialNumber()
     {
         const sn = control.deviceLongSerialNumber()
-        return (sn.hash(10) % 9) + 1
+        return (sn.hash(10) % 20) + 1
     }
 
     /**
@@ -116,7 +116,10 @@ namespace microcode {
             this.configureButtons()
             basic.forever(() => this.updateSonar()) // potentially slower
             control.inBackground(() => this.backgroundWork())
-            this.showConfigurationState(true)
+            // schedule after main
+            control.inBackground(() => {
+                this.showConfigurationState(true)
+            })
         }
 
         private backgroundWork() {

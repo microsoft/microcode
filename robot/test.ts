@@ -4,8 +4,8 @@ microcode.elecfreaksCuteBot.start()
 //microcode.keyStudioMiniSmartRobot.start()
 //microcode.setMotorDrift(6)
 
-//microcode.setRadioGroup(3)
-microcode.setMotorDrift(2)
+microcode.setRadioGroup(9)
+microcode.setMotorDrift(-3)
 
 //const r = microcode.robot
 //r.lineAssist = true
