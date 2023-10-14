@@ -38,20 +38,6 @@ namespace microcode {
     }
 
     /**
-    * A value that corrects the ratio of power between the left and the right motor to account for hardware differences.
-    */
-    //% block="robot set motor drift to %drift"
-    //% blockId="microcoderobotsetmotordrift"
-    //% group="Motors"
-    //% weight=10
-    //% drift.min=-25
-    //% drift.max=25
-    export function setMotorDrift(drift: number) {
-        checkRobotDriver()
-        robot.runDrift = Math.clamp(-25, 25, drift)
-    }
-
-    /**
      * Gets the distance reported by the distance sensor
      */
     //% block="robot obstacle distance"
@@ -105,5 +91,20 @@ namespace microcode {
     export function setLineAssist(enabled: boolean): void {
         checkRobotDriver()
         robot.lineAssist = !!enabled
+    }
+
+
+    /**
+    * A value that corrects the ratio of power between the left and the right motor to account for hardware differences.
+    */
+    //% block="robot set motor drift to %drift"
+    //% blockId="microcoderobotsetmotordrift"
+    //% group="Configuration"
+    //% weight=10
+    //% drift.min=-25
+    //% drift.max=25
+    export function setMotorDrift(drift: number) {
+        checkRobotDriver()
+        robot.runDrift = Math.clamp(-25, 25, drift)
     }
 }
