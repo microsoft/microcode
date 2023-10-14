@@ -174,7 +174,7 @@ namespace microcode {
 
     function addButtonTiles() {
         function addPress(tid: string, evt: number) {
-            const press_event = new SensorDefn(tid, Phase.Pre)
+            const press_event = new SensorDefn(tid)
             press_event.serviceClassName = "button"
             press_event.eventCode = evt
             press_event.serviceInstanceIndex = 0
@@ -221,7 +221,7 @@ namespace microcode {
 
     function addSensorAndFilterTiles() {
         function makeSensor(tid: string, cat: string, prior: number) {
-            const tile = new SensorDefn(tid, Phase.Post)
+            const tile = new SensorDefn(tid)
             tile.constraints = {
                 allow: {
                     categories: [cat],
@@ -355,7 +355,7 @@ namespace microcode {
             line.constraints.handling = { terminal: true }
         }
 
-        const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
+        const timer = new SensorDefn(TID_SENSOR_TIMER)
         timer.constraints = {
             allow: {
                 categories: ["timespan"],
@@ -375,7 +375,7 @@ namespace microcode {
         addTimespan(TID_FILTER_TIMESPAN_VERY_LONG, 5000)
         addTimespan(TID_FILTER_TIMESPAN_RANDOM, -1000)
 
-        const accel = new SensorDefn(TID_SENSOR_ACCELEROMETER, Phase.Post)
+        const accel = new SensorDefn(TID_SENSOR_ACCELEROMETER)
         accel.constraints = {
             allow: {
                 categories: ["accel_event"],
@@ -404,7 +404,7 @@ namespace microcode {
         addAccelEvent(0x83, "tilt_left")
         addAccelEvent(0x84, "tilt_right")
 
-        const microphone = new SensorDefn(TID_SENSOR_MICROPHONE, Phase.Post)
+        const microphone = new SensorDefn(TID_SENSOR_MICROPHONE)
         microphone.constraints = {
             allow: {
                 categories: ["sound_event"],
@@ -739,7 +739,7 @@ namespace microcode {
                 img.setPixel(col, row, (buf[byte] >> bit) & 1)
             }
             return img
-        }
+        },
     }
 
     class IconEditor extends ModifierDefn {
@@ -856,7 +856,7 @@ namespace microcode {
                 notes += note.toString()
             }
             return { tempo, notes }
-        }
+        },
     }
 
     class MelodyEditor extends ModifierDefn {

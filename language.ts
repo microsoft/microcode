@@ -170,11 +170,6 @@ namespace microcode {
         }
     }
 
-    export enum Phase {
-        Pre,
-        Post,
-    }
-
     export class StmtTileDefn extends TileDefn {
         constructor(type: TileType, tid: string) {
             super(type, tid)
@@ -186,7 +181,7 @@ namespace microcode {
 
     export class SensorDefn extends StmtTileDefn {
         public eventCode: number
-        constructor(tid: string, public phase: Phase) {
+        constructor(tid: string) {
             super(TileType.SENSOR, tid)
         }
     }
