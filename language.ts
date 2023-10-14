@@ -314,7 +314,6 @@ namespace microcode {
             if (this.isEmpty()) return
             bw.writeByte(tidToEnum(this.sensor.tid))
             this.filters.forEach(filter => bw.writeByte(tidToEnum(filter.tid)))
-            bw.writeByte(Tid.END_OF_WHEN)
             this.actuators.forEach(act => bw.writeByte(tidToEnum(act.tid)))
             this.modifiers.forEach(mod => {
                 bw.writeByte(tidToEnum(mod.tid))
@@ -322,26 +321,24 @@ namespace microcode {
                     bw.writeBuffer(mod.fieldEditor.toBuffer(mod.getField()))
                 }
             })
-            bw.writeByte(Tid.END_OF_RULE)
         }
 
         public static fromBuffer(br: BufferReader) {
             const defn = new RuleDefn()
             assert(!br.eof())
             const sensorEnum = br.readByte()
+            assert(isSensor(sensorEnum))
             const sensorTid = enumToTid(sensorEnum)
             defn.sensors.push(tilesDB.sensors[sensorTid])
             assert(!br.eof())
-            while (br.peekByte() != Tid.END_OF_WHEN) {
+            while (isFilter(br.peekByte())) {
                 const filterEnum = br.readByte()
                 const filterTid = enumToTid(filterEnum)
                 defn.filters.push(tilesDB.filters[filterTid])
                 assert(!br.eof())
             }
-            br.readByte()  // consume END_OF_WHEN
             assert(!br.eof())
-            if (br.peekByte() == Tid.END_OF_RULE) {
-                br.readByte()
+            if (!isActuator(br.peekByte())) {
                 return defn
             }
             assert(!br.eof())
@@ -349,7 +346,7 @@ namespace microcode {
             const actuatorTid = enumToTid(actuatorEnum)
             defn.actuators.push(tilesDB.actuators[actuatorTid])
             assert(!br.eof())
-            while (br.peekByte() != Tid.END_OF_RULE) {
+            while (isModifier(br.peekByte())) {
                 const modifierEnum = br.readByte()
                 const modifierTid = enumToTid(modifierEnum)
                 const modifier = tilesDB.modifiers[modifierTid]
@@ -360,7 +357,6 @@ namespace microcode {
                 }
                 assert(!br.eof())
             }
-            br.readByte() // consume END_OF_RULE
             return defn
         }
     }
@@ -537,6 +533,7 @@ namespace microcode {
             // TODO: magic number and version
             this.pages.forEach(page => page.toBuffer(bw))
             bw.writeByte(Tid.END_OF_PROG)
+            console.log(`toBuffer: ${bw.length}b`)
             return bw.buffer
         }
 

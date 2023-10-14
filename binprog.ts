@@ -4,8 +4,6 @@ namespace microcode {
         // we need markers to indicate the end of a program, page, rule, when
         END_OF_PROG = 0,
         END_OF_PAGE,
-        END_OF_RULE,
-        END_OF_WHEN,
     
         SENSOR_START = 10,
         TID_SENSOR_START_PAGE = 10,
@@ -368,12 +366,20 @@ namespace microcode {
         }
     }
 
-    export function toFieldEditor(tid: Tid) {
-        if (tid == Tid.TID_MODIFIER_ICON_EDITOR)
-            return "icon-editor"
-        else if (tid == Tid.TID_MODIFIER_MELODY_EDITOR)
-            return "melody-editor"
-        return undefined
+    export function isSensor(tid: Tid) {
+        return tid >= Tid.SENSOR_START && tid < Tid.SENSOR_END
+    }
+
+    export function isFilter(tid: Tid) {
+        return tid >= Tid.FILTER_START && tid < Tid.FILTER_END
+    }
+
+    export function isActuator(tid: Tid) {
+        return tid >= Tid.ACTUATOR_START && tid < Tid.ACTUATOR_END
+    }
+
+    export function isModifier(tid: Tid) {
+        return tid >= Tid.MODIFIER_START && tid < Tid.MODIFER_END
     }
 
     export function assert(cond: boolean, msg?: string) {
@@ -390,8 +396,10 @@ namespace microcode {
         private ptr: number = 0
 
         constructor() {
-            this.buf = Buffer.create(128)
+            this.buf = Buffer.create(64)
         }
+
+        public get length() { return this.ptr }
 
         public get buffer() { return this.buf }
 
