@@ -19,7 +19,6 @@ namespace microcode {
             tiles?: string[]
             categories?: string[]
         }
-        handling?: { [id: string]: any }
     }
 
     // TODO: make into class
@@ -145,13 +144,6 @@ namespace microcode {
                 ;(src.disallow.categories || []).forEach(item =>
                     dst.disallow.categories.push(item)
                 )
-            }
-            if (src.handling) {
-                const keys = Object.keys(src.handling)
-                for (const key of keys) {
-                    // TODO: deep copy
-                    dst.handling[key] = src.handling[key]
-                }
             }
         }
 
@@ -423,11 +415,7 @@ namespace microcode {
     }
 
     function isTerminal(tile: TileDefn) {
-        return (
-            tile.constraints &&
-            tile.constraints.handling &&
-            tile.constraints.handling["terminal"]
-        )
+        return !isTidNotTerminal(tidToEnum(tile.tid))
     }
 
     export class Language {
@@ -501,7 +489,6 @@ namespace microcode {
                 tiles: [],
                 categories: [],
             },
-            handling: {},
         }
         return c
     }

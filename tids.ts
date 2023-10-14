@@ -187,6 +187,8 @@ namespace microcode {
         TID_FILTER_COIN_5,
         TID_FILTER_TIMESPAN_SHORT,
         TID_FILTER_TIMESPAN_LONG,
+        TID_FILTER_TIMESPAN_RANDOM,
+        TID_FILTER_TIMESPAN_VERY_LONG,
         TID_FILTER_LOUD,
         TID_FILTER_QUIET,
         TID_FILTER_ACCEL,
@@ -195,8 +197,6 @@ namespace microcode {
         TID_FILTER_ACCEL_TILT_DOWN,
         TID_FILTER_ACCEL_TILT_LEFT,
         TID_FILTER_ACCEL_TILT_RIGHT,
-        TID_FILTER_TIMESPAN_RANDOM,
-        TID_FILTER_TIMESPAN_VERY_LONG,
         TID_FILTER_CUP_X_READ,
         TID_FILTER_CUP_Y_READ,
         TID_FILTER_CUP_Z_READ,
@@ -751,6 +751,50 @@ namespace microcode {
 
     export function isModifier(tid: Tid) {
         return tid >= Tid.MODIFIER_START && tid < Tid.MODIFER_END
+    }
+
+    export function isTidNotTerminal(tid: Tid) {
+        // the following sensors and actuators are terminal
+        if (
+            tid == Tid.TID_SENSOR_CAR_WALL ||
+            tid == Tid.TID_SENSOR_SLIDER ||
+            tid == Tid.TID_ACTUATOR_SWITCH_PAGE
+        )
+            return false
+        // everything else except some filters is not terminal
+        if (!isFilter(tid)) return true
+        // the following filters are not terminal
+        if (
+            (Tid.TID_FILTER_COIN_1 <= tid && tid <= Tid.TID_FILTER_COIN_5) ||
+            (Tid.TID_FILTER_TIMESPAN_SHORT <= tid &&
+                tid <= Tid.TID_FILTER_TIMESPAN_VERY_LONG) ||
+            (Tid.TID_FILTER_CUP_X_READ <= tid &&
+                tid <= Tid.TID_FILTER_CUP_Z_READ)
+        )
+            return true
+        // all other filters are terminal
+        return false
+    }
+
+    // TODO: we don't need separate bits for everything.
+    // TODO: only certain things can be combined. Analyze and optimize
+    export enum TidKinds {
+        PressEvent = 0x01,
+        ValueIn = 0x02,
+        ValueOut = 0x04,
+        RotaryEvent = 0x08,
+        TempEvent = 0x10,
+        AccelEvent = 0x20,
+        TimeSpan = 0x40,
+        SoundEvent = 0x80,
+        IconEditor = 0x100,
+        Loop = 0x200,
+        MelodyEditor = 0x400,
+        SoundEmoji = 0x800,
+        Constant = 0x1000,
+        Page = 0x2000,
+        Car = 0x4000,
+        RGBLed = 0x8000,
     }
 
     export function assert(cond: boolean, msg?: string) {
