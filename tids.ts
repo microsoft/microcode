@@ -776,6 +776,27 @@ namespace microcode {
         return false
     }
 
+    // TODO: we don't need separate bits for everything.
+    // TODO: only certain things can be combined. Analyze and optimize
+    export enum TidKinds {
+        PressEvent = 0x01,
+        ValueIn = 0x02,
+        ValueOut = 0x04,
+        RotaryEvent = 0x08,
+        TempEvent = 0x10,
+        AccelEvent = 0x20,
+        TimeSpan = 0x40,
+        SoundEvent = 0x80,
+        IconEditor = 0x100,
+        Loop = 0x200,
+        MelodyEditor = 0x400,
+        SoundEmoji = 0x800,
+        Constant = 0x1000,
+        Page = 0x2000,
+        Car = 0x4000,
+        RGBLed = 0x8000,
+    }
+
     export function assert(cond: boolean, msg?: string) {
         if (!cond) {
             if (msg == null) msg = "Assertion failed"
