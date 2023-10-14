@@ -256,10 +256,12 @@ namespace microcode {
             })
             this.progdef = this.app.load(SAVESLOT_AUTO)
             if (!this.progdef) {
+                console.log("HERE")
                 // onboarding experience
                 // load first sample if this is the first program being loaded
-                this.app.saveSource(SAVESLOT_AUTO, samples(true)[1].source)
-                this.progdef = this.app.load(SAVESLOT_AUTO)
+                const saved: SavedState = JSON.parse(samples(true)[0].source)
+                const progdef = progDefnFromJson(saved.progdef)
+                this.app.save(SAVESLOT_AUTO, progdef)
             }
 
             this.configureP1Keys()
@@ -268,7 +270,8 @@ namespace microcode {
 
         private configureP1Keys() {
             const forward = () => {
-                this.cursor.click(); this.dirty = true
+                this.cursor.click()
+                this.dirty = true
             }
             control.onEvent(
                 ControllerButtonEvent.Pressed,

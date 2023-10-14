@@ -369,6 +369,7 @@ namespace docs {
             microcode.TID_MODIFIER_RADIO_VALUE,
         ]
     }
+    
     function renderIcons(images: RenderedImage[]) {
         for (const name of names()) {
             console.log(`render icon ${name}`)

@@ -717,6 +717,29 @@ namespace microcode {
             }
             return img
         },
+        toBuffer: (img: Image) => {
+            const ret = Buffer.create(4)
+            for (let index = 0; index < 25; index++) {
+                let byte = index >> 3
+                let bit = index & 7
+                let col = index % 5
+                let row = Math.idiv(index, 5)
+                ret[byte] |= img.getPixel(col, row) << bit
+            }
+            return ret
+        },
+        fromBuffer: (br: BufferReader) => {
+            const buf = br.readBuffer(4)
+            const img = image.create(5, 5)
+            for (let index = 0; index < 25; index++) {
+                let byte = index >> 3
+                let bit = index & 7
+                let col = index % 5
+                let row = Math.idiv(index, 5)
+                img.setPixel(col, row, (buf[byte] >> bit) & 1)
+            }
+            return img
+        }
     }
 
     class IconEditor extends ModifierDefn {
@@ -807,6 +830,33 @@ namespace microcode {
                 tempo: parseInt(sp[1]),
             }
         },
+        toBuffer: (melody: Melody) => {
+            const buf = Buffer.create(3)
+            buf.setUint8(0, melody.tempo)
+            // convert the melody notes into list of integers
+            const notes = melody.notes.split("").map(n => parseInt(n))
+            // fill the buffer with the notes, 4 bits for each note
+            for (let i = 0; i < MELODY_LENGTH; i++) {
+                const note = notes[i] || 0
+                const byte = i >> 1
+                const bit = (i & 1) << 2
+                buf.setUint8(byte + 1, buf.getUint8(byte + 1) | (note << bit))
+            }
+            return buf
+        },
+        fromBuffer: (br: BufferReader) => {
+            const buf = br.readBuffer(3)
+            const tempo = buf[0]
+            let notes = ""
+            // read the notes from the buffer
+            for (let i = 0; i < MELODY_LENGTH; i++) {
+                const byte = i >> 1
+                const bit = (i & 1) << 2
+                const note = (buf[byte + 1] >> bit) & 0xf
+                notes += note.toString()
+            }
+            return { tempo, notes }
+        }
     }
 
     class MelodyEditor extends ModifierDefn {
