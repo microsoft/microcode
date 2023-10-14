@@ -1,11 +1,11 @@
-microcode.elecfreaksCuteBot.start()
+//microcode.elecfreaksCuteBot.start()
+microcode.yahboomTinyBit.start()
 //microcode.elecfreaksCuteBotPro.start()
-//microcode.yahboomTinyBit.start()
 //microcode.keyStudioMiniSmartRobot.start()
 //microcode.setMotorDrift(6)
 
-microcode.setRadioGroup(9)
-microcode.setMotorDrift(-3)
+microcode.setRadioGroup(10)
+microcode.setMotorDrift(0)
 
 //const r = microcode.robot
 //r.lineAssist = true

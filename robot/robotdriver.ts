@@ -5,14 +5,6 @@
 //% groups=['Move', 'Input', 'Configuration']
 namespace microcode {
     const MAX_GROUPS = 32
-    const RUN_STOP_THRESHOLD = 2
-    const TARGET_SPEED_THRESHOLD = 4
-    const SPEED_TRANSITION_ALPHA = 0.97
-    const SPEED_BRAKE_TRANSITION_ALPHA = 0.8
-    const TARGET_TURN_RATIO_THRESHOLD = 20
-    const TURN_RATIO_TRANSITION_ALPHA = 0.2
-    const ULTRASONIC_MIN_READING = 1
-    const LINE_ASSIST_LOST_THRESHOLD = 72
 
     function radioGroupFromDeviceSerialNumber()
     {
@@ -152,27 +144,27 @@ namespace microcode {
             // smooth update of speed
             {
                 const accelerating = this.targetSpeed > 0 && this.currentSpeed < this.targetSpeed
-                const alpha = accelerating ? SPEED_TRANSITION_ALPHA : SPEED_BRAKE_TRANSITION_ALPHA
+                const alpha = accelerating ? this.robot.speedTransitionAlpha : this.robot.speedBrakeTransitionAlpha
                 this.currentSpeed =
                     this.currentSpeed * alpha + this.targetSpeed * (1 - alpha)
                 if (this.lineAssist && this.currentSpeed > 0) {
                     if (this.currentLineState // left, right, front
-                        || this.currentLineStateCounter < LINE_ASSIST_LOST_THRESHOLD) // recently lost line
+                        || this.currentLineStateCounter < this.robot.lineAssistLostThreshold) // recently lost line
                         this.currentSpeed = Math.min(this.currentSpeed, this.robot.maxLineSpeed)
                 }
-                if (Math.abs(this.currentSpeed - this.targetSpeed) < TARGET_SPEED_THRESHOLD)
+                if (Math.abs(this.currentSpeed - this.targetSpeed) < this.robot.targetSpeedThreshold)
                     this.currentSpeed = this.targetSpeed
             }
             // smoth update of turn ratio
             {
-                const alpha = TURN_RATIO_TRANSITION_ALPHA
+                const alpha = this.robot.turnRatioTransitionAlpha
                 this.currentTurnRatio =
                     this.currentTurnRatio * alpha + this.targetTurnRatio * (1 - alpha)
-                if (Math.abs(this.currentTurnRatio - this.targetTurnRatio) < TARGET_TURN_RATIO_THRESHOLD)
+                if (Math.abs(this.currentTurnRatio - this.targetTurnRatio) < this.robot.targetTurnRatioThreshold)
                     this.currentTurnRatio = this.targetTurnRatio
             }
 
-            if (Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD)
+            if (Math.abs(this.currentSpeed) < this.robot.runStopThreshold)
                 this.setMotorState(0, 0)
             else {
                 let s = this.currentSpeed
@@ -254,7 +246,7 @@ namespace microcode {
             if (this.showConfiguration) return
 
             // render sonar
-            if (dist > ULTRASONIC_MIN_READING) {
+            if (dist > this.robot.ultrasonicMinReading) {
                 const d = Math.clamp(1, 5, Math.ceil(dist / 5))
                 for (let y = 0; y < 5; y++)
                     if (y + 1 >= d) led.plot(2, y)
@@ -375,7 +367,7 @@ namespace microcode {
                     switch (msg) {
                         case microcode.robots.RobotCompactCommand.MotorRunForward: speed = 70; break;
                         case microcode.robots.RobotCompactCommand.MotorRunForwardFast: speed = 100; break;
-                        case microcode.robots.RobotCompactCommand.MotorRunBackward: speed = -50; break;
+                        case microcode.robots.RobotCompactCommand.MotorRunBackward: speed = -60; break;
                         case microcode.robots.RobotCompactCommand.MotorTurnLeft: turnRatio = -50; speed = 70; break;
                         case microcode.robots.RobotCompactCommand.MotorTurnRight: turnRatio = 50; speed = 70; break;
                         case microcode.robots.RobotCompactCommand.MotorSpinLeft: turnRatio = -200; speed = 60; break;

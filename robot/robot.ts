@@ -3,6 +3,14 @@ namespace microcode.robots {
     export class Robot {
         musicVolume = 64
         maxLineSpeed = 40
+        runStopThreshold = 2
+        targetSpeedThreshold = 4
+        speedTransitionAlpha = 0.97
+        speedBrakeTransitionAlpha = 0.8
+        targetTurnRatioThreshold = 20
+        turnRatioTransitionAlpha = 0.2
+        ultrasonicMinReading = 1
+        lineAssistLostThreshold = 72
 
         constructor() {
 
