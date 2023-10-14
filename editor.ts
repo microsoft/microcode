@@ -72,7 +72,7 @@ namespace microcode {
         }
 
         public saveAndCompileProgram() {
-            this.app.saveAsBuffer(SAVESLOT_AUTO, this.progdef)
+            this.app.save(SAVESLOT_AUTO, this.progdef)
             new jacs.TopWriter().emitProgram(this.progdef)
         }
 
@@ -86,7 +86,7 @@ namespace microcode {
             this.picker.show({
                 title: accessibility.ariaToTooltip("disk"),
                 onClick: iconId => {
-                    this.app.saveAsBuffer(iconId, this.progdef)
+                    this.app.save(iconId, this.progdef)
                 },
             })
         }
@@ -254,14 +254,14 @@ namespace microcode {
                 y: 8,
                 onClick: () => this.pickPage(),
             })
-            this.progdef = this.app.loadFromBuffer(SAVESLOT_AUTO)
+            this.progdef = this.app.load(SAVESLOT_AUTO)
             if (!this.progdef) {
                 console.log("HERE")
                 // onboarding experience
                 // load first sample if this is the first program being loaded
                 const saved: SavedState = JSON.parse(samples(true)[0].source)
                 const progdef = progDefnFromJson(saved.progdef)
-                this.app.saveAsBuffer(SAVESLOT_AUTO, progdef)
+                this.app.save(SAVESLOT_AUTO, progdef)
             }
 
             this.configureP1Keys()
@@ -270,7 +270,8 @@ namespace microcode {
 
         private configureP1Keys() {
             const forward = () => {
-                this.cursor.click(); this.dirty = true
+                this.cursor.click()
+                this.dirty = true
             }
             control.onEvent(
                 ControllerButtonEvent.Pressed,

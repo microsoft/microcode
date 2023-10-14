@@ -31,7 +31,7 @@ namespace microcode {
                             })
                             const saved: SavedState = JSON.parse(sample.source)
                             const progdef = progDefnFromJson(saved.progdef)
-                            this.app.saveAsBuffer(SAVESLOT_AUTO, progdef)
+                            this.app.save(SAVESLOT_AUTO, progdef)
                             this.app.popScene()
                             this.app.pushScene(new Editor(this.app))
                         },

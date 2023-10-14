@@ -346,28 +346,6 @@ namespace microcode {
         }
     }
 
-    export function ruleDefnToJson(rule: RuleDefn): any {
-        const addField = (t: TileDefn) => {
-            if (t.fieldEditor) {
-                const ret = `${t.tid}(${t.fieldEditor.serialize(t.getField())})`
-                return ret
-            } else {
-                return t.tid
-            }
-        }
-        const obj = {
-            S: rule.sensors.map(t => addField(t)),
-            A: rule.actuators.map(t => addField(t)),
-            F: rule.filters.map(t => addField(t)),
-            M: rule.modifiers.map(t => addField(t)),
-        }
-        if (!obj.S.length) delete obj.S
-        if (!obj.A.length) delete obj.A
-        if (!obj.F.length) delete obj.F
-        if (!obj.M.length) delete obj.M
-        return obj
-    }
-
     function ruleDefnFromJson(obj: any): RuleDefn {
         const extractField = (t: string) => (s: string) => {
             let hasField = s.indexOf("(")
@@ -472,16 +450,6 @@ namespace microcode {
         }
     }
 
-    function pageDefnToJson(page: PageDefn): any {
-        const obj = {
-            R: page.rules.map(ruleDefnToJson),
-        }
-        if (!obj.R.length) {
-            delete obj.R
-        }
-        return obj
-    }
-
     function pageDefnFromJson(obj: any): PageDefn {
         if (typeof obj === "string") {
             obj = JSON.parse(obj)
@@ -530,12 +498,6 @@ namespace microcode {
             }
             br.readByte()
             return defn
-        }
-    }
-
-    export function progDefnToJson(prog: ProgramDefn): any {
-        return {
-            P: prog.pages.map(pageDefnToJson),
         }
     }
 
