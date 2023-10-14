@@ -6,14 +6,10 @@ namespace microcode.robots {
      */
     export const enum RobotCommand {
         /**
-         * Runs the robot forward and backward.
-         *     speed: i16 %
-         */
-        MotorRun = 0x01,
-        /**
          * Turn the robot left and right. Right is positive values.
          *     turnRatio: i16 [-200,200]
          *     speed: i16 %
+         *     lineAssist: bool (u8)
          */
         MotorTurn = 0x02,
 
@@ -102,8 +98,8 @@ namespace microcode.robots {
             case RobotCompactCommand.MotorRunForward:
             case RobotCompactCommand.MotorRunBackward:
             case RobotCompactCommand.MotorStop: {
-                cmd = RobotCommand.MotorRun
-                payload = Buffer.create(3)
+                cmd = RobotCommand.MotorTurn
+                payload = Buffer.create(5)
                 if (msg !== RobotCompactCommand.MotorStop) {
                     let speed = 0
                     switch (msg) {
@@ -113,11 +109,11 @@ namespace microcode.robots {
                     }
                     payload.setNumber(
                         NumberFormat.Int16LE,
-                        0,
+                        2,
                         speed
                     )
-                    if(msg !== RobotCompactCommand.MotorRunForwardFast)
-                        payload[2] = 1
+                    if (msg !== RobotCompactCommand.MotorRunForwardFast)
+                        payload[4] = 1
                 }
                 break
             }
@@ -126,14 +122,14 @@ namespace microcode.robots {
             case RobotCompactCommand.MotorTurnLeft:
             case RobotCompactCommand.MotorTurnRight: {
                 cmd = RobotCommand.MotorTurn
-                payload = Buffer.create(4)
+                payload = Buffer.create(5)
                 let turnRatio = 0
                 let speed = 100
                 switch (msg) {
                     case RobotCompactCommand.MotorTurnLeft: turnRatio = -50; speed = 100; break;
                     case RobotCompactCommand.MotorTurnRight: turnRatio = 50; speed = 100; break;
-                    case RobotCompactCommand.MotorSpinLeft: turnRatio = -200; speed = 80; break;
-                    case RobotCompactCommand.MotorSpinRight: turnRatio = 200; speed = 80; break;
+                    case RobotCompactCommand.MotorSpinLeft: turnRatio = -200; speed = 70; break;
+                    case RobotCompactCommand.MotorSpinRight: turnRatio = 200; speed = 70; break;
                 }
                 payload.setNumber(
                     NumberFormat.Int16LE,
@@ -145,6 +141,7 @@ namespace microcode.robots {
                     2,
                     speed
                 )
+                payload[4] = 1
                 break
             }
             case RobotCompactCommand.MotorArmClose:

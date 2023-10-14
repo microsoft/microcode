@@ -7,26 +7,11 @@ namespace microcode {
     }
 
     /**
-     * Sets both motors of the robot to the speed in percent.
-    */
-    //% block="robot run at %speed=speedPicker \\%"
-    //% blockid="microcoderobotmotorrun"
-    //% group="Motors"
-    //% weight=100
-    //% speed.defl=100
-    //% speed.min=-100
-    //% speed.max=100
-    export function motorRun(speed: number) {
-        checkRobotDriver()
-        robot.motorRun(speed)
-    }
-
-    /**
      * Turns the robot.
     */
     //% weight=98
     //% group="Motors"
-    //% block="robot turn $turnRatio at $speed \\%"
+    //% block="robot steer $turnRatio at $speed \\%"
     //% blockid="microcoderobotmotorturn"
     //% speed.defl=100
     //% speed.min=-100
@@ -36,9 +21,9 @@ namespace microcode {
     //% turnRatio.min=-200
     //% turnRatio.max=200
     //% turnRatio.defl=100
-    export function motorTurn(turnRatio: number, speed: number) {
+    export function motorSteer(turnRatio: number, speed: number) {
         checkRobotDriver()
-        robot.motorTurn(turnRatio, speed)
+        robot.motorRun(turnRatio, speed)
     }
 
     /**
