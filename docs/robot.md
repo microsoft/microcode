@@ -55,17 +55,20 @@ On the microcode side,
 
 It is not uncommon for 2 wheeled robot to slightly drift towards one side. To correct this behavior, you can configure a drift parameter on the robot.
 
-On the microcode side,
-
--   Create a program that orders the robot to go forward
-
 On the robot micro:bit,
 
 -   Press A+B to switch to the `DRIFT` configuration mode.
--   Press A and B to increase or decrease the drift. A positive drift adjustment will steer the robot to the right.
--   Let the robot go forward until it goes as straight as possible
+-   Let the robot go forward until it goes as straight as possible by pressing A and B to increase or modify the drift.
+-   Once you have found the perfect drift value, make sure to write it down.
 
-Write down the drift parameter as you will have to configure it every time you reset the robot micro:bit.
+You can also create new .hex file that contains the adjusted drift:
+
+-   open the [MakeCode for micro:bit editor](https://makecode.microbit.org/)
+-   create a new project
+-   add the **microcode robot extension** at https://github.com/microsoft/microcode/robot .
+-   in `on start`, drag the bloc to select your robot type
+-   drag the block to configure the drift value, voila!
+-   drag the block to configure the radio group
 
 ## Tiles
 
