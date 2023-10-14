@@ -170,14 +170,18 @@ namespace microcode {
                     right += s * (1 - (this.currentTurnRatio / 100))
                 }
 
-                // apply drift
-                const drift = Math.abs(s) > Math.abs(this.runDrift) ? this.runDrift / 2 : 0
-                left -= drift
-                right += drift
-
                 // clamp
                 left = Math.clamp(-ns, ns, Math.round(left))
                 right = Math.clamp(-ns, ns, Math.round(right))
+
+                // apply drift
+                const drift = this.runDrift / 2
+                left -= drift
+                right += drift
+
+                // clamp again
+                left = Math.clamp(-100, 100, Math.round(left))
+                right = Math.clamp(-100, 100, Math.round(right))
                 this.setMotorState(left, right)
             }
         }
