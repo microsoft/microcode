@@ -4,6 +4,7 @@
 //% color="#ff6800" icon="\uf1b9" weight=15
 //% groups=['Move', 'Input', 'Configuration']
 namespace microcode {
+    const MAX_GROUPS = 32
     const RUN_STOP_THRESHOLD = 2
     const TARGET_SPEED_THRESHOLD = 4
     const SPEED_TRANSITION_ALPHA = 0.97
@@ -12,6 +13,12 @@ namespace microcode {
     const TURN_RATIO_TRANSITION_ALPHA = 0.2
     const ULTRASONIC_MIN_READING = 1
     const LINE_ASSIST_LOST_THRESHOLD = 72
+
+    function radioGroupFromDeviceSerialNumber()
+    {
+        const sn = control.deviceLongSerialNumber()
+        return (sn.hash(10) % 20) + 1
+    }
 
     /**
      *
@@ -31,6 +38,7 @@ namespace microcode {
         private targetSpeed: number = 0
         private currentTurnRatio = 0
         private targetTurnRatio: number = 0
+        private radioGroup: number
 
         /**
          * Gets the latest line sensor state
@@ -44,7 +52,6 @@ namespace microcode {
 
         constructor(robot: robots.Robot) {
             this.robot = robot
-
             microcode.robot = this
         }
 
@@ -55,7 +62,7 @@ namespace microcode {
                 if (this.configDrift)
                     this.runDrift--
                 else
-                    robots.previousGroup()
+                    this.previousGroup()
                 this.showConfigurationState()
             })
             input.onButtonPressed(Button.B, () => {
@@ -64,7 +71,7 @@ namespace microcode {
                 if (this.configDrift)
                     this.runDrift++
                 else
-                    robots.nextGroup()
+                    this.nextGroup()
                 this.showConfigurationState()
             })
             input.onButtonPressed(Button.AB, () => {
@@ -78,13 +85,14 @@ namespace microcode {
         private showConfigurationState(showTitle?: boolean) {
             this.showConfiguration = true
             const title = this.configDrift ? "DRIFT" : "RADIO"
-            const value = this.configDrift ? this.runDrift : robots.radioGroup
+            const value = this.configDrift ? this.runDrift : this.radioGroup
             led.stopAnimation()
             if (showTitle) {
                 basic.clearScreen()
-                basic.showString(title, 60)
+                basic.showString(title + " " + value, 60)
             }
-            basic.showNumber(value, 50)
+            else
+                basic.showNumber(value, 60)
             this.showConfiguration = false
         }
 
@@ -108,7 +116,10 @@ namespace microcode {
             this.configureButtons()
             basic.forever(() => this.updateSonar()) // potentially slower
             control.inBackground(() => this.backgroundWork())
-            this.showConfigurationState(true)
+            // schedule after main
+            control.inBackground(() => {
+                this.showConfigurationState(true)
+            })
         }
 
         private backgroundWork() {
@@ -130,11 +141,7 @@ namespace microcode {
         private inRadioMessageId = 0
 
         private startRadioReceiver() {
-            // handle radio package messages
-            //radio.onReceivedBuffer(buf => {
-            //    const msg = robots.decodeRobotCommand(buf)
-            //    this.dispatch(msg)
-            //})
+            this.setRadioGroup(radioGroupFromDeviceSerialNumber())
             radio.setTransmitSerialNumber(true);
             radio.onReceivedNumber(code => {
                 this.decodeRobotCompactCommand(code)
@@ -257,7 +264,7 @@ namespace microcode {
                     this.lastSonarValue = d
                     this.playTone(2400 - d * 400, 200 + d * 25)
                     const msg = microcode.robots.RobotCompactCommand.ObstacleState | d
-                    microcode.robots.sendCompactCommand(msg)
+                    this.sendCompactCommand(msg)
                     microcode.robots.raiseEvent(microcode.robots.RobotCompactCommand.ObstacleState)
                 }
             }
@@ -307,7 +314,7 @@ namespace microcode {
                 this.currentLineState = ls
                 this.currentLineStateCounter = 0
                 const msg = microcode.robots.RobotCompactCommand.LineState | this.currentLineState
-                microcode.robots.sendCompactCommand(msg)
+                this.sendCompactCommand(msg)
                 microcode.robots.raiseEvent(msg)
             }
             this.currentLineStateCounter++
@@ -332,6 +339,25 @@ namespace microcode {
                 this.stopToneMillis = 0
             }
         }
+
+        private previousGroup() {
+            this.setRadioGroup(this.radioGroup === 1 ? MAX_GROUPS - 1 : this.radioGroup - 1)
+        }
+
+        private nextGroup() {
+            this.setRadioGroup(this.radioGroup === MAX_GROUPS - 1 ? 1 : this.radioGroup + 1)
+        }
+
+        setRadioGroup(newGroup: number) {
+            if (newGroup < 0) newGroup += MAX_GROUPS
+            this.radioGroup = newGroup % MAX_GROUPS
+            radio.setGroup(this.radioGroup)
+        }
+
+        private sendCompactCommand(cmd: microcode.robots.RobotCompactCommand) {
+            radio.sendNumber(cmd)
+        }
+
 
         private decodeRobotCompactCommand(msg: number) {
             this.inRadioMessageId++

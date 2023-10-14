@@ -93,9 +93,8 @@ namespace microcode {
         robot.lineAssist = !!enabled
     }
 
-
     /**
-    * A value that corrects the ratio of power between the left and the right motor to account for hardware differences.
+    * Sets a value that corrects the ratio of power between the left and the right motor to account for hardware differences.
     */
     //% block="robot set motor drift to %drift"
     //% blockId="microcoderobotsetmotordrift"
@@ -106,5 +105,21 @@ namespace microcode {
     export function setMotorDrift(drift: number) {
         checkRobotDriver()
         robot.runDrift = Math.clamp(-25, 25, drift)
+        led.stopAnimation()
+    }
+
+    /**
+     * Sets the radio group used to communicate commands.
+    */
+    //% block="robot set radio group to $group"
+    //% blockId="microcoderobotsetradiogroup"
+    //% group="Configuration"
+    //% weight=9
+    //% group.min=1
+    //% group.max=32
+    export function setRadioGroup(group: number) {
+        checkRobotDriver()
+        robot.setRadioGroup(group)
+        led.stopAnimation()
     }
 }
