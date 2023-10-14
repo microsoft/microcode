@@ -1,11 +1,4 @@
 namespace microcode {
-    export enum TileType {
-        SENSOR = 1,
-        FILTER = 2,
-        ACTUATOR = 3,
-        MODIFIER = 4,
-    }
-
     // TODO: make into class
     export interface Constraints {
         provides?: string[]
@@ -165,7 +158,7 @@ namespace microcode {
     export class SensorDefn extends StmtTileDefn {}
 
     export class FilterModifierBase extends TileDefn {
-        constructor(type: TileType, tid: string, public category: string) {
+        constructor(tid: string, public category: string) {
             super(tid)
         }
 
@@ -202,7 +195,7 @@ namespace microcode {
 
     export class FilterDefn extends FilterModifierBase {
         constructor(tid: string, category: string, priority: number) {
-            super(TileType.FILTER, tid, category)
+            super(tid, category)
             this.priority = priority
         }
     }
@@ -218,7 +211,7 @@ namespace microcode {
 
     export class ModifierDefn extends FilterModifierBase {
         constructor(tid: string, category: string, priority: number) {
-            super(TileType.MODIFIER, tid, category)
+            super(tid, category)
             this.priority = priority
         }
     }
