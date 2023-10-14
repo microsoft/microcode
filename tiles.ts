@@ -40,7 +40,6 @@ namespace microcode {
         function addPress(tid: string, evt: number) {
             const press_event = new SensorDefn(tid)
             press_event.serviceClassName = "button"
-            press_event.eventCode = evt
             press_event.serviceInstanceIndex = 0
             press_event.constraints = {
                 allow: {
@@ -111,11 +110,9 @@ namespace microcode {
         const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event", 99)
         temp.serviceClassName = "temperature"
         temp.jdKind = JdKind.Temperature
-        temp.eventCode = 2
 
         const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
         radio_recv.serviceClassName = "radio"
-        radio_recv.eventCode = 0x91
         radio_recv.jdKind = JdKind.Radio
         radio_recv.constraints.provides = [TID_SENSOR_RADIO_RECEIVE]
 
@@ -137,7 +134,6 @@ namespace microcode {
         if (CAR_TILES) {
             const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in", 500)
             wall.serviceClassName = "radio"
-            wall.eventCode = 0x91
             wall.jdKind = JdKind.Radio
             wall.constraints.allow.categories = []
             wall.constraints.allow.tiles = only5
@@ -157,7 +153,6 @@ namespace microcode {
         rotary.serviceClassName = "rotaryEncoder"
         rotary.jdExternalClass = 0x10fa29c9
         rotary.jdKind = JdKind.Rotary
-        rotary.eventCode = 1
 
         function addEvent(tid: string, type: string, id: number) {
             const ev = new FilterDefn(tid, type, 10)
@@ -200,7 +195,6 @@ namespace microcode {
 
             const line = makeSensor(TID_SENSOR_LINE, "line", 505)
             line.serviceClassName = "radio"
-            line.eventCode = 0x91
             line.jdKind = JdKind.Radio
             line.constraints.allow.categories = []
             line.constraints.allow.tiles = [
@@ -238,7 +232,6 @@ namespace microcode {
             },
         }
         accel.serviceClassName = "accelerometer"
-        accel.eventCode = 0x8b // shake
         accel.priority = 20
         tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
 
@@ -267,7 +260,6 @@ namespace microcode {
         }
         microphone.priority = 30
         microphone.serviceClassName = "soundLevel"
-        microphone.eventCode = 1 // loud by default
         tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
         function addSoundFilter(tid: string, eventCode: number) {
             const soundFilter = new FilterDefn(tid, "sound_event", 10)

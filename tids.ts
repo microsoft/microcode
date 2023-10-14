@@ -776,6 +776,29 @@ namespace microcode {
         return false
     }
 
+    // Jacdac event codes
+    export function eventCode(tid: Tid) {
+        switch (tid) {
+            case Tid.TID_SENSOR_TEMP:
+            case Tid.TID_FILTER_QUIET:
+            case Tid.TID_SENSOR_RELEASE:
+                return 2
+            case Tid.TID_SENSOR_LINE:
+            case Tid.TID_SENSOR_CAR_WALL:
+            case Tid.TID_SENSOR_RADIO_RECEIVE:
+                return 0x91
+            case Tid.TID_SENSOR_MICROPHONE:
+            case Tid.TID_SENSOR_ROTARY:
+            case Tid.TID_FILTER_LOUD:
+            case Tid.TID_SENSOR_PRESS:
+                return 1
+            case Tid.TID_SENSOR_ACCELEROMETER:
+                return 0x8b
+            default:
+                return undefined
+        }
+    }
+
     // TODO: we don't need separate bits for everything.
     // TODO: only certain things can be combined. Analyze and optimize
     export enum TidKinds {

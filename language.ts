@@ -170,12 +170,7 @@ namespace microcode {
         public serviceInstanceIndex: number = 0
     }
 
-    export class SensorDefn extends StmtTileDefn {
-        public eventCode: number
-        constructor(tid: string) {
-            super(tid)
-        }
-    }
+    export class SensorDefn extends StmtTileDefn {}
 
     export class FilterModifierBase extends TileDefn {
         constructor(type: TileType, tid: string, public category: string) {

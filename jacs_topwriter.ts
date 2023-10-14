@@ -547,8 +547,8 @@ namespace jacs {
 
         lookupEventCode(role: Role, rule: microcode.RuleDefn) {
             const sensor = rule.sensor
-            if (sensor.eventCode != undefined) {
-                let evCode = sensor.eventCode
+            let evCode = microcode.eventCode(microcode.tidToEnum(sensor.tid))
+            if (evCode != undefined) {
                 for (const m of rule.filters)
                     if (m.jdKind == microcode.JdKind.EventCode)
                         evCode = m.jdParam
