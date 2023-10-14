@@ -754,6 +754,9 @@ namespace microcode {
     }
 
     export function isTidNotTerminal(tid: Tid) {
+        if (tid == Tid.TID_SENSOR_CAR_WALL) return true
+        // TODO: wall sensor only gets one value, same with slider
+        // TODO: switch page only gets one value
         if (!isFilter(tid)) return true
         if (
             (Tid.TID_FILTER_COIN_1 <= tid && tid <= Tid.TID_FILTER_COIN_5) ||
