@@ -11,7 +11,7 @@ namespace microcode {
     */
     //% weight=98
     //% group="Motors"
-    //% block="robot steer $turnRatio at $speed \\%"
+    //% block="robot run with turn $turnRatio at speed $speed \\%"
     //% blockid="microcoderobotmotorturn"
     //% speed.defl=100
     //% speed.min=-100
@@ -20,8 +20,7 @@ namespace microcode {
     //% turnRatio.shadow=turnRatioPicker
     //% turnRatio.min=-200
     //% turnRatio.max=200
-    //% turnRatio.defl=100
-    export function motorSteer(turnRatio: number, speed: number) {
+    export function motorRun(turnRatio: number, speed: number) {
         checkRobotDriver()
         robot.motorRun(turnRatio, speed)
     }
