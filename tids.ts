@@ -628,6 +628,10 @@ namespace microcode {
                 return TID_FILTER_LINE_BOTH
             case Tid.TID_FILTER_LINE_NEITHER:
                 return TID_FILTER_LINE_NEITHER
+            case Tid.TID_FILTER_LINE_NEITHER_LEFT:
+                return TID_FILTER_LINE_NEITHER_LEFT
+            case Tid.TID_FILTER_LINE_NEITHER_RIGHT:
+                return TID_FILTER_LINE_NEITHER_RIGHT
             case Tid.TID_ACTUATOR_SWITCH_PAGE:
                 return TID_ACTUATOR_SWITCH_PAGE
             case Tid.TID_ACTUATOR_SPEAKER:
@@ -752,6 +756,12 @@ namespace microcode {
                 return TID_MODIFIER_CAR_SPIN_LEFT
             case Tid.TID_MODIFIER_CAR_SPIN_RIGHT:
                 return TID_MODIFIER_CAR_SPIN_RIGHT
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_1:
+                return TID_MODIFIER_CAR_LED_COLOR_1
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_2:
+                return TID_MODIFIER_CAR_LED_COLOR_2
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_3:
+                return TID_MODIFIER_CAR_LED_COLOR_3
             default:
                 return undefined
         }
