@@ -106,7 +106,7 @@ namespace microcode {
             this.leds = this.robot.leds()
             if (this.leds)
                 this.ledsBuffer = Buffer.create(this.leds.count * 3)
-
+            this.setColor(0x0000ff)
             // stop motors
             this.motorStop()
             // wake up sensors
@@ -362,18 +362,6 @@ namespace microcode {
             if (newGroup < 0) newGroup += MAX_GROUPS
             this.radioGroup = newGroup % MAX_GROUPS
             radio.setGroup(this.radioGroup)
-
-            const radioColors = [
-                0x00ff00,
-                0xff0000,
-                0xFFA500,
-                0xFFFF00,
-                0x4b0082,
-                0x8a2be2,
-                0xFF00FF
-            ]
-            const c = radioColors[(this.radioGroup - 1) % radioColors.length]
-            this.setColor(c)
         }
 
         private sendCompactCommand(cmd: microcode.robots.RobotCompactCommand) {
