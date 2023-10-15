@@ -110,10 +110,12 @@ namespace microcode {
             }
         }
 
-        lineState(): RobotLineState {
-            const left = pins.digitalReadPin(DigitalPin.P13)
-            const right = pins.digitalReadPin(DigitalPin.P12)
-            return (left << 0) | (right << 1)
+        lineDetectors() {
+            return {
+                left: DigitalPin.P13,
+                right: DigitalPin.P14,
+                lineHigh: true
+            }
         }
 
         headlightsSetColor(red: number, green: number, blue: number) {

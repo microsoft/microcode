@@ -40,10 +40,12 @@ namespace microcode {
             pins.digitalWritePin(DigitalPin.P12, on)
         }
 
-        lineState(): RobotLineState {
-            const left = pins.digitalReadPin(DigitalPin.P13) ? 1 : 0
-            const right = pins.digitalReadPin(DigitalPin.P14) ? 1 : 0
-            return (left >> 0) | (right >> 1)
+        lineDetectors() {
+            return {
+                left: DigitalPin.P13,
+                right: DigitalPin.P14,
+                lineHigh: true
+            }
         }
 
         leds(): robots.RobotLEDs {

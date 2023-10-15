@@ -46,6 +46,7 @@ namespace microcode {
         private ledsBuffer: Buffer
 
         private sonar: robots.Sonar
+        private lineDetectors: robots.LineDetectors
 
         constructor(robot: robots.Robot) {
             this.robot = robot
@@ -113,6 +114,7 @@ namespace microcode {
             // stop motors
             this.motorStop()
             // wake up sensors
+            this.lineDetectors = this.robot.lineDetectors()
             this.sonar = this.robot.sonar()
             if (this.sonar)
                 pins.setPull(this.sonar.trig, PinPullMode.PullNone);
@@ -319,22 +321,23 @@ namespace microcode {
         private ultrasonicDistanceOnce() {
             if (!this.sonar)
                 return this.robot.ultrasonicDistance()
+            else {
+                const trig = this.sonar.trig
+                const echo = this.sonar.echo
+                const maxCmDistance = 50
+                const TO_CM = 58
 
-            const trig = this.sonar.trig
-            const echo = this.sonar.echo
-            const maxCmDistance = 50
-            const TO_CM = 58
+                // send pulse
+                pins.digitalWritePin(trig, 0);
+                control.waitMicros(4);
+                pins.digitalWritePin(trig, 1);
+                control.waitMicros(10);
+                pins.digitalWritePin(trig, 0);
 
-            // send pulse
-            pins.digitalWritePin(trig, 0);
-            control.waitMicros(4);
-            pins.digitalWritePin(trig, 1);
-            control.waitMicros(10);
-            pins.digitalWritePin(trig, 0);
-
-            // read pulse
-            const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * TO_CM);
-            return Math.idiv(d, TO_CM);
+                // read pulse
+                const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * TO_CM);
+                return Math.idiv(d, TO_CM);
+            }
         }
 
         private ultrasonicDistance() {
@@ -349,8 +352,17 @@ namespace microcode {
             return this.currentUltrasonicDistance
         }
 
+        private readLineState() {
+            if (this.lineDetectors) {
+                const left = (pins.digitalReadPin(this.lineDetectors.left) > 0) === this.lineDetectors.lineHigh ? 1 : 0
+                const right = (pins.digitalReadPin(this.lineDetectors.right) > 0) === this.lineDetectors.lineHigh ? 1 : 0
+                return (left << 0) | (right << 1)
+            } else 
+                return this.robot.lineState()
+        }
+
         private lineState(): RobotLineState {
-            const ls = this.robot.lineState()
+            const ls = this.readLineState()            
             if (ls !== this.currentLineState) {
                 const prev = this.previousLineState
                 this.previousLineState = this.currentLineState

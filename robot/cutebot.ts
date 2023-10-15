@@ -52,23 +52,6 @@ namespace microcode {
         pins.i2cWriteBuffer(STM8_ADDRESSS, buf)
     }
 
-    function ultrasonic(): number {
-        // send pulse
-        pins.digitalWritePin(DigitalPin.P8, 0)
-        control.waitMicros(2)
-        pins.digitalWritePin(DigitalPin.P8, 1)
-        control.waitMicros(10)
-        pins.digitalWritePin(DigitalPin.P8, 0)
-        // read pulse
-        const maxCmDistance = 100
-        const d = pins.pulseIn(
-            DigitalPin.P12,
-            PulseValue.High,
-            maxCmDistance * 50
-        )
-        return Math.floor((d * 34) / 2 / 1000)
-    }
-
     class ElecfreaksCutebotRobot extends robots.Robot {
         constructor() {
             super()
@@ -88,11 +71,12 @@ namespace microcode {
             singleheadlights(red, green, blue)
         }
 
-        lineState(): RobotLineState {
-            const left = pins.digitalReadPin(DigitalPin.P13) ? 0 : 1
-            const right = pins.digitalReadPin(DigitalPin.P14) ? 0 : 1
-
-            return (left << 0) | (right << 1)
+        lineDetectors() {
+            return {
+                left: DigitalPin.P13,
+                right: DigitalPin.P14,
+                lineHigh: false
+            }
         }
         
         leds() {

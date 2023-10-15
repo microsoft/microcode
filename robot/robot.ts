@@ -9,6 +9,12 @@ namespace microcode.robots {
         trig: DigitalPin
     }
 
+    export interface LineDetectors {
+        left: DigitalPin
+        right: DigitalPin
+        lineHigh: boolean
+    }
+
     export class Robot {
         musicVolume = 64
         maxLineSpeed = 40
@@ -97,6 +103,13 @@ namespace microcode.robots {
         leds(): RobotLEDs {
             return undefined;
         }
+
+        /**
+         * Optional: pair of pins used to read the line state
+         */
+        lineDetectors(): LineDetectors {
+            return undefined
+        } 
 
         /**
          * Optional: SR04 sonar configuration

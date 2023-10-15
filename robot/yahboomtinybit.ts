@@ -16,38 +16,6 @@ namespace microcode {
         pins.i2cWriteBuffer(PWM_ADD, buf);
     }
 
-   /*
-    function Ultrasonic_CarV1(): number {
-
-        let list: Array<number> = [0, 0, 0, 0, 0];
-        for (let i = 0; i < 5; i++) {
-            pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
-            pins.digitalWritePin(DigitalPin.P16, 0);
-            control.waitMicros(2);
-            pins.digitalWritePin(DigitalPin.P16, 1);
-            control.waitMicros(15);
-            pins.digitalWritePin(DigitalPin.P16, 0);
-            let d = pins.pulseIn(DigitalPin.P15, PulseValue.High, 43200);
-            list[i] = Math.floor(d / 40);
-        }
-        list.sort();
-        let length = (list[1] + list[2] + list[3]) / 3;
-        return Math.floor(length);
-    }
-
-    function Ultrasonic_CarV2(): number {
-        pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
-        pins.digitalWritePin(DigitalPin.P16, 0);
-        control.waitMicros(4);
-        pins.digitalWritePin(DigitalPin.P16, 1);
-        control.waitMicros(10);
-        pins.digitalWritePin(DigitalPin.P16, 0);
-
-        let d = pins.pulseIn(DigitalPin.P15, PulseValue.High, 500 * 58);
-        return Math.floor(d / 58);
-    }
-    */
-
     class YahboomTinybitRobot extends robots.Robot {
         constructor() {
             super()
@@ -150,11 +118,12 @@ namespace microcode {
             return { trig: DigitalPin.P16, echo: DigitalPin.P15 }
         }
 
-        lineState(): RobotLineState {
-            const left = pins.digitalReadPin(DigitalPin.P13);
-            const right = pins.digitalReadPin(DigitalPin.P14);
-
-            return (left << 0) | (right << 1)
+        lineDetectors() {
+            return {
+                left: DigitalPin.P13,
+                right: DigitalPin.P14,
+                lineHigh: true
+            }
         }
     }
 
