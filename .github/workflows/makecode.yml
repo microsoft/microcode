@@ -43,3 +43,4 @@ jobs:
                   makecode -c mkc-elecfreakscutebotpro.json
                   makecode -c mkc-yahboomtinybit.json
                   makecode -c mkc-keystudiominismartrobot.json
+                  makecode -c mkc-dfrobotmaqueen.json

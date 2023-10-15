@@ -45,6 +45,8 @@ jobs:
                   cp ./built/binary.hex ../assets/microcode-robot-yahboom-tinybit.hex
                   makecode -c mkc-keystudiominismartrobot.json
                   cp ./built/binary.hex ../assets/microcode-robot-keystudio-minismartrobot.hex
+                  makecode -c mkc-dfrobotmaqueen.json
+                  cp ./built/binary.hex ../assets/microcode-robot-dfrobot-maqueen.hex
             - name: copy files
               run: |
                   cp ./built/binary.js ./assets/js/binary.js
