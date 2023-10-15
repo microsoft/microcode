@@ -175,32 +175,32 @@ namespace microcode {
             const both = addEvent(
                 TID_FILTER_LINE_BOTH,
                 "line",
-                robots.RobotCompactCommand.Both
+                robots.RobotCompactCommand.LineBoth
             )
             const left = addEvent(
                 TID_FILTER_LINE_LEFT,
                 "line",
-                robots.RobotCompactCommand.Left
+                robots.RobotCompactCommand.LineLeft
             )
             const right = addEvent(
                 TID_FILTER_LINE_RIGHT,
                 "line",
-                robots.RobotCompactCommand.Right
+                robots.RobotCompactCommand.LineRight
             )
             const neither = addEvent(
                 TID_FILTER_LINE_NEITHER,
                 "line",
-                robots.RobotCompactCommand.None
+                robots.RobotCompactCommand.LineNone
             )
             const neither_left = addEvent(
                 TID_FILTER_LINE_NEITHER_LEFT,
                 "line",
-                robots.RobotCompactCommand.NoneFromLeft
+                robots.RobotCompactCommand.LineNoneFromLeft
             )
             const neither_right = addEvent(
                 TID_FILTER_LINE_NEITHER_RIGHT,
                 "line",
-                robots.RobotCompactCommand.NoneFromRight
+                robots.RobotCompactCommand.LineNoneFromRight
             )
             both.jdKind =
                 left.jdKind =
@@ -219,9 +219,9 @@ namespace microcode {
                 TID_FILTER_LINE_LEFT,
                 TID_FILTER_LINE_RIGHT,
                 TID_FILTER_LINE_BOTH,
-                TID_FILTER_LINE_NEITHER,
                 TID_FILTER_LINE_NEITHER_LEFT,
                 TID_FILTER_LINE_NEITHER_RIGHT,
+                TID_FILTER_LINE_NEITHER,
             ]
         }
 
