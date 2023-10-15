@@ -1,5 +1,9 @@
 namespace microcode.robots {
 
+    export interface RobotLEDs {
+        pin: DigitalPin; count: number;
+    }
+
     export class Robot {
         musicVolume = 64
         maxLineSpeed = 40
@@ -12,8 +16,37 @@ namespace microcode.robots {
         ultrasonicMinReading = 1
         lineAssistLostThreshold = 72
 
-        constructor() {
+        /**
+         * A map from microcode command to speed, turnratio values
+         */
+        readonly commands: { [index: number]: { speed?: number; turnRatio?: number } } = {}
 
+        constructor() {
+            this.commands[microcode.robots.RobotCompactCommand.MotorRunForward] = {
+                speed: 70
+            }
+            this.commands[microcode.robots.RobotCompactCommand.MotorRunForwardFast] = {
+                speed: 100
+            }
+            this.commands[microcode.robots.RobotCompactCommand.MotorRunBackward] = {
+                speed: -60
+            }
+            this.commands[microcode.robots.RobotCompactCommand.MotorTurnLeft] = {
+                turnRatio: -50,
+                speed: 70,
+            }
+            this.commands[microcode.robots.RobotCompactCommand.MotorTurnRight] = {
+                turnRatio: 50,
+                speed: 70
+            }
+            this.commands[microcode.robots.RobotCompactCommand.MotorSpinLeft] = {
+                turnRatio: -200,
+                speed: 60
+            }
+            this.commands[microcode.robots.RobotCompactCommand.MotorSpinRight] = {
+                turnRatio: 200,
+                speed: 60
+            }
         }
 
         /*
@@ -24,7 +57,7 @@ namespace microcode.robots {
         }
 
         /**
-         * Open robotic arm if present, in %
+         * Optional: Open robotic arm if present, in %
          */
         armOpen(aperture: number) {
 
@@ -38,14 +71,26 @@ namespace microcode.robots {
         }
 
         /**
-         * Optional: reads the sonar, in cm
+         * Optional: reads the sonar, in cm.
+         * @returns distance in cm; negative number if unsupported
          */
         ultrasonicDistance(): number {
             return undefined
         }
 
+        /**
+         * Optional: Reads the line detection line
+         * @returns state of both line detectors
+         */
         lineState(): RobotLineState {
             return RobotLineState.None
+        }
+
+        /**
+         * Optional: returns the pin, number of LEDs and LED layout for the bottom LEDs
+         */
+        leds(): RobotLEDs {
+            return undefined;
         }
     }
 }

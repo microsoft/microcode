@@ -1,7 +1,7 @@
-//microcode.elecfreaksCuteBot.start()
+microcode.elecfreaksCuteBot.start()
 //microcode.yahboomTinyBit.start()
 //microcode.elecfreaksCuteBotPro.start()
-microcode.keyStudioMiniSmartRobot.start()
+//microcode.keyStudioMiniSmartRobot.start()
 //microcode.setMotorDrift(6)
 
 microcode.setRadioGroup(10)
@@ -13,16 +13,21 @@ const r = microcode.robot
 r.lineAssist = true
 //r.motorRun(100, 100)
 
+let wasLeft = false
 basic.forever(() => {
     const lines = r.currentLineState
-    if (lines === RobotLineState.Left)
-        r.motorRun(-80, 100)
-    else if (lines === RobotLineState.Right)
-        r.motorRun(80, 100)
+    if (lines === RobotLineState.Left) {
+        r.motorRun(-60, 100)
+        wasLeft = true
+    }
+    else if (lines === RobotLineState.Right) {
+        r.motorRun(60, 100)
+        wasLeft = false
+    }
     else if (lines === RobotLineState.Both)
-        r.motorRun(0, 100)
+        r.motorRun(0, 70)
     else
-        r.motorRun(-150, 100)
+        r.motorRun(wasLeft ? -200 : 200, 100)
 })
 
 /*

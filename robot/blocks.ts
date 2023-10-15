@@ -115,11 +115,22 @@ namespace microcode {
     //% blockId="microcoderobotsetradiogroup"
     //% group="Configuration"
     //% weight=9
-    //% group.min=1
-    //% group.max=32
-    export function setRadioGroup(group: number) {
+    //% value.min=1
+    //% value.max=32
+    export function setRadioGroup(value: number) {
         checkRobotDriver()
-        robot.setRadioGroup(group)
+        robot.setRadioGroup(value)
         led.stopAnimation()
+    }
+
+    /**
+     * Sets the LED color
+     */
+    //% blockId="microcoderobotsetcolor" block="robot set color $rgb"
+    //% group="Configuration"
+    //% rgb.shadow=neopixel_colors
+    export function setColor(rgb: number) {
+        checkRobotDriver()
+        robot.setColor(rgb)
     }
 }

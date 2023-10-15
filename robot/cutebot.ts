@@ -98,6 +98,13 @@ namespace microcode {
 
             return (left << 0) | (right << 1)
         }
+        
+        leds() {
+            return {
+                pin: DigitalPin.P15,
+                count: 2
+            }
+        }
     }
 
     /**
