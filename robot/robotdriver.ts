@@ -418,7 +418,6 @@ namespace microcode {
         }
 
         private decodeRobotCompactCommand(msg: number) {
-            this.inRadioMessageId++
             switch (msg) {
                 case microcode.robots.RobotCompactCommand.MotorStop:
                 case microcode.robots.RobotCompactCommand.MotorTurnLeft:
@@ -428,6 +427,7 @@ namespace microcode {
                 case microcode.robots.RobotCompactCommand.MotorRunForwardFast:
                 case microcode.robots.RobotCompactCommand.MotorRunForward:
                 case microcode.robots.RobotCompactCommand.MotorRunBackward: {
+                    this.inRadioMessageId++
                     const command = this.robot.commands[msg] || {}
                     const turnRatio = command.turnRatio || 0
                     const speed = command.speed || 0
