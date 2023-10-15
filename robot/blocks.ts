@@ -111,7 +111,7 @@ namespace microcode {
     /**
      * Sets the radio group used to communicate commands.
     */
-    //% block="robot set radio group to $group"
+    //% block="robot set radio group to $value"
     //% blockId="microcoderobotsetradiogroup"
     //% group="Configuration"
     //% weight=9
@@ -128,7 +128,7 @@ namespace microcode {
      */
     //% blockId="microcoderobotsetcolor" block="robot set color $rgb"
     //% group="Configuration"
-    //% rgb.shadow=neopixel_colors
+    //% rgb.shadow=colorNumberPicker
     export function setColor(rgb: number) {
         checkRobotDriver()
         robot.setColor(rgb)
