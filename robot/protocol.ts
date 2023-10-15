@@ -46,11 +46,11 @@ namespace microcode.robots {
          * Line sensor state change
          */
         LineState = 0xfffff30,
-        Left = LineState | RobotLineState.Left,
-        Right = LineState | RobotLineState.Right,
-        Both = LineState | RobotLineState.Both,
-        None = LineState | RobotLineState.None,
-        NoneFromLeft = LineState | RobotLineState.NoneFromLeft,
-        NoneFromRight = LineState | RobotLineState.NoneFromRight,
+        LineLeft = LineState | RobotLineState.Left,
+        LineRight = LineState | RobotLineState.Right,
+        LineBoth = LineState | RobotLineState.Both,
+        LineNone = LineState | RobotLineState.None,
+        LineNoneFromLeft = LineState | RobotLineState.NoneFromLeft,
+        LineNoneFromRight = LineState | RobotLineState.NoneFromRight,
     }
 }

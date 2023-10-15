@@ -335,10 +335,10 @@ namespace microcode {
                 let msg: microcode.robots.RobotCompactCommand;
                 if (this.currentLineState === RobotLineState.None
                     && prev === RobotLineState.Left)
-                    msg = microcode.robots.RobotCompactCommand.NoneFromLeft
+                    msg = microcode.robots.RobotCompactCommand.LineNoneFromLeft
                 else if (this.currentLineState === RobotLineState.None
                     && prev === RobotLineState.Right)
-                    msg = microcode.robots.RobotCompactCommand.NoneFromRight
+                    msg = microcode.robots.RobotCompactCommand.LineNoneFromRight
                 else
                     msg = microcode.robots.RobotCompactCommand.LineState | this.currentLineState
 
