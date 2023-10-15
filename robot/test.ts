@@ -11,8 +11,8 @@ microcode.setMotorDrift(0)
 
 const r = microcode.robot
 r.lineAssist = true
-r.motorRun(100, 100)
-/*
+//r.motorRun(100, 100)
+
 basic.forever(() => {
     const lines = r.currentLineState
     if (lines === RobotLineState.Left)
@@ -24,7 +24,7 @@ basic.forever(() => {
     else
         r.motorRun(-150, 100)
 })
-*/
+
 /*
 // calibrate
 basic.forever(() => {

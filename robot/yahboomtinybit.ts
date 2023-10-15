@@ -164,7 +164,7 @@ namespace microcode {
     /**
      * Yahboom Tiny:bit
      */
-    //% fixedInstance whenUsed block="yahboom tiny:bit"
+    //% fixedInstance whenUsed block="yahboom tiny:bit" weight=99
     export const yahboomTinyBit = new RobotDriver(new YahboomTinybitRobot())
 
 }

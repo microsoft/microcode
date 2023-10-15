@@ -174,7 +174,7 @@ namespace microcode {
     /**
      * Cute:bot PRO from Elecfreaks
      */
-    //% fixedInstance whenUsed block="elecfreaks cutebot PRO"
+    //% fixedInstance whenUsed block="elecfreaks cutebot PRO" weight=50
     export const elecfreaksCuteBotPro = new RobotDriver(
         new ElecfreaksCutebotProRobot()
     )
