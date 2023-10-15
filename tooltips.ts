@@ -153,7 +153,9 @@ namespace microcode {
         else if (id === "F23L") res = "left";
         else if (id === "F23R") res = "right";
         else if (id === "F23B") res = "both";
-        else if (id === "F23N") res = "none";        
+        else if (id === "F23N") res = "none";
+        else if (id === "F23NL") res = "none from left";
+        else if (id === "F23NR") res = "none from right";        
         return res
     }
 }

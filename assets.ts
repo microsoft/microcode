@@ -39,6 +39,10 @@ namespace microcode {
         if (name == TID_FILTER_LINE_RIGHT) return icondb.line_right_on
         if (name == TID_FILTER_LINE_BOTH) return icondb.line_both_on
         if (name == TID_FILTER_LINE_NEITHER) return icondb.line_neither_on
+        if (name == TID_FILTER_LINE_NEITHER_LEFT)
+            return icondb.line_none_from_left
+        if (name == TID_FILTER_LINE_NEITHER_RIGHT)
+            return icondb.line_none_from_right
         return null
     }
 
@@ -3273,6 +3277,44 @@ d d d d d d d d d d d d d d d d
     . d d . . c f f f c . . d d . .
     . . . . . c f f f c . . . . . .
 `
+
+    export const line_none_from_left = img`
+. c f f f c . . . . . . . . . .
+. c f f f c . . . . . . . . . .
+. c f f f c . . . . . . . . . .
+. c f f f c . . . . . . d d . d
+. c f f f c . . . . . d 1 d . d
+. c f f f c . . . . d 1 1 d . d
+. c f f f c . . . d 1 1 1 d . d
+. c f f f c . . d 1 1 1 1 d . d
+. c f f f c . . d 1 1 1 1 d . d
+. c f f f c . . d 1 1 1 1 d . d
+. c f f f c . . d 1 1 1 1 d . d
+. c f f f c . . d 1 1 1 d . . .
+. c f f f c . . d 1 1 d . . . .
+. c f f f c . . d 1 d . . . . .
+. c f f f c . . d d . . . . . .
+. c f f f c . . . . . . . . . .
+`
+
+    export const line_none_from_right = img`
+    . . . . . . . . . . c f f f c .
+    . . . . . . . . . . c f f f c .
+    . . . . . . . . . . c f f f c .
+    d . d d . . . . . . c f f f c .
+    d . d 1 d . . . . . c f f f c .
+    d . d 1 1 d . . . . c f f f c .
+    d . d 1 1 1 d . . . c f f f c .
+    d . d 1 1 1 1 d . . c f f f c .
+    d . d 1 1 1 1 d . . c f f f c .
+    d . d 1 1 1 1 d . . c f f f c .
+    d . d 1 1 1 1 d . . c f f f c .
+    . . . d 1 1 1 d . . c f f f c .
+    . . . . d 1 1 d . . c f f f c .
+    . . . . . d 1 d . . c f f f c .
+    . . . . . . d d . . c f f f c .
+    . . . . . . . . . . c f f f c .    
+    `
 
     /* maybe use these later
     export const rc_high = img`

@@ -190,12 +190,24 @@ namespace microcode {
             const neither = addEvent(
                 TID_FILTER_LINE_NEITHER,
                 "line",
-                robots.RobotCompactCommand.LineState
+                robots.RobotCompactCommand.None
+            )
+            const neither_left = addEvent(
+                TID_FILTER_LINE_NEITHER_LEFT,
+                "line",
+                robots.RobotCompactCommand.NoneFromLeft
+            )
+            const neither_right = addEvent(
+                TID_FILTER_LINE_NEITHER_RIGHT,
+                "line",
+                robots.RobotCompactCommand.NoneFromRight
             )
             both.jdKind =
                 left.jdKind =
                 right.jdKind =
                 neither.jdKind =
+                neither_left.jdKind =
+                neither_right.jdKind =
                     JdKind.Literal
 
             const line = makeSensor(TID_SENSOR_LINE, "line", 505)
@@ -208,6 +220,8 @@ namespace microcode {
                 TID_FILTER_LINE_RIGHT,
                 TID_FILTER_LINE_BOTH,
                 TID_FILTER_LINE_NEITHER,
+                TID_FILTER_LINE_NEITHER_LEFT,
+                TID_FILTER_LINE_NEITHER_RIGHT,
             ]
         }
 

@@ -235,6 +235,8 @@ namespace docs {
             microcode.TID_FILTER_LINE_RIGHT,
             microcode.TID_FILTER_LINE_BOTH,
             microcode.TID_FILTER_LINE_NEITHER,
+            microcode.TID_FILTER_LINE_NEITHER_LEFT,
+            microcode.TID_FILTER_LINE_NEITHER_RIGHT,
             microcode.TID_FILTER_KITA_KEY_1,
             microcode.TID_FILTER_KITA_KEY_2,
             microcode.TID_SENSOR_MAGNET,

@@ -57,6 +57,8 @@ namespace microcode {
     export const TID_FILTER_LINE_RIGHT = "F23R"
     export const TID_FILTER_LINE_BOTH = "F23B"
     export const TID_FILTER_LINE_NEITHER = "F23N"
+    export const TID_FILTER_LINE_NEITHER_LEFT = "F23NL"
+    export const TID_FILTER_LINE_NEITHER_RIGHT = "F23NR"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -211,6 +213,8 @@ namespace microcode {
         TID_FILTER_LINE_RIGHT,
         TID_FILTER_LINE_BOTH,
         TID_FILTER_LINE_NEITHER,
+        TID_FILTER_LINE_NEITHER_LEFT,
+        TID_FILTER_LINE_NEITHER_RIGHT,
         FILTER_END,
 
         MODIFIER_START = 150,
@@ -377,6 +381,10 @@ namespace microcode {
                 return Tid.TID_FILTER_LINE_BOTH
             case TID_FILTER_LINE_NEITHER:
                 return Tid.TID_FILTER_LINE_NEITHER
+            case TID_FILTER_LINE_NEITHER_LEFT:
+                return Tid.TID_FILTER_LINE_NEITHER_LEFT
+            case TID_FILTER_LINE_NEITHER_RIGHT:
+                return Tid.TID_FILTER_LINE_NEITHER_RIGHT
             case TID_ACTUATOR_SWITCH_PAGE:
                 return Tid.TID_ACTUATOR_SWITCH_PAGE
             case TID_ACTUATOR_SPEAKER:
