@@ -394,6 +394,14 @@ namespace microcode {
                     this.armOpen(100)
                     break
                 }
+                case microcode.robots.RobotCompactCommand.MotorLEDOff:
+                    this.setColor(0); break;
+                case microcode.robots.RobotCompactCommand.MotorLEDRed:
+                    this.setColor(0xff0000); break;
+                case microcode.robots.RobotCompactCommand.MotorLEDGreen:
+                    this.setColor(0x00ff00); break;
+                case microcode.robots.RobotCompactCommand.MotorLEDBlue:
+                    this.setColor(0x0000ff); break;
             }
         }
     }

@@ -72,7 +72,7 @@ namespace microcode {
     class ElecfreaksCutebotRobot extends robots.Robot {
         constructor() {
             super()
-            this.musicVolume = 168
+            this.musicVolume = 156
             this.maxLineSpeed = 28
 
             pins.setPull(DigitalPin.P8, PinPullMode.PullNone)
