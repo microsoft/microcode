@@ -107,15 +107,15 @@ namespace microcode {
             this.running = true
 
             // configuration of common hardware
-            this.leds = this.robot.configuration.leds
+            this.leds = this.robot.leds
             if (this.leds)
                 this.ledsBuffer = Buffer.create(this.leds.count * 3)
-            this.lineDetectors = this.robot.configuration.lineDetectors
+            this.lineDetectors = this.robot.lineDetectors
             if (this.lineDetectors) {
                 pins.setPull(this.lineDetectors.left, PinPullMode.PullNone);
                 pins.setPull(this.lineDetectors.right, PinPullMode.PullNone);
             }
-            this.sonar = this.robot.configuration.sonar
+            this.sonar = this.robot.sonar
             if (this.sonar)
                 pins.setPull(this.sonar.trig, PinPullMode.PullNone);
 

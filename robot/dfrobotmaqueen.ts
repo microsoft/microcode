@@ -25,21 +25,20 @@ namespace microcode {
     // https://github.com/DFRobot/pxt-maqueen/blob/master/maqueen.ts
     class DFRobotMaqueenRobot extends robots.Robot {
         constructor() {
-            super({
-                lineDetectors: {
-                    left: DigitalPin.P13,
-                    right: DigitalPin.P14,
-                    lineHigh: true
-                },
-
-                leds: {
-                    pin: DigitalPin.P15,
-                    count: 4
-                },
-                sonar: {
-                    trig: DigitalPin.P1, echo: DigitalPin.P2
-                }
-            })
+            super()
+            this.lineDetectors = {
+                left: DigitalPin.P13,
+                right: DigitalPin.P14,
+                lineHigh: true
+            }
+            this.leds = {
+                pin: DigitalPin.P15,
+                count: 4
+            }
+            this.sonar = {
+                trig: DigitalPin.P1,
+                echo: DigitalPin.P2
+            }
         }
 
         motorRun(left: number, right: number): void {

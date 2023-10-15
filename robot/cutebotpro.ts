@@ -125,16 +125,15 @@ namespace microcode {
 
     class ElecfreaksCutebotProRobot extends robots.Robot {
         constructor() {
-            super({
-                leds: {
-                    pin: DigitalPin.P15,
-                    count: 8
-                },
-                sonar: {
-                    trig: DigitalPin.P8,
-                    echo: DigitalPin.P12
-                }
-            })
+            super()
+            this.leds = {
+                pin: DigitalPin.P15,
+                count: 8
+            }
+            this.sonar = {
+                trig: DigitalPin.P8,
+                echo: DigitalPin.P12
+            }
             this.musicVolume = 168
             this.maxLineSpeed = 30
         }

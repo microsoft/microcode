@@ -15,12 +15,6 @@ namespace microcode.robots {
         lineHigh: boolean
     }
 
-    export interface RobotConfiguration {
-        leds?: RobotLEDs
-        sonar?: Sonar,
-        lineDetectors?: LineDetectors
-    }
-
     export class Robot {
         musicVolume = 64
         maxLineSpeed = 40
@@ -32,13 +26,16 @@ namespace microcode.robots {
         turnRatioTransitionAlpha = 0.2
         ultrasonicMinReading = 1
         lineAssistLostThreshold = 72
+        leds?: RobotLEDs
+        sonar?: Sonar
+        lineDetectors?: LineDetectors
 
         /**
          * A map from microcode command to speed, turnratio values
          */
         readonly commands: { [index: number]: { speed?: number; turnRatio?: number } } = {}
 
-        constructor(public readonly configuration: RobotConfiguration) {
+        constructor() {
             this.commands[microcode.robots.RobotCompactCommand.MotorRunForward] = {
                 speed: 70
             }

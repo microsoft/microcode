@@ -54,24 +54,22 @@ namespace microcode {
 
     class ElecfreaksCutebotRobot extends robots.Robot {
         constructor() {
-            super({
-                leds: {
-                    pin: DigitalPin.P15,
-                    count: 2
-                },
-                sonar: {
-                    trig: DigitalPin.P8,
-                    echo: DigitalPin.P12
-                },
-                lineDetectors: {
-                    left: DigitalPin.P13,
-                    right: DigitalPin.P14,
-                    lineHigh: false
-                }
-            })
+            super()
+            this.leds = {
+                pin: DigitalPin.P15,
+                count: 2
+            };
+            this.sonar = {
+                trig: DigitalPin.P8,
+                echo: DigitalPin.P12
+            }
+            this.lineDetectors = {
+                left: DigitalPin.P13,
+                right: DigitalPin.P14,
+                lineHigh: false
+            }
             this.musicVolume = 156
             this.maxLineSpeed = 28
-
         }
 
         motorRun(left: number, right: number) {
