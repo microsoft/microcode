@@ -106,19 +106,23 @@ namespace microcode {
 
             this.running = true
 
-            // prep lights
-            this.leds = this.robot.leds()
+            // configuration of common hardware
+            this.leds = this.robot.configuration.leds
             if (this.leds)
                 this.ledsBuffer = Buffer.create(this.leds.count * 3)
-            this.setColor(0x0000ff)
-            // stop motors
-            this.motorStop()
-            // wake up sensors
-            this.lineDetectors = this.robot.lineDetectors()
-            this.sonar = this.robot.sonar()
+            this.lineDetectors = this.robot.configuration.lineDetectors
+            if (this.lineDetectors) {
+                pins.setPull(this.lineDetectors.left, PinPullMode.PullNone);
+                pins.setPull(this.lineDetectors.right, PinPullMode.PullNone);
+            }
+            this.sonar = this.robot.configuration.sonar
             if (this.sonar)
                 pins.setPull(this.sonar.trig, PinPullMode.PullNone);
 
+            // stop motors
+            this.setColor(0x0000ff)
+            this.motorStop()
+            // wake up sensors
             this.ultrasonicDistance()
             this.lineState()
 
@@ -357,12 +361,12 @@ namespace microcode {
                 const left = (pins.digitalReadPin(this.lineDetectors.left) > 0) === this.lineDetectors.lineHigh ? 1 : 0
                 const right = (pins.digitalReadPin(this.lineDetectors.right) > 0) === this.lineDetectors.lineHigh ? 1 : 0
                 return (left << 0) | (right << 1)
-            } else 
+            } else
                 return this.robot.lineState()
         }
 
         private lineState(): RobotLineState {
-            const ls = this.readLineState()            
+            const ls = this.readLineState()
             if (ls !== this.currentLineState) {
                 const prev = this.previousLineState
                 this.previousLineState = this.currentLineState

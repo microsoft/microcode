@@ -15,6 +15,12 @@ namespace microcode.robots {
         lineHigh: boolean
     }
 
+    export interface RobotConfiguration {
+        leds?: RobotLEDs
+        sonar?: Sonar,
+        lineDetectors?: LineDetectors
+    }
+
     export class Robot {
         musicVolume = 64
         maxLineSpeed = 40
@@ -32,7 +38,7 @@ namespace microcode.robots {
          */
         readonly commands: { [index: number]: { speed?: number; turnRatio?: number } } = {}
 
-        constructor() {
+        constructor(public readonly configuration: RobotConfiguration) {
             this.commands[microcode.robots.RobotCompactCommand.MotorRunForward] = {
                 speed: 70
             }
@@ -95,27 +101,6 @@ namespace microcode.robots {
          */
         lineState(): RobotLineState {
             return RobotLineState.None
-        }
-
-        /**
-         * Optional: returns the pin, number of LEDs and LED layout for the bottom LEDs
-         */
-        leds(): RobotLEDs {
-            return undefined;
-        }
-
-        /**
-         * Optional: pair of pins used to read the line state
-         */
-        lineDetectors(): LineDetectors {
-            return undefined
-        } 
-
-        /**
-         * Optional: SR04 sonar configuration
-         */
-        sonar(): Sonar {
-            return undefined
         }
     }
 }

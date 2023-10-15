@@ -89,33 +89,26 @@ namespace microcode {
     }
 
     class KeyStudioMiniSmartRobot extends robots.Robot {
-        lastTime = 0;
         constructor() {
-            super()
+            super({
+
+                sonar: {
+                    trig: TRIG_PIN,
+                    echo: ECHO_PIN
+                },
+
+                lineDetectors: {
+                    left: DigitalPin.P13,
+                    right: DigitalPin.P14,
+                    lineHigh: true
+                }
+            })
             this.init_PCA9685();
-            pins.setPull(DigitalPin.P12, PinPullMode.PullNone);
-            pins.setPull(DigitalPin.P13, PinPullMode.PullNone);
-            pins.setPull(TRIG_PIN, PinPullMode.PullNone);
         }
 
         motorRun(left: number, right: number) {
             Motor(MotorObs.LeftSide, left > 0 ? MotorDir.Forward : MotorDir.Back, Math.abs(left))
             Motor(MotorObs.RightSide, right > 0 ? MotorDir.Forward : MotorDir.Back, Math.abs(right))
-        }
-
-        sonar() {
-            return {
-                trig: TRIG_PIN,
-                echo: ECHO_PIN
-            }
-        }
-
-        lineDetectors() {
-            return {
-                left: DigitalPin.P13,
-                right: DigitalPin.P14,
-                lineHigh: true
-            }
         }
 
         headlightsSetColor(red: number, green: number, blue: number) {

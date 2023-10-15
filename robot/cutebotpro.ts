@@ -125,7 +125,16 @@ namespace microcode {
 
     class ElecfreaksCutebotProRobot extends robots.Robot {
         constructor() {
-            super()
+            super({
+                leds: {
+                    pin: DigitalPin.P15,
+                    count: 8
+                },
+                sonar: {
+                    trig: DigitalPin.P8,
+                    echo: DigitalPin.P12
+                }
+            })
             this.musicVolume = 168
             this.maxLineSpeed = 30
         }
@@ -151,20 +160,6 @@ namespace microcode {
             let left = (state & TrackbitStateType.Tracking_State_11) ? 1 : 0
             let right = (state & TrackbitStateType.Tracking_State_14) ? 1 : 0
             return (left << 0) | (right << 1)
-        }
-
-        leds() {
-            return {
-                pin: DigitalPin.P15,
-                count: 8
-            }
-        }
-
-        sonar() {
-            return {
-                trig: DigitalPin.P8,
-                echo: DigitalPin.P12
-            }
         }
     }
 

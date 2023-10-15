@@ -25,7 +25,21 @@ namespace microcode {
     // https://github.com/DFRobot/pxt-maqueen/blob/master/maqueen.ts
     class DFRobotMaqueenRobot extends robots.Robot {
         constructor() {
-            super()
+            super({
+                lineDetectors: {
+                    left: DigitalPin.P13,
+                    right: DigitalPin.P14,
+                    lineHigh: true
+                },
+
+                leds: {
+                    pin: DigitalPin.P15,
+                    count: 4
+                },
+                sonar: {
+                    trig: DigitalPin.P1, echo: DigitalPin.P2
+                }
+            })
         }
 
         motorRun(left: number, right: number): void {
@@ -38,25 +52,6 @@ namespace microcode {
             const on = (red > 0xf) || (green > 0xf) || (blue > 0xf) ? 1 : 0
             pins.digitalWritePin(DigitalPin.P8, on)
             pins.digitalWritePin(DigitalPin.P12, on)
-        }
-
-        lineDetectors() {
-            return {
-                left: DigitalPin.P13,
-                right: DigitalPin.P14,
-                lineHigh: true
-            }
-        }
-
-        leds(): robots.RobotLEDs {
-            return {
-                pin: DigitalPin.P15,
-                count: 4
-            }
-        }
-
-        sonar() {
-            return { trig: DigitalPin.P1, echo: DigitalPin.P2 }
         }
     }
 

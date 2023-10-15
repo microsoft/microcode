@@ -54,13 +54,24 @@ namespace microcode {
 
     class ElecfreaksCutebotRobot extends robots.Robot {
         constructor() {
-            super()
+            super({
+                leds: {
+                    pin: DigitalPin.P15,
+                    count: 2
+                },
+                sonar: {
+                    trig: DigitalPin.P8,
+                    echo: DigitalPin.P12
+                },
+                lineDetectors: {
+                    left: DigitalPin.P13,
+                    right: DigitalPin.P14,
+                    lineHigh: false
+                }
+            })
             this.musicVolume = 156
             this.maxLineSpeed = 28
 
-            pins.setPull(DigitalPin.P8, PinPullMode.PullNone)
-            pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
-            pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
         }
 
         motorRun(left: number, right: number) {
@@ -69,28 +80,6 @@ namespace microcode {
 
         headlightsSetColor(red: number, green: number, blue: number) {
             singleheadlights(red, green, blue)
-        }
-
-        lineDetectors() {
-            return {
-                left: DigitalPin.P13,
-                right: DigitalPin.P14,
-                lineHigh: false
-            }
-        }
-        
-        leds() {
-            return {
-                pin: DigitalPin.P15,
-                count: 2
-            }
-        }
-
-        sonar() {
-            return {
-                trig: DigitalPin.P8,
-                echo: DigitalPin.P12
-            }
         }
     }
 

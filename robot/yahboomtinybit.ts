@@ -18,7 +18,14 @@ namespace microcode {
 
     class YahboomTinybitRobot extends robots.Robot {
         constructor() {
-            super()
+            super({
+                sonar: { trig: DigitalPin.P16, echo: DigitalPin.P15 },
+                lineDetectors: {
+                    left: DigitalPin.P13,
+                    right: DigitalPin.P14,
+                    lineHigh: true
+                }
+            })
 
             pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
             pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
@@ -112,18 +119,6 @@ namespace microcode {
 
         headlightsSetColor(red: number, green: number, blue: number) {
             setPwmRGB(red, green, blue)
-        }
-
-        sonar() {
-            return { trig: DigitalPin.P16, echo: DigitalPin.P15 }
-        }
-
-        lineDetectors() {
-            return {
-                left: DigitalPin.P13,
-                right: DigitalPin.P14,
-                lineHigh: true
-            }
         }
     }
 
