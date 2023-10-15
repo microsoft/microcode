@@ -2,15 +2,11 @@ namespace microcode {
     const I2C_ADRESS = 0x10
     const M1_INDEX = 0
     const M2_INDEX = 0x02
-    const enum Dir {
-        //% blockId="CW" block="Forward"
-        CW = 0x0,
-        //% blockId="CCW" block="Backward"
-        CCW = 0x1
-    }
+    const FORWARD = 0
+    const BACKWARD = 1
     function run(index: number, speed: number): void {
         const buf = pins.createBuffer(3);
-        const direction = speed > 0 ? Dir.CW : Dir.CCW
+        const direction = speed > 0 ? FORWARD : BACKWARD
         const s = Math.round(Math.map(Math.abs(speed), 0, 100, 0, 255))
         buf[0] = index;
         buf[1] = direction;

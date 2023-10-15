@@ -17,7 +17,8 @@
         "cutebot.ts",
         "blocks.ts",
         "cutebotpro.ts",
-        "dfrobotmaqueen.ts"
+        "dfrobotmaqueen.ts",
+        "dfrobotmaqueenplusv2.ts"
     ],
     "testFiles": [
         "test.ts"
