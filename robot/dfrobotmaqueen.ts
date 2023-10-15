@@ -40,59 +40,6 @@ namespace microcode {
             pins.digitalWritePin(DigitalPin.P12, on)
         }
 
-        private state1 = 0;
-        private Ultrasonic(): number {
-            let data;
-            let i = 0;
-            data = this.readUlt();
-            if (this.state1 == 1 && data != 0) {
-                this.state1 = 0;
-            }
-            if (data != 0) {
-            } else {
-                if (this.state1 == 0) {
-                    do {
-                        data = this.readUlt();
-                        i++;
-                        if (i > 3) {
-                            this.state1 = 1;
-                            data = 100;
-                            break;
-                        }
-                    } while (data == 0)
-                }
-            }
-            if (data == 0)
-                data = 500
-            return data;
-
-        }
-        private readUlt(): number {
-            let d
-            pins.digitalWritePin(DigitalPin.P1, 1);
-            basic.pause(1)
-            pins.digitalWritePin(DigitalPin.P1, 0);
-            if (pins.digitalReadPin(DigitalPin.P2) == 0) {
-                pins.digitalWritePin(DigitalPin.P1, 0);
-                pins.digitalWritePin(DigitalPin.P1, 1);
-                basic.pause(20)
-                pins.digitalWritePin(DigitalPin.P1, 0);
-                d = pins.pulseIn(DigitalPin.P2, PulseValue.High, 500 * 58);//readPulseIn(1);
-            } else {
-                pins.digitalWritePin(DigitalPin.P1, 1);
-                pins.digitalWritePin(DigitalPin.P1, 0);
-                basic.pause(20)
-                pins.digitalWritePin(DigitalPin.P1, 0);
-                d = pins.pulseIn(DigitalPin.P2, PulseValue.Low, 500 * 58);//readPulseIn(0);
-            }
-            let x = d / 59;
-            return Math.round(x);
-        }
-
-        ultrasonicDistance(): number {
-            return this.Ultrasonic()
-        }
-
         lineState(): RobotLineState {
             const left = pins.digitalReadPin(DigitalPin.P13) ? 1 : 0
             const right = pins.digitalReadPin(DigitalPin.P14) ? 1 : 0
@@ -104,6 +51,10 @@ namespace microcode {
                 pin: DigitalPin.P15,
                 count: 4
             }
+        }
+
+        sonar() {
+            return { trig: DigitalPin.P1, echo: DigitalPin.P2 }
         }
     }
 

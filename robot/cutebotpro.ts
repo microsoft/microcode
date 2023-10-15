@@ -70,19 +70,6 @@ namespace microcode {
         pins.i2cWriteBuffer(i2cAddr, i2cBuffer)
     }
 
-    function ultrasonic(maxCmDistance = 500): number {
-        // send pulse
-        pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
-        pins.digitalWritePin(DigitalPin.P8, 0);
-        control.waitMicros(2);
-        pins.digitalWritePin(DigitalPin.P8, 1);
-        control.waitMicros(10);
-        pins.digitalWritePin(DigitalPin.P8, 0);
-        // read pulse
-        const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance * 50);
-        return Math.floor(d * 34 / 2 / 1000);
-    }
-
     function trackbitStateValue() {
         let i2cBuffer = pins.createBuffer(7);
         i2cBuffer[0] = 0x99;
@@ -159,15 +146,25 @@ namespace microcode {
             pins.i2cWriteBuffer(i2cAddr, buf);
         }
 
-        ultrasonicDistance(): number {
-            return ultrasonic()
-        }
-
         lineState(): RobotLineState {
             const state = trackbitStateValue()
             let left = (state & TrackbitStateType.Tracking_State_11) ? 1 : 0
             let right = (state & TrackbitStateType.Tracking_State_14) ? 1 : 0
             return (left << 0) | (right << 1)
+        }
+
+        leds() {
+            return {
+                pin: DigitalPin.P15,
+                count: 8
+            }
+        }
+
+        sonar() {
+            return {
+                trig: DigitalPin.P8,
+                echo: DigitalPin.P12
+            }
         }
     }
 

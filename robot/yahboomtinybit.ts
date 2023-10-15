@@ -16,6 +16,7 @@ namespace microcode {
         pins.i2cWriteBuffer(PWM_ADD, buf);
     }
 
+   /*
     function Ultrasonic_CarV1(): number {
 
         let list: Array<number> = [0, 0, 0, 0, 0];
@@ -44,8 +45,8 @@ namespace microcode {
 
         let d = pins.pulseIn(DigitalPin.P15, PulseValue.High, 500 * 58);
         return Math.floor(d / 58);
-
     }
+    */
 
     class YahboomTinybitRobot extends robots.Robot {
         constructor() {
@@ -145,12 +146,8 @@ namespace microcode {
             setPwmRGB(red, green, blue)
         }
 
-        ultrasonicDistance(): number {
-            const v = control.hardwareVersion()
-            if (v === "1")
-                return Ultrasonic_CarV1()
-            else
-                return Ultrasonic_CarV2()
+        sonar() {
+            return { trig: DigitalPin.P16, echo: DigitalPin.P15 }
         }
 
         lineState(): RobotLineState {
@@ -166,5 +163,4 @@ namespace microcode {
      */
     //% fixedInstance whenUsed block="yahboom tiny:bit" weight=99
     export const yahboomTinyBit = new RobotDriver(new YahboomTinybitRobot())
-
 }

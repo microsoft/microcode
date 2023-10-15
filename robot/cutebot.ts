@@ -88,10 +88,6 @@ namespace microcode {
             singleheadlights(red, green, blue)
         }
 
-        ultrasonicDistance(): number {
-            return ultrasonic()
-        }
-
         lineState(): RobotLineState {
             const left = pins.digitalReadPin(DigitalPin.P13) ? 0 : 1
             const right = pins.digitalReadPin(DigitalPin.P14) ? 0 : 1
@@ -103,6 +99,13 @@ namespace microcode {
             return {
                 pin: DigitalPin.P15,
                 count: 2
+            }
+        }
+
+        sonar() {
+            return {
+                trig: DigitalPin.P8,
+                echo: DigitalPin.P12
             }
         }
     }

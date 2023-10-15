@@ -45,6 +45,8 @@ namespace microcode {
         private leds: robots.RobotLEDs
         private ledsBuffer: Buffer
 
+        private sonar: robots.Sonar
+
         constructor(robot: robots.Robot) {
             this.robot = robot
             microcode.robot = this
@@ -111,6 +113,10 @@ namespace microcode {
             // stop motors
             this.motorStop()
             // wake up sensors
+            this.sonar = this.robot.sonar()
+            if (this.sonar)
+                pins.setPull(this.sonar.trig, PinPullMode.PullNone);
+
             this.ultrasonicDistance()
             this.lineState()
 
@@ -274,18 +280,16 @@ namespace microcode {
         private lastSonarValue = 0
         private updateSonar() {
             const dist = this.ultrasonicDistance()
-            if (this.showConfiguration) return
-
-            // render sonar
             if (dist > this.robot.ultrasonicMinReading) {
                 const d = Math.clamp(1, 5, Math.ceil(dist / 5))
-                for (let y = 0; y < 5; y++)
-                    if (y + 1 >= d) led.plot(2, y)
-                    else led.unplot(2, y)
-
+                if (this.showConfiguration) {
+                    for (let y = 0; y < 5; y++)
+                        if (y + 1 >= d) led.plot(2, y)
+                        else led.unplot(2, y)
+                }
                 if (d !== this.lastSonarValue) {
                     this.lastSonarValue = d
-                    this.playTone(2400 - d * 400, 200 + d * 25)
+                    //this.playTone(2400 - d * 400, 200 + d * 25)
                     const msg = microcode.robots.RobotCompactCommand.ObstacleState | d
                     this.sendCompactCommand(msg)
                     microcode.robots.raiseEvent(microcode.robots.RobotCompactCommand.ObstacleState)
@@ -312,14 +316,35 @@ namespace microcode {
             this.motorRun(0, 0)
         }
 
-        ultrasonicDistance() {
+        private ultrasonicDistanceOnce() {
+            if (!this.sonar)
+                return this.robot.ultrasonicDistance()
+
+            const trig = this.sonar.trig
+            const echo = this.sonar.echo
+            const maxCmDistance = 50
+            const TO_CM = 58
+
+            // send pulse
+            pins.digitalWritePin(trig, 0);
+            control.waitMicros(4);
+            pins.digitalWritePin(trig, 1);
+            control.waitMicros(10);
+            pins.digitalWritePin(trig, 0);
+
+            // read pulse
+            const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * TO_CM);
+            return Math.idiv(d, TO_CM);
+        }
+
+        private ultrasonicDistance() {
             let retry = 3
             while (retry-- > 0) {
-                const dist = this.robot.ultrasonicDistance()
-                if (dist > 1) {
+                const dist = this.ultrasonicDistanceOnce()
+                if (dist > this.robot.ultrasonicMinReading) {
                     this.currentUltrasonicDistance = dist
                     break
-                }
+                } else basic.pause(1)
             }
             return this.currentUltrasonicDistance
         }

@@ -103,28 +103,11 @@ namespace microcode {
             Motor(MotorObs.RightSide, right > 0 ? MotorDir.Forward : MotorDir.Back, Math.abs(right))
         }
 
-        ultrasonicDistance(): number {
-            //send trig pulse
-            pins.digitalWritePin(TRIG_PIN, 0)
-            control.waitMicros(2);
-            pins.digitalWritePin(TRIG_PIN, 1)
-            control.waitMicros(10);
-            pins.digitalWritePin(TRIG_PIN, 0)
-
-            // read echo pulse  max distance : 6m(35000us)
-            //2020-7-6 
-            // pins.pulseIn():This function has a bug and returns data with large errors.
-            let t = pins.pulseIn(ECHO_PIN, PulseValue.High, 35000);
-            let ret = t;
-
-            //Eliminate the occasional bad data
-            if (ret == 0 && this.lastTime != 0) {
-                ret = this.lastTime;
+        sonar() {
+            return {
+                trig: TRIG_PIN,
+                echo: ECHO_PIN
             }
-            this.lastTime = t;
-            //2020-7-6
-            //It would normally divide by 58, because the pins.pulseIn() function has an error, so it's divided by 58
-            return Math.round(ret / 40);
         }
 
         lineState(): RobotLineState {

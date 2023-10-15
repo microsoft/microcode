@@ -4,6 +4,11 @@ namespace microcode.robots {
         pin: DigitalPin; count: number;
     }
 
+    export interface Sonar {
+        echo: DigitalPin
+        trig: DigitalPin
+    }
+
     export class Robot {
         musicVolume = 64
         maxLineSpeed = 40
@@ -75,7 +80,7 @@ namespace microcode.robots {
          * @returns distance in cm; negative number if unsupported
          */
         ultrasonicDistance(): number {
-            return undefined
+            return -1
         }
 
         /**
@@ -91,6 +96,13 @@ namespace microcode.robots {
          */
         leds(): RobotLEDs {
             return undefined;
+        }
+
+        /**
+         * Optional: SR04 sonar configuration
+         */
+        sonar(): Sonar {
+            return undefined
         }
     }
 }
