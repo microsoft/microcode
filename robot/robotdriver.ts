@@ -395,12 +395,12 @@ namespace microcode {
             if (this.robot.musicVolume <= 0) return
             music.setVolume(this.robot.musicVolume)
             this.stopToneMillis = control.millis() + duration
-            music.ringTone(frequency)
+            pins.analogPitch(frequency, 0)
         }
 
         private updateTone() {
             if (this.stopToneMillis && this.stopToneMillis < control.millis()) {
-                music.stopAllSounds()
+                pins.analogPitch(0, 0)
                 this.stopToneMillis = 0
             }
         }
