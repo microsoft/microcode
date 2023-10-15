@@ -22,6 +22,8 @@ To add a new robot to the list, prepare a pull request with:
 - a new class extending `Robot` and configuring the hardware (see other robots)
 - a global field instance instantiating the robot (see other robots)
 - a URL in the jsdocs of the class pointing to the robot homepage
+- add `main{productname}.ts` file that starts the robot
+- add `pxt-{productname}.ts` file that overrides the test files to load `main{productname}.ts`
 
 Make sure to test and tune the configuration options in the robot class for your particular
 chassis/motor/line detectors.
