@@ -7,11 +7,11 @@ namespace microcode {
     }
 
     /**
-     * Turns the robot.
+     * Moves the robot.
     */
     //% weight=98
     //% group="Motors"
-    //% block="robot run with turn $turnRatio at speed $speed \\%"
+    //% block="robot motor run with steering $turnRatio at speed $speed \\%"
     //% blockid="microcoderobotmotorturn"
     //% speed.defl=100
     //% speed.min=-100
