@@ -17,7 +17,8 @@
         "yahboomtinybit.ts",
         "cutebot.ts",
         "blocks.ts",
-        "cutebotpro.ts"
+        "cutebotpro.ts",
+        "dfrobotmaqueen.ts"
     ],
     "testFiles": [
         "test.ts"
