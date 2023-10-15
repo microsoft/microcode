@@ -2,22 +2,6 @@ namespace microcode {
     // https://github.com/elecfreaks/pxt-Cutebot-Pro/blob/master/main.ts
     const i2cAddr: number = 0x10;
 
-    const enum CutebotProOrientation {
-        //%block="forward"
-        Advance = 1,
-        //%block="reverse"
-        Retreat = 0
-    }
-
-    const enum CutebotProRGBLight {
-        //%block="left RGB"
-        RGBL = 2,
-        //%block="right RGB"
-        RGBR = 1,
-        //%block="all RGB lights"
-        RGBA = 3
-    }
-
     const enum CutebotProWheel {
         //%block="left wheel"
         LeftWheel = 1,
@@ -29,7 +13,7 @@ namespace microcode {
 
 
     function pwmCruiseControl(speedL: number, speedR: number): void {
-        let i2cBuffer = pins.createBuffer(7)
+        const i2cBuffer = pins.createBuffer(7)
 
         if (speedL == 0)
             speedL = 200
@@ -99,36 +83,6 @@ namespace microcode {
         return Math.floor(d * 34 / 2 / 1000);
     }
 
-    function singleHeadlights(light: CutebotProRGBLight, r: number, g: number, b: number): void {
-        let buf = pins.createBuffer(7);
-        if (light == 3) {
-            buf[0] = 0x99;
-            buf[1] = 0x0F;
-            buf[2] = 0x03;
-            buf[3] = r;
-            buf[4] = g;
-            buf[5] = b;
-            buf[6] = 0x88;
-            pins.i2cWriteBuffer(i2cAddr, buf);
-        }
-        else {
-            if (light == 1) {
-                buf[2] = 0x01;
-            }
-            if (light == 2) {
-                buf[2] = 0x02;
-            }
-            buf[0] = 0x99;
-            buf[1] = 0x0F;
-            buf[3] = r;
-            buf[4] = g;
-            buf[5] = b;
-            buf[6] = 0x88;
-            pins.i2cWriteBuffer(i2cAddr, buf);
-        }
-
-    }
-
     function trackbitStateValue() {
         let i2cBuffer = pins.createBuffer(7);
         i2cBuffer[0] = 0x99;
@@ -182,52 +136,27 @@ namespace microcode {
         Tracking_State_15 = 10
     }
 
-    function readVersions(): string {
-        let cutebotProVersionsInteger: number = 0;
-        let cutebotProVersionsDecimal: number = 0;
-
-        let i2cBuffer = pins.createBuffer(7);
-        i2cBuffer[0] = 0x99;
-        i2cBuffer[1] = 0x15;
-        i2cBuffer[2] = 0x00;
-        i2cBuffer[3] = 0x00;
-        i2cBuffer[4] = 0x00;
-        i2cBuffer[5] = 0x00;
-        i2cBuffer[6] = 0x88;
-        pins.i2cWriteBuffer(i2cAddr, i2cBuffer)
-        cutebotProVersionsDecimal = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false)
-
-        i2cBuffer[0] = 0x99;
-        i2cBuffer[1] = 0x15;
-        i2cBuffer[2] = 0x01;
-        i2cBuffer[3] = 0x00;
-        i2cBuffer[4] = 0x00;
-        i2cBuffer[5] = 0x00;
-        i2cBuffer[6] = 0x88;
-        pins.i2cWriteBuffer(i2cAddr, i2cBuffer)
-        cutebotProVersionsInteger = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false)
-        if (cutebotProVersionsDecimal / 10 > 1)
-            return ("V" + convertToText(cutebotProVersionsInteger) + "." + convertToText(cutebotProVersionsDecimal / 10) + "." + convertToText(cutebotProVersionsDecimal % 10))
-        else
-            return ("V" + convertToText(cutebotProVersionsInteger) + "." + convertToText(0) + "." + convertToText(cutebotProVersionsDecimal % 10))
-    }
-
     class ElecfreaksCutebotProRobot extends robots.Robot {
         constructor() {
             super()
             this.musicVolume = 168
             this.maxLineSpeed = 30
-
-            const v = readVersions()
-            console.log(`cutebot pro version: ${v}`)
         }
 
         motorRun(left: number, right: number) {
             pwmCruiseControl(left, right)
         }
 
-        headlightsSetColor(red: number, green: number, blue: number) {
-            singleHeadlights(CutebotProRGBLight.RGBA, red, green, blue)
+        headlightsSetColor(r: number, g: number, b: number) {
+            const buf = pins.createBuffer(7);
+            buf[0] = 0x99;
+            buf[1] = 0x0F;
+            buf[2] = 0x03;
+            buf[3] = r;
+            buf[4] = g;
+            buf[5] = b;
+            buf[6] = 0x88;
+            pins.i2cWriteBuffer(i2cAddr, buf);
         }
 
         ultrasonicDistance(): number {
@@ -236,31 +165,8 @@ namespace microcode {
 
         lineState(): RobotLineState {
             const state = trackbitStateValue()
-            let left = 0
-            let right = 0
-            switch (state) {
-                case TrackbitStateType.Tracking_State_0: // oooo
-                case TrackbitStateType.Tracking_State_4: // xoox
-                case TrackbitStateType.Tracking_State_10: // oxox
-                case TrackbitStateType.Tracking_State_15: // oxox
-                    break
-                case TrackbitStateType.Tracking_State_1: // oxxo
-                case TrackbitStateType.Tracking_State_5: // xxxx
-                    left = 1; right = 1; break
-                case TrackbitStateType.Tracking_State_3: // oxoo
-                case TrackbitStateType.Tracking_State_7: // xxox
-                case TrackbitStateType.Tracking_State_8: // xooo
-                case TrackbitStateType.Tracking_State_9: // xxxo
-                case TrackbitStateType.Tracking_State_11: // xxoo
-                    left = 1; break;
-                case TrackbitStateType.Tracking_State_2: // ooxo
-                case TrackbitStateType.Tracking_State_7: // xxox
-                case TrackbitStateType.Tracking_State_12: // ooox
-                case TrackbitStateType.Tracking_State_13: // oxxx
-                case TrackbitStateType.Tracking_State_14: // ooxx
-                    right = 1; break
-            }
-
+            let left = (state & TrackbitStateType.Tracking_State_11) ? 1 : 0
+            let right = (state & TrackbitStateType.Tracking_State_14) ? 1 : 0
             return (left << 0) | (right << 1)
         }
     }
@@ -268,8 +174,8 @@ namespace microcode {
     /**
      * Cute:bot PRO from Elecfreaks
      */
-//    //% fixedInstance whenUsed block="elecfreaks cutebot PRO"
-//    export const elecfreaksCuteBotPro = new RobotDriver(
- //       new ElecfreaksCutebotProRobot()
-  //  )
+    //% fixedInstance whenUsed block="elecfreaks cutebot PRO"
+    export const elecfreaksCuteBotPro = new RobotDriver(
+        new ElecfreaksCutebotProRobot()
+    )
 }
