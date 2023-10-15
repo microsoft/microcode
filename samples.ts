@@ -67,7 +67,7 @@ namespace microcode {
             {
                 label: "hot potato",
                 ariaId: "N7",
-                b64: "fiSPg5WVVUolw4soAAQAACgAAAAAAEKLKC/fucACimnAQEBAQA=",
+                b64: "JfiSPg5WVVUolw4soAAQAACgAAAAAAEKLKC/fucACimnAQEBAQA=",
                 icon: "hot_potato",
             },
             {
@@ -193,13 +193,13 @@ namespace microcode {
             {
                 label: "new program",
                 ariaId: "N1",
-                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHt9XX19",
+                b64: "JfiSPgEBAQEBAA==",
                 icon: "new_program",
             },
             {
                 label: "smiley buttons",
                 ariaId: "N3",
-                b64: "eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkYzIl0sIk0iOlsiTTE1KDExMDExMTEwMTEwMDAwMDEwMDAxMDExMTApIiwiTTE1KDExMDExMDAwMDAxMDAwMTAxMTEwMDAwMDApIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjMiXSwiTSI6WyJNMTloYXBweSJdfSx7IlMiOlsiUzIiXSwiQSI6WyJBNSJdLCJGIjpbIkY0Il0sIk0iOlsiTTE1KDExMDExMTEwMTEwMDAwMDAxMTEwMTAwMDEpIiwiTTE1KDExMDExMTEwMTEwMDAwMDAwMDAwMTExMTEpIl19LHsiUyI6WyJTMiJdLCJBIjpbIkEyIl0sIkYiOlsiRjQiXSwiTSI6WyJNMTlzYWQiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC43In0=",
+                b64: "JfiSPgtJLKB7g+gAoBtEBwALSSmkC0osoHsDFwGgewPwAQtKKacBAQEBAQA=",
                 icon: "smiley_buttons",
             },
         ]
@@ -209,7 +209,7 @@ namespace microcode {
     export function samples(withIcon: boolean): Sample[] {
         const s = rawSamples()
         const r = { s: s }
-        // rawWebAppSamples(r)
+        rawWebAppSamples(r)
         return r.s
             .filter(({ icon }) => !withIcon || !!icon)
             .map(
