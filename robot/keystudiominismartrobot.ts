@@ -153,10 +153,16 @@ namespace microcode {
             if (speed == 0) {
                 this.motorStop()
             }
-            else {
-                const dir = speed >= 0 ? DIR.RunForward : DIR.RunBack
-                run(dir, Math.abs(speed))
+            else if (left === right) {
+                const dir = left >= 0 ? DIR.RunForward : DIR.RunBack
+                run(dir, Math.abs(left))
             }
+            else if (left > right) {
+                run(DIR.TurnLeft, left)
+            } else {
+                run(DIR.TurnRight, right)
+            }
+
         }
 
         motorStop() {
@@ -188,14 +194,15 @@ namespace microcode {
         }
 
         lineState(): RobotLineState {
-            const val = pins.digitalReadPin(DigitalPin.P12) << 0 | pins.digitalReadPin(DigitalPin.P13) << 1;
-            return val;
+            const left = pins.digitalReadPin(DigitalPin.P13)
+            const right = pins.digitalReadPin(DigitalPin.P12)
+            return (left << 0) | (right << 1)
         }
     }
 
     /**
-     * Mini Smart Robot from KeyStudio
+     * Mini Smart Robot from KeyStudio (beta)
      */
-    //% fixedInstance whenUsed block="keystudio mini smart robot"
-    //export const keyStudioMiniSmartRobot = new RobotDriver(new KeyStudioMiniSmartRobot())
+    // fixedInstance whenUsed block="keystudio mini smart robot"
+    export const keyStudioMiniSmartRobot = new RobotDriver(new KeyStudioMiniSmartRobot())
 }
