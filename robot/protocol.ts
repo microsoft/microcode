@@ -5,8 +5,12 @@ const enum RobotLineState {
     Left = 0x01,
     //% block="right"
     Right = 0x02,
-    //% block="both"
+    //% block="both" 
     Both = Left | Right,
+    //% block="none from left"
+    NoneFromLeft = None | 0x04,
+    //% block="none from right"
+    NoneFromRight = None | 0x0a,
 }
 
 namespace microcode.robots {
@@ -46,5 +50,7 @@ namespace microcode.robots {
         Right = LineState | RobotLineState.Right,
         Both = LineState | RobotLineState.Both,
         None = LineState | RobotLineState.None,
+        NoneFromLeft = LineState | RobotLineState.NoneFromLeft,
+        NoneFromRight = LineState | RobotLineState.NoneFromRight,
     }
 }

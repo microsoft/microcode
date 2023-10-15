@@ -35,6 +35,7 @@ namespace microcode {
          * Gets the latest line sensor state
          */
         currentLineState: RobotLineState = RobotLineState.None
+        private previousLineState = RobotLineState.None
         private currentLineStateCounter = 0
 
         private stopToneMillis: number = 0
@@ -326,9 +327,21 @@ namespace microcode {
         private lineState(): RobotLineState {
             const ls = this.robot.lineState()
             if (ls !== this.currentLineState) {
+                const prev = this.previousLineState
+                this.previousLineState = this.currentLineState
                 this.currentLineState = ls
                 this.currentLineStateCounter = 0
-                const msg = microcode.robots.RobotCompactCommand.LineState | this.currentLineState
+
+                let msg: microcode.robots.RobotCompactCommand;
+                if (this.currentLineState === RobotLineState.None
+                    && prev === RobotLineState.Left)
+                    msg = microcode.robots.RobotCompactCommand.NoneFromLeft
+                else if (this.currentLineState === RobotLineState.None
+                    && prev === RobotLineState.Right)
+                    msg = microcode.robots.RobotCompactCommand.NoneFromRight
+                else
+                    msg = microcode.robots.RobotCompactCommand.LineState | this.currentLineState
+
                 this.sendCompactCommand(msg)
                 microcode.robots.raiseEvent(msg)
             }
