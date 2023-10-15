@@ -69,7 +69,7 @@ namespace microcode {
             return icondb.tile_rainbow
         if (name == TID_MODIFIER_RGB_LED_COLOR_SPARKLE)
             return icondb.tile_sparkle
-        if (name == TID_MODIFIER_SERVO_SET_ANGLE) return icondb.servo_set_angle
+        if (name == TID_ACTUATOR_SERVO_SET_ANGLE) return icondb.servo_set_angle
         return null
     }
 

@@ -932,7 +932,7 @@ namespace jacs {
                 const fmt: NumFmt = actuator.jdParam
                 const sz = bitSize(fmt) >> 3
                 wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
-                if (actuator.tid == microcode.TID_MODIFIER_SERVO_SET_ANGLE) {
+                if (actuator.tid == microcode.TID_ACTUATOR_SERVO_SET_ANGLE) {
                     // TODO no modulo yet in Jacs
                     // if (curr >= 12) { curr -= 12 }
                     wr.emitIf(

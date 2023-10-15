@@ -254,7 +254,7 @@ namespace docs {
             microcode.TID_MODIFIER_RGB_LED_COLOR_6,
             microcode.TID_MODIFIER_RGB_LED_COLOR_RAINBOW,
             microcode.TID_MODIFIER_RGB_LED_COLOR_SPARKLE,
-            microcode.TID_MODIFIER_SERVO_SET_ANGLE,
+            microcode.TID_ACTUATOR_SERVO_SET_ANGLE,
             // editor icons
             "delete",
             "plus",

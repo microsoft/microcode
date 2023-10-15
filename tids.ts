@@ -119,7 +119,7 @@ namespace microcode {
     export const TID_MODIFIER_RGB_LED_COLOR_RAINBOW = "A20_rainbow"
     export const TID_MODIFIER_RGB_LED_COLOR_SPARKLE = "A20_sparkle"
 
-    export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
+    export const TID_ACTUATOR_SERVO_SET_ANGLE = "A21_"
 
     export const TID_ACTUATOR_CAR = "CAR"
     export const TID_MODIFIER_CAR_FORWARD = "CAR1"
@@ -174,6 +174,7 @@ namespace microcode {
         TID_ACTUATOR_CUP_Z_ASSIGN,
         TID_ACTUATOR_SHOW_NUMBER,
         TID_ACTUATOR_CAR,
+        TID_ACTUATOR_SERVO_SET_ANGLE,
         ACTUATOR_END,
 
         FILTER_START = 70,
@@ -258,7 +259,6 @@ namespace microcode {
         TID_MODIFIER_RGB_LED_COLOR_6,
         TID_MODIFIER_RGB_LED_COLOR_RAINBOW,
         TID_MODIFIER_RGB_LED_COLOR_SPARKLE,
-        TID_MODIFIER_SERVO_SET_ANGLE,
         TID_MODIFIER_CAR_FORWARD,
         TID_MODIFIER_CAR_REVERSE,
         TID_MODIFIER_CAR_TURN_LEFT,
@@ -489,8 +489,8 @@ namespace microcode {
                 return Tid.TID_MODIFIER_RGB_LED_COLOR_RAINBOW
             case TID_MODIFIER_RGB_LED_COLOR_SPARKLE:
                 return Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE
-            case TID_MODIFIER_SERVO_SET_ANGLE:
-                return Tid.TID_MODIFIER_SERVO_SET_ANGLE
+            case TID_ACTUATOR_SERVO_SET_ANGLE:
+                return Tid.TID_ACTUATOR_SERVO_SET_ANGLE
             case TID_ACTUATOR_CAR:
                 return Tid.TID_ACTUATOR_CAR
             case TID_MODIFIER_CAR_FORWARD:
@@ -736,8 +736,8 @@ namespace microcode {
                 return TID_MODIFIER_RGB_LED_COLOR_RAINBOW
             case Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE:
                 return TID_MODIFIER_RGB_LED_COLOR_SPARKLE
-            case Tid.TID_MODIFIER_SERVO_SET_ANGLE:
-                return TID_MODIFIER_SERVO_SET_ANGLE
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+                return TID_ACTUATOR_SERVO_SET_ANGLE
             case Tid.TID_ACTUATOR_CAR:
                 return TID_ACTUATOR_CAR
             case Tid.TID_MODIFIER_CAR_FORWARD:
@@ -788,7 +788,9 @@ namespace microcode {
         if (
             tid == Tid.TID_SENSOR_CAR_WALL ||
             tid == Tid.TID_SENSOR_SLIDER ||
-            tid == Tid.TID_ACTUATOR_SWITCH_PAGE
+            tid == Tid.TID_ACTUATOR_SWITCH_PAGE ||
+            tid == Tid.TID_SENSOR_LIGHT ||
+            tid == Tid.TID_SENSOR_MAGNET
         )
             return false
         // everything else except some filters is not terminal

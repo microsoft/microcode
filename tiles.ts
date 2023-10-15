@@ -486,7 +486,7 @@ namespace microcode {
         rgbled.defaultModifier =
             tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
 
-        const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, [
+        const servoSetAngle = addActuator(TID_ACTUATOR_SERVO_SET_ANGLE, [
             "constant",
         ])
         servoSetAngle.priority = 500
@@ -690,13 +690,18 @@ namespace microcode {
             const buf = Buffer.create(3)
             buf.setUint8(0, melody.tempo)
             // convert the melody notes into list of integers
-            const notes = melody.notes.split("").map(n => parseInt(n))
+            const notes = melody.notes.split("")
             // fill the buffer with the notes, 4 bits for each note
             for (let i = 0; i < MELODY_LENGTH; i++) {
-                const note = notes[i] || 0
                 const byte = i >> 1
                 const bit = (i & 1) << 2
-                buf.setUint8(byte + 1, buf.getUint8(byte + 1) | (note << bit))
+                if (notes[i] != ".") {
+                    const note = (parseInt(notes[i]) || 0) + 1
+                    buf.setUint8(
+                        byte + 1,
+                        buf.getUint8(byte + 1) | (note << bit)
+                    )
+                }
             }
             return buf
         },
@@ -709,7 +714,7 @@ namespace microcode {
                 const byte = i >> 1
                 const bit = (i & 1) << 2
                 const note = (buf[byte + 1] >> bit) & 0xf
-                notes += note.toString()
+                notes += note == 0 ? "." : (note - 1).toString()
             }
             return { tempo, notes }
         },
