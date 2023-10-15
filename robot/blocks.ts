@@ -1,3 +1,8 @@
+/**
+ * Microcode Robot
+ */
+//% color="#ff6800" icon="\uf1b9" weight=15
+//% groups=['Motors', 'Input', 'Configuration']
 namespace microcode {
     export let robot: RobotDriver;
 
@@ -127,7 +132,8 @@ namespace microcode {
      * Sets the LED color
      */
     //% blockId="microcoderobotsetcolor" block="robot set color $rgb"
-    //% group="Configuration"
+    //% group="Motors"
+    //% weight=10
     //% rgb.shadow=colorNumberPicker
     export function setColor(rgb: number) {
         checkRobotDriver()

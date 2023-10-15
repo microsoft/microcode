@@ -1,8 +1,3 @@
-/**
- * Microcode Robot
- */
-//% color="#ff6800" icon="\uf1b9" weight=15
-//% groups=['Move', 'Input', 'Configuration']
 namespace microcode {
     const MAX_GROUPS = 32
 
