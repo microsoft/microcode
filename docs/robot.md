@@ -26,21 +26,27 @@ The following features are found often but are optional:
 
 ### Elecfreaks Cutebot
 
-[![Photograph of the Cutebot](./images/cutebot.jpeg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
+[![Photograph of the Cutebot](./images/cutebot.jpeg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html){:class="sample"}
 
 -   Download [microcode-robot-elecfreakscutebot.hex](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreakscutebot.hex)
 
 ### Yahboom Tiny:bit
 
-![Photograph of the Tiny:bit](./images/tinybit.jpeg)
+![Photograph of the Tiny:bit](./images/tinybit.jpeg){:class="sample"}
 
 -   Download [microcode-robot-yahboomtinybit.hex](https://microsoft.github.io/microcode/assets/microcode-robot-yahboomtinybit.hex)
 
 ### Elecfreaks Cutebot PRO
 
-[![Photograph of the Cutebot PRO](./images/cutebotpro.jpeg)](https://shop.elecfreaks.com/products/elecfreaks-smart-cutebot-pro-v2-programming-robot-car-for-micro-bit)
+[![Photograph of the Cutebot PRO](./images/cutebotpro.jpeg)](https://shop.elecfreaks.com/products/elecfreaks-smart-cutebot-pro-v2-programming-robot-car-for-micro-bit){:class="sample"}
 
 -   Download [microcode-robot-elecfreakscutebotpro.hex](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreakscutebotpro.hex)
+
+## DFRobot Maqueen V2+
+
+![Photograph of the Maqueen](./images/maqueen.jpeg){:class="sample"}
+
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-dfrobotmaqueen.hex)
 
 ## Others
 

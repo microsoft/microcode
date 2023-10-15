@@ -1,24 +1,16 @@
 namespace microcode {
     const I2C_ADRESS = 0x10
-    const enum Motors {
-        //% blockId="left motor" block="left"
-        M1 = 0,
-        //% blockId="right motor" block="right"
-        M2 = 0x02,
-    }
-    const enum Dir {
-        //% blockId="CW" block="Forward"
-        CW = 0x0,
-        //% blockId="CCW" block="Backward"
-        CCW = 0x1
-    }
-    function run(index: Motors, speed: number): void {
+    const M1_INDEX = 0
+    const M2_INDEX = 0x02
+    const FORWARD = 0
+    const BACKWARD = 1
+    function run(index: number, speed: number): void {
         const buf = pins.createBuffer(3);
-        const direction = speed > 0 ? Dir.CW : Dir.CCW
-        speed = Math.abs(speed)
+        const direction = speed > 0 ? FORWARD : BACKWARD
+        const s = Math.round(Math.map(Math.abs(speed), 0, 100, 0, 255))
         buf[0] = index;
         buf[1] = direction;
-        buf[2] = speed;
+        buf[2] = s
         pins.i2cWriteBuffer(I2C_ADRESS, buf);
     }
 
@@ -29,7 +21,7 @@ namespace microcode {
             this.lineDetectors = {
                 left: DigitalPin.P13,
                 right: DigitalPin.P14,
-                lineHigh: true
+                lineHigh: false
             }
             this.leds = {
                 pin: DigitalPin.P15,
@@ -42,8 +34,8 @@ namespace microcode {
         }
 
         motorRun(left: number, right: number): void {
-            run(Motors.M1, left)
-            run(Motors.M1, right)
+            run(M1_INDEX, left)
+            run(M2_INDEX, right)
         }
 
         headlightsSetColor(red: number, green: number, blue: number): void {
