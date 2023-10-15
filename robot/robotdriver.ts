@@ -102,6 +102,7 @@ namespace microcode {
             this.running = true
 
             // configuration of common hardware
+            this.radioGroup = radioGroupFromDeviceSerialNumber()
             this.leds = this.robot.leds
             if (this.leds)
                 this.ledsBuffer = Buffer.create(this.leds.count * 3)
@@ -121,7 +122,6 @@ namespace microcode {
             this.ultrasonicDistance()
             this.lineState()
 
-            this.startRadioReceiver()
             this.configureButtons()
             basic.forever(() => this.updateSonar()) // potentially slower
             control.inBackground(() => this.backgroundWork())
@@ -168,14 +168,17 @@ namespace microcode {
             this.robot.armOpen(this.currentArmAperture)
         }
 
-        private inRadioMessageId = 0
+        private inRadioMessageId: number = undefined
 
-        private startRadioReceiver() {
-            this.setRadioGroup(radioGroupFromDeviceSerialNumber())
-            radio.setTransmitSerialNumber(true);
-            radio.onReceivedNumber(code => {
-                this.decodeRobotCompactCommand(code)
-            })
+        /**
+         * Starts the reception and transmission of robot command messages
+         */
+        startRadio() {
+            if (this.inRadioMessageId === undefined) {
+                radio.setTransmitSerialNumber(true);
+                radio.onReceivedNumber(code => this.decodeRobotCompactCommand(code))
+                this.inRadioMessageId = 0
+            }
         }
 
         private updateSpeed() {
@@ -313,6 +316,9 @@ namespace microcode {
             }
         }
 
+        /**
+         * Stop motors
+         */
         motorStop() {
             this.motorRun(0, 0)
         }
@@ -385,7 +391,7 @@ namespace microcode {
             return ls
         }
 
-        playTone(frequency: number, duration: number) {
+        private playTone(frequency: number, duration: number) {
             if (this.robot.musicVolume <= 0) return
             music.setVolume(this.robot.musicVolume)
             this.stopToneMillis = control.millis() + duration
@@ -407,17 +413,27 @@ namespace microcode {
             this.setRadioGroup(this.radioGroup === MAX_GROUPS - 1 ? 1 : this.radioGroup + 1)
         }
 
+        /**
+         * Sets the radio group used to transfer messages. Also starts the radio
+         * if needed
+         */
         setRadioGroup(newGroup: number) {
+            this.start()
             if (newGroup < 0) newGroup += MAX_GROUPS
             this.radioGroup = newGroup % MAX_GROUPS
             radio.setGroup(this.radioGroup)
+            led.stopAnimation()
+            this.startRadio()
         }
 
         private sendCompactCommand(cmd: microcode.robots.RobotCompactCommand) {
-            radio.sendNumber(cmd)
+            if (this.inRadioMessageId !== undefined)
+                radio.sendNumber(cmd)
         }
 
         private decodeRobotCompactCommand(msg: number) {
+            if (this.inRadioMessageId === undefined) return
+
             switch (msg) {
                 case microcode.robots.RobotCompactCommand.MotorStop:
                 case microcode.robots.RobotCompactCommand.MotorTurnLeft:
@@ -432,7 +448,7 @@ namespace microcode {
                     const turnRatio = command.turnRatio || 0
                     const speed = command.speed || 0
                     this.motorRun(turnRatio, speed);
-                    this.playTone(440, 50)
+                    this.playTone(440, 40)
                     break
                 }
                 case microcode.robots.RobotCompactCommand.MotorLEDRed:

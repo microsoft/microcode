@@ -82,6 +82,7 @@ namespace microcode {
     //% blockId=microcoderobotondetectlines
     //% group="Input"
     export function onLineDetected(state: RobotLineState, handler: () => void) {
+        checkRobotDriver()
         const msg = microcode.robots.RobotCompactCommand.LineState | state
         microcode.robots.onEvent(msg, handler)
     }
@@ -114,7 +115,7 @@ namespace microcode {
     }
 
     /**
-     * Sets the radio group used to communicate commands.
+     * Sets the radio group used to communicate commands. Starts radio if needed.
     */
     //% block="robot set radio group to $value"
     //% blockId="microcoderobotsetradiogroup"
@@ -125,7 +126,6 @@ namespace microcode {
     export function setRadioGroup(value: number) {
         checkRobotDriver()
         robot.setRadioGroup(value)
-        led.stopAnimation()
     }
 
     /**
