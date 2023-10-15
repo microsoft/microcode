@@ -29,9 +29,7 @@ namespace microcode {
                             reportEvent("samples.open", {
                                 name: sample.label,
                             })
-                            const saved: SavedState = JSON.parse(sample.source)
-                            const progdef = progDefnFromJson(saved.progdef)
-                            this.app.save(SAVESLOT_AUTO, progdef)
+                            this.app.saveBuffer(SAVESLOT_AUTO, sample.source)
                             this.app.popScene()
                             this.app.pushScene(new Editor(this.app))
                         },

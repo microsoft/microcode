@@ -66,20 +66,23 @@ namespace docs {
             console.log(`render sample ${sample.label}`)
             const icon = microcode.icons.get(sample.icon, true)
             if (icon) appendImage(images, "icon_sample", sample.label, icon)
-            const saved: microcode.SavedState = JSON.parse(sample.source)
-            const progdef = microcode.progDefnFromJson(saved.progdef)
-            app.save(microcode.SAVESLOT_AUTO, progdef)
-            const res = _renderProgram()
-            Object.keys(res).forEach(iname => {
-                appendImage(
-                    images,
-                    "sample",
-                    iname == "app" ? sample.label : `${sample.label}_${iname}`,
-                    res[iname]
-                )
-            })
+            // app.saveBuffer(microcode.SAVESLOT_AUTO, sample.source)
+            // read the buffer and convert to B64
+            const buf = settings.readBuffer(microcode.SAVESLOT_AUTO)
+            const buf64 = buf.toBase64()
+            console.log(buf64)
 
-            app.popScene()
+            // const res = _renderProgram()
+            // Object.keys(res).forEach(iname => {
+            //     appendImage(
+            //         images,
+            //         "sample",
+            //         iname == "app" ? sample.label : `${sample.label}_${iname}`,
+            //         res[iname]
+            //     )
+            // })
+
+            // app.popScene()
         }
         microcode.Screen.resetScreenImage()
     }

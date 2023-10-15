@@ -32,7 +32,7 @@ namespace microcode {
             }, 1)
         }
 
-        private saveBuffer(slot: string, buf: Buffer) {
+        public saveBuffer(slot: string, buf: Buffer) {
             reportEvent("app.save", { slot: slot, size: buf.length })
             console.log(`save to ${slot}: ${buf.length}b`)
             profile()
