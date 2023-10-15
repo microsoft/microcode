@@ -4,7 +4,7 @@ microcode.elecfreaksCuteBot.start()
 //microcode.keyStudioMiniSmartRobot.start()
 //microcode.setMotorDrift(6)
 
-microcode.setRadioGroup(1)
+microcode.setRadioGroup(2)
 microcode.setMotorDrift(0)
 
 /*
