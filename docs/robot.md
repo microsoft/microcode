@@ -28,13 +28,23 @@ The following features are found often but are optional:
 
 [![Photograph of the Cutebot](./images/cutebot.jpeg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
 
--   Download [robot-cutebox.hex](https://microsoft.github.io/microcode/assets/robot-cutebox.hex) to micro:bit attached to the Cutebot
+-   Download [microcode-robot-elecfreakscutebot.hex](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreakscutebot.hex)
 
 ### Yahboom Tiny:bit
 
 ![Photograph of the Tiny:bit](./images/tinybit.jpeg)
 
--   Download [robot-tinybit.hex](https://microsoft.github.io/microcode/assets/robot-tinybit.hex)
+-   Download [microcode-robot-yahboomtinybit.hex](https://microsoft.github.io/microcode/assets/microcode-robot-yahboomtinybit.hex)
+
+### Elecfreaks Cutebot PRO
+
+[![Photograph of the Cutebot PRO](./images/cutebotpro.jpeg)](https://shop.elecfreaks.com/products/elecfreaks-smart-cutebot-pro-v2-programming-robot-car-for-micro-bit)
+
+-   Download [microcode-robot-elecfreakscutebotpro.hex](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreakscutebotpro.hex)
+
+## Others
+
+-   [KeyStudio KS0426 Mini Smart Robot](https://microsoft.github.io/microcode/assets/microcode-robot-keystudiominismartrobot.hex)
 
 ## Configuring the radio group
 
