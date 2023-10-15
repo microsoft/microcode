@@ -386,18 +386,12 @@ namespace microcode {
                     this.playTone(440, 50)
                     break
                 }
-                case microcode.robots.RobotCompactCommand.MotorLEDOff:
-                    this.setColor(0); break;
                 case microcode.robots.RobotCompactCommand.MotorLEDRed:
                     this.setColor(0xff0000); break;
                 case microcode.robots.RobotCompactCommand.MotorLEDGreen:
                     this.setColor(0x00ff00); break;
                 case microcode.robots.RobotCompactCommand.MotorLEDBlue:
                     this.setColor(0x0000ff); break;
-                case microcode.robots.RobotCompactCommand.MotorLEDYellow:
-                    this.setColor(0x00ffff); break;
-                case microcode.robots.RobotCompactCommand.MotorLEDMagenta:
-                    this.setColor(0xff00ff); break;
             }
         }
     }
