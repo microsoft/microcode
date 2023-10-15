@@ -145,6 +145,9 @@ namespace microcode {
         else if (id === "CAR6") res = "fast forward";
         else if (id === "CAR7") res = "spin left";
         else if (id === "CAR8") res = "spin right";
+        else if (id === "CAR9") res = "LED red";
+        else if (id === "CAR10") res = "LED green";
+        else if (id === "CAR11") res = "LED blue";
         else if (id === "S13") res = "wall";
         else if (id === "S14") res = "line";
         else if (id === "F23L") res = "left";

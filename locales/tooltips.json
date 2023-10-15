@@ -161,6 +161,10 @@
     "CAR7": "spin left",
     "CAR8": "spin right",
 
+    "CAR9": "LED red",
+    "CAR10": "LED green",
+    "CAR11": "LED blue",
+
     "S13": "wall",
     "S14": "line",
     "F23L": "left",

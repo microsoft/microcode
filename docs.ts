@@ -226,6 +226,9 @@ namespace docs {
             microcode.TID_MODIFIER_CAR_STOP,
             microcode.TID_MODIFIER_CAR_SPIN_LEFT,
             microcode.TID_MODIFIER_CAR_SPIN_RIGHT,
+            microcode.TID_MODIFIER_CAR_LED_COLOR_1,
+            microcode.TID_MODIFIER_CAR_LED_COLOR_2,
+            microcode.TID_MODIFIER_CAR_LED_COLOR_3,
             microcode.TID_SENSOR_CAR_WALL,
             microcode.TID_SENSOR_LINE,
             microcode.TID_FILTER_LINE_LEFT,
@@ -369,7 +372,7 @@ namespace docs {
             microcode.TID_MODIFIER_RADIO_VALUE,
         ]
     }
-    
+
     function renderIcons(images: RenderedImage[]) {
         for (const name of names()) {
             console.log(`render icon ${name}`)

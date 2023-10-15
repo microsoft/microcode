@@ -128,6 +128,9 @@ namespace microcode {
     export const TID_MODIFIER_CAR_FORWARD_FAST = "CAR6"
     export const TID_MODIFIER_CAR_SPIN_LEFT = "CAR7"
     export const TID_MODIFIER_CAR_SPIN_RIGHT = "CAR8"
+    export const TID_MODIFIER_CAR_LED_COLOR_1 = "CAR9"
+    export const TID_MODIFIER_CAR_LED_COLOR_2 = "CAR10"
+    export const TID_MODIFIER_CAR_LED_COLOR_3 = "CAR11"
 
     // should fit into a byte
     export enum Tid {
@@ -260,6 +263,9 @@ namespace microcode {
         TID_MODIFIER_CAR_FORWARD_FAST,
         TID_MODIFIER_CAR_SPIN_LEFT,
         TID_MODIFIER_CAR_SPIN_RIGHT,
+        TID_MODIFIER_CAR_LED_COLOR_1,
+        TID_MODIFIER_CAR_LED_COLOR_2,
+        TID_MODIFIER_CAR_LED_COLOR_3,
         MODIFER_END,
     }
 
@@ -495,6 +501,12 @@ namespace microcode {
                 return Tid.TID_MODIFIER_CAR_SPIN_LEFT
             case TID_MODIFIER_CAR_SPIN_RIGHT:
                 return Tid.TID_MODIFIER_CAR_SPIN_RIGHT
+            case TID_MODIFIER_CAR_LED_COLOR_1:
+                return Tid.TID_MODIFIER_CAR_LED_COLOR_1
+            case TID_MODIFIER_CAR_LED_COLOR_2:
+                return Tid.TID_MODIFIER_CAR_LED_COLOR_2
+            case TID_MODIFIER_CAR_LED_COLOR_3:
+                return Tid.TID_MODIFIER_CAR_LED_COLOR_3
             default:
                 return undefined
         }

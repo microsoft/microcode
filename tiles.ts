@@ -422,6 +422,9 @@ namespace microcode {
                 microcode.robots.RobotCompactCommand.MotorRunForwardFast,
                 microcode.robots.RobotCompactCommand.MotorSpinLeft,
                 microcode.robots.RobotCompactCommand.MotorSpinRight,
+                microcode.robots.RobotCompactCommand.MotorLEDRed,
+                microcode.robots.RobotCompactCommand.MotorLEDGreen,
+                microcode.robots.RobotCompactCommand.MotorLEDBlue,
             ]
             make_vals(car_commands, "car", "CAR", 1)
 
