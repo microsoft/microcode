@@ -1,6 +1,7 @@
 ## Supported robots
 
-MicroCode supports the following [robots](./robot.md) (please file a [GitHub issues](https://github.com/microsoft/microcode/issues?q=is%3Aissue+is%3Aopen+label%3Arobot) if your robot is not listed):
+MicroCode supports the following [robots](./robot.md) (please file a [GitHub issues](https://github.com/microsoft/microcode/issues?q=is%3Aissue+is%3Aopen+label%3Arobot) if your robot is not listed).
+See [how to contribute](#contributing) for more information.
 
 ### Elecfreaks Cutebot
 
@@ -46,3 +47,17 @@ MicroCode supports the following [robots](./robot.md) (please file a [GitHub iss
 
 -   [Home](https://wiki.keyestudio.com/KS0426_Keyestudio_Micro%EF%BC%9Abit_Mini_Smart_Robot_Car_Kit_V2)
 -   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-keystudio-minismartrobot.hex)
+
+### Contributing {#contributing}
+
+To add a new robot to the list, prepare a pull request with:
+
+-   a new class extending `Robot` and configuring the hardware (see other robots)
+-   a global field instance instantiating the robot (see other robots)
+-   a URL in the jsdocs of the class pointing to the robot homepage
+-   add `main{company}{productname}.ts` file that starts the robot
+-   add `pxt-{company}{productname}.ts` file that overrides the test files to load `main{company}{productname}.ts`
+-   add image under `docs/static/images`
+
+Make sure to test and tune the configuration options in the robot class for your particular
+chassis/motor/line detectors. You may want to tweak some of the constants in the robot class to optimize the behavior of the robot.
