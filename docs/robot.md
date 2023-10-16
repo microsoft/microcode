@@ -133,7 +133,6 @@ To add a new robot to the list, prepare a pull request with:
 -   add `main{company}{productname}.ts` file that starts the robot
 -   add `pxt-{company}{productname}.ts` file that overrides the test files to load `main{company}{productname}.ts`
 -   add image under `docs/static/images`
--   add entry in `docs/robot.md` with the image and link to the documentation
 
 Make sure to test and tune the configuration options in the robot class for your particular
 chassis/motor/line detectors. You may want to tweak some of the constants in the robot class to optimize the behavior of the robot.
