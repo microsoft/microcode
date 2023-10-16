@@ -39,7 +39,7 @@ namespace docs {
         const images: RenderedImage[] = []
         appendImage(images, "image", "home", screen)
         renderIcons(images)
-        renderSamples(images)
+        const samples = renderSamples(images)
         appendImage(images, "image", "microcode", microcode.wordLogo)
         appendImage(images, "image", "microbit", microcode.microbitLogo)
         appendImage(
@@ -53,7 +53,11 @@ namespace docs {
             Buffer.fromUTF8(
                 JSON.stringify({
                     type: "art",
-                    samples: microcode.rawSamples(),
+                    samples: samples.map(s => ({
+                        label: s.label,
+                        b64: s.b64,
+                        icon: s.icon || "",
+                    })),
                     images,
                 })
             )
@@ -62,7 +66,8 @@ namespace docs {
 
     function renderSamples(images: RenderedImage[]) {
         app.popScene()
-        for (const sample of microcode.samples(false)) {
+        const samples = microcode.samples(false)
+        for (const sample of samples) {
             console.log(`render sample ${sample.label}`)
             const icon = microcode.icons.get(sample.icon, true)
             if (icon) appendImage(images, "icon_sample", sample.label, icon)
@@ -91,6 +96,7 @@ namespace docs {
             app.popScene()
         }
         microcode.Screen.resetScreenImage()
+        return samples
     }
 
     //% shim=TD_NOOP
