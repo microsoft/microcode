@@ -407,10 +407,10 @@ namespace microcode {
             const defn = new ProgramDefn()
             assert(!br.eof())
             const magic = br.readBuffer(4)
-            assert(
-                magic.getNumber(NumberFormat.UInt32LE, 0) == 0x3e92f825,
-                "bad magic"
-            )
+            if (magic.getNumber(NumberFormat.UInt32LE, 0) != 0x3e92f825) {
+                console.log("bad magic")
+                return defn
+            }
             defn.pages = []
             assert(!br.eof())
             while (br.peekByte() != Tid.END_OF_PROG) {
