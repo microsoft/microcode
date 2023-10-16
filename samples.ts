@@ -1,10 +1,10 @@
 namespace microcode {
     export class Sample {
         constructor(
-            public label: string,
-            public ariaId: string,
-            public icon: string,
-            private b64: string
+            public readonly label: string,
+            public readonly ariaId: string,
+            public readonly icon: string,
+            public readonly b64: string
         ) {}
 
         get source() {
