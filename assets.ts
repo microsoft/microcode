@@ -26,12 +26,23 @@ namespace microcode {
         if (name == TID_MODIFIER_CAR_TURN_LEFT) return icondb.car_left_turn
         if (name == TID_MODIFIER_CAR_TURN_RIGHT) return icondb.car_right_turn
         if (name == TID_MODIFIER_CAR_STOP) return icondb.car_stop
+        if (name == TID_MODIFIER_CAR_FORWARD_FAST)
+            return icondb.car_forward_fast
+        if (name == TID_MODIFIER_CAR_SPIN_LEFT) return icondb.car_left_spin
+        if (name == TID_MODIFIER_CAR_SPIN_RIGHT) return icondb.car_right_spin
+        if (name == TID_MODIFIER_CAR_LED_COLOR_1) return icondb.tile_color_red
+        if (name == TID_MODIFIER_CAR_LED_COLOR_2) return icondb.tile_color_green
+        if (name == TID_MODIFIER_CAR_LED_COLOR_3) return icondb.tile_color_blue
         if (name == TID_SENSOR_CAR_WALL) return icondb.car_wall
         if (name == TID_SENSOR_LINE) return icondb.line_sensor
         if (name == TID_FILTER_LINE_LEFT) return icondb.line_left_on
         if (name == TID_FILTER_LINE_RIGHT) return icondb.line_right_on
         if (name == TID_FILTER_LINE_BOTH) return icondb.line_both_on
         if (name == TID_FILTER_LINE_NEITHER) return icondb.line_neither_on
+        if (name == TID_FILTER_LINE_NEITHER_LEFT)
+            return icondb.line_none_from_left
+        if (name == TID_FILTER_LINE_NEITHER_RIGHT)
+            return icondb.line_none_from_right
         return null
     }
 
@@ -58,7 +69,7 @@ namespace microcode {
             return icondb.tile_rainbow
         if (name == TID_MODIFIER_RGB_LED_COLOR_SPARKLE)
             return icondb.tile_sparkle
-        if (name == TID_MODIFIER_SERVO_SET_ANGLE) return icondb.servo_set_angle
+        if (name == TID_ACTUATOR_SERVO_SET_ANGLE) return icondb.servo_set_angle
         return null
     }
 
@@ -294,24 +305,41 @@ namespace icondb {
         return ret
     }
 
-    // - upscale 5x5 image to 16 x 16
-    export function scaleUp(led55: Image) {
+    // - upscale 5x5 image to 16 x 16, add halo
+    export function renderMicrobitLEDs(led55: Image) {
         const ret = image.create(16, 16)
         ret.fill(15)
         for (let row = 0; row < 5; row++) {
             for (let col = 0; col < 5; col++) {
-                const color = led55.getPixel(row, col) ? 2 : 15
+                const on = led55.getPixel(row, col)
+                if (!on) continue
+
+                const color = 0x2
+                const halo = 0xe
                 const nrow = 1 + row * 3,
                     ncol = 1 + col * 3
                 ret.setPixel(nrow, ncol, color)
                 ret.setPixel(nrow + 1, ncol, color)
                 ret.setPixel(nrow, ncol + 1, color)
                 ret.setPixel(nrow + 1, ncol + 1, color)
+                // halo
+                /*
+                ret.setPixel(nrow - 1, ncol, halo)
+                ret.setPixel(nrow - 1, ncol + 1, halo)
+                ret.setPixel(nrow + 2, ncol, halo)
+                ret.setPixel(nrow + 2, ncol + 1, halo)
+                ret.setPixel(nrow, ncol - 1, halo)
+                ret.setPixel(nrow + 1, ncol - 1, halo)
+                ret.setPixel(nrow, ncol + 2, halo)
+                ret.setPixel(nrow + 1, ncol + 2, halo)
+                */
             }
         }
         return ret
     }
-    export const iconEditor = scaleUp(
+
+    /*
+    export const iconEditor = renderMicrobitLEDs(
         img`
         . . . . .
         . 1 . 1 .
@@ -320,11 +348,60 @@ namespace icondb {
         . 1 1 1 .
         `
     )
+    */
+    export const iconEditor = img`
+    f f f f f f f f f f f f f f f f 
+    f f f f f f f f f f f f f f f f 
+    f f f f f f f f f f f f f f f f 
+    f f f f e e f f f f e e f f f f 
+    f f f e 2 2 e f f e 2 2 e f f f 
+    f f f e 2 2 e f f e 2 2 e f f f 
+    f f f f e e f f f f e e f f f f 
+    f f f f f f f f f f f f f f f f 
+    f f f f f f f f f f f f f f f f 
+    f e e f f f f f f f f f f e e f 
+    e 2 2 e f f f f f f f f e 2 2 e 
+    e 2 2 e f f f f f f f f e 2 2 e 
+    f e e f e e f e e f e e f e e f 
+    f f f e 2 2 e 2 2 e 2 2 e f f f 
+    f f f e 2 2 e 2 2 e 2 2 e f f f 
+    f f f f e e f e e f e e f f f f 
+    `
+    function renderImg(i: Image) {
+        let r = ""
+        for (let y = 0; y < i.height; ++y) {
+            let line = ""
+            for (let x = 0; x < i.width; ++x)
+                line += "0123456789abcdef"[i.getPixel(x, y)] + " "
+            r += line + "\n"
+        }
+        console.log(`\nimg\`\n${r}\``)
+    }
 
+    /*
     export const melodyEditor = melodyToImage({
         notes: "0240",
         tempo: 0,
     })
+    */
+    export const melodyEditor = img`
+    1111111111111111
+    111111111ff11111
+    11111111fcc11111
+    11111111fcc11111
+    1111111111111111
+    1111111111111111
+    1111111111111111
+    11111ff111111111
+    1111fcc111111111
+    1111fcc111111111
+    1111111111111111
+    1111111111111111
+    1111111111111111
+    1ff1111111111ff1
+    fcc111111111fcc1
+    fcc111111111fcc1    
+    `
 
     export const disk = img`
     . . . . . . . . . . . . . . . .
@@ -333,13 +410,13 @@ namespace icondb {
     . . 8 d d d d 8 8 d d 8 8 8 . .
     . . 8 d d d d d d d d 8 8 8 . .
     . . 8 8 8 8 8 8 8 8 8 8 8 8 . .
-    . . 8 8 3 3 3 3 3 3 3 3 8 8 . .
-    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
-    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
-    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
-    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
-    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
-    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
+    . . 8 8 3 3 3 3 3 3 3 3 8 8 d .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 d .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 d .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 d .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 d .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 d .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 d .
     . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
@@ -351,14 +428,14 @@ namespace icondb {
     . . 8 d d d d 8 8 d d 8 8 . . .
     . . 8 d d d d 8 8 d d 8 8 8 . .
     . . 8 d d d d d d d d 8 8 8 . .
-    . . 8 8 8 8 8 8 8 8 8 8 8 8 . .
-    . . 8 8 3 3 3 3 3 3 3 3 8 8 . .
-    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
-    . . 8 8 1 1 1 1 f 1 1 1 8 8 . .
-    . . 8 8 1 1 1 f f 1 1 1 8 8 . .
-    . . 8 8 1 1 1 1 f 1 1 1 8 8 . .
-    . . 8 8 1 1 1 1 f 1 1 1 8 8 . .
-    . . 8 8 1 1 1 f f f 1 1 8 8 . .
+    . . 8 8 8 8 8 8 8 8 8 8 8 8 d .
+    . . 8 8 3 3 3 3 3 3 3 3 8 8 d .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 d .
+    . . 8 8 1 1 1 1 f 1 1 1 8 8 d .
+    . . 8 8 1 1 1 f f 1 1 1 8 8 d .
+    . . 8 8 1 1 1 1 f 1 1 1 8 8 d .
+    . . 8 8 1 1 1 1 f 1 1 1 8 8 d .
+    . . 8 8 1 1 1 f f f 1 1 8 8 d .
     . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
@@ -370,14 +447,14 @@ namespace icondb {
     . . 8 d d d d 8 8 d d 8 8 . . .
     . . 8 d d d d 8 8 d d 8 8 8 . .
     . . 8 d d d d d d d d 8 8 8 . .
-    . . 8 8 8 8 8 8 8 8 8 8 8 8 . .
-    . . 8 8 3 3 3 3 3 3 3 3 8 8 . .
-    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
-    . . 8 8 1 1 1 f f 1 1 1 8 8 . .
-    . . 8 8 1 1 1 1 1 f 1 1 8 8 . .
-    . . 8 8 1 1 1 1 f 1 1 1 8 8 . .
-    . . 8 8 1 1 1 f 1 1 1 1 8 8 . .
-    . . 8 8 1 1 1 f f f 1 1 8 8 . .
+    . . 8 8 8 8 8 8 8 8 8 8 8 8 d .
+    . . 8 8 3 3 3 3 3 3 3 3 8 8 d .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 d .
+    . . 8 8 1 1 1 f f 1 1 1 8 8 d .
+    . . 8 8 1 1 1 1 1 f 1 1 8 8 d .
+    . . 8 8 1 1 1 1 f 1 1 1 8 8 d .
+    . . 8 8 1 1 1 f 1 1 1 1 8 8 d .
+    . . 8 8 1 1 1 f f f 1 1 8 8 d .
     . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
@@ -389,14 +466,14 @@ namespace icondb {
     . . 8 d d d d 8 8 d d 8 8 . . .
     . . 8 d d d d 8 8 d d 8 8 8 . .
     . . 8 d d d d d d d d 8 8 8 . .
-    . . 8 8 8 8 8 8 8 8 8 8 8 8 . .
-    . . 8 8 3 3 3 3 3 3 3 3 8 8 . .
-    . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
-    . . 8 8 1 1 1 f f 1 1 1 8 8 . .
-    . . 8 8 1 1 1 1 1 f 1 1 8 8 . .
-    . . 8 8 1 1 1 1 f f 1 1 8 8 . .
-    . . 8 8 1 1 1 1 1 f 1 1 8 8 . .
-    . . 8 8 1 1 1 f f 1 1 1 8 8 . .
+    . . 8 8 8 8 8 8 8 8 8 8 8 8 d .
+    . . 8 8 3 3 3 3 3 3 3 3 8 8 d .
+    . . 8 8 1 1 1 1 1 1 1 1 8 8 d .
+    . . 8 8 1 1 1 f f 1 1 1 8 8 d .
+    . . 8 8 1 1 1 1 1 f 1 1 8 8 d .
+    . . 8 8 1 1 1 1 f f 1 1 8 8 d .
+    . . 8 8 1 1 1 1 1 f 1 1 8 8 d .
+    . . 8 8 1 1 1 f f 1 1 1 8 8 d .
     . . 8 8 1 1 1 1 1 1 1 1 8 8 . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
@@ -2701,7 +2778,6 @@ bffffffffffffffffffffffffffffffb
 . . . . . .
 `
 
-
     export const servo_set_angle = img`
     . . . . . . . . . . . . . . . . 
     . . . 8 8 8 . . . . 4 . . . . . 
@@ -2925,99 +3001,154 @@ bffffffffffffffffffffffffffffffb
 `
 
     export const car = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . f f f f f f f f . . . .
-. . . f f 1 1 1 1 1 1 f f . . .
-. . f f 1 1 1 1 1 1 1 1 f f . .
-. . f f 1 1 1 1 1 1 1 1 f f . .
-. . f f 1 1 1 1 1 1 1 1 f f . .
-. f f f f f f f f f f f f f f .
-. f f 9 f f f f f f f f 9 f f .
-. f 9 1 9 f f f f f f 9 1 9 f .
-. f f 9 f f f f f f f f 9 f f .
-. f f f f f f f f f f f f f f .
-. . f f . . . . . . . . f f . .
-. . f f . . . . . . . . f f . .
-. . f f . . . . . . . . f f . .
-. . . . . . . . . . . . . . . .
-`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . f f f f f f f f . . . .
+    . . . f f 1 1 1 1 1 1 f f . . .
+    . . f f 1 1 1 1 1 1 1 1 f f . .
+    . . f f 1 1 1 1 1 1 1 d f f . .
+    . . f f 1 d d d d d d d f f . .
+    . f f f f f f f f f f f f f f .
+    . f f 9 f f f f f f f f 9 f f .
+    . f 9 1 9 f f f f f f 9 1 9 f d
+    . f f 9 f f f f f f f f 9 f f d
+    . f f f f f f f f f f f f f f d
+    . . f f d . . . . . . . f f d d
+    . . f f d . . . . . . . f f d .
+    . . f f . . . . . . . . f f . .
+    . . . . . . . . . . . . . . . .`
 
     export const car_forward = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . c . . . . . . . .
-. . . . . . c 7 c . . . . . . .
-. . . . . c 7 7 7 c . . . . . .
-. . . . c 7 7 7 7 7 c . . . . .
-. . . c 7 7 7 7 7 7 7 c . . . .
-. . . c 7 7 7 7 7 7 7 c . . . .
-. . . c c c 7 7 7 c c c . . . .
-. . . . . c 7 7 7 c . . . . . .
-. . . . . c 7 7 7 c . . . . . .
-. . . . . c 7 7 7 c . . . . . .
-. . . . . c 7 7 7 c . . . . . .
-. . . . . c 7 7 7 c . . . . . .
-. . . . . c c c c c . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . c . . . . . . . .
+    . . . . . . c 7 c . . . . . . .
+    . . . . . c 7 7 7 c . . . . . .
+    . . . . c 7 7 7 7 7 c . . . . .
+    . . . c 7 7 7 7 7 7 7 c . . . .
+    . . . c 7 7 7 7 7 7 7 c . . . .
+    . . . c c c 7 7 7 c c c d . . .
+    . . . . . c 7 7 7 c d d d . . .
+    . . . . . c 7 7 7 c d . . . . .
+    . . . . . c 7 7 7 c d . . . . .
+    . . . . . c 7 7 7 c d . . . . .
+    . . . . . c 7 7 7 c d . . . . .
+    . . . . . c c c c c . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
 `
+    export const car_forward_fast = img`
+    . . . . . . . c . . . . . . . .
+    . . . . . . c 7 c . . . . . . .
+    . . . . . c 7 7 7 c . . . . . .
+    . . . . c 7 7 7 7 7 c . . . . .
+    . . . c 7 7 7 7 7 7 7 c . . . .
+    . . . c 7 7 7 7 7 7 7 c . . . .
+    . . . c c c c c c c c c d . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . c c c c c . . . . . .
+    . . . . . c 7 7 7 c d . . . . .
+    . . . . . c c c c c d . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . c 7 7 7 c . . . . . .
+    . . . . . c c c c c d . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . c 7 7 7 c d . . . . .    
+    `
 
     export const car_reverse = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . c c c c c . . . . .
-. . . . . . c 7 7 7 c . . . . .
-. . . . . . c 7 7 7 c . . . . .
-. . . . . . c 7 7 7 c . . . . .
-. . . . . . c 7 7 7 c . . . . .
-. . . . . . c 7 7 7 c . . . . .
-. . . . c c c 7 7 7 c c c . . .
-. . . . c 7 7 7 7 7 7 7 c . . .
-. . . . c 7 7 7 7 7 7 7 c . . .
-. . . . . c 7 7 7 7 7 c . . . .
-. . . . . . c 7 7 7 c . . . . .
-. . . . . . . c 7 c . . . . . .
-. . . . . . . . c . . . . . . .
-. . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . c c c c c . . . . .
+    . . . . . . c 7 7 7 c . . . . .
+    . . . . . . c 7 7 7 c d . . . .
+    . . . . . . c 7 7 7 c d . . . .
+    . . . . . . c 7 7 7 c d . . . .
+    . . . . . . c 7 7 7 c d . . . .
+    . . . . c c c 7 7 7 c c c . . .
+    . . . . c 7 7 7 7 7 7 7 c . . .
+    . . . . c 7 7 7 7 7 7 7 c . . .
+    . . . . . c 7 7 7 7 7 c . . . .
+    . . . . . . c 7 7 7 c . . . . .
+    . . . . . . . c 7 c . . . . . .
+    . . . . . . . . c . . . . . . .
+    . . . . . . . . . . . . . . . .
 `
 
     export const car_left_turn = img`
-. . . . . . . . . . . . . . . .
-. . . . . c c c . . . . . . . .
-. . . . c 7 7 c . . . . . . . .
-. . . c 7 7 7 c c c c . . . . .
-. . c 7 7 7 7 7 7 7 7 c . . . .
-. c 7 7 7 7 7 7 7 7 7 7 c . . .
-. . c 7 7 7 7 7 7 7 7 7 7 c . .
-. . . c 7 7 7 c c 7 7 7 7 7 c .
-. . . . c 7 7 c . c 7 7 7 7 c .
-. . . . . c c c . . c 7 7 7 c .
-. . . . . . . . . . c 7 7 7 c .
-. . . . . . . . . . c 7 7 7 c .
-. . . . . . . . . . c 7 7 7 c .
-. . . . . . . . . . c 7 7 7 c .
-. . . . . . . . . . c c c c c .
-. . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . c c c . . . . . . . .
+    . . . . c 7 7 c . . . . . . . .
+    . . . c 7 7 7 c c c c . . . . .
+    . . c 7 7 7 7 7 7 7 7 c . . . .
+    . c 7 7 7 7 7 7 7 7 7 7 c . . .
+    . . c 7 7 7 7 7 7 7 7 7 7 c . .
+    . . . c 7 7 7 c c 7 7 7 7 7 c .
+    . . . . c 7 7 c d c 7 7 7 7 c .
+    . . . . . c c c . . c 7 7 7 c d
+    . . . . . . . . . . c 7 7 7 c d
+    . . . . . . . . . . c 7 7 7 c d
+    . . . . . . . . . . c 7 7 7 c d
+    . . . . . . . . . . c 7 7 7 c d
+    . . . . . . . . . . c c c c c .
+    . . . . . . . . . . . . . . . .
 `
 
+    export const car_left_spin = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . c c c c c . . . . . .
+    . . . . c 7 7 7 7 7 c . . . . .
+    . . . c 7 7 7 7 7 7 7 c . . . .
+    . . c 7 7 7 7 7 7 7 7 7 c . . .
+    . . c 7 7 7 c c 7 7 7 7 7 c . .
+    c c c 7 7 7 c c c 7 7 7 7 7 c .
+    c 7 7 7 7 7 7 7 c c 7 7 7 7 c .
+    c 7 7 7 7 7 7 7 c d c 7 7 7 c d
+    . c 7 7 7 7 7 c d . c 7 7 7 c d
+    . . c 7 7 7 c d . . c 7 7 7 c d
+    . . . c 7 c d . . . c 7 7 7 c d
+    . . . . c . . . . . c 7 7 7 c d
+    . . . . . . . . . . c c c c c .
+    . . . . . . . . . . . . . . . .    
+    `
+
     export const car_right_turn = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . c c c . . . . .
-. . . . . . . . c 7 7 c . . . .
-. . . . . c c c c 7 7 7 c . . .
-. . . . c 7 7 7 7 7 7 7 7 c . .
-. . . c 7 7 7 7 7 7 7 7 7 7 c .
-. . c 7 7 7 7 7 7 7 7 7 7 c . .
-. c 7 7 7 7 7 c c 7 7 7 c . . .
-. c 7 7 7 7 c . c 7 7 c . . . .
-. c 7 7 7 c . . c c c . . . . .
-. c 7 7 7 c . . . . . . . . . .
-. c 7 7 7 c . . . . . . . . . .
-. c 7 7 7 c . . . . . . . . . .
-. c 7 7 7 c . . . . . . . . . .
-. c c c c c . . . . . . . . . .
-. . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . c c c . . . . .
+    . . . . . . . . c 7 7 c . . . .
+    . . . . . c c c c 7 7 7 c . . .
+    . . . . c 7 7 7 7 7 7 7 7 c . .
+    . . . c 7 7 7 7 7 7 7 7 7 7 c .
+    . . c 7 7 7 7 7 7 7 7 7 7 c . .
+    . c 7 7 7 7 7 c c 7 7 7 c . . .
+    . c 7 7 7 7 c . c 7 7 c . . . .
+    . c 7 7 7 c d . c c c . . . . .
+    . c 7 7 7 c d . . . . . . . . .
+    . c 7 7 7 c d . . . . . . . . .
+    . c 7 7 7 c d . . . . . . . . .
+    . c 7 7 7 c d . . . . . . . . .
+    . c c c c c . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
 `
+
+    export const car_right_spin = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . c c c c c . . . . . .
+    . . . . c 7 7 7 7 7 c . . . . .
+    . . . c 7 7 7 7 7 7 7 c . . . .
+    . . c 7 7 7 7 7 7 7 7 7 c . . .
+    . c 7 7 7 7 7 c c 7 7 7 c . . .
+    c 7 7 7 7 7 c c c 7 7 7 c c c .
+    c 7 7 7 7 c c 7 7 7 7 7 7 7 c d
+    c 7 7 7 c d c 7 7 7 7 7 7 7 c d
+    c 7 7 7 c d . c 7 7 7 7 7 c d .
+    c 7 7 7 c d . . c 7 7 7 c d . .
+    c 7 7 7 c d . . . c 7 c d . . .
+    c 7 7 7 c . . . . . c d . . . .
+    c c c c c . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .    
+    `
 
     export const car_stop = img`
 . . . . . . . . . . . . . . . . 
@@ -3059,20 +3190,20 @@ d d d d d d d d d d d d d d d d
 
     export const line_sensor = img`
     . . . . . . . . . . . . . . . .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
-    . b d d d d d f f d d d d d b .
+    . b d d d d c f f c d d d d b .
+    . b d d d d c f f c d d d d b .
+    . b d d d d c f f c d d d d b .
+    . d d d d d c f f c d d d d d .
+    . d d d d d c f f c d d d d d .
+    . d d d d d c f f c d d d d d .
+    . b d d d d c f f c d d d d b .
+    . b d d d d c f f c d d d d b .
+    . b d d d d c f f c d d d d b .
+    . d d d d d c f f c d d d d d .
+    . d d d d d c f f c d d d d d .
+    . d d d d d c f f c d d d d d .
+    . b d d d d c f f c d d d d b .
+    . b d d d d c f f c d d d d b .
     . . . . . . . . . . . . . . . .
 `
     export const line_neither_on = img`
@@ -3094,59 +3225,96 @@ d d d d d d d d d d d d d d d d
 . . . . . . . . . . . . . . . .
 `
     export const line_left_on = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . d d . d d . . . . . .
-. . . . d 7 d . d 1 d . . . . .
-. . . d 7 7 d . d 1 1 d . . . .
-. . d 7 7 7 d . d 1 1 1 d . . .
-. d 7 7 7 7 d . d 1 1 1 1 d . .
-. d 7 7 7 7 d . d 1 1 1 1 d . .
-. d 7 7 7 7 d . d 1 1 1 1 d . .
-. d 7 7 7 7 d . d 1 1 1 1 d . .
-. d 7 7 7 d . . . d 1 1 1 d . .
-. d 7 7 d . . . . . d 1 1 d . .
-. d 7 d . . . . . . . d 1 d . .
-. d d . . . . . . . . . d d . .
-. . . . . . . . . . . . . . . .
-`
+    . c f f f c . . . . . . . . . .
+    . c f f f c . . . . . . . . . .
+    . c f f f b . . . . . . . . . .
+    . c f f f d d . d d . . . . . .
+    . c f f d 7 d . d 1 d . . . . .
+    . c f d 7 7 d . d 1 1 d . . . .
+    . b d 7 7 7 d . d 1 1 1 d . . .
+    . d 7 7 7 7 d . d 1 1 1 1 d . .
+    . d 7 7 7 7 d . d 1 1 1 1 d . .
+    . d 7 7 7 7 d . d 1 1 1 1 d . .
+    . d 7 7 7 7 d . d 1 1 1 1 d . .
+    . d 7 7 7 d . . . d 1 1 1 d . .
+    . d 7 7 d b . . . . d 1 1 d . .
+    . d 7 d f c . . . . . d 1 d . .
+    . d d f f c . . . . . . d d . .
+    . b f f f c . . . . . . . . . .`
     export const line_right_on = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . d d . d d . . . . . .
-. . . . d 1 d . d 7 d . . . . .
-. . . d 1 1 d . d 7 7 d . . . .
-. . d 1 1 1 d . d 7 7 7 d . . .
-. d 1 1 1 1 d . d 7 7 7 7 d . .
-. d 1 1 1 1 d . d 7 7 7 7 d . .
-. d 1 1 1 1 d . d 7 7 7 7 d . .
-. d 1 1 1 1 d . d 7 7 7 7 d . .
-. d 1 1 1 d . . . d 7 7 7 d . .
-. d 1 1 d . . . . . d 7 7 d . .
-. d 1 d . . . . . . . d 7 d . .
-. d d . . . . . . . . . d d . .
-. . . . . . . . . . . . . . . .
+    . . . . . . . . . c f f f c . .
+    . . . . . . . . . c f f f c . .
+    . . . . . . . . . b f f f c . .
+    . . . . . d d . d d f f f c . .
+    . . . . d 1 d . d 7 d f f c . .
+    . . . d 1 1 d . d 7 7 d f c . .
+    . . d 1 1 1 d . d 7 7 7 d b . .
+    . d 1 1 1 1 d . d 7 7 7 7 d . .
+    . d 1 1 1 1 d . d 7 7 7 7 d . .
+    . d 1 1 1 1 d . d 7 7 7 7 d . .
+    . d 1 1 1 1 d . d 7 7 7 7 d . .
+    . d 1 1 1 d . . . d 7 7 7 d . .
+    . d 1 1 d . . . . b d 7 7 d . .
+    . d 1 d . . . . . c f d 7 d . .
+    . d d . . . . . . c f f d d . .
+    . . . . . . . . . c f f f b . .
 `
     export const line_both_on = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . d d . d d . . . . . .
-. . . . d 7 d . d 7 d . . . . .
-. . . d 7 7 d . d 7 7 d . . . .
-. . d 7 7 7 d . d 7 7 7 d . . .
-. d 7 7 7 7 d . d 7 7 7 7 d . .
-. d 7 7 7 7 d . d 7 7 7 7 d . .
-. d 7 7 7 7 d . d 7 7 7 7 d . .
-. d 7 7 7 7 d . d 7 7 7 7 d . .
-. d 7 7 7 d . . . d 7 7 7 d . .
-. d 7 7 d . . . . . d 7 7 d . .
-. d 7 d . . . . . . . d 7 d . .
-. d d . . . . . . . . . d d . .
-. . . . . . . . . . . . . . . .
+    . . . . . c f f f c . . . . . .
+    . . . . . c f f f c . . . . . .
+    . . . . . b f f f b . . . . . .
+    . . . . . d d f d d . . . . . .
+    . . . . d 7 d f d 7 d . . . . .
+    . . . d 7 7 d f d 7 7 d . . . .
+    . . d 7 7 7 d f d 7 7 7 d . . .
+    . d 7 7 7 7 d f d 7 7 7 7 d . .
+    . d 7 7 7 7 d f d 7 7 7 7 d . .
+    . d 7 7 7 7 d f d 7 7 7 7 d . .
+    . d 7 7 7 7 d f d 7 7 7 7 d . .
+    . d 7 7 7 d f f f d 7 7 7 d . .
+    . d 7 7 d b f f f b d 7 7 d . .
+    . d 7 d . c f f f c . d 7 d . .
+    . d d . . c f f f c . . d d . .
+    . . . . . c f f f c . . . . . .
 `
+
+    export const line_none_from_left = img`
+. c f f f c . . . . . . . . . .
+. c f f f c . . . . . . . . . .
+. c f f f c . . . . . . . . . .
+. c f f f c . . . . . . d d . d
+. c f f f c . . . . . d 1 d . d
+. c f f f c . . . . d 1 1 d . d
+. c f f f c . . . d 1 1 1 d . d
+. c f f f c . . d 1 1 1 1 d . d
+. c f f f c . . d 1 1 1 1 d . d
+. c f f f c . . d 1 1 1 1 d . d
+. c f f f c . . d 1 1 1 1 d . d
+. c f f f c . . d 1 1 1 d . . .
+. c f f f c . . d 1 1 d . . . .
+. c f f f c . . d 1 d . . . . .
+. c f f f c . . d d . . . . . .
+. c f f f c . . . . . . . . . .
+`
+
+    export const line_none_from_right = img`
+    . . . . . . . . . . c f f f c .
+    . . . . . . . . . . c f f f c .
+    . . . . . . . . . . c f f f c .
+    d . d d . . . . . . c f f f c .
+    d . d 1 d . . . . . c f f f c .
+    d . d 1 1 d . . . . c f f f c .
+    d . d 1 1 1 d . . . c f f f c .
+    d . d 1 1 1 1 d . . c f f f c .
+    d . d 1 1 1 1 d . . c f f f c .
+    d . d 1 1 1 1 d . . c f f f c .
+    d . d 1 1 1 1 d . . c f f f c .
+    . . . d 1 1 1 d . . c f f f c .
+    . . . . d 1 1 d . . c f f f c .
+    . . . . . d 1 d . . c f f f c .
+    . . . . . . d d . . c f f f c .
+    . . . . . . . . . . c f f f c .    
+    `
 
     /* maybe use these later
     export const rc_high = img`

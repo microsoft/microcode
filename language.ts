@@ -19,9 +19,9 @@ namespace microcode {
             tiles?: string[]
             categories?: string[]
         }
-        handling?: { [id: string]: any }
     }
 
+    // TODO: make into class
     export interface FieldEditor {
         init: any
         clone: (field: any) => any
@@ -33,8 +33,9 @@ namespace microcode {
         ) => void // use picker to update field
         toImage: (field: any) => Image // produce an image for the field for tile
         buttonStyle: () => ButtonStyle
-        serialize: (field: any) => string
         deserialize: (s: string) => any
+        toBuffer: (field: any) => Buffer
+        fromBuffer: (buf: BufferReader) => any
     }
 
     // let P be jdParam
@@ -64,8 +65,13 @@ namespace microcode {
         Sequence,
     }
 
+    // TODO: clean up with new enum representation
+    // - get ride of TileType and tid
+    // - use a list instead of priority and sorting
+    // - move fieldEditor out of TileDefn, only need for a few tiles
+    // - separate editor info (constraints) from compiler info
     export class TileDefn {
-        constructor(public type: TileType, public tid: string) {
+        constructor(public tid: string) {
             this.priority = 0
         }
 
@@ -139,13 +145,6 @@ namespace microcode {
                     dst.disallow.categories.push(item)
                 )
             }
-            if (src.handling) {
-                const keys = Object.keys(src.handling)
-                for (const key of keys) {
-                    // TODO: deep copy
-                    dst.handling[key] = src.handling[key]
-                }
-            }
         }
 
         isCompatibleWith(c: Constraints): boolean {
@@ -158,35 +157,13 @@ namespace microcode {
                 )
                 if (!compat) return false
             }
-            // Check c.handling against this tile
-            if (c.handling) {
-                let compat = true
-                Object.keys(c.handling).forEach((name: any) => {
-                    if (!compat) return
-                    const rule = c.handling[name]
-                    // MAX_COUNT rule: Allow at most N tiles of this type
-                    if (name === "maxCount") {
-                        // Count the instances of rule.category in c.provides
-                        const count = c.provides.filter(
-                            pro => pro === rule.category
-                        ).length
-                        compat = count < rule.count
-                    }
-                })
-                if (!compat) return false
-            }
             return true
         }
     }
 
-    export enum Phase {
-        Pre,
-        Post,
-    }
-
     export class StmtTileDefn extends TileDefn {
-        constructor(type: TileType, tid: string) {
-            super(type, tid)
+        constructor(tid: string) {
+            super(tid)
         }
 
         public serviceClassName: string
@@ -195,14 +172,14 @@ namespace microcode {
 
     export class SensorDefn extends StmtTileDefn {
         public eventCode: number
-        constructor(tid: string, public phase: Phase) {
-            super(TileType.SENSOR, tid)
+        constructor(tid: string) {
+            super(tid)
         }
     }
 
     export class FilterModifierBase extends TileDefn {
         constructor(type: TileType, tid: string, public category: string) {
-            super(type, tid)
+            super(tid)
         }
 
         serviceCommandArg(): string | Buffer {
@@ -248,7 +225,7 @@ namespace microcode {
         public defaultModifier: ModifierDefn
 
         constructor(tid: string) {
-            super(TileType.ACTUATOR, tid)
+            super(tid)
         }
     }
 
@@ -289,80 +266,59 @@ namespace microcode {
             }
         }
 
-        public clone(): RuleDefn {
-            const rule = new RuleDefn()
-            rule.sensors = this.sensors.slice(0)
-            rule.actuators = this.actuators.slice(0)
-            rule.filters = this.filters.slice(0)
-            rule.modifiers = this.modifiers.slice(0)
-            return rule
-        }
-
         public isEmpty(): boolean {
             return this.sensors.length === 0 && this.actuators.length === 0
         }
 
-        public toObj(): any {
-            const addField = (t: TileDefn) => {
-                if (t.fieldEditor) {
-                    const ret = `${t.tid}(${t.fieldEditor.serialize(
-                        t.getField()
-                    )})`
-                    return ret
-                } else {
-                    return t.tid
+        public toBuffer(bw: BufferWriter) {
+            if (this.isEmpty()) return
+            bw.writeByte(tidToEnum(this.sensor.tid))
+            this.filters.forEach(filter => bw.writeByte(tidToEnum(filter.tid)))
+            this.actuators.forEach(act => bw.writeByte(tidToEnum(act.tid)))
+            this.modifiers.forEach(mod => {
+                bw.writeByte(tidToEnum(mod.tid))
+                if (mod.fieldEditor) {
+                    bw.writeBuffer(mod.fieldEditor.toBuffer(mod.getField()))
                 }
-            }
-            const obj = {
-                S: this.sensors.map(t => addField(t)),
-                A: this.actuators.map(t => addField(t)),
-                F: this.filters.map(t => addField(t)),
-                M: this.modifiers.map(t => addField(t)),
-            }
-            if (!obj.S.length) delete obj.S
-            if (!obj.A.length) delete obj.A
-            if (!obj.F.length) delete obj.F
-            if (!obj.M.length) delete obj.M
-            return obj
+            })
         }
 
-        public static FromObj(obj: any): RuleDefn {
-            const extractField = (t: string) => (s: string) => {
-                let hasField = s.indexOf("(")
-                if (hasField >= 0) {
-                    const elem = s.substr(0, hasField)
-                    if (Object.keys(tilesDB[t]).indexOf(elem) >= 0) {
-                        const tile = tilesDB[t][elem]
-                        const field = tile.fieldEditor.deserialize(
-                            s.substr(hasField + 1, s.length - 2 - hasField)
-                        )
-                        const newOne = tile.getNewInstance(field)
-                        return newOne
-                    } else {
-                        return undefined
-                    }
-                } else {
-                    return Object.keys(tilesDB[t]).indexOf(s) >= 0
-                        ? tilesDB[t][s]
-                        : undefined
-                }
-            }
+        public static fromBuffer(br: BufferReader) {
             const defn = new RuleDefn()
-            const parseTile = (single: string, name: string) => {
-                if (Array.isArray(obj[single])) {
-                    const tiles: any[] = obj[single]
-                    return <any>tiles.map(extractField(name)).filter(t => !!t)
+            assert(!br.eof())
+            const sensorEnum = br.readByte()
+            assert(isSensor(sensorEnum))
+            const sensorTid = enumToTid(sensorEnum)
+            defn.sensors.push(tilesDB.sensors[sensorTid])
+            assert(!br.eof())
+            while (isFilter(br.peekByte())) {
+                const filterEnum = br.readByte()
+                const filterTid = enumToTid(filterEnum)
+                defn.filters.push(tilesDB.filters[filterTid])
+                assert(!br.eof())
+            }
+            assert(!br.eof())
+            if (!isActuator(br.peekByte())) {
+                return defn
+            }
+            assert(!br.eof())
+            const actuatorEnum = br.readByte()
+            const actuatorTid = enumToTid(actuatorEnum)
+            defn.actuators.push(tilesDB.actuators[actuatorTid])
+            assert(!br.eof())
+            while (isModifier(br.peekByte())) {
+                const modifierEnum = br.readByte()
+                const modifierTid = enumToTid(modifierEnum)
+                const modifier = tilesDB.modifiers[modifierTid]
+                if (modifier.fieldEditor) {
+                    const field = modifier.fieldEditor.fromBuffer(br)
+                    const newOne = modifier.getNewInstance(field)
+                    defn.modifiers.push(<any>newOne)
+                } else {
+                    defn.modifiers.push(modifier)
                 }
-                return []
+                assert(!br.eof())
             }
-            if (typeof obj === "string") {
-                obj = JSON.parse(obj)
-            }
-
-            defn.sensors = parseTile("S", "sensors")
-            defn.actuators = parseTile("A", "actuators")
-            defn.filters = parseTile("F", "filters")
-            defn.modifiers = parseTile("M", "modifiers")
             return defn
         }
     }
@@ -372,12 +328,6 @@ namespace microcode {
 
         constructor() {
             this.rules = []
-        }
-
-        public clone(): PageDefn {
-            const page = new PageDefn()
-            page.rules = this.rules.map(rule => rule.clone())
-            return page
         }
 
         public trim() {
@@ -414,25 +364,19 @@ namespace microcode {
             return undefined
         }
 
-        public toObj(): any {
-            const obj = {
-                R: this.rules.map(elem => elem.toObj()),
-            }
-            if (!obj.R.length) {
-                delete obj.R
-            }
-            return obj
+        public toBuffer(bw: BufferWriter) {
+            this.rules.forEach(rule => rule.toBuffer(bw))
+            bw.writeByte(Tid.END_OF_PAGE)
         }
 
-        public static FromObj(obj: any): PageDefn {
-            if (typeof obj === "string") {
-                obj = JSON.parse(obj)
-            }
+        public static fromBuffer(br: BufferReader) {
             const defn = new PageDefn()
-            if (Array.isArray(obj["R"])) {
-                const rules: any[] = obj["R"]
-                defn.rules = rules.map((elem: any) => RuleDefn.FromObj(elem))
+            assert(!br.eof())
+            while (br.peekByte() != Tid.END_OF_PAGE) {
+                defn.rules.push(RuleDefn.fromBuffer(br))
+                assert(!br.eof())
             }
+            br.readByte()
             return defn
         }
     }
@@ -444,41 +388,42 @@ namespace microcode {
             this.pages = PAGE_IDS().map(id => new PageDefn())
         }
 
-        public clone(): ProgramDefn {
-            const brain = new ProgramDefn()
-            brain.pages = this.pages.map(page => page.clone())
-            return brain
-        }
-
         public trim() {
             this.pages.map(page => page.trim())
         }
 
-        public toObj(): any {
-            return {
-                P: this.pages.map(elem => elem.toObj()),
-            }
+        public toBuffer() {
+            const bw = new BufferWriter()
+            const magic = Buffer.create(4)
+            magic.setNumber(NumberFormat.UInt32LE, 0, 0x3e92f825)
+            bw.writeBuffer(magic)
+            this.pages.forEach(page => page.toBuffer(bw))
+            bw.writeByte(Tid.END_OF_PROG)
+            console.log(`toBuffer: ${bw.length}b`)
+            return bw.buffer
         }
 
-        public static FromObj(obj: any): ProgramDefn {
-            if (typeof obj === "string") {
-                obj = JSON.parse(obj)
-            }
+        public static fromBuffer(br: BufferReader) {
             const defn = new ProgramDefn()
-            if (obj && obj["P"] && Array.isArray(obj["P"])) {
-                const pages: any[] = obj["P"]
-                defn.pages = pages.map((elem: any) => PageDefn.FromObj(elem))
+            assert(!br.eof())
+            const magic = br.readBuffer(4)
+            assert(
+                magic.getNumber(NumberFormat.UInt32LE, 0) == 0x3e92f825,
+                "bad magic"
+            )
+            defn.pages = []
+            assert(!br.eof())
+            while (br.peekByte() != Tid.END_OF_PROG) {
+                defn.pages.push(PageDefn.fromBuffer(br))
+                assert(!br.eof())
             }
+            br.readByte()
             return defn
         }
     }
 
     function isTerminal(tile: TileDefn) {
-        return (
-            tile.constraints &&
-            tile.constraints.handling &&
-            tile.constraints.handling["terminal"]
-        )
+        return !isTidNotTerminal(tidToEnum(tile.tid))
     }
 
     export class Language {
@@ -552,7 +497,6 @@ namespace microcode {
                 tiles: [],
                 categories: [],
             },
-            handling: {},
         }
         return c
     }

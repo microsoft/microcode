@@ -63,13 +63,14 @@ micro:bits.
 -   [zombie detector](./samples/zombie-detector)
 -   [green light red light](./samples/green-light-red-light)
 
-## micro:bit Robot
+## micro:bit Robot {#robot}
 
 These sample work with a [2 wheel robot controlled by a micro:bit](./robot).
 
 -   [![robot avoid wall](./images/generated/icon_S13.png){:class="icon"} robot avoid wall](./samples/robot-avoid-wall)
+-   [robot shake](./samples/robot-shake)
 
-## Jacdac modules
+## Jacdac modules {#jacdac}
 
 These samples use [Jacdac](https://aka.ms/jacdac) modules to extend the capabilities of the
 micro:bit. The programming tiles for the modules appear in MicroCode when the modules are

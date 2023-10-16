@@ -37,10 +37,18 @@ jobs:
               run: |
                   cd robot
                   makecode
-                  makecode -c mkc-cutebot.json
-                  cp ./built/binary.hex ../assets/robot-cutebot.hex
+                  makecode -c mkc-elecfreakscutebot.json
+                  cp ./built/binary.hex ../assets/microcode-robot-elecfreaks-cutebot.hex
+                  makecode -c mkc-elecfreakscutebotpro.json
+                  cp ./built/binary.hex ../assets/microcode-robot-elecfreaks-cutebotpro.hex
                   makecode -c mkc-yahboomtinybit.json
-                  cp ./built/binary.hex ../assets/robot-tinybit.hex
+                  cp ./built/binary.hex ../assets/microcode-robot-yahboom-tinybit.hex
+                  makecode -c mkc-keystudiominismartrobot.json
+                  cp ./built/binary.hex ../assets/microcode-robot-keystudio-minismartrobot.hex
+                  makecode -c mkc-dfrobotmaqueen.json
+                  cp ./built/binary.hex ../assets/microcode-robot-dfrobot-maqueen.hex
+                  makecode -c mkc-dfrobotmaqueenplusv2.json
+                  cp ./built/binary.hex ../assets/microcode-robot-dfrobot-maqueen-plus-v2.hex
             - name: copy files
               run: |
                   cp ./built/binary.js ./assets/js/binary.js

@@ -13,133 +13,6 @@ namespace microcode {
         modifiers: ModifierMap
     }
 
-    // Once a tid is assigned, it can NEVER BE CHANGED OR REPURPOSED.
-    // Every tid must be unique in the set of all tids.
-    export const TID_SENSOR_START_PAGE = "S1"
-    export const TID_SENSOR_PRESS = "S2"
-    export const TID_SENSOR_RELEASE = "S2B"
-    export const TID_SENSOR_ACCELEROMETER = "S3"
-    export const TID_SENSOR_TIMER = "S4"
-    export const TID_SENSOR_LIGHT = "S5"
-    export const TID_SENSOR_TEMP = "S6"
-    export const TID_SENSOR_RADIO_RECEIVE = "S7"
-    export const TID_SENSOR_MICROPHONE = "S8"
-    export const TID_SENSOR_CUP_X_WRITTEN = "S9A"
-    export const TID_SENSOR_CUP_Y_WRITTEN = "S9B"
-    export const TID_SENSOR_CUP_Z_WRITTEN = "S9C"
-    export const TID_SENSOR_MAGNET = "S10"
-    export const TID_SENSOR_SLIDER = "S11"
-    export const TID_SENSOR_ROTARY = "S12"
-    export const TID_SENSOR_CAR_WALL = "S13"
-    export const TID_SENSOR_LINE = "S14"
-
-    // filters for TID_SENSOR_PRESS
-    export const TID_FILTER_PIN_0 = "F0"
-    export const TID_FILTER_PIN_1 = "F1"
-    export const TID_FILTER_PIN_2 = "F2"
-    export const TID_FILTER_BUTTON_A = "F3"
-    export const TID_FILTER_BUTTON_B = "F4"
-    export const TID_FILTER_KITA_KEY_1 = "F5"
-    export const TID_FILTER_KITA_KEY_2 = "F6"
-
-    export const TID_FILTER_LOGO = "F7"
-    export const TID_FILTER_COIN_1 = "F8"
-    export const TID_FILTER_COIN_2 = "F9"
-    export const TID_FILTER_COIN_3 = "F10"
-    export const TID_FILTER_COIN_4 = "F11"
-    export const TID_FILTER_COIN_5 = "F12"
-    export const TID_FILTER_TIMESPAN_SHORT = "F13"
-    export const TID_FILTER_TIMESPAN_LONG = "F14"
-    export const TID_FILTER_LOUD = "F15"
-    export const TID_FILTER_QUIET = "F16"
-    export const TID_FILTER_ACCEL = "F17"
-    export const TID_FILTER_ACCEL_SHAKE = "F17_shake"
-    export const TID_FILTER_ACCEL_TILT_UP = "F17_tilt_up"
-    export const TID_FILTER_ACCEL_TILT_DOWN = "F17_tilt_down"
-    export const TID_FILTER_ACCEL_TILT_LEFT = "F17_tilt_left"
-    export const TID_FILTER_ACCEL_TILT_RIGHT = "F17_tilt_right"
-    export const TID_FILTER_TIMESPAN_RANDOM = "F18"
-    export const TID_FILTER_TIMESPAN_VERY_LONG = "F19"
-    export const TID_FILTER_CUP_X_READ = "F20A"
-    export const TID_FILTER_CUP_Y_READ = "F20B"
-    export const TID_FILTER_CUP_Z_READ = "F20C"
-    export const TID_FILTER_ROTARY_LEFT = "F21L"
-    export const TID_FILTER_ROTARY_RIGHT = "F21R"
-    export const TID_FILTER_TEMP_WARMER = "F22U"
-    export const TID_FILTER_TEMP_COLDER = "F22D"
-    export const TID_FILTER_LINE_LEFT = "F23L"
-    export const TID_FILTER_LINE_RIGHT = "F23R"
-    export const TID_FILTER_LINE_BOTH = "F23B"
-    export const TID_FILTER_LINE_NEITHER = "F23N"
-
-    export const TID_ACTUATOR_SWITCH_PAGE = "A1"
-    export const TID_ACTUATOR_SPEAKER = "A2"
-    export const TID_ACTUATOR_MICROPHONE = "A3"
-    export const TID_ACTUATOR_MUSIC = "A4"
-    export const TID_ACTUATOR_PAINT = "A5"
-    export const TID_ACTUATOR_RADIO_SEND = "A6"
-    export const TID_ACTUATOR_RADIO_SET_GROUP = "A6A"
-    export const TID_ACTUATOR_RGB_LED = "A8"
-    export const TID_ACTUATOR_CUP_X_ASSIGN = "A9A"
-    export const TID_ACTUATOR_CUP_Y_ASSIGN = "A9B"
-    export const TID_ACTUATOR_CUP_Z_ASSIGN = "A9C"
-    export const TID_ACTUATOR_SHOW_NUMBER = "A10"
-
-    export const TID_MODIFIER_PAGE_1 = "M1"
-    export const TID_MODIFIER_PAGE_2 = "M2"
-    export const TID_MODIFIER_PAGE_3 = "M3"
-    export const TID_MODIFIER_PAGE_4 = "M4"
-    export const TID_MODIFIER_PAGE_5 = "M5"
-
-    export const TID_MODIFIER_COIN_1 = "M6"
-    export const TID_MODIFIER_COIN_2 = "M7"
-    export const TID_MODIFIER_COIN_3 = "M8"
-    export const TID_MODIFIER_COIN_4 = "M9"
-    export const TID_MODIFIER_COIN_5 = "M10"
-
-    export const TID_MODIFIER_ICON_EDITOR = "M15"
-    export const TID_MODIFIER_COLOR_RED = "M16"
-    export const TID_MODIFIER_COLOR_DARKPURPLE = "M17"
-
-    export const TID_MODIFIER_EMOJI_GIGGLE = "M19giggle"
-    export const TID_MODIFIER_EMOJI_HAPPY = "M19happy"
-    export const TID_MODIFIER_EMOJI_HELLO = "M19hello"
-    export const TID_MODIFIER_EMOJI_MYSTERIOUS = "M19mysterious"
-    export const TID_MODIFIER_EMOJI_SAD = "M19sad"
-    export const TID_MODIFIER_EMOJI_SLIDE = "M19slide"
-    export const TID_MODIFIER_EMOJI_SOARING = "M19soaring"
-    export const TID_MODIFIER_EMOJI_SPRING = "M19spring"
-    export const TID_MODIFIER_EMOJI_TWINKLE = "M19twinkle"
-    export const TID_MODIFIER_EMOJI_YAWN = "M19yawn"
-
-    export const TID_MODIFIER_CUP_X_READ = "M20A"
-    export const TID_MODIFIER_CUP_Y_READ = "M20B"
-    export const TID_MODIFIER_CUP_Z_READ = "M20C"
-    export const TID_MODIFIER_RADIO_VALUE = "M21"
-    export const TID_MODIFIER_RANDOM_TOSS = "M22"
-    export const TID_MODIFIER_LOOP = "M23"
-    export const TID_MODIFIER_MELODY_EDITOR = "M24"
-    export const TID_MODIFIER_TEMP_READ = "M25"
-
-    export const TID_MODIFIER_RGB_LED_COLOR_X = "A20_"
-    export const TID_MODIFIER_RGB_LED_COLOR_1 = "A20_1"
-    export const TID_MODIFIER_RGB_LED_COLOR_2 = "A20_2"
-    export const TID_MODIFIER_RGB_LED_COLOR_3 = "A20_3"
-    export const TID_MODIFIER_RGB_LED_COLOR_4 = "A20_4"
-    export const TID_MODIFIER_RGB_LED_COLOR_5 = "A20_5"
-    export const TID_MODIFIER_RGB_LED_COLOR_6 = "A20_6"
-    export const TID_MODIFIER_RGB_LED_COLOR_RAINBOW = "A20_rainbow"
-    export const TID_MODIFIER_RGB_LED_COLOR_SPARKLE = "A20_sparkle"
-
-    export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
-
-    export const TID_ACTUATOR_CAR = "CAR"
-    export const TID_MODIFIER_CAR_FORWARD = "CAR1"
-    export const TID_MODIFIER_CAR_REVERSE = "CAR2"
-    export const TID_MODIFIER_CAR_TURN_LEFT = "CAR3"
-    export const TID_MODIFIER_CAR_TURN_RIGHT = "CAR4"
-    export const TID_MODIFIER_CAR_STOP = "CAR5"
-
     export function PAGE_IDS() {
         return [
             TID_MODIFIER_PAGE_1,
@@ -163,20 +36,13 @@ namespace microcode {
 
     // initialize the database, imperatively!!!
 
-    const terminal = {
-        handling: {
-            terminal: true,
-        },
-    }
-
     function addButtonTiles() {
         function addPress(tid: string, evt: number) {
-            const press_event = new SensorDefn(tid, Phase.Pre)
+            const press_event = new SensorDefn(tid)
             press_event.serviceClassName = "button"
             press_event.eventCode = evt
             press_event.serviceInstanceIndex = 0
             press_event.constraints = {
-                provides: ["input"],
                 allow: {
                     categories: ["press_event"],
                 },
@@ -191,9 +57,6 @@ namespace microcode {
         function addPressFilter(tid: string, instanceNo: number) {
             const press_filter = new FilterDefn(tid, "press_event", 10)
             press_filter.constraints = {
-                handling: {
-                    terminal: true,
-                },
                 allow: {
                     categories: ["press_event"],
                 },
@@ -218,7 +81,7 @@ namespace microcode {
 
     function addSensorAndFilterTiles() {
         function makeSensor(tid: string, cat: string, prior: number) {
-            const tile = new SensorDefn(tid, Phase.Post)
+            const tile = new SensorDefn(tid)
             tile.constraints = {
                 allow: {
                     categories: [cat],
@@ -270,7 +133,6 @@ namespace microcode {
         slider.jdExternalClass = 0x1f274746
         slider.constraints.allow.categories = []
         slider.constraints.allow.tiles = only5
-        slider.constraints.handling = { terminal: true }
 
         if (CAR_TILES) {
             const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in", 500)
@@ -279,7 +141,6 @@ namespace microcode {
             wall.jdKind = JdKind.Radio
             wall.constraints.allow.categories = []
             wall.constraints.allow.tiles = only5
-            wall.constraints.handling = { terminal: true }
         }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
@@ -301,7 +162,6 @@ namespace microcode {
         function addEvent(tid: string, type: string, id: number) {
             const ev = new FilterDefn(tid, type, 10)
             ev.jdParam = id
-            ev.constraints = terminal
             ev.jdKind = JdKind.EventCode
             tilesDB.filters[tid] = ev
             return ev
@@ -315,27 +175,39 @@ namespace microcode {
             const both = addEvent(
                 TID_FILTER_LINE_BOTH,
                 "line",
-                robots.RobotCompactCommand.Both
+                robots.RobotCompactCommand.LineBoth
             )
             const left = addEvent(
                 TID_FILTER_LINE_LEFT,
                 "line",
-                robots.RobotCompactCommand.Left
+                robots.RobotCompactCommand.LineLeft
             )
             const right = addEvent(
                 TID_FILTER_LINE_RIGHT,
                 "line",
-                robots.RobotCompactCommand.Right
+                robots.RobotCompactCommand.LineRight
             )
             const neither = addEvent(
                 TID_FILTER_LINE_NEITHER,
                 "line",
-                robots.RobotCompactCommand.LineState
+                robots.RobotCompactCommand.LineNone
+            )
+            const neither_left = addEvent(
+                TID_FILTER_LINE_NEITHER_LEFT,
+                "line",
+                robots.RobotCompactCommand.LineNoneFromLeft
+            )
+            const neither_right = addEvent(
+                TID_FILTER_LINE_NEITHER_RIGHT,
+                "line",
+                robots.RobotCompactCommand.LineNoneFromRight
             )
             both.jdKind =
                 left.jdKind =
                 right.jdKind =
                 neither.jdKind =
+                neither_left.jdKind =
+                neither_right.jdKind =
                     JdKind.Literal
 
             const line = makeSensor(TID_SENSOR_LINE, "line", 505)
@@ -347,12 +219,13 @@ namespace microcode {
                 TID_FILTER_LINE_LEFT,
                 TID_FILTER_LINE_RIGHT,
                 TID_FILTER_LINE_BOTH,
+                TID_FILTER_LINE_NEITHER_LEFT,
+                TID_FILTER_LINE_NEITHER_RIGHT,
                 TID_FILTER_LINE_NEITHER,
             ]
-            line.constraints.handling = { terminal: true }
         }
 
-        const timer = new SensorDefn(TID_SENSOR_TIMER, Phase.Post)
+        const timer = new SensorDefn(TID_SENSOR_TIMER)
         timer.constraints = {
             allow: {
                 categories: ["timespan"],
@@ -372,7 +245,7 @@ namespace microcode {
         addTimespan(TID_FILTER_TIMESPAN_VERY_LONG, 5000)
         addTimespan(TID_FILTER_TIMESPAN_RANDOM, -1000)
 
-        const accel = new SensorDefn(TID_SENSOR_ACCELEROMETER, Phase.Post)
+        const accel = new SensorDefn(TID_SENSOR_ACCELEROMETER)
         accel.constraints = {
             allow: {
                 categories: ["accel_event"],
@@ -388,7 +261,6 @@ namespace microcode {
             const accelEvent = new FilterDefn(tid, "accel_event", 10)
             accelEvent.jdKind = JdKind.EventCode
             accelEvent.jdParam = id
-            accelEvent.constraints = terminal
             tilesDB.filters[tid] = accelEvent
             return accelEvent
         }
@@ -401,7 +273,7 @@ namespace microcode {
         addAccelEvent(0x83, "tilt_left")
         addAccelEvent(0x84, "tilt_right")
 
-        const microphone = new SensorDefn(TID_SENSOR_MICROPHONE, Phase.Post)
+        const microphone = new SensorDefn(TID_SENSOR_MICROPHONE)
         microphone.constraints = {
             allow: {
                 categories: ["sound_event"],
@@ -413,7 +285,6 @@ namespace microcode {
         tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
         function addSoundFilter(tid: string, eventCode: number) {
             const soundFilter = new FilterDefn(tid, "sound_event", 10)
-            soundFilter.constraints = terminal
             tilesDB.filters[tid] = soundFilter
             soundFilter.jdKind = JdKind.EventCode
             soundFilter.jdParam = eventCode
@@ -543,9 +414,6 @@ namespace microcode {
                 tile.jdParam2 = kind == "CAR" ? v : 0
                 if (kind == "F") tilesDB.filters[tid] = tile as FilterDefn
                 else tilesDB.modifiers[tid] = tile
-                tile.constraints = {
-                    provides: [name],
-                }
                 tiles.push(tile)
             })
             return tiles
@@ -555,8 +423,6 @@ namespace microcode {
         make_vals(one_to_five, "value_in", "F", 8)
         make_vals(one_to_five, "constant", "M", 6)
         make_vals(one_to_five, "page", "M", 1).forEach(m => {
-            m.constraints.handling = m.constraints.handling || {}
-            m.constraints.handling.terminal = true
             m.jdKind = JdKind.Page
         })
 
@@ -567,6 +433,12 @@ namespace microcode {
                 microcode.robots.RobotCompactCommand.MotorTurnLeft,
                 microcode.robots.RobotCompactCommand.MotorTurnRight,
                 microcode.robots.RobotCompactCommand.MotorStop,
+                microcode.robots.RobotCompactCommand.MotorRunForwardFast,
+                microcode.robots.RobotCompactCommand.MotorSpinLeft,
+                microcode.robots.RobotCompactCommand.MotorSpinRight,
+                microcode.robots.RobotCompactCommand.MotorLEDRed,
+                microcode.robots.RobotCompactCommand.MotorLEDGreen,
+                microcode.robots.RobotCompactCommand.MotorLEDBlue,
             ]
             make_vals(car_commands, "car", "CAR", 1)
 
@@ -614,7 +486,7 @@ namespace microcode {
         rgbled.defaultModifier =
             tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
 
-        const servoSetAngle = addActuator(TID_MODIFIER_SERVO_SET_ANGLE, [
+        const servoSetAngle = addActuator(TID_ACTUATOR_SERVO_SET_ANGLE, [
             "constant",
         ])
         servoSetAngle.priority = 500
@@ -691,23 +563,37 @@ namespace microcode {
         `,
         clone: (img: Image) => img.clone(),
         editor: iconEditor,
-        toImage: icondb.scaleUp,
+        toImage: icondb.renderMicrobitLEDs,
         buttonStyle: () => ButtonStyles.Transparent,
-        serialize: (img: Image) => {
-            const ret: string[] = []
-            for (let index = 0; index < 25; index++) {
-                let col = index % 5
-                let row = Math.idiv(index, 5)
-                ret.push(img.getPixel(col, row) ? "1" : "0")
-            }
-            return ret.join("")
-        },
         deserialize: (s: string) => {
             const img = image.create(5, 5)
             for (let index = 0; index < 25; index++) {
                 let col = index % 5
                 let row = Math.idiv(index, 5)
                 img.setPixel(col, row, s[index] == "1" ? 1 : 0)
+            }
+            return img
+        },
+        toBuffer: (img: Image) => {
+            const ret = Buffer.create(4)
+            for (let index = 0; index < 25; index++) {
+                let byte = index >> 3
+                let bit = index & 7
+                let col = index % 5
+                let row = Math.idiv(index, 5)
+                ret[byte] |= img.getPixel(col, row) << bit
+            }
+            return ret
+        },
+        fromBuffer: (br: BufferReader) => {
+            const buf = br.readBuffer(4)
+            const img = image.create(5, 5)
+            for (let index = 0; index < 25; index++) {
+                let byte = index >> 3
+                let bit = index & 7
+                let col = index % 5
+                let row = Math.idiv(index, 5)
+                img.setPixel(col, row, (buf[byte] >> bit) & 1)
             }
             return img
         },
@@ -793,13 +679,44 @@ namespace microcode {
         editor: melodyEditor,
         toImage: icondb.melodyToImage,
         buttonStyle: () => ButtonStyles.Transparent,
-        serialize: (melody: Melody) => melody.notes + "," + melody.tempo,
         deserialize: (s: string) => {
             const sp = s.split(",")
             return {
                 notes: sp[0],
                 tempo: parseInt(sp[1]),
             }
+        },
+        toBuffer: (melody: Melody) => {
+            const buf = Buffer.create(3)
+            buf.setUint8(0, melody.tempo)
+            // convert the melody notes into list of integers
+            const notes = melody.notes.split("")
+            // fill the buffer with the notes, 4 bits for each note
+            for (let i = 0; i < MELODY_LENGTH; i++) {
+                const byte = i >> 1
+                const bit = (i & 1) << 2
+                if (notes[i] != ".") {
+                    const note = (parseInt(notes[i]) || 0) + 1
+                    buf.setUint8(
+                        byte + 1,
+                        buf.getUint8(byte + 1) | (note << bit)
+                    )
+                }
+            }
+            return buf
+        },
+        fromBuffer: (br: BufferReader) => {
+            const buf = br.readBuffer(3)
+            const tempo = buf[0]
+            let notes = ""
+            // read the notes from the buffer
+            for (let i = 0; i < MELODY_LENGTH; i++) {
+                const byte = i >> 1
+                const bit = (i & 1) << 2
+                const note = (buf[byte + 1] >> bit) & 0xf
+                notes += note == 0 ? "." : (note - 1).toString()
+            }
+            return { tempo, notes }
         },
     }
 

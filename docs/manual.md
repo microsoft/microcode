@@ -39,7 +39,7 @@ ELECFREAK's micro:bit Arcade shield
 </a>
 </td>
 <td width="33%" >
-<a href="https://www.icshop.com.tw/products/368112100118">
+<a href="https://www.icshop.com.tw/products/368112100137?locale=en">
 ICShopping's Game:bit Arcade shield
 </a>
 </td></tr>
@@ -53,7 +53,7 @@ ICShopping's Game:bit Arcade shield
 <img src="../assets/elecfreaks-shield.png">
 </a>
 </td><td>
-<a alt="ICShopping's Game:bit" href="https://www.icshop.com.tw/products/368112100118">
+<a alt="ICShopping's Game:bit" href="https://www.icshop.com.tw/products/368112100137?locale=en">
 <img src="../assets/gamebit-shield.png">
 </a>
 </td></tr>
@@ -71,7 +71,7 @@ Assembly required. Small screen. AAA Battery pack on back. One <a href="https://
 </td>
 <td>
 
-No assembly required. Large screen and 3d-printed enclosure with LiPo battery inside. Two <a href="https://aka.ms/jacdac">Jacdac</a> ports. Email at <a ref="mailto:oa@icshop.com.tw">mailto:oa@icshop.com.tw</a> to get a quote (the web site only allows ordering/delivery in Taiwan).
+No assembly required. Large screen and 3d-printed enclosure with LiPo battery inside. Two <a href="https://aka.ms/jacdac">Jacdac</a> ports.
 
 </td>
 </tr>
@@ -175,7 +175,9 @@ In this video, we launch an LED animation when a clap is detected.
 Remote control a micro:robot using microcode
 to follow lines, avoid obstacles and more. [Learn more](./robot)
 
-[![Photograph of the Cutebot](./images/cutebot.jpeg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
+![robot avoid wall program](./images/generated/sample_robot_avoid_wall.png){:class="sample"}
+
+[![Photograph of the Cutebot](./images/cutebot.jpeg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html){:class="sample"}
 
 ## Community
 
