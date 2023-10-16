@@ -54,8 +54,8 @@ The following features are found often but are optional:
 
 ## Others
 
--   [DFRobot Maqueen Plus V2](https://www.dfrobot.com/product-2026.html) | [Download](https://microsoft.github.io/microcode/assets/microcode-robot-dfrobot-maqueen-plus-v2.hex)
--   [KeyStudio KS0426 Mini Smart Robot](https://wiki.keyestudio.com/KS0426_Keyestudio_Micro%EF%BC%9Abit_Mini_Smart_Robot_Car_Kit_V2) | [Download](https://microsoft.github.io/microcode/assets/microcode-robot-keystudio-minismartrobot.hex)
+-   DFRobot Maqueen Plus V2 [Home](https://www.dfrobot.com/product-2026.html), [Download](https://microsoft.github.io/microcode/assets/microcode-robot-dfrobot-maqueen-plus-v2.hex)
+-   KeyStudio KS0426 Mini Smart Robot [Home](https://wiki.keyestudio.com/KS0426_Keyestudio_Micro%EF%BC%9Abit_Mini_Smart_Robot_Car_Kit_V2), [Download](https://microsoft.github.io/microcode/assets/microcode-robot-keystudio-minismartrobot.hex)
 
 ## Configuring the radio group
 
