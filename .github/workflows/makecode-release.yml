@@ -49,6 +49,8 @@ jobs:
                   cp ./built/binary.hex ../assets/microcode-robot-dfrobot-maqueen.hex
                   makecode -c mkc-dfrobotmaqueenplusv2.json
                   cp ./built/binary.hex ../assets/microcode-robot-dfrobot-maqueen-plus-v2.hex
+                  makecode -c mkc-kittenbotminilfr.json
+                  cp ./built/binary.hex ../assets/microcode-robot-kittenbot-minilfr.hex
             - name: copy files
               run: |
                   cp ./built/binary.js ./assets/js/binary.js
