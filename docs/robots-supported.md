@@ -1,6 +1,6 @@
 ## Supported robots
 
-The following robots are currently supported (please file a [GitHub issues](https://github.com/microsoft/microcode/issue) if your robot is not listed):
+MicroCode supports the following [robots](./robot.md) (please file a [GitHub issues](https://github.com/microsoft/microcode/issue) if your robot is not listed):
 
 ### Elecfreaks Cutebot
 
