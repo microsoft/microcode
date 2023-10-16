@@ -26,31 +26,36 @@ The following features are found often but are optional:
 
 ### Elecfreaks Cutebot
 
-[![Photograph of the Cutebot](./images/cutebot.jpeg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html){:class="sample"}
+![Photograph of the Cutebot](./images/cutebot.jpeg){:class="sample"}
 
--   Download [microcode-robot-elecfreakscutebot.hex](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreakscutebot.hex)
+-   [Home](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreakscutebot.hex)
 
 ### Yahboom Tiny:bit
 
 ![Photograph of the Tiny:bit](./images/tinybit.jpeg){:class="sample"}
 
--   Download [microcode-robot-yahboomtinybit.hex](https://microsoft.github.io/microcode/assets/microcode-robot-yahboomtinybit.hex)
+-   [Home](http://www.yahboom.net/study/Tiny:bit)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-yahboom-tinybit.hex)
 
 ### Elecfreaks Cutebot PRO
 
-[![Photograph of the Cutebot PRO](./images/cutebotpro.jpeg)](https://shop.elecfreaks.com/products/elecfreaks-smart-cutebot-pro-v2-programming-robot-car-for-micro-bit){:class="sample"}
+![Photograph of the Cutebot PRO](./images/cutebotpro.jpeg){:class="sample"}
 
--   Download [microcode-robot-elecfreakscutebotpro.hex](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreakscutebotpro.hex)
+-   [Home](https://shop.elecfreaks.com/products/elecfreaks-smart-cutebot-pro-v2-programming-robot-car-for-micro-bit)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreaks-cutebotpro.hex)
 
 ## DFRobot Maqueen V2+
 
 ![Photograph of the Maqueen](./images/maqueen.jpeg){:class="sample"}
 
--   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-dfrobotmaqueen.hex)
+-   [Home](https://wiki.dfrobot.com/micro_Maqueen_for_micro_bit_SKU_ROB0148-EN)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-dfrobot-maqueen.hex)
 
 ## Others
 
--   [KeyStudio KS0426 Mini Smart Robot](https://microsoft.github.io/microcode/assets/microcode-robot-keystudiominismartrobot.hex)
+-   [DFRobot Maqueen Plus V2](https://www.dfrobot.com/product-2026.html) | [Download](https://microsoft.github.io/microcode/assets/microcode-robot-dfrobot-maqueen-plus-v2.hex)
+-   [KeyStudio KS0426 Mini Smart Robot](https://wiki.keyestudio.com/KS0426_Keyestudio_Micro%EF%BC%9Abit_Mini_Smart_Robot_Car_Kit_V2) | [Download](https://microsoft.github.io/microcode/assets/microcode-robot-keystudio-minismartrobot.hex)
 
 ## Configuring the radio group
 
