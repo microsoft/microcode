@@ -3016,7 +3016,8 @@ bffffffffffffffffffffffffffffffb
     . . f f d . . . . . . . f f d d
     . . f f d . . . . . . . f f d .
     . . f f . . . . . . . . f f . .
-    . . . . . . . . . . . . . . . .`
+    . . . . . . . . . . . . . . . .
+`
 
     export const car_forward = img`
     . . . . . . . . . . . . . . . .
@@ -3170,22 +3171,22 @@ bffffffffffffffffffffffffffffffb
 `
 
     export const car_wall = img`
-. . . . . . . . . . . . . . . .
-d d d d d d d d d d d d d d d d
-2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
-2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
-d d d d d d d d d d d d d d d d
-2 2 d 2 2 2 2 d 2 2 2 2 d 2 2 2
-2 2 d 2 2 2 2 d 2 2 2 2 d 2 2 2
-d d d d d d d d d d d d d d d d
-2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
-2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
-d d d d d d d d d d d d d d d d
-2 2 d 2 2 2 2 d 2 2 2 2 d 2 2 2
-2 2 d 2 2 2 2 d 2 2 2 2 d 2 2 2
-d d d d d d d d d d d d d d d d
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    d d d d d d d d d d d d d d d d
+    2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
+    2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
+    d d d d d d d d d d d d d d d d
+    2 2 d 2 2 2 2 d 2 2 2 2 d 2 2 2
+    2 2 d 2 2 2 2 d 2 2 2 2 d 2 2 2
+    d d d d d d d d d d d d d d d d
+    2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
+    2 2 2 2 d 2 2 2 2 f f f f f f 2
+    d d d d d d d d d f 1 1 1 1 f d
+    2 2 d 2 2 2 2 d 2 f d d d d f 2
+    2 2 d 2 2 2 2 d f 9 f f f f 9 f
+    d d d d d d d d f 1 f f f f 1 f
+    . . . . . . . . f f f f f f f f
+    . . . . . . . . . f . . . . f .
 `
 
     export const line_sensor = img`
@@ -3197,14 +3198,14 @@ d d d d d d d d d d d d d d d d
     . d d d d d c f f c d d d d d .
     . d d d d d c f f c d d d d d .
     . b d d d d c f f c d d d d b .
-    . b d d d d c f f c d d d d b .
-    . b d d d d c f f c d d d d b .
-    . d d d d d c f f c d d d d d .
-    . d d d d d c f f c d d d d d .
-    . d d d d d c f f c d d d d d .
-    . b d d d d c f f c d d d d b .
-    . b d d d d c f f c d d d d b .
-    . . . . . . . . . . . . . . . .
+    . b d d d d c f c c d d d d b .
+    . b d d d d c f c f f f f f f .
+    . d d d d d c f c f 1 1 1 1 f .
+    . d d d d d c f c f d d d d f .
+    . d d d d d c c f 9 f f f f 9 f
+    . b d d d d c c f 1 f f f f 1 f
+    . b d d d d c c f f f f f f f f
+    . . . . . . . . . f . . . . f .
 `
     export const line_neither_on = img`
 . . . . . . . . . . . . . . . .
