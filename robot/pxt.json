@@ -18,7 +18,8 @@
         "blocks.ts",
         "cutebotpro.ts",
         "dfrobotmaqueen.ts",
-        "dfrobotmaqueenplusv2.ts"
+        "dfrobotmaqueenplusv2.ts",
+        "minilfr.ts"
     ],
     "testFiles": [
         "test.ts"
