@@ -215,9 +215,8 @@ Make to start your program by setting the same radio group as the robot.
 
 ### DO section
 
-The robot motor commands start with a car and a sequence of move directions.
+The ![robot](./images/generated/icon_CAR.png){:class="icon"} `robot` starts the robot motor commands. Any of those can be sequenced in the same rule.
 
--   ![robot](./images/generated/icon_CAR.png){:class="icon"} `robot`, start the robot motor commands
 -   ![robot forward](./images/generated/icon_CAR1.png){:class="icon"} `forward`, instructs the robot to move forward.
 -   ![robot fast forward](./images/generated/icon_CAR6.png){:class="icon"} `fast forward`, instructs the robot to move forward at maximum speed
 -   ![robot backward](./images/generated/icon_CAR2.png){:class="icon"} `reverse`, instructs the robot to move backward
