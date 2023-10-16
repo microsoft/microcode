@@ -14,7 +14,7 @@ You will need one of the following micro:bit robot and an extra micro:bit (v1 or
 ![Photograph of the Cutebot](./images/cutebot.jpeg){:class="sample"}
 
 -   [Home](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
--   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreakscutebot.hex)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreaks-cutebot.hex)
 
 ### Yahboom Tiny:bit
 
