@@ -6,7 +6,7 @@ description: A robot is controlled by the micro:bit orientation
 
 ![robot controlled by gestures](../images/generated/sample_robot_shake.png){:class="sample"}
 
--   [Open in MicroCode](/microcode/#eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzEiXSwiQSI6WyJBNkEiXSwiTSI6WyJNOCJdfSx7IlMiOlsiUzMiXSwiQSI6WyJDQVIiXSwiRiI6WyJGMTdfdGlsdF9kb3duIl0sIk0iOlsiQ0FSMSJdfSx7IlMiOlsiUzMiXSwiQSI6WyJDQVIiXSwiRiI6WyJGMTdfdGlsdF91cCJdLCJNIjpbIkNBUjUiXX0seyJTIjpbIlMzIl0sIkEiOlsiQ0FSIl0sIkYiOlsiRjE3X3RpbHRfbGVmdCJdLCJNIjpbIkNBUjMiLCJDQVI1Il19LHsiUyI6WyJTMyJdLCJBIjpbIkNBUiJdLCJGIjpbIkYxN190aWx0X3JpZ2h0Il0sIk0iOlsiQ0FSNCIsIkNBUjUiXX0se31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0seyJSIjpbe31dfSx7fV19LCJ2ZXJzaW9uIjoidjIuNC40MyJ9)
+-   [Open in MicroCode](/microcode/#H4sIAKCjLGUAA/NKywwOSM8vzQs0TPbzMfELrwpxdgkzMCj39fSLyApxKk93dXIMBGJHW1sAL0cDWSwAAAA=)
 
 The program starts by setting the radio group displayed by the [robot micro:bit](../robot.md). This is the same group that the microcode program will use to communicate with the robot. In this example, we use 3 dots but this is probably different for your robot.
 

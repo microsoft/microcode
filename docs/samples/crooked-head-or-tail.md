@@ -6,7 +6,7 @@ description: A coin toss leaning towards tail
 
 ![Crooked Head or tail MicroCode program](../images/generated/sample_crooked_head_or_tail.png){:class="sample"}
 
--   [Open in MicroCode](/microcode/#H4sIAFu4UmMAA5WRzWrDMBCEX0lO3BYfenATkUqxJFopiZtb81fWVYzBAct9+q4kG9JDAzksq0Uz88Husefd/pzV28X6zKrmidkclL1gZ0MX2FtY/QgodQdvmj1uev6iVjTMJs5SVAyKGZdqxg8n7f71CeAHr0PWjn0Tp0rZfm7eLbNJVryivg86M+aPPqmDbxF9HymzpEV/YBhDk+WcOmF85U5cvw3t4pw3dzIebjBi5hx7yA8cX/cynMB9Xe9D6q8xa8j9wwp/S8zwOz6tBxZg9vSSlSVp8Z7aZx2nyXCHeMeojRpWb+2+ls1ukoICPhGQkqKijtXk+RchEkTREAIAAA==)
+-   [Open in MicroCode](/microcode/#H4sIAKCjLGUAA/NKywwOSDcoL44y8PNOTA8JyaxMLzM2z3N08gvw8XbUryhLd3I1dCzOd9F313Z0dXIMBGFHWwCZlW4AOAAAAA==)
 
 This is a crooked variation of the [head or tail](./head-or-tail) sample where tail has 66% chances
 of happening. We acheive this by generating
