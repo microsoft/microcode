@@ -9,6 +9,8 @@ sonar and line sensors.
 
 You will need one of the [supported micro:bit robots](./robots-supported.md) and an extra micro:bit (v1 or v2) to run on the robot.
 
+![Photograph of the Cutebot](./images/cutebot.jpeg){:class="sample"}
+
 ## Configuring the radio group
 
 The microcode editor and the robot micro:bit communicate using the radio. These are the steps to configure the robot and the microcode:
