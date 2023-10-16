@@ -170,7 +170,7 @@ In this video, we launch an LED animation when a clap is detected.
 
 <video class="sample" poster="./videos/jacdac-led.png" src="./videos/jacdac-led.mp4" controls="true"></video>
 
-## micro:bit Robots {#robot}
+## micro:bit Robots {#robots}
 
 Remote control a micro:robot using microcode
 to follow lines, avoid obstacles and more. [Learn more](./robot)
