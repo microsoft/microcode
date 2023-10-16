@@ -1,7 +1,18 @@
-# Robot
+# Programming micro:bit robot with MicroCode
 
-MicroCode supports programming a separate micro:bit robot equipped with two motors,
-sonar and line sensors.
+## The current state of micro:bit robots
+
+There are many [BBC micro:bit robot accessories](https://microbit.org/buy/accessories/?category=Robotics), which the micro:bit slots into to provide a "programmable robot brain", but the end-to-end experience is often not great for teachers and students as:
+
+-   the different robots have different hardware (wheels, motors) and different ways to control them
+-   the control software is quite low level unforgiving, making it hard to control the robots (for example, to do line following)
+-   every change to the robot software requires a new download to the micro:bit
+
+## MicroCode robot programming platform
+
+We have worked with a handful of popular micro:bit robots to develop a platform approach to make it easier to work with a wide variety of micro:bit robots (in the limit). The platform is based on a robust robot controller that runs on the robot (micro:bit V1 or V2) and communicates with MicroCode, running the user's program on a micro:bit V2.
+
+MicroCode provides a simplified programming experience for robots that are equipped with two motors, sonar and line sensors. The robot controller code is written using MakeCode for the micro:bit and allows for more advanced control of the robot.
 
 ![robot line following](./images/generated/sample_robot_line_follow.png){:class="sample"}
 
