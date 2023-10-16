@@ -8,7 +8,7 @@ description: Count your claps!
 
 This program counts how many times you clap using the microphone.
 
--  [Open in MicroCode](/microcode/#H4sIALqMYmMAAz2OyQ6CMBRFf0nEIV1KQ7ANhWALVHYqYlpBTYAwfL2Pgq5uTt67w32g3a1Cr8xLKqI/e1IeVFg2oGRRBlqreHwoyTsVcbJLB+qEsWv4pAx7TMSGxXwPmHYcooDFWUm5qqFHQP4V8rYRp7mPqWP46fYMGw5mXg3MhezJY1t5wfv/liKxkH+ELVOn3aAll0++36/5wXSdSTpeUtQS/Va5Jm2AN33IKfoCQYD9p/AAAAA=)
+-   [Open in MicroCode](/microcode/#H4sIAKCjLGUAA/NKywwOyPCK8PU2SnKt8i9xDHR1AmJHAO6A3EEYAAAA)
 
 ![when shake detected, increment variable X](../images/generated/sample_clap_counter_page_1_rule_1.png){:class="rule"}
 

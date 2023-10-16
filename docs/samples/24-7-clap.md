@@ -8,7 +8,7 @@ description: Clap as many times as you can in 7 seconds, but no more than 24 tim
 
 Clap as many times as you can in 7 seconds, but no more than 24 times... that's the game and it will make you crazy.
 
--   [Open in MicroCode](/microcode/#H4sIAO69QWMAA6VSUU/CMBD+SxtEzR5hNLOTbpnrGPjmQGKhTBKQbfx6r9c2sdNpog+X67Xf3X339V66uFkfgvopWhzo7nhH5USk8gyeGs/An0RxJWKZNyLL6W3ZxVMm4s08jBPIqejea9PyVVZRe6HSD+b3gO8Qx1mOuKnGkZtMxzZv9Avep9I7AQ45cE78h9mkZTPSoPGJMhVbU/GRisZiIVZYwCgsYtTZeoul1z6PNPyWd6TjVZu4c3SMEKHiBHTZ5u0n3TJXt16dNKcwH9QLrXfrfuFV9P6hV48JXWfYO/XN3OdgufROsAu5ugfP8V2yVutPcJaMU+zNde+EcVk/l5u6igph8gfySOP+I22Unn/RKXV1hz7/4n9dldD3R+4wm5NTvOH+4A7hvqmz2jFt6j7c4y4MY9WdwVvsjvV5eD0NkcejQB4R45iH3uFndN0uzN4o/NjoM/bhrRGbw6Jbj+Slgjdar7r5jr2zMA4+AOK+a9kMBAAA)
+-   [Open in MicroCode](/microcode/#H4sIAKCjLGUAAxXLWwqDMBBG4U21pS99mKYWK1IdghE3YBiJ/OMFI1m9+ng4fEUvtvZQZcQxYkE26czGD5+8pvJnXTLrGO+t+zLC/rdNKGwj0hFDEZFmPp9Ie7Vevnw+bmT8lpCfvnKhQ/DZm5heB1rtfyFsAAAA)
 
 The game has 3 pages: page 1 is for clapping, page 2 is victory and score, page 3 is game over.
 

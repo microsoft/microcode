@@ -8,7 +8,7 @@ image: ./docs/images/generated/sample_battery_charger_prank.png
 Tell your friend to keep shaking the micro:bit to
 recharge the battery... Silly prank.
 
--   [Open in MicroCode](/microcode/#H4sIAKOMR2MAA41RXU+DMBT9SyBGw4MPiIi3rpjZsiFvU5wpsM3Ilrb8em9bzKyJzoebk96e5nz0VRP5som3db7YQPt+CX0iHvo9IkxIEQdRjpmomBRzBhdLTa4LRppZSgp88wxdoAr2JinPFL1JcDJphydm3I5n8p7B8C8unieuppo0a6a++aCeD+p85M7HkyrCeFzltx+1709DH8azu31cVcGAmZnZI3J731MFfYB6mdWY89JqcKdRUF7u0BNm8D0efeNd2gmj9wd32p3gYk+nuVN3v3Fb7Mjl/MoX+PncXz4Kmy+nvPPzYnem8/XCdIadG170o7soPHJSclZXZFwt4wO0O9G0cKD6PIJtcPUJ1yEjm2ACAAA=)
+-   [Open in MicroCode](/microcode/#H4sIAKCjLGUAA/NKywwOSM8vznc1KTANdE4PyczNcfTx9AvPzIxwDEQWz8tz9Hby909Ndsz3NTE1LXeudMmJzM9Jd3VyDHR1BAAZa74ISAAAAA==)
 
 ## ![page 1](../images/generated/icon_M1.png){:class="icon"} page 1
 
