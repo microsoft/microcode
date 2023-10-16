@@ -3,7 +3,7 @@
 Microcode supports programming a separate micro:bit robot equipped with two motors,
 sonar and line sensors.
 
-![robot line following](./images/generated/sample_robot_line_follow.png.png){:class="sample"}
+![robot line following](./images/generated/sample_robot_line_follow.png){:class="sample"}
 
 ## Preparing the robot micro:bit
 
