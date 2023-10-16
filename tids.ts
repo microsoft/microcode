@@ -851,7 +851,9 @@ namespace microcode {
         }
 
         public get buffer() {
-            return this.buf
+            const buf = Buffer.create(this.ptr)
+            buf.write(0, this.buf.slice(0, this.ptr))
+            return buf
         }
 
         public writeByte(v: number) {
