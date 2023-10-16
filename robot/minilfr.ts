@@ -14,9 +14,12 @@ namespace microcode {
     
     class KittenbotMiniLFRRobot extends robots.Robot { 
 
+        private speedLeft: number = 0
+        private speedRight: number = 0
+
         private mode: MiniLFRMode = MiniLFRMode.IDLE
-        private isSenorUpdated: boolean = true
-        private isUltrasonicUpdated: boolean = true
+        private sensorUpdated: number = 0
+        private ultrasonicUpdated: number = 0
 
         private ultrasonicValue: number = 0
         private sensorValue: number[] = [0, 0, 0, 0, 0];
@@ -34,18 +37,15 @@ namespace microcode {
                 let tmp = s.split(" ")
 
                 if (tmp[0] === 'M7') {
-                    this.ultrasonicValue = parseInt(tmp[1])
-                    this.isUltrasonicUpdated = true
+                    this.ultrasonicValue = parseInt(tmp[1])                    
+                    this.ultrasonicUpdated = control.millis()
                 } else if (tmp[0] === "M10") {
                     this.sensorValue[0] = parseInt(tmp[1])
                     this.sensorValue[1] = parseInt(tmp[2])
                     this.sensorValue[2] = parseInt(tmp[3])
                     this.sensorValue[3] = parseInt(tmp[4])
                     this.sensorValue[4] = parseInt(tmp[5])
-                    this.isSenorUpdated = true
-                    if (this.mode === MiniLFRMode.LINE_FOLLOW) {
-                        this.updateSensorOnMatrix()
-                    }
+                    this.sensorUpdated = control.millis()
                 } else if (tmp[0] === "M33") { 
                     this.mode = MiniLFRMode.IDLE
                 }
@@ -53,14 +53,13 @@ namespace microcode {
 
             basic.forever(() => { 
                 // read line sensor
-                if (this.isSenorUpdated) {
+                if (control.millis() - this.sensorUpdated > 100) {
                     writeCmd('M10')
-                    this.isSenorUpdated = false
-                } else if (this.isUltrasonicUpdated) { 
-                    writeCmd('M7')
-                    this.isUltrasonicUpdated = false
                 }
-
+                basic.pause(50)
+                if (control.millis() - this.ultrasonicUpdated > 100) { 
+                    writeCmd('M7')
+                }
                 basic.pause(50)
             })
 
@@ -73,20 +72,25 @@ namespace microcode {
         }
 
         motorRun(left: number, right: number): void {
-            writeCmd(`M200 ${left} ${right}`)
-            if (left != 0 || right != 0) {
-                this.hoverColor(100, 0, 0)
-            } else { 
-                this.hoverColor(0, 0, 0)
+            if (left === this.speedLeft && right === this.speedRight) {
+                return
             }
+            this.speedLeft = left
+            this.speedRight = right
+
+            // map to [-255, 255]
+            left = Math.clamp(-255, 255, left*2.55)
+            right = Math.clamp(-255, 255, right*2.55)
+            writeCmd(`M200 ${left} ${right}`)
+
         }
 
         playTone(frequency: number, duration: number) {
             writeCmd(`M18 ${frequency} ${duration}`)
         }
 
-        hoverColor(red: number, green: number, blue: number) {
-            writeCmd(`M13 0 ${red} ${green} ${blue}`)
+        headlightsSetColor(red: number, green: number, blue: number) {
+            writeCmd(`M16 0 ${red} ${green} ${blue}`)
         }
 
         ultrasonicDistance(): number { 
@@ -94,33 +98,10 @@ namespace microcode {
         }
 
         lineState(): RobotLineState {
-            
-            return 0x1
+            let left = this.sensorValue[0] > 100 ? 1 : 0
+            let right = this.sensorValue[4] > 100 ? 1 : 0
+            return (left << 0) | (right << 1)
         }
-
-
-        updateSensorOnMatrix(): void {
-            let img = images.createImage(`
-                . . . . .
-                . . . . .
-                . . . . .
-                . . . . .
-                . . . . .
-            `)
-    
-            for (let i = 0; i < 5; i++) {
-                let v = Math.floor(this.sensorValue[i] / 20)
-    
-                for (let j = 0; j < 5; j++) {
-                    if (v > j) {
-                        img.setPixel(4 - i, 4 - j, true)
-                    }
-                }
-            }
-    
-            img.showImage(0)
-        }
-
 
     }
 
