@@ -12,8 +12,8 @@ Physical computing and robotics for young learners with the [micro:bit V2](https
 -   kid-friendly, icon-based, structured code editor and [programming language](./language)
 -   lots of [sample programs](./samples) to get started
 -   save your favorite programs in [three program slots](#program-slots)
--   accessories (LEDs, servos, ...) supported via [Jacdac](https://aka.ms/jacdac)
--   remote control of robots (2 wheel rovers) using micro:bit radio
+-   [accessories](#jacdac) (LEDs, servos, ...) supported via [Jacdac](https://aka.ms/jacdac)
+-   remote control of [robots](#robots) (2 wheel rovers) using micro:bit radio
 -   [translated](#localization) in 20+ languages
 
 ## Getting started
@@ -163,14 +163,14 @@ There are three slots for saving user programs for later load/restore. From the 
 ![disk icon](./images/generated/icon_disk.png)
 in the upper left to select which slot to save the current program to. From the home screen, select the disk icon to load a program from one of the three save slots.
 
-## Accessories
+## Jacdac accessories {#jacdac}
 
 MicroCode supports Jacdac modules to extend the micro:bit device with LEDs, servos, motors, ...
 In this video, we launch an LED animation when a clap is detected.
 
 <video class="sample" poster="./videos/jacdac-led.png" src="./videos/jacdac-led.mp4" controls="true"></video>
 
-## micro:bit Robot
+## micro:bit Robots {#robot}
 
 Remote control a micro:robot using microcode
 to follow lines, avoid obstacles and more. [Learn more](./robot)
