@@ -1,5 +1,7 @@
 # Programming micro:bit robot with MicroCode
 
+![Photograph of the Cutebot](./images/cutebot.jpeg){:class="sample"}
+
 ## The context
 
 There are many [BBC micro:bit robot accessories](https://microbit.org/buy/accessories/?category=Robotics), which the micro:bit slots into to provide a "programmable robot brain". We have worked with a handful of these robots to develop a platform approach that will make it simpler for teachers and students to work with a wide variety of micro:bit robots. Our hope is that all micro:bit robots will eventually be supported by this platform.
@@ -14,11 +16,9 @@ MicroCode provides a simplified programming experience for robots that are equip
 
 ## Preparing the robot micro:bit
 
-You will need one of the [supported micro:bit robots](./robots-supported.md) and an extra micro:bit (v1 or v2) to run on the robot.
+You will need one of the **[supported micro:bit robots](./robots-supported.md)** and an extra micro:bit (v1 or v2) to run on the robot.
 
-![Photograph of the Cutebot](./images/cutebot.jpeg){:class="sample"}
-
-## Configuring the radio group
+### Configuring the radio group
 
 The microcode editor and the robot micro:bit communicate using the radio. These are the steps to configure the robot and the microcode:
 
@@ -33,7 +33,7 @@ On the microcode side,
 
 ![setting radio group 3 on page start](./images/generated/sample_robot_shake_page_1_rule_1.png){:class="rule"}
 
-## Calibrating motor drift
+### Calibrating motor drift
 
 It is not uncommon for 2 wheeled robot to slightly drift towards one side. To correct this behavior, you can configure a drift parameter on the robot.
 
