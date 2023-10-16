@@ -30,12 +30,19 @@ namespace microcode {
             return icondb.car_forward_fast
         if (name == TID_MODIFIER_CAR_SPIN_LEFT) return icondb.car_left_spin
         if (name == TID_MODIFIER_CAR_SPIN_RIGHT) return icondb.car_right_spin
+        if (name == TID_MODIFIER_CAR_LED_COLOR_1) return icondb.tile_color_red
+        if (name == TID_MODIFIER_CAR_LED_COLOR_2) return icondb.tile_color_green
+        if (name == TID_MODIFIER_CAR_LED_COLOR_3) return icondb.tile_color_blue
         if (name == TID_SENSOR_CAR_WALL) return icondb.car_wall
         if (name == TID_SENSOR_LINE) return icondb.line_sensor
         if (name == TID_FILTER_LINE_LEFT) return icondb.line_left_on
         if (name == TID_FILTER_LINE_RIGHT) return icondb.line_right_on
         if (name == TID_FILTER_LINE_BOTH) return icondb.line_both_on
         if (name == TID_FILTER_LINE_NEITHER) return icondb.line_neither_on
+        if (name == TID_FILTER_LINE_NEITHER_LEFT)
+            return icondb.line_none_from_left
+        if (name == TID_FILTER_LINE_NEITHER_RIGHT)
+            return icondb.line_none_from_right
         return null
     }
 
@@ -62,7 +69,7 @@ namespace microcode {
             return icondb.tile_rainbow
         if (name == TID_MODIFIER_RGB_LED_COLOR_SPARKLE)
             return icondb.tile_sparkle
-        if (name == TID_MODIFIER_SERVO_SET_ANGLE) return icondb.servo_set_angle
+        if (name == TID_ACTUATOR_SERVO_SET_ANGLE) return icondb.servo_set_angle
         return null
     }
 
@@ -3270,6 +3277,44 @@ d d d d d d d d d d d d d d d d
     . d d . . c f f f c . . d d . .
     . . . . . c f f f c . . . . . .
 `
+
+    export const line_none_from_left = img`
+. c f f f c . . . . . . . . . .
+. c f f f c . . . . . . . . . .
+. c f f f c . . . . . . . . . .
+. c f f f c . . . . . . d d . d
+. c f f f c . . . . . d 1 d . d
+. c f f f c . . . . d 1 1 d . d
+. c f f f c . . . d 1 1 1 d . d
+. c f f f c . . d 1 1 1 1 d . d
+. c f f f c . . d 1 1 1 1 d . d
+. c f f f c . . d 1 1 1 1 d . d
+. c f f f c . . d 1 1 1 1 d . d
+. c f f f c . . d 1 1 1 d . . .
+. c f f f c . . d 1 1 d . . . .
+. c f f f c . . d 1 d . . . . .
+. c f f f c . . d d . . . . . .
+. c f f f c . . . . . . . . . .
+`
+
+    export const line_none_from_right = img`
+    . . . . . . . . . . c f f f c .
+    . . . . . . . . . . c f f f c .
+    . . . . . . . . . . c f f f c .
+    d . d d . . . . . . c f f f c .
+    d . d 1 d . . . . . c f f f c .
+    d . d 1 1 d . . . . c f f f c .
+    d . d 1 1 1 d . . . c f f f c .
+    d . d 1 1 1 1 d . . c f f f c .
+    d . d 1 1 1 1 d . . c f f f c .
+    d . d 1 1 1 1 d . . c f f f c .
+    d . d 1 1 1 1 d . . c f f f c .
+    . . . d 1 1 1 d . . c f f f c .
+    . . . . d 1 1 d . . c f f f c .
+    . . . . . d 1 d . . c f f f c .
+    . . . . . . d d . . c f f f c .
+    . . . . . . . . . . c f f f c .    
+    `
 
     /* maybe use these later
     export const rc_high = img`

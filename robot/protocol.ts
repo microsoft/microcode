@@ -5,8 +5,12 @@ const enum RobotLineState {
     Left = 0x01,
     //% block="right"
     Right = 0x02,
-    //% block="both"
+    //% block="both" 
     Both = Left | Right,
+    //% block="none from left"
+    NoneFromLeft = None | 0x04,
+    //% block="none from right"
+    NoneFromRight = None | 0x0a,
 }
 
 namespace microcode.robots {
@@ -24,8 +28,9 @@ namespace microcode.robots {
         MotorRunForwardFast = MotorState | 0x6,
         MotorSpinLeft = MotorState | 0x7,
         MotorSpinRight = MotorState | 0x8,
-        MotorArmOpen = MotorState | 0x9,
-        MotorArmClose = MotorState | 0xa,
+        MotorLEDRed = MotorState | 0x09,
+        MotorLEDGreen = MotorState | 0x0a,
+        MotorLEDBlue = MotorState | 0x0b,
 
         /**
          * sonar detected obstable
@@ -41,9 +46,11 @@ namespace microcode.robots {
          * Line sensor state change
          */
         LineState = 0xfffff30,
-        Left = LineState | RobotLineState.Left,
-        Right = LineState | RobotLineState.Right,
-        Both = LineState | RobotLineState.Both,
-        None = LineState | RobotLineState.None,
+        LineLeft = LineState | RobotLineState.Left,
+        LineRight = LineState | RobotLineState.Right,
+        LineBoth = LineState | RobotLineState.Both,
+        LineNone = LineState | RobotLineState.None,
+        LineNoneFromLeft = LineState | RobotLineState.NoneFromLeft,
+        LineNoneFromRight = LineState | RobotLineState.NoneFromRight,
     }
 }

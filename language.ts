@@ -360,7 +360,9 @@ namespace microcode {
 
         public toBuffer() {
             const bw = new BufferWriter()
-            // TODO: magic number and version
+            const magic = Buffer.create(4)
+            magic.setNumber(NumberFormat.UInt32LE, 0, 0x3e92f825)
+            bw.writeBuffer(magic)
             this.pages.forEach(page => page.toBuffer(bw))
             bw.writeByte(Tid.END_OF_PROG)
             console.log(`toBuffer: ${bw.length}b`)
@@ -369,6 +371,12 @@ namespace microcode {
 
         public static fromBuffer(br: BufferReader) {
             const defn = new ProgramDefn()
+            assert(!br.eof())
+            const magic = br.readBuffer(4)
+            assert(
+                magic.getNumber(NumberFormat.UInt32LE, 0) == 0x3e92f825,
+                "bad magic"
+            )
             defn.pages = []
             assert(!br.eof())
             while (br.peekByte() != Tid.END_OF_PROG) {

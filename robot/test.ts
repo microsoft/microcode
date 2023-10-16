@@ -1,28 +1,36 @@
 microcode.elecfreaksCuteBot.start()
-//microcode.elecfreaksCuteBotPro.start()
 //microcode.yahboomTinyBit.start()
+//microcode.elecfreaksCuteBotPro.start()
 //microcode.keyStudioMiniSmartRobot.start()
 //microcode.setMotorDrift(6)
+//microcode.dfRobotMaqueen.start()
+//microcode.dfRobotMaqueenPlusV2.start()
 
-microcode.setRadioGroup(9)
-microcode.setMotorDrift(-3)
+microcode.robot.startRadio()
+microcode.setRadioGroup(2)
+microcode.setMotorDrift(0)
 
-//const r = microcode.robot
-//r.lineAssist = true
+const r = microcode.robot
+//r.motorRun(-100, 80)
 
-/*
 basic.forever(() => {
     const lines = r.currentLineState
-    if (lines === RobotLineState.Left)
+    if (lines === RobotLineState.Left) {
         r.motorRun(-80, 100)
-    else if (lines === RobotLineState.Right)
+    }
+    else if (lines === RobotLineState.Right) {
         r.motorRun(80, 100)
-    else if (lines === RobotLineState.Both)
-        r.motorRun(0, 100)
-    else
-        r.motorRun(-150, 100)
+    }
+    else if (lines === RobotLineState.Both) {
+        r.motorRun(0, 70)
+    }
+    else if (lines === RobotLineState.NoneFromLeft) {
+        r.motorRun(200, 70)
+    }
+    else if (lines === RobotLineState.NoneFromRight) {
+        r.motorRun(-200, 70)
+    }
 })
-*/
 
 /*
 // calibrate

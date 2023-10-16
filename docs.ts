@@ -39,7 +39,7 @@ namespace docs {
         const images: RenderedImage[] = []
         appendImage(images, "image", "home", screen)
         renderIcons(images)
-        renderSamples(images)
+        const samples = renderSamples(images)
         appendImage(images, "image", "microcode", microcode.wordLogo)
         appendImage(images, "image", "microbit", microcode.microbitLogo)
         appendImage(
@@ -53,7 +53,11 @@ namespace docs {
             Buffer.fromUTF8(
                 JSON.stringify({
                     type: "art",
-                    samples: microcode.rawSamples(),
+                    samples: samples.map(s => ({
+                        label: s.label,
+                        b64: s.b64,
+                        icon: s.icon || "",
+                    })),
                     images,
                 })
             )
@@ -62,12 +66,23 @@ namespace docs {
 
     function renderSamples(images: RenderedImage[]) {
         app.popScene()
-        for (const sample of microcode.samples(false)) {
+        const samples = microcode.samples(false)
+        for (const sample of samples) {
             console.log(`render sample ${sample.label}`)
             const icon = microcode.icons.get(sample.icon, true)
             if (icon) appendImage(images, "icon_sample", sample.label, icon)
-            const src = sample.source
-            settings.writeString(microcode.SAVESLOT_AUTO, src)
+            app.saveBuffer(microcode.SAVESLOT_AUTO, sample.source)
+            // read the buffer and convert to B64
+            // const saved: microcode.SavedState = JSON.parse(
+            //     sample.source.toString()
+            // )
+            // const progdef = microcode.progDefnFromJson(saved.progdef)
+            // app.save(microcode.SAVESLOT_AUTO, progdef)
+
+            // const buf = settings.readBuffer(microcode.SAVESLOT_AUTO)
+            // const buf64 = buf.toBase64()
+            // console.log(buf64)
+
             const res = _renderProgram()
             Object.keys(res).forEach(iname => {
                 appendImage(
@@ -81,6 +96,7 @@ namespace docs {
             app.popScene()
         }
         microcode.Screen.resetScreenImage()
+        return samples
     }
 
     //% shim=TD_NOOP
@@ -226,12 +242,17 @@ namespace docs {
             microcode.TID_MODIFIER_CAR_STOP,
             microcode.TID_MODIFIER_CAR_SPIN_LEFT,
             microcode.TID_MODIFIER_CAR_SPIN_RIGHT,
+            microcode.TID_MODIFIER_CAR_LED_COLOR_1,
+            microcode.TID_MODIFIER_CAR_LED_COLOR_2,
+            microcode.TID_MODIFIER_CAR_LED_COLOR_3,
             microcode.TID_SENSOR_CAR_WALL,
             microcode.TID_SENSOR_LINE,
             microcode.TID_FILTER_LINE_LEFT,
             microcode.TID_FILTER_LINE_RIGHT,
             microcode.TID_FILTER_LINE_BOTH,
             microcode.TID_FILTER_LINE_NEITHER,
+            microcode.TID_FILTER_LINE_NEITHER_LEFT,
+            microcode.TID_FILTER_LINE_NEITHER_RIGHT,
             microcode.TID_FILTER_KITA_KEY_1,
             microcode.TID_FILTER_KITA_KEY_2,
             microcode.TID_SENSOR_MAGNET,
@@ -248,7 +269,7 @@ namespace docs {
             microcode.TID_MODIFIER_RGB_LED_COLOR_6,
             microcode.TID_MODIFIER_RGB_LED_COLOR_RAINBOW,
             microcode.TID_MODIFIER_RGB_LED_COLOR_SPARKLE,
-            microcode.TID_MODIFIER_SERVO_SET_ANGLE,
+            microcode.TID_ACTUATOR_SERVO_SET_ANGLE,
             // editor icons
             "delete",
             "plus",
@@ -369,7 +390,7 @@ namespace docs {
             microcode.TID_MODIFIER_RADIO_VALUE,
         ]
     }
-    
+
     function renderIcons(images: RenderedImage[]) {
         for (const name of names()) {
             console.log(`render icon ${name}`)

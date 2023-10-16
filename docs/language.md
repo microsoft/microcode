@@ -215,9 +215,8 @@ Make to start your program by setting the same radio group as the robot.
 
 ### DO section
 
-The robot motor commands start with a car and a sequence of move directions.
+The ![robot](./images/generated/icon_CAR.png){:class="icon"} `robot` starts the robot motor commands. Any of those can be sequenced in the same rule.
 
--   ![robot](./images/generated/icon_CAR.png){:class="icon"} `robot`, start the robot motor commands
 -   ![robot forward](./images/generated/icon_CAR1.png){:class="icon"} `forward`, instructs the robot to move forward.
 -   ![robot fast forward](./images/generated/icon_CAR6.png){:class="icon"} `fast forward`, instructs the robot to move forward at maximum speed
 -   ![robot backward](./images/generated/icon_CAR2.png){:class="icon"} `reverse`, instructs the robot to move backward
@@ -226,6 +225,12 @@ The robot motor commands start with a car and a sequence of move directions.
 -   ![robot turn right](./images/generated/icon_CAR4.png){:class="icon"} `turn right`, instructs the robot to turn right.
 -   ![robot spin right](./images/generated/icon_CAR8.png){:class="icon"} `spin right`, instructs the robot to spin right
 -   ![robot stop](./images/generated/icon_CAR5.png){:class="icon"} `stop`, instructs the robot to stop
+
+Additionally to motors, the robot had LEDs that can be controlled as well.
+
+-   ![LED color red](./images/generated/icon_CAR9.png){:class="icon"} `LED red`, turns LED to red
+-   ![LED color green](./images/generated/icon_CAR10.png){:class="icon"} `LED green`, turns LED to green
+-   ![LED color blue](./images/generated/icon_CAR11.png){:class="icon"} `LED blue`, turns LED to blue
 
 The forward, backward, left, right and stop blocks
 can be sequenced in the same rule.
@@ -243,7 +248,20 @@ and the line sensor as a line tile.
 
 -   ![wall](./images/generated/icon_S13.png){:class="icon"} `wall detected`, triggers when an obstacle is detected;
     (levels 1 - 5, where 1 means obstacle close, 5 means far away in multiple of 5cm)
--   ![line](./images/generated/icon_S14.png){:class="icon"} `line detected`, triggers when the line following detector have detected a change; followed by a line state: ![both line detected](./images/generated/icon_F23B.png){:class="icon"} both,
-    ![no line detected](./images/generated/icon_F23N.png){:class="icon"} none,
-    ![left line detected](./images/generated/icon_F23L.png){:class="icon"} left,
-    ![right detected](./images/generated/icon_F23R.png){:class="icon"} right.
+
+Line detection is typically done with two infrared sensors under the robot.
+
+-   ![line](./images/generated/icon_S14.png){:class="icon"} `line change detected`
+
+There are 3 cases when a line is detected:
+
+-   ![both line detected](./images/generated/icon_F23B.png){:class="icon"} both,
+-   ![left line detected](./images/generated/icon_F23L.png){:class="icon"} left,
+-   ![right detected](./images/generated/icon_F23R.png){:class="icon"} right.
+
+There are 3 possible state when the line detector is not detected:
+
+-   ![no line from left](./images/generated/icon_F23NL.png){:class="icon"} no line detected coming from a left line,
+-   ![no line from left](./images/generated/icon_F23NR.png){:class="icon"} no line detected coming from a right line,
+-   ![no line detected](./images/generated/icon_F23N.png){:class="icon"} no line detected
+    coming from both lines,

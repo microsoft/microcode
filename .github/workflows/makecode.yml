@@ -39,5 +39,9 @@ jobs:
               run: |
                   cd robot
                   makecode
-                  makecode -c mkc-cutebot.json
+                  makecode -c mkc-elecfreakscutebot.json
+                  makecode -c mkc-elecfreakscutebotpro.json
                   makecode -c mkc-yahboomtinybit.json
+                  makecode -c mkc-keystudiominismartrobot.json
+                  makecode -c mkc-dfrobotmaqueen.json
+                  makecode -c mkc-dfrobotmaqueenplusv2.json

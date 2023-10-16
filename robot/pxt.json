@@ -3,20 +3,22 @@
     "version": "2.5.1",
     "dependencies": {
         "core": "*",
-        "radio": "*"
+        "radio": "*",
+        "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.2"
     },
     "files": [
         "README.md",
         "protocol.ts",
         "messages.ts",
         "robot.ts",
-        "radio.ts",
         "keystudiominismartrobot.ts",
         "robotdriver.ts",
         "yahboomtinybit.ts",
         "cutebot.ts",
         "blocks.ts",
-        "cutebotpro.ts"
+        "cutebotpro.ts",
+        "dfrobotmaqueen.ts",
+        "dfrobotmaqueenplusv2.ts"
     ],
     "testFiles": [
         "test.ts"

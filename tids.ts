@@ -57,6 +57,8 @@ namespace microcode {
     export const TID_FILTER_LINE_RIGHT = "F23R"
     export const TID_FILTER_LINE_BOTH = "F23B"
     export const TID_FILTER_LINE_NEITHER = "F23N"
+    export const TID_FILTER_LINE_NEITHER_LEFT = "F23NL"
+    export const TID_FILTER_LINE_NEITHER_RIGHT = "F23NR"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -117,7 +119,7 @@ namespace microcode {
     export const TID_MODIFIER_RGB_LED_COLOR_RAINBOW = "A20_rainbow"
     export const TID_MODIFIER_RGB_LED_COLOR_SPARKLE = "A20_sparkle"
 
-    export const TID_MODIFIER_SERVO_SET_ANGLE = "A21_"
+    export const TID_ACTUATOR_SERVO_SET_ANGLE = "A21_"
 
     export const TID_ACTUATOR_CAR = "CAR"
     export const TID_MODIFIER_CAR_FORWARD = "CAR1"
@@ -128,6 +130,9 @@ namespace microcode {
     export const TID_MODIFIER_CAR_FORWARD_FAST = "CAR6"
     export const TID_MODIFIER_CAR_SPIN_LEFT = "CAR7"
     export const TID_MODIFIER_CAR_SPIN_RIGHT = "CAR8"
+    export const TID_MODIFIER_CAR_LED_COLOR_1 = "CAR9"
+    export const TID_MODIFIER_CAR_LED_COLOR_2 = "CAR10"
+    export const TID_MODIFIER_CAR_LED_COLOR_3 = "CAR11"
 
     // should fit into a byte
     export enum Tid {
@@ -169,6 +174,7 @@ namespace microcode {
         TID_ACTUATOR_CUP_Z_ASSIGN,
         TID_ACTUATOR_SHOW_NUMBER,
         TID_ACTUATOR_CAR,
+        TID_ACTUATOR_SERVO_SET_ANGLE,
         ACTUATOR_END,
 
         FILTER_START = 70,
@@ -208,6 +214,8 @@ namespace microcode {
         TID_FILTER_LINE_RIGHT,
         TID_FILTER_LINE_BOTH,
         TID_FILTER_LINE_NEITHER,
+        TID_FILTER_LINE_NEITHER_LEFT,
+        TID_FILTER_LINE_NEITHER_RIGHT,
         FILTER_END,
 
         MODIFIER_START = 150,
@@ -251,7 +259,6 @@ namespace microcode {
         TID_MODIFIER_RGB_LED_COLOR_6,
         TID_MODIFIER_RGB_LED_COLOR_RAINBOW,
         TID_MODIFIER_RGB_LED_COLOR_SPARKLE,
-        TID_MODIFIER_SERVO_SET_ANGLE,
         TID_MODIFIER_CAR_FORWARD,
         TID_MODIFIER_CAR_REVERSE,
         TID_MODIFIER_CAR_TURN_LEFT,
@@ -260,6 +267,9 @@ namespace microcode {
         TID_MODIFIER_CAR_FORWARD_FAST,
         TID_MODIFIER_CAR_SPIN_LEFT,
         TID_MODIFIER_CAR_SPIN_RIGHT,
+        TID_MODIFIER_CAR_LED_COLOR_1,
+        TID_MODIFIER_CAR_LED_COLOR_2,
+        TID_MODIFIER_CAR_LED_COLOR_3,
         MODIFER_END,
     }
 
@@ -371,6 +381,10 @@ namespace microcode {
                 return Tid.TID_FILTER_LINE_BOTH
             case TID_FILTER_LINE_NEITHER:
                 return Tid.TID_FILTER_LINE_NEITHER
+            case TID_FILTER_LINE_NEITHER_LEFT:
+                return Tid.TID_FILTER_LINE_NEITHER_LEFT
+            case TID_FILTER_LINE_NEITHER_RIGHT:
+                return Tid.TID_FILTER_LINE_NEITHER_RIGHT
             case TID_ACTUATOR_SWITCH_PAGE:
                 return Tid.TID_ACTUATOR_SWITCH_PAGE
             case TID_ACTUATOR_SPEAKER:
@@ -475,8 +489,8 @@ namespace microcode {
                 return Tid.TID_MODIFIER_RGB_LED_COLOR_RAINBOW
             case TID_MODIFIER_RGB_LED_COLOR_SPARKLE:
                 return Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE
-            case TID_MODIFIER_SERVO_SET_ANGLE:
-                return Tid.TID_MODIFIER_SERVO_SET_ANGLE
+            case TID_ACTUATOR_SERVO_SET_ANGLE:
+                return Tid.TID_ACTUATOR_SERVO_SET_ANGLE
             case TID_ACTUATOR_CAR:
                 return Tid.TID_ACTUATOR_CAR
             case TID_MODIFIER_CAR_FORWARD:
@@ -495,6 +509,12 @@ namespace microcode {
                 return Tid.TID_MODIFIER_CAR_SPIN_LEFT
             case TID_MODIFIER_CAR_SPIN_RIGHT:
                 return Tid.TID_MODIFIER_CAR_SPIN_RIGHT
+            case TID_MODIFIER_CAR_LED_COLOR_1:
+                return Tid.TID_MODIFIER_CAR_LED_COLOR_1
+            case TID_MODIFIER_CAR_LED_COLOR_2:
+                return Tid.TID_MODIFIER_CAR_LED_COLOR_2
+            case TID_MODIFIER_CAR_LED_COLOR_3:
+                return Tid.TID_MODIFIER_CAR_LED_COLOR_3
             default:
                 return undefined
         }
@@ -608,6 +628,10 @@ namespace microcode {
                 return TID_FILTER_LINE_BOTH
             case Tid.TID_FILTER_LINE_NEITHER:
                 return TID_FILTER_LINE_NEITHER
+            case Tid.TID_FILTER_LINE_NEITHER_LEFT:
+                return TID_FILTER_LINE_NEITHER_LEFT
+            case Tid.TID_FILTER_LINE_NEITHER_RIGHT:
+                return TID_FILTER_LINE_NEITHER_RIGHT
             case Tid.TID_ACTUATOR_SWITCH_PAGE:
                 return TID_ACTUATOR_SWITCH_PAGE
             case Tid.TID_ACTUATOR_SPEAKER:
@@ -712,8 +736,8 @@ namespace microcode {
                 return TID_MODIFIER_RGB_LED_COLOR_RAINBOW
             case Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE:
                 return TID_MODIFIER_RGB_LED_COLOR_SPARKLE
-            case Tid.TID_MODIFIER_SERVO_SET_ANGLE:
-                return TID_MODIFIER_SERVO_SET_ANGLE
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+                return TID_ACTUATOR_SERVO_SET_ANGLE
             case Tid.TID_ACTUATOR_CAR:
                 return TID_ACTUATOR_CAR
             case Tid.TID_MODIFIER_CAR_FORWARD:
@@ -732,6 +756,12 @@ namespace microcode {
                 return TID_MODIFIER_CAR_SPIN_LEFT
             case Tid.TID_MODIFIER_CAR_SPIN_RIGHT:
                 return TID_MODIFIER_CAR_SPIN_RIGHT
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_1:
+                return TID_MODIFIER_CAR_LED_COLOR_1
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_2:
+                return TID_MODIFIER_CAR_LED_COLOR_2
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_3:
+                return TID_MODIFIER_CAR_LED_COLOR_3
             default:
                 return undefined
         }
@@ -758,7 +788,9 @@ namespace microcode {
         if (
             tid == Tid.TID_SENSOR_CAR_WALL ||
             tid == Tid.TID_SENSOR_SLIDER ||
-            tid == Tid.TID_ACTUATOR_SWITCH_PAGE
+            tid == Tid.TID_ACTUATOR_SWITCH_PAGE ||
+            tid == Tid.TID_SENSOR_LIGHT ||
+            tid == Tid.TID_SENSOR_MAGNET
         )
             return false
         // everything else except some filters is not terminal
@@ -936,7 +968,9 @@ namespace microcode {
         }
 
         public get buffer() {
-            return this.buf
+            const buf = Buffer.create(this.ptr)
+            buf.write(0, this.buf.slice(0, this.ptr))
+            return buf
         }
 
         public writeByte(v: number) {

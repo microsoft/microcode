@@ -3,7 +3,7 @@
 Microcode supports programming a separate micro:bit robot equipped with two motors,
 sonar and line sensors.
 
-![robot line following](./images/generated/sample_robot_line_follow.png.png){:class="sample"}
+![robot line following](./images/generated/sample_robot_line_follow.png){:class="sample"}
 
 ## Preparing the robot micro:bit
 
@@ -26,15 +26,41 @@ The following features are found often but are optional:
 
 ### Elecfreaks Cutebot
 
-[![Photograph of the Cutebot](./images/cutebot.jpeg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
+![Photograph of the Cutebot](./images/cutebot.jpeg){:class="sample"}
 
--   Download [robot-cutebox.hex](https://microsoft.github.io/microcode/assets/robot-cutebox.hex) to micro:bit attached to the Cutebot
+-   [Home](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreakscutebot.hex)
 
 ### Yahboom Tiny:bit
 
-![Photograph of the Tiny:bit](./images/tinybit.jpeg)
+![Photograph of the Tiny:bit](./images/tinybit.jpeg){:class="sample"}
 
--   Download [robot-tinybit.hex](https://microsoft.github.io/microcode/assets/robot-tinybit.hex)
+-   [Home](http://www.yahboom.net/study/Tiny:bit)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-yahboom-tinybit.hex)
+
+### Elecfreaks Cutebot PRO
+
+![Photograph of the Cutebot PRO](./images/cutebotpro.jpeg){:class="sample"}
+
+-   [Home](https://shop.elecfreaks.com/products/elecfreaks-smart-cutebot-pro-v2-programming-robot-car-for-micro-bit)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreaks-cutebotpro.hex)
+
+## DFRobot Maqueen V2+
+
+![Photograph of the Maqueen](./images/maqueen.jpeg){:class="sample"}
+
+-   [Home](https://wiki.dfrobot.com/micro_Maqueen_for_micro_bit_SKU_ROB0148-EN)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-dfrobot-maqueen.hex)
+
+### DFRobot Maqueen Plus V2
+
+-   [Home](https://www.dfrobot.com/product-2026.html)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-dfrobot-maqueen-plus-v2.hex)
+
+### KeyStudio KS0426 Mini Smart Robot
+
+-   [Home](https://wiki.keyestudio.com/KS0426_Keyestudio_Micro%EF%BC%9Abit_Mini_Smart_Robot_Car_Kit_V2)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-keystudio-minismartrobot.hex)
 
 ## Configuring the radio group
 
@@ -55,17 +81,20 @@ On the microcode side,
 
 It is not uncommon for 2 wheeled robot to slightly drift towards one side. To correct this behavior, you can configure a drift parameter on the robot.
 
-On the microcode side,
-
--   Create a program that orders the robot to go forward
-
 On the robot micro:bit,
 
 -   Press A+B to switch to the `DRIFT` configuration mode.
--   Press A and B to increase or decrease the drift. A positive drift adjustment will steer the robot to the right.
--   Let the robot go forward until it goes as straight as possible
+-   Let the robot go forward until it goes as straight as possible by pressing A and B to increase or modify the drift.
+-   Once you have found the perfect drift value, make sure to write it down.
 
-Write down the drift parameter as you will have to configure it every time you reset the robot micro:bit.
+You can also create new .hex file that contains the adjusted drift:
+
+-   open the [MakeCode for micro:bit editor](https://makecode.microbit.org/)
+-   create a new project
+-   add the **microcode robot extension** at https://github.com/microsoft/microcode/robot .
+-   in `on start`, drag the bloc to select your robot type
+-   drag the block to configure the drift value, voila!
+-   drag the block to configure the radio group
 
 ## Tiles
 

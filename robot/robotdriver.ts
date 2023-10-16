@@ -1,21 +1,7 @@
-/**
- * Microcode Robot
- */
-//% color="#ff6800" icon="\uf1b9" weight=15
-//% groups=['Move', 'Input', 'Configuration']
 namespace microcode {
     const MAX_GROUPS = 32
-    const RUN_STOP_THRESHOLD = 2
-    const TARGET_SPEED_THRESHOLD = 4
-    const SPEED_TRANSITION_ALPHA = 0.97
-    const SPEED_BRAKE_TRANSITION_ALPHA = 0.8
-    const TARGET_TURN_RATIO_THRESHOLD = 20
-    const TURN_RATIO_TRANSITION_ALPHA = 0.2
-    const ULTRASONIC_MIN_READING = 1
-    const LINE_ASSIST_LOST_THRESHOLD = 72
 
-    function radioGroupFromDeviceSerialNumber()
-    {
+    function radioGroupFromDeviceSerialNumber() {
         const sn = control.deviceLongSerialNumber()
         return (sn.hash(10) % 20) + 1
     }
@@ -44,11 +30,18 @@ namespace microcode {
          * Gets the latest line sensor state
          */
         currentLineState: RobotLineState = RobotLineState.None
+        private previousLineState = RobotLineState.None
         private currentLineStateCounter = 0
 
         private stopToneMillis: number = 0
         lineAssist = true
         runDrift = 0
+
+        private leds: robots.RobotLEDs
+        private ledsBuffer: Buffer
+
+        private sonar: robots.Sonar
+        private lineDetectors: robots.LineDetectors
 
         constructor(robot: robots.Robot) {
             this.robot = robot
@@ -107,15 +100,32 @@ namespace microcode {
             if (this.running) return
 
             this.running = true
-            this.robot.headlightsSetColor(0, 0xff, 0)
-            // wake up sensors
+
+            // configuration of common hardware
+            this.radioGroup = radioGroupFromDeviceSerialNumber()
+            this.leds = this.robot.leds
+            if (this.leds)
+                this.ledsBuffer = Buffer.create(this.leds.count * 3)
+            this.lineDetectors = this.robot.lineDetectors
+            if (this.lineDetectors) {
+                pins.setPull(this.lineDetectors.left, PinPullMode.PullNone);
+                pins.setPull(this.lineDetectors.right, PinPullMode.PullNone);
+            }
+            this.sonar = this.robot.sonar
+            if (this.sonar)
+                pins.setPull(this.sonar.trig, PinPullMode.PullNone);
+
+            // stop motors
+            this.setColor(0x0000ff)
             this.motorStop()
+            // wake up sensors
             this.ultrasonicDistance()
             this.lineState()
-            this.startRadioReceiver()
+
             this.configureButtons()
             basic.forever(() => this.updateSonar()) // potentially slower
             control.inBackground(() => this.backgroundWork())
+
             // schedule after main
             control.inBackground(() => {
                 this.showConfigurationState(true)
@@ -132,47 +142,70 @@ namespace microcode {
             }
         }
 
+        public setColor(rgb: number) {
+            let red = (rgb >> 16) & 0xff
+            let green = (rgb >> 8) & 0xff
+            let blue = (rgb >> 0) & 0xff
+            this.robot.headlightsSetColor(red, green, blue)
+            if (!this.leds) return
+            const b = this.ledsBuffer
+
+            red = Math.min(0xe0, red)
+            green = Math.min(0xe0, green)
+            blue = Math.min(0xe0, blue)
+
+            for (let i = 0; i + 2 < b.length; i += 3) {
+                b[i] = green
+                b[i + 1] = red
+                b[i + 2] = blue
+            }
+            ws2812b.sendBuffer(this.ledsBuffer, this.leds.pin)
+        }
+
         private updateArm() {
             if (this.currentArmAperture < 0) return
 
             this.robot.armOpen(this.currentArmAperture)
         }
 
-        private inRadioMessageId = 0
+        private inRadioMessageId: number = undefined
 
-        private startRadioReceiver() {
-            this.setRadioGroup(radioGroupFromDeviceSerialNumber())
-            radio.setTransmitSerialNumber(true);
-            radio.onReceivedNumber(code => {
-                this.decodeRobotCompactCommand(code)
-            })
+        /**
+         * Starts the reception and transmission of robot command messages
+         */
+        startRadio() {
+            if (this.inRadioMessageId === undefined) {
+                radio.setTransmitSerialNumber(true);
+                radio.onReceivedNumber(code => this.decodeRobotCompactCommand(code))
+                this.inRadioMessageId = 0
+            }
         }
 
         private updateSpeed() {
             // smooth update of speed
             {
                 const accelerating = this.targetSpeed > 0 && this.currentSpeed < this.targetSpeed
-                const alpha = accelerating ? SPEED_TRANSITION_ALPHA : SPEED_BRAKE_TRANSITION_ALPHA
+                const alpha = accelerating ? this.robot.speedTransitionAlpha : this.robot.speedBrakeTransitionAlpha
                 this.currentSpeed =
                     this.currentSpeed * alpha + this.targetSpeed * (1 - alpha)
                 if (this.lineAssist && this.currentSpeed > 0) {
                     if (this.currentLineState // left, right, front
-                        || this.currentLineStateCounter < LINE_ASSIST_LOST_THRESHOLD) // recently lost line
+                        || this.currentLineStateCounter < this.robot.lineAssistLostThreshold) // recently lost line
                         this.currentSpeed = Math.min(this.currentSpeed, this.robot.maxLineSpeed)
                 }
-                if (Math.abs(this.currentSpeed - this.targetSpeed) < TARGET_SPEED_THRESHOLD)
+                if (Math.abs(this.currentSpeed - this.targetSpeed) < this.robot.targetSpeedThreshold)
                     this.currentSpeed = this.targetSpeed
             }
             // smoth update of turn ratio
             {
-                const alpha = TURN_RATIO_TRANSITION_ALPHA
+                const alpha = this.robot.turnRatioTransitionAlpha
                 this.currentTurnRatio =
                     this.currentTurnRatio * alpha + this.targetTurnRatio * (1 - alpha)
-                if (Math.abs(this.currentTurnRatio - this.targetTurnRatio) < TARGET_TURN_RATIO_THRESHOLD)
+                if (Math.abs(this.currentTurnRatio - this.targetTurnRatio) < this.robot.targetTurnRatioThreshold)
                     this.currentTurnRatio = this.targetTurnRatio
             }
 
-            if (Math.abs(this.currentSpeed) < RUN_STOP_THRESHOLD)
+            if (Math.abs(this.currentSpeed) < this.robot.runStopThreshold)
                 this.setMotorState(0, 0)
             else {
                 let s = this.currentSpeed
@@ -251,29 +284,21 @@ namespace microcode {
         private lastSonarValue = 0
         private updateSonar() {
             const dist = this.ultrasonicDistance()
-            if (this.showConfiguration) return
-
-            // render sonar
-            if (dist > ULTRASONIC_MIN_READING) {
+            if (dist > this.robot.ultrasonicMinReading) {
                 const d = Math.clamp(1, 5, Math.ceil(dist / 5))
-                for (let y = 0; y < 5; y++)
-                    if (y + 1 >= d) led.plot(2, y)
-                    else led.unplot(2, y)
-
+                if (!this.showConfiguration) {
+                    for (let y = 0; y < 5; y++)
+                        if (y + 1 >= d) led.plot(2, y)
+                        else led.unplot(2, y)
+                }
                 if (d !== this.lastSonarValue) {
                     this.lastSonarValue = d
-                    this.playTone(2400 - d * 400, 200 + d * 25)
+                    //this.playTone(2400 - d * 400, 200 + d * 25)
                     const msg = microcode.robots.RobotCompactCommand.ObstacleState | d
                     this.sendCompactCommand(msg)
                     microcode.robots.raiseEvent(microcode.robots.RobotCompactCommand.ObstacleState)
                 }
             }
-        }
-
-        private setHeadlingSpeedColor(speed: number) {
-            if (speed === 0) this.robot.headlightsSetColor(0, 0, 0)
-            else if (speed > 0) this.robot.headlightsSetColor(0, 0, 0xf0)
-            else this.robot.headlightsSetColor(0xf0, 0, 0)
         }
 
         armOpen(aperture: number) {
@@ -286,34 +311,79 @@ namespace microcode {
             turnRatio = Math.clamp(-200, 200, turnRatio)
             speed = Math.clamp(-100, 100, Math.round(speed))
             if (this.targetSpeed !== speed || this.currentTurnRatio !== turnRatio) {
-                this.setHeadlingSpeedColor(speed)
                 this.targetSpeed = speed
                 this.targetTurnRatio = turnRatio
             }
         }
 
+        /**
+         * Stop motors
+         */
         motorStop() {
             this.motorRun(0, 0)
         }
 
-        ultrasonicDistance() {
+        private ultrasonicDistanceOnce() {
+            if (!this.sonar)
+                return this.robot.ultrasonicDistance()
+            else {
+                const trig = this.sonar.trig
+                const echo = this.sonar.echo
+                const maxCmDistance = 50
+                const TO_CM = 58
+
+                // send pulse
+                pins.digitalWritePin(trig, 0);
+                control.waitMicros(4);
+                pins.digitalWritePin(trig, 1);
+                control.waitMicros(10);
+                pins.digitalWritePin(trig, 0);
+
+                // read pulse
+                const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * TO_CM);
+                return Math.idiv(d, TO_CM);
+            }
+        }
+
+        private ultrasonicDistance() {
             let retry = 3
             while (retry-- > 0) {
-                const dist = this.robot.ultrasonicDistance()
-                if (dist > 1) {
+                const dist = this.ultrasonicDistanceOnce()
+                if (dist > this.robot.ultrasonicMinReading) {
                     this.currentUltrasonicDistance = dist
                     break
-                }
+                } else basic.pause(1)
             }
             return this.currentUltrasonicDistance
         }
 
+        private readLineState() {
+            if (this.lineDetectors) {
+                const left = (pins.digitalReadPin(this.lineDetectors.left) > 0) === this.lineDetectors.lineHigh ? 1 : 0
+                const right = (pins.digitalReadPin(this.lineDetectors.right) > 0) === this.lineDetectors.lineHigh ? 1 : 0
+                return (left << 0) | (right << 1)
+            } else
+                return this.robot.lineState()
+        }
+
         private lineState(): RobotLineState {
-            const ls = this.robot.lineState()
+            const ls = this.readLineState()
             if (ls !== this.currentLineState) {
+                const prev = this.previousLineState
+                this.previousLineState = this.currentLineState
                 this.currentLineState = ls
                 this.currentLineStateCounter = 0
-                const msg = microcode.robots.RobotCompactCommand.LineState | this.currentLineState
+
+                let msg: microcode.robots.RobotCompactCommand;
+                if (this.currentLineState === RobotLineState.None
+                    && prev === RobotLineState.Left)
+                    msg = microcode.robots.RobotCompactCommand.LineNoneFromLeft
+                else if (this.currentLineState === RobotLineState.None
+                    && prev === RobotLineState.Right)
+                    msg = microcode.robots.RobotCompactCommand.LineNoneFromRight
+                else
+                    msg = microcode.robots.RobotCompactCommand.LineState | this.currentLineState
+
                 this.sendCompactCommand(msg)
                 microcode.robots.raiseEvent(msg)
             }
@@ -321,21 +391,16 @@ namespace microcode {
             return ls
         }
 
-        stop() {
-            this.setHeadlingSpeedColor(0)
-            this.robot.motorRun(0, 0)
-        }
-
-        playTone(frequency: number, duration: number) {
+        private playTone(frequency: number, duration: number) {
             if (this.robot.musicVolume <= 0) return
             music.setVolume(this.robot.musicVolume)
             this.stopToneMillis = control.millis() + duration
-            music.ringTone(frequency)
+            pins.analogPitch(frequency, 0)
         }
 
         private updateTone() {
             if (this.stopToneMillis && this.stopToneMillis < control.millis()) {
-                music.stopAllSounds()
+                pins.analogPitch(0, 0)
                 this.stopToneMillis = 0
             }
         }
@@ -348,19 +413,27 @@ namespace microcode {
             this.setRadioGroup(this.radioGroup === MAX_GROUPS - 1 ? 1 : this.radioGroup + 1)
         }
 
+        /**
+         * Sets the radio group used to transfer messages. Also starts the radio
+         * if needed
+         */
         setRadioGroup(newGroup: number) {
+            this.start()
             if (newGroup < 0) newGroup += MAX_GROUPS
             this.radioGroup = newGroup % MAX_GROUPS
             radio.setGroup(this.radioGroup)
+            led.stopAnimation()
+            this.startRadio()
         }
 
         private sendCompactCommand(cmd: microcode.robots.RobotCompactCommand) {
-            radio.sendNumber(cmd)
+            if (this.inRadioMessageId !== undefined)
+                radio.sendNumber(cmd)
         }
 
-
         private decodeRobotCompactCommand(msg: number) {
-            this.inRadioMessageId++
+            if (this.inRadioMessageId === undefined) return
+
             switch (msg) {
                 case microcode.robots.RobotCompactCommand.MotorStop:
                 case microcode.robots.RobotCompactCommand.MotorTurnLeft:
@@ -370,29 +443,20 @@ namespace microcode {
                 case microcode.robots.RobotCompactCommand.MotorRunForwardFast:
                 case microcode.robots.RobotCompactCommand.MotorRunForward:
                 case microcode.robots.RobotCompactCommand.MotorRunBackward: {
-                    let turnRatio = 0
-                    let speed = 0
-                    switch (msg) {
-                        case microcode.robots.RobotCompactCommand.MotorRunForward: speed = 70; break;
-                        case microcode.robots.RobotCompactCommand.MotorRunForwardFast: speed = 100; break;
-                        case microcode.robots.RobotCompactCommand.MotorRunBackward: speed = -50; break;
-                        case microcode.robots.RobotCompactCommand.MotorTurnLeft: turnRatio = -50; speed = 70; break;
-                        case microcode.robots.RobotCompactCommand.MotorTurnRight: turnRatio = 50; speed = 70; break;
-                        case microcode.robots.RobotCompactCommand.MotorSpinLeft: turnRatio = -200; speed = 60; break;
-                        case microcode.robots.RobotCompactCommand.MotorSpinRight: turnRatio = 200; speed = 60; break;
-                    }
+                    this.inRadioMessageId++
+                    const command = this.robot.commands[msg] || {}
+                    const turnRatio = command.turnRatio || 0
+                    const speed = command.speed || 0
                     this.motorRun(turnRatio, speed);
-                    this.playTone(440, 50)
+                    this.playTone(440, 40)
                     break
                 }
-                case microcode.robots.RobotCompactCommand.MotorArmClose: {
-                    this.armOpen(0)
-                    break
-                }
-                case microcode.robots.RobotCompactCommand.MotorArmOpen: {
-                    this.armOpen(100)
-                    break
-                }
+                case microcode.robots.RobotCompactCommand.MotorLEDRed:
+                    this.setColor(0xff0000); break;
+                case microcode.robots.RobotCompactCommand.MotorLEDGreen:
+                    this.setColor(0x00ff00); break;
+                case microcode.robots.RobotCompactCommand.MotorLEDBlue:
+                    this.setColor(0x0000ff); break;
             }
         }
     }

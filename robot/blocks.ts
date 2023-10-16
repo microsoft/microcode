@@ -1,3 +1,8 @@
+/**
+ * Microcode Robot
+ */
+//% color="#ff6800" icon="\uf1b9" weight=15
+//% groups=['Motors', 'Input', 'Configuration']
 namespace microcode {
     export let robot: RobotDriver;
 
@@ -7,11 +12,11 @@ namespace microcode {
     }
 
     /**
-     * Turns the robot.
+     * Moves the robot.
     */
     //% weight=98
     //% group="Motors"
-    //% block="robot run with turn $turnRatio at speed $speed \\%"
+    //% block="robot motor run with steering $turnRatio at speed $speed \\%"
     //% blockid="microcoderobotmotorturn"
     //% speed.defl=100
     //% speed.min=-100
@@ -77,6 +82,7 @@ namespace microcode {
     //% blockId=microcoderobotondetectlines
     //% group="Input"
     export function onLineDetected(state: RobotLineState, handler: () => void) {
+        checkRobotDriver()
         const msg = microcode.robots.RobotCompactCommand.LineState | state
         microcode.robots.onEvent(msg, handler)
     }
@@ -109,17 +115,28 @@ namespace microcode {
     }
 
     /**
-     * Sets the radio group used to communicate commands.
+     * Sets the radio group used to communicate commands. Starts radio if needed.
     */
-    //% block="robot set radio group to $group"
+    //% block="robot set radio group to $value"
     //% blockId="microcoderobotsetradiogroup"
     //% group="Configuration"
     //% weight=9
-    //% group.min=1
-    //% group.max=32
-    export function setRadioGroup(group: number) {
+    //% value.min=1
+    //% value.max=32
+    export function setRadioGroup(value: number) {
         checkRobotDriver()
-        robot.setRadioGroup(group)
-        led.stopAnimation()
+        robot.setRadioGroup(value)
+    }
+
+    /**
+     * Sets the LED color
+     */
+    //% blockId="microcoderobotsetcolor" block="robot set color $rgb"
+    //% group="Motors"
+    //% weight=10
+    //% rgb.shadow=colorNumberPicker
+    export function setColor(rgb: number) {
+        checkRobotDriver()
+        robot.setColor(rgb)
     }
 }
