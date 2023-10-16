@@ -52,19 +52,15 @@ namespace microcode {
             input.onButtonPressed(Button.A, () => {
                 if (this.showConfiguration) return
                 this.playTone(440, 500)
-                if (this.configDrift)
-                    this.runDrift--
-                else
-                    this.previousGroup()
+                if (this.configDrift) this.runDrift--
+                else this.previousGroup()
                 this.showConfigurationState()
             })
             input.onButtonPressed(Button.B, () => {
                 if (this.showConfiguration) return
                 this.playTone(640, 500)
-                if (this.configDrift)
-                    this.runDrift++
-                else
-                    this.nextGroup()
+                if (this.configDrift) this.runDrift++
+                else this.nextGroup()
                 this.showConfigurationState()
             })
             input.onButtonPressed(Button.AB, () => {
@@ -83,9 +79,7 @@ namespace microcode {
             if (showTitle) {
                 basic.clearScreen()
                 basic.showString(title + " " + value, 60)
-            }
-            else
-                basic.showNumber(value, 60)
+            } else basic.showNumber(value, 60)
             this.showConfiguration = false
         }
 
@@ -104,16 +98,14 @@ namespace microcode {
             // configuration of common hardware
             this.radioGroup = radioGroupFromDeviceSerialNumber()
             this.leds = this.robot.leds
-            if (this.leds)
-                this.ledsBuffer = Buffer.create(this.leds.count * 3)
+            if (this.leds) this.ledsBuffer = Buffer.create(this.leds.count * 3)
             this.lineDetectors = this.robot.lineDetectors
             if (this.lineDetectors) {
-                pins.setPull(this.lineDetectors.left, PinPullMode.PullNone);
-                pins.setPull(this.lineDetectors.right, PinPullMode.PullNone);
+                pins.setPull(this.lineDetectors.left, PinPullMode.PullNone)
+                pins.setPull(this.lineDetectors.right, PinPullMode.PullNone)
             }
             this.sonar = this.robot.sonar
-            if (this.sonar)
-                pins.setPull(this.sonar.trig, PinPullMode.PullNone);
+            if (this.sonar) pins.setPull(this.sonar.trig, PinPullMode.PullNone)
 
             // stop motors
             this.setColor(0x0000ff)
@@ -175,8 +167,10 @@ namespace microcode {
          */
         startRadio() {
             if (this.inRadioMessageId === undefined) {
-                radio.setTransmitSerialNumber(true);
-                radio.onReceivedNumber(code => this.decodeRobotCompactCommand(code))
+                radio.setTransmitSerialNumber(true)
+                radio.onReceivedNumber(code =>
+                    this.decodeRobotCompactCommand(code)
+                )
                 this.inRadioMessageId = 0
             }
         }
@@ -184,24 +178,41 @@ namespace microcode {
         private updateSpeed() {
             // smooth update of speed
             {
-                const accelerating = this.targetSpeed > 0 && this.currentSpeed < this.targetSpeed
-                const alpha = accelerating ? this.robot.speedTransitionAlpha : this.robot.speedBrakeTransitionAlpha
+                const accelerating =
+                    this.targetSpeed > 0 && this.currentSpeed < this.targetSpeed
+                const alpha = accelerating
+                    ? this.robot.speedTransitionAlpha
+                    : this.robot.speedBrakeTransitionAlpha
                 this.currentSpeed =
                     this.currentSpeed * alpha + this.targetSpeed * (1 - alpha)
                 if (this.lineAssist && this.currentSpeed > 0) {
-                    if (this.currentLineState // left, right, front
-                        || this.currentLineStateCounter < this.robot.lineAssistLostThreshold) // recently lost line
-                        this.currentSpeed = Math.min(this.currentSpeed, this.robot.maxLineSpeed)
+                    if (
+                        this.currentLineState || // left, right, front
+                        this.currentLineStateCounter <
+                            this.robot.lineAssistLostThreshold
+                    )
+                        // recently lost line
+                        this.currentSpeed = Math.min(
+                            this.currentSpeed,
+                            this.robot.maxLineSpeed
+                        )
                 }
-                if (Math.abs(this.currentSpeed - this.targetSpeed) < this.robot.targetSpeedThreshold)
+                if (
+                    Math.abs(this.currentSpeed - this.targetSpeed) <
+                    this.robot.targetSpeedThreshold
+                )
                     this.currentSpeed = this.targetSpeed
             }
             // smoth update of turn ratio
             {
                 const alpha = this.robot.turnRatioTransitionAlpha
                 this.currentTurnRatio =
-                    this.currentTurnRatio * alpha + this.targetTurnRatio * (1 - alpha)
-                if (Math.abs(this.currentTurnRatio - this.targetTurnRatio) < this.robot.targetTurnRatioThreshold)
+                    this.currentTurnRatio * alpha +
+                    this.targetTurnRatio * (1 - alpha)
+                if (
+                    Math.abs(this.currentTurnRatio - this.targetTurnRatio) <
+                    this.robot.targetTurnRatioThreshold
+                )
                     this.currentTurnRatio = this.targetTurnRatio
             }
 
@@ -216,10 +227,10 @@ namespace microcode {
                 // apply turn ratio
                 if (this.currentTurnRatio < 0) {
                     right += s
-                    left += s * (1 + (this.currentTurnRatio / 100))
+                    left += s * (1 + this.currentTurnRatio / 100)
                 } else {
                     left += s
-                    right += s * (1 - (this.currentTurnRatio / 100))
+                    right += s * (1 - this.currentTurnRatio / 100)
                 }
 
                 // clamp
@@ -275,10 +286,8 @@ namespace microcode {
                 if (right) led.plot(0, i)
                 else led.unplot(0, i)
             }
-            if (this.inRadioMessageId % 2)
-                led.plot(4, 0)
-            else
-                led.unplot(4, 0)
+            if (this.inRadioMessageId % 2) led.plot(4, 0)
+            else led.unplot(4, 0)
         }
 
         private lastSonarValue = 0
@@ -294,9 +303,12 @@ namespace microcode {
                 if (d !== this.lastSonarValue) {
                     this.lastSonarValue = d
                     //this.playTone(2400 - d * 400, 200 + d * 25)
-                    const msg = microcode.robots.RobotCompactCommand.ObstacleState | d
+                    const msg =
+                        microcode.robots.RobotCompactCommand.ObstacleState | d
                     this.sendCompactCommand(msg)
-                    microcode.robots.raiseEvent(microcode.robots.RobotCompactCommand.ObstacleState)
+                    microcode.robots.raiseEvent(
+                        microcode.robots.RobotCompactCommand.ObstacleState
+                    )
                 }
             }
         }
@@ -310,7 +322,10 @@ namespace microcode {
             this.start()
             turnRatio = Math.clamp(-200, 200, turnRatio)
             speed = Math.clamp(-100, 100, Math.round(speed))
-            if (this.targetSpeed !== speed || this.currentTurnRatio !== turnRatio) {
+            if (
+                this.targetSpeed !== speed ||
+                this.currentTurnRatio !== turnRatio
+            ) {
                 this.targetSpeed = speed
                 this.targetTurnRatio = turnRatio
             }
@@ -324,8 +339,7 @@ namespace microcode {
         }
 
         private ultrasonicDistanceOnce() {
-            if (!this.sonar)
-                return this.robot.ultrasonicDistance()
+            if (!this.sonar) return this.robot.ultrasonicDistance()
             else {
                 const trig = this.sonar.trig
                 const echo = this.sonar.echo
@@ -333,15 +347,19 @@ namespace microcode {
                 const TO_CM = 58
 
                 // send pulse
-                pins.digitalWritePin(trig, 0);
-                control.waitMicros(4);
-                pins.digitalWritePin(trig, 1);
-                control.waitMicros(10);
-                pins.digitalWritePin(trig, 0);
+                pins.digitalWritePin(trig, 0)
+                control.waitMicros(4)
+                pins.digitalWritePin(trig, 1)
+                control.waitMicros(10)
+                pins.digitalWritePin(trig, 0)
 
                 // read pulse
-                const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * TO_CM);
-                return Math.idiv(d, TO_CM);
+                const d = pins.pulseIn(
+                    echo,
+                    PulseValue.High,
+                    maxCmDistance * TO_CM
+                )
+                return Math.idiv(d, TO_CM)
             }
         }
 
@@ -359,11 +377,18 @@ namespace microcode {
 
         private readLineState() {
             if (this.lineDetectors) {
-                const left = (pins.digitalReadPin(this.lineDetectors.left) > 0) === this.lineDetectors.lineHigh ? 1 : 0
-                const right = (pins.digitalReadPin(this.lineDetectors.right) > 0) === this.lineDetectors.lineHigh ? 1 : 0
+                const left =
+                    pins.digitalReadPin(this.lineDetectors.left) > 0 ===
+                    this.lineDetectors.lineHigh
+                        ? 1
+                        : 0
+                const right =
+                    pins.digitalReadPin(this.lineDetectors.right) > 0 ===
+                    this.lineDetectors.lineHigh
+                        ? 1
+                        : 0
                 return (left << 0) | (right << 1)
-            } else
-                return this.robot.lineState()
+            } else return this.robot.lineState()
         }
 
         private lineState(): RobotLineState {
@@ -374,15 +399,21 @@ namespace microcode {
                 this.currentLineState = ls
                 this.currentLineStateCounter = 0
 
-                let msg: microcode.robots.RobotCompactCommand;
-                if (this.currentLineState === RobotLineState.None
-                    && prev === RobotLineState.Left)
-                    msg = microcode.robots.RobotCompactCommand.LineNoneFromLeft
-                else if (this.currentLineState === RobotLineState.None
-                    && prev === RobotLineState.Right)
-                    msg = microcode.robots.RobotCompactCommand.LineNoneFromRight
+                let msg: microcode.robots.RobotCompactCommand
+                if (
+                    this.currentLineState === RobotLineState.None &&
+                    prev === RobotLineState.Left
+                )
+                    msg = microcode.robots.RobotCompactCommand.LineLostLeft
+                else if (
+                    this.currentLineState === RobotLineState.None &&
+                    prev === RobotLineState.Right
+                )
+                    msg = microcode.robots.RobotCompactCommand.LineLostRight
                 else
-                    msg = microcode.robots.RobotCompactCommand.LineState | this.currentLineState
+                    msg =
+                        microcode.robots.RobotCompactCommand.LineState |
+                        this.currentLineState
 
                 this.sendCompactCommand(msg)
                 microcode.robots.raiseEvent(msg)
@@ -406,11 +437,15 @@ namespace microcode {
         }
 
         private previousGroup() {
-            this.setRadioGroup(this.radioGroup === 1 ? MAX_GROUPS - 1 : this.radioGroup - 1)
+            this.setRadioGroup(
+                this.radioGroup === 1 ? MAX_GROUPS - 1 : this.radioGroup - 1
+            )
         }
 
         private nextGroup() {
-            this.setRadioGroup(this.radioGroup === MAX_GROUPS - 1 ? 1 : this.radioGroup + 1)
+            this.setRadioGroup(
+                this.radioGroup === MAX_GROUPS - 1 ? 1 : this.radioGroup + 1
+            )
         }
 
         /**
@@ -427,8 +462,7 @@ namespace microcode {
         }
 
         private sendCompactCommand(cmd: microcode.robots.RobotCompactCommand) {
-            if (this.inRadioMessageId !== undefined)
-                radio.sendNumber(cmd)
+            if (this.inRadioMessageId !== undefined) radio.sendNumber(cmd)
         }
 
         private decodeRobotCompactCommand(msg: number) {
@@ -447,16 +481,19 @@ namespace microcode {
                     const command = this.robot.commands[msg] || {}
                     const turnRatio = command.turnRatio || 0
                     const speed = command.speed || 0
-                    this.motorRun(turnRatio, speed);
+                    this.motorRun(turnRatio, speed)
                     this.playTone(440, 40)
                     break
                 }
                 case microcode.robots.RobotCompactCommand.MotorLEDRed:
-                    this.setColor(0xff0000); break;
+                    this.setColor(0xff0000)
+                    break
                 case microcode.robots.RobotCompactCommand.MotorLEDGreen:
-                    this.setColor(0x00ff00); break;
+                    this.setColor(0x00ff00)
+                    break
                 case microcode.robots.RobotCompactCommand.MotorLEDBlue:
-                    this.setColor(0x0000ff); break;
+                    this.setColor(0x0000ff)
+                    break
             }
         }
     }

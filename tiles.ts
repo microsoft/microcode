@@ -195,12 +195,12 @@ namespace microcode {
             const neither_left = addEvent(
                 TID_FILTER_LINE_NEITHER_LEFT,
                 "line",
-                robots.RobotCompactCommand.LineNoneFromLeft
+                robots.RobotCompactCommand.LineLostLeft
             )
             const neither_right = addEvent(
                 TID_FILTER_LINE_NEITHER_RIGHT,
                 "line",
-                robots.RobotCompactCommand.LineNoneFromRight
+                robots.RobotCompactCommand.LineLostRight
             )
             both.jdKind =
                 left.jdKind =

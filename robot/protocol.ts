@@ -5,16 +5,15 @@ const enum RobotLineState {
     Left = 0x01,
     //% block="right"
     Right = 0x02,
-    //% block="both" 
+    //% block="both"
     Both = Left | Right,
-    //% block="none from left"
-    NoneFromLeft = None | 0x04,
-    //% block="none from right"
-    NoneFromRight = None | 0x0a,
+    //% block="lost left"
+    LostLeft = None | 0x04,
+    //% block="lost right"
+    LostRight = None | 0x0a,
 }
 
 namespace microcode.robots {
-
     /**
      * Compact commands through radio numbers
      */
@@ -50,7 +49,7 @@ namespace microcode.robots {
         LineRight = LineState | RobotLineState.Right,
         LineBoth = LineState | RobotLineState.Both,
         LineNone = LineState | RobotLineState.None,
-        LineNoneFromLeft = LineState | RobotLineState.NoneFromLeft,
-        LineNoneFromRight = LineState | RobotLineState.NoneFromRight,
+        LineLostLeft = LineState | RobotLineState.LostLeft,
+        LineLostRight = LineState | RobotLineState.LostRight,
     }
 }

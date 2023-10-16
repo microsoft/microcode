@@ -17,17 +17,13 @@ basic.forever(() => {
     const lines = r.currentLineState
     if (lines === RobotLineState.Left) {
         r.motorRun(-80, 100)
-    }
-    else if (lines === RobotLineState.Right) {
+    } else if (lines === RobotLineState.Right) {
         r.motorRun(80, 100)
-    }
-    else if (lines === RobotLineState.Both) {
+    } else if (lines === RobotLineState.Both) {
         r.motorRun(0, 70)
-    }
-    else if (lines === RobotLineState.NoneFromLeft) {
+    } else if (lines === RobotLineState.LostLeft) {
         r.motorRun(200, 70)
-    }
-    else if (lines === RobotLineState.NoneFromRight) {
+    } else if (lines === RobotLineState.LostRight) {
         r.motorRun(-200, 70)
     }
 })
