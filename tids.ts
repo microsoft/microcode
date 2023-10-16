@@ -866,7 +866,7 @@ namespace microcode {
                 return "buzzer"
             case Tid.TID_ACTUATOR_RGB_LED:
                 return "led"
-            case Tid.TID_MODIFIER_SERVO_SET_ANGLE:
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return "servo"
             default:
                 return undefined
@@ -885,7 +885,7 @@ namespace microcode {
             case Tid.TID_ACTUATOR_RADIO_SEND:
                 return 0x81
             case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
-            case Tid.TID_MODIFIER_SERVO_SET_ANGLE:
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return jacs.CMD_SET_REG | 0x80
             default:
                 return undefined
@@ -907,7 +907,7 @@ namespace microcode {
                 return 0x10fa29c9
             case Tid.TID_ACTUATOR_RGB_LED:
                 return 0x1609d4f0
-            case Tid.TID_MODIFIER_SERVO_SET_ANGLE:
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return 0x12fc9103
             default:
                 return undefined
