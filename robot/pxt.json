@@ -1,6 +1,6 @@
 {
     "name": "microcode-robot",
-    "version": "2.5.3",
+    "version": "2.5.4",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -21,11 +21,15 @@
         "dfrobotmaqueenplusv2.ts",
         "kittenbotminilfr.ts"
     ],
-    "testFiles": ["test.ts"],
+    "testFiles": [
+        "test.ts"
+    ],
     "targetVersions": {
         "target": "6.0.19",
         "targetId": "microbit"
     },
-    "supportedTargets": ["microbit"],
+    "supportedTargets": [
+        "microbit"
+    ],
     "preferredEditor": "tsprj"
 }
