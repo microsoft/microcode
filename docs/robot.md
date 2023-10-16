@@ -104,7 +104,7 @@ This is a quick check list to make sure you have the best experience with the mi
 -   **Charge your batteries** - everything starts to fall apart once the battery level gets low! Keep those batteries topped off!
 -   **Double check the radio groups** - make sure the microcode program and the robot are on the same radio group
 
-## Add your robot
+## Add your robot {#contribute}
 
 The source of the robot firmware are at [https://github.com/microsoft/microcode/tree/main/robot](https://github.com/microsoft/microcode/tree/main/robot). We accept pull request to add new robots.
 
