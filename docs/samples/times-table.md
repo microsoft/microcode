@@ -12,7 +12,7 @@ instead of just 1. This is a fun program to pratice times table.
 The variable `Y` is used to hold the random multiplier and the variable `X`
 is used for the counter. Every time the user presses `A`, we add `X + Y` and store it in `X`.
 
--   [Open in MicroCode](/microcode/#H4sIAMG4UGMAA4VQ246CMBD9JcRkNzwKIew01IZtQXbfBCQUizFBhfr1Di3Gy4tPk9M5t85Ok6HsvMN/lHXQHr9BrSRTJ5wwT4qzl+mVypwPMuHwtdHEZykY/CsNjqio6tJtmq2bmndheWvagowDsmYcetg7Iw1IVfPxyVcFoBzchQYnQvkWOwYLAUMi3zU2+9ElfO2iSTVl4n8K9NE0DE0H2vqYtfDiH/TQhivu2rsXFau3/j72+aDBfk95I9s0qojGi9WdvDx3erwzn/a75WL+i71vnc3eU/flzDWcQVZdpktXXQrcweFPx21yZgHxbsHHo6K0AQAA)
+-   [Open in MicroCode](/microcode/#H4sIAKCjLGUAA/NKywwOSDdM9E1yT82rCCwvSi/x8vU2KnWt8i9xrczNcQx0dQJiRwAc3apXKAAAAA==)
 
 ![when shake, store random number in Y](../images/generated/sample_times_table_page_1_rule_1.png){:class="rule"}
 

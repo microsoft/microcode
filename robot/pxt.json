@@ -1,6 +1,6 @@
 {
     "name": "microcode-robot",
-    "version": "2.5.1",
+    "version": "2.5.3",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -18,7 +18,8 @@
         "blocks.ts",
         "cutebotpro.ts",
         "dfrobotmaqueen.ts",
-        "dfrobotmaqueenplusv2.ts"
+        "dfrobotmaqueenplusv2.ts",
+        "minilfr.ts"
     ],
     "testFiles": [
         "test.ts"

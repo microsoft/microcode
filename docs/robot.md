@@ -9,27 +9,12 @@ sonar and line sensors.
 
 You will need one of the following micro:bit robot and an extra micro:bit (v1 or v2) to run on the robot. (Contact us if your robot is not listed)
 
-### Hardware requirements
-
-The firmware is designed for popular rover robots found in the micro:bit ecosystem
-(and more can be added):
-
--   2 motors that can be forward, backward, left, right turns. Precise detection of distance is **not** needed.
--   a line sensor that can detect black and white lines
--   a distance sensor, typically an ultrasonic sensor
-
-The following features are found often but are optional:
-
--   RGB LEDs
--   Buzzer
--   Programmable LED strip
-
 ### Elecfreaks Cutebot
 
 ![Photograph of the Cutebot](./images/cutebot.jpeg){:class="sample"}
 
 -   [Home](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
--   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreakscutebot.hex)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreaks-cutebot.hex)
 
 ### Yahboom Tiny:bit
 
@@ -44,6 +29,13 @@ The following features are found often but are optional:
 
 -   [Home](https://shop.elecfreaks.com/products/elecfreaks-smart-cutebot-pro-v2-programming-robot-car-for-micro-bit)
 -   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreaks-cutebotpro.hex)
+
+### KittenBot MiniLFR
+
+![Photo of the MiniLFR robot](./images/minilfr.png){:class="sample"}
+
+-   [Home](https://www.kittenbot.cc/products/minilfr)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-kittenbot-minilfr.hex)
 
 ## DFRobot Maqueen V2+
 
@@ -112,6 +104,35 @@ This is a quick check list to make sure you have the best experience with the mi
 -   **Charge your batteries** - everything starts to fall apart once the battery level gets low! Keep those batteries topped off!
 -   **Double check the radio groups** - make sure the microcode program and the robot are on the same radio group
 
-## Add your robot
+## Add your robot {#contribute}
 
 The source of the robot firmware are at [https://github.com/microsoft/microcode/tree/main/robot](https://github.com/microsoft/microcode/tree/main/robot). We accept pull request to add new robots.
+
+### Hardware requirements
+
+The firmware is designed for popular rover robots found in the micro:bit ecosystem
+(and more can be added):
+
+-   2 motors that can be forward, backward, left, right turns. Precise detection of distance is **not** needed.
+-   a line sensor that can detect black and white lines
+-   a distance sensor, typically an ultrasonic sensor
+
+The following features are found often but are optional:
+
+-   RGB LEDs
+-   Buzzer
+-   Programmable LED strip
+
+### Contributing
+
+To add a new robot to the list, prepare a pull request with:
+
+-   a new class extending `Robot` and configuring the hardware (see other robots)
+-   a global field instance instantiating the robot (see other robots)
+-   a URL in the jsdocs of the class pointing to the robot homepage
+-   add `main{company}{productname}.ts` file that starts the robot
+-   add `pxt-{company}{productname}.ts` file that overrides the test files to load `main{company}{productname}.ts`
+-   add image under `docs/static/images`
+
+Make sure to test and tune the configuration options in the robot class for your particular
+chassis/motor/line detectors. You may want to tweak some of the constants in the robot class to optimize the behavior of the robot.

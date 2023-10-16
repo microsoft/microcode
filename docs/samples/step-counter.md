@@ -8,7 +8,7 @@ description: Count your steps!
 
 This program counts your steps by measuring the shake events (heavy steps!).
 
--  [Open in MicroCode](/microcode/#H4sIAKE9YWMAA32PSQ+CMBCF/xLi2qMQgm0oBFsWubFIKIKaAGH59Q4FPXp6+SZv3pu5j6RPa/SMTL/G5fuIq7NwqhYUr0pBG+FNVISsFy7Dh2AkmuMZkq9Cskl5lqdqUcSqJ+d88dm01DQsgPlNhKHSQB+HngRy9y4jmaUTTfLDGKgu2V5YGakBHf93RlwpDXjljZwb+9j0m8Q8LXvbTZaz4fdL7m+QdYFf5pu3LVqz2Zz19UqPTtQoJFMcoA6XL5GVuLP13eAwgj6oFq8wMAEAAA==)
+-   [Open in MicroCode](/microcode/#H4sIAKCjLGUAA/NKywwOSDdM9PU2SnKt8i9xrczNcQx0dQJiRwBim90NHAAAAA==)
 
 ![when shake detected, increment variable X](../images/generated/sample_step_counter_page_1_rule_1.png){:class="rule"}
 

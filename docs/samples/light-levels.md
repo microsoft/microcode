@@ -9,7 +9,7 @@ description: Detect the amount of light
 This program requires a [Jacdac light sensor module](https://microsoft.github.io/jacdac-docs/devices/kittenbot/lightsensorv10/).
 The light sensor tile maps the amount of light to values 1-5, where 1 means no light and 5 is a lot of light.
 
--   [Open in MicroCode](/microcode/#eyJwcm9nZGVmIjp7IlAiOlt7IlIiOlt7IlMiOlsiUzUiXSwiQSI6WyJBMTAiXSwiRiI6WyJGOCJdLCJNIjpbIk02Il19LHsiUyI6WyJTNSJdLCJBIjpbIkExMCJdLCJGIjpbIkY5Il0sIk0iOlsiTTciXX0seyJTIjpbIlM1Il0sIkEiOlsiQTEwIl0sIkYiOlsiRjEwIl0sIk0iOlsiTTgiXX0seyJTIjpbIlM1Il0sIkEiOlsiQTEwIl0sIkYiOlsiRjExIl0sIk0iOlsiTTkiXX0seyJTIjpbIlM1Il0sIkEiOlsiQTEwIl0sIkYiOlsiRjEyIl0sIk0iOlsiTTEwIl19LHt9XX0seyJSIjpbe31dfSx7IlIiOlt7fV19LHsiUiI6W3t9XX0se31dfSwidmVyc2lvbiI6InYyLjQuMjgifQ)
+-   [Open in MicroCode](/microcode/#H4sIAKCjLGUAA/NKywwOSLf09zUtDgip8k92MXSsygu0DPI1NQkIzfJPcwx0dQJiRwClU1HSKAAAAA==)
 
 ## ![light level](../images/generated/icon_S5.png){:class="icon"} Light level events
 

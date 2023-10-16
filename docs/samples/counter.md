@@ -8,7 +8,7 @@ description: Count how many times button A is pressed
 
 This program counts how many times you press ![button A](../images/generated/icon_F3.png){:class="icon"} `button A`.
 
--   [Open in MicroCode](/microcode/#H4sIAMG4UGMAA4WPywqDMBBFfyl90OKii7YEO8EoNvGBS19lNFpBQe3XNxoX3XV1OTD3cqaY2Zg1VpvYYQNVdwZ1RU8NOmFLrrPH4AMYixF9AadoZjcvoCs/cWWbzyx37szVGynUZOaU4sIusrwU08+OuoEiPdR0ZV/S0TBZWUoYffGvY1ykcXG5VO8kmvpUOyy9MtxZzkP3FrfDYMUx6fWfYnErDrtt2/xnbs0NtInKWrdL90f0kO05HolTvbD0L5cvGfuL7ygBAAA=)
+-   [Open in MicroCode](/microcode/#H4sIAKCjLGUAA/NKywwOSC/x8vU2SnKt8i9xrczNcQx0dQJiRwAo4T5FHAAAAA==)
 
 ![when press button A, increment variable X](../images/generated/sample_counter_page_1_rule_1.png){:class="rule"}
 

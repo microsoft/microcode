@@ -8,7 +8,7 @@ description: A counter for button A and button B
 
 This program counts how many times you press `button A` or `button B`.
 
--   [Open in MicroCode](/microcode/#H4sIANizQWMAA6VRy27CMBD8pQBNqxxxFIW1cKJgQx63QopwakqlgGLz9XXsVBAjTpxWs5qdndn9UrjbHYOfKt4cofn9ADHnqTjrCkMlurZ8fY14QTueUXjPFUaE43oZ4kTPbOHbk2l+OOwWyAcxCZYLzVeGxwg1PGR5kSThaE6RSOsWXqt9MNMTRIHwWs01ezMmkMWlwauGGB/M+khIgxBwjVnp6vjZy7tt5hU3u+LEmbdZz8GgQfv+nZYca8HYNxOnKpftVuF6T+XzO7O5mzd8uLH9xX9OP7M4trj0rA/P6DMGXcahx1NXJ11bjy/sHjI/+ZX+R591vxk0+rvOnPvNJjdOiKdVga+feXCB5sTrBi6Ev8mE4uAPhFD/6bgCAAA=)
+-   [Open in MicroCode](/microcode/#H4sIAKCjLGUAA/NKywwOSM8vKHDMryoKLPHy9TZKcq3yL3E2yM/PKXf19k4M9fY1M/EJznIvza0IrCpKL/Hy9op0cgx0dXJ0tLUFAMNwwdxAAAAA)
 
 Page 1 is used to track `A` and page `2` for `B`. This is a more advanced version of the [counter sample](./counter).
 

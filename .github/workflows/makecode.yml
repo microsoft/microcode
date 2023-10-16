@@ -45,3 +45,4 @@ jobs:
                   makecode -c mkc-keystudiominismartrobot.json
                   makecode -c mkc-dfrobotmaqueen.json
                   makecode -c mkc-dfrobotmaqueenplusv2.json
+                  makecode -c mkc-kittenbotminilfr.json
