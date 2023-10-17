@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.5.4","target":"arcade","targetVersion":"1.11.20"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.5.6","target":"arcade","targetVersion":"1.11.20"}
 // total=2486363 new=95.00% cached=0.00% other=5.00%
 (function (ectx) {
 'use strict';
@@ -1458,7 +1458,7 @@ switch (step) {
     globals.OP_PROPS___4107 = ("  \u0003``\u0000\u0002\u0001\u0000\u0000\u0000@AAAAAAAAA\u0001\u0001AABBBBBBBBBBBBBBBBBBB \u0000\u0001\u0000\u0000``!\u0002\u0001\u0001A@A@@@\u0011\u0011\u0011\u0013\u0012\u001423\u0011\u0012\u001523\u001101\u001111\u00141\u0011\u0010\u0011\u00112\u0013\u0013`BA\u0014");
     globals.debugOut___4312 = (false);
     globals._binFloatLits___4384 = (_hex7293);
-    globals.VERSION___4386 = ("v2.5.4");
+    globals.VERSION___4386 = ("v2.5.6");
     globals.BACK_BUTTON_ERROR_KIND___4400 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4401 = ("forward_button");
     globals.microcode_Options_fps___4449 = (false);
