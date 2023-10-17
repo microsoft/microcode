@@ -69,6 +69,7 @@ These sample work with a [2 wheel robot controlled by a micro:bit](./robot).
 
 -   [![robot avoid wall](./images/generated/icon_S13.png){:class="icon"} robot avoid wall](./samples/robot-avoid-wall)
 -   [robot shake](./samples/robot-shake)
+-   [![robot line follow](./images/generated/icon_S14.png){:class="icon"} robot line follow](./samples/robot-line-follow)
 
 ## Jacdac modules {#jacdac}
 
