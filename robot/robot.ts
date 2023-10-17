@@ -27,7 +27,7 @@ namespace microcode.robots {
         /**
          * Maximum speed while following a line with line assist
          */
-        maxLineSpeed = 50 //40
+        maxLineSpeed = 6
         /**
          * Minimum power to get the motors moving.
          */
@@ -39,11 +39,11 @@ namespace microcode.robots {
         /**
          * Threshold to saturate a speed to 0. Avoids small speed jitter near stop state.
          */
-        stopThreshold = 2
+        stopThreshold = 1
         /**
          * Threshold to converge to the target speed, and avoid exponential convergence.
          */
-        targetSpeedThreshold = 4
+        targetSpeedThreshold = 3
         /**
          * Exponential moving average factor for speed transitions, accelerating
          */

@@ -506,9 +506,7 @@ namespace microcode {
             if (this.inRadioMessageId !== undefined) radio.sendNumber(cmd)
         }
 
-        private decodeRobotCompactCommand(msg: number) {
-            if (this.inRadioMessageId === undefined) return
-
+        decodeRobotCompactCommand(msg: microcode.robots.RobotCompactCommand) {
             switch (msg) {
                 case microcode.robots.RobotCompactCommand.MotorStop:
                 case microcode.robots.RobotCompactCommand.MotorTurnLeft:

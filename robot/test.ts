@@ -1,29 +1,12 @@
-//microcode.elecfreaksCuteBot.start()
-microcode.yahboomTinyBit.start()
+microcode.elecfreaksCuteBot.start()
+//microcode.yahboomTinyBit.start()
 //microcode.elecfreaksCuteBotPro.start()
 //microcode.keyStudioMiniSmartRobot.start()
 //microcode.setMotorDrift(6)
 //microcode.dfRobotMaqueen.start()
 //microcode.dfRobotMaqueenPlusV2.start()
 
-microcode.robots.calibrateSpeed0()
-
-/*
-basic.forever(() => {
-    const lines = r.currentLineState
-    if (lines === RobotLineState.Left) {
-        r.motorRun(-80, 100)
-    } else if (lines === RobotLineState.Right) {
-        r.motorRun(80, 100)
-    } else if (lines === RobotLineState.Both) {
-        r.motorRun(0, 70)
-    } else if (lines === RobotLineState.LostLeft) {
-        r.motorRun(200, 70)
-    } else if (lines === RobotLineState.LostRight) {
-        r.motorRun(-200, 70)
-    }
-})
-*/
+microcode.robots.calibrateLineFollowing()
 
 /*
 // calibrate

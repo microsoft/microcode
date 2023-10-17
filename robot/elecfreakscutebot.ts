@@ -19,7 +19,7 @@ namespace microcode {
                 lineHigh: false,
             }
             this.musicVolume = 156
-            this.maxLineSpeed = 40 // 28
+            this.maxLineSpeed = 6
             this.speed0 = 18
         }
 
