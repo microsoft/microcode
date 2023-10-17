@@ -27,6 +27,9 @@ namespace microcode.robots {
         run()
     }
 
+    /**
+     * Implements a Arcade like line following algorithm
+     */
     export function calibrateLineFollowing() {
         const r = microcode.robot
         r.robot.stopThreshold = 0
@@ -49,23 +52,29 @@ namespace microcode.robots {
         basic.showString("LINE SPEED", 60)
         run()
 
-        microcode.onLineDetected(RobotLineState.Both, () =>
+        microcode.onLineDetected(RobotLineState.Both, () => {
+            pause(40)
             robot.decodeRobotCompactCommand(RobotCompactCommand.MotorRunForward)
-        )
-        microcode.onLineDetected(RobotLineState.Left, () =>
+        })
+        microcode.onLineDetected(RobotLineState.Left, () => {
+            pause(40)
             robot.decodeRobotCompactCommand(RobotCompactCommand.MotorTurnLeft)
-        )
-        microcode.onLineDetected(RobotLineState.Right, () =>
+        })
+        microcode.onLineDetected(RobotLineState.Right, () => {
+            pause(40)
             robot.decodeRobotCompactCommand(RobotCompactCommand.MotorTurnRight)
-        )
-        microcode.onLineDetected(RobotLineState.LostLeft, () =>
+        })
+        microcode.onLineDetected(RobotLineState.LostLeft, () => {
+            pause(40)
             robot.decodeRobotCompactCommand(RobotCompactCommand.MotorSpinLeft)
-        )
-        microcode.onLineDetected(RobotLineState.LostRight, () =>
+        })
+        microcode.onLineDetected(RobotLineState.LostRight, () => {
+            pause(40)
             robot.decodeRobotCompactCommand(RobotCompactCommand.MotorSpinRight)
-        )
-        microcode.onLineDetected(RobotLineState.None, () =>
+        })
+        microcode.onLineDetected(RobotLineState.None, () => {
+            pause(40)
             robot.decodeRobotCompactCommand(RobotCompactCommand.MotorStop)
-        )
+        })
     }
 }
