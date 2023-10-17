@@ -24,8 +24,9 @@ The microcode editor and the robot micro:bit communicate using the radio. These 
 
 On the robot micro:bit,
 
--   Reset the robot micro:bit and note the radio group. The group is based on the serial number of the micro:bit and will remain the same; (unfortunately it might also conflict with another micro:bit)
--   If you need to change the group number, press button A or B to select another radio group. You will have to do this every time you reset the robot micro:bit
+-   Reset the robot micro:bit and note the radio group,
+-   If you need to change the group number, press button A or B to select another radio group. The radio group
+    is stored in the flash of the micro:bit and will be used every time the robot is reset. (However, it will be erased if you download another .hex file).
 
 On the microcode side,
 
@@ -41,16 +42,8 @@ On the robot micro:bit,
 
 -   Press A+B to switch to the `DRIFT` configuration mode.
 -   Let the robot go forward until it goes as straight as possible by pressing A and B to increase or modify the drift.
--   Once you have found the perfect drift value, make sure to write it down.
-
-You can also create new .hex file that contains the adjusted drift:
-
--   open the [MakeCode for micro:bit editor](https://makecode.microbit.org/)
--   create a new project
--   add the **microcode robot extension** at https://github.com/microsoft/microcode/robot .
--   in `on start`, drag the bloc to select your robot type
--   drag the block to configure the drift value, voila!
--   drag the block to configure the radio group
+-   The drift value will be stored in the flash of the micro:bit and will be used every time the robot is reset.
+    (However it will be erased if you download another .hex file, so you might want to write it down somewhere).
 
 ## Tiles
 
