@@ -312,21 +312,14 @@ namespace microcode {
             const lineState = this.lineState()
             if (this.showConfiguration || !this.hud) return
 
-            // render left/right lines
             const left =
                 (lineState & RobotLineState.Left) === RobotLineState.Left
-            const lostLeft =
-                (lineState & RobotLineState.LostLeft) ===
-                RobotLineState.LostLeft
             const right =
                 (lineState & RobotLineState.Right) === RobotLineState.Right
-            const lostRight =
-                (lineState & RobotLineState.LostRight) ===
-                RobotLineState.LostRight
             for (let i = 1; i < 5; ++i) {
-                if (left || (lostLeft && i > 2)) led.plot(4, i)
+                if (left) led.plot(4, i)
                 else led.unplot(4, i)
-                if (right || (lostRight && i > 2)) led.plot(0, i)
+                if (right) led.plot(0, i)
                 else led.unplot(0, i)
             }
             if (this.inRadioMessageId % 2) led.plot(4, 0)

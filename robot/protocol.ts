@@ -10,7 +10,7 @@ const enum RobotLineState {
     //% block="lost left"
     LostLeft = None | 0x04,
     //% block="lost right"
-    LostRight = None | 0x0a,
+    LostRight = None | 0x08,
 }
 
 namespace microcode.robots {
