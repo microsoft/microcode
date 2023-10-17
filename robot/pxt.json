@@ -14,24 +14,20 @@
         "keystudiominismartrobot.ts",
         "robotdriver.ts",
         "yahboomtinybit.ts",
-        "cutebot.ts",
+        "elecfreakscutebot.ts",
         "blocks.ts",
-        "cutebotpro.ts",
+        "elecfreakscutebotpro.ts",
         "dfrobotmaqueen.ts",
         "dfrobotmaqueenplusv2.ts",
         "kittenbotminilfr.ts",
         "storage.cpp",
         "storage.ts"
     ],
-    "testFiles": [
-        "test.ts"
-    ],
+    "testFiles": ["test.ts"],
     "targetVersions": {
         "target": "6.0.19",
         "targetId": "microbit"
     },
-    "supportedTargets": [
-        "microbit"
-    ],
+    "supportedTargets": ["microbit"],
     "preferredEditor": "tsprj"
 }
