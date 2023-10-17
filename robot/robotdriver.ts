@@ -19,7 +19,7 @@ namespace microcode {
         private lastSonarValue = 0
 
         private showConfiguration: boolean = false
-        private configDrift = false
+        private configDrift: boolean = undefined
         private currentArmAperture = -1
         private currentSpeed: number = 0
         private targetSpeed: number = 0
@@ -53,15 +53,19 @@ namespace microcode {
             input.onButtonPressed(Button.A, () => {
                 if (this.showConfiguration) return
                 this.playTone(440, 500)
-                if (this.configDrift) this.setRunDrift(this.runDrift - 1)
-                else this.previousGroup()
+                if (this.configDrift !== undefined) {
+                    if (this.configDrift) this.setRunDrift(this.runDrift - 1)
+                    else this.previousGroup()
+                }
                 this.showConfigurationState()
             })
             input.onButtonPressed(Button.B, () => {
                 if (this.showConfiguration) return
                 this.playTone(640, 500)
-                if (this.configDrift) this.setRunDrift(this.runDrift + 1)
-                else this.nextGroup()
+                if (this.configDrift !== undefined) {
+                    if (this.configDrift) this.setRunDrift(this.runDrift + 1)
+                    else this.nextGroup()
+                }
                 this.showConfigurationState()
             })
             input.onButtonPressed(Button.AB, () => {
@@ -74,13 +78,19 @@ namespace microcode {
 
         private showConfigurationState(showTitle?: boolean) {
             this.showConfiguration = true
-            const title = this.configDrift ? "DRIFT" : "RADIO"
-            const value = this.configDrift ? this.runDrift : this.radioGroup
+
             led.stopAnimation()
-            if (showTitle) {
-                basic.clearScreen()
-                basic.showString(title + " " + value, 60)
-            } else basic.showNumber(value, 60)
+            basic.clearScreen()
+            if (this.configDrift === undefined) {
+                basic.showString(
+                    `RADIO ${this.radioGroup} DRIFT ${this.runDrift}`,
+                    64
+                )
+            } else {
+                const title = this.configDrift ? "DRIFT" : "RADIO"
+                const value = this.configDrift ? this.runDrift : this.radioGroup
+                basic.showString(title + " " + value, 64)
+            }
             this.showConfiguration = false
         }
 
