@@ -547,7 +547,11 @@ namespace microcode {
         },
     }
 
-    export class IconEditor extends ModifierDefn {
+    export class ModifierEditor extends ModifierDefn {
+        fieldEditor: FieldEditor
+    }
+
+    export class IconEditor extends ModifierEditor {
         field: Image
         firstInstance: boolean
         constructor(field: Image = null) {
@@ -668,7 +672,7 @@ namespace microcode {
         },
     }
 
-    export class MelodyEditor extends ModifierDefn {
+    export class MelodyEditor extends ModifierEditor {
         field: Melody
         firstInstance: boolean
         constructor(field: Melody = null) {

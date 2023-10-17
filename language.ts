@@ -70,7 +70,6 @@ namespace microcode {
 
         priority: number
         constraints: Constraints
-        fieldEditor: FieldEditor
         jdKind: JdKind
         jdParam: any
         jdParam2: number
