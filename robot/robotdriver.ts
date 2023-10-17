@@ -47,8 +47,6 @@ namespace microcode {
 
         constructor(robot: robots.Robot) {
             this.robot = robot
-
-            this.runDrift = microcode.__readCalibration()
         }
 
         private configureButtons() {
@@ -99,7 +97,10 @@ namespace microcode {
             microcode.robot = this
 
             // configuration of common hardware
-            this.radioGroup = radioGroupFromDeviceSerialNumber()
+            this.radioGroup =
+                microcode.__readCalibration(0) ||
+                radioGroupFromDeviceSerialNumber()
+            this.runDrift = microcode.__readCalibration(1)
             this.leds = this.robot.leds
             if (this.leds) this.ledsBuffer = Buffer.create(this.leds.count * 3)
             this.lineDetectors = this.robot.lineDetectors
@@ -442,7 +443,7 @@ namespace microcode {
         setRunDrift(runDrift: number) {
             if (!isNaN(runDrift)) {
                 this.runDrift = runDrift >> 0
-                __writeCalibration(runDrift)
+                __writeCalibration(this.radioGroup, this.runDrift)
                 led.stopAnimation()
             }
         }
@@ -459,6 +460,7 @@ namespace microcode {
             if (newGroup < 0) newGroup += MAX_GROUPS
             this.radioGroup = newGroup % MAX_GROUPS
             radio.setGroup(this.radioGroup)
+            __writeCalibration(this.radioGroup, this.runDrift)
             led.stopAnimation()
             this.startRadio()
         }
