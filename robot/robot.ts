@@ -29,9 +29,9 @@ namespace microcode.robots {
          */
         maxLineSpeed = 50 //40
         /**
-         * Adjusted speed 0. Default is 20 to avoid deadzone.
+         * Minimum power to get the motors moving.
          */
-        speed0 = 20
+        speed0 = 0
         /**
          * Adjusted speed 100
          */

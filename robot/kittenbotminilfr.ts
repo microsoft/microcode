@@ -16,6 +16,7 @@ namespace microcode {
         constructor() {
             super()
 
+            this.speed0 = 20
             this.speed100 = 255
             this.commands[microcode.robots.RobotCompactCommand.MotorTurnLeft] =
                 {

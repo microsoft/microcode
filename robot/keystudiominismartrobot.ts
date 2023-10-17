@@ -101,6 +101,7 @@ namespace microcode {
                 right: DigitalPin.P14,
                 lineHigh: true,
             }
+            this.speed0 = 512
             this.speed100 = 4095
             this.init_PCA9685()
         }

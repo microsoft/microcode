@@ -18,6 +18,7 @@ namespace microcode {
     class DFRobotMaqueenRobot extends robots.Robot {
         constructor() {
             super()
+            this.speed0 = 5
             this.lineDetectors = {
                 left: DigitalPin.P13,
                 right: DigitalPin.P14,

@@ -119,6 +119,7 @@ namespace microcode {
                 trig: DigitalPin.P8,
                 echo: DigitalPin.P12,
             }
+            this.speed0 = 14
             this.musicVolume = 168
             this.maxLineSpeed = 44 // 30
         }

@@ -21,6 +21,7 @@ namespace microcode {
     class DFRobotMaqueenPlusV2Robot extends robots.Robot {
         constructor() {
             super()
+            this.speed0 = 5
             this.leds = {
                 pin: DigitalPin.P15,
                 count: 4,
