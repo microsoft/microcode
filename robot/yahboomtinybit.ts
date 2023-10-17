@@ -4,16 +4,6 @@ namespace microcode {
     const MOTOR = 0x02
     const RGB = 0x01
 
-    function setPwmRGB(red: number, green: number, blue: number): void {
-        let buf = pins.createBuffer(4)
-        buf[0] = RGB
-        buf[1] = red
-        buf[2] = green
-        buf[3] = blue
-
-        pins.i2cWriteBuffer(PWM_ADD, buf)
-    }
-
     class YahboomTinybitRobot extends robots.Robot {
         constructor() {
             super()
@@ -37,7 +27,7 @@ namespace microcode {
         ): void {
             if (mode < 0 || mode > 6) return
 
-            let buf = pins.createBuffer(5)
+            const buf = pins.createBuffer(5)
             buf[0] = MOTOR
             switch (mode) {
                 case 0:
@@ -91,7 +81,7 @@ namespace microcode {
             }
             if (this.car_flag_new != this.car_flag_old) {
                 //上一次状态是正转，这次是反转
-                let bufff = pins.createBuffer(5)
+                const bufff = pins.createBuffer(5)
                 bufff[0] = MOTOR
                 bufff[1] = 0
                 bufff[2] = 0
@@ -133,7 +123,6 @@ namespace microcode {
         }
 
         motorRun(left: number, right: number): void {
-            const speed = (left + right) >> 1
             const spin = Math.sign(left) != Math.sign(right)
             if (left === 0 && right === 0) this.Car_stop()
             else if (left >= 0 && right >= 0) this.Car_run(left, right)
@@ -148,7 +137,13 @@ namespace microcode {
         }
 
         headlightsSetColor(red: number, green: number, blue: number) {
-            setPwmRGB(red, green, blue)
+            const buf = pins.createBuffer(4)
+            buf[0] = RGB
+            buf[1] = red
+            buf[2] = green
+            buf[3] = blue
+
+            pins.i2cWriteBuffer(PWM_ADD, buf)
         }
     }
 

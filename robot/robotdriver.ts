@@ -252,11 +252,35 @@ namespace microcode {
                 left -= drift
                 right += drift
 
-                // clamp again
-                left = Math.clamp(-100, 100, Math.round(left))
-                right = Math.clamp(-100, 100, Math.round(right))
+                // clamp, trim, round
+                left = this.trimSpeed(left)
+                right = this.trimSpeed(right)
+
                 this.setMotorState(left, right)
             }
+        }
+
+        private trimSpeed(speed: number) {
+            speed = Math.round(Math.clamp(-100, 100, speed))
+            if (speed === 0) return 0
+            else if (speed > 0)
+                speed = Math.map(
+                    speed,
+                    0,
+                    100,
+                    this.robot.speed0,
+                    this.robot.speed100
+                )
+            else
+                speed = Math.map(
+                    speed,
+                    0,
+                    -100,
+                    -this.robot.speed0,
+                    -this.robot.speed100
+                )
+            speed = Math.round(speed)
+            return speed
         }
 
         private setMotorState(left: number, right: number) {

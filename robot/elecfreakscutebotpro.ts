@@ -15,12 +15,7 @@ namespace microcode {
         const i2cBuffer = pins.createBuffer(7)
 
         if (speedL == 0) speedL = 200
-        else if (speedL > 0) Math.map(speedL, 0, 100, 20, 100)
-        else Math.map(speedL, -100, 0, -100, -20)
-
         if (speedR == 0) speedR = 200
-        else if (speedR > 0) Math.map(speedR, 0, 100, 20, 100)
-        else Math.map(speedR, -100, 0, -100, -20)
 
         if (speedL > 0) {
             i2cBuffer[0] = 0x99

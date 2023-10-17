@@ -67,7 +67,7 @@ namespace microcode {
     }
 
     function Motor(M: MotorObs, MD: MotorDir, speed: number) {
-        const speed_value = Math.map(speed, 0, 100, 0, 4095)
+        const speed_value = speed // Math.map(speed, 0, 100, 0, 4095)
         if (M == 0 && MD == 0) {
             setPwm(1, 0, speed_value) //control speed : 0---4095
             setPwm(0, 0, 0)
@@ -101,6 +101,7 @@ namespace microcode {
                 right: DigitalPin.P14,
                 lineHigh: true,
             }
+            this.speed100 = 4095
             this.init_PCA9685()
         }
 

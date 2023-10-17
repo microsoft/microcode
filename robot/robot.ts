@@ -25,6 +25,14 @@ namespace microcode.robots {
          */
         maxLineSpeed = 40
         /**
+         * Adjusted speed 0. Default is 20 to avoid deadzone.
+         */
+        speed0 = 20
+        /**
+         * Adjusted speed 100
+         */
+        speed100 = 100
+        /**
          * Threshold to saturate a speed to 0. Avoids small speed jitter near stop state.
          */
         stopThreshold = 2

@@ -5,16 +5,6 @@ namespace microcode {
         serial.writeLine(cmd)
     }
 
-    function speedTrim(speed: number) {
-        // motor deadzone fix and map to [-255, 255]
-        if (speed > 0) {
-            return Math.floor(Math.map(speed, 0, 100, 20, 255))
-        } else if (speed < 0) {
-            return Math.floor(Math.map(speed, -100, 0, -255, -20))
-        }
-        return 0
-    }
-
     class KittenbotMiniLFRRobot extends robots.Robot {
         //private mode: MiniLFRMode = MiniLFRMode.IDLE
         private sensorUpdated: number = 0
@@ -26,19 +16,18 @@ namespace microcode {
         constructor() {
             super()
 
-            this.commands[
-                microcode.robots.RobotCompactCommand.MotorTurnLeft
-            ] = {
-                turnRatio: -50,
-                speed: 40,
-            }
+            this.speed100 = 255
+            this.commands[microcode.robots.RobotCompactCommand.MotorTurnLeft] =
+                {
+                    turnRatio: -50,
+                    speed: 40,
+                }
 
-            this.commands[
-                microcode.robots.RobotCompactCommand.MotorTurnRight
-            ] = {
-                turnRatio: 50,
-                speed: 40,
-            }
+            this.commands[microcode.robots.RobotCompactCommand.MotorTurnRight] =
+                {
+                    turnRatio: 50,
+                    speed: 40,
+                }
 
             serial.redirect(SerialPin.P0, SerialPin.P1, 115200)
             serial.writeString("\n\n")
@@ -83,9 +72,7 @@ namespace microcode {
         }
 
         motorRun(left: number, right: number): void {
-            let spdL = speedTrim(left)
-            let spdR = speedTrim(right)
-            writeCmd(`M200 ${spdL} ${spdR}`)
+            writeCmd(`M200 ${left} ${right}`)
         }
 
         playTone(frequency: number, duration: number) {
