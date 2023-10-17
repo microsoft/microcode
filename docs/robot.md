@@ -12,7 +12,7 @@ The platform is based on a robust robot controller, written using MakeCode, that
 
 MicroCode provides a simplified programming experience for robots that are equipped with two motors, sonar and line sensors. The user's code can be updated very quickly using the Arcade shield.
 
-![robot line following](./images/generated/sample_robot_line_follow.png){:class="sample"}
+![robot tiles](./images/generated/sample_robot_showcase.png){:class="sample"}
 
 ## Preparing the robot micro:bit
 
