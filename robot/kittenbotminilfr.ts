@@ -5,18 +5,17 @@ namespace microcode {
         serial.writeLine(cmd)
     }
 
-    function speedTrim(speed: number) { 
+    function speedTrim(speed: number) {
         // motor deadzone fix and map to [-255, 255]
         if (speed > 0) {
             return Math.floor(Math.map(speed, 0, 100, 20, 255))
-        } else if (speed < 0) { 
+        } else if (speed < 0) {
             return Math.floor(Math.map(speed, -100, 0, -255, -20))
         }
         return 0
     }
 
     class KittenbotMiniLFRRobot extends robots.Robot {
-
         //private mode: MiniLFRMode = MiniLFRMode.IDLE
         private sensorUpdated: number = 0
         private ultrasonicUpdated: number = 0
@@ -27,14 +26,18 @@ namespace microcode {
         constructor() {
             super()
 
-            this.commands[microcode.robots.RobotCompactCommand.MotorTurnLeft] = {
+            this.commands[
+                microcode.robots.RobotCompactCommand.MotorTurnLeft
+            ] = {
                 turnRatio: -50,
-                speed: 40
+                speed: 40,
             }
 
-            this.commands[microcode.robots.RobotCompactCommand.MotorTurnRight] = {
+            this.commands[
+                microcode.robots.RobotCompactCommand.MotorTurnRight
+            ] = {
                 turnRatio: 50,
-                speed: 40
+                speed: 40,
             }
 
             serial.redirect(SerialPin.P0, SerialPin.P1, 115200)
@@ -91,7 +94,9 @@ namespace microcode {
 
         headlightsSetColor(red: number, green: number, blue: number) {
             // set rgb to both ultrasonic and hover led
-            writeCmd(`M16 0 ${red} ${green} ${blue}\nM13 0 ${red} ${green} ${blue}`)
+            writeCmd(
+                `M16 0 ${red} ${green} ${blue}\nM13 0 ${red} ${green} ${blue}`
+            )
         }
 
         ultrasonicDistance(): number {
@@ -100,18 +105,13 @@ namespace microcode {
 
         lineState(): RobotLineState {
             // sensor returns from 0 to 1023 on black to white, a normal white surface reflects 500
-            if (this.sensorValue[0] < 200)
-                return RobotLineState.LostLeft
-            else if (this.sensorValue[4] < 200)
-                return RobotLineState.LostRight
-            else if (this.sensorValue[1] < 200)
-                return RobotLineState.Left
-            else if (this.sensorValue[3] < 200)
-                return RobotLineState.Right
-            else if (this.sensorValue[2] < 200)
-                return RobotLineState.Both // center
-            else
-                return RobotLineState.None
+            if (this.sensorValue[0] < 200) return RobotLineState.LostLeft
+            else if (this.sensorValue[4] < 200) return RobotLineState.LostRight
+            else if (this.sensorValue[1] < 200) return RobotLineState.Left
+            else if (this.sensorValue[3] < 200) return RobotLineState.Right
+            else if (this.sensorValue[2] < 200) return RobotLineState.Both
+            // center
+            else return RobotLineState.None
         }
     }
 

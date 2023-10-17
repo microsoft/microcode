@@ -7,16 +7,16 @@ namespace microcode {
             super()
             this.leds = {
                 pin: DigitalPin.P15,
-                count: 2
-            };
+                count: 2,
+            }
             this.sonar = {
                 trig: DigitalPin.P8,
-                echo: DigitalPin.P12
+                echo: DigitalPin.P12,
             }
             this.lineDetectors = {
                 left: DigitalPin.P13,
                 right: DigitalPin.P14,
-                lineHigh: false
+                lineHigh: false,
             }
             this.musicVolume = 156
             this.maxLineSpeed = 28

@@ -1,7 +1,7 @@
 namespace microcode.robots {
-
     export interface RobotLEDs {
-        pin: DigitalPin; count: number;
+        pin: DigitalPin
+        count: number
     }
 
     export interface Sonar {
@@ -33,56 +33,66 @@ namespace microcode.robots {
         /**
          * A map from microcode command to speed, turnratio values
          */
-        readonly commands: { [index: number]: { speed?: number; turnRatio?: number } } = {}
+        readonly commands: {
+            [index: number]: { speed?: number; turnRatio?: number }
+        } = {}
 
         constructor() {
-            this.commands[microcode.robots.RobotCompactCommand.MotorRunForward] = {
-                speed: 70
+            this.commands[
+                microcode.robots.RobotCompactCommand.MotorRunForward
+            ] = {
+                speed: 70,
             }
-            this.commands[microcode.robots.RobotCompactCommand.MotorRunForwardFast] = {
-                speed: 100
+            this.commands[
+                microcode.robots.RobotCompactCommand.MotorRunForwardFast
+            ] = {
+                speed: 100,
             }
-            this.commands[microcode.robots.RobotCompactCommand.MotorRunBackward] = {
-                speed: -60
+            this.commands[
+                microcode.robots.RobotCompactCommand.MotorRunBackward
+            ] = {
+                speed: -60,
             }
-            this.commands[microcode.robots.RobotCompactCommand.MotorTurnLeft] = {
+            this.commands[
+                microcode.robots.RobotCompactCommand.MotorTurnLeft
+            ] = {
                 turnRatio: -50,
                 speed: 70,
             }
-            this.commands[microcode.robots.RobotCompactCommand.MotorTurnRight] = {
+            this.commands[
+                microcode.robots.RobotCompactCommand.MotorTurnRight
+            ] = {
                 turnRatio: 50,
-                speed: 70
+                speed: 70,
             }
-            this.commands[microcode.robots.RobotCompactCommand.MotorSpinLeft] = {
+            this.commands[
+                microcode.robots.RobotCompactCommand.MotorSpinLeft
+            ] = {
                 turnRatio: -200,
-                speed: 60
+                speed: 60,
             }
-            this.commands[microcode.robots.RobotCompactCommand.MotorSpinRight] = {
+            this.commands[
+                microcode.robots.RobotCompactCommand.MotorSpinRight
+            ] = {
                 turnRatio: 200,
-                speed: 60
+                speed: 60,
             }
         }
 
         /*
         Makes the robot move at % `speed` ([-100, 100]). Negative goes backgward, 0 stops.
         */
-        motorRun(left: number, right: number): void {
-
-        }
+        motorRun(left: number, right: number): void {}
 
         /**
          * Optional: Open robotic arm if present, in %
          */
-        armOpen(aperture: number) {
-
-        }
+        armOpen(aperture: number) {}
 
         /**
          * Optional: sets the color on the LED array as a 24bit RGB color
          */
-        headlightsSetColor(red: number, green: number, blue: number): void {
-
-        }
+        headlightsSetColor(red: number, green: number, blue: number): void {}
 
         /**
          * Optional: reads the sonar, in cm.
