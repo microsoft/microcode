@@ -20,7 +20,6 @@
         "assets.ts",
         "scene.ts",
         "language.ts",
-        "json.ts",
         "tiles.ts",
         "app.ts",
         "sprite.ts",
@@ -57,9 +56,7 @@
         "target": "1.10.10",
         "targetId": "arcade"
     },
-    "supportedTargets": [
-        "arcade"
-    ],
+    "supportedTargets": ["arcade"],
     "preferredEditor": "tsprj",
     "disableTargetTemplateFiles": true,
     "binaryonly": true
