@@ -32,7 +32,6 @@ namespace microcode {
          * Gets the latest line sensor state
          */
         currentLineState: RobotLineState = RobotLineState.None
-        private previousLineState = RobotLineState.None
         private currentLineStateCounter = 0
 
         private stopToneMillis: number = 0
@@ -202,7 +201,7 @@ namespace microcode {
                     if (
                         this.currentLineState || // left, right, front
                         this.currentLineStateCounter <
-                            this.robot.lineAssistLostThreshold
+                        this.robot.lineAssistLostThreshold
                     )
                         // recently lost line
                         this.currentSpeed = Math.min(
@@ -407,12 +406,12 @@ namespace microcode {
             if (this.lineDetectors) {
                 const left =
                     pins.digitalReadPin(this.lineDetectors.left) > 0 ===
-                    this.lineDetectors.lineHigh
+                        this.lineDetectors.lineHigh
                         ? 1
                         : 0
                 const right =
                     pins.digitalReadPin(this.lineDetectors.right) > 0 ===
-                    this.lineDetectors.lineHigh
+                        this.lineDetectors.lineHigh
                         ? 1
                         : 0
                 return (left << 0) | (right << 1)
@@ -422,8 +421,7 @@ namespace microcode {
         private lineState(): RobotLineState {
             const ls = this.readLineState()
             if (ls !== this.currentLineState) {
-                const prev = this.previousLineState
-                this.previousLineState = this.currentLineState
+                const prev = this.currentLineState
                 this.currentLineState = ls
                 this.currentLineStateCounter = 0
 
@@ -442,7 +440,7 @@ namespace microcode {
                     msg =
                         microcode.robots.RobotCompactCommand.LineState |
                         this.currentLineState
-
+                console.log(`msg: ${msg}`)
                 this.sendCompactCommand(msg)
                 microcode.robots.raiseEvent(msg)
             }
