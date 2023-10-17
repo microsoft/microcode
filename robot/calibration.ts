@@ -23,14 +23,14 @@ namespace microcode.robots {
             r.robot.speed0++
             run()
         })
-        basic.showString("speed0 ", 60)
+        basic.showString("SPEED0 ", 60)
         run()
     }
 
     export function calibrateLineFollowing() {
         const r = microcode.robot
         r.robot.stopThreshold = 0
-        //r.hud = false
+        r.hud = false
 
         const run = () => {
             led.stopAnimation()
@@ -45,6 +45,9 @@ namespace microcode.robots {
             r.robot.maxLineSpeed++
             run()
         })
+
+        basic.showString("LINE SPEED", 60)
+        run()
 
         microcode.onLineDetected(RobotLineState.Both, () =>
             robot.decodeRobotCompactCommand(RobotCompactCommand.MotorRunForward)
