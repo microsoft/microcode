@@ -66,19 +66,4 @@ This is a quick check list to make sure you have the best experience with the mi
 
 ## Add your robot {#contribute}
 
-The source of the robot firmware are at [https://github.com/microsoft/microcode/tree/main/robot](https://github.com/microsoft/microcode/tree/main/robot). We accept pull request to add new robots.
-
-### Hardware requirements
-
-The firmware is designed for popular rover robots found in the micro:bit ecosystem
-(and more can be added):
-
--   2 motors that can be forward, backward, left, right turns. Precise detection of distance is **not** needed.
--   a line sensor that can detect black and white lines
--   a distance sensor, typically an ultrasonic sensor
-
-The following features are found often but are optional:
-
--   RGB LEDs
--   Buzzer
--   Programmable LED strip
+We accept pull requests to add new robots. See the [contributing](./robots-supported.md) page for more details.
