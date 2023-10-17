@@ -69,8 +69,10 @@ namespace microcode.robots {
                 robot.decodeRobotCompactCommand(
                     RobotCompactCommand.MotorSpinRight
                 )
+            } else {
+                robot.decodeRobotCompactCommand(RobotCompactCommand.MotorStop)
             }
-            basic.pause(50)
+            basic.pause(100)
         })
     }
 }

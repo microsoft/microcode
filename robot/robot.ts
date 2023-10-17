@@ -108,12 +108,12 @@ namespace microcode.robots {
             }
             this.commands[microcode.robots.RobotCompactCommand.MotorTurnLeft] =
                 {
-                    turnRatio: -50,
+                    turnRatio: -85,
                     speed: 70,
                 }
             this.commands[microcode.robots.RobotCompactCommand.MotorTurnRight] =
                 {
-                    turnRatio: 50,
+                    turnRatio: 85,
                     speed: 70,
                 }
             this.commands[microcode.robots.RobotCompactCommand.MotorSpinLeft] =
