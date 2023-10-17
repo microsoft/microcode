@@ -15,6 +15,10 @@ namespace microcode.robots {
         lineHigh: boolean
     }
 
+    /**
+     * A base class for operating a 2 wheeled robot with distance,
+     * line sensors and lights.
+     */
     export class Robot {
         /**
          * Default volume used by the robot;
@@ -125,7 +129,10 @@ namespace microcode.robots {
         }
 
         /*
-        Makes the robot move at % `speed` ([-100, 100]). Negative goes backgward, 0 stops.
+            Makes the robot move. Left and right are mapped as follows:
+                0 -> 0
+                +0, 100 -> speed0, speed100
+                -100, -0 -> -speed100, -speed0
         */
         motorRun(left: number, right: number): void {}
 
