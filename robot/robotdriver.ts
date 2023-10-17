@@ -37,7 +37,7 @@ namespace microcode {
 
         private stopToneMillis: number = 0
         lineAssist = true
-        runDrift = 0
+        private runDrift = 0
 
         private leds: robots.RobotLEDs
         private ledsBuffer: Buffer
@@ -47,6 +47,8 @@ namespace microcode {
 
         constructor(robot: robots.Robot) {
             this.robot = robot
+
+            this.runDrift = microcode.__readCalibration()
         }
 
         private configureButtons() {
@@ -93,8 +95,7 @@ namespace microcode {
         //% group="Configuration"
         start() {
             if (microcode.robot === this) return // already started
-            if (microcode.robot)
-                throw "Another robot has already been started."
+            if (microcode.robot) throw "Another robot has already been started."
             microcode.robot = this
 
             // configuration of common hardware
@@ -187,7 +188,7 @@ namespace microcode {
                     if (
                         this.currentLineState || // left, right, front
                         this.currentLineStateCounter <
-                        this.robot.lineAssistLostThreshold
+                            this.robot.lineAssistLostThreshold
                     )
                         // recently lost line
                         this.currentSpeed = Math.min(
@@ -369,12 +370,12 @@ namespace microcode {
             if (this.lineDetectors) {
                 const left =
                     pins.digitalReadPin(this.lineDetectors.left) > 0 ===
-                        this.lineDetectors.lineHigh
+                    this.lineDetectors.lineHigh
                         ? 1
                         : 0
                 const right =
                     pins.digitalReadPin(this.lineDetectors.right) > 0 ===
-                        this.lineDetectors.lineHigh
+                    this.lineDetectors.lineHigh
                         ? 1
                         : 0
                 return (left << 0) | (right << 1)
@@ -436,6 +437,14 @@ namespace microcode {
             this.setRadioGroup(
                 this.radioGroup === MAX_GROUPS - 1 ? 1 : this.radioGroup + 1
             )
+        }
+
+        setRunDrift(runDrift: number) {
+            if (!isNaN(runDrift)) {
+                this.runDrift = runDrift >> 0
+                __writeCalibration(runDrift)
+                led.stopAnimation()
+            }
         }
 
         /**
