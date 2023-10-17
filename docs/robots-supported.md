@@ -90,3 +90,27 @@ To add a new robot to the list, prepare a pull request with:
 
 Make sure to test and tune the configuration options in the robot class for your particular
 chassis/motor/line detectors. You may want to tweak some of the constants in the robot class to optimize the behavior of the robot.
+
+### Dead zone calibration
+
+The `robot.speed0` controls the minimum speed at which the robot will move. This is useful to avoid having the robot stall at lower speed.
+
+To find this value,
+download the following program on your robot (change the robot name to match your robot), then press A/B to find the correct speed0. The calibration program is sending
+`motor run (1, 1)` to your robot and it should barely be moving.
+
+```ts
+microcode.elecfreaksCuteBot.start()
+microcode.robots.calibrateSpeed0()
+```
+
+Once you have found the value, add this configuration in the robot constructor:
+
+```ts
+class MyRobot ... {
+    constructor() {
+        ...
+        this.speed0 = ...;
+    }
+}
+```

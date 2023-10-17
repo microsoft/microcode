@@ -21,7 +21,8 @@
         "dfrobotmaqueenplusv2.ts",
         "kittenbotminilfr.ts",
         "storage.cpp",
-        "storage.ts"
+        "storage.ts",
+        "calibration.ts"
     ],
     "testFiles": ["test.ts"],
     "targetVersions": {

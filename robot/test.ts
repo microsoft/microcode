@@ -6,10 +6,9 @@ microcode.elecfreaksCuteBot.start()
 //microcode.dfRobotMaqueen.start()
 //microcode.dfRobotMaqueenPlusV2.start()
 
-const r = microcode.robot
-r.startRadio()
-//r.motorRun(-100, 80)
+microcode.robots.calibrateSpeed0()
 
+/*
 basic.forever(() => {
     const lines = r.currentLineState
     if (lines === RobotLineState.Left) {
@@ -24,6 +23,7 @@ basic.forever(() => {
         r.motorRun(-200, 70)
     }
 })
+*/
 
 /*
 // calibrate

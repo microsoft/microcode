@@ -37,6 +37,7 @@ namespace microcode {
 
         private stopToneMillis: number = 0
         lineAssist = true
+        hud = true
         private runDrift = 0
 
         private leds: robots.RobotLEDs
@@ -77,6 +78,8 @@ namespace microcode {
         }
 
         private showConfigurationState(showTitle?: boolean) {
+            if (!this.hud) return
+
             this.showConfiguration = true
 
             led.stopAnimation()
@@ -285,13 +288,13 @@ namespace microcode {
 
         private setMotorState(left: number, right: number) {
             this.robot.motorRun(left, right)
-            if (this.showConfiguration) return
+            if (this.showConfiguration || !this.hud) return
             this.showSingleMotorState(3, left)
             this.showSingleMotorState(1, right)
         }
 
         private showSingleMotorState(x: number, speed: number) {
-            if (this.showConfiguration) return
+            if (this.showConfiguration || !this.hud) return
 
             if (Math.abs(speed) < 30) led.unplot(x, 2)
             else led.plot(x, 2)
@@ -307,7 +310,7 @@ namespace microcode {
 
         private updateLineState() {
             const lineState = this.lineState()
-            if (this.showConfiguration) return
+            if (this.showConfiguration || !this.hud) return
 
             // render left/right lines
             const left =
@@ -328,7 +331,7 @@ namespace microcode {
             const dist = this.ultrasonicDistance()
             if (dist > this.robot.ultrasonicMinReading) {
                 const d = Math.clamp(1, 5, Math.ceil(dist / 5))
-                if (!this.showConfiguration) {
+                if (!this.showConfiguration && this.hud) {
                     for (let y = 0; y < 5; y++)
                         if (y + 1 >= d) led.plot(2, y)
                         else led.unplot(2, y)
@@ -448,7 +451,7 @@ namespace microcode {
             return ls
         }
 
-        private playTone(frequency: number, duration: number) {
+        public playTone(frequency: number, duration: number) {
             if (this.robot.musicVolume <= 0) return
             music.setVolume(this.robot.musicVolume)
             this.stopToneMillis = control.millis() + duration
