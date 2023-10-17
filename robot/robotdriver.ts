@@ -226,7 +226,7 @@ namespace microcode {
                     this.currentTurnRatio = this.targetTurnRatio
             }
 
-            if (Math.abs(this.currentSpeed) < this.robot.runStopThreshold)
+            if (Math.abs(this.currentSpeed) < this.robot.stopThreshold)
                 this.setMotorState(0, 0)
             else {
                 let s = this.currentSpeed
