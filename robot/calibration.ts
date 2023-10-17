@@ -34,7 +34,6 @@ namespace microcode.robots {
 
         const run = () => {
             led.stopAnimation()
-            r.playTone(440, 50)
             basic.showNumber(r.robot.maxLineSpeed, 60)
         }
 
@@ -47,32 +46,23 @@ namespace microcode.robots {
             run()
         })
 
-        basic.forever(() => {
-            const lines = r.currentLineState
-            if (lines === RobotLineState.Both) {
-                robot.decodeRobotCompactCommand(
-                    RobotCompactCommand.MotorRunForward
-                )
-            } else if (lines === RobotLineState.Right) {
-                robot.decodeRobotCompactCommand(
-                    RobotCompactCommand.MotorTurnRight
-                )
-            } else if (lines === RobotLineState.Left) {
-                robot.decodeRobotCompactCommand(
-                    RobotCompactCommand.MotorTurnLeft
-                )
-            } else if (lines === RobotLineState.LostLeft) {
-                robot.decodeRobotCompactCommand(
-                    RobotCompactCommand.MotorSpinLeft
-                )
-            } else if (lines === RobotLineState.LostRight) {
-                robot.decodeRobotCompactCommand(
-                    RobotCompactCommand.MotorSpinRight
-                )
-            } else {
-                robot.decodeRobotCompactCommand(RobotCompactCommand.MotorStop)
-            }
-            basic.pause(100)
-        })
+        microcode.onLineDetected(RobotLineState.Both, () =>
+            robot.decodeRobotCompactCommand(RobotCompactCommand.MotorRunForward)
+        )
+        microcode.onLineDetected(RobotLineState.Left, () =>
+            robot.decodeRobotCompactCommand(RobotCompactCommand.MotorTurnLeft)
+        )
+        microcode.onLineDetected(RobotLineState.Right, () =>
+            robot.decodeRobotCompactCommand(RobotCompactCommand.MotorTurnRight)
+        )
+        microcode.onLineDetected(RobotLineState.LostLeft, () =>
+            robot.decodeRobotCompactCommand(RobotCompactCommand.MotorSpinLeft)
+        )
+        microcode.onLineDetected(RobotLineState.LostRight, () =>
+            robot.decodeRobotCompactCommand(RobotCompactCommand.MotorSpinRight)
+        )
+        microcode.onLineDetected(RobotLineState.None, () =>
+            robot.decodeRobotCompactCommand(RobotCompactCommand.MotorStop)
+        )
     }
 }
