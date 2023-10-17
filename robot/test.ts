@@ -6,10 +6,8 @@ microcode.elecfreaksCuteBot.start()
 //microcode.dfRobotMaqueen.start()
 //microcode.dfRobotMaqueenPlusV2.start()
 
-microcode.setRadioGroup(2)
-microcode.setMotorDrift(0)
-
 const r = microcode.robot
+r.startRadio()
 //r.motorRun(-100, 80)
 
 basic.forever(() => {

@@ -53,14 +53,14 @@ namespace microcode {
             input.onButtonPressed(Button.A, () => {
                 if (this.showConfiguration) return
                 this.playTone(440, 500)
-                if (this.configDrift) this.runDrift--
+                if (this.configDrift) this.setRunDrift(this.runDrift - 1)
                 else this.previousGroup()
                 this.showConfigurationState()
             })
             input.onButtonPressed(Button.B, () => {
                 if (this.showConfiguration) return
                 this.playTone(640, 500)
-                if (this.configDrift) this.runDrift++
+                if (this.configDrift) this.setRunDrift(this.runDrift + 1)
                 else this.nextGroup()
                 this.showConfigurationState()
             })
