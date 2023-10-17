@@ -30,7 +30,7 @@ namespace microcode.robots {
     export function calibrateLineFollowing() {
         const r = microcode.robot
         r.robot.stopThreshold = 0
-        r.hud = false
+        //r.hud = false
 
         const run = () => {
             led.stopAnimation()
