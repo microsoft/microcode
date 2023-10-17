@@ -4,7 +4,7 @@ namespace microcode {
         console.log("run drift: " + runDrift)
     }
 
-    //% shim=microcode::__runCalibration
+    //% shim=microcode::__readCalibration
     export function __readCalibration(): number {
         // read run drift
         return 0
