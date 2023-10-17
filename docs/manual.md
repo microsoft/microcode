@@ -170,7 +170,7 @@ to follow lines, avoid obstacles and more.
 
 ![robot avoid wall program](./images/generated/sample_robot_avoid_wall.png){:class="sample"}
 
-[![Photograph of the Cutebot](./images/cutebot.jpeg)](https://www.elecfreaks.com/micro-bit-smart-cutebot.html){:class="sample"}
+![Photograph of the Cutebot](./images/robots.jpg){:class="sample"}
 
 ## Jacdac accessories {#jacdac}
 

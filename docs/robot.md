@@ -1,6 +1,6 @@
 # Programming a micro:bit robot
 
-![Photograph of the Cutebot](./images/cutebot.jpeg){:class="sample"}
+![Photograph of micro:bit robots](./images/robots.jpg){:class="sample"}
 
 ## The context
 
