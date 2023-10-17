@@ -12,11 +12,12 @@ namespace microcode {
     //% fixedInstances
     export class RobotDriver {
         readonly robot: robots.Robot
-        private running = false
         /**
-         * Gets the latest distance returned by the se nsor
+         * Gets the latest distance returned by the sensor
          */
         currentUltrasonicDistance: number = 100
+        private lastSonarValue = 0
+
         private showConfiguration: boolean = false
         private configDrift = false
         private currentArmAperture = -1
@@ -25,6 +26,7 @@ namespace microcode {
         private currentTurnRatio = 0
         private targetTurnRatio: number = 0
         private radioGroup: number
+        private inRadioMessageId: number = undefined
 
         /**
          * Gets the latest line sensor state
@@ -45,7 +47,6 @@ namespace microcode {
 
         constructor(robot: robots.Robot) {
             this.robot = robot
-            microcode.robot = this
         }
 
         private configureButtons() {
@@ -86,14 +87,15 @@ namespace microcode {
         /**
          * Starts the motor driver
          */
-        //% block="robot start %this"
+        //% block="robot %this start"
         //% blockId=microcoderobotstart
         //% weight=100
         //% group="Configuration"
         start() {
-            if (this.running) return
-
-            this.running = true
+            if (microcode.robot === this) return // already started
+            if (microcode.robot)
+                throw "Another robot has already been started."
+            microcode.robot = this
 
             // configuration of common hardware
             this.radioGroup = radioGroupFromDeviceSerialNumber()
@@ -109,7 +111,7 @@ namespace microcode {
 
             // stop motors
             this.setColor(0x0000ff)
-            this.motorStop()
+            this.motorRun(0, 0)
             // wake up sensors
             this.ultrasonicDistance()
             this.lineState()
@@ -119,13 +121,11 @@ namespace microcode {
             control.inBackground(() => this.backgroundWork())
 
             // schedule after main
-            control.inBackground(() => {
-                this.showConfigurationState(true)
-            })
+            control.inBackground(() => this.showConfigurationState(true))
         }
 
         private backgroundWork() {
-            while (this.running) {
+            while (true) {
                 this.updateTone()
                 this.updateLineState()
                 this.updateSpeed()
@@ -159,8 +159,6 @@ namespace microcode {
 
             this.robot.armOpen(this.currentArmAperture)
         }
-
-        private inRadioMessageId: number = undefined
 
         /**
          * Starts the reception and transmission of robot command messages
@@ -290,7 +288,6 @@ namespace microcode {
             else led.unplot(4, 0)
         }
 
-        private lastSonarValue = 0
         private updateSonar() {
             const dist = this.ultrasonicDistance()
             if (dist > this.robot.ultrasonicMinReading) {
@@ -329,13 +326,6 @@ namespace microcode {
                 this.targetSpeed = speed
                 this.targetTurnRatio = turnRatio
             }
-        }
-
-        /**
-         * Stop motors
-         */
-        motorStop() {
-            this.motorRun(0, 0)
         }
 
         private ultrasonicDistanceOnce() {

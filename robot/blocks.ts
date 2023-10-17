@@ -39,7 +39,7 @@ namespace microcode {
     //% blockid="microcoderobotmotorstop"
     export function motorStop() {
         checkRobotDriver()
-        robot.motorStop()
+        robot.motorRun(0, 0)
     }
 
     /**
