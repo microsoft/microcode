@@ -2,7 +2,7 @@
  * Microcode Robot
  */
 //% color="#ff6800" icon="\uf1b9" weight=15
-//% groups=['Motors', 'Input', 'Configuration']
+//% groups='["Motors", "Input", "Configuration"]'
 namespace microcode {
     export let robot: RobotDriver;
 
