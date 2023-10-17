@@ -48,7 +48,7 @@ See [how to contribute](#contributing) for more information.
 
 ![Photo of the MiniLFR robot](./images/minilfr.png){:class="sample"}
 
--   [Home](https://www.kittenbot.cc/products/minilfr)
+-   [Home](https://www.kittenbot.cc/products/kittenbot-minilfr-programmable-robot-car-kit-for-microbit)
 -   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-kittenbot-minilfr.hex)
 
 ### Yahboom Tiny:bit {#yahboom}
