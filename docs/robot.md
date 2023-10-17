@@ -1,4 +1,4 @@
-# Programming micro:bit robot with MicroCode
+# Programming a micro:bit robot
 
 ![Photograph of the Cutebot](./images/cutebot.jpeg){:class="sample"}
 
