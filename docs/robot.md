@@ -25,8 +25,10 @@ The microcode editor and the robot micro:bit communicate using the radio. These 
 On the robot micro:bit,
 
 -   Reset the robot micro:bit and note the radio group,
--   If you need to change the group number, press button A or B to select another radio group. The radio group
-    is stored in the flash of the micro:bit and will be used every time the robot is reset. (However, it will be erased if you download another .hex file).
+-   If you need to change the group number, press button `A+B` to enter the configuration mode until your see `RADIO ...` message.
+-   Press `A` or `B` to increase or decrease the radio group.
+
+The radio group is stored in the flash of the micro:bit and will be used every time the robot is reset. (However, it will be erased if you download another .hex file).
 
 On the microcode side,
 
@@ -40,10 +42,11 @@ It is not uncommon for 2 wheeled robot to slightly drift towards one side. To co
 
 On the robot micro:bit,
 
--   Press A+B to switch to the `DRIFT` configuration mode.
+-   Press ` A+B` to switch to configuration mode, until you see the `DRIFT ...` message.
 -   Let the robot go forward until it goes as straight as possible by pressing A and B to increase or modify the drift.
--   The drift value will be stored in the flash of the micro:bit and will be used every time the robot is reset.
-    (However it will be erased if you download another .hex file, so you might want to write it down somewhere).
+
+The drift value will be stored in the flash of the micro:bit and will be used every time the robot is reset.
+(However it will be erased if you download another .hex file, so you might want to write it down somewhere).
 
 ## Tiles
 
