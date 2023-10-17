@@ -27,7 +27,7 @@ namespace microcode.robots {
         /**
          * Maximum speed while following a line with line assist
          */
-        maxLineSpeed = 40
+        maxLineSpeed = 50 //40
         /**
          * Adjusted speed 0. Default is 20 to avoid deadzone.
          */

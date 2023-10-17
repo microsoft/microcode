@@ -19,7 +19,7 @@ namespace microcode {
                 lineHigh: false,
             }
             this.musicVolume = 156
-            this.maxLineSpeed = 28
+            this.maxLineSpeed = 42 // 28
         }
 
         motorRun(lspeed: number, rspeed: number) {

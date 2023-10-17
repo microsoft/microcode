@@ -120,7 +120,7 @@ namespace microcode {
                 echo: DigitalPin.P12,
             }
             this.musicVolume = 168
-            this.maxLineSpeed = 30
+            this.maxLineSpeed = 44 // 30
         }
 
         motorRun(left: number, right: number) {
