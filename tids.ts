@@ -925,6 +925,38 @@ namespace microcode {
         return true
     }
 
+    let icon_editor: IconEditor = undefined
+    let melody_editor: MelodyEditor = undefined
+    export function fieldEditor(tid: Tid): ModifierDefn {
+        switch (tid) {
+            case Tid.TID_ACTUATOR_PAINT: {
+                if (!icon_editor) {
+                    icon_editor = new IconEditor()
+                }
+                return icon_editor
+            }
+            case Tid.TID_ACTUATOR_MUSIC: {
+                if (!melody_editor) melody_editor = new MelodyEditor()
+                return melody_editor
+            }
+            default:
+                return undefined
+        }
+    }
+
+    export function defaultModifier(tid: Tid) {
+        switch (tid) {
+            case Tid.TID_ACTUATOR_SPEAKER:
+                return tilesDB.modifiers[TID_MODIFIER_EMOJI_GIGGLE]
+            case Tid.TID_ACTUATOR_CAR:
+                return tilesDB.modifiers[TID_MODIFIER_CAR_STOP]
+            case Tid.TID_ACTUATOR_RGB_LED:
+                return tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
+            default:
+                return undefined
+        }
+    }
+
     // TODO: we don't need separate bits for everything.
     // TODO: only certain things can be combined. Analyze and optimize
     export enum TidKinds {

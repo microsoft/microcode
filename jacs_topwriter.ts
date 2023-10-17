@@ -608,7 +608,16 @@ namespace jacs {
                     m.jdKind == microcode.JdKind.ServiceCommandArg ||
                     m.jdKind === microcode.JdKind.NumFmt
             )
-            if (params.length == 0) params = [rule.actuators[0].defaultModifier]
+            if (params.length == 0) {
+                const tid = microcode.tidToEnum(rule.actuators[0].tid)
+                const defMod = microcode.defaultModifier(tid)
+                params = [undefined]
+                if (defMod) params = [defMod]
+                else {
+                    const fieldEd = microcode.fieldEditor(tid)
+                    params = [fieldEd]
+                }
+            }
 
             const role = this.lookupActuatorRole(rule)
             this.emitLockCode(role)

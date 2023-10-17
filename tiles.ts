@@ -285,7 +285,6 @@ namespace microcode {
         paint.jdKind = JdKind.Sequence
         paint.jdParam = "dot_animation"
         paint.jdParam2 = 5
-        paint.defaultModifier = new IconEditor()
 
         const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER, 10)
         showNum.priority = 11
@@ -301,7 +300,6 @@ namespace microcode {
         music.jdKind = JdKind.Sequence
         music.jdParam = "note_sequence"
         music.jdParam2 = 6
-        music.defaultModifier = new MelodyEditor()
 
         const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
             "value_out",
@@ -357,8 +355,6 @@ namespace microcode {
             tilesDB.modifiers[tid] = emoji_mod
         })
 
-        emoji.defaultModifier = tilesDB.modifiers[TID_MODIFIER_EMOJI_GIGGLE]
-
         function make_vals(
             values: number[],
             name: string,
@@ -408,7 +404,6 @@ namespace microcode {
             const car = addActuator(TID_ACTUATOR_CAR, ["car"])
             car.priority = 900
             car.jdKind = JdKind.Sequence
-            car.defaultModifier = tilesDB.modifiers[TID_MODIFIER_CAR_STOP]
         }
 
         function addRGB(id: number, color: number) {
@@ -441,8 +436,6 @@ namespace microcode {
         const rgbled = addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
         rgbled.priority = 500
         rgbled.jdKind = JdKind.Sequence
-        rgbled.defaultModifier =
-            tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
 
         const servoSetAngle = addActuator(TID_ACTUATOR_SERVO_SET_ANGLE, [
             "constant",
@@ -554,7 +547,7 @@ namespace microcode {
         },
     }
 
-    class IconEditor extends ModifierDefn {
+    export class IconEditor extends ModifierDefn {
         field: Image
         firstInstance: boolean
         constructor(field: Image = null) {
@@ -675,7 +668,7 @@ namespace microcode {
         },
     }
 
-    class MelodyEditor extends ModifierDefn {
+    export class MelodyEditor extends ModifierDefn {
         field: Melody
         firstInstance: boolean
         constructor(field: Melody = null) {

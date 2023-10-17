@@ -187,13 +187,7 @@ namespace microcode {
         }
     }
 
-    export class ActuatorDefn extends StmtTileDefn {
-        public defaultModifier: ModifierDefn
-
-        constructor(tid: string) {
-            super(tid)
-        }
-    }
+    export class ActuatorDefn extends StmtTileDefn {}
 
     export class ModifierDefn extends FilterModifierBase {
         constructor(tid: string, category: string, priority: number) {
