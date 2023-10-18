@@ -130,9 +130,6 @@ namespace microcode {
             this.configureButtons()
             basic.forever(() => this.updateSonar()) // potentially slower
             control.inBackground(() => this.backgroundWork())
-
-            // schedule after main
-            control.inBackground(() => this.showConfigurationState(true))
         }
 
         private backgroundWork() {
