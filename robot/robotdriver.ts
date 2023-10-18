@@ -179,6 +179,7 @@ namespace microcode {
          */
         startRadio() {
             if (this.inRadioMessageId === undefined) {
+                radio.setGroup(this.radioGroup)
                 radio.setTransmitSerialNumber(true)
                 radio.onReceivedNumber(code =>
                     this.decodeRobotCompactCommand(code)
@@ -201,7 +202,7 @@ namespace microcode {
                     if (
                         this.currentLineState || // left, right, front
                         this.currentLineStateCounter <
-                        this.robot.lineAssistLostThreshold
+                            this.robot.lineAssistLostThreshold
                     )
                         // recently lost line
                         this.currentSpeed = Math.min(
@@ -406,12 +407,12 @@ namespace microcode {
             if (this.lineDetectors) {
                 const left =
                     pins.digitalReadPin(this.lineDetectors.left) > 0 ===
-                        this.lineDetectors.lineHigh
+                    this.lineDetectors.lineHigh
                         ? 1
                         : 0
                 const right =
                     pins.digitalReadPin(this.lineDetectors.right) > 0 ===
-                        this.lineDetectors.lineHigh
+                    this.lineDetectors.lineHigh
                         ? 1
                         : 0
                 return (left << 0) | (right << 1)
