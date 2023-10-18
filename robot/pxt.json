@@ -1,6 +1,6 @@
 {
     "name": "microcode-robot",
-    "version": "2.5.7",
+    "version": "2.5.8",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -23,11 +23,15 @@
         "storage.cpp",
         "storage.ts"
     ],
-    "testFiles": ["test.ts"],
+    "testFiles": [
+        "test.ts"
+    ],
     "targetVersions": {
         "target": "6.0.19",
         "targetId": "microbit"
     },
-    "supportedTargets": ["microbit"],
+    "supportedTargets": [
+        "microbit"
+    ],
     "preferredEditor": "tsprj"
 }
