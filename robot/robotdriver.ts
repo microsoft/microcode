@@ -1,9 +1,9 @@
 namespace microcode {
-    const MAX_GROUPS = 32
+    const MAX_GROUPS = 25
 
     function radioGroupFromDeviceSerialNumber() {
         const sn = control.deviceLongSerialNumber()
-        return (sn.hash(10) % 20) + 1
+        return (sn.hash(10) % 9) + 1
     }
 
     /**
