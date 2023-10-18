@@ -148,6 +148,6 @@
   "F23R": "right",
   "F23B": "both",
   "F23N": "none",
-  "F23NL": "none from left",
-  "F23NR": "none from right"
+  "F23NL": "lost left",
+  "F23NR": "lost right"
 }

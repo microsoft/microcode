@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.5.7","target":"arcade","targetVersion":"1.11.20"}
-// total=2494637 new=95.02% cached=0.00% other=4.98%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.5.8","target":"arcade","targetVersion":"1.11.20"}
+// total=2494627 new=95.02% cached=0.00% other=4.98%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -1458,7 +1458,7 @@ switch (step) {
     globals.OP_PROPS___4107 = ("  \u0003``\u0000\u0002\u0001\u0000\u0000\u0000@AAAAAAAAA\u0001\u0001AABBBBBBBBBBBBBBBBBBB \u0000\u0001\u0000\u0000``!\u0002\u0001\u0001A@A@@@\u0011\u0011\u0011\u0013\u0012\u001423\u0011\u0012\u001523\u001101\u001111\u00141\u0011\u0010\u0011\u00112\u0013\u0013`BA\u0014");
     globals.debugOut___4312 = (false);
     globals._binFloatLits___4384 = (_hex7293);
-    globals.VERSION___4386 = ("v2.5.7");
+    globals.VERSION___4386 = ("v2.5.8");
     globals.BACK_BUTTON_ERROR_KIND___4400 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4401 = ("forward_button");
     globals.microcode_Options_fps___4449 = (false);
@@ -33869,14 +33869,14 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 151; continue; }
-    s.res___16481 = ("none from left");
+    s.res___16481 = ("lost left");
     { step = 154; continue; }
   case 151:
     r0 = (s.arg0 === "F23NR");
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 152; continue; }
-    s.res___16481 = ("none from right");
+    s.res___16481 = ("lost right");
   case 152:
   case 153:
   case 154:
@@ -34035,7 +34035,7 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-microcode_resolveTooltip__P4484.info = {"start":155,"length":7054,"line":4,"column":4,"endLine":159,"endColumn":5,"fileName":"tooltips.ts","functionName":"resolveTooltip","argumentNames":["id"]}
+microcode_resolveTooltip__P4484.info = {"start":155,"length":7044,"line":4,"column":4,"endLine":159,"endColumn":5,"fileName":"tooltips.ts","functionName":"resolveTooltip","argumentNames":["id"]}
 
 function microcode_resolveTooltip__P4484_mk(s) {
     checkStack(s.depth);
