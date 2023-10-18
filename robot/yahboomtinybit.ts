@@ -14,7 +14,7 @@ namespace microcode {
                 lineHigh: true,
             }
             this.speed0 = 44
-            this.maxLineSpeed = 70 // 64
+            this.maxLineSpeed = 50 // 64
             this.speedTransitionAlpha = 0.5
             this.turnRatioTransitionAlpha = 0.5
         }
