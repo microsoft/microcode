@@ -32,7 +32,6 @@ namespace microcode {
          * Gets the latest line sensor state
          */
         currentLineState: RobotLineState = RobotLineState.None
-        private previousLineState = RobotLineState.None
         private currentLineStateCounter = 0
 
         private stopToneMillis: number = 0
@@ -177,6 +176,7 @@ namespace microcode {
          */
         startRadio() {
             if (this.inRadioMessageId === undefined) {
+                radio.setGroup(this.radioGroup)
                 radio.setTransmitSerialNumber(true)
                 radio.onReceivedNumber(code =>
                     this.decodeRobotCompactCommand(code)
@@ -396,8 +396,7 @@ namespace microcode {
         private lineState(): RobotLineState {
             const ls = this.readLineState()
             if (ls !== this.currentLineState) {
-                const prev = this.previousLineState
-                this.previousLineState = this.currentLineState
+                const prev = this.currentLineState
                 this.currentLineState = ls
                 this.currentLineStateCounter = 0
 
