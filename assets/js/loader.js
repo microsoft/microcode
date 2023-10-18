@@ -176,7 +176,7 @@ function makeCodeRun(options) {
             simState = {}
         }
 
-        const useCompression = !/compress=0/.test(window.location.href)
+        const useCompression = false // !/compress=0/.test(window.location.href)
         const decompressProgram = hash => {
             try {
                 const decompressed = fflate.decompressSync(

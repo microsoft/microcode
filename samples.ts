@@ -185,6 +185,10 @@ namespace microcode {
                 label: "robot line follow",
                 b64: "JfiSPgounRpoNL4aZjTAGmc0wRppNMUBAQEBAQA=",
             },
+            {
+                label: "robot showcase",
+                b64: "JfiSPgoumwtJNL7IC0o0wsYZTzTEvgEBAQEBAA==",
+            },
         ])
     }
 
