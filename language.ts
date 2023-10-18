@@ -86,12 +86,6 @@ namespace microcode {
             return this
         }
 
-        buttonStyle(): ButtonStyle {
-            return this.fieldEditor
-                ? this.fieldEditor.buttonStyle()
-                : ButtonStyles.FlatWhite
-        }
-
         // the following is just set union - can be simplified
         // TODO: probably really want a Gen/Kill framework instead
         mergeConstraints(dst: Constraints) {
@@ -236,8 +230,9 @@ namespace microcode {
             this.actuators.forEach(act => bw.writeByte(tidToEnum(act.tid)))
             this.modifiers.forEach(mod => {
                 bw.writeByte(tidToEnum(mod.tid))
-                if (mod.fieldEditor) {
-                    bw.writeBuffer(mod.fieldEditor.toBuffer(mod.getField()))
+                const editor: ModifierEditor = getEditor(tidToEnum(mod.tid))
+                if (editor) {
+                    bw.writeBuffer(editor.fieldEditor.toBuffer(mod.getField()))
                 }
             })
         }
@@ -269,7 +264,7 @@ namespace microcode {
                 const modifierEnum = br.readByte()
                 const modifierTid = enumToTid(modifierEnum)
                 const modifier = tilesDB.modifiers[modifierTid]
-                if (modifier.fieldEditor) {
+                if (modifier instanceof ModifierEditor && modifier.fieldEditor) {
                     const field = modifier.fieldEditor.fromBuffer(br)
                     const newOne = modifier.getNewInstance(field)
                     defn.modifiers.push(<any>newOne)

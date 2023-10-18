@@ -927,7 +927,7 @@ namespace microcode {
 
     let icon_editor: IconEditor = undefined
     let melody_editor: MelodyEditor = undefined
-    export function fieldEditor(tid: Tid): ModifierDefn {
+    export function getEditor(tid: Tid): ModifierEditor {
         switch (tid) {
             case Tid.TID_ACTUATOR_PAINT: {
                 if (!icon_editor) {
@@ -956,6 +956,14 @@ namespace microcode {
                 return undefined
         }
     }
+    
+    export function buttonStyle(tid: Tid): ButtonStyle {
+        // TODO: fix this up
+        return this.fieldEditor
+            ? this.fieldEditor.buttonStyle()
+            : ButtonStyles.FlatWhite
+    }
+
 
     // TODO: we don't need separate bits for everything.
     // TODO: only certain things can be combined. Analyze and optimize
