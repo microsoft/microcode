@@ -129,7 +129,7 @@ namespace microcode {
                 tiles.forEach((tile, index) => {
                     const button = new Button({
                         parent: this,
-                        style: tile.buttonStyle(),
+                        style: buttonStyle(tile.tid),
                         icon: tile.getIcon(),
                         ariaId: tile.tid,
                         x: 0,
@@ -146,7 +146,7 @@ namespace microcode {
                         ) {
                             const plus = new Button({
                                 parent: this,
-                                style: tile.buttonStyle(),
+                                style: buttonStyle(tile.tid),
                                 icon: "arith_equals",
                                 ariaId: "arith_equals",
                                 x: 0,
@@ -166,7 +166,7 @@ namespace microcode {
                         ) {
                             const plus = new Button({
                                 parent: this,
-                                style: tile.buttonStyle(),
+                                style: buttonStyle(tile.tid),
                                 icon: "arith_plus",
                                 ariaId: "arith_plus",
                                 x: 0,
@@ -279,7 +279,7 @@ namespace microcode {
             }
             const newFieldEditor = (tile: TileDefn, del = false) => {
                 const newOne = del ? tile : tile.getNewInstance()
-                const fieldEditor = newOne.fieldEditor
+                const fieldEditor = getFieldEditor(newOne)
                 this.editor.captureBackground()
                 fieldEditor.editor(
                     newOne.getField(),
@@ -296,7 +296,7 @@ namespace microcode {
                         : undefined
                 )
             }
-            if (index < ruleTiles.length && ruleTiles[index].fieldEditor) {
+            if (index < ruleTiles.length && getFieldEditor(ruleTiles[index])) {
                 newFieldEditor(ruleTiles[index], true)
                 return
             }
@@ -307,9 +307,9 @@ namespace microcode {
                 }
             })
             // special case for field editor
-            if (suggestions.length == 1 && suggestions[0].fieldEditor) {
+            if (suggestions.length == 1 && getFieldEditor(suggestions[0])) {
                 let theOne =
-                    index > 0 && ruleTiles[index - 1].fieldEditor // this is a hack to use the value from previous
+                    index > 0 && getFieldEditor(ruleTiles[index - 1])// this is a hack to use the value from previous
                         ? ruleTiles[index - 1] // field editor (should really check they are the same)
                         : suggestions[0]
                 newFieldEditor(theOne)
@@ -332,10 +332,10 @@ namespace microcode {
                     navigator: () => new SimpleGridNavigator(),
                     onClick: id => {
                         let theOne = tilesDB[name][id]
-                        if (theOne.fieldEditor) {
+                        if (getFieldEditor(theOne)) {
                             // there is more work to do                l
                             theOne =
-                                index > 0 && ruleTiles[index - 1].fieldEditor // this is a hack to use the value from previous
+                                index > 0 && getFieldEditor(ruleTiles[index - 1]) // this is a hack to use the value from previous
                                     ? ruleTiles[index - 1] // field editor (should really check they are the same)
                                     : theOne
                             newFieldEditor(theOne)

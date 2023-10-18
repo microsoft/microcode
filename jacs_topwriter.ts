@@ -614,7 +614,7 @@ namespace jacs {
                 params = [undefined]
                 if (defMod) params = [defMod]
                 else {
-                    const fieldEd = microcode.fieldEditor(tid)
+                    const fieldEd = microcode.getFieldEditor(tid)
                     params = [fieldEd]
                 }
             }

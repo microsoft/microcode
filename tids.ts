@@ -925,10 +925,21 @@ namespace microcode {
         return true
     }
 
+    export function getFieldEditor(tile: TileDefn): FieldEditor {
+        if (tile instanceof ModifierEditor) return tile.fieldEditor
+        return undefined
+    }
+
     let icon_editor: IconEditor = undefined
     let melody_editor: MelodyEditor = undefined
-    export function getEditor(tid: Tid): ModifierEditor {
+    export function defaultModifier(tid: Tid) {
         switch (tid) {
+            case Tid.TID_ACTUATOR_SPEAKER:
+                return tilesDB.modifiers[TID_MODIFIER_EMOJI_GIGGLE]
+            case Tid.TID_ACTUATOR_CAR:
+                return tilesDB.modifiers[TID_MODIFIER_CAR_STOP]
+            case Tid.TID_ACTUATOR_RGB_LED:
+                return tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
             case Tid.TID_ACTUATOR_PAINT: {
                 if (!icon_editor) {
                     icon_editor = new IconEditor()
@@ -943,21 +954,9 @@ namespace microcode {
                 return undefined
         }
     }
-
-    export function defaultModifier(tid: Tid) {
-        switch (tid) {
-            case Tid.TID_ACTUATOR_SPEAKER:
-                return tilesDB.modifiers[TID_MODIFIER_EMOJI_GIGGLE]
-            case Tid.TID_ACTUATOR_CAR:
-                return tilesDB.modifiers[TID_MODIFIER_CAR_STOP]
-            case Tid.TID_ACTUATOR_RGB_LED:
-                return tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
-            default:
-                return undefined
-        }
-    }
     
-    export function buttonStyle(tid: Tid): ButtonStyle {
+    export function buttonStyle(tid: string): ButtonStyle {
+        const tidEnum = tidToEnum(tid)
         // TODO: fix this up
         return this.fieldEditor
             ? this.fieldEditor.buttonStyle()

@@ -230,9 +230,9 @@ namespace microcode {
             this.actuators.forEach(act => bw.writeByte(tidToEnum(act.tid)))
             this.modifiers.forEach(mod => {
                 bw.writeByte(tidToEnum(mod.tid))
-                const editor: ModifierEditor = getEditor(tidToEnum(mod.tid))
-                if (editor) {
-                    bw.writeBuffer(editor.fieldEditor.toBuffer(mod.getField()))
+                const fieldEditor = getFieldEditor(mod)
+                if (fieldEditor) {
+                    bw.writeBuffer(fieldEditor.toBuffer(mod.getField()))
                 }
             })
         }
