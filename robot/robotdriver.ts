@@ -37,7 +37,7 @@ namespace microcode {
          * Gets the latest line sensor state
          */
         currentLineState: RobotLineState = RobotLineState.None
-        private currentLineStateCounter = 0
+        private lineLostCounter: number
 
         private stopToneMillis: number = 0
         lineAssist = true
@@ -115,6 +115,7 @@ namespace microcode {
                 microcode.__readCalibration(0) ||
                 radioGroupFromDeviceSerialNumber()
             this.runDrift = microcode.__readCalibration(1)
+            this.lineLostCounter = this.robot.lineLostThreshold + 1
             this.leds = this.robot.leds
             if (this.leds) this.ledsBuffer = Buffer.create(this.leds.count * 3)
             this.lineDetectors = this.robot.lineDetectors
@@ -197,18 +198,19 @@ namespace microcode {
                     : this.robot.speedBrakeTransitionAlpha
                 this.currentSpeed =
                     this.currentSpeed * alpha + this.targetSpeed * (1 - alpha)
-                if (this.lineAssist && this.currentSpeed > 0) {
-                    if (
-                        this.currentLineState || // left, right, front
-                        this.currentLineStateCounter <
-                            this.robot.lineAssistLostThreshold
+
+                // apply line assist
+                if (
+                    this.lineAssist &&
+                    this.lineLostCounter < this.robot.lineLostThreshold
+                ) {
+                    // recently lost line
+                    this.currentSpeed = Math.min(
+                        this.currentSpeed,
+                        this.robot.maxLineSpeed
                     )
-                        // recently lost line
-                        this.currentSpeed = Math.min(
-                            this.currentSpeed,
-                            this.robot.maxLineSpeed
-                        )
                 }
+                // accelerate convergence to target speed
                 if (
                     Math.abs(this.currentSpeed - this.targetSpeed) <
                     this.robot.targetSpeedThreshold
@@ -397,10 +399,12 @@ namespace microcode {
 
         private lineState(): RobotLineState {
             const ls = this.readLineState()
+            const leftOrRight =
+                ls === RobotLineState.Left || ls === RobotLineState.Right
             if (ls !== this.currentLineState) {
                 const prev = this.currentLineState
                 this.currentLineState = ls
-                this.currentLineStateCounter = 0
+                if (leftOrRight) this.lineLostCounter = 0
 
                 let msg: microcode.robots.RobotCompactCommand
                 if (
@@ -421,7 +425,7 @@ namespace microcode {
                 this.sendCompactCommand(msg)
                 microcode.robots.raiseEvent(msg)
             }
-            this.currentLineStateCounter++
+            if (!leftOrRight) this.lineLostCounter++
             return ls
         }
 
