@@ -56,7 +56,7 @@ namespace microcode.robots {
          * Number of iteration before the line is considered lost and line assist
          * disengages
          */
-        lineAssistLostThreshold = 72
+        lineLostThreshold = 72
 
         /**
          * LED configuration
