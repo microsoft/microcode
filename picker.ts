@@ -1,4 +1,9 @@
 namespace microcode {
+    // TODO: functionalize the Picker to reduce memory pressure
+    // 1. a function to get image from col, row
+    // 2. a function to set image from col, row
+    // 2. the number of rows and columns (supported ragged)
+
     export type PickerButtonDef = {
         icon: string | Image
         style?: ButtonStyle
