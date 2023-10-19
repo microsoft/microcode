@@ -1437,6 +1437,10 @@ namespace jacs {
         // m:b
     }
 
+    export function stop() {
+        new jacs.TopWriter().deployEmpty()
+    }
+
     export const SRV_JACSCRIPT_CONDITION = 0x1196796d
     export const CMD_CONDITION_FIRE = 0x80
 
