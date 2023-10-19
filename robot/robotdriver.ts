@@ -6,6 +6,11 @@ namespace microcode {
         return (sn.hash(10) % 9) + 1
     }
 
+    //% shim=TD_NOOP
+    function nativeSendNumber(msg: number) {
+        radio.sendNumber(msg)
+    }
+
     /**
      *
      */
@@ -472,7 +477,10 @@ namespace microcode {
         }
 
         private sendCompactCommand(cmd: microcode.robots.RobotCompactCommand) {
-            if (this.inRadioMessageId !== undefined) radio.sendNumber(cmd)
+            if (this.inRadioMessageId !== undefined) {
+                radio.sendNumber(cmd)
+                nativeSendNumber(cmd)
+            }
         }
 
         public decodeRobotCompactCommand(msg: number) {
