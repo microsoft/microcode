@@ -472,7 +472,10 @@ namespace microcode {
         }
 
         private sendCompactCommand(cmd: microcode.robots.RobotCompactCommand) {
-            if (this.inRadioMessageId !== undefined) radio.sendNumber(cmd)
+            if (this.inRadioMessageId !== undefined) {
+                radio.sendNumber(cmd)
+                radio.sendNumber(cmd)
+            }
         }
 
         public decodeRobotCompactCommand(msg: number) {
