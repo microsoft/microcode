@@ -6,7 +6,6 @@ namespace microcode {
         getCurrent: () => Button
         screenToButton: (x: number, y: number) => Button
         initialCursor: (row: number, col: number) => Button
-        finished: () => void
         updateAria: () => void
     }
 
@@ -19,6 +18,7 @@ namespace microcode {
         }
     }
 
+    // ragged rows of buttons
     export class RowNavigator implements INavigator {
         protected buttonGroups: Button[][]
         protected row: number
@@ -39,8 +39,6 @@ namespace microcode {
         public addButtons(btns: Button[]) {
             this.buttonGroups.push(btns)
         }
-
-        public finished() {}
 
         public screenToButton(x: number, y: number): Button {
             const p = new Vec2(x, y)
@@ -198,7 +196,9 @@ namespace microcode {
         }
     }
 
-    export class MatrixNavigator implements INavigator {
+    // mostly a matrix, except for last row, which may be ragged
+    // also supports delete button 
+    export class PickerNavigator implements INavigator {
         protected deleteButton: Button
         protected buttons: Button[]
         protected width: number
@@ -258,8 +258,6 @@ namespace microcode {
             }
             return undefined
         }
-
-        finished() {}
 
         screenToButton(x: number, y: number) {
             const p = new Vec2(x, y)
@@ -337,7 +335,7 @@ namespace microcode {
     }
 
     // accessibility for LEDs
-    export class LEDNavigator extends MatrixNavigator {
+    export class LEDNavigator extends PickerNavigator {
         constructor() {
             super()
             this.row = 2
@@ -362,7 +360,7 @@ namespace microcode {
     }
 
     // accessibility for melody
-    export class MelodyNavigator extends MatrixNavigator {
+    export class MelodyNavigator extends PickerNavigator {
         constructor() {
             super()
             this.row = 2

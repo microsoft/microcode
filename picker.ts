@@ -75,7 +75,7 @@ namespace microcode {
 
     export class Picker implements IPlaceable {
         public group: PickerGroup
-        public navigator: MatrixNavigator
+        public navigator: PickerNavigator
         public visible: boolean
 
         private xfrm_: Affine
@@ -96,7 +96,7 @@ namespace microcode {
         constructor(private cursor: Cursor) {
             this.xfrm_ = new Affine()
             this.group = undefined
-            this.navigator = new MatrixNavigator()
+            this.navigator = new PickerNavigator()
         }
 
         public setGroup(opts: { btns: PickerButtonDef[] }) {
@@ -126,7 +126,7 @@ namespace microcode {
                 onClick?: (btn: string, button: Button) => void
                 onHide?: () => void
                 onDelete?: () => void
-                navigator?: () => MatrixNavigator
+                navigator?: () => PickerNavigator
             },
             hideOnClick: boolean = true
         ) {
@@ -142,7 +142,7 @@ namespace microcode {
                 this.navigator = opts.navigator()
             } else {
                 this.navigator.clear()
-                this.navigator = new MatrixNavigator()
+                this.navigator = new PickerNavigator()
             }
             this.hideOnClick = hideOnClick
             this.title = opts.title
@@ -230,7 +230,6 @@ namespace microcode {
                 this.deleteBtn.xfrm.localPos.y =
                     this.panel.top + (this.deleteBtn.height >> 1)
             }
-            this.navigator.finished()
 
             this.panel.grow(padding)
             this.xfrm.localPos.x = padding - (this.panel.width >> 1)
