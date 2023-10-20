@@ -24,7 +24,8 @@ namespace microcode {
     }
 
     /**
-     * Remote controller for a microcode robot
+     * Remote controller for a microcode robot. The micro:bit will send and receive radio
+     * message to another micro:bit running the robot.
      */
     //% fixedInstance whenUsed block="remote controller" weight=1
     export const remoteController = new RobotDriver(new RemoteRobot())
