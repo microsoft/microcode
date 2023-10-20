@@ -285,6 +285,7 @@ namespace microcode {
 
     // the exception is the delete button, which we can handle
     // as a special case, so I think we can get rid of the code below
+    // and replace by Matrix navigator
     export class SimpleGridNavigator implements INavigator {
         buttons: Button[]
         curr: Button
