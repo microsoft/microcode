@@ -33,6 +33,7 @@ namespace microcode {
         if (name == TID_MODIFIER_CAR_LED_COLOR_1) return icondb.tile_color_red
         if (name == TID_MODIFIER_CAR_LED_COLOR_2) return icondb.tile_color_green
         if (name == TID_MODIFIER_CAR_LED_COLOR_3) return icondb.tile_color_blue
+        if (name == TID_MODIFIER_CAR_LED_COLOR_4) return icondb.tile_color_black
         if (name == TID_SENSOR_CAR_WALL) return icondb.car_wall
         if (name == TID_SENSOR_LINE) return icondb.line_sensor
         if (name == TID_FILTER_LINE_LEFT) return icondb.line_left_on
