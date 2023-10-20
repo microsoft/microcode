@@ -8,7 +8,6 @@ namespace microcode {
         icon: string | Image
         style?: ButtonStyle
         ariaId?: string
-        start?: boolean
     }
 
     export interface IPicker {
@@ -79,13 +78,13 @@ namespace microcode {
 
     export class Picker implements IPlaceable {
         public group: PickerGroup
+        private start: number
         public navigator: PickerNavigator
         public visible: boolean
 
         private xfrm_: Affine
         private prevState: CursorState
         private deleteBtn: Button
-        private startBtn: Button
         private panel: Bounds
         private onClick: (btn: string, button?: Button) => void
         private onHide: () => void
@@ -131,13 +130,14 @@ namespace microcode {
                 onHide?: () => void
                 onDelete?: () => void
                 navigator?: () => PickerNavigator
+                selected?: number
             },
             hideOnClick: boolean = true
         ) {
             // no need to run while working in the picker
             jacs.stop()
 
-            this.startBtn = undefined
+            this.start = opts.selected ? opts.selected : -1
             this.onClick = opts.onClick
             this.onHide = opts.onHide
             this.onDelete = opts.onDelete
@@ -171,7 +171,6 @@ namespace microcode {
                 btns.forEach(btn => {
                     const button = new PickerButton(this, btn)
                     this.group.buttons.push(button)
-                    if (btn.start) this.startBtn = button
                 })
             }
             this.layout(PICKER_MAX_PER_ROW)
@@ -239,7 +238,7 @@ namespace microcode {
             this.xfrm.localPos.x = padding - (this.panel.width >> 1)
             this.xfrm.localPos.y = padding - (this.panel.height >> 1)
 
-            if (!this.startBtn) {
+            if (this.start < 0) {
                 const btn = this.navigator.initialCursor(
                     this.deleteBtn ? 1 : 0,
                     0
@@ -247,7 +246,8 @@ namespace microcode {
                 this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
                 btn.reportAria()
             } else {
-                const btn = this.startBtn
+                // TODO: off by one row
+                const btn = this.group.buttons[this.start]
                 this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
                 this.navigator.screenToButton(
                     btn.xfrm.worldPos.x,
