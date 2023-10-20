@@ -16,6 +16,7 @@ namespace microcode {
         getPickerButtonDef(index: number): PickerButtonDef
     }
 
+    // TODO: get rid of PickerButton
     export class PickerButton extends Button {
         constructor(public picker: Picker, btn: PickerButtonDef) {
             super({
@@ -126,7 +127,6 @@ namespace microcode {
                 onHide?: () => void
                 onDelete?: () => void
                 navigator?: () => MatrixNavigator
-                maxPerRow?: number
             },
             hideOnClick: boolean = true
         ) {
@@ -170,7 +170,7 @@ namespace microcode {
                     if (btn.start) this.startBtn = button
                 })
             }
-            this.layout(opts.maxPerRow ? opts.maxPerRow : PICKER_MAX_PER_ROW)
+            this.layout(PICKER_MAX_PER_ROW)
             this.visible = true
         }
 

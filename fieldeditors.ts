@@ -23,7 +23,6 @@ namespace microcode {
         const red = icons.get("solid_red")
         const black = icons.get("solid_black")
 
-        // TODO: need to change picker so we can request width
         picker.show(
             {
                 title: accessibility.ariaToTooltip(TID_MODIFIER_ICON_EDITOR),

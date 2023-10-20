@@ -136,10 +136,6 @@ namespace microcode {
         }
 
         public initialCursor(row: number = 0, col: number = 0) {
-            const rows = this.buttonGroups.length
-            while (row < 0) row = (row + rows) % rows
-            const cols = this.buttonGroups[row].length
-            while (col < 0) col = (col + cols) % cols
             this.row = row
             this.col = col
             return this.buttonGroups[row][col]
@@ -231,10 +227,14 @@ namespace microcode {
         }
 
         public initialCursor(row: number = 0, col: number = 0): Button {
-            this.row = 2 + (this.deleteButton ? 1 : 0)
-            this.col = 2
-            this.reportAria(this.getCurrent())
-            return this.getCurrent()
+            this.row = row
+            this.col = col
+            const btn = this.getCurrent()
+            if (btn) {
+                this.reportAria(btn)
+                return btn
+            }
+            return undefined
         }
 
         clear() {
@@ -244,7 +244,6 @@ namespace microcode {
 
         addButtons(btns: Button[]) {
             this.buttons = this.buttons.concat(btns)
-            assert(this.buttons.length % this.width == 0)
         }
 
         addDelete(btn: Button) {
@@ -252,8 +251,12 @@ namespace microcode {
         }
 
         getCurrent() {
-            return this.row == -1 ? this.deleteButton : 
-                this.buttons[this.row * this.width + this.col]
+            if (this.row == -1) { return this.deleteButton }
+            else {
+                const index = this.row * this.width + this.col
+                if (index < this.buttons.length) return this.buttons[index]
+            }
+            return undefined
         }
 
         finished() {}
@@ -335,6 +338,11 @@ namespace microcode {
 
     // accessibility for LEDs
     export class LEDNavigator extends MatrixNavigator {
+        constructor() {
+            super()
+            this.row = 2
+            this.col = 2
+        }
         protected reportAria(b: Button): Button {
             const btn = super.reportAria(b)
             if (!btn) return null
@@ -355,6 +363,11 @@ namespace microcode {
 
     // accessibility for melody
     export class MelodyNavigator extends MatrixNavigator {
+        constructor() {
+            super()
+            this.row = 2
+            this.col = 2
+        }
         protected reportAria(b: Button): Button {
             let btn = super.reportAria(b)
             if (!btn) return null
