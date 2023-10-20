@@ -505,6 +505,12 @@ namespace microcode {
                     this.playTone(440, 40)
                     break
                 }
+                case microcode.robots.RobotCompactCommand.MotorArmOpen:
+                    this.armOpen(100)
+                    break
+                case microcode.robots.RobotCompactCommand.MotorArmClose:
+                    this.armOpen(0)
+                    break
                 case microcode.robots.RobotCompactCommand.MotorLEDRed:
                     this.setColor(0xff0000)
                     break

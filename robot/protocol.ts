@@ -30,6 +30,8 @@ namespace microcode.robots {
         MotorLEDRed = MotorState | 0x09,
         MotorLEDGreen = MotorState | 0x0a,
         MotorLEDBlue = MotorState | 0x0b,
+        MotorArmOpen = MotorState | 0x0e,
+        MotorArmClose = MotorState | 0x0f,
 
         /**
          * sonar detected obstable
