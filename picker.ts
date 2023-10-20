@@ -16,7 +16,8 @@ namespace microcode {
         getPickerButtonDef(index: number): PickerButtonDef
     }
 
-    // TODO: get rid of PickerButton
+    // TODO: get rid of PickerButton, this is overkill as 
+    // TODO: we have a mostly matrix layout
     export class PickerButton extends Button {
         constructor(public picker: Picker, btn: PickerButtonDef) {
             super({
@@ -32,6 +33,9 @@ namespace microcode {
         }
     }
 
+    // the picker group only needs to access the PickerButtonDefs list,
+    // which should be functionalized to reduce memory pressure, no
+    // need for buttons here
     class PickerGroup {
         public xfrm: Affine
         public buttons: Button[]
