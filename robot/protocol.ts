@@ -14,6 +14,8 @@ const enum RobotLineState {
 }
 
 namespace microcode.robots {
+    export const MAGIC = 0x8429
+
     /**
      * Compact commands through radio numbers
      */

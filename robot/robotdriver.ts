@@ -11,6 +11,35 @@ namespace microcode {
         radio.sendNumber(msg)
     }
 
+    function decodeRobotCompactCommand(driver: RobotDriver, msg: number) {
+        switch (msg) {
+            case microcode.robots.RobotCompactCommand.MotorStop:
+            case microcode.robots.RobotCompactCommand.MotorTurnLeft:
+            case microcode.robots.RobotCompactCommand.MotorTurnRight:
+            case microcode.robots.RobotCompactCommand.MotorSpinLeft:
+            case microcode.robots.RobotCompactCommand.MotorSpinRight:
+            case microcode.robots.RobotCompactCommand.MotorRunForwardFast:
+            case microcode.robots.RobotCompactCommand.MotorRunForward:
+            case microcode.robots.RobotCompactCommand.MotorRunBackward: {
+                const command = driver.robot.commands[msg] || {}
+                const turnRatio = command.turnRatio || 0
+                const speed = command.speed || 0
+                driver.motorRun(turnRatio, speed)
+                driver.playTone(440, 40)
+                break
+            }
+            case microcode.robots.RobotCompactCommand.MotorLEDRed:
+                driver.setColor(0xff0000)
+                break
+            case microcode.robots.RobotCompactCommand.MotorLEDGreen:
+                driver.setColor(0x00ff00)
+                break
+            case microcode.robots.RobotCompactCommand.MotorLEDBlue:
+                driver.setColor(0x0000ff)
+                break
+        }
+    }
+
     /**
      *
      */
@@ -136,6 +165,9 @@ namespace microcode {
             this.configureButtons()
             basic.forever(() => this.updateSonar()) // potentially slower
             control.inBackground(() => this.backgroundWork())
+
+            // notify the robot
+            this.robot.onStarted(this)
         }
 
         private backgroundWork() {
@@ -182,10 +214,15 @@ namespace microcode {
                 radio.setGroup(this.radioGroup)
                 radio.setTransmitSerialNumber(true)
                 radio.onReceivedNumber(code =>
-                    this.decodeRobotCompactCommand(code)
+                    decodeRobotCompactCommand(this, code)
                 )
                 this.inRadioMessageId = 0
             }
+        }
+
+        startRadioController() {
+            radio.setGroup(this.radioGroup)
+            radio.setTransmitSerialNumber(true)
         }
 
         private updateSpeed() {
@@ -300,8 +337,6 @@ namespace microcode {
                 if (right) led.plot(0, i)
                 else led.unplot(0, i)
             }
-            if (this.inRadioMessageId % 2) led.plot(4, 0)
-            else led.unplot(4, 0)
         }
 
         private updateSonar() {
@@ -429,7 +464,7 @@ namespace microcode {
             return ls
         }
 
-        private playTone(frequency: number, duration: number) {
+        public playTone(frequency: number, duration: number) {
             if (this.robot.musicVolume <= 0) return
             music.setVolume(this.robot.musicVolume)
             this.stopToneMillis = control.millis() + duration
@@ -484,36 +519,6 @@ namespace microcode {
             if (this.inRadioMessageId !== undefined) {
                 radio.sendNumber(cmd)
                 nativeSendNumber(cmd)
-            }
-        }
-
-        public decodeRobotCompactCommand(msg: number) {
-            switch (msg) {
-                case microcode.robots.RobotCompactCommand.MotorStop:
-                case microcode.robots.RobotCompactCommand.MotorTurnLeft:
-                case microcode.robots.RobotCompactCommand.MotorTurnRight:
-                case microcode.robots.RobotCompactCommand.MotorSpinLeft:
-                case microcode.robots.RobotCompactCommand.MotorSpinRight:
-                case microcode.robots.RobotCompactCommand.MotorRunForwardFast:
-                case microcode.robots.RobotCompactCommand.MotorRunForward:
-                case microcode.robots.RobotCompactCommand.MotorRunBackward: {
-                    this.inRadioMessageId++
-                    const command = this.robot.commands[msg] || {}
-                    const turnRatio = command.turnRatio || 0
-                    const speed = command.speed || 0
-                    this.motorRun(turnRatio, speed)
-                    this.playTone(440, 40)
-                    break
-                }
-                case microcode.robots.RobotCompactCommand.MotorLEDRed:
-                    this.setColor(0xff0000)
-                    break
-                case microcode.robots.RobotCompactCommand.MotorLEDGreen:
-                    this.setColor(0x00ff00)
-                    break
-                case microcode.robots.RobotCompactCommand.MotorLEDBlue:
-                    this.setColor(0x0000ff)
-                    break
             }
         }
     }

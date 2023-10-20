@@ -116,6 +116,11 @@ namespace microcode.robots {
                 }
         }
 
+        /**
+         * Called once the driver is ready
+         */
+        onStarted(driver: RobotDriver) {}
+
         /*
         Makes the robot move at % `speed` ([-100, 100]). Negative goes backgward, 0 stops.
         */
