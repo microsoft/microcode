@@ -6,7 +6,7 @@ namespace microcode {
 
     export type PickerButtonDef = {
         icon: string | Image
-        style?: ButtonStyle
+        style?: ButtonStyle  // TODO: get rid of this, usually one style for all buttons!
         ariaId?: string
     }
 
