@@ -57,7 +57,6 @@ namespace microcode.robots {
          * disengages
          */
         lineLostThreshold = 72
-
         /**
          * LED configuration
          */
@@ -70,7 +69,6 @@ namespace microcode.robots {
          * Line detector configuration
          */
         lineDetectors?: LineDetectors
-
         /**
          * A map from microcode command to speed, turn ratio values
          */

@@ -11,6 +11,13 @@ namespace microcode {
         radio.sendNumber(msg)
     }
 
+    function lerpChannel(c: number, tc: number) {
+        const FACTOR = 0.8
+        return Math.abs(c - tc) < 16
+            ? tc
+            : Math.round(c * FACTOR + tc * (1 - FACTOR)) & 0xff
+    }
+
     /**
      *
      */
@@ -25,6 +32,8 @@ namespace microcode {
 
         private showConfiguration: boolean = false
         private configDrift: boolean = undefined
+        private targetColor = 0
+        private currentColor = 0
         private currentArmAperture = -1
         private currentSpeed: number = 0
         private targetSpeed: number = 0
@@ -142,6 +151,7 @@ namespace microcode {
             while (true) {
                 this.updateTone()
                 this.updateLineState()
+                this.updateColor()
                 this.updateSpeed()
                 this.updateArm()
                 basic.pause(5)
@@ -149,17 +159,28 @@ namespace microcode {
         }
 
         public setColor(rgb: number) {
-            let red = (rgb >> 16) & 0xff
-            let green = (rgb >> 8) & 0xff
-            let blue = (rgb >> 0) & 0xff
+            this.targetColor = rgb
+        }
+
+        private updateColor() {
+            if (this.targetColor === this.currentColor) return
+
+            let red = (this.currentColor >> 16) & 0xff
+            let green = (this.currentColor >> 8) & 0xff
+            let blue = (this.currentColor >> 0) & 0xff
+
+            const tred = (this.targetColor >> 16) & 0xff
+            const tgreen = (this.targetColor >> 8) & 0xff
+            const tblue = (this.targetColor >> 0) & 0xff
+
+            red = lerpChannel(red, tred)
+            green = lerpChannel(green, tgreen)
+            blue = lerpChannel(blue, tblue)
+
+            this.currentColor = (red << 16) | (green << 8) | blue
             this.robot.headlightsSetColor(red, green, blue)
             if (!this.leds) return
             const b = this.ledsBuffer
-
-            red = Math.min(0xe0, red)
-            green = Math.min(0xe0, green)
-            blue = Math.min(0xe0, blue)
-
             for (let i = 0; i + 2 < b.length; i += 3) {
                 b[i] = green
                 b[i + 1] = red
