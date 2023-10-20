@@ -90,7 +90,7 @@ namespace microcode {
     }
 
     /**
-     *
+     * Enables or disables the line speed assistance.
      */
     //% block="robot set line assist to $enabled"
     //% blockId="microcoderobotsetlineassist"
