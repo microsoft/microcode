@@ -194,7 +194,7 @@ namespace microcode {
                     ariaId: "delete_rule",
                 },
             ]
-            this.editor.picker.addGroup({ btns })
+            this.editor.picker.setGroup({ btns })
             this.editor.picker.show({
                 onClick: iconId => this.handleRuleHandleMenuSelection(iconId),
             })
@@ -326,7 +326,7 @@ namespace microcode {
                 if (selected >= 0) btns[selected].start = true
             }
             if (btns.length) {
-                this.editor.picker.addGroup({ btns })
+                this.editor.picker.setGroup({ btns })
                 this.editor.picker.show({
                     title: accessibility.ariaToTooltip(name),
                     navigator: () => new SimpleGridNavigator(),

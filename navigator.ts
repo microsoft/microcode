@@ -214,6 +214,11 @@ namespace microcode {
         }
     }
 
+    // TODO: reimplement for a matrix represented by
+    // TODO: a 1D array, with a givn matrix width such that
+    // TODO: the length of the array is a multiple of the width
+    // TODO: this will eventually let us get rid of buttons altogether
+    //   class MatrixNavigator implements INavigator
     class MatrixNavigator extends RowNavigator {
         protected hasDelete: boolean
 
