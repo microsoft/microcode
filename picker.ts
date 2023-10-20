@@ -74,7 +74,7 @@ namespace microcode {
 
     export class Picker implements IPlaceable {
         public group: PickerGroup
-        public navigator: INavigator
+        public navigator: MatrixNavigator
         public visible: boolean
 
         private xfrm_: Affine
@@ -95,7 +95,7 @@ namespace microcode {
         constructor(private cursor: Cursor) {
             this.xfrm_ = new Affine()
             this.group = undefined
-            this.navigator = new RowNavigator()
+            this.navigator = new MatrixNavigator()
         }
 
         public setGroup(opts: { btns: PickerButtonDef[] }) {
@@ -125,7 +125,7 @@ namespace microcode {
                 onClick?: (btn: string, button: Button) => void
                 onHide?: () => void
                 onDelete?: () => void
-                navigator?: () => INavigator
+                navigator?: () => MatrixNavigator
                 maxPerRow?: number
             },
             hideOnClick: boolean = true
@@ -142,7 +142,7 @@ namespace microcode {
                 this.navigator = opts.navigator()
             } else {
                 this.navigator.clear()
-                this.navigator = new RowNavigator()
+                this.navigator = new MatrixNavigator()
             }
             this.hideOnClick = hideOnClick
             this.title = opts.title
@@ -212,7 +212,7 @@ namespace microcode {
                 top += this.deleteBtn ? this.deleteBtn.height : HEADER
             }
             if (this.deleteBtn) {
-                this.navigator.addButtons([this.deleteBtn])
+                this.navigator.addDelete(this.deleteBtn)
             }
             if (this.group) {
                 const group = this.group
@@ -221,7 +221,6 @@ namespace microcode {
                 group.xfrm.localPos.y = top
                 this.panel.add(Bounds.Translate(group.bounds, new Vec2(0, top)))
                 top += group.bounds.height
-                // TOD: this is a problem, as we got rid of rows
                 this.navigator.addButtons(group.buttons)
             }
 

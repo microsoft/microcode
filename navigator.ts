@@ -202,15 +202,14 @@ namespace microcode {
         }
     }
 
-    // TODO: need to handle case in which last row is not complete
-    class MatrixNavigator implements INavigator {
+    export class MatrixNavigator implements INavigator {
         protected deleteButton: Button
         protected buttons: Button[]
         protected width: number
         protected row: number
         protected col: number
 
-        constructor(width: number) {
+        constructor(width: number = 5) {
             this.width = width
             this.buttons = []
         }
@@ -246,6 +245,10 @@ namespace microcode {
         addButtons(btns: Button[]) {
             this.buttons = this.buttons.concat(btns)
             assert(this.buttons.length % this.width == 0)
+        }
+
+        addDelete(btn: Button) {
+            this.deleteButton = btn
         }
 
         getCurrent() {
@@ -366,173 +369,6 @@ namespace microcode {
                 force: true,
             })
             return null
-        }
-    }
-
-    // Why does this class exist? Because the Picker will
-    // assign a grid layout to buttons, and we need to
-    // navigate that grid. But as we know the column width
-    // of the picker, we can optimization the navigation as
-    // we can compute the row/column of each button
-
-    // the exception is the delete button, which we can handle
-    // as a special case, so I think we can get rid of the code below
-    // and replace by Matrix navigator
-    export class SimpleGridNavigator implements INavigator {
-        buttons: Button[]
-        curr: Button
-        private sortedButtons: Button[][]
-
-        constructor() {
-            this.buttons = []
-        }
-
-        public clear() {
-            this.buttons = []
-            this.curr = undefined
-        }
-
-        public addButtons(btns: Button[]) {
-            this.buttons = this.buttons.concat(btns)
-        }
-
-        private getRow() {
-            for (let row = 0; row < this.sortedButtons.length; row++) {
-                if (
-                    this.curr.xfrm.worldPos.y ==
-                    this.sortedButtons[row][0].xfrm.worldPos.y
-                )
-                    return row
-            }
-            return -1
-        }
-
-        // call this when finished adding buttons
-        public finished() {
-            this.sortedButtons = []
-            // we now need to optimize a bit by sorting and creating rows
-            let currRow: Button[] = []
-            this.buttons.sort((a, b) => a.xfrm.worldPos.y - b.xfrm.worldPos.y)
-            this.buttons.forEach(btn => {
-                if (
-                    currRow.length == 0 ||
-                    btn.xfrm.worldPos.y == currRow[0].xfrm.worldPos.y
-                )
-                    currRow.push(btn)
-                else {
-                    this.sortedButtons.push(currRow)
-                    currRow = [btn]
-                }
-            })
-            if (currRow.length) this.sortedButtons.push(currRow)
-            // sort each row by x coordinate
-            this.sortedButtons.forEach(btns =>
-                btns.sort((a, b) => a.xfrm.worldPos.x - b.xfrm.worldPos.x)
-            )
-        }
-
-        public move(dir: CursorDir): Button {
-            const findNearInX = (btns: Button[], col: number) => {
-                const nearInX = btns
-                    .filter(
-                        btn =>
-                            Math.abs(
-                                btn.xfrm.worldPos.x - this.curr.xfrm.worldPos.x
-                            ) <
-                            btn.width >> 1
-                    )
-                    .shift()
-                if (!nearInX) return btns[col]
-                return nearInX
-            }
-            let btn: Button
-            if (!this.curr) {
-                btn = this.buttons[0]
-            } else {
-                const row = this.getRow()
-                const col = this.sortedButtons[row].indexOf(this.curr)
-                switch (dir) {
-                    case CursorDir.Up: {
-                        if (row > 0) {
-                            const prevRow = this.sortedButtons[row - 1]
-                            if (col < prevRow.length)
-                                btn = findNearInX(prevRow, col)
-                            else {
-                                btn = prevRow[prevRow.length - 1]
-                            }
-                        } else {
-                            throw new NavigationError(BACK_BUTTON_ERROR_KIND)
-                        }
-                        break
-                    }
-                    case CursorDir.Down: {
-                        if (row < this.sortedButtons.length - 1) {
-                            const nextRow = this.sortedButtons[row + 1]
-                            if (col < nextRow.length)
-                                btn = findNearInX(nextRow, col)
-                            else {
-                                btn = nextRow[nextRow.length - 1]
-                            }
-                        }
-                        break
-                    }
-                    case CursorDir.Left: {
-                        if (col > 0) btn = this.sortedButtons[row][col - 1]
-                        else if (row > 0) {
-                            const prevRow = this.sortedButtons[row - 1]
-                            btn = prevRow[prevRow.length - 1]
-                        } else {
-                            const prevRow =
-                                this.sortedButtons[
-                                    this.sortedButtons.length - 1
-                                ]
-                            btn = prevRow[prevRow.length - 1]
-                        }
-                        break
-                    }
-                    case CursorDir.Right: {
-                        if (col < this.sortedButtons[row].length - 1)
-                            btn = this.sortedButtons[row][col + 1]
-                        else if (row < this.sortedButtons.length - 1) {
-                            const nextRow = this.sortedButtons[row + 1]
-                            btn = nextRow[0]
-                        } else {
-                            const nextRow = this.sortedButtons[0]
-                            btn = nextRow[0]
-                        }
-                        break
-                    }
-                }
-            }
-
-            if (btn) {
-                btn.reportAria(true)
-                this.curr = btn
-            }
-
-            return this.curr
-        }
-
-        public updateAria() {
-            this.curr.reportAria(true)
-        }
-
-        public screenToButton(x: number, y: number): Button {
-            const p = new Vec2(x, y)
-            const target = this.buttons.find(btn =>
-                Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
-            )
-            if (target) this.curr = target
-            return target
-        }
-
-        public getCurrent(): Button {
-            return this.curr
-        }
-
-        public initialCursor(row: number, col: number): Button {
-            this.curr = this.buttons[row]
-            return this.curr
         }
     }
 }
