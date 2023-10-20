@@ -18,20 +18,21 @@ namespace microcode.robots {
      * Compact commands through radio numbers
      */
     export const enum RobotCompactCommand {
-        MotorState = 0xfffff00,
-        MotorRunForward = MotorState | 0x1,
-        MotorRunBackward = MotorState | 0x2,
-        MotorTurnLeft = MotorState | 0x3,
-        MotorTurnRight = MotorState | 0x4,
-        MotorStop = MotorState | 0x5,
-        MotorRunForwardFast = MotorState | 0x6,
-        MotorSpinLeft = MotorState | 0x7,
-        MotorSpinRight = MotorState | 0x8,
-        MotorLEDRed = MotorState | 0x09,
-        MotorLEDGreen = MotorState | 0x0a,
-        MotorLEDBlue = MotorState | 0x0b,
-        MotorArmOpen = MotorState | 0x0e,
-        MotorArmClose = MotorState | 0x0f,
+        Command = 0xfffff00,
+        MotorRunForward = Command | 0x01,
+        MotorRunBackward = Command | 0x02,
+        MotorTurnLeft = Command | 0x03,
+        MotorTurnRight = Command | 0x04,
+        MotorStop = Command | 0x05,
+        MotorRunForwardFast = Command | 0x06,
+        MotorSpinLeft = Command | 0x07,
+        MotorSpinRight = Command | 0x08,
+        LEDRed = Command | 0x09,
+        LEDGreen = Command | 0x0a,
+        LEDBlue = Command | 0x0b,
+        LEDOff = Command | 0x0c,
+        ArmOpen = Command | 0x0d,
+        ArmClose = Command | 0x0e,
 
         /**
          * sonar detected obstable
