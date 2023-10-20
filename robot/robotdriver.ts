@@ -322,7 +322,7 @@ namespace microcode {
                     const n = Math.abs(d - prevd)
                     let di = prevd
                     for (let i = 0; i < n; ++i) {
-                        di = (di + sd) >> 0
+                        di = di + sd
                         const msg =
                             microcode.robots.RobotCompactCommand.ObstacleState |
                             di
