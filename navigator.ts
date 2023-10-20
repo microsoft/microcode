@@ -158,7 +158,7 @@ namespace microcode {
         }
     }
 
-    // this add accessibility for rule
+    // this adds accessibility for rule
     export class RuleRowNavigator extends RowNavigator {
         private rules: RuleDefn[]
 
@@ -284,6 +284,14 @@ namespace microcode {
         }
     }
 
+    // Why does this class exist? Because the Picker will
+    // assign a grid layout to buttons, and we need to
+    // navigate that grid. But as we know the column width
+    // of the picker, we can optimization the navigation as
+    // we can compute the row/column of each button
+
+    // the exception is the delete button, which we can handle
+    // as a special case, so I think we can get rid of the code below
     export class SimpleGridNavigator implements INavigator {
         buttons: Button[]
         curr: Button
