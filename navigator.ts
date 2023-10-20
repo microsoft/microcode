@@ -21,18 +21,15 @@ namespace microcode {
 
     export class RowNavigator implements INavigator {
         protected buttonGroups: Button[][]
-        protected buttons: Button[]
         protected row: number
         protected col: number
 
         constructor() {
             this.buttonGroups = []
-            this.buttons = []
         }
 
         public clear() {
             this.buttonGroups = []
-            this.buttons = []
         }
 
         public getRow() {
@@ -41,30 +38,21 @@ namespace microcode {
 
         public addButtons(btns: Button[]) {
             this.buttonGroups.push(btns)
-            this.buttons = this.buttons.concat(btns)
         }
 
         public finished() {}
 
-        // this is inefficient
         public screenToButton(x: number, y: number): Button {
             const p = new Vec2(x, y)
-            const target = this.buttons.find(btn =>
-                Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
-            )
-            if (target) {
-                for (let row = 0; row < this.buttonGroups.length; row++) {
-                    for (
-                        let col = 0;
-                        col < this.buttonGroups[row].length;
-                        col++
-                    ) {
-                        if (this.buttonGroups[row][col] === target) {
-                            this.row = row
-                            this.col = col
-                            return target
-                        }
-                    }
+            for (let row = 0; row < this.buttonGroups.length; row++) {
+                const buttons = this.buttonGroups[row]
+                const target = buttons.find(btn =>
+                    Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
+                )
+                if (target) {
+                    this.row = row
+                    this.col = buttons.indexOf(target)
+                    return target
                 }
             }
             return undefined
