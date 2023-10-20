@@ -39,7 +39,7 @@ namespace microcode {
                 },
                 onHide,
                 onDelete,
-                navigator: () => new LEDNavigator(),
+                navigator: () => new LEDNavigator(PICKER_MAX_PER_ROW),
             },
             false
         )
@@ -101,7 +101,7 @@ namespace microcode {
                 },
                 onHide,
                 onDelete,
-                navigator: () => new MelodyNavigator(),
+                navigator: () => new MelodyNavigator(PICKER_MAX_PER_ROW),
             },
             false
         )

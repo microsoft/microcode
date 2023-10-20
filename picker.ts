@@ -170,7 +170,7 @@ namespace microcode {
                     if (btn.start) this.startBtn = button
                 })
             }
-            this.layout(opts.maxPerRow ? opts.maxPerRow : MAX_PER_ROW)
+            this.layout(opts.maxPerRow ? opts.maxPerRow : PICKER_MAX_PER_ROW)
             this.visible = true
         }
 
@@ -257,5 +257,5 @@ namespace microcode {
     }
 
     const HEADER = 16
-    const MAX_PER_ROW = 5
+    export const PICKER_MAX_PER_ROW = 5
 }

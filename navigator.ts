@@ -202,29 +202,121 @@ namespace microcode {
         }
     }
 
-    // TODO: reimplement for a matrix represented by
-    // TODO: a 1D array, with a givn matrix width such that
-    // TODO: the length of the array is a multiple of the width
-    // TODO: this will eventually let us get rid of buttons altogether
-    //   class MatrixNavigator implements INavigator
-    class MatrixNavigator extends RowNavigator {
-        protected hasDelete: boolean
+    // TODO: need to handle case in which last row is not complete
+    class MatrixNavigator implements INavigator {
+        protected deleteButton: Button
+        protected buttons: Button[]
+        protected width: number
+        protected row: number
+        protected col: number
 
-        public initialCursor(row: number = 0, col: number = 0) {
-            this.hasDelete = this.buttonGroups[0].length == 1
-            this.row = 2 + (this.hasDelete ? 1 : 0)
+        constructor(width: number) {
+            this.width = width
+            this.buttons = []
+        }
+
+        get hasDelete() {
+            return !!this.deleteButton
+        }
+
+        private height() {
+            return this.buttons.length / this.width
+        }
+
+        private currentRowWidth() {
+            return this.row < this.height() - 1 ? this.width : this.buttons.length % this.width
+        }
+
+        private currentRowRagged() {
+            return this.currentRowWidth() != this.width
+        }
+
+        public initialCursor(row: number = 0, col: number = 0): Button {
+            this.row = 2 + (this.deleteButton ? 1 : 0)
             this.col = 2
-            const btn = this.buttonGroups[this.row][this.col]
-            this.reportAria(btn)
+            this.reportAria(this.getCurrent())
+            return this.getCurrent()
+        }
 
-            return btn
+        clear() {
+            this.buttons = []
+            this.deleteButton = undefined
+        }
+
+        addButtons(btns: Button[]) {
+            this.buttons = this.buttons.concat(btns)
+            assert(this.buttons.length % this.width == 0)
+        }
+
+        getCurrent() {
+            return this.row == -1 ? this.deleteButton : 
+                this.buttons[this.row * this.width + this.col]
+        }
+
+        finished() {}
+
+        screenToButton(x: number, y: number) {
+            const p = new Vec2(x, y)
+            const target = this.buttons.find(btn =>
+                Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
+            )
+            if (target) {
+                const index = this.buttons.indexOf(target)
+                this.row = index / this.width
+                this.col = index % this.width
+            }
+            return target
+        }
+
+        move(dir: CursorDir) {
+            switch (dir) {
+                case CursorDir.Up: {
+                    if (this.row > 0) this.row--
+                    else if (this.deleteButton) this.row = -1
+                    break
+                }
+                case CursorDir.Down: {
+                    if (this.row < this.height() - 1) {
+                        this.row++
+                        if (this.currentRowRagged() && this.col >= this.currentRowWidth()) {
+                            this.col = this.currentRowWidth() - 1
+                        }
+                    }
+                    break
+                }
+                case CursorDir.Left: {
+                    if (this.col > 0) this.col--
+                    else if (this.row > 0) {
+                        this.row--
+                        this.col = this.width - 1
+                    } else if (this.deleteButton) {
+                        this.row = -1
+                    }
+                    break
+                }
+                case CursorDir.Right: {
+                    if (this.row == -1) this.row = 0
+                    else if (this.col < this.width - 1) this.col++
+                    else if (this.row < this.height() -1) {
+                        this.row++
+                        this.col = 0
+                    }
+                    break
+                }   
+            }
+            this.reportAria(this.getCurrent())
+            return this.getCurrent()
+        }
+        
+        public updateAria() {
+            this.reportAria(this.getCurrent())
         }
 
         protected reportAria(btn: Button) {
             if (!btn) {
                 return null
             }
-            if (this.hasDelete && this.row == 0 && this.col == 0) {
+            if (this.deleteButton && this.row == 0 && this.col == 0) {
                 accessibility.setLiveContent(<
                     accessibility.TextAccessibilityMessage
                 >{
