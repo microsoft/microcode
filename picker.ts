@@ -73,7 +73,7 @@ namespace microcode {
     }
 
     export class Picker implements IPlaceable {
-        public groups: PickerGroup[]
+        public group: PickerGroup
         public navigator: INavigator
         public visible: boolean
 
@@ -94,12 +94,12 @@ namespace microcode {
 
         constructor(private cursor: Cursor) {
             this.xfrm_ = new Affine()
-            this.groups = []
+            this.group = undefined
             this.navigator = new RowNavigator()
         }
 
-        public addGroup(opts: { btns: PickerButtonDef[] }) {
-            this.groups.push(new PickerGroup(this, opts))
+        public setGroup(opts: { btns: PickerButtonDef[] }) {
+            this.group = new PickerGroup(this, opts)
         }
 
         public onButtonClicked(button: PickerButton, icon: string) {
@@ -158,14 +158,14 @@ namespace microcode {
                     },
                 })
             }
-            this.groups.forEach(group => {
-                const btns = group.opts.btns || []
+            if (this.group) {
+                const btns = this.group.opts.btns || []
                 btns.forEach(btn => {
                     const button = new PickerButton(this, btn)
-                    group.buttons.push(button)
+                    this.group.buttons.push(button)
                     if (btn.start) this.startBtn = button
                 })
-            })
+            }
             this.layout(opts.maxPerRow ? opts.maxPerRow : MAX_PER_ROW)
             this.visible = true
         }
@@ -175,7 +175,7 @@ namespace microcode {
             this.navigator.clear()
             this.cursor.restoreState(this.prevState)
             this.deleteBtn = undefined
-            this.groups = []
+            this.group = undefined
             if (this.onHide) {
                 this.onHide()
             }
@@ -196,7 +196,7 @@ namespace microcode {
                     microcode.font
                 )
             }
-            this.groups.forEach(group => group.draw())
+            if (this.group) this.group.draw()
             if (this.deleteBtn) this.deleteBtn.draw()
         }
 
@@ -210,18 +210,16 @@ namespace microcode {
             if (this.deleteBtn) {
                 this.navigator.addButtons([this.deleteBtn])
             }
-            this.groups.forEach((group, idx) => {
+            if (this.group) {
+                const group = this.group
                 group.layout(maxPerRow)
-                if (idx === 0) {
-                    top += group.buttons[0].height >> 1
-                } else {
-                    top += 1
-                }
+                top += group.buttons[0].height >> 1
                 group.xfrm.localPos.y = top
                 this.panel.add(Bounds.Translate(group.bounds, new Vec2(0, top)))
                 top += group.bounds.height
+                // TOD: this is a problem, as we got rid of rows
                 this.navigator.addButtons(group.buttons)
-            })
+            }
 
             if (this.deleteBtn) {
                 this.deleteBtn.xfrm.localPos.x =
