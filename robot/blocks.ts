@@ -41,6 +41,20 @@ namespace microcode {
         robot.motorRun(0, 0)
     }
 
+    /*
+     * If available, sets the opening of the arm; otherwise ignored.
+     * @param percent
+     */
+    //% block="robot arm open $aperture \\$"
+    //% blockid="microcoderobotarmopen"
+    //% aperture.min=0
+    //% aperture.max=100
+    //% weight=49
+    export function armOpen(aperture: number) {
+        checkRobotDriver()
+        robot.armOpen(aperture)
+    }
+
     /**
      * Gets the distance reported by the distance sensor
      */
