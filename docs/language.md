@@ -231,6 +231,7 @@ Additionally to motors, the robot had LEDs that can be controlled as well.
 -   ![LED color red](./images/generated/icon_CAR9.png){:class="icon"} `LED red`, turns LED to red
 -   ![LED color green](./images/generated/icon_CAR10.png){:class="icon"} `LED green`, turns LED to green
 -   ![LED color blue](./images/generated/icon_CAR11.png){:class="icon"} `LED blue`, turns LED to blue
+-   ![LED OFF](./images/generated/icon_CAR12.png){:class="icon"} `LED OFF`, turns LEDs OFF
 
 The forward, backward, left, right and stop blocks
 can be sequenced in the same rule.
