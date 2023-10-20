@@ -11,6 +11,11 @@ namespace microcode {
         start?: boolean
     }
 
+    export interface IPicker {
+        size: number
+        getPickerButtonDef(index: number): PickerButtonDef
+    }
+
     export class PickerButton extends Button {
         constructor(public picker: Picker, btn: PickerButtonDef) {
             super({
