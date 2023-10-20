@@ -314,11 +314,20 @@ namespace microcode {
                         else led.unplot(2, y)
                 }
                 if (d !== this.lastSonarValue) {
+                    const prevd = this.lastSonarValue
                     this.lastSonarValue = d
-                    //this.playTone(2400 - d * 400, 200 + d * 25)
-                    const msg =
-                        microcode.robots.RobotCompactCommand.ObstacleState | d
-                    this.sendCompactCommand(msg)
+
+                    // emit all intermediate events
+                    const sd = Math.sign(d - prevd)
+                    const n = Math.abs(d - prevd)
+                    let di = prevd
+                    for (let i = 0; i < n; ++i) {
+                        di = di + sd
+                        const msg =
+                            microcode.robots.RobotCompactCommand.ObstacleState |
+                            di
+                        this.sendCompactCommand(msg)
+                    }
                     microcode.robots.raiseEvent(
                         microcode.robots.RobotCompactCommand.ObstacleState
                     )
