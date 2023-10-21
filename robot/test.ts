@@ -1,6 +1,6 @@
-//microcode.elecfreaksCuteBot.start()
-//microcode.yahboomTinyBit.start()
-microcode.elecfreaksCuteBotPro.start()
+microcode.elecfreaksCuteBot.start()
+//microcode.yahboomTinyBit.start(
+//microcode.elecfreaksCuteBotPro.start()
 //microcode.keyStudioMiniSmartRobot.start()
 //microcode.setMotorDrift(6)
 //microcode.dfRobotMaqueen.start()

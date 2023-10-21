@@ -30,7 +30,7 @@ namespace microcode {
         /**
          * Gets the latest distance returned by the sensor
          */
-        currentUltrasonicDistance: number = 100
+        private readonly sonarDistanceFilter = new KalmanFilter1D()
         private lastSonarValue = 0
 
         private showConfiguration: boolean = false
@@ -68,6 +68,10 @@ namespace microcode {
 
         constructor(robot: robots.Robot) {
             this.robot = robot
+        }
+
+        get currentUltrasonicDistance() {
+            return Math.round(this.sonarDistanceFilter.x)
         }
 
         private configureButtons() {
@@ -335,27 +339,24 @@ namespace microcode {
 
         private updateSonar() {
             const dist = this.ultrasonicDistance()
-            if (dist > this.robot.ultrasonicMinReading) {
-                const d = Math.clamp(1, 5, Math.ceil(dist / 5))
-                if (d !== this.lastSonarValue) {
-                    const prevd = this.lastSonarValue
-                    this.lastSonarValue = d
+            const d = Math.clamp(1, 5, Math.ceil(dist / 5))
+            if (d !== this.lastSonarValue) {
+                const prevd = this.lastSonarValue
+                this.lastSonarValue = d
 
-                    // emit all intermediate events
-                    const sd = Math.sign(d - prevd)
-                    const n = Math.abs(d - prevd)
-                    let di = prevd
-                    for (let i = 0; i < n; ++i) {
-                        di = di + sd
-                        const msg =
-                            microcode.robots.RobotCompactCommand.ObstacleState |
-                            di
-                        this.sendCompactCommand(msg)
-                    }
-                    microcode.robots.raiseEvent(
-                        microcode.robots.RobotCompactCommand.ObstacleState
-                    )
+                // emit all intermediate events
+                const sd = Math.sign(d - prevd)
+                const n = Math.abs(d - prevd)
+                let di = prevd
+                for (let i = 0; i < n; ++i) {
+                    di = di + sd
+                    const msg =
+                        microcode.robots.RobotCompactCommand.ObstacleState | di
+                    this.sendCompactCommand(msg)
                 }
+                microcode.robots.raiseEvent(
+                    microcode.robots.RobotCompactCommand.ObstacleState
+                )
             }
 
             if (!this.showConfiguration && this.lastSonarValue !== undefined) {
@@ -407,20 +408,17 @@ namespace microcode {
                     PulseValue.High,
                     this.maxCmDistance * usToCm
                 )
-                return Math.idiv(d, usToCm)
+                if (d <= 0) return this.maxCmDistance
+                return d / usToCm
             }
         }
 
         private ultrasonicDistance() {
-            let retry = 3
-            while (retry-- > 0) {
-                const dist = this.ultrasonicDistanceOnce()
-                if (dist > this.robot.ultrasonicMinReading) {
-                    this.currentUltrasonicDistance = dist
-                    break
-                } else basic.pause(1)
-            }
-            return this.currentUltrasonicDistance
+            const dist = this.ultrasonicDistanceOnce()
+            if (dist > this.robot.sonarMinReading)
+                this.sonarDistanceFilter.filter(dist)
+            const filtered = this.sonarDistanceFilter.x
+            return filtered
         }
 
         private readLineState() {

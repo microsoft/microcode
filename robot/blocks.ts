@@ -44,10 +44,10 @@ namespace microcode {
     /**
      * Gets the distance reported by the distance sensor
      */
-    //% block="robot obstacle distance"
+    //% block="robot obstacle distance (cm)"
     //% blockId=microcoderobotobstacledistance
     //% group="Input"
-    export function obstacleDistance() {
+    export function obstacleDistance(): number {
         checkRobotDriver()
         return robot.currentUltrasonicDistance
     }

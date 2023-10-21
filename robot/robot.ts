@@ -63,7 +63,7 @@ namespace microcode.robots {
         /**
          * Minimum reading from ultrasonic sensor to be considered valid
          */
-        ultrasonicMinReading = 1
+        sonarMinReading = 2
         /**
          * Number of iteration before the line is considered lost and line assist
          * disengages
