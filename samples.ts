@@ -183,7 +183,7 @@ namespace microcode {
             },
             {
                 label: "robot line follow",
-                b64: "JfiSPgounRpoNL4aZjTAGmc0wRppNMUBAQEBAQA=",
+                b64: "JfiSPgoumxpoNL4aZjTAGmc0wRpqNMQaazTFGmk0wgEBAQEBAA==",
             },
             {
                 label: "robot showcase",
