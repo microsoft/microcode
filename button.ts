@@ -80,45 +80,27 @@ namespace microcode {
         return borderTop(style) + borderBottom(style)
     }
 
-    export class Button implements IComponent, ISizable, IPlaceable {
+    export class ButtonBase implements IComponent, ISizable, IPlaceable {
         private xfrm_: Affine
-        private icon: Sprite
+        protected icon: Sprite
         private style: ButtonStyle
-        private iconId: string | Image
-        private _ariaId: string
-        public onClick?: (button: Button) => void
 
-        //% blockCombine block="xfrm" callInDebugger
+        constructor(x: number, y: number, style: ButtonStyle, parent: Affine) {
+            this.xfrm_ = new Affine()
+            this.xfrm.localPos.x = x
+            this.xfrm.localPos.y = y
+            this.style = style
+            this.xfrm.parent = parent
+        }
+
         public get xfrm() {
             return this.xfrm_
         }
-        //% blockCombine block="width" callInDebugger
         public get width() {
             return this.bounds.width
         }
-        //% blockCombine block="height" callInDebugger
         public get height() {
             return this.bounds.height
-        }
-
-        public get ariaId(): string {
-            return (
-                this._ariaId ||
-                (typeof this.iconId === "string" ? <string>this.iconId : "")
-            )
-        }
-
-        public set ariaId(value: string) {
-            this._ariaId = value
-        }
-
-        reportAria(force = false) {
-            const msg: accessibility.TileAccessibilityMessage = {
-                type: "tile",
-                value: this.ariaId,
-                force,
-            }
-            accessibility.setLiveContent(msg)
         }
 
         public get bounds() {
@@ -139,49 +121,16 @@ namespace microcode {
             return xfrm
         }
 
-        constructor(opts: {
-            parent?: IPlaceable
-            style?: ButtonStyle
-            icon: string | Image
-            ariaId?: string
-            x: number
-            y: number
-            onClick?: (button: Button) => void
-        }) {
-            this.xfrm_ = new Affine()
-            this.xfrm.parent = opts.parent && opts.parent.xfrm
-            this.style = opts.style || ButtonStyles.Transparent
-            this.iconId = opts.icon
-            this._ariaId = opts.ariaId
-            this.xfrm.localPos.x = opts.x
-            this.xfrm.localPos.y = opts.y
-            this.onClick = opts.onClick
-            this.buildSprite()
-        }
-
-        public getIcon() {
-            return this.iconId
-        }
-
-        public setIcon(iconId: string, img?: Image) {
-            this.iconId = iconId
-            if (img) this.icon.setImage(img)
-            else this.buildSprite()
+        protected buildSprite(img: Image) {
+            this.icon = new Sprite({
+                parent: this,
+                img,
+            })
+            this.icon.xfrm.parent = this.xfrm
         }
 
         public getImage() {
             return this.icon.image
-        }
-
-        private buildSprite() {
-            this.icon = new Sprite({
-                parent: this,
-                img:
-                    typeof this.iconId == "string"
-                        ? icons.get(this.iconId)
-                        : this.iconId,
-            })
-            this.icon.xfrm.parent = this.xfrm
         }
 
         public occlusions(bounds: Bounds) {
@@ -190,9 +139,6 @@ namespace microcode {
 
         public setVisible(visible: boolean) {
             this.icon.invisible = !visible
-            //if (this.text) {
-            //    this.text.setFlag(SpriteFlag.Invisible, !visible);
-            //}
             if (!visible) {
                 this.hover(false)
             }
@@ -201,22 +147,9 @@ namespace microcode {
         public visible() {
             return !this.icon.invisible
         }
-        public clickable() {
-            return this.visible() && this.onClick != null
-        }
 
-        public click() {
-            if (!this.visible()) {
-                return
-            }
-            if (this.onClick) {
-                this.onClick(this)
-            }
-        }
-
-        hover(hov: boolean) {}
-
-        update() {}
+        public hover(hov: boolean) {}
+        public update() {}
 
         isOffScreenX(): boolean {
             return this.icon.isOffScreenX()
@@ -263,5 +196,81 @@ namespace microcode {
                 )
             }
         }
+    }
+
+    export class Button extends ButtonBase {
+        private iconId: string | Image
+        private _ariaId: string
+        public onClick?: (button: Button) => void
+
+        public get ariaId(): string {
+            return (
+                this._ariaId ||
+                (typeof this.iconId === "string" ? <string>this.iconId : "")
+            )
+        }
+
+        public set ariaId(value: string) {
+            this._ariaId = value
+        }
+
+        reportAria(force = false) {
+            const msg: accessibility.TileAccessibilityMessage = {
+                type: "tile",
+                value: this.ariaId,
+                force,
+            }
+            accessibility.setLiveContent(msg)
+        }
+
+        constructor(opts: {
+            parent?: IPlaceable
+            style?: ButtonStyle
+            icon: string | Image
+            ariaId?: string
+            x: number
+            y: number
+            onClick?: (button: Button) => void
+        }) {
+            super(
+                opts.x,
+                opts.y,
+                opts.style || ButtonStyles.Transparent,
+                opts.parent && opts.parent.xfrm
+            )
+            this.iconId = opts.icon
+            this._ariaId = opts.ariaId
+            this.onClick = opts.onClick
+            this.buildSprite(this.image_())
+        }
+
+        public getIcon() {
+            return this.iconId
+        }
+
+        private image_() {
+            return typeof this.iconId == "string"
+                ? icons.get(this.iconId)
+                : this.iconId
+        }
+        public setIcon(iconId: string, img?: Image) {
+            this.iconId = iconId
+            if (img) this.icon.setImage(img)
+            else this.buildSprite(this.image_())
+        }
+
+        public clickable() {
+            return this.visible() && this.onClick != null
+        }
+
+        public click() {
+            if (!this.visible()) {
+                return
+            }
+            if (this.onClick) {
+                this.onClick(this)
+            }
+        }
+        hover(hov: boolean) {}
     }
 }
