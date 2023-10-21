@@ -19,10 +19,13 @@ namespace microcode {
     }
 
     /**
-     *
+     * A driver for a generic robot interface
      */
     //% fixedInstances
     export class RobotDriver {
+        /**
+         * The robot instance
+         */
         readonly robot: robots.Robot
         /**
          * Gets the latest distance returned by the sensor
@@ -57,6 +60,11 @@ namespace microcode {
 
         private sonar: robots.Sonar
         private lineDetectors: robots.LineDetectors
+
+        /**
+         * Maximum distance in cm for the ultrasonic sensor
+         */
+        maxCmDistance = 40
 
         constructor(robot: robots.Robot) {
             this.robot = robot
@@ -377,27 +385,29 @@ namespace microcode {
         }
 
         private ultrasonicDistanceOnce() {
-            if (!this.sonar) return this.robot.ultrasonicDistance()
+            if (!this.sonar)
+                return this.robot.ultrasonicDistance(this.maxCmDistance)
             else {
                 const trig = this.sonar.trig
                 const echo = this.sonar.echo
-                const maxCmDistance = 50
-                const TO_CM = 58
+                const lowUs = this.sonar.pulseLowUs || 4
+                const highUs = this.sonar.pulseHighUs || 10
+                const usToCm = this.sonar.usPerCm || 58
 
                 // send pulse
                 pins.digitalWritePin(trig, 0)
-                control.waitMicros(4)
+                control.waitMicros(lowUs)
                 pins.digitalWritePin(trig, 1)
-                control.waitMicros(10)
+                control.waitMicros(highUs)
                 pins.digitalWritePin(trig, 0)
 
                 // read pulse
                 const d = pins.pulseIn(
                     echo,
                     PulseValue.High,
-                    maxCmDistance * TO_CM
+                    this.maxCmDistance * usToCm
                 )
-                return Math.idiv(d, TO_CM)
+                return Math.idiv(d, usToCm)
             }
         }
 

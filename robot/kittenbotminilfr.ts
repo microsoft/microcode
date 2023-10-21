@@ -26,19 +26,17 @@ namespace microcode {
         constructor() {
             super()
 
-            this.commands[
-                microcode.robots.RobotCompactCommand.MotorTurnLeft
-            ] = {
-                turnRatio: -50,
-                speed: 40,
-            }
+            this.commands[microcode.robots.RobotCompactCommand.MotorTurnLeft] =
+                {
+                    turnRatio: -50,
+                    speed: 40,
+                }
 
-            this.commands[
-                microcode.robots.RobotCompactCommand.MotorTurnRight
-            ] = {
-                turnRatio: 50,
-                speed: 40,
-            }
+            this.commands[microcode.robots.RobotCompactCommand.MotorTurnRight] =
+                {
+                    turnRatio: 50,
+                    speed: 40,
+                }
 
             serial.redirect(SerialPin.P0, SerialPin.P1, 115200)
             serial.writeString("\n\n")
@@ -99,7 +97,7 @@ namespace microcode {
             )
         }
 
-        ultrasonicDistance(): number {
+        ultrasonicDistance(maxCmDistance: number): number {
             return this.ultrasonicValue
         }
 

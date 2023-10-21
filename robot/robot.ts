@@ -7,6 +7,18 @@ namespace microcode.robots {
     export interface Sonar {
         echo: DigitalPin
         trig: DigitalPin
+        /**
+         * Microseconds to keep the trigger pin low. Default is 4.
+         */
+        pulseLowUs?: number
+        /**
+         * Microseconds to keep the trigger pin high. Default is 10.
+         */
+        pulseHighUs?: number
+        /**
+         * Microseconds per cm. Defaults to 58.
+         */
+        usPerCm?: number
     }
 
     export interface LineDetectors {
@@ -133,7 +145,7 @@ namespace microcode.robots {
          * Optional: reads the sonar, in cm.
          * @returns distance in cm; negative number if unsupported
          */
-        ultrasonicDistance(): number {
+        ultrasonicDistance(maxCmDistance: number): number {
             return -1
         }
 
