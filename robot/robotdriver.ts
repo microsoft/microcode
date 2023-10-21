@@ -528,6 +528,13 @@ namespace microcode {
         }
 
         public decodeRobotCompactCommand(msg: number) {
+            if (
+                msg >= microcode.robots.RobotCompactCommand.Command &&
+                msg <= microcode.robots.RobotCompactCommand.CommandLast
+            ) {
+                this.inRadioMessageId++
+                this.playTone(440, 40)
+            }
             switch (msg) {
                 case microcode.robots.RobotCompactCommand.MotorStop:
                 case microcode.robots.RobotCompactCommand.MotorTurnLeft:
@@ -537,12 +544,10 @@ namespace microcode {
                 case microcode.robots.RobotCompactCommand.MotorRunForwardFast:
                 case microcode.robots.RobotCompactCommand.MotorRunForward:
                 case microcode.robots.RobotCompactCommand.MotorRunBackward: {
-                    this.inRadioMessageId++
                     const command = this.robot.commands[msg] || {}
                     const turnRatio = command.turnRatio || 0
                     const speed = command.speed || 0
                     this.motorRun(turnRatio, speed)
-                    this.playTone(440, 40)
                     break
                 }
                 case microcode.robots.RobotCompactCommand.LEDRed:
@@ -556,6 +561,12 @@ namespace microcode {
                     break
                 case microcode.robots.RobotCompactCommand.LEDOff:
                     this.setColor(0x00000)
+                    break
+                case microcode.robots.RobotCompactCommand.ArmOpen:
+                    this.armOpen(100)
+                    break
+                case microcode.robots.RobotCompactCommand.ArmClose:
+                    this.armOpen(0)
                     break
             }
         }
