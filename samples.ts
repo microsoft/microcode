@@ -189,6 +189,10 @@ namespace microcode {
                 label: "robot showcase",
                 b64: "JfiSPgoumwtJNL7IC0o0wsYZTzTEvgEBAQEBAA==",
             },
+            {
+                label: "robot drift tester",
+                b64: "JfiSPgoumwtJNL7IC0o0w8cSNMLGAQEBAQEA",
+            },
         ])
     }
 

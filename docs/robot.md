@@ -12,7 +12,7 @@ The platform is based on a robust robot controller, written using MakeCode, that
 
 MicroCode provides a simplified programming experience for robots that are equipped with two motors, sonar and line sensors. The user's code can be updated very quickly using the Arcade shield.
 
-![robot line following](./images/generated/sample_robot_line_follow.png){:class="sample"}
+![robot blocks showcase](./images/generated/sample_robot_showcase_page_1.png){:class="sample"}
 
 ## Preparing the robot micro:bit
 
@@ -44,6 +44,10 @@ On the robot micro:bit,
 
 -   Press ` A+B` to switch to configuration mode, until you see the `DRIFT ...` message.
 -   Let the robot go forward until it goes as straight as possible by pressing A and B to increase or modify the drift.
+
+![robot drift tester](./images/generated/sample_robot_drift_tester_page_1.png){:class="sample"}
+
+The robot drift tester program above lets you test the drift for medium and high speeds. Clap or shoot to stop the robot.
 
 The drift value will be stored in the flash of the micro:bit and will be used every time the robot is reset.
 (However it will be erased if you download another .hex file, so you might want to write it down somewhere).
