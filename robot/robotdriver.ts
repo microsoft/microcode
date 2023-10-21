@@ -329,11 +329,6 @@ namespace microcode {
             const dist = this.ultrasonicDistance()
             if (dist > this.robot.ultrasonicMinReading) {
                 const d = Math.clamp(1, 5, Math.ceil(dist / 5))
-                if (!this.showConfiguration) {
-                    for (let y = 0; y < 5; y++)
-                        if (y + 1 >= d) led.plot(2, y)
-                        else led.unplot(2, y)
-                }
                 if (d !== this.lastSonarValue) {
                     const prevd = this.lastSonarValue
                     this.lastSonarValue = d
@@ -353,6 +348,13 @@ namespace microcode {
                         microcode.robots.RobotCompactCommand.ObstacleState
                     )
                 }
+            }
+
+            if (!this.showConfiguration && this.lastSonarValue !== undefined) {
+                const d = this.lastSonarValue
+                for (let y = 0; y < 5; y++)
+                    if (5 - y <= d) led.plot(2, y)
+                    else led.unplot(2, y)
             }
         }
 
