@@ -1,6 +1,6 @@
 {
     "name": "microcode-robot",
-    "version": "2.5.12",
+    "version": "2.5.13",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -24,11 +24,15 @@
         "storage.ts",
         "kalmanfilter1d.ts"
     ],
-    "testFiles": ["test.ts"],
+    "testFiles": [
+        "test.ts"
+    ],
     "targetVersions": {
         "target": "6.0.19",
         "targetId": "microbit"
     },
-    "supportedTargets": ["microbit"],
+    "supportedTargets": [
+        "microbit"
+    ],
     "preferredEditor": "tsprj"
 }
