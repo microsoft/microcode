@@ -78,6 +78,22 @@ No assembly required. Large screen and 3d-printed enclosure with LiPo battery in
 
 </table>
 
+## micro:bit Robots {#robots}
+
+Remote control a [micro:bit robot](./robot) using MicroCode
+to follow lines, avoid obstacles and more.
+
+![robot avoid wall program](./images/generated/sample_robot_showcase_page_1.png){:class="sample"}
+
+![Photograph of the Cutebot](./images/robots.jpg){:class="sample"}
+
+## Accessories {#jacdac}
+
+MicroCode supports accessories to extend the micro:bit device with LEDs, servos, motors, ...
+In this video, we launch an LED animation when a clap is detected. The accessories are powered by [Jacdac](https://microsoft.github.io/jacdac-docs).
+
+<video class="sample" poster="./videos/jacdac-led.png" src="./videos/jacdac-led.mp4" controls="true"></video>
+
 ## Localization {#localization}
 
 MicroCode is community translated through Crowdin. Please read on [localization](./localization) to get started.
@@ -162,22 +178,6 @@ By clicking on the `tooltip reader` button at the bottom of the editor, the tool
 There are three slots for saving user programs for later load/restore. From the editor, click on the disk icon
 ![disk icon](./images/generated/icon_disk.png)
 in the upper left to select which slot to save the current program to. From the home screen, select the disk icon to load a program from one of the three save slots.
-
-## micro:bit Robots {#robots}
-
-Remote control a [micro:bit robot](./robot) using MicroCode
-to follow lines, avoid obstacles and more.
-
-![robot avoid wall program](./images/generated/sample_robot_avoid_wall.png){:class="sample"}
-
-![Photograph of the Cutebot](./images/robots.jpg){:class="sample"}
-
-## Jacdac accessories {#jacdac}
-
-MicroCode supports Jacdac modules to extend the micro:bit device with LEDs, servos, motors, ...
-In this video, we launch an LED animation when a clap is detected.
-
-<video class="sample" poster="./videos/jacdac-led.png" src="./videos/jacdac-led.mp4" controls="true"></video>
 
 ## Community
 
