@@ -8,6 +8,15 @@ There are many [BBC micro:bit robot accessories](https://microbit.org/buy/access
 
 The platform is based on a robust robot controller, written using MakeCode, that runs on the robot (micro:bit V1 or V2) and exposes a radio protocol to communicate with another micro:bit, running the user's program. The robot controller code is written using MakeCode for the micro:bit and has a common set of programming blocks.
 
+## Robot features
+
+-   **Two motors** - the robot controller can drive two motors independently, allowing the robot to move forward, backward, turn left and right. Microcode provides a calibration feature to compensate for motor drift, and smooth acceleration and deceleration.
+-   **Line sensors** - the robot controller can read the state of two line sensors, allowing the robot to follow a line. Microcode provides enhanced line following features, including tracking transition to help with line following algorithms.
+-   **Sonar** - the robot controller can read the distance from a sonar sensor, allowing the robot to avoid obstacles. The library has a builtin filtering feature to reduce sensor noise.
+-   **Radio** - the robot controller can communicate with another micro:bit using the radio, allowing the user's program to control the robot.
+-   **Universal MakeCode blocks** for all robots: the robot controller exposes a common set of programming blocks, allowing the user's program to work with any robot that supports the platform.
+-   Supports micro:bit V1: Recycle your micro:bit as robot controllers!
+
 ## MicroCode programming
 
 MicroCode provides a simplified programming experience for robots that are equipped with two motors, sonar and line sensors. The user's code can be updated very quickly using the Arcade shield.
