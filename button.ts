@@ -271,6 +271,5 @@ namespace microcode {
                 this.onClick(this)
             }
         }
-        hover(hov: boolean) {}
     }
 }

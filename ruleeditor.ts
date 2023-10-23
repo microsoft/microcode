@@ -196,7 +196,10 @@ namespace microcode {
             ]
             this.editor.picker.setGroup({ btns })
             this.editor.picker.show({
-                onClick: iconId => this.handleRuleHandleMenuSelection(iconId),
+                onClick: index =>
+                    this.handleRuleHandleMenuSelection(
+                        btns[index].icon as string
+                    ),
             })
         }
 
@@ -346,7 +349,7 @@ namespace microcode {
                         tileUpdated(theOne)
                     },
                     onDelete,
-                    selected: selectedButton
+                    selected: selectedButton,
                 })
             }
             return

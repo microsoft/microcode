@@ -6,7 +6,6 @@ namespace microcode {
 
     export type PickerButtonDef = {
         icon: string | Image
-        style?: ButtonStyle  // TODO: get rid of this, usually one style for all buttons!
         ariaId?: string
     }
 
@@ -15,29 +14,12 @@ namespace microcode {
         getPickerButtonDef(index: number): PickerButtonDef
     }
 
-    // TODO: get rid of PickerButton, this is overkill as 
-    // TODO: we have a mostly matrix layout
-    export class PickerButton extends Button {
-        constructor(public picker: Picker, btn: PickerButtonDef) {
-            super({
-                parent: picker,
-                style: btn.style || ButtonStyles.LightShadowedWhite,
-                icon: btn.icon,
-                ariaId: btn.ariaId,
-                x: 0,
-                y: 0,
-                onClick: () =>
-                    this.picker.onButtonClicked(this, <string>btn.icon),
-            })
-        }
-    }
-
     // the picker group only needs to access the PickerButtonDefs list,
     // which should be functionalized to reduce memory pressure, no
     // need for buttons here
     class PickerGroup {
         public xfrm: Affine
-        public buttons: Button[]
+        public buttons: ButtonBase[]
         public bounds: Bounds
 
         constructor(
@@ -53,9 +35,14 @@ namespace microcode {
             this.xfrm.parent = picker.xfrm
         }
 
+        // TODO: on click
+
         public layout(maxPerRow: number) {
+            // first compute bounds of cell
             const cell = new Bounds()
             this.buttons.forEach(btn => cell.add(btn.bounds))
+            // matrix layout of buttons
+            this.bounds = new Bounds()
             this.buttons.forEach((btn, idx) => {
                 btn.xfrm.parent = this.xfrm
                 const row = Math.idiv(idx, maxPerRow)
@@ -64,11 +51,8 @@ namespace microcode {
                     (idx % maxPerRow) * cell.width +
                     (idx % maxPerRow)
                 btn.xfrm.localPos.y = row * cell.height
-            })
-            this.bounds = new Bounds()
-            this.buttons.forEach(btn =>
                 this.bounds.add(Bounds.Translate(btn.bounds, btn.xfrm.localPos))
-            )
+            })
         }
 
         public draw() {
@@ -86,11 +70,12 @@ namespace microcode {
         private prevState: CursorState
         private deleteBtn: Button
         private panel: Bounds
-        private onClick: (btn: string, button?: Button) => void
+        private onClick: (index: number) => void
         private onHide: () => void
         private onDelete: () => void
         private hideOnClick: boolean
         private title: string
+        private style: ButtonStyle
 
         public get xfrm() {
             return this.xfrm_
@@ -106,14 +91,14 @@ namespace microcode {
             this.group = new PickerGroup(this, opts)
         }
 
-        public onButtonClicked(button: PickerButton, icon: string) {
+        public onButtonClicked(index: number) {
             const onClick = this.onClick
             if (this.hideOnClick) {
                 this.cursor.cancelHandlerStack.pop()
                 this.hide()
             }
             if (onClick) {
-                onClick(icon, button)
+                onClick(index)
             }
         }
 
@@ -126,11 +111,12 @@ namespace microcode {
         show(
             opts: {
                 title?: string
-                onClick?: (btn: string, button: Button) => void
+                onClick?: (index: number) => void
                 onHide?: () => void
                 onDelete?: () => void
                 navigator?: () => PickerNavigator
                 selected?: number
+                buttonStyle?: ButtonStyle
             },
             hideOnClick: boolean = true
         ) {
@@ -150,6 +136,7 @@ namespace microcode {
             }
             this.hideOnClick = hideOnClick
             this.title = opts.title
+            this.style = opts.buttonStyle || ButtonStyles.LightShadowedWhite
             this.prevState = this.cursor.saveState()
             this.cursor.navigator = this.navigator
             this.cursor.cancelHandlerStack.push(() => this.cancelClicked())
@@ -169,7 +156,7 @@ namespace microcode {
             if (this.group) {
                 const btns = this.group.opts.btns || []
                 btns.forEach(btn => {
-                    const button = new PickerButton(this, btn)
+                    const button = new ButtonBase(0, 0, this.style, this.xfrm)
                     this.group.buttons.push(button)
                 })
             }
@@ -238,23 +225,10 @@ namespace microcode {
             this.xfrm.localPos.x = padding - (this.panel.width >> 1)
             this.xfrm.localPos.y = padding - (this.panel.height >> 1)
 
-            if (this.start < 0) {
-                const btn = this.navigator.initialCursor(
-                    this.deleteBtn ? 1 : 0,
-                    0
-                )
-                this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
-                btn.reportAria()
-            } else {
-                // TODO: off by one row
-                const btn = this.group.buttons[this.start]
-                this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
-                this.navigator.screenToButton(
-                    btn.xfrm.worldPos.x,
-                    btn.xfrm.worldPos.y
-                )
-                btn.reportAria()
-            }
+            if (this.start < 0) this.start = 0
+            const btn = this.group.buttons[this.start]
+            this.navigator.moveToIndex(this.start)
+            this.cursor.moveTo(btn.xfrm.worldPos, "", btn.bounds) // TODO
         }
     }
 

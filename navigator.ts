@@ -197,10 +197,11 @@ namespace microcode {
     }
 
     // mostly a matrix, except for last row, which may be ragged
-    // also supports delete button 
+    // also supports delete button
+    // add support for aria
     export class PickerNavigator implements INavigator {
         protected deleteButton: Button
-        protected buttons: Button[]
+        protected buttons: ButtonBase[]
         protected width: number
         protected row: number
         protected col: number
@@ -214,12 +215,21 @@ namespace microcode {
             return !!this.deleteButton
         }
 
+        moveToIndex(index: number) {
+            assert(index < this.buttons.length, "index out of bounds")
+            this.row = index / this.width
+            this.col = index % this.width
+            this.reportAria()
+        }
+
         private height() {
             return this.buttons.length / this.width
         }
 
         private currentRowWidth() {
-            return this.row < this.height() - 1 ? this.width : this.buttons.length % this.width
+            return this.row < this.height() - 1
+                ? this.width
+                : this.buttons.length % this.width
         }
 
         private currentRowRagged() {
@@ -231,8 +241,8 @@ namespace microcode {
             this.col = col
             const btn = this.getCurrent()
             if (btn) {
-                this.reportAria(btn)
-                return btn
+                this.reportAria()
+                return undefined // TODO
             }
             return undefined
         }
@@ -242,7 +252,7 @@ namespace microcode {
             this.deleteButton = undefined
         }
 
-        addButtons(btns: Button[]) {
+        addButtons(btns: ButtonBase[]) {
             this.buttons = this.buttons.concat(btns)
         }
 
@@ -250,16 +260,18 @@ namespace microcode {
             this.deleteButton = btn
         }
 
+        // TODO: fabricate button as needed
         getCurrent() {
-            if (this.row == -1) { return this.deleteButton }
-            else {
+            if (this.row == -1) {
+                return this.deleteButton
+            } else {
                 const index = this.row * this.width + this.col
-                if (index < this.buttons.length) return this.buttons[index]
+                if (index < this.buttons.length) return undefined // TODO return this.buttons[index]
             }
             return undefined
         }
 
-        screenToButton(x: number, y: number) {
+        screenToButton(x: number, y: number): Button {
             const p = new Vec2(x, y)
             const target = this.buttons.find(btn =>
                 Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
@@ -269,7 +281,7 @@ namespace microcode {
                 this.row = index / this.width
                 this.col = index % this.width
             }
-            return target
+            return undefined // TODO target
         }
 
         move(dir: CursorDir) {
@@ -282,7 +294,10 @@ namespace microcode {
                 case CursorDir.Down: {
                     if (this.row < this.height() - 1) {
                         this.row++
-                        if (this.currentRowRagged() && this.col >= this.currentRowWidth()) {
+                        if (
+                            this.currentRowRagged() &&
+                            this.col >= this.currentRowWidth()
+                        ) {
                             this.col = this.currentRowWidth() - 1
                         }
                     }
@@ -301,26 +316,23 @@ namespace microcode {
                 case CursorDir.Right: {
                     if (this.row == -1) this.row = 0
                     else if (this.col < this.width - 1) this.col++
-                    else if (this.row < this.height() -1) {
+                    else if (this.row < this.height() - 1) {
                         this.row++
                         this.col = 0
                     }
                     break
-                }   
+                }
             }
-            this.reportAria(this.getCurrent())
+            this.reportAria()
             return this.getCurrent()
         }
-        
+
         public updateAria() {
-            this.reportAria(this.getCurrent())
+            this.reportAria()
         }
 
-        protected reportAria(btn: Button) {
-            if (!btn) {
-                return null
-            }
-            if (this.deleteButton && this.row == 0 && this.col == 0) {
+        protected reportAria() {
+            if (this.row == -1) {
                 accessibility.setLiveContent(<
                     accessibility.TextAccessibilityMessage
                 >{
@@ -328,9 +340,7 @@ namespace microcode {
                     value: "delete_tile",
                     force: true,
                 })
-                return null
             }
-            return btn
         }
     }
 
@@ -341,11 +351,10 @@ namespace microcode {
             this.row = 2
             this.col = 2
         }
-        protected reportAria(b: Button): Button {
-            const btn = super.reportAria(b)
-            if (!btn) return null
-
-            const on = btn.getIcon() == "solid_red"
+        protected reportAria() {
+            super.reportAria()
+            if (this.row == -1) return
+            const on = true // TODO: btn.getIcon() == "solid_red"
             accessibility.setLiveContent(<
                 accessibility.LEDAccessibilityMessage
             >{
@@ -355,7 +364,6 @@ namespace microcode {
                 y: this.row,
                 force: true,
             })
-            return null
         }
     }
 
@@ -366,10 +374,10 @@ namespace microcode {
             this.row = 2
             this.col = 2
         }
-        protected reportAria(b: Button): Button {
-            let btn = super.reportAria(b)
-            if (!btn) return null
-            const on = btn.getIcon() === "note_on"
+        protected reportAria() {
+            super.reportAria()
+            if (this.row == -1) return
+            const on = true // TODO btn.getIcon() === "note_on"
             const index = this.hasDelete ? this.row - 1 : this.row
             accessibility.setLiveContent(<
                 accessibility.NoteAccessibilityMessage
@@ -379,7 +387,6 @@ namespace microcode {
                 index,
                 force: true,
             })
-            return null
         }
     }
 }
