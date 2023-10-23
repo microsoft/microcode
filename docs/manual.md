@@ -85,7 +85,7 @@ to follow lines, avoid obstacles and more.
 
 ![robot avoid wall program](./images/generated/sample_robot_showcase_page_1.png){:class="sample"}
 
-![Photograph of the Cutebot](./images/robots.jpg){:class="sample"}
+![Photograph of the Cutebot](./images/mcrc.jpg){:class="sample"}
 
 ## Accessories {#jacdac}
 
