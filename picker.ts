@@ -54,14 +54,13 @@ namespace microcode {
             // first compute bounds of biggest button
             this.cell = new Bounds()
             this.defs.forEach(def => {
-                const btn = new ButtonBase(0, 0, this.picker.style, this.xfrm.parent)
+                const btn = new ButtonBase(0, 0, this.picker.style, this.xfrm)
                 btn.buildSprite(icons.get(def.icon))
                 this.cell.add(btn.bounds)
             })
         }
 
         private setButtonCoords(idx: number, btn: ButtonBase) {
-            btn.xfrm.parent = this.xfrm
             btn.buildSprite(icons.get(this.defs[idx].icon))
             const row = Math.idiv(idx, PICKER_MAX_PER_ROW)
             btn.xfrm.localPos.x =
@@ -75,7 +74,7 @@ namespace microcode {
             // matrix layout of buttons
             this.bounds = new Bounds()
             this.defs.forEach((def, idx) => {
-                const btn = new ButtonBase(0, 0, this.picker.style, this.xfrm.parent)
+                const btn = new ButtonBase(0, 0, this.picker.style, this.xfrm)
                 this.setButtonCoords(idx, btn)
                 this.bounds.add(Bounds.Translate(btn.bounds, btn.xfrm.localPos))
                 btn.draw()
