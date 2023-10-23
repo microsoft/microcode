@@ -5,7 +5,7 @@ namespace microcode {
     // 2. the number of rows and columns (supported ragged)
 
     export type PickerButtonDef = {
-        icon: string | Image
+        icon: string
         ariaId?: string
     }
 
@@ -55,13 +55,13 @@ namespace microcode {
             this.cell = new Bounds()
             this.defs.forEach(def => {
                 const btn = new ButtonBase(0, 0, this.picker.style, this.xfrm.parent)
-                btn.icon.setImage(icons.get(def.icon as string))
+                btn.icon.setImage(icons.get(def.icon))
                 this.cell.add(btn.bounds)
             })
         }
 
         private setButtonCoords(idx: number, btn: ButtonBase) {
-            btn.icon.setImage(icons.get(this.defs[idx].icon as string))
+            btn.icon.setImage(icons.get(this.defs[idx].icon))
             const row = Math.idiv(idx, PICKER_MAX_PER_ROW)
             btn.xfrm.localPos.x =
                 (this.cell.width >> 1) +

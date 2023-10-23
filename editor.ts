@@ -86,7 +86,7 @@ namespace microcode {
             this.picker.show({
                 title: accessibility.ariaToTooltip("disk"),
                 onClick: index => {
-                    this.app.save(btns[index].icon as string, this.progdef)
+                    this.app.save(btns[index].icon, this.progdef)
                 },
             })
         }
@@ -100,7 +100,7 @@ namespace microcode {
             this.picker.setGroup(btns)
             this.picker.show({
                 onClick: i => {
-                    const index = PAGE_IDS().indexOf(btns[i].icon as string)
+                    const index = PAGE_IDS().indexOf(btns[i].icon)
                     this.switchToPage(index)
                 },
             })

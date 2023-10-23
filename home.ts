@@ -65,7 +65,7 @@ namespace microcode {
             this.picker.show({
                 title: accessibility.ariaToTooltip("load"),
                 onClick: index => {
-                    let buf = settings.readBuffer(btns[index].icon as string)
+                    let buf = settings.readBuffer(btns[index].icon)
                     if (!buf) {
                         // handles case where nothing is in slot
                         buf = Buffer.create(6)
