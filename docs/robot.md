@@ -51,7 +51,7 @@ It is not uncommon for 2 wheeled robot to slightly drift towards one side. To co
 
 On the robot micro:bit,
 
--   Press ` A+B` to switch to configuration mode, until you see the `DRIFT ...` message.
+-   Press `A+B` to switch to configuration mode, until you see the `DRIFT ...` message.
 -   Let the robot go forward until it goes as straight as possible by pressing A and B to increase or modify the drift.
 
 ![robot drift tester](./images/generated/sample_robot_drift_tester_page_1.png){:class="sample"}
