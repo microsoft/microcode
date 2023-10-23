@@ -65,6 +65,12 @@ img.rule {
     border: solid 1px #000;
 }
 
+img.photo {
+    width: 100%;
+    margin-bottom: 0.25rem;
+    border-radius: 0.25rem;
+}
+
 img.screenshot {
     width: max(22rem, 60%);
     image-rendering: pixelated;
