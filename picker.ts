@@ -61,6 +61,7 @@ namespace microcode {
         }
 
         private setButtonCoords(idx: number, btn: ButtonBase) {
+            btn.xfrm.parent = this.xfrm
             btn.buildSprite(icons.get(this.defs[idx].icon))
             const row = Math.idiv(idx, PICKER_MAX_PER_ROW)
             btn.xfrm.localPos.x =
