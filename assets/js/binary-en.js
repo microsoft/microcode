@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.5.13","target":"arcade","targetVersion":"1.11.20"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.20---simulator","cdnUrl":"https://pxt.azureedge.net","version":"v2.5.14","target":"arcade","targetVersion":"1.11.20"}
 // total=2495962 new=95.01% cached=0.00% other=4.99%
 (function (ectx) {
 'use strict';
@@ -1466,7 +1466,7 @@ switch (step) {
     globals.OP_PROPS___4115 = ("  \u0003``\u0000\u0002\u0001\u0000\u0000\u0000@AAAAAAAAA\u0001\u0001AABBBBBBBBBBBBBBBBBBB \u0000\u0001\u0000\u0000``!\u0002\u0001\u0001A@A@@@\u0011\u0011\u0011\u0013\u0012\u001423\u0011\u0012\u001523\u001101\u001111\u00141\u0011\u0010\u0011\u00112\u0013\u0013`BA\u0014");
     globals.debugOut___4320 = (false);
     globals._binFloatLits___4393 = (_hex7314);
-    globals.VERSION___4395 = ("v2.5.13");
+    globals.VERSION___4395 = ("v2.5.14");
     globals.BACK_BUTTON_ERROR_KIND___4409 = ("back_button");
     globals.FORWARD_BUTTON_ERROR_KIND___4410 = ("forward_button");
     globals.microcode_Options_fps___4458 = (false);
@@ -33874,14 +33874,14 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 146; continue; }
-    s.res___16520 = ("ARM OPEN");
+    s.res___16520 = ("arm open");
     { step = 165; continue; }
   case 146:
     r0 = (s.arg0 === "CAR14");
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 147; continue; }
-    s.res___16520 = ("ARM CLOSE");
+    s.res___16520 = ("arm close");
     { step = 164; continue; }
   case 147:
     r0 = (s.arg0 === "S13");
