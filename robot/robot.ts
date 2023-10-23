@@ -29,10 +29,6 @@ namespace microcode.robots {
 
     export class Robot {
         /**
-         * Default volume used by the robot;
-         */
-        musicVolume = 64
-        /**
          * Maximum speed while following a line with line assist
          */
         maxLineSpeed = 40

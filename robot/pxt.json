@@ -26,15 +26,16 @@
         "storage.ts",
         "kalmanfilter1d.ts"
     ],
-    "testFiles": [
-        "test.ts"
-    ],
+    "testFiles": ["test.ts"],
+    "fileDependencies": {
+        "kittenbotnanobit.ts": "target:microbit",
+        "kittenbotrobotbit.ts": "target:microbit",
+        "yahboomtinybit.ts": "target:microbit"
+    },
     "targetVersions": {
         "target": "6.0.19",
         "targetId": "microbit"
     },
-    "supportedTargets": [
-        "microbit"
-    ],
+    "supportedTargets": ["microbit", "calliopemini"],
     "preferredEditor": "tsprj"
 }

@@ -70,7 +70,6 @@ namespace microcode{
                 pin: DigitalPin.P16,
                 count: 2
             };
-            this.musicVolume = 168
             pca9624Init()
         }
 
