@@ -139,7 +139,7 @@ namespace microcode {
                 onDelete?: () => void
                 navigator?: () => PickerNavigator
                 selected?: number
-                buttonStyle?: ButtonStyle
+                style?: ButtonStyle
             },
             hideOnClick: boolean = true
         ) {
@@ -159,7 +159,7 @@ namespace microcode {
             }
             this.hideOnClick = hideOnClick
             this.title = opts.title
-            this.style = opts.buttonStyle || ButtonStyles.LightShadowedWhite
+            this.style = opts.style || ButtonStyles.LightShadowedWhite
             this.prevState = this.cursor.saveState()
             this.cursor.navigator = this.navigator
             this.cursor.cancelHandlerStack.push(() => this.cancelClicked())

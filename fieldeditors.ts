@@ -37,9 +37,9 @@ namespace microcode {
                 onHide,
                 onDelete,
                 navigator: () => new LEDNavigator(),
+                style: ButtonStyles.Transparent,
             },
-            false
-            // TODO style: ButtonStyles.Transparent,
+            false,
         )
     }
 
@@ -97,7 +97,7 @@ namespace microcode {
                 onHide,
                 onDelete,
                 navigator: () => new MelodyNavigator(),
-                //                     style: ButtonStyles.Transparent,
+                style: ButtonStyles.Transparent,
             },
             false
         )
