@@ -6,7 +6,7 @@ There are many [BBC micro:bit robot accessories](https://microbit.org/buy/access
 
 The platform is based on a robust robot controller, written using MakeCode, that runs on the robot (micro:bit V1 or V2) and exposes a radio protocol to communicate with another micro:bit, running the user's program. The robot controller code is written using MakeCode for the micro:bit and has a common set of programming blocks.
 
-![A diagram showing how microcode is communicating with the robot](./images/mcrc.jpg){:class="photo"}
+![A diagram showing how MicroCode is communicating with the robot](./images/mcrc.jpg){:class="photo"}
 
 ## Robot features
 
@@ -29,7 +29,7 @@ You will need one of the **[supported micro:bit robots](./robots-supported.md)**
 
 ### Configuring the radio group
 
-The microcode editor and the robot micro:bit communicate using the radio. These are the steps to configure the robot and the microcode:
+The MicroCode editor and the robot micro:bit communicate using the radio. These are the steps to configure the robot and the MicroCode:
 
 On the robot micro:bit,
 
@@ -39,7 +39,7 @@ On the robot micro:bit,
 
 The radio group is stored in the flash of the micro:bit and will be used every time the robot is reset. (However, it will be erased if you download another .hex file).
 
-On the microcode side,
+On the MicroCode side,
 
 -   Use the ![radio set group](./images/generated/icon_A6A.png){:class="icon"} `radio set group` to configure the same group number as the robot micro:bit
 
@@ -72,10 +72,10 @@ The samples are listed on the [samples page](./samples.md#robot).
 
 ## Troubleshooting
 
-This is a quick check list to make sure you have the best experience with the microcode robot:
+This is a quick check list to make sure you have the best experience with the MicroCode robot:
 
 -   **Charge your batteries** - everything starts to fall apart once the battery level gets low! Keep those batteries topped off!
--   **Double check the radio groups** - make sure the microcode program and the robot are on the same radio group
+-   **Double check the radio groups** - make sure the MicroCode program and the robot are on the same radio group
 
 ## Add your robot {#contribute}
 

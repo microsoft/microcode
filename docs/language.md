@@ -207,7 +207,7 @@ MicroCode will detect [Jacdac](https://aka.ms/jacdac) modules and automatically 
 
 ## Robot {#robot}
 
-microcode can be used to control a micro:bit robot ([read more](./robot)).
+MicroCode can be used to control a micro:bit robot ([read more](./robot)).
 
 Make to start your program by setting the same radio group as the robot.
 

@@ -1,7 +1,7 @@
-# microcode robot MakeCode extension
+# MicroCode robot MakeCode extension
 
 This extension is a robot driver designed to run on a micro:bit v1 or v2 on a rover robot;
-and controlled by a microcode program running on the arcade shield.
+and controlled by a MicroCode program running on the arcade shield.
 
 ## Usage with MakeCode
 
@@ -12,9 +12,9 @@ and controlled by a microcode program running on the arcade shield.
 microcode.elecfreaksCuteBot.start()
 ```
 
-## Usage with microcode
+## Usage with MicroCode
 
-Download this firmware onto the micro:bit that stays on the robot. Then use microcode to send commands
+Download this firmware onto the micro:bit that stays on the robot. Then use MicroCode to send commands
 to the robot.
 
 -   [Documentation](https://microsoft.github.io/microcode/docs/robot)
