@@ -56,7 +56,9 @@ namespace microcode {
             this.defs.forEach(def => {
                 const btn = new ButtonBase(0, 0, this.picker.style, this.picker.xfrm)
                 btn.buildSprite(icons.get(def.icon))
+                console.log("layout before")
                 this.cell.add(btn.bounds)
+                console.log("layout after")
             })
         }
 
@@ -76,7 +78,9 @@ namespace microcode {
             this.defs.forEach((def, idx) => {
                 const btn = new ButtonBase(0, 0, this.picker.style, this.xfrm)
                 this.setButtonCoords(idx, btn)
+                console.log("before")
                 this.bounds.add(Bounds.Translate(btn.bounds, btn.xfrm.localPos))
+                console.log("after")
                 btn.draw()
             })
         }
