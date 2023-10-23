@@ -56,10 +56,9 @@ namespace microcode {
             this.defs.forEach(def => {
                 const btn = new ButtonBase(0, 0, this.picker.style, this.picker.xfrm)
                 btn.buildSprite(icons.get(def.icon))
-                console.log("layout before")
                 this.cell.add(btn.bounds)
-                console.log("layout after")
             })
+            this.layoutDraw()
         }
 
         private setButtonCoords(idx: number, btn: ButtonBase) {
@@ -72,17 +71,19 @@ namespace microcode {
             btn.xfrm.localPos.y = row * this.cell.height
         }
 
-        public draw() {
+        private layoutDraw(draw: boolean = false) {
             // matrix layout of buttons
             this.bounds = new Bounds()
             this.defs.forEach((def, idx) => {
                 const btn = new ButtonBase(0, 0, this.picker.style, this.xfrm)
                 this.setButtonCoords(idx, btn)
-                console.log("before")
                 this.bounds.add(Bounds.Translate(btn.bounds, btn.xfrm.localPos))
-                console.log("after")
-                btn.draw()
+                if (draw) btn.draw()
             })
+
+        }
+        public draw() {
+            this.layoutDraw(true)
         }
 
     }
