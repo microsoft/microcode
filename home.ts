@@ -61,7 +61,7 @@ namespace microcode {
                     icon: slot,
                 }
             })
-            this.picker.setGroup({ btns })
+            this.picker.setGroup(btns)
             this.picker.show({
                 title: accessibility.ariaToTooltip("load"),
                 onClick: index => {

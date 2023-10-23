@@ -194,7 +194,7 @@ namespace microcode {
                     ariaId: "delete_rule",
                 },
             ]
-            this.editor.picker.setGroup({ btns })
+            this.editor.picker.setGroup(btns)
             this.editor.picker.show({
                 onClick: index =>
                     this.handleRuleHandleMenuSelection(
@@ -332,7 +332,7 @@ namespace microcode {
                 }
             }
             if (btns.length) {
-                this.editor.picker.setGroup({ btns })
+                this.editor.picker.setGroup(btns)
                 this.editor.picker.show({
                     title: accessibility.ariaToTooltip(name),
                     navigator: () => new PickerNavigator(),

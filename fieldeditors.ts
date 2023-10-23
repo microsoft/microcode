@@ -18,7 +18,7 @@ namespace microcode {
                 })
             }
         }
-        picker.setGroup({ btns })
+        picker.setGroup(btns)
 
         const red = icons.get("solid_red")
         const black = icons.get("solid_black")
@@ -69,7 +69,7 @@ namespace microcode {
                 })
             }
         }
-        picker.setGroup({ btns })
+        picker.setGroup(btns)
 
         picker.show(
             {

@@ -19,45 +19,68 @@ namespace microcode {
     // need for buttons here
     class PickerGroup {
         public xfrm: Affine
-        public buttons: ButtonBase[]
         public bounds: Bounds
+        private cell: Bounds
+        private btnHeight: number
 
         constructor(
-            picker: Picker,
-            public opts?: {
-                btns?: PickerButtonDef[]
-            }
+            public picker: Picker,
+            public defs: PickerButtonDef[]
         ) {
-            this.opts = this.opts || {}
-            this.buttons = []
-            this.bounds = new Bounds()
             this.xfrm = new Affine()
             this.xfrm.parent = picker.xfrm
         }
 
         // TODO: on click
 
+        public buttonHeight() {
+            return this.btnHeight
+        }
+        
+        public getButtonAtIndex(idx: number): Button {
+            const def = this.defs[idx]
+            const btn = new Button({
+                parent: this.picker,
+                style: this.picker.style,
+                icon: def.icon,
+                x: 0,
+                y: 0
+            })
+            this.setButtonCoords(idx, btn)
+            return btn
+        }
+
         public layout(maxPerRow: number) {
             // first compute bounds of cell
-            const cell = new Bounds()
-            this.buttons.forEach(btn => cell.add(btn.bounds))
-            // matrix layout of buttons
-            this.bounds = new Bounds()
-            this.buttons.forEach((btn, idx) => {
-                btn.xfrm.parent = this.xfrm
-                const row = Math.idiv(idx, maxPerRow)
-                btn.xfrm.localPos.x =
-                    (cell.width >> 1) +
-                    (idx % maxPerRow) * cell.width +
-                    (idx % maxPerRow)
-                btn.xfrm.localPos.y = row * cell.height
-                this.bounds.add(Bounds.Translate(btn.bounds, btn.xfrm.localPos))
+            this.cell = new Bounds()
+            this.defs.forEach(def => {
+                const btn = new ButtonBase(0, 0, this.picker.style, this.xfrm.parent)
+                btn.icon.setImage(icons.get(def.icon as string))
+                this.cell.add(btn.bounds)
             })
         }
 
-        public draw() {
-            this.buttons.forEach(btn => btn.draw())
+        private setButtonCoords(idx: number, btn: ButtonBase) {
+            btn.icon.setImage(icons.get(this.defs[idx].icon as string))
+            const row = Math.idiv(idx, PICKER_MAX_PER_ROW)
+            btn.xfrm.localPos.x =
+                (this.cell.width >> 1) +
+                (idx % PICKER_MAX_PER_ROW) * this.cell.width +
+                (idx % PICKER_MAX_PER_ROW)
+            btn.xfrm.localPos.y = row * this.cell.height
         }
+
+        public draw() {
+            // matrix layout of buttons
+            this.bounds = new Bounds()
+            this.defs.forEach((def, idx) => {
+                const btn = new ButtonBase(0, 0, this.picker.style, this.xfrm.parent)
+                this.setButtonCoords(idx, btn)
+                this.bounds.add(Bounds.Translate(btn.bounds, btn.xfrm.localPos))
+                btn.draw()
+            })
+        }
+
     }
 
     export class Picker implements IPlaceable {
@@ -65,6 +88,7 @@ namespace microcode {
         private start: number
         public navigator: PickerNavigator
         public visible: boolean
+        public style: ButtonStyle
 
         private xfrm_: Affine
         private prevState: CursorState
@@ -75,7 +99,6 @@ namespace microcode {
         private onDelete: () => void
         private hideOnClick: boolean
         private title: string
-        private style: ButtonStyle
 
         public get xfrm() {
             return this.xfrm_
@@ -87,8 +110,8 @@ namespace microcode {
             this.navigator = new PickerNavigator()
         }
 
-        public setGroup(opts: { btns: PickerButtonDef[] }) {
-            this.group = new PickerGroup(this, opts)
+        public setGroup(defs: PickerButtonDef[]) {
+            this.group = new PickerGroup(this, defs)
         }
 
         public onButtonClicked(index: number) {
@@ -153,13 +176,13 @@ namespace microcode {
                     },
                 })
             }
-            if (this.group) {
-                const btns = this.group.opts.btns || []
-                btns.forEach(btn => {
-                    const button = new ButtonBase(0, 0, this.style, this.xfrm)
-                    this.group.buttons.push(button)
-                })
-            }
+            // if (this.group) {
+            //     const btns = this.group.opts.btns || []
+            //     btns.forEach(btn => {
+            //         const button = new ButtonBase(0, 0, this.style, this.xfrm)
+            //         this.group.buttons.push(button)
+            //     })
+            // }
             this.layout(PICKER_MAX_PER_ROW)
             this.visible = true
         }
@@ -207,11 +230,10 @@ namespace microcode {
             if (this.group) {
                 const group = this.group
                 group.layout(maxPerRow)
-                top += group.buttons[0].height >> 1
+                top += group.buttonHeight() >> 1
                 group.xfrm.localPos.y = top
                 this.panel.add(Bounds.Translate(group.bounds, new Vec2(0, top)))
                 top += group.bounds.height
-                this.navigator.addButtons(group.buttons)
             }
 
             if (this.deleteBtn) {
@@ -226,7 +248,7 @@ namespace microcode {
             this.xfrm.localPos.y = padding - (this.panel.height >> 1)
 
             if (this.start < 0) this.start = 0
-            const btn = this.group.buttons[this.start]
+            const btn = this.group.getButtonAtIndex(this.start)
             this.navigator.moveToIndex(this.start)
             this.cursor.moveTo(btn.xfrm.worldPos, "", btn.bounds) // TODO
         }

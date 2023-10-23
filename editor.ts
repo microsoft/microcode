@@ -82,7 +82,7 @@ namespace microcode {
                     icon: slot,
                 }
             })
-            this.picker.setGroup({ btns })
+            this.picker.setGroup(btns)
             this.picker.show({
                 title: accessibility.ariaToTooltip("disk"),
                 onClick: index => {
@@ -97,7 +97,7 @@ namespace microcode {
                     icon: pageId,
                 }
             })
-            this.picker.setGroup({ btns })
+            this.picker.setGroup(btns)
             this.picker.show({
                 onClick: i => {
                     const index = PAGE_IDS().indexOf(btns[i].icon as string)

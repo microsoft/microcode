@@ -81,8 +81,8 @@ namespace microcode {
     }
 
     export class ButtonBase implements IComponent, ISizable, IPlaceable {
+        public icon: Sprite
         private xfrm_: Affine
-        protected icon: Sprite
         private style: ButtonStyle
 
         constructor(x: number, y: number, style: ButtonStyle, parent: Affine) {
