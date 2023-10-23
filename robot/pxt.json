@@ -20,6 +20,7 @@
         "dfrobotmaqueen.ts",
         "dfrobotmaqueenplusv2.ts",
         "kittenbotminilfr.ts",
+        "kittenbotrobotbit.ts",
         "storage.cpp",
         "storage.ts",
         "kalmanfilter1d.ts"
