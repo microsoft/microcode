@@ -54,7 +54,7 @@ namespace microcode {
             // first compute bounds of biggest button
             this.cell = new Bounds()
             this.defs.forEach(def => {
-                const btn = new ButtonBase(0, 0, this.picker.style, this.xfrm)
+                const btn = new ButtonBase(0, 0, this.picker.style, this.picker.xfrm)
                 btn.buildSprite(icons.get(def.icon))
                 this.cell.add(btn.bounds)
             })
