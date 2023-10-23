@@ -21,7 +21,6 @@ namespace microcode {
         public xfrm: Affine
         public bounds: Bounds
         private cell: Bounds
-        private btnHeight: number
 
         constructor(
             public picker: Picker,
@@ -34,7 +33,7 @@ namespace microcode {
         // TODO: on click
 
         public buttonHeight() {
-            return this.btnHeight
+            return this.cell.height
         }
         
         public getButtonAtIndex(idx: number): Button {
@@ -43,6 +42,7 @@ namespace microcode {
                 parent: this.picker,
                 style: this.picker.style,
                 icon: def.icon,
+                ariaId: def.ariaId,
                 x: 0,
                 y: 0
             })
@@ -51,17 +51,17 @@ namespace microcode {
         }
 
         public layout(maxPerRow: number) {
-            // first compute bounds of cell
+            // first compute bounds of biggest button
             this.cell = new Bounds()
             this.defs.forEach(def => {
                 const btn = new ButtonBase(0, 0, this.picker.style, this.xfrm.parent)
-                btn.icon.setImage(icons.get(def.icon))
+                btn.buildSprite(icons.get(def.icon))
                 this.cell.add(btn.bounds)
             })
         }
 
         private setButtonCoords(idx: number, btn: ButtonBase) {
-            btn.icon.setImage(icons.get(this.defs[idx].icon))
+            btn.buildSprite(icons.get(this.defs[idx].icon))
             const row = Math.idiv(idx, PICKER_MAX_PER_ROW)
             btn.xfrm.localPos.x =
                 (this.cell.width >> 1) +

@@ -121,7 +121,7 @@ namespace microcode {
             return xfrm
         }
 
-        protected buildSprite(img: Image) {
+        public buildSprite(img: Image) {
             this.icon = new Sprite({
                 parent: this,
                 img,

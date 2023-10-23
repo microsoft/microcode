@@ -99,8 +99,7 @@ namespace microcode {
             })
             this.picker.setGroup(btns)
             this.picker.show({
-                onClick: i => {
-                    const index = PAGE_IDS().indexOf(btns[i].icon)
+                onClick: index => {
                     this.switchToPage(index)
                 },
             })
