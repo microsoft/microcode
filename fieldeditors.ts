@@ -10,15 +10,15 @@ namespace microcode {
         }
 
         // TODO: replace this with a function from index to colo
-        let btns: PickerButtonDef[] = []
+        let defs: PickerButtonDef[] = []
         for (let row = 0; row < 5; row++) {
             for (let col = 0; col < 5; col++) {
-                btns.push({
+                defs.push({
                     icon: getColor(col, row),
                 })
             }
         }
-        picker.setGroup(btns)
+        picker.setGroup(defs)
 
         const red = icons.get("solid_red")
         const black = icons.get("solid_black")
@@ -31,17 +31,15 @@ namespace microcode {
                     let col = index % 5
                     const on = image5x5.getPixel(col, row)
                     image5x5.setPixel(col, row, on ? 0 : 1)
-                    // TODO
-                    //button.setIcon(getColor(col, row), on ? black : red)
-                    //button.draw()
-                    picker.navigator.updateAria()
+                    defs[index].icon = getColor(col, row)
+                    picker.draw()
                 },
                 onHide,
                 onDelete,
                 navigator: () => new LEDNavigator(),
             },
             false
-            //                     style: ButtonStyles.Transparent,
+            // TODO style: ButtonStyles.Transparent,
         )
     }
 
@@ -61,15 +59,15 @@ namespace microcode {
             return note_icon
         }
 
-        let btns: PickerButtonDef[] = []
+        let defs: PickerButtonDef[] = []
         for (let row = 0; row < NUM_NOTES; row++) {
             for (let col = 0; col < MELODY_LENGTH; col++) {
-                btns.push({
+                defs.push({
                     icon: getIcon(col, row),
                 })
             }
         }
-        picker.setGroup(btns)
+        picker.setGroup(defs)
 
         picker.show(
             {
@@ -90,10 +88,8 @@ namespace microcode {
                             : (NUM_NOTES - 1 - row).toString()) +
                         melody.notes.slice(col + 1)
                     for (row = 0; row < NUM_NOTES; row++) {
-                        // TODO
-                        //picker.group.buttons[row * MELODY_LENGTH + col].setIcon(
-                        //    getIcon(col, row)
-                        //)
+                        defs[row * MELODY_LENGTH + col].icon
+                            = getIcon(col, row)
                     }
                     picker.draw()
                     picker.navigator.updateAria()
