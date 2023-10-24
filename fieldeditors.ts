@@ -25,6 +25,7 @@ namespace microcode {
 
         picker.show(
             {
+                width: 5,
                 title: accessibility.ariaToTooltip(TID_MODIFIER_ICON_EDITOR),
                 onClick: (index: number) => {
                     let row = Math.floor(index / 5)
@@ -71,6 +72,7 @@ namespace microcode {
 
         picker.show(
             {
+                width: MELODY_LENGTH,
                 title: accessibility.ariaToTooltip(TID_MODIFIER_MELODY_EDITOR),
                 onClick: index => {
                     let row = Math.floor(index / MELODY_LENGTH)
