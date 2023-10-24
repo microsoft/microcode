@@ -222,6 +222,7 @@ namespace microcode {
             this.row = index / this.width
             this.col = index % this.width
             this.reportAria()
+            return this.picker.group.getButtonAtIndex(index)
         }
 
         private height() {

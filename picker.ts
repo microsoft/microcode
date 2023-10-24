@@ -43,6 +43,7 @@ namespace microcode {
                 x: 0,
                 y: 0,
             })
+            btn.xfrm.parent = this.xfrm
             this.setButtonCoords(idx, btn)
             return btn
         }
@@ -255,9 +256,8 @@ namespace microcode {
             this.xfrm.localPos.y = padding - (this.panel.height >> 1)
 
             if (this.start < 0) this.start = 0
-            const btn = this.group.getButtonAtIndex(this.start)
-            this.navigator.moveToIndex(this.start)
-            this.cursor.moveTo(btn.xfrm.worldPos, "", btn.bounds) // TODO
+            const btn = this.navigator.moveToIndex(this.start)
+            this.cursor.moveTo(btn.xfrm.worldPos, btn.ariaId, btn.bounds)
         }
     }
 
