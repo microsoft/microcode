@@ -295,6 +295,8 @@ namespace microcode {
         move(dir: CursorDir) {
             switch (dir) {
                 case CursorDir.Up: {
+                    if (this.row == -1 || !this.deleteButton && this.row == 0)
+                        throw new NavigationError(BACK_BUTTON_ERROR_KIND)
                     if (this.row > 0) this.row--
                     else if (this.deleteButton) this.row = -1
                     break
@@ -305,7 +307,8 @@ namespace microcode {
                         if (this.col >= this.currentRowWidth()) {
                             this.col = this.currentRowWidth() - 1
                         }
-                    }
+                    } else
+                        throw new NavigationError(FORWARD_BUTTON_ERROR_KIND)       
                     break
                 }
                 case CursorDir.Left: {
