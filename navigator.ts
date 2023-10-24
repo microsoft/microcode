@@ -205,14 +205,14 @@ namespace microcode {
     // add support for aria
     export class PickerNavigator implements INavigator {
         protected deleteButton: Button
-        protected width: number
         protected row: number
         protected col: number
 
-        constructor(private picker: Picker, width: number = 5) {
-            this.width = width
-        }
+        constructor(private picker: Picker) {}
 
+        private get width() {
+            return this.picker.width
+        }
         private get length() {
             return this.picker.group.defs.length
         }

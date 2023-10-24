@@ -78,11 +78,11 @@ namespace microcode {
 
         private setButtonCoords(idx: number, btn: ButtonBase) {
             btn.buildSprite(icons.get(this.defs[idx].icon))
-            const row = Math.idiv(idx, PICKER_MAX_PER_ROW)
+            const row = Math.idiv(idx, this.picker.width)
             btn.xfrm.localPos.x =
                 (this.cell.width >> 1) +
-                (idx % PICKER_MAX_PER_ROW) * this.cell.width +
-                (idx % PICKER_MAX_PER_ROW)
+                (idx % this.picker.width) * this.cell.width +
+                (idx % this.picker.width)
             btn.xfrm.localPos.y = row * this.cell.height
         }
 
@@ -107,6 +107,7 @@ namespace microcode {
         public navigator: PickerNavigator
         public visible: boolean
         public style: ButtonStyle
+        public width: number
 
         private xfrm_: Affine
         private prevState: CursorState
@@ -151,6 +152,7 @@ namespace microcode {
 
         show(
             opts: {
+                width?: number
                 title?: string
                 onClick?: (index: number) => void
                 onHide?: () => void
@@ -178,6 +180,7 @@ namespace microcode {
             this.hideOnClick = hideOnClick
             this.title = opts.title
             this.style = opts.style || ButtonStyles.LightShadowedWhite
+            this.width = opts.width || 5
             this.prevState = this.cursor.saveState()
             this.cursor.navigator = this.navigator
             this.cursor.cancelHandlerStack.push(() => this.cancelClicked())
@@ -194,7 +197,7 @@ namespace microcode {
                     },
                 })
             }
-            this.layout(PICKER_MAX_PER_ROW)
+            this.layout(this.width)
             this.visible = true
         }
 
@@ -265,5 +268,4 @@ namespace microcode {
     }
 
     const HEADER = 16
-    export const PICKER_MAX_PER_ROW = 5
 }
