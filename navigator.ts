@@ -276,7 +276,10 @@ namespace microcode {
         screenToButton(x: number, y: number): Button {
             const p = new Vec2(x, y)
             const btn = this.deleteButton
-            if (btn && Bounds.Translate(btn.bounds, btn.xfrm.worldPos))
+            if (
+                btn &&
+                Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
+            )
                 return btn
             const np = this.picker.group.getButtonAtScreen(x, y)
             if (np) {
