@@ -16,3 +16,12 @@ Click the `screenshot` button at the bottom to get a rendered image of your prog
 ## How do I translate MicroCode?
 
 Checkout the [localization](./localization) to see how you can help or use a localized build of MicroCode.
+
+## My micro:bit froze and is showing a number
+
+This typically means that MicroCode had a bug and crashed. Here are a few common error codes that are scrolled on the screen:
+
+-   **540**: The .hex download was interrupted or failed. Try downloading the .hex file again.
+-   **020**: Out of memory! Your program is so big that it does not fit in memory anymore... or we have a memory leak somewhere. Try resetting the micro:bit.
+
+Other error codes are [documented in MakeCode](https://makecode.microbit.org/device/error-codes).
