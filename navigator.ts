@@ -230,17 +230,14 @@ namespace microcode {
         }
 
         private height() {
-            return Math.floor(this.length / this.width)
+            return Math.ceil(this.length / this.width)
         }
 
         private currentRowWidth() {
+            assert(this.row >= 0, "row out of bounds")
             return this.row < this.height() - 1
                 ? this.width
-                : this.length % this.width
-        }
-
-        private currentRowRagged() {
-            return this.currentRowWidth() != this.width
+                : this.length - this.width * (this.height() - 1)
         }
 
         public initialCursor(row: number = 0, col: number = 0): Button {
@@ -265,7 +262,7 @@ namespace microcode {
         }
 
         getCurrent() {
-            console.log(`row: ${this.row}, col: ${this.col}`)
+            // console.log(`row: ${this.row}, col: ${this.col}`)
             if (this.row == -1) {
                 return this.deleteButton
             } else {
@@ -296,10 +293,7 @@ namespace microcode {
                 case CursorDir.Down: {
                     if (this.row < this.height() - 1) {
                         this.row++
-                        if (
-                            this.currentRowRagged() &&
-                            this.col >= this.currentRowWidth()
-                        ) {
+                        if (this.col >= this.currentRowWidth()) {
                             this.col = this.currentRowWidth() - 1
                         }
                     }
