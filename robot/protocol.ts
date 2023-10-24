@@ -18,6 +18,8 @@ namespace microcode.robots {
      * Compact commands through radio numbers
      */
     export const enum RobotCompactCommand {
+        KeepAlive = 0xffffff0,
+
         Command = 0xfffff00,
         MotorRunForward = Command | 0x1,
         MotorRunBackward = Command | 0x2,
@@ -31,6 +33,10 @@ namespace microcode.robots {
         LEDGreen = Command | 0x0a,
         LEDBlue = Command | 0x0b,
         LEDOff = Command | 0x0c,
+        ArmOpen = Command | 0x0d,
+        ArmClose = Command | 0x0e,
+
+        CommandLast = Command | ArmClose,
 
         /**
          * sonar detected obstable

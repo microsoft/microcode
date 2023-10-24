@@ -16,3 +16,7 @@ Click the `screenshot` button at the bottom to get a rendered image of your prog
 ## How do I translate MicroCode?
 
 Checkout the [localization](./localization) to see how you can help or use a localized build of MicroCode.
+
+## How do I add support for my robot?
+
+If your robot is not [listed](./robots-supported), follow the [instructions](./robots-supported#new-robot) to get it added to the list.

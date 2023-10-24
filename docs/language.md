@@ -207,7 +207,7 @@ MicroCode will detect [Jacdac](https://aka.ms/jacdac) modules and automatically 
 
 ## Robot {#robot}
 
-microcode can be used to control a micro:bit robot ([read more](./robot)).
+MicroCode can be used to control a micro:bit robot ([read more](./robot)).
 
 Make to start your program by setting the same radio group as the robot.
 
@@ -226,15 +226,17 @@ The ![robot](./images/generated/icon_CAR.png){:class="icon"} `robot` starts the 
 -   ![robot spin right](./images/generated/icon_CAR8.png){:class="icon"} `spin right`, instructs the robot to spin right
 -   ![robot stop](./images/generated/icon_CAR5.png){:class="icon"} `stop`, instructs the robot to stop
 
-Additionally to motors, the robot had LEDs that can be controlled as well.
+The robot had LEDs that can be controlled as well.
 
 -   ![LED color red](./images/generated/icon_CAR9.png){:class="icon"} `LED red`, turns LED to red
 -   ![LED color green](./images/generated/icon_CAR10.png){:class="icon"} `LED green`, turns LED to green
 -   ![LED color blue](./images/generated/icon_CAR11.png){:class="icon"} `LED blue`, turns LED to blue
 -   ![LED OFF](./images/generated/icon_CAR12.png){:class="icon"} `LED OFF`, turns LEDs OFF
 
-The forward, backward, left, right and stop blocks
-can be sequenced in the same rule.
+Some robot have an optional robotic arm.
+
+-   ![arm open](./images/generated/icon_CAR13.png){:class="icon"} `arm open`, opens the arm
+-   ![Aarm close](./images/generated/icon_CAR14.png){:class="icon"} `arm close`, closes the arm
 
 ![A rule with a sequence of motor commands](./images/generated/sample_robot_avoid_wall_page_1_rule_3.png){:class="rule"}
 

@@ -8,6 +8,16 @@ namespace microcode {
         control.simmessages.send("usb", buf)
     }
 
+    //% shim=TD_NOOP
+    function editorSkipBack(editor: Editor, skipBack: boolean) {
+        if (!skipBack) editor.back()
+    }
+
+    //% shim=TD_NOOP
+    function editorSkipForward(editor: Editor, skipBack: boolean) {
+        if (!skipBack) editor.forward()
+    }
+
     export class Editor extends Scene {
         navigator: RuleRowNavigator
         private progdef: ProgramDefn
@@ -154,12 +164,12 @@ namespace microcode {
                 this.scrollAndMoveButton(target)
             } catch (e) {
                 if (dir === CursorDir.Up && e.kind === BACK_BUTTON_ERROR_KIND) {
-                    if (!skipBack) this.back()
+                    editorSkipBack(this, skipBack)
                 } else if (
                     dir == CursorDir.Down &&
                     e.kind == FORWARD_BUTTON_ERROR_KIND
                 ) {
-                    if (!skipBack) this.forward()
+                    editorSkipForward(this, skipBack)
                 } else throw e
             }
         }

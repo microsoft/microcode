@@ -120,6 +120,16 @@
 - icon
 
 
+### ![](./images/generated/icon_CAR13.png){:class="icon"} `` {#icon_CAR13}
+
+- icon
+
+
+### ![](./images/generated/icon_CAR14.png){:class="icon"} `` {#icon_CAR14}
+
+- icon
+
+
 ### ![](./images/generated/icon_S13.png){:class="icon"} `` {#icon_S13}
 
 - icon
@@ -331,6 +341,16 @@
 
 
 ### ![](./images/generated/icon_solid_black.png){:class="icon"} `` {#icon_solid_black}
+
+- icon
+
+
+### ![](./images/generated/icon_arm_open.png){:class="icon"} `` {#icon_arm_open}
+
+- icon
+
+
+### ![](./images/generated/icon_arm_close.png){:class="icon"} `` {#icon_arm_close}
 
 - icon
 

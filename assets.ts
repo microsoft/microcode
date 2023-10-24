@@ -34,6 +34,8 @@ namespace microcode {
         if (name == TID_MODIFIER_CAR_LED_COLOR_2) return icondb.tile_color_green
         if (name == TID_MODIFIER_CAR_LED_COLOR_3) return icondb.tile_color_blue
         if (name == TID_MODIFIER_CAR_LED_COLOR_4) return icondb.tile_color_black
+        if (name == TID_MODIFIER_CAR_ARM_OPEN) return icondb.arm_open
+        if (name == TID_MODIFIER_CAR_ARM_CLOSE) return icondb.arm_close
         if (name == TID_SENSOR_CAR_WALL) return icondb.car_wall
         if (name == TID_SENSOR_LINE) return icondb.line_sensor
         if (name == TID_FILTER_LINE_LEFT) return icondb.line_left_on
@@ -572,6 +574,43 @@ namespace icondb {
     . . . c c c c c c c c c c . . .
     . . . . . . . . . . . . . . . .
 `
+
+    export const arm_open = img`
+    . . . . . . . . . . c c c . . .
+    . . . . . . . . c c b b b c c .
+    . . . . . . . c b b b b b b b c
+    . . . . . . c b b b b c c b b c
+    c c . . c b b b b c c . . c b c
+    b b c c b b b b c . . . . . c .
+    b b b b b b c c . . . . . . . .
+    c f f b b c . . . . . . . . . .
+    c f f b b c . . . . . . . . . .
+    b b b b b b c c . . . . . . . .
+    b b c c b b b b c . . . . . c .
+    c c . . c b b b b c c . . c b c
+    . . . . . c c b b b b c c b b c
+    . . . . . . . c b b b b b b b c
+    . . . . . . . . c c b b b c c .
+    . . . . . . . . . . c c c . . .
+    `
+
+    export const arm_close = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . c c c c c c c c c . .
+    . . . . . c b b b b b b b b c .
+    . . . . c b b b b b b b b b b c
+    c c d d b b c c c c c c c c b c
+    b b b b b b c . . . . . . . c .
+    c f f b b c . . . . . . . . . .
+    c f f b b c . . . . . . . . . .
+    b b b b b b c . . . . . . . c .
+    c c d d b b c c c c c c c c b c
+    . . . . c b b b b b b b b b b c
+    . . . . . c b b b b b b b b c .
+    . . . . . c c c c c c c c c . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . `
 
     ///
     /// BUTTON ICONS

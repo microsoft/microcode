@@ -18,7 +18,6 @@ namespace microcode {
                 right: DigitalPin.P14,
                 lineHigh: false,
             }
-            this.musicVolume = 156
             this.maxLineSpeed = 28
         }
 

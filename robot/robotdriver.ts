@@ -11,20 +11,32 @@ namespace microcode {
         radio.sendNumber(msg)
     }
 
+    function lerpChannel(c: number, tc: number) {
+        const FACTOR = 0.8
+        return Math.abs(c - tc) < 16
+            ? tc
+            : Math.round(c * FACTOR + tc * (1 - FACTOR)) & 0xff
+    }
+
     /**
-     *
+     * A driver for a generic robot interface
      */
     //% fixedInstances
     export class RobotDriver {
+        /**
+         * The robot instance
+         */
         readonly robot: robots.Robot
         /**
          * Gets the latest distance returned by the sensor
          */
-        currentUltrasonicDistance: number = 100
+        private readonly sonarDistanceFilter = new KalmanFilter1D()
         private lastSonarValue = 0
 
         private showConfiguration: boolean = false
         private configDrift: boolean = undefined
+        private targetColor = 0
+        private currentColor = 0
         private currentArmAperture = -1
         private currentSpeed: number = 0
         private targetSpeed: number = 0
@@ -49,8 +61,17 @@ namespace microcode {
         private sonar: robots.Sonar
         private lineDetectors: robots.LineDetectors
 
+        /**
+         * Maximum distance in cm for the ultrasonic sensor
+         */
+        maxCmDistance = 40
+
         constructor(robot: robots.Robot) {
             this.robot = robot
+        }
+
+        get currentUltrasonicDistance() {
+            return Math.round(this.sonarDistanceFilter.x)
         }
 
         private configureButtons() {
@@ -142,6 +163,7 @@ namespace microcode {
             while (true) {
                 this.updateTone()
                 this.updateLineState()
+                this.updateColor()
                 this.updateSpeed()
                 this.updateArm()
                 basic.pause(5)
@@ -149,17 +171,28 @@ namespace microcode {
         }
 
         public setColor(rgb: number) {
-            let red = (rgb >> 16) & 0xff
-            let green = (rgb >> 8) & 0xff
-            let blue = (rgb >> 0) & 0xff
+            this.targetColor = rgb
+        }
+
+        private updateColor() {
+            if (this.targetColor === this.currentColor) return
+
+            let red = (this.currentColor >> 16) & 0xff
+            let green = (this.currentColor >> 8) & 0xff
+            let blue = (this.currentColor >> 0) & 0xff
+
+            const tred = (this.targetColor >> 16) & 0xff
+            const tgreen = (this.targetColor >> 8) & 0xff
+            const tblue = (this.targetColor >> 0) & 0xff
+
+            red = lerpChannel(red, tred)
+            green = lerpChannel(green, tgreen)
+            blue = lerpChannel(blue, tblue)
+
+            this.currentColor = (red << 16) | (green << 8) | blue
             this.robot.headlightsSetColor(red, green, blue)
             if (!this.leds) return
             const b = this.ledsBuffer
-
-            red = Math.min(0xe0, red)
-            green = Math.min(0xe0, green)
-            blue = Math.min(0xe0, blue)
-
             for (let i = 0; i + 2 < b.length; i += 3) {
                 b[i] = green
                 b[i + 1] = red
@@ -306,32 +339,31 @@ namespace microcode {
 
         private updateSonar() {
             const dist = this.ultrasonicDistance()
-            if (dist > this.robot.ultrasonicMinReading) {
-                const d = Math.clamp(1, 5, Math.ceil(dist / 5))
-                if (!this.showConfiguration) {
-                    for (let y = 0; y < 5; y++)
-                        if (y + 1 >= d) led.plot(2, y)
-                        else led.unplot(2, y)
-                }
-                if (d !== this.lastSonarValue) {
-                    const prevd = this.lastSonarValue
-                    this.lastSonarValue = d
+            const d = Math.clamp(1, 5, Math.ceil(dist / 5))
+            if (d !== this.lastSonarValue) {
+                const prevd = this.lastSonarValue
+                this.lastSonarValue = d
 
-                    // emit all intermediate events
-                    const sd = Math.sign(d - prevd)
-                    const n = Math.abs(d - prevd)
-                    let di = prevd
-                    for (let i = 0; i < n; ++i) {
-                        di = di + sd
-                        const msg =
-                            microcode.robots.RobotCompactCommand.ObstacleState |
-                            di
-                        this.sendCompactCommand(msg)
-                    }
-                    microcode.robots.raiseEvent(
-                        microcode.robots.RobotCompactCommand.ObstacleState
-                    )
+                // emit all intermediate events
+                const sd = Math.sign(d - prevd)
+                const n = Math.abs(d - prevd)
+                let di = prevd
+                for (let i = 0; i < n; ++i) {
+                    di = di + sd
+                    const msg =
+                        microcode.robots.RobotCompactCommand.ObstacleState | di
+                    this.sendCompactCommand(msg)
                 }
+                microcode.robots.raiseEvent(
+                    microcode.robots.RobotCompactCommand.ObstacleState
+                )
+            }
+
+            if (!this.showConfiguration && this.lastSonarValue !== undefined) {
+                const d = this.lastSonarValue
+                for (let y = 0; y < 5; y++)
+                    if (5 - y <= d) led.plot(2, y)
+                    else led.unplot(2, y)
             }
         }
 
@@ -354,40 +386,39 @@ namespace microcode {
         }
 
         private ultrasonicDistanceOnce() {
-            if (!this.sonar) return this.robot.ultrasonicDistance()
+            if (!this.sonar)
+                return this.robot.ultrasonicDistance(this.maxCmDistance)
             else {
                 const trig = this.sonar.trig
                 const echo = this.sonar.echo
-                const maxCmDistance = 50
-                const TO_CM = 58
+                const lowUs = this.sonar.pulseLowUs || 4
+                const highUs = this.sonar.pulseHighUs || 10
+                const usToCm = this.sonar.usPerCm || 58
 
                 // send pulse
                 pins.digitalWritePin(trig, 0)
-                control.waitMicros(4)
+                control.waitMicros(lowUs)
                 pins.digitalWritePin(trig, 1)
-                control.waitMicros(10)
+                control.waitMicros(highUs)
                 pins.digitalWritePin(trig, 0)
 
                 // read pulse
                 const d = pins.pulseIn(
                     echo,
                     PulseValue.High,
-                    maxCmDistance * TO_CM
+                    this.maxCmDistance * usToCm
                 )
-                return Math.idiv(d, TO_CM)
+                if (d <= 0) return this.maxCmDistance
+                return d / usToCm
             }
         }
 
         private ultrasonicDistance() {
-            let retry = 3
-            while (retry-- > 0) {
-                const dist = this.ultrasonicDistanceOnce()
-                if (dist > this.robot.ultrasonicMinReading) {
-                    this.currentUltrasonicDistance = dist
-                    break
-                } else basic.pause(1)
-            }
-            return this.currentUltrasonicDistance
+            const dist = this.ultrasonicDistanceOnce()
+            if (dist > this.robot.sonarMinReading)
+                this.sonarDistanceFilter.filter(dist)
+            const filtered = this.sonarDistanceFilter.x
+            return filtered
         }
 
         private readLineState() {
@@ -439,8 +470,6 @@ namespace microcode {
         }
 
         private playTone(frequency: number, duration: number) {
-            if (this.robot.musicVolume <= 0) return
-            music.setVolume(this.robot.musicVolume)
             this.stopToneMillis = control.millis() + duration
             pins.analogPitch(frequency, 0)
         }
@@ -497,6 +526,13 @@ namespace microcode {
         }
 
         public decodeRobotCompactCommand(msg: number) {
+            if (
+                msg >= microcode.robots.RobotCompactCommand.Command &&
+                msg <= microcode.robots.RobotCompactCommand.CommandLast
+            ) {
+                this.inRadioMessageId++
+                this.playTone(440, 40)
+            }
             switch (msg) {
                 case microcode.robots.RobotCompactCommand.MotorStop:
                 case microcode.robots.RobotCompactCommand.MotorTurnLeft:
@@ -506,12 +542,10 @@ namespace microcode {
                 case microcode.robots.RobotCompactCommand.MotorRunForwardFast:
                 case microcode.robots.RobotCompactCommand.MotorRunForward:
                 case microcode.robots.RobotCompactCommand.MotorRunBackward: {
-                    this.inRadioMessageId++
                     const command = this.robot.commands[msg] || {}
                     const turnRatio = command.turnRatio || 0
                     const speed = command.speed || 0
                     this.motorRun(turnRatio, speed)
-                    this.playTone(440, 40)
                     break
                 }
                 case microcode.robots.RobotCompactCommand.LEDRed:
@@ -525,6 +559,12 @@ namespace microcode {
                     break
                 case microcode.robots.RobotCompactCommand.LEDOff:
                     this.setColor(0x00000)
+                    break
+                case microcode.robots.RobotCompactCommand.ArmOpen:
+                    this.armOpen(100)
+                    break
+                case microcode.robots.RobotCompactCommand.ArmClose:
+                    this.armOpen(0)
                     break
             }
         }

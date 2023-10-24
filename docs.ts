@@ -246,6 +246,8 @@ namespace docs {
             microcode.TID_MODIFIER_CAR_LED_COLOR_2,
             microcode.TID_MODIFIER_CAR_LED_COLOR_3,
             microcode.TID_MODIFIER_CAR_LED_COLOR_4,
+            microcode.TID_MODIFIER_CAR_ARM_OPEN,
+            microcode.TID_MODIFIER_CAR_ARM_CLOSE,
             microcode.TID_SENSOR_CAR_WALL,
             microcode.TID_SENSOR_LINE,
             microcode.TID_FILTER_LINE_LEFT,

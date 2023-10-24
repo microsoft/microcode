@@ -7,6 +7,18 @@ namespace microcode.robots {
     export interface Sonar {
         echo: DigitalPin
         trig: DigitalPin
+        /**
+         * Microseconds to keep the trigger pin low. Default is 4.
+         */
+        pulseLowUs?: number
+        /**
+         * Microseconds to keep the trigger pin high. Default is 10.
+         */
+        pulseHighUs?: number
+        /**
+         * Microseconds per cm. Defaults to 58.
+         */
+        usPerCm?: number
     }
 
     export interface LineDetectors {
@@ -16,10 +28,6 @@ namespace microcode.robots {
     }
 
     export class Robot {
-        /**
-         * Default volume used by the robot;
-         */
-        musicVolume = 64
         /**
          * Maximum speed while following a line with line assist
          */
@@ -51,13 +59,12 @@ namespace microcode.robots {
         /**
          * Minimum reading from ultrasonic sensor to be considered valid
          */
-        ultrasonicMinReading = 1
+        sonarMinReading = 2
         /**
          * Number of iteration before the line is considered lost and line assist
          * disengages
          */
         lineLostThreshold = 72
-
         /**
          * LED configuration
          */
@@ -70,7 +77,6 @@ namespace microcode.robots {
          * Line detector configuration
          */
         lineDetectors?: LineDetectors
-
         /**
          * A map from microcode command to speed, turn ratio values
          */
@@ -135,7 +141,7 @@ namespace microcode.robots {
          * Optional: reads the sonar, in cm.
          * @returns distance in cm; negative number if unsupported
          */
-        ultrasonicDistance(): number {
+        ultrasonicDistance(maxCmDistance: number): number {
             return -1
         }
 
