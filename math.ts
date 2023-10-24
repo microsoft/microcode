@@ -1,26 +1,16 @@
 namespace microcode {
     export class Vec2 {
-        //public dirty: boolean
-        //public readonly: boolean;
-
-        //% blockCombine block="x" callInDebugger
         public get x() {
             return this.x_
         }
         public set x(v) {
-            //if (this.readonly) throw "hey";
             this.x_ = v
-            //this.dirty = true
         }
-
-        //% blockCombine block="y" callInDebugger
         public get y() {
             return this.y_
         }
         public set y(v) {
-            //if (this.readonly) throw "hey";
             this.y_ = v
-            //this.dirty = true
         }
 
         constructor(public x_ = 0, public y_ = 0) {
@@ -70,18 +60,6 @@ namespace microcode {
         public static ZeroToRef(ref: Vec2): Vec2 {
             return ref.set(0, 0)
         }
-
-        /*
-        public static RotateToRef(v: Vec2, angle: number, ref: Vec2): Vec2 {
-            const s = trig.sin(angle);
-            const c = trig.cos(angle);
-            const xp = Fx.sub(Fx.mul(v.x, c), Fx.mul(v.y, s));
-            const yp = Fx.add(Fx.mul(v.x, s), Fx.mul(v.y, c));
-            ref.x = xp;
-            ref.y = yp;
-            return ref;
-        }
-        */
 
         public static TranslateToRef(v: Vec2, p: Vec2, ref: Vec2): Vec2 {
             ref.x = v.x + p.x

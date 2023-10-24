@@ -274,11 +274,17 @@ namespace microcode {
         }
 
         screenToButton(x: number, y: number): Button {
-            const index = this.picker.group.getButtonAtScreen(x, y)
-            if (index >= 0) {
-                this.row = Math.floor(index / this.width)
-                this.col = index % this.width
-                return this.picker.group.getButtonAtIndex(index)
+            const p = new Vec2(x, y)
+            const btn = this.deleteButton
+            if (btn && Bounds.Translate(btn.bounds, btn.xfrm.worldPos))
+                return btn
+            const np = this.picker.group.getButtonAtScreen(x, y)
+            if (np) {
+                this.row = np.y
+                this.col = np.x
+                if (this.col >= this.currentRowWidth())
+                    this.col = this.currentRowWidth() - 1
+                return this.getCurrent()
             }
             return undefined
         }

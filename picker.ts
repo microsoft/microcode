@@ -51,13 +51,13 @@ namespace microcode {
             return btn
         }
 
-        public getButtonAtScreen(x: number, y: number): number {
+        public getButtonAtScreen(x: number, y: number): Vec2 {
             const p = new Vec2(x, y)
-            // TODO:
-            //const target = this.buttons.find(btn =>
-            //    Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
-            // )
-            return -1
+            const b = Bounds.Translate(this.bounds, this.xfrm.worldPos)
+            if (!b.contains(p)) return undefined
+            const row = Math.floor((y - b.top) / this.cell.height)
+            const col = Math.floor((x - b.left) / this.cell.width)
+            return new Vec2(col, row)
         }
 
         public layout(maxPerRow: number) {
