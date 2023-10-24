@@ -83,9 +83,7 @@ No assembly required. Large screen and 3d-printed enclosure with LiPo battery in
 Remote control a [micro:bit robot](./robot) using MicroCode
 to follow lines, avoid obstacles and more.
 
-![robot avoid wall program](./images/generated/sample_robot_showcase_page_1.png){:class="sample"}
-
-![Photograph of the Cutebot](./images/robots.jpg){:class="sample"}
+[![Photograph of the Cutebot](./images/mcrc.jpg){:class="photo"}](./robot)
 
 ## Accessories {#jacdac}
 

@@ -77,7 +77,7 @@ The following features are found often but are optional:
 -   Buzzer
 -   Programmable LED strip
 
-### How to prepare a pull request
+### How to prepare a pull request {#new-robot}
 
 To add a new robot to the list, prepare a pull request with:
 
@@ -85,8 +85,10 @@ To add a new robot to the list, prepare a pull request with:
 -   a global field instance instantiating the robot (see other robots)
 -   a URL in the jsdocs of the class pointing to the robot homepage
 -   add `main{company}{productname}.ts` file that starts the robot
--   add `pxt-{company}{productname}.ts` file that overrides the test files to load `main{company}{productname}.ts`
+-   add `pxt-{company}{productname}.json` file that overrides the test files to load `main{company}{productname}.ts`
+-   add call to `mkc pxt-{company}{productname}.json` in `.github/workflows/makecode.yml`
 -   add image under `docs/static/images`
+-   add section in `docs/robot-supported.md` with your robot picture, and Home URL.
 
 Make sure to test and tune the configuration options in the robot class for your particular
 chassis/motor/line detectors. You may want to tweak some of the constants in the robot class to optimize the behavior of the robot.

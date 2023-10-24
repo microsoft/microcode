@@ -470,8 +470,6 @@ namespace microcode {
         }
 
         private playTone(frequency: number, duration: number) {
-            if (this.robot.musicVolume <= 0) return
-            music.setVolume(this.robot.musicVolume)
             this.stopToneMillis = control.millis() + duration
             pins.analogPitch(frequency, 0)
         }
