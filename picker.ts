@@ -43,6 +43,7 @@ namespace microcode {
                 x: 0,
                 y: 0,
                 onClick: () => {
+                    console.log("clicked: " + idx.toString())
                     this.picker.onButtonClicked(idx)
                 },
             })

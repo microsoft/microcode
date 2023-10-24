@@ -134,6 +134,10 @@ namespace microcode {
         }
 
         public initialCursor(row: number = 0, col: number = 0) {
+            const rows = this.buttonGroups.length
+            while (row < 0) row = (row + rows) % rows
+            const cols = this.buttonGroups[row].length
+            while (col < 0) col = (col + cols) % cols
             this.row = row
             this.col = col
             return this.buttonGroups[row][col]
