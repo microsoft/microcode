@@ -36,10 +36,10 @@ namespace microcode {
                 },
                 onHide,
                 onDelete,
-                navigator: () => new LEDNavigator(),
+                navigator: () => new LEDNavigator(picker),
                 style: ButtonStyles.Transparent,
             },
-            false,
+            false
         )
     }
 
@@ -88,15 +88,14 @@ namespace microcode {
                             : (NUM_NOTES - 1 - row).toString()) +
                         melody.notes.slice(col + 1)
                     for (row = 0; row < NUM_NOTES; row++) {
-                        defs[row * MELODY_LENGTH + col].icon
-                            = getIcon(col, row)
+                        defs[row * MELODY_LENGTH + col].icon = getIcon(col, row)
                     }
                     picker.draw()
                     picker.navigator.updateAria()
                 },
                 onHide,
                 onDelete,
-                navigator: () => new MelodyNavigator(),
+                navigator: () => new MelodyNavigator(picker),
                 style: ButtonStyles.Transparent,
             },
             false

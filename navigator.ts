@@ -201,14 +201,16 @@ namespace microcode {
     // add support for aria
     export class PickerNavigator implements INavigator {
         protected deleteButton: Button
-        protected buttons: ButtonBase[]
         protected width: number
         protected row: number
         protected col: number
 
-        constructor(width: number = 5) {
+        constructor(private picker: Picker, width: number = 5) {
             this.width = width
-            this.buttons = []
+        }
+
+        private get length() {
+            return this.picker.group.defs.length
         }
 
         get hasDelete() {
@@ -216,20 +218,20 @@ namespace microcode {
         }
 
         moveToIndex(index: number) {
-            assert(index < this.buttons.length, "index out of bounds")
+            assert(index < this.length, "index out of bounds")
             this.row = index / this.width
             this.col = index % this.width
             this.reportAria()
         }
 
         private height() {
-            return this.buttons.length / this.width
+            return this.length / this.width
         }
 
         private currentRowWidth() {
             return this.row < this.height() - 1
                 ? this.width
-                : this.buttons.length % this.width
+                : this.length % this.width
         }
 
         private currentRowRagged() {
@@ -248,40 +250,34 @@ namespace microcode {
         }
 
         clear() {
-            this.buttons = []
             this.deleteButton = undefined
         }
 
-        addButtons(btns: ButtonBase[]) {
-            this.buttons = this.buttons.concat(btns)
-        }
+        addButtons(btns: ButtonBase[]) {}
 
         addDelete(btn: Button) {
             this.deleteButton = btn
         }
 
-        // TODO: fabricate button as needed
         getCurrent() {
             if (this.row == -1) {
                 return this.deleteButton
             } else {
                 const index = this.row * this.width + this.col
-                if (index < this.buttons.length) return undefined // TODO return this.buttons[index]
+                if (index < this.length)
+                    return this.picker.group.getButtonAtIndex(index)
             }
             return undefined
         }
 
         screenToButton(x: number, y: number): Button {
-            const p = new Vec2(x, y)
-            const target = this.buttons.find(btn =>
-                Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
-            )
-            if (target) {
-                const index = this.buttons.indexOf(target)
+            const index = this.picker.group.getButtonAtScreen(x, y)
+            if (index >= 0) {
                 this.row = index / this.width
                 this.col = index % this.width
+                return this.picker.group.getButtonAtIndex(index)
             }
-            return undefined // TODO target
+            return undefined
         }
 
         move(dir: CursorDir) {
@@ -346,8 +342,8 @@ namespace microcode {
 
     // accessibility for LEDs
     export class LEDNavigator extends PickerNavigator {
-        constructor() {
-            super()
+        constructor(picker: Picker) {
+            super(picker)
             this.row = 2
             this.col = 2
         }
@@ -369,8 +365,8 @@ namespace microcode {
 
     // accessibility for melody
     export class MelodyNavigator extends PickerNavigator {
-        constructor() {
-            super()
+        constructor(picker: Picker) {
+            super(picker)
             this.row = 2
             this.col = 2
         }

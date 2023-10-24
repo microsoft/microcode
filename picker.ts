@@ -22,10 +22,7 @@ namespace microcode {
         public bounds: Bounds
         private cell: Bounds
 
-        constructor(
-            public picker: Picker,
-            public defs: PickerButtonDef[]
-        ) {
+        constructor(public picker: Picker, public defs: PickerButtonDef[]) {
             this.xfrm = new Affine()
             this.xfrm.parent = picker.xfrm
         }
@@ -35,7 +32,7 @@ namespace microcode {
         public buttonHeight() {
             return this.cell.height
         }
-        
+
         public getButtonAtIndex(idx: number): Button {
             const def = this.defs[idx]
             const btn = new Button({
@@ -44,17 +41,30 @@ namespace microcode {
                 icon: def.icon,
                 ariaId: def.ariaId,
                 x: 0,
-                y: 0
+                y: 0,
             })
             this.setButtonCoords(idx, btn)
             return btn
+        }
+
+        public getButtonAtScreen(x: number, y: number): number {
+            const p = new Vec2(x, y)
+            //const target = this.buttons.find(btn =>
+            //    Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
+            // )
+            return -1
         }
 
         public layout(maxPerRow: number) {
             // first compute bounds of biggest button
             this.cell = new Bounds()
             this.defs.forEach(def => {
-                const btn = new ButtonBase(0, 0, this.picker.style, this.picker.xfrm)
+                const btn = new ButtonBase(
+                    0,
+                    0,
+                    this.picker.style,
+                    this.picker.xfrm
+                )
                 btn.buildSprite(icons.get(def.icon))
                 this.cell.add(btn.bounds)
             })
@@ -80,12 +90,10 @@ namespace microcode {
                 this.bounds.add(Bounds.Translate(btn.bounds, btn.xfrm.localPos))
                 if (draw) btn.draw()
             })
-
         }
         public draw() {
             this.layoutDraw(true)
         }
-
     }
 
     export class Picker implements IPlaceable {
@@ -112,7 +120,7 @@ namespace microcode {
         constructor(private cursor: Cursor) {
             this.xfrm_ = new Affine()
             this.group = undefined
-            this.navigator = new PickerNavigator()
+            this.navigator = new PickerNavigator(this)
         }
 
         public setGroup(defs: PickerButtonDef[]) {
@@ -160,7 +168,7 @@ namespace microcode {
                 this.navigator = opts.navigator()
             } else {
                 this.navigator.clear()
-                this.navigator = new PickerNavigator()
+                this.navigator = new PickerNavigator(this)
             }
             this.hideOnClick = hideOnClick
             this.title = opts.title
@@ -181,13 +189,6 @@ namespace microcode {
                     },
                 })
             }
-            // if (this.group) {
-            //     const btns = this.group.opts.btns || []
-            //     btns.forEach(btn => {
-            //         const button = new ButtonBase(0, 0, this.style, this.xfrm)
-            //         this.group.buttons.push(button)
-            //     })
-            // }
             this.layout(PICKER_MAX_PER_ROW)
             this.visible = true
         }

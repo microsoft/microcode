@@ -335,7 +335,7 @@ namespace microcode {
                 this.editor.picker.setGroup(btns)
                 this.editor.picker.show({
                     title: accessibility.ariaToTooltip(name),
-                    navigator: () => new PickerNavigator(),
+                    navigator: () => new PickerNavigator(this.editor.picker),
                     onClick: id => {
                         let theOne = tilesDB[name][id]
                         if (theOne.fieldEditor) {
