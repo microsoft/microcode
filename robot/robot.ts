@@ -1,11 +1,26 @@
 namespace microcode.robots {
+    /**
+     * A ws2812b LED strip
+     */
     export interface RobotLEDs {
+        /**
+         * LED data pin
+         */
         pin: DigitalPin
+        /**
+         * Number of  LEDs
+         */
         count: number
     }
 
     export interface Sonar {
+        /**
+         * Echo pin
+         */
         echo: DigitalPin
+        /**
+         * Trigger pin
+         */
         trig: DigitalPin
         /**
          * Microseconds to keep the trigger pin low. Default is 4.
@@ -22,9 +37,37 @@ namespace microcode.robots {
     }
 
     export interface LineDetectors {
+        /**
+         * Left line detector
+         */
         left: DigitalPin
+        /**
+         * Right line detector
+         */
         right: DigitalPin
+        /**
+         * True if the line is high, false if the line is low
+         */
         lineHigh: boolean
+    }
+
+    export interface ServoArm {
+        /**
+         * 0 angle
+         */
+        minAngle: number
+        /**
+         * 100% angle
+         */
+        maxAngle: number
+        /**
+         * Driving pin
+         */
+        pin: AnalogPin
+        /**
+         * Set the pulse width to the servo in microseconds
+         */
+        pulseUs?: number
     }
 
     export class Robot {
@@ -77,6 +120,10 @@ namespace microcode.robots {
          * Line detector configuration
          */
         lineDetectors?: LineDetectors
+        /**
+         * Robotic arm configuration
+         */
+        arm?: ServoArm
         /**
          * A map from microcode command to speed, turn ratio values
          */

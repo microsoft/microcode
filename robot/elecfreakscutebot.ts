@@ -18,6 +18,11 @@ namespace microcode {
                 right: DigitalPin.P14,
                 lineHigh: false,
             }
+            this.arm = {
+                minAngle: 45,
+                maxAngle: 135,
+                pin: AnalogPin.P1,
+            }
             this.maxLineSpeed = 28
         }
 

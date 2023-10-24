@@ -1,5 +1,6 @@
 namespace microcode {
     const MAX_GROUPS = 25
+    const SCROLL_SPEED = 60
 
     function radioGroupFromDeviceSerialNumber() {
         const sn = control.deviceLongSerialNumber()
@@ -37,7 +38,7 @@ namespace microcode {
         private configDrift: boolean = undefined
         private targetColor = 0
         private currentColor = 0
-        private currentArmAperture = -1
+        private currentArmAperture: number = undefined
         private currentSpeed: number = 0
         private targetSpeed: number = 0
         private currentTurnRatio = 0
@@ -60,6 +61,7 @@ namespace microcode {
 
         private sonar: robots.Sonar
         private lineDetectors: robots.LineDetectors
+        private arm: robots.ServoArm
 
         /**
          * Maximum distance in cm for the ultrasonic sensor
@@ -76,7 +78,6 @@ namespace microcode {
 
         private configureButtons() {
             input.onButtonPressed(Button.A, () => {
-                if (this.showConfiguration) return
                 this.playTone(440, 500)
                 if (this.configDrift !== undefined) {
                     if (this.configDrift) this.setRunDrift(this.runDrift - 1)
@@ -85,7 +86,6 @@ namespace microcode {
                 this.showConfigurationState()
             })
             input.onButtonPressed(Button.B, () => {
-                if (this.showConfiguration) return
                 this.playTone(640, 500)
                 if (this.configDrift !== undefined) {
                     if (this.configDrift) this.setRunDrift(this.runDrift + 1)
@@ -94,7 +94,6 @@ namespace microcode {
                 this.showConfigurationState()
             })
             input.onButtonPressed(Button.AB, () => {
-                if (this.showConfiguration) return
                 this.playTone(840, 500)
                 this.configDrift = !this.configDrift
                 this.showConfigurationState(true)
@@ -109,12 +108,12 @@ namespace microcode {
             if (this.configDrift === undefined) {
                 basic.showString(
                     `RADIO ${this.radioGroup} DRIFT ${this.runDrift}`,
-                    64
+                    SCROLL_SPEED
                 )
             } else {
                 const title = this.configDrift ? "DRIFT" : "RADIO"
                 const value = this.configDrift ? this.runDrift : this.radioGroup
-                basic.showString(title + " " + value, 64)
+                basic.showString(title + " " + value, SCROLL_SPEED)
             }
             this.showConfiguration = false
         }
@@ -146,6 +145,9 @@ namespace microcode {
             }
             this.sonar = this.robot.sonar
             if (this.sonar) pins.setPull(this.sonar.trig, PinPullMode.PullNone)
+            this.arm = this.robot.arm
+            if (this.arm && this.arm.pulseUs)
+                pins.servoSetPulse(this.arm.pin, this.arm.pulseUs)
 
             // stop motors
             this.setColor(0x0000ff)
@@ -202,9 +204,16 @@ namespace microcode {
         }
 
         private updateArm() {
-            if (this.currentArmAperture < 0) return
-
-            this.robot.armOpen(this.currentArmAperture)
+            if (isNaN(this.currentArmAperture) || this.currentArmAperture < 0)
+                return
+            const arm = this.robot.arm
+            if (arm) {
+                const angle = Math.round(
+                    Math.map(this.currentArmAperture, 0, 100, 0, 180)
+                )
+                pins.servoWritePin(this.arm.pin, angle)
+            } else this.robot.armOpen(this.currentArmAperture)
+            this.currentArmAperture = undefined
         }
 
         /**
@@ -327,14 +336,12 @@ namespace microcode {
                 (lineState & RobotLineState.Left) === RobotLineState.Left
             const right =
                 (lineState & RobotLineState.Right) === RobotLineState.Right
-            for (let i = 1; i < 5; ++i) {
+            for (let i = 0; i < 5; ++i) {
                 if (left) led.plot(4, i)
                 else led.unplot(4, i)
                 if (right) led.plot(0, i)
                 else led.unplot(0, i)
             }
-            if (this.inRadioMessageId % 2) led.plot(4, 0)
-            else led.unplot(4, 0)
         }
 
         private updateSonar() {
