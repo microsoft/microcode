@@ -42,6 +42,9 @@ namespace microcode {
                 ariaId: def.ariaId,
                 x: 0,
                 y: 0,
+                onClick: () => {
+                    this.picker.onButtonClicked(idx)
+                },
             })
             btn.xfrm.parent = this.xfrm
             this.setButtonCoords(idx, btn)
