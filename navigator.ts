@@ -223,14 +223,14 @@ namespace microcode {
 
         moveToIndex(index: number) {
             assert(index < this.length, "index out of bounds")
-            this.row = index / this.width
+            this.row = Math.floor(index / this.width)
             this.col = index % this.width
             this.reportAria()
             return this.picker.group.getButtonAtIndex(index)
         }
 
         private height() {
-            return this.length / this.width
+            return Math.floor(this.length / this.width)
         }
 
         private currentRowWidth() {
@@ -265,6 +265,7 @@ namespace microcode {
         }
 
         getCurrent() {
+            console.log(`row: ${this.row}, col: ${this.col}`)
             if (this.row == -1) {
                 return this.deleteButton
             } else {
@@ -278,7 +279,7 @@ namespace microcode {
         screenToButton(x: number, y: number): Button {
             const index = this.picker.group.getButtonAtScreen(x, y)
             if (index >= 0) {
-                this.row = index / this.width
+                this.row = Math.floor(index / this.width)
                 this.col = index % this.width
                 return this.picker.group.getButtonAtIndex(index)
             }
@@ -315,8 +316,10 @@ namespace microcode {
                     break
                 }
                 case CursorDir.Right: {
-                    if (this.row == -1) this.row = 0
-                    else if (this.col < this.width - 1) this.col++
+                    if (this.row == -1) {
+                        this.row = 0
+                        this.col = 0
+                    } else if (this.col < this.currentRowWidth() - 1) this.col++
                     else if (this.row < this.height() - 1) {
                         this.row++
                         this.col = 0
