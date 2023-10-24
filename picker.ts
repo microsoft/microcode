@@ -55,8 +55,8 @@ namespace microcode {
             const p = new Vec2(x, y)
             const b = Bounds.Translate(this.bounds, this.xfrm.worldPos)
             if (!b.contains(p)) return undefined
-            const row = Math.floor((y - b.top) / this.cell.height)
-            const col = Math.floor((x - b.left) / this.cell.width)
+            const row = Math.idiv(y - b.top, this.cell.height)
+            const col = Math.idiv(x - b.left, this.cell.width)
             return new Vec2(col, row)
         }
 

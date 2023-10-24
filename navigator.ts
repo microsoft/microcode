@@ -223,7 +223,7 @@ namespace microcode {
 
         moveToIndex(index: number) {
             assert(index < this.length, "index out of bounds")
-            this.row = Math.floor(index / this.width)
+            this.row = Math.idiv(index, this.width)
             this.col = index % this.width
             this.reportAria()
             return this.picker.group.getButtonAtIndex(index)

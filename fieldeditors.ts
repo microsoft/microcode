@@ -28,7 +28,7 @@ namespace microcode {
                 width: 5,
                 title: accessibility.ariaToTooltip(TID_MODIFIER_ICON_EDITOR),
                 onClick: (index: number) => {
-                    let row = Math.floor(index / 5)
+                    let row = Math.idiv(index, 5)
                     let col = index % 5
                     const on = image5x5.getPixel(col, row)
                     image5x5.setPixel(col, row, on ? 0 : 1)
@@ -75,7 +75,7 @@ namespace microcode {
                 width: MELODY_LENGTH,
                 title: accessibility.ariaToTooltip(TID_MODIFIER_MELODY_EDITOR),
                 onClick: index => {
-                    let row = Math.floor(index / MELODY_LENGTH)
+                    let row = Math.idiv(index, MELODY_LENGTH)
                     let col = index % MELODY_LENGTH
                     if (getIcon(col, row) !== "note_on") {
                         const note = (NUM_NOTES - 1 - row).toString()
