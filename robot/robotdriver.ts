@@ -1,6 +1,6 @@
 namespace microcode {
     const MAX_GROUPS = 25
-    const SCROLL_SPEED = 60
+    const SCROLL_SPEED = 50
 
     function radioGroupFromDeviceSerialNumber() {
         const sn = control.deviceLongSerialNumber()
@@ -34,7 +34,7 @@ namespace microcode {
         private readonly sonarDistanceFilter = new KalmanFilter1D()
         private lastSonarValue = 0
 
-        private showConfiguration: boolean = false
+        private showConfiguration: number = 0
         private configDrift: boolean = undefined
         private targetColor = 0
         private currentColor = 0
@@ -77,45 +77,56 @@ namespace microcode {
         }
 
         private configureButtons() {
-            input.onButtonPressed(Button.A, () => {
-                this.playTone(440, 500)
-                if (this.configDrift !== undefined) {
-                    if (this.configDrift) this.setRunDrift(this.runDrift - 1)
-                    else this.previousGroup()
-                }
-                this.showConfigurationState()
-            })
-            input.onButtonPressed(Button.B, () => {
-                this.playTone(640, 500)
-                if (this.configDrift !== undefined) {
-                    if (this.configDrift) this.setRunDrift(this.runDrift + 1)
-                    else this.nextGroup()
-                }
-                this.showConfigurationState()
-            })
-            input.onButtonPressed(Button.AB, () => {
-                this.playTone(840, 500)
-                this.configDrift = !this.configDrift
-                this.showConfigurationState(true)
-            })
+            input.onButtonPressed(Button.A, () =>
+                control.inBackground(() => {
+                    if (this.configDrift !== undefined) {
+                        this.playTone(440, 500)
+                        if (this.configDrift)
+                            this.setRunDrift(this.runDrift - 1)
+                        else this.previousGroup()
+                    }
+                    this.showConfigurationState()
+                })
+            )
+            input.onButtonPressed(Button.B, () =>
+                control.inBackground(() => {
+                    if (this.configDrift !== undefined) {
+                        this.playTone(640, 500)
+                        if (this.configDrift)
+                            this.setRunDrift(this.runDrift + 1)
+                        else this.nextGroup()
+                    }
+                    this.showConfigurationState()
+                })
+            )
+            input.onButtonPressed(Button.AB, () =>
+                control.inBackground(() => {
+                    this.playTone(840, 500)
+                    this.configDrift = !this.configDrift
+                    this.showConfigurationState(true)
+                })
+            )
         }
 
         private showConfigurationState(showTitle?: boolean) {
-            this.showConfiguration = true
-
-            led.stopAnimation()
-            basic.clearScreen()
-            if (this.configDrift === undefined) {
-                basic.showString(
-                    `RADIO ${this.radioGroup} DRIFT ${this.runDrift}`,
-                    SCROLL_SPEED
-                )
-            } else {
-                const title = this.configDrift ? "DRIFT" : "RADIO"
-                const value = this.configDrift ? this.runDrift : this.radioGroup
-                basic.showString(title + " " + value, SCROLL_SPEED)
+            this.showConfiguration++
+            try {
+                led.stopAnimation()
+                if (this.configDrift === undefined) {
+                    basic.showString(
+                        `RADIO ${this.radioGroup} DRIFT ${this.runDrift}`,
+                        SCROLL_SPEED
+                    )
+                } else {
+                    const title = this.configDrift ? "DRIFT" : "RADIO"
+                    const value = this.configDrift
+                        ? this.runDrift
+                        : this.radioGroup
+                    basic.showString(title + " " + value, SCROLL_SPEED)
+                }
+            } finally {
+                this.showConfiguration--
             }
-            this.showConfiguration = false
         }
 
         /**
