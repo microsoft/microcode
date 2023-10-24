@@ -194,9 +194,12 @@ namespace microcode {
                     ariaId: "delete_rule",
                 },
             ]
-            this.editor.picker.addGroup({ btns })
+            this.editor.picker.setGroup(btns)
             this.editor.picker.show({
-                onClick: iconId => this.handleRuleHandleMenuSelection(iconId),
+                onClick: index =>
+                    this.handleRuleHandleMenuSelection(
+                        btns[index].icon as string
+                    ),
             })
         }
 
@@ -316,6 +319,7 @@ namespace microcode {
                 return
             }
             let onDelete = undefined
+            let selectedButton = -1
             if (index < ruleTiles.length) {
                 onDelete = () => {
                     tileUpdated(undefined)
@@ -323,15 +327,17 @@ namespace microcode {
                 const selected = btns.indexOf(
                     btns.find(b => b.icon === ruleTiles[index].tid)
                 )
-                if (selected >= 0) btns[selected].start = true
+                if (selected >= 0) {
+                    selectedButton = selected
+                }
             }
             if (btns.length) {
-                this.editor.picker.addGroup({ btns })
+                this.editor.picker.setGroup(btns)
                 this.editor.picker.show({
                     title: accessibility.ariaToTooltip(name),
-                    navigator: () => new SimpleGridNavigator(),
-                    onClick: id => {
-                        let theOne = tilesDB[name][id]
+                    navigator: () => new PickerNavigator(this.editor.picker),
+                    onClick: idx => {
+                        let theOne = tilesDB[name][suggestions[idx].tid]
                         if (theOne.fieldEditor) {
                             // there is more work to do                l
                             theOne =
@@ -343,6 +349,7 @@ namespace microcode {
                         tileUpdated(theOne)
                     },
                     onDelete,
+                    selected: selectedButton,
                 })
             }
             return

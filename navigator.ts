@@ -6,7 +6,6 @@ namespace microcode {
         getCurrent: () => Button
         screenToButton: (x: number, y: number) => Button
         initialCursor: (row: number, col: number) => Button
-        finished: () => void
         updateAria: () => void
     }
 
@@ -19,20 +18,18 @@ namespace microcode {
         }
     }
 
+    // ragged rows of buttons
     export class RowNavigator implements INavigator {
         protected buttonGroups: Button[][]
-        protected buttons: Button[]
         protected row: number
         protected col: number
 
         constructor() {
             this.buttonGroups = []
-            this.buttons = []
         }
 
         public clear() {
             this.buttonGroups = []
-            this.buttons = []
         }
 
         public getRow() {
@@ -41,30 +38,19 @@ namespace microcode {
 
         public addButtons(btns: Button[]) {
             this.buttonGroups.push(btns)
-            this.buttons = this.buttons.concat(btns)
         }
 
-        public finished() {}
-
-        // this is inefficient
         public screenToButton(x: number, y: number): Button {
             const p = new Vec2(x, y)
-            const target = this.buttons.find(btn =>
-                Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
-            )
-            if (target) {
-                for (let row = 0; row < this.buttonGroups.length; row++) {
-                    for (
-                        let col = 0;
-                        col < this.buttonGroups[row].length;
-                        col++
-                    ) {
-                        if (this.buttonGroups[row][col] === target) {
-                            this.row = row
-                            this.col = col
-                            return target
-                        }
-                    }
+            for (let row = 0; row < this.buttonGroups.length; row++) {
+                const buttons = this.buttonGroups[row]
+                const target = buttons.find(btn =>
+                    Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
+                )
+                if (target) {
+                    this.row = row
+                    this.col = buttons.indexOf(target)
+                    return target
                 }
             }
             return undefined
@@ -158,7 +144,7 @@ namespace microcode {
         }
     }
 
-    // this add accessibility for rule
+    // this adds accessibility for rule
     export class RuleRowNavigator extends RowNavigator {
         private rules: RuleDefn[]
 
@@ -214,24 +200,146 @@ namespace microcode {
         }
     }
 
-    class MatrixNavigator extends RowNavigator {
-        protected hasDelete: boolean
+    // mostly a matrix, except for last row, which may be ragged
+    // also supports delete button
+    // add support for aria
+    export class PickerNavigator implements INavigator {
+        protected deleteButton: Button
+        protected row: number
+        protected col: number
 
-        public initialCursor(row: number = 0, col: number = 0) {
-            this.hasDelete = this.buttonGroups[0].length == 1
-            this.row = 2 + (this.hasDelete ? 1 : 0)
-            this.col = 2
-            const btn = this.buttonGroups[this.row][this.col]
-            this.reportAria(btn)
+        constructor(private picker: Picker) {}
 
-            return btn
+        private get width() {
+            return this.picker.width
+        }
+        private get length() {
+            return this.picker.group.defs.length
         }
 
-        protected reportAria(btn: Button) {
-            if (!btn) {
-                return null
+        get hasDelete() {
+            return !!this.deleteButton
+        }
+
+        moveToIndex(index: number) {
+            assert(index < this.length, "index out of bounds")
+            this.row = Math.idiv(index, this.width)
+            this.col = index % this.width
+            this.reportAria()
+            return this.picker.group.getButtonAtIndex(index)
+        }
+
+        private height() {
+            return Math.ceil(this.length / this.width)
+        }
+
+        private currentRowWidth() {
+            assert(this.row >= 0, "row out of bounds")
+            return this.row < this.height() - 1
+                ? this.width
+                : this.length - this.width * (this.height() - 1)
+        }
+
+        public initialCursor(row: number = 0, col: number = 0): Button {
+            this.row = row
+            this.col = col
+            const btn = this.getCurrent()
+            if (btn) {
+                this.reportAria()
+                return undefined // TODO
             }
-            if (this.hasDelete && this.row == 0 && this.col == 0) {
+            return undefined
+        }
+
+        clear() {
+            this.deleteButton = undefined
+        }
+
+        addButtons(btns: ButtonBase[]) {}
+
+        addDelete(btn: Button) {
+            this.deleteButton = btn
+        }
+
+        getCurrent() {
+            // console.log(`row: ${this.row}, col: ${this.col}`)
+            if (this.row == -1) {
+                return this.deleteButton
+            } else {
+                const index = this.row * this.width + this.col
+                if (index < this.length)
+                    return this.picker.group.getButtonAtIndex(index)
+            }
+            return undefined
+        }
+
+        screenToButton(x: number, y: number): Button {
+            const p = new Vec2(x, y)
+            const btn = this.deleteButton
+            if (
+                btn &&
+                Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
+            )
+                return btn
+            const np = this.picker.group.getButtonAtScreen(x, y)
+            if (np) {
+                this.row = np.y
+                this.col = np.x
+                if (this.col >= this.currentRowWidth())
+                    this.col = this.currentRowWidth() - 1
+                return this.getCurrent()
+            }
+            return undefined
+        }
+
+        move(dir: CursorDir) {
+            switch (dir) {
+                case CursorDir.Up: {
+                    if (this.row > 0) this.row--
+                    else if (this.deleteButton) this.row = -1
+                    break
+                }
+                case CursorDir.Down: {
+                    if (this.row < this.height() - 1) {
+                        this.row++
+                        if (this.col >= this.currentRowWidth()) {
+                            this.col = this.currentRowWidth() - 1
+                        }
+                    }
+                    break
+                }
+                case CursorDir.Left: {
+                    if (this.col > 0) this.col--
+                    else if (this.row > 0) {
+                        this.row--
+                        this.col = this.width - 1
+                    } else if (this.deleteButton) {
+                        this.row = -1
+                    }
+                    break
+                }
+                case CursorDir.Right: {
+                    if (this.row == -1) {
+                        this.row = 0
+                        this.col = 0
+                    } else if (this.col < this.currentRowWidth() - 1) this.col++
+                    else if (this.row < this.height() - 1) {
+                        this.row++
+                        this.col = 0
+                    }
+                    break
+                }
+            }
+            this.reportAria()
+            return this.getCurrent()
+        }
+
+        public updateAria() {
+            this.reportAria()
+        }
+
+        protected reportAria() {
+            if (this.row == -1) {
                 accessibility.setLiveContent(<
                     accessibility.TextAccessibilityMessage
                 >{
@@ -239,19 +347,21 @@ namespace microcode {
                     value: "delete_tile",
                     force: true,
                 })
-                return null
             }
-            return btn
         }
     }
 
     // accessibility for LEDs
-    export class LEDNavigator extends MatrixNavigator {
-        protected reportAria(b: Button): Button {
-            const btn = super.reportAria(b)
-            if (!btn) return null
-
-            const on = btn.getIcon() == "solid_red"
+    export class LEDNavigator extends PickerNavigator {
+        constructor(picker: Picker) {
+            super(picker)
+            this.row = 2
+            this.col = 2
+        }
+        protected reportAria() {
+            super.reportAria()
+            if (this.row == -1) return
+            const on = true // TODO: btn.getIcon() == "solid_red"
             accessibility.setLiveContent(<
                 accessibility.LEDAccessibilityMessage
             >{
@@ -261,16 +371,20 @@ namespace microcode {
                 y: this.row,
                 force: true,
             })
-            return null
         }
     }
 
     // accessibility for melody
-    export class MelodyNavigator extends MatrixNavigator {
-        protected reportAria(b: Button): Button {
-            let btn = super.reportAria(b)
-            if (!btn) return null
-            const on = btn.getIcon() === "note_on"
+    export class MelodyNavigator extends PickerNavigator {
+        constructor(picker: Picker) {
+            super(picker)
+            this.row = 2
+            this.col = 2
+        }
+        protected reportAria() {
+            super.reportAria()
+            if (this.row == -1) return
+            const on = true // TODO btn.getIcon() === "note_on"
             const index = this.hasDelete ? this.row - 1 : this.row
             accessibility.setLiveContent(<
                 accessibility.NoteAccessibilityMessage
@@ -280,165 +394,6 @@ namespace microcode {
                 index,
                 force: true,
             })
-            return null
-        }
-    }
-
-    export class SimpleGridNavigator implements INavigator {
-        buttons: Button[]
-        curr: Button
-        private sortedButtons: Button[][]
-
-        constructor() {
-            this.buttons = []
-        }
-
-        public clear() {
-            this.buttons = []
-            this.curr = undefined
-        }
-
-        public addButtons(btns: Button[]) {
-            this.buttons = this.buttons.concat(btns)
-        }
-
-        private getRow() {
-            for (let row = 0; row < this.sortedButtons.length; row++) {
-                if (
-                    this.curr.xfrm.worldPos.y ==
-                    this.sortedButtons[row][0].xfrm.worldPos.y
-                )
-                    return row
-            }
-            return -1
-        }
-
-        // call this when finished adding buttons
-        public finished() {
-            this.sortedButtons = []
-            // we now need to optimize a bit by sorting and creating rows
-            let currRow: Button[] = []
-            this.buttons.sort((a, b) => a.xfrm.worldPos.y - b.xfrm.worldPos.y)
-            this.buttons.forEach(btn => {
-                if (
-                    currRow.length == 0 ||
-                    btn.xfrm.worldPos.y == currRow[0].xfrm.worldPos.y
-                )
-                    currRow.push(btn)
-                else {
-                    this.sortedButtons.push(currRow)
-                    currRow = [btn]
-                }
-            })
-            if (currRow.length) this.sortedButtons.push(currRow)
-            // sort each row by x coordinate
-            this.sortedButtons.forEach(btns =>
-                btns.sort((a, b) => a.xfrm.worldPos.x - b.xfrm.worldPos.x)
-            )
-        }
-
-        public move(dir: CursorDir): Button {
-            const findNearInX = (btns: Button[], col: number) => {
-                const nearInX = btns
-                    .filter(
-                        btn =>
-                            Math.abs(
-                                btn.xfrm.worldPos.x - this.curr.xfrm.worldPos.x
-                            ) <
-                            btn.width >> 1
-                    )
-                    .shift()
-                if (!nearInX) return btns[col]
-                return nearInX
-            }
-            let btn: Button
-            if (!this.curr) {
-                btn = this.buttons[0]
-            } else {
-                const row = this.getRow()
-                const col = this.sortedButtons[row].indexOf(this.curr)
-                switch (dir) {
-                    case CursorDir.Up: {
-                        if (row > 0) {
-                            const prevRow = this.sortedButtons[row - 1]
-                            if (col < prevRow.length)
-                                btn = findNearInX(prevRow, col)
-                            else {
-                                btn = prevRow[prevRow.length - 1]
-                            }
-                        } else {
-                            throw new NavigationError(BACK_BUTTON_ERROR_KIND)
-                        }
-                        break
-                    }
-                    case CursorDir.Down: {
-                        if (row < this.sortedButtons.length - 1) {
-                            const nextRow = this.sortedButtons[row + 1]
-                            if (col < nextRow.length)
-                                btn = findNearInX(nextRow, col)
-                            else {
-                                btn = nextRow[nextRow.length - 1]
-                            }
-                        }
-                        break
-                    }
-                    case CursorDir.Left: {
-                        if (col > 0) btn = this.sortedButtons[row][col - 1]
-                        else if (row > 0) {
-                            const prevRow = this.sortedButtons[row - 1]
-                            btn = prevRow[prevRow.length - 1]
-                        } else {
-                            const prevRow =
-                                this.sortedButtons[
-                                    this.sortedButtons.length - 1
-                                ]
-                            btn = prevRow[prevRow.length - 1]
-                        }
-                        break
-                    }
-                    case CursorDir.Right: {
-                        if (col < this.sortedButtons[row].length - 1)
-                            btn = this.sortedButtons[row][col + 1]
-                        else if (row < this.sortedButtons.length - 1) {
-                            const nextRow = this.sortedButtons[row + 1]
-                            btn = nextRow[0]
-                        } else {
-                            const nextRow = this.sortedButtons[0]
-                            btn = nextRow[0]
-                        }
-                        break
-                    }
-                }
-            }
-
-            if (btn) {
-                btn.reportAria(true)
-                this.curr = btn
-            }
-
-            return this.curr
-        }
-
-        public updateAria() {
-            this.curr.reportAria(true)
-        }
-
-        public screenToButton(x: number, y: number): Button {
-            const p = new Vec2(x, y)
-            const target = this.buttons.find(btn =>
-                Bounds.Translate(btn.bounds, btn.xfrm.worldPos).contains(p)
-            )
-            if (target) this.curr = target
-            return target
-        }
-
-        public getCurrent(): Button {
-            return this.curr
-        }
-
-        public initialCursor(row: number, col: number): Button {
-            this.curr = this.buttons[row]
-            return this.curr
         }
     }
 }

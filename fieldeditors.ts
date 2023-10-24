@@ -9,44 +9,36 @@ namespace microcode {
             return image5x5.getPixel(col, row) ? "solid_red" : "solid_black"
         }
 
+        // TODO: replace this with a function from index to colo
+        let defs: PickerButtonDef[] = []
         for (let row = 0; row < 5; row++) {
-            let btns: PickerButtonDef[] = []
             for (let col = 0; col < 5; col++) {
-                btns.push({
+                defs.push({
                     icon: getColor(col, row),
-                    style: ButtonStyles.Transparent,
                 })
             }
-            picker.addGroup({ btns })
         }
+        picker.setGroup(defs)
 
         const red = icons.get("solid_red")
         const black = icons.get("solid_black")
 
         picker.show(
             {
+                width: 5,
                 title: accessibility.ariaToTooltip(TID_MODIFIER_ICON_EDITOR),
-                onClick: (iconId: any, button: PickerButton) => {
-                    let on = button.getIcon() === "solid_red"
-                    let row = 0,
-                        col = 0
-                    for (; row < 5; row++) {
-                        let index =
-                            button.picker.groups[row].buttons.indexOf(button)
-                        if (index >= 0) {
-                            col = index
-                            break
-                        }
-                    }
+                onClick: (index: number) => {
+                    let row = Math.idiv(index, 5)
+                    let col = index % 5
+                    const on = image5x5.getPixel(col, row)
                     image5x5.setPixel(col, row, on ? 0 : 1)
-                    button.setIcon(getColor(col, row), on ? black : red)
-                    button.draw()
-                    picker.navigator.updateAria()
-                    //control.heapSnapshot()
+                    defs[index].icon = getColor(col, row)
+                    picker.draw()
                 },
                 onHide,
                 onDelete,
-                navigator: () => new LEDNavigator(),
+                navigator: () => new LEDNavigator(picker),
+                style: ButtonStyles.Transparent,
             },
             false
         )
@@ -68,32 +60,23 @@ namespace microcode {
             return note_icon
         }
 
+        let defs: PickerButtonDef[] = []
         for (let row = 0; row < NUM_NOTES; row++) {
-            let btns: PickerButtonDef[] = []
             for (let col = 0; col < MELODY_LENGTH; col++) {
-                btns.push({
+                defs.push({
                     icon: getIcon(col, row),
-                    style: ButtonStyles.Transparent,
                 })
             }
-            picker.addGroup({ btns })
         }
+        picker.setGroup(defs)
 
         picker.show(
             {
+                width: MELODY_LENGTH,
                 title: accessibility.ariaToTooltip(TID_MODIFIER_MELODY_EDITOR),
-                onClick: (iconId: any, button: PickerButton) => {
-                    let row = 0,
-                        col = 0
-                    // note that this row is graphics, not music
-                    for (; row < NUM_NOTES; row++) {
-                        let index =
-                            button.picker.groups[row].buttons.indexOf(button)
-                        if (index >= 0) {
-                            col = index
-                            break
-                        }
-                    }
+                onClick: index => {
+                    let row = Math.idiv(index, MELODY_LENGTH)
+                    let col = index % MELODY_LENGTH
                     if (getIcon(col, row) !== "note_on") {
                         const note = (NUM_NOTES - 1 - row).toString()
                         const buf = Buffer.create(6)
@@ -107,16 +90,15 @@ namespace microcode {
                             : (NUM_NOTES - 1 - row).toString()) +
                         melody.notes.slice(col + 1)
                     for (row = 0; row < NUM_NOTES; row++) {
-                        button.picker.groups[row].buttons[col].setIcon(
-                            getIcon(col, row)
-                        )
+                        defs[row * MELODY_LENGTH + col].icon = getIcon(col, row)
                     }
                     picker.draw()
                     picker.navigator.updateAria()
                 },
                 onHide,
                 onDelete,
-                navigator: () => new MelodyNavigator(),
+                navigator: () => new MelodyNavigator(picker),
+                style: ButtonStyles.Transparent,
             },
             false
         )
