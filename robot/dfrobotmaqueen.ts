@@ -18,11 +18,11 @@ namespace microcode {
     class DFRobotMaqueenRobot extends robots.Robot {
         constructor() {
             super()
-            this.lineDetectors = {
-                left: DigitalPin.P13,
-                right: DigitalPin.P14,
-                lineHigh: false,
-            }
+            this.lineDetectors = new robots.PinLineDetectors(
+                DigitalPin.P13,
+                DigitalPin.P14,
+                false
+            )
             this.leds = {
                 pin: DigitalPin.P15,
                 count: 4,

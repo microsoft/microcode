@@ -140,11 +140,11 @@ namespace microcode {
                 trig: DigitalPin.P15,
                 echo: DigitalPin.P15,
             }
-            this.lineDetectors = {
-                left: DigitalPin.P1,
-                right: DigitalPin.P2,
-                lineHigh: false,
-            }
+            this.lineDetectors = new robots.PinLineDetectors(
+                DigitalPin.P1,
+                DigitalPin.P2,
+                false
+            )
             this.maxLineSpeed = 150
 
             initPCA9685()

@@ -150,10 +150,7 @@ namespace microcode {
             this.leds = this.robot.leds
             if (this.leds) this.ledsBuffer = Buffer.create(this.leds.count * 3)
             this.lineDetectors = this.robot.lineDetectors
-            if (this.lineDetectors) {
-                pins.setPull(this.lineDetectors.left, PinPullMode.PullNone)
-                pins.setPull(this.lineDetectors.right, PinPullMode.PullNone)
-            }
+            if (this.lineDetectors) this.lineDetectors.start()
             this.sonar = this.robot.sonar
             if (this.sonar) pins.setPull(this.sonar.trig, PinPullMode.PullNone)
             this.arm = this.robot.arm
@@ -440,19 +437,8 @@ namespace microcode {
         }
 
         private readLineState() {
-            if (this.lineDetectors) {
-                const left =
-                    pins.digitalReadPin(this.lineDetectors.left) > 0 ===
-                    this.lineDetectors.lineHigh
-                        ? 1
-                        : 0
-                const right =
-                    pins.digitalReadPin(this.lineDetectors.right) > 0 ===
-                    this.lineDetectors.lineHigh
-                        ? 1
-                        : 0
-                return (left << 0) | (right << 1)
-            } else return this.robot.lineState()
+            if (this.lineDetectors) return this.lineDetectors.lineState()
+            else return this.robot.lineState()
         }
 
         private lineState(): RobotLineState {

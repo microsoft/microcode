@@ -18,11 +18,11 @@ namespace microcode {
         constructor() {
             super()
             this.sonar = { trig: DigitalPin.P16, echo: DigitalPin.P15 }
-            this.lineDetectors = {
-                left: DigitalPin.P13,
-                right: DigitalPin.P14,
-                lineHigh: true,
-            }
+            this.lineDetectors = new robots.PinLineDetectors(
+                DigitalPin.P13,
+                DigitalPin.P14,
+                true
+            )
             this.maxLineSpeed = 64
             this.speedTransitionAlpha = 0.5
             this.turnRatioTransitionAlpha = 0.5

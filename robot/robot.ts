@@ -37,18 +37,32 @@ namespace microcode.robots {
     }
 
     export interface LineDetectors {
+        start(): void
+        lineState(): RobotLineState
+    }
+
+    export class PinLineDetectors implements LineDetectors {
         /**
          * Left line detector
          */
-        left: DigitalPin
-        /**
-         * Right line detector
-         */
-        right: DigitalPin
-        /**
-         * True if the line is high, false if the line is low
-         */
-        lineHigh: boolean
+        constructor(
+            public readonly left: DigitalPin,
+            public readonly right: DigitalPin,
+            public readonly lineHigh: boolean
+        ) {}
+
+        start() {
+            pins.setPull(this.left, PinPullMode.PullNone)
+            pins.setPull(this.right, PinPullMode.PullNone)
+        }
+
+        lineState() {
+            const left =
+                pins.digitalReadPin(this.left) > 0 === this.lineHigh ? 1 : 0
+            const right =
+                pins.digitalReadPin(this.right) > 0 === this.lineHigh ? 1 : 0
+            return (left << 0) | (right << 1)
+        }
     }
 
     export interface ServoArm {

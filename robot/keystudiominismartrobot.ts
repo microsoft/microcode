@@ -96,11 +96,11 @@ namespace microcode {
                 echo: ECHO_PIN,
             }
 
-            this.lineDetectors = {
-                left: DigitalPin.P13,
-                right: DigitalPin.P14,
-                lineHigh: true,
-            }
+            this.lineDetectors = new robots.PinLineDetectors(
+                DigitalPin.P13,
+                DigitalPin.P14,
+                true
+            )
             this.init_PCA9685()
         }
 

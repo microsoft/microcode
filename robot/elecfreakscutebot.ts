@@ -13,11 +13,11 @@ namespace microcode {
                 trig: DigitalPin.P8,
                 echo: DigitalPin.P12,
             }
-            this.lineDetectors = {
-                left: DigitalPin.P13,
-                right: DigitalPin.P14,
-                lineHigh: false,
-            }
+            this.lineDetectors = new robots.PinLineDetectors(
+                DigitalPin.P13,
+                DigitalPin.P14,
+                false
+            )
             this.arm = {
                 minAngle: 45,
                 maxAngle: 135,
