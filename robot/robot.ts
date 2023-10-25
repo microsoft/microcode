@@ -111,23 +111,23 @@ namespace microcode.robots {
         }
     }
 
-    export interface ServoArm {
-        /**
-         * 0 angle
-         */
-        minAngle: number
-        /**
-         * 100% angle
-         */
-        maxAngle: number
-        /**
-         * Driving pin
-         */
-        pin: AnalogPin
-        /**
-         * Set the pulse width to the servo in microseconds
-         */
+    export interface Arm {
+        open(aperture: number): void
+    }
+
+    export class ServoArm implements Arm {
         pulseUs?: number
+        constructor(
+            public minAngle: number,
+            public maxAngle: number,
+            public readonly pin: AnalogPin
+        ) {}
+        open(aperture: number): void {
+            const angle = Math.round(
+                Math.map(aperture, 0, 100, this.minAngle, this.maxAngle)
+            )
+            pins.servoWritePin(this.pin, angle)
+        }
     }
 
     export class Robot {
