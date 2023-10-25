@@ -22,15 +22,20 @@ namespace microcode {
     enum CalibrationOffset {
         None = -1,
         RadioGroup = 0,
-        RunDrift = 1,
-        End = 2,
+        Drift = 1,
+        MaxLineSpeed = 2,
+        Length = 3,
     }
 
     function calibrationOffsets() {
-        return [CalibrationOffset.RadioGroup, CalibrationOffset.RunDrift]
+        return [
+            CalibrationOffset.RadioGroup,
+            CalibrationOffset.Drift,
+            CalibrationOffset.MaxLineSpeed,
+        ]
     }
     function calibrationNames() {
-        return ["RADIO", "DRIFT"]
+        return ["RADIO", "DRIFT", "LINE SPEED"]
     }
 
     /**
@@ -100,10 +105,17 @@ namespace microcode {
                             case CalibrationOffset.RadioGroup:
                                 this.previousGroup()
                                 break
-                            case CalibrationOffset.RunDrift:
+                            case CalibrationOffset.Drift:
                                 this.setRunDrift(this.runDrift - 1)
                                 break
+                            case CalibrationOffset.MaxLineSpeed:
+                                this.robot.maxLineSpeed = Math.max(
+                                    1,
+                                    this.robot.maxLineSpeed - 1
+                                )
+                                break
                         }
+                        this.writeCalibration()
                     }
                     this.showConfigurationState()
                 })
@@ -117,10 +129,17 @@ namespace microcode {
                             case CalibrationOffset.RadioGroup:
                                 this.nextGroup()
                                 break
-                            case CalibrationOffset.RunDrift:
+                            case CalibrationOffset.Drift:
                                 this.setRunDrift(this.runDrift + 1)
                                 break
+                            case CalibrationOffset.MaxLineSpeed:
+                                this.robot.maxLineSpeed = Math.min(
+                                    100,
+                                    this.robot.maxLineSpeed + 1
+                                )
+                                break
                         }
+                        this.writeCalibration()
                     }
                     this.showConfigurationState()
                 })
@@ -141,7 +160,7 @@ namespace microcode {
                 led.stopAnimation()
                 if (this.calibration < 0) {
                     basic.showString(
-                        `RADIO ${this.radioGroup} DRIFT ${this.runDrift}`,
+                        `RADIO ${this.radioGroup} DRIFT ${this.runDrift} LINE SPEED ${this.robot.maxLineSpeed}`,
                         SCROLL_SPEED
                     )
                 } else {
@@ -155,8 +174,11 @@ namespace microcode {
                         case CalibrationOffset.RadioGroup:
                             msg += this.radioGroup
                             break
-                        case CalibrationOffset.RunDrift:
+                        case CalibrationOffset.Drift:
                             msg += this.runDrift
+                            break
+                        case CalibrationOffset.MaxLineSpeed:
+                            msg += this.robot.maxLineSpeed
                             break
                     }
                     basic.showString(msg, SCROLL_SPEED)
@@ -184,11 +206,14 @@ namespace microcode {
                 this.radioGroup = calibration[CalibrationOffset.RadioGroup]
                 this.runDrift = calibration.getNumber(
                     NumberFormat.Int8LE,
-                    CalibrationOffset.RunDrift
+                    CalibrationOffset.Drift
                 )
+                this.robot.maxLineSpeed =
+                    calibration[CalibrationOffset.MaxLineSpeed]
             } else {
                 this.radioGroup = radioGroupFromDeviceSerialNumber()
                 this.runDrift = 0
+                // don't change line speed
             }
             this.lineLostCounter = this.robot.lineLostThreshold + 1
             this.leds = this.robot.leds
@@ -558,19 +583,19 @@ namespace microcode {
         setRunDrift(runDrift: number) {
             if (!isNaN(runDrift)) {
                 this.runDrift = runDrift >> 0
-                this.writeCalibration()
                 led.stopAnimation()
             }
         }
 
         private writeCalibration() {
-            const data = Buffer.create(CalibrationOffset.End)
+            const data = Buffer.create(CalibrationOffset.Length)
             data[CalibrationOffset.RadioGroup] = this.radioGroup
             data.setNumber(
                 NumberFormat.Int8LE,
-                CalibrationOffset.RunDrift,
+                CalibrationOffset.Drift,
                 this.runDrift
             )
+            data[CalibrationOffset.MaxLineSpeed] = this.robot.maxLineSpeed
             __writeCalibration(data)
         }
 
@@ -586,7 +611,6 @@ namespace microcode {
             if (newGroup < 0) newGroup += MAX_GROUPS
             this.radioGroup = newGroup % MAX_GROUPS
             radio.setGroup(this.radioGroup)
-            this.writeCalibration()
             led.stopAnimation()
             this.startRadio()
         }

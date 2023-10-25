@@ -6,6 +6,7 @@ namespace microcode {
     struct Calibration {
         uint8_t radioGroup;
         int8_t drift;
+        uint8_t maxLineSpeed;
     };
 
     //%

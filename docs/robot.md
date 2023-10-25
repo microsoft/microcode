@@ -61,6 +61,14 @@ The robot drift tester program above lets you test the drift for medium and high
 The drift value will be stored in the flash of the micro:bit and will be used every time the robot is reset.
 (However it will be erased if you download another .hex file, so you might want to write it down somewhere).
 
+### Calibrating the maximum line speed
+
+In line assist mode, the robot will automatically lower the speed when it detects a line. You can configure the maximum speed for the robot to use when it is on a line. This is useful when you add weight to the robot and it needs more power
+to move around.
+
+-   Press `A+B` to switch to configuration mode, until you see the `LINE SPEED ...` message.
+-   Press `A` and `B` to change the speed and test it with your robot.
+
 ## Tiles
 
 The tiles are documented
