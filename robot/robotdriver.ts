@@ -151,7 +151,7 @@ namespace microcode {
             this.lineDetectors = this.robot.lineDetectors
             if (this.lineDetectors) this.lineDetectors.start()
             this.sonar = this.robot.sonar
-            if (this.sonar) pins.setPull(this.sonar.trig, PinPullMode.PullNone)
+            if (this.sonar) this.sonar.start()
             this.arm = this.robot.arm
             if (this.arm && this.arm.pulseUs)
                 pins.servoSetPulse(this.arm.pin, this.arm.pulseUs)
@@ -393,31 +393,8 @@ namespace microcode {
         }
 
         private ultrasonicDistanceOnce() {
-            if (!this.sonar)
-                return this.robot.ultrasonicDistance(this.maxCmDistance)
-            else {
-                const trig = this.sonar.trig
-                const echo = this.sonar.echo
-                const lowUs = this.sonar.pulseLowUs || 4
-                const highUs = this.sonar.pulseHighUs || 10
-                const usToCm = this.sonar.usPerCm || 58
-
-                // send pulse
-                pins.digitalWritePin(trig, 0)
-                control.waitMicros(lowUs)
-                pins.digitalWritePin(trig, 1)
-                control.waitMicros(highUs)
-                pins.digitalWritePin(trig, 0)
-
-                // read pulse
-                const d = pins.pulseIn(
-                    echo,
-                    PulseValue.High,
-                    this.maxCmDistance * usToCm
-                )
-                if (d <= 0) return this.maxCmDistance
-                return d / usToCm
-            }
+            if (this.sonar) return this.sonar.distance(this.maxCmDistance)
+            else return this.robot.ultrasonicDistance(this.maxCmDistance)
         }
 
         private ultrasonicDistance() {

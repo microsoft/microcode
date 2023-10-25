@@ -90,12 +90,7 @@ namespace microcode {
     class KeyStudioMiniSmartRobot extends robots.Robot {
         constructor() {
             super()
-
-            this.sonar = {
-                trig: TRIG_PIN,
-                echo: ECHO_PIN,
-            }
-
+            this.sonar = new robots.SR04Sonar(ECHO_PIN, TRIG_PIN)
             this.lineDetectors = new robots.PinLineDetectors(
                 DigitalPin.P13,
                 DigitalPin.P14,

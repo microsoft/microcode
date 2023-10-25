@@ -17,7 +17,7 @@ namespace microcode {
     class YahboomTinybitRobot extends robots.Robot {
         constructor() {
             super()
-            this.sonar = { trig: DigitalPin.P16, echo: DigitalPin.P15 }
+            this.sonar = new robots.SR04Sonar(DigitalPin.P15, DigitalPin.P16)
             this.lineDetectors = new robots.PinLineDetectors(
                 DigitalPin.P13,
                 DigitalPin.P14,

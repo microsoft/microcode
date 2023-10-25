@@ -22,10 +22,7 @@ namespace microcode {
         constructor() {
             super()
             this.leds = new robots.WS2812bLEDStrip(DigitalPin.P15, 4)
-            this.sonar = {
-                trig: DigitalPin.P13,
-                echo: DigitalPin.P14,
-            }
+            this.sonar = new robots.SR04Sonar(DigitalPin.P14, DigitalPin.P13)
         }
 
         motorRun(left: number, right: number): void {

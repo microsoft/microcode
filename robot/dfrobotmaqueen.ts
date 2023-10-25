@@ -24,10 +24,7 @@ namespace microcode {
                 false
             )
             this.leds = new robots.WS2812bLEDStrip(DigitalPin.P15, 4)
-            this.sonar = {
-                trig: DigitalPin.P1,
-                echo: DigitalPin.P2,
-            }
+            this.sonar = new robots.SR04Sonar(DigitalPin.P2, DigitalPin.P1)
         }
 
         motorRun(left: number, right: number): void {

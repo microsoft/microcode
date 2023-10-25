@@ -132,11 +132,7 @@ namespace microcode {
         constructor() {
             super()
             this.leds = new robots.WS2812bLEDStrip(DigitalPin.P16, 4)
-            // 3 Pin Ultrasonic
-            this.sonar = {
-                trig: DigitalPin.P15,
-                echo: DigitalPin.P15,
-            }
+            this.sonar = new robots.SR04Sonar(DigitalPin.P15, DigitalPin.P15)
             this.lineDetectors = new robots.PinLineDetectors(
                 DigitalPin.P1,
                 DigitalPin.P2,
