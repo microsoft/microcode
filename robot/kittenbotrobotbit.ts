@@ -131,10 +131,7 @@ namespace microcode {
     class KittenbotRobotbitRobot extends robots.Robot {
         constructor() {
             super()
-            this.leds = {
-                pin: DigitalPin.P16,
-                count: 4,
-            }
+            this.leds = new robots.WS2812bLEDStrip(DigitalPin.P16, 4)
             // 3 Pin Ultrasonic
             this.sonar = {
                 trig: DigitalPin.P15,

@@ -23,10 +23,7 @@ namespace microcode {
                 DigitalPin.P14,
                 false
             )
-            this.leds = {
-                pin: DigitalPin.P15,
-                count: 4,
-            }
+            this.leds = new robots.WS2812bLEDStrip(DigitalPin.P15, 4)
             this.sonar = {
                 trig: DigitalPin.P1,
                 echo: DigitalPin.P2,

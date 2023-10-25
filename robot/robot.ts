@@ -2,15 +2,32 @@ namespace microcode.robots {
     /**
      * A ws2812b LED strip
      */
-    export interface RobotLEDs {
-        /**
-         * LED data pin
-         */
-        pin: DigitalPin
-        /**
-         * Number of  LEDs
-         */
-        count: number
+    export interface LEDStrip {
+        start(): void
+        setColor(red: number, green: number, blue: number): void
+    }
+
+    export class WS2812bLEDStrip implements LEDStrip {
+        private ledsBuffer: Buffer
+
+        constructor(
+            public readonly pin: DigitalPin,
+            public readonly count: number
+        ) {}
+
+        start() {
+            this.ledsBuffer = Buffer.create(this.count * 3)
+        }
+
+        setColor(red: number, green: number, blue: number) {
+            const b = this.ledsBuffer
+            for (let i = 0; i + 2 < b.length; i += 3) {
+                b[i] = green
+                b[i + 1] = red
+                b[i + 2] = blue
+            }
+            ws2812b.sendBuffer(this.ledsBuffer, this.pin)
+        }
     }
 
     export interface Sonar {
@@ -125,7 +142,7 @@ namespace microcode.robots {
         /**
          * LED configuration
          */
-        leds?: RobotLEDs
+        leds?: LEDStrip
         /**
          * Distance sensor configuration, if SR04
          */

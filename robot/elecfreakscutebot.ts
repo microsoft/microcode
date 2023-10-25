@@ -5,10 +5,7 @@ namespace microcode {
     class ElecfreaksCutebotRobot extends robots.Robot {
         constructor() {
             super()
-            this.leds = {
-                pin: DigitalPin.P15,
-                count: 2,
-            }
+            this.leds = new robots.WS2812bLEDStrip(DigitalPin.P15, 2)
             this.sonar = {
                 trig: DigitalPin.P8,
                 echo: DigitalPin.P12,

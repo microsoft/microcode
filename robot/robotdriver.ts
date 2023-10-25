@@ -56,8 +56,7 @@ namespace microcode {
         lineAssist = true
         private runDrift = 0
 
-        private leds: robots.RobotLEDs
-        private ledsBuffer: Buffer
+        private leds: robots.LEDStrip
 
         private sonar: robots.Sonar
         private lineDetectors: robots.LineDetectors
@@ -148,7 +147,7 @@ namespace microcode {
             this.runDrift = microcode.__readCalibration(1)
             this.lineLostCounter = this.robot.lineLostThreshold + 1
             this.leds = this.robot.leds
-            if (this.leds) this.ledsBuffer = Buffer.create(this.leds.count * 3)
+            if (this.leds) this.leds.start()
             this.lineDetectors = this.robot.lineDetectors
             if (this.lineDetectors) this.lineDetectors.start()
             this.sonar = this.robot.sonar
@@ -201,14 +200,7 @@ namespace microcode {
 
             this.currentColor = (red << 16) | (green << 8) | blue
             this.robot.headlightsSetColor(red, green, blue)
-            if (!this.leds) return
-            const b = this.ledsBuffer
-            for (let i = 0; i + 2 < b.length; i += 3) {
-                b[i] = green
-                b[i + 1] = red
-                b[i + 2] = blue
-            }
-            ws2812b.sendBuffer(this.ledsBuffer, this.leds.pin)
+            if (this.leds) this.leds.setColor(red, green, blue)
         }
 
         private updateArm() {
