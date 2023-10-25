@@ -131,20 +131,13 @@ namespace microcode {
     class KittenbotRobotbitRobot extends robots.Robot {
         constructor() {
             super()
-            this.leds = {
-                pin: DigitalPin.P16,
-                count: 4,
-            }
-            // 3 Pin Ultrasonic
-            this.sonar = {
-                trig: DigitalPin.P15,
-                echo: DigitalPin.P15,
-            }
-            this.lineDetectors = {
-                left: DigitalPin.P1,
-                right: DigitalPin.P2,
-                lineHigh: false,
-            }
+            this.leds = new robots.WS2812bLEDStrip(DigitalPin.P16, 4)
+            this.sonar = new robots.SR04Sonar(DigitalPin.P15, DigitalPin.P15)
+            this.lineDetectors = new robots.PinLineDetectors(
+                DigitalPin.P1,
+                DigitalPin.P2,
+                false
+            )
             this.maxLineSpeed = 150
 
             initPCA9685()

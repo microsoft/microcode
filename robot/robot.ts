@@ -2,26 +2,40 @@ namespace microcode.robots {
     /**
      * A ws2812b LED strip
      */
-    export interface RobotLEDs {
-        /**
-         * LED data pin
-         */
-        pin: DigitalPin
-        /**
-         * Number of  LEDs
-         */
-        count: number
+    export interface LEDStrip {
+        start(): void
+        setColor(red: number, green: number, blue: number): void
+    }
+
+    export class WS2812bLEDStrip implements LEDStrip {
+        private ledsBuffer: Buffer
+
+        constructor(
+            public readonly pin: DigitalPin,
+            public readonly count: number
+        ) {}
+
+        start() {
+            this.ledsBuffer = Buffer.create(this.count * 3)
+        }
+
+        setColor(red: number, green: number, blue: number) {
+            const b = this.ledsBuffer
+            for (let i = 0; i + 2 < b.length; i += 3) {
+                b[i] = green
+                b[i + 1] = red
+                b[i + 2] = blue
+            }
+            ws2812b.sendBuffer(this.ledsBuffer, this.pin)
+        }
     }
 
     export interface Sonar {
-        /**
-         * Echo pin
-         */
-        echo: DigitalPin
-        /**
-         * Trigger pin
-         */
-        trig: DigitalPin
+        start(): void
+        distance(maxCmDistance: number): number
+    }
+
+    export class SR04Sonar implements Sonar {
         /**
          * Microseconds to keep the trigger pin low. Default is 4.
          */
@@ -34,21 +48,67 @@ namespace microcode.robots {
          * Microseconds per cm. Defaults to 58.
          */
         usPerCm?: number
+        constructor(
+            public readonly echo: DigitalPin,
+            public readonly trig: DigitalPin
+        ) {}
+
+        start() {
+            pins.setPull(this.trig, PinPullMode.PullNone)
+        }
+
+        distance(maxCmDistance: number): number {
+            const trig = this.trig
+            const echo = this.echo
+            const lowUs = this.pulseLowUs || 4
+            const highUs = this.pulseHighUs || 10
+            const usToCm = this.usPerCm || 58
+
+            // send pulse
+            pins.digitalWritePin(trig, 0)
+            control.waitMicros(lowUs)
+            pins.digitalWritePin(trig, 1)
+            control.waitMicros(highUs)
+            pins.digitalWritePin(trig, 0)
+
+            // read pulse
+            const d = pins.pulseIn(
+                echo,
+                PulseValue.High,
+                maxCmDistance * usToCm
+            )
+            if (d <= 0) return maxCmDistance
+            return d / usToCm
+        }
     }
 
     export interface LineDetectors {
+        start(): void
+        lineState(): RobotLineState
+    }
+
+    export class PinLineDetectors implements LineDetectors {
         /**
          * Left line detector
          */
-        left: DigitalPin
-        /**
-         * Right line detector
-         */
-        right: DigitalPin
-        /**
-         * True if the line is high, false if the line is low
-         */
-        lineHigh: boolean
+        constructor(
+            public readonly left: DigitalPin,
+            public readonly right: DigitalPin,
+            public readonly lineHigh: boolean
+        ) {}
+
+        start() {
+            pins.setPull(this.left, PinPullMode.PullNone)
+            pins.setPull(this.right, PinPullMode.PullNone)
+        }
+
+        lineState() {
+            const left =
+                pins.digitalReadPin(this.left) > 0 === this.lineHigh ? 1 : 0
+            const right =
+                pins.digitalReadPin(this.right) > 0 === this.lineHigh ? 1 : 0
+            return (left << 0) | (right << 1)
+        }
     }
 
     export interface ServoArm {
@@ -111,7 +171,7 @@ namespace microcode.robots {
         /**
          * LED configuration
          */
-        leds?: RobotLEDs
+        leds?: LEDStrip
         /**
          * Distance sensor configuration, if SR04
          */

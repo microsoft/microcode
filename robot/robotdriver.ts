@@ -75,8 +75,7 @@ namespace microcode {
         lineAssist = true
         private runDrift = 0
 
-        private leds: robots.RobotLEDs
-        private ledsBuffer: Buffer
+        private leds: robots.LEDStrip
 
         private sonar: robots.Sonar
         private lineDetectors: robots.LineDetectors
@@ -217,14 +216,11 @@ namespace microcode {
             }
             this.lineLostCounter = this.robot.lineLostThreshold + 1
             this.leds = this.robot.leds
-            if (this.leds) this.ledsBuffer = Buffer.create(this.leds.count * 3)
+            if (this.leds) this.leds.start()
             this.lineDetectors = this.robot.lineDetectors
-            if (this.lineDetectors) {
-                pins.setPull(this.lineDetectors.left, PinPullMode.PullNone)
-                pins.setPull(this.lineDetectors.right, PinPullMode.PullNone)
-            }
+            if (this.lineDetectors) this.lineDetectors.start()
             this.sonar = this.robot.sonar
-            if (this.sonar) pins.setPull(this.sonar.trig, PinPullMode.PullNone)
+            if (this.sonar) this.sonar.start()
             this.arm = this.robot.arm
             if (this.arm && this.arm.pulseUs)
                 pins.servoSetPulse(this.arm.pin, this.arm.pulseUs)
@@ -273,14 +269,7 @@ namespace microcode {
 
             this.currentColor = (red << 16) | (green << 8) | blue
             this.robot.headlightsSetColor(red, green, blue)
-            if (!this.leds) return
-            const b = this.ledsBuffer
-            for (let i = 0; i + 2 < b.length; i += 3) {
-                b[i] = green
-                b[i + 1] = red
-                b[i + 2] = blue
-            }
-            ws2812b.sendBuffer(this.ledsBuffer, this.leds.pin)
+            if (this.leds) this.leds.setColor(red, green, blue)
         }
 
         private updateArm() {
@@ -473,31 +462,8 @@ namespace microcode {
         }
 
         private ultrasonicDistanceOnce() {
-            if (!this.sonar)
-                return this.robot.ultrasonicDistance(this.maxCmDistance)
-            else {
-                const trig = this.sonar.trig
-                const echo = this.sonar.echo
-                const lowUs = this.sonar.pulseLowUs || 4
-                const highUs = this.sonar.pulseHighUs || 10
-                const usToCm = this.sonar.usPerCm || 58
-
-                // send pulse
-                pins.digitalWritePin(trig, 0)
-                control.waitMicros(lowUs)
-                pins.digitalWritePin(trig, 1)
-                control.waitMicros(highUs)
-                pins.digitalWritePin(trig, 0)
-
-                // read pulse
-                const d = pins.pulseIn(
-                    echo,
-                    PulseValue.High,
-                    this.maxCmDistance * usToCm
-                )
-                if (d <= 0) return this.maxCmDistance
-                return d / usToCm
-            }
+            if (this.sonar) return this.sonar.distance(this.maxCmDistance)
+            else return this.robot.ultrasonicDistance(this.maxCmDistance)
         }
 
         private ultrasonicDistance() {
@@ -509,19 +475,8 @@ namespace microcode {
         }
 
         private readLineState() {
-            if (this.lineDetectors) {
-                const left =
-                    pins.digitalReadPin(this.lineDetectors.left) > 0 ===
-                    this.lineDetectors.lineHigh
-                        ? 1
-                        : 0
-                const right =
-                    pins.digitalReadPin(this.lineDetectors.right) > 0 ===
-                    this.lineDetectors.lineHigh
-                        ? 1
-                        : 0
-                return (left << 0) | (right << 1)
-            } else return this.robot.lineState()
+            if (this.lineDetectors) return this.lineDetectors.lineState()
+            else return this.robot.lineState()
         }
 
         private lineState(): RobotLineState {
