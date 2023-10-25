@@ -1,16 +1,10 @@
 namespace microcode {
     //% shim=microcode::__writeCalibration
-    export function __writeCalibration(
-        radioGroup: number,
-        drift: number
-    ): void {
-        console.log("radio group:" + radioGroup)
-        console.log("run drift: " + drift)
-    }
+    export function __writeCalibration(data: Buffer): void {}
 
     //% shim=microcode::__readCalibration
-    export function __readCalibration(field: number): number {
+    export function __readCalibration(): Buffer {
         // read run drift
-        return 0
+        return undefined
     }
 }

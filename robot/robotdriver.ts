@@ -19,6 +19,12 @@ namespace microcode {
             : Math.round(c * FACTOR + tc * (1 - FACTOR)) & 0xff
     }
 
+    enum CalibrationOffset {
+        RadioGroup = 0,
+        RunDrift = 1,
+        End = 2,
+    }
+
     /**
      * A driver for a generic robot interface
      */
@@ -142,10 +148,17 @@ namespace microcode {
             microcode.robot = this
 
             // configuration of common hardware
-            this.radioGroup =
-                microcode.__readCalibration(0) ||
-                radioGroupFromDeviceSerialNumber()
-            this.runDrift = microcode.__readCalibration(1)
+            const calibration = microcode.__readCalibration()
+            if (calibration) {
+                this.radioGroup = calibration[CalibrationOffset.RadioGroup]
+                this.runDrift = calibration.getNumber(
+                    NumberFormat.Int8LE,
+                    CalibrationOffset.RunDrift
+                )
+            } else {
+                this.radioGroup = radioGroupFromDeviceSerialNumber()
+                this.runDrift = 0
+            }
             this.lineLostCounter = this.robot.lineLostThreshold + 1
             this.leds = this.robot.leds
             if (this.leds) this.ledsBuffer = Buffer.create(this.leds.count * 3)
@@ -513,10 +526,20 @@ namespace microcode {
 
         setRunDrift(runDrift: number) {
             if (!isNaN(runDrift)) {
-                this.runDrift = runDrift >> 0
-                __writeCalibration(this.radioGroup, this.runDrift)
+                this.writeCalibration()
                 led.stopAnimation()
             }
+        }
+
+        private writeCalibration() {
+            const data = Buffer.create(CalibrationOffset.End)
+            data[CalibrationOffset.RadioGroup] = this.radioGroup
+            data.setNumber(
+                NumberFormat.Int8LE,
+                CalibrationOffset.RunDrift,
+                this.runDrift
+            )
+            __writeCalibration(data)
         }
 
         /**
@@ -531,7 +554,7 @@ namespace microcode {
             if (newGroup < 0) newGroup += MAX_GROUPS
             this.radioGroup = newGroup % MAX_GROUPS
             radio.setGroup(this.radioGroup)
-            __writeCalibration(this.radioGroup, this.runDrift)
+            this.writeCalibration()
             led.stopAnimation()
             this.startRadio()
         }
