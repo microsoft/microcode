@@ -207,12 +207,8 @@ namespace microcode {
             if (isNaN(this.currentArmAperture) || this.currentArmAperture < 0)
                 return
             const arm = this.robot.arm
-            if (arm) {
-                const angle = Math.round(
-                    Math.map(this.currentArmAperture, 0, 100, 0, 180)
-                )
-                pins.servoWritePin(this.arm.pin, angle)
-            } else this.robot.armOpen(this.currentArmAperture)
+            if (arm) arm.open(this.currentArmAperture)
+            else this.robot.armOpen(this.currentArmAperture)
             this.currentArmAperture = undefined
         }
 
