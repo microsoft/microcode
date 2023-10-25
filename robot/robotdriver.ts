@@ -514,6 +514,9 @@ namespace microcode {
                     const command = this.robot.commands[msg] || {}
                     const turnRatio = command.turnRatio || 0
                     const speed = command.speed || 0
+                    this.lineAssist =
+                        msg !==
+                        microcode.robots.RobotCompactCommand.MotorRunForwardFast
                     this.motorRun(turnRatio, speed)
                     break
                 }
