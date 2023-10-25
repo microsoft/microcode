@@ -20,9 +20,17 @@ namespace microcode {
     }
 
     enum CalibrationOffset {
+        None = -1,
         RadioGroup = 0,
         RunDrift = 1,
         End = 2,
+    }
+
+    function calibrationOffsets() {
+        return [CalibrationOffset.RadioGroup, CalibrationOffset.RunDrift]
+    }
+    function calibrationNames() {
+        return ["RADIO", "DRIFT"]
     }
 
     /**
@@ -41,7 +49,7 @@ namespace microcode {
         private lastSonarValue = 0
 
         private showConfiguration: number = 0
-        private configDrift: boolean = undefined
+        private calibration: number = -1
         private targetColor = 0
         private currentColor = 0
         private currentArmAperture: number = undefined
@@ -85,22 +93,34 @@ namespace microcode {
         private configureButtons() {
             input.onButtonPressed(Button.A, () =>
                 control.inBackground(() => {
-                    if (this.configDrift !== undefined) {
+                    if (this.calibration > -1) {
                         this.playTone(440, 500)
-                        if (this.configDrift)
-                            this.setRunDrift(this.runDrift - 1)
-                        else this.previousGroup()
+                        const offset = calibrationOffsets()[this.calibration]
+                        switch (offset) {
+                            case CalibrationOffset.RadioGroup:
+                                this.previousGroup()
+                                break
+                            case CalibrationOffset.RunDrift:
+                                this.setRunDrift(this.runDrift - 1)
+                                break
+                        }
                     }
                     this.showConfigurationState()
                 })
             )
             input.onButtonPressed(Button.B, () =>
                 control.inBackground(() => {
-                    if (this.configDrift !== undefined) {
-                        this.playTone(640, 500)
-                        if (this.configDrift)
-                            this.setRunDrift(this.runDrift + 1)
-                        else this.nextGroup()
+                    if (this.calibration > -1) {
+                        this.playTone(440, 500)
+                        const offset = calibrationOffsets()[this.calibration]
+                        switch (offset) {
+                            case CalibrationOffset.RadioGroup:
+                                this.nextGroup()
+                                break
+                            case CalibrationOffset.RunDrift:
+                                this.setRunDrift(this.runDrift + 1)
+                                break
+                        }
                     }
                     this.showConfigurationState()
                 })
@@ -108,7 +128,8 @@ namespace microcode {
             input.onButtonPressed(Button.AB, () =>
                 control.inBackground(() => {
                     this.playTone(840, 500)
-                    this.configDrift = !this.configDrift
+                    this.calibration =
+                        (this.calibration + 1) % calibrationOffsets().length
                     this.showConfigurationState(true)
                 })
             )
@@ -118,17 +139,27 @@ namespace microcode {
             this.showConfiguration++
             try {
                 led.stopAnimation()
-                if (this.configDrift === undefined) {
+                if (this.calibration < 0) {
                     basic.showString(
                         `RADIO ${this.radioGroup} DRIFT ${this.runDrift}`,
                         SCROLL_SPEED
                     )
                 } else {
-                    const title = this.configDrift ? "DRIFT" : "RADIO"
-                    const value = this.configDrift
-                        ? this.runDrift
-                        : this.radioGroup
-                    basic.showString(title + " " + value, SCROLL_SPEED)
+                    let msg = ""
+                    if (showTitle) {
+                        msg += calibrationNames()[this.calibration]
+                        msg += " "
+                    }
+                    const offset = calibrationOffsets()[this.calibration]
+                    switch (offset) {
+                        case CalibrationOffset.RadioGroup:
+                            msg += this.radioGroup
+                            break
+                        case CalibrationOffset.RunDrift:
+                            msg += this.runDrift
+                            break
+                    }
+                    basic.showString(msg, SCROLL_SPEED)
                 }
             } finally {
                 this.showConfiguration--
@@ -526,6 +557,7 @@ namespace microcode {
 
         setRunDrift(runDrift: number) {
             if (!isNaN(runDrift)) {
+                this.runDrift = runDrift >> 0
                 this.writeCalibration()
                 led.stopAnimation()
             }
