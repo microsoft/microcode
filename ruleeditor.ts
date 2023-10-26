@@ -140,9 +140,9 @@ namespace microcode {
                         const sensor = rule["sensors"][0]
                         // TODO: this logic should be part of the SensorTileDefn
                         if (
-                            (sensor.jdKind == JdKind.Radio &&
+                            (jdKind(sensor.tid) == JdKind.Radio &&
                                 sensor.tid != TID_SENSOR_LINE) ||
-                            sensor.jdKind == JdKind.Variable
+                            jdKind(sensor.tid) == JdKind.Variable
                         ) {
                             const plus = new Button({
                                 parent: this,
@@ -158,11 +158,11 @@ namespace microcode {
                     this.ruleButtons[name].push(button)
                     if (index < tiles.length - 1) {
                         if (
-                            (tile.jdKind == JdKind.Literal ||
-                                tile.jdKind == JdKind.Variable) &&
-                            (tiles[index + 1].jdKind == JdKind.Literal ||
-                                tiles[index + 1].jdKind == JdKind.Variable ||
-                                tiles[index + 1].jdKind == JdKind.RandomToss)
+                            (jdKind(tile.tid) == JdKind.Literal ||
+                                jdKind(tile.tid) == JdKind.Variable) &&
+                            (jdKind(tiles[index + 1].tid) == JdKind.Literal ||
+                                jdKind(tiles[index + 1].tid) == JdKind.Variable ||
+                                jdKind(tiles[index + 1].tid) == JdKind.RandomToss)
                         ) {
                             const plus = new Button({
                                 parent: this,

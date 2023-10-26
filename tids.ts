@@ -959,6 +959,86 @@ namespace microcode {
             : ButtonStyles.FlatWhite
     }
 
+    
+    export function jdKind(tid: string): JdKind {
+        const tidEnum = tidToEnum(tid)
+        if (Tid.TID_FILTER_PIN_0 < tidEnum && tidEnum < Tid.TID_FILTER_LOGO)
+            return JdKind.ServiceInstanceIndex
+        if (Tid.TID_FILTER_LINE_LEFT < tidEnum && tidEnum < Tid.TID_FILTER_LINE_NEITHER_RIGHT ||
+            Tid.TID_MODIFIER_COIN_1 <= tidEnum && tidEnum <= Tid.TID_MODIFIER_COIN_5 ||
+            Tid.TID_FILTER_COIN_1 <= tidEnum && tidEnum <= Tid.TID_FILTER_COIN_5) 
+            return JdKind.Literal
+        if (Tid.TID_FILTER_TIMESPAN_SHORT <= tidEnum &&
+            tidEnum <= Tid.TID_FILTER_TIMESPAN_VERY_LONG)
+            return JdKind.Timespan
+        if (Tid.TID_MODIFIER_EMOJI_GIGGLE <= tidEnum &&
+            tidEnum <= Tid.TID_MODIFIER_EMOJI_YAWN ||
+            tidEnum == Tid.TID_MODIFIER_ICON_EDITOR || 
+            tidEnum == Tid.TID_MODIFIER_MELODY_EDITOR)
+            return JdKind.ServiceCommandArg
+        if (Tid.TID_MODIFIER_PAGE_1 <= tidEnum && tidEnum <= Tid.TID_MODIFIER_PAGE_5)   
+            return JdKind.Page
+        if (Tid.TID_MODIFIER_RGB_LED_COLOR_1 <= tidEnum && tidEnum <= Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE)
+            return JdKind.ExtLibFn
+        if (Tid.TID_MODIFIER_CAR_FORWARD <= tidEnum && tidEnum <= Tid.TID_MODIFIER_CAR_LED_COLOR_3) 
+            return JdKind.NumFmt
+        switch (tidEnum) {
+            case Tid.TID_MODIFIER_LOOP:
+                return JdKind.Loop
+            case Tid.TID_SENSOR_RADIO_RECEIVE:
+            case Tid.TID_SENSOR_CAR_WALL:
+            case Tid.TID_SENSOR_LINE:
+                return JdKind.Radio
+            case Tid.TID_MODIFIER_RADIO_VALUE:
+                return JdKind.RadioValue
+            case Tid.TID_SENSOR_TEMP:
+            case Tid.TID_MODIFIER_TEMP_READ:
+                return JdKind.Temperature
+            case Tid.TID_MODIFIER_RANDOM_TOSS:
+                return JdKind.RandomToss
+            case Tid.TID_SENSOR_ROTARY:
+                return JdKind.Rotary
+            case Tid.TID_FILTER_ROTARY_LEFT:
+            case Tid.TID_FILTER_ROTARY_RIGHT:
+            case Tid.TID_FILTER_TEMP_WARMER:
+            case Tid.TID_FILTER_TEMP_COLDER:
+            case Tid.TID_FILTER_ACCEL_SHAKE:
+            case Tid.TID_FILTER_ACCEL_TILT_UP:
+            case Tid.TID_FILTER_ACCEL_TILT_DOWN:
+            case Tid.TID_FILTER_ACCEL_TILT_LEFT:
+            case Tid.TID_FILTER_ACCEL_TILT_RIGHT:
+            case Tid.TID_FILTER_LOUD:
+            case Tid.TID_FILTER_QUIET:
+                return JdKind.EventCode
+            case Tid.TID_ACTUATOR_PAINT:
+            case Tid.TID_ACTUATOR_SPEAKER:
+            case Tid.TID_ACTUATOR_MUSIC:
+            case Tid.TID_ACTUATOR_RGB_LED:
+            case Tid.TID_ACTUATOR_CAR:
+                return JdKind.Sequence
+            case Tid.TID_ACTUATOR_SHOW_NUMBER:
+                return JdKind.ExtLibFn
+            case Tid.TID_ACTUATOR_RADIO_SEND:
+            case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+                return JdKind.NumFmt
+            case Tid.TID_SENSOR_CUP_X_WRITTEN: 
+            case Tid.TID_SENSOR_CUP_Y_WRITTEN:
+            case Tid.TID_SENSOR_CUP_Z_WRITTEN:
+            case Tid.TID_ACTUATOR_CUP_X_ASSIGN:
+            case Tid.TID_ACTUATOR_CUP_Y_ASSIGN:
+            case Tid.TID_ACTUATOR_CUP_Z_ASSIGN:
+            case Tid.TID_FILTER_CUP_X_READ:
+            case Tid.TID_FILTER_CUP_Y_READ:
+            case Tid.TID_FILTER_CUP_Z_READ:
+            case Tid.TID_MODIFIER_CUP_X_READ:
+            case Tid.TID_MODIFIER_CUP_Y_READ:
+            case Tid.TID_MODIFIER_CUP_Z_READ:
+                return JdKind.Variable
+        }
+        return undefined
+    }
+
     export function priority(tid: string): number {
         const tidEnum = tidToEnum(tid)
         if (isFilter(tidEnum)) {

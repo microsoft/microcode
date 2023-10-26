@@ -64,12 +64,10 @@ namespace microcode {
         constructor(public tid: string) {
         }
 
-        constraints: Constraints
-        
-        // TODO: extract this to a function
-        jdKind: JdKind
         jdParam: any
         jdParam2: number
+
+        constraints: Constraints
 
         getField(): any {
             return undefined
