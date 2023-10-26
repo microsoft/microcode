@@ -50,7 +50,7 @@ namespace microcode {
         addPress(TID_SENSOR_PRESS, 1)
         addPress(TID_SENSOR_RELEASE, 2)
 
-        function addPressFilter(tid: string, instanceNo: number) {
+        function addPressFilter(tid: string) {
             const press_filter = new FilterDefn(tid, "press_event")
             press_filter.constraints = {
                 allow: {
@@ -58,18 +58,18 @@ namespace microcode {
                 },
             }
             tilesDB.filters[tid] = press_filter
-            press_filter.jdParam = instanceNo
+            // press_filter.jdParam = instanceNo
             return press_filter
         }
 
-        addPressFilter(TID_FILTER_BUTTON_A, 0)
-        addPressFilter(TID_FILTER_BUTTON_B, 1)
-        addPressFilter(TID_FILTER_LOGO, 2)
-        addPressFilter(TID_FILTER_PIN_0, 3)
-        addPressFilter(TID_FILTER_PIN_1, 4)
-        addPressFilter(TID_FILTER_PIN_2, 5)
-        const kitA_1 = addPressFilter(TID_FILTER_KITA_KEY_1, 6)
-        const kitA_2 = addPressFilter(TID_FILTER_KITA_KEY_2, 7)
+        addPressFilter(TID_FILTER_BUTTON_A)
+        addPressFilter(TID_FILTER_BUTTON_B)
+        addPressFilter(TID_FILTER_LOGO)
+        addPressFilter(TID_FILTER_PIN_0)
+        addPressFilter(TID_FILTER_PIN_1)
+        addPressFilter(TID_FILTER_PIN_2)
+        const kitA_1 = addPressFilter(TID_FILTER_KITA_KEY_1)
+        const kitA_2 = addPressFilter(TID_FILTER_KITA_KEY_2)
     }
 
     function addSensorAndFilterTiles() {
@@ -88,15 +88,14 @@ namespace microcode {
 
         addButtonTiles()
 
-        function makeCupSensor(tid: string, id: number, disallow: string) {
+        function makeCupSensor(tid: string, disallow: string) {
             const tile = makeSensor(tid, "value_in")
-            tile.jdParam = id
             tile.constraints.disallow = { tiles: [disallow] }
         }
 
-        makeCupSensor(TID_SENSOR_CUP_X_WRITTEN, 0, TID_FILTER_CUP_X_READ)
-        makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, 1, TID_FILTER_CUP_Y_READ)
-        makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, 2, TID_FILTER_CUP_Z_READ)
+        makeCupSensor(TID_SENSOR_CUP_X_WRITTEN, TID_FILTER_CUP_X_READ)
+        makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, TID_FILTER_CUP_Y_READ)
+        makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, TID_FILTER_CUP_Z_READ)
 
         const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event")
 
@@ -130,47 +129,41 @@ namespace microcode {
 
         const rotary = makeSensor(TID_SENSOR_ROTARY, "rotary_event")
 
-        function addEvent(tid: string, type: string, id: number) {
+        function addEvent(tid: string, type: string) {
             const ev = new FilterDefn(tid, type)
-            ev.jdParam = id
             tilesDB.filters[tid] = ev
             return ev
         }
-        addEvent(TID_FILTER_ROTARY_LEFT, "rotary_event", 1)
-        addEvent(TID_FILTER_ROTARY_RIGHT, "rotary_event", 2)
-        addEvent(TID_FILTER_TEMP_WARMER, "temperature_event", 2)
-        addEvent(TID_FILTER_TEMP_COLDER, "temperature_event", 1)
+        addEvent(TID_FILTER_ROTARY_LEFT, "rotary_event")
+        addEvent(TID_FILTER_ROTARY_RIGHT, "rotary_event")
+        addEvent(TID_FILTER_TEMP_WARMER, "temperature_event")
+        addEvent(TID_FILTER_TEMP_COLDER, "temperature_event")
 
         if (CAR_TILES) {
             const both = addEvent(
                 TID_FILTER_LINE_BOTH,
-                "line",
-                robots.RobotCompactCommand.LineBoth
+                "line"
             )
             const left = addEvent(
                 TID_FILTER_LINE_LEFT,
-                "line",
-                robots.RobotCompactCommand.LineLeft
+                "line"
             )
             const right = addEvent(
                 TID_FILTER_LINE_RIGHT,
-                "line",
-                robots.RobotCompactCommand.LineRight
+                "line"
             )
             const neither = addEvent(
                 TID_FILTER_LINE_NEITHER,
-                "line",
-                robots.RobotCompactCommand.LineNone
+                "line"
             )
             const neither_left = addEvent(
                 TID_FILTER_LINE_NEITHER_LEFT,
                 "line",
-                robots.RobotCompactCommand.LineNoneFromLeft
+ 
             )
             const neither_right = addEvent(
                 TID_FILTER_LINE_NEITHER_RIGHT,
-                "line",
-                robots.RobotCompactCommand.LineNoneFromRight
+                "line"
             )
 
             const line = makeSensor(TID_SENSOR_LINE, "line")
@@ -193,15 +186,14 @@ namespace microcode {
         }
         tilesDB.sensors[TID_SENSOR_TIMER] = timer
 
-        function addTimespan(tid: string, ms: number) {
+        function addTimespan(tid: string) {
             const timespan = new FilterDefn(tid, "timespan")
-            timespan.jdParam = ms
             tilesDB.filters[tid] = timespan
         }
-        addTimespan(TID_FILTER_TIMESPAN_SHORT, 250)
-        addTimespan(TID_FILTER_TIMESPAN_LONG, 1000)
-        addTimespan(TID_FILTER_TIMESPAN_VERY_LONG, 5000)
-        addTimespan(TID_FILTER_TIMESPAN_RANDOM, -1000)
+        addTimespan(TID_FILTER_TIMESPAN_SHORT)
+        addTimespan(TID_FILTER_TIMESPAN_LONG)
+        addTimespan(TID_FILTER_TIMESPAN_VERY_LONG)
+        addTimespan(TID_FILTER_TIMESPAN_RANDOM)
 
         const accel = new SensorDefn(TID_SENSOR_ACCELEROMETER)
         accel.constraints = {
@@ -211,21 +203,20 @@ namespace microcode {
         }
         tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
 
-        function addAccelEvent(id: number, name: string) {
+        function addAccelEvent(name: string) {
             const tid = TID_FILTER_ACCEL + "_" + name
             const accelEvent = new FilterDefn(tid, "accel_event")
-            accelEvent.jdParam = id
             tilesDB.filters[tid] = accelEvent
             return accelEvent
         }
 
-        addAccelEvent(0x8b, "shake")
+        addAccelEvent("shake")
         // don't want kids to throw micro:bit on the ground
         // addAccelEvent(0x87, "freefall")
-        addAccelEvent(0x81, "tilt_up")
-        addAccelEvent(0x82, "tilt_down")
-        addAccelEvent(0x83, "tilt_left")
-        addAccelEvent(0x84, "tilt_right")
+        addAccelEvent("tilt_up")
+        addAccelEvent("tilt_down")
+        addAccelEvent("tilt_left")
+        addAccelEvent("tilt_right")
 
         const microphone = new SensorDefn(TID_SENSOR_MICROPHONE)
         microphone.constraints = {
@@ -234,13 +225,12 @@ namespace microcode {
             },
         }
         tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
-        function addSoundFilter(tid: string, eventCode: number) {
+        function addSoundFilter(tid: string) {
             const soundFilter = new FilterDefn(tid, "sound_event")
             tilesDB.filters[tid] = soundFilter
-            soundFilter.jdParam = eventCode
         }
-        addSoundFilter(TID_FILTER_LOUD, 1)
-        addSoundFilter(TID_FILTER_QUIET, 2)
+        addSoundFilter(TID_FILTER_LOUD)
+        addSoundFilter(TID_FILTER_QUIET)
     }
 
     function addActuatorAndModifierTiles() {
@@ -257,40 +247,34 @@ namespace microcode {
 
         // these are in order (see priority field) as will be shown in the dialog
         const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
-        paint.jdParam = "dot_animation"
         paint.jdParam2 = 5
 
-        const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER, 10)
-        showNum.jdParam = "dot_showNumber"
+        const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER)
 
         const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
 
         const music = addActuator(TID_ACTUATOR_MUSIC, ["melody_editor", "loop"])
-        music.jdParam = "note_sequence"
         music.jdParam2 = 6
 
         const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
             "value_out",
             "constant",
         ])
-        radio_send.jdParam = jacs.NumFmt.F64
 
         const radio_set_group = addActuator(TID_ACTUATOR_RADIO_SET_GROUP, [])
         radio_set_group.constraints = {}
         radio_set_group.constraints.only = ["constant"]
-        radio_set_group.jdParam = jacs.NumFmt.U8
 
         const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
 
-        function addAssign(tid: string, id: number) {
+        function addAssign(tid: string) {
             const theVar = addActuator(tid, ["value_out", "constant"])
-            theVar.jdParam = id
             return theVar
         }
 
-        addAssign(TID_ACTUATOR_CUP_X_ASSIGN, 0)
-        addAssign(TID_ACTUATOR_CUP_Y_ASSIGN, 1)
-        addAssign(TID_ACTUATOR_CUP_Z_ASSIGN, 2)
+        addAssign(TID_ACTUATOR_CUP_X_ASSIGN)
+        addAssign(TID_ACTUATOR_CUP_Y_ASSIGN)
+        addAssign(TID_ACTUATOR_CUP_Z_ASSIGN)
 
         const emojis = [
             "giggle",
@@ -304,14 +288,10 @@ namespace microcode {
             "twinkle",
             "yawn",
         ]
-        const emoji_ms = [
-            1478, 1233, 547, 4794, 1687, 1315, 8192, 2083, 6772, 2816,
-        ]
         emojis.forEach((e, idx) => {
             const tid = "M19" + e
             const emoji_mod = new ModifierDefn(tid, "sound_emoji")
-            emoji_mod.jdParam = e
-            emoji_mod.jdParam2 = emoji_ms[idx]
+            // emoji_mod.jdParam2 = emoji_ms[idx]
             tilesDB.modifiers[tid] = emoji_mod
         })
 
@@ -328,8 +308,7 @@ namespace microcode {
                     kind == "F"
                         ? new FilterDefn(tid, name)
                         : new ModifierDefn(tid, name)
-                // tile.jdKind = kind == "CAR" ? JdKind.NumFmt : JdKind.Literal
-                tile.jdParam = kind == "CAR" ? jacs.NumFmt.F64 : v
+                // tile.jdParam = kind == "CAR" ? jacs.NumFmt.F64 : v  TODO
                 tile.jdParam2 = kind == "CAR" ? v : 0
                 if (kind == "F") tilesDB.filters[tid] = tile as FilterDefn
                 else tilesDB.modifiers[tid] = tile
@@ -366,7 +345,6 @@ namespace microcode {
             const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
             const mod = new ModifierDefn(tid, "rgb_led")
             tilesDB.modifiers[tid] = mod
-            mod.jdParam = "led_solid"
             mod.jdParam2 = color
         }
 
@@ -381,7 +359,6 @@ namespace microcode {
             const tid = TID_MODIFIER_RGB_LED_COLOR_X + name
             const mod = new ModifierDefn(tid, "rgb_led")
             tilesDB.modifiers[tid] = mod
-            mod.jdParam = "led_anim_" + name
         }
 
         addAnim("sparkle")
@@ -392,17 +369,15 @@ namespace microcode {
         const servoSetAngle = addActuator(TID_ACTUATOR_SERVO_SET_ANGLE, [
             "constant",
         ])
-        servoSetAngle.jdParam = jacs.NumFmt.I32
 
-        function addFilterReadValue(tid: string, varid: number) {
+        function addFilterReadValue(tid: string) {
             const filter = new FilterDefn(tid, "value_in")
-            filter.jdParam = varid
             tilesDB.filters[tid] = filter
             return filter
         }
-        addFilterReadValue(TID_FILTER_CUP_X_READ, 0)
-        addFilterReadValue(TID_FILTER_CUP_Y_READ,  1)
-        addFilterReadValue(TID_FILTER_CUP_Z_READ, 2)
+        addFilterReadValue(TID_FILTER_CUP_X_READ)
+        addFilterReadValue(TID_FILTER_CUP_Y_READ)
+        addFilterReadValue(TID_FILTER_CUP_Z_READ)
 
         function addReadValue(tid: string, varid: number) {
             const mod = new ModifierDefn(tid, "value_out")

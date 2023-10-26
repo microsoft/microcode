@@ -1039,19 +1039,113 @@ namespace microcode {
         return undefined
     }
 
+    export function jdParam(tidEnum: number): number | string {
+        if (Tid.TID_MODIFIER_COIN_1 <= tidEnum && tidEnum <= Tid.TID_MODIFIER_COIN_5)
+            return tidEnum - Tid.TID_MODIFIER_COIN_1 + 1
+        if (Tid.TID_FILTER_COIN_1 <= tidEnum && tidEnum <= Tid.TID_FILTER_COIN_5) 
+            return tidEnum - Tid.TID_FILTER_COIN_1 + 1
+        if (Tid.TID_MODIFIER_PAGE_1 <= tidEnum && tidEnum <= Tid.TID_MODIFIER_PAGE_5)
+            return tidEnum - Tid.TID_MODIFIER_PAGE_1 + 1
+        if (Tid.TID_MODIFIER_CAR_LED_COLOR_1 <= tidEnum && tidEnum <= Tid.TID_MODIFIER_CAR_LED_COLOR_3)
+            return "led_solid"
+        switch (tidEnum) {
+            case Tid.TID_FILTER_BUTTON_A: return 0
+            case Tid.TID_FILTER_BUTTON_B: return 1
+            case Tid.TID_FILTER_LOGO: return 2
+            case Tid.TID_FILTER_PIN_0: return 3
+            case Tid.TID_FILTER_PIN_1: return 4
+            case Tid.TID_FILTER_PIN_2: return 5
+            case Tid.TID_FILTER_KITA_KEY_1: return 6
+            case Tid.TID_FILTER_KITA_KEY_2: return 7
+            //
+            case Tid.TID_SENSOR_CUP_X_WRITTEN:
+            case Tid.TID_ACTUATOR_CUP_X_ASSIGN:
+            case Tid.TID_FILTER_CUP_X_READ:
+                return 0
+            case Tid.TID_SENSOR_CUP_Y_WRITTEN:
+            case Tid.TID_ACTUATOR_CUP_Y_ASSIGN:
+            case Tid.TID_FILTER_CUP_Y_READ:
+                return 1
+            case Tid.TID_SENSOR_CUP_Z_WRITTEN:
+            case Tid.TID_ACTUATOR_CUP_Z_ASSIGN:
+            case Tid.TID_FILTER_CUP_Z_READ:
+                return 2
+            // 
+            case Tid.TID_FILTER_ROTARY_LEFT:
+            case Tid.TID_FILTER_TEMP_WARMER:
+            case Tid.TID_FILTER_LOUD:
+                return 1
+            //
+            case Tid.TID_FILTER_LINE_RIGHT:
+            case Tid.TID_FILTER_TEMP_COLDER:
+            case Tid.TID_FILTER_QUIET:
+                return 2
+            //
+            case Tid.TID_FILTER_LINE_BOTH: return robots.RobotCompactCommand.LineBoth
+            case Tid.TID_FILTER_LINE_LEFT: return robots.RobotCompactCommand.LineLeft
+            case Tid.TID_FILTER_LINE_RIGHT: return robots.RobotCompactCommand.LineRight
+            case Tid.TID_FILTER_LINE_NEITHER: return robots.RobotCompactCommand.LineNone
+            case Tid.TID_FILTER_LINE_NEITHER_LEFT: return robots.RobotCompactCommand.LineNoneFromLeft
+            case Tid.TID_FILTER_LINE_NEITHER_RIGHT: return robots.RobotCompactCommand.LineNoneFromRight
+            //
+            case Tid.TID_FILTER_TIMESPAN_SHORT: return 250
+            case Tid.TID_FILTER_TIMESPAN_LONG: return 1000
+            case Tid.TID_FILTER_TIMESPAN_VERY_LONG: return 5000
+            case Tid.TID_FILTER_TIMESPAN_RANDOM: return -1000
+            //
+            case Tid.TID_FILTER_ACCEL_SHAKE: return 0x8b
+            case Tid.TID_FILTER_ACCEL_TILT_UP: return 0x81
+            case Tid.TID_FILTER_ACCEL_TILT_DOWN: return 0x82
+            case Tid.TID_FILTER_ACCEL_TILT_LEFT: return 0x83
+            case Tid.TID_FILTER_ACCEL_TILT_RIGHT: return 0x84
+            //
+            case Tid.TID_ACTUATOR_PAINT: return "dot_animation"
+            case Tid.TID_ACTUATOR_SHOW_NUMBER: return "dot_showNumber"
+            case Tid.TID_ACTUATOR_MUSIC: return "note_sequence"
+            // 
+            case Tid.TID_ACTUATOR_RADIO_SEND: return jacs.NumFmt.F64
+            case Tid.TID_ACTUATOR_RADIO_SET_GROUP: return jacs.NumFmt.U8
+            // 
+            case Tid.TID_MODIFIER_EMOJI_GIGGLE: return "giggle"
+            case Tid.TID_MODIFIER_EMOJI_HAPPY: return "happy"
+            case Tid.TID_MODIFIER_EMOJI_HELLO: return "hello"
+            case Tid.TID_MODIFIER_EMOJI_MYSTERIOUS: return "mysterious"
+            case Tid.TID_MODIFIER_EMOJI_SAD: return "sad"
+            case Tid.TID_MODIFIER_EMOJI_SLIDE: return "slide"
+            case Tid.TID_MODIFIER_EMOJI_SOARING: return "soaring"
+            case Tid.TID_MODIFIER_EMOJI_SPRING: return "spring"
+            case Tid.TID_MODIFIER_EMOJI_TWINKLE: return "twinkle"
+            case Tid.TID_MODIFIER_EMOJI_YAWN: return "yawn"
+            //
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE: return jacs.NumFmt.I32
+            //
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE: return "led_anim_sparkle"
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_RAINBOW: return "led_anim_rainbow"
+        }
+        return undefined
+    }
+
+    export function jdParam2(tidEnum: number): number | string {
+        switch (tidEnum) {
+            // length of the melody (milliseconds)
+            case Tid.TID_MODIFIER_EMOJI_GIGGLE: return 1478
+            case Tid.TID_MODIFIER_EMOJI_HAPPY: return 1233
+            case Tid.TID_MODIFIER_EMOJI_HELLO: return 547
+            case Tid.TID_MODIFIER_EMOJI_MYSTERIOUS: return 4794
+            case Tid.TID_MODIFIER_EMOJI_SAD: return 1687
+            case Tid.TID_MODIFIER_EMOJI_SLIDE: return 1315
+            case Tid.TID_MODIFIER_EMOJI_SOARING: return 8192
+            case Tid.TID_MODIFIER_EMOJI_SPRING: return 2083
+            case Tid.TID_MODIFIER_EMOJI_TWINKLE: return 6772
+            case Tid.TID_MODIFIER_EMOJI_YAWN: return 2816
+        }
+        return undefined
+    }
     export function priority(tid: string): number {
         const tidEnum = tidToEnum(tid)
         if (isFilter(tidEnum)) {
-            switch (tidEnum) {
-                case Tid.TID_FILTER_BUTTON_A: return 1
-                case Tid.TID_FILTER_BUTTON_B: return 2
-                case Tid.TID_FILTER_LOGO: return 3
-                case Tid.TID_FILTER_PIN_0: return 4
-                case Tid.TID_FILTER_PIN_1: return 5
-                case Tid.TID_FILTER_PIN_2: return 6
-                case Tid.TID_FILTER_KITA_KEY_1: return 7
-                case Tid.TID_FILTER_KITA_KEY_2: return 8
-            }
+            const pInstance = jdParam(tidEnum) as number
+            if (pInstance) return pInstance
             return tidEnum
         } else if (isModifier(tidEnum)) {
             if (tidEnum == Tid.TID_MODIFIER_LOOP) // loop always at end

@@ -64,7 +64,7 @@ namespace microcode {
         constructor(public tid: string) {
         }
 
-        jdParam: any
+        // jdParam: any
         jdParam2: number
 
         constraints: Constraints
