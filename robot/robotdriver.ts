@@ -44,7 +44,7 @@ namespace microcode {
         private currentTurnRatio = 0
         private targetTurnRatio: number = 0
         radioGroup: number
-        private inRadioMessageId: number = undefined
+        useRadio: boolean = false
 
         /**
          * Gets the latest line sensor state
@@ -474,56 +474,9 @@ namespace microcode {
         }
 
         private sendCompactCommand(cmd: microcode.robots.RobotCompactCommand) {
-            if (this.inRadioMessageId !== undefined) {
+            if (this.useRadio) {
                 radio.sendNumber(cmd)
                 nativeSendNumber(cmd)
-            }
-        }
-
-        public decodeRobotCompactCommand(msg: number) {
-            if (
-                msg >= microcode.robots.RobotCompactCommand.Command &&
-                msg <= microcode.robots.RobotCompactCommand.CommandLast
-            ) {
-                this.inRadioMessageId++
-                this.playTone(440, 40)
-            }
-            switch (msg) {
-                case microcode.robots.RobotCompactCommand.MotorStop:
-                case microcode.robots.RobotCompactCommand.MotorTurnLeft:
-                case microcode.robots.RobotCompactCommand.MotorTurnRight:
-                case microcode.robots.RobotCompactCommand.MotorSpinLeft:
-                case microcode.robots.RobotCompactCommand.MotorSpinRight:
-                case microcode.robots.RobotCompactCommand.MotorRunForwardFast:
-                case microcode.robots.RobotCompactCommand.MotorRunForward:
-                case microcode.robots.RobotCompactCommand.MotorRunBackward: {
-                    const command = this.robot.commands[msg] || {}
-                    const turnRatio = command.turnRatio || 0
-                    const speed = command.speed || 0
-                    this.lineAssist =
-                        msg !==
-                        microcode.robots.RobotCompactCommand.MotorRunForwardFast
-                    this.motorRun(turnRatio, speed)
-                    break
-                }
-                case microcode.robots.RobotCompactCommand.LEDRed:
-                    this.setColor(0xff0000)
-                    break
-                case microcode.robots.RobotCompactCommand.LEDGreen:
-                    this.setColor(0x00ff00)
-                    break
-                case microcode.robots.RobotCompactCommand.LEDBlue:
-                    this.setColor(0x0000ff)
-                    break
-                case microcode.robots.RobotCompactCommand.LEDOff:
-                    this.setColor(0x00000)
-                    break
-                case microcode.robots.RobotCompactCommand.ArmOpen:
-                    this.armOpen(100)
-                    break
-                case microcode.robots.RobotCompactCommand.ArmClose:
-                    this.armOpen(0)
-                    break
             }
         }
     }

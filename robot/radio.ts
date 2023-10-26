@@ -52,5 +52,6 @@ namespace microcode {
         const driver = microcode.robot
         radio.setGroup(driver.radioGroup)
         radio.onReceivedNumber(code => decodeRobotCompactCommand(driver, code))
+        robot.useRadio = true
     }
 }
