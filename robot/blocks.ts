@@ -117,20 +117,6 @@ namespace microcode {
     }
 
     /**
-     * Sets the radio group used to communicate commands. Starts radio if needed.
-     */
-    //% block="robot set radio group to $value"
-    //% blockId="microcoderobotsetradiogroup"
-    //% group="Configuration"
-    //% weight=9
-    //% value.min=1
-    //% value.max=32
-    export function setRadioGroup(value: number) {
-        checkRobotDriver()
-        robot.setRadioGroup(value)
-    }
-
-    /**
      * Sets the LED color
      */
     //% blockId="microcoderobotsetcolor" block="robot set color $rgb"
