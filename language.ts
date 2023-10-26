@@ -14,18 +14,18 @@ namespace microcode {
         }
     }
 
-    export abstract class FieldEditor {
-        abstract init(): any
-        abstract clone(field: any): any
-        abstract editor(
+    export class FieldEditor {
+        init(): any { return undefined }
+        clone(field: any): any { return undefined }
+        editor(
             field: any,
             picker: Picker,
             onHide: () => void,
             onDelete?: () => void
-        ): void // use picker to update field
-        abstract toImage(field: any): Image // produce an image for the field for tile
-        abstract toBuffer(field: any): Buffer
-        abstract fromBuffer(buf: BufferReader): any
+        ): void { }
+        toImage(field: any): Image { return undefined }
+        toBuffer(field: any): Buffer { return undefined }
+        fromBuffer(buf: BufferReader): any { return undefined }
     }
 
     // let P be jdParam
