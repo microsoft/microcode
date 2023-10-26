@@ -46,12 +46,11 @@ namespace microcode {
     }
 
     /**
-     * Starts the reception and transmission of robot command messages
+     * Starts the reception and transmission of compact robot command messages (see protocol).
      */
     export function startCompactRadio() {
         const driver = microcode.robot
         radio.setGroup(driver.radioGroup)
-        radio.setTransmitSerialNumber(true)
         radio.onReceivedNumber(code => decodeRobotCompactCommand(driver, code))
     }
 }
