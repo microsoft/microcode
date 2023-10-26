@@ -957,9 +957,9 @@ namespace microcode {
     
     export function buttonStyle(tid: string): ButtonStyle {
         const tidEnum = tidToEnum(tid)
-        // TODO: fix this up
-        return this.fieldEditor
-            ? this.fieldEditor.buttonStyle()
+        const tile = tilesDB.modifiers[tidEnum]
+        return getFieldEditor(tile)
+            ? ButtonStyles.Transparent
             : ButtonStyles.FlatWhite
     }
 

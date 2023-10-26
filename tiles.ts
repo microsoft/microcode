@@ -512,16 +512,6 @@ namespace microcode {
         clone: (img: Image) => img.clone(),
         editor: iconEditor,
         toImage: icondb.renderMicrobitLEDs,
-        buttonStyle: () => ButtonStyles.Transparent,
-        deserialize: (s: string) => {
-            const img = image.create(5, 5)
-            for (let index = 0; index < 25; index++) {
-                let col = index % 5
-                let row = Math.idiv(index, 5)
-                img.setPixel(col, row, s[index] == "1" ? 1 : 0)
-            }
-            return img
-        },
         toBuffer: (img: Image) => {
             const ret = Buffer.create(4)
             for (let index = 0; index < 25; index++) {
@@ -630,14 +620,6 @@ namespace microcode {
         },
         editor: melodyEditor,
         toImage: icondb.melodyToImage,
-        buttonStyle: () => ButtonStyles.Transparent,
-        deserialize: (s: string) => {
-            const sp = s.split(",")
-            return {
-                notes: sp[0],
-                tempo: parseInt(sp[1]),
-            }
-        },
         toBuffer: (melody: Melody) => {
             const buf = Buffer.create(3)
             buf.setUint8(0, melody.tempo)

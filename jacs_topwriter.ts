@@ -610,13 +610,7 @@ namespace jacs {
             )
             if (params.length == 0) {
                 const tid = microcode.tidToEnum(rule.actuators[0].tid)
-                const defMod = microcode.defaultModifier(tid)
-                params = [undefined]
-                if (defMod) params = [defMod]
-                else {
-                    const fieldEd = microcode.getFieldEditor(tid)
-                    params = [fieldEd]
-                }
+                params = [microcode.defaultModifier(tid)]
             }
 
             const role = this.lookupActuatorRole(rule)
