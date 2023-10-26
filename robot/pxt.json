@@ -26,7 +26,8 @@
         "storage.cpp",
         "storage.ts",
         "kalmanfilter1d.ts",
-        "radio.ts"
+        "radio.ts",
+        "remoterobot.ts"
     ],
     "testFiles": ["test.ts"],
     "fileDependencies": {

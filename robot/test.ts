@@ -5,5 +5,6 @@
 //microcode.setMotorDrift(6)
 //microcode.dfRobotMaqueen.start()
 //microcode.dfRobotMaqueenPlusV2.start()
-microcode.kittenbotMiniLFR.start()
+//microcode.kittenbotMiniLFR.start()
+microcode.remoteController.start()
 microcode.startCompactRadio()
