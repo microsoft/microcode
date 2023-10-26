@@ -43,7 +43,7 @@ namespace microcode {
         private targetSpeed: number = 0
         private currentTurnRatio = 0
         private targetTurnRatio: number = 0
-        private radioGroup: number
+        radioGroup: number
         private inRadioMessageId: number = undefined
 
         /**
@@ -60,7 +60,7 @@ namespace microcode {
 
         private sonar: robots.Sonar
         private lineDetectors: robots.LineDetectors
-        private arm: robots.ServoArm
+        private arm: robots.Arm
 
         /**
          * Maximum distance in cm for the ultrasonic sensor
@@ -153,8 +153,7 @@ namespace microcode {
             this.sonar = this.robot.sonar
             if (this.sonar) this.sonar.start()
             this.arm = this.robot.arm
-            if (this.arm && this.arm.pulseUs)
-                pins.servoSetPulse(this.arm.pin, this.arm.pulseUs)
+            if (this.arm) this.arm.start()
 
             // stop motors
             this.setColor(0x0000ff)
@@ -166,6 +165,9 @@ namespace microcode {
             this.configureButtons()
             basic.forever(() => this.updateSonar()) // potentially slower
             control.inBackground(() => this.backgroundWork())
+
+            // notify the robot
+            this.robot.onStarted(this)
         }
 
         private backgroundWork() {
@@ -210,20 +212,6 @@ namespace microcode {
             if (arm) arm.open(this.currentArmAperture)
             else this.robot.armOpen(this.currentArmAperture)
             this.currentArmAperture = undefined
-        }
-
-        /**
-         * Starts the reception and transmission of robot command messages
-         */
-        startRadio() {
-            if (this.inRadioMessageId === undefined) {
-                radio.setGroup(this.radioGroup)
-                radio.setTransmitSerialNumber(true)
-                radio.onReceivedNumber(code =>
-                    this.decodeRobotCompactCommand(code)
-                )
-                this.inRadioMessageId = 0
-            }
         }
 
         private updateSpeed() {
@@ -438,7 +426,7 @@ namespace microcode {
             return ls
         }
 
-        private playTone(frequency: number, duration: number) {
+        playTone(frequency: number, duration: number) {
             this.stopToneMillis = control.millis() + duration
             pins.analogPitch(frequency, 0)
         }
@@ -471,8 +459,7 @@ namespace microcode {
         }
 
         /**
-         * Sets the radio group used to transfer messages. Also starts the radio
-         * if needed
+         * Sets the radio group used to transfer messages.
          */
         setRadioGroup(newGroup: number) {
             newGroup = newGroup >> 0
@@ -484,7 +471,6 @@ namespace microcode {
             radio.setGroup(this.radioGroup)
             __writeCalibration(this.radioGroup, this.runDrift)
             led.stopAnimation()
-            this.startRadio()
         }
 
         private sendCompactCommand(cmd: microcode.robots.RobotCompactCommand) {

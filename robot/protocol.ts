@@ -14,6 +14,8 @@ const enum RobotLineState {
 }
 
 namespace microcode.robots {
+    export const MAGIC = 0x8429
+
     /**
      * Compact commands through radio numbers
      */
@@ -58,5 +60,13 @@ namespace microcode.robots {
         LineNone = LineState | RobotLineState.None,
         LineLostLeft = LineState | RobotLineState.LostLeft,
         LineLostRight = LineState | RobotLineState.LostRight,
+    }
+
+    export const enum RobotCommand {
+        Motor = RobotCompactCommand.MotorRunForward,
+        Arm = RobotCompactCommand.ArmOpen,
+        LED = RobotCompactCommand.LEDRed,
+        Line = RobotCompactCommand.LineState,
+        Obstacle = RobotCompactCommand.ObstacleState,
     }
 }

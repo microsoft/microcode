@@ -1,2 +1,2 @@
 microcode.keyStudioMiniSmartRobot.start()
-microcode.robot.startRadio()
+microcode.startCompactRadio()

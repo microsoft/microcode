@@ -112,6 +112,7 @@ namespace microcode.robots {
     }
 
     export interface Arm {
+        start(): void
         open(aperture: number): void
     }
 
@@ -122,6 +123,9 @@ namespace microcode.robots {
             public maxAngle: number,
             public readonly pin: AnalogPin
         ) {}
+        start() {
+            if (this.pulseUs) pins.servoSetPulse(this.pin, this.pulseUs)
+        }
         open(aperture: number): void {
             const angle = Math.round(
                 Math.map(aperture, 0, 100, this.minAngle, this.maxAngle)
@@ -183,7 +187,7 @@ namespace microcode.robots {
         /**
          * Robotic arm configuration
          */
-        arm?: ServoArm
+        arm?: Arm
         /**
          * A map from microcode command to speed, turn ratio values
          */
@@ -229,6 +233,10 @@ namespace microcode.robots {
                 }
         }
 
+        /**
+         * Called when the robot is started
+         */
+        onStarted(driver: RobotDriver) {}
         /*
         Makes the robot move at % `speed` ([-100, 100]). Negative goes backgward, 0 stops.
         */
