@@ -153,8 +153,7 @@ namespace microcode {
             this.sonar = this.robot.sonar
             if (this.sonar) this.sonar.start()
             this.arm = this.robot.arm
-            if (this.arm && this.arm.pulseUs)
-                pins.servoSetPulse(this.arm.pin, this.arm.pulseUs)
+            if (this.arm) this.arm.start()
 
             // stop motors
             this.setColor(0x0000ff)

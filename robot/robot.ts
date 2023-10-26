@@ -112,6 +112,7 @@ namespace microcode.robots {
     }
 
     export interface Arm {
+        start(): void
         open(aperture: number): void
     }
 
@@ -122,6 +123,9 @@ namespace microcode.robots {
             public maxAngle: number,
             public readonly pin: AnalogPin
         ) {}
+        start() {
+            if (this.pulseUs) pins.servoSetPulse(this.pin, this.pulseUs)
+        }
         open(aperture: number): void {
             const angle = Math.round(
                 Math.map(aperture, 0, 100, this.minAngle, this.maxAngle)

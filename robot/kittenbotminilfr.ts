@@ -15,6 +15,38 @@ namespace microcode {
         return 0
     }
 
+    function splitSpaces(input: string): string[] {
+        const result: string[] = []
+        let currentWord = ""
+        for (let i = 0; i < input.length; i++) {
+            const char = input[i]
+            if (char === " ") {
+                if (currentWord.length > 0) {
+                    result.push(currentWord)
+                }
+                currentWord = ""
+            } else {
+                currentWord += char
+            }
+        }
+        if (currentWord.length > 0) {
+            result.push(currentWord)
+        }
+        return result
+    }
+
+    function parseIntFromDigits(input: string): number {
+        let result = 0
+        let placeValue = 1
+        const zero = "0".charCodeAt(0)
+        for (let i = input.length - 1; i >= 0; i--) {
+            const digit = input[i].charCodeAt(0) - zero
+            result += digit * placeValue
+            placeValue *= 10
+        }
+        return result
+    }
+
     class KittenbotMiniLFRRobot extends robots.Robot {
         //private mode: MiniLFRMode = MiniLFRMode.IDLE
         private sensorUpdated: number = 0
@@ -44,17 +76,17 @@ namespace microcode {
 
             serial.onDataReceived("\n", () => {
                 let s = serial.readString()
-                let tmp = s.split(" ")
+                let tmp = splitSpaces(s) // string.split is 500b
 
                 if (tmp[0] === "M7") {
-                    this.ultrasonicValue = parseInt(tmp[1])
+                    this.ultrasonicValue = parseIntFromDigits(tmp[1])
                     this.ultrasonicUpdated = control.millis()
                 } else if (tmp[0] === "M10") {
-                    this.sensorValue[0] = parseInt(tmp[1])
-                    this.sensorValue[1] = parseInt(tmp[2])
-                    this.sensorValue[2] = parseInt(tmp[3])
-                    this.sensorValue[3] = parseInt(tmp[4])
-                    this.sensorValue[4] = parseInt(tmp[5])
+                    this.sensorValue[0] = parseIntFromDigits(tmp[1])
+                    this.sensorValue[1] = parseIntFromDigits(tmp[2])
+                    this.sensorValue[2] = parseIntFromDigits(tmp[3])
+                    this.sensorValue[3] = parseIntFromDigits(tmp[4])
+                    this.sensorValue[4] = parseIntFromDigits(tmp[5])
                     this.sensorUpdated = control.millis()
                 } else if (tmp[0] === "M33") {
                     //this.mode = MiniLFRMode.IDLE
