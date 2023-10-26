@@ -367,7 +367,6 @@ namespace docs {
             microcode.TID_ACTUATOR_SHOW_NUMBER,
             microcode.TID_ACTUATOR_RADIO_SEND,
             microcode.TID_ACTUATOR_RADIO_SET_GROUP,
-            microcode.TID_ACTUATOR_MICROPHONE,
             microcode.TID_ACTUATOR_SPEAKER,
             microcode.TID_ACTUATOR_MUSIC,
 

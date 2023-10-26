@@ -44,7 +44,6 @@ namespace microcode {
                     categories: ["press_event"],
                 },
             }
-            press_event.priority = 9 + evt
             tilesDB.sensors[tid] = press_event
         }
 
@@ -52,7 +51,7 @@ namespace microcode {
         addPress(TID_SENSOR_RELEASE, 2)
 
         function addPressFilter(tid: string, instanceNo: number) {
-            const press_filter = new FilterDefn(tid, "press_event", 10)
+            const press_filter = new FilterDefn(tid, "press_event")
             press_filter.constraints = {
                 allow: {
                     categories: ["press_event"],
@@ -75,27 +74,25 @@ namespace microcode {
     }
 
     function addSensorAndFilterTiles() {
-        function makeSensor(tid: string, cat: string, prior: number) {
+        function makeSensor(tid: string, cat: string) {
             const tile = new SensorDefn(tid)
             tile.constraints = {
                 allow: {
                     categories: [cat],
                 },
             }
-            tile.priority = prior
             tilesDB.sensors[tid] = tile
             return tile
         }
 
-        makeSensor(TID_SENSOR_START_PAGE, "timespan", 108)
+        makeSensor(TID_SENSOR_START_PAGE, "timespan")
 
         addButtonTiles()
 
         function makeCupSensor(tid: string, id: number, disallow: string) {
-            const tile = makeSensor(tid, "value_in", 120 + id * 5)
+            const tile = makeSensor(tid, "value_in")
             tile.jdKind = JdKind.Variable
             tile.jdParam = id
-            tile.priority = 200 + id
             tile.constraints.disallow = { tiles: [disallow] }
         }
 
@@ -103,10 +100,10 @@ namespace microcode {
         makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, 1, TID_FILTER_CUP_Y_READ)
         makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, 2, TID_FILTER_CUP_Z_READ)
 
-        const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event", 99)
+        const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event")
         temp.jdKind = JdKind.Temperature
 
-        const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in", 100)
+        const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in")
         radio_recv.jdKind = JdKind.Radio
         radio_recv.constraints.provides = [TID_SENSOR_RADIO_RECEIVE]
 
@@ -119,28 +116,28 @@ namespace microcode {
             TID_FILTER_COIN_4,
             TID_FILTER_COIN_5,
         ]
-        const slider = makeSensor(TID_SENSOR_SLIDER, "value_in", 500)
+        const slider = makeSensor(TID_SENSOR_SLIDER, "value_in")
         slider.constraints.allow.categories = []
         slider.constraints.allow.tiles = only5
 
         if (CAR_TILES) {
-            const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in", 500)
+            const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in")
             wall.jdKind = JdKind.Radio
             wall.constraints.allow.categories = []
             wall.constraints.allow.tiles = only5
         }
 
-        const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in", 500)
+        const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in")
         magnet.constraints = slider.constraints
 
-        const light = makeSensor(TID_SENSOR_LIGHT, "value_in", 500)
+        const light = makeSensor(TID_SENSOR_LIGHT, "value_in")
         light.constraints = slider.constraints
 
-        const rotary = makeSensor(TID_SENSOR_ROTARY, "rotary_event", 500)
+        const rotary = makeSensor(TID_SENSOR_ROTARY, "rotary_event")
         rotary.jdKind = JdKind.Rotary
 
         function addEvent(tid: string, type: string, id: number) {
-            const ev = new FilterDefn(tid, type, 10)
+            const ev = new FilterDefn(tid, type)
             ev.jdParam = id
             ev.jdKind = JdKind.EventCode
             tilesDB.filters[tid] = ev
@@ -190,7 +187,7 @@ namespace microcode {
                 neither_right.jdKind =
                     JdKind.Literal
 
-            const line = makeSensor(TID_SENSOR_LINE, "line", 505)
+            const line = makeSensor(TID_SENSOR_LINE, "line")
             line.jdKind = JdKind.Radio
             line.constraints.allow.categories = []
             line.constraints.allow.tiles = [
@@ -209,11 +206,10 @@ namespace microcode {
                 categories: ["timespan"],
             },
         }
-        timer.priority = 110
         tilesDB.sensors[TID_SENSOR_TIMER] = timer
 
         function addTimespan(tid: string, ms: number) {
-            const timespan = new FilterDefn(tid, "timespan", 10)
+            const timespan = new FilterDefn(tid, "timespan")
             timespan.jdKind = JdKind.Timespan
             timespan.jdParam = ms
             tilesDB.filters[tid] = timespan
@@ -229,12 +225,11 @@ namespace microcode {
                 categories: ["accel_event"],
             },
         }
-        accel.priority = 20
         tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
 
         function addAccelEvent(id: number, name: string) {
             const tid = TID_FILTER_ACCEL + "_" + name
-            const accelEvent = new FilterDefn(tid, "accel_event", 10)
+            const accelEvent = new FilterDefn(tid, "accel_event")
             accelEvent.jdKind = JdKind.EventCode
             accelEvent.jdParam = id
             tilesDB.filters[tid] = accelEvent
@@ -255,10 +250,9 @@ namespace microcode {
                 categories: ["sound_event"],
             },
         }
-        microphone.priority = 30
         tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
         function addSoundFilter(tid: string, eventCode: number) {
-            const soundFilter = new FilterDefn(tid, "sound_event", 10)
+            const soundFilter = new FilterDefn(tid, "sound_event")
             tilesDB.filters[tid] = soundFilter
             soundFilter.jdKind = JdKind.EventCode
             soundFilter.jdParam = eventCode
@@ -281,22 +275,18 @@ namespace microcode {
 
         // these are in order (see priority field) as will be shown in the dialog
         const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
-        paint.priority = 10
         paint.jdKind = JdKind.Sequence
         paint.jdParam = "dot_animation"
         paint.jdParam2 = 5
 
         const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER, 10)
-        showNum.priority = 11
         showNum.jdKind = JdKind.ExtLibFn
         showNum.jdParam = "dot_showNumber"
 
         const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
-        emoji.priority = 20
         emoji.jdKind = JdKind.Sequence
 
         const music = addActuator(TID_ACTUATOR_MUSIC, ["melody_editor", "loop"])
-        music.priority = 22
         music.jdKind = JdKind.Sequence
         music.jdParam = "note_sequence"
         music.jdParam2 = 6
@@ -305,25 +295,21 @@ namespace microcode {
             "value_out",
             "constant",
         ])
-        radio_send.priority = 100
         radio_send.jdKind = JdKind.NumFmt
         radio_send.jdParam = jacs.NumFmt.F64
 
         const radio_set_group = addActuator(TID_ACTUATOR_RADIO_SET_GROUP, [])
         radio_set_group.constraints = {}
         radio_set_group.constraints.only = ["constant"]
-        radio_set_group.priority = 101
         radio_set_group.jdKind = JdKind.NumFmt
         radio_set_group.jdParam = jacs.NumFmt.U8
 
         const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
-        swtch.priority = 110
 
         function addAssign(tid: string, id: number) {
             const theVar = addActuator(tid, ["value_out", "constant"])
             theVar.jdParam = id
             theVar.jdKind = JdKind.Variable
-            theVar.priority = 200 + id
             return theVar
         }
 
@@ -348,7 +334,7 @@ namespace microcode {
         ]
         emojis.forEach((e, idx) => {
             const tid = "M19" + e
-            const emoji_mod = new ModifierDefn(tid, "sound_emoji", 10)
+            const emoji_mod = new ModifierDefn(tid, "sound_emoji")
             emoji_mod.jdKind = JdKind.ServiceCommandArg
             emoji_mod.jdParam = e
             emoji_mod.jdParam2 = emoji_ms[idx]
@@ -366,8 +352,8 @@ namespace microcode {
                 const tid = kind + (start + index)
                 const tile: FilterModifierBase =
                     kind == "F"
-                        ? new FilterDefn(tid, name, 10)
-                        : new ModifierDefn(tid, name, 10)
+                        ? new FilterDefn(tid, name)
+                        : new ModifierDefn(tid, name)
                 tile.jdKind = kind == "CAR" ? JdKind.NumFmt : JdKind.Literal
                 tile.jdParam = kind == "CAR" ? jacs.NumFmt.F64 : v
                 tile.jdParam2 = kind == "CAR" ? v : 0
@@ -402,13 +388,12 @@ namespace microcode {
             make_vals(car_commands, "car", "CAR", 1)
 
             const car = addActuator(TID_ACTUATOR_CAR, ["car"])
-            car.priority = 900
             car.jdKind = JdKind.Sequence
         }
 
         function addRGB(id: number, color: number) {
             const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
-            const mod = new ModifierDefn(tid, "rgb_led", 10)
+            const mod = new ModifierDefn(tid, "rgb_led")
             tilesDB.modifiers[tid] = mod
             mod.jdKind = JdKind.ExtLibFn
             mod.jdParam = "led_solid"
@@ -424,7 +409,7 @@ namespace microcode {
 
         function addAnim(name: string) {
             const tid = TID_MODIFIER_RGB_LED_COLOR_X + name
-            const mod = new ModifierDefn(tid, "rgb_led", 11)
+            const mod = new ModifierDefn(tid, "rgb_led")
             tilesDB.modifiers[tid] = mod
             mod.jdKind = JdKind.ExtLibFn
             mod.jdParam = "led_anim_" + name
@@ -434,22 +419,19 @@ namespace microcode {
         addAnim("rainbow")
 
         const rgbled = addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
-        rgbled.priority = 500
         rgbled.jdKind = JdKind.Sequence
 
         const servoSetAngle = addActuator(TID_ACTUATOR_SERVO_SET_ANGLE, [
             "constant",
         ])
-        servoSetAngle.priority = 500
         servoSetAngle.jdKind = JdKind.NumFmt
         servoSetAngle.jdParam = jacs.NumFmt.I32
 
         function addFilterReadValue(tid: string, kind: JdKind, varid: number) {
-            const filter = new FilterDefn(tid, "value_in", 10)
+            const filter = new FilterDefn(tid, "value_in")
             filter.jdParam = varid
             filter.jdKind = kind
             tilesDB.filters[tid] = filter
-            filter.priority = 200 + varid
             return filter
         }
         addFilterReadValue(TID_FILTER_CUP_X_READ, JdKind.Variable, 0)
@@ -457,11 +439,10 @@ namespace microcode {
         addFilterReadValue(TID_FILTER_CUP_Z_READ, JdKind.Variable, 2)
 
         function addReadValue(tid: string, kind: JdKind, varid: number) {
-            const mod = new ModifierDefn(tid, "value_out", 10)
+            const mod = new ModifierDefn(tid, "value_out")
             mod.jdParam = varid
             mod.jdKind = kind
             tilesDB.modifiers[tid] = mod
-            mod.priority = 200 + varid
             return mod
         }
         addReadValue(TID_MODIFIER_CUP_X_READ, JdKind.Variable, 0)
@@ -473,7 +454,6 @@ namespace microcode {
             JdKind.RadioValue,
             0
         )
-        radio_value.priority = 199
         radio_value.constraints = { requires: [TID_SENSOR_RADIO_RECEIVE] }
 
         const temperature_value = addReadValue(
@@ -482,22 +462,19 @@ namespace microcode {
             0
         )
         temperature_value.constraints = {}
-        temperature_value.priority = 198
 
         const random_toss = addReadValue(
             TID_MODIFIER_RANDOM_TOSS,
             JdKind.RandomToss,
             5
         )
-        random_toss.priority = 70
         random_toss.constraints = {}
         random_toss.constraints.allow = { categories: ["constant"] }
         random_toss.constraints.disallow = { categories: ["value_out"] }
 
-        const loop = new ModifierDefn(TID_MODIFIER_LOOP, "loop", 10)
+        const loop = new ModifierDefn(TID_MODIFIER_LOOP, "loop")
         loop.jdKind = JdKind.Loop
         tilesDB.modifiers[TID_MODIFIER_LOOP] = loop
-        loop.priority = 80
         loop.constraints = { only: ["constant"] }
     }
 
@@ -553,7 +530,7 @@ namespace microcode {
         field: Image
         firstInstance: boolean
         constructor(field: Image = null) {
-            super(TID_MODIFIER_ICON_EDITOR, "icon_editor", 10)
+            super(TID_MODIFIER_ICON_EDITOR, "icon_editor")
             this.firstInstance = false
             this.fieldEditor = new IconFieldEditor()
             this.field = this.fieldEditor.clone(
@@ -677,7 +654,7 @@ namespace microcode {
         field: Melody
         firstInstance: boolean
         constructor(field: Melody = null) {
-            super(TID_MODIFIER_MELODY_EDITOR, "melody_editor", 10)
+            super(TID_MODIFIER_MELODY_EDITOR, "melody_editor")
             this.firstInstance = false
             this.fieldEditor = new MelodyFieldEditor()
             this.field = this.fieldEditor.clone(

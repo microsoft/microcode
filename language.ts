@@ -62,11 +62,11 @@ namespace microcode {
     // - separate editor info (constraints) from compiler info
     export class TileDefn {
         constructor(public tid: string) {
-            this.priority = 0
         }
 
-        priority: number
         constraints: Constraints
+        
+        // TODO: extract this to a function
         jdKind: JdKind
         jdParam: any
         jdParam2: number
@@ -146,7 +146,6 @@ namespace microcode {
             )
                 return this.jdParam
             return null
-            // throw "bad jdParam: " + this.name + " / " + this.jdParam
         }
 
         isCompatibleWith(c: Constraints): boolean {
@@ -171,18 +170,16 @@ namespace microcode {
     }
 
     export class FilterDefn extends FilterModifierBase {
-        constructor(tid: string, category: string, priority: number) {
+        constructor(tid: string, category: string) {
             super(tid, category)
-            this.priority = priority
         }
     }
 
     export class ActuatorDefn extends StmtTileDefn {}
 
     export class ModifierDefn extends FilterModifierBase {
-        constructor(tid: string, category: string, priority: number) {
+        constructor(tid: string, category: string) {
             super(tid, category)
-            this.priority = priority
         }
     }
 
@@ -386,7 +383,7 @@ namespace microcode {
             const all = Object.keys(tilesDB[name])
                 .map(id => tilesDB[name][id])
                 .filter((tile: TileDefn) => isVisible(tidToEnum(tile.tid)))
-                .sort((t1, t2) => t1.priority - t2.priority)
+                .sort((t1, t2) => priority(t1.tid) - priority(t2.tid))
 
             if (name === "sensors" || name === "actuators") return all
 

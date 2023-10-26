@@ -62,7 +62,7 @@ namespace microcode {
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
-    export const TID_ACTUATOR_MICROPHONE = "A3"
+    export const TID_ACTUATOR_MICROPHONE = "A3"  // dead but don't delete
     export const TID_ACTUATOR_MUSIC = "A4"
     export const TID_ACTUATOR_PAINT = "A5"
     export const TID_ACTUATOR_RADIO_SEND = "A6"
@@ -163,7 +163,7 @@ namespace microcode {
         ACTUATOR_START = 40,
         TID_ACTUATOR_SWITCH_PAGE = 40,
         TID_ACTUATOR_SPEAKER,
-        TID_ACTUATOR_MICROPHONE,
+        TID_ACTUATOR_MICROPHONE, // dead, but don't delete
         TID_ACTUATOR_MUSIC,
         TID_ACTUATOR_PAINT,
         TID_ACTUATOR_RADIO_SEND,
@@ -389,8 +389,6 @@ namespace microcode {
                 return Tid.TID_ACTUATOR_SWITCH_PAGE
             case TID_ACTUATOR_SPEAKER:
                 return Tid.TID_ACTUATOR_SPEAKER
-            case TID_ACTUATOR_MICROPHONE:
-                return Tid.TID_ACTUATOR_MICROPHONE
             case TID_ACTUATOR_MUSIC:
                 return Tid.TID_ACTUATOR_MUSIC
             case TID_ACTUATOR_PAINT:
@@ -636,8 +634,6 @@ namespace microcode {
                 return TID_ACTUATOR_SWITCH_PAGE
             case Tid.TID_ACTUATOR_SPEAKER:
                 return TID_ACTUATOR_SPEAKER
-            case Tid.TID_ACTUATOR_MICROPHONE:
-                return TID_ACTUATOR_MICROPHONE
             case Tid.TID_ACTUATOR_MUSIC:
                 return TID_ACTUATOR_MUSIC
             case Tid.TID_ACTUATOR_PAINT:
@@ -963,6 +959,65 @@ namespace microcode {
             : ButtonStyles.FlatWhite
     }
 
+    export function priority(tid: string): number {
+        const tidEnum = tidToEnum(tid)
+        if (isFilter(tidEnum)) {
+            switch (tidEnum) {
+                case Tid.TID_FILTER_BUTTON_A: return 1
+                case Tid.TID_FILTER_BUTTON_B: return 2
+                case Tid.TID_FILTER_LOGO: return 3
+                case Tid.TID_FILTER_PIN_0: return 4
+                case Tid.TID_FILTER_PIN_1: return 5
+                case Tid.TID_FILTER_PIN_2: return 6
+                case Tid.TID_FILTER_KITA_KEY_1: return 7
+                case Tid.TID_FILTER_KITA_KEY_2: return 8
+            }
+            return tidEnum
+        } else if (isModifier(tidEnum)) {
+            if (tidEnum == Tid.TID_MODIFIER_LOOP) // loop always at end
+                return 1000
+            return tidEnum
+        }
+        switch (tidEnum) {
+            // sensors
+            case Tid.TID_SENSOR_PRESS: return 9
+            case Tid.TID_SENSOR_RELEASE: return 10
+            case Tid.TID_SENSOR_ACCELEROMETER: return 20
+            case Tid.TID_SENSOR_MICROPHONE: return 30
+            case Tid.TID_SENSOR_TEMP: return 99
+            case Tid.TID_SENSOR_RADIO_RECEIVE: return 100
+            case Tid.TID_SENSOR_TIMER: return 110
+            case Tid.TID_SENSOR_START_PAGE: return 108
+            case Tid.TID_SENSOR_CUP_X_WRITTEN: return 200
+            case Tid.TID_SENSOR_CUP_Y_WRITTEN: return 201
+            case Tid.TID_SENSOR_CUP_Z_WRITTEN: return 202
+            // Robot car
+            case Tid.TID_SENSOR_CAR_WALL: return 300
+            case Tid.TID_SENSOR_LINE: return 301
+            // Jacdac
+            case Tid.TID_SENSOR_SLIDER: return 500
+            case Tid.TID_SENSOR_ROTARY: return 501
+            case Tid.TID_SENSOR_LIGHT: return 502
+            case Tid.TID_SENSOR_ROTARY: return 503
+
+            case Tid.TID_ACTUATOR_PAINT: return 10
+            case Tid.TID_ACTUATOR_SHOW_NUMBER: return 15
+            case Tid.TID_ACTUATOR_SPEAKER: return 20
+            case Tid.TID_ACTUATOR_MUSIC: return 22
+            case Tid.TID_ACTUATOR_RADIO_SEND: return 100
+            case Tid.TID_ACTUATOR_RADIO_SET_GROUP: return 105
+            case Tid.TID_ACTUATOR_SWITCH_PAGE: return 110
+            case Tid.TID_ACTUATOR_CUP_X_ASSIGN: return 200
+            case Tid.TID_ACTUATOR_CUP_Y_ASSIGN: return 201
+            case Tid.TID_ACTUATOR_CUP_Z_ASSIGN: return 202
+            // car
+            case Tid.TID_ACTUATOR_CAR: return 500
+            // jacdac
+            case Tid.TID_ACTUATOR_RGB_LED: return 600
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE: return 601
+        }
+        return 1000
+    }
 
     // TODO: we don't need separate bits for everything.
     // TODO: only certain things can be combined. Analyze and optimize
