@@ -43,7 +43,7 @@ namespace microcode {
         private targetSpeed: number = 0
         private currentTurnRatio = 0
         private targetTurnRatio: number = 0
-        private radioGroup: number
+        radioGroup: number
         private inRadioMessageId: number = undefined
 
         /**
@@ -210,20 +210,6 @@ namespace microcode {
             if (arm) arm.open(this.currentArmAperture)
             else this.robot.armOpen(this.currentArmAperture)
             this.currentArmAperture = undefined
-        }
-
-        /**
-         * Starts the reception and transmission of robot command messages
-         */
-        startRadio() {
-            if (this.inRadioMessageId === undefined) {
-                radio.setGroup(this.radioGroup)
-                radio.setTransmitSerialNumber(true)
-                radio.onReceivedNumber(code =>
-                    this.decodeRobotCompactCommand(code)
-                )
-                this.inRadioMessageId = 0
-            }
         }
 
         private updateSpeed() {
@@ -438,7 +424,7 @@ namespace microcode {
             return ls
         }
 
-        private playTone(frequency: number, duration: number) {
+        playTone(frequency: number, duration: number) {
             this.stopToneMillis = control.millis() + duration
             pins.analogPitch(frequency, 0)
         }
@@ -471,8 +457,7 @@ namespace microcode {
         }
 
         /**
-         * Sets the radio group used to transfer messages. Also starts the radio
-         * if needed
+         * Sets the radio group used to transfer messages.
          */
         setRadioGroup(newGroup: number) {
             newGroup = newGroup >> 0
@@ -484,7 +469,6 @@ namespace microcode {
             radio.setGroup(this.radioGroup)
             __writeCalibration(this.radioGroup, this.runDrift)
             led.stopAnimation()
-            this.startRadio()
         }
 
         private sendCompactCommand(cmd: microcode.robots.RobotCompactCommand) {

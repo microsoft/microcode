@@ -1,3 +1,3 @@
 microcode.elecfreaksCuteBotPro.start()
-microcode.robot.startRadio()
+microcode.startCompactRadio()
 pins.analogSetPitchVolume(156)

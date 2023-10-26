@@ -6,5 +6,4 @@
 //microcode.dfRobotMaqueen.start()
 //microcode.dfRobotMaqueenPlusV2.start()
 microcode.kittenbotMiniLFR.start()
-
-microcode.robot.startRadio()
+microcode.startCompactRadio()
