@@ -14,19 +14,18 @@ namespace microcode {
         }
     }
 
-    // TODO: make into class
-    export interface FieldEditor {
-        init: any
-        clone: (field: any) => any
-        editor: (
+    export abstract class FieldEditor {
+        abstract init(): any
+        abstract clone(field: any): any
+        abstract editor(
             field: any,
             picker: Picker,
             onHide: () => void,
             onDelete?: () => void
-        ) => void // use picker to update field
-        toImage: (field: any) => Image // produce an image for the field for tile
-        toBuffer: (field: any) => Buffer
-        fromBuffer: (buf: BufferReader) => any
+        ): void // use picker to update field
+        abstract toImage(field: any): Image // produce an image for the field for tile
+        abstract toBuffer(field: any): Buffer
+        abstract fromBuffer(buf: BufferReader): any
     }
 
     // let P be jdParam

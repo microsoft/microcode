@@ -501,18 +501,26 @@ namespace microcode {
         loop.constraints = { only: ["constant"] }
     }
 
-    export const iconFieldEditor: FieldEditor = {
-        init: img`
+    export class IconFieldEditor extends FieldEditor {
+        init() {
+            return img`
         . . . . .
         . 1 . 1 .
         . . . . . 
         1 . . . 1
         . 1 1 1 .
-        `,
-        clone: (img: Image) => img.clone(),
-        editor: iconEditor,
-        toImage: icondb.renderMicrobitLEDs,
-        toBuffer: (img: Image) => {
+        `}
+        clone(img: Image) { return img.clone() }
+        editor(field: any,
+            picker: Picker,
+            onHide: () => void,
+            onDelete?: () => void) {
+                iconEditor(field, picker, onHide, onDelete)
+            }
+        toImage(field: any) {
+            return icondb.renderMicrobitLEDs(field)
+        }
+        toBuffer(img: Image) {
             const ret = Buffer.create(4)
             for (let index = 0; index < 25; index++) {
                 let byte = index >> 3
@@ -522,8 +530,8 @@ namespace microcode {
                 ret[byte] |= img.getPixel(col, row) << bit
             }
             return ret
-        },
-        fromBuffer: (br: BufferReader) => {
+        }
+        fromBuffer(br: BufferReader) {
             const buf = br.readBuffer(4)
             const img = image.create(5, 5)
             for (let index = 0; index < 25; index++) {
@@ -534,7 +542,7 @@ namespace microcode {
                 img.setPixel(col, row, (buf[byte] >> bit) & 1)
             }
             return img
-        },
+        }
     }
 
     export class ModifierEditor extends ModifierDefn {
@@ -547,9 +555,9 @@ namespace microcode {
         constructor(field: Image = null) {
             super(TID_MODIFIER_ICON_EDITOR, "icon_editor", 10)
             this.firstInstance = false
-            this.fieldEditor = iconFieldEditor
+            this.fieldEditor = new IconFieldEditor()
             this.field = this.fieldEditor.clone(
-                field ? field : this.fieldEditor.init
+                field ? field : this.fieldEditor.init()
             )
             this.jdKind = JdKind.ServiceCommandArg
             this.jdParam2 = 400 // ms
@@ -613,14 +621,25 @@ namespace microcode {
         buf.setNumber(NumberFormat.UInt16LE, offset + 4, duration)
     }
 
-    export const melodyFieldEditor: FieldEditor = {
-        init: { notes: `0240`, tempo: 120 },
-        clone: (melody: Melody) => {
+    export class MelodyFieldEditor {
+        init() {
+            return { notes: `0240`, tempo: 120 }
+        }
+        clone(melody: Melody) {
             return { notes: melody.notes.slice(0), tempo: melody.tempo }
-        },
-        editor: melodyEditor,
-        toImage: icondb.melodyToImage,
-        toBuffer: (melody: Melody) => {
+        }
+        editor(
+            field: any,
+            picker: Picker,
+            onHide: () => void,
+            onDelete?: () => void
+        ) {
+            melodyEditor(field, picker, onHide, onDelete)
+        }
+        toImage(field: any) {
+            return icondb.melodyToImage(field)
+        }
+        toBuffer(melody: Melody) {
             const buf = Buffer.create(3)
             buf.setUint8(0, melody.tempo)
             // convert the melody notes into list of integers
@@ -638,8 +657,8 @@ namespace microcode {
                 }
             }
             return buf
-        },
-        fromBuffer: (br: BufferReader) => {
+        }
+        fromBuffer(br: BufferReader) {
             const buf = br.readBuffer(3)
             const tempo = buf[0]
             let notes = ""
@@ -651,7 +670,7 @@ namespace microcode {
                 notes += note == 0 ? "." : (note - 1).toString()
             }
             return { tempo, notes }
-        },
+        }
     }
 
     export class MelodyEditor extends ModifierEditor {
@@ -660,9 +679,9 @@ namespace microcode {
         constructor(field: Melody = null) {
             super(TID_MODIFIER_MELODY_EDITOR, "melody_editor", 10)
             this.firstInstance = false
-            this.fieldEditor = melodyFieldEditor
+            this.fieldEditor = new MelodyFieldEditor()
             this.field = this.fieldEditor.clone(
-                field ? field : this.fieldEditor.init
+                field ? field : this.fieldEditor.init()
             )
             this.jdKind = JdKind.ServiceCommandArg
             this.jdParam2 = 250 // ms
