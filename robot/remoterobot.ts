@@ -17,7 +17,7 @@ namespace microcode {
                 )
                 switch (cmd) {
                     case robots.RobotCommand.Line: {
-                        this._lineState = buf[3]
+                        this._lineState = buf[4]
                         break
                     }
                     case robots.RobotCommand.Obstacle: {
