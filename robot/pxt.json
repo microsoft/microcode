@@ -1,6 +1,6 @@
 {
     "name": "microcode-robot",
-    "version": "2.5.10",
+    "version": "2.5.16",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -8,6 +8,7 @@
     },
     "files": [
         "README.md",
+        "microbit.ts",
         "protocol.ts",
         "messages.ts",
         "robot.ts",
@@ -20,18 +21,28 @@
         "dfrobotmaqueen.ts",
         "dfrobotmaqueenplusv2.ts",
         "kittenbotminilfr.ts",
+        "kittenbotrobotbit.ts",
+        "kittenbotnanobit.ts",
         "storage.cpp",
-        "storage.ts"
+        "storage.ts",
+        "kalmanfilter1d.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
+    "fileDependencies": {
+        "kittenbotnanobit.ts": "target:microbit",
+        "kittenbotrobotbit.ts": "target:microbit",
+        "yahboomtinybit.ts": "target:microbit",
+        "microbit.ts": "target:microbit"
+    },
     "targetVersions": {
         "target": "6.0.19",
         "targetId": "microbit"
     },
     "supportedTargets": [
-        "microbit"
+        "microbit",
+        "calliopemini"
     ],
     "preferredEditor": "tsprj"
 }

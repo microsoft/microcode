@@ -21,14 +21,8 @@ namespace microcode {
     class DFRobotMaqueenPlusV2Robot extends robots.Robot {
         constructor() {
             super()
-            this.leds = {
-                pin: DigitalPin.P15,
-                count: 4,
-            }
-            this.sonar = {
-                trig: DigitalPin.P13,
-                echo: DigitalPin.P14,
-            }
+            this.leds = new robots.WS2812bLEDStrip(DigitalPin.P15, 4)
+            this.sonar = new robots.SR04Sonar(DigitalPin.P14, DigitalPin.P13)
         }
 
         motorRun(left: number, right: number): void {

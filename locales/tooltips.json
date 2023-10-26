@@ -164,6 +164,9 @@
     "CAR9": "LED red",
     "CAR10": "LED green",
     "CAR11": "LED blue",
+    "CAR12": "LED OFF",
+    "CAR13": "arm open",
+    "CAR14": "arm close",
 
     "S13": "wall",
     "S14": "line",

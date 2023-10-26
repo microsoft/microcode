@@ -1,25 +1,136 @@
 namespace microcode.robots {
-    export interface RobotLEDs {
-        pin: DigitalPin
-        count: number
+    /**
+     * A ws2812b LED strip
+     */
+    export interface LEDStrip {
+        start(): void
+        setColor(red: number, green: number, blue: number): void
+    }
+
+    export class WS2812bLEDStrip implements LEDStrip {
+        private ledsBuffer: Buffer
+
+        constructor(
+            public readonly pin: DigitalPin,
+            public readonly count: number
+        ) {}
+
+        start() {
+            this.ledsBuffer = Buffer.create(this.count * 3)
+        }
+
+        setColor(red: number, green: number, blue: number) {
+            const b = this.ledsBuffer
+            for (let i = 0; i + 2 < b.length; i += 3) {
+                b[i] = green
+                b[i + 1] = red
+                b[i + 2] = blue
+            }
+            ws2812b.sendBuffer(this.ledsBuffer, this.pin)
+        }
     }
 
     export interface Sonar {
-        echo: DigitalPin
-        trig: DigitalPin
+        start(): void
+        distance(maxCmDistance: number): number
+    }
+
+    export class SR04Sonar implements Sonar {
+        /**
+         * Microseconds to keep the trigger pin low. Default is 4.
+         */
+        pulseLowUs?: number
+        /**
+         * Microseconds to keep the trigger pin high. Default is 10.
+         */
+        pulseHighUs?: number
+        /**
+         * Microseconds per cm. Defaults to 58.
+         */
+        usPerCm?: number
+        constructor(
+            public readonly echo: DigitalPin,
+            public readonly trig: DigitalPin
+        ) {}
+
+        start() {
+            pins.setPull(this.trig, PinPullMode.PullNone)
+        }
+
+        distance(maxCmDistance: number): number {
+            const trig = this.trig
+            const echo = this.echo
+            const lowUs = this.pulseLowUs || 4
+            const highUs = this.pulseHighUs || 10
+            const usToCm = this.usPerCm || 58
+
+            // send pulse
+            pins.digitalWritePin(trig, 0)
+            control.waitMicros(lowUs)
+            pins.digitalWritePin(trig, 1)
+            control.waitMicros(highUs)
+            pins.digitalWritePin(trig, 0)
+
+            // read pulse
+            const d = pins.pulseIn(
+                echo,
+                PulseValue.High,
+                maxCmDistance * usToCm
+            )
+            if (d <= 0) return maxCmDistance
+            return d / usToCm
+        }
     }
 
     export interface LineDetectors {
-        left: DigitalPin
-        right: DigitalPin
-        lineHigh: boolean
+        start(): void
+        lineState(): RobotLineState
+    }
+
+    export class PinLineDetectors implements LineDetectors {
+        /**
+         * Left line detector
+         */
+        constructor(
+            public readonly left: DigitalPin,
+            public readonly right: DigitalPin,
+            public readonly lineHigh: boolean
+        ) {}
+
+        start() {
+            pins.setPull(this.left, PinPullMode.PullNone)
+            pins.setPull(this.right, PinPullMode.PullNone)
+        }
+
+        lineState() {
+            const left =
+                pins.digitalReadPin(this.left) > 0 === this.lineHigh ? 1 : 0
+            const right =
+                pins.digitalReadPin(this.right) > 0 === this.lineHigh ? 1 : 0
+            return (left << 0) | (right << 1)
+        }
+    }
+
+    export interface Arm {
+        open(aperture: number): void
+    }
+
+    export class ServoArm implements Arm {
+        pulseUs?: number
+        constructor(
+            public minAngle: number,
+            public maxAngle: number,
+            public readonly pin: AnalogPin
+        ) {}
+        open(aperture: number): void {
+            const angle = Math.round(
+                Math.map(aperture, 0, 100, this.minAngle, this.maxAngle)
+            )
+            pins.servoWritePin(this.pin, angle)
+        }
     }
 
     export class Robot {
-        /**
-         * Default volume used by the robot;
-         */
-        musicVolume = 64
         /**
          * Maximum speed while following a line with line assist
          */
@@ -51,17 +162,16 @@ namespace microcode.robots {
         /**
          * Minimum reading from ultrasonic sensor to be considered valid
          */
-        ultrasonicMinReading = 1
+        sonarMinReading = 2
         /**
          * Number of iteration before the line is considered lost and line assist
          * disengages
          */
         lineLostThreshold = 72
-
         /**
          * LED configuration
          */
-        leds?: RobotLEDs
+        leds?: LEDStrip
         /**
          * Distance sensor configuration, if SR04
          */
@@ -70,7 +180,10 @@ namespace microcode.robots {
          * Line detector configuration
          */
         lineDetectors?: LineDetectors
-
+        /**
+         * Robotic arm configuration
+         */
+        arm?: ServoArm
         /**
          * A map from microcode command to speed, turn ratio values
          */
@@ -140,7 +253,7 @@ namespace microcode.robots {
          * Optional: reads the sonar, in cm.
          * @returns distance in cm; negative number if unsupported
          */
-        ultrasonicDistance(): number {
+        ultrasonicDistance(maxCmDistance: number): number {
             return -1
         }
 
