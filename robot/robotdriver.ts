@@ -60,7 +60,7 @@ namespace microcode {
 
         private sonar: robots.Sonar
         private lineDetectors: robots.LineDetectors
-        private arm: robots.ServoArm
+        private arm: robots.Arm
 
         /**
          * Maximum distance in cm for the ultrasonic sensor

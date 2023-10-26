@@ -187,7 +187,7 @@ namespace microcode.robots {
         /**
          * Robotic arm configuration
          */
-        arm?: ServoArm
+        arm?: Arm
         /**
          * A map from microcode command to speed, turn ratio values
          */
