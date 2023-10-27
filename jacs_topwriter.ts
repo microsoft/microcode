@@ -657,7 +657,7 @@ namespace jacs {
                 this.callLinked(shortCutFn, [
                     role.emit(wr),
                     this.emitString(b),
-                    literal(params[0].jdParam2 || delay),
+                    literal(microcode.jdParam2(params[0].tid) || delay),
                 ])
             } else {
                 for (let i = 0; i < params.length; ++i) {
@@ -667,14 +667,15 @@ namespace jacs {
                     )
                     const pKind = microcode.jdKind(p.tid)
                     const pJdparam = microcode.jdParam(p.tid)
+                    const pJdparam2 = microcode.jdParam2(p.tid)
                     if (pKind == microcode.JdKind.ServiceCommandArg) {
                         this.emitLoadBuffer(p.serviceCommandArg())
                         this.emitSendCmd(role, command)
-                        this.emitSleep(p.jdParam2 || delay)
+                        this.emitSleep(pJdparam2 || delay)
                     } else if (pKind == microcode.JdKind.ExtLibFn) {
                         const args = [role.emit(wr)]
-                        if (p.jdParam2 !== undefined)
-                            args.push(literal(p.jdParam2))
+                        if (pJdparam2 !== undefined)
+                            args.push(literal(pJdparam2))
                         this.callLinked(pJdparam, args)
                     } else if (
                         pKind == microcode.JdKind.NumFmt &&
@@ -683,7 +684,7 @@ namespace jacs {
                         this.sendActuatorServiceCommand(
                             role,
                             command,
-                            p.jdParam2
+                            pJdparam2
                         )
                         this.emitSleep(500)
                     } else {

@@ -1219,7 +1219,8 @@ namespace microcode {
         return undefined
     }
 
-    export function jdParam2(tidEnum: number): number | string {
+    export function jdParam2(tid: string): number {
+        const tidEnum = tidToEnum(tid)
         switch (tidEnum) {
             // length of the melody (milliseconds)
             case Tid.TID_MODIFIER_EMOJI_GIGGLE:
