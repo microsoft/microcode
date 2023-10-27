@@ -833,38 +833,31 @@ namespace microcode {
     }
 
     function isFilterConstant(tidEnum: Tid) {
-        return Tid.TID_FILTER_COIN_1 <= tidEnum &&
-            tidEnum <= Tid.TID_FILTER_COIN_5
+        return Tid.TID_FILTER_COIN_1 <= tidEnum && tidEnum <= Tid.TID_FILTER_COIN_5
     }
 
     function isFilterVariable(tidEnum: Tid) {
         return Tid.TID_FILTER_CUP_X_READ <= tidEnum && tidEnum <= Tid.TID_FILTER_CUP_Z_READ
     }
 
-
     function isModifierConstant(tidEnum: Tid) {
-        return Tid.TID_MODIFIER_COIN_1 <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_COIN_5
+        return Tid.TID_MODIFIER_COIN_1 <= tidEnum && tidEnum <= Tid.TID_MODIFIER_COIN_5
     }
 
     function isModifierVariable(tidEnum: Tid) {
-        return Tid.TID_MODIFIER_CUP_X_READ <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_CUP_Z_READ
+        return Tid.TID_MODIFIER_CUP_X_READ <= tidEnum && tidEnum <= Tid.TID_MODIFIER_CUP_Z_READ
     }
 
     function isTimespan(tidEnum: Tid) {
-        return Tid.TID_FILTER_TIMESPAN_SHORT <= tidEnum &&
-            tidEnum <= Tid.TID_FILTER_TIMESPAN_VERY_LONG
+        return Tid.TID_FILTER_TIMESPAN_SHORT <= tidEnum && tidEnum <= Tid.TID_FILTER_TIMESPAN_VERY_LONG
     }
 
     function isEmoji(tidEnum: Tid) {
-        return Tid.TID_MODIFIER_EMOJI_GIGGLE <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_EMOJI_YAWN
+        return Tid.TID_MODIFIER_EMOJI_GIGGLE <= tidEnum && tidEnum <= Tid.TID_MODIFIER_EMOJI_YAWN
     }
 
     function isPage(tidEnum: Tid) {
-        return Tid.TID_MODIFIER_PAGE_1 <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_PAGE_5
+        return Tid.TID_MODIFIER_PAGE_1 <= tidEnum && tidEnum <= Tid.TID_MODIFIER_PAGE_5
     }
 
     function isLedColor(tidEnum: Tid) {
@@ -877,8 +870,7 @@ namespace microcode {
     }
 
     function isCarModifier(tidEnum: Tid) {
-        return Tid.CAR_MODIFIER_BEGIN <= tidEnum &&
-            tidEnum <= Tid.CAR_MODIFIER_END
+        return Tid.CAR_MODIFIER_BEGIN <= tidEnum && tidEnum <= Tid.CAR_MODIFIER_END
     }
 
     export function isTidNotTerminal(tid: Tid) {
@@ -1428,11 +1420,11 @@ namespace microcode {
     }
 
     const only5 = [
-        TID_FILTER_COIN_1,
-        TID_FILTER_COIN_2,
-        TID_FILTER_COIN_3,
-        TID_FILTER_COIN_4,
-        TID_FILTER_COIN_5,
+        Tid.TID_FILTER_COIN_1,
+        Tid.TID_FILTER_COIN_2,
+        Tid.TID_FILTER_COIN_3,
+        Tid.TID_FILTER_COIN_4,
+        Tid.TID_FILTER_COIN_5,
     ]
 
     // TODO: break this up, little need for record and lists

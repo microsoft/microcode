@@ -3,7 +3,7 @@ namespace microcode {
     export interface Constraints {
         provides?: number[]
         requires?: number[]
-        only?: string[]
+        only?: (string | number)[]
         allow?: (string | number)[]
         disallow?: (string | number)[]
     }
@@ -93,12 +93,11 @@ namespace microcode {
         return true
     }
 
-    //         if (!isCompatibleWith(src, c)) return false
     export function filterModifierCompat(c: Constraints,
         tid: string, category: string | number): boolean {
 
         const tidEnum = tidToEnum(tid)
-        const only = c.only.some(cat => cat === category)
+        const only = c.only.some(cat => cat === category || cat === tidEnum)
         if (only) return true
         if (c.only.length) return false
 
