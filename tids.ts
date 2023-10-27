@@ -1434,18 +1434,13 @@ namespace microcode {
             case Tid.TID_SENSOR_START_PAGE:
                 return { allow: ["timespan"] }
             case Tid.TID_SENSOR_CUP_X_WRITTEN:
-                return { disallow: [Tid.TID_FILTER_CUP_X_READ] }
+                return { allow: ["value_in"], disallow: [Tid.TID_FILTER_CUP_X_READ] }
             case Tid.TID_SENSOR_CUP_Y_WRITTEN:
-                return { disallow: [Tid.TID_FILTER_CUP_Y_READ] }
+                return { allow: ["value_in"], disallow: [Tid.TID_FILTER_CUP_Y_READ] }
             case Tid.TID_SENSOR_CUP_Z_WRITTEN:
-                return { disallow: [Tid.TID_FILTER_CUP_Z_READ] }  
+                return { allow: ["value_in"], disallow: [Tid.TID_FILTER_CUP_Z_READ] }  
             case Tid.TID_SENSOR_RADIO_RECEIVE:
-                return { provides: [Tid.TID_SENSOR_RADIO_RECEIVE] }
-            case Tid.TID_SENSOR_CUP_X_WRITTEN:
-            case Tid.TID_SENSOR_CUP_Y_WRITTEN:
-            case Tid.TID_SENSOR_CUP_Z_WRITTEN:
-            case Tid.TID_SENSOR_RADIO_RECEIVE:
-                return { allow: ["value_in"] }
+                return { allow: ["value_in"], provides: [Tid.TID_SENSOR_RADIO_RECEIVE] }
             case Tid.TID_SENSOR_SLIDER:
             case Tid.TID_SENSOR_CAR_WALL:
             case Tid.TID_SENSOR_MAGNET:
@@ -1500,7 +1495,8 @@ namespace microcode {
         if (isTimespan(tidEnum)) return "timespan"
         if (isAccelerometerEvent(tidEnum)) return "accel_event"
         if (isEmoji(tidEnum)) return "sound_emoji"
-        if (isFilterConstant(tidEnum) || isFilterVariable(tidEnum)) return "value_in"
+        if (isFilterConstant(tidEnum) || isFilterVariable(tidEnum))
+            return "value_in"
         if (isModifierConstant(tidEnum)) return "constant"
         if (isModifierVariable(tidEnum)) return "value_out"
         if (isPage(tidEnum)) return "page"

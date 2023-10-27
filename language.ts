@@ -93,8 +93,8 @@ namespace microcode {
         return true
     }
 
-    export function filterModifierCompat(c: Constraints, tid: string,
-        category: string | number): boolean {
+    export function filterModifierCompat( tid: string,
+        category: string | number, c: Constraints): boolean {
 
         const tidEnum = tidToEnum(tid)
         const only = c.only.some(cat => cat === category || cat === tidEnum)
@@ -388,26 +388,26 @@ namespace microcode {
             }
 
             // Collect the built-up constraints.
-            const constraints = mkConstraints()
+            const collect = mkConstraints()
             if (name === "modifiers" && rule.actuators.length) {
                 const src = getConstraints(rule.actuators[0].tid)
-                mergeConstraints(src, constraints)
+                mergeConstraints(src, collect)
             }
             if (rule.sensors.length) {
                 const src = getConstraints(rule.sensors[0].tid)
-                mergeConstraints(src, constraints)
+                mergeConstraints(src, collect)
             }
 
             existing.forEach(tile => {
                 const src = getConstraints(tile.tid)
-                mergeConstraints(src, constraints)
+                mergeConstraints(src, collect)
             })
 
             return all.filter(tile => {
                 const src = getConstraints(tile.tid)
                 const cat = getCategory(tile.tid)
-                return isCompatibleWith(src, constraints) && 
-                    filterModifierCompat(constraints, tile.tid, cat)
+                return isCompatibleWith(src, collect) && 
+                    filterModifierCompat(tile.tid, cat, collect)
             })
         }
 
