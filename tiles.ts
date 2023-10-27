@@ -37,7 +37,7 @@ namespace microcode {
     // initialize the database, imperatively!!!
 
     function addButtonTiles() {
-        function addPress(tid: string, evt: number) {
+        function addPress(tid: string) {
             const press_event = new SensorDefn(tid)
             press_event.constraints = {
                 allow: {
@@ -47,8 +47,8 @@ namespace microcode {
             tilesDB.sensors[tid] = press_event
         }
 
-        addPress(TID_SENSOR_PRESS, 1)
-        addPress(TID_SENSOR_RELEASE, 2)
+        addPress(TID_SENSOR_PRESS)
+        addPress(TID_SENSOR_RELEASE)
 
         function addPressFilter(tid: string) {
             const press_filter = new FilterDefn(tid, "press_event")
@@ -58,7 +58,6 @@ namespace microcode {
                 },
             }
             tilesDB.filters[tid] = press_filter
-            // press_filter.jdParam = instanceNo
             return press_filter
         }
 
@@ -151,15 +150,7 @@ namespace microcode {
             )
 
             const line = makeSensor(TID_SENSOR_LINE, "line")
-            line.constraints.allow.categories = []
-            line.constraints.allow.tiles = [
-                TID_FILTER_LINE_LEFT,
-                TID_FILTER_LINE_RIGHT,
-                TID_FILTER_LINE_BOTH,
-                TID_FILTER_LINE_NEITHER_LEFT,
-                TID_FILTER_LINE_NEITHER_RIGHT,
-                TID_FILTER_LINE_NEITHER,
-            ]
+            line.constraints.allow.categories = ["line"]
         }
 
         const timer = new SensorDefn(TID_SENSOR_TIMER)
@@ -195,8 +186,6 @@ namespace microcode {
         }
 
         addAccelEvent("shake")
-        // don't want kids to throw micro:bit on the ground
-        // addAccelEvent(0x87, "freefall")
         addAccelEvent("tilt_up")
         addAccelEvent("tilt_down")
         addAccelEvent("tilt_left")
@@ -292,7 +281,6 @@ namespace microcode {
                     kind == "F"
                         ? new FilterDefn(tid, name)
                         : new ModifierDefn(tid, name)
-                // tile.jdParam = kind == "CAR" ? jacs.NumFmt.F64 : v  TODO
                 tile.jdParam2 = kind == "CAR" ? v : 0
                 if (kind == "F") tilesDB.filters[tid] = tile as FilterDefn
                 else tilesDB.modifiers[tid] = tile
@@ -348,11 +336,8 @@ namespace microcode {
         addAnim("sparkle")
         addAnim("rainbow")
 
-        const rgbled = addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
-
-        const servoSetAngle = addActuator(TID_ACTUATOR_SERVO_SET_ANGLE, [
-            "constant",
-        ])
+        addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
+        addActuator(TID_ACTUATOR_SERVO_SET_ANGLE, ["constant"])
 
         function addFilterReadValue(tid: string) {
             const filter = new FilterDefn(tid, "value_in")
@@ -363,23 +348,22 @@ namespace microcode {
         addFilterReadValue(TID_FILTER_CUP_Y_READ)
         addFilterReadValue(TID_FILTER_CUP_Z_READ)
 
-        function addReadValue(tid: string, varid: number) {
+        function addReadValue(tid: string) {
             const mod = new ModifierDefn(tid, "value_out")
-            // mod.jdParam = varid
             tilesDB.modifiers[tid] = mod
             return mod
         }
-        addReadValue(TID_MODIFIER_CUP_X_READ, 0)
-        addReadValue(TID_MODIFIER_CUP_Y_READ, 1)
-        addReadValue(TID_MODIFIER_CUP_Z_READ, 2)
+        addReadValue(TID_MODIFIER_CUP_X_READ)
+        addReadValue(TID_MODIFIER_CUP_Y_READ)
+        addReadValue(TID_MODIFIER_CUP_Z_READ)
 
-        const radio_value = addReadValue(TID_MODIFIER_RADIO_VALUE, 0)
+        const radio_value = addReadValue(TID_MODIFIER_RADIO_VALUE)
         radio_value.constraints = { requires: [TID_SENSOR_RADIO_RECEIVE] }
 
-        const temperature_value = addReadValue(TID_MODIFIER_TEMP_READ, 0)
+        const temperature_value = addReadValue(TID_MODIFIER_TEMP_READ)
         temperature_value.constraints = {}
 
-        const random_toss = addReadValue(TID_MODIFIER_RANDOM_TOSS, 5)
+        const random_toss = addReadValue(TID_MODIFIER_RANDOM_TOSS)
         random_toss.constraints = {}
         random_toss.constraints.allow = { categories: ["constant"] }
         random_toss.constraints.disallow = { categories: ["value_out"] }
