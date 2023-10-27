@@ -1335,9 +1335,8 @@ namespace microcode {
     export function priority(tid: string): number {
         const tidEnum = tidToEnum(tid)
         if (isFilter(tidEnum)) {
-            const pInstance = jdParam(tid)
-            if (typeof pInstance == "number") return pInstance
-            // TODO: better ordering on some filters
+            if (isFilterConstant(tidEnum) || isPressReleaseEvent(tidEnum))
+                return jdParam(tid)
             return tidEnum
         } else if (isModifier(tidEnum)) {
             if (tidEnum == Tid.TID_MODIFIER_LOOP)
