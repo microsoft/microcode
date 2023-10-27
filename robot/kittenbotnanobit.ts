@@ -93,8 +93,13 @@ namespace microcode {
         }
 
         armOpen(aperture: number): void {
-            // NOTE: according to the 3D model, the arm is inverted on the robot
-            pins.servoWritePin(AnalogPin.P1, 180-aperture)
+            // fixed angle mappping to 3D printed arm
+            // servo degree 0: close, 90: close
+            if (aperture > 50) {
+                pins.servoWritePin(AnalogPin.P1, 0)
+            } else { 
+                pins.servoWritePin(AnalogPin.P1, 90)    
+            }
         }
     }
 
