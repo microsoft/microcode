@@ -189,30 +189,38 @@ namespace microcode {
         TID_FILTER_KITA_KEY_1 = 75,
         TID_FILTER_KITA_KEY_2 = 76,
         TID_FILTER_LOGO = 77,
+        //
         TID_FILTER_COIN_1 = 78,
         TID_FILTER_COIN_2 = 79,
         TID_FILTER_COIN_3 = 80,
         TID_FILTER_COIN_4 = 81,
         TID_FILTER_COIN_5 = 82,
+        //
         TID_FILTER_TIMESPAN_SHORT = 83,
         TID_FILTER_TIMESPAN_LONG = 84,
         TID_FILTER_TIMESPAN_RANDOM = 85,
         TID_FILTER_TIMESPAN_VERY_LONG = 86,
+        //
         TID_FILTER_LOUD = 87,
         TID_FILTER_QUIET = 88,
+        //
         TID_FILTER_ACCEL = 89,
         TID_FILTER_ACCEL_SHAKE = 90,
         TID_FILTER_ACCEL_TILT_UP = 91,
         TID_FILTER_ACCEL_TILT_DOWN = 92,
         TID_FILTER_ACCEL_TILT_LEFT = 93,
         TID_FILTER_ACCEL_TILT_RIGHT = 94,
+        //
         TID_FILTER_CUP_X_READ = 95,
         TID_FILTER_CUP_Y_READ = 96,
         TID_FILTER_CUP_Z_READ = 97,
+        //
         TID_FILTER_ROTARY_LEFT = 98,
         TID_FILTER_ROTARY_RIGHT = 99,
+        //
         TID_FILTER_TEMP_WARMER = 100,
         TID_FILTER_TEMP_COLDER = 101,
+        //
         TID_FILTER_LINE_LEFT = 102,
         TID_FILTER_LINE_RIGHT = 103,
         TID_FILTER_LINE_BOTH = 104,
@@ -222,19 +230,23 @@ namespace microcode {
         FILTER_END = 108,
 
         MODIFIER_START = 150,
+        //
         TID_MODIFIER_PAGE_1 = 150,
         TID_MODIFIER_PAGE_2 = 151,
         TID_MODIFIER_PAGE_3 = 152,
         TID_MODIFIER_PAGE_4 = 153,
         TID_MODIFIER_PAGE_5 = 154,
+        //
         TID_MODIFIER_COIN_1 = 155,
         TID_MODIFIER_COIN_2 = 156,
         TID_MODIFIER_COIN_3 = 157,
         TID_MODIFIER_COIN_4 = 158,
         TID_MODIFIER_COIN_5 = 159,
+        //
         TID_MODIFIER_ICON_EDITOR = 160,
         TID_MODIFIER_COLOR_RED = 161,
         TID_MODIFIER_COLOR_DARKPURPLE = 162,
+        //
         TID_MODIFIER_EMOJI_GIGGLE = 163,
         TID_MODIFIER_EMOJI_HAPPY = 164,
         TID_MODIFIER_EMOJI_HELLO = 165,
@@ -245,6 +257,7 @@ namespace microcode {
         TID_MODIFIER_EMOJI_SPRING = 170,
         TID_MODIFIER_EMOJI_TWINKLE = 171,
         TID_MODIFIER_EMOJI_YAWN = 172,
+        //
         TID_MODIFIER_CUP_X_READ = 173,
         TID_MODIFIER_CUP_Y_READ = 174,
         TID_MODIFIER_CUP_Z_READ = 175,
@@ -253,6 +266,7 @@ namespace microcode {
         TID_MODIFIER_LOOP = 178,
         TID_MODIFIER_MELODY_EDITOR = 179,
         TID_MODIFIER_TEMP_READ = 180,
+        //
         TID_MODIFIER_RGB_LED_COLOR_X = 181,
         TID_MODIFIER_RGB_LED_COLOR_1 = 182,
         TID_MODIFIER_RGB_LED_COLOR_2 = 183,
@@ -262,6 +276,8 @@ namespace microcode {
         TID_MODIFIER_RGB_LED_COLOR_6 = 187,
         TID_MODIFIER_RGB_LED_COLOR_RAINBOW = 188,
         TID_MODIFIER_RGB_LED_COLOR_SPARKLE = 189,
+        //
+        CAR_MODIFIER_BEGIN = 190,
         TID_MODIFIER_CAR_FORWARD = 190,
         TID_MODIFIER_CAR_REVERSE = 191,
         TID_MODIFIER_CAR_TURN_LEFT = 192,
@@ -276,6 +292,7 @@ namespace microcode {
         TID_MODIFIER_CAR_LED_COLOR_4 = 201,
         TID_MODIFIER_CAR_ARM_OPEN = 202,
         TID_MODIFIER_CAR_ARM_CLOSE = 203,
+        CAR_MODIFIER_END = 203,
         MODIFER_END = 203,
     }
 
@@ -1013,8 +1030,8 @@ namespace microcode {
         )
             return JdKind.ExtLibFn
         if (
-            Tid.TID_MODIFIER_CAR_FORWARD <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_CAR_ARM_CLOSE
+            Tid.CAR_MODIFIER_BEGIN <= tidEnum &&
+            tidEnum <= Tid.CAR_MODIFIER_END
         )
             return JdKind.NumFmt
         switch (tidEnum) {
@@ -1097,8 +1114,8 @@ namespace microcode {
         )
             return "led_solid"
         if (
-            Tid.TID_MODIFIER_CAR_FORWARD <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_CAR_ARM_CLOSE
+            Tid.CAR_MODIFIER_BEGIN <= tidEnum &&
+            tidEnum <= Tid.CAR_MODIFIER_END
         )
             return jacs.NumFmt.F64
         switch (tidEnum) {
