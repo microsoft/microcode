@@ -1,6 +1,6 @@
 {
     "name": "microcode-robot",
-    "version": "2.5.16",
+    "version": "2.5.17",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -28,7 +28,9 @@
         "kalmanfilter1d.ts",
         "radio.ts"
     ],
-    "testFiles": ["test.ts"],
+    "testFiles": [
+        "test.ts"
+    ],
     "fileDependencies": {
         "kittenbotnanobit.ts": "target:microbit",
         "kittenbotrobotbit.ts": "target:microbit",
@@ -39,6 +41,9 @@
         "target": "6.0.19",
         "targetId": "microbit"
     },
-    "supportedTargets": ["microbit", "calliopemini"],
+    "supportedTargets": [
+        "microbit",
+        "calliopemini"
+    ],
     "preferredEditor": "tsprj"
 }
