@@ -59,7 +59,6 @@ namespace microcode {
     //% blockId=microcoderobotobstacledistancechanged
     //% group="Input"
     export function onObstacleChanged(handler: () => void) {
-        checkRobotDriver()
         microcode.robots.onEvent(
             microcode.robots.RobotCompactCommand.ObstacleState,
             handler
@@ -84,7 +83,6 @@ namespace microcode {
     //% blockId=microcoderobotondetectlines
     //% group="Input"
     export function onLineDetected(state: RobotLineState, handler: () => void) {
-        checkRobotDriver()
         const msg = microcode.robots.RobotCompactCommand.LineState | state
         microcode.robots.onEvent(msg, handler)
     }
