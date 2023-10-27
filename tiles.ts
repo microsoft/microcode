@@ -140,27 +140,11 @@ namespace microcode {
         addEvent(TID_FILTER_TEMP_COLDER, "temperature_event")
 
         if (CAR_TILES) {
-            const both = addEvent(
-                TID_FILTER_LINE_BOTH,
-                "line"
-            )
-            const left = addEvent(
-                TID_FILTER_LINE_LEFT,
-                "line"
-            )
-            const right = addEvent(
-                TID_FILTER_LINE_RIGHT,
-                "line"
-            )
-            const neither = addEvent(
-                TID_FILTER_LINE_NEITHER,
-                "line"
-            )
-            const neither_left = addEvent(
-                TID_FILTER_LINE_NEITHER_LEFT,
-                "line",
- 
-            )
+            const both = addEvent(TID_FILTER_LINE_BOTH, "line")
+            const left = addEvent(TID_FILTER_LINE_LEFT, "line")
+            const right = addEvent(TID_FILTER_LINE_RIGHT, "line")
+            const neither = addEvent(TID_FILTER_LINE_NEITHER, "line")
+            const neither_left = addEvent(TID_FILTER_LINE_NEITHER_LEFT, "line")
             const neither_right = addEvent(
                 TID_FILTER_LINE_NEITHER_RIGHT,
                 "line"
@@ -389,22 +373,13 @@ namespace microcode {
         addReadValue(TID_MODIFIER_CUP_Y_READ, 1)
         addReadValue(TID_MODIFIER_CUP_Z_READ, 2)
 
-        const radio_value = addReadValue(
-            TID_MODIFIER_RADIO_VALUE,
-            0
-        )
+        const radio_value = addReadValue(TID_MODIFIER_RADIO_VALUE, 0)
         radio_value.constraints = { requires: [TID_SENSOR_RADIO_RECEIVE] }
 
-        const temperature_value = addReadValue(
-            TID_MODIFIER_TEMP_READ,
-            0
-        )
+        const temperature_value = addReadValue(TID_MODIFIER_TEMP_READ, 0)
         temperature_value.constraints = {}
 
-        const random_toss = addReadValue(
-            TID_MODIFIER_RANDOM_TOSS,
-            5
-        )
+        const random_toss = addReadValue(TID_MODIFIER_RANDOM_TOSS, 5)
         random_toss.constraints = {}
         random_toss.constraints.allow = { categories: ["constant"] }
         random_toss.constraints.disallow = { categories: ["value_out"] }
@@ -422,14 +397,19 @@ namespace microcode {
         . . . . . 
         1 . . . 1
         . 1 1 1 .
-        `}
-        clone(img: Image) { return img.clone() }
-        editor(field: any,
+        `
+        }
+        clone(img: Image) {
+            return img.clone()
+        }
+        editor(
+            field: any,
             picker: Picker,
             onHide: () => void,
-            onDelete?: () => void) {
-                iconEditor(field, picker, onHide, onDelete)
-            }
+            onDelete?: () => void
+        ) {
+            iconEditor(field, picker, onHide, onDelete)
+        }
         toImage(field: any) {
             return icondb.renderMicrobitLEDs(field)
         }
@@ -533,7 +513,7 @@ namespace microcode {
         buf.setNumber(NumberFormat.UInt16LE, offset + 4, duration)
     }
 
-    export class MelodyFieldEditor {
+    export class MelodyFieldEditor extends FieldEditor {
         init() {
             return { notes: `0240`, tempo: 120 }
         }
