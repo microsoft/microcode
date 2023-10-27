@@ -539,8 +539,11 @@ namespace jacs {
                 return this.pageStartCondition
             let idx = 0 // default
             for (const f of rule.filters)
-                if (microcode.jdKind(f.tid) == microcode.JdKind.ServiceInstanceIndex)
-                    idx = f.jdParam
+                if (
+                    microcode.jdKind(f.tid) ==
+                    microcode.JdKind.ServiceInstanceIndex
+                )
+                    idx = microcode.jdParam(f.tid)
             const scn = microcode.serviceClassName(
                 microcode.tidToEnum(sensor.tid)
             )
@@ -554,7 +557,7 @@ namespace jacs {
             if (evCode != undefined) {
                 for (const m of rule.filters)
                     if (microcode.jdKind(m.tid) == microcode.JdKind.EventCode)
-                        evCode = m.jdParam
+                        evCode = microcode.jdParam(m.tid)
                 return evCode
             }
             return null
@@ -600,16 +603,16 @@ namespace jacs {
 
         private emitSequence(rule: microcode.RuleDefn, delay: number) {
             const actuator = rule.actuators[0]
-            const shortCutFn = actuator.jdParam
+            const shortCutFn = microcode.jdParam(actuator.tid)
 
-            let params = this.baseModifiers(rule).filter(
-                m => {
-                    const kind = microcode.jdKind(m.tid)
-                     return (kind == microcode.JdKind.ExtLibFn && !shortCutFn) ||
-                     kind == microcode.JdKind.ServiceCommandArg ||
-                     kind === microcode.JdKind.NumFmt
-                }
-            )
+            let params = this.baseModifiers(rule).filter(m => {
+                const kind = microcode.jdKind(m.tid)
+                return (
+                    (kind == microcode.JdKind.ExtLibFn && !shortCutFn) ||
+                    kind == microcode.JdKind.ServiceCommandArg ||
+                    kind === microcode.JdKind.NumFmt
+                )
+            })
             if (params.length == 0) {
                 const tid = microcode.tidToEnum(rule.actuators[0].tid)
                 params = [microcode.defaultModifier(tid)]
@@ -645,6 +648,7 @@ namespace jacs {
                         microcode.tidToEnum(actuator.tid)
                     )
                     const pKind = microcode.jdKind(p.tid)
+                    const pJdparam = microcode.jdParam(p.tid)
                     if (pKind == microcode.JdKind.ServiceCommandArg) {
                         this.emitLoadBuffer(p.serviceCommandArg())
                         this.emitSendCmd(role, command)
@@ -653,10 +657,10 @@ namespace jacs {
                         const args = [role.emit(wr)]
                         if (p.jdParam2 !== undefined)
                             args.push(literal(p.jdParam2))
-                        this.callLinked(p.jdParam, args)
+                        this.callLinked(pJdparam, args)
                     } else if (
                         pKind == microcode.JdKind.NumFmt &&
-                        p.jdParam == NumFmt.F64
+                        pJdparam == NumFmt.F64
                     ) {
                         // TODO: generalize this to work with other formats
                         const fmt: NumFmt = NumFmt.F64
@@ -726,13 +730,14 @@ namespace jacs {
         private modExpr(mod: microcode.FilterModifierBase) {
             const wr = this.writer
             const mKind = microcode.jdKind(mod.tid)
+            const mJdpararm = microcode.jdParam(mod.tid)
             switch (mKind) {
                 case microcode.JdKind.Temperature:
                     return this.lookupGlobal("z_temp").read(wr)
                 case microcode.JdKind.Literal:
-                    return literal(mod.jdParam)
+                    return literal(mJdpararm)
                 case microcode.JdKind.Variable:
-                    return this.pipeVar(mod.jdParam).read(wr)
+                    return this.pipeVar(mJdpararm).read(wr)
                 case microcode.JdKind.RadioValue:
                     return this.lookupGlobal("z_radio").read(wr)
                 default:
@@ -745,8 +750,9 @@ namespace jacs {
             if (mods.length == 0) return defl
             let v = 0
             for (const m of mods) {
-                if (microcode.jdKind(m.tid) != microcode.JdKind.Literal) return undefined
-                v += m.jdParam
+                if (microcode.jdKind(m.tid) != microcode.JdKind.Literal)
+                    return undefined
+                v += microcode.jdParam(m.tid)
             }
             return v
         }
@@ -770,7 +776,9 @@ namespace jacs {
 
             if (mods.length == 0) target.write(wr, literal(defl))
             else {
-                if (microcode.jdKind(mods[0].tid) == microcode.JdKind.RandomToss) {
+                if (
+                    microcode.jdKind(mods[0].tid) == microcode.JdKind.RandomToss
+                ) {
                     mods = mods.slice(1)
                     let rnd: Value
                     let folded = this.constantFold(mods, 5)
@@ -877,7 +885,11 @@ namespace jacs {
 
         private loopModifierIdx(rule: microcode.RuleDefn) {
             for (let i = 0; i < rule.modifiers.length; ++i) {
-                if (microcode.jdKind(rule.modifiers[i].tid) == microcode.JdKind.Loop) return i
+                if (
+                    microcode.jdKind(rule.modifiers[i].tid) ==
+                    microcode.JdKind.Loop
+                )
+                    return i
             }
             return -1
         }
@@ -925,24 +937,22 @@ namespace jacs {
             const currValue = () => this.currValue().read(wr)
             if (actuator == null) return // do nothing
             const aKind = microcode.jdKind(actuator.tid)
+            const aJdparam = microcode.jdParam(actuator.tid)
             if (actuator.tid == microcode.TID_ACTUATOR_SWITCH_PAGE) {
                 let targetPage = 1
                 for (const m of rule.modifiers)
                     if (microcode.jdKind(m.tid) == microcode.JdKind.Page)
-                        targetPage = m.jdParam
+                        targetPage = microcode.jdParam(m.tid)
                 wr.emitCall(this.pageProc(targetPage).index, [])
             } else if (aKind == microcode.JdKind.Variable) {
                 this.emitSleep(ANTI_FREEZE_DELAY)
                 this.emitValueOut(rule, 0)
-                const pv = this.pipeVar(actuator.jdParam)
+                const pv = this.pipeVar(aJdparam)
                 pv.write(wr, currValue())
-                this.emitSendCmd(
-                    this.pipeRole(actuator.jdParam),
-                    CMD_CONDITION_FIRE
-                )
+                this.emitSendCmd(this.pipeRole(aJdparam), CMD_CONDITION_FIRE)
             } else if (aKind == microcode.JdKind.NumFmt) {
                 this.emitValueOut(rule, 1)
-                const fmt: NumFmt = actuator.jdParam
+                const fmt: NumFmt = aJdparam
                 const sz = bitSize(fmt) >> 3
                 wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
                 if (actuator.tid == microcode.TID_ACTUATOR_SERVO_SET_ANGLE) {
@@ -979,7 +989,7 @@ namespace jacs {
             } else if (aKind == microcode.JdKind.ExtLibFn) {
                 this.emitValueOut(rule, 1)
                 const role = this.lookupActuatorRole(rule)
-                this.callLinked(actuator.jdParam, [role.emit(wr), currValue()])
+                this.callLinked(aJdparam, [role.emit(wr), currValue()])
             } else {
                 this.error(`can't map act role for ${JSON.stringify(actuator)}`)
             }
@@ -1069,7 +1079,9 @@ namespace jacs {
             let once = false
             if (
                 sensor.tid == microcode.TID_SENSOR_START_PAGE &&
-                rule.filters.some(f => microcode.jdKind(f.tid) == microcode.JdKind.Timespan)
+                rule.filters.some(
+                    f => microcode.jdKind(f.tid) == microcode.JdKind.Timespan
+                )
             ) {
                 isTimer = true
                 once = true
@@ -1080,9 +1092,10 @@ namespace jacs {
                 let period = 0
                 let randomPeriod = 0
                 for (const m of rule.filters) {
+                    const mJdparam = microcode.jdParam(m.tid)
                     if (microcode.jdKind(m.tid) == microcode.JdKind.Timespan) {
-                        if (m.jdParam >= 0) period += m.jdParam
-                        else randomPeriod += -m.jdParam
+                        if (mJdparam >= 0) period += mJdparam
+                        else randomPeriod += -mJdparam
                     }
                 }
                 if (period == 0 && randomPeriod == 0) period = 1000 // reasonable default
@@ -1107,7 +1120,7 @@ namespace jacs {
             }
 
             if (microcode.jdKind(sensor.tid) == microcode.JdKind.Variable) {
-                const pipeId = sensor.jdParam
+                const pipeId = microcode.jdParam(sensor.tid)
                 const role = this.pipeRole(pipeId)
                 this.withProcedure(role.getDispatcher(), wr => {
                     this.ifCurrPage(() => {
@@ -1129,7 +1142,9 @@ namespace jacs {
                 // procedure, we need to make sure we are on the current page
                 this.ifCurrPage(() => {
                     const code = this.lookupEventCode(role, rule)
-                    if (microcode.jdKind(sensor.tid) == microcode.JdKind.Radio) {
+                    if (
+                        microcode.jdKind(sensor.tid) == microcode.JdKind.Radio
+                    ) {
                         this.ifEq(
                             wr.emitExpr(Op.EXPR0_PKT_REPORT_CODE, []),
                             code,
@@ -1212,8 +1227,10 @@ namespace jacs {
                             }
                         )
                     } else if (
-                        microcode.jdKind(sensor.tid) == microcode.JdKind.Rotary ||
-                        microcode.jdKind(sensor.tid) == microcode.JdKind.Temperature
+                        microcode.jdKind(sensor.tid) ==
+                            microcode.JdKind.Rotary ||
+                        microcode.jdKind(sensor.tid) ==
+                            microcode.JdKind.Temperature
                     ) {
                         const varChanged = this.lookupGlobal(
                             "z_var_changed" + role.index

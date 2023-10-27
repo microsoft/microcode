@@ -15,17 +15,27 @@ namespace microcode {
     }
 
     export class FieldEditor {
-        init(): any { return undefined }
-        clone(field: any): any { return undefined }
+        init(): any {
+            return undefined
+        }
+        clone(field: any): any {
+            return undefined
+        }
         editor(
             field: any,
             picker: Picker,
             onHide: () => void,
             onDelete?: () => void
-        ): void { }
-        toImage(field: any): Image { return undefined }
-        toBuffer(field: any): Buffer { return undefined }
-        fromBuffer(buf: BufferReader): any { return undefined }
+        ): void {}
+        toImage(field: any): Image {
+            return undefined
+        }
+        toBuffer(field: any): Buffer {
+            return undefined
+        }
+        fromBuffer(buf: BufferReader): any {
+            return undefined
+        }
     }
 
     // let P be jdParam
@@ -61,8 +71,7 @@ namespace microcode {
     // - move fieldEditor out of TileDefn, only need for a few tiles
     // - separate editor info (constraints) from compiler info
     export class TileDefn {
-        constructor(public tid: string) {
-        }
+        constructor(public tid: string) {}
 
         // jdParam: any
         jdParam2: number
@@ -138,11 +147,9 @@ namespace microcode {
         }
 
         serviceCommandArg(): string | Buffer {
-            if (
-                typeof this.jdParam == "string" ||
-                typeof this.jdParam == "object"
-            )
-                return this.jdParam
+            const param = jdParam(this.tid)
+            if (typeof param == "string" || typeof param == "object")
+                return param
             return null
         }
 
@@ -256,7 +263,10 @@ namespace microcode {
                 const modifierEnum = br.readByte()
                 const modifierTid = enumToTid(modifierEnum)
                 const modifier = tilesDB.modifiers[modifierTid]
-                if (modifier instanceof ModifierEditor && modifier.fieldEditor) {
+                if (
+                    modifier instanceof ModifierEditor &&
+                    modifier.fieldEditor
+                ) {
                     const field = modifier.fieldEditor.fromBuffer(br)
                     const newOne = modifier.getNewInstance(field)
                     defn.modifiers.push(<any>newOne)
