@@ -133,6 +133,9 @@ namespace microcode {
     export const TID_MODIFIER_CAR_LED_COLOR_1 = "CAR9"
     export const TID_MODIFIER_CAR_LED_COLOR_2 = "CAR10"
     export const TID_MODIFIER_CAR_LED_COLOR_3 = "CAR11"
+    export const TID_MODIFIER_CAR_LED_COLOR_4 = "CAR12"
+    export const TID_MODIFIER_CAR_ARM_OPEN = "CAR13"
+    export const TID_MODIFIER_CAR_ARM_CLOSE = "CAR14"
 
     // DO NOT CHANGE THESE NUMBERS
     export enum Tid {
@@ -270,7 +273,10 @@ namespace microcode {
         TID_MODIFIER_CAR_LED_COLOR_1 = 198,
         TID_MODIFIER_CAR_LED_COLOR_2 = 199,
         TID_MODIFIER_CAR_LED_COLOR_3 = 200,
-        MODIFER_END = 201,
+        TID_MODIFIER_CAR_LED_COLOR_4 = 201,
+        TID_MODIFIER_CAR_ARM_OPEN = 202,
+        TID_MODIFIER_CAR_ARM_CLOSE = 203,
+        MODIFER_END = 203,
     }
 
     export function tidToEnum(t: string) {
@@ -513,6 +519,12 @@ namespace microcode {
                 return Tid.TID_MODIFIER_CAR_LED_COLOR_2
             case TID_MODIFIER_CAR_LED_COLOR_3:
                 return Tid.TID_MODIFIER_CAR_LED_COLOR_3
+            case TID_MODIFIER_CAR_LED_COLOR_4:
+                return Tid.TID_MODIFIER_CAR_LED_COLOR_4
+            case TID_MODIFIER_CAR_ARM_OPEN:
+                return Tid.TID_MODIFIER_CAR_ARM_OPEN
+            case TID_MODIFIER_CAR_ARM_CLOSE:
+                return Tid.TID_MODIFIER_CAR_ARM_CLOSE
             default:
                 return undefined
         }
@@ -758,6 +770,12 @@ namespace microcode {
                 return TID_MODIFIER_CAR_LED_COLOR_2
             case Tid.TID_MODIFIER_CAR_LED_COLOR_3:
                 return TID_MODIFIER_CAR_LED_COLOR_3
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_4:
+                return TID_MODIFIER_CAR_LED_COLOR_4
+            case Tid.TID_MODIFIER_CAR_ARM_OPEN:
+                return TID_MODIFIER_CAR_ARM_OPEN
+            case Tid.TID_MODIFIER_CAR_ARM_CLOSE:
+                return TID_MODIFIER_CAR_ARM_CLOSE
             default:
                 return undefined
         }
@@ -996,7 +1014,7 @@ namespace microcode {
             return JdKind.ExtLibFn
         if (
             Tid.TID_MODIFIER_CAR_FORWARD <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_CAR_LED_COLOR_3
+            tidEnum <= Tid.TID_MODIFIER_CAR_ARM_CLOSE
         )
             return JdKind.NumFmt
         switch (tidEnum) {
@@ -1080,7 +1098,7 @@ namespace microcode {
             return "led_solid"
         if (
             Tid.TID_MODIFIER_CAR_FORWARD <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_CAR_LED_COLOR_3
+            tidEnum <= Tid.TID_MODIFIER_CAR_ARM_CLOSE
         )
             return jacs.NumFmt.F64
         switch (tidEnum) {
@@ -1133,9 +1151,9 @@ namespace microcode {
             case Tid.TID_FILTER_LINE_NEITHER:
                 return robots.RobotCompactCommand.LineNone
             case Tid.TID_FILTER_LINE_NEITHER_LEFT:
-                return robots.RobotCompactCommand.LineNoneFromLeft
+                return robots.RobotCompactCommand.LineLostLeft
             case Tid.TID_FILTER_LINE_NEITHER_RIGHT:
-                return robots.RobotCompactCommand.LineNoneFromRight
+                return robots.RobotCompactCommand.LineLostRight
             //
             case Tid.TID_FILTER_TIMESPAN_SHORT:
                 return 250

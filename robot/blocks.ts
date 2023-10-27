@@ -2,18 +2,17 @@
  * Microcode Robot
  */
 //% color="#ff6800" icon="\uf1b9" weight=15
-//% groups=['Motors', 'Input', 'Configuration']
+//% groups='["Motors", "Input", "Configuration"]'
 namespace microcode {
-    export let robot: RobotDriver;
+    export let robot: RobotDriver
 
     function checkRobotDriver() {
-        if (!robot)
-            throw "Add 'robot start' block"
+        if (!robot) throw "Add 'robot start' block"
     }
 
     /**
      * Moves the robot.
-    */
+     */
     //% weight=98
     //% group="Motors"
     //% block="robot motor run with steering $turnRatio at speed $speed \\%"
@@ -32,23 +31,23 @@ namespace microcode {
 
     /**
      * Stops the robot.
-    */
+     */
     //% weight=50
     //% group="Motors"
     //% block="robot motor stop"
     //% blockid="microcoderobotmotorstop"
     export function motorStop() {
         checkRobotDriver()
-        robot.motorStop()
+        robot.motorRun(0, 0)
     }
 
     /**
      * Gets the distance reported by the distance sensor
      */
-    //% block="robot obstacle distance"
+    //% block="robot obstacle distance (cm)"
     //% blockId=microcoderobotobstacledistance
     //% group="Input"
-    export function obstacleDistance() {
+    export function obstacleDistance(): number {
         checkRobotDriver()
         return robot.currentUltrasonicDistance
     }
@@ -61,7 +60,10 @@ namespace microcode {
     //% group="Input"
     export function onObstacleChanged(handler: () => void) {
         checkRobotDriver()
-        microcode.robots.onEvent(microcode.robots.RobotCompactCommand.ObstacleState, handler)
+        microcode.robots.onEvent(
+            microcode.robots.RobotCompactCommand.ObstacleState,
+            handler
+        )
     }
 
     /**
@@ -88,7 +90,7 @@ namespace microcode {
     }
 
     /**
-     * 
+     * Enables or disables the line speed assistance.
      */
     //% block="robot set line assist to $enabled"
     //% blockId="microcoderobotsetlineassist"
@@ -100,8 +102,8 @@ namespace microcode {
     }
 
     /**
-    * Sets a value that corrects the ratio of power between the left and the right motor to account for hardware differences.
-    */
+     * Sets a value that corrects the ratio of power between the left and the right motor to account for hardware differences.
+     */
     //% block="robot set motor drift to %drift"
     //% blockId="microcoderobotsetmotordrift"
     //% group="Configuration"
@@ -110,22 +112,8 @@ namespace microcode {
     //% drift.max=25
     export function setMotorDrift(drift: number) {
         checkRobotDriver()
-        robot.runDrift = Math.clamp(-25, 25, drift)
-        led.stopAnimation()
-    }
-
-    /**
-     * Sets the radio group used to communicate commands. Starts radio if needed.
-    */
-    //% block="robot set radio group to $value"
-    //% blockId="microcoderobotsetradiogroup"
-    //% group="Configuration"
-    //% weight=9
-    //% value.min=1
-    //% value.max=32
-    export function setRadioGroup(value: number) {
-        checkRobotDriver()
-        robot.setRadioGroup(value)
+        drift = Math.clamp(-25, 25, drift)
+        robot.setRunDrift(drift)
     }
 
     /**

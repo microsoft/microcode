@@ -161,8 +161,10 @@ namespace microcode {
                             (jdKind(tile.tid) == JdKind.Literal ||
                                 jdKind(tile.tid) == JdKind.Variable) &&
                             (jdKind(tiles[index + 1].tid) == JdKind.Literal ||
-                                jdKind(tiles[index + 1].tid) == JdKind.Variable ||
-                                jdKind(tiles[index + 1].tid) == JdKind.RandomToss)
+                                jdKind(tiles[index + 1].tid) ==
+                                    JdKind.Variable ||
+                                jdKind(tiles[index + 1].tid) ==
+                                    JdKind.RandomToss)
                         ) {
                             const plus = new Button({
                                 parent: this,
@@ -194,9 +196,12 @@ namespace microcode {
                     ariaId: "delete_rule",
                 },
             ]
-            this.editor.picker.addGroup({ btns })
+            this.editor.picker.setGroup(btns)
             this.editor.picker.show({
-                onClick: iconId => this.handleRuleHandleMenuSelection(iconId),
+                onClick: index =>
+                    this.handleRuleHandleMenuSelection(
+                        btns[index].icon as string
+                    ),
             })
         }
 
@@ -309,13 +314,14 @@ namespace microcode {
             // special case for field editor
             if (suggestions.length == 1 && getFieldEditor(suggestions[0])) {
                 let theOne =
-                    index > 0 && getFieldEditor(ruleTiles[index - 1])// this is a hack to use the value from previous
+                    index > 0 && getFieldEditor(ruleTiles[index - 1]) // this is a hack to use the value from previous
                         ? ruleTiles[index - 1] // field editor (should really check they are the same)
                         : suggestions[0]
                 newFieldEditor(theOne)
                 return
             }
             let onDelete = undefined
+            let selectedButton = -1
             if (index < ruleTiles.length) {
                 onDelete = () => {
                     tileUpdated(undefined)
@@ -323,19 +329,22 @@ namespace microcode {
                 const selected = btns.indexOf(
                     btns.find(b => b.icon === ruleTiles[index].tid)
                 )
-                if (selected >= 0) btns[selected].start = true
+                if (selected >= 0) {
+                    selectedButton = selected
+                }
             }
             if (btns.length) {
-                this.editor.picker.addGroup({ btns })
+                this.editor.picker.setGroup(btns)
                 this.editor.picker.show({
                     title: accessibility.ariaToTooltip(name),
-                    navigator: () => new SimpleGridNavigator(),
-                    onClick: id => {
-                        let theOne = tilesDB[name][id]
+                    navigator: () => new PickerNavigator(this.editor.picker),
+                    onClick: idx => {
+                        let theOne = tilesDB[name][suggestions[idx].tid]
                         if (getFieldEditor(theOne)) {
                             // there is more work to do                l
                             theOne =
-                                index > 0 && getFieldEditor(ruleTiles[index - 1]) // this is a hack to use the value from previous
+                                index > 0 &&
+                                getFieldEditor(ruleTiles[index - 1]) // this is a hack to use the value from previous
                                     ? ruleTiles[index - 1] // field editor (should really check they are the same)
                                     : theOne
                             newFieldEditor(theOne)
@@ -343,6 +352,7 @@ namespace microcode {
                         tileUpdated(theOne)
                     },
                     onDelete,
+                    selected: selectedButton,
                 })
             }
             return

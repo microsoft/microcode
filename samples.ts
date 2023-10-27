@@ -183,7 +183,15 @@ namespace microcode {
             },
             {
                 label: "robot line follow",
-                b64: "JfiSPgounRpoNL4aZjTAGmc0wRppNMUBAQEBAQA=",
+                b64: "JfiSPgoumxpoNL4aZjTAGmc0wRpqNMQaazTFGmk0wgEBAQEBAA==",
+            },
+            {
+                label: "robot showcase",
+                b64: "JfiSPgoumwtJNL7IC0o0wsYZTzTEvgEBAQEBAA==",
+            },
+            {
+                label: "robot drift tester",
+                b64: "JfiSPgoumwtJNL7IC0o0w8cSNMLGAQEBAQEA",
             },
         ])
     }

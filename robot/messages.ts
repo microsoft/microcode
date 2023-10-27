@@ -3,7 +3,10 @@ namespace microcode.robots {
     export function raiseEvent(event: robots.RobotCompactCommand) {
         control.raiseEvent(ROBOT_EVENT_ID, event & 0xffff)
     }
-    export function onEvent(event: robots.RobotCompactCommand, handler: () => void) {
+    export function onEvent(
+        event: robots.RobotCompactCommand,
+        handler: () => void
+    ) {
         control.onEvent(ROBOT_EVENT_ID, event & 0xffff, handler)
     }
 }

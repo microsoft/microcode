@@ -12,7 +12,7 @@ The program starts by setting the radio group displayed by the [robot micro:bit]
 
 ![when page starts, set radio group of robot](../images/generated/sample_robot_shake_page_1_rule_1.png){:class="rule"}
 
--   **when** ![page start](../images/generated/icon_S1.png){:class="icon"} page starts, **do** ![set radio group](../images/images_A6A.png) set radio group to **put your robot radio number!**
+-   **when** ![page start](../images/generated/icon_S1.png){:class="icon"} page starts, **do** ![set radio group](../images/generated/icon_A6A.png) set radio group to **put your robot radio number!**
 
 The next rule runs when the micro:bit is tilted forward and orders the robot to move forward. The robot will keep moving forward until another commands is received.
 

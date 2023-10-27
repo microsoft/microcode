@@ -8,6 +8,16 @@ namespace microcode {
         control.simmessages.send("usb", buf)
     }
 
+    //% shim=TD_NOOP
+    function editorSkipBack(editor: Editor, skipBack: boolean) {
+        if (!skipBack) editor.back()
+    }
+
+    //% shim=TD_NOOP
+    function editorSkipForward(editor: Editor, skipBack: boolean) {
+        if (!skipBack) editor.forward()
+    }
+
     export class Editor extends Scene {
         navigator: RuleRowNavigator
         private progdef: ProgramDefn
@@ -82,11 +92,11 @@ namespace microcode {
                     icon: slot,
                 }
             })
-            this.picker.addGroup({ btns })
+            this.picker.setGroup(btns)
             this.picker.show({
                 title: accessibility.ariaToTooltip("disk"),
-                onClick: iconId => {
-                    this.app.save(iconId, this.progdef)
+                onClick: index => {
+                    this.app.save(btns[index].icon, this.progdef)
                 },
             })
         }
@@ -97,10 +107,9 @@ namespace microcode {
                     icon: pageId,
                 }
             })
-            this.picker.addGroup({ btns })
+            this.picker.setGroup(btns)
             this.picker.show({
-                onClick: iconId => {
-                    const index = PAGE_IDS().indexOf(iconId)
+                onClick: index => {
                     this.switchToPage(index)
                 },
             })
@@ -155,12 +164,12 @@ namespace microcode {
                 this.scrollAndMoveButton(target)
             } catch (e) {
                 if (dir === CursorDir.Up && e.kind === BACK_BUTTON_ERROR_KIND) {
-                    if (!skipBack) this.back()
+                    editorSkipBack(this, skipBack)
                 } else if (
                     dir == CursorDir.Down &&
                     e.kind == FORWARD_BUTTON_ERROR_KIND
                 ) {
-                    if (!skipBack) this.forward()
+                    editorSkipForward(this, skipBack)
                 } else throw e
             }
         }
@@ -343,7 +352,7 @@ namespace microcode {
                         this.app.popScene()
                         this.app.pushScene(new Home(this.app))
                         // back to home screen from editor, stop jacscript by running empty program
-                        new jacs.TopWriter().deployEmpty()
+                        jacs.stop()
                     }
                 } else {
                     if (this.navigator.atRuleStart()) {

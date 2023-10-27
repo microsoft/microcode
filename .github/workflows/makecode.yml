@@ -46,3 +46,5 @@ jobs:
                   makecode -c mkc-dfrobotmaqueen.json
                   makecode -c mkc-dfrobotmaqueenplusv2.json
                   makecode -c mkc-kittenbotminilfr.json
+                  makecode -c mkc-kittenbotnanobit.json
+                  makecode -c mkc-kittenbotrobotbit.json

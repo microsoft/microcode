@@ -33,6 +33,9 @@ namespace microcode {
         if (name == TID_MODIFIER_CAR_LED_COLOR_1) return icondb.tile_color_red
         if (name == TID_MODIFIER_CAR_LED_COLOR_2) return icondb.tile_color_green
         if (name == TID_MODIFIER_CAR_LED_COLOR_3) return icondb.tile_color_blue
+        if (name == TID_MODIFIER_CAR_LED_COLOR_4) return icondb.tile_color_black
+        if (name == TID_MODIFIER_CAR_ARM_OPEN) return icondb.arm_open
+        if (name == TID_MODIFIER_CAR_ARM_CLOSE) return icondb.arm_close
         if (name == TID_SENSOR_CAR_WALL) return icondb.car_wall
         if (name == TID_SENSOR_LINE) return icondb.line_sensor
         if (name == TID_FILTER_LINE_LEFT) return icondb.line_left_on
@@ -479,39 +482,39 @@ namespace icondb {
 `
 
     export const largeDiskIcon = img`
-. 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 . 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 8 d d d d 8 8 d d 8 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 8 d d d d 8 8 d d 8 8 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 8 d d d d 8 8 d d 8 8 8 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 8 d d d d d d d d 8 8 8 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 8 8 8 8 8 8 8 8 8 8 8 8 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 8 8 3 3 3 3 3 3 3 3 8 8 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 8 8 1 1 1 1 1 1 1 1 8 8 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 8 8 1 1 1 1 1 1 1 1 8 8 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 8 8 1 1 1 1 1 1 1 1 8 8 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 8 8 1 1 1 1 1 1 1 1 8 8 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 8 8 1 1 1 1 1 1 1 1 8 8 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 8 8 1 1 1 1 1 1 1 1 8 8 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 8 8 1 1 1 1 1 1 1 1 8 8 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
-b 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 b 
-. b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b . 
+    .666666666666666666666666666666.
+    66666666666666666666666666666666
+    66666666666666666666666666666666
+    66666bbbbbbbbbbbbbbbbbbbb6666666
+    6666bb8cdddddddddddd888c8b666666
+    6666b88cdddddddc88dd888c88b66666
+    6666b88cddddddd888dd888c888b6666
+    6666b88cddddddd888dd888c888b6666
+    6666b88cddddddd888dd888c888b6666
+    6666b88cddddddd888dd888c888b6666
+    6666b88cdddddddddddd888c888b6666
+    6666b88ccccccccccccccccc888b6666
+    6666b8888888888888888888888b6666
+    6666b8888888888888888888888b6666
+    6666b8833333333333333333888b6666
+    6666b8833333333333333333888b6666
+    6666b8811111111111111111888b6666
+    6666b8811111111111111111888b6666
+    6666b8811ccccc1111111111888b6666
+    6666b8811111111111111111888b6666
+    6666b8811ccc111111111111888b6666
+    6666b8811111111111111111888b6666
+    6666b8811ccccccc11111111888b6666
+    6666b8811111111111111111888b6666
+    6666b8811111111111111111888b6666
+    6666b88111111111111111118f8b6666
+    6666b88111111111111111118f8b6666
+    6666bb811111111111111111888b6666
+    66666bbbbbbbbbbbbbbbbbbbbbbb6666
+    66666666666666666666666666666666
+    66666666666666666666666666666666
+    b666666666666666666666666666666b
+    .bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
 `
 
     export const MISSING = img`
@@ -570,6 +573,43 @@ b 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 b
     . . . c c c c c c c c c c . . .
     . . . . . . . . . . . . . . . .
 `
+
+    export const arm_open = img`
+    . . . . . . . . . . c c c . . .
+    . . . . . . . . c c b b b c c .
+    . . . . . . . c b b b b b b b c
+    . . . . . . c b b b b c c b b c
+    c c . . c b b b b c c . . c b c
+    b b c c b b b b c . . . . . c .
+    b b b b b b c c . . . . . . . .
+    c f f b b c . . . . . . . . . .
+    c f f b b c . . . . . . . . . .
+    b b b b b b c c . . . . . . . .
+    b b c c b b b b c . . . . . c .
+    c c . . c b b b b c c . . c b c
+    . . . . . c c b b b b c c b b c
+    . . . . . . . c b b b b b b b c
+    . . . . . . . . c c b b b c c .
+    . . . . . . . . . . c c c . . .
+    `
+
+    export const arm_close = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . c c c c c c c c c . .
+    . . . . . c b b b b b b b b c .
+    . . . . c b b b b b b b b b b c
+    c c d d b b c c c c c c c c b c
+    b b b b b b c . . . . . . . c .
+    c f f b b c . . . . . . . . . .
+    c f f b b c . . . . . . . . . .
+    b b b b b b c . . . . . . . c .
+    c c d d b b c c c c c c c c b c
+    . . . . c b b b b b b b b b b c
+    . . . . . c b b b b b b b b c .
+    . . . . . c c c c c c c c c . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . `
 
     ///
     /// BUTTON ICONS
@@ -3015,7 +3055,8 @@ bffffffffffffffffffffffffffffffb
     . . f f d . . . . . . . f f d d
     . . f f d . . . . . . . f f d .
     . . f f . . . . . . . . f f . .
-    . . . . . . . . . . . . . . . .`
+    . . . . . . . . . . . . . . . .
+`
 
     export const car_forward = img`
     . . . . . . . . . . . . . . . .
@@ -3169,22 +3210,22 @@ bffffffffffffffffffffffffffffffb
 `
 
     export const car_wall = img`
-. . . . . . . . . . . . . . . .
-d d d d d d d d d d d d d d d d
-2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
-2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
-d d d d d d d d d d d d d d d d
-2 2 d 2 2 2 2 d 2 2 2 2 d 2 2 2
-2 2 d 2 2 2 2 d 2 2 2 2 d 2 2 2
-d d d d d d d d d d d d d d d d
-2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
-2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
-d d d d d d d d d d d d d d d d
-2 2 d 2 2 2 2 d 2 2 2 2 d 2 2 2
-2 2 d 2 2 2 2 d 2 2 2 2 d 2 2 2
-d d d d d d d d d d d d d d d d
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    d d d d d d d d d d d d d d d d
+    2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
+    2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
+    d d d d d d d d d d d d d d d d
+    2 2 d 2 2 2 2 d 2 2 2 2 d 2 2 2
+    2 2 d 2 2 2 2 d 2 2 2 2 d 2 2 2
+    d d d d d d d d d d d d d d d d
+    2 2 2 2 d 2 2 2 2 d 2 2 2 2 d 2
+    2 2 2 2 d 2 2 2 2 f f f f f f 2
+    d d d d d d d d d f 1 1 1 1 f d
+    2 2 d 2 2 2 2 d 2 f d d d d f 2
+    2 2 d 2 2 2 2 d f 9 f f f f 9 f
+    d d d d d d d d f 1 f f f f 1 f
+    . . . . . . . . f f f f f f f f
+    . . . . . . . . . f . . . . f .
 `
 
     export const line_sensor = img`
@@ -3196,14 +3237,14 @@ d d d d d d d d d d d d d d d d
     . d d d d d c f f c d d d d d .
     . d d d d d c f f c d d d d d .
     . b d d d d c f f c d d d d b .
-    . b d d d d c f f c d d d d b .
-    . b d d d d c f f c d d d d b .
-    . d d d d d c f f c d d d d d .
-    . d d d d d c f f c d d d d d .
-    . d d d d d c f f c d d d d d .
-    . b d d d d c f f c d d d d b .
-    . b d d d d c f f c d d d d b .
-    . . . . . . . . . . . . . . . .
+    . b d d d d c f c c d d d d b .
+    . b d d d d c f c f f f f f f .
+    . d d d d d c f c f 1 1 1 1 f .
+    . d d d d d c f c f d d d d f .
+    . d d d d d c c f 9 f f f f 9 f
+    . b d d d d c c f 1 f f f f 1 f
+    . b d d d d c c f f f f f f f f
+    . . . . . . . . . f . . . . f .
 `
     export const line_neither_on = img`
 . . . . . . . . . . . . . . . .

@@ -601,6 +601,24 @@ namespace jacs {
             wr.top = lbl
         }
 
+        private sendActuatorServiceCommand(
+            role: Role,
+            serviceCommand: number,
+            param: number
+        ) {
+            const wr = this.writer
+            // TODO: generalize this to work with other formats
+            const fmt: NumFmt = NumFmt.F64
+            const sz = bitSize(fmt) >> 3
+            wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
+            wr.emitBufStore(literal(param, Op.EXPRx_LITERAL_F64), NumFmt.F64, 0)
+            this.emitSendCmd(role, serviceCommand)
+            this.emitSleep(5)
+            wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
+            wr.emitBufStore(literal(param, Op.EXPRx_LITERAL_F64), NumFmt.F64, 0)
+            this.emitSendCmd(role, serviceCommand)
+        }
+
         private emitSequence(rule: microcode.RuleDefn, delay: number) {
             const actuator = rule.actuators[0]
             const shortCutFn = microcode.jdParam(actuator.tid)
@@ -662,24 +680,11 @@ namespace jacs {
                         pKind == microcode.JdKind.NumFmt &&
                         pJdparam == NumFmt.F64
                     ) {
-                        // TODO: generalize this to work with other formats
-                        const fmt: NumFmt = NumFmt.F64
-                        const sz = bitSize(fmt) >> 3
-                        wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
-                        wr.emitBufStore(
-                            literal(p.jdParam2, Op.EXPRx_LITERAL_F64),
-                            NumFmt.F64,
-                            0
+                        this.sendActuatorServiceCommand(
+                            role,
+                            command,
+                            p.jdParam2
                         )
-                        this.emitSendCmd(role, command)
-                        this.emitSleep(5)
-                        wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])
-                        wr.emitBufStore(
-                            literal(p.jdParam2, Op.EXPRx_LITERAL_F64),
-                            NumFmt.F64,
-                            0
-                        )
-                        this.emitSendCmd(role, command)
                         this.emitSleep(500)
                     } else {
                         throw "oops"
@@ -1369,6 +1374,13 @@ namespace jacs {
 
         deployEmpty() {
             const mainProc = this.addProc("main")
+            // hack for car: stop cars on empty program
+            const role = this.lookupRole("radio", 0)
+            this.sendActuatorServiceCommand(
+                role,
+                0x81,
+                microcode.robots.RobotCompactCommand.MotorStop
+            )
             mainProc.finalize()
             return this.deploy()
         }
@@ -1452,6 +1464,10 @@ namespace jacs {
                 return undefined
         }
         // m:b
+    }
+
+    export function stop() {
+        new jacs.TopWriter().deployEmpty()
     }
 
     export const SRV_JACSCRIPT_CONDITION = 0x1196796d

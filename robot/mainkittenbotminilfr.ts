@@ -1,2 +1,2 @@
 microcode.kittenbotMiniLFR.start()
-microcode.robot.startRadio()
+microcode.startCompactRadio()
