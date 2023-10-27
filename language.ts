@@ -352,7 +352,7 @@ namespace microcode {
     }
 
     function isTerminal(tile: TileDefn) {
-        return !isTidNotTerminal(tidToEnum(tile.tid))
+        return isTidTerminal(tidToEnum(tile.tid))
     }
 
     export class Language {

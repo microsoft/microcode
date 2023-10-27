@@ -233,6 +233,7 @@ namespace microcode {
         TID_FILTER_LINE_NEITHER_LEFT = 106,
         TID_FILTER_LINE_NEITHER_RIGHT = 107,
         LINE_END = 107,
+
         FILTER_END = 108,
 
         MODIFIER_START = 150,
@@ -873,7 +874,7 @@ namespace microcode {
         return Tid.CAR_MODIFIER_BEGIN <= tidEnum && tidEnum <= Tid.CAR_MODIFIER_END
     }
 
-    export function isTidNotTerminal(tid: Tid) {
+    export function isTidTerminal(tid: Tid) {
         // the following sensors and actuators are terminal
         if (
             tid == Tid.TID_SENSOR_CAR_WALL ||
@@ -882,18 +883,14 @@ namespace microcode {
             tid == Tid.TID_SENSOR_LIGHT ||
             tid == Tid.TID_SENSOR_MAGNET
         )
-            return false
-        // everything else except some filters is not terminal
-        if (!isFilter(tid)) return true
-        // the following filters are not terminal
-        if (
-            isFilterConstant(tid) || isTimespan(tid) ||
-            (Tid.TID_FILTER_CUP_X_READ <= tid &&
-                tid <= Tid.TID_FILTER_CUP_Z_READ)
-        )
             return true
+        // everything else except some filters is not terminal
+        if (!isFilter(tid)) return false
+        // the following filters are not terminal
+        if (isFilterConstant(tid) || isTimespan(tid) || isFilterVariable(tid))
+            return false
         // all other filters are terminal
-        return false
+        return true
     }
 
     // Jacdac event codes
