@@ -102,7 +102,7 @@ namespace microcode {
                 src.allow.forEach(item => dst.allow.push(item))
             }
             if (src.disallow) {
-                src.allow.forEach(item => dst.allow.push(item))
+                src.disallow.forEach(item => dst.disallow.push(item))
             }
         }
 
