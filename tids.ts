@@ -1525,6 +1525,9 @@ namespace microcode {
                 return "icon_editor"
             case Tid.TID_MODIFIER_MELODY_EDITOR:
                 return "melody_editor"
+            case Tid.TID_MODIFIER_RANDOM_TOSS:
+            case Tid.TID_MODIFIER_TEMP_READ:
+                return "value_out"
         }
         return undefined
     }

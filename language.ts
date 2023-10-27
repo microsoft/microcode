@@ -93,8 +93,8 @@ namespace microcode {
         return true
     }
 
-    export function filterModifierCompat(c: Constraints,
-        tid: string, category: string | number): boolean {
+    export function filterModifierCompat(c: Constraints, tid: string,
+        category: string | number): boolean {
 
         const tidEnum = tidToEnum(tid)
         const only = c.only.some(cat => cat === category || cat === tidEnum)
