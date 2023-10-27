@@ -220,14 +220,9 @@ namespace microcode {
 
         // these are in order (see priority field) as will be shown in the dialog
         const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
-        paint.jdParam2 = 5
-
         const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER)
-
         const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
-
         const music = addActuator(TID_ACTUATOR_MUSIC, ["melody_editor", "loop"])
-        music.jdParam2 = 6
 
         const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
             "value_out",
@@ -281,7 +276,6 @@ namespace microcode {
                     kind == "F"
                         ? new FilterDefn(tid, name)
                         : new ModifierDefn(tid, name)
-                tile.jdParam2 = kind == "CAR" ? v : 0
                 if (kind == "F") tilesDB.filters[tid] = tile as FilterDefn
                 else tilesDB.modifiers[tid] = tile
                 tiles.push(tile)
@@ -316,19 +310,13 @@ namespace microcode {
             const car = addActuator(TID_ACTUATOR_CAR, ["car"])
         }
 
-        function addRGB(id: number, color: number) {
+        function addRGB(id: number) {
             const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
             const mod = new ModifierDefn(tid, "rgb_led")
             tilesDB.modifiers[tid] = mod
-            mod.jdParam2 = color
         }
 
-        addRGB(1, 0x2f0000)
-        addRGB(2, 0x002f00)
-        addRGB(3, 0x00002f)
-        addRGB(4, 0x2f002f)
-        addRGB(5, 0x2f2f00)
-        addRGB(6, 0x000000)
+        ;[1, 2, 3, 4, 5, 6].map(addRGB)
 
         function addAnim(name: string) {
             const tid = TID_MODIFIER_RGB_LED_COLOR_X + name
@@ -439,7 +427,6 @@ namespace microcode {
             this.field = this.fieldEditor.clone(
                 field ? field : this.fieldEditor.init()
             )
-            this.jdParam2 = 400 // ms
         }
 
         getField() {
@@ -562,7 +549,6 @@ namespace microcode {
             this.field = this.fieldEditor.clone(
                 field ? field : this.fieldEditor.init()
             )
-            this.jdParam2 = 250 // ms
         }
 
         getField() {

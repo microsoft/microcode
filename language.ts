@@ -73,9 +73,6 @@ namespace microcode {
     export class TileDefn {
         constructor(public tid: string) {}
 
-        // jdParam: any
-        jdParam2: number
-
         constraints: Constraints
 
         getField(): any {

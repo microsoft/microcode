@@ -1242,6 +1242,54 @@ namespace microcode {
                 return 6772
             case Tid.TID_MODIFIER_EMOJI_YAWN:
                 return 2816
+            case Tid.TID_ACTUATOR_PAINT:
+                return 5
+            case Tid.TID_ACTUATOR_MUSIC:
+                return 6
+            case Tid.TID_MODIFIER_CAR_FORWARD:
+                return robots.RobotCompactCommand.MotorRunForward
+            case Tid.TID_MODIFIER_CAR_REVERSE:
+                return robots.RobotCompactCommand.MotorRunBackward
+            case Tid.TID_MODIFIER_CAR_TURN_LEFT:
+                return robots.RobotCompactCommand.MotorTurnLeft
+            case Tid.TID_MODIFIER_CAR_TURN_RIGHT:
+                return robots.RobotCompactCommand.MotorTurnRight
+            case Tid.TID_MODIFIER_CAR_STOP:
+                return robots.RobotCompactCommand.MotorStop
+            case Tid.TID_MODIFIER_CAR_FORWARD_FAST:
+                return robots.RobotCompactCommand.MotorRunForwardFast
+            case Tid.TID_MODIFIER_CAR_SPIN_LEFT:
+                return robots.RobotCompactCommand.MotorSpinLeft
+            case Tid.TID_MODIFIER_CAR_SPIN_RIGHT:
+                return robots.RobotCompactCommand.MotorSpinRight
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_1:
+                return microcode.robots.RobotCompactCommand.LEDRed
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_2:
+                return microcode.robots.RobotCompactCommand.LEDGreen
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_3:
+                return microcode.robots.RobotCompactCommand.LEDBlue
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_4:
+                return microcode.robots.RobotCompactCommand.LEDOff
+            case Tid.TID_MODIFIER_CAR_ARM_OPEN:
+                return robots.RobotCompactCommand.ArmOpen
+            case Tid.TID_MODIFIER_CAR_ARM_CLOSE:
+                return robots.RobotCompactCommand.ArmClose
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_1:
+                return 0x2f0000
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_2:
+                return 0x002f00
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_3:
+                return 0x00002f
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_4:
+                return 0x2f002f
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_5:
+                return 0x2f2f00
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_6:
+                return 0x000000
+            case Tid.TID_MODIFIER_ICON_EDITOR:
+                return 400 // ms
+            case Tid.TID_MODIFIER_MELODY_EDITOR:
+                return 250 // ms
         }
         return undefined
     }
