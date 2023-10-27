@@ -1074,10 +1074,15 @@ namespace microcode {
         )
             return tidEnum - Tid.TID_MODIFIER_PAGE_1 + 1
         if (
-            Tid.TID_MODIFIER_CAR_LED_COLOR_1 <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_CAR_LED_COLOR_3
+            Tid.TID_MODIFIER_RGB_LED_COLOR_1 <= tidEnum &&
+            tidEnum <= Tid.TID_MODIFIER_RGB_LED_COLOR_6
         )
             return "led_solid"
+        if (
+            Tid.TID_MODIFIER_CAR_FORWARD <= tidEnum &&
+            tidEnum <= Tid.TID_MODIFIER_CAR_LED_COLOR_3
+        )
+            return jacs.NumFmt.F64
         switch (tidEnum) {
             case Tid.TID_FILTER_BUTTON_A:
                 return 0
