@@ -1,5 +1,4 @@
 namespace microcode {
-    // TODO: make into class
 
     export interface Constraints {
         provides?: number[]
@@ -21,7 +20,7 @@ namespace microcode {
             picker: Picker,
             onHide: () => void,
             onDelete?: () => void
-        ): void {}
+        ): void { }
         toImage(field: any): Image {
             return undefined
         }
@@ -60,15 +59,64 @@ namespace microcode {
         Sequence,
     }
 
-    // TODO: clean up with new enum representation
-    // - get ride of TileType and tid
-    // - use a list instead of priority and sorting
-    // - move fieldEditor out of TileDefn, only need for a few tiles
-    // - separate editor info (constraints) from compiler info
-    export class TileDefn {
-        constructor(public tid: string) {}
+    export function mergeConstraints(src: Constraints, dst: Constraints) {
+        if (!src) {
+            return
+        }
+        if (src.provides) {
+            src.provides.forEach(item => dst.provides.push(item))
+        }
+        if (src.requires) {
+            src.requires.forEach(item => dst.requires.push(item))
+        }
+        if (src.only) {
+            src.only.forEach(item => dst.only.push(item))
+        }
+        if (src.allow) {
+            src.allow.forEach(item => dst.allow.push(item))
+        }
+        if (src.disallow) {
+            src.disallow.forEach(item => dst.disallow.push(item))
+        }
+    }
 
-        constraints: Constraints
+    export function isCompatibleWith(src: Constraints, c: Constraints): boolean {
+        if (!src) return true
+        if (src.requires) {
+            let compat = false
+            src.requires.forEach(
+                req =>
+                    (compat = compat || c.provides.some(pro => pro === req))
+            )
+            if (!compat) return false
+        }
+        return true
+    }
+
+    //         if (!isCompatibleWith(src, c)) return false
+    export function filterModifierCompat(c: Constraints,
+        tid: string, category: string | number): boolean {
+
+        const tidEnum = tidToEnum(tid)
+        const only = c.only.some(cat => cat === category)
+        if (only) return true
+        if (c.only.length) return false
+
+        const allows = c.allow.some(
+            cat => cat === category || cat === tidEnum
+        )
+        if (!allows) return false
+
+        const disallows = !c.disallow.some(
+            cat => cat === category || cat === tidEnum
+        )
+        if (!disallows) return false
+
+        return true
+    }
+    
+    export class TileDefn {
+        constructor(public tid: string) { }
 
         getField(): any {
             return undefined
@@ -81,50 +129,13 @@ namespace microcode {
         getNewInstance(field: any = null): TileDefn {
             return this
         }
-
-        // the following is just set union - can be simplified
-        // TODO: probably really want a Gen/Kill framework instead
-        mergeConstraints(dst: Constraints) {
-            const src = this.constraints
-            if (!src) {
-                return
-            }
-            if (src.provides) {
-                src.provides.forEach(item => dst.provides.push(item))
-            }
-            if (src.requires) {
-                src.requires.forEach(item => dst.requires.push(item))
-            }
-            if (src.only) {
-                src.only.forEach(item => dst.only.push(item))
-            }
-            if (src.allow) {
-                src.allow.forEach(item => dst.allow.push(item))
-            }
-            if (src.disallow) {
-                src.disallow.forEach(item => dst.disallow.push(item))
-            }
-        }
-
-        isCompatibleWith(c: Constraints): boolean {
-            if (!this.constraints) return true
-            if (this.constraints.requires) {
-                let compat = false
-                this.constraints.requires.forEach(
-                    req =>
-                        (compat = compat || c.provides.some(pro => pro === req))
-                )
-                if (!compat) return false
-            }
-            return true
-        }
     }
 
-    export class StmtTileDefn extends TileDefn {}
-    export class SensorDefn extends StmtTileDefn {}
+    export class StmtTileDefn extends TileDefn { }
+    export class SensorDefn extends StmtTileDefn { }
 
     export class FilterModifierBase extends TileDefn {
-        constructor(tid: string, public category: string | number) {
+        constructor(tid: string) {
             super(tid)
         }
 
@@ -135,40 +146,19 @@ namespace microcode {
             return null
         }
 
-        isCompatibleWith(c: Constraints): boolean {
-            if (!super.isCompatibleWith(c)) return false
-
-            const only = c.only.some(cat => cat === this.category)
-            if (only) return true
-            if (c.only.length) return false
-
-            const allows = c.allow.some(
-                cat =>
-                    cat === this.category ||
-                    tidToEnum(this.tid) === this.category
-            )
-            if (!allows) return false
-
-            const disallows = !c.disallow.some(
-                cat => cat === this.category || this.tid === this.category
-            )
-            if (!disallows) return false
-
-            return true
-        }
     }
 
     export class FilterDefn extends FilterModifierBase {
-        constructor(tid: string, category: string) {
-            super(tid, category)
+        constructor(tid: string) {
+            super(tid)
         }
     }
 
-    export class ActuatorDefn extends StmtTileDefn {}
+    export class ActuatorDefn extends StmtTileDefn { }
 
     export class ModifierDefn extends FilterModifierBase {
-        constructor(tid: string, category: string) {
-            super(tid, category)
+        constructor(tid: string) {
+            super(tid)
         }
     }
 
@@ -401,14 +391,25 @@ namespace microcode {
             // Collect the built-up constraints.
             const constraints = mkConstraints()
             if (name === "modifiers" && rule.actuators.length) {
-                rule.actuators[0].mergeConstraints(constraints)
+                const src = getConstraints(rule.actuators[0].tid)
+                mergeConstraints(src, constraints)
             }
             if (rule.sensors.length) {
-                rule.sensors[0].mergeConstraints(constraints)
+                const src = getConstraints(rule.sensors[0].tid)
+                mergeConstraints(src, constraints)
             }
-            existing.forEach(tile => tile.mergeConstraints(constraints))
 
-            return all.filter(tile => tile.isCompatibleWith(constraints))
+            existing.forEach(tile => {
+                const src = getConstraints(tile.tid)
+                mergeConstraints(src, constraints)
+            })
+
+            return all.filter(tile => {
+                const src = getConstraints(tile.tid)
+                const cat = getCategory(tile.tid)
+                return isCompatibleWith(src, constraints) && 
+                    filterModifierCompat(constraints, tile.tid, cat)
+            })
         }
 
         public static ensureValid(rule: RuleDefn) {

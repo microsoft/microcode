@@ -39,9 +39,6 @@ namespace microcode {
     function addButtonTiles() {
         function addPress(tid: string) {
             const press_event = new SensorDefn(tid)
-            press_event.constraints = {
-                allow: ["press_event"],
-            }
             tilesDB.sensors[tid] = press_event
         }
 
@@ -49,8 +46,7 @@ namespace microcode {
         addPress(TID_SENSOR_RELEASE)
 
         function addPressFilter(tid: string) {
-            const press_filter = new FilterDefn(tid, "press_event")
-            press_filter.constraints = { allow: ["press_event"] }
+            const press_filter = new FilterDefn(tid)
             tilesDB.filters[tid] = press_filter
             return press_filter
         }
@@ -66,32 +62,28 @@ namespace microcode {
     }
 
     function addSensorAndFilterTiles() {
-        function makeSensor(tid: string, cat: string) {
+        function makeSensor(tid: string) {
             const tile = new SensorDefn(tid)
-            tile.constraints = {
-                allow: [cat],
-            }
             tilesDB.sensors[tid] = tile
             return tile
         }
 
-        makeSensor(TID_SENSOR_START_PAGE, "timespan")
+        makeSensor(TID_SENSOR_START_PAGE)
 
         addButtonTiles()
 
-        function makeCupSensor(tid: string, disallow: number) {
-            const tile = makeSensor(tid, "value_in")
-            tile.constraints.disallow = [disallow]
+        function makeCupSensor(tid: string) {
+            const tile = makeSensor(tid)
         }
 
-        makeCupSensor(TID_SENSOR_CUP_X_WRITTEN, Tid.TID_FILTER_CUP_X_READ)
-        makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, Tid.TID_FILTER_CUP_Y_READ)
-        makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, Tid.TID_FILTER_CUP_Z_READ)
+        makeCupSensor(TID_SENSOR_CUP_X_WRITTEN)
+        makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN)
+        makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN)
 
-        const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event")
+        const temp = makeSensor(TID_SENSOR_TEMP)
 
-        const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in")
-        radio_recv.constraints.provides = [Tid.TID_SENSOR_RADIO_RECEIVE]
+        const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE)
+
 
         // the following three tiles are treated similarly, as
         // the sensor values are mapped into [1,2,3,4,5]
@@ -102,55 +94,44 @@ namespace microcode {
             TID_FILTER_COIN_4,
             TID_FILTER_COIN_5,
         ]
-        const slider = makeSensor(TID_SENSOR_SLIDER, "value_in")
-        slider.constraints = { allow: only5 }
+        const slider = makeSensor(TID_SENSOR_SLIDER)
 
         if (CAR_TILES) {
-            const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in")
-            wall.constraints = slider.constraints
+            const wall = makeSensor(TID_SENSOR_CAR_WALL)
         }
+        const magnet = makeSensor(TID_SENSOR_MAGNET)
+        const light = makeSensor(TID_SENSOR_LIGHT)
+            
+        const rotary = makeSensor(TID_SENSOR_ROTARY)
 
-        const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in")
-        magnet.constraints = slider.constraints
-
-        const light = makeSensor(TID_SENSOR_LIGHT, "value_in")
-        light.constraints = slider.constraints
-
-        const rotary = makeSensor(TID_SENSOR_ROTARY, "rotary_event")
-
-        function addEvent(tid: string, type: string) {
-            const ev = new FilterDefn(tid, type)
+        function addEvent(tid: string) {
+            const ev = new FilterDefn(tid)
             tilesDB.filters[tid] = ev
             return ev
         }
-        addEvent(TID_FILTER_ROTARY_LEFT, "rotary_event")
-        addEvent(TID_FILTER_ROTARY_RIGHT, "rotary_event")
-        addEvent(TID_FILTER_TEMP_WARMER, "temperature_event")
-        addEvent(TID_FILTER_TEMP_COLDER, "temperature_event")
+        addEvent(TID_FILTER_ROTARY_LEFT)
+        addEvent(TID_FILTER_ROTARY_RIGHT)
+        addEvent(TID_FILTER_TEMP_WARMER)
+        addEvent(TID_FILTER_TEMP_COLDER)
 
         if (CAR_TILES) {
-            const both = addEvent(TID_FILTER_LINE_BOTH, "line")
-            const left = addEvent(TID_FILTER_LINE_LEFT, "line")
-            const right = addEvent(TID_FILTER_LINE_RIGHT, "line")
-            const neither = addEvent(TID_FILTER_LINE_NEITHER, "line")
-            const neither_left = addEvent(TID_FILTER_LINE_NEITHER_LEFT, "line")
+            const both = addEvent(TID_FILTER_LINE_BOTH)
+            const left = addEvent(TID_FILTER_LINE_LEFT)
+            const right = addEvent(TID_FILTER_LINE_RIGHT)
+            const neither = addEvent(TID_FILTER_LINE_NEITHER)
+            const neither_left = addEvent(TID_FILTER_LINE_NEITHER_LEFT)
             const neither_right = addEvent(
                 TID_FILTER_LINE_NEITHER_RIGHT,
-                "line"
             )
 
-            const line = makeSensor(TID_SENSOR_LINE, "line")
-            line.constraints.allow = ["line"]
+            const line = makeSensor(TID_SENSOR_LINE)
         }
 
         const timer = new SensorDefn(TID_SENSOR_TIMER)
-        timer.constraints = {
-            allow: ["timespan"],
-        }
         tilesDB.sensors[TID_SENSOR_TIMER] = timer
 
         function addTimespan(tid: string) {
-            const timespan = new FilterDefn(tid, "timespan")
+            const timespan = new FilterDefn(tid)
             tilesDB.filters[tid] = timespan
         }
         addTimespan(TID_FILTER_TIMESPAN_SHORT)
@@ -159,14 +140,11 @@ namespace microcode {
         addTimespan(TID_FILTER_TIMESPAN_RANDOM)
 
         const accel = new SensorDefn(TID_SENSOR_ACCELEROMETER)
-        accel.constraints = {
-            allow: ["accel_event"],
-        }
         tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
 
         function addAccelEvent(name: string) {
             const tid = TID_FILTER_ACCEL + "_" + name
-            const accelEvent = new FilterDefn(tid, "accel_event")
+            const accelEvent = new FilterDefn(tid)
             tilesDB.filters[tid] = accelEvent
             return accelEvent
         }
@@ -178,12 +156,9 @@ namespace microcode {
         addAccelEvent("tilt_right")
 
         const microphone = new SensorDefn(TID_SENSOR_MICROPHONE)
-        microphone.constraints = {
-            allow: ["sound_event"],
-        }
         tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
         function addSoundFilter(tid: string) {
-            const soundFilter = new FilterDefn(tid, "sound_event")
+            const soundFilter = new FilterDefn(tid)
             tilesDB.filters[tid] = soundFilter
         }
         addSoundFilter(TID_FILTER_LOUD)
@@ -191,33 +166,26 @@ namespace microcode {
     }
 
     function addActuatorAndModifierTiles() {
-        function addActuator(tid: string, allows: string[]) {
+        function addActuator(tid: string) {
             const actuator = new ActuatorDefn(tid)
-            actuator.constraints = {
-                allow: allows,
-            }
             tilesDB.actuators[tid] = actuator
             return actuator
         }
 
         // these are in order (see priority field) as will be shown in the dialog
-        const paint = addActuator(TID_ACTUATOR_PAINT, ["icon_editor", "loop"])
+        const paint = addActuator(TID_ACTUATOR_PAINT)
         const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER)
-        const emoji = addActuator(TID_ACTUATOR_SPEAKER, ["sound_emoji", "loop"])
-        const music = addActuator(TID_ACTUATOR_MUSIC, ["melody_editor", "loop"])
+        const emoji = addActuator(TID_ACTUATOR_SPEAKER)
+        const music = addActuator(TID_ACTUATOR_MUSIC)
 
-        const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND, [
-            "value_out",
-            "constant",
-        ])
+        const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND)
 
-        const radio_set_group = addActuator(TID_ACTUATOR_RADIO_SET_GROUP, [])
-        radio_set_group.constraints = { only: ["constant"] }
+        const radio_set_group = addActuator(TID_ACTUATOR_RADIO_SET_GROUP)
 
-        const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
+        const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE)
 
         function addAssign(tid: string) {
-            const theVar = addActuator(tid, ["value_out", "constant"])
+            const theVar = addActuator(tid)
             return theVar
         }
 
@@ -239,13 +207,12 @@ namespace microcode {
         ]
         emojis.forEach((e, idx) => {
             const tid = "M19" + e
-            const emoji_mod = new ModifierDefn(tid, "sound_emoji")
+            const emoji_mod = new ModifierDefn(tid)
             tilesDB.modifiers[tid] = emoji_mod
         })
 
         function make_vals(
             values: number[],
-            name: string,
             kind: string,
             start: number
         ) {
@@ -254,8 +221,8 @@ namespace microcode {
                 const tid = kind + (start + index)
                 const tile: FilterModifierBase =
                     kind == "F"
-                        ? new FilterDefn(tid, name)
-                        : new ModifierDefn(tid, name)
+                        ? new FilterDefn(tid)
+                        : new ModifierDefn(tid)
                 if (kind == "F") tilesDB.filters[tid] = tile as FilterDefn
                 else tilesDB.modifiers[tid] = tile
                 tiles.push(tile)
@@ -264,9 +231,9 @@ namespace microcode {
         }
 
         const one_to_five = [1, 2, 3, 4, 5]
-        make_vals(one_to_five, "value_in", "F", 8)
-        make_vals(one_to_five, "constant", "M", 6)
-        make_vals(one_to_five, "page", "M", 1)
+        make_vals(one_to_five, "F", 8)
+        make_vals(one_to_five, "M", 6)
+        make_vals(one_to_five, "M", 1)
 
         if (CAR_TILES) {
             const car_commands = [
@@ -285,14 +252,14 @@ namespace microcode {
                 microcode.robots.RobotCompactCommand.ArmOpen,
                 microcode.robots.RobotCompactCommand.ArmClose,
             ]
-            make_vals(car_commands, "car", "CAR", 1)
+            make_vals(car_commands, "CAR", 1)
 
-            const car = addActuator(TID_ACTUATOR_CAR, ["car"])
+            const car = addActuator(TID_ACTUATOR_CAR)
         }
 
         function addRGB(id: number) {
             const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
-            const mod = new ModifierDefn(tid, "rgb_led")
+            const mod = new ModifierDefn(tid)
             tilesDB.modifiers[tid] = mod
         }
 
@@ -300,18 +267,18 @@ namespace microcode {
 
         function addAnim(name: string) {
             const tid = TID_MODIFIER_RGB_LED_COLOR_X + name
-            const mod = new ModifierDefn(tid, "rgb_led")
+            const mod = new ModifierDefn(tid)
             tilesDB.modifiers[tid] = mod
         }
 
         addAnim("sparkle")
         addAnim("rainbow")
 
-        addActuator(TID_ACTUATOR_RGB_LED, ["rgb_led", "loop"])
-        addActuator(TID_ACTUATOR_SERVO_SET_ANGLE, ["constant"])
+        addActuator(TID_ACTUATOR_RGB_LED)
+        addActuator(TID_ACTUATOR_SERVO_SET_ANGLE)
 
         function addFilterReadValue(tid: string) {
-            const filter = new FilterDefn(tid, "value_in")
+            const filter = new FilterDefn(tid)
             tilesDB.filters[tid] = filter
             return filter
         }
@@ -320,7 +287,7 @@ namespace microcode {
         addFilterReadValue(TID_FILTER_CUP_Z_READ)
 
         function addReadValue(tid: string) {
-            const mod = new ModifierDefn(tid, "value_out")
+            const mod = new ModifierDefn(tid)
             tilesDB.modifiers[tid] = mod
             return mod
         }
@@ -329,19 +296,13 @@ namespace microcode {
         addReadValue(TID_MODIFIER_CUP_Z_READ)
 
         const radio_value = addReadValue(TID_MODIFIER_RADIO_VALUE)
-        radio_value.constraints = { requires: [Tid.TID_SENSOR_RADIO_RECEIVE] }
 
         const temperature_value = addReadValue(TID_MODIFIER_TEMP_READ)
-        temperature_value.constraints = {}
 
         const random_toss = addReadValue(TID_MODIFIER_RANDOM_TOSS)
-        random_toss.constraints = {}
-        random_toss.constraints.allow = ["constant"]
-        random_toss.constraints.disallow = ["value_out"]
 
-        const loop = new ModifierDefn(TID_MODIFIER_LOOP, "loop")
+        const loop = new ModifierDefn(TID_MODIFIER_LOOP)
         tilesDB.modifiers[TID_MODIFIER_LOOP] = loop
-        loop.constraints = { only: ["constant"] }
     }
 
     export class IconFieldEditor extends FieldEditor {
@@ -401,7 +362,7 @@ namespace microcode {
         field: Image
         firstInstance: boolean
         constructor(field: Image = null) {
-            super(TID_MODIFIER_ICON_EDITOR, "icon_editor")
+            super(TID_MODIFIER_ICON_EDITOR)
             this.firstInstance = false
             this.fieldEditor = new IconFieldEditor()
             this.field = this.fieldEditor.clone(
@@ -523,7 +484,7 @@ namespace microcode {
         field: Melody
         firstInstance: boolean
         constructor(field: Melody = null) {
-            super(TID_MODIFIER_MELODY_EDITOR, "melody_editor")
+            super(TID_MODIFIER_MELODY_EDITOR)
             this.firstInstance = false
             this.fieldEditor = new MelodyFieldEditor()
             this.field = this.fieldEditor.clone(

@@ -181,6 +181,7 @@ namespace microcode {
         ACTUATOR_END = 54,
 
         FILTER_START = 70,
+        PRESS_RELEASE_START = 70,
         TID_FILTER_PIN_0 = 70,
         TID_FILTER_PIN_1 = 71,
         TID_FILTER_PIN_2 = 72,
@@ -189,6 +190,7 @@ namespace microcode {
         TID_FILTER_KITA_KEY_1 = 75,
         TID_FILTER_KITA_KEY_2 = 76,
         TID_FILTER_LOGO = 77,
+        PRESS_RELEASE_END = 77,
         //
         TID_FILTER_COIN_1 = 78,
         TID_FILTER_COIN_2 = 79,
@@ -204,12 +206,14 @@ namespace microcode {
         TID_FILTER_LOUD = 87,
         TID_FILTER_QUIET = 88,
         //
+        ACCELEROMETER_START = 89,
         TID_FILTER_ACCEL = 89,
         TID_FILTER_ACCEL_SHAKE = 90,
         TID_FILTER_ACCEL_TILT_UP = 91,
         TID_FILTER_ACCEL_TILT_DOWN = 92,
         TID_FILTER_ACCEL_TILT_LEFT = 93,
         TID_FILTER_ACCEL_TILT_RIGHT = 94,
+        ACCELEROMETER_END = 94,
         //
         TID_FILTER_CUP_X_READ = 95,
         TID_FILTER_CUP_Y_READ = 96,
@@ -221,12 +225,14 @@ namespace microcode {
         TID_FILTER_TEMP_WARMER = 100,
         TID_FILTER_TEMP_COLDER = 101,
         //
+        LINE_START = 102,
         TID_FILTER_LINE_LEFT = 102,
         TID_FILTER_LINE_RIGHT = 103,
         TID_FILTER_LINE_BOTH = 104,
         TID_FILTER_LINE_NEITHER = 105,
         TID_FILTER_LINE_NEITHER_LEFT = 106,
         TID_FILTER_LINE_NEITHER_RIGHT = 107,
+        LINE_END = 107,
         FILTER_END = 108,
 
         MODIFIER_START = 150,
@@ -814,6 +820,67 @@ namespace microcode {
         return tid >= Tid.MODIFIER_START && tid < Tid.MODIFER_END
     }
 
+    function isPressReleaseEvent(tidEnum: Tid) {
+        return Tid.PRESS_RELEASE_START <= tidEnum && tidEnum <= Tid.PRESS_RELEASE_END
+    }
+
+    function isAccelerometerEvent(tidEnum: Tid) {
+        return Tid.ACCELEROMETER_START <= tidEnum && tidEnum <= Tid.ACCELEROMETER_END
+    }
+
+    function isLineEvent(tidEnum: Tid) {
+        return Tid.LINE_START <= tidEnum && tidEnum <= Tid.LINE_END
+    }
+
+    function isFilterConstant(tidEnum: Tid) {
+        return Tid.TID_FILTER_COIN_1 <= tidEnum &&
+            tidEnum <= Tid.TID_FILTER_COIN_5
+    }
+
+    function isFilterVariable(tidEnum: Tid) {
+        return Tid.TID_FILTER_CUP_X_READ <= tidEnum && tidEnum <= Tid.TID_FILTER_CUP_Z_READ
+    }
+
+
+    function isModifierConstant(tidEnum: Tid) {
+        return Tid.TID_MODIFIER_COIN_1 <= tidEnum &&
+            tidEnum <= Tid.TID_MODIFIER_COIN_5
+    }
+
+    function isModifierVariable(tidEnum: Tid) {
+        return Tid.TID_MODIFIER_CUP_X_READ <= tidEnum &&
+            tidEnum <= Tid.TID_MODIFIER_CUP_Z_READ
+    }
+
+    function isTimespan(tidEnum: Tid) {
+        return Tid.TID_FILTER_TIMESPAN_SHORT <= tidEnum &&
+            tidEnum <= Tid.TID_FILTER_TIMESPAN_VERY_LONG
+    }
+
+    function isEmoji(tidEnum: Tid) {
+        return Tid.TID_MODIFIER_EMOJI_GIGGLE <= tidEnum &&
+            tidEnum <= Tid.TID_MODIFIER_EMOJI_YAWN
+    }
+
+    function isPage(tidEnum: Tid) {
+        return Tid.TID_MODIFIER_PAGE_1 <= tidEnum &&
+            tidEnum <= Tid.TID_MODIFIER_PAGE_5
+    }
+
+    function isLedColor(tidEnum: Tid) {
+        return Tid.TID_MODIFIER_RGB_LED_COLOR_1 <= tidEnum &&
+            tidEnum <= Tid.TID_MODIFIER_RGB_LED_COLOR_6
+    }
+    function isLedModifier(tidEnum: Tid) {
+        return isLedColor(tidEnum) || tidEnum == Tid.TID_MODIFIER_RGB_LED_COLOR_RAINBOW ||
+            tidEnum == Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE
+    }
+
+    function isCarModifier(tidEnum: Tid) {
+        return Tid.CAR_MODIFIER_BEGIN <= tidEnum &&
+            tidEnum <= Tid.CAR_MODIFIER_END
+    }
+
     export function isTidNotTerminal(tid: Tid) {
         // the following sensors and actuators are terminal
         if (
@@ -828,9 +895,7 @@ namespace microcode {
         if (!isFilter(tid)) return true
         // the following filters are not terminal
         if (
-            (Tid.TID_FILTER_COIN_1 <= tid && tid <= Tid.TID_FILTER_COIN_5) ||
-            (Tid.TID_FILTER_TIMESPAN_SHORT <= tid &&
-                tid <= Tid.TID_FILTER_TIMESPAN_VERY_LONG) ||
+            isFilterConstant(tid) || isTimespan(tid) ||
             (Tid.TID_FILTER_CUP_X_READ <= tid &&
                 tid <= Tid.TID_FILTER_CUP_Z_READ)
         )
@@ -957,7 +1022,8 @@ namespace microcode {
     }
 
     export function getFieldEditor(tile: TileDefn): FieldEditor {
-        if (tile instanceof ModifierEditor) return tile.fieldEditor
+        if (tile instanceof ModifierEditor)
+            return tile.fieldEditor
         return undefined
     }
 
@@ -996,43 +1062,23 @@ namespace microcode {
 
     export function jdKind(tid: string): JdKind {
         const tidEnum = tidToEnum(tid)
-        if (Tid.TID_FILTER_PIN_0 <= tidEnum && tidEnum <= Tid.TID_FILTER_LOGO)
+        if (isPressReleaseEvent(tidEnum))
             return JdKind.ServiceInstanceIndex
-        if (
-            (Tid.TID_FILTER_LINE_LEFT <= tidEnum &&
-                tidEnum <= Tid.TID_FILTER_LINE_NEITHER_RIGHT) ||
-            (Tid.TID_MODIFIER_COIN_1 <= tidEnum &&
-                tidEnum <= Tid.TID_MODIFIER_COIN_5) ||
-            (Tid.TID_FILTER_COIN_1 <= tidEnum &&
-                tidEnum <= Tid.TID_FILTER_COIN_5)
-        )
+        if (isLineEvent(tidEnum) || isFilterConstant(tidEnum) || isModifierConstant(tidEnum))
             return JdKind.Literal
-        if (
-            Tid.TID_FILTER_TIMESPAN_SHORT <= tidEnum &&
-            tidEnum <= Tid.TID_FILTER_TIMESPAN_VERY_LONG
-        )
+        if (isTimespan(tidEnum))
             return JdKind.Timespan
         if (
-            (Tid.TID_MODIFIER_EMOJI_GIGGLE <= tidEnum &&
-                tidEnum <= Tid.TID_MODIFIER_EMOJI_YAWN) ||
+            isEmoji(tidEnum) ||
             tidEnum == Tid.TID_MODIFIER_ICON_EDITOR ||
             tidEnum == Tid.TID_MODIFIER_MELODY_EDITOR
         )
             return JdKind.ServiceCommandArg
-        if (
-            Tid.TID_MODIFIER_PAGE_1 <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_PAGE_5
-        )
+        if (isPage(tidEnum))    
             return JdKind.Page
-        if (
-            Tid.TID_MODIFIER_RGB_LED_COLOR_1 <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE
-        )
+        if (isLedModifier(tidEnum))
             return JdKind.ExtLibFn
-        if (
-            Tid.CAR_MODIFIER_BEGIN <= tidEnum &&
-            tidEnum <= Tid.CAR_MODIFIER_END
-        )
+        if (isCarModifier(tidEnum))
             return JdKind.NumFmt
         switch (tidEnum) {
             case Tid.TID_MODIFIER_LOOP:
@@ -1093,30 +1139,15 @@ namespace microcode {
 
     export function jdParam(tid: string): any {
         const tidEnum = tidToEnum(tid)
-        if (
-            Tid.TID_MODIFIER_COIN_1 <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_COIN_5
-        )
+        if (isModifierConstant(tidEnum))
             return tidEnum - Tid.TID_MODIFIER_COIN_1 + 1
-        if (
-            Tid.TID_FILTER_COIN_1 <= tidEnum &&
-            tidEnum <= Tid.TID_FILTER_COIN_5
-        )
+        if (isFilterConstant(tidEnum))
             return tidEnum - Tid.TID_FILTER_COIN_1 + 1
-        if (
-            Tid.TID_MODIFIER_PAGE_1 <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_PAGE_5
-        )
+        if (isPage(tidEnum))
             return tidEnum - Tid.TID_MODIFIER_PAGE_1 + 1
-        if (
-            Tid.TID_MODIFIER_RGB_LED_COLOR_1 <= tidEnum &&
-            tidEnum <= Tid.TID_MODIFIER_RGB_LED_COLOR_6
-        )
+        if (isLedColor(tidEnum))
             return "led_solid"
-        if (
-            Tid.CAR_MODIFIER_BEGIN <= tidEnum &&
-            tidEnum <= Tid.CAR_MODIFIER_END
-        )
+        if (isCarModifier(tidEnum))
             return jacs.NumFmt.F64
         switch (tidEnum) {
             case Tid.TID_FILTER_BUTTON_A:
@@ -1311,6 +1342,7 @@ namespace microcode {
         }
         return undefined
     }
+
     export function priority(tid: string): number {
         const tidEnum = tidToEnum(tid)
         if (isFilter(tidEnum)) {
@@ -1393,6 +1425,116 @@ namespace microcode {
                 return 601
         }
         return 1000
+    }
+
+    const only5 = [
+        TID_FILTER_COIN_1,
+        TID_FILTER_COIN_2,
+        TID_FILTER_COIN_3,
+        TID_FILTER_COIN_4,
+        TID_FILTER_COIN_5,
+    ]
+
+    // TODO: break this up, little need for record and lists
+    export function getConstraints(tid: string): Constraints {
+        const tidEnum = tidToEnum(tid)
+        switch (tidEnum) {
+            case Tid.TID_SENSOR_PRESS:
+            case Tid.TID_SENSOR_RELEASE:
+                return  { allow: ["press_event"] }
+            case Tid.TID_SENSOR_START_PAGE:
+                return { allow: ["timespan"] }
+            case Tid.TID_SENSOR_CUP_X_WRITTEN:
+                return { disallow: [Tid.TID_FILTER_CUP_X_READ] }
+            case Tid.TID_SENSOR_CUP_Y_WRITTEN:
+                return { disallow: [Tid.TID_FILTER_CUP_Y_READ] }
+            case Tid.TID_SENSOR_CUP_Z_WRITTEN:
+                return { disallow: [Tid.TID_FILTER_CUP_Z_READ] }  
+            case Tid.TID_SENSOR_RADIO_RECEIVE:
+                return { provides: [Tid.TID_SENSOR_RADIO_RECEIVE] }
+            case Tid.TID_SENSOR_CUP_X_WRITTEN:
+            case Tid.TID_SENSOR_CUP_Y_WRITTEN:
+            case Tid.TID_SENSOR_CUP_Z_WRITTEN:
+            case Tid.TID_SENSOR_RADIO_RECEIVE:
+                return { allow: ["value_in"] }
+            case Tid.TID_SENSOR_SLIDER:
+            case Tid.TID_SENSOR_CAR_WALL:
+            case Tid.TID_SENSOR_MAGNET:
+            case Tid.TID_SENSOR_LIGHT:
+                return { allow: only5 }
+            case Tid.TID_SENSOR_TEMP:
+                return { allow: ["temperature_event"] }
+            case Tid.TID_SENSOR_ROTARY:
+                return { allow: ["rotary_event"] }
+            case Tid.TID_SENSOR_LINE:
+                return { allow: ["line"] }
+            case Tid.TID_SENSOR_TIMER:
+                return { allow: ["timespan"] }
+            case Tid.TID_SENSOR_ACCELEROMETER:
+                return { allow: ["accel_event"] }
+            case Tid.TID_SENSOR_MICROPHONE:
+                return { allow: ["sound_event"] }
+            case Tid.TID_ACTUATOR_PAINT:
+                return { allow: ["icon_editor", "loop"] }
+            case Tid.TID_ACTUATOR_SPEAKER:
+                return { allow: ["sound_emoji", "loop"] }
+            case Tid.TID_ACTUATOR_MUSIC:
+                return { allow: ["melody_editor", "loop"] }
+            case Tid.TID_ACTUATOR_RADIO_SEND:
+            case Tid.TID_ACTUATOR_SHOW_NUMBER:
+            case Tid.TID_ACTUATOR_CUP_X_ASSIGN:
+            case Tid.TID_ACTUATOR_CUP_Y_ASSIGN:
+            case Tid.TID_ACTUATOR_CUP_Z_ASSIGN:
+                return { allow: ["value_out", "constant"] }
+            case Tid.TID_ACTUATOR_RGB_LED:
+                return { allow: ["rgb_led", "loop"] }
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+            case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
+            case Tid.TID_MODIFIER_LOOP:
+                return { only: ["constant"] }   // ahy only and not allow?
+            case Tid.TID_ACTUATOR_SWITCH_PAGE:
+                return { allow: ["page"] }
+            case Tid.TID_ACTUATOR_CAR:
+                return { allow: ["car"] }
+            case Tid.TID_MODIFIER_RADIO_VALUE:
+                return { requires: [Tid.TID_SENSOR_RADIO_RECEIVE] }
+            case Tid.TID_MODIFIER_RANDOM_TOSS:
+                return { allow: ["constant"], disallow: ["value_out"] }
+        }
+        return undefined
+    }
+
+    export function getCategory(tid: string): string {
+        const tidEnum = tidToEnum(tid)
+        if (isPressReleaseEvent(tidEnum)) return "press_event"
+        if (isLineEvent(tidEnum)) return "line"
+        if (isTimespan(tidEnum)) return "timespan"
+        if (isAccelerometerEvent(tidEnum)) return "accel_event"
+        if (isEmoji(tidEnum)) return "sound_emoji"
+        if (isFilterConstant(tidEnum) || isFilterVariable(tidEnum)) return "value_in"
+        if (isModifierConstant(tidEnum)) return "constant"
+        if (isModifierVariable(tidEnum)) return "value_out"
+        if (isPage(tidEnum)) return "page"
+        if (isCarModifier(tidEnum)) return "car"
+        if (isLedModifier(tidEnum)) return "rgb_led"
+        switch (tidEnum) {
+            case Tid.TID_FILTER_ROTARY_LEFT:
+            case Tid.TID_FILTER_ROTARY_RIGHT:
+                return "rotary_event"
+            case Tid.TID_FILTER_TEMP_WARMER:
+            case Tid.TID_FILTER_TEMP_COLDER:
+                return "temperature_event"
+            case Tid.TID_FILTER_LOUD:
+            case Tid.TID_FILTER_QUIET:
+                return "sound_event"
+            case Tid.TID_MODIFIER_LOOP:
+                return "loop"
+            case Tid.TID_MODIFIER_ICON_EDITOR:
+                return "icon_editor"
+            case Tid.TID_MODIFIER_MELODY_EDITOR:
+                return "melody_editor"
+        }
+        return undefined
     }
 
     // TODO: we don't need separate bits for everything.

@@ -843,11 +843,12 @@ namespace jacs {
             let first = true
 
             for (const m of modifiers) {
+                const cat = microcode.getCategory(m.tid)
                 if (
-                    m.category == "value_in" ||
-                    m.category == "value_out" ||
-                    m.category == "constant" ||
-                    m.category == "line"
+                    cat == "value_in" ||
+                    cat == "value_out" ||
+                    cat == "constant" ||
+                    cat == "line"
                 ) {
                     if (this.breaksValSeq(m) && currSeq.length) {
                         this.emitAddSeq(currSeq, trg, 0, first)
