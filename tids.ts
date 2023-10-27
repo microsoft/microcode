@@ -961,11 +961,11 @@ namespace microcode {
 
     export function jdKind(tid: string): JdKind {
         const tidEnum = tidToEnum(tid)
-        if (Tid.TID_FILTER_PIN_0 < tidEnum && tidEnum < Tid.TID_FILTER_LOGO)
+        if (Tid.TID_FILTER_PIN_0 <= tidEnum && tidEnum <= Tid.TID_FILTER_LOGO)
             return JdKind.ServiceInstanceIndex
         if (
-            (Tid.TID_FILTER_LINE_LEFT < tidEnum &&
-                tidEnum < Tid.TID_FILTER_LINE_NEITHER_RIGHT) ||
+            (Tid.TID_FILTER_LINE_LEFT <= tidEnum &&
+                tidEnum <= Tid.TID_FILTER_LINE_NEITHER_RIGHT) ||
             (Tid.TID_MODIFIER_COIN_1 <= tidEnum &&
                 tidEnum <= Tid.TID_MODIFIER_COIN_5) ||
             (Tid.TID_FILTER_COIN_1 <= tidEnum &&
