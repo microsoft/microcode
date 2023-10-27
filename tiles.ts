@@ -103,13 +103,11 @@ namespace microcode {
             TID_FILTER_COIN_5,
         ]
         const slider = makeSensor(TID_SENSOR_SLIDER, "value_in")
-        slider.constraints = {}
-        slider.constraints.allow = only5
+        slider.constraints = { allow: only5 }
 
         if (CAR_TILES) {
             const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in")
-            wall.constraints = {}
-            wall.constraints.allow = only5
+            wall.constraints = slider.constraints
         }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in")
@@ -214,8 +212,7 @@ namespace microcode {
         ])
 
         const radio_set_group = addActuator(TID_ACTUATOR_RADIO_SET_GROUP, [])
-        radio_set_group.constraints = {}
-        radio_set_group.constraints.only = ["constant"]
+        radio_set_group.constraints = { only: ["constant"] }
 
         const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE, ["page"])
 
@@ -243,7 +240,6 @@ namespace microcode {
         emojis.forEach((e, idx) => {
             const tid = "M19" + e
             const emoji_mod = new ModifierDefn(tid, "sound_emoji")
-            // emoji_mod.jdParam2 = emoji_ms[idx]
             tilesDB.modifiers[tid] = emoji_mod
         })
 
