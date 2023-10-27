@@ -40,9 +40,7 @@ namespace microcode {
         function addPress(tid: string) {
             const press_event = new SensorDefn(tid)
             press_event.constraints = {
-                allow: {
-                    categories: ["press_event"],
-                },
+                allow: ["press_event"],
             }
             tilesDB.sensors[tid] = press_event
         }
@@ -52,11 +50,7 @@ namespace microcode {
 
         function addPressFilter(tid: string) {
             const press_filter = new FilterDefn(tid, "press_event")
-            press_filter.constraints = {
-                allow: {
-                    categories: ["press_event"],
-                },
-            }
+            press_filter.constraints = { allow: ["press_event"] }
             tilesDB.filters[tid] = press_filter
             return press_filter
         }
@@ -75,9 +69,7 @@ namespace microcode {
         function makeSensor(tid: string, cat: string) {
             const tile = new SensorDefn(tid)
             tile.constraints = {
-                allow: {
-                    categories: [cat],
-                },
+                allow: [cat],
             }
             tilesDB.sensors[tid] = tile
             return tile
@@ -87,19 +79,19 @@ namespace microcode {
 
         addButtonTiles()
 
-        function makeCupSensor(tid: string, disallow: string) {
+        function makeCupSensor(tid: string, disallow: number) {
             const tile = makeSensor(tid, "value_in")
-            tile.constraints.disallow = { tiles: [disallow] }
+            tile.constraints.disallow = [disallow]
         }
 
-        makeCupSensor(TID_SENSOR_CUP_X_WRITTEN, TID_FILTER_CUP_X_READ)
-        makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, TID_FILTER_CUP_Y_READ)
-        makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, TID_FILTER_CUP_Z_READ)
+        makeCupSensor(TID_SENSOR_CUP_X_WRITTEN, Tid.TID_FILTER_CUP_X_READ)
+        makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN, Tid.TID_FILTER_CUP_Y_READ)
+        makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN, Tid.TID_FILTER_CUP_Z_READ)
 
         const temp = makeSensor(TID_SENSOR_TEMP, "temperature_event")
 
         const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE, "value_in")
-        radio_recv.constraints.provides = [TID_SENSOR_RADIO_RECEIVE]
+        radio_recv.constraints.provides = [Tid.TID_SENSOR_RADIO_RECEIVE]
 
         // the following three tiles are treated similarly, as
         // the sensor values are mapped into [1,2,3,4,5]
@@ -111,13 +103,13 @@ namespace microcode {
             TID_FILTER_COIN_5,
         ]
         const slider = makeSensor(TID_SENSOR_SLIDER, "value_in")
-        slider.constraints.allow.categories = []
-        slider.constraints.allow.tiles = only5
+        slider.constraints = {}
+        slider.constraints.allow = only5
 
         if (CAR_TILES) {
             const wall = makeSensor(TID_SENSOR_CAR_WALL, "value_in")
-            wall.constraints.allow.categories = []
-            wall.constraints.allow.tiles = only5
+            wall.constraints = {}
+            wall.constraints.allow = only5
         }
 
         const magnet = makeSensor(TID_SENSOR_MAGNET, "value_in")
@@ -150,14 +142,12 @@ namespace microcode {
             )
 
             const line = makeSensor(TID_SENSOR_LINE, "line")
-            line.constraints.allow.categories = ["line"]
+            line.constraints.allow = ["line"]
         }
 
         const timer = new SensorDefn(TID_SENSOR_TIMER)
         timer.constraints = {
-            allow: {
-                categories: ["timespan"],
-            },
+            allow: ["timespan"],
         }
         tilesDB.sensors[TID_SENSOR_TIMER] = timer
 
@@ -172,9 +162,7 @@ namespace microcode {
 
         const accel = new SensorDefn(TID_SENSOR_ACCELEROMETER)
         accel.constraints = {
-            allow: {
-                categories: ["accel_event"],
-            },
+            allow: ["accel_event"],
         }
         tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
 
@@ -193,9 +181,7 @@ namespace microcode {
 
         const microphone = new SensorDefn(TID_SENSOR_MICROPHONE)
         microphone.constraints = {
-            allow: {
-                categories: ["sound_event"],
-            },
+            allow: ["sound_event"],
         }
         tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
         function addSoundFilter(tid: string) {
@@ -210,9 +196,7 @@ namespace microcode {
         function addActuator(tid: string, allows: string[]) {
             const actuator = new ActuatorDefn(tid)
             actuator.constraints = {
-                allow: {
-                    categories: allows,
-                },
+                allow: allows,
             }
             tilesDB.actuators[tid] = actuator
             return actuator
@@ -349,15 +333,15 @@ namespace microcode {
         addReadValue(TID_MODIFIER_CUP_Z_READ)
 
         const radio_value = addReadValue(TID_MODIFIER_RADIO_VALUE)
-        radio_value.constraints = { requires: [TID_SENSOR_RADIO_RECEIVE] }
+        radio_value.constraints = { requires: [Tid.TID_SENSOR_RADIO_RECEIVE] }
 
         const temperature_value = addReadValue(TID_MODIFIER_TEMP_READ)
         temperature_value.constraints = {}
 
         const random_toss = addReadValue(TID_MODIFIER_RANDOM_TOSS)
         random_toss.constraints = {}
-        random_toss.constraints.allow = { categories: ["constant"] }
-        random_toss.constraints.disallow = { categories: ["value_out"] }
+        random_toss.constraints.allow = ["constant"]
+        random_toss.constraints.disallow = ["value_out"]
 
         const loop = new ModifierDefn(TID_MODIFIER_LOOP, "loop")
         tilesDB.modifiers[TID_MODIFIER_LOOP] = loop

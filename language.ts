@@ -1,17 +1,12 @@
 namespace microcode {
     // TODO: make into class
+
     export interface Constraints {
-        provides?: string[]
-        requires?: string[]
+        provides?: number[]
+        requires?: number[]
         only?: string[]
-        allow?: {
-            tiles?: string[]
-            categories?: string[]
-        }
-        disallow?: {
-            tiles?: string[]
-            categories?: string[]
-        }
+        allow?: (string | number)[]
+        disallow?: (string | number)[]
     }
 
     export class FieldEditor {
@@ -104,20 +99,10 @@ namespace microcode {
                 src.only.forEach(item => dst.only.push(item))
             }
             if (src.allow) {
-                ;(src.allow.tiles || []).forEach(item =>
-                    dst.allow.tiles.push(item)
-                )
-                ;(src.allow.categories || []).forEach(item =>
-                    dst.allow.categories.push(item)
-                )
+                src.allow.forEach(item => dst.allow.push(item))
             }
             if (src.disallow) {
-                ;(src.disallow.tiles || []).forEach(item =>
-                    dst.disallow.tiles.push(item)
-                )
-                ;(src.disallow.categories || []).forEach(item =>
-                    dst.disallow.categories.push(item)
-                )
+                src.allow.forEach(item => dst.allow.push(item))
             }
         }
 
@@ -139,7 +124,7 @@ namespace microcode {
     export class SensorDefn extends StmtTileDefn {}
 
     export class FilterModifierBase extends TileDefn {
-        constructor(tid: string, public category: string) {
+        constructor(tid: string, public category: string | number) {
             super(tid)
         }
 
@@ -157,14 +142,16 @@ namespace microcode {
             if (only) return true
             if (c.only.length) return false
 
-            const allows =
-                c.allow.categories.some(cat => cat === this.category) ||
-                c.allow.tiles.some(tid => tid === this.tid)
+            const allows = c.allow.some(
+                cat =>
+                    cat === this.category ||
+                    tidToEnum(this.tid) === this.category
+            )
             if (!allows) return false
 
-            const disallows =
-                !c.disallow.categories.some(cat => cat === this.category) &&
-                !c.disallow.tiles.some(tid => tid === this.tid)
+            const disallows = !c.disallow.some(
+                cat => cat === this.category || this.tid === this.category
+            )
             if (!disallows) return false
 
             return true
@@ -442,14 +429,8 @@ namespace microcode {
             provides: [],
             only: [],
             requires: [],
-            allow: {
-                tiles: [],
-                categories: [],
-            },
-            disallow: {
-                tiles: [],
-                categories: [],
-            },
+            allow: [],
+            disallow: [],
         }
         return c
     }
