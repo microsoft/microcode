@@ -1520,6 +1520,7 @@ namespace microcode {
                 return "melody_editor"
             case Tid.TID_MODIFIER_RANDOM_TOSS:
             case Tid.TID_MODIFIER_TEMP_READ:
+            case Tid.TID_MODIFIER_RADIO_VALUE:
                 return "value_out"
         }
         return undefined
