@@ -49,6 +49,7 @@
         "gallery.ts",
         "pointerevents.ts",
         "tooltips.ts",
+        "utils.ts",
         "robot/protocol.ts"
     ],
     "testFiles": [],

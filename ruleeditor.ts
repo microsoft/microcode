@@ -120,65 +120,67 @@ namespace microcode {
             if (changed) this.editor.changed()
         }
 
+        private processSection(name: string, rule: RuleRep) {
+            const tiles = rule[name]
+            tiles.forEach((tile, index) => {
+                const tid = getTid(tile)
+                const button = new Button({
+                    parent: this,
+                    style: buttonStyle(tile),
+                    icon: getIcon(tile),
+                    ariaId: enumToTid(getTid(tile)),
+                    x: 0,
+                    y: 0,
+                    onClick: () => this.editTile(name, index),
+                })
+                if (name == "filters" && index == 0) {
+                    const sensor = this.ruledef.sensors[0]
+                    // TODO: this logic should be part of the SensorTileDefn
+                    if (
+                        (jdKind(sensor) == JdKind.Radio &&
+                            sensor != Tid.TID_SENSOR_LINE) ||
+                        jdKind(sensor) == JdKind.Variable
+                    ) {
+                        const plus = new Button({
+                            parent: this,
+                            style: buttonStyle(tile),
+                            icon: "arith_equals",
+                            ariaId: "arith_equals",
+                            x: 0,
+                            y: 0,
+                        })
+                        this.ruleButtons[name].push(plus)
+                    }
+                }
+                this.ruleButtons[name].push(button)
+                if (index < tiles.length - 1) {
+                    if (
+                        (jdKind(tile) == JdKind.Literal ||
+                            jdKind(tile) == JdKind.Variable) &&
+                        (jdKind(tiles[index + 1]) == JdKind.Literal ||
+                            jdKind(tiles[index + 1]) == JdKind.Variable ||
+                            jdKind(tiles[index + 1]) == JdKind.RandomToss)
+                    ) {
+                        const plus = new Button({
+                            parent: this,
+                            style: buttonStyle(tile),
+                            icon: "arith_plus",
+                            ariaId: "arith_plus",
+                            x: 0,
+                            y: 0,
+                        })
+                        this.ruleButtons[name].push(plus)
+                    }
+                }
+            })
+            return tiles.length > 0
+        }
         private instantiateProgramTiles() {
             this.destroyProgramTiles()
             const rule = this.ruledef.getRuleRep()
             let changed = false
-            repNames().forEach(name => {
-                const tiles = rule[name]
-                tiles.forEach((tile, index) => {
-                    const button = new Button({
-                        parent: this,
-                        style: buttonStyle(tile.tid),
-                        icon: tile.getIcon(),
-                        ariaId: tile.tid,
-                        x: 0,
-                        y: 0,
-                        onClick: () => this.editTile(name, index),
-                    })
-                    if (name == "filters" && index == 0) {
-                        const sensor = rule["sensors"][0]
-                        // TODO: this logic should be part of the SensorTileDefn
-                        if (
-                            (jdKind(sensor.tid) == JdKind.Radio &&
-                                sensor.tid != TID_SENSOR_LINE) ||
-                            jdKind(sensor.tid) == JdKind.Variable
-                        ) {
-                            const plus = new Button({
-                                parent: this,
-                                style: buttonStyle(tile.tid),
-                                icon: "arith_equals",
-                                ariaId: "arith_equals",
-                                x: 0,
-                                y: 0,
-                            })
-                            this.ruleButtons[name].push(plus)
-                        }
-                    }
-                    this.ruleButtons[name].push(button)
-                    if (index < tiles.length - 1) {
-                        if (
-                            (jdKind(tile.tid) == JdKind.Literal ||
-                                jdKind(tile.tid) == JdKind.Variable) &&
-                            (jdKind(tiles[index + 1].tid) == JdKind.Literal ||
-                                jdKind(tiles[index + 1].tid) ==
-                                    JdKind.Variable ||
-                                jdKind(tiles[index + 1].tid) ==
-                                    JdKind.RandomToss)
-                        ) {
-                            const plus = new Button({
-                                parent: this,
-                                style: buttonStyle(tile.tid),
-                                icon: "arith_plus",
-                                ariaId: "arith_plus",
-                                x: 0,
-                                y: 0,
-                            })
-                            this.ruleButtons[name].push(plus)
-                        }
-                    }
-                    changed = true
-                })
+            Object.keys(rule).forEach(name => {
+                changed = this.processSection(name, rule) || changed
             })
             this.needsWhenInsert()
             this.needsDoInsert()
@@ -230,9 +232,8 @@ namespace microcode {
                 while (index < ruleTiles.length) {
                     const suggestions = this.getSuggestions(name, index)
                     const compatible = suggestions.find(
-                        t => t.tid == ruleTiles[index].tid
+                        t => getTid(t) == getTid(ruleTiles[index])
                     )
-
                     if (compatible) index++
                     else {
                         ruleTiles.splice(index, ruleTiles.length - index)
@@ -252,14 +253,14 @@ namespace microcode {
 
         private editTile(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
-            const tileUpdated = (tile: TileDefn) => {
+            const tileUpdated = (tile: Tile) => {
                 const editedAdded = !!tile
                 if (tile) {
                     if (index >= ruleTiles.length) {
-                        reportEvent("tile.add", { tid: tile.tid })
+                        reportEvent("tile.add", { tid: getTid(tile) })
                         ruleTiles.push(tile)
                     } else {
-                        reportEvent("tile.update", { tid: tile.tid })
+                        reportEvent("tile.update", { tid: getTid(tile) })
                         ruleTiles[index] = tile
                         if (name == "sensors")
                             this.deleteIncompatibleTiles("filters", 0)
@@ -282,8 +283,8 @@ namespace microcode {
                 }
                 this.page.changed()
             }
-            const newFieldEditor = (tile: TileDefn, del = false) => {
-                const newOne = del ? tile : tile.getNewInstance()
+            const newFieldEditor = (tile: Tile, del = false) => {
+                const newOne = del ? tile : getNewInstance(tile)
                 const fieldEditor = getFieldEditor(newOne)
                 this.editor.captureBackground()
                 fieldEditor.editor(
@@ -306,9 +307,9 @@ namespace microcode {
                 return
             }
             const suggestions = this.getSuggestions(name, index)
-            const btns: PickerButtonDef[] = suggestions.map(elem => {
+            const btns: PickerButtonDef[] = suggestions.map(tile => {
                 return {
-                    icon: <string>elem.getIcon(),
+                    icon: <string>getIcon(tile),
                 }
             })
             // special case for field editor
@@ -327,7 +328,7 @@ namespace microcode {
                     tileUpdated(undefined)
                 }
                 const selected = btns.indexOf(
-                    btns.find(b => b.icon === ruleTiles[index].tid)
+                    btns.find(b => b.icon === ruleTiles[index].tid) // TODO
                 )
                 if (selected >= 0) {
                     selectedButton = selected

@@ -1,308 +1,8 @@
 namespace microcode {
-    type SensorMap = { [id: string]: SensorDefn }
-    type FilterMap = { [id: string]: FilterDefn }
-    type ActuatorMap = { [id: string]: ActuatorDefn }
-    type ModifierMap = { [id: string]: ModifierDefn }
-    export type TileDefnMap = { [id: string]: TileDefn }
 
-    export type TileDatabase = {
-        [id: string]: TileDefnMap
-        sensors: SensorMap
-        filters: FilterMap
-        actuators: ActuatorMap
-        modifiers: ModifierMap
-    }
-
-    export function PAGE_IDS() {
-        return [
-            TID_MODIFIER_PAGE_1,
-            TID_MODIFIER_PAGE_2,
-            TID_MODIFIER_PAGE_3,
-            TID_MODIFIER_PAGE_4,
-            TID_MODIFIER_PAGE_5,
-        ]
-    }
 
     export function diskSlots() {
         return ["disk1", "disk2", "disk3"]
-    }
-
-    export const tilesDB: TileDatabase = {
-        sensors: {},
-        filters: {},
-        actuators: {},
-        modifiers: {},
-    }
-
-    // initialize the database, imperatively!!!
-
-    function addButtonTiles() {
-        function addPress(tid: string) {
-            const press_event = new SensorDefn(tid)
-            tilesDB.sensors[tid] = press_event
-        }
-
-        addPress(TID_SENSOR_PRESS)
-        addPress(TID_SENSOR_RELEASE)
-
-        function addPressFilter(tid: string) {
-            const press_filter = new FilterDefn(tid)
-            tilesDB.filters[tid] = press_filter
-            return press_filter
-        }
-
-        addPressFilter(TID_FILTER_BUTTON_A)
-        addPressFilter(TID_FILTER_BUTTON_B)
-        addPressFilter(TID_FILTER_LOGO)
-        addPressFilter(TID_FILTER_PIN_0)
-        addPressFilter(TID_FILTER_PIN_1)
-        addPressFilter(TID_FILTER_PIN_2)
-        const kitA_1 = addPressFilter(TID_FILTER_KITA_KEY_1)
-        const kitA_2 = addPressFilter(TID_FILTER_KITA_KEY_2)
-    }
-
-    function addSensorAndFilterTiles() {
-        function makeSensor(tid: string) {
-            const tile = new SensorDefn(tid)
-            tilesDB.sensors[tid] = tile
-            return tile
-        }
-
-        makeSensor(TID_SENSOR_START_PAGE)
-
-        addButtonTiles()
-
-        function makeCupSensor(tid: string) {
-            const tile = makeSensor(tid)
-        }
-
-        makeCupSensor(TID_SENSOR_CUP_X_WRITTEN)
-        makeCupSensor(TID_SENSOR_CUP_Y_WRITTEN)
-        makeCupSensor(TID_SENSOR_CUP_Z_WRITTEN)
-
-        const temp = makeSensor(TID_SENSOR_TEMP)
-
-        const radio_recv = makeSensor(TID_SENSOR_RADIO_RECEIVE)
-
-
-        // the following three tiles are treated similarly, as
-        // the sensor values are mapped into [1,2,3,4,5]
-        const only5 = [
-            TID_FILTER_COIN_1,
-            TID_FILTER_COIN_2,
-            TID_FILTER_COIN_3,
-            TID_FILTER_COIN_4,
-            TID_FILTER_COIN_5,
-        ]
-        const slider = makeSensor(TID_SENSOR_SLIDER)
-
-        if (CAR_TILES) {
-            const wall = makeSensor(TID_SENSOR_CAR_WALL)
-        }
-        const magnet = makeSensor(TID_SENSOR_MAGNET)
-        const light = makeSensor(TID_SENSOR_LIGHT)
-            
-        const rotary = makeSensor(TID_SENSOR_ROTARY)
-
-        function addEvent(tid: string) {
-            const ev = new FilterDefn(tid)
-            tilesDB.filters[tid] = ev
-            return ev
-        }
-        addEvent(TID_FILTER_ROTARY_LEFT)
-        addEvent(TID_FILTER_ROTARY_RIGHT)
-        addEvent(TID_FILTER_TEMP_WARMER)
-        addEvent(TID_FILTER_TEMP_COLDER)
-
-        if (CAR_TILES) {
-            const both = addEvent(TID_FILTER_LINE_BOTH)
-            const left = addEvent(TID_FILTER_LINE_LEFT)
-            const right = addEvent(TID_FILTER_LINE_RIGHT)
-            const neither = addEvent(TID_FILTER_LINE_NEITHER)
-            const neither_left = addEvent(TID_FILTER_LINE_NEITHER_LEFT)
-            const neither_right = addEvent(
-                TID_FILTER_LINE_NEITHER_RIGHT,
-            )
-
-            const line = makeSensor(TID_SENSOR_LINE)
-        }
-
-        const timer = new SensorDefn(TID_SENSOR_TIMER)
-        tilesDB.sensors[TID_SENSOR_TIMER] = timer
-
-        function addTimespan(tid: string) {
-            const timespan = new FilterDefn(tid)
-            tilesDB.filters[tid] = timespan
-        }
-        addTimespan(TID_FILTER_TIMESPAN_SHORT)
-        addTimespan(TID_FILTER_TIMESPAN_LONG)
-        addTimespan(TID_FILTER_TIMESPAN_VERY_LONG)
-        addTimespan(TID_FILTER_TIMESPAN_RANDOM)
-
-        const accel = new SensorDefn(TID_SENSOR_ACCELEROMETER)
-        tilesDB.sensors[TID_SENSOR_ACCELEROMETER] = accel
-
-        function addAccelEvent(name: string) {
-            const tid = TID_FILTER_ACCEL + "_" + name
-            const accelEvent = new FilterDefn(tid)
-            tilesDB.filters[tid] = accelEvent
-            return accelEvent
-        }
-
-        addAccelEvent("shake")
-        addAccelEvent("tilt_up")
-        addAccelEvent("tilt_down")
-        addAccelEvent("tilt_left")
-        addAccelEvent("tilt_right")
-
-        const microphone = new SensorDefn(TID_SENSOR_MICROPHONE)
-        tilesDB.sensors[TID_SENSOR_MICROPHONE] = microphone
-        function addSoundFilter(tid: string) {
-            const soundFilter = new FilterDefn(tid)
-            tilesDB.filters[tid] = soundFilter
-        }
-        addSoundFilter(TID_FILTER_LOUD)
-        addSoundFilter(TID_FILTER_QUIET)
-    }
-
-    function addActuatorAndModifierTiles() {
-        function addActuator(tid: string) {
-            const actuator = new ActuatorDefn(tid)
-            tilesDB.actuators[tid] = actuator
-            return actuator
-        }
-
-        // these are in order (see priority field) as will be shown in the dialog
-        const paint = addActuator(TID_ACTUATOR_PAINT)
-        const showNum = addAssign(TID_ACTUATOR_SHOW_NUMBER)
-        const emoji = addActuator(TID_ACTUATOR_SPEAKER)
-        const music = addActuator(TID_ACTUATOR_MUSIC)
-
-        const radio_send = addActuator(TID_ACTUATOR_RADIO_SEND)
-
-        const radio_set_group = addActuator(TID_ACTUATOR_RADIO_SET_GROUP)
-
-        const swtch = addActuator(TID_ACTUATOR_SWITCH_PAGE)
-
-        function addAssign(tid: string) {
-            const theVar = addActuator(tid)
-            return theVar
-        }
-
-        addAssign(TID_ACTUATOR_CUP_X_ASSIGN)
-        addAssign(TID_ACTUATOR_CUP_Y_ASSIGN)
-        addAssign(TID_ACTUATOR_CUP_Z_ASSIGN)
-
-        const emojis = [
-            "giggle",
-            "happy",
-            "hello",
-            "mysterious",
-            "sad",
-            "slide",
-            "soaring",
-            "spring",
-            "twinkle",
-            "yawn",
-        ]
-        emojis.forEach((e, idx) => {
-            const tid = "M19" + e
-            const emoji_mod = new ModifierDefn(tid)
-            tilesDB.modifiers[tid] = emoji_mod
-        })
-
-        function make_vals(
-            values: number[],
-            kind: string,
-            start: number
-        ) {
-            const tiles: FilterModifierBase[] = []
-            values.forEach((v, index) => {
-                const tid = kind + (start + index)
-                const tile: FilterModifierBase =
-                    kind == "F"
-                        ? new FilterDefn(tid)
-                        : new ModifierDefn(tid)
-                if (kind == "F") tilesDB.filters[tid] = tile as FilterDefn
-                else tilesDB.modifiers[tid] = tile
-                tiles.push(tile)
-            })
-            return tiles
-        }
-
-        const one_to_five = [1, 2, 3, 4, 5]
-        make_vals(one_to_five, "F", 8)
-        make_vals(one_to_five, "M", 6)
-        make_vals(one_to_five, "M", 1)
-
-        if (CAR_TILES) {
-            const car_commands = [
-                microcode.robots.RobotCompactCommand.MotorRunForward,
-                microcode.robots.RobotCompactCommand.MotorRunBackward,
-                microcode.robots.RobotCompactCommand.MotorTurnLeft,
-                microcode.robots.RobotCompactCommand.MotorTurnRight,
-                microcode.robots.RobotCompactCommand.MotorStop,
-                microcode.robots.RobotCompactCommand.MotorRunForwardFast,
-                microcode.robots.RobotCompactCommand.MotorSpinLeft,
-                microcode.robots.RobotCompactCommand.MotorSpinRight,
-                microcode.robots.RobotCompactCommand.LEDRed,
-                microcode.robots.RobotCompactCommand.LEDGreen,
-                microcode.robots.RobotCompactCommand.LEDBlue,
-                microcode.robots.RobotCompactCommand.LEDOff,
-                microcode.robots.RobotCompactCommand.ArmOpen,
-                microcode.robots.RobotCompactCommand.ArmClose,
-            ]
-            make_vals(car_commands, "CAR", 1)
-
-            const car = addActuator(TID_ACTUATOR_CAR)
-        }
-
-        function addRGB(id: number) {
-            const tid = TID_MODIFIER_RGB_LED_COLOR_X + id
-            const mod = new ModifierDefn(tid)
-            tilesDB.modifiers[tid] = mod
-        }
-
-        ;[1, 2, 3, 4, 5, 6].map(addRGB)
-
-        function addAnim(name: string) {
-            const tid = TID_MODIFIER_RGB_LED_COLOR_X + name
-            const mod = new ModifierDefn(tid)
-            tilesDB.modifiers[tid] = mod
-        }
-
-        addAnim("sparkle")
-        addAnim("rainbow")
-
-        addActuator(TID_ACTUATOR_RGB_LED)
-        addActuator(TID_ACTUATOR_SERVO_SET_ANGLE)
-
-        function addFilterReadValue(tid: string) {
-            const filter = new FilterDefn(tid)
-            tilesDB.filters[tid] = filter
-            return filter
-        }
-        addFilterReadValue(TID_FILTER_CUP_X_READ)
-        addFilterReadValue(TID_FILTER_CUP_Y_READ)
-        addFilterReadValue(TID_FILTER_CUP_Z_READ)
-
-        function addReadValue(tid: string) {
-            const mod = new ModifierDefn(tid)
-            tilesDB.modifiers[tid] = mod
-            return mod
-        }
-        addReadValue(TID_MODIFIER_CUP_X_READ)
-        addReadValue(TID_MODIFIER_CUP_Y_READ)
-        addReadValue(TID_MODIFIER_CUP_Z_READ)
-
-        const radio_value = addReadValue(TID_MODIFIER_RADIO_VALUE)
-
-        const temperature_value = addReadValue(TID_MODIFIER_TEMP_READ)
-
-        const random_toss = addReadValue(TID_MODIFIER_RANDOM_TOSS)
-
-        const loop = new ModifierDefn(TID_MODIFIER_LOOP)
-        tilesDB.modifiers[TID_MODIFIER_LOOP] = loop
     }
 
     export class IconFieldEditor extends FieldEditor {
@@ -354,15 +54,28 @@ namespace microcode {
         }
     }
 
-    export class ModifierEditor extends ModifierDefn {
+    export class ModifierEditor {
+        constructor(public tid: number) {}
         fieldEditor: FieldEditor
+        getField(): any {
+            return null
+        }
+        getIcon(): string | Image {
+            return null
+        }
+        getNewInstance(field: any = null): ModifierEditor {
+            return null
+        }
+        serviceCommandArg(): Buffer {
+            return null
+        }
     }
 
     export class IconEditor extends ModifierEditor {
         field: Image
         firstInstance: boolean
         constructor(field: Image = null) {
-            super(TID_MODIFIER_ICON_EDITOR)
+            super(Tid.TID_MODIFIER_ICON_EDITOR)
             this.firstInstance = false
             this.fieldEditor = new IconFieldEditor()
             this.field = this.fieldEditor.clone(
@@ -484,7 +197,7 @@ namespace microcode {
         field: Melody
         firstInstance: boolean
         constructor(field: Melody = null) {
-            super(TID_MODIFIER_MELODY_EDITOR)
+            super(Tid.TID_MODIFIER_MELODY_EDITOR)
             this.firstInstance = false
             this.fieldEditor = new MelodyFieldEditor()
             this.field = this.fieldEditor.clone(
@@ -517,20 +230,11 @@ namespace microcode {
         }
     }
 
+    // TODO
     function addFieldEditors() {
         const iconEditorTile = new IconEditor()
         iconEditorTile.firstInstance = true
-        tilesDB.modifiers[TID_MODIFIER_ICON_EDITOR] = iconEditorTile
         const melodyEditorTile = new MelodyEditor()
         melodyEditorTile.firstInstance = true
-        tilesDB.modifiers[TID_MODIFIER_MELODY_EDITOR] = melodyEditorTile
     }
-
-    function addTiles() {
-        addSensorAndFilterTiles()
-        addActuatorAndModifierTiles()
-        addFieldEditors()
-    }
-
-    addTiles()
 }

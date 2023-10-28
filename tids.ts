@@ -303,257 +303,6 @@ namespace microcode {
         MODIFER_END = 203,
     }
 
-    export function tidToEnum(t: string) {
-        switch (t) {
-            case TID_SENSOR_START_PAGE:
-                return Tid.TID_SENSOR_START_PAGE
-            case TID_SENSOR_PRESS:
-                return Tid.TID_SENSOR_PRESS
-            case TID_SENSOR_RELEASE:
-                return Tid.TID_SENSOR_RELEASE
-            case TID_SENSOR_ACCELEROMETER:
-                return Tid.TID_SENSOR_ACCELEROMETER
-            case TID_SENSOR_TIMER:
-                return Tid.TID_SENSOR_TIMER
-            case TID_SENSOR_LIGHT:
-                return Tid.TID_SENSOR_LIGHT
-            case TID_SENSOR_TEMP:
-                return Tid.TID_SENSOR_TEMP
-            case TID_SENSOR_RADIO_RECEIVE:
-                return Tid.TID_SENSOR_RADIO_RECEIVE
-            case TID_SENSOR_MICROPHONE:
-                return Tid.TID_SENSOR_MICROPHONE
-            case TID_SENSOR_CUP_X_WRITTEN:
-                return Tid.TID_SENSOR_CUP_X_WRITTEN
-            case TID_SENSOR_CUP_Y_WRITTEN:
-                return Tid.TID_SENSOR_CUP_Y_WRITTEN
-            case TID_SENSOR_CUP_Z_WRITTEN:
-                return Tid.TID_SENSOR_CUP_Z_WRITTEN
-            case TID_SENSOR_MAGNET:
-                return Tid.TID_SENSOR_MAGNET
-            case TID_SENSOR_SLIDER:
-                return Tid.TID_SENSOR_SLIDER
-            case TID_SENSOR_ROTARY:
-                return Tid.TID_SENSOR_ROTARY
-            case TID_SENSOR_CAR_WALL:
-                return Tid.TID_SENSOR_CAR_WALL
-            case TID_SENSOR_LINE:
-                return Tid.TID_SENSOR_LINE
-            case TID_FILTER_PIN_0:
-                return Tid.TID_FILTER_PIN_0
-            case TID_FILTER_PIN_1:
-                return Tid.TID_FILTER_PIN_1
-            case TID_FILTER_PIN_2:
-                return Tid.TID_FILTER_PIN_2
-            case TID_FILTER_BUTTON_A:
-                return Tid.TID_FILTER_BUTTON_A
-            case TID_FILTER_BUTTON_B:
-                return Tid.TID_FILTER_BUTTON_B
-            case TID_FILTER_KITA_KEY_1:
-                return Tid.TID_FILTER_KITA_KEY_1
-            case TID_FILTER_KITA_KEY_2:
-                return Tid.TID_FILTER_KITA_KEY_2
-            case TID_FILTER_LOGO:
-                return Tid.TID_FILTER_LOGO
-            case TID_FILTER_COIN_1:
-                return Tid.TID_FILTER_COIN_1
-            case TID_FILTER_COIN_2:
-                return Tid.TID_FILTER_COIN_2
-            case TID_FILTER_COIN_3:
-                return Tid.TID_FILTER_COIN_3
-            case TID_FILTER_COIN_4:
-                return Tid.TID_FILTER_COIN_4
-            case TID_FILTER_COIN_5:
-                return Tid.TID_FILTER_COIN_5
-            case TID_FILTER_TIMESPAN_SHORT:
-                return Tid.TID_FILTER_TIMESPAN_SHORT
-            case TID_FILTER_TIMESPAN_LONG:
-                return Tid.TID_FILTER_TIMESPAN_LONG
-            case TID_FILTER_LOUD:
-                return Tid.TID_FILTER_LOUD
-            case TID_FILTER_QUIET:
-                return Tid.TID_FILTER_QUIET
-            case TID_FILTER_ACCEL:
-                return Tid.TID_FILTER_ACCEL
-            case TID_FILTER_ACCEL_SHAKE:
-                return Tid.TID_FILTER_ACCEL_SHAKE
-            case TID_FILTER_ACCEL_TILT_UP:
-                return Tid.TID_FILTER_ACCEL_TILT_UP
-            case TID_FILTER_ACCEL_TILT_DOWN:
-                return Tid.TID_FILTER_ACCEL_TILT_DOWN
-            case TID_FILTER_ACCEL_TILT_LEFT:
-                return Tid.TID_FILTER_ACCEL_TILT_LEFT
-            case TID_FILTER_ACCEL_TILT_RIGHT:
-                return Tid.TID_FILTER_ACCEL_TILT_RIGHT
-            case TID_FILTER_TIMESPAN_RANDOM:
-                return Tid.TID_FILTER_TIMESPAN_RANDOM
-            case TID_FILTER_TIMESPAN_VERY_LONG:
-                return Tid.TID_FILTER_TIMESPAN_VERY_LONG
-            case TID_FILTER_CUP_X_READ:
-                return Tid.TID_FILTER_CUP_X_READ
-            case TID_FILTER_CUP_Y_READ:
-                return Tid.TID_FILTER_CUP_Y_READ
-            case TID_FILTER_CUP_Z_READ:
-                return Tid.TID_FILTER_CUP_Z_READ
-            case TID_FILTER_ROTARY_LEFT:
-                return Tid.TID_FILTER_ROTARY_LEFT
-            case TID_FILTER_ROTARY_RIGHT:
-                return Tid.TID_FILTER_ROTARY_RIGHT
-            case TID_FILTER_TEMP_WARMER:
-                return Tid.TID_FILTER_TEMP_WARMER
-            case TID_FILTER_TEMP_COLDER:
-                return Tid.TID_FILTER_TEMP_COLDER
-            case TID_FILTER_LINE_LEFT:
-                return Tid.TID_FILTER_LINE_LEFT
-            case TID_FILTER_LINE_RIGHT:
-                return Tid.TID_FILTER_LINE_RIGHT
-            case TID_FILTER_LINE_BOTH:
-                return Tid.TID_FILTER_LINE_BOTH
-            case TID_FILTER_LINE_NEITHER:
-                return Tid.TID_FILTER_LINE_NEITHER
-            case TID_FILTER_LINE_NEITHER_LEFT:
-                return Tid.TID_FILTER_LINE_NEITHER_LEFT
-            case TID_FILTER_LINE_NEITHER_RIGHT:
-                return Tid.TID_FILTER_LINE_NEITHER_RIGHT
-            case TID_ACTUATOR_SWITCH_PAGE:
-                return Tid.TID_ACTUATOR_SWITCH_PAGE
-            case TID_ACTUATOR_SPEAKER:
-                return Tid.TID_ACTUATOR_SPEAKER
-            case TID_ACTUATOR_MUSIC:
-                return Tid.TID_ACTUATOR_MUSIC
-            case TID_ACTUATOR_PAINT:
-                return Tid.TID_ACTUATOR_PAINT
-            case TID_ACTUATOR_RADIO_SEND:
-                return Tid.TID_ACTUATOR_RADIO_SEND
-            case TID_ACTUATOR_RADIO_SET_GROUP:
-                return Tid.TID_ACTUATOR_RADIO_SET_GROUP
-            case TID_ACTUATOR_RGB_LED:
-                return Tid.TID_ACTUATOR_RGB_LED
-            case TID_ACTUATOR_CUP_X_ASSIGN:
-                return Tid.TID_ACTUATOR_CUP_X_ASSIGN
-            case TID_ACTUATOR_CUP_Y_ASSIGN:
-                return Tid.TID_ACTUATOR_CUP_Y_ASSIGN
-            case TID_ACTUATOR_CUP_Z_ASSIGN:
-                return Tid.TID_ACTUATOR_CUP_Z_ASSIGN
-            case TID_ACTUATOR_SHOW_NUMBER:
-                return Tid.TID_ACTUATOR_SHOW_NUMBER
-            case TID_MODIFIER_PAGE_1:
-                return Tid.TID_MODIFIER_PAGE_1
-            case TID_MODIFIER_PAGE_2:
-                return Tid.TID_MODIFIER_PAGE_2
-            case TID_MODIFIER_PAGE_3:
-                return Tid.TID_MODIFIER_PAGE_3
-            case TID_MODIFIER_PAGE_4:
-                return Tid.TID_MODIFIER_PAGE_4
-            case TID_MODIFIER_PAGE_5:
-                return Tid.TID_MODIFIER_PAGE_5
-            case TID_MODIFIER_COIN_1:
-                return Tid.TID_MODIFIER_COIN_1
-            case TID_MODIFIER_COIN_2:
-                return Tid.TID_MODIFIER_COIN_2
-            case TID_MODIFIER_COIN_3:
-                return Tid.TID_MODIFIER_COIN_3
-            case TID_MODIFIER_COIN_4:
-                return Tid.TID_MODIFIER_COIN_4
-            case TID_MODIFIER_COIN_5:
-                return Tid.TID_MODIFIER_COIN_5
-            case TID_MODIFIER_ICON_EDITOR:
-                return Tid.TID_MODIFIER_ICON_EDITOR
-            case TID_MODIFIER_COLOR_RED:
-                return Tid.TID_MODIFIER_COLOR_RED
-            case TID_MODIFIER_COLOR_DARKPURPLE:
-                return Tid.TID_MODIFIER_COLOR_DARKPURPLE
-            case TID_MODIFIER_EMOJI_GIGGLE:
-                return Tid.TID_MODIFIER_EMOJI_GIGGLE
-            case TID_MODIFIER_EMOJI_HAPPY:
-                return Tid.TID_MODIFIER_EMOJI_HAPPY
-            case TID_MODIFIER_EMOJI_HELLO:
-                return Tid.TID_MODIFIER_EMOJI_HELLO
-            case TID_MODIFIER_EMOJI_MYSTERIOUS:
-                return Tid.TID_MODIFIER_EMOJI_MYSTERIOUS
-            case TID_MODIFIER_EMOJI_SAD:
-                return Tid.TID_MODIFIER_EMOJI_SAD
-            case TID_MODIFIER_EMOJI_SLIDE:
-                return Tid.TID_MODIFIER_EMOJI_SLIDE
-            case TID_MODIFIER_EMOJI_SOARING:
-                return Tid.TID_MODIFIER_EMOJI_SOARING
-            case TID_MODIFIER_EMOJI_SPRING:
-                return Tid.TID_MODIFIER_EMOJI_SPRING
-            case TID_MODIFIER_EMOJI_TWINKLE:
-                return Tid.TID_MODIFIER_EMOJI_TWINKLE
-            case TID_MODIFIER_EMOJI_YAWN:
-                return Tid.TID_MODIFIER_EMOJI_YAWN
-            case TID_MODIFIER_CUP_X_READ:
-                return Tid.TID_MODIFIER_CUP_X_READ
-            case TID_MODIFIER_CUP_Y_READ:
-                return Tid.TID_MODIFIER_CUP_Y_READ
-            case TID_MODIFIER_CUP_Z_READ:
-                return Tid.TID_MODIFIER_CUP_Z_READ
-            case TID_MODIFIER_RADIO_VALUE:
-                return Tid.TID_MODIFIER_RADIO_VALUE
-            case TID_MODIFIER_RANDOM_TOSS:
-                return Tid.TID_MODIFIER_RANDOM_TOSS
-            case TID_MODIFIER_LOOP:
-                return Tid.TID_MODIFIER_LOOP
-            case TID_MODIFIER_MELODY_EDITOR:
-                return Tid.TID_MODIFIER_MELODY_EDITOR
-            case TID_MODIFIER_TEMP_READ:
-                return Tid.TID_MODIFIER_TEMP_READ
-            case TID_MODIFIER_RGB_LED_COLOR_X:
-                return Tid.TID_MODIFIER_RGB_LED_COLOR_X
-            case TID_MODIFIER_RGB_LED_COLOR_1:
-                return Tid.TID_MODIFIER_RGB_LED_COLOR_1
-            case TID_MODIFIER_RGB_LED_COLOR_2:
-                return Tid.TID_MODIFIER_RGB_LED_COLOR_2
-            case TID_MODIFIER_RGB_LED_COLOR_3:
-                return Tid.TID_MODIFIER_RGB_LED_COLOR_3
-            case TID_MODIFIER_RGB_LED_COLOR_4:
-                return Tid.TID_MODIFIER_RGB_LED_COLOR_4
-            case TID_MODIFIER_RGB_LED_COLOR_5:
-                return Tid.TID_MODIFIER_RGB_LED_COLOR_5
-            case TID_MODIFIER_RGB_LED_COLOR_6:
-                return Tid.TID_MODIFIER_RGB_LED_COLOR_6
-            case TID_MODIFIER_RGB_LED_COLOR_RAINBOW:
-                return Tid.TID_MODIFIER_RGB_LED_COLOR_RAINBOW
-            case TID_MODIFIER_RGB_LED_COLOR_SPARKLE:
-                return Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE
-            case TID_ACTUATOR_SERVO_SET_ANGLE:
-                return Tid.TID_ACTUATOR_SERVO_SET_ANGLE
-            case TID_ACTUATOR_CAR:
-                return Tid.TID_ACTUATOR_CAR
-            case TID_MODIFIER_CAR_FORWARD:
-                return Tid.TID_MODIFIER_CAR_FORWARD
-            case TID_MODIFIER_CAR_REVERSE:
-                return Tid.TID_MODIFIER_CAR_REVERSE
-            case TID_MODIFIER_CAR_TURN_LEFT:
-                return Tid.TID_MODIFIER_CAR_TURN_LEFT
-            case TID_MODIFIER_CAR_TURN_RIGHT:
-                return Tid.TID_MODIFIER_CAR_TURN_RIGHT
-            case TID_MODIFIER_CAR_STOP:
-                return Tid.TID_MODIFIER_CAR_STOP
-            case TID_MODIFIER_CAR_FORWARD_FAST:
-                return Tid.TID_MODIFIER_CAR_FORWARD_FAST
-            case TID_MODIFIER_CAR_SPIN_LEFT:
-                return Tid.TID_MODIFIER_CAR_SPIN_LEFT
-            case TID_MODIFIER_CAR_SPIN_RIGHT:
-                return Tid.TID_MODIFIER_CAR_SPIN_RIGHT
-            case TID_MODIFIER_CAR_LED_COLOR_1:
-                return Tid.TID_MODIFIER_CAR_LED_COLOR_1
-            case TID_MODIFIER_CAR_LED_COLOR_2:
-                return Tid.TID_MODIFIER_CAR_LED_COLOR_2
-            case TID_MODIFIER_CAR_LED_COLOR_3:
-                return Tid.TID_MODIFIER_CAR_LED_COLOR_3
-            case TID_MODIFIER_CAR_LED_COLOR_4:
-                return Tid.TID_MODIFIER_CAR_LED_COLOR_4
-            case TID_MODIFIER_CAR_ARM_OPEN:
-                return Tid.TID_MODIFIER_CAR_ARM_OPEN
-            case TID_MODIFIER_CAR_ARM_CLOSE:
-                return Tid.TID_MODIFIER_CAR_ARM_CLOSE
-            default:
-                return undefined
-        }
-    }
-
     export function enumToTid(e: Tid) {
         switch (e) {
             case Tid.TID_SENSOR_START_PAGE:
@@ -822,11 +571,17 @@ namespace microcode {
     }
 
     function isPressReleaseEvent(tidEnum: Tid) {
-        return Tid.PRESS_RELEASE_START <= tidEnum && tidEnum <= Tid.PRESS_RELEASE_END
+        return (
+            Tid.PRESS_RELEASE_START <= tidEnum &&
+            tidEnum <= Tid.PRESS_RELEASE_END
+        )
     }
 
     function isAccelerometerEvent(tidEnum: Tid) {
-        return Tid.ACCELEROMETER_START <= tidEnum && tidEnum <= Tid.ACCELEROMETER_END
+        return (
+            Tid.ACCELEROMETER_START <= tidEnum &&
+            tidEnum <= Tid.ACCELEROMETER_END
+        )
     }
 
     function isLineEvent(tidEnum: Tid) {
@@ -834,47 +589,75 @@ namespace microcode {
     }
 
     function isFilterConstant(tidEnum: Tid) {
-        return Tid.TID_FILTER_COIN_1 <= tidEnum && tidEnum <= Tid.TID_FILTER_COIN_5
+        return (
+            Tid.TID_FILTER_COIN_1 <= tidEnum && tidEnum <= Tid.TID_FILTER_COIN_5
+        )
     }
 
     function isFilterVariable(tidEnum: Tid) {
-        return Tid.TID_FILTER_CUP_X_READ <= tidEnum && tidEnum <= Tid.TID_FILTER_CUP_Z_READ
+        return (
+            Tid.TID_FILTER_CUP_X_READ <= tidEnum &&
+            tidEnum <= Tid.TID_FILTER_CUP_Z_READ
+        )
     }
 
     function isModifierConstant(tidEnum: Tid) {
-        return Tid.TID_MODIFIER_COIN_1 <= tidEnum && tidEnum <= Tid.TID_MODIFIER_COIN_5
+        return (
+            Tid.TID_MODIFIER_COIN_1 <= tidEnum &&
+            tidEnum <= Tid.TID_MODIFIER_COIN_5
+        )
     }
 
     function isModifierVariable(tidEnum: Tid) {
-        return Tid.TID_MODIFIER_CUP_X_READ <= tidEnum && tidEnum <= Tid.TID_MODIFIER_CUP_Z_READ
+        return (
+            Tid.TID_MODIFIER_CUP_X_READ <= tidEnum &&
+            tidEnum <= Tid.TID_MODIFIER_CUP_Z_READ
+        )
     }
 
     function isTimespan(tidEnum: Tid) {
-        return Tid.TID_FILTER_TIMESPAN_SHORT <= tidEnum && tidEnum <= Tid.TID_FILTER_TIMESPAN_VERY_LONG
+        return (
+            Tid.TID_FILTER_TIMESPAN_SHORT <= tidEnum &&
+            tidEnum <= Tid.TID_FILTER_TIMESPAN_VERY_LONG
+        )
     }
 
     function isEmoji(tidEnum: Tid) {
-        return Tid.TID_MODIFIER_EMOJI_GIGGLE <= tidEnum && tidEnum <= Tid.TID_MODIFIER_EMOJI_YAWN
+        return (
+            Tid.TID_MODIFIER_EMOJI_GIGGLE <= tidEnum &&
+            tidEnum <= Tid.TID_MODIFIER_EMOJI_YAWN
+        )
     }
 
     function isPage(tidEnum: Tid) {
-        return Tid.TID_MODIFIER_PAGE_1 <= tidEnum && tidEnum <= Tid.TID_MODIFIER_PAGE_5
+        return (
+            Tid.TID_MODIFIER_PAGE_1 <= tidEnum &&
+            tidEnum <= Tid.TID_MODIFIER_PAGE_5
+        )
     }
 
     function isLedColor(tidEnum: Tid) {
-        return Tid.TID_MODIFIER_RGB_LED_COLOR_1 <= tidEnum &&
+        return (
+            Tid.TID_MODIFIER_RGB_LED_COLOR_1 <= tidEnum &&
             tidEnum <= Tid.TID_MODIFIER_RGB_LED_COLOR_6
+        )
     }
     function isLedModifier(tidEnum: Tid) {
-        return isLedColor(tidEnum) || tidEnum == Tid.TID_MODIFIER_RGB_LED_COLOR_RAINBOW ||
+        return (
+            isLedColor(tidEnum) ||
+            tidEnum == Tid.TID_MODIFIER_RGB_LED_COLOR_RAINBOW ||
             tidEnum == Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE
+        )
     }
 
     function isCarModifier(tidEnum: Tid) {
-        return Tid.CAR_MODIFIER_BEGIN <= tidEnum && tidEnum <= Tid.CAR_MODIFIER_END
+        return (
+            Tid.CAR_MODIFIER_BEGIN <= tidEnum && tidEnum <= Tid.CAR_MODIFIER_END
+        )
     }
 
-    export function isTidTerminal(tid: Tid) {
+    export function isTerminal(tile: Tile) {
+        const tid = getTid(tile)
         // the following sensors and actuators are terminal
         if (
             tid == Tid.TID_SENSOR_CAR_WALL ||
@@ -894,7 +677,8 @@ namespace microcode {
     }
 
     // Jacdac event codes
-    export function eventCode(tid: Tid) {
+    export function eventCode(tile: Tile) {
+        const tid = getTid(tile)
         switch (tid) {
             case Tid.TID_SENSOR_TEMP:
             case Tid.TID_FILTER_QUIET:
@@ -916,7 +700,8 @@ namespace microcode {
         }
     }
 
-    export function serviceClassName(tid: Tid) {
+    export function serviceClassName(tile: Tile) {
+        const tid = getTid(tile)
         switch (tid) {
             case Tid.TID_SENSOR_PRESS:
             case Tid.TID_SENSOR_RELEASE:
@@ -958,7 +743,8 @@ namespace microcode {
         }
     }
 
-    export function serviceCommand(tid: Tid) {
+    export function serviceCommand(tile: Tile) {
+        const tid = getTid(tile)
         switch (tid) {
             case Tid.TID_ACTUATOR_PAINT:
             case Tid.TID_ACTUATOR_RGB_LED:
@@ -977,7 +763,8 @@ namespace microcode {
         }
     }
 
-    export function jdExternalClass(tid: Tid) {
+    export function jdExternalClass(tile: Tile) {
+        const tid = getTid(tile)
         switch (tid) {
             case Tid.TID_FILTER_KITA_KEY_1:
             case Tid.TID_FILTER_KITA_KEY_2:
@@ -999,7 +786,8 @@ namespace microcode {
         }
     }
 
-    export function isVisible(tid: Tid) {
+    export function isVisible(tile: Tile) {
+        const tid = getTid(tile)
         const ext = jdExternalClass(tid)
         if (ext && !jacs.debugOut) {
             const count = jdc.numServiceInstances(ext)
@@ -1010,22 +798,21 @@ namespace microcode {
         return true
     }
 
-    export function getFieldEditor(tile: TileDefn): FieldEditor {
-        if (tile instanceof ModifierEditor)
-            return tile.fieldEditor
+    export function getFieldEditor(tile: Tile): FieldEditor {
+        if (tile instanceof ModifierEditor) return tile.fieldEditor
         return undefined
     }
 
     let icon_editor: IconEditor = undefined
     let melody_editor: MelodyEditor = undefined
-    export function defaultModifier(tid: Tid) {
+    export function defaultModifier(tid: Tid): Tile {
         switch (tid) {
             case Tid.TID_ACTUATOR_SPEAKER:
-                return tilesDB.modifiers[TID_MODIFIER_EMOJI_GIGGLE]
+                return Tid.TID_MODIFIER_EMOJI_GIGGLE
             case Tid.TID_ACTUATOR_CAR:
-                return tilesDB.modifiers[TID_MODIFIER_CAR_STOP]
+                return Tid.TID_MODIFIER_CAR_STOP
             case Tid.TID_ACTUATOR_RGB_LED:
-                return tilesDB.modifiers[TID_MODIFIER_RGB_LED_COLOR_RAINBOW]
+                return Tid.TID_MODIFIER_RGB_LED_COLOR_RAINBOW
             case Tid.TID_ACTUATOR_PAINT: {
                 if (!icon_editor) {
                     icon_editor = new IconEditor()
@@ -1041,35 +828,32 @@ namespace microcode {
         }
     }
 
-    export function buttonStyle(tid: string): ButtonStyle {
-        const tidEnum = tidToEnum(tid)
-        const tile = tilesDB.modifiers[tidEnum]
+    export function buttonStyle(tile: Tile): ButtonStyle {
         return getFieldEditor(tile)
             ? ButtonStyles.Transparent
             : ButtonStyles.FlatWhite
     }
 
-    export function jdKind(tid: string): JdKind {
-        const tidEnum = tidToEnum(tid)
-        if (isPressReleaseEvent(tidEnum))
-            return JdKind.ServiceInstanceIndex
-        if (isLineEvent(tidEnum) || isFilterConstant(tidEnum) || isModifierConstant(tidEnum))
-            return JdKind.Literal
-        if (isTimespan(tidEnum))
-            return JdKind.Timespan
+    export function jdKind(tile: Tile): JdKind {
+        const tid = getTid(tile)
+        if (isPressReleaseEvent(tid)) return JdKind.ServiceInstanceIndex
         if (
-            isEmoji(tidEnum) ||
-            tidEnum == Tid.TID_MODIFIER_ICON_EDITOR ||
-            tidEnum == Tid.TID_MODIFIER_MELODY_EDITOR
+            isLineEvent(tid) ||
+            isFilterConstant(tid) ||
+            isModifierConstant(tid)
+        )
+            return JdKind.Literal
+        if (isTimespan(tid)) return JdKind.Timespan
+        if (
+            isEmoji(tid) ||
+            tid == Tid.TID_MODIFIER_ICON_EDITOR ||
+            tid == Tid.TID_MODIFIER_MELODY_EDITOR
         )
             return JdKind.ServiceCommandArg
-        if (isPage(tidEnum))    
-            return JdKind.Page
-        if (isLedModifier(tidEnum))
-            return JdKind.ExtLibFn
-        if (isCarModifier(tidEnum))
-            return JdKind.NumFmt
-        switch (tidEnum) {
+        if (isPage(tid)) return JdKind.Page
+        if (isLedModifier(tid)) return JdKind.ExtLibFn
+        if (isCarModifier(tid)) return JdKind.NumFmt
+        switch (tid) {
             case Tid.TID_MODIFIER_LOOP:
                 return JdKind.Loop
             case Tid.TID_SENSOR_RADIO_RECEIVE:
@@ -1126,19 +910,14 @@ namespace microcode {
         return undefined
     }
 
-    export function jdParam(tid: string): any {
-        const tidEnum = tidToEnum(tid)
-        if (isModifierConstant(tidEnum))
-            return tidEnum - Tid.TID_MODIFIER_COIN_1 + 1
-        if (isFilterConstant(tidEnum))
-            return tidEnum - Tid.TID_FILTER_COIN_1 + 1
-        if (isPage(tidEnum))
-            return tidEnum - Tid.TID_MODIFIER_PAGE_1 + 1
-        if (isLedColor(tidEnum))
-            return "led_solid"
-        if (isCarModifier(tidEnum))
-            return jacs.NumFmt.F64
-        switch (tidEnum) {
+    export function jdParam(tile: Tile): any {
+        const tid = getTid(tile)
+        if (isModifierConstant(tid)) return tid - Tid.TID_MODIFIER_COIN_1 + 1
+        if (isFilterConstant(tid)) return tid - Tid.TID_FILTER_COIN_1 + 1
+        if (isPage(tid)) return tid - Tid.TID_MODIFIER_PAGE_1 + 1
+        if (isLedColor(tid)) return "led_solid"
+        if (isCarModifier(tid)) return jacs.NumFmt.F64
+        switch (tid) {
             case Tid.TID_FILTER_BUTTON_A:
                 return 0
             case Tid.TID_FILTER_BUTTON_B:
@@ -1256,9 +1035,9 @@ namespace microcode {
         return undefined
     }
 
-    export function jdParam2(tid: string): number {
-        const tidEnum = tidToEnum(tid)
-        switch (tidEnum) {
+    export function jdParam2(tile: Tile): number {
+        const tid = getTid(tile)
+        switch (tid) {
             // length of the melody (milliseconds)
             case Tid.TID_MODIFIER_EMOJI_GIGGLE:
                 return 1478
@@ -1332,19 +1111,19 @@ namespace microcode {
         return undefined
     }
 
-    export function priority(tid: string): number {
-        const tidEnum = tidToEnum(tid)
-        if (isFilter(tidEnum)) {
-            if (isFilterConstant(tidEnum) || isPressReleaseEvent(tidEnum))
+    export function priority(tile: Tile): number {
+        const tid = getTid(tile)
+        if (isFilter(tid)) {
+            if (isFilterConstant(tid) || isPressReleaseEvent(tid))
                 return jdParam(tid)
-            return tidEnum
-        } else if (isModifier(tidEnum)) {
-            if (tidEnum == Tid.TID_MODIFIER_LOOP)
+            return tid
+        } else if (isModifier(tid)) {
+            if (tid == Tid.TID_MODIFIER_LOOP)
                 // loop always at end
                 return 1000
-            return tidEnum
+            return tid
         }
-        switch (tidEnum) {
+        switch (tid) {
             // sensors
             case Tid.TID_SENSOR_PRESS:
                 return 9
@@ -1424,22 +1203,34 @@ namespace microcode {
     ]
 
     // TODO: break this up, little need for record and lists
-    export function getConstraints(tid: string): Constraints {
-        const tidEnum = tidToEnum(tid)
-        switch (tidEnum) {
+    export function getConstraints(tile: Tile): Constraints {
+        const tid = getTid(tile)
+        switch (tid) {
             case Tid.TID_SENSOR_PRESS:
             case Tid.TID_SENSOR_RELEASE:
-                return  { allow: ["press_event"] }
+                return { allow: ["press_event"] }
             case Tid.TID_SENSOR_START_PAGE:
                 return { allow: ["timespan"] }
             case Tid.TID_SENSOR_CUP_X_WRITTEN:
-                return { allow: ["value_in"], disallow: [Tid.TID_FILTER_CUP_X_READ] }
+                return {
+                    allow: ["value_in"],
+                    disallow: [Tid.TID_FILTER_CUP_X_READ],
+                }
             case Tid.TID_SENSOR_CUP_Y_WRITTEN:
-                return { allow: ["value_in"], disallow: [Tid.TID_FILTER_CUP_Y_READ] }
+                return {
+                    allow: ["value_in"],
+                    disallow: [Tid.TID_FILTER_CUP_Y_READ],
+                }
             case Tid.TID_SENSOR_CUP_Z_WRITTEN:
-                return { allow: ["value_in"], disallow: [Tid.TID_FILTER_CUP_Z_READ] }  
+                return {
+                    allow: ["value_in"],
+                    disallow: [Tid.TID_FILTER_CUP_Z_READ],
+                }
             case Tid.TID_SENSOR_RADIO_RECEIVE:
-                return { allow: ["value_in"], provides: [Tid.TID_SENSOR_RADIO_RECEIVE] }
+                return {
+                    allow: ["value_in"],
+                    provides: [Tid.TID_SENSOR_RADIO_RECEIVE],
+                }
             case Tid.TID_SENSOR_SLIDER:
             case Tid.TID_SENSOR_CAR_WALL:
             case Tid.TID_SENSOR_MAGNET:
@@ -1474,7 +1265,7 @@ namespace microcode {
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
             case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
             case Tid.TID_MODIFIER_LOOP:
-                return { only: ["constant"] }   // ahy only and not allow?
+                return { only: ["constant"] } // ahy only and not allow?
             case Tid.TID_ACTUATOR_SWITCH_PAGE:
                 return { allow: ["page"] }
             case Tid.TID_ACTUATOR_CAR:
@@ -1487,21 +1278,20 @@ namespace microcode {
         return undefined
     }
 
-    export function getCategory(tid: string): string {
-        const tidEnum = tidToEnum(tid)
-        if (isPressReleaseEvent(tidEnum)) return "press_event"
-        if (isLineEvent(tidEnum)) return "line"
-        if (isTimespan(tidEnum)) return "timespan"
-        if (isAccelerometerEvent(tidEnum)) return "accel_event"
-        if (isEmoji(tidEnum)) return "sound_emoji"
-        if (isFilterConstant(tidEnum) || isFilterVariable(tidEnum))
-            return "value_in"
-        if (isModifierConstant(tidEnum)) return "constant"
-        if (isModifierVariable(tidEnum)) return "value_out"
-        if (isPage(tidEnum)) return "page"
-        if (isCarModifier(tidEnum)) return "car"
-        if (isLedModifier(tidEnum)) return "rgb_led"
-        switch (tidEnum) {
+    export function getCategory(tile: Tile): string {
+        const tid = getTid(tile)
+        if (isPressReleaseEvent(tid)) return "press_event"
+        if (isLineEvent(tid)) return "line"
+        if (isTimespan(tid)) return "timespan"
+        if (isAccelerometerEvent(tid)) return "accel_event"
+        if (isEmoji(tid)) return "sound_emoji"
+        if (isFilterConstant(tid) || isFilterVariable(tid)) return "value_in"
+        if (isModifierConstant(tid)) return "constant"
+        if (isModifierVariable(tid)) return "value_out"
+        if (isPage(tid)) return "page"
+        if (isCarModifier(tid)) return "car"
+        if (isLedModifier(tid)) return "rgb_led"
+        switch (tid) {
             case Tid.TID_FILTER_ROTARY_LEFT:
             case Tid.TID_FILTER_ROTARY_RIGHT:
                 return "rotary_event"
@@ -1544,79 +1334,5 @@ namespace microcode {
         Page = 0x2000,
         Car = 0x4000,
         RGBLed = 0x8000,
-    }
-
-    export function assert(cond: boolean, msg?: string) {
-        if (!cond) {
-            if (msg == null) msg = "Assertion failed"
-            console.debug(msg)
-            throw msg
-        }
-    }
-
-    // use this to manage a buffer that may grow
-    export class BufferWriter {
-        private buf: Buffer
-        private ptr: number = 0
-
-        constructor() {
-            this.buf = Buffer.create(64)
-        }
-
-        public get length() {
-            return this.ptr
-        }
-
-        public get buffer() {
-            const buf = Buffer.create(this.ptr)
-            buf.write(0, this.buf.slice(0, this.ptr))
-            return buf
-        }
-
-        public writeByte(v: number) {
-            assert(
-                0 <= v && v <= 0xff && (v | 0) == v,
-                "writeByte: v=" + v.toString()
-            )
-            if (this.ptr >= this.buf.length) {
-                const copy = Buffer.create(this.buf.length * 2)
-                copy.write(0, this.buf)
-                this.buf = copy
-            }
-            this.buf[this.ptr++] = v
-        }
-
-        public writeBuffer(b: Buffer) {
-            for (let i = 0; i < b.length; ++i) this.writeByte(b[i])
-        }
-    }
-
-    export class BufferReader {
-        constructor(private buf: Buffer, private ptr: number = 0) {}
-
-        public get buffer() {
-            return this.buf
-        }
-
-        public eof() {
-            return this.ptr >= this.buf.length
-        }
-
-        public peekByte() {
-            assert(this.ptr < this.buf.length)
-            return this.buf[this.ptr]
-        }
-
-        public readByte() {
-            assert(this.ptr < this.buf.length)
-            return this.buf[this.ptr++]
-        }
-
-        public readBuffer(len: number) {
-            assert(this.ptr + len <= this.buf.length)
-            const b = Buffer.create(len)
-            for (let i = 0; i < len; ++i) b[i] = this.buf[this.ptr++]
-            return b
-        }
     }
 }
