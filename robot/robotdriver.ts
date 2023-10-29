@@ -71,7 +71,7 @@ namespace microcode {
             this.robot = robot
         }
 
-        get currentUltrasonicDistance() {
+        get currentDistance() {
             return Math.round(this.sonarDistanceFilter.x)
         }
 

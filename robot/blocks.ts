@@ -49,7 +49,7 @@ namespace microcode {
     //% group="Input"
     export function obstacleDistance(): number {
         checkRobotDriver()
-        return robot.currentUltrasonicDistance
+        return robot.currentDistance
     }
 
     /**
