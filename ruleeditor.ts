@@ -328,7 +328,7 @@ namespace microcode {
                     tileUpdated(undefined)
                 }
                 const selected = btns.indexOf(
-                    btns.find(b => b.icon === ruleTiles[index].tid) // TODO
+                    btns.find(b => b.icon === getIcon(getTid(ruleTiles[index]))) // TODO
                 )
                 if (selected >= 0) {
                     selectedButton = selected
@@ -340,7 +340,7 @@ namespace microcode {
                     title: accessibility.ariaToTooltip(name),
                     navigator: () => new PickerNavigator(this.editor.picker),
                     onClick: idx => {
-                        let theOne = tilesDB[name][suggestions[idx].tid]
+                        let theOne = suggestions[idx]
                         if (getFieldEditor(theOne)) {
                             // there is more work to do                l
                             theOne =
