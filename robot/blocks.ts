@@ -7,7 +7,7 @@ namespace microcode {
     export let robot: RobotDriver
 
     function checkRobotDriver() {
-        if (!robot) throw "Add 'robot start' block in the 'on start' block"
+        if (!robot) throw "Add 'robot start ...' block in the 'on start' block"
     }
 
     /**
@@ -39,6 +39,31 @@ namespace microcode {
     export function motorStop() {
         checkRobotDriver()
         robot.motorRun(0, 0)
+    }
+
+    /**
+     * Sets the LED color
+     */
+    //% blockId="microcoderobotsetcolor" block="robot set color $rgb"
+    //% group="Motors"
+    //% weight=10
+    //% rgb.shadow=colorNumberPicker
+    export function setColor(rgb: number) {
+        checkRobotDriver()
+        robot.setColor(rgb)
+    }
+
+    /**
+     * Play a tone through the robot speaker
+     */
+    //% blockId="microcoderobotplaytone" block="robot play tone $frequency for $duration"
+    //% group="Motors"
+    //% weight=10
+    //% frequency.shadow=device_note
+    //% duration.shadow=device_beat
+    export function playTone(frequency: number, duration: number) {
+        checkRobotDriver()
+        robot.playTone(frequency, duration)
     }
 
     /**
@@ -115,14 +140,15 @@ namespace microcode {
     }
 
     /**
-     * Sets the LED color
+     * Enables or disables the display of the robot state on the LED matrix.
+     * @param enabled
      */
-    //% blockId="microcoderobotsetcolor" block="robot set color $rgb"
-    //% group="Motors"
-    //% weight=10
-    //% rgb.shadow=colorNumberPicker
-    export function setColor(rgb: number) {
+    //% block="robot set display to $enabled"
+    //% blockId="microcoderobotsetdisplay"
+    //% group="Configuration"
+    //% enabled.shadow=toggleOnOff
+    export function setDisplay(enabled: boolean) {
         checkRobotDriver()
-        robot.setColor(rgb)
+        robot.hud = !!enabled
     }
 }

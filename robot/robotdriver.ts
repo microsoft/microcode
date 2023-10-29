@@ -34,6 +34,7 @@ namespace microcode {
         private readonly sonarDistanceFilter = new KalmanFilter1D()
         private lastSonarValue = 0
 
+        hud = true
         private showConfiguration: number = 0
         private configDrift: boolean = undefined
         private targetColor = 0
@@ -291,14 +292,12 @@ namespace microcode {
 
         private setMotorState(left: number, right: number) {
             this.robot.motorRun(left, right)
-            if (this.showConfiguration) return
+            if (this.showConfiguration || !this.hud) return
             this.showSingleMotorState(3, left)
             this.showSingleMotorState(1, right)
         }
 
         private showSingleMotorState(x: number, speed: number) {
-            if (this.showConfiguration) return
-
             if (Math.abs(speed) < 30) led.unplot(x, 2)
             else led.plot(x, 2)
             if (speed >= 30) led.plot(x, 1)
@@ -313,7 +312,7 @@ namespace microcode {
 
         private updateLineState() {
             const lineState = this.lineState()
-            if (this.showConfiguration) return
+            if (this.showConfiguration || !this.hud) return
 
             // render left/right lines
             const left =
@@ -350,7 +349,11 @@ namespace microcode {
                 )
             }
 
-            if (!this.showConfiguration && this.lastSonarValue !== undefined) {
+            if (
+                !this.showConfiguration &&
+                this.hud &&
+                this.lastSonarValue !== undefined
+            ) {
                 const d = this.lastSonarValue
                 for (let y = 0; y < 5; y++)
                     if (5 - y <= d) led.plot(2, y)
