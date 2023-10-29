@@ -7,7 +7,7 @@ namespace microcode {
     export let robot: RobotDriver
 
     function checkRobotDriver() {
-        if (!robot) throw "Add 'robot start' block"
+        if (!robot) throw "Add 'robot start' block in the 'on start' block"
     }
 
     /**
