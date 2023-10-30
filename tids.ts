@@ -161,7 +161,7 @@ namespace microcode {
         TID_SENSOR_ROTARY = 24,
         TID_SENSOR_CAR_WALL = 25,
         TID_SENSOR_LINE = 26,
-        SENSOR_END = 27,
+        SENSOR_END = 26,
 
         ACTUATOR_START = 40,
         TID_ACTUATOR_SWITCH_PAGE = 40,
@@ -178,7 +178,7 @@ namespace microcode {
         TID_ACTUATOR_SHOW_NUMBER = 51,
         TID_ACTUATOR_CAR = 52,
         TID_ACTUATOR_SERVO_SET_ANGLE = 53,
-        ACTUATOR_END = 54,
+        ACTUATOR_END = 53,
 
         FILTER_START = 70,
         PRESS_RELEASE_START = 70,
@@ -234,7 +234,7 @@ namespace microcode {
         TID_FILTER_LINE_NEITHER_RIGHT = 107,
         LINE_END = 107,
 
-        FILTER_END = 108,
+        FILTER_END = 107,
 
         MODIFIER_START = 150,
         //
@@ -564,19 +564,19 @@ namespace microcode {
     }
 
     export function isSensor(tid: Tid) {
-        return tid >= Tid.SENSOR_START && tid < Tid.SENSOR_END
+        return tid >= Tid.SENSOR_START && tid <= Tid.SENSOR_END
     }
 
     export function isFilter(tid: Tid) {
-        return tid >= Tid.FILTER_START && tid < Tid.FILTER_END
+        return tid >= Tid.FILTER_START && tid <= Tid.FILTER_END
     }
 
     export function isActuator(tid: Tid) {
-        return tid >= Tid.ACTUATOR_START && tid < Tid.ACTUATOR_END
+        return tid >= Tid.ACTUATOR_START && tid <= Tid.ACTUATOR_END
     }
 
     export function isModifier(tid: Tid) {
-        return tid >= Tid.MODIFIER_START && tid < Tid.MODIFER_END
+        return tid >= Tid.MODIFIER_START && tid <= Tid.MODIFER_END
     }
 
     function isPressReleaseEvent(tidEnum: Tid) {
