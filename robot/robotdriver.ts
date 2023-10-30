@@ -130,12 +130,14 @@ namespace microcode {
         }
 
         /**
-         * Starts the motor driver
+         * Starts the motor driver.
+         * Please this block at the beginning of your 'on start' block
+         * to select the type of robot hardware, before using any other robot block.
          */
         //% block="robot %this start"
         //% blockId=microcoderobotstart
         //% weight=100
-        //% group="Configuration"
+        //% group="Robot"
         start() {
             if (microcode.robot === this) return // already started
             if (microcode.robot) throw "Another robot has already been started."
