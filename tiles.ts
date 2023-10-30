@@ -53,8 +53,11 @@ namespace microcode {
     }
 
     export class ModifierEditor {
-        constructor(public tid: number) {}
+        constructor(public tid: number) {
+            this.firstInstance = false
+        }
         fieldEditor: FieldEditor
+        firstInstance: boolean
         getField(): any {
             return null
         }
@@ -71,10 +74,8 @@ namespace microcode {
 
     export class IconEditor extends ModifierEditor {
         field: Image
-        firstInstance: boolean
         constructor(field: Image = null) {
             super(Tid.TID_MODIFIER_ICON_EDITOR)
-            this.firstInstance = false
             this.fieldEditor = new IconFieldEditor()
             this.field = this.fieldEditor.clone(
                 field ? field : this.fieldEditor.init()
@@ -193,7 +194,6 @@ namespace microcode {
 
     export class MelodyEditor extends ModifierEditor {
         field: Melody
-        firstInstance: boolean
         constructor(field: Melody = null) {
             super(Tid.TID_MODIFIER_MELODY_EDITOR)
             this.firstInstance = false
@@ -228,14 +228,20 @@ namespace microcode {
         }
     }
 
+    let iconEditorTile: ModifierEditor = undefined
+    let melodyEditorTile: ModifierEditor = undefined
     export function getEditor(tid: Tid, first = true): ModifierEditor {
         if (tid == Tid.TID_MODIFIER_ICON_EDITOR) {
-            const iconEditorTile = new IconEditor()
-            iconEditorTile.firstInstance = first
+            if (!iconEditorTile) {
+                iconEditorTile = new IconEditor()
+                iconEditorTile.firstInstance = first
+            }
             return iconEditorTile
         } else if (tid == Tid.TID_MODIFIER_MELODY_EDITOR) {
-            const melodyEditorTile = new MelodyEditor()
-            melodyEditorTile.firstInstance = first
+            if (!melodyEditorTile) {
+                melodyEditorTile = new MelodyEditor()
+                melodyEditorTile.firstInstance = first
+            }
             return melodyEditorTile
         }
         return undefined

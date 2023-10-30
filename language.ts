@@ -340,7 +340,9 @@ namespace microcode {
             const [lower, upper] = ranges[name]
             let all: Tile[] = []
             for (let i = lower; i <= upper; ++i) {
-                all.push(i)
+                const ed = getEditor(i, true)
+                if (ed) all.push(ed)
+                else all.push(i)
             }
             all = all
                 .filter((tile: Tile) => isVisible(tile))
