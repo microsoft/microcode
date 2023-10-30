@@ -228,7 +228,7 @@ namespace microcode {
         }
     }
 
-    export function getEditor(tid: Tid, first = true) {
+    export function getEditor(tid: Tid, first = true): ModifierEditor {
         if (tid == Tid.TID_MODIFIER_ICON_EDITOR) {
             const iconEditorTile = new IconEditor()
             iconEditorTile.firstInstance = first
