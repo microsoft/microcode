@@ -66,6 +66,7 @@ namespace microcode {
             super()
             this.leds = new robots.WS2812bLEDStrip(DigitalPin.P16, 2)
             pca9624Init()
+            motorSet4(0, 0, 0, 0)
         }
 
         motorRun(left: number, right: number): void {
@@ -73,21 +74,31 @@ namespace microcode {
             right *= 2.55
             // synchronize motor on both side
             // the order of m1~m4
-            // m2    m1
+            // m4    m3
             //    --
-            // m3    m4
+            // m1    m2
             if (left == -right) {
                 const speed = Math.abs(left)
                 // map spin command to horizontal move
                 if (left < 0) {
                     // horizontal move left
-                    motorSet4(-speed, -speed, -speed, -speed)
+                    motorSet4(-speed, -speed, speed, speed)
                 } else {
                     // horizontal move right
-                    motorSet4(speed, speed, speed, speed)
+                    motorSet4(speed, speed, -speed, -speed)
                 }
             } else {
-                motorSet4(-right, left, -left, right)
+                motorSet4(-left, right, right, -left)
+            }
+        }
+
+        armOpen(aperture: number): void {
+            // fixed angle mappping to 3D printed arm
+            // servo degree 0: close, 90: close
+            if (aperture > 50) {
+                pins.servoWritePin(AnalogPin.P1, 0)
+            } else { 
+                pins.servoWritePin(AnalogPin.P1, 90)    
             }
         }
     }

@@ -2,19 +2,19 @@
  * Microcode Robot
  */
 //% color="#ff6800" icon="\uf1b9" weight=15
-//% groups='["Motors", "Input", "Configuration"]'
+//% groups='["Robot", "Output", "Input", "Configuration"]'
 namespace microcode {
     export let robot: RobotDriver
 
     function checkRobotDriver() {
-        if (!robot) throw "Add 'robot start' block"
+        if (!robot) throw "Add 'robot start ...' block in the 'on start' block"
     }
 
     /**
      * Moves the robot.
      */
     //% weight=98
-    //% group="Motors"
+    //% group="Output"
     //% block="robot motor run with steering $turnRatio at speed $speed \\%"
     //% blockid="microcoderobotmotorturn"
     //% speed.defl=100
@@ -33,12 +33,37 @@ namespace microcode {
      * Stops the robot.
      */
     //% weight=50
-    //% group="Motors"
+    //% group="Output"
     //% block="robot motor stop"
     //% blockid="microcoderobotmotorstop"
     export function motorStop() {
         checkRobotDriver()
         robot.motorRun(0, 0)
+    }
+
+    /**
+     * Sets the LED color
+     */
+    //% blockId="microcoderobotsetcolor" block="robot set color $rgb"
+    //% group="Output"
+    //% weight=10
+    //% rgb.shadow=colorNumberPicker
+    export function setColor(rgb: number) {
+        checkRobotDriver()
+        robot.setColor(rgb)
+    }
+
+    /**
+     * Play a tone through the robot speaker
+     */
+    //% blockId="microcoderobotplaytone" block="robot play tone $frequency for $duration"
+    //% group="Output"
+    //% weight=10
+    //% frequency.shadow=device_note
+    //% duration.shadow=device_beat
+    export function playTone(frequency: number, duration: number) {
+        checkRobotDriver()
+        robot.playTone(frequency, duration)
     }
 
     /**
@@ -49,7 +74,7 @@ namespace microcode {
     //% group="Input"
     export function obstacleDistance(): number {
         checkRobotDriver()
-        return robot.currentUltrasonicDistance
+        return robot.currentDistance
     }
 
     /**
@@ -59,7 +84,6 @@ namespace microcode {
     //% blockId=microcoderobotobstacledistancechanged
     //% group="Input"
     export function onObstacleChanged(handler: () => void) {
-        checkRobotDriver()
         microcode.robots.onEvent(
             microcode.robots.RobotCompactCommand.ObstacleState,
             handler
@@ -84,7 +108,6 @@ namespace microcode {
     //% blockId=microcoderobotondetectlines
     //% group="Input"
     export function onLineDetected(state: RobotLineState, handler: () => void) {
-        checkRobotDriver()
         const msg = microcode.robots.RobotCompactCommand.LineState | state
         microcode.robots.onEvent(msg, handler)
     }
@@ -92,10 +115,10 @@ namespace microcode {
     /**
      * Enables or disables the line speed assistance.
      */
-    //% block="robot set line assist to $enabled"
+    //% block="robot set line assist $enabled"
     //% blockId="microcoderobotsetlineassist"
     //% group="Configuration"
-    //% enabled=toggleOnOff
+    //% enabled.shadow=toggleOnOff
     export function setLineAssist(enabled: boolean): void {
         checkRobotDriver()
         robot.lineAssist = !!enabled
@@ -117,14 +140,15 @@ namespace microcode {
     }
 
     /**
-     * Sets the LED color
+     * Enables or disables the display of the robot state on the LED matrix.
+     * @param enabled
      */
-    //% blockId="microcoderobotsetcolor" block="robot set color $rgb"
-    //% group="Motors"
-    //% weight=10
-    //% rgb.shadow=colorNumberPicker
-    export function setColor(rgb: number) {
+    //% block="robot set display $enabled"
+    //% blockId="microcoderobotsetdisplay"
+    //% group="Configuration"
+    //% enabled.shadow=toggleOnOff
+    export function setDisplay(enabled: boolean) {
         checkRobotDriver()
-        robot.setColor(rgb)
+        robot.hud = !!enabled
     }
 }

@@ -1,0 +1,5602 @@
+ l>18: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>19: "_l_dot_animation"
+
+ l>20: "startPage1"
+
+ l>jacscript bytecode: 1504b
+
+ l>render sample magnet levels
+
+ l>save to sa: 30b
+
+ l>toBuffer: 30b
+
+ l>save to sa: 30b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=magneticFieldLevel_0_disp_F4  bg (max1)
+  31:     z_role3_G1 := 0
+  34:     z_role_c3_G2 := 0
+  37:     _L0 := dotMatrix_0_R2
+  41:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S18
+  45:     _L2 := 30
+  48:     CALL _L0 numargs=3 func=_l_dot_animation_F10
+  53:     CALL _L0 numargs=0 func=startPage1_F11
+  58:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L3 := 1
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc _l_dot_showNumber_F3:
+   0:     _P1 := (round(_P1) | 0)
+   7:     SETUP_PKT_BUFFER size=5
+   9:     _L0 := (10 <= _P1)
+  15:     JMP 28 (+10) IF NOT !!_L0
+  22:     _L0 := (_P1 <= 99)
+  28:     JMP 77 (+47) IF NOT _L0
+  34:     _L1 := idiv(_P1, 10)
+  40:     _L2 := (_P1 - (_L1 * 10))
+  49:     BLIT dst=pkt_buffer() dst_offset=0 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S9 src_offset=(55 + (_L1 * 2)) length=2
+  61:     BLIT dst=pkt_buffer() dst_offset=3 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S9 src_offset=(55 + (_L2 * 2)) length=2
+  73:     JMP 115 (+42)
+  77:     _L0 := (_P1 < 0)
+  83:     JMP 96 (+10) IF NOT !_L0
+  90:     _L0 := (99 < _P1)
+  96:     JMP 105 (+7) IF NOT _L0
+ 102:     _P1 := 10
+ 105:     BLIT dst=pkt_buffer() dst_offset=0 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S9 src_offset=(_P1 * 5) length=5
+ 115:     SEND_CMD _P0 code=8194
+ 122:     SLEEP_S 0.1_D0
+ 125:     RETURN null()
+          .fill 0x00
+
+
+ l>proc magneticFieldLevel_0_disp_F4:
+   0:     QUERY_REG magneticFieldLevel_0_R3 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S12 offset=0
+  21:     SEND_CMD magneticFieldLevel_0_R3 code=8195
+  28:     WAIT_ROLE magneticFieldLevel_0_R3
+  31:     z_role_c3_G2 := 0
+  34:     _L0 := magneticFieldLevel_0_R3
+  38:     CALL _L0 numargs=1 func=_l_magnet_1_to_5_F5
+  43:     JMP 57 (+10) IF NOT (ret_val() != z_role3_G1)
+  51:     z_role3_G1 := ret_val()
+  54:     z_role_c3_G2 := 1
+  57:     JMP 91 (+30) IF NOT (page_G0 == 1)
+  65:     JMP 91 (+22) IF NOT (1 == z_role_c3_G2)
+  73:     _L1 := 1
+  76:     JMP 91 (+10) IF NOT (z_role3_G1 == _L1)
+  85:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  91:     JMP 125 (+30) IF NOT (page_G0 == 1)
+  99:     JMP 125 (+22) IF NOT (1 == z_role_c3_G2)
+ 107:     _L1 := 2
+ 110:     JMP 125 (+10) IF NOT (z_role3_G1 == _L1)
+ 119:     CALL_BG _L0 numargs=0 func=r1_1_F6  bg (max1)
+ 125:     JMP 159 (+30) IF NOT (page_G0 == 1)
+ 133:     JMP 159 (+22) IF NOT (1 == z_role_c3_G2)
+ 141:     _L1 := 3
+ 144:     JMP 159 (+10) IF NOT (z_role3_G1 == _L1)
+ 153:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+ 159:     JMP 193 (+30) IF NOT (page_G0 == 1)
+ 167:     JMP 193 (+22) IF NOT (1 == z_role_c3_G2)
+ 175:     _L1 := 4
+ 178:     JMP 193 (+10) IF NOT (z_role3_G1 == _L1)
+ 187:     CALL_BG _L0 numargs=0 func=r1_3_F8  bg (max1)
+ 193:     JMP 227 (+30) IF NOT (page_G0 == 1)
+ 201:     JMP 227 (+22) IF NOT (1 == z_role_c3_G2)
+ 209:     _L1 := 5
+ 212:     JMP 227 (+10) IF NOT (z_role3_G1 == _L1)
+ 221:     CALL_BG _L0 numargs=0 func=r1_4_F9  bg (max1)
+ 227:     JMP 28 (-199)
+
+
+ l>proc _l_magnet_1_to_5_F5:
+   0:     QUERY_REG _P0 code=257 timeout=500
+  11:     _L0 := abs(load_buffer(pkt_buffer(), i1.15, offset=0))
+  19:     RETURN (round((4 * _L0)) + 1)
+  27:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_1_F6:
+   0:     _L3 := 2
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_2_F7:
+   0:     _L3 := 3
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_3_F8:
+   0:     _L3 := 4
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_4_F9:
+   0:     _L3 := 5
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F10:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F11:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "dotMatrix_0"
+
+ l>8: "_l_dot_showNumber"
+
+ l>9: 0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f
+
+ l>10: "magneticFieldLevel_0"
+
+ l>11: "magneticFieldLevel_0_disp"
+
+ l>12: 0a
+
+ l>13: "_l_magnet_1_to_5"
+
+ l>14: "r1_1"
+
+ l>15: "r1_2"
+
+ l>16: "r1_3"
+
+ l>17: "r1_4"
+
+ l>18: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>19: "_l_dot_animation"
+
+ l>20: "startPage1"
+
+ l>jacscript bytecode: 1504b
+
+ l>toBuffer: 30b
+
+ l>save to sa: 30b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=magneticFieldLevel_0_disp_F4  bg (max1)
+  31:     z_role3_G1 := 0
+  34:     z_role_c3_G2 := 0
+  37:     _L0 := dotMatrix_0_R2
+  41:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S18
+  45:     _L2 := 30
+  48:     CALL _L0 numargs=3 func=_l_dot_animation_F10
+  53:     CALL _L0 numargs=0 func=startPage1_F11
+  58:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L3 := 1
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc _l_dot_showNumber_F3:
+   0:     _P1 := (round(_P1) | 0)
+   7:     SETUP_PKT_BUFFER size=5
+   9:     _L0 := (10 <= _P1)
+  15:     JMP 28 (+10) IF NOT !!_L0
+  22:     _L0 := (_P1 <= 99)
+  28:     JMP 77 (+47) IF NOT _L0
+  34:     _L1 := idiv(_P1, 10)
+  40:     _L2 := (_P1 - (_L1 * 10))
+  49:     BLIT dst=pkt_buffer() dst_offset=0 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S9 src_offset=(55 + (_L1 * 2)) length=2
+  61:     BLIT dst=pkt_buffer() dst_offset=3 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S9 src_offset=(55 + (_L2 * 2)) length=2
+  73:     JMP 115 (+42)
+  77:     _L0 := (_P1 < 0)
+  83:     JMP 96 (+10) IF NOT !_L0
+  90:     _L0 := (99 < _P1)
+  96:     JMP 105 (+7) IF NOT _L0
+ 102:     _P1 := 10
+ 105:     BLIT dst=pkt_buffer() dst_offset=0 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S9 src_offset=(_P1 * 5) length=5
+ 115:     SEND_CMD _P0 code=8194
+ 122:     SLEEP_S 0.1_D0
+ 125:     RETURN null()
+          .fill 0x00
+
+
+ l>proc magneticFieldLevel_0_disp_F4:
+   0:     QUERY_REG magneticFieldLevel_0_R3 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S12 offset=0
+  21:     SEND_CMD magneticFieldLevel_0_R3 code=8195
+  28:     WAIT_ROLE magneticFieldLevel_0_R3
+  31:     z_role_c3_G2 := 0
+  34:     _L0 := magneticFieldLevel_0_R3
+  38:     CALL _L0 numargs=1 func=_l_magnet_1_to_5_F5
+  43:     JMP 57 (+10) IF NOT (ret_val() != z_role3_G1)
+  51:     z_role3_G1 := ret_val()
+  54:     z_role_c3_G2 := 1
+  57:     JMP 91 (+30) IF NOT (page_G0 == 1)
+  65:     JMP 91 (+22) IF NOT (1 == z_role_c3_G2)
+  73:     _L1 := 1
+  76:     JMP 91 (+10) IF NOT (z_role3_G1 == _L1)
+  85:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  91:     JMP 125 (+30) IF NOT (page_G0 == 1)
+  99:     JMP 125 (+22) IF NOT (1 == z_role_c3_G2)
+ 107:     _L1 := 2
+ 110:     JMP 125 (+10) IF NOT (z_role3_G1 == _L1)
+ 119:     CALL_BG _L0 numargs=0 func=r1_1_F6  bg (max1)
+ 125:     JMP 159 (+30) IF NOT (page_G0 == 1)
+ 133:     JMP 159 (+22) IF NOT (1 == z_role_c3_G2)
+ 141:     _L1 := 3
+ 144:     JMP 159 (+10) IF NOT (z_role3_G1 == _L1)
+ 153:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+ 159:     JMP 193 (+30) IF NOT (page_G0 == 1)
+ 167:     JMP 193 (+22) IF NOT (1 == z_role_c3_G2)
+ 175:     _L1 := 4
+ 178:     JMP 193 (+10) IF NOT (z_role3_G1 == _L1)
+ 187:     CALL_BG _L0 numargs=0 func=r1_3_F8  bg (max1)
+ 193:     JMP 227 (+30) IF NOT (page_G0 == 1)
+ 201:     JMP 227 (+22) IF NOT (1 == z_role_c3_G2)
+ 209:     _L1 := 5
+ 212:     JMP 227 (+10) IF NOT (z_role3_G1 == _L1)
+ 221:     CALL_BG _L0 numargs=0 func=r1_4_F9  bg (max1)
+ 227:     JMP 28 (-199)
+
+
+ l>proc _l_magnet_1_to_5_F5:
+   0:     QUERY_REG _P0 code=257 timeout=500
+  11:     _L0 := abs(load_buffer(pkt_buffer(), i1.15, offset=0))
+  19:     RETURN (round((4 * _L0)) + 1)
+  27:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_1_F6:
+   0:     _L3 := 2
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_2_F7:
+   0:     _L3 := 3
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_3_F8:
+   0:     _L3 := 4
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_4_F9:
+   0:     _L3 := 5
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F10:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F11:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "dotMatrix_0"
+
+ l>8: "_l_dot_showNumber"
+
+ l>9: 0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f
+
+ l>10: "magneticFieldLevel_0"
+
+ l>11: "magneticFieldLevel_0_disp"
+
+ l>12: 0a
+
+ l>13: "_l_magnet_1_to_5"
+
+ l>14: "r1_1"
+
+ l>15: "r1_2"
+
+ l>16: "r1_3"
+
+ l>17: "r1_4"
+
+ l>18: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>19: "_l_dot_animation"
+
+ l>20: "startPage1"
+
+ l>jacscript bytecode: 1504b
+
+ l>toBuffer: 30b
+
+ l>save to sa: 30b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=magneticFieldLevel_0_disp_F4  bg (max1)
+  31:     z_role3_G1 := 0
+  34:     z_role_c3_G2 := 0
+  37:     _L0 := dotMatrix_0_R2
+  41:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S18
+  45:     _L2 := 30
+  48:     CALL _L0 numargs=3 func=_l_dot_animation_F10
+  53:     CALL _L0 numargs=0 func=startPage1_F11
+  58:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L3 := 1
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc _l_dot_showNumber_F3:
+   0:     _P1 := (round(_P1) | 0)
+   7:     SETUP_PKT_BUFFER size=5
+   9:     _L0 := (10 <= _P1)
+  15:     JMP 28 (+10) IF NOT !!_L0
+  22:     _L0 := (_P1 <= 99)
+  28:     JMP 77 (+47) IF NOT _L0
+  34:     _L1 := idiv(_P1, 10)
+  40:     _L2 := (_P1 - (_L1 * 10))
+  49:     BLIT dst=pkt_buffer() dst_offset=0 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S9 src_offset=(55 + (_L1 * 2)) length=2
+  61:     BLIT dst=pkt_buffer() dst_offset=3 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S9 src_offset=(55 + (_L2 * 2)) length=2
+  73:     JMP 115 (+42)
+  77:     _L0 := (_P1 < 0)
+  83:     JMP 96 (+10) IF NOT !_L0
+  90:     _L0 := (99 < _P1)
+  96:     JMP 105 (+7) IF NOT _L0
+ 102:     _P1 := 10
+ 105:     BLIT dst=pkt_buffer() dst_offset=0 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S9 src_offset=(_P1 * 5) length=5
+ 115:     SEND_CMD _P0 code=8194
+ 122:     SLEEP_S 0.1_D0
+ 125:     RETURN null()
+          .fill 0x00
+
+
+ l>proc magneticFieldLevel_0_disp_F4:
+   0:     QUERY_REG magneticFieldLevel_0_R3 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S12 offset=0
+  21:     SEND_CMD magneticFieldLevel_0_R3 code=8195
+  28:     WAIT_ROLE magneticFieldLevel_0_R3
+  31:     z_role_c3_G2 := 0
+  34:     _L0 := magneticFieldLevel_0_R3
+  38:     CALL _L0 numargs=1 func=_l_magnet_1_to_5_F5
+  43:     JMP 57 (+10) IF NOT (ret_val() != z_role3_G1)
+  51:     z_role3_G1 := ret_val()
+  54:     z_role_c3_G2 := 1
+  57:     JMP 91 (+30) IF NOT (page_G0 == 1)
+  65:     JMP 91 (+22) IF NOT (1 == z_role_c3_G2)
+  73:     _L1 := 1
+  76:     JMP 91 (+10) IF NOT (z_role3_G1 == _L1)
+  85:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  91:     JMP 125 (+30) IF NOT (page_G0 == 1)
+  99:     JMP 125 (+22) IF NOT (1 == z_role_c3_G2)
+ 107:     _L1 := 2
+ 110:     JMP 125 (+10) IF NOT (z_role3_G1 == _L1)
+ 119:     CALL_BG _L0 numargs=0 func=r1_1_F6  bg (max1)
+ 125:     JMP 159 (+30) IF NOT (page_G0 == 1)
+ 133:     JMP 159 (+22) IF NOT (1 == z_role_c3_G2)
+ 141:     _L1 := 3
+ 144:     JMP 159 (+10) IF NOT (z_role3_G1 == _L1)
+ 153:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+ 159:     JMP 193 (+30) IF NOT (page_G0 == 1)
+ 167:     JMP 193 (+22) IF NOT (1 == z_role_c3_G2)
+ 175:     _L1 := 4
+ 178:     JMP 193 (+10) IF NOT (z_role3_G1 == _L1)
+ 187:     CALL_BG _L0 numargs=0 func=r1_3_F8  bg (max1)
+ 193:     JMP 227 (+30) IF NOT (page_G0 == 1)
+ 201:     JMP 227 (+22) IF NOT (1 == z_role_c3_G2)
+ 209:     _L1 := 5
+ 212:     JMP 227 (+10) IF NOT (z_role3_G1 == _L1)
+ 221:     CALL_BG _L0 numargs=0 func=r1_4_F9  bg (max1)
+ 227:     JMP 28 (-199)
+
+
+ l>proc _l_magnet_1_to_5_F5:
+   0:     QUERY_REG _P0 code=257 timeout=500
+  11:     _L0 := abs(load_buffer(pkt_buffer(), i1.15, offset=0))
+  19:     RETURN (round((4 * _L0)) + 1)
+  27:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_1_F6:
+   0:     _L3 := 2
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_2_F7:
+   0:     _L3 := 3
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_3_F8:
+   0:     _L3 := 4
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_4_F9:
+   0:     _L3 := 5
+   3:     _L2 := _L3
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := _L2
+  15:     CALL _L0 numargs=2 func=_l_dot_showNumber_F3
+  20:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F10:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F11:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "dotMatrix_0"
+
+ l>8: "_l_dot_showNumber"
+
+ l>9: 0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f
+
+ l>10: "magneticFieldLevel_0"
+
+ l>11: "magneticFieldLevel_0_disp"
+
+ l>12: 0a
+
+ l>13: "_l_magnet_1_to_5"
+
+ l>14: "r1_1"
+
+ l>15: "r1_2"
+
+ l>16: "r1_3"
+
+ l>17: "r1_4"
+
+ l>18: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>19: "_l_dot_animation"
+
+ l>20: "startPage1"
+
+ l>jacscript bytecode: 1504b
+
+ l>render sample count turns
+
+ l>save to sa: 26b
+
+ l>toBuffer: 26b
+
+ l>save to sa: 26b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pipe_cond_0_disp_F8  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=rotaryEncoder_0_disp_F3  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=pipe_cond_1_disp_F10  bg (max1)
+  43:     z_pipe0_G1 := 0
+  46:     z_rotary3_G2 := 0
+  49:     z_var_changed3_G3 := 0
+  52:     z_pipe1_G4 := 0
+  55:     _L0 := dotMatrix_0_R5
+  59:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S21
+  63:     _L2 := 30
+  66:     CALL _L0 numargs=3 func=_l_dot_animation_F11
+  71:     CALL _L0 numargs=0 func=startPage1_F12
+  76:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     SLEEP_MS 50
+   2:     _L0 := z_pipe0_G1
+   6:     _L0 := (_L0 + 1)
+  12:     z_pipe0_G1 := _L0
+  16:     SEND_CMD pipe_cond_0_R2 code=128
+  21:     RETURN 0
+          .fill 0x00
+
+
+ l>proc rotaryEncoder_0_disp_F3:
+   0:     QUERY_REG rotaryEncoder_0_R3 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S10 offset=0
+  21:     SEND_CMD rotaryEncoder_0_R3 code=8195
+  28:     WAIT_ROLE rotaryEncoder_0_R3
+  31:     z_var_changed3_G3 := 0
+  34:     _L0 := rotaryEncoder_0_R3
+  38:     CALL _L0 numargs=1 func=_l_get_rotary_F4
+  43:     JMP 75 (+28) IF NOT (ret_val() != z_rotary3_G2)
+  51:     JMP 69 (+14) IF NOT (ret_val() < z_rotary3_G2)
+  59:     z_rotary3_G2 := ret_val()
+  62:     z_var_changed3_G3 := 1
+  65:     JMP 75 (+10)
+  69:     z_rotary3_G2 := ret_val()
+  72:     z_var_changed3_G3 := 2
+  75:     JMP 97 (+18) IF NOT (page_G0 == 1)
+  83:     JMP 97 (+10) IF NOT (z_var_changed3_G3 == 1)
+  91:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  97:     JMP 119 (+18) IF NOT (page_G0 == 1)
+ 105:     JMP 119 (+10) IF NOT (z_var_changed3_G3 == 2)
+ 113:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+ 119:     JMP 28 (-91)
+
+
+ l>proc _l_get_rotary_F4:
+   0:     QUERY_REG _P0 code=257 timeout=500
+  11:     RETURN load_buffer(pkt_buffer(), i32, offset=0)
+  16:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_1_F5:
+   0:     SLEEP_MS 50
+   2:     _L0 := z_pipe1_G4
+   6:     _L0 := (_L0 + 1)
+  12:     z_pipe1_G4 := _L0
+  16:     SEND_CMD pipe_cond_1_R4 code=128
+  21:     RETURN 0
+          .fill 0x00
+
+
+ l>proc r1_2_F6:
+   0:     _L3 := z_pipe0_G1
+   4:     _L2 := _L3
+   8:     _L0 := dotMatrix_0_R5
+  12:     _L1 := _L2
+  16:     CALL _L0 numargs=2 func=_l_dot_showNumber_F7
+  21:     RETURN 0
+          .fill 0x00
+
+
+ l>proc _l_dot_showNumber_F7:
+   0:     _P1 := (round(_P1) | 0)
+   7:     SETUP_PKT_BUFFER size=5
+   9:     _L0 := (10 <= _P1)
+  15:     JMP 28 (+10) IF NOT !!_L0
+  22:     _L0 := (_P1 <= 99)
+  28:     JMP 77 (+47) IF NOT _L0
+  34:     _L1 := idiv(_P1, 10)
+  40:     _L2 := (_P1 - (_L1 * 10))
+  49:     BLIT dst=pkt_buffer() dst_offset=0 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S17 src_offset=(55 + (_L1 * 2)) length=2
+  61:     BLIT dst=pkt_buffer() dst_offset=3 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S17 src_offset=(55 + (_L2 * 2)) length=2
+  73:     JMP 115 (+42)
+  77:     _L0 := (_P1 < 0)
+  83:     JMP 96 (+10) IF NOT !_L0
+  90:     _L0 := (99 < _P1)
+  96:     JMP 105 (+7) IF NOT _L0
+ 102:     _P1 := 10
+ 105:     BLIT dst=pkt_buffer() dst_offset=0 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S17 src_offset=(_P1 * 5) length=5
+ 115:     SEND_CMD _P0 code=8194
+ 122:     SLEEP_S 0.1_D0
+ 125:     RETURN null()
+          .fill 0x00
+
+
+ l>proc pipe_cond_0_disp_F8:
+   0:     WAIT_ROLE pipe_cond_0_R2
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_2_F6  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_3_F9:
+   0:     _L3 := z_pipe1_G4
+   4:     _L2 := _L3
+   8:     _L0 := dotMatrix_0_R5
+  12:     _L1 := _L2
+  16:     CALL _L0 numargs=2 func=_l_dot_showNumber_F7
+  21:     RETURN 0
+          .fill 0x00
+
+
+ l>proc pipe_cond_1_disp_F10:
+   0:     WAIT_ROLE pipe_cond_1_R4
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_3_F9  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc _l_dot_animation_F11:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F12:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "pipe_cond_0"
+
+ l>8: "rotaryEncoder_0"
+
+ l>9: "rotaryEncoder_0_disp"
+
+ l>10: 0a
+
+ l>11: "_l_get_rotary"
+
+ l>12: "r1_1"
+
+ l>13: "pipe_cond_1"
+
+ l>14: "r1_2"
+
+ l>15: "dotMatrix_0"
+
+ l>16: "_l_dot_showNumber"
+
+ l>17: 0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f
+
+ l>18: "pipe_cond_0_disp"
+
+ l>19: "r1_3"
+
+ l>20: "pipe_cond_1_disp"
+
+ l>21: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>22: "_l_dot_animation"
+
+ l>23: "startPage1"
+
+ l>jacscript bytecode: 1536b
+
+ l>toBuffer: 26b
+
+ l>save to sa: 26b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pipe_cond_0_disp_F8  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=rotaryEncoder_0_disp_F3  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=pipe_cond_1_disp_F10  bg (max1)
+  43:     z_pipe0_G1 := 0
+  46:     z_rotary3_G2 := 0
+  49:     z_var_changed3_G3 := 0
+  52:     z_pipe1_G4 := 0
+  55:     _L0 := dotMatrix_0_R5
+  59:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S21
+  63:     _L2 := 30
+  66:     CALL _L0 numargs=3 func=_l_dot_animation_F11
+  71:     CALL _L0 numargs=0 func=startPage1_F12
+  76:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     SLEEP_MS 50
+   2:     _L0 := z_pipe0_G1
+   6:     _L0 := (_L0 + 1)
+  12:     z_pipe0_G1 := _L0
+  16:     SEND_CMD pipe_cond_0_R2 code=128
+  21:     RETURN 0
+          .fill 0x00
+
+
+ l>proc rotaryEncoder_0_disp_F3:
+   0:     QUERY_REG rotaryEncoder_0_R3 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S10 offset=0
+  21:     SEND_CMD rotaryEncoder_0_R3 code=8195
+  28:     WAIT_ROLE rotaryEncoder_0_R3
+  31:     z_var_changed3_G3 := 0
+  34:     _L0 := rotaryEncoder_0_R3
+  38:     CALL _L0 numargs=1 func=_l_get_rotary_F4
+  43:     JMP 75 (+28) IF NOT (ret_val() != z_rotary3_G2)
+  51:     JMP 69 (+14) IF NOT (ret_val() < z_rotary3_G2)
+  59:     z_rotary3_G2 := ret_val()
+  62:     z_var_changed3_G3 := 1
+  65:     JMP 75 (+10)
+  69:     z_rotary3_G2 := ret_val()
+  72:     z_var_changed3_G3 := 2
+  75:     JMP 97 (+18) IF NOT (page_G0 == 1)
+  83:     JMP 97 (+10) IF NOT (z_var_changed3_G3 == 1)
+  91:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  97:     JMP 119 (+18) IF NOT (page_G0 == 1)
+ 105:     JMP 119 (+10) IF NOT (z_var_changed3_G3 == 2)
+ 113:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+ 119:     JMP 28 (-91)
+
+
+ l>proc _l_get_rotary_F4:
+   0:     QUERY_REG _P0 code=257 timeout=500
+  11:     RETURN load_buffer(pkt_buffer(), i32, offset=0)
+  16:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_1_F5:
+   0:     SLEEP_MS 50
+   2:     _L0 := z_pipe1_G4
+   6:     _L0 := (_L0 + 1)
+  12:     z_pipe1_G4 := _L0
+  16:     SEND_CMD pipe_cond_1_R4 code=128
+  21:     RETURN 0
+          .fill 0x00
+
+
+ l>proc r1_2_F6:
+   0:     _L3 := z_pipe0_G1
+   4:     _L2 := _L3
+   8:     _L0 := dotMatrix_0_R5
+  12:     _L1 := _L2
+  16:     CALL _L0 numargs=2 func=_l_dot_showNumber_F7
+  21:     RETURN 0
+          .fill 0x00
+
+
+ l>proc _l_dot_showNumber_F7:
+   0:     _P1 := (round(_P1) | 0)
+   7:     SETUP_PKT_BUFFER size=5
+   9:     _L0 := (10 <= _P1)
+  15:     JMP 28 (+10) IF NOT !!_L0
+  22:     _L0 := (_P1 <= 99)
+  28:     JMP 77 (+47) IF NOT _L0
+  34:     _L1 := idiv(_P1, 10)
+  40:     _L2 := (_P1 - (_L1 * 10))
+  49:     BLIT dst=pkt_buffer() dst_offset=0 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S17 src_offset=(55 + (_L1 * 2)) length=2
+  61:     BLIT dst=pkt_buffer() dst_offset=3 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S17 src_offset=(55 + (_L2 * 2)) length=2
+  73:     JMP 115 (+42)
+  77:     _L0 := (_P1 < 0)
+  83:     JMP 96 (+10) IF NOT !_L0
+  90:     _L0 := (99 < _P1)
+  96:     JMP 105 (+7) IF NOT _L0
+ 102:     _P1 := 10
+ 105:     BLIT dst=pkt_buffer() dst_offset=0 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S17 src_offset=(_P1 * 5) length=5
+ 115:     SEND_CMD _P0 code=8194
+ 122:     SLEEP_S 0.1_D0
+ 125:     RETURN null()
+          .fill 0x00
+
+
+ l>proc pipe_cond_0_disp_F8:
+   0:     WAIT_ROLE pipe_cond_0_R2
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_2_F6  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_3_F9:
+   0:     _L3 := z_pipe1_G4
+   4:     _L2 := _L3
+   8:     _L0 := dotMatrix_0_R5
+  12:     _L1 := _L2
+  16:     CALL _L0 numargs=2 func=_l_dot_showNumber_F7
+  21:     RETURN 0
+          .fill 0x00
+
+
+ l>proc pipe_cond_1_disp_F10:
+   0:     WAIT_ROLE pipe_cond_1_R4
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_3_F9  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc _l_dot_animation_F11:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F12:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "pipe_cond_0"
+
+ l>8: "rotaryEncoder_0"
+
+ l>9: "rotaryEncoder_0_disp"
+
+ l>10: 0a
+
+ l>11: "_l_get_rotary"
+
+ l>12: "r1_1"
+
+ l>13: "pipe_cond_1"
+
+ l>14: "r1_2"
+
+ l>15: "dotMatrix_0"
+
+ l>16: "_l_dot_showNumber"
+
+ l>17: 0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f
+
+ l>18: "pipe_cond_0_disp"
+
+ l>19: "r1_3"
+
+ l>20: "pipe_cond_1_disp"
+
+ l>21: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>22: "_l_dot_animation"
+
+ l>23: "startPage1"
+
+ l>jacscript bytecode: 1536b
+
+ l>toBuffer: 26b
+
+ l>save to sa: 26b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pipe_cond_0_disp_F8  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=rotaryEncoder_0_disp_F3  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=pipe_cond_1_disp_F10  bg (max1)
+  43:     z_pipe0_G1 := 0
+  46:     z_rotary3_G2 := 0
+  49:     z_var_changed3_G3 := 0
+  52:     z_pipe1_G4 := 0
+  55:     _L0 := dotMatrix_0_R5
+  59:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S21
+  63:     _L2 := 30
+  66:     CALL _L0 numargs=3 func=_l_dot_animation_F11
+  71:     CALL _L0 numargs=0 func=startPage1_F12
+  76:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     SLEEP_MS 50
+   2:     _L0 := z_pipe0_G1
+   6:     _L0 := (_L0 + 1)
+  12:     z_pipe0_G1 := _L0
+  16:     SEND_CMD pipe_cond_0_R2 code=128
+  21:     RETURN 0
+          .fill 0x00
+
+
+ l>proc rotaryEncoder_0_disp_F3:
+   0:     QUERY_REG rotaryEncoder_0_R3 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S10 offset=0
+  21:     SEND_CMD rotaryEncoder_0_R3 code=8195
+  28:     WAIT_ROLE rotaryEncoder_0_R3
+  31:     z_var_changed3_G3 := 0
+  34:     _L0 := rotaryEncoder_0_R3
+  38:     CALL _L0 numargs=1 func=_l_get_rotary_F4
+  43:     JMP 75 (+28) IF NOT (ret_val() != z_rotary3_G2)
+  51:     JMP 69 (+14) IF NOT (ret_val() < z_rotary3_G2)
+  59:     z_rotary3_G2 := ret_val()
+  62:     z_var_changed3_G3 := 1
+  65:     JMP 75 (+10)
+  69:     z_rotary3_G2 := ret_val()
+  72:     z_var_changed3_G3 := 2
+  75:     JMP 97 (+18) IF NOT (page_G0 == 1)
+  83:     JMP 97 (+10) IF NOT (z_var_changed3_G3 == 1)
+  91:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  97:     JMP 119 (+18) IF NOT (page_G0 == 1)
+ 105:     JMP 119 (+10) IF NOT (z_var_changed3_G3 == 2)
+ 113:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+ 119:     JMP 28 (-91)
+
+
+ l>proc _l_get_rotary_F4:
+   0:     QUERY_REG _P0 code=257 timeout=500
+  11:     RETURN load_buffer(pkt_buffer(), i32, offset=0)
+  16:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_1_F5:
+   0:     SLEEP_MS 50
+   2:     _L0 := z_pipe1_G4
+   6:     _L0 := (_L0 + 1)
+  12:     z_pipe1_G4 := _L0
+  16:     SEND_CMD pipe_cond_1_R4 code=128
+  21:     RETURN 0
+          .fill 0x00
+
+
+ l>proc r1_2_F6:
+   0:     _L3 := z_pipe0_G1
+   4:     _L2 := _L3
+   8:     _L0 := dotMatrix_0_R5
+  12:     _L1 := _L2
+  16:     CALL _L0 numargs=2 func=_l_dot_showNumber_F7
+  21:     RETURN 0
+          .fill 0x00
+
+
+ l>proc _l_dot_showNumber_F7:
+   0:     _P1 := (round(_P1) | 0)
+   7:     SETUP_PKT_BUFFER size=5
+   9:     _L0 := (10 <= _P1)
+  15:     JMP 28 (+10) IF NOT !!_L0
+  22:     _L0 := (_P1 <= 99)
+  28:     JMP 77 (+47) IF NOT _L0
+  34:     _L1 := idiv(_P1, 10)
+  40:     _L2 := (_P1 - (_L1 * 10))
+  49:     BLIT dst=pkt_buffer() dst_offset=0 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S17 src_offset=(55 + (_L1 * 2)) length=2
+  61:     BLIT dst=pkt_buffer() dst_offset=3 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S17 src_offset=(55 + (_L2 * 2)) length=2
+  73:     JMP 115 (+42)
+  77:     _L0 := (_P1 < 0)
+  83:     JMP 96 (+10) IF NOT !_L0
+  90:     _L0 := (99 < _P1)
+  96:     JMP 105 (+7) IF NOT _L0
+ 102:     _P1 := 10
+ 105:     BLIT dst=pkt_buffer() dst_offset=0 src=0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f_S17 src_offset=(_P1 * 5) length=5
+ 115:     SEND_CMD _P0 code=8194
+ 122:     SLEEP_S 0.1_D0
+ 125:     RETURN null()
+          .fill 0x00
+
+
+ l>proc pipe_cond_0_disp_F8:
+   0:     WAIT_ROLE pipe_cond_0_R2
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_2_F6  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_3_F9:
+   0:     _L3 := z_pipe1_G4
+   4:     _L2 := _L3
+   8:     _L0 := dotMatrix_0_R5
+  12:     _L1 := _L2
+  16:     CALL _L0 numargs=2 func=_l_dot_showNumber_F7
+  21:     RETURN 0
+          .fill 0x00
+
+
+ l>proc pipe_cond_1_disp_F10:
+   0:     WAIT_ROLE pipe_cond_1_R4
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_3_F9  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc _l_dot_animation_F11:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F12:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "pipe_cond_0"
+
+ l>8: "rotaryEncoder_0"
+
+ l>9: "rotaryEncoder_0_disp"
+
+ l>10: 0a
+
+ l>11: "_l_get_rotary"
+
+ l>12: "r1_1"
+
+ l>13: "pipe_cond_1"
+
+ l>14: "r1_2"
+
+ l>15: "dotMatrix_0"
+
+ l>16: "_l_dot_showNumber"
+
+ l>17: 0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f
+
+ l>18: "pipe_cond_0_disp"
+
+ l>19: "r1_3"
+
+ l>20: "pipe_cond_1_disp"
+
+ l>21: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>22: "_l_dot_animation"
+
+ l>23: "startPage1"
+
+ l>jacscript bytecode: 1536b
+
+ l>render sample key demo
+
+ l>save to sa: 33b
+
+ l>toBuffer: 33b
+
+ l>save to sa: 33b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=button_6_disp_F6  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=button_7_disp_F8  bg (max1)
+  43:     _L0 := dotMatrix_0_R2
+  47:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S25
+  51:     _L2 := 30
+  54:     CALL _L0 numargs=3 func=_l_dot_animation_F3
+  59:     CALL _L0 numargs=0 func=startPage1_F9
+  64:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=dotMatrix_0_lock_G1
+   3:     dotMatrix_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     TERMINATE_FIBER fiber_handle=dotMatrix_0_lock_G1
+   3:     dotMatrix_0_lock_G1 := get_fiber_handle(func=null())
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := 0000040000_S8
+  15:     _L2 := 400
+  21:     CALL _L0 numargs=3 func=_l_dot_animation_F3
+  26:     RETURN 0
+
+
+ l>proc _l_dot_animation_F3:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=dotMatrix_0_lock_G1
+   3:     dotMatrix_0_lock_G1 := get_fiber_handle(func=null())
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := 0812101208_S12
+  15:     _L2 := 400
+  21:     CALL _L0 numargs=3 func=_l_dot_animation_F3
+  26:     RETURN 0
+
+
+ l>proc button_6_disp_F6:
+   0:     WAIT_ROLE button_6_R9
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc r1_2_F7:
+   0:     TERMINATE_FIBER fiber_handle=dotMatrix_0_lock_G1
+   3:     dotMatrix_0_lock_G1 := get_fiber_handle(func=null())
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := 100a080a10_S22
+  15:     _L2 := 400
+  21:     CALL _L0 numargs=3 func=_l_dot_animation_F3
+  26:     RETURN 0
+
+
+ l>proc button_7_disp_F8:
+   0:     WAIT_ROLE button_7_R10
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc startPage1_F9:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "dotMatrix_0"
+
+ l>8: 0000040000
+
+ l>9: "_l_dot_animation"
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: 0812101208
+
+ l>13: "button_0"
+
+ l>14: "button_1"
+
+ l>15: "button_2"
+
+ l>16: "button_3"
+
+ l>17: "button_4"
+
+ l>18: "button_5"
+
+ l>19: "button_6"
+
+ l>20: "button_6_disp"
+
+ l>21: "r1_2"
+
+ l>22: 100a080a10
+
+ l>23: "button_7"
+
+ l>24: "button_7_disp"
+
+ l>25: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>26: "startPage1"
+
+ l>jacscript bytecode: 1216b
+
+ l>toBuffer: 33b
+
+ l>save to sa: 33b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=button_6_disp_F6  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=button_7_disp_F8  bg (max1)
+  43:     _L0 := dotMatrix_0_R2
+  47:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S25
+  51:     _L2 := 30
+  54:     CALL _L0 numargs=3 func=_l_dot_animation_F3
+  59:     CALL _L0 numargs=0 func=startPage1_F9
+  64:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=dotMatrix_0_lock_G1
+   3:     dotMatrix_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     TERMINATE_FIBER fiber_handle=dotMatrix_0_lock_G1
+   3:     dotMatrix_0_lock_G1 := get_fiber_handle(func=null())
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := 0000040000_S8
+  15:     _L2 := 400
+  21:     CALL _L0 numargs=3 func=_l_dot_animation_F3
+  26:     RETURN 0
+
+
+ l>proc _l_dot_animation_F3:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=dotMatrix_0_lock_G1
+   3:     dotMatrix_0_lock_G1 := get_fiber_handle(func=null())
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := 0812101208_S12
+  15:     _L2 := 400
+  21:     CALL _L0 numargs=3 func=_l_dot_animation_F3
+  26:     RETURN 0
+
+
+ l>proc button_6_disp_F6:
+   0:     WAIT_ROLE button_6_R9
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc r1_2_F7:
+   0:     TERMINATE_FIBER fiber_handle=dotMatrix_0_lock_G1
+   3:     dotMatrix_0_lock_G1 := get_fiber_handle(func=null())
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := 100a080a10_S22
+  15:     _L2 := 400
+  21:     CALL _L0 numargs=3 func=_l_dot_animation_F3
+  26:     RETURN 0
+
+
+ l>proc button_7_disp_F8:
+   0:     WAIT_ROLE button_7_R10
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc startPage1_F9:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "dotMatrix_0"
+
+ l>8: 0000040000
+
+ l>9: "_l_dot_animation"
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: 0812101208
+
+ l>13: "button_0"
+
+ l>14: "button_1"
+
+ l>15: "button_2"
+
+ l>16: "button_3"
+
+ l>17: "button_4"
+
+ l>18: "button_5"
+
+ l>19: "button_6"
+
+ l>20: "button_6_disp"
+
+ l>21: "r1_2"
+
+ l>22: 100a080a10
+
+ l>23: "button_7"
+
+ l>24: "button_7_disp"
+
+ l>25: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>26: "startPage1"
+
+ l>jacscript bytecode: 1216b
+
+ l>toBuffer: 33b
+
+ l>save to sa: 33b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=button_6_disp_F6  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=button_7_disp_F8  bg (max1)
+  43:     _L0 := dotMatrix_0_R2
+  47:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S25
+  51:     _L2 := 30
+  54:     CALL _L0 numargs=3 func=_l_dot_animation_F3
+  59:     CALL _L0 numargs=0 func=startPage1_F9
+  64:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=dotMatrix_0_lock_G1
+   3:     dotMatrix_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     TERMINATE_FIBER fiber_handle=dotMatrix_0_lock_G1
+   3:     dotMatrix_0_lock_G1 := get_fiber_handle(func=null())
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := 0000040000_S8
+  15:     _L2 := 400
+  21:     CALL _L0 numargs=3 func=_l_dot_animation_F3
+  26:     RETURN 0
+
+
+ l>proc _l_dot_animation_F3:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=dotMatrix_0_lock_G1
+   3:     dotMatrix_0_lock_G1 := get_fiber_handle(func=null())
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := 0812101208_S12
+  15:     _L2 := 400
+  21:     CALL _L0 numargs=3 func=_l_dot_animation_F3
+  26:     RETURN 0
+
+
+ l>proc button_6_disp_F6:
+   0:     WAIT_ROLE button_6_R9
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc r1_2_F7:
+   0:     TERMINATE_FIBER fiber_handle=dotMatrix_0_lock_G1
+   3:     dotMatrix_0_lock_G1 := get_fiber_handle(func=null())
+   7:     _L0 := dotMatrix_0_R2
+  11:     _L1 := 100a080a10_S22
+  15:     _L2 := 400
+  21:     CALL _L0 numargs=3 func=_l_dot_animation_F3
+  26:     RETURN 0
+
+
+ l>proc button_7_disp_F8:
+   0:     WAIT_ROLE button_7_R10
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc startPage1_F9:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "dotMatrix_0"
+
+ l>8: 0000040000
+
+ l>9: "_l_dot_animation"
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: 0812101208
+
+ l>13: "button_0"
+
+ l>14: "button_1"
+
+ l>15: "button_2"
+
+ l>16: "button_3"
+
+ l>17: "button_4"
+
+ l>18: "button_5"
+
+ l>19: "button_6"
+
+ l>20: "button_6_disp"
+
+ l>21: "r1_2"
+
+ l>22: 100a080a10
+
+ l>23: "button_7"
+
+ l>24: "button_7_disp"
+
+ l>25: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>26: "startPage1"
+
+ l>jacscript bytecode: 1216b
+
+ l>render sample robot shake
+
+ l>save to sa: 31b
+
+ l>toBuffer: 31b
+
+ l>save to sa: 31b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=accelerometer_0_disp_F6  bg (max1)
+  43:     _L0 := dotMatrix_0_R4
+  47:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S19
+  51:     _L2 := 30
+  54:     CALL _L0 numargs=3 func=_l_dot_animation_F10
+  59:     CALL _L0 numargs=0 func=startPage1_F11
+  64:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 3
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 26 (-3)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc accelerometer_0_disp_F6:
+   0:     QUERY_REG accelerometer_0_R3 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S14 offset=0
+  21:     SEND_CMD accelerometer_0_R3 code=8195
+  28:     WAIT_ROLE accelerometer_0_R3
+  31:     JMP 53 (+18) IF NOT (page_G0 == 1)
+  39:     JMP 53 (+10) IF NOT (pkt_ev_code() == 130)
+  47:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  53:     JMP 75 (+18) IF NOT (page_G0 == 1)
+  61:     JMP 75 (+10) IF NOT (pkt_ev_code() == 129)
+  69:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+  75:     JMP 97 (+18) IF NOT (page_G0 == 1)
+  83:     JMP 97 (+10) IF NOT (pkt_ev_code() == 131)
+  91:     CALL_BG _L0 numargs=0 func=r1_3_F8  bg (max1)
+  97:     JMP 119 (+18) IF NOT (page_G0 == 1)
+ 105:     JMP 119 (+10) IF NOT (pkt_ev_code() == 132)
+ 113:     CALL_BG _L0 numargs=0 func=r1_4_F9  bg (max1)
+ 119:     JMP 28 (-91)
+
+
+ l>proc r1_2_F7:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_3_F8:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc r1_4_F9:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435204
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435204
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F10:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F11:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "accelerometer_0"
+
+ l>13: "accelerometer_0_disp"
+
+ l>14: 0a
+
+ l>15: "r1_2"
+
+ l>16: "r1_3"
+
+ l>17: "r1_4"
+
+ l>18: "dotMatrix_0"
+
+ l>19: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>20: "_l_dot_animation"
+
+ l>21: "startPage1"
+
+ l>jacscript bytecode: 1440b
+
+ l>toBuffer: 31b
+
+ l>save to sa: 31b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=accelerometer_0_disp_F6  bg (max1)
+  43:     _L0 := dotMatrix_0_R4
+  47:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S19
+  51:     _L2 := 30
+  54:     CALL _L0 numargs=3 func=_l_dot_animation_F10
+  59:     CALL _L0 numargs=0 func=startPage1_F11
+  64:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 3
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 26 (-3)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc accelerometer_0_disp_F6:
+   0:     QUERY_REG accelerometer_0_R3 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S14 offset=0
+  21:     SEND_CMD accelerometer_0_R3 code=8195
+  28:     WAIT_ROLE accelerometer_0_R3
+  31:     JMP 53 (+18) IF NOT (page_G0 == 1)
+  39:     JMP 53 (+10) IF NOT (pkt_ev_code() == 130)
+  47:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  53:     JMP 75 (+18) IF NOT (page_G0 == 1)
+  61:     JMP 75 (+10) IF NOT (pkt_ev_code() == 129)
+  69:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+  75:     JMP 97 (+18) IF NOT (page_G0 == 1)
+  83:     JMP 97 (+10) IF NOT (pkt_ev_code() == 131)
+  91:     CALL_BG _L0 numargs=0 func=r1_3_F8  bg (max1)
+  97:     JMP 119 (+18) IF NOT (page_G0 == 1)
+ 105:     JMP 119 (+10) IF NOT (pkt_ev_code() == 132)
+ 113:     CALL_BG _L0 numargs=0 func=r1_4_F9  bg (max1)
+ 119:     JMP 28 (-91)
+
+
+ l>proc r1_2_F7:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_3_F8:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc r1_4_F9:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435204
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435204
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F10:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F11:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "accelerometer_0"
+
+ l>13: "accelerometer_0_disp"
+
+ l>14: 0a
+
+ l>15: "r1_2"
+
+ l>16: "r1_3"
+
+ l>17: "r1_4"
+
+ l>18: "dotMatrix_0"
+
+ l>19: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>20: "_l_dot_animation"
+
+ l>21: "startPage1"
+
+ l>jacscript bytecode: 1440b
+
+ l>toBuffer: 31b
+
+ l>save to sa: 31b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=accelerometer_0_disp_F6  bg (max1)
+  43:     _L0 := dotMatrix_0_R4
+  47:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S19
+  51:     _L2 := 30
+  54:     CALL _L0 numargs=3 func=_l_dot_animation_F10
+  59:     CALL _L0 numargs=0 func=startPage1_F11
+  64:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 3
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 26 (-3)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc accelerometer_0_disp_F6:
+   0:     QUERY_REG accelerometer_0_R3 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S14 offset=0
+  21:     SEND_CMD accelerometer_0_R3 code=8195
+  28:     WAIT_ROLE accelerometer_0_R3
+  31:     JMP 53 (+18) IF NOT (page_G0 == 1)
+  39:     JMP 53 (+10) IF NOT (pkt_ev_code() == 130)
+  47:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  53:     JMP 75 (+18) IF NOT (page_G0 == 1)
+  61:     JMP 75 (+10) IF NOT (pkt_ev_code() == 129)
+  69:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+  75:     JMP 97 (+18) IF NOT (page_G0 == 1)
+  83:     JMP 97 (+10) IF NOT (pkt_ev_code() == 131)
+  91:     CALL_BG _L0 numargs=0 func=r1_3_F8  bg (max1)
+  97:     JMP 119 (+18) IF NOT (page_G0 == 1)
+ 105:     JMP 119 (+10) IF NOT (pkt_ev_code() == 132)
+ 113:     CALL_BG _L0 numargs=0 func=r1_4_F9  bg (max1)
+ 119:     JMP 28 (-91)
+
+
+ l>proc r1_2_F7:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_3_F8:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc r1_4_F9:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435204
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435204
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F10:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F11:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "accelerometer_0"
+
+ l>13: "accelerometer_0_disp"
+
+ l>14: 0a
+
+ l>15: "r1_2"
+
+ l>16: "r1_3"
+
+ l>17: "r1_4"
+
+ l>18: "dotMatrix_0"
+
+ l>19: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>20: "_l_dot_animation"
+
+ l>21: "startPage1"
+
+ l>jacscript bytecode: 1440b
+
+ l>render sample robot wake
+
+ l>save to sa: 19b
+
+ l>toBuffer: 19b
+
+ l>save to sa: 19b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=soundLevel_0_disp_F6  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  43:     _L0 := dotMatrix_0_R3
+  47:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S15
+  51:     _L2 := 30
+  54:     CALL _L0 numargs=3 func=_l_dot_animation_F7
+  59:     CALL _L0 numargs=0 func=startPage1_F8
+  64:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 3
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 26 (-3)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     SETUP_PKT_BUFFER size=8
+  91:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+ 101:     SEND_CMD radio_0_R2 code=129
+ 106:     SLEEP_MS 5
+ 108:     SETUP_PKT_BUFFER size=8
+ 110:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+ 120:     SEND_CMD radio_0_R2 code=129
+ 125:     SLEEP_MS 500
+ 130:     SETUP_PKT_BUFFER size=8
+ 132:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+ 142:     SEND_CMD radio_0_R2 code=129
+ 147:     SLEEP_MS 5
+ 149:     SETUP_PKT_BUFFER size=8
+ 151:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+ 161:     SEND_CMD radio_0_R2 code=129
+ 166:     SLEEP_MS 500
+ 171:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc soundLevel_0_disp_F6:
+   0:     QUERY_REG soundLevel_0_R1 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S13 offset=0
+  21:     SEND_CMD soundLevel_0_R1 code=8195
+  28:     WAIT_ROLE soundLevel_0_R1
+  31:     JMP 52 (+17) IF NOT (page_G0 == 1)
+  39:     JMP 52 (+10) IF NOT (pkt_ev_code() == 1)
+  46:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  52:     JMP 28 (-24)
+
+
+ l>proc _l_dot_animation_F7:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F8:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "soundLevel_0_disp"
+
+ l>13: 0a
+
+ l>14: "dotMatrix_0"
+
+ l>15: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>16: "_l_dot_animation"
+
+ l>17: "startPage1"
+
+ l>jacscript bytecode: 1120b
+
+ l>toBuffer: 19b
+
+ l>save to sa: 19b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=soundLevel_0_disp_F6  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  43:     _L0 := dotMatrix_0_R3
+  47:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S15
+  51:     _L2 := 30
+  54:     CALL _L0 numargs=3 func=_l_dot_animation_F7
+  59:     CALL _L0 numargs=0 func=startPage1_F8
+  64:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 3
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 26 (-3)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     SETUP_PKT_BUFFER size=8
+  91:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+ 101:     SEND_CMD radio_0_R2 code=129
+ 106:     SLEEP_MS 5
+ 108:     SETUP_PKT_BUFFER size=8
+ 110:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+ 120:     SEND_CMD radio_0_R2 code=129
+ 125:     SLEEP_MS 500
+ 130:     SETUP_PKT_BUFFER size=8
+ 132:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+ 142:     SEND_CMD radio_0_R2 code=129
+ 147:     SLEEP_MS 5
+ 149:     SETUP_PKT_BUFFER size=8
+ 151:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+ 161:     SEND_CMD radio_0_R2 code=129
+ 166:     SLEEP_MS 500
+ 171:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc soundLevel_0_disp_F6:
+   0:     QUERY_REG soundLevel_0_R1 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S13 offset=0
+  21:     SEND_CMD soundLevel_0_R1 code=8195
+  28:     WAIT_ROLE soundLevel_0_R1
+  31:     JMP 52 (+17) IF NOT (page_G0 == 1)
+  39:     JMP 52 (+10) IF NOT (pkt_ev_code() == 1)
+  46:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  52:     JMP 28 (-24)
+
+
+ l>proc _l_dot_animation_F7:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F8:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "soundLevel_0_disp"
+
+ l>13: 0a
+
+ l>14: "dotMatrix_0"
+
+ l>15: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>16: "_l_dot_animation"
+
+ l>17: "startPage1"
+
+ l>jacscript bytecode: 1120b
+
+ l>toBuffer: 19b
+
+ l>save to sa: 19b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=soundLevel_0_disp_F6  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  43:     _L0 := dotMatrix_0_R3
+  47:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S15
+  51:     _L2 := 30
+  54:     CALL _L0 numargs=3 func=_l_dot_animation_F7
+  59:     CALL _L0 numargs=0 func=startPage1_F8
+  64:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 3
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 26 (-3)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     SETUP_PKT_BUFFER size=8
+  91:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+ 101:     SEND_CMD radio_0_R2 code=129
+ 106:     SLEEP_MS 5
+ 108:     SETUP_PKT_BUFFER size=8
+ 110:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+ 120:     SEND_CMD radio_0_R2 code=129
+ 125:     SLEEP_MS 500
+ 130:     SETUP_PKT_BUFFER size=8
+ 132:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+ 142:     SEND_CMD radio_0_R2 code=129
+ 147:     SLEEP_MS 5
+ 149:     SETUP_PKT_BUFFER size=8
+ 151:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+ 161:     SEND_CMD radio_0_R2 code=129
+ 166:     SLEEP_MS 500
+ 171:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc soundLevel_0_disp_F6:
+   0:     QUERY_REG soundLevel_0_R1 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S13 offset=0
+  21:     SEND_CMD soundLevel_0_R1 code=8195
+  28:     WAIT_ROLE soundLevel_0_R1
+  31:     JMP 52 (+17) IF NOT (page_G0 == 1)
+  39:     JMP 52 (+10) IF NOT (pkt_ev_code() == 1)
+  46:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  52:     JMP 28 (-24)
+
+
+ l>proc _l_dot_animation_F7:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F8:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "soundLevel_0_disp"
+
+ l>13: 0a
+
+ l>14: "dotMatrix_0"
+
+ l>15: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>16: "_l_dot_animation"
+
+ l>17: "startPage1"
+
+ l>jacscript bytecode: 1120b
+
+ l>render sample robot avoid wall
+
+ l>save to sa: 21b
+
+ l>toBuffer: 21b
+
+ l>save to sa: 21b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  37:     z_radio_G2 := 0
+  40:     _L0 := dotMatrix_0_R3
+  44:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S14
+  48:     _L2 := 30
+  51:     CALL _L0 numargs=3 func=_l_dot_animation_F7
+  56:     CALL _L0 numargs=0 func=startPage1_F8
+  61:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 3
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 93 (+60) IF NOT (page_G0 == 1)
+  37:     JMP 93 (+52) IF NOT (pkt_report_code() == 145)
+  45:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+  51:     JMP 93 (+33) IF NOT (268435232 < z_radio_G2)
+  64:     z_radio_G2 := (z_radio_G2 - 268435232)
+  75:     _L0 := 2
+  78:     JMP 93 (+10) IF NOT (z_radio_G2 == _L0)
+  87:     CALL_BG _L0 numargs=0 func=r1_2_F6  bg (max1)
+  93:     JMP 26 (-67)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 31 (+10) IF NOT (page_G0 == 1)
+  25:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  31:     JMP 0 (-31)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_2_F6:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F7:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F8:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "r1_2"
+
+ l>13: "dotMatrix_0"
+
+ l>14: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>15: "_l_dot_animation"
+
+ l>16: "startPage1"
+
+ l>jacscript bytecode: 1088b
+
+ l>toBuffer: 21b
+
+ l>save to sa: 21b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  37:     z_radio_G2 := 0
+  40:     _L0 := dotMatrix_0_R3
+  44:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S14
+  48:     _L2 := 30
+  51:     CALL _L0 numargs=3 func=_l_dot_animation_F7
+  56:     CALL _L0 numargs=0 func=startPage1_F8
+  61:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 3
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 93 (+60) IF NOT (page_G0 == 1)
+  37:     JMP 93 (+52) IF NOT (pkt_report_code() == 145)
+  45:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+  51:     JMP 93 (+33) IF NOT (268435232 < z_radio_G2)
+  64:     z_radio_G2 := (z_radio_G2 - 268435232)
+  75:     _L0 := 2
+  78:     JMP 93 (+10) IF NOT (z_radio_G2 == _L0)
+  87:     CALL_BG _L0 numargs=0 func=r1_2_F6  bg (max1)
+  93:     JMP 26 (-67)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 31 (+10) IF NOT (page_G0 == 1)
+  25:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  31:     JMP 0 (-31)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_2_F6:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F7:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F8:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "r1_2"
+
+ l>13: "dotMatrix_0"
+
+ l>14: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>15: "_l_dot_animation"
+
+ l>16: "startPage1"
+
+ l>jacscript bytecode: 1088b
+
+ l>toBuffer: 21b
+
+ l>save to sa: 21b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  37:     z_radio_G2 := 0
+  40:     _L0 := dotMatrix_0_R3
+  44:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S14
+  48:     _L2 := 30
+  51:     CALL _L0 numargs=3 func=_l_dot_animation_F7
+  56:     CALL _L0 numargs=0 func=startPage1_F8
+  61:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 3
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 93 (+60) IF NOT (page_G0 == 1)
+  37:     JMP 93 (+52) IF NOT (pkt_report_code() == 145)
+  45:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+  51:     JMP 93 (+33) IF NOT (268435232 < z_radio_G2)
+  64:     z_radio_G2 := (z_radio_G2 - 268435232)
+  75:     _L0 := 2
+  78:     JMP 93 (+10) IF NOT (z_radio_G2 == _L0)
+  87:     CALL_BG _L0 numargs=0 func=r1_2_F6  bg (max1)
+  93:     JMP 26 (-67)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 31 (+10) IF NOT (page_G0 == 1)
+  25:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  31:     JMP 0 (-31)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_2_F6:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F7:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F8:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "r1_2"
+
+ l>13: "dotMatrix_0"
+
+ l>14: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>15: "_l_dot_animation"
+
+ l>16: "startPage1"
+
+ l>jacscript bytecode: 1088b
+
+ l>render sample robot line follow
+
+ l>save to sa: 37b
+
+ l>toBuffer: 37b
+
+ l>save to sa: 37b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  37:     z_radio_G2 := 0
+  40:     _L0 := dotMatrix_0_R3
+  44:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S18
+  48:     _L2 := 30
+  51:     CALL _L0 numargs=3 func=_l_dot_animation_F11
+  56:     CALL _L0 numargs=0 func=startPage1_F12
+  61:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 1
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 100 (+67) IF NOT (page_G0 == 1)
+  37:     JMP 100 (+59) IF NOT (pkt_report_code() == 145)
+  45:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+  51:     JMP 100 (+40) IF NOT (268435232 < z_radio_G2)
+  64:     JMP 100 (+27) IF NOT (268435248 <= z_radio_G2)
+  77:     _L0 := 268435251
+  85:     JMP 100 (+10) IF NOT (z_radio_G2 == _L0)
+  94:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+ 100:     JMP 171 (+67) IF NOT (page_G0 == 1)
+ 108:     JMP 171 (+59) IF NOT (pkt_report_code() == 145)
+ 116:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 122:     JMP 171 (+40) IF NOT (268435232 < z_radio_G2)
+ 135:     JMP 171 (+27) IF NOT (268435248 <= z_radio_G2)
+ 148:     _L0 := 268435249
+ 156:     JMP 171 (+10) IF NOT (z_radio_G2 == _L0)
+ 165:     CALL_BG _L0 numargs=0 func=r1_2_F6  bg (max1)
+ 171:     JMP 242 (+67) IF NOT (page_G0 == 1)
+ 179:     JMP 242 (+59) IF NOT (pkt_report_code() == 145)
+ 187:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 193:     JMP 242 (+40) IF NOT (268435232 < z_radio_G2)
+ 206:     JMP 242 (+27) IF NOT (268435248 <= z_radio_G2)
+ 219:     _L0 := 268435250
+ 227:     JMP 242 (+10) IF NOT (z_radio_G2 == _L0)
+ 236:     CALL_BG _L0 numargs=0 func=r1_3_F7  bg (max1)
+ 242:     JMP 313 (+67) IF NOT (page_G0 == 1)
+ 250:     JMP 313 (+59) IF NOT (pkt_report_code() == 145)
+ 258:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 264:     JMP 313 (+40) IF NOT (268435232 < z_radio_G2)
+ 277:     JMP 313 (+27) IF NOT (268435248 <= z_radio_G2)
+ 290:     _L0 := 268435252
+ 298:     JMP 313 (+10) IF NOT (z_radio_G2 == _L0)
+ 307:     CALL_BG _L0 numargs=0 func=r1_4_F8  bg (max1)
+ 313:     JMP 384 (+67) IF NOT (page_G0 == 1)
+ 321:     JMP 384 (+59) IF NOT (pkt_report_code() == 145)
+ 329:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 335:     JMP 384 (+40) IF NOT (268435232 < z_radio_G2)
+ 348:     JMP 384 (+27) IF NOT (268435248 <= z_radio_G2)
+ 361:     _L0 := 268435258
+ 369:     JMP 384 (+10) IF NOT (z_radio_G2 == _L0)
+ 378:     CALL_BG _L0 numargs=0 func=r1_5_F9  bg (max1)
+ 384:     JMP 455 (+67) IF NOT (page_G0 == 1)
+ 392:     JMP 455 (+59) IF NOT (pkt_report_code() == 145)
+ 400:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 406:     JMP 455 (+40) IF NOT (268435232 < z_radio_G2)
+ 419:     JMP 455 (+27) IF NOT (268435248 <= z_radio_G2)
+ 432:     _L0 := 268435248
+ 440:     JMP 455 (+10) IF NOT (z_radio_G2 == _L0)
+ 449:     CALL_BG _L0 numargs=0 func=r1_6_F10  bg (max1)
+ 455:     JMP 26 (-429)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_2_F6:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_3_F7:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435204
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435204
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_4_F8:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435207
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435207
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_5_F9:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435208
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435208
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_6_F10:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F11:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F12:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "r1_2"
+
+ l>13: "r1_3"
+
+ l>14: "r1_4"
+
+ l>15: "r1_5"
+
+ l>16: "r1_6"
+
+ l>17: "dotMatrix_0"
+
+ l>18: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>19: "_l_dot_animation"
+
+ l>20: "startPage1"
+
+ l>jacscript bytecode: 1728b
+
+ l>toBuffer: 37b
+
+ l>save to sa: 37b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  37:     z_radio_G2 := 0
+  40:     _L0 := dotMatrix_0_R3
+  44:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S18
+  48:     _L2 := 30
+  51:     CALL _L0 numargs=3 func=_l_dot_animation_F11
+  56:     CALL _L0 numargs=0 func=startPage1_F12
+  61:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 1
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 100 (+67) IF NOT (page_G0 == 1)
+  37:     JMP 100 (+59) IF NOT (pkt_report_code() == 145)
+  45:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+  51:     JMP 100 (+40) IF NOT (268435232 < z_radio_G2)
+  64:     JMP 100 (+27) IF NOT (268435248 <= z_radio_G2)
+  77:     _L0 := 268435251
+  85:     JMP 100 (+10) IF NOT (z_radio_G2 == _L0)
+  94:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+ 100:     JMP 171 (+67) IF NOT (page_G0 == 1)
+ 108:     JMP 171 (+59) IF NOT (pkt_report_code() == 145)
+ 116:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 122:     JMP 171 (+40) IF NOT (268435232 < z_radio_G2)
+ 135:     JMP 171 (+27) IF NOT (268435248 <= z_radio_G2)
+ 148:     _L0 := 268435249
+ 156:     JMP 171 (+10) IF NOT (z_radio_G2 == _L0)
+ 165:     CALL_BG _L0 numargs=0 func=r1_2_F6  bg (max1)
+ 171:     JMP 242 (+67) IF NOT (page_G0 == 1)
+ 179:     JMP 242 (+59) IF NOT (pkt_report_code() == 145)
+ 187:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 193:     JMP 242 (+40) IF NOT (268435232 < z_radio_G2)
+ 206:     JMP 242 (+27) IF NOT (268435248 <= z_radio_G2)
+ 219:     _L0 := 268435250
+ 227:     JMP 242 (+10) IF NOT (z_radio_G2 == _L0)
+ 236:     CALL_BG _L0 numargs=0 func=r1_3_F7  bg (max1)
+ 242:     JMP 313 (+67) IF NOT (page_G0 == 1)
+ 250:     JMP 313 (+59) IF NOT (pkt_report_code() == 145)
+ 258:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 264:     JMP 313 (+40) IF NOT (268435232 < z_radio_G2)
+ 277:     JMP 313 (+27) IF NOT (268435248 <= z_radio_G2)
+ 290:     _L0 := 268435252
+ 298:     JMP 313 (+10) IF NOT (z_radio_G2 == _L0)
+ 307:     CALL_BG _L0 numargs=0 func=r1_4_F8  bg (max1)
+ 313:     JMP 384 (+67) IF NOT (page_G0 == 1)
+ 321:     JMP 384 (+59) IF NOT (pkt_report_code() == 145)
+ 329:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 335:     JMP 384 (+40) IF NOT (268435232 < z_radio_G2)
+ 348:     JMP 384 (+27) IF NOT (268435248 <= z_radio_G2)
+ 361:     _L0 := 268435258
+ 369:     JMP 384 (+10) IF NOT (z_radio_G2 == _L0)
+ 378:     CALL_BG _L0 numargs=0 func=r1_5_F9  bg (max1)
+ 384:     JMP 455 (+67) IF NOT (page_G0 == 1)
+ 392:     JMP 455 (+59) IF NOT (pkt_report_code() == 145)
+ 400:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 406:     JMP 455 (+40) IF NOT (268435232 < z_radio_G2)
+ 419:     JMP 455 (+27) IF NOT (268435248 <= z_radio_G2)
+ 432:     _L0 := 268435248
+ 440:     JMP 455 (+10) IF NOT (z_radio_G2 == _L0)
+ 449:     CALL_BG _L0 numargs=0 func=r1_6_F10  bg (max1)
+ 455:     JMP 26 (-429)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_2_F6:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_3_F7:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435204
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435204
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_4_F8:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435207
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435207
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_5_F9:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435208
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435208
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_6_F10:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F11:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F12:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "r1_2"
+
+ l>13: "r1_3"
+
+ l>14: "r1_4"
+
+ l>15: "r1_5"
+
+ l>16: "r1_6"
+
+ l>17: "dotMatrix_0"
+
+ l>18: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>19: "_l_dot_animation"
+
+ l>20: "startPage1"
+
+ l>jacscript bytecode: 1728b
+
+ l>toBuffer: 37b
+
+ l>save to sa: 37b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  37:     z_radio_G2 := 0
+  40:     _L0 := dotMatrix_0_R3
+  44:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S18
+  48:     _L2 := 30
+  51:     CALL _L0 numargs=3 func=_l_dot_animation_F11
+  56:     CALL _L0 numargs=0 func=startPage1_F12
+  61:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 1
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 100 (+67) IF NOT (page_G0 == 1)
+  37:     JMP 100 (+59) IF NOT (pkt_report_code() == 145)
+  45:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+  51:     JMP 100 (+40) IF NOT (268435232 < z_radio_G2)
+  64:     JMP 100 (+27) IF NOT (268435248 <= z_radio_G2)
+  77:     _L0 := 268435251
+  85:     JMP 100 (+10) IF NOT (z_radio_G2 == _L0)
+  94:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+ 100:     JMP 171 (+67) IF NOT (page_G0 == 1)
+ 108:     JMP 171 (+59) IF NOT (pkt_report_code() == 145)
+ 116:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 122:     JMP 171 (+40) IF NOT (268435232 < z_radio_G2)
+ 135:     JMP 171 (+27) IF NOT (268435248 <= z_radio_G2)
+ 148:     _L0 := 268435249
+ 156:     JMP 171 (+10) IF NOT (z_radio_G2 == _L0)
+ 165:     CALL_BG _L0 numargs=0 func=r1_2_F6  bg (max1)
+ 171:     JMP 242 (+67) IF NOT (page_G0 == 1)
+ 179:     JMP 242 (+59) IF NOT (pkt_report_code() == 145)
+ 187:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 193:     JMP 242 (+40) IF NOT (268435232 < z_radio_G2)
+ 206:     JMP 242 (+27) IF NOT (268435248 <= z_radio_G2)
+ 219:     _L0 := 268435250
+ 227:     JMP 242 (+10) IF NOT (z_radio_G2 == _L0)
+ 236:     CALL_BG _L0 numargs=0 func=r1_3_F7  bg (max1)
+ 242:     JMP 313 (+67) IF NOT (page_G0 == 1)
+ 250:     JMP 313 (+59) IF NOT (pkt_report_code() == 145)
+ 258:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 264:     JMP 313 (+40) IF NOT (268435232 < z_radio_G2)
+ 277:     JMP 313 (+27) IF NOT (268435248 <= z_radio_G2)
+ 290:     _L0 := 268435252
+ 298:     JMP 313 (+10) IF NOT (z_radio_G2 == _L0)
+ 307:     CALL_BG _L0 numargs=0 func=r1_4_F8  bg (max1)
+ 313:     JMP 384 (+67) IF NOT (page_G0 == 1)
+ 321:     JMP 384 (+59) IF NOT (pkt_report_code() == 145)
+ 329:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 335:     JMP 384 (+40) IF NOT (268435232 < z_radio_G2)
+ 348:     JMP 384 (+27) IF NOT (268435248 <= z_radio_G2)
+ 361:     _L0 := 268435258
+ 369:     JMP 384 (+10) IF NOT (z_radio_G2 == _L0)
+ 378:     CALL_BG _L0 numargs=0 func=r1_5_F9  bg (max1)
+ 384:     JMP 455 (+67) IF NOT (page_G0 == 1)
+ 392:     JMP 455 (+59) IF NOT (pkt_report_code() == 145)
+ 400:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+ 406:     JMP 455 (+40) IF NOT (268435232 < z_radio_G2)
+ 419:     JMP 455 (+27) IF NOT (268435248 <= z_radio_G2)
+ 432:     _L0 := 268435248
+ 440:     JMP 455 (+10) IF NOT (z_radio_G2 == _L0)
+ 449:     CALL_BG _L0 numargs=0 func=r1_6_F10  bg (max1)
+ 455:     JMP 26 (-429)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_2_F6:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435203
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_3_F7:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435204
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435204
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_4_F8:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435207
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435207
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_5_F9:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435208
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435208
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc r1_6_F10:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     RETURN 0
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F11:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F12:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "r1_2"
+
+ l>13: "r1_3"
+
+ l>14: "r1_4"
+
+ l>15: "r1_5"
+
+ l>16: "r1_6"
+
+ l>17: "dotMatrix_0"
+
+ l>18: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>19: "_l_dot_animation"
+
+ l>20: "startPage1"
+
+ l>jacscript bytecode: 1728b
+
+ l>render sample robot showcase
+
+ l>save to sa: 28b
+
+ l>toBuffer: 28b
+
+ l>save to sa: 28b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=button_0_disp_F6  bg (max1)
+  43:     CALL_BG _L0 numargs=0 func=button_1_disp_F8  bg (max1)
+  49:     z_radio_G2 := 0
+  52:     _L0 := dotMatrix_0_R5
+  56:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S19
+  60:     _L2 := 30
+  63:     CALL _L0 numargs=3 func=_l_dot_animation_F10
+  68:     CALL _L0 numargs=0 func=startPage1_F11
+  73:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 1
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 93 (+60) IF NOT (page_G0 == 1)
+  37:     JMP 93 (+52) IF NOT (pkt_report_code() == 145)
+  45:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+  51:     JMP 93 (+33) IF NOT (268435232 < z_radio_G2)
+  64:     z_radio_G2 := (z_radio_G2 - 268435232)
+  75:     _L0 := 2
+  78:     JMP 93 (+10) IF NOT (z_radio_G2 == _L0)
+  87:     CALL_BG _L0 numargs=0 func=r1_3_F9  bg (max1)
+  93:     JMP 26 (-67)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435211
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435211
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc button_0_disp_F6:
+   0:     WAIT_ROLE button_0_R3
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc r1_2_F7:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435209
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435209
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc button_1_disp_F8:
+   0:     WAIT_ROLE button_1_R4
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc r1_3_F9:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435207
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435207
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F10:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F11:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "button_0"
+
+ l>13: "button_0_disp"
+
+ l>14: "r1_2"
+
+ l>15: "button_1"
+
+ l>16: "button_1_disp"
+
+ l>17: "r1_3"
+
+ l>18: "dotMatrix_0"
+
+ l>19: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>20: "_l_dot_animation"
+
+ l>21: "startPage1"
+
+ l>jacscript bytecode: 1440b
+
+ l>toBuffer: 28b
+
+ l>save to sa: 28b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=button_0_disp_F6  bg (max1)
+  43:     CALL_BG _L0 numargs=0 func=button_1_disp_F8  bg (max1)
+  49:     z_radio_G2 := 0
+  52:     _L0 := dotMatrix_0_R5
+  56:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S19
+  60:     _L2 := 30
+  63:     CALL _L0 numargs=3 func=_l_dot_animation_F10
+  68:     CALL _L0 numargs=0 func=startPage1_F11
+  73:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 1
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 93 (+60) IF NOT (page_G0 == 1)
+  37:     JMP 93 (+52) IF NOT (pkt_report_code() == 145)
+  45:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+  51:     JMP 93 (+33) IF NOT (268435232 < z_radio_G2)
+  64:     z_radio_G2 := (z_radio_G2 - 268435232)
+  75:     _L0 := 2
+  78:     JMP 93 (+10) IF NOT (z_radio_G2 == _L0)
+  87:     CALL_BG _L0 numargs=0 func=r1_3_F9  bg (max1)
+  93:     JMP 26 (-67)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435211
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435211
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc button_0_disp_F6:
+   0:     WAIT_ROLE button_0_R3
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc r1_2_F7:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435209
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435209
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc button_1_disp_F8:
+   0:     WAIT_ROLE button_1_R4
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc r1_3_F9:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435207
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435207
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F10:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F11:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "button_0"
+
+ l>13: "button_0_disp"
+
+ l>14: "r1_2"
+
+ l>15: "button_1"
+
+ l>16: "button_1_disp"
+
+ l>17: "r1_3"
+
+ l>18: "dotMatrix_0"
+
+ l>19: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>20: "_l_dot_animation"
+
+ l>21: "startPage1"
+
+ l>jacscript bytecode: 1440b
+
+ l>toBuffer: 28b
+
+ l>save to sa: 28b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=button_0_disp_F6  bg (max1)
+  43:     CALL_BG _L0 numargs=0 func=button_1_disp_F8  bg (max1)
+  49:     z_radio_G2 := 0
+  52:     _L0 := dotMatrix_0_R5
+  56:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S19
+  60:     _L2 := 30
+  63:     CALL _L0 numargs=3 func=_l_dot_animation_F10
+  68:     CALL _L0 numargs=0 func=startPage1_F11
+  73:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 1
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 93 (+60) IF NOT (page_G0 == 1)
+  37:     JMP 93 (+52) IF NOT (pkt_report_code() == 145)
+  45:     z_radio_G2 := load_buffer(pkt_buffer(), f64, offset=12)
+  51:     JMP 93 (+33) IF NOT (268435232 < z_radio_G2)
+  64:     z_radio_G2 := (z_radio_G2 - 268435232)
+  75:     _L0 := 2
+  78:     JMP 93 (+10) IF NOT (z_radio_G2 == _L0)
+  87:     CALL_BG _L0 numargs=0 func=r1_3_F9  bg (max1)
+  93:     JMP 26 (-67)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435211
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435211
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc button_0_disp_F6:
+   0:     WAIT_ROLE button_0_R3
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc r1_2_F7:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435209
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435209
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc button_1_disp_F8:
+   0:     WAIT_ROLE button_1_R4
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc r1_3_F9:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435207
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435207
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc _l_dot_animation_F10:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F11:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "button_0"
+
+ l>13: "button_0_disp"
+
+ l>14: "r1_2"
+
+ l>15: "button_1"
+
+ l>16: "button_1_disp"
+
+ l>17: "r1_3"
+
+ l>18: "dotMatrix_0"
+
+ l>19: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>20: "_l_dot_animation"
+
+ l>21: "startPage1"
+
+ l>jacscript bytecode: 1440b
+
+ l>render sample robot drift tester
+
+ l>save to sa: 27b
+
+ l>toBuffer: 27b
+
+ l>save to sa: 27b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=soundLevel_0_disp_F10  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  43:     CALL_BG _L0 numargs=0 func=button_0_disp_F6  bg (max1)
+  49:     CALL_BG _L0 numargs=0 func=button_1_disp_F8  bg (max1)
+  55:     _L0 := dotMatrix_0_R5
+  59:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S21
+  63:     _L2 := 30
+  66:     CALL _L0 numargs=3 func=_l_dot_animation_F11
+  71:     CALL _L0 numargs=0 func=startPage1_F12
+  76:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 1
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 26 (-3)
+
+
+ l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+ l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435211
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435211
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc button_0_disp_F6:
+   0:     WAIT_ROLE button_0_R3
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc r1_2_F7:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435206
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435206
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435210
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435210
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc button_1_disp_F8:
+   0:     WAIT_ROLE button_1_R4
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+  24:     JMP 0 (-24)
+
+
+ l>proc r1_3_F9:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435209
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435209
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+ l>proc soundLevel_0_disp_F10:
+   0:     QUERY_REG soundLevel_0_R1 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S19 offset=0
+  21:     SEND_CMD soundLevel_0_R1 code=8195
+  28:     WAIT_ROLE soundLevel_0_R1
+  31:     JMP 52 (+17) IF NOT (page_G0 == 1)
+  39:     JMP 52 (+10) IF NOT (pkt_ev_code() == 1)
+  46:     CALL_BG _L0 numargs=0 func=r1_3_F9  bg (max1)
+  52:     JMP 28 (-24)
+
+
+ l>proc _l_dot_animation_F11:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+ l>proc startPage1_F12:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+ l>0: "pageStart"
+
+ l>1: "main"
+
+ l>2: "stopPage"
+
+ l>3: "MicroCode start!"
+
+ l>4: "soundLevel_0"
+
+ l>5: 00
+
+ l>6: "r1_0"
+
+ l>7: "radio_0"
+
+ l>8: "radio_0_disp"
+
+ l>9: 01
+
+ l>10: "pageStart_disp"
+
+ l>11: "r1_1"
+
+ l>12: "button_0"
+
+ l>13: "button_0_disp"
+
+ l>14: "r1_2"
+
+ l>15: "button_1"
+
+ l>16: "button_1_disp"
+
+ l>17: "r1_3"
+
+ l>18: "soundLevel_0_disp"
+
+ l>19: 0a
+
+ l>20: "dotMatrix_0"
+
+ l>21: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+ l>22: "_l_dot_animation"
+
+ l>23: "startPage1"
+
+ l>jacscript bytecode: 1472b
+
+ l>toBuffer: 27b
+
+ l>save to sa: 27b
+
+ l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=soundLevel_0_disp_F10  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  43:     CALL_BG _L0 numargs=0 func=button_0_disp_F6  bg (max1)
+  49:     CALL_BG _L0 numargs=0 func=button_1_disp_F8  bg (max1)
+  55:     _L0 := dotMatrix_0_R5
+  59:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S21
+  63:     _L2 := 30
+  66:     CALL _L0 numargs=3 func=_l_dot_animation_F11
+  71:     CALL _L0 numargs=0 func=startPage1_F12
+  76:     RETURN 0
+
+
+ l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+ l>proc r1_0_F2:
+   0:     _L0 := 1
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+ l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 26 (-3)
+
+
+sim.js:3820 l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+sim.js:3820 l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435211
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435211
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+sim.js:3820 l>proc button_0_disp_F6:
+   0:     WAIT_ROLE button_0_R3
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  24:     JMP 0 (-24)
+
+
+sim.js:3820 l>proc r1_2_F7:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435206
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435206
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435210
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435210
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+sim.js:3820 l>proc button_1_disp_F8:
+   0:     WAIT_ROLE button_1_R4
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+  24:     JMP 0 (-24)
+
+
+sim.js:3820 l>proc r1_3_F9:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435209
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435209
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+sim.js:3820 l>proc soundLevel_0_disp_F10:
+   0:     QUERY_REG soundLevel_0_R1 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S19 offset=0
+  21:     SEND_CMD soundLevel_0_R1 code=8195
+  28:     WAIT_ROLE soundLevel_0_R1
+  31:     JMP 52 (+17) IF NOT (page_G0 == 1)
+  39:     JMP 52 (+10) IF NOT (pkt_ev_code() == 1)
+  46:     CALL_BG _L0 numargs=0 func=r1_3_F9  bg (max1)
+  52:     JMP 28 (-24)
+
+
+sim.js:3820 l>proc _l_dot_animation_F11:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+sim.js:3820 l>proc startPage1_F12:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+sim.js:3820 l>0: "pageStart"
+
+sim.js:3820 l>1: "main"
+
+sim.js:3820 l>2: "stopPage"
+
+sim.js:3820 l>3: "MicroCode start!"
+
+sim.js:3820 l>4: "soundLevel_0"
+
+sim.js:3820 l>5: 00
+
+sim.js:3820 l>6: "r1_0"
+
+sim.js:3820 l>7: "radio_0"
+
+sim.js:3820 l>8: "radio_0_disp"
+
+sim.js:3820 l>9: 01
+
+sim.js:3820 l>10: "pageStart_disp"
+
+sim.js:3820 l>11: "r1_1"
+
+sim.js:3820 l>12: "button_0"
+
+sim.js:3820 l>13: "button_0_disp"
+
+sim.js:3820 l>14: "r1_2"
+
+sim.js:3820 l>15: "button_1"
+
+sim.js:3820 l>16: "button_1_disp"
+
+sim.js:3820 l>17: "r1_3"
+
+sim.js:3820 l>18: "soundLevel_0_disp"
+
+sim.js:3820 l>19: 0a
+
+sim.js:3820 l>20: "dotMatrix_0"
+
+sim.js:3820 l>21: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+sim.js:3820 l>22: "_l_dot_animation"
+
+sim.js:3820 l>23: "startPage1"
+
+sim.js:3820 l>jacscript bytecode: 1472b
+
+sim.js:3820 l>toBuffer: 27b
+
+sim.js:3820 l>save to sa: 27b
+
+sim.js:3820 l>proc main_F0:
+   0:     LOG_FORMAT _L0 numargs=0 string="MicroCode start!"_S3
+   5:     JMP 25 (+17) IF NOT role_is_connected(soundLevel_0_R1)
+  12:     SETUP_PKT_BUFFER size=1
+  14:     SET_PKT 00_S5 offset=0
+  18:     SEND_CMD soundLevel_0_R1 code=8193
+  25:     CALL_BG _L0 numargs=0 func=pageStart_disp_F4  bg (max1)
+  31:     CALL_BG _L0 numargs=0 func=soundLevel_0_disp_F10  bg (max1)
+  37:     CALL_BG _L0 numargs=0 func=radio_0_disp_F3  bg (max1)
+  43:     CALL_BG _L0 numargs=0 func=button_0_disp_F6  bg (max1)
+  49:     CALL_BG _L0 numargs=0 func=button_1_disp_F8  bg (max1)
+  55:     _L0 := dotMatrix_0_R5
+  59:     _L1 := 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000_S21
+  63:     _L2 := 30
+  66:     CALL _L0 numargs=3 func=_l_dot_animation_F11
+  71:     CALL _L0 numargs=0 func=startPage1_F12
+  76:     RETURN 0
+
+
+sim.js:3820 l>proc stopPage_F1:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := null()
+   6:     RETURN 0
+
+
+sim.js:3820 l>proc r1_0_F2:
+   0:     _L0 := 1
+   3:     SETUP_PKT_BUFFER size=1
+   5:     STORE_BUFFER pkt_buffer() u8 offset=0 _L0
+  11:     SEND_CMD radio_0_R2 code=8320
+  18:     RETURN 0
+
+
+sim.js:3820 l>proc radio_0_disp_F3:
+   0:     SETUP_PKT_BUFFER size=1
+   2:     SET_PKT 01_S9 offset=0
+   6:     SEND_CMD radio_0_R2 code=8193
+  13:     SETUP_PKT_BUFFER size=1
+  15:     SET_PKT 01_S9 offset=0
+  19:     SEND_CMD radio_0_R2 code=8320
+  26:     WAIT_ROLE radio_0_R2
+  29:     JMP 26 (-3)
+
+
+sim.js:3820 l>proc pageStart_disp_F4:
+   0:     WAIT_ROLE pageStart_R0
+   3:     JMP 17 (+10) IF NOT (page_G0 == 1)
+  11:     CALL_BG _L0 numargs=0 func=r1_0_F2  bg (max1)
+  17:     JMP 0 (-17)
+
+
+sim.js:3820 l>proc r1_1_F5:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435201
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435211
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435211
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+sim.js:3820 l>proc button_0_disp_F6:
+   0:     WAIT_ROLE button_0_R3
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_1_F5  bg (max1)
+  24:     JMP 0 (-24)
+
+
+sim.js:3820 l>proc r1_2_F7:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435206
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435206
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435210
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435210
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+sim.js:3820 l>proc button_1_disp_F8:
+   0:     WAIT_ROLE button_1_R4
+   3:     JMP 24 (+17) IF NOT (page_G0 == 1)
+  11:     JMP 24 (+10) IF NOT (pkt_ev_code() == 1)
+  18:     CALL_BG _L0 numargs=0 func=r1_2_F7  bg (max1)
+  24:     JMP 0 (-24)
+
+
+sim.js:3820 l>proc r1_3_F9:
+   0:     TERMINATE_FIBER fiber_handle=radio_0_lock_G1
+   3:     radio_0_lock_G1 := get_fiber_handle(func=null())
+   7:     SETUP_PKT_BUFFER size=8
+   9:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  19:     SEND_CMD radio_0_R2 code=129
+  24:     SLEEP_MS 5
+  26:     SETUP_PKT_BUFFER size=8
+  28:     STORE_BUFFER pkt_buffer() f64 offset=0 268435205
+  38:     SEND_CMD radio_0_R2 code=129
+  43:     SLEEP_MS 500
+  48:     SETUP_PKT_BUFFER size=8
+  50:     STORE_BUFFER pkt_buffer() f64 offset=0 268435209
+  60:     SEND_CMD radio_0_R2 code=129
+  65:     SLEEP_MS 5
+  67:     SETUP_PKT_BUFFER size=8
+  69:     STORE_BUFFER pkt_buffer() f64 offset=0 268435209
+  79:     SEND_CMD radio_0_R2 code=129
+  84:     SLEEP_MS 500
+  89:     RETURN 0
+          .fill 0x00
+
+
+sim.js:3820 l>proc soundLevel_0_disp_F10:
+   0:     QUERY_REG soundLevel_0_R1 code=3 timeout=1000
+   8:     JMP 28 (+17) IF NOT (ret_val() == 0)
+  15:     SETUP_PKT_BUFFER size=1
+  17:     SET_PKT 0a_S19 offset=0
+  21:     SEND_CMD soundLevel_0_R1 code=8195
+  28:     WAIT_ROLE soundLevel_0_R1
+  31:     JMP 52 (+17) IF NOT (page_G0 == 1)
+  39:     JMP 52 (+10) IF NOT (pkt_ev_code() == 1)
+  46:     CALL_BG _L0 numargs=0 func=r1_3_F9  bg (max1)
+  52:     JMP 28 (-24)
+
+
+sim.js:3820 l>proc _l_dot_animation_F11:
+   0:     _L0 := 0
+   3:     JMP 47 (+38) IF NOT (_L0 < object_length(_P1))
+  13:     SETUP_PKT_BUFFER size=5
+  15:     BLIT dst=pkt_buffer() dst_offset=0 src=_P1 src_offset=_L0 length=5
+  23:     SEND_CMD _P0 code=8194
+  30:     SLEEP_S (_P2 / 1000)
+  38:     _L0 := (_L0 + 5)
+  44:     JMP 3 (-41)
+  47:     RETURN null()
+          .fill 0x00
+          .fill 0x00
+          .fill 0x00
+
+
+sim.js:3820 l>proc startPage1_F12:
+   0:     CALL _L0 numargs=0 func=stopPage_F1
+   5:     SLEEP_MS 50
+   7:     page_G0 := 1
+  10:     SEND_CMD pageStart_R0 code=128
+  15:     RETURN 0
+
+
+sim.js:3820 l>0: "pageStart"
+
+sim.js:3820 l>1: "main"
+
+sim.js:3820 l>2: "stopPage"
+
+sim.js:3820 l>3: "MicroCode start!"
+
+sim.js:3820 l>4: "soundLevel_0"
+
+sim.js:3820 l>5: 00
+
+sim.js:3820 l>6: "r1_0"
+
+sim.js:3820 l>7: "radio_0"
+
+sim.js:3820 l>8: "radio_0_disp"
+
+sim.js:3820 l>9: 01
+
+sim.js:3820 l>10: "pageStart_disp"
+
+sim.js:3820 l>11: "r1_1"
+
+sim.js:3820 l>12: "button_0"
+
+sim.js:3820 l>13: "button_0_disp"
+
+sim.js:3820 l>14: "r1_2"
+
+sim.js:3820 l>15: "button_1"
+
+sim.js:3820 l>16: "button_1_disp"
+
+sim.js:3820 l>17: "r1_3"
+
+sim.js:3820 l>18: "soundLevel_0_disp"
+
+sim.js:3820 l>19: 0a
+
+sim.js:3820 l>20: "dotMatrix_0"
+
+sim.js:3820 l>21: 0001000000000001000000000001000000000002000000000400000000080000001000000010000000100000000800000000040000000002000000000000000000
+
+sim.js:3820 l>22: "_l_dot_animation"
+
+sim.js:3820 l>23: "startPage1"
+
+sim.js:3820 l>jacscript bytecode: 1472b
