@@ -2,7 +2,7 @@
  * Microcode Robot
  */
 //% color="#ff6800" icon="\uf1b9" weight=15
-//% groups='["Motors", "Input", "Configuration"]'
+//% groups='["Output", "Input", "Configuration"]'
 namespace microcode {
     export let robot: RobotDriver
 
@@ -57,7 +57,7 @@ namespace microcode {
      * Play a tone through the robot speaker
      */
     //% blockId="microcoderobotplaytone" block="robot play tone $frequency for $duration"
-    //% group="Motors"
+    //% group="Output"
     //% weight=10
     //% frequency.shadow=device_note
     //% duration.shadow=device_beat
