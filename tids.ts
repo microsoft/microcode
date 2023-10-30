@@ -206,8 +206,8 @@ namespace microcode {
         TID_FILTER_LOUD = 87,
         TID_FILTER_QUIET = 88,
         //
-        ACCELEROMETER_START = 89,
-        TID_FILTER_ACCEL = 89,
+        TID_FILTER_ACCEL = 89,   // dead (AFAIK)
+        ACCELEROMETER_START = 90,
         TID_FILTER_ACCEL_SHAKE = 90,
         TID_FILTER_ACCEL_TILT_UP = 91,
         TID_FILTER_ACCEL_TILT_DOWN = 92,
@@ -797,7 +797,9 @@ namespace microcode {
 
     export function isVisible(tile: Tile) {
         const tid = getTid(tile)
-        const ext = jdExternalClass(tid)
+        // these tids are dead
+        if (tid == Tid.TID_ACTUATOR_MICROPHONE || tid == Tid.TID_FILTER_ACCEL) return false
+        const ext = jdExternalClass(tile)
         if (ext && !jacs.debugOut) {
             const count = jdc.numServiceInstances(ext)
             // special case for buttons, which already exist on micro:bit (6 of them)
