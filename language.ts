@@ -125,7 +125,7 @@ namespace microcode {
     export function getIcon(tile: Tile) {
         if (tile instanceof ModifierEditor)
             return tile.getIcon()
-        return icons.get(enumToTid(tile))
+        return enumToTid(tile)
     }
 
     export function serviceCommandArg(tile: Tile): string | Buffer {
