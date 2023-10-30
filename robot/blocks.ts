@@ -14,7 +14,7 @@ namespace microcode {
      * Moves the robot.
      */
     //% weight=98
-    //% group="Motors"
+    //% group="Output"
     //% block="robot motor run with steering $turnRatio at speed $speed \\%"
     //% blockid="microcoderobotmotorturn"
     //% speed.defl=100
@@ -33,7 +33,7 @@ namespace microcode {
      * Stops the robot.
      */
     //% weight=50
-    //% group="Motors"
+    //% group="Output"
     //% block="robot motor stop"
     //% blockid="microcoderobotmotorstop"
     export function motorStop() {
@@ -45,7 +45,7 @@ namespace microcode {
      * Sets the LED color
      */
     //% blockId="microcoderobotsetcolor" block="robot set color $rgb"
-    //% group="Motors"
+    //% group="Output"
     //% weight=10
     //% rgb.shadow=colorNumberPicker
     export function setColor(rgb: number) {
@@ -115,10 +115,10 @@ namespace microcode {
     /**
      * Enables or disables the line speed assistance.
      */
-    //% block="robot set line assist to $enabled"
+    //% block="robot set line assist $enabled"
     //% blockId="microcoderobotsetlineassist"
     //% group="Configuration"
-    //% enabled=toggleOnOff
+    //% enabled.shadow=toggleOnOff
     export function setLineAssist(enabled: boolean): void {
         checkRobotDriver()
         robot.lineAssist = !!enabled
@@ -143,7 +143,7 @@ namespace microcode {
      * Enables or disables the display of the robot state on the LED matrix.
      * @param enabled
      */
-    //% block="robot set display to $enabled"
+    //% block="robot set display $enabled"
     //% blockId="microcoderobotsetdisplay"
     //% group="Configuration"
     //% enabled.shadow=toggleOnOff
