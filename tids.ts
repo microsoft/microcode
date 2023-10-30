@@ -303,6 +303,15 @@ namespace microcode {
         MODIFER_END = 203,
     }
 
+    type RangeMap = { [id: string]: [Tid, Tid] }
+
+    export const ranges: RangeMap = {
+        sensors: [Tid.SENSOR_START, Tid.SENSOR_END],
+        filters: [Tid.FILTER_START, Tid.FILTER_END],
+        actuators: [Tid.ACTUATOR_START, Tid.ACTUATOR_END],
+        modifiers: [Tid.MODIFIER_START, Tid.MODIFER_END],
+    }
+
     export function enumToTid(e: Tid) {
         switch (e) {
             case Tid.TID_SENSOR_START_PAGE:

@@ -336,10 +336,14 @@ namespace microcode {
             index: number
         ): Tile[] {
             // based on the name, we have a range of tiles to choose from
-            const all = Object.keys(tilesDB[name])
-                .map(id => tilesDB[name][id])
-                .filter((tile: TileDefn) => isVisible(tidToEnum(tile.tid)))
-                .sort((t1, t2) => priority(t1.tid) - priority(t2.tid))
+            const [lower, upper] = ranges[name]
+            let all: Tile[] = []
+            for (let i = lower; i <= upper; ++i) {
+                all.push(i)
+            }
+            all = all
+                .filter((tile: Tile) => isVisible(tile))
+                .sort((t1, t2) => priority(t1) - priority(t2))
 
             if (name === "sensors" || name === "actuators") return all
 
@@ -379,11 +383,11 @@ namespace microcode {
             })
 
             return all.filter(tile => {
-                const src = getConstraints(tile.tid)
-                const cat = getCategory(tile.tid)
+                const src = getConstraints(tile)
+                const cat = getCategory(tile)
                 return (
                     isCompatibleWith(src, collect) &&
-                    filterModifierCompat(tile.tid, cat, collect)
+                    filterModifierCompat(tile, cat, collect)
                 )
             })
         }
