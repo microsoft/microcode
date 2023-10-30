@@ -117,14 +117,15 @@ namespace microcode {
 
     export type Tile = number | ModifierEditor
 
-    export function getTid(tile: Tile) {
-        if (typeof tile == "number") return tile
-        return tile.tid
+    export function getTid(tile: Tile): number{
+        if (tile instanceof ModifierEditor) return tile.tid
+        return tile
     }
 
     export function getIcon(tile: Tile) {
-        if (typeof tile == "number") return icons.get(enumToTid(getTid(tile)))
-        return tile.getIcon()
+        if (tile instanceof ModifierEditor)
+            return tile.getIcon()
+        return icons.get(enumToTid(tile))
     }
 
     export function serviceCommandArg(tile: Tile): string | Buffer {
