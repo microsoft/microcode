@@ -178,11 +178,11 @@ namespace microcode {
 
                 const whens = ruleDef.sensors
                     .concat(ruleDef.filters)
-                    .map(s => enumToTid(s))
+                    .map(s => tidToString(s))
 
                 const dos: string[] = ruleDef.actuators
                     .concat(ruleDef.modifiers.map(t => getTid(t)))
-                    .map(s => enumToTid(s))
+                    .map(s => tidToString(s))
 
                 accessibilityMessage = <accessibility.RuleAccessibilityMessage>{
                     type: "rule",

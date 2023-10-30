@@ -312,7 +312,7 @@ namespace microcode {
         modifiers: [Tid.MODIFIER_START, Tid.MODIFER_END],
     }
 
-    export function enumToTid(e: Tid) {
+    export function tidToString(e: Tid) {
         switch (e) {
             case Tid.TID_SENSOR_START_PAGE:
                 return TID_SENSOR_START_PAGE

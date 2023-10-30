@@ -128,7 +128,7 @@ namespace microcode {
                     parent: this,
                     style: buttonStyle(tile),
                     icon: getIcon(tile),
-                    ariaId: enumToTid(getTid(tile)),
+                    ariaId: tidToString(getTid(tile)),
                     x: 0,
                     y: 0,
                     onClick: () => this.editTile(name, index),

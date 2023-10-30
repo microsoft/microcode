@@ -125,12 +125,12 @@ namespace microcode {
     export function getIcon(tile: Tile) {
         if (tile instanceof ModifierEditor)
             return tile.getIcon()
-        return enumToTid(tile)
+        return tidToString(tile)
     }
 
     export function serviceCommandArg(tile: Tile): string | Buffer {
-        const param = jdParam(tile)
-        if (typeof param == "string" || typeof param == "object") return param
+        if (tile instanceof ModifierEditor)
+            return tile.serviceCommandArg()
         return null
     }
 
