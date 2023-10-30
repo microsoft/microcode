@@ -203,8 +203,7 @@ namespace microcode {
             assert(!br.eof())
             while (isModifier(br.peekByte())) {
                 const modifierEnum = br.readByte()
-                // TODO: fresh Tile for
-                const modifier = mkTile(modifierEnum)
+                const modifier = getEditor(modifierEnum, false)
                 if (
                     modifier instanceof ModifierEditor &&
                     modifier.fieldEditor

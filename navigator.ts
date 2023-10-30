@@ -176,13 +176,13 @@ namespace microcode {
             if (this.row > 0 && this.col == 0) {
                 const ruleDef = this.rules[this.row - 1]
 
-                const whens: string[] = ruleDef.sensors
-                    .map(s => s.tid)
-                    .concat(ruleDef.filters.map(s => s.tid))
+                const whens = ruleDef.sensors
+                    .concat(ruleDef.filters)
+                    .map(s => enumToTid(s))
 
                 const dos: string[] = ruleDef.actuators
-                    .map(s => s.tid)
-                    .concat(ruleDef.modifiers.map(s => s.tid))
+                    .concat(ruleDef.modifiers.map(t => getTid(t)))
+                    .map(s => enumToTid(s))
 
                 accessibilityMessage = <accessibility.RuleAccessibilityMessage>{
                     type: "rule",
@@ -295,7 +295,7 @@ namespace microcode {
         move(dir: CursorDir) {
             switch (dir) {
                 case CursorDir.Up: {
-                    if (this.row == -1 || !this.deleteButton && this.row == 0)
+                    if (this.row == -1 || (!this.deleteButton && this.row == 0))
                         throw new NavigationError(BACK_BUTTON_ERROR_KIND)
                     if (this.row > 0) this.row--
                     else if (this.deleteButton) this.row = -1
@@ -307,8 +307,7 @@ namespace microcode {
                         if (this.col >= this.currentRowWidth()) {
                             this.col = this.currentRowWidth() - 1
                         }
-                    } else
-                        throw new NavigationError(FORWARD_BUTTON_ERROR_KIND)       
+                    } else throw new NavigationError(FORWARD_BUTTON_ERROR_KIND)
                     break
                 }
                 case CursorDir.Left: {

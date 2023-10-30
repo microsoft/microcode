@@ -228,15 +228,14 @@ namespace microcode {
         }
     }
 
-    // TODO
-    export function getEditor(tid: Tid, field: any = null) {
+    export function getEditor(tid: Tid, first = true) {
         if (tid == Tid.TID_MODIFIER_ICON_EDITOR) {
-            const iconEditorTile = new IconEditor(field)
-            iconEditorTile.firstInstance = true
+            const iconEditorTile = new IconEditor()
+            iconEditorTile.firstInstance = first
             return iconEditorTile
         } else if (tid == Tid.TID_MODIFIER_MELODY_EDITOR) {
-            const melodyEditorTile = new MelodyEditor(field)
-            melodyEditorTile.firstInstance = true
+            const melodyEditorTile = new MelodyEditor()
+            melodyEditorTile.firstInstance = first
             return melodyEditorTile
         }
         return undefined
