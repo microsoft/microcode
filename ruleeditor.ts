@@ -323,7 +323,7 @@ namespace microcode {
                 let theOne =
                     index > 0 && ruleTiles[index - 1] instanceof ModifierEditor
                         ? (ruleTiles[index - 1] as ModifierEditor)
-                        : suggestions[0]
+                        : (suggestions[0] as ModifierEditor)
                 newFieldEditor(theOne)
                 return
             }

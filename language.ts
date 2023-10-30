@@ -365,16 +365,16 @@ namespace microcode {
             // Collect the built-up constraints.
             const collect = mkConstraints()
             if (name === "modifiers" && rule.actuators.length) {
-                const src = getConstraints(rule.actuators[0].tid)
+                const src = getConstraints(rule.actuators[0])
                 mergeConstraints(src, collect)
             }
             if (rule.sensors.length) {
-                const src = getConstraints(rule.sensors[0].tid)
+                const src = getConstraints(rule.sensors[0])
                 mergeConstraints(src, collect)
             }
 
             existing.forEach(tile => {
-                const src = getConstraints(tile.tid)
+                const src = getConstraints(tile)
                 mergeConstraints(src, collect)
             })
 
