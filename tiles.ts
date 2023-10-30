@@ -1,6 +1,4 @@
 namespace microcode {
-
-
     export function diskSlots() {
         return ["disk1", "disk2", "disk3"]
     }
@@ -89,7 +87,7 @@ namespace microcode {
 
         getIcon(): string | Image {
             return this.firstInstance
-                ? TID_MODIFIER_ICON_EDITOR
+                ? getIcon(Tid.TID_MODIFIER_ICON_EDITOR)
                 : this.fieldEditor.toImage(this.field)
         }
 
@@ -211,7 +209,7 @@ namespace microcode {
 
         getIcon(): string | Image {
             return this.firstInstance
-                ? TID_MODIFIER_MELODY_EDITOR
+                ? getIcon(Tid.TID_MODIFIER_MELODY_EDITOR)
                 : this.fieldEditor.toImage(this.field)
         }
 
@@ -231,10 +229,23 @@ namespace microcode {
     }
 
     // TODO
-    function addFieldEditors() {
-        const iconEditorTile = new IconEditor()
-        iconEditorTile.firstInstance = true
-        const melodyEditorTile = new MelodyEditor()
-        melodyEditorTile.firstInstance = true
+    export function getEditor(tid: Tid, field: any = null) {
+        if (tid == Tid.TID_MODIFIER_ICON_EDITOR) {
+            const iconEditorTile = new IconEditor(field)
+            iconEditorTile.firstInstance = true
+            return iconEditorTile
+        } else if (tid == Tid.TID_MODIFIER_MELODY_EDITOR) {
+            const melodyEditorTile = new MelodyEditor(field)
+            melodyEditorTile.firstInstance = true
+            return melodyEditorTile
+        }
+        return undefined
+    }
+
+    export function getNewInstance(tile: Tile) {
+        if (tile instanceof ModifierEditor) {
+            return tile.getNewInstance()
+        }
+        return undefined
     }
 }

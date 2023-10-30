@@ -283,7 +283,7 @@ namespace microcode {
                 }
                 this.page.changed()
             }
-            const newFieldEditor = (tile: Tile, del = false) => {
+            const newFieldEditor = (tile: ModifierEditor, del = false) => {
                 const newOne = del ? tile : getNewInstance(tile)
                 const fieldEditor = getFieldEditor(newOne)
                 this.editor.captureBackground()
@@ -302,8 +302,11 @@ namespace microcode {
                         : undefined
                 )
             }
-            if (index < ruleTiles.length && getFieldEditor(ruleTiles[index])) {
-                newFieldEditor(ruleTiles[index], true)
+            if (
+                index < ruleTiles.length &&
+                ruleTiles[index] instanceof ModifierEditor
+            ) {
+                newFieldEditor(ruleTiles[index] as ModifierEditor, true)
                 return
             }
             const suggestions = this.getSuggestions(name, index)
@@ -313,10 +316,13 @@ namespace microcode {
                 }
             })
             // special case for field editor
-            if (suggestions.length == 1 && getFieldEditor(suggestions[0])) {
+            if (
+                suggestions.length == 1 &&
+                suggestions[0] instanceof ModifierEditor
+            ) {
                 let theOne =
-                    index > 0 && getFieldEditor(ruleTiles[index - 1]) // this is a hack to use the value from previous
-                        ? ruleTiles[index - 1] // field editor (should really check they are the same)
+                    index > 0 && ruleTiles[index - 1] instanceof ModifierEditor
+                        ? (ruleTiles[index - 1] as ModifierEditor)
                         : suggestions[0]
                 newFieldEditor(theOne)
                 return
@@ -341,12 +347,12 @@ namespace microcode {
                     navigator: () => new PickerNavigator(this.editor.picker),
                     onClick: idx => {
                         let theOne = suggestions[idx]
-                        if (getFieldEditor(theOne)) {
+                        if (theOne instanceof ModifierEditor) {
                             // there is more work to do                l
                             theOne =
                                 index > 0 &&
-                                getFieldEditor(ruleTiles[index - 1]) // this is a hack to use the value from previous
-                                    ? ruleTiles[index - 1] // field editor (should really check they are the same)
+                                ruleTiles[index - 1] instanceof ModifierEditor
+                                    ? (ruleTiles[index - 1] as ModifierEditor)
                                     : theOne
                             newFieldEditor(theOne)
                         }
