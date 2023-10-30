@@ -123,7 +123,6 @@ namespace microcode {
         private processSection(name: string, rule: RuleRep) {
             const tiles = rule[name]
             tiles.forEach((tile, index) => {
-                const tid = getTid(tile)
                 const button = new Button({
                     parent: this,
                     style: buttonStyle(tile),

@@ -117,12 +117,13 @@ namespace microcode {
 
     export type Tile = number | ModifierEditor
 
-    export function getTid(tile: Tile): number{
+    export function getTid(tile: Tile): number {
         if (tile instanceof ModifierEditor) return tile.tid
         return tile
     }
 
     export function getIcon(tile: Tile) {
+        assert(!!tile, "getIcon: tile is null")
         if (tile instanceof ModifierEditor)
             return tile.getIcon()
         return tidToString(tile)
