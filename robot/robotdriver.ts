@@ -1,6 +1,6 @@
 namespace microcode {
-    const MAX_GROUPS = 25
-    const SCROLL_SPEED = 50
+    export const MAX_GROUPS = 25
+    export const SCROLL_SPEED = 50
 
     function radioGroupFromDeviceSerialNumber() {
         const sn = control.deviceLongSerialNumber()
@@ -24,6 +24,13 @@ namespace microcode {
      */
     //% fixedInstances
     export class RobotDriver {
+        private static _instance: RobotDriver
+        static instance(): RobotDriver {
+            if (!RobotDriver._instance)
+                throw "Add 'robot start ...' block in the 'on start' block"
+            return RobotDriver._instance
+        }
+
         /**
          * The robot instance
          */
@@ -35,8 +42,8 @@ namespace microcode {
         private lastSonarValue = 0
 
         hud = true
-        private showConfiguration: number = 0
-        private configDrift: boolean = undefined
+        showConfiguration: number = 0
+        configDrift: boolean = undefined
         private targetColor = 0
         private currentColor = 0
         private currentArmAperture: number = undefined
@@ -55,7 +62,7 @@ namespace microcode {
 
         private stopToneMillis: number = 0
         lineAssist = true
-        private runDrift = 0
+        runDrift = 0
 
         private leds: robots.LEDStrip
 
@@ -72,61 +79,11 @@ namespace microcode {
             this.robot = robot
         }
 
+        /**
+         * Gets the current measured distance in cm
+         */
         get currentDistance() {
             return Math.round(this.sonarDistanceFilter.x)
-        }
-
-        private configureButtons() {
-            input.onButtonPressed(Button.A, () =>
-                control.inBackground(() => {
-                    if (this.configDrift !== undefined) {
-                        this.playTone(440, 500)
-                        if (this.configDrift)
-                            this.setRunDrift(this.runDrift - 1)
-                        else this.previousGroup()
-                    }
-                    this.showConfigurationState()
-                })
-            )
-            input.onButtonPressed(Button.B, () =>
-                control.inBackground(() => {
-                    if (this.configDrift !== undefined) {
-                        this.playTone(640, 500)
-                        if (this.configDrift)
-                            this.setRunDrift(this.runDrift + 1)
-                        else this.nextGroup()
-                    }
-                    this.showConfigurationState()
-                })
-            )
-            input.onButtonPressed(Button.AB, () =>
-                control.inBackground(() => {
-                    this.playTone(840, 500)
-                    this.configDrift = !this.configDrift
-                    this.showConfigurationState(true)
-                })
-            )
-        }
-
-        private showConfigurationState(showTitle?: boolean) {
-            this.showConfiguration++
-            try {
-                led.stopAnimation()
-                if (this.configDrift === undefined) {
-                    basic.showString(
-                        `RADIO ${this.radioGroup} DRIFT ${this.runDrift}`,
-                        SCROLL_SPEED
-                    )
-                } else {
-                    const title = this.configDrift ? "DRIFT" : "RADIO"
-                    const value = this.configDrift
-                        ? this.runDrift
-                        : this.radioGroup
-                    basic.showString(title + " " + value, SCROLL_SPEED)
-                }
-            } finally {
-                this.showConfiguration--
-            }
         }
 
         /**
@@ -139,9 +96,10 @@ namespace microcode {
         //% weight=100
         //% group="Robot"
         start() {
-            if (microcode.robot === this) return // already started
-            if (microcode.robot) throw "Another robot has already been started."
-            microcode.robot = this
+            if (RobotDriver._instance === this) return // already started
+            if (RobotDriver._instance)
+                throw "Another robot has already been started."
+            RobotDriver._instance = this
 
             // configuration of common hardware
             this.radioGroup =
@@ -165,7 +123,6 @@ namespace microcode {
             this.ultrasonicDistance()
             this.lineState()
 
-            this.configureButtons()
             basic.forever(() => this.updateSonar()) // potentially slower
             control.inBackground(() => this.backgroundWork())
 
@@ -441,18 +398,6 @@ namespace microcode {
                 pins.analogPitch(0, 0)
                 this.stopToneMillis = 0
             }
-        }
-
-        private previousGroup() {
-            this.setRadioGroup(
-                this.radioGroup === 1 ? MAX_GROUPS - 1 : this.radioGroup - 1
-            )
-        }
-
-        private nextGroup() {
-            this.setRadioGroup(
-                this.radioGroup === MAX_GROUPS - 1 ? 1 : this.radioGroup + 1
-            )
         }
 
         setRunDrift(runDrift: number) {

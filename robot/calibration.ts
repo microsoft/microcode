@@ -1,52 +1,51 @@
-namespace microcode.robots {
-    /**
-     * Implements a Arcade like line following algorithm
-     */
-    export function calibrateLineFollowing() {
-        const r = microcode.robot
-        r.robot.stopThreshold = 0
-        r.hud = false
+namespace microcode {
+    export function startCalibrationButtons() {
+        const d = RobotDriver.instance()
+        input.onButtonPressed(Button.A, () =>
+            control.inBackground(() => {
+                if (d.configDrift !== undefined) {
+                    d.playTone(440, 500)
+                    if (d.configDrift) d.setRunDrift(d.runDrift - 1)
+                    else d.setRadioGroup(d.radioGroup - 1)
+                }
+                showConfigurationState(d)
+            })
+        )
+        input.onButtonPressed(Button.B, () =>
+            control.inBackground(() => {
+                if (d.configDrift !== undefined) {
+                    d.playTone(640, 500)
+                    if (d.configDrift) d.setRunDrift(d.runDrift + 1)
+                    else d.setRadioGroup(d.radioGroup + 1)
+                }
+                showConfigurationState(d)
+            })
+        )
+        input.onButtonPressed(Button.AB, () =>
+            control.inBackground(() => {
+                d.playTone(840, 500)
+                d.configDrift = !d.configDrift
+                showConfigurationState(d, true)
+            })
+        )
+    }
 
-        const run = () => {
+    function showConfigurationState(d: RobotDriver, showTitle?: boolean) {
+        d.showConfiguration++
+        try {
             led.stopAnimation()
-            basic.showNumber(r.robot.maxLineSpeed, 60)
+            if (d.configDrift === undefined) {
+                basic.showString(
+                    `RADIO ${d.radioGroup} DRIFT ${d.runDrift}`,
+                    SCROLL_SPEED
+                )
+            } else {
+                const title = d.configDrift ? "DRIFT" : "RADIO"
+                const value = d.configDrift ? d.runDrift : d.radioGroup
+                basic.showString(title + " " + value, SCROLL_SPEED)
+            }
+        } finally {
+            d.showConfiguration--
         }
-
-        input.onButtonPressed(Button.A, () => {
-            r.robot.maxLineSpeed--
-            run()
-        })
-        input.onButtonPressed(Button.B, () => {
-            r.robot.maxLineSpeed++
-            run()
-        })
-
-        basic.showString("LINE SPEED", 60)
-        run()
-
-        microcode.onLineDetected(RobotLineState.Both, () => {
-            pause(40)
-            robot.decodeRobotCompactCommand(RobotCompactCommand.MotorRunForward)
-        })
-        microcode.onLineDetected(RobotLineState.Left, () => {
-            pause(40)
-            robot.decodeRobotCompactCommand(RobotCompactCommand.MotorTurnLeft)
-        })
-        microcode.onLineDetected(RobotLineState.Right, () => {
-            pause(40)
-            robot.decodeRobotCompactCommand(RobotCompactCommand.MotorTurnRight)
-        })
-        microcode.onLineDetected(RobotLineState.LostLeft, () => {
-            pause(40)
-            robot.decodeRobotCompactCommand(RobotCompactCommand.MotorSpinLeft)
-        })
-        microcode.onLineDetected(RobotLineState.LostRight, () => {
-            pause(40)
-            robot.decodeRobotCompactCommand(RobotCompactCommand.MotorSpinRight)
-        })
-        microcode.onLineDetected(RobotLineState.None, () => {
-            pause(40)
-            robot.decodeRobotCompactCommand(RobotCompactCommand.MotorStop)
-        })
     }
 }
