@@ -238,7 +238,6 @@ namespace microcode {
                 opts.parent && opts.parent.xfrm
             )
             this.iconId = opts.icon
-            console.log(`Button ctor ${this.iconId}`)
             this._ariaId = opts.ariaId
             this.onClick = opts.onClick
             this.buildSprite(this.image_())
@@ -254,7 +253,6 @@ namespace microcode {
                 : this.iconId
         }
         public setIcon(iconId: string, img?: Image) {
-            console.log(`setIcon ${iconId} ${!!img}`)
             this.iconId = iconId
             if (img) this.icon.setImage(img)
             else this.buildSprite(this.image_())
