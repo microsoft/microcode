@@ -7,77 +7,6 @@ namespace microcode {
         disallow?: (string | number)[]
     }
 
-    export class FieldEditor {
-        init(): any {
-            return undefined
-        }
-        clone(field: any): any {
-            return undefined
-        }
-        editor(
-            field: any,
-            picker: Picker,
-            onHide: () => void,
-            onDelete?: () => void
-        ): void {}
-        toImage(field: any): Image {
-            return undefined
-        }
-        toBuffer(field: any): Buffer {
-            return undefined
-        }
-        fromBuffer(buf: BufferReader): any {
-            return undefined
-        }
-    }
-
-    export class ModifierEditor {
-        constructor(public tid: number) {
-            this.firstInstance = false
-        }
-        fieldEditor: FieldEditor
-        firstInstance: boolean
-        getField(): any {
-            return null
-        }
-        getIcon(): string | Image {
-            return null
-        }
-        getNewInstance(field: any = null): ModifierEditor {
-            return null
-        }
-        serviceCommandArg(): Buffer {
-            return null
-        }
-    }
-
-    // let P be jdParam
-    export enum JdKind {
-        Literal = 1, // value is P
-        Variable, // value is variables[P]
-        Page, // value is page[P]
-        EventCode,
-        ServiceInstanceIndex,
-        ServiceCommandArg, // argument of command sent will be set to P; P2 is duration in ms for Sequance
-        ExtLibFn, // call external function P(P2)
-        Timespan,
-        RadioValue,
-        Rotary,
-        Temperature,
-
-        Loop, // repeat modifier
-
-        // Filter/actuator kinds
-        Radio, // radio send/recv
-        RandomToss, // random number
-        NumFmt, // on actuator - P is numfmt
-
-        // for each modifier (defaults to [defaultModifier]), do ...
-        // P is a shortcut external function
-        // P2 is service arg size
-        Sequence,
-    }
-
     export function mergeConstraints(src: Constraints, dst: Constraints) {
         if (!src) {
             return
@@ -145,13 +74,6 @@ namespace microcode {
     export function getIcon(tile: Tile) {
         if (tile instanceof ModifierEditor) return tile.getIcon()
         return tidToString(tile)
-    }
-
-    export function serviceCommandArg(tile: Tile): string | Buffer {
-        if (tile instanceof ModifierEditor) return tile.serviceCommandArg()
-        const ret = jdParam(tile)
-        if (typeof ret == "string") return ret
-        return undefined
     }
 
     export type RuleRep = { [name: string]: Tile[] }
@@ -347,6 +269,17 @@ namespace microcode {
         }
     }
 
+    function mkConstraints(): Constraints {
+        const c: Constraints = {
+            provides: [],
+            only: [],
+            requires: [],
+            allow: [],
+            disallow: [],
+        }
+        return c
+    }
+
     export class Language {
         public static getTileSuggestions(
             rule: RuleDefn,
@@ -423,16 +356,5 @@ namespace microcode {
                 rule.modifiers = []
             }
         }
-    }
-
-    function mkConstraints(): Constraints {
-        const c: Constraints = {
-            provides: [],
-            only: [],
-            requires: [],
-            allow: [],
-            disallow: [],
-        }
-        return c
     }
 }

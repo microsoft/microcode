@@ -1,4 +1,53 @@
 namespace microcode {
+    export function getFieldEditor(tile: Tile): FieldEditor {
+        if (tile instanceof ModifierEditor) return tile.fieldEditor
+        return undefined
+    }
+
+    class FieldEditor {
+        init(): any {
+            return undefined
+        }
+        clone(field: any): any {
+            return undefined
+        }
+        editor(
+            field: any,
+            picker: Picker,
+            onHide: () => void,
+            onDelete?: () => void
+        ): void {}
+        toImage(field: any): Image {
+            return undefined
+        }
+        toBuffer(field: any): Buffer {
+            return undefined
+        }
+        fromBuffer(buf: BufferReader): any {
+            return undefined
+        }
+    }
+
+    export class ModifierEditor {
+        constructor(public tid: number) {
+            this.firstInstance = false
+        }
+        fieldEditor: FieldEditor
+        firstInstance: boolean
+        getField(): any {
+            return null
+        }
+        getIcon(): string | Image {
+            return null
+        }
+        getNewInstance(field: any = null): ModifierEditor {
+            return null
+        }
+        serviceCommandArg(): Buffer {
+            return null
+        }
+    }
+
     class IconFieldEditor extends FieldEditor {
         init() {
             return img`

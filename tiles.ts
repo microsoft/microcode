@@ -1,4 +1,6 @@
 namespace microcode {
+    // eventually, we should get rid of these constants and use the Tid enum
+
     // Once a tid is assigned, it can NEVER BE CHANGED OR REPURPOSED.
     // Every tid must be unique in the set of all tids.
     export const TID_SENSOR_START_PAGE = "S1"
@@ -701,116 +703,6 @@ namespace microcode {
         return true
     }
 
-    // Jacdac event codes
-    export function eventCode(tile: Tile) {
-        const tid = getTid(tile)
-        switch (tid) {
-            case Tid.TID_SENSOR_TEMP:
-            case Tid.TID_FILTER_QUIET:
-            case Tid.TID_SENSOR_RELEASE:
-                return 2
-            case Tid.TID_SENSOR_LINE:
-            case Tid.TID_SENSOR_CAR_WALL:
-            case Tid.TID_SENSOR_RADIO_RECEIVE:
-                return 0x91
-            case Tid.TID_SENSOR_MICROPHONE:
-            case Tid.TID_SENSOR_ROTARY:
-            case Tid.TID_FILTER_LOUD:
-            case Tid.TID_SENSOR_PRESS:
-                return 1
-            case Tid.TID_SENSOR_ACCELEROMETER:
-                return 0x8b
-            default:
-                return undefined
-        }
-    }
-
-    export function serviceClassName(tile: Tile) {
-        const tid = getTid(tile)
-        switch (tid) {
-            case Tid.TID_SENSOR_PRESS:
-            case Tid.TID_SENSOR_RELEASE:
-                return "button"
-            case Tid.TID_SENSOR_TEMP:
-                return "temperature"
-            case Tid.TID_SENSOR_RADIO_RECEIVE:
-            case Tid.TID_ACTUATOR_RADIO_SEND:
-            case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
-            case Tid.TID_SENSOR_LINE:
-            case Tid.TID_SENSOR_CAR_WALL:
-            case Tid.TID_ACTUATOR_CAR:
-                return "radio"
-            case Tid.TID_SENSOR_SLIDER:
-                return "potentiometer"
-            case Tid.TID_SENSOR_MAGNET:
-                return "magneticFieldLevel"
-            case Tid.TID_SENSOR_LIGHT:
-                return "lightLevel"
-            case Tid.TID_SENSOR_ROTARY:
-                return "rotaryEncoder"
-            case Tid.TID_SENSOR_ACCELEROMETER:
-                return "accelerometer"
-            case Tid.TID_SENSOR_MICROPHONE:
-                return "soundLevel"
-            case Tid.TID_ACTUATOR_PAINT:
-            case Tid.TID_ACTUATOR_SHOW_NUMBER:
-                return "dotMatrix"
-            case Tid.TID_ACTUATOR_SPEAKER:
-                return "soundPlayer"
-            case Tid.TID_ACTUATOR_MUSIC:
-                return "buzzer"
-            case Tid.TID_ACTUATOR_RGB_LED:
-                return "led"
-            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
-                return "servo"
-            default:
-                return undefined
-        }
-    }
-
-    export function serviceCommand(tile: Tile) {
-        const tid = getTid(tile)
-        switch (tid) {
-            case Tid.TID_ACTUATOR_PAINT:
-            case Tid.TID_ACTUATOR_RGB_LED:
-            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
-                return jacs.CMD_SET_REG | 0x2
-            case Tid.TID_ACTUATOR_SPEAKER:
-            case Tid.TID_ACTUATOR_MUSIC:
-                return 0x80
-            case Tid.TID_ACTUATOR_CAR:
-            case Tid.TID_ACTUATOR_RADIO_SEND:
-                return 0x81
-            case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
-                return jacs.CMD_SET_REG | 0x80
-            default:
-                return undefined
-        }
-    }
-
-    export function jdExternalClass(tile: Tile) {
-        const tid = getTid(tile)
-        switch (tid) {
-            case Tid.TID_FILTER_KITA_KEY_1:
-            case Tid.TID_FILTER_KITA_KEY_2:
-                return 0x1473a263
-            case Tid.TID_SENSOR_SLIDER:
-                return 0x1f274746
-            case Tid.TID_SENSOR_MAGNET:
-                return 0x12fe180f
-            case Tid.TID_SENSOR_LIGHT:
-                return 0x17dc9a1c
-            case Tid.TID_SENSOR_ROTARY:
-                return 0x10fa29c9
-            case Tid.TID_ACTUATOR_RGB_LED:
-                return 0x1609d4f0
-            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
-                return 0x12fc9103
-            default:
-                return undefined
-        }
-    }
-
     export function isVisible(tile: Tile) {
         const tid = getTid(tile)
         // these tids are dead
@@ -824,11 +716,6 @@ namespace microcode {
             return ext == 0x1473a263 ? count > 6 : count > 0
         }
         return true
-    }
-
-    export function getFieldEditor(tile: Tile): FieldEditor {
-        if (tile instanceof ModifierEditor) return tile.fieldEditor
-        return undefined
     }
 
     export function defaultModifier(tid: Tid): Tile {
@@ -854,6 +741,252 @@ namespace microcode {
         return getFieldEditor(tile)
             ? ButtonStyles.Transparent
             : ButtonStyles.FlatWhite
+    }
+
+    export function priority(tile: Tile): number {
+        const tid = getTid(tile)
+        if (isFilter(tid)) {
+            if (isFilterConstant(tid) || isPressReleaseEvent(tid))
+                return jdParam(tid)
+            if (isLineEvent(tid)) {
+                if (tid == Tid.TID_FILTER_LINE_BOTH) return 101
+                else return tid
+            }
+            switch (tid) {
+                case Tid.TID_FILTER_TIMESPAN_SHORT:
+                    return 10
+                case Tid.TID_FILTER_TIMESPAN_LONG:
+                    return 20
+                case Tid.TID_FILTER_TIMESPAN_VERY_LONG:
+                    return 30
+                case Tid.TID_FILTER_TIMESPAN_RANDOM:
+                    return 40
+            }
+            return tid
+        } else if (isModifier(tid)) {
+            if (tid == Tid.TID_MODIFIER_LOOP)
+                // loop always at end
+                return 1000
+            return tid
+        }
+        switch (tid) {
+            // sensors
+            case Tid.TID_SENSOR_PRESS:
+                return 9
+            case Tid.TID_SENSOR_RELEASE:
+                return 10
+            case Tid.TID_SENSOR_ACCELEROMETER:
+                return 20
+            case Tid.TID_SENSOR_MICROPHONE:
+                return 30
+            case Tid.TID_SENSOR_TEMP:
+                return 99
+            case Tid.TID_SENSOR_RADIO_RECEIVE:
+                return 100
+            case Tid.TID_SENSOR_TIMER:
+                return 110
+            case Tid.TID_SENSOR_START_PAGE:
+                return 108
+            case Tid.TID_SENSOR_CUP_X_WRITTEN:
+                return 200
+            case Tid.TID_SENSOR_CUP_Y_WRITTEN:
+                return 201
+            case Tid.TID_SENSOR_CUP_Z_WRITTEN:
+                return 202
+            // Robot car
+            case Tid.TID_SENSOR_CAR_WALL:
+                return 300
+            case Tid.TID_SENSOR_LINE:
+                return 301
+            // Jacdac
+            case Tid.TID_SENSOR_SLIDER:
+                return 500
+            case Tid.TID_SENSOR_ROTARY:
+                return 501
+            case Tid.TID_SENSOR_LIGHT:
+                return 502
+            case Tid.TID_SENSOR_ROTARY:
+                return 503
+
+            case Tid.TID_ACTUATOR_PAINT:
+                return 10
+            case Tid.TID_ACTUATOR_SHOW_NUMBER:
+                return 15
+            case Tid.TID_ACTUATOR_SPEAKER:
+                return 20
+            case Tid.TID_ACTUATOR_MUSIC:
+                return 22
+            case Tid.TID_ACTUATOR_RADIO_SEND:
+                return 100
+            case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
+                return 105
+            case Tid.TID_ACTUATOR_SWITCH_PAGE:
+                return 110
+            case Tid.TID_ACTUATOR_CUP_X_ASSIGN:
+                return 200
+            case Tid.TID_ACTUATOR_CUP_Y_ASSIGN:
+                return 201
+            case Tid.TID_ACTUATOR_CUP_Z_ASSIGN:
+                return 202
+            // car
+            case Tid.TID_ACTUATOR_CAR:
+                return 500
+            // jacdac
+            case Tid.TID_ACTUATOR_RGB_LED:
+                return 600
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+                return 601
+        }
+        return 1000
+    }
+
+    const only5 = [
+        Tid.TID_FILTER_COIN_1,
+        Tid.TID_FILTER_COIN_2,
+        Tid.TID_FILTER_COIN_3,
+        Tid.TID_FILTER_COIN_4,
+        Tid.TID_FILTER_COIN_5,
+    ]
+
+    export function getConstraints(tile: Tile): Constraints {
+        const tid = getTid(tile)
+        switch (tid) {
+            case Tid.TID_SENSOR_PRESS:
+            case Tid.TID_SENSOR_RELEASE:
+                return { allow: ["press_event"] }
+            case Tid.TID_SENSOR_START_PAGE:
+                return { allow: ["timespan"] }
+            case Tid.TID_SENSOR_CUP_X_WRITTEN:
+                return {
+                    allow: ["value_in"],
+                    disallow: [Tid.TID_FILTER_CUP_X_READ],
+                }
+            case Tid.TID_SENSOR_CUP_Y_WRITTEN:
+                return {
+                    allow: ["value_in"],
+                    disallow: [Tid.TID_FILTER_CUP_Y_READ],
+                }
+            case Tid.TID_SENSOR_CUP_Z_WRITTEN:
+                return {
+                    allow: ["value_in"],
+                    disallow: [Tid.TID_FILTER_CUP_Z_READ],
+                }
+            case Tid.TID_SENSOR_RADIO_RECEIVE:
+                return {
+                    allow: ["value_in"],
+                    provides: [Tid.TID_SENSOR_RADIO_RECEIVE],
+                }
+            case Tid.TID_SENSOR_SLIDER:
+            case Tid.TID_SENSOR_CAR_WALL:
+            case Tid.TID_SENSOR_MAGNET:
+            case Tid.TID_SENSOR_LIGHT:
+                return { allow: only5 }
+            case Tid.TID_SENSOR_TEMP:
+                return { allow: ["temperature_event"] }
+            case Tid.TID_SENSOR_ROTARY:
+                return { allow: ["rotary_event"] }
+            case Tid.TID_SENSOR_LINE:
+                return { allow: ["line"] }
+            case Tid.TID_SENSOR_TIMER:
+                return { allow: ["timespan"] }
+            case Tid.TID_SENSOR_ACCELEROMETER:
+                return { allow: ["accel_event"] }
+            case Tid.TID_SENSOR_MICROPHONE:
+                return { allow: ["sound_event"] }
+            case Tid.TID_ACTUATOR_PAINT:
+                return { allow: ["icon_editor", "loop"] }
+            case Tid.TID_ACTUATOR_SPEAKER:
+                return { allow: ["sound_emoji", "loop"] }
+            case Tid.TID_ACTUATOR_MUSIC:
+                return { allow: ["melody_editor", "loop"] }
+            case Tid.TID_ACTUATOR_RADIO_SEND:
+            case Tid.TID_ACTUATOR_SHOW_NUMBER:
+            case Tid.TID_ACTUATOR_CUP_X_ASSIGN:
+            case Tid.TID_ACTUATOR_CUP_Y_ASSIGN:
+            case Tid.TID_ACTUATOR_CUP_Z_ASSIGN:
+                return { allow: ["value_out", "constant"] }
+            case Tid.TID_ACTUATOR_RGB_LED:
+                return { allow: ["rgb_led", "loop"] }
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+            case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
+            case Tid.TID_MODIFIER_LOOP:
+                return { only: ["constant"] } // ahy only and not allow?
+            case Tid.TID_ACTUATOR_SWITCH_PAGE:
+                return { allow: ["page"] }
+            case Tid.TID_ACTUATOR_CAR:
+                return { allow: ["car"] }
+            case Tid.TID_MODIFIER_RADIO_VALUE:
+                return { requires: [Tid.TID_SENSOR_RADIO_RECEIVE] }
+            case Tid.TID_MODIFIER_RANDOM_TOSS:
+                return { allow: ["constant"], disallow: ["value_out"] }
+        }
+        return undefined
+    }
+
+    export function getCategory(tile: Tile): string {
+        const tid = getTid(tile)
+        if (isPressReleaseEvent(tid)) return "press_event"
+        if (isLineEvent(tid)) return "line"
+        if (isTimespan(tid)) return "timespan"
+        if (isAccelerometerEvent(tid)) return "accel_event"
+        if (isEmoji(tid)) return "sound_emoji"
+        if (isFilterConstant(tid) || isFilterVariable(tid)) return "value_in"
+        if (isModifierConstant(tid)) return "constant"
+        if (isModifierVariable(tid)) return "value_out"
+        if (isPage(tid)) return "page"
+        if (isCarModifier(tid)) return "car"
+        if (isLedModifier(tid)) return "rgb_led"
+        switch (tid) {
+            case Tid.TID_FILTER_ROTARY_LEFT:
+            case Tid.TID_FILTER_ROTARY_RIGHT:
+                return "rotary_event"
+            case Tid.TID_FILTER_TEMP_WARMER:
+            case Tid.TID_FILTER_TEMP_COLDER:
+                return "temperature_event"
+            case Tid.TID_FILTER_LOUD:
+            case Tid.TID_FILTER_QUIET:
+                return "sound_event"
+            case Tid.TID_MODIFIER_LOOP:
+                return "loop"
+            case Tid.TID_MODIFIER_ICON_EDITOR:
+                return "icon_editor"
+            case Tid.TID_MODIFIER_MELODY_EDITOR:
+                return "melody_editor"
+            case Tid.TID_MODIFIER_RANDOM_TOSS:
+            case Tid.TID_MODIFIER_TEMP_READ:
+            case Tid.TID_MODIFIER_RADIO_VALUE:
+                return "value_out"
+        }
+        return undefined
+    }
+
+    // following functions are needed to compile to JacScript
+
+    // let P be jdParam
+    export enum JdKind {
+        Literal = 1, // value is P
+        Variable, // value is variables[P]
+        Page, // value is page[P]
+        EventCode,
+        ServiceInstanceIndex,
+        ServiceCommandArg, // argument of command sent will be set to P; P2 is duration in ms for Sequance
+        ExtLibFn, // call external function P(P2)
+        Timespan,
+        RadioValue,
+        Rotary,
+        Temperature,
+
+        Loop, // repeat modifier
+
+        // Filter/actuator kinds
+        Radio, // radio send/recv
+        RandomToss, // random number
+        NumFmt, // on actuator - P is numfmt
+
+        // for each modifier (defaults to [defaultModifier]), do ...
+        // P is a shortcut external function
+        // P2 is service arg size
+        Sequence,
     }
 
     export function jdKind(tile: Tile): JdKind {
@@ -1138,242 +1271,120 @@ namespace microcode {
         return undefined
     }
 
-    export function priority(tile: Tile): number {
+    // Jacdac event codes
+    export function eventCode(tile: Tile) {
         const tid = getTid(tile)
-        if (isFilter(tid)) {
-            if (isFilterConstant(tid) || isPressReleaseEvent(tid))
-                return jdParam(tid)
-            if (isLineEvent(tid)) {
-                if (tid == Tid.TID_FILTER_LINE_BOTH) return 101
-                else return tid
-            }
-            switch (tid) {
-                case Tid.TID_FILTER_TIMESPAN_SHORT:
-                    return 10
-                case Tid.TID_FILTER_TIMESPAN_LONG:
-                    return 20
-                case Tid.TID_FILTER_TIMESPAN_VERY_LONG:
-                    return 30
-                case Tid.TID_FILTER_TIMESPAN_RANDOM:
-                    return 40
-            }
-            return tid
-        } else if (isModifier(tid)) {
-            if (tid == Tid.TID_MODIFIER_LOOP)
-                // loop always at end
-                return 1000
-            return tid
-        }
         switch (tid) {
-            // sensors
-            case Tid.TID_SENSOR_PRESS:
-                return 9
-            case Tid.TID_SENSOR_RELEASE:
-                return 10
-            case Tid.TID_SENSOR_ACCELEROMETER:
-                return 20
-            case Tid.TID_SENSOR_MICROPHONE:
-                return 30
             case Tid.TID_SENSOR_TEMP:
-                return 99
-            case Tid.TID_SENSOR_RADIO_RECEIVE:
-                return 100
-            case Tid.TID_SENSOR_TIMER:
-                return 110
-            case Tid.TID_SENSOR_START_PAGE:
-                return 108
-            case Tid.TID_SENSOR_CUP_X_WRITTEN:
-                return 200
-            case Tid.TID_SENSOR_CUP_Y_WRITTEN:
-                return 201
-            case Tid.TID_SENSOR_CUP_Z_WRITTEN:
-                return 202
-            // Robot car
-            case Tid.TID_SENSOR_CAR_WALL:
-                return 300
-            case Tid.TID_SENSOR_LINE:
-                return 301
-            // Jacdac
-            case Tid.TID_SENSOR_SLIDER:
-                return 500
-            case Tid.TID_SENSOR_ROTARY:
-                return 501
-            case Tid.TID_SENSOR_LIGHT:
-                return 502
-            case Tid.TID_SENSOR_ROTARY:
-                return 503
-
-            case Tid.TID_ACTUATOR_PAINT:
-                return 10
-            case Tid.TID_ACTUATOR_SHOW_NUMBER:
-                return 15
-            case Tid.TID_ACTUATOR_SPEAKER:
-                return 20
-            case Tid.TID_ACTUATOR_MUSIC:
-                return 22
-            case Tid.TID_ACTUATOR_RADIO_SEND:
-                return 100
-            case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
-                return 105
-            case Tid.TID_ACTUATOR_SWITCH_PAGE:
-                return 110
-            case Tid.TID_ACTUATOR_CUP_X_ASSIGN:
-                return 200
-            case Tid.TID_ACTUATOR_CUP_Y_ASSIGN:
-                return 201
-            case Tid.TID_ACTUATOR_CUP_Z_ASSIGN:
-                return 202
-            // car
-            case Tid.TID_ACTUATOR_CAR:
-                return 500
-            // jacdac
-            case Tid.TID_ACTUATOR_RGB_LED:
-                return 600
-            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
-                return 601
-        }
-        return 1000
-    }
-
-    const only5 = [
-        Tid.TID_FILTER_COIN_1,
-        Tid.TID_FILTER_COIN_2,
-        Tid.TID_FILTER_COIN_3,
-        Tid.TID_FILTER_COIN_4,
-        Tid.TID_FILTER_COIN_5,
-    ]
-
-    // TODO: break this up, little need for record and lists
-    export function getConstraints(tile: Tile): Constraints {
-        const tid = getTid(tile)
-        switch (tid) {
-            case Tid.TID_SENSOR_PRESS:
-            case Tid.TID_SENSOR_RELEASE:
-                return { allow: ["press_event"] }
-            case Tid.TID_SENSOR_START_PAGE:
-                return { allow: ["timespan"] }
-            case Tid.TID_SENSOR_CUP_X_WRITTEN:
-                return {
-                    allow: ["value_in"],
-                    disallow: [Tid.TID_FILTER_CUP_X_READ],
-                }
-            case Tid.TID_SENSOR_CUP_Y_WRITTEN:
-                return {
-                    allow: ["value_in"],
-                    disallow: [Tid.TID_FILTER_CUP_Y_READ],
-                }
-            case Tid.TID_SENSOR_CUP_Z_WRITTEN:
-                return {
-                    allow: ["value_in"],
-                    disallow: [Tid.TID_FILTER_CUP_Z_READ],
-                }
-            case Tid.TID_SENSOR_RADIO_RECEIVE:
-                return {
-                    allow: ["value_in"],
-                    provides: [Tid.TID_SENSOR_RADIO_RECEIVE],
-                }
-            case Tid.TID_SENSOR_SLIDER:
-            case Tid.TID_SENSOR_CAR_WALL:
-            case Tid.TID_SENSOR_MAGNET:
-            case Tid.TID_SENSOR_LIGHT:
-                return { allow: only5 }
-            case Tid.TID_SENSOR_TEMP:
-                return { allow: ["temperature_event"] }
-            case Tid.TID_SENSOR_ROTARY:
-                return { allow: ["rotary_event"] }
-            case Tid.TID_SENSOR_LINE:
-                return { allow: ["line"] }
-            case Tid.TID_SENSOR_TIMER:
-                return { allow: ["timespan"] }
-            case Tid.TID_SENSOR_ACCELEROMETER:
-                return { allow: ["accel_event"] }
-            case Tid.TID_SENSOR_MICROPHONE:
-                return { allow: ["sound_event"] }
-            case Tid.TID_ACTUATOR_PAINT:
-                return { allow: ["icon_editor", "loop"] }
-            case Tid.TID_ACTUATOR_SPEAKER:
-                return { allow: ["sound_emoji", "loop"] }
-            case Tid.TID_ACTUATOR_MUSIC:
-                return { allow: ["melody_editor", "loop"] }
-            case Tid.TID_ACTUATOR_RADIO_SEND:
-            case Tid.TID_ACTUATOR_SHOW_NUMBER:
-            case Tid.TID_ACTUATOR_CUP_X_ASSIGN:
-            case Tid.TID_ACTUATOR_CUP_Y_ASSIGN:
-            case Tid.TID_ACTUATOR_CUP_Z_ASSIGN:
-                return { allow: ["value_out", "constant"] }
-            case Tid.TID_ACTUATOR_RGB_LED:
-                return { allow: ["rgb_led", "loop"] }
-            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
-            case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
-            case Tid.TID_MODIFIER_LOOP:
-                return { only: ["constant"] } // ahy only and not allow?
-            case Tid.TID_ACTUATOR_SWITCH_PAGE:
-                return { allow: ["page"] }
-            case Tid.TID_ACTUATOR_CAR:
-                return { allow: ["car"] }
-            case Tid.TID_MODIFIER_RADIO_VALUE:
-                return { requires: [Tid.TID_SENSOR_RADIO_RECEIVE] }
-            case Tid.TID_MODIFIER_RANDOM_TOSS:
-                return { allow: ["constant"], disallow: ["value_out"] }
-        }
-        return undefined
-    }
-
-    export function getCategory(tile: Tile): string {
-        const tid = getTid(tile)
-        if (isPressReleaseEvent(tid)) return "press_event"
-        if (isLineEvent(tid)) return "line"
-        if (isTimespan(tid)) return "timespan"
-        if (isAccelerometerEvent(tid)) return "accel_event"
-        if (isEmoji(tid)) return "sound_emoji"
-        if (isFilterConstant(tid) || isFilterVariable(tid)) return "value_in"
-        if (isModifierConstant(tid)) return "constant"
-        if (isModifierVariable(tid)) return "value_out"
-        if (isPage(tid)) return "page"
-        if (isCarModifier(tid)) return "car"
-        if (isLedModifier(tid)) return "rgb_led"
-        switch (tid) {
-            case Tid.TID_FILTER_ROTARY_LEFT:
-            case Tid.TID_FILTER_ROTARY_RIGHT:
-                return "rotary_event"
-            case Tid.TID_FILTER_TEMP_WARMER:
-            case Tid.TID_FILTER_TEMP_COLDER:
-                return "temperature_event"
-            case Tid.TID_FILTER_LOUD:
             case Tid.TID_FILTER_QUIET:
-                return "sound_event"
-            case Tid.TID_MODIFIER_LOOP:
-                return "loop"
-            case Tid.TID_MODIFIER_ICON_EDITOR:
-                return "icon_editor"
-            case Tid.TID_MODIFIER_MELODY_EDITOR:
-                return "melody_editor"
-            case Tid.TID_MODIFIER_RANDOM_TOSS:
-            case Tid.TID_MODIFIER_TEMP_READ:
-            case Tid.TID_MODIFIER_RADIO_VALUE:
-                return "value_out"
+            case Tid.TID_SENSOR_RELEASE:
+                return 2
+            case Tid.TID_SENSOR_LINE:
+            case Tid.TID_SENSOR_CAR_WALL:
+            case Tid.TID_SENSOR_RADIO_RECEIVE:
+                return 0x91
+            case Tid.TID_SENSOR_MICROPHONE:
+            case Tid.TID_SENSOR_ROTARY:
+            case Tid.TID_FILTER_LOUD:
+            case Tid.TID_SENSOR_PRESS:
+                return 1
+            case Tid.TID_SENSOR_ACCELEROMETER:
+                return 0x8b
+            default:
+                return undefined
         }
-        return undefined
     }
 
-    // TODO: we don't need separate bits for everything.
-    // TODO: only certain things can be combined. Analyze and optimize
-    export enum TidKinds {
-        PressEvent = 0x01,
-        ValueIn = 0x02,
-        ValueOut = 0x04,
-        RotaryEvent = 0x08,
-        TempEvent = 0x10,
-        AccelEvent = 0x20,
-        TimeSpan = 0x40,
-        SoundEvent = 0x80,
-        IconEditor = 0x100,
-        Loop = 0x200,
-        MelodyEditor = 0x400,
-        SoundEmoji = 0x800,
-        Constant = 0x1000,
-        Page = 0x2000,
-        Car = 0x4000,
-        RGBLed = 0x8000,
+    export function jdExternalClass(tile: Tile) {
+        const tid = getTid(tile)
+        switch (tid) {
+            case Tid.TID_FILTER_KITA_KEY_1:
+            case Tid.TID_FILTER_KITA_KEY_2:
+                return 0x1473a263
+            case Tid.TID_SENSOR_SLIDER:
+                return 0x1f274746
+            case Tid.TID_SENSOR_MAGNET:
+                return 0x12fe180f
+            case Tid.TID_SENSOR_LIGHT:
+                return 0x17dc9a1c
+            case Tid.TID_SENSOR_ROTARY:
+                return 0x10fa29c9
+            case Tid.TID_ACTUATOR_RGB_LED:
+                return 0x1609d4f0
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+                return 0x12fc9103
+            default:
+                return undefined
+        }
+    }
+
+    export function serviceClassName(tile: Tile) {
+        const tid = getTid(tile)
+        switch (tid) {
+            case Tid.TID_SENSOR_PRESS:
+            case Tid.TID_SENSOR_RELEASE:
+                return "button"
+            case Tid.TID_SENSOR_TEMP:
+                return "temperature"
+            case Tid.TID_SENSOR_RADIO_RECEIVE:
+            case Tid.TID_ACTUATOR_RADIO_SEND:
+            case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
+            case Tid.TID_SENSOR_LINE:
+            case Tid.TID_SENSOR_CAR_WALL:
+            case Tid.TID_ACTUATOR_CAR:
+                return "radio"
+            case Tid.TID_SENSOR_SLIDER:
+                return "potentiometer"
+            case Tid.TID_SENSOR_MAGNET:
+                return "magneticFieldLevel"
+            case Tid.TID_SENSOR_LIGHT:
+                return "lightLevel"
+            case Tid.TID_SENSOR_ROTARY:
+                return "rotaryEncoder"
+            case Tid.TID_SENSOR_ACCELEROMETER:
+                return "accelerometer"
+            case Tid.TID_SENSOR_MICROPHONE:
+                return "soundLevel"
+            case Tid.TID_ACTUATOR_PAINT:
+            case Tid.TID_ACTUATOR_SHOW_NUMBER:
+                return "dotMatrix"
+            case Tid.TID_ACTUATOR_SPEAKER:
+                return "soundPlayer"
+            case Tid.TID_ACTUATOR_MUSIC:
+                return "buzzer"
+            case Tid.TID_ACTUATOR_RGB_LED:
+                return "led"
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+                return "servo"
+            default:
+                return undefined
+        }
+    }
+
+    export function serviceCommand(tile: Tile) {
+        const tid = getTid(tile)
+        switch (tid) {
+            case Tid.TID_ACTUATOR_PAINT:
+            case Tid.TID_ACTUATOR_RGB_LED:
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+                return jacs.CMD_SET_REG | 0x2
+            case Tid.TID_ACTUATOR_SPEAKER:
+            case Tid.TID_ACTUATOR_MUSIC:
+                return 0x80
+            case Tid.TID_ACTUATOR_CAR:
+            case Tid.TID_ACTUATOR_RADIO_SEND:
+                return 0x81
+            case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
+                return jacs.CMD_SET_REG | 0x80
+            default:
+                return undefined
+        }
+    }
+
+    export function serviceCommandArg(tile: Tile): string | Buffer {
+        if (tile instanceof ModifierEditor) return tile.serviceCommandArg()
+        const ret = jdParam(tile)
+        if (typeof ret == "string") return ret
+        return undefined
     }
 }
