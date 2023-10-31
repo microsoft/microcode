@@ -123,15 +123,12 @@ namespace microcode {
     }
 
     export function getIcon(tile: Tile) {
-        assert(!!tile, "getIcon: tile is null")
-        if (tile instanceof ModifierEditor)
-            return tile.getIcon()
+        if (tile instanceof ModifierEditor) return tile.getIcon()
         return tidToString(tile)
     }
 
     export function serviceCommandArg(tile: Tile): string | Buffer {
-        if (tile instanceof ModifierEditor)
-            return tile.serviceCommandArg()
+        if (tile instanceof ModifierEditor) return tile.serviceCommandArg()
         return null
     }
 
@@ -140,7 +137,7 @@ namespace microcode {
         sensors: number[]
         filters: number[]
         actuators: number[]
-        modifiers: (number | ModifierEditor)[]
+        modifiers: Tile[]
 
         constructor() {
             this.sensors = []
@@ -206,15 +203,12 @@ namespace microcode {
             while (isModifier(br.peekByte())) {
                 const modifierEnum = br.readByte()
                 const modifier = getEditor(modifierEnum, false)
-                if (
-                    modifier instanceof ModifierEditor &&
-                    modifier.fieldEditor
-                ) {
+                if (modifier instanceof ModifierEditor) {
                     const field = modifier.fieldEditor.fromBuffer(br)
                     const newOne = modifier.getNewInstance(field)
                     defn.modifiers.push(<any>newOne)
                 } else {
-                    defn.modifiers.push(modifier)
+                    defn.modifiers.push(modifierEnum)
                 }
                 assert(!br.eof())
             }

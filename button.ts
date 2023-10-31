@@ -105,7 +105,6 @@ namespace microcode {
 
         public get bounds() {
             // Returns bounds in local space
-            // This isn't quite right, but it's close enough for now
             return Bounds.GrowXY(
                 this.icon.bounds,
                 borderLeft(this.style),
@@ -122,7 +121,6 @@ namespace microcode {
         }
 
         public buildSprite(img: Image) {
-            assert(!!img, "image must be non-null")
             this.icon = new Sprite({
                 parent: this,
                 img,
