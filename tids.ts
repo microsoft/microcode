@@ -966,14 +966,17 @@ namespace microcode {
             case Tid.TID_SENSOR_CUP_X_WRITTEN:
             case Tid.TID_ACTUATOR_CUP_X_ASSIGN:
             case Tid.TID_FILTER_CUP_X_READ:
+            case Tid.TID_MODIFIER_CUP_X_READ:
                 return 0
             case Tid.TID_SENSOR_CUP_Y_WRITTEN:
             case Tid.TID_ACTUATOR_CUP_Y_ASSIGN:
             case Tid.TID_FILTER_CUP_Y_READ:
+            case Tid.TID_MODIFIER_CUP_Y_READ:
                 return 1
             case Tid.TID_SENSOR_CUP_Z_WRITTEN:
             case Tid.TID_ACTUATOR_CUP_Z_ASSIGN:
             case Tid.TID_FILTER_CUP_Z_READ:
+            case Tid.TID_MODIFIER_CUP_Z_READ:
                 return 2
             //
             case Tid.TID_FILTER_ROTARY_LEFT:
