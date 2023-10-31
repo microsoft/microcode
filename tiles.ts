@@ -831,8 +831,6 @@ namespace microcode {
         return undefined
     }
 
-    let icon_editor: IconEditor = undefined
-    let melody_editor: MelodyEditor = undefined
     export function defaultModifier(tid: Tid): Tile {
         switch (tid) {
             case Tid.TID_ACTUATOR_SPEAKER:
@@ -842,14 +840,10 @@ namespace microcode {
             case Tid.TID_ACTUATOR_RGB_LED:
                 return Tid.TID_MODIFIER_RGB_LED_COLOR_RAINBOW
             case Tid.TID_ACTUATOR_PAINT: {
-                if (!icon_editor) {
-                    icon_editor = new IconEditor()
-                }
-                return icon_editor
+                return getEditor(Tid.TID_MODIFIER_ICON_EDITOR)
             }
             case Tid.TID_ACTUATOR_MUSIC: {
-                if (!melody_editor) melody_editor = new MelodyEditor()
-                return melody_editor
+                return getEditor(Tid.TID_MODIFIER_MELODY_EDITOR)
             }
             default:
                 return undefined

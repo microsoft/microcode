@@ -1,5 +1,5 @@
 namespace microcode {
-    export class IconFieldEditor extends FieldEditor {
+    class IconFieldEditor extends FieldEditor {
         init() {
             return img`
         . . . . .
@@ -45,26 +45,6 @@ namespace microcode {
                 img.setPixel(col, row, (buf[byte] >> bit) & 1)
             }
             return img
-        }
-    }
-
-    export class ModifierEditor {
-        constructor(public tid: number) {
-            this.firstInstance = false
-        }
-        fieldEditor: FieldEditor
-        firstInstance: boolean
-        getField(): any {
-            return null
-        }
-        getIcon(): string | Image {
-            return null
-        }
-        getNewInstance(field: any = null): ModifierEditor {
-            return null
-        }
-        serviceCommandArg(): Buffer {
-            return null
         }
     }
 
@@ -115,7 +95,7 @@ namespace microcode {
 
     //export const noteNames = ["C", "D", "E", "F", "G", "A", "B", "C", "D"]
 
-    export function setNote(buf: Buffer, offset: number, note: string) {
+    function setNote(buf: Buffer, offset: number, note: string) {
         const noteToFreq: { [note: string]: number } = {
             "0": 261.63, // C4
             "1": 293.66, // D4
@@ -136,7 +116,7 @@ namespace microcode {
         buf.setNumber(NumberFormat.UInt16LE, offset + 4, duration)
     }
 
-    export class MelodyFieldEditor extends FieldEditor {
+    class MelodyFieldEditor extends FieldEditor {
         init() {
             return { notes: `0240`, tempo: 120 }
         }
@@ -226,31 +206,24 @@ namespace microcode {
 
     let iconEditorTile: ModifierEditor = undefined
     let melodyEditorTile: ModifierEditor = undefined
-    export function getEditor(tid: Tid, first = true): ModifierEditor {
+    export function getEditor(tid: Tid): ModifierEditor {
         if (tid == Tid.TID_MODIFIER_ICON_EDITOR) {
             if (!iconEditorTile) {
                 iconEditorTile = new IconEditor()
-                iconEditorTile.firstInstance = first
+                iconEditorTile.firstInstance = true
             }
             return iconEditorTile
         } else if (tid == Tid.TID_MODIFIER_MELODY_EDITOR) {
             if (!melodyEditorTile) {
                 melodyEditorTile = new MelodyEditor()
-                melodyEditorTile.firstInstance = first
+                melodyEditorTile.firstInstance = true
             }
             return melodyEditorTile
         }
         return undefined
     }
 
-    export function getNewInstance(tile: Tile) {
-        if (tile instanceof ModifierEditor) {
-            return tile.getNewInstance()
-        }
-        return undefined
-    }
-
-    export function iconEditor(
+    function iconEditor(
         image5x5: Image,
         picker: Picker,
         onHide: () => void,
@@ -295,7 +268,7 @@ namespace microcode {
         )
     }
 
-    export function melodyEditor(
+    function melodyEditor(
         melody: Melody,
         picker: Picker,
         onHide: () => void,

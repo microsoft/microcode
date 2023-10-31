@@ -31,6 +31,26 @@ namespace microcode {
         }
     }
 
+    export class ModifierEditor {
+        constructor(public tid: number) {
+            this.firstInstance = false
+        }
+        fieldEditor: FieldEditor
+        firstInstance: boolean
+        getField(): any {
+            return null
+        }
+        getIcon(): string | Image {
+            return null
+        }
+        getNewInstance(field: any = null): ModifierEditor {
+            return null
+        }
+        serviceCommandArg(): Buffer {
+            return null
+        }
+    }
+
     // let P be jdParam
     export enum JdKind {
         Literal = 1, // value is P
@@ -204,7 +224,7 @@ namespace microcode {
             assert(!br.eof())
             while (isModifier(br.peekByte())) {
                 const modifierEnum = br.readByte()
-                const modifier = getEditor(modifierEnum, false)
+                const modifier = getEditor(modifierEnum)
                 if (modifier instanceof ModifierEditor) {
                     const field = modifier.fieldEditor.fromBuffer(br)
                     const newOne = modifier.getNewInstance(field)
@@ -337,7 +357,7 @@ namespace microcode {
             const [lower, upper] = ranges[name]
             let all: Tile[] = []
             for (let i = lower; i <= upper; ++i) {
-                const ed = getEditor(i, true)
+                const ed = getEditor(i)
                 if (ed) all.push(ed)
                 else all.push(i)
             }
