@@ -120,63 +120,66 @@ namespace microcode {
             if (changed) this.editor.changed()
         }
 
+        private processSection(name: string, rule: RuleRep) {
+            const tiles = rule[name]
+            tiles.forEach((tile, index) => {
+                const button = new Button({
+                    parent: this,
+                    style: buttonStyle(tile),
+                    icon: getIcon(tile),
+                    ariaId: tidToString(getTid(tile)),
+                    x: 0,
+                    y: 0,
+                    onClick: () => this.editTile(name, index),
+                })
+                if (name == "filters" && index == 0) {
+                    const sensor = this.ruledef.sensors[0]
+                    // TODO: this logic should be part of the SensorTileDefn
+                    if (
+                        (jdKind(sensor) == JdKind.Radio &&
+                            sensor != Tid.TID_SENSOR_LINE) ||
+                        jdKind(sensor) == JdKind.Variable
+                    ) {
+                        const plus = new Button({
+                            parent: this,
+                            style: buttonStyle(tile),
+                            icon: "arith_equals",
+                            ariaId: "arith_equals",
+                            x: 0,
+                            y: 0,
+                        })
+                        this.ruleButtons[name].push(plus)
+                    }
+                }
+                this.ruleButtons[name].push(button)
+                if (index < tiles.length - 1) {
+                    if (
+                        (jdKind(tile) == JdKind.Literal ||
+                            jdKind(tile) == JdKind.Variable) &&
+                        (jdKind(tiles[index + 1]) == JdKind.Literal ||
+                            jdKind(tiles[index + 1]) == JdKind.Variable ||
+                            jdKind(tiles[index + 1]) == JdKind.RandomToss)
+                    ) {
+                        const plus = new Button({
+                            parent: this,
+                            style: buttonStyle(tile),
+                            icon: "arith_plus",
+                            ariaId: "arith_plus",
+                            x: 0,
+                            y: 0,
+                        })
+                        this.ruleButtons[name].push(plus)
+                    }
+                }
+            })
+            return tiles.length > 0
+        }
         private instantiateProgramTiles() {
             this.destroyProgramTiles()
             const rule = this.ruledef.getRuleRep()
             let changed = false
-            repNames().forEach(name => {
-                const tiles = rule[name]
-                tiles.forEach((tile, index) => {
-                    const button = new Button({
-                        parent: this,
-                        style: tile.buttonStyle(),
-                        icon: tile.getIcon(),
-                        ariaId: tile.tid,
-                        x: 0,
-                        y: 0,
-                        onClick: () => this.editTile(name, index),
-                    })
-                    if (name == "filters" && index == 0) {
-                        const sensor = rule["sensors"][0]
-                        // TODO: this logic should be part of the SensorTileDefn
-                        if (
-                            (sensor.jdKind == JdKind.Radio &&
-                                sensor.tid != TID_SENSOR_LINE) ||
-                            sensor.jdKind == JdKind.Variable
-                        ) {
-                            const plus = new Button({
-                                parent: this,
-                                style: tile.buttonStyle(),
-                                icon: "arith_equals",
-                                ariaId: "arith_equals",
-                                x: 0,
-                                y: 0,
-                            })
-                            this.ruleButtons[name].push(plus)
-                        }
-                    }
-                    this.ruleButtons[name].push(button)
-                    if (index < tiles.length - 1) {
-                        if (
-                            (tile.jdKind == JdKind.Literal ||
-                                tile.jdKind == JdKind.Variable) &&
-                            (tiles[index + 1].jdKind == JdKind.Literal ||
-                                tiles[index + 1].jdKind == JdKind.Variable ||
-                                tiles[index + 1].jdKind == JdKind.RandomToss)
-                        ) {
-                            const plus = new Button({
-                                parent: this,
-                                style: tile.buttonStyle(),
-                                icon: "arith_plus",
-                                ariaId: "arith_plus",
-                                x: 0,
-                                y: 0,
-                            })
-                            this.ruleButtons[name].push(plus)
-                        }
-                    }
-                    changed = true
-                })
+            Object.keys(rule).forEach(name => {
+                changed = this.processSection(name, rule) || changed
             })
             this.needsWhenInsert()
             this.needsDoInsert()
@@ -228,9 +231,8 @@ namespace microcode {
                 while (index < ruleTiles.length) {
                     const suggestions = this.getSuggestions(name, index)
                     const compatible = suggestions.find(
-                        t => t.tid == ruleTiles[index].tid
+                        t => getTid(t) == getTid(ruleTiles[index])
                     )
-
                     if (compatible) index++
                     else {
                         ruleTiles.splice(index, ruleTiles.length - index)
@@ -250,14 +252,14 @@ namespace microcode {
 
         private editTile(name: string, index: number) {
             const ruleTiles = this.ruledef.getRuleRep()[name]
-            const tileUpdated = (tile: TileDefn) => {
+            const tileUpdated = (tile: Tile) => {
                 const editedAdded = !!tile
                 if (tile) {
                     if (index >= ruleTiles.length) {
-                        reportEvent("tile.add", { tid: tile.tid })
+                        reportEvent("tile.add", { tid: getTid(tile) })
                         ruleTiles.push(tile)
                     } else {
-                        reportEvent("tile.update", { tid: tile.tid })
+                        reportEvent("tile.update", { tid: getTid(tile) })
                         ruleTiles[index] = tile
                         if (name == "sensors")
                             this.deleteIncompatibleTiles("filters", 0)
@@ -280,9 +282,9 @@ namespace microcode {
                 }
                 this.page.changed()
             }
-            const newFieldEditor = (tile: TileDefn, del = false) => {
+            const newFieldEditor = (tile: ModifierEditor, del = false) => {
                 const newOne = del ? tile : tile.getNewInstance()
-                const fieldEditor = newOne.fieldEditor
+                const fieldEditor = getFieldEditor(newOne)
                 this.editor.captureBackground()
                 fieldEditor.editor(
                     newOne.getField(),
@@ -299,22 +301,28 @@ namespace microcode {
                         : undefined
                 )
             }
-            if (index < ruleTiles.length && ruleTiles[index].fieldEditor) {
-                newFieldEditor(ruleTiles[index], true)
+            if (
+                index < ruleTiles.length &&
+                ruleTiles[index] instanceof ModifierEditor
+            ) {
+                newFieldEditor(ruleTiles[index] as ModifierEditor, true)
                 return
             }
             const suggestions = this.getSuggestions(name, index)
-            const btns: PickerButtonDef[] = suggestions.map(elem => {
+            const btns: PickerButtonDef[] = suggestions.map(tile => {
                 return {
-                    icon: <string>elem.getIcon(),
+                    icon: <string>getIcon(tile),
                 }
             })
             // special case for field editor
-            if (suggestions.length == 1 && suggestions[0].fieldEditor) {
+            if (
+                suggestions.length == 1 &&
+                suggestions[0] instanceof ModifierEditor
+            ) {
                 let theOne =
-                    index > 0 && ruleTiles[index - 1].fieldEditor // this is a hack to use the value from previous
-                        ? ruleTiles[index - 1] // field editor (should really check they are the same)
-                        : suggestions[0]
+                    index > 0 && ruleTiles[index - 1] instanceof ModifierEditor
+                        ? (ruleTiles[index - 1] as ModifierEditor)
+                        : (suggestions[0] as ModifierEditor)
                 newFieldEditor(theOne)
                 return
             }
@@ -325,7 +333,7 @@ namespace microcode {
                     tileUpdated(undefined)
                 }
                 const selected = btns.indexOf(
-                    btns.find(b => b.icon === ruleTiles[index].tid)
+                    btns.find(b => b.icon === getIcon(getTid(ruleTiles[index]))) // TODO
                 )
                 if (selected >= 0) {
                     selectedButton = selected
@@ -337,12 +345,13 @@ namespace microcode {
                     title: accessibility.ariaToTooltip(name),
                     navigator: () => new PickerNavigator(this.editor.picker),
                     onClick: idx => {
-                        let theOne = tilesDB[name][suggestions[idx].tid]
-                        if (theOne.fieldEditor) {
+                        let theOne = suggestions[idx]
+                        if (theOne instanceof ModifierEditor) {
                             // there is more work to do                l
                             theOne =
-                                index > 0 && ruleTiles[index - 1].fieldEditor // this is a hack to use the value from previous
-                                    ? ruleTiles[index - 1] // field editor (should really check they are the same)
+                                index > 0 &&
+                                ruleTiles[index - 1] instanceof ModifierEditor
+                                    ? (ruleTiles[index - 1] as ModifierEditor)
                                     : theOne
                             newFieldEditor(theOne)
                         }

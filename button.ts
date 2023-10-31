@@ -105,7 +105,6 @@ namespace microcode {
 
         public get bounds() {
             // Returns bounds in local space
-            // This isn't quite right, but it's close enough for now
             return Bounds.GrowXY(
                 this.icon.bounds,
                 borderLeft(this.style),

@@ -51,7 +51,7 @@ namespace microcode {
         return defn
     }
 
-    export function progDefnFromJson(obj: any): ProgramDefn {
+    function progDefnFromJson(obj: any): ProgramDefn {
         if (typeof obj === "string") {
             obj = JSON.parse(obj)
         }

@@ -266,8 +266,6 @@ l>render icon A6
 
 l>render icon A6A
 
-l>render icon A3
-
 l>render icon A2
 
 l>render icon A4
