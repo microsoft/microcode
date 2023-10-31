@@ -984,7 +984,7 @@ namespace microcode {
             case Tid.TID_FILTER_LOUD:
                 return 1
             //
-            case Tid.TID_FILTER_LINE_RIGHT:
+            case Tid.TID_FILTER_ROTARY_RIGHT:
             case Tid.TID_FILTER_TEMP_COLDER:
             case Tid.TID_FILTER_QUIET:
                 return 2
@@ -1094,6 +1094,7 @@ namespace microcode {
                 return 5
             case Tid.TID_ACTUATOR_MUSIC:
                 return 6
+
             case Tid.TID_MODIFIER_CAR_FORWARD:
                 return robots.RobotCompactCommand.MotorRunForward
             case Tid.TID_MODIFIER_CAR_REVERSE:
@@ -1122,6 +1123,7 @@ namespace microcode {
                 return robots.RobotCompactCommand.ArmOpen
             case Tid.TID_MODIFIER_CAR_ARM_CLOSE:
                 return robots.RobotCompactCommand.ArmClose
+
             case Tid.TID_MODIFIER_RGB_LED_COLOR_1:
                 return 0x2f0000
             case Tid.TID_MODIFIER_RGB_LED_COLOR_2:
