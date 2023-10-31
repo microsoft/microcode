@@ -129,7 +129,9 @@ namespace microcode {
 
     export function serviceCommandArg(tile: Tile): string | Buffer {
         if (tile instanceof ModifierEditor) return tile.serviceCommandArg()
-        return null
+        const ret = jdParam(tile)
+        if (typeof ret == "string") return ret
+        return undefined
     }
 
     export type RuleRep = { [name: string]: Tile[] }
