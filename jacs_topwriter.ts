@@ -1,5 +1,5 @@
 namespace jacs {
-    export let debugOut = false
+    export let debugOut = true
 
     export function addUnique<T>(arr: T[], v: T) {
         let idx = arr.indexOf(v)
@@ -54,7 +54,7 @@ namespace jacs {
             this.writer.patchLabels()
         }
         toString() {
-            return "" // this.writer.getAssembly()
+            return this.writer.getAssembly()
         }
         addLocal(name: string) {
             return new Variable(this.locals, CellKind.LOCAL, name)
