@@ -16,7 +16,6 @@
         "accessibility.ts",
         "button.ts",
         "component.ts",
-        "tids.ts",
         "assets.ts",
         "scene.ts",
         "language.ts",

@@ -18,6 +18,10 @@ namespace microcode {
         if (!skipBack) editor.forward()
     }
 
+    export function diskSlots() {
+        return ["disk1", "disk2", "disk3"]
+    }
+
     export class Editor extends Scene {
         navigator: RuleRowNavigator
         private progdef: ProgramDefn
