@@ -182,11 +182,12 @@ namespace jacs {
             return (
                 "" + (op - BinFmt.DIRECT_CONST_OP - BinFmt.DIRECT_CONST_OFFSET)
             )
-
+        /*
         const fmt = OP_PRINT_FMTS[op]
         if (!fmt) return `???oops op${op}`
         return expandFmt(fmt, t)
+*/
 
-        // return "uncomment"
+        return "uncomment"
     }
 }
