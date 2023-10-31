@@ -206,7 +206,7 @@ namespace microcode {
         TID_FILTER_LOUD = 87,
         TID_FILTER_QUIET = 88,
         //
-        TID_FILTER_ACCEL = 89,   // dead (AFAIK)
+        TID_FILTER_ACCEL = 89, // dead (AFAIK)
         ACCELEROMETER_START = 90,
         TID_FILTER_ACCEL_SHAKE = 90,
         TID_FILTER_ACCEL_TILT_UP = 91,
@@ -350,7 +350,7 @@ namespace microcode {
                 return TID_SENSOR_CAR_WALL
             case Tid.TID_SENSOR_LINE:
                 return TID_SENSOR_LINE
-            
+
             case Tid.TID_FILTER_PIN_0:
                 return TID_FILTER_PIN_0
             case Tid.TID_FILTER_PIN_1:
@@ -427,7 +427,7 @@ namespace microcode {
                 return TID_FILTER_LINE_NEITHER_LEFT
             case Tid.TID_FILTER_LINE_NEITHER_RIGHT:
                 return TID_FILTER_LINE_NEITHER_RIGHT
-            
+
             case Tid.TID_ACTUATOR_SWITCH_PAGE:
                 return TID_ACTUATOR_SWITCH_PAGE
             case Tid.TID_ACTUATOR_SPEAKER:
@@ -450,7 +450,7 @@ namespace microcode {
                 return TID_ACTUATOR_CUP_Z_ASSIGN
             case Tid.TID_ACTUATOR_SHOW_NUMBER:
                 return TID_ACTUATOR_SHOW_NUMBER
-            
+
             case Tid.TID_MODIFIER_PAGE_1:
                 return TID_MODIFIER_PAGE_1
             case Tid.TID_MODIFIER_PAGE_2:
@@ -461,7 +461,7 @@ namespace microcode {
                 return TID_MODIFIER_PAGE_4
             case Tid.TID_MODIFIER_PAGE_5:
                 return TID_MODIFIER_PAGE_5
-            
+
             case Tid.TID_MODIFIER_COIN_1:
                 return TID_MODIFIER_COIN_1
             case Tid.TID_MODIFIER_COIN_2:
@@ -472,15 +472,15 @@ namespace microcode {
                 return TID_MODIFIER_COIN_4
             case Tid.TID_MODIFIER_COIN_5:
                 return TID_MODIFIER_COIN_5
-            
+
             case Tid.TID_MODIFIER_ICON_EDITOR:
                 return TID_MODIFIER_ICON_EDITOR
-            
+
             case Tid.TID_MODIFIER_COLOR_RED:
                 return TID_MODIFIER_COLOR_RED
             case Tid.TID_MODIFIER_COLOR_DARKPURPLE:
                 return TID_MODIFIER_COLOR_DARKPURPLE
-            
+
             case Tid.TID_MODIFIER_EMOJI_GIGGLE:
                 return TID_MODIFIER_EMOJI_GIGGLE
             case Tid.TID_MODIFIER_EMOJI_HAPPY:
@@ -501,28 +501,28 @@ namespace microcode {
                 return TID_MODIFIER_EMOJI_TWINKLE
             case Tid.TID_MODIFIER_EMOJI_YAWN:
                 return TID_MODIFIER_EMOJI_YAWN
-            
+
             case Tid.TID_MODIFIER_CUP_X_READ:
                 return TID_MODIFIER_CUP_X_READ
             case Tid.TID_MODIFIER_CUP_Y_READ:
                 return TID_MODIFIER_CUP_Y_READ
             case Tid.TID_MODIFIER_CUP_Z_READ:
                 return TID_MODIFIER_CUP_Z_READ
-            
+
             case Tid.TID_MODIFIER_RADIO_VALUE:
                 return TID_MODIFIER_RADIO_VALUE
             case Tid.TID_MODIFIER_RANDOM_TOSS:
                 return TID_MODIFIER_RANDOM_TOSS
-            
+
             case Tid.TID_MODIFIER_LOOP:
                 return TID_MODIFIER_LOOP
-            
+
             case Tid.TID_MODIFIER_MELODY_EDITOR:
                 return TID_MODIFIER_MELODY_EDITOR
-            
+
             case Tid.TID_MODIFIER_TEMP_READ:
                 return TID_MODIFIER_TEMP_READ
-            
+
             case Tid.TID_MODIFIER_RGB_LED_COLOR_X:
                 return TID_MODIFIER_RGB_LED_COLOR_X
             case Tid.TID_MODIFIER_RGB_LED_COLOR_1:
@@ -537,15 +537,15 @@ namespace microcode {
                 return TID_MODIFIER_RGB_LED_COLOR_5
             case Tid.TID_MODIFIER_RGB_LED_COLOR_6:
                 return TID_MODIFIER_RGB_LED_COLOR_6
-            
+
             case Tid.TID_MODIFIER_RGB_LED_COLOR_RAINBOW:
                 return TID_MODIFIER_RGB_LED_COLOR_RAINBOW
             case Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE:
                 return TID_MODIFIER_RGB_LED_COLOR_SPARKLE
-            
+
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return TID_ACTUATOR_SERVO_SET_ANGLE
-            
+
             case Tid.TID_ACTUATOR_CAR:
                 return TID_ACTUATOR_CAR
             case Tid.TID_MODIFIER_CAR_FORWARD:
@@ -651,9 +651,7 @@ namespace microcode {
     }
 
     function isEmoji(tidEnum: Tid) {
-        return (
-            Tid.EMOJI_BEGIN <= tidEnum && tidEnum <= Tid.EMOJI_END
-        )
+        return Tid.EMOJI_BEGIN <= tidEnum && tidEnum <= Tid.EMOJI_END
     }
 
     function isPage(tidEnum: Tid) {
@@ -775,6 +773,7 @@ namespace microcode {
         switch (tid) {
             case Tid.TID_ACTUATOR_PAINT:
             case Tid.TID_ACTUATOR_RGB_LED:
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return jacs.CMD_SET_REG | 0x2
             case Tid.TID_ACTUATOR_SPEAKER:
             case Tid.TID_ACTUATOR_MUSIC:
@@ -783,7 +782,6 @@ namespace microcode {
             case Tid.TID_ACTUATOR_RADIO_SEND:
                 return 0x81
             case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
-            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return jacs.CMD_SET_REG | 0x80
             default:
                 return undefined
@@ -816,7 +814,8 @@ namespace microcode {
     export function isVisible(tile: Tile) {
         const tid = getTid(tile)
         // these tids are dead
-        if (tid == Tid.TID_ACTUATOR_MICROPHONE || tid == Tid.TID_FILTER_ACCEL) return false
+        if (tid == Tid.TID_ACTUATOR_MICROPHONE || tid == Tid.TID_FILTER_ACCEL)
+            return false
         const ext = jdExternalClass(tile)
         if (ext && !jacs.debugOut) {
             const count = jdc.numServiceInstances(ext)
