@@ -1149,6 +1149,20 @@ namespace microcode {
         if (isFilter(tid)) {
             if (isFilterConstant(tid) || isPressReleaseEvent(tid))
                 return jdParam(tid)
+            if (isLineEvent(tid)) {
+                if (tid == Tid.TID_FILTER_LINE_BOTH) return 101
+                else return tid
+            }
+            switch (tid) {
+                case Tid.TID_FILTER_TIMESPAN_SHORT:
+                    return 10
+                case Tid.TID_FILTER_TIMESPAN_LONG:
+                    return 20
+                case Tid.TID_FILTER_TIMESPAN_VERY_LONG:
+                    return 30
+                case Tid.TID_FILTER_TIMESPAN_RANDOM:
+                    return 40
+            }
             return tid
         } else if (isModifier(tid)) {
             if (tid == Tid.TID_MODIFIER_LOOP)
