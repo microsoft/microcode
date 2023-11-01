@@ -31,7 +31,8 @@
         "sr04sonar.ts",
         "pinlinedetectors.ts",
         "servoarm.ts",
-        "calibration.ts"
+        "calibration.ts",
+        "inksmithk8.ts"
     ],
     "testFiles": ["test.ts"],
     "fileDependencies": {

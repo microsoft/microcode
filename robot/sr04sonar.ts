@@ -17,9 +17,7 @@ namespace microcode.robots {
             public readonly trig: DigitalPin
         ) {}
 
-        start() {
-            pins.setPull(this.trig, PinPullMode.PullNone)
-        }
+        start() {}
 
         distance(maxCmDistance: number): number {
             const trig = this.trig
@@ -29,6 +27,7 @@ namespace microcode.robots {
             const usToCm = this.usPerCm || 58
 
             // send pulse
+            pins.setPull(trig, PinPullMode.PullNone)
             pins.digitalWritePin(trig, 0)
             control.waitMicros(lowUs)
             pins.digitalWritePin(trig, 1)
