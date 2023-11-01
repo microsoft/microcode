@@ -5,7 +5,7 @@
     "dependencies": {
         "game---light": "*",
         "device": "*",
-        "codal-jacdac-pxt": "github:microsoft/codal-jacdac/pxt#v2.2.1"
+        "codal-jacdac-pxt": "github:microsoft/codal-jacdac/pxt#v2.2.3"
     },
     "files": [
         "analytics.ts",
