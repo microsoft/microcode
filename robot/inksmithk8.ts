@@ -1,4 +1,5 @@
 namespace microcode {
+    // https://github.com/k8robotics/pxt-k8
     const IR_SENSOR_LEFT = DigitalPin.P0 //AnalogPin.P0
     const IR_SENSOR_MIDDLE = DigitalPin.P1 //AnalogPin.P1
     const SPEAKER = AnalogPin.P1
@@ -21,19 +22,6 @@ namespace microcode {
         REVERSE = 1,
     }
 
-    function remapSpeed(s: number): number {
-        s = Math.abs(s) >> 0
-        let returnSpeed: number
-        if (s <= 0) {
-            returnSpeed = 0
-        } else if (s >= 100) {
-            returnSpeed = 1023
-        } else {
-            returnSpeed = (23200 + s * 791) / 100
-        }
-        return returnSpeed
-    }
-
     class InksmithK8Robot extends robots.Robot {
         constructor() {
             super()
@@ -47,20 +35,34 @@ namespace microcode {
             this.sonar = sonar
         }
 
+        onStarted(driver: RobotDriver): void {
+            pins.analogSetPeriod(M1_PWR, 1024)
+            pins.analogSetPeriod(M2_PWR, 1024)
+        }
+
         motorRun(left: number, right: number): void {
+            const l = Math.clamp(
+                0,
+                1023,
+                Math.round((Math.abs(left) / 100) * 1023)
+            )
+            const r = Math.clamp(
+                0,
+                1023,
+                Math.round((Math.abs(right) / 100) * 1023)
+            )
+
             pins.digitalWritePin(
                 M1_DIR,
-                left < 0 ? MotorDirection.REVERSE : MotorDirection.FORWARD
+                left >= 0 ? MotorDirection.FORWARD : MotorDirection.REVERSE
             )
-            pins.analogSetPeriod(M1_PWR, 1024)
-            pins.analogWritePin(M1_PWR, remapSpeed(left))
+            pins.analogWritePin(M1_PWR, l)
 
             pins.digitalWritePin(
                 M2_DIR,
-                right < 0 ? MotorDirection.REVERSE : MotorDirection.FORWARD
+                right >= 0 ? MotorDirection.FORWARD : MotorDirection.REVERSE
             )
-            pins.analogSetPeriod(M2_PWR, 1024)
-            pins.analogWritePin(M2_PWR, remapSpeed(right))
+            pins.analogWritePin(M2_PWR, r)
         }
     }
 

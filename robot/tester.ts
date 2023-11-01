@@ -3,6 +3,7 @@ namespace microcode.robots {
      * Starts a testing mode to be used when building a robot
      */
     export function startTestMode() {
+        microcode.setLineAssist(false)
         input.onButtonPressed(Button.A, () => {
             const d = 1000
             microcode.motorRun(200, 100)
