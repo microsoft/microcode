@@ -15,7 +15,7 @@ See [how to contribute](#contributing) for more information.
 
 ### DFRobot Maqueen V2+ {#dfrobot-maq}
 
-![Photograph of the Maqueen](./images/maqueen.jpeg){:class="sample"}
+![Photograph of the Maqueen](./images/maqueen.jpeg){:class="photo"}
 
 -   [Home](https://wiki.dfrobot.com/micro_Maqueen_for_micro_bit_SKU_ROB0148-EN)
 -   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-dfrobot-maqueen.hex)
@@ -27,17 +27,24 @@ See [how to contribute](#contributing) for more information.
 
 ### Elecfreaks Cutebot {#cutebot}
 
-![Photograph of the Cutebot](./images/cutebot.jpeg){:class="sample"}
+![Photograph of the Cutebot](./images/cutebot.jpeg){:class="photo"}
 
 -   [Home](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
 -   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreaks-cutebot.hex)
 
 ### Elecfreaks Cutebot PRO {#cutebot-pro}
 
-![Photograph of the Cutebot PRO](./images/cutebotpro.jpeg){:class="sample"}
+![Photograph of the Cutebot PRO](./images/cutebotpro.jpeg){:class="photo"}
 
 -   [Home](https://shop.elecfreaks.com/products/elecfreaks-smart-cutebot-pro-v2-programming-robot-car-for-micro-bit)
 -   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-elecfreaks-cutebotpro.hex)
+
+## InkSmith K8 {#inksmith-k8}
+
+![Photograph of the K8](./images/inksmithk8.webp){:class="photo"}
+
+-   [Home](https://www.inksmith.ca/products/k8-robotics-kit)
+-   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-inksmith-k8.hex)
 
 ### KeyStudio KS0426 Mini Smart Robot {#keystudio-mini}
 
@@ -46,14 +53,14 @@ See [how to contribute](#contributing) for more information.
 
 ### KittenBot MiniLFR {#kittenbot-mlfr}
 
-![Photo of the MiniLFR robot](./images/minilfr.png){:class="sample"}
+![Photo of the MiniLFR robot](./images/minilfr.png){:class="photo"}
 
 -   [Home](https://www.kittenbot.cc/products/kittenbot-minilfr-programmable-robot-car-kit-for-microbit)
 -   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-kittenbot-minilfr.hex)
 
 ### Yahboom Tiny:bit {#yahboom}
 
-![Photograph of the Tiny:bit](./images/tinybit.jpeg){:class="sample"}
+![Photograph of the Tiny:bit](./images/tinybit.jpeg){:class="photo"}
 
 -   [Home](http://www.yahboom.net/study/Tiny:bit)
 -   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-yahboom-tinybit.hex)
