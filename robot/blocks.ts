@@ -4,12 +4,6 @@
 //% color="#ff6800" icon="\uf1b9" weight=15
 //% groups='["Robot", "Output", "Input", "Configuration"]'
 namespace microcode {
-    export let robot: RobotDriver
-
-    function checkRobotDriver() {
-        if (!robot) throw "Add 'robot start ...' block in the 'on start' block"
-    }
-
     /**
      * Moves the robot.
      */
@@ -25,7 +19,7 @@ namespace microcode {
     //% turnRatio.min=-200
     //% turnRatio.max=200
     export function motorRun(turnRatio: number, speed: number) {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         robot.motorRun(turnRatio, speed)
     }
 
@@ -37,7 +31,7 @@ namespace microcode {
     //% block="robot motor stop"
     //% blockid="microcoderobotmotorstop"
     export function motorStop() {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         robot.motorRun(0, 0)
     }
 
@@ -49,7 +43,7 @@ namespace microcode {
     //% weight=10
     //% rgb.shadow=colorNumberPicker
     export function setColor(rgb: number) {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         robot.setColor(rgb)
     }
 
@@ -62,7 +56,7 @@ namespace microcode {
     //% frequency.shadow=device_note
     //% duration.shadow=device_beat
     export function playTone(frequency: number, duration: number) {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         robot.playTone(frequency, duration)
     }
 
@@ -73,7 +67,7 @@ namespace microcode {
     //% blockId=microcoderobotobstacledistance
     //% group="Input"
     export function obstacleDistance(): number {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         return robot.currentDistance
     }
 
@@ -97,7 +91,7 @@ namespace microcode {
     //% blockId=microcoderobotdetectlines
     //% group="Input"
     export function detectLines(state: RobotLineState): boolean {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         return robot.currentLineState === state
     }
 
@@ -120,7 +114,7 @@ namespace microcode {
     //% group="Configuration"
     //% enabled.shadow=toggleOnOff
     export function setLineAssist(enabled: boolean): void {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         robot.lineAssist = !!enabled
     }
 
@@ -134,7 +128,7 @@ namespace microcode {
     //% drift.min=-25
     //% drift.max=25
     export function setMotorDrift(drift: number) {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         drift = Math.clamp(-25, 25, drift)
         robot.setRunDrift(drift)
     }
@@ -148,7 +142,7 @@ namespace microcode {
     //% group="Configuration"
     //% enabled.shadow=toggleOnOff
     export function setDisplay(enabled: boolean) {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         robot.hud = !!enabled
     }
 }

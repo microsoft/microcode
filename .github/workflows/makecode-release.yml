@@ -55,6 +55,8 @@ jobs:
                   cp ./built/binary.hex ../assets/microcode-robot-kittenbot-nanobit.hex
                   makecode -c mkc-kittenbotrobotbit.json
                   cp ./built/binary.hex ../assets/microcode-robot-kittenbot-robotbit.hex
+                  makecode -c mkc-inksmithk8.json
+                  cp ./built/binary.hex ../assets/microcode-robot-inksmith-k8.hex
 
             - name: copy files
               run: |

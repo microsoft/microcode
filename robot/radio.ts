@@ -49,9 +49,9 @@ namespace microcode {
      * Starts the reception and transmission of compact robot command messages (see protocol).
      */
     export function startCompactRadio() {
-        const driver = microcode.robot
-        radio.setGroup(driver.radioGroup)
-        radio.onReceivedNumber(code => decodeRobotCompactCommand(driver, code))
-        robot.useRadio = true
+        const d = RobotDriver.instance()
+        radio.setGroup(d.radioGroup)
+        radio.onReceivedNumber(code => decodeRobotCompactCommand(d, code))
+        d.useRadio = true
     }
 }

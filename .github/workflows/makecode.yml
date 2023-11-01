@@ -48,3 +48,4 @@ jobs:
                   makecode -c mkc-kittenbotminilfr.json
                   makecode -c mkc-kittenbotnanobit.json
                   makecode -c mkc-kittenbotrobotbit.json
+                  makecode -c mkc-inksmithk8.json
