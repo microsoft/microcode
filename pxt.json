@@ -19,6 +19,7 @@
         "assets.ts",
         "scene.ts",
         "language.ts",
+        "oldtiles.ts",
         "tiles.ts",
         "app.ts",
         "sprite.ts",

@@ -19,65 +19,100 @@ namespace microcode {
             extraImage = icondb.sampleRailCrossingLight
     }
 
-    function carImages(name: string) {
-        if (name == TID_ACTUATOR_CAR) return icondb.car
-        if (name == TID_MODIFIER_CAR_FORWARD) return icondb.car_forward
-        if (name == TID_MODIFIER_CAR_REVERSE) return icondb.car_reverse
-        if (name == TID_MODIFIER_CAR_TURN_LEFT) return icondb.car_left_turn
-        if (name == TID_MODIFIER_CAR_TURN_RIGHT) return icondb.car_right_turn
-        if (name == TID_MODIFIER_CAR_STOP) return icondb.car_stop
-        if (name == TID_MODIFIER_CAR_FORWARD_FAST)
-            return icondb.car_forward_fast
-        if (name == TID_MODIFIER_CAR_SPIN_LEFT) return icondb.car_left_spin
-        if (name == TID_MODIFIER_CAR_SPIN_RIGHT) return icondb.car_right_spin
-        if (name == TID_MODIFIER_CAR_LED_COLOR_1) return icondb.tile_color_red
-        if (name == TID_MODIFIER_CAR_LED_COLOR_2) return icondb.tile_color_green
-        if (name == TID_MODIFIER_CAR_LED_COLOR_3) return icondb.tile_color_blue
-        if (name == TID_MODIFIER_CAR_LED_COLOR_4) return icondb.tile_color_black
-        if (name == TID_MODIFIER_CAR_ARM_OPEN) return icondb.arm_open
-        if (name == TID_MODIFIER_CAR_ARM_CLOSE) return icondb.arm_close
-        if (name == TID_SENSOR_CAR_WALL) return icondb.car_wall
-        if (name == TID_SENSOR_LINE) return icondb.line_sensor
-        if (name == TID_FILTER_LINE_LEFT) return icondb.line_left_on
-        if (name == TID_FILTER_LINE_RIGHT) return icondb.line_right_on
-        if (name == TID_FILTER_LINE_BOTH) return icondb.line_both_on
-        if (name == TID_FILTER_LINE_NEITHER) return icondb.line_neither_on
-        if (name == TID_FILTER_LINE_NEITHER_LEFT)
-            return icondb.line_none_from_left
-        if (name == TID_FILTER_LINE_NEITHER_RIGHT)
-            return icondb.line_none_from_right
+    function carImages(name: number) {
+        switch (name) {
+            case Tid.TID_ACTUATOR_CAR:
+                return icondb.car
+            case Tid.TID_MODIFIER_CAR_FORWARD:
+                return icondb.car_forward
+            case Tid.TID_MODIFIER_CAR_REVERSE:
+                return icondb.car_reverse
+            case Tid.TID_MODIFIER_CAR_TURN_LEFT:
+                return icondb.car_left_turn
+            case Tid.TID_MODIFIER_CAR_TURN_RIGHT:
+                return icondb.car_right_turn
+            case Tid.TID_MODIFIER_CAR_STOP:
+                return icondb.car_stop
+            case Tid.TID_MODIFIER_CAR_FORWARD_FAST:
+                return icondb.car_forward_fast
+            case Tid.TID_MODIFIER_CAR_SPIN_LEFT:
+                return icondb.car_left_spin
+            case Tid.TID_MODIFIER_CAR_SPIN_RIGHT:
+                return icondb.car_right_spin
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_1:
+                return icondb.tile_color_red
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_2:
+                return icondb.tile_color_green
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_3:
+                return icondb.tile_color_blue
+            case Tid.TID_MODIFIER_CAR_LED_COLOR_4:
+                return icondb.tile_color_black
+            case Tid.TID_MODIFIER_CAR_ARM_OPEN:
+                return icondb.arm_open
+            case Tid.TID_MODIFIER_CAR_ARM_CLOSE:
+                return icondb.arm_close
+            case Tid.TID_SENSOR_CAR_WALL:
+                return icondb.car_wall
+            case Tid.TID_SENSOR_LINE:
+                return icondb.line_sensor
+            case Tid.TID_FILTER_LINE_LEFT:
+                return icondb.line_left_on
+            case Tid.TID_FILTER_LINE_RIGHT:
+                return icondb.line_right_on
+            case Tid.TID_FILTER_LINE_BOTH:
+                return icondb.line_both_on
+            case Tid.TID_FILTER_LINE_NEITHER:
+                return icondb.line_neither_on
+            case Tid.TID_FILTER_LINE_NEITHER_LEFT:
+                return icondb.line_none_from_left
+            case Tid.TID_FILTER_LINE_NEITHER_RIGHT:
+                return icondb.line_none_from_right
+        }
         return null
     }
 
-    // TODO: factor out all the jacdac stuff into separate file/class
-    // TODO: so we can generate different builds
-    function jacdacImages(name: string) {
-        if (name == TID_FILTER_KITA_KEY_1) return icondb.kita_key_1
-        if (name == TID_FILTER_KITA_KEY_2) return icondb.kita_key_2
-        if (name == TID_SENSOR_MAGNET) return icondb.magnet
-        if (name == TID_SENSOR_SLIDER) return icondb.kita_slider
-        if (name == TID_SENSOR_ROTARY) return icondb.kita_rotary
-        if (name == TID_FILTER_ROTARY_LEFT) return icondb.kita_rotary_left
-        if (name == TID_FILTER_ROTARY_RIGHT) return icondb.kita_rotary_right
-        if (name == TID_ACTUATOR_RGB_LED) return icondb.rgbLed
-        if (name == TID_MODIFIER_RGB_LED_COLOR_1) return icondb.tile_color_red
-        if (name == TID_MODIFIER_RGB_LED_COLOR_2) return icondb.tile_color_green
-        if (name == TID_MODIFIER_RGB_LED_COLOR_3) return icondb.tile_color_blue
-        if (name == TID_MODIFIER_RGB_LED_COLOR_4)
-            return icondb.tile_color_magenta
-        if (name == TID_MODIFIER_RGB_LED_COLOR_5)
-            return icondb.tile_color_yellow
-        if (name == TID_MODIFIER_RGB_LED_COLOR_6) return icondb.tile_color_black
-        if (name == TID_MODIFIER_RGB_LED_COLOR_RAINBOW)
-            return icondb.tile_rainbow
-        if (name == TID_MODIFIER_RGB_LED_COLOR_SPARKLE)
-            return icondb.tile_sparkle
-        if (name == TID_ACTUATOR_SERVO_SET_ANGLE) return icondb.servo_set_angle
+    function jacdacImages(name: number) {
+        switch (name) {
+            case Tid.TID_FILTER_KITA_KEY_1:
+                return icondb.kita_key_1
+            case Tid.TID_FILTER_KITA_KEY_2:
+                return icondb.kita_key_2
+            case Tid.TID_SENSOR_MAGNET:
+                return icondb.magnet
+            case Tid.TID_SENSOR_SLIDER:
+                return icondb.kita_slider
+            case Tid.TID_SENSOR_ROTARY:
+                return icondb.kita_rotary
+            case Tid.TID_FILTER_ROTARY_LEFT:
+                return icondb.kita_rotary_left
+            case Tid.TID_FILTER_ROTARY_RIGHT:
+                return icondb.kita_rotary_right
+            case Tid.TID_ACTUATOR_RGB_LED:
+                return icondb.rgbLed
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_1:
+                return icondb.tile_color_red
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_2:
+                return icondb.tile_color_green
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_3:
+                return icondb.tile_color_blue
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_4:
+                return icondb.tile_color_magenta
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_5:
+                return icondb.tile_color_yellow
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_6:
+                return icondb.tile_color_black
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_RAINBOW:
+                return icondb.tile_rainbow
+            case Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE:
+                return icondb.tile_sparkle
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+                return icondb.servo_set_angle
+        }
         return null
     }
 
     export class icons {
-        public static get(name: string, nullIfMissing = false): Image {
+        public static get(name: string | number, nullIfMissing = false): Image {
             // editor icons
             if (name == "delete") return icondb.btn_delete
             if (name == "plus") return icondb.btn_plus
@@ -107,118 +142,192 @@ namespace microcode {
             // sample icons
             if (name == "smiley_buttons") return icondb.sampleSmileyButtons
 
-            // pages
+            if (typeof name == "string") {
+                extraImage = null
+                extraSamples(name) // only for web app
+                return extraImage
+            }
 
-            if (name == TID_SENSOR_START_PAGE) return icondb.tile_start_page
-            if (name == TID_ACTUATOR_SWITCH_PAGE) return icondb.tile_switch_page
-            if (name == TID_MODIFIER_PAGE_1) return icondb.tile_page_1
-            if (name == TID_MODIFIER_PAGE_2) return icondb.tile_page_2
-            if (name == TID_MODIFIER_PAGE_3) return icondb.tile_page_3
-            if (name == TID_MODIFIER_PAGE_4) return icondb.tile_page_4
-            if (name == TID_MODIFIER_PAGE_5) return icondb.tile_page_5
+            switch (name) {
+                case Tid.TID_SENSOR_START_PAGE:
+                    return icondb.tile_start_page
+                case Tid.TID_ACTUATOR_SWITCH_PAGE:
+                    return icondb.tile_switch_page
+                case Tid.TID_MODIFIER_PAGE_1:
+                    return icondb.tile_page_1
+                case Tid.TID_MODIFIER_PAGE_2:
+                    return icondb.tile_page_2
+                case Tid.TID_MODIFIER_PAGE_3:
+                    return icondb.tile_page_3
+                case Tid.TID_MODIFIER_PAGE_4:
+                    return icondb.tile_page_4
+                case Tid.TID_MODIFIER_PAGE_5:
+                    return icondb.tile_page_5
 
-            // looping
-            if (name == TID_MODIFIER_LOOP) return icondb.loop
+                // looping
+                case Tid.TID_MODIFIER_LOOP:
+                    return icondb.loop
 
-            // variables
+                // variables
 
-            if (name == TID_SENSOR_CUP_X_WRITTEN) return icondb.cupXwritten
-            if (name == TID_SENSOR_CUP_Y_WRITTEN) return icondb.cupYwritten
-            if (name == TID_SENSOR_CUP_Z_WRITTEN) return icondb.cupZwritten
-            if (name == TID_FILTER_CUP_X_READ) return icondb.cupXread
-            if (name == TID_FILTER_CUP_Y_READ) return icondb.cupYread
-            if (name == TID_FILTER_CUP_Z_READ) return icondb.cupZread
-            if (name == TID_ACTUATOR_CUP_X_ASSIGN) return icondb.cupXassign
-            if (name == TID_ACTUATOR_CUP_Y_ASSIGN) return icondb.cupYassign
-            if (name == TID_ACTUATOR_CUP_Z_ASSIGN) return icondb.cupZassign
-            if (name == TID_MODIFIER_CUP_X_READ) return icondb.cupXread
-            if (name == TID_MODIFIER_CUP_Y_READ) return icondb.cupYread
-            if (name == TID_MODIFIER_CUP_Z_READ) return icondb.cupZread
+                case Tid.TID_SENSOR_CUP_X_WRITTEN:
+                    return icondb.cupXwritten
+                case Tid.TID_SENSOR_CUP_Y_WRITTEN:
+                    return icondb.cupYwritten
+                case Tid.TID_SENSOR_CUP_Z_WRITTEN:
+                    return icondb.cupZwritten
+                case Tid.TID_FILTER_CUP_X_READ:
+                    return icondb.cupXread
+                case Tid.TID_FILTER_CUP_Y_READ:
+                    return icondb.cupYread
+                case Tid.TID_FILTER_CUP_Z_READ:
+                    return icondb.cupZread
+                case Tid.TID_ACTUATOR_CUP_X_ASSIGN:
+                    return icondb.cupXassign
+                case Tid.TID_ACTUATOR_CUP_Y_ASSIGN:
+                    return icondb.cupYassign
+                case Tid.TID_ACTUATOR_CUP_Z_ASSIGN:
+                    return icondb.cupZassign
+                case Tid.TID_MODIFIER_CUP_X_READ:
+                    return icondb.cupXread
+                case Tid.TID_MODIFIER_CUP_Y_READ:
+                    return icondb.cupYread
+                case Tid.TID_MODIFIER_CUP_Z_READ:
+                    return icondb.cupZread
 
-            // numbers
-            if (name == TID_MODIFIER_RANDOM_TOSS) return icondb.diceToss
-            if (name == TID_FILTER_COIN_1) return icondb.blocks1
-            if (name == TID_FILTER_COIN_2) return icondb.blocks2
-            if (name == TID_FILTER_COIN_3) return icondb.blocks3
-            if (name == TID_FILTER_COIN_4) return icondb.blocks4
-            if (name == TID_FILTER_COIN_5) return icondb.blocks5
-            if (name == TID_MODIFIER_COIN_1) return icondb.blocks1
-            if (name == TID_MODIFIER_COIN_2) return icondb.blocks2
-            if (name == TID_MODIFIER_COIN_3) return icondb.blocks3
-            if (name == TID_MODIFIER_COIN_4) return icondb.blocks4
-            if (name == TID_MODIFIER_COIN_5) return icondb.blocks5
+                // numbers
+                case Tid.TID_MODIFIER_RANDOM_TOSS:
+                    return icondb.diceToss
+                case Tid.TID_FILTER_COIN_1:
+                    return icondb.blocks1
+                case Tid.TID_FILTER_COIN_2:
+                    return icondb.blocks2
+                case Tid.TID_FILTER_COIN_3:
+                    return icondb.blocks3
+                case Tid.TID_FILTER_COIN_4:
+                    return icondb.blocks4
+                case Tid.TID_FILTER_COIN_5:
+                    return icondb.blocks5
+                case Tid.TID_MODIFIER_COIN_1:
+                    return icondb.blocks1
+                case Tid.TID_MODIFIER_COIN_2:
+                    return icondb.blocks2
+                case Tid.TID_MODIFIER_COIN_3:
+                    return icondb.blocks3
+                case Tid.TID_MODIFIER_COIN_4:
+                    return icondb.blocks4
+                case Tid.TID_MODIFIER_COIN_5:
+                    return icondb.blocks5
 
-            // micro:bit sensors
-            if (name == TID_SENSOR_ACCELEROMETER) return icondb.accelerometer
-            if (name == TID_SENSOR_TIMER) return icondb.tile_timer
-            if (name == TID_SENSOR_RADIO_RECEIVE) return icondb.radio_receive
-            if (name == TID_SENSOR_PRESS) return icondb.finger_press
-            if (name == TID_SENSOR_RELEASE) return icondb.finger_release
-            if (name == TID_SENSOR_MICROPHONE) return icondb.microphone
-            if (name == TID_SENSOR_TEMP) return icondb.thermometer
-            if (name == TID_SENSOR_LIGHT) return icondb.light_sensor
+                // micro:bit sensors
+                case Tid.TID_SENSOR_ACCELEROMETER:
+                    return icondb.accelerometer
+                case Tid.TID_SENSOR_TIMER:
+                    return icondb.tile_timer
+                case Tid.TID_SENSOR_RADIO_RECEIVE:
+                    return icondb.radio_receive
+                case Tid.TID_SENSOR_PRESS:
+                    return icondb.finger_press
+                case Tid.TID_SENSOR_RELEASE:
+                    return icondb.finger_release
+                case Tid.TID_SENSOR_MICROPHONE:
+                    return icondb.microphone
+                case Tid.TID_SENSOR_TEMP:
+                    return icondb.thermometer
+                case Tid.TID_SENSOR_LIGHT:
+                    return icondb.light_sensor
 
-            // micro:bit filters
-            if (name == TID_FILTER_LOGO) return icondb.microbit_logo
-            if (name == TID_FILTER_PIN_0) return icondb.tile_pin_0
-            if (name == TID_FILTER_PIN_1) return icondb.tile_pin_1
-            if (name == TID_FILTER_PIN_2) return icondb.tile_pin_2
-            if (name == TID_FILTER_BUTTON_A) return icondb.tile_button_a
-            if (name == TID_FILTER_BUTTON_B) return icondb.tile_button_b
-            if (name == TID_FILTER_TIMESPAN_SHORT)
-                return icondb.tile_timespan_short
-            if (name == TID_FILTER_TIMESPAN_LONG)
-                return icondb.tile_timespan_long
-            if (name == TID_FILTER_TIMESPAN_VERY_LONG)
-                return icondb.tile_timespan_fiveSeconds
-            if (name == TID_FILTER_TIMESPAN_RANDOM)
-                return icondb.tile_timespan_random
-            if (name == TID_FILTER_LOUD) return icondb.speaker
-            if (name == TID_FILTER_QUIET) return icondb.speakerQuiet
-            if (name == TID_FILTER_TEMP_WARMER) return icondb.temp_warmer
-            if (name == TID_FILTER_TEMP_COLDER) return icondb.temp_colder
-            if (name == TID_FILTER_ACCEL_SHAKE) return icondb.moveShake
-            if (name == TID_FILTER_ACCEL_TILT_UP) return icondb.moveTiltUp
-            if (name == TID_FILTER_ACCEL_TILT_DOWN) return icondb.moveTiltDown
-            if (name == TID_FILTER_ACCEL_TILT_LEFT) return icondb.moveTiltLeft
-            if (name == TID_FILTER_ACCEL_TILT_RIGHT) return icondb.moveTiltRight
+                // micro:bit filters
+                case Tid.TID_FILTER_LOGO:
+                    return icondb.microbit_logo
+                case Tid.TID_FILTER_PIN_0:
+                    return icondb.tile_pin_0
+                case Tid.TID_FILTER_PIN_1:
+                    return icondb.tile_pin_1
+                case Tid.TID_FILTER_PIN_2:
+                    return icondb.tile_pin_2
+                case Tid.TID_FILTER_BUTTON_A:
+                    return icondb.tile_button_a
+                case Tid.TID_FILTER_BUTTON_B:
+                    return icondb.tile_button_b
+                case Tid.TID_FILTER_TIMESPAN_SHORT:
+                    return icondb.tile_timespan_short
+                case Tid.TID_FILTER_TIMESPAN_LONG:
+                    return icondb.tile_timespan_long
+                case Tid.TID_FILTER_TIMESPAN_VERY_LONG:
+                    return icondb.tile_timespan_fiveSeconds
+                case Tid.TID_FILTER_TIMESPAN_RANDOM:
+                    return icondb.tile_timespan_random
+                case Tid.TID_FILTER_LOUD:
+                    return icondb.speaker
+                case Tid.TID_FILTER_QUIET:
+                    return icondb.speakerQuiet
+                case Tid.TID_FILTER_TEMP_WARMER:
+                    return icondb.temp_warmer
+                case Tid.TID_FILTER_TEMP_COLDER:
+                    return icondb.temp_colder
+                case Tid.TID_FILTER_ACCEL_SHAKE:
+                    return icondb.moveShake
+                case Tid.TID_FILTER_ACCEL_TILT_UP:
+                    return icondb.moveTiltUp
+                case Tid.TID_FILTER_ACCEL_TILT_DOWN:
+                    return icondb.moveTiltDown
+                case Tid.TID_FILTER_ACCEL_TILT_LEFT:
+                    return icondb.moveTiltLeft
+                case Tid.TID_FILTER_ACCEL_TILT_RIGHT:
+                    return icondb.moveTiltRight
 
-            // micro:bit actuators
-            if (name == TID_ACTUATOR_PAINT) return icondb.showScreen
-            if (name == TID_ACTUATOR_SHOW_NUMBER) return icondb.showNumber
-            if (name == TID_ACTUATOR_RADIO_SEND) return icondb.radio_send
-            if (name == TID_ACTUATOR_RADIO_SET_GROUP)
-                return icondb.radio_set_group
-            if (name == TID_ACTUATOR_SPEAKER) return icondb.speakerFun
-            if (name == TID_ACTUATOR_MUSIC) return icondb.music
+                // micro:bit actuators
+                case Tid.TID_ACTUATOR_PAINT:
+                    return icondb.showScreen
+                case Tid.TID_ACTUATOR_SHOW_NUMBER:
+                    return icondb.showNumber
+                case Tid.TID_ACTUATOR_RADIO_SEND:
+                    return icondb.radio_send
+                case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
+                    return icondb.radio_set_group
+                case Tid.TID_ACTUATOR_SPEAKER:
+                    return icondb.speakerFun
+                case Tid.TID_ACTUATOR_MUSIC:
+                    return icondb.music
 
-            // micro:bit modifiers
-            if (name == TID_MODIFIER_ICON_EDITOR) return icondb.iconEditor
-            if (name == TID_MODIFIER_MELODY_EDITOR) return icondb.melodyEditor
+                // micro:bit modifiers
+                case Tid.TID_MODIFIER_ICON_EDITOR:
+                    return icondb.iconEditor
+                case Tid.TID_MODIFIER_MELODY_EDITOR:
+                    return icondb.melodyEditor
 
-            if (name == TID_MODIFIER_EMOJI_GIGGLE) return icondb.soundGiggle
-            if (name == TID_MODIFIER_EMOJI_HAPPY) return icondb.soundHappy
-            if (name == TID_MODIFIER_EMOJI_HELLO) return icondb.soundHello
-            if (name == TID_MODIFIER_EMOJI_MYSTERIOUS)
-                return icondb.soundMysterious
-            if (name == TID_MODIFIER_EMOJI_SAD) return icondb.soundSad
-            if (name == TID_MODIFIER_EMOJI_SLIDE) return icondb.soundSlide
-            if (name == TID_MODIFIER_EMOJI_SOARING) return icondb.soundSoaring
-            if (name == TID_MODIFIER_EMOJI_SPRING) return icondb.soundSpring
-            if (name == TID_MODIFIER_EMOJI_TWINKLE) return icondb.soundTwinkle
-            if (name == TID_MODIFIER_EMOJI_YAWN) return icondb.soundYawn
+                case Tid.TID_MODIFIER_EMOJI_GIGGLE:
+                    return icondb.soundGiggle
+                case Tid.TID_MODIFIER_EMOJI_HAPPY:
+                    return icondb.soundHappy
+                case Tid.TID_MODIFIER_EMOJI_HELLO:
+                    return icondb.soundHello
+                case Tid.TID_MODIFIER_EMOJI_MYSTERIOUS:
+                    return icondb.soundMysterious
+                case Tid.TID_MODIFIER_EMOJI_SAD:
+                    return icondb.soundSad
+                case Tid.TID_MODIFIER_EMOJI_SLIDE:
+                    return icondb.soundSlide
+                case Tid.TID_MODIFIER_EMOJI_SOARING:
+                    return icondb.soundSoaring
+                case Tid.TID_MODIFIER_EMOJI_SPRING:
+                    return icondb.soundSpring
+                case Tid.TID_MODIFIER_EMOJI_TWINKLE:
+                    return icondb.soundTwinkle
+                case Tid.TID_MODIFIER_EMOJI_YAWN:
+                    return icondb.soundYawn
 
-            if (name == TID_MODIFIER_TEMP_READ) return icondb.thermometer
-            if (name == TID_MODIFIER_RADIO_VALUE) return icondb.radio_value
-
+                case Tid.TID_MODIFIER_TEMP_READ:
+                    return icondb.thermometer
+                case Tid.TID_MODIFIER_RADIO_VALUE:
+                    return icondb.radio_value
+            }
             // micro:bit car
             const car = carImages(name)
             if (car) return car
             const jacdac = jacdacImages(name)
             if (jacdac) return jacdac
-            extraImage = null
-            extraSamples(name) // only for web app
-            if (extraImage) return extraImage
             if (nullIfMissing) return null
             return icondb.MISSING
         }
