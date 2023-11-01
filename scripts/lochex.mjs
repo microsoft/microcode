@@ -100,6 +100,8 @@ namespace microcode {
         let res: string = ""
         if (!id) return id
 ${Object.keys(translations)
+    // don't emit sample names in hardware
+    .filter(k => !/^N/.test(k))
     .map(
         key => `        else if (id === "${key}") res = "${translations[key]}";`
     )
