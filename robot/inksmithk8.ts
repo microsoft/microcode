@@ -44,7 +44,6 @@ namespace microcode {
             )
             this.arm = new robots.ServoArm(-85, 85, SERVO_1)
             const sonar = new robots.SR04Sonar(SONAR, SONAR)
-            sonar.usPerCm = 39
             this.sonar = sonar
         }
 

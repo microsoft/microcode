@@ -32,11 +32,10 @@
         "pinlinedetectors.ts",
         "servoarm.ts",
         "calibration.ts",
-        "inksmithk8.ts"
+        "inksmithk8.ts",
+        "tester.ts"
     ],
-    "testFiles": [
-        "test.ts"
-    ],
+    "testFiles": ["test.ts"],
     "fileDependencies": {
         "kittenbotnanobit.ts": "target:microbit",
         "kittenbotrobotbit.ts": "target:microbit",
@@ -47,9 +46,6 @@
         "target": "6.0.19",
         "targetId": "microbit"
     },
-    "supportedTargets": [
-        "microbit",
-        "calliopemini"
-    ],
+    "supportedTargets": ["microbit", "calliopemini"],
     "preferredEditor": "tsprj"
 }
