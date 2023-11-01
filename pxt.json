@@ -1,11 +1,11 @@
 {
     "name": "microcode",
-    "version": "2.5.17",
+    "version": "2.5.19",
     "description": "Physical computing library for micro:bit V2",
     "dependencies": {
         "game---light": "*",
         "device": "*",
-        "codal-jacdac-pxt": "github:microsoft/codal-jacdac/pxt#v2.2.1"
+        "codal-jacdac-pxt": "github:microsoft/codal-jacdac/pxt#v2.2.3"
     },
     "files": [
         "analytics.ts",
@@ -16,11 +16,9 @@
         "accessibility.ts",
         "button.ts",
         "component.ts",
-        "tids.ts",
         "assets.ts",
         "scene.ts",
         "language.ts",
-        "json.ts",
         "tiles.ts",
         "app.ts",
         "sprite.ts",
@@ -50,6 +48,7 @@
         "gallery.ts",
         "pointerevents.ts",
         "tooltips.ts",
+        "utils.ts",
         "robot/protocol.ts"
     ],
     "testFiles": [],

@@ -1,6 +1,6 @@
 {
     "name": "microcode-robot",
-    "version": "2.5.17",
+    "version": "2.5.19",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -26,7 +26,13 @@
         "storage.cpp",
         "storage.ts",
         "kalmanfilter1d.ts",
-        "radio.ts"
+        "radio.ts",
+        "ws2812bleds.ts",
+        "sr04sonar.ts",
+        "pinlinedetectors.ts",
+        "servoarm.ts",
+        "calibration.ts",
+        "inksmithk8.ts"
     ],
     "testFiles": [
         "test.ts"

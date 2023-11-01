@@ -1,10 +1,11 @@
-//microcode.elecfreaksCuteBot.start()
+microcode.elecfreaksCuteBot.start()
 //microcode.yahboomTinyBit.start(
 //microcode.elecfreaksCuteBotPro.start()
 //microcode.keyStudioMiniSmartRobot.start()
 //microcode.setMotorDrift(6)
 //microcode.dfRobotMaqueen.start()
 //microcode.dfRobotMaqueenPlusV2.start()
-microcode.kittenbotMiniLFR.start()
+//microcode.kittenbotMiniLFR.start()
 //microcode.remoteController.start()
 microcode.startCompactRadio()
+microcode.startCalibrationButtons()

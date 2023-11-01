@@ -72,16 +72,6 @@ namespace docs {
             const icon = microcode.icons.get(sample.icon, true)
             if (icon) appendImage(images, "icon_sample", sample.label, icon)
             app.saveBuffer(microcode.SAVESLOT_AUTO, sample.source)
-            // read the buffer and convert to B64
-            // const saved: microcode.SavedState = JSON.parse(
-            //     sample.source.toString()
-            // )
-            // const progdef = microcode.progDefnFromJson(saved.progdef)
-            // app.save(microcode.SAVESLOT_AUTO, progdef)
-
-            // const buf = settings.readBuffer(microcode.SAVESLOT_AUTO)
-            // const buf64 = buf.toBase64()
-            // console.log(buf64)
 
             const res = _renderProgram()
             Object.keys(res).forEach(iname => {
@@ -370,7 +360,6 @@ namespace docs {
             microcode.TID_ACTUATOR_SHOW_NUMBER,
             microcode.TID_ACTUATOR_RADIO_SEND,
             microcode.TID_ACTUATOR_RADIO_SET_GROUP,
-            microcode.TID_ACTUATOR_MICROPHONE,
             microcode.TID_ACTUATOR_SPEAKER,
             microcode.TID_ACTUATOR_MUSIC,
 

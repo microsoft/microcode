@@ -189,7 +189,6 @@ namespace microcode {
             if (name == TID_ACTUATOR_RADIO_SEND) return icondb.radio_send
             if (name == TID_ACTUATOR_RADIO_SET_GROUP)
                 return icondb.radio_set_group
-            if (name == TID_ACTUATOR_MICROPHONE) return icondb.microphone
             if (name == TID_ACTUATOR_SPEAKER) return icondb.speakerFun
             if (name == TID_ACTUATOR_MUSIC) return icondb.music
 

@@ -2,19 +2,13 @@
  * Microcode Robot
  */
 //% color="#ff6800" icon="\uf1b9" weight=15
-//% groups='["Motors", "Input", "Configuration"]'
+//% groups='["Robot", "Output", "Input", "Configuration"]'
 namespace microcode {
-    export let robot: RobotDriver
-
-    function checkRobotDriver() {
-        if (!robot) throw "Add 'robot start' block"
-    }
-
     /**
      * Moves the robot.
      */
     //% weight=98
-    //% group="Motors"
+    //% group="Output"
     //% block="robot motor run with steering $turnRatio at speed $speed \\%"
     //% blockid="microcoderobotmotorturn"
     //% speed.defl=100
@@ -25,7 +19,7 @@ namespace microcode {
     //% turnRatio.min=-200
     //% turnRatio.max=200
     export function motorRun(turnRatio: number, speed: number) {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         robot.motorRun(turnRatio, speed)
     }
 
@@ -33,12 +27,37 @@ namespace microcode {
      * Stops the robot.
      */
     //% weight=50
-    //% group="Motors"
+    //% group="Output"
     //% block="robot motor stop"
     //% blockid="microcoderobotmotorstop"
     export function motorStop() {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         robot.motorRun(0, 0)
+    }
+
+    /**
+     * Sets the LED color
+     */
+    //% blockId="microcoderobotsetcolor" block="robot set color $rgb"
+    //% group="Output"
+    //% weight=10
+    //% rgb.shadow=colorNumberPicker
+    export function setColor(rgb: number) {
+        const robot = RobotDriver.instance()
+        robot.setColor(rgb)
+    }
+
+    /**
+     * Play a tone through the robot speaker
+     */
+    //% blockId="microcoderobotplaytone" block="robot play tone $frequency for $duration"
+    //% group="Output"
+    //% weight=10
+    //% frequency.shadow=device_note
+    //% duration.shadow=device_beat
+    export function playTone(frequency: number, duration: number) {
+        const robot = RobotDriver.instance()
+        robot.playTone(frequency, duration)
     }
 
     /**
@@ -48,8 +67,8 @@ namespace microcode {
     //% blockId=microcoderobotobstacledistance
     //% group="Input"
     export function obstacleDistance(): number {
-        checkRobotDriver()
-        return robot.currentUltrasonicDistance
+        const robot = RobotDriver.instance()
+        return robot.currentDistance
     }
 
     /**
@@ -72,7 +91,7 @@ namespace microcode {
     //% blockId=microcoderobotdetectlines
     //% group="Input"
     export function detectLines(state: RobotLineState): boolean {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         return robot.currentLineState === state
     }
 
@@ -90,12 +109,12 @@ namespace microcode {
     /**
      * Enables or disables the line speed assistance.
      */
-    //% block="robot set line assist to $enabled"
+    //% block="robot set line assist $enabled"
     //% blockId="microcoderobotsetlineassist"
     //% group="Configuration"
-    //% enabled=toggleOnOff
+    //% enabled.shadow=toggleOnOff
     export function setLineAssist(enabled: boolean): void {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         robot.lineAssist = !!enabled
     }
 
@@ -109,20 +128,21 @@ namespace microcode {
     //% drift.min=-25
     //% drift.max=25
     export function setMotorDrift(drift: number) {
-        checkRobotDriver()
+        const robot = RobotDriver.instance()
         drift = Math.clamp(-25, 25, drift)
         robot.setRunDrift(drift)
     }
 
     /**
-     * Sets the LED color
+     * Enables or disables the display of the robot state on the LED matrix.
+     * @param enabled
      */
-    //% blockId="microcoderobotsetcolor" block="robot set color $rgb"
-    //% group="Motors"
-    //% weight=10
-    //% rgb.shadow=colorNumberPicker
-    export function setColor(rgb: number) {
-        checkRobotDriver()
-        robot.setColor(rgb)
+    //% block="robot set display $enabled"
+    //% blockId="microcoderobotsetdisplay"
+    //% group="Configuration"
+    //% enabled.shadow=toggleOnOff
+    export function setDisplay(enabled: boolean) {
+        const robot = RobotDriver.instance()
+        robot.hud = !!enabled
     }
 }

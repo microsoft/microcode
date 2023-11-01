@@ -1,248 +1,87 @@
 namespace microcode {
-    export enum TileType {
-        SENSOR = 1,
-        FILTER = 2,
-        ACTUATOR = 3,
-        MODIFIER = 4,
-    }
-
-    // TODO: make into class
     export interface Constraints {
-        provides?: string[]
-        requires?: string[]
-        only?: string[]
-        allow?: {
-            tiles?: string[]
-            categories?: string[]
+        provides?: number[]
+        requires?: number[]
+        only?: (string | number)[]
+        allow?: (string | number)[]
+        disallow?: (string | number)[]
+    }
+
+    export function mergeConstraints(src: Constraints, dst: Constraints) {
+        if (!src) {
+            return
         }
-        disallow?: {
-            tiles?: string[]
-            categories?: string[]
+        if (src.provides) {
+            src.provides.forEach(item => dst.provides.push(item))
+        }
+        if (src.requires) {
+            src.requires.forEach(item => dst.requires.push(item))
+        }
+        if (src.only) {
+            src.only.forEach(item => dst.only.push(item))
+        }
+        if (src.allow) {
+            src.allow.forEach(item => dst.allow.push(item))
+        }
+        if (src.disallow) {
+            src.disallow.forEach(item => dst.disallow.push(item))
         }
     }
 
-    // TODO: make into class
-    export interface FieldEditor {
-        init: any
-        clone: (field: any) => any
-        editor: (
-            field: any,
-            picker: Picker,
-            onHide: () => void,
-            onDelete?: () => void
-        ) => void // use picker to update field
-        toImage: (field: any) => Image // produce an image for the field for tile
-        buttonStyle: () => ButtonStyle
-        deserialize: (s: string) => any
-        toBuffer: (field: any) => Buffer
-        fromBuffer: (buf: BufferReader) => any
-    }
-
-    // let P be jdParam
-    export enum JdKind {
-        Literal = 1, // value is P
-        Variable, // value is variables[P]
-        Page, // value is page[P]
-        EventCode,
-        ServiceInstanceIndex,
-        ServiceCommandArg, // argument of command sent will be set to P; P2 is duration in ms for Sequance
-        ExtLibFn, // call external function P(P2)
-        Timespan,
-        RadioValue,
-        Rotary,
-        Temperature,
-
-        Loop, // repeat modifier
-
-        // Filter/actuator kinds
-        Radio, // radio send/recv
-        RandomToss, // random number
-        NumFmt, // on actuator - P is numfmt
-
-        // for each modifier (defaults to [defaultModifier]), do ...
-        // P is a shortcut external function
-        // P2 is service arg size
-        Sequence,
-    }
-
-    // TODO: clean up with new enum representation
-    // - get ride of TileType and tid
-    // - use a list instead of priority and sorting
-    // - move fieldEditor out of TileDefn, only need for a few tiles
-    // - separate editor info (constraints) from compiler info
-    export class TileDefn {
-        constructor(public tid: string) {
-            this.priority = 0
-        }
-
-        priority: number
-        constraints: Constraints
-        fieldEditor: FieldEditor
-        jdKind: JdKind
-        jdParam: any
-        jdParam2: number
-        jdExternalClass: number
-
-        isVisible() {
-            if (this.jdExternalClass && !jacs.debugOut) {
-                const count = jdc.numServiceInstances(this.jdExternalClass)
-                // special case for buttons, which already exist on micro:bit (6 of them)
-                // we also have light sensor on board micro:bit (1 of them), as well as in Kit A
-                return this.jdExternalClass == 0x1473a263
-                    ? count > 6
-                    : count > 0
-            }
-            return true
-        }
-
-        getField(): any {
-            return undefined
-        }
-
-        getIcon(): string | Image {
-            return this.tid
-        }
-
-        getNewInstance(field: any = null): TileDefn {
-            return this
-        }
-
-        buttonStyle(): ButtonStyle {
-            return this.fieldEditor
-                ? this.fieldEditor.buttonStyle()
-                : ButtonStyles.FlatWhite
-        }
-
-        // the following is just set union - can be simplified
-        // TODO: probably really want a Gen/Kill framework instead
-        mergeConstraints(dst: Constraints) {
-            const src = this.constraints
-            if (!src) {
-                return
-            }
-            if (src.provides) {
-                src.provides.forEach(item => dst.provides.push(item))
-            }
-            if (src.requires) {
-                src.requires.forEach(item => dst.requires.push(item))
-            }
-            if (src.only) {
-                src.only.forEach(item => dst.only.push(item))
-            }
-            if (src.allow) {
-                ;(src.allow.tiles || []).forEach(item =>
-                    dst.allow.tiles.push(item)
-                )
-                ;(src.allow.categories || []).forEach(item =>
-                    dst.allow.categories.push(item)
-                )
-            }
-            if (src.disallow) {
-                ;(src.disallow.tiles || []).forEach(item =>
-                    dst.disallow.tiles.push(item)
-                )
-                ;(src.disallow.categories || []).forEach(item =>
-                    dst.disallow.categories.push(item)
-                )
-            }
-        }
-
-        isCompatibleWith(c: Constraints): boolean {
-            if (!this.constraints) return true
-            if (this.constraints.requires) {
-                let compat = false
-                this.constraints.requires.forEach(
-                    req =>
-                        (compat = compat || c.provides.some(pro => pro === req))
-                )
-                if (!compat) return false
-            }
-            return true
-        }
-    }
-
-    export class StmtTileDefn extends TileDefn {
-        constructor(tid: string) {
-            super(tid)
-        }
-
-        public serviceClassName: string
-        public serviceInstanceIndex: number = 0
-    }
-
-    export class SensorDefn extends StmtTileDefn {
-        public eventCode: number
-        constructor(tid: string) {
-            super(tid)
-        }
-    }
-
-    export class FilterModifierBase extends TileDefn {
-        constructor(type: TileType, tid: string, public category: string) {
-            super(tid)
-        }
-
-        serviceCommandArg(): string | Buffer {
-            if (
-                typeof this.jdParam == "string" ||
-                typeof this.jdParam == "object"
+    export function isCompatibleWith(
+        src: Constraints,
+        c: Constraints
+    ): boolean {
+        if (!src) return true
+        if (src.requires) {
+            let compat = false
+            src.requires.forEach(
+                req => (compat = compat || c.provides.some(pro => pro === req))
             )
-                return this.jdParam
-            return null
-            // throw "bad jdParam: " + this.name + " / " + this.jdParam
+            if (!compat) return false
         }
-
-        isCompatibleWith(c: Constraints): boolean {
-            if (!super.isCompatibleWith(c)) return false
-
-            const only = c.only.some(cat => cat === this.category)
-            if (only) return true
-            if (c.only.length) return false
-
-            const allows =
-                c.allow.categories.some(cat => cat === this.category) ||
-                c.allow.tiles.some(tid => tid === this.tid)
-            if (!allows) return false
-
-            const disallows =
-                !c.disallow.categories.some(cat => cat === this.category) &&
-                !c.disallow.tiles.some(tid => tid === this.tid)
-            if (!disallows) return false
-
-            return true
-        }
+        return true
     }
 
-    export class FilterDefn extends FilterModifierBase {
-        constructor(tid: string, category: string, priority: number) {
-            super(TileType.FILTER, tid, category)
-            this.priority = priority
-        }
+    export function filterModifierCompat(
+        tile: Tile,
+        category: string | number,
+        c: Constraints
+    ): boolean {
+        const tid = getTid(tile)
+        const only = c.only.some(cat => cat === category || cat === tid)
+        if (only) return true
+        if (c.only.length) return false
+
+        const allows = c.allow.some(cat => cat === category || cat === tid)
+        if (!allows) return false
+
+        const disallows = !c.disallow.some(
+            cat => cat === category || cat === tid
+        )
+        if (!disallows) return false
+
+        return true
     }
 
-    export class ActuatorDefn extends StmtTileDefn {
-        public serviceCommand: number
-        public defaultModifier: ModifierDefn
+    export type Tile = number | ModifierEditor
 
-        constructor(tid: string) {
-            super(tid)
-        }
+    export function getTid(tile: Tile): number {
+        if (tile instanceof ModifierEditor) return tile.tid
+        return tile
     }
 
-    export class ModifierDefn extends FilterModifierBase {
-        constructor(tid: string, category: string, priority: number) {
-            super(TileType.MODIFIER, tid, category)
-            this.priority = priority
-        }
+    export function getIcon(tile: Tile) {
+        if (tile instanceof ModifierEditor) return tile.getIcon()
+        return tidToString(tile)
     }
 
-    type RuleRep = { [name: string]: TileDefn[] }
-
+    export type RuleRep = { [name: string]: Tile[] }
     export class RuleDefn {
-        sensors: SensorDefn[]
-        filters: FilterDefn[]
-        actuators: ActuatorDefn[]
-        modifiers: ModifierDefn[]
+        sensors: number[]
+        filters: number[]
+        actuators: number[]
+        modifiers: Tile[]
 
         constructor() {
             this.sensors = []
@@ -252,8 +91,7 @@ namespace microcode {
         }
 
         get sensor() {
-            if (this.sensors.length == 0)
-                return tilesDB.sensors[TID_SENSOR_START_PAGE]
+            if (this.sensors.length == 0) return Tid.TID_SENSOR_START_PAGE
             return this.sensors[0]
         }
 
@@ -272,13 +110,16 @@ namespace microcode {
 
         public toBuffer(bw: BufferWriter) {
             if (this.isEmpty()) return
-            bw.writeByte(tidToEnum(this.sensor.tid))
-            this.filters.forEach(filter => bw.writeByte(tidToEnum(filter.tid)))
-            this.actuators.forEach(act => bw.writeByte(tidToEnum(act.tid)))
+            bw.writeByte(this.sensor)
+            this.filters.forEach(filter => bw.writeByte(filter))
+            this.actuators.forEach(act => bw.writeByte(act))
             this.modifiers.forEach(mod => {
-                bw.writeByte(tidToEnum(mod.tid))
-                if (mod.fieldEditor) {
-                    bw.writeBuffer(mod.fieldEditor.toBuffer(mod.getField()))
+                bw.writeByte(getTid(mod))
+                const fieldEditor = getFieldEditor(mod)
+                if (fieldEditor) {
+                    bw.writeBuffer(
+                        fieldEditor.toBuffer((mod as ModifierEditor).getField())
+                    )
                 }
             })
         }
@@ -288,13 +129,11 @@ namespace microcode {
             assert(!br.eof())
             const sensorEnum = br.readByte()
             assert(isSensor(sensorEnum))
-            const sensorTid = enumToTid(sensorEnum)
-            defn.sensors.push(tilesDB.sensors[sensorTid])
+            defn.sensors.push(sensorEnum)
             assert(!br.eof())
             while (isFilter(br.peekByte())) {
                 const filterEnum = br.readByte()
-                const filterTid = enumToTid(filterEnum)
-                defn.filters.push(tilesDB.filters[filterTid])
+                defn.filters.push(filterEnum)
                 assert(!br.eof())
             }
             assert(!br.eof())
@@ -303,19 +142,17 @@ namespace microcode {
             }
             assert(!br.eof())
             const actuatorEnum = br.readByte()
-            const actuatorTid = enumToTid(actuatorEnum)
-            defn.actuators.push(tilesDB.actuators[actuatorTid])
+            defn.actuators.push(actuatorEnum)
             assert(!br.eof())
             while (isModifier(br.peekByte())) {
                 const modifierEnum = br.readByte()
-                const modifierTid = enumToTid(modifierEnum)
-                const modifier = tilesDB.modifiers[modifierTid]
-                if (modifier.fieldEditor) {
+                const modifier = getEditor(modifierEnum)
+                if (modifier instanceof ModifierEditor) {
                     const field = modifier.fieldEditor.fromBuffer(br)
                     const newOne = modifier.getNewInstance(field)
                     defn.modifiers.push(<any>newOne)
                 } else {
-                    defn.modifiers.push(modifier)
+                    defn.modifiers.push(modifierEnum)
                 }
                 assert(!br.eof())
             }
@@ -381,6 +218,16 @@ namespace microcode {
         }
     }
 
+    export function PAGE_IDS() {
+        return [
+            Tid.TID_MODIFIER_PAGE_1,
+            Tid.TID_MODIFIER_PAGE_2,
+            Tid.TID_MODIFIER_PAGE_3,
+            Tid.TID_MODIFIER_PAGE_4,
+            Tid.TID_MODIFIER_PAGE_5,
+        ]
+    }
+
     export class ProgramDefn {
         pages: PageDefn[]
 
@@ -422,8 +269,15 @@ namespace microcode {
         }
     }
 
-    function isTerminal(tile: TileDefn) {
-        return !isTidNotTerminal(tidToEnum(tile.tid))
+    function mkConstraints(): Constraints {
+        const c: Constraints = {
+            provides: [],
+            only: [],
+            requires: [],
+            allow: [],
+            disallow: [],
+        }
+        return c
     }
 
     export class Language {
@@ -431,16 +285,23 @@ namespace microcode {
             rule: RuleDefn,
             name: string,
             index: number
-        ): TileDefn[] {
-            const all = Object.keys(tilesDB[name])
-                .map(id => tilesDB[name][id])
-                .filter((tile: TileDefn) => tile.isVisible())
-                .sort((t1, t2) => t1.priority - t2.priority)
+        ): Tile[] {
+            // based on the name, we have a range of tiles to choose from
+            const [lower, upper] = ranges[name]
+            let all: Tile[] = []
+            for (let i = lower; i <= upper; ++i) {
+                const ed = getEditor(i)
+                if (ed) all.push(ed)
+                else all.push(i)
+            }
+            all = all
+                .filter((tile: Tile) => isVisible(tile))
+                .sort((t1, t2) => priority(t1) - priority(t2))
 
             if (name === "sensors" || name === "actuators") return all
 
             // Collect existing tiles up to index.
-            let existing: TileDefn[] = []
+            let existing: Tile[] = []
             const ruleRep = rule.getRuleRep()
             for (let i = 0; i < index; ++i) {
                 existing.push(ruleRep[name][i])
@@ -459,16 +320,29 @@ namespace microcode {
             }
 
             // Collect the built-up constraints.
-            const constraints = mkConstraints()
+            const collect = mkConstraints()
             if (name === "modifiers" && rule.actuators.length) {
-                rule.actuators[0].mergeConstraints(constraints)
+                const src = getConstraints(rule.actuators[0])
+                mergeConstraints(src, collect)
             }
             if (rule.sensors.length) {
-                rule.sensors[0].mergeConstraints(constraints)
+                const src = getConstraints(rule.sensors[0])
+                mergeConstraints(src, collect)
             }
-            existing.forEach(tile => tile.mergeConstraints(constraints))
 
-            return all.filter(tile => tile.isCompatibleWith(constraints))
+            existing.forEach(tile => {
+                const src = getConstraints(tile)
+                mergeConstraints(src, collect)
+            })
+
+            return all.filter(tile => {
+                const src = getConstraints(tile)
+                const cat = getCategory(tile)
+                return (
+                    isCompatibleWith(src, collect) &&
+                    filterModifierCompat(tile, cat, collect)
+                )
+            })
         }
 
         public static ensureValid(rule: RuleDefn) {
@@ -482,22 +356,5 @@ namespace microcode {
                 rule.modifiers = []
             }
         }
-    }
-
-    function mkConstraints(): Constraints {
-        const c: Constraints = {
-            provides: [],
-            only: [],
-            requires: [],
-            allow: {
-                tiles: [],
-                categories: [],
-            },
-            disallow: {
-                tiles: [],
-                categories: [],
-            },
-        }
-        return c
     }
 }

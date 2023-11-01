@@ -66,9 +66,10 @@ img.rule {
 }
 
 img.photo {
-    width: 100%;
+    width: max(22rem, 50%);
     margin-bottom: 0.25rem;
     border-radius: 0.25rem;
+    border: solid 1px #444;
 }
 
 img.screenshot {
