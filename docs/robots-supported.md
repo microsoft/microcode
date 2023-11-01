@@ -6,6 +6,7 @@ MicroCode supports the following [robots](./robot.md):
 -   [DFRobot Maqueen Plus](#dfrobot-maq-plus)
 -   [Elecfreaks Cutebot](#cutebot)
 -   [Elecfreaks Cutebot PRO](#cutebot-pro)
+-   [InkSmith K8](#inksmith-k8)
 -   [KeyStudio KS0426 Mini Smart Robot](#keystudio-mini)
 -   [KittenBot MiniLFR](#kittenbot-mlfr)
 -   [Yahboom Tiny:bit](#yahboom)
@@ -21,6 +22,8 @@ See [how to contribute](#contributing) for more information.
 -   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-dfrobot-maqueen.hex)
 
 ### DFRobot Maqueen Plus V2 {#dfrobot-maq-plus}
+
+![Photograph of the Maqueen plus](./images/dfrobotmaqueenplusv2.jpg){:class="photo"}
 
 -   [Home](https://www.dfrobot.com/product-2026.html)
 -   [Download](https://microsoft.github.io/microcode/assets/microcode-robot-dfrobot-maqueen-plus-v2.hex)
