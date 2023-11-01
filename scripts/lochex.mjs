@@ -39,6 +39,17 @@ const fonts = {
     ko: 12,
 }
 
+const exec = cmd => {
+    try {
+        console.log(`> ${cmd}`)
+        execSync(cmd)
+    } catch (e) {
+        console.log(e.stdout.toString())
+        console.log(e.stderr.toString())
+        throw e
+    }
+}
+
 for (const lang of languages.filter(l => l !== "pxt")) {
     console.log(`build hex for '${lang}'`)
     const translations =
@@ -56,7 +67,7 @@ for (const lang of languages.filter(l => l !== "pxt")) {
         continue
     }
 
-    console.log(`  build js, hex`)
+    console.log(`  prep files`)
     const dn = `./assets/strings/${lang}`
     if (!existsSync(dn)) mkdirSync(dn)
     writeFileSync(
@@ -88,20 +99,26 @@ namespace microcode {
     export function resolveTooltip(id: string) {
         let res: string = ""
         if (!id) return id
-${Object.keys(translations).map(key => `        else if (id === "${key}") res = "${translations[key]}";`).join("\n")}        
+${Object.keys(translations)
+    .map(
+        key => `        else if (id === "${key}") res = "${translations[key]}";`
+    )
+    .join("\n")}        
         return res
     }
 }`
     writeFileSync("./tooltips.ts", ts, { encoding: "utf8" })
 
     // build js
-    execSync("makecode --java-script")
+    console.log(`  build js`)
+    exec("makecode --java-script")
     copyFileSync(
         "./built/binary.js",
         `./assets/js/binary-${lang.toLowerCase()}.js`
     )
     // build hex
-    execSync("makecode --hw n3")
+    console.log(`  build hw`)
+    exec("makecode --hw n3", { shell: true })
     copyFileSync(
         "./built/n3/binary.hex",
         `./assets/hex/microcode-${lang.toLowerCase()}.hex`
