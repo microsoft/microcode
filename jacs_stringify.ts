@@ -185,8 +185,9 @@ namespace jacs {
         /*
         const fmt = OP_PRINT_FMTS[op]
         if (!fmt) return `???oops op${op}`
-        return expandFmt(fmt, t)        
-        */
+        return expandFmt(fmt, t)
+*/
+
         return "uncomment"
     }
 }

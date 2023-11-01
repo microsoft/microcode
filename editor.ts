@@ -18,6 +18,10 @@ namespace microcode {
         if (!skipBack) editor.forward()
     }
 
+    export function diskSlots() {
+        return ["disk1", "disk2", "disk3"]
+    }
+
     export class Editor extends Scene {
         navigator: RuleRowNavigator
         private progdef: ProgramDefn
@@ -104,7 +108,7 @@ namespace microcode {
         private pickPage() {
             const btns: PickerButtonDef[] = PAGE_IDS().map(pageId => {
                 return {
-                    icon: pageId,
+                    icon: getIcon(pageId) as string,
                 }
             })
             this.picker.setGroup(btns)
@@ -120,7 +124,7 @@ namespace microcode {
                 return
             }
             this.currPage = index
-            this.pageBtn.setIcon(PAGE_IDS()[this.currPage])
+            this.pageBtn.setIcon(getIcon(PAGE_IDS()[this.currPage]) as string)
             this.pageEditor = new PageEditor(
                 this,
                 this.scrollroot,
@@ -258,7 +262,7 @@ namespace microcode {
             this.pageBtn = new Button({
                 parent: this.hudroot,
                 style: ButtonStyles.BorderedPurple,
-                icon: PAGE_IDS()[this.currPage],
+                icon: getIcon(PAGE_IDS()[this.currPage]),
                 x: Screen.RIGHT_EDGE - 12,
                 y: 8,
                 onClick: () => this.pickPage(),
@@ -406,7 +410,7 @@ namespace microcode {
 
         /* override */ activate() {
             super.activate()
-            this.pageBtn.setIcon(PAGE_IDS()[this.currPage])
+            this.pageBtn.setIcon(tidToString(PAGE_IDS()[this.currPage]))
             if (!this.pageEditor) {
                 this.switchToPage(this.currPage)
             }
