@@ -13,6 +13,14 @@ const enum RobotLineState {
     LostRight = None | 0x0a,
 }
 
+const enum LineDetectors {
+    Left = 0,
+    Right = 1,
+    Middle = 2,
+    OuterLeft = 3,
+    OuterRight = 4,
+}
+
 namespace microcode.robots {
     export const MAGIC = 0x8429
 

@@ -39,16 +39,16 @@ namespace microcode {
             pins.i2cWriteBuffer(I2CADDR, buf)
         }
 
-        lineState() {
+        lineState(): number[] {
             pins.i2cWriteNumber(
                 I2CADDR,
                 LINE_STATE_REGISTER,
                 NumberFormat.Int8LE
             )
             const data = pins.i2cReadNumber(I2CADDR, NumberFormat.Int8LE)
-            const left = (data & 0x08) == 0x08 ? 1 : 0
-            const right = (data & 0x02) == 0x02 ? 1 : 0
-            return (left << 0) | (right << 1)
+            const left = (data & 0x08) == 0x08 ? robots.LINE_HIGH : 0
+            const right = (data & 0x02) == 0x02 ? robots.LINE_HIGH : 0
+            return [left, right]
         }
     }
 

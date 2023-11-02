@@ -137,11 +137,11 @@ namespace microcode {
             pins.i2cWriteBuffer(i2cAddr, buf)
         }
 
-        lineState(): RobotLineState {
+        lineState(): number[] {
             const state = trackbitStateValue()
-            let left = state & TrackbitStateType.Tracking_State_11 ? 1 : 0
-            let right = state & TrackbitStateType.Tracking_State_14 ? 1 : 0
-            return (left << 0) | (right << 1)
+            const left = state & TrackbitStateType.Tracking_State_11 ? 1023 : 0
+            const right = state & TrackbitStateType.Tracking_State_14 ? 1023 : 0
+            return [left, right]
         }
     }
 

@@ -91,9 +91,8 @@ namespace microcode {
         constructor() {
             super()
             this.sonar = new robots.SR04Sonar(ECHO_PIN, TRIG_PIN)
-            this.lineDetectors = new robots.PinLineDetectors(
-                DigitalPin.P13,
-                DigitalPin.P14,
+            this.lineDetectors = new robots.DigitalPinLineDetectors(
+                [DigitalPin.P13, DigitalPin.P14],
                 true
             )
             this.init_PCA9685()

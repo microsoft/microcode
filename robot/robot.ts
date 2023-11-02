@@ -1,4 +1,5 @@
 namespace microcode.robots {
+    export const LINE_HIGH = 1023
     /**
      * A ws2812b LED strip
      */
@@ -14,7 +15,7 @@ namespace microcode.robots {
 
     export interface LineDetectors {
         start(): void
-        lineState(): RobotLineState
+        lineState(): number[]
     }
 
     export interface Arm {
@@ -152,8 +153,8 @@ namespace microcode.robots {
          * Optional: Reads the line detection line
          * @returns state of both line detectors
          */
-        lineState(): RobotLineState {
-            return RobotLineState.None
+        lineState(): number[] {
+            return []
         }
     }
 }

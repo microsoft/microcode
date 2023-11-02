@@ -7,9 +7,8 @@ namespace microcode {
             super()
             this.leds = new robots.WS2812bLEDStrip(DigitalPin.P15, 2)
             this.sonar = new robots.SR04Sonar(DigitalPin.P12, DigitalPin.P8)
-            this.lineDetectors = new robots.PinLineDetectors(
-                DigitalPin.P13,
-                DigitalPin.P14,
+            this.lineDetectors = new robots.DigitalPinLineDetectors(
+                [DigitalPin.P13, DigitalPin.P14],
                 false
             )
             this.arm = new robots.ServoArm(45, 135, AnalogPin.P1)

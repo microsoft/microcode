@@ -25,7 +25,7 @@ namespace microcode {
     class InksmithK8Robot extends robots.Robot {
         constructor() {
             super()
-            this.lineDetectors = new robots.PinLineDetectors(
+            this.lineDetectors = new robots.DigitalPinLineDetectors(
                 IR_SENSOR_LEFT,
                 IR_SENSOR_RIGHT,
                 true

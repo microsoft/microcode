@@ -133,15 +133,15 @@ namespace microcode {
             return this.ultrasonicValue
         }
 
-        lineState(): RobotLineState {
-            // sensor returns from 0 to 1023 on black to white, a normal white surface reflects 500
-            if (this.sensorValue[0] < 200) return RobotLineState.LostLeft
-            else if (this.sensorValue[4] < 200) return RobotLineState.LostRight
-            else if (this.sensorValue[1] < 200) return RobotLineState.Left
-            else if (this.sensorValue[3] < 200) return RobotLineState.Right
-            else if (this.sensorValue[2] < 200) return RobotLineState.Both
-            // center
-            else return RobotLineState.None
+        lineState(): number[] {
+            const h = robots.LINE_HIGH
+            return [
+                h - this.sensorValue[1], // left
+                h - this.sensorValue[3], // right
+                h - this.sensorValue[2], // center
+                h - this.sensorValue[0], // outer left
+                h - this.sensorValue[4], // outer right
+            ]
         }
     }
 
