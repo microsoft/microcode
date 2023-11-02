@@ -26,7 +26,7 @@ namespace microcode {
         constructor() {
             super()
             this.lineDetectors = new robots.DigitalPinLineDetectors(
-                [IR_SENSOR_LEFT, IR_SENSOR_RIGHT],
+                [IR_SENSOR_LEFT, IR_SENSOR_RIGHT, IR_SENSOR_MIDDLE],
                 true
             )
             this.arm = new robots.ServoArm(-85, 85, SERVO_1)

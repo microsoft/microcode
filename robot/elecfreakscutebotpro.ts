@@ -138,10 +138,15 @@ namespace microcode {
         }
 
         lineState(): number[] {
+            const h = robots.LINE_HIGH
             const state = trackbitStateValue()
-            const left = state & TrackbitStateType.Tracking_State_11 ? 1023 : 0
-            const right = state & TrackbitStateType.Tracking_State_14 ? 1023 : 0
-            return [left, right]
+            const left = state & TrackbitStateType.Tracking_State_11 ? h : 0
+            const right = state & TrackbitStateType.Tracking_State_14 ? h : 0
+            const outerLeft = state & TrackbitStateType.Tracking_State_8 ? h : 0
+            const outerRight =
+                state & TrackbitStateType.Tracking_State_12 ? h : 0
+
+            return [left, right, -1, outerLeft, outerRight]
         }
     }
 
