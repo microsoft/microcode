@@ -351,9 +351,17 @@ namespace microcode {
             return filtered
         }
 
-        private readLineState() {
-            if (this.lineDetectors) return this.lineDetectors.lineState()
-            else return this.robot.lineState()
+        private readLineState(): RobotLineState {
+            let state: number[]
+            if (this.lineDetectors) state = this.lineDetectors.lineState()
+            else state = this.robot.lineState()
+
+            let result = RobotLineState.None
+            if (state[0] > 200) result |= RobotLineState.Left
+            if (state[1] > 200) result |= RobotLineState.Right
+            if (state[2] > 200)
+                result |= RobotLineState.Left | RobotLineState.Right
+            return result
         }
 
         private lineState(): RobotLineState {
