@@ -691,6 +691,7 @@ namespace microcode {
             tid == Tid.TID_SENSOR_SLIDER ||
             tid == Tid.TID_ACTUATOR_SWITCH_PAGE ||
             tid == Tid.TID_SENSOR_LIGHT ||
+            tid == Tid.TID_SENSOR_MICROPHONE ||
             tid == Tid.TID_SENSOR_MAGNET
         )
             return true
@@ -880,6 +881,7 @@ namespace microcode {
             case Tid.TID_SENSOR_CAR_WALL:
             case Tid.TID_SENSOR_MAGNET:
             case Tid.TID_SENSOR_LIGHT:
+            case Tid.TID_SENSOR_MICROPHONE:
                 return { allow: only5 }
             case Tid.TID_SENSOR_TEMP:
                 return { allow: ["temperature_event"] }
@@ -891,8 +893,6 @@ namespace microcode {
                 return { allow: ["timespan"] }
             case Tid.TID_SENSOR_ACCELEROMETER:
                 return { allow: ["accel_event"] }
-            case Tid.TID_SENSOR_MICROPHONE:
-                return { allow: ["sound_event"] }
             case Tid.TID_ACTUATOR_PAINT:
                 return { allow: ["icon_editor", "loop"] }
             case Tid.TID_ACTUATOR_SPEAKER:
@@ -943,8 +943,8 @@ namespace microcode {
             case Tid.TID_FILTER_TEMP_WARMER:
             case Tid.TID_FILTER_TEMP_COLDER:
                 return "temperature_event"
-            case Tid.TID_FILTER_LOUD:
-            case Tid.TID_FILTER_QUIET:
+            case Tid.TID_FILTER_LOUD:  // dead
+            case Tid.TID_FILTER_QUIET: // dead
                 return "sound_event"
             case Tid.TID_MODIFIER_LOOP:
                 return "loop"

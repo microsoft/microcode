@@ -1406,8 +1406,8 @@ namespace jacs {
 
     function needsWakeup() {
         return [
-            { classId: 0x1421bac7, convert: undefined }, // soundLevel
-            { classId: 0x14ad1a5d, convert: undefined }, // soundLevel
+            { classId: 0x1421bac7, convert: undefined }, // temperature
+            { classId: 0x14ad1a5d, convert: "sound_1_to_5" }, // soundLevel
             { classId: 0x1f140409, convert: undefined }, // accelerometer
             { classId: 0x17dc9a1c, convert: "light_1_to_5" }, // JD light level
             { classId: 0x1f274746, convert: "slider_1_to_5" }, // JD slider
