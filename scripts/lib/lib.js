@@ -1,35 +1,36 @@
 function hsv(hue, sat, val) {
     //reference: based on FastLED's hsv2rgb rainbow algorithm [https://github.com/FastLED/FastLED](MIT)
-    var h = (hue & 0xff) * 192 >> 8
-    var brightness_floor = val * (0xff - sat) >> 8
-    var color_amplitude = val - brightness_floor;
+    var h = ((hue & 0xff) * 192) >> 8
+    var brightness_floor = (val * (0xff - sat)) >> 8
+    var color_amplitude = val - brightness_floor
     var rampup = h & 0x3f // [0..63]
-    var rampup_adj_with_floor = ((rampup * color_amplitude >> 6) + brightness_floor);
-    var rampdown_adj_with_floor = (((0x3f - rampup) * color_amplitude >> 6) + brightness_floor);
+    var rampup_adj_with_floor =
+        ((rampup * color_amplitude) >> 6) + brightness_floor
+    var rampdown_adj_with_floor =
+        (((0x3f - rampup) * color_amplitude) >> 6) + brightness_floor
 
     var section = h >> 6 // [0..2]
 
     var r, g, b
     if (section == 0) {
         // section 0: 0x00..0x3F
-        r = rampdown_adj_with_floor;
-        g = rampup_adj_with_floor;
-        b = brightness_floor;
+        r = rampdown_adj_with_floor
+        g = rampup_adj_with_floor
+        b = brightness_floor
     } else if (section == 1) {
         // section 1: 0x40..0x7F
-        r = brightness_floor;
-        g = rampdown_adj_with_floor;
-        b = rampup_adj_with_floor;
+        r = brightness_floor
+        g = rampdown_adj_with_floor
+        b = rampup_adj_with_floor
     } else {
         // section 2; 0x80..0xBF
-        r = rampup_adj_with_floor;
-        g = brightness_floor;
-        b = rampdown_adj_with_floor;
+        r = rampup_adj_with_floor
+        g = brightness_floor
+        b = rampdown_adj_with_floor
     }
 
     return (r << 16) | (g << 8) | b
 }
-
 
 function get_rotary(/** @type RotaryEncoderRole */ rotary) {
     return rotary.position.read()
@@ -42,6 +43,10 @@ function slider_1_to_5(/** @type PotentiometerRole */ potentiometer) {
 
 function light_1_to_5(/** @type LightLevelRole */ light) {
     return Math.round(4 * light.lightLevel.read()) + 1
+}
+
+function sound_1_to_5(/** @type SoundLevelRole */ sound) {
+    return Math.round(4 * sound.soundLevel.read()) + 1
 }
 
 function round_temp(/** @type TemperatureRole */ temp) {
@@ -112,7 +117,11 @@ function led_anim_rainbow(/** @type LedRole */ led) {
     }
 }
 
-function dot_animation(/** @type DotMatrixRole */dots, /** @type JDBuffer */ buf, delay) {
+function dot_animation(
+    /** @type DotMatrixRole */ dots,
+    /** @type JDBuffer */ buf,
+    delay
+) {
     var pos = 0
     while (pos < buf.length) {
         packet.setLength(5)
@@ -123,18 +132,20 @@ function dot_animation(/** @type DotMatrixRole */dots, /** @type JDBuffer */ buf
     }
 }
 
-function note_sequence(/** @type BuzzerRole */buzzer, /** @type JDBuffer */ buf) {
+function note_sequence(
+    /** @type BuzzerRole */ buzzer,
+    /** @type JDBuffer */ buf
+) {
     var pos = 0
     while (pos < buf.length) {
         packet.setLength(6)
         packet.blitAt(0, buf, pos, 6)
-        var delay = packet.getAt(4,"u16")
+        var delay = packet.getAt(4, "u16")
         buzzer.playTone(packet)
         wait(delay / 1000)
         pos = pos + 6
     }
 }
-
 
 const _dot_showNumber_nums = hex`
 0e 11 11 0e 00
@@ -162,7 +173,7 @@ const _dot_showNumber_nums = hex`
 17 1f
 `
 
-function dot_showNumber(/** @type DotMatrixRole */dots, num) {
+function dot_showNumber(/** @type DotMatrixRole */ dots, num) {
     num = Math.round(num) | 0
     packet.setLength(5)
     if (10 <= num && num <= 99) {
@@ -171,8 +182,7 @@ function dot_showNumber(/** @type DotMatrixRole */dots, num) {
         packet.blitAt(0, _dot_showNumber_nums, 55 + d0 * 2, 2)
         packet.blitAt(3, _dot_showNumber_nums, 55 + d1 * 2, 2)
     } else {
-        if (num < 0 || num > 99)
-            num = 10 // '#'
+        if (num < 0 || num > 99) num = 10 // '#'
         packet.blitAt(0, _dot_showNumber_nums, num * 5, 5)
     }
     dots.dots.write(packet)
