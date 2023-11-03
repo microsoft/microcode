@@ -1411,7 +1411,7 @@ namespace jacs {
             { classId: serviceClass("temperature"), convert: undefined },
             { classId: serviceClass("soundLevel"), convert: "sound_1_to_5" },
             { classId: serviceClass("accelerometer"), convert: undefined }, 
-            { classId: serviceClass("lightLevel"), convert: "light_1_to_5" }
+            { classId: serviceClass("lightLevel"), convert: "light_1_to_5" },
             { classId: serviceClass("potentiometer"), convert: "slider_1_to_5" }, 
             { classId: serviceClass("rotaryEncoder"), convert: undefined },
             { classId: serviceClass("magneticFieldLevel"), convert: "magnet_1_to_5" },
