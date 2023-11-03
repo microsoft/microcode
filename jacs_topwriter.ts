@@ -1408,24 +1408,24 @@ namespace jacs {
 
     function needsWakeup() {
         return [
-            { classId: 0x1421bac7, convert: undefined }, // temperature
-            { classId: 0x14ad1a5d, convert: "sound_1_to_5" }, // soundLevel
-            { classId: 0x1f140409, convert: undefined }, // accelerometer
-            { classId: 0x17dc9a1c, convert: "light_1_to_5" }, // JD light level
-            { classId: 0x1f274746, convert: "slider_1_to_5" }, // JD slider
-            { classId: 0x10fa29c9, convert: undefined }, // JD rotary
-            { classId: 0x12fe180f, convert: "magnet_1_to_5" }, // JD magnet
+            { classId: serviceClass("temperature"), convert: undefined },
+            { classId: serviceClass("soundLevel"), convert: "sound_1_to_5" },
+            { classId: serviceClass("accelerometer"), convert: undefined }, 
+            { classId: serviceClass("lightLevel"), convert: "light_1_to_5" }
+            { classId: serviceClass("potentiometer"), convert: "slider_1_to_5" }, 
+            { classId: serviceClass("rotaryEncoder"), convert: undefined },
+            { classId: serviceClass("magneticFieldLevel"), convert: "magnet_1_to_5" },
         ]
     }
 
     function needsEnable() {
         return [
-            0x1ac986cf,  // radio
-            0x12fc9103,  // servo
+            serviceClass("radio"),
+            serviceClass("servo"),
         ]
     }
 
-    function serviceClass(name: string): number {
+    export function serviceClass(name: string): number {
         switch (name) {
             case "button":
                 return 0x1473a263

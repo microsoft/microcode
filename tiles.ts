@@ -20,6 +20,7 @@ namespace microcode {
     export const TID_SENSOR_ROTARY = "S12"
     export const TID_SENSOR_CAR_WALL = "S13"
     export const TID_SENSOR_LINE = "S14"
+    export const TID_SENSOR_LED_LIGHT = "S15"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -151,7 +152,7 @@ namespace microcode {
         TID_SENSOR_RELEASE = 12,
         TID_SENSOR_ACCELEROMETER = 13,
         TID_SENSOR_TIMER = 14,
-        TID_SENSOR_LIGHT = 15,
+        TID_SENSOR_LIGHT = 15,   // this is jacdac only
         TID_SENSOR_TEMP = 16,
         TID_SENSOR_RADIO_RECEIVE = 17,
         TID_SENSOR_MICROPHONE = 18,
@@ -163,7 +164,8 @@ namespace microcode {
         TID_SENSOR_ROTARY = 24,
         TID_SENSOR_CAR_WALL = 25,
         TID_SENSOR_LINE = 26,
-        SENSOR_END = 26,
+        TID_SENSOR_LED_LIGHT = 27,  // this built-in light sensor on microbit
+        SENSOR_END = 27,
 
         ACTUATOR_START = 40,
         TID_ACTUATOR_SWITCH_PAGE = 40,
@@ -330,6 +332,8 @@ namespace microcode {
                 return TID_SENSOR_TIMER
             case Tid.TID_SENSOR_LIGHT:
                 return TID_SENSOR_LIGHT
+            case Tid.TID_SENSOR_LED_LIGHT:
+                return TID_SENSOR_LED_LIGHT
             case Tid.TID_SENSOR_TEMP:
                 return TID_SENSOR_TEMP
             case Tid.TID_SENSOR_RADIO_RECEIVE:
@@ -691,6 +695,7 @@ namespace microcode {
             tid == Tid.TID_SENSOR_SLIDER ||
             tid == Tid.TID_ACTUATOR_SWITCH_PAGE ||
             tid == Tid.TID_SENSOR_LIGHT ||
+            tid == Tid.TID_SENSOR_LED_LIGHT ||
             tid == Tid.TID_SENSOR_MICROPHONE ||
             tid == Tid.TID_SENSOR_MAGNET
         )
@@ -714,7 +719,8 @@ namespace microcode {
             const count = jdc.numServiceInstances(ext)
             // special case for buttons, which already exist on micro:bit (6 of them)
             // we also have light sensor on board micro:bit (1 of them), as well as in Kit A
-            return ext == 0x1473a263 ? count > 6 : count > 0
+            return ext == jacs.serviceClass("button") ? count > 6 :
+                ext == jacs.serviceClass("ligthLevel") ? count > 1 : count > 0
         }
         return true
     }
@@ -781,7 +787,9 @@ namespace microcode {
             case Tid.TID_SENSOR_MICROPHONE:
                 return 30
             case Tid.TID_SENSOR_TEMP:
-                return 99
+                return 40
+            case Tid.TID_SENSOR_LED_LIGHT:
+                return 50
             case Tid.TID_SENSOR_RADIO_RECEIVE:
                 return 100
             case Tid.TID_SENSOR_TIMER:
@@ -881,6 +889,7 @@ namespace microcode {
             case Tid.TID_SENSOR_CAR_WALL:
             case Tid.TID_SENSOR_MAGNET:
             case Tid.TID_SENSOR_LIGHT:
+            case Tid.TID_SENSOR_LED_LIGHT:
             case Tid.TID_SENSOR_MICROPHONE:
                 return { allow: only5 }
             case Tid.TID_SENSOR_TEMP:
@@ -1300,19 +1309,19 @@ namespace microcode {
         switch (tid) {
             case Tid.TID_FILTER_KITA_KEY_1:
             case Tid.TID_FILTER_KITA_KEY_2:
-                return 0x1473a263
+                return jacs.serviceClass("button")
             case Tid.TID_SENSOR_SLIDER:
-                return 0x1f274746
+                return jacs.serviceClass("potentiometer")
             case Tid.TID_SENSOR_MAGNET:
-                return 0x12fe180f
+                return jacs.serviceClass("magneticFieldLevel")
             case Tid.TID_SENSOR_LIGHT:
-                return 0x17dc9a1c
+                return jacs.serviceClass("lightLevel")
             case Tid.TID_SENSOR_ROTARY:
-                return 0x10fa29c9
+                return jacs.serviceClass("rotaryEncoder")
             case Tid.TID_ACTUATOR_RGB_LED:
-                return 0x1609d4f0
+                return jacs.serviceClass("led")
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
-                return 0x12fc9103
+                return jacs.serviceClass("servo")
             default:
                 return undefined
         }
@@ -1338,6 +1347,7 @@ namespace microcode {
             case Tid.TID_SENSOR_MAGNET:
                 return "magneticFieldLevel"
             case Tid.TID_SENSOR_LIGHT:
+            case Tid.TID_SENSOR_LED_LIGHT:
                 return "lightLevel"
             case Tid.TID_SENSOR_ROTARY:
                 return "rotaryEncoder"
