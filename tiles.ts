@@ -720,7 +720,7 @@ namespace microcode {
             // special case for buttons, which already exist on micro:bit (6 of them)
             // we also have light sensor on board micro:bit (1 of them), as well as in Kit A
             return ext == jacs.serviceClass("button") ? count > 6 :
-                ext == jacs.serviceClass("ligthLevel") ? count > 1 : count > 0
+                ext == jacs.serviceClass("lightLevel") ? count > 1 : count > 0
         }
         return true
     }
