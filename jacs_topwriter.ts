@@ -1422,7 +1422,6 @@ namespace jacs {
         return [
             0x1ac986cf,  // radio
             0x12fc9103,  // servo
-            0x14ad1a5d   // soundLevel
         ]
     }
 
