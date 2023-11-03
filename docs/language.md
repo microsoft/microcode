@@ -64,8 +64,9 @@ The left-hand side of a rule, the `When` section, starts with an
 -   ![press image](./images/generated/icon_S2.png){:class="icon"} `press` of button, micro:bit icon, or pin
 -   ![release image](./images/generated/icon_S2B.png){:class="icon"} `release` of button, micro:bit icon, or pin
 -   ![move image](./images/generated/icon_S3.png){:class="icon"} `move` of accelerometer, in various ways
--   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear` a sound, either loud or soft
--   ![temperature change image](./images/generated/icon_S6.png){:class="icon"} `temperature change`, either `warmer` or `colder`
+-   ![hear image](./images/generated/icon_S8.png){:class="icon"} measures the amount of sound in the environment (levels 1-5, where 1 is quiet and 5 is very loud)
+-   ![temperature change image](./images/generated/icon_S6.png){:class="icon"} `temperature change`, either `warmer` or `colder
+-   ![light sensor](./images/generated/icon_S15.png){:class="icon"} `light sensor` measures the amount of light (levels 1 - 5, where 1 means little light present and 5 means a lot of light present)`, using the micro:bit's LED matrix!
 -   ![radio receive image](./images/generated/icon_S7.png){:class="icon"} `radio receive` of a number
 -   ![start page image](./images/generated/icon_S1.png){:class="icon"} `start page` only runs when the page is started (or switched to), with an optional delay
 -   ![timer image](./images/generated/icon_S4.png){:class="icon"} `timer` of a time
@@ -90,12 +91,12 @@ The dialog below shows the parameters associated with the button press/release e
 ![parameters for press/release event](./images/eventParameterDialog.jpg){:class="screenshot"}
 
 -   ![accelerometer](./images/generated/icon_S3.png){:class="icon"} `move`, defaults to ![shake](./images/generated/icon_F17_shake.png){:class="icon"} `shake`; other options include ![tilt up](./images/generated/icon_F17_tilt_up.png){:class="icon"} `tilt up`, ![tilt down](./images/generated/icon_F17_tilt_down.png){:class="icon"} `tilt down`, ![tilt left](./images/generated/icon_F17_tilt_left.png){:class="icon"} `tilt left` and ![tilt right](./images/generated/icon_F17_tilt_right.png){:class="icon"} `tilt right`
--   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear`, defaults to ![loud](./images/generated/icon_F15.png){:class="icon"}`loud`
+-   ![hear image](./images/generated/icon_S8.png){:class="icon"} `hear`, defaults to value 1 (quietest); other options include 2, 3, 4, and 5 (loudest)
 -   ![temperature change](./images/generated/icon_S6.png){:class="icon"} `temperature change`, either 1 degree (Celcius) `warmer`
     ![warmer](./images/generated/icon_F22U.png){:class="icon"} or `colder`
     ![colder](./images/generated/icon_F22D.png){:class="icon"}
     (defaults to `warmer`)
-
+-   ![light sensor](./images/generated/icon_S15.png){:class="icon"} `light sensor` defaults to value 1 (least light); other options include 2, 3, 4, and 5 (most light)
 -   ![radio receive](./images/generated/icon_S7.png){:class="icon"} `radio receive`, defaults to `any`
 -   ![timer](./images/generated/icon_S4.png){:class="icon"} `timer`, defaults to `1/4 second`
 -   ![variable X image](./images/generated/icon_S9A.png){:class="icon"} `variable (X,Y,Z) changed`, defaults to `any` (any value change triggers it)
