@@ -564,6 +564,13 @@ namespace jacs {
             return null
         }
 
+        hasFilterEvent(rule: microcode.RuleDefn) {
+            for (const f of rule.filters)
+                if (microcode.jdKind(f) == microcode.JdKind.EventCode)
+                    return true
+            return false
+        }
+
         emitSetReg(role: Role, reg: number, buf: string | Buffer) {
             this.emitLoadBuffer(buf)
             this.emitSendCmd(role, CMD_SET_REG | reg)
@@ -1237,7 +1244,7 @@ namespace jacs {
                             "z_var_changed" + role.index
                         )
                         this.ifEq(varChanged.read(wr), code, emitBody)
-                    } else if (code != null && (!wakeup || rule.filters.length > 0)) {
+                    } else if (code != null && (!wakeup || this.hasFilterEvent(rule))) {
                         this.ifEq(
                             wr.emitExpr(Op.EXPR0_PKT_EV_CODE, []),
                             code,
