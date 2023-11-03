@@ -175,7 +175,6 @@ namespace microcode {
             if (name == TID_FILTER_TIMESPAN_RANDOM)
                 return icondb.tile_timespan_random
             if (name == TID_FILTER_LOUD) return icondb.speaker
-            if (name == TID_FILTER_QUIET) return icondb.speakerQuiet
             if (name == TID_FILTER_TEMP_WARMER) return icondb.temp_warmer
             if (name == TID_FILTER_TEMP_COLDER) return icondb.temp_colder
             if (name == TID_FILTER_ACCEL_SHAKE) return icondb.moveShake
@@ -1704,24 +1703,6 @@ export const led_light_sensor = img`
 . . . . . . . . . . . . . . . .
 `
 
-    export const speakerQuiet = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . c . . . . . . . . . .
-. . . . c b . . . . . . . . . .
-. . . c b c . . . . . . . . . .
-. c c b c c . 8 . . . . . . . .
-. b b c c c . . 8 . . . . . . .
-. c c c c c . . 8 . . . . . . .
-. c c c c c . 8 . . . . . . . .
-. . . c c c . . . . . . . . . .
-. . . . c c . . . . . . . . . .
-. . . . . c . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-`
     export const speakerFun = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . 3 . . . 5 . . .

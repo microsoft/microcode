@@ -890,8 +890,9 @@ namespace microcode {
             case Tid.TID_SENSOR_MAGNET:
             case Tid.TID_SENSOR_LIGHT:
             case Tid.TID_SENSOR_LED_LIGHT:
-            case Tid.TID_SENSOR_MICROPHONE:
                 return { allow: only5 }
+            case Tid.TID_SENSOR_MICROPHONE:
+                return { allow: only5.concat([Tid.TID_FILTER_LOUD]) }
             case Tid.TID_SENSOR_TEMP:
                 return { allow: ["temperature_event"] }
             case Tid.TID_SENSOR_ROTARY:
