@@ -106,7 +106,6 @@ namespace jacs {
 
         getDispatcher() {
             if (!this.dispatcher) {
-                const wakers = needsWakeup()
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
                     const enablers = needsEnable()
@@ -116,9 +115,8 @@ namespace jacs {
                             // set group to 1
                             this.parent.emitSetReg(this, 0x80, hex`01`)
                         }
-                    }
-                    this.top = wr.mkLabel("tp")
-                    wr.emitLabel(this.top)
+                    }                  
+                    const wakers = needsWakeup()
                     const wakeup = wakers.find(
                         r => r.classId == this.classIdentifier
                     )
@@ -140,6 +138,8 @@ namespace jacs {
                             }
                         )
                     }
+                    this.top = wr.mkLabel("tp")
+                    wr.emitLabel(this.top)
                     wr.emitStmt(Op.STMT1_WAIT_ROLE, [this.emit(wr)])
                     if (wakeup && wakeup.convert) {
                         const roleGlobal = this.parent.lookupGlobal(
@@ -1326,6 +1326,7 @@ namespace jacs {
             this.withProcedure(this.mainProc, wr => {
                 this.emitLogString("MicroCode start!")
 
+                // turns off the microphone, if present
                 const mic = this.lookupRole("soundLevel", 0)
                 wr.emitIf(
                     wr.emitExpr(Op.EXPR1_ROLE_IS_CONNECTED, [mic.emit(wr)]),
@@ -1417,7 +1418,11 @@ namespace jacs {
     }
 
     function needsEnable() {
-        return [0x1ac986cf, 0x12fc9103]
+        return [
+            0x1ac986cf,  // radio
+            0x12fc9103,  // servo
+            0x14ad1a5d   // soundLevel
+        ]
     }
 
     function serviceClass(name: string): number {
