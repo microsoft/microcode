@@ -551,11 +551,14 @@ namespace jacs {
 
         lookupEventCode(role: Role, rule: microcode.RuleDefn) {
             const sensor = rule.sensor
+            // get default event for sensor, if exists
             let evCode = microcode.eventCode(sensor)
             if (evCode != undefined) {
                 for (const m of rule.filters)
-                    if (microcode.jdKind(m) == microcode.JdKind.EventCode)
-                        evCode = microcode.jdParam(m)
+                    // override if user specifies event code
+                    if (microcode.jdKind(m) == microcode.JdKind.EventCode) {
+                        return microcode.jdParam(m)
+                    }
                 return evCode
             }
             return null
@@ -1234,6 +1237,12 @@ namespace jacs {
                             "z_var_changed" + role.index
                         )
                         this.ifEq(varChanged.read(wr), code, emitBody)
+                    } else if (code != null && (!wakeup || rule.filters.length > 0)) {
+                        this.ifEq(
+                            wr.emitExpr(Op.EXPR0_PKT_EV_CODE, []),
+                            code,
+                            emitBody
+                        )
                     } else if (wakeup && wakeup.convert) {
                         const roleGlobal = this.lookupGlobal(
                             "z_role" + role.index
@@ -1249,12 +1258,6 @@ namespace jacs {
                             () => {
                                 filterValueIn(() => roleGlobal.read(wr))
                             }
-                        )
-                    } else if (code != null) {
-                        this.ifEq(
-                            wr.emitExpr(Op.EXPR0_PKT_EV_CODE, []),
-                            code,
-                            emitBody
                         )
                     } else if (
                         role.classIdentifier == SRV_JACSCRIPT_CONDITION
