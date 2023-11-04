@@ -491,7 +491,7 @@ namespace microcode {
                 this.diskBtn.draw()
                 const wasVisible = this.connectBtn.visible()
                 this.connectBtn.setVisible(
-                    jdc.numServiceInstances(jacs.serviceClass("dotMatrix")) == 0
+                    jdc.numServiceInstances(jacs.ServiceClass.DotMatrix) == 0
                 )
                 if (wasVisible !== this.connectBtn.visible()) this.changed()
                 if (this.connectBtn.visible()) this.connectBtn.draw()
