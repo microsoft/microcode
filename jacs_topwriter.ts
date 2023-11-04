@@ -557,10 +557,9 @@ namespace jacs {
         }
 
         hasFilterEvent(rule: microcode.RuleDefn) {
-            for (const f of rule.filters)
-                if (microcode.jdKind(f) == microcode.JdKind.EventCode)
-                    return true
-            return false
+            return rule.filters.some(
+                f => microcode.jdKind(f) == microcode.JdKind.EventCode
+            )
         }
 
         emitSetReg(role: Role, reg: number, buf: string | Buffer) {
