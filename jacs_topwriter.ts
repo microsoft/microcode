@@ -108,6 +108,20 @@ namespace jacs {
             if (!this.dispatcher) {
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
+                    const enablers = needsEnable()
+                    if (enablers.indexOf(this.classIdentifier) >= 0) {
+                        this.parent.emitSetReg(this, JD_REG_INTENSITY, hex`01`)
+                        if (this.classIdentifier == serviceClass("radio")) {
+                            // set group to 1
+                            this.parent.emitSetReg(this, 0x80, hex`01`)
+                        }
+                    }
+
+                    this.top = wr.mkLabel("tp")
+                    wr.emitLabel(this.top)
+                    wr.emitStmt(Op.STMT1_WAIT_ROLE, [this.emit(wr)])
+
+                    // see if we need to refresh the streaming samples
                     const wakers = needsWakeup()
                     const wakeup = wakers.find(
                         r => r.classId == this.classIdentifier
@@ -130,18 +144,7 @@ namespace jacs {
                             }
                         )
                     }
-                    const enablers = needsEnable()
-                    if (enablers.indexOf(this.classIdentifier) >= 0) {
-                        this.parent.emitSetReg(this, JD_REG_INTENSITY, hex`01`)
-                        if (this.classIdentifier == serviceClass("radio")) {
-                            // set group to 1
-                            this.parent.emitSetReg(this, 0x80, hex`01`)
-                        }
-                    }                  
 
-                    this.top = wr.mkLabel("tp")
-                    wr.emitLabel(this.top)
-                    wr.emitStmt(Op.STMT1_WAIT_ROLE, [this.emit(wr)])
                     if (wakeup && wakeup.convert) {
                         const roleGlobal = this.parent.lookupGlobal(
                             "z_role" + this.index
@@ -554,8 +557,8 @@ namespace jacs {
             // get default event for sensor, if exists
             let evCode = microcode.eventCode(sensor)
             if (evCode != undefined) {
+                // override if user specifies event code
                 for (const m of rule.filters)
-                    // override if user specifies event code
                     if (microcode.jdKind(m) == microcode.JdKind.EventCode) {
                         return microcode.jdParam(m)
                     }
@@ -1244,7 +1247,12 @@ namespace jacs {
                             "z_var_changed" + role.index
                         )
                         this.ifEq(varChanged.read(wr), code, emitBody)
-                    } else if (code != null && (!wakeup || this.hasFilterEvent(rule))) {
+                    } else if (
+                        code != null &&
+                        (rule.filters.length == 0 || // use event code if no filters
+                            !wakeup ||
+                            this.hasFilterEvent(rule))
+                    ) {
                         this.ifEq(
                             wr.emitExpr(Op.EXPR0_PKT_EV_CODE, []),
                             code,
@@ -1420,19 +1428,22 @@ namespace jacs {
         return [
             { classId: serviceClass("temperature"), convert: undefined },
             { classId: serviceClass("soundLevel"), convert: "sound_1_to_5" },
-            { classId: serviceClass("accelerometer"), convert: undefined }, 
+            { classId: serviceClass("accelerometer"), convert: undefined },
             { classId: serviceClass("lightLevel"), convert: "light_1_to_5" },
-            { classId: serviceClass("potentiometer"), convert: "slider_1_to_5" }, 
+            {
+                classId: serviceClass("potentiometer"),
+                convert: "slider_1_to_5",
+            },
             { classId: serviceClass("rotaryEncoder"), convert: undefined },
-            { classId: serviceClass("magneticFieldLevel"), convert: "magnet_1_to_5" },
+            {
+                classId: serviceClass("magneticFieldLevel"),
+                convert: "magnet_1_to_5",
+            },
         ]
     }
 
     function needsEnable() {
-        return [
-            serviceClass("radio"),
-            serviceClass("servo"),
-        ]
+        return [serviceClass("radio"), serviceClass("servo")]
     }
 
     export function serviceClass(name: string): number {
