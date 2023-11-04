@@ -108,17 +108,8 @@ namespace jacs {
             if (!this.dispatcher) {
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
-                    const enablers = needsEnable()
-                    if (enablers.indexOf(this.classIdentifier) >= 0) {
-                        this.parent.emitSetReg(this, JD_REG_INTENSITY, hex`01`)
-                        if (this.classIdentifier == ServiceClass.Radio) {
-                            // set group to 1
-                            this.parent.emitSetReg(this, 0x80, hex`01`)
-                        }
-                    }
-
-                    // see if we need to refresh the streaming samples
                     const wakers = needsWakeup()
+                    // see if we need to refresh the streaming samples
                     const wakeup = wakers.find(
                         r => r.classId == this.classIdentifier
                     )
@@ -139,6 +130,14 @@ namespace jacs {
                                 )
                             }
                         )
+                    }
+                    const enablers = needsEnable()
+                    if (enablers.indexOf(this.classIdentifier) >= 0) {
+                        this.parent.emitSetReg(this, JD_REG_INTENSITY, hex`01`)
+                        if (this.classIdentifier == ServiceClass.Radio) {
+                            // set group to 1
+                            this.parent.emitSetReg(this, 0x80, hex`01`)
+                        }
                     }
 
                     this.top = wr.mkLabel("tp")
