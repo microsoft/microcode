@@ -117,10 +117,6 @@ namespace jacs {
                         }
                     }
 
-                    this.top = wr.mkLabel("tp")
-                    wr.emitLabel(this.top)
-                    wr.emitStmt(Op.STMT1_WAIT_ROLE, [this.emit(wr)])
-
                     // see if we need to refresh the streaming samples
                     const wakers = needsWakeup()
                     const wakeup = wakers.find(
@@ -144,6 +140,11 @@ namespace jacs {
                             }
                         )
                     }
+
+                    this.top = wr.mkLabel("tp")
+                    wr.emitLabel(this.top)
+
+                    wr.emitStmt(Op.STMT1_WAIT_ROLE, [this.emit(wr)])
 
                     if (wakeup && wakeup.convert) {
                         const roleGlobal = this.parent.lookupGlobal(
@@ -1418,7 +1419,7 @@ namespace jacs {
     function needsWakeup() {
         return [
             { classId: ServiceClass.Temperature, convert: undefined },
-            { classId: ServiceClass.SoundLevel, convert: "sound_1_to_5" },
+            { classId: ServiceClass.SoundLevel, convert: undefined },
             { classId: ServiceClass.Accelerometer, convert: undefined },
             { classId: ServiceClass.LightLevel, convert: "light_1_to_5" },
             {
