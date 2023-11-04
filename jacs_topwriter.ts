@@ -145,6 +145,15 @@ namespace jacs {
 
                     wr.emitStmt(Op.STMT1_WAIT_ROLE, [this.emit(wr)])
 
+                    // save the event code away
+                    const roleEventCode = this.parent.lookupGlobal(
+                        "z_role_code" + this.index
+                    )
+                    roleEventCode.write(
+                        wr,
+                        wr.emitExpr(Op.EXPR0_PKT_EV_CODE, [])
+                    )
+
                     if (wakeup && wakeup.convert) {
                         const roleGlobal = this.parent.lookupGlobal(
                             "z_role" + this.index
@@ -154,6 +163,12 @@ namespace jacs {
                         )
                         roleGlobalChanged.write(wr, literal(0))
                         this.parent.callLinked(wakeup.convert, [this.emit(wr)])
+
+                        // TODO: on a loud event, it might be too fast
+                        // TODO: to get value from the sensor
+                        // const microphone =
+                        //    this.classIdentifier == ServiceClass.SoundLevel
+
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_NE, [
                                 wr.emitExpr(Op.EXPR0_RET_VAL, []),
@@ -1244,11 +1259,10 @@ namespace jacs {
                             !wakeup ||
                             this.hasFilterEvent(rule))
                     ) {
-                        this.ifEq(
-                            wr.emitExpr(Op.EXPR0_PKT_EV_CODE, []),
-                            code,
-                            emitBody
+                        const roleEventCode = this.lookupGlobal(
+                            "z_role_code" + role.index
                         )
+                        this.ifEq(roleEventCode.read(wr), code, emitBody)
                     } else if (wakeup && wakeup.convert) {
                         const roleGlobal = this.lookupGlobal(
                             "z_role" + role.index
@@ -1418,7 +1432,7 @@ namespace jacs {
     function needsWakeup() {
         return [
             { classId: ServiceClass.Temperature, convert: undefined },
-            { classId: ServiceClass.SoundLevel, convert: undefined },
+            { classId: ServiceClass.SoundLevel, convert: "sound_1_to_5" },
             { classId: ServiceClass.Accelerometer, convert: undefined },
             { classId: ServiceClass.LightLevel, convert: "light_1_to_5" },
             {
