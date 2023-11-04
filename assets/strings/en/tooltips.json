@@ -147,6 +147,7 @@
   "CAR14": "arm close",
   "S13": "wall",
   "S14": "line",
+  "S15": "light",
   "F23L": "left",
   "F23R": "right",
   "F23B": "both",
