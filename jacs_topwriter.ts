@@ -106,9 +106,10 @@ namespace jacs {
 
         getDispatcher() {
             if (!this.dispatcher) {
-                const wakers = needsWakeup()
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
+                    const wakers = needsWakeup()
+                    // see if we need to refresh the streaming samples
                     const wakeup = wakers.find(
                         r => r.classId == this.classIdentifier
                     )
@@ -133,14 +134,26 @@ namespace jacs {
                     const enablers = needsEnable()
                     if (enablers.indexOf(this.classIdentifier) >= 0) {
                         this.parent.emitSetReg(this, JD_REG_INTENSITY, hex`01`)
-                        if (this.classIdentifier == serviceClass("radio")) {
+                        if (this.classIdentifier == ServiceClass.Radio) {
                             // set group to 1
                             this.parent.emitSetReg(this, 0x80, hex`01`)
                         }
                     }
+
                     this.top = wr.mkLabel("tp")
                     wr.emitLabel(this.top)
+
                     wr.emitStmt(Op.STMT1_WAIT_ROLE, [this.emit(wr)])
+
+                    // save the event code away
+                    const roleEventCode = this.parent.lookupGlobal(
+                        "z_role_code" + this.index
+                    )
+                    roleEventCode.write(
+                        wr,
+                        wr.emitExpr(Op.EXPR0_PKT_EV_CODE, [])
+                    )
+
                     if (wakeup && wakeup.convert) {
                         const roleGlobal = this.parent.lookupGlobal(
                             "z_role" + this.index
@@ -150,6 +163,12 @@ namespace jacs {
                         )
                         roleGlobalChanged.write(wr, literal(0))
                         this.parent.callLinked(wakeup.convert, [this.emit(wr)])
+
+                        // TODO: on a loud event, it might be too fast
+                        // TODO: to get value from the sensor
+                        // const microphone =
+                        //    this.classIdentifier == ServiceClass.SoundLevel
+
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_NE, [
                                 wr.emitExpr(Op.EXPR0_RET_VAL, []),
@@ -164,12 +183,11 @@ namespace jacs {
                             }
                         )
                     } else if (
-                        this.classIdentifier == serviceClass("rotaryEncoder") ||
-                        this.classIdentifier == serviceClass("temperature")
+                        this.classIdentifier == ServiceClass.RotaryEncoder ||
+                        this.classIdentifier == ServiceClass.Temperature
                     ) {
                         const isRotary =
-                            this.classIdentifier ==
-                            serviceClass("rotaryEncoder")
+                            this.classIdentifier == ServiceClass.RotaryEncoder
                         const sensorVar = isRotary
                             ? this.parent.lookupGlobal("z_rotary" + this.index)
                             : this.parent.lookupGlobal("z_temp")
@@ -497,28 +515,18 @@ namespace jacs {
             console.error("Error: " + msg)
         }
 
-        lookupServiceClass(name: string) {
-            const id = serviceClass(name)
-            if (id === undefined) {
-                this.error(`service '${name}' not defined`)
-                return 0
-            }
-            return id
-        }
-
-        lookupRole(name: string, idx: number) {
-            const id = this.lookupServiceClass(name)
-            if (!id) return this.pageStartCondition
+        lookupRole(sc: ServiceClass, idx: number) {
+            if (!sc) return this.pageStartCondition
             let ptr = 0
             for (const r of this.roles) {
-                if (r.classIdentifier == id) {
+                if (r.classIdentifier == sc) {
                     if (ptr == idx) return r
                     ptr++
                 }
             }
             let r: Role
             while (ptr <= idx) {
-                r = this.addRole(name + "_" + ptr, id)
+                r = this.addRole(scToName(sc) + "_" + ptr, sc)
                 ptr++
             }
             return r
@@ -537,7 +545,7 @@ namespace jacs {
             const sensor = rule.sensor
             if (sensor == microcode.Tid.TID_SENSOR_START_PAGE)
                 return this.pageStartCondition
-            let idx = 0 // default
+            let idx = microcode.serviceIndex(sensor)
             for (const f of rule.filters)
                 if (
                     microcode.jdKind(f) == microcode.JdKind.ServiceInstanceIndex
@@ -550,14 +558,23 @@ namespace jacs {
 
         lookupEventCode(role: Role, rule: microcode.RuleDefn) {
             const sensor = rule.sensor
+            // get default event for sensor, if exists
             let evCode = microcode.eventCode(sensor)
             if (evCode != undefined) {
+                // override if user specifies event code
                 for (const m of rule.filters)
-                    if (microcode.jdKind(m) == microcode.JdKind.EventCode)
-                        evCode = microcode.jdParam(m)
+                    if (microcode.jdKind(m) == microcode.JdKind.EventCode) {
+                        return microcode.jdParam(m)
+                    }
                 return evCode
             }
             return null
+        }
+
+        hasFilterEvent(rule: microcode.RuleDefn) {
+            return rule.filters.some(
+                f => microcode.jdKind(f) == microcode.JdKind.EventCode
+            )
         }
 
         emitSetReg(role: Role, reg: number, buf: string | Buffer) {
@@ -719,7 +736,10 @@ namespace jacs {
             const wr = this.writer
             switch (microcode.jdKind(mod)) {
                 case microcode.JdKind.Temperature:
-                    const temperatureRole = this.lookupRole("temperature", 0)
+                    const temperatureRole = this.lookupRole(
+                        ServiceClass.Temperature,
+                        0
+                    )
                     const temperatureVar = this.lookupGlobal("z_temp")
                     this.callLinked("round_temp", [temperatureRole.emit(wr)])
                     temperatureVar.write(wr, wr.emitExpr(Op.EXPR0_RET_VAL, []))
@@ -1233,6 +1253,16 @@ namespace jacs {
                             "z_var_changed" + role.index
                         )
                         this.ifEq(varChanged.read(wr), code, emitBody)
+                    } else if (
+                        code != null &&
+                        (rule.filters.length == 0 || // use event code if no filters
+                            !wakeup ||
+                            this.hasFilterEvent(rule))
+                    ) {
+                        const roleEventCode = this.lookupGlobal(
+                            "z_role_code" + role.index
+                        )
+                        this.ifEq(roleEventCode.read(wr), code, emitBody)
                     } else if (wakeup && wakeup.convert) {
                         const roleGlobal = this.lookupGlobal(
                             "z_role" + role.index
@@ -1248,12 +1278,6 @@ namespace jacs {
                             () => {
                                 filterValueIn(() => roleGlobal.read(wr))
                             }
-                        )
-                    } else if (code != null) {
-                        this.ifEq(
-                            wr.emitExpr(Op.EXPR0_PKT_EV_CODE, []),
-                            code,
-                            emitBody
                         )
                     } else if (
                         role.classIdentifier == SRV_JACSCRIPT_CONDITION
@@ -1300,7 +1324,7 @@ namespace jacs {
                 0200000000
                 0000000000
             `
-            const scr = this.lookupRole("dotMatrix", 0)
+            const scr = this.lookupRole(ServiceClass.DotMatrix, 0)
             this.callLinked("dot_animation", [
                 scr.emit(this.writer),
                 this.emitString(loading_anim),
@@ -1326,7 +1350,8 @@ namespace jacs {
             this.withProcedure(this.mainProc, wr => {
                 this.emitLogString("MicroCode start!")
 
-                const mic = this.lookupRole("soundLevel", 0)
+                // turns off the microphone, if present
+                const mic = this.lookupRole(ServiceClass.SoundLevel, 0)
                 wr.emitIf(
                     wr.emitExpr(Op.EXPR1_ROLE_IS_CONNECTED, [mic.emit(wr)]),
                     () => {
@@ -1367,7 +1392,7 @@ namespace jacs {
         deployEmpty() {
             const mainProc = this.addProc("main")
             // hack for car: stop cars on empty program
-            const role = this.lookupRole("radio", 0)
+            const role = this.lookupRole(ServiceClass.Radio, 0)
             this.sendActuatorServiceCommand(
                 role,
                 0x81,
@@ -1379,7 +1404,7 @@ namespace jacs {
 
         deploySound(name: string) {
             const mainProc = this.addProc("main")
-            const r = this.lookupRole("soundPlayer", 0)
+            const r = this.lookupRole(ServiceClass.SoundPlayer, 0)
             this.withProcedure(mainProc, wr => {
                 this.emitLoadBuffer(name)
                 this.emitSendCmd(r, 0x80)
@@ -1392,7 +1417,7 @@ namespace jacs {
 
         deployFreq(buf: Buffer) {
             const mainProc = this.addProc("main")
-            const r = this.lookupRole("buzzer", 0)
+            const r = this.lookupRole(ServiceClass.Buzzer, 0)
             this.withProcedure(mainProc, wr => {
                 this.emitLoadBuffer(buf)
                 this.emitSendCmd(r, 0x80)
@@ -1406,56 +1431,59 @@ namespace jacs {
 
     function needsWakeup() {
         return [
-            { classId: 0x1421bac7, convert: undefined }, // soundLevel
-            { classId: 0x14ad1a5d, convert: undefined }, // soundLevel
-            { classId: 0x1f140409, convert: undefined }, // accelerometer
-            { classId: 0x17dc9a1c, convert: "light_1_to_5" }, // JD light level
-            { classId: 0x1f274746, convert: "slider_1_to_5" }, // JD slider
-            { classId: 0x10fa29c9, convert: undefined }, // JD rotary
-            { classId: 0x12fe180f, convert: "magnet_1_to_5" }, // JD magnet
+            { classId: ServiceClass.Temperature, convert: undefined },
+            { classId: ServiceClass.SoundLevel, convert: "sound_1_to_5" },
+            { classId: ServiceClass.Accelerometer, convert: undefined },
+            { classId: ServiceClass.LightLevel, convert: "light_1_to_5" },
+            {
+                classId: ServiceClass.Potentiometer,
+                convert: "slider_1_to_5",
+            },
+            { classId: ServiceClass.RotaryEncoder, convert: undefined },
+            {
+                classId: ServiceClass.MagneticFieldLevel,
+                convert: "magnet_1_to_5",
+            },
         ]
     }
 
     function needsEnable() {
-        return [0x1ac986cf, 0x12fc9103]
+        return [ServiceClass.Radio, ServiceClass.Servo]
     }
 
-    function serviceClass(name: string): number {
-        switch (name) {
-            case "button":
-                return 0x1473a263
-            case "dotMatrix":
-                return 0x110d154b
-            case "soundLevel":
-                return 0x14ad1a5d
-            case "temperature":
-                return 0x1421bac7
-            case "soundPlayer":
-                return 0x1403d338
-            case "buzzer":
-                return 0x1b57b1d7
-            case "accelerometer":
-                return 0x1f140409
-            case "radio":
-                return 0x1ac986cf
-            // Kit-A
-            case "potentiometer":
-                return 0x1f274746
-            case "lightLevel":
-                return 0x17dc9a1c
-            case "magneticFieldLevel":
-                return 0x12fe180f
-            case "rotaryEncoder":
-                return 0x10fa29c9
-            case "led":
-                return 0x1609d4f0
-            // Others
-            case "servo":
-                return 0x12fc9103
-            default:
-                return undefined
-        }
-        // m:b
+    function scToName(sc: ServiceClass) {
+        if (sc == ServiceClass.Button) return "but"
+        if (sc == ServiceClass.DotMatrix) return "dot"
+        if (sc == ServiceClass.SoundLevel) return "snd"
+        if (sc == ServiceClass.Temperature) return "tmp"
+        if (sc == ServiceClass.SoundPlayer) return "mus"
+        if (sc == ServiceClass.Buzzer) return "buz"
+        if (sc == ServiceClass.Accelerometer) return "acc"
+        if (sc == ServiceClass.Radio) return "rad"
+        if (sc == ServiceClass.Potentiometer) return "pot"
+        if (sc == ServiceClass.LightLevel) return "lit"
+        if (sc == ServiceClass.MagneticFieldLevel) return "mag"
+        if (sc == ServiceClass.RotaryEncoder) return "rot"
+        if (sc == ServiceClass.Led) return "led"
+        if (sc == ServiceClass.Servo) return "srv"
+        return "unknown"
+    }
+
+    export enum ServiceClass {
+        Button = 0x1473a263,
+        DotMatrix = 0x110d154b,
+        SoundLevel = 0x14ad1a5d,
+        Temperature = 0x1421bac7,
+        SoundPlayer = 0x1403d338,
+        Buzzer = 0x1b57b1d7,
+        Accelerometer = 0x1f140409,
+        Radio = 0x1ac986cf,
+        Potentiometer = 0x1f274746,
+        LightLevel = 0x17dc9a1c,
+        MagneticFieldLevel = 0x12fe180f,
+        RotaryEncoder = 0x10fa29c9,
+        Led = 0x1609d4f0,
+        Servo = 0x12fc9103,
     }
 
     export function stop() {

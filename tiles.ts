@@ -20,6 +20,7 @@ namespace microcode {
     export const TID_SENSOR_ROTARY = "S12"
     export const TID_SENSOR_CAR_WALL = "S13"
     export const TID_SENSOR_LINE = "S14"
+    export const TID_SENSOR_LED_LIGHT = "S15"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -151,7 +152,7 @@ namespace microcode {
         TID_SENSOR_RELEASE = 12,
         TID_SENSOR_ACCELEROMETER = 13,
         TID_SENSOR_TIMER = 14,
-        TID_SENSOR_LIGHT = 15,
+        TID_SENSOR_LIGHT = 15, // this is jacdac only
         TID_SENSOR_TEMP = 16,
         TID_SENSOR_RADIO_RECEIVE = 17,
         TID_SENSOR_MICROPHONE = 18,
@@ -163,7 +164,8 @@ namespace microcode {
         TID_SENSOR_ROTARY = 24,
         TID_SENSOR_CAR_WALL = 25,
         TID_SENSOR_LINE = 26,
-        SENSOR_END = 26,
+        TID_SENSOR_LED_LIGHT = 27, // this built-in light sensor on microbit
+        SENSOR_END = 27,
 
         ACTUATOR_START = 40,
         TID_ACTUATOR_SWITCH_PAGE = 40,
@@ -330,6 +332,8 @@ namespace microcode {
                 return TID_SENSOR_TIMER
             case Tid.TID_SENSOR_LIGHT:
                 return TID_SENSOR_LIGHT
+            case Tid.TID_SENSOR_LED_LIGHT:
+                return TID_SENSOR_LED_LIGHT
             case Tid.TID_SENSOR_TEMP:
                 return TID_SENSOR_TEMP
             case Tid.TID_SENSOR_RADIO_RECEIVE:
@@ -691,6 +695,8 @@ namespace microcode {
             tid == Tid.TID_SENSOR_SLIDER ||
             tid == Tid.TID_ACTUATOR_SWITCH_PAGE ||
             tid == Tid.TID_SENSOR_LIGHT ||
+            tid == Tid.TID_SENSOR_LED_LIGHT ||
+            tid == Tid.TID_SENSOR_MICROPHONE ||
             tid == Tid.TID_SENSOR_MAGNET
         )
             return true
@@ -713,7 +719,11 @@ namespace microcode {
             const count = jdc.numServiceInstances(ext)
             // special case for buttons, which already exist on micro:bit (6 of them)
             // we also have light sensor on board micro:bit (1 of them), as well as in Kit A
-            return ext == 0x1473a263 ? count > 6 : count > 0
+            return ext == jacs.ServiceClass.Button
+                ? count > 6
+                : ext == jacs.ServiceClass.LightLevel
+                ? count > 1
+                : count > 0
         }
         return true
     }
@@ -780,7 +790,9 @@ namespace microcode {
             case Tid.TID_SENSOR_MICROPHONE:
                 return 30
             case Tid.TID_SENSOR_TEMP:
-                return 99
+                return 40
+            case Tid.TID_SENSOR_LED_LIGHT:
+                return 50
             case Tid.TID_SENSOR_RADIO_RECEIVE:
                 return 100
             case Tid.TID_SENSOR_TIMER:
@@ -880,7 +892,10 @@ namespace microcode {
             case Tid.TID_SENSOR_CAR_WALL:
             case Tid.TID_SENSOR_MAGNET:
             case Tid.TID_SENSOR_LIGHT:
+            case Tid.TID_SENSOR_LED_LIGHT:
                 return { allow: only5 }
+            case Tid.TID_SENSOR_MICROPHONE:
+                return { allow: only5.concat([Tid.TID_FILTER_LOUD]) }
             case Tid.TID_SENSOR_TEMP:
                 return { allow: ["temperature_event"] }
             case Tid.TID_SENSOR_ROTARY:
@@ -891,8 +906,6 @@ namespace microcode {
                 return { allow: ["timespan"] }
             case Tid.TID_SENSOR_ACCELEROMETER:
                 return { allow: ["accel_event"] }
-            case Tid.TID_SENSOR_MICROPHONE:
-                return { allow: ["sound_event"] }
             case Tid.TID_ACTUATOR_PAINT:
                 return { allow: ["icon_editor", "loop"] }
             case Tid.TID_ACTUATOR_SPEAKER:
@@ -944,7 +957,7 @@ namespace microcode {
             case Tid.TID_FILTER_TEMP_COLDER:
                 return "temperature_event"
             case Tid.TID_FILTER_LOUD:
-            case Tid.TID_FILTER_QUIET:
+            case Tid.TID_FILTER_QUIET: // dead
                 return "sound_event"
             case Tid.TID_MODIFIER_LOOP:
                 return "loop"
@@ -1300,62 +1313,63 @@ namespace microcode {
         switch (tid) {
             case Tid.TID_FILTER_KITA_KEY_1:
             case Tid.TID_FILTER_KITA_KEY_2:
-                return 0x1473a263
+                return jacs.ServiceClass.Button
             case Tid.TID_SENSOR_SLIDER:
-                return 0x1f274746
+                return jacs.ServiceClass.Potentiometer
             case Tid.TID_SENSOR_MAGNET:
-                return 0x12fe180f
+                return jacs.ServiceClass.MagneticFieldLevel
             case Tid.TID_SENSOR_LIGHT:
-                return 0x17dc9a1c
+                return jacs.ServiceClass.LightLevel
             case Tid.TID_SENSOR_ROTARY:
-                return 0x10fa29c9
+                return jacs.ServiceClass.RotaryEncoder
             case Tid.TID_ACTUATOR_RGB_LED:
-                return 0x1609d4f0
+                return jacs.ServiceClass.Led
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
-                return 0x12fc9103
+                return jacs.ServiceClass.Servo
             default:
                 return undefined
         }
     }
 
-    export function serviceClassName(tile: Tile) {
+    export function serviceClassName(tile: Tile): jacs.ServiceClass {
         const tid = getTid(tile)
         switch (tid) {
             case Tid.TID_SENSOR_PRESS:
             case Tid.TID_SENSOR_RELEASE:
-                return "button"
+                return jacs.ServiceClass.Button
             case Tid.TID_SENSOR_TEMP:
-                return "temperature"
+                return jacs.ServiceClass.Temperature
             case Tid.TID_SENSOR_RADIO_RECEIVE:
             case Tid.TID_ACTUATOR_RADIO_SEND:
             case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
             case Tid.TID_SENSOR_LINE:
             case Tid.TID_SENSOR_CAR_WALL:
             case Tid.TID_ACTUATOR_CAR:
-                return "radio"
+                return jacs.ServiceClass.Radio
             case Tid.TID_SENSOR_SLIDER:
-                return "potentiometer"
+                return jacs.ServiceClass.Potentiometer
             case Tid.TID_SENSOR_MAGNET:
-                return "magneticFieldLevel"
+                return jacs.ServiceClass.MagneticFieldLevel
             case Tid.TID_SENSOR_LIGHT:
-                return "lightLevel"
+            case Tid.TID_SENSOR_LED_LIGHT:
+                return jacs.ServiceClass.LightLevel
             case Tid.TID_SENSOR_ROTARY:
-                return "rotaryEncoder"
+                return jacs.ServiceClass.RotaryEncoder
             case Tid.TID_SENSOR_ACCELEROMETER:
-                return "accelerometer"
+                return jacs.ServiceClass.Accelerometer
             case Tid.TID_SENSOR_MICROPHONE:
-                return "soundLevel"
+                return jacs.ServiceClass.SoundLevel
             case Tid.TID_ACTUATOR_PAINT:
             case Tid.TID_ACTUATOR_SHOW_NUMBER:
-                return "dotMatrix"
+                return jacs.ServiceClass.DotMatrix
             case Tid.TID_ACTUATOR_SPEAKER:
-                return "soundPlayer"
+                return jacs.ServiceClass.SoundPlayer
             case Tid.TID_ACTUATOR_MUSIC:
-                return "buzzer"
+                return jacs.ServiceClass.Buzzer
             case Tid.TID_ACTUATOR_RGB_LED:
-                return "led"
+                return jacs.ServiceClass.Led
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
-                return "servo"
+                return jacs.ServiceClass.Servo
             default:
                 return undefined
         }
@@ -1386,5 +1400,14 @@ namespace microcode {
         const ret = jdParam(tile)
         if (typeof ret == "string") return ret
         return undefined
+    }
+
+    export function serviceIndex(tile: Tile) {
+        const tid = getTid(tile)
+        // these are special cases where we have multiple
+        // instances of the same service
+        if (tid == Tid.TID_SENSOR_LIGHT) return 1
+        // default index is 0
+        return 0
     }
 }

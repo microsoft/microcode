@@ -332,6 +332,7 @@ namespace docs {
             microcode.TID_SENSOR_RELEASE,
             microcode.TID_SENSOR_MICROPHONE,
             microcode.TID_SENSOR_TEMP,
+            microcode.TID_SENSOR_LED_LIGHT,
             microcode.TID_SENSOR_LIGHT,
 
             // micro:bit filters

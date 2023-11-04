@@ -73,6 +73,7 @@ namespace microcode {
         if (name == TID_MODIFIER_RGB_LED_COLOR_SPARKLE)
             return icondb.tile_sparkle
         if (name == TID_ACTUATOR_SERVO_SET_ANGLE) return icondb.servo_set_angle
+        if (name == TID_SENSOR_LIGHT) return icondb.light_sensor
         return null
     }
 
@@ -156,7 +157,7 @@ namespace microcode {
             if (name == TID_SENSOR_RELEASE) return icondb.finger_release
             if (name == TID_SENSOR_MICROPHONE) return icondb.microphone
             if (name == TID_SENSOR_TEMP) return icondb.thermometer
-            if (name == TID_SENSOR_LIGHT) return icondb.light_sensor
+            if (name == TID_SENSOR_LED_LIGHT) return icondb.led_light_sensor
 
             // micro:bit filters
             if (name == TID_FILTER_LOGO) return icondb.microbit_logo
@@ -174,7 +175,6 @@ namespace microcode {
             if (name == TID_FILTER_TIMESPAN_RANDOM)
                 return icondb.tile_timespan_random
             if (name == TID_FILTER_LOUD) return icondb.speaker
-            if (name == TID_FILTER_QUIET) return icondb.speakerQuiet
             if (name == TID_FILTER_TEMP_WARMER) return icondb.temp_warmer
             if (name == TID_FILTER_TEMP_COLDER) return icondb.temp_colder
             if (name == TID_FILTER_ACCEL_SHAKE) return icondb.moveShake
@@ -1627,6 +1627,25 @@ namespace icondb {
     . . . . . . . . . . . . . . . .
 `
 
+export const led_light_sensor = img`
+. . . . . . . . . . . . . . . .
+. . 8 8 8 8 5 5 5 8 8 8 8 . . .
+. . 8 8 8 5 4 4 4 5 8 8 8 . . .
+. . 8 8 8 5 4 4 4 5 8 8 8 . . .
+. . 8 8 8 5 4 4 4 5 8 8 8 . . .
+. . 8 8 8 8 5 5 5 8 8 8 8 . . .
+. . 8 8 5 8 8 8 8 8 5 8 8 . . .
+. . 8 5 8 8 8 5 8 8 8 5 8 . . .
+. . 8 8 8 5 8 8 8 5 8 8 8 . . .
+. . 8 8 5 8 8 5 8 8 5 8 8 . . .
+. . 8 5 8 8 8 8 8 8 8 5 8 . . .
+. . 8 8 8 8 8 5 8 8 8 8 8 . . .
+. . 8 8 8 8 8 8 8 8 8 8 8 . . .
+. . 8 8 8 2 2 2 2 2 8 8 8 . . .
+. . 8 f f f f f f f f f 8 . . .
+. . . . . . . . . . . . . . . .
+`
+    
     export const light_sensor = img`
 . . . . . . . . . . . . . . . .
 . . 8 8 8 8 5 5 5 8 8 8 8 . . .
@@ -1684,24 +1703,6 @@ namespace icondb {
 . . . . . . . . . . . . . . . .
 `
 
-    export const speakerQuiet = img`
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . c . . . . . . . . . .
-. . . . c b . . . . . . . . . .
-. . . c b c . . . . . . . . . .
-. c c b c c . 8 . . . . . . . .
-. b b c c c . . 8 . . . . . . .
-. c c c c c . . 8 . . . . . . .
-. c c c c c . 8 . . . . . . . .
-. . . c c c . . . . . . . . . .
-. . . . c c . . . . . . . . . .
-. . . . . c . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . .
-`
     export const speakerFun = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . 3 . . . 5 . . .

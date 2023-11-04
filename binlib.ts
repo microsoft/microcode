@@ -1,115 +1,100 @@
 namespace jacs {
-export function _binGetProc(idx: number | string) {
-if (idx == 1 || idx == "hsv")
-  return hex`
+    export function _binGetProc(idx: number | string) {
+        if (idx == 1 || idx == "hsv")
+            return hex`
 00000000940000000a000300020000002d0004f8ff1b04c026982a4f002d0204f8ff2d012c26982a4f012d0201
 012c4f020100cf1b4f030103010226962a01011a4f04cf01032c010226962a01011a4f050100962a4f06010690
 1f4df9001401054f0701044f0801014f094cf900280106911f4df9001401014f0701054f0801044f094cf90010
 01044f0701014f0801054f090107a029010898291c01091c4b394b0000`
-if (idx == 2 || idx == "get_rotary")
-  return hex`
+        if (idx == 2 || idx == "get_rotary")
+            return hex`
 000000001400000000000100030000002d0004f9010104f901f4413b9690034b394b0000`
-if (idx == 3 || idx == "slider_1_to_5")
-  return hex`
+        if (idx == 3 || idx == "slider_1_to_5")
+            return hex`
 000000002000000001000100040000002d0004f9010104f901f4413b04f9010190034f009401002618911a4b39
 4b0000`
-if (idx == 4 || idx == "light_1_to_5")
-  return hex`
+        if (idx == 4 || idx == "light_1_to_5")
+            return hex`
 000000001c00000000000100050000002d0004f9010104f901f441943b04f9010190032618911a4b394b0000`
-if (idx == 5 || idx == "round_temp")
-  return hex`
-000000001400000000000100060000002d0004f9010104f901f4413b04a69003184b394b`
-if (idx == 6 || idx == "magnet_1_to_5")
-  return hex`
-000000002000000001000100070000002d0004f9010104f901f4413b04f590030d4f009401002618911a4b394b
+        if (idx == 5 || idx == "sound_1_to_5")
+            return hex`
+000000001c00000000000100060000002d0004f9010104f901f441943b04f9010190032618911a4b394b0000`
+        if (idx == 6 || idx == "round_temp")
+            return hex`
+000000001400000000000100070000002d0004f9010104f901f4413b04a69003184b394b`
+        if (idx == 7 || idx == "magnet_1_to_5")
+            return hex`
+000000002000000001000100080000002d0004f9010104f901f4413b04f590030d4f009401002618911a4b394b
 000000`
-if (idx == 7 || idx == "led_set_color")
-  return hex`
-000000003400000000000200080000002d00932652003b902d002d01a02a04f8ff1b513b902d00911a2d01982a
+        if (idx == 8 || idx == "led_set_color")
+            return hex`
+000000003400000000000200090000002d00932652003b902d002d01a02a04f8ff1b513b902d00911a2d01982a
 04f8ff1b513b902d00921a2d0104f8ff1b51394b000000`
-if (idx == 8 || idx == "led_setup_packet")
-  return hex`
-000000001800000001000100090000002d0004f9018290413b9190034f00010093264601004b394b`
-if (idx == 9 || idx == "led_solid")
-  return hex`
-000000003c000000040002000a0000002d004f00915a084900064f02904f0301030102234df9001a01034f002d
-014f01925a0749000103911a4f034cfc1c2d0004f9200242913f394b000000`
-if (idx == 10 || idx == "led_anim_sparkle")
-  return hex`
-0000000050000000040001000b0000002d004f00915a084900064f02904f030103ae234df9002f010293264601
-02912c174f0004faffffff4f01925a0749002d0004f920024205003f0103911a4f034cfc3001029326462d0004
+        if (idx == 9 || idx == "led_setup_packet")
+            return hex`
+0000000018000000010001000a0000002d0004f9018290413b9190034f00010093264601004b394b`
+        if (idx == 10 || idx == "led_solid")
+            return hex`
+000000003c000000040002000b0000002d004f00915a094900064f02904f0301030102234df9001a01034f002d
+014f01925a0849000103911a4f034cfc1c2d0004f9200242913f394b000000`
+        if (idx == 11 || idx == "led_anim_sparkle")
+            return hex`
+0000000050000000040001000c0000002d004f00915a094900064f02904f030103ae234df9002f010293264601
+02912c174f0004faffffff4f01925a0849002d0004f920024205003f0103911a4f034cfc3001029326462d0004
 f9200242394b`
-if (idx == 11 || idx == "led_anim_rainbow")
-  return hex`
-0000000098000000090001000c0000002d004f00915a084900064f05904f0601060105234df900800105932646
+        if (idx == 12 || idx == "led_anim_rainbow")
+            return hex`
+0000000098000000090001000d0000002d004f00915a094900064f05904f0601060105234df900800105932646
 904f0701070105234df9005c010601071a4f0801050108224df9000b010801052c4f08904f0001089829010520
-4f0104f8ff4f02935a0c4900064f0801074f0001084f0204f8ff4f0304f8ff4f04935a014902064f01925a0749
+4f0104f8ff4f02935a0d4900064f0801074f0001084f0204f8ff4f0304f8ff4f04935a014902064f01925a0849
 000107911a4f074cfc5e2d0004f920024205013f0106911a4f064cfc82394b0000`
-if (idx == 12 || idx == "clamp")
-  return hex`
-0000000020000000000003000d0000002d012d00234df900072d004b2d022d01234df900072d024b2d014b394b
+        if (idx == 13 || idx == "clamp")
+            return hex`
+0000000020000000000003000e0000002d012d00234df900072d004b2d022d01234df900072d024b2d014b394b
 000000`
-if (idx == 13 || idx == "dot_animation")
-  return hex`
-0000000034000000010003000e000000904f0001002d0136234df9002695463b902d01010095482d0004f92002
+        if (idx == 14 || idx == "dot_animation")
+            return hex`
+0000000034000000010003000f000000904f0001002d0136234df9002695463b902d01010095482d0004f92002
 422d0204f903e81e3f0100951a4f004cfc29394b000000`
-if (idx == 14 || idx == "note_sequence")
-  return hex`
-0000000038000000020002000f000000904f0001002d0136234df9002a96463b902d01010096483b9194034f01
+        if (idx == 15 || idx == "note_sequence")
+            return hex`
+00000000380000000200020010000000904f0001002d0136234df9002a96463b902d01010096483b9194034f01
 2d00048042010104f903e81e3f0100961a4f004cfc2d394b000000`
-if (idx == 15 || idx == "dot_showNumber")
-  return hex`
-000000008000000003000200100000002d0118901c520195469a2d01224f000100194df9000a2d01f3224f0001
-004df9002f2d019a204f012d0101019a262c4f023b903311c7010192261a92483b933311c7010292261a92484c
-f9002a2d0190234f000100154df9000af32d01234f0001004df900079a52013b9033112d01952695482d0004f9
+        if (idx == 16 || idx == "dot_showNumber")
+            return hex`
+000000008000000003000200110000002d0118901c520195469a2d01224f000100194df9000a2d01f3224f0001
+004df9002f2d019a204f012d0101019a262c4f023b903312c7010192261a92483b933312c7010292261a92484c
+f9002a2d0190234f000100154df9000af32d01234f0001004df900079a52013b9033122d01952695482d0004f9
 20024205013f394b00`
-if (idx == 16 || idx == "_autoRefresh_")
-  return hex`0000000008000000000000001200000004f90209404cfc05`
-return null
-}
-export function _binGetString(idx: number): string | Buffer {
-if (idx == 0)
-  return "main"
-if (idx == 1)
-  return "cloud"
-if (idx == 2)
-  return "hsv"
-if (idx == 3)
-  return "get_rotary"
-if (idx == 4)
-  return "slider_1_to_5"
-if (idx == 5)
-  return "light_1_to_5"
-if (idx == 6)
-  return "round_temp"
-if (idx == 7)
-  return "magnet_1_to_5"
-if (idx == 8)
-  return "led_set_color"
-if (idx == 9)
-  return "led_setup_packet"
-if (idx == 10)
-  return "led_solid"
-if (idx == 11)
-  return "led_anim_sparkle"
-if (idx == 12)
-  return "led_anim_rainbow"
-if (idx == 13)
-  return "clamp"
-if (idx == 14)
-  return "dot_animation"
-if (idx == 15)
-  return "note_sequence"
-if (idx == 16)
-  return "dot_showNumber"
-if (idx == 17)
-  return hex`
+        if (idx == 17 || idx == "_autoRefresh_")
+            return hex`0000000008000000000000001300000004f90209404cfc05`
+        return null
+    }
+    export function _binGetString(idx: number): string | Buffer {
+        if (idx == 0) return "main"
+        if (idx == 1) return "cloud"
+        if (idx == 2) return "hsv"
+        if (idx == 3) return "get_rotary"
+        if (idx == 4) return "slider_1_to_5"
+        if (idx == 5) return "light_1_to_5"
+        if (idx == 6) return "sound_1_to_5"
+        if (idx == 7) return "round_temp"
+        if (idx == 8) return "magnet_1_to_5"
+        if (idx == 9) return "led_set_color"
+        if (idx == 10) return "led_setup_packet"
+        if (idx == 11) return "led_solid"
+        if (idx == 12) return "led_anim_sparkle"
+        if (idx == 13) return "led_anim_rainbow"
+        if (idx == 14) return "clamp"
+        if (idx == 15) return "dot_animation"
+        if (idx == 16) return "note_sequence"
+        if (idx == 17) return "dot_showNumber"
+        if (idx == 18)
+            return hex`
 0e11110e0000121f100019151512000911150b000c0a091f081715151509081416150811090503010a1515150a
 02150d05020a1f0a1f0a1f1f001f1d17151f071c171d1f1d011f1b1b171f`
-if (idx == 18)
-  return "_autoRefresh_"
-return null
+        if (idx == 19) return "_autoRefresh_"
+        return null
+    }
+    export const _binFloatLits = hex`b81e85eb51b8ae3f9a9999999999b93f`
 }
-export const _binFloatLits = hex`b81e85eb51b8ae3f9a9999999999b93f`
- }
-

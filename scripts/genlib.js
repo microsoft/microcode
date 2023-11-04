@@ -1,17 +1,17 @@
+// IMPORTANT: we need to use devicescript/jacscript from this commit/branch
+// commit 66237c5b09cb463ac5d93446d054c2dbcaa015da
+// (HEAD -> jacs_for_microcode, origin / jacs_for_microcode)
+
 const fs = require("fs")
 
 function arg(s) {
     if (s.startsWith("h:")) {
         let h = s.slice(2)
-        if (h.length > 90 - 24)
-            h = "\n" + h.replace(/.{90}/g, f => f + "\n")
+        if (h.length > 90 - 24) h = "\n" + h.replace(/.{90}/g, f => f + "\n")
         return "hex`" + h + "`"
-    } else if (s.startsWith("s:"))
-        return JSON.stringify(s.slice(2))
-    else
-        return JSON.stringify(s)
+    } else if (s.startsWith("s:")) return JSON.stringify(s.slice(2))
+    else return JSON.stringify(s)
 }
-
 
 function toHex(bytes) {
     if (!bytes) return undefined
