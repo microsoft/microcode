@@ -500,18 +500,18 @@ namespace jacs {
             console.error("Error: " + msg)
         }
 
-        lookupRole(id: ServiceClass, idx: number) {
-            if (!id) return this.pageStartCondition
+        lookupRole(sc: ServiceClass, idx: number) {
+            if (!sc) return this.pageStartCondition
             let ptr = 0
             for (const r of this.roles) {
-                if (r.classIdentifier == id) {
+                if (r.classIdentifier == sc) {
                     if (ptr == idx) return r
                     ptr++
                 }
             }
             let r: Role
             while (ptr <= idx) {
-                r = this.addRole(scToName(id) + "_" + ptr, id)
+                r = this.addRole(scToName(sc) + "_" + ptr, sc)
                 ptr++
             }
             return r
@@ -530,7 +530,7 @@ namespace jacs {
             const sensor = rule.sensor
             if (sensor == microcode.Tid.TID_SENSOR_START_PAGE)
                 return this.pageStartCondition
-            let idx = 0 // default
+            let idx = microcode.serviceIndex(sensor)
             for (const f of rule.filters)
                 if (
                     microcode.jdKind(f) == microcode.JdKind.ServiceInstanceIndex
