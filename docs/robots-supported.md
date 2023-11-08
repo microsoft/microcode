@@ -9,6 +9,8 @@ MicroCode supports the following [robots](./robot.md):
 -   [InkSmith K8](#inksmith-k8)
 -   [KeyStudio KS0426 Mini Smart Robot](#keystudio-mini)
 -   [KittenBot MiniLFR](#kittenbot-mlfr)
+-   [KittenBot Robobit](#kittenbot-robobit)
+-   [KittenBot Nanobit](#kittenbot-nanobit)
 -   [Yahboom Tiny:bit](#yahboom)
 
 Please file a [GitHub issue](https://github.com/microsoft/microcode/issues?q=is%3Aissue+is%3Aopen+label%3Arobot) if your robot is not listed.
@@ -67,6 +69,22 @@ See [how to contribute](#contributing) for more information.
 -   [Home](https://www.kittenbot.cc/products/kittenbot-minilfr-programmable-robot-car-kit-for-microbit)
 -   [Download for micro:bit V1](https://microsoft.github.io/microcode/assets/robothex/microcode-robot-kittenbot-minilfr-for-microbit-v1.hex)
 -   [Download for micro:bit V2](https://microsoft.github.io/microcode/assets/robothex/microcode-robot-kittenbot-minilfr-for-microbit-v2.hex)
+
+### KittenBot Robobit {#kittenbot-robotbit}
+
+![Photo of the Robobit robot](./images/robobit.webp){:class="photo"}
+
+-   [Home](https://www.kittenbot.cc/products/robotbit-robotics-expansion-board-for-micro-bit)
+-   [Download for micro:bit V1](https://microsoft.github.io/microcode/assets/robothex/microcode-robot-kittenbot-robobit-for-microbit-v1.hex)
+-   [Download for micro:bit V2](https://microsoft.github.io/microcode/assets/robothex/microcode-robot-kittenbot-robobit-for-microbit-v2.hex)
+
+### KittenBot Nanobit {#kittenbot-nanobit}
+
+![Photo of the Nanobit robot](./images/nanobit.webp){:class="photo"}
+
+-   [Home](https://www.kittenbot.cc/products/kittenbot-nanobit-with-kb-link-downloader-for-makecode-python-and-arduino-programming)
+-   [Download for micro:bit V1](https://microsoft.github.io/microcode/assets/robothex/microcode-robot-kittenbot-nanobit-for-microbit-v1.hex)
+-   [Download for micro:bit V2](https://microsoft.github.io/microcode/assets/robothex/microcode-robot-kittenbot-nanobit-for-microbit-v2.hex)
 
 ### Yahboom Tiny:bit {#yahboom}
 
