@@ -29,3 +29,7 @@ Other error codes are [documented in MakeCode](https://makecode.microbit.org/dev
 ## How do I add support for my robot?
 
 If your robot is not [listed](./robots-supported), follow the [instructions](./robots-supported#new-robot) to get it added to the list.
+
+## Can I help?
+
+Yes! MicroCode is open source at https://github.com/microsoft/microcode.

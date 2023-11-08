@@ -97,7 +97,7 @@ The following features are found often but are optional:
 
 ### How to prepare a pull request {#new-robot}
 
-To add a new robot to the list, prepare a pull request with:
+To add a new robot to the list, prepare a pull request in [microsoft/microcode](https://github.com/microsoft/microcode) with:
 
 -   a new class extending `Robot` and configuring the hardware (see other robots)
 -   a global field instance instantiating the robot (see other robots)
