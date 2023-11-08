@@ -27,8 +27,8 @@ See [how to contribute](#contributing) for more information.
 ![Photograph of the Maqueen plus](./images/dfrobotmaqueenplusv2.jpg){:class="photo"}
 
 -   [Home](https://www.dfrobot.com/product-2026.html)
--   [Download for micro:bit V1](https://microsoft.github.io/microcode/assets/robothex/microcode-robot-dfrobot-maqueen-plus-v2-for-microbit-v1.hex)
--   [Download for micro:bit V2](https://microsoft.github.io/microcode/assets/robothex/microcode-robot-dfrobot-maqueen-plus-v2-for-microbit-v2.hex)
+-   [Download for micro:bit V1](https://microsoft.github.io/microcode/assets/robothex/microcode-robot-dfrobot-maqueen-plus-for-microbit-v1.hex)
+-   [Download for micro:bit V2](https://microsoft.github.io/microcode/assets/robothex/microcode-robot-dfrobot-maqueen-plus-for-microbit-v2.hex)
 
 ### Elecfreaks Cutebot {#cutebot}
 
