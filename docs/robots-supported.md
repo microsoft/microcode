@@ -70,7 +70,7 @@ See [how to contribute](#contributing) for more information.
 -   [Download for micro:bit V1](https://microsoft.github.io/microcode/assets/robothex/microcode-robot-kittenbot-minilfr-for-microbit-v1.hex)
 -   [Download for micro:bit V2](https://microsoft.github.io/microcode/assets/robothex/microcode-robot-kittenbot-minilfr-for-microbit-v2.hex)
 
-### KittenBot Robobit {#kittenbot-robotbit}
+### KittenBot Robobit {#kittenbot-robobit}
 
 ![Photo of the Robobit robot](./images/robobit.webp){:class="photo"}
 
