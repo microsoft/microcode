@@ -35,17 +35,3 @@ jobs:
             - name: build hardware N3
               run: |
                   makecode --hw N3
-            - name: build robot
-              run: |
-                  cd robot
-                  makecode
-                  makecode -c mkc-elecfreakscutebot.json
-                  makecode -c mkc-elecfreakscutebotpro.json
-                  makecode -c mkc-yahboomtinybit.json
-                  makecode -c mkc-keystudiominismartrobot.json
-                  makecode -c mkc-dfrobotmaqueen.json
-                  makecode -c mkc-dfrobotmaqueenplusv2.json
-                  makecode -c mkc-kittenbotminilfr.json
-                  makecode -c mkc-kittenbotnanobit.json
-                  makecode -c mkc-kittenbotrobotbit.json
-                  makecode -c mkc-inksmithk8.json

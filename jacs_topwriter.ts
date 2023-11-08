@@ -1181,8 +1181,7 @@ namespace jacs {
                                     wr.emitIf(
                                         wr.emitExpr(Op.EXPR2_LT, [
                                             literal(
-                                                microcode.robots
-                                                    .RobotCompactCommand
+                                                robot.robots.RobotCompactCommand
                                                     .ObstacleState
                                             ),
                                             radioVar.read(wr),
@@ -1198,7 +1197,7 @@ namespace jacs {
                                                     wr.emitExpr(Op.EXPR2_SUB, [
                                                         radioVar.read(wr),
                                                         literal(
-                                                            microcode.robots
+                                                            robot.robots
                                                                 .RobotCompactCommand
                                                                 .ObstacleState
                                                         ),
@@ -1211,7 +1210,7 @@ namespace jacs {
                                                 wr.emitIf(
                                                     wr.emitExpr(Op.EXPR2_LE, [
                                                         literal(
-                                                            microcode.robots
+                                                            robot.robots
                                                                 .RobotCompactCommand
                                                                 .LineState
                                                         ),
@@ -1231,8 +1230,7 @@ namespace jacs {
                                         wr.emitExpr(Op.EXPR2_LT, [
                                             radioVar.read(wr),
                                             literal(
-                                                microcode.robots
-                                                    .RobotCompactCommand
+                                                robot.robots.RobotCompactCommand
                                                     .ObstacleState
                                             ),
                                         ]),
@@ -1396,7 +1394,7 @@ namespace jacs {
             this.sendActuatorServiceCommand(
                 role,
                 0x81,
-                microcode.robots.RobotCompactCommand.MotorStop
+                robot.robots.RobotCompactCommand.MotorStop
             )
             mainProc.finalize()
             return this.deploy()

@@ -33,10 +33,6 @@ jobs:
             - name: build hardware N3
               run: |
                   makecode --hw N3
-            - name: build robot
-              run: |
-                  cd robot
-                  sh mkhex.sh
             - name: copy files
               run: |
                   cp ./built/binary.js ./assets/js/binary.js
