@@ -1130,17 +1130,17 @@ namespace microcode {
                 return 2
             //
             case Tid.TID_FILTER_LINE_BOTH:
-                return robots.RobotCompactCommand.LineBoth
+                return robot.robots.RobotCompactCommand.LineBoth
             case Tid.TID_FILTER_LINE_LEFT:
-                return robots.RobotCompactCommand.LineLeft
+                return robot.robots.RobotCompactCommand.LineLeft
             case Tid.TID_FILTER_LINE_RIGHT:
-                return robots.RobotCompactCommand.LineRight
+                return robot.robots.RobotCompactCommand.LineRight
             case Tid.TID_FILTER_LINE_NEITHER:
-                return robots.RobotCompactCommand.LineNone
+                return robot.robots.RobotCompactCommand.LineNone
             case Tid.TID_FILTER_LINE_NEITHER_LEFT:
-                return robots.RobotCompactCommand.LineLostLeft
+                return robot.robots.RobotCompactCommand.LineLostLeft
             case Tid.TID_FILTER_LINE_NEITHER_RIGHT:
-                return robots.RobotCompactCommand.LineLostRight
+                return robot.robots.RobotCompactCommand.LineLostRight
             //
             case Tid.TID_FILTER_TIMESPAN_SHORT:
                 return 250
@@ -1236,33 +1236,33 @@ namespace microcode {
                 return 6
 
             case Tid.TID_MODIFIER_CAR_FORWARD:
-                return robots.RobotCompactCommand.MotorRunForward
+                return robot.robots.RobotCompactCommand.MotorRunForward
             case Tid.TID_MODIFIER_CAR_REVERSE:
-                return robots.RobotCompactCommand.MotorRunBackward
+                return robot.robots.RobotCompactCommand.MotorRunBackward
             case Tid.TID_MODIFIER_CAR_TURN_LEFT:
-                return robots.RobotCompactCommand.MotorTurnLeft
+                return robot.robots.RobotCompactCommand.MotorTurnLeft
             case Tid.TID_MODIFIER_CAR_TURN_RIGHT:
-                return robots.RobotCompactCommand.MotorTurnRight
+                return robot.robots.RobotCompactCommand.MotorTurnRight
             case Tid.TID_MODIFIER_CAR_STOP:
-                return robots.RobotCompactCommand.MotorStop
+                return robot.robots.RobotCompactCommand.MotorStop
             case Tid.TID_MODIFIER_CAR_FORWARD_FAST:
-                return robots.RobotCompactCommand.MotorRunForwardFast
+                return robot.robots.RobotCompactCommand.MotorRunForwardFast
             case Tid.TID_MODIFIER_CAR_SPIN_LEFT:
-                return robots.RobotCompactCommand.MotorSpinLeft
+                return robot.robots.RobotCompactCommand.MotorSpinLeft
             case Tid.TID_MODIFIER_CAR_SPIN_RIGHT:
-                return robots.RobotCompactCommand.MotorSpinRight
+                return robot.robots.RobotCompactCommand.MotorSpinRight
             case Tid.TID_MODIFIER_CAR_LED_COLOR_1:
-                return microcode.robots.RobotCompactCommand.LEDRed
+                return robot.robots.RobotCompactCommand.LEDRed
             case Tid.TID_MODIFIER_CAR_LED_COLOR_2:
-                return microcode.robots.RobotCompactCommand.LEDGreen
+                return robot.robots.RobotCompactCommand.LEDGreen
             case Tid.TID_MODIFIER_CAR_LED_COLOR_3:
-                return microcode.robots.RobotCompactCommand.LEDBlue
+                return robot.robots.RobotCompactCommand.LEDBlue
             case Tid.TID_MODIFIER_CAR_LED_COLOR_4:
-                return microcode.robots.RobotCompactCommand.LEDOff
+                return robot.robots.RobotCompactCommand.LEDOff
             case Tid.TID_MODIFIER_CAR_ARM_OPEN:
-                return robots.RobotCompactCommand.ArmOpen
+                return robot.robots.RobotCompactCommand.ArmOpen
             case Tid.TID_MODIFIER_CAR_ARM_CLOSE:
-                return robots.RobotCompactCommand.ArmClose
+                return robot.robots.RobotCompactCommand.ArmClose
 
             case Tid.TID_MODIFIER_RGB_LED_COLOR_1:
                 return 0x2f0000

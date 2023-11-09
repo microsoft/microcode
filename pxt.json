@@ -49,16 +49,14 @@
         "pointerevents.ts",
         "tooltips.ts",
         "utils.ts",
-        "robot/protocol.ts"
+        "microbit-robot/protocol.ts"
     ],
     "testFiles": [],
     "targetVersions": {
         "target": "1.10.10",
         "targetId": "arcade"
     },
-    "supportedTargets": [
-        "arcade"
-    ],
+    "supportedTargets": ["arcade"],
     "preferredEditor": "tsprj",
     "disableTargetTemplateFiles": true,
     "binaryonly": true

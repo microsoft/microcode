@@ -1,0 +1,3 @@
+[submodule "microbit-robot"]
+	path = microbit-robot
+	url = https://github.com/microsoft/microbit-robot
