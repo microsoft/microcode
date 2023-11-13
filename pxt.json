@@ -5,7 +5,8 @@
     "dependencies": {
         "game---light": "*",
         "device": "*",
-        "codal-jacdac-pxt": "github:microsoft/codal-jacdac/pxt#v2.2.3"
+        "codal-jacdac-pxt": "github:microsoft/codal-jacdac/pxt#v2.2.3",
+        "microbit-robot-protocol": "github:microsoft/microbit-robot/protocol#v2.5.32"
     },
     "files": [
         "analytics.ts",
@@ -48,8 +49,7 @@
         "gallery.ts",
         "pointerevents.ts",
         "tooltips.ts",
-        "utils.ts",
-        "microbit-robot/protocol.ts"
+        "utils.ts"
     ],
     "testFiles": [],
     "targetVersions": {
