@@ -51,6 +51,8 @@
   "F17_tilt_down": "tilt down",
   "F17_tilt_left": "tilt left",
   "F17_tilt_right": "tilt right",
+  "F17_face_up": "face up",
+  "F17_face_down": "face down",
   "F20A": "variable X",
   "F20B": "variable Y",
   "F20C": "variable Z",
