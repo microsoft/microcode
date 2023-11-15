@@ -47,6 +47,8 @@ namespace microcode {
     export const TID_FILTER_ACCEL_TILT_DOWN = "F17_tilt_down"
     export const TID_FILTER_ACCEL_TILT_LEFT = "F17_tilt_left"
     export const TID_FILTER_ACCEL_TILT_RIGHT = "F17_tilt_right"
+    export const TID_FILTER_ACCEL_FACE_UP = "F17_face_up"
+    export const TID_FILTER_ACCEL_FACE_DOWN = "F17_face_down"
     export const TID_FILTER_TIMESPAN_RANDOM = "F18"
     export const TID_FILTER_TIMESPAN_VERY_LONG = "F19"
     export const TID_FILTER_CUP_X_READ = "F20A"
@@ -238,7 +240,12 @@ namespace microcode {
         TID_FILTER_LINE_NEITHER_RIGHT = 107,
         LINE_END = 107,
 
-        FILTER_END = 107,
+        ACCELEROMETER_START2 = 108,
+        TID_FILTER_ACCEL_FACE_UP = 108,
+        TID_FILTER_ACCEL_FACE_DOWN = 109,
+        ACCELEROMETER_END2 = 109,
+
+        FILTER_END = 109,
 
         MODIFIER_START = 150,
         //
@@ -401,6 +408,10 @@ namespace microcode {
                 return TID_FILTER_ACCEL_TILT_DOWN
             case Tid.TID_FILTER_ACCEL_TILT_LEFT:
                 return TID_FILTER_ACCEL_TILT_LEFT
+            case Tid.TID_FILTER_ACCEL_FACE_DOWN:
+                return TID_FILTER_ACCEL_FACE_DOWN
+            case Tid.TID_FILTER_ACCEL_FACE_UP:
+                return TID_FILTER_ACCEL_FACE_UP
             case Tid.TID_FILTER_ACCEL_TILT_RIGHT:
                 return TID_FILTER_ACCEL_TILT_RIGHT
             case Tid.TID_FILTER_TIMESPAN_RANDOM:
@@ -614,7 +625,9 @@ namespace microcode {
     function isAccelerometerEvent(tidEnum: Tid) {
         return (
             Tid.ACCELEROMETER_START <= tidEnum &&
-            tidEnum <= Tid.ACCELEROMETER_END
+            tidEnum <= Tid.ACCELEROMETER_END ||
+            Tid.ACCELEROMETER_START2 <= tidEnum &&
+            tidEnum <= Tid.ACCELEROMETER_END2
         )
     }
 
@@ -1046,6 +1059,8 @@ namespace microcode {
             case Tid.TID_FILTER_ACCEL_TILT_DOWN:
             case Tid.TID_FILTER_ACCEL_TILT_LEFT:
             case Tid.TID_FILTER_ACCEL_TILT_RIGHT:
+            case Tid.TID_FILTER_ACCEL_FACE_DOWN:
+            case Tid.TID_FILTER_ACCEL_FACE_UP:
             case Tid.TID_FILTER_LOUD:
             case Tid.TID_FILTER_QUIET:
                 return JdKind.EventCode
@@ -1161,6 +1176,10 @@ namespace microcode {
                 return 0x83
             case Tid.TID_FILTER_ACCEL_TILT_RIGHT:
                 return 0x84
+            case Tid.TID_FILTER_ACCEL_FACE_UP:
+                return 0x85
+            case Tid.TID_FILTER_ACCEL_FACE_DOWN:
+                return 0x86
             //
             case Tid.TID_ACTUATOR_PAINT:
                 return "dot_animation"

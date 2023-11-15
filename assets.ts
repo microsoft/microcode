@@ -182,6 +182,8 @@ namespace microcode {
             if (name == TID_FILTER_ACCEL_TILT_DOWN) return icondb.moveTiltDown
             if (name == TID_FILTER_ACCEL_TILT_LEFT) return icondb.moveTiltLeft
             if (name == TID_FILTER_ACCEL_TILT_RIGHT) return icondb.moveTiltRight
+            if (name == TID_FILTER_ACCEL_FACE_UP) return icondb.moveFaceUp
+            if (name == TID_FILTER_ACCEL_FACE_DOWN) return icondb.moveFaceDown
 
             // micro:bit actuators
             if (name == TID_ACTUATOR_PAINT) return icondb.showScreen
@@ -2069,6 +2071,44 @@ export const led_light_sensor = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
 `
+    
+export const moveFaceUp = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . 8 . . . . . . . .
+. . . . . . 8 8 8 . . . . . . .
+. . . . . 8 8 8 8 8 . . . . . .
+. . . . . . . 8 . . . . . . . .
+. . . . . . . 8 . . . . . . . .
+. . . . . . . 8 . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . f f f f f f f . . . . .
+. . . f 5 5 5 5 5 5 5 f . . . .
+. . f 5 5 5 5 5 5 5 5 5 f . . .
+. f 5 5 5 5 5 5 5 5 5 5 5 f . .
+f f f f f f f f f f f f f f f .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+`
+export const moveFaceDown = img`
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. f f f f f f f f f f f f f f f
+. . f 5 5 5 5 5 5 5 5 5 5 5 f .
+. . . f 5 5 5 5 5 5 5 5 5 f . .
+. . . . f 5 5 5 5 5 5 5 f . . .
+. . . . . f f f f f f f . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . 8 . . . . . . .
+. . . . . . . . 8 . . . . . . .
+. . . . . . . . 8 . . . . . . .
+. . . . . . 8 8 8 8 8 . . . . .
+. . . . . . . 8 8 8 . . . . . .
+. . . . . . . . 8 . . . . . . .
+. . . . . . . . . . . . . . . .
+`
+    
     export const diceToss = img`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .

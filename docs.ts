@@ -355,6 +355,8 @@ namespace docs {
             microcode.TID_FILTER_ACCEL_TILT_DOWN,
             microcode.TID_FILTER_ACCEL_TILT_LEFT,
             microcode.TID_FILTER_ACCEL_TILT_RIGHT,
+            microcode.TID_FILTER_ACCEL_FACE_DOWN,
+            microcode.TID_FILTER_ACCEL_FACE_UP,
 
             // micro:bit actuators
             microcode.TID_ACTUATOR_PAINT,

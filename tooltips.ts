@@ -20,9 +20,9 @@ namespace microcode {
         else if (id === "S6") res = "temperature";
         else if (id === "S7") res = "radio receive";
         else if (id === "S8") res = "hear";
-        else if (id === "S9A") res = "variable X changed";
-        else if (id === "S9B") res = "variable Y changed";
-        else if (id === "S9C") res = "variable Z changed";
+        else if (id === "S9A") res = "variable X set";
+        else if (id === "S9B") res = "variable Y set";
+        else if (id === "S9C") res = "variable Z set";
         else if (id === "S10") res = "magnet";
         else if (id === "S11") res = "slider";
         else if (id === "S12") res = "dial";
@@ -57,6 +57,8 @@ namespace microcode {
         else if (id === "F17_tilt_down") res = "tilt down";
         else if (id === "F17_tilt_left") res = "tilt left";
         else if (id === "F17_tilt_right") res = "tilt right";
+        else if (id === "F17_face_up") res = "face up";
+        else if (id === "F17_face_down") res = "face down";
         else if (id === "F20A") res = "variable X";
         else if (id === "F20B") res = "variable Y";
         else if (id === "F20C") res = "variable Z";
@@ -109,20 +111,6 @@ namespace microcode {
         else if (id === "A9A") res = "set variable X";
         else if (id === "A9B") res = "set variable Y";
         else if (id === "A9C") res = "set variable Z";
-        else if (id === "N1") res = "new program";
-        else if (id === "N2") res = "flashing heart";
-        else if (id === "N3") res = "smiley buttons";
-        else if (id === "N4") res = "pet hamster";
-        else if (id === "N5") res = "chuck a duck";
-        else if (id === "N6") res = "reaction time";
-        else if (id === "N7") res = "hot potato";
-        else if (id === "N8") res = "rock paper scissors";
-        else if (id === "N9") res = "head or tail";
-        else if (id === "N10") res = "clap lights";
-        else if (id === "N11") res = "firefly";
-        else if (id === "N12") res = "railroad crossing";
-        else if (id === "N13") res = "7 seconds clap";
-        else if (id === "N14") res = "counter";
         else if (id === "A20_1") res = "red";
         else if (id === "A20_2") res = "green";
         else if (id === "A20_3") res = "blue";
@@ -148,14 +136,18 @@ namespace microcode {
         else if (id === "CAR9") res = "LED red";
         else if (id === "CAR10") res = "LED green";
         else if (id === "CAR11") res = "LED blue";
+        else if (id === "CAR12") res = "LED OFF";
+        else if (id === "CAR13") res = "arm open";
+        else if (id === "CAR14") res = "arm close";
         else if (id === "S13") res = "wall";
         else if (id === "S14") res = "line";
+        else if (id === "S15") res = "light";
         else if (id === "F23L") res = "left";
         else if (id === "F23R") res = "right";
         else if (id === "F23B") res = "both";
         else if (id === "F23N") res = "none";
-        else if (id === "F23NL") res = "none from left";
-        else if (id === "F23NR") res = "none from right";        
+        else if (id === "F23NL") res = "lost left";
+        else if (id === "F23NR") res = "lost right";        
         return res
     }
 }
