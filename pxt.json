@@ -1,6 +1,6 @@
 {
     "name": "microcode",
-    "version": "2.5.22",
+    "version": "2.5.29",
     "description": "Physical computing library for micro:bit V2",
     "dependencies": {
         "game---light": "*",
@@ -56,7 +56,9 @@
         "target": "1.10.10",
         "targetId": "arcade"
     },
-    "supportedTargets": ["arcade"],
+    "supportedTargets": [
+        "arcade"
+    ],
     "preferredEditor": "tsprj",
     "disableTargetTemplateFiles": true,
     "binaryonly": true
