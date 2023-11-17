@@ -147,7 +147,6 @@ namespace microcode {
         private cancelClicked() {
             this.cursor.cancelHandlerStack.pop()
             this.hide()
-            // restart jacs?
         }
 
         show(
@@ -163,9 +162,6 @@ namespace microcode {
             },
             hideOnClick: boolean = true
         ) {
-            // no need to run while working in the picker
-            jacs.stop()
-
             this.start = opts.selected ? opts.selected : -1
             this.onClick = opts.onClick
             this.onHide = opts.onHide
