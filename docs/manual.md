@@ -6,7 +6,9 @@ description: User guide for the MicroCode editor
 
 {% include youtube.html id="g53_aEVH8oA" %}
 
-Physical computing and robotics for young learners with the [micro:bit V2](https://microbit.org) (_no tablet/laptop/desktop required_):
+MicroCode makes it possible to program the [micro:bit V2](https://microbit.org)
+**without the need for an extra computer or Internet connection**.
+As shown above, the micro:bit slots into a (commercially available) shield that provides a color display and extra inputs. The MicroCode visual programming model is based on Kodu and targets children age 6-9, younger than the traditional audience for the micro:bit. MicroCode features:
 
 -   [arcade shields](#arcade-shields) for the micro:bit V2 enable "on the go" programming with familiar game console controls
 -   kid-friendly, icon-based, structured code editor and [programming language](./language)
