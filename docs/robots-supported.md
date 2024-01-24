@@ -21,78 +21,78 @@ See [how to contribute](#contributing) for more information.
 ![Photograph of the Maqueen](./images/maqueen.jpeg){:class="photo"}
 
 -   [Home](https://wiki.dfrobot.com/micro_Maqueen_for_micro_bit_SKU_ROB0148-EN)
--   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/robot-dfrobot-maqueen-for-microbit-v1.hex)
--   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/robot-dfrobot-maqueen-for-microbit-v2.hex)
+-   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/dfrobot-maqueen-for-microbit-v1.hex)
+-   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/dfrobot-maqueen-for-microbit-v2.hex)
 
 ### DFRobot Maqueen Plus V2 {#dfrobot-maq-plus}
 
 ![Photograph of the Maqueen plus](./images/dfrobotmaqueenplusv2.jpg){:class="photo"}
 
 -   [Home](https://www.dfrobot.com/product-2026.html)
--   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/robot-dfrobot-maqueen-plus-for-microbit-v1.hex)
--   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/robot-dfrobot-maqueen-plus-for-microbit-v2.hex)
+-   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/dfrobot-maqueen-plus-for-microbit-v1.hex)
+-   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/dfrobot-maqueen-plus-for-microbit-v2.hex)
 
 ### Elecfreaks Cutebot {#cutebot}
 
 ![Photograph of the Cutebot](./images/cutebot.jpeg){:class="photo"}
 
 -   [Home](https://www.elecfreaks.com/micro-bit-smart-cutebot.html)
--   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/robot-elecfreaks-cutebot-for-microbit-v1.hex)
--   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/robot-elecfreaks-cutebot-for-microbit-v2.hex)
+-   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/elecfreaks-cutebot-for-microbit-v1.hex)
+-   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/elecfreaks-cutebot-for-microbit-v2.hex)
 
 ### Elecfreaks Cutebot PRO {#cutebot-pro}
 
 ![Photograph of the Cutebot PRO](./images/cutebotpro.jpeg){:class="photo"}
 
 -   [Home](https://shop.elecfreaks.com/products/elecfreaks-smart-cutebot-pro-v2-programming-robot-car-for-micro-bit)
--   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/robot-elecfreaks-cutebotpro-for-microbit-v1.hex)
--   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/robot-elecfreaks-cutebotpro-for-microbit-v2.hex)
+-   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/elecfreaks-cutebotpro-for-microbit-v1.hex)
+-   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/elecfreaks-cutebotpro-for-microbit-v2.hex)
 
 ## InkSmith K8 {#inksmith-k8}
 
 ![Photograph of the K8](./images/inksmithk8.webp){:class="photo"}
 
 -   [Home](https://www.inksmith.ca/products/k8-robotics-kit)
--   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/robot-inksmith-k8-for-microbit-v1.hex)
--   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/robot-inksmith-k8-for-microbit-v2.hex)
+-   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/inksmith-k8-for-microbit-v1.hex)
+-   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/inksmith-k8-for-microbit-v2.hex)
 
 ### KeyStudio KS0426 Mini Smart Robot {#keystudio-mini}
 
 -   [Home](https://wiki.keyestudio.com/KS0426_Keyestudio_Micro%EF%BC%9Abit_Mini_Smart_Robot_Car_Kit_V2)
--   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/robot-keystudio-minismartrobot-for-microbit-v1.hex)
--   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/robot-keystudio-minismartrobot-for-microbit-v2.hex)
+-   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/keystudio-minismartrobot-for-microbit-v1.hex)
+-   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/keystudio-minismartrobot-for-microbit-v2.hex)
 
 ### KittenBot MiniLFR {#kittenbot-mlfr}
 
 ![Photo of the MiniLFR robot](./images/minilfr.png){:class="photo"}
 
 -   [Home](https://www.kittenbot.cc/products/kittenbot-minilfr-programmable-robot-car-kit-for-microbit)
--   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/robot-kittenbot-minilfr-for-microbit-v1.hex)
--   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/robot-kittenbot-minilfr-for-microbit-v2.hex)
+-   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/kittenbot-minilfr-for-microbit-v1.hex)
+-   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/kittenbot-minilfr-for-microbit-v2.hex)
 
 ### KittenBot Robotbit {#kittenbot-robotbit}
 
 ![Photo of the Robotbit robot](./images/robotbit.webp){:class="photo"}
 
 -   [Home](https://www.kittenbot.cc/products/robotbit-robotics-expansion-board-for-micro-bit)
--   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/robot-kittenbot-robotbit-for-microbit-v1.hex)
--   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/robot-kittenbot-robotbit-for-microbit-v2.hex)
+-   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/kittenbot-robotbit-for-microbit-v1.hex)
+-   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/kittenbot-robotbit-for-microbit-v2.hex)
 
 ### KittenBot Nanobit {#kittenbot-nanobit}
 
 ![Photo of the Nanobit robot](./images/nanobit.webp){:class="photo"}
 
 -   [Home](https://www.kittenbot.cc/products/kittenbot-nanobit-with-kb-link-downloader-for-makecode-python-and-arduino-programming)
--   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/robot-kittenbot-nanobit-for-microbit-v1.hex)
--   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/robot-kittenbot-nanobit-for-microbit-v2.hex)
+-   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/kittenbot-nanobit-for-microbit-v1.hex)
+-   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/kittenbot-nanobit-for-microbit-v2.hex)
 
 ### Yahboom Tiny:bit {#yahboom}
 
 ![Photograph of the Tiny:bit](./images/tinybit.jpeg){:class="photo"}
 
 -   [Home](http://www.yahboom.net/study/Tiny:bit)
--   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/robot-yahboom-tinybit-for-microbit-v1.hex)
--   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/robot-yahboom-tinybit-for-microbit-v2.hex)
+-   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/yahboom-tinybit-for-microbit-v1.hex)
+-   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/yahboom-tinybit-for-microbit-v2.hex)
 
 ### Contributing {#contributing}
 
