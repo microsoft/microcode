@@ -8,7 +8,8 @@ description: User guide for the MicroCode editor
 
 MicroCode makes it possible to program the [micro:bit V2](https://microbit.org)
 **without the need for an extra computer or Internet connection**.
-As shown above, the micro:bit slots into a (commercially available) shield that provides a color display and extra inputs. The MicroCode visual programming model is based on Kodu and targets children age 6-9, younger than the traditional audience for the micro:bit. MicroCode features:
+As shown above, the micro:bit slots into a (commercially available) shield that provides a color display and extra inputs. 
+The MicroCode visual programming model is based on Kodu and targets children age 6-9, younger than the traditional audience for the micro:bit. MicroCode features:
 
 -   [arcade shields](#arcade-shields) for the micro:bit V2 enable "on the go" programming with familiar game console controls
 -   kid-friendly, icon-based, structured code editor and [programming language](./language)
@@ -22,7 +23,7 @@ As shown above, the micro:bit slots into a (commercially available) shield that 
 
 Regardless of whether you are using the Arcade shield or web app, you first need to download the (localized) MicroCode hex file to your micro:bit V2. There are two ways to do this:
 
-1. visit the [web app](https://aka.ms/microcode) and follow directions to connect your micro:bit and [automatically download over WebUSB](#download)
+1. visit the [web app](https://microsoft.github.io/microcode/) and follow directions to connect your micro:bit and [automatically download over WebUSB](#download)
 2. visit the [localization](#localization) section to _download_ the MicroCode hex file to your computer and copy to your micro:bit V2 (plugged into your computer via USB).
 
 ## Arcade shields {#arcade-shield}
@@ -124,7 +125,7 @@ MicroCode is community translated through Crowdin. Please read on [localization]
 
 <video class="sample" poster="./videos/smiley-buttons.png" src="./videos/smiley-buttons.mp4" controls="true"></video>
 
-The MicroCode web editor is at [aka.ms/microcode](https://aka.ms/microcode).
+The MicroCode web editor is at [https://microsoft.github.io/microcode/](https://microsoft.github.io/microcode/).
 We recommend using the keyboard navigation:
 
 -   `Left`, `Right`, `Up`, `Down` moves the cursor

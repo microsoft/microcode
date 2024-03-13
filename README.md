@@ -9,7 +9,7 @@ Here's the classic micro:bit _Happy-A-button/Sad-B-button_ program in MicroCode:
 ## Getting started
 
 -   **Read the [MicroCode user guide](https://microsoft.github.io/microcode/docs/manual)**
--   [try it now!](https://aka.ms/microcode)
+-   [try it now!](https://microsoft.github.io/microcode/)
 
 ## [Arcade shields](https://microsoft.github.io/microcode/docs/manual#arcade-shield) for micro:bit V2
 
