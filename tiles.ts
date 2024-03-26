@@ -167,7 +167,10 @@ namespace microcode {
         TID_SENSOR_CAR_WALL = 25,
         TID_SENSOR_LINE = 26,
         TID_SENSOR_LED_LIGHT = 27, // this built-in light sensor on microbit
-        SENSOR_END = 27,
+        TID_SENSOR_MOISTURE = 28,
+        TID_SENSOR_DISTANCE = 29,
+        TID_SENSOR_REFLECTED = 30,
+        SENSOR_END = 30,
 
         ACTUATOR_START = 40,
         TID_ACTUATOR_SWITCH_PAGE = 40,
@@ -184,7 +187,8 @@ namespace microcode {
         TID_ACTUATOR_SHOW_NUMBER = 51,
         TID_ACTUATOR_CAR = 52,
         TID_ACTUATOR_SERVO_SET_ANGLE = 53,
-        ACTUATOR_END = 53,
+        TID_ACTUATOR_RELAY = 54,
+        ACTUATOR_END = 54,
 
         FILTER_START = 70,
         PRESS_RELEASE_START = 70,
