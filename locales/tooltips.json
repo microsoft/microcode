@@ -22,6 +22,9 @@
     "S10": "magnet",
     "S11": "slider",
     "S12": "dial",
+    "S16": "moisture",
+    "S17": "distance",
+    "S18": "reflected light",
 
     "rule": "rule",
     "add_rule": "add rule",
@@ -147,6 +150,7 @@
     "A20_sparkle": "sparkle",
 
     "A21_": "servo set angle",
+    "A22": "relay",
 
     "SR_LED": "LED {x} {y} {state}",
     "SR_NOTE": "note {index} {state}",

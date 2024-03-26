@@ -31,9 +31,11 @@ namespace microcode {
         if (name == TID_MODIFIER_CAR_SPIN_LEFT) return icondb.car_left_spin
         if (name == TID_MODIFIER_CAR_SPIN_RIGHT) return icondb.car_right_spin
         if (name == TID_MODIFIER_CAR_LED_COLOR_1) return icondb.tile_color_red
-        if (name == TID_MODIFIER_CAR_LED_COLOR_2) return icondb.tile_color_green
+        if (name == TID_MODIFIER_CAR_LED_COLOR_2 || name == TID_MODIFIER_ON)
+            return icondb.tile_color_green
         if (name == TID_MODIFIER_CAR_LED_COLOR_3) return icondb.tile_color_blue
-        if (name == TID_MODIFIER_CAR_LED_COLOR_4) return icondb.tile_color_black
+        if (name == TID_MODIFIER_CAR_LED_COLOR_4 || name == TID_MODIFIER_OFF)
+            return icondb.tile_color_black
         if (name == TID_MODIFIER_CAR_ARM_OPEN) return icondb.arm_open
         if (name == TID_MODIFIER_CAR_ARM_CLOSE) return icondb.arm_close
         if (name == TID_SENSOR_CAR_WALL) return icondb.car_wall
@@ -73,7 +75,11 @@ namespace microcode {
         if (name == TID_MODIFIER_RGB_LED_COLOR_SPARKLE)
             return icondb.tile_sparkle
         if (name == TID_ACTUATOR_SERVO_SET_ANGLE) return icondb.servo_set_angle
+        if (name == TID_ACTUATOR_RELAY) return icondb.relay
         if (name == TID_SENSOR_LIGHT) return icondb.light_sensor
+        if (name == TID_SENSOR_DISTANCE) return icondb.distance_sensor
+        if (name == TID_SENSOR_MOISTURE) return icondb.soil_moisture
+        // if (name == TID_SENSOR_REFLECTED) return icondb.reflected_light_sensor
         return null
     }
 

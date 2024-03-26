@@ -238,6 +238,8 @@ namespace docs {
             microcode.TID_MODIFIER_CAR_LED_COLOR_4,
             microcode.TID_MODIFIER_CAR_ARM_OPEN,
             microcode.TID_MODIFIER_CAR_ARM_CLOSE,
+            microcode.TID_MODIFIER_ON,
+            microcode.TID_MODIFIER_OFF,
             microcode.TID_SENSOR_CAR_WALL,
             microcode.TID_SENSOR_LINE,
             microcode.TID_FILTER_LINE_LEFT,
@@ -263,6 +265,7 @@ namespace docs {
             microcode.TID_MODIFIER_RGB_LED_COLOR_RAINBOW,
             microcode.TID_MODIFIER_RGB_LED_COLOR_SPARKLE,
             microcode.TID_ACTUATOR_SERVO_SET_ANGLE,
+            microcode.TID_ACTUATOR_RELAY,
             // editor icons
             "delete",
             "plus",
@@ -334,6 +337,9 @@ namespace docs {
             microcode.TID_SENSOR_TEMP,
             microcode.TID_SENSOR_LED_LIGHT,
             microcode.TID_SENSOR_LIGHT,
+            microcode.TID_SENSOR_DISTANCE,
+            microcode.TID_SENSOR_MOISTURE,
+            microcode.TID_SENSOR_REFLECTED,
 
             // micro:bit filters
             microcode.TID_FILTER_LOGO,
