@@ -67,6 +67,8 @@ namespace microcode {
     export const TID_FILTER_LINE_NEITHER = "F23N"
     export const TID_FILTER_LINE_NEITHER_LEFT = "F23NL"
     export const TID_FILTER_LINE_NEITHER_RIGHT = "F23NR"
+    export const TID_FILTER_ON = "F24"
+    export const TID_FILTER_OFF = "F25"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -255,7 +257,10 @@ namespace microcode {
         TID_FILTER_ACCEL_FACE_DOWN = 109,
         ACCELEROMETER_END2 = 109,
 
-        FILTER_END = 109,
+        TID_FILTER_ON = 110,
+        TID_FILTER_OFF = 111,
+
+        FILTER_END = 111,
 
         MODIFIER_START = 150,
         //
@@ -618,6 +623,10 @@ namespace microcode {
                 return TID_MODIFIER_ON
             case Tid.TID_MODIFIER_OFF:
                 return TID_MODIFIER_OFF
+            case Tid.TID_FILTER_ON:
+                return TID_FILTER_ON
+             case Tid.TID_FILTER_OFF:
+                return TID_FILTER_OFF
             default:
                 assert(false, "unknown tid: " + e)
                 return undefined
@@ -947,7 +956,6 @@ namespace microcode {
             case Tid.TID_SENSOR_LIGHT:
             case Tid.TID_SENSOR_LED_LIGHT:
             case Tid.TID_SENSOR_DISTANCE:
-            case Tid.TID_SENSOR_REFLECTED:
             case Tid.TID_SENSOR_MOISTURE:
                 return { allow: only5 }
             case Tid.TID_SENSOR_MICROPHONE:
@@ -989,6 +997,7 @@ namespace microcode {
             case Tid.TID_MODIFIER_RANDOM_TOSS:
                 return { allow: ["constant"], disallow: ["value_out"] }
             case Tid.TID_ACTUATOR_RELAY:
+            case Tid.TID_SENSOR_REFLECTED:
                 return { allow: ["on_off"] }
         }
         return undefined
@@ -1008,6 +1017,8 @@ namespace microcode {
         if (isCarModifier(tid)) return "car"
         if (isLedModifier(tid)) return "rgb_led"
         switch (tid) {
+            case Tid.TID_FILTER_ON:
+            case Tid.TID_FILTER_OFF:
             case Tid.TID_MODIFIER_ON:
             case Tid.TID_MODIFIER_OFF:
                 return "on_off"
