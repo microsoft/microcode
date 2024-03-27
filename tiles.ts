@@ -21,6 +21,9 @@ namespace microcode {
     export const TID_SENSOR_CAR_WALL = "S13"
     export const TID_SENSOR_LINE = "S14"
     export const TID_SENSOR_LED_LIGHT = "S15"
+    export const TID_SENSOR_MOISTURE = "S16"
+    export const TID_SENSOR_DISTANCE = "S17"
+    export const TID_SENSOR_REFLECTED = "S18"
 
     // filters for TID_SENSOR_PRESS
     export const TID_FILTER_PIN_0 = "F0"
@@ -64,6 +67,8 @@ namespace microcode {
     export const TID_FILTER_LINE_NEITHER = "F23N"
     export const TID_FILTER_LINE_NEITHER_LEFT = "F23NL"
     export const TID_FILTER_LINE_NEITHER_RIGHT = "F23NR"
+    export const TID_FILTER_ON = "F24"
+    export const TID_FILTER_OFF = "F25"
 
     export const TID_ACTUATOR_SWITCH_PAGE = "A1"
     export const TID_ACTUATOR_SPEAKER = "A2"
@@ -125,6 +130,7 @@ namespace microcode {
     export const TID_MODIFIER_RGB_LED_COLOR_SPARKLE = "A20_sparkle"
 
     export const TID_ACTUATOR_SERVO_SET_ANGLE = "A21_"
+    export const TID_ACTUATOR_RELAY = "A22"
 
     export const TID_ACTUATOR_CAR = "CAR"
     export const TID_MODIFIER_CAR_FORWARD = "CAR1"
@@ -141,6 +147,8 @@ namespace microcode {
     export const TID_MODIFIER_CAR_LED_COLOR_4 = "CAR12"
     export const TID_MODIFIER_CAR_ARM_OPEN = "CAR13"
     export const TID_MODIFIER_CAR_ARM_CLOSE = "CAR14"
+    export const TID_MODIFIER_ON = "M26"
+    export const TID_MODIFIER_OFF = "M27"
 
     // DO NOT CHANGE THESE NUMBERS
     export enum Tid {
@@ -167,7 +175,10 @@ namespace microcode {
         TID_SENSOR_CAR_WALL = 25,
         TID_SENSOR_LINE = 26,
         TID_SENSOR_LED_LIGHT = 27, // this built-in light sensor on microbit
-        SENSOR_END = 27,
+        TID_SENSOR_MOISTURE = 28,
+        TID_SENSOR_DISTANCE = 29,
+        TID_SENSOR_REFLECTED = 30,
+        SENSOR_END = 30,
 
         ACTUATOR_START = 40,
         TID_ACTUATOR_SWITCH_PAGE = 40,
@@ -184,7 +195,8 @@ namespace microcode {
         TID_ACTUATOR_SHOW_NUMBER = 51,
         TID_ACTUATOR_CAR = 52,
         TID_ACTUATOR_SERVO_SET_ANGLE = 53,
-        ACTUATOR_END = 53,
+        TID_ACTUATOR_RELAY = 54,
+        ACTUATOR_END = 54,
 
         FILTER_START = 70,
         PRESS_RELEASE_START = 70,
@@ -245,7 +257,10 @@ namespace microcode {
         TID_FILTER_ACCEL_FACE_DOWN = 109,
         ACCELEROMETER_END2 = 109,
 
-        FILTER_END = 109,
+        TID_FILTER_ON = 110,
+        TID_FILTER_OFF = 111,
+
+        FILTER_END = 111,
 
         MODIFIER_START = 150,
         //
@@ -313,7 +328,10 @@ namespace microcode {
         TID_MODIFIER_CAR_ARM_OPEN = 202,
         TID_MODIFIER_CAR_ARM_CLOSE = 203,
         CAR_MODIFIER_END = 203,
-        MODIFER_END = 203,
+
+        TID_MODIFIER_ON = 204,
+        TID_MODIFIER_OFF = 205,
+        MODIFER_END = 205,
     }
 
     type RangeMap = { [id: string]: [Tid, Tid] }
@@ -363,6 +381,12 @@ namespace microcode {
                 return TID_SENSOR_CAR_WALL
             case Tid.TID_SENSOR_LINE:
                 return TID_SENSOR_LINE
+            case Tid.TID_SENSOR_MOISTURE:
+                return TID_SENSOR_MOISTURE
+            case Tid.TID_SENSOR_DISTANCE:
+                return TID_SENSOR_DISTANCE
+            case Tid.TID_SENSOR_REFLECTED:
+                return TID_SENSOR_REFLECTED
 
             case Tid.TID_FILTER_PIN_0:
                 return TID_FILTER_PIN_0
@@ -562,7 +586,9 @@ namespace microcode {
 
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return TID_ACTUATOR_SERVO_SET_ANGLE
-
+            case Tid.TID_ACTUATOR_RELAY:
+                return TID_ACTUATOR_RELAY
+            
             case Tid.TID_ACTUATOR_CAR:
                 return TID_ACTUATOR_CAR
             case Tid.TID_MODIFIER_CAR_FORWARD:
@@ -593,6 +619,14 @@ namespace microcode {
                 return TID_MODIFIER_CAR_ARM_OPEN
             case Tid.TID_MODIFIER_CAR_ARM_CLOSE:
                 return TID_MODIFIER_CAR_ARM_CLOSE
+            case Tid.TID_MODIFIER_ON:
+                return TID_MODIFIER_ON
+            case Tid.TID_MODIFIER_OFF:
+                return TID_MODIFIER_OFF
+            case Tid.TID_FILTER_ON:
+                return TID_FILTER_ON
+             case Tid.TID_FILTER_OFF:
+                return TID_FILTER_OFF
             default:
                 assert(false, "unknown tid: " + e)
                 return undefined
@@ -686,6 +720,7 @@ namespace microcode {
             tidEnum <= Tid.TID_MODIFIER_RGB_LED_COLOR_6
         )
     }
+
     function isLedModifier(tidEnum: Tid) {
         return (
             isLedColor(tidEnum) ||
@@ -707,10 +742,14 @@ namespace microcode {
             tid == Tid.TID_SENSOR_CAR_WALL ||
             tid == Tid.TID_SENSOR_SLIDER ||
             tid == Tid.TID_ACTUATOR_SWITCH_PAGE ||
+            tid == Tid.TID_ACTUATOR_RELAY ||
             tid == Tid.TID_SENSOR_LIGHT ||
             tid == Tid.TID_SENSOR_LED_LIGHT ||
             tid == Tid.TID_SENSOR_MICROPHONE ||
-            tid == Tid.TID_SENSOR_MAGNET
+            tid == Tid.TID_SENSOR_MAGNET ||
+            tid == Tid.TID_SENSOR_LINE ||
+            tid == Tid.TID_SENSOR_DISTANCE ||
+            tid == Tid.TID_SENSOR_REFLECTED
         )
             return true
         // everything else except some filters is not terminal
@@ -743,6 +782,8 @@ namespace microcode {
 
     export function defaultModifier(tid: Tid): Tile {
         switch (tid) {
+            case Tid.TID_ACTUATOR_RELAY:
+                return Tid.TID_MODIFIER_OFF
             case Tid.TID_ACTUATOR_SPEAKER:
                 return Tid.TID_MODIFIER_EMOJI_GIGGLE
             case Tid.TID_ACTUATOR_CAR:
@@ -832,6 +873,12 @@ namespace microcode {
                 return 502
             case Tid.TID_SENSOR_ROTARY:
                 return 503
+            case Tid.TID_SENSOR_REFLECTED:
+                return 504
+            case Tid.TID_SENSOR_DISTANCE:
+                return 505
+            case Tid.TID_SENSOR_MOISTURE:
+                return 506
 
             case Tid.TID_ACTUATOR_PAINT:
                 return 10
@@ -861,6 +908,8 @@ namespace microcode {
                 return 600
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return 601
+            case Tid.TID_ACTUATOR_RELAY:
+                return 602
         }
         return 1000
     }
@@ -906,6 +955,8 @@ namespace microcode {
             case Tid.TID_SENSOR_MAGNET:
             case Tid.TID_SENSOR_LIGHT:
             case Tid.TID_SENSOR_LED_LIGHT:
+            case Tid.TID_SENSOR_DISTANCE:
+            case Tid.TID_SENSOR_MOISTURE:
                 return { allow: only5 }
             case Tid.TID_SENSOR_MICROPHONE:
                 return { allow: only5.concat([Tid.TID_FILTER_LOUD]) }
@@ -945,6 +996,9 @@ namespace microcode {
                 return { requires: [Tid.TID_SENSOR_RADIO_RECEIVE] }
             case Tid.TID_MODIFIER_RANDOM_TOSS:
                 return { allow: ["constant"], disallow: ["value_out"] }
+            case Tid.TID_ACTUATOR_RELAY:
+            case Tid.TID_SENSOR_REFLECTED:
+                return { allow: ["on_off"] }
         }
         return undefined
     }
@@ -963,6 +1017,11 @@ namespace microcode {
         if (isCarModifier(tid)) return "car"
         if (isLedModifier(tid)) return "rgb_led"
         switch (tid) {
+            case Tid.TID_FILTER_ON:
+            case Tid.TID_FILTER_OFF:
+            case Tid.TID_MODIFIER_ON:
+            case Tid.TID_MODIFIER_OFF:
+                return "on_off"
             case Tid.TID_FILTER_ROTARY_LEFT:
             case Tid.TID_FILTER_ROTARY_RIGHT:
                 return "rotary_event"
@@ -1075,6 +1134,7 @@ namespace microcode {
             case Tid.TID_ACTUATOR_RADIO_SEND:
             case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+            case Tid.TID_ACTUATOR_RELAY:
                 return JdKind.NumFmt
             case Tid.TID_SENSOR_CUP_X_WRITTEN:
             case Tid.TID_SENSOR_CUP_Y_WRITTEN:
@@ -1215,6 +1275,7 @@ namespace microcode {
                 return "yawn"
             //
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+            case Tid.TID_ACTUATOR_RELAY:
                 return jacs.NumFmt.I32
             //
             case Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE:
@@ -1282,7 +1343,10 @@ namespace microcode {
                 return robot.robots.RobotCompactCommand.ArmOpen
             case Tid.TID_MODIFIER_CAR_ARM_CLOSE:
                 return robot.robots.RobotCompactCommand.ArmClose
-
+            case Tid.TID_MODIFIER_ON:
+                return 1
+            case Tid.TID_MODIFIER_OFF:
+                return 0
             case Tid.TID_MODIFIER_RGB_LED_COLOR_1:
                 return 0x2f0000
             case Tid.TID_MODIFIER_RGB_LED_COLOR_2:
@@ -1328,6 +1392,7 @@ namespace microcode {
     }
 
     export function jdExternalClass(tile: Tile) {
+        return undefined
         const tid = getTid(tile)
         switch (tid) {
             case Tid.TID_FILTER_KITA_KEY_1:
@@ -1345,6 +1410,14 @@ namespace microcode {
                 return jacs.ServiceClass.Led
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return jacs.ServiceClass.Servo
+            case Tid.TID_ACTUATOR_RELAY:
+                return jacs.ServiceClass.Relay
+            case Tid.TID_SENSOR_MOISTURE:
+                return jacs.ServiceClass.Moisture
+            case Tid.TID_SENSOR_DISTANCE:
+                return jacs.ServiceClass.Distance
+            case Tid.TID_SENSOR_REFLECTED:
+                return jacs.ServiceClass.Reflected
             default:
                 return undefined
         }
@@ -1389,6 +1462,14 @@ namespace microcode {
                 return jacs.ServiceClass.Led
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return jacs.ServiceClass.Servo
+            case Tid.TID_ACTUATOR_RELAY:
+                return jacs.ServiceClass.Relay
+            case Tid.TID_SENSOR_DISTANCE:
+                return jacs.ServiceClass.Distance
+            case Tid.TID_SENSOR_REFLECTED:
+                return jacs.ServiceClass.Reflected
+            case Tid.TID_SENSOR_MOISTURE:
+                return jacs.ServiceClass.Moisture
             default:
                 return undefined
         }

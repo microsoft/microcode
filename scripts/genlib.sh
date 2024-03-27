@@ -2,7 +2,7 @@
 
 set -x
 set -e
-JS=../../jacscript
+JS=../../devicescript
 JSON=${JS}/built/prog-lib.json
 HERE=`pwd`
 rm -f ${JSON}

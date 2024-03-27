@@ -31,9 +31,11 @@ namespace microcode {
         if (name == TID_MODIFIER_CAR_SPIN_LEFT) return icondb.car_left_spin
         if (name == TID_MODIFIER_CAR_SPIN_RIGHT) return icondb.car_right_spin
         if (name == TID_MODIFIER_CAR_LED_COLOR_1) return icondb.tile_color_red
-        if (name == TID_MODIFIER_CAR_LED_COLOR_2) return icondb.tile_color_green
+        if (name == TID_MODIFIER_CAR_LED_COLOR_2 || name == TID_MODIFIER_ON || name == TID_FILTER_ON)
+            return icondb.tile_color_green
         if (name == TID_MODIFIER_CAR_LED_COLOR_3) return icondb.tile_color_blue
-        if (name == TID_MODIFIER_CAR_LED_COLOR_4) return icondb.tile_color_black
+        if (name == TID_MODIFIER_CAR_LED_COLOR_4 || name == TID_MODIFIER_OFF || name == TID_FILTER_OFF)
+            return icondb.tile_color_black
         if (name == TID_MODIFIER_CAR_ARM_OPEN) return icondb.arm_open
         if (name == TID_MODIFIER_CAR_ARM_CLOSE) return icondb.arm_close
         if (name == TID_SENSOR_CAR_WALL) return icondb.car_wall
@@ -73,7 +75,11 @@ namespace microcode {
         if (name == TID_MODIFIER_RGB_LED_COLOR_SPARKLE)
             return icondb.tile_sparkle
         if (name == TID_ACTUATOR_SERVO_SET_ANGLE) return icondb.servo_set_angle
+        if (name == TID_ACTUATOR_RELAY) return icondb.relay
         if (name == TID_SENSOR_LIGHT) return icondb.light_sensor
+        if (name == TID_SENSOR_DISTANCE) return icondb.distance_sensor
+        if (name == TID_SENSOR_MOISTURE) return icondb.soil_moisture
+        if (name == TID_SENSOR_REFLECTED) return icondb.reflected_light_sensor
         return null
     }
 
@@ -2986,6 +2992,26 @@ bffffffffffffffffffffffffffffffb
         . . . . . 6 6 6 f 6 6 6 . 5 5 4
         . . . . . . 6 6 6 6 6 . . 4 4 .
     `
+    export const reflected_light_sensor = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . f f f f f d d d d d . . . .
+    . . f f f f f d d d d d . . . .
+    . . f f f f f d d d d d . . . .
+    . . f 7 7 7 f d f f f d . . . .
+    . . f 7 7 7 f d f f f d . . . .
+    . . f 7 7 7 f d f f f d . . . .
+    . . f f f f f d d d d d . . . .
+    . . f f f f f d d d d d . . . .
+    . . f f f f f d d d d d . . . .
+    . . f f f f f d d d d d . . . .
+    . . f f f f f d d d d d . 5 5 5
+    . . f f f f f d d d d d . 5 5 5
+    . . . . . . . . . . . . . 5 5 4
+    . . . . . . . . . . . . . 4 4 .
+`
+
+    
     export const kita_key_1 = img`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -3396,6 +3422,63 @@ bffffffffffffffffffffffffffffffb
     . . . . . . d d . . c f f f c .
     . . . . . . . . . . c f f f c .    
     `
+
+    export const distance_sensor = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . 6 6 6 . . . . 6 6 6 . . .
+    . . 6 1 1 1 6 . . 6 1 1 1 6 . .
+    . 6 1 1 9 1 1 6 6 1 1 9 1 1 6 .
+    . 6 1 9 9 9 1 6 6 1 9 9 9 1 6 .
+    . 6 1 1 9 1 1 6 6 1 1 9 1 1 6 .
+    . . 6 1 1 1 6 . . 6 1 1 1 6 . .
+    . . . 6 6 6 . . . . 6 6 6 . . .
+    . . . . 2 . . . . . . 2 . . . .
+    . . . . 2 . . . . . 2 2 2 . . .
+    . . . . 2 . . . . 2 2 2 2 2 . .
+    . . 2 2 2 2 2 . . . . 2 . 5 5 5
+    . . . 2 2 2 . . . . . 2 . 5 5 5
+    . . . . 2 . . . . . . 2 . 5 5 4
+    . . . . . . . . . . . . . 4 4 .
+`
+
+export const soil_moisture = img`
+    . . . . . . . . . . . . . . . .
+    . . . . 8 . . . . . . . . . . .
+    . . . . 9 8 . . . . . 8 . . . .
+    . . . . 9 8 . . . . . 9 8 . . .
+    . . . 9 9 9 8 . . . . 9 8 . . .
+    . . . 9 9 9 8 . . . 9 9 9 8 . .
+    . . 9 9 9 9 9 8 . . 9 9 9 8 . .
+    . . 9 9 9 9 9 8 . 9 9 9 9 9 8 .
+    . . 9 1 9 9 9 8 . 9 9 9 9 9 8 .
+    . . 9 9 1 9 9 8 . 9 1 9 9 9 8 .
+    . . e 9 9 9 8 e e 9 9 1 9 9 8 .
+    . e e e e e e e e e 9 9 9 8 . .
+    . b e e e e e e e e e e e 5 5 5
+    . . b e e e e e e e e e b 5 5 5
+    . . . b b b b b b b b b . 5 5 4
+    . . . . . . . . . . . . . 4 4 .
+`
+
+export const relay = img`
+    . . . . . . . . . . . . . . . .
+    . . . . . f f f f f f . . . . .
+    . . . . f b b b b b b f . . . .
+    . . . f b b b b 9 8 b b f . . .
+    . . f b b b b 9 8 b b b b f . .
+    . . f b b b 9 8 b b b b b f . .
+    . . f b b 9 8 b b b 9 b b f . .
+    . 9 9 9 9 8 b b b b 8 9 9 9 9 .
+    . . f b b 9 b b b b 9 b b f . .
+    . . f b b b b b b b b b b f . .
+    . . f b b b b b b b b b b f . .
+    . . . f b b b b b b b b f . . .
+    . . . . f b b b b b b f . 5 5 5
+    . . . . . f f f f f f . . 5 5 5
+    . . . . . . . . . . . . . 5 5 4
+    . . . . . . . . . . . . . 4 4 .
+`
 
     /* maybe use these later
     export const rc_high = img`

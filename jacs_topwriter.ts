@@ -1442,11 +1442,13 @@ namespace jacs {
                 classId: ServiceClass.MagneticFieldLevel,
                 convert: "magnet_1_to_5",
             },
+            { classId: ServiceClass.Moisture, convert: "moisture_1_to_5" },
+            { classId: ServiceClass.Distance, convert: "distance_1_to_5" }
         ]
     }
 
     function needsEnable() {
-        return [ServiceClass.Radio, ServiceClass.Servo]
+        return [ServiceClass.Radio, ServiceClass.Servo] // TODO relay???
     }
 
     function scToName(sc: ServiceClass) {
@@ -1464,6 +1466,10 @@ namespace jacs {
         if (sc == ServiceClass.RotaryEncoder) return "rot"
         if (sc == ServiceClass.Led) return "led"
         if (sc == ServiceClass.Servo) return "srv"
+        if (sc == ServiceClass.Distance) return "dst"
+        if (sc == ServiceClass.Reflected) return "ref"
+        if (sc == ServiceClass.Moisture) return "moi"
+        if (sc == ServiceClass.Relay) return "rel"
         return "unknown"
     }
 
@@ -1482,6 +1488,10 @@ namespace jacs {
         RotaryEncoder = 0x10fa29c9,
         Led = 0x1609d4f0,
         Servo = 0x12fc9103,
+        Distance = 0x141a6b8a,
+        Reflected = 0x126c4cb2,
+        Moisture = 0x1d4aa3b3,
+        Relay = 0x183fe656
     }
 
     export function stop() {
