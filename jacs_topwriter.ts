@@ -1442,6 +1442,8 @@ namespace jacs {
                 classId: ServiceClass.MagneticFieldLevel,
                 convert: "magnet_1_to_5",
             },
+            { classId: ServiceClass.Moisture, convert: "moisture_1_to_5" },
+            { classId: ServiceClass.Distance, convert: "distance_1_to_5" }
         ]
     }
 
