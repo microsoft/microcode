@@ -49,6 +49,10 @@ function sound_1_to_5(/** @type SoundLevelRole */ sound) {
     return Math.round(4 * sound.soundLevel.read()) + 1
 }
 
+function moisture_1_to_5(/** @type SoilMoistureRole */ soilmoisture) {
+    return Math.round(4 * soilmoisture.moisture.read()) + 1
+}
+
 function round_temp(/** @type TemperatureRole */ temp) {
     return Math.round(temp.temperature.read())
 }
