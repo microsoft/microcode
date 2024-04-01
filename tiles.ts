@@ -1392,7 +1392,6 @@ namespace microcode {
     }
 
     export function jdExternalClass(tile: Tile) {
-        return undefined
         const tid = getTid(tile)
         switch (tid) {
             case Tid.TID_FILTER_KITA_KEY_1:
