@@ -1222,14 +1222,6 @@ namespace jacs {
                             }
                         )
                     } else if (
-                        microcode.jdKind(sensor) == microcode.JdKind.Rotary ||
-                        microcode.jdKind(sensor) == microcode.JdKind.Temperature
-                    ) {
-                        const varChanged = this.lookupGlobal(
-                            "z_var_changed" + role.index
-                        )
-                        this.ifEq(varChanged.read(wr), code, emitBody)
-                    } else if (
                         code != null &&
                         (rule.filters.length == 0 || // use event code if no filters
                             !wakeup ||
@@ -1255,6 +1247,11 @@ namespace jacs {
                                 filterValueIn(() => roleGlobal.read(wr))
                             }
                         )
+                    } else if (wakeup && wakeup != "NA") {
+                        const varChanged = this.lookupGlobal(
+                            "z_var_changed" + role.index
+                        )
+                        this.ifEq(varChanged.read(wr), code, emitBody)
                     } else if (
                         role.classIdentifier == SRV_JACSCRIPT_CONDITION
                     ) {
@@ -1422,6 +1419,7 @@ namespace jacs {
             case ServiceClass.Accelerometer: return "NA"
             case ServiceClass.RotaryEncoder: return "get_rotary"
             case ServiceClass.Temperature: return "round_temp"
+            case ServiceClass.Reflected: return "reflected_light"
         }
         return undefined
     }
