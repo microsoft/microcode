@@ -26,6 +26,9 @@ namespace microcode {
         else if (id === "S10") res = "magnet";
         else if (id === "S11") res = "slider";
         else if (id === "S12") res = "dial";
+        else if (id === "S16") res = "moisture";
+        else if (id === "S17") res = "distance";
+        else if (id === "S18") res = "reflected light";
         else if (id === "rule") res = "rule";
         else if (id === "add_rule") res = "add rule";
         else if (id === "delete_rule") res = "delete rule";
@@ -120,6 +123,7 @@ namespace microcode {
         else if (id === "A20_rainbow") res = "rainbow";
         else if (id === "A20_sparkle") res = "sparkle";
         else if (id === "A21_") res = "servo set angle";
+        else if (id === "A22") res = "relay";
         else if (id === "SR_LED") res = "LED {x} {y} {state}";
         else if (id === "SR_NOTE") res = "note {index} {state}";
         else if (id === "SR_ON") res = "on";
