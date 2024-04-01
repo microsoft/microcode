@@ -108,12 +108,8 @@ namespace jacs {
             if (!this.dispatcher) {
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
-                    const wakers = needsWakeup()
-                    // see if we need to refresh the streaming samples
-                    const wakeup = wakers.find(
-                        r => r.classId == this.classIdentifier
-                    )
-                    if (wakeup) {
+                    const wake_function = needsWakeUp_1_to_5(this.classIdentifier) || needsWakeupChanged(this.classIdentifier)
+                    if (wake_function) {
                         wr.emitStmt(Op.STMT3_QUERY_REG, [
                             this.emit(wr),
                             literal(JD_REG_STREAMING_SAMPLES),
@@ -131,8 +127,7 @@ namespace jacs {
                             }
                         )
                     }
-                    const enablers = needsEnable()
-                    if (enablers.indexOf(this.classIdentifier) >= 0) {
+                    if (needsEnable(this.classIdentifier)) {
                         this.parent.emitSetReg(this, JD_REG_INTENSITY, hex`01`)
                         if (this.classIdentifier == ServiceClass.Radio) {
                             // set group to 1
@@ -154,7 +149,7 @@ namespace jacs {
                         wr.emitExpr(Op.EXPR0_PKT_EV_CODE, [])
                     )
 
-                    if (wakeup && wakeup.convert) {
+                    if (wake_function && wake_function.includes("1_to_5")) {
                         const roleGlobal = this.parent.lookupGlobal(
                             "z_role" + this.index
                         )
@@ -162,12 +157,7 @@ namespace jacs {
                             "z_role_c" + this.index
                         )
                         roleGlobalChanged.write(wr, literal(0))
-                        this.parent.callLinked(wakeup.convert, [this.emit(wr)])
-
-                        // TODO: on a loud event, it might be too fast
-                        // TODO: to get value from the sensor
-                        // const microphone =
-                        //    this.classIdentifier == ServiceClass.SoundLevel
+                        this.parent.callLinked(wake_function, [this.emit(wr)])
 
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_NE, [
@@ -182,23 +172,13 @@ namespace jacs {
                                 roleGlobalChanged.write(wr, literal(1))
                             }
                         )
-                    } else if (
-                        this.classIdentifier == ServiceClass.RotaryEncoder ||
-                        this.classIdentifier == ServiceClass.Temperature
-                    ) {
-                        const isRotary =
-                            this.classIdentifier == ServiceClass.RotaryEncoder
-                        const sensorVar = isRotary
-                            ? this.parent.lookupGlobal("z_rotary" + this.index)
-                            : this.parent.lookupGlobal("z_temp")
+                    } else if (wake_function && wake_function != "NA") {
+                        const sensorVar = this.parent.lookupGlobal(getChangeGlobal(this.classIdentifier, this.index))
                         const sensorVarChanged = this.parent.lookupGlobal(
                             "z_var_changed" + this.index
                         )
                         sensorVarChanged.write(wr, literal(0))
-                        this.parent.callLinked(
-                            isRotary ? "get_rotary" : "round_temp",
-                            [this.emit(wr)]
-                        )
+                        this.parent.callLinked(wake_function, [this.emit(wr)])
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_NE, [
                                 wr.emitExpr(Op.EXPR0_RET_VAL, []),
@@ -500,7 +480,7 @@ namespace jacs {
 
         addRole(name: string, classId: number) {
             const r = new Role(this, classId, name)
-            if (needsEnable().indexOf(classId) >= 0) r.getDispatcher()
+            if (needsEnable(classId)) r.getDispatcher()
             return r
         }
 
@@ -1152,9 +1132,7 @@ namespace jacs {
 
             const role = this.lookupSensorRole(rule)
             name += "_" + role.name
-            const wakeup = needsWakeup().find(
-                r => r.classId == role.classIdentifier
-            )
+            const wakeup = needsWakeUp_1_to_5(role.classIdentifier) || needsWakeupChanged(role.classIdentifier)
 
             // get the procedure for this role
             this.withProcedure(role.getDispatcher(), wr => {
@@ -1261,7 +1239,7 @@ namespace jacs {
                             "z_role_code" + role.index
                         )
                         this.ifEq(roleEventCode.read(wr), code, emitBody)
-                    } else if (wakeup && wakeup.convert) {
+                    } else if (wakeup && wakeup.includes("1_to_5")) {
                         const roleGlobal = this.lookupGlobal(
                             "z_role" + role.index
                         )
@@ -1427,28 +1405,36 @@ namespace jacs {
         }
     }
 
-    function needsWakeup() {
-        return [
-            { classId: ServiceClass.Temperature, convert: undefined },
-            { classId: ServiceClass.SoundLevel, convert: "sound_1_to_5" },
-            { classId: ServiceClass.Accelerometer, convert: undefined },
-            { classId: ServiceClass.LightLevel, convert: "light_1_to_5" },
-            {
-                classId: ServiceClass.Potentiometer,
-                convert: "slider_1_to_5",
-            },
-            { classId: ServiceClass.RotaryEncoder, convert: undefined },
-            {
-                classId: ServiceClass.MagneticFieldLevel,
-                convert: "magnet_1_to_5",
-            },
-            { classId: ServiceClass.Moisture, convert: "moisture_1_to_5" },
-            { classId: ServiceClass.Distance, convert: "distance_1_to_5" }
-        ]
+    function needsWakeUp_1_to_5(classId: number) {
+        switch (classId) {
+            case ServiceClass.SoundLevel: return "sound_1_to_5"
+            case ServiceClass.LightLevel: return "light_1_to_5"
+            case ServiceClass.Potentiometer: return "slider_1_to_5"
+            case ServiceClass.MagneticFieldLevel: return "magnet_1_to_5"
+            case ServiceClass.Moisture: return "moisture_1_to_5"
+            case ServiceClass.Distance: return "distance_1_to_5"
+        }
+        return undefined
     }
 
-    function needsEnable() {
-        return [ServiceClass.Radio, ServiceClass.Servo] // TODO relay???
+    function needsWakeupChanged(classId: number) {
+        switch (classId) {
+            case ServiceClass.Accelerometer: return "NA"
+            case ServiceClass.RotaryEncoder: return "get_rotary"
+            case ServiceClass.Temperature: return "round_temp"
+        }
+        return undefined
+    }
+
+    function getChangeGlobal(classId: number, index: number) {
+        if (classId == ServiceClass.RotaryEncoder)
+            return "z_rotary" + index
+        else 
+            return "z_temp"
+    }
+
+    function needsEnable(classId: number): boolean {
+        return classId == ServiceClass.Accelerometer || classId == ServiceClass.RotaryEncoder
     }
 
     function scToName(sc: ServiceClass) {
