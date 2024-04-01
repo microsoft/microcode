@@ -108,8 +108,8 @@ namespace jacs {
             if (!this.dispatcher) {
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
-                    const wake_function = needsWakeUp_1_to_5(this.classIdentifier) || needsWakeupChanged(this.classIdentifier)
-                    if (wake_function) {
+                    const wakeup = needsWakeUp(this.classIdentifier)
+                    if (wakeup) {
                         wr.emitStmt(Op.STMT3_QUERY_REG, [
                             this.emit(wr),
                             literal(JD_REG_STREAMING_SAMPLES),
@@ -149,7 +149,7 @@ namespace jacs {
                         wr.emitExpr(Op.EXPR0_PKT_EV_CODE, [])
                     )
 
-                    if (wake_function && wake_function.includes("1_to_5")) {
+                    if (wakeup && wakeup.includes("1_to_5")) {
                         const roleGlobal = this.parent.lookupGlobal(
                             "z_role" + this.index
                         )
@@ -157,7 +157,7 @@ namespace jacs {
                             "z_role_c" + this.index
                         )
                         roleGlobalChanged.write(wr, literal(0))
-                        this.parent.callLinked(wake_function, [this.emit(wr)])
+                        this.parent.callLinked(wakeup, [this.emit(wr)])
 
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_NE, [
@@ -172,13 +172,13 @@ namespace jacs {
                                 roleGlobalChanged.write(wr, literal(1))
                             }
                         )
-                    } else if (wake_function && wake_function != "NA") {
+                    } else if (wakeup && wakeup != "NA") {
                         const sensorVar = this.parent.lookupGlobal(getChangeGlobal(this.classIdentifier, this.index))
                         const sensorVarChanged = this.parent.lookupGlobal(
                             "z_var_changed" + this.index
                         )
                         sensorVarChanged.write(wr, literal(0))
-                        this.parent.callLinked(wake_function, [this.emit(wr)])
+                        this.parent.callLinked(wakeup, [this.emit(wr)])
                         wr.emitIf(
                             wr.emitExpr(Op.EXPR2_NE, [
                                 wr.emitExpr(Op.EXPR0_RET_VAL, []),
@@ -1132,7 +1132,7 @@ namespace jacs {
 
             const role = this.lookupSensorRole(rule)
             name += "_" + role.name
-            const wakeup = needsWakeUp_1_to_5(role.classIdentifier) || needsWakeupChanged(role.classIdentifier)
+            const wakeup = needsWakeUp(role.classIdentifier)
 
             // get the procedure for this role
             this.withProcedure(role.getDispatcher(), wr => {
@@ -1424,6 +1424,10 @@ namespace jacs {
             case ServiceClass.Temperature: return "round_temp"
         }
         return undefined
+    }
+
+    function needsWakeUp(classId: number) {
+        return needsWakeUp_1_to_5(classId) || needsWakeupChanged(classId)
     }
 
     function getChangeGlobal(classId: number, index: number) {
