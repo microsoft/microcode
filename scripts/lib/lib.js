@@ -63,8 +63,8 @@ function round_temp(/** @type TemperatureRole */ temp) {
 }
 
 function reflected_light(/** @type ReflectedLightRole */ light) {
-    if (light.brightness.read() < 0.4) return 0
-    else return 1
+    if (light.brightness.read() < 0.4) return 1
+    else return 0
 }
 
 function magnet_1_to_5(/** @type MagneticFieldLevelRole */ magnet) {

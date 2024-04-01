@@ -1431,8 +1431,10 @@ namespace jacs {
     function getChangeGlobal(classId: number, index: number) {
         if (classId == ServiceClass.RotaryEncoder)
             return "z_rotary" + index
-        else 
+        else if (classId == ServiceClass.Temperature)
             return "z_temp"
+        else 
+            return "z_reflected"
     }
 
     function needsEnable(classId: number): boolean {

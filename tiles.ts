@@ -1197,11 +1197,13 @@ namespace microcode {
             case Tid.TID_FILTER_ROTARY_LEFT:
             case Tid.TID_FILTER_TEMP_WARMER:
             case Tid.TID_FILTER_LOUD:
+            case Tid.TID_FILTER_OFF:
                 return 1
             //
             case Tid.TID_FILTER_ROTARY_RIGHT:
             case Tid.TID_FILTER_TEMP_COLDER:
             case Tid.TID_FILTER_QUIET:
+            case Tid.TID_FILTER_ON:
                 return 2
             //
             case Tid.TID_FILTER_LINE_BOTH:
