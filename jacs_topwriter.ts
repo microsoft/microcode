@@ -838,11 +838,13 @@ namespace jacs {
 
             for (const m of modifiers) {
                 const cat = microcode.getCategory(m)
+                // TODO: make the following a function
                 if (
                     cat == "value_in" ||
                     cat == "value_out" ||
                     cat == "constant" ||
-                    cat == "line"
+                    cat == "line" ||
+                    cat == "on_off"
                 ) {
                     if (this.breaksValSeq(m) && currSeq.length) {
                         this.emitAddSeq(currSeq, trg, 0, first)
@@ -863,9 +865,15 @@ namespace jacs {
 
         private baseModifiers(rule: microcode.RuleDefn) {
             let modifiers = rule.modifiers
-            for (let i = 0; i < modifiers.length; ++i)
-                if (microcode.jdKind(modifiers[i]) == microcode.JdKind.Loop)
-                    return modifiers.slice(0, i)
+            if (modifiers.length == 0) {
+                const actuator = rule.actuators[0]
+                const defl = microcode.defaultModifier(actuator)
+                if (defl != undefined) return [defl]
+            } else {
+                for (let i = 0; i < modifiers.length; ++i)
+                    if (microcode.jdKind(modifiers[i]) == microcode.JdKind.Loop)
+                        return modifiers.slice(0, i)
+            }
             return modifiers
         }
 
@@ -951,7 +959,7 @@ namespace jacs {
                 pv.write(wr, currValue())
                 this.emitSendCmd(this.pipeRole(aJdparam), CMD_CONDITION_FIRE)
             } else if (aKind == microcode.JdKind.NumFmt) {
-                this.emitValueOut(rule, 1)
+                this.emitValueOut(rule, 1) // why 1?
                 const fmt: NumFmt = aJdparam
                 const sz = bitSize(fmt) >> 3
                 wr.emitStmt(Op.STMT1_SETUP_PKT_BUFFER, [literal(sz)])

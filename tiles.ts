@@ -686,7 +686,7 @@ namespace microcode {
         return (
             Tid.TID_MODIFIER_COIN_1 <= tidEnum &&
             tidEnum <= Tid.TID_MODIFIER_COIN_5
-        )
+         )
     }
 
     function isModifierVariable(tidEnum: Tid) {
@@ -1083,7 +1083,9 @@ namespace microcode {
         if (
             isLineEvent(tid) ||
             isFilterConstant(tid) ||
-            isModifierConstant(tid)
+            isModifierConstant(tid) || 
+            tid == Tid.TID_MODIFIER_ON ||
+            tid == Tid.TID_MODIFIER_OFF
         )
             return JdKind.Literal
         if (isTimespan(tid)) return JdKind.Timespan
@@ -1211,6 +1213,11 @@ namespace microcode {
             case Tid.TID_FILTER_ON:
                 return 2
             //
+            case Tid.TID_MODIFIER_ON:
+                return 0x00000001
+            case Tid.TID_MODIFIER_OFF:
+                return 0x00000000
+            //
             case Tid.TID_FILTER_LINE_BOTH:
                 return robot.robots.RobotCompactCommand.LineBoth
             case Tid.TID_FILTER_LINE_LEFT:
@@ -1260,6 +1267,11 @@ namespace microcode {
             case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
                 return jacs.NumFmt.U8
             //
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+                return jacs.NumFmt.I32
+            case Tid.TID_ACTUATOR_RELAY:
+                return jacs.NumFmt.U32
+            //
             case Tid.TID_MODIFIER_EMOJI_GIGGLE:
                 return "giggle"
             case Tid.TID_MODIFIER_EMOJI_HAPPY:
@@ -1280,10 +1292,6 @@ namespace microcode {
                 return "twinkle"
             case Tid.TID_MODIFIER_EMOJI_YAWN:
                 return "yawn"
-            //
-            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
-            case Tid.TID_ACTUATOR_RELAY:
-                return jacs.NumFmt.I32
             //
             case Tid.TID_MODIFIER_RGB_LED_COLOR_SPARKLE:
                 return "led_anim_sparkle"
@@ -1350,10 +1358,6 @@ namespace microcode {
                 return robot.robots.RobotCompactCommand.ArmOpen
             case Tid.TID_MODIFIER_CAR_ARM_CLOSE:
                 return robot.robots.RobotCompactCommand.ArmClose
-            case Tid.TID_MODIFIER_ON:
-                return 1
-            case Tid.TID_MODIFIER_OFF:
-                return 0
             case Tid.TID_MODIFIER_RGB_LED_COLOR_1:
                 return 0x2f0000
             case Tid.TID_MODIFIER_RGB_LED_COLOR_2:
@@ -1488,6 +1492,8 @@ namespace microcode {
             case Tid.TID_ACTUATOR_RGB_LED:
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return jacs.CMD_SET_REG | 0x2
+            case Tid.TID_ACTUATOR_RELAY:
+                return jacs.CMD_SET_REG | 0x1
             case Tid.TID_ACTUATOR_SPEAKER:
             case Tid.TID_ACTUATOR_MUSIC:
                 return 0x80
