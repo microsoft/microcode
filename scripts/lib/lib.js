@@ -54,8 +54,8 @@ function moisture_1_to_5(/** @type SoilMoistureRole */ soilmoisture) {
 }
 
 function distance_1_to_5(/** @type DistanceRole */ distance) {
-    if (distance.distance.read() >= 0.2) return 5
-    else return Math.round(distance.distance.read() / 0.05) + 1
+    if (distance.distance.read() >= 0.35) return 5
+    else return Math.round(distance.distance.read() / 0.1) + 1
 }
 
 function round_temp(/** @type TemperatureRole */ temp) {
