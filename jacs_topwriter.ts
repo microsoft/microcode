@@ -1447,8 +1447,7 @@ namespace jacs {
 
     function needsEnable(classId: number): boolean {
         return classId == ServiceClass.Accelerometer
-            || classId == ServiceClass.RotaryEncoder
-//
+            || classId == ServiceClass.Servo
     }
 
     function scToName(sc: ServiceClass) {
