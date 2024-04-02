@@ -958,6 +958,9 @@ namespace microcode {
             case Tid.TID_SENSOR_DISTANCE:
             case Tid.TID_SENSOR_MOISTURE:
                 return { allow: only5 }
+            case Tid.TID_SENSOR_REFLECTED:
+                return { allow: only5 }
+           //     return { allow: ["on_off_event"] }
             case Tid.TID_SENSOR_MICROPHONE:
                 return { allow: only5.concat([Tid.TID_FILTER_LOUD]) }
             case Tid.TID_SENSOR_TEMP:
@@ -997,7 +1000,6 @@ namespace microcode {
             case Tid.TID_MODIFIER_RANDOM_TOSS:
                 return { allow: ["constant"], disallow: ["value_out"] }
             case Tid.TID_ACTUATOR_RELAY:
-            case Tid.TID_SENSOR_REFLECTED:
                 return { allow: ["on_off"] }
         }
         return undefined
@@ -1019,6 +1021,7 @@ namespace microcode {
         switch (tid) {
             case Tid.TID_FILTER_ON:
             case Tid.TID_FILTER_OFF:
+                return "on_off_event"
             case Tid.TID_MODIFIER_ON:
             case Tid.TID_MODIFIER_OFF:
                 return "on_off"
@@ -1122,6 +1125,8 @@ namespace microcode {
             case Tid.TID_FILTER_ACCEL_FACE_UP:
             case Tid.TID_FILTER_LOUD:
             case Tid.TID_FILTER_QUIET:
+            case Tid.TID_FILTER_ON:
+            case Tid.TID_FILTER_OFF:
                 return JdKind.EventCode
             case Tid.TID_ACTUATOR_PAINT:
             case Tid.TID_ACTUATOR_SPEAKER:

@@ -29,10 +29,9 @@ namespace jacs {
         if (idx == 8 || idx == "round_temp")
             return hex`
 000000001400000000000100090000002d0004f9010104f901f4413b04a69003184b394b`
-        if (idx == 9 || idx == "reflected_light")
+        if (idx == 9 || idx == "reflected_1_to_5")
             return hex`
-0000000024000000000001000a0000002d0004f9010104f901f4413b04f9010190030502234df9000a914b4cf9
-0006904b394b00`
+000000001c000000000001000a0000002d0004f9010104f901f441943b04f9010190032618911a4b394b0000`
         if (idx == 10 || idx == "magnet_1_to_5")
             return hex`
 0000000020000000010001000b0000002d0004f9010104f901f4413b04f590030d4f009401002618911a4b394b
@@ -51,7 +50,7 @@ namespace jacs {
         if (idx == 14 || idx == "led_anim_sparkle")
             return hex`
 0000000050000000040001000f0000002d004f00915a0c4900064f02904f030103ae234df9002f010293264601
-02912c174f0004faffffff4f01925a0b49002d0004f920024205033f0103911a4f034cfc3001029326462d0004
+02912c174f0004faffffff4f01925a0b49002d0004f920024205023f0103911a4f034cfc3001029326462d0004
 f9200242394b`
         if (idx == 15 || idx == "led_anim_rainbow")
             return hex`
@@ -92,7 +91,7 @@ f9002a2d0190234f000100154df9000af32d01234f0001004df900079a52013b9033152d01952695
         if (idx == 7) return "moisture_1_to_5"
         if (idx == 8) return "distance_1_to_5"
         if (idx == 9) return "round_temp"
-        if (idx == 10) return "reflected_light"
+        if (idx == 10) return "reflected_1_to_5"
         if (idx == 11) return "magnet_1_to_5"
         if (idx == 12) return "led_set_color"
         if (idx == 13) return "led_setup_packet"
@@ -110,5 +109,5 @@ f9002a2d0190234f000100154df9000af32d01234f0001004df900079a52013b9033152d01952695
         if (idx == 22) return "_autoRefresh_"
         return null
     }
-    export const _binFloatLits = hex`666666666666d63f9a9999999999b93f9a9999999999d93fb81e85eb51b8ae3f`
+    export const _binFloatLits = hex`666666666666d63f9a9999999999b93fb81e85eb51b8ae3f`
 }

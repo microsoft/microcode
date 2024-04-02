@@ -1410,6 +1410,7 @@ namespace jacs {
             case ServiceClass.MagneticFieldLevel: return "magnet_1_to_5"
             case ServiceClass.Moisture: return "moisture_1_to_5"
             case ServiceClass.Distance: return "distance_1_to_5"
+            case ServiceClass.Reflected: return "reflected_1_to_5"
         }
         return undefined
     }
@@ -1419,7 +1420,6 @@ namespace jacs {
             case ServiceClass.Accelerometer: return "NA"
             case ServiceClass.RotaryEncoder: return "get_rotary"
             case ServiceClass.Temperature: return "round_temp"
-            case ServiceClass.Reflected: return "reflected_light"
         }
         return undefined
     }
@@ -1438,7 +1438,9 @@ namespace jacs {
     }
 
     function needsEnable(classId: number): boolean {
-        return classId == ServiceClass.Accelerometer || classId == ServiceClass.RotaryEncoder
+        return classId == ServiceClass.Accelerometer
+            || classId == ServiceClass.RotaryEncoder
+//
     }
 
     function scToName(sc: ServiceClass) {
