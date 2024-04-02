@@ -129,10 +129,6 @@ namespace jacs {
                     }
                     if (needsEnable(this.classIdentifier)) {
                         this.parent.emitSetReg(this, JD_REG_INTENSITY, hex`01`)
-                        if (this.classIdentifier == ServiceClass.Radio) {  // dead branch
-                            // set group to 1
-                            this.parent.emitSetReg(this, 0x80, hex`01`)
-                        }
                     }
 
                     this.top = wr.mkLabel("tp")
@@ -967,7 +963,6 @@ namespace jacs {
                 if (actuator == microcode.Tid.TID_ACTUATOR_SERVO_SET_ANGLE) {
                     // TODO no modulo yet in Jacs
                     // if (curr >= 12) { curr -= 12 }
-                    this.emitSetReg(role, JD_REG_INTENSITY, hex`01`)
                     wr.emitIf(
                         wr.emitExpr(Op.EXPR2_LE, [literal(12), currValue()]),
                         () => {
@@ -991,10 +986,6 @@ namespace jacs {
                 }
                 wr.emitBufStore(currValue(), fmt, 0)
                 this.emitSendCmd(role, microcode.serviceCommand(actuator))
-                // pause???
-                if (actuator == microcode.Tid.TID_ACTUATOR_SERVO_SET_ANGLE) {
-                    this.emitSetReg(role, JD_REG_INTENSITY, hex`00`)
-                }
             } else if (aKind == microcode.JdKind.Sequence) {
                 this.emitSequence(rule, 400)
             } else if (aKind == microcode.JdKind.ExtLibFn) {
@@ -1449,7 +1440,7 @@ namespace jacs {
     }
 
     function needsEnable(classId: number): boolean {
-        return classId == ServiceClass.Accelerometer
+        return false
     }
 
     function scToName(sc: ServiceClass) {
