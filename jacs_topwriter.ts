@@ -172,7 +172,7 @@ namespace jacs {
                                 roleGlobalChanged.write(wr, literal(1))
                             }
                         )
-                    } else if (wakeup && wakeup != "NA") {
+                    } else if (wakeup) {
                         const sensorVar = this.parent.lookupGlobal(
                             getGlobal(this.classIdentifier, this.index)
                         )
@@ -1230,7 +1230,8 @@ namespace jacs {
                             }
                         )
                     } else if (
-                        code != null && (wakeup == null || wakeup == "NA")
+                        code != null && (!wakeup || wakeup == "sound_1_to_5") &&
+                            (rule.filters.length == 0 || this.hasFilterEvent(rule))
                     ) {
                         const roleEventCode = this.lookupGlobal(
                             "z_role_code" + role.index
@@ -1423,7 +1424,6 @@ namespace jacs {
 
     function needsWakeupChanged(classId: number) {
         switch (classId) {
-            case ServiceClass.Accelerometer: return "NA"
             case ServiceClass.RotaryEncoder: return "get_rotary"
             case ServiceClass.Temperature: return "round_temp"
             case ServiceClass.Reflected: return "reflected"

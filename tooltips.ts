@@ -28,7 +28,7 @@ namespace microcode {
         else if (id === "S12") res = "dial";
         else if (id === "S16") res = "moisture";
         else if (id === "S17") res = "distance";
-        else if (id === "S18") res = "reflected light";
+        else if (id === "S18") res = "line";
         else if (id === "rule") res = "rule";
         else if (id === "add_rule") res = "add rule";
         else if (id === "delete_rule") res = "delete rule";

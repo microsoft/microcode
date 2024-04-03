@@ -1406,6 +1406,7 @@ namespace microcode {
             case Tid.TID_SENSOR_ROTARY:
             case Tid.TID_FILTER_LOUD:
             case Tid.TID_SENSOR_PRESS:
+            case Tid.TID_SENSOR_REFLECTED:
                 return 1
             case Tid.TID_SENSOR_ACCELEROMETER:
                 return 0x8b

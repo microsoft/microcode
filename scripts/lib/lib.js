@@ -63,7 +63,7 @@ function round_temp(/** @type TemperatureRole */ temp) {
 }
 
 function reflected(/** @type ReflectedLightRole */ light) {
-    return light.brightness.read()
+    return 1 - light.brightness.read()
     // return Math.round(4 * light.brightness.read()) + 1
 }
 

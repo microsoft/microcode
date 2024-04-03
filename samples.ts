@@ -204,6 +204,10 @@ namespace microcode {
             {
                 label: "start/stop servo",
                 b64: "JfiSPgtJN8wMSjfNAQEBAQEA",
+            },
+            {
+                label: "move off the line",
+                b64: "JfiSPh5uN8webzfNAQEBAQEA",
             }
         ])
     }
