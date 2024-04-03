@@ -754,7 +754,8 @@ namespace microcode {
             tid == Tid.TID_SENSOR_LINE ||
             tid == Tid.TID_SENSOR_DISTANCE ||
             tid == Tid.TID_SENSOR_REFLECTED ||
-            tid == Tid.TID_ACTUATOR_SERVO_POWER
+            tid == Tid.TID_ACTUATOR_SERVO_POWER ||
+            tid == Tid.TID_SENSOR_MOISTURE
         )
             return true
         // everything else except some filters is not terminal
@@ -771,6 +772,7 @@ namespace microcode {
         // these tids are dead
         if (tid == Tid.TID_ACTUATOR_MICROPHONE || tid == Tid.TID_FILTER_ACCEL)
             return false
+        return true
         const ext = jdExternalClass(tile)
         if (ext && !jacs.debugOut) {
             const count = jdc.numServiceInstances(ext)

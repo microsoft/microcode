@@ -129,6 +129,10 @@ namespace microcode {
         else if (id === "SR_NOTE") res = "note {index} {state}";
         else if (id === "SR_ON") res = "on";
         else if (id === "SR_OFF") res = "off";
+        else if (id === "M26") res = "on";
+        else if (id === "M27") res = "off";
+        else if (id === "F24") res = "on";
+        else if (id === "F25") res = "off";
         else if (id === "CAR") res = "robot";
         else if (id === "CAR1") res = "forward";
         else if (id === "CAR2") res = "reverse";
