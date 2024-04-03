@@ -129,6 +129,10 @@ namespace jacs {
                     }
                     if (needsEnable(this.classIdentifier)) {
                         this.parent.emitSetReg(this, JD_REG_INTENSITY, hex`01`)
+                        if (this.classIdentifier == ServiceClass.Radio) {
+                            // set group to 1
+                            this.parent.emitSetReg(this, 0x80, hex`01`)
+                        }
                     }
 
                     this.top = wr.mkLabel("tp")
@@ -150,7 +154,7 @@ namespace jacs {
                             "z_role" + this.index
                         )
                         const roleGlobalChanged = this.parent.lookupGlobal(
-                            "z_role_c" + this.index
+                            "z_role_ch" + this.index
                         )
                         roleGlobalChanged.write(wr, literal(0))
                         this.parent.callLinked(wakeup, [this.emit(wr)])
@@ -169,9 +173,11 @@ namespace jacs {
                             }
                         )
                     } else if (wakeup && wakeup != "NA") {
-                        const sensorVar = this.parent.lookupGlobal(getChangeGlobal(this.classIdentifier, this.index))
+                        const sensorVar = this.parent.lookupGlobal(
+                            getGlobal(this.classIdentifier, this.index)
+                        )
                         const sensorVarChanged = this.parent.lookupGlobal(
-                            "z_var_changed" + this.index
+                            "z_role_ch" + this.index
                         )
                         sensorVarChanged.write(wr, literal(0))
                         this.parent.callLinked(wakeup, [this.emit(wr)])
@@ -1224,36 +1230,35 @@ namespace jacs {
                             }
                         )
                     } else if (
-                        code != null &&
-                        (rule.filters.length == 0 || // use event code if no filters
-                            !wakeup ||
-                            this.hasFilterEvent(rule))
+                        code != null && (wakeup == null || wakeup == "NA")
                     ) {
                         const roleEventCode = this.lookupGlobal(
                             "z_role_code" + role.index
                         )
                         this.ifEq(roleEventCode.read(wr), code, emitBody)
-                    } else if (wakeup && wakeup.includes("1_to_5")) {
-                        const roleGlobal = this.lookupGlobal(
-                            "z_role" + role.index
-                        )
-                        const roleGlobalChanged = this.lookupGlobal(
-                            "z_role_c" + role.index
-                        )
-                        wr.emitIf(
-                            wr.emitExpr(Op.EXPR2_EQ, [
-                                literal(1),
-                                roleGlobalChanged.read(wr),
-                            ]),
-                            () => {
-                                filterValueIn(() => roleGlobal.read(wr))
-                            }
-                        )
-                    } else if (wakeup && wakeup != "NA") {
-                        const varChanged = this.lookupGlobal(
-                            "z_var_changed" + role.index
-                        )
-                        this.ifEq(varChanged.read(wr), code, emitBody)
+                    } else if (wakeup) {
+                        if (wakeup.includes("1_to_5")) {
+                            const roleGlobal = this.lookupGlobal(
+                                "z_role" + role.index
+                            )
+                            const roleGlobalChanged = this.lookupGlobal(
+                                "z_role_ch" + role.index
+                            )
+                            wr.emitIf(
+                                wr.emitExpr(Op.EXPR2_EQ, [
+                                    literal(1),
+                                    roleGlobalChanged.read(wr),
+                                ]),
+                                () => {
+                                    filterValueIn(() => roleGlobal.read(wr))
+                                }
+                            )
+                        } else {
+                            const varChanged = this.lookupGlobal(
+                                "z_role_ch" + role.index
+                            )
+                            this.ifEq(varChanged.read(wr), code, emitBody)
+                        }
                     } else if (
                         role.classIdentifier == SRV_JACSCRIPT_CONDITION
                     ) {
@@ -1412,7 +1417,6 @@ namespace jacs {
             case ServiceClass.MagneticFieldLevel: return "magnet_1_to_5"
             case ServiceClass.Moisture: return "moisture_1_to_5"
             case ServiceClass.Distance: return "distance_1_to_5"
-            case ServiceClass.Reflected: return "reflected_1_to_5"
         }
         return undefined
     }
@@ -1422,6 +1426,7 @@ namespace jacs {
             case ServiceClass.Accelerometer: return "NA"
             case ServiceClass.RotaryEncoder: return "get_rotary"
             case ServiceClass.Temperature: return "round_temp"
+            case ServiceClass.Reflected: return "reflected"
         }
         return undefined
     }
@@ -1430,13 +1435,11 @@ namespace jacs {
         return needsWakeUp_1_to_5(classId) || needsWakeupChanged(classId)
     }
 
-    function getChangeGlobal(classId: number, index: number) {
-        if (classId == ServiceClass.RotaryEncoder)
-            return "z_rotary" + index
-        else if (classId == ServiceClass.Temperature)
+    function getGlobal(classId: number, index: number) {
+        if (classId == ServiceClass.Temperature)
             return "z_temp"
         else 
-            return "z_reflected"
+            return "z_role" + index
     }
 
     function needsEnable(classId: number): boolean {

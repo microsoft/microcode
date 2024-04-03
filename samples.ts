@@ -200,6 +200,10 @@ namespace microcode {
             {
                 label: "don't stand too close to me!",
                 b64: "JfiSPh1OL7YdUC+6HVIvtwEBAQEBAA==",
+            },
+            {
+                label: "start/stop servo",
+                b64: "JfiSPgtJN8wMSjfNAQEBAQEA",
             }
         ])
     }

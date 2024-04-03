@@ -772,7 +772,6 @@ namespace microcode {
         // these tids are dead
         if (tid == Tid.TID_ACTUATOR_MICROPHONE || tid == Tid.TID_FILTER_ACCEL)
             return false
-        return true
         const ext = jdExternalClass(tile)
         if (ext && !jacs.debugOut) {
             const count = jdc.numServiceInstances(ext)
@@ -969,8 +968,8 @@ namespace microcode {
             case Tid.TID_SENSOR_MOISTURE:
                 return { allow: only5 }
             case Tid.TID_SENSOR_REFLECTED:
-                return { allow: only5 }
-            //     return { allow: ["on_off_event"] }
+            // return { allow: only5 }
+                 return { allow: ["on_off_event"] }
             case Tid.TID_SENSOR_MICROPHONE:
                 return { allow: only5.concat([Tid.TID_FILTER_LOUD]) }
             case Tid.TID_SENSOR_TEMP:
@@ -1214,13 +1213,13 @@ namespace microcode {
                 return 2
             //
             case Tid.TID_FILTER_ROTARY_LEFT:
-            case Tid.TID_FILTER_TEMP_WARMER:
+            case Tid.TID_FILTER_TEMP_COLDER:
             case Tid.TID_FILTER_LOUD:
             case Tid.TID_FILTER_OFF:
                 return 1
             //
             case Tid.TID_FILTER_ROTARY_RIGHT:
-            case Tid.TID_FILTER_TEMP_COLDER:
+            case Tid.TID_FILTER_TEMP_WARMER:
             case Tid.TID_FILTER_QUIET:
             case Tid.TID_FILTER_ON:
                 return 2

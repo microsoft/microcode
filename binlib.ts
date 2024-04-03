@@ -29,9 +29,9 @@ namespace jacs {
         if (idx == 8 || idx == "round_temp")
             return hex`
 000000001400000000000100090000002d0004f9010104f901f4413b04a69003184b394b`
-        if (idx == 9 || idx == "reflected_1_to_5")
+        if (idx == 9 || idx == "reflected")
             return hex`
-000000001c000000000001000a0000002d0004f9010104f901f441943b04f9010190032618911a4b394b0000`
+0000000018000000000001000a0000002d0004f9010104f901f4413b04f9010190034b394b000000`
         if (idx == 10 || idx == "magnet_1_to_5")
             return hex`
 0000000020000000010001000b0000002d0004f9010104f901f4413b04f590030d4f009401002618911a4b394b
@@ -91,7 +91,7 @@ f9002a2d0190234f000100154df9000af32d01234f0001004df900079a52013b9033152d01952695
         if (idx == 7) return "moisture_1_to_5"
         if (idx == 8) return "distance_1_to_5"
         if (idx == 9) return "round_temp"
-        if (idx == 10) return "reflected_1_to_5"
+        if (idx == 10) return "reflected"
         if (idx == 11) return "magnet_1_to_5"
         if (idx == 12) return "led_set_color"
         if (idx == 13) return "led_setup_packet"

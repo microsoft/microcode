@@ -24,7 +24,7 @@
     "S12": "dial",
     "S16": "moisture",
     "S17": "distance",
-    "S18": "reflected light",
+    "S18": "line",
 
     "rule": "rule",
     "add_rule": "add rule",

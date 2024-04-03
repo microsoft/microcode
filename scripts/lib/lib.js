@@ -62,8 +62,9 @@ function round_temp(/** @type TemperatureRole */ temp) {
     return Math.round(temp.temperature.read())
 }
 
-function reflected_1_to_5(/** @type ReflectedLightRole */ light) {
-    return Math.round(4 * light.brightness.read()) + 1
+function reflected(/** @type ReflectedLightRole */ light) {
+    return light.brightness.read()
+    // return Math.round(4 * light.brightness.read()) + 1
 }
 
 function magnet_1_to_5(/** @type MagneticFieldLevelRole */ magnet) {
