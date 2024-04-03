@@ -1440,7 +1440,7 @@ namespace jacs {
     }
 
     function needsEnable(classId: number): boolean {
-        return false
+        return classId == ServiceClass.Radio
     }
 
     function scToName(sc: ServiceClass) {
