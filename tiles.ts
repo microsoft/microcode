@@ -771,7 +771,6 @@ namespace microcode {
         // these tids are dead
         if (tid == Tid.TID_ACTUATOR_MICROPHONE || tid == Tid.TID_FILTER_ACCEL)
             return false
-        return true
         const ext = jdExternalClass(tile)
         if (ext && !jacs.debugOut) {
             const count = jdc.numServiceInstances(ext)
