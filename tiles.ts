@@ -131,6 +131,7 @@ namespace microcode {
 
     export const TID_ACTUATOR_SERVO_SET_ANGLE = "A21_"
     export const TID_ACTUATOR_RELAY = "A22"
+    export const TID_ACTUATOR_SERVO_POWER = "A23"
 
     export const TID_ACTUATOR_CAR = "CAR"
     export const TID_MODIFIER_CAR_FORWARD = "CAR1"
@@ -196,7 +197,8 @@ namespace microcode {
         TID_ACTUATOR_CAR = 52,
         TID_ACTUATOR_SERVO_SET_ANGLE = 53,
         TID_ACTUATOR_RELAY = 54,
-        ACTUATOR_END = 54,
+        TID_ACTUATOR_SERVO_POWER = 55,
+        ACTUATOR_END = 55,
 
         FILTER_START = 70,
         PRESS_RELEASE_START = 70,
@@ -586,9 +588,11 @@ namespace microcode {
 
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return TID_ACTUATOR_SERVO_SET_ANGLE
+            case Tid.TID_ACTUATOR_SERVO_POWER:
+                return TID_ACTUATOR_SERVO_POWER
             case Tid.TID_ACTUATOR_RELAY:
                 return TID_ACTUATOR_RELAY
-            
+
             case Tid.TID_ACTUATOR_CAR:
                 return TID_ACTUATOR_CAR
             case Tid.TID_MODIFIER_CAR_FORWARD:
@@ -625,7 +629,7 @@ namespace microcode {
                 return TID_MODIFIER_OFF
             case Tid.TID_FILTER_ON:
                 return TID_FILTER_ON
-             case Tid.TID_FILTER_OFF:
+            case Tid.TID_FILTER_OFF:
                 return TID_FILTER_OFF
             default:
                 assert(false, "unknown tid: " + e)
@@ -658,10 +662,10 @@ namespace microcode {
 
     function isAccelerometerEvent(tidEnum: Tid) {
         return (
-            Tid.ACCELEROMETER_START <= tidEnum &&
-            tidEnum <= Tid.ACCELEROMETER_END ||
-            Tid.ACCELEROMETER_START2 <= tidEnum &&
-            tidEnum <= Tid.ACCELEROMETER_END2
+            (Tid.ACCELEROMETER_START <= tidEnum &&
+                tidEnum <= Tid.ACCELEROMETER_END) ||
+            (Tid.ACCELEROMETER_START2 <= tidEnum &&
+                tidEnum <= Tid.ACCELEROMETER_END2)
         )
     }
 
@@ -686,7 +690,7 @@ namespace microcode {
         return (
             Tid.TID_MODIFIER_COIN_1 <= tidEnum &&
             tidEnum <= Tid.TID_MODIFIER_COIN_5
-         )
+        )
     }
 
     function isModifierVariable(tidEnum: Tid) {
@@ -749,7 +753,8 @@ namespace microcode {
             tid == Tid.TID_SENSOR_MAGNET ||
             tid == Tid.TID_SENSOR_LINE ||
             tid == Tid.TID_SENSOR_DISTANCE ||
-            tid == Tid.TID_SENSOR_REFLECTED
+            tid == Tid.TID_SENSOR_REFLECTED ||
+            tid == Tid.TID_ACTUATOR_SERVO_POWER
         )
             return true
         // everything else except some filters is not terminal
@@ -766,6 +771,7 @@ namespace microcode {
         // these tids are dead
         if (tid == Tid.TID_ACTUATOR_MICROPHONE || tid == Tid.TID_FILTER_ACCEL)
             return false
+        return true
         const ext = jdExternalClass(tile)
         if (ext && !jacs.debugOut) {
             const count = jdc.numServiceInstances(ext)
@@ -783,6 +789,7 @@ namespace microcode {
     export function defaultModifier(tid: Tid): Tile {
         switch (tid) {
             case Tid.TID_ACTUATOR_RELAY:
+            case Tid.TID_ACTUATOR_SERVO_POWER:
                 return Tid.TID_MODIFIER_OFF
             case Tid.TID_ACTUATOR_SPEAKER:
                 return Tid.TID_MODIFIER_EMOJI_GIGGLE
@@ -906,10 +913,12 @@ namespace microcode {
             // jacdac
             case Tid.TID_ACTUATOR_RGB_LED:
                 return 600
-            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+            case Tid.TID_ACTUATOR_SERVO_POWER:
                 return 601
-            case Tid.TID_ACTUATOR_RELAY:
+            case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return 602
+            case Tid.TID_ACTUATOR_RELAY:
+                return 603
         }
         return 1000
     }
@@ -960,7 +969,7 @@ namespace microcode {
                 return { allow: only5 }
             case Tid.TID_SENSOR_REFLECTED:
                 return { allow: only5 }
-           //     return { allow: ["on_off_event"] }
+            //     return { allow: ["on_off_event"] }
             case Tid.TID_SENSOR_MICROPHONE:
                 return { allow: only5.concat([Tid.TID_FILTER_LOUD]) }
             case Tid.TID_SENSOR_TEMP:
@@ -1000,6 +1009,7 @@ namespace microcode {
             case Tid.TID_MODIFIER_RANDOM_TOSS:
                 return { allow: ["constant"], disallow: ["value_out"] }
             case Tid.TID_ACTUATOR_RELAY:
+            case Tid.TID_ACTUATOR_SERVO_POWER:
                 return { allow: ["on_off"] }
         }
         return undefined
@@ -1083,7 +1093,7 @@ namespace microcode {
         if (
             isLineEvent(tid) ||
             isFilterConstant(tid) ||
-            isModifierConstant(tid) || 
+            isModifierConstant(tid) ||
             tid == Tid.TID_MODIFIER_ON ||
             tid == Tid.TID_MODIFIER_OFF
         )
@@ -1142,6 +1152,7 @@ namespace microcode {
             case Tid.TID_ACTUATOR_RADIO_SET_GROUP:
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
             case Tid.TID_ACTUATOR_RELAY:
+            case Tid.TID_ACTUATOR_SERVO_POWER:
                 return JdKind.NumFmt
             case Tid.TID_SENSOR_CUP_X_WRITTEN:
             case Tid.TID_SENSOR_CUP_Y_WRITTEN:
@@ -1270,6 +1281,7 @@ namespace microcode {
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return jacs.NumFmt.I32
             case Tid.TID_ACTUATOR_RELAY:
+            case Tid.TID_ACTUATOR_SERVO_POWER:
                 return jacs.NumFmt.U32
             //
             case Tid.TID_MODIFIER_EMOJI_GIGGLE:
@@ -1419,6 +1431,7 @@ namespace microcode {
             case Tid.TID_ACTUATOR_RGB_LED:
                 return jacs.ServiceClass.Led
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+            case Tid.TID_ACTUATOR_SERVO_POWER:
                 return jacs.ServiceClass.Servo
             case Tid.TID_ACTUATOR_RELAY:
                 return jacs.ServiceClass.Relay
@@ -1471,6 +1484,7 @@ namespace microcode {
             case Tid.TID_ACTUATOR_RGB_LED:
                 return jacs.ServiceClass.Led
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
+            case Tid.TID_ACTUATOR_SERVO_POWER:
                 return jacs.ServiceClass.Servo
             case Tid.TID_ACTUATOR_RELAY:
                 return jacs.ServiceClass.Relay
@@ -1493,6 +1507,7 @@ namespace microcode {
             case Tid.TID_ACTUATOR_SERVO_SET_ANGLE:
                 return jacs.CMD_SET_REG | 0x2
             case Tid.TID_ACTUATOR_RELAY:
+            case Tid.TID_ACTUATOR_SERVO_POWER:
                 return jacs.CMD_SET_REG | 0x1
             case Tid.TID_ACTUATOR_SPEAKER:
             case Tid.TID_ACTUATOR_MUSIC:

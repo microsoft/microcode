@@ -124,6 +124,7 @@ namespace microcode {
         else if (id === "A20_sparkle") res = "sparkle";
         else if (id === "A21_") res = "servo set angle";
         else if (id === "A22") res = "relay";
+        else if (id === "A23") res = "servo power";
         else if (id === "SR_LED") res = "LED {x} {y} {state}";
         else if (id === "SR_NOTE") res = "note {index} {state}";
         else if (id === "SR_ON") res = "on";

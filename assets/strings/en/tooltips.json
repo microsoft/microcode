@@ -132,6 +132,7 @@
   "A20_sparkle": "sparkle",
   "A21_": "servo set angle",
   "A22": "relay",
+  "A23": "servo power",
   "SR_LED": "LED {x} {y} {state}",
   "SR_NOTE": "note {index} {state}",
   "SR_ON": "on",
