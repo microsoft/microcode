@@ -22,6 +22,9 @@
     "S10": "magnet",
     "S11": "slider",
     "S12": "dial",
+    "S16": "moisture",
+    "S17": "distance",
+    "S18": "line",
 
     "rule": "rule",
     "add_rule": "add rule",
@@ -147,11 +150,17 @@
     "A20_sparkle": "sparkle",
 
     "A21_": "servo set angle",
+    "A22": "relay",
+    "A23": "servo power",
 
     "SR_LED": "LED {x} {y} {state}",
     "SR_NOTE": "note {index} {state}",
     "SR_ON": "on",
     "SR_OFF": "off",
+    "M26": "on",
+    "M27": "off",
+    "F24": "on",
+    "F25": "off",
 
     "CAR": "robot",
     "CAR1": "forward",

@@ -106,7 +106,7 @@ namespace microcode {
             {
                 label: "railroad crossing",
                 ariaId: "N12",
-                b64: "JfiSPgtJNZsLSS+2u7ILSjWfC0ovuLuyC00vvLIBAQEBAQA=",
+                b64: "JfiSPgo3zAtJNZsLSS+2u7ILSjWfC0ovuLuyC00vvLIBAQEBAQA=",
                 icon: "railroad_crossing",
             },
             {
@@ -193,6 +193,22 @@ namespace microcode {
                 label: "robot drift tester",
                 b64: "JfiSPgoumwtJNL7IC0o0w8cSNMLGAQEBAQEA",
             },
+            {
+                label: "more water please!",
+                b64: "JfiSPhxONswcUDbNAQEBAQEA",
+            },
+            {
+                label: "don't stand too close to me!",
+                b64: "JfiSPh1OL7YdUC+6HVIvtwEBAQEBAA==",
+            },
+            {
+                label: "start/stop servo",
+                b64: "JfiSPgtJN8wMSjfNAQEBAQEA",
+            },
+            {
+                label: "move off the line",
+                b64: "JfiSPh5uN8webzfNAQEBAQEA",
+            }
         ])
     }
 

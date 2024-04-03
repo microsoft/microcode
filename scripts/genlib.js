@@ -1,7 +1,3 @@
-// IMPORTANT: we need to use devicescript/jacscript from this commit/branch
-// commit 66237c5b09cb463ac5d93446d054c2dbcaa015da
-// (HEAD -> jacs_for_microcode, origin / jacs_for_microcode)
-
 const fs = require("fs")
 
 function arg(s) {

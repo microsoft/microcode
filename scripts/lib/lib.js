@@ -49,8 +49,22 @@ function sound_1_to_5(/** @type SoundLevelRole */ sound) {
     return Math.round(4 * sound.soundLevel.read()) + 1
 }
 
+function moisture_1_to_5(/** @type SoilMoistureRole */ soilmoisture) {
+    return Math.round(4 * soilmoisture.moisture.read()) + 1
+}
+
+function distance_1_to_5(/** @type DistanceRole */ distance) {
+    if (distance.distance.read() >= 0.35) return 5
+    else return Math.round(distance.distance.read() / 0.1) + 1
+}
+
 function round_temp(/** @type TemperatureRole */ temp) {
     return Math.round(temp.temperature.read())
+}
+
+function reflected(/** @type ReflectedLightRole */ light) {
+    return 1 - light.brightness.read()
+    // return Math.round(4 * light.brightness.read()) + 1
 }
 
 function magnet_1_to_5(/** @type MagneticFieldLevelRole */ magnet) {
