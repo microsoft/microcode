@@ -75,7 +75,7 @@ These sample work with a [2 wheel robot controlled by a micro:bit](./robot).
 
 These samples use [Jacdac](https://aka.ms/jacdac) modules to extend the capabilities of the
 micro:bit. The programming tiles for the modules appear in MicroCode when the modules are
-plugged in (either via a Jacdaptor or the Kittenbot shield). All the modules from [Kittenbot Jacdac Kit A](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacstarterkitawithjacdaptorformicrobitv2v10/) are supported.
+plugged in (either via a Jacdaptor or the Kittenbot shield). All the modules from [Kittenbot Jacdac Kit A](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacstarterkitawithjacdaptorformicrobitv2v10/) and the [Forward Education Climate Kit](https://microsoft.github.io/jacdac-docs/devices/forward-education/climateactionkitv10/) are supported.
 
 -   [![railroad crossing](./images/generated/icon_railroad_crossing.png){:class="icon"} railroad crossing](./samples/railroad-crossing)
 -   [inchworm robot](./samples/inchworm)
@@ -84,3 +84,5 @@ plugged in (either via a Jacdaptor or the Kittenbot shield). All the modules fro
 -   [![slider](./images/generated/icon_S11.png){:class="icon"} slider](./samples/slider-levels)
 -   [![dial](./images/generated/icon_S12.png){:class="icon"} turn dial](./samples/count-turns)
 -   [![key demo](./images/generated/icon_F5.png){:class="icon"} key demo](./samples/key-demo)
+-   [![moisture sensor demo](./images/generated/icon_S16.png){:class="icon"} water plant](./samples/water-plant)
+-
