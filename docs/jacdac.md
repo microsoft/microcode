@@ -3,6 +3,8 @@ title: Jacdac
 image: ./docs/images/generated/sample_railroad_crossing.png
 ---
 
+# Jacdac
+
 ![Smiley Button MicroCode program](./images/generated/sample_railroad_crossing.png){:class="screenshot"}
 
 MicroCode will detect [Jacdac](https://aka.ms/jacdac) modules and automatically display tiles for some of them. Tiles are available for all modules in [Kittenbot Jacdac Kit A](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacstarterkitawithjacdaptorformicrobitv2v10/),
@@ -34,3 +36,5 @@ Programming tiles for Jacdac modules appear in the user interface when the modul
 -   ![relay tile](./images/generated/icon_A22.png){:class="icon"} `relay` controls a relay switch (turning it on or off)
 -   ![servo power tile](./images/generated/icon_A23.png){:class="icon"} `servo power` controls the power to a servo motor (turning it on or off)
 -   ![servo set angle tile](./images/generated/icon_A21_.png){:class="icon"} `set servo angle` controls the orientation of a servo motor arm. The ![servo set angle tile](./images/generated/icon_A21_.png){:class="icon"} `servo` arm orientation is mapped to the wall clock hours: `0` (or `12`) is on rotated 90 degree from the resting position to the left, `6` is rotated 90 degree right from the rest position. This operation depends on the servo being powered on.
+
+### Jacdac samples

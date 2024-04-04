@@ -6,6 +6,7 @@ MicroCode supports the following [robots](./robot.md):
 -   [DFRobot Maqueen Plus](#dfrobot-maq-plus)
 -   [Elecfreaks Cutebot](#cutebot)
 -   [Elecfreaks Cutebot PRO](#cutebot-pro)
+-   [Forward Educations Smart Vehicle Kit](#forward-education-smart-vehicle-kit)
 -   [InkSmith K8](#inksmith-k8)
 -   [KeyStudio KS0426 Mini Smart Robot](#keystudio-mini)
 -   [KittenBot MiniLFR](#kittenbot-mlfr)
@@ -47,6 +48,15 @@ See [how to contribute](#contributing) for more information.
 -   [Home](https://shop.elecfreaks.com/products/elecfreaks-smart-cutebot-pro-v2-programming-robot-car-for-micro-bit)
 -   [Download for micro:bit V1](https://microsoft.github.io/microbit-robot/assets/elecfreaks-cutebotpro-for-microbit-v1.hex)
 -   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/elecfreaks-cutebotpro-for-microbit-v2.hex)
+
+## Forward Education Smart Vehicle Kit {#forward-education-smart-vehicle-kit}
+
+![Photograph of car made with Smart Vehicle Kit](./images/fwdedu.jpg){:class="photo"}
+
+This car is made with Jacdac modules, so only works with micro:bit V2:
+
+-   [Home](https://forwardedu.com/compare-kits/)
+-   [Download for micro:bit V2](https://microsoft.github.io/microbit-robot/assets/fwdedu-for-microbit-v2.hex)
 
 ## InkSmith K8 {#inksmith-k8}
 
