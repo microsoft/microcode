@@ -8,7 +8,7 @@ description: User guide for the MicroCode editor
 
 MicroCode makes it possible to program the [micro:bit V2](https://microbit.org)
 **without the need for an extra computer or Internet connection**.
-As shown above, the micro:bit slots into a (commercially available) shield that provides a color display and extra inputs. 
+As shown above, the micro:bit slots into a (commercially available) shield that provides a color display and extra inputs.
 The MicroCode visual programming model is based on Kodu and targets children age 6-9, younger than the traditional audience for the micro:bit. MicroCode features:
 
 -   [arcade shields](#arcade-shields) for the micro:bit V2 enable "on the go" programming with familiar game console controls
@@ -90,8 +90,11 @@ to follow lines, avoid obstacles and more.
 
 ## Accessories {#jacdac}
 
-MicroCode supports accessories to extend the micro:bit device with LEDs, servos, motors, ...
-In this video, we launch an LED animation when a clap is detected. The accessories are powered by [Jacdac](https://microsoft.github.io/jacdac-docs).
+[![Photograph of Jacdac kits](./images/JacdacKits.png){:class="photo"}](./jacdac)
+
+MicroCode recognizes many commercially-available
+[Jacdac modules](https://aka.ms/jacdac) that allow you to extend the micro:bit device with LEDs, servos, and much more.
+In this video, we launch an LED animation when a clap is detected.
 
 <video class="sample" poster="./videos/jacdac-led.png" src="./videos/jacdac-led.mp4" controls="true"></video>
 

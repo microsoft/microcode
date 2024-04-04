@@ -266,6 +266,7 @@ namespace docs {
             microcode.TID_MODIFIER_RGB_LED_COLOR_SPARKLE,
             microcode.TID_ACTUATOR_SERVO_SET_ANGLE,
             microcode.TID_ACTUATOR_RELAY,
+            microcode.TID_ACTUATOR_SERVO_POWER,
             // editor icons
             "delete",
             "plus",

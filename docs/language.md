@@ -184,33 +184,14 @@ after `repeat` determine the number of iterations. If no value is given, it repe
 
 -   **when** ![press](./images/generated/icon_S2.png){:class="icon"} press ![logo](./images/generated/icon_F7.png){:class="icon"} micro:bit logo, **do** ![screen](./images/generated/icon_A5.png){:class="icon"} show image happy animation and ![repeat](./images/generated/icon_M23.png){:class="icon"} repeat ![value 3](./images/generated/icon_M8.png){:class="icon"} 3 times.
 
-## Jacdac Modules {#jacdac}
+## Jacdac {#jacdac}
 
-MicroCode will detect [Jacdac](https://aka.ms/jacdac) modules and automatically display tiles for some of them. Tiles are available for all modules in [Kittenbot Jacdac Kit A](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacstarterkitawithjacdaptorformicrobitv2v10/). Tiles appear when the modules are connected.
-
-### WHEN modules
-
-#### Sensors
-
--   ![magnet sensor](./images/generated/icon_S10.png){:class="icon"} `magnet sensor` detects the presence of a magnet (levels 1 - 5, where 1 means no magnet present and 5 means strong presence of magnetic field)
--   ![light sensor](./images/generated/icon_S5.png){:class="icon"} `light sensor` measures the amount of light (levels 1 - 5, where 1 means little light present and 5 means a lot of light present)
-
-#### User inputs
-
--   ![slider](./images/generated/icon_S11.png){:class="icon"} `slider` measures the position of a physical slider (1-5, where 1 is minimum position and 5 is maximum position)
--   ![dial](./images/generated/icon_S12.png){:class="icon"} `dial` has two associated events: turn left ![turn left](./images/generated/icon_F21L.png){:class="icon"} and turn right ![turn right](./images/generated/icon_F21R.png){:class="icon"}
--   ![key](./images/generated/icon_F5.png){:class="icon"} `key` is available in the press/release event.
-
-### DO modules
-
--   ![LED](./images/generated/icon_A8.png){:class="icon"} `LED` set a color animation on a programmable LED strip
--   ![servo set angle tile](./images/generated/icon_A21_.png){:class="icon"} `servo` controls the orientation of a servo motor arm. The ![servo set angle tile](./images/generated/icon_A21_.png){:class="icon"} `servo` arm orientation is mapped to the wall clock hours: `0` (or `12`) is on rotated 90 degree from the resting position to the left, `6` is rotated 90 degree right from the rest position.
+MicroCode will detect connected [Jacdac](./jacdac) modules and automatically display programming tiles for them. Tiles are available for all modules in [Kittenbot Jacdac Kit A](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacstarterkitawithjacdaptorformicrobitv2v10/),
+as as well as the [Forward Education Climate Kit](https://microsoft.github.io/jacdac-docs/devices/forward-education/climateactionkitv10/). Many of the modules in [Kittenbot Jacdac Kit B](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacdeveloperstoolelectronicmodulekitbv10/) also are supported.
 
 ## Robot {#robot}
 
-MicroCode can be used to control a micro:bit robot ([read more](./robot)).
-
-Make to start your program by setting the same radio group as the robot.
+MicroCode can be used to control a micro:bit robot ([read more](./robot)). Make sure to start your program by setting the same radio group as the robot.
 
 ![setting radio group 3 on page start](./images/generated/sample_robot_shake_page_1_rule_1.png){:class="rule"}
 
