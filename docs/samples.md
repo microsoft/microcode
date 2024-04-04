@@ -85,4 +85,4 @@ plugged in (either via a Jacdaptor or the Kittenbot shield). All the modules fro
 -   [![dial](./images/generated/icon_S12.png){:class="icon"} turn dial](./samples/count-turns)
 -   [![key demo](./images/generated/icon_F5.png){:class="icon"} key demo](./samples/key-demo)
 -   [![moisture sensor demo](./images/generated/icon_S16.png){:class="icon"} water plant](./samples/water-plant)
--
+-   [![distance sensor demo](./images/generated/icon_S17.png){:class="icon"} measure distance](./samples/distance-measure)

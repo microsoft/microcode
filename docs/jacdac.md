@@ -38,3 +38,5 @@ Programming tiles for Jacdac modules appear in the user interface when the modul
 -   ![servo set angle tile](./images/generated/icon_A21_.png){:class="icon"} `set servo angle` controls the orientation of a servo motor arm. The ![servo set angle tile](./images/generated/icon_A21_.png){:class="icon"} `servo` arm orientation is mapped to the wall clock hours: `0` (or `12`) is on rotated 90 degree from the resting position to the left, `6` is rotated 90 degree right from the rest position. This operation depends on the servo being powered on.
 
 ### Jacdac samples
+
+See the [following programs](./samples.md#jacdac) for examples of how to use Jacdac modules with MicroCode.
