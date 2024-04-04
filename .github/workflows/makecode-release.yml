@@ -6,6 +6,9 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        permissions:
+            actions: read
+            contents: write
         strategy:
             matrix:
                 node-version: [16.x]
