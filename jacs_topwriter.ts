@@ -1233,7 +1233,7 @@ namespace jacs {
                             }
                         )
                     } else if (
-                        code != null && (!wakeup || wakeup == "sound_1_to_5") &&
+                        code != null && (wakeup == undefined || wakeup == "sound_1_to_5") &&
                             (rule.filters.length == 0 || this.hasFilterEvent(rule))
                     ) {
                         const roleEventCode = this.lookupGlobal(
