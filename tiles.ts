@@ -1089,7 +1089,8 @@ namespace microcode {
 
     export function jdKind(tile: Tile): JdKind {
         const tid = getTid(tile)
-        if (isPressReleaseEvent(tid)) return JdKind.ServiceInstanceIndex
+        if (isPressReleaseEvent(tid))
+            return JdKind.ServiceInstanceIndex
         if (
             isLineEvent(tid) ||
             isFilterConstant(tid) ||
@@ -1098,7 +1099,8 @@ namespace microcode {
             tid == Tid.TID_MODIFIER_OFF
         )
             return JdKind.Literal
-        if (isTimespan(tid)) return JdKind.Timespan
+        if (isTimespan(tid))
+            return JdKind.Timespan
         if (
             isEmoji(tid) ||
             tid == Tid.TID_MODIFIER_ICON_EDITOR ||

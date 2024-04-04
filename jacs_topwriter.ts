@@ -555,7 +555,10 @@ namespace jacs {
 
         hasFilterEvent(rule: microcode.RuleDefn) {
             return rule.filters.some(
-                f => microcode.jdKind(f) == microcode.JdKind.EventCode
+                f => {
+                    const k = microcode.jdKind(f)
+                    return k == microcode.JdKind.EventCode || k == microcode.JdKind.ServiceInstanceIndex
+                }
             )
         }
 
@@ -1230,9 +1233,8 @@ namespace jacs {
                             }
                         )
                     } else if (
-                        code != null &&
-                        (!wakeup || wakeup == "sound_1_to_5" ||
-                            rule.filters.length == 0 || this.hasFilterEvent(rule))
+                        code != null && (!wakeup || wakeup == "sound_1_to_5") &&
+                            (rule.filters.length == 0 || this.hasFilterEvent(rule))
                     ) {
                         const roleEventCode = this.lookupGlobal(
                             "z_role_code" + role.index
