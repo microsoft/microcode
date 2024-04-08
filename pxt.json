@@ -49,7 +49,7 @@
         "pointerevents.ts",
         "tooltips.ts",
         "utils.ts",
-        "microbit-robot/protocol.ts"
+        "microbit-robot/protocol/protocol.ts"
     ],
     "testFiles": [],
     "targetVersions": {

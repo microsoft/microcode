@@ -1163,8 +1163,7 @@ namespace jacs {
                                 )
                                 // hack for keeping car radio from interfering with user radio
                                 if (
-                                    sensor ==
-                                        microcode.Tid.TID_SENSOR_CAR_WALL ||
+                                    sensor == microcode.Tid.TID_SENSOR_CAR_WALL ||
                                     sensor == microcode.Tid.TID_SENSOR_LINE
                                 ) {
                                     wr.emitIf(
