@@ -88,12 +88,12 @@ to follow lines, avoid obstacles and more.
 
 [![Photograph of the Cutebot](./images/mcrc.jpg){:class="photo"}](./robot)
 
-## Accessories {#jacdac}
+## Jacdac accessories {#jacdac}
 
 [![Photograph of Jacdac kits](./images/JacdacKits.png){:class="photo"}](./jacdac)
 
 MicroCode recognizes many commercially-available
-[Jacdac modules](https://aka.ms/jacdac) that allow you to extend the micro:bit device with LEDs, servos, and much more.
+[Jacdac modules](./jacdac) that allow you to extend the micro:bit device with LEDs, servos, and much more.
 In this video, we launch an LED animation when a clap is detected.
 
 <video class="sample" poster="./videos/jacdac-led.png" src="./videos/jacdac-led.mp4" controls="true"></video>
