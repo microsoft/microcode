@@ -109,7 +109,10 @@ namespace jacs {
                 this.dispatcher = this.parent.addProc(this.name + "_disp")
                 this.parent.withProcedure(this.dispatcher, wr => {
                     const wakeup = needsWakeUp(this.classIdentifier)
-                    if (wakeup) {
+                    if (
+                        wakeup ||
+                        this.classIdentifier == ServiceClass.Accelerometer
+                    ) {
                         wr.emitStmt(Op.STMT3_QUERY_REG, [
                             this.emit(wr),
                             literal(JD_REG_STREAMING_SAMPLES),
@@ -554,12 +557,13 @@ namespace jacs {
         }
 
         hasFilterEvent(rule: microcode.RuleDefn) {
-            return rule.filters.some(
-                f => {
-                    const k = microcode.jdKind(f)
-                    return k == microcode.JdKind.EventCode || k == microcode.JdKind.ServiceInstanceIndex
-                }
-            )
+            return rule.filters.some(f => {
+                const k = microcode.jdKind(f)
+                return (
+                    k == microcode.JdKind.EventCode ||
+                    k == microcode.JdKind.ServiceInstanceIndex
+                )
+            })
         }
 
         emitSetReg(role: Role, reg: number, buf: string | Buffer) {
@@ -1163,7 +1167,8 @@ namespace jacs {
                                 )
                                 // hack for keeping car radio from interfering with user radio
                                 if (
-                                    sensor == microcode.Tid.TID_SENSOR_CAR_WALL ||
+                                    sensor ==
+                                        microcode.Tid.TID_SENSOR_CAR_WALL ||
                                     sensor == microcode.Tid.TID_SENSOR_LINE
                                 ) {
                                     wr.emitIf(
@@ -1232,8 +1237,9 @@ namespace jacs {
                             }
                         )
                     } else if (
-                        code != null && (wakeup == undefined || wakeup == "sound_1_to_5") &&
-                            (rule.filters.length == 0 || this.hasFilterEvent(rule))
+                        code != null &&
+                        (wakeup == undefined || wakeup == "sound_1_to_5") &&
+                        (rule.filters.length == 0 || this.hasFilterEvent(rule))
                     ) {
                         const roleEventCode = this.lookupGlobal(
                             "z_role_code" + role.index
@@ -1414,21 +1420,30 @@ namespace jacs {
 
     function needsWakeUp_1_to_5(classId: number) {
         switch (classId) {
-            case ServiceClass.SoundLevel: return "sound_1_to_5"
-            case ServiceClass.LightLevel: return "light_1_to_5"
-            case ServiceClass.Potentiometer: return "slider_1_to_5"
-            case ServiceClass.MagneticFieldLevel: return "magnet_1_to_5"
-            case ServiceClass.Moisture: return "moisture_1_to_5"
-            case ServiceClass.Distance: return "distance_1_to_5"
+            case ServiceClass.SoundLevel:
+                return "sound_1_to_5"
+            case ServiceClass.LightLevel:
+                return "light_1_to_5"
+            case ServiceClass.Potentiometer:
+                return "slider_1_to_5"
+            case ServiceClass.MagneticFieldLevel:
+                return "magnet_1_to_5"
+            case ServiceClass.Moisture:
+                return "moisture_1_to_5"
+            case ServiceClass.Distance:
+                return "distance_1_to_5"
         }
         return undefined
     }
 
     function needsWakeupChanged(classId: number) {
         switch (classId) {
-            case ServiceClass.RotaryEncoder: return "get_rotary"
-            case ServiceClass.Temperature: return "round_temp"
-            case ServiceClass.Reflected: return "reflected"
+            case ServiceClass.RotaryEncoder:
+                return "get_rotary"
+            case ServiceClass.Temperature:
+                return "round_temp"
+            case ServiceClass.Reflected:
+                return "reflected"
         }
         return undefined
     }
@@ -1438,10 +1453,8 @@ namespace jacs {
     }
 
     function getGlobal(classId: number, index: number) {
-        if (classId == ServiceClass.Temperature)
-            return "z_temp"
-        else 
-            return "z_role" + index
+        if (classId == ServiceClass.Temperature) return "z_temp"
+        else return "z_role" + index
     }
 
     function needsEnable(classId: number): boolean {
@@ -1488,7 +1501,7 @@ namespace jacs {
         Distance = 0x141a6b8a,
         Reflected = 0x126c4cb2,
         Moisture = 0x1d4aa3b3,
-        Relay = 0x183fe656
+        Relay = 0x183fe656,
     }
 
     export function stop() {
