@@ -11,7 +11,7 @@ MicroCode makes it possible to program the [micro:bit V2](https://microbit.org)
 As shown above, the micro:bit slots into a (commercially available) shield that provides a color display and extra inputs.
 The MicroCode visual programming model is based on Kodu and targets children age 6-9, younger than the traditional audience for the micro:bit. MicroCode features:
 
--   [arcade shields](#arcade-shields) for the micro:bit V2 enable "on the go" programming with familiar game console controls
+-   [arcade shields](./purchase#arcade-shields) for the micro:bit V2 enable "on the go" programming with familiar game console controls
 -   kid-friendly, icon-based, structured code editor and [programming language](./language)
 -   lots of [sample programs](./samples) to get started
 -   [translated](#localization) in 20+ languages
@@ -19,67 +19,16 @@ The MicroCode visual programming model is based on Kodu and targets children age
     to follow lines, avoid obstacles and more.
 -   extend and program your creation with [Jacdac accessories](#jacdac) (LEDs, servos, ...)
 
+## Purchasing the hardware
+
+All the above hardware can be [purchased](./purchase.md) from a variety of vendors.
+
 ## Getting started
 
 Regardless of whether you are using the Arcade shield or web app, you first need to download the (localized) MicroCode hex file to your micro:bit V2. There are two ways to do this:
 
 1. visit the [web app](https://microsoft.github.io/microcode/) and follow directions to connect your micro:bit and [automatically download over WebUSB](#download)
 2. visit the [localization](#localization) section to _download_ the MicroCode hex file to your computer and copy to your micro:bit V2 (plugged into your computer via USB).
-
-## Arcade shields {#arcade-shield}
-
-Three Arcade shields for the micro:bit V2 are available on the market today, as shown below. After downloading the MicroCode hex file to your micro:bit V2, whenever you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run (assuming the micro:bit is still powered, of course).
-
-<table>
-<tr valign="top">
-<td width="33%" >
-<a href="https://www.kittenbot.cc/products/newbit-arcade-shield">
-Kittenbot's newbit Arcade shield
-</a>
-</td><td width="33%" >
-<a href="https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade">
-ELECFREAK's micro:bit Arcade shield
-</a>
-</td>
-<td width="33%" >
-<a href="https://www.icshop.com.tw/products/368112100137?locale=en">
-ICShopping's Game:bit Arcade shield
-</a>
-</td></tr>
-<tr>
-<td>
-<a alt="Kittenbot's newbit Arcade shield" href="https://www.kittenbot.cc/products/newbit-arcade-shield">
-<img src="../assets/newbit-shield.png">
-</a>
-</td><td>
-<a alt="ELECFREAK's micro:bit Retro Arcade shield" href="https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade">
-<img src="../assets/elecfreaks-shield.png">
-</a>
-</td><td>
-<a alt="ICShopping's Game:bit" href="https://www.icshop.com.tw/products/368112100137?locale=en">
-<img src="../assets/gamebit-shield.png">
-</a>
-</td></tr>
-<tr valign="top">
-<td>
-
-Small screen. No battery or battery pack included. 3.7V JST power jack on back. One <a href="https://aka.ms/jacdac">Jacdac</a> port.
-
-</td>
-
-<td>
-
-Assembly required. Small screen. AAA Battery pack on back. One <a href="https://aka.ms/jacdac">Jacdac</a> port.
-
-</td>
-<td>
-
-No assembly required. Large screen and 3d-printed enclosure with LiPo battery inside. Two <a href="https://aka.ms/jacdac">Jacdac</a> ports.
-
-</td>
-</tr>
-
-</table>
 
 ## micro:bit Robots {#robots}
 
