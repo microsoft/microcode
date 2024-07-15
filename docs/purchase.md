@@ -1,6 +1,5 @@
 ---
-title: Purchasing MicroCode Hardware
-description: Purchasing MicroCode Hardware
+title: Purchasing Hardware
 ---
 
 To run MicroCode, you need at least:
@@ -8,11 +7,7 @@ To run MicroCode, you need at least:
 -   a micro:bit V2, available from many vendors [vendors](https://microbit.org/buy/)
 -   a micro:bit [Arcade shield](#arcade-shields)
 
-If you want to use Jacdac accessories, you will also need:
-
--   a Jacdac kit of Jacdac modules
-
-If you further want to use MicroCode with a micro:bit robot, you will also need to purchase the robot, as well as a separate micro:bit for slotting into the robot.
+If you want to use Jacdac accessories, you will also need a kit of Jacdac modules (see [Jacdac Kit A](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacstarterkitawithjacdaptorformicrobitv2v10/), [Jacdac Kit B](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacdeveloperstoolelectronicmodulekitbv10/), [Climate Action Kit](https://microsoft.github.io/jacdac-docs/devices/forward-education/climateactionkitv10/)). If you further want to use MicroCode with a [micro:bit robot](./robots-supported.md), you will also need to purchase the robot, as well as a separate micro:bit for slotting into the robot.
 
 ## KittenBot MicroCode product
 
@@ -20,7 +15,7 @@ KittenBot recently introduced a [MicroCode Explorer Kit](https://www.kittenbot.c
 
 ## Arcade Shields for the micro:bit V2
 
-Three Arcade shields for the micro:bit V2 are available on the market today, as shown below. After downloading the MicroCode hex file to your micro:bit V2, whenever you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run (assuming the micro:bit is still powered, of course).
+Three Arcade shields for the micro:bit V2 are available on the market today, as shown below:
 
 <table>
 <tr valign="top">
@@ -72,3 +67,4 @@ No assembly required. Large screen and 3d-printed enclosure with LiPo battery in
 </tr>
 
 </table>
+ After downloading the MicroCode hex file to your micro:bit V2, whenever you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run (assuming the micro:bit is still powered, of course).
