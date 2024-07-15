@@ -2,7 +2,7 @@
 title: Purchasing Hardware
 ---
 
-To run MicroCode, you need to acquire a least:
+To run MicroCode you need to get the following hardware:
 
 -   a micro:bit V2, available from many [vendors](https://microbit.org/buy/)
 -   a micro:bit [Arcade shield](#arcade-shields)
