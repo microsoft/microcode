@@ -2,12 +2,12 @@
 title: Purchasing Hardware
 ---
 
-To run MicroCode, you need at least:
+To run MicroCode, you need to acquire a least:
 
--   a micro:bit V2, available from many vendors [vendors](https://microbit.org/buy/)
+-   a micro:bit V2, available from many [vendors](https://microbit.org/buy/)
 -   a micro:bit [Arcade shield](#arcade-shields)
 
-If you want to use Jacdac accessories, you will also need a kit of Jacdac modules (see [Jacdac Kit A](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacstarterkitawithjacdaptorformicrobitv2v10/), [Jacdac Kit B](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacdeveloperstoolelectronicmodulekitbv10/), [Climate Action Kit](https://microsoft.github.io/jacdac-docs/devices/forward-education/climateactionkitv10/)). If you further want to use MicroCode with a [micro:bit robot](./robots-supported.md), you will also need to purchase the robot, as well as a separate micro:bit for slotting into the robot.
+If you want to use [Jacdac](./jacdac) accessories with MicroCode, you will also need a kit of Jacdac modules (see [Jacdac Kit A](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacstarterkitawithjacdaptorformicrobitv2v10/), [Jacdac Kit B](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacdeveloperstoolelectronicmodulekitbv10/), [Climate Action Kit](https://microsoft.github.io/jacdac-docs/devices/forward-education/climateactionkitv10/)). If you further want to use MicroCode with a [supported micro:bit robot](./robots-supported.md), you will also need to purchase the robot, as well as an _additional micro:bit_ for slotting into the robot.
 
 ## KittenBot MicroCode product
 
