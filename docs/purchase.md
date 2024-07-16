@@ -7,7 +7,11 @@ To run MicroCode you need to get the following hardware:
 -   a micro:bit V2, available from many [vendors](https://microbit.org/buy/)
 -   a micro:bit [Arcade shield](#arcade-shields)
 
-If you want to use [Jacdac](./jacdac) accessories with MicroCode, you will also need a kit of Jacdac modules (see [Jacdac Kit A](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacstarterkitawithjacdaptorformicrobitv2v10/), [Jacdac Kit B](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacdeveloperstoolelectronicmodulekitbv10/), [Climate Action Kit](https://microsoft.github.io/jacdac-docs/devices/forward-education/climateactionkitv10/)). If you further want to use MicroCode with a [supported micro:bit robot](./robots-supported.md), you will also need to purchase the robot, as well as an _additional micro:bit_ for slotting into the robot.
+With the above hardware, in addition to the freely-available MicroCode software, you can also make use
+of these other great programming environments:
+
+-   [MakeCode for micro:bit](https://makecode.microbit.org) for the micro:bit V2
+-   [MakeCode Arcade](https://arcade.makecode.com) for the micro:bit V2 + Arcade shield
 
 ## KittenBot MicroCode product
 
@@ -68,3 +72,12 @@ No assembly required. Large screen and 3d-printed enclosure with LiPo battery in
 
 </table>
  After downloading the MicroCode hex file to your micro:bit V2, whenever you plug the micro:bit into the Arcade Shield, MicroCode should start running. Your MicroCode program is always live and runnable. Once you remove the micro:bit from the shield, the program will persist and continue to run (assuming the micro:bit is still powered, of course).
+
+## Jacdac and Robots
+
+If you want to use [Jacdac](./jacdac) accessories with MicroCode, you will also need a kit of Jacdac modules (see [Jacdac Kit A](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacstarterkitawithjacdaptorformicrobitv2v10/), [Jacdac Kit B](https://microsoft.github.io/jacdac-docs/devices/kittenbot/jacdacdeveloperstoolelectronicmodulekitbv10/), [Climate Action Kit](https://microsoft.github.io/jacdac-docs/devices/forward-education/climateactionkitv10/)). If you further want to use MicroCode with a [supported micro:bit robot](./robots-supported.md), you will also need to purchase the robot, as well as an _additional micro:bit_ for slotting into the robot.
+
+Both Jacdac and the micro:bit robots also are supported by [MakeCode for micro:bit](https://makecode.microbit.org). For more info, see:
+
+-   [Jacdac MakeCode integration](https://microsoft.github.io/jacdac-docs/clients/makecode/)
+-   [MakeCode micro:bit robot extension](https://makecode.microbit.org/pkg/microsoft/microbit-robot)
