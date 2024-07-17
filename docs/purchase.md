@@ -2,7 +2,9 @@
 title: Purchasing Hardware
 ---
 
-To run MicroCode you need to get the following hardware:
+## Portable programming
+
+To run MicroCode (without a separate computer such as a laptop, desktop, tablet, smartphone) you need to get the following hardware:
 
 -   a micro:bit V2, available from many [vendors](https://microbit.org/buy/)
 -   a micro:bit [Arcade shield](#arcade-shields)
@@ -12,6 +14,10 @@ of these other great programming environments:
 
 -   [MakeCode for micro:bit](https://makecode.microbit.org) for the micro:bit V2
 -   [MakeCode Arcade](https://arcade.makecode.com) for the micro:bit V2 + Arcade shield
+
+## Tethered programming
+
+If you only have a micro:bit V2, you can still use MicroCode, but you need to use the [web app](https://microsoft.github.io/microcode/) and connect your micro:bit using a micro-USB cable.
 
 ## KittenBot MicroCode product
 
