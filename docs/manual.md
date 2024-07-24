@@ -30,6 +30,15 @@ Regardless of whether you are using the Arcade shield or web app, you first need
 1. visit the [web app](https://microsoft.github.io/microcode/) and follow directions to connect your micro:bit and [automatically download over WebUSB](#download)
 2. visit the [localization](#localization) section to _download_ the MicroCode hex file to your computer and copy to your micro:bit V2 (plugged into your computer via USB).
 
+## Hands-on resources
+
+The following resources may be helpful to print out:
+
+-   [MicroCode Quick Start Guide](./handouts/quickstart.pdf)
+-   [MicroCode 101 Slides](./ppt/MicroCode101.pptx)
+-   [MicroCode Programming Cards (Basic)](./ppt/MicroCodeCardsBasic.pptx)
+-   [MicroCode Programming Cards (Full)](./ppt/MicroCodeCardsFull.pptx)
+
 ## micro:bit Robots {#robots}
 
 Remote control a [micro:bit robot](./robot) using MicroCode
