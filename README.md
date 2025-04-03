@@ -1,6 +1,6 @@
 ## Microsoft MicroCode
 
-> NOTE: MicroCode has moved to [https://github.com/microbit-apps/microcode](https://github.com/microbit-apps/microcode).
+> NOTE: MicroCode has moved to [https://github.com/microbit-apps/microcode-classic](https://github.com/microbit-apps/microcode-classic).
 
 ## Contributing
 
