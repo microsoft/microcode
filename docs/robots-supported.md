@@ -1,3 +1,3 @@
 ## Supported robots
 
-MicroCode has moved here [https://microbit-apps.github.io/microcode-classic/docs/robots-supported](here)
+MicroCode has moved to [https://microbit-apps.github.io/microcode-classic/docs/robots-supported](https://microbit-apps.github.io/microcode-classic/docs/robots-supported)

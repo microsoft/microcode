@@ -2,4 +2,4 @@
 
 ![Photograph of micro:bit robots](./images/robots.jpg)
 
-MicroCode has moved here [https://microbit-apps.github.io/microcode-classic/docs/robot](here)
+MicroCode has moved to [https://microbit-apps.github.io/microcode-classic/docs/robot](https://microbit-apps.github.io/microcode-classic/docs/robot)
