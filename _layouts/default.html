@@ -15,22 +15,6 @@
   <body>
     <a id="skip-to-content" href="#content">Skip to the content.</a>
 
-    <header class="page-header" role="banner">
-      <h1 class="project-name">MicroCode - {{ page.title | default: site.title | default: site.github.repository_name }}</h1>
-      {% if page.description %}
-      <h2 class="project-tagline">{{ page.description }}</h2>
-      {% endif %}
-      <p>
-        <a href="https://{{ site.github.owner_name }}.github.io/{{ site.github.repository_name }}/docs/purchase">Purchasing</a> |
-        <a href="https://{{ site.github.owner_name }}.github.io/{{ site.github.repository_name }}/docs/manual">User guide</a> |
-        <a href="https://{{ site.github.owner_name }}.github.io/{{ site.github.repository_name }}/docs/language">Language</a> |
-        <a href="https://{{ site.github.owner_name }}.github.io/{{ site.github.repository_name }}/docs/samples">Samples</a> |
-        <a href="https://{{ site.github.owner_name }}.github.io/{{ site.github.repository_name }}/docs/jacdac">Jacdac</a> |
-        <a href="https://{{ site.github.owner_name }}.github.io/{{ site.github.repository_name }}/docs/robot">Robot</a> |
-        <a href="https://{{ site.github.owner_name }}.github.io/{{ site.github.repository_name }}/docs/faq">FAQ</a>
-      </p>
-    </header>
-
     <main id="content" class="main-content" role="main">
       {{ content }}
 
